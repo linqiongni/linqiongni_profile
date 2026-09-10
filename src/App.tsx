@@ -11,6 +11,7 @@ import { CateringLegalTab } from './components/CateringLegalTab';
 import { DevelopmentPlanTab } from './components/DevelopmentPlanTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
+import { WaterRippleBackground } from './components/WaterRippleBackground';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -46,6 +47,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FDFCF9] dark:bg-[#1C1C1E] text-[#1D1D1F] dark:text-[#F5F5F7] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
+      {/* 全屏水面波纹背景（跟随鼠标，不拦截交互） */}
+      <WaterRippleBackground darkMode={darkMode} />
+
       {/* Top Fixed Navbar */}
       <Navbar
         activeTab={activeTab}
