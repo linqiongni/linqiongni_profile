@@ -20,6 +20,7 @@ import {
   Link2,
   Sparkles,
   ArrowUpRight,
+  X,
 } from 'lucide-react';
 
 // ── 数据源（来自 WorkBuddy 资料库「餐饮加盟法务总监养成计划」）──
@@ -62,8 +63,12 @@ const DELIVERABLES = [
   { no: '12', title: '《法务总监上任 90 天工作方案》', desc: '结业项目，可直接用于面试 / 述职' },
 ];
 
-// 周模块（已发布：第 1–8 周、第 13 周）
-const WEEKS = [
+// 单篇课程：id 指向资料库节点（跳转原文）；带 localHtml 的在站内直接阅读
+type Lesson = { title: string; id: string; localHtml?: string };
+type Week = { id: string; label: string; theme: string; lessons: Lesson[] };
+
+// 周模块（第 1–8 周、第 13 周为资料库原文；第 9 周为站内直读）
+const WEEKS: Week[] = [
   {
     id: 'Bn840EZ5D63zhmqmjJkjv0',
     label: '第 1 周',
@@ -188,12 +193,25 @@ const WEEKS = [
       { title: '第 13 周周末实战', id: 'yb4Ny8nApNOXvwjO0mrWna' },
     ],
   },
+  {
+    id: 'week-09',
+    label: '第 9 周',
+    theme: '食品安全法定义务与「退一赔十」攻防',
+    lessons: [
+      {
+        title: '第 9 周第 1 天 · 食安法定义务系统梳理（含 100 条门店自查表）',
+        id: 'week09-day1',
+        localHtml: '/food-safety-week9.html',
+      },
+    ],
+  },
 ];
 
 const lessonUrl = (id: string) => `https://www.workbuddy.cn/space/d/${id}`;
 
 export const CateringLegalTab: React.FC = () => {
   const [openWeek, setOpenWeek] = useState<string>(WEEKS[0].id);
+  const [activeLesson, setActiveLesson] = useState<Lesson | null>(null);
 
   return (
     <div id="tab-catering-content" className="space-y-12 py-6">
@@ -300,6 +318,48 @@ export const CateringLegalTab: React.FC = () => {
           </a>
         </div>
 
+        {/* ── 站内阅读面板：点击带「站内阅读」的课程后在此展开 ── */}
+        {activeLesson && activeLesson.localHtml && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 rounded-xl border border-[#B89F6B]/40 bg-white/40 dark:bg-[#242426]/40 overflow-hidden"
+          >
+            <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
+              <div className="flex items-center gap-2 min-w-0">
+                <BookOpen size={16} className="text-[#B89F6B] shrink-0" />
+                <span className="text-sm text-[#1D1D1F] dark:text-[#F5F5F7] truncate">
+                  {activeLesson.title}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <a
+                  href={activeLesson.localHtml}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#86868B] hover:text-[#B89F6B] transition-colors flex items-center gap-1"
+                >
+                  <ExternalLink size={13} />
+                  新窗口打开
+                </a>
+                <button
+                  onClick={() => setActiveLesson(null)}
+                  className="text-xs text-[#86868B] hover:text-[#B89F6B] transition-colors flex items-center gap-1"
+                >
+                  <X size={14} />
+                  收起
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={activeLesson.localHtml}
+              title={activeLesson.title}
+              className="w-full h-[75vh] border-0 bg-white"
+            />
+          </motion.div>
+        )}
+
         <div className="space-y-3">
           {WEEKS.map((w, i) => {
             const isOpen = openWeek === w.id;
@@ -333,18 +393,36 @@ export const CateringLegalTab: React.FC = () => {
                     <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
                       {w.lessons.map((l) => (
                         <li key={l.id}>
-                          <a
-                            href={lessonUrl(l.id)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex items-center justify-between py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
-                          >
-                            <span>{l.title}</span>
-                            <ArrowUpRight
-                              size={15}
-                              className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
-                            />
-                          </a>
+                          {l.localHtml ? (
+                            <button
+                              onClick={() => setActiveLesson(l)}
+                              className="group w-full flex items-center justify-between gap-3 py-2.5 text-left text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                            >
+                              <span>{l.title}</span>
+                              <span className="flex items-center gap-2 shrink-0">
+                                <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#B89F6B]/15 text-[#B89F6B]">
+                                  站内阅读
+                                </span>
+                                <BookOpen
+                                  size={15}
+                                  className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
+                                />
+                              </span>
+                            </button>
+                          ) : (
+                            <a
+                              href={lessonUrl(l.id)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group flex items-center justify-between py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                            >
+                              <span>{l.title}</span>
+                              <ArrowUpRight
+                                size={15}
+                                className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
+                              />
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -355,7 +433,7 @@ export const CateringLegalTab: React.FC = () => {
           })}
         </div>
         <p className="text-xs text-[#86868B] mt-3">
-          * 计划共 16 周，此处展示已发布的第 1–8 周与第 13 周；每篇均可跳转至资料库阅读原文与当日指令。
+          * 计划共 16 周。第 1–8 周、第 13 周为资料库原文（点击跳转阅读）；第 9 周第 1 天为站内全文，点击「站内阅读」直接在页内展开。
         </p>
       </section>
 

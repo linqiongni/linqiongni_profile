@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- 餐饮企业食品安全法定义务系统梳理 · 国风法务精读 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>餐饮企业食品安全法定义务系统梳理</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .cl-title{color:var(--gold);font-weight:600}
+  .progress{flex:1;min-width:120px;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade);flex-shrink:0}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  .sub-t{color:var(--jade);font-size:14px;margin:14px 0 4px;font-weight:600}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>餐饮企业食品安全法定义务系统梳理</h1>
+    <div class="meta">直营＋加盟双视角 · 餐饮（米线/快餐/小吃）门店场景 · 法条精确到条款项 · 覆盖《食品安全法》及实施条例、《食品经营许可管理办法》、《网络餐饮服务食品安全监督管理办法》、104 号令等</div>
+  </header>
+  <div class="lead">立场说明：本梳理同时覆盖<b>直营门店</b>与<b>加盟门店</b>。加盟场景下，连锁总部须依《餐饮服务连锁企业落实食品安全主体责任监督管理规定》（总局令第 104 号）承担统一管理与追溯责任，<b>不得通过合同把食安责任全部转移给加盟商</b>——这是红线，下文各环节单列「总部责任」。</div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab on" data-p="p1">① 核心义务清单（按环节）</div>
+    <div class="tab" data-p="p2">② 门店食安自查表（100 条）</div>
+    <div class="tab" data-p="p3">③ 第 148 条：退一赔十与最低 1000</div>
+    <div class="tab" data-p="p4">④ 外卖环节特殊要求</div>
+  </div>
+
+  <!-- 面板 p1：核心义务清单 -->
+  <div class="panel on" id="p1">
+
+    <div class="card">
+      <h3>一、准入环节：食品经营许可</h3>
+      <table>
+        <thead><tr><th style="width:20%">具体义务</th><th style="width:24%">法条依据</th><th style="width:32%">具体要求</th><th style="width:24%">违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>取得许可并公示</td><td>食安法第 35 条；《食品经营许可管理办法》第 4、19 条</td><td>从事餐饮服务须取得食品经营许可（销售食用农产品、仅销售预包装食品除外，后者备案）；主体业态＝餐饮服务经营者；经营项目按风险选（热食/冷食/生食/糕点/自制饮品）；<b>一地一证</b>；许可证正本悬挂显著位置</td><td>无证经营：食安法第 122 条 没收＋违法食品/工具设备原料；货值不足 1 万罚 <b>5–10 万</b>，1 万以上罚 <b>10–20 倍</b>；明知提供场所等罚 10–20 万</td></tr>
+          <tr><td>有效期与延续</td><td>办法第 19 条（有效期 5 年）；旧办法第 29 条（届满 30 个工作日前申请）；2025 新办法（届满前 90–15 工作日）</td><td>有效期 <b>5 年</b>；届满前按规定时限申请延续；到期未延续不得经营</td><td>逾期经营按无证（第 122 条）处理</td></tr>
+          <tr><td>变更与禁止行为</td><td>办法第 27 条</td><td>许可事项变化 10 工作日内申请变更；经营场所变化重新申请；不得伪造、涂改、倒卖、出租、出借、转让</td><td>责令改正、警告；情节严重吊销（第 126/122 条）</td></tr>
+          <tr><td><span class="t-gold">总部责任</span> 统一许可管理</td><td>104 号令第 6 条</td><td>连锁总部建立食安管理制度、配备管理人员、对全链路负责；统一配送须统一查验</td><td>通过合同减轻/免除自身责任：104 号令第 9 条第 4 款禁止，依第 27 条罚 <b>5 万以下</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>二、采购环节：进货查验与索证索票</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>进货查验记录制度</td><td>食安法第 53 条</td><td>查验供货者许可证＋食品合格证明；统一配送由总部统一查验；记录名称/规格/数量/生产批号/保质期/供货者名称地址联系方式/进货日期；<b>保存≥保质期满后 6 个月，无保质期≥2 年</b></td><td>未查验/未记录：第 126 条 警告→拒不改正 <b>5 千–5 万</b>；情节严重停业/吊销</td></tr>
+          <tr><td>索证索票</td><td>食安法第 53 条＋实施条例</td><td>食品：许可证＋合格证明；添加剂：许可证＋合格证明＋记录；进口：口岸检验合格证明；生鲜食用农产品按地方规定</td><td>同上第 126 条</td></tr>
+          <tr><td>禁止采购</td><td>食安法第 34 条、第 55 条</td><td>不采购腐败变质/油脂酸败/霉变生虫/超过保质期/混有异物/掺假掺杂/来源不明/无中文标签进口食品等；落实原料控制</td><td>经营禁止类：第 124 条 没收＋货值不足 1 万 <b>5–10 万</b>，1 万以上 <b>10–20 倍</b>；情节严重吊销</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>三、贮存环节：温控、分类、保质期</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>贮存与清理</td><td>食安法第 54 条</td><td>按食品安全要求贮存、定期检查库存、及时清理变质/超期；离地离墙、分类、温控；<b>先进先出（FIFO）</b></td><td>经营过期/变质：第 124 条 没收＋罚 5–10 万/10–20 倍；情节严重吊销</td></tr>
+          <tr><td>添加剂专区存放</td><td>《餐饮服务食品安全操作规范》；五专之一</td><td>添加剂设专区（专柜）上锁、标识「食品添加剂」字样</td><td>未专柜存放等：第 126 条 警告→5 千–5 万</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>四、加工环节：生熟分开、烧熟煮透、专间、添加剂</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>生熟分开/烧熟煮透</td><td>实施条例第 28 条；《操作规范》</td><td>容器工具按生/熟/半成品颜色或标识区分；食品烧熟煮透中心温度 <b>≥70℃</b>；防止交叉污染</td><td>未达标致不合格：第 124/126 条</td></tr>
+          <tr><td>专间管理（凉菜/生食/裱花）</td><td>《操作规范》</td><td>须专间：预进间、专人、专用工具容器、独立空调（≤25℃）、空气消毒、温度记录；现做现售，存放≤2 小时或热藏≥60℃</td><td>违规：第 126 条 警告→5 千–5 万</td></tr>
+          <tr><td>添加剂「五专」＋公示</td><td>食安法第 60 条；《操作规范》</td><td><b>五专</b>＝专店（定点）采购/专柜存放/专人负责/专册登记/专用称量；自制饮料、调味料在醒目位置或菜单公示</td><td>超范围超限量使用：第 124 条；未五专：第 126 条</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>五、餐具：清洗消毒保洁</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>餐具饮具消毒</td><td>食安法第 56 条</td><td>餐具饮具使用前洗净、消毒；炊具用具用后洗净保持清洁；洗涤剂、消毒剂符合食品相关标准；集中消毒餐具查验留存营业执照＋批次出厂检验报告</td><td>餐具饮具不合标准：第 126 条 警告→5 千–5 万；情节严重停业/吊销</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>六、人员：健康证明、培训、食安管理员</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>健康证明</td><td>食安法第 45 条</td><td>接触直接入口食品从业人员<b>每年</b>健康检查、取得健康证明；患霍乱/痢疾/伤寒/病毒性肝炎（甲、戊型）/活动性肺结核/化脓性、渗出性皮肤病等<b>调离</b>；落实晨检</td><td>无健康证/聘用禁业人员：第 126 条 警告→5 千–5 万；情节严重停业/吊销</td></tr>
+          <tr><td>培训与食安管理员</td><td>食安法第 44 条；104 号令</td><td>企业组织食安培训；中央厨房、集体用餐配送、连锁总部等须配备食安总监/食安员；落实日管控、周排查、月调度</td><td>未配管理员/未培训：第 126 条</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>七、留样：什么要留、留多少、留多久</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>留样范围与标准</td><td>GB 31654-2021《餐饮服务通用卫生规范》；《操作规范》；《学校食品安全与营养健康管理规定》第 40 条</td><td><b>强制留样</b>：学校（含托幼）食堂、养老机构食堂、医疗机构食堂、建筑工地食堂、中央厨房、集体用餐配送单位、一次性集体聚餐＞100 人、重大活动供餐。<b>普通餐饮「宜」留样（推荐非强制）</b>。每餐次每品种 <b>≥125 克</b>，专用密闭容器，专用冷藏 <b>0–8℃</b>，<b>≥48 小时</b>，专人管理，标注名称＋时间（月/日/时），建台账</td><td>强制单位未留样：第 126 条/地方规定 警告→罚款</td></tr>
+        </tbody>
+      </table>
+      <div class="anti"><b>总部红线：</b>普通餐饮门店虽不强制留样，但品牌若主打「明厨亮灶＋安全可溯」卖点，建议在合同中把关键环节留样写入运营标准，作为总部统一管理的质量证据，而非转嫁责任。</div>
+    </div>
+
+    <div class="card">
+      <h3>八、追溯与召回</h3>
+      <table>
+        <thead><tr><th>具体义务</th><th>法条依据</th><th>具体要求</th><th>违反的处罚</th></tr></thead>
+        <tbody>
+          <tr><td>召回与追溯</td><td>食安法第 63 条、第 51 条</td><td>发现不安全食品<b>立即停止经营/召回</b>，通知相关经营者＋消费者，记录召回处置（停售/无害化处理）；建立追溯体系</td><td>未召回/不停止经营：第 124/126 条；不真实标注召回：第 125 条</td></tr>
+          <tr><td><span class="t-gold">总部责任</span> 全链路追溯</td><td>104 号令</td><td>连锁总部对全链路追溯负责，统一配送食品出厂检验/留样/问题召回</td><td>违规：104 号令第 27 条 罚 5 万以下/情节严重</td></tr>
+        </tbody>
+      </table>
+      <div class="act"><b>双罚制提示：</b>食安法及实施条例第 75 条规定，企业违法除罚款外，对法定代表人、主要负责人、直接负责的主管人员和其他责任人员，可处其上一年度从本单位取得收入的 <b>1–10 倍</b>罚款。加盟门店违法，总部管理人员亦可能被追责。</div>
+    </div>
+
+  </div>
+
+  <!-- 面板 p2：门店食安自查表 100 条 -->
+  <div class="panel" id="p2">
+    <div class="lead">说明：共 100 条，分四组（通用/每日/每周/每月＋应急）。勾选完成项，进度条实时统计；可点「打印清单」下发门店。建议在加盟运营手册中把本表列为门店开业必做项，由店长每日签字、区域经理每周复核。</div>
+
+    <div class="checklist">
+      <div class="cl-head">
+        <span class="cl-title">A. 通用·资质与人员（1–10）</span>
+        <div class="progress"><i id="barA"></i></div>
+        <span id="cntA" style="color:var(--sub);font-size:13px">0 / 0</span>
+        <button class="btn" onclick="window.print()">打印清单</button>
+      </div>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">1. 食品经营许可证正本悬挂于经营场所显著位置（一地一证、证址一致）<span class="m-note"> — 食安法 35 条/办法 4 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">2. 许可证在有效期内，届满前已申请延续<span class="m-note"> — 办法 19/29 条，有效期 5 年</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">3. 实际经营项目与许可证载明一致（不超范围制售冷食/生食）<span class="m-note"> — 超范围即违法</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">4. 网店名称、门头招牌与许可证名称一致<span class="m-note"> — 线上线下一致（外卖场景）</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">5. 所有接触直接入口食品从业人员持有效健康证明（每年体检）<span class="m-note"> — 食安法 45 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">6. 健康证明在公示栏公示，临期提前 30 日安排复检<span class="m-note"> — 防无证上岗</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">7. 建立晨检制度，患病（腹泻/化脓伤口/黄疸等）人员已调离岗位<span class="m-note"> — 食安法 45 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">8. 食安管理员（总监/员）已任命并公示、持培训合格证明<span class="m-note"> — 104 号令</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">9. 食安管理制度（进货查验/健康/消毒/废弃物/突发事件）上墙或成册可查<span class="m-note"> — 办法 12 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barA','cntA')"><span class="m-txt">10. 员工本年度已完成至少 1 次食安培训并有签到记录<span class="m-note"> — 食安法 44 条</span></span></label>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">
+        <span class="cl-title">B. 每日自查（11–50）</span>
+        <div class="progress"><i id="barB"></i></div>
+        <span id="cntB" style="color:var(--sub);font-size:13px">0 / 0</span>
+        <button class="btn" onclick="window.print()">打印清单</button>
+      </div>
+      <div class="sub-t">｜ 开业前</div>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">11. 后厨地面、墙面、台面清洁无油污、无积水<span class="m-note"> — 防交叉污染</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">12. 三防设施（防蝇/防鼠/防尘）完好有效<span class="m-note"> — 办法 11 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">13. 冷藏冷冻设备温度达标（冷藏 0–8℃、冷冻≤-18℃）并记录<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">14. 原料验收：核对保质期、感官性状，拒收变质/过期/来源不明原料<span class="m-note"> — 食安法 34/55 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">15. 索证索票齐全（每批供货商资质/合格证明），进货查验已登记<span class="m-note"> — 食安法 53 条，保存≥6 月/2 年</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">16. 生熟食品分区、分类、离地离墙存放，无混放<span class="m-note"> — FIFO</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">17. 添加剂专柜（专区）上锁、标识清晰、称量工具专用<span class="m-note"> — 五专</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">18. 餐具饮具经清洗消毒，保洁柜清洁、无破损、未存私物<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">19. 从业人员穿戴清洁衣帽口罩、勤洗手消毒、无长指甲/饰品<span class="m-note"> — 实施条例</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">20. 专间（凉菜/生食/裱花）空气消毒、温度达标（≤25℃）、专人专用工具<span class="m-note"> — 仅售热食米线门店若无此项目可标注 N/A</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">21. 加工容器工具按生/熟/半成品颜色或标识区分，无混用<span class="m-note"> — 防交叉污染</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">22. 净菜/半成品储存标签含名称、时间，先进先出<span class="m-note"> — FIFO</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">23. 食用油、汤底等大宗原料来源可溯、无回收油/地沟油风险<span class="m-note"> — 红线</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">24. 米、面、调料等主粮原料在保质期内，开封后密封防潮<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">25. 灭蝇灯、粘鼠板等清洁有效，无虫害活动迹象<span class="m-note"> — 三防</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">26. 废弃物（餐厨垃圾）容器密闭、日产日清、无外溢<span class="m-note"> — 反食品浪费/卫生</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">27. 水龙头、下水道通畅无堵塞、无异味<span class="m-note"> — 基础卫生</span></span></label>
+      <div class="sub-t">｜ 加工中</div>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">28. 生熟分开加工，生食处理后再处理熟食（或分时段/分工具）<span class="m-note"> — 实施条例 28 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">29. 食品烧熟煮透，中心温度≥70℃（或按品类标准）<span class="m-note"> — 防食物中毒</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">30. 不使用腐败变质/油脂酸败/霉变生虫/混有异物原料<span class="m-note"> — 食安法 34 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">31. 添加剂按 GB 2760 称量使用，无超范围超限量，使用记录签字<span class="m-note"> — 五专·专册</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">32. 凉菜/生食在专间内现做现售，存放≤2 小时（或热藏≥60℃）<span class="m-note"> — 仅涉此项目门店</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">33. 成品与原料、半成品、脏餐具物理隔离，避免交叉污染<span class="m-note"> — 布局防污</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">34. 解冻采用冷藏/流水/微波，不在常温下长时间放置<span class="m-note"> — 防致病菌</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">35. 汤底、卤料等反复使用物料每日煮沸、过滤、记录<span class="m-note"> — 米线门店重点</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">36. 供应前复检成品感官（色香味形），异常立即停供<span class="m-note"> — 出厂检验</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">37. 一次性餐饮具不得重复使用，集中消毒餐具查验留存凭证<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">38. 操作台面、刀具、砧板每班次清洁消毒<span class="m-note"> — 基础卫生</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">39. 员工操作中不面对食品喷嚏/咳嗽，伤口已包扎<span class="m-note"> — 个人卫生</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">40. 外卖/打包容器符合食品级，无污染<span class="m-note"> — 外卖场景</span></span></label>
+      <div class="sub-t">｜ 闭店后</div>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">41. 剩余成品按规范处理（废弃/冷藏/再加热），不隔夜裸露存放<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">42. 剩余原料密封冷藏，标注名称日期，FIFO<span class="m-note"> — 防过期</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">43. 餐具饮具当餐回收、当餐清洗消毒、入保洁柜<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">44. 后厨地面、设备、排烟罩清洁，无食物残渣<span class="m-note"> — 防火+卫生</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">45. 垃圾桶清空、清洗、加盖<span class="m-note"> — 防虫鼠</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">46. 冷藏冷冻设备运行正常，温度记录完整<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">47. 添加剂专柜上锁，剩余归位、台账登记<span class="m-note"> — 五专</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">48. 专间清洁消毒、空气消毒开启记录<span class="m-note"> — 仅涉此项目门店</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">49. 关闭水电气、门窗，防鼠防虫设施复位<span class="m-note"> — 安全</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barB','cntB')"><span class="m-txt">50. 当日进货查验/添加剂使用/温度记录已归档<span class="m-note"> — 可追溯</span></span></label>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">
+        <span class="cl-title">C. 每周自查（51–75）</span>
+        <div class="progress"><i id="barC"></i></div>
+        <span id="cntC" style="color:var(--sub);font-size:13px">0 / 0</span>
+        <button class="btn" onclick="window.print()">打印清单</button>
+      </div>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">51. 全面清洗油烟管道、排烟罩（防火患+卫生）<span class="m-note"> — 周清</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">52. 清洗消毒冰箱/冷库，除霜、清理过期/变质库存<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">53. 检查所有原料保质期，清理临期（设临期专区/提前使用）<span class="m-note"> — 防过期销售</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">54. 核查供应商资质是否过期（许可证/营业执照），更新档案<span class="m-note"> — 食安法 53 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">55. 餐具饮具抽检（洁净度/ATP 或目测），不合格批次重洗<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">56. 紫外线消毒灯强度/时长检查，灯管完好<span class="m-note"> — 专间</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">57. 员工健康证临期排查，安排复检<span class="m-note"> — 食安法 45 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">58. 食安管理员周排查（日管控周排查月调度记录齐全）<span class="m-note"> — 104 号令</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">59. 虫鼠害防治记录核查（消杀报告/自检记录）<span class="m-note"> — 三防</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">60. 废弃物处置台账核查（去向、联单、合规）<span class="m-note"> — 环保</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">61. 留样冰箱清理（仅强制单位）并检查记录完整<span class="m-note"> — 留样 125g/48h</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">62. 水质检测（二次供水/净水设备滤芯更换记录）<span class="m-note"> — 实施条例</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">63. 外卖平台信息核对（证照/地址/名称一致，无幽灵店）<span class="m-note"> — 网络餐饮办法</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">64. 员工洗手消毒设施（洗手液/干手/消毒液）充足有效<span class="m-note"> — 基础卫生</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">65. 工用具消毒柜温度/时间达标<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">66. 自查问题整改闭环（上周问题已验收）<span class="m-note"> — PDCA</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">67. 培训：本周食安要点宣贯（晨会记录）<span class="m-note"> — 食安法 44 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">68. 计量器具（秤/温度计）校准<span class="m-note"> — 添加剂称量</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">69. 消防与食安联动：灭火器/应急演练<span class="m-note"> — 安全</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">70. 顾客投诉/食安事件复盘（如有）<span class="m-note"> — 持续改进</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">71. 食品相关产品（洗涤剂/消毒剂）合格证明在档<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">72. 明厨亮灶设备（如有）正常运行<span class="m-note"> — 透明厨房</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">73. 周报报送总部/区域（连锁体系）<span class="m-note"> — 104 号令总部责任</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">74. 食品添加剂使用量与采购量账实相符核查<span class="m-note"> — 五专</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barC','cntC')"><span class="m-txt">75. 送货车辆/保温箱清洁消毒记录核查<span class="m-note"> — 配送卫生</span></span></label>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">
+        <span class="cl-title">D. 每月自查＋应急（76–100）</span>
+        <div class="progress"><i id="barD"></i></div>
+        <span id="cntD" style="color:var(--sub);font-size:13px">0 / 0</span>
+        <button class="btn" onclick="window.print()">打印清单</button>
+      </div>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">76. 食安月度调度会议（月调度记录，负责人参加）<span class="m-note"> — 104 号令</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">77. 全面盘点原料，清理过期/变质（零过期库存目标）<span class="m-note"> — 食安法 54 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">78. 餐具洗涤剂、消毒剂供应商资质复核<span class="m-note"> — 食安法 56 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">79. 从业人员健康档案更新（新入职/离职/复检）<span class="m-note"> — 食安法 45 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">80. 食安管理员/总监培训证书有效性<span class="m-note"> — 104 号令</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">81. 食安事故应急演练（1 次/季或月）<span class="m-note"> — 食安法 51 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">82. 留样冰箱温度校准（仅强制单位）<span class="m-note"> — 留样</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">83. 添加剂使用量与采购量账实相符核查（月度）<span class="m-note"> — 五专</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">84. 供应商现场或书面评审（质量/交期/资质）<span class="m-note"> — 食安法 53 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">85. 自查制度适用性评审，修订不适用条款<span class="m-note"> — 持续改进</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">86. 顾客满意度/投诉趋势分析，食安改进项<span class="m-note"> — 数据驱动</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">87. 设备设施维护保养记录（冰箱/消毒柜/空调）<span class="m-note"> — 运维</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">88. 法律法规更新跟踪（新公告/标准）<span class="m-note"> — 合规</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">89. 向总部报送月度食安报告（连锁体系）<span class="m-note"> — 104 号令</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">90. 人员手部伤口/皮肤病排查登记<span class="m-note"> — 食安法 45 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">91. 转基因/过敏原（花生/海鲜等）在菜单明示（如有）<span class="m-note"> — 知情权</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">92. 建立食安事故处置方案并张贴（停供/留样封存/上报/就医）<span class="m-note"> — 食安法 51 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">93. 知悉上报渠道：12315/卫健/疾控，重大事件 2 小时内上报<span class="m-note"> — 应急预案</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">94. 发生疑似食源性疾病立即封存留样与可疑食品、保留病历<span class="m-note"> — 证据保全</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">95. 不合格食品召回流程熟记（停售/通知/记录/无害化处理）<span class="m-note"> — 食安法 63 条</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">96. 添加剂「五专」现场随时可查（专柜/专人/专册/专用称量）<span class="m-note"> — 五专</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">97. 反对食品浪费：小份菜/临期提示/适量点餐（反食品浪费法）<span class="m-note"> — 合规</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">98. 制止餐饮浪费标识与培训（反食品浪费法第 28 条）<span class="m-note"> — 合规</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">99. 员工遇索赔先核对小票/监控，不私下赔偿、不销毁证据<span class="m-note"> — 第 148 条防御</span></span></label>
+      <label class="mat"><input type="checkbox" onchange="upd('barD','cntD')"><span class="m-txt">100. 每年至少 1 次全店食安合规审计（含本表 100 条逐条核验）<span class="m-note"> — 闭环</span></span></label>
+    </div>
+
+  </div>
+
+  <!-- 面板 p3：第 148 条 -->
+  <div class="panel" id="p3">
+    <div class="card">
+      <h3>法条原文与关键数字</h3>
+      <h4>《食品安全法》第一百四十八条</h4>
+      <p>第一款（<b>首负责任制</b>）：消费者因不符合食品安全标准的食品受到损害的，可以向经营者要求赔偿损失，也可以向生产者要求赔偿损失。接到消费者赔偿要求的生产经营者，应当实行首负责任制，先行赔付，不得推诿；属于生产者责任的，经营者赔偿后有权向生产者追偿。</p>
+      <p>第二款（<b>惩罚性赔偿</b>）：生产不符合食品安全标准的食品或者<b>经营明知是不符合食品安全标准的食品</b>，消费者除要求赔偿损失外，还可以向生产者或者经营者要求支付<b>价款十倍或者损失三倍的赔偿金</b>；增加赔偿的金额<b>不足一千元的，为一千元</b>。但是，食品的标签、说明书存在<b>不影响食品安全且不会对消费者造成误导的瑕疵的除外</b>。</p>
+      <div class="act"><b>三个硬数字：</b>退一赔十（价款×10）、损失三倍（损失×3）、<b>保底 1000 元</b>。注意「价款十倍」与「损失三倍」是「或」关系，消费者择高主张；实务中低价食品一律落到 1000 元保底。</div>
+    </div>
+
+    <div class="card">
+      <h3>构成要件与实务边界</h3>
+      <table>
+        <thead><tr><th>要点</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>「不符合食品安全标准」</td><td>指《食品安全法》第 26 条列举的标准（致病性微生物、农残、兽药、重金属、污染物质等限量；专供婴幼儿主辅食品营养成分要求；标签/标识/说明书；贮存运输标准等）。过期、变质、来源不明、无证经营、农残超标均属此类。<b>注意：是「安全标准」而非「质量标准」</b></td></tr>
+          <tr><td>经营者「明知」</td><td>惩罚性赔偿以经营者「明知」为要件。过期食品、变质食品实践中多被推定明知；但经营者能证明已尽进货查验义务、不知道所采购食品不符合安全标准且能说明合法来源，可主张免责（最高法食品药品惩罚性赔偿司法解释）。<b>这意味着进货查验留痕是你最重要的免责盾</b></td></tr>
+          <tr><td>标签瑕疵但书</td><td>最高法《关于审理食品药品惩罚性赔偿纠纷案件适用法律若干问题的解释》（2024.8.22 施行）<b>第 8 条</b>明确：标签、说明书出现错别字、多字、漏字、繁体字或者外文翻译不准确，但不会导致消费者对食品安全产生误解的，人民法院对惩罚性赔偿不予支持。即「小瑕疵≠大赔偿」</td></tr>
+          <tr><td>知假买假</td><td>食药领域，明知食品不符合安全标准仍购买，一般不影响索赔（该解释坚持在「合理生活消费需要」范围内支持；明显超出合理生活消费需要的部分，法院可不予支持）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>「最低 1000 元」在实务中怎么用</h3>
+      <p>哪怕只买一瓶 3 元的过期矿泉水，也按 <b>1000 元</b> 赔。职业打假人正是利用这一点：以极小成本撬动固定 1000 元赔偿。叠加「退一赔十」后，购买 200 元食品即触发 2000 元赔偿，远高于货值，形成暴利空间。</p>
+      <h4>职业打假人的常见打法</h4>
+      <table>
+        <thead><tr><th>打法</th><th>操作</th><th>我方识别点</th></tr></thead>
+        <tbody>
+          <tr><td>扫货式购买</td><td>一次性大量购买同款临期/过期食品，拆分多单索赔</td><td>同一顾客、同款多件、多门店同时出现</td></tr>
+          <tr><td>标签边缘索赔</td><td>专盯错别字、繁体、翻译不准等（但 2024 司法解释第 8 条已缩窄）</td><td>索赔理由集中在标签文字、非实质安全问题</td></tr>
+          <tr><td>调包/夹带</td><td>自带过期食品放入货架或混入购物袋，再持小票索赔</td><td>监控缺失、货架无对应批次、小票时间与监控不符</td></tr>
+          <tr><td>小额多店复制</td><td>同一人在品牌多家加盟店复制同样索赔，逼总部统一私了</td><td>跨区域、同模式、短时间内密集出现</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>我方防御 12 招</h3>
+      <div class="anti"><b>核心逻辑：</b>把「是否明知」「食品是否真的不安全」「标签是否实质误导」三道闸门守牢，再用证据链把每一条诉求挡回去。</div>
+      <table>
+        <thead><tr><th>序号</th><th>防御动作</th><th>操作要点</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>进货查验留痕</td><td>索证索票＋进货查验记录＋保存期（≥6 月/2 年）齐全，证明「不明知」；这是最高法司法解释明确的免责盾</td></tr>
+          <tr><td>2</td><td>临期专区＋系统预警</td><td>距保质期 X 天自动停售、下架，严禁过期食品在架</td></tr>
+          <tr><td>3</td><td>每班次保质期巡检</td><td>责任人签字，发现即撤柜；巡检记录可证明已尽管理义务</td></tr>
+          <tr><td>4</td><td>监控全覆盖</td><td>货架/收银/后厨无死角，防调包夹带；遇索赔第一时间调监控固定证据</td></tr>
+          <tr><td>5</td><td>标签合规审核</td><td>中文标签、生产日期、保质期、贮存条件、致敏原、进口检验检疫上线前由品控/法务审</td></tr>
+          <tr><td>6</td><td>内部追偿条款</td><td>采购合同写入：因供应商提供不合格食品导致的惩罚性赔偿，总部/门店有权向供应商追偿</td></tr>
+          <tr><td>7</td><td>积极小额和解</td><td>事实清楚的小额十倍＋1000 尽快和解，避免诉讼＋行政处罚＋声誉扩散（注意：和解不免除行政责任，过期食品仍会被监管处罚）</td></tr>
+          <tr><td>8</td><td>援引瑕疵但书</td><td>对「不影响安全不误导」的标签瑕疵，援引食安法 148 但书＋2024 司法解释第 8 条抗辩</td></tr>
+          <tr><td>9</td><td>异常订单识别</td><td>建立「职业打假人」识别机制（同人多店同款大量购买），统一交法务处置，不私了</td></tr>
+          <tr><td>10</td><td>包装防掉包</td><td>外卖/预包装食品用一次性封签，配送环节不可被掉包</td></tr>
+          <tr><td>11</td><td>员工话术管控</td><td>不承认「这是我们的货」前先核对小票/监控；不私下赔偿、不销毁证据</td></tr>
+          <tr><td>12</td><td>要求对方举证</td><td>索赔方须证明购买事实＋食品不合格（检测报告/实物），我方不轻易自认</td></tr>
+        </tbody>
+      </table>
+      <div class="anti"><b>红线（切勿踩）：</b>不得威胁、骚扰索赔人；不得销毁、篡改监控或记录；和解金额须走正规财务流程并留存凭证；过期食品无论是否和解，都面临监管 5–10 万行政罚款，不能靠私了消除。</div>
+    </div>
+  </div>
+
+  <!-- 面板 p4：外卖环节特殊要求 -->
+  <div class="panel" id="p4">
+    <div class="lead">依据：《网络餐饮服务食品安全监督管理办法》＋《网络餐饮服务经营者落实食品安全主体责任监督管理规定》（总局令第 123 号）＋《食品安全法》。适用所有入网餐饮服务提供者（含加盟门店）及第三方平台。</div>
+
+    <div class="card">
+      <h3>入网经营六大红线</h3>
+      <table>
+        <thead><tr><th>要求</th><th>具体内容</th><th>法条/出处</th><th>违规处罚</th></tr></thead>
+        <tbody>
+          <tr><td>实体门店＋许可</td><td>入网餐饮须具<b>实体经营门店</b>并依法取得食品经营许可，按许可范围经营；不得「幽灵外卖」、套证、借证、异地经营</td><td>《网络餐饮办法》第 4 条</td><td>无证/虚假：责令改正、警告、罚款，情节严重吊销；平台未尽审查依食安法第 131 条罚 5–20 万</td></tr>
+          <tr><td>平台实质性审查</td><td>平台实名登记＋实地/数据核验，每 <b>6 个月</b> 全面核验更新商户信息，审查记录保存 <b>≥2 年</b></td><td>多地市监告诫书/办法</td><td>平台责任：食安法第 131 条 责令改正、没收违法所得、罚 5–20 万；造成严重后果罚 20–50 万、责令停业</td></tr>
+          <tr><td>信息公示＋线上线下一致</td><td>主页显著位置持续公示 营业执照、食品经营许可证、实体门店照片、实际经营地址、主要原料名称；<b>网店名称＝实体门头＝许可证名称一致</b></td><td>《网络餐饮办法》第 9 条</td><td>虚假公示/不一致：责令改正、警告、罚款</td></tr>
+          <tr><td>无堂食标识</td><td>仅外卖商户须在主页及列表页设置「无堂食」标识</td><td>办法/告诫书</td><td>责令改正、警告</td></tr>
+          <tr><td>规范加工</td><td>按《操作规范》加工，<b>不得委托他人代工/转包/分包</b>，不得在许可地址外加工</td><td>《网络餐饮办法》第 10 条</td><td>违规加工：责令改正、警告、罚款；情节严重吊销</td></tr>
+          <tr><td>食安封签＋配送</td><td>使用开启后无法复原的「食安封签」，<b>一餐一封签</b>；配送容器定期清洗消毒，保温/冷藏符合要求；订单信息保存 <b>≥3 年</b></td><td>《网络餐饮办法》第 11/12 条；白银市监</td><td>违规：责令改正、警告、罚款</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>总部（连锁）的外卖合规责任</h3>
+      <div class="act"><b>104 号令口径：</b>连锁总部对全链路食安负责，统一配送、统一管理的，总部对门店线上线下一致性、加工合规性、封签使用承担管理责任。以下动作建议写入加盟合同与运营手册：</div>
+      <ul>
+        <li>门店上线外卖前，总部统一核验「网店名＝门头＝许可证名」「实际地址＝许可地址」，杜绝幽灵外卖；</li>
+        <li>统一要求「一餐一封签」并采购合规封签，纳入门店物料配送；</li>
+        <li>禁止门店将外卖订单转包第三方代工（合同明确违约条款）；</li>
+        <li>总部定期（每 6 个月）复核全网门店证照状态，失效即通知下线；</li>
+        <li>订单数据由总部或平台留存 ≥3 年，作为溯源与争议证据。</li>
+      </ul>
+      <div class="anti"><b>总部红线（重申）：</b>不得通过加盟合同约定「外卖食安责任全部由乙方自负、与甲方无关」——104 号令第 9 条第 4 款禁止，依第 27 条罚 5 万以下。合同只能写「乙方作为食品经营主体承担直接责任」。</div>
+    </div>
+
+    <div class="card">
+      <h3>反食品浪费（外卖场景必做）</h3>
+      <p>《反食品浪费法》要求：在网络平台页面显著位置提示适量点餐，不得诱导、误导消费者超量点餐；鼓励推广「小份菜」「半份菜」。未落实的平台/商户由主管部门责令改正、警告、罚款。</p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // Tab 切换
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  // 清单进度（每 checklist 独立隔离）
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>
