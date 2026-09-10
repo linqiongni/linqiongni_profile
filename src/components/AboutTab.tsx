@@ -26,7 +26,7 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => {
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover filter grayscale contrast-105 transition-all duration-700 hover:grayscale-0 hover:scale-[1.02]"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
               
