@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>餐饮加盟法务总监养成计划 · 16周系统学习路线</title>
+<style>
+:root{
+  --bg:#0e1014; --bg2:#141821; --card:#191d27; --card2:#1f2431;
+  --line:#2a3140; --line2:#3a4354;
+  --tx:#e9e6e1; --tx2:#9fa8b8; --tx3:#6b7688;
+  --gold:#c9a227; --gold2:#d9be4d; --red:#c0392b; --red2:#e05c4a;
+  --jade:#4a9d9c; --blue:#5b87c4; --purple:#8b7bc4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(201,162,39,.07) 0%,transparent 55%),radial-gradient(ellipse at 85% 10%,rgba(74,157,156,.06) 0%,transparent 50%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+.serif{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+
+/* header */
+header{padding:44px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px;position:relative}
+header::after{content:"";position:absolute;left:0;bottom:-1px;width:120px;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.kicker{font-size:12px;letter-spacing:.32em;color:var(--gold);margin-bottom:12px}
+h1{font-size:31px;font-weight:600;letter-spacing:.02em;margin-bottom:12px}
+h1 .accent{color:var(--gold)}
+.sub{color:var(--tx2);font-size:14px;max-width:760px}
+.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 16px;min-width:112px}
+.metric b{display:block;font-size:20px;color:var(--gold);font-weight:600;line-height:1.3}
+.metric span{font-size:11px;color:var(--tx3);letter-spacing:.06em}
+
+/* tabs */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:26px}
+.tab{padding:10px 18px;cursor:pointer;color:var(--tx3);font-size:13.5px;border-bottom:2px solid transparent;transition:.15s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.tab:hover{color:var(--tx2)}
+.tab.on{color:var(--gold);border-bottom-color:var(--gold)}
+.panel{display:none;animation:fade .25s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* generic card */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+
+h2.sec{font-size:19px;margin:34px 0 14px;padding-left:11px;border-left:3px solid var(--gold);font-weight:600}
+h2.sec:first-child{margin-top:0}
+h3{font-size:15px;margin-bottom:9px;color:var(--tx)}
+.muted{color:var(--tx2)}
+.small{font-size:12.5px;color:var(--tx3)}
+
+/* roadmap */
+.rm{display:flex;flex-direction:column;gap:9px}
+.rmrow{display:grid;grid-template-columns:64px 1fr 34px;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:8px;padding:11px 14px;cursor:pointer;transition:.15s}
+.rmrow:hover{background:var(--card2);transform:translateX(3px)}
+.rmrow .wn{font-size:12px;color:var(--tx3);letter-spacing:.05em}
+.rmrow .wt{font-size:14.5px;font-weight:500}
+.rmrow .wg{font-size:12px;color:var(--tx3);margin-top:2px}
+.rmrow .wa{text-align:right;color:var(--tx3);font-size:18px}
+.rmrow.done{opacity:.55}
+.rmrow.done .wt::after{content:" ✓";color:var(--jade)}
+
+/* week nav */
+.wknav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.wkbtn{width:38px;height:34px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--tx2);cursor:pointer;font-size:13px;font-family:inherit;transition:.15s}
+.wkbtn:hover{border-color:var(--line2);color:var(--tx)}
+.wkbtn.on{background:var(--gold);color:#1a1a1a;border-color:var(--gold);font-weight:600}
+.wkbtn.done{position:relative}
+.wkbtn.done::after{content:"";position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:var(--jade)}
+
+.weekhead{background:linear-gradient(135deg,var(--card2),var(--card));border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin-bottom:16px}
+.weekhead .wt{font-size:17px;font-weight:600;margin-bottom:6px}
+.weekhead .wg{font-size:13px;color:var(--tx2)}
+
+/* day card */
+.day{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.dayhd{display:flex;align-items:center;gap:11px;padding:13px 17px;cursor:pointer;transition:.15s}
+.dayhd:hover{background:var(--card2)}
+.dnum{flex:none;width:26px;height:26px;border-radius:5px;background:var(--bg2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);font-weight:600}
+.day.done .dnum{background:var(--jade);color:#0e1014;border-color:var(--jade)}
+.dtitle{flex:1;font-size:14.5px;font-weight:500}
+.day.done .dtitle{color:var(--tx3);text-decoration:line-through}
+.chk{flex:none;width:17px;height:17px;border:1px solid var(--line2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent}
+.day.done .chk{background:var(--jade);border-color:var(--jade);color:#0e1014}
+.caret{flex:none;color:var(--tx3);font-size:11px;transition:.2s}
+.day.open .caret{transform:rotate(90deg)}
+.dbody{display:none;padding:2px 17px 17px;border-top:1px solid var(--line)}
+.day.open .dbody{display:block}
+.blk{margin-top:14px}
+.blk .lb{font-size:11px;letter-spacing:.14em;color:var(--gold);margin-bottom:7px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:12px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px;font-size:13.5px;color:var(--tx)}
+.out b{color:var(--jade);font-weight:500}
+.prbox{background:#0c0e12;border:1px solid var(--line);border-radius:7px;padding:12px 14px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.75;max-height:200px;overflow:auto}
+.prbox::-webkit-scrollbar{width:7px}
+.prbox::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
+.btnrow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{background:var(--card2);border:1px solid var(--line2);color:var(--tx2);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12.5px;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--line);color:var(--tx)}
+.btn.gold{background:var(--gold);color:#12141a;border-color:var(--gold);font-weight:600}
+.btn.gold:hover{background:var(--gold2)}
+.btn.copied{background:var(--jade);color:#0e1014;border-color:var(--jade)}
+
+/* weekend */
+.wknd{background:linear-gradient(135deg,rgba(201,162,39,.09),rgba(74,157,156,.05));border:1px dashed var(--line2);border-radius:10px;padding:18px;margin-top:18px}
+.wknd .lb{font-size:11px;letter-spacing:.14em;color:var(--gold)}
+.wknd h3{font-size:15.5px;margin:8px 0 6px}
+
+/* lib */
+.libitem{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:15px 17px;margin-bottom:10px}
+.libitem .lh{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.tag{flex:none;font-size:10.5px;padding:2.5px 8px;border-radius:4px;background:var(--bg2);border:1px solid var(--line2);color:var(--tx2);letter-spacing:.05em}
+.tag.a{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.tag.b{color:var(--jade);border-color:rgba(74,157,156,.4)}
+.tag.c{color:var(--blue);border-color:rgba(91,135,196,.4)}
+.tag.d{color:var(--purple);border-color:rgba(139,123,196,.4)}
+.tag.e{color:var(--red2);border-color:rgba(224,92,74,.4)}
+
+/* law table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:9px 11px;background:var(--bg2);color:var(--gold);font-weight:500;font-size:12px;letter-spacing:.05em;border-bottom:1px solid var(--line2)}
+td{padding:9px 11px;border-bottom:1px solid var(--line);color:var(--tx2);vertical-align:top}
+tr:hover td{background:var(--card2)}
+td b{color:var(--tx);font-weight:500}
+
+/* checklist */
+.ckgroup{margin-bottom:22px}
+.ckrow{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.ckrow:last-child{border-bottom:none}
+.ckbox{flex:none;width:17px;height:17px;border:1px solid var(--line2);border-radius:4px;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:.15s}
+.ckrow.on .ckbox{background:var(--jade);border-color:var(--jade);color:#0e1014}
+.ckrow.on .cktx{color:var(--tx3);text-decoration:line-through}
+.cktx{font-size:13.5px;color:var(--tx2)}
+.cktx b{color:var(--tx);font-weight:500}
+
+/* progress bar */
+.pbar{height:5px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-top:6px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--jade));transition:.3s}
+.statline{display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-top:5px}
+
+.note{background:rgba(91,135,196,.08);border-left:3px solid var(--blue);border-radius:0 7px 7px 0;padding:12px 15px;font-size:13px;color:var(--tx2);margin:14px 0}
+.note b{color:var(--blue)}
+.warn{background:rgba(224,92,74,.08);border-left:3px solid var(--red2)}
+.warn b{color:var(--red2)}
+footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--tx3);font-size:12px;text-align:center}
+
+/* result block (AI 生成结果，已跑出，无需复制粘贴) */
+.resblk .lb{color:var(--jade)}
+.resbox{display:none;margin-top:10px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;font-size:13.5px;color:var(--tx);max-height:520px;overflow:auto;line-height:1.8}
+.resbox h4{color:var(--gold);font-size:15px;margin:14px 0 8px;font-weight:600}
+.resbox h4:first-child{margin-top:0}
+.resbox p{margin:8px 0;color:var(--tx2)}
+.resbox b{color:var(--tx);font-weight:600}
+.resbox ul.foc li{color:var(--tx2)}
+.resbox table th{position:sticky;top:0}
+.resbox .small{color:var(--tx3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">CHINA FRANCHISE LEGAL · 餐饮连锁法务</div>
+  <h1 class="serif">餐饮加盟 <span class="accent">法务总监</span> 养成计划</h1>
+  <div class="sub">面向「蒙自源」式中式快餐 / 米线连锁（直营 + 加盟 + 统采统配）的法务总监能力模型，16 周系统训练，80 个工作日 + 16 个周末实战项目。每天一个主题、一份产出物、一条可直接复制的指令。</div>
+  <div class="metrics">
+    <div class="metric"><b>16</b><span>周 / 4 阶段</span></div>
+    <div class="metric"><b>80</b><span>个工作日主题</span></div>
+    <div class="metric"><b>16</b><span>个周末实战</span></div>
+    <div class="metric"><b>90</b><span>分钟 / 天</span></div>
+    <div class="metric"><b>42</b><span>部核心法规</span></div>
+    <div class="metric"><b>118</b><span>条现成指令</span></div>
+    <div class="metric"><b>12</b><span>份交付成果</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab on" data-p="road">学习路线</button>
+  <button class="tab" data-p="daily">每日计划</button>
+  <button class="tab" data-p="lib">指令库</button>
+  <button class="tab" data-p="law">法规库</button>
+  <button class="tab" data-p="check">能力自检</button>
+  <button class="tab" data-p="how">怎么用</button>
+</div>
+
+<!-- 路线图 -->
+<section class="panel on" id="road">
+  <h2 class="sec">四阶段能力跃迁</h2>
+  <div class="grid g2" id="stages"></div>
+
+  <h2 class="sec">16 周路线图（点任意一周跳转当日计划）</h2>
+  <div class="rm" id="rmlist"></div>
+
+  <h2 class="sec">每日学习时间盒（90 分钟标准节奏）</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:110px">时段</th><th style="width:80px">时长</th><th>动作</th></tr>
+      <tr><td><b>晨读 · 输入</b></td><td>25 min</td><td>按当日指令让 AI 输出法条拆解 / 判例摘要，边读边在笔记里画出「条文 → 业务动作」的映射</td></tr>
+      <tr><td><b>午间 · 判例</b></td><td>20 min</td><td>研读 1-2 个真实判例，只记三件事：争议焦点、裁判要旨、对我方的条款启示</td></tr>
+      <tr><td><b>晚间 · 输出</b></td><td>35 min</td><td>写当日产出物（条款 / 清单 / 备忘录 / 意见书）。<b>没有输出的一天等于没学</b></td></tr>
+      <tr><td><b>睡前 · 复盘</b></td><td>10 min</td><td>勾选进度 + 用一句话写下「今天哪个点能直接用在蒙自源」</td></tr>
+    </table>
+    <div class="note"><b>节奏可调：</b>时间紧 → 只做「晨读 25 min + 输出 15 min」；周末补实战。每周至少 4 天，允许断档，但<b>不要断两周</b>——知识链一断，前面的判例积累就废了。</div>
+  </div>
+
+  <h2 class="sec">知识地图</h2>
+  <div class="card" style="overflow-x:auto">
+    <svg viewBox="0 0 980 520" style="width:100%;min-width:900px;height:auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c9a227"/><stop offset="1" stop-color="#d9be4d"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="980" height="520" fill="none"/>
+      <!-- center -->
+      <ellipse cx="490" cy="262" rx="94" ry="46" fill="#1f2431" stroke="#c9a227" stroke-width="1.5"/>
+      <text x="490" y="255" text-anchor="middle" fill="#d9be4d" font-size="16" font-family="Songti SC,serif">餐饮加盟法务</text>
+      <text x="490" y="276" text-anchor="middle" fill="#c9a227" font-size="13" font-family="Songti SC,serif">特许人（总部）立场</text>
+
+      <!-- 8 branches -->
+      <g font-size="13" font-family="-apple-system,PingFang SC,sans-serif">
+        <!-- L1 -->
+        <path d="M400 240 Q300 210 210 130" stroke="#2a3140" fill="none"/>
+        <rect x="66" y="80" width="150" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="141" y="102" text-anchor="middle" fill="#e9e6e1">商业特许经营三件套</text>
+        <text x="141" y="128" text-anchor="middle" fill="#6b7688" font-size="11">条例·备案·信披办法</text>
+        <!-- L2 -->
+        <path d="M400 255 Q290 265 195 262" stroke="#2a3140" fill="none"/>
+        <rect x="46" y="245" width="150" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="121" y="267" text-anchor="middle" fill="#e9e6e1">商标与经营资源</text>
+        <text x="121" y="293" text-anchor="middle" fill="#6b7688" font-size="11">43/35类·授权链·商业秘密</text>
+        <!-- L3 -->
+        <path d="M400 275 Q295 320 205 388" stroke="#2a3140" fill="none"/>
+        <rect x="55" y="372" width="150" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="130" y="394" text-anchor="middle" fill="#e9e6e1">招商与广告合规</text>
+        <text x="130" y="420" text-anchor="middle" fill="#6b7688" font-size="11">广告法·新反法·话术红线</text>
+        <!-- L4 -->
+        <path d="M430 305 Q360 400 300 452" stroke="#2a3140" fill="none"/>
+        <rect x="196" y="440" width="150" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="271" y="462" text-anchor="middle" fill="#e9e6e1">门店租赁与办证</text>
+        <text x="271" y="488" text-anchor="middle" fill="#6b7688" font-size="11">消防·排烟·食营许可</text>
+
+        <!-- R1 -->
+        <path d="M580 240 Q680 210 770 130" stroke="#2a3140" fill="none"/>
+        <rect x="700" y="80" width="206" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="803" y="102" text-anchor="middle" fill="#e9e6e1">特许经营合同体系</text>
+        <text x="803" y="128" text-anchor="middle" fill="#6b7688" font-size="11">11项必备条款·冷静期·区域保护</text>
+        <!-- R2 -->
+        <path d="M580 255 Q690 265 785 262" stroke="#2a3140" fill="none"/>
+        <rect x="700" y="245" width="206" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="803" y="267" text-anchor="middle" fill="#e9e6e1">食品安全与供应链</text>
+        <text x="803" y="293" text-anchor="middle" fill="#6b7688" font-size="11">食安法·25年餐饮新规·供货</text>
+        <!-- R3 -->
+        <path d="M580 275 Q685 320 775 388" stroke="#2a3140" fill="none"/>
+        <rect x="700" y="372" width="206" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="803" y="394" text-anchor="middle" fill="#e9e6e1">争议解决与判例</text>
+        <text x="803" y="420" text-anchor="middle" fill="#6b7688" font-size="11">冷静期·虚假宣传·撤店</text>
+        <!-- R4 -->
+        <path d="M550 305 Q620 400 680 452" stroke="#2a3140" fill="none"/>
+        <rect x="620" y="440" width="206" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="723" y="462" text-anchor="middle" fill="#e9e6e1">用工·数据·预付卡</text>
+        <text x="723" y="488" text-anchor="middle" fill="#6b7688" font-size="11">门店用工·个保法·单用途卡</text>
+      </g>
+
+      <!-- 底部横轴 -->
+      <line x1="240" y1="60" x2="240" y2="490" stroke="none"/>
+      <rect x="380" y="30" width="220" height="1" fill="none"/>
+      <text x="490" y="36" text-anchor="middle" fill="#6b7688" font-size="11" font-family="Songti SC,serif">全链路：招商 → 签约 → 开店 → 运营 → 退出</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 每日计划 -->
+<section class="panel" id="daily">
+  <div class="wknav" id="wknav"></div>
+  <div id="weekbox"></div>
+</section>
+
+<!-- 指令库 -->
+<section class="panel" id="lib">
+  <div class="note"><b>指令库使用法：</b>8 个通用模板是「万能插槽」，把 <code>【】</code> 里的变量换成当周主题即可反复使用。22 条场景指令是高频实战场景的固定打法，可直接复制。所有指令都默认带角色前缀（蒙自源法务总监视角）。</div>
+  <div id="libbox"></div>
+</section>
+
+<!-- 法规库 -->
+<section class="panel" id="law">
+  <h2 class="sec">核心法规清单（36 部 · 按模块）</h2>
+  <div class="note"><b>提示：</b>标注「必精读」的 9 部要做到能脱稿定位条、款、项；「常备查阅」做到知道在哪查、解决什么问题；「了解」知道存在即可。学习时优先查国家法律法规数据库（flk.npc.gov.cn）核对现行有效版本。</div>
+  <div id="lawbox"></div>
+</section>
+
+<!-- 自检 -->
+<section class="panel" id="check">
+  <h2 class="sec">法务总监能力自检清单</h2>
+  <div class="small muted" style="margin-bottom:16px">每完成一个阶段回头打勾。全部打满 = 具备餐饮连锁法务总监的实战能力底座。</div>
+  <div id="ckbox"></div>
+
+  <h2 class="sec">四个里程碑考核</h2>
+  <div class="grid g2" id="msbox"></div>
+
+  <h2 class="sec">学习结束后你应该拥有的「法务工具箱」</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:60px">#</th><th style="width:230px">成果物</th><th>说明</th></tr>
+      <tr><td>1</td><td><b>《特许经营合同（特许人版）》</b></td><td>含 11 项法定必备条款 + 冷静期 + 区域保护 + 终止后义务，附带 6 个附件</td></tr>
+      <tr><td>2</td><td><b>《信息披露文件》</b></td><td>12 项法定披露内容全覆盖 + 回执 + 保密协议</td></tr>
+      <tr><td>3</td><td><b>《备案合规材料包》</b></td><td>两店一年证明、市场计划书、操作手册目录、承诺书本</td></tr>
+      <tr><td>4</td><td><b>《招商物料合规审查清单》</b></td><td>话术红黄线表、广告法禁用词库、审核 SOP</td></tr>
+      <tr><td>5</td><td><b>《餐饮门店租赁合同审查清单》</b></td><td>40 项，含排烟排污、办证配合、撤场补偿</td></tr>
+      <tr><td>6</td><td><b>《门店食品安全合规手册》</b></td><td>+ 事故应急预案与危机处置流程</td></tr>
+      <tr><td>7</td><td><b>《统采统配供货框架协议》</b></td><td>+ 供应商准入评分表 + 廉洁协议</td></tr>
+      <tr><td>8</td><td><b>《门店用工合规指引》</b></td><td>用工模式对比、工伤处置、员工手册模板</td></tr>
+      <tr><td>9</td><td><b>《预付卡与会员数据合规方案》</b></td><td>单用途卡备案、资金存管、数据归属与退出处理</td></tr>
+      <tr><td>10</td><td><b>《品牌保护年度方案》</b></td><td>监测 + 取证 + 投诉 + 诉讼 + 刑民交叉的完整打法</td></tr>
+      <tr><td>11</td><td><b>《加盟纠纷应诉手册》</b></td><td>四类高发纠纷的抗辩要点与证据清单</td></tr>
+      <tr><td>12</td><td><b>《法务总监上任 90 天工作方案》</b></td><td>结业项目，可直接用于面试 / 述职</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 怎么用 -->
+<section class="panel" id="how">
+  <h2 class="sec">这套计划怎么用（最重要的一页）</h2>
+
+  <h3 style="font-size:16px;color:var(--gold);margin-bottom:10px">一、每天的固定动作</h3>
+  <div class="card" style="margin-bottom:18px">
+    <table>
+      <tr><th style="width:50px">步</th><th style="width:130px">动作</th><th>怎么做</th></tr>
+      <tr><td>1</td><td><b>打开当天卡片</b></td><td>在「每日计划」里点开周数 → 展开第 N 天</td></tr>
+      <tr><td>2</td><td><b>点「复制指令」</b></td><td>整段指令已自动拼好角色前缀，粘贴到对话框直接发送</td></tr>
+      <tr><td>3</td><td><b>读 + 追问</b></td><td>AI 输出后，用「追问三板斧」：<br>· 「这条在米线加盟场景里会怎么触发？举个真实例子」<br>· 「如果我是加盟商律师，我会怎么攻这个点？」<br>· 「给我一个能直接写进合同的条款版本」</td></tr>
+      <tr><td>4</td><td><b>产出物落地</b></td><td>把当日「产出物」写成一个文件，存进 <code>D:\lins\法律学习\餐饮加盟\产出物\</code>，按周建文件夹</td></tr>
+      <tr><td>5</td><td><b>勾选进度</b></td><td>点卡片右上角方框，进度自动保存在本地浏览器</td></tr>
+    </table>
+  </div>
+
+  <h3 style="font-size:16px;color:var(--gold);margin-bottom:10px">二、让学习效率翻倍的 5 条铁律</h3>
+  <div class="card" style="margin-bottom:18px">
+    <div class="foc">
+      <li><b>先立场后法条。</b>每次学新法条，先问「这条在保护谁、在限制谁」，再问「站在总部我怎么用它、怎么防它」。加盟法律的天花板是立场切换能力。</li>
+      <li><b>判例比法条重要。</b>法条告诉你规则，判例告诉你法院真的怎么判。每天至少读 1 个判例，重点记「裁判要旨」那一段。</li>
+      <li><b>输出才叫学会。</b>看懂 ≠ 会写。每天的产出物必须是可交付的文档形态，能直接发给老板看。</li>
+      <li><b>建立自己的条款库。</b>每条学到的好条款，存进一个《条款库.md》。16 周后你会积累 200+ 条，这是你真正的护城河。</li>
+      <li><b>每月做一次对抗演练。</b>让 AI 扮演加盟商律师，你来应对。被问倒的地方就是知识缺口，立刻补。</li>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;color:var(--gold);margin-bottom:10px">三、给 AI 的「追问三板斧」（建议存成快捷指令）</h3>
+  <div class="card" style="margin-bottom:18px">
+    <div class="prbox" id="axe1" style="max-height:none">刚才的内容，请继续按这三步给我补充：
+1. 【场景化】把它放进一个真实的米线加盟纠纷里演一遍：谁违约、谁主张、证据是什么、法院可能怎么判
+2. 【反向推演】现在切换立场，你是加盟商请的律师，请列出你会攻击的三个点，并给出最狠的一招
+3. 【条款落地】把结论写成可直接放进《商业特许经营合同》的条款文本，给出甲方倾向版和平衡版两个版本</div>
+    <div class="btnrow"><button class="btn gold" data-copy="axe1">复制追问指令</button></div>
+  </div>
+
+  <h3 style="font-size:16px;color:var(--gold);margin-bottom:10px">四、推荐的信息源</h3>
+  <div class="card">
+    <table>
+      <tr><th style="width:150px">类型</th><th>来源</th></tr>
+      <tr><td><b>法条原文</b></td><td>国家法律法规数据库 flk.npc.gov.cn（唯一权威）；商务部商业特许经营信息管理系统 txjy.syggs.mofcom.gov.cn（备案查询、备案企业名单）</td></tr>
+      <tr><td><b>判例检索</b></td><td>中国裁判文书网、人民法院案例库（rmfyalk）、北大法宝 / 威科先行（如有）</td></tr>
+      <tr><td><b>审判指引</b></td><td>《北京市高级人民法院关于审理商业特许经营合同纠纷案件适用法律若干问题的指导意见》、上海高院《关于审理特许经营合同纠纷案件若干问题的解答》——这两份是加盟纠纷裁判的实质规则，务必精读</td></tr>
+      <tr><td><b>行业动态</b></td><td>商务部服贸司、市场监管总局、中国连锁经营协会（CCFA）年度报告、中国烹饪协会</td></tr>
+      <tr><td><b>行政处罚案例</b></td><td>信用中国、各地市场监管局行政处罚公示——看别人怎么被罚，是最快的风控教材</td></tr>
+    </table>
+  </div>
+
+  <div class="note warn" style="margin-top:20px"><b>一个提醒：</b>这套计划以「特许人（品牌总部）立场」为主线，因为你要做的是蒙自源的法务总监。但真正的高手必须能随时切到加盟商视角——所有条款你都要能预判对方怎么打。每周的「反向推演」环节不要跳过。</div>
+</section>
+
+<footer>餐饮加盟法务总监养成计划 · 进度保存在本地浏览器 · 2026</footer>
+</div>
+
+<script>
+const ROLE = "你是一位有15年经验的连锁餐饮集团法务总监，同时是商业特许经营领域的资深律师。\n" +
+"我的身份定位：我是「蒙自源」这一类云南米线连锁品牌（直营+加盟混合，全国数百家门店，有中央厨房、统采统配供应链，加盟商以个体工商户和小微企业为主）的准法务总监，正在系统学习餐饮加盟法律实务。\n\n" +
+"输出要求（每次都必须遵守）：\n" +
+"1. 默认站在特许人（品牌总部）立场分析，但必须同时提示加盟商视角的反制点\n" +
+"2. 法条引用精确到「法律名称 + 条 + 款 + 项」，注明现行有效版本；已废止或修订的必须标明\n" +
+"3. 每个法律结论都要落到餐饮（米线/快餐/小吃）加盟的真实业务场景，给出可执行的动作\n" +
+"4. 删除所有客套话、免责声明和「建议咨询专业律师」这类废话\n" +
+"5. 涉及金额、期限、比例时给具体数字，不要说「合理」\n\n";
+
+const WEEKS = [
+{w:1,th:"行业认知与法律全景（地基周）",goal:"建立行业坐标系和法律全景图，先搞清楚法务总监到底要管什么、这门生意的钱从哪来、风险从哪来",
+ wk:{t:"周末实战①：对标品牌加盟模式与法律风险初判报告",d:"选一个对标品牌（蒙自源 / 和府捞面 / 老乡鸡 / 杨国福 / 张亮麻辣烫任选其一），查它的公开信息（官网、招商页、裁判文书、行政处罚、商标公告、备案信息），写一份 2000 字报告：它的加盟模式是什么、收入结构怎么设计、公开可见的法律风险点有哪些、如果是你会先修哪里。",
+ p:"我要研究对标品牌【蒙自源】。请用公开的合规视角，帮我搭一份《对标品牌加盟模式与法律风险初判报告》的框架，并按框架给出你可以确认的通用分析：\n\n1. 加盟模式识别：它是直营为主、加盟为主，还是托管/联营？判断依据是什么\n2. 收入结构拆解：加盟费、保证金、管理费（固定/流水抽成）、供应链差价、设备物料、培训费、设计费——各自的法律定性与退费风险\n3. 公开可见的法律风险：从特许人资质、备案、商标布局、招商话术、门店纠纷、食安处罚六个维度，列出该查什么、在哪查、怎么看\n4. 给出一份《对标品牌风险初判表》模板（风险点/线索来源/严重度/如果是我会先修哪项）\n5. 最后告诉我：这类中式快餐品牌最致命的三个法律软肋通常是什么"},
+ d:[
+ {t:"餐饮加盟商业模式解剖：这门生意的钱与权",
+  f:["五种扩张模式对比：直营、特许加盟、托管联营、内部合伙、区域代理——法律关系的本质差异","单店模型与总部收入结构：加盟费/保证金/管理费/供应链差价/设备物料，每一笔的法律定性","加盟商画像：个体工商户 vs 公司，为什么这个选择会影响后面所有条款设计"],
+  o:"一份《加盟模式对比表》+ 标注出总部每一笔收入对应的<b>法律定性</b>与<b>退费风险等级</b>",
+  p:"我要从法务视角彻底搞懂餐饮加盟这门生意。请给我：\n\n1. 五种扩张模式（直营、特许加盟、托管联营、内部合伙、区域代理/分特许）的法律关系本质对比表：主体、协议名称、控制权归属、用工主体、食安责任主体、税务处理、典型风险\n2. 拆解一个米线加盟品牌的全部收入项，每一项标注：法律定性（加盟费/保证金/服务费/货款）、是否可退、退费争议高发度（高/中/低）、法院通常怎么判\n3. 加盟商选择「个体工商户」还是「有限责任公司」签约，对总部而言各有什么利弊？给出总部的推荐选择和理由\n4. 最后给我一张《总部收入与法律风险对照图》（用文字描述）"},
+ {t:"法律全景图：餐饮加盟到底受多少部法管",
+  f:["核心三件套：《商业特许经营管理条例》+《备案管理办法》（2023版）+《信息披露管理办法》","相邻法域：民法典合同编、商标法、反不正当竞争法（2025修订）、广告法、食品安全法、消费者权益保护法","支撑法域：劳动合同法、个人信息保护法、电子商务法、单用途商业预付卡管理办法、反垄断法"],
+  o:"一张自己画的<b>《餐饮加盟法律全景图》</b>（手绘或思维导图都可），要求能一眼看出哪部法管哪个环节",
+  p:"请帮我梳理餐饮加盟的完整法律体系，输出《餐饮加盟法律全景图》：\n\n1. 按「业务链路 × 法律部门」做一张二维表：招商获客 / 签约 / 选址开店 / 供应链 / 日常运营 / 品牌保护 / 退出终止，每个环节列出管它的法律名称和关键条款号\n2. 标出核心三件套：《商业特许经营管理条例》（国务院令485号）、《商业特许经营备案管理办法》、《商业特许经营信息披露管理办法》，说明它们的层级关系和适用顺序\n3. 特别提示：哪些是2025年前后新修订的、需要按新规执行的（我知道的有《餐饮业促进和经营管理办法》2025.6.15施行、《反不正当竞争法》2025.10.15施行），请帮我核对并补充其他近期新规\n4. 最后给出：如果只能先精通 5 部法，应该选哪 5 部，为什么"},
+ {t:"判例入门：加盟纠纷长什么样",
+  f:["特许经营合同纠纷的案由分布与高发类型","裁判趋势：冷静期退费、信息披露不实、虚假宣传三类占绝大多数","两份审判指引：北京高院指导意见、上海高院解答——这是实质裁判规则"],
+  o:"一份<b>《加盟纠纷类型图谱》</b>：列出 8 类高发纠纷，每类写清原告诉求、常见裁判结果、我方败诉原因",
+  p:"我要建立对加盟纠纷的直觉。请给我：\n\n1. 《加盟纠纷类型图谱》：列出至少 8 类高发纠纷（冷静期退费、信息披露不实、虚假宣传/投资回报承诺、未提供持续支持、区域保护争议、保证金不退、撤店欠费、供应链价格争议），每类写清：原告诉求、常见裁判结果、我方败诉原因\n2. 重点解读两份审判指引的核心规则：《北京市高级人民法院关于审理商业特许经营合同纠纷案件适用法律若干问题的指导意见》和上海高院《关于审理特许经营合同纠纷案件若干问题的解答》——它们的规则要点和差异\n3. 告诉我：法院在判断「信息披露不实能否解除合同」时，那个关键的「实质影响标准」到底怎么把握，举 2 个走向相反的案例\n4. 检索建议：在裁判文书网用什么关键词、什么案由能高效找到这类判例"},
+ {t:"法务总监岗位画像：我要成为什么样的人",
+  f:["法务总监 vs 法务经理 vs 法务专员：能力分水岭在商业判断和风险管理，不是法条熟练度","餐饮连锁法务的组织定位：汇报线、团队配置、与外部律师的分工","KPI 怎么定：从「合同审了多少份」变成「损失减少了多少」"],
+  o:"一份<b>《我的法务总监能力差距表》</b>：现状自评 vs 目标要求，标出 3 个最需要补的短板",
+  p:"我要对标餐饮连锁法务总监这个岗位。请给我：\n\n1. 能力模型拆解：法务总监 / 法务经理 / 法务专员在「法条功底、商业理解、风险决策、跨部门推动、外部资源管理、团队管理」六个维度上的能力分水岭，做成对比表\n2. 一个数百家门店的餐饮连锁企业，法务部通常怎么配人？汇报给谁（CEO/ CFO/ 董事会）？和外部律师怎么分工？法务预算大概什么量级\n3. 法务总监的 KPI 应该怎么定？请给出 6 个真正有价值的指标（不是「审了多少份合同」这种），以及每个指标的计算方式\n4. 最后：从「现在」到「能胜任」，请帮我列一份能力差距自查表，包含 20 个具体问题，我逐项自评"},
+ {t:"复盘与自测：第 1 周知识固化",
+  f:["把前 4 天的产出物汇编成《学习手册·第1章》","用费曼检验：能否用大白话给一个加盟商讲清楚「为什么要备案」","自测：10 道题检验本周吸收率"],
+  o:"《学习手册·第1章：行业与法律全景》<b>定稿</b> + 自测成绩",
+  p:"本周学习结束，请对我做一次严格检验：\n\n1. 出 10 道题（单选 5 道 + 场景案例 3 道 + 简答 2 道），覆盖本周内容：加盟模式法律定性、收入项法律风险、核心三件套、加盟纠纷类型、法务总监能力模型\n2. 我作答后请逐题批改，错的要讲透，并告诉我这个点在实务中会怎么坑到我\n3. 给我一道「费曼检验题」：如果我要给一个新签约的加盟商用 3 分钟讲清楚「总部为什么要备案、这对他意味着什么」，该怎么讲？给我一份口语化的讲稿\n4. 最后给我下周学习的 3 条提醒"
+ }]},
+
+{w:2,th:"商业特许经营管理条例（上）：主体资格与备案",goal:"吃透特许人准入门槛。这是加盟法律的地基——主体不合规，合同可能无效，罚款 10-50 万",
+ wk:{t:"周末实战②：为一家公司做「两店一年 + 备案」合规体检",d:"虚构或选用一家准备开放加盟的餐饮公司（比如：成立 2 年，有 3 家直营店，商标在第 9 类之外的 43 类已注册，其中 1 家直营店是老板妻子名下的个体户）。做一份完整的备案合规体检：能不能备案、缺什么材料、怎么补、时间表和责任人。",
+ p:"请以商务主管部门审核员的视角，帮我做一份《商业特许经营备案合规体检报告》：\n\n设定：公司成立 2 年，有 3 家门店（A、B 为分公司，C 为老板配偶名下的个体工商户，经营同一品牌），第 43 类商标已注册在老板个人名下，拟开放加盟。\n\n请输出：\n1. 「两店一年」认定：哪些门店能算？C 门店（个体工商户）能否计入，需要什么证明材料？认定时间点怎么算\n2. 主体资格：公司成立日期是否有要求？商标在个人名下怎么办，需要什么授权文件、授权书里必须含什么条款\n3. 完整备案材料清单（按商务主管部门要求逐项列，标注哪些容易卡壳）\n4. 《备案合规体检表》：项目/现状/结论（达标·整改·不达标）/整改措施/责任人/时限\n5. 备案时间表：从启动到拿到备案号，最快多久，关键路径是什么\n6. 如果暂时不满足条件就先签了加盟合同，会有什么后果？给我 3 个真实感强的后果场景"},
+ d:[
+ {t:"条例第 1-6 条精读：什么是特许经营",
+  f:["第3条定义拆解：经营资源 + 统一经营模式 + 支付特许经营费，三个要素缺一不可","第7条：成熟经营模式 + 持续提供服务能力——这是「能力门槛」不是「形式门槛」","第3条第2款：企业以外的其他单位和个人不得作为特许人——效力性强制性规定"],
+  o:"逐条笔记 + 一份<b>《特许经营三要素自查表》</b>（可用于内部培训）",
+  p:"请逐条精读《商业特许经营管理条例》（国务院令第485号）第 1-6 条，每条按这个结构输出：\n\n【条文要点】/【立法目的】/【对特许人的合规要求】/【餐饮加盟场景下的常见踩坑】/【我的落地动作】\n\n重点讲透：\n1. 第 3 条「特许经营」定义的三个构成要件。请举 3 个边界案例让我判断：只授权商标不收加盟费算不算？收加盟费但不管控经营算不算？企业内部员工持股开店算不算？\n2. 第 3 条第 2 款为什么说它是「效力性强制性规定」？违反后合同无效的司法认定现状（是不是一律无效？有没有例外？）\n3. 最后给我一份《特许经营三要素自查表》，能直接拿去给招商部做培训"},
+ {t:"「两店一年」深度拆解：8 种直营店形态",
+  f:["第7条第2款原文：拥有至少 2 个直营店且经营时间超过 1 年","可计入的直营店形态：分公司、持股51%以上子公司、持股51%以上母公司及其子公司、股东配偶的个体工商户、店中店、委托投资店","经营时间怎么算：不同形态起算点不同（成立日期 / 持股时间 / 租赁履行时间）"],
+  o:"《两店一年认定规则表》+ 一份<b>《直营店证明材料清单》</b>",
+  p:"请深度拆解《商业特许经营管理条例》第 7 条第 2 款的「两店一年」规则：\n\n1. 完整列出实务中可被认定为「直营店」的全部形态（我知道的有分公司、子公司、母公司及其子公司、控股股东配偶的个体工商户、店中店、委托投资设立店、特殊行业的无实体店情形），每种说明：认定条件、需提交的证明材料、经营时间的起算点\n2. 「经营时间超过 1 年」在不同形态下分别怎么计算？举 3 个算错的踩坑例子\n3. 请特别讲清楚：控股股东配偶的个体工商户这条路，实操中商务部门认不认？各地口径有差异吗？需要哪些证明材料（我知道要特许人营业执照、股权结构证明、个体工商户营业执照、夫妻关系证明）\n4. 不具备两店一年就开展特许经营的后果：行政处罚是什么？签订的加盟合同效力如何？请给出法院的主流裁判观点和少数观点\n5. 最后给我一份《直营店证明材料清单》（可直接交给行政去准备）"},
+ {t:"备案实务：15 天时限、材料清单、变更与年报",
+  f:["第8条：首次订立合同之日起 15 日内备案；跨省向省级商务主管部门备案","备案材料 12 项：市场计划书、操作手册目录、首份合同、合同样本、经营资源证书等","持续义务：工商信息/经营资源/店铺分布变化 30 日内变更；每年 3 月 31 日前报上一年度合同情况"],
+  o:"《备案材料准备清单》+《备案后持续合规日历》",
+  p:"请给我一份可以直接执行的《商业特许经营备案操作手册》：\n\n1. 备案管辖：省内 vs 跨省 vs 境外特许人，分别向谁备案？（注意现在很多省份已委托下放到设区市，请提示我核对当地最新口径）\n2. 时限：首份特许经营合同订立之日起 15 日。逾期了怎么办？《逾期备案说明书》怎么写才不会被卡\n3. 完整材料清单（结合《备案管理办法》2023版的口径），每项标注：原件/复印件、是否加盖公章、常见退改原因\n4. 备案后的持续义务做成一张年度合规日历：什么时间节点要做什么（30日变更、3月31日年报等），漏了罚多少\n5. 给我一份《备案进度跟踪表》模板\n6. 披露一个实务细节：备案时提交的「特许经营操作手册目录」有什么要求？手册本身要不要提交？"},
+ {t:"罚则全景：违反条例要罚多少钱",
+  f:["第24条：不具备两店一年 / 企业以外主体从事特许经营 → 责令改正、没收违法所得、10-50 万罚款并公告","第25条：未备案 → 责令限期备案、1-5 万罚款；逾期仍不备案 → 5-10 万并公告","第26条：信息披露违规 → 1-5 万，情节严重 5-10 万；第27条：广告含收益宣传 → 3-10 万，严重 10-30 万"],
+  o:"《特许经营行政处罚风险速查表》——按违法行为、法条依据、罚款区间、是否公告排列",
+  p:"请系统梳理《商业特许经营管理条例》第五章的全部法律责任条款（第24-29条），输出《特许经营行政处罚风险速查表》：\n\n表格列：违法行为 / 法条依据 / 处罚机关 / 处罚内容（罚款区间、是否没收违法所得、是否公告）/ 触发频率（基于你的实务经验判断高/中/低）/ 我方的内部防控动作\n\n另外请补充：\n1. 实务中被罚最多的三种情形是什么？请结合近年公开行政处罚案例说明\n2. 「情节严重」在实践中怎么认定？\n3. 一旦被立案调查，我作为法务总监的标准应对流程是什么？给我一份《行政调查应对 SOP》（接案→取证→陈述申辩→听证→复议诉讼）\n4. 罚款之外，被「公告」对企业意味着什么？这个次生损失怎么评估"},
+ {t:"复盘：特许人主体合规准入体系",
+  f:["把 W2 四天的产出物整合成一套准入体系","自测：10 道题","用一句话说清：什么情况下一份加盟合同会因为主体问题而无效"],
+  o:"<b>《特许人主体合规准入检查表》</b>（定稿，可直接用于新项目评估）",
+  p:"第 2 周结束，请帮我做知识固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2），覆盖：特许经营三要素、两店一年、备案时限与材料、罚则金额、主体不合规的合同效力\n2. 错题要讲透，并关联到我未来会遇到的具体场景\n3. 帮我整合本周产出物，形成一份完整的《特许人主体合规准入检查表》：分「主体资格」「经营资源」「直营店」「备案」「持续合规」五个模块，每模块列出检查项、判断标准、证据材料、风险等级\n4. 最后：请给我一个判断口诀——什么情况下一份加盟合同会因为主体资格问题被认定无效？什么情况下只是行政违法但合同有效？这个区分在实务中极其关键"
+ }],
+ wk:{t:"周末实战②：为一家公司做「两店一年 + 备案」合规体检",d:"虚构或选用一家准备开放加盟的餐饮公司（比如：成立 2 年，有 3 家直营店，43 类商标已注册但在老板个人名下）。做一份完整的备案合规体检：能不能备案、缺什么材料、怎么补、时间表和责任人。",
+ p:"请以商务主管部门审核员的视角，帮我做一份《商业特许经营备案合规体检报告》：\n\n设定：公司成立 2 年，有 3 家门店（A、B 为分公司，C 为老板配偶名下的个体工商户，经营同一品牌），第 43 类商标已注册在老板个人名下，拟开放加盟。\n\n请输出：\n1. 「两店一年」认定：哪些门店能算？C 门店（个体工商户）能否计入？需要什么证明材料？认定时间点怎么算\n2. 主体资格：公司成立日期有要求吗？商标在个人名下怎么办？授权书里必须含什么条款（提示：再许可权）\n3. 完整备案材料清单（标注哪些容易卡壳）\n4. 《备案合规体检表》：项目/现状/结论（达标·整改·不达标）/整改措施/责任人/时限\n5. 备案时间表：从启动到拿到备案号最快多久，关键路径是什么\n6. 如果暂时不满足条件就先签了加盟合同，会有什么后果？给我 3 个真实感强的后果场景"}},
+
+{w:3,th:"条例（下）：信息披露、冷静期与持续义务",goal:"掌握加盟法律最核心的两个制度。冷静期和信息披露是 80% 加盟纠纷的引爆点，也是法务最能创造价值的地方",
+ wk:{t:"周末实战③：完成一份《信息披露文件》+ 冷静期条款三版本",d:"产出一份完整的信息披露文件框架（12 项法定内容全覆盖，每项写清要披露什么、怎么披露、证据怎么留），并起草冷静期条款的严格版/平衡版/宽松版三个版本，说明各自适用场景与风险。",
+ p:"我要产出一份真正能用的《商业特许经营信息披露文件》。请帮我：\n\n1. 按《条例》第22条 + 《信息披露管理办法》第五条，逐项列出 12 项法定披露内容，每一项给出：\n   · 具体要披露什么（写到能直接填的程度）\n   · 餐饮加盟场景下这一项最容易出问题的地方\n   · 需要准备哪些支撑材料\n   · 证据留存方式（怎么证明我披露过）\n2. 帮我起草配套文件：\n   · 《信息披露回执》（关键在于措辞——要让加盟商确认「已充分知悉」，但不能写成格式条款免除我方责任）\n   · 《保密协议》（信息披露前的必备动作）\n3. 起草「冷静期条款」三个版本：\n   · 严格版（对总部最有利，但要考虑会不会被认定格式条款无效）\n   · 平衡版（推荐）\n   · 宽松版（竞争激烈区域招商用）\n   每版说明：期限、退费比例、行使方式、法律效力风险\n4. 最后给我一份《信息披露操作流程 SOP》：什么时点披露（30日提前期怎么算）、谁交付、怎么留痕、信息变化后怎么更新"},
+ d:[
+ {t:"信息披露：12 项法定内容与 30 日提前期",
+  f:["第22条 + 信披办法第5条：12 项披露内容全覆盖","时点：订立合同之日前至少 30 日，书面形式","形式要件：先签保密协议 → 交付披露文件 → 签署回执，三步缺一不可"],
+  o:"《信息披露 12 项内容分解表》——每项写清披露什么、备什么材料、怎么留痕",
+  p:"请精读《商业特许经营管理条例》第 21-23 条和《商业特许经营信息披露管理办法》，给我一份能直接落地的《信息披露 12 项内容分解表》：\n\n表格列：序号 / 法定披露事项 / 具体要披露什么（细化到可执行）/ 餐饮场景下的特殊注意事项 / 支撑材料 / 证据留存方式 / 常见披露瑕疵\n\n另外重点讲清楚：\n1. 「订立合同之日前至少 30 日」这个 30 日怎么算？如果签了意向书、收了意向金，起算点是哪个？\n2. 「书面形式」包括邮件、微信吗？实务中怎么交付最稳妥\n3. 第 8 项「特许经营网点投资预算」——这一项怎么披露才不会变成日后被指控「虚假宣传」的证据？给我一份投资预算披露的范本结构和措辞建议\n4. 第 10 项「最近 5 年诉讼仲裁情况」——披露到什么颗粒度？如果案子很小要不要披露？不披露的风险有多大"},
+ {t:"信息披露不实的民事后果：撤销与解除的司法认定",
+  f:["核心标准：「实质影响标准」——隐瞒/虚假信息是否对合同目的实现产生实质影响","北京高院指导意见 vs 上海高院解答：规则要点与差异","举证责任分配：加盟商要证明什么，总部要反证什么"],
+  o:"《信息披露瑕疵败诉风险清单》——列出最容易导致败诉的 10 类披露瑕疵",
+  p:"我要搞懂信息披露不实到底会导致什么民事后果。请给我：\n\n1. 系统梳理：加盟商主张「信息披露不实」后，可以走哪几条路？（撤销合同 / 解除合同 / 索赔），各自的构成要件、法律依据、法律效果、诉讼时效/除斥期间\n2. 重点讲透「实质影响标准」：\n   · 北京高院和上海高院的规则原文要点\n   · 法院考量的具体因素有哪些\n   · 举 4 个案例：2 个认定构成实质影响（支持解除/撤销）、2 个认定不构成\n   · 给我一个判断清单：什么级别的披露瑕疵会翻车，什么级别不会\n3. 举证责任怎么分配？总部要怎么证明自己「已经披露且披露真实」？我的证据体系该怎么搭\n4. 最后给我《信息披露瑕疵败诉风险清单》：最容易导致败诉的 10 类瑕疵，按危险程度排序，每类给出补救方案"},
+ {t:"冷静期（第 12 条）：单方解除权的设计与防守",
+  f:["第12条原文：特许人和被特许人应当在特许经营合同中约定，被特许人在合同订立后一定期限内，可以单方解除合同","冷静期的性质：法定要求约定的条款，不是任意约定","期限设计、退费规则、行使方式——三个变量怎么组合对总部最有利"],
+  o:"冷静期条款三版本 +《冷静期纠纷应对手册》",
+  p:"请深度拆解《商业特许经营管理条例》第 12 条的冷静期制度：\n\n1. 法条性质：它是「必须约定」还是「任意约定」？如果合同里完全没写冷静期条款，法律后果是什么？加盟商还能不能单方解除？（请给出主流裁判观点 + 我要的防守策略）\n2. 冷静期条款的三个变量设计：\n   · 期限（几天最合适？写太长和太短各有什么风险）\n   · 退费规则（全额退/扣比例/扣实际支出，哪种在诉讼中最站得住）\n   · 行使方式（书面通知？是否需要经过总部同意？）\n   每个变量给出 3 个方案和对总部的利弊分析\n3. 给我 3 个完整的条款版本（严格/平衡/宽松），可直接放进合同\n4. 防守角度：总部在冷静期内该做什么、不该做什么？给我一份《冷静期纠纷应对手册》（含高频争议点：加盟商已培训/已选址/已进货后能否全额退？）\n5. 关键问题：冷静期条款会不会被认定为「排除对方主要权利的格式条款」而无效？怎么草拟才安全"},
+ {t:"第 13-15 条：合同必备条款、操作手册、推广费",
+  f:["第13条：合同应当采用书面形式，11 项必备条款（第11条）","第14条：提供特许经营操作手册 + 持续提供经营指导、技术支持、业务培训","第15条：推广宣传费按约定用途使用，使用情况应及时披露"],
+  o:"《特许经营合同 11 项必备条款对照表》+《持续服务义务证据留存清单》",
+  p:"请精读《商业特许经营管理条例》第 11、13、14、15 条，给我：\n\n1. 《特许经营合同 11 项必备条款对照表》：每一项的法定要求 / 我方的草拟要点 / 缺了会怎样 / 常见争议点\n   特别注意第 4 项「经营指导、技术支持、业务培训的具体内容和提供方式」——这项怎么写才能既满足法定要求，又不给自己挖坑（写太细=做不到就违约，写太粗=被认定未尽披露/义务）\n2. 第 14 条「持续提供服务」义务：\n   · 什么叫「持续」？法院怎么判断总部是否履行了\n   · 总部未提供持续服务，加盟商能主张什么？判决通常怎么判（退多少加盟费）\n   · 给我一份《持续服务义务证据留存清单》——每次培训、督导、巡店要留什么证据、怎么留、存多久\n3. 第 15 条推广宣传费：\n   · 收取方式（单独收 vs 含在管理费里）哪种更稳\n   · 「按约定用途使用」怎么做账、怎么向加盟商披露\n   · 如果加盟商质疑「钱花哪了」，我的应对方案\n4. 操作手册：它是合同义务还是商业秘密载体？给加盟商纸质版还是系统权限？各有什么法律考量"},
+ {t:"复盘：信息披露与冷静期作战手册",
+  f:["整合本周产出物","自测 10 题","核心问题：如何从制度上把「冷静期 + 信息披露」这两个最大雷区变成总部的护城河"],
+  o:"<b>《加盟签约前合规作战手册》</b>（披露 + 冷静期 + 留痕，三合一）",
+  p:"第 3 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：12 项披露内容、30日提前期、实质影响标准、冷静期变量设计、11 项必备条款、持续服务义务\n2. 给我一道综合案例题：\n   「某加盟商签约后第 10 天提出解除，理由：总部未披露其 3 年前一起加盟纠纷诉讼、且招商时口头承诺月流水 30 万。已收加盟费 12 万、保证金 5 万，已培训 3 天、已协助选址（未签约）。\n   问：(1) 加盟商能走哪几条路？(2) 各自成立概率？(3) 我方最优应对方案？(4) 该退多少钱？\n   请给出完整分析，我写完后你批改并给出你的满分答案」\n3. 帮我整合本周产出，形成《加盟签约前合规作战手册》目录结构\n4. 最后：从制度设计角度，怎样把信息披露和冷静期从「风险点」变成「总部的竞争优势」？（提示：合规做得好的品牌，招商转化率和存活率都更高）"
+ }],
+ wk:{t:"周末实战③：完成《信息披露文件》+ 冷静期条款三版本",d:"产出一份完整的信息披露文件框架（12 项法定内容全覆盖），并起草冷静期条款的严格版/平衡版/宽松版三个版本，说明各自适用场景与风险。",
+ p:"我要产出一份真正能用的《商业特许经营信息披露文件》。请帮我：\n\n1. 按《条例》第22条 + 《信息披露管理办法》第五条，逐项列出 12 项法定披露内容，每一项给出：具体要披露什么 / 餐饮场景下的特殊注意事项 / 需要哪些支撑材料 / 证据留存方式\n2. 起草配套文件：\n   · 《信息披露回执》（措辞要确认「已充分知悉」，但不能构成免除我方责任的格式条款）\n   · 《保密协议》（披露前的必备动作）\n3. 起草「冷静期条款」三个版本（严格/平衡/宽松），每版说明：期限、退费比例、行使方式、法律效力风险\n4. 给我一份《信息披露操作流程 SOP》：什么时点披露（30日提前期怎么算）、谁交付、怎么留痕、信息变化后怎么更新"}},
+
+{w:4,th:"商标与经营资源：加盟体系最值钱的资产",goal:"搞懂「凭什么让人加盟」——经营资源是特许经营的核心标的，资源有瑕疵，整个体系崩塌",
+ wk:{t:"周末实战④：《商标与经营资源合规整改方案》",d:"以蒙自源（或自拟品牌）为对象，做一份经营资源盘点与整改方案：核心商标在第几类、有没有防御商标、注册人是谁、授权链是否完整、还有哪些资源可以纳入特许经营资源体系。",
+ p:"请帮我做一份《商标与经营资源合规整改方案》：\n\n设定品牌：一家云南米线连锁，主打「XX源」品牌，全国 300+ 门店（直营 80 + 加盟 220），有中央厨房和统采统配。\n\n请输出：\n1. 商标布局体检：\n   · 餐饮连锁必须注册的核心类别清单（我知道 43 类餐饮住宿、35 类特许经营管理是必备，请补充其他关键类别并说明理由：29/30 类食品、21 类餐具、25 类服装、16 类包装、9 类软件、39 类物流等）\n   · 防御商标策略：近似商标、跨类防御、字号防御，各要花多少钱、值不值\n   · 未注册 / 注册中的补救方案\n2. 授权链体检：商标注册人与特许人不是同一主体时怎么办？需要什么文件？「允许再许可」条款为什么必须写？许可备案的效力\n3. 非商标类经营资源的挖掘与固化：企业标志、著作权（VI/装修/菜单/插画）、专利（设备/包装）、专有技术（配方/工艺）、商业秘密（供应商名单/运营数据）、域名与自媒体账号\n4. 输出《经营资源盘点表》+《整改路线图》（分紧急/重要/常规三级）"},
+ d:[
+ {t:"商标布局：餐饮连锁必须占住的类别",
+  f:["核心类别：43 类（餐饮住宿）是命根子，35 类（特许经营管理、替他人推销）是加盟的通行证","防御类别：29/30（食品）、21（餐具）、25（服装）、16（包装）、39（物流配送）、9（软件/小程序）","注册策略：主商标 + 防御商标 + 联合商标，字号与商标一体化"],
+  o:"《餐饮连锁商标注册类别清单》+ 一份<b>《商标注册进度跟踪表》</b>",
+  p:"请给我一份餐饮连锁的《商标注册布局方案》：\n\n1. 核心类别表：列出餐饮连锁必须注册的类别，每项标注：类别号、类别名称、具体商品/服务项目（写到规范的商品名称）、为什么必须注册、不注册的具体后果\n   我知道 43 类和 35 类是必备，请重点讲透 35 类「特许经营管理」这个服务项目——为什么没有它就不能做加盟？实务中怎么选项目？\n2. 防御类别：按优先级排序，说明哪些必防、哪些可选、预算分别多少\n3. 商标命名与显著性：哪些名字注册不了（直接描述性、地名、行业通用词）？给我 5 个「米线品类」的命名风险实例\n4. 注册流程与周期：从申请到下证多久？在「注册中」状态能不能开放加盟？风险有多大？怎么补救（提示：受理通知书 + 著作权登记证组合）\n5. 给我一份《商标注册进度跟踪表》模板"},
+ {t:"商标权属与授权链：最容易出事的死角",
+  f:["商标注册人与特许人主体不一致的处理：独占许可 + 允许再许可 + 许可备案","授权链断裂的后果：加盟商主张特许人无权授权、合同目的无法实现","许可期限与商标续展：授权期限不能超过商标注册有效期"],
+  o:"《商标授权文件包》——独占许可协议 + 允许再许可条款 + 许可备案材料清单",
+  p:"我要彻底搞清商标授权链。请帮我：\n\n1. 场景分析：商标注册在老板个人名下 / 关联公司名下 / 母公司名下，特许人是另一家公司——这三种情况分别怎么处理？各需要什么文件？\n2. 起草一份《商标独占使用许可协议》，必须包含：\n   · 独占性条款\n   · 「允许特许人再许可给被特许人」的明确表述（这是备案通过的必要条件）\n   · 许可期限（注意不能超过注册有效期）\n   · 续展义务与费用承担\n   · 商标被异议/撤三/无效时的处理\n   · 违约与赔偿\n3. 商标使用许可备案：向谁备案？不备案有什么后果（能不能对抗善意第三人）？需要什么材料？\n4. 给我一个「授权链断裂」的真实案例：加盟商以「总部无权授权商标」为由要求解除合同，法院怎么判？总部怎么输的？\n5. 最后给我一份《商标授权合规检查清单》"},
+ {t:"未注册商标与「注册中」商标的风险敞口",
+  f:["商标未注册就做加盟：行政处罚风险 + 民事上可能构成「经营资源瑕疵」","受理通知书的法律效力：能不能作为经营资源用于备案与加盟","商标被提「撤三」「无效宣告」的应对"],
+  o:"《商标风险敞口评估报告》+《商标被抢注/被无效的应急预案》",
+  p:"请帮我评估商标瑕疵的风险敞口：\n\n1. 三种危险状态：\n   · 完全未注册\n   · 已申请未下证（只有受理通知书）\n   · 已下证但处于异议/撤三/无效宣告程序中\n   每种状态下：能不能备案？能不能签加盟合同？加盟合同的效力？行政处罚风险？给我一个风险评级表\n2. 「受理通知书 + 著作权登记证书」这个补救组合，实务中商务部门认不认？法院认不认？请给出具体依据和实操建议\n3. 商标被抢注怎么办：异议、无效宣告、撤三，各自的时限、成本、成功率\n4. 商标被提「撤三」（连续三年不使用）：我需要准备什么使用证据？给我一份《商标使用证据留存清单》（餐饮场景下的具体证据类型：门店招牌照、外卖平台截图、发票、合同等）\n5. 给我一份《商标突发事件应急预案》：商标被异议/被抢注/被无效时，法务的 72 小时行动清单"},
+ {t:"非商标类经营资源：把护城河挖宽",
+  f:["企业标志与装潢：有一定影响的商品名称、包装、装潢——反不正当竞争法保护","著作权：VI 系统、门店设计、菜单、插画、培训视频——登记 + 权属约定","专有技术与商业秘密：配方、工艺、供应商名单、运营数据——保密体系"],
+  o:"《经营资源清单与权利状态表》+《商业秘密保护制度（框架）》",
+  p:"请帮我梳理商标之外的经营资源体系：\n\n1. 逐类讲解并给出固化方案：\n   · 企业标志与特有装潢（有一定影响的标识，受《反不正当竞争法》保护）\n   · 著作权（VI、门店设计图、菜单设计、插画、培训视频、小程序界面）\n   · 专利（包装、设备、外观设计）\n   · 专有技术与商业秘密（配方、工艺、供应链数据、门店运营数据）\n   · 域名、新媒体账号、小程序\n   每类说明：法律保护依据 / 权利怎么取得 / 权属怎么约定（特别是委托设计、委托开发的情形）/ 加盟授权时怎么写\n2. 商业秘密的三要件（秘密性、价值性、保密性）——在加盟场景下最难的是「保密性」，请给我一套可落地的保密措施清单\n3. 委托第三方设计 VI 时，著作权归谁？合同不写会怎样？给我一份权属条款范本\n4. 输出《经营资源清单与权利状态表》模板：资源名称/类型/权利凭证/权利人/是否授权给特许人/权利期限/风险状态\n5. 给我一份《商业秘密保护制度》框架（可直接用于公司发文）"},
+ {t:"复盘：经营资源体系化",
+  f:["整合本周产出，形成经营资源全景","自测 10 题","核心判断：什么样的经营资源组合，才撑得起一个可持续的加盟体系"],
+  o:"<b>《经营资源合规管理手册》</b>（定稿）",
+  p:"第 4 周结束（第一阶段收官），请帮我：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：商标类别、35类特许经营管理、授权链、受理通知书效力、撤三应对、非商标资源、商业秘密三要件\n2. 综合案例：\n   「某米线品牌第 43 类商标在创始人个人名下，35 类未注册，已开放加盟 2 年共 60 家店。现在要融资，投资人做尽调。\n   问：(1) 尽调会指出哪些问题？(2) 严重程度排序？(3) 整改方案与时间表？(4) 这 60 家加盟合同有什么隐患？\n   我先答，你批改并给满分答案」\n3. 第一阶段总结：请帮我梳理前 4 周的知识体系，输出一张《第一阶段知识结构图》（文字版）\n4. 最后：一个可持续的加盟体系，经营资源的「最低配置」和「理想配置」分别是什么？给我两个清单"
+ }],
+ wk:{t:"周末实战④：《商标与经营资源合规整改方案》",d:"以蒙自源（或自拟品牌）为对象，做一份经营资源盘点与整改方案：核心商标在第几类、有没有防御商标、注册人是谁、授权链是否完整、还有哪些资源可纳入特许经营资源体系。",
+ p:"请帮我做一份《商标与经营资源合规整改方案》：\n\n设定品牌：一家云南米线连锁，全国 300+ 门店（直营 80 + 加盟 220），有中央厨房和统采统配。\n\n请输出：\n1. 商标布局体检：餐饮连锁必须注册的核心类别清单（43 类餐饮住宿、35 类特许经营管理为必备，请补充其他关键类别并说明理由）+ 防御商标策略 + 未注册/注册中的补救方案\n2. 授权链体检：商标注册人与特许人不是同一主体时怎么办？「允许再许可」条款为什么必须写？许可备案的效力\n3. 非商标类经营资源的挖掘与固化：企业标志、著作权、专利、专有技术、商业秘密、域名与自媒体账号\n4. 输出《经营资源盘点表》+《整改路线图》（分紧急/重要/常规三级）"}},
+/*__W5_8__*/
+{w:5,th:"招商获客合规：把住入口这道关",goal:"招商是风险入口。80% 的加盟纠纷，源头都在招商环节说过的话、承诺过的收益",
+ wk:{t:"周末实战⑤：审查一套模拟招商物料，出具合规审查意见书",d:"写一套含违法话术的模拟招商物料（招商手册 + 招商会 PPT 大纲 + 短视频脚本 + 销售话术），然后自己做法务审查，标出所有违规点并改写。",
+ p:"我要做一次招商物料的实战审查。请先帮我生成一套「带雷」的模拟招商物料（你故意埋入 12-15 处违法违规问题），然后我来做审查。\n\n物料包括：\n1. 招商手册（品牌介绍、投资预算、收益测算、扶持政策）\n2. 招商会 PPT 大纲（20 页）\n3. 短视频投放脚本（30 秒）\n4. 销售话术 Q&A（10 组高频问答）\n\n第一步：请生成这套物料，并在每处违规点后面用【⚠埋雷】标注但不说明原因\n第二步：我审查后，请给我标准答案——每一处违规点对应的：违反的法律条文、可能的处罚、正确改写版本\n第三步：给我一份《招商物料合规审查清单》（可复用于日常审核），按审查维度组织：绝对化用语 / 收益承诺 / 数据引证 / 资质展示 / 商标标识 / 特许人信息 / 风险提示 / 免责声明"},
+ d:[
+ {t:"广告法与投资回报承诺：招商话术的红线",
+  f:["条例第17条：特许人在推广宣传活动中不得有欺骗、误导行为，广告中不得含宣传被特许人从事特许经营活动收益的内容——这是加盟专属红线","广告法第9条绝对化用语、第28条虚假广告、第4条广告真实性","违反后果：条例第27条罚 3-10 万，严重 10-30 万；广告法另罚；民事上构成欺诈 → 撤销合同"],
+  o:"<b>《招商话术红黄线表》</b>——红线（绝对不能说）/ 黄线（需加限定条件）/ 绿线（安全表述），每类至少 20 条",
+  p:"我要给招商部做一次话术合规培训。请给我：\n\n1. 精读《商业特许经营管理条例》第 17 条、第 27 条 + 《广告法》相关条款，讲透「不得宣传被特许人从事特许经营活动收益」这条红线：\n   · 什么算「收益宣传」？写「月流水 30 万」算吗？写「回本周期 8 个月」算吗？写「日均 800 单」算吗？展示一家真实门店的营业额算吗？\n   · 「投资预算」和「收益测算」的边界在哪\n   · 违反的行政后果 + 民事后果（欺诈撤销）\n2. 给我一份《招商话术红黄线表》：\n   · 红线（绝对禁止，20 条）：如「稳赚不赔」「零风险」「月入十万」「总部包盈利」\n   · 黄线（需加限定条件，15 条）：如「品牌知名度领先」需注明数据来源、「回本快」需说明测算假设\n   · 绿线（安全替代表述，20 条）：每句红线话术对应的合规替代说法\n3. 广告法禁用词库（绝对化用语清单）\n4. 最后：招商人员口头说的和物料写的，法律责任一样吗？口头承诺怎么取证、怎么防范"},
+ {t:"招商物料合规审查：手册、PPT、短视频、朋友圈",
+  f:["不同载体的合规要点：印刷品 vs 视频 vs 社交媒体的差异","必须展示的信息：特许人名称、备案情况、注册商标、风险提示","数据引证：营业额、门店数、增长率必须有真实合法依据"],
+  o:"《招商物料合规审查清单》+《招商物料必备要素清单》",
+  p:"请给我一套完整的《招商物料合规审查操作手册》：\n\n1. 按载体分类的审查要点表：招商手册 / 官网与落地页 / 招商会 PPT / 短视频与直播 / 朋友圈与社群 / 户外与电梯广告 / 第三方招商平台。每种列出：特殊合规要求、高频违规点、审查重点\n2. 《招商物料必备要素清单》：哪些信息是法律要求必须展示的？（提示：特许人真实名称和标记——参考《上海市消费者权益保护条例》第26条这类地方性要求；还有哪些地方性规定要求标明特许人与被特许人关系）\n3. 数据引证合规：\n   · 「300+ 门店」「单店日均营业额 X 元」这类数据需要什么证明？\n   · 引用第三方数据（如行业协会报告）的要求\n   · 数据过期、门店已关闭但仍在宣传的风险\n4. 给我一份《招商物料审核 SOP》：谁提审 → 法务审什么 → 多久出意见 → 修改后复审 → 归档留痕。附《物料审核意见表》模板\n5. 直播招商的特殊风险：主播即兴发挥说了违规话术怎么办？事前事中事后怎么控"},
+ {t:"新《反不正当竞争法》（2025.10.15 施行）与招商竞争",
+  f:["混淆行为扩张：新媒体账号名称、APP 图标、搜索关键词、将他人商标作字号——新增为混淆","虚假宣传：误导对象从消费者扩展到「消费者和其他经营者」；不得通过虚假评价帮他人虚假宣传","商业诋毁：不得指使他人实施；对象从「竞争对手」扩展到「其他经营者」"],
+  o:"《新反法对照表》（新旧条文对比）+《招商场景下的反法风险清单》",
+  p:"2025 年 6 月 27 日修订通过、2025 年 10 月 15 日施行的新《反不正当竞争法》，条文从 33 条增至 41 条。请帮我：\n\n1. 做一张「新旧条文对照表」，聚焦对餐饮连锁最相关的部分：\n   · 混淆行为（第7条）：新增新媒体账号名称/APP名称图标、将他人注册商标作字号、搜索关键词、帮助他人实施混淆\n   · 虚假宣传：误导对象扩展、虚假评价\n   · 商业诋毁：指使他人、对象扩展为其他经营者\n   · 商业贿赂：增加受贿方责任\n   · 新增：数据权益侵害、滥用平台规则恶意交易、平台不得低于成本价强制\n   · 法律责任：约谈制度、赔偿计算方式、罚款上限调整\n2. 结合餐饮加盟场景，给我《招商竞争合规风险清单》：\n   · 招商时对比竞品（「比 XX 品牌强」）的风险\n   · 用竞品品牌名做搜索关键词投放的风险\n   · 「XX 品牌倒闭了」这类话术的风险\n   · 雇佣水军刷好评/差评的风险\n3. 新法下如果我方是被侵权方（别人仿冒我们的品牌），新法给了我什么新武器？\n4. 给我一份内部培训材料提纲（10 页 PPT 的内容要点），用于给招商部讲新反法"},
+ {t:"招商全流程合规：从线索到签约",
+  f:["线索获取：个人信息保护法的合规要求（表单、SDK、第三方数据）","意向金/定金：性质、退还规则、与加盟费的衔接","签约会流程：信息披露交付、冷静期告知、签约录像、主体核验"],
+  o:"《招商全流程合规节点图》+《意向金/定金规则说明》",
+  p:"请帮我梳理从「获取线索」到「正式签约」的全流程合规：\n\n1. 画出流程节点（用文字描述流程），每个节点标注：业务动作、法律性质、合规要求、必备文件、风险点\n   节点包括：广告投放 → 线索收集 → 邀约到访 → 参观直营店/中央厨房 → 意向洽谈 → 收取意向金/定金 → 信息披露 → 30日等待期 → 选址评估 → 签约会 → 付款 → 培训 → 开业筹备\n2. 重点讲透「意向金/定金」：\n   · 写「定金」和「意向金」法律后果完全不同（定金罚则）\n   · 加盟商反悔，要不要退？什么情况下可以不退？\n   · 转成加盟费怎么衔接？\n   · 给我三套条款版本（可退型/锁定型/中间型）及各自风险\n3. 签约会的合规设计：\n   · 信息披露回执、冷静期告知书、风险提示书——三份文件怎么签\n   · 要不要录像？录像怎么用\n   · 加盟商是公司的话，要不要股东连带担保？\n4. 给我一份《签约会文件包清单》和《签约会流程脚本》"},
+ {t:"复盘：招商阶段风险地图",
+  f:["整合本周产出","自测 10 题","核心产出：一张招商阶段风险地图，能贴在市场部墙上"],
+  o:"<b>《招商阶段合规手册》</b>（定稿，含话术表、审查清单、流程 SOP）",
+  p:"第 5 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：条例17条红线、广告法绝对化用语、新反法混淆行为、意向金定金、信息披露时点\n2. 综合案例：\n   「招商经理在微信群向 20 个意向客户发了：『总部承诺 6 个月回本，做不到全额退款』『我们品牌是米线品类第一』『已有 500 家店，无一家亏损』。其中一人签约后经营失败，起诉要求撤销合同并全额退款，提交了群聊截图。\n   问：(1) 招商经理的话能不能归责于总部？(2) 构成欺诈吗？(3) 虚假宣传的行政后果？(4) 我方最优应对？(5) 事发后怎么止损？\n   我先答，你批改并给满分答案」\n3. 帮我整合本周产出，形成《招商阶段合规手册》目录\n4. 最后给我一张「招商阶段风险地图」：把风险点标注在业务流程上，标出高风险区（红色）、中风险区（黄色）和我方的控制点"
+ }],
+ wk:{t:"周末实战⑤：审查一套模拟招商物料，出具合规审查意见书",d:"让 AI 生成一套含违法话术的模拟招商物料（招商手册 + PPT 大纲 + 短视频脚本 + 销售话术），你做法务审查，标出所有违规点并改写。",
+ p:"我要做一次招商物料的实战审查。请先生成一套「带雷」的模拟招商物料（故意埋入 12-15 处违法违规问题），然后我来做审查。\n\n物料包括：1. 招商手册（品牌介绍、投资预算、收益测算、扶持政策）2. 招商会 PPT 大纲（20 页）3. 短视频投放脚本（30 秒）4. 销售话术 Q&A（10 组）\n\n第一步：请生成这套物料，并在每处违规点后面用【⚠埋雷】标注但不说明原因\n第二步：我审查后，请给我标准答案——每一处违规点对应的：违反的法律条文、可能的处罚、正确改写版本\n第三步：给我一份《招商物料合规审查清单》（可复用于日常审核），按审查维度组织：绝对化用语 / 收益承诺 / 数据引证 / 资质展示 / 商标标识 / 特许人信息 / 风险提示 / 免责声明"}},
+
+{w:6,th:"特许经营合同（一）：主体、授权与费用",goal:"动手起草合同。这周产出合同的前半部——把主体、授权、费用、披露条款全部落地",
+ wk:{t:"周末实战⑥：完成《特许经营合同（特许人版）》前半部",d:"完成合同第 1-4 章全文：总则与主体、授权条款、费用与结算、信息披露与陈述保证。要求每一条都能扛住加盟商律师的攻击。",
+ p:"我要起草《商业特许经营合同（特许人版）》的前半部。请逐章给我完整条款文本：\n\n第一章 总则与主体\n· 合同主体条款（含加盟商主体类型、共同签约人、担保人）\n· 定义与解释（关键术语统一口径：特许经营资源、门店、商圈、营业额等）\n\n第二章 特许经营授权\n· 授权内容（商标、标志、专利、专有技术、经营模式的完整列举）\n· 授权性质（普通许可 / 排他 / 独占，餐饮加盟应该用哪种？为什么？）\n· 授权区域（怎么描述才不会产生区域争议？给我区域图的约定方式）\n· 授权期限（不少于 3 年的法定要求与续约机制）\n· 分特许/再授权禁止\n\n第三章 特许经营费用\n· 加盟费（一次性，不退的情形怎么写才有效）\n· 保证金（用途、扣划、补足、退还条件与期限）\n· 管理费（固定 vs 流水抽成，抽成基数是营业额还是毛利？怎么核实？）\n· 推广宣传费（单独列账、使用与披露）\n· 设备物料款、培训费、设计费\n· 发票与税务、逾期付款违约金\n\n第四章 信息披露与陈述保证\n· 信息披露条款（把已披露事实合同化）\n· 双方的陈述与保证\n· 冷静期条款（用我上周定稿的平衡版）\n\n每条请给出【条款文本】+【起草说明：为什么这么写、防的是什么风险】。不要写空话条款，每条都要可执行。"},
+ d:[
+ {t:"合同主体与签约结构",
+  f:["加盟商主体选择：个体工商户 vs 有限责任公司的利弊与总部推荐","共同签约人与连带责任：实际经营人、配偶、股东要不要一起签","担保设计：保证期间、保证方式（连带）、保证范围"],
+  o:"《合同主体条款范本》+《主体审查清单》",
+  p:"请帮我设计特许经营合同的主体条款：\n\n1. 加盟商主体类型对比：个体工商户 / 个人独资企业 / 有限责任公司 / 合伙企业，从「责任承担、税务、诉讼主体、执行难度、注销成本」五个维度对比，给出总部的推荐方案及理由\n2. 餐饮加盟实务中，加盟商多为个体户，但实际控制人往往另有其人。请设计：\n   · 「共同签约人」条款（实际经营人作为共同乙方）\n   · 「连带责任保证」条款（股东或配偶担保）\n   · 给我完整的条款文本\n3. 主体审查：签约前必须核验什么？给我《加盟商主体审查清单》（营业执照、经营者身份、征信、涉诉、经营能力、资金来源）\n4. 特殊情形：\n   · 加盟商用了别人的名义签约（借名开店）怎么办？\n   · 加盟后转让股权/变更经营者，我方要不要同意权？\n   · 加盟商是夫妻，离婚时门店怎么处理？\n5. 给我一份《签约主体风险提示表》"},
+ {t:"授权条款：范围、性质、区域、期限",
+  f:["第11条第2项：特许经营的内容、期限——法定必备条款","授权性质：餐饮加盟必须用普通许可，给独占/排他等于自缚手脚","区域保护：区域怎么界定、保护到什么程度、违约怎么赔——这是加盟商最在意的条款"],
+  o:"《授权条款三版本》+<b>《区域保护条款范本》</b>（含 3 种保护强度）",
+  p:"请帮我设计特许经营合同的授权条款：\n\n1. 授权内容条款：怎么把「经营资源」完整列举？（商标注册号、标志、专利号、专有技术、经营模式、手册、系统）给我完整条款文本\n2. 授权性质：普通许可 / 排他许可 / 独占许可的区别，为什么餐饮加盟应该用普通许可？给我法条依据和实务理由\n3. 授权区域条款——这是加盟商最在意、争议最多的条款。请深入：\n   · 区域怎么描述？（行政区域 / 商圈 / 半径距离 / 具体地址）各有什么坑\n   · 保护强度的三个档次：强保护（独家商圈，我方不得开店也不得授权他人）/ 中保护（我方可以开直营但不能授权第三方）/ 弱保护（仅承诺不在 X 米内授权第三方）\n   · 每档给我完整条款文本 + 适用场景 + 我方风险\n   · 区域保护被违反时，加盟商能主张什么？违约金怎么设？法院支持吗？\n   · 外卖平台的配送范围算不算「区域」？（这是餐饮特有的大问题）\n4. 授权期限：不少于 3 年的法定要求（第11条相关规则）怎么理解？到期续约的条款怎么设计？续约要不要再收费？\n5. 给我一份《区域保护条款设计决策表》"},
+ {t:"费用条款：每一笔钱怎么收才稳",
+  f:["加盟费：性质是一次性对价，什么情况下可以不退（关键在合同怎么写）","保证金：用途、扣划程序、补足义务、退还条件","管理费：固定 vs 流水抽成，抽成基数与核实机制（POS 数据、外卖平台数据）"],
+  o:"《费用条款全套范本》+《费用争议高发点清单》",
+  p:"请帮我设计特许经营合同的全部费用条款，每项给出完整条款文本 + 起草说明：\n\n1. 加盟费：\n   · 法律性质是什么？（一次性特许权对价）\n   · 什么情况下可以合法不退？怎么写才不会被认定「格式条款无效」\n   · 合同解除时加盟费要不要退、退多少？（分：冷静期解除 / 我方违约解除 / 加盟商违约解除 / 期满终止 四种情形）\n   · 给我条款文本\n2. 保证金：\n   · 用途条款（担保什么：欠付费用、违约赔偿、损害赔偿）\n   · 扣划程序（要不要事先通知？能不能直接扣？）\n   · 补足义务\n   · 退还条件与期限（这是纠纷高发点：合同终止后多久退？能不能以「有争议」为由扣押？）\n3. 管理费（特许权使用费）：\n   · 固定 vs 流水抽成，各自优劣\n   · 抽成基数：营业额（含不含外卖？含不含税？）\n   · 怎么核实真实营业额？（POS 系统接入、外卖平台账号归总部、报表报送与核查权、稽核条款）\n   · 瞒报营业额的违约责任与举证\n4. 其他费用：推广费、设备物料款、培训费、设计费、系统使用费\n5. 给我一份《费用争议高发点清单》及每一点的条款防范方案"},
+ {t:"把信息披露与冷静期写进合同",
+  f:["信息披露条款化：把「已披露」的事实转化为合同条款，形成事实确认","陈述与保证：双方的保证事项与违反后果","冷静期条款落地 + 风险提示书"],
+  o:"《信息披露条款 + 陈述保证条款》范本 +《加盟风险提示书》",
+  p:"请帮我设计合同的「信息披露与陈述保证」章节：\n\n1. 信息披露条款：怎么把已披露的事实合同化？\n   · 给我条款文本（要点：确认总部已按《条例》第22条履行披露义务、加盟商确认已充分阅读和理解、披露文件作为合同附件、披露信息的更新机制）\n   · 关键风险：这类条款会不会被认定为「免除己方责任、加重对方责任」的无效格式条款？怎么草拟才安全？（提示：不能写得像免责声明，要写成「事实确认 + 辅证」）\n   · 给我 2 个版本：安全版 + 危险版，并说明区别在哪\n2. 陈述与保证条款：\n   · 总部保证什么（有权授权、商标有效、经营资源无瑕疵）\n   · 加盟商保证什么（主体适格、资金来源合法、自主经营、独立承担用工与食安责任）\n   · 违反陈述保证的后果（解除权 + 赔偿）\n3. 起草《加盟风险提示书》：\n   · 目的是在诉讼中证明「加盟商明知商业风险」\n   · 应该包含哪些内容？（投资有风险、经营损益自负、总部不作收益承诺、市场不确定性等）\n   · 给我完整文本，并说明怎么签署才有效（单独签署？加粗提示？）\n4. 冷静期条款：把我 W3 定稿的平衡版嵌入合同，并检查与本章其他条款的衔接"},
+ {t:"复盘：合同骨架成型",
+  f:["整合本周起草成果","自测 10 题","检查清单：合同前半部是否覆盖法定 11 项必备条款中的前 6 项"],
+  o:"合同第 1-4 章<b>初稿定稿</b> +《法定必备条款对照检查表》",
+  p:"第 6 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：主体设计、授权性质、区域保护、费用不退的效力、保证金退还、营业额核实、披露条款效力\n2. 对照检查：拿我起草的合同第 1-4 章，逐条对照《条例》第 11 条的 11 项必备条款，看看还缺什么，给我《法定必备条款对照检查表》\n3. 综合案例：\n   「合同约定：加盟费 15 万不退；保证金 5 万，合同终止后 6 个月内退还；管理费按月营业额 5% 收取。加盟商经营 8 个月后关门，拖欠管理费 3 个月，且被发现瞒报营业额（实际 100 万，上报 60 万）。\n   问：(1) 我方能否没收保证金？(2) 能否追讨瞒报部分的管理费？(3) 怎么证明瞒报？(4) 加盟商主张加盟费 15 万应退还，法院会支持吗？(5) 我方最优处置路径？\n   我先答，你批改并给满分答案」\n4. 帮我梳理合同前半部的逻辑漏洞"
+ }],
+ wk:{t:"周末实战⑥：完成《特许经营合同（特许人版）》前半部",d:"完成合同第 1-4 章全文：总则与主体、授权条款、费用与结算、信息披露与陈述保证。每条都要能扛住加盟商律师的攻击。",
+ p:"我要起草《商业特许经营合同（特许人版）》的前半部。请逐章给我完整条款文本：\n\n第一章 总则与主体（主体条款、定义与解释）\n第二章 特许经营授权（授权内容/性质/区域/期限/禁止再授权）\n第三章 特许经营费用（加盟费/保证金/管理费/推广费/设备物料款/发票与逾期违约金）\n第四章 信息披露与陈述保证（披露条款化、双方陈述保证、冷静期条款、风险提示书）\n\n每条请给出【条款文本】+【起草说明：为什么这么写、防的是什么风险】。不要写空话条款，每条都要可执行。"}},
+
+{w:7,th:"特许经营合同（二）：运营管控、违约与退出",goal:"搞定合同后半部。这周解决的是「怎么管得住」和「分手时怎么办」——法务价值最密集的部分",
+ wk:{t:"周末实战⑦：完成合同后半部 + 全套附件",d:"完成第 5-10 章全文（权利义务、运营管控、违约解除、终止后义务、争议解决、其他），并制作 6 个附件：区域图、费用表、设备清单、手册目录、装修标准、授权书。",
+ p:"我要完成《商业特许经营合同（特许人版）》的后半部。请逐章给我完整条款文本 + 起草说明：\n\n第五章 双方权利义务\n· 总部义务（开业支持清单、培训、督导、供应链、营销）\n· 加盟商义务（统一采购、统一价格区间、人员配置、营业时间、报备义务）\n\n第六章 统一经营模式与运营管控\n· 手册的遵守与更新\n· 装修与设备标准\n· 采购与供应（统采统配义务、自采禁止）\n· 价格与促销（建议零售价 vs 强制价格——反垄断风险提示）\n· 督导检查权（频次、方式、进场权、系统查看权）\n· 违规处理与违约金（阶梯式处罚机制）\n· 食品安全与消费者权益责任划分\n\n第七章 合同变更、解除与终止\n· 协商变更\n· 我方单方解除的情形（列举 12 项）\n· 加盟商解除的情形\n· 解除程序（通知、整改期、加速到期）\n\n第八章 违约责任\n· 违约金设定（注意：过高会被调减，给合理区间）\n· 损失赔偿范围\n· 抵销权、留置权\n\n第九章 合同终止后义务\n· 停止使用标识、招牌拆除\n· 存货与设备处理（回购？自行处理？）\n· 保证金退还\n· 竞业禁止（期限、地域、范围、对价——怎么写才有效）\n· 会员数据与顾客信息的移交\n\n第十章 争议解决与其他\n· 争议解决方式（诉讼 vs 仲裁，选哪个对总部有利？管辖地怎么约定）\n· 通知与送达条款（地址确认、电子送达——这个条款在诉讼中极其关键）\n· 保密、不可抗力、合同完整性与可分割性\n\n最后给我 6 个附件的模板：区域图、费用明细表、设备清单、操作手册目录、装修与设备标准、商标授权书"},
+ d:[
+ {t:"双方权利义务：把「支持」写清楚也写安全",
+  f:["总部义务清单：选址评估、装修设计、开业筹备、培训、督导、供应链、营销支持","写细 vs 写粗的取舍：写太细做不到就违约，写太粗被诉未尽披露/支持义务","加盟商义务：独立经营、自负盈亏、合规经营、配合督导"],
+  o:"《总部义务清单》+《义务履行证据留存清单》",
+  p:"请帮我设计合同的「双方权利义务」章节：\n\n1. 总部义务怎么写才安全？\n   · 这个两难怎么破：法定要求「经营指导、技术支持、业务培训的具体内容和提供方式」（条例第11条第4项）要写清楚；但写太细，做不到就构成违约，加盟商可以此解除合同\n   · 给我「模糊化但合法」的起草技巧（如：以手册/服务标准为准、总部有权合理调整、附条件 trigger）\n   · 给我完整的总部义务条款文本（分级：开业前/开业时/持续）\n2. 加盟商义务条款：\n   · 独立经营、自负盈亏（这条是总部免责的地基，怎么写才有效）\n   · 合规经营（食安、消防、用工、税务）\n   · 配合督导与检查\n   · 给我完整条款文本\n3. 《义务履行证据留存清单》：\n   · 每次培训、督导、巡店要留什么证据（签到表、巡店报告、整改通知书、照片、系统记录）\n   · 存多久、怎么存、谁来存\n   · 这些证据在诉讼中怎么用\n4. 给我一份《加盟商投诉/总部服务缺失的应对 SOP》"},
+ {t:"运营管控：怎么管得住又不越界",
+  f:["手册的法律地位：合同义务载体 + 商业秘密载体 + 单店运营标准","统采统配与自采禁止：质量控制的必要 vs 反垄断风险（搭售、限定交易）","督导检查权与违规处罚：阶梯式处罚机制设计"],
+  o:"《运营管控条款全套范本》+<b>《门店违规处理办法》</b>",
+  p:"请帮我设计合同的「统一经营模式与运营管控」章节：\n\n1. 操作手册的法律地位：\n   · 手册是合同附件还是独立文件？修改要不要加盟商同意？\n   · 怎么约定「总部有权修订手册，加盟商应遵照执行」\n   · 手册作为商业秘密，怎么限制复制和外传\n2. 统采统配条款：\n   · 强制采购条款怎么写（核心物料必采、非核心可自采但需备案）\n   · <b>反垄断风险</b>：《反垄断法》禁止具有市场支配地位的经营者搭售、限定交易。餐饮品牌在什么情况下会有这个风险？怎么规避？（提示：区分「为保护品牌统一性的合理限制」与「滥用支配地位」）\n   · 给我合规的条款文本 + 风险提示\n3. 价格条款：\n   · 能不能强制统一零售价？（转售价格维持的反垄断红线）\n   · 「建议零售价」怎么用才安全\n   · 促销活动的主导权与费用分担\n4. 督导检查权：\n   · 检查频次、方式、进场权、系统数据查看权\n   · 加盟商不配合怎么办\n5. 违规处罚机制（这是最有实操价值的部分）：\n   · 给我一套阶梯式处罚设计：口头警告 → 书面警告 → 限期整改 → 违约金 → 停业整顿 → 解除合同\n   · 每一级的触发情形、程序要求、金额设定\n   · 违约金多少法院会支持？给我合理区间和依据（民法典585条违约金调减规则）\n   · 形成《门店违规处理办法》完整文本"},
+ {t:"违约、解除与终止：分手的艺术",
+  f:["解除情形设计：法定解除 + 约定解除（我方单方解除的 12 项情形）","解除程序：催告 → 整改期 → 解除通知 → 生效","违约金：民法典第585条，约定过高会被调减，合理区间怎么定"],
+  o:"《解除条款全套范本》+《解除通知书模板》+《违约金设定参考表》",
+  p:"请帮我设计合同的「变更、解除与终止」章节：\n\n1. 我方（总部）单方解除的情形清单——请给我至少 12 项，每项说明触发场景：\n   （提示方向：欠付费用、瞒报营业额、擅自转让、擅自变更地址、使用非指定原料、食品安全事故、损害品牌声誉、侵犯商标/商业秘密、拒不配合督导、违法经营被处罚、停业超过 X 天、主体资格丧失等）\n2. 解除程序设计：\n   · 哪些情形需要「催告 + 合理期限整改」，哪些可以「通知即解除」？\n   · 给我一条完整的解除程序条款\n   · 《解除通知书》模板（关键：事实陈述、依据条款、解除时点、后续义务）\n   · 送达风险：地址确认条款 + 电子送达条款怎么写才能在诉讼中被认可\n3. 违约金设定：\n   · 《民法典》第 585 条的违约金调减规则，法院一般支持多少？（按实际损失 30% 为标准）\n   · 给我《违约金设定参考表》：不同违约情形下的合理金额区间\n   · 怎么让违约金更可能被全额支持？（提示：损失范围的事先约定、举证成本）\n4. 加速到期条款：加盟商违约时，剩余合同期内全部管理费能否一次性主张？有效吗？\n5. 给我《合同解除后处置 SOP》（撤牌、清场、结算、追偿、档案）"},
+ {t:"终止后义务：招牌拆除、竞业禁止与数据移交",
+  f:["停止使用标识与招牌拆除：期限、执行、费用承担、逾期处理","竞业禁止：期限、地域、范围、对价——四个要素缺一可能无效","保证金退还与存货处理；会员数据与顾客信息的归属"],
+  o:"《终止后义务条款范本》+<b>《门店撤牌交接清单》</b>",
+  p:"请帮我设计合同的「终止后义务」章节：\n\n1. 停止使用经营资源与撤牌：\n   · 拆除期限（几天合理？）\n   · 加盟商不拆怎么办？（我方自行拆除 + 费用追偿 + 违约金）\n   · 给我完整条款文本\n   · 给我《门店撤牌交接清单》\n2. 竞业禁止条款——这是重点，很多总部写得无效：\n   · 竞业禁止在特许经营中的法律依据与合理性边界\n   · 四个效力要素：期限（多久会被认可？1年？2年？）、地域（多宽合理）、范围（什么算竞业）、对价（要不要单独付费？不付费有效吗？）\n   · 给我三个版本（严格/适中/宽松）及各自效力评估\n   · 违反竞业禁止怎么举证、怎么索赔\n   · 注意：这与劳动合同里的竞业限制不是一回事，请讲清区别\n3. 保证金退还：\n   · 退还条件与时限（不能写「无息」「待争议解决后」这样的模糊条款）\n   · 扣除项目与举证\n   · 给我条款文本\n4. 存货与设备：回购义务要不要写？写了有什么风险？给我三种方案\n5. 数据与会员：\n   · 会员数据权属归谁？（这是大数据时代的新问题）\n   · 加盟商自己积累的顾客信息能不能带走？\n   · 给我条款设计方案"},
+ {t:"复盘：全套合同逻辑自检",
+  f:["整合合同全文","自测 10 题","最重要的检验：把合同交给「加盟商律师」挑毛病"],
+  o:"《特许经营合同》<b>全文定稿</b> + 一份<b>《合同审查报告（自审）》</b>",
+  p:"第 7 周结束（第二阶段收官），请对我起草的合同做一次「敌方视角」审查：\n\n1. 请你切换到加盟商律师的立场，逐条攻击我这份合同，找出：\n   · 可能被认定无效的格式条款\n   · 对加盟商明显不公、可能被法院调减或否定的条款\n   · 我方权利过大而缺乏制衡的条款\n   · 表述模糊、容易引发争议的条款\n   给我一份《敌方视角审查报告》，按风险等级排序\n2. 出 10 道题自测（单选5+案例3+简答2）：总部义务、统采统配的反垄断边界、解除情形、违约金调减、竞业禁止效力、终止后义务\n3. 综合案例：\n   「加盟商连续 3 个月未上报营业额、拒付管理费，且被发现从外部采购核心汤底原料。我方书面催告后 15 天仍未改正，遂发出解除通知。加盟商主张：(a) 违约金 20 万过高；(b) 合同终止后保证金应立刻退还；(c) 竞业禁止 2 年且无对价，应属无效。\n   问：逐一分析三项主张的成立可能，并给我方最优应对。\n   我先答，你批改并给满分答案」\n4. 第二阶段总结：输出《第二阶段知识结构图》，并告诉我从「懂法条」到「会起草」的差距在哪"
+ }],
+ wk:{t:"周末实战⑦：完成合同后半部 + 全套附件",d:"完成第 5-10 章全文，并制作 6 个附件：区域图、费用表、设备清单、手册目录、装修标准、商标授权书。",
+ p:"我要完成《商业特许经营合同（特许人版）》的后半部。请逐章给我完整条款文本 + 起草说明：\n\n第五章 双方权利义务（总部义务清单、加盟商义务）\n第六章 统一经营模式与运营管控（手册、装修设备、统采统配、价格与促销、督导检查权、阶梯式违规处罚、食安与消责划分）\n第七章 变更、解除与终止（我方单方解除的 12 项情形、解除程序、通知送达）\n第八章 违约责任（违约金区间、损失范围、抵销权）\n第九章 终止后义务（撤牌、存货设备、保证金退还、竞业禁止、数据移交）\n第十章 争议解决与其他（诉讼 vs 仲裁的选择、送达条款、保密、不可抗力）\n\n最后给我 6 个附件模板：区域图、费用明细表、设备清单、操作手册目录、装修与设备标准、商标授权书"}},
+
+{w:8,th:"门店选址与租赁：餐饮租赁的特殊战场",goal:"餐饮租赁是加盟体系的现金流命门。一条排烟条款没写，几百万装修可能打水漂",
+ wk:{t:"周末实战⑧：审查一份餐饮门店租赁合同",d:"让 AI 生成一份模拟的餐饮租赁合同（商场铺位，含若干陷阱条款），你做完整审查：出风险等级表、逐条修改建议、谈判要点，并给出修改稿。",
+ p:"我要做一次餐饮租赁合同的实战审查。\n\n设定：某加盟商拟在某购物中心 B1 层租 120㎡ 铺位开米线店，租期 5 年，月租金 5 万 + 物业费 + 推广费，另有营业额抽成（取高者）。\n\n第一步：请生成一份带陷阱的《商铺租赁合同》（故意埋入 12-15 处对承租方不利的条款：免租期、递增、转租权、续租权、排烟排污责任、办证配合、装修期、撤场、押金、征收补偿、营业额抽成计算口径、竞业保护、营业时间限制等）\n第二步：我审查后，请给我标准答案：每处陷阱对应的风险等级、修改建议（原文→建议→理由）\n第三步：给我一份《餐饮门店租赁合同审查清单》（40 项，可复用）\n第四步：模拟谈判——你扮演商场招商经理，我扮演加盟商的法务，围绕我最关心的 5 个条款谈判"},
+ d:[
+ {t:"选址阶段的法律尽调",
+  f:["产权与规划用途：房产证、土地用途、房屋用途是否为商业/餐饮","餐饮准入条件：排烟、排污、噪音、燃气、消防——缺一项就可能办不了食品经营许可","住宅底商限制、历史保护建筑、拆迁与征收风险"],
+  o:"<b>《餐饮门店选址法律尽调清单》</b>（30 项）+《选址否决项清单》",
+  p:"请给我一套《餐饮门店选址法律尽调清单》：\n\n1. 完整尽调清单（30 项），分模块：\n   · 产权与主体（房产证、产权人、抵押查封、二房东与转租授权）\n   · 规划与用途（土地用途、房屋用途、能否做餐饮）\n   · 餐饮硬件条件（排烟管道与烟道位置、排污与隔油池、燃气接入、给排水、电量负荷、空调外机位、货梯与卸货区、外卖取餐动线）\n   · 合规条件（消防设计与验收、环评备案、食品经营许可可行性、户外招牌审批）\n   · 周边限制（住宅底商限制、学校周边、文物保护、地铁控制区）\n   · 商业风险（拆迁征收、商圈规划变更、同类品牌排他条款冲突）\n2. 给我一份《选址否决项清单》：哪些问题一旦存在就必须放弃（如：无排烟条件且无法改造、房屋用途为住宅且无法变更、已列入征收范围）\n3. 特别讲透「住宅底商不能做餐饮」这个高频坑：\n   · 法律依据（《民法典》第279条 业主不得违反法律、法规以及管理规约，将住宅改变为经营性用房；各地还有《大气污染防治法》相关的餐饮选址限制）\n   · 什么情况下可以？需要什么程序（有利害关系的业主一致同意）\n   · 实务中怎么快速判断一个铺位能不能做餐饮\n4. 给我一份《选址评估报告》模板（法务版）"},
+ {t:"租赁合同核心条款（通用篇）",
+  f:["租赁期限、免租期（装修免租期 vs 经营免租期）、租金递增机制","转租与分租、优先续租权、优先购买权","押金（保证金）：金额、扣划、退还条件与时限"],
+  o:"《租赁合同核心条款审查要点表》",
+  p:"请给我一份《商铺租赁合同核心条款审查要点表》（站在承租方/加盟商立场）：\n\n逐项给我【审查要点 + 常见陷阱 + 我方争取版本 + 可接受底线】：\n1. 租赁期限（5年 vs 3年，与加盟合同期限如何匹配——这是个协同问题）\n2. 免租期（装修免租期多长合理？开业后经营免租期要不要争取？）\n3. 租金递增（固定递增 vs 指数化 vs 营业额抽成取高——各有什么风险）\n4. 营业额抽成条款（抽成基数怎么算？外卖算不算？怎么核实？保底抽成的风险）\n5. 转租与分租（能不能转租给加盟商？商场不同意怎么办？）\n6. 优先续租权（怎么写才有执行力？「同等条件」怎么界定？）\n7. 押金（几个月合理？退还条件与时限？能不能抵扣欠租？）\n8. 物业费、推广费、空调费、水电费的计费方式与调价限制\n9. 提前解约权（我方要不要争取？代价多大？）\n10. 征收补偿（遇到拆迁，装修残值和停产停业损失归谁？这一条很多人不写，出事就亏大）\n\n另外请特别提示：加盟商的租赁期限和加盟合同期限不一致会有什么问题？总部该怎么管理这个风险？"},
+ {t:"餐饮租赁的特殊条款（本篇是精华）",
+  f:["排烟排污：谁是建设责任主体、设备谁买、坏了谁修、物业不配合怎么办","食品经营许可：房东/商场的办证配合义务（产权证明、平面图、同意转租证明）","营业时间、外卖通道、垃圾清运、卸货与噪音、招牌位"],
+  o:"<b>《餐饮租赁特殊条款清单》</b>（20 项）+ 每条的条款范本",
+  p:"餐饮租赁和普通零售租赁的最大差别在于「硬件条件」和「办证配合」。请给我：\n\n1. 《餐饮租赁特殊条款清单》（20 项），每项给出【为什么重要 + 不做会怎样 + 条款范本】：\n   · 排烟系统：排烟管道的位置、截面、风量；隔油池的建设与清掏责任；油烟净化设备谁买谁维护；物业改造配合义务；环保验收责任\n   · 燃气：能否接入、瓶组间设置、安全责任\n   · 给排水与电量：容量是否达标（餐饮一般需要多少 kW？）\n   · 办证配合：房东/商场必须提供什么文件（产权证复印件、房屋平面图、同意转租证明、消防验收文件）？不给怎么办？要不要约定违约金？\n   · 消防：谁做设计报审？消防验收不合格导致无法开业，租金损失谁担？\n   · 营业时间与外卖：商场强制营业时间、外卖取餐通道与动线、外卖骑手进出管理\n   · 垃圾清运与厨余处理（结合《固废法》与新《餐饮业促进和经营管理办法》的要求）\n   · 招牌与外摆：招牌位、审批责任、外摆区使用权\n   · 噪音与气味投诉处理机制\n2. 重点：给我一条完整的「办证配合义务 + 违约责任」条款范本（房东/商场不配合导致办不下食品经营许可证，我方有权解约 + 索赔全部损失）\n3. 重点：给我一条「硬件条件不符的免责解约条款」范本（如排烟不通导致无法开业）\n4. 给我《开业前证件清单及时限表》：营业执照、食品经营许可证、消防、环评、招牌审批，各自多久、谁负责"},
+ {t:"关店与撤场：退出时的战场",
+  f:["提前解约：协商解除 vs 单方解约，违约金与押金损失测算","撤场义务：恢复原状、装修归属、设备拆除、逾期撤场的责任","装修残值：能不能主张？合同怎么写才能要到"],
+  o:"《门店撤场处置方案》+《撤场交接清单》+《解约谈判要点表》",
+  p:"请帮我设计餐饮门店的退出方案：\n\n1. 提前解约的三种路径：协商解除 / 约定解除（合同里争取到的） / 法定解除，各自的代价与适用情形\n2. 撤场义务条款审查：\n   · 「恢复原状」是什么意思？要不要把装修全拆了？（这一条能让加盟商多花几十万）\n   · 怎么谈判才能把恢复原状改成「按现状交还」\n   · 逾期撤场的责任（商场通常约定高额占用费，怎么设上限）\n   · 给我条款范本\n3. 装修残值：\n   · 合同到期时装修归谁？能不能要求补偿？\n   · 提前解约时装修损失谁承担？（如果是因为房东违约导致无法经营，能不能主张？）\n   · 给我争取装修补偿的条款范本和谈判话术\n4. 押金退还：商场常以各种理由扣押，怎么防？给我条款范本 + 争议应对策略\n5. 给我《门店撤场处置 SOP》：决策 → 通知 → 谈判 → 撤场 → 结算 → 注销/迁址，每步的法务动作\n6. 加盟商跑路了（弃店），总部作为特许人面临什么风险？（提示：房东可能找总部、供应商可能找总部、员工工资可能找总部）——给我《加盟商弃店应急预案》"},
+ {t:"复盘：租赁风险全景",
+  f:["整合本周产出","自测 10 题","核心产出：一套总部可以用来审核所有加盟店租约的标准"],
+  o:"<b>《餐饮门店租赁合同审查清单（40项）》</b>定稿 +《总部租约审核指引》",
+  p:"第 8 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：选址否决项、住宅底商限制、免租期与递增、营业额抽成、排烟排污责任、办证配合、恢复原状、装修残值\n2. 综合案例：\n   「加盟商租下商场铺位，签约后发现该铺位无独立排烟管道，商场承诺协助改造但拖延 2 个月，导致无法办理食品经营许可证、无法开业，加盟商已付租金押金 20 万、装修已投入 40 万。加盟商现在要：(a) 解除租赁合同并索赔；(b) 同时要求总部退还加盟费，理由是总部选址评估失职。\n   问：(1) 加盟商对商场的请求能否成立？(2) 总部要不要担责？我方的防守点在哪？(3) 总部应该在选址流程中做什么才能免责？(4) 给我一份《总部选址支持免责方案》\n   我先答，你批改并给满分答案」\n3. 帮我形成《总部租约审核指引》：总部对加盟商租约应该管到什么程度？（提示：管太深可能被认定「实质控制」而承担连带责任，管太浅加盟商踩坑后反过来告总部失职）\n4. 给我一份《加盟店租约必备条款清单》（一页纸，发给加盟商的标准要求）"
+ }],
+ wk:{t:"周末实战⑧：审查一份餐饮门店租赁合同",d:"让 AI 生成一份模拟的餐饮租赁合同（商场铺位，含陷阱条款），你做完整审查：风险等级表、逐条修改建议、谈判要点、修改稿。",
+ p:"我要做一次餐饮租赁合同的实战审查。\n\n设定：某加盟商拟在某购物中心 B1 层租 120㎡ 铺位开米线店，租期 5 年，月租金 5 万 + 物业费 + 推广费，另有营业额抽成（取高者）。\n\n第一步：生成一份带陷阱的《商铺租赁合同》（故意埋入 12-15 处对承租方不利的条款）\n第二步：我审查后给出标准答案：每处陷阱的风险等级、修改建议（原文→建议→理由）\n第三步：给我一份《餐饮门店租赁合同审查清单》（40 项，可复用）\n第四步：模拟谈判——你扮演商场招商经理，我扮演加盟商法务，围绕我最关心的 5 个条款谈判"}},
+/*__W9_12__*/
+{w:9,th:"食品安全合规：餐饮的生死线",goal:"一个食安事故可以毁掉一个品牌。这周把食安从「卫生问题」升级为「法律风险体系」",
+ wk:{t:"周末实战⑨：《门店食品安全合规手册》+ 事故应急预案",d:"产出一套可下发到门店的食安合规手册（目录 + 关键章节全文），以及一份可演练的食品安全事故应急预案（含 4 小时 / 24 小时 / 7 天三阶段行动清单、对外声明模板、监管沟通话术）。",
+ p:"我要产出两套文件，请给我完整内容：\n\n【文件一】《门店食品安全合规手册》\n· 完整目录结构（分章节，标注每章页数）\n· 关键章节全文：索证索票与进货查验、食品贮存与温度控制、加工制作规范（生熟分开、烧熟煮透、时间温度控制）、餐具清洗消毒、从业人员健康与卫生、食品添加剂管理（餐饮环节的五专管理）、留样管理、虫鼠害防治、废弃油脂与厨余处理、自查与记录\n· 每章末尾附《自查表》\n\n【文件二】《食品安全事故应急预案》\n· 事故分级（一般/较大/重大）\n· 4 小时 / 24 小时 / 7 天三阶段行动清单（谁做、做什么、时限）\n· 报告义务（向谁报告、多长时间内、报告什么内容）\n· 现场处置（留样封存、监控保全、停业配合、员工口径统一）\n· 对外声明模板（3 版：轻微 / 中等 / 严重）\n· 媒体应对与危机公关口径\n· 消费者索赔处理流程与赔偿标准（《食品安全法》第148条 退一赔十、最低1000元）\n· 复盘与整改机制\n\n另外请给我：这份手册在加盟体系里怎么落地（培训、考核、督导 checking、违规处罚）"},
+ d:[
+ {t:"《食品安全法》核心义务体系",
+  f:["经营许可：食品经营许可（餐饮服务），一地一证，主体业态与经营项目","过程控制：进货查验记录、索证索票、贮存、加工、留样、餐具消毒","人员管理：健康证明、培训考核、食品安全管理人员配备"],
+  o:"《食品经营合规义务清单》+《门店食安自查表（100条）》",
+  p:"请帮我系统梳理餐饮企业的食品安全法定义务：\n\n1. 《食品安全法》及实施条例中，餐饮服务提供者的核心义务清单，按环节组织：\n   · 准入环节：食品经营许可（怎么申请、主体业态、经营项目、一地一证原则、有效期与延续）\n   · 采购环节：进货查验记录制度、索证索票（要哪些证、保存多久）\n   · 贮存环节：温度控制、分类存放、保质期管理、先进先出\n   · 加工环节：生熟分开、烧熟煮透、专间管理（凉菜/生食/裱花）、食品添加剂「五专」管理\n   · 餐具：清洗消毒保洁\n   · 人员：健康证明、培训、食品安全管理员\n   · 留样：什么要留、留多少、留多久\n   · 追溯与召回\n   每项标注：法条依据、具体要求、违反的处罚\n2. 给我《门店食安自查表》（100 条，可直接下发门店每日/每周/每月自查）\n3. 重点讲透《食品安全法》第 148 条：退一赔十、最低 1000 元。这个「最低1000元」在实务中怎么用？职业打假人会怎么利用它？我方怎么防？\n4. 外卖环节的食安特殊要求（《网络餐饮服务食品安全监督管理办法》）"},
+ {t:"新规解读：《餐饮业促进和经营管理办法》（2025.6.15 施行）",
+  f:["替代 2014 年《餐饮业经营管理办法（试行）》，共 25 条","大幅增加促进内容 + 细化反食品浪费要求 + 增加安全生产内容","经营规范：禁止设置最低消费、明码标价、顾客投诉制度、应急预案"],
+  o:"《新规对照表》+《门店落地动作清单》",
+  p:"2025 年 6 月 15 日施行的《餐饮业促进和经营管理办法》（商务部、国家发改委联合发布，原《餐饮业经营管理办法（试行）》同时废止）。请帮我：\n\n1. 做一张新旧对照表：哪些内容新增、哪些删除、哪些调整\n2. 逐条解读对我方有实际影响的条款：\n   · 禁止设置最低消费\n   · 明码标价与公开服务标准\n   · 顾客投诉制度（要及时处理并反馈结果）\n   · 应急预案与突发事件报告\n   · 反食品浪费的具体要求（食材管理、引导提醒、餐食提供；团餐宴席、自助餐、外卖三个场景的专门要求；小份菜、菜单标注分量建议人数、公勺公筷、打包服务、光盘奖励）\n   · 厨余垃圾源头减量（结合《固废法》《反食品浪费法》）\n   · 可对明显浪费的消费者收取厨余垃圾处理费（要公示标准）——这条怎么用？用了会有什么舆情风险？\n   · 安全生产相关要求\n3. 给我《门店落地动作清单》：每一条要求对应门店要做什么（贴什么标识、改什么菜单、建什么记录、培训什么内容）\n4. 商务主管部门可以对严重浪费行为约谈——这个约谈机制对我方意味着什么？\n5. 给我一份《反食品浪费合规检查表》"},
+ {t:"食品安全事故处置：从出事到收尾",
+  f:["事故分级与报告义务：向市场监管部门报告，不得隐瞒、谎报、缓报","现场处置四件事：留样封存、监控保全、口径统一、配合调查","行政处罚应对与消费者索赔处理"],
+  o:"《食品安全事故应急预案》框架 +《事故处置时间轴》",
+  p:"我要建立食安事故的应急处置能力。请给我：\n\n1. 《食品安全事故应急预案》完整框架：\n   · 事故分级标准（一般/较大/重大，按什么分：人数、危害程度）\n   · 组织架构与职责（应急小组、发言人、现场处置、法务、公关）\n   · 报告义务：向谁报告、多长时间内、报告什么、不报的后果（《食品安全法》相关罚则）\n   · 现场处置清单（黄金 4 小时）：留样封存、问题食品下架封存、监控录像保全、员工询问笔录、暂停相关操作、顾客信息登记\n   · 消费者索赔处理：赔偿标准（第148条）、协商技巧、什么情况下不能轻易认赔（避免成为行政处罚的证据）\n   · 媒体与舆情应对：对外声明模板、统一口径、社交媒体监控\n   · 复盘与整改\n2. 给我 3 个真实感强的事故场景，我来做处置推演：\n   · 场景A：顾客在米线里发现异物（钢丝球碎屑），拍照发小红书\n   · 场景B：10 名顾客在同一门店用餐后腹泻，疑似食物中毒，已就医\n   · 场景C：市场监管抽检发现某批次汤底料菌落总数超标，供应商是总部指定的\n   每个场景请等我给出处置方案后，你点评并给标准答案\n3. 重点：食安事故中的 <b>刑民交叉</b>——什么情况下会从行政处罚升级为刑事（生产、销售不符合安全标准的食品罪）？触发标准是什么？\n4. 给我一份《危机沟通话术手册》（对顾客、对媒体、对监管、对员工四类）"},
+ {t:"加盟体系中的食安责任划分",
+  f:["责任主体：加盟商是食品经营者，独立承担责任是基本原则","总部什么时候会被连带：实质控制、统一配送、品牌背书、未尽管理义务","用合同 + 制度 + 证据，三层防线隔离总部责任"],
+  o:"<b>《加盟体系食安责任隔离方案》</b>+《食安条款范本》",
+  p:"这是加盟体系最要命的问题：加盟店出食安事故，总部要不要担责？请给我一份完整的《加盟体系食安责任隔离方案》：\n\n1. 责任认定的法律框架：\n   · 基本原则：加盟商是独立经营者，持证经营，独立承担食安责任\n   · 什么时候总部会被追责？请系统梳理：\n     · 总部是食品的实际提供者（统采统配送的原料有问题）\n     · 总部对门店有实质控制（委派店长、直接管理员工、控制经营）\n     · 总部未尽到管理义务（明知违规不制止、督导发现隐患未整改）\n     · 品牌背书导致的消费者合理信赖\n     · 共同侵权（民法典第1168条以下）\n   · 给我近年判例：加盟店食安问题，法院判总部担责的和不担责的，各 2 个，并提炼裁判要旨\n2. 三层防线设计：\n   · 合同层：给我完整的食安条款范本（责任划分、赔偿与追偿、保险要求、检查权、整改义务、事故报告义务、品牌保护性解约权）\n   · 制度层：总部要建哪些制度才能证明「已尽管理义务」？（督导制度、培训记录、预警机制、飞行检查）\n   · 证据层：日常要留存哪些证据？（督导报告、整改通知、培训签到、检查记录）\n3. 保险安排：食品安全责任险怎么买？保额多少？被保险人要不要包含总部？\n4. 给我一份《加盟店食安事故总部应对 SOP》（出事后总部 72 小时该做什么、说什么、避免做什么）"},
+ {t:"复盘：食安合规体系",
+  f:["整合本周产出","自测 10 题","核心判断：总部在食安上应该「管得多深」"],
+  o:"<b>《门店食品安全合规手册》</b>定稿 +《应急预案》定稿",
+  p:"第 9 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：食安法核心义务、第148条、新餐饮办法、反食品浪费、事故报告义务、加盟体系责任划分\n2. 综合案例：\n   「某加盟店使用过期汤底原料导致 15 名顾客食物中毒，市场监管部门立案。调查发现：(a) 原料由总部统一配送；(b) 总部督导 3 个月前已发现该店有过期原料未整改，只做了口头提醒；(c) 该店店长是总部委派。\n   问：(1) 行政处罚对象是谁？(2) 消费者可以向谁索赔？(3) 总部承担责任的概率有多大？(4) 三个事实中哪一个对总部最致命？(5) 总部事后如何向加盟商追偿？(6) 如果我事前 redesign 督导流程，哪个环节能救总部？\n   我先答，你批改并给满分答案」\n3. 核心议题：总部在食安上应该「管得多深」？管太浅失职、管太深被认定实质控制而担责。给我一个可操作的边界标准和判断清单"
+ }],
+ wk:{t:"周末实战⑨：《门店食品安全合规手册》+ 事故应急预案",d:"产出可下发门店的食安手册（目录+关键章节全文）与事故应急预案（三阶段行动清单、对外声明模板、监管沟通话术）。",
+ p:"我要产出两套文件，请给我完整内容：\n\n【文件一】《门店食品安全合规手册》：完整目录结构 + 关键章节全文（索证索票与进货查验、贮存与温度控制、加工制作规范、餐具消毒、人员健康与卫生、添加剂五专、留样、虫鼠害、废弃油脂与厨余、自查与记录）+ 每章附自查表\n\n【文件二】《食品安全事故应急预案》：事故分级、4小时/24小时/7天三阶段行动清单、报告义务、现场处置、对外声明模板（轻微/中等/严重3版）、媒体应对口径、消费者索赔处理流程与第148条赔偿标准、复盘机制\n\n另外给我：这份手册在加盟体系里怎么落地（培训、考核、督导、违规处罚）"}},
+
+{w:10,th:"供应链与采购：总部利润中心的法律防线",goal:"统采统配是餐饮加盟总部的主要利润来源，也是反垄断、食安、商业贿赂三重风险的交汇点",
+ wk:{t:"周末实战⑩：起草《统采统配供货框架协议》",d:"起草一份总部与核心供应商的供货框架协议全文（含价格机制、质量验收、供货保障、召回、违约责任、廉洁条款、保密条款），配套《供应商准入评分表》和《廉洁协议》。",
+ p:"我要起草《统采统配供货框架协议》。请给我完整协议全文（甲方=品牌总部，乙方=供应商），重点条款：\n\n1. 合作模式与订单机制（框架协议 + 订单/系统下单，避免被认定为固定总量合同）\n2. 价格机制（基准价、调价程序与提前通知期、最惠价格条款、年度降价目标、价格分歧的解决）\n3. 质量标准与验收（国标/行标/企标、验收流程、异议期、第三方检测、不合格品处理）\n4. 供货保障（产能承诺、安全库存、配送时效、断供的违约责任、不可抗力）\n5. 资质与合规（乙方须持有哪些证照、证照变更的通知义务、资质失效的解约权）\n6. 食品安全责任（责任归属、追溯配合、召回配合与费用承担、连带责任与追偿）\n7. 廉洁与反商业贿赂条款（禁止回扣、礼品申报、审计权、违反的解约权与赔偿）\n8. 保密条款（配方、工艺、价格、供应关系）\n9. 知识产权（定制包装、联合开发的归属）\n10. 违约责任（迟延供货、质量不合格、断供、擅自分包、违反廉洁条款各自的违约金）\n11. 合同期限、终止与过渡（终止后的库存处理、替代供应商切换、保证金）\n12. 争议解决\n\n另外给我：《供应商准入评分表》（资质、产能、质量体系、价格、交付、合规、财务健康，各维度权重与评分标准）和《廉洁协议》全文"},
+ d:[
+ {t:"供应链模式设计与反垄断边界",
+  f:["三种模式：统采统配（总部卖货给加盟商）、指定供应商（加盟商自行采购）、中央厨房直供","利润来源与法律定性：供应链差价是「货款」还是「变相特许权使用费」——影响退费与税务","反垄断风险：限定交易、搭售、转售价格维持——什么情况下会触发"],
+  o:"《供应链模式对比与选型建议》+<b>《反垄断风险自查表》</b>",
+  p:"请帮我设计加盟体系的供应链法律结构：\n\n1. 三种供应链模式对比表：\n   · 统采统配（总部统一采购后转售给加盟商）\n   · 指定供应商（总部准入，加盟商直接签约采购）\n   · 中央厨房直供（总部自产自销）\n   从「法律关系、利润来源、食安责任、税务处理、资金占用、加盟商接受度、总部风险」七个维度对比，给出蒙自源这类品牌的推荐方案\n2. 供应链差价的法律风险：\n   · 加盟商主张「总部赚差价属于变相收费，应当披露/应当返还」——这个主张法院支持吗？\n   · 供应链差价要不要写进信息披露文件（条例第22条第4项：向被特许人提供产品、服务、设备的价格、条件）？\n   · 差价率多少是合理的？有没有司法或监管的参考标准？\n3. <b>反垄断风险自查</b>（这是重点）：\n   · 《反垄断法》禁止的行为中，哪些可能适用于餐饮加盟？（横向/纵向垄断协议、滥用市场支配地位、限定交易、搭售、转售价格维持 RPM）\n   · 餐饮品牌在什么情况下会被认定具有「市场支配地位」？（市场份额推定标准：50%）\n   · 「强制加盟商从指定渠道采购」在什么情况下合法、什么情况下违法？给我判断清单\n   · 给我近年餐饮/快消领域的反垄断执法案例（如被处罚的 RPM 案例），提炼教训\n4. 给我《供应链反垄断合规自查表》"},
+ {t:"采购合同核心条款",
+  f:["价格机制：基准价、调价程序、最惠价格、年度议价","质量与验收：标准、流程、异议期、第三方检测、不合格品处理","供货保障：产能、安全库存、配送时效、断供责任"],
+  o:"《采购合同核心条款要点表》+《断供应急预案》",
+  p:"请给我《采购合同核心条款要点表》，站在甲方（品牌总部）立场，逐项给【要点 + 常见争议 + 我方争取条款 + 底线】：\n\n1. 价格机制：\n   · 固定价 vs 随行就市 vs 成本加成，各适用于什么品类\n   · 调价程序（提前多少天通知、要不要书面确认、不同意怎么办）\n   · 「最惠价格条款」（供应商给第三方更低价则自动适用）——有效吗？怎么执行？\n   · 年度降价目标条款（有量才有价）\n2. 质量与验收：\n   · 质量标准怎么写（国标 + 行标 + 企标 + 封样）\n   · 验收流程与异议期（几天内提出异议？逾期视为合格的效力）\n   · 第三方检测费用的承担\n   · 不合格品的处理（退货、换货、销毁、索赔）\n3. 供货保障：\n   · 产能承诺与安全库存\n   · 配送时效与温度要求（冷链）\n   · 断供的违约责任（违约金 + 实际损失 + 临时采购差价）\n   · 不可抗力条款（疫情、自然灾害、原料暴涨——情势变更能不能用？）\n4. 给我《断供应急预案》：核心原料断供时的 72 小时行动清单（备选供应商、门店沟通、产品替代、信息披露）\n5. 实务技巧：连锁餐饮的「独家采购」和「双源供应」怎么平衡？"},
+ {t:"食品标签、追溯、召回与冷链",
+  f:["预包装食品标签合规（GB 7718、GB 28050 营养标签）：总部定制包装的法律责任","追溯体系：一物一码、批次管理、进货查验记录的保存期限","食品召回制度：主动召回 vs 责令召回，启动条件、流程、费用承担"],
+  o:"《食品标签合规检查表》+<b>《产品召回管理制度》</b>",
+  p:"请帮我建立产品质量与召回的合规体系：\n\n1. 食品标签合规：\n   · 预包装食品标签的强制标示内容（GB 7718）：品名、配料表、净含量、生产者、生产日期、保质期、贮存条件、生产许可证编号、产品标准代号等\n   · 营养标签（GB 28050）的适用与豁免\n   · 总部定制包装（贴自己品牌）时，谁是「生产者」？标签责任谁负？（这是定制代工的核心问题）\n   · 给我《食品标签合规检查表》\n   · 职业打假人最爱挑的标签问题清单（配料表排序、添加剂标注、虚假宣称如「无添加」「纯天然」）\n2. 追溯体系：\n   · 法律要求的进货查验记录保存期限（多久？）\n   · 批次管理与先进先出怎么落地\n   · 给我《追溯体系设计方案》（从原料到门店的闭环）\n3. 食品召回：\n   · 召回分级（一级/二级/三级）与启动条件\n   · 主动召回 vs 责令召回的区别与后果\n   · 给我《产品召回管理制度》完整文本（含召回决策流程、通知模板、召回公告、处置与销毁、报告义务、费用承担、复盘）\n   · 召回费用在总部与供应商之间怎么分担？给我合同条款\n4. 冷链与配送：温度记录的法律意义（作为证据）、断链的责任认定"},
+ {t:"供应商管理与反商业贿赂",
+  f:["供应商准入、审核（资质 + 现场审核）、分级管理、退出机制","反商业贿赂：采购人员的回扣风险，新反法下的受贿方责任","廉洁协议与审计权条款"],
+  o:"《供应商全生命周期管理制度》+<b>《廉洁协议》</b>全文",
+  p:"请帮我建立供应商管理体系：\n\n1. 《供应商全生命周期管理制度》完整框架：\n   · 准入（资质清单、评分标准、现场审核要点、准入审批流程）\n   · 分级管理（战略/核心/普通/备选，不同级别的管理强度与合同条款）\n   · 日常管理（质量考核、交期考核、年度评审、驻厂与飞检）\n   · 退出（退出情形、切换流程、库存处理、保证金）\n   · 给我每个环节的表单模板\n2. 给我《供应商准入评分表》（维度、权重、评分标准、否决项）\n3. <b>反商业贿赂</b>（结合 2025 年新修订的《反不正当竞争法》）：\n   · 新法增加了「有关单位和个人不得收受贿赂」的规定，以及行贿时法定代表人、主要负责人、直接责任人员的个人责任——请讲透这个变化对我方的意义\n   · 采购人员收受回扣，公司要不要担责？公司怎么免责？\n   · 给我《采购廉洁管理制度》框架（礼品申报、回避制度、轮岗、举报机制、审计权）\n   · 给我《廉洁协议》完整文本\n   · 发现采购人员收受回扣后，法务的处置流程（内部调查、证据固定、刑事报案 vs 民事追偿、劳动关系处理）\n4. 给我《供应商合规承诺书》模板"},
+ {t:"复盘：供应链法律体系",
+  f:["整合本周产出","自测 10 题","核心：如何设计一个既赚钱又安全的供应链结构"],
+  o:"<b>《供应链合规管理手册》</b>定稿",
+  p:"第 10 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：供应链模式、差价风险、反垄断边界、标签责任、召回分级、新反法受贿责任、廉洁协议\n2. 综合案例：\n   「总部向加盟商统一配送核心汤底料包，进价 8 元，售价 15 元。加盟商集体投诉：差价过高、且强制采购。同时市场监管部门接到举报称总部涉嫌限定交易。\n   问：(1) 加盟商的主张能否成立？(2) 反垄断风险有多大？怎么判断有没有市场支配地位？(3) 供应链差价要不要披露？不披露的后果？(4) 我方合规整改方案？(5) 给我一份加盟商沟通与危机化解方案\n   我先答，你批改并给满分答案」\n3. 核心议题：给我一份《供应链结构优化建议》——怎么在保持利润的同时降低法律和舆情风险"
+ }],
+ wk:{t:"周末实战⑩：起草《统采统配供货框架协议》",d:"起草总部与核心供应商的供货框架协议全文，配套《供应商准入评分表》和《廉洁协议》。",
+ p:"我要起草《统采统配供货框架协议》。请给我完整协议全文（甲方=品牌总部，乙方=供应商），重点条款：\n1. 合作模式与订单机制 2. 价格机制（基准价、调价程序、最惠价格、年度降价）3. 质量标准与验收（异议期、第三方检测、不合格品处理）4. 供货保障（产能承诺、断供责任、不可抗力与情势变更）5. 资质与合规 6. 食品安全责任（追溯配合、召回配合与费用承担、追偿）7. 廉洁与反商业贿赂（审计权、解约权）8. 保密 9. 知识产权 10. 违约责任 11. 终止与过渡 12. 争议解决\n\n另外给我：《供应商准入评分表》（各维度权重与评分标准）和《廉洁协议》全文"}},
+
+{w:11,th:"劳动用工：总部与门店的双层结构",goal:"餐饮是劳动密集型行业，用工风险高频且分散。搞清总部与门店的责任边界",
+ wk:{t:"周末实战⑪：处理一起模拟劳动争议",d:"模拟一起真实的劳动争议：某加盟店员工在熬汤时被烫伤（工伤），同时主张未签劳动合同二倍工资、加班费、未缴社保。你作为总部法务，判断要不要管、怎么管、总部有无风险、如何切割。",
+ p:"我要做一次劳动争议的实战处置。\n\n案情：某加盟店（个体工商户）厨师李某，在熬汤时被热汤烫伤，住院 15 天，医疗费 6 万元。李某主张：\n(a) 未签订书面劳动合同，要求二倍工资差额（工作 10 个月）\n(b) 加班费（餐饮营业时间长，每天 11 小时，无考勤记录）\n(c) 未缴纳社会保险，要求赔偿\n(d) 工伤待遇\n(e) 同时把品牌总部列为共同被申请人，理由是：店长由总部委派、员工穿总部统一工服、使用总部系统排班、接受总部督导管理\n\n请让我先给出分析和处置方案，然后你点评。之后请给我标准答案：\n1. 李某的五项主张，每项成立可能性与金额测算\n2. 总部是否被列为当事人？被认定共同用人单位或连带责任的风险有多大？\n3. 事实劳动关系的认定标准——哪些证据会「出卖」总部（委派店长、系统排班、工服、督导记录）\n4. 总部的免责防线怎么建（合同条款 + 制度设计 + 日常操作）\n5. 给我一份《加盟店用工责任隔离方案》\n6. 给我一份《劳动争议处置 SOP》（接案→证据→协商→仲裁→诉讼）\n7. 给我谈判方案（一次性了结 vs 走完程序，各自成本）"},
+ d:[
+ {t:"总部用工：组织、合同与竞业限制",
+  f:["劳动合同：期限、试用期、岗位与工作地点（连锁企业经常调店）","保密与竞业限制：总部核心岗位（研发、采购、拓展）的竞业限制设计","规章制度：民主程序与公示告知——《劳动合同法》第4条的形式要件"],
+  o:"《总部用工合规清单》+《竞业限制协议（模板）》",
+  p:"请帮我梳理品牌总部（连锁企业总部）的用工合规要点：\n\n1. 《总部用工合规清单》：\n   · 入职环节（offer、背景调查、入职审查、劳动合同签订时限——超过 1 个月要付二倍工资）\n   · 合同条款设计（期限、试用期、工作地点——连锁企业经常调店，怎么约定工作地点才灵活、社会保险、工时制度）\n   · 规章制度（民主程序 + 公示告知的法定要求，缺一个就无效，给我可落地的操作方式和证据留存方法）\n   · 在职管理（调岗调薪、绩效考核、培训服务期、保密）\n   · 离职管理（协商解除、过失性辞退、无过失辞退、经济补偿计算、竞业限制启动）\n2. 给我《竞业限制协议》模板，重点讲透：\n   · 适用人员范围（高管、高技、其他负有保密义务的人）\n   · 期限（不超过 2 年）\n   · 经济补偿标准（各地口径，一般是离职前 12 个月平均工资的 30% 且不低于最低工资）\n   · 违约金怎么定才不会被调减\n   · 未支付补偿的后果（劳动者能不能解除竞业限制）\n3. 餐饮连锁特有的用工问题：\n   · 研发/配方人员的竞业限制（配方是核心资产）\n   · 拓展/招商人员离职带走加盟商资源\n   · 采购人员的廉洁风险\n   分别给我防范方案\n4. 给我一份《核心岗位用工风险分级表》"},
+ {t:"门店用工：谁来当用人单位",
+  f:["基本原则：加盟商是门店员工的用人单位，与总部无劳动关系","风险点：总部过度介入门店人事管理 → 被认定事实劳动关系或共同用人单位","三种派驻模式：委派店长、劳务派遣、业务外包的法律差异"],
+  o:"<b>《加盟店用工责任隔离方案》</b>+《门店用工合规指引》",
+  p:"这是加盟体系用工的核心问题。请给我一份《加盟店用工责任隔离方案》：\n\n1. 责任认定的法律框架：\n   · 判断劳动关系的实质标准（从属性：人格从属、经济从属、组织从属）\n   · 哪些事实会「出卖」总部，导致被认定与门店员工存在劳动关系或承担连带责任？请给我一份《高危事实清单》（如：总部发工资、总部缴社保、总部系统排班、总部任免店长、总部直接处罚员工、员工工牌是总部的）\n   · 给我 2 个认定总部担责的判例 + 2 个认定不担责的判例，提炼裁判要旨\n2. 三种派驻模式对比：\n   · 委派店长（劳动关系在总部，派驻门店）——风险在哪？怎么处理？\n   · 劳务派遣（有 10% 比例限制、三性岗位限制）\n   · 业务外包（真外包 vs 假外包，怎么区分，怎么设计才有效）\n   给我对比表和推荐方案\n3. 给我《门店用工合规指引》：\n   · 加盟商作为用人单位必须做什么（签合同、缴社保、工伤、工时）\n   · 总部可以做什么、不能做什么（给我一份《总部行为红线清单》）\n4. 给我合同条款：加盟合同中关于用工责任的条款范本（责任归属、追偿、保险要求、总部免责、配合义务）\n5. 特殊场景：加盟商弃店跑路，员工工资找谁要？给我应急预案"},
+ {t:"工伤、工时与特殊用工",
+  f:["工伤认定与待遇：餐饮业高频（烫伤、切割伤、滑倒）、未缴社保时的用人单位全额赔付风险","工时制度：标准工时 vs 综合计算工时 vs 不定时工作制，餐饮营业时间长怎么合规","特殊用工：退休返聘、未成年工、兼职小时工、实习生"],
+  o:"《门店工伤防控手册》+《工时制度设计方案》",
+  p:"请帮我建立餐饮门店的工伤与工时合规方案：\n\n1. 工伤：\n   · 工伤认定的情形（工作时间、工作场所、因工作原因；上下班途中非本人主要责任的交通事故）\n   · 餐饮业高频工伤类型与预防（烫伤、切割伤、滑倒摔伤、燃气事故、电器事故）\n   · 工伤待遇项目与计算（医疗费、停工留薪期工资、伤残津贴、一次性伤残补助金、一次性医疗补助金、一次性就业补助金）\n   · <b>未缴社保的后果</b>：全部工伤待遇由用人单位承担。一个八级伤残大概要赔多少钱？给我测算\n   · 给我《门店工伤防控手册》框架（安全操作规程、防护装备、培训、事故报告、应急处理）\n   · 给我《工伤事故处置 SOP》（48 小时黄金期：救治、报案、证据固定、认定申请时限）\n   · 雇主责任险怎么买？能不能替代社保？\n2. 工时：\n   · 三种工时制度对比与适用场景\n   · 餐饮门店营业时间长（如 10:00-22:00），怎么排班才不产生加班费？\n   · 综合计算工时工作制怎么申请？审批流程\n   · 加班费计算基数怎么定（这一条能省很多钱，也能踩很多坑）\n   · 给我《工时制度设计方案》和《排班合规指引》\n3. 特殊用工：退休返聘（劳务关系，但要注意工伤风险）、未成年工（禁止从事的劳动）、兼职小时工（非全日制用工的时限与报酬结算）、实习生（三方协议）。每种给我风险点和协议要点"},
+ {t:"违纪处理与劳动争议应对",
+  f:["员工手册：内容合法 + 程序民主 + 公示告知，三要件缺一不可","违纪处理：警告、记过、调岗降薪、解除劳动合同的程序与证据","劳动争议：仲裁前置、时效、举证责任倒置（用人单位举证）"],
+  o:"《员工手册（门店版）》核心章节 +<b>《劳动争议应对手册》</b>",
+  p:"请帮我建立违纪处理与争议应对能力：\n\n1. 员工手册：\n   · 三要件（内容合法合理、经民主程序、已公示告知）——每个要件怎么做才算数？证据怎么留？\n   · 给我《员工手册（门店版）》核心章节全文：考勤与休假、行为规范、仪容仪表、食品安全操作规范（违反可解雇）、保密、奖惩制度、违纪情形与处分等级\n   · 哪些违纪可以「开除且无补偿」？（《劳动合同法》第39条，特别是「严重违反规章制度」——怎么定义「严重」才有执行力）\n2. 违纪处理实务：\n   · 处理流程（调查 → 取证 → 听取申辩 → 作出决定 → 送达）\n   · 证据类型与固定（监控、证人证言、书面检讨、谈话笔录）\n   · 给我《违纪处理文书包》（谈话笔录、警告通知书、解除通知书、送达回证）\n   · 常见踩坑：罚款能不能直接扣工资？调岗降薪能不能单方做？\n3. 劳动争议应对：\n   · 仲裁前置程序、时效（1年，从知道或应当知道权利被侵害之日起）\n   · 举证责任倒置：哪些事项由用人单位举证？（这是餐饮企业最容易输的地方——考勤记录、工资支付记录由公司举证，没留就认输）\n   · 给我《劳动争议应对手册》：接案→证据清单→答辩→庭审→执行\n   · 常见诉求的抗辩要点：二倍工资、加班费、经济补偿、未休年假、社保\n4. 给我一份《用工档案管理制度》（每个员工必须留存的证据清单）"},
+ {t:"复盘：用工合规体系",
+  f:["整合本周产出","自测 10 题","核心：总部如何在「要管控」与「不担责」之间走钢丝"],
+  o:"<b>《加盟体系用工合规手册》</b>定稿",
+  p:"第 11 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：竞业限制要件、事实劳动关系认定、工伤待遇与未缴社保后果、工时制度、举证责任倒置、违纪解除条件\n2. 综合案例：\n   「某加盟店店长由总部招聘、总部发薪、总部考核，但劳动合同是与加盟商签的。该店长离职后主张与总部存在劳动关系，要求总部支付未签合同二倍工资和经济补偿，并提供了总部系统的排班截图、总部给他的绩效考核邮件、总部工牌。\n   问：(1) 他主张成立的可能性？(2) 关键证据是哪几项？(3) 我方最有杀伤力的抗辩是什么？(4) 如果败诉，连锁反应有多大（其他店长会不会跟进）？(5) 事后怎么整改？\n   我先答，你批改并给满分答案」\n3. 给我一份《总部用工行为红线清单》（一页纸，发给业务部门，明确哪些事绝对不能做）\n4. 第三阶段总结：输出《第三阶段知识结构图》"
+ }],
+ wk:{t:"周末实战⑪：处理一起模拟劳动争议",d:"模拟一起真实劳动争议：加盟店厨师工伤 + 二倍工资 + 加班费 + 未缴社保，且把总部列为共同被申请人。你作为总部法务判断要不要管、怎么管、如何切割。",
+ p:"案情：某加盟店（个体工商户）厨师李某熬汤时被烫伤，住院 15 天，医疗费 6 万元。主张：(a) 未签劳动合同二倍工资（工作10个月）(b) 加班费（每天11小时，无考勤记录）(c) 未缴社保赔偿 (d) 工伤待遇 (e) 把总部列为共同被申请人，理由是店长由总部委派、统一工服、总部系统排班、接受总部督导。\n\n我先给分析和处置方案，你点评。之后给我标准答案：\n1. 五项主张的成立可能性与金额测算\n2. 总部被认定共同用人单位或连带责任的风险有多大\n3. 事实劳动关系认定标准——哪些证据会「出卖」总部\n4. 总部的免责防线（合同条款 + 制度设计 + 日常操作）\n5. 《加盟店用工责任隔离方案》\n6. 《劳动争议处置 SOP》\n7. 谈判方案（一次性了结 vs 走完程序的成本对比）"}},
+
+{w:12,th:"数据合规与预付卡：两个被低估的雷区",goal:"会员数据权属和预付卡资金池，一个涉及个保法重罚，一个可能引爆群体性事件",
+ wk:{t:"周末实战⑫：《预付卡合规整改方案》+《会员数据处理协议》",d:"产出一份单用途商业预付卡的合规整改方案（备案、资金存管、发行规则、退款机制、加盟店发卡的责任主体设计），以及一份总部与加盟商之间的《会员数据处理协议》。",
+ p:"我要产出两套文件：\n\n【文件一】《单用途商业预付卡合规整改方案》\n设定：品牌在全国 300+ 门店（直营 80 + 加盟 220）发行储值卡，累计预收资金约 5000 万元，目前未做备案、未做资金存管。\n请给我：\n1. 法律定性：我方发行的是不是「单用途商业预付卡」？适用哪个规定（《单用途商业预付卡管理办法（试行）》——注意它只约束零售业、住宿餐饮业、居民服务业的企业法人）\n2. 备案义务：向谁备案（省级/市级商务主管部门）、什么时限、什么材料、规模发卡企业/集团发卡企业/品牌发卡企业的分类标准\n3. 资金存管：存管比例（预收资金余额的多少）、存管银行的选择、存管账户的运作机制\n4. 加盟店发卡的责任主体问题（这是关键）：加盟店是个体工商户，能不能发卡？以谁的名义发？钱进谁的账户？兑付责任谁负？\n5. 发行规则与协议：《购卡协议》必备条款、实名购卡要求、退卡机制、有效期限制、余额查询\n6. 整改路线图（分阶段、时间表、责任人）+ 风险敞口测算（如果不整改，最坏情况是什么）\n\n【文件二】《会员数据处理协议》\n总部与加盟商之间关于会员个人信息的处理安排：处理者/受托方定位、处理目的与范围、数据回传、安全保障、跨境（无）、留存期限、终止后处理、审计权、违约与赔偿\n\n请给我全文 + 起草说明"},
+ d:[
+ {t:"个保法：门店每天都在处理的个人信息",
+  f:["收集场景：扫码点餐、会员注册、外卖订单、监控摄像、人脸识别、Wi-Fi 探针","核心规则：告知同意、最小必要、目的限制；单独同意的情形（敏感信息、对外提供）","扫码点餐强制关注公众号/强制收集手机号——已被监管点名，是高频违规"],
+  o:"<b>《门店个人信息处理合规清单》</b>+《隐私政策（模板）》",
+  p:"请帮我建立餐饮门店的数据合规体系：\n\n1. 场景化梳理：餐饮门店在哪些环节收集个人信息？请逐一分析合规要求：\n   · 扫码点餐（强制关注公众号、强制授权手机号、强制获取位置——哪些是违规的？监管怎么说的？）\n   · 会员注册与积分（收集的必要范围、会员权益变更的通知）\n   · 外卖订单（配送信息、地址）\n   · 监控摄像（告知义务、保存期限、谁有权查看、员工监控的边界）\n   · 人脸识别（这是红线：《个保法》第26条要求取得单独同意且限于维护公共安全目的——商业用途的人脸识别基本不能用）\n   · 营销推送（商业广告与会员服务的区分、退订机制）\n   · 员工信息（员工也是个人信息主体，考勤指纹/人脸的合规）\n2. 给我《门店个人信息处理合规清单》（可直接下发门店）\n3. 给我《隐私政策》模板（餐饮版，含扫码点餐、会员、营销、第三方共享、Cookie/SDK）\n4. 给我《门店数据合规检查表》（自查用，20 项）\n5. 违法后果：《个保法》的处罚档次（责令改正、警告、没收违法所得、100 万以下罚款；情节严重 5000 万以下或上一年度营业额 5%）——什么算「情节严重」？给我近年餐饮/零售行业的数据合规处罚案例"},
+ {t:"加盟体系内的数据权属设计",
+  f:["会员数据归谁：总部还是加盟商？——法律没有明文，靠合同设计","数据流转的合规架构：总部与加盟商是共同处理者还是委托处理关系","加盟商退出时，会员数据怎么处理"],
+  o:"<b>《加盟体系数据权属设计方案》</b>+《数据处理协议（模板）》",
+  p:"加盟体系里会员数据的权属是个新型难题。请给我一份《加盟体系数据权属设计方案》：\n\n1. 法律定性：\n   · 会员数据属于谁？法律有没有明文？（没有——所以靠约定）\n   · 《个保法》下的角色划分：个人信息处理者 / 受托处理方 / 共同处理者，各自的权利义务与责任\n   · 总部与加盟商应该设计成哪种关系？各有什么利弊？（提示：委托处理关系对总部更有利，但要求总部对加盟商有控制力并承担更多安全保障义务）\n2. 给我一份《会员数据处理协议》完整文本（总部 ↔ 加盟商）\n3. 关键条款设计：\n   · 数据回传条款（加盟商的会员数据必须实时/定期回传总部系统）\n   · 使用权条款（总部能否用于营销、分析、对外合作）\n   · 安全保障义务与审计权\n   · 加盟商退出时的数据处理（移交？删除？能不能带走？顾客有权要求删除/转移怎么办？）\n   · 违反的违约责任\n4. 特殊问题：\n   · 加盟商自己搞了一套会员系统、自己积累了一批客户，合同终止后带走——总部能阻止吗？\n   · 顾客要求删除个人信息，但数据分散在总部和 200 家门店系统里，怎么执行？（给我《个人信息删除/转移响应流程》）\n   · 跨店通用的储值和积分，涉及资金清分和数据同步，法律上怎么处理\n5. 给我《数据分类分级管理制度》框架"},
+ {t:"单用途商业预付卡：预收资金的法律雷区",
+  f:["适用范围：零售业、住宿餐饮业、居民服务业的企业法人；规模/集团/品牌发卡企业的分类","三项核心义务：备案、资金存管（预收资金余额的一定比例）、业务报告","加盟店发卡的责任主体难题：个体户能否发卡、兑付责任谁负"],
+  o:"<b>《预付卡合规检查表》</b>+《购卡协议（模板）》",
+  p:"餐饮的储值卡是一个被严重低估的雷区。请给我：\n\n1. 法律适用：\n   · 《单用途商业预付卡管理办法（试行）》的适用范围（行业范围 + 主体范围：企业法人。个体工商户不适用——这意味着加盟店如果是个体户，法律地位很尴尬）\n   · 三类发卡企业的分类标准与不同义务（规模发卡企业、集团发卡企业、品牌发卡企业）\n   · 备案、资金存管、业务报告三项义务的时限与要求\n   · 存管比例是多少？（请核实现行标准）\n2. 《单用途商业预付卡合规检查表》\n3. 加盟体系的特殊难题（这是重点）：\n   · 加盟店是个体工商户，能不能发行储值卡？\n   · 如果以总部名义统一发行，钱进总部账户，加盟店垫付了服务成本 —— 资金怎么清分？税务怎么处理？\n   · 如果加盟店自行发卡，加盟商跑路了，消费者找谁？总部有没有责任？（品牌背书的风险）\n   · 给我三种发行模式的对比与推荐方案\n4. 给我《购卡协议》模板（含：实名购卡、有效期、退卡规则、遗失补办、使用范围、争议处理）\n   · 特别讲清楚：「本卡最终解释权归本公司所有」「过期作废」「概不退换」这些条款的效力\n5. 风险测算：给我一个「预付卡挤兑/跑路事件」的真实案例，分析后果、责任主体、处置方式\n6. 给我《预付卡突发事件应急预案》"},
+ {t:"外卖平台与网络交易",
+  f:["外卖平台协议的审查要点：佣金、排名、排他、活动补贴的分摊、数据与评价","平台规则变化（佣金上调、活动强制参加）的应对","刷单炒信、虚假评价的法律风险（新反法明确禁止）"],
+  o:"《外卖平台协议审查要点表》+《网络交易合规清单》",
+  p:"请帮我建立网络交易与外卖平台的合规能力：\n\n1. 《外卖平台合作协议审查要点表》（站在商户/品牌方立场）：\n   · 佣金费率与调整机制（平台能不能单方调价？）\n   · 排他条款（独家合作的效力与反垄断风险）\n   · 促销活动与补贴分摊（满减活动谁出钱？出多少？能不能拒绝参加？）\n   · 排名与流量（付费推广的透明度）\n   · 数据与评价（商户数据的归属与使用、差评处理机制）\n   · 结算周期与扣款\n   · 违约责任与单方下线权\n   · 给我每一条的风险提示和谈判要点\n2. 品牌总部统一签署 vs 各门店自行签署，哪种更好？（涉及：结算、发票、责任主体、平台账号归属）\n3. 刷单炒信与虚假评价：\n   · 新《反不正当竞争法》明确规定不得通过虚假评价方式帮助他人虚假宣传、不得滥用平台规则实施虚假交易——这个对我方意味着什么？\n   · 门店为了提高排名刷单，平台会怎么处罚？法律会怎么处罚？\n   · 竞争对手对我方刷差评，我方怎么取证维权？\n4. 网络餐饮的特殊要求：\n   · 《网络餐饮服务食品安全监督管理办法》要点（入网审查、公示、配送容器与时间、无实体门店不得经营）\n   · 外卖包装的环保要求（限塑令）\n   · 外卖食品的经营许可要求（是否需要在许可上注明「网络经营」）\n5. 给我《网络交易合规清单》（20 项）"},
+ {t:"复盘：数据与资金合规",
+  f:["整合本周产出","自测 10 题","核心：预付卡业务的法律架构怎么搭才既好用又安全"],
+  o:"<b>《数据合规与预付卡管理手册》</b>定稿",
+  p:"第 12 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：个保法告知同意、人脸识别红线、数据权属设计、预付卡三类企业、存管比例、加盟店发卡责任、平台协议要点\n2. 综合案例：\n   「某加盟店（个体工商户）自行发行储值卡，售出 80 万元后突然关门跑路。消费者集体维权，围堵了同品牌另一家门店，并在社交平台称『XX 品牌跑路』。经查，总部未做预付卡备案，且该店的会员系统接入了总部 CRM，总部掌握全部会员数据。\n   问：(1) 消费者可以向谁主张权利？(2) 总部承担责任的可能性有多大？(3) 品牌声誉损失怎么止损？(4) 行政监管会找谁？(5) 如果事前 redesign，给我一份完整的预防方案（合同 + 制度 + 技术）\n   我先答，你批改并给满分答案」\n3. 给我一份《预付卡业务法律架构建议书》（含三种架构的对比、推荐方案与理由、落地步骤）"
+ }],
+ wk:{t:"周末实战⑫：《预付卡合规整改方案》+《会员数据处理协议》",d:"产出单用途商业预付卡合规整改方案与总部-加盟商《会员数据处理协议》。",
+ p:"我要产出两套文件：\n\n【文件一】《单用途商业预付卡合规整改方案》\n设定：品牌在全国 300+ 门店（直营 80 + 加盟 220）发行储值卡，累计预收资金约 5000 万元，目前未备案、未做资金存管。\n请给我：1. 法律定性（是否属于单用途商业预付卡，适用哪个规定，注意《管理办法（试行）》只约束零售业、住宿餐饮业、居民服务业的企业法人）2. 备案义务（向谁、时限、材料、三类发卡企业分类标准）3. 资金存管（比例、银行选择、账户运作）4. 加盟店发卡的责任主体问题（个体户能否发卡、钱进谁账户、兑付责任谁负）5. 发行规则与《购卡协议》必备条款（实名、退卡、有效期、余额查询）6. 整改路线图 + 风险敞口测算\n\n【文件二】《会员数据处理协议》\n总部与加盟商之间关于会员个人信息的处理安排：角色定位、处理目的与范围、数据回传、安全保障、留存期限、终止后处理、审计权、违约与赔偿。请给我全文 + 起草说明"}},
+{w:13,th:"品牌保护与打假：守住最值钱的资产",goal:"仿冒门店是加盟品牌最痛的问题。建立一套可运转的打假体系，而不是每次临时抱佛脚",
+ wk:{t:"周末实战⑬：针对一个模拟仿冒门店，输出《维权行动方案》",d:"设定：某三线城市出现一家「XX源过桥米线」，门头、装修、菜单、工服高度模仿蒙自源，甚至自称「蒙自源升级版」，但未签约。你作为法务总监，输出一份完整的维权行动方案：证据清单、取证方式、维权路径选择（行政投诉/民事诉讼/刑事报案）、时间表、成本预算、预期结果。",
+ p:"我要做一次完整的打假实战推演。\n\n案情：某三线城市出现「XX源过桥米线」，门店位于一个县城商业街，面积 80㎡，经营者为个体工商户。具体行为：\n· 门头使用与蒙自源近似的字体和红黄配色\n· 店内装修、桌椅、工服高度相似\n· 菜单结构、菜品命名（如「状元米线」「秀才米线」）相同\n· 在点餐小程序和短视频平台自称「蒙自源全新升级品牌」「原班团队」\n· 未与我方签订任何协议\n\n请让我先给出维权方案，你点评。之后给我标准答案：\n\n1. 权利基础梳理：我方有哪些权利可以主张？（注册商标权、有一定影响的商品装潢/企业名称、著作权、商业秘密）每种的构成要件和我方需要准备的证据\n2. 证据清单与取证方式：\n   · 需要固定哪些证据（门店外观、菜单、宣传物料、网络内容、销售数据、获利证据）\n   · 每种证据怎么取（公证保全、区块链存证、时间戳、自行拍摄的证据效力）\n   · 给我《打假取证操作手册》\n3. 维权路径对比表：行政投诉（市场监管/商标局）、民事诉讼（商标侵权+不正当竞争）、刑事报案（假冒注册商标罪）、平台投诉。每种的：适用条件、成本、周期、成功率、可获得的救济\n4. 给我一份《维权行动方案》：分阶段时间表（取证→律师函→行政投诉→诉讼→执行）、每一步的动作、成本预算、预期结果、风险提示\n5. 给我《律师函》全文\n6. 给我《民事起诉状》的核心结构与诉讼请求写法（赔偿额怎么算：实际损失/侵权获利/许可使用费倍数/法定赔偿——法定赔偿上限是多少？）\n7. 特殊难点：如果对方先注册了近似商标怎么办？如果对方在当地已注册商标并使用，我方还能维权吗？\n8. 给我《品牌打假年度预算与 KPI 设计》"},
+ d:[
+ {t:"商标侵权的认定与救济",
+  f:["侵权构成要件：商标近似 + 商品类似 + 容易导致混淆","餐饮服务与餐饮服务的类似判定；第43类与第35类的保护范围","救济路径：行政查处、民事诉讼（法定赔偿上限）、刑事（假冒注册商标罪）"],
+  o:"《商标侵权判定要点表》+《维权路径选择决策树》",
+  p:"请给我一份《商标侵权判定与救济操作手册》：\n\n1. 侵权认定的三步法：\n   · 商标近似怎么判断？（字形、读音、含义、整体视觉效果；隔离比对、要部比对）\n   · 商品/服务类似怎么判断？（《类似商品和服务区分表》的作用与局限——餐饮实务中法院常突破区分表）\n   · 混淆可能性（包括售前混淆、售后混淆）\n   · 给我 5 个餐饮领域的近似判断实例（哪些判侵权、哪些不判）\n2. 餐饮特有的难点：\n   · 第 43 类（餐饮住宿）与第 35 类（特许经营管理）的保护范围差异\n   · 「米线」是通用名称，含通用名称的商标保护强度弱——这对我们意味着什么？\n   · 地名商标（如「蒙自」「云南」）的保护限制\n3. 救济路径决策树：\n   · 行政查处（向市场监管部门投诉）：优点、缺点、能拿到什么\n   · 民事诉讼：管辖、诉讼请求设计、赔偿计算方法（实际损失 → 侵权获利 → 许可使用费倍数 → 法定赔偿），法定赔偿的上下限（请核实现行《商标法》第63条的规定）\n   · 刑事报案：假冒注册商标罪的立案标准（非法经营数额/违法所得数额）\n   · 给我一张《维权路径选择决策表》（按侵权规模、证据充分度、成本预算推荐路径）\n4. 抗辩视角：如果我方是被诉方，有哪些抗辩理由？（在先使用、正当使用、通用名称、三年不使用抗辩、权利懈怠）"},
+ {t:"新反法下的混淆与仿冒打击",
+  f:["第7条混淆行为扩张：新媒体账号名称、APP 图标、搜索关键词、将他人商标作字号、帮助侵权","有一定影响的商品名称、包装、装潢的保护（不需要注册商标）","虚假宣传与商业诋毁的交叉运用"],
+  o:"<b>《仿冒门店打击武器库》</b>——每种仿冒行为对应的法律武器",
+  p:"2025 年 10 月 15 日施行的新《反不正当竞争法》大幅扩张了混淆行为的范围。请给我一份《仿冒门店打击武器库》：\n\n1. 武器清单：每种仿冒行为，列出可以主张的法律依据（商标法 / 反不正当竞争法 / 著作权法 / 民法典）\n   · 仿冒门店招牌与门头（商标近似 / 有一定影响的装潢）\n   · 仿冒店内装修与VI（有一定影响的装潢 / 著作权）\n   · 仿冒菜单与菜品命名（有一定影响的商品名称 / 著作权）\n   · 冒用品牌名称做字号（新反法第7条明确：将他人注册商标、未注册的驰名商标作为企业名称中的字号使用，属于混淆）\n   · 用我方品牌名做搜索关键词投放（新反法第7条明确属于混淆）\n   · 仿冒/抢注新媒体账号名称、APP 图标（新反法新增）\n   · 第三方（如装修公司、招商平台）帮助实施混淆（新反法禁止帮助他人实施混淆）\n   · 自称「XX 品牌原班团队」「XX 品牌升级版」（虚假宣传 / 商业诋毁）\n2. 「有一定影响的商品名称、包装、装潢」的认定：\n   · 需要证明什么？（知名度、特有性、使用在先）\n   · 餐饮门店的「装潢」包括什么？怎么证明「有一定影响」？\n   · 给我《知名度证据清单》（销售时间、区域、销售额、宣传投入、获奖、媒体报道、门店数量）\n3. 给我一份《仿冒门店投诉材料模板》（给市场监管部门的投诉书）\n4. 给我一份《给招商平台的侵权下架通知书》模板\n5. 维权实务技巧：先发律师函还是先投诉？要不要先公证？（取证顺序的讲究）"},
+ {t:"商业秘密保护：配方与运营体系",
+  f:["商业秘密三要件：秘密性（不为公众所知悉）、价值性、保密性（采取保密措施）","加盟场景的致命弱点：手册要交给加盟商，秘密就出去了——怎么平衡","竞业限制 + 保密协议 + 物理/技术措施的组合"],
+  o:"<b>《商业秘密保护制度》</b>全文 +《保密协议（模板）》",
+  p:"请给我一份可直接发文的《商业秘密保护制度》：\n\n1. 完整制度文本（含：目的、适用范围、商业秘密的范围与分级、密级标识、接触权限、保密措施、对外披露审批、涉密人员管理、离职管理、违规责任、附则）\n2. 餐饮企业的商业秘密清单：\n   · 配方与工艺（汤底、酱料、腌制的配比与工艺参数）\n   · 供应链信息（供应商名单、采购价格、成本结构）\n   · 运营数据（单店模型、坪效、人效、SKU 销售排行）\n   · 门店拓展信息（选址模型、商圈评估、拟开门店清单）\n   · 培训体系与操作手册\n   · 客户关系与加盟商名单\n3. 保密性要件的落地（这是诉讼中最容易输的一环）：\n   · 什么样的保密措施才算「合理」？给我一套可执行的措施清单（物理、电子、制度、合同四个层面）\n   · 给我《保密协议》模板（员工版 + 加盟商版 + 供应商版）\n4. 加盟场景的特殊矛盾：手册必须给加盟商，但给了就泄密。解药是什么？\n   · 分级授权（核心配方不给，只给标准化料包）\n   · 手册拆分为「通用版」与「核心版」\n   · 系统权限分级 + 水印 + 操作日志\n   · 给我一套《手册分级管理方案》\n5. 商业秘密被侵犯后的救济：民事（反法）、行政（市场监管举报）、刑事（侵犯商业秘密罪，立案标准 30 万元）。给我《商业秘密维权 SOP》"},
+ {t:"打假体系：从被动应对到主动治理",
+  f:["监测体系：商标公告监测、线上（电商/短视频/本地生活）监测、线下（拓展团队/加盟商举报）","分级响应：按侵权规模与危害程度采取不同打法","外部资源：商标代理机构、调查公司、律师网络、行业协会"],
+  o:"<b>《品牌保护年度方案》</b>+《打假 KPI 体系》",
+  p:"我要建立一套可持续运转的品牌保护体系，而不是每次临时抱佛脚。请给我：\n\n1. 《品牌保护年度方案》完整框架：\n   · 监测体系：商标公告监测（防止抢注）、线上监测（短视频/本地生活平台/电商/招商网站）、线下监测（区域拓展团队、加盟商举报机制）、加盟商退出后的跟踪（防止退出后继续使用）\n   · 分级响应机制：按侵权规模（单店/多店/规模化仿冒）、地域、危害程度分级，每级对应的响应流程、时限、资源投入\n   · 组织与分工：法务、拓展、运营、外部律师、代理机构的职责\n   · 预算与资源配置\n   · KPI 设计\n2. 给我《打假案件管理系统》设计（案件台账：线索来源、侵权类型、处理阶段、责任人、时限、结果、成本）\n3. 外部资源管理：\n   · 商标代理机构 vs 律所，各自适合干什么\n   · 要不要用调查公司？合规边界在哪（调查取证的合法性）\n   · 异地维权怎么用当地律师（律师网络搭建）\n4. 给我《规模化仿冒的应对预案》（如果一夜之间出现 20 家仿冒店怎么办？集中投诉？示范诉讼？媒体发声？）\n5. 给我一份《加盟商退出后继续使用品牌的处置指引》（这是最常见也最容易被忽视的场景）"},
+ {t:"复盘：品牌保护作战体系",
+  f:["整合本周产出","自测 10 题","核心：一个法务总监如何证明品牌保护工作的价值"],
+  o:"<b>《品牌保护年度方案》</b>定稿",
+  p:"第 13 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：商标近似判断、第63条赔偿、新反法混淆扩张、有一定影响的装潢、商业秘密三要件、手册分级、打假路径选择\n2. 综合案例：\n   「前区域加盟商合同到期不续约，但仍挂着品牌招牌营业，并称『我这店开了 5 年，招牌是我做的，凭什么不让我用』。他还注册了与我方近似的商标（第 43 类，已初审公告）。同时，他带着 3 家门店转投竞品。\n   问：(1) 我方有哪些请求权？(2) 商标初审公告怎么狙击（异议的时限和理由）？(3) 招牌拆除能不能申请行为保全？(4) 他主张的『招牌是我做的』成立吗？(5) 带店转投竞品，能不能追究他违反竞业禁止？有效力吗？(6) 给我一份 30 天处置方案\n   我先答，你批改并给满分答案」\n3. 给我一份《品牌保护工作价值报告模板》（用于向 CEO 汇报：做了什么、避免了多少损失、创造了什么价值）"
+ }],
+ wk:{t:"周末实战⑬：针对一个模拟仿冒门店，输出《维权行动方案》",d:"设定：某县城出现高度模仿蒙自源的「XX源过桥米线」，自称「蒙自源升级版」。输出完整维权方案：证据清单、取证方式、路径选择、时间表、成本预算、预期结果。",
+ p:"案情：某三线城市「XX源过桥米线」，门头字体与配色近似、装修工服菜单高度相似、自称「蒙自源全新升级品牌/原班团队」，未签约。\n\n我先给维权方案，你点评。之后给我标准答案：\n1. 权利基础梳理（商标权/有一定影响的装潢/著作权/商业秘密）及各自证据要求\n2. 证据清单与取证方式（公证保全、区块链存证、时间戳）+《打假取证操作手册》\n3. 维权路径对比表：行政投诉、民事诉讼、刑事报案、平台投诉（适用条件/成本/周期/成功率/救济）\n4. 《维权行动方案》：分阶段时间表、动作、成本预算、预期结果、风险提示\n5. 《律师函》全文\n6. 《民事起诉状》结构与诉讼请求写法（赔偿额计算方法与法定赔偿上限）\n7. 特殊难点：对方已先注册近似商标怎么办\n8. 《品牌打假年度预算与 KPI 设计》"}},
+
+{w:14,th:"争议解决与判例精研：真刀真枪",goal:"前面学的所有东西，最终都要在法庭/仲裁庭上兑现。这周学怎么赢",
+ wk:{t:"周末实战⑭：模拟开庭",d:"你来担任特许人（总部）的代理人，让 AI 扮演加盟商的代理律师，就一起加盟纠纷进行完整的模拟庭审（起诉/答辩/举证质证/辩论）。重点练：如何在己方有瑕疵的情况下组织抗辩。",
+ p:"我要做一次完整的模拟庭审。\n\n案情（我方有明显瑕疵，这是故意的——真实世界没有完美案件）：\n· 我方（特许人）在开放加盟时，第 43 类商标已注册但 35 类未注册，已完成备案\n· 招商时招商经理口头说过「一般 8-10 个月回本」，有微信记录\n· 信息披露文件已交付并签署回执，但漏披露了 1 起 3 年前的加盟纠纷诉讼（标的 20 万，我方败诉）\n· 加盟商签约后 6 个月经营不善，亏损 40 万，现起诉要求：撤销合同、退还加盟费 15 万 + 保证金 5 万、赔偿装修损失 30 万\n· 合同中的冷静期是 7 天，加盟商已超过\n\n流程：\n1. 我先写《答辩状》和《抗辩要点清单》，你点评\n2. 你扮演原告（加盟商）律师发表代理意见，我来反驳，你评分\n3. 你扮演法官，向我方提问（挑最尖锐的问题），我来回答\n4. 最后你给出：本案我方的胜诉概率评估、最优策略（硬扛 vs 调解）、调解方案与底线\n5. 给我一份《加盟纠纷应诉清单》（通用版）\n6. 给我本案的完整证据清单（我方需要准备哪些证据、怎么组织）"},
+ d:[
+ {t:"冷静期退费纠纷：裁判规则全解",
+  f:["请求权基础：合同约定的冷静期解除权；无约定时能否主张（主流观点与防守策略）","退费比例：法院通常怎么判（全额 / 扣除已提供服务的对价 / 按比例酌定）","高频争议：加盟商已参加培训、已选址、已进货后能否全额退"],
+  o:"<b>《冷静期纠纷抗辩手册》</b>+ 判例摘要 10 则",
+  p:"请给我一份《冷静期退费纠纷抗辩手册》：\n\n1. 请求权基础梳理：\n   · 合同有约定冷静期时的处理\n   · 合同没有约定冷静期时，加盟商能否主张？（请给出主流裁判观点，以及我方作为特许人的防守策略）\n   · 冷静期约定的期限不合理（过长/过短）时，法院会不会干预？\n2. 退费规则：\n   · 法院判决退费时，通常怎么计算？给我一个计算方法总结（全额 / 扣除已提供服务的合理对价 / 按过错比例 / 酌定）\n   · 加盟商已参加培训、已选址（未签约）、已进货、已装修——这四种情形下退费比例分别怎么判？给我判例支撑\n   · 保证金要不要退？\n3. 给我 10 则冷静期纠纷的判例摘要（案号、基本案情、争议焦点、裁判要旨、对我方的启示），覆盖不同走向\n4. 我方的抗辩要点清单（10 条）+ 证据清单\n5. 给我一份《冷静期纠纷和解谈判方案》（什么情况下该和解、和解底线怎么定）"},
+ {t:"虚假宣传与信息披露不实之诉的攻防",
+  f:["两条进攻路线：欺诈撤销（民法典第148条）vs 违约解除（信息披露义务）","构成要件：隐瞒/虚假信息 + 实质影响 + 因果关系","我方的三大抗辩：不构成实质影响、加盟商未尽审慎义务、损失与我方无因果关系"],
+  o:"<b>《信息披露与虚假宣传纠纷抗辩手册》</b>+ 判例摘要 10 则",
+  p:"请给我一份《虚假宣传与信息披露不实纠纷的攻防手册》：\n\n1. 原告的两条进攻路线对比：\n   · 路线A：以欺诈为由请求撤销合同（《民法典》第148条）——构成要件、法律效果（返还财产+赔偿损失）、除斥期间（1年）\n   · 路线B：以违约为由请求解除合同（《条例》信息披露义务 + 合同）——构成要件、法律效果、诉讼时效\n   · 两条路各自的优势、劣势、举证难度对比表\n2. 「实质影响标准」的攻防：\n   · 原告怎么证明「实质影响」\n   · 我方怎么抗辩「不构成实质影响」\n   · 给我一个判断矩阵：什么级别的瑕疵 → 法院大概率支持解除；什么级别 → 不支持\n3. 给我 10 则判例摘要（5 则支持加盟商、5 则支持总部），提炼各自的关键事实差异\n4. 我方的三大抗辩体系：\n   · 抗辩一：不构成实质影响\n   · 抗辩二：加盟商未尽审慎注意义务（投资有风险，加盟商应自行尽调）\n   · 抗辩三：经营失败与我方行为无因果关系（市场、选址、经营能力等因素）\n   每条给我话术模板和证据要求\n5. 给我《原告证据清单预测表》（原告会准备什么证据，我方怎么反制）"},
+ {t:"撤店、欠费与违约金纠纷",
+  f:["保证金没收的效力：什么情况下法院支持，什么情况下不支持","违约金调减：民法典第585条，超过实际损失 30% 可被调减——我方怎么应对","追讨管理费与瞒报营业额的举证"],
+  o:"<b>《欠费与撤店纠纷追偿手册》</b>+《违约金设定与抗辩对照表》",
+  p:"请给我一份《欠费与撤店纠纷追偿手册》：\n\n1. 保证金没收：\n   · 什么情况下法院支持总部没收保证金？什么情况下不支持？\n   · 给我 6 个判例（3 支持 3 不支持），提炼关键差异\n   · 合同条款怎么写才能提高被支持的概率？（提示：明确保证金担保的具体范围、约定扣除的计算方式、避免写成「违约金」）\n2. 违约金调减：\n   · 《民法典》第 585 条第 2 款的规则：过分高于造成的损失，可以请求调减\n   · 「过分高于」的司法标准（一般以超过实际损失 30% 为标准）\n   · 我方怎么应对加盟商的调减请求？（提示：事先约定损失范围、举证实际损失、约定惩罚性违约金的性质）\n   · 给我《违约金设定与抗辩对照表》\n3. 追讨管理费与瞒报营业额：\n   · 怎么证明瞒报？（POS 数据、外卖平台后台、供应商进货数据反推、同业对比、税务申报数据）\n   · 给我一套「营业额核查与取证方案」\n   · 可以申请法院调查取证的情形\n4. 加盟商弃店（跑路）后的追偿：\n   · 诉讼主体（个体户还是经营者个人？）\n   · 财产保全与执行\n   · 给我《弃店追偿 SOP》\n5. 给我一份《加盟纠纷案件成本效益评估表》（什么案子该打、什么案子该放）"},
+ {t:"诉讼仲裁与执行策略",
+  f:["诉讼 vs 仲裁的选择：对连锁企业哪个更有利（保密性、专业性、成本、执行）","管辖地约定：总部所在地集中管辖的策略与效力（格式条款风险）","财产保全、证据保全、行为保全的适用与操作"],
+  o:"<b>《争议解决条款设计指引》</b>+《诉讼案件管理台账》",
+  p:"请给我一份《加盟纠纷争议解决策略指引》：\n\n1. 诉讼 vs 仲裁：\n   · 对比表：保密性、专业性（有没有懂特许经营的仲裁员）、一裁终局 vs 两审终审、成本、周期、保全的便利性、执行\n   · 对连锁品牌，选哪个更有利？给我明确建议和理由\n   · 仲裁条款怎么写才有效（仲裁机构要明确、事项要明确）\n2. 管辖地约定：\n   · 约定总部所在地法院管辖，效力如何？（格式条款风险：《民事诉讼法解释》第31条——经营者使用格式条款与消费者订立管辖协议，未采取合理方式提请消费者注意，消费者主张管辖协议无效的，人民法院应予支持。加盟商是不是「消费者」？）\n   · 给我一个能提高管辖条款效力的起草方案\n3. 保全：\n   · 财产保全（条件、担保、时限、错误保全的赔偿风险）\n   · 证据保全（什么情况下用，怎么用）\n   · 行为保全（加盟商拒不撤牌时，能不能申请行为保全？给我案例和操作方案）——这是我方最需要的武器\n4. 执行：\n   · 判决生效后加盟商不履行怎么办\n   · 财产线索的查找（个体工商户的经营者个人财产能不能执行？）\n   · 失信被执行人、限制高消费的威慑运用\n5. 群体性纠纷应对（多个加盟商联合起诉）：\n   · 给我《群体性加盟纠纷应对预案》（诉前化解、示范诉讼、舆情管理、政策统一）\n6. 给我《诉讼案件管理台账》模板"},
+ {t:"复盘：争议解决能力体系",
+  f:["整合本周产出","自测 10 题","核心：法务总监的核心价值是「打赢官司」还是「不打官司」"],
+  o:"<b>《加盟纠纷应诉手册》</b>定稿",
+  p:"第 14 周结束（第四阶段过半），帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：冷静期退费计算、欺诈撤销 vs 违约解除、实质影响标准、保证金没收效力、违约金调减、管辖条款效力、行为保全\n2. 综合案例（最难的一道）：\n   「10 家加盟商联合起诉，主张：招商虚假宣传（有微信记录承诺 8 个月回本）、信息披露不实（漏披露诉讼）、未提供持续支持。要求集体退费并赔偿，总标的 400 万元。已有人在短视频平台发布维权视频，播放量 50 万。\n   问：(1) 群体性案件的最大风险是什么？(2) 诉讼策略：合并审理还是分案？(3) 示范诉讼怎么用？(4) 舆情怎么管？(5) 和解政策怎么定（统一政策会不会引发更多人起诉？）(6) 给我一份完整的处置方案（法律 + 舆情 + 业务三线）\n   我先答，你批改并给满分答案」\n3. 深度议题：法务总监的核心价值是「打赢官司」还是「不打官司」？请给我一套《纠纷预防体系设计》（把纠纷消灭在签约前、运营中的具体机制）"
+ }],
+ wk:{t:"周末实战⑭：模拟开庭",d:"你担任特许人代理人，AI 扮演加盟商律师，就一起加盟纠纷进行完整模拟庭审。重点练：在己方有瑕疵的情况下如何组织抗辩。",
+ p:"案情（我方有明显瑕疵）：第43类商标已注册但35类未注册，已完成备案；招商经理微信口头说过「一般8-10个月回本」；信息披露已交付并签回执，但漏披露1起3年前败诉的加盟纠纷（标的20万）；加盟商签约后6个月亏损40万，起诉要求撤销合同、退还加盟费15万+保证金5万、赔偿装修损失30万；合同约定冷静期7天，已超过。\n\n流程：\n1. 我先写《答辩状》和《抗辩要点清单》，你点评\n2. 你扮演原告律师发表代理意见，我来反驳，你评分\n3. 你扮演法官向我方提问（最尖锐的），我来回答\n4. 你给出：胜诉概率评估、最优策略（硬扛 vs 调解）、调解方案与底线\n5. 给我《加盟纠纷应诉清单》（通用版）\n6. 给我本案完整证据清单"}},
+
+{w:15,th:"股权、税务与加盟体系顶层设计",goel:"",goal:"法务做到高层，必须懂交易结构。这周把加盟体系的法律架构设计能力建起来",
+ wk:{t:"周末实战⑮：设计「直营 + 加盟 + 区域代理」三层法律架构",d:"为一家拟从 300 店扩张到 1000 店的米线品牌，设计一套完整的法律架构：总部与区域公司的关系、直营与加盟的边界、区域代理/分特许的合同结构、全套协议清单与权限矩阵。",
+ p:"我要为一家拟从 300 店扩张到 1000 店的米线品牌设计法律架构。\n\n请给我：\n\n1. 架构方案对比（至少三种）：\n   · 方案A：全部直营加盟（总部直接签加盟商）\n   · 方案B：总部 + 区域代理（区域代理发展加盟商，总部与加盟商直接签约，区域代理收服务费）\n   · 方案C：总部 + 分特许（分特许人作为二级特许人，与加盟商直接签约）\n   每种：法律关系图（文字描述）、优势、风险、税务影响、管理难度、适用阶段\n2. 特别注意：分特许（sub-franchise）在中国法下的特殊问题——分特许人是否也要满足「两店一年」？是否也要备案？（请核实相关规定）\n3. 给我推荐方案及理由\n4. 全套协议清单（10 份以上）：每种协议的名称、签约主体、核心条款、与我方的关系\n5. 给我《权限矩阵表》：总部 / 区域代理 / 加盟商在「招商、签约、选址、采购、定价、营销、人事、解约」八个事项上的权限划分\n6. 给我《区域代理协议》的核心条款（授权范围、发展目标与考核、费用分账、区域保护、违约责任、退出机制）\n7. 风险提示：这套架构最大的法律风险是什么？怎么防？"},
+ d:[
+ {t:"加盟商主体设计与责任隔离",
+  f:["个体工商户 vs 有限责任公司 vs 合伙企业：税负、责任、诉讼、注销的对比","总部要不要要求加盟商必须注册公司？利弊分析","实际控制人担保与连带责任设计"],
+  o:"《加盟商主体选择指引》+《主体合规要求条款》",
+  p:"请给我一份《加盟商主体设计与责任隔离方案》：\n\n1. 主体类型全景对比：\n   · 个体工商户（无限责任、核定征收可能、注销简便、诉讼主体是经营者）\n   · 个人独资企业\n   · 有限责任公司（有限责任、查账征收、注销麻烦、股东有限责任的穿透情形）\n   · 合伙企业\n   从「责任承担、税务负担、设立与注销成本、诉讼与执行、我方管理便利度、加盟商接受度」六个维度对比\n2. 关键问题：\n   · 个体工商户的经营者对债务承担无限责任——这对总部是好事还是坏事？（追偿时更容易执行到个人财产，但也可能因执行困难而损失）\n   · 有限责任公司股东有限责任被「穿透」的法定情形有哪些？（一人公司财产混同、抽逃出资、未实缴出资、人格否认）\n   · 总部要不要强制要求加盟商注册公司？给我利弊分析和建议\n3. 加盟商用一家公司开多家店 vs 每家店一家公司，哪种对我方更有利？（涉及：违约的连锁影响、追偿、管理）\n4. 给我一套完整的主体条款 + 担保条款范本\n5. 给我《加盟商主体变更管理指引》（股权转让、经营者变更、增资、注销的处理）"},
+ {t:"加盟业务的税务合规",
+  f:["加盟费的增值税处理（特许权使用费 vs 服务费）、发票开具","保证金的税务处理（要不要开票？退还要不要红冲？）","供应链定价与关联交易（转让定价风险）、核定征收的历史遗留风险"],
+  o:"《加盟业务税务合规清单》+《涉税风险自查表》",
+  p:"请给我一份《餐饮加盟业务税务合规指引》：\n\n1. 逐项收入的税务处理：\n   · 加盟费（一次性）：增值税税目与税率、纳税义务发生时间、开票时点\n   · 保证金：收的时候要不要交税？退的时候怎么处理？没收的时候怎么开票？\n   · 管理费/特许权使用费：税目、税率、开票\n   · 供应链货款：进销项匹配、加价率对增值税与所得税的影响\n   · 推广费：代收代付 vs 自营收入的定性差异（这会影响税负和合规）\n   · 培训费、设计费、设备款\n2. 给我《涉税风险自查表》（30 项）\n3. 关联交易与转让定价：\n   · 总部向关联供应商采购、再卖给加盟商，定价有没有风险？\n   · 总部与关联公司之间的服务费、品牌使用费安排\n   · 什么情况下会触发税务稽查？\n4. 历史遗留问题：\n   · 加盟商多为个体户，过去的核定征收政策变化（近年大规模转为查账征收）对加盟体系的影响\n   · 总部有没有代扣代缴义务？\n5. 给我一份《发票管理规范》（总部对加盟商开票的要求、开票时点、红冲流程）\n6. 提示：税务问题我只需要知道边界和在哪找专业支持——请告诉我什么时候必须拉税务顾问进来"},
+ {t:"托管、联营与内部合伙：非特许模式的法律设计",
+  f:["托管（委托管理）：总部派团队经营，加盟商出资——法律关系是委托合同","联营/合作经营：共同出资、共担风险——可能被认定为合伙","内部合伙（门店合伙人）：员工跟投开店的激励与风险"],
+  o:"《非特许模式法律设计对比表》+《托管协议》核心条款",
+  p:"餐饮连锁有很多「类加盟」模式，法律关系完全不同。请给我：\n\n1. 模式对比表（法律关系定性 + 关键条款 + 核心风险）：\n   · 特许加盟（特许经营合同，受《条例》约束）\n   · 托管/委托管理（委托合同，民法典第919条以下）\n   · 联营/合作经营（可能被认定为合伙关系，共担风险）\n   · 内部合伙/门店合伙人（股权激励 + 劳动关系 + 承包关系三层叠加）\n   · 承包经营（内部承包 vs 外部承包）\n   · 供货 + 品牌授权（绕开特许经营的尝试——能不能绕开？风险是什么？）\n2. 重点讲透「绕开特许经营」的问题：\n   · 有些品牌为了规避《条例》的备案、两店一年要求，把合同写成「品牌服务协议」「合作协议」「供货协议」\n   · 这样能规避吗？法院怎么认定？（实质重于形式）\n   · 给我判例：被认定为「名为合作实为特许」的案例，后果是什么\n3. 托管模式：\n   · 给我《门店托管协议》核心条款（托管范围、费用与分成、人员归属、食安责任、亏损承担、退出机制）\n   · 托管模式下的用工与食安责任划分（比加盟复杂——总部实际经营，责任跑不掉）\n4. 内部合伙/门店合伙人：\n   · 员工跟投开店，涉及哪些法律关系？（劳动关系 + 投资关系 + 可能的特许关系）\n   · 给我《门店合伙人协议》框架与风险提示\n   · 员工离职时股权怎么处理？"},
+ {t:"总部公司治理与股权激励",
+  f:["创始人协议：股权分配、决策机制、退出机制（这几个条款不写，后患无穷）","员工股权激励：期权池、成熟机制、退出回购","融资中的法务工作：尽调应对、投资协议关键条款"],
+  o:"《创始人协议关键条款清单》+《股权激励计划框架》",
+  p:"法务总监必须懂公司治理。请给我：\n\n1. 《创始人协议（股东协议）》关键条款清单：\n   · 股权结构与出资安排\n   · 分工与决策机制（股东会/董事会/总经理的权限划分，一票否决权）\n   · 股权转让限制与优先购买权\n   · <b>退出机制</b>（人走股留？怎么定价？）——这是最容易出大事的条款\n   · 竞业禁止与保密\n   · 僵局解决机制\n   · 给我每一条的条款要点 + 常见纠纷案例\n2. 员工股权激励：\n   · 三种工具对比：期权、限制性股权、虚拟股权/超额利润分享\n   · 给我《股权激励计划框架》：期权池大小、授予对象与额度、成熟机制（4年成熟+1年 Cliff 的合理性）、行权条件、退出回购、税务处理\n   · 连锁企业特有的设计：门店层面的股权激励（店长跟投）怎么做？\n3. 融资尽调（如果品牌要融资，法务是主力）：\n   · 投资人尽调会查什么？给我《法务尽调自查清单》（特许经营合规、商标、租赁、劳动、食安、诉讼、数据、关联交易）\n   · 投资协议（TS 之后的正式文件）关键条款：估值调整（对赌）、优先清算权、反稀释、董事会席位、保护性条款、创始人绑定\n   · 对赌条款对创始人的风险，法务怎么提示\n4. 给我一份《法务总监在公司治理中的角色定位》"},
+ {t:"复盘：顶层设计能力",
+  f:["整合本周产出","自测 10 题","核心：法务怎么从「审合同的」变成「设计交易的」"],
+  o:"<b>《加盟体系法律架构设计方案》</b>定稿",
+  p:"第 15 周结束，帮我固化：\n\n1. 出 10 道题自测（单选5+案例3+简答2）：主体类型对比、纳税时点、绕开特许经营的后果、托管责任划分、创始人协议退出机制、股权激励成熟机制、尽调自查\n2. 综合案例：\n   「某品牌为了规避特许经营备案要求（当时只有 1 家直营店，不满 2 年），把加盟合同写成《品牌服务与供货协议》，约定：收取『品牌服务费』10 万、『首批货款』20 万，不收加盟费、不叫特许经营。已签 50 家。现在有 3 家经营失败，起诉要求退款。\n   问：(1) 合同性质怎么认定？法院会认定为特许经营合同吗？(2) 如果被认定为特许经营，后果是什么？（未备案的行政处罚 + 合同效力 + 退费）(3) 我方抗辩空间在哪？(4) 事后的整改方案？(5) 给我一份《规避性设计的风险评估报告》\n   我先答，你批改并给满分答案」\n3. 深度议题：给我一份「从法务经理到法务总监的能力跃迁清单」——哪 5 件事做到了，就是总监而不是经理"
+ }],
+ wk:{t:"周末实战⑮：设计「直营 + 加盟 + 区域代理」三层法律架构",d:"为一家拟从 300 店扩张到 1000 店的米线品牌设计完整法律架构：总部与区域公司的关系、直营与加盟的边界、区域代理/分特许的合同结构、全套协议清单与权限矩阵。",
+ p:"我要为一家拟从 300 店扩张到 1000 店的米线品牌设计法律架构。请给我：\n\n1. 架构方案对比（至少三种）：方案A 全部直营加盟（总部直接签）/ 方案B 总部+区域代理（区域代理发展加盟商，总部与加盟商直接签约）/ 方案C 总部+分特许（分特许人作为二级特许人签约）。每种：法律关系图、优势、风险、税务影响、管理难度、适用阶段\n2. 分特许（sub-franchise）在中国法下的特殊问题：分特许人是否也要满足「两店一年」？是否也要备案？（请核实相关规定）\n3. 推荐方案及理由\n4. 全套协议清单（10 份以上）：名称、签约主体、核心条款、与总部的关系\n5. 《权限矩阵表》：总部/区域代理/加盟商在招商、签约、选址、采购、定价、营销、人事、解约八个事项上的权限划分\n6. 《区域代理协议》核心条款（授权范围、发展目标与考核、费用分账、区域保护、违约责任、退出机制）\n7. 这套架构最大的法律风险是什么？怎么防？"}},
+
+{w:16,th:"综合实战与结业：从学习者到法务总监",goal:"把 16 周的产出整合成可交付的成果，并完成一次「上任即战」的实战演练",
+ wk:{t:"周末实战⑯（结业项目）：《XX 品牌法务总监上任 90 天工作方案》",d:"这是整个学习计划的结业项目。假设你明天入职蒙自源（或自拟品牌）担任法务总监，写一份上任 90 天工作方案：0-30 天摸底诊断、31-60 天建章立制、61-90 天重点攻坚。含团队组建、制度体系、风险台账、外部资源、预算、KPI、向 CEO 的汇报材料。",
+ p:"结业项目：《法务总监上任 90 天工作方案》\n\n设定：你明天入职一家 300+ 门店的云南米线连锁品牌（直营 80 + 加盟 220，有中央厨房和统采统配），担任法务总监，直接向 CEO 汇报，团队 3 人（1 个合同专员、1 个诉讼专员、1 个专员）。年营业额约 8 亿。\n\n请帮我产出一份可以直接交给 CEO 的方案，包含：\n\n【第一部分 0-30 天：摸底诊断】\n· 法务尽调清单（我自己要查什么：合同档案、诉讼案件、行政处罚、知识产权、特许经营备案、租赁、劳动、食安、数据）\n· 访谈清单（要找谁聊、聊什么：CEO、招商、运营、供应链、财务、HR、门店）\n· 输出物：《法务风险诊断报告》框架（风险台账：风险描述、等级、责任部门、整改建议、时限）\n\n【第二部分 31-60 天：建章立制】\n· 制度体系树（要建哪些制度，优先级排序）\n· 合同管理体系（标准模板库、审批权限、用印管理、档案）\n· 法律风险防控嵌入业务流程的方案（在哪些业务节点设卡）\n· 团队组建与分工方案\n\n【第三部分 61-90 天：重点攻坚】\n· 选 3 个最高优先级问题，给出攻坚方案（要具体到动作、责任人、时间表）\n· 外部律师资源管理方案（什么时候用、怎么选、怎么控成本）\n\n【第四部分 年度规划与预算】\n· 年度法务工作目标（KPI）\n· 预算测算（人力、外部律师、诉讼费、知识产权、保险）\n\n【第五部分 汇报材料】\n· 给 CEO 的 10 页汇报提纲\n· 给董事会的 1 页纸摘要\n\n请给我完整内容，以及专业上的点评意见。"},
+ d:[
+ {t:"法务体系搭建：制度树与流程嵌入",
+  f:["制度体系的三层结构：基本制度 / 管理办法 / 操作指引","合同管理体系：标准模板库、审批权限矩阵、用印管理、档案与台账","法务嵌入业务流程：在哪些节点设卡（招商、签约、采购、开店、营销、解约）"],
+  o:"<b>《法务制度体系树》</b>+《合同管理办法》+《审批权限矩阵》",
+  p:"我要搭建一家 300 店餐饮连锁的法务体系。请给我：\n\n1. 《法务制度体系树》：\n   · 三层结构：基本制度（如《法律事务管理办法》）/ 专项管理办法（合同、知识产权、诉讼、合规、授权、印章、数据）/ 操作指引与模板\n   · 给我完整的制度清单（20 项左右），每项标注：优先级（P0/P1/P2）、适用场景、篇幅预期、预计投入\n   · 按「最急需先建」排序，说明理由\n2. 《合同管理办法》完整文本：\n   · 合同分类分级（战略合同/重大合同/标准合同/小额合同）\n   · 标准模板库管理（谁能改模板、改了怎么发布）\n   · 审批权限矩阵（按合同类型 × 金额 × 风险等级，谁审、谁批）\n   · 用印管理（印章种类、保管、用印审批、外带）\n   · 合同档案与台账（编号规则、归档要求、保存期限）\n   · 合同履行跟踪（关键节点提醒：到期、续签、付款、验收）\n3. 《法务嵌入业务流程方案》：\n   · 画出关键业务流程（招商、签约、选址、开店、采购、营销、运营督导、解约），标注法务的「控制点」和「把关方式」\n   · 每个控制点：控制什么、怎么控、失控的后果\n   · 给我《法务审核 SLA 承诺》（业务部门最关心法务「卡流程」，怎么既控风险又不拖业务）\n4. 给我《法务信息化方案》（合同管理系统选型要点、电子签章、案件管理、知识库）"},
+ {t:"年度法务规划、预算与外部资源管理",
+  f:["年度法务规划怎么定：目标、举措、资源、里程碑","预算测算：人力、外部律师、诉讼费、知识产权、保险、系统","外部律师管理：什么时候用、怎么选、怎么控成本与质量"],
+  o:"<b>《年度法务工作计划》</b>+《法务预算表》+《外部律师管理办法》",
+  p:"请给我一份《年度法务工作计划与预算方案》：\n\n1. 年度法务规划：\n   · 目标设定（3-5 个年度目标，要可量化）\n   · 关键举措（每项目标的落地动作）\n   · 里程碑与时间表（季度节奏）\n   · KPI 体系（结果指标 + 过程指标，给我 8 个指标及计算方式）\n2. 预算测算：\n   · 人力成本（团队编制与薪酬结构）\n   · 外部律师费（常年顾问 + 专项，按什么计费方式最划算：计时/包干/风险代理）\n   · 诉讼仲裁费（案件数量 × 单案成本）\n   · 知识产权（注册、续展、维权）\n   · 保险（食安责任险、雇主责任险、董责险）\n   · 系统与工具（合同管理、商标监测、检索数据库）\n   · 给我一张完整的《法务预算表》模板（含行业参考量级）\n3. 《外部律师管理办法》：\n   · 什么时候该用外部律师（专业能力缺口、异地、人力不足、独立意见）\n   · 怎么选（评估维度、比选流程）\n   · 怎么管（服务范围、响应时限、工作报告、质量评价、费用控制）\n   · 计费方式对比与谈判技巧\n   · 给我《外部律师服务协议》关键条款\n4. 给我一份《法务工作价值呈现方案》（怎么向老板证明法务部值这个钱）"},
+ {t:"成果整合：我的法务工具箱",
+  f:["把 16 周的产出物汇编成《餐饮加盟法务工具箱》","建立个人条款库（这是你真正的护城河）","整理判例库与法规库"],
+  o:"<b>《餐饮加盟法务工具箱》</b>——12 份核心文件汇编 + 个人条款库",
+  p:"16 周学习进入收官，我要把所有产出物整合成一套可交付的工具箱。请帮我：\n\n1. 给我《餐饮加盟法务工具箱》的完整目录结构（把我 16 周产出的 12 份核心文件组织起来，并补充我可能遗漏的文件）\n2. 帮我设计《个人条款库》的组织方式：\n   · 按什么维度分类（合同类型 / 条款功能 / 风险等级 / 场景）\n   · 每条条款记录什么信息（条款文本、适用场景、来源、效力验证、使用次数、注意事项）\n   · 给我 20 条「餐饮加盟必备条款」作为条款库的初始内容（每条含条款文本 + 起草说明）\n3. 帮我设计《判例库》：\n   · 记录哪些字段（案号、法院、审级、案由、基本案情、争议焦点、裁判要旨、对我方启示、关联条款）\n   · 给我一份《加盟纠纷判例库目录》（按纠纷类型组织，列出我应该收集的 30 个判例类型）\n4. 帮我设计《法规库》：\n   · 组织方式（按模块 / 按效力层级 / 按业务环节）\n   · 怎么跟踪法规更新（信息源、频率、更新流程）\n5. 给我一套《法务知识管理方案》（个人层面 + 部门层面）"},
+ {t:"述职与面试演练：把能力讲出来",
+  f:["法务总监面试的高频问题与回答框架","如何讲述一个「我处理过的最难的法务问题」","行业洞察：餐饮加盟法律趋势的三分钟演讲"],
+  o:"《法务总监面试/述职准备包》",
+  p:"我要准备法务总监的面试/述职。请帮我：\n\n1. 给我 15 个法务总监面试的高频问题，每个给出回答框架（不是标准答案，是思路）：\n   · 战略类（你怎么看法务与业务的关系？法务怎么支持业务增长？）\n   · 专业类（加盟体系最大的法律风险是什么？遇到 XX 情况你怎么处理？）\n   · 管理类（你怎么搭团队？怎么处理与业务部门的冲突？）\n   · 案例类（讲一个你处理过的最难的案子）\n   · 压力类（老板要求你放过一个有明显风险的合同，你怎么办？）\n2. 帮我打磨一个 STAR 结构的故事：挑一个我在 16 周学习中最有深度的实战项目（如备案合规体检、合同起草、打假方案、食安事故处置），帮我组织成面试级别的表述\n3. 给我一份《餐饮加盟法律趋势三分钟演讲》提纲：\n   · 监管趋严的表现\n   · 司法裁判的倾向变化\n   · 加盟商权利意识觉醒\n   · 对品牌方的影响与应对\n   · 这个演讲要能体现「总监级」的视野，不是法务专员的罗列\n4. 给我一份《法务总监简历要点清单》（怎么把 16 周的学习成果写成有说服力的履历内容）\n5. 最后：请扮演面试官，对我进行一次 30 分钟的压力面试，我回答后你逐题评分"},
+ {t:"结业：综合测验与下一阶段规划",
+  f:["16 周综合测验（50 题）","能力自检清单全部复核","下一阶段：100 天进阶计划"],
+  o:"结业证书（自颁）+<b>《100 天进阶学习计划》</b>",
+  p:"16 周学习结束，请给我一份严格的结业考核：\n\n1. 综合测验：50 道题（单选 25 + 案例分析 15 + 论述 10），覆盖全部 16 周内容。请一次出完，我作答后你批改并给出：\n   · 总分与分模块得分\n   · 知识薄弱点分析\n   · 针对性的补强建议\n2. 给我一道「总监级论述题」：\n   「如果你是蒙自源的法务总监，公司在未来 3 年要从 300 店开到 1500 店。请系统论述：法律与合规体系应该如何支撑这个增长速度？包括组织架构、制度体系、风险策略、资源配置、关键里程碑。\n   字数不限，要有战略视野，也要有落地细节。」\n   我写完后你批改、打分、给出你的满分版本供我对照\n3. 给我一份《100 天进阶学习计划》（学完 16 周之后往哪里走）：\n   · 进阶方向建议（如：深耕诉讼 / 拓展到投融资 / 走向业务管理 / 建立行业影响力）\n   · 每个方向的 100 天学习路径\n   · 推荐书单、课程、社群、认证\n4. 最后：请对这 16 周的学习做一个总结，告诉我——如果重来一次，哪个环节应该投入更多时间，哪个环节可以压缩"
+ }],
+ wk:{t:"周末实战⑯（结业项目）：《法务总监上任 90 天工作方案》",d:"结业项目。假设你明天入职蒙自源担任法务总监，写一份上任 90 天工作方案：0-30 天摸底诊断、31-60 天建章立制、61-90 天重点攻坚。含团队组建、制度体系、风险台账、外部资源、预算、KPI、向 CEO 的汇报材料。",
+ p:"结业项目：《法务总监上任 90 天工作方案》\n\n设定：你明天入职一家 300+ 门店的云南米线连锁品牌（直营 80 + 加盟 220，有中央厨房和统采统配），担任法务总监，直接向 CEO 汇报，团队 3 人。年营业额约 8 亿。\n\n请帮我产出一份可以直接交给 CEO 的方案：\n\n【第一部分 0-30 天：摸底诊断】法务尽调清单（合同档案、诉讼案件、行政处罚、知识产权、特许经营备案、租赁、劳动、食安、数据）+ 访谈清单（CEO、招商、运营、供应链、财务、HR、门店）+ 《法务风险诊断报告》框架\n\n【第二部分 31-60 天：建章立制】制度体系树、合同管理体系（模板库、审批权限、用印、档案）、法务嵌入业务流程方案、团队组建与分工\n\n【第三部分 61-90 天：重点攻坚】选 3 个最高优先级问题的攻坚方案（动作、责任人、时间表）+ 外部律师资源管理方案\n\n【第四部分 年度规划与预算】年度 KPI + 预算测算（人力、外部律师、诉讼费、知识产权、保险、系统）\n\n【第五部分 汇报材料】给 CEO 的 10 页汇报提纲 + 给董事会的 1 页纸摘要\n\n请给我完整内容，以及专业上的点评意见。"}},
+/*__W13_16__*/
+];
+const STAGES = [
+ {n:"第一阶段",r:"第 1-4 周",t:"合规地基",c:"#c9a227",d:"搞清行业、吃透条例三件套、建立经营资源体系。目标：能独立判断一个品牌能不能合法开放加盟。",k:["商业模式与收入结构","条例·备案·信披","两店一年与备案实操","商标与经营资源"]},
+ {n:"第二阶段",r:"第 5-8 周",t:"交易与文件",c:"#4a9d9c",d:"从招商入口到合同起草到门店租赁。目标：能独立起草一份扛得住攻击的特许经营合同，能审一份餐饮租赁合同。",k:["招商广告合规","特许经营合同起草","运营管控与违约","门店选址与租赁"]},
+ {n:"第三阶段",r:"第 9-12 周",t:"运营与风控",c:"#5b87c4",d:"食安、供应链、用工、数据与预付卡。目标：能识别并处置加盟体系运营中的高频法律风险。",k:["食品安全与事故处置","供应链与反垄断","双层用工结构","数据合规与预付卡"]},
+ {n:"第四阶段",r:"第 13-16 周",t:"战略与领导",c:"#8b7bc4",d:"品牌保护、争议解决、顶层架构、法务体系搭建。目标：具备法务总监的视野与交付能力。",k:["品牌保护与打假","争议解决与庭审","股权税务与架构","法务体系与领导力"]}
+];
+
+const MILE = [
+ {w:"第 4 周末",t:"里程碑一：合规体检",c:"#c9a227",d:"为一家公司完成完整的「两店一年 + 商标布局 + 信息披露」合规体检，输出体检报告和整改路线图。",s:["能独立判断主体资格是否达标","能列出完整备案材料清单","能识别商标与经营资源的权利瑕疵","能搭建信息披露文件框架"]},
+ {w:"第 8 周末",t:"里程碑二：合同交付",c:"#4a9d9c",d:"交付一份完整的《特许经营合同（特许人版）》全文 + 6 个附件，并附一份《敌方视角审查报告》。",s:["11 项法定必备条款全覆盖","冷静期与区域保护条款能用","能自查合同中的无效格式条款","能审查餐饮租赁合同并谈判"]},
+ {w:"第 12 周末",t:"里程碑三：风控体系",c:"#5b87c4",d:"交付《门店食安合规手册》《供应链合规手册》《用工合规手册》《数据与预付卡手册》四套制度。",s:["食安事故 4 小时处置流程能跑通","能设计供应链反垄断合规结构","能隔离总部与加盟店的用工责任","能设计会员数据权属与预付卡架构"]},
+ {w:"第 16 周末",t:"里程碑四：总监交付",c:"#8b7bc4",d:"完成《法务总监上任 90 天工作方案》，并通过 50 题结业综合测验。",s:["能搭法务制度体系树","能测算法务预算与设计 KPI","能完成一次完整的庭审对抗","能向 CEO 讲清法务的价值"]}
+];
+
+const CHK = [
+ {g:"模块一 · 特许经营合规",c:"#c9a227",i:[
+  ["能脱稿说出《条例》第 <b>7 条</b>（两店一年）、第 <b>8 条</b>（15 日备案）、第 <b>12 条</b>（冷静期）、第 <b>17 条</b>（禁止收益宣传）、第 <b>22 条</b>（12 项披露）的内容"],
+  ["能列出「两店一年」可认定的全部直营店形态及各自证明材料"],
+  ["能独立完成一次商业特许经营备案（材料、流程、时限、后续年报）"],
+  ["能起草一份符合法定要求的《信息披露文件》并取得有效回执"],
+  ["能判断哪些披露瑕疵会导致合同被撤销/解除，哪些不会"],
+  ["能说出全部主要罚则的金额区间（10-50 万 / 1-5 万 / 3-10 万）"]
+ ]},
+ {g:"模块二 · 合同与交易",c:"#4a9d9c",i:[
+  ["能独立起草一份完整的《商业特许经营合同（特许人版）》全文"],
+  ["能设计三档不同强度的区域保护条款，并说明各自风险"],
+  ["能设计「加盟费不退」条款且知道怎么写才不会被认定无效格式条款"],
+  ["能设计一套阶梯式门店违规处罚机制"],
+  ["能设计有效的终止后竞业禁止条款（四要素齐全）"],
+  ["能审查一份餐饮门店租赁合同并找出排烟、办证、撤场等致命条款"],
+  ["能识别并改写招商物料中的违法话术"]
+ ]},
+ {g:"模块三 · 运营与风控",c:"#5b87c4",i:[
+  ["能在食安事故发生后 4 小时内组织起完整的处置"],
+  ["能设计加盟体系中总部与加盟店的食安责任隔离方案"],
+  ["能判断供应链「强制采购」的反垄断边界"],
+  ["能设计总部与门店的用工责任隔离方案（含总部行为红线清单）"],
+  ["能判断哪些个人信息处理场景违规（尤其扫码点餐与人脸识别）"],
+  ["能设计加盟体系的会员数据权属与流转架构"],
+  ["能设计单用途预付卡的法律架构与合规整改方案"]
+ ]},
+ {g:"模块四 · 保护与争议",c:"#8b7bc4",i:[
+  ["能独立完成一次仿冒门店的打假全流程（取证→投诉→诉讼）"],
+  ["能建立商业秘密保护体系（含手册分级管理方案）"],
+  ["能在己方有瑕疵的案件中组织出有效的抗辩"],
+  ["能设计争议解决条款（诉讼 vs 仲裁、管辖、送达）"],
+  ["能应对群体性加盟纠纷（含舆情管理）"],
+  ["能设计直营 + 加盟 + 区域代理的三层法律架构"],
+  ["能区分特许加盟、托管、联营、内部合伙的法律关系"]
+ ]},
+ {g:"模块五 · 总监级能力",c:"#d9be4d",i:[
+  ["能搭出一家 300 店连锁的法务制度体系树"],
+  ["能制定年度法务工作计划、KPI 与预算"],
+  ["能设计法务嵌入业务流程的控制点"],
+  ["能管理外部律师（选、用、控成本）"],
+  ["能在老板要求放行的压力下守住风险底线并给出替代方案"],
+  ["能用业务语言（不是法条语言）向 CEO 讲清法务的价值"],
+  ["能就餐饮加盟法律趋势做一次三分钟的总监级演讲"]
+ ]}
+];
+
+const LIB = [
+ {t:"法规精读模板",g:"a",d:"把任何一部法拆成可执行的动作清单。把【】换成当周主题即可反复使用。",
+  p:"请逐条精读【《商业特许经营管理条例》第 X-X 条】，每条按这个结构输出：\n\n【条文原文要点】\n【立法目的】——这条在保护谁、限制谁\n【对特许人的合规要求】\n【餐饮加盟场景下的常见踩坑】\n【我的落地动作】——具体做什么、谁做、什么时候做\n\n全部讲完后：\n1. 给我一份《逐条合规动作清单》（可直接推进）\n2. 举 3 个餐饮加盟场景下的正反案例\n3. 出 3 道思考题，我回答后你批改"},
+ {t:"判例拆解模板",g:"a",d:"每天至少读 1 个判例。这个模板把判例读成「能用的东西」。",
+  p:"请检索并拆解【冷静期退费】主题的判例，给我 6 个（3 个支持加盟商、3 个支持总部）。\n\n每个判例按这个结构：\n· 案号与法院层级\n· 基本案情（控制在 120 字内）\n· 争议焦点\n· 裁判要旨（原文摘录关键段落）\n· 对我方（特许人）的启示\n· 我方可落地的条款修改建议——具体到第几条、改成什么样\n\n全部讲完后：\n1. 给我一张《裁判规则归纳表》\n2. 提炼出本案由的「胜负手」——决定判决走向的关键事实是什么\n3. 告诉我这类案子我方最容易输在哪"},
+ {t:"条款起草模板",g:"b",d:"任何一个条款，都要三个版本：对总部最有利 / 平衡 / 对加盟商友好。",
+  p:"请起草【区域保护】条款，站在特许人（蒙自源）立场。\n\n要求：\n1. 给我三个版本：\n   · 严格版（对总部最有利，但评估会不会被认定格式条款无效）\n   · 平衡版（推荐日常使用）\n   · 宽松版（竞争激烈区域招商用）\n2. 每版后面附【起草说明】：这个版本防的是什么风险、可能带来什么副作用\n3. 每个版本都要可执行，不要写「双方应友好协商」这种废话\n4. 最后告诉我：如果加盟商律师来谈这条，我最多能让到哪一步"},
+ {t:"合同审查模板",g:"b",d:"审查任何合同的标准打法。附件丢给 AI，套这个指令。",
+  p:"请审查这份合同（见附件）。我的立场是【甲方 / 特许人（品牌总部）】。\n\n请输出四部分：\n\n一、风险摘要表\n风险项 | 所在条款 | 风险等级（高/中/低）| 可能后果 | 紧急程度\n\n二、逐条修改建议\n原文 → 建议修改为 → 修改理由（结合法律依据和实务风险）\n\n三、缺失条款清单\n这份合同没写但必须有的条款，每条给出建议文本\n\n四、谈判要点\n· 必争条款（不能让的，说明为什么）\n· 可让步条款（可以让到什么程度）\n· 交换筹码（用哪些条款换哪些条款）\n\n最后给我一个总体结论：签 / 改后签 / 不签"},
+ {t:"风险清单模板",g:"c",d:"把一个业务环节的全部法律风险一次性扫出来，按危险度排序。",
+  p:"请列出餐饮加盟【招商阶段】的全部法律风险，按「发生概率 × 损失程度」排序。\n\n每条给出：\n· 风险描述（具体会发生什么事）\n· 触发场景（什么情况下会被点燃）\n· 法律依据（精确到条）\n· 可能的后果（行政/民事/刑事各是什么）\n· 防控措施（事前怎么防）\n· 应急预案（出事怎么办）\n· 责任部门与责任人建议\n\n输出成表格，并给我一个 Top 5 优先级清单——如果只有资源处理 5 件事，先处理哪 5 件"},
+ {t:"对抗模拟模板",g:"e",d:"每月至少做一次。被问倒的地方就是知识缺口。",
+  p:"我们来一场对抗演练。\n\n你扮演【加盟商聘请的律师】，就【总部未披露一起 3 年前的加盟纠纷诉讼】向我方发起索赔谈判。\n我扮演品牌总部的法务总监。\n\n规则：\n1. 你先陈述你方观点和诉求（要有攻击性，不要客气）\n2. 我回应后，你针对我的回应继续追问，指出漏洞\n3. 每轮结束后，你给我这轮的表现评分（1-10 分）和具体改进建议\n4. 进行 5 轮后，你做总结：我在哪些地方站得住、哪些地方露了怯、正确答案应该是什么\n\n请开始第一轮。"},
+ {t:"测验批改模板",g:"d",d:"每周五用。检验吸收率，错题要讲透。",
+  p:"本周学习主题是【商业特许经营管理条例·信息披露与冷静期】。请对我做一次严格检验：\n\n1. 出 10 道题：单选 5 道 + 场景案例 3 道 + 简答 2 道\n2. 我作答后，逐题批改\n3. 错题要讲透，并告诉我这个知识点在实务中会怎么坑到我\n4. 最后给我：\n   · 本周内容的知识结构图\n   · 我可能掌握不牢的地方\n   · 下周学习的 3 条提醒"},
+ {t:"制度起草模板",g:"d",d:"产出可直接公司发文的制度文本。",
+  p:"请为我起草《【门店违规处理办法】》完整文本，可直接用于公司发文。\n\n结构要求：\n第一章 总则（目的、适用范围、基本原则）\n第二章 职责分工（法务、运营、督导、门店各自的职责）\n第三章 具体规定（分情形的具体处理规则）\n第四章 处理程序（调查、取证、申辩、决定、送达、申诉）\n第五章 罚则\n第六章 附则（解释权、生效日期、修订程序）\n\n另外给我 3 个配套表单：【违规处理通知书】【整改通知书】【申诉表】\n\n要求：条款要可执行，处罚要有明确的情形和标准，不要写「视情节轻重」这种无法执行的措辞"},
+ {t:"场景 · 新店开店法律清单",g:"c",d:"一家新店从选址到开业要过的全部法律关卡。",
+  p:"我要开一家新的加盟店（米线品类，商场铺位）。请给我一份《新店开店法律合规清单》：\n\n从「选址评估」到「正式营业」，按时间顺序，列出每个节点：\n· 要做什么法律动作\n· 要拿什么证照/批文\n· 要签什么文件\n· 需要多长时间\n· 谁负责\n· 卡住了怎么办\n\n覆盖：选址尽调、租赁合同、营业执照、食品经营许可证、消防、环评、招牌审批、员工入职、保险、外卖平台开通、预付卡发行（如有）、开业营销物料审核\n\n最后给我一份《开店倒计时法律节点表》（T-60 天到 T+7 天）"},
+ {t:"场景 · 加盟商违约处置",g:"c",d:"加盟商违约时，从催告到解除到追偿的完整路径。",
+  p:"某加盟商【连续 3 个月未支付管理费，且被发现从外部采购核心汤底原料】。\n\n请给我一份完整的处置方案：\n1. 处置路径对比（催告整改 / 暂停供货 / 违约金 / 解除合同 / 诉讼追偿），各自的适用条件、成本、风险\n2. 给我《催告函》全文（事实陈述 + 依据条款 + 整改要求 + 期限 + 后果）\n3. 给我《解除通知书》全文\n4. 给我《解除后处置清单》（撤牌、清场、结算、追偿、档案）\n5. 每一步的证据要求（要留什么证据才站得住）\n6. 给我一个判断表：什么情况下该硬、什么情况下该谈和"},
+ {t:"场景 · 食安事故 4 小时处置",g:"e",d:"可演练的应急处置。建议每季度演练一次。",
+  p:"【情景】：晚上 8 点，某加盟店有 8 名顾客就餐后出现腹泻，已送医 3 人，有人在朋友圈发了照片。你是总部法务总监，刚刚接到区域经理电话。\n\n请做角色扮演：你作为顾问，先问我「你第一步做什么」，然后我逐步回答，你逐轮给出点评和下一步提示。\n\n进行 8 轮后，给我完整的标准答案：\n1. 4 小时内行动清单（谁做、做什么、时限）\n2. 24 小时内行动清单\n3. 报告义务（向谁报、多久内、报什么）\n4. 现场处置（留样、封存、监控保全、口径统一）\n5. 对外声明模板\n6. 消费者索赔处理方案\n7. 复盘与整改建议"},
+ {t:"场景 · 打假取证",g:"e",d:"仿冒门店的取证全流程。",
+  p:"发现一家仿冒门店。请给我一份《打假取证操作手册》：\n\n1. 取证清单：需要固定哪些证据（门店外观、门头、菜单、宣传物料、商品、票据、网络内容、销售数据、获利证据）\n2. 每种证据的取证方式：\n   · 公证保全（流程、费用、效力）\n   · 区块链存证（平台选择、操作、效力认定）\n   · 可信时间戳\n   · 自行拍摄（效力如何？怎么补强）\n3. 取证顺序的讲究（先公证还是先发律师函？为什么）\n4. 给我《公证申请书》和《证据保全申请书》模板\n5. 给我《侵权比对表》模板（用于诉讼中展示近似性）\n6. 给我《索赔额测算表》（实际损失 / 侵权获利 / 许可费倍数 / 法定赔偿四种方法）"},
+ {t:"场景 · 加盟商群体投诉",g:"e",d:"最危险的场景。法律 + 舆情 + 业务三线处置。",
+  p:"【情景】：12 家加盟商组建维权群，联合投诉「招商虚假宣传 + 未提供持续支持」，已在短视频平台发布维权视频，总播放量 80 万，有本地媒体联系采访。\n\n请给我一份完整的处置方案（法律 + 舆情 + 业务三线）：\n\n【法律线】\n1. 我方责任评估（哪些主张可能成立、哪些不成立）\n2. 诉讼风险评估（如果他们起诉，胜诉概率、可能的判决结果、总标的测算）\n3. 和解政策设计（统一政策 vs 个案谈判，各自风险）\n\n【舆情线】\n1. 对外声明模板（3 版：简短否认 / 柔性回应 / 承认并整改）\n2. 媒体应对口径\n3. 短视频平台的投诉与处置\n\n【业务线】\n1. 加盟商分层（哪些是核心诉求、哪些是跟风、哪些是恶意）\n2. 分化策略\n3. 长效机制（怎么避免下次再发生）\n\n最后给我一个 72 小时行动时间表"},
+ {t:"场景 · 老板要求放行风险合同",g:"e",d:"法务总监的职场生存课。既要守底线，又要能拿到业务。",
+  p:"【情景】：招商部拿下一个重要客户（一次签 5 家店，年贡献 200 万），但对方要求修改三个条款：删除竞业禁止、区域保护改成独家、加盟费分期且经营不善可退。CEO 说「这个客户必须拿下，法务别卡流程」。\n\n请扮演我的教练，帮我准备：\n1. 风险量化：这三个让步各自的损失敞口是多少钱（要具体到数字）\n2. 替代方案：每个让步能不能用别的机制达到同样效果但风险更小？（给我 3 套替代设计）\n3. 沟通话术：怎么跟 CEO 说，既不显得法务在「卡业务」，又能守住底线（给我完整的对话脚本）\n4. 兜底机制：如果 CEO 坚持，我该怎么留痕、怎么把风险显性化（给我一份《风险提示函》模板）\n5. 制度层面：怎么设计机制，避免下次再陷入这种被动（给我《重大合同风险决策机制》）"},
+ {t:"场景 · 一轮模拟庭审",g:"e",d:"每月一次。练的是「在己方有瑕疵时怎么组织抗辩」。",
+  p:"我们来一次模拟庭审。\n\n案情：【某加盟商签约后 6 个月亏损，起诉要求撤销合同、退还加盟费和管理费，理由是招商时承诺 8 个月回本（有微信记录）+ 信息披露不完整】\n\n角色分配：你扮演审判长 + 原告代理律师，我扮演被告（特许人）代理人。\n\n流程：\n第一轮：我先提交《答辩状》要点，你以审判长身份指出不足\n第二轮：你以原告律师身份发表代理意见（3 个攻击点），我来反驳\n第三轮：你以审判长身份向我方发问（5 个尖锐问题），我回答\n第四轮：你以原告律师身份做最后陈述\n\n结束后请给我：\n· 我方表现评分与逐项点评\n· 本案胜负手分析\n· 最优策略建议（硬扛 / 调解 / 部分让步）\n· 如果我方有瑕疵，怎么在承认瑕疵的前提下把损失降到最低"},
+ {t:"场景 · 加盟体系尽职调查",g:"c",d:"融资、并购、或者新官上任时的自查清单。",
+  p:"我要对一家【300 家门店的米线连锁品牌】做一次全面的法务尽职调查（假设我是新上任的法务总监 / 或者投资方的法务）。\n\n请给我一份完整的《法务尽调清单》，按模块组织，每个条目标注：【查什么文件】【重点看什么】【常见问题的红旗信号】\n\n模块：\n1. 主体与特许经营合规（特许人资格、备案、两店一年、信息披露）\n2. 经营资源（商标、著作权、专利、商业秘密、域名、账号）\n3. 加盟合同体系（标准合同、已签合同清单、特殊条款、履约情况）\n4. 门店租赁（租约台账、到期分布、关键条款、瑕疵门店）\n5. 供应链（供应商清单、合同、集中度、关联交易）\n6. 食品安全（许可、处罚记录、事故历史、体系文件）\n7. 劳动用工（总部与门店、社保、工伤、争议）\n8. 数据与预付卡\n9. 诉讼仲裁与行政处罚\n10. 公司治理与股权\n\n另外给我：《尽调发现汇总表》模板和《风险评级标准》（高/中/低的判定依据）"},
+ {t:"场景 · 区域性法规差异排查",g:"c",d:"连锁跨省经营必做。各地口径差异很大。",
+  p:"我们准备进入【广东省深圳市】市场，首批开 10 家店。请给我一份《目标城市法规差异排查清单》：\n\n需要排查的维度：\n1. 商业特许经营备案：当地是否已下放到市级？经办部门、材料口径、办理时限、是否有特殊要求\n2. 食品经营许可：当地办理流程、时限、是否有一址多证/一照多址政策、连锁企业是否有便利化措施\n3. 餐饮选址限制：当地对居民楼底商、油烟排放、环保的要求\n4. 消防与安全生产：地方标准\n5. 户外招牌设置：审批部门与要求\n6. 劳动用工：当地最低工资、社保基数、特殊规定\n7. 预付卡：当地商务主管部门的备案要求\n8. 消费者权益保护的地方性规定（如《上海市消费者权益保护条例》要求标明特许人与被特许人真实名称）\n9. 反食品浪费的地方性规定\n10. 税务与补贴政策\n\n每项给我：查什么、去哪查（具体网站/部门）、注意事项\n最后给我一份《新城市进入法律准备清单》"},
+ {t:"场景 · 竞品合同条款分析",g:"b",d:"拿到竞品的加盟合同，怎么读出有价值的信息。",
+  p:"我拿到了一份竞品的《特许经营合同》（见附件）。请帮我做一份《竞品合同条款分析》：\n\n1. 条款结构对比：它和我方合同在结构上有什么差异？哪些章节它写得更细？（说明对方在哪方面吃过亏或更重视）\n2. 关键条款对比表（费用、期限、区域保护、冷静期、违约、终止后义务、争议解决），每条对比「我方 vs 竞品 vs 行业常见」，标注谁更激进\n3. 亮点提取：它有哪些条款设计得比我方好？具体好在哪？（给我可以借鉴的条款文本）\n4. 弱点识别：它有哪些条款对加盟商过于严苛？（这是我的招商竞争切入点）\n5. 风险提示：它有哪些条款看起来有法律风险？（我可以向加盟商提示的竞品弱点）\n6. 给我一份《我方合同优化建议清单》\n7. 最后：从这份合同倒推，这家竞品的法务水平、招商策略、历史纠纷大概是什么样的"},
+ {t:"场景 · 年度合规培训设计",g:"d",d:"法务的影响力来自培训。给不同对象讲不同的东西。",
+  p:"我要给公司做年度合规培训。请帮我设计一套《年度合规培训体系》：\n\n对象分层：\n1. 【招商部】（重点：广告法、收益承诺红线、话术合规、信息披露时点）\n2. 【运营督导】（重点：督导检查权边界、证据留存、食安合规、用工红线）\n3. 【门店店长/加盟商】（重点：食安操作、用工合规、预付卡、消费者投诉处理）\n4. 【采购/供应链】（重点：反商业贿赂、供应商准入、合同廉洁条款）\n5. 【高管层】（重点：特许经营合规体系、重大风险决策、董监高责任）\n\n每个对象给我：\n· 培训频次建议\n· 单次时长\n· 核心内容大纲（10-15 页 PPT 的要点）\n· 一个最能打动他们的真实案例（要让他们觉得「这事可能发生在我身上」）\n· 培训后的考核方式\n\n另外给我：\n· 《年度培训日历》\n· 《培训效果评估表》模板\n· 一份《招商部合规培训 PPT》的完整内容（这是最关键的培训）"},
+ {t:"场景 · 法律法规更新跟踪",g:"a",d:"每月一次，保持知识体系不掉队。",
+  p:"请帮我做一次【餐饮加盟领域】的法律法规更新盘点。\n\n范围：\n1. 商业特许经营相关（条例、备案办法、信披办法有无修订；各地备案口径变化）\n2. 食品安全相关（食安法及实施条例、餐饮业管理办法、地方食安条例）\n3. 广告与竞争（广告法、反不正当竞争法的新规与执法动态）\n4. 数据与消费者（个保法、消保法实施条例、网络交易监管）\n5. 劳动用工（劳动合同法相关司法解释、各地口径）\n6. 预付卡与支付\n7. 商标与知识产权\n\n每个领域给我：\n· 本期有无新法/修订/新司法解释/重要执法动态\n· 对我方的影响（要具体到要改什么合同、改什么制度）\n· 落地动作清单\n\n最后给我一份《法规更新跟踪机制》建议：信息源清单、跟踪频率、更新流程、怎么同步给业务部门"},
+ {t:"场景 · 加盟商培训法律模块",g:"d",d:"给加盟商做培训，既是合规，也是关系维护。",
+  p:"我要给新签约的加盟商做一次入职法律培训。请帮我设计：\n\n1. 培训大纲（2 小时版本）：\n   · 我要讲什么（加盟的法律关系是什么、双方的权利义务边界、加盟商必须知道的法律红线）\n   · 怎么讲才能让他们听进去（不要念法条，要用他们的语言：钱、风险、责任）\n   · 哪些内容必须讲（用工、食安、预付卡、发票、知识产权使用边界、违规后果）\n2. 给我完整的演讲提纲和关键话术\n3. 给我 5 个真实的反面案例（加盟商踩坑的真实场景，要具体到损失多少钱）\n4. 给我一份《加盟商法律手册》（一页纸版，正面是「你必须做的 10 件事」，反面是「绝对不能做的 10 件事」）\n5. 给我一份《培训签到与承诺书》模板（关键：让加盟商签字确认已知悉，这是日后的证据）\n6. 最后：怎么把这次培训变成我方的免责证据（证据留存设计）"},
+ {t:"场景 · 危机公关法律支持",g:"e",d:"法务在危机中的角色：不是挡箭牌，是刹车片和路线图。",
+  p:"【情景】：有自媒体发布视频，指控某加盟店「使用过期食材」，视频播放量 200 万，已被 3 家媒体转载。市场监管部门已介入调查。公司群里有人提议立刻发声明否认，有人提议先关店避风头。\n\n请你帮我：\n1. 判断：现在发声明合适吗？发了会有什么法律后果？（提示：如果调查结果和声明不符，虚假声明会加重处罚和舆情）\n2. 给我《危机中的法务决策清单》：什么能说、什么不能说、什么必须等调查结果\n3. 给我三版对外声明模板：\n   · 【调查期间版】（表态 + 配合 + 承诺公布结果）\n   · 【确认违规版】（承认 + 整改 + 补偿方案）\n   · 【查证不实版】（澄清 + 保留追责权利）\n   每版说明适用条件和法律风险\n4. 给我《危机处理中的证据保全方案》（现在就要保全什么，否则证据就没了）\n5. 给我《媒体与自媒体的法律应对》（什么情况下可以发律师函、什么情况下会适得其反）\n6. 给我一份《危机复盘与制度修补清单》"}
+];
+
+const LAWS = [
+ {g:"一、特许经营核心（必精读）",c:"a",i:[
+  ["《商业特许经营管理条例》","国务院令第485号，2007.5.1施行。加盟领域的「宪法」，34条。第3条定义、第7条两店一年、第8条备案、第11条合同必备条款、第12条冷静期、第17条禁止收益宣传、第21-23条信息披露、第24-29条罚则——全部要能脱稿定位","必精读"],
+  ["《商业特许经营备案管理办法》","商务部令，现行 2023 版。备案材料、流程、变更、年报的具体规则。注意核对最新版本——不少地方商务局公布的办事指南已按 2023 版执行","必精读"],
+  ["《商业特许经营信息披露管理办法》","商务部令2012年第2号。12 项披露内容的操作细化、披露方式与时点","必精读"],
+  ["《北京市高级人民法院关于审理商业特许经营合同纠纷案件适用法律若干问题的指导意见》","加盟纠纷裁判的实质规则，信息披露「实质影响标准」的主要来源。虽只适用北京，但全国法院大量参考","必精读"],
+  ["《上海市高级人民法院关于审理特许经营合同纠纷案件若干问题的解答》","与北京高院规则并列，部分口径有差异。两份对照读","必精读"]
+ ]},
+ {g:"二、合同与民事基础（必精读）",c:"a",i:[
+  ["《民法典》合同编","通则（第463-594条）：合同订立、效力、履行、变更转让、权利义务终止、违约责任（第577条违约责任、第584条损失赔偿范围、第585条违约金调减）。典型合同中与本业相关的：买卖合同、租赁合同、委托合同","必精读"],
+  ["《民法典》总则编·民事法律行为","第143-160条（民事法律行为的效力）、第147-152条（重大误解、欺诈、胁迫、显失公平——撤销权的行使与除斥期间）。第148条欺诈撤销是加盟商最常用的武器","必精读"],
+  ["《民法典》侵权责任编","第1168条以下共同侵权。加盟店出事，总部是否被认定共同侵权，依据在此","常备查阅"]
+ ]},
+ {g:"三、知识产权与竞争（必精读）",c:"b",i:[
+  ["《商标法》及实施条例","2019 修正。第3条注册商标专用权、第57条侵权行为、第59条正当使用、第63条赔偿计算（法定赔偿上限）、第64条三年不使用抗辩。餐饮品牌的生命线","必精读"],
+  ["《反不正当竞争法》","2025.6.27 第二次修订，2025.10.15 施行，条文由 33 条增至 41 条。第7条混淆行为大幅扩张（新媒体账号、APP图标、搜索关键词、字号、帮助侵权）、虚假宣传、商业诋毁、商业贿赂、网络不正当竞争、数据权益","必精读"],
+  ["《著作权法》","2020 修正。VI、门店设计、菜单、插画、培训视频的权利归属与保护，注意委托作品的权属规则","常备查阅"],
+  ["《反垄断法》","2022 修正。第17条滥用市场支配地位（限定交易、搭售）、第18条纵向垄断协议（转售价格维持 RPM）。供应链强制采购的边界在这里","常备查阅"]
+ ]},
+ {g:"四、食品安全（必精读）",c:"c",i:[
+  ["《食品安全法》及实施条例","2021 修正。第35条经营许可、第53条进货查验、第54条贮存、第63条召回、第148条退一赔十最低1000元。餐饮的生死线","必精读"],
+  ["《餐饮业促进和经营管理办法》","商务部、国家发改委2025年发布，2025.6.15施行，原《餐饮业经营管理办法（试行）》同时废止，共 25 条。反食品浪费的具体要求、禁止最低消费、明码标价、投诉制度、安全生产","必精读"],
+  ["《反食品浪费法》","2021 施行。餐饮服务经营者的反浪费义务与罚则","常备查阅"],
+  ["《网络餐饮服务食品安全监督管理办法》","外卖环节的专门规定：入网审查、公示、配送容器与时间、无实体门店不得经营","常备查阅"],
+  ["《食品经营许可和备案管理办法》","2023 施行。食品经营许可的申请、变更、延续；一地一证原则","常备查阅"],
+  ["GB 7718 / GB 28050","预包装食品标签通则、营养标签通则。定制包装产品的标签合规依据","常备查阅"]
+ ]},
+ {g:"五、招商与消费者（常备查阅）",c:"d",i:[
+  ["《广告法》","2021 修正。第4条真实性、第9条绝对化用语禁用、第28条虚假广告。招商物料合规的主要依据","常备查阅"],
+  ["《消费者权益保护法》及实施条例","2024 年《消保法实施条例》施行。预付式消费、退货、格式条款、个人信息保护都有涉及","常备查阅"],
+  ["《电子商务法》","平台经营者的义务、平台内经营者的责任","了解"],
+  ["《网络交易监督管理办法》","2021 施行。网络交易经营者的信息公示、消费者权益保护","常备查阅"],
+  ["《价格法》与《明码标价和禁止价格欺诈规定》","2022 施行。明码标价、价格欺诈的认定","常备查阅"]
+ ]},
+ {g:"六、劳动用工（常备查阅）",c:"e",i:[
+  ["《劳动合同法》及实施条例","第4条规章制度的民主程序与公示、第10条书面合同（超1个月二倍工资）、第39条过失性辞退、第47条经济补偿、第82条二倍工资。用工纠纷的核心依据","常备查阅"],
+  ["《工伤保险条例》","工伤认定情形、劳动能力鉴定、待遇标准。未缴社保时全部待遇由用人单位承担","常备查阅"],
+  ["《社会保险法》","五险的强制缴纳义务与法律责任","了解"],
+  ["《劳务派遣暂行规定》","派遣用工 10% 比例限制与三性岗位要求。总部派驻门店人员时的合规参考","了解"],
+  ["《工资支付暂行规定》","工资支付、加班费计算、代扣代缴","了解"]
+ ]},
+ {g:"七、数据与资金（常备查阅）",c:"c",i:[
+  ["《个人信息保护法》","2021施行。第13条处理的合法性基础、第14条同意、第17条告知、第23条对外提供需单独同意、第26条人脸识别、第66条罚则（最高5000万或上年营业额5%）","必精读"],
+  ["《数据安全法》《网络安全法》","数据安全与网络运营者的基本义务","了解"],
+  ["《单用途商业预付卡管理办法（试行）》","商务部令2012年第9号。适用零售业、住宿餐饮业、居民服务业的企业法人。备案、资金存管、业务报告三项核心义务","必精读"],
+  ["《非银行支付机构监督管理条例》","涉及预付卡与支付结算的边界","了解"]
+ ]},
+ {g:"八、门店与经营（常备查阅）",c:"d",i:[
+  ["《消防法》","公众聚集场所投入使用营业前的消防安全检查（餐饮属于此类）","常备查阅"],
+  ["《安全生产法》","全员安全生产责任制、隐患排查。餐饮的燃气与后厨安全","常备查阅"],
+  ["《大气污染防治法》","餐饮油烟排放的要求，第81条禁止在居民住宅楼等场所新建产生油烟的餐饮服务项目","常备查阅"],
+  ["《固体废物污染环境防治法》","厨余垃圾与废弃油脂的处置要求","了解"],
+  ["《城市市容和环境卫生管理条例》及各地方规定","户外招牌、外摆区的设置审批","常备查阅"],
+  ["《市场主体登记管理条例》","营业执照的登记、变更、注销","了解"]
+ ]},
+ {g:"九、程序与刑事（了解+常备）",c:"e",i:[
+  ["《民事诉讼法》及司法解释","管辖（第35条协议管辖）、证据、保全、执行。注意《民诉法解释》第31条对格式条款管辖协议的效力限制","常备查阅"],
+  ["《仲裁法》","仲裁协议的效力要件、一裁终局、司法审查","了解"],
+  ["《行政处罚法》","2021 修订。行政处罚的程序、当事人权利、听证、从轻减轻","了解"],
+  ["《刑法》相关罪名","假冒注册商标罪（第213条）、销售假冒注册商标的商品罪、侵犯商业秘密罪（第219条）、生产销售不符合安全标准的食品罪（第143条）、生产销售有毒有害食品罪（第144条）、虚假广告罪（第222条）、合同诈骗罪（第224条）、拒不支付劳动报酬罪（第276条之一）、非法经营罪（第225条）","常备查阅"]
+ ]}
+];
+/* ============ 已跑出的 AI 结果（按指令实测，无需复制粘贴） ============ */
+const RESULTS = {
+'w1d0': `
+<h4>一、五种扩张模式的法律关系本质对比</h4>
+<table>
+<tr><th>模式</th><th>法律主体</th><th>协议名称</th><th>控制权</th><th>用工主体</th><th>食安责任主体</th><th>税务处理</th><th>典型风险</th></tr>
+<tr><td><b>直营</b></td><td>总部（分公司/子公司）</td><td>内部劳动合同 + 管理制度</td><td>总部强管控</td><td>总部（用人单位）</td><td>总部（食品经营者）</td><td>总部缴增值税/企业所得税，进项可抵扣</td><td>重资产、扩张慢；用工/工伤/食安风险总部全担</td></tr>
+<tr><td><b>特许加盟</b></td><td>加盟商（个体/公司）</td><td>《商业特许经营合同》</td><td>弱管控（统一经营模式）</td><td>加盟商</td><td>加盟商（食品经营者）</td><td>加盟商缴增值税/个税或企业所得税</td><td>"两店一年"备案、信息披露、冷静期单方解除、虚假宣传</td></tr>
+<tr><td><b>托管联营</b></td><td>加盟商出资、总部运营</td><td>《托管/联营合同》</td><td>总部强管控</td><td>名义加盟商、实际总部管理 → 劳动关系认定风险</td><td>加盟商名义、总部实质 → 责任混同</td><td>加盟商</td><td>名为联营实为特许 → 被认定需备案；挪用/抽逃资金；总部因实质控制担连带责任</td></tr>
+<tr><td><b>内部合伙</b></td><td>员工/管理层持股</td><td>《合伙/股权协议》</td><td>总部</td><td>门店（视注册主体）</td><td>门店</td><td>个体/公司税</td><td>合伙人身份与劳动关系混同、退伙/分红纠纷、侵占总部资源</td></tr>
+<tr><td><b>区域代理/分特许</b></td><td>区域代理商（企业）</td><td>《区域代理协议》</td><td>代理商</td><td>次级加盟商</td><td>次级加盟商</td><td>代理商</td><td>代理商越权招商、对次级加盟商责任穿透至总部、固定转售价（RPM）触《反垄断法》第18条</td></tr>
+</table>
+
+<h4>二、米线品牌全部收入项拆解（法律定性 × 退费风险）</h4>
+<table>
+<tr><th>收入项</th><th>法律定性</th><th>是否可退</th><th>退费争议高发度</th><th>法院通常怎么判</th></tr>
+<tr><td><b>加盟费</b>（初始特许经营费）</td><td>特许经营服务费（对价）</td><td>原则不退</td><td>高</td><td>冷静期内（《条例》第12条）加盟商可单方解除并全额退；超冷静期后以"未提供后续支持/欺诈"主张，法院看总部是否实质履行，部分支持退费</td></tr>
+<tr><td><b>保证金</b>（履约）</td><td>金钱担保</td><td>无违约应退</td><td>中</td><td>加盟商无违约总部须退，扣留须举证违约事实，否则判退 + 利息</td></tr>
+<tr><td><b>管理费</b>（年费/流水抽成）</td><td>持续服务费</td><td>已发生不退</td><td>中</td><td>按约收取；抽成以真实流水量计，总部须提供对账凭证</td></tr>
+<tr><td><b>供应链差价</b>（统采统配）</td><td>货款 + 利润</td><td>不退</td><td>高</td><td>强制采购且价格明显高于市场 → 触《反垄断法》第18条（固定转售价/限定交易）及显失公平；总部须证明定价合理并留痕</td></tr>
+<tr><td><b>设备物料款</b></td><td>货款</td><td>不退（质量除外）</td><td>中</td><td>质量/价格争议，总部须保证符合约定</td></tr>
+<tr><td><b>培训费</b></td><td>服务费</td><td>部分</td><td>低</td><td>已实际培训不退，未培训可主张退</td></tr>
+<tr><td><b>设计/开店服务费</b></td><td>服务费</td><td>不退</td><td>低</td><td>按服务履行判定</td></tr>
+</table>
+
+<h4>三、个体工商户 vs 有限责任公司 签约</h4>
+<ul class="foc">
+<li><b>个体工商户：</b>总部控制力强（个体难独立决策）、税务简单；但加盟商个人<b>无限责任</b>（总部分润后追偿难）、用工易与总部关联、食安总部连带责任风险更高。</li>
+<li><b>有限责任公司（小微/有限责任）：</b>主体清晰、可对赌/收购、追偿有公司资产托底；但加盟商可能空壳逃避合同义务，总部需更强资信审查。</li>
+</ul>
+<p><b>总部推荐：</b>原则上要求以<b>有限责任公司</b>签约，并追加<b>实控人连带责任担保</b>（配偶/实控人共同签署）。若加盟商坚持个体户，必须要求其本人 + 配偶签署连带担保，堵住"无限责任落空"的口子。加盟商反制点：个体户模式下可主张"总部实质控制经营"，反推总部分担用工与食安责任。</p>
+
+<h4>四、《总部收入与法律风险对照图》</h4>
+<p><b>收入端三层次：</b>①入口费（加盟费）——对应冷静期/欺诈退费风险；②持续费（管理费）——对应服务履行举证风险；③利润核心（供应链差价）——对应反垄断/强制交易风险，是<b>利润最高也最危险</b>的区域。</p>
+<p><b>风险映射结论：</b>总部利润越依赖供应链差价，越要守住两条线——定价不明显高于市场、采购不强制绑定；同时所有"已提供持续支持"的动作（培训记录、巡店台账、系统日志）必须留痕，否则退费诉讼必败。加盟商反制点：以"强制高价采购"主张《反垄断法》第18条 + 显失公平，要求调价或解除。</p>
+<p class="small">（以上为按"蒙自源法务总监"视角的训练模拟输出，关键条款已标注现行有效版本；落地具体品牌时须以最新备案口径与个案事实为准。）</p>
+`
+};
+
+/* ============ 进度存储 ============ */
+const KEY='cfl-progress-v1';
+let P = {};
+try{ P = JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ P={}; }
+const save = ()=>{ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} };
+const isDone = k => !!P[k];
+const toggle = (k,el)=>{ if(P[k]) delete P[k]; else P[k]=1; save(); refresh(); };
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* ============ Tab ============ */
+document.querySelectorAll('.tab').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById(b.dataset.p).classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+});
+
+/* ============ 复制 ============ */
+function copyText(t,btn){
+  const done=()=>{ if(!btn) return; const o=btn.textContent; btn.textContent='已复制 ✓'; btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=o;btn.classList.remove('copied');},1600); };
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(t).then(done).catch(()=>fb()); } else fb();
+  function fb(){ const ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done(); }
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-copy]');
+  if(b){ const el=document.getElementById(b.dataset.copy); if(el) copyText(el.innerText,b); return; }
+  const c=e.target.closest('[data-cp]');
+  if(c){ copyText(decodeURIComponent(atob(c.dataset.cp)),c); }
+  const rt=e.target.closest('[data-restoggle]');
+  if(rt){ const box=rt.closest('.resblk').querySelector('[data-res]'); const open=box.style.display!=='none';
+    box.style.display=open?'none':'block'; rt.textContent=open?'查看结果 ▾':'收起结果 ▴'; return; }
+});
+
+/* ============ 路线图 ============ */
+function renderStages(){
+  document.getElementById('stages').innerHTML = STAGES.map(s=>`
+    <div class="card" style="border-left:3px solid ${s.c}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+        <b style="font-size:16px;color:${s.c}">${s.n} · ${s.t}</b>
+        <span class="small">${s.r}</span>
+      </div>
+      <div class="muted" style="margin:9px 0 12px;font-size:13.5px">${s.d}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${s.k.map(x=>`<span class="tag" style="border-color:${s.c}44;color:${s.c}">${x}</span>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function renderRoad(){
+  document.getElementById('rmlist').innerHTML = WEEKS.map(w=>{
+    const total = w.d.length + 1;
+    let done = w.d.filter((_,i)=>isDone('w'+w.w+'d'+i)).length + (isDone('w'+w.w+'k')?1:0);
+    const pct = Math.round(done/total*100);
+    return `<div class="rmrow ${done===total?'done':''}" style="border-left-color:${STAGES[Math.floor((w.w-1)/4)].c}" data-jump="${w.w}">
+      <div><div class="wn">第 ${w.w} 周</div><div class="small">${done}/${total}</div></div>
+      <div><div class="wt">${w.th}</div><div class="wg">${w.goal||''}</div>
+        <div class="pbar"><i style="width:${pct}%"></i></div></div>
+      <div class="wa">›</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('[data-jump]').forEach(r=>r.onclick=()=>{ goWeek(+r.dataset.jump); });
+}
+function goWeek(n){
+  document.querySelector('.tab[data-p="daily"]').click();
+  curW=n; renderWeek();
+  setTimeout(()=>window.scrollTo({top:document.getElementById('weekbox').offsetTop-70,behavior:'smooth'}),60);
+}
+
+/* ============ 每日计划 ============ */
+let curW = 1;
+const TAGNAME={a:'精读',b:'起草',c:'风控',d:'输出',e:'实战'};
+function renderWkNav(){
+  document.getElementById('wknav').innerHTML = WEEKS.map(w=>{
+    const total=w.d.length+1, done=w.d.filter((_,i)=>isDone('w'+w.w+'d'+i)).length+(isDone('w'+w.w+'k')?1:0);
+    return `<button class="wkbtn ${w.w===curW?'on':''} ${done===total?'done':''}" data-w="${w.w}" title="第${w.w}周 · ${w.th}">${w.w}</button>`;
+  }).join('');
+  document.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{curW=+b.dataset.w;renderWeek();});
+}
+function renderWeek(){
+  const w = WEEKS[curW-1];
+  const st = STAGES[Math.floor((w.w-1)/4)];
+  let box = document.getElementById('weekbox');
+  const total=w.d.length+1, done=w.d.filter((_,i)=>isDone('w'+w.w+'d'+i)).length+(isDone('w'+w.w+'k')?1:0);
+  box.innerHTML = `
+    <div class="weekhead" style="border-left-color:${st.c}">
+      <div class="wt">第 ${w.w} 周 · ${w.th}</div>
+      <div class="wg">${w.goal||''}</div>
+      <div class="pbar" style="margin-top:10px"><i style="width:${Math.round(done/total*100)}%"></i></div>
+      <div class="statline"><span>${st.n} · ${st.t}</span><span>已完成 ${done} / ${total}</span></div>
+    </div>
+    ${w.d.map((d,i)=>dayHtml(w,i,d)).join('')}
+    ${wkndHtml(w)}`;
+  box.querySelectorAll('.dayhd').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('open'));
+  box.querySelectorAll('[data-tg]').forEach(b=>b.onclick=(e)=>{e.stopPropagation();toggle(b.dataset.tg);});
+  box.querySelectorAll('.prbox').forEach((el,i)=>{ el.id='pr-'+w.w+'-'+i; });
+  box.querySelectorAll('[data-pidx]').forEach(b=>{ b.dataset.copy='pr-'+w.w+'-'+b.dataset.pidx; });
+}
+function dayHtml(w,i,d){
+  const k='w'+w.w+'d'+i, dn=isDone(k), R=RESULTS[k];
+  return `<div class="day ${dn?'done':''}">
+    <div class="dayhd">
+      <div class="dnum">${i+1}</div>
+      <div class="dtitle">${d.t}</div>
+      <div class="chk" data-tg="${k}">✓</div>
+      <div class="caret">›</div>
+    </div>
+    <div class="dbody">
+      <div class="blk"><div class="lb">今天学什么</div><ul class="foc">${d.f.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="blk"><div class="lb">今天的产出物</div><div class="out">${d.o}</div></div>
+      <div class="blk"><div class="lb">今天下达的指令（点右侧按钮复制，直接粘贴到对话框）</div>
+        <div class="prbox">${esc(ROLE + d.p)}</div>
+        <div class="btnrow">
+          <button class="btn gold" data-pidx="${i*2}">复制完整指令（含角色设定）</button>
+          <button class="btn" data-cp="${btoa(encodeURIComponent(d.p))}">只复制任务部分</button>
+        </div>
+      </div>
+      ${R?`<div class="blk resblk"><div class="lb">🤖 AI 生成结果 · 已按本条指令跑出（点按钮展开，无需复制粘贴）</div><div class="btnrow"><button class="btn gold" data-restoggle>查看 Day ${i+1} 结果 ▾</button></div><div class="resbox" data-res style="display:none">${R}</div></div>`:''}
+    </div>
+  </div>`;
+}
+function wkndHtml(w){
+  const k='w'+w.w+'k', dn=isDone(k);
+  return `<div class="wknd">
+    <div style="display:flex;align-items:flex-start;gap:11px">
+      <div class="chk" style="margin-top:3px" data-tg="${k}">✓</div>
+      <div style="flex:1">
+        <div class="lb">周末实战项目 · 约 3 小时</div>
+        <h3>${w.wk.t}</h3>
+        <div class="muted" style="font-size:13.5px;margin-bottom:12px">${w.wk.d}</div>
+        <div class="prbox" style="max-height:260px">${esc(ROLE + w.wk.p)}</div>
+        <div class="btnrow">
+          <button class="btn gold" data-cp="${btoa(encodeURIComponent(ROLE + w.wk.p))}">复制完整指令</button>
+          <button class="btn" data-cp="${btoa(encodeURIComponent(w.wk.p))}">只复制任务部分</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ============ 指令库 ============ */
+function renderLib(){
+  document.getElementById('libbox').innerHTML = LIB.map((l,i)=>`
+    <div class="libitem">
+      <div class="lh"><span class="tag ${l.g}">${TAGNAME[l.g]||'通用'}</span><h3 style="margin:0;font-size:14.5px">${l.t}</h3></div>
+      <div class="muted small" style="margin-bottom:10px">${l.d}</div>
+      <div class="prbox" id="lb${i}" style="max-height:150px">${esc(ROLE + l.p)}</div>
+      <div class="btnrow">
+        <button class="btn gold" data-copy="lb${i}">复制完整指令</button>
+        <button class="btn" data-cp="${btoa(encodeURIComponent(l.p))}">只复制任务部分</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ============ 法规库 ============ */
+function renderLaw(){
+  document.getElementById('lawbox').innerHTML = LAWS.map(g=>`
+    <h3 style="margin:22px 0 10px;color:var(--gold);font-size:15px">${g.g}</h3>
+    <table><tr><th style="width:33%">法规名称</th><th>要点与学习要求</th><th style="width:90px">掌握程度</th></tr>
+    ${g.i.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td>
+      <td><span class="tag ${r[2]==='必精读'?'a':(r[2]==='常备查阅'?'c':'')}">${r[2]}</span></td></tr>`).join('')}
+    </table>`).join('');
+}
+
+/* ============ 自检 ============ */
+function renderCk(){
+  document.getElementById('ckbox').innerHTML = CHK.map((g,gi)=>`
+    <div class="ckgroup">
+      <h3 style="color:${g.c};font-size:15px;margin-bottom:8px">${g.g}</h3>
+      ${g.i.map((t,ti)=>{const k='ck'+gi+'-'+ti;return `<div class="ckrow ${isDone(k)?'on':''}" data-tg2="${k}">
+        <div class="ckbox">✓</div><div class="cktx">${t}</div></div>`;}).join('')}
+    </div>`).join('');
+  document.querySelectorAll('[data-tg2]').forEach(r=>r.onclick=()=>{const k=r.dataset.tg2; if(P[k])delete P[k];else P[k]=1; save(); refresh();});
+}
+function renderMile(){
+  document.getElementById('msbox').innerHTML = MILE.map(m=>`
+    <div class="card" style="border-left:3px solid ${m.c}">
+      <div style="display:flex;justify-content:space-between;gap:8px"><b style="color:${m.c}">${m.t}</b><span class="small">${m.w}</span></div>
+      <div class="muted" style="margin:9px 0 11px;font-size:13.5px">${m.d}</div>
+      <div class="foc">${m.s.map(x=>`<li>${x}</li>`).join('')}</div>
+    </div>`).join('');
+}
+
+/* ============ refresh ============ */
+function refresh(){ renderWkNav(); renderWeek(); renderCk(); renderRoad(); }
+function init(){ renderStages(); renderRoad(); renderWkNav(); renderWeek(); renderLib(); renderLaw(); renderCk(); renderMile();
+  const d=document.querySelector('.day'); if(d) d.classList.add('open'); }
+init();
+</script>
+</body>
+</html>
