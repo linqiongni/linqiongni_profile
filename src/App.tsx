@@ -7,6 +7,7 @@ import { ExpertiseTab } from './components/ExpertiseTab';
 import { CasesTab } from './components/CasesTab';
 import { InsightsTab } from './components/InsightsTab';
 import { NotesTab } from './components/NotesTab';
+import { CateringLegalTab } from './components/CateringLegalTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { motion, AnimatePresence } from 'motion/react';
@@ -81,6 +82,7 @@ export default function App() {
               { id: 'cases', label: '案例展示' },
               { id: 'insights', label: '思考观点' },
               { id: 'notes', label: '日常分享' },
+              { id: 'catering', label: '餐饮法务' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -119,6 +121,8 @@ export default function App() {
             {activeTab === 'insights' && <InsightsTab />}
 
             {activeTab === 'notes' && <NotesTab />}
+
+            {activeTab === 'catering' && <CateringLegalTab />}
           </motion.div>
         </AnimatePresence>
       </main>
