@@ -1,0 +1,6 @@
+{
+  "name": "林琼霓 · 个人主页",
+  "description": "多年港企法务实战派林琼霓的个人主页，涵盖关于我、专业技能、案例展示、思考观点与日常分享。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
