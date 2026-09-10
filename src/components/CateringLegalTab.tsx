@@ -468,29 +468,40 @@ export const CateringLegalTab: React.FC = () => {
                   <div className="px-5 pb-4 pt-1 border-t border-[#E8E8E6]/60 dark:border-[#2C2C2E]/60">
                     <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
                       {w.lessons.map((l) => (
-                        <li key={l.id}>
+                        <li key={l.id} className="flex items-center gap-1">
                           {hasLocalLesson(l.id) ? (
-                            <button
-                              onClick={() => openLesson(l)}
-                              className="group w-full flex items-center justify-between gap-3 py-2.5 text-left text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
-                            >
-                              <span>{l.title}</span>
-                              <span className="flex items-center gap-2 shrink-0">
-                                <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#B89F6B]/15 text-[#B89F6B]">
-                                  站内阅读
+                            <>
+                              <button
+                                onClick={() => openLesson(l)}
+                                className="group flex-1 min-w-0 flex items-center justify-between gap-3 py-2.5 text-left text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                              >
+                                <span className="truncate">{l.title}</span>
+                                <span className="flex items-center gap-2 shrink-0">
+                                  <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#B89F6B]/15 text-[#B89F6B]">
+                                    站内阅读
+                                  </span>
+                                  <BookOpen
+                                    size={15}
+                                    className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
+                                  />
                                 </span>
-                                <BookOpen
-                                  size={15}
-                                  className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
-                                />
-                              </span>
-                            </button>
+                              </button>
+                              <a
+                                href={lessonLocalUrl(l.id)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="新窗口打开全文（免登录）"
+                                className="shrink-0 p-2 text-[#86868B] hover:text-[#B89F6B] transition-colors"
+                              >
+                                <ExternalLink size={14} />
+                              </a>
+                            </>
                           ) : (
                             <a
                               href={lessonUrl(l.id)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group flex items-center justify-between py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                              className="group flex-1 min-w-0 flex items-center justify-between py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
                             >
                               <span>{l.title}</span>
                               <ArrowUpRight
