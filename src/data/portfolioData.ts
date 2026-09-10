@@ -1,5 +1,5 @@
 import { CaseStudy, InsightArticle, NotePost, SkillItem, TimelineItem } from '../types';
-import avatarPortrait from '../assets/images/lin_qiongni_portrait_1788076404118.jpg';
+import avatarPortrait from '../assets/images/lin_qiongni_portrait_new.jpg';
 
 export const PERSONAL_INFO = {
   name: '林琼霓',
