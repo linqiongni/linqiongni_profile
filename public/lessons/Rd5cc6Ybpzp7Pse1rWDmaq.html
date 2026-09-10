@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html data-page-node-id="IWUj4X8QxSY6nXk6dnzxMf" lang="zh-CN">
+<head data-page-node-id="7dDZoTPfpk6yOUOOnYFDeT">
+<script data-page-node-id="TA2UjNrj0ixiyqXfDN6peb" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="wbqBXr2AapvlB3p9Vk1pOV" charset="UTF-8">
+<meta data-page-node-id="ptJ2iF9zHXOR0LpgNBpjQR" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="2D78lA5SEIzphUSOMEMAVK" data-pnid-children="qXgzrDtaJ9MB3ev8ZtIKvF">招商物料合规审查清单（8维度 · 可复用）</title>
+<style data-page-node-id="t8LpoyyEVqaoDhEaWP5EoS" data-pnid-children="aKfBXrOvJTpds2hptY9KS8">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.78;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:22px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:8px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.07);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 15px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:13.5px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:14.5px;margin:14px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body data-page-node-id="haJU00q9q9oDphBhAOiyiu">
+<div data-page-node-id="yKpoYpHuLWNcx0YseOxD4G" class="container">
+
+  <header data-page-node-id="fRA2B8xdsC3dB7JwEcJZZh">
+    <h1 data-page-node-id="98u9sVGIWPEm8yutZeVXy5"><!--pnid:BquMzkaDbGr7Ef07rZvaBT-->招商物料合规审查清单（8 维度 · 可复用）</h1>
+    <div data-page-node-id="uGvfk2jehiTdDIMjG04ixJ" class="meta"><!--pnid:AWTYp9ZgDcGdGIKt4WsOIA-->适用范围：招商手册 / 官网落地页 / 招商会 PPT / 短视频直播 / 朋友圈社群 / 户外电梯 / 第三方平台 / 销售话术 · 特许人立场</div>
+  </header>
+  <div data-page-node-id="xZBUQHuzmDTRkJkDQnXRK4" class="lead"><!--pnid:OtaYWhEYcHT8eTmUKmRG01-->使用方式：每份物料上线 / 交付前，逐维度勾选核查。任一项命中「常见违规」即打回修改；本清单为<b data-page-node-id="DruWIan3nhczqtdkNTUu2v"><!--pnid:ujAiwnOURsCQNnC2UbzQZJ-->审查框架</b><!--pnid:H5mdMCA2KSw6thwZTjtISK-->，不含具体案例答案。配套《物料审核意见表》走五步 SOP（提审→法务审→出意见→修改复审→归档≥3年）。</div>
+
+  <div data-page-node-id="O9134pCTe99u5I2Wlqrnll" class="tabs" id="tabs">
+    <div data-page-node-id="h2bNZ8b9TxxSrbaKHjp3er" class="tab on" data-p="p1"><!--pnid:6yoIOXAgvbrWOkb4N4T7mZ-->① 绝对化用语</div>
+    <div data-page-node-id="OtpqZKYlfpoctw3CXCpArU" class="tab" data-p="p2"><!--pnid:Ztj27kaHtqxQPRrrN54PqI-->② 收益承诺</div>
+    <div data-page-node-id="dXu2tqBVqD5QKogoBut86S" class="tab" data-p="p3"><!--pnid:v44jcLxdNBRORrJM3k0ro4-->③ 数据引证</div>
+    <div data-page-node-id="SOUn8jnWondmDZPMke8Lqa" class="tab" data-p="p4"><!--pnid:DGuEx47GYebyitad4aY7HV-->④ 资质展示</div>
+    <div data-page-node-id="pSR9sggPNWVVxies2jNVh7" class="tab" data-p="p5"><!--pnid:nD1Y3aRWvfvQ0oQLEpvcsf-->⑤ 商标标识</div>
+    <div data-page-node-id="JcVHsqFdCxstI08I0YzojP" class="tab" data-p="p6"><!--pnid:opRhmJNee24lz1Qg7lirLf-->⑥ 特许人信息</div>
+    <div data-page-node-id="Spi9D43bqI5E3jd1mNLojD" class="tab" data-p="p7"><!--pnid:kOZT4HDUi3daZhkJXa8qVQ-->⑦ 风险提示</div>
+    <div data-page-node-id="yopdvOVqiTG5lfCZLcTUH0" class="tab" data-p="p8"><!--pnid:sGfhcTOsocp82UTlOe6Wdo-->⑧ 免责声明</div>
+  </div>
+
+  <!--pnid:eZ9Kp4JJ1ykLLkzSOyu33V--><!-- ① 绝对化用语 -->
+  <div data-page-node-id="GkrdVLFVQUWb7zVyLQKl9s" class="panel on" id="p1">
+    <div data-page-node-id="WWPQfQsBeaqBWrrmrnhKLH" class="card">
+      <h3 data-page-node-id="V1qLGbYsqw6ukHYdRCOtu3"><!--pnid:ucWEY0mzqibUI4VGLVxRx1-->① 绝对化用语（最高级 / 唯一性 / 国家级）</h3>
+      <h4 data-page-node-id="C0Otj4ex2vfqWbr5qD49Ys"><!--pnid:QiLaBJgGrZhy3G9s8XshYf-->审查要点</h4>
+      <p data-page-node-id="lGdzkrMVO6vbRvkRCKGVtz"><!--pnid:tpJjRiEaHhauaRTETQ14ej-->排查一切「国家级、最高级、最佳、第一、唯一、销量冠军、最值得、顶级、极致、万能、领导品牌、销量第一、领跑者、首选」等表述，含中英文变体、谐音、图形暗示。</p>
+      <h4 data-page-node-id="AeCqkcku1VKqgxlUUR90yH"><!--pnid:W5X1gQd6XhLenYQgpcB4Aw-->常见违规表现</h4>
+      <table data-page-node-id="zQ25UyyJUg1x5SFFj3sA7F">
+        <thead data-page-node-id="AcCKHsWCIlPWwN71MimNRS"><tr data-page-node-id="Uj1OnccQWt5uT640asblNj"><th data-page-node-id="E9W5WyahU2SYD8vei8cGeh"><!--pnid:mSECrPLvzdMWAURKir13fD-->类型</th><th data-page-node-id="AyhGcJJ3179UgPdVB2YAW5"><!--pnid:lnSzfkKGlE6xgKZeoVkyi3-->典型话术</th><th data-page-node-id="2thWHtkC36AmKKm8ui1dut"><!--pnid:aP9ifr2XadgBVBEuUPJlqD-->风险</th></tr></thead>
+        <tbody data-page-node-id="xFlEjmczlmpll4hhPiLVyx">
+          <tr data-page-node-id="LpBs9f4oN9oPkvpK3Ckstm"><td data-page-node-id="SppRI6ZuCOSHNkeAv6AjnZ"><!--pnid:BeOWYWvHBMt6BGNKCKfg6o-->最高级</td><td data-page-node-id="vJd2HAGDxKaT7jiPbM40Rz"><!--pnid:isg8iBZc4Gm9ZOU7nY8Qff-->行业第一 / 最值得加盟 / 销量冠军</td><td data-page-node-id="lmC6gSTLZrj8T1MiMMoVkZ"><!--pnid:zyFLIH2W7zfjoebhYAqFwb-->绝对化用语，广告法第9条第(三)项</td></tr>
+          <tr data-page-node-id="hnCRQcUhktIYCFhFQ7XKtA"><td data-page-node-id="i8NhYIE9Nr1aQXBsL90AN2"><!--pnid:NXZbxCE1CFgBP2vSZlDWgB-->唯一性</td><td data-page-node-id="2YXSxrhH7VDILufoUCOnwJ"><!--pnid:dep38CmGGn1LuRvpOwEJ6j-->唯一推荐 / 独家配方 / 唯一指定</td><td data-page-node-id="CbLEOzzNo3fTu6VlXgYcC2"><!--pnid:NmPHJnLd5UasXaP9mvNLoP-->同上，且易构成虚假</td></tr>
+          <tr data-page-node-id="qevfyGyIt8wLWMCzhbNPA2"><td data-page-node-id="pTIY7rwEqqUOZO2RSPA1t5"><!--pnid:AhKBdH9Y37X9kBTQ42vZNj-->权威背书</td><td data-page-node-id="ueM44ajKkWdhh8ZOcQOilo"><!--pnid:XTShO5wQPG3sMhku8DLXUN-->国家级 / 国家品牌 / 央媒上榜</td><td data-page-node-id="TFQnftBCkeKKIUKec6lMRM"><!--pnid:ONLOWJW2RVWqAbnmWduqB8-->第9条第(二)项，借国家机关或媒体</td></tr>
+          <tr data-page-node-id="iWuC04AtMDcXbdjtdvOf37"><td data-page-node-id="4XjhN37l2KoBTujE2QdNUA"><!--pnid:d7KsWi0UPNyRl5ZeoXAIX5-->驰名商标</td><td data-page-node-id="k8rEqaES1FN4xlNE2J1wvS"><!--pnid:O7GYXXTKG0GVC0iOUmF1y4-->国家驰名商标 / 中国驰名商标</td><td data-page-node-id="29H5uOARGz1vRkQCIzfCjJ"><!--pnid:frdWkdQOT2fRRj1UW1yyfx-->商标法第14条第5款禁止用于宣传；广告法第9条</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="G2QMgWvFOv4LBcMUBBWKvA"><!--pnid:FLxr5wUuXh9Fk4ivdvKCh0-->核查动作</h4>
+      <p data-page-node-id="QW8etTsdVgCFINsBi70xSJ"><!--pnid:NXvxF95bcrdgll8SsPbJwS-->1) 全文检索上表关键词；2) 删除或改为可证伪的相对表述（「区域能见度较高」）；3) 若有真实排名，改标「据 XX 机构 XXXX 年报告位列第 X」并备出处。</p>
+      <h4 data-page-node-id="M0QYjqRGgDonGvQx4h7mNL"><!--pnid:9U1LsioEsjoHSfEllQiVhq-->法条依据</h4>
+      <p data-page-node-id="lKPVAEfFMQzWh12kZWEiXj"><!--pnid:P4a40axXn094Q5harFKAis-->《广告法》第9条第(二)(三)项 + 第57条（罚 20 万–100 万）；《商标法》第14条第5款（禁用「驰名商标」宣传）；市场监管总局《广告绝对化用语执法指南》(2023) 对招商「一般不认为轻微」。</p>
+    </div>
+  </div>
+
+  <!--pnid:yUuharpa1RlsWr4J7oVi42--><!-- ② 收益承诺 -->
+  <div data-page-node-id="uniIWitSRrDUKCaDoZrTwN" class="panel" id="p2">
+    <div data-page-node-id="E1x6fNTRGK3Qd9zEjwr2yu" class="card">
+      <h3 data-page-node-id="ZaZHXi8ouxqeV1A7A2PuaX"><!--pnid:1RMxtlYIyR9rmUDkjwsDFH-->② 收益承诺（回本 / 盈利 / 流水 / 单店）</h3>
+      <h4 data-page-node-id="1FljZRUjH9zOzKiuY88b3W"><!--pnid:oEAi0geowhbTK1hZHG9GEc-->审查要点</h4>
+      <p data-page-node-id="ilk7qFYoyMZyDNEgtzlx9C"><!--pnid:D2Mxtap3ZoHq1AIwL2ipdg-->任何落「收入侧 / 回本 / 盈利」的结论性表述均禁写；只可客观列「投资预算（支出侧）」。<b data-page-node-id="Q2Wy54kpMsFjt37KMIVmzg"><!--pnid:EHtOYw732nDVtFH51zVZ7z-->单店营业额、日均单量配赚钱词、回本周期、包盈利、0风险、补差额</b><!--pnid:Fr0mYIy1WYYiupHid1Cavh-->一律红线。</p>
+      <h4 data-page-node-id="eozFZ6wrjr5Iiqz3l9aCRT"><!--pnid:3Cbg9kawIyEO95dR1i5fvg-->常见违规表现</h4>
+      <table data-page-node-id="I512vUfAwsDgrY20RSy156">
+        <thead data-page-node-id="HFOMuGzKNJ2THvsP0oTkg4"><tr data-page-node-id="HHsLf5JkBGoxPfFvGyzcLG"><th data-page-node-id="IPfdzYrJUT8S6aDguMtMTI"><!--pnid:YVZ0bBPPvu0e2S025UTCTn-->类型</th><th data-page-node-id="0J3BzJxERG03iRlkXoeTW0"><!--pnid:UM9l1ubeSQnHYnGHgKtdiX-->典型话术</th><th data-page-node-id="5uuDWRpKOuERB1OxWNij5z"><!--pnid:Ljh8FWDkybFum1WRwzRScI-->风险</th></tr></thead>
+        <tbody data-page-node-id="fsnPm8S6hvJNYgfekG24w9">
+          <tr data-page-node-id="xbnWuqZ1kMCUXOHcU1tIl8"><td data-page-node-id="GxcWDayx850s1x98udsu5H"><!--pnid:ncXEXPPWDV3HPqlC1KgshA-->回本周期</td><td data-page-node-id="2cTHO9byRezszUOP1pje86"><!--pnid:GpKgRyjNKbYmqrWa8ehEIH-->8个月回本 / 半年回本</td><td data-page-node-id="nEFcD6TUUhzrvDNqjLtLqC"><!--pnid:i2o9BmrqiBFBs2GG45mK85-->条例第17条第2款 + 第27条</td></tr>
+          <tr data-page-node-id="3gT653KdXYrrZLCFisGDiU"><td data-page-node-id="9lJq1wvOVSIlKko0FW9n96"><!--pnid:XWFG2tiRzUX1C78wxCPzCi-->盈利保证</td><td data-page-node-id="fcOO4Nt7tWtutqw9BfOejo"><!--pnid:oBHVRd9NZHdnMRrI9lCb6c-->包盈利 / 稳赚不赔 / 0风险</td><td data-page-node-id="HIKyQJt972WoWVICF4kiOJ"><!--pnid:59e7yYdLg1GR2U8rwIidWs-->同上 + 广告法第25条</td></tr>
+          <tr data-page-node-id="zuHv0h0LhX40ZN5ydHvEgQ"><td data-page-node-id="J1He4I7ZUtw3p7aJHgZRbl"><!--pnid:IJZS7F5hfBzWKuMMKlBV2l-->具体收益</td><td data-page-node-id="JYV2ElGVzV2S7z1YfcOWrf"><!--pnid:S90NEwHxwwiDYV8gv6BB9y-->月入3万 / 月净利润6万</td><td data-page-node-id="j38mlMElTGayB7x2kw9nYj"><!--pnid:pKkK9GJA4vH21wd2uli5nS-->条例第17条 + 信息披露办法第6条</td></tr>
+          <tr data-page-node-id="YiqC3NpniHRgevlAjShqYf"><td data-page-node-id="p9XT0VRC7DiZRoW7h79EGu"><!--pnid:EXIud2W91KjfGjtexiLnvd-->单店展示</td><td data-page-node-id="wkRPzPrFFI1KMj0ZRK9qUx"><!--pnid:9jQMh2q6GI4yrspFr65AmS-->某店月流水42万 / 老王一年买房</td><td data-page-node-id="zus9WEaRkSCMxLA137Df7T"><!--pnid:p34i7xq3ImN6gLiNPXyoSI-->办法第6条「单个被特许人」+ 广告法第25条(二)</td></tr>
+          <tr data-page-node-id="8CF4u3bkjum5rxxMF57Fhk"><td data-page-node-id="S1DIOaniPWyYcy6X2Tswse"><!--pnid:66QJAJy6Aq8FY4HOuez8hd-->补差承诺</td><td data-page-node-id="QGnFLNwok2lcVt52NsS6F3"><!--pnid:DD0uY2mkwLEJ8sdGpjcHCW-->赚不到总部补差额</td><td data-page-node-id="a0aob5baiagD6ec4aIRW0f"><!--pnid:OYHpcex4994vL0TU7Nnd9i-->条例第17条 + 民法典欺诈风险</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="kbgkpWF3qfCQ25OP2xSuJd"><!--pnid:mCm9jYnEaCLlJ986pdgFi6-->核查动作</h4>
+      <p data-page-node-id="BiwEiR8dedAwOWIrTCplQI"><!--pnid:GdkiCf2zyjWk89WcL8hfRn-->1) 划掉所有「回本 / 盈利 / 月入 / 流水 / 稳赚 / 0风险 / 补差」；2) 收益测算页改为「投资预算表（含加盟费/设备/装修/物料/预留流动资金）」，注明「实际经营结果因人而异，本表不构成收益承诺」；3) 单店案例须脱敏并标注「个案，不代表普遍水平」。</p>
+      <h4 data-page-node-id="KPwJ4gJGwrEcRfdQbCiHVs"><!--pnid:0OaRBBr0pz6AsAeFvFkPx9-->法条依据</h4>
+      <p data-page-node-id="rsmIewyt22D8TeY12zTHcN"><!--pnid:y8mqmimp11fscBytWq5qm9-->《商业特许经营管理条例》第17条第2款 + 第27条（责令改正，3万–10万；情节严重 10万–30万，处罚机关实务多为市监局）；《商业特许经营信息披露管理办法》(2012年第2号) 第6条；《广告法》第25条 + 第58条（10万–20万，情节严重 20万–100万）。</p>
+    </div>
+  </div>
+
+  <!--pnid:uUvrNw3LFizBPiSdJPCMzo--><!-- ③ 数据引证 -->
+  <div data-page-node-id="gTPOoOSZDV1gBpn9RPwWO7" class="panel" id="p3">
+    <div data-page-node-id="rLTBQxEqHV5tqjXmBQIWmp" class="card">
+      <h3 data-page-node-id="1fFneV0iHM0GAOAklj3JDL"><!--pnid:402gXW5Fk2PBchYq5aY5j5-->③ 数据引证（门店数 / 存活率 / 行业报告 / 第三方）</h3>
+      <h4 data-page-node-id="96LSJNAWX0HviB2mFv16HR"><!--pnid:tzH2ctK8Run3iAJ7dtUFj2-->审查要点</h4>
+      <p data-page-node-id="0cD2jwfenMlRIHFnQEAzH2"><!--pnid:iM688gtDn53sWOBj6fO5oJ-->所有统计数据须真实、可随时举证；引用第三方须标明<b data-page-node-id="qTwyGBHzVo3wuPgaHEcV9a"><!--pnid:Ail09G2LGxZb28b6A7QMP7-->出处 + 发布时间 + 有效期</b><!--pnid:0Rh1CCEt7TDuLDIjozly3W-->；自家统计可不标出处但须有台账支撑；过期 / 已关闭门店不得继续宣传。</p>
+      <h4 data-page-node-id="qzdakMTeo12N3mQk3U9yx3"><!--pnid:l5H8hJMUP8rPtsO36h6ZWN-->常见违规表现</h4>
+      <table data-page-node-id="lRRbS0UfGhCmCWtaZRInxe">
+        <thead data-page-node-id="v6rpWLkG1NBcpVlWJmxCCL"><tr data-page-node-id="URFCCqHRNeZQdFsFVdkwgJ"><th data-page-node-id="lvzxAEx1vcVE4T9UCJMg2N"><!--pnid:bVszHcDziPVWCXUUO0RsPA-->类型</th><th data-page-node-id="2SiIP6NEaGgoXUkCiNBMuz"><!--pnid:nm5xmYdDBrWzDulGDdcIZ6-->典型话术</th><th data-page-node-id="z1mc9SKlFO7pKr9oqJu3H8"><!--pnid:NLLpb1aLszFWem5Z68xE2h-->风险</th></tr></thead>
+        <tbody data-page-node-id="wUKwq6PR94myLA5iEfblym">
+          <tr data-page-node-id="d6RGdmAZG6N09FgrBiW8ZN"><td data-page-node-id="yNTugYd2PP2tGxkVsgIkFD"><!--pnid:t56kpprSwV360d4P1IlcF6-->无出处断言</td><td data-page-node-id="FZiE1XyQpjHtlaBptUsDev"><!--pnid:bjbWayNPdI0EX9zfmG3D5Q-->500家无一家亏损 / 存活率95%</td><td data-page-node-id="NjKyZAp6eHo1TtfaFJZc6U"><!--pnid:O09gRuJ4XDgLlItHLAOmEP-->广告法第11条（未表明出处）</td></tr>
+          <tr data-page-node-id="sEhjofbgEQ1Q6llW7q2CXT"><td data-page-node-id="okI4s4VMQKkXTJOASdkPLw"><!--pnid:E2eTe6NVTzcGdaVyRGDTvM-->出处不全</td><td data-page-node-id="8aEFdXTJrfu47d0xJuultl"><!--pnid:hlG4xGP1OHBKdy0z0CApMt-->据《白皮书》显示…（无年份/机构）</td><td data-page-node-id="zAqDO8O7MmtqCQP4m3KsQ1"><!--pnid:aebtG50AhAZMaLjlEDa2d4-->引证指南第8-9条，出处缺失</td></tr>
+          <tr data-page-node-id="e8NHxetQ0oKna5WTc9i0lo"><td data-page-node-id="l0lIgG65nQ5VO503vvyWFI"><!--pnid:AzLBXNwhqygLqzmLlNOB5a-->过期数据</td><td data-page-node-id="3D7IkdzaZhaBVqwNnRwHhJ"><!--pnid:Mrq9uh6UDzVweog31h6pk6-->仍宣传已关闭门店数量</td><td data-page-node-id="AlkdY8sFE9JnYBJRciypzz"><!--pnid:TTgBlZFkpSdez3RsPxQl1q-->广告法第28条虚假广告 → 第55条</td></tr>
+          <tr data-page-node-id="yG6D5Fw8NrVUZo2J1NOejG"><td data-page-node-id="CsGk0kpVjHIBIMvtKKQhqY"><!--pnid:5ANHVu6EUPtWlNhIhiyLld-->无法举证</td><td data-page-node-id="UZ9C9rrq0sgAU5mi4GNqaq"><!--pnid:9hbnlsQxwGibONlg2a7qeM-->遥遥领先 / 覆盖率第一（无统计）</td><td data-page-node-id="Go0iwrmRQlpSLmOB9FVMi2"><!--pnid:yutZPNYxowHMnPeYahafJ4-->第11条 + 第28条</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="cFUTXJACyD3NkjXnvVYhVM"><!--pnid:Fh6wzTNUuUPoH1QUOvviUT-->核查动作</h4>
+      <p data-page-node-id="cCxd8UGD8e6bqMrO254GL2"><!--pnid:25pAbI25G0ExmUVEM76Gud-->1) 每张含数据的页核对「原始台账 / 报告扫描件」；2) 第三方引用补全「机构名 + 报告全称 + 发布年月 + 有效期」；3) 门店数加统计时点为「截至 XXXX 年 X 月」；4) 建立数据有效期台账，超期下架。</p>
+      <h4 data-page-node-id="FevlvjxcOI8ErZ2Z0FHAuA"><!--pnid:9LS9D04BauZihrodiA2HyC-->法条依据</h4>
+      <p data-page-node-id="2inHHiKTtanBQ8jjbm3ii8"><!--pnid:pFWL6ANKJABmUUV7rra4Rt-->《广告法》第11条（引证须真实准确并表明出处）+ 第28条（虚假广告认定）+ 第55条（广告费3–5倍，无法计算 20万–100万）；市场监管总局《广告引证内容执法指南》(2026.6.3) 第8-9、17-18条；《反不正当竞争法》(2025修订) 第9条虚假宣传。</p>
+    </div>
+  </div>
+
+  <!--pnid:2aw3YyXy1TsInYl3VlwkmY--><!-- ④ 资质展示 -->
+  <div data-page-node-id="z5HSdchcU9CcWs0yCJvccD" class="panel" id="p4">
+    <div data-page-node-id="JyuI6oHQjChKnPuQPS8aOD" class="card">
+      <h3 data-page-node-id="DRtktge7lTXM7uf61mWwuQ"><!--pnid:jvoSqFkWrLKAtD33bE73bk-->④ 资质展示（荣誉 / 认证 / 专利 / 协会）</h3>
+      <h4 data-page-node-id="9kAwSb51tx8hD9W0JDFcoX"><!--pnid:LiXrn2O4w6Z74rDFW2x7UL-->审查要点</h4>
+      <p data-page-node-id="LzRvPMnsmwIre0dZkvrTbw"><!--pnid:ll3KtLfs5E0181dObxM2jc-->所有荣誉、认证、专利、协会称号须有原件或官方截图佐证；禁止伪造、禁止用已失效资质；专利须标专利号；不得使用「驰名商标」作宣传；协会称号须为真实在册机构。</p>
+      <h4 data-page-node-id="xMHThOGCGGeApJOHVNzs5R"><!--pnid:aeUwuSHGGzWP8YYT4xKY5e-->常见违规表现</h4>
+      <table data-page-node-id="8KuZDLFxOtiBMeX5UJ6sZV">
+        <thead data-page-node-id="Y181Vgg91MNAJLR7Z0V7my"><tr data-page-node-id="P1iuXrULmbDKAUMuJvOoHQ"><th data-page-node-id="8qR6ycWzlnwrPoiMOzUXh9"><!--pnid:ENIPoHVSiPgMmZcj6qEf0W-->类型</th><th data-page-node-id="dMBpsonBWQ7IcR8ULHrUvu"><!--pnid:FS0Wfw6kULENhv9nbZwviN-->典型话术</th><th data-page-node-id="PoMImWQ6T0KwCAsro2cK6F"><!--pnid:hFeLa8jPjDuUkC8QuFzpjE-->风险</th></tr></thead>
+        <tbody data-page-node-id="DsHG7H3VjbK0YPDan9qPnL">
+          <tr data-page-node-id="ReP6D7IzW4zP28hisq2FEh"><td data-page-node-id="dGVTjBdYwcjLofs1kCBbBi"><!--pnid:aFvADpnSZXRw2dkZAuByhE-->禁用宣传</td><td data-page-node-id="BzJeLcO2R0BFabyF1z9URb"><!--pnid:gDVD3KsfKPWlpLDwd3ReFN-->国家驰名商标 / 中国驰名商标</td><td data-page-node-id="7VroPjWPMQ2fosjF9XIRD8"><!--pnid:x6wfBoywyaWBZBYmn3Ihlr-->商标法第14条第5款 + 广告法第9条</td></tr>
+          <tr data-page-node-id="cMZzOc6RTIeJcxw3idGWbP"><td data-page-node-id="rdekVCYb92JKqnwsdq59ys"><!--pnid:mTZVSNjB3AGNplY7XvcIpK-->虚构荣誉</td><td data-page-node-id="lPovagyEt0VHn4VTH5kKS0"><!--pnid:CPgYkvFsv1x61F7ymRrSvm-->假协会「五星推荐」「国家认定」</td><td data-page-node-id="C1D1MBOOLUuaDluLwTXGkw"><!--pnid:hDeNbBqiAvnX5XNWbuvDWP-->反法第9条虚假 + 广告法第4、28条</td></tr>
+          <tr data-page-node-id="8tyqNJFIHE4fucJCqEAWzd"><td data-page-node-id="jgPPVHVAdQyaxW190zkISM"><!--pnid:NTSFxcyk0ROJtKTNYu04Vz-->专利缺失</td><td data-page-node-id="DhmzBcVxxqYIkCAgD4lk88"><!--pnid:xYhxqn7sLJ38GswRWhyUth-->宣称专利但未标专利号</td><td data-page-node-id="MuudIn5fPWeKQhKf5Qtkmm"><!--pnid:iSNTYfEotK00cS219M3O1J-->广告法第12条（未标明专利号）</td></tr>
+          <tr data-page-node-id="sxndFfmkdKzTb2nksua3SN"><td data-page-node-id="Yd3Qmz4pS0Gm8VJokJ4up3"><!--pnid:fJowId79Wxt0GzuGVS9jal-->资质过期</td><td data-page-node-id="sd1EGIEQLd5RZAvQHtmkez"><!--pnid:qjAI0qRyjjPSOpmZgrI4M0-->已撤销的认证仍展示</td><td data-page-node-id="jlnz5B8eeSc8hq7ZR3Tqi6"><!--pnid:DYrVmVod0bHNC5yPZLji6g-->第28条虚假广告</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="1ah2MmmChO7FFm7EvQUMiB"><!--pnid:qSujOz3AZrcgA3gZRe8fSW-->核查动作</h4>
+      <p data-page-node-id="cBHyiTK6lrorQX0HcE8mYH"><!--pnid:NITdEO2aWlmppCLwxjsiUk-->1) 建《资质原件台账》，每份展示资质对应一份扫描件；2) 删除「驰名商标」字样；3) 专利表述改「本产品采用专利（专利号 ZLXXXX）」；4) 标注资质获取/有效期。</p>
+      <h4 data-page-node-id="obDCmXXMRn9X8V18a62bRY"><!--pnid:aW5aba2iFunvzFpY8NdVE3-->法条依据</h4>
+      <p data-page-node-id="DqKSrAdBF6eTiFTiZCplC7"><!--pnid:lnPPuYDNxKJcJwvmAEOU6c-->《广告法》第12条（专利须标号）+ 第4、9、28条；《商标法》第14条第5款；《反不正当竞争法》(2025) 第9条。</p>
+    </div>
+  </div>
+
+  <!--pnid:zzf8rVgYHpYIA7iOQ2Nyct--><!-- ⑤ 商标标识 -->
+  <div data-page-node-id="uchXQuvDLf7W2FHPlw95Dt" class="panel" id="p5">
+    <div data-page-node-id="YfIA9H4OpZp4mVwLLq1YRt" class="card">
+      <h3 data-page-node-id="oTpmzqMA06c4HRRXNu8AGF"><!--pnid:9IZ2OY7O8b6n7kvXS12Gw1-->⑤ 商标标识（™ / ® 使用规范）</h3>
+      <h4 data-page-node-id="jsnpdVXOawY1JbOj3uQUfk"><!--pnid:ytzGqjKEWzCH5f4y1QKcDh-->审查要点</h4>
+      <p data-page-node-id="PPtc2xfs4A6fMS0ywnxwLK"><b data-page-node-id="6aqauSzNqFIaPUwTPMWmTY"><!--pnid:43qJovy8RbXveWb2M8u7qj-->® 仅可用于已下证的注册商标</b><!--pnid:fcoGehpcKOwd6WN1FeleZQ-->；申请中只有受理通知书用 <b data-page-node-id="AjceEKVY6B6MOugHeiqvUF"><!--pnid:WTqPJiIXQWxnFAiRZtE3mC-->™</b><!--pnid:NfXGSMu4HRSDk1qDbq2y7R-->；未下证不得使用 ®，否则构成冒充注册商标。授权链未闭合时不得宣称「受国家保护」。</p>
+      <h4 data-page-node-id="iM2pgbKy2MG5i06gO5R4B5"><!--pnid:hD2XbLtSp3lpYrERUmqX0n-->常见违规表现</h4>
+      <table data-page-node-id="vp2c2V5Cnb3kcMTiiuimBk">
+        <thead data-page-node-id="0S9yWq5ebvwKh6JvlmbtRV"><tr data-page-node-id="rD1f0YD8E6jfa8yLZ50t4z"><th data-page-node-id="i27htOsmcHYtaaiGgOvv0g"><!--pnid:dfpD6F1Qt9XMQiTkJAU10a-->类型</th><th data-page-node-id="yCj6KZmFPQNXSgMMXM05q9"><!--pnid:fojRHMNLJ4ucS7xhjNwjuN-->典型话术</th><th data-page-node-id="rgom9Iw8Z3De78pEqP4Yi3"><!--pnid:jw7z2tmOXWrxIgmZqT5IJQ-->风险</th></tr></thead>
+        <tbody data-page-node-id="mDRTsi32lbooEAWAz4Kocn">
+          <tr data-page-node-id="K8MYwHPWM9Kjdl1baUidGe"><td data-page-node-id="6ZB6pZuVVNM1MqsvkymKtR"><!--pnid:TnuyqDzhBuTmbE9npeAsAp-->冒充注册</td><td data-page-node-id="TmOPM6wxPBkmm7xNh49mAc"><!--pnid:yaSyUs1kxJXvF995IwA5TA-->受理中却标 ®</td><td data-page-node-id="8WxIp1YuJ8pIRVdudS1uGh"><!--pnid:R4bFtwISvVg3RMP8TyJwBD-->商标法第52条 + 实施条例（冒充注册商标）</td></tr>
+          <tr data-page-node-id="ZG3X6pOWQqUpHJEOsuTgvp"><td data-page-node-id="sGrAdYpdMhYvaaLm0rOHcG"><!--pnid:oGSqwqBVItG6sMhPicfoeK-->夸大保护</td><td data-page-node-id="kHyBYG14aO46u7W8U3Lua0"><!--pnid:H1QwhM5WJkhg6MasBEmsbs-->受国家100%保护 / 别人仿不了</td><td data-page-node-id="GPb7mkWMwFMQEIurYQw1iq"><!--pnid:K9y0LMYkb1NzcbZfCnE6Jc-->绝对化 + 误导</td></tr>
+          <tr data-page-node-id="hWTXbcclFERdveOQ8XEKXs"><td data-page-node-id="FtOqQNqLZxNfhKZncCczil"><!--pnid:HwWpBusV4rVE7CjRb1yGac-->超范围</td><td data-page-node-id="PL6ySaM0IPDhfMB3Kiwby5"><!--pnid:jcqosF5jfImAzhyweOnM6A-->在核定外类别使用 ®</td><td data-page-node-id="uGlkpJmRBswNdWKUch20ul"><!--pnid:vZciPtuaVsFIhnLyBpnZy0-->同上</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="gYDWpfEmZzvsbJ7mWVRWoC"><!--pnid:uovMRa2AqmYdjygYlZjUPP-->核查动作</h4>
+      <p data-page-node-id="izPIWFCLC4mE20RkVgDUdQ"><!--pnid:C6HyfXV3LG1wDIaeS7wuxt-->1) 比对商标注册证核定类别与物料使用类别；2) 未下证统一改 ™ 并加「商标申请中」；3) 删除「100%保护」「仿不了」等绝对化。</p>
+      <h4 data-page-node-id="JUQSAruUzsjy8hRMfqKnXg"><!--pnid:dqyxewMK30Wtpotm3UECzD-->法条依据</h4>
+      <p data-page-node-id="yYIOve6Ob4iOdjxYhtLSES"><!--pnid:apwUHjRATyqAjLYjow5wfQ-->《商标法》第52条（冒充注册商标处罚）+ 第57条（侵权以同类近似为前提）；实施条例第63条使用标识规范。</p>
+    </div>
+  </div>
+
+  <!--pnid:p4zwtoATdlrqLzhg9QZD7J--><!-- ⑥ 特许人信息 -->
+  <div data-page-node-id="LGlpPfRvw8ZKBKyzjikWsX" class="panel" id="p6">
+    <div data-page-node-id="vJQgZmcxTQLx7N1yq8dvZD" class="card">
+      <h3 data-page-node-id="TqoH6ARW2f4hCkuKEyrtCi"><!--pnid:aHRbvDXe6fFvMDaJnDpKbn-->⑥ 特许人信息（真实名称 / 关系标识 / 备案）</h3>
+      <h4 data-page-node-id="W3msk8bBk2mN5yGqjUsLCy"><!--pnid:b1nFWryOjHjnSgJ3dkSyNf-->审查要点</h4>
+      <p data-page-node-id="FjhNGsNFAYFshvjFZiKW7t"><!--pnid:KfyYriu3jmjghXQ8gDOYDE-->物料须明示<b data-page-node-id="C55e0dXnAOwlrCA9ZwujnI"><!--pnid:gvVvNj9AKFb2KZELG6dxdz-->特许人真实企业名称、统一社会信用代码</b><!--pnid:P1R4ocWZlYWX89Sc7GIiWX-->；加盟场景下须同时标明特许人与被特许人关系；不得只用品牌名代替法律主体。</p>
+      <h4 data-page-node-id="QYRTm38IBow1zoHaiyzey3"><!--pnid:JB66Qds3qqVuoSb6Ghj0K4-->常见违规表现</h4>
+      <table data-page-node-id="2EoKOTkQVsj8IYtuwIAVhF">
+        <thead data-page-node-id="hP2cU5MLXbMoNmlj2Ya8vv"><tr data-page-node-id="Q0nXZf9sRgeRQeTeZAWqCB"><th data-page-node-id="IpEcaYbsaRk6Yf1rtZFskn"><!--pnid:FpWaaVPI1HZRss6JbRjTqy-->类型</th><th data-page-node-id="O0NDwskSOgnGb4njC8PzaJ"><!--pnid:hfgTVVK61ZsCiBlQthpzaZ-->典型话术</th><th data-page-node-id="PHyryK7macyMxjjaL1k1jI"><!--pnid:NTHLmbZuV1ZwIwZRPonJKf-->风险</th></tr></thead>
+        <tbody data-page-node-id="hRfSfgmmLBk9adv78YUc6g">
+          <tr data-page-node-id="YtBufdJMjtZkwJ0BRb1y2h"><td data-page-node-id="MhlzTOhyxnLe9d7mli4QEd"><!--pnid:BuXjBwWegYI6gYGdFD2utJ-->主体缺失</td><td data-page-node-id="cuHeVAEBNXdJcNaRP8ygyJ"><!--pnid:3jp3S9EqSj9RPbjqDWj4Kp-->仅写品牌名「蒙食源」无公司名</td><td data-page-node-id="s6Nx5tnPE7URaqaUI47oB9"><!--pnid:s9Zc8Ujiv3OjriHX4cOTyD-->上海消保条例第26条（须标特许人+被特许人真实名称标记）</td></tr>
+          <tr data-page-node-id="yFI6mBAGUDCcUVRVxd9op3"><td data-page-node-id="M9adCBiAJPUDBJmwpDigfW"><!--pnid:pZcLBgMtzvUDpngyBA6l9L-->关系不清</td><td data-page-node-id="S4aozhBGWneSiPA6uxuUh4"><!--pnid:LBzFu4YLme0g7k47ghkG8n-->加盟店未标「特许经营」关系</td><td data-page-node-id="eN2c1aSimO89EBLzoRu1p5"><!--pnid:bC9C2RUugUwGNxtwLqmZQS-->同上，消费者知情权</td></tr>
+          <tr data-page-node-id="N5hwyVs1OWkBnWviqw3rKy"><td data-page-node-id="w2FpAxClYGwz7ibf0p2gu0"><!--pnid:CMYOPmTjtc7Orw4vEbgvxa-->广告标识缺</td><td data-page-node-id="ni3xP1QKbXEBmPMoLXr7nn"><!--pnid:ccKZxF8Tn6mp5NQnbZUbcs-->大众媒介物料未标「广告」</td><td data-page-node-id="gC4jxoYe0sKNa5i2USqNba"><!--pnid:wB78FM8vKYc36VcXDkAQqf-->广告法第14条</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="omBqvFY36lwfp8pMxKId7s"><!--pnid:5UjGVgUddRyL7R5WIuRYqT-->核查动作</h4>
+      <p data-page-node-id="7B6Y8JHK0LTRuh0aGErEjq"><!--pnid:7ZT96sgrPGlWIxp1Yqd22I-->1) 封面 / 页脚补「特许人：XX 公司（统一社会信用代码：XXXX）」；2) 加盟店门头 / 物料加「蒙食源特许经营加盟店」；3) 大众媒介广告角标「广告」。</p>
+      <h4 data-page-node-id="Cju96aVl9NU63Baj29FpKq"><!--pnid:eMThFCHar6MiYp7Pt1oyCx-->法条依据</h4>
+      <p data-page-node-id="NOmExjzhjUMjD1prlW1lTL"><!--pnid:V7NcFAJsKVbjqKal6W1F0d-->《上海市消费者权益保护条例》第26条（特许人须标明真实名称标记，加盟须同时标双方）；《广告法》第14条（广告须可识别）；《商业特许经营管理条例》第21-22条（信息披露含特许人基本情况）。</p>
+    </div>
+  </div>
+
+  <!--pnid:c7LBfK3XOlJkfN6rkXedon--><!-- ⑦ 风险提示 -->
+  <div data-page-node-id="UeRAebdwAUb2yn351ok6XU" class="panel" id="p7">
+    <div data-page-node-id="e9MvCxzItXFwv0vwAgo4zL" class="card">
+      <h3 data-page-node-id="iLpLyxMCUlIX30ipfeXdoO"><!--pnid:FsKvvW1CaoQ6LHnVLR4hQv-->⑦ 风险提示（招商 / 投资回报广告）</h3>
+      <h4 data-page-node-id="7ujMUQoajfMVMi9SVsE6Dn"><!--pnid:jgO4ApJOEpFBwXHq5Zjpeb-->审查要点</h4>
+      <p data-page-node-id="QsVYHalKUX1jLniRM3WKtM"><!--pnid:7IddxxaRI6Czw9mNYz3Mc6-->凡涉「投资回报预期」的招商广告，须有显著风险提示；招商物料整体应体现「投资有风险、加盟需谨慎」，且不可被收益表述冲淡。</p>
+      <h4 data-page-node-id="sV09iFYQHBjZzFY1O66JOf"><!--pnid:2aC9ejn5Yrm21PwIeY6duR-->常见违规表现</h4>
+      <table data-page-node-id="yCjEtIROfZZkcROejCnYDX">
+        <thead data-page-node-id="tXIwqofHC6R5J6xMgqFyIg"><tr data-page-node-id="ovQZMmMyGCSrxSnC8gp8fw"><th data-page-node-id="JY0ZzHk48RNOl4AMiwKgSr"><!--pnid:AtPQN9LtTta44r9D2f0CcL-->类型</th><th data-page-node-id="HGKSRv5bg5SSUR3qgOeamO"><!--pnid:xop0jlgPVYAlYJT4SkVvBW-->典型话术</th><th data-page-node-id="1BWyYJ3iKfTqbS8fFnPLhC"><!--pnid:Yk661gRR5Ts2ou9A1C8VdB-->风险</th></tr></thead>
+        <tbody data-page-node-id="Vx1RPTjsd3lsPZ6ZM781CQ">
+          <tr data-page-node-id="OzdPw5WJEhqA37k2QPwKap"><td data-page-node-id="FpsxFJMNCwLh1O4i31XHCA"><!--pnid:IfPvOJeHXuS3Epczdpb2KY-->缺失提示</td><td data-page-node-id="3N5S58lJbmVEQQLvqMO73P"><!--pnid:kkm7R3I8zTh3PBJ4PPxVuW-->全册无「投资有风险」</td><td data-page-node-id="dK1bAVA7zSMiZOizTbG59L"><!--pnid:NEG0oL4EH69QOg5ZX4SNK6-->广告法第25条（须有风险提示）</td></tr>
+          <tr data-page-node-id="uMbCWGG5bijEI2qfr3wqLB"><td data-page-node-id="rweaRrGGMgGaIl41HZLelV"><!--pnid:XRYSFHgMuxVfWilUvgWUeI-->提示不显著</td><td data-page-node-id="szODSmySCGb2bEydv3o6oj"><!--pnid:0MIMWPsYmi2gr64R97DHBK-->风险提示藏在末页脚注</td><td data-page-node-id="4aFETlBVjCILDj2tOZ0OKP"><!--pnid:CJRvIEDS6Fipn2WqshcUcs-->第25条「显著」要求</td></tr>
+          <tr data-page-node-id="HGfNDP7ubmzjg0B0NvrVIh"><td data-page-node-id="0USdZCZuVPKdIscNUfMnpV"><!--pnid:wlABgWzBxNrebs3JFLrAGQ-->保本暗示</td><td data-page-node-id="sSgdZmImLtwxrmxzrWMC24"><!--pnid:DBqPms3Il0cXIsGgIlCgxQ-->配「稳赚」却无提示</td><td data-page-node-id="eaVBms74ZtILE0NAapdqCS"><!--pnid:ToBf4bozFJLdxhn5ymoVkK-->第25条第(一)项禁止保收益/无风险</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="oiZzGT5hAnPgfvBla7zAtr"><!--pnid:PuBSKWkNcI4SIvk9IADsXu-->核查动作</h4>
+      <p data-page-node-id="99rlk7PXnWL6A8Cc8rGubK"><!--pnid:2yP8oxrgCuXH9F3gvgXyWg-->1) 手册 / PPT / 视频固定位加风险提示语（如「特许经营有风险，投资需谨慎，本资料不构成收益承诺」）；2) 视频口播同步念出；3) 提示语字号不小于正文、置于显著位置。</p>
+      <h4 data-page-node-id="OhJyx3SKqYJRcjGU1hbaOA"><!--pnid:msfax5ittRsZupQvsnvFc5-->法条依据</h4>
+      <p data-page-node-id="KBSJR2sbC7BIGpnUZMUOIp"><!--pnid:0qGWru3EREJE0wkWJWhg9f-->《广告法》第25条（招商等有投资回报预期广告须显著提示风险，不得保收益/无风险/用受益者推荐）+ 第58条第(七)项（10万–20万，情节严重 20万–100万）。</p>
+    </div>
+  </div>
+
+  <!--pnid:qR0vzQRHZ4A9Y2QSJEbmUN--><!-- ⑧ 免责声明 -->
+  <div data-page-node-id="3EtGq61GmjDHteX2WZPqlj" class="panel" id="p8">
+    <div data-page-node-id="9NB0MBRAAIYBxg8LBq5yq0" class="card">
+      <h3 data-page-node-id="mGhFyrXjeEEdEAr0s8KC9n"><!--pnid:15FVMikL7ywEdzKsd58mHV-->⑧ 免责声明（格式条款 / 最终解释权 / 以合同为准）</h3>
+      <h4 data-page-node-id="1MFRRVS8H5YR9LGTsZWaZT"><!--pnid:dchCtAD2cbb9u4KZiUrByq-->审查要点</h4>
+      <p data-page-node-id="X4RkGfpspFg3Q4KEs4z6FX"><!--pnid:HGEcffd0xI2HHUPfWyTM5I-->物料中的「最终解释权归本公司」类条款属无效格式条款；应设「本资料为邀约邀请，双方权利义务以正式签署合同为准」的<b data-page-node-id="Hws2aIqSRVQzZBr0p2OCAC"><!--pnid:oovPCMsLPmTmiB8lctZt5h-->有效</b><!--pnid:VCEgfCfI24c3pTAbf3hU5z-->免责/说明；不得用格式条款排除对方主要权利。</p>
+      <h4 data-page-node-id="MFv7RiXPTBXgPWvhTqub1Q"><!--pnid:EsTLKKSumf0sWv1qiQsKws-->常见违规表现</h4>
+      <table data-page-node-id="x8xkhpP12WYVfmeiZkapVE">
+        <thead data-page-node-id="Na92vsyY9OMt5A6RcRArCE"><tr data-page-node-id="cOOAki5sSJsx5jr7LHvvLu"><th data-page-node-id="wVmbDsTc6XE6zBpgv6VgEU"><!--pnid:juC4oFrBWnbJM2Ai8EFm5C-->类型</th><th data-page-node-id="2SjVmhjfaCWs5iosODQWtn"><!--pnid:F8gfqNpBu1Ml3BzB87d4dF-->典型话术</th><th data-page-node-id="cNje7VwlaQcSJPYXl3JlrT"><!--pnid:zMxBV4tfdDFZRfmxvSAIcO-->风险</th></tr></thead>
+        <tbody data-page-node-id="epzvNL2GC2fe0WDtq7WaJ3">
+          <tr data-page-node-id="qscGPPW2VpGt6BwdBiduF1"><td data-page-node-id="zy25VsCwAQXJGeZ0WEvGrQ"><!--pnid:15y5UDzN73jev0zsuIBw6E-->无效条款</td><td data-page-node-id="EvKscAna8hsLXwvFzmY8bG"><!--pnid:xzZVvnPx92rI7T7ZVjoga3-->最终解释权归本公司所有</td><td data-page-node-id="mqsC5MtrUMmxXNtuttJRc7"><!--pnid:kTvkJmSju9eBJ3CcpMu0IC-->民法典第497条（排除对方主要权利无效）+ 合同违法行为监督处理办法</td></tr>
+          <tr data-page-node-id="k13eyzjalYQ9oEPDGtSHfL"><td data-page-node-id="tPjquVEx3dNeDnGAsgJuX3"><!--pnid:t7RXf4Jd8HXx96YgGb8GwI-->单方免责</td><td data-page-node-id="D6BFMPcoeyDgDnRGMuzbUa"><!--pnid:2VaBvdfouD55u1HOSbIuPb-->一切以总部解释为准</td><td data-page-node-id="9eGE7lqVCi75P37ljJDBi1"><!--pnid:H2Kigb94ICdn23hYzdDqgk-->同上，格式条款规制</td></tr>
+          <tr data-page-node-id="MZS2fUhNHKTsneSX1yCHI7"><td data-page-node-id="UxMAvXvUHTgCiug9LL08NK"><!--pnid:usMg1Zk5oCFkBko4JhB8c2-->替代合同</td><td data-page-node-id="vMaTGhy6xeR5AmfZXA3dPE"><!--pnid:IFhZ6ztOW0nlNfATgGd8Px-->物料内容视为合同一部分</td><td data-page-node-id="oQo1iZnGgsFkouYSfHAvKH"><!--pnid:NuQCtICLUex1EK3TYT7lrh-->与披露/合同冲突时效力瑕疵</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="n4L3x5eYOUa7nZzAlUBiqp"><!--pnid:OCqBXGDgYZi6sEAxKzokdX-->核查动作</h4>
+      <p data-page-node-id="h10gOl3h0gjMJHtzyFuvSj"><!--pnid:RFOFZDDNYZ0wpkwO6oHCoO-->1) 删除「最终解释权」「一切以总部解释为准」；2) 改为「本手册为招商邀约邀请，所有投资测算不构成收益承诺，双方权利义务以正式《特许经营合同》及附件为准」；3) 合同加「招商人员口头/书面承诺未写入本合同者不生效」条款。</p>
+      <h4 data-page-node-id="xcJOIwOjtqeluDEmDo58F7"><!--pnid:NCpcE7xFwazBLYeDE7Wf68-->法条依据</h4>
+      <p data-page-node-id="N46t248rJ8DcdVA00yJFs5"><!--pnid:3lrFPXowLsMq3aJW5MOTFy-->《民法典》第496-497条（格式条款提示说明义务 + 排除主要权利无效）；《合同违法行为监督处理办法》第11条（经营者不得单方规定最终解释权）；《商业特许经营管理条例》第21-23条（信息披露优先于招商宣传）。</p>
+    </div>
+  </div>
+
+  <!--pnid:SltdI63wTxic6CmWvLFp4N--><!-- 自查清单 -->
+  <div data-page-node-id="xk2BgxNXVrSpv45BcKBzNE" class="panel" id="p9">
+    <div data-page-node-id="ZDSZiMALEoT9mOGHwfuUdR" class="checklist">
+      <div data-page-node-id="PWP6eHdt5InUc7PEP9fwZ8" class="cl-head">
+        <strong data-page-node-id="LVoDAJDeMtWhXig5gBiLmH" style="color:var(--gold)"><!--pnid:1B3hLg7yxryzLt1cOe3DIZ-->上线前终审清单（8 维度全勾）</strong>
+        <div data-page-node-id="leiwanl41O4nXCk9SVVN9E" class="progress"><i data-page-node-id="RWhuQbc0Ll5qLhtz5jPNJA" id="bar"></i></div>
+        <span data-page-node-id="4cTDRc3sacttmfSmC6ACqE" id="cnt" style="color:var(--sub); font-size:13px"><!--pnid:lrmuxAt7G0umjBfHge3gZ5-->0 / 8</span>
+        <button data-page-node-id="fofczjHNovXy2naOqln5FG" class="btn" onclick="window.print()"><!--pnid:sgSUQnEHZTge2H4UuT8APD-->打印清单</button>
+      </div>
+      <label data-page-node-id="U2UqZlI4lqRijoWLhHlwRp" class="mat"><input data-page-node-id="mszdUguJojlHBPTgHCDb5x" onchange="upd()" type="checkbox"><span data-page-node-id="xh3l73jHFdGYVtqsi0L9ia" class="m-txt"><!--pnid:8hhyIKczXBELx47iSGutqk-->① 绝对化用语：已全量检索并删除最高级/唯一/国家级/驰名商标<span data-page-node-id="Oche8ZZu5Ro2z1hKiLRK2i" class="m-note"><!--pnid:aU8BNFo4BKhVUAD5pZwQgd--> — 广告法第9条</span></span></label>
+      <label data-page-node-id="Bvwl7u0aAhJMBBVcbeYKCy" class="mat"><input data-page-node-id="Cu1XYykt0R2rQfzqRb2g3b" onchange="upd()" type="checkbox"><span data-page-node-id="of3krTxadoSUymWGrs8uRp" class="m-txt"><!--pnid:saNjQa2b4iq5EldYp5ANbY-->② 收益承诺：无回本/盈利/月入/流水/稳赚/0风险/补差表述<span data-page-node-id="5lMHI8OTL62DbvAMXrCiRg" class="m-note"><!--pnid:OtkAmp2NPjK4rMdNMoMFvH--> — 条例第17条+办法第6条</span></span></label>
+      <label data-page-node-id="uLBkcoRcRhRptCVbvZW4uM" class="mat"><input data-page-node-id="G8Vc8aLAAmItU8PpBWsB7d" onchange="upd()" type="checkbox"><span data-page-node-id="5SAZFT4LljlOvJwY3KbaiK" class="m-txt"><!--pnid:LSdBIv7BB9DdHYYQJuNIiG-->③ 数据引证：门店数带统计时点，第三方引证标出处+有效期<span data-page-node-id="nnjqlB0NrUyWurNZiQ0Dyr" class="m-note"><!--pnid:VjEjJp2a24dVm5MwMoXFCo--> — 广告法第11条+引证指南</span></span></label>
+      <label data-page-node-id="aeAYOYIFtyzLZfPdX7rt7g" class="mat"><input data-page-node-id="7WUD0LJULplhg5A5HnXPcb" onchange="upd()" type="checkbox"><span data-page-node-id="pFUQmCwY4sjdSZf5y2FmxL" class="m-txt"><!--pnid:Y2T2NqJAYG9uUPvePbmeOR-->④ 资质展示：荣誉/认证/专利有原件台账，无驰名商标宣传，专利标号<span data-page-node-id="xLqnEnsr2EHH0Pa9HM35Lf" class="m-note"><!--pnid:pkIfZatnudlV8sbt54UEtR--> — 广告法第12条</span></span></label>
+      <label data-page-node-id="hP5UTL0JLqS6W92vhzJcND" class="mat"><input data-page-node-id="4kMCZYaQsEXaPL5BOgSeNn" onchange="upd()" type="checkbox"><span data-page-node-id="3FoUiMnMD1UFEX5QHpcP8A" class="m-txt"><!--pnid:9tW6ekDTeThrQ1a3A0GJdv-->⑤ 商标标识：® 仅用于已下证类别，申请中用™<span data-page-node-id="F6cBlcyebPYJKg9YFTV1u3" class="m-note"><!--pnid:hfHzG99X7hS4l9TdlVjrCD--> — 商标法第52条</span></span></label>
+      <label data-page-node-id="t3Ha7jWFLtDHOCynCUb7wv" class="mat"><input data-page-node-id="tM5pGhUI6AVBrJp4xVXIJG" onchange="upd()" type="checkbox"><span data-page-node-id="t7Xu3tE1mbHBwTzOiqeOv1" class="m-txt"><!--pnid:z06vSltS339kIgpy2WQHgh-->⑥ 特许人信息：显真实公司名+信用代码，加盟标双方关系，媒介标「广告」<span data-page-node-id="rpZpl8m86AwWBkupwA5LBW" class="m-note"><!--pnid:msDBJ76WPaCy7msXLh2npR--> — 上海消条26+广告法14</span></span></label>
+      <label data-page-node-id="cDbZ39KF0GVJ1cpY9QW8Iw" class="mat"><input data-page-node-id="g0KXnV0N8DIhqp3oPEcNxi" onchange="upd()" type="checkbox"><span data-page-node-id="OkgYdjU7OePo38shyXvDD6" class="m-txt"><!--pnid:w6sWWqQDnBHjwC9myIc8rP-->⑦ 风险提示：固定显著位提示语，视频口播同步<span data-page-node-id="5rIIxgbkYNzEq3Qao9TiG0" class="m-note"><!--pnid:2n0CXseYPyZdcBpujQNavj--> — 广告法第25条</span></span></label>
+      <label data-page-node-id="l3zaurj2SbSPS9zVrqgJ0d" class="mat"><input data-page-node-id="Mg4aftKWvlSxAQ10VPI4j7" onchange="upd()" type="checkbox"><span data-page-node-id="NmtDBwTHRb7GR2aLDyJ2WI" class="m-txt"><!--pnid:ZtorI1a2qhhPPYfCcgnteP-->⑧ 免责声明：删除「最终解释权」，改「以正式合同为准」有效说明<span data-page-node-id="3WxwS1isykpdoECQnIx7Yk" class="m-note"><!--pnid:55Vh3DZ2zZMOpg7MK0QoQk--> — 民法典第497条</span></span></label>
+    </div>
+  </div>
+
+  <div data-page-node-id="2eKZS6I5Nkmgsafgj3Ey42" class="tabs" style="margin-top:18px">
+    <div data-page-node-id="dgzy9kU5qeBhWJtZ47sraO" class="tab" data-p="p9"><!--pnid:a7YZXpmKw3HDZHN8b4bhXx-->⑨ 上线前终审清单</div>
+  </div>
+
+</div>
+
+<script data-page-node-id="yjlkdDwWk7mqtKMUMNH6hI" data-pnid-children="gQZBbkUsXYsMjTOGS4hCHN">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  // 最后一个 tab 组（终审清单）独立绑定
+  document.querySelectorAll('.tabs:last-of-type .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(){
+    var all=document.querySelectorAll('.mat input'), n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    if(document.getElementById('bar')){
+      document.getElementById('bar').style.width=(all.length?n/all.length*100:0)+'%';
+      document.getElementById('cnt').textContent=n+' / '+all.length;
+    }
+  }
+</script>
+</body>
+</html>

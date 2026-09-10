@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html data-page-node-id="ctEEe9sWrab87VihayOSQU" lang="zh-CN">
+<head data-page-node-id="evhqcZxJBYYG4VSvCngoPZ">
+<script data-page-node-id="JU3vDN2MowAHbCjUYArLsd" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="7bZKH3ry8CKODt17gIbE4M" charset="UTF-8">
+<meta data-page-node-id="Ny38eXTnQUWbYkoPeidFbj" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="6QVkfc7d6rBTmDBLOfajxk" data-pnid-children="dJp2KZVvzECpBRzERqVGz7">打假案件管理系统（设计）· 餐饮加盟法务</title>
+<style data-page-node-id="C1dg7HsDX9zYyntCDQcWAs" data-pnid-children="tugMM2vSSAaug0F1ZXH3rK">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .note{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:10px 14px;margin:10px 0;color:var(--sub);font-size:13px}
+  [contenteditable="true"]{outline:1px dashed var(--jade);background:rgba(95,179,163,.05);border-radius:4px;padding:2px 4px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card{border-color:#bbb;background:#fff}
+    th{background:#eee}
+    [contenteditable="true"]{outline:none}
+  }
+</style>
+</head>
+<body data-page-node-id="Yjk62Vz28JQsP61C0ZGSv3">
+<div data-page-node-id="e3dSX5uVw0GbAZ2JuiwcHU" class="container">
+
+  <header data-page-node-id="ZSSqG9oFvQMr8BkmEzL510">
+    <h1 data-page-node-id="MhmmvAmxEUpPGnJXoKaaZp"><!--pnid:FjgjX3ah051oTfwJj8Dsve-->打假案件管理系统（设计）</h1>
+    <div data-page-node-id="vp91neYy6c9uyUkftpzODv" class="meta"><!--pnid:ZoKRciTLFnxFQmRTnXNzLx-->特许人（品牌总部）立场 · 案件台账 / 阶段 SOP / 统计看板 / 权限灾备 · 可落地为 Excel 或低代码系统</div>
+  </header>
+  <div data-page-node-id="qsDLay3FHJXH6Ft0u7dGTS" class="lead"><!--pnid:xsa4BizBqOFeWZCuzeAXqQ-->本系统是《品牌保护年度方案》的"数据中枢"——所有监测线索、行政/民事/刑事动作、成本与结果统一入库，支撑分级响应与 KPI 考核。本文件给出字段字典、可填写台账模板、阶段 SOP、统计看板与权限规范，可直接转为 Excel 或飞书/钉钉多维表。</div>
+
+  <div data-page-node-id="kh4bprdEV4I7SVykgXA8n9" class="tabs" id="tabs">
+    <div data-page-node-id="B2wBu0rBQLnx6I28znivJd" class="tab on" data-p="p1"><!--pnid:okeQs79O5822iWIrWEgLYG-->① 架构与字段字典</div>
+    <div data-page-node-id="9CHUpnzoLDzZxq8ApJoOBU" class="tab" data-p="p2"><!--pnid:7T7dU165Jsq0kLqgWG6JSn-->② 案件台账（可填）</div>
+    <div data-page-node-id="eTMz6VHkSNA7aUVQYGU02P" class="tab" data-p="p3"><!--pnid:tqvRjgBOzPtpZlruR38n3M-->③ 处理阶段 SOP</div>
+    <div data-page-node-id="3N2EFnf9iVASWEUVKdXPEl" class="tab" data-p="p4"><!--pnid:e01FKSVIqqrthlM8Nqyv2t-->④ 统计看板与报表</div>
+    <div data-page-node-id="KzMMeNDCeCcw3uFmgeFYxT" class="tab" data-p="p5"><!--pnid:Xb0iFoGSZqOfviTToDQAyB-->⑤ 权限安全灾备</div>
+  </div>
+
+  <!--pnid:SMFD9gFPCmM62XhyebVXF3--><!-- p1 -->
+  <div data-page-node-id="r018ZKPudEA3L7Nrj8Oq7h" class="panel on" id="p1">
+    <div data-page-node-id="JycQK7weBjWXKcHjgkuSGQ" class="card">
+      <h3 data-page-node-id="Ru2pNc5tEOkckILUpt9GoK"><!--pnid:1oy05IXTQ5uN8OQfdzUqjQ-->一、系统定位与模块</h3>
+      <p data-page-node-id="D5pR8Pynm2tdEnnzliA5z8"><!--pnid:Ack5cbuYoV5QHdQGgF1YyT-->系统不是"记录本"，而是<b data-page-node-id="HZcX9hzLajYgokOT8MxNfS"><!--pnid:UXKnhHhXRPfEXjpl0zIY8m-->作战指挥台</b><!--pnid:hntln5MYh3id7uQJM00Ow2-->：① 线索统一入口；② 自动定级与时限提醒；③ 成本与结果归集；④ 数据反哺 KPI 与预算。</p>
+      <table data-page-node-id="7KZ6zj5Jrftc46Tx2JlphD">
+        <thead data-page-node-id="S4NqbzBAQpQ1vUS0ao1Yrj"><tr data-page-node-id="Aa60q8HIsfyb3ZFRE4FDwv"><th data-page-node-id="q1Nhvt0nG7bB3mQKcfvs9Z"><!--pnid:AOLZEHICCxNZwMusvSC11i-->模块</th><th data-page-node-id="M1o53OXdsHeA8zxJiLsMvd"><!--pnid:Vj07p0jM41idSMDaGMmBAb-->功能</th><th data-page-node-id="nIs48gbgvGw0oO88f0CBea"><!--pnid:b6U8os7dLa1NwenToKzO5B-->责任人</th></tr></thead>
+        <tbody data-page-node-id="c1STp5mZxMtC1kBoU5kYqw">
+          <tr data-page-node-id="tmAwvYcelVErpAr5LHbTUc"><td data-page-node-id="q9CCTZtuF9mFMwgbOcRU14"><!--pnid:hfwEgJw5hzgQhWCLWHbIuc-->线索入口</td><td data-page-node-id="POj6gZwUFWnAS9iXemu350"><!--pnid:eMJvllESfyAuObPq3CyW2O-->监测命中/加盟商举报/外部转来的所有线索统一登记，分配案号</td><td data-page-node-id="HlyTwRC4IK5iLmfYXSypit"><!--pnid:oN73hhOLDwDHOYiJwUr7UQ-->法务专员</td></tr>
+          <tr data-page-node-id="YiDOi34MSV6Pfe6NFqkfKJ"><td data-page-node-id="tXOdyp5CPc1ZFrLaLiEuEW"><!--pnid:op1DhXr0ApTBK7x0E0jJjk-->案件台账</td><td data-page-node-id="affsU5FdphrGN5fb5hf0gd"><!--pnid:j3zk30uHvyJ8jKSSPQhVo7-->主数据表（见 p2），全字段跟踪</td><td data-page-node-id="G7jwVbfiYpHDc9cy2LhCJO"><!--pnid:ZS0Wb6tCl5ACtukvWaDDQ1-->法务专员</td></tr>
+          <tr data-page-node-id="2HPH21ppPHCoXsXS5EdH9Q"><td data-page-node-id="QtZAqB2ww0NFRWE3LwbtRq"><!--pnid:UdAkYFSoHWezZxegKlZIuq-->阶段流转</td><td data-page-node-id="AN5k8IzY2FC733LEwPNALs"><!--pnid:k1YFv4Ag3x2ryg39qDCiqp-->线索→定级→立案→处置→结案→归档，带时限 SLA 与逾期提醒</td><td data-page-node-id="g2nzj3LWOYIUFJKCNFivzs"><!--pnid:La4eOF9RIiOvEAye6o1Z2i-->法务专员/总监</td></tr>
+          <tr data-page-node-id="OPIbswy5qVavezbtexquNO"><td data-page-node-id="pfADUZ35FnxwqcjQSA7tyG"><!--pnid:e3gYlQIY8NVlyLpwI9PBQb-->成本中心</td><td data-page-node-id="MToTKd3Zkm3oO8yfHW4GwQ"><!--pnid:naKgwxdeT8b4DOKNk2zvKA-->律师费/公证费/差旅/赔偿执行，按案归集</td><td data-page-node-id="6L1xlquE0mEZXb9KZUCpWj"><!--pnid:7MA8JGIYzlLbkAsx3XWCZf-->法务+财务</td></tr>
+          <tr data-page-node-id="ufsvy7Ynbes3DGZZ6cOaDf"><td data-page-node-id="GaIC41YcRPEvLgX2a77JwN"><!--pnid:9VZ4w9FPV67I1ZU04Iy6jT-->统计看板</td><td data-page-node-id="BFqV0lAh9HIB8KUgqGSnf2"><!--pnid:SM1Y4YqJLzsT59SsqFekZu-->按类型/地域/阶段/月度自动汇总，输出 KPI</td><td data-page-node-id="mIhI56T0azj86lgnVp4Afu"><!--pnid:oefSjwzrFJC48sjNvns2mH-->法务总监</td></tr>
+          <tr data-page-node-id="cJoVFcpzkWmSy4GdQYOshD"><td data-page-node-id="JpJkNuoDn0TJ3k2GfadhqI"><!--pnid:zQh0ZCCJSADsdLuuMEamFJ-->知识库</td><td data-page-node-id="62VqJh1oYoEaxfcxLZ1CLK"><!--pnid:emAYLu7ExXc9MULqfeCsMy-->典型判例/文书模板/对手画像沉淀</td><td data-page-node-id="eG0MiVsKWaKMXLi5pB1i4s"><!--pnid:DbYSmyM1CNFknbOuYvy12j-->法务专员</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div data-page-node-id="a8wVztBXEvm40J6xSLuCa5" class="card">
+      <h3 data-page-node-id="0c8jbbrwZO6HEe83Cv6xWF"><!--pnid:dMUhGmPTUjywSjsZLpnz6L-->二、案件台账字段字典（26 字段）</h3>
+      <table data-page-node-id="1uhPzMLSqc4Ba6Let6iaDv">
+        <thead data-page-node-id="nWai0DSgLaCMP9iumSAn1J"><tr data-page-node-id="SOv4DxlOtM0F2pEwEe3gOE"><th data-page-node-id="8qCkzktEEHtdVBZZiFIZwv"><!--pnid:vyAwQTgdwfihBsvVotXECU-->字段组</th><th data-page-node-id="cL3sDEAZml6iqWVZVhsf8b"><!--pnid:ol804STIcrhbUYyTKwj5xs-->字段名</th><th data-page-node-id="z2IfwXvgQ40BsJhcH6iDq0"><!--pnid:HNpvzEfrMrSlTNKki29x2i-->类型/枚举</th><th data-page-node-id="qlqkPVt6UTYaI3O5oqzCsB"><!--pnid:nocKDnIQMOYkIGXp4O1d1o-->说明</th></tr></thead>
+        <tbody data-page-node-id="fiZ1pgj03axbtzg34BhDbA">
+          <tr data-page-node-id="LpTdwbhHrzN5HtOB62clWp"><td data-page-node-id="3yY3BCrYjaahmFu2hSUj58" rowspan="4"><!--pnid:9Uw8vas9LqvkAdyb07YCEs-->标识</td><td data-page-node-id="KFsF1YTE4CbX5424EWurfS"><!--pnid:wazozAjh7s1HcFF8TmoiU1-->案号</td><td data-page-node-id="fkgMf3QqXClhsSXJXzoULE"><!--pnid:2u2obA7I649SVAifKOK97O-->文本 BP-2026-0001</td><td data-page-node-id="hXW66a3osLovz5ecxymact"><!--pnid:BXsrotzvLGXN3KKFhb5uwB-->年份+序号，唯一主键</td></tr>
+          <tr data-page-node-id="8ZVNOBWa740aqF6wWHTjXg"><td data-page-node-id="WlFpIr8UhCwr2rH0SPXPCJ"><!--pnid:8MfLSvHLU9DNM7SUwWG9Nq-->线索来源</td><td data-page-node-id="Bgt0ZJxwhWmg5SzvKUOIUy"><!--pnid:5HGYYqFXf9PpQJYIYIk77I-->枚举</td><td data-page-node-id="tU3C68MRNDA49aagj3cKcE"><!--pnid:9GfYWRH5eyniekRchgx5Nt-->商标公告监测 / 线上监测 / 线下BD / 加盟商举报 / 神秘客 / 行政转办 / 媒体</td></tr>
+          <tr data-page-node-id="0rTYD3RpGYylaYt6KrEX3g"><td data-page-node-id="B2mdunb911oLs1kDMJxeNS"><!--pnid:5GfMk4IK1luS0FZ0qJR4PI-->发现日期</td><td data-page-node-id="cgpYMOQruS1z8BY6mBK21o"><!--pnid:zdUfn6ldWW3zc1qYT01VbL-->日期</td><td data-page-node-id="S2xXL7WGuBCqL6eoFSrCj0"><!--pnid:m0ZnPkGu1gL2yLyrbg4ZqK-->首次发现日</td></tr>
+          <tr data-page-node-id="i0TiA7NGIxScVmU4umozsS"><td data-page-node-id="teB5LAIqF2oHisOuiddvJu"><!--pnid:GisDvi8y37WRhWH4v0JnIX-->录入人</td><td data-page-node-id="0GKrjRVVPcluePQXzIYp2D"><!--pnid:IUC8l6SvotLDw0AmNFdKWR-->文本</td><td data-page-node-id="ncR2Gpgq6YzGdgImKAfRaV"><!--pnid:mUHs2VUd7PSUxdbwuB2251-->谁登记</td></tr>
+          <tr data-page-node-id="SqXMWU84EOE1QSKmrwTlnn"><td data-page-node-id="1Sa6y7gFeAuRMI6gyneUSK" rowspan="6"><!--pnid:wg65z6vMPAAtBGrjiMGaIX-->侵权事实</td><td data-page-node-id="bDhQdIhPOBbR7UGUN3SoRt"><!--pnid:pJSaj0qjz5jOC6UUy3r3VD-->侵权类型</td><td data-page-node-id="dmi33khetmJu7dxBinlTse"><!--pnid:ghNZwzcH3B4C39PlwFAU9X-->枚举</td><td data-page-node-id="HvmtVcA47ONDkwCGNpGNFx"><!--pnid:YnfEgPA6ZtuGx2JqFiWOwk-->商标侵权 / 装潢混淆(反法7条) / 字号仿冒 / 新媒体账号仿冒 / 招商加盟诈骗 / 商业秘密 / 专利外观 / 其他</td></tr>
+          <tr data-page-node-id="g2WTuOzmnEGJCUcrVf2CRT"><td data-page-node-id="yvv8kdB5USovsgQgTYLbvm"><!--pnid:gqlwAB3lKjkvXCCcb8MqYy-->侵权主体</td><td data-page-node-id="g8Ktdo5c7PYQkHdIzpDLCe"><!--pnid:Vyyf9PyuGN1vOPYsXUHmRW-->文本</td><td data-page-node-id="MJXXRtKEsxzP3fXcEHSAOC"><!--pnid:SwL3pkvwk9XcubLY8plLaI-->仿冒方名称/个体户经营者</td></tr>
+          <tr data-page-node-id="5Yevpbde4SnQ5WxZHL7VfT"><td data-page-node-id="DPCBTtP2fsa4LsNxgekyDX"><!--pnid:a7KrBt0NKgAeYvn88JQLq2-->地域</td><td data-page-node-id="2UexrrcYcYe1GEtIFRColT"><!--pnid:DbtoOW9RhZXrIZMRdTDru3-->文本</td><td data-page-node-id="Pf4PuCTOi9KQDLRjLtyDl9"><!--pnid:lpagbUW5rUm30604SCaOtg-->省/市/区，用于地域聚类</td></tr>
+          <tr data-page-node-id="NMb7TzWLMVnreePkai5pAt"><td data-page-node-id="DCD6tFHTAoe0DJA1o8UcLI"><!--pnid:IJt08Odl52PM5ZY4skTtyi-->门店数量</td><td data-page-node-id="jWNJLJyvrmqctP87mMqycu"><!--pnid:i3cyg4uEWW3EUcNKa8UjSl-->数字</td><td data-page-node-id="KWtJsuh9Wh1tVXm5qoJJjA"><!--pnid:i6DpHRnn7aAKdfDhpRlHtw-->该线索涉及门店数（1=单店，≥10=规模化）</td></tr>
+          <tr data-page-node-id="qVS5Q5eufhtL0ZgpGVyeoD"><td data-page-node-id="H356lEtmW0VmfwVKRTgkX5"><!--pnid:ATYfRanpsjpCc42vDQuCwp-->危害评级</td><td data-page-node-id="Crhda2WwkGGejYR5hP1zlJ"><!--pnid:MrtbfGOpZVe7WKLtfIxCNY-->枚举</td><td data-page-node-id="yjjrX1h8Ajv7rvE2GH51He"><!--pnid:XnVs2FSctxgU3bXVNJHF3T-->低/中/高（是否售假、食安风险、加盟费诈骗）</td></tr>
+          <tr data-page-node-id="NscRrHHmQC2QOGxaNAwP4Y"><td data-page-node-id="IhsOZDYF6c5amfKr3bWrQQ"><!--pnid:oljALmD7GwRS2N7RsbBZN4-->证据状态</td><td data-page-node-id="s5wDGu1Zz6vxtatUlqO0mv"><!--pnid:pn7QEo0WjPaq3QqNpNublD-->枚举</td><td data-page-node-id="XEQXFWXF1x1TxQQBNyA26n"><!--pnid:VCUzyX7RnHxFzbowyLFuZi-->未固证 / 已公证购买 / 平台留痕 / 已鉴定</td></tr>
+          <tr data-page-node-id="4Z09OcD2fDW28KMozX6m1x"><td data-page-node-id="ee8pvuAuCW8jU5mCrCFmhD" rowspan="3"><!--pnid:PirS8Aj7gBnSsPvbKM2CzL-->分级响应</td><td data-page-node-id="vD220XVHzzDWB5fUUUjcUW"><!--pnid:r9Am3BByqVPzRnpJaxT5EX-->定级</td><td data-page-node-id="Kmvx9a6Ruc9k20w7PtAqYL"><!--pnid:DUqtYJ2j9HjIQIrqJjKaIe-->枚举</td><td data-page-node-id="prNIjEybKXrpl5OVps1dGW"><!--pnid:rM2bYgmLBN4RI1mZwKDnkB-->L1 单店 / L2 多店 / L3 规模化</td></tr>
+          <tr data-page-node-id="hA4mARtbkhyXk7wLUVHYrr"><td data-page-node-id="leb04jx9VBrfTkwmZXE2vH"><!--pnid:o3bMqJiy2RyfMWezRred0F-->定级日期</td><td data-page-node-id="j0tK2v8pcpHzaAoM48kAAb"><!--pnid:PjseziuZUDiBq3tNRz4Df3-->日期</td><td data-page-node-id="yC6xPwTzKVDMlqolFUHRXl"><!--pnid:6LwVtAb8leRrJi53lr7ymf-->登记后≤48h</td></tr>
+          <tr data-page-node-id="AKjqO4KgVel9ce0VQyz5dC"><td data-page-node-id="E5gkbOCZd5w2R4hlhPzlUe"><!--pnid:UIL74eoPnjesf3o2cvFLqL-->响应路径</td><td data-page-node-id="DnE43jCehxHx7uyq96eCZV"><!--pnid:TsawyIML2vHvZStlhinfid-->枚举</td><td data-page-node-id="8xxuAamrlIZwPh67WoZTZd"><!--pnid:GXCnlATOS6nNKYOWbkvNn8-->发函 / 平台投诉 / 行政查处 / 民事诉讼 / 刑事 / 媒体</td></tr>
+          <tr data-page-node-id="ZXcTwhuFV1y1KKwzrfg2TE"><td data-page-node-id="4hyDMJpY5yJDevjoMRTCZA" rowspan="4"><!--pnid:NKQbKajOYxx9gqHWWBlXO0-->处置跟踪</td><td data-page-node-id="LenA0ISJDUC0ykpRSQpZyB"><!--pnid:FhX4EElty7LvTXQSmU3lCF-->当前阶段</td><td data-page-node-id="2Pit4awDjQBeHTp0amWGXC"><!--pnid:psUE7VZYJKfdn4W5ocxLEo-->枚举</td><td data-page-node-id="uEHOPJgBnHNKUSLANUeCFH"><!--pnid:cIUXOFQk9xFMki1nnWikLp-->线索/定级/立案/处置中/结案/归档</td></tr>
+          <tr data-page-node-id="4FkNXQNyykPo2VtF80Fo0x"><td data-page-node-id="2Y7DHI3BVmVE2dTO6BcECF"><!--pnid:ir7Z9trgROdxqmKbs1B7GK-->责任人</td><td data-page-node-id="Wfp0EzsRYQlQj4hCO0MjfV"><!--pnid:T6exJdO3oqOpOAR2BUcdWb-->文本</td><td data-page-node-id="qEIrz8z2NwbouW2NhgSqt8"><!--pnid:ngLE8lo2Ub3whLatNOrAg0-->主办（内部法务或外部律师）</td></tr>
+          <tr data-page-node-id="sEipKHW12KgQ2aURYttm9L"><td data-page-node-id="aE1bjYOqeFAU54b0Dmef7F"><!--pnid:8CPRz7nN7YsYs51FIJhNQh-->时限节点</td><td data-page-node-id="wiecf8dK0R0LlIpOeHfYrk"><!--pnid:WSdsi3R7KqxS01WgQ5XxA0-->日期</td><td data-page-node-id="mRYzN5mRXz1zpiiAphux3V"><!--pnid:SybekxvdD0kVZGiMY0tx6M-->首动作截止/结案截止，系统提醒</td></tr>
+          <tr data-page-node-id="wzkSJ3VqrRpg1COKxW2QNC"><td data-page-node-id="gYgD3BzlQ12hGIYMuQ5yuD"><!--pnid:SNL4zmuMa0NIHrcFYMlvyP-->关键动作</td><td data-page-node-id="ycOuYILrx5IMSKBKPdfuqI"><!--pnid:Jtqvktb0DKS9RTIZscN8XT-->文本</td><td data-page-node-id="huavakG0PZdqlyUYmeYrnn"><!--pnid:3BCDfICWD8sqp2VX2BQdRb-->本阶段做了什么（市监立案号/诉状提交日等）</td></tr>
+          <tr data-page-node-id="Z3bbQqIusDGkdAZZDkpSvR"><td data-page-node-id="X862LG2fguOz8pcJAUC1xa" rowspan="4"><!--pnid:gSLZSSRRrKteMw10wL2bHu-->结果成本</td><td data-page-node-id="kwr834w0zucqmHCbRmcLz8"><!--pnid:SFzDm19CDiURpeIAMrAaNa-->结果</td><td data-page-node-id="SPIKpIN68RXuOdLWY1bnqW"><!--pnid:uRtZK14ZlPfRbSkzMmkKvH-->枚举</td><td data-page-node-id="tRXgh6icrDJrWOz5gB7lhJ"><!--pnid:QXz5pfKjmmEWS6gKENZ0cz-->摘牌和解 / 下架成功 / 行政处罚 / 胜诉 / 败诉 / 执行中 / 中止</td></tr>
+          <tr data-page-node-id="FA05f1XLjoq0uTLc7xqGhB"><td data-page-node-id="FGPWLzT9r5Pqp6I0LC2fCG"><!--pnid:GHkWjGo5wdjG92bH8PEOc5-->下架/关店数</td><td data-page-node-id="rTLtk8Ov1t9qIVh0rtMT7J"><!--pnid:AxnFMP1TCE8ptPgQUOLQIU-->数字</td><td data-page-node-id="s325FP9js48iFWBbIrmD68"><!--pnid:Hujeqf5DqTM5nzH4m7Jt0G-->实际消除的仿冒点</td></tr>
+          <tr data-page-node-id="qu1DHMKJajO2wBaM7pcshq"><td data-page-node-id="jD7cC9wydPO3bhvZgATRZf"><!--pnid:MiZcJet0luMWH7tC0hnFqa-->成本(元)</td><td data-page-node-id="dPbD6LJeHRxQyqbFiu76Qv"><!--pnid:NKM8G8xoLz37AqkyXhTRR4-->数字</td><td data-page-node-id="bBL2bySPAQVD6h0PWUeUYI"><!--pnid:2w1PIWGcX0jQ5M8JzCjWM2-->律师+公证+差旅+诉讼费</td></tr>
+          <tr data-page-node-id="i2r2davphyj0NJBI515D8b"><td data-page-node-id="1mhFBPC15ljlFaNTFkzGnX"><!--pnid:uifjhLPsAMSnA1nC6PYiFY-->获赔(元)</td><td data-page-node-id="jeUQPD7h7t9fAYJbvdcQdy"><!--pnid:NJsNCpDWWYZ0RKPyKDilNN-->数字</td><td data-page-node-id="z5ZuMviNglhokD4Pon0K62"><!--pnid:mZmTkK2eok2CNbMXSLxNgm-->判决/调解赔偿（可抵成本）</td></tr>
+          <tr data-page-node-id="GsFwKbj9RgKiX5exKJNh6k"><td data-page-node-id="QW1gLafXIxxYvdvyBgtxrX" rowspan="2"><!--pnid:yIYrOrrpJRTrXTMCm4Ly2D-->归档</td><td data-page-node-id="LJ0XE4GYI96LYX6aFFVYHH"><!--pnid:Mesnqg6cPNzLghF9m2WjLY-->结案日期</td><td data-page-node-id="XNvWtLigtPGlPKDHQlrxEw"><!--pnid:Z2Zx47EwqTM7JQnQ5wUelE-->日期</td><td data-page-node-id="oGveLp6B337qMghtFNo970"><!--pnid:mPg8SEy1U1ePM0inJwxT7d-->—</td></tr>
+          <tr data-page-node-id="SlRt0MoykIF9TmeRzH2duM"><td data-page-node-id="CrmwozDHZv9L1qmjWlh4gF"><!--pnid:AFuVOO5Vwy0XvbmmSE0yrG-->复盘摘要</td><td data-page-node-id="mOY21FyeVQ008panQiikVi"><!--pnid:EP1MF8ARMyIeH3YTpx3cWa-->文本</td><td data-page-node-id="27wFePi305feRxKaTizWYS"><!--pnid:voKrNJ9PXb3jPND2IyGVmL-->经验/失败教训，沉淀知识库</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="EOkEOEMAeOlWPIcFxMkdJv" class="note"><!--pnid:wcYIBKXVjk3hNLpfCo3jW5-->线索来源、侵权类型、定级三个字段是统计维度核心；门店数量≥10 或危害=高 自动触发 L3 预案（见配套《规模化仿冒应对预案》）。</div>
+    </div>
+  </div>
+
+  <!--pnid:RvRIa0ESGSPn1or1yzBOkT--><!-- p2 -->
+  <div data-page-node-id="e12vQ5xCk4FkzmN4xX9myC" class="panel" id="p2">
+    <div data-page-node-id="NNZ7PZNTYm1WQgPkmPbhwv" class="card">
+      <h3 data-page-node-id="8Jdu5OZVNqU79JQVM71NjO"><!--pnid:ajP7KU1YBhxbvJmglVVtkS-->三、案件台账（可填写模板）</h3>
+      <p data-page-node-id="DIc3PDhfFrc4ZWy8RvjugU" class="note"><!--pnid:lqLvgvgm6AprIWB13sguQv-->下表为可直接填写的台账（单元格可编辑）。实际部署建议用 Excel 或飞书多维表，并用"数据验证"把枚举字段做成下拉；此处保留 3 行示例，复制行即可扩展。</p>
+      <table data-page-node-id="BoqXVV8u5fTpC2KHySuGih">
+        <thead data-page-node-id="ECQ5kXKJMh6tWoB0jzcfJA">
+          <tr data-page-node-id="QQ2gAGz33GZwyfpI7e1uTd">
+            <th data-page-node-id="U4HboZCcAv3fi9VVLPVwNM"><!--pnid:pwQTiEgPV3DjYfTvNASQ3S-->案号</th><th data-page-node-id="RbPy2nFzMVQJBiotgqg5dU"><!--pnid:q3R4aGqddnnQb3m7mEWvMW-->线索来源</th><th data-page-node-id="RDcuevOgKUgEfGn8unFMbD"><!--pnid:8K4ZsPeHfy4Ch8O3Mf310u-->发现日期</th><th data-page-node-id="uKirMsAMTxH4yq2eNn2yYF"><!--pnid:2baI8fipibz0ghlpkp2VGN-->侵权类型</th><th data-page-node-id="rPbPmkVClKSy6pm6sv2l4i"><!--pnid:NqpHhyBLmRidH5rz7pn4IR-->侵权主体</th><th data-page-node-id="6mJEbcTfQZdcr5hHpGszUE"><!--pnid:8Pod2NLhtGP9RiIT9qiuFm-->地域</th><th data-page-node-id="kIWYbx2lEJMb3aLfsthtbH"><!--pnid:rZcBG0IEBpnUs5InGy6Cx1-->门店数</th><th data-page-node-id="LlIMLtsWYFcV9Oq6ffGmNJ"><!--pnid:AhSuoj8nDjSJajI1BW64Dt-->危害</th><th data-page-node-id="J1w4xKWcIDTiVQUNQiRQSr"><!--pnid:DIAx5w9Y9QK25ydHeqXvsY-->证据</th><th data-page-node-id="HuLxorhrr2gyQ5u44E3QDl"><!--pnid:Sc2HMjevjk6PfYHFN5iR1p-->定级</th><th data-page-node-id="Hm036WoP0A2BHePVBxxUVU"><!--pnid:1F6omPDdfPcJ5ZHBKq0VXC-->响应路径</th><th data-page-node-id="USOyC1bQg08lN9JP1lH3wP"><!--pnid:mZpGsMIQwlSYatc5ZEBcKt-->责任人</th><th data-page-node-id="SyBtbbMIJaaacogwcMP4eI"><!--pnid:2K0Xm0kiVYhV0YbTgvm97c-->时限节点</th><th data-page-node-id="2ytA5KduJ2APU53jnLQeEM"><!--pnid:I806SDpdvUKR3disUn5jrJ-->当前阶段</th><th data-page-node-id="oSswYAzJlWs6zRz7nnXEAS"><!--pnid:ZZTwNv7ioNLBAmGTus02XO-->结果</th><th data-page-node-id="wCfpEAHSdKqtjiuHH4jOxA"><!--pnid:sjFaYxDFMFCxlehRTyCy2F-->成本</th><th data-page-node-id="UJomsWtF8SCwJuzIMwsXaP"><!--pnid:IGfacNhkms9ExOhJAExRoI-->获赔</th>
+          </tr>
+        </thead>
+        <tbody data-page-node-id="RvpuSEmxiqtP9TJGOMcgHN">
+          <tr data-page-node-id="7Wbe7Awyf90aqWoaoEWVYw">
+            <td data-page-node-id="cT3N1uLT7XMCs3o1pSrVG2" contenteditable="true"><!--pnid:CfYCycLSV54iY1bDflUGm4-->BP-2026-0001</td><td data-page-node-id="bquk60aCCP2JQKFjpfwJao" contenteditable="true"><!--pnid:bW2PpN89zMl3qcl7TT2Whv-->加盟商举报</td><td data-page-node-id="DvJa5o5HoWZN84GsHammSv" contenteditable="true"><!--pnid:rcdYuHqW5N3D22WhGMhclW-->2026-03-12</td><td data-page-node-id="lO7QzrnQRxFfOZ0H9w2cRf" contenteditable="true"><!--pnid:AwWgWTnGhLSjHxbrBbHT3N-->商标侵权</td><td data-page-node-id="IXOL9JDP024yAlKt3MfjfM" contenteditable="true"><!--pnid:QtdmsdjEG62LhswU0hDGwW-->XX小吃店（李某）</td><td data-page-node-id="WCOIGKXh14lo5rgFmDQ5T3" contenteditable="true"><!--pnid:TwHkA4AxslpV1ogoqM3h2u-->昆明市五华区</td><td data-page-node-id="CUfgBVHMh2fbSNKyKdeF8D" contenteditable="true"><!--pnid:18rvhfhjQjqpimLkaNJvvo-->1</td><td data-page-node-id="RImAIhqICL4EK6edKy53Qq" contenteditable="true"><!--pnid:rxNTUGGWkuqubKTQ6coQAW-->中</td><td data-page-node-id="otlyDtd2M69gGQLVbqu8yJ" contenteditable="true"><!--pnid:FFd4evmYxznuqJVykvqSub-->已公证购买</td><td data-page-node-id="mLLttYIVzMnnNnfJmHQTSu" contenteditable="true"><!--pnid:5dfxk9W6JKFL2pJnQPioF5-->L1</td><td data-page-node-id="YGMrlkjVwwdu0eXWFCSiFR" contenteditable="true"><!--pnid:9K3TBPwfGnIH8qwcm2AWIc-->发函</td><td data-page-node-id="Vgb5jw6UWrHwHQdyltAKQs" contenteditable="true"><!--pnid:SEQD6U4rq9cejtLnQabUet-->张法务</td><td data-page-node-id="XzFHNxDJqEFRsGLmL1nKLU" contenteditable="true"><!--pnid:olw8frPUNTjWeowG9rovym-->2026-03-19</td><td data-page-node-id="PACO7Bib5AF60IA0BGsqSV" contenteditable="true"><!--pnid:rrtsfrakInXvMTfOC5oVdG-->结案</td><td data-page-node-id="bxTXyIzhgU57Xmdwc0g9z8" contenteditable="true"><!--pnid:ongJ1ClHFBaipeKmKWFai4-->摘牌和解</td><td data-page-node-id="Ew1pZ6kSIhSl9vPLNOMVGW" contenteditable="true"><!--pnid:DBt0ZgXdFWIpdQmhkQTKoJ-->1800</td><td data-page-node-id="YXEQCsnvSahXP9k55WoGW6" contenteditable="true"><!--pnid:cpc2jsPFuOuGKlyTqcaWAT-->0</td>
+          </tr>
+          <tr data-page-node-id="EGVjV9XcY9k9rYkUsX3TSN">
+            <td data-page-node-id="jzTOmg6uqmjrofmHHpWYtJ" contenteditable="true"><!--pnid:QGIY2rISBIihZq6YzpEV81-->BP-2026-0002</td><td data-page-node-id="jXxNNkL11REXuuva2jzePS" contenteditable="true"><!--pnid:eZFCd4jkpZeDWFclWLUmcc-->线上监测</td><td data-page-node-id="qrra1bUzAvEPT9TPr0gzFM" contenteditable="true"><!--pnid:XViwh2r1iMeVdXOSdHrkjX-->2026-05-08</td><td data-page-node-id="rDbUUgepbBH3NNWRPyn3Ts" contenteditable="true"><!--pnid:yjEv3XARuCwVAHdtuxiXJf-->招商加盟诈骗</td><td data-page-node-id="n2tK4NOaF1q5DKSBHYZwPs" contenteditable="true"><!--pnid:5k2c6SaDDFeMoM1RvgGhJv-->XX招商网店铺</td><td data-page-node-id="mOSH9nMUMeNyvOZIksRpdM" contenteditable="true"><!--pnid:SJYmgn74WnuY8MWCPy0z8l-->多地域</td><td data-page-node-id="0hv8IPhPXfsxbZbmXPz1w7" contenteditable="true"><!--pnid:ufqWR8Hc1SOdcVeDKkXvBC-->6</td><td data-page-node-id="wxXuYyEcp5spEZOTPwuPR9" contenteditable="true"><!--pnid:aEnBe9bf97A4rqcGaC4C1e-->高</td><td data-page-node-id="keY0gJTf3HD3yT1uBIeNyi" contenteditable="true"><!--pnid:zJilaUr6SvQ6nmPYghJXu3-->平台留痕</td><td data-page-node-id="a4HmRTZaPDNklv3reLbXXs" contenteditable="true"><!--pnid:dk5XzLx6scfFgmEQzOA6TB-->L2</td><td data-page-node-id="adgqIkZilS8J1qcpA2tp6S" contenteditable="true"><!--pnid:BkZrNkBYjf4llxzawLYHAF-->行政查处+平台投诉</td><td data-page-node-id="iQsDctK26vBv0H29FM1J0H" contenteditable="true"><!--pnid:zbpNVKmDbIyKNli47KalhN-->王律师</td><td data-page-node-id="1QJArvn0bAjBbil7nZsOLt" contenteditable="true"><!--pnid:9LMuGJo3GXpZ4PQ0TCCD1G-->2026-07-08</td><td data-page-node-id="7UD4DEdY9jQgTkH6S3FU4U" contenteditable="true"><!--pnid:GafILiwLbpMDWCwI0aAfwf-->处置中</td><td data-page-node-id="BGm0zQh4G78CkK8UnhaEjm" contenteditable="true"><!--pnid:a2bdAuVF07WuoOdjSTDRQN-->下架中</td><td data-page-node-id="WhUKmoFJ38d2aPeUo3Q8uX" contenteditable="true"><!--pnid:ExK7dF5p4fUKh8AXxa2A36-->32000</td><td data-page-node-id="yvz7GkzRZJze7rJBPghlER" contenteditable="true"><!--pnid:MQ46hDJV6lMvxL6f1gcdf0-->0</td>
+          </tr>
+          <tr data-page-node-id="kzh9YtwRYUU04Nsd9GkKBt">
+            <td data-page-node-id="4owhTuhYA7CObu6bednRcm" contenteditable="true"><!--pnid:5x67orKlVuJeGZaXMTWVUF-->BP-2026-0003</td><td data-page-node-id="3AdyAAXApnB7Pnpm8vqwQV" contenteditable="true"><!--pnid:fmgiYbRtp9VNjOaVDDEcRS-->媒体</td><td data-page-node-id="xZ9oEBcAw3tYNNt2vtC3p0" contenteditable="true"><!--pnid:8J1mWJwwKCyQwc3oTJq4Cl-->2026-08-20</td><td data-page-node-id="3tJfzTxNV988x6CTlDcu0o" contenteditable="true"><!--pnid:9qPXMP8p0s72IRzR5t3sdT-->装潢混淆</td><td data-page-node-id="Od3bHozchVeRmjw3tZGThi" contenteditable="true"><!--pnid:MdtSE1t3Hm9VB5XvpsI4aw-->某餐饮管理公司</td><td data-page-node-id="PzgG6L3dkMvyGioeNvqDMi" contenteditable="true"><!--pnid:1Clii9UlhQqcncL9TpC4yT-->全国8城</td><td data-page-node-id="r5U40y3LlVHTfXcgbj5EZy" contenteditable="true"><!--pnid:8BzTYSj7A4WrH1pilJJSC1-->20</td><td data-page-node-id="RM9PFzLPk5DAtHjX0QlE3q" contenteditable="true"><!--pnid:sgPhTjRkjmcNu6Lj1kQ6SN-->高</td><td data-page-node-id="0cRsxDsSHtyGOnRpeuHa5L" contenteditable="true"><!--pnid:Gy7gUP4BN4SY41AIqtwQvt-->已公证+鉴定</td><td data-page-node-id="iwNENJNzfHCT5x4krzjao4" contenteditable="true"><!--pnid:4nOnfHr3RdPFd73PpeIaI8-->L3</td><td data-page-node-id="lHebgKzOHVTTOnE8c1XXmH" contenteditable="true"><!--pnid:Uoq4PBgaWKfSTEYItrcJEh-->集群作战</td><td data-page-node-id="JsjAh9r5ObzMpRv4yp1Td3" contenteditable="true"><!--pnid:erBZ6e8Gs5aiqi0SnwTDwP-->李总监</td><td data-page-node-id="ooGf8TyzCV2Tvto4lj4LWk" contenteditable="true"><!--pnid:7Rmqfx9T8MpsVBZ7DVo46c-->按预案</td><td data-page-node-id="BRSbr7YKJK16bDvx6iVTfz" contenteditable="true"><!--pnid:74Ur0y2zLdHWOKLeCCr9Oo-->处置中</td><td data-page-node-id="gmJyNkSzis45j8HAL0q5Lw" contenteditable="true"><!--pnid:VzN7lpBGGJ1RuHhT0cG6jE-->示范诉讼</td><td data-page-node-id="ILv5GcyGmS4mU4nfe7ss8t" contenteditable="true"><!--pnid:GkBFCv9Uu7hL0uLqJp2VTC-->80000</td><td data-page-node-id="pZQ8JWf0sCH6rVwQzC497X" contenteditable="true"><!--pnid:qCgxTtBWU6WTAZkYvyAhUq-->0</td>
+          </tr>
+          <tr data-page-node-id="zOLbeCmAfU2qwGM796ULG3" style="opacity:.6">
+            <td data-page-node-id="9qILcDR0qWnIVeXjv1lxX3" contenteditable="true"><!--pnid:MkLszXBpdYJrqD67pYfjyv-->BP-2026-0004</td><td data-page-node-id="AVcgciXZotdzjkCCBknLbp" contenteditable="true"><!--pnid:q7x3LWjQfyTnzaoKClKgyd-->（新行）</td><td data-page-node-id="lzVCqX3XD2WsY2YYyednms" contenteditable="true"></td><td data-page-node-id="dYcc2bunLFMxfGe7jEphDZ" contenteditable="true"></td><td data-page-node-id="fcZaOelOu2cX0RspTLi2UV" contenteditable="true"></td><td data-page-node-id="ZFouj8hyKohl2nm7aGSRDp" contenteditable="true"></td><td data-page-node-id="zFqtiKMcbilWqgBuSkU3VC" contenteditable="true"></td><td data-page-node-id="rx56NGSZdBwoZcxxSnAGKR" contenteditable="true"></td><td data-page-node-id="EToJb9DJ9zcZBlZxUft9dw" contenteditable="true"></td><td data-page-node-id="GGy4FUAqlCOdtq5HZc5nK5" contenteditable="true"></td><td data-page-node-id="VZdWCvm0Ys0FP0VMfaUGQv" contenteditable="true"></td><td data-page-node-id="iydGvSiA2J8StY9qCPVjEC" contenteditable="true"></td><td data-page-node-id="3m8WiIfY8DNr0kFQDDTziG" contenteditable="true"></td><td data-page-node-id="5ri36NC2fGuVwBhrnhk273" contenteditable="true"></td><td data-page-node-id="KUSFF6JZHD1DrsLXtjGtmW" contenteditable="true"></td><td data-page-node-id="4VwS8qzIZVZU9oVl0iP9JK" contenteditable="true"></td><td data-page-node-id="muFZDYbp2DydcszIYYzxmU" contenteditable="true"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="5DpTcoNuEgWJA9etC8IMTI" class="act"><b data-page-node-id="LJcCgjtA1S8TuK180bct0M"><!--pnid:mza62HVIfg4z5Z8TB9NOAI-->我的落地动作：</b><!--pnid:U6LtHILuNUkSaC2nn2JYjn-->把该表设为"系统主表"，每条新线索登记即生成案号；用条件格式把"时限节点 ≤ 今+3天"标红，实现逾期预警。</div>
+      <div data-page-node-id="NttSVuxz1k7VvqH4mlJpah" class="anti"><b data-page-node-id="30jbm1UXon3ukvXbnyxq87"><!--pnid:u2kZWE7N7k2Gevsu8zNbmL-->加盟商反制点：</b><!--pnid:uwgBoczCbPCSoXdAQAL3ap-->台账中含加盟商举报人个人信息（姓名/门店定位），须按《个保法》第13/14条加密存储、最小授权，不得向仿冒方或无关人员泄露，否则总部担责（个保法第66条，情节严重罚 5000 万或上年营收 5%）。</div>
+    </div>
+  </div>
+
+  <!--pnid:lQIA7dQvHcQ664xNTVeMHY--><!-- p3 -->
+  <div data-page-node-id="SpdtgeiNjYvBELm1OZ04YY" class="panel" id="p3">
+    <div data-page-node-id="jT1QojpW9QF79ltpVewyov" class="card">
+      <h3 data-page-node-id="yu5lS9bw3u2ZitDKS2snLW"><!--pnid:b5OtQWugsGhBG5ZZBXem4j-->四、处理阶段 SOP（六阶段流转）</h3>
+      <table data-page-node-id="Zlz7PiMYnbT8rnCzPduSIQ">
+        <thead data-page-node-id="D8Ovc2hOOcnKX42c5lAsSR"><tr data-page-node-id="6CaRvDFFo5HitP10kaQVqX"><th data-page-node-id="YtjdUmJ2Ert4LaJbzI64xL"><!--pnid:dBL0KzguFkZOjLwdELm1qF-->阶段</th><th data-page-node-id="BZA03H7IqR8GSFQd9ndQxs"><!--pnid:11LS6InSWpBU6ROVaYjDfY-->关键动作</th><th data-page-node-id="QcDK0fnWXMPT4G3jz76Gsa"><!--pnid:TQsNSpiSfN3DAp31u7j1lk-->产出物</th><th data-page-node-id="mi2RwGj9jB6k4Em8rkc5JT"><!--pnid:V68w6Udk5A08HtKBIArwQP-->时限 SLA</th></tr></thead>
+        <tbody data-page-node-id="CmKKB67CxHm5uoYt7yRG22">
+          <tr data-page-node-id="ll2qFrlWUlfqEEmRDXx3vH"><td data-page-node-id="pEBWNaLsoLol8dLLWQKh0a"><!--pnid:eFCOS3FncrKSflmRRKqRBG-->① 线索登记</td><td data-page-node-id="UDiAbX0tOoAyAps8hwHbSF"><!--pnid:UFQ4ZgpIKz24gbsTGRkzfx-->统一入口录入，分配案号，初填事实字段</td><td data-page-node-id="AyZobNGAscJlqSkV970WYP"><!--pnid:MuCAdVAC0CKKomrHuN3vHm-->案号+台账首行</td><td data-page-node-id="39ZV7hwRDTO1RioVKxWefH"><!--pnid:XMbke935xLJOCN16N91cpv-->发现当日</td></tr>
+          <tr data-page-node-id="ig2CpF3NvPohT0v5YOt1Wc"><td data-page-node-id="FUwZ7O1QStdUiMLw3J6A5o"><!--pnid:ryXCOXF6dhPKGEaxsfhK86-->② 研判定级</td><td data-page-node-id="AhRWuMoFHmn2NvHhKrgPl9"><!--pnid:mkmAdzdprCOjCv2x12T8B3-->近似比对/证据核验，按规模×地域×危害定 L1/L2/L3</td><td data-page-node-id="UNnXK5blxnQNoYEBkdwQ34"><!--pnid:l0JucI7hRp7huHXehYNKwr-->定级结论+响应路径</td><td data-page-node-id="2t43kwoCQSv631jYnD7npJ"><!--pnid:03gOCwrizsfQ0SZPnZmoeQ-->≤48h（L3≤24h）</td></tr>
+          <tr data-page-node-id="QVqLa9GvGk9ZwAbBTOYWn0"><td data-page-node-id="2y6rVdzMoGakM1Zl4xLVmN"><!--pnid:voLoGBE7zRk0mJ4P1dtDJ2-->③ 立案</td><td data-page-node-id="XuIP2Eefp863VD3Vt1PX7g"><!--pnid:yDuRB8413kKICwi7xjWXRI-->选路径：发函/平台投诉/市监立案/起诉/刑事报案；固证（公证购买、时间戳）</td><td data-page-node-id="4OKdGhQiVh1tUCkYBDisC7"><!--pnid:oZnsPzThv9J4rZiZEpxrWY-->函件/投诉书/立案号/公证书</td><td data-page-node-id="kcSs0c6jkZFquGCUm0js0T"><!--pnid:DFqMtix5bNqpasCHtRqgxB-->L1≤7日 L2≤5日 L3≤72h</td></tr>
+          <tr data-page-node-id="EbvRITPzIK4DiLf6RK2wVv"><td data-page-node-id="WqYe9LBtf1UhXlxhpUKIfX"><!--pnid:dkujNlnI2z5KcVh1HOXBZB-->④ 处置</td><td data-page-node-id="ukEbDMwNi3SNh20cfCTAss"><!--pnid:nFyRmraluswi3Zn1OGC8Rj-->跟踪外部律师/代理机构执行；每案周更"关键动作"</td><td data-page-node-id="9KmJQdGzNadZKz2SxIOEUz"><!--pnid:FRh8x457vu0hlBVNbmGpnf-->阶段进展记录</td><td data-page-node-id="EmCJfL3Aevt1BUJhcjir7O"><!--pnid:Jn2jXQSCwDjARIjPfWGBMz-->周期更新</td></tr>
+          <tr data-page-node-id="sPtGaEPA8Ytyky51oDij9g"><td data-page-node-id="UnpSPEb2Wrytpzxk9oRx5H"><!--pnid:K1jYvfGyx1MxUG9Ifx6nll-->⑤ 结案</td><td data-page-node-id="xg2qANfgr2zGVxd8CdJOvb"><!--pnid:uUZzdQd6rCzenvi7SAywTo-->结果认定（摘牌/下架/处罚/胜诉），成本与获赔入账</td><td data-page-node-id="Bdl6Pcq0Lja2xM7jt1QtFl"><!--pnid:MTG5gODxioEVitB9tntlMq-->结案报告</td><td data-page-node-id="vthLLv2EyO8E76ox2Lv3Nu"><!--pnid:u1dcg8MfmZhge2hohr02qB-->L1≤30日 L2≤60日</td></tr>
+          <tr data-page-node-id="QHchyLLU9kLXDP3qVipwlP"><td data-page-node-id="H0myoigHz6VRyKOze2YMHY"><!--pnid:c1HhbDVzBMndRrQ3RmQskW-->⑥ 归档</td><td data-page-node-id="08HKFvGIADreWWNMIPElGK"><!--pnid:6zY0kMxpS8zC3njsKc37eu-->复盘摘要入知识库；对手画像更新；材料存档≥3年</td><td data-page-node-id="f2Y4WybOJXaEJCrb2hkOkX"><!--pnid:i5tPCXRu1ZpXuFBNNo4JSd-->复盘+归档包</td><td data-page-node-id="lIp3XkXxNQyDkX098FKxge"><!--pnid:sqToEquXlUo7ZnRwO1nKRW-->结案 5 日内</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="5nxesNZLHJSJJEcyB6hRH3" class="note"><!--pnid:4TG6ERxLyxFS3SmnWmSIn2-->时限 SLA 与《年度方案》p3 一致。系统应在"时限节点"到期前 3 天自动提醒责任人。</div>
+      <h4 data-page-node-id="t9Um9zTgc0RDkH843pOF45"><!--pnid:yT7DAm7wGagxEDNqwr9IMy-->升级触发（阶段内可跳级）</h4>
+      <ul data-page-node-id="K2Z3JlVCaZuDln4cF0HpVQ">
+        <li data-page-node-id="XL8KVmHDONcbkw4fa3LlSx"><!--pnid:RiOHx4FmJDy6nIaEFYpazg-->处置中发现门店数≥10 或新地域→ 升 L3，启动预案；</li>
+        <li data-page-node-id="fWW5Rkbb6UaIIQlzzcd1GJ"><!--pnid:OMBTI5MvIVi14Yu0ir0YQ5-->出现食安/售假→ 立即同步行政+刑事，不限原路径；</li>
+        <li data-page-node-id="vr55dfgFpy4lhJ5mhLID9X"><!--pnid:07j7fiTiJzFElsVcZMy4eM-->超时限节点未动作→ 系统标红并上报法务总监。</li>
+      </ul>
+      <div data-page-node-id="RmUtkGPhlYd2kDVGyEi2G4" class="act"><b data-page-node-id="pE3EuuFxGHFFP5YSK9YkdQ"><!--pnid:twj8uwX7YceNsmmde2dvPm-->我的落地动作：</b><!--pnid:spPaqUGtiw5gXlifTDL6bv-->把 SOP 固化进系统"阶段"字段的审批流；L2 以上结案须法务总监在结案报告签字。</div>
+    </div>
+  </div>
+
+  <!--pnid:PhDx85Tuq5p5z4SXVr4gal--><!-- p4 -->
+  <div data-page-node-id="0xWeuzPeU1L1MKeTcndL4c" class="panel" id="p4">
+    <div data-page-node-id="fh2lS6CxPt6UuOHapNHTMk" class="card">
+      <h3 data-page-node-id="Xhxo6inUZUr6R5qufvRJ6g"><!--pnid:Tur9tteERakXfMyCVsfPgw-->五、统计看板与报表（反哺 KPI）</h3>
+      <table data-page-node-id="MjiCpuUVUQdQ5MHEkMPKJX">
+        <thead data-page-node-id="NzxtcGCDepqCeWzPLgZcL0"><tr data-page-node-id="YqDb8Qtnx43K6mHVLwijBX"><th data-page-node-id="KYqC5HWPKQWECjJk6rYlhw"><!--pnid:SY2qXL5ak0mkTRJxANFz8N-->报表</th><th data-page-node-id="BcsYm1ojWRx5lrRHIrRGLO"><!--pnid:WzdHdEXGH2MwSJ8ska2fD6-->维度</th><th data-page-node-id="OUt2Lp1Ky9dgWJWSwxKN23"><!--pnid:2er94TAzyrIldtS0zmBbTB-->用途</th></tr></thead>
+        <tbody data-page-node-id="qEICYl7J7G7L2JmaH1SPvV">
+          <tr data-page-node-id="BLsqHa7lF4YcRLHxNKk5jp"><td data-page-node-id="MZwR96U01DA6bL86d0cE1X"><!--pnid:I7wVgfWszt1mbDi2LCSN4b-->月度案件量</td><td data-page-node-id="D0o6U3bp93cCoKqNLdwca5"><!--pnid:sKmMn5eiVcgLKg9Ea1PUYl-->按发现月份+线索来源</td><td data-page-node-id="FOJlkj1m9zSVCgJt6YaWvF"><!--pnid:9EIKcIW0lyJz9l4o4z7w1y-->看监测哪条线最有效</td></tr>
+          <tr data-page-node-id="O6nUh41qFnIBTREVf9YcTn"><td data-page-node-id="Lexk6BA8NLnX12v8E0y3wQ"><!--pnid:3x2Wq0qilrqTJKuSKJyLva-->侵权类型分布</td><td data-page-node-id="v4ANjWG8S4yT6p70QBaV8Z"><!--pnid:deaa1TKloiwhWaCd6xjJfy-->按侵权类型</td><td data-page-node-id="GNogHK1tUlg1rgyr1tkIyK"><!--pnid:7SBozORACNaEJybrKi06EQ-->识别高发侵权（如招商诈骗 vs 商标）</td></tr>
+          <tr data-page-node-id="QKMEpPitmYgAGOwEWkgXoU"><td data-page-node-id="DzEOBBJr5isHFlGeWbhcgT"><!--pnid:QQuzTQf5nSsJnF9JphvhVm-->地域热力</td><td data-page-node-id="wNt1yxGhUu97WALcjGlUBA"><!--pnid:j6RrD1yFbtAnnjnXM5dkxG-->按省/市聚合门店数</td><td data-page-node-id="Pj0MQwPJBt4W7Nzr1weVQf"><!--pnid:WkFNM7nuyi70YYdnS0YCXx-->识别重灾区，决定出差/当地律师</td></tr>
+          <tr data-page-node-id="G1lkHRlVu8w6GN9cvCW0tV"><td data-page-node-id="rWmMII5lAhJowL6b7G9fST"><!--pnid:7yARdLYhNt4gQMdcPVF0Qk-->分级占比</td><td data-page-node-id="a1QOVZZe3Wchih0vA6OQeY"><!--pnid:Ux6zP8l82LISVCNlZqcpmY-->L1/L2/L3 数量与成本</td><td data-page-node-id="S3o8uuZJAg6oBqf8uALePK"><!--pnid:aP9HWIHzqB5Gpo5yOj8pZr-->验证 70/20/10 预算是否失衡</td></tr>
+          <tr data-page-node-id="kW4wd1ShR89PnXtj66G9Vv"><td data-page-node-id="lQt7WyB2JIVLyiTQ7q9rzt"><!--pnid:m4FaKX3qRbSbT82jBPfDX7-->响应时长</td><td data-page-node-id="jia8PU26FZFRGmVb5E1ll7"><!--pnid:GViVYZtZ1hzx74A5Rr6WeV-->登记→定级 / 定级→首动作 均值</td><td data-page-node-id="bNv1RP0ebrBZYDtBCs04la"><!--pnid:8bMQ2MIQySuZTzlAta9AVp-->KPI"线索响应时长"</td></tr>
+          <tr data-page-node-id="DYcWAs0mi2nrscd7063gSg"><td data-page-node-id="qmTz458VjMe8VQ0KJIHGKV"><!--pnid:hQH15lk6QjA7dZSqZqR7TH-->结案率与下架率</td><td data-page-node-id="ZDGOpBz5Ezfb7hqCkLj44q"><!--pnid:ReR0a7mgKhFSTGYuppGBrf-->结案数/立案数；下架成功/投诉数</td><td data-page-node-id="u6yT0L79ttPUEvZMjlzUQc"><!--pnid:ZQw3twgBdmVCCij8GeOt21-->KPI"结案率""线上下架率"</td></tr>
+          <tr data-page-node-id="TosG5RcvXgdCe52UPr7vAc"><td data-page-node-id="pgyImPfulZOmpuMQruwzXf"><!--pnid:6p4yMbN6K2SAi4Sw7tbQNW-->成本效益</td><td data-page-node-id="USUfRi4a2RNqOTzwUyF2Rk"><!--pnid:WdpSrCbR61iUfi2iKnX0JM-->总成本 vs 获赔；单案成本趋势</td><td data-page-node-id="kvug9BHjRA7SIBzTLPCeSS"><!--pnid:87uCJrgM7qCyzdXwBZGynK-->KPI"单位维权成本"</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="KgmyMmwJmSculJJYcgmU8Q" class="act"><b data-page-node-id="uqzuWsb0WWQ0u0SYWNXatm"><!--pnid:E01GhoPJBpEWtDQcz3MNdX-->我的落地动作：</b><!--pnid:lKfO65RW260PIX0H9QQFaK-->每月 1 日系统自动生成《品牌保护月报》（案件数/分级/成本/KPI 达成），例会通报；年底汇总为《年度复盘报告》。</div>
+      <div data-page-node-id="3kXry3xUWdcahlcZAj6hoR" class="note"><!--pnid:EVSmr85jvQ3gUYORBzTv3m-->Excel 可用数据透视表实现上述看板；飞书/钉钉多维表自带图表。关键是字段规范（枚举一致），否则无法聚合。</div>
+    </div>
+  </div>
+
+  <!--pnid:ybYbhY8s2pH6TlmaMZoGcf--><!-- p5 -->
+  <div data-page-node-id="G47U2bchh9hiwVkQ7sMHQQ" class="panel" id="p5">
+    <div data-page-node-id="uA73pLpxyq4tovutXQqeMq" class="card">
+      <h3 data-page-node-id="IP6VonqnltNhfm3sPpdOJ7"><!--pnid:VaZxTgSyPeALVXNd9QQwcC-->六、权限、安全与灾备</h3>
+      <h4 data-page-node-id="3mYEDvWPQ7MXkCMymhdDYl"><!--pnid:6OHVUM3hte8dlv2AVnZOA3-->数据权限（最小授权）</h4>
+      <table data-page-node-id="Q3poMDgbJFkZe7857WO1E2">
+        <thead data-page-node-id="eNEH7ZnEqQ34LW6OXnqLPY"><tr data-page-node-id="qEwWYOBvkclMWDOZU2e0zp"><th data-page-node-id="LVR4yzCJeFoErm1Nsob2tE"><!--pnid:uFywDIsZBhniC55fUhkEuX-->角色</th><th data-page-node-id="P6UQAntn0Vhn77zGWUXajV"><!--pnid:LiY30v5ZevF9u1zIvkFSb6-->可见字段</th><th data-page-node-id="C0LvhgDnDygU8C4untRvBr"><!--pnid:w19cyicuH5Oj3LHEB5gEs6-->可写字段</th></tr></thead>
+        <tbody data-page-node-id="m8RdiI0Cger9rgj2aDTUu4">
+          <tr data-page-node-id="S3jl6kzILVydLdZeXV5KHu"><td data-page-node-id="BSwsNo2hWvmbIXBFQtNEef"><!--pnid:HSgeQGx1Gqn9KDn8vTEo66-->法务专员</td><td data-page-node-id="60XTR256b2na1Oe93Zal2A"><!--pnid:hb2nUhraCIA5qBJxxOYis5-->全部</td><td data-page-node-id="yeMlTInx8A6pgQXeJ5Nr30"><!--pnid:QWOAfxwvFex48m1u3kqEal-->全部（除结案审批）</td></tr>
+          <tr data-page-node-id="DG5OMHThoxeuGJwRMLdZ1e"><td data-page-node-id="2y2nIw17R9YxfXWy1iH6Ee"><!--pnid:3dk2qQTKkgwuskyA4KQ0g8-->法务总监</td><td data-page-node-id="6UhIZOZ85MLqQHeljNK5rj"><!--pnid:vJbOYIFl1yKuTfwtV3DKQ5-->全部</td><td data-page-node-id="ByqVdjbYf367g1E9XKfihk"><!--pnid:mOOU8DGJivqd9AJxEZqSyV-->全部（含结案审批、预算）</td></tr>
+          <tr data-page-node-id="QOJly9QLTp5pAKuOUm5AYa"><td data-page-node-id="hW6yskHg3m386kLLwQcekW"><!--pnid:eOAkKG3FCXfM202MnfZh9V-->拓展/运营</td><td data-page-node-id="znBrEc7F7qMF7ucnHWvHaV"><!--pnid:Vp8lZ3HZcoRrrnbjqpgfYb-->仅案号/地域/类型/结果（脱敏）</td><td data-page-node-id="kGhQOqtgir5Se2secFEkAM"><!--pnid:Yiq7IbVZl5t77Bfc4fneDO-->仅"线索举报"录入</td></tr>
+          <tr data-page-node-id="0ZoptNQyuVOpzlvNlqNLSL"><td data-page-node-id="96n61a4WSkfYCVojpPXQ2x"><!--pnid:Z6BGPFI3jbMfNWBo7Fbo7t-->外部律师</td><td data-page-node-id="sfNeKYPKPNUgSdk37ID2Ma"><!--pnid:TV49m4qwSQuhJqjyKLE6qM-->仅其承办案件</td><td data-page-node-id="1ypVVJUHKhXcN6ky7kWpt3"><!--pnid:iS30WE3KLxhpe4rcAWCmP2-->仅其案件进展/成本</td></tr>
+          <tr data-page-node-id="hv8vzhTh9EofoaNvW6wGYw"><td data-page-node-id="Dderr7VNKkQ9Hvpdi7DGC9"><!--pnid:3PeqWFWrcIahWmAvuCR2c2-->财务</td><td data-page-node-id="7GFmiUPESXY2dF2NyWtZkF"><!--pnid:4xfs04JMu2WqZ8qajg3J19-->仅成本/获赔</td><td data-page-node-id="R3iHgbHTY2Y8OxAXNHcPSr"><!--pnid:sZBHWF8szSz7PAeTNDR1dm-->仅成本/获赔</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="nN6DVvr1YWu3e1PycxGLtZ"><!--pnid:rOSlP0FQ1hC656z5qPS5B2-->安全与合规</h4>
+      <ul data-page-node-id="eMOD72OE664xjVhSaVjVDx">
+        <li data-page-node-id="yfv656MxKAaCXVAR47n9By"><b data-page-node-id="vyofEmmgD8rUD3yqqnYboE"><!--pnid:VxreGMuqIhHyMpdSPnUNW1-->保密</b><!--pnid:3msN5968CjfcUpYwNcGV0q-->：台账含商业秘密（经营数据、对手策略）与个人信息（举报人），按《反法》第10条与《个保法》加密，访问留日志。</li>
+        <li data-page-node-id="CgLbOizLhtFkqaSk25oeQC"><b data-page-node-id="0AULQspjnWroJ0K96faylU"><!--pnid:09XdLBRuc3U1mIHIbwBRxJ-->防篡改</b><!--pnid:bjQmu7dUmcJdwpB37M7ZZU-->：结案/归档后字段锁定，修改须总监审批并留痕。</li>
+        <li data-page-node-id="lJ9Rrrp2UdcyQsFeeQvAGm"><b data-page-node-id="kQtPIgCKGS85GWpkwD1ZXU"><!--pnid:3qpnQMCLh74tAZCvoPCCgG-->留存期</b><!--pnid:FjUQcAjQI9NfXqVKe8PB2C-->：案件材料存档 ≥3 年（覆盖《民法典》第188条 3 年诉讼时效）；重大 L3 永久归档。</li>
+      </ul>
+      <h4 data-page-node-id="Z2buQAWofTVBMZrEZQXi4F"><!--pnid:OlL1mqgCDU4l58RVzEWBcH-->灾备</h4>
+      <ul data-page-node-id="wzF2hmaaBGyAfkl3gaDyeM">
+        <li data-page-node-id="Vh78D9gzwdyboUZjVSRuWO"><!--pnid:Lww9KSQhybNoLPS2ZIk35b-->每日自动备份至云端+本地双份；季度演练恢复。</li>
+        <li data-page-node-id="tnSWfTUCpdhIbKOxxvgxss"><!--pnid:nD0FjNrp8Mc6JjxjTr6w2G-->人员离职即收回权限并导出其经办案件交接清单。</li>
+      </ul>
+      <div data-page-node-id="fN6FCJUdCinESc2aj7rAeV" class="anti"><b data-page-node-id="SoQHVS6L5HqDZclaFTmnRd"><!--pnid:KUBRagrTiIGz5OkKRoL0DT-->加盟商反制点：</b><!--pnid:ZqzM3stoRibKF0nRJ3dn3o-->台账若因权限失控泄露加盟商举报人信息，或被用于不当针对某加盟商（如借打假报复），可能触发个保法责任与名誉权纠纷；权限设计必须"最小授权+审计日志"。</div>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="fKhGGIt3KltMuCCniBD2db" data-pnid-children="f5Due8gc2ktBv3LpgIAjdV">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+</script>
+</body>
+</html>

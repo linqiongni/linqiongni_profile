@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html data-page-node-id="VITkmJ9FxmKkDwGXMQS2TO" lang="zh-CN">
+<head data-page-node-id="qCBtgRPrkRNomdhxxHRCWt">
+<script data-page-node-id="fllhVMdTILJ31z42C1J5jG" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="GPdiiqwVkULLjg1XffXSH2" charset="UTF-8">
+<meta data-page-node-id="xQxHOQicFHKjbJfwM6oqNz" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="RNAPaj1OoAHBfrVzASSlU2" data-pnid-children="vezETWj0fdn6QuSuvAELP3">第8周收官 · 选址—租约—退出闭环固化</title>
+<style data-page-node-id="joZN5Uk2krXpzhmvuQP15u" data-pnid-children="PYmGtP1oCvlEb4LW019jst">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .t-blue{background:rgba(90,140,220,.14);color:#7fa8e6;border:1px solid rgba(90,140,220,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .q{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:12px 0;background:var(--card2)}
+  .q .qt{color:var(--gold);font-weight:700;margin-right:6px}
+  .opt{padding:3px 0 3px 4px;color:var(--txt)}
+  .ans{border:1px solid var(--jade);background:rgba(95,179,163,.06);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .ans b{color:var(--jade)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap}
+  .progress{flex:1;min-width:120px;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  .btn-jade{border-color:var(--jade);color:var(--jade)}
+  .btn-jade:hover{background:var(--jade);color:#0f1216}
+  pre{background:#0c0f13;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.7;color:#d8e0d0;white-space:pre-wrap;word-break:break-word;margin:12px 0}
+  .note2{color:var(--sub);font-size:13px;background:rgba(201,162,39,.05);border-left:3px solid var(--gold);padding:8px 12px;border-radius:0 8px 8px 0;margin:10px 0}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist,.q,.ans,.act,.anti{border-color:#bbb;background:#fff}
+    th{background:#eee}
+    pre{background:#f5f5f5;border-color:#ccc;color:#111}
+  }
+</style>
+</head>
+<body data-page-node-id="zOhzAHoO82rZ93cjGQvkHJ">
+<div data-page-node-id="AEiMfyZJHO2erjvkt9Yh26" class="container">
+
+  <header data-page-node-id="KWUnqNlMvZtmrKMsCOE8xX">
+    <h1 data-page-node-id="PXHCbuLKfMlHSCwQBym5A7"><!--pnid:whk2as8HcSqXUvlfVuCFHD-->第8周收官 · 选址—租约—退出 风险闭环固化</h1>
+    <div data-page-node-id="7xA0pDlyS5FL7M7weqV1iN" class="meta"><!--pnid:2iLjnx3jDam0i0hNlcVvhG-->特许人立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项 · 本周收口：选址尽调 → 租约审查 → 餐饮特殊条款 → 门店退出</div>
+  </header>
+  <div data-page-node-id="EJGTjwRpIPZxZESMmsyY69" class="lead"><!--pnid:mitv3ZIIJGzubR4hrAlVmE-->本篇把 Week07 四份交付物（选址尽调 / 商铺租约审查 / 餐饮特殊条款 / 退出方案）收口为<b data-page-node-id="UxQltEEaZ00cg1L5XHIrJ5"><!--pnid:4cssic99WLGYJj7uJ5XcnP-->可复用的能力资产</b><!--pnid:SOUjgZc5GxyDel3BRjkDSr-->：①10 题自测检验掌握度；②综合案例打通"商场不配合+总部选址责任"全链路；③《总部租约审核指引》界定总部管多深；④一页纸《加盟店租约必备条款清单》直接发给加盟商。</div>
+
+  <div data-page-node-id="f8K6Z9z9Vh5pobyWpHrFJ5" class="tabs" id="tabs">
+    <div data-page-node-id="iHYRSCYXh94uG9wfP6sCSy" class="tab on" data-p="p1"><!--pnid:V2pXHWAK5rSM4ZyFkzDXiP-->① 10题自测</div>
+    <div data-page-node-id="UnSLRYdAVrhwoU9dIKU6Wj" class="tab" data-p="p2"><!--pnid:xi1ZtuyjBijDoVudKx3FR7-->② 综合案例四问</div>
+    <div data-page-node-id="sxR5CqwUx49cnK2BpMIGrp" class="tab" data-p="p3"><!--pnid:pLvxWcabmP412j3lfHoOPF-->③ 总部租约审核指引</div>
+    <div data-page-node-id="OnFamsgrLocByAl7MaGtrw" class="tab" data-p="p4"><!--pnid:EuvghUzIfi8WIX4NEZYRHP-->④ 租约必备条款一页纸</div>
+  </div>
+
+  <!--pnid:rls1Z5ua5cM2RPkg2NX2yI--><!-- ============ 面板 p1：自测 ============ -->
+  <div data-page-node-id="INEIg6ZPCYADtibVyLmXof" class="panel on" id="p1">
+    <div data-page-node-id="Gpu10ejUYX3q7o0ug6xJ1X" class="checklist">
+      <div data-page-node-id="bMnXAMkwjxegye174R2Z0v" class="cl-head">
+        <strong data-page-node-id="dXTMkxT0WmJWTuHPHXvIZs" style="color:var(--gold)"><!--pnid:PzyUlAXmV7XnyjyHfV64nD-->自测进度（作答后勾选）</strong>
+        <div data-page-node-id="7GCUhXkXFMGJsDq9XvMemp" class="progress"><i data-page-node-id="HuiQwqDCbWLU48FFRzuc0f" id="barQ"></i></div>
+        <span data-page-node-id="oMUqcMuqmrdResC7egyjMr" id="cntQ" style="color:var(--sub); font-size:13px"><!--pnid:kvxapXv1gvYaKshMTbh7Fa-->0 / 10</span>
+        <button data-page-node-id="z0Bd1hy99lhDg7KBfOuDZA" class="btn btn-jade" onclick="tog('ansKey')"><!--pnid:LV4oxyc2cVVT5UPSvMucgS-->显示/隐藏答案</button>
+      </div>
+      <label data-page-node-id="37EhExgO5U9gDJguPxhWEd" class="mat"><input data-page-node-id="p7dTbnDXjLrOEJPN6Grrk9" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="mft8zMPfNKEHTUchzG59Tk" class="m-txt"><!--pnid:Ugk5OqvNmRoVStBczoiPbw-->Q1 选址否决项（单选）</span></label>
+      <label data-page-node-id="x4cMjqRryVhvuqyexpcDEB" class="mat"><input data-page-node-id="sYpIasEYcytOijEBF2IO1c" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="jx0QmdqnhlwdVbfGtOoMIv" class="m-txt"><!--pnid:vKr3r6lYTks18L1V64RIir-->Q2 住宅底商限制（单选）</span></label>
+      <label data-page-node-id="Fek0Vqe0zf50MIuENMC5Yx" class="mat"><input data-page-node-id="4Sdr66ywdyOAHv8XzmcwEe" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="tQMtiijegIxQhUTthXtGi7" class="m-txt"><!--pnid:BUF5Tp4AI6dvhsm9RKvXMU-->Q3 免租期与递增（单选）</span></label>
+      <label data-page-node-id="BlRMHALc36kBIaOhnnI0MC" class="mat"><input data-page-node-id="GNgffNfyClxLA3AWPlCgaO" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="gpOAorEsHG6g1AHRlqJ5ES" class="m-txt"><!--pnid:5ajkg5sAE31CxG1EJhdDYi-->Q4 营业额抽成（单选）</span></label>
+      <label data-page-node-id="eGbGhnanDcAy8Jm4aHNLQS" class="mat"><input data-page-node-id="t8bOo3tvZwVKCRicWlTaWP" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="zIBTIEEJjB22sxRuGOKOnO" class="m-txt"><!--pnid:kdr2jLoKNDCVZklZqhOEqx-->Q5 排烟排污责任（单选）</span></label>
+      <label data-page-node-id="lrzbdXWbZDYPe07sVYcon7" class="mat"><input data-page-node-id="u4YVz2H9VdngJwzGR1LUSN" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="AUJPenbi9YJTue2LI2rKQP" class="m-txt"><!--pnid:Ie8N0REGMf9gEjD9KQpsNB-->Q6 办证配合（案例）</span></label>
+      <label data-page-node-id="BuMm54hSegSzmaRDP1yJNd" class="mat"><input data-page-node-id="ZsMIxZ0xSYEg2bdIbVMZyz" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="0QLCnE9wnMs2uLh3isiWYd" class="m-txt"><!--pnid:XaFyTIz3T6aWQMJBYB9V6H-->Q7 恢复原状（案例）</span></label>
+      <label data-page-node-id="gwEp5OodiFhtohBuWH0mCz" class="mat"><input data-page-node-id="f6yHkDZidqLlm7UoaZTIyC" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="GhKHyjdvROBqsh0iKxEZEI" class="m-txt"><!--pnid:OAlCn08YPg35eA376uU8Pb-->Q8 装修残值（案例）</span></label>
+      <label data-page-node-id="Kh0vfyZTLGyCfOftCiIgFS" class="mat"><input data-page-node-id="j7y5bZARaqftBudBCMFJz8" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="HO3XfsqMNHrsGtj11vC2zo" class="m-txt"><!--pnid:qOMq2GBkI6s2mLg0vuyp7q-->Q9 简答：住宅底商双层规制</span></label>
+      <label data-page-node-id="5duHL4q1wDSLlJQnUQjErv" class="mat"><input data-page-node-id="Cog2sVEL3KJszv5zrfSvdL" onchange="upd('barQ','cntQ')" type="checkbox"><span data-page-node-id="297HG510KlE9eaJKybUb3Z" class="m-txt"><!--pnid:S57ljXRxfxCZd5rYqC7Hru-->Q10 简答：恢复原状谈判+总部免责</span></label>
+    </div>
+
+    <div data-page-node-id="7m0xP9vaHUxldtaAY42s34" class="card">
+      <h3 data-page-node-id="W330JGsHFAZtFbO2Ijri5e"><!--pnid:qqOgvKo1Vs0AdHQxp9lagI-->一、单项选择题（5题）</h3>
+
+      <div data-page-node-id="y8VUwEIMm0XlAvadXI8kQ9" class="q"><span data-page-node-id="ukdnwax7jGNWuLmg32cQUc" class="qt"><!--pnid:s7wFRW1YbiLUf5MdjbIrE0-->Q1</span><!--pnid:SuMldHyZMJoWRgzmcBEMCB--> 以下哪类情形属于<b data-page-node-id="00XTzirj7RiIEZARz46b62"><!--pnid:RpsDdaki3H49KXto903riP-->选址否决项</b><!--pnid:ytvL5IaPqUy8tuscmuclAp-->（命中即应放弃签约）？<br data-page-node-id="A4oYOUwZk5VxtUNAeH7x4j">
+        <div data-page-node-id="Oc6sMPap8zjFNoGCAvbFfB" class="opt"><!--pnid:lymhXkUDzjoXSAtsipzb7E-->A. 月租金比同楼层均价高约 10%</div>
+        <div data-page-node-id="ExABjZYEvPncpiou7NgDxZ" class="opt"><!--pnid:oGwo5BHcratMh2qiXMxMI0-->B. <b data-page-node-id="fE83oipv1KGrRW6WuNaLAz"><!--pnid:3y0W5nElPuot4zrA4BKG2O-->铺位无独立专用烟道且建筑结构无法改造</b></div>
+        <div data-page-node-id="oFVorMjaAvbz4WcKV7X0ew" class="opt"><!--pnid:kKHbz53Xa13Qb3besVtYEW-->C. 商场未设直达客梯，需步行 1 层</div>
+        <div data-page-node-id="iePnGMPQ1TMiagyIV5UVxG" class="opt"><!--pnid:OItrFls1muzm9Ynn61uUOM-->D. 商场统一规定每日 10:00 开门</div>
+      </div>
+
+      <div data-page-node-id="OCSdEu0kTTiOAoj4c44D2g" class="q"><span data-page-node-id="cUYGzw8z1wkWaEPqHZknye" class="qt"><!--pnid:o9gUjIkbKf9psX5JJqSuFa-->Q2</span><!--pnid:AIJdS8ZISY8X6rIyGkWOb2--> 在<b data-page-node-id="X9tlZcmAdtNKWChZFkNzOx"><!--pnid:KYwZCd61rQERLkh72Lcdhg-->住宅楼</b><!--pnid:5PpldWywuztWoqTxmWFF4q-->内拟开设一家产生油烟的米线快餐店，下列哪一说法正确？<br data-page-node-id="xFlz6a6LhS6g41X27OcWh3">
+        <div data-page-node-id="S1jMfy1dZVq29yMSlJZZp2" class="opt"><!--pnid:5ThHgD6v6Z7cqFOzw2YpXc-->A. 经本栋"有利害关系的业主一致同意"即可合法经营</div>
+        <div data-page-node-id="w8p6gtTHK2S192g5jnjvfa" class="opt"><!--pnid:P4XunCa3GpXf0VUlYkf2Cv-->B. <b data-page-node-id="PkmlAQwITP25JQ8Tule5TR"><!--pnid:m4gAHYMq1uymUu3J6OVtVD-->《大气污染防治法》第81条第2款直接禁止，即便业主一致同意也不能开设</b></div>
+        <div data-page-node-id="N7fBSyDMvbz1i1B7Q3KeFx" class="opt"><!--pnid:Mtlpc9aBuEopD0XznfBnEI-->C. 只要能办下《食品经营许可证》就合法</div>
+        <div data-page-node-id="sOUBrJCBEEHwM98Il0ZUha" class="opt"><!--pnid:ZYGwngVvPdqGrSdvJrzhjr-->D. 装好油烟净化设备即可豁免</div>
+      </div>
+
+      <div data-page-node-id="9wSnzud5FzhFysJhCtxiWw" class="q"><span data-page-node-id="sXdyukVXa27s46c3VRP5Gr" class="qt"><!--pnid:O0cfyYXeHyL8o7JXt6yN82-->Q3</span><!--pnid:lUZDM2NqSGTf2ek0nT99LO--> 承租方（加盟商）应争取的免租期与租金递增合理方案是？<br data-page-node-id="zT8CrG7IxgQRLBW9jwtoHQ">
+        <div data-page-node-id="ezUpmdkSO1wzyI6iPPNWMP" class="opt"><!--pnid:bS9cjTGvgM40Wek1a6pBUd-->A. 免租 1 个月、每年递增 8%</div>
+        <div data-page-node-id="aNmzzxGTSDAi1M8BF7I8fq" class="opt"><!--pnid:lSUTXS17LOPLkEgL6WBuLb-->B. <b data-page-node-id="PTs00lBKmGXzY87Sl0OKg8"><!--pnid:Hq2uVCASVnZhUGTvorI2kR-->装修免租期 ≥2 个月且免租金与物业/推广费；前 2 年不递增，每 2 年 ≤3% 封顶 25%，不取高</b></div>
+        <div data-page-node-id="DShqlDJMCm4XS6Y2zqtS9H" class="opt"><!--pnid:byt1oQ8Aeyi1nETKW6s5xV-->C. 无免租但前 3 年不递增</div>
+        <div data-page-node-id="jo81M2o3Cetyt9iGhouTAv" class="opt"><!--pnid:o465iZnwk3HQaQ00uM5hhU-->D. 免租 3 个月但租金"固定递增/营业额抽成取高"</div>
+      </div>
+
+      <div data-page-node-id="kvmtLlPzWSN6L1xYYWXJ6C" class="q"><span data-page-node-id="YhkPYGejXARJHAkTthqgpw" class="qt"><!--pnid:1TA8SyjLwGHtK3VVzpTjQf-->Q4</span><!--pnid:2nvlp3GsSOzJ1EvFxFpYIa--> 营业额抽成条款中，对承租方最有利的"抽成基数"约定是？<br data-page-node-id="oec7PQqNymWmtHm5ToKTZS">
+        <div data-page-node-id="pRbBc2ZL5CHlwr4CyijC0Z" class="opt"><!--pnid:Vlnieroktont533SnP1ybc-->A. 按总营业额（含外卖平台佣金）</div>
+        <div data-page-node-id="Gr9DHpM4MdqWlnLnTuwyMw" class="opt"><!--pnid:G0Y8C1xvktAUVv8I7isp4g-->B. <b data-page-node-id="AJGpk9HMyDWnDaFXoBdd9b"><!--pnid:z1qtauWBJmhQ9g5SIaO4W9-->按"净营业额"＝总营业额剔除平台佣金、退款、团购券摊销</b></div>
+        <div data-page-node-id="Emkd0uZvHQV8h4YLyT9mmR" class="opt"><!--pnid:QAmS3bVbYZv4I2qw81idmh-->C. 按银行流水总额</div>
+        <div data-page-node-id="kd64RRCEe4ke5nDMOjvIz1" class="opt"><!--pnid:fm8qy299AN9jum8vOWoDhg-->D. 按含税含佣金额</div>
+      </div>
+
+      <div data-page-node-id="zPko1nYvSTziyyh0g9PB4Q" class="q"><span data-page-node-id="EFB1CYEqvOqa61INhYtM44" class="qt"><!--pnid:Uq1P06Pzv7JTgnqonQjEeK-->Q5</span><!--pnid:3KLSe0Igp1zq0S4ATG6xnT--> 关于隔油池与油烟净化的责任约定，正确的是？<br data-page-node-id="O9iZ2qPgJaeoiwihiDiWn9">
+        <div data-page-node-id="PPU2S7kILR8Y2qfQp6cy58" class="opt"><!--pnid:1ZsRJMOwYPAgG7WZ8eQ6XQ-->A. 由物业全包，承租方不担任何责任</div>
+        <div data-page-node-id="BAt8enQ7MUzbwsdLoGOJmO" class="opt"><!--pnid:UIkoXgCknv2aUywyTaSYgY-->B. <b data-page-node-id="6fTMfR2nce52eqNqDOcdjA"><!--pnid:93DikMXc4BTOYrklLyIJfC-->承租方负责隔油池清掏（≥2周/次、留记录）与油烟净化设备季度清洗，物业配合接入市政管网</b></div>
+        <div data-page-node-id="IH0VvQ4rqq7sfpGx2GZq0v" class="opt"><!--pnid:fQ9aluBDomoDCFLbibW9Xx-->C. 仅被投诉时才需清掏</div>
+        <div data-page-node-id="5b2oo07MxuGW5VYEso0HjL" class="opt"><!--pnid:2sGTCJNv2X7xJPzw9TaV0x-->D. 无需在合同中约定</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="KZkmSklV3XIPKH1ZlkznUO" class="card">
+      <h3 data-page-node-id="fE6Cvve8UFpSmCo4n2rF0X"><!--pnid:RawgHUggYwkkogs9pgGSqp-->二、案例题（3题）</h3>
+      <div data-page-node-id="iJTslZ4uXrBlsMNE6LdF4t" class="q"><span data-page-node-id="b2Kf0LAtsvrgQDjsSJVV1T" class="qt"><!--pnid:S3ih4J3jmWB8OGzIacWBlc-->Q6</span><!--pnid:uhdtvKM8qJsPbgln6RMGGG--> 商场未在约定期限内提供产权证复印件、消防验收文件，导致加盟商无法办理《食品经营许可证》。加盟商可主张？<br data-page-node-id="cIe8Pm1Nyp7FH5tZtLQEce">
+        <div data-page-node-id="viD6aqEIqesFnVvJ5wUs01" class="opt"><!--pnid:PLzAiZh5dZFX1i8qt1fY5D-->A. 只能催告，不能解约</div>
+        <div data-page-node-id="Xw8BHOSWT2yJ5oHz5S0kf2" class="opt"><!--pnid:ThrsHCru6FFgKcnWj0bRQH-->B. <b data-page-node-id="IFqX8m28GmMaP5kUZ8LUGO"><!--pnid:0wQxp3ZRkIQ44wmZqKvzUx-->商场构成根本违约，承租方可解约 + 索赔全部损失（含装修、设备、加盟费、预期利润）</b></div>
+        <div data-page-node-id="22BWOZnhYr4ehRIYOsyyEB" class="opt"><!--pnid:tnrW0n2WESMW7ZyWZgOfpJ-->C. 只能主张违约金，不能解约</div>
+        <div data-page-node-id="b9YrI5delsE8bozsSVB6ix" class="opt"><!--pnid:IQlvTXpw0yTJovx43HaOEP-->D. 无权主张，因办证是承租方自己的事</div>
+      </div>
+      <div data-page-node-id="PoIuKPn5Qvth9YgqIlUP2N" class="q"><span data-page-node-id="GcfLQsRirFviwkGIE4AspU" class="qt"><!--pnid:ytVWcKh9B6P9FHpiVo9Oud-->Q7</span><!--pnid:sYEzX8ljobXooYzoeyg5fq--> 合同到期，商场依"恢复原状"条款要求加盟商把店铺拆回毛坯。正确的是？<br data-page-node-id="kLR1a3pEIAUa7IzJFqrw4c">
+        <div data-page-node-id="9nJ93jvYjdezf76XlOIpcV" class="opt"><!--pnid:0KQ8uEhiUizVq5Z23Gy4He-->A. 承租方必须把装修全部拆至毛坯</div>
+        <div data-page-node-id="g3fDmqCx4h4d5HvRDYcSBP" class="opt"><!--pnid:Ji60wUMhQ7nJ3PlrnDTEbd-->B. <b data-page-node-id="QnzzJ7OgUckrzKTGAklHz8"><!--pnid:WHWZQGBn6KYnrbQOw5h27A-->"恢复原状"应理解为"按约定使用后的状态"（民法典第733条）；附合装修期满归房东且无补偿（法释〔2009〕11号第10条），强拆毛坯属超范围加重义务，可主张格式条款无效（民法典第497条）</b></div>
+        <div data-page-node-id="PmdG608OHd6VULLIm8CtXF" class="opt"><!--pnid:VyQLjM6np7lkw4YmbKh0QA-->C. 承租方须拆除所有可移动与不可移动装修</div>
+        <div data-page-node-id="yvNyEbCfahojRzNacw0rwn" class="opt"><!--pnid:BrSxBPQ7Owq9hPM3Ai1gAE-->D. 是否拆除取决于谁先违约</div>
+      </div>
+      <div data-page-node-id="56MnB73k55NLBxCn9NqObk" class="q"><span data-page-node-id="cxndywjznvewWr7UFje74L" class="qt"><!--pnid:hmfGXXUildj2PozqXOkx8w-->Q8</span><!--pnid:ID6OaOklfpJgc5IOWAlJlW--> 因房东违约（无专用烟道、拖延改造）导致合同提前解除，已投入的装修损失如何承担？<br data-page-node-id="ui9yym8ztdwNvtRmLVOBJc">
+        <div data-page-node-id="g8yHGcb7o8CVxP7uJYfyjn" class="opt"><!--pnid:lp7w3wyuWJgwiUMm8Ufc5P-->A. 承租方自担</div>
+        <div data-page-node-id="ccJIaECoueEcfob9QHfmd5" class="opt"><!--pnid:iaAJdqAfUBsycuVv9iR8mB-->B. <b data-page-node-id="HDhOfrJk9lQhPs4zivCapU"><!--pnid:C8dCgO7jeOTIlZju4bWbJ6-->因出租人违约导致合同解除，承租人可请求赔偿"剩余租赁期内装饰装修残值损失"（法释〔2009〕11号第9条第（一）项）</b></div>
+        <div data-page-node-id="RsD89pkIIeaogHjk5X7n4o" class="opt"><!--pnid:kq4aGC8S2zTcEfiCcnj0Hs-->C. 一律不赔</div>
+        <div data-page-node-id="rgA1jEwnVzlGYBDCVzJn2c" class="opt"><!--pnid:qYfrVrDaztefRtDd1oJLiu-->D. 仅当合同明确约定才赔</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="481SqV0rdhOeykWGUEdmgM" class="card">
+      <h3 data-page-node-id="DsWcN6CooSRmkrrN87xTLW"><!--pnid:HA0bd2bLBqoVg5eJmYcXZz-->三、简答题（2题）</h3>
+      <div data-page-node-id="qOQbopn94wcFtmVXCw63S3" class="q"><span data-page-node-id="yoZZT73jKygMqSzfA3rRcG" class="qt"><!--pnid:KKV9d9VS1JMRBxCZbqXFtF-->Q9</span><!--pnid:q4jewKzIkr8jfSruB2qBTr--> 简述"住宅底商不能做餐饮"的<b data-page-node-id="qVJt7X8TEELocClzK2cMyJ"><!--pnid:NJrhoJuIMeFbvptgIbbppp-->双层法律规制</b><!--pnid:Cssnk3wFziG7wROmgO3nzL-->（民事 + 行政），并指出实务中唯一可行的缝隙。</div>
+      <div data-page-node-id="uPUFSeGB5RxNmyu5e1YJYM" class="q"><span data-page-node-id="NgXITqqK8txbB4fzvrS7ck" class="qt"><!--pnid:bVbm4MQdGqmO7mHq9TDEzb-->Q10</span><!--pnid:k6j6kPVHIF9rdzAAe7au3x--> 列举加盟商租约中"恢复原状"条款的<b data-page-node-id="XnuLQ429bTUDpihkqu87nW"><!--pnid:b1b6KwaHrTMXZhTkFwM3EU-->谈判要点（至少3点）</b><!--pnid:iyJl1QiNF0EVGLgoSmjwb2-->，并说明总部在选址流程中应如何<b data-page-node-id="Lh3M82f45m0sdfSqnnJhNq"><!--pnid:GMfULFvVZn9WJvjLTUZuJV-->免责</b><!--pnid:HII4yWK98bFXhcVMvnUFDC-->。</div>
+    </div>
+
+    <div data-page-node-id="MqShg8c932fvUEMY1fA1vm" class="ans" id="ansKey" style="display:none">
+      <h3 data-page-node-id="fi5pU4wkIcMPvoT0XIJwyz" style="color:var(--jade); margin-top:0"><!--pnid:ciA9ZnROvsNR45Loj6Kaxh-->【答案与解析】</h3>
+      <p data-page-node-id="1RbMkwCoyrX1xL26W1GJZk"><b data-page-node-id="ys6hmVLpWFgRYzIikIXycx"><!--pnid:0C555jTBuGMuJ5LNcinXhb-->Q1 → B</b><!--pnid:NSUzx219v1EaMe8A1SX4Vo-->。无专用烟道且无法改造属硬否决项（详见《选址否决项清单》否决项1）；A/C/D 是可谈判或可接受项，非否决。</p>
+      <p data-page-node-id="JndTkYVbG9BE1WZDu6G9gu"><b data-page-node-id="cJMcUf1MgDlTSY5XCf2UK0"><!--pnid:lLPEIrasGJLC7fcTjrNqmw-->Q2 → B</b><!--pnid:BdupUSkHsj8DFbxYUbeLl9-->。行政禁止（大气法81条2款）优先于民事同意；A 是"住改商"民事程序，仅适用于"不产生油烟"的轻餐饮，不能突破大气法的餐饮禁设。产生油烟的快餐在住宅楼/未配专用烟道的商住综合楼/与居住层相邻商业层一律禁设。</p>
+      <p data-page-node-id="83jvvtBajh4GYtjykYZ1JI"><b data-page-node-id="Xl0Eq2X5rg7F9GHBHOh4bc"><!--pnid:HiI6jYUhjWfs8Ooy6PSleH-->Q3 → B</b><!--pnid:GcfFQE4h5nxeY3Q5qMnax1-->。争取版：免租≥2月且免租金+物业/推广费、前2年不增、每2年≤3%封顶25%且不取高；底线为免租≥1月、年增≤5%封顶≤25%。</p>
+      <p data-page-node-id="6X6upSKimBA3IPRfkvk5ST"><b data-page-node-id="G8Cpdc0caZeOEJ7LbnXCBb"><!--pnid:z2poHBpy7EWExtXD1fezHn-->Q4 → B</b><!--pnid:k7Zf45Ck6Jc85JZCh3zYjw-->。净营业额剔除平台佣金/退款/团购券，防止"被抽成还倒贴佣金"；首年争取免保底抽成。</p>
+      <p data-page-node-id="BXmfZGWggHrQqPNt4bgTcw"><b data-page-node-id="m7yukw4tdfMNGDMbJpIuEG"><!--pnid:J7izyyNgFGyT9aGDbxeqce-->Q5 → B</b><!--pnid:XhG1BYKLIPILAxgvSOcZXc-->。承租方是隔油池清掏与净化设备运维责任人（结合《固废法》第57条厨余交有资质单位、第111条罚10万–100万）；物业仅配合管网接入，不能全免承租方责任。</p>
+      <p data-page-node-id="Bq84LJ6gkKanx9zCjJO7SD"><b data-page-node-id="Dbpdd4DO6aTiEzeyuY8F7N"><!--pnid:cASG2GEiIaaDGMplzIEsql-->Q6 → B</b><!--pnid:GRtfQUpPJb51doefY3Gg21-->。办证配合是商场合同义务（对应《餐饮租赁特殊条款清单》X条范本）；不提供文件致无法办证 = 根本违约，可解约 + 全赔（含加盟费、预期利润）。</p>
+      <p data-page-node-id="1ognTwRTTVIUGPDikoX0vY"><b data-page-node-id="CwXGHxkpTiuTPdlCIVyNLR"><!--pnid:5ScbNPRTy6k5oEYpl6Dvua-->Q7 → B</b><!--pnid:6H9iY28wRyghWjiTbpSn9l-->。民法典第733条"按约定使用后的状态"；法释11号第10条期满附合装修归房东无补偿；强拆毛坯属超范围，可依民法典第497条格式条款无效抗辩。</p>
+      <p data-page-node-id="A8ISsdF2iZNrFvUwnFwFJn"><b data-page-node-id="VTG2XjsXxmnADQFkIiCg5X"><!--pnid:ZePloasM8HED4fKyOxApt1-->Q8 → B</b><!--pnid:MGHd8ZbKYge4NYPIcj1JHN-->。法释11号第9条第（一）项：出租人违约导致解除，支持残值赔偿；残值=原值×(剩余租期÷总租期)。</p>
+      <p data-page-node-id="cBPqdJHQx7IfpSuWFNi95G"><b data-page-node-id="MGoJEOeocWegBvXxPvD5Q2"><!--pnid:4eeEnxf3gNhQn3j9CxkzLR-->Q9 要点</b><!--pnid:KhH6ZuBEXaOFIRJ5FryNgP-->：①民事——《民法典》第279条，住宅改经营性用房须"本栋有利害关系业主一致同意"（建筑物区分所有权解释第10条：多数同意不成立）；②行政——《大气污染防治法》第81条第2款三类场所禁设产生油烟异味废气餐饮，违者第118条第2款关闭+罚1万–10万，且食安许可审查对禁设场所不予核发；③缝隙——纯茶饮/咖啡/预包装零售等"不产生油烟"的轻餐饮不落入大气法81条2款，但仍须走民法典279住改商程序且地方允许。米线/快餐一律避开住宅底商。</p>
+      <p data-page-node-id="xwGdrUSfSTPc6ZLv7m3e24"><b data-page-node-id="GBJxzIV9aYex0TOjDY2XkX"><!--pnid:lW2i0ojF8XpVLauIUcmMUE-->Q10 要点</b><!--pnid:Ltm1Ainfn4aek4kPy6e280-->：谈判①合同写明"按现状交还，不拆至毛坯"，引民法典733+法释11号10条；②附合装修期满归房东且无补偿，明确"不拆、不赔、不恢复"；③遗留物处置给≥15日催告宽限，逾期方可处置；④可约定"经房东书面同意的装修归房东"换取免拆。总部免责：设选址合规审查关卡（否决项不通过不授牌）、书面《选址确认与风险自担声明》、下发尽调/租约/特殊条款清单、招商与合同写明"总部不保证特定铺位可办证/盈利、租赁由加盟商与房东自行签约"、不代签租赁/不以总部名义联营（防实质控制连带）。</p>
+    </div>
+  </div>
+
+  <!--pnid:1UV8Qzu0Oj7gNa5nSZ9tU3--><!-- ============ 面板 p2：综合案例 ============ -->
+  <div data-page-node-id="G8p9t4kclh1mWesRNde1KL" class="panel" id="p2">
+    <div data-page-node-id="WqkDkSWZzN7sk0doON61Pq" class="checklist">
+      <div data-page-node-id="xNj44MVBhB1nzkCMdLBNAf" class="cl-head">
+        <strong data-page-node-id="PimqVNT8tyHAMi0r6DHA27" style="color:var(--gold)"><!--pnid:ioOaqACiONKPspAsEdAn1L-->作答进度（四问各勾一）</strong>
+        <div data-page-node-id="fw9Fh2j0CwnjLs6qa43Yv2" class="progress"><i data-page-node-id="zL3L3b2WG7m0o7ITdurqhJ" id="barC"></i></div>
+        <span data-page-node-id="V0a65YOayR6IpKWSYMNaDl" id="cntC" style="color:var(--sub); font-size:13px"><!--pnid:Oq8vZnQYTqiZGTTr0DAJUS-->0 / 4</span>
+        <button data-page-node-id="0r4FMX0Jy3b4IVtWVUGB0H" class="btn btn-jade" onclick="tog('caseAns')"><!--pnid:GM56UkZd8Bf18W5oA3i3QE-->显示满分答案</button>
+      </div>
+      <label data-page-node-id="B2Fsa26r7VSBIdG7RaqFwq" class="mat"><input data-page-node-id="sGEjT2j70ZT163Ei0HPnHe" onchange="upd('barC','cntC')" type="checkbox"><span data-page-node-id="uuP1gDMfT9e9mA643IKRdt" class="m-txt"><!--pnid:eUkWmShcfJnAPo5jZVTjEl-->(1) 加盟商对商场的请求能否成立？</span></label>
+      <label data-page-node-id="uKfXQWQTWSpclbQFuEeSPh" class="mat"><input data-page-node-id="zxZBEFL9ImWLnzbQtbkDJr" onchange="upd('barC','cntC')" type="checkbox"><span data-page-node-id="LuztfMaTS9n3b6pgEet9P5" class="m-txt"><!--pnid:w6RDQXQJ5ZS4N5n198PD12-->(2) 总部要不要担责？防守点？</span></label>
+      <label data-page-node-id="BAoNJN7tiHqecShDe66qiO" class="mat"><input data-page-node-id="8errwJRxvmu6b5u3O3nHJb" onchange="upd('barC','cntC')" type="checkbox"><span data-page-node-id="mgWanwjWIIy80tSc3s3JYk" class="m-txt"><!--pnid:c5aTeiyJoNdrtZc5qJRagj-->(3) 总部选址流程如何免责？</span></label>
+      <label data-page-node-id="9CXbQRrRcAuPvusOsBb8Ir" class="mat"><input data-page-node-id="q6q6cRXDdc2fNsDQAaxqRl" onchange="upd('barC','cntC')" type="checkbox"><span data-page-node-id="IWbe1Bj2qv83FjzflE1HS9" class="m-txt"><!--pnid:SZMOJiHy78aZ9tEXxIlrSE-->(4) 给《总部选址支持免责方案》</span></label>
+    </div>
+
+    <div data-page-node-id="BYOV8jX7IzQakXlUhEpeXt" class="card">
+      <h3 data-page-node-id="hUSbFjr7hiiIT1BYbICcWI"><!--pnid:6Qrl90LInlB3wDgAJTg00I-->综合案例 · 题干</h3>
+      <div data-page-node-id="pW8gbPUW6Z7MtgjU2OaoUy" class="note2"><!--pnid:rhivzVQdJYwTXpbx1OIVds-->加盟商租下商场铺位，签约后发现该铺位<b data-page-node-id="dZsemrP6HEsgVOtWhljVot"><!--pnid:IyezwNtugjqCAeZ7sfTRtE-->无独立排烟管道</b><!--pnid:h67mr6km0EtU3h4ipEeerO-->；商场承诺"协助改造"但<b data-page-node-id="4aJdCez6BpnLHlucmmZ9c2"><!--pnid:bll2usPLrVtGsc3VsgowTF-->拖延 2 个月</b><!--pnid:yT3Pa4rJ2dXyD96kIP8Fi6-->，导致<b data-page-node-id="t8sx4FVCZVF7KWHGdNuR3T"><!--pnid:OYhd0zWthxmLI0DZcWo1jl-->无法办理《食品经营许可证》、无法开业</b><!--pnid:JumiBjQ78hSOB6Hc8f4ZTS-->。加盟商已付租金押金 <b data-page-node-id="BQO2LvoUFDLs70uAKN9TsB"><!--pnid:jW5opfBtRtGl24pgjkyrtv-->20 万</b><!--pnid:geeXLP17ZbRE03N4nRzMzT-->、装修已投入 <b data-page-node-id="j7eAE5SBianvfMiTNoLgCd"><!--pnid:vpj8rtS0OvroKqdQ8bAo8U-->40 万</b><!--pnid:lfUq1oHUQ840CaGGxKCUkI-->。加盟商现要：(a) 解除租赁合同并索赔；(b) 同时要求总部退还加盟费，理由是<b data-page-node-id="Dlhs4gZRRs8Gga8IZHdZaS"><!--pnid:zOdeokLAsmeaRYsp6PIdtk-->总部选址评估失职</b><!--pnid:9FlAs4SRNCX9MspLe03NXR-->。</div>
+      <p data-page-node-id="ba8TZ0ovhvxJFUaZeGt2mz"><span data-page-node-id="ZaLbKyk8UifEQ6FurPqO3z" class="num"><!--pnid:vJP5GU3tDtTd84hbqpakEg-->问 (1)</span><!--pnid:zIFqL1fWiT9kzhCu9aocyJ--> 加盟商对商场的请求能否成立？</p>
+      <p data-page-node-id="a1hhBrEXYynqFz7kMgicwd"><span data-page-node-id="sDe0IKEcILtapRYkTzxZ3J" class="num"><!--pnid:cZB8iLgHDlf40SmI6foOko-->问 (2)</span><!--pnid:73eadwLDQAZaTu6ZeSfjzH--> 总部要不要担责？我方的防守点在哪？</p>
+      <p data-page-node-id="eIfItaM5TGiKfG4J1N3B96"><span data-page-node-id="uWPmTAZ887BLjrAjY2ni0h" class="num"><!--pnid:1Nu5vlvhnyGlHz1XqGVvek-->问 (3)</span><!--pnid:ZLeWTtLMaK6vqy3jAE0FD8--> 总部应该在选址流程中做什么才能免责？</p>
+      <p data-page-node-id="P40Omnz4OmKmKSKslmaX5B"><span data-page-node-id="aRKTUoVKV9s4dIZ80C8cgX" class="num"><!--pnid:0XVXUamosv1QVzkq2Joq8Q-->问 (4)</span><!--pnid:qa89cjKIusUqRyfZBfFfS8--> 给我一份《总部选址支持免责方案》。</p>
+      <div data-page-node-id="OwOlKfTCxrnfZRrwVXZP2L" class="anti"><b data-page-node-id="nKeGmVr0619MxCu6WcrfXP"><!--pnid:WBoCaPnvjbhtROJFp7nqVO-->你先作答发给「小律」，我再按下面评分标准批改并给满分答案。</b><!--pnid:2cAsPK1qarvRbayQ7sw3qo-->下方"显示满分答案"按钮平时隐藏，作答后对照。</div>
+    </div>
+
+    <div data-page-node-id="4DBimP5ZwEUkmIpYHDdncx" class="card">
+      <h3 data-page-node-id="3QrbgIGVJQnEbCzVbuIdZm"><!--pnid:2VQODncTe89u0PfJbBj6pQ-->评分标准（总分 100，便于自批/互批）</h3>
+      <table data-page-node-id="DLjrkGUR1ArzBh6RkTRuK9">
+        <thead data-page-node-id="fgeC6yKxf7oi8yUNpEJ8EM"><tr data-page-node-id="WxGwm6woOAB3rk7EtrPPOs"><th data-page-node-id="IzccoMFq7LSyHqXao2EbA0"><!--pnid:4f73dnJkQ2T1o0dmtvsuaR-->子问</th><th data-page-node-id="1EY4NZN4U7eUNqzSfVVCe4"><!--pnid:1XVTznVUMOMB4xVMFB3ZXf-->分值</th><th data-page-node-id="NSCanOXpjCiVd5kqrHm0IP"><!--pnid:myl75imcFUSsWnDFAq0Zff-->采分点（答到即给分）</th></tr></thead>
+        <tbody data-page-node-id="D2ZLcd8XV3UumwzjOaOJuL">
+          <tr data-page-node-id="MpqIKTG4TMPh19qPjDkg10"><td data-page-node-id="Q2OWZEWNzarAwD2SYyP8dM"><!--pnid:KtiVVlWid9kGGE6fs8Nh6I-->(1) 对商场</td><td data-page-node-id="Vu0xxs4DawjKGntIHaKIw1"><!--pnid:ENxtfjID3oFsLUSNkuOKTH-->25</td><td data-page-node-id="CLc0dE8o86jbyrtHgmIVd3"><!--pnid:KlI0pXHBDz8DawN7r4x0zV-->①定性"餐饮核心硬件缺失致合同目的不能实现"；②商场拖延改造=违约（民法典563条法定解除/结合办证配合条款）；③租金押金20万应全额退；④装修残值依法释11号第9条按剩余租期比例赔；⑤加盟商自身签约前已知无烟道可能分担减损义务（与有过失）—答出主责在商场即满分</td></tr>
+          <tr data-page-node-id="6krR11ixLoJ7TS2bzmsyUU"><td data-page-node-id="eBaDXx7sNWIummchyioSyt"><!--pnid:yaftPbIABOCHY82yFrXpP6-->(2) 总部责任</td><td data-page-node-id="ZfQsQfz07GowioxTfnYepc"><!--pnid:fVz5YR63R5unjhoiXu1aj1-->30</td><td data-page-node-id="S81Et0OD1Tt5nHJbR31JRu"><!--pnid:NCHk85RD6QVhilsPbX2bqM-->①总部非租赁合同当事人，原则上不担租赁违约责；②是否担责取决于"是否承诺/保证选址合规"（条例23条信息披露+法释2025·4号第5条消费者共同责任不适用此场景）；③防守点：合同/招商写明"选址决策权属加盟商、总部建议非保证"、已交付尽调清单、加盟商签风险提示/选址确认书、总部曾提示"无烟道=否决项"；④若总部承诺"包办证/保证可营"或收选址服务费并实操谈判→可能担部分退费</td></tr>
+          <tr data-page-node-id="H2iYeN6xnRDCuRuI1p4a2X"><td data-page-node-id="UDcymJhWHdVfVrHF7fqSbg"><!--pnid:I5iupMCdBOznKVHOV5wPCf-->(3) 选址免责动作</td><td data-page-node-id="bMflYL2tdPuUvKgaksyVHF"><!--pnid:PpXH58aNeiG3PEnpBXjTdg-->20</td><td data-page-node-id="KADOO0jvpnZTua6Db4eJml"><!--pnid:okvxZN6LB6PHH2oeB6DTP5-->①设选址合规审查关卡（否决项不通过不授牌）；②书面选址建议书（标风险非保证）+加盟商《风险自担声明》；③下发尽调/租约/特殊条款三清单；④合同与话术切割"不保证特定铺位可办证/盈利"；⑤不越界代签租赁/代发工资/统管财务；⑥持续服务留痕</td></tr>
+          <tr data-page-node-id="ZYDUiCUSYMlFlVlK1jiAvI"><td data-page-node-id="5sooYoN3QZf8SbDHacUuWu"><!--pnid:mmmgCkSGxfSGGlZgYkCwdp-->(4) 免责方案</td><td data-page-node-id="SkgPgjmk2Ao37xGoqCj6XC"><!--pnid:kBchGdsRXyXYU1Msmz5T42-->25</td><td data-page-node-id="Y5UkBNwFWmdO5gxIn2zTGd"><!--pnid:PcpDxChoCFB1jD908VpcLM-->①方案含"选址支持边界声明+否决项审查关卡+加盟商确认书+总部不作为保证条款+争议隔离（租赁纠纷总部不介入赔付）+免责清单"六要素；②落到可签署的《选址支持与风险告知书》文本或条款范本即满分</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div data-page-node-id="pd5HONJ0t0WylhmmnYRSeV" class="ans" id="caseAns" style="display:none">
+      <h3 data-page-node-id="PuCvKC0CVNnKGPxmHhW08R" style="color:var(--jade); margin-top:0"><!--pnid:LrUCVHe6oocb3wmJS7UU1K-->【满分答案】</h3>
+
+      <h4 data-page-node-id="I5wjsBaH94oRl1CC40B54p"><!--pnid:tuvjbqMvJ3dU8VCRnv75hr-->(1) 加盟商对商场的请求——基本成立</h4>
+      <p data-page-node-id="XT1DTthbbQmoFyrcEIj1Cz"><b data-page-node-id="7zKfQgN4XOiQoNPpTwwNVW"><!--pnid:Ifqczwoo4LOEfW9cJZLZqs-->可解除 + 退还 20 万 + 赔偿装修残值（按剩余租期比例）+ 合理损失。</b></p>
+      <p data-page-node-id="wDCw9spGsVqvsWR9uxujaM"><!--pnid:odbHv0Jwv5f1TSC9bBqmWp-->① 餐饮经营的<b data-page-node-id="UtVHOmLl5RgJf4LBwCaO24"><!--pnid:A3aBCB6axuiIh8ou5z9rRv-->必备硬件（专用烟道）</b><!--pnid:1HD7rIgLKAoL6glbuiY3nj-->缺失，商场承诺协助改造却拖延 2 个月，致无法办《食品经营许可证》、无法开业，属"<b data-page-node-id="HX1wnWvs41YkEJGYGKMeUM"><!--pnid:vibfNutzT1ERcKyxSYso4f-->当事人一方迟延履行债务或者有其他违约行为致使不能实现合同目的</b><!--pnid:entAxp44QUx4XTtxoJfWpN-->"（民法典第563条第（三）/（四）项），加盟商有权<b data-page-node-id="CYFARsvjD48ZqqYS541pwF"><!--pnid:0oidomVGxwvtzEQnyXdP0C-->法定解除</b><!--pnid:FhFXcITGbaR5F184CMlfUE-->。</p>
+      <p data-page-node-id="3iJHDYXNsj6x1n8Jpc4xZX"><!--pnid:XVILXEnsZBTY52iJb65qEC-->② 已付租金押金 20 万：合同解除后预付租金无对应租期，应<b data-page-node-id="mulg2DQPxWjXeqVL9nNA9L"><!--pnid:D6twdpElts9Dm1WaSDhaCP-->全额退还</b><!--pnid:KWzCvWhI8GCsqdxXvLv7Xq-->。</p>
+      <p data-page-node-id="JhHz8KBq71NO4UyF5z8bAB"><!--pnid:jkrC7ofIsAs5PcE98fcXky-->③ 装修 40 万：因<b data-page-node-id="JqIHW5xNYuGiKkkh3OMdIQ"><!--pnid:vUY7vZDzIpxyIXlPE5IYUc-->出租人违约（无烟道+拖延）</b><!--pnid:4YUbiuuNAYJ7x8PD7JizHP-->导致合同解除，依《最高人民法院关于审理城镇房屋租赁合同纠纷案件具体应用法律若干问题的解释》（法释〔2009〕11号，2020 修正）<b data-page-node-id="kEtdj74e4QC1FawqBwTvsj"><!--pnid:mNZBPGZigRL669Lf7Ug2cY-->第9条第（一）项</b><!--pnid:GOAuwRg1y6ODZEYmnbJ8Uv-->，承租人请求出租人赔偿"剩余租赁期内装饰装修残值损失"的应予支持；残值＝原值 ×（剩余租期 ÷ 总租期）。</p>
+      <p data-page-node-id="igpMJKEKvPg4dPSE9GYCPA"><!--pnid:SZBPTIgRXeA64LquZhPC8g-->④ 但加盟商<b data-page-node-id="DZcVedv3aHFQzXJkivmQZI"><!--pnid:sEe7CPBZtZqvbXcyHhapVO-->签约前已知无独立烟道仍签约</b><!--pnid:avCwjMfwjxF1WZuREQipl0-->、仅依赖商场口头承诺，可能被认定未尽审慎/减损义务（与有过失，民法典第592条第2款），法院可能酌减商场赔偿比例。<b data-page-node-id="vbchJhdhTvpThCFrUAlVIK"><!--pnid:UK21RBaeNcMoNWH2Z1laE2-->主责仍在商场</b><!--pnid:g09MhUJqTibpPl1MqJXWhB-->（明知餐饮用途却隐瞒/拖延）。</p>
+
+      <h4 data-page-node-id="2RCrjasYn7WYLcUGYV925z"><!--pnid:toVw4Cx1U0utHOccNl7nVo-->(2) 总部要不要担责 + 防守点</h4>
+      <p data-page-node-id="TzTmRSCmx6CctddWld2gyl"><b data-page-node-id="NOr0JwVuEO9r46lG9dpvtB"><!--pnid:LoJOVBBu9JVw2jTk8qSygv-->原则上不担租赁违约责（总部非租赁合同当事人）；是否担"选址失职"责取决于总部是否作出了承诺/保证。</b></p>
+      <p data-page-node-id="YebiHTOMhxi6RU0qIUaDRK"><b data-page-node-id="Ep5l0N3d8MztyvRKWaberY"><!--pnid:xDFGoVCCPjaXDYn526B8ZW-->我方防守点（六条）：</b></p>
+      <p data-page-node-id="CRrGZ35jr5bFSHcLA1M4fn"><!--pnid:ZFtgIZN51XK4PrdhHgsUXF-->① <b data-page-node-id="mv6bSUqin0N3G9iIIhALpO"><!--pnid:eIxLjERAw18xWGwCJzmMgY-->合同切割</b><!--pnid:CgLqcxEG3R80a6dSvK6vn8-->：招商材料与加盟合同写明"选址最终决策权属加盟商，总部建议/清单不构成对特定铺位可办证、可盈利的任何保证"。</p>
+      <p data-page-node-id="WO2htPgtQLK2gFSXm5V1yq"><!--pnid:A3QoU1Hkr636tw7yYT1BjE-->② <b data-page-node-id="AIsT57NavStpSpi92kqOES"><!--pnid:xbxaHJIv4eZ1P0fO2QLjtH-->已尽指导义务</b><!--pnid:XA168S7TcXfOtpysiGVoQt-->：已向加盟商交付《选址法律尽调清单》《商铺租约审查要点表》《餐饮租赁特殊条款清单》，其中明确"无专用烟道 = 否决项"——若加盟商仍签约，属自担风险。</p>
+      <p data-page-node-id="XTlv6uVp8vM9jc1jEs712s"><!--pnid:bnH4Qw0iSlonl3kYhDIx5k-->③ <b data-page-node-id="1gtMH9i0VctuMhEQluC4wS"><!--pnid:QKxzv7jrVUIh6YVrlYTKkJ-->书面确认</b><!--pnid:XT0bIwdZP1b7peN2BNtpJH-->：加盟商签约前签署《加盟风险提示书》《选址确认与风险自担声明》，确认已自行核查硬件与办证可行性。</p>
+      <p data-page-node-id="HeLSVGb2OXOklkh0xGoVbS"><!--pnid:RNpMFN53rG7qYkZoF4McD9-->④ <b data-page-node-id="tFWnxqJAeAOjMNrVWPCbQm"><!--pnid:hV7IxP2uvJ9KfRzV47Ypmt-->合同相对性</b><!--pnid:bAzfatGNWO9pxIARtz4Jiu-->：排烟/办证是加盟商与商场的租赁关系，总部无权代加盟商约束商场，不应为商场违约买单。</p>
+      <p data-page-node-id="QNx5x2kFMW6WE4JMGZ86Fj"><!--pnid:RLMg12ICkkgJPw2obUmSyy-->⑤ <b data-page-node-id="EhHe9LbQK3skOkmQWWUudG"><!--pnid:cFSHcSyx0VVZdx8DAv06ZJ-->条例第23条门槛</b><!--pnid:O4y1lfKRJaYvAZx3RhL5MW-->：退费前提是"隐瞒/提供虚假信息"；若总部已如实提示否决项，不触发第23条退费。</p>
+      <p data-page-node-id="0iyKH1Aq3sLWGtbk5CJ3ZV"><!--pnid:DBwiqSkO0qWRYwDFWPYwoY-->⑥ <b data-page-node-id="ej7jYvTNx0qbeZCJtruYw1"><!--pnid:UrqGPPbSrawNNMA5RW0a8I-->反制预警</b><!--pnid:7z60WFg9e3dbL4q29Ys3K1-->：若总部曾承诺"总部负责选址评估/保证可办证"或收取选址服务费并实际操盘租赁谈判，则可能被认定未尽合理指导义务，依条例23条退<b data-page-node-id="e1oE9n8ckKLHy34zXEQ8ba"><!--pnid:v759aRhfCzC1QSJZ3omlV6-->部分</b><!--pnid:0JVrMLojYPBHicmhyH1Npj-->加盟费/服务费（非全额）。<b data-page-node-id="MS9U9QF8aA4nL8vr9Xkng0"><!--pnid:Hr7OQYShWQd6mpQxtgiFs0-->这是最大敞口，必须事前堵死。</b></p>
+
+      <h4 data-page-node-id="Eb2MzdH5goWS1XhLnCBt49"><!--pnid:UGbIuLfPrIRVkWinYW9LKE-->(3) 总部选址流程如何免责（动作清单）</h4>
+      <p data-page-node-id="J8QYWmCHpD8uP61zJBCfxv"><!--pnid:QDt6dCu4rKsyc2pkbf1hOE-->① <b data-page-node-id="E2rbGzOox8c9h1ADi0ALvF"><!--pnid:FBXJKEHuyQsimtgm6Aa3Pj-->前置审查关卡</b><!--pnid:24D3gJoRD4IExrIshKOSRx-->：加盟商提交意向铺位 → 总部依规核查 11 项否决项（无独立烟道＝否决项1）→ 不通过<b data-page-node-id="oDkVnEaeNVjviAwfuBruc9"><!--pnid:5BRQSnkhm6HNbk5WD2WT3T-->不授牌、不签加盟</b><!--pnid:A4dkRolKASEquD2XeXeHLz-->。</p>
+      <p data-page-node-id="3kJqMt72speuHQjkTHSSWF"><!--pnid:HHO8vvMBTFnngl2PfGudDX-->② <b data-page-node-id="Rdc85EMpa6CuZIDIlRPLLE"><!--pnid:uxLygRmVDuaCmKIubBuEXR-->书面化</b><!--pnid:tNWunn1HMAjCQGIVBqKmif-->：出具《选址建议书》（标注风险、明示"非保证"）+ 加盟商签《选址确认与风险自担声明》。</p>
+      <p data-page-node-id="tQCfaN2KVtePqIIyWN51wG"><!--pnid:9KPV5yp5WuKLwPG5nlyPkb-->③ <b data-page-node-id="91YeC0bSvHWqn7OiOLLyE4"><!--pnid:cPIeYFEbkUXXccxfsO6e8B-->工具下发</b><!--pnid:ca0ok30BT89HmIhv105Nr7-->：提供尽调清单、租约审查表、特殊条款清单，证明已尽合理指导义务。</p>
+      <p data-page-node-id="DWhY5CaYhYXazC6hSQX8oU"><!--pnid:JAIYYrfH41SRohwmhw0ij3-->④ <b data-page-node-id="DpB4CYM7mmGbq2PsXup0YZ"><!--pnid:iLVcWcqsgbqMkORJLvu5zv-->合同与话术切割</b><!--pnid:KGxBKJUfoO4NjD8LxqENvk-->：所有物料写明"总部不保证特定铺位可办证/盈利，租赁由加盟商与房东自行签约"。</p>
+      <p data-page-node-id="eZnSHmPd0UiKHaQE6dTHep"><!--pnid:y3oh1qXWGf1UUZzefjiIEX-->⑤ <b data-page-node-id="pnh7uWNbM4l2JeIGnMW1OF"><!--pnid:IZCqnZZi8yo6Ox1OPMvbtV-->不越界</b><!--pnid:M9CvsHVV7YDuEIRUxylcUV-->：不代签租赁合同、不代收租金、不以总部名义联营/统管财务，避免"实质控制"连带（见面板③）。</p>
+      <p data-page-node-id="Gtg3Qo6OF7QHCWaFZoNK6M"><!--pnid:NDHxQTqheXT9kURtC3Gg5G-->⑥ <b data-page-node-id="yWL8o32RLFNKGxZdAWIO1D"><!--pnid:WfMdXmTUZwMYvU2PgY716Z-->留痕</b><!--pnid:ELCqWxEMWLE4wDoIsy38fX-->：所有选址沟通、提示、交付记录归档，争议时自证已尽责。</p>
+
+      <h4 data-page-node-id="khSN9CeJPpEFY0sD65xQea"><!--pnid:u5eoPqWKPweCeS0Layo7cu-->(4) 《总部选址支持免责方案》（可签署文本）</h4>
+      <pre data-page-node-id="emUFi9L6qN4CZY2jmXCLCO"><!--pnid:tp9XBjk4X8FEUrcYj4BK7v-->【总部选址支持与风险告知书】（节选范本）
+
+一、支持范围（绿灯）
+1. 总部向加盟商提供《餐饮门店选址法律尽调清单》《商铺租赁合同审查要点表》《餐饮租赁特殊条款清单》等标准化工具；
+2. 总部对意向铺位就"选址否决项"（含无独立专用烟道、住宅用途不可变、已列入征收范围等11项）进行形式审查，出具《选址建议书》；
+3. 总部可推荐/对接商场与第三方尽调资源，但不做任何担保。
+
+二、支持边界（免责核心）
+4. 本《建议书》仅基于加盟商提供信息所作形式提示，不构成对特定铺位"可办理食品经营许可、可合法经营、可盈利"的任何明示或默示保证；
+5. 租赁合同的洽谈、签署、办证、硬件改造、费用支付均由加盟商与出租方/商场自行完成，总部非租赁合同当事人，不为出租方违约（含无烟道、拖延改造、不配合办证）承担任何责任；
+6. 加盟商确认已自行或委托专业机构核查房屋产权、规划用途、餐饮硬件条件及办证可行性，并知悉"无独立专用烟道"属选址否决项。
+
+三、加盟商承诺与自担
+7. 加盟商承诺：租赁期限不少于剩余加盟期限+6个月，且已将"办证配合违约责任条款""硬件不符免责解约条款"写入租赁合同；
+8. 因加盟商未采纳总部否决项提示、或自行与商场达成不利条款所致损失，由加盟商自行承担。
+
+四、争议隔离
+9. 加盟商与出租方/商场的任何租赁纠纷，由加盟商自行主张，总部不介入赔付；总部不因提供选址工具而被视为租赁关系当事人或共同责任人。
+
+加盟商（签字）：__________  日期：____ 总部（盖章）：__________  日期：____</pre>
+      <div data-page-node-id="2eAS8OerJcJrTnbgbuxGQ5" class="act"><b data-page-node-id="ftt0RIBhm4m6v5McpkOieb"><!--pnid:dDzaNdLVd70yrnHjKbPCrq-->我的落地动作：</b><!--pnid:2HbXfEZu2RZi2ZXcO6SGQa-->把本《告知书》作为加盟签约必备附件（与《风险提示书》《冷静期告知》并列），未签不授牌。</div>
+    </div>
+  </div>
+
+  <!--pnid:uRYeVTpwQv85xbpU1EM2nK--><!-- ============ 面板 p3：总部租约审核指引 ============ -->
+  <div data-page-node-id="QaMtfGUr5KuomotKFupkrH" class="panel" id="p3">
+    <div data-page-node-id="sihH25ZvFLkMtV8RVvfWOq" class="card">
+      <h3 data-page-node-id="vZMRLosIUEPUGOhna1lD0J"><!--pnid:7mfpzrxJx1RGxviWzX6KWR-->核心命题：总部管多深？</h3>
+      <p data-page-node-id="PYHfxOdlKsqzV4weNcuorN"><b data-page-node-id="hC9T9gmpfWXqB4aPOx6kYU"><!--pnid:jIt1kUipY2xQcjh6f5ppB2-->管太深</b><!--pnid:iBZVZg221AVnYSzYUqYO8A--> → 被认定为对门店"实质控制"，在房东追索、员工工资、消费者预付卡、食安事故中承担<b data-page-node-id="V8dKamX4Is40B6Jel4sR2r"><!--pnid:XgNunJ655GpTpARo7TSoWi-->连带责任</b><!--pnid:fmv4XoCcKBiY1FYmjcQI59-->（见《退出方案》弃店预案）。</p>
+      <p data-page-node-id="2SAhx2dFulpwVimlQFPqy3"><b data-page-node-id="X56VvHFUOIFyl2TT1wATs1"><!--pnid:E3jgjFXpmFbXXSYStWxh4E-->管太浅</b><!--pnid:JNgsfofp6w30hFp7aUtdds--> → 加盟商踩坑（无烟道/无法办证）后反告总部"<b data-page-node-id="XbGsoA9SNhWWwIiHJQuueO"><!--pnid:eQy22YrOP4CoxVmOLVosHL-->未尽选址指导/虚假承诺</b><!--pnid:tgw6RE8NiqhAK5WuasfNIM-->"，依《条例》第23条退加盟费（这正是综合案例 (2) 的敞口）。</p>
+      <p data-page-node-id="5ahWjWWGZOHJYfasFBWqMg"><b data-page-node-id="FGDwLsLXdoigxltiS3upFw"><!--pnid:biaeyVMG5WMmXl6CTWDKRp-->结论</b><!--pnid:S9ZLpa15DA0YLIdVQ5Qe6K-->：总部应做"<b data-page-node-id="jYZnGAz7lmi9CnoR6fSVBp"><!--pnid:k1ZD5shu1vHVRAjJI9OKQX-->标准输出 + 形式审查 + 书面切割</b><!--pnid:Oj0p5xLrkjOH9k8KLbhLHr-->"，<b data-page-node-id="OgTNGdoFxzjKR1R2VBZDRX"><!--pnid:Lc3EQZ58FtVB7b0sPtYyGb-->不做"实质经营控制"</b><!--pnid:4Ag8kQlQksT8h8vejnFqBl-->。下面用三色灯界定边界。</p>
+    </div>
+
+    <div data-page-node-id="AF68KyaxKUy4gIIWEfi8Kj" class="card">
+      <h3 data-page-node-id="gneFshV5EglTCcrcgJ2CiZ"><!--pnid:thmIQv4j0jNl5VF3wiQrgF-->一、总部"该做"（绿灯）—— 必须做，做了才免责</h3>
+      <table data-page-node-id="q6sH2TXXa9fSPMxXApUV9F">
+        <thead data-page-node-id="pGwof2ro5Y1drNMfAuitqe"><tr data-page-node-id="DugOXiQDU6UhxsSWsY1MHV"><th data-page-node-id="SQ1RSj7mtVCuowHVGnx0vZ"><!--pnid:GUFjanTXNQL0Y26eNLQyFa-->动作</th><th data-page-node-id="8MowZ8sdhtPlBw9YnTrvAd"><!--pnid:0QlExMsUtZm8OO2HL2yD0q-->内容</th><th data-page-node-id="b7IAcAFujZ35qPXXrbuZcW"><!--pnid:AvHL4uKqEZrpnAOCRw2EpA-->对应文件</th></tr></thead>
+        <tbody data-page-node-id="qD1Vx3j1ydOMviZPYeYfCF">
+          <tr data-page-node-id="Ujnqqc3HB6NLPQXQUJJZKS"><td data-page-node-id="Cb4IbKZyPvEiTEo7Q1Dfcb"><!--pnid:s7XUw2K6ToFD7oh4G3IcKv-->① 出标准</td><td data-page-node-id="ObzoZwwq5QLrGtcdezKZNQ"><!--pnid:GRNsOa7PJh2dWiTOzMnfHM-->发布《选址尽调清单》《租约审查要点表》《特殊条款清单》《租约必备条款一页纸》</td><td data-page-node-id="9kL7Q6c9AJLrunxojZAqc8"><!--pnid:Al4GWknpe8JRxlj7QmIOUo-->本周四份交付物</td></tr>
+          <tr data-page-node-id="FklaJhde2DPH1EReYU1iqe"><td data-page-node-id="uyvs3b2s8CxTJTN0VOsHjL"><!--pnid:bFWQoXcDwN1BeuUaLvjosa-->② 设关卡</td><td data-page-node-id="26Y5VfpD44isBunDjUJZdt"><!--pnid:S2x2cqjNFb8bc9pFG5zjRc-->意向铺位过"11项否决项"形式审查，不通过不授牌</td><td data-page-node-id="ZqAWpOZLkJuIsKhRmj2TN1"><!--pnid:WqXC5B5yvCEeRQsnAsyPGd-->选址建议书</td></tr>
+          <tr data-page-node-id="FbY4Nd0W9TlDnpGeE9BJ0c"><td data-page-node-id="9KXOePm5oAdu26JAHSpw82"><!--pnid:IEeUggzTE4YtuDypg3M8ES-->③ 要确认</td><td data-page-node-id="ZXqJXl4nVRValRJX9cxjVe"><!--pnid:UA4w7GNEYssQrELwaAVDTE-->加盟商签《选址确认与风险自担声明》《风险提示书》</td><td data-page-node-id="I6OBfXkSxagbxZLHhFoHQy"><!--pnid:5sqLSDY4KOukODLQEZz4PI-->签约必备附件</td></tr>
+          <tr data-page-node-id="fZxra8Lj4Wfwzk4Is7bI7A"><td data-page-node-id="Tr991yt2cipfj9YCSOmF1G"><!--pnid:mugXSJJKOGWnzZCmjH5WLG-->④ 做培训</td><td data-page-node-id="LTvvYvmeKYal3mGnqX2vs7"><!--pnid:PMCtJvbjDAdD46nppyFVdy-->对加盟商/区域经理培训租赁硬伤识别（无烟道、住宅底商等）</td><td data-page-node-id="4n6D774RnKqMX2tuqiqvnC"><!--pnid:PldYz9jsTaF1UDerwLrrwb-->培训记录</td></tr>
+          <tr data-page-node-id="nMvSwD8BJjE2coD12QqLQh"><td data-page-node-id="CTbd1FN1V1V8cgE2ZsVWir"><!--pnid:xDyxw6y0fttCNb5tUza2Jh-->⑤ 留痕迹</td><td data-page-node-id="XswDZ1KPyMvqmHpm80n322"><!--pnid:GsR0xmn1oYewP6hXKqCK0d-->所有选址提示、工具交付、审查意见归档（≥5年）</td><td data-page-node-id="XUuvB3jTpohJlpxIFbg5AN"><!--pnid:WACaqkFcZwYdjEogqEjNUP-->档案</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div data-page-node-id="JT0mRxRIr7BlUa8o6MfnSX" class="card">
+      <h3 data-page-node-id="qalkcuR1yYhx5OILLjJ1il"><!--pnid:2rYkd48AovJlN6NkZi7dPx-->二、总部"不该做"（红灯）—— 一做就破防</h3>
+      <table data-page-node-id="5v2F2I6FgSzdJNFssXb24T">
+        <thead data-page-node-id="N3VKCzHeLhSakkIkjVfsLp"><tr data-page-node-id="WeKanoCM8w2RKAcpdMaNLL"><th data-page-node-id="SjddslEzvFOW5wTV84iQ2Q"><!--pnid:QRFhBOGQlge82llpjGTBoQ-->禁区</th><th data-page-node-id="JFu2NZEWU5gfv1rougohYg"><!--pnid:UrrPwEhPEEiOwTTN1i6JR4-->为何危险</th><th data-page-node-id="xgL5AFSdO07vmiInQunM8J"><!--pnid:DSGXhFRMLpG6T8maYLAaXl-->破防后果</th></tr></thead>
+        <tbody data-page-node-id="KURR8EkB829tMyLctPfL0h">
+          <tr data-page-node-id="Sbmc9z4TLBx41Pe4ewlsa8"><td data-page-node-id="5uaONQAQb3Zv4vsmG1nVwJ"><!--pnid:wVPvauyf5AAdyXmfkEqiBF-->① 代签租赁合同</td><td data-page-node-id="SN7ePtciB98fJfOo1vPvtk"><!--pnid:hdG3P8retiuJ1hP0qgJawB-->成为租赁当事人</td><td data-page-node-id="LOQ9WyUG7KpVGGoaxZRZh3"><!--pnid:SamZLcQXIUm5kMMrXPQiAH-->对房东直接担责（租金/占用费/恢复原状）</td></tr>
+          <tr data-page-node-id="hicmvwdU4OhcS33B89yubH"><td data-page-node-id="fKW76SW3cEcAD5b2BNIuKz"><!--pnid:SO855WmYpdvtpzRpyOm01o-->② 承诺"保证办证/盈利"</td><td data-page-node-id="jYQ2zmEJ6aoSVqrfrmo4sh"><!--pnid:GJT4lr4cFsIQimnvsHgcr7-->构成实质保证</td><td data-page-node-id="Dh5v4BNUfLmQccNjA9iRxf"><!--pnid:tv9wZWxqt5pYVfcHCX6yxk-->条例23条退费 + 欺诈撤销风险</td></tr>
+          <tr data-page-node-id="cHxuZ075pDWxzSwUUDHFS7"><td data-page-node-id="CEhdmDZTF74aLw6jWK1n5n"><!--pnid:TXixLhWq5Gx4GmaTKv4FgN-->③ 以总部名义联营/统管财务</td><td data-page-node-id="4qtWC9o9Rkx148gmlrnK5D"><!--pnid:87WB2KJwLE7ZebUEOYyx3n-->"实质控制"证据</td><td data-page-node-id="smaka6Fll49kfUz4cKrq76"><!--pnid:ylOIuYSycI5cmMVrbGBsZ9-->员工工资、供应商货款、消费者连带</td></tr>
+          <tr data-page-node-id="BHPsZuv9Wb0ufeL77W02QN"><td data-page-node-id="QRQc3Rjkd9vGr0Fn5HI5vB"><!--pnid:ijSPv9Wqy9BLKouvYbACwd-->④ 代发工资/代缴社保</td><td data-page-node-id="v74EtF1T8PeT8HmRqElnUw"><!--pnid:AsJtARfd1mb1fph9pmQrSp-->混同用工</td><td data-page-node-id="cgrHwzZtzDgEURyqHzEGZx"><!--pnid:zgOKuDFVmN2YiPKAeSEtkh-->劳动法下用人单位责任</td></tr>
+          <tr data-page-node-id="lLIvnGbasZW7srihSfzAKO"><td data-page-node-id="7LLv7Z59BKqFF5y8bjlyTz"><!--pnid:XPq2SLbNyMReiZLyYZy4Ki-->⑤ 强制以总部名义发预付卡</td><td data-page-node-id="lmqNmlQTPcdA8CigwccR0A"><!--pnid:cLXRFjrXpQVb5cO3fRBPWy-->发卡主体混同</td><td data-page-node-id="rhKE4gFDJR9eo5F2qsRC3k"><!--pnid:YZyNbPnKcCspLmWupktJes-->法释2025·4号第5条 + 消法53 总部共同担责</td></tr>
+          <tr data-page-node-id="QBrTLVE7kXntRTMwNcwAqJ"><td data-page-node-id="12cGSeW47cUaUABNYRxO5C"><!--pnid:NXDybcsH6cfKKysnSlkIex-->⑥ 实操租赁谈判并收"选址服务费"</td><td data-page-node-id="EFIi44av9zEb68qFsiowPT"><!--pnid:3qU5hgHdTIJAOoYuaOxmaK-->被认定提供选址服务且担责</td><td data-page-node-id="6FhgoErqhisHXWaeXwz9QC"><!--pnid:naXzfuLJC3irrnzjnKAxRZ-->加盟商可主张总部未尽服务退费</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div data-page-node-id="CeDb3uchVWyvGKR2Iox2mw" class="card">
+      <h3 data-page-node-id="qvAmC19YjJF3vHkShuv9lM"><!--pnid:it8Rr4YEezxTEKX4Jw6Evk-->三、总部"可做可不做"（黄灯）—— 留痕即可</h3>
+      <ul data-page-node-id="5ulO0XtxhrwGVOvfu4zP7K">
+        <li data-page-node-id="31si2XF2tMAHBodmCjUBzM"><!--pnid:KzVm9nmxTkKhjGisBcscqL-->推荐/对接商场资源、第三方尽调律师（<b data-page-node-id="2excxtXED8MCymP7Somuhd"><!--pnid:GKpFmNix0uJYYjY8eNdNDy-->不担保结果</b><!--pnid:GLjaBjSS5qFbTGvH60OdoZ-->）；</li>
+        <li data-page-node-id="6l8sRy7VZzJkYfCMOH4aR3"><!--pnid:1NAgwtx3RtbjJOGP9OisdD-->对旗舰店/重大门店做法务<b data-page-node-id="FAn9noXRQUQY0wBvT4sBMd"><!--pnid:Vl5w50nOqSENABciWdqKrM-->抽检</b><!--pnid:zzUw1OllWhJ0A1KRQdEmvy-->复核（非逐店审）；</li>
+        <li data-page-node-id="aD8ypmdopVycBgA7a0l2v0"><!--pnid:2m3xOh7KBuiDKNNz64YaKx-->提供《租约必备条款》模板，但<b data-page-node-id="5EQrZyAVAMaarJ9B2XFaP2"><!--pnid:YGYDJQ5ywoo7O63z3UTYsD-->由加盟商与房东谈判签署</b><!--pnid:Em128lgOVmXWbsm4iA0hQ2-->，总部不代改合同。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="5iOJnOXDXZmiB0UYnudqNM" class="card">
+      <h3 data-page-node-id="6ENkdsunRVvd9dQ2dshJRN"><!--pnid:djBzzzCn5eVKvJIsGRQH3A-->四、三级审核机制（落地编排）</h3>
+      <table data-page-node-id="jb1ohYJR5h4T1e5WnRaU6R">
+        <thead data-page-node-id="agsfBHXpqLa91DvtxrOUBm"><tr data-page-node-id="jCmnqQOxREliPMqY1EDSK3"><th data-page-node-id="IP315log5DGZpqQLkpXQQm"><!--pnid:aPutm5usZtVitAB4EkU1U1-->层级</th><th data-page-node-id="jal8FvgOVXtF0O1K02x43K"><!--pnid:RupRLLtsJGjTDRM3SWPrSv-->责任方</th><th data-page-node-id="iF9A3aR4ZZNbUDnCADaGFY"><!--pnid:gyLBhkViMPBgQDx95jXH3p-->审核内容</th><th data-page-node-id="WNbcqop0OXmW9c9JD617MT"><!--pnid:CMyHqTW2JBxHn4KuBneonp-->产出</th></tr></thead>
+        <tbody data-page-node-id="KrIcyBJz1S0rMUOmr5yIin">
+          <tr data-page-node-id="O4wRiVz82TcqeocXxjv0SH"><td data-page-node-id="GkrPqg0ThmJ3NFrlmuRIJd"><!--pnid:RuLLigrWpHrXoW5btKMrot-->L1 自查</td><td data-page-node-id="jVrTl70DsvkzkuqT8KTrgA"><!--pnid:LiaickGjrieXNA2ENKnBgC-->加盟商</td><td data-page-node-id="42syw7yeWE01XGZGSGES4z"><!--pnid:YRTbArYjddbZ7Cz4dpawYj-->按《租约必备条款一页纸》逐项核对</td><td data-page-node-id="aGwNc6szarQaKVA2A9a12L"><!--pnid:IC270VFgW9DPWEdKAebN3E-->自查勾选表</td></tr>
+          <tr data-page-node-id="jAIX20GbgPkg27aT0iaNO7"><td data-page-node-id="Zi79lyFhso9B9w4E8iSkoT"><!--pnid:2HMS9j9vabzLXNxEzlNUn0-->L2 形式复核</td><td data-page-node-id="bD4mox9D2sS0iBJQQpWIup"><!--pnid:rRfPSxmqO5obIA43C6go55-->区域经理</td><td data-page-node-id="UBqj0oaPe1qn2fMsipmGiM"><!--pnid:CYuMvIRcpAZor21G6NFuwA-->11项否决项是否命中、租期≥加盟剩余期+6月</td><td data-page-node-id="7TWpnKipPr9Dybm8ueMG5w"><!--pnid:Ko3YPMaKsoqwDxoPosAwUm-->《选址建议书》</td></tr>
+          <tr data-page-node-id="CWMcLZyZnhLdv7gQmz6HWn"><td data-page-node-id="FFAWcpTGsBdYQ9PYs9oQtD"><!--pnid:W9sFxjBs9AJplKgeZ3KWHA-->L3 抽检</td><td data-page-node-id="WpuJJEiS3LiQVfVTkzbD99"><!--pnid:vbz8aQrKHWVoSj69Bh0Dwd-->法务</td><td data-page-node-id="aFZOKcV4jHe9quoXcVzCVY"><!--pnid:DeHGuDYjFj4dGLfcXMd9gi-->旗舰店/重大/争议铺位，抽审硬伤条款</td><td data-page-node-id="sYCVQzmPU8FN2V64rFrfRt"><!--pnid:SNTZzn1JCr6DkoyzvgzUW4-->审查意见（留档）</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="lQqKtJw9NUDyxTeGn76O4V" class="act"><b data-page-node-id="ZFzrNv7XhWxCi1Rb88w1Uh"><!--pnid:d9pLus6DylV9iAcmKAEIRW-->我的落地动作：</b><!--pnid:BceoDPV0VOlOuMTK8YttXQ-->把 L1–L3 写进《加盟管理手册》"选址与租约"章，作为授牌前置 SOP。</div>
+      <div data-page-node-id="GA0yXNXIpDMGfexEOuV1LC" class="anti"><b data-page-node-id="xbz4ImRL2dEmcRqXXIgQqR"><!--pnid:imiRkCNtZhwJNEynCbtMAE-->加盟商反制点：</b><!--pnid:2G2lC4L0v9xcqE6EAuQFCz-->若总部在 L2 出具了"通过"却漏掉否决项（如明知无烟道仍放行），加盟商可主张总部审查失职，放大条例23条退费风险——故 L2 必须留痕、且结论仅作"形式提示非保证"。</div>
+    </div>
+
+    <div data-page-node-id="f29RfJMtaBtTbaseU8b7Yy" class="checklist">
+      <div data-page-node-id="ZkNue23XzONjBBSJA0tEIv" class="cl-head">
+        <strong data-page-node-id="9q5yVnTNe4YM0pA4eoo2FY" style="color:var(--gold)"><!--pnid:Sils2EZi6wxeOMatmAk99y-->总部租约审核动作核对</strong>
+        <div data-page-node-id="t35OnC5mOrnviPYvuEKvof" class="progress"><i data-page-node-id="Hn16mkXoy4YsJrlQi7psYY" id="barG"></i></div>
+        <span data-page-node-id="5sgC21g5Vn9SA4D5jRhZxX" id="cntG" style="color:var(--sub); font-size:13px"><!--pnid:pANO45aZACKRCuDJqoT4yH-->0 / 8</span>
+        <button data-page-node-id="1hKRbfgGFUMSsBdVz3SVSw" class="btn" onclick="window.print()"><!--pnid:KED0VojkrIKw9MbDQTcMlQ-->打印</button>
+      </div>
+      <label data-page-node-id="XrnnzPrw9gGvQuUKsThmf7" class="mat"><input data-page-node-id="F3Dq30fBgTDYb6pZlpeo5U" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="v4rhiEOf5aBO8imEkYeAkl" class="m-txt"><!--pnid:udxVvycIkkneqmz82xEbb8-->① 已发布四份选址/租约标准工具<span data-page-node-id="uDnU3LcOCopiKXfvsd98oQ" class="m-note"><!--pnid:p0ii7CXYNTJb6jDqywRcnI--> — 尽调/审查/特殊条款/必备条款</span></span></label>
+      <label data-page-node-id="xo7bTtX7kyZr4ISOJVlndu" class="mat"><input data-page-node-id="BBbwe1x25U7yBV2mWJwJy8" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="tqqCG7vHDrHjPkSB648APK" class="m-txt"><!--pnid:0ebVs0k2kuxuoxSubs9lTl-->② 设"11项否决项"形式审查关卡<span data-page-node-id="rpfIIFqobQEBnpa32zBk4p" class="m-note"><!--pnid:tLiJKqZuTM667Ul2QG6v3E--> — 不通过不授牌</span></span></label>
+      <label data-page-node-id="GfsmQQzmODwk0ZTYZfkiKW" class="mat"><input data-page-node-id="JNoilpzRgivQ2giZvgunR4" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="YVN7q1LKJwj5IEbl11Tczw" class="m-txt"><!--pnid:Lgbd6qsg9ZPZOXUIROUthw-->③ 加盟商签《选址确认与风险自担声明》<span data-page-node-id="jCJnRpGoo1hyqAgxc0TqK9" class="m-note"><!--pnid:3hHTkkYgZc1lPZ4Y3mXXoD--> — 与风险提示书并列</span></span></label>
+      <label data-page-node-id="0cS9sMprTAWwl33VXGhA2K" class="mat"><input data-page-node-id="uKWEvL9g4AkvxOWuf1AXIR" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="pHH12mpZ1qqZvDLGZyfKJ8" class="m-txt"><!--pnid:9JK45O4Ab94tdQbrCAvGTg-->④ 招商/合同写明"不保证特定铺位可办证/盈利"<span data-page-node-id="fci2ZHhdzKMnKdt8JFuoMO" class="m-note"><!--pnid:8pcPRh0QcxnB9uoKHqoIOd--> — 切割保证</span></span></label>
+      <label data-page-node-id="fsLmYDz5v7nJpG90fWGYDl" class="mat"><input data-page-node-id="tLrQKExfy1OKoukn7p6ozb" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="DLzLRTsxCgwp4QzQcqJrm6" class="m-txt"><!--pnid:RCA8yIEaujMfYZL3p4bidN-->⑤ 不代签租赁/不代发工资/不以总部名义联营<span data-page-node-id="QQMI107fb4b6OIlKDjjTXL" class="m-note"><!--pnid:spv9k9jo3ZXHg7kVhWDeP8--> — 防实质控制连带</span></span></label>
+      <label data-page-node-id="fJwKrQq9tnZwwCRQrMMM3j" class="mat"><input data-page-node-id="OfK6uwBDw9tMcrzP7fTElb" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="cS5yzl79kMW1f2J2gAc1Ej" class="m-txt"><!--pnid:W6dqluSh89FJ7Zkt70EA5Z-->⑥ 不做"保证办证/盈利"承诺<span data-page-node-id="QnwdG9pdxWNWd1xf8fL0aB" class="m-note"><!--pnid:pyEvK3Iu28KsKFveukT4FY--> — 堵条例23条退费敞口</span></span></label>
+      <label data-page-node-id="BhUtjigyBYkEvov8WHJE7Z" class="mat"><input data-page-node-id="9lDtWX0CnK6pW7miM5Fl8k" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="f5ktrO7MgHpkrcvHX6gqmk" class="m-txt"><!--pnid:x8jedvcfAONtntBqNHFzxs-->⑦ 三级审核（L1自查/L2复核/L3抽检）入手册<span data-page-node-id="qoldcyQy4LBqI6KZcB9nmW" class="m-note"><!--pnid:jMpwSWJxM6QnFZvU4ZhCnO--> — 授牌前置SOP</span></span></label>
+      <label data-page-node-id="OEtft3OQZgdF2R778fimt6" class="mat"><input data-page-node-id="r9agNc7gl3iU1Y3bOl6SoS" onchange="upd('barG','cntG')" type="checkbox"><span data-page-node-id="lm26aeUrBjfezLZ2JcPtbe" class="m-txt"><!--pnid:dnhvKSB0a51L3bS0Tzn0ig-->⑧ 选址沟通与工具交付留档≥5年<span data-page-node-id="RvLO2TYEpLhIvOcdAV38Rv" class="m-note"><!--pnid:xLmopp5aFZGQacUeCsDWqa--> — 争议自证</span></span></label>
+    </div>
+  </div>
+
+  <!--pnid:lkphNdebqM3j9ljSaLIzFe--><!-- ============ 面板 p4：一页纸 ============ -->
+  <div data-page-node-id="nqggxlzlxvRiphgx8lrJ42" class="panel" id="p4">
+    <div data-page-node-id="DuzFMMxx3fm0a4HDwtOwau" class="card">
+      <h3 data-page-node-id="5RrJXdiPyOk7862mQ4eEjV"><!--pnid:2GkyGlxHjKQETzEqlVZdPS-->加盟店租约必备条款清单（一页纸 · 发加盟商）</h3>
+      <div data-page-node-id="yrvQlIbx8WOq32ktT6qU0r" class="note2"><!--pnid:2zRQkug1ogoJOwW4mb8j7H-->使用说明：加盟商签约前逐项核对，全部命中方可签约；带 ★ 为"无则不开业"硬条款。本清单由总部提供，不构成对办证/盈利的保证。</div>
+      <div data-page-node-id="zzuv6aRyt0KvZERASX4dui" class="checklist" style="border:none; background:transparent; padding:0">
+        <div data-page-node-id="nMiSpPs6xmCgL7rZmUQJk3" class="cl-head">
+          <strong data-page-node-id="E3nnbq9lI2ehyK6YbKurWv" style="color:var(--gold)"><!--pnid:qtpnjjODHW6az29gfbuTTF-->签约前核对（共 16 项）</strong>
+          <div data-page-node-id="P91jvOzfM7QfRdRVu0ig1T" class="progress"><i data-page-node-id="IN51LciGAoRYGG6Tfh3mBA" id="barP"></i></div>
+          <span data-page-node-id="97Gw8AaPqgMdGudYJSweq7" id="cntP" style="color:var(--sub); font-size:13px"><!--pnid:i0GSpOjOVEuwGowgtBswkw-->0 / 16</span>
+          <button data-page-node-id="f1CNhk8kwkN3VoPsLc0w4X" class="btn" onclick="window.print()"><!--pnid:rgL2727ca28wBGYHbOw1vN-->打印一页纸</button>
+        </div>
+
+        <label data-page-node-id="VYa0vTNa9cKKsfP8HVk4rw" class="mat"><input data-page-node-id="Ofc2lXVe7q13tJrPBjngOp" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="MbTq1Cg8Bd0Cg1v32MC9XI" class="m-txt"><!--pnid:KouRcAxPxW84dP6o09NprR-->★ <b data-page-node-id="ZCzsJuLIoFc1qvEAqL0Lrf"><!--pnid:hS6ZX6AXqN6A3TwnvEFFSB-->餐饮硬件六项确认单</b><!--pnid:1BICCupbB2hVMh3Vu5eCAn-->：独立专用烟道 / 隔油池可建 / 燃气可接 / 电量≥80–120kW / 给排水达标 / 空调外机位<span data-page-node-id="AGxfZFzdlXz5SWHd0w1XJC" class="m-note"><!--pnid:4u9y9ARMJXBVoz4XniqY6L--> — 任一项无=否决</span></span></label>
+        <label data-page-node-id="FHvNnfFpRNlfJT1zacrYfJ" class="mat"><input data-page-node-id="iZeyaCmF56Z83oawMd7TMQ" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="HAZebYkF8sU9fPOWcEvqGP" class="m-txt"><!--pnid:ovd6C1ikywdAH8ms2MslS2-->★ <b data-page-node-id="RFSZ44mx0yeQ9EhiCnvqOh"><!--pnid:Y9V2mieXATY3QDv04hdaNJ-->租期</b><!--pnid:YpCan62PagNltRXXShDSSz--> ≥ 加盟剩余期限 + 6 个月，且含优先续租权<span data-page-node-id="C1lDe9bz3tDLTdE8TjOby1" class="m-note"><!--pnid:EifRlEtmHATaEwFvDrlYGS--> — 民法典705/特许条例13</span></span></label>
+        <label data-page-node-id="8LWT05DfnqJJF9uA0xVeab" class="mat"><input data-page-node-id="BeAqustjyFeZANLDOWB8va" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="4YgJyFC5cnkvAj5ewJbIEs" class="m-txt"><!--pnid:12Mh9Ds0YWf5HDA5eSyQ3b-->★ <b data-page-node-id="BC8J7s6XgyqATFADGQvCVu"><!--pnid:dIaYORKSDJCBDtQV5svWUC-->免租期</b><!--pnid:6XFMWjQDsHMK9QgH77NnH9--> ≥ 2 个月（免租金+物业+推广费）<span data-page-node-id="9hV2ZxjHdcFXJaX4LbpIC1" class="m-note"><!--pnid:kVnBclBMWiCS0D51gaMZFW--> — 底线≥1月</span></span></label>
+        <label data-page-node-id="wENn3UWoSZsfNK9GzaZROV" class="mat"><input data-page-node-id="bVbnBnoQHwmC5VGgJTqGYa" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="qV46V3O6HoJ4sxZQJl43Op" class="m-txt"><!--pnid:6kzq37Lj5IUlqnp0u0tJbl-->★ <b data-page-node-id="rBOks4BoTqn5aG3Zukxeqf"><!--pnid:QgCkd7P1EL9EsN52TkZ1Zr-->租金递增</b><!--pnid:mU2tBtS9M1sRJdOr6NlgN9--> 前2年不增、每2年≤3%、封顶25%、不取高<span data-page-node-id="oozuOhKXFbXrp3UzfeNKY0" class="m-note"><!--pnid:WZeph4Qzebvm8nXUo3z8yd--> — 民法典585·2天花板</span></span></label>
+        <label data-page-node-id="vTvuhkOIgRMeeS2OZvMHCr" class="mat"><input data-page-node-id="aDAkVYLh5PFhthERWvIu3E" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="YfJEqKn4rR3TpCBsJ5aS2z" class="m-txt"><!--pnid:pEEwnk5xXmaReLCWijBTC5-->★ <b data-page-node-id="sRujGrytl9GDE6TcJjRVSY"><!--pnid:shUgiUJv66vk3p1TW2sTmY-->营业额抽成基数</b><!--pnid:iWItH757PNbzjnwynE3ExF-->＝净营业额（剔平台佣金/退款/团购券），首年免保底<span data-page-node-id="cp7EWceDCKiYqQVHvACeMR" class="m-note"><!--pnid:vxe31KgKTeaMn32Zdvz2jI--> — 民法典509/510</span></span></label>
+        <label data-page-node-id="y8BN7RP0hja5m59uQAw52F" class="mat"><input data-page-node-id="jKKB2VJ6cZwkIYxpZa8Q3G" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="nPa6WDz7hKEOD2WqX35mZu" class="m-txt"><!--pnid:DTXiEXpU8yaVaKHUR1anUc-->★ <b data-page-node-id="LGh86Bpc0zpTKy1IUpUlLl"><!--pnid:n1eArViRDSy93BkXt0VUQO-->办证配合违约责任条款（X条）</b><!--pnid:IUS9NTfWbEucHnbYTmYDc4-->：房东/商场逾期15日不提供产权/消防/同意餐饮用途文件 → 解约+全赔（含装修/加盟费/预期利润）<span data-page-node-id="Dt8qelB6mOyWbvv7Ke8GIH" class="m-note"><!--pnid:0TQZNAefekK3mXCTkiJpjH--> — 大气法81条2款/食安许可</span></span></label>
+        <label data-page-node-id="5u0DLotMRWtI5ZQskcHzNO" class="mat"><input data-page-node-id="rNFVeVompurNMACGEMYZL6" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="INU7mPWDhlgjDjRgxyu6VI" class="m-txt"><!--pnid:8G085zUjT0hDTppmBCDDxt-->★ <b data-page-node-id="ORvCRrTLniPCGn5xBgMwhv"><!--pnid:HnNVlb18YooNMts9n3yJx1-->硬件不符免责解约条款（Y条）</b><!--pnid:Nzmb0qWdLKkLegMUx7kk8Z-->：无专用烟道/烟道不通/电量不足致无法办证 → 承租方无责解约+全额退赔+免租顺延<span data-page-node-id="4bh8gA1iujeKrnR9rd0XRw" class="m-note"><!--pnid:NVcyrIzFgEurp9AJ5fhxz6--> — 堵"已按普通商铺交付"抗辩</span></span></label>
+        <label data-page-node-id="sSU7CWjFyEUXYK10sPu7wE" class="mat"><input data-page-node-id="8nQtFUvXocdXXj3MelvKEG" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="ni57SqQTLK8meE6Wf9Iilw" class="m-txt"><b data-page-node-id="W4JLcD6T6BQlehdKCusmGM"><!--pnid:ffjvo0en6kaONgsmOSqkPg-->押金</b><!--pnid:VS5pdemWuQ2Zw04QEz8n2v--> ≤ 2 个月，退还需 ≤ 15 工作日，扣减须提前30日书面通知+逐项明细<span data-page-node-id="I5arSfQoYTtXELA9Qf6w9E" class="m-note"><!--pnid:KbPqxrnpwOIU0vEB49V3DO--> — 押金≠定金(民法典586/587)</span></span></label>
+        <label data-page-node-id="9fftpf6WAmFbCMEVTLLuF4" class="mat"><input data-page-node-id="heFBtIZ2zQvlj6ZUZEmcsO" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="PSylCrTard0aXnjY797Dt1" class="m-txt"><b data-page-node-id="XuNkrVamWYNQSbe3dE8haE"><!--pnid:eZkQwTRDnv1y2EOhQADTAH-->费用封顶</b><!--pnid:lQR5ZSj2TmJ9Uy1KZ9KgAM-->：物业年涨≤5%且公示；推广费固定≤月租10%；水电不超政府定价+合理损耗<span data-page-node-id="jgITE4oHpKCA0krwGmt8tG" class="m-note"><!--pnid:EB6zqbIqfIx5TwMwJYQ8q8--> — 民法典704/509</span></span></label>
+        <label data-page-node-id="BoC77KhBzBHDhVktfOPPpV" class="mat"><input data-page-node-id="hSjDqB0p2JI5FT1f0RUmrn" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="aMaLXaK7W4QRUhK15ZD4h4" class="m-txt"><b data-page-node-id="p1aJMhUia1RE1keNCmG0CZ"><!--pnid:mYkkK1Ei4QH1EnRwMgX1Am-->转租/分租</b><!--pnid:yHXnyzTgU88kgo46mwHH7E-->：可转租给总部备案的加盟商或合伙人，无须另行同意<span data-page-node-id="UvhF3WaGVmlE3IjUtULP1G" class="m-note"><!--pnid:nTdXBrAH7SAJMwW6sH4Bq4--> — 民法典716/717/718/720</span></span></label>
+        <label data-page-node-id="qCqEL3O5bebDRRdi38DCgP" class="mat"><input data-page-node-id="mPQz2wiDUuKLcjuZQNiqVu" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="s5Fpif7XcuHuaKzdObfxP6" class="m-txt"><b data-page-node-id="aFLJ0bju0ZtaWmfpoK2XVp"><!--pnid:hUhp9MgjRQXyOyrhpFvDZB-->优先续租权</b><!--pnid:daS7dbrQo9LLrKMKADjfOR-->：提前180日通知，"同等条件"仅含租金/租期/支付方式<span data-page-node-id="KpBIg67VehH2lp2gc9kryn" class="m-note"><!--pnid:9v1uLAPULnxR4ObqbPeqIx--> — 民法典734/726</span></span></label>
+        <label data-page-node-id="qU19IQHoDjh8FXectLpdVr" class="mat"><input data-page-node-id="dTZZGmVcDcP5KVAJ6rbUbE" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="AvuAxb601FwuKDTSp90rwC" class="m-txt"><b data-page-node-id="2gBCDtqPSD6T6XfF0XTwvF"><!--pnid:y5ZlfRdh9Vry2ASxlmkzcb-->提前解约权</b><!--pnid:a4Db1SPRSCt2u3OfaMGI7Q-->：经营不善提前90日通知，补偿≤2月租金，不担剩余租期<span data-page-node-id="Eki6hsqfp4wZLmvQxbCT70" class="m-note"><!--pnid:jZHXQIO258XLMEN2zi8sXC--> — 民法典562/563/565</span></span></label>
+        <label data-page-node-id="vBwbrRf5veA6kHRSJ6zHy9" class="mat"><input data-page-node-id="JYbxn5Yh4C6V9veyeXcmxd" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="m1RRUQnwa3NxrTseiD56mp" class="m-txt"><b data-page-node-id="J5sVA7U2MnGi4ZgPp6NkK8"><!--pnid:2jLsrT1l70JuAEfcuYxfG5-->征收补偿</b><!--pnid:Aa9GiN2Y9I6UqlvnXdLG7K-->：装修残值+停产停业+搬迁费全归承租人，房东30日转付<span data-page-node-id="3fWfbfbalr8ME7BmB1n19p" class="m-note"><!--pnid:LK9MnUY4VYR43W6RneKHrd--> — 征收条例17/22/23、民法典725</span></span></label>
+        <label data-page-node-id="VM45jOPVoSOxRB7YXIqoIQ" class="mat"><input data-page-node-id="DSBmzpLPTamT2QP8BM8yLG" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="Kcem4JisIOek5iAEHJgSs8" class="m-txt"><b data-page-node-id="HbSf3bIXL8JR0P1TrzfFPX"><!--pnid:juyAhAepk3Gg9TqRSFcd5W-->恢复原状</b><!--pnid:F5dGzgkh0vx6H6hOd55Rnx-->改为"按现状交还"，明确不拆至毛坯、附合装修期满归房东无补偿<span data-page-node-id="NMZDf52sK2eNCIeiUYwanO" class="m-note"><!--pnid:sjLFF5KSG105OkoVIQlm7f--> — 民法典733、法释11号8/10条、497</span></span></label>
+        <label data-page-node-id="S5T72gOQTpNd47fgjJFnxL" class="mat"><input data-page-node-id="wWiZjevFbYz4xfrcNsTkQo" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="2jCTVwJIDfREqLmNTwy7kV" class="m-txt"><b data-page-node-id="h8qJW1Gy5TsTMxhSyklYr3"><!--pnid:nLDO1M3MeLxb8tuXFpf9C5-->装修残值补偿</b><!--pnid:0Ib6PFgC4cDl0xIWubsE8g-->：因房东违约致提前解约，按剩余租期比例赔残值<span data-page-node-id="UjKF1WIh18Fwkiw5xdz93V" class="m-note"><!--pnid:xq4HRSuMjTgSSf0j1gf0KN--> — 法释11号第9条</span></span></label>
+        <label data-page-node-id="rcFsJVize1oqYW6ZnHGbUa" class="mat"><input data-page-node-id="xK5u7dxljllaFQtE0lA17z" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="AcKcTkWWEUxe6ZgGNB9ev4" class="m-txt"><b data-page-node-id="Y22oSkXLCPtqqT8izM1kUX"><!--pnid:ZlE0WZYMhRb9EnQW9jwcrV-->消防/办证不合格损失</b><!--pnid:1PAWTy4RTiZByvWFPzcsvj-->：因出租方原因致无法开业，租金损失由出租方承担<span data-page-node-id="UcOmxAC0QlkIkCeyWLQJ41" class="m-note"><!--pnid:AJl0c8RJl7YxbCMA5F4WfW--> — 消防法15、民法典563</span></span></label>
+        <label data-page-node-id="e4Ro7ruCbeH7cMSbWz6kjO" class="mat"><input data-page-node-id="VQNzgxQemIwt9AQAGteoQo" onchange="upd('barP','cntP')" type="checkbox"><span data-page-node-id="9nJMfgMpfxdhlwaLPIA3Po" class="m-txt"><b data-page-node-id="iuc2ivQqt557LaPkBS6U9T"><!--pnid:bnNowqismMbaakZhh2b4Px-->逾期占用费封顶</b><!--pnid:motGwySTTuNZZxt2Pjd8l9--> ≤ 原租金1倍、给≥15日宽限、遗留物催告≥15日方可处置<span data-page-node-id="JCDyRSAw6VXsPFANDaTFf5" class="m-note"><!--pnid:dyFGRMILJhZwC1WGeqTNXF--> — 法释11号第13条</span></span></label>
+      </div>
+      <div data-page-node-id="MZQJrYrR8gk0errB1wmwTr" class="anti"><b data-page-node-id="eD37KwWnAdqCNsnFMMhKY8"><!--pnid:m2Zuwh9NOrkqwbxTB6HU1k-->加盟商须知：</b><!--pnid:9LDWmu2xEQlrU3JLaLEbpH-->本清单为总部提供的标准化风险提示，<b data-page-node-id="5yPQlhNDWPuh98QIQQQFXV"><!--pnid:qWCk8YPkWERvbyNscmnCSr-->不保证</b><!--pnid:uTrnzdaBXb6HBLGbci1WMW-->特定铺位可办证或盈利；租赁决策与签署由加盟商与出租方自行完成，相关风险自担。签约前建议携本清单咨询专业律师。</div>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="0wEmiV3D917bXi1V2SNhf8" data-pnid-children="pS37R5Kro6opR1Q4k2CM9j">
+  // Tab 切换
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  // 清单进度（按容器就近取 checkbox，支持多 panel 独立）
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'), n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+  // 答案显隐
+  function tog(id){
+    var e=document.getElementById(id);
+    e.style.display=(e.style.display==='none'||e.style.display==='')?'block':'none';
+  }
+</script>
+</body>
+</html>

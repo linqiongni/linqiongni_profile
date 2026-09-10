@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html data-page-node-id="5eRHgObPsM7hiLUKVnwNXO" lang="zh-CN">
+<head data-page-node-id="4GkXoM1jgPfnciCxwSkS1o">
+<script data-page-node-id="xcko52BbReTAlVw8Ot0Nll" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="cErBpJmQBqqsdr8qqTA8mh" charset="UTF-8">
+<meta data-page-node-id="QqGv3lIE6QMWrLcpup6uHo" content="width=device-width,initial-scale=1" name="viewport">
+<title data-page-node-id="GGrkBms1uLkHFSL1jHjOCj" data-pnid-children="XLfILLy4tYNs75zFp70GZp">第一周测验 · 餐饮加盟法务总监养成</title>
+<style data-page-node-id="9GmOFeWqmHaF4dsYSFuwo1" data-pnid-children="Ib8rniHTS7PUSl8U8LoRyX">
+:root{
+  --bg:#12100e;--bg2:#1a1714;--card:#211d18;--card2:#272219;
+  --line:#3d3428;--line2:#544836;
+  --gold:#d4a24c;--gold2:#e8c07a;--golddim:#8a6d3b;
+  --txt:#e8e2d6;--txt2:#b8ae9c;--txt3:#8a8070;
+  --red:#c9524e;--redbg:rgba(201,82,78,.13);
+  --green:#6a9c78;--greenbg:rgba(106,156,120,.13);
+  --blue:#5b8ba8;--bluebg:rgba(91,139,168,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  font-size:15px;line-height:1.85;padding:0 18px 100px}
+.wrap{max-width:920px;margin:0 auto}
+header{border:1px solid var(--line2);border-radius:4px;
+  background:linear-gradient(160deg,var(--card),var(--bg2));
+  padding:32px 34px;margin:30px 0 24px;position:relative}
+header::before{content:"";position:absolute;inset:6px;
+  border:1px solid rgba(212,162,76,.22);border-radius:2px;pointer-events:none}
+header h1{font-size:24px;color:var(--gold2);font-weight:700;letter-spacing:.5px}
+header .sub{color:var(--txt3);font-size:13px;letter-spacing:2px;margin-top:6px}
+.seal{position:absolute;top:24px;right:28px;width:58px;height:58px;
+  border:2px solid var(--red);border-radius:5px;color:var(--red);
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+  font-weight:700;line-height:1.25;text-align:center;transform:rotate(-8deg);
+  opacity:.82;letter-spacing:1px}
+
+.scorebar{background:var(--card);border:1px solid var(--line);border-radius:4px;
+  padding:14px 22px;margin-bottom:26px;display:flex;gap:20px;align-items:center;
+  flex-wrap:wrap;font-size:14px}
+.scorebar b{color:var(--gold2);font-size:18px}
+.scorebar .it{color:var(--txt2)}
+.scorebar .hint{margin-left:auto;color:var(--txt3);font-size:13px}
+
+h2.sec{font-size:19px;color:var(--gold2);margin:40px 0 6px;
+  padding:9px 0 9px 15px;border-left:3px solid var(--gold);
+  background:linear-gradient(90deg,rgba(212,162,76,.09),transparent 70%)}
+.secdesc{color:var(--txt3);font-size:13.5px;margin:0 0 18px 16px}
+
+.q{background:var(--card);border:1px solid var(--line);border-radius:4px;
+  padding:20px 24px;margin:16px 0}
+.q .qt{font-weight:600;color:var(--txt);margin-bottom:4px;line-height:1.75}
+.q .qn{color:var(--golddim);font-size:12px;letter-spacing:1px;margin-bottom:10px}
+.q .scene{background:var(--bg2);border-left:3px solid var(--golddim);
+  padding:12px 16px;margin:10px 0 14px;color:var(--txt2);font-size:14px;
+  line-height:1.8;border-radius:0 3px 3px 0}
+.q .scene b{color:var(--gold2)}
+
+.opt{border:1px solid var(--line);border-radius:3px;padding:10px 14px;
+  margin:8px 0;cursor:pointer;font-size:14.5px;color:var(--txt2);
+  transition:.15s;position:relative;line-height:1.7}
+.opt:hover{border-color:var(--golddim);background:rgba(212,162,76,.04)}
+.opt.sel{border-color:var(--gold);background:rgba(212,162,76,.09)}
+.opt.right{border-color:var(--green);background:var(--greenbg);color:var(--txt)}
+.opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--txt)}
+.opt .mark{position:absolute;right:12px;top:9px;font-size:13px;font-weight:700}
+.opt.right .mark{color:var(--green)}
+.opt.wrong .mark{color:var(--red)}
+.opt.locked{cursor:default}
+.opt.locked:hover{border-color:var(--line);background:none}
+.opt.right.locked:hover{border-color:var(--green);background:var(--greenbg)}
+.opt.wrong.locked:hover{border-color:var(--red);background:var(--redbg)}
+
+textarea{width:100%;min-height:110px;background:var(--bg2);color:var(--txt);
+  border:1px solid var(--line);border-radius:3px;padding:12px 14px;
+  font-family:inherit;font-size:14px;line-height:1.8;resize:vertical;margin-top:8px}
+textarea:focus{outline:none;border-color:var(--golddim)}
+
+.btn{background:linear-gradient(160deg,#3a2f1e,#241d15);color:var(--gold2);
+  border:1px solid var(--line2);border-radius:3px;padding:8px 18px;
+  font-size:13.5px;cursor:pointer;font-family:inherit;letter-spacing:1px;margin-top:12px}
+.btn:hover{border-color:var(--gold);background:#3d3222}
+.btn.ghost{background:none;color:var(--txt2)}
+
+.exp{margin-top:14px;padding:14px 18px;background:var(--bg2);
+  border:1px solid var(--line);border-radius:3px;font-size:14px;
+  line-height:1.85;color:var(--txt2);display:none}
+.exp.on{display:block}
+.exp .hd{color:var(--gold2);font-weight:600;margin:10px 0 6px;font-size:13.5px}
+.exp .hd:first-child{margin-top:0}
+.exp b{color:var(--gold2)}
+.exp .trap{background:var(--redbg);border-left:3px solid var(--red);
+  padding:10px 14px;margin-top:12px;color:#e0b6b4;font-size:13.5px;border-radius:0 3px 3px 0}
+.exp .trap b{color:#e88}
+.exp ul{margin:6px 0 6px 20px}
+.exp li{margin:5px 0;font-size:13.8px}
+.pt{display:flex;gap:9px;padding:6px 0;font-size:13.8px;align-items:flex-start}
+.pt .w{color:var(--gold);font-weight:600;min-width:34px;flex-shrink:0}
+.pt .c{color:var(--txt2)}
+
+.fold{background:var(--card);border:1px solid var(--line2);border-radius:4px;
+  margin:20px 0;overflow:hidden}
+.fold .fh{padding:16px 24px;cursor:pointer;display:flex;align-items:center;
+  gap:12px;color:var(--gold2);font-weight:600;font-size:16px}
+.fold .fh:hover{background:rgba(212,162,76,.05)}
+.fold .fh .ar{color:var(--golddim);font-size:12px;transition:.2s}
+.fold.on .fh .ar{transform:rotate(90deg)}
+.fold .fb{display:none;padding:0 24px 24px;font-size:14.5px;line-height:1.9;color:var(--txt2)}
+.fold.on .fb{display:block}
+
+.script{background:var(--bg2);border:1px solid var(--line);border-radius:3px;
+  padding:20px 24px;margin:14px 0}
+.script .stage{color:var(--gold);font-size:12.5px;letter-spacing:1px;
+  margin:18px 0 8px;font-weight:600}
+.script .stage:first-child{margin-top:0}
+.script p{margin:10px 0;color:var(--txt);font-size:14.8px;line-height:1.95}
+.script em{color:var(--gold2);font-style:normal;font-weight:600}
+.script .note{color:var(--txt3);font-size:13px;font-style:italic}
+
+.remind{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:16px 20px;margin:14px 0;border-left:3px solid var(--gold)}
+.remind .rt{color:var(--gold2);font-weight:600;margin-bottom:8px;font-size:15.5px}
+.remind p{font-size:14.3px;color:var(--txt2);margin:8px 0}
+.remind b{color:var(--gold2)}
+.remind code{background:var(--bg2);border:1px solid var(--line);padding:1px 6px;
+  border-radius:2px;font-size:13.5px;color:var(--gold2)}
+
+footer{margin-top:50px;padding:20px 0;border-top:1px solid var(--line);
+  color:var(--txt3);font-size:12.5px;text-align:center;letter-spacing:1px}
+@media(max-width:640px){
+  body{padding:0 10px 60px;font-size:14px}
+  header{padding:22px 18px}header h1{font-size:19px}.seal{display:none}
+  .q{padding:16px 16px}
+}
+</style>
+</head>
+<body data-page-node-id="wuZQnV3cant98R13K80PWH">
+<div data-page-node-id="u3CWJkz8lYx6kQv36raAEJ" class="wrap">
+
+<header data-page-node-id="Bptup1JrVymnFQzJGn16x7">
+  <h1 data-page-node-id="vFklGwOG3BjQf41cGb1WGq"><!--pnid:v6ZmatqfaylakdVs0gFxpD-->第一周测验 · 严格模式</h1>
+  <div data-page-node-id="e5jS4i6Wmzo9nFotnUN3O8" class="sub"><!--pnid:BTqx8pUE9pugY0zDgaWgFd-->加盟模式定性 / 收入项风险 / 核心三件套 / 纠纷类型 / 法务总监能力模型</div>
+  <div data-page-node-id="BX27sdfkgzMZpvnygYQHj4" class="seal"><!--pnid:VJWL7X7FxqNIeg0OKBLXg0-->周测<br data-page-node-id="7nbNd9BJ7FQrylGGVSbHdx"><!--pnid:0qjl2hp8xMSH7Wy9Z5NH2G-->壹</div>
+</header>
+
+<div data-page-node-id="fmpO0pC0sflhRn3798UW5W" class="scorebar">
+  <span data-page-node-id="uiKNEBoZ5ImjpBCG3wITTE" class="it"><!--pnid:s4FYMnZ5AY5Kv6MDY3ySCy-->单选 <b data-page-node-id="zRpNs3oyflak5Uh6Gaz5M1" id="s1"><!--pnid:Ci9OjG1shDyCN1d4JsFrgN-->0</b><!--pnid:TVMTUqSt6axA0iDzbGXt4G-->/5</span>
+  <span data-page-node-id="EULiYcI6qN2fqf1xrvgLAa" class="it"><!--pnid:bcH3nzfsB4WwrcaOy2vpBz-->案例 <b data-page-node-id="5DMMR0kNJZ8CQs2YjMIWOh" id="s2"><!--pnid:BKHmETzjxW1RU4IAlaJxyT-->0</b><!--pnid:1sXx0gTX66g6rm7ARedS1Q-->/3</span>
+  <span data-page-node-id="UtCiqGsGImSrvgxV9GvdBn" class="it"><!--pnid:1vzvshVfKXUhNyyjIcCBQ7-->简答 <b data-page-node-id="BZxilCMYsYC9pFJ3K88YaT" id="s3"><!--pnid:qrnLcmZZRpitJ03wjhIy2L-->0</b><!--pnid:UEwjegrqMbTBs5t79QUGQV-->/2</span>
+  <span data-page-node-id="h3mYoqWEoTN6wbI9U7jylQ" class="hint"><!--pnid:HjmKGyltzPmWN3Oo8eFNBG-->作答自动保存本地 · 案例与简答写完再点开要点自评</span>
+</div>
+
+<h2 data-page-node-id="KS6RYsPmWbH4jjl1IWOmbr" class="sec"><!--pnid:u4Wi6oX1bIMvJSDDdbv3tb-->一、单项选择（5 题，点击即判）</h2>
+<p data-page-node-id="XG5idRhJ9pohJRkFanCKbM" class="secdesc"><!--pnid:Eyu5CP3vPq6CJGQEC16rCu-->每题只有一个正确答案。选完立刻出解析，重点看「实务坑点」。</p>
+<div data-page-node-id="khZyEXNZvjoMiDR0GIMD80" id="choice"></div>
+
+<h2 data-page-node-id="nt8rwTTtRHxdU6lC5fxuRG" class="sec"><!--pnid:nrHTcRsJMfjKlIRoUoINUz-->二、场景案例（3 题）</h2>
+<p data-page-node-id="RLEdBmGaO3lBHZ2wOj7wjK" class="secdesc"><!--pnid:h6KMGYnxFYv7xVQzrVD6lo-->先把你的处理方案写进输入框，再点「查看评分要点」对照。别先看答案——这几题的价值在错的地方。</p>
+<div data-page-node-id="k8BiXcQGJXIULWQP1aJzZy" id="case"></div>
+
+<h2 data-page-node-id="eyAlkTgswyqHDzNM7q9CNF" class="sec"><!--pnid:TTaiG1CTEAeggoLUDQnH8T-->三、简答题（2 题）</h2>
+<p data-page-node-id="aBNqD9qUBrKCTJDigXK4Dt" class="secdesc"><!--pnid:dLvLB6X5YNa62mJRvVy0vC-->同样：先写，后对照。写不出来比写错更值得警惕。</p>
+<div data-page-node-id="tjJcIHMtPNE80wbBP30R6q" id="essay"></div>
+
+<h2 data-page-node-id="KvbmIC2LcO1WUJ3DAAZnvE" class="sec"><!--pnid:AtSaFwWYiFHb2GVUTKK7rZ-->四、费曼检验 · 3 分钟讲稿</h2>
+<p data-page-node-id="4N2ufZeQEyPieydxK7Gjqx" class="secdesc"><!--pnid:a10SJcMpEcvapuAUNyH6t7-->题目：给一个新签约的加盟商，用 3 分钟讲清楚「总部为什么要备案、这对他意味着什么」。先自己讲一遍录个音，再看下面的示范稿。</p>
+
+<div data-page-node-id="iIlH38z1gUu2PxSOcOQYoa" class="fold" id="fey">
+  <div data-page-node-id="GVGx2TksYrUbYD00tLpVZP" class="fh"><span data-page-node-id="asXghhcYGXvsIh02K74tPN" class="ar"><!--pnid:rMHGXYz9e1n7n92yJsAdaw-->▶</span><span data-page-node-id="d6HBoLD0qqQ7pNPsQAGTlx"><!--pnid:9yCLAt2VdYcMnz13XSbtlA-->展开示范讲稿（约 760 字 / 3 分钟）</span></div>
+  <div data-page-node-id="dHyZlsqaNNdiINmMPYbFf9" class="fb">
+    <div data-page-node-id="kCVmNeNvG6auPb9hvUeghK" class="script">
+      <div data-page-node-id="VjWJ9fAICOK1ZQ69T0BTGo" class="stage"><!--pnid:Ew7yZnJbk6PXUASBbct3d6-->开场 15 秒 · 先把他的注意力抢过来</div>
+      <p data-page-node-id="IiehHlok2M2fhl64omeUni"><!--pnid:oZTVmbIeqOJdVAQRfZFBL3-->「王哥，签之前我耽误你三分钟。我不讲条款，我就说一件事——<em data-page-node-id="snBojwHULwG8Rz6kQPgdsi"><!--pnid:skcEtYtZ95YNs8F6wzv6bV-->你怎么确认我们不是骗子。</em><!--pnid:mxAIoMrWnFwcvB7IIli58G-->」</p>
+
+      <div data-page-node-id="OaisyJRLmHetw09zvwLUuL" class="stage"><!--pnid:9jrYI9p73WeX2htOou5AnS-->第一层 45 秒 · 备案是什么，用他已有的认知类比</div>
+      <p data-page-node-id="bp4zDxYBPUJhqTHwSlpPTP"><!--pnid:40zY4nMVJ0BY0bnjoWrsQe-->「你开餐馆要办食品经营许可证，对吧？没证你不能开门。我们做加盟，也要办一个证，叫<em data-page-node-id="CMVmbMzzpb9bbMZTEzKGPg"><!--pnid:JSq9zl6qQdmYXiXev3ciw0-->商业特许经营备案</em><!--pnid:QS9t77KsNsDGOKU9Y38dra-->。</p>
+      <p data-page-node-id="7LUa3IcdJv36r5fM2EF8Ab"><!--pnid:b1TOuUAi0J3ty8Arzr95pw-->区别在哪呢？你的食品经营许可证是挂在店里的，我们这个是<em data-page-node-id="T1PnGFGULL9I9zWe12fAx0"><!--pnid:sycagm9vBGGiMTrCNxddqe-->挂在商务部官网上</em><!--pnid:cQbTmv6WquWNwMg08N1V8w-->的。任何人——包括你——输入我们公司的全称，都能查得到。」</p>
+
+      <div data-page-node-id="dxlRUKO5IFDQwNYbmjjZWc" class="stage"><!--pnid:OrJKCeVHIAgXk63sor68F7-->第二层 50 秒 · 为什么国家要管这事</div>
+      <p data-page-node-id="pF9X3qmE9XUdD8C1hvc9Aa"><!--pnid:bAjY8CZ6e6gJmmV1cYhm7k-->「国家为什么要管？因为加盟这个模式天然有个问题：<em data-page-node-id="6eFNeEZmsAD9ix9XEXZ7uR"><!--pnid:QHiMrUwVZ4vifjzEWDxZ0N-->你交钱的时候，店还没开。</em><!--pnid:7SVsMUZXUOzQ7E3gdVoFgf-->你交的是几十万，你手上拿到的只有一份合同和几本手册。钱和信息是反着的。</p>
+      <p data-page-node-id="3jwHDpqeVyXYSQx0cNoXvB"><!--pnid:l4tOHdBN8zVYKEhjSZ53Xc-->所以国家设了两道硬门槛。</p>
+      <p data-page-node-id="zq3xAWxgJ0wi7Sb1r1AWWz"><!--pnid:Uew8C2QdxYzlfWGJHwWP0M-->第一，我们得有至少<em data-page-node-id="QZfezeurkED68eo8t0SCXq"><!--pnid:K7aDZchhffItebA8N3GbgN-->两家自己开的直营店</em><!--pnid:Iz9TmV837mfFM7iEUfZxTD-->，而且每家都得开满<em data-page-node-id="qIGcdsUAxo1TgB2v7WlhN8"><!--pnid:Xzl0T45sXyb1y9WI6a9u6X-->一年以上</em><!--pnid:It7mjkcP2LwZZKARcz73S6-->——行话叫『两店一年』。意思是：我们得先自己把店跑通，才有资格教你开。</p>
+      <p data-page-node-id="jIEp7yNpZE1LocBsM64rIf"><!--pnid:C50SxHtnJby0qdZUQjkIOD-->第二，我们得在<em data-page-node-id="0F1oZnNCvNIa5pwM3WBN6F"><!--pnid:HEN7HlgoCRGC9v3s2tWuYx-->签约前至少 30 天</em><!--pnid:TJtJi3yf2WrV8qAKhELsCh-->，把该告诉你的东西全部书面告诉你：现在有多少家加盟店、<em data-page-node-id="qjqwX1EGYRORl5GPl99wz7"><!--pnid:1ciSljfBOWDeADD98eqTGQ-->关了多少家</em><!--pnid:eOE6Puag2bnGpFpivoIR51-->、我们有没有被起诉过、有没有被处罚过、商标现在是什么状态。这叫信息披露。」</p>
+
+      <div data-page-node-id="VfMeK4GKsEKOqUE6ff2bTO" class="stage"><!--pnid:hqU7IZUSgBXBSFybrZQFVS-->第三层 60 秒 · 落到他身上，只给三句话</div>
+      <p data-page-node-id="ap0HhgF05drSWWP2lsVFhJ"><!--pnid:k2P46pNQZ2K9bKpwJp3V7h-->「所以这件事对你到底意味着什么？我就说三句。</p>
+      <p data-page-node-id="8AolLqkTym7kxNmadjHxXN"><em data-page-node-id="UeMEAVCM8fZtiCORkmoVYv"><!--pnid:wJQgVOxVfXrU9PScZP7vNn-->第一，可查证。</em><!--pnid:511ECufwhAha2ESFIepqkC-->你今天回去，上商务部的『商业特许经营信息管理系统』，输我们公司全称。查得到，说明我们过了这一关。查不到，你扭头就走，别听招商经理说什么。这个查询不要钱，五分钟。</p>
+      <p data-page-node-id="ov4H2MGcAnSqhNG6LtfcfZ"><em data-page-node-id="i4Guv8Oka7Qlsb9syCKdgo"><!--pnid:UUivtwe6jYDO2H0UAjaAOz-->第二，可比较。</em><!--pnid:rkiRaXhYrk7x78pPAzgGE5-->我们给你的信息披露文件里，写清楚了多少家店、关了多少家、原料加价率多少。这些数字你可以拿去跟别的品牌比。<em data-page-node-id="JjsFCU710HtWde91PdOonA"><!--pnid:UmthJ9l85eMwtGn08LrygF-->不敢给你这份文件的品牌，你别签。</em></p>
+      <p data-page-node-id="5Hg2qsRzVwNgH7EME6J8Xl"><em data-page-node-id="12wOGFv0n5sPOuCGVWzizU"><!--pnid:vTiakenWXPI4Cd8JIM1us5-->第三，可退出。</em><!--pnid:p5EmfSyLOP6tP4lw5guamx-->国家给我们双方都留了个『冷静期』——合同签完的一段时间内，你要是反悔了，可以单方面解除，钱退给你。这是法律给你的反悔权，不是我们施舍的。」</p>
+
+      <div data-page-node-id="r6Mw3ugoaN2cM49aP0TTRe" class="stage"><!--pnid:E8QbmV39JUjjaPJub9Mb7o-->收尾 30 秒 · 主动降预期，反而更可信</div>
+      <p data-page-node-id="O3r9JPyv0bsLSSJZaq4dip"><!--pnid:MIEoyzJcubM664sorSnDPR-->「最后说句实在的。<em data-page-node-id="RZuU3jcxyEwS6oehusX46J"><!--pnid:XYnWotIudZrCXIjH5hoajF-->备案不代表你这家店一定赚钱。</em><!--pnid:3EvvPX1jKROZsulu5cmOj7-->谁跟你说保证赚钱，谁就是在骗你，你可以直接举报他。</p>
+      <p data-page-node-id="2joBfoJoo9Y4fXem9RWV6O"><!--pnid:RPUCQJoiGvDgvreHtgMXLD-->备案只证明三件事：我们是经过登记的、被监管的、自己跑过路的。</p>
+      <p data-page-node-id="my1jUGTg9Lba0tTEU8mYej"><!--pnid:ZCzpRKIi3dYBE5vv5vucKh-->你签完字，这几十万就不是你的了，是生意。生意有赚有赔。我能保证的是——<em data-page-node-id="u1uSpiYeTmCWbNLadP7Pnc"><!--pnid:kr2Jsxd9L7d9gJSLzVQHGM-->你是在看清楚的情况下做的决定，不是被忽悠着做的。</em></p>
+      <p data-page-node-id="lBPvdVUq5aumHhM8zPMkbN"><!--pnid:fAoBAZNWxfXPRlaIddOFT6-->这三分钟，值不值？」</p>
+      <p data-page-node-id="ZQj1J0Y9QHmpyRwcaT7ESj" class="note"><!--pnid:gs12msk7u3kOGkNJwEWZCD-->（语速约 240 字/分钟。三段式：抢注意 → 给类比 → 落到他身上三句话 → 主动降预期。最后那句「备案不代表你赚钱」是整篇的胜负手——加盟商真正怕的不是亏钱，是被骗。）</p>
+    </div>
+  </div>
+</div>
+
+<h2 data-page-node-id="Wzj393MNYvQQqOJ7hbfikS" class="sec"><!--pnid:w3ZgGE4hz3uYwhxEOVqh5I-->五、下周（第 2 周）三条提醒</h2>
+
+<div data-page-node-id="EjCCkXTwI4ymvWsI5bmXo6" class="remind">
+  <div data-page-node-id="DELRyC9VH7ealafoAoF9hW" class="rt"><!--pnid:Gn5SZvzrZ5CQKkYVWu8kLt-->提醒一 · 别把「两店一年」当形式，先摸清自家直营店的工商结构</div>
+  <p data-page-node-id="h7D0P1QE9VK4zkaJTOYDFD"><!--pnid:blJbKFKcucjf4wqHUDDOb7-->第 2 周核心是主体资格与备案，而备案实操里最容易卡的就是这一项。北京高院《指导意见》第八条把直营店定义为「<b data-page-node-id="ixtrjyvLkLfgaTIcmMjfsS"><!--pnid:0Sm7j0aBiovsxoptXnV6KV-->特许人利用其经营资源直接从事特许经营业务的直营机构</b><!--pnid:HXrs0TAgeYaNhMygfT1CQY-->」——实务中分公司、全资子公司、控股股东及其配偶名下的个体工商户、部分地区的关联公司，都可能被认可。</p>
+  <p data-page-node-id="ov8wJM27pNJ5urbxLyxCsW"><b data-page-node-id="1varsJtl6MdA3r8c8xhaI0"><!--pnid:4djmqoi5eVzaol5qxg9XH6-->动作：</b><!--pnid:aVaRvk9DJGwgWwd37ijsGN-->把总部名下所有门店的工商信息拉一张表，逐家标注「主体类型 / 开业日期 / 是否使用本品牌 / 是否由总部实际控制」，看能不能凑齐 2 家满 1 年。凑不齐的，本周就要补方案，不是等到备案被驳回再说。</p>
+</div>
+
+<div data-page-node-id="P9Re5Fhu0Bq49rt9g9GyU7" class="remind">
+  <div data-page-node-id="6tP5ztdVsGYb4qZjbVAjkO" class="rt"><!--pnid:Bt73FQsLK64RVfo7VWbitL-->提醒二 · 备案是一次性动作，合规是持续状态</div>
+  <p data-page-node-id="RGchbzWDo524FwiBK6gbC0"><!--pnid:Er94jr8UOF3ppGfYXVNAkS-->本周最该记住的教训来自最高法典型案例岑某案<code data-page-node-id="BkvCVHm50ZxuWBQmHXozZQ"><!--pnid:SzPPCsbj3ZhZQo9gche9di-->(2023)浙8601民初706号</code><!--pnid:7w5A5qK6Gz9EGPodG1fX8D-->：某公司签约前已完成备案，但<b data-page-node-id="kP7C7iEvi02RtNnCFnXnYn"><!--pnid:Xj3r5vkiTnDYKucpD4eG6M-->履约期间</b><!--pnid:ZGijDsxvjRtXGxEFS2SAcH-->被行政处罚、备案资格被撤销却未披露，叠加多起执行案件无财产，法院认定构成实质性影响，判解除并返还 7 万。</p>
+  <p data-page-node-id="fjnSUXGEI55eSUnNtnNiB8"><b data-page-node-id="KlkV2pkpnWuYPkhSzb10Vk"><!--pnid:QcRrLTM2lMuNFAIjQAo6jC-->动作：</b><!--pnid:7eTVXChUviTngAHgaFLQRU-->建一个季度自查表，四项固定检查——①涉诉与被执行（中国执行信息公开网）②行政处罚（信用中国）③商标状态（中国商标网）④备案资格状态。任一项发生变化，<b data-page-node-id="48DoV3aQwJMi0B2e8e9od0"><!--pnid:WwKgxdsqb35iN0zA8SeJrs-->30 日内</b><!--pnid:KMgEjPVfZboZnqPcBvlnuf-->向全体在营加盟商书面披露并留签收。这比把备案办下来重要得多。</p>
+</div>
+
+<div data-page-node-id="71Q4I9QtfgQeRFVsBy6601" class="remind">
+  <div data-page-node-id="RcQqRPMsrxi9NBVQ49suPO" class="rt"><!--pnid:GwPbvwwXyUzL2hIXgd1YOv-->提醒三 · 开始用判例库，别再靠读文章建立直觉</div>
+  <p data-page-node-id="yZV6pU51PeWQNEuzsRWdmG"><!--pnid:4noNjgTeMJ63t4JPxkhezb-->本周那 10 类纠纷图谱给你的是框架，但框架不产生直觉，直觉来自样本量。<b data-page-node-id="QI6VOwTGt5B8XMiJkOsALL"><!--pnid:byzbFsBgIGp0Nk8fVF62vf-->动作：</b><!--pnid:z3UuBjQfOjLVJUgLxRHPLp-->本周读 10 份特许经营合同纠纷判决，按「案号 / 诉请 / <b data-page-node-id="S0BF8o3Yn1aGYkxOty9gwC"><!--pnid:pvejLHpesSL8NfYHeXfUnM-->已实际经营月数</b><!--pnid:cSenqK4X4nCqigQrHIeSTp--> / 命中致命层哪几项 / 总部证据是否完整 / 返还比例 / 说理金句」建表。</p>
+  <p data-page-node-id="gNHDntP6a8Voe0jAS54wJe"><!--pnid:Ur1zGKRu4aVUKNXTJ9cz2H-->其中「<b data-page-node-id="145kcN2nIXmSAzmRUsNrH4"><!--pnid:IKxVwpEtQb1vn4wYzJkwkE-->已实际经营月数</b><!--pnid:3CAK05Mi1hyt1PSLO9pOUB-->」是唯一必填且最关键的字段——它与返还比例强相关，是北京高院第十九条「实际经营期限」这个权重的实证来源。3 个月攒到 50 份，按这个字段分组，你会得到一张比任何文章都准的退费预测表。</p>
+</div>
+
+<footer data-page-node-id="4Ejtm5RZO1xWrCqwoEwlMY"><!--pnid:8rFGwd1ZF8HLNaJ1uBXh6k-->蒙自源式连锁 · 法务总监养成计划 · 第一周测验</footer>
+</div>
+
+<script data-page-node-id="NcvY1YIz5HY1DT0fhSqaGG" data-pnid-children="UwAk7QAkkR0upMn1DEYL8M">
+var CHOICE=[
+{q:"某米线品牌与投资人签《门店委托管理协议》，约定：投资人出资设立个体工商户开店，总部派驻店长负责日常经营与采购，门店按月向总部支付利润的 30% 作为管理费。关于这一安排，下列说法正确的是：",
+ opts:[
+  {t:"属于委托合同关系，不适用《商业特许经营管理条例》，总部无需备案",ok:false},
+  {t:"属于内部合伙，双方共享收益共担风险，各自承担相应责任",ok:false},
+  {t:"存在被认定为实质特许经营的风险，且总部因实际经营而难以隔离食安与用工责任",ok:true},
+  {t:"门店注册为个体工商户，因此全部经营责任由投资人承担，总部无任何风险敞口",ok:false}],
+ exp:"<div class='hd'>答案：C</div>"+
+ "<p>A 错在最危险的地方。判断是不是特许经营，看的是<b>实质三要素</b>：①许可经营资源（门店使用品牌商标）②统一经营模式（总部派店长、管采购）③收取费用（按月收利润的 30%）——<b>三条全中</b>。北京高院《指导意见》第三条、上海高院《解答》第一问都采实质认定原则，合同叫《委托管理协议》不影响定性。最高法 2026 年典型案例一更狠：把一份合作拆成《服务协议书》+《项目标识使用协议》两份，法院照样<b>整体穿透</b>认定为特许经营。</p>"+
+ "<p>C 对在两点。第一，被认定实质特许的后果是：行政处罚（未备案 1-5 万，逾期仍不备案 5-10 万并公告）+ 合同按特许规则处理（冷静期、信息披露义务全部回溯适用）。第二，也是更要命的一点——<b>总部派人经营，就把加盟模式最大的法律优势主动放弃了</b>。加盟的优势是「责任隔离」：加盟商是独立经营主体，食安、用工、消费者责任原则上由加盟商承担。而托管模式下总部实际管人管采购，一旦出食安事故或欠薪，监管部门和法院会穿透到总部。</p>"+
+ "<p>D 错得很典型。门店登记在投资人名下，只解决了<b>行政法上的第一责任人</b>问题，解决不了<b>民事上的实质责任</b>。总部派去的店长签的采购合同、招的员工，都可能被认定与总部存在用工或代理关系。</p>"+
+ "<div class='trap'><b>实务坑点：</b>很多品牌搞托管联营，动机是「规避两店一年和备案」。算错了——你规避的是 1-5 万的罚款，换来的是食安事故的无限责任敞口。一次群体性食物中毒，赔偿规模是百万级起步，还要叠加停业整顿和品牌崩塌。这笔账根本不在一个量级。<br><b>总部的正确动作：</b>如果一定要做托管，①合同必须明确总部是受托人、以门店名义对外经营；②食品安全许可证、劳动合同主体与实际经营一致；③投保食品安全责任险，<b>被保险人必须包含总部</b>；④主动做备案——成本 1-5 万的事，别赌。</div>"},
+
+{q:"关于加盟保证金，下列表述正确的是：",
+ opts:[
+  {t:"保证金属于价外费用，收取时应当并入销售额缴纳增值税",ok:false},
+  {t:"保证金被没收时，原则上应并入销售额缴纳增值税",ok:true},
+  {t:"合同终止后，总部可以「账目尚未核对清楚、存在争议」为由长期扣押保证金",ok:false},
+  {t:"把保证金在合同中写成「违约金」，对总部更有利，可以避免被调减",ok:false}],
+ exp:"<div class='hd'>答案：B</div>"+
+ "<p>A 错。保证金在<b>收取时</b>不是价外费用，不构成销售收入，此时不征增值税。B 对：一旦<b>没收</b>（比如加盟商违约，按约定不予退还），这笔钱性质从担保变成了总部的收入，原则上应并入销售额计税。这个时点差异在税务稽查里是常见调整项。</p>"+
+ "<p>C 错，而且是<b>保证金纠纷里总部最常见的败诉原因</b>。保证金所有权属于加盟商，总部只是占有。它的功能被严格限定在「担保」：只能扣除<b>已确定</b>的欠付款项和应赔偿金额。以「有争议」为由整体扣押，法院普遍不支持。正确做法是：合同写死退还时限（<b>建议终止后 60 日内</b>），对无争议部分先抵扣退还，只对争议部分暂扣，且每次扣划都要书面通知并列明明细。</p>"+
+ "<p>D 错得最离谱但最常犯。写成「违约金」，就落入《民法典》<b>第五百八十五条第二款</b>——违约金过分高于造成的损失的，法院可以调减，司法惯例以<b>超过实际损失 30%</b> 为参照线。而写成「保证金」，它是担保，按担保范围扣除，不适用调减规则。<b>看起来更有利，实际上把自己的武器交给了对方。</b></p>"+
+ "<div class='trap'><b>实务坑点：</b>加盟商律师打保证金有三板斧——①主张保证金是「变相加盟费」，要求一并返还；②主张总部长期扣押构成违约，要求支付资金占用费；③如果合同里写成违约金，直接申请调减。<br><b>防守动作：</b>①合同里明确保证金的<b>担保范围</b>（欠付货款、管理费、违约金、损害赔偿金、实现债权费用）；②约定扣划的<b>计算方式</b>；③约定退还时限；④每次扣划发出书面通知并留签收或邮寄凭证；⑤名称就叫保证金，别写成违约金。</div>"},
+
+{q:"关于加盟合规「核心三件套」（两店一年 / 备案 / 信息披露），下列哪一情形会<b>直接导致合同无效</b>？",
+ opts:[
+  {t:"特许人不具备「至少 2 个经营时间超过 1 年的直营店」",ok:false},
+  {t:"特许人未在首次订立特许经营合同之日起 15 日内备案",ok:false},
+  {t:"个体工商户作为特许人与他人签订特许经营合同",ok:true},
+  {t:"特许人未如实披露其不具备「两店一年」条件",ok:false}],
+ exp:"<div class='hd'>答案：C</div>"+
+ "<p>这是整套合规体系里<b>唯一的无效红线</b>，必须一刀切记住。</p>"+
+ "<p>A、B 都是<b>管理性强制性规范</b>，不影响合同效力。《条例》第七条第二款（两店一年）、第八条（15 日内备案）——北京高院《指导意见》第七条、第八条，上海高院《解答》第三问口径完全一致：不导致合同无效。后果只有行政处罚（未备案罚 1-5 万，逾期仍不备案 5-10 万并公告）。</p>"+
+ "<p>C 对。《条例》<b>第三条第二款</b>「企业以外的其他单位和个人不得作为特许人从事特许经营活动」，被认定为<b>效力性强制性规定</b>。北京高院《指导意见》第九条、上海高院《解答》第四问都明确：<b>合同无效</b>。最高法 2026 年七件典型案例中的案例三，特许人系个体工商户，法院即认定合同无效。无效的后果是全额返还 + 按过错赔偿，这是最惨的一种输法。</p>"+
+ "<p>D 属于「安全层」信息。北京西城法院公开口径：<b>并非所有的信息披露不实都能达到致使合同目的无法实现的后果，未如实披露不具备两店一年，不一定构成解除或撤销的条件。</b></p>"+
+ "<div class='trap'><b>实务坑点：</b>集团做加盟，签约主体<b>必须是公司</b>，不能图省事用某个门店的个体工商户执照、也不能用分公司名义签约（分公司虽非法人但有营业执照，实务中争议大，稳妥做法是用有独立法人资格的子公司）。<br>还有一种隐蔽踩雷：商标持有人是老板个人、签约主体是运营公司，而商标从未许可给运营公司并办理许可备案——这时运营公司不拥有经营资源，加盟商可以主张主体不适格或资源瑕疵。<b>动作：</b>签约前核对三项：①营业执照类型（有限责任公司）②商标权人或<b>已备案的独占许可</b>③商标许可是否已向商标局备案（《商标法》第四十三条：未备案不得对抗善意第三人）。</div>"},
+
+{q:"下列哪一项信息披露不实，法院<b>最不可能</b>认定为「构成实质影响」从而支持加盟商解除合同？",
+ opts:[
+  {t:"未披露总部的注册商标正处于被撤销连续三年不使用（撤三）程序中",ok:false},
+  {t:"未披露总部在签约前因虚假宣传被市场监管部门行政处罚",ok:false},
+  {t:"未披露总部不具备「两店一年」条件",ok:true},
+  {t:"未披露总部已被列为被执行人，且多起执行案件无可供执行财产",ok:false}],
+ exp:"<div class='hd'>答案：C</div>"+
+ "<p>这题考的是「实质影响」标准的<b>信息类型分层</b>。</p>"+
+ "<p>致命层（几乎必然导致解除/撤销）：①经营资源权属瑕疵（商标未注册、被异议、被撤三、权属争议）②特许人主体不适格 ③核心资质缺失 ④<b>重大涉诉、仲裁、行政处罚、被执行</b> ⑤商标许可未备案且存在权属争议。<b>A、B、D 全部命中致命层。</b></p>"+
+ "<p>其中 B、D 还有明文依据：北京高院《指导意见》<b>第十六条第二款</b>——「与特许人有关的诉讼、仲裁或行政处罚可能直接影响到被特许人是否签订特许经营合同，或者可能对被特许人实现特许经营合同目的产生重大影响，但特许人隐瞒该诉讼、仲裁或行政处罚情况的……可以依法解除该特许经营合同」。这是两份审判指引里<b>唯一把涉诉/处罚明文列为解除事由</b>的条款，也是加盟商律师最常用的一把刀。</p>"+
+ "<p>C 属于安全层。北京高院第八条、上海高院第三问都认定「两店一年」是管理性规范，北京西城法院更是明确表态：未如实披露不具备两店一年，<b>不一定构成解除或撤销的条件</b>。</p>"+
+ "<div class='trap'><b>实务坑点：</b>总部的直觉往往是「我没备案/我不够两店一年，赶紧瞒着」——<b>瞒错了对象</b>。这两项瞒了，民事上问题不大（最坏是行政罚款）。<br><b>真正必须主动披露的是另外四项</b>：商标状态、涉诉与被执行、行政处罚、商标许可状态。这几项瞒了，一告一个准。<br><b>动作：</b>建一个签约前 30 日的固定核查清单，四查：中国执行信息公开网（被执行人/失信）、信用中国（行政处罚）、中国商标网（商标状态）、商标局（许可备案）。核查结果<b>全部写进信息披露文件</b>，哪怕是不利信息。加盟商最狠的武器不是「你没告诉我」，而是「你告诉我的和公开记录对不上」。</div>"},
+
+{q:"加盟商与总部签约，支付加盟费 20 万元，领取了运营手册并完成了 3 天培训，但尚未选址、未开店。签约后第 40 天，加盟商书面提出解除合同。合同中<b>未约定</b>冷静期条款。最可能的处理结果是：",
+ opts:[
+  {t:"已领取运营手册，属于已实际利用经营资源，不能解除",ok:false},
+  {t:"合同未约定冷静期，加盟商不享有单方解除权",ok:false},
+  {t:"可以解除，总部应返还约 16 万-19 万元",ok:true},
+  {t:"签约已超过 30 日，冷静期已届满，不能解除",ok:false}],
+ exp:"<div class='hd'>答案：C</div>"+
+ "<p>三处考点，逐条拆。</p>"+
+ "<p><b>第一，没约定也有。</b>《条例》<b>第十二条</b>要求双方在合同中约定冷静期，但没约定不等于没有。北京高院《指导意见》<b>第十八条</b>：未约定的，被特许人在合同订立后的<b>合理期限内仍可以单方解除</b>；上海高院《解答》第八问：即使未约定，合理期限内仍可以单方解除。最高法 2026 年七件典型案例的<b>案例二</b>（刘某、雷某案）把这个结论钉死了——法院明确：<b>冷静期单方解除权属于法定权利</b>。</p>"+
+ "<p><b>第二，拿到手册 ≠ 利用资源。</b>案例二的细节极关键：刘某、雷某<b>已经拿到了技术手册</b>，只是没接受操作培训、没开店，法院仍认定「未利用经营资源」，判决解除并返还全部 3.5 万元。上海高院第八问给的锚点是「通常应掌握在<b>特许人的经营资源尚未被被特许人实际利用之前</b>」。真正开店经营才算利用，拿到手册和参加培训都还不够。</p>"+
+ "<p><b>第三，没有固定的 30 天。</b>冷静期的「一定期限」法律没有明文数字，由合同约定；没约定的按行业特点、商业惯例确定。所以 D 的「超过 30 日」是凭空设定，不成立。</p>"+
+ "<p><b>关于退还金额：</b>冷静期解除的裁判区间是 <b>80%-95%</b>，总部可以扣除已实际提供服务的对价（3 天培训、选址服务已启动的部分）。20 万 × 80%-95% = <b>16 万-19 万</b>，扣除培训等已发生成本后确定。这里的关键在<b>举证</b>：总部要扣多少钱，就得证明自己为此花了多少钱——培训签到表、讲师成本、已投入的选址人工，都要有凭证。拿不出来，就往 95% 那一端靠。</p>"+
+ "<div class='trap'><b>实务坑点：</b>很多总部的合同里压根不写冷静期，以为「不写就不用给」。这是<b>反向操作</b>——不写，期限就由法院按「合理期限」自由裁量，而自由裁量在这个领域天然偏向加盟商，可能拖到几个月后仍能解除；写了，主动权就回到总部手里。<br><b>动作：</b>①合同明确写冷静期（建议<b>签约后 7 日</b>，餐饮行业 7 日足够完成初期评估）；②同时明确「已实际利用经营资源」的<b>认定标准</b>——建议写「以门店正式开业营业为准」；③建立培训、选址、带店的服务成本台账并留签收，这是扣减的唯一依据；④签约会全程录像，记录加盟商已阅读风险提示书。</div>"}
+];
+
+var CASE=[
+{q:"招商经理在自己的微信朋友圈发布了这样一条内容：「XX 米线，单店月流水 30 万起，8 个月回本，区域内最后 3 个名额，错过不再有」。加盟商看到后前来签约，支付加盟费 18 万元。开业后第 6 个月持续亏损，加盟商做了朋友圈公证，起诉要求撤销合同并全额退还加盟费。已知：该招商经理是总部正式员工，上述内容未写入合同，且无法提供任何门店达到月流水 30 万的证据。请写出你的风险评估与最优应对方案。",
+ scene:"请从<b>行政责任</b>、<b>民事责任（两条路径）</b>、<b>时间因素</b>、<b>最优应对</b>四个维度作答。",
+ pts:[
+  {w:"20分",c:"<b>行政责任</b>：《条例》<b>第十七条第二款</b>禁止特许人在推广宣传中宣传收益；违反的，按<b>第二十七条</b>责令改正、处 <b>3 万-10 万</b>罚款，情节严重的 <b>10 万-30 万</b>并公告。「月流水 30 万起、8 个月回本」是典型的收益承诺，直接命中。"},
+  {w:"20分",c:"<b>民事路径一 · 欺诈撤销</b>：具体数字承诺 + 无法举证真实性 + 员工职务行为 → 可认定欺诈（《民法典》<b>第一百四十八条</b>）。撤销后自始无效，返还财产（<b>第一百五十七条</b>），退还区间 <b>80%-100%</b>，另可能赔偿直接损失。最高法 2026 年典型案例<b>案例四</b>（张某、王某案）即虚假宣传被认定欺诈、合同被撤销。"},
+  {w:"20分",c:"<b>民事路径二 · 视为合同内容</b>：北京高院《指导意见》<b>第十四条</b>——宣传资料通常是要约邀请，<b>但对合同订立有重大影响的说明和承诺，亦可视为合同内容</b>。月流水和回本周期是加盟商决策的核心依据，属于「重大影响」，即便不构成欺诈，也构成违约。"},
+  {w:"15分",c:"<b>时间因素</b>：撤销权的除斥期间是 <b>1 年</b>，自知道或应当知道之日起算（《民法典》<b>第一百五十二条</b>），不中断不延长。本案开业第 6 个月起诉，<b>撤销权尚未消灭</b>——硬扛时间无用。"},
+  {w:"15分",c:"<b>总部的两个抗辩点</b>：①员工个人行为抗辩——若能证明该内容非总部官方发布、公司有明令禁止的话术红线且做过培训，可主张超出职务范围；但难度极高，因为对方是正式员工、内容面向不特定招商对象。②「商业吹嘘 vs 欺诈」的界分——若能举证部分门店确有接近 30 万流水的真实样本，可争取降格为一般商业吹嘘（参考西城法院李女士案：谎称利润 300%-500% 仍未获支持）。"},
+  {w:"10分",c:"<b>最优应对：不是硬扛，是分级止损。</b>三选一：①<b>主动和谈</b>——退还 70%-85% 并签署保密与撤诉协议，成本低于败诉（败诉是 80%-100% + 诉讼费 + 行政处罚 + 舆情）；②若决定应诉，立即做<b>止损切割</b>——对涉事员工做内部处理并留痕、全渠道下架该话术、发布整改公告（这些是行政罚款裁量的从轻情节）；③同步启动<b>全面话术排查</b>，这类内容通常不止一条、不止一个人发。"}
+ ],
+ exp:"<div class='hd'>这题的题眼：三条线要分开算</div>"+
+ "<p>新手最容易犯的错是把行政责任和民事责任混在一起算，或者只看到「能不能赢官司」。<b>这类案子真正的损失不在判决金额，而在三处叠加</b>：①判退 18 万左右的 80%-100%（约 14.4 万-18 万）；②商务部门的行政罚款 3 万-30 万；③一旦败诉，同期其他加盟商会连锁起诉，而这类话术在招商团队里通常是普遍现象不是个案。</p>"+
+ "<p><b>所以最优解几乎总是「和谈 + 保密」</b>，而不是应诉。应诉的价值只有一个：当这个案子会成为其他加盟商的样板、必须在程序上确立「我们不承诺收益」的立场时。但这个判断要由你来权衡商业代价，不能默认应诉。</p>"+
+ "<div class='trap'><b>实务坑点：</b>招商团队的朋友圈、短视频、招商会 PPT，是总部<b>最失控、证据最致命</b>的三个地方。加盟商做公证的成本只有几百块，而一条「8 个月回本」就能撬动十几万的退款。<br><b>落地动作（本周就做）：</b>①出一份《招商话术红黄线表》——红线（绝对禁止）：任何形式的收益承诺、回本周期、流水保证、名额稀缺性暗示；黄线（需审批）：门店数、行业排名、获奖情况（需有证书佐证）。②话术表要有<b>正反对照</b>，光说「不许承诺收益」没用，要给替代说法：「8 个月回本」→「回本周期取决于选址、租金和经营能力，我们的信息披露文件里有全部在营门店的实际经营数据，你可以自己去店里看」。③要求招商人员签署《话术合规承诺书》，违规纳入考核。④每月抽查招商人员的朋友圈与聊天记录，留痕。</div>"},
+
+{q:"加盟商经营 14 个月后关店。经对账，欠总部货款 8 万元、管理费 2 万元（合计 10 万）。合同约定「合同终止后，甲方在乙方结清全部款项后 60 日内退还保证金」，保证金 5 万元。加盟商要求退还 5 万保证金，同时主张其中 3 万元的货物存在质量问题、拒绝支付。请写出总部的处理步骤与每一步的法律依据。",
+ scene:"请写出<b>具体步骤</b>（含顺序）、每一步的<b>依据</b>、以及<b>绝对不能做</b>的事。",
+ pts:[
+  {w:"20分",c:"<b>第一步：区分无争议与有争议。</b>10 万欠款中，7 万无争议、3 万有争议（质量问题）。<b>总部只能就已确定的欠付款项抵扣保证金</b>，不能因为有争议部分就整体扣押全部 5 万保证金。这是保证金纠纷中总部最典型的败诉原因。"},
+  {w:"20分",c:"<b>第二步：逐笔书面通知扣划。</b>发出《保证金扣划通知书》，逐笔列明：货款批次、送货日期、金额、对应的对账单号；管理费所属期间与计算方式。通过合同约定地址邮寄并保留邮寄凭证，或要求现场签收。<b>没有这次书面通知，后续诉讼中抵扣的举证责任在总部且极难完成。</b>"},
+  {w:"15分",c:"<b>第三步：抵扣后的处理。</b>5 万保证金全额抵扣无争议的 7 万欠款后，剩余 2 万转为普通应收账款，向加盟商及保证人主张。注意：抵扣不是没收，要在通知中写明「抵扣后保证金余额为零，剩余欠款 X 元」。加盟商可能主张违约金过高请求调减（《民法典》第五百八十五条第二款），若合同中的违约金条款存在，需评估是否超过实际损失 30%。"},
+  {w:"15分",c:"<b>第四步：质量争议单独走程序，不与保证金捆绑。</b>3 万元货物质量问题属于<b>买卖合同</b>的质量异议路径（《民法典》第六百一十条等），与保证金抵扣是两个独立法律关系。正确做法是：告知加盟商在合理期限内提出书面质量异议、提供证据（照片、留样、检测报告），走售后或索赔流程。<b>不能因为对方主张质量问题，就把整个保证金卡住不动。</b>"},
+  {w:"15分",c:"<b>第五步：同步核查保证结构。</b>检查该加盟商的保证合同是否单独签署、是否写明「<b>连带责任保证</b>」（未写明的按《民法典》<b>第六百八十六条第二款</b>视为一般保证，保证人享有先诉抗辩权）、保证期间是否为 <b>3 年</b>（未约定的按<b>第六百九十二条第二款</b>只有 6 个月）、配偶是否共同签署（<b>第一千零六十四条</b>）。若保证期间已过 6 个月，追偿权已经丧失——这才是本案真正的胜负手。"},
+  {w:"15分",c:"<b>绝对不能做的三件事：</b>①以「账未对清、正在核查」为由长期不作答复——法院普遍不支持，且可能被认定为违约、判付资金占用费；②把保证金写成违约金直接没收——落入调减规则；③在未发出书面催告的情况下直接停止供货或单方解约——可能被反诉违约在先。"}
+ ],
+ exp:"<div class='hd'>这题的题眼：保证金不是总部的钱</div>"+
+ "<p>很多人处理这类案子的第一反应是「他欠我 10 万，我扣着 5 万不放，合情合理」。这个直觉在法庭上是<b>错的</b>。保证金的所有权从来属于加盟商，总部只是占有并享有<b>限定范围的担保权</b>。担保权不是所有权，不能任意处置。</p>"+
+ "<p>法院的审查逻辑是三段：①欠款是否<b>已确定</b>；②扣划是否有<b>合同依据</b>；③是否履行了<b>通知义务</b>。三段都要过，缺一段就可能被判返还保证金并支付利息。</p>"+
+ "<div class='trap'><b>实务坑点 · 真正的胜负手在保证期间：</b>本案表面争的是 5 万保证金，实际的总部风险是<b>剩下的 2 万加上可能追不回来的部分</b>。而决定能不能追回来的，是那份保证合同。<br>《民法典》第六百九十二条第二款：保证期间<b>没有约定的，为主债务履行期届满之日起 6 个月</b>。很多总部的模板里根本没写保证期间，或者写着「至主债务清偿完毕之日止」——后者按司法解释视为<b>约定不明，仍然是 6 个月</b>（注：约定不明与未约定的处理，需结合《民法典》及《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第三十二条把握，实务中均按 6 个月掌握）。<br>本案加盟商已经营 14 个月，若合同没写 3 年保证期间，很可能保证责任已经消灭——<b>那 2 万就真的没了</b>。<br><b>动作：</b>本周把全部在营合同的保证条款拉出来检查，缺「连带责任保证」字样、缺 3 年期间、缺配偶签字的，立即签补充协议补正。已过期的，评估是否还能通过催告函重新起算。</div>"},
+
+{q:"某区域客户拟在某二线城市开 5 家店，总投资约 400 万元，拟注册一家有限责任公司（夫妻二人各持股 50%）。总部拟定的文件结构是：《特许经营合同》，其中第 12 条为保证条款，由该公司盖章、法定代表人签字。请指出这套结构存在的问题，并给出修改方案。",
+ scene:"请从<b>保证结构</b>、<b>主体类型</b>、<b>交易结构</b>三个层面作答，并给出可直接落地的修改清单。",
+ pts:[
+  {w:"15分",c:"<b>问题一：保证条款作为合同附件，可能被认定格式条款。</b>加盟商可主张「加重对方责任、排除对方主要权利」而无效（《民法典》<b>第四百九十七条</b>）。<b>修改：保证合同必须单独签署</b>，一式两份，不并入加盟合同正文或附件。"},
+  {w:"20分",c:"<b>问题二：未写明「连带责任保证」。</b>《民法典》<b>第六百八十六条第二款</b>：保证方式没有约定或者约定不明确的，<b>视为一般保证</b>。一般保证人享有<b>先诉抗辩权</b>——必须先把加盟商公司告到底、执行到底、确认无财产可供执行，才能找保证人。<b>两个字之差，就是能不能拿回钱的区别。</b>修改：明文写「保证人承担<b>连带责任保证</b>」。"},
+  {w:"20分",c:"<b>问题三：保证期间未约定或约定过短。</b>《民法典》<b>第六百九十二条第二款</b>：未约定的为<b>主债务履行期届满之日起 6 个月</b>，极短，很容易过期。<b>修改：明确约定 3 年。</b>"},
+  {w:"20分",c:"<b>问题四：配偶未签署。</b>涉及夫妻共同财产，需共同意思表示（《民法典》<b>第一千零六十四条</b>），配偶不签字则难以执行共同财产。本案夫妻二人各持 50%，<b>两人都是股东，都必须作为保证人签字</b>，且互为配偶关系，需各自签署。<b>修改：保证合同由公司 + 两名股东 + 两名股东的配偶共同签署（共 4 个自然人 + 1 个公司主体）。</b>"},
+  {w:"15分",c:"<b>问题五：缺少提示与手抄环节。</b>加盟商可主张「不知道保证的法律后果」。<b>修改：保证条款加粗、下划线，并由保证人手抄</b>「本人已充分知悉保证责任及法律后果」<b>并签名。</b>同时保证范围要写全：主债权 + 违约金 + 损害赔偿金 + 实现债权费用（律师费、保全费、公证费）。"},
+  {w:"10分",c:"<b>主体类型层面：正确。</b>投资额 400 万 > 80 万、多店、二线城市，按分层策略应当要求有限责任公司，客户方案符合要求。但要提示：夫妻各持 50% 的公司虽非一人公司（不适用《公司法》<b>第二十三条第三款</b>的穿透规则），但财产混同风险高，可考虑要求<b>注册资本实缴</b>或提供资产证明。"},
+  {w:"10分",c:"<b>交易结构层面：优先总部直签 + 代理收佣金。</b>5 家店若采用「区域代理/分特许」结构，会引发二级特许人的资格与备案问题（各地商务主管部门口径不一）。<b>更稳的做法：代理只做招商与督导服务、收佣金（服务合同），5 家店的《特许经营合同》全部由总部与终端主体直签。</b>这样法律关系是服务合同 + 若干个直接特许，规避分特许的合规负担。"}
+ ],
+ exp:"<div class='hd'>这题的题眼：主体类型不是关键，担保结构才是关键</div>"+
+ "<p>前一讲已经给过结论：个体户的无限责任看起来对总部有利，但个体户名下往往无财产，查财产线索的成本会抵消掉这个优势；一人公司的穿透规则（《公司法》第二十三条第三款）虽然存在，但<b>举证责任在债权人</b>，且必须启动诉讼才能穿透。所以真正的保障从头到尾只有一条：<b>有财产的实际控制人 + 配偶的连带责任保证</b>。</p>"+
+ "<p>而本题的价值在于：它把「担保结构」里最容易漏掉的四个细节全部摆在一起了——<b>单独签署、连带二字、3 年期间、配偶签字</b>。这四个缺任何一个，保证合同的效力都会大打折扣，而它们恰恰是模板里最容易缺失的。</p>"+
+ "<div class='trap'><b>实务坑点 · 最贵的一个字：</b>「连带」这两个字，值的是整套合同能不能执行。我见过太多总部的保证合同条款写得很长、很唬人，唯独没写「连带」两个字，结果被认定为一般保证。一般保证意味着什么？你得先起诉加盟商公司、拿到判决、申请执行、法院出具终本裁定，确认无财产可供执行——<b>这一整套流程走完至少 12-18 个月</b>。而在这 18 个月里，保证人的房子早过户了、车早卖了、存款早转走了。<br><b>动作：</b>本周随机抽 10 份已签合同，逐份核对四项：①保证是否单独签署；②是否有「连带责任保证」字样；③保证期间是否 3 年；④配偶是否签字。缺一项的，立即补签补充协议。<b>这是本周性价比最高的一件事——什么都不用改，只补签字，就能把几千万元的应收敞口从裸奔状态拉回来。</b></div>"}
+];
+
+var ESSAY=[
+{q:"请写出判断「信息披露不实是否构成实质影响」的完整判断框架，并列出「致命层」信息的具体项目（至少 5 项）。",
+ pts:[
+  {w:"15分",c:"<b>框架的来源</b>：《条例》<b>第二十三条第三款</b>字面看「隐瞒或提供虚假信息即可解除」，但披露内容有 12 大项几十小项，若任何一项不实都能解除，交易将不稳定。故北京高院《指导意见》<b>第十六条</b>、上海高院《解答》<b>第七问</b>均作限缩——必须达到<b>「实质影响」</b>程度。"},
+  {w:"25分",c:"<b>第一层 · 类型分层。</b>致命层：①经营资源权属瑕疵（商标未注册/被异议/被撤三/权属争议）②特许人<b>主体不适格</b>（《条例》第3条第2款）③核心资质缺失（如自身无食品经营许可证）④<b>重大涉诉、仲裁、行政处罚、被执行</b>（北京高院第16条第2款明文）⑤商标许可未备案且存在权属争议。高危层：直营店数据、加盟商数量与关店率、供应链加价率未披露、财务与审计摘要。安全层：<b>未披露两店一年</b>、未备案、一般性商业吹嘘、市场前景的乐观表述。"},
+  {w:"20分",c:"<b>第二层 · 时间分层。</b>签约前不实 → 走<b>欺诈撤销</b>（《民法典》第148条），判断标准是「<b>足以导致</b>加盟商签订合同」，后果是自始无效 + 返还财产（第157条），<b>除斥期间 1 年</b>（第152条，不中断不延长）。签约后不实 → 走<b>违约解除</b>（《条例》第23条第3款 + 北京高院第16条），判断标准是「造成实质影响」，适用 3 年诉讼时效。"},
+  {w:"20分",c:"<b>第三层 · 举证分层。</b>谁主张谁举证：加盟商需证明①总部披露了什么②真实情况是什么。<b>总部的双刃剑</b>：《信息披露回执》签了，就是「披露了什么」的证明；若内容与实际不符，这份回执就是对方最好的证据。反之若连回执都没有，法院通常推定披露义务未履行。<b>结论：必须有回执，但回执内容必须真实。</b>"},
+  {w:"20分",c:"<b>落地工具 · 实质影响五问：</b>一问类型（哪一层）→ 二问时间（签约前还是后，是否过 1 年）→ 三问关联（与「合同目的」即使用经营资源开展业务有无直接关联）→ 四问证据（对方手里有无客观第三方文件：处罚决定书、商标局记录、执行公开信息）→ 五问账本（我方能否拿出回执、督导记录、培训签到、工单系统）。"}
+ ],
+ exp:"<div class='hd'>这道题如果你答不出来，说明本周内容还没内化</div>"+
+ "<p>判断框架的价值不在「知道」，在于它把你从「这个信息不实了，我们要输了」的恐慌，拉回到「这条信息在第几层、发生在哪个时间点、对方手里有什么」的结构化分析。<b>恐慌来自信息未被分类，直觉来自分类后的样本积累。</b></p>"+
+ "<p>三个层次里，最容易被忽略的是<b>时间分层</b>——因为它是总部唯一可以主动利用的一层。签约前的不实走撤销，而撤销权有 <b>1 年除斥期间</b>，不中断不延长。<b>收到律师函的第一件事是算时间</b>：签约日、知道日、起诉日，三个点一摆，超过 1 年就先打掉撤销权，把对方逼回「违约解除」的路径。这条路径的返还比例低得多（30%-80% vs 80%-100%），因为已经营的部分不退。</p>"+
+ "<div class='trap'><b>实务坑点：</b>「知道或应当知道之日」的起算点，是加盟商律师和你在庭上要争的第一个焦点。加盟商会说「我起诉前才查到你的行政处罚记录」，你会说「这些信息在信用中国上公开可查，他签约时就能查到」。<br><b>这个争议的解法在事前不在事后</b>：在信息披露文件里<b>主动写明</b>「本文件所附的涉诉、处罚、商标状态信息，系截至 XXXX 年 XX 月 XX 日的公开查询结果，查询渠道如下……」并让加盟商签收。<b>这样「应当知道之日」就被锁定在签收日</b>，1 年从那天起算。一份回执，锁定一个起算点，值一年的时间。</div>"},
+
+{q:"老板要求你放行一份存在合规瑕疵的加盟合同：该客户重要，尚未完成备案、也未在签约前 30 日做信息披露，老板的理由是「先签约后补办」。请写出你的处理步骤（至少 4 步）。",
+ pts:[
+  {w:"15分",c:"<b>第一步：不先说「不行」，先把风险量化成老板听得懂的数字。</b>①行政：未备案罚 <b>1 万-5 万</b>，逾期仍不备案 <b>5 万-10 万</b>并公告（《条例》<b>第二十五条</b>）。②民事：冷静期是<b>法定权利</b>（最高法 2026 典型案例案例二），未做信息披露则加盟商可主张解除；若再叠加任何虚假宣传，构成欺诈可撤销，<b>退还 80%-100%</b>。③敞口金额 = 加盟费 × 80%-100% + 可能的赔偿 + 诉讼成本。<b>用金额说话，不用法条说话。</b>"},
+  {w:"20分",c:"<b>第二步：指出哪一项能补、哪一项补不了——这是本案的关键。</b>备案可以事后补办（虽然违法，但客观上能补）。<b>但信息披露必须在签约前至少 30 日</b>（《条例》<b>第二十一条</b>），这一项<b>事后补办在时间维度上无法治愈</b>，是硬伤。所以「先签约后补办」这个方案，实际上只补了一半，而且补的是次要的那一半。"},
+  {w:"25分",c:"<b>第三步：给出可比选项，而不是只给否决。</b>至少三个方案交给老板选：<b>A · 延后 30 天签约</b>，期间完成信息披露（成本：可能丢单）。<b>B · 先签《合作意向书》+ 收定金</b>，不签正式特许经营合同、不收加盟费，用 30 天完成信披后再签正式合同（定金不超过主合同标的额 <b>20%</b>，《民法典》<b>第五百八十六条第二款</b>）。<b>C · 降低首期款</b>，把首期加盟费压缩到可承受的损失范围，用风险敞口换时间。法务的价值在于<b>给出选项和每个选项的代价</b>，不是给出「可以/不可以」。"},
+  {w:"20分",c:"<b>第四步：无论老板选哪个，书面留痕。</b>以邮件或会议纪要形式写明：风险点、量化金额、可选方案、<b>决策人</b>。法务的意见是「建议」，决策权在老板，但<b>决策记录必须存在</b>。这不是甩锅，是让决策在信息充分的情况下做出——同时也保护你自己。"},
+  {w:"20分",c:"<b>加分项 · 三个进阶动作：</b>①即使放行，也要在合同里<b>单独签署《风险告知书》</b>，把未备案、未披露的事实书面告知加盟商并取得签收——这不能治愈违法，但能切断「欺诈」的认定（欺诈要求「故意隐瞒」，书面告知后不成立）。②<b>压缩首期款</b>，把退还敞口控制在可承受范围。③同步启动<b>备案加急</b>与信披文件的准备，把「先签后补」的时间差压到最短。"}
+ ],
+ exp:"<div class='hd'>这道题考的不是法律，是法务总监这个岗位本身</div>"+
+ "<p>「老板要求放行风险合同」是法务总监职业生涯里最高频、也最见功力的一道场景题。<b>三个层次的回答，对应三个段位：</b></p>"+
+ "<p><b>初级</b>：说「不行，这违法」。老板听完之后会绕过你，或者直接换个人签。<b>你赢了道理，输了影响力。</b></p>"+
+ "<p><b>中级</b>：说「不行，风险是 X，依据是 Y 法条」。老板听完知道了风险，但还是不知道该怎么办——因为你的输出是<b>否决</b>，不是<b>方案</b>。</p>"+
+ "<p><b>总监级</b>：说「可以，但有三条路。A 路的代价是可能丢这个客户，B 路的代价是 30 天时间和客户体验，C 路的代价是我们自己承担 X 万元的退还敞口。我的建议是 B，理由是……您定。」——<b>把不可控的「违法风险」翻译成可控的「商业成本」，让老板在几个明码标价的选项里做选择。</b>这才是法务在商业决策里真正的角色。</p>"+
+ "<p>记住一句话：<b>法务不能只算法律账。</b>前面讲主体选择时就说过——强行要求所有加盟商注册有限责任公司，法律上更安全，但会显著降低招商转化率，业务部门的抵触是真实的。同理，这里如果为了合规丢掉一个战略客户，损失可能远大于那笔罚款。<b>你的工作是让老板知道代价，不是替老板回避代价。</b></p>"+
+ "<div class='trap'><b>实务坑点：</b>第四步的书面留痕，很多法务觉得「没必要」「显得不信任老板」。错了。<b>三年后这个客户出事、老板已经换了人、或者老板自己忘了当初是他拍的板——那时候唯一能证明「当时已经充分提示风险」的，就是那封邮件。</b><br>写邮件时注意措辞：不是「我反对」，而是「基于以下风险，我的建议是方案 B；如选择方案 C，建议同步完成 X 和 Y」。既留下了记录，又不构成对抗。<b>这是保护公司，也是保护你自己。</b></div>"}
+];
+
+/* ---------- 渲染 ---------- */
+var STORE={};
+try{STORE=JSON.parse(localStorage.getItem('cfl-w1-quiz')||'{}')}catch(e){STORE={}}
+function save(){try{localStorage.setItem('cfl-w1-quiz',JSON.stringify(STORE))}catch(e){}}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function buildChoice(){
+  var box=document.getElementById('choice');var html='';
+  CHOICE.forEach(function(it,i){
+    html+='<div class="q"><div class="qn">单选 '+String.fromCharCode(65+i)+'</div><div class="qt">'+it.q+'</div>';
+    it.opts.forEach(function(o,j){
+      html+='<div class="opt" data-q="'+i+'" data-o="'+j+'"><span>'+String.fromCharCode(65+j)+'. '+o.t+'</span><span class="mark"></span></div>';
+    });
+    html+='<div class="exp" id="ec'+i+'">'+it.exp+'</div></div>';
+  });
+  box.innerHTML=html;
+  box.querySelectorAll('.opt').forEach(function(el){
+    el.onclick=function(){
+      var qi=+el.getAttribute('data-q'),oi=+el.getAttribute('data-o');
+      var q=el.parentNode;
+      if(q.getAttribute('data-done'))return;
+      q.setAttribute('data-done','1');
+      q.querySelectorAll('.opt').forEach(function(o){
+        var k=+o.getAttribute('data-o');
+        o.classList.add('locked');
+        if(CHOICE[qi].opts[k].ok){o.classList.add('right');o.querySelector('.mark').textContent='✓';}
+      });
+      if(!CHOICE[qi].opts[oi].ok){el.classList.add('wrong');el.querySelector('.mark').textContent='✕';}
+      document.getElementById('ec'+qi).classList.add('on');
+      STORE['c'+qi]=oi;save();tally();
+    };
+  });
+  // 恢复
+  CHOICE.forEach(function(it,i){
+    if(STORE['c'+i]!==undefined){
+      var q=box.querySelectorAll('.q')[i];
+      q.querySelectorAll('.opt')[STORE['c'+i]].click();
+    }
+  });
+}
+
+function buildOpen(arr,elId,prefix,btnText){
+  var box=document.getElementById(elId);var html='';
+  arr.forEach(function(it,i){
+    html+='<div class="q"><div class="qn">'+(prefix==='k'?'案例 ':'简答 ')+(i+1)+'</div>';
+    html+='<div class="qt">'+it.q+'</div>';
+    if(it.scene)html+='<div class="scene">'+it.scene+'</div>';
+    html+='<textarea id="'+prefix+i+'" placeholder="在这里写下你的答案，写完再点下面的按钮对照评分要点……"></textarea>';
+    html+='<button class="btn" data-t="'+prefix+'" data-i="'+i+'">'+btnText+'</button>';
+    html+='<div class="exp" id="e'+prefix+i+'"><div class="hd">评分要点（共 100 分，对自知）</div>';
+    it.pts.forEach(function(p){html+='<div class="pt"><span class="w">'+p.w+'</span><span class="c">'+p.c+'</span></div>';});
+    html+='<div class="hd" style="margin-top:16px">深度解析</div>'+it.exp+'</div></div>';
+  });
+  box.innerHTML=html;
+  box.querySelectorAll('textarea').forEach(function(ta){
+    ta.value=STORE[ta.id]||'';
+    ta.oninput=function(){STORE[ta.id]=ta.value;save();tally();};
+  });
+  box.querySelectorAll('.btn').forEach(function(b){
+    b.onclick=function(){
+      var id='e'+b.getAttribute('data-t')+b.getAttribute('data-i');
+      document.getElementById(id).classList.toggle('on');
+      STORE['open'+id]=document.getElementById(id).classList.contains('on');save();tally();
+    };
+  });
+  arr.forEach(function(it,i){
+    var id='e'+prefix+i;
+    if(STORE['open'+id])document.getElementById(id).classList.add('on');
+  });
+}
+
+function tally(){
+  var c=0,n=0;
+  for(var k in STORE){if(/^c\d+$/.test(k)){n++;if(CHOICE[+k.slice(1)].opts[STORE[k]].ok)c++;}}
+  document.getElementById('s1').textContent=c;
+  var k2=0;for(var i=0;i<CASE.length;i++){if((STORE['k'+i]||'').length>=30)k2++;}
+  document.getElementById('s2').textContent=k2;
+  var k3=0;for(var j=0;j<ESSAY.length;j++){if((STORE['s'+j]||'').length>=30)k3++;}
+  document.getElementById('s3').textContent=k3;
+}
+
+document.querySelectorAll('.fold .fh').forEach(function(h){
+  h.onclick=function(){h.parentNode.classList.toggle('on');};
+});
+
+buildChoice();
+buildOpen(CASE,'case','k','查看评分要点与解析');
+buildOpen(ESSAY,'essay','s','查看评分要点与解析');
+tally();
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import {
   Scale,
@@ -67,7 +67,7 @@ const DELIVERABLES = [
 type Lesson = { title: string; id: string; localHtml?: string };
 type Week = { id: string; label: string; theme: string; lessons: Lesson[] };
 
-// 周模块（第 1–8 周、第 13 周为资料库原文；第 9 周为站内直读）
+// 周模块（课程全文已抓取至站内，见 LOCAL_LESSON_IDS）
 const WEEKS: Week[] = [
   {
     id: 'Bn840EZ5D63zhmqmjJkjv0',
@@ -177,6 +177,18 @@ const WEEKS: Week[] = [
     ],
   },
   {
+    id: 'week-09',
+    label: '第 9 周',
+    theme: '食品安全法定义务与「退一赔十」攻防',
+    lessons: [
+      {
+        title: '第 9 周第 1 天 · 食安法定义务系统梳理（含 100 条自查表）',
+        id: 'week09-day1',
+        localHtml: '/food-safety-week9.html',
+      },
+    ],
+  },
+  {
     id: 'BYrhHqoMDFRR5qonLJQe6y',
     label: '第 13 周',
     theme: '统采统配与用工 · 数据合规',
@@ -193,25 +205,88 @@ const WEEKS: Week[] = [
       { title: '第 13 周周末实战', id: 'yb4Ny8nApNOXvwjO0mrWna' },
     ],
   },
-  {
-    id: 'week-09',
-    label: '第 9 周',
-    theme: '食品安全法定义务与「退一赔十」攻防',
-    lessons: [
-      {
-        title: '第 9 周第 1 天 · 食安法定义务系统梳理（含 100 条门店自查表）',
-        id: 'week09-day1',
-        localHtml: '/food-safety-week9.html',
-      },
-    ],
-  },
 ];
 
 const lessonUrl = (id: string) => `https://www.workbuddy.cn/space/d/${id}`;
 
+// 已抓取至站内的课程（public/lessons/{id}.html）：免登录、可直接站内阅读
+const LOCAL_LESSON_IDS = new Set([
+  '0HlkUkNCNg115UbXjpU1uK',
+  '14WJa2pEI4OjAjkQzqcg4A',
+  '1ar5RwMGZyczNBlQD1TJKg',
+  '2tB3nm8hTQSrfG1swtwrsr',
+  '3Cl4SqOw7KcxTFrNBI9P5v',
+  '6arH6BQ8N802udNQFI0mNL',
+  '7ulCpJlZXeXzYIkzplYJyd',
+  '9N41ajAC0YT4c73LHOePHm',
+  '9YepcoqEkqWJtOxwTr1MnU',
+  'B5I5lvyTKXBl6aWW1XvemB',
+  'BpVNsssA70HmSRB1hiPK52',
+  'CYN6Ca4iLvJ2aT6PALOZRt',
+  'CjQWybJWSbvpgR9DuVHeIY',
+  'EJhWtZsoy0PEjdiCyh3dti',
+  'EVxBl5qsoYdYTevQ1ehlzn',
+  'EsLe3F5z1R2al0OCZne39t',
+  'FXIyVYkaVmukdLD37Y5JUv',
+  'GaKS1CaevHOhPPacP7vAJx',
+  'HLQGuMbrAhY6Qr8xoMiezG',
+  'KF0B9OHITqE1uomvLQ5g31',
+  'Kr5oK8qwQVOqYalDGyTNyS',
+  'LzEXSRGoGiyTKqM4QGjiBe',
+  'MC0CoUbXxRt6lZocHEWxAH',
+  'MVVDqUHvusnPV0bKNrEddq',
+  'N93jUAsWdap6gGPJgm2QeE',
+  'OPPzYYZVEUwRKibMqBTKpr',
+  'QEpAnVLjoIdFJB5u9wXpSf',
+  'RX6D0YfCv7JAkF1x8a98ad',
+  'Rd5cc6Ybpzp7Pse1rWDmaq',
+  'V45QnptrdJ7i8Ov2hdfYxW',
+  'V4mTl1mhgKVOoX7yqdR61Z',
+  'VdV2XWlvLJr2n8bL09TxTy',
+  'VniogK5Kv4KV2G3FGYJ7VS',
+  'WnT6AgmGJxGcwzsSeUTCfX',
+  'YwKTcwn28zaBAJcRHkA0yH',
+  'ZE9KjZOfyqQpJtPjsg23iW',
+  'a1JesKx8Bm1KgWZYDz9LYK',
+  'a5xc4Lr74ZqqJ9xcyC4oA8',
+  'aK7R5ZmKU1ahVzJI7doMdO',
+  'b4OkX3xXzf8TrgaquaNc8d',
+  'bcMO0nsipfUANOfSeE8lh4',
+  'd9xj2uSzPXoHaWCe2KEneZ',
+  'dcKfg0FzJRDXHmnC7G9ICe',
+  'eWSdFtnqoqMEIYG9TCBTeV',
+  'fbsGaOhUvHHJKTyXCTOdfV',
+  'ig1IgYan0X8xWZ0DRpQVQX',
+  'jWx3KC5iu0zcczBBGQG5jJ',
+  'k7Ohk2uoeq8cEx8wGcfC74',
+  'l1OSJoDyZmzIzSv7opDja5',
+  'm9RpFC3urxyq7Wqe9mua0v',
+  'naMNbbNE80NTm26XP8hyW6',
+  'o7kxBObM9ah4v8tE7LArwV',
+  'oPALTIVqnjPMvLQxnbwCe2',
+  'obdFuI5vpdeuMpRX7GZIqt',
+  'pheFurTqUKuKAwEinm7lY7',
+  'uBqPYJ8rBup8bys765Xew3',
+  'vTfXfo5ptxxNNJCm6rFWJ7',
+  'wIaxIxSTpQi5EAQmI7edO9',
+  'week09-day1',
+  'xSYQ2TpwHK2GTHcFldtuMb',
+  'yH99fOLzMSgjrd5OIaYJux',
+  'yb4Ny8nApNOXvwjO0mrWna',
+]);
+const lessonLocalUrl = (id: string) => `/lessons/${id}.html`;
+const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);
+
 export const CateringLegalTab: React.FC = () => {
   const [openWeek, setOpenWeek] = useState<string>(WEEKS[0].id);
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null);
+  const readerRef = useRef<HTMLDivElement>(null);
+
+  // 展开阅读面板后滚动到面板处；否则面板在列表上方，视觉上像"点了没反应"
+  const openLesson = (l: Lesson) => {
+    setActiveLesson(l);
+    setTimeout(() => readerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  };
 
   return (
     <div id="tab-catering-content" className="space-y-12 py-6">
@@ -321,6 +396,7 @@ export const CateringLegalTab: React.FC = () => {
         {/* ── 站内阅读面板：点击带「站内阅读」的课程后在此展开 ── */}
         {activeLesson && activeLesson.localHtml && (
           <motion.div
+            ref={readerRef}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -335,7 +411,7 @@ export const CateringLegalTab: React.FC = () => {
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <a
-                  href={activeLesson.localHtml}
+                  href={lessonLocalUrl(activeLesson.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-[#86868B] hover:text-[#B89F6B] transition-colors flex items-center gap-1"
@@ -353,7 +429,7 @@ export const CateringLegalTab: React.FC = () => {
               </div>
             </div>
             <iframe
-              src={activeLesson.localHtml}
+              src={lessonLocalUrl(activeLesson.id)}
               title={activeLesson.title}
               className="w-full h-[75vh] border-0 bg-white"
             />
@@ -393,9 +469,9 @@ export const CateringLegalTab: React.FC = () => {
                     <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
                       {w.lessons.map((l) => (
                         <li key={l.id}>
-                          {l.localHtml ? (
+                          {hasLocalLesson(l.id) ? (
                             <button
-                              onClick={() => setActiveLesson(l)}
+                              onClick={() => openLesson(l)}
                               className="group w-full flex items-center justify-between gap-3 py-2.5 text-left text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
                             >
                               <span>{l.title}</span>
@@ -433,7 +509,7 @@ export const CateringLegalTab: React.FC = () => {
           })}
         </div>
         <p className="text-xs text-[#86868B] mt-3">
-          * 计划共 16 周。第 1–8 周、第 13 周为资料库原文（点击跳转阅读）；第 9 周第 1 天为站内全文，点击「站内阅读」直接在页内展开。
+          * 计划共 16 周。已发布的课程全文均已存于本站，点击「站内阅读」免登录直接查看；需看原文可点上方「在资料库查看全部」。
         </p>
       </section>
 

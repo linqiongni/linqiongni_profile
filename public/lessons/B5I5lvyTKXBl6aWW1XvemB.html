@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html data-page-node-id="DPLU7NSt57dew51jPWYoPQ" lang="zh-CN">
+<head data-page-node-id="tXpqbq1zOpMd2N8zwNvsfr">
+<script data-page-node-id="E90tWIyF1JIReYruADuD5w" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="C7PcqG4L38bkBlZccTmWPd" charset="UTF-8">
+<meta data-page-node-id="mLIT1jHQHNFBSoL6Dxy4Yt" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="hNTbEC0m0RKWiiMmQxL6qb" data-pnid-children="AxvT7HGwBmq07VajhPvcd5">冷静期制度深度拆解 · 《商业特许经营管理条例》第 12 条</title>
+<style data-page-node-id="CThiwGWXFucBG7C1ZTC2Fo" data-pnid-children="kn47Nf9ZAlB8WcQ0F6cypF">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .law{border-left:3px solid var(--gold);background:rgba(201,162,39,.06);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;font-size:13.5px;color:#dcd8cc}
+  .warn{border:1px dashed var(--red);background:rgba(212,86,75,.05);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .warn b{color:var(--red)}
+  .chk{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card2);margin:12px 0}
+  .chk h4{margin:0 0 8px}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  .small{font-size:12.5px;color:var(--sub2)}
+  pre{white-space:pre-wrap;background:#151a20;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:"PingFang SC",monospace;font-size:12.8px;color:#dcd8cc;line-height:1.85;margin:10px 0}
+  .lv{display:inline-block;min-width:30px;text-align:center;padding:1px 7px;border-radius:6px;font-size:12px;font-weight:700}
+  .lv1{background:rgba(212,86,75,.22);color:#ff8a7d;border:1px solid rgba(212,86,75,.55)}
+  .lv2{background:rgba(201,162,39,.18);color:var(--gold);border:1px solid rgba(201,162,39,.45)}
+  .lv3{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist,.chk{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body data-page-node-id="9XIzGvpKN4uGrR2sTeiXSx">
+<div data-page-node-id="8veIBxX65smWQzS4oVEBKt" class="container">
+
+  <header data-page-node-id="fwMICX5GtQMEovN9eitWON">
+    <h1 data-page-node-id="H4jE84zYobu8PgxzJZwx02"><!--pnid:Fg9UVe4yyDcxH90kErV9JM-->冷静期制度深度拆解</h1>
+    <div data-page-node-id="EoS3HxudK8mAu8VOGpvdqe" class="meta"><!--pnid:6bwX6nDn13o7oJrVZyfIwJ-->《商业特许经营管理条例》第 12 条 · 法条性质 · 三变量设计 · 三版条款范本 · 应对手册 · 格式条款效力　|　特许人立场 · 米线/快餐/小吃加盟场景</div>
+  </header>
+  <div data-page-node-id="nF1iQf9I6ln668ICGW2TVP" class="lead"><!--pnid:5zzDPEXeTMAPolfR0yyP1N-->冷静期是特许经营里唯一一项"加盟商无需任何理由、无需你同意、单方通知即可解除"的权利。草拟得好，它是你控制退费上限的闸门；草拟得差，它会变成整个体系的系统性漏洞——因为每一份加盟合同里都有它，一个败诉会被复制到全部门店。本篇把性质、变量、范本、防守、效力五个层面一次讲透。</div>
+
+  <div data-page-node-id="Dwto0g5Be1YJo7EEh0jmjB" class="tabs" id="tabs">
+    <div data-page-node-id="FkZWwmjfh0rmS2Qysdrod1" class="tab on" data-p="p1"><!--pnid:fgK4qNGNjZ5dh01A3OaiyX-->① 法条性质与未约定后果</div>
+    <div data-page-node-id="fpmtxBQKblKjeoSfL9msak" class="tab" data-p="p2"><!--pnid:3MVMZViMTHxD8zRsYq5fSw-->② 三变量设计（3×3）</div>
+    <div data-page-node-id="RokyTW5fRAtIaEO3J4wHjb" class="tab" data-p="p3"><!--pnid:G3cVtJ16pmCUEvT7nyuFaB-->③ 三个条款版本</div>
+    <div data-page-node-id="lTsBm83n36SQe5EqqBo0nB" class="tab" data-p="p4"><!--pnid:SIDOX8yCS6zmiBH8vTGmrF-->④ 冷静期应对手册</div>
+    <div data-page-node-id="tDNVRq0Ym6Zxma2XbWPoLg" class="tab" data-p="p5"><!--pnid:CN4dJlCLp1NTjalZqlixhE-->⑤ 格式条款效力与自查</div>
+  </div>
+
+  <!--pnid:CIeccSXHwdCBLfwV7O0Or6--><!-- ============ p1 ============ -->
+  <div data-page-node-id="q8HSdZHdceUHHMmREWlz27" class="panel on" id="p1">
+    <div data-page-node-id="BifrDDYnaNqTnsy8Yp6RAI" class="card">
+      <h3 data-page-node-id="T60SSPBZ1XMDKFVB6NmcrT"><!--pnid:WmHvwt6eBNFlV6XR47mgh6-->一、第 12 条的性质：对你是"必须约定"，对他是"法定权利"</h3>
+      <div data-page-node-id="GDrsciNNyu5d7B0RNzd7OZ" class="law">
+        <b data-page-node-id="BizptMj5LKKUGdfkHXj13U"><!--pnid:IB1UgXF2J8VWY5ldQHIFql-->《商业特许经营管理条例》（国务院令第 485 号，2007.5.1 施行，至今未修订）第十二条：</b><br data-page-node-id="d4xvkbLm0Rzvku57BzDMCo"><!--pnid:lrez7oNc6IDHAJM93MsVqu-->
+        "特许人和被特许人<b data-page-node-id="DE5gg2mK0M8gp2OoUXyru8"><!--pnid:JPlgaXecQ3YGgfLB7Tb8sa-->应当</b><!--pnid:0iBTifnTUTmKUCtDCITrOz-->在特许经营合同中约定，被特许人在特许经营合同订立后<b data-page-node-id="zwD0SiYz6xPLYoJQ8TuUwQ"><!--pnid:YUhBwiCLTTq6SZwTRS7oef-->一定期限</b><!--pnid:4k7QWuvkHWr0kXYkix0qyg-->内，<b data-page-node-id="kvFYEjeQ07hdzvYGUWQZHO"><!--pnid:MZwZyLIJDQOPpfSBYmHsx5-->可以单方解除合同</b><!--pnid:CSMSVX1KXuolQGIyvzwqix-->。"
+      </div>
+
+      <h4 data-page-node-id="uyQAT2bkT5JnOLhcYVbf1G"><!--pnid:t8MMynZnmRnlk2jmBE5wEw-->1. 三个关键词拆出来的性质</h4>
+      <table data-page-node-id="TQflKBOErtjssDZj7bX9pK">
+        <thead data-page-node-id="rHZkk0c3hXn065HkFyv3Sh"><tr data-page-node-id="RAwCCLdCMTOmxMixMFXx6O"><th data-page-node-id="F2zTAvUw27XahxCcedEJaa" style="width:16%"><!--pnid:WK9w9S1o8QmhYKBEtCly1a-->关键词</th><th data-page-node-id="PPEFQvwh3k313xvOcaTfH2" style="width:30%"><!--pnid:JlynAJbqZCK1gHbNQwK85g-->法律含义</th><th data-page-node-id="ijG6MCYmC0bcMO8qSBFOH0"><!--pnid:cD1H3p2dYkqDOc9ITG3zGs-->对你的实际影响</th></tr></thead>
+        <tbody data-page-node-id="v8UHVnzIriWa93RZy7iWVJ">
+          <tr data-page-node-id="2bqlRIoV9PUmuIV6IgwvsZ"><td data-page-node-id="i8aE6YyDXwkCQjAv5UiP3x" class="num"><!--pnid:HVaWpyFCK1MBLJhHaBpf18-->"应当"</td><td data-page-node-id="XaBi3WPA0I0Fo6lCAvAAmK"><b data-page-node-id="EZFcbSeKlwqcEfxwLtWUbS"><!--pnid:1hvzDqBAT12HWEvDzrnqLi-->义务性规范，不是任意性规范。</b><!--pnid:bsqeCQAumh9nurEXGwC5pL-->条文对特许人设定了"必须把这条写进合同"的立法命令，没有"当事人另有约定除外"的但书</td><td data-page-node-id="IaKGeshBJjoBYfqYcEaFRU"><!--pnid:14e0hzqeutOnZVUVrJn0mp-->合同里不写，<b data-page-node-id="CSe5S5WKJfYU6AcKbO87Q3"><!--pnid:RMCLwt7085Q5KqvVk5TbML-->不是"双方没约就算了"，而是你违反了行政法规设定的义务</b></td></tr>
+          <tr data-page-node-id="wjfWotzxDX1veBABen5PcC"><td data-page-node-id="Y4l7k0MMPmTKNT5rHPsl92" class="num"><!--pnid:sBgOVyfRulKLDh5DhhgCqX-->"一定期限"</td><td data-page-node-id="RZndnfgn3LbZMarzFbPVZ0"><!--pnid:74iNT36IeG1Shprd4hK9Io-->具体天数法律不规定，<b data-page-node-id="eF4nfoCn0kt4hu1lVsdxCa"><!--pnid:8tzI1yAeCKJ0T8JMsiJ5yj-->授权当事人约定</b><!--pnid:g3gq0O0kqXBQwx4LfsGP1Y-->；没有约定时由法院按"合理期限"填补</td><td data-page-node-id="GRWEMN6hcJBkJ1490ZpIuu"><b data-page-node-id="5JfOMaDr3XtRbIj1hayu4u"><!--pnid:nuen4mG7jjQ0pbQtJBYivC-->约定是你唯一能锁定期限的手段。</b><!--pnid:Nf2ThoEArMdLcBzjk2A9Zd-->不约定＝把期限交给法官自由裁量</td></tr>
+          <tr data-page-node-id="PT756wMrmvJ0LBWxygVcMw"><td data-page-node-id="NSZQKMVeOXLRA3MFu4cXzM" class="num"><!--pnid:Atb6a36MVMscZtmloKreEk-->"可以单方解除"</td><td data-page-node-id="s2pTjk5ju7qZAjn74Gejiq"><b data-page-node-id="wditlR7JprVv8u6FdRDaZA"><!--pnid:xvRe5PV3OmwZTCfjcg4zdy-->形成权</b><!--pnid:T3rUoDIDxQu2kyQDV2pFdj-->——无需理由、无需你同意、通知到达即生效（《民法典》第 565 条第 1 款）</td><td data-page-node-id="BQyrsxwI1gLDmNzbnTCBfg"><!--pnid:3TOn8yvP1r6BpDbguZsJRI-->你不能设置"须经总部同意"这类前置条件，设了也会被判无效（详见 Tab ⑤）</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="CIA2AVKYBucOWTHFJfHIpY"><!--pnid:k1Zq9uhPfiW66rXgI5kAJy-->2. 完全没写冷静期条款：三层后果</h4>
+      <table data-page-node-id="MaQk1IVkTD5HA92aHvV1jg">
+        <thead data-page-node-id="LvUnl7bbxeMhvpm9Y3kIuP"><tr data-page-node-id="DSdsyeMX2z6U3fFsfisTQO"><th data-page-node-id="klLb7igTtJBj5JrAkztyoV" style="width:12%"><!--pnid:SfcFw4zh5qruLwVslP7Z9y-->层面</th><th data-page-node-id="6aEk0lgWf9Xqq9vsJmwrbJ" style="width:38%"><!--pnid:mdHkYBcePfo8QhSxh9yUIA-->后果</th><th data-page-node-id="ElYA8zqruSElLrFQ24b4Kk"><!--pnid:CLbKToizpzPnbny4FxzCex-->依据 / 裁判口径</th></tr></thead>
+        <tbody data-page-node-id="e4RrPH4rrXIFBuNXG9aEUT">
+          <tr data-page-node-id="pMTCDBeB0Txrhegrwk1Li9">
+            <td data-page-node-id="paA5Mj86P30KM4tSSftjZB"><span data-page-node-id="SSVepvEjd38KTHHNt2becc" class="tag t-red"><!--pnid:HsjyTz2us21DIMabgiVJaR-->民事</span><br data-page-node-id="2BBYWQdYVUnhdjuoubo1Km"><b data-page-node-id="naEo0Twy06p0RIDsYX1fNv"><!--pnid:I8xjlqeRY3iNmYZ5gCa7HD-->最重</b></td>
+            <td data-page-node-id="9BvBvmc7MWrilUY7DTOEWH"><!--pnid:9BtPAeQXF0wv1dTnsIOGJN-->加盟商<b data-page-node-id="KkSvCNBe1gdmKcWIZIw9OU"><!--pnid:DYm5XXdPrM13fHzroN6DWO-->仍然可以单方解除</b><!--pnid:79BjmMHOEoY9kFX4ZlnHFg-->，期限由法院按"合理期限"确定，<b data-page-node-id="ebHWkAOcUsLWHMCTKZplH6"><!--pnid:MwCKJACa2tdaKy5ea7126u-->以"未实际利用经营资源"为限</b><!--pnid:IRSzQ4lWStilFjZMCL5Vbg-->。而且——<b data-page-node-id="qjsnx8zk17cZhFLbLfxGq5"><!--pnid:FSln7B6wb4Zyp7ErwHQEJA-->未约定本身构成特许人的缔约过失，应承担由此产生的不利后果</b></td>
+            <td data-page-node-id="tU4JTT5xJOlQGdtYJ1Dokr"><!--pnid:23itQFolG3KsDgjFKNZWrD-->北京高院 68 号文第 <b data-page-node-id="r8uz9ZyKR2TX2fgaQGl07f"><!--pnid:GwhBpJvqSUiEPUBRQXh55d-->18 条</b><!--pnid:yscoMQUuIpuwshUE2iYgzA-->；上海高院《解答》第 <b data-page-node-id="kKvGkXjvfW86zLp5R9NRYz"><!--pnid:r8aXageBnJJ3Cqbn8i2Ovx-->八条</b><!--pnid:ULok14NG59cUrehPyVnni2-->；重庆自由贸易试验区法院（2019）渝 0192 民初 13346 号 / 重庆一中院（2020）渝 01 民终 3236 号；广州荔湾区人民法院（2024）小肖诉广州早某餐饮公司案（广州知识产权法院二审维持）</td>
+          </tr>
+          <tr data-page-node-id="P35qklYrBR7OcJ6NStUIBP">
+            <td data-page-node-id="LGwUivOgu1oUE8LiizImGq"><span data-page-node-id="PSGQWWI5GDLPJDKRZmSIKX" class="tag t-gold"><!--pnid:KzDWTiWvaIYq5nqEdCaDxJ-->程序</span></td>
+            <td data-page-node-id="uWPQ0ovnmVkKsYXMHM0kpl"><!--pnid:eRTxVXau3nKmX1E7ylSaYT-->合同样本是备案必备材料（《商业特许经营备案管理办法》第 6 条第（八）项），缺冷静期条款<b data-page-node-id="prYOWIeqFeL8EDhzHxLH44"><!--pnid:w2d8bv69f8RcYEPecrEOFG-->可能在备案审查时被要求补正</b><!--pnid:EXQhrapZ8eFtKkxNl9GKkk-->，影响备案进度</td>
+            <td data-page-node-id="XIdAoHiRbHLucYcRfevrIl"><!--pnid:NoEMO9CGr7BDcOI5nxB4W8-->《备案管理办法》（商务部令 2011 年第 5 号，2023 年第 3 号修订）第 6 条第（八）项、第 11 条（补正 7 日）</td>
+          </tr>
+          <tr data-page-node-id="EfFcbxV2dITWlJPnPyHg0J">
+            <td data-page-node-id="K1kYMYe55ClNQrkK5GTRhq"><span data-page-node-id="bH126sS3MG8OKpINSCPmfh" class="tag t-jade"><!--pnid:yV2FfRdTLzwuenOTcJ2Ftf-->行政</span></td>
+            <td data-page-node-id="9yvkKP94rLr0SKRi8ns77l"><b data-page-node-id="sgHLRKccfCgsaTR312g6nV"><!--pnid:PYb4V0hFJtlcf5kSnINEKK-->《条例》对"未约定冷静期"没有设置专门罚则</b><!--pnid:2pKdpm163idg0eNCwqGjYP-->——不直接产生罚款。不要误以为不写会被罚，真正的代价在民事端</td>
+            <td data-page-node-id="fLIyhK6cQAmmukI6020oct"><!--pnid:tIdbkt0sRIbNwCjZY7dINh-->《条例》第五章第 24-29 条未涵盖第 12 条</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="WVikYYYRRYOePOHPDHN9wc"><!--pnid:taZbAQggflrs91knesrZCY-->3. 主流裁判观点（五条，逐条给你原文口径）</h4>
+      <div data-page-node-id="KIgSqIawKzA2jOperf4TSX" class="chk">
+        <h4 data-page-node-id="y2VVgmAN0RqUaH7usnY43y"><span data-page-node-id="ZZjEu5ZAN3ZxKWRADDTMZT" class="tag t-jade"><!--pnid:NoIZATIH4bPhaf6NL8fMSJ-->北京</span><!--pnid:N40OVHEolscSFVbsjqG4ZN--> 京高法发〔2011〕68 号第 18 条</h4>
+        <p data-page-node-id="XLepCIaWy7EOfogGMXivUw"><!--pnid:TO5S0mNXJIYJZs0FApH5C9-->"双方通过合同或者其他形式约定期限的<b data-page-node-id="k5mrFa6PwImiYhoXFYKMve"><!--pnid:jUk0Ii1MMntIbxmFTxTODc-->从其约定</b><!--pnid:shsEOX2ApF07YvYBYxpIb2-->，<b data-page-node-id="VdcHsMNpGrt1AyW8AwgK3n"><!--pnid:upXqRAwaOJMlUacNYFttDh-->没有约定期限的，被特许人仍享有合理期限的单方解除权</b><!--pnid:S9XjV4GC1fLokugiF3EFGg-->，但是<b data-page-node-id="GBDHSWCgoX6sdxEez882ZY"><!--pnid:ORb66DNPBVt8RwZ3YX1LVD-->其已经实际利用经营资源的除外</b><!--pnid:uM6vkAz9g3G4UAPbBmpawn-->。"——该《意见》同时明确：<b data-page-node-id="Yq1NuVKXmxsJY2V8DpDv4k"><!--pnid:OkhM2ROe6yUT7QEzB2WB2K-->特许人不得完全限制被特许人的单方解除权。</b></p>
+      </div>
+      <div data-page-node-id="5tVxaqsghEhqMBXENVpdup" class="chk">
+        <h4 data-page-node-id="s1zx5v14PDt0tSwKKSt8R2"><span data-page-node-id="AlHapdanIaXl3YiyDUiUs1" class="tag t-jade"><!--pnid:CQoOwXeB7qGW9qn1jIlmNH-->上海</span><!--pnid:yHIaCQDWeYfhOt7oTFVJzw--> 上海高院《关于审理特许经营合同纠纷案件若干问题的解答》第八条</h4>
+        <p data-page-node-id="7IuQuuBtVWyDVxxJT2GOHc"><!--pnid:SWPxN8P1JI7N1YzKuORNqc-->"在合同签订的合理期限内<b data-page-node-id="e9M2lplVGqo1DpDiFamzo0"><!--pnid:Pr9czZwhxaNuxe168RDWaE-->即使双方当事人未约定此条款，被特许人仍可以单方解除合同</b><!--pnid:XhBf250ayGvghZLg7PhgYn-->，期限有约定的从其约定，没有约定的，应结合行业特点、商业惯例等确定，但<b data-page-node-id="lzI0CoqhnHKbLGbslYUW4h"><!--pnid:RlWWLbNMhrbLCuYeenpWY9-->合理期限的时间一般不宜过长，通常应掌握在特许人的经营资源尚未被被特许人实际利用之前为宜</b><!--pnid:IxUKjz2NvdYCJae4v9TmZO-->。"</p>
+      </div>
+      <div data-page-node-id="lz5LaQi4pkk8ENV4BBwHKZ" class="chk">
+        <h4 data-page-node-id="5FsVNZVkTFHhy6iNWxlkyQ"><span data-page-node-id="G0o5Mi63BdIguHRghhep8Q" class="tag t-red"><!--pnid:JptAk0jPOKGui7DFIWTMPK-->重庆</span><!--pnid:Kge954dx31VJIDiavpWHMs-->（2019）渝 0192 民初 13346 号 /（2020）渝 01 民终 3236 号 · <b data-page-node-id="FvvOq07jTcI8taaO2RoEfQ"><!--pnid:cGXT0FRi0AUwA5DzyOMbb8-->未约定 → 特许人缔约过失</b></h4>
+        <p data-page-node-id="F4ttlYJ0vFijGKxAwsKm3U"><b data-page-node-id="QGo8hIHWR3209fjy4k7RYi"><!--pnid:tPglEbYX4zA5vTJTCRmEmO-->裁判要点（两段，务必原文记住）：</b><!--pnid:FFFm018EcndLlxWIbDp0Qo-->①"如果合同未约定被特许人的单方解除权和解约期限，则<b data-page-node-id="jERweqmytR76WVftgoNNuK"><!--pnid:NpESjg1CTriLqzj3rXl0eu-->特许人具有缔约过失，应承担由此产生的不利后果</b><!--pnid:2YEmDBRQ96hrrSW1jJZU2Q-->。即使特许经营合同中未载明被特许人单方解除合同的条款，被特许人仍可以在一定合理期限内单方解除合同。"② 刘某、雷某在合同签订后<b data-page-node-id="MdeWpSsMwrMzBfmRnUgfTV"><!--pnid:RfK3Xobv05GGDBbHVRKBpW-->第 15 天</b><!--pnid:dfFrXVSz6vnAKHIzNkdrZE-->提出解除，且<b data-page-node-id="PC6guJDafCVm1F6E9yHGG7"><!--pnid:XLZWA53xrAY1uUU6VZLpe8-->未实际利用</b><!--pnid:Y9OuycoNtJk00G3cOudU4X-->经营资源 → 属合理期限内行使 → <b data-page-node-id="niFS1AB8SHa9wai5EPsHQX"><!--pnid:SWOeARFnkgSt6aBuIA9FRi-->判决返还 3.5 万元</b><!--pnid:Dz669nWIr6cHYmulGjKV3Q-->。<br data-page-node-id="GpdDvQ6xkhjCflHkP1f5Ah"><!--pnid:QZKaBZU5UCtHRVseG0xslE-->
+        同时，合同中"被特许人只要<b data-page-node-id="1MDoCu4Kz4YeeGegGY0Fur"><!--pnid:H5si8N0l4xbqAZ1BIMR90O-->领取培训资料</b><!--pnid:7zIQodvjteILZodev9ATZN-->，便不能要求返还管理培训费、技术信息转让费"的约定，因<b data-page-node-id="J3Vv3GkMxDtGKDAbrF55Sw"><!--pnid:CZhfdHli2RsAjtWejmbthQ-->未举证证明已采取合理方式提请注意</b><!--pnid:Ripao7bGKtHN1yUoMxtTHC--> + 明显不合理地限制被特许人权利、免除或减轻特许人责任 → <b data-page-node-id="OFGB371qMcXNndsFcGnV7w"><!--pnid:MW8qbSGb3wXsryJPAQqaot-->该格式条款无效</b><!--pnid:YjmDrvwXXyNPOdwfeNOksv-->。</p>
+      </div>
+      <div data-page-node-id="PuRJ1uASLbSIdwQY3JQUaj" class="chk">
+        <h4 data-page-node-id="SNpUX7yQFy5Vi8XIjmAlWD"><span data-page-node-id="iX5bd5ZohALwcejh4k4wyQ" class="tag t-red"><!--pnid:5zvsrJ4vhzUa5YTiztKTdX-->广州</span><!--pnid:fOtp8HmbA3hJTnKiHmuniH--> 荔湾法院（2024）小肖诉广州早某餐饮公司案 · <b data-page-node-id="lflwNgPaJpV7n98B9239NL"><!--pnid:eHAFjObzXxWcKXmch6xSAj-->餐饮场景，直接回答"已选址后能否全额退"</b></h4>
+        <p data-page-node-id="f6rBGik7z3gAXaa7hm32Rl"><b data-page-node-id="93hDUNDGYeXPYCD2nKclbL"><!--pnid:4EzjoPwbFU12CYkRTvLJPp-->事实：</b><!--pnid:kYKRzVzbRs5DwFQxH4yW5i-->签《商标使用许可合同》+《合作附加协议》，付商标使用许可费 9,800 元 + 品牌保证金 10,000 元 + 货款押金 10,000 元，共 <b data-page-node-id="oT9f64CtUiv22MU6mApdkP"><!--pnid:KcHJa2KObzY3GEYxFBEFEG-->29,800 元</b><!--pnid:nZYBTkhKxzZnCD8gJNfB1x-->；<b data-page-node-id="dx69cgrdZYv8DLIEuIGsTg"><!--pnid:qkwgnjRXmqQfrkWLew9Lvs-->签约次日</b><!--pnid:KXtrwXgXI2ImNxtEnarL0Q-->总部开始提供店铺选址、市场考察协助；<b data-page-node-id="Wl45pOGmp5Zj20GC9Ve9tk"><!--pnid:kBLkzqH6uLM2dMRMk1CuuP-->第 7 天</b><!--pnid:h3UzRlmYTmpNxr6Tj658kA-->小肖以未找到合适铺位为由要求解除退款。<br data-page-node-id="crohX2lXCT4SJSNl7nZ2N6">
+        <b data-page-node-id="P7YZMieoadItbtZZNfBAl0"><!--pnid:npZYTbUVxvOVJXwpX0u1VX-->裁判：</b><!--pnid:tV465BF1hSCi1Iy6rIYmaq-->① 未约定冷静期不导致权利丧失，"该权利来源于法律的直接规定"；② 第 7 天提出、间隔较短 → 属合理期限；未开店、未使用商标、未进货 → 未实际利用经营资源 → <b data-page-node-id="TIXgFWsKT9C8SSnIjC42Ry"><!--pnid:8B6doJcof7vtn4SPs7TDOm-->支持单方解除</b><!--pnid:8K6F65u5ZWu1zVcWOhL5I8-->；③ 但总部已提供选址、市场考察服务，<b data-page-node-id="RG3BpJqN260i7DHKhTQhUo"><!--pnid:6K8hId952bgd9t8j6PeOXH-->产生实际投入</b><!--pnid:HPdsziYUkRSOfcuAQIdSWt--> → <b data-page-node-id="ZA40gRbR8zQqVWZnCBBmvI"><!--pnid:1ZIj8MwmY9mERZ2xeV9DOY-->酌情扣减相应费用</b><!--pnid:dq7L3omZjTHIo3oEIgI2kO-->，判返 <b data-page-node-id="SdlZXSiNGC5iap4u45ggz4"><!--pnid:D2uKHlh2uchRJrG2VpRN38-->24,800 元</b><!--pnid:9z4NR8bie6F0neRcARkfec-->（扣 5,000 元）。广州知识产权法院二审维持。</p>
+      </div>
+      <div data-page-node-id="5vsozf62Z4jFzBUuQgsApC" class="chk">
+        <h4 data-page-node-id="6NGm9tOo6GQBq2kyZHsjoE"><span data-page-node-id="mLuHWc8bLNtB24aOk6Qjw5" class="tag t-gold"><!--pnid:RIMbEsymLStLnQnz9XD9Xy-->杭州萧山法院</span><!--pnid:sa9294t6ZMcfbfoCO7Ur03--> 品牌急速扩张类特许经营合同纠纷审判实践 · <b data-page-node-id="wDe1ZTCT9amtufPMOKXV2G"><!--pnid:IhPqb0O6F3YINwiGkWryjl-->合理期限的两项判断因素</b></h4>
+        <p data-page-node-id="AKyV9f7jc18NeYLZO7h7xA"><!--pnid:nv1xgrBfdSBXTH7JHTaFXE-->"<b data-page-node-id="oeJAIbCgs2A4ANgn5tpcn9"><!--pnid:GHAmiZQEczrXhpf2uQ0Afb-->合理期限不应以单纯的时间长短作为判断要求</b><!--pnid:nj39gD2sZB3heT1U89WzY8-->，而应结合各种因素予以考量。<b data-page-node-id="QdyAKnD5XIFN9UMLTfSLMM"><!--pnid:yJE3aFn4AWrtSaewEh1Igq-->第一</b><!--pnid:rTcNqVAg3JccBfjUMegRoz-->，加盟方是否已经实际利用了特许方的经营资源，如商标、专利、品牌等知识产权，如果实际利用经营资源，那么就不能再提出冷静期内单方解除的主张……；<b data-page-node-id="soHQALfqugO2MSUGonJc5Z"><!--pnid:yCVrvn7vPtmpgja7LTBWke-->第二</b><!--pnid:O68XN7cbp33YxzZu5DQPLs-->，<b data-page-node-id="8NrwF3XVBdZo3JheVMnunH"><!--pnid:95fTPyEG2ekWd4bRz9LpVP-->只要加盟方已经开始实际履行合同，就不能再提出冷静期解除权。但如果只是进行培训、选址等</b><!--pnid:9mq6hhSB2Z5bnOyiZql5qb-->，发现并不适合该特许经营项目，或选址地点、实际履行难以使加盟方获利，损害其利益，<b data-page-node-id="FhbDJenM7pzAtZlA2afzyc"><!--pnid:XAs9vRS2k2U9DG9Lj93Auu-->应当及时采取冷静期解除权</b><!--pnid:01urVeZqlgErVkuBMCRmdC-->。<br data-page-node-id="jxv2PZoljzWrVe08cDe4Wp"><!--pnid:o6pGnGYbolWqLtyWZn2e5w-->
+        对于合同约定的冷静期条款，从合同稳定性考虑尽量维持，但<b data-page-node-id="z9S9fa3xEQLPuMIOO2c6qW"><!--pnid:RPTswWafCk0AXHffAsjxNW-->法院应对明显过短的冷静期予以调整</b><!--pnid:jDPSphJWvAUUkb88esv4bB-->。如果加盟方提出冷静期解除时间明显过长的，超出合理范围的，不应支持。"</p>
+      </div>
+
+      <div data-page-node-id="r3Qpjs62KEpAGDuduaSGI7" class="warn">
+        <b data-page-node-id="CFeb2DRYmfCLeYxpt5UtXH"><!--pnid:5PnJkEGh1zSVgmhFhWlDTm-->把五条观点合成一句可执行的话：</b><!--pnid:ptjl6nOwkjAB4SZYimHOTe-->约定优先；没约定就按"合理期限"，核心判据是<b data-page-node-id="mGQX7eQtno4CfNQoOgTj33"><!--pnid:HynLbidcyzlzFGtpLnTDQo-->有没有实际利用经营资源</b><!--pnid:wvXJyt0iCZhYzpvMIV5lHK-->，而不是过了几天；<b data-page-node-id="Ehu8Pe9RuAXPrAnONkvmEU"><!--pnid:W4v4mvfQFBCcDTkKLn7MT1-->只做了培训、选址，不等于丧失解除权</b><!--pnid:W3WuSNNbn8QWtwGEr0uLzF-->（萧山法院明文）；但<b data-page-node-id="gztnUOjK29d5zOilWPqr4F"><!--pnid:gaakgmwsZ2X6mXzTqvdyyY-->已开业、已试营业，就不行了</b><!--pnid:8YURh4Nel8UYSeS1eIea9D-->（北京西城法院：郭女士接受培训+选址+装饰设计+<b data-page-node-id="9LMLJy4WPQIYpMJIkNiCss"><!--pnid:bMVhva3ECvZU9Va0s3neaL-->试营业两周</b><!--pnid:JdnF7AHmUctClyMyyNEKUE-->，以冷静期为由解除未获支持）。<br data-page-node-id="lOHS4kdWSa1lLPyy2HQ1Ri">
+        <b data-page-node-id="M8oIfeqn3JeQvPQXAS0ewo"><!--pnid:A4mHXvb2k7Tbx2i3GC4tJG-->另记一句法官释法原话（北京西城法院）："冷静期绝不是法律给予被特许人的试运营期间，更不能将'一定期限'作为被特许人在经营业绩不理想、经营出现亏损时可以随意解除商业特许经营合同的法定理由。"</b>
+      </div>
+
+      <h4 data-page-node-id="5hQcHN0e1BpWxaIyiRk1c3"><!--pnid:aZMfodZKQTQb9ADQcRHFDP-->4. 防守策略（四条，按优先级）</h4>
+      <div data-page-node-id="5KeaU5v1IpijkwsqQMy0ff" class="act">
+        <b data-page-node-id="rvzAckdueoJIAAhx6M4YvB"><!--pnid:te0oSRWqDV6AGwExbjg5ak-->① 必须写、写明具体天数。</b><!--pnid:3o5FwOfMs9uwwBE1ZvnZy2-->这是唯一能把"合理期限"从法官手里拿回来的手段。不写 = 默认适用"未实际利用经营资源前"这个<b data-page-node-id="0z5FUln78qZlcJvpgK4hUK"><!--pnid:QIDWSC6osnLMPdyHognJf4-->开放式的、无时间上限的</b><!--pnid:6tO7yKwo6TFf9FBuAnkxm3-->标准（理论上签约后半年未开店都可能被支持）。<br data-page-node-id="PXeTPTZd4Iv9BNlfWw6sZY">
+        <b data-page-node-id="XfwfEfjztsE3oPfnSgIaud"><!--pnid:J2vxcS6DKxbbSN28XoquAt-->② 用"实际利用经营资源"作第二道锁。</b><!--pnid:LXFQCiWyq59ugqSfOgWSaO-->在合同中<b data-page-node-id="hzGzmdw9EMz6Z42selI5Rv"><!--pnid:u7NQVTDNJA873cZ3K396Th-->定义清楚什么叫"实际利用"</b><!--pnid:nTyRT2F6EOYlKLwYdEODvR-->：使用商标开店营业、使用专有技术制作并对外销售产品、从总部或指定供应商采购并用于经营——<b data-page-node-id="LQKAumS5OuJL8OwuR7ck02"><!--pnid:kidL85OLPQSA6ziunFUJJn-->明确排除"参加培训""接受选址服务""领取资料"三项</b><!--pnid:FXoJAPacR3y4bKs52hs3Ef-->（重庆案已判"领取培训资料即不退费"的条款无效）。<br data-page-node-id="ayNWyLrGu8RoKgXaxyHjfW">
+        <b data-page-node-id="3xogSgFsNspJyVaL6WFJnU"><!--pnid:YINeUGtRm8QekgHToOleyZ-->③ 把各项服务单项定价写进合同附件。</b><!--pnid:X18gyQpCesXQkOMFV2xNC5-->培训 X 元/人·天、选址评估 X 元/次、设计 X 元/㎡、带店督导 X 元/天。广州案能扣下 5,000 元，靠的就是"已提供选址服务产生实际投入"能被证明和量化。<b data-page-node-id="AVaJroykioyIxvpRDjpv73"><!--pnid:UDlUVF1lsrGu0JEN7ccKac-->没有价目表，扣减主张就是空的。</b><br data-page-node-id="MlQXOKtMjW3StKfolyjNQH">
+        <b data-page-node-id="8JYpdN4oWz3mDkAYR9mWJ6"><!--pnid:4AAajxxck1aXge1y1e3Agt-->④ 冷静期内启动"资源冻结"流程。</b><!--pnid:hxjpzRyOLnj31QpbCg6DGA-->签约后至冷静期届满前，<b data-page-node-id="OX1mHuLqv97JsmJ515qBkg"><!--pnid:E9hgO77ten2yI6RxtVOkEu-->不交付 SOP 手册核心章节、不开放供应链账号、不提供料包配方、不安排带店督导</b><!--pnid:r0rzCxxNhb2XUjHlUeTpWA-->；只做通用性服务（品牌介绍、选址建议）。冷静期届满次日再一次性全面交付，并签《资源交付确认单》。<b data-page-node-id="zU2A6ddFJh3TZVOWzWLQM4"><!--pnid:H7L5JyN1OsGe2tRXgswZCq-->这一条能把"实际利用"的时点主动掌握在你手里。</b>
+      </div>
+
+      <div data-page-node-id="N9G99pQDmqomqjqDvgygBt" class="anti">
+        <b data-page-node-id="4XD7CreCGHgQcM9keNg5Li"><!--pnid:AfIRBnvzLdsx9tiOE9vZxq-->加盟商反制点：</b><!--pnid:SrIsYgBwblKnMOPWYH75sS-->加盟商律师第一件事就是翻合同里有没有冷静期条款。<b data-page-node-id="BgCdcCmrqViCSCZFWakAGj"><!--pnid:t0qMr6Q2V6YsX3TNiQwpFl-->没有 → 直接主张特许人缔约过失</b><!--pnid:riGgIRoLYdtRn5RdfR5LD0-->（重庆案口径），要求全额退费并要求法院对格式条款作不利于你的解释（《民法典》第 498 条）。<br data-page-node-id="nedtXN79E1E5cFbYMpXlJS"><!--pnid:rMvq5864xUSHToVJ9GDV8K-->
+        第二件事是<b data-page-node-id="dYKoK6Jj2GogrA9YcXIQM5"><!--pnid:ZNBNiGpraG3yTFVHuSEZuS-->证明自己"未实际利用经营资源"</b><!--pnid:svAE4y007ILyWcm39T8OVJ-->：未开店、未使用商标、未进货、未用配方。所以你越早交付核心资源，他的主张越难成立——<b data-page-node-id="xPkP3MYk19m37JC3E1dkIr"><!--pnid:4LhTpYatn4GRvNab1g3dwe-->这就是为什么第 ④ 条"资源冻结"要反过来用：冷静期内你不交付，他更容易证明未利用；你交付了，他就丧失解除权。</b><br data-page-node-id="qwgMWyITlq2mudHGsPfzVe">
+        <b data-page-node-id="DpdYeXXGNzcxErHljX1rqY"><!--pnid:XOJGK00Or2PKn2TNPH5Oyz-->权衡：交付资源＝消灭解除权但增加已履行扣减争议；不交付＝保住解除权成立但退费比例高。</b><!--pnid:0Jskno0GZM0LsMO2wZuzy7-->建议按加盟费金额分档处理（见 Tab ④）。
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:CmFlNypzQF7LT7lc9eBvk8--><!-- ============ p2 ============ -->
+  <div data-page-node-id="JGaaui1QbLetzbo5pa2k7T" class="panel" id="p2">
+    <div data-page-node-id="cMTuRfr6oYtTXy98N8eJMX" class="card">
+      <h3 data-page-node-id="IaabyB2qCqQQX5ZYA3wvdS"><!--pnid:EhTTF4aP0GoGASYNcAQplr-->二、冷静期条款的三个变量 × 三个方案</h3>
+
+      <h4 data-page-node-id="Q0vGIsn0n71H5WeMMbFbop"><!--pnid:P0JRAkiTY4b8o7UdjXO7Sj-->变量一：期限（几天）</h4>
+      <table data-page-node-id="Mm3EJiWCN0K2q43hQSTdmF">
+        <thead data-page-node-id="4KQAoRMOXC25OBDj0HmPnd"><tr data-page-node-id="iR2bABE3zLFU2STSYZdV4n"><th data-page-node-id="KXmtYsGy3ZhAWDaAYqd4oq" style="width:8%"><!--pnid:Ee2RUoLAE1bs726DAj3Ym8-->方案</th><th data-page-node-id="gltGVFWSZ7xio5UIBN9bAB" style="width:12%"><!--pnid:slCPUK48tTZ9AkuLMuYNSD-->期限</th><th data-page-node-id="U2le8WoZTEd5sOjGAtXywl" style="width:30%"><!--pnid:iXbQkH2MQvwUux6UHG6PLw-->对总部的利</th><th data-page-node-id="VasywarkS98Bm0vdIHPhVQ" style="width:30%"><!--pnid:2ImystBXm55aIigXzXNkoS-->对总部的弊</th><th data-page-node-id="4CB40lEEx1fG7ZUpLtWSWL"><!--pnid:amiK1IOPzY8rkDH8ds5ehZ-->适用</th></tr></thead>
+        <tbody data-page-node-id="BOlC5pQOfJSLa6qwnWcTuk">
+          <tr data-page-node-id="kovspXu07Qt0BmrmOvaqYC">
+            <td data-page-node-id="3iaoPfn1zNObPQIq47TZvE" class="num"><!--pnid:tE2HH1uIJYjk0cmYvHnlqn-->A</td><td data-page-node-id="fnFU7sBWhoTEif2TKFlPJV"><b data-page-node-id="uVcZc52N22H7m5j3bfTS5U"><!--pnid:SJjtIUSvktxcDK320AtImU-->7 日</b></td>
+            <td data-page-node-id="iHMdV3x82AAo1uX2UsxqN0"><!--pnid:bS0FxLGuHR9BoT4kkrCJhB-->不确定性窗口最短，招商节奏不受影响；加盟商反悔多数发生在签约后 3-7 日内（周末回家商量后后悔），7 日足够覆盖</td>
+            <td data-page-node-id="STWt4kTOaJtrZ5wXmPONE6"><b data-page-node-id="HkLWhwgRGP0fDoI1iILBBq"><!--pnid:OzzIGxq7WVa29lztxfAGHu-->有被认定"明显过短"而被法院调整的风险</b><!--pnid:996hQkJXDU1JUIkN2bu3IU-->（杭州萧山法院明确："法院应对明显过短的冷静期予以调整"）。7 日属边界值，须配合充分的提示说明义务才稳</td>
+            <td data-page-node-id="pwd4GXHSHHQ7m5ozOLyMSt"><span data-page-node-id="g1gJNNxCbPWuzUGRLFZKZJ" class="tag t-gold"><!--pnid:7LtDaimor36B6nTfZ4R4p2-->推荐</span><!--pnid:HszmpXyo1yeF49MH3Qrhl6-->加盟费 ≤15 万、单店投入 ≤100 万的标准米线店</td>
+          </tr>
+          <tr data-page-node-id="VC3hl0ZzuE6bjCyawk4Y08">
+            <td data-page-node-id="cpZBSYeyMmkBLPXv1qi7pe" class="num"><!--pnid:9IdoY1birxQ7vc81YZ6X6V-->B</td><td data-page-node-id="edUfBbxjJAGi1trUAAF3TC"><b data-page-node-id="LFF31YRde6zjyULF1EtBBz"><!--pnid:Zt8W7CHV0qej4NCglySI77-->15 日</b></td>
+            <td data-page-node-id="Do0mcKzjeYu3BOOBzTRc5O"><b data-page-node-id="1qJrSU5nfyVmPfSQJEdvDL"><!--pnid:5LSsTK6VQBP6DqjuhBYaSe-->司法接受度最高</b><!--pnid:PwnN9ScO9cMIxPZuw7dSNq-->——重庆案中"第 15 天提出"被认定仍在合理期限内，说明 15 日是法院认可的常见区间；被认定过短的风险显著降低</td>
+            <td data-page-node-id="3ROg8bF4P3Q70hlobVIX1M"><!--pnid:FIMZdcDzD3UdfgrDu9ILI3-->窗口翻倍，你的选址、设计、排期要相应延后；加盟商有更长时间反悔，招商转化率略降</td>
+            <td data-page-node-id="5won2YBj8aGgSW9eNtv22B"><span data-page-node-id="b4yPh071U0etmXjDCWCrSy" class="tag t-jade"><!--pnid:OFH5EOrSgXDuHvUv1U8gKr-->最稳</span><!--pnid:5nu4P0JxA3Twz4qjdRYGM8-->加盟费 15-30 万、需要装修与设备投入的门店型</td>
+          </tr>
+          <tr data-page-node-id="UZOx54GlhE3rScmesI8nMv">
+            <td data-page-node-id="FhSf06MQ5Pwg4Qz2tT17UI" class="num"><!--pnid:QEeIpbbb5VXKjBudSwpckB-->C</td><td data-page-node-id="YrL0o5kmN6vRjRDMU8nwHk"><b data-page-node-id="Ces9mnnpgo2Ieglgx3SihQ"><!--pnid:njGYN2WXH8JqAJlL233tPd-->30 日</b></td>
+            <td data-page-node-id="Nnv87aNdyQTdt10GaSjyU1"><!--pnid:EuaeCJQjuJEN3RXIWtWtE4-->几乎不可能被认定过短；体现总部诚信，可作为招商差异化卖点，降低整体纠纷率</td>
+            <td data-page-node-id="8R5Kw3flRgVrA4OW7eZb2H"><b data-page-node-id="v6zZGaWI6wB89zpaKP9koG"><!--pnid:fhPwcyXu5cQdOlsBRHI5F8-->30 日内你几乎不能推进任何实质性投入</b><!--pnid:xu32FJtkxGzfrXxnUq0xuW-->（装修、设备备货、人员招聘），否则一旦解除损失自担；招商周期拉长，季度开店目标受影响</td>
+            <td data-page-node-id="kZHHo36lIEqJ3TNQQ3uqgk"><!--pnid:B0XfEiN2TA7NcpJxgGMRPw-->加盟费 &gt;30 万、重资产店型，或品牌处于口碑修复期</td>
+          </tr>
+          <tr data-page-node-id="zFhAmAUZqi1DzHW1qW0yqB" style="background:rgba(212,86,75,.07)"><td data-page-node-id="6hIrMmIxRQtp42QGSF0LZP" class="num"><!--pnid:irGBjgPSAzCwk5QgA9IXMs-->✕</td><td data-page-node-id="oOrDKioHIMlrdC4UFKoB6s"><b data-page-node-id="jB0OgHmGObpn7lRbmrLzIk"><!--pnid:ACLaLezpAejHpTwdElZ405-->3 日 / 24 小时</b></td><td data-page-node-id="Wv9u9OZoQ1qogUCOtiOBcc" colspan="3"><b data-page-node-id="EPAQpVhDQsgboaS5fKCMf1"><!--pnid:9UjbAthNBavCD5dST0EPNc-->不要写。</b><!--pnid:KTvjJA572mtkzNckRtK02Q-->属"明显过短"，法院可依杭州萧山口径直接调整；且极易被认定为"不合理地限制对方主要权利"（《民法典》第 497 条第（二）项）而无效。写了等于没写，还额外背上缔约过失</td></tr>
+          <tr data-page-node-id="1FeGEapyadcY9NepfKxStZ" style="background:rgba(212,86,75,.07)"><td data-page-node-id="TEbZyJ9fT2T7c6AYjTJUcA" class="num"><!--pnid:N2Y7cxcJDz1fmkVPgXQ8KR-->✕</td><td data-page-node-id="8QxK1PuDIV5zaFXaHkEBeK"><b data-page-node-id="R599UexD8fFCH8FJBuyQMD"><!--pnid:Ciooa18iNBre9UVqry7JtN-->60 日 / 90 日</b></td><td data-page-node-id="sCq6kNEF2aFriyP1EPMA3X" colspan="3"><b data-page-node-id="ybJNqmJiJgOwZiBdmmovWv"><!--pnid:VvRwCU23EnFhqXSxf20s7D-->不建议。</b><!--pnid:qZw1KlMiMZtbDvBeSrJvDV-->"合理期限的时间一般不宜过长"（上海高院《解答》第八条）；过长会让合同长期处于不确定状态，且你自己也不能在此期间投入</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="KDqHFtG2LWy51P0Du9Wclz"><!--pnid:dBm9xPFJaH47y0l5MT2nZe-->变量二：退费规则</h4>
+      <table data-page-node-id="Mcugl6UZXRNlkyY4VwvOtT">
+        <thead data-page-node-id="SwNnp4zlc7MaQ3DHfDnd2P"><tr data-page-node-id="ygP35myvm39po7VK1Z6l8P"><th data-page-node-id="EI0BztavxEJYb7ezzzYKIe" style="width:8%"><!--pnid:HONKxQYPfWf40yQVusHEUH-->方案</th><th data-page-node-id="dMe29wIRG4iyCRKKdOMnuT" style="width:16%"><!--pnid:0hrrvYbuS81nJUa7JVnueD-->规则</th><th data-page-node-id="bLXzxnlyodvnr1qpm8n8lf" style="width:30%"><!--pnid:vH8CunpxvzkzoE83HNRgd4-->对总部的利</th><th data-page-node-id="ZjGZCtuqvBwtyMGV5CCtOu" style="width:30%"><!--pnid:hidQ2F6z49ZT1MjC5dhejn-->对总部的弊</th><th data-page-node-id="gm4OQO92Xk8gUBUrCyk08a"><!--pnid:HCgkowRVe0T04VDCwscN8V-->诉讼中站得住吗</th></tr></thead>
+        <tbody data-page-node-id="41UfMqA6JDwvR2TjiWMkll">
+          <tr data-page-node-id="fgBXqnvFqbMPH802DNRIgQ">
+            <td data-page-node-id="wLXuxPItxK3hRAibx9h1iD" class="num"><!--pnid:72yGajhmY6r5VJN2JxzkFk-->A</td><td data-page-node-id="q3qAolawgUIMBqs4v7T3Z3"><b data-page-node-id="duMj0MjxVaWzFZkFDENJqG"><!--pnid:80IfCkEhwBjNAqu9uuUJ93-->全额退</b><!--pnid:yTv8joBrMSElmceArgbklU-->（加盟费+保证金+已收其他费用全额返还）</td>
+            <td data-page-node-id="VBY7z7CWZvHt6n2eBFIDFf"><b data-page-node-id="kQKNkUnMcKRC7iOi177KeM"><!--pnid:mDgwhscjZkYOGd2kuEOpqu-->几乎不可能被认定无效</b><!--pnid:R8biql6afsyCZVfh7S62UB-->；纠纷解决最快，律师费与商誉损失最小；可作为招商卖点</td>
+            <td data-page-node-id="MwceMmW1IYmLx9yJubde3Y"><!--pnid:S1dKWOJ2ZoHeRSpEL01CES-->已发生的实际成本（培训、选址、设计）全部自担；会诱发"先签了再说"的试探性签约</td>
+            <td data-page-node-id="B6IaAOwBtmQ5roYuKaNy9L"><span data-page-node-id="p2qEs9Cf6odUIu4QYN3SQD" class="tag t-jade"><!--pnid:T34Vse4K6FEn8aJgLn9Z9J-->最稳</span><!--pnid:7qd3UvG4ibYWvv02yweP8L-->但成本最高</td>
+          </tr>
+          <tr data-page-node-id="6AiLbrTY3DgFxcPv3DEsVm">
+            <td data-page-node-id="quldY99JIf8Yv6NWD6yxA9" class="num"><!--pnid:SBiAUNkTXsrlntflmR3Ona-->B</td><td data-page-node-id="TKLUAfI5Bh75Wiia8au7jy"><b data-page-node-id="kPErjokkPypgXGTVJ0CGa7"><!--pnid:Og7lMmnIZz1bppF0VyP5a6-->扣固定比例</b><!--pnid:fkiZe41YoMxYDHLIncK7zl-->（如退 80%，扣 20% 作违约金/手续费）</td>
+            <td data-page-node-id="vYAZbXSv4p3F6zk1Gl1rzq"><!--pnid:1J0ozIWi4pTMlpmwkgjhSW-->操作简单，无需逐项举证；可预期</td>
+            <td data-page-node-id="FRi3WfyOfXmEyyneW0twzi"><b data-page-node-id="3FkLrgoqaThSUbv5JQ8C34"><!--pnid:SYvobzAnyYOHHicpyGQ0pA-->风险最高。</b><!--pnid:xcg4ZKOgD47MILlTmXk3Wa-->固定比例与实际损失脱钩，易被认定为《民法典》第 497 条第（二）项"不合理地加重对方责任"；若比例过高（如扣 50%）基本会被调减</td>
+            <td data-page-node-id="cU3a6hW3H8jJt6ajYQoHi2"><span data-page-node-id="qKKTH79WkNteT8y3LKvan4" class="tag t-red"><!--pnid:EmxSjwgYfZPRGjeCvNrh9N-->最不稳</span></td>
+          </tr>
+          <tr data-page-node-id="PeqVi0dYSU1cRISK4GuC1q">
+            <td data-page-node-id="B8buBBqwRFF1tHSex7rhai" class="num"><!--pnid:p11vZ5FO1wzFAVwNnioVvX-->B′</td><td data-page-node-id="p1Il7KHxy0NAEU2M170c17"><b data-page-node-id="Lx67g9cPLDU5scf0QLJxky"><!--pnid:ph3SlwtIkksubwhVkbubk4-->扣违约金</b><!--pnid:RcYCyvDe6TYGgQuVzPNPwz-->（按合同约定违约金条款）</td>
+            <td data-page-node-id="Mu6gVh99QTRGVZpSGNLuCq"><!--pnid:BSjMSySsC1riya6MDP18an-->有合同依据</td>
+            <td data-page-node-id="As10WdnXYprSgyzfc7M7vM"><b data-page-node-id="GyNGYXY5gDWoUw3a1IuYYw"><!--pnid:5PHmmj5oKuxm54txNZNvxa-->冷静期解除是法定权利的行使，不是违约</b><!--pnid:YyCH5s8Ao8Z9yxN5bWBiyz-->——以违约金名义扣减，逻辑上自相矛盾，法院通常不支持；且违约金过高可被请求调减（《民法典》第 585 条第 2 款）</td>
+            <td data-page-node-id="qfB0K4thnio0FaiIdMu8nJ"><span data-page-node-id="s0xFLOrxisdsyer7fuRqEI" class="tag t-red"><!--pnid:0Hd2YoYCOIuQxO8OITXdd8-->不建议</span></td>
+          </tr>
+          <tr data-page-node-id="OpCUWRJA0NC44EZ5aH20v3">
+            <td data-page-node-id="ursDjAlKwzQGaNk6EHkTt8" class="num"><!--pnid:O96XnUOelUAKqYclDY7Nvq-->C</td><td data-page-node-id="LNjmIURWaTFW6PRz22PT7G"><b data-page-node-id="DvLrk4pOpAH8i3slpbg4v1"><!--pnid:rCPfV7y5oMcp6VeHzNaMyz-->扣实际支出</b><!--pnid:OahDKAujX4iW4Tzv8xWbxY-->（凭票据据实结算，多退少补）</td>
+            <td data-page-node-id="pdWOFykZbWo2EAWHEANkbY"><b data-page-node-id="DQGPJZaz724H9ZCbH2BhWB"><!--pnid:Iy79t9Iao7K7YPxeUZLDXC-->诉讼中最站得住</b><!--pnid:QI0pOxOlkzOAQuDMYhvSUk-->——对应《民法典》第 566 条第 1 款"根据履行情况"与实际损失赔偿原则，且每一项都有票据支撑，法院容易采信。广州荔湾案判扣 5,000 元正是这个逻辑</td>
+            <td data-page-node-id="7Hu4KHbxZfQkL139AiJLpu"><!--pnid:iQK3ctYlvDpmmKmP4PK6Bv-->需要完整的成本归集与票据管理；金额不固定、不可预期；若内部无价目表则扣不动</td>
+            <td data-page-node-id="YmJUFtUOVWkgp3MGnMlEmW"><span data-page-node-id="bTds4kaIECa7sI0uNBvMDg" class="tag t-jade"><!--pnid:F7RvdR6665d6sV320HjJiA-->最稳且成本低</span><br data-page-node-id="dB7MCYUfzop9bqQoYmK53S"><b data-page-node-id="2OyPnVvhvP5PUYjORcjhU1"><!--pnid:WMiCYzAN4s5Nd9E0vC1pAb-->推荐</b></td>
+          </tr>
+          <tr data-page-node-id="siCIt1bSbsANmyfIcBf3EQ" style="background:rgba(212,86,75,.09)"><td data-page-node-id="A66C6x8yPvvsiP2HNgBGjp" class="num"><!--pnid:g7RrywFB0X6H3UdmJb3fHb-->✕</td><td data-page-node-id="c9oHjTGjyjPec7lEQvIXiZ"><b data-page-node-id="LQkerDnUDqNSt6JMUPA4nh"><!--pnid:86e1kzUpgVd501lRjPcRw0-->加盟费概不退还 / 已收费用一律不退</b></td><td data-page-node-id="PPCX4qui8uhDAkxLWHqRBm" colspan="4"><b data-page-node-id="vttFZ5wQTSDlpUU0uKGgEH"><!--pnid:TcXGdtTHoWqzdvwohEdLub-->杭州萧山法院明文："当事人如约定加盟费不予以返还，属于无效格式条款，加盟方可以依据该条款免除特许方义务、加重加盟方责任为由，请求法院确认其无效。"</b><!--pnid:tmNas2G5a24ntG05xzNfNi-->——写了必被判无效，且会因"缔约过失"情节导致整体退费比例对你更不利</td></tr>
+        </tbody>
+      </table>
+      <p data-page-node-id="wmqyNYqPBbdJCckBt4HOGp" class="small"><b data-page-node-id="i4RIbHmc2xSRJKdEG6r4Oy"><!--pnid:e61sGeOgBjkwBU9Gy6AZm9-->最优组合：全额退为原则 + 实际支出凭票据扣减为例外。</b><!--pnid:xG7wagTu3d3i6WBKqdbcXj-->表述为"甲方应退还乙方已支付的全部费用，但甲方已实际提供并<b data-page-node-id="X7MMOnPMKA1NkNJrOsyZtP"><!--pnid:mtc1Zmi4PDwpDjVs3Rb4ek-->有据可查</b><!--pnid:NxNo7YAmp2RbyhMwreyfle-->的服务成本（培训、选址、设计等，以本合同附件《服务价目表》为准）可予扣除，甲方应提供相应凭证"。这样既不会被认定无效，又能保住真实成本。</p>
+
+      <h4 data-page-node-id="bGclCsdBZvcCQXulVNPQM9"><!--pnid:cNo3MjSF8S1VEsjHZiCDbm-->变量三：行使方式</h4>
+      <table data-page-node-id="dN3G3hor8C2FUomgzuBiYe">
+        <thead data-page-node-id="Z8mfSHh9tfLfGZhqo4tRJe"><tr data-page-node-id="w8mLScS83w08F0gGBHglWD"><th data-page-node-id="ZkLsqTtXZpVRweOidzKS5H" style="width:8%"><!--pnid:TRmAcdaDcS8fm7yl8JAE6k-->方案</th><th data-page-node-id="ms9BO7D2FcyYjXCVbu5uoh" style="width:24%"><!--pnid:SzFlrFdJDebmRYopZJX9MM-->规则</th><th data-page-node-id="LYYNK1iHPReSkSXuA0CqkG" style="width:30%"><!--pnid:zr2ZOIxOQPtpxBxKdqVfnL-->对总部的利</th><th data-page-node-id="4pOqkdV41e0ZJ14SsoOmwU" style="width:30%"><!--pnid:U3G55e4ekNn5zwA72LnBlz-->对总部的弊</th><th data-page-node-id="YxCDFZuogaNXNj18MrhN5z"><!--pnid:IBSK3HRONbXRkxQ4ZrZp6v-->评价</th></tr></thead>
+        <tbody data-page-node-id="ouI3OdNW1Qx8YKaUjP53gk">
+          <tr data-page-node-id="CkadwrWdG4kgPDVn9j9Qx0">
+            <td data-page-node-id="dy1RamZ25eHn55krZmWHGn" class="num"><!--pnid:gNQ4WR8f6OEmLlgGWXtcfn-->A</td><td data-page-node-id="KE4oBRCvW2RetLE0wlftiJ"><b data-page-node-id="TZxa07ZON4Ke2QK2gfYLVh"><!--pnid:fToB9CIXoootDivY7HxdLh-->书面通知到达即生效</b><!--pnid:Kw9vmgysrHXqVABdkJLWgz-->（无需总部同意）</td>
+            <td data-page-node-id="r67qmoCdU83vubqYqVKVRw"><!--pnid:NTNvqWSqjhMa2VdDZKRfhg-->符合《民法典》第 565 条第 1 款的法定规则，<b data-page-node-id="0WrJo4pGprpRLezbdyA0YZ"><!--pnid:iS8xGbUicjydLkkUsAA85y-->绝无被认定无效的风险</b><!--pnid:UrFNY91eEU6Sw5oIvjAAS6-->；时点清晰，便于举证与止损</td>
+            <td data-page-node-id="MjURurjzQ4Pl84HPkUUKVa"><!--pnid:KExSUandAjAH1LUyW26Hsk-->失去"挽留"与协商窗口</td>
+            <td data-page-node-id="PNrrydmQjNJQe9rpX5DC3o"><span data-page-node-id="w5UG1ewkt2CBz6xGTXNmJB" class="tag t-jade"><!--pnid:n5pcxEH3Xd4RW7e10B5eFo-->推荐</span><br data-page-node-id="3ShNHJaTCV7CzLf7bPgtLL"><!--pnid:K5wRC3rERxbDVRECrswNI1-->唯一安全的写法</td>
+          </tr>
+          <tr data-page-node-id="Sqwiny982e8rP3Vz9LLOC5">
+            <td data-page-node-id="bKDKy1FZ9EhJAS2N9ksOw6" class="num"><!--pnid:M09k7tPG22FRnbTbuQTqea-->B</td><td data-page-node-id="ocIF4xBJA7zBOw2fYwoOAu"><b data-page-node-id="h27aBJxAgK9PChHJcqRmFY"><!--pnid:bHZg1QcrHFljDoGO0AjVoI-->须经总部书面同意</b><!--pnid:tSF6NmyNeJL6rdZAtsfY7F-->方可解除</td>
+            <td data-page-node-id="dLYk3XaTaRCPQckAU6erTd"><!--pnid:raTv83cdAS9Mvh9EynzATm-->表面上给了你否决权</td>
+            <td data-page-node-id="2RTX4W37L1lJrX1nWVGQTe"><b data-page-node-id="RMOTfBSbKWl3SrdrwbWIKg"><!--pnid:4xaHYc2T97abfEhfx0rfne-->直接触碰《民法典》第 497 条第（三）项"排除对方主要权利"——无效，且无"不合理"的缓冲空间。</b><!--pnid:OAH5FcDOWGPkHxT7GROdAc-->北京 68 号文亦明确"特许人不得完全限制被特许人的单方解除权"</td>
+            <td data-page-node-id="0dTlMP216zUDSRn5J6YRBN"><span data-page-node-id="zPDBpGr1mPCcTc8WKur5Ay" class="tag t-red"><!--pnid:B1eAa1e7NVnvJtR6jSTnIc-->禁止</span></td>
+          </tr>
+          <tr data-page-node-id="k1VIpYABHYRYw9uq9wcsKT">
+            <td data-page-node-id="78UMREb8VQtlzPfp0CaZf4" class="num"><!--pnid:M0SfTahSuNf12DQuVHdYxJ-->C</td><td data-page-node-id="t9ci9nTav96ayEaH8Nud0T"><b data-page-node-id="cOq3ceGpUmjUkBGrEqS2ED"><!--pnid:JwhLVLIp4hFpFf5Z0gutz5-->须双方签署解除协议</b><!--pnid:ubb2rHOatqcXBpBKsP1biI-->后方能解除</td>
+            <td data-page-node-id="Rxr6oX6zsCJsvvmeEiNyGn"><!--pnid:z544Z4fmgvz68jr4qBUfqE-->同上，且给了你谈判筹码</td>
+            <td data-page-node-id="FjgwlONWbekOZhFfWPmKMy"><!--pnid:7j4OnhdkTyOmpDbxIgQfDN-->同 B，实质是以合意要件架空法定形成权 → 无效。且会被作为"缔约过失 + 恶意限制"的加重情节</td>
+            <td data-page-node-id="PLizRsQXk18MGGpCrGJjIC"><span data-page-node-id="BTNrFXVVwQRPcMm4ZGRgUD" class="tag t-red"><!--pnid:kj9avlX0msCdpm4oILyTp3-->禁止</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p data-page-node-id="66boJDF7YsgSoYyyiyTdAZ" class="small"><b data-page-node-id="TuZHafHnnAqpz0uX4Q3pAn"><!--pnid:7EoMU2Zm7UoMsg8j8EhL1q-->但方案 A 下你仍可争取三项程序性设计（合法且有效）：</b><!--pnid:qEpqm8rXwBEV4wRWdlZNjA-->① <b data-page-node-id="fPcwaBDR3QLJt7ysUu26Fb"><!--pnid:xsFDbgF0TWBvlxswiDtK2M-->通知方式特定化</b><!--pnid:e2yGOch0MmeI8bd7fYIQoI-->——约定必须以<b data-page-node-id="DnDsMmHdLpbnD7znxEwFUz"><!--pnid:HGapNk6teXTIoz3T394v4u-->书面形式</b><!--pnid:dUSrr4CfprpzHk4fn3GO55-->（含纸质邮寄、企业邮箱），口头/微信语音无效，避免"我说过要退"的口头争议；② <b data-page-node-id="IVQRAkex5m8iE57wSvygB9"><!--pnid:nvARkaotDuB9uG3q2VwuiY-->送达地址确认</b><!--pnid:aTrALez5OVsKeYbqsLAToj-->——合同中约定总部接收解除通知的专用地址、邮箱、收件人；③ <b data-page-node-id="6prM7yk4JaUvk8Y6hxj9rs"><!--pnid:e8kd95t9OBwFJDHJADfBSu-->通知内容要求</b><!--pnid:9qzH0cfRb2G9NH289NSQGo-->——须载明解除意思表示、合同编号、退款账户，便于一次性处理。</p>
+
+      <div data-page-node-id="QEPl9RwTs4hkFNRxKMFVgO" class="act">
+        <b data-page-node-id="KgeEEWLnj3bxSSRwQ1V5bj"><!--pnid:Jzlxa4xt2hN8ahyRjihMRC-->我的落地动作：</b><br data-page-node-id="EKzJHeuGJBv0rYdhUXPDTk"><!--pnid:uDYihT4g6xy2l6K855OujU-->
+        1. 三变量定档：<b data-page-node-id="hcgue5zUwaWAWB7FXqMhca"><!--pnid:iPaF648cctwemvrxFayEyp-->期限 15 日 + 退费"全退、扣凭票实际支出" + 行使"书面通知到达即生效"</b><!--pnid:8BIe6KOmr7iCbjeXBycnBn-->——这是诉讼最稳、成本可控的组合。<br data-page-node-id="2JlNKM4iT2j7PYuj1gD8cc"><!--pnid:UkPSoxfox9i3Jt4VthtMn3-->
+        2. 立刻编制《服务价目表》作为合同附件：培训 X 元/人·天、选址评估 X 元/次、平面设计 X 元/㎡、带店督导 X 元/天、首批物料配送 X 元。<b data-page-node-id="BwxygtEt7ISRNxUsDVKBxI"><!--pnid:rIFjW1ejqVbl92z1dUSU0J-->没有这张表，扣减主张在法庭上就是空的。</b><br data-page-node-id="HynLWkNVR7kUcMjSpdAJSj"><!--pnid:CXP4Wj9WoSFueuTxJs6wyk-->
+        3. 在合同里<b data-page-node-id="hQsu2ZRGFjhH4AJzcpwtch"><!--pnid:9fQKEqDWGaHbphFtWnfY8G-->明确定义"实际利用经营资源"</b><!--pnid:2m75OgShoYTygWLbbKlGiz-->，并明确列举<b data-page-node-id="bcaX26UxsFV02cyctx82U1"><!--pnid:oDOclY5Tm2qTJmqjzRYW44-->不属于</b><!--pnid:ZL87dYDPZf5q0DUSCeV1Ak-->实际利用的三项（参加培训、接受选址建议、领取资料）。<br data-page-node-id="tUyBCJlK6RTgWtMAx96Vfy"><!--pnid:fTfVRbv76KFRqCDeSRuOpu-->
+        4. 系统层面：CRM 中设"冷静期"字段，签约日 + 15 日自动标红；届满前 2 日提醒招商经理；届满次日自动触发《资源全面交付清单》。<br data-page-node-id="41GFL3vayxSWCo0wst4bQT"><!--pnid:MkyMnjgshirh6affl5AkfD-->
+        5. 删除现有合同里一切"概不退还""领取资料即不退""须经总部同意"的表述——这三句都是已经被判过无效的。
+      </div>
+
+      <div data-page-node-id="1TyA71SynfyQxnOVRtE9ol" class="anti">
+        <b data-page-node-id="8x3sEbFeDEe1WNG49ZQL1s"><!--pnid:rF5ZBoQGcayNoD543IC0Fj-->加盟商反制点：</b><!--pnid:uQ3pgKRfXGn6USHpEjIWJ4-->加盟商会主张——① 约定期限过短，请求法院调整（杭州萧山口径支持）；② 扣减项目无票据、无价目表，属"不合理加重责任"，请求返还；③ 自己"只参加了培训/只接受了选址"，未实际利用资源（萧山法院明文支持这一主张）。<br data-page-node-id="IAfaED4uLoFQ5fyemFauS2">
+        <b data-page-node-id="M1mMKk8QfPbDm10vNdEzQw"><!--pnid:kzCXgRC4QaT9EqexbN7Oqu-->更狠的是：加盟商会在冷静期内刻意不接触任何核心资源</b><!--pnid:mvFvy588ReYhd798LaJntB-->（不参加培训、不选址、不进货），等到冷静期最后一天通知解除，把"未实际利用"做到极致。<b data-page-node-id="KNVNbVtNyjSUYQGzD8n1cx"><!--pnid:bablMm0zpNC6OVbhS2eAEC-->针对这一策略，你的防守是：把期限写明确（15 日），到期即视为放弃，而不是等他"实际利用"。</b>
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:rBLNOBJhXQwFhIinXZKxvz--><!-- ============ p3 ============ -->
+  <div data-page-node-id="9FqUznoQPxWULWAlrKMCAF" class="panel" id="p3">
+    <div data-page-node-id="t9RQyunBZ0CJZWWnnjGMHP" class="card">
+      <h3 data-page-node-id="QhHrdBBHIfBlxUOr0nn84G"><!--pnid:YidBJuxiyNKhU1f8kQ1tvn-->三、三个完整条款版本（可直接放进合同）</h3>
+      <p data-page-node-id="6sqosaD5L8TkxXENT5NTAb" class="small"><!--pnid:tkWEtfUrw4SASPXKc09CEY-->三个版本均满足：约定期限明确、无需总部同意、不设"概不退还"、履行《民法典》第 496 条第 2 款的提示说明义务（<b data-page-node-id="Rz3LDgjVn55gXkoeCNFnbZ"><!--pnid:aqbrYyYgY7fNLqLimOM3on-->建议在合同中对该条加粗 + 下划线，并另页单独签署《冷静期条款确认书》</b><!--pnid:xaFjVoQT3aeszEgNNJhLgy-->）。</p>
+
+      <h4 data-page-node-id="qwQGF7mpZNnKcCjTTa0cFF"><!--pnid:d5eq3uJdbLh6SCD8MMvtIw-->版本一：严格版（对总部最有利，但需承担被调整的风险）</h4>
+      <pre data-page-node-id="XCnZ1LIVBiwlXIHoYVAYKh"><!--pnid:kkPRxUIOOlQJSl2M9LLkSh-->第 X 条　被特许人的单方解除权（冷静期）
+
+X.1　被特许人自本合同<b data-page-node-id="Z3JplY8T7fAxbhWqCMgiC7"><!--pnid:KEdklUo1hRQMESvr8oC9Ic-->签订之日起 7 日内</b><!--pnid:sUUggSbSWwC2xzUUGpFDC1-->，可以<b data-page-node-id="qcWdkxxlzI1zjZSiFqrhmK"><!--pnid:2emIvcK2dKTD1zDrzv9PKu-->无需说明理由</b><!--pnid:4cIZ6hSFNIDue7fiLwBJml-->单方解除本合同，
+     无需征得特许人同意。
+X.2　被特许人行使前款权利的，应当以<b data-page-node-id="DYT656RuqrV7QdCTsnOBCJ"><!--pnid:NOPH4fWmP07nB9XGjBKJve-->书面形式</b><!--pnid:S1CTI2R1M1aLJUsmFIj4cM-->（纸质邮寄或发送至特许人指定
+     邮箱【________】）向特许人发出解除通知，<b data-page-node-id="XOSgG8ywCSJwF3aeDXe0iJ"><!--pnid:4pr7TaN6uP5q9VYvJ29sZF-->通知到达特许人时本合同即告解除</b><!--pnid:51S54gTFc1HD2Zh7oo9hFt-->。
+X.3　本合同依 X.1 解除后，特许人应当退还被特许人已支付的全部费用；但特许人
+     <b data-page-node-id="cOU65NR5evIimI4wTLyWwF"><!--pnid:5J9f7LwlUu5f1vsIfLCqX7-->已经实际提供并可提供相应凭证</b><!--pnid:ecDcYXkIag2ToNwn62mKw3-->的服务成本，按照本合同附件三《服务价目表》
+     计算并予以扣除。特许人扣除的，应当同时向被特许人提供相应凭证。
+X.4　本条所称"<b data-page-node-id="ISh8KRp2GsPWJBkab07ROF"><!--pnid:vkCObvfYQvX3SULUYOT7FB-->实际利用经营资源</b><!--pnid:dBHLwh5tiIm85PWN7ssmDE-->"，是指被特许人实施下列任一行为：
+     （1）使用特许人商标开设店铺并对外营业；（2）使用特许人专有技术制作产品
+     并对外销售；（3）自特许人或特许人指定供应商处采购原材料并用于经营。
+     <b data-page-node-id="4y09TsYjDu40LRlzVtEJlK"><!--pnid:VpbW7ySMyxvaMMecGbGtXl-->被特许人参加培训、接受选址建议、领取资料文件，不属于实际利用经营资源。</b><!--pnid:kcAJrlgFxXXCjqVTN9TvVd-->
+X.5　被特许人自本合同签订之日起 7 日内未行使本条权利的，其单方解除权即告
+     消灭，此后被特许人解除合同应当依照本合同关于解除与违约责任的其他约定办理。</pre>
+      <p data-page-node-id="jEJgZLAIFZlpLdB8npUjVQ" class="small"><b data-page-node-id="2h3NaBrvPP68QIOfGDVOFl"><!--pnid:odM1pmRjJMHPVJ7MCfAJUm-->风险提示：</b><!--pnid:spHfSsVeKIjPSgUBerxi3b-->7 日属边界值，杭州萧山法院明确"法院应对明显过短的冷静期予以调整"。<b data-page-node-id="N43ND7FCM9qB6e4NUhkDPc"><!--pnid:HX2bMQGvAUL9ZWofsxdsRS-->使用本版必须配合《冷静期条款确认书》单独签字 + 加粗下划线提示</b><!--pnid:3hAc4HlJOZhR6YAfBIYVty-->，否则被调整的概率不低。适用：加盟费 ≤15 万、单店投入 ≤100 万的标准米线店。</p>
+
+      <h4 data-page-node-id="GonduuiVjcV7Pu1bxCG5fE"><!--pnid:iqyveg2MSmFlTmIz9kBCqd-->版本二：平衡版（<span data-page-node-id="v9oGLdxMt6J3ns99fOeOXY" class="tag t-jade"><!--pnid:3CZmqJsUHxnJMMes4U8b9N-->推荐</span><!--pnid:wgOFZQDuZrrtmS9RI5nRsy-->——诉讼最稳、成本可控）</h4>
+      <pre data-page-node-id="RWmBRZHz5LEExrmiXadkNU"><!--pnid:YSmpvHvJWBaD0EK5F4tbNh-->第 X 条　被特许人的单方解除权（冷静期）
+
+X.1　被特许人自本合同<b data-page-node-id="opGu5ztNRIvlYrGYQf66VW"><!--pnid:DB2ndMsZbXvQWAjXHR4xBa-->签订之日起 15 日内</b><!--pnid:X4Tgj5mWtd9pWEasdVgQz8-->，可以<b data-page-node-id="sYyiFK7YbNTQf2j5tWnxzH"><!--pnid:hacxEIbS1wQqxU8Jr0yXIP-->无需说明理由</b><!--pnid:CB0hJIUvUdAimhwZInv41H-->单方解除本合同，
+     无需征得特许人同意，<b data-page-node-id="08FB1b2deT49L7vHbKpD8U"><!--pnid:jPyDPSSeA7zAob5QuMnuvj-->亦无需承担违约责任</b><!--pnid:2DbPniOUE8LNOmbexBggQ1-->。
+X.2　被特许人行使前款权利的，应当以<b data-page-node-id="3tKXWXop0KBETvfS9R2jN3"><!--pnid:5oGS1ll5tfKSjJ7vDo7Qks-->书面形式</b><!--pnid:yAQWsUTp1kHITyLHKN6aT8-->向特许人发出解除通知，可以采用
+     下列任一方式，<b data-page-node-id="Ps9F8FKofB8PtToNkdxDKb"><!--pnid:F8tKb8EsGTJEqHsF5Et1tt-->通知到达特许人时本合同即告解除</b><!--pnid:nfJaXhpNQzOL5wh4olc9Cu-->：
+     （1）纸质文件送达或邮寄至：________省________市________（收件人：____）；
+     （2）电子邮件发送至：________________（以邮件进入该邮箱系统为准）。
+     解除通知应当载明：合同编号、解除意思表示、退款收款账户信息。
+X.3　本合同依 X.1 解除后，特许人应当在收到解除通知之日起 <b data-page-node-id="wtIiinPm0F5QcKCZcWzzf0"><!--pnid:ui3mCVi5A6I37zMcoTce0P-->15 个工作日内</b><!--pnid:WW6nmNSC5D01sGnnzXM7xR-->，
+     将被特许人已支付的费用<b data-page-node-id="Ef4R7tm7zfn1gNQd3jhizA"><!--pnid:RkRVUf0ky7rrdvU4D73RwR-->扣除下列已实际发生且有凭证的成本后</b><!--pnid:IfFqSJhMBOiE0ttPQJiNnG-->一次性退还：
+     （1）已实际提供的培训（按附件三《服务价目表》________元/人·天计算）；
+     （2）已实际提供的选址评估（________元/次，以《选址评估报告》交付为凭）；
+     （3）已实际交付的平面/装饰设计成果（________元/㎡，以设计成果交付为凭）；
+     （4）已实际配送且<b data-page-node-id="Q693nNjGidI7VESctPXnYK"><!--pnid:CwSEr7oS5uNEuLRepj9bKr-->未开封、不影响二次销售</b><!--pnid:4WHvzsrlIi8o5x0LbpvEzQ-->的物料，被特许人应原样退回，
+         无法退回的按供货价扣减。
+     <b data-page-node-id="gmU0ccZTuojJPiWr5trTpD"><!--pnid:HsyGSyOCmRXUpUFtVEoHTE-->特许人主张扣除的，应当同时向被特许人提供相应凭证；未提供的部分不得扣除。</b><!--pnid:FLHrH7cgvWhS3pZL7WmbVs-->
+     未实际发生的费用、合同保证金，<b data-page-node-id="l83ShJb1qKfabUYiIfHIyl"><!--pnid:dDhzwDsHvkeOhaj1qhNJle-->全额退还</b><!--pnid:DSwFWvvr5GjKgft3rKqy4x-->。
+X.4　本条所称"<b data-page-node-id="3L6YKg17dTBNNwRjFYC6DO"><!--pnid:hTfRymNfOPGonK6PAz68rC-->实际利用经营资源</b><!--pnid:6WZfOaUhikdVq0pWTO7Wk3-->"，是指被特许人实施下列任一行为：
+     （1）使用特许人商标开设店铺并对外营业；（2）使用特许人专有技术制作产品
+     并对外销售；（3）自特许人或特许人指定供应商处采购原材料并用于经营。
+     <b data-page-node-id="8VfbY8Sia5mFbOO1DgiLIB"><!--pnid:feg7JgQdE089IMc5EtIJv6-->被特许人参加培训、接受选址建议、领取资料文件、参加招商说明会，均不属于
+     实际利用经营资源。</b><!--pnid:s1H6zUt9Zvc8IwQEllBpgu-->
+X.5　被特许人已经实际利用经营资源的，或者自本合同签订之日起 15 日内未行使
+     本条权利的，其依本条享有的单方解除权即告消灭。
+X.6　<b data-page-node-id="i5l56UHe3neTbQSiFfn4DF"><!--pnid:vL1ZH4nom4s5WPbfFEQWQi-->（提示条款，已加粗并另行签署确认书）</b><!--pnid:2oWzSyU0g0OMCzBxbBp37l-->本条系依据《商业特许经营管理条例》
+     第十二条赋予被特许人的法定权利而设，特许人已就本条内容向被特许人作出
+     充分说明，被特许人确认已完整阅读并理解。</pre>
+      <p data-page-node-id="ts5aOivBHRPwxtUs0MM8mR" class="small"><b data-page-node-id="7y4Xve9CIMKU1tvEISXEbp"><!--pnid:T7FEankPirXRC7KNWS708D-->为什么推荐：</b><!--pnid:iuConZT24vi2SjxPU77tkx-->15 日落在法院认可的常见区间（重庆案第 15 天被支持）；扣减全部"凭票 + 有价目表 + 未提供凭证不得扣除"，完美对应广州荔湾案的裁判逻辑；X.6 是《民法典》第 496 条第 2 款提示说明义务的直接履行证据。</p>
+
+      <h4 data-page-node-id="xfjyAm3u2LqpNheKOs5EaW"><!--pnid:h6MlLAXPIcasNhj0K9uk4w-->版本三：宽松版（品牌修复期 / 大额重资产店型）</h4>
+      <pre data-page-node-id="sCEb7ix69zJX1yy6NK4utB"><!--pnid:Xbwu3zgKkAyArX9JU7IhyE-->第 X 条　被特许人的单方解除权（冷静期）
+
+X.1　被特许人自本合同<b data-page-node-id="zCBovUvnrADfVooh2hwX7v"><!--pnid:Q2Ew6vPvHFp5AiGMLXNBSh-->签订之日起 30 日内</b><!--pnid:6IZNUD3iRjC8NuKlL7oW9i-->，可以<b data-page-node-id="M0qKpmhKHHx0mFEV2SZXX8"><!--pnid:L2gw5CmG0Ea0iLbuPsqKYh-->无需说明理由</b><!--pnid:2XHswuuRiEWs07h89GBaB1-->单方解除本合同，
+     无需征得特许人同意，<b data-page-node-id="36Ykb3aKTq3ue9hmlDdST5"><!--pnid:vHc9oMImVPRF4CMUjxl3F3-->特许人不收取任何违约金或手续费</b><!--pnid:WstLCai9qtUWaNtcSgdjYa-->。
+X.2　行使方式：书面通知到达即生效（方式同平衡版 X.2）。
+X.3　本合同依 X.1 解除后，特许人应当在收到解除通知之日起 <b data-page-node-id="cbbYlulnaCIjS7Sazo0RrH"><!--pnid:4GjmaUi0TjicNbMGK5gNII-->10 个工作日内</b>
+     <b data-page-node-id="608VTghBp5NGsqowbxZG38"><!--pnid:6P9jOZfMfJOOfY1tDkdHcW-->全额退还</b><!--pnid:9lbKNOSSMnlzjmZ1XWGRA8-->被特许人已支付的全部费用（含加盟费、保证金、培训费、设计费
+     及其他已收款项），<b data-page-node-id="QvixZ3VUZEh3kX8fw3MC0U"><!--pnid:ztBsHcy7CopA9H0HIlu0zl-->不作任何扣减</b><!--pnid:p75xnMm6yr3gGw2KHqiqsY-->。
+X.4　被特许人已实际利用经营资源（定义同平衡版 X.4）的，其依本条享有的单方
+     解除权即告消灭；自本合同签订之日起 30 日内未行使的，该权利亦告消灭。
+X.5　<b data-page-node-id="XFiCO8rdfLvD6LCJWVQQ5o"><!--pnid:xWzAoSTvMhaAwaq16OVLh4-->（提示条款）</b><!--pnid:bXQbXbjZZcG2g2qPN9Jraf-->本条系依据《商业特许经营管理条例》第十二条赋予被特许人的
+     法定权利而设，特许人已就本条内容向被特许人作出充分说明。</pre>
+      <p data-page-node-id="QxZSo1YLnUJr19nb9OuwQY" class="small"><b data-page-node-id="ZkCX5fmh7x36z3yIBrLP7T"><!--pnid:szeGGhVgQjNhbeeNVhvpQ1-->适用：</b><!--pnid:gN5KagNbBcpvcDBubIdEG2-->加盟费 &gt;30 万、重资产店型，或品牌处于口碑修复期需以诚信形象招商。<b data-page-node-id="EcPUq5TwhaBuJ13JoMPIG1"><!--pnid:tmdkdJ2My3dVFH304eNCja-->代价：30 日内你不能推进任何实质性投入</b><!--pnid:1trnTVEnl4oJ4g0P5HvayF-->，且全额退费会诱发试探性签约。建议配套：① 冷静期内不开放供应链账号、不交付核心 SOP；② 要求加盟商在签约时签署《冷静期确认书》，写明"本人已知悉并理解上述 30 日单方解除权"。</p>
+
+      <h4 data-page-node-id="10uIWeETKzsLtbBCwbdTX3"><!--pnid:Z12AAZAlllPDBMMt3Y48hf-->配套的《冷静期条款确认书》（单独一页，三个版本都要用）</h4>
+      <pre data-page-node-id="Fc5zCHtuOFfZd9qrsBIZm2"><!--pnid:rlHbmix84mzBQunRJDOyxX-->冷静期条款确认书
+
+本人 ________（身份证号：____________________）系 ____________ 公司
+（下称"特许人"）《特许经营合同》（编号：________）的被特许人。
+
+一、特许人已就《特许经营合同》第 ____ 条（被特许人的单方解除权）向本人
+    作出<b data-page-node-id="js4hwOAHemfPmRDXUchbUf"><!--pnid:9MzJemyJCJx0NQ0lYhRqhN-->充分说明</b><!--pnid:zNtjkcXFB16d2TPOfEfw4I-->，本人确认已<b data-page-node-id="Bf0il1B19u47PSVYtwOfvj"><!--pnid:V9t7Rkx9zWBta0ME1RYclo-->完整阅读并理解</b><!--pnid:kMbIlaciXPeLp3YcS3qBmO-->该条全部内容。
+二、本人确认已知悉：本人自合同签订之日起 ______ 日内，<b data-page-node-id="dQ90aKEZcK31OQeWPzP2xa"><!--pnid:iPb6053YqNdXTi1bPe9F1X-->无需说明理由、
+    无需特许人同意</b><!--pnid:ugpMHfMl3z1lGf1OeyjDao-->，即以书面通知方式单方解除本合同；通知到达特许人时
+    合同即告解除。
+三、本人确认已知悉：本人<b data-page-node-id="CG82dHZdsDJlKUOdrmNM9N"><!--pnid:yfiLXSFcPv8HMxP82AoGwo-->参加培训、接受选址建议、领取资料文件</b><!--pnid:5ZsxTK5RE26v8I1fYEvaYO-->，不属于
+    "实际利用经营资源"；但<b data-page-node-id="4CsLcJ1cYlcysbuovdP0gB"><!--pnid:BvGtZFwI2p40PppqzGh4ut-->使用特许人商标开店营业、使用专有技术制作并
+    销售产品、自特许人或其指定供应商采购原料并用于经营</b><!--pnid:4HWPmNBDFgmIiMZYzEWTrV-->，属于实际利用
+    经营资源，届时本人依本条享有的单方解除权即告消灭。
+四、本人确认已知悉解除后的费用退还规则：____________________。
+
+被特许人（签字／按指印）：____________    日期：____ 年 ____ 月 ____ 日
+（如为法人／个体工商户，另加盖公章：____________）
+特许人经办人（签字）：____________       日期：____ 年 ____ 月 ____ 日</pre>
+
+      <div data-page-node-id="V2MoPeMvR7BVZ9eTZDZzyL" class="act">
+        <b data-page-node-id="FR5JilHvbJRdBKK0hk423M"><!--pnid:eOWTaSyFIz9Yzs2a9JC3Ul-->我的落地动作：</b><br data-page-node-id="zItSwP8bYpVRCsuQ9ehLQM"><!--pnid:lE8DfAQzu63R2dUPHXzh68-->
+        1. 三个版本选一（<b data-page-node-id="etm4n9KfWNiisZm5qJkl3L"><!--pnid:mBYTIzq28AXxaPae9QObtj-->建议平衡版</b><!--pnid:8MNr1RDGbDf6fKS6e11eA3-->），连同《冷静期条款确认书》一并交法务部定稿，作为标准合同模板的固定条款。<br data-page-node-id="lZZaRmA2bTLjQeF6WzdQHD"><!--pnid:HhP6n8nq4aAwe9wPX5NgrA-->
+        2. 合同条款中该条<b data-page-node-id="4fom6ftnUQa4MbZVHVI3zL"><!--pnid:MlcZ2l6My7FekunY15IeZr-->整段加粗 + 关键数字（15 日、15 个工作日）加下划线</b><!--pnid:QegUiEBghkdD2DRMuNYbkB-->，并在目录页标注"重要权利提示"。这是《民法典》第 496 条第 2 款的最低要求。<br data-page-node-id="yDroAkH3hw7PrsiQPLoKBx"><!--pnid:hhBKoDt28XTbis0DflM5Bz-->
+        3. 《服务价目表》作为附件三，与冷静期条款<b data-page-node-id="OfcQte2dTzbxLqW5gkbFoO"><!--pnid:cKcJglhMczzb6jwGxQpHIA-->交叉引用</b><!--pnid:Zjtt0xgeNWcnRK7Evh7hhe-->——价目表缺项，扣减主张即落空。<br data-page-node-id="l68E9HnazAIi1m9od88tNw"><!--pnid:3dT3J9t5xpJigGWXFkanxo-->
+        4. 已签约的历史合同：<b data-page-node-id="WETJUD5AYbd8fXM5pzg4mr"><!--pnid:2jFOLYwFzmUxt7fXXSXKHs-->统一补签《冷静期补充协议》</b><!--pnid:1CgNWbpYhTPgkHKXatcRnP-->，把期限与退费规则补进去。这一步成本极低（每份不到 30 分钟），但能把"未约定"的风险一次性关闭。
+      </div>
+
+      <div data-page-node-id="6qWMYgEIXzgPbtrfgdXAjK" class="anti">
+        <b data-page-node-id="zmFpmLk9zVV70qIdDEpUWC"><!--pnid:ieknJxS38jS5tOnvBi56b9-->加盟商反制点：</b><!--pnid:cpiaXDpNXmJmvt2IjSZAwJ-->《冷静期条款确认书》是你的证据，但<b data-page-node-id="ysymk2fRgUTbEEoZLZvIal"><!--pnid:gBMgFXRoiyPpeyseH8Fuz9-->也可能被他反过来用</b><!--pnid:0MG3OpBKShc53HdtVkTYHl-->——他可以主张"确认书是格式文本、签字时未实际阅读、内容仍不合理"。<br data-page-node-id="icjNEXXGbcmysE5k03yH1f">
+        <b data-page-node-id="JUOHkJTNGSKau9NaibxOfQ"><!--pnid:kbKQpEq9r8Bhg8uZywbHED-->所以确认书必须：① 第四条留空手填退费规则（不得预先打印全部）；② 日期手写；③ 加一句"本人已抄录 ' 本人已知悉前述单方解除权 '（抄录处）：____________"。</b><!--pnid:3iCqDTSfU6Z32mjSAGrif6-->抄录这一手，是格式条款提示义务中证明力最强的做法，法院采信率极高。
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:Oe8ImC4fg4SJZxcefxtFKG--><!-- ============ p4 ============ -->
+  <div data-page-node-id="yWWLiIvWWMPIIJax5Fn8dR" class="panel" id="p4">
+    <div data-page-node-id="zGsd3FpbSsDKUxj3RPZ9zL" class="card">
+      <h3 data-page-node-id="jAH0NenCEVHnKNy4EllD5M"><!--pnid:P5kNjtnG13pjZEqQoaRjfr-->四、《冷静期纠纷应对手册》</h3>
+
+      <h4 data-page-node-id="EwteKOVkCW6Y9rq8o174mY"><!--pnid:ZVdX52bU2wn5VNwgEZxoYi-->1. 冷静期内：总部该做的 8 件事</h4>
+      <table data-page-node-id="Rgs00r01TZcZRsPB7p60Nm">
+        <thead data-page-node-id="5nMiOFPgght2KdH9fTJovo"><tr data-page-node-id="LU7uABXWbkiEpaaHRm6GIK"><th data-page-node-id="lbyq9qjiYHUg4qwCuvpr5A" style="width:5%"><!--pnid:hRnjKXaeYSiDq8Y4jnb57L-->序</th><th data-page-node-id="IqlK61G7f1InRhqDwmdFkx" style="width:30%"><!--pnid:ln53axsKhwN8cql1hCjARs-->该做什么</th><th data-page-node-id="ubLX2kpkRIQNgdzBmWDwYO"><!--pnid:PS7dT3SjO3rJwW4iipqIxV-->为什么 / 怎么做</th></tr></thead>
+        <tbody data-page-node-id="8aqrp7nLkVGFkm36FFLqW5">
+          <tr data-page-node-id="UBZhYCNCICl1O0L9FY0vR7"><td data-page-node-id="urRSDHvh9V2aIIA6J7U4wY"><!--pnid:solk1rYWDZIBsDYnVb1SdX-->1</td><td data-page-node-id="Rg2PgJignfPEBjk10O2uCj"><b data-page-node-id="Q0McojNcqyApjSHsmFoUVE"><!--pnid:Nh4oDagCccjxO326dAIa5H-->签约当日发放《冷静期告知书》</b></td><td data-page-node-id="FFeTPh1gF4huAgaZY7MQwL"><!--pnid:vdNaaZh3SJZObx5B9shnkS-->单独一页，写明起止日期、行使方式、退费规则，加盟商签字。<b data-page-node-id="f73V4gEDCr7wqUudK424ul"><!--pnid:4wwQCbpsfOd5OY1xe95Cme-->起止日期写具体年月日</b><!--pnid:FLNMoLzIXNWKK3IuWjx6e5-->，不留计算争议</td></tr>
+          <tr data-page-node-id="6zIIqVmfhC8VCXlmU0Vmed"><td data-page-node-id="Ny2uQlK52aVnQHadq9VmjF"><!--pnid:wOowvEN77ZcKTjzQ0Ye8Yx-->2</td><td data-page-node-id="YQ3BLnUzKEShHgYw5uCn8w"><b data-page-node-id="rNfcG5yrj8gRBKLtPQR7cP"><!--pnid:Z0RuTsa8a80vtS7iUXhEtC-->CRM 标记冷静期起止日 + 届满前 2 日提醒</b></td><td data-page-node-id="2XvcZjF15Gu5U37ADtPjrn"><!--pnid:7LVgxwSpb3jp63J81Hy0sx-->系统硬控比人靠谱。届满前提醒招商经理主动回访，很多反悔是可以挽回的</td></tr>
+          <tr data-page-node-id="L4rrgflw0TFej49JuFTxzf"><td data-page-node-id="L2xeJ5RCYosFKaf5lq3u78"><!--pnid:6Mau4zpAx4makgDjsXLeXN-->3</td><td data-page-node-id="fcwfyfHG6HJ5xNTJQ23Aea"><b data-page-node-id="9640Q8DDqOkQAyIo3MiqCm"><!--pnid:xN5zmXgXlfVTKuh6wOYhN9-->只提供通用性服务</b><!--pnid:JqTxK0NHJfqAhYlBr5hdRw-->（品牌介绍、行业数据、选址建议）</td><td data-page-node-id="l2b7Pduab33IFwsnoOQHYC"><!--pnid:kpTyLKzi6PVaL42w5cbc0Q-->这些不构成"实际利用经营资源"（萧山法院明文），既能体现服务、又不消灭你的扣减主张</td></tr>
+          <tr data-page-node-id="Jh1vkV9U2TCnPTD4wwBrNA"><td data-page-node-id="cNWXSpVbnT0hnLlsmcwkD1"><!--pnid:ctfpD5kEDkPbsSqXmGcdrM-->4</td><td data-page-node-id="lx7mrHNQWtBD2ZNKygAgxB"><b data-page-node-id="qOUGXPGWVU7LflA567XKcE"><!--pnid:jTJgwqO0garO730mQl5HyC-->每一项服务都留痕并要求确认</b></td><td data-page-node-id="N1D4qIx9yJ1uaOAm9FJQIo"><!--pnid:QCiFYbC07E0mA4IB4pXSpp-->《选址评估报告》交付回执、培训签到表、设计成果交付单——<b data-page-node-id="0VMu3yie7dCchzwERZx40d"><!--pnid:URIO0UCkz77AfAkv5YCjDK-->这是日后扣减的唯一依据</b></td></tr>
+          <tr data-page-node-id="EgfRGckLH0RNmgKiL9ffdO"><td data-page-node-id="2GF94ycYNI0HCIF6PjuWeu"><!--pnid:ygXWZfLNC6elpyH5zRiWhx-->5</td><td data-page-node-id="yGyWqz7IpIBHln4jwa1FO5"><b data-page-node-id="6NpMzCrdrFMdbdEoiHBjpF"><!--pnid:ruWPdRUasYBz1WcXk8hPGc-->不交付核心资源</b><!--pnid:jEUFGl9y5xUNATjpcMQyvQ-->：核心 SOP、料包配方、供应链账号、独家供应商名录</td><td data-page-node-id="NtT1exRYi2Hf5hjsrG2EBn"><!--pnid:xLjt12m8UTyWztsqgmIjif-->交付即可能被主张"已实际利用"，但也可反向用于消灭解除权——<b data-page-node-id="4FGpAmfugW7HUPHlAHSy5m"><!--pnid:tNeKyXBtQs3J9zjKii0Yxk-->按加盟费金额分档决定（见下文）</b></td></tr>
+          <tr data-page-node-id="3l9z1eO9XlFCuYJT4o2Mwx"><td data-page-node-id="Fw5EBtYAXoG1HQWH2rcZpr"><!--pnid:Wlm757QgJTUbPyz4Ycdeuu-->6</td><td data-page-node-id="N7vDrBpvGMQkH2I9mjbrPm"><b data-page-node-id="htDIFJLdu2cv8lWpUFSOPe"><!--pnid:Va9Og5uvJhxULiFePa6BHO-->不向第三方下单</b><!--pnid:LEOFXeAfVlCMiQHk2qWrQs-->：不订设备、不备货、不签装修合同、不付租金押金</td><td data-page-node-id="zqxdbWNH0Jbpmmef9lzAbm"><!--pnid:AUS933xoKq2hRPsPR5YnwZ-->一旦解除，这些是你自己的损失，且不属于可扣减的"已提供服务成本"</td></tr>
+          <tr data-page-node-id="XOZ66eSe3cFzx0AVJYH1Dr"><td data-page-node-id="u4P8HXMLqbhKDPxMUWIJPk"><!--pnid:sOx3MC9SGsxBoPYnRF1aaN-->7</td><td data-page-node-id="EdmVbbbqqQEXbxnQgOaz4O"><b data-page-node-id="zL5dPrK2nhNvqqXWJSSJWR"><!--pnid:6jT4XtuSaUtvMTjsR3MtSA-->总部付款账户与收款账户一致</b><!--pnid:NtvvLNRxYsg6eWmY23S3Q8-->，所有款项走对公</td><td data-page-node-id="AhJbu34NcrLUMa0PD3yyXO"><!--pnid:07wF5G0CmeeRgYUXAVFxGU-->为退款留清晰路径，也避免个人账户收款引发的主体混同争议</td></tr>
+          <tr data-page-node-id="Sc82Vor5N7VboVD8mel1f5"><td data-page-node-id="k1Lw7YCQygDs97eNrC59em"><!--pnid:uNjuhvEL0MpJLAaDf1lcnX-->8</td><td data-page-node-id="Cf3YiHw2v7CZ5ROs7oJFUv"><b data-page-node-id="Wa6xGdaR6Zw56EvojO1UZ1"><!--pnid:jFl9G0rHNrPgUHyVG0JjJ5-->冷静期届满次日</b><!--pnid:Gt6kN7J4A9OIBDRBbJjDeV-->：发出《冷静期届满确认函》，启动资源全面交付</td><td data-page-node-id="l3gfjRKAoieCcZ4ZJ6HvB9"><!--pnid:DOYGDgsDdbBQr1bqF26diA-->书面确认"未在期限内行使，单方解除权已消灭"，并同步签《资源交付确认单》</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="XPkbgsPKAbhzE2meuHOUav"><!--pnid:wpMNZCNS7wKlW9nBAKvFle-->2. 冷静期内：总部绝对不该做的 6 件事</h4>
+      <table data-page-node-id="gFZpBwCl0wr4xj64oJMAMA">
+        <thead data-page-node-id="9oYiR3RUkuJCbmwECfsCtv"><tr data-page-node-id="Nmb5XpED2oGhT4Bul3P7MW"><th data-page-node-id="WLBxsoXZj4ob6dDp8VCjHX" style="width:5%"><!--pnid:u0N2vU6yzLKv0SW0qDQhWv-->序</th><th data-page-node-id="DcTUCKN4SXppXS1rna9Wmf" style="width:30%"><!--pnid:iEiVJDwk8KIU0iOXQ35XkE-->不该做什么</th><th data-page-node-id="PfVSFJHQMCn19WSr1hZvjw"><!--pnid:M9SJqLVM2QiqECCVeVl6gG-->后果</th></tr></thead>
+        <tbody data-page-node-id="GAoYtBJ9LpZC8AFVZJv4z0">
+          <tr data-page-node-id="pfPKiAxiqgDcAiI8ThoDnR"><td data-page-node-id="xBLKlN1rmhHlL8gE9HdhKi"><!--pnid:TFqYaRXFRKj8Lc58QKMt7x-->1</td><td data-page-node-id="bA4jYncySUGYYBJOKxla82"><b data-page-node-id="P9SMMc70Zsl46kwpsSBjCf"><!--pnid:8bmTVwPQFYvXEkCrbYIUuj-->口头承诺"随时可退""不满意就退"</b></td><td data-page-node-id="nsTzdHcVC27ysxdCeXZbjT"><!--pnid:03V2AJbiTiSYotbXUZGlXj-->对合同订立有重大影响的口头承诺<b data-page-node-id="ck2sB8WLvw7LqwbRDgdRTk"><!--pnid:wCf9VN82RIzS3DMsUxgt0N-->可视为合同内容</b><!--pnid:aQQypMlEhBKWvxb1FMwbcP-->（上海杨浦（2018）沪 0110 民初 25138 号），直接架空你写的期限</td></tr>
+          <tr data-page-node-id="Wmnm9ukzL4yWclgYsjHoiK"><td data-page-node-id="UK5ETrsaDEo5V4dMpkoFik"><!--pnid:6Uy4zQKAgX9aOLuvWegLzL-->2</td><td data-page-node-id="CeawOWtoYcmpSeC9YbpuaV"><b data-page-node-id="MmLJLZBXKnNPiZSIScziZQ"><!--pnid:SHjnWlSRf0RQEyxLITpNxK-->在冷静期内收取不可退的"定金/名额费"</b></td><td data-page-node-id="MMGjmQo5NuoA4XcVgxeCWg"><!--pnid:Fd3vVKq00GwKWmAUOvHR1u-->冷静期是"无需理由解除"，任何"不可退"约定都可能被认定无效；且触发《条例》第 16 条书面说明义务</td></tr>
+          <tr data-page-node-id="DvqzN6ENKDJZ4r7ul69jSL"><td data-page-node-id="OOJk60uaoy7hEnzheINrPP"><!--pnid:sWDQheSCQ1JJ5sGZc6DYf0-->3</td><td data-page-node-id="EVpK3kkKmkoPE3bZlCQoHj"><b data-page-node-id="qKhJoYgJnMUEEwjVfwJcAh"><!--pnid:lN6vf2bXHjrdQlHhwRLoqz-->设置"须总部同意""须签解除协议"作为解除条件</b></td><td data-page-node-id="eco5h3YfyIs10LSUxudWdE"><!--pnid:MPvpqz1T0jm7m9bt8cSs7x-->《民法典》第 497 条第（三）项"排除对方主要权利" → <b data-page-node-id="eFSLw0xkWWUDwjhpuWovdD"><!--pnid:ycpTwMQEkHCPtoEW8OAhJM-->无效</b></td></tr>
+          <tr data-page-node-id="qH48FMNm7IIs2vFeGVOtPW"><td data-page-node-id="343JQhcRWz5NIaA8sMA0fq"><!--pnid:lOip3bcDWwq9sXgHPNXhzY-->4</td><td data-page-node-id="iLkHR6EEqGSYkKUpuAXteu"><b data-page-node-id="dY4ekv4yWw7J1PF90NSTHl"><!--pnid:GCJkr0O13SFwtjEUi3aYEo-->以"已领取培训资料"为由拒绝退费</b></td><td data-page-node-id="csaOyZhly9JLbpicj4kfof"><!--pnid:tSoCeGhhjJSGjwkIivbV07-->重庆（2019）渝 0192 民初 13346 号<b data-page-node-id="9KjiAGTulZgnwRltHUInye"><!--pnid:jOjoKpaVmvBCxdUuXzcN55-->已判该条款无效</b><!--pnid:5IMhAJQO6fowm4BZ6FWBV0-->。这是被判过的高频雷，务必删除</td></tr>
+          <tr data-page-node-id="mcX9wXAcmEaHYTrCii8TKr"><td data-page-node-id="KB3eq9gf3xSEcGTFXf8e9V"><!--pnid:OUd6skj8rYGDqMxAKmA7BS-->5</td><td data-page-node-id="Tw8U3PwOmEGBPSBiNPDzvp"><b data-page-node-id="Hae7SiPH775yTKo7jczo8Y"><!--pnid:vPrGn5NMOOGatf9aFWaYUa-->拖延拒收解除通知</b><!--pnid:mGn8g7TSe50aBZRQJBd7UF-->（拒收快递、拉黑微信、不回邮件）</td><td data-page-node-id="fjZgvyGkFkR95WCsBeAMir"><!--pnid:pcIUzXu24pJD9qpOmeRmPI-->解除通知<b data-page-node-id="xFQ6BAWoy2IvA3ksil0FWJ"><!--pnid:4fv7e9K5Y3n0sSkWuXOHX2-->到达即生效</b><!--pnid:w1klcKLLWcOb8l2QdMxsb6-->（《民法典》第 565 条第 1 款）；拒收会被认定为"为自己的利益不正当地阻止条件成就"，视为已到达（《民法典》第 159 条）</td></tr>
+          <tr data-page-node-id="uU8mysvFcubWo9VA0z0JSc"><td data-page-node-id="yeSjpIqc5wGLlk8CVO9hHi"><!--pnid:YgvF1FArTQkHZIwAYGpo99-->6</td><td data-page-node-id="UY6p0bPmOuMLqDdzg9vAg2"><b data-page-node-id="g2OmUrsOiN9FkkhmCnaTyx"><!--pnid:6DNF0c8ZzAglfKZ8Yg8QA3-->在冷静期内替加盟商签租约、付租金押金、下设备订单</b></td><td data-page-node-id="x7tIQmq6XXhDDIkvDr2Qni"><!--pnid:Tw7j7jWYW29XOsjxbs4Mvd-->解除后这些损失由你自担，且加盟商可能反过来主张你"擅自处分"</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="W5OpiArWL5ybOQi9Q4SnRo"><!--pnid:AhPLHqyMI8QVyGtTueIIx0-->3. 高频争议点：已培训 / 已选址 / 已进货后，还能不能全额退？</h4>
+      <table data-page-node-id="0wCXCt6KrlXpw6Cov02dQl">
+        <thead data-page-node-id="7lZmkwzbtQ1sSZSi4XFuVT"><tr data-page-node-id="ZdQUfBMrEwVPd8NecnvSa3"><th data-page-node-id="jraMrK5j8IBBzqDOVDIVLC" style="width:16%"><!--pnid:fb7wNwVjSPSv70rxRPUe2A-->情形</th><th data-page-node-id="thL6tXaSgsksiodLqlnKcv" style="width:14%"><!--pnid:Qr4tVOyyPgG3xyQb7dpp05-->是否丧失解除权</th><th data-page-node-id="AJyDdcfWKiUtx6lboZNHAG" style="width:32%"><!--pnid:ApiRsLmBVkZJXHiC3jAJbE-->裁判口径</th><th data-page-node-id="HuLLzGSQkBSvJKLlElGI8N"><!--pnid:fEkMcNakXE9gefNxxBiyuV-->退费处理与你的动作</th></tr></thead>
+        <tbody data-page-node-id="FRMSyeQK4cx5tBmUZjOkMD">
+          <tr data-page-node-id="V5r6razQAgys2yhyTzHLjo">
+            <td data-page-node-id="LwGJQRTcOU9o9hw7H4JtNt"><b data-page-node-id="wCpaSRuTYzSeGdeAJa5vD5"><!--pnid:VQyuXEkLs1hVQZXmVBLd5b-->仅签约、未做任何事</b></td><td data-page-node-id="5U7a3VxnOEa2RWCP4NNkMk"><span data-page-node-id="hlwoRVCf1BsQQo6HzG6Nbp" class="tag t-jade"><!--pnid:fjYX4vb7U7n2IrykvVxZdq-->不丧失</span></td><td data-page-node-id="5w168UljMPX1lGxRY9WxXp"><!--pnid:Vj5DcyJ5Q0BMQtnhorgeNU-->典型冷静期情形</td><td data-page-node-id="oIcDecXzdCs2Hztz31JksD"><b data-page-node-id="QBEHhTg3Xwow8f8qTLCxRa"><!--pnid:4YCB5vt4DorXIYDH0IrmeJ-->全额退</b><!--pnid:2FXfjgVVLxEKmBcEoaEhWe-->（含加盟费、保证金、培训费、设计费）。15 个工作日内办结</td>
+          </tr>
+          <tr data-page-node-id="11YjP77yIBAo3soTEXLSCD">
+            <td data-page-node-id="MxdBfGsw4533G0W7jqOA71"><b data-page-node-id="J6Ls6jL1DOJLrvVQmpZXMB"><!--pnid:P8Q9NEOaoKEmSDozy2Cds2-->已参加培训</b><br data-page-node-id="QTExFs4KGJoegUrYtbPBlE"><!--pnid:VY6EU8G1SoeOJZJEsG4jPW-->（未开店）</td><td data-page-node-id="rkQyGgRukg0YUY0w29Djcb"><span data-page-node-id="zXOpfyEhKcx53Zu2mSR7wD" class="tag t-jade"><!--pnid:PdPIEzVT3YZcRo3ePqwegv-->不丧失</span></td><td data-page-node-id="UhgjI8tiHqv6GreXo8L0eY"><b data-page-node-id="Jbu073mqMpW0HwxoqnT7JG"><!--pnid:tletAjUjdRYhd1gTxbvu4l-->杭州萧山法院明文：</b><!--pnid:Twgfqa6WwVFGy0nQOk7BOU-->"如果只是进行培训、选址等，发现并不适合该特许经营项目……<b data-page-node-id="YeQNRZln9TRe1ELvn5GxPm"><!--pnid:2zl3tQlpYRtPEDuIKiJMvD-->应当及时采取冷静期解除权</b><!--pnid:EnQcGDs0iFmM7MJF7bNNj9-->"。<br data-page-node-id="5ItRggewiOm6zMIprb5F53"><b data-page-node-id="8gc1vJGE4RlzgqXWzrgS8q"><!--pnid:q86qZbB38ULjs3vsxOgKKL-->重庆案：</b><!--pnid:rvrq64Rfy7gWavlvXw89BK-->"只要领取培训资料便不能要求返还培训费"的条款<b data-page-node-id="KH36V3AGfdjo86Cj435hKc"><!--pnid:IWfR5tNJMrIA6wn8AmgUW1-->无效</b></td><td data-page-node-id="U7IyqYRS8E8A6l7zIwwKLN"><!--pnid:1CodbfvVczFOpQHvAfiosp-->可退，但<b data-page-node-id="VMip0DLABIwUepqukXr7sE"><!--pnid:ALRMMSul4EMRvNsdAuPWMJ-->按实际培训人天扣减</b><!--pnid:aUzONKINMKbtPmoxdq0Rzp-->（凭《培训签到表》+ 价目表）。<b data-page-node-id="bCsqn9yvZRoNug2423wVv7"><!--pnid:uqoNRocvJv9N8r96GoHAGh-->不能全额扣培训费</b><!--pnid:mr2gaMH4RyVLyHzwJNrJay-->。参考：广州案扣 5,000 元、重庆案判返 3.5 万</td>
+          </tr>
+          <tr data-page-node-id="hYnnLTIR2uDoSg1u6qDWCA">
+            <td data-page-node-id="qH8rtot7fcnBaMtnvisGYs"><b data-page-node-id="OSTaoc64KTFiRRt5bMi96z"><!--pnid:wUMhBuMCBCcITmfQ1aue3h-->已接受选址服务</b><br data-page-node-id="st86B7EP7VC6zMYKfIBv1B"><!--pnid:ksyO6EsQLK9vdtrqRQD0j9-->（未开店）</td><td data-page-node-id="7xyR2HkqUfAzDC558KajGP"><span data-page-node-id="CQczABo0SVNP7qfEQy2gHV" class="tag t-jade"><!--pnid:zGSKgkKfKXCHU7rssY3ncp-->不丧失</span></td><td data-page-node-id="PhAQDGfXWYlK2qEU6PbJym"><!--pnid:Y9592bb2opEbF5JX0z6FLG-->同上。广州荔湾案：签约次日开始选址，第 7 天解除 → <b data-page-node-id="8E7kqykAASeAZUbZhBFExR"><!--pnid:d9QCOegezotEbc8PkG06LH-->支持解除</b><!--pnid:UdidWpil3yB9gYPqkQXUQq-->，但因"已提供店铺选址、市场考察等前期服务，产生了一定的实际投入"，<b data-page-node-id="ape7fnNyGRhAoCTLqLAHp4"><!--pnid:kSH6bQUUPf9qWi8uncFVeY-->酌情扣减</b><!--pnid:zS2aHXz0INiv1gxG8yfe0S-->，判退 24,800 元（总 29,800，扣 5,000）</td><td data-page-node-id="LzPopaOJ2hkl7TVrz6iF3h"><!--pnid:cV24lbkyaQXbCCLBdr6q3G-->可退，<b data-page-node-id="AtGcbh28Mm9C0P6KfH642m"><!--pnid:Vj86d95LBFdgoD7LVqso7N-->按选址评估次数扣减</b><!--pnid:JtZRwVT2z4IK1ra8BUxvzn-->（凭《选址评估报告》交付回执 + 价目表）</td>
+          </tr>
+          <tr data-page-node-id="OYbpNWvaisgc2Mici4EWuc">
+            <td data-page-node-id="C6nwTid0xWWdBAqAOEfUnF"><b data-page-node-id="m73oITLxozYWcciFlVfRXZ"><!--pnid:9yq9Xq2lK2LxeZaPkbDIKI-->已进货</b><br data-page-node-id="qlm2HWSeRckABUv8THYWCv"><!--pnid:RUj1lenppDWZxhrA1p8r0Z-->（料包/冻品/包材）</td><td data-page-node-id="aAKylt2VsEfGxJjM69yBCG"><span data-page-node-id="lo9UlFd8bJ8R2pHI0HOnAN" class="tag t-gold"><!--pnid:GUGfh8blz3biHeVqo2bqGT-->灰区</span></td><td data-page-node-id="MZPc81fh5rxir8m1GAaRE3"><!--pnid:InnmclFexWDZJbp6FiISfD-->《条例》第 22 条 /《办法》第 5 条第（四）项下"是否必须从特许人处购买"是披露事项；<b data-page-node-id="o51IYvUCt6Aeij7mL71czo"><!--pnid:BGD93CLIzsvtPQdDYk9Lst-->进货但未用于经营</b><!--pnid:xRJFtTyadGyz41OIhCahJ2-->的，一般仍不认定为实际利用</td><td data-page-node-id="2FD0KXKNKZiv3rWJEO1bR5"><b data-page-node-id="kC7hSacsp8bXF2nQMG4p1F"><!--pnid:NZbUEUv5mG11I7JeQvdQHP-->未开封、不影响二次销售的，原样退货退款</b><!--pnid:oxJhkQFA8HwtrtfdVGK1Ji-->；已开封或冷链已断的，按供货价扣减。<b data-page-node-id="iWjfuVBZY8hksT9cZwwn5G"><!--pnid:ihAG49m9pRpzJoJkj7Tk5h-->务必在合同中写明"未开封可退"条款</b></td>
+          </tr>
+          <tr data-page-node-id="KEA5nrENxTJUK7cG956fML">
+            <td data-page-node-id="MOFuTYzMdZn6xAUyTefI82"><b data-page-node-id="F83Oh1SNi3agR9nt2mPkwf"><!--pnid:QqqIte9C5pl5sTjSfRauI5-->已完成设计</b><br data-page-node-id="f8uwAH3bZA7u8eKa7df6VN"><!--pnid:mZq7w24aDoz3Ax9ordmndK-->（平面/施工图）</td><td data-page-node-id="pZ35E76YiqxHc2IYJy7anV"><span data-page-node-id="1nEUDKXqjtjbGGFpQbiH8v" class="tag t-gold"><!--pnid:ef4up5S77VcWrePyLw2beH-->灰区</span></td><td data-page-node-id="N4aIUZloIXvIi8ABZVWVax"><!--pnid:vyqO0r071gFgV5iheFGEjq-->设计成果是<b data-page-node-id="52pVq2B2YhgFRwG56df7vS"><!--pnid:OFGPioZt2d1jQ46q4ytrcD-->针对该店址的定制化成果</b><!--pnid:edgclgMffzyETmU1ysuxzZ-->，无法二次使用，法院倾向支持扣减</td><td data-page-node-id="bHwTcHJQ7G83Uz1oC66L72"><b data-page-node-id="1u7jO2mqiWm5OlGnxLif5Y"><!--pnid:x5Bpsfj6rKsekwTP3obUCJ-->按已交付的设计成果扣减</b><!--pnid:3A2hyfQbD4x4wQOKCovAcR-->（凭设计交付单 + 价目表 元/㎡）</td>
+          </tr>
+          <tr data-page-node-id="GM7BmKo4P1BOoOX6DiPvhM">
+            <td data-page-node-id="QqpCExL1GK2E1GQBLcYZds"><b data-page-node-id="OqJ5F1zdqXToV02RpAAiQW"><!--pnid:c7IuHDP1814eW0lyQfI0WU-->已装修</b><br data-page-node-id="cJS5PzvxzVzCysgB8Cz9EG"><!--pnid:9VeCLzEUwUy4oKXCIkOd1m-->（未开业）</td><td data-page-node-id="kLOGyZrQvSIEeBw2wubKra"><span data-page-node-id="HL65DVFtM7Yie6AOhMSjW2" class="tag t-red"><!--pnid:uad3vNEtXuw0XzHJGBGNj4-->高度可能丧失</span></td><td data-page-node-id="jFLdghWYtryaJHrcjdO6QH"><!--pnid:ZhOZ9p2Yu8roDQIvgap8S4-->装修即意味着已确定店址、已进入实质履行；"只要加盟方已经开始实际履行合同，就不能再提出冷静期解除权"（萧山法院）</td><td data-page-node-id="jtO0tSmV40qSW9CHEXA07u"><!--pnid:5JsbbtPslet5sCS19suVtP-->主张解除权已消灭；如法院仍支持解除，则<b data-page-node-id="YjVH1aLn6wMp7jklu0BWub"><!--pnid:FH7QoHaGaduo49zlFx9YlE-->装修损失由加盟商自担</b><!--pnid:L8bPP4zhgRHKIWmMLgHd2G-->（属其为自身经营所作的投入）</td>
+          </tr>
+          <tr data-page-node-id="4iExGcbZtP3rU54aqcW5bT">
+            <td data-page-node-id="Nhy5HSAdzfN61oiFfirCn1"><b data-page-node-id="kVyQmvy6wXNcDoNkvIWwL9"><!--pnid:zTwHNTlX0GNGkxcD8Q5YCV-->已开业 / 已试营业</b></td><td data-page-node-id="A3ddyJcaNTYO1H2pwFD4D3"><span data-page-node-id="qTlfyMlbCr5wbOxE53xDyV" class="tag t-red"><!--pnid:vfLGNz3ALAycIexoiDTPSE-->丧失</span></td><td data-page-node-id="MiGHiW4jb2aZup8tOalE2B"><b data-page-node-id="c9T1Y4ppxm5aRSbz8XH1EC"><!--pnid:NstOqpoIjdLr0pqiD7DjtC-->北京西城法院网红奶茶案：</b><!--pnid:Y1rAEiBIkrud4UCy64zZbX-->郭女士接受培训、选址、装饰设计并<b data-page-node-id="J6ozamOxopDUMhP9JPyx9J"><!--pnid:iqxIrsvjVfX2yiCuUOUJtS-->试营业两周</b><!--pnid:5sdQVJu99KUTGXJVvA9k4S-->，"客观上使用了丁公司的资源" → <b data-page-node-id="XvMTfCt7ajll6xrgPf7YPZ"><!--pnid:Q75kDgUFAERnV5axDY3kst-->以冷静期为由主张解除未获支持</b><!--pnid:ebtBcJNGT3jppCFLaKVQnI-->。<br data-page-node-id="qphXZGeM9yzOQR4MajELFF"><b data-page-node-id="tO3d3lzAFZSvaUyhDzUWcm"><!--pnid:JUmc8BsMBcdcgNa2dfNVRx-->法官释法："冷静期绝不是法律给予被特许人的试运营期间"</b></td><td data-page-node-id="4Oe0n3p8IurlaoZOV3ezMa"><!--pnid:MrmCPH8DrDPbZS79uu4uH6-->主张解除权已消灭；加盟商只能依《条例》第 23 条第 3 款（披露不实）或《民法典》第 563 条（根本违约）另行主张，举证难度大幅上升</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="Az7KV5N1xEgw26mcgZSmDe"><!--pnid:crdJRaBC1fXuEWF1t5hUi4-->4. 分档策略：什么时候该"交付资源"消灭解除权，什么时候该"冻结资源"</h4>
+      <table data-page-node-id="Q8svCEN1xcd1uoplgmngDt">
+        <thead data-page-node-id="zeCTMlFQEh43yVIKXuLlxo"><tr data-page-node-id="6OmWutQogZza0hibwjc7tD"><th data-page-node-id="GXeIPTumYlDsZbqbvTtupq" style="width:16%"><!--pnid:rUvT7DRKphyE7KjNARwccq-->加盟费档位</th><th data-page-node-id="S3TnLX2bTGLeIkOxH2vxLP" style="width:20%"><!--pnid:OH9GxGYeYg8k70FGe1tI0h-->策略</th><th data-page-node-id="4N56vVlvCYflRmFeWTMfug"><!--pnid:twnIBcl8qPQ3QIwmSNPfTW-->理由</th></tr></thead>
+        <tbody data-page-node-id="Fx42HEzwSild2r5q4EUFji">
+          <tr data-page-node-id="BC9AGt2VU9uSYxnJoo8Qx0"><td data-page-node-id="jOaGlsEd2gIdKpNWkm0Cho"><b data-page-node-id="MtiL05NMlCsKk288As2YBt"><!--pnid:ainu0ABvAfDZOkKjOkXvuL-->≤15 万</b><br data-page-node-id="z5G5C7sLfcRAnW6UfukrQe"><!--pnid:10HcUPaDLdjP1QcBQ1bTwf-->（标准米线店）</td><td data-page-node-id="MfQ1oEfxmHlCAk3hQSfF53"><b data-page-node-id="Lc6ssxXqdNJQq9JQxWJKPh"><!--pnid:Vj3U2jEzMwpeFzkaoRuqhM-->冻结</b><!--pnid:NHc4WuUEyqkvU8YGp9kLu5-->——冷静期内只做通用服务，不交付核心资源</td><td data-page-node-id="ILVN5NCNayMaPSDaNL71i3"><!--pnid:Q5AytyzZ7iH1ohb9wDZm8x-->退费敞口小（15 万），宁可全额退，也不愿陷入"是否已实际利用"的举证战；且保全商誉、避免群诉</td></tr>
+          <tr data-page-node-id="BhD2vnwf61yWKcORjgBHV5"><td data-page-node-id="OrrWKcVo5AhQ0eL1F4MZ8t"><b data-page-node-id="BMIazOhVKADHkJN1zdQxyw"><!--pnid:8JGyHbJVFFZv8wWzVx0VLX-->15–30 万</b></td><td data-page-node-id="q4NDO7IMVZzeOnbBY9XYUL"><b data-page-node-id="kYAKEnVKqrYIps8UBWrjlQ"><!--pnid:oYLdnz3mIl0xOJ2NzFu5Pg-->部分交付</b><!--pnid:3Al1LEOZDQYcZwZOsOttHz-->——交付基础 SOP 与培训，但<b data-page-node-id="gBFmt1uKbEkrs9ETlAbHcM"><!--pnid:K3ixF61PnmtxjwfsJlzxhr-->不交付料包配方、不开放供应链账号</b></td><td data-page-node-id="4pOFft6OUMke7KmfLZQELT"><!--pnid:SsTbwOz1MPrgvlBQ2288RI-->平衡：培训交付构成可扣减的实际成本，核心资源保留使"实际利用"不成立与否仍有回旋</td></tr>
+          <tr data-page-node-id="ySMEEx9f0QDfOUvR6gzZpl"><td data-page-node-id="yshz0d3aH93ZV43nn41Acv"><b data-page-node-id="3NpFtSO1Bu9iqrS1F825aI"><!--pnid:HwURq2UsJZ9G9wKLcAkeNM-->&gt;30 万</b><br data-page-node-id="bM1U5dATkRxecMGLEXQ8dQ"><!--pnid:wZ3ldkhfowIMuZP74glxQU-->或重资产店型</td><td data-page-node-id="psoM1srCWdkCKIF9vd1i9m"><b data-page-node-id="GsDJf0wJkKcCAdOokn7Dzt"><!--pnid:u4ZieAdNegu949bIaHyvGE-->交付 + 强化证据</b><!--pnid:f7XhFcCo6K5qt8E4Vry6tb-->——按约全面交付并取得《资源交付确认单》</td><td data-page-node-id="hXV3njz3yRFMgvPuQ6uTkS"><!--pnid:wTX3n8uotq4nckSOwtFPeo-->退费敞口大，必须以"已实际利用经营资源"消灭解除权；同时把交付证据做扎实（签收单、照片、账号开通记录）</td></tr>
+        </tbody>
+      </table>
+
+      <div data-page-node-id="sjS2ESEJBQXjf3KOVp1Deq" class="act">
+        <b data-page-node-id="hqld1cmAvrEjWbMACLFmHo"><!--pnid:CVx2ZeKrAJzwM0kx0Wwql7-->我的落地动作（本周）：</b><br data-page-node-id="qNDHNzfRMK5YYbkre12xp2"><!--pnid:YbLa9D30DFIM8mOgReEgfm-->
+        1. 出《冷静期告知书》模板，签约当日必签，<b data-page-node-id="rNsZF4rlLOG5mtq7hkXdf4"><!--pnid:bQIzGVX6vCVWzbXnpOv7QF-->起止日期写具体年月日</b><!--pnid:whoT5V7jHhr91Do6fadotr-->。<br data-page-node-id="wOJoh7WkiOgWIY1FAcBgXz"><!--pnid:Id249mHfrGXfnsVys0MCRA-->
+        2. 出《服务价目表》作为合同附件三：培训 ____ 元/人·天、选址评估 ____ 元/次、设计 ____ 元/㎡、带店督导 ____ 元/天。<b data-page-node-id="oKnxO4KT2V0L78PWxZToQ3"><!--pnid:pBlLMM65F6soj7lXqjDsGp-->没有这张表，所有扣减主张都会落空。</b><br data-page-node-id="qMSzvSMLQZOHaYCFh0zVw4"><!--pnid:r8m5Wqd8IpC2QiURUX3Pn2-->
+        3. 出《冷静期届满确认函》模板，届满次日发出并取回执。<br data-page-node-id="VXGXq01EiSy2MeX0wL0sXL"><!--pnid:Q02Zpd83QS2amIWcXaALiF-->
+        4. 建立《冷静期台账》：客户 / 签约日 / 届满日 / 是否已告知 / 是否已行使 / 退费金额 / 扣减明细 / 办结日。<br data-page-node-id="duxu9l0VvpE6vQHqkWSgmk"><!--pnid:O6TpLS9wP2NkLRmGr6gZJq-->
+        5. 招商话术增补禁令：不得说"随时可退""不满意包退"；统一话术为"签约后 15 日内您随时可以无理由解约，这是法定的，我们写在合同第 X 条"。<br data-page-node-id="Svqk6QNshlLIG2bTxwVhd8"><!--pnid:k3smK35Hx6AjJQFaGcZn8i-->
+        6. 存量合同<b data-page-node-id="IjwC9wB1ASDgfh7qOieEaV"><!--pnid:sgoKaRnVyxuqh5EZJe62d1-->补签《冷静期补充协议》</b><!--pnid:vUHVL4sDvWBZ9ZR0DHZq2z-->——把"未约定"这个最大的坑一次性填掉。
+      </div>
+
+      <div data-page-node-id="vOhjXgS48gogB4D2isGkDI" class="anti">
+        <b data-page-node-id="3BeJ8YfekDmT6WxZpdhNdx"><!--pnid:uFgjww5UzXq8yCdoLzyus5-->加盟商反制点：</b><!--pnid:0CtLIumnYoSW1L1JW3H8wU-->冷静期是加盟商<b data-page-node-id="leLd82JHVveDaD4Bh0vvso"><!--pnid:zbo0WYfaBJT9pWePubHxHM-->成本最低、胜率最高</b><!--pnid:HzTzT8Lf3tM0OfHq0owX2l-->的退出路径——不需要证明你有过错，不需要证明披露不实，只要"时间没过 + 没实际利用"。<br data-page-node-id="ar5SztKfc915TINEm6pw65"><!--pnid:2mU3I6YMyfy7zQ2clf0xkd-->
+        因此他的标准动作是：<b data-page-node-id="TnpUt4mvhCx6bXikbgOVBE"><!--pnid:W4UuJMq191B2Lku7kwxAzE-->① 先主张冷静期解除（几乎无门槛）；② 冷静期过了，再主张第 23 条第 3 款披露不实解除；③ 两条都不成，再主张根本违约解除。</b><!--pnid:Nc27VwtcfjQ2r9YSgYFfa5-->三层递进，你必须在第一层就把期限和退费规则锁死。<br data-page-node-id="mJvCAJvG6uqHXsdlfUR8ZJ">
+        <b data-page-node-id="ZQCMeCFoZqSIcrjNBEaYuG"><!--pnid:VXyfNqZn8Ai2l69RSEGN4K-->最狠的是组合拳：冷静期解除 + 主张你的冷静期条款是无效格式条款</b><!--pnid:MBOgzRhQJjPEyaBrSxTWy5-->——一旦格式条款被判无效，"15 日"就没了，回到"未约定"状态，期限重新开放到"未实际利用经营资源前"。<b data-page-node-id="pYBr8KoluVguXNksJdHiNz"><!--pnid:sqcIyfQeDbvOjjD1yyv7eP-->这就是为什么 Tab ⑤ 的草拟安全规则不是可选项，而是必选项。</b>
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:EfOoXwIyGJrBosuhSXPnGP--><!-- ============ p5 ============ -->
+  <div data-page-node-id="YeKdb8cIT2BpfFl4EqKqWS" class="panel" id="p5">
+    <div data-page-node-id="oHHXx1VHxPthFdu40z4Lro" class="card">
+      <h3 data-page-node-id="10LMqcN7sQuItJToML4QaU"><!--pnid:xVkhuaiYMUxwur11CjK488-->五、冷静期条款会不会被认定无效？怎么草拟才安全</h3>
+
+      <h4 data-page-node-id="FndW4PQ2ky02Dy1GBLxKUP"><!--pnid:y0u67PUr5izELGciheceBT-->1. 先确认前提：加盟合同几乎必然被认定为格式条款</h4>
+      <div data-page-node-id="D6n6zZHRLzxooHXTsGznTB" class="law">
+        <b data-page-node-id="hDi3LPAruHdnDtU5To73sE"><!--pnid:OeqmVzpNyu8V6heSlIfP6e-->《民法典》第 496 条第 1 款：</b><!--pnid:Bn8siu6aL6kC9ob9kZcyO7-->"格式条款是当事人<b data-page-node-id="2itE3pHoeHpGZCBQphXIoA"><!--pnid:0fUNnPP2xBi6MSUNOLPZsR-->为了重复使用而预先拟定，并在订立合同时未与对方协商</b><!--pnid:hyFVprDEJLml6Du9qd1HT7-->的条款。"<br data-page-node-id="xp9VJz7b183znBKib9VNvK"><br data-page-node-id="VQckUscTjsyIiFAiMDWzpY"><!--pnid:CM2zcjO3VTeuM0xfOwX3zF-->
+        米线品牌的加盟合同是总部统一印制的制式文本、面向数百家加盟商重复使用、条款不可协商——<b data-page-node-id="M1TkENefGnTW6PDxVxNjUT"><!--pnid:Qau0BjSHN8c5Ng5q5flIGF-->完全符合格式条款的定义</b><!--pnid:MJoXwcZFRukzmcHMafLS2R-->。不要试图论证"我们这份不是格式条款"，法院不会采信。<b data-page-node-id="fEnobg1bQKRMyeIn4RZHXi"><!--pnid:WOkwyk9GjgGxF34vj4Diix-->正确的做法是老老实实履行提示说明义务，并确保内容合理。</b>
+      </div>
+
+      <h4 data-page-node-id="V8PdjTcqqbz6MubQKMg7eM"><!--pnid:oOZvV9UZGU7aOT3F9xelt0-->2. 三条要命的规则（原文）</h4>
+      <table data-page-node-id="urZqiIjUCtLOtIYetU3Cjc">
+        <thead data-page-node-id="o3ncH86znCwx20fi2cVanW"><tr data-page-node-id="dKm7JulmBa6qlOzs6lSWqA"><th data-page-node-id="plewhXp9MZblvxCiIyz3en" style="width:14%"><!--pnid:6LtFrNL0IyEgkr0UhZZeSW-->条文</th><th data-page-node-id="9dtctEjOG4r7iEihfI7iEm" style="width:44%"><!--pnid:zdgBoqiYQJ6FnCT9QsyxMZ-->原文要点</th><th data-page-node-id="ESvLRPl6hKzJIzWbOQKHyP"><!--pnid:LMB7WBmlyYOlypFPzn2xJg-->对你的含义</th></tr></thead>
+        <tbody data-page-node-id="gypSNPmjsUgz2A8qFBTgQj">
+          <tr data-page-node-id="GNRlNwP6y6s8sPUsksv87Q">
+            <td data-page-node-id="L4fx9C8N1GagkjzQSBJ7Bl" class="num"><!--pnid:M1nI2hj3clYEEeWYZTOi5L-->第 496 条第 2 款</td>
+            <td data-page-node-id="KdEaJEBxZGFMxOxjYGXcFC"><!--pnid:tWUx9T4fjlFKOdyIS71Zyf-->提供格式条款一方应采取<b data-page-node-id="7BvBHeLIbrJI4GJjuhAdb3"><!--pnid:qVjNRSCTyUUX10mVIsflmS-->合理的方式提示对方注意</b><!--pnid:SMUsCwW7OUAArkoKEavFQI-->免除或者减轻其责任等<b data-page-node-id="OIVUVvtzBN7xkyv8q2lTkA"><!--pnid:4WA5wpGMKqKx1gxIJVhmuq-->与对方有重大利害关系</b><!--pnid:eoWEYfiOn3P0WkWs12F13c-->的条款，按对方要求予以说明；<b data-page-node-id="4qLRrFGREtMIHxTcAkHf4k"><!--pnid:j6rO78cpt8fPL1mBisxlxb-->未履行提示或说明义务，致使对方没有注意或者理解的，对方可以主张该条款不成为合同的内容</b></td>
+            <td data-page-node-id="QcDiCvmfcGRdKbtqNotMKa"><!--pnid:mOeSiLszo2jb78s5omKZi4-->冷静期条款显然属于"与对方有重大利害关系的条款"。<b data-page-node-id="S7MZFWAxzwF40M7DmY3smb"><!--pnid:IN1D5coHdoYzGPKDJxWRNs-->不加粗、不提示、不单独确认 → 对方可主张"这一条不算数"</b><!--pnid:v2V4xrNeB8hIPwjnslUINn-->，等于回到"未约定"状态</td>
+          </tr>
+          <tr data-page-node-id="jBX8qtwhqk9XrMvhZ3NU2D">
+            <td data-page-node-id="9Ub7jzRjQQZjH42nVNbAhC" class="num"><!--pnid:LEu0vkFkjq6DaEeqaqiQ4k-->第 497 条第（二）项</td>
+            <td data-page-node-id="dCM851HljWFE4LVDE2EYkM"><!--pnid:qt8MS4kWAJfe2hUW1Zg1SI-->提供格式条款一方<b data-page-node-id="YQYexKYffiXvVolWuDjA8V"><!--pnid:4tpH5blmmtiZVI0ijDJZxZ-->不合理地</b><!--pnid:eMkrSprrTb34JitFubWY7p-->免除或者减轻其责任、加重对方责任、<b data-page-node-id="WOKUSSxWrocqhFNZUI0CBN"><!--pnid:tWPpNGvUjZDo2heEFxXJPT-->限制对方主要权利</b><!--pnid:lLEvDkEZbekyOhXHwGYezs-->的，该格式条款无效</td>
+            <td data-page-node-id="beaeZagFwYiCNr9t5TEquZ"><!--pnid:cVOgWkpD4TOOGSu036LwMX-->有"<b data-page-node-id="BrgQMOP08GMLzNtm47fEaM"><!--pnid:cenRJ7b7HA25AbVPpvb9Gh-->不合理地</b><!--pnid:gazuOcbBGcFYOV44mfjVIZ-->"这一限定 —— 意味着期限略短、扣减略多，<b data-page-node-id="eXHyYJ57yQIaqzCXLDOsrZ"><!--pnid:f24z6UKK8Td20431HXnfyP-->不必然无效</b><!--pnid:2bZNBiwhePH4WQNBReuHDV-->，只是可能被调整。<b data-page-node-id="22oeDqmSLda7po27rMqvwf"><!--pnid:L7sCdB55no9OOkVq66MCqL-->这给了你操作空间</b></td>
+          </tr>
+          <tr data-page-node-id="ZWhrjBRdQGY7ZyVSH4mow3">
+            <td data-page-node-id="vasniTcZYLvWDoSuXaIrdk" class="num"><!--pnid:lnE3Yh9JEfStzyjiOP28Ry-->第 497 条第（三）项</td>
+            <td data-page-node-id="z8ez5XcS0Af4XBrvA0AWKF"><!--pnid:FFE2Pwsi0rZ4xGthTXiIdL-->提供格式条款一方<b data-page-node-id="iePzzmaoP9ckIPJLhV7Y9r"><!--pnid:Mx6O11FeTtLkXzTxxUKC4O-->排除对方主要权利</b><!--pnid:r8y3R4Mr0UPhUfwcvi3mI1-->的，该格式条款无效</td>
+            <td data-page-node-id="LNXkw8iXszYVvfXx2PQsqq"><b data-page-node-id="MmlU4YIyFdWST7yiVrnKI9"><!--pnid:55J1xbNe06ya8xqDxdcSAa-->没有"不合理地"这一限定！</b><!--pnid:2IENl6lV8BGX7axFrrpOlG-->只要构成"排除"，即无效，没有缓冲。<b data-page-node-id="EmIsxzKmc6cT91lD2ZBd8j"><!--pnid:9QJB0Zqz2GVt59cH4BAXjm-->"加盟费概不退还""须经总部同意才能解除"都属于这一类——必死</b></td>
+          </tr>
+          <tr data-page-node-id="d5AkE8GqlGpfdDPh0609v8">
+            <td data-page-node-id="9eeBHajIpImeYnoWhs5yqX" class="num"><!--pnid:liyHkNTeMKCxCoIBAT6MyU-->第 498 条</td>
+            <td data-page-node-id="39crJ8meez5c6zITFVLtR7"><!--pnid:fhNdvWvk74IWeMvznmuVrZ-->对格式条款的理解发生争议的，按通常理解解释；<b data-page-node-id="WUul02m9sl15gQg9ygUMam"><!--pnid:L7xBD5d3HcOTJ6No0zp8Ql-->有两种以上解释的，应当作出不利于提供格式条款一方的解释</b><!--pnid:HHGd4KbcUcYuZXaUN5hHOQ-->；格式条款与非格式条款不一致的，采用非格式条款</td>
+            <td data-page-node-id="gcJyh1vhKQuqBWbpix8hqf"><b data-page-node-id="gdZ0ePLCD0evjaDvD1IGAd"><!--pnid:DWMk23ZeLL88uTd9jpkIOC-->条款写得不清晰，吃亏的一定是你。</b><!--pnid:2IqCswNTSRPpeaRZA4rjdj-->"一定期限""相关费用""合理成本"这类模糊表述，一律作不利于你的解释</td>
+          </tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="QaYf2laEc9fLIfOOVrFEZV" class="warn">
+        <b data-page-node-id="hYDw0bwzMHxECAqe6xqObu"><!--pnid:Dk3OKGoIPGQqmhu68O4Ea2-->第 497 条第（二）项与第（三）项的差别，是本模块最重要的一句话：</b><br data-page-node-id="OWZpN4x106u1xiwj8P4Nt0">
+        <b data-page-node-id="o7Cmf5QrvyVJ4as7MpYSMv"><!--pnid:Rk9GjJV0pGLEOJro3Aaxip-->"限制"主要权利 → 有"不合理地"限定 → 轻微限制可能有效；<br data-page-node-id="JQieg4MQCsAbMFp2EEcYyO"><!--pnid:EvsIo3z8BTVRJv8FeLjuDK-->
+        "排除"主要权利 → 无"不合理地"限定 → 一旦构成排除，绝对无效。</b><br data-page-node-id="8xu1JASXP2lM4jlVXSilkL"><!--pnid:lbDARZl2RVZd376C9eX9Bd-->
+        所以草拟的黄金法则是：<b data-page-node-id="39162wHBCgzjBUhGayNAk4"><!--pnid:Kw3Gm9WyPJlWyDTesyDT5H-->可以"限制"（设期限、设通知方式、设扣减规则），绝不能"排除"（不许退、要你同意、设不可能满足的条件）。</b>
+      </div>
+
+      <h4 data-page-node-id="samQQoQNkArkiYT9L7wAF2"><!--pnid:IAh1BNM29K8H2A5ri8Uhsy-->3. 会被判无效 / 被调整的 6 种写法（逐个避开）</h4>
+      <table data-page-node-id="xry818JUwmTBXftlqZU85C">
+        <thead data-page-node-id="PCbFFdqBZnLno9XzWjxmaC"><tr data-page-node-id="tEBfaMES1z4qdqJNWx4aGf"><th data-page-node-id="P7pGfH4LRFbHwzfE90TK4h" style="width:6%"><!--pnid:sGBgEYXNdpdCd4tw2QXFeW-->序</th><th data-page-node-id="hZa0ce0zU1am9SunEdhqPH" style="width:28%"><!--pnid:pF4gIZUzNyurrpI7ncnk1f-->危险写法</th><th data-page-node-id="P1myVVijUDDxcEk11lhjM7" style="width:22%"><!--pnid:3XtqwVFSvYlxUGZeABXHLH-->触犯哪条</th><th data-page-node-id="HRoioU4fpmsXgx2g6IcJf6"><!--pnid:YMANfiQayvJ3xmWC1Olj3W-->依据 / 判例</th></tr></thead>
+        <tbody data-page-node-id="uRb8GfvkyL5YjAkHggPN0v">
+          <tr data-page-node-id="z8r9RDkQ0PWZE4dEOWanlC"><td data-page-node-id="GG09Jj1Sie3P8XlrPL1ijY"><!--pnid:GWiXByHKlhSefiJiLtypxs-->1</td><td data-page-node-id="RgFHnviRcANbvSWF2FCIXL"><!--pnid:ZOpXV1c3ZZZBJx47zNRkOE-->"已收取的加盟费<b data-page-node-id="Z5CVT5IQbsLj0gWK39PhYz"><!--pnid:TK8ExTkneXEUG31let2lao-->概不退还</b><!--pnid:weGp9n1pPsWZfEFTghLXPy-->"</td><td data-page-node-id="497tPppRmTkBFOd1nFQbrU"><!--pnid:rCtxFv23mJOTG2tHOSCsY6-->第 497 条第（三）项（排除主要权利）</td><td data-page-node-id="l5Q9Xqc7Ey99ja9qbc0yc3"><b data-page-node-id="Sd7J7RBBIz2f4BwDtuPNge"><!--pnid:Vx8I79Tghb9YeFTHbfX1iZ-->杭州萧山法院明文：</b><!--pnid:E3B3i0wCpplox0szAMaTeT-->"当事人如约定加盟费不予以返还，属于<b data-page-node-id="QJxnZLhmNBdrlyQfea9wTa"><!--pnid:fe4ExglXHvd1Zevga7kVF1-->无效格式条款</b><!--pnid:Bqgq053a8uifOLdNJDUyE0-->"，加盟方可请求确认无效</td></tr>
+          <tr data-page-node-id="x2L19LYqh8oKfLZClupmY6"><td data-page-node-id="lfkr3q4ANeWnUtvhaxkfva"><!--pnid:UsOHivBELYjuqdUu3umCTi-->2</td><td data-page-node-id="Xh1tPnDDliJRAZb8wOCpDM"><!--pnid:TQdnHxKwY6NL6nbjyol1I1-->"被特许人只要<b data-page-node-id="Kw8YgOuFW1d6UsA5IrAEnx"><!--pnid:9ptKIInRTxyJudFnKKPgDi-->领取培训资料</b><!--pnid:f2piR74rkegUSSKNF1oBRJ-->，便不能要求返还培训费、技术转让费"</td><td data-page-node-id="fp7orW1BLgNCdwO9mKGpZQ"><!--pnid:iIoFKJdf73h2Y2r6DCA77k-->第 497 条第（二）项 + 未履行提示义务</td><td data-page-node-id="aC9votQk9ilNFEX5r5ZQbT"><b data-page-node-id="t1MeXjcM0PGQNIBGh75srS"><!--pnid:1iOVSxmeOVg01RPzx86z4c-->重庆（2019）渝 0192 民初 13346 号明确判该条款无效</b><!--pnid:4Pcv1Vd7AKgT0fxLCVXmhv-->（未举证已合理提请注意 + 明显不合理地限制权利、免除减轻特许人责任）</td></tr>
+          <tr data-page-node-id="7b51vBDJYDi18hfs5n9diL"><td data-page-node-id="Wou3FJBXmdyjEbsufuAOib"><!--pnid:gTUcrru2gXh1lOG0m4zlUO-->3</td><td data-page-node-id="kJjeO9mlbuqaG2vpu2uPIa"><!--pnid:e6wGE98VmYCgMad3sjEJQp-->"解除须<b data-page-node-id="8DMRiaeaCIqsI7lgcAqwV5"><!--pnid:98SYiXKXrRrVBnoKSoa8q2-->经特许人书面同意</b><!--pnid:1ePdW8E2YfCZxGKA2K2uSL-->" / "须签署解除协议"</td><td data-page-node-id="FOvE4yK3uoiWUDKyC3X1k8"><!--pnid:70MJXKtPmyYYMkDRQcbNuq-->第 497 条第（三）项（排除主要权利）</td><td data-page-node-id="pHbbXIvSquFaoTRL3VEuJy"><!--pnid:R2FFTjbrWr4X1pK4Um8i0j-->北京 68 号文：<b data-page-node-id="WGt7tGP8JnwRhTumTbj60K"><!--pnid:z09zRToEVjxrOmsD3mF8z1-->"特许人不得完全限制被特许人的单方解除权"</b><!--pnid:i2E2B9JaknB8iF9ohe86zE-->；法定形成权不得附加合意要件</td></tr>
+          <tr data-page-node-id="Xehtwv2FoMHThepYZUsCdM"><td data-page-node-id="igm8VnPAyPwTkUqHNBko2c"><!--pnid:qpVQe8TUvhsend7BoWWt2D-->4</td><td data-page-node-id="feNd6pYasdePCoFOtW4vtS"><!--pnid:lR7Gg1z7chudFtXkudmXJD-->约定期限<b data-page-node-id="lTtPDVGODG3zOOCTgN12aY"><!--pnid:0XL7tbrwojFP318P71eQwV-->3 日 / 24 小时</b></td><td data-page-node-id="5P8jL0eo90E3QjUzAmT0Pi"><!--pnid:ZKDujCy9fkSHIR66LaSbMq-->第 497 条第（二）项（不合理限制）</td><td data-page-node-id="mWD4iG1Tn1KpLRVnbLn6Lf"><!--pnid:hVwhnMIlyeOZ5mMVBDR0Ov-->杭州萧山法院：<b data-page-node-id="2YP4nqKlJzUZMKTs2dWkfe"><!--pnid:ZVv8C2UnrHQRZjeGazYE1y-->"法院应对明显过短的冷静期予以调整"</b></td></tr>
+          <tr data-page-node-id="UGnKwqZHraTTxcoAImWGA1"><td data-page-node-id="53VQGPq8qcJZMGN3xibzih"><!--pnid:ZMTV8CaGFz6G4lbrQBWkQG-->5</td><td data-page-node-id="aPGj9VVNHWMx6UdMn3e5qa"><!--pnid:Cm2HXBhXLUIY9eGrhovtoR-->扣减"违约金""手续费"，<b data-page-node-id="45xAP5ukmc2Mf344kaNTQC"><!--pnid:9pJ4xnhYaEcWmbVfCRN33H-->金额固定且与实际损失脱钩</b><!--pnid:M4EJQ4j5D3egaT6P7QBpI9-->（如一律扣 30%）</td><td data-page-node-id="Ya9AdeCDZPw1Ly7EdQEGMo"><!--pnid:UMbkO1J0eMMJNcISEikDhz-->第 497 条第（二）项（不合理加重责任）</td><td data-page-node-id="2qfLt4LLWMPwHKFknpOUCE"><!--pnid:m5ZqxxBoFC2xq9ifUQjRcO-->冷静期解除不是违约，以违约金名义扣减逻辑矛盾；固定比例无损失依据，法院通常调减</td></tr>
+          <tr data-page-node-id="BIWly3ThbhdI0F9Z7CizXG"><td data-page-node-id="auX6LYNVyoMh0Prap9KYfc"><!--pnid:RruOJO9YUYjkx5d47XSyxg-->6</td><td data-page-node-id="sZgBjysMxNXsSY0dKhR3Xm"><!--pnid:cE5C8qbluyxdnXYXZyYDxV-->使用"<b data-page-node-id="rGwHllyawEGM1kCEvix1in"><!--pnid:5cNNtL2CTPPdVBeI2pZnoq-->一定期限""相关费用""合理成本</b><!--pnid:qsmOhOg93hZKQMnOQpwZOj-->"等模糊表述，且未穷尽列举</td><td data-page-node-id="6CBUu4B8BfggIzgdFPQt0y"><!--pnid:k76tuZpQSbCLaOuCs1lbRQ-->第 498 条（不利于提供方的解释）</td><td data-page-node-id="HrvvtKqgI18cC3Mn7d4Gp1"><!--pnid:hlccgFapAWCmc3By4RYpw4-->两种以上解释时作不利于总部解释，"相关费用"会被解释为包含全部已收款，扣减空间归零</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="E1fB9pT4X7PAm9okWPXTNT"><!--pnid:RA8Nbn9DL5jMaRnv3ci0AK-->4. 安全草拟的 7 条规则</h4>
+      <table data-page-node-id="bVl5dhfwzI1pDOl7xG2kfi">
+        <thead data-page-node-id="ERBB5Q92sJDaLYjkwYiflE"><tr data-page-node-id="sF8cRfHHR3iptriY8u0Z3C"><th data-page-node-id="Wp7w8v7e62ua93zOTevnEe" style="width:5%"><!--pnid:1M2xuNKtdAHOnF6n7KUMq4-->序</th><th data-page-node-id="tttbpLT1IJGTYI0T7zpjFF" style="width:26%"><!--pnid:BFMvjBC1z4yDWA7Z6i9ZJE-->规则</th><th data-page-node-id="90J6xBlFOA4LQttbJ13q5D"><!--pnid:kcnkMeMBGiJMkQXNRukqte-->具体做法</th></tr></thead>
+        <tbody data-page-node-id="859l3GMAhJ7iqkAfhWZGC6">
+          <tr data-page-node-id="Af7vu83goOYCHSncFYXTW0"><td data-page-node-id="JFNmLzaJUXH9V0NVdDDE9B"><!--pnid:FiUpjEyGVKiC2OsjsV1XR7-->1</td><td data-page-node-id="KzHK1fHfHP5xr1OPCbLowI"><b data-page-node-id="Y5TLMHUpbZkeeGCkuPmMmN"><!--pnid:Fxhrn27MEPWMNCKRKq2eDr-->只"限制"不"排除"</b></td><td data-page-node-id="iZtGPYYa5XzHtYLcvLX3aW"><!--pnid:nQIePLkeLwApSlgj2RGfY5-->可以设期限、设通知方式、设扣减；<b data-page-node-id="OQ7rPCj4XmUqpfFZkTkkHf"><!--pnid:lhpJG3LU3o7Y5KtXos6EHQ-->绝不写"不可退""须同意""须签协议"</b></td></tr>
+          <tr data-page-node-id="XhCMToQfi2L4JRRA0ZYVmj"><td data-page-node-id="CqqMlvARZApq37mZd5jK9j"><!--pnid:IST9sWEiLPN9ZCYi1CSqyy-->2</td><td data-page-node-id="ZzJxHq1vLDa6vmPlrtfcIV"><b data-page-node-id="3xfbaOwhOpf1d2tqdUKKOZ"><!--pnid:qSerdPmtbTjjkENscjvle3-->期限合理且明确</b></td><td data-page-node-id="TLWAw9TuUFpaDPFsjY2HSf"><!--pnid:sQzLbPpSMCLE5nIo1yIaHv-->写"<b data-page-node-id="0j4iu2RXLNKFF18HSCLVZb"><!--pnid:A65hmQJq9wA01d7d82BYSB-->自本合同签订之日起 15 日内</b><!--pnid:45d8nB0zZbGI2DwpxU6AyX-->"，不写"一定期限"；起止日在《冷静期告知书》中写具体年月日</td></tr>
+          <tr data-page-node-id="BSmp6vQg3C1YjoPifVHP2N"><td data-page-node-id="zGKLfmIM92jE9XkkVXhbD6"><!--pnid:qwtbhLfG0e40iWSEpObFJy-->3</td><td data-page-node-id="y5spPSelar8bLgBPqiCS2P"><b data-page-node-id="M5ClCuwvoDRDmd34NUZ4Oo"><!--pnid:Z1OtUfxOJ175Zubu8UaklR-->扣减必须有据、穷尽列举</b></td><td data-page-node-id="YHe0ggBDY2CJMEF42og7KB"><!--pnid:ImsY2gSEqMN0ru5wYogPE7-->逐项列出可扣项目（培训/选址/设计/已耗用物料），每项对应附件《服务价目表》单价；<b data-page-node-id="x2e8I3PdBHDfVusEjIpWCw"><!--pnid:c0odVgt0GuXmi0jOk7Ural-->写明"未提供凭证的部分不得扣除"</b></td></tr>
+          <tr data-page-node-id="MJ8vwbMfMtxNuckDrQl4Qz"><td data-page-node-id="xsUthhgGvqoXO0HqteuuCr"><!--pnid:buV4sf0Z3m38AOj1yMhoWi-->4</td><td data-page-node-id="267Tw9LIPsukFkK4EtXj2L"><b data-page-node-id="jfXqHSZXFISw89nx47UCPf"><!--pnid:6M9NHEbHbWCQe4EZuMmkzm-->行使方式只作程序性要求</b></td><td data-page-node-id="yUY26AaQfRVFAWK2zffpNS"><!--pnid:Aqo5Z7Z22Ghx2jB6V16ND3-->只要求"书面 + 特定送达地址/邮箱"，<b data-page-node-id="AS8O3x9c6hchb6jDT38xES"><!--pnid:RhosRyNp69sKuTTthRAInh-->不要求总部同意、不要求签署协议</b><!--pnid:IPdYjOnaKcioU87d5v4g2B-->；明确"通知到达即解除"</td></tr>
+          <tr data-page-node-id="szFZOQj3wOVfwDZ46hVBkN"><td data-page-node-id="xI7g22SG8CsE6F4L41HzEe"><!--pnid:MA1tjaCLf5UFyu30GjbDaA-->5</td><td data-page-node-id="bsCNmjDHTzwJuA7QJDCVxZ"><b data-page-node-id="wJvkfqNqqjnlc8epi9NfTC"><!--pnid:l3QLRyXWJjgcE5ZvHam4Dw-->履行提示说明义务</b></td><td data-page-node-id="jLmVQHyAypseCwSHBe5Eg6"><!--pnid:OhnE26574kkrQGg9YSQwWF-->该条<b data-page-node-id="F2efN1uMkEFrtBa9cT7k7x"><!--pnid:jOXnRpLv9mX2lPX7A0vG9C-->整段加粗 + 关键数字加下划线</b><!--pnid:5cNbYbsCRiMyYc3a1XxTag-->；目录页标注"重要权利提示"；<b data-page-node-id="gFOJI3mq4EswooxbEYHQ2K"><!--pnid:iRXg378cfpikI2kcfOVYtU-->另页单独签署《冷静期条款确认书》</b></td></tr>
+          <tr data-page-node-id="A6LXEQWqmHQwJdm5XYmijr"><td data-page-node-id="dFK2luu5MnrYlgQEqu0rsb"><!--pnid:f8M8FyAnaxiwxwG4YGu5r6-->6</td><td data-page-node-id="hKBBDuLtecKgJ5tS91dRcB"><b data-page-node-id="PjCIwRceahEHSwxJxT8FQb"><!--pnid:KQWhK980fD6UdQgANYzV5z-->确认书加入手填与抄录</b></td><td data-page-node-id="ztvrmooAbhBcgvWLyoiyN2"><!--pnid:46NtWjWuRgddYv9SywNCh3-->退费规则<b data-page-node-id="6yvAXq6lTVVWQwHrBADRBi"><!--pnid:Xmd5igBjz1cPOoEQW5Yia7-->留空手填</b><!--pnid:B3g5Ved3SHZ71qAh5wDKQl-->、日期手写、并让加盟商<b data-page-node-id="aL2wONRAiaWUQZoev4djMO"><!--pnid:9Eao7XWVMNcmlW36cn8vfW-->亲笔抄录</b><!--pnid:I3u38iHAJHrocexJdtTRKs-->"本人已知悉前述单方解除权"。这是提示义务中证明力最强的做法</td></tr>
+          <tr data-page-node-id="tw8xEyjuHZiBSUBNhbvCRO"><td data-page-node-id="fD1DN5NYfgoorqQqyuQ2v1"><!--pnid:dSyPuakhm30RRbcBxcsXMO-->7</td><td data-page-node-id="fhtvixaJF039hlCSINVzwA"><b data-page-node-id="Zu4oXfxmTj1smb2c8cNcs9"><!--pnid:6YLU31mw5MVPulpX5qfegS-->主动赋予、不做减损</b></td><td data-page-node-id="f5U8NMAkjsux3v2pzamcNF"><!--pnid:dMDEG16zGjB1zN7KNs5NMp-->条文用"可以<u data-page-node-id="XvS4cU8gQ4x6iJDZ7pNQLV"><!--pnid:WnQ9QHljNwyoIZlotKykA0-->无需说明理由</u><!--pnid:3AlRAdXtk0ZM5rigHgVk7O-->单方解除，<u data-page-node-id="kiLIeDEaDHkCBw0DVLbx34"><!--pnid:zyKndrvUfgqaY2aklDOXF5-->无需承担违约责任</u><!--pnid:CspavBxJUpZjQFkcdXi9QW-->"的赋权表述，而非"仅限……方可解除"的限制表述。<b data-page-node-id="QFW9fh1xZQhp46qqfsoZiX"><!--pnid:eTYlquE92kq3sdRoJbxatv-->表述形态本身就是"是否排除权利"的证据</b></td></tr>
+        </tbody>
+      </table>
+
+      <div data-page-node-id="uozK68F63JGQeomPFJH0Cr" class="warn">
+        <b data-page-node-id="EDXlnuDFiIPg0DaP2GGSqd"><!--pnid:Tyka9SNMsJMndhLKoIpkFn-->最后一道保险：即便冷静期条款被判无效，也不是世界末日。</b><!--pnid:Z3Zrkq8wipJK5i6LPObRpx-->条款无效 → 视为"未约定" → 回到"合理期限 + 未实际利用经营资源"标准。<b data-page-node-id="umFNAQkHwyyyNA0GApW4v1"><!--pnid:TKWex4dAPDsev3lHl376dB-->此时你仍有两道防线：① 举证加盟商已实际利用经营资源（开业、使用商标、用配方生产、采购原料）；② 举证已实际提供服务，主张按《民法典》第 566 条第 1 款"根据履行情况"扣减。</b><br data-page-node-id="NXfftQRoUM2A1ykrQ7n8H5"><!--pnid:DPTY6WG6tqvuIascKbILIQ-->
+        所以真正不能丢的不是条款本身，<b data-page-node-id="kPgg8XKBaFnX40vmBRLdcK"><!--pnid:zGD2YIgKcSRGNtXdWJL7xz-->而是《服务价目表》《培训签到表》《选址评估交付单》《资源交付确认单》这四份证据</b><!--pnid:HKOypA4lrvemX0VXyMlV1a-->——条款死了它们还在，退费金额就还能控住。
+      </div>
+
+      <div data-page-node-id="UfQ1agL9isxkaTkAgmsuqi" class="act">
+        <b data-page-node-id="4zV33IXHNpvT4hv6OUNtm8"><!--pnid:07pZHm8yYntbJHjqUv9Cmc-->我的落地动作：</b><br data-page-node-id="m7sR8ocZ9t3s5fWu2JBUMT"><!--pnid:8CNcVsWy2O9HX12a0z6MiU-->
+        1. 立即逐条排查现有合同的冷静期条款，对照上文"6 种危险写法"表，<b data-page-node-id="Fnwc7mISEsx1lTZIdZH75w"><!--pnid:FEDIt38HBbQolCLecUhR56-->命中任一条立即修订</b><!--pnid:0fjK6gogS68VLaQZYoKSJC-->。<br data-page-node-id="wGvszWfHnU2IZ36SAgbnyq"><!--pnid:HGmxDgKkLx85LX0xBAeGZm-->
+        2. 三件套一次配齐：《冷静期告知书》（签约日）+《冷静期条款确认书》（含抄录）+《服务价目表》（合同附件三）。<br data-page-node-id="c5Ek0X8ng7B1Ua0XRISWqq"><!--pnid:F9BWEJuCBZs4wBN5lbbGHZ-->
+        3. 存量合同<b data-page-node-id="W7duajpTM6jwFJp9Jdlg2N"><!--pnid:v1HBvlKMqZl5XfxkX8hAth-->补签《冷静期补充协议》</b><!--pnid:0GBcdHodtw9VgU9FO5N9P1-->——把"未约定"和"约定违法"两类风险一并关闭，成本极低。<br data-page-node-id="hQxSjW7uvIsBOu031GK4Dn"><!--pnid:yxKbxZKF5inxa3iBaojfPS-->
+        4. 把"6 种危险写法"打印贴墙，作为合同审查 checklist 的固定项。
+      </div>
+
+      <div data-page-node-id="uxYNmBlIjmr6qWj00YYi7c" class="anti">
+        <b data-page-node-id="WaU3kFeAWjwXObPfSmweFA"><!--pnid:vSDD2UQxe84AM2z9tbkbng-->加盟商反制点：</b><!--pnid:sUirMnGC8lfuqOgI8IwPDX-->加盟商律师攻击冷静期条款只有三招，且招招针对上面第 497 条：<br data-page-node-id="gQNUN2NBp2Q4LLj2Con0Gn"><!--pnid:X1xJy29lVTvTMm10FIsJji-->
+        ① <b data-page-node-id="Uj2bO9wNLVPU7Af38qwjSs"><!--pnid:CbGBf277dDFr9J47GN9hA2-->主张"排除主要权利"</b><!--pnid:P7cNXnqUWbUDYVP7QQFgJz-->（第（三）项，无"不合理"缓冲）——专打"概不退""须同意"；<br data-page-node-id="N9LuyNfJVXtzJGDcQViyiq"><!--pnid:LfEj26bFbxRX6KxujFdtYs-->
+        ② <b data-page-node-id="mAdgAR9HYYkjUXIUqcZskC"><!--pnid:1I88xHQmTUXPiqUnRc9EuC-->主张"未履行提示说明义务"</b><!--pnid:haha3Cr6j7gptd0SRM85z2-->（第 496 条第 2 款）——专打"没加粗、没确认书"，命中即"该条不成为合同内容"，等于回到未约定；<br data-page-node-id="ScLHVkIW0gxAyJHZlo3ROz"><!--pnid:pWukQsBTtoMH04ZD3W8EAL-->
+        ③ <b data-page-node-id="4hXcEBKfxRU5AV3ab7wWYy"><!--pnid:yyWwe0QkZrShzmRb5PQE85-->主张"有两种以上解释"</b><!--pnid:jeriydLcQSN9TZIuzzjaYI-->（第 498 条）——专打"一定期限""相关费用"等模糊措辞，命中即作不利于你的解释。<br data-page-node-id="m7MXnwxbg9x6ZDqkF6lRvJ">
+        <b data-page-node-id="k1fZ64KuUd4RbXDWzpjOc8"><!--pnid:2TDS2RQujGT5r3Qe4RwLXS-->你的全部防御就是：加粗 + 单独确认书 + 抄录 + 穷尽列举 + 具体数字。五样做齐，这三招全部落空。</b>
+      </div>
+    </div>
+
+    <div data-page-node-id="W7zbzHLrSD6pCVDS6Hf0AR" class="checklist">
+      <div data-page-node-id="Rw5Y03Qd6A4cKqtQCjvHNF" class="cl-head">
+        <strong data-page-node-id="ihVeYwrB8U01AeWiQ5yfzh" style="color:var(--gold)"><!--pnid:vFmXRBUfpp8NkzwxSdOFyp-->《冷静期条款合规自查清单》（每版合同发布前必走）</strong>
+        <div data-page-node-id="XOQOMNvhDwgInD9DjAaDww" class="progress"><i data-page-node-id="04ntSYH1ZaToruT52aoT2A" id="bar"></i></div>
+        <span data-page-node-id="BqeG40m9ixSSy1FmeJni8u" id="cnt" style="color:var(--sub); font-size:13px"><!--pnid:0WViA8SJb9dJMOcDUUkMEQ-->0 / 0</span>
+        <button data-page-node-id="6Trfz4UlkZfIzZ1iANyPke" class="btn" onclick="window.print()"><!--pnid:thXLqz7COage3GZnowOSl6-->打印清单</button>
+      </div>
+
+      <label data-page-node-id="9Sf3SYLmCitz4y0zLoCfBs" class="mat"><input data-page-node-id="QS4An5N9aacsYfh38Bse1l" onchange="upd()" type="checkbox"><span data-page-node-id="rljCTHmYZfC4KEN9aSfJqP" class="m-txt"><!--pnid:CmrCPm7HmT18u1oloQPMOD-->① 合同中有<b data-page-node-id="7BgjVhh8B03ED1em6n4tJW"><!--pnid:EODsjQGzd1Ro7QknWBJPNJ-->独立成条</b><!--pnid:etPX5Vc3bvcUn9iTL9ImMq-->的冷静期条款，期限写为"<b data-page-node-id="AyFrkNykuRA9I0S8goSQLZ"><!--pnid:ke7E4K7SXmdRQFsq9XqAiK-->自签订之日起 ___ 日内</b><!--pnid:a7ewjWCNEAeKdZxffqQ3tp-->"的具体数字<span data-page-node-id="w0QD5eq14Bwkb0n7KYUNH8" class="m-note"><!--pnid:GyZFyb4VgWUl75f234NyRo--> — 禁用"一定期限"等模糊表述（第 498 条风险）</span></span></label>
+      <label data-page-node-id="jBMxxqZqmlW8Uz5VAyI8AD" class="mat"><input data-page-node-id="HpxWHGz8WFcxnSW2aXdBmB" onchange="upd()" type="checkbox"><span data-page-node-id="MDTwkPtEd8KJbX4wVVrVbF" class="m-txt"><!--pnid:VNxZnSScZUzV7cwcXfoTzv-->② 期限落在 <b data-page-node-id="bzKFotDTpMpzPsinDum0R7"><!--pnid:iZEuQmpNpfpTPaZrQ6db2M-->7–30 日</b><!--pnid:ziaYC1cYXXiOg3pmJcicWV-->区间，非 3 日/24 小时等"明显过短"值<span data-page-node-id="2BxQrvUXRNxuzejsrkWYtF" class="m-note"><!--pnid:OCY987jq4QhlHZT9B9zogj--> — 杭州萧山法院：法院应对明显过短的冷静期予以调整</span></span></label>
+      <label data-page-node-id="AZZxgMLvYUDIwBkxIxNL25" class="mat"><input data-page-node-id="57THN1zYnUaJ4IPuFw93NJ" onchange="upd()" type="checkbox"><span data-page-node-id="Kup4xw0tEPlKq78m0qp1Jz" class="m-txt"><!--pnid:SBRRCH0hDobc8jPChhMdOS-->③ 条款明确"<b data-page-node-id="Dr6zNb00u1Fb17vTGqfF9J"><!--pnid:2k1XU9mj3rckljuLpMhX7T-->无需说明理由、无需特许人同意、无需承担违约责任</b><!--pnid:luWSBa2OmVux5gApawRFSp-->"<span data-page-node-id="hJKbAxg0QomXMQdyf3TySf" class="m-note"><!--pnid:qPtx4QL0fTDBDLTZX5yfT0--> — 赋权式表述，是"未排除主要权利"的证据</span></span></label>
+      <label data-page-node-id="Bkiyhi8ZBUqB23Ev3qGFUK" class="mat"><input data-page-node-id="ed1MjhDJFcgpmr4LFqdJx8" onchange="upd()" type="checkbox"><span data-page-node-id="vK8x6A5dFtr6hx36sVZLYp" class="m-txt"><!--pnid:5H2IUzue5qbLrqJSU37HGf-->④ 行使方式仅为程序性要求：<b data-page-node-id="0T1RAGVD3piJ7SfCoNKoNw"><!--pnid:0Lh7I9M4N265sVbmlj43v9-->书面通知 + 指定地址/邮箱 + 到达即生效</b><!--pnid:arwrdmURNkxK49KsyTUfte-->，无"须总部同意""须签解除协议"<span data-page-node-id="SCVjgmzexhpz7wzesS6HvK" class="m-note"><!--pnid:fzr8hS9HDt2WSjP1pkyCJ3--> — 否则触犯第 497 条第（三）项，绝对无效</span></span></label>
+      <label data-page-node-id="HBVnRHV52mcIGIP89bjdPT" class="mat"><input data-page-node-id="GdfwTagbkTzUGsMD0wOxLU" onchange="upd()" type="checkbox"><span data-page-node-id="0fCdHc7SmGsoA2GlF2aqop" class="m-txt"><!--pnid:LA7bLrdWYjqNRl7trKNfhX-->⑤ <b data-page-node-id="rUHlxweUO6EYNW7VJwucAI"><!--pnid:iF2seZHZPkCH6tRuJ9zq7k-->无</b><!--pnid:i4VY8OY8bvQ6MW3wTx315M-->"加盟费概不退还""已收费用一律不退"表述<span data-page-node-id="Bao3SiZzDV1mJ47pQQLBaC" class="m-note"><!--pnid:qsXWbyqTd1JpDM2pH5rlhF--> — 杭州萧山法院明文：属无效格式条款</span></span></label>
+      <label data-page-node-id="DxiauCRKzmjn6fmVTneFHd" class="mat"><input data-page-node-id="ayqGbXQvBdRFc4yAQMAliC" onchange="upd()" type="checkbox"><span data-page-node-id="TMOYcgq7rf7p4NZGoDRN2W" class="m-txt"><!--pnid:rKswRmMVleggBV8tznHkcS-->⑥ <b data-page-node-id="tgiJUigbgbDYJ5Idzb0wDJ"><!--pnid:pKl9tnY7p8BOokvFFzbKhI-->无</b><!--pnid:zO2VEA0t8w1xzWQgAEQBO8-->"领取培训资料即不得要求返还培训费"类表述<span data-page-node-id="TkePIFRcqRFD2mF3brO2Y5" class="m-note"><!--pnid:O1M3BEbCWiid4FYPM707NN--> — 重庆（2019）渝0192民初13346号已判无效</span></span></label>
+      <label data-page-node-id="3DIDUjOq8ugOnbIn5Hj779" class="mat"><input data-page-node-id="dbeRjAzOSLfb922q4Z0ZVn" onchange="upd()" type="checkbox"><span data-page-node-id="ASoA4nNHa5rcrSPKmWtmxW" class="m-txt"><!--pnid:v7b1qkldUmIUxPPxcg6z1M-->⑦ 扣减项目<b data-page-node-id="iJZHmtigWGLTSM45THdsJP"><!--pnid:FcEJ8ArNSnqCTlrAndpKZb-->穷尽列举</b><!--pnid:N4XugwJoVUXsojEREFzZd2-->并对应附件《服务价目表》单价，且写明"未提供凭证的部分不得扣除"<span data-page-node-id="eXqUVs6PlQGn5MtzmPKD8O" class="m-note"><!--pnid:2sIdUnYRf8nBNIPhpyGTi9--> — 无价目表则扣减主张落空</span></span></label>
+      <label data-page-node-id="SC51Nm3HsEf4dueqbha1z1" class="mat"><input data-page-node-id="QwNPytR8NOz3wLPPsu1WTd" onchange="upd()" type="checkbox"><span data-page-node-id="YPDP7IPFQQ01goFUZURObd" class="m-txt"><!--pnid:v4bCE0wUwSLSizjKaLZNsC-->⑧ 退费<b data-page-node-id="mGngwlt5U2tPTIrKfgxuNd"><!--pnid:UgBZCWefOe5AWqEJ0AI4n2-->时限明确</b><!--pnid:uOgy1Gbk6xYCSbwVkKwqbK-->（如"收到通知之日起 15 个工作日内"），保证金与未发生费用明写<b data-page-node-id="RkQKU9eE5oH1XSiJVbBsEV"><!--pnid:EyMb6BxyIQGLSRVE2sKoIp-->全额退还</b><span data-page-node-id="BjVBb3xCghhz1Dr93ZUi5l" class="m-note"><!--pnid:yY0KKqnPWcXWSUKAmn50UU--> — 萧山法院：未实际产生的费用与保证金原则上全额返还</span></span></label>
+      <label data-page-node-id="hFVZVh4MGG0Xv3LVfDmoLN" class="mat"><input data-page-node-id="geBYbmudMdgALgoL3H0zuc" onchange="upd()" type="checkbox"><span data-page-node-id="swQ4Dy6pVDtRhn9QhvxAmD" class="m-txt"><!--pnid:FY8lnTAEvAnzUL3atTu4w1-->⑨ 已<b data-page-node-id="8Bk9vNfuBd0A40qzPMTIR0"><!--pnid:wFRZZowBVGxgMad5Z84oWh-->定义"实际利用经营资源"</b><!--pnid:eCKAoxPsLWLnu9VmFbx8SK-->并明确排除"参加培训、接受选址建议、领取资料"三项<span data-page-node-id="UJ2b3pxAxp3efGUFmLztct" class="m-note"><!--pnid:B71e0YsSlr7RS9QwOwVXIm--> — 萧山法院明文支持这三项不构成实际利用</span></span></label>
+      <label data-page-node-id="gSWmwx3nmnbxpg3b3lmKgP" class="mat"><input data-page-node-id="lsajRH9kIFB1tND8xJXa5b" onchange="upd()" type="checkbox"><span data-page-node-id="XfQPnJE05zMVdnfyIOvBoW" class="m-txt"><!--pnid:2pqIuI04LqoHgRM9nmXmwE-->⑩ 冷静期条款<b data-page-node-id="8N9XFene6Y6redSWHJvEad"><!--pnid:Ldk4LWsIQiubPoDhU0C0q3-->整段加粗 + 关键数字加下划线</b><!--pnid:zYoKiLaX7Ou4UVfBt2tBjy-->，目录页有"重要权利提示"<span data-page-node-id="FYIT3Ywl2EK6KauWWbBtmB" class="m-note"><!--pnid:7SRXGfwIkQJYlKBM3xZ2Hb--> — 《民法典》第 496 条第 2 款提示说明义务</span></span></label>
+      <label data-page-node-id="QXQW6HrWTVr9oKk6SMAkYm" class="mat"><input data-page-node-id="xmq5w6nKexbpu3EDJHAkwX" onchange="upd()" type="checkbox"><span data-page-node-id="r9XGEyNlwysAlOygNEHovU" class="m-txt"><!--pnid:eMGpDp4zuSYn1sOa3mANCw-->⑪ 已配《冷静期条款确认书》单独一页，含<b data-page-node-id="qhriKJKEaPwWjoZjLnOqAO"><!--pnid:GeW7cej1ALfXHKbONiivQV-->手填退费规则 + 手写日期 + 亲笔抄录</b><span data-page-node-id="oQFat7QevYN0zfSclvxcIU" class="m-note"><!--pnid:f5B5SNlDC2YSXrdreYMT4S--> — 提示义务中证明力最强的做法</span></span></label>
+      <label data-page-node-id="dxS9G34z253FMonufs0cls" class="mat"><input data-page-node-id="ErKo56F29KVS3oKj1ZGP81" onchange="upd()" type="checkbox"><span data-page-node-id="Pqyg1Re4dJtV64aWChTYGW" class="m-txt"><!--pnid:Dn1JdQV5BtNVKahadwXwAv-->⑫ 已配《冷静期告知书》，写明<b data-page-node-id="krmkTGj45xhwKed72QAYCA"><!--pnid:BvB5SLeqDJbvZbB9znFunB-->具体起止年月日</b><!--pnid:HGu6pAB4D8uMnrSACE1uEY-->，签约当日签署<span data-page-node-id="zvrdYO4U49WPjfcv1X4wxx" class="m-note"><!--pnid:XcxUikGCWghEfiif0hV5ln--> — 起算点零争议</span></span></label>
+      <label data-page-node-id="6KlFWNca2jNUkYS24bxeRW" class="mat"><input data-page-node-id="jU7DbqAAUwQlzeX4Aes9na" onchange="upd()" type="checkbox"><span data-page-node-id="ShEjRtNRPoZi3hp6lNA30A" class="m-txt"><!--pnid:BigM5HWWE8ORb2WTizszOc-->⑬ CRM 已设冷静期字段与<b data-page-node-id="SCBQHk3IdjpdNnwmrub0Xd"><!--pnid:Vam0s6Antvq2Hvi73BRxXA-->届满前 2 日提醒</b><!--pnid:MMjBXmI4y6ZFjC3wF9YAO7-->，届满次日自动触发《资源全面交付清单》<span data-page-node-id="1Qly11B0Wju5X561YfAkFU" class="m-note"><!--pnid:imVT5JaxCyZiwit4iAQhkQ--> — 系统硬控优于人工</span></span></label>
+      <label data-page-node-id="YtHpbSoIQRW9HQC2AY9wfb" class="mat"><input data-page-node-id="VSQigwSUyUFMKAoQIKHU1e" onchange="upd()" type="checkbox"><span data-page-node-id="ib2rB3mzMYwg8Ll08qFxx0" class="m-txt"><!--pnid:yJDCSa3wnJIHQec8oRfjmY-->⑭ 招商话术已清理：无"随时可退""不满意包退"，统一为书面条款口径<span data-page-node-id="MhSeIEGCxKOuyKvOmksGGV" class="m-note"><!--pnid:rLxbmwIXjxCcnl8KoYPVNd--> — 对订立有重大影响的口头承诺可视为合同内容</span></span></label>
+      <label data-page-node-id="qKRg6lS6FBjLj8KP1J4tlT" class="mat"><input data-page-node-id="LVxBKxcV1dLoj7TIevstIf" onchange="upd()" type="checkbox"><span data-page-node-id="riVcHy1ZN9cm6xBAqJ1bzz" class="m-txt"><!--pnid:ZalmhHGlTcbq2tt61Juj7W-->⑮ 存量合同已排查并<b data-page-node-id="cTEnBEY6nMc6sFGcZxsdxp"><!--pnid:Flx3W7zNfct9SgZZyYXWx1-->补签《冷静期补充协议》</b><!--pnid:y7b9bqvougNJ6TvvzuwxXJ-->，关闭"未约定"风险<span data-page-node-id="wuTjqdsRwiovYjYQB9PUQK" class="m-note"><!--pnid:K79jyprs112j99zZWJCg2r--> — 未约定＝特许人缔约过失，承担不利后果</span></span></label>
+    </div>
+
+    <div data-page-node-id="3gHzdTtfnNTFjIy8WQM87m" class="card" style="margin-top:16px">
+      <h3 data-page-node-id="6Y3GgbGxkEEWF0AtBI023m"><!--pnid:0Za4kyOpkEKyhZgZJuMfvA-->一张图记住全篇</h3>
+      <table data-page-node-id="Rnn0CHhfAoITgI8PRlrSG5">
+        <thead data-page-node-id="pyab1N4xXpJZJ6hzxR5uFG"><tr data-page-node-id="HbsqPOEYXlDIvBmQJaWlbi"><th data-page-node-id="UmfGi5i9Ub3A67twQd6eQm" style="width:18%"><!--pnid:Gh60Pdyxgh3Xh9b6Ywq2H7-->问题</th><th data-page-node-id="V2vvQfpT9ZUaJWT2R8Ih1V"><!--pnid:jgsZ48CFVFtZ1jjuOcw5J5-->答案</th></tr></thead>
+        <tbody data-page-node-id="UdhWB8PFzRwt5KCClq0swE">
+          <tr data-page-node-id="p5eIYhlB3vGWfINhx2Yqj5"><td data-page-node-id="xohMELrHeX30SSOWLcEVkJ"><b data-page-node-id="wLHcxx6TGtLxI3Id96Shgt"><!--pnid:ehEJefz6X8ZXzUrQFEdoeb-->是否必须约定</b></td><td data-page-node-id="1ztemfpZ3XktkLRFY2AVcq"><b data-page-node-id="6trZitnvFFFBSrgmkqy0sZ"><!--pnid:gypjjTCZUp8ZmSTaAaBr4K-->是。</b><!--pnid:RgN5cQYJsReWEDTftJtVCJ-->第 12 条用"应当"，是对特许人的义务性规范。不写＝违约定义务</td></tr>
+          <tr data-page-node-id="5g6EzAGsXnOIpBJPUqAvmQ"><td data-page-node-id="Aph1BF8u3TTXJh5LaYjdpo"><b data-page-node-id="8AcZ6GyfxmgMfzoZdnuxqD"><!--pnid:4vUmlo8RNSYMxlx0pwRe8n-->不写还能不能解除</b></td><td data-page-node-id="liSmHLQsTL8EiCqkd164HU"><b data-page-node-id="CzcG5d3JniTz8BQpdbnnYA"><!--pnid:vrzPdPZhEXQxQ2BEXh18Tj-->能。</b><!--pnid:1xepCqVuw4asPIwAVPvS1s-->单方解除权是法定权利，不因未约定而消灭；期限按"合理期限"，以"未实际利用经营资源"为限（北京 68 号文第 18 条、上海高院《解答》第八条、重庆（2020）渝 01 民终 3236 号）</td></tr>
+          <tr data-page-node-id="IiK5YArRrAyywQllIissZ8"><td data-page-node-id="XYUirWCepVUfwRJMH8jzMi"><b data-page-node-id="UGP2eo1AphH4kUyMVEFlzi"><!--pnid:32ZF92Yxf43D22mx63zqTG-->不写的代价</b></td><td data-page-node-id="92JvcYFBWZnib6iwnzGPlI"><!--pnid:sb0gS5Ryc7hmCdyyJ3DLBv-->期限开放（无时间上限）+ <b data-page-node-id="FF62SBGbQab2yKRKKl68AD"><!--pnid:gfpeq2gP2sNEqd54DNaI1I-->特许人缔约过失</b><!--pnid:X0PTlOKxByucEF2h5PD8Jo--> + 退费比例对你不利 + 备案可能被要求补正。<b data-page-node-id="uwHpHvo1C4QttMwN7narg2"><!--pnid:jd7Drz0acEgqHCwQbaEe59-->无专门罚款</b></td></tr>
+          <tr data-page-node-id="wfArmOFSxpkhfr6MtBuOyr"><td data-page-node-id="SUWBtBlzIcPJe6njOTvC9s"><b data-page-node-id="w6pVzOcbM9VsBVdSTNEJeo"><!--pnid:OCBY7YibMgpR1NESk2rpuC-->最优三变量</b></td><td data-page-node-id="TRa450knZriTay8LVrF6zD"><b data-page-node-id="awA3d1GfsVeR6mmnFEuBOY"><!--pnid:kn3uYX0VDtRfG5ikx1Wi94-->15 日 + 全退、凭票扣实际支出 + 书面通知到达即生效</b></td></tr>
+          <tr data-page-node-id="rWYsklpqajU4UBlMfHHJ7y"><td data-page-node-id="eX8Oqd7PO2509rZ4dJjl0k"><b data-page-node-id="vDPB0ayi1NCQP6cNCkuUql"><!--pnid:EdPreEoFek5OY8FG481mUa-->核心判据</b></td><td data-page-node-id="NLBsFo6zXcRH0LNRm6l6e1"><b data-page-node-id="sQoyhBZubXmojlAIe2eqRF"><!--pnid:juvEPSzbE1copwchAtruXo-->是否已实际利用经营资源</b><!--pnid:3PQD9BNgfBVLF2SbHGtq80-->，而不是过了几天。培训/选址/领资料 ≠ 实际利用；开业/试营业 = 实际利用</td></tr>
+          <tr data-page-node-id="chVCOgeR8wCB89IKr2R4iH"><td data-page-node-id="P5jYNAe7fyPHacNjcJkjcz"><b data-page-node-id="fjsdNz5x0bLbKhDwQC9sfr"><!--pnid:aLMQPleG6QYWmunw5Yotnt-->格式条款红线</b></td><td data-page-node-id="XknHnXiIx7NtHmfCwTa1sN"><!--pnid:g0insNDuWjC9olxDWJWSvw-->可以"<b data-page-node-id="x5lalVImgCLIZXsQo1wfsQ"><!--pnid:pjih9yXgPLq1QhDUarc4wA-->限制</b><!--pnid:e3d5MlzDWQbomB2wEOXnuu-->"（第 497 条第（二）项，有"不合理地"缓冲）；<b data-page-node-id="AcQMcBkPXYUFlx9mm0Y1v7"><!--pnid:0UwQfHQG7MzvmYFqzNhw9k-->绝不能"排除"</b><!--pnid:0c4AMeRvKHYDnRsoep7M5e-->（第（三）项，无缓冲，绝对无效）</td></tr>
+          <tr data-page-node-id="LJzDiZrAu6L2LT2YlosLAe"><td data-page-node-id="OR52b8ap64cTUw5CCJhVKy"><b data-page-node-id="viW157gkBHTyg8EqlNWC2L"><!--pnid:BtzieveXyN35YN09UtXXnA-->条款死了怎么办</b></td><td data-page-node-id="xMEb99mbaHdkHEQNxOt67W"><!--pnid:KnQ3TfBkKkYsJuQ2a6MDJJ-->还有四份证据撑着：《服务价目表》《培训签到表》《选址评估交付单》《资源交付确认单》</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="HPssIzVq0cTcbdEXCU9qN0" data-pnid-children="Y8e4RTZWxQj9xhVspMJx8c">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(){
+    var all=document.querySelectorAll('.mat input'), n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById('bar').style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById('cnt').textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

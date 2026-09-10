@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html data-page-node-id="pB9Lsb59rax78nD3oWU5Gl" lang="zh-CN">
+<head data-page-node-id="SfA5AdUZaHDHt2mTVxX4JI">
+<script data-page-node-id="5cwRr689ZijqlTvJTzNSZT" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="JhiObBnMnVVPSUFMslR4MZ" charset="UTF-8">
+<meta data-page-node-id="AEZKBjwyh4yC0KJD7ypMrC" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="CQcDhjHs69FS36ntRe3RAF" data-pnid-children="A44GVEr0dCf0F6GKTjZ6DP">招商物料实战审查 · 模拟带雷物料（练习用）</title>
+<style data-page-node-id="uUTKcgeogmCTatmQxCN0FC" data-pnid-children="O2y0ErKG7iMf37eX8CMggz">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:22px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--red);padding:8px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(212,86,75,.07);border-radius:0 8px 8px 0}
+  .tip{border-left:3px solid var(--jade);padding:8px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.07);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .doc{border:1px solid var(--line);border-radius:12px;padding:20px 24px;background:var(--card);margin-bottom:16px}
+  .doc h3{margin:0 0 10px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .doc h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  .doc p{margin:6px 0}
+  .pg{display:flex;gap:10px;padding:8px 10px;border-bottom:1px dashed var(--line)}
+  .pg:last-child{border-bottom:none}
+  .pg .num{color:var(--gold);font-weight:700;min-width:34px}
+  .mine{border:1px solid var(--red);background:rgba(212,86,75,.10);border-radius:8px;padding:3px 7px;color:var(--red);font-weight:700;font-size:12px;white-space:nowrap}
+  .qa{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0;background:var(--card2)}
+  .qa .q{color:var(--gold);font-weight:600}
+  .qa .a{color:var(--txt)}
+  .script{font-family:"Courier New",monospace;background:#11161c;border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:14px;line-height:2}
+  .script .t{color:var(--jade)}
+  .script .v{color:var(--red)}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .doc,.qa,.script{border-color:#bbb;background:#fff}
+  }
+</style>
+</head>
+<body data-page-node-id="i8zzOpnuTYRriMPOyofzpI">
+<div data-page-node-id="JZG8z9S07qXuTRlBbPtnqk" class="container">
+
+  <header data-page-node-id="uqLVHUMDj0JYf70K8vBZ3j">
+    <h1 data-page-node-id="JdjqHo4pfg0Qf9Pp1X66Q6"><!--pnid:KIOcvqIdIFaQFuFmYnlgPR-->招商物料实战审查 · 模拟「带雷」物料</h1>
+    <div data-page-node-id="k7CuuwpAAe7y4Dwl5tmMA7" class="meta"><!--pnid:e9jFVG3wk4Waz14Pdzskzs-->练习用 · 品牌「蒙食源」米线 · 共 4 类载体 / 15 处埋雷 · 法条口径见已沉淀 P/O/Q 节</div>
+  </header>
+  <div data-page-node-id="F1kZi8w9iQjUIOQAkJzQ51" class="lead"><!--pnid:NlZC14FTRnDQPgnlElDP8A-->⚠ 以下物料为刻意构造的<b data-page-node-id="W3ai6wDbjDKgKobjdjJybE"><!--pnid:qxc9FfSgNYgp0GXD0qbLsx-->违规样本</b><!--pnid:uMqHbgW3BwTV8bFhvoo9LT-->，共埋入 <b data-page-node-id="EPvrdFvyuQlxC8J63rrBOc"><!--pnid:QltrrPQSCTs7vB4OkAX8YF-->15 处</b><!--pnid:6KlLGoSB2krbmIzrzWWCpG-->违法违规点，每处已用 <span data-page-node-id="tCN5UdA5UCZYknGOWaft3r" class="mine"><!--pnid:FnbDn6g42yHGPErt5069Pz-->【⚠埋雷】</span><!--pnid:c1elkfNmK817G7TyuUZuZv--> 标注，但<b data-page-node-id="F2dcIxtZsi5zE1weNXZRcf"><!--pnid:Y8hhoRMXxM3aqySgPoK0Kn-->不说明原因</b><!--pnid:2hxElgZNLIh7ebFpA9Hy6Z-->。请你以法务视角逐条审查，找出问题点并写下你的判断（违反什么、该怎么改）。</div>
+  <div data-page-node-id="dreuLWHugfxzJ3cH0mtyrV" class="tip"><!--pnid:UXI3uYVFdTOVwDcMoTgXjg-->✅ 审查完成后把你的审查结论发回给我，我将给出「标准答案」：每处对应的法律条文 + 可能处罚 + 正确改写版本。本文件不含答案。</div>
+
+  <div data-page-node-id="tyd1otgWDCeFX1blrAqFSw" class="tabs" id="tabs">
+    <div data-page-node-id="MltRNwC5uXYDiKSrfhweCN" class="tab on" data-p="p1"><!--pnid:Iyu4V1nEMuSdz2qbuDe4Ka-->① 招商手册</div>
+    <div data-page-node-id="glOD2MuNNjOe9n307VYhTI" class="tab" data-p="p2"><!--pnid:ynFwMxibsgnIc6dwbwuFRp-->② 招商会 PPT 大纲（20页）</div>
+    <div data-page-node-id="1tc88J2qjj5GPKTxG2afs7" class="tab" data-p="p3"><!--pnid:NmtoQrt9m4XR4digvfxghW-->③ 短视频投放脚本（30秒）</div>
+    <div data-page-node-id="z2oHhQLuQbaNRIZTUZNx57" class="tab" data-p="p4"><!--pnid:cmX2xQ86ytHn6u6fUSCsx9-->④ 销售话术 Q&amp;A（10组）</div>
+  </div>
+
+  <!--pnid:Ge10UzvE9CDtqQVS0A9STH--><!-- 面板 p1：招商手册 -->
+  <div data-page-node-id="2KJFbOf8Ja4VpBP5cIlwwn" class="panel on" id="p1">
+    <div data-page-node-id="RvaOdcN1CeZ9g2f35qoXsO" class="doc">
+      <h3 data-page-node-id="NZByv72ny87gz0NImdaDs3"><!--pnid:BVXzy3HRAEEesurDEBIxVc-->《蒙食源米线 · 招商手册》（节选）</h3>
+
+      <h4 data-page-node-id="ThS2My1cu1EOHQx4wRkiOH"><!--pnid:1Yn8XwU8nHP89Tf9pYUxFG-->一、品牌介绍</h4>
+      <p data-page-node-id="wxQJtOziLDzq0h766dFgoK"><!--pnid:q2TWeturyjSimPe5HIZRQQ-->蒙食源创立于 2015 年，是云南米线品类的开创者与领导者。我们是中国米线品类<b data-page-node-id="rnZoLiV6eTSlaDUPpXU26K"><!--pnid:pT1nrwmsZoOmKiTYveN3xk-->销量冠军、行业第一品牌</b><span data-page-node-id="28MGcep2KhuM52OPIHwiq1" class="mine"><!--pnid:zlDQynhvX4yIqPOkEyGE58-->【⚠埋雷】</span><!--pnid:VFCmwoOUTHz2SmOqKG10mW-->，产品远销海外。品牌荣获「央视上榜品牌」称号，系<b data-page-node-id="tiOYRVhfNmu8VeVZ2w64jq"><!--pnid:yJgY7sOueH8qkK0knS9GiA-->国家商务部重点推荐民生项目</b><span data-page-node-id="hcp9YVIecbMYjT3zZF3MQb" class="mine"><!--pnid:bvxSpq0SKZpd3uw3RkLSnI-->【⚠埋雷】</span><!--pnid:xxOsFXpVWxDE5OiZZzaJJr-->。目前已在全国开设 <b data-page-node-id="QX53aQ9s6Wg8DARxW0Qeds"><!--pnid:FYEBoR4zg0RptmUQmZzSgH-->500 家门店，开业至今无一家亏损</b><span data-page-node-id="S0mCEIWkw2qDL8RMhBXssy" class="mine"><!--pnid:1FeCyXAXH8ZKHb0cxFVg9O-->【⚠埋雷】</span><!--pnid:VUGhihnAKNQnMdhkdxdxj1-->。</p>
+
+      <h4 data-page-node-id="DW1aVALTgD0nzcXNlfYl5b"><!--pnid:eqtmd1VO3sOmYB8TsG89jW-->二、投资预算（单店）</h4>
+      <p data-page-node-id="hDmrtn4I0lkiLOwVsN1MoR"><!--pnid:QyiXxqkQVscviuNTvxosGS-->加盟费 3 万元 · 设备费 5 万元 · 装修费 10 万元 · 首批物料 2 万元，合计约 20 万元。<b data-page-node-id="pORmiyj8CYTbFjjWI13MgY"><!--pnid:AaWJXSjodKE0HmMuROvcQX-->预计 8 个月回本</b><span data-page-node-id="sTNVgPOaDE3gwPjiEbzt2c" class="mine"><!--pnid:YylJ3KI3T9W38pUdfcx66b-->【⚠埋雷】</span><!--pnid:19YA63hZ9zqYyVA3eTBeSg-->。</p>
+
+      <h4 data-page-node-id="lO4dTVvSC6bmuEArZYoctW"><!--pnid:7qF2CVxMRU1vqQqJdMYv6s-->三、收益测算</h4>
+      <p data-page-node-id="9qOCUycnJo7h78Y66Q292f"><!--pnid:LhYwcIAeytOu39BmXdCQ3I-->按单店日均 800 单、客单价 25 元、毛利率 60% 测算，月营业额约 60 万元，<b data-page-node-id="RtkZPB193Tyc5wUnW2kBbT"><!--pnid:OPq6qhZydKmHsMvtVkztEk-->月均净利润约 6 万元</b><span data-page-node-id="6thcBKdGoRr3BuNIeZ8Sjt" class="mine"><!--pnid:DsCNPtalPfLf9DvRe9gDJY-->【⚠埋雷】</span><!--pnid:ykb8UQBzN6VaMtKx4d2RCa-->，投资回报率远超同类项目。</p>
+
+      <h4 data-page-node-id="bcZ5K0uIKpeEQ7YQR0a4Wn"><!--pnid:PIqWhD7C47ADUkqRthCgdd-->四、扶持政策</h4>
+      <p data-page-node-id="Z5BbiesBIS35hcfOCeA9Y9"><!--pnid:PGVqoV2vPfd5lXsIrogpet-->· 开业督导：总部派营运督导驻店 7 天；<br data-page-node-id="N0WRsl1NeX0cxtaj7EIbm2"><!--pnid:NCOPU9WI2L6V5tvSOSRZNF-->
+         · 全程托管：<b data-page-node-id="s1bLEtefcjLDTJVpLmSDoE"><!--pnid:qz0rJ3jcwLxPcsuwwrNHjy-->总部包盈利、稳赚不赔，签约即享全程托管，0 风险创业</b><span data-page-node-id="21pWBjRFeKZVAD6iJyHfhE" class="mine"><!--pnid:9mpgPRNSc3ISDSIzNy4xZU-->【⚠埋雷】</span><!--pnid:plLT0jVbaUoedPi8wNsyRV-->；<br data-page-node-id="d1an9uiY0fbkL3JEnqWE2D"><!--pnid:MwDquiejPDhvIGVEtQiwsA-->
+         · 物料供应：统采统配，成本低于市场 20%。</p>
+
+      <h4 data-page-node-id="nKHvWzgTAqPGYdnRTvxHfu"><!--pnid:645q1ZK4Q30Q72jhEeaxxQ-->五、商标与资质</h4>
+      <p data-page-node-id="AAUA4laNHfUICQ77hyBDJa"><!--pnid:uLGR0CmvYAeuigYsFys9BJ-->· <b data-page-node-id="X94cqZqBlDFN0cwezOAY1m"><!--pnid:u4US8RemjspMPjfoHft9EQ-->® 蒙食源（第 43 类 餐饮服务）</b><span data-page-node-id="uc3g1Qru4xE6d2ZmANfGYv" class="mine"><!--pnid:b8qQWKHoEioXXT8xLfa55P-->【⚠埋雷】</span><!--pnid:TDp2F5kZOLBcSGuBXE1VM4-->—— 注册商标，受国家强力保护；<br data-page-node-id="qxWizpFh8GFwB4CkxNXX5C"><!--pnid:2zRrpoVOPEfJah8xW8R0Cw-->
+         · 中央厨房食品经营许可证、ISO 认证齐全。</p>
+
+      <h4 data-page-node-id="JKycBvxXJysJZcv8U5mUTe"><!--pnid:YRWEOQP07gYdcOGKoFIIbi-->六、联系我们</h4>
+      <p data-page-node-id="rs7Z6T8TbhfquKXttYQKtR"><!--pnid:CImWcrZZjvmnHO1LK4omyx-->蒙食源品牌招商中心 ｜ 财富热线 400-XXX-XXXX<span data-page-node-id="pWrRrvJ27uYTMf75cq1WFt" class="mine"><!--pnid:1HZzMHfCZRxS8QmE1doHy6-->【⚠埋雷】</span><!--pnid:xAGiHK8jB33ZuS7VHTbda8-->（注：本手册未出现特许人营业执照名称及统一社会信用代码）</p>
+      <p data-page-node-id="ovphFI83ZN8sqemJx4HgR8"><!--pnid:5Mabe7hrRJHenT2AJ800o9-->本手册所有内容最终解释权归蒙食源所有<span data-page-node-id="YNQzF4ZkWlJuLqOwJ8gq03" class="mine"><!--pnid:s5Js2RFBEqxsdsoCDG7an8-->【⚠埋雷】</span><!--pnid:n4Ms2zrS5ko8orywyqE8a4-->。</p>
+    </div>
+  </div>
+
+  <!--pnid:ZHK53i1LE1i9nmZjg7ud3I--><!-- 面板 p2：招商会PPT大纲 -->
+  <div data-page-node-id="z1hN6XSmu3UD2ajB3AF5nF" class="panel" id="p2">
+    <div data-page-node-id="IAsDctAR3JhvUi4n7EGgvM" class="doc">
+      <h3 data-page-node-id="gblTNAhIAvGdzolsWJDz6K"><!--pnid:HOV7ShcVuUYeAhMr66HMSs-->《全国招商峰会》PPT 大纲（共 20 页）</h3>
+      <div data-page-node-id="RC2TLGmbNFAaAL6KrC7N6w" class="pg"><span data-page-node-id="wu3TkQ0jPVHzgffn4JoY1u" class="num"><!--pnid:vuNtt2H8S7GEAR7KWxFJFg-->P1</span><div data-page-node-id="W83XcWZi7kDTOHpB2tyiJd"><!--pnid:Ar8ipTs3BKQrgWbkqsVCQv-->封面：蒙食源米线 · 全国招商峰会</div></div>
+      <div data-page-node-id="tJ8WZBE3GY2ul2FBtKOBs7" class="pg"><span data-page-node-id="QvUKt6p6sXGpFutxFvAUkB" class="num"><!--pnid:gUa5SLag5GDdxnYAoTH2rs-->P2</span><div data-page-node-id="ZXsyMXAy2KR3BSXOtXitQX"><!--pnid:0Mw3UV2NHftPaQ0FYijbGq-->品牌故事：从一家小店到全国连锁</div></div>
+      <div data-page-node-id="L2vKeX6dUN3B4SJE5sAQo5" class="pg"><span data-page-node-id="4Tt3sCL4stuwYIybrjGHH6" class="num"><!--pnid:ozSb5nBId3eBReljff638h-->P3</span><div data-page-node-id="RPvqBzIPZPy2l8WckbWd3K"><!--pnid:OI0JIM9CGqTbjMUmiT05v1-->品牌荣誉：<b data-page-node-id="GIQyXd4evn76mthR8WNflm"><!--pnid:yC81lT7Toi1QeL6omGGAI5-->国家驰名商标、央视上榜品牌</b><span data-page-node-id="5PlCqMaHCOwmrD6YUhRcnM" class="mine"><!--pnid:EztEgQByHmjf0E0Q9Im5gv-->【⚠埋雷】</span></div></div>
+      <div data-page-node-id="tjRf8Bx7uQKP9iy8Mm6mcy" class="pg"><span data-page-node-id="KcSJpAJvOk2lka7qFVwKwG" class="num"><!--pnid:k1swaB3irKZcfumCi974lD-->P4</span><div data-page-node-id="kwcP2M9OPwkcjqQR0GsTHg"><!--pnid:lL0b6Toc5D7TPSmO1tmiYQ-->产品矩阵：六大米线系列</div></div>
+      <div data-page-node-id="VLxFatpubt90Uc9z3rfpRW" class="pg"><span data-page-node-id="D2f1DfivvE0Rgoo5uJSeSz" class="num"><!--pnid:OxS4WvSQ7C91zcBtrzEwNq-->P5</span><div data-page-node-id="dzbWmfvrd1KaGmKf8Ss73o"><!--pnid:kXLSQy2qneSrw9WdtdM8M6-->中央厨房：标准化供应链体系</div></div>
+      <div data-page-node-id="D8SqUs5SJ3MvHGrWlwI3Va" class="pg"><span data-page-node-id="S6mOzgMPw1CIkFF1AV8MBP" class="num"><!--pnid:Cu4IErBt3Hjgqm8BETCl54-->P6</span><div data-page-node-id="JC3UEl2BHsA6japyWoLOR5"><!--pnid:KmT9guBD4eQjCP5mVda9Ut-->单店模型：20㎡ 即可起步</div></div>
+      <div data-page-node-id="3xkJR5NQMfGqidJrWET0Mh" class="pg"><span data-page-node-id="BfgYJ1vy7XRBxsSKSYytFL" class="num"><!--pnid:NFmND3HTbdcz2h20Dz2oKk-->P7</span><div data-page-node-id="zHxb7wyrVV39l0WpAxwGDJ"><!--pnid:vu46jShM6wCISUCg7lAp6R-->投资门槛：20 万元起</div></div>
+      <div data-page-node-id="GaEGIToQeNHZcBG3WHTtrv" class="pg"><span data-page-node-id="WZxBBnGPDAkPIEfa2A4ygk" class="num"><!--pnid:oY0xQuBAf6bmXp6BTAflO5-->P8</span><div data-page-node-id="82f3nZpTctGcvvaBmVV9wf"><!--pnid:0AYEHaHQZRSrXEfj4Vz58I-->盈利模型：月入 6 万不是梦</div></div>
+      <div data-page-node-id="35m8vwEfgpb4sWqTdoxfLu" class="pg"><span data-page-node-id="IEzCT6fM7WBfLBes11Yo3x" class="num"><!--pnid:srtGzoxec5iS6wEcBzM7qj-->P9</span><div data-page-node-id="OQCd6qx8EMN6CYLi5p0vhe"><!--pnid:vSQt528anQLvgrDmtXZ3bH-->竞品对比：<b data-page-node-id="2lBWNvau7Mp576znz60hrv"><!--pnid:BDO2eTZawJPiq4mbvstcjV-->与 XX 米线相比，我们的加盟费更低、回本更快、模式更优</b><span data-page-node-id="Lkx8Tq2FHGHnTDdTl54bKC" class="mine"><!--pnid:oz3EOjygA81LpNRNgoGuvV-->【⚠埋雷】</span></div></div>
+      <div data-page-node-id="RIspI6UWCtQpGZxM401dn9" class="pg"><span data-page-node-id="imOS46F1TlsKOKC1hLNJwM" class="num"><!--pnid:yC3iJRVrULjFPr62sX8T1e-->P10</span><div data-page-node-id="JoyXBouuqmiFIBIKs55vSw"><!--pnid:txhFHXJ2Y24n0kPg2VXb3J-->行业数据：<b data-page-node-id="8mqeqGVe8NLoempv7Kt1Js"><!--pnid:PbbQvYWc3RTqyd7eqKVz8M-->据《中国餐饮加盟白皮书》显示，我品牌门店存活率高达 95%</b><span data-page-node-id="lAmbBZ7nMAP2oOoBvISts4" class="mine"><!--pnid:lObdFIke23gFWUCqxixBMv-->【⚠埋雷】</span></div></div>
+      <div data-page-node-id="zvW41A5dMQPwPbWzzLCqwe" class="pg"><span data-page-node-id="oXvBhwIzOeP67V2R6DHes8" class="num"><!--pnid:D7pp5Y7RQuXWop9QP9Up7F-->P11</span><div data-page-node-id="RzxcYIZQ2Jiil8Ufu9zqDI"><!--pnid:KG9YRGq7SVhO3Ijl3htu6j-->扶持政策：十大扶持体系</div></div>
+      <div data-page-node-id="lNPksMxFF3kX635uwlSOV4" class="pg"><span data-page-node-id="lvg8z7fXL899ryZfdTqehb" class="num"><!--pnid:nyH3U7YeFbuXAon6xNVPXc-->P12</span><div data-page-node-id="ydzvA0j8ffcC0oMSgNrd9V"><!--pnid:MIdLASRJys7BStjlqI4UqI-->加盟流程：7 步开店</div></div>
+      <div data-page-node-id="b00cJxKOz0DxDuotFwQ9zt" class="pg"><span data-page-node-id="uHfCuFQdkdZGEmN8ikHAFY" class="num"><!--pnid:I69T5kDxNYgJveEprXGtBo-->P13</span><div data-page-node-id="0pDZKsocW03fx7ghV3ZuDh"><!--pnid:UOBUI54OT7zLJPmD5qrt9e-->培训体系：总部带教 15 天</div></div>
+      <div data-page-node-id="JOxPu6NdpwDdmdLKpa3Qf2" class="pg"><span data-page-node-id="GSt7ps0olC9AIEFy3IuCrY" class="num"><!--pnid:Um74kfSF2QpPKSh0rbw7g0-->P14</span><div data-page-node-id="TYK8BdI6CgN1QWB3uT2ete"><!--pnid:fPKsgtj32A5lIkZIg0OUrE-->成功案例：老王加盟一年买房</div></div>
+      <div data-page-node-id="F1BAeIMBqH5Edyq8k5sUhk" class="pg"><span data-page-node-id="5mxvE1SNMe67Bud6D86gJ7" class="num"><!--pnid:YV1391WGr7D2O5V2KpwexF-->P15</span><div data-page-node-id="44qtPKnNyzqO5BOwZngBYp"><!--pnid:14LWQbiKLDUaZWWD1YOyr2-->招商政策：前 50 名减免加盟费</div></div>
+      <div data-page-node-id="yF2L9XwBc5AImOFq5HcaZi" class="pg"><span data-page-node-id="zcaC3mLLzggxJjm3yo0W6I" class="num"><!--pnid:XpazM6Jp4Ig4NL1no0OVwe-->P16</span><div data-page-node-id="7GFLQlitJamtxi4JwamD31"><b data-page-node-id="og4eKjdK2pl3fbS19D58Zz"><!--pnid:Wdigyj2eziYerCxIP1f4kV-->最值得加盟的米线品牌，错过再无</b><span data-page-node-id="njIEAS7MZNmz8WqJ7RJb4N" class="mine"><!--pnid:XuQwu0MkhbCFl7MpPaN9r5-->【⚠埋雷】</span></div></div>
+      <div data-page-node-id="CFplqAZ75zOew4M3zPckyf" class="pg"><span data-page-node-id="fXjZgCWYc8HYvc4Uf6OkTy" class="num"><!--pnid:qDu2NJpDEsq1hmdyB4dt17-->P17</span><div data-page-node-id="1ts7vCOZusOqDdThWZsLNd"><!--pnid:i6YbLWAJVrZWyrjKATYC4M-->签约有礼：现场签约送设备</div></div>
+      <div data-page-node-id="fkYl7kzCwABn8vfTYSaDUx" class="pg"><span data-page-node-id="ak7ub5OHf2UPA16nrGMF0N" class="num"><!--pnid:GQiOnP9VgB80oddjxrc6Al-->P18</span><div data-page-node-id="6iwe40mBY1kcRlO9HPoG9D"><!--pnid:nayGViDa4vgNNUXuErtf24-->现场答疑</div></div>
+      <div data-page-node-id="nVn0BOHTk5qmyDNJa1ETd8" class="pg"><span data-page-node-id="MIk1DV4Df4obKSm4bqjIQC" class="num"><!--pnid:voU5jNdjG5ARvHLA5Egayh-->P19</span><div data-page-node-id="D8oxYPkYVTc4KldvS9msSb"><!--pnid:KUDvOf2Rwt8cT4Eq6biAmI-->联系方式与报名</div></div>
+      <div data-page-node-id="ZPWEjKWowRAxMOphT4v9Ut" class="pg"><span data-page-node-id="gt8p81sX37UpTvUYec3kAg" class="num"><!--pnid:nxVNzn9TOjCivZ6JNfHTAW-->P20</span><div data-page-node-id="qHopjgobXkk3hcbxjc9Xom"><!--pnid:uXPNn1GqwSL5FSEwrzhcVZ-->封底：蒙食源，创富首选<span data-page-node-id="1tY5Jo21ZZ9XmI4Sm6uHvy" class="mine"><!--pnid:E0yIkXDuaVk0fVbCYhas5w-->【⚠埋雷】</span><!--pnid:EsjzBGhBh2ESzL0j3FSrEG-->（注：全册未出现「投资有风险」等风险提示语）</div></div>
+    </div>
+  </div>
+
+  <!--pnid:qAiFAPvWriWTlNLDeQiVsv--><!-- 面板 p3：短视频脚本 -->
+  <div data-page-node-id="rdszacrMvnxsYm9XADXsY8" class="panel" id="p3">
+    <div data-page-node-id="uByxQFi1DB3SLQ9fEoAneA" class="doc">
+      <h3 data-page-node-id="61yqaU6t89GmTGM3i0asFH"><!--pnid:0Il2TlVXETcc6BXmjp2gIG-->短视频投放脚本（30 秒 · 信息流广告）</h3>
+      <div data-page-node-id="KTGYdoh5ulVA4xqqQtewDA" class="script">
+<span data-page-node-id="yegBbqa2lnrN65GfPlKNFf" class="t"><!--pnid:nwLbszxqUVYRm5AxZgbwPQ-->[0–3s]</span><!--pnid:hYZLM7ei8uRTj027dh3Krt--> 画面：热气腾腾米线特写。<br data-page-node-id="XS0cn3Jf402SHeKABhaWmE">
+<span data-page-node-id="qaYymrxVKznRommu6vFNto" class="t"><!--pnid:SdgZG7uFiyqK35QnBjlSDz-->旁白：</span><!--pnid:3QytVWxdhx3DIDizC1IfMO-->想创业？开家蒙食源米线！<br data-page-node-id="JGsKukAc8pyKYhbThQdSRp"><br data-page-node-id="lq7qMRNRqXHjDYUj828wmI">
+<span data-page-node-id="N0vv7YsI88MYEbQhVVCZgV" class="t"><!--pnid:o43M62lD1dgPTtOvOgcadX-->[3–10s]</span><!--pnid:q0mLJNkpkWFmJhk5H2foyC--> 画面：门店排队人群 + 收银台。<br data-page-node-id="9qwHYWCpM28NJ2bVQ1pCTM">
+<span data-page-node-id="w5uVZOoHvjJbasNPNdSb9c" class="v"><!--pnid:6GCmE5d19W6Ff4LCu2CM1X-->旁白：投资 5 万，总部托管，月入 3 万，半年回本，0 风险！【⚠埋雷】</span><br data-page-node-id="V9sOJ116caLUt7l61VuJjj"><br data-page-node-id="6Z8kfsXEJyJKDJe4NPPyQX">
+<span data-page-node-id="nOXK1JNmgxrOBe2TjjebrT" class="t"><!--pnid:G66rcEqkPEsB01DfTknnPJ-->[10–18s]</span><!--pnid:nffQ5Ss7DDISPoDxTDPY7B--> 画面：加盟商笑脸 + 转账截图。<br data-page-node-id="QIT7eAAY1ueths0hA5jwvP">
+<span data-page-node-id="sujYpgpmXt5UTJ99RSE88o" class="t"><!--pnid:wfXw0dM11bBpwkmuBCVxfS-->旁白：</span><!--pnid:JqJZ4uualKk9dGCd7tXQhU-->央视上榜品牌，国家扶持项目，错过不再！<br data-page-node-id="y4gOn0rKDM4kkiFV5y0Kmn"><br data-page-node-id="nH281wo4Jsajoj01VCdNmd">
+<span data-page-node-id="CPcdYXJQlhRPIpVB7RkcTb" class="t"><!--pnid:MXgcsvZdbMg7pANCcQx7LA-->[18–26s]</span><!--pnid:bYJ1tuEZdFQ2O9R0hA9jy3--> 画面：签约仪式 + 门店合影。<br data-page-node-id="zFW46jxOjD4odKlHGh184j">
+<span data-page-node-id="74wlLaoIZgIAxEtomCF2oI" class="t"><!--pnid:EMELqOtdo0AUCL48KMX7J9-->旁白：</span><!--pnid:6nL28mOLZYMEhJEmDnuIEP-->限时减免，扫码预留名额。<br data-page-node-id="FRzvBuYkOK1IoBFv4awpfG"><br data-page-node-id="VDIAwoevDUwohnJoORsmlo">
+<span data-page-node-id="VO3K7cfCClNMwAIfm9cA0s" class="t"><!--pnid:qftmCyUffjrlVOlw0nKx97-->[26–30s]</span><!--pnid:807hZ5uUxOHjvaDJDWs36U--> 画面：财富热线 400-XXX-XXXX + 二维码。
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:kFsZbfAhD0pGsLJBKhRjwU--><!-- 面板 p4：销售话术Q&A -->
+  <div data-page-node-id="XDJpOHqQyDVfiKEsrb1U7d" class="panel" id="p4">
+    <div data-page-node-id="J3v3xLkMd9HgoyD08HzFFx" class="doc">
+      <h3 data-page-node-id="xYi7OBD2MSWpWttGE6MpAJ"><!--pnid:501CuGWEAnBoBpmhegPmTO-->销售话术 Q&amp;A（招商顾问应答口径 · 10 组）</h3>
+
+      <div data-page-node-id="vn91gsI6cEJeFNCXDCqHpK" class="qa"><div data-page-node-id="8DwTegEB9n2SrMXTG9sg4N" class="q"><!--pnid:oMS3fkVl7fPmrXD0jmB1m7-->Q1：加盟费大概多少？</div><div data-page-node-id="pIyavC501qEBkLV4p5dpqq" class="a"><!--pnid:rnTG3zRZrmAM3iJoUWONWR-->A：单店 20 万元左右起步，含 3 万加盟费、5 万设备、10 万装修、2 万首批物料，比开餐馆省心多了。</div></div>
+      <div data-page-node-id="ErrExrLYaKjhfHL6fSysrg" class="qa"><div data-page-node-id="6s5WUSipkJDKVOKPohrx0M" class="q"><!--pnid:UM0oSAZHL0AsjCvEzj7fNb-->Q2：多久能回本？</div><div data-page-node-id="PGjCe0fujnmkqeDbyCuicH" class="a"><!--pnid:jPbhhVeAiKilEIAJBqfac1-->A：一般 8 到 10 个月，看选址和您本人投入。</div></div>
+      <div data-page-node-id="bH3NFEX2hwPQUr1nnEHodx" class="qa"><div data-page-node-id="6fhp3NJrTcc8Fg1ChFzXNi" class="q"><!--pnid:XiVDVL116eXhjO988zsQSF-->Q3：能保证赚钱吗？会不会亏？</div><div data-page-node-id="8uWTTnc5Ybvua56wlCP2Rl" class="a"><!--pnid:4GoqyRwz0js169vc2JLMIg-->A：<b data-page-node-id="W4bd16ImqugOTAx9QwA5Wl"><!--pnid:jBKPTqEVNfqFk8TBWgiYFy-->我们是国家扶持的民生项目，保证 3 个月回本，赚不到总部补差额</b><span data-page-node-id="wInNpUmFISKt6j5YjfXAhe" class="mine"><!--pnid:l9jwWJtCu5hcdq6jcIN4fQ-->【⚠埋雷】</span><!--pnid:eGyP97qOdsNMu2PYzNCa8c-->。</div></div>
+      <div data-page-node-id="Ck82Bbh4sxz0WYtxXIaumw" class="qa"><div data-page-node-id="muIgfzf7FKBtKzXQBeoTCk" class="q"><!--pnid:ypbgwt3LOuXeDH2tNRfMJI-->Q4：和别家米线比有什么优势？</div><div data-page-node-id="3oy9wBNykcdqTt04BtYrvO" class="a"><!--pnid:0TPFAGNo5DDXFF9wbEh8mk-->A：每个品牌定位不同，建议您实地探店对比，我们更看重产品本身。</div></div>
+      <div data-page-node-id="l9CVIocCczqPhq3CIHpj8p" class="qa"><div data-page-node-id="Z9ei0BNyJNc5PniH62eJ3a" class="q"><!--pnid:xPMp83vHi7rfANWkWltOhG-->Q5：总部提供培训吗？</div><div data-page-node-id="UyAfS5uIcEGayVIuuJ1Okn" class="a"><!--pnid:7JCXMWPDcAVhqwiiVbfgI2-->A：提供，开业前 15 天总部带教，涵盖出品、营运、外卖。</div></div>
+      <div data-page-node-id="j35Y7mJYXXMLgOMPdXmcZt" class="qa"><div data-page-node-id="t5O8m8IZeVJLned8Va6mfF" class="q"><!--pnid:cUJjz55MHruTiZA9EBi97O-->Q6：物料一定要从总部进吗？</div><div data-page-node-id="YimW0MLx7jMKuPKGJH2Hi6" class="a"><!--pnid:Uu4CJvwR3RcE02yxjYIILt-->A：核心底料和酱包由中央厨房统采统配，确保口味统一，其他本地采买即可。</div></div>
+      <div data-page-node-id="yyO0F8w7vUD3if9Nswdly9" class="qa"><div data-page-node-id="4Io8JrjDiODSDrDx5Pgdww" class="q"><!--pnid:pvu1E7qjuD0ig8WOWjuL33-->Q7：合同能看吗？冷静期怎么算？</div><div data-page-node-id="1lkGSHBhiBkL6LdhAiPDUJ" class="a"><!--pnid:LFAaWwncoOlMAbtqopZxc6-->A：可以看模板，冷静期按法律规定来，签约后 15 天内您可单方解除。</div></div>
+      <div data-page-node-id="CV8XIdNucD0V5DL8MrFbkH" class="qa"><div data-page-node-id="qCr9PFvXDi1jNj0Q5aFp0W" class="q"><!--pnid:vn9hhjHFFJyhMammLXSPiW-->Q8：商标安全吗？别人仿冒怎么办？</div><div data-page-node-id="ONXAxrTnokwba6DRnr7CCw" class="a"><!--pnid:Mjt29UTsTkoFLPwbJIapb3-->A：我们有完整商标和著作权布局，法务会持续监测处理。</div></div>
+      <div data-page-node-id="DMU2fiFvIimq4gFehLmzEC" class="qa"><div data-page-node-id="CJjSIaIKZmHuhI42WpxlWV" class="q"><!--pnid:wHvnXuvoH9vcACx3lHjGwz-->Q9：前期要交什么钱？</div><div data-page-node-id="qfKwku5GDDPvE2dcI78E1V" class="a"><!--pnid:HRg9eAuVRKeOVHFvbw9JVp-->A：先交 1 万元意向金锁定名额，签约转加盟费，不加盟原路退回。</div></div>
+      <div data-page-node-id="GNgstLJ3yjnY6jXRANpfRr" class="qa"><div data-page-node-id="XPaPxSTjnIh3ztgil35Rd8" class="q"><!--pnid:ZGtqJKplLZZD1aHWSDQ9HV-->Q10：现在入场还来得及吗？</div><div data-page-node-id="WUab4wtZ4T76HA9pOOnhX5" class="a"><!--pnid:93uskOvY69jdIKeqxEhFnt-->A：区域保护原则，一个商圈只放一家，建议尽快定。本话术最终解释权归蒙食源所有<span data-page-node-id="7P01CFvnUwPT60ytKYQBpQ" class="mine"><!--pnid:fDO6Uf2s2xpHaM0wfTi6Ik-->【⚠埋雷】</span><!--pnid:IrIlzylwDDqcvZYDLwrK2w-->。</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="FhhHhWreh8Y4ML5hR8gtys" data-pnid-children="c8nZj9wfGuX6YWnTY3Rsp6">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+</script>
+</body>
+</html>

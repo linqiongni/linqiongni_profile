@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html data-page-node-id="kkaPf47Dq9BCKTiAzZmXfO" lang="zh-CN">
+<head data-page-node-id="BCzcOzJjhUvSFHbXv6ttOc">
+<script data-page-node-id="IowzCuPNJKuILDpCP1KNuT" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="iaJON6ckmcZEMeMp7ot3Ci" charset="UTF-8">
+<meta data-page-node-id="maoubmn0Pyx9JpFYuMaxew" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="qHxUtNXgU8vtGDfTuaB4zL" data-pnid-children="rBWRsHrlpuQIVzTs1tyZk3">餐饮租赁特殊条款清单（承租方/加盟商立场）</title>
+<style data-page-node-id="0kdS66pGkKgUabyZMSyzQ1" data-pnid-children="yw2RzEWp7VsLBS1HvHTpBX">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .ci{border-bottom:1px solid var(--line);padding:12px 2px 14px}
+  .ci:last-child{border-bottom:none}
+  .ci h4{margin:0 0 6px}
+  .ci p{margin:5px 0}
+  .kv{color:var(--sub2);font-size:12.5px}
+  pre{white-space:pre-wrap;background:#0c0f13;border:1px solid var(--line);border-radius:8px;padding:13px 15px;font-size:12.5px;color:var(--txt);overflow-x:auto;line-height:1.65}
+  /* 清单勾选 + 进度条 */
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade);flex-shrink:0}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body data-page-node-id="GoWVF28XRNzkfDNGehsIit">
+<div data-page-node-id="5ok6AFR6xxpkamVQRYRYa2" class="container">
+
+  <header data-page-node-id="V8bu1WTo7qpvLMxVpYh4AL">
+    <h1 data-page-node-id="XOoaBRYOiBpkQiDWY4GQYk"><!--pnid:rk9PXMcgKIcOjmo0QyXNgu-->餐饮租赁特殊条款清单（20项 + 两项重点范本 + 证件时限表）</h1>
+    <div data-page-node-id="IqkH4Sam55PHqGEHL505Dn" class="meta"><!--pnid:tWiIVsmUK7tSRpqxkiGRyB-->立场＝承租方／加盟商（门店）视角 · 同时标注总部风控与加盟商反制点 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项 · 金额期限给数字</div>
+  </header>
+  <div data-page-node-id="HSB9eknK8A4MmKurkfd2Wu" class="lead"><!--pnid:nCIliGFKXKwFcgsGmcasv5-->普通零售租约只谈"租金+面积+期限"；餐饮租约的生死线是<b data-page-node-id="x34FLk1m7WmGKTh67nQIaX"><!--pnid:JPYUbKbktULGQVTGpDgD01-->硬件条件</b><!--pnid:eEQTwiXrMyFkfYWRgNLISX-->与<b data-page-node-id="w2H0w3k0xCSznrYezVNAVa"><!--pnid:xBw4PELrHpJoV7fQjSbBCy-->办证配合</b><!--pnid:UkXdy5WMwYR36jtCadXk8H-->——排烟不通、电量不足、房东不提供消防验收文件，任何一个都能让门店开不了业、加盟费打水漂。本清单 20 项特殊条款，全部给"为什么重要 + 不做会怎样 + 条款范本"，并附两项可直接复制的完整条款与开业证件时限表。</div>
+
+  <div data-page-node-id="CxsvJZXU3U7qPnoHnm6dis" class="anti" style="border-color:var(--gold); background:rgba(201,162,39,.07)">
+    <b data-page-node-id="0Mo6gd5uekyzdUQ0O3Jnvp" style="color:var(--gold)"><!--pnid:D58RYboqNbIYCRJkVfopie-->总部风控视角（特许人）：</b><!--pnid:2P3KkSeTDlGWVIEJovNOlp-->总部应把"餐饮硬件 + 办证可行性"设为选址合规审查的<b data-page-node-id="7MJHxWB57TYVoP7mnzFSjL"><!--pnid:KyJoAvGSSUYotOkIApIM65-->硬性关卡</b><!--pnid:VZ7t0LusjFfEsuSmWrYVpi-->——未通过不授牌。否则门店因排烟/电量/房东不配合开不了业，加盟商可凭《商业特许经营管理条例》第23条（信息披露重大误解撤销权）+ 信息披露管理办法 主张"虚假选址承诺 / 未尽选址指导义务"退费并索赔。本清单既是加盟商谈判武器，也是总部自保 checklist。
+  </div>
+
+  <div data-page-node-id="Dxk6dlyvgng3mX0PUZp6HQ" class="tabs" id="tabs">
+    <div data-page-node-id="Edc8QZdxSL1uueWcOSO4As" class="tab on" data-p="p1"><!--pnid:fYS3mBXL9kNtYwcpqI8qsM-->① 20项特殊条款清单</div>
+    <div data-page-node-id="cFrwP0smneM4yCrGt1Tok7" class="tab" data-p="p2"><!--pnid:g31FFQ6Mu5OOZVF2WTaO5d-->② 两项重点完整条款范本</div>
+    <div data-page-node-id="zRmaTwXHbe8xUWQAgnAQGC" class="tab" data-p="p3"><!--pnid:dKJ0Sm20KY1EOWlVJhJ56P-->③ 开业前证件清单及时限表</div>
+    <div data-page-node-id="I2LaRM09ajnL7BpB5aEXxq" class="tab" data-p="p4"><!--pnid:dXKlxO1zdlaJA2ueSbb24b-->④ 谈判落地勾选清单</div>
+  </div>
+
+  <!--pnid:Y2nxFyTf6MIjAmw4zG9LhS--><!-- 面板 p1：20项特殊条款 -->
+  <div data-page-node-id="Kf24mhVx7KeQUW0TyaK9sQ" class="panel on" id="p1">
+
+    <div data-page-node-id="CskEqyD8gNVsHEdnRCfXXu" class="card">
+      <h3 data-page-node-id="ChA5GMnF82nZmHCksHfZRA"><!--pnid:gVklnPhWPiyS6mCHEGbtaB-->A. 排烟系统（5项）<span data-page-node-id="dDRikETph6V2U3dAh3uzEQ" class="tag t-gold"><!--pnid:Gvlz3edTQkp5D0dJE1BVPm-->硬条件</span></h3>
+
+      <div data-page-node-id="hJK80MoT4S2O6J9KxoxhTw" class="ci">
+        <h4 data-page-node-id="bHmca6eRt0QGc4i2nMhLdw"><!--pnid:yiZ27qY1YpOcmcfh238Vbv-->① 排烟管道位置与截面 <span data-page-node-id="j1P0D2U6QbaY1FdCjhhQSy" class="tag t-jade"><!--pnid:nSPv9844G810OLXbUYUCxm-->必备</span></h4>
+        <p data-page-node-id="zHxztLkQjAigUkeHB7ytQm"><b data-page-node-id="JABXOTrvBqVgwmc2W8IUCz"><!--pnid:XSITH6rX57KkaLcMPjkQGG-->为什么重要：</b><!--pnid:pwzrK5YqlwmcdiT5rEjN3X-->食品经营许可现场核查（总局令78号第20条 +《食品经营许可审查通则》2024第12号公告）要求餐饮服务者设置<b data-page-node-id="APCgnULzJqCMtkYdIh4IBi"><!--pnid:Ybo121v2VwiQgXimrc6GX2-->专用排烟管道</b><!--pnid:1yoNK5YZI2W5n22QHBRWbL-->；无专用烟道、烟道不通 = 不予核发许可证 = 开不了业（衔接《选址清单》住宅底商禁设规则）。</p>
+        <p data-page-node-id="422imuMvCDzdplY8RSLeup"><b data-page-node-id="YS9GEQjNMkEjLxDg9MKpVj"><!--pnid:VB0aTSBhWFOQQXsVkQO5Km-->不做会怎样：</b><!--pnid:FVUjqErIXE2re19stMxxKs-->门店无法通过食安现场核查，租金照付、装修打水漂、加盟费无法退回；事后加装烟道受建筑结构限制往往<b data-page-node-id="XxK3P5J3DNwAarQXVZ82Cg"><!--pnid:aTRvrOIhhS0tb4HZW0snJW-->客观上不可行</b><!--pnid:jTIzDbqquOwMzEdx55BGGh-->。</p>
+        <div data-page-node-id="s1q5JMcKHcvQNGbKvLmbxY" class="act"><b data-page-node-id="QC4H7qrXk3eJJCqfznTbcu"><!--pnid:vMLjmlh1hywnmUAKbu7J8d-->条款范本：</b><!--pnid:8cYstzcC99M7TfO153w7kF-->出租方确认房屋已预留餐饮专用排烟管道，管道接至承租区域指定位置，主烟道截面不小于 0.3㎡（约 600×500mm），并保证不倒灌、不串味；如现无专用烟道，出租方应在交付前完成增设并承担全部费用，交付时双方签署《餐饮硬件交付确认单》。</div>
+      </div>
+
+      <div data-page-node-id="u1sfk4uMZrPcPH950ffOY2" class="ci">
+        <h4 data-page-node-id="aWKAw9hfxs27kCEqXSoY2Y"><!--pnid:2C1VQt0vMbCMENRhTj6kMf-->② 排烟风量 / 风压匹配 <span data-page-node-id="kaIT3UVteUwLEXDwhaGymZ" class="tag t-jade"><!--pnid:oW0NhxxoIwESHTLk4ByXv5-->必备</span></h4>
+        <p data-page-node-id="MW5saos624EXEavHLZfGtX"><b data-page-node-id="3LMxSY2XwzLTxUrjRrXfLz"><!--pnid:U0Lpvz54lriOl65beD6IOm-->为什么重要：</b><!--pnid:WRnlHSIUeklN3HL54YIE7K-->米线/快餐门店一般 4–8 个灶眼（煮面灶、炒灶、炸炉），单灶排风量约 2000–3000 m³/h，<b data-page-node-id="SNT0cq2pDl9D8SClRTQJi1"><!--pnid:CXQZQdWnghUBsyR7KgLdnT-->总设计风量通常 8000–20000 m³/h</b><!--pnid:k8vaoZMsjgsbSjJQyag8cr-->。风量不足则灶台闷热、油烟外溢、环保检测不达标。</p>
+        <p data-page-node-id="0wQY3jvwHE1Dm1zK1WfLnX"><b data-page-node-id="vbSihnQ1YsLXpocMt4K48y"><!--pnid:3VDK7ze8U9O1a76oUX3VXj-->不做会怎样：</b><!--pnid:2cIirkPNeWoNxydqOaWdwb-->开业后油烟倒灌、邻铺投诉、环保责令停业整改；重装风机工期 1–2 周、损失数万元。</p>
+        <div data-page-node-id="3byYobJ5P3eoSn5eSRCHdI" class="act"><b data-page-node-id="jFCBkiFjZtExqoW0dmXpn0"><!--pnid:f7VXxd3Fecadml6prkha8B-->条款范本：</b><!--pnid:P6LWDIeNK3QoqkzShz4R4E-->排烟系统按承租方设备布局设计，设计风量不低于 ____ m³/h（按灶头数×2500 m³/h 计），风管风速控制在 8–12 m/s、保持正压送风/负压排风平衡；出租方保证现有风机/管井余量满足该风量，不足部分由出租方负责扩容。</div>
+      </div>
+
+      <div data-page-node-id="Jv0re1voZxxiQk3OpBKcqF" class="ci">
+        <h4 data-page-node-id="aWrOVHdOjetv7P5kyFv9aT"><!--pnid:jBoN0oveINgKVyOckhjUlT-->③ 隔油池建设与清掏责任 <span data-page-node-id="9UbUXgYcBbXLtshShXDJcN" class="tag t-jade"><!--pnid:Cgb6i93I4uwIWGcqDfWp5f-->必备</span></h4>
+        <p data-page-node-id="IOHW8ZZlIB7RjReSjeIVmZ"><b data-page-node-id="WjSg2cjOW1fiESEb2XTOr5"><!--pnid:9vPARpBHUUz6vnysLbBGMW-->为什么重要：</b><!--pnid:6y4S8glDBWirvwOgetC9cQ-->《建筑给水排水设计标准》GB50015 要求餐饮废水经隔油处理；排水许可（城镇排水与污水处理条例）亦以隔油合规为前提。容积一般 0.5–2 m³（按座位/流量）。</p>
+        <p data-page-node-id="JxpzoXUtKsUx6q4Y2KartA"><b data-page-node-id="VSrz9efI6EhUGywf3S3UPL"><!--pnid:rYOt5R3IhKY1ovgyx3yqFP-->不做会怎样：</b><!--pnid:yQNBUPwtUntanBwDDNJkm9-->油污堵塞市政管网→城管/水务责令整改+罚款；拿不到排水许可证→食品经营许可现场核查不通过。</p>
+        <div data-page-node-id="uSZGnQCXBRuQYEWsCCwSms" class="act"><b data-page-node-id="Q7pdTQ10y2zc8GtgXfYc09"><!--pnid:Rl5Lm0Jhm688lJ7abBXd6R-->条款范本：</b><!--pnid:CMTAqjNvGKMXxAvaWRECOb-->出租方在交付时提供合规隔油池（有效容积≥1 m³）并接入市政污水管网；清掏由承租方负责，频次≥每两周一次并留存记录，出租方不得因此收取额外费用；因隔油池设计容量不足导致堵塞的，整改费用由出租方承担。</div>
+      </div>
+
+      <div data-page-node-id="s8sh2L4W3U850OPCwfPjGl" class="ci">
+        <h4 data-page-node-id="6pR1DrVclYqmaMyrxhMMhj"><!--pnid:fZd7NgP0opeGvK40u78oRm-->④ 油烟净化设备购置与维护 <span data-page-node-id="4XJhlOibkD57p4HnLstSD6" class="tag t-jade"><!--pnid:MIkCON18BMiFeCl81xL4Ht-->必备</span></h4>
+        <p data-page-node-id="An2LX9tSszftJNhwmNdz42"><b data-page-node-id="Uq91Fa2SIIYlry6vxW8qGo"><!--pnid:z5cNimllicMzR3w117m2mz-->为什么重要：</b><!--pnid:3xS8ukfZRRKg5u3MtiCEZE-->《饮食业油烟排放标准》GB18483-2001 要求最高允许排放浓度≤2.0 mg/m³，净化效率大型≥85%（多地地标要求≥90%）；2023 起多地强制<b data-page-node-id="k8rp4gLPq5qqfgKGE1PpU0"><!--pnid:0NVeff2FkiEa5Cm9BqHY3B-->油烟在线监控</b><!--pnid:xBzfI7pAhuphc236E19lOR-->。设备须定期清洗（每季度≥1次）并留记录备查。</p>
+        <p data-page-node-id="oUlEoQWk3x78kbU28kD2iV"><b data-page-node-id="1QY624p5o24Ruxzq5bjFQ6"><!--pnid:bHE8mIKgStMnxRx1jFiBaA-->不做会怎样：</b><!--pnid:JJ7g4mNp2WxHBuSA6XLeLt-->排放超标依《大气污染防治法》第118条处 5000–50000 元罚款，拒不改正责令停业；清洗无记录环保检查直接认定不合格。</p>
+        <div data-page-node-id="4qxFoULkzd2xDCNnjgglfn" class="act"><b data-page-node-id="9owXi3RsC6tLZKUgPJ6iZh"><!--pnid:a7fLx5aWDAUruiFRsDqYRi-->条款范本：</b><!--pnid:TPVv0moa1hZufI5POQhcnQ-->油烟净化设备由承租方购置并归承租方所有；净化效率≥90%且满足当地地标，安装油烟在线监控并对接监管平台；承租方每季度≥1次清洗并留存清洗记录与发票，出租方提供清洗作业通道与电源；因出租方烟道缺陷致净化无效的，出租方承担整改费用。</div>
+      </div>
+
+      <div data-page-node-id="r5hBlsDESydiPzZDO4f62I" class="ci">
+        <h4 data-page-node-id="Ptrnze7VLdxwDvDoKPLi7Q"><!--pnid:marEzJYdsU3BQwDtzG9sgs-->⑤ 物业改造配合义务 + 环保验收责任 <span data-page-node-id="83nHywNnNPE9TJ0Zb7JM1c" class="tag t-gold"><!--pnid:HoYpTN7UVXJ7tHOtpLXWIo-->配合</span></h4>
+        <p data-page-node-id="3yvz3kt7lN4f4N2OSAQNnK"><b data-page-node-id="WAq2Tfs7CUjcuaUrhwFFPf"><!--pnid:yaSQyAsABSfqMlZpzzfwZU-->为什么重要：</b><!--pnid:bA1pTMUQip1mcqjebGMMrP-->穿墙打孔、管井占用、外墙风机位、环保竣工验收备案均需物业/房东书面配合，否则施工被阻、验收卡壳。</p>
+        <p data-page-node-id="MWuFyiq8WbDLKECz7VqgIW"><b data-page-node-id="nIC6nOft2tycgw8WYTWWtM"><!--pnid:xwHqwJEDGYWhbzzYHuxpe7-->不做会怎样：</b><!--pnid:gMip6ASSsgBPkKnVbyFNPc-->装修期被物业叫停，工期拖延 2–4 周，免租期白白流逝；环保验收无法完成→不能开业。</p>
+        <div data-page-node-id="1Eh17Kp9MIx4UjiFCRl56R" class="act"><b data-page-node-id="3dYyuXnQLjYxnJZBnxsWZC"><!--pnid:v76kqQdbtJgaaTfmGouVoI-->条款范本：</b><!--pnid:IhyCYUOBBnYCGseWwTH0HG-->出租方/物业应在承租方装修期内允许必要的穿墙、打孔、管井占用、外墙设备及招牌吊装，并在 3 个工作日内出具书面施工配合函；因物业不配合导致工期延误的，租期与免租期相应顺延。环保竣工验收备案由承租方办理，出租方提供场地合规证明与改造配合。</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="caSuprkB3Ejp7bfovpQtSd" class="card">
+      <h3 data-page-node-id="q4IbTI4xbO3mmgByaXTJDh"><!--pnid:9NrNMrtjZTGYwlSGKXObZd-->B. 燃气（3项）<span data-page-node-id="cvB0Cr7VqfsFbE8H9eqYTr" class="tag t-gold"><!--pnid:VrPnyj1YVpwmKVER4KclgZ-->能源</span></h3>
+
+      <div data-page-node-id="sPGu2vx5pRgV2UdcLMmKmg" class="ci">
+        <h4 data-page-node-id="yI6i2bD4txmaJZF4NRzF4z"><!--pnid:DNMSuVImvxwIbGqTJuGtUX-->⑥ 燃气管道接入条件与接口 <span data-page-node-id="9PqTQx87afNAiwUhyeiSiq" class="tag t-jade"><!--pnid:VBxp85Y8EK4qHQaeB3TQID-->必备</span></h4>
+        <p data-page-node-id="jcX6UbLAhs42XZsA6OOaDa"><b data-page-node-id="4XJotZUkfQSbKYXmqNJwTD"><!--pnid:UGwWmkd4DHSXEs2RsLpJFk-->为什么重要：</b><!--pnid:uibpI6ujJcGytITjzcheNQ-->燃气是炒灶/煮面炉主要能源；需确认市政管网覆盖、商铺预留接口位置与管径（DN50/DN80 常见）、通气时间。</p>
+        <p data-page-node-id="Umujf9v79McxXa8jZHdG37"><b data-page-node-id="WcnaXMRTCAZpvaxn1jEl1x"><!--pnid:6R0kfyN2YbYTn4mfyBX6HF-->不做会怎样：</b><!--pnid:7RGTqmYqBmLWaGr7zX65zF-->不通天然气只能改全电或瓶组，全电改造成本高（增电容量大）、瓶组受限多；通气延迟直接拖慢开业。</p>
+        <div data-page-node-id="Urjj41Y2a8nVDrvKVklFhR" class="act"><b data-page-node-id="b0tYjbwrpZpBlpIGp1woF6"><!--pnid:cfB4L3dBzjA3xkPIU3U5C3-->条款范本：</b><!--pnid:nykcWs5KVT8PCAaMcPubmg-->出租方确认房屋已通天然气，燃气接口接至承租区域指定位置（管径≥DN50），并在交付后 15 个工作日内协助完成燃气公司通气验收；如确无管道气，出租方应提供合规瓶组间设置条件并配合报批。</div>
+      </div>
+
+      <div data-page-node-id="WvXiAILp7H3TgtR1BOdl3W" class="ci">
+        <h4 data-page-node-id="ac0FCMAg7AlagT3SMstzoS"><!--pnid:eesIu40bYOtD6hEHyWmrcw-->⑦ 瓶组间 / LPG 设置与安全 <span data-page-node-id="Lo07wDmAEKPWF5EIF06DpB" class="tag t-jade"><!--pnid:tOAWPBq0kCIlewxNrU388X-->安全</span></h4>
+        <p data-page-node-id="nks5zxisDNkppAdMZObRyk"><b data-page-node-id="FayG9ZXIQAtHvVDZEd7HtO"><!--pnid:u5wSq3HuXnkXZmQKOoGmaO-->为什么重要：</b><!--pnid:EjuqHknxnkQZbLBgCrLraK-->若用瓶装液化气，须设独立瓶组间，符合《城镇燃气设计规范》GB50028（与民用建筑、重要公共建筑保持安全间距，存瓶总容积≤1m³ 可设在独立建筑），多数商场<b data-page-node-id="hNoomdhRFZ97X90nHzRJZl"><!--pnid:5IcO1HU1cWzsdjVmU8okJ9-->禁止</b><!--pnid:MLobCrniXSWMxaTrMAfSS4-->瓶组。</p>
+        <p data-page-node-id="MaeMbHZtFTFCDfSQPECFoR"><b data-page-node-id="G3mqe4aruRlhWKEZswvWfB"><!--pnid:5lC61iulD67CWNjrURSTI8-->不做会怎样：</b><!--pnid:sIE8wR2S1TfdW1yBM97xuD-->瓶组间不合规→消防/燃气公司不予通气→门店停摆；违规存瓶构成重大安全隐患，可被责令停业。</p>
+        <div data-page-node-id="04VIKU6Si6vdstZrFZZ1W0" class="act"><b data-page-node-id="m5ppiAbVskKzCKj2yCbwHj"><!--pnid:mlrpEekbDkilKjhdt6TwqT-->条款范本：</b><!--pnid:s42ecHeRWz43DDLml3Kc0b-->如采用瓶装液化气，出租方应在物业指定合规位置提供瓶组间（满足 GB50028 间距要求），承租方负责瓶组间内设备与日常安检；因瓶组间不合规导致无法通气的，出租方承担整改或提供替代能源方案的责任。</div>
+      </div>
+
+      <div data-page-node-id="3ClytjP4AQRtpKl1iIwyG5" class="ci">
+        <h4 data-page-node-id="Y7ZGpT9SdliizFTDF7uvOD"><!--pnid:jc7v4RHYjlYFOYjlYwSWDy-->⑧ 燃气安全责任划分 <span data-page-node-id="ulvOF5sVwPIwnTuCfGfzRI" class="tag t-jade"><!--pnid:ha2LAa9FqfI3kaDBLVfezt-->安全</span></h4>
+        <p data-page-node-id="7Eu22LQ0Nxd4MMazk8l5a1"><b data-page-node-id="WFUKyMmqoHDWM7xKqLXwt4"><!--pnid:IVIpHkWsG5S5OBillt8fTG-->为什么重要：</b><!--pnid:fJfaD0SFX2EgEYOfrigzTl-->燃气泄漏/爆炸后果严重；责任须分清"管道接口合规（出租方）"与"使用安全（承租方）"。</p>
+        <p data-page-node-id="s0Sn4xLVFPpu3M6Fz1zAcx"><b data-page-node-id="TDFl7abLEQKID58oe6R0Rn"><!--pnid:IAXIfwiOQ5dTCOkEysZdi3-->不做会怎样：</b><!--pnid:1by1uPbAsj2XTwPfF3YT27-->出事互相推诿；若合同未约定，承租方作为使用人首当其冲承担行政与民事赔偿。</p>
+        <div data-page-node-id="KCgnhfuIaj1glFkOw8zpbV" class="act"><b data-page-node-id="REglAnaGHBiu2mAinIaeRD"><!--pnid:52ZuKVoB5ONILQMJoXIDRY-->条款范本：</b><!--pnid:c7mSBXcZewNb5fNFiW4Qm0-->出租方保证交付的燃气管道接口安全合规；承租方负责用气设备安全、每月≥1次自检并留存记录、配合燃气公司入户安检；因出租方管道缺陷致事故的，出租方担责；因承租方违规操作致事故的，承租方担责。</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="zZR4Nnj6OlYnTpmDa3tunw" class="card">
+      <h3 data-page-node-id="5tMCLm9QLoWiyhyuZDO5b4"><!--pnid:tDuAM5EOaJYuXVEpjRjDUN-->C. 给排水与电量（3项）<span data-page-node-id="BU9QQXSEhsWqLl9kfpeNtS" class="tag t-gold"><!--pnid:opHafkj90GefbGX2dkuQ6t-->容量</span></h3>
+
+      <div data-page-node-id="r3urhiYjjLl36uij2ZjpC0" class="ci">
+        <h4 data-page-node-id="0OvYLOPiNaMIbdXtA7y2pq"><!--pnid:FKiWPOcv8l8WRL3xl07amt-->⑨ 给水排水容量达标 <span data-page-node-id="Ntisjnny7iNtpgxiKg6Fs1" class="tag t-jade"><!--pnid:ViXbkhdRRJScpzuf0nTDy0-->必备</span></h4>
+        <p data-page-node-id="QfOVnWnbQFs7WouQdgG4Dm"><b data-page-node-id="j2afvVbDVwNk8IXEbFtz4a"><!--pnid:YaMf0HbTMD4FirDCcjqt3s-->为什么重要：</b><!--pnid:5hjsVStqGBojOuKcDQgjIo-->餐饮用水量大、排水含油；给水压力≥0.2MPa、管径≥DN50；厨房排水量大需独立隔油后接入，排水管径≥DN100–DN150。</p>
+        <p data-page-node-id="9FkJT0HNoGyYlQbe28RRTp"><b data-page-node-id="ekmMJrQu8sHMhKW9zL5mxJ"><!--pnid:qjDWjQMGSbXhKDNJpS7sHI-->不做会怎样：</b><!--pnid:3lVtsS0SL5wwW5LQjoXzEb-->水压不足高峰断水、排水不畅反味堵塞；影响食安核查与日常经营。</p>
+        <div data-page-node-id="oBwhS6XCM4PjoSJmIRITlG" class="act"><b data-page-node-id="71PLyQwZuXlSkY8o5eI8Qx"><!--pnid:Mr8bilZJJBgBkWD8oIUuOh-->条款范本：</b><!--pnid:sRY3djGRyANSI2k7TYoQYw-->出租方保证给水压力≥0.2MPa、给水接口管径≥DN50；厨房排水管径≥DN100 且接入市政污水管网（经隔油池），提供排水接驳点；因管径/水压不足影响经营的，出租方负责改造并承担费用，工期计入免租期。</div>
+      </div>
+
+      <div data-page-node-id="w7NE4lw3qYAeReJiKazcxX" class="ci">
+        <h4 data-page-node-id="5WUOebKdAF0eTsi3AYbuL4"><!--pnid:bXjJhAmrplKJWj4bpPff3z-->⑩ 电量负荷与增容 <span data-page-node-id="sxcsuQ5ATBbsEbgiFxpNXa" class="tag t-red"><!--pnid:FL5gZMK53gs5DKdBboQtR4-->高频坑</span></h4>
+        <p data-page-node-id="Ulu850F8hjPfIWEhKJCe1T"><b data-page-node-id="PEPI35lni7w6PWoDkVaT52"><!--pnid:6DbDAeeJCbcnYiVpGoCPqS-->为什么重要：</b><!--pnid:Mw2uNtmfuWRfCxrjI2IOZ3-->米线/快餐门店设备密集（电磁煮面炉、炒灶/电炸炉、冰柜、空调、新风、照明），<b data-page-node-id="OxEGAJh66bsSOvNGY7EPEd"><!--pnid:FZY2Ls7HeHJhYQcm7MxQ2s-->标准快餐设计负荷 120–150kW，小型米线店≥80kW</b><!--pnid:nfdfTfwSZLfvSixJH0H4yu-->；普通零售铺往往只有 20–40kW，远远不够。</p>
+        <p data-page-node-id="UDDHFs2SG1d8y62mjA3O2C"><b data-page-node-id="RAWjA1f5JNIRQCG6unIWli"><!--pnid:oeMw1GuOzvXDOiHJ0nCiOS-->不做会怎样：</b><!--pnid:fClbBCTUQIi9ZDlzoaJlSu-->开业即跳闸、设备带不动；增容需供电局审批+变压器改造，周期 1–3 个月、费用数万至数十万，且<b data-page-node-id="gNY7PwRIrMuV3huiOopqRQ"><!--pnid:9vldriCJpbJbfMOzpMpQfh-->受楼宇总电容限制可能无法增容</b><!--pnid:CJ0ARhMlZOcWpNrMU1ev9h-->。</p>
+        <div data-page-node-id="4aRUiwx4TkUe9bVWqENrKE" class="act"><b data-page-node-id="zlqhOtpLQPu2rHTUxKl711"><!--pnid:WPrFCpPSws62yOfENvjEDt-->条款范本：</b><!--pnid:e902ut03d9neYdFa23EGWg-->出租方保证交付供电容量≥120kW（含空调新风），独立计量；如现有容量不足，出租方应在交付前完成增容并承担增容费用及报批责任，增容期计入免租期；因楼宇总电容限制客观上无法增容致承租方不能经营的，承租方有权解约并索赔（见第Y条）。</div>
+      </div>
+
+      <div data-page-node-id="MFoABOUtIMEI6Ql6hrAe7P" class="ci">
+        <h4 data-page-node-id="tB0E4g12qhhjKNTeuEa8YD"><!--pnid:gZbn4xPUZct5CwMM8iGZgs-->⑪ 空调通风与新风 <span data-page-node-id="Do5Wbfp2C3PfVZ8iirk8Ib" class="tag t-jade"><!--pnid:bz51MXjTrrViXvnMu66P0z-->舒适</span></h4>
+        <p data-page-node-id="PUDBxMQa1qhb7bNUKcWDAZ"><b data-page-node-id="lu3AxLYs2LontJhCrcw3VQ"><!--pnid:xIum7HHBEF0Dkq7YJLaUq2-->为什么重要：</b><!--pnid:UHMUt91qooWA9ZsA4tJr8y-->餐饮需独立空调+新风（就餐区+厨房补风）；商场集中空调有供应时段，自建需外机位。</p>
+        <p data-page-node-id="Q0ZdxniOZWEEJ22OEwIdal"><b data-page-node-id="6d1Zwjw3hZHqZy7mBwGyqC"><!--pnid:QMeVcqh7RVycsYylP1PnfP-->不做会怎样：</b><!--pnid:fOt06LcpNKVZaHj8YzUvYs-->夏季就餐区闷热差评、厨房高温停工；无外机位则无法自装。</p>
+        <div data-page-node-id="GrDRGJtf2bFnQ6fpBj5Xby" class="act"><b data-page-node-id="CDq0gziywg9QCupGrXP72v"><!--pnid:m9xuINxpQfnY6J5yCrhV4x-->条款范本：</b><!--pnid:9pGbeA29qFmiWSIkOEEqhM-->出租方提供中央空调供冷供热（每日≥12小时覆盖营业时段）或指定独立空调外机位≥2处；厨房须配独立补风/新风系统，出租方提供新风井道或外墙开孔条件，费用约定（见⑤）。</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="33XDAOeMA4TWg31N1WOX4f" class="card">
+      <h3 data-page-node-id="xvJqL22Zf3qBFJHTKPY1uG"><!--pnid:XFtGm6OnMBfSwPHtl1RRml-->D. 办证配合（3项）<span data-page-node-id="oJEhnOdWHyrSQ0kaCoGQae" class="tag t-red"><!--pnid:UerqrMDR6Y5IDpzOwpfiha-->卡点</span></h3>
+
+      <div data-page-node-id="HkDIT6b8eIJ4iqQbQLYXuV" class="ci">
+        <h4 data-page-node-id="58i5QzIKOGhmGOQ8rhBjo0"><!--pnid:76jIGqnOQZyby4djylLp98-->⑫ 产权与场地文件提供 <span data-page-node-id="93ZSDD7nfgJWsDsRrTq8wt" class="tag t-red"><!--pnid:2yghURXcJtq8dbITo6bUMG-->卡点</span></h4>
+        <p data-page-node-id="5NPY8oJC0DpBNP8P26UtL4"><b data-page-node-id="pMb3OQQvxhBUvQIi2fSVHS"><!--pnid:2oDzSZkUXdwAnPs6MwaO5k-->为什么重要：</b><!--pnid:AHFgjPfgP7fyOtp2W0TB8n-->办营业执照、食品经营许可均需产权证复印件、平面图；二房东/商场还需"同意转租/转经营"证明，否则市监不受理。</p>
+        <p data-page-node-id="8HWZ30X6aMYhha3QBKhalm"><b data-page-node-id="M0MkixfGOdiNbrbc1qtG8C"><!--pnid:0Qne7mfJMmz7oZ2eAIfKiX-->不做会怎样：</b><!--pnid:Lv1J673Vyqr5NjcSqoXKGM-->材料不齐→许可申请被退→开不了业；这是商场卡加盟商最常见的隐性手段。</p>
+        <div data-page-node-id="tqTRw8Lhlokmhit4FTZYlb" class="act"><b data-page-node-id="zapJ6A2UNqpeuji04QtGbn"><!--pnid:NjZysgRR19phf1scT6COqZ-->条款范本：</b><!--pnid:7XPIcqeOv42xAYlDLKWnTm-->出租方应在签约后 5 个工作日内提供：①不动产权证/合法产权证明复印件；②房屋平面布置图（含尺寸、承重、消防疏散）；③同意承租方用于餐饮经营并将房屋转租/分租给特许人指定加盟商或合伙人的书面证明（见"两项重点范本"第X条）。</div>
+      </div>
+
+      <div data-page-node-id="HCfNNQ9JgiwgnSU0iAn0S9" class="ci">
+        <h4 data-page-node-id="fAUOeytRaTUQD7u6oCaWrI"><!--pnid:hsiNVTMgiFjNPexZzfypap-->⑬ 消防验收文件提供 <span data-page-node-id="ybOb0iFQLZ8AUegNPwO8bL" class="tag t-red"><!--pnid:am27VG4S4ZaZ2MtoVJRpgI-->卡点</span></h4>
+        <p data-page-node-id="kgJ5oFYHoqUFCmn7M1fYpi"><b data-page-node-id="BJC32wwg1bcrWU8d2wqoWn"><!--pnid:6qxxWOCtgKg8M0QDyGPUZb-->为什么重要：</b><!--pnid:NEqax9PJlHMRXjjbrFHQtH-->《消防法》第13条：特殊建设工程需消防验收合格；其他工程需消防验收备案。餐饮开业须《公众聚集场所营业前消防安全检查》意见（第15条告知承诺制）。主体消防文件由房东/开发商持有。</p>
+        <p data-page-node-id="genfSUtiiwY65TWuU1QgH9"><b data-page-node-id="mhZtyDNEpz3jPQBMDfHpIg"><!--pnid:G391V3nS9rv92RdC9vbQIg-->不做会怎样：</b><!--pnid:1cUFqvmsnmIqb7VPxedD5Z-->无主体消防合格文件，门店营业前检查必卡→不能开业；且承租方无法证明"非自身原因"。</p>
+        <div data-page-node-id="OD4pw0hhaUiS8CNBhkRE70" class="act"><b data-page-node-id="mX9vVquXD2xXLNFIRrgyFB"><!--pnid:gmuxXEVAivSyC8ZNi9MbEc-->条款范本：</b><!--pnid:gY9P4M0t2NaHwCl6h4rxQN-->出租方应提供该房屋所在建设工程的消防验收合格文件或消防验收备案凭证（复印件加盖公章），并书面确认房屋主体消防合规、可用于餐饮公众聚集场所；未能提供致承租方无法取得营业前消防安全检查意见的，依第X.2/X.3条承担违约责任。</div>
+      </div>
+
+      <div data-page-node-id="QABaz3Nvhw87Mj6KYNgqB1" class="ci">
+        <h4 data-page-node-id="YYXFmN8szCA9HPhvI2Aih0"><!--pnid:lD0caUqD6Ds9tfX89LOHE4-->⑭ 办证配合违约责任（完整范本见 Tab②） <span data-page-node-id="tIsCN477qBXia5q90DUR31" class="tag t-red"><!--pnid:N7HLctuC5Y2TlOVfMEQDXQ-->核心</span></h4>
+        <p data-page-node-id="PZdXSFBfC79BSqC3G0Aok8"><b data-page-node-id="sWkA4sTse6yxYsZ3l3Fbg1"><!--pnid:VhLYDy5yvslsly7JjfhTvE-->为什么重要：</b><!--pnid:ZsXPg5NruT0bTtlmpd1sma-->把"不配合=根本违约=解约+全额赔"写死，才有谈判筹码；否则房东拖延无成本。</p>
+        <p data-page-node-id="qxjdjE8Rg0lDLcZx33y0lO"><b data-page-node-id="mscWYY8e8TpU97lAQwWnig"><!--pnid:N3tYnSpviG70u3pLHQDmfn-->不做会怎样：</b><!--pnid:aQXRedHoO35LoZTHFv66xN-->房东/商场无限期拖延文件，你装修好却开不了业，租金、人工、加盟费全沉没，还不敢解约（怕被反咬违约）。</p>
+        <div data-page-node-id="ws7rCsVcR2ZxX7vVEDM6m4" class="act"><b data-page-node-id="JWDvOH12BDu1O1oGV5T0yD"><!--pnid:xhceVG9cQrVV1nYrO5ar5M-->条款范本（摘要）：</b><!--pnid:nl3roPQFup7k0WJkDUNIcv-->逾期提供文件每日按月租金 1‰ 付违约金；逾期超 15 日承租方可单方解约，出租方退还已收全部款项并赔偿全部损失（含装修、设备、加盟费、人员、预期利润）。<b data-page-node-id="f2WhWx3UD9QGP4LjLGd6Dm"><!--pnid:Ib1J6cFEY56Nyv9rXpXmRf-->完整可复制文本见 Tab② 重点范本一。</b></div>
+      </div>
+    </div>
+
+    <div data-page-node-id="VHz7NYq7y9ctrOeTPebPyE" class="card">
+      <h3 data-page-node-id="PBZvFfzUrGrHYCajNmlj0a"><!--pnid:oDEjOdJefRsMBoIikfohoT-->E. 消防（2项）<span data-page-node-id="2L6OBZ815biQpYCmX0NdQW" class="tag t-gold"><!--pnid:cdg7aYFwRNaycshkrc4ivq-->安全</span></h3>
+
+      <div data-page-node-id="yCoqmMb0Voih4oXdmu4lEc" class="ci">
+        <h4 data-page-node-id="6SthQLrXAY0HQoVhWuE3Kz"><!--pnid:bOQY7XNltYfmODtGBWtKN7-->⑮ 消防设计报审责任 <span data-page-node-id="LEMVVeOEhBCTG07aplnxUU" class="tag t-jade"><!--pnid:nWiPYsV4BFGH2P70PE3VgH-->配合</span></h4>
+        <p data-page-node-id="8SKXZMNPVbH4jxcZx80wvX"><b data-page-node-id="UTgG1yAsEjNCCxBCRzwPYu"><!--pnid:3jXi0PLcd84klLA0pis4BE-->为什么重要：</b><!--pnid:TZBiEibIG2P5PtnFkMa13e-->店内装修消防设计、报审、验收由承租方负责；出租方负责<b data-page-node-id="Y65u6kXjsZaeVoIRMH6BSb"><!--pnid:49XxwoWtjBThMzPgQEpNPv-->主体建筑</b><!--pnid:O3mVpaqX6kvvMNriJGTgYp-->消防合规与文件（见⑬）。</p>
+        <p data-page-node-id="MMEF0z9TGnWVvjKZtz4PdT"><b data-page-node-id="h6Z2O7XH89iNO5iXakRRl0"><!--pnid:M7Iszaf0nnECNpfPrpyCja-->不做会怎样：</b><!--pnid:oUPKkGeLIbTAh2cpnhqrH8-->主体消防本身不合格（如老商场），承租方装修再合规也拿不到营业前检查意见，且易被甩锅"是你装修不过关"。</p>
+        <div data-page-node-id="5ciLFB9LCot4T0kzWVmKMO" class="act"><b data-page-node-id="G393qV6DC2o7vilZtLUHap"><!--pnid:A7aaReqbNNOj7LZOxQAKeO-->条款范本：</b><!--pnid:n2wTs10KjlqIhThgPnteXe-->承租方负责店内装修消防设计、施工、申报与验收并承担费用；出租方保证房屋主体消防验收合格并提供文件配合，主体消防不合格导致承租方无法通过的，视为出租方违约（见第X.3条）。</div>
+      </div>
+
+      <div data-page-node-id="OV9l9Av3i6QLX8AywCaPvE" class="ci">
+        <h4 data-page-node-id="MAPoBMkdAdL4ToUUgKjFjc"><!--pnid:EwAXFq5U7xtnlmtXK5ckpw-->⑯ 消防不合格致无法开业损失承担 <span data-page-node-id="OgxkVqPBIlJNGo5vDwazXz" class="tag t-red"><!--pnid:5nJeTORbPMSTXp9Wb4Krci-->损失</span></h4>
+        <p data-page-node-id="5nHKKNGH7SKQ8dYn4Qvy5T"><b data-page-node-id="IyfqaRW4J87J3NWnUc7lDU"><!--pnid:VWmG9imG9DSi9cU5xajOtg-->为什么重要：</b><!--pnid:2spcnDv899kz5WEaUxvtmh-->消防验收/营业前检查不过→不能开业，但租金起算、免租期、已付租金、装修损失都需明确归属。</p>
+        <p data-page-node-id="OOAkvdS3QZNqpICRKjQjhB"><b data-page-node-id="YBuXaLAgkTM3IhdRopMegO"><!--pnid:UYutxBwrWMQyVbV9oNAQbW-->不做会怎样：</b><!--pnid:YBNCEAQlMa7Cu2W8odPiZf-->房东说"你装修问题自己扛"，租金照付、损失自担，门店空置数月。</p>
+        <div data-page-node-id="5t7GR5wugJl1iBI0LUZsxO" class="act"><b data-page-node-id="NXJ83YwjMHTtu6GcPijdZL"><!--pnid:tSvECUbM0u3dnWIprhUWyF-->条款范本（摘要）：</b><!--pnid:LUO9oQRJYNRPl7Y5oN2yX3-->因出租方原因致消防/食安无法通过的，免租期顺延至通过日，已付租金抵扣，出租方赔偿装修、人工、预期利润损失，承租方有权解约免责。<b data-page-node-id="9AoUuG0MjBnsuJtxfqekt3"><!--pnid:mxzOpPZMIpFuqoylnUeTbV-->完整可复制文本见 Tab② 重点范本二（硬件条件不符免责解约）。</b></div>
+      </div>
+    </div>
+
+    <div data-page-node-id="EzHlJ15PAViJiKzI5dVa6i" class="card">
+      <h3 data-page-node-id="UL27OTYkqVpNCAzFR5P4Th"><!--pnid:vcDyFW7X0R9gP1gMeBQZd1-->F. 营业时间与外卖（2项）<span data-page-node-id="l50WLdRDdSaiyV4CE3dE8p" class="tag t-gold"><!--pnid:iitEHlsuJCsTtaJxn47iOy-->经营</span></h3>
+
+      <div data-page-node-id="Zwf1UdDgohzKLHvyyxMP8l" class="ci">
+        <h4 data-page-node-id="WKwwD97lqT7IYefRoZYtl5"><!--pnid:9iTAq5dYu2jnXNPabkl9hp-->⑰ 营业时间强制与豁免 <span data-page-node-id="ZE2scCKgd9ptTKWcMDijOT" class="tag t-jade"><!--pnid:TLc2aIDeBipzxV1cozXWO5-->经营</span></h4>
+        <p data-page-node-id="MVEuuc1TZ1osSSvNsElqj7"><b data-page-node-id="v0nldKxUBqLfmWxWQpFaSq"><!--pnid:SGi7sDrl9agBS616XjKe5Y-->为什么重要：</b><!--pnid:KCWLt0Z9upvC5oqO96R8SW-->商场常强制统一营业时间（如 10:00–22:00）；但米线/快餐外卖夜间、午市高峰与商场时段错配，需弹性。</p>
+        <p data-page-node-id="sejPufrWZNK3cagHitgVuT"><b data-page-node-id="SEXxl9Esb5m3Nh6oYx4rhj"><!--pnid:nbTo0nsfeYYc6eToINbPJn-->不做会怎样：</b><!--pnid:sdPKVrJxDjrE0t6wSHdHXO-->被强制统一时间，错失外卖晚市；或超时营业被物业罚、断水电。</p>
+        <div data-page-node-id="CtgLGecuAHU1T3D6PaDVwG" class="act"><b data-page-node-id="UTQuxLVibtT541psxwEbg0"><!--pnid:L7APgitB1C3knopC76W1ms-->条款范本：</b><!--pnid:qAgNEUWi3hGcIQmG3WF2Kl-->承租方应遵守商场统一营业时间（每日 10:00–22:00）；因外卖或经营需要延长营业的，在物业规定范围内可自行决定，超出统一时间须书面申请，商场/物业不得无理拒绝；承租方延时经营产生的额外空调/能耗费按实结算。</div>
+      </div>
+
+      <div data-page-node-id="fYVyaqJchZv3ZS3qq26uPz" class="ci">
+        <h4 data-page-node-id="Dec1EN5E5OfHB2u0i65pRr"><!--pnid:T0LfFqTHavdBdytssKIeET-->⑱ 外卖取餐动线与骑手管理 <span data-page-node-id="l7YrnJFUrLH3b59NlB6cwi" class="tag t-jade"><!--pnid:sGPvr6J3oFZqYk8pMrhZvu-->外卖</span></h4>
+        <p data-page-node-id="DqJg51A6Uon4EP5GOX9mWK"><b data-page-node-id="1uLL6A97Ce6Ruc2jlMrj4L"><!--pnid:esjYNXr95HYA3jyRjyvzIS-->为什么重要：</b><!--pnid:IARICvZf93cFeE3O0rYKIN-->外卖占快餐/米线门店营收 30%–60%；取餐动线、骑手进出直接影响出餐效率与顾客体验。</p>
+        <p data-page-node-id="vK3T6LWsH3GgoiJTvskUQS"><b data-page-node-id="nIxH5Y0ug03Q8JYdxnD9jG"><!--pnid:xRYlJ4c0jtzoWMb5yr2m2t-->不做会怎样：</b><!--pnid:2cjbTZK6HBIXapQqP60Ubz-->无专用取餐点→骑手挤占堂食通道、差评激增；物业禁骑手入内→出餐瘫痪。</p>
+        <div data-page-node-id="yza4ZR01bwaSxOVcwNRTTh" class="act"><b data-page-node-id="4VEfaznu0ozSEEgZP0RRnb"><!--pnid:sxAacVquQnEBpvMDiz1Jo1-->条款范本：</b><!--pnid:X7QpHyTb1GtSs41dXJW22S-->商场/物业应在承租方铺位附近提供外卖取餐点位或取餐柜安装位、骑手专用进出通道，并保障取餐时段通行；承租方设置独立取餐窗口/取餐柜，骑手管理由承租方负责，物业不得以此收取额外"外卖管理费"（合同另有约定除外）。</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="UjvDO6quDQNySrvACOw6Px" class="card">
+      <h3 data-page-node-id="cS0ntLMwplcqclYqv7gL6R"><!--pnid:BIwQFxCsxUWtZXDlmTW2nR-->G. 垃圾清运与厨余处理（1项）<span data-page-node-id="97j78pVj3nJpsrNXATaI5A" class="tag t-red"><!--pnid:Xg77vDA9O2w1NyLXmMKwCM-->新法</span></h3>
+
+      <div data-page-node-id="TriaDSjrKEHWfzFbj4d278" class="ci">
+        <h4 data-page-node-id="ot2X9MDTMJ4HbvkMtIC4N4"><!--pnid:ClnJ0JaKmNBz5oR8uXC3KO-->⑲ 垃圾清运与厨余处理合规 <span data-page-node-id="sxT4Uo1QBBgySWuyyQgpMv" class="tag t-red"><!--pnid:GmXwb1AJ2d7PIJxe8izOCj-->固废法+新办法</span></h4>
+        <p data-page-node-id="2n4XwixuybW4is3sHQpEkX"><b data-page-node-id="x21wwXGhMFE1pHXmWAdms3"><!--pnid:SgE0PK6VDN24ZlUdTfK81A-->为什么重要：</b><!--pnid:HakiMLrxjEkpPdJ8sUW4QB-->①《固废法》2020修订第57条：厨余垃圾应<b data-page-node-id="6w3gtzv85jzTWeEG5v8euD"><!--pnid:Yb43qGUgIcKvEdd2fBWIy5-->交由具备相应资质条件的单位</b><!--pnid:P7SkPA1ubswcAgPzvaHaSU-->无害化处理；第111条第1款第（五）项+第2款：单位未交有资质单位，<b data-page-node-id="IFMYz70s6CVIJl84uXAUA9"><!--pnid:wQwBTNbQX5MJel3z43E71W-->处 10万–100万元罚款</b><!--pnid:PrMqC7DYzcDTkUJgs3uE29-->+没收违法所得。②《餐饮业促进和经营管理办法》2025令第3号第15条：厨余垃圾<b data-page-node-id="3nSOLfsQc5jO8tGVYXhh5K"><!--pnid:hMEnFFFvS0FWIZuXYPmeEP-->源头减量义务</b><!--pnid:HVAtH7gagiVct2TXObnPkI-->、不得随意处理、按规定由有资质企业资源化利用，可对明显浪费消费者收厨余处理费并公示；第21条违反依《反食品浪费法》第28条处罚。</p>
+        <p data-page-node-id="V6EHKoOCN8utc81yqB2jS2"><b data-page-node-id="FaaLuOlW7B70vIvYQl0MGG"><!--pnid:yF65fZUDOduvAA1Enzrdc5-->不做会怎样：</b><!--pnid:qRraJacefCYYuOuaCRtA5f-->厨余混入生活垃圾或交给无资质个人→按固废法第111条重罚 10万起；还触发反食品浪费处罚与约谈（办法第20条可约谈法定代表人）。</p>
+        <div data-page-node-id="XT3YqDwyuERod4KzUYWq9D" class="act"><b data-page-node-id="upghY5sCIbbkmZVpz2WQyz"><!--pnid:RtF7KEQjZ9VI0gs8Lb5N38-->条款范本：</b><!--pnid:gwYdqnFZa8Xg9OLbrC2efO-->出租方/商场提供厨余及垃圾暂存点并对接清运；承租方与具备资质的厨余收运单位签订收运合同、留存转运联单，履行厨余源头减量义务（优化食材管理、改进工艺），可对明显浪费消费者收取厨余处理费并在店堂公示标准。因出租方未提供基本暂存/清运条件导致违规的，罚款由出租方承担；因承租方违规交无资质方的，罚款自担。</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="fqmgzs6W0fmfdp03ouDbMD" class="card">
+      <h3 data-page-node-id="DtANwqkLEFdyNNKOwHe5uW"><!--pnid:bk5mV4e5t3WIiIkxlO745b-->H. 招牌外摆与投诉（3项）<span data-page-node-id="88OMvRiruGml1IWLHt1Jle" class="tag t-gold"><!--pnid:5Kccc2PqsiY2vNG2ABy4Cm-->邻里</span></h3>
+
+      <div data-page-node-id="AulxbniUBuZ37P64szar09" class="ci">
+        <h4 data-page-node-id="HYHzA09VGQqjusKwodo4Nb"><!--pnid:uKYLuRWaBR7uROBcXzLPht-->⑳ 招牌位与审批责任 <span data-page-node-id="xRCOUUHubTWrP53YnpVAr5" class="tag t-jade"><!--pnid:YXhUkjNuqphhT9pZVozzNG-->招牌</span></h4>
+        <p data-page-node-id="96qgqArYu2t0d5SBAinMtC"><b data-page-node-id="YsyZRsLzGNODUecsRguI6H"><!--pnid:SXup8QXPdnAOANr75y8ojA-->为什么重要：</b><!--pnid:nOsuK9Cr9HHuxXxA0Xxlm8-->招牌是到店转化关键；户外招牌需城管/市容审批，商场统一管理常限数量尺寸。</p>
+        <p data-page-node-id="G8wJF9BE6FiSVnUBoRttgx"><b data-page-node-id="ZNehpmqI7mUCejgsMjW9KC"><!--pnid:fr6zw2RKKtTDzocJKJNsus-->不做会怎样：</b><!--pnid:p3f1dOHydID7C8xhIdNahF-->审批不通过→无招牌无客流；或被责令拆除、罚款；商场临时调整点位致招牌位落空。</p>
+        <div data-page-node-id="NlQajQ0C4uhqwEZVUpzWEJ" class="act"><b data-page-node-id="6xsUMhSJaC1WrUuu6wpfUs"><!--pnid:qI8WUoNTiv83tftjsojIJb-->条款范本：</b><!--pnid:4qorpc1SwnVQgBShsyVwdR-->出租方/商场提供不少于 1 处门头招牌位（尺寸≥____），并配合承租方办理户外广告/招牌审批；审批责任与费用由承租方承担，出租方提供所需产权/场地证明。因出租方原因致招牌位无法使用或被强制拆除的，出租方应提供替代点位或减免相应租金。</div>
+      </div>
+
+      <div data-page-node-id="hvBU4fsKsn7CuaIzWOb56d" class="ci">
+        <h4 data-page-node-id="ncJ4xK8mgA9c7eGEqGf4zT"><!--pnid:aJjef36j4FmcjYoSUjN9h7-->㉑ 外摆区使用权 <span data-page-node-id="AaE4omtsjM7ABEJuf17K0Z" class="tag t-jade"><!--pnid:dTQnQMtsRMTxCMCxlqGDAN-->外摆</span></h4>
+        <p data-page-node-id="NSOMUlNlgQCIsArGlR4CZa"><b data-page-node-id="ljXIoMwKnKJ0iyIC1y29PZ"><!--pnid:6OkPrb5ARERf9M7bn1bGri-->为什么重要：</b><!--pnid:Wtwc4nTdlFF77v63xMETc6-->多地促消费政策（如深圳、成都）允许餐饮外摆扩容；外摆可增 20%–40% 坪效，但须审批且受城管清理风险。</p>
+        <p data-page-node-id="GnzP2cRfIeytJ9auY3Yrn7"><b data-page-node-id="IWue0wngsHxtPglyzdG0AK"><!--pnid:pSvgCyabD2OBmpRjjOQIVH-->不做会怎样：</b><!--pnid:5QyMqm3U41KVmyt1dlbQjI-->想摆不能摆错失营收；乱摆被城管清退+罚款，且合同无约定时损失自担。</p>
+        <div data-page-node-id="OiJsp9zzChCmI1OMuPuNW0" class="act"><b data-page-node-id="vhkGngITETgbQpvGySdnIF"><!--pnid:HnYPrRW64JE91Sege55bte-->条款范本：</b><!--pnid:eAOAq3NnlKcMfsV8SChTXW-->在属地政策允许且出租方/商场同意的前提下，承租方享有指定外摆区域（范围____）的使用权并自行办理外摆审批；出租方不得无故收回。因政策调整或物业统一规划取消外摆的，不视为出租方违约，但应提前 30 日通知。</div>
+      </div>
+
+      <div data-page-node-id="Rlhs3XAV9dDLXK2cdjzN7I" class="ci">
+        <h4 data-page-node-id="KxaNjPg2H1rjrCNInbnMde"><!--pnid:5S7JnfOfGcq61HDSoOLl5m-->㉒ 噪音与气味投诉处理机制 <span data-page-node-id="L9iKbjM9PWNjzttoIrcQzS" class="tag t-jade"><!--pnid:IReo1uBIIXFg3Dt49ySPFU-->邻里</span></h4>
+        <p data-page-node-id="Ut1OxisZL3TK1YIrvFFTHK"><b data-page-node-id="SPwt22EqjUtF0n0fBetnkh"><!--pnid:huj05F2sKKYC70loFJtEXq-->为什么重要：</b><!--pnid:C9W6LwaVZ0cwLY6L7YHCXM-->餐饮易因油烟、风机噪音引发相邻权人投诉（衔接《民法典》第294条 不动产权利人不得违反国家规定排放有害物质）；处理不及时会被环保/城管责令停业。</p>
+        <p data-page-node-id="XNEHXJ9uAUsBMoTek6esUb"><b data-page-node-id="EzqP5nYgGKFbQTHDNOCAv6"><!--pnid:34KsjfxYQkApKE5a6MBd1U-->不做会怎样：</b><!--pnid:BsXAWN9X2Qb1OU6HwXusOH-->投诉升级→环保检测→超标停业整改；邻里矛盾影响品牌口碑。</p>
+        <div data-page-node-id="sm2N5HQVopJ3PcSLz2JVe5" class="act"><b data-page-node-id="8DpmlJ4vUTxjuCz6OQtEv0"><!--pnid:2G5u6iaFrfe3Cz9LVvE4Sf-->条款范本：</b><!--pnid:B23zqNoKGaqPJo7WTq6IOE-->承租方应确保油烟、噪音达标排放，收到投诉后 24 小时内响应并整改；如因出租方烟道/设备缺陷导致超标，出租方负责整改并承担罚款；如承租方设备合规但仍遭无理投诉，出租方应协助沟通并出具场地合规证明，不因单一投诉强制承租方停业。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--pnid:d8eML1eli05bhL15OYzPEn--><!-- 面板 p2：两项重点完整条款范本 -->
+  <div data-page-node-id="qaM8xjBBZWBAaPej5uPT2B" class="panel" id="p2">
+
+    <div data-page-node-id="WafXLQkxMIaxruyS9yKIIn" class="card">
+      <h3 data-page-node-id="M37ioJ9K6QybeiJBt1EZl2"><!--pnid:mR6XnMLFd4DapTJKkezEoF-->重点范本一：办证配合义务 + 违约责任（房东/商场不配合致办不下食品经营许可证 → 解约 + 索赔全部损失）</h3>
+      <h4 data-page-node-id="PL98ruLjLvnDjq85PhKB7e"><!--pnid:uAe3COl1LdMuHiqp4ZV6Sf-->适用情形</h4>
+      <p data-page-node-id="bGyevvU1fHYQGDB8PmUc9i"><!--pnid:Zj5g3XzJI7k4hSjtWujqb7-->把"出租方必须提供产权/消防/同意餐饮用途等文件"以及"不配合的法律后果"一次性写死，是承租方对抗商场/二房东拖延的最关键武器。食品经营许可证是餐饮开业<b data-page-node-id="G7n8M2Dis3FiOiUlWFLwVT"><!--pnid:4sruHlUHrKRiqZQIqYCBNe-->前置许可</b><!--pnid:ymyr5UWfYDdK8bV2Jb8nRF-->（《食品安全法》第35条 + 总局令78号第4条），没有它门店 legally 不能营业。</p>
+      <pre data-page-node-id="W9rp7BO8m8hKggilU8mKH3"><!--pnid:wQyNbHyGgfADItYp6Gxb5c-->第X条 出租方办证配合义务与违约责任
+
+X.1 出租方应在本合同签订后【5】个工作日内，向承租方提供办理营业执照、食品经营许可证、公众聚集场所营业前消防安全检查、环保/排污登记等全部证照所需的下列文件，并保证真实、合法、有效：
+（1）房屋不动产权证书（或合法有效产权证明）复印件；
+（2）房屋平面布置图（含尺寸、承重、消防疏散指示）；
+（3）出租方有权出租，并同意承租方将房屋用于餐饮经营、且可将房屋转租/分租给特许人指定加盟商或合伙人的书面证明；
+（4）该房屋所在建设工程的消防验收合格文件或消防验收备案凭证；
+（5）房屋具备餐饮用途（含专用排烟、隔油、燃气/电量条件）的书面确认。
+
+X.2 若出租方未按 X.1 约定期限提供上述文件，每逾期一日，应按月租金的【1】‰向承租方支付违约金；逾期超过【15】日，承租方有权单方解除本合同，出租方应退还已收全部款项（含押金、预付租金），并赔偿承租方因此遭受的全部损失，包括但不限于：已支出的装修装饰费用、设备采购费用、加盟费/特许经营费用、人员招聘与培训费用、已付租金，以及合同正常履行可获得的经营利润（按门店近【3】个月日均营业额×合理利润率×剩余租期估算，或按同地段同类门店平均利润计）。
+
+X.3 因出租方原因（包括拒不提供文件、房屋不具备餐饮经营法定条件、主体消防验收不合格等）导致承租方无法取得食品经营许可证或公众聚集场所营业前消防安全检查意见，致使门店不能开业或被迫停业的，视为出租方根本违约，承租方有权立即解除合同，并依 X.2 条主张全部损失赔偿，且无需支付解除后任何租金或违约金。
+
+X.4 本条约定的损失赔偿不以出租方订立合同时可预见为限。</pre>
+      <div data-page-node-id="Q7HgGQpPuRzlMKeCPoxVri" class="anti"><b data-page-node-id="qhXPwhoGcCK5xpssTgwZzK"><!--pnid:qEmnLMs0w4ZLGRTROw0iWb-->加盟商反制点：</b><!--pnid:VL3Ck4SIR8FJeeVcforNOh-->若总部在招商时承诺"包办选址/包过审"却未在租赁环节落实上述配合条款，加盟商可凭《条例》第23条 + 信息披露管理办法主张总部未尽选址指导义务、虚假承诺，要求退加盟费并索赔。</div>
+    </div>
+
+    <div data-page-node-id="JjDfCBbzgtkckbTMsmtlpk" class="card">
+      <h3 data-page-node-id="cSvYyAdizWeTrvceeEsAJF"><!--pnid:wWGav3PJWFgVOdif23cifc-->重点范本二：硬件条件不符的免责解约条款（如排烟不通导致无法开业）</h3>
+      <h4 data-page-node-id="HYfzDPCwNsdqabnsy3Nw0I"><!--pnid:yUfjYB2HVmpu8AQM8DMCCx-->适用情形</h4>
+      <p data-page-node-id="3khnlIc0bh5yL4UdtgxAuY"><!--pnid:E8hQZ0gjuoB0JMG4WUx9JW-->餐饮硬件（烟道、电量、隔油、燃气）是"专用性极强"的交付标准，普通商业用途交付不等于餐饮可用。把"硬件不符=承租方无责解约+全额退赔"写清，堵死房东"已按普通商铺交付"的抗辩。</p>
+      <pre data-page-node-id="mUgaxqB0FUxwInt7VkM3dp"><!--pnid:QBRW8k8a1ipcsjRxncZ3mC-->第Y条 硬件交付条件与不符的免责解约
+
+Y.1 出租方承诺交付的房屋已具备下列餐饮必备硬件条件，并在交付时逐项书面确认（附件《餐饮硬件交付确认单》）：
+（1）专用排烟管道已接至承租方承租区域指定位置，截面不小于【0.3】㎡，设计风量不低于【____】m³/h，保证正常排放、不倒灌；
+（2）合规隔油池已建成并接入，清掏通道畅通；
+（3）燃气（天然气）接口已接至承租区域，或已具备瓶组间设置条件并通过燃气公司验收；
+（4）给水压力≥【0.2】MPa、管径≥DN【50】；排水管径≥DN【100】且接入市政污水管网；
+（5）供电容量≥【120】kW（含空调新风），独立计量；
+（6）具备办理食品经营许可及消防营业前检查所需的主体消防合规文件与场地条件。
+
+Y.2 若交付时或开业前经检测/主管部门核查，上述任一项硬件条件不具备或不符合约定（包括但不限于无专用烟道、烟道不通、风量不足、隔油缺失、电量不达标、燃气无法接入等），致使承租方无法通过食品经营许可现场核查或消防营业前检查、不能合法开业的，承租方有权：
+（a）要求出租方在【15】日内整改至合格；整改期间租金及物业费予以免除；
+（b）若出租方逾期未整改或客观上无法整改（如建筑结构限制无法增设烟道、房屋用途禁止餐饮），承租方有权单方解除本合同，且无需承担任何违约责任；
+（c）出租方应退还已收全部款项，并赔偿承租方全部损失（范围同第X.2条），包括但不限于装修、设备、加盟费、人员及预期利润损失。
+
+Y.3 因硬件条件不符导致门店延期开业的，免租期、装修期自实际具备条件之日起重新起算；已产生的一切费用（设计、报建、检测）由出租方承担。
+
+Y.4 出租方不得以"已按普通商业用途交付"对抗本条，餐饮硬件条件为本合同特别约定的交付标准。</pre>
+      <div data-page-node-id="DICclC6bnYUTeARYtMnff4" class="anti"><b data-page-node-id="KdzsBPFr6pEdL0BJ0pqLYp"><!--pnid:LYTUusU373NJgtzIZqKtpw-->总部风控点：</b><!--pnid:hA8HBp0avl3gUfpdSlQlHH-->总部在《选址尽调清单》阶段就应核验 Y.1 六项硬件（尤其烟道与电量），未达标不授牌；否则门店开不了业时，加盟商损失可沿"选址指导失职"向总部追偿（见 Tab① 顶部总部风控框）。</div>
+    </div>
+
+  </div>
+
+  <!--pnid:zJZOvrU7dICZ5P3h39w5bp--><!-- 面板 p3：开业前证件清单及时限表 -->
+  <div data-page-node-id="WY6CQcunWqvVqGytEGsqFy" class="panel" id="p3">
+    <div data-page-node-id="DPObDYCJ2fTsJ6oyYprTwQ" class="card">
+      <h3 data-page-node-id="Auk4pOkLFdu8BNsa3IoFsp"><!--pnid:psFmuqqYaXYVziLAP1EeT8-->开业前证件清单及时限表（餐饮门店）</h3>
+      <p data-page-node-id="Xook6oNMLH7YbLApkKNsRc" class="kv"><!--pnid:MmnAjOovN2MOg6O4oqImIb-->说明：下列时限均为现行法定/实务口径，具体以办证地最新规定为准；"负责方"指主要申办义务人，"卡点"为餐饮特有高风险环节。</p>
+      <table data-page-node-id="ED6gZbwAmqdRsWX4rYwPEJ">
+        <thead data-page-node-id="lrLecsBfHLsANsZDoGOLyU">
+          <tr data-page-node-id="G34SUBvkhBg8kt20Vqu83G"><th data-page-node-id="Aj3ft3mRM06FKp8QqGq6wE"><!--pnid:zv4Mrj6327pmUXuRlWReD0-->证件/许可</th><th data-page-node-id="RmzWtDZHNhOWmnpFXYFk6U"><!--pnid:7HEM8xbO6D2foIQLLwM9Nb-->法定时限（依据）</th><th data-page-node-id="jGvuWT6OPdI3bKZwfni57S"><!--pnid:yRi1v6mv5FGCON92BGx1qP-->负责方</th><th data-page-node-id="SrvNWfbFxMrzWpNGM4dsSp"><!--pnid:z3AS0rsv0ykX803m7UcjZr-->前提条件/卡点</th><th data-page-node-id="dBHRrOQHMweErk2k0cEKQI"><!--pnid:6uaBzslqbuIgMIWF24kYvp-->实务建议</th></tr>
+        </thead>
+        <tbody data-page-node-id="FnmEyAZI2WKxpMyuCGi6Qd">
+          <tr data-page-node-id="aNTLYtbXutz9BGtWYwLXR1"><td data-page-node-id="AOEBfAH65AzdqISSVrBiyJ"><!--pnid:KUhvGlrRDYrhrYFnn0LIk8-->营业执照（市场主体登记）</td><td data-page-node-id="9Cl3ladryzHl8EaBIxgWcq"><!--pnid:AMUhsim2SQchuFvikRZKKa-->当场或 1–3 个工作日（《市场主体登记管理条例》）</td><td data-page-node-id="eVYv5kZpRwOBtX2sRTj6i8"><!--pnid:tS8cbfcuwbzlhE0T0ccgpz-->承租方（先办，食安许可前提，总局令78号第10条）</td><td data-page-node-id="hJWduVMSRK4GWQ8xiyHDzA"><!--pnid:NVesT4wGFsZZHZvuy9Azwv-->租赁合同+产权证明；名称含"餐饮/小吃"</td><td data-page-node-id="mYPV3r0KUKrcqLqcG0Lbgz"><!--pnid:Y0Onu32SfjjAnZNkPgrxFa-->签约后立即办，作为后续所有证照基础</td></tr>
+          <tr data-page-node-id="2RuakEav6ny073nNePOE4x"><td data-page-node-id="K1LqqfarHxmUQKDA6IoAyH"><!--pnid:FPFPhp5PbhfKeglBaAy4NW-->食品经营许可证</td><td data-page-node-id="x0ggTgZwRHzTvTeaKTNxqT"><!--pnid:b6nXmLS5gVHJGgbE4tsCo5-->受理起 10 个工作日决定（可延 5）；决定起 5 个工作日发证；有效期 5 年（总局令78号第21/22/23条）</td><td data-page-node-id="LVtDEGRKXZP0YpJSfZ08CX"><!--pnid:bXdAzwmAsRa3b9zMz7olCn-->承租方办，需现场核查（第20条）</td><td data-page-node-id="5ZKxGf6ldk9OW7OCYOzmz4" class="t-red" style="color:var(--red)"><b data-page-node-id="APTkYHhaL3OXpPYNr6udnR"><!--pnid:mw0wkJSAh5Ujt2h5EtuF7h-->专用烟道/隔油/电量/布局/制度</b><!--pnid:Bv6uMsBFnlMPtR6koW1T5l-->硬条件；禁设场所（住宅底商）不核发</td><td data-page-node-id="uzFxnYef4n6eZJVNpR1XPW"><!--pnid:7aTHcmD1C8hc9bwkgN46nn-->装修前先做"证前指导"，避免布局返工</td></tr>
+          <tr data-page-node-id="oaC8RRYq712JlqwNGJUqRW"><td data-page-node-id="w4fr3vmo0hl3CBOwl7KH7y"><!--pnid:wNWswvayKwpQIZd5hueyiJ-->公众聚集场所营业前消防安全检查</td><td data-page-node-id="m5Thm5Slsw4VeOpHr0C1bX"><!--pnid:bsGodyTavE4N2oKRbiPS6F-->告知承诺制：提交材料+承诺书，当场或 10 个工作日内出意见（《消防法》第15条 + 应急管理部通知）</td><td data-page-node-id="NKXnT1RlUQLtnQycjdBHJN"><!--pnid:jGbeAfqyPd5bkoA5JCbILo-->承租方办</td><td data-page-node-id="fGR2uZEncyaSiMb5lBhw3n"><!--pnid:GIs1ZrKiH7P1ABzWmktROI-->主体消防合格文件（房东提供，见⑬）；店内消防设施齐全</td><td data-page-node-id="Yk4zpcrq4YVKFIfYUNL2Zi"><!--pnid:hQg4OWN3yJTlsMMtKLbOGa-->优先选告知承诺制，先开业后核查，但须确保真实合规</td></tr>
+          <tr data-page-node-id="erSTtS9CXuYV96e6Xa1fGV"><td data-page-node-id="QUqsa3C3QVYbvFUj5xNkvS"><!--pnid:iBLjz78uZdkkiQPfYn5pxM-->环评登记 / 排污登记</td><td data-page-node-id="GpN4O078mvGbmMl8o1l5So"><!--pnid:zhteFr79Tl71Zl02tK5Cfx-->登记表网上备案即时（《建设项目环境影响评价分类管理名录》2021版）；部分城市餐饮免环评但需排污登记</td><td data-page-node-id="AQLvuXdjhddrDy1Yh2WcGa"><!--pnid:WbJTX1eu1WNquSaJTpNyya-->承租方办</td><td data-page-node-id="rq0KdMDwFt4QHJNB44H0SM"><!--pnid:TiKI7VUpvhHEbsUCmr73dq-->不产生重大环境影响；油烟/污水达标</td><td data-page-node-id="aFyQheTUsmmmZVMahrhfuV"><!--pnid:xQ2AeDiU7l2h3TQLCn4xH2-->开业前完成备案，留存回执</td></tr>
+          <tr data-page-node-id="ARcu2WSPNFL2Z1zmNxyxce"><td data-page-node-id="8cVEDn2Wf9FFt3zWb84Tf7"><!--pnid:DenAhPO28j9BhTyw1CyBpC-->城镇污水排入排水管网许可证</td><td data-page-node-id="oqbIOn27UurZE60WH8HrVz"><!--pnid:IXhfUbMTo9w8RFGGLib4s2-->受理起 20 个工作日（多地告知承诺当场）（《城镇排水与污水处理条例》+ 排水许可管理办法）</td><td data-page-node-id="l0k2JKaDYdXIPlvj3U4Rro"><!--pnid:a0XWhVZssrVBB6fkcCUJi3-->承租方办</td><td data-page-node-id="79o7QbZrcyMJsqMBsEi6Jn" class="t-red" style="color:var(--red)"><b data-page-node-id="qtDXTOzrRVYMg1bIST9Pws"><!--pnid:v4cYgTUec1ow8JwNjXAIol-->隔油池合规</b><!--pnid:QAtqtmPNzWUz1u43bnA2mL-->是前提</td><td data-page-node-id="KCDDGcakneKArWfz3pUpE7"><!--pnid:P0kVvLPCu7D3v6llrhxWSM-->与食品经营许可同步推进</td></tr>
+          <tr data-page-node-id="e8fGkNfJmxm0SqgDu0sSii"><td data-page-node-id="NZTimEYAiG1RHqVJvGrs5F"><!--pnid:Vhk0mQSGWRf5DebqjKV0a0-->户外招牌/广告审批</td><td data-page-node-id="WzcdXuHRq6biKGJwsxIy9Q"><!--pnid:c0wm1OD20f6ba51yoxXc5i-->各地 7–15 个工作日（城管/市容规范）</td><td data-page-node-id="X5L8sVZRXIU7VFowAshl2q"><!--pnid:P8UCoZ4K3gLwHSZ2isHQ64-->承租方+物业配合</td><td data-page-node-id="gL6mvyfFEGzy3Buj26PAVH"><!--pnid:YN8H4IkwftBRVyN8Cbjuxm-->商场统一管理点位/尺寸；需产权证明</td><td data-page-node-id="FYJN5eqXvEpVb2G9SKIKzq"><!--pnid:3STbt43zNm79oa5M5OBlIJ-->装修期即申报，避免开业无招牌</td></tr>
+          <tr data-page-node-id="ZVA2152p2MNIwoJAO3DpAL"><td data-page-node-id="WW6aAvOAU7rdyNFXFlthzY"><!--pnid:caQkkeZjbHItfVk6dgTK0i-->油烟净化设施安装 + 检测</td><td data-page-node-id="RsgUf2bCNr1YvTDsfRt1XT"><!--pnid:WVAt3PL0YxjunusYVQ3Kxr-->自定；第三方检测达标（GB18483-2001）</td><td data-page-node-id="RBOu9TqVl6cWMTnPQtgr5n"><!--pnid:1CYkFT3k3KKl5HrRdgFHbB-->承租方</td><td data-page-node-id="kUGTLyfNwWD2pPPBJSXGrT"><!--pnid:MXj6WSRDw4zoNbMji58XaL-->净化效率≥90%且符合当地地标；在线监控</td><td data-page-node-id="ZgaZTBCmFLgPu0hdIgPTzS"><!--pnid:Ya0QQdQtKFbUuXEIZvkbY9-->装机即约检，留报告备查</td></tr>
+          <tr data-page-node-id="LkjVtAqJfR7Tt7fhuxqQDC"><td data-page-node-id="PsdPkPMRKBSrRvnGXvbUiH"><!--pnid:8KYDmxM0YC0WSoOhyM5lJ1-->燃气通气验收</td><td data-page-node-id="a5kmsohYP0RQsCQ2M6P8Cn"><!--pnid:eCzwf2DjaFWDk9OtGfcwtR-->燃气公司 7–15 日（视接口到位情况）</td><td data-page-node-id="hkYPa15BuhGyw214oRt6s1"><!--pnid:ZzxWuKuS9yvz0jBepGOQkP-->承租方+燃气公司</td><td data-page-node-id="PmDwldu3zu2qNdrXju0R8z" class="t-red" style="color:var(--red)"><b data-page-node-id="MNb31Ia9bRyV4K9EHtGnQr"><!--pnid:Vj29okZxDfANrRpmIFcjjQ-->管道接口/瓶组间</b><!--pnid:0ZHFo66F770BpRvxZn3LC1-->到位（见⑥⑦）</td><td data-page-node-id="0pZ9AjT1m94YtDXBA7gTki"><!--pnid:50eJypGeiNjoM6xLEkf9Ao-->签约即预约，避免通气拖到最后</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="JY0CXspDh6F6ZBmYp0WTgm" class="act"><b data-page-node-id="uUT2xoM9mL8W3gwCNsCNSi"><!--pnid:efyXr69WmQWi1l4UDUuVWa-->我的落地动作：</b><!--pnid:IyQNCjIwr1hmEKdPZi1jqM-->把上表做成"倒排工期表"——以计划开业日为 T 日，食品经营许可（约 15–20 工日）+ 消防检查（10 工日）+ 招牌（15 工日）为长周期项，至少在 T-45 日启动；硬件整改（烟道/电量）必须在 T-60 日前确认具备，否则触发第Y条解约。</div>
+    </div>
+  </div>
+
+  <!--pnid:QaB5Y5FJFFaWLcHS2f8X3B--><!-- 面板 p4：谈判落地勾选清单 -->
+  <div data-page-node-id="q9VziqKSlHqooRw6RGcW1G" class="panel" id="p4">
+    <div data-page-node-id="aslEUkpCknlAnbk9Xa81XA" class="checklist">
+      <div data-page-node-id="Tz4wc2ZOFO7hX1N8Sjukp4" class="cl-head">
+        <strong data-page-node-id="UucE9sTrigPheu2vdzh1j8" style="color:var(--gold)"><!--pnid:OAw88Fuc57fJgprv97vRbZ-->餐饮租赁 20 项特殊条款 · 谈判落地勾选</strong>
+        <div data-page-node-id="omQiHvuZw2UdHiWeTKS5tW" class="progress"><i data-page-node-id="tnIsdzpt2lZmo1Dt0erLLK" id="bar4"></i></div>
+        <span data-page-node-id="eq1oZTXg1p8upBjkcuuEq3" id="cnt4" style="color:var(--sub); font-size:13px"><!--pnid:01SjZrVzSRbi6jbtaesmG1-->0 / 0</span>
+        <button data-page-node-id="jIZZvLuSjINav0swqtzbnW" class="btn" onclick="window.print()"><!--pnid:nmnOIno7HKHKdtXbX7zsHy-->打印清单</button>
+      </div>
+      <label data-page-node-id="q4qrelxymcxpdtFF0gVyVU" class="mat"><input data-page-node-id="AEkjGQrA4XNDOYa5ROo8E3" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="FCcuOkVgWwM6IqsnDexNNK" class="m-txt"><!--pnid:ivzyQ6WTjFztxc665L3aBC-->① 排烟管道位置与截面（≥0.3㎡，接至承租区）<span data-page-node-id="fVoCdZ96HLIzzn2u0pYof4" class="m-note"><!--pnid:RXEnFWwFxwT9uRQ4APHO4b--> — 写进交付确认单</span></span></label>
+      <label data-page-node-id="ktYjyzgaEjyST0xhvp5BHR" class="mat"><input data-page-node-id="WbYMPA4y2HZPXLyGy6BKol" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="KAw4YaA4xhR3BGyBaSQmnU" class="m-txt"><!--pnid:i5uVfqz2PL5L5utzhz4Ap9-->② 排烟风量匹配（≥____m³/h）<span data-page-node-id="FVOv2WCPnmsWq2xAP65yqs" class="m-note"><!--pnid:oRrAUfUax3yqwHYrR7TaWN--> — 按灶头×2500</span></span></label>
+      <label data-page-node-id="cqhdGlbyrOXDSzPF88LGL6" class="mat"><input data-page-node-id="Xu1WYxhuBri7ft1OAq6mx4" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="2Je7LDtWIyR1gt22UluASX" class="m-txt"><!--pnid:Dga1b3C4XNGq9BgvXdohOz-->③ 隔油池建设与清掏责任<span data-page-node-id="xAVCoJCtf4bL9Esl82zjQZ" class="m-note"><!--pnid:mZRd1Dnm1r6v5XnGlmryQL--> — 容积≥1m³，清掏≥2周/次</span></span></label>
+      <label data-page-node-id="E1mMcihXaBuTt26Oc9nzXO" class="mat"><input data-page-node-id="artPkWNyoduYpTcogXSt44" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="BT5zwZjj4gikmVNE6jkvnZ" class="m-txt"><!--pnid:nFt0K1wuQub0NXrKUi03BA-->④ 油烟净化设备（净化≥90%+在线监控+季度清洗）<span data-page-node-id="OhBhH6Epkk6q7oKbePhcTY" class="m-note"><!--pnid:gZW8YqfdoQqq98HByjKaMN--> — GB18483</span></span></label>
+      <label data-page-node-id="P5gQ9ZJoi0V1hN50E43nF9" class="mat"><input data-page-node-id="l66hVnNxxY1zMgANyBAIzg" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="gh3c5VhsL5QTOFoqxtdlcc" class="m-note"><!--pnid:dx4tsVaOZknN3CiX2Aa41e--> — 3工日内出施工配合函，延误顺延免租</span></label>
+      <label data-page-node-id="zotuYY7tvrYUqCFjALyIou" class="mat"><input data-page-node-id="XLEh7jBUWYLR0hYjBm2GrZ" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="muzz0GKhVoa6QMppl7lEsB" class="m-txt"><!--pnid:UpFnfM9z2JcrlA7be8nsfO-->⑥ 燃气管道接入（接口DN50+15工日通气）<span data-page-node-id="AsZSA2CWJpL4zFBQJke7bl" class="m-note"><!--pnid:MlgyIFgMDbOIgHYnr3hwWG--> — 无管则提供瓶组条件</span></span></label>
+      <label data-page-node-id="HkBaxVzXC3Gmjqm5YKD69v" class="mat"><input data-page-node-id="RcdTC7xjSeL2bPQoJQnVnk" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="IqVdjtn1z7PMoaSCtQoer2" class="m-txt"><!--pnid:WYU0JYfAsOXON5L9q1uyiT-->⑦ 瓶组间/LPG设置与安全（GB50028间距）<span data-page-node-id="lulHbAKErYQz1lvOOrzrmx" class="m-note"><!--pnid:KnZy32U5Iw82zaiSwy9KAG--> — 多数商场禁瓶组</span></span></label>
+      <label data-page-node-id="W3cZMMedJWvPPSpaFGNSkC" class="mat"><input data-page-node-id="HM5TdtVSwk2MDbj4BILYsV" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="BOpdE2HEunO9BhBt6C7lDF" class="m-txt"><!--pnid:DIlpJwrgeURY8PD99nArS5-->⑧ 燃气安全责任划分（接口归房东/使用归租户）<span data-page-node-id="9WRIlNyJyAlhejRZhiLFZl" class="m-note"><!--pnid:2A6pmDcX2g6jFgrSgi5DbC--> — 月检留记录</span></span></label>
+      <label data-page-node-id="NuFq4bmeY1haGoDHMefKyY" class="mat"><input data-page-node-id="vSdSURY1unv9GSuom8YdRK" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="3WAXsY6f88OdTIs6yIVDAG" class="m-txt"><!--pnid:azK8PSOQsBNxiszl9mnyd2-->⑨ 给水排水容量（压力≥0.2MPa/管径≥DN50-DN100）<span data-page-node-id="n0HZihc9R0s1TjbFmEa3qu" class="m-note"><!--pnid:XJHypqOZWOv4tHlP18AFAz--> — 接市政污水</span></span></label>
+      <label data-page-node-id="KAw2Om3SYgBGPLA4XWlUCM" class="mat"><input data-page-node-id="ikOtJzpSDeX8SrFfbw88at" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="XgRetBw4qItxDbGsf42bGx" class="m-txt"><!--pnid:mqrpi6W91LZlTKsj6TbL3l-->⑩ 电量负荷与增容（≥120kW，增容费房东担）<span data-page-node-id="q2hiSrG0cscrZpgKE5G0Hh" class="m-note"><!--pnid:MYeWFB8oEHVdpyFiHIuuBo--> — 高频坑，必写</span></span></label>
+      <label data-page-node-id="J8ReCHsnvPouINE7rgWEdt" class="mat"><input data-page-node-id="cQH0wfoeFQbDw26nbCey0C" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="tuDq8dhmp9VgkrjwXiL0c7" class="m-txt"><!--pnid:RA1WIzX4uFROKnhAfmEGbH-->⑪ 空调通风与新风（集中空调≥12h或外机位≥2）<span data-page-node-id="tMGrX2hCTfKz2O0o5TBRFI" class="m-note"><!--pnid:7NbRC5MNVbleEoNMbRlo5X--> — 厨房独立补风</span></span></label>
+      <label data-page-node-id="Fa0HwBF2aG2UEjCwvEU81m" class="mat"><input data-page-node-id="aXwK5Cpgumt3LzJjaF1mt3" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="SPbrODAFyp5bFHXO2XskPd" class="m-txt"><!--pnid:fC07Z49H075xDhgp3lgmhU-->⑫ 产权与场地文件（产权证+平面图+同意转租/经营证明）<span data-page-node-id="pIzvCP2c6Otv2HO5xoWwKU" class="m-note"><!--pnid:rrzjr0NhEfunCkVuCCRm2F--> — 5工日内</span></span></label>
+      <label data-page-node-id="30HuIZ0rBomtSqpuC1kyR5" class="mat"><input data-page-node-id="zAyl8iGu4L8TPkfNEyhfI0" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="AsbSdNR6s8Z3xpJ505N6Il" class="m-txt"><!--pnid:BwagkOjkXdy4qgiaANic1C-->⑬ 消防验收文件提供（主体消防合格/备案凭证）<span data-page-node-id="FgSLI3FuVdMPP9USAZEKMH" class="m-note"><!--pnid:eKhxg8CNISPQUkCpU0QcTU--> — 盖章复印件</span></span></label>
+      <label data-page-node-id="vYcJCGjArlT3MR5HlDK8wK" class="mat"><input data-page-node-id="aHJSYze2zt10Sw9VptWFb5" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="gpvB22AtDljTHdzI7n3REK" class="m-txt"><!--pnid:HY1gJX6Mxfs6vBdVoskiFz-->⑭ 办证配合违约责任（完整范本 Tab② 一）<span data-page-node-id="9aoFEdbPb9I8F1MF4soqsu" class="m-note"><!--pnid:9v1j6u8hwE84SAPgFCFNZg--> — 逾期15日可解约+全赔</span></span></label>
+      <label data-page-node-id="7EZhAIQHVDNZSL2hD78jvK" class="mat"><input data-page-node-id="vaqiGKkevvRqGhZOESeJU0" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="XjNxyXAHR5V1JAfPEP7EmO" class="m-txt"><!--pnid:8fNhBg959PC4fxrMwbxLqV-->⑮ 消防设计报审责任（店内租户办/主体房东担）<span data-page-node-id="KKiRj7TbY2CvJFA47xKK0B" class="m-note"><!--pnid:GYMvJuW9kr5BFSAhdYQs8G--> — 分清主体vs装修</span></span></label>
+      <label data-page-node-id="fTNkFjVcIEtE3qvAz2Oj4L" class="mat"><input data-page-node-id="6wjwEUTtx7d7t2E1Dqdyen" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="LfO4dea5tRijGm6c0bsCdH" class="m-txt"><!--pnid:PoExe1uVSElH1KQ43hdb3F-->⑯ 消防不合格致无法开业损失承担（完整范本 Tab② 二）<span data-page-node-id="yLHncIdMJfA6J4oThXruME" class="m-note"><!--pnid:RmMYilA4wa9tRTeTsfmQLX--> — 免租顺延+解约免责</span></span></label>
+      <label data-page-node-id="viL87bNHgpoWlXlGZbbLwt" class="mat"><input data-page-node-id="ktHFW85mgQDIBhe0bRKMiL" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="KFQHFgqcPZtLRuzyEKOwk2" class="m-txt"><!--pnid:8ej1HsrNg1H35av1osQHlA-->⑰ 营业时间强制与豁免（统一时间+外卖弹性）<span data-page-node-id="DQxuC9ekmX5R9Xc9VqjwrM" class="m-note"><!--pnid:EeXlvA8DOBYYf6LB3xxJJ7--> — 不得无理拒延</span></span></label>
+      <label data-page-node-id="kFK7i7TrhllOzUL2LBGWay" class="mat"><input data-page-node-id="E5v3KbRAr2OhH3uB7gCQ9e" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="rRFd4V0sR0Ezm8caT6uLOR" class="m-txt"><!--pnid:r47kluIlS5MuRyGuxWQUkZ-->⑱ 外卖取餐动线与骑手管理（专用点位/通道）<span data-page-node-id="6UhrdMcUEVVKAF8GVo38RL" class="m-note"><!--pnid:sJUqczq9ET8JQoHmanqRqm--> — 禁额外管理费</span></span></label>
+      <label data-page-node-id="Q920MrALAkWuPXZXGhZB8e" class="mat"><input data-page-node-id="Fv5xm99vFI1Dpty8Gk3MVJ" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="KMhwFqWDd3mdALsvyYxj88" class="m-txt"><!--pnid:pm5DeOrqvEh1IQs9tIN3XJ-->⑲ 垃圾清运与厨余合规（固废法57/111+新办法15/21）<span data-page-node-id="RE2oQGqVVZmZNNUK2TYSHA" class="m-note"><!--pnid:33d8lBAlA4yCYlsNNZfWPs--> — 交有资质单位，罚10万起</span></span></label>
+      <label data-page-node-id="FGaWpKXYaKmossaDpPE9eO" class="mat"><input data-page-node-id="pOAbtJU09tUUQtjzjqKsUZ" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="tcHt0jBPxPg1dhxpd8TCE2" class="m-txt"><!--pnid:KGOJPWp0emk8GJ6I43a8Qp-->⑳ 招牌位与审批责任（≥1处+配合审批）<span data-page-node-id="tBYRxOtAB5UjrjhRKzXlxD" class="m-note"><!--pnid:ujsIpLGCppJJysL3Bd2rLi--> — 落空则替代或减租</span></span></label>
+      <label data-page-node-id="6n74V8UuBtPefBfYotCRoM" class="mat"><input data-page-node-id="C5E2h8QuvFZjurArLXQ4uy" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="ZYSidwVHrwjIYT8DdgkCGr" class="m-txt"><!--pnid:pa8ol5o1KyKitM3MxwscwW-->㉑ 外摆区使用权（政策允许+物业同意）<span data-page-node-id="1iTrGeBk3CxqRngvYSMPWE" class="m-note"><!--pnid:x2dbUs0n7SCywGXYx9rvXY--> — 提前30日通知取消</span></span></label>
+      <label data-page-node-id="7o1Wq9Lx1BxwP6Q8BTfGQY" class="mat"><input data-page-node-id="nqdTuzl7De3a0YC8UYC9Zy" onchange="upd('bar4','cnt4')" type="checkbox"><span data-page-node-id="8jxo0hwpO1ab6GIihocMri" class="m-txt"><!--pnid:fmnKiEsBpLF02EmcauQeHS-->㉒ 噪音与气味投诉处理（24h响应+分清责任）<span data-page-node-id="BDw3hpw18B1jXXZg1V3XsQ" class="m-note"><!--pnid:H5t07874iGOtQgNjuYY3dV--> — 不因单一投诉强制停业</span></span></label>
+    </div>
+    <div data-page-node-id="wMlwvV1k0z2bg7W82WngUK" class="anti"><b data-page-node-id="NzjoaGyHhWcIFdSkzOGlLs"><!--pnid:MaNBSRRoslMMSAHSOeOt8O-->最高危 3 项（优先谈、不落地不签约）：</b><!--pnid:TkOUJSAQSX6vPzklXN836s-->⑩电量（普通铺只有20–40kW，快餐要120kW+）、⑭办证配合违约责任、⑯硬件不符免责解约。这三项任一项缺失，门店开不了业的概率极高。</div>
+  </div>
+
+</div>
+
+<script data-page-node-id="KHEfm4igNgvS81d9HsD6ZD" data-pnid-children="ViX58C79tpET0KAwC0QNbb">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'), n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

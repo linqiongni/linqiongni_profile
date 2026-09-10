@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html data-page-node-id="jD1pfJT1DyHKYzPmiXygbH" lang="zh-CN">
+<head data-page-node-id="iGIHPmMqtSSw62gOW6iQhr">
+<script data-page-node-id="G314Kr5aVjvz1gBmkDAc6b" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="9puQm3gSe2IyxQX9vEjGJj" charset="UTF-8">
+<meta data-page-node-id="iVxA9Tp9eaEOepTIpudVPU" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="ESVrm8EQcvEQlbDsmh4911" data-pnid-children="rvCc7QPfPwy6JTQ7SNKiIH">外部资源管理（代理机构/律所/调查公司/异地律师）· 餐饮加盟法务</title>
+<style data-page-node-id="fnqJZZEMU9Y5MzYFC5LXrC" data-pnid-children="4y2wZTZQmGZzLdA4xkKUf3">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .note{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:10px 14px;margin:10px 0;color:var(--sub);font-size:13px}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body data-page-node-id="ixIMqu3hjAgt0BPBAFuwPX">
+<div data-page-node-id="A4xYZgyA3sEVlyckPkCw2q" class="container">
+
+  <header data-page-node-id="cOuiTTtGU9Z1ktdRy9JXnt">
+    <h1 data-page-node-id="41yWu9kIuVmhQmdmhkYxtA"><!--pnid:BqiJRS2s5lIkNLxepMRh3A-->外部资源管理（代理机构 / 律所 / 调查公司 / 异地律师）</h1>
+    <div data-page-node-id="L1gw6Nz9uJc8PWJtNDI2jo" class="meta"><!--pnid:BfWbkhljwmovYDK7QfPtBz-->特许人（品牌总部）立场 · 谁该干什么、怎么用、合规边界与考核</div>
+  </header>
+  <div data-page-node-id="eiRRpNgwO1oqmfQlqXeVUS" class="lead"><!--pnid:BdXSzf52cbmKaM46CSiBg2-->品牌保护不可能全靠内部法务。本文件厘清四类外部资源的分工边界、调查取证的合法红线、异地维权如何借力当地律师，以及考核管理要点——避免"花了钱没效果"或"取证违法反被诉"。</div>
+
+  <div data-page-node-id="vIt6TBlh6Xq9dSAZI1IqIz" class="tabs" id="tabs">
+    <div data-page-node-id="0tSzNnyiYJAAoLn6FSlfiv" class="tab on" data-p="p1"><!--pnid:rN1h9FU7DIZfAsR7RdDUD5-->① 代理机构 vs 律所</div>
+    <div data-page-node-id="bggdFcDGxv7636IguV2O34" class="tab" data-p="p2"><!--pnid:lliI7hyIVjU4ybC10iEpxP-->② 调查公司合规边界</div>
+    <div data-page-node-id="hIwA8UYZOyJMU4XzUMK2WR" class="tab" data-p="p3"><!--pnid:g0kiHJTRULw70CF0dxBSrw-->③ 异地律师网络</div>
+    <div data-page-node-id="NchWQ6RW5HEb6C1Su0ZoWU" class="tab" data-p="p4"><!--pnid:7JJolJlwKzKXEHcTP554cf-->④ 考核与管理</div>
+  </div>
+
+  <!--pnid:G6eHanEEQqBDlwrYE3ox6v--><!-- p1 -->
+  <div data-page-node-id="h9C9y6WVNtuET4ob18Dl8J" class="panel on" id="p1">
+    <div data-page-node-id="2dyXitcPhz3rv90ifB8J8p" class="card">
+      <h3 data-page-node-id="xdvABzX4wl7dnebjlV2DeP"><!--pnid:kU9AkMMvgkoe1zos6W0Pon-->一、商标代理机构 vs 律师事务所：各自适合干什么</h3>
+      <table data-page-node-id="V2KATXZaUZUJLD8zh2pNLL">
+        <thead data-page-node-id="IXh1fBwDKGc2K6Rs29ZxZg"><tr data-page-node-id="rnk3EnGqMpApmL8PUSTDr3"><th data-page-node-id="SYXiWVeyicpMc7hI6DVQRK"><!--pnid:FqWmAKpQS0HYdnf5TDSQzG-->维度</th><th data-page-node-id="SN8ymSHTnQPyW5wxCfImZG"><!--pnid:MjUtQssWDDcrGqOzbkXObZ-->商标代理机构</th><th data-page-node-id="2B8S1jamBMulfvfnmvuyN0"><!--pnid:zj5ECvIyH0y8dlm2VdPgSF-->律师事务所</th></tr></thead>
+        <tbody data-page-node-id="FwGUMkwN3d4n95z9R9Y2j1">
+          <tr data-page-node-id="X1Eh1JHFQlQkj658V6R7P0"><td data-page-node-id="K9ULwcsIh5RnHwLnLDPs5R"><!--pnid:OkuVtvAxfqC0AYyNBHHBuz-->法定资格</td><td data-page-node-id="f0lY7WTIpNjcwQIFJ6Fx0J"><!--pnid:IEDEKIxVv2giNEVKnvEmkf-->须备案（《商标法》第19条：代理机构须在商标局备案）；只能从事商标代理</td><td data-page-node-id="JgIBh1bk3rghzxSP9wde2i"><!--pnid:Vkr1NPZCd2qkewQz8MTZqW-->持有律师执业证；可代理商标诉讼、民事、刑事、行政全领域</td></tr>
+          <tr data-page-node-id="ZT1qMseCjCjy2EdM3mfQFh"><td data-page-node-id="a2B3maQEL1PjKFtKtRl2b4"><!--pnid:25zyZl4vHcpgwGoN9JCnwX-->擅长</td><td data-page-node-id="356xf4VfsxN6M9TVS0OffA"><!--pnid:OwhmRfdS8nKFkW1XjHhg2P-->注册/续展/异议(第33条)/无效宣告(第44/45条)/撤三(第49条)/监测/驳回复审</td><td data-page-node-id="4QM7nAmabruMbl2a45YYrL"><!--pnid:m1VHAZoA6Xl52i8JqTZc6b-->商标侵权诉讼、反法混淆之诉、行政查处代理、刑事报案、合同与谈判</td></tr>
+          <tr data-page-node-id="BIA0DFzVhFRqVO0OTf4hki"><td data-page-node-id="aAcimxZ4k1xxpKSEiFnZOe"><!--pnid:KcwlHhw3RExAWlnQl2LSPI-->不适合</td><td data-page-node-id="zlhirEnJTLYlD8GVppOCvW"><!--pnid:lK1Slq2uTRKsakut98Nvrc-->出庭诉讼、刑事、复杂维权谈判（无诉讼资格）</td><td data-page-node-id="QPRjo0vd1nFDq4JZspteAR"><!--pnid:inOTzbxU2CeUDA0Ujyt5L4-->批量注册/续展等事务性商标业务（费率高于代理，不经济）</td></tr>
+          <tr data-page-node-id="WYTN4OXzWuMRMpaZfYJTNW"><td data-page-node-id="taO4lKOeNoqyM9bjjRMKPi"><!--pnid:15d4zKd3hk5X05L1Shje0o-->计费</td><td data-page-node-id="PSPYqay5T4lw7IfawFTE7l"><!--pnid:f8HoJbM4nvulU6wJAVbOj8-->按件（注册 800–1200/类、异议 1500–3000、无效 5000–15000、监测 3000–8000/年）</td><td data-page-node-id="jzxFsklNW5ftH82BSWVg3W"><!--pnid:ZMy7ed4COIx9E8UNxDc6At-->年顾问费（8–15万）+ 按案（诉讼 2–10万起、风险代理分赔偿 10%–30%）</td></tr>
+          <tr data-page-node-id="b3UDfs9C7h4IaqOnxDoAsB"><td data-page-node-id="KOs3chL7MP4mlxqesl24C9"><!--pnid:ryeHkBNnt0sYMaIVZlsceE-->使用策略</td><td data-page-node-id="wlmlzPZwA01RhHMNtZu0ZG"><!--pnid:trrITEblhDbJ213raq3nSm-->"防守+事务"主力：布局、续展、监测、异议无效等程序</td><td data-page-node-id="N08j1kppDcMjDNQvacgpC6"><!--pnid:0WfXv6Q1U5xCIHgotLHbFp-->"进攻+争议"主力：诉讼、查处、刑事、重大谈判</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="kWrZ9IlZWMhBswJkmyLb2S" class="note"><!--pnid:bKXrt1qTJhHP2MFrX57XJC-->依《商标法》第18条，申请人可自行办理也可委托代理；但第19条要求代理机构备案。选代理看"备案资质+餐饮类案件量"，选律所看"知产诉讼胜诉率+异地分所/协作网"。</div>
+      <h4 data-page-node-id="pkJxJgndzjE45VFSiCfCzy"><!--pnid:EIVoHDi7YQfL22g788QWDY-->组合打法（以单店仿冒为例）</h4>
+      <ul data-page-node-id="HX7Ut4Tp5wtMipRB4i4AJp">
+        <li data-page-node-id="wckYyQADlbyCpccAu768bw"><b data-page-node-id="9vc1rqAFWmJtBUNcm4FquK"><!--pnid:CLmUxl3v4wzvwXUEGfSojd-->代理机构</b><!--pnid:aISmSPHOiNmICN4eRAJT9i-->：做近似监测、发"律师函"前端（部分代理也可起草）、商标权属核验；</li>
+        <li data-page-node-id="c2jm7aJo2OyYusarWBTYH5"><b data-page-node-id="w4KMvZUqG144GJBjjnJnKr"><!--pnid:tAbKLopsAe7lhSevt5oubC-->律所</b><!--pnid:MAPBEjKzrUhPzCSNya2n2Y-->：公证购买固证、平台投诉、市监查处代理、谈判与诉讼；</li>
+        <li data-page-node-id="UUC1KolQYqt16jeJHA17Z4"><!--pnid:5ZuilVjV8zASqJKTLnrLjo-->两者通过《打假案件管理系统》共享案号与进展，避免重复作业。</li>
+      </ul>
+      <div data-page-node-id="heIcvkP4kUaMWpKXTJ4xpo" class="act"><b data-page-node-id="OWsQjRJltaaYTvKQuvfjY4"><!--pnid:JMkwigmd6nbAsmp2v70Gx4-->我的落地动作：</b><!--pnid:s5r8ZYC16z3b1PA5C2iTIe-->常法（律所）负责"进攻"，商标代理负责"防守"，两份合同分开签、分别考核；年度复盘比较"代理产出（注册/异议成功数）"与"律所产出（下架/胜诉/赔偿）"。</div>
+      <div data-page-node-id="cv8GsP4ukrlxSjVMB0pklH" class="anti"><b data-page-node-id="20JTn63JE1zGKtRYppgRnA"><!--pnid:n6ntXWmz7Z4Gf3uT0YQjSs-->加盟商反制点：</b><!--pnid:0qWU7aqQHMsU67M3DiOi2V-->代理机构/律所在服务中接触加盟商信息的，须签保密条款；不得借总部委托向特定加盟商兜售服务，否则违反忠实义务与反不正当竞争。</div>
+    </div>
+  </div>
+
+  <!--pnid:Gt7bvcz8EI60e5P70elOAG--><!-- p2 -->
+  <div data-page-node-id="2tiTDjm3NZtBMnlMr35Iv0" class="panel" id="p2">
+    <div data-page-node-id="v4hW2MdBER84dVFlJdKpnq" class="card">
+      <h3 data-page-node-id="xrDW4J6JwYniHM838cIlZC"><!--pnid:TdvEVArXQcl9TEqwCqIJ7E-->二、要不要用调查公司？合规边界在哪</h3>
+      <div data-page-node-id="XZ3Pie7CQaUXGnSRAtqLz7" class="note"><!--pnid:tc9zCUhlcKmxMySKD65Q10-->结论：<b data-page-node-id="P9pLE7n3ErlOH0M3h8NiXf"><!--pnid:JllQgHDXONavPi7MrWatuA-->可以用，但只买"合法取证服务"，绝不碰灰色手段</b><!--pnid:ABa6BfGWirZedMiLjdLbVR-->。我国无专门私家侦探立法，行业按"法无明文禁止即允许"运作；但红线清晰，踩线证据不仅无效，还可能让总部/律师涉嫌刑事。</div>
+
+      <h4 data-page-node-id="Z7VWSijMHfFVnoOsBRoUXI"><!--pnid:WE5w8Tq9gghp8bgeayYtOL-->① 合法调查手段（法院/市监普遍采信）</h4>
+      <table data-page-node-id="D1Nqg2j1hA9YPP2KRklmlq">
+        <thead data-page-node-id="eJOeARKnrb5et4DqaUgUCw"><tr data-page-node-id="XR3We6ZpbzNPyptl02WV47"><th data-page-node-id="K9E9quYhUeU9zStatqXBoy"><!--pnid:07i53qyzIxIoK8GQ2dCa5e-->手段</th><th data-page-node-id="fGCAsaWy8S5VyoveHEzOK6"><!--pnid:SQmIVWLl8rFAFnNUzHtb7I-->操作</th><th data-page-node-id="GvWkKkeB0hNTb6OWvDTwTr"><!--pnid:lVDuN6Jf8SjWceWYgqh4Hk-->法律依据/效力</th></tr></thead>
+        <tbody data-page-node-id="h7u6ePaUcYDEbNP4KpUn7k">
+          <tr data-page-node-id="P6M2V3EfgEUtTirOvEVc4u"><td data-page-node-id="DDBhMmzExTYavSAmNaKM5t"><!--pnid:5oOk0WQBjQUeE92GKA6sic-->化名购买（陷阱取证·机会提供型）</td><td data-page-node-id="Ba12k49iuLCkYud2ucJh53"><!--pnid:WWf42l30mE310jWKOG8jcu-->调查员以普通消费者名义购买侵权商品/餐品并留票据</td><td data-page-node-id="5gzgKVWRh1Q0ck2Jg3nzJO"><!--pnid:sFG4IZFwQX1fcz1GBNx4Zl-->《知识产权民事诉讼证据若干规定》第7条：权利人委托他人以普通购买者名义购得实物、票据可作证据</td></tr>
+          <tr data-page-node-id="69O0XKBOF3LuLaNiv1t44Z"><td data-page-node-id="HGfuSytrzx52PtBFttrJQe"><!--pnid:Rh61aQ2f07hG1iqOEtVpHE-->公证购买</td><td data-page-node-id="lXebZR3ouP3x5GYTd6bnpt"><!--pnid:YqSzUCDesEQrhvX247oIJc-->公证员陪同购买并封存，出公证书</td><td data-page-node-id="KgDvFDtSW70aimYaloLcXx"><!--pnid:rBcOrOIOQnEd7hfJ7ONXqQ-->经公证证据推定真实（《民事证据规定》第10条第7项），证明力最高</td></tr>
+          <tr data-page-node-id="31ZhRYmiX4drGXfRGfJuqc"><td data-page-node-id="pGKSdOcPm2FNs5ovwwX2Yp"><!--pnid:xZGFbjljRH1ootMqTL7hCF-->隐蔽录音录像（公开场所）</td><td data-page-node-id="zm5H9YSTJJzUBkyorf8xhM"><!--pnid:YRYqaf0GhAI04GC4COrtXK-->门店外观、门头、店内装潢拍摄</td><td data-page-node-id="oqtYLxtALyHIXwy0cfg135"><!--pnid:wNq4ZFCC7p4uJ9aUdGy4WM-->未侵入私密空间、未用禁用器材→一般可采（民诉法解释第106条反向）</td></tr>
+          <tr data-page-node-id="vcQQ8Osp4dJ4VDmCHSlszh"><td data-page-node-id="KtFHYKq5lzU8n02d4KOqqT"><!--pnid:vvfZHp5zEELmRVzeKT7tqS-->公共场所盯梢/记录</td><td data-page-node-id="DUKEhfQTQAsbBH1hsZamrg"><!--pnid:DMpAOXLVgPZ26phFb83MYS-->记录营业、客流、配送范围</td><td data-page-node-id="ipoaQGWWlSjfLTea4HuXH9"><!--pnid:B2mLdG1TWaJHblTaztmJqD-->公开行为，合法</td></tr>
+          <tr data-page-node-id="ZfJzpc3yuHHvtjYpQXA40b"><td data-page-node-id="efeGbmgIyXwaadbXHlbWLN"><!--pnid:Nl8vBe3zEhAI5N2A9x4o2c-->线人/举报人</td><td data-page-node-id="ELBDtX5NxtEJrgRmiyAcsN"><!--pnid:AKtxYmdGcsLdrkh1Oub5mX-->内部员工或同行举报（可给奖励）</td><td data-page-node-id="4AVwcFx60Nk8RiEmAssErA"><!--pnid:WjWiDSvQY7BloafVcqtpe6--> whistleblowing 受保护，奖励不违法</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="K3nqmUa90tqBivtRSgtDfd"><!--pnid:duhxhdtkS7KXFg2wt4W0Uk-->② 红线（绝对禁止，踩线即违法甚至犯罪）</h4>
+      <table data-page-node-id="p3iLJj58bow6A1rso0y4pz">
+        <thead data-page-node-id="9Nq68s9ihJUAgnqrbQGK6l"><tr data-page-node-id="14a6p7qKxLiFfHINLpnBir"><th data-page-node-id="olbPjuDzhKc6O13DJC7a0h"><!--pnid:9t8J4Vo3RPZXGHs3tcoc75-->禁止行为</th><th data-page-node-id="cQWs812D9A6Feq0ZZOANEO"><!--pnid:WipErVZfNuikgWjgYJS8Vh-->法律后果</th></tr></thead>
+        <tbody data-page-node-id="s89TKFGR2aEh67UD0Dgaj6">
+          <tr data-page-node-id="uJvs5S04PoQWuDu4h7gMPE"><td data-page-node-id="9F7NLamiEUVDjWqFZerkCw"><!--pnid:iBnqAq5L73RDj6Z31haQTs-->使用跟踪/窃听专用器材（GPS 定位器、针孔窃听）</td><td data-page-node-id="MnS8X4VNVf3tdd87jrAUsJ"><!--pnid:fDz0qpQnH6ZMGjmN5z9qjm-->《刑法》第284条 非法使用窃听、窃照专用器材罪</td></tr>
+          <tr data-page-node-id="iv0bVKEt470K4ddZHJAX4q"><td data-page-node-id="Fzj5rHbYVkg7b2CGOTgYo5"><!--pnid:jzA87ihrzGFD7FYzWqOYz5-->非法侵入他人住宅/经营场所安装设备、翻拍机密</td><td data-page-node-id="23sceYTJNohwaw3LWd7vgZ"><!--pnid:UmVTEUDWm12dIBXivrzNWI-->侵入住宅罪（第245条）+ 证据排除（民诉法解释第106条）</td></tr>
+          <tr data-page-node-id="UX4UB2mLpDezROH7utTYoQ"><td data-page-node-id="G8UomBUpq7l5lG9poiwcjF"><!--pnid:p9mir3psc1bFbd4qWWYiHq-->胁迫、引诱原本不侵权者制造侵权（犯意形成型陷阱）</td><td data-page-node-id="yfga0bcSVA68dyEcDp0uRi"><!--pnid:Yj0MDGigAXYHn0Lz0Ell33-->取证效力存疑/排除；最高法判例：诱导原本不侵权方生产才构成"犯意形成型"，证据不予采信</td></tr>
+          <tr data-page-node-id="0cUIrPJkcpYGjn2fyp4yr9"><td data-page-node-id="wI6uiqZrJPqgB8GOppg9EN"><!--pnid:eG59R7L17Sgdib0kh2Cz8Q-->购买/爬取公民个人信息（手机号、住址、行踪）</td><td data-page-node-id="UrPWVyR3BULwmXBN84YjhG"><!--pnid:VsPwt6m0wVFqiW1sCzn77S-->《刑法》第253条之一 侵犯公民个人信息罪；个保法第66条</td></tr>
+          <tr data-page-node-id="jS6fxL7eG7wuScGuoAnMJE"><td data-page-node-id="e0LevYWFCDw9bfXErVfwpB"><!--pnid:6GDrnPuw4ZhbS02DHytm4I-->暴力、恐吓、冒充公职人员</td><td data-page-node-id="1QmuOFm7BKUwjrWz7GGGZN"><!--pnid:bhDq8TkY3DKd6QvmW1aVKm-->治安/刑事责任</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="uFhVAtaD5R8XPVZWMMqjYW" class="note"><!--pnid:p0tuC2uLYF1jEGWedSTdWs-->《商标行政执法证据规定》（市场监管总局、国家知识产权局 2024.12.26 印发）明确："以非法手段取得的证据，不得作为认定案件事实的根据。"市监查处同样排非。证据合法性是行政、民事、刑事三线通用闸门。</div>
+
+      <h4 data-page-node-id="Dd8epgDAlkNCwJpGyWxJOK"><!--pnid:eLbxlQfkYgGZ8meXbBnCYK-->③ 合规取证五步（总部/律师给调查公司的指令模板）</h4>
+      <ol data-page-node-id="cSIdP84qKxPTSOiRvOjz9Q">
+        <li data-page-node-id="vTurKHcNSaGW79TYmES5OU"><!--pnid:95u4u3mXOECJm8Ke9WmpRz-->只委托"购买+公开拍摄+线人举报"，书面 forbid 任何窃听/侵入/跟踪器材；</li>
+        <li data-page-node-id="NQJMKVJveyLuEat3BRDLro"><!--pnid:ACMvYmjfgkkaIYaepPYJd8-->关键购买一律走<b data-page-node-id="meRtSF591kw5oaYrv2Cnjj"><!--pnid:3X4uKZzng7E5Tmp8Lyzpxk-->公证购买</b><!--pnid:pE7r8LN2hmMVYLRvviy5km-->，不要省这笔钱；</li>
+        <li data-page-node-id="0nU6YI5IM50nzaXLqRpwdW"><!--pnid:kBZNmNSBkkT6t374CBNNj8-->要求调查公司交付"原始影像+时间戳+购买票据+无法篡改的载体"；</li>
+        <li data-page-node-id="UTXghHXPWqxZASOxSS3NJZ"><!--pnid:pXcODHiFnWCmFp72s9BexK-->证据链：商标权属证→购买公证→侵权比对→（必要时）鉴定意见；</li>
+        <li data-page-node-id="QJ8MvepXgulE0LAv1tp61R"><!--pnid:Zxtz3PyEHZLph3ze5MlT8e-->所有证据入库加密，留"取证方式合法声明"备查。</li>
+      </ol>
+      <div data-page-node-id="fiUK89yrTw2daZsgwOtXd2" class="anti"><b data-page-node-id="rza7BDVR0ulpB6VlL2ox9Y"><!--pnid:9HeZkqhkcQJuCUvRrxYSfY-->加盟商反制点：</b><!--pnid:FoH5hOnrhKz94aYhSftUBT-->若调查公司以"查仿冒"为名，实际刺探某加盟商的经营数据/客流/财务，属超授权取证，证据无效且总部可能连带侵权；指令必须严格限定在"对外仿冒标识"范围内。</div>
+    </div>
+  </div>
+
+  <!--pnid:aShEQHpuLgTF34gy3tW5Yb--><!-- p3 -->
+  <div data-page-node-id="ILLCJw5oBJDSl6PD2vPozj" class="panel" id="p3">
+    <div data-page-node-id="f3IwJUFNVqIg5rBpWrqp4e" class="card">
+      <h3 data-page-node-id="AMwOAL1gZGmvfzlnA9r1uq"><!--pnid:1iKvF3qIk0OhvUre5Yyfgr-->三、异地维权怎么用当地律师（律师网络搭建）</h3>
+      <p data-page-node-id="L3F6QLNIVD4RHqBe2cKxS5"><!--pnid:GKxketckUZBGaOsfqZvrFU-->品牌全国 300 店、仿冒跨地域，不可能总部法务全国飞。异地靠"当地律师"落地行政查处、诉讼与执行。</p>
+      <h4 data-page-node-id="7X5fLsHW2mKHPE8Eg2DSN4"><!--pnid:SCQ8j80fwS2TiFpPDmIdsn-->① 网络搭建三来源</h4>
+      <table data-page-node-id="oeKLZUTPRU9WQ27f2SlLvm">
+        <thead data-page-node-id="TL5w70aRj9WUn2wGCfN5UN"><tr data-page-node-id="5tNJoSjlekAkiRFnqILlg2"><th data-page-node-id="1ATypUjr6fzG5CzBGI621a"><!--pnid:BMSYz9tlr1Rkn3ogZkYdpt-->来源</th><th data-page-node-id="5yJXmyoVY3ei8O08KvMMwI"><!--pnid:3ISWBFLWAaOts8K1B38bqd-->适用</th><th data-page-node-id="fqalBwELwOzcuxNM4VHTCK"><!--pnid:4zI9sQXHHiKWGGpDq1zKhI-->优劣</th></tr></thead>
+        <tbody data-page-node-id="FvWJzi5ocmFGArvi02inTZ">
+          <tr data-page-node-id="yyK8cT2z1KzAbnvBkf40r8"><td data-page-node-id="HJG4TtXQ7xThvsS9MPyFc7"><!--pnid:SFTdIaodurH46r8qycCxHJ-->常法总分所</td><td data-page-node-id="DqicVgUYcNEc8j8I8SdZPS"><!--pnid:HaAFAIfdROwEKcItHVNQIW-->选有全国分所/联盟的知产律所（如盈科、锦天城、方达等）</td><td data-page-node-id="eMUOj8OD7kbzbK4dOGJuvU"><!--pnid:dYgQN6EO2c4wiUmM4JthGl-->协同好、标准统一；费率略高</td></tr>
+          <tr data-page-node-id="NksuLYTnfcnwAdloy2Y8T2"><td data-page-node-id="IJTF0xdMclVn9PHkCOoV0U"><!--pnid:ujpgo6grycBVmqt1u8ylQt-->律师协会/知产联盟推荐</td><td data-page-node-id="UjSGztCZ2hlWGCIScDdqR5"><!--pnid:PSjJ3jhHKEr4aUVfI9ehV5-->各地律协知识产权委、中华商标协会推荐名录</td><td data-page-node-id="z5pInaOmDpAD7jjmmRH7uS"><!--pnid:tSn9Yy1Ct6rRhserLlD1YF-->专业对口；需自行磨合</td></tr>
+          <tr data-page-node-id="Ln8Cs0O2MpCdAfpKCja50F"><td data-page-node-id="UG429r6x9lhaEjn12mN02e"><!--pnid:9ZiSC9E1MmNvLKsPjUI0pd-->按案临时选聘</td><td data-page-node-id="3v9OE4sy4qpC928ezwsgYX"><!--pnid:spMdCOF18ktHRumPiuZRvU-->通过"无讼/法大大/当地熟人"按需选</td><td data-page-node-id="La6Vw1ZCHMeqMCEKrG9tDA"><!--pnid:zIw6z9Us1xQ9F2iNuJAV0E-->灵活便宜；质量参差需考核</td></tr>
+        </tbody>
+      </table>
+      <h4 data-page-node-id="Yugn07DxlLz9Dk6ujUWzCH"><!--pnid:aVdUZVOFFQJ5CFn1e1aCbk-->② 协作机制（总部控盘 + 当地落地）</h4>
+      <ul data-page-node-id="vNW5qv3uBARKnx4qTZXYF9">
+        <li data-page-node-id="ICBIfMKCuZZ6OhP2vwnbhC"><b data-page-node-id="iMwIUW4NEup8axiMN1Dz9M"><!--pnid:1viIdpd1ya29B3dEniYlQ6-->总部统一策略</b><!--pnid:T8BCboPthdYz2cUUpkKIUk-->：定级、定赔偿预期、定文书模板（由常法出具标准诉状/投诉书）；</li>
+        <li data-page-node-id="ghkhJDfN2JlIUMC43gmrdz"><b data-page-node-id="CqDmv9vsslFHqkGPCN32pS"><!--pnid:e9bA71o4KtcKA2Gs9KUtyI-->当地律师只做"本地动作"</b><!--pnid:ZJ3hJiM9askO2APVxXX7sU-->：提交市监材料、出庭、领取文书、执行；</li>
+        <li data-page-node-id="nXE5rTt8cHL5W1SPAdbYwD"><b data-page-node-id="gGWjoM0PhsGrPt29Rs9NKR"><!--pnid:FTxrKFvtLrtMOkjD9tIprQ-->费用结构</b><!--pnid:MiEZXym2j3uUecWG3xibKv-->：基础费（当地差旅+基础代理 5000–2万/案）+ 风险（赔偿 10%–20%），降低总部固定成本；</li>
+        <li data-page-node-id="sZejw8QXWvVUj4NWyufSXk"><b data-page-node-id="GsRHVSFsq4rooyDnZntFe8"><!--pnid:r1e0kE940dTXe5xNTr4qDH-->信息回传</b><!--pnid:lgS4RwqP7cDpUsQTP2wWuO-->：当地律师每案按《打假案件管理系统》字段周更，禁止"黑箱办案"。</li>
+      </ul>
+      <h4 data-page-node-id="8K3IdSsICkLTImst7g6p1s"><!--pnid:12Op4AvUIgPRoOKGuvLfFX-->③ 选聘与风控清单</h4>
+      <ul data-page-node-id="T97CoR9F6uCrc46YSJF37h">
+        <li data-page-node-id="FoDYjYTHFGy0VQHx9EJJZO"><!--pnid:rUYdeniL70duprK3UsxJLH-->查"中国裁判文书网"其代理的同类商标/反法案胜诉率；</li>
+        <li data-page-node-id="bTN8AscWsqMCy4hc9r1DqU"><!--pnid:7U0mxN8ykdg0l5JFTcdS5X-->签《委托代理合同》含：保密、禁止转委托、时限承诺、费用封顶、成果交付；</li>
+        <li data-page-node-id="ywaXuwmmk4XDmUCLfJaHsc"><!--pnid:blRhcaPQ2xKlW2VMlPkJTq-->首次合作给 1–2 个小案"试单"，再纳入常备网络；</li>
+        <li data-page-node-id="dQRXmaXWZ2tDs1NOzpxmg0"><!--pnid:dbML2eBofM1gkD5zy5azib-->建立《异地律师名录》（地域/专长/费率/历史评价），年度更新。</li>
+      </ul>
+      <div data-page-node-id="Ib53npLqPcc3AFmIm5qrZi" class="act"><b data-page-node-id="ADD5tavajpqbHpEV802eKS"><!--pnid:4mzpzJYdUUP8YCeIT1ermG-->我的落地动作：</b><!--pnid:AAzYfwKyu8fhMXsdxdueGZ-->搭建覆盖仿冒高发省份（云贵川渝/珠三角/长三角）的 5–8 家当地律师常备库；每省至少 1 家备选，避免"一案一找"浪费时间。</div>
+      <div data-page-node-id="d5HGgjLUsnhXSMQSxrSwYU" class="anti"><b data-page-node-id="yhePW9Ry6zNSFOwbMwwejY"><!--pnid:XioshwEmso7FBqkgr2NIna-->加盟商反制点：</b><!--pnid:csKh7Q9Co44ksOFzOLwYzw-->当地律师若由总部指定并费用由加盟商承担（如加盟商主动举报后总部代付再向其追偿），须事先书面约定，不得事后单方转嫁，否则加盟商可拒付并主张条款无效（格式条款第497条）。</div>
+    </div>
+  </div>
+
+  <!--pnid:JlWhU7NJuVYlDqxG2USuHt--><!-- p4 -->
+  <div data-page-node-id="OmpW643kD88Wzs90EB2B9E" class="panel" id="p4">
+    <div data-page-node-id="TxXsAgbmHpAqjC1TO3oQ8j" class="card">
+      <h3 data-page-node-id="9N9ynG80tEqcSJ0v42JBtK"><!--pnid:QAYIbzFMk2uhSv6iTTrRJm-->四、考核与管理（避免花了钱没效果）</h3>
+      <table data-page-node-id="ODhPTZJNL1SRv8CT02sIQw">
+        <thead data-page-node-id="44TrRBjqlACX1FJiBsrMGA"><tr data-page-node-id="dku94a596lAtxN9iSrKGLP"><th data-page-node-id="VLJmVKAl9LjZEvA5UMec2o"><!--pnid:Be10wS6wO90ZhV2kIiHD8K-->资源</th><th data-page-node-id="he93lVRjbYPvLvXVwJ1Bwr"><!--pnid:BsragoPmR3dAtZE4PlnMLg-->核心考核指标</th><th data-page-node-id="ApLTosid9eW0lF6G1Wu3rF"><!--pnid:IzfaE5gwcOyZMLms543kx1-->合同要点</th></tr></thead>
+        <tbody data-page-node-id="v93DWjnmAvd4UZgpg7m5dQ">
+          <tr data-page-node-id="G1lekUQ4jb9Ia7gEOFBWt0"><td data-page-node-id="rLTAodoFQeM1NjuKWQqfPg"><!--pnid:WlH7Sicczpe2JZc7Qo3jtt-->商标代理</td><td data-page-node-id="kQjlpA37xqxRDASduj2otE"><!--pnid:LSmCkm2CNOOBO8WMXkSwWM-->注册成功率、异议/无效胜诉率、监测命中准确率、续展零逾期</td><td data-page-node-id="32PAB9eImxdGfYWvZ5wURY"><!--pnid:cBBnuxPeVR6AVgKB09ODVW-->列明服务清单+时限；漏续展导致失权须赔</td></tr>
+          <tr data-page-node-id="sFzSzJnjp8uw4PP3vcBIpg"><td data-page-node-id="s5mcZAPlELgUevbcz0GQcN"><!--pnid:SEyJ8t8gSDVRN2X1wA5XCo-->律所（常法）</td><td data-page-node-id="XZYUVDbKeERxmPgtcLev7v"><!--pnid:cxZScIH1bxYCJr5g4nAfVK-->响应时长、下架率、胜诉率、获赔/成本比、文书质量</td><td data-page-node-id="3FNbZTuftIZCY87MlOCU1j"><!--pnid:k4l9Zq5HdmmAijXw8lGSB3-->年费含基础咨询+发函额度；重大案另计</td></tr>
+          <tr data-page-node-id="fQTSinHEwJJwbhS84hk500"><td data-page-node-id="TJZfbimB38rwTNqWuL2r13"><!--pnid:8Pnl0pobkPGtgPRjJPG7XQ-->调查公司</td><td data-page-node-id="ur2o5FXmmdC4qKSpaFe429"><!--pnid:fljKbkWBMt0u8ZsxzRvsKZ-->证据合格率（未被排非）、交付时效、合规零事故</td><td data-page-node-id="rBdJ2cNmAUH0u7VnnFItvn"><!--pnid:rAwAVsBU4Ai8rERLVhTTlf-->明示禁止手段+违约赔偿+保密+合规承诺函</td></tr>
+          <tr data-page-node-id="Sb35LDPjNNqZF2cRwO06rw"><td data-page-node-id="wnyf8kKbtxOTJfHz1Bfg8M"><!--pnid:jSrSNZCcie5HtTtORZM3SW-->异地律师</td><td data-page-node-id="RUbp0MGwLtFGwbXqdD6XNH"><!--pnid:h7KvSxSUjYFGkDGzquFYdV-->当地结案率、时限达成、信息回传完整度</td><td data-page-node-id="c6R2fNuLUYrTpWMzB0FfFF"><!--pnid:0ybUiIITuMzgA5S8sMjlrW-->基础费+风险代理；禁止黑箱/转委托</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="FbMNXEnKzBgB5TD4LNAVJp" class="note"><!--pnid:xV28YnPBuouIOXVK2SrTYH-->所有外部合同须约定<b data-page-node-id="foRNrNSXCOMSu57PPscDW7"><!--pnid:ONEZdb2t8KtUBxpirVL7v7-->合规承诺条款</b><!--pnid:ZM94oH71Xm5nPxVIcnjXky-->："乙方承诺取证及办案全程合法，因乙方违法取证导致证据排除或甲方损失的，乙方承担赔偿。"把合规风险外移。</div>
+      <div data-page-node-id="6afxuPGdTf7nYe6abCIUaI" class="act"><b data-page-node-id="U72bEKzIqCnBkVCNqGPddM"><!--pnid:OJUtXmDsAUttw975B38KXP-->我的落地动作：</b><!--pnid:rk4sUrhWrGtHeysA9G4lh5-->每年末对四类外部资源做《供应商考核表》，末位淘汰或重新比价；把"证据合格率"和"合规零事故"设为硬性一票否决项。</div>
+    </div>
+
+    <div data-page-node-id="388LUFJ73q3OmM0SvTEhkK" class="checklist">
+      <div data-page-node-id="G6W9KRyQWXftMTJtv65Dl0" class="cl-head">
+        <strong data-page-node-id="X3uoPVJs9rdH4x2Szapin6" style="color:var(--gold)"><!--pnid:Ura874aQUpim4LhGIUWArc-->外部资源合规与管理自查</strong>
+        <div data-page-node-id="Kxer5QcKzPd6tCnRBtmAEa" class="progress"><i data-page-node-id="AiZbtxpNrab4Iw8pbIV3Pp" id="barB"></i></div>
+        <span data-page-node-id="fPt08FkL2keBAIYapLOCG7" id="cntB" style="color:var(--sub); font-size:13px"><!--pnid:GXY1VOXe7W5Rt48I0TMGT4-->0 / 0</span>
+        <button data-page-node-id="c8PDanDXL9MalXk9VuZUmr" class="btn" onclick="window.print()"><!--pnid:lXYypfnT3t4ZwgQtENzTbn-->打印</button>
+      </div>
+      <label data-page-node-id="0bPd9A2EsoBCg3ZoM90QWM" class="mat"><input data-page-node-id="1ToofCCfOYDqtHXkAVBDGI" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="y2K7GJfy9uGSed17W30IBp" class="m-txt"><!--pnid:hpMxYfN8bo5ePuUEN3yej5-->① 商标代理已备案且餐饮类案件量充足<span data-page-node-id="gSsShzN9G0eFfXPdaBfBLd" class="m-note"><!--pnid:OjRX45qEqXCMWUtuV2WfE6--> — 查备案+案例</span></span></label>
+      <label data-page-node-id="NDPXUPWi9lCPhK102LTwjv" class="mat"><input data-page-node-id="7rBCO8YFDNiJB0p7afMOVT" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="GzfwHF7C2CccAtguxC2f3w" class="m-txt"><!--pnid:YxeyyyRSbkOHvlFjIfz8FH-->② 常法律所年费含发函+咨询额度<span data-page-node-id="hGGqjIAFXxbSZN7Y9Lpe0T" class="m-note"><!--pnid:3aVtr6kjIUMXIgQVZkDOqq--> — 进攻主力</span></span></label>
+      <label data-page-node-id="wkKokOfuLEE5N8Ix0ZcyKE" class="mat"><input data-page-node-id="z1C488CFzsHzT5gEVMFMGL" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="j6lxpzrkSqKiC3ra6EtL4X" class="m-txt"><!--pnid:C3SvEYjpY2HfTHXmx7wV6L-->③ 调查公司合同列明禁止手段+合规承诺函<span data-page-node-id="4AgoBbheCIlUSmePMFTyxc" class="m-note"><!--pnid:lqR5XGIMOccnpGWRBhD1cA--> — 刑法284/253红线</span></span></label>
+      <label data-page-node-id="KXGgYVFUbU1FMFcAIdfa3Q" class="mat"><input data-page-node-id="Pkh11mIMfWVcBZlZzrtWBT" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="zEBX3RQ6i4HLQKB9YFcrQU" class="m-txt"><!--pnid:yx44QA5W3l4loGBeUplR72-->④ 关键购买一律走公证购买<span data-page-node-id="liu2u1UhDxKmpWX8DzJxcP" class="m-note"><!--pnid:p4tf08DD1QQVvZbLz2CuhQ--> — 证据推定真实</span></span></label>
+      <label data-page-node-id="MltpfVa3uvo4WkHa9QeAwN" class="mat"><input data-page-node-id="MiNFWfJJYvuEfkiUzY1mr5" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="GtkpI0g80dmV49SnbhRPrG" class="m-txt"><!--pnid:MifzllMxcolqJCCktbYEEz-->⑤ 异地律师常备库覆盖高发省份<span data-page-node-id="B6rsuZErcsws6Ku4iRO84H" class="m-note"><!--pnid:g7y1ZVRCytARqJepmeEQY8--> — 每省≥1+1备选</span></span></label>
+      <label data-page-node-id="Rik13fEP5QqRPaP1eb9EZB" class="mat"><input data-page-node-id="ub8GPSIZ86oJUbu7m5riEp" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="wuHZwncjRfXP2zekFp1ymd" class="m-txt"><!--pnid:56BkAsBHhFOTUAU0k9lbDL-->⑥ 所有外部合同有保密+合规赔偿条款<span data-page-node-id="t47GlCB4wz5kaLl2LUUP2l" class="m-note"><!--pnid:OSNdtjDRg5X92183amvhwt--> — 风险外移</span></span></label>
+      <label data-page-node-id="27UrmMxp4YnlLPtITBBdmv" class="mat"><input data-page-node-id="g5tsM6HP3g3Dk3ftxS8rJm" onchange="upd('barB','cntB')" type="checkbox"><span data-page-node-id="DF4kDt39qekGu2hiDGNaaM" class="m-txt"><!--pnid:9uGgzYnKrRoXix137wlh7Z-->⑦ 年度《供应商考核表》末位淘汰<span data-page-node-id="5ADVMKuG8bYy9SkuooKCi9" class="m-note"><!--pnid:YAmlJPi05uJyF5tkaHiM38--> — 证据合格率一票否决</span></span></label>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="LktuxG2m8HqrQpbsGG37rV" data-pnid-children="6fh7nR3YnrUDiUZV1yKWqS">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

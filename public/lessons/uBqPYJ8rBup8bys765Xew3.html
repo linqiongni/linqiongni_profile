@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html data-page-node-id="tZqvfNmLsE29Hn4WNokTXZ" lang="zh-CN">
+<head data-page-node-id="O45EUpL3uKYvNE90IWXfk9">
+<script data-page-node-id="k9FCOnxd9vC8nl9Egpud44" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="jwBfzApNDYA59NfRylvCZT" charset="UTF-8">
+<meta data-page-node-id="FbhHaRTyIxqc1TJvfhFru3" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="UOz5NDAoGE0n7f1ehKPVvy" data-pnid-children="jsYcjAKGnLEpsdk5hL9HjU">特许经营合同主体条款设计 · 餐饮加盟法务</title>
+<style data-page-node-id="d9pY477tzPszqtQ4jnv3RN" data-pnid-children="U89ywzzMLeK0M4gkp9EQPo">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--jade)}
+  .anti b.r{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .clause{border:1px solid var(--gold);border-radius:10px;padding:14px 18px;margin:12px 0;background:rgba(201,162,39,.05);font-size:13.5px}
+  .clause h5{margin:0 0 8px;color:var(--gold);font-size:14px}
+  .clause p{margin:6px 0;color:var(--txt)}
+  /* 清单勾选 + 进度条 */
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;margin:0 12px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist{border-color:#bbb;background:#fff}
+    th{background:#eee}
+    .clause{background:#faf7e8;border-color:#c9a227}
+  }
+</style>
+</head>
+<body data-page-node-id="CLL5M46qkV8fom3gb6v3Xf">
+<div data-page-node-id="kdPfEQz2DAFw2fxlOG0xH1" class="container">
+
+  <header data-page-node-id="MnhpAUqQbOv9RkWhcsM1aN">
+    <h1 data-page-node-id="UXGUadJADgEzfVOSKQIoF4"><!--pnid:IRKukozQewpSqRQJo68N8m-->特许经营合同「主体条款」设计 · 餐饮连锁加盟商准入</h1>
+    <div data-page-node-id="mXhW8RoZTtV1edlmR51F7D" class="meta"><!--pnid:aDXhmtHelqADBJIisEs4j6-->特许人立场 · 米线/快餐/小吃加盟场景 · 法条精确到条款项 · 金额期限给具体数字</div>
+  </header>
+  <div data-page-node-id="TPy3QNP57WMf3YoCHsG0zn" class="lead"><!--pnid:Fp9pmXoCHJxCu5mygDUqf0-->背景：本品牌 300+ 门店（直营 80 + 加盟 220），加盟商多为个体工商户，实际控制人往往另有其人。本篇解决"跟谁签、谁担责、签前查什么、异常怎么控"。
+  <b data-page-node-id="mQplP4yCpKu34Wuqp7l6tB"><!--pnid:fwmCHenCyhThinsPaMc5tN-->先厘清一条铁律</b><!--pnid:Ft0kn1EtB5LrJ8E19PQzYW-->：《条例》第 2 条只限制<b data-page-node-id="JynJlym1ucvmj6WHJd0SnD"><!--pnid:4C4tE83NTqRTha9QNgIaug-->特许人</b><!--pnid:rp6nvsYmIHUZD6toJPnV4t-->必须是企业，<b data-page-node-id="NN4N9tEnj90U0AJeClXMS9"><!--pnid:WZkZQsF3ox9l57KA1K6fP4-->对被特许人主体类型无限制</b><!--pnid:WjNmSphEXAXn5wamElKfuj-->——个体户、自然人、公司都能当加盟商。所以主体条款的本质是<b data-page-node-id="m4yvzec59RQbH4hfxYy8Zu"><!--pnid:PMTFJHTniEtTsz1UNDoB6i-->总部的风险控制工具</b><!--pnid:IrVwVg4G926gk4Q0vrK6EY-->，不是准入资格。</div>
+
+  <div data-page-node-id="wtxEtQDfbDh3h0iJ3c67Xv" class="tabs" id="tabs">
+    <div data-page-node-id="bzO93aT9tllz2EZURxiQUz" class="tab on" data-p="p1"><!--pnid:Y7G5czhJiEnG5z9Q6NCphy-->① 主体类型对比</div>
+    <div data-page-node-id="r8WEJJ2yfW4iKY4nkLcKbw" class="tab" data-p="p2"><!--pnid:V4XO61O1gWyvUhEwzjcU6P-->② 共同签约+连带保证</div>
+    <div data-page-node-id="3OLzRBqe63R3BF5QXrs196" class="tab" data-p="p3"><!--pnid:MBSfM0GA9LrQh7KFEW1zxr-->③ 主体审查清单</div>
+    <div data-page-node-id="AC9B89Rdd7ImA4lUeJxRuC" class="tab" data-p="p4"><!--pnid:gPoEUVuvZ3bmf8k2cGgIHf-->④ 特殊情形应对</div>
+    <div data-page-node-id="acTWQN1zjjcKhTqyfLo3Bi" class="tab" data-p="p5"><!--pnid:jE0Ki0jbohmw7DBWHTODlg-->⑤ 主体风险提示表</div>
+  </div>
+
+  <!--pnid:fOZSRczkW2E7Ke7di6rj7C--><!-- 面板 p1：主体对比 -->
+  <div data-page-node-id="CiocIlyzkGNSCLxVIwnryA" class="panel on" id="p1">
+    <div data-page-node-id="RwlUnZl34n68svDQD4aEXv" class="card">
+      <h3 data-page-node-id="o68mLlfuVVe6zkF7ZO4eya"><!--pnid:vNMvOVPUjIHRGPOaNBN0Xf-->一、四类加盟商主体 · 五维度对比表</h3>
+      <table data-page-node-id="dI3NPttX5HZOadrNjZab88">
+        <thead data-page-node-id="EY4Ksjva9VqGLYJYpBOT1E"><tr data-page-node-id="SEWXva7Es30RE39EN15O7T"><th data-page-node-id="RI9fNqbk7fMFIQUj8r0jx3"><!--pnid:CdzXJUg7RVwHJ0SUI7wCYy-->维度</th><th data-page-node-id="VUjNhWsGmnYOg4uc8rAKA0"><!--pnid:IVHL3Wgik9loFMMdLcYSql-->个体工商户</th><th data-page-node-id="bfOmMImwvQhWA4Yc064U3N"><!--pnid:QvhB1l0e0H3qVKWWYSAgaW-->个人独资企业</th><th data-page-node-id="D3jY5zeU5u4B23aVXZ3Reg"><!--pnid:Pcu9O6pZp2NuOAVKstQ2sj-->有限责任公司</th><th data-page-node-id="5DGkLm4CksnCnNm8vSAHPT"><!--pnid:RWzcFGtkymHdcgbAErAJOH-->合伙企业（普通合伙）</th></tr></thead>
+        <tbody data-page-node-id="xlqVkmVtCFxnwtY6bHdPHW">
+          <tr data-page-node-id="bbT12KPJyVBAoCmwj3WUwC"><td data-page-node-id="2INBVqph7ztI2VE8oeJ4Ya"><b data-page-node-id="H5ustlCGfoDaEbKNt7s8OP"><!--pnid:S4H2QTxLYOrdnGBHbSqyE9-->责任承担</b></td><td data-page-node-id="xsyCh7nS7Ai60yHCjnQfl2"><!--pnid:MGEtLOfFz0FHe7Tnpnd7o8-->无限责任：个人经营以<b data-page-node-id="zWFMuLwurhrh0CTLLQsyHD"><!--pnid:YRX5n9b865i0iVyEFxC2ui-->个人财产</b><!--pnid:9HGjE5xdb2Sl7vBi9GenC1-->、家庭经营以<b data-page-node-id="VTyDDKLXXEKb0VyJANtpIb"><!--pnid:oywXF5qBCQdNbLikz7nD4d-->家庭财产</b><!--pnid:r8UVZichJkrmSFwIQUocD0-->（《民法典》第 56 条）；无法区分推定为家庭财产</td><td data-page-node-id="ksVZs7dcCMhPV0gOec5X4N"><!--pnid:2mTF8SmN1501uWElPF7ahh-->无限责任：投资人以<b data-page-node-id="SWP8CBiYar3mCgAryEHZ13"><!--pnid:HuApxRB2yMQ9TduzQZqVmT-->个人财产</b><!--pnid:PNVeKleZl3jxSeBUND25ie-->兜底（《个人独资企业法》第 2 条）；家庭出资则以家庭财产（第 18 条）；解散后投资人仍担责，<b data-page-node-id="FER7irgdh0U3UTlWaf88Ki"><!--pnid:LKozpqMs1L2FeCKZAxYPy3-->债权人 5 年内</b><!--pnid:qnEbRXO38pPUoMYsIEvEcI-->可主张（第 28 条）</td><td data-page-node-id="47QjJqKnZgFpckq1g0lfyA"><!--pnid:gAjETNQ9kpBLwKaCaR6i9t-->有限责任：股东以<b data-page-node-id="ROl6P6VSY2ZwRhAUnfHg77"><!--pnid:9L7KDag7qgGFcH2DScOT1c-->认缴出资额为限</b><!--pnid:tGvGrN91TvM64HqhQ4T2DO-->（《公司法》第 4 条）；2023 修订后认缴须在<b data-page-node-id="YV8ZPsWHyORV1HzueQoTG3"><!--pnid:E10dOwKmmPeF1tynTDkFYy-->成立之日起 5 年内</b><!--pnid:5bL5mls7Iku64C9ZSHc7p5-->缴足（第 47 条）；不能清偿到期债务时股东出资<b data-page-node-id="UGOvApJpIeIw8EhfQmxV9v"><!--pnid:D6jW2QSIT88EGxyKRAeYG5-->加速到期</b><!--pnid:9UtBDETp6EiWcN8WmU5tCk-->（第 54 条）</td><td data-page-node-id="i8Enll60ZSN9f7TKff9Lcu"><!--pnid:9wJZyxNrM8pb9Yc7YUObxm-->无限连带责任：GP 以个人财产连带；LP 以认缴出资为限（《合伙企业法》第 2 条）</td></tr>
+          <tr data-page-node-id="AukkRjEFwFSmCR3YY2MSHX"><td data-page-node-id="Fe2nQd6jx9zOR27UDufxkK"><b data-page-node-id="kfrxynqeszJAdUKkarlW4a"><!--pnid:KNvMM4eNZmJ6KTaqTyLoKl-->税务</b></td><td data-page-node-id="O17itPq061qvXe8OMav7CE" colspan="3" style="color:var(--sub)"><!--pnid:bG1QHbq2d7X65gI05Xa6c9-->个体户 / 个独 / 普通合伙：<b data-page-node-id="auGBNyJTgOuyMCXuYlagkP"><!--pnid:zSAm39bLEzIGesC9vnzcUD-->先分后税</b><!--pnid:e4wSctA4PaiNHZLtcrLr6R-->，仅缴经营所得个税（5%–35% 超额累进），<b data-page-node-id="zuU0d3bGHPJ6ZXI2ri6IWi"><!--pnid:id7h0R7M4U74m2q1N2pGm1-->无企业所得税</b><!--pnid:Pn7vY3wHpXOYuLkTp6CSBS-->。公司：企业所得税（小微 300 万以内 5%/一般 25%）+ 股东分红 20% 个税（双重征税）。</td><td data-page-node-id="8Fcw4bCNVsM3ZuUOy5UxBU"><!--pnid:Vfh9b53Nnsxm5Bsrydhhxs-->同左个体户口径（先分后税个税）</td></tr>
+          <tr data-page-node-id="IhtSxwAOVNWspPYaUIfHiu"><td data-page-node-id="L0OLYrUWPJAFe8qbLhXwRt"><b data-page-node-id="BVYN9dZN9p052IlCMzXAys"><!--pnid:I7lAu401GrF0VDeZdORRcU-->诉讼主体</b></td><td data-page-node-id="KEovcESazEWaMJc92vMhqZ"><!--pnid:B8tZvz6XC4o5YXvR8hw836-->以<b data-page-node-id="V8KjWL3df5yapUKuR0Z3Ka"><!--pnid:zg0OPHL0sbt0iVJvwworZR-->经营者个人</b><!--pnid:9sregP9EfTSdwjKOUWhFdi-->为当事人（字号仅作名义）</td><td data-page-node-id="qvDmY5sqgAwU8p2yv8fmlF"><!--pnid:BAIOUNQL2YOSZcml1mSirD-->企业可作为当事人，<b data-page-node-id="vgooXwNBnzDT5cWkMsC6Yv"><!--pnid:MdkBVTrixk07DBw1WEVwHB-->可一并列投资人</b></td><td data-page-node-id="Zdmi4dKxMqeiFgorzrWnqV"><!--pnid:vMsTttIB5u32LtbawOmcXC-->公司为唯一当事人；股东仅在<b data-page-node-id="GSpSlv6FzAZ8ayQJPOTa0K"><!--pnid:LGcQV1oBYPpBhvUwRyaS4Z-->未足额出资/一人公司财产混同</b><!--pnid:aSPssyJsUvLQG2LUwUDQPA-->时被追</td><td data-page-node-id="X6PfkyQ4sJTJhZSvP7wRj0"><!--pnid:H2LnLxfGR4kZXNHCxipnH6-->企业 + 普通合伙人</td></tr>
+          <tr data-page-node-id="l2Xcup0fVvNUlxeM2rAp2c"><td data-page-node-id="Saxcf44WWlpOaB5EGnolWV"><b data-page-node-id="TOwF7Hhu0RCpAYLjImKr5g"><!--pnid:xEZHFU99Rwbhm5zDX0cKzr-->执行难度（总部追偿）</b></td><td data-page-node-id="NRxdOSyteUj3hSsOxLwAgA"><b data-page-node-id="9krngsge4VYC57egPKgJF5"><!--pnid:X4TPVUV5v5HwVp8GcF4jNu-->最易</b><!--pnid:1rwIXE036ekmhkrGgXfEVD-->：可直接执行经营者名下房车存款（无限责任）</td><td data-page-node-id="CbaWMPxxYJykkLr3t2MI1D"><b data-page-node-id="tGM1AibMfZejnWoWOfSQOY"><!--pnid:gp4d3Mkx8DnohMEPJsC8uX-->易</b><!--pnid:lR1VHyouE29Vy5OtQX7Axn-->：可追加投资人个人财产；注销后 5 年内仍可追原投资人</td><td data-page-node-id="Qp138cpyZONsUrM7nh1NEj"><b data-page-node-id="hYX7cZ5z81v8qs1sMZJyau"><!--pnid:vXvy35fOmyC9Hfx23JZwFF-->最难</b><!--pnid:d9gwpTo30SsYrPJQDXPfzJ-->：只执行公司财产；须证明股东未足额出资（加速到期）或一人公司财产混同（第 23 条）才破有限责任</td><td data-page-node-id="SggaUss6Pu7JUMAL8aYZHs"><b data-page-node-id="aeKmoZBRncYjHTj6LkeJfn"><!--pnid:5ezpa3GKrlRRBk2HyLieIG-->易</b><!--pnid:UDa91PlClrQmWt0GSc8JfM-->：直追 GP 个人财产</td></tr>
+          <tr data-page-node-id="b3g6XbJn9HkSh4U5b9inFX"><td data-page-node-id="GANZGKYHLg1KqMtiXbfqrq"><b data-page-node-id="XnDCPwXUUOxCdfBVyXnz74"><!--pnid:5VqgpziEEU7uJ3G9fV4nuw-->注销成本</b></td><td data-page-node-id="Z10t81BvIdWHXbYkBpdrK8"><b data-page-node-id="7AE8IiGdEsToyknWu0tCMl"><!--pnid:SOXi2t8sn8YWVAwgk4Jm64-->极低</b><!--pnid:dN87r34YrdhXkgYVuFvEdx-->；2022.11.1 起可<b data-page-node-id="TMYZiLudjYizSwcTSh7ayf"><!--pnid:lOSGZQwGTQjcn6pCMeh1rN-->直接变更经营者保留字号</b><!--pnid:giQH79XL6Ecs7LgrfgPPiG-->（国令第 755 号第 13 条），无需注销；满 6 月未开业/自行停业 6 月可吊照</td><td data-page-node-id="WlmWuguShCA0laGHd512ff"><!--pnid:SM3jWMQYf8uEOtzrY1Yg8y-->中：须清算（第 26–32 条），清算完 15 日内注销；隐匿财产逃债可追</td><td data-page-node-id="YTkt68XzbZnPZc0VaCVE1z"><b data-page-node-id="lWl8DRsC8SWjrap952Ei4V"><!--pnid:LAXNh63F7Y7cnnW7HL6JOT-->高</b><!--pnid:i6BoQgjugfto2KMHu4oLkl-->：解散清算（第 232–240 条），税务/社保/登报公示约 45 日，费用数千元；简易注销亦需公示 20 日</td><td data-page-node-id="wHFFC2lxul1AIVY4IHWTLh"><!--pnid:V9m11qFelrs4aglPzbAM6M-->中–高：清算后退伙/注销</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="vGYxp5iQSpK7gcwjYX8ie0" class="act"><b data-page-node-id="1ZTQxjwsW2ZJU5sjTqDQ3T"><!--pnid:WSpGFfOaeDDRP9lxTXS7Gh-->我的落地动作（总部推荐方案）：</b><!--pnid:mxFb6QGmOHrLKq8iEMJj4N-->本品牌单店投入约 <span data-page-node-id="HDMQ0hLrbkMOPPhX1R3Hfx" class="num"><!--pnid:Rfsu0mtFh7poHJWXLYhSyE-->30 万–80 万</span><!--pnid:H4du05gQbwNuHiA1n99Mf5-->，加盟商绝大多数是个体户——这是<b data-page-node-id="AWqByh2iVGpnNZE2F0Hxp2"><!--pnid:re9Occb6kiVtBqk1UvGA9O-->现实且对总部追偿最有利</b><!--pnid:a9P6O5v86aH2DTQjoYfl7o-->的形态（无限责任、可直接执行个人财产）。但个体户有"金蝉脱壳"风险（注销另起炉灶、变更经营者甩债）。因此总部<b data-page-node-id="R6cyBhkSvJbVRwk8rEEzs3"><!--pnid:Gnv8lQRUgPxiQy22Y4AQTJ-->强制组合</b><!--pnid:I170NGU3dn7z5kayIKml9Q-->：① 个体户/个独/普通合伙加盟商 → 必须加签<b data-page-node-id="IVXn3QF2QxCVd9U8j26U87"><!--pnid:b8eF5ev4CNCS5b4d0JhojF-->《共同签约人确认书》</b><!--pnid:1mljZDpAO7sN5wM4odEAGA-->（实际经营人）+ <b data-page-node-id="Xa5qehh9XTZ411L6ergURj"><!--pnid:QEZslwrO0LuWhewtAHuGb2-->《连带责任保证》</b><!--pnid:2pX0D30AoxJD3PTgvxQu33-->（配偶或亲属）；② 公司加盟商 → 要求<b data-page-node-id="cDko5fr5KglgVuZjIWLvuX"><!--pnid:OytFmxIB6PvFktuXjkMMkI-->股东/实控人签连带保证</b><!--pnid:Sqa26wKsGDyZCa7PwnqaPV--> + 核心人员作为共同乙方。一句话：<b data-page-node-id="0FsVNbb9kKo10CDRoZo8Yr"><!--pnid:gn0bstZfB5W2kGhMImCzH3-->无论乙方是什么壳，都要把"人"锁进来</b><!--pnid:d2dGHr8VqTsjRqrByVKUjW-->。</div>
+      <div data-page-node-id="RC5vzAEfs4Y0ezYikkxxeg" class="anti"><b data-page-node-id="K8l5TPMa2Mfdc1G2D8MUqv" class="r"><!--pnid:QhK8Dt2Y8VjOOkuksZLb1G-->加盟商反制点：</b><!--pnid:yozk45iiV7Tpfx3bkHSqib-->① 个体户加盟商可主张"经营字号已变更给第三人、与原店主无关"——故变更经营者须同步签《债务承继确认》并通知总部；② 公司加盟商股东可援引《公司法》第 16 条称担保未经股东会决议无效（见面板二规避）；③ 一人公司加盟商若账务规范、财产独立，总部难破有限责任，追偿天花板=公司现有资产。</div>
+    </div>
+  </div>
+
+  <!--pnid:bhOwCI5PbYokUZZHgaQXOH--><!-- 面板 p2：共同签约人 + 连带保证 -->
+  <div data-page-node-id="pKw9oA2YFBMVF25cWM6QIi" class="panel" id="p2">
+    <div data-page-node-id="OkZgCqzhFgU84Ii0Gs7Wv2" class="card">
+      <h3 data-page-node-id="C2TqGikSeGHc0Ibn9ktI2t"><!--pnid:MqzM5vnzHyNC0to3RrcyK0-->二、实际经营人 ≠ 登记乙方 的条款设计</h3>
+      <p data-page-node-id="b3jub5fVWjz8bfG5sIhRxp"><!--pnid:emFz9cOi4GbkDdgrBxW4JM-->餐饮加盟高频实景：营业执照是 A（个体户/公司），但掏钱、管店、背债的是 B（配偶/亲属/隐名实控人）。若只跟 A 签，一旦 A 注销或甩锅，总部追偿落空。<b data-page-node-id="WvFUF915ywWI57qE9oJiHl"><!--pnid:dupIbgP7OQ3CaAgNF7LExz-->对策＝把 B 用两类合同工具锁进来。</b></p>
+
+      <div data-page-node-id="W9R1BG9vrymKyYfO9oJNHi" class="clause">
+        <h5 data-page-node-id="xtZg9c0723TKOyiR0wEGxd"><!--pnid:fQxdZNXOC9SlxDAhXowtj6-->条款一「共同签约人条款」（实际经营人作为共同乙方）</h5>
+        <p data-page-node-id="0IrOihx5qs3x0CDh3sxMpp"><!--pnid:onWZhDYzoFh4EvZFwCtgMC-->乙方（加盟商）为【个体工商户/公司】______，统一社会信用代码 ______。鉴于本加盟店的<b data-page-node-id="W1pGT3u1sdkeRGZpFAKAXA"><!--pnid:NVhnFJfhrSCtc6nfVuNWqI-->实际出资、日常经营与全部债务</b><!--pnid:epZiBc3zPyJKnfBoMTSEPI-->均由【姓名：______ 身份证号：______】（下称"共同乙方"）负责，共同乙方自愿作为本合同<b data-page-node-id="DWuKhdQrqveAml3nUijWw6"><!--pnid:Xvo05W0J5qultOvvYA3lha-->共同乙方</b><!--pnid:9RvtGGRXPtQQ406dhvES9O-->与乙方一并签署，对乙方在本合同项下的全部义务（含加盟费、管理费、保证金、违约金、赔偿金、供货货款、消费者赔付及甲方实现债权的费用）承担<b data-page-node-id="7j2uENRomxF9vrorGHag5c"><!--pnid:Et5JzSktgwH7EFfuL0gwlK-->无限连带责任</b><!--pnid:0hyKZMhDG0XzgzQQR15AXV-->。</p>
+        <p data-page-node-id="r664alRw4qbx2r69Sz3ATe"><!--pnid:SL2zuiPrKSYQ5na1sLrZ0q-->共同乙方签署本合同即视为其已完整知悉全部条款并自愿受约束；乙方与共同乙方之间的内部约定（含出资、分红、债务分担）不得对抗甲方。任一方违约，甲方有权选择向乙方或共同乙方或二者一并主张权利。</p>
+      </div>
+
+      <div data-page-node-id="FlXkNrRcmvICKfeyY1k4YV" class="clause">
+        <h5 data-page-node-id="8kWEP3Nm4dhxJbuTOqbOw9"><!--pnid:yaqzmNMybkovMmgf9rycUm-->条款二「连带责任保证条款」（股东 / 配偶 / 实控人担保）</h5>
+        <p data-page-node-id="YMAO8pkUUt8piFKpfZQxkx"><!--pnid:GxgmD8eScU6Dxno5mOM9yN-->保证人【姓名：______ 身份证号：______ □系乙方股东/实控人 □系乙方经营者配偶 □其他利害关系人】，自愿为乙方在《特许经营合同》（编号 ______）项下的<b data-page-node-id="AoHDl2ubVoS6vxxqUbFnYB"><!--pnid:rFI5oJZACw7MHbQvO0LXPF-->全部债务</b><!--pnid:WxUrY6irFkq9W4HnVe6858-->向甲方提供<b data-page-node-id="A7jbOTExJwHEOrxPHOjgxw"><!--pnid:pUprgqDyJJ7NkBkHdsDKFd-->连带责任保证</b><!--pnid:I0XlrE4q9QPBq7BuhCGulJ-->。</p>
+        <p data-page-node-id="CvvFK6GVuP5KTfHXEV0iSl"><b data-page-node-id="ggP5DTRtrcOSPBq5DVuyBo"><!--pnid:xpuAkWN2Bk1b2C5hebYvir-->保证范围</b><!--pnid:DHP4Z8dbpExba6MZmThp8Z-->：加盟费、保证金、管理费、违约金、赔偿金、欠付货款、消费者赔付，及甲方为实现债权支出的律师费、诉讼费、保全费、差旅费。</p>
+        <p data-page-node-id="bxiJPbdPIA9KBD9sCP6Of1"><b data-page-node-id="K1Q5Inys5nPuk6Ql4Hsa14"><!--pnid:A5PsWm1oQYsOCUsTdGHks5-->保证期间</b><!--pnid:beiXDgfVTwvdAAKOHSuPJK-->：自主债务履行期限届满之日起 <b data-page-node-id="xZb8IwZaDPqtvq4avTTWFS"><!--pnid:JPee42hBE5ZejtbkvhasbG-->3 年</b><!--pnid:xjF1uMWWjXdNBh7i2z7tSx-->（《民法典》第 692 条：约定不明则仅 6 个月，务必写清 3 年）。</p>
+        <p data-page-node-id="GnYEbBL94icBUuzIGZQ5Mg"><b data-page-node-id="wTO4EI0kf3B3yB99NQQn2x"><!--pnid:a0CmZmXHKMJmp7vDrRS08M-->独立性</b><!--pnid:aY47FK7AWvxxH539UejJmW-->：本保证独立于主合同；主合同因非特许人主体原因被撤销/解除不影响本保证；保证人不得因乙方变更股东、经营者、重组或转让而免责。保证人签署即<b data-page-node-id="fnxgKC7kNN8D1sNQRT28Xw"><!--pnid:I4hJRJsEO8gGK4hrgcCLHm-->明示放弃先诉抗辩权</b><!--pnid:t8mQGmwUgWxGVJfew1yQXY-->（《民法典》第 687、688 条）。</p>
+      </div>
+
+      <h4 data-page-node-id="1mv1HPKSiT50f2mn0Emwt9"><!--pnid:cUV6V54cQFaEhkc7aWNN1u-->为什么必须这样写（法理依据）</h4>
+      <p data-page-node-id="4YBYIQore08ur4CGYuJDzw"><!--pnid:pbwwa5alQb9eAV7t3PdSTq-->① <b data-page-node-id="yG6yz7lNFErUuo1el8a10F"><!--pnid:LsZ9GauSIuxLMDTEy9BOPS-->连带责任保证</b><!--pnid:l3SX1bMucXPJfNrgDiGfUq-->＝《民法典》第 688 条：总部可直接找保证人，不必先找加盟商；② <b data-page-node-id="1Rwb7bT22gzv9AU91LeCsq"><!--pnid:dSGQrxUBobqRPr74DMVnkP-->保证期间写 3 年</b><!--pnid:B6j1m6ubAvC0D40NRWFhST-->＝第 692 条：约定不明法定仅 <b data-page-node-id="iWGkUFRnIFmsgyjzUNMssl"><!--pnid:P82wzjKq2eA12G63DGjpAW-->6 个月</b><!--pnid:bLEZhOP2zCC89elQyJ6aoa-->，超期未主张保证人免责（第 693 条），少写一步总部白白丧失担保；③ <b data-page-node-id="V4W2GxqMU08Nf3nDRZLgmX"><!--pnid:Z27PtBJCaMXkQKFPcISwLE-->放弃先诉抗辩权</b><!--pnid:rmYtYllfbbiblKKYMmxN6u-->＝堵死保证人援引第 687 条"先执行债务人财产"的抗辩，追偿效率翻倍。</p>
+      <div data-page-node-id="yJdHAh6DOabGXsELFe5i3q" class="anti"><b data-page-node-id="cr5sHZzwf9LkELpRvheTlj" class="r"><!--pnid:U5fl4H5oKZYcy1QRdmwgkK-->加盟商反制点（关键）：</b><!--pnid:yydbp5dubrvkvW64WLnd3P-->若乙方是<b data-page-node-id="LLz3XS2tqoFeUAtYNq4haw"><!--pnid:uZfhOn5VVVQ3GORkgF6xI2-->公司</b><!--pnid:yCdEgSTyXksrEFB62SORMm-->、保证人是其<b data-page-node-id="aq9nc9SIefvwvxAb0lYDiR"><!--pnid:BKrFPV6QDRQRDHSpuFFqim-->股东/实控人</b><!--pnid:vgrV0VpkKVCmyfgpdsOZ2Y-->，该公司为股东提供担保依《公司法》第 15、16 条须经<b data-page-node-id="6xTcCpZ2U04IIGSRDqSq6g"><!--pnid:JxnnLM4pLrw3Ds1e2coIvw-->股东会决议</b><!--pnid:fNiYdmrHmTAmQabZ7Eu6UE-->且关联股东回避。未决议→股东可主张保证无效，总部担保落空。→ <b data-page-node-id="87UtYddnj4lSfPu2MiYBir"><!--pnid:GT1tvUdH6tLQTKueRHjY3M-->总部规避动作</b><!--pnid:3Fy28AKJur132PD8HCL08b-->：<b data-page-node-id="L55web4SWNEwKk1V1OeArF"><!--pnid:YqiCLgDECo71UW4W3129Ho-->不让公司盖章担保，改由股东个人直接以自然人身份签《连带责任保证》</b><!--pnid:4mJl1HHNzl6wEcYhtkc2qg-->（自然人担保无需公司决议），从根本上绕开第 16 条。</div>
+      <div data-page-node-id="iAnB4YCl8EEdZHxWu6L4sW" class="act"><b data-page-node-id="1AqddKQC7rXRU4j8jn9g93"><!--pnid:YVocqNyubFCzBHfGQwZbSF-->我的落地动作：</b><!--pnid:lDRnM9sq9Tv0jrjQuTp9gC-->所有加盟合同附两份固化文件——（1）共同签约人确认书（B 亲笔签名+按手印+附身份证复印件）；（2）连带保证（配偶/股东个人签，非公司章）。签约会现场用《线索到签约》方案里的录像存证，证明系自愿签署。</div>
+    </div>
+  </div>
+
+  <!--pnid:azWePMrwYxtv7OwFR8tztw--><!-- 面板 p3：主体审查清单 -->
+  <div data-page-node-id="s9J1b2p1xiscvcvOapCqvv" class="panel" id="p3">
+    <div data-page-node-id="qdryfptk7uUVdQfwa7y9C9" class="card">
+      <h3 data-page-node-id="9atexvcVf6bFMVyL0KW2sD"><!--pnid:1coUSQYAW027ewoo4nmddz-->三、《加盟商主体审查清单》（签约前必核验）</h3>
+      <p data-page-node-id="88QanyrqBIfTlmL2BH25pj"><!--pnid:6RmoX198m07mpffjLJXm8C-->依据：《条例》第 2 条（被特许人无主体限制，但总部须自保）、第 11 条第（一）项（合同须载双方基本情况）。审查在<b data-page-node-id="KeyJnJXL5yPgzC3fW0xDxf"><!--pnid:d8lRb3Gxj6JTzXp251Xai8-->收意向金前</b><!--pnid:7gNHbkQYgdRxJ8LHE6PXVp-->完成，留痕归档 ≥ 3 年。</p>
+      <div data-page-node-id="1ZkUinuvCJWZOM6g9pbdM8" class="checklist">
+        <div data-page-node-id="rlXKp35tTAhaE0LB2tdaQc" class="cl-head">
+          <strong data-page-node-id="KufjyQKW0nq57Z73ydkJCK" style="color:var(--gold)"><!--pnid:9umBAc5vi42eEUEVs9guLJ-->主体审查 6 类 · 勾选确认</strong>
+          <div data-page-node-id="3M7f6nlxXMMGCcZMIGvUsP" class="progress"><i data-page-node-id="BRoVDgrVloW5rvMlwkeAKG"></i></div>
+          <span data-page-node-id="6QWkjsnZ2NHW4ynBE6V02N" class="cnt" style="color:var(--sub); font-size:13px"><!--pnid:HAAYSOeMJnx1NxdH16jamF-->0 / 0</span>
+          <button data-page-node-id="eb6tqVEFdA5RM7pdg8hSGY" class="btn" onclick="window.print()"><!--pnid:QRDgCvyQzLogqdLgncWJdC-->打印清单</button>
+        </div>
+        <label data-page-node-id="gqWXyplkzE1Wgbfo23wDbw" class="mat"><input data-page-node-id="OzDkDjhqoLrhcErRy65UGc" onchange="upd(this)" type="checkbox"><span data-page-node-id="1UiWiojGFKVSlrEwj2hJdc" class="m-txt"><!--pnid:InrzjnIcaDzas4zHZyPLJ2-->① <b data-page-node-id="k0hZVQooFt3fkWfs7A1NaT"><!--pnid:ZNrPzjBb8OtjR13vloDUDD-->营业执照核验</b><span data-page-node-id="xfdYEUtRzgCgmOnY9RPMhs" class="m-note"><!--pnid:GagWLKE5VR3AQdKrRekJ4V--> — 查名称/统一社会信用代码/类型（个体户或公司或个独）/经营范围含"餐饮服务"/法定代表人（经营者）姓名；国家企业信用信息公示系统比对，防冒名</span></span></label>
+        <label data-page-node-id="2GRUGr47Nhysdndet4yRxM" class="mat"><input data-page-node-id="f3aU971XxsQA1R41bbZapt" onchange="upd(this)" type="checkbox"><span data-page-node-id="zVqtRovbl3kCbKbYoSWQee" class="m-txt"><!--pnid:u9S9k881eOl6Jrec397Pv8-->② <b data-page-node-id="nSj71vt4KsTxBOLgLuH4RA"><!--pnid:Za51KWwEL2YEwTRleDQpmx-->经营者/法定代表人身份</b><span data-page-node-id="ybhdebhU2X4dyPR31PaIuh" class="m-note"><!--pnid:R1t2paLDkNYnqaZnktJ7kB--> — 身份证原件+人脸识别；个体户须核经营者本人，公司须核法定代表人+实际控制人；留存身份证复印件（注明"仅供加盟审查"）</span></span></label>
+        <label data-page-node-id="XBWWYeAFpQ5oJRRCmR4DVS" class="mat"><input data-page-node-id="XV93XodTaXdKWvSqRnsq2n" onchange="upd(this)" type="checkbox"><span data-page-node-id="9B2bzEXBGQgTpp1ecimI37" class="m-txt"><!--pnid:Q5fcExXb5VmXV4ZoUczg8H-->③ <b data-page-node-id="qLFiXGGnQ7rxIUvzeTd8ER"><!--pnid:CwQ20ZO34YugKhhTw51IwA-->征信与被执行</b><span data-page-node-id="NHglzcFKVLaHOjQquXulqg" class="m-note"><!--pnid:QxVdXb7TZHIeVgglJZ1nZs--> — 中国执行信息公开网查"失信/限高"；个人/企业征信报告查连三累六、大额负债；有未结被执行记录→暂缓或加担保</span></span></label>
+        <label data-page-node-id="ljvFfF7lJhxj2eZzyDfhVw" class="mat"><input data-page-node-id="UqSR89QbHRFYFpt5f0o6T8" onchange="upd(this)" type="checkbox"><span data-page-node-id="BWQKhXXOhBnS4WXPLDsDD4" class="m-txt"><!--pnid:qOhDDKeHHSef36CVJPk4dm-->④ <b data-page-node-id="pqXaDDjp8gw6YL3piZubu2"><!--pnid:xkpK4YCM2mnXPwmUklWcMl-->涉诉与处罚</b><span data-page-node-id="5oy1QZYYLieF1cup3U611V" class="m-note"><!--pnid:6d0u9EPLJjXvLulGpKoKh4--> — 中国裁判文书网/企查查/天眼查查特许经营、食安、合同违约类诉讼；近 3 年有加盟纠纷败诉→重点审查</span></span></label>
+        <label data-page-node-id="IpmSqgYFNEYbmWGw3AWCIa" class="mat"><input data-page-node-id="pOlHw7IHBD9kg20houtsCW" onchange="upd(this)" type="checkbox"><span data-page-node-id="jDvfAnmmvbqFaSuLnMmiRZ" class="m-txt"><!--pnid:pq6e0A09lGVRvxqq7HLV1E-->⑤ <b data-page-node-id="iktSLQqLpwthoJHPQY7RK9"><!--pnid:9ylDXwvHIAOSW9gSNn6kca-->经营能力</b><span data-page-node-id="2PLZ6DJrgtSism5WkUWdT8" class="m-note"><!--pnid:5RRr3rU9IvUOZEsrOG58pm--> — 从业经历/可投入资金证明（银行流水/资产）/选址意向；单店需自有资金≥投资额的 50%，防高杠杆</span></span></label>
+        <label data-page-node-id="Wu38hoycZjmdhMjKsYuM0O" class="mat"><input data-page-node-id="VBOzWrtge9uAWzrWj7S98Q" onchange="upd(this)" type="checkbox"><span data-page-node-id="oTSREME0nRpsWXVmBHvcCs" class="m-txt"><!--pnid:x14L6wtbO3ssqfXJwLKHRA-->⑥ <b data-page-node-id="8kPf3CaTDuJh0Z2ssAn45D"><!--pnid:dTrvceeK7042o3jd25pWF4-->资金来源合法性</b><span data-page-node-id="7b5zqTMiZbLbhlKFrXOnOz" class="m-note"><!--pnid:TpLrxBg6PYGF7UpmxLkWPS--> — 防止洗钱/代持；大额现金出资须说明来源；借名开店须披露实际出资人并签共同签约人</span></span></label>
+        <label data-page-node-id="LvBBrziIE83iOSvyAeGgBN" class="mat"><input data-page-node-id="pEAaeF5SoinX6hN8kApBE9" onchange="upd(this)" type="checkbox"><span data-page-node-id="4for4BXLa8M5fLyCE6rGdz" class="m-txt"><!--pnid:Y8QckMFreRuHEEdqxyBFqK-->⑦ <b data-page-node-id="fQDsvAevFXBR2h3EBcZAi7"><!--pnid:8YK7MOwKPjujvEwkNNaxYW-->食品经营资质</b><span data-page-node-id="CdZVxr03PkTeh2jVUfYd3O" class="m-note"><!--pnid:GC8oUIhCst8X9dMIIaRNtv--> — 签约时虽可后办，但须书面承诺开店前取得《食品经营许可证》；无资质不得营业（104 号令食安主体责任）</span></span></label>
+        <label data-page-node-id="KvR30hOLehmWOiiZWIwdWs" class="mat"><input data-page-node-id="XSYXZQXREkIlBKdcXJRrRe" onchange="upd(this)" type="checkbox"><span data-page-node-id="jDvq3qi6ExM2hOmp8N7Qow" class="m-txt"><!--pnid:7XB9o88qOMgQ9Z53Q168nh-->⑧ <b data-page-node-id="9km5yF4SfzjjmU3G3INIrw"><!--pnid:9b8L0W5p0YebZmGt9cQ454-->关联冲突</b><span data-page-node-id="R1dn8AZFc0ZEn3xTytOrVZ" class="m-note"><!--pnid:UQxh23NCqFAuNJGLrcIryq--> — 是否已在同商圈加盟竞品/与本合同区域保护冲突；查现有门店分布（信息披露第 22 条(六)）</span></span></label>
+        <label data-page-node-id="MEyzDNK2lFndi3FpLqu4U4" class="mat"><input data-page-node-id="5vk9DtzzdyH6KE8Ul2lCt7" onchange="upd(this)" type="checkbox"><span data-page-node-id="5jNbwCtyq9200AWUaWlMkq" class="m-txt"><!--pnid:9EswLg0pwMOxnZWH7siB5T-->⑨ <b data-page-node-id="2EiVX5vejAfsIyFslwjblR"><!--pnid:7RVsz6TQct4aqzdCltllsp-->共同签约人/保证人身份锁定</b><span data-page-node-id="bnBSzdKovM4RVVtcFCdQvX" class="m-note"><!--pnid:G1YktFF3tTgYAmqLCnj9f8--> — 实际经营人、配偶、股东须到场核身份并签确认书/保证（见面板二）</span></span></label>
+        <label data-page-node-id="cjDt8RDUV0SwkDM9bMjqDl" class="mat"><input data-page-node-id="N8nHHQq7YfA9eB6vNXMd3v" onchange="upd(this)" type="checkbox"><span data-page-node-id="OaqKYvzErUCm6F5ayC8AeI" class="m-txt"><!--pnid:lkIHzAqmiCgLtrxt9JodJi-->⑩ <b data-page-node-id="a3qD5UpsHMPgn5r6Ulotq5"><!--pnid:sl2hDE2usIi65GdOqclZ3B-->变更/转让限制告知</b><span data-page-node-id="9R3NXRQzl71lUVTtIWW6E3" class="m-note"><!--pnid:uyBMHUGQq1NQ0GhZp0ow0w--> — 书面告知"未经甲方书面同意不得转让股权/变更经营者/变更实际控制人"，并记入合同第 18 条</span></span></label>
+        <label data-page-node-id="FoeDiyLJgajeEnjI4YKCKY" class="mat"><input data-page-node-id="7GP7j1xB3JCFiePA0eEa3t" onchange="upd(this)" type="checkbox"><span data-page-node-id="tl5euVWiKE9NutHtpT9x9m" class="m-txt"><!--pnid:KH0DBptdg3XjwT7ewjTMze-->⑪ <b data-page-node-id="HLMZM32SSF0U5aRQlLWs2g"><!--pnid:E6eeNu4nu2MkuXLHS8qXJY-->主体一致性</b><span data-page-node-id="t7QKkEkMSIhMadghfS4M8r" class="m-note"><!--pnid:S0aDcSYVMhCe16tpVwiycC--> — 签约乙方=营业执照主体=付款账户主体=发票抬头，三者须一致，防"合同一套、钱走别人"</span></span></label>
+        <label data-page-node-id="9wTqhYM5gVoV5SFirykMms" class="mat"><input data-page-node-id="VLDnOwMTB4Ya6YajUG9UkZ" onchange="upd(this)" type="checkbox"><span data-page-node-id="pHzR02B3RWVJWaSSnXN1aw" class="m-txt"><!--pnid:YAvyCINpdr0dl36RQcuSfZ-->⑫ <b data-page-node-id="Bm8d2DxO7kU7rfNBQ7Naxi"><!--pnid:w3ZkC8SorHvKwL0MUNIP0H-->审查留痕归档</b><span data-page-node-id="l5ZwDaJU6gACNcT1vDNXPo" class="m-note"><!--pnid:wzWIDabAIFmeMAeDXDQus0--> — 上述材料扫描入 CRM，归档≥3 年（覆盖民法典第 188 条 3 年诉讼时效）</span></span></label>
+      </div>
+      <div data-page-node-id="33ikes7O4YMn7LbzDvlaIK" class="act"><b data-page-node-id="O2yFXVnafjvFmOlqw3nIlu"><!--pnid:v9alu067c6noElgwEopgFt-->我的落地动作：</b><!--pnid:FBMHIvKjS6vUx9dALNHEkY-->把清单嵌进 CRM 签约卡点——① ①③⑤⑦⑨⑪ 任一项异常→系统锁定无法进入"收意向金"环节；审查通过生成《主体审查通过表》随合同归档。</div>
+    </div>
+  </div>
+
+  <!--pnid:erIP9JeP9ph4qepGVmzbnL--><!-- 面板 p4：特殊情形 -->
+  <div data-page-node-id="IPPoMtrDkMNTWMuDCs3RUK" class="panel" id="p4">
+    <div data-page-node-id="mhF1E4O5JB36CM9waqMvcX" class="card">
+      <h3 data-page-node-id="XVkMIw5cLk2H5MNAvuDZRS"><!--pnid:9gB7d7iOrZ2sYBcuN8Mc38-->四、三类特殊情形 + 应对条款</h3>
+
+      <h4 data-page-node-id="K6i2oGdMVn4LBkZPFCaYfW"><!--pnid:timyXJhVXLlO8vW4hPMn0L-->情形一：借名开店（用别人名义签约）</h4>
+      <p data-page-node-id="zNLHqyfOXoWEEkrlSeyFmy"><b data-page-node-id="ZOGez2YPUT5RxD0B9jOFyO"><!--pnid:BmCCHgRAKA0xUqK3hBaPCc-->风险</b><!--pnid:AfSHQWUNxcDeqS7VtCOsHO-->：名义加盟商与实际经营人分离，依《民法典》第 146 条"通谋虚伪表示"——表面加盟合同可能是隐藏行为的伪装，名义人可主张"非真实意思"抗辩，总部维权对象错配、送达难、执行落空。</p>
+      <div data-page-node-id="lyfZyv4ynOy6OU11r1lXx8" class="clause">
+        <h5 data-page-node-id="JohbigOhIMHDOD18HuEt1b"><!--pnid:tSxKfb581KfXLbq5D4N2Rk-->应对条款「实际履约人披露与代持备案」</h5>
+        <p data-page-node-id="DfK34b01v8ayrEuWLlwUY8"><!--pnid:EOkZ4o2S0R5cSUIZkMjE7n-->乙方确认：本加盟店实际出资、经营及债务承担由【______】负责，乙方系依实际履约人委托代为签约。乙方承诺已获实际履约人书面授权，并将《代持/委托经营协议》复印件交甲方备案。实际履约人依本合同约定作为<b data-page-node-id="9Ygwezeoc0y8X7iUWdTxDY"><!--pnid:s8ISmAPgnZNYmNMjNAg3BS-->共同乙方承担无限连带责任</b><!--pnid:vsY5MBpB3mi7N9DHPUzXmx-->（见面板二条款一）。任一方变更名义主体或实际履约人，须提前 30 日书面通知甲方并经书面同意，否则甲方有权解除合同、没收保证金并索赔。</p>
+      </div>
+
+      <h4 data-page-node-id="FurAb84rlSgpI3Wjn6yxPj"><!--pnid:rOwDLS2jCGjztIMJdoBeip-->情形二：加盟后转让股权 / 变更经营者</h4>
+      <p data-page-node-id="HAyMnOUcHXXajJaQDmIl1C"><b data-page-node-id="S0D7dOtCDHruJlq6jR1bZ9"><!--pnid:D5hIiRC8gnflyHuLg8TKeB-->总部要不要同意权？</b><!--pnid:AGlcChITD5SapVxKYncPlx-->要。《条例》第 18 条：未经特许人同意，被特许人不得向他人转让特许经营权。落地：① 公司加盟商转让股权（《公司法》第 84 条：对外转让书面通知其他股东、30 日同等条件优先购买）→ 须同步甲方同意，新股东须重签连带保证；② 个体户变更经营者（国令第 755 号第 13 条：可直接变更登记，须结清税款、妥善处理债权债务）→ 须签《债务承继确认》并通知甲方，原经营者保证期间不中断。</p>
+      <div data-page-node-id="XQs3RnmloKmat5WQ9Pi5LZ" class="clause">
+        <h5 data-page-node-id="ZPTqJCBNKrmb7S4DNnHD7p"><!--pnid:rK072dv4V0ZwoDbQdsPHrv-->应对条款「转让与变更同意权」</h5>
+        <p data-page-node-id="AoBwcNKDIdbi9Y83b7hW0g"><!--pnid:F3VRmFetNkvHjSacJjLvWD-->未经甲方<b data-page-node-id="2FiDJMazBnGn4rqD2e2naX"><!--pnid:pqCpptFiycW26fOu3gurHA-->书面同意</b><!--pnid:dn8SbXMLBHCzrrVN9OGm08-->，乙方不得转让本合同项下任何权利（含股权转让、经营者变更、实际控制人变更、特许经营权让与）。乙方拟转让的，应提前 30 日书面申请，受让方须通过甲方主体审查（面板三）并签署本合同及连带保证后，转让方保证期间方得延续。擅自转让的，甲方有权解除合同、没收保证金、追偿全部损失，且原乙方及保证人责任不免除。</p>
+      </div>
+
+      <h4 data-page-node-id="umqv7DweVNZUzVdcdafddQ"><!--pnid:qQ20byKA8ykwfHckdIr51J-->情形三：加盟商是夫妻，离婚时门店怎么处理</h4>
+      <p data-page-node-id="Y2YO3gBQtUB6cnZvnPmczV"><b data-page-node-id="qYqFE9Gi54YySxQvKNhCAP"><!--pnid:zRbWhbllfFsdbARBcQmQRh-->风险</b><!--pnid:YMkYjEIE0PeSVDBlNU08Uy-->：门店为婚姻期间经营，依《民法典》第 1062 条属夫妻共有；第 1064 条——加盟费/货款若用于"共同生产经营"= 夫妻共同债务，离婚协议"各自债务各自承担"不能对抗总部（《民法典》第 1089 条内部有效、外部无效）。一方失联或分割给无偿债力一方→总部追偿受损。</p>
+      <div data-page-node-id="6Lt69kom1hkn6phcHl4LJ5" class="clause">
+        <h5 data-page-node-id="iU1sgMtdO6jRAXRnUPnhaV"><!--pnid:mB0ZSvM82CQOA0pX7XKTjb-->应对条款「夫妻共同债务与离婚承继」</h5>
+        <p data-page-node-id="5iqdtHn6y1sD3NCMOhXqtN"><!--pnid:4BNa9UxbI4iGOiUf3M2ABh-->乙方为夫妻一方的，其配偶应作为<b data-page-node-id="a1dn4xHIVMmkBaxZgzuUZY"><!--pnid:q3VgZScH1qVhmIr9aQN1fs-->共同乙方或连带责任保证人</b><!--pnid:QEiNt7wPMsEDHO2GQ5mJOg-->签署（面板二）。乙方与配偶离婚的，应在 15 日内书面通知甲方，并提交离婚协议中关于本加盟店权属与债务承担的约定；门店归属方须通过甲方主体审查并<b data-page-node-id="dprC9Jc2nJTKrW4cVTEJ85"><!--pnid:tttymVjlztVZN33xmvIkFJ-->重新签署</b><!--pnid:6xJA4KI3X1TIC1aAqS54jh-->本合同及连带保证，否则原夫妻二人对合同债务仍承担共同连带责任，甲方有权向任一方全额主张。</p>
+      </div>
+      <div data-page-node-id="7MZRbWsTJgnIvbs0MQQj0A" class="anti"><b data-page-node-id="AHtArxjvn3SZiEu8COvSCi" class="r"><!--pnid:EKxhkYthAzIUCTksBbxju7-->加盟商反制点：</b><!--pnid:2plbzl77hLMJOntOMDAAcX-->① 借名开店时名义人若确无获利、纯帮忙，可主张非共同债务（但总部已锁共同签约人则难成立）；② 离婚案中若总部未列配偶为共同被告，仅在保证范围内追，须保证期间（3 年）内主张。</div>
+    </div>
+  </div>
+
+  <!--pnid:YY6VyrjdWzrMTFs8KClJxt--><!-- 面板 p5：风险提示表 -->
+  <div data-page-node-id="duip0bdZUGgAbJjOUKefAJ" class="panel" id="p5">
+    <div data-page-node-id="yF5BBNCKgxEg83cGjn05cB" class="card">
+      <h3 data-page-node-id="gmTiy065M41HzgfsGkUroA"><!--pnid:tJPBMCUF3OWq24UzTSHDTJ-->五、《签约主体风险提示表》（红黄分级 · 可勾选巡检）</h3>
+      <table data-page-node-id="STKCFtj1P2ckyn48wQtkNO">
+        <thead data-page-node-id="pGXrNaEU5WU2lR1VMKskZx"><tr data-page-node-id="kXS726Z8IQj7gktQBGLoI4"><th data-page-node-id="zlO0HRBgTmFhAyWTpJtLmC"><!--pnid:4UYmoR6KjoRlyf2af4Y0VC-->风险点</th><th data-page-node-id="q1DGLcImOsEMsdYpqX3HnB"><!--pnid:vL1l1YZWpjJTki8bpqqRwG-->等级</th><th data-page-node-id="lhyNAalk72MHi3WNiI35xF"><!--pnid:inO8FtbfbCyVwdoQYFRlMl-->后果</th><th data-page-node-id="1jRDVG0vaqgLZSaMsF2jmc"><!--pnid:sezCIGmWBNyowonOczBLi7-->控制动作</th></tr></thead>
+        <tbody data-page-node-id="K0ZG3Py5mcWlO2x4bJiTGS">
+          <tr data-page-node-id="bfUCipw8llqE2xd9otPlZn"><td data-page-node-id="Uadz6bFzsIOLVfFjTtvNUH"><!--pnid:GJBQJ68q4zlFXMUgOSCKCa-->只跟个体户签、实际经营人未锁定</td><td data-page-node-id="XoS37qrKqprz3zym1GJ8cN"><span data-page-node-id="81cRQGiFsq8zP97uJq9ItN" class="tag t-red"><!--pnid:oSfcRWfwjkgQsFz4qqUp4K-->红</span></td><td data-page-node-id="bRoT1wT9vQ47e1ofKMqE0w"><!--pnid:zoLa64sNG3ma9tQrgvmVQs-->注销/甩锅后追偿落空</td><td data-page-node-id="HRT0W3tHVecoJDTAgfRsP4"><!--pnid:u0P9ZYajwPpZ5K6tE5loS0-->签共同签约人确认书（面板二条款一）</td></tr>
+          <tr data-page-node-id="aSpchOIxnlhcRJGLflCeeF"><td data-page-node-id="UzZPtSKF9pw4GMNgPElyn1"><!--pnid:PccNUqeXTAr8mOOcpRJ5PE-->公司加盟商仅盖章、股东未个人连带保证</td><td data-page-node-id="IZWwBaz4QqO48zejK0g4Eg"><span data-page-node-id="bsrUquMm6nUOn6o4yyQi3q" class="tag t-red"><!--pnid:v4nplZDGkqAJ3BGqUSF7W5-->红</span></td><td data-page-node-id="BuMMiqO1aJ9uvngNVVwuRZ"><!--pnid:MSZuLn7o5l7qakbAZk2nDD-->有限责任隔离，仅能追公司现有资产</td><td data-page-node-id="WqpOxY88HADDYNdn6exTbb"><!--pnid:yLsqKcJJAIFZLrbAtHJ6cA-->股东个人签连带保证（绕开公司法第 16 条）</td></tr>
+          <tr data-page-node-id="0qiziAgc5fIIdEmpmFRHVF"><td data-page-node-id="8HSrk25wokQ1mfMSKIxYRH"><!--pnid:mwJtYDGYIoD384iR4IZi4I-->保证期间写"依法"/未写</td><td data-page-node-id="vd91gKngRgHvvZr2UHBUa0"><span data-page-node-id="XexiJTC9HAQJeZOsgCSNWH" class="tag t-red"><!--pnid:v8HI6SKRIYAZhzICyDdCIS-->红</span></td><td data-page-node-id="CBVVTPrpP4eEcvdreVRIOV"><!--pnid:ighZU4tZROMIlKtZWxfBnE-->法定仅 6 个月，超期保证人免责（第 693 条）</td><td data-page-node-id="hlAmO40WM3VfMoibOhXw0i"><!--pnid:iKxZs6q6hRIII7Zp72TQEb-->明确写"自主债务届满起 3 年"</td></tr>
+          <tr data-page-node-id="TfvH6sj6E7w8jGBtFIZij1"><td data-page-node-id="mddkBcp0XN854Lty1gDULe"><!--pnid:7WgSuI3RqezUTNO8sTSbDZ-->借名开店未披露实际履约人</td><td data-page-node-id="Pfu1BSebmE35EbPnMWUJcg"><span data-page-node-id="98oIMa598Ct0o8KfKsKBZB" class="tag t-red"><!--pnid:tMZmnBckctF9XNl5YjF9Ef-->红</span></td><td data-page-node-id="xWLtl6hH6aCEmSWCwdeXWE"><!--pnid:4R49KSRC8xT2YVJiVY0hk8-->通谋虚伪抗辩、送达执行难（第 146 条）</td><td data-page-node-id="uIzxWblcZfYEZvyVBgPEKN"><!--pnid:EaMWhI9bHSny98lNjDwTox-->披露+代持备案+共同乙方连带责任</td></tr>
+          <tr data-page-node-id="UF1CuF18o7iIDex19HssMZ"><td data-page-node-id="gJPfo7cAU5bIpSzqHsf66I"><!--pnid:GK7xdSrVW1Lw8vsCUEx8mK-->签约主体≠付款账户≠发票抬头</td><td data-page-node-id="FHbU6NlvfgvqaQ1U7fitz3"><span data-page-node-id="60xfgIipzO2vVXo6oU35hx" class="tag t-red"><!--pnid:KF7O8sBwf8BmmHFCZTocqb-->红</span></td><td data-page-node-id="YR8NEco14ro1fGYaXIGSO5"><!--pnid:ha0EZSLFTeUbiaQxRYiJd5-->资金链断裂、税务与债权错位</td><td data-page-node-id="6BW6AvjKIGcwZalgXtNnK3"><!--pnid:mX3q4WCic0s9qQwXmQ41hU-->三者一致，CRM 卡点锁死</td></tr>
+          <tr data-page-node-id="nEd2EH64HCULJbYPAuuxfJ"><td data-page-node-id="2ctZL4qtUn7QmX9AKTHrJM"><!--pnid:1Sts1aN1izHFtjH2OaJ1oo-->一人有限公司加盟商财产混同</td><td data-page-node-id="UwGV1NXkio7VBZFWYdeugV"><span data-page-node-id="LeCo7YycuBRg8p7tAwoGOC" class="tag t-jade"><!--pnid:3QpkpxGotQGO8ldT1ZQw2f-->黄</span></td><td data-page-node-id="wYknsns5wZvR49IZkql0Fk"><!--pnid:ZSr6CbT9iUdDZWGANdFs7f-->可破有限责任但需举证（第 23 条）</td><td data-page-node-id="feo9vqROrA1v7PjTppZZUU"><!--pnid:9MVjM9KiHaieTeIGy011lI-->签约时查账务规范+股东连带保证兜底</td></tr>
+          <tr data-page-node-id="BGlqSv287ZmCGSRXAVBhu9"><td data-page-node-id="hFqSf7EcQ5cP6gyuWxVQMB"><!--pnid:AWD5gYlonlX6kMDElkkrNS-->个体户变更经营者未签债务承继</td><td data-page-node-id="CxuKgvPSrgmmolUyvuVdGu"><span data-page-node-id="EsGTuqw9Rnv0VNjW1GAL6f" class="tag t-jade"><!--pnid:vKXQTULI8TxdBfhGfk8gvy-->黄</span></td><td data-page-node-id="cGZAbLOzGh7qinanuANiQ3"><!--pnid:vAWJCLGsYtaj1LrwIDGBvp-->新经营者称"与原店无关"甩债</td><td data-page-node-id="gHfkzRAyX7NP2wW6ICYlL2"><!--pnid:fU1aXleMNLqWFHr2t5EUfz-->变更时签《债务承继确认》+通知甲方</td></tr>
+          <tr data-page-node-id="En1IMyR4p483Pzvt1EZttQ"><td data-page-node-id="47df6vIiSRHYXluDp2ZwgI"><!--pnid:yFgDQfJeeoB6HplxoF7HnY-->夫妻加盟未列配偶为保证人</td><td data-page-node-id="MzadA0REoDyxYK2DLvQvPs"><span data-page-node-id="r2RWSo8cGUzRDEN5KbmCES" class="tag t-jade"><!--pnid:JM2gfFwUMGZyUK5j8N5w5n-->黄</span></td><td data-page-node-id="2Fewl3heu2pLWpG6PF2W6l"><!--pnid:RzxByEL9cQRxqM6fjzKNqA-->离婚分割给无偿债力方（第 1064/1089 条）</td><td data-page-node-id="AMGJTfkww5DnKVKERx8FQN"><!--pnid:25qZnbonDJjIKyvfyeOJPP-->配偶签共同乙方/连带保证</td></tr>
+          <tr data-page-node-id="9ptcS3Kp5JRB9KWsb19LX5"><td data-page-node-id="qJSUnX6O8TNpHdfTDpSIdv"><!--pnid:KInOrgrR0A1oSxdbmf1gkU-->主体审查缺失（征信/涉诉）</td><td data-page-node-id="3N9V5lscYYl9J7x75MU4is"><span data-page-node-id="zqZrTKehhzwmMcmgy6h4ZR" class="tag t-jade"><!--pnid:HK91nO5rQvTyopIOKpgved-->黄</span></td><td data-page-node-id="sMP4Zh49xg3O1XEmGqKFXE"><!--pnid:sJ2TJyfyf4PydLWTIqbgWG-->高杠杆/老赖加盟，开业即违约</td><td data-page-node-id="wZ4LKcef4u50oI1AD4glgx"><!--pnid:h5xsK058SXkDJn5mT8XLMO-->签约前 12 项审查清单（面板三）全过</td></tr>
+          <tr data-page-node-id="rkb9P1oGkJfmavg9SCWx7C"><td data-page-node-id="W7iEgu6F3sopXiHS3PKp0v"><!--pnid:kS8fdnpaULuGxyOOy6tVE7-->轻信"认缴 1 亿"公司加盟商</td><td data-page-node-id="y3YJ65WUOjr2Jn4LCEI9HA"><span data-page-node-id="hYoFxx7j1P9I4ZqNS2jOI8" class="tag t-jade"><!--pnid:PLjdWoAxMowugd6dVi4dgm-->黄</span></td><td data-page-node-id="j4aQRdNOCvOU1rh5Mqmlj3"><!--pnid:oogKbqHCbvAK70fJmWRIrM-->未实缴，执行无财产（第 47/54 条）</td><td data-page-node-id="mVfc2KBKce4Yf2gHaMzSwT"><!--pnid:0HcRwDwDOYjQ5jeMANz6qn-->查实缴+加速到期条款+股东保证</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="i7NnUnmLhOMWVBI3HJaLUv" class="checklist">
+        <div data-page-node-id="YIgU48B6oxkK3AGtiDdDkw" class="cl-head">
+          <strong data-page-node-id="jtP6LFQ7lXrPJ3mfxKBSu5" style="color:var(--gold)"><!--pnid:fqVFp3qOYitbqUIaFXJE8m-->红线巡检 10 项 · 签约前必过</strong>
+          <div data-page-node-id="D4yTOcZGOTKbmqG9ZOD6ev" class="progress"><i data-page-node-id="fetPoPBUR2vB1BtG7lByax"></i></div>
+          <span data-page-node-id="WJXqFMKac3F4WK8d45fc8U" class="cnt" style="color:var(--sub); font-size:13px"><!--pnid:7AFbGJDWYeXweuovMlyopR-->0 / 0</span>
+          <button data-page-node-id="PjnJjIwPIHBtGUOi8cY00c" class="btn" onclick="window.print()"><!--pnid:DKoflG1lDHwXy7WLeIv2LW-->打印清单</button>
+        </div>
+        <label data-page-node-id="hYx3CYJ94zF4LPXloDDt3u" class="mat"><input data-page-node-id="IYJ2l56bLNT3cPExL42xQ1" onchange="upd(this)" type="checkbox"><span data-page-node-id="sGC2NoG1JplGmKdUAiR6gt" class="m-txt"><!--pnid:PXKZpv5KR0cdFFgzzkwwPY-->① 乙方营业执照/身份三证一致<span data-page-node-id="qhGQKp9uEE8J7gn7E1jFZv" class="m-note"><!--pnid:pRqjGCJGSzmY19PAEWbJQ4--> — 主体=付款=发票</span></span></label>
+        <label data-page-node-id="1E9fvGF4crKSVCjJYdbzTm" class="mat"><input data-page-node-id="PMi7SqbNhX6QWnPWMz213D" onchange="upd(this)" type="checkbox"><span data-page-node-id="ClMr33rPymVZ7BWsAw7Kea" class="m-txt"><!--pnid:wYKYPi1iXBn2ij9rIs9cfW-->② 实际经营人已签共同签约人<span data-page-node-id="7Dq8x8b4LRiYgmge4rQ4yU" class="m-note"><!--pnid:L6qUfnssViXSjZ2E9hQ774--> — 面板二条款一</span></span></label>
+        <label data-page-node-id="xG08knzUiulJO7YlotYvDa" class="mat"><input data-page-node-id="NYALtP2RjxZjZR5YbE5l0E" onchange="upd(this)" type="checkbox"><span data-page-node-id="iqo68qs8a4TPZfNwh1CmrX" class="m-txt"><!--pnid:RvESwIZc71hhgnzB5GbR2P-->③ 配偶/股东个人连带保证已签（非公司章）<span data-page-node-id="FUwUnW4aAuxQYrpG2RvK0r" class="m-note"><!--pnid:obKeuvh4EGmMAtBiTCR952--> — 避开公司法第 16 条</span></span></label>
+        <label data-page-node-id="5BeenwS1bLx1Nbp2fxGIWm" class="mat"><input data-page-node-id="NFMoURT5cFTAUGu14eAeEj" onchange="upd(this)" type="checkbox"><span data-page-node-id="2biB2oks9xSuYyeZVSnjgf" class="m-txt"><!--pnid:5bORdoPGEzzwG1HTTzZYE5-->④ 保证期间明确写"3 年"<span data-page-node-id="2vKTNGaj1YGHGiLM9dtFxE" class="m-note"><!--pnid:OVk0Xpg9gi3WLzH9D3UukV--> — 非"依法"</span></span></label>
+        <label data-page-node-id="2ysEGoEhUuP14cR0iUn9Nx" class="mat"><input data-page-node-id="VnPhPDuVHgFn9xvf8wkGcq" onchange="upd(this)" type="checkbox"><span data-page-node-id="Ukr6bRhZduL9zzvqMC5lPc" class="m-txt"><!--pnid:knLIPfxvaJQvXkX9440ATL-->⑤ 征信/被执行/涉诉审查通过<span data-page-node-id="Nj06jMNNfJQoxG78ViMzC9" class="m-note"><!--pnid:rMsvgXrN43FBKbbdlMv161--> — 无失信限高</span></span></label>
+        <label data-page-node-id="DuuZ4XxOkWn0oGA00m0lfo" class="mat"><input data-page-node-id="2ZxozbYXTzgfmPTQQ4YVDS" onchange="upd(this)" type="checkbox"><span data-page-node-id="R8YssQAb9ZsksbaXxDD8oi" class="m-txt"><!--pnid:CqIen3HysCuGqkya2aQHJ5-->⑥ 借名开店已披露+备案<span data-page-node-id="a2BfCNcT00n1lpAyxWbgah" class="m-note"><!--pnid:GtpD4SaCFJVplS6eFdiAJ1--> — 无通谋虚伪风险</span></span></label>
+        <label data-page-node-id="nClv3fIvM5uwD2YOGJDdBO" class="mat"><input data-page-node-id="FJbmRwM5xXzyDypBrYcmDF" onchange="upd(this)" type="checkbox"><span data-page-node-id="T2N5iTMyIOrnCw2kHlUAjI" class="m-txt"><!--pnid:neNpF9VlmLCD4Giusq6aMg-->⑦ 转让/变更同意权写入合同第 18 条<span data-page-node-id="TRcuki0J08ye2A4wizAL7f" class="m-note"><!--pnid:DAGZ5tvtP3anairTAPrwvQ--> — 条例第 18 条</span></span></label>
+        <label data-page-node-id="rNVHltPfLE944k5klpya0S" class="mat"><input data-page-node-id="FMVeIyYDAvWuWgvd1XHZLr" onchange="upd(this)" type="checkbox"><span data-page-node-id="6LfWatZlPqbX8ZcWpZmE1O" class="m-txt"><!--pnid:Tk7038I8jzlsKBLiNaufF4-->⑧ 夫妻加盟配偶已锁定<span data-page-node-id="UdH4tJ4v40uLf4DyYT41ne" class="m-note"><!--pnid:JYRYngUNr5JSqYzhfBuXrq--> — 防离婚甩债</span></span></label>
+        <label data-page-node-id="L6n6iGoI3dFfdB2D1uWVft" class="mat"><input data-page-node-id="RNzRpXGyzDRe5F4F52lgvq" onchange="upd(this)" type="checkbox"><span data-page-node-id="6wG913fnweh2G7sgoBFbUL" class="m-txt"><!--pnid:w2q2PG9bZGX2pGAMKqFCkZ-->⑨ 食品经营资质承诺已签<span data-page-node-id="tgUUQGPd3klQViNBbzwEqQ" class="m-note"><!--pnid:BEezpqMGnH5OaPIUeCYkdP--> — 104 号令</span></span></label>
+        <label data-page-node-id="EAVoQy3Xk4sPYRMKDTtKxe" class="mat"><input data-page-node-id="VyZqaVIzzePaAyjc7ICn2v" onchange="upd(this)" type="checkbox"><span data-page-node-id="xWLrFQoSGEcpDi5kWApP2S" class="m-txt"><!--pnid:O40EQtIshnw9dw4aBvrPTK-->⑩ 审查材料已归档 CRM ≥3 年<span data-page-node-id="pedTcOSwjCe8I1DascRDR6" class="m-note"><!--pnid:wn9xKcGCg9AzeodxFaVwcO--> — 覆盖诉讼时效</span></span></label>
+      </div>
+      <div data-page-node-id="lKJ3QGdPVjYQVmknXFGG4L" class="act"><b data-page-node-id="BQAPphrh4Vvzb4IoDaaPG5"><!--pnid:72Q3BsniAZlcnhTCHgOKZj-->我的落地动作：</b><!--pnid:VBNKyDCxxyOcUEPdhFvsK2-->红线巡检 10 项任何一项未勾→系统禁止进入"签约会"环节；5 张红级风险任中一项→必须补签对应文件后方可签约。本表与《线索到签约全流程方案》签约会文件包合并使用。</div>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="lKRGa0LpjoNfwtTbHV1rEB" data-pnid-children="yySd5yGvhsBTXdekZzZNb6">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(el){
+    var cl = el.closest('.checklist');
+    var all = cl.querySelectorAll('.mat input');
+    var n = 0;
+    all.forEach(function(c){ if(c.checked) n++; });
+    cl.querySelector('.progress > i').style.width = (all.length ? n/all.length*100 : 0) + '%';
+    cl.querySelector('.cnt').textContent = n + ' / ' + all.length;
+  }
+</script>
+</body>
+</html>

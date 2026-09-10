@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html data-page-node-id="QmLWTzXp1gNfGHWl3zFPoY" lang="zh-CN">
+<head data-page-node-id="FUBG0gmo5xYzUFuOivn4Ad">
+<script data-page-node-id="DWIXwMDRNUeamKVeSdmTv5" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="AAp6r3JYQbhhP2PHXSnKjD" charset="UTF-8">
+<meta data-page-node-id="aPqTXmkmt5vnFhVGVcXVpV" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="lVNQmeOj3QBmPUqlsmlM10" data-pnid-children="afN8QCfNdCw4UHWrMEw5o0">信息披露不实的民事后果 · 撤销 / 解除 / 索赔三路径 + 实质影响标准 + 证据体系 + 败诉瑕疵清单</title>
+<style data-page-node-id="YT9RFCvVaw9C4wgIBJUig5" data-pnid-children="9nwlRWaoWf6PjXV7mLT7pO">
+  :root{
+    --bg:#0f1216; --card:#1a1f26; --card2:#161b21; --line:#2a313b;
+    --gold:#c9a227; --jade:#5fb3a3; --red:#d4564b; --txt:#e8e6e0; --sub:#9aa4b2; --sub2:#6b7688;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .law{border-left:3px solid var(--gold);background:rgba(201,162,39,.06);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;font-size:13.5px;color:#dcd8cc}
+  .warn{border:1px dashed var(--red);background:rgba(212,86,75,.05);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .warn b{color:var(--red)}
+  .chk{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card2);margin:12px 0}
+  .chk h4{margin:0 0 8px}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  .small{font-size:12.5px;color:var(--sub2)}
+  pre{white-space:pre-wrap;background:#151a20;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:"PingFang SC",monospace;font-size:12.8px;color:#dcd8cc;line-height:1.85;margin:10px 0}
+  .lv{display:inline-block;min-width:30px;text-align:center;padding:1px 7px;border-radius:6px;font-size:12px;font-weight:700}
+  .lv1{background:rgba(212,86,75,.22);color:#ff8a7d;border:1px solid rgba(212,86,75,.55)}
+  .lv2{background:rgba(201,162,39,.18);color:var(--gold);border:1px solid rgba(201,162,39,.45)}
+  .lv3{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  @media print{
+    body{background:#fff;color:#111}
+    .tabs,.btn{display:none}
+    .panel{display:block}
+    header{border-color:#999;background:#fff}
+    .card,.checklist,.chk{border-color:#bbb;background:#fff}
+    th{background:#eee}
+  }
+</style>
+</head>
+<body data-page-node-id="GsyyLYr7dDWGZkymzk02uG">
+<div data-page-node-id="behfYgs1kF8WmJBrHSBr0l" class="container">
+
+  <header data-page-node-id="OFkx5ub7zSTDmIwMkkaycf">
+    <h1 data-page-node-id="th6ggHLlNmEPtpyQ5HWJKk"><!--pnid:NtpD1UpJFod9uEXkfAdmYb-->信息披露不实的民事后果</h1>
+    <div data-page-node-id="Jh4OXnoFUNXtFf9uQTCGFa" class="meta"><!--pnid:1Grrm87ILDWziq6bQWScoo-->撤销 / 解除 / 索赔三路径 · 实质影响标准（北京·上海高院）· 举证责任与证据体系 · 10 类败诉瑕疵清单　|　特许人立场 · 米线/快餐/小吃加盟场景</div>
+  </header>
+  <div data-page-node-id="QtGtJEe6n1wXFDDBFv1E4Y" class="lead"><!--pnid:vGV1wlllh1GK7oe20yufVj-->信息披露不实不是"罚点钱就完事"。真正致命的是民事端：加盟商一旦撬动解除权或撤销权，退费 + 赔偿会按门店数成倍放大，且第一案胜诉会引发体系性效仿。本篇把三条请求权路径、法院的"实质影响"闸门、举证责任的真实分配，以及 10 类最容易翻车的瑕疵按危险度排序列清楚。</div>
+
+  <div data-page-node-id="IgCKSfSnyX2VIBvdGyai0p" class="tabs" id="tabs">
+    <div data-page-node-id="WFA0wgUocEO12fvuKJRmTg" class="tab on" data-p="p1"><!--pnid:XKngYOtSvUsVZmF1BDNhv9-->① 三条路径总览</div>
+    <div data-page-node-id="aTQIxs0ZPKgn4ZjHlukhfV" class="tab" data-p="p2"><!--pnid:UGPOLwpvvTR6dYl0Uo4sg6-->② 实质影响标准</div>
+    <div data-page-node-id="RyWKgbZd29ryc28B4IVnu1" class="tab" data-p="p3"><!--pnid:w0TVcSFcSi4bnE4SjCycVr-->③ 举证责任与证据体系</div>
+    <div data-page-node-id="6KuwNDfcw9Z515oTGFWR2h" class="tab" data-p="p4"><!--pnid:nBYt619BJhNZnc9ZU6RQAM-->④ 10 类败诉瑕疵清单</div>
+    <div data-page-node-id="4SkwmDBGjSbhSlvXaHXP9d" class="tab" data-p="p5"><!--pnid:yLqYfV8QOYXDWVVjywOS6F-->⑤ 应战清单</div>
+  </div>
+
+  <!--pnid:WtNVS7igAzLTjPnos0c4EY--><!-- ============ p1 ============ -->
+  <div data-page-node-id="CzKwCnOEwiqnUH8zfX0T1H" class="panel on" id="p1">
+    <div data-page-node-id="Gz1n31brkVAw8EL7hegZgE" class="card">
+      <h3 data-page-node-id="hjHhbV1bsyYj7rfW39AAFv"><!--pnid:kfidQdeR8EoC4RSjiFsKut-->一、三条路径总览：加盟商能走哪几条路</h3>
+      <p data-page-node-id="y2cftDbRACRrhH8uM2f2Ke"><!--pnid:0GOCugVDq0s9kq4sRqCUFy-->加盟商主张"信息披露不实"时，法律上对应<b data-page-node-id="rc6gMouj7cifMlQcCMFa0O"><!--pnid:qjNejmenKKSP6fnJ0w7a3g-->三条相互独立、可择一也可并用</b><!--pnid:ihZpUr5deaG4Y2jftbAxfU-->的请求权：撤销合同（走欺诈）、解除合同（走条例第 23 条第 3 款或根本违约）、索赔（走缔约过失或违约赔偿）。<b data-page-node-id="lyfoZwyGARuGN7TCjhtgPt"><!--pnid:4LRFuOrKytpTKNrq6T99nU-->三者的构成要件、法律效果、时间限制完全不同</b><!--pnid:FlWkoDAsOAoWn3cLpAlh4B-->，加盟商选哪条，直接决定退多少钱。</p>
+
+      <table data-page-node-id="KQlEwIPM0Se96cUPFPSOJ8">
+        <thead data-page-node-id="CHpBe4NcjjrHepiANkYFj8">
+          <tr data-page-node-id="bwZdnHq9mzIvdruBzsqttZ">
+            <th data-page-node-id="KnTWP8mhK1SBVjmzS1BAZ5" style="width:11%"><!--pnid:7K33s0IaujAmGTzO26hRZS-->路径</th>
+            <th data-page-node-id="nAQeDRf8SCmZ7DGfF5F274" style="width:20%"><!--pnid:HEk0Vxpuz3WmoMppOvuOqb-->构成要件</th>
+            <th data-page-node-id="Uyqr9lY4wv4JwtuSHtFNsl" style="width:24%"><!--pnid:LhxHvbsGc57mXSddC3OzKR-->法律依据</th>
+            <th data-page-node-id="8ApTlFAzlulcx3smANDHt4" style="width:22%"><!--pnid:AplKEsDbfGQKdAiztroFxc-->法律效果</th>
+            <th data-page-node-id="RpUNO7Gy2IhABuULOon51d" style="width:23%"><!--pnid:8E8gIYsxLyOzF25dNVZHOp-->时效 / 除斥期间</th>
+          </tr>
+        </thead>
+        <tbody data-page-node-id="gcwU23sLNsqF54oYCS6bdn">
+          <tr data-page-node-id="udB8SoaWuvD90P2S1Pasz0">
+            <td data-page-node-id="VQ9GzEmYtV0pCiLTpAkxKl"><span data-page-node-id="r8vlbp75E8oiKg4eqvDWK2" class="tag t-red"><!--pnid:okKGhfGQekRdWsEOU7avnM-->① 撤销</span><br data-page-node-id="RSvFcH33r1XFm6QHsbWuGm"><span data-page-node-id="B92P002uOHXyZTNQHnVduH" class="small"><!--pnid:KWAuZnSJil7mLRD6pjDn6v-->（欺诈）</span></td>
+            <td data-page-node-id="wbkGlYPBeLll9BjMC7SMR5"><!--pnid:4BktNAdx2EHYy7m4T3zXrH-->① 特许人<b data-page-node-id="nvsUpbB7v0xaOGFYXU1pLy"><!--pnid:0wmefxvw1yWESyrh3htIOx-->故意</b><!--pnid:JakX5J9LlvnoaUiFvA0ypT-->告知虚假情况或<b data-page-node-id="ieuyvctixJlr9FJohAjGwn"><!--pnid:YeW29CSh6YjVm5rA6ZfZJc-->故意</b><!--pnid:Ro8GirQVg7iwJ6fAUFrwPS-->隐瞒真实情况（消极欺诈亦可）；② 使加盟商陷入错误认识；③ 加盟商<b data-page-node-id="BwlNCXAhxCdeuUhiB1q57w"><!--pnid:JYSjp6q5hNDFEQTodiLdjd-->基于该错误</b><!--pnid:chlR1OJVoGGkZzGFll89lb-->作出签约意思表示；④ 因果关系完整</td>
+            <td data-page-node-id="S81osJTWOKe5FyJPnK8kJF"><!--pnid:t1LIbk76BvFE0ysr0WdqIa-->《民法典》第 <b data-page-node-id="Dr4ccnRwuTE4p34kW5YqGW"><!--pnid:r8K6po8FNBBAP2cBbUfApq-->148</b><!--pnid:MJPg56UXGOzAod00mER0Im--> 条（欺诈）、第 <b data-page-node-id="WlrlV9k4yRUEHAnsDpneDX"><!--pnid:4ewTUyiPNppPJoYpgiw7sz-->149</b><!--pnid:Nvbw24JPQb08jqArBB4JpS--> 条（第三人欺诈且对方明知）；法律效果见第 <b data-page-node-id="G88SZHKAWBLO3FxeOwYvjU"><!--pnid:gNJxSUCDQLsuDceAXDLeDZ-->155</b><!--pnid:cdZufK9mgRO4VQWaPRTGm0--> 条、第 <b data-page-node-id="gAEyFM8cdDdrUftlP0Mn5F"><!--pnid:byxDU2WLJDcBGPzgAMTcMe-->157</b><!--pnid:GUhqy2qGCAQPJEx6icDvuq--> 条</td>
+            <td data-page-node-id="ewwMvicWAKfvExuFp1am9v"><!--pnid:JJ24Ro6leGrNTvsU836o1x-->合同<b data-page-node-id="ulQFtdxKJMBCmzIrmmOZ5a"><!--pnid:f1atu0hQGEZDdRrlG6hiD7-->自始没有法律约束力</b><!--pnid:YN27sMxC1G1GRv1h2Yd1Za-->（第 155 条）。返还财产、不能返还的折价补偿；<b data-page-node-id="YTpzdG5o8VibRQyyd1ahd4"><!--pnid:n8jO8gbEBoeuj0U2YyfS9j-->有过错一方赔偿对方损失</b><!--pnid:apaEwsfq94h17zewosZU3C-->，双方有过错各自承担（第 157 条）。<b data-page-node-id="n6mpzV2nh4SWaLXz33q7Y8"><!--pnid:1jV0r3fBcQ0lhNDwwCMJ3C-->违约金条款随之失效</b></td>
+            <td data-page-node-id="40xXenxJNNyQRCRdt3ZoeW"><b data-page-node-id="OZb36y3N0bttYcMttSnqWl"><!--pnid:SLZj8MsUZ0C6PjDNRyG4gY-->除斥期间</b><!--pnid:bey6tdNqKPtrGsPuQTzkIK-->：自知道或应当知道撤销事由之日起 <b data-page-node-id="ZG8H56Wdf57OZksA50wcWc"><!--pnid:KSJIxHfUfqIXgPnqrtsNye-->1 年</b><!--pnid:TPsYqbyRgwiaMJZW42ebQu-->（《民法典》第 152 条第 1 款第（一）项）；自民事法律行为发生之日起最长 <b data-page-node-id="Zd8JL6YxLePHKjezeiChCf"><!--pnid:606drnMtayMzwRPTKYCfKF-->5 年</b><!--pnid:f0FwH8OpdlZNHaLy0Kgc8f-->（第 152 条第 2 款）。<b data-page-node-id="9mFHtppxmrRXAOhWiqAfrq"><!--pnid:BMqC1wl1LOIXwaZljh6B17-->不适用中止、中断</b><!--pnid:Z2dt4p0szZ2ICtZk4UvGEJ-->，过期权利消灭</td>
+          </tr>
+          <tr data-page-node-id="XdsPnY4zI4oY3sDgu2J3oz">
+            <td data-page-node-id="ynorFHFJVf0jpAcZ2n2fUx"><span data-page-node-id="ELtXcuK7cl0H541WhFliPK" class="tag t-gold"><!--pnid:ezpU43bnk2GpdnBVn2aqji-->② 解除</span><br data-page-node-id="lZCbOKap70RACdvLLeKaRA"><span data-page-node-id="1YZ3kM1HjTGxbtz1GZKSiU" class="small"><!--pnid:vVFiuEPzMZ89rDCkpyix8J-->（条例特别解除权）</span></td>
+            <td data-page-node-id="7VwmaggfvCMJ6WA3EouFDs"><!--pnid:acCo0eWHCGpGc9toI4TIUd-->① 特许人<b data-page-node-id="RwAbwk50DRkMli8gototAA"><!--pnid:xUvzFIbu9vzoX3K0kI9LgF-->隐瞒</b><!--pnid:WJxN2Z052g0jgKQ9sxWHg4-->有关信息<b data-page-node-id="L72VYcKi08m4cDbAADyyue"><!--pnid:oTOhmjQZBeubTuJMBuC8Ao-->或</b><!--pnid:76BP54n0U7j9NpUV1qprQm-->提供<b data-page-node-id="AxjXBfbfMiOfpjv7o7xkUQ"><!--pnid:uUITZtCYPnjg0CMtwqfYwW-->虚假</b><!--pnid:piPDb89EUxr8Isp3aWw8VU-->信息（不要求故意，过失亦可）；② 该信息具有<b data-page-node-id="meR5rRaFQ8mXBIBfZYcXVQ"><!--pnid:ouFfkpq0c6hzsZZgJTsYIv-->实质性</b><!--pnid:WvTuCUWglf8ascekNPe58t-->（北京/上海口径见 Tab ②）。<b data-page-node-id="wVzQFODqUp23WhPMOpxhDH"><!--pnid:MCjz2cRtVPYevqJTAqiW29-->不要求加盟商证明自己"若知真相就不会签约"</b></td>
+            <td data-page-node-id="4Jmd6ajcbJq0esgsiHDdRn"><!--pnid:aNhGvYTiS4QMrlnoFr4J63-->《商业特许经营管理条例》第 <b data-page-node-id="QynCFXmVHs6Jl2ayCSkUXO"><!--pnid:JIwhoLbICvvgclMc9QuiSc-->23 条第 3 款</b><!--pnid:HR2JXMMLdzopY810yp3llf-->；另《商业特许经营信息披露管理办法》（商务部令 2012 年第 2 号）第 <b data-page-node-id="Dd1ViAE0A97n8tAKMY8miT"><!--pnid:yeQP2fNMzhgNQaBp5tv0GK-->9 条</b><!--pnid:2RatqZQJZjmtrTVnhsv9Fb-->——门槛更高，要求"隐瞒影响合同履行<b data-page-node-id="Tsrvl2PjEDLF13R7YxTwey"><!--pnid:sv3FqGc3QWfkcLZUpC0ldr-->致使不能实现合同目的</b><!--pnid:plKqVty0KvIluX390gaLVY-->的信息"</td>
+            <td data-page-node-id="5sMWk7iVnSyXi4ArFDbnT6"><!--pnid:c1GmFPhahVB1hPf0POi80Y-->尚未履行的终止履行；已履行的可请求恢复原状、采取补救措施并请求赔偿损失（《民法典》第 <b data-page-node-id="Eg3NfR7FeA8JUIujyeD9me"><!--pnid:Q20uLpisYqp22RodhW9k82-->566 条第 1 款</b><!--pnid:CrqTllCqBxgdWJ5tU602WO-->）。<b data-page-node-id="5O5lMv68Tq0hO9UT7Z3uqn"><!--pnid:c1wMNYTXFcEi3ZoEGD7kIu-->因违约解除的，仍可请求违约责任</b><!--pnid:ah9lm8sN1xisA8Bk37fgCB-->（第 566 条第 2 款）——<b data-page-node-id="nAP6BLJ22bgnuhtwUbFJ8M"><!--pnid:xppL6XxVH1WrJ41heu0Af1-->违约金条款仍可适用</b></td>
+            <td data-page-node-id="M9TLIPXyqcLvgzLebZ1qVf"><!--pnid:t2j6DWwbJR0JfqDSiOPIZ5-->《条例》<b data-page-node-id="yvtGZRO0uqswMPM30oOZdP"><!--pnid:OnPnkgP52g7W93BPtnsikH-->未规定</b><!--pnid:MFCgrVoYwI3eQW1qUj0kCS-->行使期限 → 适用《民法典》第 <b data-page-node-id="KUKDxVcfbKj2ajBPZ6NKLm"><!--pnid:MDzjUzzgOaOpGycGc1esoT-->564 条第 2 款</b><!--pnid:xmCTS8bMF4nlWJKJ3liuz1-->：自解除权人知道或应当知道解除事由之日起 <b data-page-node-id="9d9ahh1jBjEcUKisdURX6O"><!--pnid:aXHL2cbtDEBwqkRNyYU3nB-->1 年</b><!--pnid:CPlejRGAOZlrYvSEbgxC0p-->；或经催告后在合理期限内不行使的，权利消灭</td>
+          </tr>
+          <tr data-page-node-id="dyZdMer01JaFCnEI1T67k3">
+            <td data-page-node-id="qFxUsFU4XFGMIeQDeIyJUD"><span data-page-node-id="Xoo2LfJ0avDI9LSsrf4ZgV" class="tag t-gold"><!--pnid:xzKk8vARN24fR4YQx8bjbM-->②b 解除</span><br data-page-node-id="SA34XMz9eGPHiyClwK6ZmP"><span data-page-node-id="5Gmixo42irwdwxRPSrT3EX" class="small"><!--pnid:9n0SlOE9ESe6o8dHW6SJ24-->（根本违约）</span></td>
+            <td data-page-node-id="0HuMp1XgaQGuclLr3uzHd9"><!--pnid:ae2CdKngMSay51pm7jFPM8-->特许人未履行主要义务（未提供培训/供货/经营指导、经营资源丧失等）致<b data-page-node-id="iLE0IjbkDmr8fBYAwfh08D"><!--pnid:qe6USyqjc3CsJcOvFWQDU3-->合同根本目的难以实现</b><!--pnid:NtAb0iKfkXTfXm1oBsLM6z-->。<b data-page-node-id="v2J7r5pgnboMHDHitfzhXb"><!--pnid:OubmQH1xVf6kVPIeG1Wuip-->注意：是否盈利不属于特许经营合同的根本目的</b><!--pnid:WQ8VbC2NRTKInfEoUyEIlM-->（北京高院 68 号文第 13 条）</td>
+            <td data-page-node-id="orgiFlT4VX2kGPP94yfGcj"><!--pnid:ZbkkYkkSPxcSeSGFtce4ve-->《民法典》第 <b data-page-node-id="BPfNS4ewbCmRKd7dQce0Uv"><!--pnid:Gu0vpVpPBrxqP79bj1q0z7-->563 条第 1 款第（四）项</b><!--pnid:Z3EVcokDqziTB1So9GZa83-->；北京高院 68 号文第 <b data-page-node-id="5BZ5ocXyoGDlT5R1ww7iVm"><!--pnid:KFTkVBfeLZeqYG1r6QXM10-->13</b><!--pnid:qIBwBsmGG1WoRr2ys7jTbx--> 条</td>
+            <td data-page-node-id="xPqxTJfmnHDb66TIKZ3gHU"><!--pnid:mdUuASzwVZWORtCMS1gmw1-->同上（第 566 条）。加盟费按<b data-page-node-id="yfCYugAAPxeHgybwXUOK3H"><!--pnid:O26CyNXfQBQfVWkCOEeOSH-->已履行期间比例</b><!--pnid:qP2R9fH2UMtX3Jj5tNEKwe-->折算返还</td>
+            <td data-page-node-id="YEhbS27cLGEBzVaD8ovpDa"><!--pnid:FOIEw2unkOxIUp0QrF3csD-->同上，1 年（第 564 条第 2 款）</td>
+          </tr>
+          <tr data-page-node-id="uWUWw4Ob33DQRT4Oh2Czww">
+            <td data-page-node-id="j7Szot0pm2g4OT1CPPTFDx"><span data-page-node-id="JzWPhtti9b52VdY2Raw7Eq" class="tag t-jade"><!--pnid:cZiKi3wgdlCbqLvg6Ssq3D-->③ 索赔</span><br data-page-node-id="t6xf9BD9SQeFuyD4oqJk2q"><span data-page-node-id="hD2eoQoX1lIRZvmRHnoWRp" class="small"><!--pnid:QKEJCbPP2zJ9ryz0j93f5V-->（缔约过失）</span></td>
+            <td data-page-node-id="w6VsF0ng9kAzINAQGxPymM"><!--pnid:OAMs81vVj0lZjqoVPlJwst-->缔约过程中<b data-page-node-id="z9OOKR9NfQv7nXgh8tdZpf"><!--pnid:BbgFffyDYxX3ncIWIRLLsd-->故意隐瞒与订立合同有关的重要事实</b><!--pnid:QP8TnRzr8e4neOT9YfyDoH-->或提供虚假情况，造成对方损失（不要求宣告撤销或解除，<b data-page-node-id="fT100cP2QHdwOvVFG2CnCf"><!--pnid:xlzXffaK5u9nkn4vrws25s-->可单独主张</b><!--pnid:6efDCnnyLsTTH3G6dKCxLi-->）</td>
+            <td data-page-node-id="9XdJqR6VcFFQDjq2qMGxLo"><!--pnid:gCD0ZGEZp885oFzFSZKJjT-->《民法典》第 <b data-page-node-id="B5KQgl5BiAIXjjFc85mUhU"><!--pnid:IId6W9mHP5vF3wfvr6CrWp-->500 条第 2 项</b></td>
+            <td data-page-node-id="301BAYaLjtO3MG2Wfe5sos"><!--pnid:zU6zNBlCcdCm9gau1QGdSD-->赔偿<b data-page-node-id="VQqrKW5qwaUK66wVJCsplm"><!--pnid:MhtDpnUEWgqv3iTqFTC6bY-->信赖利益</b><!--pnid:bWGY0BcOrSAhYSrkTo97x1-->损失：加盟费利息、为履约支出的装修、租金、设备、人工等实际支出。<b data-page-node-id="UR7SOwcIODEOjlUevN2Mrq"><!--pnid:1gtE9rwsG3xiv9D9tOCPE1-->不含可得利益</b></td>
+            <td data-page-node-id="czeHc4fHjjLNCEoXu7mp7Z"><!--pnid:UYHyYEqOgM97h9twrQGikV-->普通诉讼时效 <b data-page-node-id="AaLKt9SUe7d9888Ii7mnOj"><!--pnid:64nPYLOpOnddbJmV6nFk3G-->3 年</b><!--pnid:9Ty0w0KogDEWfOABmPXeWN-->（《民法典》第 188 条），自知道或应当知道权利受损及义务人之日起算</td>
+          </tr>
+          <tr data-page-node-id="ky9vk8SxmIASOOVJbzAgzT">
+            <td data-page-node-id="O5zGYli8XbdyfpXqZQ72fY"><span data-page-node-id="WCUO50Pd51FwiPLLCMwrnw" class="tag t-jade"><!--pnid:yN8kF2c2DpJbGP2tOF3G5l-->③b 索赔</span><br data-page-node-id="OFe1pIoNSqtC3vBovktXZJ"><span data-page-node-id="L3taseUpXXbRsc0rEmOr6Z" class="small"><!--pnid:ZrjVez3n38G3DlPXBxvTIk-->（违约赔偿）</span></td>
+            <td data-page-node-id="qq1hODvcpHEVsLzqfZlS2j"><!--pnid:twY43Cp7a6qIMWXElEwyFl-->以<b data-page-node-id="qsRESx1BHdQwtOi5wMcUfg"><!--pnid:Ygmng5RAtmpdLSCpFzF3t1-->解除成立</b><!--pnid:LIxEKe5YwFZ5cXqSJqbMiZ-->为前提，请求违约方赔偿实际损失；受<b data-page-node-id="oCfnMlcSCOWth5WrxTdcl6"><!--pnid:9dI4YsOl4T2kiFuYwXTwKa-->可预见规则</b><!--pnid:nXoIUKEC7EvO6HYTvZYYZz-->限制</td>
+            <td data-page-node-id="BDNMC5a7tiR8KEQYIQA2uN"><!--pnid:SCcomQIRjtRS9fyNaS1jHL-->《民法典》第 <b data-page-node-id="Wz4FwUgX205YVQMxKVzO2w"><!--pnid:LnSd7SSX8dqnUIkY2LqkTd-->566 条第 2 款</b><!--pnid:Uhbu5Ou5OXoQouOCYQTJMh-->、第 <b data-page-node-id="p6ODFBX0TGPQIn8lGPbZ4r"><!--pnid:9c3h9iBFG0TEjwIy6ayCwz-->584 条</b><!--pnid:itCsXN4PIwcUVadWmkUzSA-->（不得超过违约方订立合同时预见到或应当预见到的因违约可能造成的损失）</td>
+            <td data-page-node-id="Qdjc93BIQTunmdYRA4Pby3"><!--pnid:3Fojxkftw4tgWe8vzxMJV6-->赔偿实际损失 + 可得利益（受可预见限制）。<b data-page-node-id="MdysmOgj7hvXvzOm1yNvB7"><!--pnid:UbOuDNnWVx8CeC1lQiOAqp-->加盟商主张的"预期利润"通常因不可预见被驳回</b></td>
+            <td data-page-node-id="0jAIvG8YZzJr98RQ3k43UC"><!--pnid:hl0MjZbSO4vgiHnjEiCXNg-->3 年（第 188 条）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="kfyUz1F7DgIVz6uJ5NCqqx"><!--pnid:tdQRVLkMGAz1JMq5hZzpmj-->二、三条路径的关键差异：为什么"撤销"比"解除"更狠</h4>
+      <table data-page-node-id="hlTQONWpuTj8yncuRBoM7G">
+        <thead data-page-node-id="hZWru0u3wE0am9w5hpG9Yu"><tr data-page-node-id="tQ8xGhMDOeomuUKwmnRxzW"><th data-page-node-id="wZh0ZnMsG85VjuiFgLFY19" style="width:22%"><!--pnid:OuH1QnxR1oCnKsq25l7SJ5-->对比点</th><th data-page-node-id="7geP9XygMIzWBHJHQdkD7Y" style="width:39%"><!--pnid:aRlvkNJrmVMKmIUfx6pPRC-->撤销（欺诈）</th><th data-page-node-id="lbfJpDDcfV9giWMa1yQQ8Q"><!--pnid:BdZoJjw90a8prIRBOKfm9o-->解除（条例第 23 条第 3 款 / 根本违约）</th></tr></thead>
+        <tbody data-page-node-id="OlIXlwVG22h3l7kgv1G12R">
+          <tr data-page-node-id="HFUj3j1CtbiFuSJQwD08ow"><td data-page-node-id="fIdVcTJTLQ4mwHrrVeACs2"><!--pnid:sGbt2jKSt9tHAqwX7Jpdnv-->溯及力</td><td data-page-node-id="Oxt3DbzqVeAmeXcS3K2Wl7"><b data-page-node-id="znWYlxZo4u6yNfb3YppfrD"><!--pnid:Iln2h6mp19vwPPbPCcOzEr-->自始无效</b><!--pnid:dC9od20rZvsWtHwTXHix92-->——视为合同从未生效（第 155 条）</td><td data-page-node-id="vCnyAs0A1sUW78BkA0P0VH"><b data-page-node-id="RMF1nFkpZZBEcfoSpfppr7"><!--pnid:Hms7lXXAxs8aE1z1gDezJp-->向将来终止 + 已履行部分清算</b><!--pnid:mjaOwulFNeJlkRipBZpAkN-->，已履行期间有效</td></tr>
+          <tr data-page-node-id="myk6TDvB9Gp0s5hevRy3Xd"><td data-page-node-id="ikZ3VxDTw43DTTbNjS1pLu"><!--pnid:O0oqZnZ2Xjov7CWv1oIidM-->加盟费返还</td><td data-page-node-id="i6euH05kL95Et717oa8x2K"><!--pnid:RNwC6wj2PBlyKNQ8b80zEM-->原则上<b data-page-node-id="IoYtluvTRfSKnnqGJM9qxo"><!--pnid:4YMVfh9qSCija9JOBXsABu-->全额返还</b><!--pnid:yumrX2sUJU1oC35U4UX9Nh-->（+ 资金占用利息）</td><td data-page-node-id="zlci3NtbS6IzpGZL3J3QO1"><!--pnid:Sj9F6sD5Td3gIFe9gzJahS-->按<b data-page-node-id="QQQi3EFgD4kkI9fCbmNc1T"><!--pnid:qK9bYb1gCJXkQGJaZEenTj-->实际经营期限 ÷ 约定经营期限</b><!--pnid:NYykhWuJEuXYiAPItcLxMy-->折算，扣减后返还</td></tr>
+          <tr data-page-node-id="v8sIyMGYmlWOwutYnTACs8"><td data-page-node-id="9faqDvvxiaKMfOfhSASgrC"><!--pnid:cSr9rLK8BwSJxytxTmd7d2-->违约金条款</td><td data-page-node-id="RgbBhIaY0j5GBwnNhbhRo6"><b data-page-node-id="m7U3PdcJxuiun4naRfq3CB"><!--pnid:pj6luaKE1MhHwh22lMIhEf-->随之无效</b><!--pnid:ddytN8N6Sda0WlEJ0Lrt6c-->，不能主张</td><td data-page-node-id="4OiVLtR9zsiwQ6Zmqg0nM9"><b data-page-node-id="punIaQpd9SdWEDfXbtuOpa"><!--pnid:bn8QDxzF4HMiVL8LYd41zz-->仍可主张</b><!--pnid:oYlnlQXqyqogChg7UWQlNU-->（第 566 条第 2 款）</td></tr>
+          <tr data-page-node-id="Z5SI3O6YtJQBaXfxPP7mz2"><td data-page-node-id="s9hqUujThRGyAFDl6etCMH"><!--pnid:pmdvOPPdgHpOOW5FCtjdYC-->举证难度（对加盟商）</td><td data-page-node-id="CIZMAsQ2THIWum2iXXWgVo"><b data-page-node-id="6K8wnxq6FBaEbobtg82EiG"><!--pnid:gpQb4oZvHnxAIiUT3IeYc5-->高</b><!--pnid:zQN8Gy0GTtjbzNgiTD4jAE-->——须证明<b data-page-node-id="Gbyr3jtQ3iDuvqrZhsV17X"><!--pnid:TFR2irJfHOyC4EvW8Ngmeb-->故意</b><!--pnid:jY5Y3LDKvjiZyyWhVd1IA8--> + 因果关系完整</td><td data-page-node-id="hpmj9OOjqyRJcnfQ90kq8F"><b data-page-node-id="eRnkXe6YrR0yViFY28WZck"><!--pnid:WJLaaBnnHsLw3LzA9Os6ou-->低</b><!--pnid:wuyMB7AWGe1G9qw0xhO1Yn-->——只需证明"信息不实 + 实质影响"，故意不是要件</td></tr>
+          <tr data-page-node-id="7XSmawS2qEeDIu49AHqjlP"><td data-page-node-id="HScU0xug6CjuWft3Y1zDKM"><!--pnid:vmarsFcO7sq6JDbRTRwxBx-->期限</td><td data-page-node-id="BEVqGLrpCoXEmimPFm8ZdF"><!--pnid:hKCCaY7kefltc6oEK4O1jA-->1 年（除斥，不中断）/ 最长 5 年</td><td data-page-node-id="zPKt6cONaLvxQtWHVm9BC3"><!--pnid:XgJdbzJGYaeeAjK8TrTidC-->1 年（第 564 条第 2 款）</td></tr>
+          <tr data-page-node-id="TU7V2mjpfRzLqmtsYucMAw" style="background:rgba(201,162,39,.08)"><td data-page-node-id="jEsY8OztdNVz9iPITfDV9w"><b data-page-node-id="hN7pe3GQHMi3YnE3gaUTnW"><!--pnid:JnWQWlFSVV1V3TGVv8VD8o-->对特许人的危险度</b></td><td data-page-node-id="w2NfkEVVEjTfGwfZcOQkQo"><b data-page-node-id="FXwzL83GBD47RLqpnAjrle"><span data-page-node-id="wyk0d7vEmbmtPdWpcLxf2P" class="lv lv1"><!--pnid:smeWFc0w93CAEae3rCmsYi-->极高</span></b><!--pnid:3iPmdYo7sKXdPVoiEHChb8-->——全额退费、违约金条款失效、可主张缔约过失赔偿，且"欺诈"认定会连带摧毁其他事实主张的可信度</td><td data-page-node-id="cMIkOFvQ4lO3OJPujQe2RN"><b data-page-node-id="qwB2PxR5SpuSuUUMiMt78k"><span data-page-node-id="dy5u7aQyB8HT3YutsjTTUp" class="lv lv2"><!--pnid:jQcN0v5LlYws0TTSMx0ZkS-->高</span></b><!--pnid:YlTEBZ9mF7NnNZZ8fKHmRJ-->——按履行比例退费，但可扣减、可主张违约金、可反诉加盟商欠费</td></tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="DHWr1hZoMJrKXdmrVjcrAd" class="warn">
+        <b data-page-node-id="1Gwv2DlxqkrmUQFpoSkZOu"><!--pnid:DwpqpLZh4lA7NVQsg4xEGu-->实务判断：</b><!--pnid:IlBJFFcvcN69e5G02h4iiG-->正因为撤销比解除更狠，<b data-page-node-id="Fi3hUjZmO8s5w1QispOfLv"><!--pnid:AU6Ppyxq2kXXUID1Nnkwwz-->加盟商的常规打法是"撤销 + 解除"并列主张、由法院择一</b><!--pnid:tTlTAiIAHwrrBALQFP8kFT-->（上海杨浦法院裁判规则亦明确"被特许人可自行选择行使撤销权或解除权"）。而<b data-page-node-id="vN0hhTy4AIlEja0YUdYUki"><!--pnid:CdD2KbSUnjoZsKolz1KtCD-->特许人的应诉策略恰恰是"把撤销往解除上拉"</b><!--pnid:turS1QuBD5pCtFMYeg7A36-->——证明己方无欺诈故意、只是过失或商业吹嘘，从而把案件锁进"解除"通道，争取按履行期间折算返还并保住违约金条款。<b data-page-node-id="iQI2TmMwRZ7Txz7ytdB2WZ"><!--pnid:Bhe4dONeKMyBw9vwXlbJPw-->这一拉一推，单案金额差距可达数十万元。</b>
+      </div>
+
+      <h4 data-page-node-id="E1TnGyrgW7BMQitKTvBQP1"><!--pnid:OyP3LYkzc3tCZMKyr9C32r-->三、费用返还的裁判口径（决定赔多少）</h4>
+      <table data-page-node-id="H3TCgzx3YyDgrbiVFEne2b">
+        <thead data-page-node-id="YX9FG5OLrwEM34zCsWW2gt"><tr data-page-node-id="ZcKOJ8flvyx9jK8b0LI0L3"><th data-page-node-id="pCuf4iTIOQHj8U0alhnniF" style="width:22%"><!--pnid:9Mv83A8wYVlzqi8s1PRRjq-->费用类型</th><th data-page-node-id="eTocmvoMaAmIWbsUDvA7oG" style="width:39%"><!--pnid:41ty14CL8IKoHnN6UUq67E-->返还规则</th><th data-page-node-id="TeZFEhJtymGWjNjheAwQsc"><!--pnid:8R5noaq708m4g8lk5lVGhs-->依据 / 口径</th></tr></thead>
+        <tbody data-page-node-id="xUN0h2BjwIYHsXhIfPMwXs">
+          <tr data-page-node-id="b7iOZQEpEu6ovRE484hvZu"><td data-page-node-id="XSgRKZsdCpCrdDtbPvWqlk"><!--pnid:SnKxckT17WhqT5qJ16X0xC-->加盟费、品牌使用费（一次性）</td><td data-page-node-id="hwScNdckw1OuUHOGkcBs7R"><!--pnid:kmL7U2l4hU5lG0oHoucseR-->按<b data-page-node-id="SVUBOmS5tYfeNSOuEdOn9Q"><!--pnid:EX76VuCSw3vOShpyNs784F-->实际经营期限 ÷ 约定经营期限</b><!--pnid:3kKuEtUTW5XL0fNfphlwhP-->折算；未约定经营期限的，综合订立履行情况、实际经营期限、过错程度酌定返还比例</td><td data-page-node-id="1He1gBn1BTCSwH2WeshSuR"><!--pnid:ZbtXpEhni72m9bDdyyRZ1q-->上海杨浦法院裁判规则 Q9；上海高院《解答》第九条</td></tr>
+          <tr data-page-node-id="PddyWvIs4MV8r8yO4srujg"><td data-page-node-id="ZqdR6qKUr8UmgnHCGnKYII"><!--pnid:Fiyp2qYCN2I6i3IqF6DfCr-->管理费、年度品牌费（阶段性）</td><td data-page-node-id="iCQOC4e2GhpixfAXuYOxXY"><!--pnid:d4K8fbH9GuuAc7Drvq4Vh4-->按履行情况与双方过错确定已付是否返还、未付是否仍应付</td><td data-page-node-id="APc5vNG3z8W09Wp8xu7i9V"><!--pnid:blbaJf265yGGEKU0rnKH0Q-->同上</td></tr>
+          <tr data-page-node-id="Byvo20sHjra58Ez3JCwmY1"><td data-page-node-id="yx1PImNcC11sER3Rf0vTPb"><!--pnid:YWXvfMbv9Zp9qLWDzkXZ3r-->培训费、设计费等特定服务费</td><td data-page-node-id="Do9qN6IvSE9WRv7JNxrO04"><!--pnid:TCg9kN5MoUi80OpoyYpb9C-->按该服务的<b data-page-node-id="AWQ4qpgD8GfhLy4HAT4LRO"><!--pnid:PybOCymtss1xHOCirkrTSA-->实际履行情况</b><!--pnid:ZEC8oO6bWwcKJUVXN1BqJQ-->确定是否返还及比例；已实际提供培训的一般不退</td><td data-page-node-id="BPbhhm27C8lI5R5b5DNknI"><!--pnid:CdNowwSqi1kr6xKVn39ljL-->同上</td></tr>
+          <tr data-page-node-id="cD7uufEdGcjmDqDRJS4dP9"><td data-page-node-id="zT77zzrOyLoMeD2bRzYqBZ"><!--pnid:bOV13nQshjRmxHxTyhDWhg-->保证金</td><td data-page-node-id="hOosx9Sc23uQiyoVK8ZSLd"><!--pnid:kbWdfNLeJdVIS8Vw4pXZRk-->无违约、无欠款的<b data-page-node-id="vYkhs4ngMF9jU9VIcphWmV"><!--pnid:NCzLYKgLMGfjEqSSPIBqCi-->应返还</b><!--pnid:Lmo15lfnLB2kNKCRS8YMUk-->（有息与否按合同约定）</td><td data-page-node-id="bXwzjnxyYOQs1bOY5Hfgen"><!--pnid:l6XsfWL3NtgrA9ByCjbO5H-->《条例》第 5 条（办法第 5 条第（三）项第 2 目须披露返还条件）</td></tr>
+          <tr data-page-node-id="drdEP4ZKPQ1pACYeYeDVQR" style="background:rgba(212,86,75,.08)"><td data-page-node-id="juaQIfbxOmwBf1UpdyyXxo"><b data-page-node-id="XnzJXQoReQ3YpAQqWPbpHf"><!--pnid:uWlYSTMnplqVPCzxD0TzVo-->过错归责三分法</b></td><td data-page-node-id="uHEes6loJeHZ9uD6kmLvlb" colspan="2"><b data-page-node-id="tdDyT1tQh01GSwLLeDwn10"><!--pnid:tBXeusRYBDAWelAeWeFhXU-->被特许人无过错 → 特许人全额返还；特许人无过错 → 可不返还；双方均有过错 → 按各自过错责任分担。</b><!--pnid:wHRv3UvDVAWx9qokCyZh54-->（上海高院《解答》第九条）</td></tr>
+          <tr data-page-node-id="Tid4uGoWYEnzjFIMPqXKns"><td data-page-node-id="S2fS2Bs7kNxNVOUE1TWkwj"><!--pnid:VKaLJzUUeShOkHHmmwUCDx-->经验法则</td><td data-page-node-id="NQIcTRsCLM36mgmBH7R6Qb" colspan="2"><b data-page-node-id="fixkVUmooP0WVnjJ2CcG8r"><!--pnid:vCJfdaefF619sVSmeZ2v9A-->未实际开业的，基本支持全额退还已缴费用；已开业又停业的，按使用经营资源的实际时长扣减合理比例后退还。</b></td></tr>
+        </tbody>
+      </table>
+      <p data-page-node-id="EOQR0gWKfeCTzd36tvdBXH" class="small"><!--pnid:nYtE3Ji0bU6xF2Dr5GlhRp-->另注意后合同义务：合同无效、被撤销或解除后，加盟商<b data-page-node-id="oxwlHml6MWDoK2fhaQA2LC"><!--pnid:6aEfCcL1kxRKIUyGdrhIBw-->仍负保密义务</b><!--pnid:wQ8PqwVFVgjPwFJHikKRZE-->，涉及商业秘密的文件资料应返还，并停止使用特许人知识产权、返还具知识产权属性的物品（上海高院《解答》第十条；《办法》第 7 条第 3 款——合同终止后即使未签终止后保密协议仍负保密义务）。</p>
+
+      <div data-page-node-id="UaHYFNEWcCPLR9d575nGro" class="act">
+        <b data-page-node-id="hK78QLR7V5aXXeBU8snTub"><!--pnid:LaFuiWaUvXeNRuErmh8Bkq-->我的落地动作：</b><br data-page-node-id="hz2Vocu87R7XM9BsL3ZhEy"><!--pnid:DjxmCQFhdJsDXEHYiNUpz8-->
+        1. 在加盟合同中预先设计<b data-page-node-id="RdccVi5xdAhvkJ0ZDjrFeN"><!--pnid:cByEapGkb5GcU841PdPh4S-->"部分无效不影响其余条款 + 费用扣减规则"</b><!--pnid:TlN1DMqDA2hJCbcwUVJKYu-->：明确加盟费对应 3 年授权期，按<b data-page-node-id="1ry7fcWMFuQnMz8tDyCKsq"><!--pnid:pgfZjvdfSFnbueAiMogdDH-->已履行月数/36</b><!--pnid:2UoHOwph6uh7XtTz257Fwe-->扣减，已提供的培训、设计、带店督导按单项价目扣减。这是解除通道下压低返还额的制度基础。<br data-page-node-id="WR2iS5XGk1Kun9Ync13ZBi"><!--pnid:lvUELy3l2xBsK2mkgRcBPy-->
+        2. 合同里<b data-page-node-id="xsQFnskiGE9CIu77k3dUy6"><!--pnid:N8MVTm5vgduxXCJWK2zsg1-->单独写一条"披露文件不构成合同条款的组成部分"</b><!--pnid:wySl6hNGnB5LC3VG0U8BSZ-->，并声明"除本合同明确约定外，任何宣传资料、口头说明不作为合同内容"——但注意该条款对抗《民法典》关于"对合同订立有重大影响的说明和承诺可视为合同内容"的规则<b data-page-node-id="5djRYCEX6wScXbYatHSa7b"><!--pnid:1umzQk61pVNlRZ2572as6A-->效力有限</b><!--pnid:mlYxGDIeAbC5kLreuFAijk-->（见 Tab ② 案例 Q6），真正的防线是管住招商物料。<br data-page-node-id="tQMyBLJxNjL9TnElyqmUB8"><!--pnid:6ZpVyHrnkvMaWHv1yiQMEJ-->
+        3. 建立<b data-page-node-id="HKhUa7UTtoXpZHQVFjCFUB"><!--pnid:hLoWndf89GpN8rCNnWMEDX-->《披露瑕疵整改台账》</b><!--pnid:ng525Ir7eDMPPE1Hq4YYSA-->：一旦某单被指出披露问题，<b data-page-node-id="F5EeDrYOko4iaylDg7W6ad"><!--pnid:G3O2JdbBayBwIvUEpoVG0R-->72 小时内</b><!--pnid:c8xd0ZPNRYcXodaEum87T4-->完成补正披露 + 补充回执 + 书面说明，把"故意"降级为"过失"，切断撤销通道。<br data-page-node-id="g2QkWzlKmSAQQAfE2cMueo"><!--pnid:cdUVJ14KeRiqfXTmhfQY1Y-->
+        4. 对所有已签约门店做一次<b data-page-node-id="99RBxv9omEYkUv43ExEZZj"><!--pnid:eRQV97HTIJltkb2RJvZMy9-->1 年期限倒查</b><!--pnid:iZijLo9kMj48hlSEoGaJI4-->：从"加盟商知道或应当知道之日"（通常是首次投诉日、律师函日、立案日）起算，超 1 年的解除权/撤销权已消灭，可作为首要抗辩。
+      </div>
+
+      <div data-page-node-id="DZPQfeh78ANwGAraoQsPKI" class="anti">
+        <b data-page-node-id="UrNa111uM6HOkPKA98RP5d"><!--pnid:1zepEzyydRE4OQkYPZlEJZ-->加盟商反制点：</b><!--pnid:bAkJz5CFEJ0OB7zhpGZl7o-->加盟商律师的标准组合拳是——<b data-page-node-id="VDCiggIYD2ujZG1bsv9wFK"><!--pnid:scJf19E6pJHmkq5QWxkc8o-->① 主位请求撤销（欺诈），备位请求解除（第 23 条第 3 款），再备位请求违约赔偿</b><!--pnid:waYujsjLAie1t6LTZv9KKt-->，三层兜底。同时把"披露不实"与"招商经理口头承诺"捆绑，主张《民法典》第 148 条的消极欺诈。<br data-page-node-id="mkEx1KK7zW7W2TxN8TjsY2"><!--pnid:m1a86NtMS0f1eYTIvVJMam-->
+        更狠的一招：<b data-page-node-id="UQ14b4hfEtvVHj0viysPbX"><!--pnid:dENnxsIuGXkodUvRAmFsV7-->不告单店，告"体系性欺诈"</b><!--pnid:cw32FEBT4Y4M1emOULTair-->——收集同一版本披露文件的多个加盟商证言，证明瑕疵是<b data-page-node-id="IlJpFJb4iSjVTcq9WGWAbH"><!--pnid:Bwz0FXv5lgjP79utuaGhEo-->制度性、重复性</b><!--pnid:N8rjiSsnEPHtS9EaiAgX3K-->的，从而证明"故意"而非"过失"。一旦法院采信，撤销成立，全部加盟费可退。<br data-page-node-id="73zvFhcOXxLnTaE1zhbIzF">
+        <b data-page-node-id="wwLhPQ2lUnHZDwQoWnGZMp"><!--pnid:FUg2zy9qWF1QDpoXiASgel-->所以：同一个披露瑕疵出现 2 单以上，性质就从"个案过失"升级为"体系性故意"，必须立即全线整改并升版。</b>
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:vwkED1chPLZ6IgN9ZaKyMH--><!-- ============ p2 ============ -->
+  <div data-page-node-id="x66oTt8TDqASNkLwMD28GU" class="panel" id="p2">
+    <div data-page-node-id="cBVg0X2UUtAZ3L7G5fRtt7" class="card">
+      <h3 data-page-node-id="rlMkpalObbvxhcTBfeTl7t"><!--pnid:9OAZS4SS3QxU9yn2Sgv0yj-->二、「实质影响标准」——决定输赢的那道闸门</h3>
+      <p data-page-node-id="PsGb2mp8eJOuqUfSzAknpn"><!--pnid:ecv1yImNuZzX6M6fvXdSDs-->《条例》第 23 条第 3 款的字面表述极宽："特许人隐瞒有关信息或者提供虚假信息的，被特许人可以解除特许经营合同。"<b data-page-node-id="5QMIeEM41GYmL15a6LCoH7"><!--pnid:GEusOtw1lNl09C5RP8qAcp-->若按字面执行，披露内容与事实稍有出入就能解约。</b><!--pnid:jVFQGNuOOl4m9ICcKlnMlU-->北京、上海两地高院因此都做了<b data-page-node-id="clvIXs4BkK9m6f0JFsjZ92"><!--pnid:6oly7Ux4rb3CqLVH5BR97Y-->限缩解释</b><!--pnid:DK6fN1iWIwn5N186Kj7scX-->，把门槛提到"实质影响"。这是特许人最重要的抗辩依据。</p>
+
+      <h4 data-page-node-id="Dc3Um6cJOgxrsDAAAYBIZP"><!--pnid:tlbYobLrHkzjcEG5L35A4U-->1. 北京高院规则（京高法发〔2011〕68 号，共 25 条）</h4>
+      <div data-page-node-id="Zrw8pDBIuXo7HBawEKgExf" class="law">
+        <b data-page-node-id="x5VQu0fEC4yBcP6MEi1qQO"><!--pnid:oi44ekdRwqPB3bXziWhgbM-->《北京市高级人民法院关于审理商业特许经营合同纠纷案件适用法律若干问题的指导意见》第 15 条（信息披露与实质影响，要点）:</b><br data-page-node-id="suYeRzMDIt1acaKhlc7wLj"><!--pnid:vQTiyDe7qgMnies3e5XWRK-->
+        · 特许人<b data-page-node-id="R4wH2gZfavFugo3NKWVEvv"><!--pnid:2fjXPzbAvwQngO91yF9h7o-->在订立合同过程中</b><!--pnid:CGEI0578FnmzKUPJE0PlDk-->隐瞒<b data-page-node-id="BySjJHrA5mu7oZuyyv5cCK"><!--pnid:77XNHKOFGVHdfViwyGYRIP-->直接关系到特许经营实质内容</b><!--pnid:ac48vkR468uKBQ79Huo92v-->的相关信息或经营资源，<b data-page-node-id="xi3pZ1Z5Tfv7vt1WxsvnHg"><!--pnid:AyWo0CoWMDkgwy0WDDeRZZ-->足以导致被特许人签订</b><!--pnid:zO0gVpBvAztOFeqcn1RfNJ-->特许经营合同的，被特许人可以请求<b data-page-node-id="Yqr7aLh5mz3yexRCawVggz"><!--pnid:aqV1tpZ2IEZr063JQUbyq2-->撤销或者依法解除</b><!--pnid:je8W3ijKwl2abVzUuPmhXn-->该特许经营合同。<br data-page-node-id="SNllgHylKTOCyEURrnAgwK"><!--pnid:kLkWtcatjJ2C8hPyf1JXvs-->
+        · 特许人<b data-page-node-id="wG6BN4MHxw4wBx71gx4843"><!--pnid:evKdyPZIEPNxg4bXfulDJ8-->在签订特许经营合同后</b><!--pnid:Ak0a4FScSvuz2G9MNOgnyl-->隐瞒重大变更信息，或者提供虚假信息、<b data-page-node-id="V9j554tnUbK3SBmpwE5RfF"><!--pnid:axINvVwiBlUVXgxQRZ7kYD-->夸大经营资源</b><!--pnid:YLwkUn7RBvj6uArDvFQxqn-->，给被特许人从事特许经营业务<b data-page-node-id="hdHLZmRF30CrSb2I5aDRKh"><!--pnid:CDK2JRM28kJ12hA3SZsY32-->造成实质影响</b><!--pnid:xgSZIVxfjcEwt1WXpacw5r-->的，被特许人可以请求<b data-page-node-id="jtiYycRssPM2qJixINZbsC"><!--pnid:eWGxg3O7YZLTnzJco0egR7-->撤销或者依法解除</b><!--pnid:8jdQNf6Bep2ocL5ltdmOTU-->特许经营合同。<br data-page-node-id="32K7hmZNvs74tIeRRoDYdg"><!--pnid:M6qqwIFoS8kLoZTkMblnT2-->
+        · 对信息未披露、披露不充分、刻意隐瞒的情形，应<b data-page-node-id="kWK0sezvTlMc7gtLrizz34"><!--pnid:RAypux1qcDRozNJXAzMKjk-->综合考虑与合同目的的关联性、对特许经营合同订立和履行的影响程度</b><!--pnid:cLOpun1YQi0VOjKRCOYdUw-->等因素判断。<br data-page-node-id="OsG3yOVHwkfje8wTQjZclo"><br data-page-node-id="NapSamBz1GP1p6aKrSeCYW">
+        <b data-page-node-id="jk6ZgS9TBlUmjESfEQLAeU"><!--pnid:ZBG4D1BwUQgta8c7UXxCXB-->同意见其他相关条文：</b><!--pnid:J4l2eAnPETKTt0NdVr5LIr-->第 2 条（经营资源范围，含在先使用并有一定影响的未注册商标）；第 8 条（不具备"两店一年"不因此无效）；第 9 条（企业以外单位和个人签约无效）；第 12 条（经营资源被撤销或宣告无效→可解除）；第 13 条（根本目的难以实现→依《合同法》第 94、96 条解除；<b data-page-node-id="7lvvipxpcwaPXF5B7EJ6Mq"><!--pnid:zjp743sUgY6m1FIfz6UdF7-->是否盈利不属于特许经营合同的根本目的</b><!--pnid:pA0pPyuMZ32E9LYm5kNmxQ-->）；第 17 条（被吊销营业执照致无法履约→可解除）；第 18 条（冷静期：有约定从约定，无约定仍享有合理期限单方解除权，<b data-page-node-id="0sPRPqVJnn5VbyffaWqe2W"><!--pnid:7l7SwqQAdshAAa9ejRRTJo-->但已实际利用经营资源的除外</b><!--pnid:DsBm7O7AvBpiXI4KVRcs8V-->）。
+      </div>
+      <p data-page-node-id="qdSoUoiOmIqafHfiqO2GBD" class="small"><!--pnid:5O0GW15HloMlAgouyTxDa2-->注：《意见》制定时引用的是《合同法》第 94、96 条；<b data-page-node-id="yJz23P3Vg4b6421u40YyGb"><!--pnid:9ReAHnspmBw2wCvFttfh7f-->《合同法》已废止</b><!--pnid:y49RzzujXtqGogIvhVenDq-->，现行对应为《民法典》第 563 条第 1 款第（四）项、第 565 条。引用时须作新旧法对应标注。</p>
+
+      <h4 data-page-node-id="hEChujuhODjQimRhRgTATJ"><!--pnid:jouO0DjsQi0d3Rz3uEjxfm-->2. 上海高院规则（《关于审理特许经营合同纠纷案件若干问题的解答》）</h4>
+      <div data-page-node-id="ypIl8jMkzIqVGkTG9et1SP" class="law">
+        <b data-page-node-id="iVzrRvseSFCg524LPLaMjo"><!--pnid:BSA1kI3Ux5Ml6K6gJT496Z-->第七条（如何理解《条例》第三章规定的信息披露制度）:</b><br data-page-node-id="WyyISACqjFJMuZjZxlp8Fw"><!--pnid:j9LNvynrgR4iYJJrylDuUz-->
+        "《条例》规定的信息披露制度，其目的在于保护被特许人，使其在决定是否投资特许经营项目之前能够获得特许人的必要信息，以预测投资风险，防止商业欺诈。<b data-page-node-id="NReGq0c3nqls3xvEtTEEdD"><!--pnid:THnuW1K8pOCEmTfK5oHY5k-->对特许人未履行披露义务的法律后果，应结合《合同法》的有关规定，综合考虑特许人隐瞒、夸大以及提供的虚假信息对合同目的的实现及对合同履行的影响。</b><!--pnid:gmRd0tfMYfxcRLdf8gKaQD-->"<br data-page-node-id="D4Az8n04YxAXaTa8C1UjdV"><br data-page-node-id="hio3LTYsEAA0RWGl5ARhQD">
+        <b data-page-node-id="nhjzQ0XTalZpjhZfIwX28w"><!--pnid:P56Aw2dyKraQhP7Xjh7Sso-->第六条（经营资源瑕疵）:</b><!--pnid:ojz8J33Xwce78kZshCAozr-->签订合同时<b data-page-node-id="NTlF8Q8Hobl29aYs75GXR7"><!--pnid:BbKPhhMV5APtcZU0ZHCvDZ-->隐瞒</b><!--pnid:ewc0QlBJkRunTxg9MzGIDe-->对经营资源无处分权或权属不清的事实，<b data-page-node-id="0IvDrmdwd1duZ0Ggmcp2Y8"><!--pnid:ghWmHezROnSdNGlBa8nCre-->构成欺诈的，被特许人可以请求撤销合同</b><!--pnid:WbU9mA6Eb5rHMuPe3h0Zeo-->；经营资源在<b data-page-node-id="OJUTK1ebzwYVgad83ZOipa"><!--pnid:5TBwO9TNrWMvu0YUM7hTKL-->合同履行期间</b><!--pnid:36rIfI9Q6rpLyTgA5pqVpl-->被依法撤销或宣告无效的，被特许人可以请求<b data-page-node-id="gRSvfhHuUUbrgEziJy3AIK"><!--pnid:QRg6PLGHX0FODTfGJCIiUE-->解除合同</b><!--pnid:uUD7JXilNtc3yxTrLvPk5c-->。未注册商标在先使用并具有一定影响的亦可成为经营资源，<b data-page-node-id="AvSRN9ua0s9H2lPDv8TXSx"><!--pnid:ElwIJCB5LP4M0hh2ORVGhI-->不能仅以商标未注册为由认定合同无效或被撤销</b><!--pnid:qQMXV36cFuG1oVCicicghS-->。<br data-page-node-id="B6dhHG5Iq0B4blCXZIc04B"><br data-page-node-id="CouU4jp3h07ub2Cy1mgl7M">
+        <b data-page-node-id="rsO8N4FhSGtJHYFXGf2rV5"><!--pnid:V8qIPlzyGaKKH9ZUXJYUxS-->第九条（费用返还）:</b><!--pnid:HyRhPqbdJXhaXXU48i5v42-->被特许人无过错的，特许人应<b data-page-node-id="wZfMjjnHwh9w5NVRhlzb1k"><!--pnid:Zf7Y7vi78fd7ytnvj0n9Tv-->全额返还</b><!--pnid:a4hjU0oRb3BUKBeDxLJyYr-->特许经营费；特许人无过错的，<b data-page-node-id="tY6BbA2l4hwb7dPHV5iiY0"><!--pnid:FnfgsQiqhXV6bNNw2XzSpz-->可不返还</b><!--pnid:vqr9iPBxMh587Bt6jZeOMW-->；双方均有过错的，按各自过错责任分担。<br data-page-node-id="QKz4jXFflMJWhOAAh8PXVn"><br data-page-node-id="OGCupUXuF94CBH32wTJYYz">
+        <b data-page-node-id="g3wqgYXvNkHXFJCWKetyXz"><!--pnid:sQ0r4IOMauepiMlzloA7D6-->第三条:</b><!--pnid:IJ0vbZH78E5h1szFcmoHjX-->"两店一年"与备案均属<b data-page-node-id="JQaw1QL2cqGVPOJpcOsXnL"><!--pnid:WGeUvMXtcX2VTJ0xxjdLLL-->管理性</b><!--pnid:UMDTtJlZ3aUuLreWSvz1pY-->强制性法律规范，不具备不必然导致合同无效。<b data-page-node-id="yurUc0e0YoPisVitPeSJix"><!--pnid:0ruwTSUpVZIrlCg0FXglak-->第四条：</b><!--pnid:WXfwip1DxtxqivO1wqzRtD-->企业以外单位和个人作为特许人的规定可认定为<b data-page-node-id="r6uupP0EDKXNG4pgWczEkd"><!--pnid:5zvboNlitwlwFROaDG0nsP-->效力性</b><!--pnid:W1uHRSTlznWWdvtWgxn5ch-->强制性规定，合同<b data-page-node-id="nPX8KPI1devMcjgnqNIGVW"><!--pnid:0dSysUiaayAZAlFrHXkkN9-->可以认定为无效</b><!--pnid:jofYxFw2NtQgtapkpTdoNh-->。
+      </div>
+      <p data-page-node-id="GEKBXoFc06DsPjP1IunuAX" class="small"><!--pnid:fTMVLMWL61f0QwOrqZPueA-->上海高院《解答》制定时同样引用《合同法》，<b data-page-node-id="lgVgkMjWABU5bTH9EoCXU9"><!--pnid:OqM8kVHEOfyB7DovOjSOsR-->"结合《合同法》的有关规定"在现行法下应理解为结合《民法典》合同编</b><!--pnid:GV9tvfgtd6fwJk8PvuclVB-->（第 148 条欺诈撤销、第 563 条法定解除、第 584 条赔偿范围）。</p>
+
+      <h4 data-page-node-id="PgnpdG334MFaAVNqpss7SE"><!--pnid:dDng3ZjA2GfhfP01xSSubS-->3. 法院考量的具体因素（上海杨浦法院归纳 + 两地口径合并）</h4>
+      <table data-page-node-id="mbyMyOt6TnMGfJiouLvWMC">
+        <thead data-page-node-id="vxpIYI02HoHMWoLI1Hwub2"><tr data-page-node-id="LSsVu6McGuZOw4swc1NXid"><th data-page-node-id="c9bnAacs3OzP5QLW8p3aBQ" style="width:5%"><!--pnid:QSxbbR86TY0R0MUIjmSaGd-->序</th><th data-page-node-id="HONvRVclta7YEYWUgvf70F" style="width:26%"><!--pnid:uvRxNq4gQG2qCAMWbMwSfQ-->考量因素</th><th data-page-node-id="t760EiCFeXnSiVrtZ0uHrz" style="width:35%"><!--pnid:bxRnlWQAIk7HULSsvNGmBz-->法院实际怎么看</th><th data-page-node-id="vfX4UseiQH9d7p4Q0U1bfq"><!--pnid:EmRfV5QVko6FQwwlK2cXuV-->特许人应对</th></tr></thead>
+        <tbody data-page-node-id="JzVkb1SfGDnDFTHfKDc3lq">
+          <tr data-page-node-id="h20LZ4tRB9Z6FIVAeIedFH"><td data-page-node-id="E7Ty9uRnjXDD02uP2a81QJ"><!--pnid:LVkNTvEgaI4zKKVihFlURj-->1</td><td data-page-node-id="JdJmfJ87nl2qBc60PLTFVi"><b data-page-node-id="SdbBvwQYVvRfMoPRY5DH7A"><!--pnid:tTwYqreDOoyfqInt4Fgf4I-->信息的重要性</b></td><td data-page-node-id="v8UAflU1Cbs7rbO0g2ALuK"><!--pnid:XVtIiwuGSJZDShvIWV6Abr-->是否<b data-page-node-id="68U2tMAQOaotzldfIgFhJu"><!--pnid:5NlhVBGcyGfuZl8uRcfni0-->直接关系到特许经营实质内容</b><!--pnid:nzrf8BQAFLIv1TbaL8biuf-->——经营资源权属、费用、供货条件、诉讼仲裁、门店经营状况属核心；宣传修饰语属边缘</td><td data-page-node-id="pObnGlUQIzFOw4KiCWiIpS"><!--pnid:I7RNi2QzISefhQkhnaIsXt-->核心信息<b data-page-node-id="DupRrc06fOqkDDoHH0DdhS"><!--pnid:RNN980fDrSD92b1DCuyRmU-->零容忍</b><!--pnid:d1JQfRugY17938i2EZEX1j-->；边缘信息允许有出入</td></tr>
+          <tr data-page-node-id="dXGdYjWNzKLaWOSPSt7ZZq"><td data-page-node-id="PYV9ctKyWhXDACWPGeTiyi"><!--pnid:nWLtI06UyFAeJmk1qqB5M0-->2</td><td data-page-node-id="AKyXp4vojxAhe40SXPM0q9"><b data-page-node-id="XoCyhtqBvIEORuba7S8Lv9"><!--pnid:qufv8XMhVjCNsyBikxYOo7-->与真实信息的背离程度</b></td><td data-page-node-id="CBopOxNKrE76bRt2QD3GE8"><!--pnid:nK43Iy319aBpoqhnpwXz4H-->把非注册商标说成注册商标 = 质变；把 80 家门店说成"近百家" = 量变</td><td data-page-node-id="RVdl5dvbVMTlxwvH1m6XHP"><!--pnid:gGWsrtuROEKbAywU6MWwiz-->凡涉及"是否/有无"的定性表述<b data-page-node-id="odsv5BvfyjhUAB3x9oB1PM"><!--pnid:0ONlgtex7YVABMTCZWZBpu-->必须与证书一致</b><!--pnid:k5fj960OTv8tOvxKmi8OHC-->；数量类可区间化</td></tr>
+          <tr data-page-node-id="4C0NzSqrJIDQpdoELMbbbW"><td data-page-node-id="x5ggWfrelXl9Ln9cVCGwBk"><!--pnid:pQRkFle5YMhQSTgLptJlzm-->3</td><td data-page-node-id="Gbrgh2icIKHouX5NO7AHtk"><b data-page-node-id="KjU74swzeyAoLRjjntWThO"><!--pnid:AQ70276UaNigDMgHrsQ342-->与合同目的的关联性</b></td><td data-page-node-id="6qz54ZmqpU9VRz3vRM1zld"><!--pnid:VlRYbg5IgrbF3QbFYplu3P-->是否影响"利用经营资源开展特许业务"这一根本目的（<b data-page-node-id="9riAD3VK27b0Z2gUkiw70B"><!--pnid:U1qqGxJaYPfKPLKzyLUwHD-->注意：是否盈利不是根本目的</b><!--pnid:rAFZh10sro1c2rgKBAmg7G-->，北京 68 号文第 13 条）</td><td data-page-node-id="pErnvwDFpGfniLegw1bykF"><!--pnid:d8PvdH5MvUFxyJ0laPXLKw-->抗辩时把争议从"能不能赚钱"拉回"能不能用资源开店"</td></tr>
+          <tr data-page-node-id="dbYpf45xt9GYZ4zme2Pr2K"><td data-page-node-id="ui9vVZigFJTmN4YzOqrwXd"><!--pnid:ohtZ30ubXC2299tul5XOxt-->4</td><td data-page-node-id="mNjl1dCC1HuUcgaHwfq2iz"><b data-page-node-id="s8mIAUaq8uyerL6hHHwUgK"><!--pnid:JTRMlHFkaVKMwx8KEKmYUu-->对订立和履行的影响程度</b></td><td data-page-node-id="ZUba4rDvhB0Rgy2ovPsEsu"><!--pnid:zwkywBX7ErE6g7VFwP8Rky-->是否<b data-page-node-id="zxb6XR10GiLmPza7izB2DC"><!--pnid:AMBrjbNxoV933WpVzGuVjH-->使加盟商陷入错误并据此作出意思表示</b><!--pnid:VndxjL3bShfd2OvDyewf6M-->；履约阶段发生的是否<b data-page-node-id="woWBpnv9o3xXPj2QJ9ynch"><!--pnid:BniF2MpslRRCKyutAEzGA7-->造成实质影响</b></td><td data-page-node-id="PJjHA4qLsZc98fGPRtUCfw"><!--pnid:a8QT2P1piQFXF3SVWn7krQ-->举证"即便披露完整，加盟商仍会签约"（如已实际选址、装修、开业）</td></tr>
+          <tr data-page-node-id="THJG9rfK9H9P4WuwBWi6dW"><td data-page-node-id="bz0j33ejDGzZdI31lJOOhr"><!--pnid:dMzOSZIRiyRRwNhUfn1LFN-->5</td><td data-page-node-id="gqsXO9mOX9uITk5Dhp0M07"><b data-page-node-id="VnyPTo5PQquIRCqGwf6JjS"><!--pnid:KO1WRNLgbWgloMvVO3CASh-->是否区分恶意欺诈与商业吹嘘</b></td><td data-page-node-id="ZOOU9rxJcrA9nEKvo2qAbi"><!--pnid:7lmiswpJZz6RNkOt4sdTAe-->法院明确要求"<b data-page-node-id="3webnMI2h2HkzmekJuLaPD"><!--pnid:pRuT1YKba3CnQu6F4DANnz-->适当区分恶意欺诈和商业吹嘘</b><!--pnid:o2dT8qwiqHGojUCwiPs4YZ-->，尽可能维护已实际履行合同的稳定性"</td><td data-page-node-id="wkJ94j9arOgOEmzrf0rULo"><!--pnid:K93ww39JhOnnwnr59VmIHr-->把夸大宣传定性为商业吹嘘 + 证明已实际履行</td></tr>
+          <tr data-page-node-id="z6Xx20pMt9o10jIuZgs6Cx"><td data-page-node-id="gzhlbhPaW6KN4ZqjLb8lfn"><!--pnid:y0knjSLrwqXZFSs2glWGgX-->6</td><td data-page-node-id="CiWZOJuy3InGpe8oSEjfQx"><b data-page-node-id="vfSoy4aHworEjoeQHlS3p4"><!--pnid:IUHoNfnwbax3CFGSr2cl5z-->加盟商自身的注意义务</b></td><td data-page-node-id="GOzt6P0OaxrqyV7dJgpriB"><!--pnid:NrbQ5RRr1FpPkAIeLtA7Bz-->加盟商作为拟进入该行业的经营者，<b data-page-node-id="irmUyveVgGL9GUSKmEssLX"><!--pnid:Jn7zPk02yBlrfgGexRQy22-->对宣传中排他性、绝对化语言应具备基本辨别能力</b><!--pnid:5W9KZ3QV4NgOfwXlGIaum7-->，对商标注册情况<b data-page-node-id="ULv2p6r8WQbrxDjjpZqQGZ"><!--pnid:IbzedRn40yjaYArsryLbro-->有查询义务</b></td><td data-page-node-id="ChJC8NUi975qhh39KNHez9"><!--pnid:1qdbjDmWX1QzHzFm6OwKFd-->强调加盟商可自行在商标局官网/企查查核实，未尽注意义务</td></tr>
+          <tr data-page-node-id="eHp2T1AdOnhtGvpFrI5zvu"><td data-page-node-id="6TvXY21fZ7obLZk4DVy3HV"><!--pnid:p16KFXIFXpKyXhiXksNRF5-->7</td><td data-page-node-id="YxC63I3qHkxvrWWBjLL9WW"><b data-page-node-id="JPkEQiuKvKpl0HpeDhITMl"><!--pnid:UIEvXU58LuusgsxEpFtVTG-->加盟商是否已实际利用经营资源</b></td><td data-page-node-id="T2b63M2NQh3NDVHOeW1LyB"><!--pnid:WClbqJy4mttYB4zCFbGK6x-->已开业经营的，解除权与冷静期单方解除权均受限制（北京 68 号文第 18 条但书；上海高院《解答》第八条）</td><td data-page-node-id="o36ZLeGpXHMhgyeIYEW7YM"><!--pnid:hCOC0DI6t3HLYfweX7Sl4s-->举证开业时间、实际使用商标与 SOP 的时长</td></tr>
+          <tr data-page-node-id="MJpIBNC3UX2dXVr7iy1b7R"><td data-page-node-id="smVM2MkEQkISrCImwBQ9aw"><!--pnid:8WHxibDJ28WN1MpxTLET1p-->8</td><td data-page-node-id="6QEGMHHNIbCsqhEvgyBCq3"><b data-page-node-id="boTaBeeZCzWFNiiy1My6ek"><!--pnid:FQzDnVauJgtxWfWJz3uLxL-->瑕疵是否具有可补正性</b></td><td data-page-node-id="lVYZ3qSN9ogJLV2HXVFdge"><!--pnid:1RFNQC7UTnDAM94f2tXQWk-->可弥补、不影响合同履行的瑕疵，一般<b data-page-node-id="8uIwTqhzeNfdiEqAGZMnIb"><!--pnid:4FovBuTdzLVU8tygfwugMT-->不支持解除</b></td><td data-page-node-id="inoX6sYEdv1orHudNKyW75"><!--pnid:q8sy5EN2CjxuqoU5jDvqdO-->发现即<b data-page-node-id="o4osLjLJkfGzRpbqeTcMIG"><!--pnid:6SHLlxfBxlj6XV5ymyeHcy-->主动补正</b><!--pnid:SI5cFF6t5cr0FSiJXgydoe-->并留痕，把"不可补正"打成"已补正"</td></tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="Zx3bo7Qh6ZKJBucxOLEE23"><!--pnid:PLzZTDdZDAahdtWPXYYco6-->4. 四个案例（2 构成 / 2 不构成）</h4>
+
+      <div data-page-node-id="lVfLXWxf21P3DPbZR9aicK" class="chk">
+        <h4 data-page-node-id="ihftWmfl7MAmNpPJ5lpFOz"><span data-page-node-id="XbA1899Qk4FNc1iW1wcXUD" class="tag t-red"><!--pnid:XoUbVzMpgeR7L8iZNHPoCK-->构成①</span><!--pnid:bpwZIeao6SqaOqLmwYkQED--> 履约期间备案资格被撤销未披露 → 解除</h4>
+        <p data-page-node-id="ZGGt5mm57QExxRGJFRrgpX" class="small"><!--pnid:Wrse7SLtIauoCz1bYZkl6g-->杭州铁路运输法院（2023）浙 8601 民初 706 号 · <b data-page-node-id="he2z76Gx5WnPbB04oqNCu4"><!--pnid:J2K3pIfKJYYeMm4w9GZJVz-->最高人民法院发布的商业特许经营典型案例</b></p>
+        <p data-page-node-id="OdX2CFJQAQlD5vYONhNwGy"><b data-page-node-id="0Wde83mdPiH2ztWC0suoej"><!--pnid:ogo3v8Tv3Vsp7zl5I3e8qG-->事实：</b><!--pnid:vniBDZwMf8TluXUXObVBRx-->2021 年签合同，签约前已完成备案；履行期间某公司因违反《条例》被行政处罚，<b data-page-node-id="CZf3hMwmtgsVhzGAmgeAfy"><!--pnid:H4NCP5b8FtW8fHHJaP9MS2-->2022 年 10 月 24 日因不满足"拥有成熟的经营模式"的法定要求被撤销备案资格</b><!--pnid:St8OmkxvxdyL7NNXdmhKJO-->，<b data-page-node-id="7vUX82c7UAiDMe7J5WsYgZ"><!--pnid:ybdWggHDkAlX0BJWXmWV7y-->未向加盟商岑某披露</b><!--pnid:rxqU9BFs5VJKl4UlnYMeEv-->；且该公司涉诉案件较多，多起执行案件暂无可供执行财产。</p>
+        <p data-page-node-id="Z7s5UvlrpGOxknzdGhrdaE"><b data-page-node-id="ioXjup2Iv2HknOEOeeeoVI"><!--pnid:Q4C8GvG9DZ0IUh4SCQJTzt-->裁判：</b><!--pnid:2aFnfpF4qDixkf0ZwFxIGt-->法院认为——"根据涉案合同约定和《条例》的规定，特许人对于特许经营体系所发生的重大变化及其他对被特许人有重大影响的信息负有披露义务，但没有证据显示某公司对其特许经营资质变更、撤销等情况如实向岑某披露，<b data-page-node-id="zDl1ii8H5PRv2BFitXR0ru"><!--pnid:6KlVhZAmVlX2D0DrNd5KRx-->对涉案合同的履行已产生实质性影响</b><!--pnid:3zmozbGYkxflAz2qloYxsA-->"；同时履约能力受限，构成违约。综合双方过错（岑某亦未积极选址开店），<b data-page-node-id="isAtsPOIh9zfqhdS1HsCZt"><!--pnid:hVUYCR387EZZSwo9eHhGWF-->判决解除合同，返还特许经营相关费用 7 万元</b><!--pnid:Le7z70yLNaCxAANk1nvoTr-->。</p>
+        <p data-page-node-id="IuG4fY6hizOdb0qqTFCYXg"><b data-page-node-id="zv6CR4qAAnUD1iVyNujYF5"><!--pnid:zIY7TuFydoB44ng7rFZ27o-->对米线品牌的启示：</b><!--pnid:lNYoltT09tYaQekJ3hTF8H-->披露义务<b data-page-node-id="cVBbzJ5RXsXV9BkJ2UuE9q"><!--pnid:QIqivNbBG7fx1JCd4gNDtd-->不是签约时一次性完成的</b><!--pnid:IQN48ce6it75nsKMzHlcCG-->——签约后备案被撤销、商标被异议、核心商标涉诉、被行政处罚、实际控制人变更，都属于《条例》第 23 条第 2 款的"重大变化"，<b data-page-node-id="uF6u2YWTbfux9tbzBZueFg"><!--pnid:VpWNl6GO5nYxqW2b2N0UuN-->必须及时通知</b><!--pnid:7VYBLY3jQL7TTe8OvtOpv9-->。本案的败因不是签约时的披露文件有问题，而是<b data-page-node-id="yFjgoHzhvpFB265lFvqkRg"><!--pnid:qvK3nBaaNZVVIKf4056yVz-->履约期的沉默</b><!--pnid:JrAXTJqfXOENRPjWGryaJE-->。</p>
+      </div>
+
+      <div data-page-node-id="r3Hgv36coYNn1SkxeOSEE7" class="chk">
+        <h4 data-page-node-id="2BxM2Kj83UmWyXnOzmY3T4"><span data-page-node-id="ZAwBwDbYXqdxb4PJvvJKbm" class="tag t-red"><!--pnid:BiJ1Z0BralcnCvDz6FWsWS-->构成②</span><!--pnid:BqVlMtE52sKoebiEi7sISo--> 商标权属存在纠纷致经营资源不稳定 → 解除</h4>
+        <p data-page-node-id="YwWwyoptxEDzCghaW83iIP" class="small"><!--pnid:1xm9c5gfrNNXY8pwMLP6SJ-->上海市杨浦区人民法院（2021）沪 0110 民初 20803 号 · 戴某某诉某品牌管理有限公司</p>
+        <p data-page-node-id="spjlTnWHqUEukOPbvyBdNG"><b data-page-node-id="FJ2S9cXnZgKlxdwSNhpUGX"><!--pnid:w5B06fNXLcMHE6S4tR0s0s-->事实：</b><!--pnid:bhsuGJ4gGYt6mmV7zglTg4-->合同履行期内，特许人与案外人就<b data-page-node-id="IqjrH5y60Bpt3n75LaVSR6"><!--pnid:srRgpgsa19RZdBszw3X7KE-->商标许可产生纠纷</b><!--pnid:NbX348fmXaZygCRAVDWVMc-->，案外人（<b data-page-node-id="8V2pBJpOuTooAK58Bg8hZ8"><!--pnid:8BiimOgTAiV4glGcCPMzYg-->系注册商标权人</b><!--pnid:zxmKeDFg4rllTdmLAZBK4A-->）发函要求被特许人不要继续与特许人履行合同。</p>
+        <p data-page-node-id="tNWuij9zMwgP9nUSeb73z3"><b data-page-node-id="8Zy4tSE8zfUkUH6X6PotHs"><!--pnid:kzIcK917I8pc5lQmsCjj39-->裁判：</b><!--pnid:9roIDD4Xj5mPP6qGOSaPgG-->在案外人系注册商标权人的情况下，商标许可纠纷导致合同所涉<b data-page-node-id="s5Qv86DpaLrq9wK0UfOf1D"><!--pnid:oZTpMmMQ2M5PA5XZ84HkGu-->经营资源处于不稳定状态</b><!--pnid:nWcxwH7oIwCZBJeTjI1iPj-->，原告要求解除合同的诉请<b data-page-node-id="4MWm12t2mTEPsv71hgZA94"><!--pnid:d4aH2qc4oXk2IyAe2OMoOZ-->可予支持</b><!--pnid:AbuWjraZXRolSWnQ6Bod16-->。</p>
+        <p data-page-node-id="4GU52rm7adHrjJST5MQKmD"><b data-page-node-id="1hGz9CI1Qj04mRZ6HX9elc"><!--pnid:8Ecj9zTvPrEb3sGfLqDqES-->对米线品牌的启示：</b><!--pnid:JOzsOjbkpODHA5tyjq9qH2-->这正对应《办法》第 5 条第（二）项第 3 目——<b data-page-node-id="KLZg12IkjgQn0MV0eq44XC"><!--pnid:yt368vDicQSSOR3MSfCYBc-->经营资源涉诉或仲裁必须披露</b><!--pnid:Pq1MDDbOGVcveABUwKVAZS-->；以及第（二）项第 2 目——资源为关联方所有时，须说明<b data-page-node-id="pBPzYf3hNaigyWRVp30xtZ"><!--pnid:4v7R8ZyrxIYKMHZidVYYAG-->"授权中止或提前终止时如何处理该特许体系"</b><!--pnid:lAmUFs6Gv90otu69SvfaEx-->。<b data-page-node-id="qI8Pjc6mUWYpSpOTNmgS2J"><!--pnid:44ZVL1TAlX45ZDHIvI14qW-->米线品牌若第 43 类商标在老板个人名下、仅以许可方式给公司使用，一旦老板与公司发生纠纷或离婚析产，加盟商即处于完全相同的"资源不稳定"境地</b><!--pnid:jYhIjzBmnN5us5IwpFrJtX-->——这是必须提前用"商标转让至公司 + 长期独占许可 + 再许可权"拆掉的雷。</p>
+      </div>
+
+      <div data-page-node-id="6amRq9j60Jir414R8VSRXU" class="chk">
+        <h4 data-page-node-id="CtyzuQD9335iCqXaZeq3tY"><span data-page-node-id="bztUhzHwzAL2aZBiD2Lva7" class="tag t-jade"><!--pnid:dYJR1JisKRLtBmcJnZbyro-->不构成①</span><!--pnid:ulDToavHMiLTobaNjrWTZZ--> 夸大店铺数量、市占率、知名度 → 属商业吹嘘，不构成欺诈</h4>
+        <p data-page-node-id="q0BWMnBeXgwsTIZZMQGwcP" class="small"><!--pnid:kW7fQLzdHgidEN1YZZiOZ8-->上海市杨浦区人民法院（2018）沪 0110 民初 4081 号 · 黄某某诉某洗衣科技有限公司</p>
+        <p data-page-node-id="Rp6eH5IlKdKXmdWGsr2Z37"><b data-page-node-id="1Gbq49g0yMZVMCxQEs2T4c"><!--pnid:PT4byiHy3tUzeR0pT8nVjp-->事实：</b><!--pnid:X1QmNTG94OYqPd2H3OUFl6-->特许人对<b data-page-node-id="qHt6qWAeSNCVNWxrCqgpn4"><!--pnid:fg2vy9Pc649d3YS17vEuBp-->加盟店铺数量、市场占有率、技术从业人员数量、品牌知名度、市场经营状况、服务模式</b><!--pnid:8p27no8ZxSJPnmXGYjzvXx-->等的宣传介绍确实存在<b data-page-node-id="UHLqroRs9U6ZqVzydRiz2M"><!--pnid:lTFnKNX2mLjNyE4So6SDqM-->夸大与不实之处</b><!--pnid:SWySHhq02PYXESWzES9klP-->。</p>
+        <p data-page-node-id="4UdmG6kfLxjy2IjEbzFmDT"><b data-page-node-id="FcEVQ9lhhuFxQmxEOwsoOj"><!--pnid:LC3gGUOos8pC9fzY2jk8Fy-->裁判：</b><!--pnid:waze8LdkX1ClheNy0qHDD0-->对特许人欺诈的认定应综合考虑隐瞒信息、虚假信息或夸大经营资源<b data-page-node-id="Y4y1TM5WYKLYpvtUFcOdI9"><!--pnid:uAmc0kmQpOcOONb7TVzbWC-->与合同目的的关联性、与真实信息的背离程度及其对合同订立和履行的影响程度</b><!--pnid:WxMqjwMKJgJBDICAzpf0rO-->。原告作为意图进入该行业的经营者，<b data-page-node-id="RtsTZQEIDoDfnw8jNisjYt"><!--pnid:uXfY5RusXIMO4l75wU0IIs-->应当对加盟品牌在市场中的名气大小有所了解，对宣传中出现排他性、绝对化的语言具备基本的辨别能力</b><!--pnid:19ZzKeveKJSSig9FS7QRPB-->。被告的上述夸大宣传<b data-page-node-id="nuJMEbQJeVwOkDviuyANvD"><!--pnid:oZdDSHM9Ko21JhfY9lw9iH-->不足以认定为欺诈</b><!--pnid:rqcfJoIAS15TlaHPsjmptm-->。</p>
+        <p data-page-node-id="mB7xMbsukAdvbZjlLhyGOf"><b data-page-node-id="ivanZe7KfMSimiwAuvY6HV"><!--pnid:NjZc010yRDGYFiBD2WyGNH-->对米线品牌的启示：</b><!--pnid:eTvcOWSBJPKDI9N1ueD4DI-->"我们是云南米线领导品牌""门店遍布全国"这类宏观吹嘘，法院一般不认。但<b data-page-node-id="abdjRMdzdLJsWbhRShWjjE"><!--pnid:K262NFYqmo98RHo0ZINzTc-->这条抗辩只保护"量"的夸张，不保护"质"的虚假</b><!--pnid:SwptvRNJFdYzWtj61hv8wx-->——"已注册商标"（实为申请中）、"中央厨房自有"（实为代工）、"无一例加盟商诉讼"（实有 3 起）属于质变，不在保护范围。</p>
+      </div>
+
+      <div data-page-node-id="WWEGNld9Xt2u9yJQKzvOfB" class="chk">
+        <h4 data-page-node-id="LGY69v9KIbMQGnRVZ4v6lw"><span data-page-node-id="ISTyXb7GtdhLTNFVucpHrU" class="tag t-jade"><!--pnid:KF96c5IxFqeCrWtihTovce-->不构成②</span><!--pnid:mmaZDWSDgzAoFWgT0OLib2--> 商标未注册，但被特许人未尽查询义务 → 无法定解除权</h4>
+        <p data-page-node-id="UamOTVhLW6X4phxfbrpPib" class="small"><!--pnid:bGkP9ar3HQVlhzpWOffV6l-->上海市杨浦区人民法院（2022）沪 0110 民初 6755 号 · 杨某某诉某实业有限公司</p>
+        <p data-page-node-id="eAhyZB1KbFwwTsk8C7dMmQ"><b data-page-node-id="2ZaYOClwKAHWiVsXFVj8f9"><!--pnid:7VITLHAUFzjSewi5lSxa1J-->事实：</b><!--pnid:51gSL5e1IGFBfGQZQTlLDi-->原告以特许人用作经营资源的商标<b data-page-node-id="7Cih99I8YOT8abmZwrnAgj"><!--pnid:ph4nPVSBUVgfcinnU8lO59-->未经注册</b><!--pnid:9h637hILCTOCTDs4JTxU1b-->为由主张解除。</p>
+        <p data-page-node-id="2ykR07JyzlCvr5EPhxou3Q"><b data-page-node-id="0LJeK9U0aWP6NmpHUyHnhN"><!--pnid:GBYUaMhlRxb6K3aXoHEo1t-->裁判：</b><!--pnid:o7s1FmyTQbrxSDboaJzYSY-->我国法律并未禁止特许人将未注册商标许可他人使用；<b data-page-node-id="CV7B3XwgQcjodhdtJxXY3l"><!--pnid:UJ6hChYoZXsrrNYfQiv6KW-->不享有注册商标并不导致合同根本目的无法实现</b><!--pnid:XTRDkMaFzsXm4UTUuAStV7-->；且被特许人对作为经营资源的商标<b data-page-node-id="lBUV1EBsvcMdjdoC2oy3tl"><!--pnid:Y4pJcxhDzdehCv6mGOSAEN-->亦有注意义务，其在签订合同前完全可以自行查询商标注册情况</b><!--pnid:GcXmlY6NkZ2UDWbIY9qSn9-->。原告<b data-page-node-id="t9D8ytTIpewRJF3mn8e0Ys"><!--pnid:ba7ZQK42Kagdbe5nqX0V8Y-->并无法定解除权</b><!--pnid:xFLvY45w94MEhFyjEZ3lA1-->。</p>
+        <p data-page-node-id="xW9lml7kVFuW2hiTqtczWh"><b data-page-node-id="qfJlwKAMjAJhS5fUnH4Mt6"><!--pnid:BsrFr3c3T8hNpoDJ3MXriY-->对米线品牌的启示：</b><!--pnid:zeOWDkQU5fUopxqXMTLCl3-->未注册商标可以作为经营资源（上海高院《解答》第六条、北京 68 号文第 2 条：在先使用并具有一定影响的未注册商标可成为经营资源）。<b data-page-node-id="atnuJhwWtCBvYxLqvH7RbN"><!--pnid:OnucfJ88EWSoTxVBanHke2-->但前提是——签约时不能把它宣传成"注册商标"。</b><!--pnid:O0z5PQ2J5vKSd8382vFHtV-->如实写"已提交注册申请，受理号 XXXX，目前为未注册商标"，风险可控；写成"注册商标"则直接落入上海杨浦 Q5 列举的"构成欺诈"第一类第 2 目。</p>
+      </div>
+
+      <div data-page-node-id="1363c0CfExfOmiuKfHQXO9" class="warn">
+        <b data-page-node-id="RAbu3R4EW5FJYixrABYAKP"><!--pnid:ft1tJpQSWyiiTpK4G8pErI-->四个案例的共同规律：</b><!--pnid:QVCAzO6b2VfUgBuRMh1BTx-->法院不看你"说了多少漂亮话"，只看三件事——① <b data-page-node-id="8aU2l4VqoSiNZaRraLZI60"><!--pnid:4lVIhOyYEgxqEAtQJeOaqz-->是不是"有无/是否"层面的定性虚假</b><!--pnid:bbrgzD3WIrB4lPADIbmD2A-->（有没有商标、有没有备案、有没有诉讼）；② <b data-page-node-id="otwtQHA0BviQAwOx6KnsNX"><!--pnid:kAsU8fdbTisVF8FqX98VzD-->是否动摇了"能不能用这个资源开店"</b><!--pnid:HxmRjBfWZM7UhIoQ2DcdOX-->这一根本目的；③ <b data-page-node-id="Agi7zNi8MondJv5B9vLh7A"><!--pnid:rc3yabbafJIJrsnEMVREjy-->加盟商自己能不能一查就知道</b><!--pnid:0CFUmwb0zaCUrIbgdEtiib-->（能查到而没查的，法院倾向认为不影响其缔约决定）。<br data-page-node-id="JRfdK2appzDHI7StlM0muh">
+        <b data-page-node-id="AkTUiSzOrUrjAeP3YBE8LO"><!--pnid:r3T0f4VfpA1H9jIVQYH7c9-->反过来：加盟商查不到、只有你掌握，且直接影响开店能力的信息，一旦不实，必输。</b>
+      </div>
+
+      <h4 data-page-node-id="ONPTzhl9ed2eHsOlGImMEP"><!--pnid:YWkTN5ymPThpm1QMIJzqrI-->5. 判断清单：什么级别会翻车，什么级别不会</h4>
+      <table data-page-node-id="2kEIhG76OUGWQ690P6y0IR">
+        <thead data-page-node-id="HpQujoweJTdk7wNLLscwha"><tr data-page-node-id="oBeJiTm9XfgCKhSNhjukaM"><th data-page-node-id="1nlCevP18R0VhzCti04LSS" style="width:8%"><!--pnid:jOfccR9mH0xX6wuHu1w5lK-->危险度</th><th data-page-node-id="IHPZ7BrWjgNgMlX11M31f8" style="width:30%"><!--pnid:Z6HcmEHgtBUU6ZNJE0teeK-->瑕疵类型</th><th data-page-node-id="SOKClcFzAwjbvGQPzEuBQY" style="width:32%"><!--pnid:U82hErFigG7ZyIBPLotD1q-->典型情形（米线品牌）</th><th data-page-node-id="IzPlik1o8aUzih1c4n6EbO"><!--pnid:7Cemh1UEoi1UGBbNGPTohb-->预判与补救</th></tr></thead>
+        <tbody data-page-node-id="Wgy0p91G5sNE1AokmSYl7n">
+          <tr data-page-node-id="J4wKyzYLXjiW8GHHCrZKiC">
+            <td data-page-node-id="hVhVk5uHm6CdUShqMtZmZ7"><span data-page-node-id="B4jONA30tYMtEywX6bzXRk" class="lv lv1"><!--pnid:sauoLw82ejxZKXVNWZX3OU-->S</span><br data-page-node-id="kUAixtelgQiHwJXGqrwyx8"><span data-page-node-id="mUopbYoUtWFlwPm4SymK1w" class="small"><!--pnid:4Eut5342Fm9kkPbrRtT86p-->必翻车</span></td>
+            <td data-page-node-id="LcetnXNgLXfY1Lv1JEpRo6"><b data-page-node-id="cmM2cfQCjgY5DN2jEjtCJz"><!--pnid:ChfEoWoc7d1gyLxvH3onDL-->定性虚假</b><!--pnid:EmLDrNgmYA5AjgDthA4CPA-->——"有无/是否"层面的不实</td>
+            <td data-page-node-id="0EhD9Lp3yUZbnClB6lWcNH"><!--pnid:02ejqdZpFPzGyHELLjYWJ9-->把商标申请中说成已注册；把许可使用的商标说成自有；隐瞒商标在老板个人名下；隐瞒已有 3 起加盟商诉讼；隐瞒曾被处 30 万元以上罚款；隐瞒已进入破产程序；虚构为"国外品牌"</td>
+            <td data-page-node-id="q2EahrUbGXuLDAbD9zZolO"><b data-page-node-id="a0VVGe9quqdKl5HzDf6oh9"><!--pnid:EbzXSIHm3x5X1x5xvX9MkW-->几乎必输。</b><!--pnid:xkqZk1bPRIAohcT0IIAlXQ-->补救：① 立即升版披露文件并<b data-page-node-id="YCzcUHf6lPoffPiXDz7hGK"><!--pnid:XVUkjThnbDepIHSSuPMcDJ-->回溯通知所有在营加盟商</b><!--pnid:fNsDTWvLYIWylY8BAk9HXb-->（留通知回执）；② 对已签约门店主动提出<b data-page-node-id="iLiV3sr3Orb6UJpIuK37NR"><!--pnid:GxYgVo4XYjtP2SFIbxHpec-->补充协议 + 部分费用折让</b><!--pnid:MqarqzR4JudbCiLvl118TV-->，抢在诉讼前和解；③ 无法补正的（如商标确在个人名下）立即启动转让</td>
+          </tr>
+          <tr data-page-node-id="jeCzRaxgq80RtUmOPOLrdK">
+            <td data-page-node-id="TO6DF7F6HlaxHiDkBlOP1g"><span data-page-node-id="VAD3GdWjSAhbR4K9vbivIz" class="lv lv1"><!--pnid:r6CPQWgLW3CT8WmJJkJlgQ-->S</span></td>
+            <td data-page-node-id="DgAdqY97RgrqAqerpg9Frb"><b data-page-node-id="SAznBtlTf7gTIkn7nblaQj"><!--pnid:itlI0eoZNLxRWqbtNPd19A-->履约期重大变化沉默</b></td>
+            <td data-page-node-id="gG3lb0aMuSkJHJe0YsVkA5"><!--pnid:oj0u1DZe8DcaPAbEUsNCme-->备案被撤销未通知；核心商标被异议/无效未通知；被立案调查未通知；实控人变更未通知</td>
+            <td data-page-node-id="Bb5VDLyKm18WGEUYkYfCBd"><b data-page-node-id="vErshZ3SGASUFvuhlHSfi9"><!--pnid:ICi6ixuZXMuPAMDSQDelY3-->参照（2023）浙 8601 民初 706 号，同样必输。</b><!--pnid:1adBHbVBiPqcYzcnVCZQ5c-->补救：建立<b data-page-node-id="9mVr2SI1cbobfaY6ZuNqbq"><!--pnid:hi48zeBbEindQpTdF9FVJv-->《重大变化 5 日通知清单》</b><!--pnid:RH4GnWL5L4tokVCX7A9jlE-->——任一触发项发生，5 个工作日内书面通知全部在营加盟商并取回执</td>
+          </tr>
+          <tr data-page-node-id="Qbtcw0mvbO4oUeuNVQ6ZUz">
+            <td data-page-node-id="TOmKnhj7ng05XGNW8hfW4c"><span data-page-node-id="RCRgvIogO7nCrsYEePvsWw" class="lv lv2"><!--pnid:brgtMx8UiQu0ebkGiCgWOR-->A</span><br data-page-node-id="ANaN62P7HBmnCR6CenGtde"><span data-page-node-id="uQjjg6KfuTVZwQ3ThmlDzA" class="small"><!--pnid:pKu1tOEighOk2F6LI4TVYv-->高危</span></td>
+            <td data-page-node-id="hYIPQVnlcppdzzmetXbGf3"><b data-page-node-id="eWSXijXjFCK0ZlNoLxQ0ro"><!--pnid:nlWBTAgX6KTDJ1T9BrNx6p-->核心数据严重失实</b></td>
+            <td data-page-node-id="zOBPIoFPvPneNyUuXVmRPQ"><!--pnid:55QFBER02TNFkCo2yrzAW1-->投资预算给单点 58 万、实际花 110 万；现有门店只报开业数不报关店数；供货加价率写 5% 实为 15%</td>
+            <td data-page-node-id="APkBgUxFTVGsO77hEm9NiO"><!--pnid:ZqyPJ83ucFjJ33eALVu9Bn-->胜负各半，取决于<b data-page-node-id="JsQVYBjW3nTDcy1pK78lvF"><!--pnid:8r7wQEiPOPM6llv1SF40T7-->超出幅度</b><!--pnid:eVHCWmjTOrBSdEluKknzGq-->（超出披露上限 30% 以上极危险）与加盟商是否已开业。补救：预算区间化（上限 ∶ 下限 = 1.8–2.0）、关店数如实列、加价率写区间并附测算</td>
+          </tr>
+          <tr data-page-node-id="0cpmIHxBxM8JwAvDPEXbsa">
+            <td data-page-node-id="2yCY0XFwMGTu1EsIIJUbc5"><span data-page-node-id="x88uAzRxzmCJjUOMrTkVSs" class="lv lv2"><!--pnid:hQ2GKUL5cHEuTubnWJAVcS-->A</span></td>
+            <td data-page-node-id="yxmQRsC3A138LvSgLeVre8"><b data-page-node-id="vFjiwxX9GGCn7UfoG8wVLA"><!--pnid:ROzlTu3WL3rTBLYLgEPFPH-->程序性瑕疵</b></td>
+            <td data-page-node-id="pBMZXH8PaUDjHUFDkaG2P4"><!--pnid:0eVszby3ccPk9MgCc6bBPB-->未提前 30 日交付；未取回执；只发了微信图片</td>
+            <td data-page-node-id="dkYARvpzA5YKk36xSRUCZ9"><b data-page-node-id="q3F7cvXzSNnIwNEkNFIp5J"><!--pnid:fJdl00z5bgQr9IBnefZdVQ-->单独看不足以解除</b><!--pnid:9YnGaUDwtXHepuGOpRxOLT-->（未进入"实质影响"），但会<b data-page-node-id="1FnuvxDnDfzFLBD3JUNxVi"><!--pnid:ci5ejQUAdFArRtlA7nnguQ-->连带导致"已披露"举证不能</b><!--pnid:bue0Vfix2GcKbguQ31nQch-->，使实体瑕疵全部被推定成立。<b data-page-node-id="zMoi8ltrZZoyhf3DU7VQS4"><!--pnid:yHLqyV8zpSMHsAemGaY7XK-->这是最常被低估的一类</b></td>
+          </tr>
+          <tr data-page-node-id="m7qy8lRMj6Q5mL2EZKHAJH">
+            <td data-page-node-id="49y3ui4wdmKXHVUt2uNF1W"><span data-page-node-id="o8gHD6UtMyjakUHSiPG2LM" class="lv lv3"><!--pnid:ZKJgMlpQFB9MDfTcPmdMbj-->B</span><br data-page-node-id="yLBIPgoo7wwFe5OryYwnGT"><span data-page-node-id="2uNuscR6juR98HKrgis28i" class="small"><!--pnid:yA1U28Lca4nP44M8MiaJ5N-->可控</span></td>
+            <td data-page-node-id="wy2XW0c5hqX7nRxp2Cz16E"><b data-page-node-id="t44enw7ToRO8dEeymcOfS0"><!--pnid:BCwkOjRvLhRtAqJWSNZzuh-->量的夸大 / 商业吹嘘</b></td>
+            <td data-page-node-id="hw0HfLZMWCxjFix5nKMREA"><!--pnid:VNF88QK3P3CaHYl3lZtbFy-->"领导品牌""门店近百家"（实 82 家）"市场领先"</td>
+            <td data-page-node-id="FVGs7XqFO0JfoqPw18UXvR"><!--pnid:Cv4NYLqmLg0hq8oDnkiYPk-->参照（2018）沪 0110 民初 4081 号，<b data-page-node-id="XNPlWDYo34apmQm3sgZGXz"><!--pnid:iIaUdduHv4H7gOQSuxsG2A-->一般不认定欺诈</b><!--pnid:ZBY6OvdRPVGkSWj2hLa0Hk-->。但招商物料中仍应避免绝对化用语（《广告法》第 9 条第 3 项禁用"国家级""最高级""最佳"）</td>
+          </tr>
+          <tr data-page-node-id="TJOiUUcpLKLZV0Ncj4O83R">
+            <td data-page-node-id="cQgwzGMQ9u9FHc7R7VX2Wn"><span data-page-node-id="1MSAOonvwgDFWPUVTislgC" class="lv lv3"><!--pnid:gEtVB1IO68BWE1RCZTXT0P-->B</span></td>
+            <td data-page-node-id="9irSLJWx3bX3KFCnJGG52x"><b data-page-node-id="BEgxdv0t776VgsmcfCtjGc"><!--pnid:fP0o0UeNnKjB9DfObTqC19-->格式性遗漏</b><!--pnid:SUltTOi1pGucvFsrrcMmhx-->（不影响实质）</td>
+            <td data-page-node-id="kX7n9rRN7uqg2wHK5e4ZG6"><!--pnid:V7pzCKVcaiw8g6vfiDEiGO-->漏写总经理姓名；直营店漏写联系电话；诉讼清单漏写管辖法院</td>
+            <td data-page-node-id="bwIiV4RMoagGMUttbArsGf"><!--pnid:N5yIEj3B4AvAbwSgpQDBio-->一般不支持解除。但<b data-page-node-id="XG0I0O7Tfr9RtySRmBeqAn"><!--pnid:g4bDWiBNHKPZ0H7W0tR4pn-->必须补正</b><!--pnid:0YBWq53piIQGvxPxif0HX4-->——同一瑕疵重复出现会被认定为"体系性过失"，进而升级</td>
+          </tr>
+          <tr data-page-node-id="uxZixMiw9bTfr87VJaq5Xx">
+            <td data-page-node-id="DWhe6UuWXCDnF1rnpL5IBZ"><span data-page-node-id="jnR76fqEG83tf7Z1oGETb2" class="lv lv3"><!--pnid:wZQlJi8ecbmXDV9WLapC9a-->C</span><br data-page-node-id="vTq5aPZ8newN71UqpcCa4n"><span data-page-node-id="4yiuNLWEql4pm9EFkBMamC" class="small"><!--pnid:s4SUVxxfiBE24SNLvXB5NG-->不翻车</span></td>
+            <td data-page-node-id="nLHdBXgCBxcGtwqUlWev93"><b data-page-node-id="jJAxAI5cSZ65EfedyshKa5"><!--pnid:oEuQ3DdgUZ4SpkEZVmX1hA-->管理性规定缺失</b></td>
+            <td data-page-node-id="LKNucHd7WLGWRebLMkptyb"><!--pnid:oFWnGrPWEo4LGHqtmAUqHu-->不具备"两店一年"；未备案；未年报</td>
+            <td data-page-node-id="lvejwYLAyofRJVlqEcTihf"><!--pnid:SXdqgLcD1sA20AhIkYYj2z-->两地高院均认定为管理性规范，<b data-page-node-id="pmFNxRKG0bUxpBvWNSAsyt"><!--pnid:VL2LHVVYuyTevHs7gPun5p-->不导致合同无效、一般也不支持仅据此解除</b><!--pnid:TulziDWnkQ2Z2DZMJrmBIj-->（北京 68 号文第 8 条、上海高院《解答》第三条）。<b data-page-node-id="BLr42TAO0Zx9EkpGQFCv5m"><!--pnid:N88MeodZ9kUlKeE7nPb4u2-->但会招致行政处罚，且加盟商常把它作为"佐证欺诈"的补强证据</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div data-page-node-id="y608KzlWJY1ZGPoVbx8DAT" class="act">
+        <b data-page-node-id="3Fb1Q1WiqDeUR7uLpFsTNl"><!--pnid:zovIEx7TXtkRgREEjW6de1-->我的落地动作：</b><br data-page-node-id="5ikiZgu9FbdOUKQnIeE8LW"><!--pnid:2iILyVzIfxaOOw4ZAiJbCA-->
+        1. 把上表打印贴在法务部墙上，<b data-page-node-id="FWLKSbvYKDspquVsLPIupg"><!--pnid:rxx7umvu3GCV5gW2jpml94-->S 级瑕疵零容忍、发现即上报 CEO</b><!--pnid:sC8DUYFJecss18TfjBFxOm-->。<br data-page-node-id="LhYAwgcY2ioX3tShGYZBSC"><!--pnid:zpfmokfolAwmbgtM4Gtb6k-->
+        2. 建立<b data-page-node-id="cgZ9re1XQYMCSkbMpe9Frl"><!--pnid:2VPdEZnneAtgTx3BLMZXwH-->《重大变化 5 日通知清单》</b><!--pnid:ViRnoxh06yJnnhYXaoaXAA-->（备案状态 / 核心商标状态 / 重大诉讼 / 行政处罚 / 实控人变更 / 破产 / 重大食品安全事件），任一触发即书面通知全部在营加盟商并取回执——这是（2023）浙 8601 民初 706 号直接换来的制度。<br data-page-node-id="0xng3xQQLNaXQRxjcXmznI"><!--pnid:CDhSQ8Gl7xMYLodqdWOQDr-->
+        3. 完成<b data-page-node-id="JPLRjLKBzmmUqkAv7dhYZe"><!--pnid:rPlwl95ezMjr8sghRdxcnD-->商标权属归一</b><!--pnid:yNSmZphhVxxg5Li6vHAfkG-->：第 43 类（餐饮服务）、第 35 类（特许经营管理）、第 30 类（米线/调味品）商标<b data-page-node-id="kcReHscuqBqNDjnbnaGGAK"><!--pnid:KKqzsGLcbpZQJgIDMOJQUX-->全部转让至签约主体公司名下</b><!--pnid:prC2fVlpBf7ftRkmv0mefc-->；确需保留在关联方的，签长期独占许可 + 明确再许可权 + 商标局备案 + 在披露文件写清"授权终止时体系处理预案"。<br data-page-node-id="Nvi9XtIogjjVbx6XRnAFYO"><!--pnid:Gx7oL4e5SFRVitp3wkKtSL-->
+        4. 给招商部出一张<b data-page-node-id="eWNVnhr0OCUnf6KCRMyDvq"><!--pnid:6t62i1dzYeIpmCnn7LBz1U-->《绝对化用语与定性表述禁令》</b><!--pnid:3VuAiLv3i4NTjtSnWURJON-->：禁用"注册商标"（除非证书在手）、"零纠纷""从没打过官司""稳赚""X 个月回本""独家"（除非确为独家）。<br data-page-node-id="FGweHlmqmBpZ9lBq6jVIYE"><!--pnid:a2to1PIqP1vcok7FNXoKRj-->
+        5. 每季度对已签约门店做一次<b data-page-node-id="GbMANGicJAkLYeNSF2Bi6I"><!--pnid:VcH83DzF9Fsw30NktVeOLI-->"披露一致性抽查 10%"</b><!--pnid:XuY8gX6kvMZCjwWJL4aG0Z-->：披露文件 vs 实签合同 vs 招商物料，三者必须同一措辞。
+      </div>
+
+      <div data-page-node-id="fOs73Wj7rHzfWgpIkc0OPL" class="anti">
+        <b data-page-node-id="esnr6tJ5M1APUsXkj8Qxta"><!--pnid:LtBNTJ52qatmQzhmMrsLpH-->加盟商反制点：</b><!--pnid:rYs0Rb6VXL3tl7myfAzQkB-->加盟商律师会重点攻击<b data-page-node-id="0eRfkjDP0GKUnBteRhbkau"><!--pnid:nnoWQfqyp6nnaENiVEEmTZ-->《条例》第 23 条第 3 款的字面宽泛性</b><!--pnid:1cJ18WBQS1dDEHtxdzhLzH-->——主张"法条没写实质影响，两地高院意见不是法律，不应限缩适用"。这个主张在部分外地法院确有市场。<br data-page-node-id="5PBcSOBLDDz9w7NDGJDuxP"><!--pnid:BdFUdzWePZbC6HZJE1sDyo-->
+        更强的组合是：<b data-page-node-id="5AnSGNVtvIwGGTNpBxxsxG"><!--pnid:PLKo1V6wYTL4Z630CUNZ7f-->引用上海高院《解答》第七条反将一军</b><!--pnid:NAARI47DotxPf9XJcpIGkU-->——该条要求"综合考虑…对合同目的的实现及对合同履行的影响"，加盟商会据此主张法院<b data-page-node-id="nLNOS7bk7kU6TKJYU5GAiG"><!--pnid:zcRxcYK1a1gzEsMfb5byox-->应当</b><!--pnid:B1GDa4C51ISPVgtX645eiV-->审查实质影响、而本案<b data-page-node-id="nSMtZbS9l7quLSjzPEL8eo"><!--pnid:YRJvoZgsKgl0f3nL5itUbe-->已经</b><!--pnid:SWjwKggIJIt3znLx6tNsve-->构成实质影响。<br data-page-node-id="DqZz9inDoCHINorxtOP6FU"><!--pnid:wuF6o4t8j1pOFftm5JzOhT-->
+        最狠的一招是绕开"实质影响"：<b data-page-node-id="36NYeWJg2kZmNk6Oz1nM7h"><!--pnid:dmm8enVNmm9W6wVNpnIWxx-->改走《民法典》第 148 条欺诈撤销</b><!--pnid:SI6oSZxsVQ2i7lQrNDGuF1-->——欺诈的构成要件中<b data-page-node-id="ButSsKZvigKcvCBRd9cBNP"><!--pnid:bOTaaxsjNaW6UuNOMhRuXt-->没有"实质影响"这一门槛</b><!--pnid:7mkb7SpbHlYqldKyjSaKk0-->，只要证明"故意虚假陈述 + 陷入错误 + 据此签约"即可。<b data-page-node-id="FsP6RM0qAEYG4nLBKUuMNd"><!--pnid:4fBFsnqGZ8FSXBtseHg9OC-->这就是为什么"故意"的认定（而非瑕疵大小）才是真正的胜负手</b><!--pnid:YUBspnMePPBXu9Q6U36EGn-->，也是为什么发现瑕疵后必须<b data-page-node-id="5ls9xdiISaiMj8ernvXh8X"><!--pnid:vVbOlfsY9nUPSIGDYt8ny1-->第一时间主动补正</b><!--pnid:UmUvE5UPDsCJnCIRLkiTww-->——补正行为本身即"无欺诈故意"的最有力证据。
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:kulZic4tqXGxv2Bkf4jFaW--><!-- ============ p3 ============ -->
+  <div data-page-node-id="pXifcJFKIA9OuSJFd22Zuy" class="panel" id="p3">
+    <div data-page-node-id="IsDtFOKMNwCr36U1LCJ7vH" class="card">
+      <h3 data-page-node-id="C91tMT1gLohjttXibjFioh"><!--pnid:TthBp6aXOMjeHhdirWWqq9-->三、举证责任怎么分配，证据体系怎么搭</h3>
+
+      <h4 data-page-node-id="pKwRHfP10EKo1vxUcGlJMu"><!--pnid:LwAm7AUwgmlbXxPcKBVxez-->1. 举证责任的三层分配（不是一句"谁主张谁举证"）</h4>
+      <table data-page-node-id="1zbpwdVwwRpjJDm3DcI2EX">
+        <thead data-page-node-id="E4lJgKsTEQhPXflsvbrGEI"><tr data-page-node-id="MGYwly8VnfxQFdkLQN2Qgm"><th data-page-node-id="lt9u8sOUiUWee9ZYEOBMdc" style="width:6%"><!--pnid:MNbbMujpxkgtFUqfNOmCaX-->层</th><th data-page-node-id="qA7UNQPZCGZzF98a70fKRE" style="width:26%"><!--pnid:lrKhMlRV8PdzChGf5bPXNQ-->待证事实</th><th data-page-node-id="IZGyLoGEH7yfllhNYsMzhx" style="width:16%"><!--pnid:fktk7jKGevEsnrOXrpdudU-->谁举证</th><th data-page-node-id="dMP3l9H0lzxxhLPnsFaQ27" style="width:26%"><!--pnid:9ZsqDjBrrGS50Yn2TZoAQS-->依据</th><th data-page-node-id="1ZoV5zQgJQPQB5LfpEL1xB"><!--pnid:d1y2WczecImutXL4XhgghC-->实务含义</th></tr></thead>
+        <tbody data-page-node-id="LhFfxZUN83Xlk1jTswRtWh">
+          <tr data-page-node-id="NjPXpHIqSjZk7CuvnTbuDl">
+            <td data-page-node-id="FlkVZwUJCXkt3iBV5a6bCp" class="num"><!--pnid:4HBanFANW1uFsPXt9iIwpm-->1</td>
+            <td data-page-node-id="orwMY2CTZpKRWsGcOUc10B"><b data-page-node-id="kN59K6hHHg1nS8LeLKdPwA"><!--pnid:8nUkuTHtWDZaXfqSwYUIYN-->是否已履行披露义务</b><!--pnid:D8cl48sjNfpCmg1YwuHRxr-->（交付了什么、何时交付、交付给谁）</td>
+            <td data-page-node-id="mIYYMnbhd3zOwPstQYEHcO"><span data-page-node-id="H69XSxSPBMtpuHabf8ZZWc" class="tag t-red"><!--pnid:Il4DlGLMQmijZdkGMfpgny-->特许人</span></td>
+            <td data-page-node-id="QUb1mWSqQuLF3elF9hXdVw"><!--pnid:pRhcWJXz8nwyjytabg8XpH-->《条例》第 21 条 +《办法》第 8 条（回执一式两份、被特许人签字、各留一份）；证据距离与举证便利</td>
+            <td data-page-node-id="qCrWJ90ezDMJjUk7UoOPY7"><b data-page-node-id="Il61qr2rosbyBb17xW9kXd"><!--pnid:hF0fSUBhRZ6NNJNrt9ueiA-->这是特许人唯一必须主动完成举证的一项。</b><!--pnid:Pm6U95wnXtgzJzx1R0eepd-->拿不出回执，法院可认定"未披露"，后续实体争议全部免证</td>
+          </tr>
+          <tr data-page-node-id="Y7UougMoOdsHhTBnyclz8c">
+            <td data-page-node-id="UrYmJOKFikFL6z6is0PRtn" class="num"><!--pnid:9FHHXVCubyKzimDd3F1LpK-->2</td>
+            <td data-page-node-id="Fnsi6HGI7BTzOBQOi9xZ1W"><b data-page-node-id="JDuoiaeQIeHPF5I8mDS0HU"><!--pnid:xQ22h0cfMCu7z7FzyeEtQu-->披露内容是否真实</b><!--pnid:M0luoA4LGT9XncxEakUmkJ-->（支撑材料是否属实）</td>
+            <td data-page-node-id="8hF2EmpM7L7mzrgnBk32Eu"><span data-page-node-id="d8dCLl3bNwc8H7JkVZTnqY" class="tag t-gold"><!--pnid:sXnCR9xC9UOF33ARZ95Jr4-->转移至特许人</span></td>
+            <td data-page-node-id="6s2vdSzKldtXZR7cl93Re9"><!--pnid:2QLxyYVjRBBBkWXUqmAh7O-->《民事诉讼法解释》第 <b data-page-node-id="gs7b5SiS6KYndCdzTqwVJy"><!--pnid:XlNcE8OpzsUxeYDT2nBTqN-->112 条</b><!--pnid:bNNjskZDyYOvUyZ7nfU5hZ-->（书证提出命令：书证在对方控制之下，可申请法院责令提交；<b data-page-node-id="sWPIPfEKc8DIcYtn1bz30z"><!--pnid:ml9LvG0HKHlrRKA0AxrvYj-->无正当理由拒不提交的，可认定申请人主张的书证内容为真实</b><!--pnid:lopf0orUCTE3TND3cRvFZt-->）；《民事诉讼证据规定》（法释〔2001〕33 号，2019 年修正，2020.5.1 施行）第 <b data-page-node-id="O6nXALb8er1H6F3a6wHv73"><!--pnid:WqMqHpOQWDI9I0GqitSAJs-->95 条</b><!--pnid:ge3LOvJxsApFd68QT0I7t3-->（一方当事人控制证据无正当理由拒不提交，对待证事实负有举证责任的当事人主张该证据内容不利于控制人的，<b data-page-node-id="pJ3KGOoDxOMauJtANq5l1b"><!--pnid:qDOUySoJGR3R1zHGXn003O-->人民法院可以认定该主张成立</b><!--pnid:q7ibzh6EWgsAzqPWLNh98U-->）</td>
+            <td data-page-node-id="aHcdNxU5EGAMSnIuBlyqPv"><b data-page-node-id="5kMV8n34YFrjAekO1Pbym1"><!--pnid:Cd3qvsOxE3NagzAhhmzmV5-->加盟商只需指出"哪项可能不实"并申请责令提交；你拒不交，直接判你输。</b><!--pnid:nrZZWt9HEGHOfb579JLAtA-->这是"信息不对称"在程序法上的直接体现</td>
+          </tr>
+          <tr data-page-node-id="I6VAkune1cvibFSm1fT6Qb">
+            <td data-page-node-id="tZMx9vgQrSTYb5xMYZWY28" class="num"><!--pnid:p9AjosF97crEtgsxZDYJYb-->3</td>
+            <td data-page-node-id="ZtDm9XuwPBLdDIFjITwqgI"><b data-page-node-id="nuBz973ViSVo0ppsISHXiV"><!--pnid:WTIwwHi5pt1ZOjIJoBErWg-->是否构成欺诈故意 / 是否造成实质影响</b></td>
+            <td data-page-node-id="wP7fwGVZEYcAnJtgjDuPzu"><span data-page-node-id="y7mSLwIKeeQWLF6JLCZq9a" class="tag t-jade"><!--pnid:zECn3sd8GVcvN1JB5bQCkq-->加盟商</span></td>
+            <td data-page-node-id="puqurZ8Xup2tkhALIljDLQ"><!--pnid:QmskWtCCc9YRSYuV9mIuTP-->《民事诉讼法》第 67 条第 1 款（当事人对自己提出的主张有责任提供证据）；《民事诉讼法解释》第 90 条</td>
+            <td data-page-node-id="SLlYIGiix4Ejkkni7ptdO3"><!--pnid:baI7wFRMm1TWpIGWYKplPf-->这一层是特许人的主战场。<b data-page-node-id="nCxQ78zZWbTpFUmtb7fSsM"><!--pnid:d1QxKvjNWoSgYEr7PJ3VO1-->胜负手是"故意"</b><!--pnid:rddTanK9otgTYwMguhLH44-->——证明无故意即可把撤销打回解除</td>
+          </tr>
+        </tbody>
+      </table>
+      <div data-page-node-id="kBfS6Ydo0Zfh9ZMLVdmdN2" class="warn">
+        <b data-page-node-id="cH8eQfbUbqBjHh4AhUYOEu"><!--pnid:CDAU77MlU37tvgupGXFIno-->一句话记住：</b><!--pnid:2UJ17XgzcJoYJpYh7OrXgz-->加盟商只要完成"指出疑问"这一步，举证责任就落到你头上；你交不出支撑材料，法院直接采信加盟商的说法。<b data-page-node-id="9yJt1pm7Y9xNc1JoC0M0sp"><!--pnid:O28bWtfDndt8yD7TiqC6k2-->所以证据体系的重点不是"打官司时找证据"，而是"签约时就把证据造好"。</b>
+      </div>
+
+      <h4 data-page-node-id="FaXA0UIeWkpgtk5Tuk4DPQ"><!--pnid:GZJBsx2Dr5a7GtTOR8DB7S-->2. 证据体系：五层结构（缺一层即留缺口）</h4>
+      <table data-page-node-id="36ioSqwFhswyAWSzgBSe0M">
+        <thead data-page-node-id="UDiYMBGfhdewEn1cw4zuj2"><tr data-page-node-id="niRRv85ahOzKB8RiPNZxMw"><th data-page-node-id="yufMzZNfgNGKiFImTLSwVk" style="width:6%"><!--pnid:nhZFLI6uwJUfTEvfXNGYwX-->层</th><th data-page-node-id="ozO8QnHgdOYsqeB97Ppz7i" style="width:20%"><!--pnid:AzGXGAkLh5xzRvimC1cN4y-->证据层</th><th data-page-node-id="xZrjjHHR2LXeuVnrXTodBN" style="width:38%"><!--pnid:fFbVTxhreRuDDSEPspaIMZ-->具体材料</th><th data-page-node-id="JFXk5xjLB6OlAJcQ7WiHhL"><!--pnid:mN4vIhzBOEavDKdEi4VpfB-->证明目的 / 常见缺口</th></tr></thead>
+        <tbody data-page-node-id="87R1KJRa7LIcnJcflvXCBA">
+          <tr data-page-node-id="pm272urFcX77IikF4SVVgq">
+            <td data-page-node-id="3t1TEPHuCMIno8P6rMj8Ql" class="num"><!--pnid:li86PnnkPXPj6hXH8johP2-->L1</td>
+            <td data-page-node-id="hhgHDVnmtWOCUPHwKOjF7Q"><b data-page-node-id="Uluq20SuxvBkeehAS54rcy"><!--pnid:gZ8ydy8dkLZl2Pv1AH3MrN-->交付证据</b><br data-page-node-id="jdbpDeNV8xfilArTueRg4Y"><span data-page-node-id="8czAtAqCJE2IiSjJEzKL0r" class="small"><!--pnid:TiveQusaZv7EkRCZwJc0JB-->（证明"已披露"）</span></td>
+            <td data-page-node-id="0T7jjGiVt0E1g1xPlL4E9v"><!--pnid:N4PZxWYXMogzz1AFCynTth-->①《信息披露回执》原件（被特许人<b data-page-node-id="RvL8QDO4NofvLUIKs9QDZp"><!--pnid:Gg6Wi6hUCXOe4loeazcutp-->手写页数与日期</b><!--pnid:ZkkBZiRc1JDMvxJwBeANOj-->并签字；个体工商户须签字 + 盖个体户章）；② 披露文件正本（骑缝章 + 每页小签）；③ 交付过程<b data-page-node-id="2wUyh8EpZDuBsvGWCg7em0"><!--pnid:zt4XUnigww6bTQ4g2pyJzG-->30 秒视频</b><!--pnid:fWcOIN0zRatQ4pgrTr7nkX-->；④ 同版 PDF 发预留邮箱 + 企业微信记录；⑤ 大额/异地单的<b data-page-node-id="11LosdoZSeLdx7FO0hPmZm"><!--pnid:nAAQbiChh99OFmZNtmoelq-->可信时间戳</b><!--pnid:bCFyMHvTMh2TtuAnYDwN17-->或邮件公证</td>
+            <td data-page-node-id="Oct7kXaWoLoERuKLFFHhJ4"><!--pnid:mLdnPmVjAqFqAlJFAKb4yg-->证明第 21 条合规 + 30 日起算点。<br data-page-node-id="2h2hZgglrmoWcZRxAAEjDN"><b data-page-node-id="eFI0sPrboUSWIEWNmhQxZU"><!--pnid:6WtPIV03O6N4Ad7x1EycoT-->常见缺口：只有微信图片、回执日期预填、无骑缝章、页数未填</b></td>
+          </tr>
+          <tr data-page-node-id="d1beEodeE9YRQeVEzQG0xw">
+            <td data-page-node-id="2MqPTDfrWxM6VHn21drqlj" class="num"><!--pnid:EEcWPepwuOhCVtiPBxtqEy-->L2</td>
+            <td data-page-node-id="Tn03SHcEtYIwusmIPMoWAF"><b data-page-node-id="McYpj5uVG6E89bdgjlcSkz"><!--pnid:r82dnkiIW8J73zxMJT6BOW-->内容真实性证据</b><br data-page-node-id="pPiqYcvA7YdIsKcF9XP5uj"><span data-page-node-id="LKvZJ1H2hv6uaKrYR932Pl" class="small"><!--pnid:6ucmA7dhv6jUNyDntcMiGM-->（证明"披露为真"）</span></td>
+            <td data-page-node-id="dz3yEh2C1KhXF9jK88aQ4J"><!--pnid:N1axP45dJhQXTD8LrrsGc7-->① 商标注册证 + <b data-page-node-id="JiVgKdCJCALBkxgoiV6GSa"><!--pnid:abx6poPjRL5OCwBZ1UJW6H-->商标局查询截图（含查询日）</b><!--pnid:bsDnCqdC0OYJ4nreJyQ2XI-->；② 审计报告（12 个月内）；③ 直营店营业执照 + 租赁合同 + 门店照片（含日期水印）；④ 供货价目表 + 成本单（证明加价率）；⑤ 已开业门店投资额统计表 + 原始报价单；⑥ 诉讼清单 +<b data-page-node-id="6mJvZZN1Y0zKCsGS1Ho5mN"><!--pnid:h4ZMy2grhfgR9EkfRD9Qzu-->裁判文书网/企查查检索截图（含检索日）</b></td>
+            <td data-page-node-id="XRVu47fAuRcOhegIilz3Vl"><!--pnid:3KEtDb5WbIsHXCacJpFrJx-->应对第 2 层举证责任。<br data-page-node-id="EIwvghHOmCZRXmB3QkZQ4i"><b data-page-node-id="mCFoQykIF556x98a6k5JNY"><!--pnid:2cKXQ97BHdaJXKqXpCSuH3-->常见缺口：只有结论没有原始凭证；截图无日期；报价单过期</b></td>
+          </tr>
+          <tr data-page-node-id="HKbkMLZJJECWMLZvjUHdzP">
+            <td data-page-node-id="k1ngvFkq1INfGQhFg1vhyH" class="num"><!--pnid:Du9248ozp8yeDZTQmxnBPL-->L3</td>
+            <td data-page-node-id="1peZGgK11FN2k24wBlzNGu"><b data-page-node-id="4Gkte1kuCYrugeF6zQKLWD"><!--pnid:gySoogj02LaeAwhvTMoooQ-->检索与尽调留痕</b><br data-page-node-id="rHJ7SQwXKORAZwfPjRZcbZ"><span data-page-node-id="ILiRfwuYtfU7KBwZ4IN7sn" class="small"><!--pnid:uzFzpvGMEHUNdPaTSQjhtH-->（证明"已尽义务、无隐瞒故意"）</span></td>
+            <td data-page-node-id="q0AouZFMVs6upDPf4vDR2k"><!--pnid:1AeCBxrGORO86obKIQqsg6-->① 每次升版前的<b data-page-node-id="j5UmXhvXc1Asl3YSq66byq"><!--pnid:F0Z2jDd6hdu439dWKpiTGv-->全量检索记录</b><!--pnid:AT42ayIQFPJg1B8Ahw9XZ1-->（裁判文书网、执行信息公开网、企查查、天眼查、信用中国，主体含特许人 + 法定代表人 + 关联方 + 商标名称）；② 检索人、检索日、检索式；③ 法务部《升版审批单》</td>
+            <td data-page-node-id="BRm6p6rNHlCLcWVBs3c5Wf"><b data-page-node-id="iB5qsWm8rc55gndmvEYNnw"><!--pnid:4LNtpjYd6A2u8g24kHV8xo-->这是打掉"故意"最有力的证据。</b><!--pnid:HygxSi75Z7RSUiHVkwExMa-->证明不是"明知而隐匿"，而是"已尽检索义务仍遗漏"——把欺诈降级为过失</td>
+          </tr>
+          <tr data-page-node-id="dnf2gLaS7v28PStKjyvBeY">
+            <td data-page-node-id="5uDgOybVkmt6IIJDzrvvLt" class="num"><!--pnid:LpwN3Psp8U9VedvGPStVuR-->L4</td>
+            <td data-page-node-id="YgYG494rjyy9dEfOavG3vD"><b data-page-node-id="dGfEathl9CQFIQI0VpZT1j"><!--pnid:uBG8vODlMeACVK06jewlYH-->履行证据</b><br data-page-node-id="NRi3pGZ0kVKbJZ5W2G3QGG"><span data-page-node-id="dv77IkllXj5fVTisZ5XxNM" class="small"><!--pnid:8qi7tkA6FTXtuGF5YVRBrj-->（证明"合同目的已实现/可补正"）</span></td>
+            <td data-page-node-id="4oRqwTO3sPHP9G19jJA2uQ"><!--pnid:LCqEDYc1RT8Ke1V32v2UJX-->① 培训签到表 + 结业考核；② 选址评估报告（含加盟商签字）；③ 带店督导记录；④ 巡店检查表；⑤ 供货单据；⑥ 开业照片与营业流水；⑦ 加盟商缴纳管理费记录</td>
+            <td data-page-node-id="xvqoVHUMJ8AL9y7k2SEpdx"><!--pnid:nTTfBvddgLi8cCWVgTQ28M-->证明<b data-page-node-id="q8AhtH5CnNYNF7qAz4mqF5"><!--pnid:2mu0C89bXKj0n4HOH90Ovn-->已实际利用经营资源</b><!--pnid:SQIb96bgMFkvWwJ3OH0MTM-->（阻断冷静期解除与第 18 条但书）+ 已实际履行（支持按期间折算返还、而非全额退）</td>
+          </tr>
+          <tr data-page-node-id="kSB1ecSMeDTciQgTvUzLLM">
+            <td data-page-node-id="olCW1yc3iAjL2Yy1e7VCy5" class="num"><!--pnid:tQg8NWTF6H1gvB0bzesEOn-->L5</td>
+            <td data-page-node-id="eHCd038TK0s70BzKmNJeFl"><b data-page-node-id="yt4AGpiZr6z77Uwm9IbPcb"><!--pnid:hooJHhM0LqMbcv53mi5RLL-->整改与通知证据</b><br data-page-node-id="9Z4nVEjruAjo559XUgq3Ij"><span data-page-node-id="IvlTGx3wfGFCB0QRLk2yuM" class="small"><!--pnid:v9k7rNYWzG88pSnxB4b3Qt-->（证明"无恶意、已补正"）</span></td>
+            <td data-page-node-id="HWMuAjgkEkVWWWpecXA1nL"><!--pnid:Sry2QhDiBoBPk5EZXQFWox-->①《补充披露通知书》+ 签收回执；② 版本升级记录（V1.0→V2.0 的修改对照表）；③ 对全部在营加盟商的<b data-page-node-id="pPFxw95OmZTEnz6RBrT5fq"><!--pnid:786KevUg3iTyzgviAAu9sj-->重大变化通知回执</b><!--pnid:VuvKpCDwkPTDXq9TnEqaIo-->；④ 招商话术修订记录与培训签到</td>
+            <td data-page-node-id="a9BF5GkuX51Y9AfdzTsk6W"><!--pnid:Qqq6LVRSKHiU6hANyTCctn-->对应（2023）浙 8601 民初 706 号的直接教训。<b data-page-node-id="kRGTdk1iXD36vlARyuA7FR"><!--pnid:pUXBmtyOEm4M1yyDRHItmj-->发生问题后 72 小时内的主动补正记录，价值等同于免责证据</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 data-page-node-id="aJlIvEamTJckqmpiOVIvTr"><!--pnid:2Lq4azlgHbOdLUcYEIdLmG-->3. 五个必须立刻建立的制度动作</h4>
+      <div data-page-node-id="rLyWmP1T5S4R54tmfjgmX2" class="act">
+        <b data-page-node-id="OuVFB1mGC6YcsUVWQclOo5"><!--pnid:5RlRfW6CYU5yoMT152DL0Q-->我的落地动作：</b><br data-page-node-id="Jm6Y8qA90Eg5gHppwfIzpC"><!--pnid:DIZx2himrHZWKD521TfOlY-->
+        1. <b data-page-node-id="WRQavBDTvtRnnHVgkEP43c"><!--pnid:wjYvjvcfLe06kWBSu1LHNz-->《披露证据册》标准化</b><!--pnid:7Mw1TFr88wJHJQdfHvzucQ-->——每单一个独立档案袋（电子+纸质），固定五层结构（L1–L5），目录页列明全部材料，缺项不得归档。<b data-page-node-id="Kyi2mKDBKsYpBvP76tFlXI"><!--pnid:S4ZUsQVaKTULgo3nzowWk0-->法务专员为唯一归档责任人。</b><br data-page-node-id="Au08QtFRL66e9bjurWx7mD"><!--pnid:TmecOeO9fikEdSlCzMmYpU-->
+        2. <b data-page-node-id="vg20x9wdrAJ5pnjhUNK9Xd"><!--pnid:MAal28uwWLLOs0dlVVexR0-->保存期 5 年</b><!--pnid:MgHiwblCAZ18XFLxBFGDFR-->——与 3 年普通诉讼时效 + 1 年解除权/撤销权行使期 + 可能的执行期对齐，从合同终止日起算，不得早于 5 年销毁。<br data-page-node-id="2Zjx04RDC9CFur2ddn70ai"><!--pnid:aODeededQ3tc6Z1iUBIM28-->
+        3. <b data-page-node-id="e3fk7jVQEi9sxK4W6h4W9t"><!--pnid:y0OT6Y457Ahq2GlHDXyVro-->检索留痕制度化</b><!--pnid:UsKxxObqaiMI7z7Z6KJbX3-->——每次披露文件升版前必做全量检索并截图存档（含检索日期与检索式），存入 L3 层。<b data-page-node-id="FKgh4xbObd6djfgarAz0dx"><!--pnid:m31Zj1Sq20rUhuR7Tun3vi-->这一层成本最低、防御价值最高。</b><br data-page-node-id="rBV1KisQhMJ6Al2QOS2abO"><!--pnid:miy6aoQIXJFHOwoFZgQL8U-->
+        4. <b data-page-node-id="OIFBXwFon21n1opvF9HLCH"><!--pnid:vY6x3OrYHlSB7EaSwCki2q-->建立《应诉证据响应 SOP》</b><!--pnid:URlzziW3vu1yxD8lB7LoV4-->：收到诉状 → 24 小时内在系统中锁定该客户全部 L1–L5 材料 → 48 小时内出具《证据清单与缺口报告》→ 缺口项立即启动补充取证（如补做时间戳、调取历史邮件、联系已离职经办人取书面说明）。<br data-page-node-id="Gwc0HcCWmPabhbEAZHo5PZ"><!--pnid:m2cSSJ2KWUzImO48cCna3j-->
+        5. <b data-page-node-id="cU4IfXQJlsCyhpGmCOiRTQ"><!--pnid:Ka80TOp0eNcXTXhiL9A6Sa-->离职交接强制条款</b><!--pnid:yMfzCcqwH5ooM1yUp54bJu-->：招商经理离职时，其企业微信、企业邮箱、客户台账、交付视频必须导出交法务部归档；未完成的扣发最后一月工资。<b data-page-node-id="YaEnYyVva0sdtMt7wRxw10"><!--pnid:btxUSIEPUL8chM6Cjhax7z-->离职人员是最常见的证据灭失原因。</b>
+      </div>
+
+      <h4 data-page-node-id="EYdVLPoCNOGvksJasxa6Bu"><!--pnid:HCxqO3yv4BktbwtKWuIakL-->4. 反向：加盟商怎么打你的证据体系</h4>
+      <div data-page-node-id="5B7h6r7895iRc5TJVUNcks" class="anti">
+        <b data-page-node-id="ydANxKRJRIavTQpz7yPvaU"><!--pnid:2r4GxpuQdMMM34qMCLxdOS-->加盟商反制点（四条攻击路线）：</b><br data-page-node-id="gyDlg3gM61N9dL0x6ETeoC"><!--pnid:coN6B3ttp8W8wlFm74eSaM-->
+        ① <b data-page-node-id="U814OsjtnEmMovhBKiAQyi"><!--pnid:8WJhT5F9OuIXy3TzMZc1eQ-->申请书证提出命令</b><!--pnid:PFpyffGf9F7B2qdXhuV4OF-->——依《民事诉讼法解释》第 112 条，申请法院责令你提交披露支撑材料（成本单、真实门店数据、内部统计表）。你若以"商业秘密"为由拒绝，法院仍可依《民事诉讼证据规定》第 95 条<b data-page-node-id="2QCGn6U1kqJM1RCh3TBHWB"><!--pnid:rUDjLobMQ3ohWlOUHzygOs-->直接认定加盟商的主张成立</b><!--pnid:Q0lyYUawzAeG5ANXOwEJt2-->。<b data-page-node-id="J8sTYyfI8drHDox82UXiwI"><!--pnid:IvS2I7TObUG4PXAYVNj9iH-->"商业秘密"不是免死金牌。</b><br data-page-node-id="GUawlZbtVd6QGnEIJfJjZm"><!--pnid:7jbUB6dN0HvKSrp1zwr6rq-->
+        ② <b data-page-node-id="wpUKUrO97KvS53uVa1bdPt"><!--pnid:ybelN3j8iHfeGhzpwt1Wj0-->攻击回执形式</b><!--pnid:lulfRFxDSzpUxQOpJzClk8-->——主张回执是格式文本、未实际阅读、页数空白、日期倒签。一旦回执被推翻，L1 层塌陷，后面四层全部失效。<br data-page-node-id="k681XReD3Zj7cITQaHKWYZ"><!--pnid:iTDvJ0o1biFkipvEKM7MKc-->
+        ③ <b data-page-node-id="juyI2HDm7P2AuYcIIV44XC"><!--pnid:OC2klkNnGByeHYKoBZz5RF-->调取同案其他加盟商的证据</b><!--pnid:gV6paXAtnfu0YLtkxUJrqu-->——用别人的回执、别人的招商聊天记录，证明你的瑕疵是<b data-page-node-id="MRmGr4Bh59TCOMsnyJYo2V"><!--pnid:vMCxIlcu9yetCR5OZO8uWG-->体系性、重复性</b><!--pnid:qo18r0cD8UzqYEPD5Gj8D0-->的，从而证明"故意"。<br data-page-node-id="YEuz8YAGbp2IXyh6uCL3TV"><!--pnid:bHYjJMuaPD3kY1MjLcWZW1-->
+        ④ <b data-page-node-id="yj9rcVUK2sQ7UBfJSuorQ8"><!--pnid:Ezz26vwCLOUoNEWZy9Rh6F-->申请法院调查令调取平台数据</b><!--pnid:GiRfIFXyfizVq84ECkXFJD-->——调取你的美团/外卖平台真实门店数、POS 系统真实流水，用客观第三方数据击穿你的披露数据。<br data-page-node-id="WMl9I253qq9xPDop2AfZn5">
+        <b data-page-node-id="UzGuoNH8aRNm3diAaKXNKi"><!--pnid:tvtz14f28vG1AmDVgpl6Uy-->对应防御：回执必须手写页数与日期 + 每页小签 + 30 秒视频；同一瑕疵出现第 2 单立即全线整改；披露数据一律以可核验的第三方数据（平台、POS、审计报告）为准，不用内部估算数。</b>
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:JfP3I7n621zsP9V7OElF1o--><!-- ============ p4 ============ -->
+  <div data-page-node-id="aZTYUurSzFmdW8rK3QPZGW" class="panel" id="p4">
+    <div data-page-node-id="8iDZkQCVWoGPx7KqngI6Tj" class="card">
+      <h3 data-page-node-id="eDUmDSl2kVNQqnmbzYHoVi"><!--pnid:53a4jfClg8UQ4XKYI50bIb-->四、《信息披露瑕疵败诉风险清单》——最容易翻车的 10 类</h3>
+      <p data-page-node-id="NiHKGQaBHD0Fkt7AFvJU4x" class="small"><!--pnid:8FdkRUxdiWbomzk4LGP7rv-->排序依据＝（败诉概率 × 单案退费敞口 × 体系性扩散风险）。危险度 S＝必输且易扩散；A＝胜负各半；B＝可控但须整改。</p>
+      <table data-page-node-id="2sUXfjLjfUfV6l0z9KGZMg">
+        <thead data-page-node-id="WpcVWiihl42cDSc5PkPimg">
+          <tr data-page-node-id="YJUHbJAH2KwzoJ2JQkQjFf">
+            <th data-page-node-id="CvjYQEInDv27GCAyHScE5y" style="width:4%"><!--pnid:GoYkzp0aqXN3Bzf3SQSAc1-->序</th>
+            <th data-page-node-id="g9Qm2GVtUx5uMpA2YIk2XH" style="width:6%"><!--pnid:G6avarFfiztYw40ie1V5ZZ-->危险度</th>
+            <th data-page-node-id="2y2RFpOwIuZWYA1JeYB9OI" style="width:16%"><!--pnid:DifvZOFm004M3OnOg1QTga-->瑕疵类型</th>
+            <th data-page-node-id="tubeoyNVD7KGeWBUfgAwD5" style="width:26%"><!--pnid:nbgJs6Hq194rjR0UshKa0v-->米线品牌典型表现</th>
+            <th data-page-node-id="xmg5s0Vz6iwAHOdEm9z5Vq" style="width:24%"><!--pnid:LDvay6LNe5sYYYBDMBkv5k-->为什么必输 / 危险点</th>
+            <th data-page-node-id="UPP49rfs6o6La0hH3TZZ7A" style="width:24%"><!--pnid:pgODBoOHizIGSVqrb46qMJ-->补救方案</th>
+          </tr>
+        </thead>
+        <tbody data-page-node-id="WedFwaaNBJZdB0419laOsD">
+          <tr data-page-node-id="ZOts134Saav1Ma3bQdQGcV">
+            <td data-page-node-id="08W0rkpQIVmlP44Sokcpgv" class="num"><!--pnid:KPvwzbbEwJv19k40KGGxJt-->1</td><td data-page-node-id="fIPgUT3r2Cu1RycpeNEykC"><span data-page-node-id="OUtXYoD3tHIGtHoVOSXBoM" class="lv lv1"><!--pnid:qImW0BIZM3EoKH9roPEDic-->S</span></td>
+            <td data-page-node-id="WabVdkv3bsmgLLsbMnytD1"><b data-page-node-id="x0HlOlUX0rGm8OHG2OfNB2"><!--pnid:aZQeJ6K1Yi8XT4aKJRGVmV-->经营资源权属不实</b></td>
+            <td data-page-node-id="4wJEfJbVZgCibzHWlo30Rv"><!--pnid:aMPpY6rESLz7jW7m2W2dgv-->第 43 类商标在老板个人名下，披露文件写"公司拥有 XX 注册商标"；或商标仍在申请中却写"已注册"</td>
+            <td data-page-node-id="OIYM4aPMum6b13ae6FboF4"><!--pnid:dvU1jkeYaN6GmEwYqsRV6D-->定性虚假，属上海杨浦 Q5 列举的欺诈第一类。且<b data-page-node-id="jCI5nLS2zM3O4BgT3YCzul"><!--pnid:SfOYVUc78FpYqWEDrcjiaT-->加盟商一查商标局官网即知</b><!--pnid:fC1fPvh4upYcxumMK2WOJv-->，隐瞒故意明显。连带触发《条例》第 22 条第（二）项瑕疵 + 第 23 条第 3 款</td>
+            <td data-page-node-id="k6rHh7Ik23YRjHfedEKYnm"><!--pnid:N8SES4ev718B5cBRXXr9eE-->① <b data-page-node-id="HFyXHj7g3wIM0DB2A1dh7Z"><!--pnid:ryTLHUIXXWDykMQ1bL3N2F-->商标立即转让至签约主体公司</b><!--pnid:NqFYjKJMRwfY6ldJ0j15We-->（转让约 4-6 个月、官费 450 元/类）；过渡期签独占许可 + <b data-page-node-id="g11gPZHYQkxHjLjI1WvVe4"><!--pnid:PTDLibHKfH4kLZX1LnZjnt-->再许可权</b><!--pnid:DvhXtKr66OOZqBcQFhN0Gi--> + 商标局许可备案；② 披露文件如实写权利人、注册号、状态、许可链条；③ 对已签约门店<b data-page-node-id="SItIyO6IF5rgzCSmuL6LJf"><!--pnid:mKv8HKPJ8akCTdaVXmLGfJ-->补签《商标权属说明函》</b><!--pnid:ljlPsekSBcwz8e61aztsnw-->并取得回执</td>
+          </tr>
+          <tr data-page-node-id="hyqyQg4GkDPXWRcTncaTBB">
+            <td data-page-node-id="JWQtaEJxByYNxdFIcOhXxJ" class="num"><!--pnid:X8UowSA9v64nq8BnJqzJ2I-->2</td><td data-page-node-id="5vUQD5R4Gn9Ma1pegw9Hf8"><span data-page-node-id="GocKyYEXjQHTIsuxnXptHH" class="lv lv1"><!--pnid:4nYmOV5X6UcPBNAV7xWEBQ-->S</span></td>
+            <td data-page-node-id="DUegWem8qkHvpaRwWnfYVT"><b data-page-node-id="j5pAb2gxjbWnc2Sr1kKdK7"><!--pnid:qUN183erY1xR3mdv8mrsk0-->履约期重大变化沉默</b></td>
+            <td data-page-node-id="uJlron5co9b4TT4h3ueutN"><!--pnid:G8LBG1gooKQgbtgObOLRiW-->备案被撤销、核心商标被异议/无效、被立案调查、实控人离婚析产导致股权变动，均未通知在营加盟商</td>
+            <td data-page-node-id="UUf0ZZukNoRymtD7VsQPg4"><!--pnid:P2c3Mu7S7dIySnERnVKVo6-->（2023）浙 8601 民初 706 号（最高法典型案例）直接判输。违反《条例》第 23 条第 2 款，且<b data-page-node-id="tZCTEZaEuIyocMluRSjMa4"><!--pnid:Tswe2J2qb83GKqLlzsj9SL-->沉默本身即被推定为主观恶意</b></td>
+            <td data-page-node-id="GADrg3r4BqQfmzHTwrWFvb"><!--pnid:j1qLMabZbmqBNfDfuSZAR4-->① 建《重大变化 5 日通知清单》，7 类触发项；② 通知用<b data-page-node-id="JHU5P0ZP7PsedDVhOFMHB1"><!--pnid:pnoRGcqm6UzAUCNbExsVYL-->EMS + 短信 + 企业微信</b><!--pnid:gB2BDcce7zmn8rOC0smhWq-->三重送达，保留签收回执；③ 无法继续履行的，主动提出<b data-page-node-id="GL57sZq1ShSdRKphTbchIo"><!--pnid:ghlDJscAjpHeW1kKL8hiua-->转品牌/按比例退费/免管理费</b><!--pnid:qUke9rG8Dl0fvagKJbGW9S-->三选一和解方案</td>
+          </tr>
+          <tr data-page-node-id="eCrZbFOyFq88VO1FzyGgMX">
+            <td data-page-node-id="h4utOQU1glkCKjHqEDCpks" class="num"><!--pnid:ok51moLP2nbJbzjAly1zju-->3</td><td data-page-node-id="nGcT3UBCX6Xia6gZPnHuTi"><span data-page-node-id="LN97dz3VjLEQSHOS0nj7VU" class="lv lv1"><!--pnid:v0UJ35NYv7xWblaDqSVkEA-->S</span></td>
+            <td data-page-node-id="ki5TEIsNwSsfAPCoGcQvTW"><b data-page-node-id="y3Zp63S8pX2pt2sL0H5Oj4"><!--pnid:76S09jE6M03qoUSe0NKlcD-->隐瞒诉讼仲裁与行政处罚</b></td>
+            <td data-page-node-id="tPDTYVWjOTbk9jY9IAmQ8o"><!--pnid:RCQg5yUs675pPgpBCg2z9I-->已有 3 起加盟商起诉退费、1 起商标侵权诉讼，诉讼清单写"无"或只写 1 起；被处 50 万元食安罚款未在第（十一）项披露</td>
+            <td data-page-node-id="OYUN5tfCht05HwHvxq3HOv"><!--pnid:FRyIThUjb0uXrmCoz0L2Sq-->《办法》第 5 条第（十）项<b data-page-node-id="7blRcGrvpb9Po47O5OmrTn"><!--pnid:0TMEL6OnaGEVq8iwJOMIlp-->无金额门槛</b><!--pnid:c1CqROkhZB5j7UkOq7vcL7-->；（十一）项门槛为<b data-page-node-id="LIop8smchgly9GWaqS3aN4"><!--pnid:WcXRpeibOXvILRuGwSiJJ9-->30 万元以上罚款或被追刑责</b><!--pnid:IobRQqdbn7eGFv3PIXNOcH-->。加盟商上企查查一秒打脸，<b data-page-node-id="XogTW1jtsAjLAn4Lt8zyZ1"><!--pnid:iOMq37NEkPyUAsIXAcFnDB-->"明知而隐匿"直接坐实欺诈故意</b></td>
+            <td data-page-node-id="5GiaWu69kyFrgFYOQjngGK"><!--pnid:EAOQFHQ2t7smRQnd4e9YKP-->① 全量检索（裁判文书网/执行信息网/企查查/天眼查/信用中国）并<b data-page-node-id="8ZqK4is72vgvurGpviogOQ"><!--pnid:O1zthhqDr2LSnyHJi79sy6-->留存检索日期截图</b><!--pnid:v7R2H4hJ8a85ywG7FwrMo1-->；② 如实列全部案件，每项附"已采取的整改措施"；③ 灰区案件<b data-page-node-id="yPRLPE8cFJdxK7q2mklowT"><!--pnid:1C6PTkBf6mS5WqAmdvYTVD-->一律披露</b><!--pnid:Q3dtFAK5Hrtb2nll1DwvEW-->；④ 对已签约门店发《补充披露函》并取回执</td>
+          </tr>
+          <tr data-page-node-id="leUz2MfskT87hyEAQVRkxQ">
+            <td data-page-node-id="KuM6v4rBq4vL6jgH483C58" class="num"><!--pnid:EDj0CXnleD3qBT9BYa2HvL-->4</td><td data-page-node-id="hzJLiTzWHU7DAifH9HWqWm"><span data-page-node-id="ayUNNcpyzxGYm6ixCXcBqp" class="lv lv1"><!--pnid:JEYLouDpuEKWO4SysZGwGe-->S</span></td>
+            <td data-page-node-id="SVdAO6ccSKk9gVHRawMuv2"><b data-page-node-id="KlpzauIuHd3M5Uy9rWwHM0"><!--pnid:EauCyyUmV3TMVQu2Ujww5c-->无回执 / 回执形式不合格</b></td>
+            <td data-page-node-id="4ES4PImnfio6hOBVYGfYgj"><!--pnid:4nfcnq9E2Eorczr5c8K2Gx-->只有微信发了几张图片；回执日期由招商经理代填；页数栏空白；个体工商户只有签字没盖章</td>
+            <td data-page-node-id="mC31paAgInvUEviO75bPo9"><!--pnid:E4deWl7Aty9oqyEPd9rh0a-->违反《办法》第 8 条（一式两份、签字、各留一份）。<b data-page-node-id="qjQl4ixd0Peq2iH3w6UzKz"><!--pnid:d0vX1Itw3whhk30kuBfDkN-->不直接导致解除，但会导致"已披露"举证不能</b><!--pnid:e8OmXOMlsyd9oglwXAFC68-->，使第 1–3 类实体瑕疵全部被推定成立。<b data-page-node-id="O21Unx0djhyzPPXbGEe9i5"><!--pnid:bspMtEGILNi3zC6yrcPYz7-->这是最被低估的一类</b></td>
+            <td data-page-node-id="6LX7iXknDElDNROw9J4Qzl"><!--pnid:CqMXL5X9AuSxuTuWBvxWzr-->① 回执模板化，<b data-page-node-id="ZP8RUQ4GWe9flSBY6zkMyh"><!--pnid:PvlbaCiAz6rgeDUjv6SCz1-->页数与日期必须手写</b><!--pnid:lRpm5z8J6zKyv7exRitQKU-->；② 纸质一式两份 + 骑缝章 + 每页小签 + <b data-page-node-id="zRmLD0A9h0MuaE3vJi6NNn"><!--pnid:xTyOGOdBpc0x3Tw7xRBKyT-->30 秒交付视频</b><!--pnid:r3oB3JUe0t0HlDVh0ScRsB-->；③ 个体工商户<b data-page-node-id="mMxv7GsblUccoSrvzrQygV"><!--pnid:osTC3rvajOfvOkOAX4bj8Z-->签字 + 盖章</b><!--pnid:pgBEwtqnWvbIUMgKGaVaBa-->双要件；④ 历史存量单<b data-page-node-id="4VNeu3yll0ql0Y6JiNYtzl"><!--pnid:lFYVoxOkvKG3s9eFgtLpuB-->集中补签《披露确认书》</b></td>
+          </tr>
+          <tr data-page-node-id="RGwuSjCwF1zxS0I3lWZDlN">
+            <td data-page-node-id="CmmLj4dQkcigIaQhZzJ7fm" class="num"><!--pnid:Ib5UvJ9K3hejtK6SarsE7n-->5</td><td data-page-node-id="S2lNX7QouKlsqlNf4LCl7G"><span data-page-node-id="6KW0dzvVGhLxwRyj5J9E1X" class="lv lv2"><!--pnid:sc3Vyy4vA5M8UKG4juCEjl-->A</span></td>
+            <td data-page-node-id="XbWpTf05jA8Fipla8uDRsC"><b data-page-node-id="aTLItTVq3PbCGLpJo4LwEg"><!--pnid:KT5QqJxIM79Fv65P937AXl-->投资预算严重失实</b></td>
+            <td data-page-node-id="nhs66bWLIkQOaAXgnoiWOa"><!--pnid:INz8n22DZSZhkNBTv0uJtE-->披露"总投资约 58 万"（单点数字），加盟商实际投入 110 万；或预算未写资料来源与估算依据</td>
+            <td data-page-node-id="yhFts2giNJ5q5SUcLLahmm"><!--pnid:4S3YEc8jM1jUH82z4hSfO0-->违反《办法》第 5 条第（七）项第 2 目（<b data-page-node-id="69UQ0HYTAp27NvKzSEwp4a"><!--pnid:bYiGthoVZNetakJMQ8S89q-->法定必写"资料来源和估算依据"</b><!--pnid:6XrtESxyRhGUZtWLazmyol-->）。超出披露上限 <b data-page-node-id="ZE6j6bARvqaXhXkThFcpz4"><!--pnid:9Ufld9oQxuKSiqGRGLQZ2T-->30% 以上</b><!--pnid:GYpXbgFlgHyiLoyO52TsCX-->的，法院倾向认定构成误导</td>
+            <td data-page-node-id="v0AmqE9kaAsgqIYjOi00zE"><!--pnid:CPwbja47Xe3e9sUrA4qZ79-->① 改为<b data-page-node-id="briW4bnuXz6p1aQSgfc8cB"><!--pnid:CkSGCiYV022TBJpYIrR0so-->区间</b><!--pnid:3KaSy1yjsOzjp1zrJ6yfNV-->（上限 ∶ 下限 = 1.8–2.0）；② 表头加 5 条声明（非收益承诺、因城市商圈而异、预留 20% 预备费）；③ 附 9 条估算依据（报价单编号 + 门店统计样本量）；④ 每季核对 5 家新开门店实际投资额，超上限 30% 立即升版</td>
+          </tr>
+          <tr data-page-node-id="9YJbcUsOfG7DMLiqPjHRLK">
+            <td data-page-node-id="jxt0QB1JmSbq19L7yV2YGZ" class="num"><!--pnid:4X1U2PxvCNWe8T7x5MtCZY-->6</td><td data-page-node-id="Mqks8V6LXHuqIGXkgSTfWp"><span data-page-node-id="tPFz3yI9y77vuiAnYh9W8J" class="lv lv2"><!--pnid:YQWoeOvwHLli8waKbtQK0o-->A</span></td>
+            <td data-page-node-id="bpynBnb2ybpHbaho9Zqq7q"><b data-page-node-id="wbfNu1qaMJn7l469D6LBQn"><!--pnid:EvyngeKFKBDXWGeVrEmoIG-->现有门店经营状况只报喜不报忧</b></td>
+            <td data-page-node-id="SPm3TGA1xNk14YgD5Gs1pm"><!--pnid:RwiDk3oTvIQ9rJBPxU6ns3-->第（八）项只写"现有门店 X 家、分布 X 省"，不写关店数；或写了毛利纯利但<b data-page-node-id="Zoxm1L0IoW6J6Bgpggn4Js"><!--pnid:FvEM3AGxmgbgjdIDBWVmTJ-->未说明信息来源</b></td>
+            <td data-page-node-id="hA91Bnjb5snk48KMCzc9T6"><!--pnid:76SpkS5QoeTrD1dV3Tkny2-->《办法》第 5 条第（八）项第 2 目<b data-page-node-id="06GHpcZWdpmEGMApFS1t2P"><!--pnid:VWP7GnmdB70Xi7A2snaNwJ-->强制要求</b><!--pnid:5tX2H5aX3HEslnu6xeuHZr-->披露"实际投资额、平均销售量、成本、毛利、纯利"<b data-page-node-id="ZYIG1tvciaxod7m4qNbKw0"><!--pnid:dO4aFuR7gAmsr7A4r2IX0d-->并说明来源</b><!--pnid:2waJyiF892jWQaaN8Y8AhH-->。只报开业数不报关店数＝典型重大遗漏</td>
+            <td data-page-node-id="LtTtMaXDmY4O9MbJq9QQOp"><!--pnid:N1jXBicCLLgNvLsWZ9f6us-->① 如实列<b data-page-node-id="gaF0yWEqpgS4Pz4Nx0AKGN"><!--pnid:t0bFTvriY2HArhG71J6hm1-->开业数 / 在营数 / 停业数</b><!--pnid:vlxRfHAUElcc8YNXZ9muPD-->三项；② 经营数据注明"统计区间、样本量 n=XX、源于门店 POS/加盟商报送、<b data-page-node-id="Xb30MW9mITfXxARyi2BPMF"><!--pnid:aOh9wjms7M1ESLgiQ5IUkl-->未经审计</b><!--pnid:jPLrxfXFkOqJXDbt2vGliV-->"；③ 单册装订 + 保密水印 + 签《保密协议》（《办法》第 7 条）；④ <b data-page-node-id="K1fLtNrUzTVSnVqhdikW2Q"><!--pnid:KazXFbM9MJ7qiRzuUveTET-->该册绝不进任何招商物料</b></td>
+          </tr>
+          <tr data-page-node-id="Re1TC95NKpFBSjFSYAd2N2">
+            <td data-page-node-id="pIaGM5ohDhBzk2WJCuhH3l" class="num"><!--pnid:JinuiHS3r6XABiOxEN9b2q-->7</td><td data-page-node-id="DTIimslmcqxrdWhU4HjBLG"><span data-page-node-id="fhjJfF4HQ0719Zc6QASlLu" class="lv lv2"><!--pnid:EFzIilni0ArT8XkCKEJDua-->A</span></td>
+            <td data-page-node-id="gvkAHLnMEMUwIVmYWUoZTj"><b data-page-node-id="uVnzpnzHs2ZnKM4dzE5TzH"><!--pnid:uNm7cV67DWDv2IAq469phL-->招商物料与披露文件不一致</b></td>
+            <td data-page-node-id="7DYg7B2U9f779FgzbAPHRa"><!--pnid:UmcAZuAs2onJYQNQXF09g0-->招商 PPT 写"8-10 个月回本""月流水 25 万"，披露文件写"不构成收益承诺"；招商经理微信承诺"包选址包证照"</td>
+            <td data-page-node-id="p0wtAKYitxiAZBC98x9Q35"><!--pnid:xzKdsYy9SFbVIgtD5llNyp-->上海杨浦 Q6（（2018）沪 0110 民初 25138 号）：宣传中<b data-page-node-id="94vHWWhkKLXJXT96zpCs3t"><!--pnid:SZaS8688CqXKAv3KbgCsMZ-->对合同订立有重大影响</b><!--pnid:PSYX5TjzlKB22RBYO6PWjh-->的说明和承诺，<b data-page-node-id="KlQkgwSXzcT9OVvbQ4268n"><!--pnid:44j2vVpwBK16Z3a5TAWI34-->即使未写入合同也可视为合同内容</b><!--pnid:SWjvsDKx0BzLJeEaDN6r40-->。两份材料打架＝自证误导</td>
+            <td data-page-node-id="LaKUJjx0deV0xVykBq3od7"><!--pnid:t7STj6J4feWlZAW9SYisdo-->① 招商物料<b data-page-node-id="0I6ADA6KLcMU06J6qGN37q"><!--pnid:CsbuyjXbQwxRbdZc2CGwFE-->只讲品牌/产品/门店数/开业城市</b><!--pnid:D3ZcJ6ZROaODKUyWWGUz0g-->，禁任何收益性数据；② 物料与披露文件<b data-page-node-id="ANZPADaXxN9kbC888YocVO"><!--pnid:bkk1MmiC4rRFXtRqQt4nfn-->同一版本、同一措辞</b><!--pnid:DgOzMT0KTeK7AsqEnhd4hc-->，由法务部统一出稿；③ 招商会全程录音（存 1 年）；④ 招商话术禁令 6 条，违者扣当月提成 20%</td>
+          </tr>
+          <tr data-page-node-id="PTHaE9UQU989FZrqeuimdz">
+            <td data-page-node-id="Omn4IKWJWdqNX8LHCWO3D6" class="num"><!--pnid:Ii9a1G2QXd59ZPnXeEC08v-->8</td><td data-page-node-id="Pqzm6owhSTHRZfs7WbVFLA"><span data-page-node-id="A3jRxnSaf727roxE3zvW14" class="lv lv2"><!--pnid:n2JCkaAKSHFvTc9RxyZ5vH-->A</span></td>
+            <td data-page-node-id="23JKqrLYPzWFmNW7iZVsVb"><b data-page-node-id="M1MqiARxeuXlEA3nwcFBYg"><!--pnid:lpu8TpaqHs0NukG3lhkBmf-->未提前 30 日交付 / 起算点错误</b></td>
+            <td data-page-node-id="cpVOOWpJl0YnhFt00Dtpz4"><!--pnid:HLIaYIYOg3PcA2jiUBbDQj-->同日交付披露文件并签约；意向书已锁定品牌、区域、加盟费却未起算 30 日；续约时涨了管理费却未重新披露</td>
+            <td data-page-node-id="lrAtV6lbr7xhxuPhczMFx2"><!--pnid:fT5q3g7ytW0uii2ECURbJ2-->违反《条例》第 21 条 +《办法》第 4 条。<b data-page-node-id="BecRSeiG1SbByAQynwRWCp"><!--pnid:OGcBbj9LWFXsJ6ghI2PS3l-->单独看未必支持解除，但会连带触发行政举报（第 28 条 1 万-5 万）</b><!--pnid:LaB7kkBRymBzqh6FOeBMkS-->，且成为加盟商主张"程序违法、一并恶意"的佐证</td>
+            <td data-page-node-id="wLiJG5deN0ZX4fVUDUDTpa"><!--pnid:LvQWN8ljy72DvI4GMHiSUA-->① 系统硬控：<b data-page-node-id="NZM2ywI7QLLCYE8jcwjtNA"><!--pnid:Fju4k3ESZp9GfWCVzUa1Ej-->回执日期 + 30 ≤ 签约日</b><!--pnid:XLP6gJORs0ktha0oqrUvB7-->，不满足无法生成合同编号；② 标准排期按 <b data-page-node-id="BPJps1aqEsn2dlg1dUVm0M"><!--pnid:YMFTw3PWmbGdF51gmRUHIr-->+35 日</b><!--pnid:eEAHWAzoDLf96pYyYqXWU0-->；③ 设 D0＝首次收任何款项之日，D0 前必须完成披露；④ 续约<b data-page-node-id="6klzdpANAyhl8ZvO346pv0"><!--pnid:V7KZN3RV7C847beTIKT85i-->条件一变即重新走完整 30 日</b></td>
+          </tr>
+          <tr data-page-node-id="kUmVviwJBHz9ocHLLn2Wmr">
+            <td data-page-node-id="qi2avSEASJE9dhQpdsNRiT" class="num"><!--pnid:iWl5Q4DCrLHCh0bNjSUohF-->9</td><td data-page-node-id="lcYsHua2EfKI58w7dotq9s"><span data-page-node-id="VY3BPTONgKAT6dGlLwARz5" class="lv lv3"><!--pnid:dibpDaXhNCjyf5rm5aFQhS-->B</span></td>
+            <td data-page-node-id="Lgn6d167tzx0OIs8nbf8KK"><b data-page-node-id="czGhgGlV7VhqW22MmS0kk3"><!--pnid:OjQysdol05UkfVCNhXy8Yx-->格式性遗漏与版本过期</b></td>
+            <td data-page-node-id="ts4x5r0EuWBnYzT8NvLcK4"><!--pnid:RAZ0CPJgnJWfA2tXa9Y8E8-->漏写总经理；直营店漏写联系电话；价目表还是 V1.0 而披露文件已是 V3.0；财务摘要用的是两年前的审计报告</td>
+            <td data-page-node-id="C5YsheB506xnk0RZRFmEhz"><!--pnid:575gD52xD4CiMsnVCdXg2q-->单独难致解除，但<b data-page-node-id="kUPH9aKO4ilhctbNJ0y11h"><!--pnid:EfOsSyzoQCbGtL3jFOScL5-->同一瑕疵重复出现会被认定为体系性过失</b><!--pnid:7ztjI8sYJcbtJZ48bnuiLn-->，进而升级为"故意"的佐证；版本不一致还会被直接指为"披露失真"</td>
+            <td data-page-node-id="HPy4D4L4fzOPGPKafbLNCm"><!--pnid:1Q5m9ThUsGTYuBnLIGZ3GO-->① 建<b data-page-node-id="HE8JUgt8DsIPtDgPtbMeSa"><!--pnid:zSS5E5ycCxFRVMj34Fcipk-->附件版本对照表</b><!--pnid:AorEKxdk8rpzdlVe74OXc1-->，披露文件与全部 14 个附件<b data-page-node-id="f6qWSZHGHXpDYYVBmIYe3P"><!--pnid:u6E9eubbTOFnmK1x2jHgMS-->同版本号、同日期</b><!--pnid:GEzVfjLYVbphv0U7XXlMUn-->；② 每季度末最后 5 个工作日强制升版；③ 用 12 项 40 余个细分点做逐项打勾式体检</td>
+          </tr>
+          <tr data-page-node-id="FhyELhl6dQG1eFc9ZlCGLW">
+            <td data-page-node-id="0k0Yfby3IyQdetzowLcpZL" class="num"><!--pnid:a1n1L1lewgqRXRJbv6l4K6-->10</td><td data-page-node-id="AanRH5kLwJxDYsI1p3Pa0e"><span data-page-node-id="QrNsmJvqttyxkXMNEnoImH" class="lv lv3"><!--pnid:Llrl3xfq22n5Ge0SErtcKp-->B</span></td>
+            <td data-page-node-id="imT9weDyobxfGPFHls3iyQ"><b data-page-node-id="rYgVKVrxWmHhDLuUTwKL1t"><!--pnid:hACSKS4Pcr5RTGGVqxMPJm-->管理性规定缺失被当作佐证</b></td>
+            <td data-page-node-id="zJP939QKnSiH205n0Tgtsd"><!--pnid:HQ5chKGZ29dUlMPCy1Xv5R-->不具备"两店一年"即招商；未备案；未按《办法》第 9 条在 3 月 31 日前年报</td>
+            <td data-page-node-id="1MQ8qITsBXgj4DCNd8RSVj"><!--pnid:H6qCp18LUavrydQEdGE2xN-->两地高院均认定为<b data-page-node-id="LIFTMhLT6hESUhlQ82nPgc"><!--pnid:unzlB1u33gdlyuRZLL6u7A-->管理性</b><!--pnid:Jl4vqWsB93bHoKphDKvjNA-->规范，<b data-page-node-id="EfHUa12jgU3xBWjc2z6pjD"><!--pnid:uLOX2WH6LxMaNTVUaTEMNw-->不导致无效、一般不支持仅据此解除</b><!--pnid:GqMKBPtrTnHgfkmdpW3LuU-->（北京 68 号文第 8 条、上海高院《解答》第三条）。<b data-page-node-id="TDwigdHusvLdr3B28Atzi3"><!--pnid:zbVWnVYIuKb7awBPazWYR3-->但加盟商几乎必将其列为"佐证欺诈"的补强情节</b><!--pnid:PHbB9TSMfUzaN0myQjbggd-->，且招致第 24/25/17 条行政罚款</td>
+            <td data-page-node-id="GMYKFrFPhJw7ng0iryeuO5"><!--pnid:WORd3ObRHE5rJpZe6r5Hmd-->① 补正：立即补备案（第 25 条 1 万-5 万，逾期 5 万-10 万并公告）+ 补年报（第 17 条 1 万以下）；② 应诉时<b data-page-node-id="oSvLUk4CK7WZ52WQ1p23BM"><!--pnid:77FDp70xrxoDcZjpygQBTY-->用两地高院意见阻断"无效"主张</b><!--pnid:15NKPj5pmbSlDY3VTZokW5-->；③ 同时主张加盟商未尽注意义务（可自行在商务部平台查备案状态）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div data-page-node-id="fhFIzHACRCSjjdtFG3uFdy" class="warn">
+        <b data-page-node-id="O7wg8AcXNT7QFHnAfAO3lG"><!--pnid:yybOfKMiu2mpwanmnhY6Q2-->清单使用规则：</b><br data-page-node-id="raTz6YMy3PWgveEsvkqbqB"><!--pnid:tiqBY7dJph0HyGBCr8wgNO-->
+        ① <b data-page-node-id="ZhDkw5Bfuyr5DttRMkm7B1"><!--pnid:ho4mQgjMcGKYnXGevGGtZc-->第 1–4 类属"出现即必输"</b><!--pnid:Vinbu5BoEuc3jeA8UxWKtc-->，发现任一立即上报 CEO 并启动全线整改，不允许"个案处理"；<br data-page-node-id="l2cBO1ZZ7hIM18DF1nvXjj"><!--pnid:aGwk0NlgXoSXPZQGLKSsZ4-->
+        ② <b data-page-node-id="m57XxgUGkiMnFUOFpIdNnN"><!--pnid:Gw6IjM2oVvGJSopSxjEp9q-->同一类瑕疵出现第 2 单，危险度自动上调一级</b><!--pnid:5BUYsF3dpzNHZbCWc7FnGV-->——因为"重复"是"故意"的最佳证据；<br data-page-node-id="l8vbTjuoOkr4tC5kX7z1Lg"><!--pnid:gj8PmIWmZfQH6zWR4Q9nqT-->
+        ③ <b data-page-node-id="dOJHrQlzbLk0U5ZsUDEKJk"><!--pnid:umG3mJjIPhqlxbk8fZICfr-->第 4 类（回执）是全部防御的地基</b><!--pnid:aQcPU5lOfyQBWLFUbXQEfB-->——回执塌了，前面 1–3 类的实体抗辩全部失效。优先级最高。
+      </div>
+
+      <div data-page-node-id="9NlVcsJvjxJtHNXypML5Ko" class="act">
+        <b data-page-node-id="VtpmQMW1tAdBDknDE0gGWE"><!--pnid:tKtF2bRPCVIhp14z3AFtSc-->我的落地动作（按优先级）：</b><br data-page-node-id="bATh4FamXhBMlQ7Gd7Q4nH">
+        <b data-page-node-id="EhnhRTo2gQaEBo4CMuu4jt"><!--pnid:qlzFPoDAvtiNxl1Ck3zXTZ-->第 1 周：</b><!--pnid:T1rE4lhJmpHoBYIX36fa0y-->① 完成商标权属归一（转让或独占许可 + 再许可权 + 商标局备案）；② 全面重签回执（历史存量单补签《披露确认书》）；③ 建立《重大变化 5 日通知清单》。<br data-page-node-id="fXDwo1jvjEHpRejuh5U1B5">
+        <b data-page-node-id="wGFTZlFafxxiw0LM1IJvBn"><!--pnid:qXpfRuAIFWOviTxxKuUQCt-->第 2–4 周：</b><!--pnid:dpxB1rj5BtJBO3GA1fn1bF-->④ 全量检索诉讼仲裁与行政处罚并升版披露文件；⑤ 投资预算改区间 + 补估算依据；⑥ 第（八）项补关店数与数据来源；⑦ 招商物料全套重做，删净收益性表述。<br data-page-node-id="8j6hYAWmVslw0VpIqZSH9V">
+        <b data-page-node-id="IDkP7NnOyhkUM07etdXos4"><!--pnid:brOCKIGo1WNz3TxylOI2E7-->常态化：</b><!--pnid:vLF8XZe4I68ZJ3qma7N707-->⑧ 每季度末升版 + 10% 抽查；⑨ 建《披露证据册》L1–L5 五层结构；⑩ 应诉证据响应 SOP 上墙。
+      </div>
+    </div>
+  </div>
+
+  <!--pnid:cVd27v4vpHF1R16OElxdgK--><!-- ============ p5 ============ -->
+  <div data-page-node-id="BRKA5lROylYhnuBvh2rvKb" class="panel" id="p5">
+    <div data-page-node-id="3IrGrmL6M7B3xMUIqmHnpU" class="checklist">
+      <div data-page-node-id="CAaxiLAgi2yUGiNI7lpHMG" class="cl-head">
+        <strong data-page-node-id="BgKJ37TTqPIjAbxmVjBVnq" style="color:var(--gold)"><!--pnid:sQWsFq8BkAOwGmiNHdAVwQ-->《披露瑕疵应战自查清单》（每季度必走）</strong>
+        <div data-page-node-id="smVy7GpVae7psUVAgjj6QQ" class="progress"><i data-page-node-id="wFV6gmLRp9ay9YN8s106xY" id="bar"></i></div>
+        <span data-page-node-id="cOxOY3ez75cKy5LrKjedIx" id="cnt" style="color:var(--sub); font-size:13px"><!--pnid:e0pMASyC9tXMjybkqLKBKn-->0 / 0</span>
+        <button data-page-node-id="VP2fSnanDd3fVrqd7Q8KFz" class="btn" onclick="window.print()"><!--pnid:QG2DPMkPxQbOxWxTa9oRBV-->打印清单</button>
+      </div>
+
+      <label data-page-node-id="xGX38Hchzdl3PIOzJ4nA2W" class="mat"><input data-page-node-id="AfeTcvblLjUIeUxm4o8HFg" onchange="upd()" type="checkbox"><span data-page-node-id="5xm8942zwlqKYzKvpwMuJR" class="m-txt"><!--pnid:QNlEpHbeAws9PDa13JIBE3-->① 商标权属归一：第 43/35/30 类商标已在<b data-page-node-id="877nBIlG4RHbekBdBsWSzZ"><!--pnid:KpnUFRvjU0yBQhqc3VzGjv-->签约主体公司名下</b><!--pnid:Etbxqkq0FBYfkNIw48PxYC-->，或已签独占许可 + <b data-page-node-id="DJFoCzAnDxGwWuQLvwJEz7"><!--pnid:u6l0e6G3SfveEt1bFwDxti-->再许可权</b><!--pnid:hWj1bQ1ecUMU3PT8jgZRd8--> + 商标局备案<span data-page-node-id="lPmryFO4NEANipAs4mh6d0" class="m-note"><!--pnid:kkTbzFDkk0zAegljYwmhCs--> — S 级。否则披露文件写"公司拥有"即定性虚假</span></span></label>
+      <label data-page-node-id="hMXrgbOKLxULpGMyMIqaqQ" class="mat"><input data-page-node-id="mOwHfJErM7hwhrdnpCdIHz" onchange="upd()" type="checkbox"><span data-page-node-id="ASeCxh2ssA9sNZM813wagE" class="m-txt"><!--pnid:H9vQLuWS8Jiy4lcpMnWOQd-->② 全量检索已做：裁判文书网 / 执行信息公开网 / 企查查 / 天眼查 / 信用中国，主体含特许人 + 法定代表人 + 关联方 + 商标名称，<b data-page-node-id="xSVEF1vLVxsQA9hQN69wpj"><!--pnid:mYgvaVgskbpnKE5OXdEKMs-->留存检索日期截图</b><span data-page-node-id="i9rLGoYaJ5ZnIslY4Zhyyc" class="m-note"><!--pnid:Pp5QMtubhZg2AliSKyMfER--> — L3 层。打掉"故意"最有力的证据</span></span></label>
+      <label data-page-node-id="HerJec9rjM17BvTAlk6hny" class="mat"><input data-page-node-id="x9MGIg3fwcn9bEtooHbY1a" onchange="upd()" type="checkbox"><span data-page-node-id="bvE2jEVNledaMfxvgEEp55" class="m-txt"><!--pnid:TxDXcVZKDVIvfaZ42gcN0O-->③ 第（十）项诉讼清单完整：5 年内、四要素（案由·请求·管辖·结果）齐全、未决案件已列"审理中"、每项附整改措施<span data-page-node-id="FzPwgPaREdflGd9pYZco69" class="m-note"><!--pnid:Ydz5Pn1yljwVmi9kC6T18p--> — S 级。无金额门槛，灰区一律披露</span></span></label>
+      <label data-page-node-id="5Qc7O1hPAfO8ytEJ7bAONR" class="mat"><input data-page-node-id="6JEfNrGV4CS8lG19LtwQnT" onchange="upd()" type="checkbox"><span data-page-node-id="mh7tV0DkQRFKP1TY3fxxoM" class="m-txt"><!--pnid:5d6FCOfiLRUd7HMDghjCGn-->④ 第（十一）项已核对：是否存在被处 <b data-page-node-id="MEdcYEtNwQeAf0KuN4xQd5"><!--pnid:ey7Di8vzVQD8gWINJskeYo-->30 万元以上罚款</b><!--pnid:VOyk7VlWh3VFlWIIxGLZVO-->或被追究刑事责任的记录（含法定代表人）<span data-page-node-id="R0K15U2USn2EWOhHprDE7j" class="m-note"><!--pnid:f09gqCJ7654Q2NOEB9F8PL--> — 这是本项的法定门槛，30 万元以下不属本项但可能落入第（十）项</span></span></label>
+      <label data-page-node-id="4n7rKF3sfto8xIVruobUuV" class="mat"><input data-page-node-id="ZmZqk43etSnGhpSzcXISdH" onchange="upd()" type="checkbox"><span data-page-node-id="WTwUdptOQebKk8s1gp4lS5" class="m-txt"><!--pnid:ouy8mWfXZhYc9Q7QT4Bl39-->⑤ 重大变化通知已发出：备案状态 / 核心商标状态 / 重大诉讼 / 行政处罚 / 实控人变更 / 破产 / 重大食安事件，<b data-page-node-id="Tx4NIGg3VZRBWNM6mmU3oq"><!--pnid:jXNR5nAUCirk502t0B4BJj-->5 个工作日内</b><!--pnid:zFmGodvh7pB66nQxG7Y9QP-->书面通知全部在营加盟商并取回执<span data-page-node-id="C6DRPGvRqOf3Ya7x2arpbZ" class="m-note"><!--pnid:CKEit7LHOX1raxhGNUdaQl--> — S 级。参照（2023）浙8601民初706号</span></span></label>
+      <label data-page-node-id="FcvICkRGZvEKd16uscIxnu" class="mat"><input data-page-node-id="oq78zwlG5cZbaiYr0WtLm2" onchange="upd()" type="checkbox"><span data-page-node-id="pKyXU6rtbu3qJuG1mUKRnh" class="m-txt"><!--pnid:8GQnNRcX3P2RZmggzAPsVd-->⑥ 回执合格率 100%：页数与日期<b data-page-node-id="gai2R1AfOOl7F1yiXrJ3rM"><!--pnid:Ykupz9llB3wVp9jIK5q1jG-->手写</b><!--pnid:3q6GApH9S9LG2SXpCm70XE-->、骑缝章、每页小签、个体工商户<b data-page-node-id="jPFl4sEFa1QVSxR8NnTdZd"><!--pnid:R0ETe3hYR0oeH1FZRSYsqx-->签字+盖章</b><!--pnid:3WmVhfsccX1MFUyCWfSXvx-->、30 秒交付视频齐全<span data-page-node-id="PSJivG8T2ojAzskESlAIeX" class="m-note"><!--pnid:OdO2oTiadGUikZb7GYI3D5--> — 地基级。回执塌则全部抗辩失效</span></span></label>
+      <label data-page-node-id="HfTaL8peJzjclHgH0TL7CE" class="mat"><input data-page-node-id="hcLpvVVaogBLY6BNgPsmcW" onchange="upd()" type="checkbox"><span data-page-node-id="xNh7RrrdUe7epiEAVpEfuY" class="m-txt"><!--pnid:bY5GdPKOPZjVyZiPBVPMaP-->⑦ 投资预算已区间化（上限∶下限 = 1.8–2.0）、表头 5 条声明齐全、9 条估算依据齐备、<b data-page-node-id="T23S2QIgCDdBuIUBKSOYqy"><!--pnid:id6PsfzLziVJI01Hb9tN2z-->无收益性表述</b><span data-page-node-id="8ythgrGXyQXY3581wPYess" class="m-note"><!--pnid:mamAkOP9P2Jdjhi0KXx24N--> — 已开业门店实际投资额超出上限 30% 以上的立即升版</span></span></label>
+      <label data-page-node-id="CHAKXBlCCrWCcpoW6cDdaA" class="mat"><input data-page-node-id="Ds1n9HEUORGrkjauDsUMyF" onchange="upd()" type="checkbox"><span data-page-node-id="jBViLtbHmQesF2nzU7xeS3" class="m-txt"><!--pnid:gP3UNRtXpQtLMZQlOFQEJI-->⑧ 第（八）项已列<b data-page-node-id="tfaymRXAMT5OcZaBpPNBLV"><!--pnid:jz0RHMu3IOXlytPy33iLaf-->开业数 / 在营数 / 停业数</b><!--pnid:tZa2EwVmbkRphOQ3u8QHId-->三项，经营数据注明统计区间、样本量、来源与"未经审计"，单册 + 保密水印 + 保密协议<span data-page-node-id="JbdQSNi2xRSppTpjZmeGDW" class="m-note"><!--pnid:rS9HQj6IMepVeq9G6QPlWx--> — 该册绝不进招商物料</span></span></label>
+      <label data-page-node-id="Gg3D71F0DZHjUBmZmbaxTD" class="mat"><input data-page-node-id="vdxfPUJLAnUHqpmT1XRnAV" onchange="upd()" type="checkbox"><span data-page-node-id="JURvxJfi1pDGE65bh0QpT2" class="m-txt"><!--pnid:ommkdDoIXQNOMmSBPXXLar-->⑨ 招商物料已与披露文件<b data-page-node-id="YPSqD790ZNmgQOXSJycjve"><!--pnid:oClRaZs7O9zIxwM7qelv0z-->同版本、同措辞</b><!--pnid:U5kuRrZEjrqjNDZl29lcRR-->：无回本周期、无月流水、无毛利率、无"零纠纷""稳赚"，无绝对化用语<span data-page-node-id="IfzdQR6nXNSYpXoIcf414P" class="m-note"><!--pnid:TT87l0LtBkE9UBNJKE4UIM--> — 招商会全程录音存 1 年</span></span></label>
+      <label data-page-node-id="0mS8aEtJ9FHBPgqmCPD2PX" class="mat"><input data-page-node-id="eKhEaW7mTtP4Tl2yup1CEV" onchange="upd()" type="checkbox"><span data-page-node-id="V3WDbYTppckOtnErmhwzmp" class="m-txt"><!--pnid:lg4gKyvfuJcnZcG54Befae-->⑩ 30 日校验通过：全部在营门店<b data-page-node-id="R3eN0YZ5hXBdl2TORL7QJF"><!--pnid:H4PvBbS1nTPQPtxJIdpq3w-->回执日期 + 30 ≤ 签约日</b><!--pnid:V2klgPXcx47UyxsChoZe9c-->；续约单已核对是否"与原合同相同条件"<span data-page-node-id="2ajZPQVzhLz6ZS13fxzfxs" class="m-note"><!--pnid:1Ojlh3ddnlxWauqCh3api2--> — 条件一变即须重新走完整 30 日</span></span></label>
+      <label data-page-node-id="A1GRMOjVnrjapcUsA6Qa48" class="mat"><input data-page-node-id="fg89immYPrKRZhzBK16pV6" onchange="upd()" type="checkbox"><span data-page-node-id="hRV5YbLfugwO7P0VDjRPVh" class="m-txt"><!--pnid:aeu05gxFlDREe7aYiWhycx-->⑪ 证据册 L1–L5 五层齐备：交付证据 / 内容真实性证据 / 检索留痕 / 履行证据 / 整改通知证据，<b data-page-node-id="lUCyjEVZk8RAJUhQFvlBKS"><!--pnid:EGIkE34Py7A3ME9kVXZ0xX-->保存 5 年</b><span data-page-node-id="SLl2TR37fP2ZZRqFlIjx8l" class="m-note"><!--pnid:E2TgFTPyGCQnx7xni935XP--> — 离职人员的企微与企业邮箱数据必须导出归档</span></span></label>
+      <label data-page-node-id="Cjq5F8uyCIBzXAlPPLz1ef" class="mat"><input data-page-node-id="gqdWpFL2ezP0uXpjLmO4yx" onchange="upd()" type="checkbox"><span data-page-node-id="JXcSjQNw1IHiYg5lbH2F65" class="m-txt"><!--pnid:WnRiQBdhQQYpLMcLxi0W0N-->⑫ 应诉时效已倒查：对每起纠纷，从"加盟商知道或应当知道之日"起算，<b data-page-node-id="baixANHztnPvjTCcHcFwM9"><!--pnid:hLN4CGThHflucMabjD72GE-->撤销权 1 年 / 解除权 1 年 / 损害赔偿 3 年</b><!--pnid:KvHW5PzptSHAZ22Tk9he1K-->，超期即作首要抗辩<span data-page-node-id="MRP0ac9C5AkDBWZxs9NaZp" class="m-note"><!--pnid:ZBjlCpb1Yzp0gkU42IdLvn--> — 撤销权最长 5 年（自民事法律行为发生日起）</span></span></label>
+      <label data-page-node-id="vytd43Y4jBCy0blCttuKFk" class="mat"><input data-page-node-id="OvFw6mU6FNUuNIGS64TaH1" onchange="upd()" type="checkbox"><span data-page-node-id="DDvcaPhBtutV7IIarzLClb" class="m-txt"><!--pnid:NG7GhVkZidChdW3tcOevSe-->⑬ 同一类瑕疵是否<b data-page-node-id="tl7zQKLizWRIOVjXAAhBF6"><!--pnid:k8MH8okd6E6jfKF8Yz9f0t-->出现第 2 单</b><!--pnid:cCWRV3tQzvrflNY0VHPPsl-->已排查——重复出现即性质升级为"体系性故意"，危险度自动上调一级<span data-page-node-id="CxSX6xqQ4KrdM7L5xPPE8h" class="m-note"><!--pnid:4eCDhHwJpRJ0lW7ZutEUbF--> — 这是加盟商证明"故意"的主要路径</span></span></label>
+      <label data-page-node-id="tk8yNsrpKlwoV72JRduB5N" class="mat"><input data-page-node-id="pTbnBm2nTZ6g1w0bK2Uruq" onchange="upd()" type="checkbox"><span data-page-node-id="EmOzykUTLdxD82By1YYVIM" class="m-txt"><!--pnid:a31iVQMJHgXX1EZ4HGWZsB-->⑭ 管理性缺口已补正：备案（第 25 条）、年报 3 月 31 日（办法第 9 条）、两店一年（第 24 条）<span data-page-node-id="7lRD041Y87NAoINpAl9pY6" class="m-note"><!--pnid:G02aQuYcDQpW5IQsTZVrr7--> — 虽不导致无效，但会被作为"佐证欺诈"的补强情节</span></span></label>
+      <label data-page-node-id="VQQoG8SYVW0mDiWqVNpvjA" class="mat"><input data-page-node-id="UG3rQaV41perB7ChZ0r3BC" onchange="upd()" type="checkbox"><span data-page-node-id="hxvSJzZQtGOZfVDMa8bSO3" class="m-txt"><!--pnid:HsZwm15I3r7XtMrUlrZ6LZ-->⑮ 已准备好"撤销 → 解除"下拉抗辩材料：证明<b data-page-node-id="ATMoOpJW9F4BQF1iEKEE2n"><!--pnid:YIhZKkFCfeHgeAQMHqGldC-->无欺诈故意</b><!--pnid:bWwW1xu5EiZpSEU4jVdzsn-->（检索留痕、主动补正记录）+ <b data-page-node-id="XtQzToF6EBGLAW3ZagoHHV"><!--pnid:YCHLX1BVpqKUEIXzlVy6os-->加盟商已实际利用经营资源</b><!--pnid:S9zigpFjjB81uBH7uP58Rq-->（培训签到、开业流水、缴费记录）<span data-page-node-id="3aVBTtDGodKkc8CJkdXvTB" class="m-note"><!--pnid:nzdwMrzaexBPKa7biRl0ng--> — 把案件锁进解除通道，按履行期间折算返还并保住违约金</span></span></label>
+    </div>
+
+    <div data-page-node-id="D3Um2WoKQVZqmUv894SeKc" class="card" style="margin-top:16px">
+      <h3 data-page-node-id="Nl0iYce3gMeDDgXCM477Vd"><!--pnid:xTjECY0nWOkGmo008Qt8yS-->一张图记住全篇</h3>
+      <table data-page-node-id="n0k5egNGAUb4XI7ljGI8Xu">
+        <thead data-page-node-id="el1AGiJVVF1zwhum61pRZd"><tr data-page-node-id="c7gOfnGEdV5pi3W4PdJcpx"><th data-page-node-id="Y2hBKHjDz6QcciO7fnHArp" style="width:18%"><!--pnid:fpgTTSVjS8mz6mjwVizF4I-->问题</th><th data-page-node-id="6vpF63lThVLErjXgGWLz9b"><!--pnid:fD2XpoThmlcRnmnwRC59ap-->答案</th></tr></thead>
+        <tbody data-page-node-id="K38DsCEvhf8gtxQo2YVKE0">
+          <tr data-page-node-id="hTl4IYDjrVhGJKzrzwh1pP"><td data-page-node-id="7M9wKrdEckZY4eKDqcIkkT"><b data-page-node-id="Oq9rRxNcA7WnvbbGMytEAN"><!--pnid:jgoHSyIS1H1EpQtUYywfnL-->加盟商能走几条路</b></td><td data-page-node-id="Yrq8LpLGLxoMvq1a4nzbbZ"><!--pnid:wh9ezXT91JYhrmycQugPVz-->三条：撤销（欺诈，《民法典》第 148 条，1 年除斥）、解除（条例第 23 条第 3 款，1 年）、索赔（缔约过失第 500 条 / 违约第 584 条，3 年）。<b data-page-node-id="6zTOI5AmTf1q9W3E4G6PoU"><!--pnid:8laDOIKYJHOPHFf6byUP5o-->通常并列主张、法院择一</b></td></tr>
+          <tr data-page-node-id="Ipm1PgoxZOHonbIHndOROa"><td data-page-node-id="UPTdaOWt2VfK2h4aeYHZm6"><b data-page-node-id="ao8zW70vBq3zsKdSgu54HW"><!--pnid:EAlATrOrndUVvp6JWu0iCX-->哪条最狠</b></td><td data-page-node-id="koJGPBsbswQicAbdaVHcTi"><!--pnid:SeuZnhTGfbyUY3RwHlx3TF-->撤销——<b data-page-node-id="0eKwNOsgixyRlzIVh5VokK"><!--pnid:CyILG8XfaGRqFXskQhnDtP-->自始无效、全额退费、违约金条款失效</b><!--pnid:G6AMAW4Yh3zQJh63CYbBpU-->。解除——按履行期间折算，可扣减、可主张违约金</td></tr>
+          <tr data-page-node-id="yAvci8OLOrBryqQaVI7SKJ"><td data-page-node-id="4OgWprw1ZHKSY2G87oWPmt"><b data-page-node-id="uk1VUuB0MPM6BySFR0VfcD"><!--pnid:g2iSIR1E3V6wpumJfufZqB-->关键闸门</b></td><td data-page-node-id="qCUuLv1UCYSuUupxTWp4bM"><b data-page-node-id="QeqOzbDgfPH2PO8rzj6kzw"><!--pnid:DURLLWpw4tCD7XYVW0lmaZ-->实质影响</b><!--pnid:Im4jMwUQFtxmNdjIAf8FfE-->：北京 68 号文第 15 条（订约中隐瞒"直接关系到特许经营实质内容"且"足以导致签约"；订约后隐瞒重大变更"造成实质影响"）+ 上海高院《解答》第七条（综合考虑对合同目的实现与履行的影响）</td></tr>
+          <tr data-page-node-id="oB7MCmFVZw8OFSVDcE5S6l"><td data-page-node-id="0ISY0HasY79MrulVcUKNZy"><b data-page-node-id="erW13Jn3lTDyRlJOKxL7iW"><!--pnid:Xx6c6yyNbnbSez3Qw4WTLa-->胜负手</b></td><td data-page-node-id="Z7FxldjG7xpfzW1934zOvU"><b data-page-node-id="GWXWKeiYOcTkrXPTYmkHJO"><!--pnid:mtRMILSYho9HhRYxO354aO-->"故意"而非瑕疵大小</b><!--pnid:9YCjC4TTcATpYiLo0WUixC-->。证明无故意即可把撤销打回解除。<b data-page-node-id="HldjfmIjlmxH3fNz4tFMVn"><!--pnid:O2KW6QWOtTFAiYQUP0HqG9-->发现瑕疵后 72 小时内主动补正，是最便宜的免责证据</b></td></tr>
+          <tr data-page-node-id="RfPjqBZRAdLVIO6UakHS3r"><td data-page-node-id="L6smEVF8LGx5yxKYFqdN8j"><b data-page-node-id="MoGl1M6G471chMCJhWLeyt"><!--pnid:Nw7a76qLxyHWJA0Eg4ainh-->举证责任</b></td><td data-page-node-id="wQla6fdqrwGgjhtDc6PfGh"><!--pnid:sMfZFomyB21WbKLuuf2unH-->已披露→特许人举证；内容真实性→<b data-page-node-id="8jdKz3tzJ83ZgiJN8Aoopk"><!--pnid:BVeEUTHfj6N3NuvqBf2ysx-->转移至特许人</b><!--pnid:EuO0pDFTU3SpICxFIMNXvI-->（民诉法解释第 112 条 + 证据规定第 95 条，拒不提交即判输）；故意/实质影响→加盟商举证</td></tr>
+          <tr data-page-node-id="ig0YhvS2bTuN6QiakEUyDR"><td data-page-node-id="rjL8MSRpUN4mYKIz0T4IjV"><b data-page-node-id="ju48PQkc7FlsgQ9vZBXNvq"><!--pnid:lWHqai3e1PpclfPZ4JjL8p-->最危险的四类</b></td><td data-page-node-id="7pnVlDb7ZSFcaDKqbmpmkd"><!--pnid:ee6WOvolwsSpIDQ57uv7C2-->① 经营资源权属不实；② 履约期重大变化沉默；③ 隐瞒诉讼仲裁与行政处罚；④ <b data-page-node-id="C6a5H1r8zFtKrOG1pTfOOZ"><!--pnid:fQYYngWLprcZkDmW9fAdzn-->无回执或回执不合格</b><!--pnid:HrwHaW6saBDeaPdYNBAAOP-->（地基，塌陷则全部抗辩失效）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script data-page-node-id="kPhLMbM1cjGOUZ9k4RjHcI" data-pnid-children="9lJFcdQb1RNZt5tQB85mcp">
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(){
+    var all=document.querySelectorAll('.mat input'), n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById('bar').style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById('cnt').textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>
