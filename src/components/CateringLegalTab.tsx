@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   Scale,
@@ -14,13 +14,10 @@ import {
   ExternalLink,
   GraduationCap,
   CalendarDays,
-  BookOpen,
   Target,
   ClipboardCheck,
   Link2,
   Sparkles,
-  ArrowUpRight,
-  X,
 } from 'lucide-react';
 
 // ── 数据源（来自 WorkBuddy 资料库「餐饮加盟法务总监养成计划」）──
@@ -281,14 +278,6 @@ const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);
 
 export const CateringLegalTab: React.FC = () => {
   const [openWeek, setOpenWeek] = useState<string>(WEEKS[0].id);
-  const [activeLesson, setActiveLesson] = useState<Lesson | null>(null);
-  const readerRef = useRef<HTMLDivElement>(null);
-
-  // 展开阅读面板后滚动到面板处；否则面板在列表上方，视觉上像"点了没反应"
-  const openLesson = (l: Lesson) => {
-    setActiveLesson(l);
-    setTimeout(() => readerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-  };
 
   return (
     <div id="tab-catering-content" className="space-y-12 py-6">
@@ -395,49 +384,6 @@ export const CateringLegalTab: React.FC = () => {
           </a>
         </div>
 
-        {/* ── 站内阅读面板：点击带「站内阅读」的课程后在此展开 ── */}
-        {activeLesson && activeLesson.localHtml && (
-          <motion.div
-            ref={readerRef}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 rounded-xl border border-[#B89F6B]/40 bg-white/40 dark:bg-[#242426]/40 overflow-hidden"
-          >
-            <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
-              <div className="flex items-center gap-2 min-w-0">
-                <BookOpen size={16} className="text-[#B89F6B] shrink-0" />
-                <span className="text-sm text-[#1D1D1F] dark:text-[#F5F5F7] truncate">
-                  {activeLesson.title}
-                </span>
-              </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <a
-                  href={lessonLocalUrl(activeLesson.id)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#86868B] hover:text-[#B89F6B] transition-colors flex items-center gap-1"
-                >
-                  <ExternalLink size={13} />
-                  新窗口打开
-                </a>
-                <button
-                  onClick={() => setActiveLesson(null)}
-                  className="text-xs text-[#86868B] hover:text-[#B89F6B] transition-colors flex items-center gap-1"
-                >
-                  <X size={14} />
-                  收起
-                </button>
-              </div>
-            </div>
-            <iframe
-              src={lessonLocalUrl(activeLesson.id)}
-              title={activeLesson.title}
-              className="w-full h-[75vh] border-0 bg-white"
-            />
-          </motion.div>
-        )}
-
         <div className="space-y-3">
           {WEEKS.map((w, i) => {
             const isOpen = openWeek === w.id;
@@ -469,51 +415,26 @@ export const CateringLegalTab: React.FC = () => {
                 {isOpen && (
                   <div className="px-5 pb-4 pt-1 border-t border-[#E8E8E6]/60 dark:border-[#2C2C2E]/60">
                     <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
-                      {w.lessons.map((l) => (
-                        <li key={l.id} className="flex items-center gap-1">
-                          {hasLocalLesson(l.id) ? (
-                            <>
-                              <button
-                                onClick={() => openLesson(l)}
-                                className="group flex-1 min-w-0 flex items-center justify-between gap-3 py-2.5 text-left text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
-                              >
-                                <span className="truncate">{l.title}</span>
-                                <span className="flex items-center gap-2 shrink-0">
-                                  <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#B89F6B]/15 text-[#B89F6B]">
-                                    站内阅读
-                                  </span>
-                                  <BookOpen
-                                    size={15}
-                                    className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
-                                  />
-                                </span>
-                              </button>
-                              <a
-                                href={lessonLocalUrl(l.id)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="新窗口打开全文（免登录）"
-                                className="shrink-0 p-2 text-[#86868B] hover:text-[#B89F6B] transition-colors"
-                              >
-                                <ExternalLink size={14} />
-                              </a>
-                            </>
-                          ) : (
+                      {w.lessons.map((l) => {
+                        // 有站内全文的跳站内（免登录），其余跳资料库原文
+                        const href = hasLocalLesson(l.id)
+                          ? lessonLocalUrl(l.id)
+                          : lessonUrl(l.id);
+                        return (
+                          <li key={l.id}>
                             <a
-                              href={lessonUrl(l.id)}
+                              href={href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group flex-1 min-w-0 flex items-center justify-between py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                              className="group block py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
                             >
-                              <span>{l.title}</span>
-                              <ArrowUpRight
-                                size={15}
-                                className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors"
-                              />
+                              <span className="border-b border-transparent group-hover:border-[#B89F6B]/50 leading-relaxed">
+                                {l.title}
+                              </span>
                             </a>
-                          )}
-                        </li>
-                      ))}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
@@ -522,7 +443,7 @@ export const CateringLegalTab: React.FC = () => {
           })}
         </div>
         <p className="text-xs text-[#86868B] mt-3">
-          * 计划共 16 周。已发布的课程全文均已存于本站，点击「站内阅读」免登录直接查看；需看原文可点上方「在资料库查看全部」。
+          * 计划共 16 周。点击任意「第 x 周第 x 天」即在新窗口打开该课全文（已发布课程均存于本站，免登录）；需看资料库原文可点上方「在资料库查看全部」。
         </p>
       </section>
 
