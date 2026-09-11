@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·第1天｜跨境物流这门生意在卖什么：服务包与商业模式</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · DAY 1 / 5　·　阶段一　打地基</div><h1>跨境物流这门生意在卖什么：服务包与商业模式</h1><div class="sub">第 1 周主题：跨境物流行业解剖 —— 这门生意的钱、链路与角色</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">跨境物流公司其实是「搬家公司 + 签证中介 + 保险公司」的合体：搬家公司负责把货搬过去，签证中介负责办通关手续，保险公司负责出事赔钱。客户买的从来不是「运输」，而是「包它安全、准时、合法地送到」。</div><div class="mlink"><b>怎么串到今天</b>先搞清卖的是什么，才知道哪一步会被客人告。昨天是开场，今天先把这门生意的钱和角色摆上桌。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>跨境物流 vs 国内物流的本质差别：关境、多法域、多式联运、单据即权利</li><li>主流产品形态：国际快递、空运专线、海运整柜/拼箱、铁路专线（中欧班列）、卡航、海外仓一件代发、FBA 头程</li><li>钱从哪来：运费差、操作费、仓储费、清关服务费、尾程派送费、增值服务（贴标/换标/退件处理）</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">一张《跨境物流产品图谱》：8 类产品的服务边界、法律关系本质、我方法律身份</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">我要从法务视角搞懂跨境物流这门生意。请给我：
+
+1. 逐类拆解 8 类产品：国际快递（DHL/UPS/FedEx）、空运专线、海运整柜 FCL、海运拼箱 LCL、中欧班列、卡航（TIR/公路）、海外仓一件代发、FBA 头程。每类给出：典型客户、服务边界（门到门/港到港/仓到仓）、我方在法律关系上的身份、主要适用法律、典型纠纷类型
+2. 收入结构拆解：运费差、操作费、仓储费、清关费、尾程派送费、增值服务费，每一项的法律定性（是运输对价、服务报酬、还是代收代付），以及开票与税务上的注意点
+3. 商业模式的法律含义：轻资产（转包）vs 重资产（自有车队/自营仓），责任承担有什么本质区别？为什么轻资产模式最容易在「缔约承运人 vs 代理人」上翻车
+4. 最后给我一张《产品—法律关系—风险点》对照表</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、先把一句话立住：跨境物流卖的不是「运」，是「结果承诺」</h2>
+<p>国内物流的争议核心是「货有没有按时到」；跨境物流的争议核心是「货到了没有、清关了没有、这一段的失败谁买单」。差别来自四件事：① 关境（customs frontier）——多了一道国家主权关卡；② 多法域——同一票货同时被中国法、目的国法、国际公约管着；③ 多式联运——海、空、铁、公路拼在一条链上，各段规则不同；④ 单据即权利——谁拿着正本提单，谁就能提货。这四条决定了后面 23 周所有知识点的形状。</p>
+<h2>二、8 类产品逐类拆解</h2>
+<table><thead><tr><th>品类</th><th>典型客户</th><th>服务边界</th><th>我方身份（默认 / 争取）</th><th>主要适用法律</th><th>典型纠纷</th></tr></thead><tbody><tr><td>国际快递<br>DHL / UPS / FedEx</td><td>中小跨境卖家、样品、紧急件</td><td>门到门 Door to Door</td><td>快递公司自身即承运人 Carrier；我方若只代下单则为代理人 Agent</td><td>《蒙特利尔公约》（1999），我国 2005-07-31 生效；快递服务合同</td><td>丢失破损按 22 SDR/kg 限额；申报价值争议；偏远地区费 Remote Area Surcharge</td></tr><tr><td>空运专线</td><td>跨境电商、3C、服装、带电货</td><td>门到门 / 机场到机场 Airport to Airport</td><td>包板包舱时我方为缔约承运人 Contracting Carrier</td><td>同上；IATA 规则、航空公司运输总条件 Conditions of Carriage</td><td>延误；泡货计费争议；危险品瞒报（后果远超货值）</td></tr><tr><td>海运整柜 FCL</td><td>工厂、大宗卖家、FBA 备货</td><td>门到门 / 港到港 / CY-CY</td><td>船公司为实际承运人 Actual Carrier；我方出 House B/L 时为缔约承运人</td><td>《海商法》第四章（海上货物运输合同）；提单首要条款 Clause Paramount</td><td>无单放货；货损按 666.67 SDR/件限额；滞箱费 Detention</td></tr><tr><td>海运拼箱 LCL</td><td>中小卖家</td><td>仓到仓 / CFS-CFS</td><td>因需拆箱分货，我方<b>几乎必然</b>是缔约承运人</td><td>《海商法》；拆箱前适用海上运输规则</td><td>拆箱丢件；目的港 CFS 高收费；分货错误</td></tr><tr><td>中欧班列</td><td>中欧线路电商、汽配、家居</td><td>站到站 / 门到门</td><td>运营平台为缔约承运人</td><td>SMGS（国际铁路货物联运协定，我国为缔约国）/ CIM（COTIF 附件 B，我国<b>非</b>成员）；实务常走 SMGS 运单</td><td>换轨 / 换单段责任空白；运单非物权凭证导致控货风险</td></tr><tr><td>卡航（TIR / 公路）</td><td>中欧快线、带电产品</td><td>门到门</td><td>多为缔约承运人</td><td>CMR 公约（我国<b>非</b>缔约国，须个案确认适用）；TIR 公约 1975</td><td>过境担保；途中盗窃；海关封志被拆</td></tr><tr><td>海外仓一件代发</td><td>跨境电商卖家</td><td>仓到门（出库后接尾程派送）</td><td>保管人 Depositary / Warehouseman（bailment）＋ 委托发货</td><td>当地仓储法（德国《商法典》HGB 仓储营业 §§467 ff.）＋ 服务协议</td><td>库存盘点差异；火灾水渍；产品合规（GPSR 下的履约服务商责任）</td></tr><tr><td>FBA 头程</td><td>亚马逊卖家</td><td>门到 FBA 仓</td><td>头程为承运人 / 货代；入仓后适用亚马逊 FBA 服务条款</td><td>头程同海运 / 空运；入仓后适用 Amazon Services Business Solutions Agreement（BSA）</td><td>入仓前货损；亚马逊拒收；地址 / 标签错误导致退件</td></tr></tbody></table>
+<h2>三、收入结构的法律定性——这一栏直接决定你赔多少</h2>
+<p>很多法务把「报价单上的每一项都是收入」当成常识，这是错的。定性不同，法律后果完全不同：定性为运输对价，你受责任限额保护；定性为服务报酬，你不受限额保护，可能全额赔偿。</p>
+<table><thead><tr><th>收入项</th><th>法律定性</th><th>开票与税务注意</th><th>法务风险点</th></tr></thead><tbody><tr><td>运费 Freight</td><td>运输合同对价</td><td>运输服务，税率按现行规定（须与财务确认）</td><td>定性为运费 → 受海商法 / 公约责任限额保护；这是<b>我方要争</b>的定性</td></tr><tr><td>操作费 Handling / 单证费 Documentation Fee</td><td>服务报酬（委托 / 承揽）</td><td>服务类目，需与运费区分开票</td><td>不受运输责任限额保护；出错可能全额赔偿</td></tr><tr><td>仓储费 Storage</td><td>仓储合同对价</td><td>仓储服务</td><td>必须与货损赔偿封顶条款配套，否则赔的比收的多</td></tr><tr><td>清关服务费 Customs Clearance Fee</td><td>服务报酬</td><td>服务类目</td><td>报关错误导致的罚款，是否可依合同封顶，取决于条款写法</td></tr><tr><td>代收代付（关税 / VAT / 到付运费）</td><td>代收代付，非收入</td><td>原则上不计收入，凭凭证走往来</td><td>必须有客户书面授权 + 完税凭证；否则可能被认定为垫款，追偿困难</td></tr><tr><td>增值服务（贴标 / 换标 / 退件处理）</td><td>承揽 / 服务</td><td>服务类目</td><td>换标可能触及商标侵权；退件处理可能让我方成为 GPSR 下的责任人</td></tr></tbody></table>
+<div class="key">一句话记忆：凡是能被定性为「运费」的钱，都受责任限额保护；凡是「服务费」，都不受保护。报价单怎么拆分科目，本质上是在分配风险。</div>
+<h2>四、轻资产 vs 重资产：责任承担的本质区别</h2>
+<ul><li><b>重资产（自有车队 / 自营仓）</b>：默认就是承运人，跑不掉。但好处是责任可控、保险好买、限额条款容易成立，出事时知道自己最多赔多少。</li><li><b>轻资产（转包）</b>：法律上的麻烦不在「赔不赔」，而在「你到底是谁」。轻资产公司最爱说「我们只是代理」，但只要凑齐下面三样，代理人抗辩基本没戏。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>翻车三件套（出现任意两件，法院大概率认定缔约承运人）：① 签发自己的提单 / 运单（House B/L）；② 报「一口价」全程包干价（而非逐项代收代付）；③ 对客户承诺「包送到 / 包清关」。</div>
+<p>后果是什么？作为缔约承运人，你要<b>先赔客户</b>，再回头找实际承运人追偿。追偿能不能成功、能追回多少，是另一场官司——而且往往发生在境外。所以轻资产不是风险小，是风险<b>后置且不可控</b>。</p>
+<h2>五、《产品 — 法律关系 — 风险点》对照表</h2>
+<table><thead><tr><th>产品</th><th>我方默认身份</th><th>我方应争取的身份</th><th>责任上限来源</th><th>第一风险点</th></tr></thead><tbody><tr><td>国际快递</td><td>承运人</td><td>承运人（无法改变）</td><td>22 SDR/kg（蒙特利尔）</td><td>申报价值与限额的落差</td></tr><tr><td>空运专线</td><td>缔约承运人</td><td>缔约承运人 + 完整的责任限额条款</td><td>22 SDR/kg</td><td>危险品瞒报</td></tr><tr><td>海运整柜</td><td>缔约承运人（出 House B/L 时）</td><td>缔约承运人 + 首要条款 +  Himalaya 条款</td><td>666.67 SDR/件 或 2 SDR/kg（取高者）</td><td>无单放货</td></tr><tr><td>海运拼箱</td><td>缔约承运人</td><td>同 FCL，另加拆箱责任条款</td><td>同上</td><td>拆箱丢件 + 目的港高收费</td></tr><tr><td>中欧班列</td><td>缔约承运人</td><td>明确约定全程责任制度（统一 / 网状）</td><td>SMGS 相关规定</td><td>换轨段责任空白</td></tr><tr><td>卡航</td><td>缔约承运人</td><td>同上 + 货物全程保险</td><td>依合同（CMR 我国非缔约国）</td><td>途中盗窃 / 封志</td></tr><tr><td>海外仓一件代发</td><td>保管人</td><td>保管人（明确排除承运人身份）</td><td>合同封顶 + 保险</td><td>库存差异 + 产品合规</td></tr><tr><td>FBA 头程</td><td>头程承运人</td><td>头程责任止于入仓签收</td><td>海运 / 空运限额</td><td>入仓前的货损与拒收</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>本页涉及的责任限额数字（22 SDR/kg、666.67 SDR/件、2 SDR/kg）为通行数值，具体条文号与现行有效版本请在《海商法》与蒙特利尔公约原文中核对，标注「待核实」后再对外使用。中国并非海牙、维斯比、汉堡、鹿特丹规则及 CMR 公约的缔约国，实务中多通过提单首要条款引入，须逐案确认。</div>
+<h2>六、今天就要落地的三个动作</h2>
+<ol><li>把我司现有产品线列一张表，逐条标注「我方身份」并找出身份与收费结构不匹配的产品（例如收的是运费、写着却是代理）。</li><li>调取一份最近的报价单，把科目按「运输对价 / 服务报酬 / 代收代付」三栏重新归类，看有没有科目定性错误。</li><li>检查我方是否签发 House B/L；如果签，立刻把「缔约承运人」身份下的责任限额条款、首要条款、Himalaya 条款列入补签清单。</li></ol><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Customs frontier</div><div class="cn">关境</div><div class="df">国家主权关卡，跨境与国内物流的分界线</div></div><div class="ti"><div class="en">Contracting Carrier</div><div class="cn">缔约承运人</div><div class="df">以自己的名义与托运人订立运输合同的人，对全程负责</div></div><div class="ti"><div class="en">Actual Carrier</div><div class="cn">实际承运人</div><div class="df">实际从事运输的人，受缔约承运人委托</div></div><div class="ti"><div class="en">NVOCC</div><div class="cn">无船承运人</div><div class="df">自己不经营船舶却以承运人身份承揽货物、签发提单的人</div></div><div class="ti"><div class="en">House B/L</div><div class="cn">分提单 / 货代提单</div><div class="df">货代自己签发的提单，与船公司的 Master B/L 相对</div></div><div class="ti"><div class="en">Bailment</div><div class="cn">保管 / 寄托</div><div class="df">货物交由他人占有但不转移所有权，海外仓关系的本质</div></div><div class="ti"><div class="en">Chargeable weight</div><div class="cn">计费重量</div><div class="df">实重与体积重取大者</div></div><div class="ti"><div class="en">Demurrage / Detention</div><div class="cn">滞港费 / 滞箱费</div><div class="df">集装箱在码头内 / 外的超期使用费</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W1-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

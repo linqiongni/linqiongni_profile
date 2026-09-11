@@ -19,6 +19,7 @@ const TABS: { id: TabType; label: string; enLabel: string }[] = [
   { id: 'insights', label: '思考观点', enLabel: 'Insights' },
   { id: 'notes', label: '日常分享', enLabel: 'Notes' },
   { id: 'catering', label: '餐饮法务', enLabel: 'Catering Legal' },
+  { id: 'logistics', label: '跨境物流法务', enLabel: 'Logistics Legal' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({

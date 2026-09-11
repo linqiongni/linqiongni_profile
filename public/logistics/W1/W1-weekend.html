@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·周末实战｜全链路法律关系图</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战①：画出你司一票货的全链路法律关系图</h1><div class="sub">第 1 周主题：跨境物流行业解剖 —— 这门生意的钱、链路与角色</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">画全链路法律关系图，就像给一票货拍一部纪录片：每一帧都标上「谁在场、拿了什么单据、出事谁负责」。拍完这部片子，后面 23 周的知识全都挂得上去。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">选一个真实业务场景（例如：深圳工厂 → 海运至汉堡 → 清关 → 德国海外仓 → 亚马逊 FBA / C 端派送 → 退件回国）。画一张全链路图，标出每一段的：主体、合同名称、适用运输方式、单据、可能的责任限额、谁买保险。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要彻底看懂跨境物流一票货的法律结构。设定场景：深圳工厂出货 → 拖车 → 盐田港 → 海运至汉堡 → 德国清关 → 德国海外仓上架 → 亚马逊 FBA 补货 / C 端尾程派送 → 消费者退货进海外仓。
+
+请输出：
+1. 《全链路法律关系图》（用文字结构化表达）：把链路拆成 8-12 个节点，每个节点标出「主体（发货人/货代/实际承运人/报关行/海外仓/尾程派送商）/ 与之签署的合同名称 / 该段适用的运输方式与法律 / 关键单据 / 出事时谁向谁索赔」
+2. 逐段标注风险敞口：每段的典型事故（货损、丢件、延误、查验、退运、罚款）和对应的责任归属判断依据
+3. 特别讲清楚：货代在每一段分别是什么身份（代理人还是缔约承运人），身份不同会导致什么完全不同的赔偿结果
+4. 最后给我一张《一票货责任归属速查表》，出事时能照着找人</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、《全链路法律关系图》（12 个节点）</h2>
+<p>场景：深圳工厂 → 拖车 → 盐田港 → 海运至汉堡 → 德国清关 → 德国海外仓上架 → 亚马逊 FBA 补货 / C 端尾程派送 → 消费者退货进海外仓。以下按节点展开，每个节点给出「主体 / 合同 / 适用法律 / 单据 / 索赔方向」。</p>
+<table><thead><tr><th>#</th><th>节点</th><th>主体</th><th>合同名称</th><th>适用法律 / 运输方式</th><th>关键单据</th><th>出事时谁向谁索赔</th></tr></thead><tbody><tr><td>1</td><td>工厂备货、出库</td><td>工厂（Shipper）</td><td>买卖合同 / 供货合同</td><td>中国《民法典》买卖合同</td><td>出库单、装箱单 Packing List</td><td>买方就质量、数量向工厂索赔</td></tr><tr><td>2</td><td>国内拖车至盐田港</td><td>拖车公司（国内承运人）</td><td>公路运输合同 / 拖车委托</td><td>中国《民法典》运输合同（<b>不适用</b>海运限额）</td><td>拖车托运单、场站收据 D/R</td><td>货代 / 工厂向拖车公司索赔（全额）</td></tr><tr><td>3</td><td>出口报关</td><td>报关行（Customs Broker）</td><td>报关委托协议</td><td>《海关法》及配套规定</td><td>报关单、合同发票箱单、申报要素</td><td>申报不实：行政处罚指向报关行与委托人（连带）</td></tr><tr><td>4</td><td>装船前堆存（CY）</td><td>码头 / 场站</td><td>港口作业合同</td><td>港口作业规则</td><td>场站收据 D/R、设备交接单 EIR</td><td>此段货损按一般民事赔偿，<b>无海运限额保护</b></td></tr><tr><td>5</td><td>海运 盐田 → 汉堡</td><td>船公司（Actual Carrier）＋ 货代（Contracting Carrier）</td><td>提单 / 订舱协议</td><td>《海商法》第四章 ＋ 提单首要条款</td><td>提单 B/L（Master + House）</td><td>货主向缔约承运人索赔，适用责任限额</td></tr><tr><td>6</td><td>目的港卸货、拆箱</td><td>码头 / CFS 操作方</td><td>码头作业合同</td><td>目的国法 ＋ 提单条款</td><td>提货单 D/O、到货通知</td><td>拆箱丢件：向缔约承运人索赔</td></tr><tr><td>7</td><td>德国进口清关</td><td>清关代理 / IOR</td><td>清关委托协议 / IOR 服务协议</td><td>欧盟海关法典 UCC ＋ 德国税法</td><td>EORI、进口申报、CE 与合规文件</td><td>税费与罚款向 IOR 追；申报错误向委托方追</td></tr><tr><td>8</td><td>汉堡 → 海外仓（内陆运输）</td><td>德国卡车公司</td><td>公路运输合同</td><td>德国商法 HGB；跨境时可能适用 CMR</td><td>CMR 运单 / 送货单</td><td>货损向卡车公司索赔，注意合同封顶</td></tr><tr><td>9</td><td>海外仓收货、上架</td><td>海外仓运营商（Warehouseman）</td><td>仓储服务协议</td><td>德国商法典 HGB 仓储营业条款 ＋ 合同</td><td>入库单 WRO、库存报告</td><td>库存差异 / 火灾：向海外仓索赔，受封顶限制</td></tr><tr><td>10</td><td>FBA 补货出库 → 亚马逊仓</td><td>海外仓 / 派送商</td><td>委托发货指令 / 派送协议</td><td>服务协议 / 派送条款</td><td>出库单、追踪号</td><td>入仓前货损：向派送商或海外仓索赔</td></tr><tr><td>11</td><td>亚马逊 FBA 仓储与配送</td><td>Amazon（履约服务商 FSP）</td><td>Amazon BSA 服务协议</td><td>BSA 及平台政策</td><td>FBA 入仓记录、库存报告</td><td>丢失 / 损坏：按 BSA 赔偿机制向亚马逊主张</td></tr><tr><td>12</td><td>消费者退货 → 海外仓</td><td>海外仓（退件处理）</td><td>退件处理服务协议</td><td>服务协议 ＋ 产品合规法规（GPSR）</td><td>退货授权 RMA、检验记录</td><td>处理不当向海外仓索赔；产品责任看责任人身份</td></tr></tbody></table>
+<h2>二、逐段风险敞口与责任归属判断依据</h2>
+<table><thead><tr><th>节点段</th><th>典型事故</th><th>责任归属的判断依据</th><th>敞口大小</th></tr></thead><tbody><tr><td>1-4（出口前）</td><td>货损、错装、被查验扣货</td><td><b>不适用海运责任限额</b>，按实际损失全额赔偿；报关责任看谁是委托人</td><td>中—高（最容易被忽略的一段）</td></tr><tr><td>5（海运段）</td><td>货损、延误、沉船</td><td>提单首要条款 + 海商法；承运人可主张免责（航海过失、火灾）与责任限额</td><td>低（有明确上限）</td></tr><tr><td>6-7（目的港 / 清关）</td><td>查验、扣货、退运、VAT 罚款</td><td>看谁是 IOR；清关代理通常只对申报行为负责</td><td>高（行政责任，最难预估）</td></tr><tr><td>8（内陆转运）</td><td>交通事故、盗窃</td><td>依当地运输法与合同；注意保险公司代位求偿</td><td>中</td></tr><tr><td>9-12（仓储与末端）</td><td>库存差异、火灾、派送丢失</td><td>仓储合同封顶条款是否有效；尾程按申报价值或小额封顶</td><td>中—高（金额分散但频次高）</td></tr></tbody></table>
+<div class="key">反直觉结论：整条链上<b>责任最重的一段不是远洋海运，而是出口前的 1-4 号节点和目的港的 6-7 号节点</b>。海运因为有责任限额，反而赔得最少；前后两头没有限额保护，一出问题就是全额。</div>
+<h2>三、货代在每一段的身份（同一票货，身份会变）</h2>
+<table><thead><tr><th>节点</th><th>货代身份</th><th>判断依据</th><th>赔偿结果差异</th></tr></thead><tbody><tr><td>2 国内拖车</td><td>代理人 Agent（代安排）</td><td>未签发运输单据、收取代垫费 + 佣金</td><td>仅对选任过错负责，不赔货损</td></tr><tr><td>3 出口报关</td><td>代理人 Agent</td><td>以委托人名义申报</td><td>申报不实由委托人承担，代理人对自身过错负责</td></tr><tr><td>5 海运（出 House B/L）</td><td><b>缔约承运人 Principal</b></td><td>签发自有提单 + 全程包干价</td><td>对全程负责，可享责任限额（如 666.67 SDR/件 或 2 SDR/kg）</td></tr><tr><td>7 目的港清关</td><td>代理人 或 IOR（看协议）</td><td>看协议是否指定我方为 IOR</td><td>作为 IOR 时承担税费与产品合规的行政责任</td></tr><tr><td>9 海外仓</td><td>保管人 Warehouseman（若自营仓）</td><td>仓储服务协议，未签发运输单据</td><td>适用仓储封顶条款，而非运输限额</td></tr><tr><td>11 FBA 段</td><td>代理人（代安排入仓）</td><td>不签发运输单据</td><td>亚马逊责任由卖家自行向平台主张</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>核心提醒：一家货代在同一票货里<b>身份是分段的</b>。法院不会因为你「是货代」就统一认定身份，而是<b>逐段看你的行为</b>。所以正确做法不是争一个统一身份，而是在每一段的合同与单据上分别写清身份。</div>
+<h2>四、《一票货责任归属速查表》</h2>
+<p>出事时按「事故类型 → 找谁 → 依据什么 → 赔多少」四步走：</p>
+<table><thead><tr><th>事故类型</th><th>第一责任方</th><th>依据</th><th>赔偿上限 / 关键数字</th></tr></thead><tbody><tr><td>出口前拖车 / 堆场货损</td><td>拖车公司 / 码头</td><td>民法典运输合同 / 港口作业合同</td><td><b>全额</b>（无海运限额）</td></tr><tr><td>海运途中货损</td><td>缔约承运人（我方 / 船公司）</td><td>提单 + 海商法 + 首要条款</td><td>666.67 SDR/件 或 2 SDR/kg，取高者（须核对现行条文）</td></tr><tr><td>海运途中丢件</td><td>同上</td><td>同上</td><td>同上；若涉及无单放货则<b>可能丧失限额保护</b></td></tr><tr><td>空运段货损 / 延误</td><td>空运承运人</td><td>蒙特利尔公约</td><td>约 22 SDR/kg；延误另有上限（须核对）</td></tr><tr><td>铁路（中欧班列）货损</td><td>缔约承运人</td><td>SMGS / CIM（视区段）</td><td>按适用规则，交接段责任空白风险高</td></tr><tr><td>目的港查验扣货</td><td>IOR / 清关代理</td><td>UCC + 当地海关法</td><td>无法预估，属行政风险</td></tr><tr><td>目的港无人提货滞箱费</td><td>收货人 → 托运人（连带）</td><td>订舱协议 + 提单条款</td><td>按天累进，可超过货值</td></tr><tr><td>海外仓库存差异 / 火灾</td><td>海外仓（保管人）</td><td>仓储服务协议 + 当地法</td><td>合同封顶（须核对条款效力）</td></tr><tr><td>尾程派送丢失</td><td>派送商</td><td>派送服务条款</td><td>通常按申报价值或小额封顶</td></tr><tr><td>产品合规 / 召回</td><td>制造商 / 进口商 / FSP（按身份）</td><td>GPSR、电池法等</td><td>行政罚款 + 召回成本，无上限</td></tr></tbody></table>
+<h2>五、交付标准：这一周你要交出的东西</h2>
+<ol><li>一张 12 节点的全链路图（建议用 draw.io 或手写拍照，标清主体、合同、单据）。</li><li>一份《一票货责任归属速查表》，打印出来贴在工位，出事时照着找人。</li><li>一段 200 字的自我复述：用大白话讲清「为什么海运段反而是赔得最少的一段」。讲不出来，说明本周没吃透。</li></ol><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">D/R (Dock Receipt)</div><div class="cn">场站收据</div><div class="df">集装箱进场站的收据，装船后换取提单的凭证</div></div><div class="ti"><div class="en">D/O (Delivery Order)</div><div class="cn">提货单</div><div class="df">承运人签发的提货凭证，凭正本提单换取</div></div><div class="ti"><div class="en">EIR (Equipment Interchange Receipt)</div><div class="cn">设备交接单</div><div class="df">集装箱交接与状况记录，柜损的关键证据</div></div><div class="ti"><div class="en">RMA (Return Merchandise Authorization)</div><div class="cn">退货授权</div><div class="df">退货流程的授权凭证</div></div><div class="ti"><div class="en">CY / CFS</div><div class="cn">集装箱堆场 / 集装箱货运站</div><div class="df">整柜交接与拼箱交接的地点</div></div><div class="ti"><div class="en">WRO (Warehouse Receipt Order)</div><div class="cn">入库单</div><div class="df">海外仓收货凭证，库存差异的起点证据</div></div><div class="ti"><div class="en">UCC</div><div class="cn">欧盟海关法典</div><div class="df">Union Customs Code，欧盟通关的基础法规</div></div><div class="ti"><div class="en">FSP (Fulfilment Service Provider)</div><div class="cn">履约服务商</div><div class="df">提供仓储包装发运但不拥有货权者，GPSR 下承担特定义务</div></div></div></div><div class="foot"><a href="W1-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W1-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

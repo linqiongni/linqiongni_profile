@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·第4天｜计费逻辑与商业条款：看懂报价单背后的风险</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · DAY 4 / 5　·　阶段一　打地基</div><h1>计费逻辑与商业条款：看懂报价单背后的风险</h1><div class="sub">第 1 周主题：跨境物流行业解剖 —— 这门生意的钱、链路与角色</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">报价单就是手机套餐：月租（基本运费）之外全是增值包——燃油附加、旺季附加、改单费、超期仓储费。签合同赚钱在套餐内，赔钱一定在套餐外那几行小字。</div><div class="mlink"><b>怎么串到今天</b>昨天看懂角色组合，今天看懂钱：风险往往藏在你没仔细看的那一行报价里。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>计费重量 vs 实重 vs 体积重：泡货比例（1:5000 / 1:6000）怎么影响利润与纠纷</li><li>附加费：燃油附加、旺季附加、偏远地区费、超长超重费、仓储滞期费、改单费</li><li>报价单里最容易埋雷的三处：燃油附加随行就市、汇率条款、目的港费用未知（CFS/滞箱费）</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《跨境物流报价单法律审查清单》——20 项，标出每一项我方应争取的写法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">我要能看懂并审查跨境物流的报价单与商务条款。请给我：
+
+1. 计费基础讲透：实重 / 体积重（volumetric weight）/ 计费重（chargeable weight），海运、空运、快递各自的泡货系数与计算方式，为什么同一个箱子不同渠道计费差很多
+2. 逐项列出 12 类常见附加费：燃油附加（BAF/FAF）、货币贬值附加（CAF）、旺季附加（PSS）、港口拥堵费（PCS）、超长超重费、偏远地区费、改单费、退件费、仓储费、滞箱费（detention/demurrage）、查验费、到门无法派送费。每项：英文、谁收、通常怎么转嫁、争议高发度
+3. 《跨境物流报价单法律审查清单》20 项：每项给出「常见写法 / 我方应争取的写法 / 不改会怎样」。重点覆盖：有效期、燃油附加调整机制、汇率条款、目的港未知费用（unknown charges at destination）由谁承担、最低收费、滞箱滞港责任
+4. 特别讲透：目的港无人提货产生的滞箱费，承运人能不能回头找发货人/货代要？给我 3 个判例倾向不同的情形</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、计费基础：为什么同一个箱子不同渠道价格差一倍</h2>
+<p>计费重量（Chargeable Weight）= 实际毛重（Gross Weight）与体积重（Volumetric / Dimensional Weight）<b>取大者</b>。这是全行业通行的规则，但「体积重怎么算」各渠道不同：</p>
+<table><thead><tr><th>渠道</th><th>体积重公式（厘米 / 公斤）</th><th>泡货系数</th><th>实务影响</th></tr></thead><tbody><tr><td>国际快递（DHL / UPS / FedEx）</td><td>长×宽×高 ÷ 5000</td><td>1:5000</td><td>泡货（衣服、抱枕）按体积计费，利润被吃掉</td></tr><tr><td>空运（Air Freight）</td><td>长×宽×高 ÷ 6000</td><td>1:6000</td><td>比快递宽松，是泡货的首选渠道</td></tr><tr><td>海运拼箱 LCL</td><td>按尺码吨或重量吨取大（1 CBM 或 1000 kg）</td><td>W/M</td><td>重货按重、泡货按方，临界点常被做文章</td></tr><tr><td>海运整柜 FCL</td><td>按箱型（20GP / 40GP / 40HQ）</td><td>按柜</td><td>与重量无关，但受目的港限重约束</td></tr></tbody></table>
+<div class="key">记忆点：分母越小，体积重越大，越贵。快递 5000 最狠，空运 6000 次之。同一批泡货走快递和走空运，计费重能差 20%。</div>
+<p>为什么法务要懂这个？因为<b>计费争议是最常见的合同纠纷</b>。客户签的是「按重量计费」，实际按体积重收费，客户拒付 → 我方留置货物 → 客户反诉。报价单上没写清「以计费重（取大者）为准 + 体积重公式」，这个官司必输一半。</p>
+<h2>二、12 类附加费：谁收、怎么转嫁、争议指数</h2>
+<table><thead><tr><th>附加费（English）</th><th>中文</th><th>谁在收</th><th>通常怎么转嫁</th><th>争议指数</th></tr></thead><tbody><tr><td>BAF / FAF (Bunker / Fuel Adjustment Factor)</td><td>燃油附加费</td><td>船公司 / 航空公司</td><td>向客户收取，随行就市</td><td>★★★★★</td></tr><tr><td>CAF (Currency Adjustment Factor)</td><td>货币贬值附加费</td><td>承运人</td><td>向客户收取</td><td>★★★</td></tr><tr><td>PSS (Peak Season Surcharge)</td><td>旺季附加费</td><td>船公司</td><td>向客户收取，旺季临时加</td><td>★★★★</td></tr><tr><td>PCS (Port Congestion Surcharge)</td><td>港口拥堵费</td><td>船公司 / 码头</td><td>向客户收取</td><td>★★★★</td></tr><tr><td>Oversize / Overweight Surcharge</td><td>超长超重费</td><td>承运人或操作方</td><td>转嫁客户</td><td>★★★</td></tr><tr><td>Remote Area Surcharge</td><td>偏远地区费</td><td>快递 / 派送商</td><td>转嫁客户</td><td>★★★★</td></tr><tr><td>Amendment Fee</td><td>改单费</td><td>承运人 / 报关行</td><td>向提出变更方收</td><td>★★</td></tr><tr><td>Return / Re-delivery Fee</td><td>退件 / 重派费</td><td>派送商</td><td>向客户收</td><td>★★★★</td></tr><tr><td>Storage / Warehousing Fee</td><td>仓储费</td><td>海外仓 / 码头</td><td>向货主收，按天累进</td><td>★★★★</td></tr><tr><td>Demurrage / Detention</td><td>滞港费 / 滞箱费</td><td>船公司 / 码头</td><td>向收货人收，收不到回头找发货人</td><td>★★★★★</td></tr><tr><td>Inspection / Examination Fee</td><td>查验费</td><td>海关 / 码头 / 报关行</td><td>向货主收</td><td>★★★</td></tr><tr><td>Failed Delivery / No Such Consignee</td><td>无法派送费</td><td>派送商</td><td>向客户收</td><td>★★★</td></tr></tbody></table>
+<div class="key">两个概念必须分清：<b>Demurrage</b> 是集装箱在码头堆场超期（码头向船公司收、船公司向货主收）；<b>Detention</b> 是集装箱被提出码头后超期未还（船公司向货主收）。两者都会按天累进，几个月就能超过货值。</div>
+<h2>三、《跨境物流报价单法律审查清单》20 项</h2>
+<table><thead><tr><th>#</th><th>审查项</th><th>常见写法（危险）</th><th>我方应争取的写法</th><th>不改会怎样</th></tr></thead><tbody><tr><td>1</td><td>报价有效期</td><td>未写 / 口头</td><td>有效期 7-14 天，超期重新报价</td><td>运价暴涨时客户坚持按旧价执行</td></tr><tr><td>2</td><td>计费标准</td><td>按重量计费</td><td>按计费重（实重与体积重取大者），体积重公式写明 ÷5000 或 ÷6000</td><td>客户拒付体积重差价</td></tr><tr><td>3</td><td>燃油附加调整机制</td><td>随行就市（含糊）</td><td>明确：以某公开指数为基准，每月 1 日调整一次，涨幅超 X% 需提前书面通知</td><td>客户主张「随行就市」属无效约定</td></tr><tr><td>4</td><td>汇率条款</td><td>未写</td><td>以报价日央行中间价为准，波动超 2% 双方各担一半 / 或按结算日汇率</td><td>汇率波动侵蚀全部利润</td></tr><tr><td>5</td><td>目的港未知费用</td><td>未写</td><td>明确：目的港未列明费用（unknown charges at destination）由收货人承担；若收货人不付，由托运人承担</td><td>目的港天价 CFS 费我方买单</td></tr><tr><td>6</td><td>最低收费 Minimum Charge</td><td>未写</td><td>写明每票最低收费金额</td><td>小票亏损</td></tr><tr><td>7</td><td>滞箱滞港责任</td><td>未写</td><td>明确：免费箱期 X 天，超期费用由收货人承担，托运人承担连带责任并授权我方先行垫付后追偿</td><td>8 万美元滞箱费自己吞</td></tr><tr><td>8</td><td>改单与撤单</td><td>未写</td><td>写明截单时间后改单 / 撤单的费用与责任</td><td>客户临时改单造成损失无法追偿</td></tr><tr><td>9</td><td>申报价值与保价</td><td>默认不保价</td><td>提示客户申报价值，未申报按法定 / 约定限额赔</td><td>客户事后主张全额货值</td></tr><tr><td>10</td><td>责任限额</td><td>未写</td><td>明确每件 / 每公斤限额及货币单位（SDR 或美元）</td><td>法院按实际损失全额判</td></tr><tr><td>11</td><td>首要条款 Clause Paramount</td><td>未写</td><td>写明适用哪一公约或国内法</td><td>法律适用不确定，限额条款被架空</td></tr><tr><td>12</td><td>身份条款</td><td>未写</td><td>写明 Agent 或 Principal（见 D2 三条款）</td><td>身份被推定，责任翻倍</td></tr><tr><td>13</td><td>Himalaya 条款</td><td>未写</td><td>写明承运人的抗辩与限额适用于其雇员、代理人及分包方</td><td>分包方无法援引限额，我方先赔后追偿</td></tr><tr><td>14</td><td>索赔时效</td><td>未写</td><td>写明书面索赔通知期限（如到货后 3-7 日内）与诉讼时效提示</td><td>丧失抗辩优势</td></tr><tr><td>15</td><td>保险安排</td><td>未写</td><td>明确由谁投保、保额、险别；未投保的风险由谁承担</td><td>出事后互相推诿</td></tr><tr><td>16</td><td>危险品申报</td><td>仅写「不得夹带」</td><td>写明瞒报的违约金、赔偿范围与刑事风险提示</td><td>瞒报被查出，我方被牵连</td></tr><tr><td>17</td><td>查验与扣货</td><td>未写</td><td>明确查验期间的仓储费、查验费由谁承担，以及扣货时的通知义务</td><td>扣货费用无人承担</td></tr><tr><td>18</td><td>退件与弃置</td><td>未写</td><td>明确退件流程、费用、弃置授权与期限</td><td>退件费率高过货值，长期挂账</td></tr><tr><td>19</td><td>不可抗力与罢工</td><td>仅写不可抗力</td><td>加入罢工、港口拥堵、政府管制、海关政策变化的后果分配</td><td>疫情 / 红海类事件费用无人承担</td></tr><tr><td>20</td><td>争议解决与法律适用</td><td>未写</td><td>明确管辖法院或仲裁机构、语言、适用法律</td><td>境外被诉，成本失控</td></tr></tbody></table>
+<h2>四、目的港无人提货产生的滞箱费，能不能回头找发货人 / 货代要？</h2>
+<p>这是跨境物流最经典的争议之一。结论不是简单的「能」或「不能」，取决于<b>提单类型、谁是缔约托运人、货物最终如何处理</b>三个变量。三种典型情形：</p>
+<div class="key">情形一：记名提单（Straight B/L），收货人明确且已联系上、但拒绝提货</div>
+<p><b>倾向</b>：承运人应先向收货人主张。记名提单项下，收货人是运输合同的第三方受益人，也是提单约定的提货义务人。此种情况下，承运人直接回头找发货人（托运人），法院支持度较低。<b>我方可争点</b>：若我方是缔约承运人，仍可能被上游船公司依订舱协议追收，因此必须在与客户合同中约定「托运人对目的港费用承担连带责任」。</p>
+<div class="key">情形二：指示提单（Order B/L）或收货人失联、无人提货</div>
+<p><b>倾向</b>：承运人可以要求<b>托运人</b>承担。因为指示提单下托运人仍是提单权利人，负有最终的处置义务；货物长期滞留产生费用，属托运人不作为造成的损失。我国《海商法》下承运人对货物享有留置权，并可在符合法定条件时申请拍卖，拍卖所得不足清偿的部分有权向托运人追偿（<b>具体条文号与现行有效版本须核对</b>）。</p>
+<div class="key">情形三：我方是货代（缔约承运人），货已由船公司放给第三方，或货物已被海关罚没 / 弃置</div>
+<p><b>倾向</b>：对我方最不利。船公司依订舱协议向我方收滞箱费（合同相对性），而我方向客户追偿时，客户往往已失联或无执行能力。<b>结果</b>：滞箱费落在我方头上。这就是轻资产货代最典型的死法——<b>上游按合同收你，下游按人跑路</b>。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>给法务的三条硬规则：① 订舱协议里争取与下游客户合同「背靠背」，费用口径与免费期完全一致；② 合同中明确「目的港无人提货时，托运人授权我方代为弃置 / 拍卖，费用由托运人承担」；③ 建立目的港超期预警机制（如到港后 7 天未提货即触发客户通知与费用预估），把损失控制在早期。</div>
+<h2>五、今天就要落地的三个动作</h2>
+<ol><li>用上面 20 项清单逐条比对一份我方现行报价单，把不合格项列成整改表，标红前五项优先改。</li><li>核查我方与各船公司 / 航空公司的订舱协议，把「滞箱费免费期」与我方对客户的承诺对齐，消灭敞口。</li><li>起草一份《目的港费用确认书》，在客户下单时要求签署，明确目的港未知费用与无人提货费用的承担主体。</li></ol><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Chargeable weight</div><div class="cn">计费重量</div><div class="df">实重与体积重取大者</div></div><div class="ti"><div class="en">Volumetric weight</div><div class="cn">体积重</div><div class="df">长×宽×高÷泡货系数</div></div><div class="ti"><div class="en">Demurrage</div><div class="cn">滞港费</div><div class="df">集装箱在码头堆场内超期的费用</div></div><div class="ti"><div class="en">Detention</div><div class="cn">滞箱费</div><div class="df">集装箱提出码头后超期未还的费用</div></div><div class="ti"><div class="en">Free time</div><div class="cn">免费期</div><div class="df">免收滞箱滞港费的期限</div></div><div class="ti"><div class="en">Back-to-back</div><div class="cn">背靠背</div><div class="df">上下游合同条款完全一致，风险原样传导</div></div><div class="ti"><div class="en">Lien</div><div class="cn">留置权</div><div class="df">债权人对合法占有货物的变价优先受偿权</div></div><div class="ti"><div class="en">Minimum charge</div><div class="cn">最低收费</div><div class="df">每票的最低计费门槛</div></div></div></div><div class="foot"><a href="W1-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W1-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

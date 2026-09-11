@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·第2天｜主体图谱：谁是谁，谁对谁负责</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · DAY 2 / 5　·　阶段一　打地基</div><h1>主体图谱：谁是谁，谁对谁负责</h1><div class="sub">第 1 周主题：跨境物流行业解剖 —— 这门生意的钱、链路与角色</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">一票货的参与者就像一台晚会的演职员表：出品人（货主）、制片主任（货代）、演员（实际承运人）、场务（报关行）、场地提供方（海外仓）。观众只看得到货到了，出事时只有演职员表能告诉你该找谁赔。</div><div class="mlink"><b>怎么串到今天</b>昨天知道卖什么产品，今天就拆这台戏里有谁、谁对谁负责。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>Shipper / Consignee / Notify party：提单三角色与权利归属</li><li>Carrier（实际承运人）vs Contracting Carrier（缔约承运人）vs NVOCC vs Freight Forwarder：身份决定责任</li><li>报关行、海外仓运营商、尾程派送商、保险公司、检验人：辅助方各自的责任边界</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">一张《跨境物流主体身份对照表》：主体 / 定义 / 签什么合同 / 担什么责 / 常见身份混同陷阱</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请帮我建立跨境物流的主体身份图谱，输出《主体身份对照表》：
+
+1. 逐个主体给出：英文名称与缩写、中文、在业务链上的位置、通常签什么合同、对谁负责、出事时是第一责任人还是连带责任人
+2. 重点辨析四组最容易混同的关系：
+   · Carrier vs Contracting Carrier（缔约承运人）
+   · Freight Forwarder 作为 Agent vs 作为 Principal（本人）
+   · NVOCC 与实际承运人
+   · 海外仓作为保管人 vs 作为承运人
+3. 为什么「身份」在诉讼中是胜负手：给我 3 个场景，同样的事故，因为身份认定不同，赔偿结果完全相反
+4. 站在我方（物流服务提供方）立场：在合同里用什么条款把身份锁死？给我 3 条可直接用的英文表述（含中文解释）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、《主体身份对照表》</h2>
+<table><thead><tr><th>主体（English / 中文）</th><th>在链上的位置</th><th>通常签什么合同</th><th>对谁负责</th><th>出事时的责任顺位</th></tr></thead><tbody><tr><td>Shipper / 托运人</td><td>起点，货主或卖方</td><td>运输合同 / 货代协议</td><td>向承运人如实申报、支付运费</td><td>货损索赔的<b>原告</b>；申报不实时为<b>第一责任人</b></td></tr><tr><td>Consignee / 收货人</td><td>终点，提单载明的提货权人</td><td>其为提单持有人，非签约方但可主张权利</td><td>凭正本提单提货</td><td>目的港无人提货时承担滞箱费</td></tr><tr><td>Notify Party / 通知方</td><td>到货通知对象</td><td>不签合同</td><td><b>无实质权利</b>，仅接收通知</td><td>不承担责任（常见误解：以为通知方等于收货人）</td></tr><tr><td>Carrier / 实际承运人</td><td>实际执行运输</td><td>与缔约承运人签运输 / 舱位协议</td><td>对其实际运输区段负责</td><td>与缔约承运人<b>承担连带责任</b>（海商法下）</td></tr><tr><td>Contracting Carrier / 缔约承运人</td><td>与托运人订立合同</td><td>提单 / 运输合同</td><td>对<b>全程</b>负责</td><td>第一责任人，赔完再追偿</td></tr><tr><td>NVOCC / 无船承运人</td><td>不经营船舶的承运人</td><td>自己的 House B/L</td><td>对托运人是承运人，对船公司是托运人</td><td>两头担责，是最尴尬的位置</td></tr><tr><td>Freight Forwarder / 国际货运代理</td><td>组织者</td><td>货代协议 / 委托代理合同</td><td>取决于身份：Agent 仅尽勤勉义务；Principal 承担承运人责任</td><td>身份决定一切</td></tr><tr><td>Customs Broker / 报关行</td><td>通关环节</td><td>报关委托协议</td><td>向委托人负责；申报不实时与委托人连带</td><td>行政处罚的第一对象</td></tr><tr><td>Warehouse Operator / 海外仓</td><td>境外仓储</td><td>仓储服务协议 / 租赁合同</td><td>保管人义务（妥善保管、返还）</td><td>被盗 / 火灾时，过错推定与否由当地法决定</td></tr><tr><td>Last-mile Carrier / 尾程派送商</td><td>末端配送</td><td>派送服务协议</td><td>对收件人负责</td><td>丢件通常按申报价值或小额封顶</td></tr><tr><td>Insurer / 保险人</td><td>风险转移</td><td>保险单</td><td>赔付后取得代位求偿权 Subrogation</td><td>赔完客户，转头起诉你</td></tr><tr><td>Surveyor / 检验人</td><td>事故定损</td><td>检验委托</td><td>出具报告，本身不担责</td><td>报告是你索赔或抗辩的关键证据</td></tr></tbody></table>
+<h2>二、四组最容易混同的关系（这是本周最值钱的部分）</h2>
+<h3>1. Carrier（实际承运人） vs Contracting Carrier（缔约承运人）</h3>
+<p>一句话：<b>缔约承运人对全程负责，实际承运人只对自己实际运输的那一段负责</b>。区别不在有没有船，而在「谁跟托运人签的合同、谁签发的提单」。一票门到门的多式联运货，客户只找缔约承运人；缔约承运人赔完，再按各段去找实际承运人追偿。</p>
+<h3>2. Freight Forwarder 作为 Agent vs 作为 Principal</h3>
+<table><thead><tr><th>判断维度</th><th>代理人 Agent</th><th>本人 / 缔约承运人 Principal</th></tr></thead><tbody><tr><td>签发单据</td><td>只代交船公司 Master B/L</td><td>签发自己的 House B/L</td></tr><tr><td>报价方式</td><td>逐项代收代付 + 佣金</td><td>一口价包干 Lump Sum</td></tr><tr><td>对客户的说法</td><td>「我帮你订舱」</td><td>「我负责送到」</td></tr><tr><td>责任</td><td>仅对<b>自身过错</b>（选任、指示错误）负责</td><td>对全程货损货差负责，可享责任限额</td></tr><tr><td>能否主张责任限额</td><td>不能（限额是承运人的特权）</td><td>能</td></tr></tbody></table>
+<h3>3. NVOCC vs 实际承运人</h3>
+<p>NVOCC（Non-Vessel Operating Common Carrier，无船承运人）自己没有船，却向托运人签发自己的提单。法律上它是<b>承运人</b>（不是代理），所以它享受责任限额、也承担承运人责任；同时它向船公司订舱时又是托运人。这就是「两头担责」：对客户是承运人，对船公司是货主。我国对无船承运业务的准入与提单登记有专门规定，<b>现行是审批还是备案须以最新规定核对（待核实）</b>。</p>
+<h3>4. 海外仓：保管人 vs 承运人</h3>
+<p>仓储关系下，海外仓是<b>保管人（Depositary / Warehouseman）</b>，义务是妥善保管与按指令返还，责任基础是过错；一旦被认定为承运人（例如它同时承担了出库后的派送并签发了运输单据），责任会陡然加重。区别的关键动作是：是否签发运输单据、是否对全程运费打包报价、是否承诺送达时效。</p>
+<h2>三、身份是胜负手：3 个同案不同判的场景</h2>
+<div class="key">场景 A：货物在海运途中因船方管货不当全损，货值 50 万美元。</div>
+<ul><li><b>认定为代理人</b>：货代仅对选任过错负责。若能证明船公司资质正常、指示无误 → 不赔或象征性赔偿。</li><li><b>认定为缔约承运人</b>：货代先赔 50 万美元（受责任限额保护，按 666.67 SDR/件 × 件数或 2 SDR/kg 计算，若 100 箱、2 万公斤，约 666.67 × 100 = 66,667 SDR 或 2 × 20,000 = 40,000 SDR，取高者约 6.67 万 SDR，折合美元约 9 万上下）。</li><li><b>差额</b>：从 0 到约 9 万美元，全在一句「你是不是缔约承运人」。</li></ul>
+<div class="key">场景 B：目的港无人提货，产生滞箱费 8 万美元。</div>
+<ul><li><b>认定为代理人</b>：滞箱费由收货人 / 托运人承担，货代无责。</li><li><b>认定为缔约承运人</b>：船公司依据其与货代的订舱协议，直接向货代收取滞箱费；货代赔了再去找客户，客户往往已失联。</li><li><b>结果</b>：8 万美元大概率由货代自己吞下——这是轻资产货代最典型的死法。</li></ul>
+<div class="key">场景 C：海外仓失火，客户货物全损。</div>
+<ul><li><b>认定为保管人</b>：适用当地仓储法，通常由保管人自证已尽妥善保管义务方可免责；若合同有封顶条款且有效，按封顶赔。</li><li><b>认定为承运人</b>：可能被要求承担更严格的责任，且未必能援引仓储合同的封顶条款。</li><li><b>结果</b>：身份不同，封顶条款是否适用、举证责任在谁，完全两样。</li></ul>
+<h2>四、把身份锁死：3 条可直接用的英文条款</h2>
+<p>以下为可直接放入我方合同 / 标准交易条件的表述，中文为解释，签订时请以英文为准，并按当地法做有效性校验。</p>
+<blockquote>Clause 1 (Agency)：「The Company acts as agent of the Customer only and shall not be liable as a carrier, save to the extent that the Company issues its own bill of lading or expressly undertakes in writing to perform the carriage as a principal.」——公司仅作为客户代理人，除签发自有提单或书面明示以本人身份承运外，不承担承运人责任。</blockquote>
+<blockquote>Clause 2 (Principal / Contracting Carrier)：「Where the Company issues its own bill of lading, waybill or multimodal transport document, the Company acts as principal and undertakes to perform, or to procure the performance of, the entire carriage, and shall be entitled to the limitations of liability available to a carrier under the applicable Convention or national law.」——公司签发自有运输单据时以本人身份承担全程运输义务，并享有适用公约或国内法下承运人的责任限额。</blockquote>
+<blockquote>Clause 3 (Warehousing / Bailment only)：「In respect of any warehousing services, the Company acts as depositary / warehouseman only and not as a carrier. The Company's liability shall be limited to [currency][amount] per event or [amount] per kilogram of the gross weight of the Goods lost or damaged, whichever is the lesser / greater（按我方立场选择）.」——仓储服务项下公司仅为保管人而非承运人，责任以每次事故若干金额或每公斤若干金额（取低 / 取高）为限。</blockquote>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>三条款的实际效力取决于当地法对「格式条款显著提示」的要求：德国法下标准交易条件（AGB）的纳入与内容控制极为严格，限额条款未显著提示可能被认定无效。落地前必须由当地律师做一次条款有效性审查（待核实）。</div>
+<h2>五、今天就要落地的三个动作</h2>
+<ol><li>把我方所有在用的合同文本过一遍，统计有多少份把身份写清楚了；没写清的，补一条 Clause 1 或 Clause 2。</li><li>检查我方是否签发 House B/L。若签发，则必须在同一份文件里把「Principal + 责任限额 + 首要条款」一起写上，只写身份不写限额是最差组合。</li><li>对海外仓业务单独出一份《仓储服务协议》，明确排除承运人身份，并核对当地法对限额条款的效力要求。</li></ol><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Shipper</div><div class="cn">托运人</div><div class="df">与承运人订立运输合同的人</div></div><div class="ti"><div class="en">Consignee</div><div class="cn">收货人</div><div class="df">提单载明有权提货的人</div></div><div class="ti"><div class="en">Notify Party</div><div class="cn">通知方</div><div class="df">仅接收到货通知，无实体权利</div></div><div class="ti"><div class="en">Principal</div><div class="cn">本人 / 以自己名义</div><div class="df">与 Agent 相对，承担承运人责任</div></div><div class="ti"><div class="en">Lump Sum</div><div class="cn">包干价</div><div class="df">一口价，是认定 Principal 的强证据</div></div><div class="ti"><div class="en">Subrogation</div><div class="cn">代位求偿</div><div class="df">保险人赔付后取得被保险人的索赔权</div></div><div class="ti"><div class="en">Depositary</div><div class="cn">保管人</div><div class="df">海外仓在大陆法下的法律身份</div></div><div class="ti"><div class="en">Joint and several liability</div><div class="cn">连带责任</div><div class="df">实际承运人与缔约承运人对货损的责任形态</div></div></div></div><div class="foot"><a href="W1-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W1-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>跨境物流法务总监养成计划 · 24周系统学习路线</title>
+<style>
+:root{
+  --bg:#0e1014; --bg2:#141821; --card:#191d27; --card2:#1f2431;
+  --line:#2a3140; --line2:#3a4354;
+  --tx:#e9e6e1; --tx2:#9fa8b8; --tx3:#6b7688;
+  --gold:#c9a227; --gold2:#d9be4d; --red:#c0392b; --red2:#e05c4a;
+  --jade:#4a9d9c; --blue:#5b87c4; --purple:#8b7bc4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(201,162,39,.07) 0%,transparent 55%),radial-gradient(ellipse at 85% 10%,rgba(74,157,156,.06) 0%,transparent 50%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+.serif{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+header{padding:44px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px;position:relative}
+header::after{content:"";position:absolute;left:0;bottom:-1px;width:120px;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.kicker{font-size:12px;letter-spacing:.32em;color:var(--gold);margin-bottom:12px}
+h1{font-size:31px;font-weight:600;letter-spacing:.02em;margin-bottom:12px}
+h1 .accent{color:var(--gold)}
+.sub{color:var(--tx2);font-size:14px;max-width:820px}
+.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 16px;min-width:112px}
+.metric b{display:block;font-size:20px;color:var(--gold);font-weight:600;line-height:1.3}
+.metric span{font-size:11px;color:var(--tx3);letter-spacing:.06em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:26px}
+.tab{padding:10px 18px;cursor:pointer;color:var(--tx3);font-size:13.5px;border-bottom:2px solid transparent;transition:.15s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.tab:hover{color:var(--tx2)}
+.tab.on{color:var(--gold);border-bottom-color:var(--gold)}
+.panel{display:none;animation:fade .25s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:980px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.g2,.g3,.g4{grid-template-columns:1fr}}
+h2.sec{font-size:19px;margin:34px 0 14px;padding-left:11px;border-left:3px solid var(--gold);font-weight:600}
+h2.sec:first-child{margin-top:0}
+h3{font-size:15px;margin-bottom:9px;color:var(--tx)}
+.muted{color:var(--tx2)}
+.small{font-size:12.5px;color:var(--tx3)}
+.rm{display:flex;flex-direction:column;gap:9px}
+.rmrow{display:grid;grid-template-columns:64px 1fr 34px;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:8px;padding:11px 14px;cursor:pointer;transition:.15s}
+.rmrow:hover{background:var(--card2);transform:translateX(3px)}
+.rmrow .wn{font-size:12px;color:var(--tx3);letter-spacing:.05em}
+.rmrow .wt{font-size:14.5px;font-weight:500}
+.rmrow .wg{font-size:12px;color:var(--tx3);margin-top:2px}
+.rmrow .wa{text-align:right;color:var(--tx3);font-size:18px}
+.rmrow.done{opacity:.55}
+.rmrow.done .wt::after{content:" ✓";color:var(--jade)}
+.wknav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.wkbtn{width:38px;height:34px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--tx2);cursor:pointer;font-size:13px;font-family:inherit;transition:.15s}
+.wkbtn:hover{border-color:var(--line2);color:var(--tx)}
+.wkbtn.on{background:var(--gold);color:#1a1a1a;border-color:var(--gold);font-weight:600}
+.wkbtn.done{position:relative}
+.wkbtn.done::after{content:"";position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:var(--jade)}
+.weekhead{background:linear-gradient(135deg,var(--card2),var(--card));border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin-bottom:16px}
+.weekhead .wt{font-size:17px;font-weight:600;margin-bottom:6px}
+.weekhead .wg{font-size:13px;color:var(--tx2)}
+.day{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.dayhd{display:flex;align-items:center;gap:11px;padding:13px 17px;cursor:pointer;transition:.15s}
+.dayhd:hover{background:var(--card2)}
+.dnum{flex:none;width:26px;height:26px;border-radius:5px;background:var(--bg2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);font-weight:600}
+.day.done .dnum{background:var(--jade);color:#0e1014;border-color:var(--jade)}
+.dtitle{flex:1;font-size:14.5px;font-weight:500}
+.day.done .dtitle{color:var(--tx3);text-decoration:line-through}
+.chk{flex:none;width:17px;height:17px;border:1px solid var(--line2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent}
+.day.done .chk{background:var(--jade);border-color:var(--jade);color:#0e1014}
+.caret{flex:none;color:var(--tx3);font-size:11px;transition:.2s}
+.day.open .caret{transform:rotate(90deg)}
+.dbody{display:none;padding:2px 17px 17px;border-top:1px solid var(--line)}
+.day.open .dbody{display:block}
+.blk{margin-top:14px}
+.blk .lb{font-size:11px;letter-spacing:.14em;color:var(--gold);margin-bottom:7px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:12px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px;font-size:13.5px;color:var(--tx)}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:12px 14px;margin-top:14px}
+.mthi{font-size:17px;line-height:1.35;flex:0 0 auto}
+.mtxt{font-size:13.8px;line-height:1.85;color:var(--tx)}
+.mlink{margin-top:8px;font-size:12.8px;line-height:1.75;color:var(--tx2);padding-top:8px;border-top:1px dashed rgba(255,255,255,.14)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px;letter-spacing:.04em}
+.wknd .mth{margin-top:10px}
+.donetag{display:inline-block;margin-left:8px;font-size:10.5px;letter-spacing:.08em;color:var(--jade);border:1px solid rgba(74,157,156,.5);border-radius:4px;padding:1px 6px;vertical-align:middle;text-decoration:none}
+.gotobtn{display:block;background:linear-gradient(135deg,rgba(74,157,156,.16),rgba(201,162,39,.08));border:1px solid rgba(74,157,156,.45);border-radius:8px;padding:13px 16px;font-size:14px;color:var(--jade);text-decoration:none;margin-bottom:10px}
+.gotobtn:hover{border-color:var(--gold);color:var(--gold)}
+.out b{color:var(--jade);font-weight:500}
+.prbox{background:#0c0e12;border:1px solid var(--line);border-radius:7px;padding:12px 14px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.75;max-height:220px;overflow:auto}
+.prbox::-webkit-scrollbar{width:7px}
+.prbox::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
+.btnrow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{background:var(--card2);border:1px solid var(--line2);color:var(--tx2);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12.5px;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--line);color:var(--tx)}
+.btn.gold{background:var(--gold);color:#12141a;border-color:var(--gold);font-weight:600}
+.btn.gold:hover{background:var(--gold2)}
+.btn.copied{background:var(--jade);color:#0e1014;border-color:var(--jade)}
+.wknd{background:linear-gradient(135deg,rgba(201,162,39,.09),rgba(74,157,156,.05));border:1px dashed var(--line2);border-radius:10px;padding:18px;margin-top:18px}
+.wknd .lb{font-size:11px;letter-spacing:.14em;color:var(--gold)}
+.wknd h3{font-size:15.5px;margin:8px 0 6px}
+.libitem{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:15px 17px;margin-bottom:10px}
+.libitem .lh{display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap}
+.tag{flex:none;font-size:10.5px;padding:2.5px 8px;border-radius:4px;background:var(--bg2);border:1px solid var(--line2);color:var(--tx2);letter-spacing:.05em}
+.tag.a{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.tag.b{color:var(--jade);border-color:rgba(74,157,156,.4)}
+.tag.c{color:var(--blue);border-color:rgba(91,135,196,.4)}
+.tag.d{color:var(--purple);border-color:rgba(139,123,196,.4)}
+.tag.e{color:var(--red2);border-color:rgba(224,92,74,.4)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:9px 11px;background:var(--bg2);color:var(--gold);font-weight:500;font-size:12px;letter-spacing:.05em;border-bottom:1px solid var(--line2)}
+td{padding:9px 11px;border-bottom:1px solid var(--line);color:var(--tx2);vertical-align:top}
+tr:hover td{background:var(--card2)}
+td b{color:var(--tx);font-weight:500}
+.ckgroup{margin-bottom:22px}
+.ckrow{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.ckrow:last-child{border-bottom:none}
+.ckbox{flex:none;width:17px;height:17px;border:1px solid var(--line2);border-radius:4px;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:.15s}
+.ckrow.on .ckbox{background:var(--jade);border-color:var(--jade);color:#0e1014}
+.ckrow.on .cktx{color:var(--tx3);text-decoration:line-through}
+.cktx{font-size:13.5px;color:var(--tx2)}
+.cktx b{color:var(--tx);font-weight:500}
+.pbar{height:5px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-top:6px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--jade));transition:.3s}
+.statline{display:flex;justify-content:space-between;font-size:12px;color:var(--tx3);margin-top:5px}
+.note{background:rgba(91,135,196,.08);border-left:3px solid var(--blue);border-radius:0 7px 7px 0;padding:12px 15px;font-size:13px;color:var(--tx2);margin:14px 0}
+.note b{color:var(--blue)}
+.warn{background:rgba(224,92,74,.08);border-left:3px solid var(--red2)}
+.warn b{color:var(--red2)}
+.act{background:rgba(74,157,156,.07);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 15px;font-size:13px;color:var(--tx2);margin:14px 0}
+.act b{color:var(--jade)}
+.anti{background:rgba(224,92,74,.07);border-left:3px solid var(--red2);border-radius:0 7px 7px 0;padding:12px 15px;font-size:13px;color:var(--tx2);margin:14px 0}
+.anti b{color:var(--red2)}
+.gsearch{width:100%;padding:9px 13px;border-radius:8px;border:1px solid var(--line2);background:var(--bg2);color:var(--tx);font-size:13.5px;font-family:inherit;margin-bottom:14px}
+.gsearch:focus{outline:none;border-color:var(--gold)}
+.gitem{padding:10px 0;border-bottom:1px dashed var(--line)}
+.gitem:last-child{border-bottom:none}
+.gterm{font-size:14px;color:var(--tx)}
+.gterm b{color:var(--gold);font-weight:600}
+.gabbr{display:inline-block;font-size:11px;color:var(--jade);border:1px solid rgba(74,157,156,.35);border-radius:4px;padding:0 5px;margin-left:6px;vertical-align:1px}
+.gdef{font-size:13px;color:var(--tx2);margin-top:3px}
+.guse{font-size:12px;color:var(--tx3);margin-top:2px}
+footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--tx3);font-size:12px;text-align:center}
+@media print{
+  body{background:#fff;color:#111}
+  .tabs,.btn,.wknav{display:none}
+  .panel{display:block}
+  .day .dbody{display:block}
+  .card,.day{background:#fff;border-color:#bbb}
+  th{background:#eee;color:#333}
+  td,.tx2,.tx3{color:#333}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">CROSS-BORDER LOGISTICS · LEGAL DIRECTOR TRACK</div>
+  <h1>跨境物流<span class="accent">法务总监</span>养成计划</h1>
+  <div class="sub">面向国际货运代理 / 跨境物流 / 海外仓企业（ParcelJet 一类：中欧专线 + 德国波兰墨西哥海外仓 + FBA 头程 + 一件代发）的法务总监能力模型。24 周系统训练，120 个工作日 + 24 个周末实战项目。每天一个主题、一份产出物、一条可直接复制的指令。</div>
+  <div class="metrics">
+    <div class="metric"><b>24</b><span>周 / 6 个月</span></div>
+    <div class="metric"><b>120</b><span>个工作日</span></div>
+    <div class="metric"><b>90</b><span>分钟 / 天</span></div>
+    <div class="metric"><b>60+</b><span>部法规与公约</span></div>
+    <div class="metric"><b>24</b><span>个周末实战</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab on" data-p="road">学习路线</button>
+  <button class="tab" data-p="daily">每日计划</button>
+  <button class="tab" data-p="gloss">术语地基</button>
+  <button class="tab" data-p="lib">指令库</button>
+  <button class="tab" data-p="law">法规公约库</button>
+  <button class="tab" data-p="check">能力自检</button>
+  <button class="tab" data-p="how">怎么用</button>
+</div>
+
+<section class="panel on" id="road">
+  <h2 class="sec">四阶段能力跃迁</h2>
+  <div class="grid g2" id="stages"></div>
+
+  <h2 class="sec">24 周路线图（点任意一周跳转当日计划）</h2>
+  <div class="rm" id="rmlist"></div>
+
+  <h2 class="sec">每日学习时间盒（90 分钟标准节奏）</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:110px">时段</th><th style="width:80px">时长</th><th>动作</th></tr>
+      <tr><td><b>晨读 · 输入</b></td><td>25 min</td><td>按当日指令让 AI 输出法条/公约拆解，边读边在笔记里画出「条文 → 业务动作」的映射</td></tr>
+      <tr><td><b>午间 · 判例</b></td><td>20 min</td><td>研读 1-2 个真实判例或索赔案例，只记三件事：争议焦点、裁判要旨、对条款的启示</td></tr>
+      <tr><td><b>晚间 · 输出</b></td><td>35 min</td><td>写当日产出物（条款 / 清单 / 备忘录 / 意见书）。<b>没有输出的一天等于没学</b></td></tr>
+      <tr><td><b>睡前 · 复盘</b></td><td>10 min</td><td>勾选进度 + 用一句话写下「今天哪个点能直接用在我司业务上」</td></tr>
+    </table>
+    <div class="note"><b>节奏可调：</b>时间紧 → 只做「晨读 25 min + 输出 15 min」；周末补实战。每周至少 4 天，允许断档，但<b>不要断两周</b>——知识链一断，前面的判例积累就废了。</div>
+  </div>
+
+  <h2 class="sec">知识地图</h2>
+  <div class="card" style="overflow-x:auto">
+    <svg viewBox="0 0 1000 560" style="width:100%;min-width:920px;height:auto" xmlns="http://www.w3.org/2000/svg">
+      <defs></defs>
+      <rect x="0" y="0" width="1000" height="560" fill="none"/>
+      <ellipse cx="500" cy="282" rx="104" ry="48" fill="#1f2431" stroke="#c9a227" stroke-width="1.5"/>
+      <text x="500" y="275" text-anchor="middle" fill="#d9be4d" font-size="16" font-family="Songti SC,serif">跨境物流法务</text>
+      <text x="500" y="296" text-anchor="middle" fill="#c9a227" font-size="12.5" font-family="Songti SC,serif">物流服务提供方立场</text>
+
+      <g font-size="13" font-family="-apple-system,PingFang SC,sans-serif">
+        <path d="M400 258 Q300 226 208 140" stroke="#2a3140" fill="none"/>
+        <rect x="52" y="88" width="158" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="131" y="110" text-anchor="middle" fill="#e9e6e1">单据与证据体系</text>
+        <text x="131" y="136" text-anchor="middle" fill="#6b7688" font-size="11">B/L·AWB·CMR·FCR/FBL</text>
+
+        <path d="M400 268 Q292 272 196 268" stroke="#2a3140" fill="none"/>
+        <rect x="34" y="251" width="158" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="113" y="273" text-anchor="middle" fill="#e9e6e1">Incoterms 与贸易</text>
+        <text x="113" y="299" text-anchor="middle" fill="#6b7688" font-size="11">2020·CISG·UCP600</text>
+
+        <path d="M400 286 Q300 322 206 396" stroke="#2a3140" fill="none"/>
+        <rect x="48" y="380" width="158" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="127" y="402" text-anchor="middle" fill="#e9e6e1">海关与通关</text>
+        <text x="127" y="428" text-anchor="middle" fill="#6b7688" font-size="11">9610/9810·UCC·ISF</text>
+
+        <path d="M432 318 Q366 412 306 470" stroke="#2a3140" fill="none"/>
+        <rect x="192" y="458" width="158" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="271" y="480" text-anchor="middle" fill="#e9e6e1">保险与责任险</text>
+        <text x="271" y="506" text-anchor="middle" fill="#6b7688" font-size="11">ICC A/B/C·货代责任险</text>
+
+        <path d="M600 258 Q700 226 792 140" stroke="#2a3140" fill="none"/>
+        <rect x="706" y="88" width="216" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="814" y="110" text-anchor="middle" fill="#e9e6e1">运输责任制度</text>
+        <text x="814" y="136" text-anchor="middle" fill="#6b7688" font-size="11">海商法·蒙特利尔·CMR</text>
+
+        <path d="M600 268 Q708 272 804 268" stroke="#2a3140" fill="none"/>
+        <rect x="706" y="251" width="216" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="814" y="273" text-anchor="middle" fill="#e9e6e1">欧盟与北美合规</text>
+        <text x="814" y="299" text-anchor="middle" fill="#6b7688" font-size="11">电池法·GPSR·GDPR·EAR</text>
+
+        <path d="M600 286 Q700 322 794 396" stroke="#2a3140" fill="none"/>
+        <rect x="706" y="380" width="216" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="814" y="402" text-anchor="middle" fill="#e9e6e1">海外主体与海外仓</text>
+        <text x="814" y="428" text-anchor="middle" fill="#6b7688" font-size="11">GmbH·Sp.z o.o.·租约</text>
+
+        <path d="M568 318 Q634 412 694 470" stroke="#2a3140" fill="none"/>
+        <rect x="614" y="458" width="216" height="34" rx="6" fill="#191d27" stroke="#3a4354"/>
+        <text x="722" y="480" text-anchor="middle" fill="#e9e6e1">争议与内控</text>
+        <text x="722" y="506" text-anchor="middle" fill="#6b7688" font-size="11">仲裁·索赔时效·内审</text>
+      </g>
+      <text x="500" y="36" text-anchor="middle" fill="#6b7688" font-size="11.5" font-family="Songti SC,serif">全链路：揽货 → 订舱 → 报关 → 干线 → 清关 → 海外仓 → 尾程 → 退件</text>
+      <text x="500" y="548" text-anchor="middle" fill="#6b7688" font-size="11" font-family="Songti SC,serif">底色：中国法 · 国际公约 · 域外法（欧盟 / 北美）三层结构</text>
+    </svg>
+  </div>
+</section>
+
+<section class="panel" id="daily">
+  <div class="wknav" id="wknav"></div>
+  <div id="weekbox"></div>
+</section>
+
+<section class="panel" id="gloss">
+  <div class="note"><b>术语地基怎么用：</b>这是「水泥和沙子」。每周开新主题前先扫一遍本周术语，看不懂的先查回来；读英文合同卡壳时回来搜。中英对照是为了让你读完就能写英文条款。</div>
+  <input class="gsearch" id="gq" placeholder="搜索术语 / 英文 / 缩写，例如：提单、CMR、NVOCC、留置权…">
+  <div id="glossbox"></div>
+</section>
+
+<section class="panel" id="lib">
+  <div class="note"><b>指令库使用法：</b>通用模板是「万能插槽」，把 <code>【】</code> 里的变量换成当周主题即可反复使用。场景指令是高频实战场景的固定打法，可直接复制。所有指令都默认带角色前缀。</div>
+  <div id="libbox"></div>
+</section>
+
+<section class="panel" id="law">
+  <h2 class="sec">核心法规与公约清单</h2>
+  <div class="note"><b>提示：</b>标注「必精读」的要做到能脱稿定位条、款、项；「常备查阅」做到知道在哪查、解决什么问题；「了解」知道存在即可。<b>凡标 <span style="color:var(--red2)">待核实</span> 的，表示该规则近年有修订/新规动态，使用前须核对现行有效版本。</b></div>
+  <div id="lawbox"></div>
+</section>
+
+<section class="panel" id="check">
+  <h2 class="sec">法务总监能力自检（24 项 · 五档评分）</h2>
+  <div class="note"><b>用法：</b>入营第一天评一次，之后每 4 周复评一次。1=完全不会，5=能独立带人做。评分存本地浏览器，刷新不丢。雷达图会自动更新。</div>
+  <div class="grid g2">
+    <div class="card"><div id="radar"></div></div>
+    <div class="card" id="ckbox"></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>评分解读</h3>
+    <table>
+      <tr><th style="width:80px">总分</th><th>判断</th><th style="width:260px">下一步</th></tr>
+      <tr><td><b>≤ 48</b></td><td>入门级，离独立负责涉外业务还有明显差距</td><td>老老实实按 W1–W13 打地基，不要跳周</td></tr>
+      <tr><td><b>49–80</b></td><td>能处理单点问题，但不成体系</td><td>重点补 W14–W19 境外合规 + W20–W21 合同与英文</td></tr>
+      <tr><td><b>81–100</b></td><td>具备法务经理水准，缺的是商业判断与体系化</td><td>主攻 W22–W24：争议统筹、内控体系、总监画像</td></tr>
+      <tr><td><b>≥ 101</b></td><td>已具备竞聘法务总监的基本盘</td><td>把 24 周产出物打包成作品集，去谈</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="panel" id="how">
+  <h2 class="sec">这套系统怎么用（先读完这一页）</h2>
+  <div class="card">
+    <h3>一、每天的操作顺序</h3>
+    <table>
+      <tr><th style="width:56px">步骤</th><th style="width:100px">动作</th><th>说明</th></tr>
+      <tr><td>1</td><td><b>点开当天</b></td><td>看「地基概念」，有不懂的先去「术语地基」Tab 搜</td></tr>
+      <tr><td>2</td><td><b>复制指令</b></td><td>点「复制完整指令（含角色设定）」，粘贴到对话框直接发送</td></tr>
+      <tr><td>3</td><td><b>读完就写</b></td><td>按「今日产出物」要求写出东西，存进你自己的知识库</td></tr>
+      <tr><td>4</td><td><b>勾选</b></td><td>回到页面勾选当日完成，进度条会动</td></tr>
+    </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>二、周末实战怎么办</h3>
+    <p class="muted">每周一个实战项目，是把 5 天的知识「焊」成能力的唯一方式。周末项目给的是<b>场景设定 + 完整指令</b>，不要只让 AI 写，先自己列框架，再拿 AI 的对照补漏。</p>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>三、每周五的复盘日怎么过</h3>
+    <p class="muted">每周第 5 天是固化日。指令里已经写了「出 10 道题自测」，<b>请先自己答完再让 AI 批改</b>——直接看答案等于没学。</p>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>四、三条硬规则</h3>
+    <div class="act"><b>① 没有输出的一天等于没学。</b>读得再多，不写条款、不列清单，两周后归零。</div>
+    <div class="act"><b>② 法条必须核到条、款、项。</b>AI 会编条文号，重要条款一律自己去国家法律法规数据库（flk.npc.gov.cn）或 EUR-Lex 核一遍。</div>
+    <div class="act"><b>③ 每学一个规则都问一句「这在我司哪一票货上会出事」。</b>答不上来就是没学懂。</div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>五、给 AI 的「追问三板斧」（建议存成快捷指令）</h3>
+    <div class="prbox" id="axe1">我刚才这个问题，请你从三个角度再答一遍：
+1. 【反面】如果我是对方律师（客户 / 索赔方），我会怎么攻击这个结论？请给出 3 条攻击路径和对应的法条依据
+2. 【数字】把你的结论全部换成具体数字：金额、期限、责任限额、时效、比例。凡是无法给出数字的地方，明确说「这个数字取决于哪些变量」
+3. 【落地】给我一份可以直接执行的动作清单：谁、在什么时间、做什么、做完留什么证据、做不掉的后果是什么</div>
+    <div class="btnrow"><button class="btn gold" data-copy="axe1">复制追问指令</button></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>六、进度与数据</h3>
+    <div class="btnrow" style="margin-top:0">
+      <button class="btn" id="btnExport">导出进度（JSON）</button>
+      <button class="btn" id="btnImport">导入进度</button>
+      <button class="btn" id="btnReset">清空全部进度</button>
+      <button class="btn" onclick="window.print()">打印本页</button>
+    </div>
+    <p class="small" style="margin-top:10px">进度保存在浏览器 localStorage，换设备不同步——建议每 4 周导出一次 JSON 备份。</p>
+  </div>
+</section>
+
+<footer>跨境物流法务总监养成计划 · 24 周 · 立场：物流服务提供方（货代 / 海外仓 / 承运人）· 所有境外法域结论须经当地执业律师确认后方可作为正式意见</footer>
+
+</div>
+<script>
+/* ============ 阶段一：打地基（W1-W6） ============ */
+const DATA1=[
+{w:1,st:1,th:"跨境物流行业解剖：这门生意的钱、链路与角色",goal:"在学任何法条之前，先能画出「一票货从工厂到消费者」的全链路，并说出每一段的主体、单据、法律关系与风险。做不到这一条，后面的海商法、公约全是空中楼阁",
+ wk:{t:"周末实战①：画出你司一票货的全链路法律关系图",d:"选一个真实业务场景（例如：深圳工厂 → 海运至汉堡 → 清关 → 德国海外仓 → 亚马逊 FBA / C 端派送 → 退件回国）。画一张全链路图，标出每一段的：主体、合同名称、适用运输方式、单据、可能的责任限额、谁买保险。",
+ p:"我要彻底看懂跨境物流一票货的法律结构。设定场景：深圳工厂出货 → 拖车 → 盐田港 → 海运至汉堡 → 德国清关 → 德国海外仓上架 → 亚马逊 FBA 补货 / C 端尾程派送 → 消费者退货进海外仓。\n\n请输出：\n1. 《全链路法律关系图》（用文字结构化表达）：把链路拆成 8-12 个节点，每个节点标出「主体（发货人/货代/实际承运人/报关行/海外仓/尾程派送商）/ 与之签署的合同名称 / 该段适用的运输方式与法律 / 关键单据 / 出事时谁向谁索赔」\n2. 逐段标注风险敞口：每段的典型事故（货损、丢件、延误、查验、退运、罚款）和对应的责任归属判断依据\n3. 特别讲清楚：货代在每一段分别是什么身份（代理人还是缔约承运人），身份不同会导致什么完全不同的赔偿结果\n4. 最后给我一张《一票货责任归属速查表》，出事时能照着找人"},
+ d:[
+ {t:"跨境物流这门生意在卖什么：服务包与商业模式",
+  f:["跨境物流 vs 国内物流的本质差别：关境、多法域、多式联运、单据即权利","主流产品形态：国际快递、空运专线、海运整柜/拼箱、铁路专线（中欧班列）、卡航、海外仓一件代发、FBA 头程","钱从哪来：运费差、操作费、仓储费、清关服务费、尾程派送费、增值服务（贴标/换标/退件处理）"],
+  o:"一张《跨境物流产品图谱》：8 类产品的服务边界、法律关系本质、我方法律身份",
+  p:"我要从法务视角搞懂跨境物流这门生意。请给我：\n\n1. 逐类拆解 8 类产品：国际快递（DHL/UPS/FedEx）、空运专线、海运整柜 FCL、海运拼箱 LCL、中欧班列、卡航（TIR/公路）、海外仓一件代发、FBA 头程。每类给出：典型客户、服务边界（门到门/港到港/仓到仓）、我方在法律关系上的身份、主要适用法律、典型纠纷类型\n2. 收入结构拆解：运费差、操作费、仓储费、清关费、尾程派送费、增值服务费，每一项的法律定性（是运输对价、服务报酬、还是代收代付），以及开票与税务上的注意点\n3. 商业模式的法律含义：轻资产（转包）vs 重资产（自有车队/自营仓），责任承担有什么本质区别？为什么轻资产模式最容易在「缔约承运人 vs 代理人」上翻车\n4. 最后给我一张《产品—法律关系—风险点》对照表"},
+ {t:"主体图谱：谁是谁，谁对谁负责",
+  f:["Shipper / Consignee / Notify party：提单三角色与权利归属","Carrier（实际承运人）vs Contracting Carrier（缔约承运人）vs NVOCC vs Freight Forwarder：身份决定责任","报关行、海外仓运营商、尾程派送商、保险公司、检验人：辅助方各自的责任边界"],
+  o:"一张《跨境物流主体身份对照表》：主体 / 定义 / 签什么合同 / 担什么责 / 常见身份混同陷阱",
+  p:"请帮我建立跨境物流的主体身份图谱，输出《主体身份对照表》：\n\n1. 逐个主体给出：英文名称与缩写、中文、在业务链上的位置、通常签什么合同、对谁负责、出事时是第一责任人还是连带责任人\n2. 重点辨析四组最容易混同的关系：\n   · Carrier vs Contracting Carrier（缔约承运人）\n   · Freight Forwarder 作为 Agent vs 作为 Principal（本人）\n   · NVOCC 与实际承运人\n   · 海外仓作为保管人 vs 作为承运人\n3. 为什么「身份」在诉讼中是胜负手：给我 3 个场景，同样的事故，因为身份认定不同，赔偿结果完全相反\n4. 站在我方（物流服务提供方）立场：在合同里用什么条款把身份锁死？给我 3 条可直接用的英文表述（含中文解释）"},
+ {t:"跨境电商五大物流模式与各自的法律关系",
+  f:["直邮（9610）、保税备货（1210）、海外仓（9810）、B2B 直接出口（9710）、一般贸易（0110）","FBA 头程 vs 海外仓一件代发：货权、清关主体、退货责任完全不同","谁是中国出口报关主体、谁是境外进口清关主体——这决定了谁承担申报不实的责任"],
+  o:"《跨境电商物流模式法律对照表》+ 一张「谁来当进口商（IOR）」的决策图",
+  p:"请系统对比跨境电商的几种物流与通关模式，输出对照表：\n\n1. 五种监管代码对照：0110（一般贸易）、9610（跨境电商零售出口/直邮）、9710（跨境电商 B2B 直接出口）、9810（跨境电商出口海外仓）、1210（网购保税进口）。每项给出：适用场景、报关主体、通关单证、退税处理、典型合规风险\n2. FBA 头程的四个特殊法律问题：\n   · 亚马逊只做收货方不做进口商（IOR）时，清关主体是谁\n   · 货物入仓后货权是否转移，货损找谁\n   · 亚马逊的仓库服务条款（FBA 服务协议）里对货损的责任限制是多少\n   · 退货与销毁的责任与费用承担\n3. 海外仓一件代发：海外仓是保管人还是卖方？谁承担产品合规责任（GPSR / 电池法下的责任人是谁）\n4. 最后给我一张《进口商（IOR）选择决策图》：什么情况下必须由我方海外子公司做 IOR、什么情况下让客户自己做，风险分别是什么"},
+ {t:"计费逻辑与商业条款：看懂报价单背后的风险",
+  f:["计费重量 vs 实重 vs 体积重：泡货比例（1:5000 / 1:6000）怎么影响利润与纠纷","附加费：燃油附加、旺季附加、偏远地区费、超长超重费、仓储滞期费、改单费","报价单里最容易埋雷的三处：燃油附加随行就市、汇率条款、目的港费用未知（CFS/滞箱费）"],
+  o:"《跨境物流报价单法律审查清单》——20 项，标出每一项我方应争取的写法",
+  p:"我要能看懂并审查跨境物流的报价单与商务条款。请给我：\n\n1. 计费基础讲透：实重 / 体积重（volumetric weight）/ 计费重（chargeable weight），海运、空运、快递各自的泡货系数与计算方式，为什么同一个箱子不同渠道计费差很多\n2. 逐项列出 12 类常见附加费：燃油附加（BAF/FAF）、货币贬值附加（CAF）、旺季附加（PSS）、港口拥堵费（PCS）、超长超重费、偏远地区费、改单费、退件费、仓储费、滞箱费（detention/demurrage）、查验费、到门无法派送费。每项：英文、谁收、通常怎么转嫁、争议高发度\n3. 《跨境物流报价单法律审查清单》20 项：每项给出「常见写法 / 我方应争取的写法 / 不改会怎样」。重点覆盖：有效期、燃油附加调整机制、汇率条款、目的港未知费用（unknown charges at destination）由谁承担、最低收费、滞箱滞港责任\n4. 特别讲透：目的港无人提货产生的滞箱费，承运人能不能回头找发货人/货代要？给我 3 个判例倾向不同的情形"},
+ {t:"复盘与自测：第 1 周知识固化",
+  f:["把前 4 天的产出物汇编成《学习手册·第1章》","费曼检验：能不能用大白话给一个客户讲清楚「为什么 DDP 比 DDU 贵又更危险」","自测：10 道题检验本周吸收率"],
+  o:"《学习手册·第1章：行业与商业模式》定稿 + 自测成绩",
+  p:"第 1 周结束，请对我做一次严格检验：\n\n1. 出 10 道题（单选 5 + 场景案例 3 + 简答 2），覆盖：8 类产品与法律关系、主体身份辨析、跨境电商监管代码、进口商 IOR、计费与附加费\n2. 我作答后逐题批改，错的要讲透，并告诉我这个点在实务中会怎么坑到我\n3. 给我一道费曼检验题：如果我要给一个第一次做跨境的卖家，用 3 分钟讲清楚「DDP 和 DDU 的差别，以及为什么你不要随便答应 DDP」，该怎么讲？给我口语化讲稿\n4. 最后：帮我整合本周产出物成《学习手册·第1章》，并给我下周学习的 3 条提醒"}
+ ]},
+
+{w:2,st:1,th:"单据体系：涉外法务的证据学",goal:"单据是跨境物流的判决书。这一周要能拿到任何一张单证就知道：它证明什么、谁签的、能不能转让、出事时能不能当证据用",
+ wk:{t:"周末实战②：一套完整单证的「体检」与缺陷清单",d:"虚构一票货（深圳→汉堡，40HQ 一柜，拼箱含 3 家工厂货，客户要求出 FCR 不出提单）。把这票货从头到尾会产生的全部单据列出来，逐张标注：谁签发、证明什么、有什么缺陷、如果打官司够不够用。",
+ p:"我要给一票货的单据做全身体检。设定：深圳三家工厂的货拼一个 40HQ 到汉堡，我方作为货代向客户签发 FCR（不出提单），客户是德国电商卖家。\n\n请输出：\n1. 《单证全景清单》：从订舱到签收会产生哪些单证（Booking Note、S/O、提单/海运单/FCR、发票、装箱单、产地证、报关单、保险单、到货通知、D/O、送货签收单 POD 等），逐张标注：谁签发、证明什么、是否为物权凭证、证据效力等级\n2. 逐张做缺陷检查：这张单在实务中最容易出什么问题（日期倒签、品名笼统、重量不符、收货人写错、未背书），出问题后后果是什么\n3. 特别讲清楚 FCR 的法律性质：它是物权凭证吗？FIATA FCR 与提单的核心差别是什么？客户拿着 FCR 能不能控货？我方作为 FCR 签发人承担什么责任\n4. 最后给我一份《单证缺陷检查清单》30 项，可直接用于内部风控抽查"},
+ d:[
+ {t:"提单 B/L：为什么它叫「物权凭证」",
+  f:["提单三功能：货物收据、运输合同的证明、物权凭证（document of title）","提单种类：记名 / 指示 / 不记名；已装船 / 收货待运；清洁 / 不清洁；直达 / 转船 / 联运","背书与转让：提单怎么流转，谁持有谁有权提货"],
+  o:"逐条笔记 + 一份《提单种类与控货能力对照表》",
+  p:"请系统讲透提单（Bill of Lading, B/L）。输出：\n\n1. 提单的三项法律功能逐项讲解，每项说明：法律效果、在诉讼中怎么用、我国《海商法》对应的条文（请核对现行版本条号）\n2. 《提单种类与控货能力对照表》：按「记名/指示/不记名」×「已装船/收货待运」×「清洁/不清洁」三个维度交叉，每种组合给出：能否转让、谁有权提货、放货风险、适合什么场景\n3. 背书（endorsement）怎么做才有效？空白背书、记名背书、不背书分别产生什么法律效果？给我 3 个因为背书写错导致放错货的真实类型案例\n4. 重点：什么叫「清洁提单」（clean B/L）？承运人在什么情况下有权批注？托运人出具保函（letter of indemnity）换清洁提单，这个保函有效吗？对我方（货代）有什么风险\n5. 最后给我一份《提单审核清单》20 项（拿到提单逐项核对）"},
+ {t:"电放、海运单与无单放货：最容易赔钱的地方",
+  f:["电放（Telex Release / Surrendered B/L）的操作与法律性质：放弃控货权","海运单（Sea Waybill）与提单的核心差别：不可转让、凭身份提货","无单放货的法律后果：违约与侵权竞合，承运人向谁赔、赔多少、能不能追偿"],
+  o:"《无单放货风险防控方案》+ 一份《电放申请书》条款模板",
+  p:"请深度拆解电放、海运单与无单放货这一组高风险问题：\n\n1. 电放（telex release / express release）：法律性质是什么？电放后提单还有效力吗？电放指令由谁发出、发给谁、留什么证据？给我一份《电放申请书》的条款模板（含免责与责任承担表述）\n2. 海运单（sea waybill）：与提单的三点核心差别，什么场景下该用海运单（近洋航线、集团公司内部、信任客户），用错有什么后果\n3. 无单放货专题：\n   · 无单放货的法律定性（违约 / 侵权 / 竞合），我国司法实践的主流态度\n   · 承运人赔偿范围：货款全赔还是限额赔偿？为什么实践中有巨大争议\n   · 承运人赔了以后能不能向保函出具人追偿？保函在什么情况下无效\n   · 货代在这个链条里的位置：如果我方是缔约承运人，风险有多大\n4. 给我 4 个典型案例：凭保函放货、目的港法律强制放货（如巴西、土耳其等）、记名提单下无单放货、电放后收货人拒付\n5. 最后给我《无单放货风险防控方案》：制度、流程、条款、保险四层防线"},
+ {t:"空运单、铁路运单与公路运单：都不是物权凭证",
+  f:["空运单 AWB（Air Waybill）：不可转让，收货人凭身份提货，为什么空运没有「无单放货」问题","铁路：中欧班列的两套运单体系——SMGS 运单（国际铁路货物联运协定）与 CIM 运单（COTIF 附录 B），中国是 SMGS 成员","公路：CMR 运单（国际公路货物运输合同公约）三份联单与证据效力"],
+  o:"《四种运输单证对照表》：提单 / AWB / 铁路运单 / CMR，逐项比法律性质、可转让性、签发份数、证据效力",
+  p:"请给我一份覆盖四种运输方式的《运输单证对照表》：\n\n1. 对比维度：单据名称（中英）、签发人、法律性质（是否物权凭证）、可否转让、正本份数、收货人如何提货、适用的国际公约、我国是否为该公约缔约国（请注明生效日期，不确定处标「待核实」）\n2. 空运单 AWB 专题：\n   · 为什么空运单不是物权凭证？这带来什么商业后果（客户无法控货）\n   · 空运下的「控货」替代方案：指示提货、暂停交付（stoppage in transit）、扣货指令怎么写给航空公司\n   · AWB 上的品名、件数、重量由谁填写，填错谁负责\n3. 中欧班列专题：\n   · SMGS 与 CIM 两套运单体系的区别，中欧班列实务中怎么做运单转换（换单）\n   · 运单在铁路联运中的法律作用与局限，出事时凭什么索赔\n4. CMR 公路运单专题：三份联单（发货人/收货人/承运人）各自的作用，CMR 运单上的保留（reservation）怎么写才有证据效力\n5. 最后：给我一份《不同运输方式下如何控货》的操作指引"},
+ {t:"FIATA 单证家族与随附商业单证",
+  f:["FIATA 四件套：FCR（收货凭证）、FCT（运输凭证）、FBL（可转让多式联运提单）、FWR（仓单）","商业单证：商业发票、装箱单、产地证（一般原产地证 CO / Form A / RCEP 原产地声明）、保险单","清关单证：报关单、合同、发票、装箱单、提运单、许可证件"],
+  o:"《FIATA 单证选择决策表》+《随附单证清单》",
+  p:"请讲透 FIATA 单证家族与随附单证。输出：\n\n1. FIATA 四件套逐个讲解：FCR（Forwarders Certificate of Receipt）、FCT（Forwarders Certificate of Transport）、FBL（FIATA Bill of Lading）、FWR（FIATA Warehouse Receipt）。每个给出：全称与缩写、签发条件、法律性质（是否物权凭证、是否可转让）、签发人承担什么责任、什么场景下用\n2. 关键辨析：FBL 与 FCR 的差别——为什么 FBL 是物权凭证而 FCR 不是？我方签发 FBL 会承担什么额外责任？在什么情况下不该签 FBL\n3. 《FIATA 单证选择决策表》：客户要控货 / 不要控货、要议付 / 不议付、是否多式联运——不同组合下该签哪张单\n4. 随附商业单证清单：商业发票（commercial invoice，注意低报货值的刑事风险）、装箱单（packing list）、产地证（CO / Form A / RCEP 原产地声明，各自用途与申领）、保险单。逐项说明：用来干什么、常见造假方式与法律后果\n5. 最后给我一份《出口单证齐套检查表》（可直接给操作岗用）"},
+ {t:"复盘：单证体系与证据规则",
+  f:["整合本周产出物","自测 10 题","核心问题：出事之后，我手上有什么证据能证明「货交出去了、交了多少、什么时候交的、交给谁了」"],
+  o:"《单证管理与证据留存制度》第一版（可直接发文）",
+  p:"第 2 周结束，请帮我做知识固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：提单三功能与种类、背书、电放与海运单、无单放货、AWB/铁路运单/CMR、FIATA 四件套\n2. 错题讲透，并关联到我未来会遇到的具体场景\n3. 帮我起草《单证管理与证据留存制度》第一版，至少包含：单证清单与责任岗、签发审批权限、正本保管与流转登记、电子单证效力与存证（区块链/时间戳/邮件留痕）、留存期限（按运输方式与时效倒推）、出险时的证据调取流程\n4. 最后给我一个判断口诀：什么情况下我方应当坚持出提单、什么情况下坚决不签提单"}
+ ]},
+
+{w:3,st:1,th:"Incoterms 2020 与国际贸易买卖：风险在哪里分界",goal:"Incoterms 决定买卖双方的费用、风险、清关义务如何切分。切错了，我方作为物流商可能被夹在中间——卖方说货已交、买方说没收到，最后找物流索赔",
+ wk:{t:"周末实战③：审查一份外贸合同的价格条款与物流衔接",d:"拿一份（或虚构一份）外贸买卖合同，只看价格条款与运输条款部分，做一份审查意见：术语选对了吗、风险转移点和实际交货方式匹配吗、保险谁买买够了吗、与我方运输合同的衔接有没有缺口。",
+ p:"我要审查一份外贸买卖合同的价格与运输条款。设定：深圳卖方与德国买方签 FOB 深圳条款，货物为带电产品（含锂电池），走海运拼箱，买方指定我方为货代。\n\n请输出：\n1. 这份合同里价格条款的完整审查意见：FOB 术语下买卖双方在「风险转移、费用划分、订舱义务、保险、清关」五件事上的分配，以及本例中的具体错配\n2. 带电产品 + FOB 的特殊风险：危险品申报义务在谁、瞒报的后果、MSDS 与 UN38.3 谁出\n3. 术语与实际操作的衔接缺口：FOB 下买方订舱但卖方负责装船前的风险，这段「空窗期」谁管？货代在这个空窗期出事找谁\n4. 给我一份《外贸合同价格条款审查清单》20 项（法务视角，含应争取的改写建议）\n5. 最后：如果让我给这个客户做咨询，我会建议改成什么术语？说明理由和三个替代方案"},
+ d:[
+ {t:"Incoterms 2020 全景：11 个术语一张图看完",
+  f:["Incoterms 是什么：ICC 第 723E 号出版物，2020.1.1 生效，不是法律，靠合同援引才有效","11 个术语分四组：E 组（EXW）、F 组（FCA/FAS/FOB）、C 组（CFR/CIF/CPT/CIP）、D 组（DAP/DPU/DDP）","DPU 取代 DAT：交货地可以是任何地方，不再限于运输终端"],
+  o:"《Incoterms 2020 全景表》——11 术语 × 风险转移点 / 费用分界 / 订舱义务 / 保险义务 / 进出口清关",
+  p:"请系统讲解 Incoterms 2020，输出《Incoterms 2020 全景表》：\n\n1. 先讲清楚 Incoterms 的法律性质：它是国际惯例，不是法律也不是公约。合同里不写 Incoterms 2020 而只写 FOB 会有什么问题？版本援引（2010 vs 2020）的差别\n2. 11 个术语逐项列表：英文全称与缩写、中文、交货地点、风险转移点、运费由谁付到哪、保险由谁买（CIF/CIP 是卖方义务，其他术语卖方无保险义务但有通知义务）、进出口清关义务在谁、适用的运输方式（海运内河 vs 任何方式）\n3. 特别讲透 2020 版相对 2010 版的四处重要变化：\n   · DAT 改为 DPU\n   · CIF 与 CIP 的保险级别要求差异（CIP 要求更高）\n   · FCA 下买方可以指示承运人向卖方签发已装船提单\n   · 安保要求（security requirements）与费用的明确分配\n4. 最后给我一张记忆地图：用「谁承担的风险最大 / 最小」把 11 个术语排成一条线"},
+ {t:"四组分界：风险、费用、清关、保险——四个点不重合",
+  f:["风险转移点 vs 费用划分点：C 组术语（CFR/CIF）里这两个点是分开的，这是最大的理解误区","清关义务：只有 DDP 是卖方负责进口清关，DAP/DPU 是买方","保险：只有 CIF 和 CIP 卖方有投保义务，其他术语卖方只有「通知义务」"],
+  o:"《四组分界速查表》+ 一份《术语选择决策树》",
+  p:"请帮我把 Incoterms 最容易搞错的四个「分界点」彻底讲清楚：\n\n1. 风险转移点（delivery / risk transfer）：11 个术语逐个给出「货在什么时候、什么地点、从卖方风险转到买方风险」，用一句话场景描述（例如：FOB = 货物装上船那一刻）\n2. 费用划分点：与风险转移点不重合的术语有哪些？举 3 个因为误以为「风险在哪费用就在哪」而亏钱的实例\n3. 清关义务：出口清关谁做、进口清关谁做、过境清关谁做。特别说明 EXW 与 DDP 这两个极端：为什么 EXW 下卖方几乎不管事但买方可能提不到货、为什么 DDP 对卖方是「无底洞」\n4. 保险义务：CIF 与 CIP 的保险级别差多少？卖方投保了但险别不足（如只投平安险）出了货损谁承担？给我 2 个案例\n5. 最后给我《术语选择决策树》：按「货物类型 / 运输方式 / 客户信用 / 我方能否控制目的港」四个变量，推导出该选哪个术语"},
+ {t:"术语误用与衔接缺口：物流商最容易背锅的地方",
+  f:["FOB 下「买方订舱、卖方交货」的衔接空窗：装船前的货损谁担","DDP 下卖方承担进口清关与目的国税费（含 VAT、反倾销税），报价漏算就是巨亏","CIF/CFR 是象征性交货（单据买卖），卖方交单即完成，货损后买方仍需付款"],
+  o:"《术语误用风险清单》15 项 + 一份《物流服务合同与贸易术语衔接检查表》",
+  p:"请讲透贸易术语的误用风险，特别是站在物流服务提供方视角：\n\n1. 《术语误用风险清单》15 项，每项给出：错误用法 / 后果 / 正确做法。至少覆盖：\n   · 把 FOB 用于空运或铁路（应为 FCA）\n   · DDP 报价漏算目的国 VAT、反倾销税、EPR 注册\n   · CIF 象征性交货，买方以货损为由拒付（为什么站不住）\n   · EXW 下买方无法办理出口报关（中国出口需出口报关单，境外买方办不了）\n   · 术语与合同其他条款冲突（如 FOB 却约定卖方负责目的港清关）\n2. 物流商的夹心风险：买卖双方因术语理解不同互相扯皮时，为什么最后都找物流索赔？给我 3 个典型场景\n3. 《物流服务合同与贸易术语衔接检查表》：我方在接受客户委托时，必须先确认客户的买卖合同用的是什么术语、这个术语下我方义务边界在哪、有没有超出我方能控制的范围\n4. 最后给我一条硬规则：我方在报价与合同中应该如何表述，才能把「买方与卖方之间的风险划分」与「我方对客户的责任」彻底切开"},
+ {t:"CISG：国际货物买卖合同的统一法",
+  f:["《联合国国际货物销售合同公约》（CISG）：中国 1986 年交存加入书，1988.1.1 对中国生效","适用条件：营业地在不同缔约国 + 合同具有国际性 + 当事人未排除适用","我国加入时的两项保留：第 1 条第 1 款(b)项保留、第 11 条合同形式保留（注：第 11 条保留已于 2013 年撤回，请核对）"],
+  o:"《CISG 适用判断流程图》+ 一份《国际货物买卖合同条款对照表》（CISG vs 民法典合同编）",
+  p:"请系统讲解《联合国国际货物销售合同公约》（CISG / 维也纳公约）：\n\n1. 适用判断流程图：第一步看营业地是否在不同国家、第二步看是否都是缔约国（或依冲突规范指向缔约国法）、第三步看当事人是否排除适用（opt-out）、第四步看标的是否属于排除范围（消费货物、船舶飞机、电力等）\n2. 中国的加入与保留：加入时间、生效时间、作了哪些保留、保留的现状（注意第 11 条形式保留的撤回情况，请注明「待核实」并告诉我在哪查）\n3. CISG 与《民法典》合同编的实质差异对照表（这张表最有价值）：\n   · 合同成立（要约承诺、逾期承诺的效力）\n   · 根本违约（fundamental breach）vs 我国「不能实现合同目的」\n   · 损害赔偿范围与可预见性\n   · 货物不符的通知期限与最长 2 年期限\n   · 预期违约与中止履行\n4. 实务重点：为什么跨境卖家在合同里经常「排除 CISG」？排除是明智还是愚蠢？给客户起草合同时我方的建议立场\n5. 最后给我一份《国际货物买卖合同必备条款清单》（含 CISG 下的特殊注意点）"},
+ {t:"复盘：贸易术语与买卖合同体系",
+  f:["整合本周产出物","自测 10 题","核心问题：客户说「我们签的是 FOB」，我怎么在 30 秒内判断我方风险边界"],
+  o:"《贸易术语与买卖合同风险速查手册》（定稿）",
+  p:"第 3 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：Incoterms 2020 的 11 术语、风险与费用分界、清关与保险义务、术语误用、CISG 适用与保留\n2. 错题讲透并关联业务场景\n3. 帮我整合本周产出物成《贸易术语与买卖合同风险速查手册》，至少包含：11 术语全景表、四组分界速查、误用风险 15 项、术语选择决策树、CISG 适用流程图\n4. 最后给我一条 30 秒判断法：客户报出一个贸易术语，我如何在 30 秒内问出三个问题、判断出我方风险边界"}
+ ]},
+
+{w:4,st:1,th:"跨境支付与外汇：钱怎么走，单怎么流转",goal:"不懂结算就看不懂为什么提单要分几份正本、为什么客户要「全套清洁已装船提单」。这一周把「钱—单—货」三角焊死",
+ wk:{t:"周末实战④：审查一份信用证并找出不符点",d:"虚构一份（或找一份范本）信用证（MT700 格式），逐字段审：有效期与交单期、最迟装运期、单据要求、软条款。找出其中的陷阱条款并给出修改建议。",
+ p:"我要练习审查信用证。请给我：\n\n1. 一份模拟的 MT700 信用证全文（中国出口商视角，德国开证行，CIF 汉堡，要求全套清洁已装船提单、发票、装箱单、产地证、保险单），其中故意埋 8 处对受益人不利的条款（例如：客检证软条款、交单期过短、提单收货人写成开证行、要求提交开证申请人出具的检验证、装运期与有效期倒挂、保险险别要求过高、允许分批但未明确、费用全由受益人承担）\n2. 然后给我一份《信用证审查对照表》：逐字段（40A 跟单信用证形式、31D 有效期与地点、44C 最迟装运期、48 交单期、45A 货物描述、46A 单据要求、47A 附加条件、71B 费用）说明：这个字段是什么意思、常见陷阱、我方应争取怎么写\n3. 把上面那份信用证里的 8 处陷阱逐条点出来，每处给出：为什么危险、后果、应争取的修改措辞\n4. 最后给我一份《不符点应对 SOP》：收到不符点通知后 24/48/72 小时分别做什么"},
+ d:[
+ {t:"跨境结算方式全景：TT、信用证、托收、保理",
+  f:["汇付（T/T）：前 T/T、后 T/T、O/A 赊销，各自的风险分配与适用客户","信用证（L/C）：银行信用替代商业信用，独立性原则与严格相符原则","托收（D/P、D/A）与保理（Factoring）：介于两者之间，各自的法律构造"],
+  o:"《结算方式风险对照表》+ 一张「客户信用等级 × 结算方式」的选择矩阵",
+  p:"请系统对比跨境结算方式，输出《结算方式风险对照表》：\n\n1. 五种方式逐个拆解：前 T/T、后 T/T（O/A）、信用证 L/C、付款交单 D/P、承兑交单 D/A。每项给出：法律构造、银行承担什么角色、对出口商风险、对进口商风险、成本、适用场景\n2. 信用证三项核心法律原则讲透：\n   · 独立性原则（信用证与买卖合同相互独立）\n   · 抽象性原则（银行只看单据不看货物）\n   · 严格相符原则（单证一致、单单一致）\n   每个原则给出 2 个真实类型案例说明「原则适用」与「欺诈例外」的边界\n3. 欺诈例外（fraud exception）：什么情况下法院可以止付信用证？我国司法实践的态度与门槛是什么\n4. 保理专题：国际保理（FCI 规则）与国内保理的差别，有追索权 vs 无追索权，应收账款转让通知与登记\n5. 最后给我一张《客户信用等级 × 结算方式 × 授信额度》的选择矩阵（可直接给销售部用）"},
+ {t:"UCP600 与审单：5 个银行工作日的游戏规则",
+  f:["UCP600（跟单信用证统一惯例，ICC 第 600 号出版物，2007.7.1 生效，共 39 条）","审单时限：交单翌日起最多 5 个银行工作日（第 14 条 b 款）","不符点处理：拒付通知的要求（第 16 条）、单据的放弃与更正"],
+  o:"《UCP600 关键条款速查表》+ 一份《交单前单证自查清单》",
+  p:"请讲透信用证的操作规则 UCP600：\n\n1. UCP600 关键条款速查表：按主题列出最常用条款的条号与要点，至少覆盖：定义与解释、信用证与合同的关系、单据与货物、有效期与交单地点、装运日期用语、单据审核标准（第 14 条）、相符交单、不符点放弃与拒付通知（第 16 条）、正本单据与副本、商业发票、运输单据、保险单据、分批装运与转运、可转让信用证、款项让渡、不可抗力\n2. 审单标准：「表面相符」到底有多严？给我 6 个经典不符点案例（拼写错误算不算、日期格式差异、品名描述不一致、重量单位不同、提单未显示承运人名、产地证签发日晚于装运日）\n3. 拒付通知的形式要求：必须说什么、多长时间内发出、发给谁、发错了会怎样（preclusion 失权）\n4. 单据审核实务：受益人/交单人在交单前如何自查？给我一份《交单前单证自查清单》\n5. 最后给我《ISBP》（国际标准银行实务）的作用说明，以及它和 UCP600 的关系"},
+ {t:"提单与结算的耦合：为什么提单要三份正本",
+  f:["全套提单（full set 3/3）：凭一份提货其余失效，这是银行为什么要「全套」","指示提单 + 空白背书 = 银行可控货；记名提单下银行失去质押价值","提单质押与信托收据（T/R）：进口押汇的法律构造与风险"],
+  o:"《提单在结算中的角色示意图》（文字版）+ 一份《单证流转登记台账》模板",
+  p:"请讲透提单与结算的耦合关系：\n\n1. 为什么提单通常签发三份正本（3/3）？「全套提单」（full set）的含义与商业作用，凭一份提货其余失效的机制是怎么运作的\n2. 银行视角：为什么开证行坚持要「全套清洁已装船指示提单、空白背书」？这每一个词分别保护银行什么利益？如果换成记名提单或海运单，银行的质押权会怎样\n3. 提单质押的法律构造：提单作为权利凭证质押，在我国《民法典》权利质押体系里的位置（请核对条号），质权如何实现\n4. 信托收据（Trust Receipt, T/R）与进口押汇：银行放单给进口商去提货销售，这个交易的法律性质是什么？银行的风险在哪？给我 2 个争议案例\n5. 最后给我一份《单证流转登记台账》模板（含签发份数、寄送方式、签收人、日期、留存证据）"},
+ {t:"外汇管理与收付汇合规",
+  f:["货物贸易外汇管理：名录登记、分类监管（A/B/C 类）、总量核查","出口收汇与出口退税的联动：为什么收不回汇退不了税","跨境人民币与多币种结算：汇率条款与外汇敞口的合同安排"],
+  o:"《跨境收付汇合规清单》+ 一份《汇率与币种条款模板》",
+  p:"请讲解中国跨境收付汇的合规框架（注意：外汇管理规定更新频繁，请标注「须核对现行有效版本」）：\n\n1. 货物贸易外汇管理的核心制度：企业名录登记、A/B/C 分类监管、总量核查与现场核查、贸易信贷报告。每项说明：是什么、不做的后果、法务要盯什么\n2. 出口收汇与出口退税的联动机制：为什么货款收不回来会影响退税？报关金额与收汇金额不一致怎么办？差额超过多少会被核查\n3. 特殊业务的收付汇：跨境电商 9610/9710/9810 项下的收汇、海外仓模式下货款与仓储费的收付、退件回国的资金流\n4. 汇率风险：给我三种汇率条款模板（固定汇率、汇率波动超过 X% 重新议价、按结算日中间价），并分析各自利弊\n5. 最后给我《跨境收付汇合规清单》20 项，可直接交给财务与业务"},
+ {t:"复盘：钱—单—货三角",
+  f:["整合本周产出物","自测 10 题","核心问题：我方作为物流商，在客户的结算链条上处于什么位置、能帮客户做什么、绝对不能碰什么"],
+  o:"《结算与单证风险速查手册》定稿",
+  p:"第 4 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：五种结算方式、信用证三原则、UCP600 审单与拒付、提单与质押、外汇合规\n2. 错题讲透并关联业务场景\n3. 帮我整合本周产出物成《结算与单证风险速查手册》\n4. 最后给我一条红线清单：作为物流商，在客户结算环节有哪些事绝对不能做（例如：应客户要求倒签提单、出具虚假重量证明、配合低报货值、在客户未付运费时擅自扣留提单以外的文件）——每条说明法律后果"}
+ ]},
+
+{w:5,st:1,th:"货运保险与责任险：赔了以后找谁要回来",goal:"分清「货物保险」和「责任保险」两条完全不同的线。一个是货主的损失赔付，一个是我方赔了别人之后的兜底。搞混了，出事后才发现自己裸奔",
+ wk:{t:"周末实战⑤：一票货损案的保险与责任推演",d:"设定：一柜货从深圳海运至汉堡，到港发现 30% 货物水湿（疑似集装箱顶部破损进水），货值 12 万美元，客户已投保一切险，我方为缔约承运人。做一次完整推演：谁先赔、赔多少、向谁追偿、我方最终净损失多少。",
+ p:"我要做一次货损案的完整推演。设定：深圳→汉堡海运整柜，到港开箱发现 30% 货物水湿，箱体顶部有破损，货值 12 万美元，客户投保了一切险（ICC A / 一切险），我方是缔约承运人，实际承运人是船公司，拖车与装箱由分包商完成。\n\n请输出：\n1. 《索赔路径决策树》：客户可以向谁主张（保险公司、我方、船公司），各自的请求权基础、举证难度、赔偿范围、时效\n2. 保险赔付计算：保险金额、免赔额/免赔率、不足额投保的比例赔付、施救费用、检验费用，给出具体计算过程\n3. 保险公司赔付后的代位求偿（subrogation）：保险公司会向谁追？我方作为缔约承运人是否是追偿对象？我方能否援引提单/合同的责任限制对抗代位求偿？给我结论与依据\n4. 我方的责任险能否兜底：货代责任险/承运人责任险的承保范围、常见除外责任（水湿霉变、包装不良、固有缺陷、延误）、免赔额、事故通知时限\n5. 最后给我一张《我方净损失测算表》，并给出三个可以提前规避这个损失的动作"},
+ d:[
+ {t:"货物保险：保什么、保给谁、赔多少",
+  f:["中国条款：PICC 海洋运输货物保险条款——平安险（FPA）、水渍险（WPA）、一切险（All Risks），加保战争险与罢工险","英国条款：协会货物条款 ICC(A)(B)(C)——(A) 一切险、(B) 列明风险、(C) 更窄","保险期限：仓至仓条款（Warehouse to Warehouse），起讫与 60 天终止"],
+  o:"《PICC 条款 vs ICC 条款对照表》+ 一份《险别选择建议表》",
+  p:"请系统讲解国际货运保险，输出：\n\n1. 《PICC 海洋运输货物保险条款》与《协会货物条款（ICC）》的对照表：平安险 FPA / 水渍险 WPA / 一切险 vs ICC(C) / ICC(B) / ICC(A)，逐档说明：承保风险范围、除外责任、免赔额（免赔率）惯例、适用场景\n2. 重点讲透：\n   · 一切险不是「什么都保」：除外责任有哪些（固有缺陷、自然损耗、包装不良、延迟、战争罢工需另行加保）\n   · 仓至仓条款（W to W）的起讫点与 60 天终止规则（货物卸离海船后满 60 天未进仓则终止）\n   · 保险金额与投保加成（通常 CIF 价 × 110%）的含义\n   · 不足额投保与比例赔付的计算\n3. 被保险人 vs 受益人：保单背书转让给收货人怎么做？我方（货代）能不能作为被保险人？代投保的法律风险\n4. 最后给我一份《险别选择建议表》：按货物类型（普货/带电/易碎/高价值/二手设备）× 运输方式，建议投保哪一档"},
+ {t:"索赔流程与代位求偿：保险公司赔完会来找我",
+  f:["索赔七步：出险通知 → 保全与检验 → 单证收集 → 定损 → 提交索赔 → 赔付 → 权益转让","代位求偿权（subrogation）：保险公司赔付后取得被保险人对第三方的索赔权","我方的防线：责任限制条款能否对抗代位求偿（我国实践的关键分歧）"],
+  o:"《货损索赔 SOP》+ 一份《事故通知与证据保全清单》",
+  p:"请讲透货物保险的索赔流程与代位求偿：\n\n1. 《货损索赔 SOP》七步，每步给出：谁做、什么时限内做、做什么、留什么证据。重点：\n   · 出险通知时限（保单通常要求立即通知，具体以保单为准）\n   · 联合检验（joint survey）怎么申请、检验报告的关键内容\n   · 货损证据：集装箱/车厢状态照片、验箱报告、装卸记录、单证、温度记录\n   · 保留对承运人的索赔权（向承运人提交书面索赔并索取时效延长协议）\n2. 代位求偿专题：\n   · 法律依据与生效条件（赔付在先、权益转让书、求偿范围以赔付额为限）\n   · 保险公司代位后，我方的责任限制抗辩能否对抗？我国司法实践的分歧与主流态度，给我 3 个案例倾向\n   · 我方在收到保险公司追偿函时的应对 SOP\n3. 《事故通知与证据保全清单》20 项，出事当天就能照着做\n4. 最后给我一份《索赔时效管理表》：不同运输方式/法律下的索赔与诉讼时效（海运、空运、公路、铁路、保险），按时间长短排序"},
+ {t:"责任保险：货代责任险、承运人责任险与保赔协会",
+  f:["货代责任险（Freight Forwarders Liability）：承保的是「我方法律责任」，不是货物价值","常见承保人：TT Club、ITIC、当地保险公司；承保范围与典型除外责任（罚款、关税、延误、故意行为）","保赔协会（P&I Club）：船东的责任险，与货代责任险的区别"],
+  o:"《货代责任险投保审查表》+ 一份《保单关键条款核对清单》",
+  p:"请讲透物流企业的责任保险：\n\n1. 对比表：货物保险 vs 货代责任险 vs 承运人责任险 vs 保赔保险（P&I）。维度：被保险人是谁、承保什么、赔给谁、保额怎么定、是否有免赔额、典型除外责任\n2. 货代责任险专题：\n   · 承保范围（法律赔偿责任 + 抗辩费用）、常见承保的错误与遗漏（错误交付、单证错误、未投保、分包商过错）\n   · 典型除外责任：罚款与关税、合同约定超出法定责任的部分（waiver of liability / 超出限额的承诺）、故意与重大过失、延误、货物固有缺陷、货币汇率、制裁违规\n   · 保单形式：年度保单 vs 单票申报；申报制（declaration）下漏报的后果\n3. 《保单关键条款核对清单》20 项：每次续保前逐项核对\n4. 特别提示：我与客户签的合同条款如果超出保单承保范围（例如承诺全额货值赔偿、放弃责任限制），会有什么后果？给我条款层面的改进建议\n5. 最后给我一份《货代责任险投保审查表》（含保额测算方法：按年度营业额、单票最高货值、历史赔付率推算）"},
+ {t:"保价、免赔与责任限额的合同设计",
+  f:["保价运输（declared value / ad valorem）：客户多付钱买更高赔偿上限的合同机制","责任限额的两种写法：按重量限额（X SDR/kg）vs 按票限额（每票不超过 Y 元）","关键陷阱：合同约定的限额高于法定限额时，超出部分由谁来兜（保险是否覆盖）"],
+  o:"《保价与责任限额条款库》——严格版 / 平衡版 / 宽松版三套条款文本",
+  p:"请帮我设计保价与责任限额条款：\n\n1. 讲透三个概念的区别：法定责任限额（公约/法律规定的上限）、约定赔偿责任（合同约定的赔法）、保价/申报价值（客户额外付费换取更高上限）。三者叠加时怎么适用？给我一个决策顺序图\n2. 给我三套完整的中文条款 + 英文对照版本：\n   · 严格版（最大限度保护我方：低限额 + 明示排除间接损失 + 不承保特定货类）\n   · 平衡版（推荐：按 SDR 或每票固定金额 + 保价选项 + 明确除外）\n   · 宽松版（大客户竞争激烈时用：较高限额 + 保价费率表）\n   每版说明适用场景、法律效力风险、与保单的衔接\n3. 关键问题：责任限额条款会不会被认定为格式条款无效？在我国《民法典》第 496-497 条下如何设计才安全（提示义务、加粗、单独签署、对价）\n4. 逐项列出必须排除的损失类型：间接损失、利润损失、关税与税款、市场波动、延误导致的违约金、客户对其买方的赔偿\n5. 最后给我一份《保价费率表》模板（按货值区间与运输方式）"},
+ {t:"复盘：保险与责任体系",
+  f:["整合本周产出物","自测 10 题","核心问题：一票货出事，我方最终会不会掏钱、掏多少、怎么提前锁死"],
+  o:"《保险与责任管理手册》第一版",
+  p:"第 5 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：PICC 与 ICC 险别、仓至仓、代位求偿、货代责任险除外责任、保价与责任限额设计\n2. 错题讲透并关联业务场景\n3. 帮我起草《保险与责任管理手册》第一版，至少包含：投保政策（哪些业务必须投保、投保哪一档）、索赔 SOP、事故通知制度、责任限额条款库、保单年度复核机制\n4. 最后给我一句话：我方最大的保险盲区通常是什么"}
+ ]},
+
+{w:6,st:1,th:"法律全景图与岗位画像：我要成为什么样的人",goal:"阶段一收口。把前面五周的知识挂到一张图上，同时明确「法务总监」到底要具备什么，找出自己的三个短板",
+ wk:{t:"周末实战⑥：完成《个人能力差距表》+ 一个真实业务的法律风险初判",d:"两件事：① 完成 24 项能力自检并写出 3 个最需要补的短板及补课计划；② 选你司（或一家公开的对标企业，例如递四方、燕文、云途、纵腾、递必易）的一段真实业务描述，写一份 2000 字的法律风险初判报告。",
+ p:"我要做两件事。\n\n第一件：完成个人能力差距分析。请给我：\n1. 一份 24 项的能力自检题库（每项 1-5 分自评 + 一句话说明我在这一项上「能做/不能做」的具体表现）\n2. 帮我设计《个人能力差距表》：现状分 / 目标分 / 差距 / 补课动作 / 验证方式 / 时限\n3. 基于我目前的背景（国内法务 + 律师资格 + 无系统涉外经验 + 英语可作工作语言），给出我 6 个月内必须补到的三个能力，以及补这三个能力最高效的具体动作\n\n第二件：请给我一份《对标企业法律风险初判报告》的分析框架：从公开信息（官网、年报、招股书、行政处罚、裁判文书、欧盟/美国监管公告）能看到哪些法律风险，逐项列出「查什么、在哪查、怎么看、看出来的风险意味着什么」。"},
+ d:[
+ {t:"三层法律结构：中国法、国际公约、域外法",
+  f:["第一层：国内法——民法典合同编、海商法、民用航空法、海关法、出口管制法","第二层：国际公约与惯例——海牙-维斯比、蒙特利尔、CMR、Incoterms、UCP600（只有我国缔结或当事人选择的才适用）","第三层：域外法——欧盟条例与指令、英国法、美国法、德国/波兰/墨西哥当地法"],
+  o:"《跨境物流法律全景图》——一张能一眼看出「哪部法管哪个环节」的图",
+  p:"请帮我搭《跨境物流法律全景图》：\n\n1. 按「业务链路 × 法律部门」做二维表：揽货签约 / 订舱 / 报关 / 干线运输 / 目的港清关 / 海外仓储 / 尾程派送 / 退件 / 结算，每个环节列出管它的中国法、国际公约、域外法，并注明关键条号或条款\n2. 三层法律的适用顺序：冲突规范怎么走？《涉外民事关系法律适用法》对合同、侵权、物权分别怎么规定（请核对条号）？当事人选择法律的自由度与限制（强制性规定、公共利益保留）\n3. 国际条约在我国的适用方式：直接适用 vs 转化适用，民商事国际条约与国内法冲突时怎么办（请注明法律依据）\n4. 特别讲清：为什么跨境物流合同里「适用法律 + 争议解决」条款是生死条款？给我 4 种典型组合（中国法+中国法院 / 英国法+伦敦仲裁 / 中国法+香港仲裁 / 纽约公约下的第三地仲裁）的利弊分析\n5. 最后告诉我：如果只能先精通 5 部法律/公约，应该选哪 5 个"},
+ {t:"涉外民事关系法律适用法与管辖",
+  f:["《涉外民事关系法律适用法》（2010 通过，2011.4.1 施行）的体系：一般规定 → 民事主体 → 物权 → 债权 → 知识产权","合同：当事人协议选择 → 未选择适用最密切联系地法；侵权：侵权行为地法 / 共同经常居所地法 / 当事人协议","程序问题：涉外民商事案件的管辖、送达、域外取证、判决的承认与执行"],
+  o:"《涉外合同法律适用与管辖条款设计指南》+ 一份《条款模板库》",
+  p:"请讲透涉外合同的法律适用与争议解决条款设计：\n\n1. 《涉外民事关系法律适用法》的适用路径：合同之债、侵权之债、物权、不当得利与无因管理各自的法律适用规则（请核对条号）。当事人意思自治的边界（不得规避强制性规定、不得损害公共利益）\n2. 强制性规定（overriding mandatory rules）直接适用：哪些中国法规定无论当事人选什么法都必须适用（例如出口管制、外汇管制、海关、反垄断、消费者保护）\n3. 管辖与仲裁的选择：\n   · 协议管辖（《民事诉讼法》相关规定）的有效要件、实际联系原则\n   · 仲裁优先的情形、仲裁条款的独立性\n   · 给我 6 套条款模板（中英对照）：中国法院管辖 / 香港国际仲裁中心 / 新加坡国际仲裁中心 / CIETAC / 伦敦海事仲裁员协会 LMAA / ICC，每套说明适用场景与风险\n4. 最后给我一份《法律适用与争议解决条款自查清单》15 项"},
+ {t:"国际货代行业监管与准入",
+  f:["我国的货代监管演变：从审批制到备案制（《国际货物运输代理业管理规定》与商务部货代企业备案办法，请核对现行版本）","国际海运：无船承运业务（NVOCC）提单登记与保证金（《国际海运条例》，须核对现行修订版本与数额）","航空运输销售代理、道路运输经营许可：相关资质要求与无证经营的后果"],
+  o:"《货代企业资质清单与年度合规日历》",
+  p:"请梳理国际货代企业的资质与监管要求（注意：近年多次简政放权，请标注「须核对现行有效版本」）：\n\n1. 资质清单：国际货运代理企业备案、无船承运业务经营资格（NVOCC）提单登记与保证金、国际船舶代理、报关单位注册登记（进出口货物收发货人 / 报关企业）、道路运输经营许可证、航空运输销售代理业务认可、危险品相关资质、AEO 认证。每项：主管机关、法律依据、办理时限、有效期、无证经营后果\n2. 特别讲透 NVOCC：\n   · 什么叫无船承运人，与货代的法律地位差别\n   · 提单登记与保证金制度的目的（保护托运人）\n   · 保证金数额与是否可用责任保险替代（须核对现行规定）\n   · NVOCC 提单与货代提单（House B/L）的关系\n3. 报关单位：收发货人注册登记 vs 报关企业注册登记的差别，报关差错与信用管理（失信企业后果）\n4. 最后给我一份《货代企业年度合规日历》：什么时间节点要做什么（年报、备案变更、换证、保证金核查）"},
+ {t:"法务总监画像：我要成为什么样的人",
+  f:["法务总监 vs 法务经理 vs 法务专员：分水岭在商业判断与风险定价，不是法条熟练度","跨境物流法务的组织定位：汇报线、团队配置、境外子公司与外聘律师的分工","KPI 怎么定：从「审了多少份合同」变成「少赔了多少钱、多签了多少单」"],
+  o:"《我的法务总监能力差距表》+ 一份《法务部第一年工作计划》框架",
+  p:"我要对标跨境物流法务总监。请给我：\n\n1. 能力模型拆解：法务总监 / 经理 / 专员在六个维度上的分水岭（法条功底、行业与商业理解、风险定价与决策、跨部门推动、外部资源管理、团队与预算管理），做成对比表\n2. 一家营收 10-30 亿、有德国/波兰/墨西哥海外仓的跨境物流公司，法务部通常怎么配人？汇报给谁（CEO / CFO / 董事会）？与外部律师和当地顾问怎么分工？法务预算大概什么量级（含境外律师费、争议费用、合规系统）\n3. 法务总监的 KPI：给我 8 个真正有价值的指标（不是「审了多少份合同」），每个给出计算方式与数据来源。例如：争议损失率（赔付额/营收）、合同周转时长、合规整改闭环率、监管处罚件数、重大合同风险条款覆盖率\n4. 从「现在」到「能胜任」，给我一份能力差距自查表，包含 24 个具体问题，我逐项自评\n5. 最后：跨境物流法务总监在面试中最常被问的 10 个问题，以及高分回答的要点"},
+ {t:"阶段一复盘：地基是否打牢",
+  f:["把 W1-W6 的产出物汇编成《学习手册·第一阶段》","费曼检验：用大白话给一个新入职的操作讲清楚「为什么单据比货重要」","阶段自测：20 道题"],
+  o:"《学习手册·第一阶段：行业·单据·贸易·结算·保险·全景》定稿 + 自测成绩",
+  p:"第一阶段（6 周）结束，请对我做一次阶段总检验：\n\n1. 出 20 道题（单选 10 + 案例 6 + 简答 4），覆盖 W1-W6 全部内容\n2. 逐题批改，错的要讲透并关联实务场景\n3. 费曼检验题：如果我要给新入职的操作岗做 10 分钟培训，讲清楚「为什么单据就是钱、单据出错比货出错更严重」，给我一份讲稿\n4. 帮我整合前六周产出物，形成《学习手册·第一阶段》的目录结构与每章要点摘要\n5. 最后给我第二阶段的 5 条学习提醒，并指出：以我目前的理解，最可能在第二阶段哪一周卡住、怎么提前准备"}
+ ]}
+];
+
+
+/* ============ 阶段二：主干法律（W7-W13） ============ */
+const DATA2=[
+{w:7,st:2,th:"海商法与海上货物运输：承运人的义务与免责",goal:"海运是跨境物流的主动脉，海商法是整套规则里最成熟的一块。这一周要能回答：货在海上坏了，承运人什么情况下赔、什么情况下不赔、最多赔多少",
+ wk:{t:"周末实战⑦：一票海运货损案的完整责任推演",d:"设定：深圳→鹿特丹整柜，途中遭遇恶劣天气，到港后发现部分纸箱受潮霉变。船方主张天灾免责，客户主张箱体不适货。做一次完整推演：承运人适航义务的范围、免责事由能否成立、举证责任在谁、赔偿限额怎么算、我方作为缔约承运人怎么应对。",
+ p:"我要推演一票海运货损案。设定：深圳盐田→鹿特丹，40HQ 整柜普货，运输途中遭遇恶劣天气，到港开箱发现约 25% 纸箱受潮霉变。船方主张天灾（perils of the sea）免责并提交航海日志与气象报告；客户主张集装箱箱体有破损、承运人未尽适航与管货义务。\n\n请输出：\n1. 《责任认定分析框架》：先列明要逐一认定的五个要件（适航义务是否履行、管货义务是否履行、免责事由是否成立、因果关系、损失金额与限额），每个要件的举证责任在谁\n2. 逐要件分析本案：双方各应提交什么证据，谁的证据更有说服力，可能的裁判结果区间\n3. 赔偿限额计算：按我国《海商法》的货物灭失损坏赔偿限额（请核对现行条号与计算单位）计算本案上限，并对比如果适用海牙-维斯比规则的差别\n4. 我方作为缔约承运人的应对：对客户的赔偿义务、向实际承运人追偿的路径与时效、索赔函怎么写\n5. 最后给我一份《海运货损案内部研判清单》"},
+ d:[
+ {t:"海商法的适用边界与船舶、货物、承运人",
+  f:["《海商法》1993.7.1 施行（修订动态须核对现行版本）；调整的是海上运输关系与船舶关系","适用范围：海上货物运输合同（含江海联运、多式联运中的海运段），不适用于内河运输","承运人（carrier）与实际承运人（actual carrier）的区分与连带责任"],
+  o:"逐条笔记 + 《海商法第四章条文结构图》",
+  p:"请讲解我国《海商法》第四章「海上货物运输合同」的整体结构（注意：该法近年有修订动态，请标注「须核对现行有效版本与条号」）：\n\n1. 先给一张结构图：第四章分几节，每节管什么（一般规定 / 承运人的责任 / 托运人的责任 / 运输单证 / 货物交付 / 合同的解除 / 航次租船合同的特别规定 / 多式联运的特别规定）\n2. 关键定义逐个讲清：承运人、实际承运人、托运人（缔约托运人 vs 交货托运人）、收货人、货物。每个定义说明实务意义（为什么这个定义会决定谁被起诉）\n3. 适用范围：什么合同受第四章调整，什么不受（航次租船、内河运输、国际多式联运中的非海运段）。航次租船合同与提单运输的规则差异\n4. 承运人与实际承运人的责任分担：什么情况下二者承担连带责任？我方作为缔约承运人（无船承运人）在这个结构里的位置\n5. 最后：给我一份《海商法第四章速查目录》（条文号 + 一句话概括）"},
+ {t:"承运人的三项基本义务：适航、管货、不绕航",
+  f:["适航义务（seaworthiness）：开航前与开航时谨慎处理，使船舶适航、适货、配备齐全","管货义务：妥善、谨慎地装载、搬移、积载、运输、保管、照料、卸载货物","不得进行不合理绕航（unreasonable deviation）；合理绕航的三种情形"],
+  o:"《承运人义务清单》+ 一份《违反义务的后果对照表》",
+  p:"请讲透承运人的法定义务：\n\n1. 适航义务：\n   · 时间标准（开航前与开航时，不是全程）、主观标准（谨慎处理 due diligence，不是绝对保证）\n   · 三个维度：船舶本身适航（船体、机器、设备）、适货（货舱适货）、配备（船员、装备、供应品）\n   · 集装箱的适货性：集装箱算不算船舶的一部分？箱体破损导致货损，承运人能否免责？给我 3 个案例\n2. 管货义务的七个环节逐个讲解（装载、搬移、积载、运输、保管、照料、卸载），每个环节的常见事故与责任认定\n3. 绕航：什么是合理绕航（救助人命财产、为共同安全、海上救助）？不合理绕航的法律后果有多严重（可能丧失责任限制与免责）\n4. 迟延交付：什么是迟延交付（我国法下的构成要件），迟延的赔偿范围与限额\n5. 最后给我《违反义务后果对照表》：违反哪项义务 → 丧失哪些抗辩 → 赔偿范围扩大到什么程度"},
+ {t:"承运人的免责事由：航海过失与火灾",
+  f:["免责清单（fire statute / catalogue of exceptions）：船长船员航海过失、火灾、天灾、战争、检疫限制、罢工、救助、货物固有缺陷、包装不良、标志不清等","最有争议的两项：航海过失免责（nautical fault）与火灾免责（承运人的实际过失与私谋除外）","举证顺序：承运人先证明免责事由存在，再证明已尽义务"],
+  o:"《免责事由逐项解析表》+ 一份《免责抗辩举证清单》",
+  p:"请系统解析承运人的免责事由：\n\n1. 逐项解析免责清单：航海过失、火灾（承运人本人的实际过失或私谋除外）、天灾/海上危险、战争与武装冲突、政府行为与检疫限制、罢工与停工、海上救助或企图救助、货物固有缺陷与性质、包装不良、标志不清或不当、经谨慎处理仍未发现的船舶潜在缺陷、非由于承运人或雇员过失的其他原因。每项给出：含义、成立条件、常见证据、抗辩难度\n2. 重点讲透航海过失免责：\n   · 为什么它被认为是「船东的保护伞」，汉堡规则为什么要废除它\n   · 商业过失（commercial fault）与航海过失的区分，为什么这个区分决定成败\n   · 给我 3 个案例：构成航海过失免责的、构成商业过失不免责的、边界模糊的\n3. 火灾免责：承运人本人的实际过失或私谋（actual fault or privity）怎么认定？举证责任在哪一方\n4. 免责的举证顺序与逻辑：索赔人先证明货损发生在承运人责任期间 → 承运人证明免责事由 → 索赔人证明承运人未尽适航义务/免责事由与损失无因果关系\n5. 最后给我《免责抗辩举证清单》：每一环节要提交什么证据"},
+ {t:"责任限制：666.67 计算单位与 2 计算单位",
+  f:["货物灭失或损坏的赔偿限额：每件或每个其他货运单位 666.67 计算单位，或毛重每公斤 2 计算单位，以较高者为准（须核对现行条号与金额）","迟延交付的赔偿限额：相当于运费的数额；与货物损失同时发生时限额的适用","丧失责任限制的情形：故意、明知可能造成损失而轻率地作为或不作为"],
+  o:"《赔偿责任限额计算表》+ 一份《责任限制突破与防守清单》",
+  p:"请讲透承运人的赔偿责任限制：\n\n1. 单位责任限制（package limitation）：\n   · 我国《海商法》的规定（请核对现行条号与计算单位，并说明「计算单位」指 SDR 特别提款权）\n   · 「件」怎么数（一个集装箱算几件？集装箱内货物件数在提单上载明时怎么算？）\n   · 散货与毛重计算：什么时候按重量算更划算\n2. 迟延交付的限额：单独迟延 vs 迟延伴随货损时限额怎么并用\n3. 丧失责任限制（breaking the limit）：\n   · 构成要件（故意 or 明知可能造成损失而轻率地作为/不作为）\n   · 原告要举证到什么程度？给我 3 个案例\n   · 我方在合同与操作上如何防守（避免被认定为「轻率」）\n4. 约定限额 vs 法定限额：合同约定的限额高于法定时怎么处理？低于法定时是否无效？（提示：我国法下低于法定限额的约定可能无效，请核对条号）\n5. 最后给我《赔偿责任限额计算表》模板，填入货物件数/毛重即可算出上限"},
+ {t:"索赔时效、诉讼管辖与第 7 周复盘",
+  f:["海上货物运输的索赔时效：1 年（自承运人交付或应当交付货物之日起，须核对条号）","时效中断与延长：向承运人提交索赔通知并索取时效延长协议的实务操作","海事诉讼管辖：海事法院专属管辖，诉前扣船与海事请求保全"],
+  o:"《索赔时效管理表》+ 一份《索赔通知与时效延长协议》模板",
+  p:"请讲透海运索赔的时效与程序问题：\n\n1. 时效期间与起算：我国《海商法》下海上货物运输索赔的 1 年时效（须核对条号）、起算点、与《民法典》3 年普通诉讼时效的关系\n2. 时效中断与延长：\n   · 提起诉讼、提交仲裁、被索赔人同意履行分别产生什么效果\n   · 实务中最有效的手段：在时效届满前取得承运人/对方签署的《时效延长协议》（time extension agreement），给我一份中英对照模板\n   · 向实际承运人追偿时的时效特殊规则（追偿时效）\n3. 索赔通知（notice of claim）：\n   · 货损明显时收货人应在何时提交书面通知？不明显时呢？（请核对条号与时限）\n   · 未在规定期限内通知的法律后果（是否视为交付完好？我国法与海牙规则的差异）\n   · 给我一份《索赔通知函》中英对照模板\n4. 海事诉讼：海事法院管辖范围、诉前财产保全与扣船、证据保全\n5. 最后做第 7 周自测：出 10 道题（单选 5 + 案例 3 + 简答 2）"}
+ ]},
+
+{w:8,st:2,th:"海上公约体系：海牙 / 维斯比 / 汉堡 / 鹿特丹",goal:"四个公约是四套不同的风险分配方案。要能用一句话说清每个公约「偏向谁」，并在看到提单背面的首要条款（Clause Paramount）时立刻判断适用哪套",
+ wk:{t:"周末实战⑧：读一份真实提单背面条款并写出风险报告",d:"找一份（或让 AI 生成一份）船公司提单背面条款全文，做逐条解读：首要条款援引的是什么规则、责任限额多少、管辖权与仲裁条款在哪、有没有对承运人特别有利的条款（自由转船、舱面货、危险品处置、留置权、共同海损）。",
+ p:"我要读一份真实的海洋提单背面条款。请生成一份典型的船公司提单背面条款（英文原文 + 中文对照），然后：\n\n1. 逐条解读（至少 15 条）：给出每条的中文意思、对承运人有利还是不利、我方作为货主/货代应该警惕什么\n2. 重点解剖以下条款：\n   · Clause Paramount（首要条款）：援引的是海牙、海牙-维斯比还是本国法？决定了什么\n   · 责任限制条款：限额是多少，与公约比是高是低\n   · 自由转船条款（transshipment）、舱面货条款（deck cargo）、危险品条款\n   · 留置权条款（lien）：承运人可以对货物行使留置权的范围（运费、滞箱费、共同海损分摊）\n   · 管辖权/仲裁条款：在哪打官司、适用什么法\n   · 共同海损条款（general average）与约克-安特卫普规则\n3. 给我一份《提单背面条款风险评级表》：红（高危）/ 黄（需谈判）/ 绿（可接受）\n4. 最后：如果我方是货代，客户拿着这样的提单来问「这对我意味着什么」，我该怎么用 5 句话说清"},
+ d:[
+ {t:"海牙规则：船东的胜利与货主的妥协",
+  f:["1924 年《统一提单若干法律规定的国际公约》（海牙规则），我国未加入但影响巨大","两大支柱：承运人的最低义务（适航 + 管货）+ 广泛的免责清单（含航海过失免责）","单位责任限制：每件或每单位 100 英镑（金币）"],
+  o:"逐条笔记 + 《海牙规则核心机制图》",
+  p:"请讲解 1924 年海牙规则（Hague Rules）：\n\n1. 产生背景：为什么需要统一提单规则（19 世纪船东滥用免责条款）\n2. 核心机制拆解：\n   · 最低义务（不可通过合同减轻）：适航义务、管货义务\n   · 免责清单 17 项，重点是航海过失免责与火灾免责\n   · 单位责任限制：每件或每单位 100 英镑（请注明后续金本位崩溃后的换算争议）\n   · 诉讼时效 1 年\n   · 契约自由的限制：任何减轻承运人责任的条款无效\n3. 适用范围：提单、缔约国、不适用于租船合同与活体动物/舱面货（可约定）\n4. 我国与海牙规则的关系：我国未加入海牙规则，但《海商法》大量借鉴了它的制度设计，请说明具体对应关系\n5. 最后：海牙规则最被诟病的三点是什么"},
+ {t:"维斯比规则与汉堡规则：修修补补 vs 推倒重来",
+  f:["1968 年维斯比规则（海牙-维斯比）：提高限额（10000 金法郎/件 或 30 金法郎/公斤）、引入集装箱「件」的计算规则、善意第三人保护","1978 年汉堡规则：取消航海过失免责、改为完全过失责任制、迟延交付责任、提高限额（835 SDR/件 或 2.5 SDR/公斤）","1979 年 SDR 议定书：把金法郎换算为 SDR（666.67 SDR/件 或 2 SDR/公斤）"],
+  o:"《海牙 / 维斯比 / 汉堡三规则对照表》",
+  p:"请对比海牙、海牙-维斯比、汉堡三个规则，输出完整对照表：\n\n对比维度至少包括：通过年份与生效年份、承运人的责任基础（不完全过失 vs 完全过失）、免责清单、航海过失免责有无、火灾免责有无、责任限额（含 SDR 换算后的具体数字）、件数计算（集装箱条款）、迟延交付、舱面货、活体动物、时效（1 年 vs 2 年）、管辖权、适用范围、缔约国数量与代表性国家、我国的态度\n\n另外请重点讲清：\n1. 维斯比的集装箱条款（container clause）：一个集装箱在提单上未载明内装件数时算几件？载明时怎么算？这个规则为什么重要\n2. 汉堡规则的完全过失责任制：举证责任怎么分配（承运人须证明自己无过失），为什么航运大国普遍不加入\n3. 1979 年 SDR 议定书的换算：把金法郎换成特别提款权后，666.67 SDR/件与 2 SDR/公斤是怎么来的\n4. 最后给我一张决策图：给定一批货（件数、毛重、货值），如何判断适用哪个规则对承运人/对货主更有利"},
+ {t:"鹿特丹规则：未生效的未来规则",
+  f:["2008 年《联合国全程或部分海上国际货物运输合同公约》（鹿特丹规则），截至今日尚未生效（生效条件与缔约国数量须核对）","三大突破：海运+（maritime plus）适用范围扩展至多式联运、批量合同（volume contract）特别规则、电子运输记录","责任限额进一步提高（875 SDR/件 或 3 SDR/公斤），取消航海过失免责"],
+  o:"《鹿特丹规则要点与新机制清单》+ 一份「对我方业务的潜在影响」评估",
+  p:"请讲解 2008 年鹿特丹规则（Rotterdam Rules）：\n\n1. 基本状况：全称、通过时间、生效条件、截至目前缔约国情况（请注明「须核对最新数据」）、我国的态度\n2. 三项最重要的制度创新逐个讲透：\n   · 海运+（maritime plus）：适用范围从「港到港」扩展到「门到门」，对多式联运经营人意味着什么\n   · 批量合同（volume contract）：允许大货主与承运人在一定条件下背离公约的强制性规定，这个规则的商业含义与风险\n   · 电子运输记录（electronic transport records）：电子提单的法律地位\n3. 其他重要变化：责任限额（875 SDR/件 或 3 SDR/公斤）、取消航海过失免责、控制权（right of control）、货物交付规则（无单放货的新规则）\n4. 虽然未生效，为什么我还要学它？（提示：它对各国国内法修订的影响、对未来合同条款的示范作用）\n5. 最后给我一份《对我方业务的潜在影响评估》：如果鹿特丹规则生效，我方的合同与保险要改什么"},
+ {t:"首要条款与提单的法律适用：看到 Clause Paramount 怎么办",
+  f:["Clause Paramount（首要条款）：提单背面援引适用某公约或某国法（如美国 COGSA）的条款","《海商法》第四章的强制适用：我国法下进出中国港口的海上货物运输合同适用第四章（请核对条号）","美国 COGSA（海上货物运输法）：为什么美国航线提单常援引它"],
+  o:"《首要条款识别与适用判断流程》+ 一份《常见国家/航线提单首要条款速查表》",
+  p:"请讲透提单的法律适用判断：\n\n1. 一张判断流程图：拿到提单后，按什么顺序判断适用哪套规则？\n   · 看首要条款援引了什么\n   · 看装货港/卸货港所在国的强制适用规定\n   · 看是否有法院地/仲裁地的强制规则\n   · 都不明确时适用什么\n2. 我国《海商法》第四章的强制适用范围（请核对条号）：哪些海上货物运输合同强制适用？合同当事人能否选择其他法律？选择外国法的效力如何\n3. 美国 COGSA 专题：\n   · 适用范围（对外贸易中进出美国港口的海上运输）\n   · 责任限额（每件 500 美元，请注明是否修订须核对）\n   · 与海牙规则的关系\n   · 为什么美国航线提单几乎都援引 COGSA（提示：COGSA 限额低于海牙-维斯比时的策略）\n4. 给我一份《常见国家/航线提单首要条款速查表》：美国、欧盟主要港口、日本、东南亚、中南美、非洲，各自常见的首要条款与责任限额\n5. 最后：我方在签发 House B/L 时，首要条款应该怎么写才对我方最有利"},
+ {t:"复盘：海上公约体系与第 8 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：看到一张提单，30 秒内判断出适用哪套规则、责任上限多少"],
+  o:"《海上货物运输规则速查手册》定稿",
+  p:"第 8 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：四大公约的责任基础、免责、限额数字、时效、适用范围、首要条款\n2. 错题讲透，并把每个错题对应的「实务后果」说清楚\n3. 帮我整合本周产出物成《海上货物运输规则速查手册》，核心是一张「给定货物参数 → 适用规则 → 责任上限」的速算表\n4. 最后给我三个必须背下来的数字（SDR/件、SDR/公斤、时效）和一句记忆口诀"}
+ ]},
+
+{w:9,st:2,th:"空运、铁路、公路：三大非海运责任制度",goal:"海运之外的三种方式各有各的规则，限额和时效完全不同。这一周要把四种方式的责任制度并排摆在一起，形成一张速查表",
+ wk:{t:"周末实战⑨：四种运输方式的责任对比与方案设计",d:"设定同一批货（1 吨电子产品，货值 8 万美元，深圳→华沙）：分别走空运、中欧班列、卡航、海运，做出四种方案的责任与风险对比：限额、时效、免责、保险需求、出现货损后向谁索赔。最后给出你推荐哪种并说明理由。",
+ p:"我要做四种运输方式的横向对比。设定：1 吨电子产品（含锂电池），货值 8 万美元，深圳 → 华沙。\n\n请输出：\n1. 《四种方案责任对比表》：空运 / 中欧班列（铁路）/ 卡航（公路）/ 海运，维度包括：适用公约与我国是否为缔约国、责任基础（完全过失/不完全过失）、责任限额（含具体 SDR 数字与折算）、免责事由数量、索赔与诉讼时效、管辖权选项、单证是否物权凭证\n2. 逐方案计算：如果整批货全损，各方案下承运人最多赔多少？与货值 8 万美元的缺口有多大？这个缺口怎么补（保险 / 保价 / 合同条款）\n3. 带电产品对各方案的特殊影响：空运 IATA DGR 与 PI965-970、铁路的禁限规定、公路 ADR、海运 IMDG\n4. 混装与多式联运：如果我方提供「空运+卡车」或「海运+铁路」的组合，责任怎么认定（网状责任制 vs 统一责任制），给我条款建议\n5. 最后：你推荐哪种方案？给我三条理由和一份给客户的对比说明话术"},
+ d:[
+ {t:"蒙特利尔公约 1999：空运的责任制度",
+  f:["1999 年《统一国际航空运输某些规则的公约》（蒙特利尔公约），我国于 2005 年批准（生效日期须核对）","责任限额：每公斤 22 特别提款权（SDR）（经 2019 年复审调整后的数额，须核对现行值）；延误限额另有规定","索赔时效：2 年（自到达之日或应当到达之日起）"],
+  o:"逐条笔记 + 《蒙特利尔公约责任限额速算表》",
+  p:"请系统讲解 1999 年蒙特利尔公约（Montreal Convention）：\n\n1. 适用范围：什么是「国际航空运输」（当事人约定在两个缔约国境内有出发地与目的地，或在一个缔约国境内但约定经停另一国）\n2. 三种责任类型逐个讲透：\n   · 货物毁损、遗失、灭失：严格责任但有免责事由，限额为每公斤 22 SDR（请注明该数额的复审调整机制与现行值须核对）\n   · 延误：承运人对延误造成的损失承担责任，除非证明已采取一切合理措施，限额另有规定（请核对数额）\n   · 旅客与行李（了解即可）\n3. 责任限制的突破：什么情况下承运人丧失限额保护（请核对条号与表述）\n4. 单据：航空货运单（air waybill）的内容要求、不是物权凭证、电子货运单的发展\n5. 索赔与诉讼：\n   · 收货时的异议期限（货物损坏/延误的通知时限，请核对条号与天数）\n   · 2 年诉讼时效的性质（是否为除斥期间，能否中止中断，这一点非常关键请讲透）\n   · 第五管辖权（fifth jurisdiction）：原告可以在哪五个法院起诉\n6. 最后给我《责任限额速算表》与一份《空运索赔要点清单》"},
+ {t:"空运实务：IATA 规则、危险品与航空公司的运输总条件",
+  f:["IATA（国际航空运输协会）的规则体系：TACT 运价手册、DGR 危险品规则、Cargo 2000/ULD 操作","航空公司运输总条件（Conditions of Carriage / Contract of Carriage）：责任限额通常低于公约，是否有效","带电产品（锂电池）空运：UN38.3、MSDS、PI965-970 包装说明"],
+  o:"《航空公司运输总条件审查清单》+ 一份《带电产品空运合规清单》",
+  p:"请讲透空运的实务规则：\n\n1. IATA 规则与公约的关系：IATA 是行业协会规则，不是法律。合同里援引 IATA 规则时，与蒙特利尔公约冲突怎么办？给我 3 个判断要点\n2. 航空公司运输总条件（Conditions of Carriage）专题：\n   · 为什么航空公司通常在总条件里约定比公约更严格的条件（例如更短的索赔通知期、更低的延误赔偿）\n   · 这些约定是否有效？（提示：公约强制性规定 vs 当事人意思自治，蒙特利尔公约允许在货物领域通过合同另行约定部分事项，请核对条号）\n   · 给我一份《航空公司运输总条件审查清单》15 项\n3. 锂电池空运专题：\n   · UN38.3 测试报告是什么、谁出、有效期\n   · MSDS（安全数据表）的作用与常见造假风险\n   · IATA DGR 包装说明 PI965/966/967/968/969/970 的适用区分\n   · 瞒报与谎报的法律后果（行政处罚 + 刑事风险 + 保险拒赔）\n4. 最后给我《带电产品空运合规清单》20 项（可直接给操作岗）"},
+ {t:"中欧班列：SMGS 与 CIM 双轨制",
+  f:["国际铁路货物联运的两套体系：SMGS（《国际铁路货物联运协定》，我国于 1954 年加入）与 CIM（COTIF 公约附录 B，我国未加入）","中欧班列的运单实践：SMGS 运单全程 + 在白俄/波兰边境换 CIM 运单，或用统一运单（CIM/SMGS 统一运单）","责任限额与时效：两套规则不同，换单带来的法律断裂"],
+  o:"《中欧班列运输责任地图》+ 一份《铁路运单审查清单》",
+  p:"请讲透中欧班列的运输法律体系（这是本计划中最「中国特有」也最实用的一块）：\n\n1. 两套体系对比表：SMGS 与 CIM 的制定主体、成员范围、我国加入情况、适用范围、运单格式、责任基础、责任限额（请列出具体数额并标注须核对）、索赔时效、管辖与争议解决\n2. 中欧班列的实务操作：\n   · 为什么需要在边境换单（1520mm 宽轨与 1435mm 标准轨的物理换装 + 法律体系的切换）\n   · 换单时发生货损，责任怎么认定？这是实务中的高发争议点，请讲透\n   · CIM/SMGS 统一运单（consignment note）的推行情况与意义\n3. 铁路运单的法律性质：不是物权凭证，能不能用于信用证议付？为什么铁路运单融资难？近年有无改革（请注明「须核对最新政策」）\n4. 索赔实务：铁路货损怎么取证（商务记录 / 货运记录 / 事故记录）、向谁索赔（发送路/到达路/责任人）、时效与程序\n5. 最后给我《中欧班列运输责任地图》：从西安/重庆/成都出发到杜伊斯堡/马拉舍维奇，沿线法律断层在哪里"},
+ {t:"CMR 公约：国际公路货物运输",
+  f:["1956 年《国际公路货物运输合同公约》（CMR），我国未加入但中欧卡航实务中常约定适用（须核对我国是否为缔约国）","责任限额：毛重每公斤 8.33 SDR（须核对现行值）；绝对免责事由与相对免责事由","时效：一般 1 年，故意不当行为（wilful misconduct）为 3 年"],
+  o:"《CMR 公约速查表》+ 一份《公路运单填写与保留操作指引》",
+  p:"请系统讲解 CMR 公约（国际公路货物运输合同公约）：\n\n1. 适用范围：什么是「国际公路运输」（车辆装卸地与目的地在两个不同国家，且至少一国为缔约国）、不适用于什么（邮政、殡葬、搬家）\n2. 运单（consignment note）专题：\n   · 三份联单（发货人、收货人、承运人）各自作用\n   · 必须记载的事项与缺失的后果\n   · 运单上的保留（reservations）：承运人发现件数/包装异常时怎么批注才有效？给我 3 个正确与错误的批注示例\n   · 运单的证据效力：证明什么、不能证明什么（提示：运单记载是表面证据，可以反证）\n3. 责任制度：\n   · 责任基础与免责事由（绝对免责：托运人过错、货物固有缺陷、不可抗力；相对免责：特殊风险）\n   · 责任限额：8.33 SDR/公斤（请标注须核对现行值），在什么情况下可能突破\n   · 延误与「有权处置货物」的规则\n4. 索赔与时效：\n   · 明显货损的异议期限（7 天，须核对）与不通知的后果\n   · 1 年 / 3 年时效的区分与「故意不当行为」的认定难度\n   · 连环运输（successive carriers）中向谁索赔\n5. 最后给我《CMR 运单填写与保留操作指引》"},
+ {t:"复盘：四种运输方式责任总表与第 9 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：一票货走哪种方式，责任限额是多少、多久内必须索赔"],
+  o:"《四种运输方式责任总表》（贴墙版）",
+  p:"第 9 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：蒙特利尔公约限额与时效、空运危险品、中欧班列双体系、CMR 限额与异议期\n2. 错题讲透\n3. 帮我做一张《四种运输方式责任总表》，维度：运输方式 / 适用公约 / 我国是否缔约 / 责任基础 / 责任限额 / 免责事由数量 / 索赔通知期限 / 诉讼时效 / 单证是否物权凭证 / 管辖特点\n4. 最后给我一句口诀，让我能记住四个限额数字与四个时效数字"}
+ ]},
+
+{w:10,st:2,th:"多式联运与货代的法律地位：你是代理人还是承运人",goal:"这是货代法务的生死线。同一个事故，认定为代理人不用赔，认定为缔约承运人全额赔。这一周要把身份认定标准和合同条款彻底搞透",
+ wk:{t:"周末实战⑩：审查我方标准合同与标准交易条件，判定身份风险",d:"把我方（货代）现在用的标准服务协议、报价单背面条款、提单/运单样张全部过一遍，判定三件事：① 合同把我方定性成代理人还是承运人？② 如果不一致（合同说代理，但签发了 FBL/提单），实际会被认定成什么？③ 给出修改方案。",
+ p:"我要审查我方（国际货代）的标准合同文本，判定我们的法律身份风险。\n\n设定：我方标准协议写的是「代理安排运输」，但我方以自己的名义签发 House B/L 和 FIATA FBL，向客户收取「门到门全程运费」（all-in rate），并对外委托实际承运人。\n\n请输出：\n1. 《身份认定要素表》：法院/仲裁庭在判断货代是代理人还是缔约承运人时，会看哪些要素？至少列出 10 项（如何签约、如何收费、是否签发自己的运输单证、是否承担全程责任、分包商由谁选定、报价构成是否披露、发票怎么开、沟通中的表述、是否有自己的费率表、是否承担运输风险），每项给出「指向代理人 / 指向承运人」的倾向\n2. 按这 10 项给本案打分，判断我方实际会被认定为什么身份，给出置信度\n3. 两种身份下的责任对比：同一票货全损（货值 10 万美元），代理人 vs 缔约承运人分别赔多少、能不能享受责任限制\n4. 给我一套《身份锁定条款》中英对照：如果我方想当代理人怎么写、想当缔约承运人怎么写、以及为什么「骑墙」最危险\n5. 最后给我一份《我方标准文本身份风险整改清单》"},
+ d:[
+ {t:"多式联运：网状责任制 vs 统一责任制",
+  f:["多式联运（multimodal transport）：两种以上不同运输方式，由多式联运经营人（MTO）负责全程","网状责任制（network liability）：货损发生在哪一段适用哪一段的规则（局限：隐藏损失时无法确定区段）","统一责任制（uniform liability）：全程适用一套规则；修正统一责任制（modified uniform）"],
+  o:"《多式联运责任制度对照表》+ 一份《多式联运合同责任条款模板》",
+  p:"请讲透多式联运的责任制度：\n\n1. 三种责任制度对比：网状责任制 / 统一责任制 / 修正统一责任制。每种给出：定义、运作方式、对经营人的利弊、对货主的利弊、代表规则（如《联合国国际货物多式联运公约》未生效、多式联运单证规则、鹿特丹规则的设计）\n2. 关键难点：隐藏损失（concealed damage）——货损发生在哪一段无法确定时怎么办？各制度的处理方式，给我 3 个案例\n3. 我国法的规定：《海商法》多式联运特别规定与《民法典》合同编运输合同章的衔接（请核对条号），多式联运经营人的责任与区段承运人的追偿\n4. 实务条款设计：\n   · 我方作为 MTO 时，责任条款应该选网状还是统一？（提示：取决于各段限额高低与我方保险安排）\n   · 给我三套中英对照的责任条款模板（网状版 / 统一版 / 混合版）\n   · 追偿条款：我方赔了客户之后向区段承运人追偿的条款怎么写\n5. 最后给我《多式联运经营人风险清单》"},
+ {t:"货代身份之争：代理人还是缔约承运人",
+  f:["代理人的法律效果：只对「选任与指示」负责，不对运输结果负责，收取佣金","缔约承运人（contracting carrier / principal）的法律效果：对全程负责，可享受责任限制，收取运费差","认定标准：合同措辞 + 收费方式 + 单证签发 + 对外委托方式 + 交易习惯"],
+  o:"《身份认定要素表》+ 一份《身份锁定条款库》（中英对照）",
+  p:"请深度拆解货代身份认定的问题（这是货代法务的核心战场）：\n\n1. 两种身份的法律后果对比表：对客户的责任范围、能否享受责任限制、能否援引免责事由、索赔时效、开票与税务、破产风险\n2. 《身份认定要素表》10+ 项，每项说明：这个要素在法院眼里意味着什么、权重多高。至少覆盖：\n   · 合同名称与措辞（代理 vs 承运）\n   · 收费方式（佣金 vs 运费差 vs all-in rate）\n   · 是否签发自己的运输单证（House B/L、FBL）\n   · 是否收取全程运费并自行定价\n   · 分包商由谁选定、合同以谁的名义签\n   · 是否向客户披露实际承运人身份与运费构成\n   · 发票项目（代理运费 vs 运输费）\n   · 沟通过程中的表述（邮件、报价单）\n3. 给我 4 个真实类型的判例：认定为代理人的 2 个、认定为缔约承运人的 2 个，每个说明决定性事实\n4. 《身份锁定条款库》中英对照三套：代理人版（含披露条款、免责条款）、缔约承运人版（含责任限制条款）、以及「明确定位 + 备选身份」的过渡版\n5. 最后：给我司业务设计的三条硬规则"},
+ {t:"NVOCC、House B/L 与无船承运业务",
+  f:["NVOCC（无船承运人）：不经营船舶但以承运人身份承运货物，签发自己的提单（House B/L）","两套提单：船公司签发的 Master B/L（船东单）与货代签发的 House B/L（货代单），换单（switch B/L）的操作与风险","我国《国际海运条例》下的无船承运业务：提单登记与保证金（须核对现行规定）"],
+  o:"《NVOCC 合规清单》+ 一份《House B/L 签发审核清单》",
+  p:"请讲透无船承运业务（NVOCC）与 House B/L：\n\n1. NVOCC 的业务与法律结构：对客户是承运人、对船公司是托运人，这种「双重身份」如何运作，法律关系图请画出来（文字版）\n2. 我国监管（须核对现行规定）：\n   · 《国际海运条例》下无船承运业务的提单登记与保证金制度，目的与数额\n   · 未登记就签发提单的后果\n   · 保证金能否被索赔、什么情况下动用\n3. Master B/L 与 House B/L：\n   · 两份提单的流转、收货人设置、目的港放货流程\n   · 换单（switch B/L）：为什么要换，法律风险在哪（涉嫌规避制裁、规避贸易限制时可能构成犯罪）\n   · 目的港放货时两套单如何配合作业，出错的后果\n4. 签发 House B/L 的内部管控：\n   · 谁有权签发、签前必须核对什么（是否已收到货、是否有 Master B/L、客户是否结清费用、是否涉及制裁名单）\n   · 给我一份《House B/L 签发审核清单》20 项\n5. 最后：我方在接收客户货物但尚未装船时，签「收货待运提单」还是「已装船提单」？两种选择的风险差别"},
+ {t:"FIATA 示范规则与标准交易条件（STC）",
+  f:["FIATA（国际货运代理协会联合会）示范规则：FIATA Model Rules for Freight Forwarding Services","标准交易条件（Standard Trading Conditions, STC）：印在报价单背面或引用在合同里，界定责任范围与限额","STC 的效力问题：未经单独协商的格式条款，能否约束客户？"],
+  o:"《标准交易条件（STC）条款库》+ 一份《STC 有效性加固方案》",
+  p:"请讲透货代的标准交易条件（STC）：\n\n1. FIATA 示范规则讲了什么：适用范围、货代作为代理人/作为本人的规则、责任限额、保险、留置权、时效、争议解决。给我核心条款的中文摘要\n2. STC 应该包含哪些内容？给我一份完整的《标准交易条件》目录清单（至少 25 条），每条一句话说明作用\n3. 效力问题（这是实务中最常见的败诉原因）：\n   · STC 作为格式条款，在我国《民法典》第 496-497 条下的效力要求：提示说明义务、不合理免除减轻责任的无效情形\n   · 「印在背面」够不够？引用式（incorporation by reference）是否有效？\n   · 什么时候法院认定 STC 未订入合同（例如首次交易未出示、客户未确认）\n4. 《STC 有效性加固方案》：六种加固手段（首页醒目提示 + 客户签字确认页 + 电子勾选留痕 + 合同正文援引 + 邮件附件 + 长期交易习惯），每种给出具体做法与证据留存方式\n5. 最后给我一份可直接用的《标准交易条件》中英对照核心条款（责任、限额、免责、留置权、时效、法律适用与争议解决）"},
+ {t:"复盘：责任归属判断与第 10 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：出事之后，30 秒内判断出「我是不是要赔」"],
+  o:"《责任归属判定手册》定稿",
+  p:"第 10 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：多式联运三种责任制、货代身份认定、NVOCC、House B/L、STC 效力\n2. 错题讲透\n3. 帮我做一张《责任归属判定流程图》：出事 → 第一步看我方身份 → 第二步看适用哪套规则 → 第三步看责任限额 → 第四步看免责 → 第五步看时效。每一步列出要问的问题与要拿的证据\n4. 最后给我司的合同文本三条必改建议（按优先级排序）"}
+ ]},
+
+{w:11,st:2,th:"海关与通关（中国侧）：货被扣了怎么办",goal:"海关是跨境物流里唯一能让一票货瞬间归零的环节。这一周要掌握归类、估价、原产地、监管方式、查验与违规责任",
+ wk:{t:"周末实战⑪：一票被查验扣货的应急处置方案",d:"设定：一票 9810 出口海外仓的货物在口岸被查验，原因是申报品名与实际不符（申报「塑料制品」，实为带电池的电子配件），海关要求改单并启动调查。做一份完整的应急处置方案：72 小时内要做什么、可能的定性（申报不实 vs 走私）、处罚区间、如何争取从轻、后续整改。",
+ p:"我要做一票海关查验扣货的应急处置方案。设定：深圳口岸，9810 跨境电商出口海外仓，申报品名「塑料制品」共 500 箱，海关查验发现实货为带锂电池的电子配件，涉嫌归类与品名申报不符，货值约 30 万元人民币，海关暂扣并要求改单与调查。\n\n请输出：\n1. 《72 小时应急处置时间轴》：0-4h / 4-24h / 24-72h 各做什么，谁做，留什么证据\n2. 定性分析：可能被认定为「申报不实」（违反海关监管规定）还是「走私行为」？区分标准是什么（主观故意、危害程度、偷逃税款金额）？各自的处罚区间（请核对现行《海关法》与《海关行政处罚实施条例》的具体条款与罚则）\n3. 从轻、减轻与不予处罚的情节：哪些情形可以争取？主动披露（advance disclosure）制度怎么用？给我《主动披露报告》的框架\n4. 滞报滞纳、货物退运、销毁、拍卖的处置路径与成本\n5. 后续整改：报关复核机制、品名与 HS 编码管理、供应商资料核验、内部问责。给我一份《报关合规整改方案》"},
+ d:[
+ {t:"海关法框架与报关主体",
+  f:["《海关法》与《海关行政处罚实施条例》：海关的职权、报关单位的义务、违规行为的类型","报关单位：进出口货物收发货人 vs 报关企业，注册登记与信用管理（AEO）","报关员/报关委托：委托报关的法律关系，报错了谁担责"],
+  o:"《海关监管法规速查表》+ 一份《报关委托关系审查清单》",
+  p:"请梳理中国海关监管的法律框架（须核对现行有效版本）：\n\n1. 法规层级：《海关法》→《进出口关税条例》→《海关行政处罚实施条例》→ 海关总署规章与公告。逐层说明管什么\n2. 报关单位制度：\n   · 进出口货物收发货人 vs 报关企业的注册登记条件与差别\n   · 海关信用管理：AEO 高级认证 / 一般认证 / 失信企业，各自的便利与限制，失信的后果\n   · 报关差错率与信用等级的关系\n3. 委托报关的法律关系：\n   · 我方作为货代，是接受谁的委托？委托书的效力与形式要求\n   · 因申报错误被处罚时，处罚对象是收发货人还是报关企业？责任怎么划分？给我 3 个判例类型\n   · 《报关委托关系审查清单》15 项\n4. 海关的职权与边界：查验、扣留、稽查、查询账户、行政处罚。企业在被稽查时的权利义务\n5. 最后给我一份《海关现场查验应对 SOP》"},
+ {t:"HS 归类、完税价格与原产地",
+  f:["HS 编码（《商品名称及编码协调制度》）：8 位/10 位编码，归类总规则六条","完税价格：成交价格法为主，五种估价方法与调整项目（运费、保险费、佣金、特许权使用费）","原产地：完全获得 vs 实质性改变，优惠原产地（RCEP、FORM E、FORM F）与非优惠原产地"],
+  o:"《HS 归类与估价合规清单》+ 一份《原产地证申领与核查表》",
+  p:"请讲透海关三大技术：归类、估价、原产地：\n\n1. HS 归类：\n   · 归类总规则六条逐个讲（条文 + 举例）\n   · 预裁定（advance ruling）制度：怎么申请、效力、对企业有什么好处\n   · 归类争议的处理与后果（补税、滞纳金、处罚、影响退税）\n   · 给我《HS 归类合规清单》15 项\n2. 完税价格：\n   · 成交价格法的构成与调整项目（哪些要计入：佣金、容器费、包装费、协助、特许权使用费、转售收益）\n   · 与跨境物流最相关的：运费、保险费如何计入完税价格（进口 vs 出口的差别）\n   · 低报货值的风险与后果（涉税 + 涉外汇 + 涉退税）\n3. 原产地：\n   · 非优惠原产地规则（用于反倾销、贸易统计、原产地标记）\n   · 优惠原产地规则：RCEP、中国-东盟（FORM E）、亚太贸易协定等，各自的产品特定规则（PSR）与累积规则\n   · 原产地证申领、核查、退证查询（verification）的风险\n4. 最后给我一份《出口报关单证自查清单》：品名、规格、 HS、数量、重量、价格、币制、成交方式、境内货源地、指运港逐项"},
+ {t:"跨境电商监管方式与海外仓出口",
+  f:["0110 一般贸易、9610 直邮出口、9710 B2B 直接出口、9810 出口海外仓、1210 网购保税进口、1239 保税电商A","9610/9710/9810 的清单与报关单模式、退货流程、退税政策差异","海外仓出口（9810）的特殊性：货物先出后进，销售在境外完成，退货与销毁的合规处理"],
+  o:"《跨境电商监管方式选择决策表》+ 一份《9810 海外仓出口合规清单》",
+  p:"请系统对比跨境电商的监管方式（须核对现行政策，跨境电商政策更新极快）：\n\n1. 《监管方式对比表》：0110、9610、9710、9810、1210、1239。维度：适用业务形态、申报主体、通关模式（清单 vs 报关单）、税收政策（是否享受退税/免税/综合税）、外汇收付、退货机制、对海外仓的依赖度\n2. 9810 出口海外仓专题：\n   · 「先出后进」的业务逻辑：货物以出口形式进入海外仓，销售发生在境外，资金流与货物流不匹配带来的合规难点\n   · 退货复运进境：能不能退回来？退运免税的条件与流程（请核对现行规定）\n   · 境外销毁与弃货的合规处理与证据留存\n   · 给我《9810 海外仓出口合规清单》20 项\n3. 9610 直邮专题：清单核放、汇总申报、退货（9610 退货中心仓）\n4. 风险提示：跨境电商渠道的知识产权侵权（海关依职权保护与被动保护）、低报价格、刷单与虚假交易、二次销售与海外仓转口\n5. 最后：给我一套《监管方式选择决策表》，按客户类型与货物流向推荐适用代码"},
+ {t:"保税、加工贸易与特殊监管区域",
+  f:["保税物流：保税仓库、出口监管仓库、保税区、综合保税区、保税物流中心（B型）","跨境电商保税备货（1210）：货物先进入保税区，销售后出区，增值税与消费税政策","加工贸易：手册与账册、单耗管理、内销与边角料处理"],
+  o:"《保税与特殊监管区域适用指南》+ 一份《保税业务合规清单》",
+  p:"请讲透保税与特殊监管区域制度（须核对现行政策）：\n\n1. 一张对照表：保税仓库、出口监管仓库、保税区、综合保税区、保税物流中心（A/B 型）、跨境电商监管中心。每项：功能定位、能做什么业务、存储期限、监管要求、适合什么客户\n2. 1210 保税备货模式：\n   · 业务流程（货物入区 → 订单 → 清单 → 出区 → 送达）与「一线放开、二线管住」的含义\n   · 税收政策（综合税、单次限值、年度限值，须核对现行数值）\n   · 退货与销毁的处理\n3. 加工贸易（了解）：手册/账册、单耗、内销补税。为什么跨境物流商容易在不知情的情况下卷入加工贸易违规\n4. 特殊监管区域的合规红线：货物出区不入账、擅自内销、串换货物、仓储超期\n5. 最后给我《保税业务合规清单》18 项与一份《保税仓储服务协议特殊条款清单》"},
+ {t:"复盘：中国侧海关合规与第 11 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：我的客户在报关上会不会出事，出事了我方要不要担责"],
+  o:"《中国侧海关合规手册》定稿",
+  p:"第 11 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：报关主体与责任、归类与估价、监管代码、保税、查验应对\n2. 错题讲透\n3. 帮我起草《报关合规管理制度》第一版，至少包含：客户资料核验（三证、产品信息、HS 编码）、单证复核双人制、敏感货物清单、查验应急 SOP、处罚台账与整改闭环\n4. 最后给我一条判断原则：什么情况下我方（货代/海外仓）会为客户的报关错误买单，什么情况下不会"}
+ ]},
+
+{w:12,st:2,th:"海关与通关（欧美侧）：目的国才是真正的战场",goal:"货物到港清不了关，损失往往比海运费大得多。这一周掌握欧盟与美国的清关规则、VAT 机制与清关代理的责任边界",
+ wk:{t:"周末实战⑫：设计一份《目的国清关失败应急预案》",d:"设定：一批货到汉堡港后无法清关（原因：客户 EORI 号失效、产品缺 CE 标识、申报价值被质疑）。做一份应急预案：72 小时内有哪些处置路径、各路径成本、滞港与滞箱费如何控制、货物最终如何处置、损失由谁承担。",
+ p:"我要设计一份《目的国清关失败应急预案》。设定：40HQ 到汉堡港，清关时发现客户的 EORI 号失效、产品无 CE 标识、海关质疑申报价值偏低，货物滞港。\n\n请输出：\n1. 《清关失败原因分类表》：文件问题（EORI/VAT/授权代表缺失）、产品合规问题（CE/GPSR/电池法/EPR）、估价问题、归类问题、知识产权问题、禁限类问题。每类给出：能否补救、补救时限、成本量级\n2. 72 小时处置决策树：补正申报 / 转关至其他口岸 / 退运 / 弃货 / 销毁 / 转第三方清关，每条路径的适用条件、流程、成本与风险\n3. 滞港费（demurrage）与滞箱费（detention）的控制：如何与船公司谈判减免、能否要求客户提供担保、保险合同是否覆盖\n4. 责任归属：这批货的清关失败损失，最终由客户、我方、还是清关代理承担？依据是什么？给我合同条款层面的建议\n5. 最后给我一份《目的国清关前置核查清单》：发货前必须确认的 25 项"},
+ d:[
+ {t:"欧盟海关法典 UCC 与 EORI",
+  f:["《欧盟海关法典》（UCC, Regulation (EU) No 952/2013）：2016.5.1 起适用，统一了成员国海关规则","EORI 号（Economic Operators Registration and Identification）：在欧盟从事海关业务的必备登记号","海关程序：进口（release for free circulation）、过境（transit）、仓储（customs warehousing）、转运"],
+  o:"《欧盟清关流程与主体对照表》+ 一份《EORI 与清关主体核查清单》",
+  p:"请讲透欧盟海关制度（须核对现行版本与英国脱欧后的差异）：\n\n1. 欧盟海关法典 UCC 的框架：主要管什么、与成员国国内法的关系、授权法案（Delegated Regulation）与实施细则（Implementing Regulation）的层级\n2. 海关程序逐个讲：自由流通放行（进口）、过境（T1/T2）、海关仓储、进境加工、出境加工、暂时进口、转运。每项：适用什么业务、对跨境物流意味着什么\n3. EORI 号：\n   · 谁需要（欧盟境内企业、非欧盟企业在某些情形下也需要）\n   · 怎么申请、由哪个成员国签发、失效的常见原因\n   · 英国脱欧后 GB EORI 与 XI EORI 的区别（北爱尔兰问题，须核对最新安排）\n4. 海关申报与担保：\n   · 谁可以做申报人（declarant）与间接代表（indirect representation）的法律后果差别（这一点极重要：直接代表 vs 间接代表的责任完全不同）\n   · 海关债（customs debt）由谁承担\n   · 全面担保（comprehensive guarantee）与延期缴纳\n5. 最后给我《EORI 与清关主体核查清单》15 项"},
+ {t:"欧盟 VAT、IOSS 与 OSS：150 欧元的门槛",
+  f:["进口增值税（import VAT）：货物进入欧盟时缴纳，可由进口商抵扣","IOSS（Import One Stop Shop）：价值 ≤ 150 欧元的 B2C 货物，卖家在销售环节收取 VAT 并通过一站式申报（须核对现行门槛）","OSS（One Stop Shop）：欧盟境内远程销售的 VAT 一站式申报；非欧盟卖家的税务代表"],
+  o:"《欧盟 VAT 与 IOSS 机制速查表》+ 一份《客户 VAT 合规核查清单》",
+  p:"请讲透欧盟的增值税机制（这是跨境电商与海外仓最容易踩的坑，须核对现行门槛与规则）：\n\n1. 进口增值税的运作：什么时候交、谁交、怎么抵扣、为什么很多中国卖家的 VAT 抵扣链条断了\n2. IOSS 专题：\n   · 适用范围（从第三国直接发运给欧盟消费者、货值门槛，须核对）\n   · IOSS 号怎么取得、是否需要欧盟中介（intermediary）\n   · 用了 IOSS 之后清关流程有什么不同\n   · 不用 IOSS 的后果（收货人被要求缴纳 VAT + 清关代理手续费，导致拒收）\n3. OSS 与境内远程销售：欧盟境内库存（海外仓）发货到欧盟消费者，适用什么规则？海外仓是否让卖家成为「在欧盟有固定机构」从而产生 VAT 登记义务\n4. 德国、波兰的特殊要求：\n   · 德国 § 22f UStG 平台的责任、税务证书（Bescheinigung）制度\n   · 波兰的 VAT 登记与 JPK 申报\n5. 最后给我《客户 VAT 合规核查清单》18 项，以及一份《就 VAT 问题提醒客户的函》模板"},
+ {t:"美国清关：ISF、HTS、CBP 与 301",
+  f:["ISF（Importer Security Filing，10+2）：装船前 24 小时申报（须核对时限与要素）","HTSUS 归类与关税、CBP（美国海关与边境保护局）的执法重点","301 关税、反倾销/反补贴税（AD/CVD）、第 321 条款小额免税（de minimis，须核对现行门槛与政策变化）"],
+  o:"《美国进口清关合规清单》+ 一份《ISF 申报要素核对表》",
+  p:"请讲透美国进口清关制度（须核对现行政策，近年变动频繁）：\n\n1. 进口清关流程：到港前的 ISF 申报 → 到港后报关（entry）→ 查验（exam）→ 放行（release）→ 清算（liquidation）。每一步的时限与责任主体\n2. ISF（10+2）专题：\n   · 10 项由进口商/发货人提供 + 2 项由承运人提供的要素，逐项列出\n   · 申报时限（装船前 24 小时，须核对）与违规罚款（liquidated damages，须核对其数额）\n   · 谁可以作为 ISF 申报人，我方作为货代能不能代报，代报的风险\n3. 关税与其他税费：HTSUS 归类、最惠国税率、301 关税（对华加征清单）、232（钢铝）、AD/CVD 反倾销反补贴税、MPF 与 HMF（商品处理费与港口维护费）\n4. 第 321 条小额免税（de minimis）：\n   · 规则与门槛（须核对现行数值与是否收紧）\n   · 为什么它对跨境电商直邮模式极其重要，收紧后对海外仓模式的影响\n5. 最后给我《美国进口清关合规清单》20 项与《客户进口商资质核查表》"},
+ {t:"清关代理的法律责任与赔偿封顶",
+  f:["清关代理（customs broker）的法律地位：委托人（direct representation）vs 间接代表（indirect representation）","在欧盟，间接代表下代理人与进口商对海关债承担连带责任（须核对法条）","赔偿封顶与除外：关税与税款通常不在赔偿范围内，因为那是客户的法定债务"],
+  o:"《清关代理协议核心条款库》+ 一份《清关责任自查清单》",
+  p:"请讲透清关代理的责任边界与协议设计：\n\n1. 两种代表方式的法律后果（这是清关协议里最关键的一条）：\n   · 直接代表（direct representation）：以委托人名义申报，责任由委托人承担\n   · 间接代表（indirect representation）：以自己名义申报，代理人与委托人共同承担海关债\n   · 我方应选择哪种？给我决策依据与条款表述（欧盟法下的规则须核对具体条款）\n2. 清关代理协议核心条款清单（20 项）：服务范围、客户资料真实性保证、申报错误的责任分配、税费的支付与垫付、查验配合、罚款与滞纳金由谁承担、留置权、责任上限、免责、终止、文件留存年限\n3. 责任上限设计：\n   · 常见写法（以服务费的一定倍数封顶 / 以固定金额封顶）\n   · 关税与税款为什么必须排除在赔偿范围外\n   · 客户欠税时海关向谁追：给我 3 个场景\n4. 文件留存：欧盟与美国各自要求留存多少年？留存什么？不留存的后果\n5. 最后给我一份《清关责任自查清单》，以及《清关代理协议》中英对照的关键条款文本"},
+ {t:"复盘：目的国清关与第 12 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：客户要发一批新货到一个新国家，我怎么判断能不能清关"],
+  o:"《目的国清关合规手册》定稿",
+  p:"第 12 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：UCC 与 EORI、IOSS/OSS、美国 ISF 与 301、清关代理责任\n2. 错题讲透\n3. 帮我整合本周产出物成《目的国清关合规手册》，核心是一张《新市场准入核查清单》（进入一个新国家前要查清的 30 项）\n4. 最后给我一句话：目的国清关最大的单点风险是什么"}
+ ]},
+
+{w:13,st:2,th:"阶段复盘：全链路责任地图",goal:"阶段二收口。把海/空/铁/公路四类规则、海关、保险全部串成一票货的完整责任地图，并做一次大案例演练",
+ wk:{t:"周末实战⑬：一次跨阶段的综合大案例演练",d:"综合案例：深圳 A 工厂委托我方将一个 40HQ（含 A、B 两家工厂的货，其中 B 的货带锂电池）运至德国杜伊斯堡，走中欧班列 + 卡车派送至波兰海外仓，再由海外仓做一件代发给德国消费者。途中在马拉舍维奇换装时发现部分货物破损，且波兰海关质疑 B 工厂货物的电池文件。客户拒绝付款并要求全额赔偿 18 万美元。\n\n请完成：① 责任归属分析；② 我方最大赔付敞口测算；③ 抗辩与反制策略；④ 向分包方追偿路径；⑤ 内部整改方案。",
+ p:"我要做一次综合大案例演练。设定：\n\n- 深圳 A 工厂（普货）+ B 工厂（带锂电池的电子配件）拼装一个 40HQ\n- 委托我方（国际货代，作为缔约承运人）运输至德国杜伊斯堡\n- 运输路径：深圳拖车 → 中欧班列（西安集结）→ 马拉舍维奇换装 → 卡车 → 波兰海外仓\n- 海外仓由我方波兰子公司运营，负责一件代发给德国消费者\n- 事件：在马拉舍维奇换装时部分货物破损；波兰海关对 B 工厂的电池文件提出质疑，货物滞留 12 天\n- 客户拒绝支付运费 3.6 万美元，并要求全额赔偿 18 万美元\n\n请输出：\n1. 《责任归属分析》：逐段拆解（拖车段、铁路段、换装段、卡车段、仓储段），每段适用什么规则、谁是第一责任人、我方身份、能否享受责任限制\n2. 《赔付敞口测算表》：每种可能定性下的赔付上限（用具体 SDR 数字计算），以及我方保险能否覆盖\n3. 《抗辩与反制策略》：对客户的 5 条抗辩 + 我方反索赔（运费、仓储费、滞期费）的依据\n4. 《追偿路径》：向拖车公司、铁路运营人、换装作业方、卡车公司、B 工厂分别追偿的依据、时效与优先级\n5. 《内部整改方案》：这票货暴露了哪 5 个流程漏洞，每个漏洞的修补动作与责任人\n6. 最后给我一份给 CEO 的《一页纸汇报》"},
+ d:[
+ {t:"全链路责任地图（一）：从揽货到装船",
+  f:["把 W7-W12 的规则按链路节点重新组织","每一段要能回答：适用规则、责任限额、时效、谁负责、怎么索赔","识别「责任空白段」（没有任何规则覆盖或规则冲突的段）"],
+  o:"《全链路责任地图（上半段）》——揽货到干线到达",
+  p:"请帮我绘制《全链路责任地图（上半段）》。节点：揽货签约 → 仓储集货 → 拖车 → 出口报关 → 装船/装机/装车 → 干线运输 → 到达目的港。\n\n每个节点给出：\n1. 参与主体与我方身份\n2. 适用的法律/公约（含我国是否缔约）\n3. 责任基础（完全过失 / 不完全过失 / 严格责任）\n4. 责任限额（具体数字与币种）\n5. 免责事由（列 3 条最主要的）\n6. 索赔通知期限与诉讼时效\n7. 关键单证与证据\n8. 这一段的高发事故类型\n\n另外请特别标出：\n· 责任空白段（例如：货物在堆场等待装船期间、集装箱在码头堆存期间）——这些段的责任归属为什么模糊\n· 责任叠加段（例如：多式联运换装时）——为什么容易互相推诿\n最后给我这三段「高危空白区」的合同条款补救方案"},
+ {t:"全链路责任地图（二）：目的港到签收",
+  f:["继续下半段：目的港卸货 → 清关 → 转运 → 海外仓 → 尾程派送 → 签收 → 退件","识别目的国特有的责任规则（欧盟、美国、英国）","退件与弃货：无人提货、拒收、销毁的法律与成本问题"],
+  o:"《全链路责任地图（下半段）》+ 一份《目的港弃货处置 SOP》",
+  p:"请绘制《全链路责任地图（下半段）》。节点：目的港卸货 → 目的国清关 → 港到仓转运 → 海外仓收货上架 → 仓储保管 → 拣货打包 → 尾程派送 → 签收（POD） → 退货与销毁。\n\n每个节点给出与上一天相同的 8 个维度。另外请重点讲透三个高发问题：\n\n1. 目的港无人提货 / 弃货：\n   · 产生的费用有哪些（滞箱费、滞港费、仓储费、销毁费）\n   · 承运人/货代能不能向发货人追偿？法律依据是什么？给我判例倾向\n   · 目的国法律对弃货的强制处置（例如某些国家规定一定期限后海关拍卖或销毁，且费用由发货人承担）\n2. 清关失败导致的连锁损失：滞港费谁承担、货物退运的费用与手续、销毁的合规要求（环保、电池）\n3. 尾程派送的货损与丢件：\n   · 派送商（DHL/DPD/UPS/当地邮政）的运单条款与责任限额\n   · POD（proof of delivery）作为证据的效力与常见问题（签名潦草、无签名、代签）\n   · 客户声称未收到货但系统显示已签收，我方怎么应对\n最后给我《目的港弃货处置 SOP》"},
+ {t:"货损货差索赔实战：从事故发生到拿到钱",
+  f:["索赔的四个阶段：事故发现与通知 → 证据固定与检验 → 责任定性与金额主张 → 谈判与诉讼","联合检验（joint survey）与单方检验的证据效力差别","索赔函（claim letter / letter of demand）怎么写才有法律效力"],
+  o:"《货损索赔全流程 SOP》+ 三份模板（索赔函 / 时效延长协议 / 和解协议）",
+  p:"请给我一套完整的货损货差索赔打法：\n\n1. 《货损索赔全流程 SOP》四阶段，每阶段给出具体动作、时限、责任人、证据清单\n2. 证据固定专题：\n   · 联合检验 vs 单方检验：证据效力差别，怎么申请联合检验，对方不配合怎么办\n   · 检验报告应该包含哪些内容才有用\n   · 照片与视频的取证要点（时间水印、全景与特写、封条编号、集装箱号）\n   · 电子证据：邮件、系统轨迹、GPS/温度记录怎么留证\n3. 三份模板（中英对照）：\n   · 《索赔函》（Notice of Claim / Letter of Demand）：必须包含哪些要素才有效（事实描述、法律依据、金额构成、期限、保留权利的表述）\n   · 《时效延长协议》（Time Extension Agreement）\n   · 《和解协议》（Settlement Agreement）：和解金支付与权利放弃（full and final settlement）条款怎么写\n4. 谈判策略：什么情况下该硬、什么情况下该和，给我一个《该打该和决策表》\n5. 最后给我一份《索赔台账》模板（含时效倒计时提醒）"},
+ {t:"延误、仓储费与服务费催收争议",
+  f:["延误的法律后果：各运输方式对延误的责任与限额不同，多数运输规则对纯经济损失不赔","仓储费与滞箱费的催收：留置权（lien）的行使条件与风险","小额多笔的运费催收：如何设计合同与流程让催收成本可控"],
+  o:"《延误与费用催收作战手册》+ 一份《留置权行使 SOP》",
+  p:"请讲透延误争议与费用催收：\n\n1. 延误专题：\n   · 海运/空运/铁路/公路对延误的责任差别（哪些规则明确规定了延误责任，哪些只是笼统的「合理时间」）\n   · 延误造成的损失中，哪些能赔、哪些不能赔（纯经济损失、利润损失、违约金、市场跌价）\n   · 合同层面：我方能不能约定「不承担延误责任」？这个条款在我国法下的效力\n2. 留置权（lien）专题：\n   · 承运人留置权、仓储人留置权的法律依据与成立条件（须核对我国《民法典》相关条号）\n   · 留置权的行使：什么条件下能扣货、能扣多久、怎么变现（协议折价 / 拍卖 / 变卖）\n   · 境外留置权的差异（德国商法典 HGB 的留置权、英美法的 possessory lien）\n   · 行使留置权的风险：扣错货、扣了第三方货物、扣留时间过长产生的费用反噬\n   · 给我《留置权行使 SOP》\n3. 运费与仓储费催收：\n   · 合同条款设计：付款期限、逾期利息、加速到期、抵销权、连带保证（股东/关联公司）\n   · 境外客户的催收：德国的 Mahnverfahren（催告程序）、波兰的支付令、小额诉讼\n   · 《该打该和决策表》：按金额、证据、偿付能力、战略价值打分\n4. 最后给我一套《催收函件模板》（中文 + 英文：第一封温和提醒、第二封正式催告、第三封最后通牒）"},
+ {t:"阶段二总复盘与自测（W7-W13）",
+  f:["把 W7-W13 全部产出物汇编成《学习手册·第二阶段》","阶段自测：25 道题","费曼检验：给一个新同事讲清楚「一票货出事，我们最多赔多少」"],
+  o:"《学习手册·第二阶段：运输责任·货代身份·海关》定稿 + 自测成绩",
+  p:"第二阶段（7 周）结束，请对我做阶段总检验：\n\n1. 出 25 道题（单选 12 + 案例 8 + 简答 5），覆盖 W7-W13 全部内容，重点是责任限额数字、时效、身份认定、海关合规\n2. 逐题批改，错的讲透，并指出这个错误在真实业务中会导致什么后果\n3. 费曼检验：如果我要给新同事做 15 分钟培训讲清楚「一票货出事，我们最多赔多少、多久内必须索赔」，给我讲稿\n4. 整合 W7-W13 产出物，形成《学习手册·第二阶段》目录与各章要点\n5. 最后给我进入第三阶段（境外法域与合规）的 5 条准备建议，并告诉我：以我目前的知识结构，第三阶段最可能在哪一块崩掉"}
+ ]}
+];
+
+
+/* ============ 阶段三：境外法域与合规（W14-W19） ============ */
+const DATA3=[
+{w:14,st:3,th:"欧盟法律环境通识：打开欧盟法的大门",goal:"这套计划里最值钱的六周从这里开始。先学会欧盟法怎么构成、怎么查、怎么判断它对我方有没有约束力——不解决这个，后面所有法规都是死记硬背",
+ wk:{t:"周末实战⑭：为一项新业务做《欧盟法适用性判断报告》",d:"设定：我方波兰海外仓准备新增一项服务——为欧盟卖家提供「贴标 + 换包装 + 二次销售」的增值服务。做一份报告：这项服务触发哪些欧盟法规（GPSR、包装法、EPR、产品责任、VAT）？哪些是条例（直接适用）哪些是指令（需看波兰转化立法）？谁是被规制的义务主体？",
+ p:"我要做一份《欧盟法适用性判断报告》。设定：我方波兰子公司运营的海外仓，拟新增「贴标 + 换包装 + 代客户二次销售」服务，客户主要是中国跨境电商卖家，商品以消费电子与小家电为主。\n\n请输出：\n1. 《触发法规清单》：逐项列出这项业务可能触发的欧盟法律文件，每项标注：法规名称与编号（英文全称 + 编号）、法律形式（条例 Regulation / 指令 Directive / 决定 Decision）、是否直接适用、义务主体是谁（生产商 / 进口商 / 分销商 / 服务提供者）、我方在这项下是什么身份\n2. 重点分析 GPSR（EU）2023/988 下的义务：我方作为「服务提供者」还是「分销商」？贴标与换包装会不会让我方成为「生产商」（producer）？成为生产商的后果是什么\n3. 指令 vs 条例的实际差异：列出涉及的指令后，告诉我怎么查波兰的转化立法（给具体检索路径与网站）\n4. 合规动作清单：开展这项业务前必须完成的 15 件事\n5. 最后给我一份《新业务欧盟法适用性判断模板》（可复用于任何新业务）"},
+ d:[
+ {t:"欧盟法的层级：条约、条例、指令、决定",
+  f:["一级立法：《欧洲联盟条约》（TEU）与《欧洲联盟运行条约》（TFEU）","二级立法：条例（Regulation，直接适用全部）、指令（Directive，须成员国转化）、决定（Decision，对特定对象全部约束）、意见与建议（无约束力）","直接效力与间接效力：Van Gend en Loos、Van Duyn 等经典判例确立的原则"],
+  o:"《欧盟法形式对照表》+ 一份《看到一份欧盟文件时如何判断它对我有没有约束力》的流程图",
+  p:"请给我一份《欧盟法形式对照表》并讲透适用逻辑：\n\n1. 逐类讲解四类二级立法：条例 Regulation、指令 Directive、决定 Decision、意见与建议。每类给出：是否有约束力、约束谁、是否需要成员国转化、不转化的后果（国家责任 Francovich 原则）、跨境物流业务里的典型例子\n2. 关键问题：指令没有转化期届满前能不能依赖？转化后与条例冲突怎么办？给我判断顺序\n3. 直接效力（direct effect）与间接效力（indirect effect）：\n   · 什么条件下欧盟法条可被个人在成员国法院直接援引\n   · 间接效力（成员国有义务按指令解释国内法）\n   · 对跨境物流企业的实务意义：我方在德国法院能不能直接援引某条例对抗对方\n4. 欧盟法院（CJEU）与初步裁决（preliminary ruling）：\n   · 成员国法院在什么情况下必须/可以向 CJEU 提问\n   · 初步裁决对我方有什么用（提示：合同条款设计与争议策略）\n5. 最后给我《看到一份欧盟文件时如何判断它对我有没有约束力》的判断流程图"},
+ {t:"EUR-Lex 与欧盟立法流程：怎么自己查法",
+  f:["EUR-Lex（eur-lex.europa.eu）：欧盟官方法律数据库，可按 CELEX 号、主题、年份检索","立法流程：欧盟委员会提案 → 欧洲议会与理事会一读/二读 → 公布于《欧盟官方公报》（OJ）→ 生效日与适用日（通常第 20 日生效，适用日另有规定）","配套文件：授权法案（Delegated Regulation）、实施条例（Implementing Regulation）、指南与问答（Guidance / FAQ）"],
+  o:"《EUR-Lex 检索操作手册》+ 一份《我常用的 10 个欧盟官方数据库清单》",
+  p:"请给我一份《欧盟法律检索操作手册》：\n\n1. EUR-Lex 逐项功能讲透：\n   · CELEX 号的结构与含义（例如 32023R1542 怎么解读）\n   · 按主题（directory of EU law）浏览 vs 关键词检索 vs 按编号精确查找\n   · 怎么看一份文件的「生效日期 / 适用日期 / 废止日期 / 修订记录」（Procedure 与 Dates 标签页）\n   · 怎么找成员国的转化立法（national transposition）\n   · 怎么看 consolidated version（合并版）——为什么要看合并版而不是原始版\n2. 欧盟立法流程与关键日期：提案 → 一读 → 二读 → 三读/调解 → 公布 OJ → 生效（通常第 20 日）→ 适用（另有规定，注意过渡期与 grandfathering）\n3. 配套文件体系：授权法案、实施条例、指南（Guidance）、问答（FAQ）、标准（harmonised standards）的效力差别——注意：指南与标准通常没有法律约束力，但实务中被当作合规基准\n4. 给我《我常用的欧盟与企业合规数据库清单》（至少 10 个，含 EUR-Lex、OJ、欧盟委员会各总司页面、ECHA、EASA、成员国监管机构等）\n5. 实操练习：给我 5 道检索题，让我自己查（例如：查到电池法规 (EU) 2023/1542 的适用日期与废止原指令的日期）"},
+ {t:"欧盟单一市场与海关同盟：货、服务、人、资本",
+  f:["四大自由：货物、服务、人员、资本的自由流动","海关同盟：成员国之间取消关税与海关手续，对外统一关税（UCC）；货物进入任一成员国即完成欧盟进口","增值税同盟与消费税：欧盟内部 B2B 交易免征 VAT（intracommunity supply），B2C 按远程销售规则处理"],
+  o:"《欧盟境内货物流通规则速查表》+ 一份《海外仓选址的法律考量清单》",
+  p:"请讲透欧盟单一市场对跨境物流的影响：\n\n1. 海关同盟的实务含义：\n   · 货物在鹿特丹清关后，可以自由运到德国、波兰、法国而不再办海关手续\n   · 这对海外仓选址意味着什么（清关口岸 vs 仓储地可以分离）\n   · 例外情况：特殊税制地区、飞地、非欧盟关境地区（请举例并说明须核对）\n2. 货物自由流动：\n   · 相互承认原则（mutual recognition）与 harmonised 标准的关系\n   · 什么情况下成员国可以限制货物自由流动（公共安全、健康、消费者保护，TFEU 第 36 条）\n   · 实务案例：GPSR 下市场监管机构要求下架某产品，我方海外仓的货物怎么办\n3. 增值税同盟：\n   · 欧盟内部 B2B 供货（intracommunity supply）的免税条件\n   · 海外仓调拨（德国仓 → 波兰仓）的 VAT 处理\n   · 为什么「货物在哪里」决定「VAT 在哪里交」\n4. 服务自由流动与设立自由：我方的波兰子公司能不能用波兰员工去德国仓库工作？需要什么手续（ posted workers / A1 证明）\n5. 最后给我《海外仓选址的法律考量清单》20 项（含清关便利、VAT、用工、仓储法规、物流枢纽）"},
+ {t:"欧盟市场监管、产品责任与消费者保护",
+  f:["市场监管框架：Regulation (EU) 2019/1020（市场监管与产品合规），各成员国的市场监管机构（如德国的 Marktüberwachung）","产品责任指令（Product Liability Directive）：严格责任；新的产品责任指令修订（须核对现行版本与转化期限）","消费者保护：消费者权利指令（2011/83/EU）、远程销售冷静期 14 天、不公平商业行为指令"],
+  o:"《欧盟市场监管与产品责任速查表》+ 一份《产品召回应急预案》",
+  p:"请讲透欧盟的市场监管、产品责任与消费者保护三线：\n\n1. 市场监管：\n   · Regulation (EU) 2019/1020 的核心内容：市场监管机构的权力、经济运营者的义务、非欧盟生产者的「授权代表」（authorised representative）要求\n   · 德国、波兰的市场监管机构分别是什么、怎么联系我们\n   · 接到市场监管通知（下架、召回、罚款）的应对 SOP\n2. 产品责任：\n   · 产品责任指令下的严格责任：谁可以被起诉（生产商、进口商、供应商）、证明什么、免责事由（发展风险抗辩 development risk）\n   · 新的产品责任指令修订（须核对现行状态与转化期限）：新增了哪些责任主体（软件、在线平台、翻新商）、损害赔偿范围扩大\n   · 关键问题：我方作为海外仓/物流服务商，在什么情况下会被认定为「进口商」或「生产商」从而承担产品责任？给我判断标准与规避建议\n3. 消费者保护：\n   · 14 天撤回权（right of withdrawal）对退件物流的影响\n   · 不公平商业行为指令与虚假宣传\n   · 给我《退货与退件处理的合规清单》\n4. 最后给我《产品召回应急预案》：召回分级、通知链条、费用承担、证据留存"},
+ {t:"复盘：欧盟法通识与第 14 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：看到一份欧盟法规编号，能不能立刻判断它对谁有效、什么时候生效、在哪查成员国转化"],
+  o:"《欧盟法检索与适用手册》定稿",
+  p:"第 14 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：欧盟法形式与效力、直接效力、EUR-Lex 检索、海关同盟、产品责任\n2. 错题讲透\n3. 帮我做一份《欧盟法检索与适用手册》，核心是：CELEX 号解读、判断约束力流程图、10 个数据库清单\n4. 最后给我 5 个我必须收藏的网址，并说明每个用来干什么"}
+ ]},
+
+{w:15,st:3,th:"欧盟产品合规：GPSR、电池法、EPR、CE",goal:"这是 JD 里点名的「欧盟电池法规」，也是最能体现你身价的一块。要能把一堆法规编号翻译成「客户必须提供什么文件、我方必须核验什么」",
+ wk:{t:"周末实战⑮：为客户做一份《欧盟产品合规文件清单与核验 SOP》",d:"设定：一个中国卖家要把带锂电池的蓝牙耳机、小家电、儿童玩具三类产品通过我方发到德国海外仓并在亚马逊 DE 销售。做一份完整的合规文件清单与核验 SOP：每类产品在 GPSR、电池法规、WEEE、包装法、CE、EPR 下分别需要什么文件、谁出、我方核验要点、缺件的后果。",
+ p:"我要做一份《欧盟产品合规文件清单与核验 SOP》。设定客户为跨境电商卖家，三类产品：① 带锂电池的蓝牙耳机；② 小家电（电水壶）；③ 儿童玩具。经我方海外仓发往德国，在亚马逊 DE 站点销售。\n\n请输出：\n1. 《三类产品合规文件对照表》：行=产品类别，列=适用的欧盟法规（GPSR (EU) 2023/988、电池法规 (EU) 2023/1542、低电压指令/LVD、EMC、RED、RoHS、玩具安全指令 2009/48/EC、WEEE、包装与包装废弃物、REACH、POP），交叉单元格填「需要什么文件 / 谁出 / 有效期 / 我方核验要点」\n2. 逐个法规讲透其对我方的意义（不是对客户）：\n   · GPSR 下的「负责人」（responsible person）机制：我方能不能/要不要当负责人？当了承担什么\n   · 电池法规下的生产者延伸责任（EPR）：电池注册与回收，我方海外仓会不会被认定为进口商\n   · 德国 LUCID（包装登记）与 EAR（WEEE 登记）：客户没有注册号，我方代发货会不会连带违规\n3. 《核验 SOP》：客户下单后我方在什么时候核验什么、缺件怎么预警、缺件仍要发货时的免责设计\n4. 给我三份模板：《产品合规文件收集清单》、《合规缺件告知函》、《客户合规承诺函》\n5. 最后：如果客户拿不出任何合规文件坚持要发货，我方该怎么做？给我三种应对方案与各自风险"},
+ d:[
+ {t:"GPSR（EU）2023/988：通用产品安全法规",
+  f:["《通用产品安全法规》（GPSR, Regulation (EU) 2023/988）：取代原通用产品安全指令 2001/95/EC，适用日期须核对（2024.12.13 前后，请以 OJ 为准）","义务主体：生产商、授权代表、进口商、分销商；非欧盟生产商必须指定欧盟境内负责人（responsible person）","线上销售的特别规则：在线市场（online marketplace）的义务、产品安全警示与召回平台（Safety Gate）"],
+  o:"《GPSR 义务主体对照表》+ 一份《我方是否构成 GPSR 义务主体的判断清单》",
+  p:"请深度解读《通用产品安全法规》（GPSR, Regulation (EU) 2023/988），（适用日期请以 OJ 公布为准并标注须核对）：\n\n1. 适用范围与取代关系：取代了什么、与 sector-specific 法规（玩具、电子、化妆品等）的关系\n2. 五类义务主体逐个讲：生产商（manufacturer）、授权代表（authorised representative）、进口商（importer）、分销商（distributor）、在线市场（online marketplace）。每类给出：定义、核心义务清单、违规后果\n3. 重点：非欧盟生产商的「负责人」（responsible person）制度是本次新增的核心机制。讲透：\n   · 谁必须指定、什么时候指定、负责人承担什么义务\n   · 负责人的信息必须标注在哪里（产品、包装、包裹或随附文件）\n   · 我方（海外仓/物流商）在什么情况下会被认定为「进口商」或「分销商」？给我判断要素清单\n4. 产品的安全与文件要求：技术文件、标签与可追溯信息（型号、批次、生产商信息）、警示语的语言要求（销售目的国语言）\n5. 事故报告与召回：\n   · 生产商向监管机构报告严重事故的义务与时限\n   · Safety Gate（欧盟快速预警系统）的运作\n   · 给我《事故报告与召回 SOP》"},
+ {t:"电池法规（EU）2023/1542：JD 点名的那部法",
+  f:["《电池与废电池法规》（Regulation (EU) 2023/1542）：取代电池指令 2006/66/EC，分阶段适用（关键日期须核对，注意 2025.8.18 前后的一批义务生效节点）","适用范围扩展：便携电池、SLI（启动照明点火）、轻型运输工具（LMT）电池、电动汽车电池、工业电池","核心义务：CE 标识与符合性声明、碳足迹、回收材料含量、性能与耐久性、标签与信息、可拆卸性、生产者延伸责任（EPR）与电池护照"],
+  o:"《电池法规义务时间表》+ 一份《带电产品入仓合规核验清单》",
+  p:"请深度解读《电池与废电池法规》（Regulation (EU) 2023/1542，各义务的适用日期须逐项核对 OJ 原文）：\n\n1. 先给我一张《义务时间表》：按年份列出哪一年起适用哪些义务（CE 标识与符合性声明、有害物质限制、碳足迹声明与标签、回收材料含量、性能与耐久性、可拆卸性与可替换性、二维码与电池护照、EPR 注册、收集与回收目标、供应链尽职调查）。每项标注：适用日期、义务主体、我方要向客户索取什么\n2. 五类电池分别适用什么要求：便携电池、SLI、LMT（轻型运输工具，如电动自行车/滑板车）、电动汽车电池、工业电池。做对照表\n3. 生产者延伸责任（EPR）：\n   · 谁是「生产者」？（在成员国境内首次投放市场的任何主体，含进口商）——这一条对我方极其关键\n   · 生产者必须做：注册、申报、加入回收体系、承担回收成本\n   · 我方海外仓在什么情况下会被认定为「首次投放市场」的主体？给我规避方案\n4. 标签与二维码：新法规要求的电池标签内容、二维码（digital battery passport）的推进时间表（须核对）\n5. 最后给我《带电产品入仓合规核验清单》25 项（可直接给海外仓收货岗）"},
+ {t:"WEEE、包装与包装废弃物、EPR 三国实操",
+  f:["WEEE 指令（2012/19/EU）：电子电气设备的回收与生产者责任","包装与包装废弃物：原指令 94/62/EC 已被《包装与包装废弃物法规》（PPWR）取代（编号与适用日期须核对）","德国 LUCID（包装登记中心）、EAR（WEEE 登记）、波兰 BDO：三国的注册实务"],
+  o:"《EPR 三国注册速查表》+ 一份《客户 EPR 合规核验清单》",
+  p:"请讲透 EPR（生产者延伸责任）体系与欧盟三国的注册实务（法规编号与适用日期须核对现行版本）：\n\n1. EPR 的一般原理：为什么物流商也会被卷进来（提示：只要你在某国「首次投放市场」，你就可能是生产者）\n2. WEEE（废弃电子电气设备）：\n   · 适用范围与分类\n   · 生产者的注册、申报、回收义务\n   · 德国 EAR（stiftung ear）与 WEEE 登记号（WEEE-Reg.-Nr.）\n   · 法国、波兰的对应制度\n3. 包装：\n   · 德国包装法（VerpackG）与 LUCID 登记（中央包装登记处）：谁必须登记、登记什么、不登记的后果（禁售、罚款）\n   · 参与回收体系（dual system）的合同要求\n   · PPWR 新规（编号与适用日期须核对）对跨境物流的影响：可重复使用包装目标、包装减量\n4. 波兰 BDO（废弃物数据库登记）：登记范围、申报义务\n5. 法国、西班牙、意大利的 EPR 品类与注册要求（简述）\n6. 最后给我《客户 EPR 合规核验清单》20 项 + 一份《EPR 违规风险告知函》模板"},
+ {t:"CE / UKCA 标识、REACH / RoHS 与符合性评定",
+  f:["CE 标识：不是质量认证，是「符合欧盟相关指令基本要求」的声明；多数产品可自我声明，少数需公告机构（Notified Body）介入","UKCA：英国（大不列颠）市场的 conformity marking；北爱尔兰仍适用 CE（须核对最新安排）","REACH（化学品注册评估授权）与 RoHS（有害物质限制）、POP（持久性有机污染物）"],
+  o:"《CE 标识合规判定流程图》+ 一份《技术文件与符合性声明核验清单》",
+  p:"请讲透 CE 标识与化学物质合规：\n\n1. CE 标识专题：\n   · CE 的法律含义（自我声明 vs 第三方认证），什么产品需要公告机构（Notified Body）参与（举 5 例）\n   · 符合性评定流程：确定适用指令 → 确定协调标准 → 验证符合性 → 起草技术文件 → 签署 EU 符合性声明（DoC）→ 加贴 CE\n   · 技术文件（technical file）应当包含什么\n   · EU 符合性声明（Declaration of Conformity）的必备要素，给我一份模板\n   · 常见造假与误用：CE + China Export 标志混淆、DoC 无负责人签字、指令版本过时\n2. UKCA 与英国市场：脱欧后的规则，北爱尔兰的特殊安排（须核对最新安排）。给我一份 CE vs UKCA 对照表\n3. REACH / RoHS / POP：\n   · REACH 的注册与 SVHC（高度关注物质）通报义务，物品中 SVHC > 0.1% 的通报与 SCIP 数据库\n   · RoHS 的限制物质清单与限值\n   · 对我方（物流/仓储）的实际影响：查什么文件、怎么核验、违规货物的处理\n4. 最后给我《技术文件与符合性声明核验清单》18 项"},
+ {t:"复盘：产品合规体系与第 15 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：客户发什么货，我能不能一眼判断缺什么合规文件"],
+  o:"《欧盟产品合规手册》第一版",
+  p:"第 15 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：GPSR 义务主体、电池法时间表与 EPR、WEEE 与包装、CE 与 DoC\n2. 错题讲透\n3. 帮我起草《欧盟产品合规手册》第一版，核心是一张《按产品类别查合规文件》的速查矩阵\n4. 最后给我一句话：我方海外仓在产品合规上最大的风险点是什么，怎么一句话讲给 CEO 听"}
+ ]},
+
+{w:16,st:3,th:"数据合规：GDPR 与中国数据出境",goal:"跨境业务天然涉及数据跨境。这一周要能把 GDPR 的抽象义务翻译成「我方系统里哪些数据、能不能传给谁、要不要签 DPA」",
+ wk:{t:"周末实战⑯：做一次数据映射（Data Mapping）与合规差距分析",d:"为我方业务做一次完整的数据映射：从接单到派送全程会产生哪些个人数据（发件人、收件人、电话、地址、身份证号用于清关、签收签名）？数据在哪里存储、流向哪些国家、共享给哪些第三方（船公司、清关行、派送商、系统供应商）？据此做一份 GDPR 合规差距分析。",
+ p:"我要为我方业务做一次数据映射与 GDPR 差距分析。设定：我方为跨境物流与海外仓服务商，系统中有：客户（卖家）的联系信息、收件人姓名地址电话、清关用的身份证/税号信息、签收签名与照片、WMS 中的库存数据、客服聊天记录、官网与营销用的 Cookie 数据。\n\n请输出：\n1. 《数据映射表》（Data Mapping）：数据类型 / 数据主体 / 收集目的 / 法律依据 / 存储位置 / 处理者（processor）/ 是否出境 / 出境目的地 / 留存期限\n2. 《合规差距分析》：逐项对照 GDPR 找出差距（法律依据缺失、DPA 未签、留存超期、跨境传输无保障、数据主体权利响应机制缺失、无记录簿 RoPA、无 DPO），每项给出整改动作与优先级\n3. 重点讲透三个具体问题：\n   · 我方是 controller 还是 processor？（提示：对卖家客户的数据我方通常是 processor，对收件人与员工数据我方可能是 controller）\n   · 与派送商、清关行之间必须签什么（DPA / SCC / JCA）\n   · 清关用的收件人身份证号属于敏感数据吗？收集与留存要注意什么\n4. 给我三份模板（要点级别即可）：《数据处理协议 DPA》、《记录处理活动 RoPA》、《数据主体请求响应流程》\n5. 最后：如果发生数据泄露（例如系统被攻击导致收件人信息外泄），我方在 72 小时内要做什么？给我完整 SOP"},
+ d:[
+ {t:"GDPR 的适用范围与域外效力",
+  f:["《通用数据保护条例》（GDPR, Regulation (EU) 2016/679）：2018.5.25 起适用","域外效力（第 3 条）：设立机构标准（establishment）与目标指向标准（targeting）——在欧盟没有公司也可能被管","关键角色：数据控制者（controller）、共同控制者（joint controller）、数据处理者（processor）"],
+  o:"《GDPR 适用性判断流程图》+ 一份《我方角色判定表》",
+  p:"请讲透 GDPR 的适用范围与角色判定：\n\n1. 域外效力（第 3 条）逐款讲解：\n   · 设立机构标准：在欧盟有「设立机构」（establishment）且处理行为发生在该机构活动范围内\n   · 目标指向标准：向欧盟境内数据主体提供商品或服务，或监控其行为\n   · 我方（中国母公司在德国/波兰有子公司）适用哪一条？如果我方在欧盟完全没有实体，还会不会被管？\n2. 角色判定：controller / joint controller / processor。给我一个判定决策树，并逐项判断我方在以下场景中的角色：\n   · 处理卖家客户的订单数据\n   · 处理收件人的姓名地址电话\n   · 使用第三方 WMS/TMS 系统（SaaS）\n   · 与派送商共享签收数据\n3. 代表性（representative）与 DPO（数据保护官）：什么时候必须指定？我方要不要\n4. 给我《GDPR 适用性判断流程图》与《我方角色判定表》\n5. 最后：给我 3 个因为没有实体而被认定为仍受 GDPR 管辖的执法案例"},
+ {t:"合法性基础、DPA 与跨境传输",
+  f:["处理的六项合法性基础（第 6 条）：同意、履行合同、法定义务、重大利益、公共利益、正当利益","数据处理协议（DPA，第 28 条）：控制者与处理者之间必须签，必备内容 8 项","跨境传输机制（第五章）：充分性决定（adequacy）、标准合同条款（SCC）、约束性公司规则（BCR）、克减（derogations）"],
+  o:"《合法性基础选择决策表》+ 一份《DPA 必备条款清单》",
+  p:"请讲透 GDPR 的合法性基础与跨境传输：\n\n1. 六项合法性基础逐个讲：适用条件、举证要求、能否撤回、实务中什么时候用哪个。给我《选择决策表》\n2. 「正当利益」（legitimate interest）这个最灵活也最容易被滥用的基础：三步测试（LIA 正当利益评估）怎么做？给我一个评估模板\n3. 同意（consent）：什么情况下同意无效（ bundled consent、不明确的同意、与服务捆绑）。Cookie 与营销邮件怎么用同意\n4. DPA（第 28 条）必备内容清单：处理目的与期限、数据类别与主体、控制者的指示权、保密义务、安全措施、分包处理者的授权、协助数据主体权利、协助合规与审计、删除或返还数据、审计权。给我一份《DPA 审查清单》\n5. 跨境传输：\n   · 五种机制逐个讲：充分性决定、SCC（2021/914 决定下的新版 SCC，模块怎么选）、BCR、认证、克减（第 49 条）\n   · Schrems II 判决后的传输影响评估（TIA）要求\n   · 中国数据传到欧盟、欧盟数据传到中国分别怎么办\n6. 最后给我《跨境传输机制选择决策图》"},
+ {t:"数据主体权利、安全事件与罚款",
+  f:["七项数据主体权利：知情、访问、更正、删除（被遗忘权）、限制处理、可携带、反对；以及不受自动化决策约束","个人数据泄露（breach）：72 小时内通知监管机构，高风险时通知数据主体","罚款：最高 2000 万欧元或全球年营业额 4%（以较高者为准）；另有更正性权力（暂停数据流、责令整改）"],
+  o:"《数据主体权利响应 SOP》+ 一份《数据泄露应急预案》",
+  p:"请讲透 GDPR 的救济、执法与后果：\n\n1. 数据主体七项权利逐个讲：权利内容、响应时限（通常 1 个月，可延长 2 个月）、可以拒绝的情形、我方要建什么流程。给我《响应 SOP》与三份模板（访问请求回复、删除确认、拒绝告知）\n2. 个人数据泄露：\n   · 什么构成 breach、什么情况下必须通知、72 小时怎么算\n   · 通知监管机构的内容要求、分阶段通知（phased notification）\n   · 通知数据主体的触发条件（高风险）与方式\n   · 内部记录义务（breach register）\n   · 给我《数据泄露应急预案》（含 0-2h / 2-24h / 24-72h / 72h+ 四阶段）\n3. 执法与罚款：\n   · 罚款两档的计算方式（1000 万/2% 与 2000 万/4%，以较高者为准）\n   · 「全球年营业额」怎么算（集团层面）\n   · 监管机构除了罚款还有什么权力（警告、责令整改、暂停数据传输、暂停处理）\n   · 给我 4 个真实执法案例（罚款金额、违法事由、可吸取的教训）\n4. 最后：给我一份《我方 GDPR 年度合规日历》"},
+ {t:"中国个人信息保护法与数据出境三条路径",
+  f:["《个人信息保护法》（2021.11.1 施行）第 38 条：出境的三条路径——安全评估、标准合同备案、保护认证","《数据出境安全评估办法》（2022.9.1 施行）与《促进和规范数据跨境流动规定》（2024.3.22 公布，须核对现行版本）","豁免情形：国际贸易、跨境运输、跨境支付等必需场景下的豁免（须核对具体条款）"],
+  o:"《数据出境路径判断流程图》+ 一份《跨境物流场景豁免适用分析》",
+  p:"请讲透中国的数据出境制度（法规更新频繁，请标注须核对现行有效版本）：\n\n1. 《个人信息保护法》第 38 条的三条出境路径：通过国家网信部门安全评估 / 个人信息保护认证 / 订立标准合同（SCC）。每条：适用条件、申报或备案流程、时限、成本\n2. 《数据出境安全评估办法》与 2024 年《促进和规范数据跨境流动规定》：\n   · 什么情况下必须申报安全评估（重要数据、关键基础设施运营者、达到一定人数阈值）\n   · 阈值变化（须核对最新数值）\n   · 免予申报的情形（自由贸易试验区负面清单、合同必需场景等）\n3. 豁免条款对跨境物流的意义（这是最有价值的一块）：\n   · 「为订立、履行个人作为一方当事人的合同所必需」的豁免——跨境运输合同是否属于？请给出分析与边界\n   · 「按照依法制定的劳动规章制度和依法签订的集体合同实施人力资源管理所必需」——外派员工数据\n   · 给我一份《跨境物流场景豁免适用分析》：逐项列出我方常见的数据出境行为能否适用豁免\n4. 敏感个人信息：清关用的身份证号、生物识别（签收人脸/签名）、行踪轨迹是否属于敏感个人信息？处理要求更严在哪\n5. 最后给我《数据出境合规台账》模板"},
+ {t:"复盘：数据合规与第 16 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：我方系统里哪些数据、能不能传、传给谁、要不要签 DPA"],
+  o:"《数据合规手册》第一版",
+  p:"第 16 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：GDPR 域外效力、角色判定、合法性基础、DPA 与 SCC、数据主体权利、泄露响应、中国出境三条路径\n2. 错题讲透\n3. 帮我起草《数据合规手册》第一版，至少包含：数据映射表、角色判定、合法性基础矩阵、DPA/SCC 模板清单、权利响应 SOP、泄露应急预案、出境合规台账\n4. 最后给我三句话：我方在数据合规上最可能出事的三个点"}
+ ]},
+
+{w:17,st:3,th:"出口管制与制裁：会坐牢的那条线",goal:"这是唯一一条法律后果可能是刑事责任的业务线。这一周要把「什么货、去哪个国家、给谁」的三重筛查机制搭出来",
+ wk:{t:"周末实战⑰：搭一套《出口管制与制裁合规筛查制度》",d:"为我方搭一套可落地的筛查制度：筛查什么（物项、目的地、主体、最终用途）、什么时候筛（接单、订舱、发货前、付款前）、命中了怎么办（升级、冻结、报告、拒绝）、留什么证据。附一份《客户/供应商筛查记录表》与《红旗清单》。",
+ p:"我要搭一套《出口管制与制裁合规筛查制度》。设定：我方为国际货代与海外仓企业，客户以跨境电商卖家与制造业工厂为主，货物以消费电子、机械配件、带电产品为主，主要流向欧盟、北美、俄罗斯周边、中东。\n\n请输出：\n1. 《筛查制度》完整文本：适用范围、筛查对象（客户/供应商/收发货人/最终用户/货物）、筛查时点（新客户准入、接单、订舱、装船前、付款、目的港放货）、筛查工具与数据源、命中处理流程（升级/冻结/拒绝/报告）、记录保存（年限与内容）、培训与审计\n2. 《红旗清单》（red flags）30 项：至少覆盖：客户拒绝提供最终用途、收货地址与最终用户不一致、货物与客户主营业务明显不符、转运地异常、付款来自第三国、客户要求模糊化品名、要求不使用官方渠道、涉及军事/航天/核/生化相关词汇、客户位于或货物经转运至高风险地区\n3. 《物项筛查要点》：什么货物最容易被管制（含芯片/传感器/激光/通信设备/无人机/电池材料/石墨/稀土/精密机床），对每一类给出判断依据与要索取的文件\n4. 三份模板：《客户合规承诺书》（含最终用途声明）、《筛查记录表》、《拒绝业务告知函》\n5. 最后给我一份《风险分级处置矩阵》：低/中/高风险各自的处理动作与审批层级"},
+ d:[
+ {t:"中国出口管制法与两用物项条例",
+  f:["《出口管制法》（2020.10.17 通过，2020.12.1 施行）：管制物项、管制清单、管控名单、临时管制与禁令","《两用物项出口管制条例》（2024 年公布、2024.12.1 施行，须核对现行版本）：两用物项出口管制清单、许可申请与审批","法律责任：行政处罚（罚款、没收、停业、吊销资格）与刑事责任（走私罪、非法经营罪等，须核对条号）"],
+  o:"《中国出口管制合规速查表》+ 一份《物项管制判定流程图》",
+  p:"请讲透中国的出口管制制度（须核对现行有效版本与条号）：\n\n1. 《出口管制法》框架：\n   · 管制的四类物项：两用物项、军品、核、其他与国家安全相关的物项\n   · 管制方式：管制清单、管控名单（进口商/最终用户）、临时管制、全面禁止\n   · 出口经营者的义务：取得许可、报告、配合调查\n2. 《两用物项出口管制条例》要点（须核对）：\n   · 两用物项出口管制清单的结构（与商务部的清单对应关系）\n   · 许可申请流程、材料与时限\n   · 「视同出口」与再出口的规定\n   · 通用许可与例外情形\n3. 《判定流程图》：接到一批货，怎么判断它是不是管制物项？（看清单条目号 → 看技术参数 → 看目的地 → 看最终用户与用途 → 判断是否需要申请许可）\n4. 法律责任：行政责任（罚款区间、没收违法所得、暂停或撤销出口经营资格）与刑事责任（涉及的罪名与立案标准，须核对）\n5. 最后：给我一份《中国出口管制合规速查表》与一份《客户货物管制属性询问清单》"},
+ {t:"美国 EAR：管到全世界那套规则",
+  f:["《出口管理条例》（EAR）：美国商务部工业与安全局（BIS）主管","管辖逻辑：物项（subject to the EAR）+ 主体（美国人）+ 目的地 + 最终用途 + 微量比例（de minimis）","关键概念：ECCN 编码、EAR99、CCL 商业管制清单、实体清单（Entity List）、被拒绝人员清单（DPL）、未经验证清单（UVL）"],
+  o:"《EAR 适用性判断流程图》+ 一份《ECCN 判定工作底稿》",
+  p:"请讲透美国《出口管理条例》（EAR）：\n\n1. 管辖逻辑（这是最难也最关键的一块）：\n   · 什么物项 subject to the EAR（在美国境内的物项、美国原产货、含美国成分的境外产品）\n   · de minimis 规则（美国成分价值比例门槛，不同目的地门槛不同，须核对现行数值）\n   · 外国直接产品规则（FDPR）：为什么非美国企业也会被管\n2. CCL 商业管制清单与 ECCN：\n   · CCL 的十大类别与五个产品组（0-9 类 + A-E 组）\n   · ECCN 编码的结构怎么读\n   · EAR99 是什么意思，为什么「EAR99 不需要许可」是误解\n3. 清单体系：实体清单（Entity List）、被拒绝人员清单（Denied Persons List）、未经验证清单（Unverified List）、军事最终用户清单（MEU）。每个：谁在榜上、上榜后果、能否申请移除\n4. 最终用途与最终用户管制：军事最终用途（MEU）、核、导弹、生化、以及新兴技术\n5. 给我《EAR 适用性判断流程图》与《ECCN 判定工作底稿》（含要向供应商索取的 10 项信息）\n6. 最后：我方作为货代，在什么情况下会因为客户的违规而承担责任？给我三个真实类型案例"},
+ {t:"OFAC 制裁与次级制裁",
+  f:["OFAC（美国财政部海外资产控制办公室）的制裁体系：SDN 清单（特别指定国民）、行业制裁（SSI）、综合制裁国家（克里米亚、古巴、伊朗、朝鲜、叙利亚，须核对现状）","50% 规则：被制裁主体持股 50% 以上的实体同样受限，即使未列名","次级制裁（secondary sanctions）：非美国人也可能因与被制裁对象往来而受罚——这是对我方最大的威胁"],
+  o:"《制裁筛查清单体系对照表》+ 一份《命中制裁后的处置 SOP》",
+  p:"请讲透美国 OFAC 制裁体系：\n\n1. 制裁清单体系对照表：SDN（特别指定国民）、SSI（行业制裁识别）、NS-CMIC（中国军工复合体企业清单）、CAPTA、FSE（外国金融机构），以及英国 OFSI、欧盟、联合国、日本、中国各自的清单。每个：谁发布、管什么、后果\n2. 综合制裁国家 vs 行业制裁：\n   · 综合制裁（comprehensive）：几乎全面禁止\n   · 行业制裁（sectoral）：只限制特定交易（如能源、金融、军工）\n   · 现状须核对（伊朗、朝鲜、叙利亚、古巴、克里米亚/顿巴斯地区、俄罗斯）\n3. 50% 规则：\n   · 规则内容（一个或多个被制裁主体合计持股 50% 以上的实体自动受限）\n   · 为什么这条让筛查难度成倍增加\n   · 我方的股权穿透要做到几层？给我一个可执行的做法\n4. 次级制裁：\n   · 什么行为会触发（与被制裁方重大交易、为被制裁方提供实质性支持、规避制裁）\n   · 后果（被列入 SDN、被美元清算体系切断、刑事风险）\n   · 我方作为非美国企业为什么仍要重视\n5. 最后给我《命中制裁后的处置 SOP》：冻结、隔离、报告、拒绝交易、向谁报告、留什么证据\n6. 附：给我一份《常见高风险信号清单》20 项"},
+ {t:"欧盟两用物项与出口管制",
+  f:["欧盟《两用物项出口管制条例》（Regulation (EU) 2021/821）：统一的两用物项管制框架，2021 年修订后纳入网络安全监控物项与人权相关管控","欧盟制裁：共同外交与安全政策（CFSP）下的制裁决议，由成员国执行；成员国可追加更严的国内措施","英国：脱欧后的 UK 两用物项管制与英国制裁体系（OFSI）"],
+  o:"《欧盟两用物项管制速查表》+ 一份《欧盟/英国制裁筛查要点》",
+  p:"请讲透欧盟与英国的出口管制与制裁：\n\n1. 欧盟《两用物项出口管制条例》（Regulation (EU) 2021/821，须核对现行版本）：\n   · 管制物项清单（Annex I）的结构与查找方法\n   · 四类许可：欧盟通用出口许可（EUGEAs，含 EUGEAs 的具体编号与适用范围）、国家通用许可、全球许可、单项许可\n   · 新增内容：网络安全监控物项、人权相关（可能用于内部镇压的物项）\n   · 过境与转运的管制（这一点对我方极其重要：欧盟港口转运是否受管制）\n2. 欧盟制裁：\n   · 制裁措施的类型（资产冻结、旅行禁令、贸易限制、金融限制）\n   · 制裁名单的查找（欧盟制裁地图 EU Sanctions Map）\n   · 成员国的执行差异与处罚\n   · 反规避义务：欧盟主体必须为「防止规避」做什么\n3. 英国：UK 两用物项管制与 OFSI 制裁，与欧盟的异同\n4. 最后给我《欧盟/英国制裁筛查要点》与一份《转运货物（transshipment）的管制合规检查表》\n5. 实操：货物从中国经鹿特丹转运至第三国，会不会触发欧盟管制？请给出分析框架"},
+ {t:"复盘：出口管制与制裁体系",
+  f:["整合本周产出物","自测 10 题","核心问题：接一票新客户的货，三步之内判断要不要报警"],
+  o:"《出口管制与制裁合规手册》第一版",
+  p:"第 17 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：中国出口管制法、EAR 管辖与 ECCN、OFAC 与 50% 规则、欧盟两用物项与制裁\n2. 错题讲透，并说明每个错误对应的真实风险（罚款、刑事责任、业务中断）\n3. 帮我起草《出口管制与制裁合规手册》第一版，核心是：三重筛查流程（物项/主体/目的地）+ 红旗清单 30 项 + 命中处置 SOP + 风险分级矩阵\n4. 最后给我一句必须写进员工手册的硬话（关于红线）"}
+ ]},
+
+{w:18,st:3,th:"海外子公司：德国、波兰、墨西哥",goal:"JD 明确点名的三个国家。要能判断「在当地设点需要什么、日常要维护什么、出了事找谁」，并且知道什么问题必须丢给当地律师",
+ wk:{t:"周末实战⑱：做一份《海外子公司设立与年度维护手册》",d:"选德国或波兰（建议两个都做），做一份从设立到年度维护的完整手册：公司形式选择、设立流程与文件、公证与登记、银行开户与注册资本、税务登记、年度申报与审计、董事责任与保险（D&O）、注销与退出。附一份《外聘当地律师的选聘与考核清单》。",
+ p:"我要做一份《海外子公司设立与年度维护手册》。请以德国 GmbH 与波兰 Sp. z o.o. 两个主体分别输出（墨西哥作为对照简述）。\n\n每个国家请给出：\n1. 《公司形式选择对比表》：可选形式（德国 GmbH / UG / GmbH & Co. KG / 分公司；波兰 Sp. z o.o. / Sp. J. / 分公司；墨西哥 S.A. de C.V. / S. de R.L. de C.V.），维度：最低注册资本、股东人数、设立方式与时间、治理机关、税务透明性、责任隔离、年度合规成本、适合什么业务\n2. 《设立流程时间轴》：从决策到开业的每一步（名称核准、章程起草、公证、银行账户与注资、商业登记、税号与 VAT 号、社保登记、行业许可），每步给出：谁做、多久、多少费用、常见卡点\n3. 《年度合规日历》：商业登记事项变更申报、年度财务报表编制与公开（德国 Bundesanzeiger、波兰 KRS 与 eKRS）、税务申报、VAT 申报频次、统计申报、受益所有人登记（UBO/Transparenzregister/CRBR）、反洗钱义务\n4. 《董事责任与 D&O 保险》：董事的法定责任（德国 GmbH  Geschäftsführer 的责任、波兰 Zarząd 的责任）、常见责任触发点（迟延申请破产、税务欠缴、社保欠缴）、D&O 保险怎么买\n5. 《外聘当地律师的选聘与考核清单》15 项\n6. 最后：注销一个德国/波兰公司要走什么流程、多久、多少钱"},
+ d:[
+ {t:"德国 GmbH：设立、治理与合规",
+  f:["德国有限责任公司法（GmbHG）：最低注册资本 25000 欧元（须核对），半数实缴即可设立；UG（有限责任企业家公司）作为低门槛替代","治理机关：股东会（Gesellschafterversammlung）、董事（Geschäftsführer）、可选监事会（Aufsichtsrat）；商业登记（Handelsregister）的公信力","年度义务：财务报表编制与公开（Bundesanzeiger）、受益所有人登记（Transparenzregister）、税务与社保申报"],
+  o:"《德国 GmbH 合规清单》+ 一份《董事责任风险提示》",
+  p:"请讲透德国 GmbH（须核对现行法律与数值）：\n\n1. 设立：\n   · GmbH 与 UG（Unternehmergesellschaft）的对比：注册资本、设立成本、信誉差异、转制条件\n   · 设立流程与文件：公司章程（Gesellschaftsvertrag）、公证（Notar）、商业登记申报（Handelsregisteranmeldung）、股东名单\n   · 时间表与费用估算\n2. 治理：\n   · 股东会的职权与决议规则（简单多数 vs 特定事项的绝对多数）、股东协议（Gesellschaftervereinbarung）的作用\n   · 董事（Geschäftsführer）的任免、代表权（单独代表 vs 共同代表）、对公司的义务与责任\n   · 什么事项必须股东会批准（GmbHG 的保留事项）\n3. 年度合规：\n   · 财务报表的编制、审计门槛与公开（Bundesanzeiger）\n   · 受益所有人登记（Transparenzregister）的申报义务与时限\n   · 税务：公司所得税、营业税（Gewerbesteuer）、VAT；申报频次与预缴\n   · 给我《德国 GmbH 年度合规日历》\n4. 董事责任（Geschäftsführerhaftung）：\n   · 对公司的责任（违反忠实与勤勉义务）\n   · 对第三方的责任（尤其是破产申请迟延 Insolvenzverschleppung、社保欠缴、税务欠缴）\n   · 给我《董事责任风险提示》与 D&O 保险建议\n5. 最后：如果中国母公司要撤出德国，注销（Liquidation）流程与注意点"},
+ {t:"波兰 Sp. z o.o. 与墨西哥公司形式",
+  f:["波兰有限责任公司（Sp. z o.o.）：最低股本 5000 兹罗提（须核对）；可通过 s24 电子注册系统快速设立；KRS 国家法院登记","墨西哥：S.A. de C.V.（股份有限公司）与 S. de R.L. de C.V.（有限责任公司）；外资登记（RNIE）与经济部许可","两国共同的痛点：银行开户与合规审查、受益所有人登记、税务代表"],
+  o:"《波兰与墨西哥公司合规对照表》+ 一份《境外银行开户准备清单》",
+  p:"请讲透波兰与墨西哥的公司设立与合规（须核对现行法律与数值）：\n\n1. 波兰 Sp. z o.o.：\n   · 最低股本、设立方式（传统公证 vs s24 电子注册）、时间表与费用\n   · 治理机关：股东会（Zgromadzenie Wspólników）与董事会（Zarząd），可选监事会（Rada Nadzorcza）\n   · 年度义务：KRS 申报、财务报表、CIT 与 VAT（JPK 申报）、CRBR 受益所有人登记\n   · 董事（Członek Zarządu）的责任：尤其是税务欠缴时的连带责任（Ordynacja Podatkowa 相关规定，须核对）\n2. 墨西哥（对照简述）：\n   · S.A. de C.V. vs S. de R.L. de C.V.：差别与选择\n   · 外资登记（RNIE）、外资比例限制行业（restricted activities）\n   · 年度义务：税务（RFC、DIOT）、年报、Foreign Investment 年报\n3. 《境外银行开户准备清单》：\n   · 银行为什么难开户（反洗钱审查、经济实质要求、税务居民身份 CRS）\n   · 需要准备的文件清单与常见拒户原因\n   · 开户与维持账户成本的量级\n4. 最后：给我一份《波兰 vs 德国 vs 墨西哥》的海外仓设址法务对比（用工、租约、税务、退出难度）"},
+ {t:"当地用工：德国 KSchG、波兰劳动法、墨西哥 LFT",
+  f:["德国《解雇保护法》（KSchG）：适用于员工数超过门槛（须核对现行门槛）且已过 6 个月等待期的雇员；社会正当性（soziale Rechtfertigung）三理由","波兰《劳动法典》（Kodeks Pracy）：固定期限合同的期限上限与转化、解雇通知期与理由要求","墨西哥《联邦劳动法》（LFT）：利润分享（PTU）、年资（aguinaldo）、外包（subcontratación）限制"],
+  o:"《三国用工合规速查表》+ 一份《海外仓用工模式选择指南》",
+  p:"请讲透德国、波兰、墨西哥的用工合规（须核对现行法律与数值）：\n\n1. 《三国用工合规速查表》：维度包括：书面合同要求、试用期、固定期限合同的限制、标准工作时间与加班、最低工资、年休假、解雇理由要求、解雇通知期、经济补偿标准、竞业限制、工会与集体谈判、外派与 A1 证明\n2. 德国专题：\n   · KSchG 的适用范围（员工数门槛与 6 个月等待期，须核对）\n   · 解雇的三种社会正当性理由（personenbedingt / verhaltensbedingt / betriebsbedingt）\n   · 解雇保护诉讼（Kündigungsschutzklage）的 3 周起诉期限（极重要，须核对）\n   · 解雇补偿（Abfindung）的实务做法\n   · 短期用工与外包（Zeitarbeit / Werkvertrag）的风险：假外包认定（Scheinselbstständigkeit）的后果\n3. 波兰专题：固定期限合同的 33 个月 / 3 次上限（须核对）、终止通知期、B2B 合同（自雇）被认定为劳动关系的风险\n4. 墨西哥专题：利润分享（PTU）的比例、圣诞奖金（aguinaldo）、外包限制（2021 年外包改革，须核对）\n5. 最后给我《海外仓用工模式选择指南》：自营雇佣 / 劳务派遣 / 外包服务商，三种模式在三个国家的合规与成本对比"},
+ {t:"税务：VAT、常设机构与转让定价",
+  f:["常设机构（Permanent Establishment, PE）：海外仓是否构成中国母公司在当地的常设机构？这是跨境物流与跨境电商的核心税务风险","转让定价：中国母公司、香港/新加坡中间层、欧洲子公司之间的服务费与利润划分须符合独立交易原则","欧盟的反避税指令（ATAD）与全球最低税（Pillar Two）：对集团架构的影响（了解层面）"],
+  o:"《常设机构风险自查表》+ 一份《集团关联交易合规清单》",
+  p:"请讲透跨境物流与海外仓的税务核心风险（须核对现行规则，并注明各国口径差异）：\n\n1. 常设机构（PE）专题：\n   · 什么是 PE（固定营业场所、非独立代理人），OECD 范本与税收协定的定义\n   · 海外仓在什么情况下构成 PE（仓储 + 人员 + 签约权）\n   · 构成 PE 的后果：当地就该部分利润征税、申报义务、罚款风险\n   · 给我《常设机构风险自查表》20 项\n   · 近年 BEPS 与 MLI 对佣金代理人规则的改变（了解层面）\n2. VAT 专题：\n   · 海外仓所在国的 VAT 登记义务（什么时候必须登记）\n   · 仓储服务费的 VAT 处理（当地标准税率、反向征收 reverse charge）\n   · 欧盟境内货物流转（德国仓 → 波兰仓）的 VAT 处理与 Intrastat 申报\n   · 给我《海外仓 VAT 合规清单》\n3. 转让定价：\n   · 中国母公司向海外子公司收取的管理费/服务费怎么定价才站得住\n   · 需要准备什么文档（主体文档/本地文档/国别报告，中国与欧盟的要求）\n   · 给我《集团关联交易合规清单》\n4. 全球最低税（Pillar Two）与 ATAD：一句话讲清楚它们对我方这类企业有没有影响\n5. 最后：给我一份《海外税务合规年度日历》"},
+ {t:"复盘：境外主体与用工合规",
+  f:["整合本周产出物","自测 10 题","核心问题：在德国开个仓，我要管多少件事、哪些必须找当地律师"],
+  o:"《海外主体与用工合规手册》第一版",
+  p:"第 18 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：GmbH 与 Sp. z o.o. 设立与年度义务、董事责任、三国用工差异、PE 与 VAT\n2. 错题讲透\n3. 帮我起草《海外主体与用工合规手册》第一版，核心是：设立时间轴、年度合规日历、董事责任清单、用工模式选择、税务自查\n4. 最后给我一张《法务自己管 vs 必须外包给当地律师》的分界表——这一条决定你的外部预算怎么花"}
+ ]},
+
+{w:19,st:3,th:"海外仓专题：租赁、仓储协议与货权",goal:"海外仓是这类公司最重资产、也最容易出大案的业务。这一周要把租赁、仓储服务协议、货权与保险串成一套可落地的文件体系",
+ wk:{t:"周末实战⑲：谈判并起草一份德国海外仓租赁合同要点 + 仓储服务协议",d:"设定：我方波兰/德国子公司要租一个 5000 平米的仓库，租期 5 年，用于跨境电商一件代发。做两件事：① 出一份《仓库租赁合同谈判要点表》（20 项，每项给出我方目标、可接受底线、对方常见要求）；② 起草《海外仓仓储与履约服务协议》的核心条款（服务范围、费用、货权、责任限额、留置权、保险、终止、库存盘点）。",
+ p:"我要谈判并起草海外仓的两份核心文件。设定：我方德国子公司拟租赁 5000 平米仓库，租期 5 年，用于跨境电商一件代发（含贴标、换包装、退件处理）。\n\n请输出：\n1. 《仓库租赁合同谈判要点表》20 项：租期与续租、免租期、租金递增、押金/保证金、维修与改造责任（分隔、货架、消防、月台）、转租与分租、优先购买权/优先续租权、提前解约权、征收与拆迁补偿、不可抗力、消防与安全合规责任、环保责任、能源与物业费用、保险义务、交还状态（恢复原状 vs 按现状）、业主进入权、担保与母公司保证、争议解决、法律适用、登记（德国商业租赁是否需登记）\n   每项给出：我方目标 / 可接受底线 / 业主常见要求 / 风险提示\n2. 《海外仓仓储与履约服务协议》核心条款文本（中英对照）：服务范围定义（用附件 SLA 服务清单）、客户货物的陈述与保证（合规、无危险品瞒报、无侵权）、收货与验收（外包装验收 vs 开箱验收）、库存盘点与损耗率约定、仓储费与操作费、货权保留与风险转移、责任限额与除外、留置权、保险（谁投、投什么）、数据与系统接口、分包、违约与终止、终止后的货物处置（可留置、可变卖的条件与程序）、争议解决\n3. 德国商业租赁的特别提示（Gewerberaummietrecht）：与住宅租赁的差别（形式自由度高、无强制续租保护）、Schriftform（书面形式的严格要求，违反可能导致提前解约）、以及为何长期租约须严格保持书面形式\n4. 最后给我《仓库交接与退租检查表》"},
+ d:[
+ {t:"海外仓的业务模式与法律关系",
+  f:["三种运营模式：自营仓（我方子公司持有资产）、租赁自营（租仓 + 自营运）、第三方仓（转包给当地 3PL）","法律关系：仓储合同（保管）vs 承揽（贴标换包装）vs 委托（代发货）vs 买卖（自有库存销售）","谁是货主：货物入仓后货权是否转移？这个答案决定货损时谁索赔、破产时谁取回"],
+  o:"《海外仓业务模式法律关系对照表》+ 一份《货权归属判定清单》",
+  p:"请讲透海外仓的业务模式与法律关系：\n\n1. 三种模式对比：自营仓 / 租赁自营 / 转包第三方仓。维度：资产投入、法律责任、税务、用工、退出难度、客户感知\n2. 法律关系定性（这是关键）：\n   · 纯仓储：保管合同，我方为保管人（custodian/warehouseman），责任以妥善保管为限\n   · 仓储 + 履约（贴标、拣货、打包、发货）：保管 + 承揽/服务混合\n   · 代发货 + 代收款：可能加入代理与资金结算关系\n   · 自有库存转售：买卖合同，责任完全不同\n   · 给我《定性判定清单》：12 个要素判断我方到底是什么身份\n3. 货权问题：\n   · 货物入仓后货权归谁？客户保有所有权时，我方破产清算中客户能否取回（取回权）\n   · 混同存储（fungible goods）：同类货物混存时货权怎么认定\n   · 仓单（warehouse receipt / FIATA FWR）的作用与是否能用于融资\n4. 最后给我《海外仓服务协议》的「服务范围与身份」条款三版本（保管版 / 履约版 / 混合版）"},
+ {t:"仓库租赁：德国商业租赁法与实务",
+  f:["德国商业租赁法（Gewerberaummietrecht，《民法典》BGB 第 578 条以下）：相比住宅租赁意思自治空间大，但仍有一些强制规则","书面形式（Schriftform）的严格要求：长期租约（超过 1 年）若不符合书面形式，可能被提前解除——这是德国租赁的重大陷阱","押金、维修、租金调整、提前终止、征收补偿"],
+  o:"《德国仓库租赁谈判要点表》+ 一份《租约形式合规检查清单》",
+  p:"请讲透德国商业租赁（须核对现行法律与判例口径）：\n\n1. 商业租赁 vs 住宅租赁的核心差别：为什么商业租赁的自由度更高（无租金管制、无无限期续租保护），但仍有哪些不可排除的规则\n2. 书面形式（Schriftform）陷阱：\n   · 为什么超过 1 年的租约必须严格保持书面形式\n   · 哪些补充协议会「破坏」书面形式（口头变更、附件不完整、签署页缺失、授权链不完整）\n   · 违反的后果：合同变为不定期，可依法定通知期提前解除\n   · 给我《租约形式合规检查清单》\n3. 核心条款逐项：\n   · 租金与调整（指数化 Indexmiete、阶梯租金 Staffelmiete 的差别与合法性要求）\n   · 押金/保证金（通常为 3 个月净租金，须核对惯例）与返还\n   · 维修与改造（Instandhaltung / Instandsetzung）：哪些必须业主做、哪些可约定由租户承担\n   · 转租分租（Untermiete）的许可与拒绝权\n   · 提前终止（Kündigung）与固定期限租约（Zeitmietvertrag）的不可解除性\n   · 征收与拆迁（Enteignung）补偿的分配\n4. 给我《德国仓库租赁谈判要点表》20 项（我方目标 / 底线 / 风险）\n5. 最后：波兰与墨西哥仓库租赁的三个特别坑（提示：登记效力、税务、当地强制条款）"},
+ {t:"仓储服务协议核心条款",
+  f:["服务范围与 SLA：入库时效、上架时效、拣货准确率、发货时效、库存盘点频次与差异率","责任限额与除外：通常按仓储费的一定倍数或按每立方米/每票封顶；除外：固有缺陷、包装不良、未申报危险品","留置权与终止后处置：客户欠费时能否扣货、能否变卖；变卖的程序与风险"],
+  o:"《海外仓服务协议条款库》+ 一份《SLA 指标模板》",
+  p:"请帮我设计海外仓服务协议的核心条款：\n\n1. 《SLA 指标模板》：至少 10 项指标（入库及时率、上架及时率、库存准确率、拣货准确率、订单履约时效、发货准时率、退件处理时效、盘点频次与差异率、系统可用率、客诉响应时效），每项给出：定义、计算方式、目标值、未达标的后果（服务费折扣 vs 违约金）\n2. 责任条款：\n   · 责任基础（过错责任 vs 严格责任）、责任起讫（从哪一刻到哪一刻）\n   · 责任限额的三种写法（按仓储费倍数 / 按每立方米 / 按每票固定额）与各自利弊\n   · 必须排除的损失：间接损失、利润损失、关税与税款、产品合规罚款、召回成本\n   · 给我三套条款版本（严格 / 平衡 / 宽松）中英对照\n3. 客户陈述与保证：\n   · 货物合法、无侵权、无瞒报危险品、已取得必要合规文件（GPSR/电池法/EPR）\n   · 违反保证的赔偿（indemnity）条款怎么写才有效\n   · 给我《客户货物合规保证条款》中英对照\n4. 留置权与终止后处置：\n   · 客户欠费时的留置与变卖条款（须符合当地法：德国 HGB 留置权与变卖程序、波兰的相应规则）\n   · 变卖前必须履行的催告与通知程序\n   · 弃货（abandoned goods）处置：多久可以处置、销毁的环保要求、费用追偿\n5. 最后给我一份《海外仓服务协议》目录与必备附件清单"},
+ {t:"库存、保险与事故处理",
+  f:["盘点制度：周期盘点（cycle count）与年度盘点，差异率约定与责任分配","保险：仓储一切险 / 库存险（stock throughput）、责任险、营业中断险；保单的仓储地址与最高赔偿额",
+   "事故类型：火灾、水浸、盗窃、霉变、错发漏发、系统故障、罢工、极端天气"],
+  o:"《海外仓风险清单与保险方案》+ 一份《仓库事故应急 SOP》",
+  p:"请讲透海外仓的库存、保险与事故管理：\n\n1. 《海外仓风险清单》：逐类事故（火灾、水浸、盗窃、霉变、错发漏发、系统故障、罢工、极端天气、监管查封、客户破产弃货），每项给出：发生频率、典型损失量级、能否通过条款转移、能否通过保险转移、预防措施\n2. 保险方案设计：\n   · 库存险/仓储一切险（stock throughput / goods in transit + storage）：保谁的货（自有库存 vs 客户货物）、保额怎么定（按最高库存峰值）、免赔额\n   · 责任险：仓储人责任险（warehouseman's liability），为什么它和库存险不能互相替代\n   · 营业中断险（BI）与利润损失\n   · 保单必须核对的要点：仓储地址是否列入、最高赔偿限额、是否覆盖客户货物、是否覆盖盗窃与员工不忠（fidelity）、免赔额、事故通知时限\n   · 给我《海外仓保险核对清单》\n3. 盘点与差异：\n   · 盘点制度设计（周期盘点 + 年度盘点 + 抽样）\n   · 差异率（shrinkage）的合同约定：允许多少差异、超出谁承担\n   · 盘点差异的证据与责任认定\n4. 《仓库事故应急 SOP》：火灾/水浸/盗窃/发现违禁品四种场景，每种给出 0-1h / 1-24h / 24-72h 动作清单\n5. 最后：如果发现客户货物是假冒侵权商品，我方该怎么办？给我处置流程与法律依据（含欧盟知识产权执法指令与德国实务）"},
+ {t:"复盘：海外仓法律体系与第 19 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：一个仓从租下来到出事，我要提前锁死哪些条款"],
+  o:"《海外仓法律与合规手册》定稿",
+  p:"第 19 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：海外仓法律关系与货权、德国商业租赁与书面形式、服务协议责任条款、保险与事故处理\n2. 错题讲透\n3. 帮我起草《海外仓法律与合规手册》，核心是：模式对照表、租约谈判要点、服务协议条款库、风险与保险表、事故 SOP\n4. 最后给我一句话：海外仓最大的单点法律风险是什么，怎么一句话讲给 CEO 听"}
+ ]}
+];
+
+
+/* ============ 阶段四：岗位能力（W20-W24） ============ */
+const DATA4=[
+{w:20,st:4,th:"中英文合同模板体系：把前 19 周变成一套可复用的文件",goal:"这是你入职后第一个能立刻产生价值的交付物：一套中英文合同模板库 + 审批流程。这一周六天全部用来产出文本",
+ wk:{t:"周末实战⑳：完成《合同模板库 v1.0》与《合同审批流程制度》",d:"把本周五天产出的五份协议整合为《合同模板库 v1.0》，每份包含：中文版、英文版、使用说明（适用场景、必填项、可调条款、红线条款）、审批权限表。另起草《合同审批流程制度》：分级审批（金额/风险等级）、审批时限、必备附件、用印管理、归档与台账。",
+ p:"我要完成《跨境物流合同模板库 v1.0》与配套审批制度。\n\n请输出：\n1. 《合同模板库目录结构》：五类核心协议 + 配套附件（SLA 服务清单、费率表、合规承诺书、DPA、保价费率表），每份说明适用场景与调用方式\n2. 《合同审批流程制度》完整文本：\n   · 三级风险分级（一般 / 重要 / 重大）：判定标准（合同金额、是否涉及境外、是否涉及危险品、是否新业务、是否放弃责任限制）\n   · 各级的审批链、审批时限、必备材料\n   · 用印管理：谁保管印章、用印登记、电子签章的效力与条件\n   · 归档与台账：归档时限、保存年限、台账字段清单\n   · 例外与紧急审批通道\n3. 《合同风险台账》模板：字段至少包含合同编号、对方主体、业务类型、金额、期限、关键风险条款、责任上限、争议解决、续约/到期提醒、责任人\n4. 给我一份《新业务合同评审清单》：任何新业务在签约前必须回答的 20 个问题\n5. 最后：给我一份《模板库维护制度》：多久复核一次、谁负责、法规变化时如何批量修订"},
+ d:[
+ {t:"国际货运代理协议（中英对照）",
+  f:["协议定位：这是年框协议（framework agreement），具体每票货通过委托书/托运单（booking form）触发","核心条款：服务范围与身份定性、客户义务与合规保证、费用与支付、责任与限额、免责、保险、留置权、数据与合规、制裁与出口管制、保密、期限与终止、争议解决","最容易出问题的三条：身份定性条款、责任限额条款、制裁合规条款"],
+  o:"《国际货运代理服务协议》中英对照全文 + 起草说明 + 客户反制点",
+  p:"请起草一份《国际货运代理服务协议》（Freight Forwarding Services Agreement）中英对照全文。设定：我方为国际货代，作为缔约承运人提供门到门服务（含海运/空运/铁路、报关、海外仓、尾程）。\n\n请输出：\n1. 完整条款文本（中英对照，每条中文后附英文），至少包含：定义与解释、服务范围、我方身份与责任性质、客户的陈述与保证（货物合规、无危险品瞒报、无侵权、已取得出口/进口所需文件）、订舱与委托、费用与支付（含汇率与燃油附加调整）、责任与赔偿限额、免责事由、保险、留置权与抵销、分包、数据保护、出口管制与制裁合规、不可抗力、保密、期限与终止、违约、通知、完整协议、转让、可分割性、适用法律与争议解决\n2. 每条附「起草说明」：为什么这么写、不这么写的风险、可谈判的让步空间\n3. 每条附「客户反制点」：对方律师会怎么改、我方可接受的最低限度\n4. 特别讲透三处：\n   · 身份条款：如何在「缔约承运人」与「代理人」之间选边，以及「混合定位」的风险\n   · 责任限额：与保单的衔接、与法定限额的关系、格式条款效力加固\n   · 制裁条款：如何写才能在中止服务且不违约（含立即中止权、免责、客户的赔偿承诺）\n5. 最后给我一份签约前《用印检查清单》20 项"},
+ {t:"运输合同 / 承运协议（与分包商签）",
+  f:["方向反转：这一次我方是委托方（客户），分包商（实际承运人/卡车公司/铁路运营人）是对方","核心目标：把分包商的责任「背靠背」（back-to-back）地对齐我方对客户的责任","关键条款：背靠背条款、分包商的责任限额不得低于我方对客户承担的责任、追偿权、保险要求、时效配合"],
+  o:"《运输服务协议（分包方版）》中英对照 + 一份《背靠背条款库》",
+  p:"请起草一份《运输服务协议》（Transport Services Agreement），设定：我方（货代/无船承运人）作为委托方，向分包商（实际承运人，含卡车公司、铁路运营人、航空公司代理）采购运输服务。\n\n请输出：\n1. 完整条款中英对照：服务范围、分包商资质与持证要求、运作与安全要求（车辆、司机、装载、绑扎、温控、封条）、时效与追踪、单证与签收（POD 的形式要求）、费用与结算、分包商的责任范围与限额、保险要求（必须投保的险种与最低保额、把我方列为附加被保险人/放弃代位求偿）、背靠背条款、追偿与配合索赔义务（含配合提供证据、不擅自和解）、时效配合（不得因分包商原因导致我方对客户超时效）、分包再转委托的禁止、危险品与违禁品、制裁与合规、数据与保密、终止、争议解决\n2. 《背靠背条款库》五条关键条款中英对照：\n   · 责任对齐条款（分包商对我方的责任不低于我方对客户的责任）\n   · 抗辩权传递（我方对客户的免责/限额同样适用）\n   · 追偿配合（分包商须配合我方抗辩与追偿）\n   · 保险衔接（我方保单的代位求偿权不受影响 / 或放弃对分包商的代位）\n   · 时效保护（分包商不得以时效抗辩我方追偿）\n3. 每条给「起草说明」与「分包商常见反驳」的应对\n4. 最后：给我一份《分包商准入审查清单》18 项（资质、保险、安全记录、财务、合规）"},
+ {t:"海外仓服务协议与清关代理协议",
+  f:["海外仓协议：服务范围用 SLA 附件、货权与风险、责任限额、留置与变卖、客户合规保证","清关代理协议：直接代表 vs 间接代表的选择、税费垫付与偿还、申报错误的责任分配、文件留存年限","两份协议的共同点：都必须把「客户的合规义务」明确转移给客户"],
+  o:"《海外仓服务协议》+《清关代理协议》中英对照核心条款",
+  p:"请起草两份协议的中英对照核心条款：\n\n【A. 海外仓服务协议（Warehousing and Fulfilment Services Agreement）】\n1. 服务范围与 SLA 引用、服务变更机制\n2. 收货与验收（外包装验收 vs 开箱验收，验收后的风险分配）\n3. 客户的货物保证条款（合法所有、无侵权、无瞒报危险品、已取得 CE/GPSR/EPR/电池法等合规文件、非禁限类）\n4. 货权与风险（货物所有权始终归客户，风险是否在入库时转移）\n5. 库存管理、盘点与差异率\n6. 费用与支付、欠费处理\n7. 责任限额与除外（间接损失、利润损失、关税、罚款、召回成本）\n8. 留置权与终止后货物处置（催告、变卖、销毁）\n9. 保险（谁投保、是否把对方列为附加被保险人、代位求偿的放弃）\n10. 数据与系统接口、分包、不可抗力、期限与终止、争议解决\n\n【B. 清关代理协议（Customs Agency Agreement）】\n1. 服务范围与授权（委托书的形式要求）\n2. 直接代表 vs 间接代表的选择条款（欧盟）与后果说明\n3. 客户的文件真实性保证与配合义务\n4. 税费的垫付、偿还与担保\n5. 申报错误的责任分配（客户提供资料错误 vs 代理操作错误）\n6. 责任上限（以服务费倍数封顶，税费与罚款除外）\n7. 文件留存（年限与形式）与配合稽查义务\n8. 留置权、保密、终止、争议解决\n\n每份给我：条款中英对照 + 起草说明 + 对方常见要求 + 我方底线\n最后给我一份《两份协议的交叉检查清单》（客户同时用海外仓与清关服务时，两份协议的责任与免责要对齐）"},
+ {t:"客户与供应商协议：框架、报价单与标准交易条件的三层结构",
+  f:["三层文件：框架协议（Master Agreement）→ 报价单/服务订单（Quotation / Service Order）→ 标准交易条件（STC）","效力顺序条款（order of precedence）：防止三份文件打架","变更管理：报价单的有效期、费率调整机制、STC 的更新与通知"],
+  o:"《三层文件体系设计说明》+ 一份《效力顺序条款与变更机制条款》",
+  p:"请帮我设计客户与供应商协议的三层文件体系：\n\n1. 三层结构的作用与设计原则：\n   · 框架协议：定法律关系、责任、争议解决，一签多年\n   · 报价单/服务订单：定价格与具体服务，频繁变动\n   · 标准交易条件：定操作细节与责任限额，可引用纳入\n   · 为什么要分三层（灵活性、签约效率、法律稳定性）\n2. 《效力顺序条款》（order of precedence）：给我三种写法（框架优先 / 报价单优先 / 明确列举优先级）并说明各自风险。特别提示：如果报价单上的手写条款与 STC 冲突，会有什么后果\n3. 变更机制：\n   · 报价单有效期条款（常见 30 天）与燃油附加、汇率、旺季附加的调整条款\n   · STC 的更新：如何做到「更新后自动适用于老客户」（提示：通知 + 异议期 + 继续交易视为接受），这个机制在我国法下的效力风险\n   · 给我《报价单调整通知函》模板\n4. 给我一份《客户主协议 + 报价单 + STC》的一致性检查清单 20 项（防止三份文件打架）\n5. 最后：新客户只肯签报价单不肯签框架协议时，我方怎么办？给我三种风险递减的应对方案"},
+ {t:"复盘：合同模板体系与第 20 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：任何一份合同丢给我，30 分钟内给出审批意见"],
+  o:"《跨境物流合同模板库 v1.0》定稿",
+  p:"第 20 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：货代协议身份与限额、分包协议背靠背、海外仓协议责任与留置、清关协议代表方式、三层文件效力顺序\n2. 错题讲透\n3. 帮我整合本周产出物成《跨境物流合同模板库 v1.0》，给出目录、每份协议的核心条款摘要、以及《红线条款清单》（任何情况下不可让步的 10 条）\n4. 最后给我一份《合同审查 30 分钟快速通关法》：拿到一份合同，30 分钟内按什么顺序看、必看的 15 个点"}
+ ]},
+
+{w:21,st:4,th:"法律英语：能独立起草与审核英文合同",goal:"JD 第 8 条硬要求。这一周不学语法，学「英文合同条款的句式库」和「最容易踩坑的词」",
+ wk:{t:"周末实战㉑：把一份中文合同翻译成英文，并反向审查一份英文合同",d:"两件事：① 把你本周起草的《国际货运代理服务协议》核心条款（责任、赔偿、免责、终止、争议解决）翻译成专业英文，让 AI 逐句批改并给出更地道的替代写法；② 让 AI 生成一份「埋了雷」的英文服务协议（10 处对中方不利的措辞），你来找出并改写。",
+ p:"我要做一场法律英语实战。\n\n【练习一：中翻英】\n请让我先把以下中文条款翻译成英文，你来逐句批改（请等我提交译文后再批改）：\n1. 责任限额条款\n2. 赔偿（indemnity）条款\n3. 免责与不可抗力条款\n4. 留置权与抵销条款\n5. 终止与终止后义务条款\n6. 适用法律与仲裁条款\n\n批改时请按这个格式：我的译文 → 你的修改 → 为什么这么改（语法/术语/法律效果）→ 更地道的替代写法\n\n【练习二：英翻中与找雷】\n现在请先给我一份英文版的国际货运服务协议（Freight Forwarding Services Agreement），其中故意埋 10 处对我方不利的措辞，例如：\n· shall vs may 的滥用（把我方的裁量权写成义务）\n· best endeavours 与 reasonable endeavours 的区别陷阱\n· 责任限额中的 per occurrence vs in the aggregate\n· 赔偿条款中的 defend, indemnify and hold harmless 的扩张效果\n· consequential damages 的定义被限缩\n· 免责条款中的 howsoever arising\n· 终止条款中的 for convenience\n· 争议解决中的 exclusive jurisdiction vs non-exclusive\n· 通知条款中的 deemed received\n· 转让条款中的 novation vs assignment\n请先不要标出雷点位置，等我审完再逐条揭晓。"},
+ d:[
+ {t:"英文合同的结构与定义条款",
+  f:["标准结构：Parties / Recitals / Definitions and Interpretation / Operative provisions / Boilerplate / Execution","定义条款（Definitions）：哪些词必须定义、定义的写法（means vs includes）、交叉引用","解释条款（Interpretation）：单复数、包括、标题不影响解释、书面形式的含义"],
+  o:"《英文合同结构模板》+ 一份《高频定义词库》",
+  p:"请讲透英文合同的结构与定义条款：\n\n1. 给我一份完整的英文合同结构模板（每一节的英文标题 + 作用 + 常见写法），至少 20 节\n2. 定义条款（Definitions and Interpretation）：\n   · 哪些词必须定义（列举 15 个跨境物流合同中的高频定义词：Services, Goods, Carrier, Subcontractor, Charges, SDR, Force Majeure Event, Confidential Information, Applicable Law, Sanctions, POD, Dangerous Goods, Business Day, Affiliate, Claim）\n   · means 与 includes 的差别，什么时候用哪个\n   · 定义的排序与索引方法（首字母排序 vs 逻辑分组）\n3. 解释条款的标准写法：给我一份可直接用的 Interpretation 条款英文全文（含 12 条常见解释规则）\n4. 常见错误：定义与正文不一致、定义循环引用、缩写未定义就使用、定义中的「包括但不限于」在中美法下的不同效果\n5. 最后：给我一份《英文合同起草自查清单》20 项"},
+ {t:"最危险的十个词：shall、may、best endeavours……",
+  f:["shall vs may vs will：把义务写成裁量权（或反之）是英文合同最常见的灾难","best endeavours vs reasonable endeavours vs commercially reasonable efforts：三档努力义务在英美法下的判例差别","material / materially、promptly、from time to time、as soon as practicable：模糊词的诉讼价值"],
+  o:"《英文合同高危词对照表》+ 一份《我方立场下的替换词库》",
+  p:"请讲透英文合同里最危险的十个词与短语：\n\n1. 逐词讲解，每个给出：含义、英美法下的判例态度、对我方（物流服务提供方）有利还是不利、应争取的替换写法：\n   · shall / may / will / must\n   · best endeavours / reasonable endeavours / commercially reasonable efforts\n   · promptly / as soon as practicable / within a reasonable time\n   · material / materially adverse\n   · from time to time\n   · including without limitation / including but not limited to\n   · howsoever arising\n   · save / except / other than\n   · to the extent\n   · deemed\n2. 特别讲透 best endeavours：在英国法下它的义务强度有多高（须核对判例），为什么物流合同里应该避免接受这个词\n3. 给我一份《我方立场替换词库》30 组（不利表述 → 我方应争取的表述）\n4. 实战：给我 10 个真实合同条款片段，让我判断哪些对我方不利并改写\n5. 最后：如果我方是被审核方（客户发来他们的模板），我该重点划掉哪些词"},
+ {t:"责任、赔偿与免责：三个词不能混用",
+  f:["liability（责任）vs indemnity（赔偿/补偿）vs warranty（保证）：法律效果完全不同","limitation of liability：责任上限的写法（cap、exclusion of indirect loss、carve-out 例外事项）","indemnity 条款的危险之处：它通常不受责任上限约束——这是最容易被忽略的漏洞"],
+  o:"《责任与赔偿条款句式库》+ 一份《责任上限与例外事项设计表》",
+  p:"请讲透英文合同中的责任、赔偿与免责条款：\n\n1. 三个概念辨析表：liability / indemnity / warranty / guarantee / representation。每个：法律含义、触发条件、赔偿范围、是否受责任上限约束\n2. 责任限制条款（Limitation of Liability）的标准结构：\n   · 排除间接损失（exclusion of indirect / consequential loss）：给我标准英文表述，以及被排除的损失类型清单\n   · 责任上限（cap）：三种写法（固定金额 / 服务费倍数 / 按重量或件数）\n   · 例外事项（carve-outs / exclusions from the cap）：哪些责任不设上限（故意、重大过失、人身伤亡、违反保密、违反制裁合规、税费与关税）\n   · 给我一份可直接用的英文条款全文\n3. 赔偿条款（Indemnity）专题：\n   · defend, indemnify and hold harmless 三个动词分别意味着什么\n   · 为什么 indemnity 应当被明确纳入或不纳入责任上限（这是合同审查必查项）\n   · 给我一份「受上限约束版」与「不受上限约束版」两版英文条款，并说明我方立场\n4. 免责条款（Exclusion）与不可抗力（Force Majeure）：\n   · 不可抗力条款的六要素（定义、列举、通知、减损、后果、终止权）\n   · 给我一份中英对照的不可抗力条款（覆盖疫情、罢工、港口拥堵、制裁、战争、极端天气）\n5. 最后给我《责任与赔偿条款审查清单》15 项"},
+ {t:"适用法律、争议解决与通知条款",
+  f:["governing law vs jurisdiction vs arbitration：三件事，别混","仲裁条款的要素：机构、规则、仲裁地、语言、仲裁员人数、裁决终局性","通知条款（notices）：送达地址、方式、视为送达的时点（deemed received）——这个条款在争议爆发时极其关键"],
+  o:"《争议解决条款句式库》+ 一份《通知条款模板》",
+  p:"请讲透英文合同的适用法律、争议解决与通知条款：\n\n1. 六个常见组合的利弊分析：中国法+中国法院 / 中国法+香港仲裁 / 英国法+伦敦仲裁 / 英国法+LMAA / 新加坡法+SIAC / 香港法+HKIAC。每个给出：成本量级、执行便利度（纽约公约下的承认执行）、对我方的利弊、适合的交易对手\n2. 给我六套英文条款全文（可直接用），每套含：适用法律条款、争议解决条款、以及（仲裁时）仲裁规则引用、仲裁地、语言、仲裁员人数\n3. 起草要点：\n   · 为什么「仲裁条款的独立性」要写出来\n   · exclusive vs non-exclusive jurisdiction 的差别\n   · 为什么要约定仲裁语言与仲裁地（这决定程序法与司法审查）\n   · 诉前救济（interim relief / emergency arbitrator）条款\n4. 通知条款（Notices）：\n   · 必备要素：指定地址、指定收件人、送达方式（专人/快递/邮件）、视为送达时点、地址变更的生效条件\n   · 给我一份英文模板\n   · 为什么「法律程序文件另有送达方式」的约定很重要（跨境诉讼中的海牙送达公约问题）\n5. 最后给我《争议解决条款自查清单》12 项"},
+ {t:"英文商务沟通：索赔函、催款函与谈判邮件",
+  f:["英文商务信函的三原则：事实清楚、立场明确、保留权利（without prejudice / reservation of rights）","索赔函的结构：事实 → 责任依据 → 金额构成 → 期限 → 后果","催款函的升级：reminder → demand → final demand before action"],
+  o:"《英文函件模板库》+ 一份《谈判邮件常用句式》",
+  p:"请给我一套英文商务沟通的工具箱：\n\n1. 三份索赔函模板（英文全文）：\n   · 向承运人索赔货损（Cargo Damage Claim Letter）\n   · 向保险公司索赔（Insurance Claim Letter）\n   · 向客户索赔欠付运费与仓储费（Debt Recovery Demand）\n   每份给出：结构说明、关键句式、中英对照\n2. 催款函三级升级模板：\n   · 第一封（Payment Reminder，温和）\n   · 第二封（Formal Demand，正式，含利息与后果）\n   · 第三封（Final Demand / Letter Before Action，最后通牒，含诉讼与保全预告）\n   每封给出：发送时点、必备要素、语气控制、法律依据表述\n3. 《谈判邮件常用句式》30 句（中英对照），分类：\n   · 表达立场但不撕破脸\n   · 拒绝对方要求但留余地\n   · 提出替代方案\n   · 设定期限与后果\n   · 保留权利（reservation of rights）\n   · 确认与固化共识（confirming our understanding）\n4. 特别讲透两个概念：\n   · without prejudice（不影响权利的谈判沟通）：什么时候用、用错的后果\n   · reservation of rights（权利保留）：怎么写才有效\n5. 最后给我一份《英文邮件法律风险自查清单》：哪些话不要在邮件里写（承认责任、承诺赔偿、威胁、歧视性表述）"}
+ ]},
+
+{w:22,st:4,th:"国际争议解决：统筹境内诉讼与境外仲裁",goal:"JD 第 3 条。要能判断一个案子该打还是该和、在哪打、用什么规则、怎么控制成本与进度",
+ wk:{t:"周末实战㉒：做一份《争议应对策略书》与成本预算",d:"设定一个真实感的争议：一票 18 万美元的货物在波兰海外仓因火灾全损，客户起诉我方索赔 18 万，我方认为系货物自身电池起火且客户瞒报，反诉客户欠付仓储费 2.4 万美元。做一份完整的《争议应对策略书》：请求权与抗辩分析、证据清单、管辖与仲裁条款适用、程序选择、时间表、成本预算（含律师费、仲裁费、翻译、差旅）、和解底线测算。",
+ p:"我要做一份完整的《争议应对策略书》。设定：\n\n- 客户货物（含锂电池的电子配件）存放于我方波兰海外仓，因火灾全损，客户索赔 18 万美元\n- 我方主张：货物系客户瞒报危险品（未按约定申报电池），火灾起于货物自身；且我方对客户的责任限额为仓储费的 3 倍（约 1.2 万美元）\n- 客户欠付仓储与操作费 2.4 万美元\n- 仓储服务协议约定：波兰法，华沙仲裁（或我方主张的仲裁条款）\n\n请输出：\n1. 《请求权与抗辩分析表》：客户的三个可能请求权（违约/侵权/产品责任）与我方对应抗辩，每条给出法律依据、举证责任、胜算评估\n2. 《证据清单》：我方需要收集的证据（消防报告、保险公估报告、入库验收记录、客户的申报文件、MSDS、监控录像、员工证言、系统日志），每项给出：证明目的、取得难度、是否需要公证/保全、时限\n3. 《程序策略》：管辖异议 / 仲裁条款的适用 / 是否申请临时措施 / 是否启动刑事或行政程序（瞒报危险品）\n4. 《时间表》：从现在到裁决的关键节点与各自时限（含时效中断动作）\n5. 《成本预算表》：律师费（波兰当地 + 中国协调）、仲裁费（按争议金额估算）、翻译、公证、差旅、专家证人，给出金额区间\n6. 《和解底线测算》：基于胜诉概率 × 赔偿额 - 成本 - 时间价值的期望值计算，给我一个建议的和解区间\n7. 最后给我一份给 CEO 的《一页纸决策建议》"},
+ d:[
+ {t:"诉讼 vs 仲裁：选哪个",
+  f:["仲裁的优势：保密、专业性、纽约公约下的跨境可执行性、一裁终局","仲裁的劣势：费用高、仲裁庭无强制力（保全需法院协助）、上诉救济有限、多方争议难以合并","诉讼的优势：费用相对低、有保全与强制执行、有上诉救济；劣势：公开、跨境执行难（判决承认与执行的条约网络不如仲裁）"],
+  o:"《诉讼 vs 仲裁决策表》+ 一份《主要仲裁机构对比表》",
+  p:"请给我一份《诉讼 vs 仲裁决策表》：\n\n1. 12 个决策维度逐个对比：费用、时长、保密性、专业性、保全与临时措施、证据规则（披露 vs 有限披露）、上诉救济、跨境执行、多方与合并、缺席处理、对关系的破坏度、对我方的控制力\n2. 《主要仲裁机构对比表》：CIETAC（中国国际经济贸易仲裁委员会）、HKIAC（香港国际仲裁中心）、SIAC（新加坡国际仲裁中心）、ICC（国际商会）、LMAA（伦敦海事仲裁员协会）、DIS（德国仲裁院）、VIAC（维也纳）、KCAB。每个给出：适合什么争议、仲裁费计算方式与量级、平均时长、语言、特点\n3. 特别讲透海事仲裁：LMAA 的运作与小额索赔程序（SCP），为什么航运合同偏爱伦敦仲裁\n4. 混合条款的风险：「或裁或审」条款（既约定仲裁又约定诉讼）的效力问题（我国法下通常无效，须核对）\n5. 最后给我一份《争议解决条款选择决策树》"},
+ {t:"仲裁条款起草七要素与常见无效情形",
+  f:["七要素：仲裁意愿、仲裁机构、仲裁规则、仲裁地（seat）、语言、仲裁员人数、裁决终局性与适用法律","仲裁条款独立性：合同无效不影响仲裁条款效力","常见无效情形：机构名称不准确、同时约定诉讼、约定不存在的机构、未约定仲裁地、模糊表述（如「可提交仲裁」）"],
+  o:"《仲裁条款起草检查清单》+ 六套可直接用的英文仲裁条款",
+  p:"请讲透仲裁条款的起草：\n\n1. 七要素逐个讲：每个要素的写法、不写会怎样、常见的坑（例如：仲裁地 vs 开庭地点的区别——这一条极易搞错且后果严重）\n2. 给我六套可直接用的英文仲裁条款（并附中文对照）：CIETAC / HKIAC / SIAC / ICC / LMAA 小额程序 / DIS。每套说明适用场景\n3. 常见无效或争议情形：\n   · 机构名称写错（如写成「中国国际经济贸易仲裁委员会北京分会」是否可行）\n   · 同时约定诉讼与仲裁\n   · 约定不存在的仲裁机构\n   · 未约定仲裁地（对裁决的国籍与执行影响）\n   · 使用「may be submitted to arbitration」这类非排他表述\n4. 仲裁条款独立性原则：合同无效/被撤销/终止时仲裁条款是否继续有效？给我法律依据（须核对条号）\n5. 最后给我《仲裁条款起草检查清单》15 项\n6. 附加：给我一份《仲裁申请书（Statement of Claim）》的结构大纲"},
+ {t:"纽约公约、裁决执行与域外送达取证",
+  f:["《承认及执行外国仲裁裁决公约》（纽约公约，1958）：我国 1987 年加入（生效日期须核对），两大保留：互惠保留与商事保留","不予承认与执行的七项理由（公约第五条）：仲裁协议无效、未获适当通知、超裁、程序不当、裁决未生效、不可仲裁、违反公共政策","域外送达与取证：海牙送达公约、海牙取证公约（我国加入时间与保留须核对）"],
+  o:"《裁决执行路径图》+ 一份《域外送达与取证操作指引》",
+  p:"请讲透跨境争议的执行与程序问题：\n\n1. 纽约公约：\n   · 我国加入时间与两项保留的具体含义（须核对）\n   · 公约第五条的两类不予执行理由（须当事人主张的 vs 法院可主动审查的）\n   · 「公共政策」（public policy）抗辩在实务中的适用尺度\n   · 给我 3 个中国法院承认/拒绝执行外国裁决的类型案例\n2. 外国法院判决的承认与执行（对比仲裁）：\n   · 为什么判决比裁决难执行（条约网络、双边司法协助协定、互惠原则）\n   · 我国《民事诉讼法》相关规定（须核对条号与最新修订）\n   ·  reciprocity 互惠原则的认定现状\n3. 域外送达与取证：\n   · 海牙送达公约与海牙取证公约的适用（我国加入时间与保留须核对）\n   · 向境外当事人送达的实操路径（公约途径 / 外交途径 / 邮寄 / 电子送达的合法性）\n   · 域外取证的合法边界（特别注意：未经许可在境外私自取证可能违反当地法律，甚至构成刑事犯罪）\n4. 诉前与诉中保全：\n   · 我国海事请求保全与财产保全\n   · 境外保全（freezing injunction / Mareva、德国的 Arrest 与 einstweilige Verfügung）\n   · 仲裁程序中的临时措施与紧急仲裁员制度\n5. 最后给我《跨境争议执行路径图》"},
+ {t:"索赔时效管理：最贵的错误是过了期",
+  f:["各运输方式的时效不同：海运 1 年、空运 2 年、公路 1 年（故意 3 年）、铁路依体系而定；保险索赔时效另有规定","时效的中断、中止与延长：我国法下的规则、以及时效延长协议的实务做法","内部管控：时效台账、倒计时提醒、到期预警"],
+  o:"《索赔时效总表》+ 一份《索赔时效管理制度》",
+  p:"请帮我建一套索赔时效管理体系：\n\n1. 《索赔时效总表》：按运输方式与法律关系逐项列出时效期间、起算点、中断/中止规则、以及通知期限（notice period，注意通知期限与诉讼时效是两回事）。至少覆盖：海运（我国海商法）、海牙-维斯比、汉堡、空运（蒙特利尔）、公路（CMR）、铁路（SMGS/CIM）、多式联运、仓储、保险（我国保险法，须核对条号）、一般合同违约（民法典 3 年）\n2. 时效的性质：是诉讼时效还是除斥期间？（特别是蒙特利尔公约的 2 年——这一点在国际上争议很大，请讲透）\n3. 中断与延长的实务手段：\n   · 起诉/仲裁、催告、对方承认债务分别产生什么效果\n   · 时效延长协议（time extension agreement）的写法与取得技巧\n   · 给我一份中英对照模板\n4. 《索赔时效管理制度》：\n   · 台账字段（事故日期、对方、时效截止日、中断动作、责任人）\n   · 预警机制（提前 90/60/30 天提醒）\n   · 交接与复核\n5. 最后给我一份《索赔台账》Excel 字段设计与一个自动倒计时的公式思路"},
+ {t:"复盘：国际争议解决与第 22 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：一个案子来了，30 分钟内给出「打还是不打、在哪打、花多少」的判断"],
+  o:"《国际争议解决手册》定稿",
+  p:"第 22 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：诉讼 vs 仲裁、仲裁条款要素、纽约公约与执行、域外送达取证、时效管理\n2. 错题讲透\n3. 帮我起草《国际争议解决手册》，核心是：决策表、仲裁条款库、执行路径图、时效总表、成本预算模板\n4. 最后给我《外部律师管理规则》：什么时候该请外部律师、怎么选、怎么控费（含三种计费模式对比与各自的适用场景）、怎么考核"}
+ ]},
+
+{w:23,st:4,th:"内控、内审与反舞弊：JD 第 4 条与第 7 条",goal:"这是从「法务经理」跨到「法务总监」的关键一步：从处理单点问题，到搭建让问题不再发生的系统",
+ wk:{t:"周末实战㉓：起草《合同风险台账 + 合规风险库 + 年度内审计划》三件套",d:"产出三份可直接发文的制度：① 《合同风险台账管理制度》（含台账字段、更新频率、责任人、预警规则）；② 《合规风险库》（按业务线列出风险点、等级、控制措施、责任岗、检查频率）；③ 《年度内部审计计划》（审计对象、频次、方法、报告路径、整改闭环机制）。",
+ p:"我要产出内控三件套，请给出可直接落地的制度文本：\n\n【一、《合同风险台账管理制度》】\n1. 台账字段设计（至少 25 个字段）：合同编号、对方主体与信用等级、业务类型、金额与币种、签署日与到期日、自动续约条款、责任上限、争议解决与适用法律、担保与保证金、关键风险条款标记、责任人、复核人、履约异常记录、索赔与争议记录、到期提醒节点\n2. 更新频率与责任人、抽查机制（法务每季度抽查比例）\n3. 预警规则（到期前 90/60/30 天、自动续约前、对方信用等级下降、发生重大履约事件）\n4. 台账与印章、付款、应收的联动（无台账不得用印、无台账不得付款）\n\n【二、《合规风险库》】\n按业务线（销售与揽货、订舱与操作、报关、干线运输、海外仓、尾程、财务与结算、数据与系统、海外子公司）逐条列出风险点，每条给出：风险描述、触发场景、风险等级（高/中/低）、现有控制措施、责任岗、检查频率、整改状态\n\n【三、《年度内部审计计划》】\n审计对象（分公司/海外子公司/业务线/专项）、审计频次、审计方法（穿行测试、抽样、访谈、数据分析）、报告路径（向谁汇报）、整改闭环机制（发现—整改—复核—销项）、以及内部审计的独立性保障\n\n最后给我一份《内控成熟度自评表》：让公司能看清自己在五个层级（初始/可重复/已定义/已管理/优化）中的哪一档"},
+ d:[
+ {t:"合同风险台账与合规风险库",
+  f:["台账不是登记表，是风险仪表盘：要能回答「我们现在最大的合同敞口在哪」","风险库不是清单，是控制措施与责任岗的映射表","关键设计：台账与业务流程的硬卡点（无台账不用印、不付款）"],
+  o:"《合同风险台账》模板 + 一份《合规风险库》模板",
+  p:"请帮我设计合同风险台账与合规风险库：\n\n1. 《合同风险台账》字段设计：给我完整的字段清单（至少 25 个），每个字段说明：用途、数据来源、填写责任人、是否必填\n2. 台账的分级：按风险等级（金额 + 业务类型 + 对方主体 + 责任条款）分成 A/B/C 三级，分别适用不同的审批与复核要求\n3. 台账的硬卡点设计：\n   · 无台账 → 不得用印\n   · 无台账 → 不得付款\n   · 台账显示到期未续签 → 系统预警\n   · 给我一份《卡点落地方案》（含与财务、行政、IT 的协作）\n4. 《合规风险库》模板：\n   · 风险分类框架（按业务线 × 风险类型：法律合规 / 财务 / 运营 / 声誉）\n   · 每条风险的字段：风险编号、描述、触发场景、现有控制、风险等级（可能性 × 影响）、责任岗、检查频率、整改状态\n   · 给我一份填写示例（至少 10 条跨境物流行业的真实风险）\n5. 最后：给我一份《风险热力图》的做法（怎么把风险库画成一张管理层看得懂的图）"},
+ {t:"内部审计：年度计划与方法",
+  f:["内审的定位：独立于业务，向审计委员会/董事会报告；不是查账，是查流程与控制","审计方法：穿行测试（walkthrough）、控制测试、实质性测试、抽样、访谈、数据分析","审计闭环：发现问题 → 整改计划 → 整改验证 → 销项；整改率是关键 KPI"],
+  o:"《年度内部审计计划》模板 + 一份《审计工作底稿清单》",
+  p:"请帮我设计内部审计体系：\n\n1. 内审与法务、合规、风控的分工：四者在一家跨境物流公司里怎么摆？给我一张 RACI 表（谁负责、谁批准、咨询谁、知会谁）\n2. 《年度内部审计计划》模板：\n   · 审计对象清单（总部部门 / 国内分公司 / 海外子公司 / 专项：合同管理、报关合规、海外仓库存、费用报销、采购与分包、系统权限）\n   · 每项：审计频次、审计周期、预计人日、风险依据\n   · 审计资源的配置（自有 vs 外包 vs 借调）\n3. 审计方法逐个讲：穿行测试、控制测试、抽样（样本量怎么定）、访谈技巧、数据分析（异常检测：重复付款、关联供应商、超额报销、异常折扣）\n4. 《审计工作底稿清单》：每个审计项目的底稿应该包含什么\n5. 整改闭环：\n   · 整改计划的要素（问题、原因、措施、责任人、时限、验证方式）\n   · 整改率的计算与考核\n   · 拒不整改的升级路径\n6. 最后给我一份《内审报告》模板（含发现分级：重大/重要/一般）"},
+ {t:"反商业贿赂：FCPA、UKBA 与中国反不正当竞争法第 7 条",
+  f:["美国《反海外腐败法》（FCPA）：禁止为获取或保留业务向外国官员行贿；会计条款与账簿记录要求","英国《反贿赂法》（UK Bribery Act 2010）：比 FCPA 更严（含私营部门贿赂），唯一抗辩是「充分程序」（adequate procedures）","中国《反不正当竞争法》第 7 条：商业贿赂；刑法层面的对非国家工作人员行贿罪、单位行贿罪"],
+  o:"《反商业贿赂合规手册》+ 一份《第三方（代理/清关行）尽调清单》",
+  p:"请讲透反商业贿赂的三套规则与落地：\n\n1. FCPA / UKBA / 中国法的对比表：适用范围（属地/属人/国民）、禁止行为、是否含私营部门、是否允许「通融费」（facilitation payments）、抗辩理由、处罚幅度、典型案例\n2. 跨境物流行业的高风险场景（这是最有价值的部分）：\n   · 给海关官员的「加速费」\n   · 给船公司/堆场调度人员的「插队费」\n   · 给海外仓当地政府的「关系费」\n   · 通过清关代理/报关行间接行贿（第三方风险）\n   · 礼品、招待、差旅的边界（多少金额算越线）\n   · 给我一个《高风险场景与红线判断表》\n3. 《第三方尽调清单》：清关代理、海外仓合作方、当地销售代理，在合作前要查什么（股权与受益所有人、是否与政府关联、声誉与制裁名单、是否有合规制度、合同中的反贿赂条款）\n4. 给我一份《反商业贿赂政策》制度文本框架（含礼品与招待的金额上限表、审批流程、红线行为清单、举报渠道、违规后果）\n5. 最后给我一份《反贿赂条款》中英对照（可放进所有第三方协议）"},
+ {t:"举报、调查与舞弊处置",
+  f:["举报渠道：匿名举报、保护举报人、反报复政策","调查流程：受理与初核 → 立案 → 调查（访谈、取证、数据分析）→ 定性 → 处理 → 整改","证据与程序合规：调查取证的边界（不能违法取证、要注意个人信息保护）、与刑事程序的衔接"],
+  o:"《举报与调查制度》+ 一份《舞弊调查 SOP》",
+  p:"请帮我设计举报与调查体系：\n\n1. 《举报与调查制度》文本框架：\n   · 举报渠道（热线、邮箱、第三方平台）与匿名处理\n   · 举报人保护与反报复（为什么这条决定举报渠道有没有人用）\n   · 受理、登记、分级、初核、立案、调查、处理、反馈、归档\n   · 举报不实的处理（恶意举报 vs 查无实据）\n2. 《舞弊调查 SOP》：\n   · 0-24h：保全证据（封存账号、冻结权限、拷贝数据）\n   · 24-72h：初核与立案决策\n   · 调查阶段：访谈（怎么问、怎么记、是否可以录音）、文件审查、数据分析\n   · 定性与处理：内部处分 / 追偿 / 移送司法\n   · 整改与复盘\n3. 取证边界（非常重要）：\n   · 能不能查看员工的工作邮箱与聊天记录？在欧盟（GDPR）与中国分别有什么限制\n   · 能不能调取监控？能不能做背景调查？\n   · 违法取得的证据在劳动争议中会被排除吗？\n4. 给我三份模板：《举报登记表》、《调查笔录》、《处理决定书要点》\n5. 最后：给我一份《舞弊常见类型与红旗信号清单》30 项（采购回扣、虚报费用、飞单、虚假报关、内外勾结盗卖库存、虚假索赔）"},
+ {t:"复盘：内控体系与第 23 周自测",
+  f:["整合本周产出物","自测 10 题","核心问题：我能不能设计一套让同类问题不再发生的制度"],
+  o:"《内控与合规体系手册》定稿",
+  p:"第 23 周结束，请帮我固化：\n\n1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：合同台账设计、风险库、内审方法与闭环、反贿赂三法、举报与调查\n2. 错题讲透\n3. 帮我整合本周产出物成《内控与合规体系手册》，核心是：三件套制度 + 反贿赂政策 + 举报调查制度\n4. 最后给我一句话：内控体系最容易失败的原因是什么，怎么避免"}
+ ]},
+
+{w:24,st:4,th:"结业：从会做业务到能带团队",goal:"把 24 周的成果打包成「作品集」，并想清楚入职后第一年怎么干、团队怎么搭、外部资源怎么管",
+ wk:{t:"周末实战㉔：完成《法务总监就职百日计划》与《作品集》",d:"两件事：① 起草一份《法务总监就职百日计划》：0-30 天摸底（合同、争议、合规、团队、外部律师）、31-60 天出成果（高风险清单 + 三个整改项目）、61-100 天建体系（模板库、台账、培训、制度）；② 把 24 周的产出物整理成一份可展示的作品集目录与说明。",
+ p:"我要完成两件事。\n\n【一、《法务总监就职百日计划》】\n请给我一份可直接提交的计划，按三阶段展开：\n1. 0-30 天「摸底」：\n   · 要读的文件清单（现有合同、模板、制度、在办争议、保险单、境外主体资料、监管来函）\n   · 要访谈的人清单（CEO、CFO、业务部门负责人、海外子公司负责人、外部律师）及访谈提纲\n   · 要出具的成果：《法务现状诊断报告》\n2. 31-60 天「出成果」：\n   · 挑三个能在 30 天内见效的整改项目（提示：挑「高频 + 高损 + 低阻力」的，例如标准交易条件加固、索赔时效台账、报价单审查清单）\n   · 每个项目给出：问题、方案、责任人、验收标准\n3. 61-100 天「建体系」：\n   · 模板库、审批流程、风险台账、合规培训、外部律师管理\n   · 给我一份《第一年工作路线图》\n4. 附：《需要公司给的支持清单》（预算、编制、系统、授权）\n\n【二、《作品集》】\n请给我一份作品集的目录结构与每项的一句话说明：把我 24 周产出的核心文档（模板库、合规手册、争议手册、海外仓手册、内控制度、风险库）组织成一个「能证明我能干这活」的展示结构，并给每份文件写一段 100 字的能力说明（说明这份文件解决了什么问题、体现了什么能力）"},
+ d:[
+ {t:"法务总监画像：从专家到管理者",
+  f:["三个转变：从「给出法律意见」到「给出可执行的决策建议」；从「我来做」到「让人做」；从「法律正确」到「风险与商业平衡」","向上管理：怎么向 CEO 汇报（结论先行、用钱说话、给选项不给问题）","向下管理：团队怎么搭（几个岗位、怎么分工、怎么培养）"],
+  o:"《我的法务总监转型清单》+ 一份《法务部岗位设置方案》",
+  p:"请讲透从法务专家到法务管理者的转型：\n\n1. 三个转变逐个讲，每个给出：转变前 vs 转变后的行为对比、常见的失败方式、刻意练习的方法\n2. 向上管理：\n   · CEO 真正想听什么（不是法条，是「这个风险值多少钱、我们有几个选项、我建议哪个」）\n   · 给我一个《一页纸汇报模板》：背景 / 风险量化 / 三个选项 / 建议 / 需要的资源 / 时限\n   · 怎么在说「不」的同时不成为业务的敌人（给我三种「有条件的可以」话术）\n3. 团队搭建：\n   · 一家营收 10-30 亿、有海外仓的跨境物流公司，法务部该怎么配（岗位、人数、分工、汇报线）\n   · 三个人（法务经理 + 合同专员 + 合规专员）的招人画像与面试问题\n   · 怎么培养：给我一份《法务人员能力成长路径》\n4. 最后给我《我的法务总监转型清单》20 项（逐项自评）"},
+ {t:"外部资源管理：当地律师、检验人、翻译与合规服务商",
+  f:["外部律师的选聘：什么案子该外包、怎么选、怎么比价","三种计费模式：小时费（hourly rate）、固定费（fixed fee）、风险代理（contingency / conditional fee）——各自的适用场景与风险","管理外部资源：案件预算、进度管控、成果验收、知识沉淀"],
+  o:"《外部律师管理规则》+ 一份《境外律师选聘清单》",
+  p:"请讲透外部资源的选聘与管理：\n\n1. 《法务自己管 vs 外包给当地律师》分界表：按业务领域（合同审查、争议、公司秘书、税务、用工、产品合规、数据合规、出口管制）给出：建议自己做还是外包、理由、预算量级\n2. 境外律师怎么找：\n   · 找人渠道（国际律所的中国代表处、当地律所的中文服务团队、律协推荐、同行推荐、法律评级机构 Chambers/Legal 500）\n   · 《境外律师选聘清单》18 项（语言、专业领域、费率、团队规模、响应时效、利益冲突、是否有服务中国客户的经验）\n3. 计费模式：\n   · 小时费 / 固定费 / 风险代理的对比表（各自的利弊、适用什么案件、怎么防止超支）\n   · 给我三种模式下的《聘用函（engagement letter）》必备条款\n   · 控制成本的六个办法（预算上限与预警、阶段性结算、限定合伙人时间、模板化文书、批量折扣、知识复用）\n4. 其他外部资源：检验人（surveyor）、翻译、合规服务商（EPR 注册代理、VAT 代理、数据合规顾问）的选聘要点\n5. 最后给我《外部律师考核表》：从哪些维度打分（专业质量、响应速度、成本、沟通、知识转移）"},
+ {t:"年度合规日历与法规跟踪机制",
+  f:["把散落的合规义务按时间轴排列：形成一份公司级别的《年度合规日历》","法规跟踪：怎么建立监测机制（订阅源、责任分工、影响评估流程）","合规培训：面向业务团队的年度培训计划（合同、出口管制、数据合规、产品合规）"],
+  o:"《年度合规日历》+ 一份《法规跟踪与影响评估制度》",
+  p:"请帮我设计年度合规日历与法规跟踪机制：\n\n1. 《年度合规日历》模板：按月份排列，至少覆盖：\n   · 中国侧：年报、外汇名录与分类、报关单位信息变更与年度报备、危险品相关资质年检、AEO 复核、商标续展\n   · 欧盟侧：德国 Bundesanzeiger 财报公开、Transparenzregister 更新、波兰 KRS 与 CRBR、VAT 申报频次、EPR 年度申报与配额、电池法下的注册更新\n   · 内部：合同台账复核、保单续保、合规培训、内审、制度复盘\n   每项：时间节点、责任人、依据、漏做的后果\n2. 《法规跟踪与影响评估制度》：\n   · 监测源清单（中国：全国人大常委会、国务院、商务部、海关总署、网信办；欧盟：EUR-Lex、OJ、各总司；美国：Federal Register、BIS、OFAC；行业：FIATA、IATA、ICC）\n   · 分工与频率\n   · 《法规影响评估表》模板：新规是什么、什么时候生效、影响哪些业务、需要改什么、谁负责、时限\n3. 《年度合规培训计划》：\n   · 四个必修专题（合同与签约纪律、出口管制与制裁、数据合规、产品合规与报关）\n   · 每个专题：受众、时长、核心内容、考核方式\n   · 给我一份《出口管制与制裁培训》的完整课件大纲（18 页）\n4. 最后给我一句话：法规跟踪最容易失效的原因是什么"},
+ {t:"作品集打包与面试准备",
+  f:["把 24 周的产出物变成能证明能力的证据","面试中怎么讲：用 STAR 结构讲三个你主导过的项目","高频面试题与高分回答"],
+  o:"《作品集目录》+ 一份《面试准备清单》",
+  p:"请帮我准备作品集与面试：\n\n1. 《作品集目录结构》：把 24 周的产出物组织成 6 个文件夹（合同与模板体系 / 运输责任与索赔 / 海关与通关 / 境外合规 / 争议解决 / 内控与制度），每份文件写一段 100 字的能力说明（解决什么问题、体现什么能力、可直接用于什么场景）\n2. 给我 10 个这类岗位的高频面试题，每个给出：面试官在测什么、低分回答长什么样、高分回答的结构与要点\n3. STAR 结构练习：给我三个「项目」的讲述框架（分别体现：搭建体系的能力、解决争议的能力、商业判断的能力），每个给出：情境、任务、行动、结果，以及应当突出的数字\n4. 给我一份《面试反问清单》10 个问题（问这些问题能反向展示你的专业度，例如：贵司目前最大的合同敞口在哪、海外仓的保险是怎么安排的、境外争议由谁统筹）\n5. 最后：给我一段 90 秒的自我介绍框架（针对跨境物流法务总监岗位）"},
+ {t:"结业：24 周总复盘与下一步",
+  f:["完成第二次 24 项能力自评，与入营时对比","整理《我的跨境物流法务知识树》","制定未来 12 个月的持续学习计划"],
+  o:"《结业总结》+《未来 12 个月持续学习计划》",
+  p:"24 周结束了，请帮我做结业复盘：\n\n1. 出 30 道题的综合大测（单选 15 + 案例 10 + 简答 5），覆盖全部四个阶段。我作答后逐题批改，并给出：我的强项领域、薄弱领域、以及每个薄弱领域对应的补课清单\n2. 帮我整理《我的跨境物流法务知识树》：用层级结构把 24 周学到的知识组织成一棵树（根节点=跨境物流法务，一级分支=六大板块，二级分支=具体制度，叶子=关键数字与条文），让我能一眼看到自己的知识版图\n3. 请诚实地告诉我：以我目前学完 24 周的水平，与一个真正做过 5 年跨境物流法务总监的人相比，差距在哪？给我 5 条具体的差距与弥补方式\n4. 给我《未来 12 个月持续学习计划》：每月一个主题深耕（建议从判例精读、英文合同实操、境外实地调研、行业认证四个方向设计），并给出每月的验证方式\n5. 最后：给我一段话，作为这 24 周的结束语——不要鸡汤，要实话"}
+ ]}
+];
+
+
+/* ============ 术语地基库 ============ */
+const GLOSS=[
+{g:"一、主体与角色",c:"a",items:[
+ {t:"发货人 / 托运人",e:"Shipper / Consignor",a:"",d:"把货交给承运人运输的一方，通常是卖方或其代理",u:"提单托运人栏；决定谁有权指示放货"},
+ {t:"收货人",e:"Consignee",a:"",d:"有权在目的港提取货物的一方，记名提单上写明",u:"记名提单、指示提单背书后的持有人"},
+ {t:"通知人",e:"Notify Party",a:"",d:"货到时承运人应通知的一方，本身没有提货权",u:"提单 Notify 栏，通常是收货人的代理或清关行"},
+ {t:"承运人",e:"Carrier",a:"",d:"与托运人订立运输合同并负责运输的人",u:"海运/空运/公路/铁路各类运输合同的相对方"},
+ {t:"实际承运人",e:"Actual Carrier",a:"",d:"实际从事运输的人（如船东），与缔约承运人相对",u:"索赔时判断向谁主张；我国海商法下有连带责任规则"},
+ {t:"缔约承运人",e:"Contracting Carrier",a:"",d:"以自己名义与客户订立运输合同的人，虽不一定实际运输",u:"货代身份认定的核心概念；认定为它就要承担全程责任"},
+ {t:"无船承运人",e:"Non-Vessel Operating Common Carrier",a:"NVOCC",d:"不经营船舶但以承运人身份承运并签发自己提单的人",u:"我国需提单登记与保证金（须核对现行规定）"},
+ {t:"货运代理",e:"Freight Forwarder",a:"FF",d:"为委托人安排运输的中介，可能是代理人也可能是缔约承运人",u:"身份之争是货代法务的核心战场"},
+ {t:"多式联运经营人",e:"Multimodal Transport Operator",a:"MTO",d:"以一份合同、一种运费负责两种以上运输方式全程的人",u:"责任制度选择（网状/统一）的适用主体"},
+ {t:"报关企业 / 收发货人",e:"Customs Broker / Consignee of Import-Export",a:"",d:"海关注册登记的两类主体，责任范围不同",u:"报错关时处罚对象与责任划分"},
+ {t:"清关代理",e:"Customs Agent",a:"",d:"受委托办理进出口清关手续的服务方",u:"直接代表 vs 间接代表决定海关债是否连带"},
+ {t:"进口商",e:"Importer of Record",a:"IOR",d:"在目的国法律上承担进口申报与纳税义务的主体",u:"DDP/DAP 条款与海外仓模式下最关键的角色判断"},
+ {t:"海外仓运营商",e:"Overseas Warehouse Operator",a:"",d:"在目的国提供收货、仓储、拣货、发货服务的主体",u:"保管人 vs 承运人 vs 分销商的定性影响责任与合规义务"},
+ {t:"第三方物流 / 第四方物流",e:"3PL / 4PL",a:"3PL/4PL",d:"3PL 提供实际物流服务，4PL 做供应链整合与管理",u:"分包链条与背靠背条款设计"},
+ {t:"尾程派送商",e:"Last-mile Carrier",a:"",d:"负责从本地分拨中心到收件人的最后一段派送",u:"POD 证据、丢件责任与赔偿限额"},
+ {t:"检验人 / 公估人",e:"Surveyor / Loss Adjuster",a:"",d:"受委托对货损原因与程度进行专业检验的人",u:"货损索赔的关键证据；联合检验效力最高"},
+ {t:"保赔协会",e:"Protection and Indemnity Club",a:"P&I Club",d:"船东互助性质的责任保险组织",u:"船东责任险；与货代责任险不是一回事"},
+ {t:"授权代表 / 负责人",e:"Authorised Representative / Responsible Person",a:"",d:"非欧盟生产者在欧盟指定的合规责任人（GPSR 下）",u:"GPSR、CE、电池法下的强制要求"},
+ {t:"数据控制者 / 处理者",e:"Controller / Processor",a:"",d:"GDPR 下决定处理目的的一方 / 代为处理的一方",u:"决定谁签 DPA、谁对数据主体负责"},
+ {t:"最终用户 / 最终用途",e:"End-User / End-Use",a:"",d:"货物的实际使用方与用途",u:"出口管制筛查的核心要素"}
+]},
+{g:"二、运输方式与设备",c:"b",items:[
+ {t:"整箱 / 拼箱",e:"FCL / LCL",a:"FCL/LCL",d:"整箱由一个发货人装满；拼箱为多家货物共用一个箱",u:"提单种类、责任划分与货损认定差异"},
+ {t:"集装箱",e:"Container",a:"",d:"标准化运输容器，20GP/40GP/40HQ 等型号",u:"适货义务、箱体破损导致的货损争议"},
+ {t:"中欧班列",e:"China-Europe Railway Express",a:"",d:"中国至欧洲的国际铁路集装箱班列",u:"SMGS / CIM 双轨运单体系与换装风险"},
+ {t:"卡航",e:"Road Freight (China-Europe)",a:"",d:"以公路卡车完成的中国至欧洲运输",u:"适用 CMR 公约、TIR 单证册"},
+ {t:"多式联运",e:"Multimodal / Intermodal Transport",a:"",d:"使用两种以上运输方式的连贯运输，通常一份合同一份单证",u:"责任制度（网状/统一）的选择"},
+ {t:"转运 / 换装",e:"Transshipment / Transloading",a:"",d:"中途换船/换车/换箱；铁路换装指宽轨与标准轨的换装",u:"责任断层高发区，货损难以定位区段"},
+ {t:"电放",e:"Telex Release / Express Release",a:"",d:"托运人交回正本提单后，承运人通知目的港放货",u:"放弃控货权，必须先收款后电放"},
+ {t:"滞箱费 / 滞港费",e:"Demurrage / Detention",a:"",d:"前者多指港口堆存超期费，后者多指集装箱超期使用费",u:"目的港弃货时费用可能超过货值"},
+ {t:"危险品",e:"Dangerous Goods / Hazmat",a:"DG",d:"对安全有危险的货物，按 IMDG/IATA DGR/ADR/RID 分类",u:"瞒报后果极重（罚款、刑责、保险拒赔）"},
+ {t:"锂电池",e:"Lithium Battery",a:"",d:"UN3480/3481（锂离子）、UN3090/3091（锂金属）",u:"空运 PI965-970、UN38.3、电池注册"},
+ {t:"冷藏箱",e:"Reefer Container",a:"",d:"带制冷装置的集装箱，需全程控温并记录",u:"温度记录是货损责任认定的关键证据"},
+ {t:"集拼 / 分拨",e:"Consolidation / Deconsolidation",a:"",d:"多个发货人货物拼装/拆分作业",u:"拼箱货损的责任主体认定"},
+ {t:"舱位",e:"Space / Slot",a:"",d:"承运人提供的装载空间，舱位买卖与包舱协议的对象",u:"包舱协议下的责任与运力风险"},
+ {t:"转运单证册",e:"TIR Carnet",a:"TIR",d:"国际公路运输海关过境单证，简化沿途海关查验",u:"卡航过境的关键文件"},
+ {t:"托盘 / 打托",e:"Pallet / Palletizing",a:"",d:"集装单元化的载具与作业",u:"包装不良免责抗辩的事实基础"},
+ {t:"门到门",e:"Door to Door",a:"D2D",d:"从发货人仓库到收货人仓库的全程服务",u:"多式联运责任的典型场景"},
+ {t:"港到港",e:"Port to Port",a:"",d:"仅涵盖装货港到卸货港的海运段",u:"责任边界，与门到门责任差别巨大"},
+ {t:"一件代发",e:"Drop Shipping",a:"",d:"海外仓按卖家指令直接向终端消费者发货",u:"货权、产品合规责任与消费者权利问题"}
+]},
+{g:"三、单证",c:"c",items:[
+ {t:"提单",e:"Bill of Lading",a:"B/L",d:"海运运输单证，兼具货物收据、运输合同证明与物权凭证三功能",u:"控货、议付、索赔的核心文件"},
+ {t:"已装船提单",e:"On Board B/L",a:"",d:"货物已装上船后签发的提单",u:"信用证通常要求 on board notation"},
+ {t:"收货待运提单",e:"Received for Shipment B/L",a:"",d:"承运人收到货物尚未装船时签发的提单",u:"风险：未装船即签发可能被视为预借提单"},
+ {t:"清洁提单",e:"Clean B/L",a:"",d:"未载有货物或包装不良批注的提单",u:"信用证要求；用保函换清洁提单风险极大"},
+ {t:"不清洁提单",e:"Foul / Claused B/L",a:"",d:"载有货物或包装缺陷批注的提单",u:"银行通常拒收"},
+ {t:"记名提单",e:"Straight B/L",a:"",d:"收货人栏写明特定人，通常不可转让",u:"控货弱；某些法域下可不凭单放货"},
+ {t:"指示提单",e:"Order B/L",a:"",d:"收货人栏写 to order，凭背书转让",u:"银行质押、控货的首选"},
+ {t:"空白背书",e:"Endorsement in Blank",a:"",d:"背书人只签名不写被背书人，持单人即为权利人",u:"信用证项下最常见做法"},
+ {t:"海运单",e:"Sea Waybill",a:"",d:"不可转让的海运单证，收货人凭身份提货",u:"近洋、集团内部、信任客户；无控货功能"},
+ {t:"船东单 / 货代单",e:"Master B/L / House B/L",a:"MBL/HBL",d:"船公司签发给货代的提单 / 货代签发给实际托运人的提单",u:"换单、目的港放货流程与风险"},
+ {t:"换单",e:"Switch B/L",a:"",d:"在第三地更换提单（换发货人/收货人）的操作",u:"高风险，可能涉及规避贸易限制或制裁"},
+ {t:"空运单",e:"Air Waybill",a:"AWB",d:"航空运输单证，不可转让，不是物权凭证",u:"空运索赔、品名与重量记载的证明"},
+ {t:"铁路运单",e:"Rail Consignment Note",a:"",d:"铁路运输单证，SMGS 或 CIM 格式，非物权凭证",u:"中欧班列换单、铁路货损索赔"},
+ {t:"公路运单",e:"CMR Consignment Note",a:"CMR",d:"《国际公路货物运输合同公约》下的运单，三联单",u:"批注保留的写法决定货损举证成败"},
+ {t:"多式联运提单",e:"Multimodal Transport B/L",a:"",d:"覆盖全程多种运输方式的单证，可转让",u:"FIATA FBL 是典型代表"},
+ {t:"收货凭证",e:"Forwarders Certificate of Receipt",a:"FCR",d:"货代确认收到货物的凭证，不是物权凭证",u:"不能控货、不能议付；签发人责任限于收货"},
+ {t:"运输凭证",e:"Forwarders Certificate of Transport",a:"FCT",d:"货代承诺负责运输的凭证，不可转让",u:"介于 FCR 与 FBL 之间"},
+ {t:"FIATA 多式联运提单",e:"FIATA Bill of Lading",a:"FBL",d:"可转让的多式联运提单，是物权凭证",u:"签发即承担承运人责任，须审慎"},
+ {t:"仓单",e:"Warehouse Receipt",a:"FWR",d:"仓库收到货物的凭证，某些法域下可用于质押",u:"海外仓货权与融资"},
+ {t:"提货单",e:"Delivery Order",a:"D/O",d:"承运人或其代理签发的放货凭证",u:"目的港提货流程的关键文件"},
+ {t:"装货单 / 订舱单",e:"Shipping Order / Booking Note",a:"S/O",d:"承运人接受订舱后签发的装船指令",u:"运输合同成立的证据之一"},
+ {t:"商业发票",e:"Commercial Invoice",a:"",d:"卖方开具的货物价款凭证",u:"报关、估价、退税；低报风险"},
+ {t:"装箱单",e:"Packing List",a:"",d:"记载货物包装、件数、重量、体积的单证",u:"报关与理货的核对依据"},
+ {t:"原产地证",e:"Certificate of Origin",a:"CO / Form A",d:"证明货物原产地的文件，优惠与非优惠两类",u:"关税优惠（RCEP、FORM E）、反倾销"},
+ {t:"产地声明 / 自主声明",e:"Origin Declaration",a:"",d:"RCEP 等协定下由出口商自主出具的产地声明",u:"优惠税率的适用与事后核查风险"},
+ {t:"报关单",e:"Customs Declaration",a:"",d:"向海关申报货物情况的法律文件",u:"申报不实的行政与刑事后果"},
+ {t:"保险单",e:"Insurance Policy / Certificate",a:"",d:"保险合同的证明，可背书转让",u:"索赔的直接依据；被保险人是谁很关键"},
+ {t:"交货证明",e:"Proof of Delivery",a:"POD",d:"收货人签收的凭证，含签名、时间戳、有时含照片",u:"尾程丢件争议的决定性证据"},
+ {t:"装箱单 / 设备交接单",e:"Equipment Interchange Receipt",a:"EIR",d:"集装箱交接时记载箱体状态的单证",u:"箱体破损责任的划分依据"},
+ {t:"保函",e:"Letter of Indemnity",a:"LOI",d:"一方承诺赔偿另一方因特定行为所受损失的书面文件",u:"换清洁提单、无单放货；效力有边界"}
+]},
+{g:"四、贸易术语与结算",c:"d",items:[
+ {t:"国际贸易术语解释通则",e:"Incoterms",a:"",d:"国际商会制定的贸易术语惯例，2020 版为现行版",u:"风险与费用分界；需合同明确援引版本"},
+ {t:"船上交货",e:"Free On Board",a:"FOB",d:"货物装上船时风险转移，买方订舱",u:"误用于空运铁路是常见错误（应用 FCA）"},
+ {t:"货交承运人",e:"Free Carrier",a:"FCA",d:"交给买方指定的承运人时风险转移，适用于任何运输方式",u:"空运、铁路、公路的正确选择"},
+ {t:"成本加保险费加运费",e:"Cost Insurance and Freight",a:"CIF",d:"卖方付运费与保险费至目的港，但风险在装船时转移",u:"象征性交货；保险险别要求较低"},
+ {t:"完税后交货",e:"Delivered Duty Paid",a:"DDP",d:"卖方承担至目的地的一切费用与进口税费",u:"对卖方是无底洞，须算清 VAT 与反倾销税"},
+ {t:"目的地交货",e:"Delivered At Place",a:"DAP",d:"卖方运至指定地点（不卸货），进口清关由买方办理",u:"与 DDP 的关键区别在于进口税费"},
+ {t:"卸货地交货",e:"Delivered at Place Unloaded",a:"DPU",d:"卖方运至指定地点并完成卸货，2020 版取代 DAT",u:"唯一要求卖方卸货的术语"},
+ {t:"风险转移",e:"Transfer of Risk",a:"",d:"货物损毁灭失的风险由卖方转由买方承担的时点",u:"与费用划分点常不重合，是误解高发区"},
+ {t:"信用证",e:"Letter of Credit",a:"L/C",d:"银行有条件的付款承诺，凭相符单据付款",u:"独立性、抽象性、严格相符三原则"},
+ {t:"跟单信用证统一惯例",e:"Uniform Customs and Practice for Documentary Credits",a:"UCP600",d:"国际商会第 600 号出版物，信用证的核心规则",u:"5 个银行工作日审单；第 16 条拒付通知"},
+ {t:"不符点",e:"Discrepancy",a:"",d:"单据与信用证要求不一致之处",u:"银行拒付的理由；失权规则的适用"},
+ {t:"电汇",e:"Telegraphic Transfer",a:"T/T",d:"银行电汇付款，分前 T/T 与后 T/T",u:"最常见的结算方式；风险分配取决于先后"},
+ {t:"付款交单 / 承兑交单",e:"D/P / D/A",a:"",d:"托收项下付款后交单 / 承兑后交单",u:"D/A 对出口商风险最高"},
+ {t:"赊销",e:"Open Account",a:"O/A",d:"先发货后付款，出口商承担全部信用风险",u:"需信用保险或保理配套"},
+ {t:"保理",e:"Factoring",a:"",d:"应收账款转让换取融资，分有追索与无追索",u:"应收账款转让通知与登记"},
+ {t:"代位求偿",e:"Subrogation",a:"",d:"保险人赔付后取得被保险人对第三方的请求权",u:"保险公司赔完会回头找承运人或货代"},
+ {t:"信托收据",e:"Trust Receipt",a:"T/R",d:"银行放单给进口商提货销售，银行保留货权的安排",u:"进口押汇；银行的风险点"},
+ {t:"国际货物销售合同公约",e:"CISG",a:"CISG",d:"联合国国际货物销售合同公约，我国 1988 年生效",u:"适用判断与保留（须核对现状）"},
+ {t:"根本违约",e:"Fundamental Breach",a:"",d:"使另一方蒙受实质性损害、剥夺其合同预期的违约",u:"CISG 下宣告合同无效的门槛"},
+ {t:"软条款",e:"Soft Clause",a:"",d:"信用证中使受益人无法自主控制单据的陷阱条款",u:"如客检证由开证申请人签发"}
+]},
+{g:"五、海关与税务",c:"e",items:[
+ {t:"协调制度编码",e:"Harmonized System Code",a:"HS Code",d:"国际统一的商品分类编码，我国使用 10 位",u:"归类决定税率与监管条件"},
+ {t:"完税价格",e:"Customs Value",a:"",d:"海关据以计征关税的价格，以成交价格为基础",u:"运费、保险费、特许权使用费的计入"},
+ {t:"原产地",e:"Origin",a:"",d:"货物的生产国别，分完全获得与实质性改变",u:"反倾销、关税优惠、原产地标记"},
+ {t:"实质性改变",e:"Substantial Transformation",a:"",d:"判定原产地的标准之一，税则归类改变或增值比例",u:"第三国转运是否改变原产地"},
+ {t:"海关同盟",e:"Customs Union",a:"",d:"成员国间取消关税、对外统一关税的安排（欧盟）",u:"货物在任一成员国清关后可在欧盟内自由流动"},
+ {t:"欧盟海关法典",e:"Union Customs Code",a:"UCC",d:"欧盟海关的统一规则，Regulation (EU) No 952/2013",u:"欧盟清关的基础规则"},
+ {t:"经济运营者登记识别号",e:"EORI Number",a:"EORI",d:"在欧盟从事海关业务的企业登记号",u:"清关必备；失效导致无法清关"},
+ {t:"进口一站式服务",e:"Import One Stop Shop",a:"IOSS",d:"低值货物 B2C 进口 VAT 的一站式申报机制",u:"门槛须核对；不用的后果是收货人被要求缴税"},
+ {t:"一站式服务",e:"One Stop Shop",a:"OSS",d:"欧盟境内远程销售 VAT 的一站式申报机制",u:"海外仓发货至欧盟消费者的 VAT 处理"},
+ {t:"增值税",e:"Value Added Tax",a:"VAT",d:"欧盟等法域的消费税，进口环节与销售环节均可能征收",u:"海外仓是否触发当地 VAT 登记义务"},
+ {t:"进口增值税",e:"Import VAT",a:"",d:"货物进口时缴纳的增值税，通常可抵扣",u:"抵扣链条断裂是跨境卖家的痛点"},
+ {t:"预申报安全信息",e:"Importer Security Filing",a:"ISF",d:"美国进口前的 10+2 项申报",u:"装船前申报时限与罚款（须核对）"},
+ {t:"经认证的经营者",e:"Authorized Economic Operator",a:"AEO",d:"海关信用等级最高的企业，享通关便利",u:"我国的高级认证与一般认证"},
+ {t:"跨境电商监管代码",e:"Customs Supervision Code",a:"9610/9710/9810/1210",d:"跨境电商各类业务的监管方式代码",u:"决定通关模式与税收政策"},
+ {t:"保税",e:"Bonded",a:"",d:"货物在海关监管下暂缓缴纳进口税费的状态",u:"保税仓、保税区、1210 备货模式"},
+ {t:"暂时进出口 / 过境",e:"Temporary Admission / Transit",a:"",d:"货物临时进出境或途经第三国的海关程序",u:"T1/T2 过境单证；转运的管制风险"},
+ {t:"常设机构",e:"Permanent Establishment",a:"PE",d:"企业在另一国构成应税存在的固定营业场所或代理人",u:"海外仓是否构成 PE 决定当地征税权"},
+ {t:"转让定价",e:"Transfer Pricing",a:"TP",d:"关联交易定价须符合独立交易原则",u:"集团内服务费、管理费的定价文档"},
+ {t:"主动披露",e:"Voluntary Disclosure",a:"",d:"企业主动向海关报告违规并争取从轻处理",u:"海关稽查应对的重要工具"},
+ {t:"退证查询",e:"Verification of Origin",a:"",d:"进口国海关对原产地证真实性的核查",u:"核查期间可能暂停优惠待遇"},
+ {t:"申报不实",e:"False Declaration",a:"",d:"申报内容与实际情况不符的违规行为",u:"行政处罚；严重则构成走私"},
+ {t:"海关债",e:"Customs Debt",a:"",d:"因进口产生的关税与税费的法定债务",u:"间接代表下代理人与进口商连带承担"},
+ {t:"直接代表 / 间接代表",e:"Direct / Indirect Representation",a:"",d:"报关代理以委托人名义 / 以自己名义申报",u:"决定清关代理是否对海关债承担连带责任"},
+ {t:"综合担保",e:"Comprehensive Guarantee",a:"",d:"覆盖多项海关业务的担保，可申请减免",u:"欧盟清关的资金安排"},
+ {t:"商品处理费 / 港口维护费",e:"MPF / HMF",a:"MPF/HMF",d:"美国进口的两种法定费用",u:"进口成本测算必需项"},
+ {t:"反倾销 / 反补贴税",e:"Anti-Dumping / Countervailing Duty",a:"AD/CVD",d:"针对倾销或补贴进口产品加征的税",u:"税率可能数倍于货值，报价必须核实"}
+]},
+{g:"六、保险",c:"b",items:[
+ {t:"平安险",e:"Free From Particular Average",a:"FPA",d:"承保全损与共同海损，不保单独海损",u:"最低档海运险"},
+ {t:"水渍险",e:"With Particular Average",a:"WPA",d:"在平安险基础上承保自然灾害造成的部分损失",u:"中档海运险"},
+ {t:"一切险",e:"All Risks",a:"",d:"承保运输途中外来原因造成的损失，但有除外责任",u:"不是什么都保；固有缺陷与包装不良不保"},
+ {t:"协会货物条款",e:"Institute Cargo Clauses",a:"ICC A/B/C",d:"英国市场的标准货物保险条款，A 最宽 C 最窄",u:"国际业务中最常见的条款体系"},
+ {t:"仓至仓条款",e:"Warehouse to Warehouse",a:"W/W",d:"保险责任自发货人仓库至收货人仓库",u:"卸离海船满一定天数未入仓则终止（须核对）"},
+ {t:"保险利益",e:"Insurable Interest",a:"",d:"被保险人对保险标的具有的法律上承认的利益",u:"无保险利益则保险合同无效"},
+ {t:"代位求偿权",e:"Right of Subrogation",a:"",d:"保险人赔付后取代被保险人向第三方求偿的权利",u:"货代被追偿的主要路径"},
+ {t:"货代责任险",e:"Freight Forwarders Liability Insurance",a:"FFL",d:"承保货代因专业过失对第三方承担的法律赔偿责任",u:"与货物保险不可互相替代"},
+ {t:"除外责任",e:"Exclusions",a:"",d:"保险不承保的风险与损失",u:"罚款、关税、延误通常被排除"},
+ {t:"免赔额 / 免赔率",e:"Deductible / Franchise",a:"",d:"保险人不予赔付的部分，由被保险人自担",u:"直接影响净赔付金额"},
+ {t:"不足额投保",e:"Underinsurance",a:"",d:"保险金额低于保险价值，按比例赔付",u:"按 CIF × 110% 投保的原因"},
+ {t:"投保加成",e:"Insurance Margin",a:"",d:"在货值基础上加成投保预期利润（通常 10%）",u:"保险金额的计算"},
+ {t:"保价 / 申报价值",e:"Declared Value / Ad Valorem",a:"",d:"客户申报货物价值并额外付费以提高赔偿上限",u:"合同层面的赔偿上限机制"},
+ {t:"共同海损",e:"General Average",a:"GA",d:"为共同安全有意作出的特殊牺牲与费用，由各方分摊",u:"提单背面条款；需提供共同海损担保"}
+]},
+{g:"七、运输责任与公约",c:"a",items:[
+ {t:"海牙规则",e:"Hague Rules 1924",a:"",d:"最早统一提单规则的公约，确立最低义务与免责清单",u:"航海过失免责的源头"},
+ {t:"海牙-维斯比规则",e:"Hague-Visby Rules",a:"",d:"1968 年修订，提高限额并引入集装箱件数规则",u:"666.67 SDR/件 或 2 SDR/公斤（须核对）"},
+ {t:"汉堡规则",e:"Hamburg Rules 1978",a:"",d:"取消航海过失免责，改为完全过失责任制",u:"限额 835 SDR/件 或 2.5 SDR/公斤（须核对）"},
+ {t:"鹿特丹规则",e:"Rotterdam Rules 2008",a:"",d:"扩展至多式联运的新公约，尚未生效",u:"海运+ 与批量合同规则（须核对生效状态）"},
+ {t:"蒙特利尔公约",e:"Montreal Convention 1999",a:"MC99",d:"统一国际航空运输责任的公约",u:"22 SDR/公斤、2 年时效（须核对现行值）"},
+ {t:"国际公路运输合同公约",e:"CMR Convention",a:"CMR",d:"统一国际公路货物运输责任的公约",u:"8.33 SDR/公斤（须核对）"},
+ {t:"国际铁路货物联运协定",e:"SMGS",a:"SMGS",d:"独联体与部分亚洲国家适用的铁路联运规则，我国已加入",u:"中欧班列运单体系之一"},
+ {t:"国际铁路货物运输公约",e:"CIM / COTIF",a:"CIM",d:"欧洲为主的铁路货运规则，我国未加入",u:"中欧班列换单后的适用规则"},
+ {t:"首要条款",e:"Clause Paramount",a:"",d:"提单中援引适用某公约或某国法的条款",u:"决定整套责任规则适用哪一套"},
+ {t:"适航义务",e:"Seaworthiness",a:"",d:"承运人在开航前与开航时谨慎处理使船舶适航的义务",u:"不可通过合同减轻的最低义务"},
+ {t:"管货义务",e:"Cargo Care Obligation",a:"",d:"妥善谨慎地装载、搬移、积载、运输、保管、照料、卸载",u:"承运人责任的第二大支柱"},
+ {t:"航海过失免责",e:"Nautical Fault Exception",a:"",d:"船长船员驾驶或管理船舶的过失造成的货损可免责",u:"海牙体系的核心；汉堡规则已取消"},
+ {t:"单位责任限制",e:"Package Limitation",a:"",d:"承运人对每件或每公斤货物的最高赔偿额",u:"货损索赔金额的天花板"},
+ {t:"特别提款权",e:"Special Drawing Rights",a:"SDR",d:"国际货币基金组织的记账单位，用于责任限额",u:"所有国际公约限额的计价单位"},
+ {t:"责任限制的丧失",e:"Breaking the Limit",a:"",d:"因故意或明知可能造成损失而轻率作为时丧失限额保护",u:"原告攻击承运人限额的主要武器"},
+ {t:"合理绕航",e:"Lawful Deviation",a:"",d:"为救助人命财产、共同安全等目的的绕航",u:"不合理绕航后果极其严重"},
+ {t:"迟延交付",e:"Delay in Delivery",a:"",d:"货物未在约定或合理时间内交付",u:"各公约规定不同，多数限额以运费为限"},
+ {t:"活动物与舱面货",e:"Live Animals / Deck Cargo",a:"",d:"运输规则中的特殊货物，通常可约定排除",u:"提单背面条款的常见排除项"},
+ {t:"隐藏损失",e:"Concealed Damage",a:"",d:"交付时未发现、事后才显现的货损",u:"多式联运下难以确定发生区段"},
+ {t:"网状责任制",e:"Network Liability System",a:"",d:"按货损发生区段适用该区段规则的制度",u:"多式联运责任的三种模式之一"},
+ {t:"统一责任制",e:"Uniform Liability System",a:"",d:"全程适用一套责任规则的制度",u:"对经营人可预期，但可能与区段规则冲突"},
+ {t:"索赔通知期限",e:"Notice Period for Claim",a:"",d:"收货人须在规定时间内就货损提出书面通知",u:"与诉讼时效是两回事，逾期后果严重"},
+ {t:"时效延长协议",e:"Time Extension Agreement",a:"",d:"双方约定延长索赔时效的书面协议",u:"实务中最有效的保权手段"},
+ {t:"留置权",e:"Lien",a:"",d:"债权人合法占有债务人财产并拒绝交付的权利",u:"运费与仓储费催收的核心武器"},
+ {t:"共同海损分摊",e:"General Average Contribution",a:"",d:"受益方按比例分摊共同海损牺牲与费用",u:"需提供担保才能提货"}
+]},
+{g:"八、欧盟与产品合规",c:"d",items:[
+ {t:"通用产品安全法规",e:"General Product Safety Regulation",a:"GPSR",d:"(EU) 2023/988，取代原 GPSD 指令的欧盟产品安全基本法",u:"非欧盟生产者须指定欧盟负责人"},
+ {t:"电池与废电池法规",e:"Batteries Regulation",a:"",d:"(EU) 2023/1542，取代电池指令，覆盖全生命周期",u:"碳足迹、回收材料、EPR、电池护照"},
+ {t:"生产者延伸责任",e:"Extended Producer Responsibility",a:"EPR",d:"生产者对产品全生命周期（尤其回收）承担责任",u:"包装、WEEE、电池三大类注册义务"},
+ {t:"废弃电子电气设备指令",e:"WEEE Directive",a:"WEEE",d:"(EU) 2012/19/EU，电子电气设备的回收责任",u:"德国 EAR 登记号"},
+ {t:"包装与包装废弃物",e:"Packaging and Packaging Waste",a:"PPWR",d:"欧盟包装法规，取代原包装指令（编号须核对）",u:"德国 LUCID 包装登记"},
+ {t:"CE 标识",e:"CE Marking",a:"",d:"表明产品符合欧盟相关指令基本要求的标识",u:"自我声明为主，部分产品需公告机构"},
+ {t:"符合性声明",e:"Declaration of Conformity",a:"DoC",d:"生产者声明产品符合适用法规的书面文件",u:"清关与市场监管的必备文件"},
+ {t:"协调标准",e:"Harmonised Standards",a:"",d:"欧盟官方公报公布的、符合基本要求的推定标准",u:"产品合规的技术依据"},
+ {t:"公告机构",e:"Notified Body",a:"",d:"成员国指定的第三方合格评定机构",u:"部分高风险产品必须经其认证"},
+ {t:"化学品注册评估授权",e:"REACH",a:"REACH",d:"欧盟化学品法规，含 SVHC 高度关注物质管理",u:"物品中 SVHC 超 0.1% 的通报与 SCIP"},
+ {t:"有害物质限制",e:"Restriction of Hazardous Substances",a:"RoHS",d:"限制电子电气产品中特定有害物质的指令",u:"电子产品的强制要求"},
+ {t:"市场监管法规",e:"Market Surveillance Regulation",a:"",d:"(EU) 2019/1020，规范市场监管与产品合规",u:"成员国有权下架、召回、处罚"},
+ {t:"产品责任",e:"Product Liability",a:"",d:"因产品缺陷造成损害时的严格责任",u:"新的产品责任指令修订扩大了主体范围"},
+ {t:"安全门",e:"Safety Gate (RAPEX)",a:"",d:"欧盟危险产品的快速预警系统",u:"召回与通报的公开平台"},
+ {t:"通用数据保护条例",e:"General Data Protection Regulation",a:"GDPR",d:"(EU) 2016/679，欧盟数据保护基本法",u:"域外效力、罚款上限 2000 万欧元或 4%"},
+ {t:"标准合同条款",e:"Standard Contractual Clauses",a:"SCC",d:"跨境数据传输的标准化合同机制",u:"模块选择；Schrems II 后的传输影响评估"},
+ {t:"约束性公司规则",e:"Binding Corporate Rules",a:"BCR",d:"跨国集团内部数据传输的合规机制",u:"需监管机构批准"},
+ {t:"数据处理协议",e:"Data Processing Agreement",a:"DPA",d:"控制者与处理者之间的数据处理合同",u:"GDPR 第 28 条的强制要求"},
+ {t:"处理活动记录",e:"Records of Processing Activities",a:"RoPA",d:"组织必须维护的数据处理活动台账",u:"GDPR 第 30 条"},
+ {t:"数据保护官",e:"Data Protection Officer",a:"DPO",d:"负责监督数据合规的指定人员",u:"满足条件时必须指定"},
+ {t:"数据泄露通知",e:"Breach Notification",a:"",d:"发生个人数据泄露后 72 小时内通知监管机构",u:"逾期本身即构成违规"},
+ {t:"个人信息保护法",e:"Personal Information Protection Law",a:"PIPL",d:"中国个人信息保护基本法，2021.11.1 施行",u:"第 38 条数据出境三条路径"},
+ {t:"数据出境安全评估",e:"Data Export Security Assessment",a:"",d:"重要数据与大量个人信息出境前的监管评估",u:"阈值与豁免须核对现行规定"},
+ {t:"条例",e:"Regulation",a:"",d:"欧盟二级立法，直接适用，无需成员国转化",u:"判断约束力的第一步"},
+ {t:"指令",e:"Directive",a:"",d:"欧盟二级立法，须成员国转化为国内法",u:"须查成员国转化立法"},
+ {t:"CELEX 号",e:"CELEX Number",a:"",d:"EUR-Lex 上欧盟文件的唯一编号",u:"例：32023R1542 = 2023 年第 1542 号条例"}
+]},
+{g:"九、出口管制与制裁",c:"e",items:[
+ {t:"出口管制法",e:"Export Control Law",a:"",d:"中国出口管制基本法，2020.12.1 施行",u:"两用物项、军品、核的管制框架"},
+ {t:"两用物项",e:"Dual-Use Items",a:"",d:"既可民用也可军用的物项",u:"管制清单与许可申请"},
+ {t:"出口管理条例",e:"Export Administration Regulations",a:"EAR",d:"美国商务部工业与安全局（BIS）的出口管制规则",u:"域外管辖的核心依据"},
+ {t:"商业管制清单",e:"Commerce Control List",a:"CCL",d:"EAR 项下受控物项清单，以 ECCN 编码识别",u:"判断是否需要出口许可"},
+ {t:"出口管制分类编号",e:"Export Control Classification Number",a:"ECCN",d:"CCL 中物项的五字符分类编码",u:"物项筛查的第一步"},
+ {t:"EAR99",e:"EAR99",a:"",d:"CCL 未列明但受 EAR 管辖的物项",u:"低风险不等于无风险（目的地方向仍可能受限）"},
+ {t:"微量比例规则",e:"De Minimis Rule",a:"",d:"境外产品中美国成分低于门槛则不受 EAR 管辖",u:"门槛因目的地而异（须核对）"},
+ {t:"外国直接产品规则",e:"Foreign Direct Product Rule",a:"FDPR",d:"用美国技术或软件生产的境外产品也受 EAR 管辖",u:"非美国企业被管辖的主要路径"},
+ {t:"实体清单",e:"Entity List",a:"",d:"美国 BIS 的限制交易主体清单",u:"向其出口需许可，通常推定拒绝"},
+ {t:"特别指定国民清单",e:"Specially Designated Nationals List",a:"SDN",d:"美国 OFAC 的制裁对象清单",u:"美国人及有美国连接点的主体不得与之交易"},
+ {t:"50% 规则",e:"50 Percent Rule",a:"",d:"被制裁主体持股 50% 以上的实体自动受限",u:"股权穿透筛查的难点"},
+ {t:"次级制裁",e:"Secondary Sanctions",a:"",d:"对与被制裁对象交易的非美国人施加的制裁",u:"非美国企业的主要威胁"},
+ {t:"综合制裁 / 行业制裁",e:"Comprehensive / Sectoral Sanctions",a:"",d:"全面禁止 vs 仅限制特定行业的制裁",u:"判断交易是否被禁的关键"},
+ {t:"最终用途管制",e:"End-Use Control",a:"",d:"基于货物最终用途（军事、核、生化等）的管制",u:"即使物项不敏感，用途敏感也受限"},
+ {t:"红旗",e:"Red Flags",a:"",d:"提示交易可能存在违规风险的异常信号",u:"筛查制度的核心内容"},
+ {t:"欧盟两用物项条例",e:"EU Dual-Use Regulation",a:"",d:"Regulation (EU) 2021/821，欧盟统一的管制框架",u:"含网络监控物项与人权相关管控"},
+ {t:"欧盟通用出口许可",e:"EU General Export Authorisation",a:"EUGEA",d:"欧盟通用许可，满足条件可直接使用",u:"EU001-EU007 各有适用范围"},
+ {t:"冻结资产",e:"Asset Freeze",a:"",d:"制裁措施之一，禁止处置被制裁对象的资产",u:"命中制裁后的即时动作"},
+ {t:"反规避",e:"Anti-Circumvention",a:"",d:"禁止通过第三国或空壳公司规避制裁",u:"欧盟主体的积极义务"}
+]},
+{g:"十、海外仓、公司与用工",c:"b",items:[
+ {t:"有限责任公司（德国）",e:"Gesellschaft mit beschränkter Haftung",a:"GmbH",d:"德国最常见的有限公司形式",u:"最低注册资本与设立流程（须核对）"},
+ {t:"有限责任企业家公司",e:"Unternehmergesellschaft",a:"UG",d:"德国低门槛的有限公司变体",u:"资金有限时的过渡选择"},
+ {t:"有限责任公司（波兰）",e:"Spółka z ograniczoną odpowiedzialnością",a:"Sp. z o.o.",d:"波兰最常见的有限公司形式",u:"最低股本与 KRS 登记（须核对）"},
+ {t:"股份有限公司（墨西哥）",e:"Sociedad Anónima de Capital Variable",a:"S.A. de C.V.",d:"墨西哥常见的股份公司形式",u:"外资登记与行业限制"},
+ {t:"商业登记",e:"Handelsregister / KRS",a:"",d:"德国/波兰的公司登记簿，具有公示公信力",u:"变更须登记，未登记不得对抗第三人"},
+ {t:"受益所有人登记",e:"Transparenzregister / CRBR",a:"UBO",d:"登记公司实际控制人的制度",u:"反洗钱合规；逾期有罚款"},
+ {t:"董事（德国/波兰）",e:"Geschäftsführer / Zarząd",a:"",d:"公司的法定代表与经营管理者",u:"对税务、社保、破产申请迟延可能承担个人责任"},
+ {t:"解雇保护法（德国）",e:"Kündigungsschutzgesetz",a:"KSchG",d:"德国解雇保护的基本法",u:"适用门槛与 3 周起诉期（须核对）"},
+ {t:"解雇补偿",e:"Abfindung",a:"",d:"德国解雇时常见的补偿金",u:"谈判与预算测算"},
+ {t:"派遣与外派",e:"Posted Workers / A1 Certificate",a:"A1",d:"员工跨境派遣时的社保证明与合规要求",u:"欧盟内部派遣的必备文件"},
+ {t:"商业租赁（德国）",e:"Gewerberaummietrecht",a:"",d:"德国商业用房租赁的法律规则",u:"书面形式要求（Schriftform）是重大陷阱"},
+ {t:"书面形式",e:"Schriftform",a:"",d:"德国法对特定法律行为的严格书面要求",u:"长期租约违反可被提前解除"},
+ {t:"指数化租金 / 阶梯租金",e:"Indexmiete / Staffelmiete",a:"",d:"德国法下的两种租金调整机制",u:"形式要求不同，写错可能无效"},
+ {t:"周期盘点",e:"Cycle Count",a:"",d:"按周期对部分库存进行盘点的方法",u:"库存准确率与差异率管理"},
+ {t:"损耗率",e:"Shrinkage Rate",a:"",d:"库存账面与实际的差异比例",u:"合同约定与责任分配"},
+ {t:"取回权",e:"Right of Reclamation",a:"",d:"保管人破产时货主取回其货物的权利",u:"货物所有权归属的实务意义"},
+ {t:"混同存储",e:"Fungible Goods / Commingling",a:"",d:"同类货物混合存放，难以区分具体批次",u:"货权认定与取回权的难点"},
+ {t:"服务级别协议",e:"Service Level Agreement",a:"SLA",d:"约定服务水平指标与未达标后果的附件",u:"海外仓协议的必备附件"}
+]},
+{g:"十一、合同与争议解决",c:"c",items:[
+ {t:"责任上限",e:"Cap on Liability",a:"",d:"合同约定的最高赔偿金额",u:"三种写法：固定额、服务费倍数、按重量"},
+ {t:"间接损失",e:"Indirect / Consequential Loss",a:"",d:"非直接产生的损失，如利润损失、商机损失",u:"标准条款通常明确排除"},
+ {t:"例外事项",e:"Carve-outs",a:"",d:"不受责任上限约束的责任类型",u:"故意、人身伤亡、保密、制裁违规等"},
+ {t:"赔偿条款",e:"Indemnity",a:"",d:"一方承诺补偿另一方特定损失的义务",u:"是否受责任上限约束必须写明"},
+ {t:"保证与陈述",e:"Warranties and Representations",a:"",d:"对事实状态与承诺的约定",u:"违反触发赔偿请求权"},
+ {t:"标准交易条件",e:"Standard Trading Conditions",a:"STC",d:"印在背面或引用纳入的格式条款",u:"效力加固是败诉高发点"},
+ {t:"背靠背条款",e:"Back-to-Back Clause",a:"",d:"使下家对上家的责任与上家对客户的责任对齐",u:"分包协议的核心条款"},
+ {t:"效力顺序条款",e:"Order of Precedence",a:"",d:"约定多份文件冲突时以哪份为准",u:"防止框架协议与报价单打架"},
+ {t:"不可抗力",e:"Force Majeure",a:"FM",d:"不能预见、不能避免且不能克服的客观情况",u:"六要素：定义、列举、通知、减损、后果、终止"},
+ {t:"留置与抵销",e:"Lien and Set-off",a:"",d:"扣留货物与相互抵销债务的权利",u:"催收的核心手段"},
+ {t:"终止权（无因）",e:"Termination for Convenience",a:"",d:"无需理由即可终止合同的权利",u:"对方有此权利时我方投入风险大"},
+ {t:"完整协议条款",e:"Entire Agreement Clause",a:"",d:"约定合同文本构成双方全部合意",u:"防止口头承诺的争议"},
+ {t:"适用法律",e:"Governing Law",a:"",d:"合同所适用的实体法",u:"与管辖、仲裁是三件不同的事"},
+ {t:"仲裁地",e:"Seat of Arbitration",a:"",d:"仲裁的法律所在地，决定程序法与司法审查",u:"与开庭地点是两回事，极易搞错"},
+ {t:"仲裁条款独立性",e:"Separability of Arbitration Clause",a:"",d:"合同无效不影响仲裁条款效力",u:"避免因主合同效力争议丧失仲裁管辖"},
+ {t:"纽约公约",e:"New York Convention",a:"",d:"承认与执行外国仲裁裁决的国际公约",u:"跨境执行的法律基础"},
+ {t:"临时措施 / 保全",e:"Interim Measures / Injunction",a:"",d:"争议解决前的临时性救济",u:"扣船、冻结账户、行为保全"},
+ {t:"权利保留",e:"Reservation of Rights",a:"",d:"声明不放弃某项权利的表述",u:"谈判往来中必须写"},
+ {t:"不影响权利",e:"Without Prejudice",a:"",d:"和解谈判中的沟通不受后续援引",u:"用错的后果是丧失保护"},
+ {t:"尽最大努力",e:"Best Endeavours",a:"",d:"英国法下强度极高的努力义务",u:"物流合同中应避免接受"},
+ {t:"合理努力",e:"Reasonable Endeavours",a:"",d:"强度低于 best endeavours 的努力义务",u:"我方应争取的替代表述"},
+ {t:"视为送达",e:"Deemed Received",a:"",d:"通知条款中约定送达的拟制时点",u:"争议爆发时的关键条款"}
+]}
+];
+
+/* ============ 指令库 ============ */
+const LIB=[
+ {g:"通用模板",c:"a",t:"法条/公约逐条精读模板",d:"任何一部法规或公约，都能用这条指令拆成可执行的知识。把【】换成当周主题即可反复使用。",
+  p:"请逐条精读【法规或公约名称】（请注明现行有效版本；如有修订或废止请一并标明）。对每一条按如下结构输出：\n\n【条文原文要点】/【立法目的或制度目标】/【对我方（物流服务提供方）的合规要求】/【跨境物流场景下的常见踩坑】/【我的落地动作（具体、可执行、给数字）】/【客户或对方可能怎么反制】\n\n另外请：\n1. 标出哪些条文是强制性规定（不得通过合同排除）、哪些是任意性规定\n2. 给出这部法的整体结构图（条文号 + 一句话概括）\n3. 指出与其他法规/公约的冲突点与适用顺序\n4. 最后给我一份《合规检查清单》20 项，可直接下发"},
+ {g:"通用模板",c:"a",t:"合同条款起草模板",d:"起草任何一条合同条款时用。会同时给出中英对照、起草说明与对方反制点。",
+  p:"请帮我起草【条款名称，例如：责任限额条款】的中英对照文本，用于【合同类型，例如：国际货运代理服务协议】。设定立场：我方为【物流服务提供方 / 客户 / 分包方】。\n\n请输出：\n1. 条款英文全文（专业法律英语）\n2. 条款中文对照\n3. 起草说明：为什么这么写、不这么写的风险、可谈判的让步空间\n4. 对方（【客户/分包商/承运人】）会怎么改？他们的常见要求是什么？我方的底线在哪\n5. 这条条款在我国法下是否可能因格式条款规则被认定无效？如何加固\n6. 给我一个「严格版 / 平衡版 / 宽松版」三选一对照"},
+ {g:"通用模板",c:"a",t:"合同审查模板",d:"拿到任何一份合同，套这条指令出审查意见。附件丢给 AI 即可。",
+  p:"请审查这份【合同名称】。立场：我方为【物流服务提供方 / 客户 / 分包方】。\n\n请输出：\n1. 《风险清单》：逐条列出对我方不利或存在风险的条款，按 P0（高危，必须改）/ P1（中危，应争取）/ P2（提示，可接受）分级，每条给出：条款原文 / 风险点 / 后果场景 / 我方可争取的改写文本 / 底线\n2. 《缺失条款清单》：这份合同缺了哪些必备条款（对这类合同而言），逐条给出建议文本\n3. 《矛盾条款清单》：条款之间有没有冲突（尤其是责任限额与赔偿条款、期限与终止、文件效力顺序）\n4. 《谈判策略》：哪三条必须先争、哪三条可以让、用什么交换\n5. 最后给我一份《用印前必改清单》"},
+ {g:"通用模板",c:"a",t:"案例研判模板",d:"出事之后用。把事实丢进去，得到责任判断、索赔路径与动作清单。",
+  p:"【描述事故场景：货物、路线、运输方式、事故经过、已知损失、各方主张、现有单证】\n\n请以【我方身份：货代/缔约承运人/海外仓/客户】的立场分析：\n1. 《责任归属分析》：逐段拆解，每段适用的法律/公约、责任基础、责任限额、免责可能性、举证责任在哪一方\n2. 《赔付敞口测算》：每种可能定性下的赔付上限（用具体数字计算），以及保险能否覆盖、我方净损失多少\n3. 《抗辩清单》：我方的抗辩路径，按强度排序，每条给出法律依据与证据要求\n4. 《追偿路径》：可以向谁追偿、依据、时效、优先级、成功率\n5. 《72 小时动作清单》：现在开始要做什么、谁做、留什么证据\n6. 《该打该和决策表》：按金额、证据、偿付能力、战略价值打分，给出建议\n7. 最后给我一份给 CEO 的《一页纸汇报》"},
+ {g:"通用模板",c:"a",t:"制度/手册起草模板",d:"把零散知识变成可发文的公司制度时用。",
+  p:"请帮我起草《【制度名称】》。设定：公司为【跨境物流/国际货代/海外仓企业，员工规模，业务范围，涉及国家】。\n\n要求：\n1. 可直接发文，不要写成学习资料或建议书\n2. 结构完整：目的与依据 / 适用范围 / 定义 / 职责分工（RACI）/ 核心规则 / 操作流程 / 记录与证据留存（留存什么、留存多久、谁保管）/ 违规责任 / 附则\n3. 每条规则落到具体动作：谁、在什么时间、做什么、做完留什么证据\n4. 涉及金额、期限、比例的，必须给具体数字\n5. 附《执行检查清单》（可勾选，带进度）\n6. 最后给我《制度落地推行方案》：怎么宣贯、怎么培训、怎么检查、多久复盘"},
+ {g:"通用模板",c:"a",t:"合规清单设计模板",d:"任何业务环节都能用它产出一份可下发、可勾选、可打印的检查清单。",
+  p:"请帮我设计《【业务环节】合规检查清单》。业务场景：【描述该环节的业务流程、参与岗位、常见风险】。\n\n要求：\n1. 20-30 项，按业务流程顺序排列\n2. 每项给出：检查项 / 判断标准（能直接判 yes or no）/ 依据（法规条号或合同条款）/ 检查频次 / 责任人\n3. 标出「否决项」（命中即停止，不得放行）与「提示项」（需升级处理）\n4. 可勾选、可打印、可交给一线岗位使用（语言要口语化，不要法言法语）\n5. 最后给我《命中否决项后的处置流程》"},
+ {g:"通用模板",c:"a",t:"外部法律问题研判模板",d:"遇到不熟悉的境外法域问题时用，会明确标出「必须由当地律师确认」的部分。",
+  p:"【描述问题：涉及哪个国家、什么业务、什么争议】\n\n请给我：\n1. 这个法域下的法律框架：适用什么法律、主管机关是谁、基本规则是什么（请注明信息来源与生效日期，不确定处标「待核实」）\n2. 我方可采取的路径与各自的时间、成本、成功率\n3. 关键的时限与程序要求（不要漏掉任何 deadline）\n4. 《必须由当地执业律师确认的问题清单》：哪些结论不能直接采信、需要向当地律师确认什么（给我可以直接发给当地律师的英文问题清单）\n5. 给我一份《委托当地律师的询价要点》（工作范围、交付物、费率结构、时限）"},
+ {g:"通用模板",c:"a",t:"费曼检验与自测模板",d:"每周五复盘日用。先自己答，再让 AI 批改。",
+  p:"本周我学了【本周主题】。请对我做一次严格检验：\n\n1. 出 10 道题（单选 5 + 场景案例 3 + 简答 2），覆盖本周全部知识点，题目要有实务感，不要纯记忆题\n2. 我作答后逐题批改，错的要讲透，并告诉我这个错误在真实业务中会导致什么具体后果（用金额或场景说话）\n3. 给我一道费曼检验题：如果要给【一个操作岗/销售/新同事】用 3 分钟讲清楚【本周核心概念】，该怎么讲？给口语化讲稿\n4. 帮我整合本周产出物成一份文档，给出目录结构与每部分要点\n5. 最后给我下周学习的 3 条提醒，并预测我下周会在哪一天卡住"},
+ {g:"场景指令",c:"b",t:"客户拿不出合规文件坚持要发货",d:"海外仓与货代的高频场景。用这条一次性拿到三种应对方案与免责设计。",
+  p:"场景：客户要把【产品类型】发到我方的【德国/波兰/美国】海外仓，但拿不出【CE 证书 / DoC / GPSR 负责人信息 / 电池法注册 / EPR 注册 / UN38.3】，坚持要求先发货。\n\n请给我：\n1. 《风险清单》：缺这些文件分别会导致什么后果（清关受阻罚款、平台下架、市场监管处罚、产品责任、保险拒赔），按严重度排序并给出量级\n2. 《三种应对方案》：\n   · 方案 A：拒绝发货（给我《拒绝发货告知函》要点）\n   · 方案 B：有条件放行（给我《合规缺件告知函》+《客户赔偿承诺函》条款，以及免责条款怎么写才有效）\n   · 方案 C：协助补办（给我补办路径与时间）\n3. 每种方案的法律风险与我方剩余敞口\n4. 给我一份《客户合规状态台账》字段设计\n5. 最后给我一句话：这个场景下我方最该做、但最常忘的一件事是什么"},
+ {g:"场景指令",c:"b",t:"货物在目的港被弃（无人提货）",d:"滞箱费可能吃掉整票货的利润。这条指令给出止损路径与追偿策略。",
+  p:"场景：货物到达【目的港/目的国】，收货人拒不提货或失联，已产生【滞箱费/滞港费/仓储费】累计【金额】，预计继续累积。\n\n请给我：\n1. 《费用构成与增速测算》：各项费用的计费方式、谁在收、每月多少、什么时候会超过货值\n2. 《处置路径决策表》：催提 / 转卖 / 退运 / 弃货 / 销毁 / 申请海关拍卖，每条路径的：适用条件、法律程序、成本、时间、我方剩余敞口\n3. 《目的国弃货的强制规定》：这个国家有没有关于无人提货货物的强制处置规则（例如一定期限后海关拍卖或销毁，费用向谁追）\n4. 《向谁追偿》：能否向发货人追偿？法律依据是什么？给我判例倾向与我方的合同条款依据（现有条款如何、应改成什么样）\n5. 《止损 SOP》：0-72h / 1-4 周 / 1-3 月的动作清单\n6. 最后给我《预防机制》：接单时如何预先规避（合同条款、客户资质、预付款、弃货保证金）"},
+ {g:"场景指令",c:"b",t:"客户拖欠运费与仓储费",d:"从小额催收到跨境诉讼的完整打法。",
+  p:"场景：客户拖欠我方【运费/仓储费/操作费】共【金额】，账龄【时间】，货物【在我方控制下 / 已放行 / 在海外仓】，客户【失联 / 有争议 / 承认但无力支付】。\n\n请给我：\n1. 《债权核查清单》：债权是否成立、金额是否准确、有没有超过诉讼时效、有没有担保或连带保证、能不能抵销\n2. 《留置权行使方案》：我方能否扣货？扣谁的货（注意：扣第三方货物的风险）？行使程序是什么？扣多久可以变卖？变卖要履行什么程序？\n3. 《催收三级升级》：三封函件的要点（中英对照）、发送时点、必要内容、语气控制\n4. 《诉讼与仲裁方案》：在哪起诉/仲裁、成本、时长、执行可能性、财产线索怎么找、诉前保全怎么做\n5. 《该打该和决策表》：按金额、证据、偿付能力、战略价值打分\n6. 最后给我《预防机制》：新客户准入、授信管理、预付款与保证金制度、合同条款（加速到期、抵销、连带保证、所有权保留）"},
+ {g:"场景指令",c:"b",t:"一票货全损，客户索赔货值全额",d:"决定你能不能把赔付压到限额内的关键指令。",
+  p:"场景：一票货在运输途中【全损/部分损失】，货值【金额】，运输方式【海运/空运/铁路/公路/多式联运】，我方身份【缔约承运人/代理人/海外仓】，客户索赔【全额货值 + 利润损失 + 其他】。\n\n请给我：\n1. 《责任定性分析》：我方是什么身份、适用什么规则、责任基础、责任限额（用具体数字算）\n2. 《抗辩清单》按强度排序：责任限制抗辩 / 免责事由 / 客户过错（瞒报、包装不良、固有缺陷）/ 因果关系断裂 / 时效 / 损失未证明 / 间接损失排除。每条给出：法律依据、证据要求、成功率\n3. 《损失核定》：客户主张的金额哪些能成立、哪些能被剔掉（利润损失、关税、市场跌价、间接损失）\n4. 《保险与追偿》：我方保险能否覆盖、保险公司代位后我方的地位、向实际承运人追偿的路径与时效\n5. 《谈判与和解》：和解区间测算、让步策略、和解协议必备条款\n6. 最后给我一份《给客户的回复函》要点（既不承认责任，又保留合作空间）"},
+ {g:"场景指令",c:"b",t:"发现客户货物涉嫌侵权或违禁",d:"海外仓法务的真实噩梦。这条给处置路径与自我保护。",
+  p:"场景：我方【海外仓/运输途中】发现客户货物涉嫌【假冒品牌 / 侵犯专利 / 违禁品 / 未申报危险品 / 受管制物项】。\n\n请给我：\n1. 《立即动作清单》：0-4h / 4-24h / 24-72h 分别做什么（隔离、取证、不擅自开拆、不擅自处置、通知与保护现场）\n2. 《我方的法律地位与风险》：保管人会不会被认定为侵权？「不知情」能否免责？在欧盟/美国/中国的规则分别是什么\n3. 《处置路径》：通知客户限期说明 / 向权利人通报 / 向监管机关报告 / 配合查处 / 拒绝继续提供服务 / 依法销毁，每条的适用条件与风险\n4. 《费用与损失追偿》：我方产生的仓储、处置、罚款、律师费能否向客户追偿？合同条款依据\n5. 《合同条款改进》：给我一份《客户货物合法性与赔偿承诺条款》中英对照\n6. 最后给我一份《违禁品与侵权货物处置 SOP》，可直接发文"},
+ {g:"场景指令",c:"b",t:"客户要求 DDP 报价",d:"DDP 是无底洞。这条帮你在接单前算清并设防。",
+  p:"场景：客户要求我方按 DDP【目的城市】报价，货物为【产品类型】，货值【金额】，重量体积【数据】。\n\n请给我：\n1. 《DDP 成本清单》：运费、保险、目的国关税（HTS/HS 与税率）、进口 VAT、反倾销或 301 税（如适用）、清关代理费、EPR 与产品合规成本、不可预见的目的港费用，逐项给出估算方法与量级\n2. 《风险清单》：目的国税费政策变动、归类争议、估价质疑、清关延误、客户不配合提供文件、无法完成进口清关时的退运成本\n3. 《报价保护条款》：给我中英对照的条款（税费变动调整权、客户提供文件义务、清关失败的费用承担、不可归责于我方时的免责）\n4. 《替代方案》：DAP / DPU / 客户自清关 / 我方协助清关（作为代理不作为 IOR），各自利弊\n5. 最后给我一份《DDP 接单前核查清单》20 项，以及一句话判断：这笔单子该不该接"},
+ {g:"场景指令",c:"b",t:"客户要求签他们的合同模板",d:"大客户强势时使用。快速找出真正危险的条款，而不是逐字改全文。",
+  p:"场景：大客户要求使用他们的合同模板，不允许大改，业务压力很大。\n\n请给我：\n1. 《必须争的条款清单》（P0）：哪些条款不改我就绝对不签？逐条给出：为什么这条是生死线、不改的具体后果（用金额或场景）、最小改动的替代写法（让对方容易接受）\n2. 《可以签但有条件的条款》（P1）：不改也行，但要在别处补回来（例如责任限额被抬高，就通过保险、保价、分包背靠背来对冲）。给我对冲方案\n3. 《可以忽略的条款》（P2）\n4. 《谈判筹码》：我方可以用什么交换（价格、时效承诺、服务范围、账期）\n5. 《内部授权路径》：什么情况可以签、谁批、需要什么附件（保险证明、上级审批、风险留痕）\n6. 最后给我一份《例外签约风险留痕清单》：签了之后必须书面记录什么，以防将来追责"},
+ {g:"场景指令",c:"b",t:"新业务/新国家准入合规评估",d:"业务要开新线、新国家时用，一次问清所有前置条件。",
+  p:"场景：公司计划开展【新业务描述】，涉及【新国家/地区】，货物类型为【产品类型】。\n\n请给我一份《新业务合规准入评估报告》：\n1. 《主体与资质》：在当地需要什么主体、牌照、登记（公司、VAT、EORI、EPR、产品合规、行业许可）\n2. 《海关与税务》：监管方式、关税与税费、VAT、常设机构风险、转让定价\n3. 《产品合规》：适用的产品法规与需要的文件\n4. 《数据与隐私》：GDPR/当地数据法的要求、数据出境\n5. 《出口管制与制裁》：目的地与客户筛查要点\n6. 《用工》：如用当地员工，雇佣与派遣的合规要求\n7. 《责任与保险》：当地法下的责任限额与强制保险\n8. 《风险登记册》：逐项风险 + 等级 + 控制措施 + 责任岗 + 时限\n9. 最后给我一张《准入决策卡》：能不能做、前提条件、建议时间表、预计合规成本"},
+ {g:"场景指令",c:"b",t:"境外子公司出事，我要不要飞过去",d:"统筹境外事务时最现实的问题：什么自己做、什么丢给当地律师。",
+  p:"场景：我方【德国/波兰/墨西哥】子公司发生【事件描述：劳动争议/税务稽查/仓库事故/监管调查/合同违约】。\n\n请给我：\n1. 《事件定性》：这件事的法律性质、可能的后果（罚款、赔偿、刑事责任、声誉）、紧急程度分级\n2. 《48 小时行动清单》：本地要做什么、总部要做什么、哪些必须本地律师做\n3. 《外部律师委托方案》：\n   · 需要什么专业的律师（劳动/税务/争议/产品合规）\n   · 给我一份可以直接发给当地律师的英文邮件（Engagement Inquiry），含背景、问题清单、交付物要求、费率与预算问询、时限\n   · 给我《律师工作成果验收清单》\n4. 《总部与子公司的信息流》：汇报路径、频次、什么必须立即上报、文件与证据如何保全\n5. 《成本控制》：预算区间、计费模式选择、防止超支的六个办法\n6. 最后给我一份《事后复盘与制度改进清单》"}
+];
+
+/* ============ 法规与公约库 ============ */
+const LAWS=[
+ {g:"一、中国法 · 必精读",lv:"必精读",items:[
+  {n:"中华人民共和国民法典（合同编、物权编、侵权责任编）",d:"合同成立与效力、违约责任、格式条款规则、诉讼时效、留置权与质押",k:"第496-497条（格式条款）、第188条（3年时效）、第447条以下（留置权）、第440条以下（权利质押）"},
+  {n:"中华人民共和国海商法",d:"海上货物运输合同、提单、承运人责任与免责、责任限制、时效",k:"第四章（第41条起）：承运人义务、免责、责任限制、1年时效【修订动态：须核对现行有效版本与条号】"},
+  {n:"中华人民共和国海关法",d:"报关主体、申报义务、海关职权、违规责任",k:"申报、查验、稽查与法律责任章节【须核对现行版本】"},
+  {n:"中华人民共和国出口管制法",d:"两用物项、军品、核的出口管制框架与法律责任",k:"2020.12.1施行；管制清单、管控名单、许可证【须核对条号】"},
+  {n:"两用物项出口管制条例",d:"两用物项管制清单与许可申请的具体规则",k:"2024.12.1施行【须核对现行版本】"},
+  {n:"中华人民共和国个人信息保护法",d:"个人信息处理规则、出境三条路径、法律责任",k:"第38条（出境路径）、第55-56条（影响评估）【须核对】"},
+  {n:"中华人民共和国民用航空法",d:"航空运输责任（国际运输优先适用蒙特利尔公约）",k:"第九章 公共航空运输【须核对】"},
+  {n:"中华人民共和国涉外民事关系法律适用法",d:"涉外合同、侵权、物权的法律适用规则",k:"2011.4.1施行；合同与侵权章节【须核对条号】"}
+ ]},
+ {g:"二、中国法 · 常备查阅",lv:"常备",items:[
+  {n:"国际海运条例",d:"无船承运业务提单登记与保证金、国际船舶代理",k:"NVOCC 相关条款【修订频繁，须核对现行版本】"},
+  {n:"国际货物运输代理业管理规定及备案办法",d:"货代企业备案与行业管理",k:"已由审批改为备案【须核对现行规定】"},
+  {n:"进出口关税条例",d:"关税税率、完税价格、减免税",k:"完税价格章节"},
+  {n:"海关行政处罚实施条例",d:"申报不实、走私行为的处罚标准",k:"处罚幅度与从轻减轻情节【须核对】"},
+  {n:"中华人民共和国保险法",d:"保险合同、代位求偿、索赔时效",k:"财产保险合同与代位求偿章节【须核对条号与时效】"},
+  {n:"中华人民共和国民事诉讼法（涉外编）",d:"涉外管辖、送达、取证、判决与裁决的承认执行",k:"涉外民事诉讼程序特别规定【须核对最新修订】"},
+  {n:"中华人民共和国仲裁法",d:"仲裁协议效力、仲裁程序、撤销与执行",k:"仲裁条款有效要件【须核对修订动态】"},
+  {n:"中华人民共和国反不正当竞争法",d:"商业贿赂、混淆、虚假宣传",k:"第7条商业贿赂；2025修订版【须核对现行版本】"},
+  {n:"中华人民共和国刑法（相关罪名）",d:"走私罪、非法经营罪、侵犯公民个人信息罪、非国家工作人员受贿罪",k:"立案标准须核对司法解释"},
+  {n:"数据安全法 / 网络安全法",d:"数据分类分级、重要数据出境",k:"与个保法配合适用【须核对】"},
+  {n:"促进和规范数据跨境流动规定",d:"数据出境的阈值与豁免",k:"2024.3.22公布【须核对现行版本与阈值】"},
+  {n:"跨境电商零售进出口监管政策（9610/9710/9810/1210）",d:"跨境电商监管方式与通关、税收、退货",k:"政策更新极快，须核对最新公告"}
+ ]},
+ {g:"三、国际公约与惯例",lv:"必精读",items:[
+  {n:"联合国国际货物销售合同公约（CISG）",d:"国际货物买卖合同的统一规则",k:"我国1988.1.1生效；保留情况须核对"},
+  {n:"Incoterms 2020（ICC 第723E号出版物）",d:"11个贸易术语的风险、费用、清关与保险分界",k:"须合同援引；DPU取代DAT"},
+  {n:"跟单信用证统一惯例（UCP600）",d:"信用证的操作规则与审单标准",k:"第14条审单、第16条拒付、5个银行工作日"},
+  {n:"蒙特利尔公约（1999）",d:"国际航空运输责任",k:"22 SDR/公斤、2年时效、第五管辖权【限额须核对现行值】"},
+  {n:"国际公路货物运输合同公约（CMR）",d:"国际公路运输责任与运单",k:"8.33 SDR/公斤；1年/3年时效【我国是否缔约须核对】"},
+  {n:"海牙规则 / 海牙-维斯比规则",d:"海上货物运输的最低义务与免责",k:"666.67 SDR/件 或 2 SDR/公斤（维斯比+1979 SDR议定书）【须核对】"},
+  {n:"汉堡规则（1978）",d:"完全过失责任制，取消航海过失免责",k:"835 SDR/件 或 2.5 SDR/公斤【须核对】"},
+  {n:"鹿特丹规则（2008）",d:"多式联运时代的新规则，尚未生效",k:"875 SDR/件 或 3 SDR/公斤；生效状态须核对"},
+  {n:"国际铁路货物联运协定（SMGS）",d:"中欧班列使用的铁路联运规则",k:"我国1954年加入【须核对】"},
+  {n:"国际铁路货物运输公约（CIM / COTIF）",d:"欧洲铁路货运规则",k:"我国未加入；中欧班列换单后适用"},
+  {n:"承认及执行外国仲裁裁决公约（纽约公约）",d:"外国仲裁裁决的承认与执行",k:"我国1987年加入；两项保留须核对"},
+  {n:"海牙送达公约 / 海牙取证公约",d:"跨境司法文书送达与域外取证",k:"我国加入时间与保留须核对"},
+  {n:"FIATA 示范规则与单证（FCR/FCT/FBL/FWR）",d:"货代行业的国际惯例与标准单证",k:"非法律，靠合同援引"},
+  {n:"ICC 协会货物条款（ICC A/B/C）与 PICC 海洋运输货物保险条款",d:"货物保险的两大条款体系",k:"险别选择与除外责任"}
+ ]},
+ {g:"四、欧盟法 · 必精读",lv:"必精读",items:[
+  {n:"欧盟海关法典（UCC）Regulation (EU) No 952/2013",d:"欧盟海关的统一规则",k:"2016.5.1起适用；直接与间接代表、海关债"},
+  {n:"通用产品安全法规（GPSR）Regulation (EU) 2023/988",d:"产品安全基本法，取代GPSD指令",k:"欧盟负责人制度【适用日期须核对】"},
+  {n:"电池与废电池法规 Regulation (EU) 2023/1542",d:"电池全生命周期管制，取代2006/66/EC",k:"分阶段适用；EPR、碳足迹、电池护照【日期须核对】"},
+  {n:"通用数据保护条例（GDPR）Regulation (EU) 2016/679",d:"数据保护基本法",k:"第3条域外效力、第28条DPA、第五章跨境传输、罚款上限"},
+  {n:"欧盟两用物项出口管制条例 Regulation (EU) 2021/821",d:"欧盟出口管制框架",k:"含网络监控物项、EUGEA通用许可"},
+  {n:"市场监管与产品合规条例 Regulation (EU) 2019/1020",d:"市场监管机构权力与义务主体义务",k:"授权代表要求"},
+  {n:"废弃电子电气设备指令 WEEE Directive 2012/19/EU",d:"电子电气设备的回收责任",k:"需查成员国转化立法"},
+  {n:"包装与包装废弃物法规（PPWR）",d:"包装的减量与回收要求",k:"编号与适用日期须核对"},
+  {n:"产品责任指令（PLD）",d:"缺陷产品致害的严格责任",k:"新指令修订状态与转化期限须核对"},
+  {n:"REACH / RoHS / POP",d:"化学物质的注册与有害物质限制",k:"SVHC 0.1% 通报与 SCIP"},
+  {n:"低电压指令 / EMC 指令 / 无线电设备指令（RED）",d:"电气与电子产品的基本安全要求",k:"CE 符合性评定的基础指令"},
+  {n:"玩具安全指令 2009/48/EC",d:"玩具的安全要求",k:"EN71 系列标准"}
+ ]},
+ {g:"五、德国 / 波兰 / 墨西哥当地法",lv:"常备",items:[
+  {n:"德国有限责任公司法（GmbHG）",d:"GmbH 的设立、治理与董事责任",k:"最低注册资本与设立流程须核对"},
+  {n:"德国商法典（HGB）",d:"商行为、运输与仓储、留置权",k:"第407条以下（货运）、第467条以下（仓储）、商事留置权"},
+  {n:"德国民法典（BGB）租赁编第578条以下",d:"商业用房租赁",k:"Schriftform 书面形式要求"},
+  {n:"德国解雇保护法（KSchG）",d:"解雇的社会正当性要求",k:"适用门槛与3周起诉期须核对"},
+  {n:"德国包装法（VerpackG）与 LUCID 登记",d:"包装的注册与回收义务",k:"未登记的禁售与罚款后果"},
+  {n:"波兰商法典（KSH）与 KRS 登记",d:"Sp. z o.o. 的设立与治理",k:"最低股本与s24电子注册须核对"},
+  {n:"波兰劳动法典（Kodeks Pracy）",d:"劳动合同与解雇规则",k:"固定期限合同上限须核对"},
+  {n:"波兰税法（Ordynacja Podatkowa）",d:"税务申报与董事的税务连带责任",k:"董事责任条款须核对"},
+  {n:"墨西哥联邦劳动法（LFT）",d:"雇佣、利润分享、外包限制",k:"2021年外包改革须核对"},
+  {n:"墨西哥公司法与外资法",d:"S.A. de C.V. 与外资登记",k:"限制行业清单须核对"}
+ ]},
+ {g:"六、美国 / 英国",lv:"常备",items:[
+  {n:"美国出口管理条例（EAR，15 CFR 第730-774部分）",d:"美国出口管制的核心规则",k:"CCL、ECCN、de minimis、FDPR、实体清单"},
+  {n:"OFAC 制裁条例（31 CFR 第500章以下）",d:"美国经济制裁",k:"SDN清单、50%规则、次级制裁"},
+  {n:"美国海上货物运输法（COGSA）",d:"进出美国港口的海上运输责任",k:"每件500美元限额【须核对现行值】"},
+  {n:"美国海关现代化法与 19 CFR",d:"进口申报、ISF 10+2、归类与估价",k:"ISF时限与罚款须核对"},
+  {n:"301关税 / 232关税 / AD-CVD",d:"对华加征关税与反倾销反补贴税",k:"清单与税率变动频繁，须逐票核实"},
+  {n:"英国反贿赂法（UK Bribery Act 2010）",d:"含私营部门贿赂，唯一抗辩是充分程序",k:"第7条商业组织责任、第9条充分程序指引"},
+  {n:"英国海关与 VAT（脱欧后）",d:"GB 与 XI 的不同规则",k:"北爱尔兰安排须核对最新状态"},
+  {n:"美国反海外腐败法（FCPA）",d:"禁止为获取业务向外国官员行贿",k:"会计条款与账簿记录要求"}
+ ]}
+];
+
+/* ============ 阶段定义 ============ */
+const STAGES=[
+ {n:1,t:"第一阶段 · 打地基（W1-W6）",w:"第 1-6 周",
+  goal:"在没有碰任何深奥法条之前，先把行业、单据、贸易、结算、保险这五块「水泥和沙子」备齐。",
+  out:["《跨境物流产品与法律关系图谱》","《单证管理与证据留存制度》","《贸易术语与买卖合同风险速查手册》","《结算与单证风险速查手册》","《保险与责任管理手册》","《法律全景图》+《能力差距表》"],
+  judge:"学完能独立判断：一票货走的是什么模式、会产生哪些单证、钱怎么收、风险在哪分界、出险后找谁要钱。"},
+ {n:2,t:"第二阶段 · 主干法律（W7-W13）",w:"第 7-13 周",
+  goal:"把海、空、铁、公路四套责任制度 + 货代身份 + 海关通关全部吃透。这是技术含量最高、也最见功力的七周。",
+  out:["《海上货物运输规则速查手册》","《四种运输方式责任总表》","《责任归属判定手册》","《中国侧海关合规手册》","《目的国清关合规手册》","《货损索赔全流程 SOP》"],
+  judge:"学完能独立判断：一票货走哪条路、适用哪套公约、责任上限多少、多久内必须索赔、我方是不是要赔。"},
+ {n:3,t:"第三阶段 · 境外法域与合规（W14-W19）",w:"第 14-19 周",
+  goal:"补齐国内法务最难自学的一块：欧盟法体系、产品合规、数据合规、出口管制制裁、海外主体与海外仓。",
+  out:["《欧盟法检索与适用手册》","《欧盟产品合规手册》","《数据合规手册》","《出口管制与制裁合规手册》","《海外主体与用工合规手册》","《海外仓法律与合规手册》"],
+  judge:"学完能独立判断：客户这批货能不能进欧盟、缺什么文件、我方会不会成为责任主体、要不要报警。"},
+ {n:4,t:"第四阶段 · 岗位能力（W20-W24）",w:"第 20-24 周",
+  goal:"把前三阶段的知识变成可交付的文件体系，并补齐总监层面需要的争议统筹、内控与团队能力。",
+  out:["《跨境物流合同模板库 v1.0》","《英文合同与函件工具箱》","《国际争议解决手册》","《内控与合规体系手册》","《法务总监就职百日计划》","《作品集》"],
+  judge:"学完能：拿任何一份合同 30 分钟出审批意见，独立起草英文条款，统筹境内外争议，并向 CEO 用钱说话。"}
+];
+
+/* ============ 能力自检 24 项 ============ */
+const CHECKS=[
+ {k:"行业理解",t:"能画出跨境物流全链路，并说出每段的法律关系与风险",lv:1},
+ {k:"行业理解",t:"能看懂任意一张报价单，并找出计费与附加费的风险点",lv:1},
+ {k:"单据体系",t:"能判断任何一份运输单证的法律性质与证据效力",lv:1},
+ {k:"单据体系",t:"能独立设计无单放货、电放、提单审核的防控制度",lv:2},
+ {k:"贸易与结算",t:"能用 Incoterms 2020 判断风险与费用分界并发现误用",lv:1},
+ {k:"贸易与结算",t:"能审查信用证并找出陷阱条款与不符点",lv:2},
+ {k:"运输责任",t:"能背出四种运输方式的责任限额与时效，并算出赔付上限",lv:2},
+ {k:"运输责任",t:"能读提单背面首要条款并判断适用哪套公约",lv:3},
+ {k:"运输责任",t:"能独立研判一票货损案的责任归属与抗辩路径",lv:3},
+ {k:"货代身份",t:"能判定我方是代理人还是缔约承运人，并写出锁定条款",lv:3},
+ {k:"海关",t:"能判断客户货物在中国的归类、估价与原产地风险",lv:2},
+ {k:"海关",t:"能处理目的国清关失败并做出止损决策",lv:3},
+ {k:"保险",t:"能区分货物保险与责任保险，并设计投保与索赔方案",lv:2},
+ {k:"合同",t:"能独立起草国际货代协议、分包协议、海外仓协议的核心条款",lv:3},
+ {k:"合同",t:"能对任意合同在 30 分钟内给出分级审批意见",lv:4},
+ {k:"英文",t:"能独立用英文起草责任、赔偿、免责、争议解决条款",lv:4},
+ {k:"英文",t:"能独立撰写英文索赔函、催款函与谈判邮件",lv:3},
+ {k:"欧盟合规",t:"能判断一份欧盟文件对我方是否具有约束力并查到转化立法",lv:3},
+ {k:"欧盟合规",t:"能就 GPSR、电池法、EPR 给出客户的合规文件清单与核验 SOP",lv:4},
+ {k:"数据与制裁",t:"能完成数据映射并判断数据出境的合法路径",lv:3},
+ {k:"数据与制裁",t:"能搭建出口管制与制裁的三重筛查机制",lv:4},
+ {k:"海外主体",t:"能判断海外子公司的设立形式、年度义务与董事责任",lv:3},
+ {k:"争议解决",t:"能判断一个案子该打还是该和、在哪打、花多少",lv:4},
+ {k:"内控与团队",t:"能设计合同台账、风险库与年度内审计划，并搭起团队与外部资源体系",lv:5}
+];
+
+
+/* ============ 每日生活化比喻（120 天）+ 周末实战比喻（24 个） ============ */
+/* 结构：META["周-天"]={m:生活比喻, l:串联句}；METAW[周]={m:周末比喻, l:串联句} */
+const META={
+/* ---------- W1 行业解剖 ---------- */
+"1-1":{m:"跨境物流公司其实是「搬家公司 + 签证中介 + 保险公司」的合体：搬家公司负责把货搬过去，签证中介负责办通关手续，保险公司负责出事赔钱。客户买的从来不是「运输」，而是「包它安全、准时、合法地送到」。",
+ l:"先搞清卖的是什么，才知道哪一步会被客人告。昨天是开场，今天先把这门生意的钱和角色摆上桌。"},
+"1-2":{m:"一票货的参与者就像一台晚会的演职员表：出品人（货主）、制片主任（货代）、演员（实际承运人）、场务（报关行）、场地提供方（海外仓）。观众只看得到货到了，出事时只有演职员表能告诉你该找谁赔。",
+ l:"昨天知道卖什么产品，今天就拆这台戏里有谁、谁对谁负责。"},
+"1-3":{m:"五种物流模式就是五种出行方式：国际快递=打专车（贵、快、门到门），空运专线=拼车，海运整柜=包车，海外仓=先把家具寄存在国外朋友家客厅，FBA 头程=给超市送货等着上架。出行方式不同，你承担的角色就完全不同。",
+ l:"角色认全了，今天看他们能组合出哪几种生意，以及每种组合下你到底是「中介」还是「承运人」。"},
+"1-4":{m:"报价单就是手机套餐：月租（基本运费）之外全是增值包——燃油附加、旺季附加、改单费、超期仓储费。签合同赚钱在套餐内，赔钱一定在套餐外那几行小字。",
+ l:"昨天看懂角色组合，今天看懂钱：风险往往藏在你没仔细看的那一行报价里。"},
+"1-5":{m:"复盘像学完菜谱后第一次凭记忆做完整桌菜——不看配方，能不能说出每道菜的关键火候？说不出的地方，就是明天要补的地基。",
+ l:"第 1 周收口：把行业、角色、模式、钱串成一条线，下周开始进入单据证据学。"},
+"1-w":{m:"画全链路图，就是给一票货拍一部纪录片：每一帧都标上「谁在场、拿了什么单据、出事谁负责」。拍完这部片子，后面 23 周的知识全都有地方挂。"},
+
+/* ---------- W2 单据体系 ---------- */
+"2-1":{m:"提单同时是「快递柜取件码」和「房产证」：取件码决定谁能提货，房产证决定这货是谁的。一张纸同时管提货权和所有权，所以它才被称为物权凭证——这是整个跨境物流最值钱的一张纸。",
+ l:"上周把链路看完了，这周进入证据学：出事时，你手上有什么纸，决定你能要到多少钱。"},
+"2-2":{m:"电放等于你把取件码微信发给对方、让快递员直接放行——方便，但发错人就是货没了钱也没了。无单放货是物流行业赔钱第一大坑，几乎没有之一。",
+ l:"昨天弄懂提单为什么是物权凭证，今天看这张纸在现代操作里是怎么「失效」的，以及失效后谁来赔。"},
+"2-3":{m:"空运单、铁路运单、公路运单都只是「快递面单」，不是房产证。面单丢了可以凭身份证补办，房产证丢了要公告挂失。所以它们不能转让，也不能拿去银行押汇。",
+ l:"昨天讲提单的特殊地位，今天用「没有这个地位」的三种单据做反面对照，对比才记得牢。"},
+"2-4":{m:"FIATA 单证家族和随附商业单证，就像医院的病历体系：门诊记录、检查报告、住院小结，每张单据只记录一段诊疗，出事时把它们拼起来才是完整病历。少一张，就有一段时间说不清。",
+ l:"前三天把主角单据看完，今天补齐配角——它们决定索赔时你能不能把故事讲圆。"},
+"2-5":{m:"单据就是案件的监控录像：录像缺一段，你说得再有理也没人信。今天把这一周的单据按「出什么事故、拿哪张纸」重新排一遍。",
+ l:"第 2 周收口，下周进入 Incoterms——风险在哪一米分界。"},
+"2-w":{m:"单证体检就是给一套单据做入职体检：哪一项指标不合格（抬头错、日期倒签、签章缺、背书断），就可能让你在半年后的索赔里哑口无言。"},
+
+/* ---------- W3 Incoterms 与 CISG ---------- */
+"3-1":{m:"EXW 到 DDP 这 11 个术语，就是外卖服务的 11 档：自己到店取、送到楼下、送上桌还帮你摆盘。档位越高，卖家干的活越多、风险转移得越晚。记住一张「谁在什么时候接手」的斜坡图就行。",
+ l:"单据讲完，今天解决一个更根本的问题：风险到底在哪一刻从卖家转移到买家。"},
+"3-2":{m:"风险、费用、清关、保险是四把刻度不同的尺子。装上船了（风险转移）不等于运费结清了，很多人以为是一把尺子，就在这条缝隙里白白赔钱。",
+ l:"昨天看了 11 档斜坡，今天把斜坡拆成四条线——四条线不重合的地方，就是争议高发区。"},
+"3-3":{m:"术语误用就像接力赛交接棒掉在地上：买家以为你拿着，你以为他拿着，货就摔在没人管的那段地上。物流商最常在这里背本来不该背的锅。",
+ l:"前两天是规则，今天是规则被用错时的真实惨案——也是你要在合同里提前堵的口子。"},
+"3-4":{m:"CISG 是国际贸易的「普通话」：双方没特别约定，就自动讲普通话；觉得别扭，可以明确写「我们讲方言（选某国法）」。很多中国公司不知道自己一直在讲普通话。",
+ l:"Incoterms 只管交货那一米，买卖合同整体归谁管？今天补上这块拼图。"},
+"3-5":{m:"复盘像把斜坡图、四把尺子和普通话规则合并成一张「出事找谁」的流程图。画完这张图，贸易术语这块才算真正装进脑子。",
+ l:"第 3 周收口，下周进入钱与单的三角关系。"},
+"3-w":{m:"审外贸合同的价格条款，就是看外卖订单备注有没有写清「谁付配送费、洒了算谁的」。一句 FOB 后面没写清楚装船费，就是几千美金的分歧。"},
+
+/* ---------- W4 支付与外汇 ---------- */
+"4-1":{m:"四种结算方式是四种信任安排：TT 预付=先转账后发货（朋友间转账），信用证=请一位德高望重的长辈（银行）做中间人，托收=托快递员代收货款，保理=把欠条打折卖给收债公司。信任越少，中间人越贵。",
+ l:"货怎么走学完了，这周转入学钱怎么走——钱、单、货三条流必须对齐。"},
+"4-2":{m:"银行审单像机场安检：只看你的证件和票对不对得上，不管你箱子里是不是真的装了货。这叫「表面相符」，是信用证全部规则的灵魂。",
+ l:"昨天看了四种结算，今天钻进最复杂也最讲规矩的那一种：信用证。"},
+"4-3":{m:"三份正本提单就是三把一模一样的家门钥匙，随便一把都能开门，所以必须三把全收回才算安全。少任何一把在外流通，都可能有人半夜进门把货提走。",
+ l:"把提单和信用证接起来：为什么这张纸的数量和流转方式，直接决定你收不收得到钱。"},
+"4-4":{m:"跨境收付款像银行换汇窗口：不是不能换，而是要说明钱从哪来、货有没有真出去。货流、资金流、单证流三流对不上，轻则被银行退回，重则被认定逃汇。",
+ l:"前三天是商业规则，今天是监管红线——收不到钱和收了钱被罚，都不算赢。"},
+"4-5":{m:"钱、单、货是一张三条腿的凳子，任何一条腿短了都坐不稳。今天把这一周按「钱什么时候动、单什么时候转、货什么时候交」重新排一遍时间轴。",
+ l:"第 4 周收口，下周进入保险——赔出去的钱怎么要回来。"},
+"4-w":{m:"审信用证就是玩「大家来找茬」：在规定时间内把不符点全挑出来。挑漏一个，银行就有理由拒付，几十万美金卡在半路。"},
+
+/* ---------- W5 保险与责任 ---------- */
+"5-1":{m:"货物保险三档像医保档次：平安险只保全损和翻船这种大事（像只保骨折住院），水渍险加保部分损失，一切险把能保的都保上。以为买了「保险」就全赔，是最常见的误会。",
+ l:"责任认定学完了，这周解决：赔出去的钱，能不能从别处要回来。"},
+"5-2":{m:"代位求偿就是保险公司赔完货主，转头穿上货主的鞋来找你算账：「我是替他来的」。所以客户拿到赔款不是结束，是你第二场官司的开始。",
+ l:"昨天讲保什么，今天讲赔完之后谁会站在你面前——往往就是当初和和气气的保险公司。"},
+"5-3":{m:"货代责任险像医生职业责任险，保的是「我活干错了」；保赔协会（P&I）像船东互助会，大家凑钱赔那种一次就能让公司破产的大事故。两种险保的是完全不同的东西。",
+ l:"前两天是货的保险，今天是自己的保险——作为服务提供方，你本人的风险敞口要单独盖住。"},
+"5-4":{m:"保价与责任限额就是快递单上那个「是否保价」的勾：不勾，丢了只赔运费三倍；勾了，按声明价值赔。合同里的责任限额就是这个勾，写多少决定你将来赔多少。",
+ l:"昨天看保险怎么兜底，今天看合同怎么写才让兜底真正生效——这是你能主动设计的部分。"},
+"5-5":{m:"复盘像做一次事故重演：货损发生→谁先知道→谁取证→谁赔→谁能追回来→谁最终承担。把这条链条跑通一遍，保险和责任才算真懂。",
+ l:"第 5 周收口，下周进入法律全景图与岗位画像，回答「我到底要成为谁」。"},
+"5-w":{m:"一票货损案推演就是交警还原碰撞现场：定责、定损、定限额、定追偿对象，四步走完，才知道公司这次实际要掏多少钱。"},
+
+/* ---------- W6 全景与画像 ---------- */
+"6-1":{m:"跨境物流的法律像一栋楼的三级供水：市政管网（国际公约）、小区泵房（中国法）、入户水管（合同约定）。三层都通，水才到得了家；任何一层断了，你都只能干着急。",
+ l:"五周的业务知识学完，这周把它们放进法律框架里：三层法律怎么叠加适用。"},
+"6-2":{m:"涉外案件开庭前要先解决两件事：去哪家法院打（管辖）、按哪国规矩打（法律适用）。就像先定球场和规则，再开球——定错了，赢了官司也可能白赢。",
+ l:"昨天搭三层框架，今天看框架里最关键的两个开关：管辖和法律适用。"},
+"6-3":{m:"国际货代资质就像开旅行社要拿牌照：没牌照不光合同可能出问题，还要吃行政处罚。这是行业监管层面，跟你懂不懂业务无关。",
+ l:"前两天是裁判视角，今天是监管视角——你的公司有没有资格做这门生意。"},
+"6-4":{m:"法务总监不是「更会写合同的法务」，而是能跟老板说「这单能签，风险我兜着」的那个人。区别在于：前者交付意见，后者交付决策。",
+ l:"地基打完前最后一步：想清楚终点在哪，才知道剩下 18 周该往哪儿使劲。"},
+"6-5":{m:"阶段复盘像盖楼前的验槽：地基的钢筋位置对不对、混凝土浇实了没有。这五周的内容不扎实，后面海商法和公约全是空中楼阁。",
+ l:"第 6 周收口，阶段一结束，下周正式进入主干法律——海商法。"},
+"6-w":{m:"能力差距表就是一次职业体检报告：各项指标对照「法务总监」这个岗位标准，哪里红字最多，未来 18 周就往哪里加练。"},
+
+/* ---------- W7 海商法 ---------- */
+"7-1":{m:"海商法像「海上专用交通法」：只管海上（以及与海相通的可航水域）和特定船舶。先把「这条路归不归它管」搞清楚，否则后面所有条文都用错地方。",
+ l:"地基打完，进入主干。第一阶段的法律从最古老、最成熟的海运开始。"},
+"7-2":{m:"承运人三项义务就是开长途前的三件事：出车前检查车况（适航）、路上别把乘客甩了（管货）、按导航走别顺路办私事（不绕航）。三件事做到了，才谈得上后面的免责。",
+ l:"昨天划适用范围，今天进入义务——义务是免责的前提，顺序不能颠倒。"},
+"7-3":{m:"航海过失免责像「老司机免责条款」：船长开船的技术失误，船东不赔；火灾也免责，除非是自己点的火。这是海商法最「偏心船东」的地方，也是货主最恨的地方。",
+ l:"昨天讲必须做什么，今天反过来讲做到位了还能不赔什么——这一组才是海运责任的核心。"},
+"7-4":{m:"责任限制就是网约车平台的赔付上限：不管你损失一个亿，承运人就赔到 666.67 SDR 每件封顶。海运之所以便宜，就是因为赔得少——这是整个行业的商业底座。",
+ l:"义务和免责之后，最后一关是「最多赔多少」。数字必须记死，用错一次就是几十万。"},
+"7-5":{m:"索赔时效就是食品保质期：权利还在，但过了期法院不保护。海运一年，过一天就归零。这是最贵也最不值得犯的错。",
+ l:"第 7 周收口，下周把中国海商法放进四大国际公约里对照着看。"},
+"7-w":{m:"海运货损案完整推演像刑侦片还原沉船：先定谁有义务，再看能不能免责，然后算限额，最后看有没有过期。四关全过完才拿得到钱。"},
+
+/* ---------- W8 海上公约 ---------- */
+"8-1":{m:"海牙规则就像早期网购平台的规则：明显偏向商家（船东），但因为所有人都在用，谁也改不动。1924 年的规则，今天还在管你的提单。",
+ l:"中国海商法看完，现在看它的祖宗——四大公约的第一部。"},
+"8-2":{m:"维斯比像给老规则打补丁（提高限额、增加集装箱条款），汉堡像推翻重来（取消航海过失免责）。结果是打补丁的流行，推倒重来的没人跟——现实往往偏爱改良。",
+ l:"昨天看原始版本，今天看两次修法尝试，理解为什么世界最后选了折中。"},
+"8-3":{m:"鹿特丹规则像一份写得很完美但没人签字的合同：规则先进，生效国家不够，所以它管的是「未来」。但它的思路会影响你今天怎么设计条款。",
+ l:"前两天是生效的规则，今天看未生效的前瞻规则——知道业界往哪走，谈判时才有底气。"},
+"8-4":{m:"首要条款（Clause Paramount）就像店里的「本店保留最终解释权」：它强行把某一部公约拉进提单。看到它，你就知道这票货按谁的规矩玩，按哪条算限额。",
+ l:"公约学完了，今天落到实操：翻开一张真实提单，第一眼先看哪个条款。"},
+"8-5":{m:"复盘像给四大公约做一张对照表：适用范围、义务、免责、限额、时效，五列排下来。这张表以后会是你查得最多的一页。",
+ l:"第 8 周收口，下周进入空运、铁路、公路三大非海运责任制度。"},
+"8-w":{m:"读提单背面条款就是读保险合同的免责小字：正面写得漂漂亮亮，真正的游戏规则全在背面那几段密密麻麻的英文里。"},
+
+/* ---------- W9 空铁公 ---------- */
+"9-1":{m:"蒙特利尔公约下的空运责任像航空行李赔偿规则：按重量算（22 SDR/公斤），但对承运人更严格——几乎先推定你有错。速度越快，责任的门槛越高。",
+ l:"海运体系学完，进入非海运三兄弟。第一个是门槛最高、规则最统一的空运。"},
+"9-2":{m:"危险品申报就像过安检时申报充电宝：不申报被查出来是违法，申报了按规则装就行。瞒报的后果远超货值本身，甚至可能上刑。",
+ l:"昨天讲责任制度，今天讲空运实操里最容易出大事的一块——危险品与运输总条件。"},
+"9-3":{m:"中欧班列像一趟中途要换两次司机的长途大巴：前段用前段的规则（SMGS），后段用后段的规则（CIM），交接的那一段最容易掉链子，也最难说清是谁掉的。",
+ l:"空运看完，今天进入这两年最热的中欧班列——它的法律难点恰恰在「换轨」。"},
+"9-4":{m:"CMR 公路运单像搬家公司的三联签收单：发货人、承运人、收货人各执一份。承运人的责任几乎是严格的，只有五种情况能免责，比海运苛刻得多。",
+ l:"空、铁之后是公路，四种运输方式的责任制度今天全部到齐。"},
+"9-5":{m:"复盘像做一张「各保险公司理赔上限对比表」：四种方式、限额、时效、免责，一张表拉平。以后报价和谈判，这张表就是你的底气。",
+ l:"第 9 周收口，下周进入最烧脑也最实用的一周：你到底是代理人还是承运人。"},
+"9-w":{m:"四种运输方式对比与方案设计，就像给客户做「出行方案」：同样的货，走空、走海、走铁、走公路，责任、时效、成本完全不同，方案书要写得让老板一眼看懂。"},
+
+/* ---------- W10 多式联运与货代身份 ---------- */
+"10-1":{m:"网状责任制像「哪段出事按哪段法律赔」，统一责任制像「整趟按一个标准赔」。差别在于：当货损坏在不知道哪一段时，两种制度赔出来的钱能差好几倍。",
+ l:"单一方式学完，今天处理最现实的场景：一票货走了好几种运输方式。"},
+"10-2":{m:"货代身份之争就是「中介」和「二房东」的区别：中介只收佣金、房子漏水不归他管；二房东收了租，漏水就得赔。你是哪个身份，直接决定赔不赔。",
+ l:"这是整门课最关键的一天——前面 9 周的知识，都要通过「身份」这个开关落到钱上。"},
+"10-3":{m:"无船承运人（NVOCC）就是「自己没有船却开了船公司」：对货主你是承运人，对船公司你是货主，两头都是你、两头都担责。House B/L 就是你这个双重身份的产物。",
+ l:"昨天定性，今天看最典型的实操形态——无船承运与分提单。"},
+"10-4":{m:"标准交易条件（STC）像淘宝的用户协议：几乎没人读，但出事时它就是判你赔多少的依据。关键不在写了什么，而在有没有「显著提示」让对方确认过。",
+ l:"身份确定了，今天看把身份写进纸上——那几页没人看的背面条款。"},
+"10-5":{m:"复盘像照镜子：把我方所有标准文件摊开，看写在纸上的自己，是中介还是二房东。纸上写的和心里想的不一致，就是最大的风险。",
+ l:"第 10 周收口，阶段二进入海关：货被扣了怎么办。"},
+"10-w":{m:"审查我方标准合同就是一次身份体检：逐条看有没有哪句话把自己写成了承运人，或者有没有哪句话让限额条款因为没提示而失效。"},
+
+/* ---------- W11 海关（中国侧） ---------- */
+"11-1":{m:"海关就是小区保安和税务员的合体：他既查你搬进去的是什么（监管），也算你要交多少（征税）。谁去申报，谁就是责任主体——这是海关责任的第一原则。",
+ l:"责任体系学完，进入货物最容易被卡住的环节：通关。"},
+"11-2":{m:"HS 编码是商品的身份证号，归类错等于报错户口；完税价格像二手房的核税价，不是你说多少就是多少；原产地像出生地，决定能不能享受优惠税率。三样都对，才不会被追税。",
+ l:"昨天确定谁负责，今天看海关最常挑刺的三个点——这也决定了罚多少钱。"},
+"11-3":{m:"9610/9710/9810/1210 就是四条不同的通关车道：走错车道，要么被拦下，要么白错过退税和便利政策。跨境电商的合规，一半在这四个数字里。",
+ l:"传统贸易的通关规则看完，今天看跨境电商专属的四条通道。"},
+"11-4":{m:"保税区像机场的「境内关外」隔离区：货已经在中国了，但法律上还没入境，所以暂不征税；但你不能偷偷把它拿出去卖，那叫走私。",
+ l:"昨天看新业态，今天看老工具——保税和加工贸易，很多海外仓业务会用得上。"},
+"11-5":{m:"复盘像一次消防演习回顾：从查验通知到放行，每一步谁做、留什么证据。演习不能等真着火时才做。",
+ l:"第 11 周收口，下周转到目的国——真正的战场往往在货到港之后。"},
+"11-w":{m:"被查验扣货的应急处置方案，就是火灾逃生预案：谁第一时间联系海关、谁通知客户、谁准备材料、什么时候升级，写成剧本，事发时照着念就行。"},
+
+/* ---------- W12 海关（欧美侧） ---------- */
+"12-1":{m:"EORI 号就是你在欧盟的「通关会员卡」，UCC 是会员规则手册。没有这张卡，货连申报系统都进不去，更别说清关。",
+ l:"中国侧通关学完，今天换到目的国视角：同一票货，在国外要过的第一道门。"},
+"12-2":{m:"150 欧元像免税额度线：低于它走简化通道（IOSS），高于它走另一套。VAT 该谁交、什么时候交、谁来申报，全看这条线在哪。",
+ l:"昨天讲进门资格，今天讲进门要交多少钱——VAT 是欧洲线最常见的争议源头。"},
+"12-3":{m:"ISF 就像提前 24 小时报备来访名单，不报别想进门；CBP 是门卫，301 关税是额外加收的门票钱。美国线的规矩比欧洲更硬、罚得更狠。",
+ l:"欧盟看完，今天看美国——同一批货换个目的国，合规动作完全不同。"},
+"12-4":{m:"清关代理就像代你办签证的中介：办砸了当然要赔，但合同里通常把赔偿封顶成一笔小钱（比如只赔服务费）。这一条是你必须去争的。",
+ l:"规则学完，今天落到合同：把清关风险在上游和下游之间分配好。"},
+"12-5":{m:"复盘像出国前列一张清单：证件、申报、税号、代理、应急预案。少一样，货就在港口躺着你付仓储费。",
+ l:"第 12 周收口，下周做阶段二总复盘——全链路责任地图。"},
+"12-w":{m:"目的国清关失败应急预案，就是出国前买的旅行保险加一张紧急联系电话表：真出事时，翻本子比现场想办法快十倍。"},
+
+/* ---------- W13 全链路责任地图 ---------- */
+"13-1":{m:"从揽货到装船这一段，就像搬家公司把东西搬上车之前：货还在你手上，但海运的责任限额还没生效，只能按普通合同法赔全价。这反而是全链路最「裸露」的一段。",
+ l:"阶段二总复盘开始：把前六周的知识铺到链路的前半段。"},
+"13-2":{m:"目的港到签收这一段就是「最后一公里」：无人提货产生的滞箱费和仓储费，像共享单车忘了还——按天计费，几个月下来比货值还贵。",
+ l:"昨天看前半段，今天看后半段，尤其是最容易拖出天价费用的环节。"},
+"13-3":{m:"索赔实战像医院急诊：黄金时间就那么几天，第一时间发书面通知、保全证据、找检验人。晚了，证据没了，权利还在也白搭。",
+ l:"链路看完了，今天学真出事时手该怎么动——顺序错了就追不回来。"},
+"13-4":{m:"仓储费像停车费，每天都在涨；催收像要账，先礼后兵。关键是每一步都要留痕，最后主张利息和违约金时才有依据。",
+ l:"昨天讲货损索赔，今天讲延误和钱——另一类高频争议。"},
+"13-5":{m:"阶段二复盘像一次期中考试：把海商法、四大公约、四种运输方式、海关、索赔串成一张地图。画得出这张图，主干法律才算立住了。",
+ l:"第 13 周收口，下周进入阶段三——境外合规，这是拉开身价的部分。"},
+"13-w":{m:"综合大案例演练就是法考主观题：一份材料、多个主体、多个法域，按时间轴把每一步的权利义务写清楚。做对这一题，阶段二就真过了。"},
+
+/* ---------- W14 欧盟法通识 ---------- */
+"14-1":{m:"条例和指令的区别，就是「全国统一规定」和「国家作业」：条例落地即生效，指令只给目标、各国自己写实现方法。所以同一部指令，德国和波兰写出来的法条长得不一样。",
+ l:"前 13 周以中国法和公约为主，从今天起进入欧盟法——第一件事是搞懂它的层级。"},
+"14-2":{m:"EUR-Lex 就是欧盟法的国家法律法规数据库，CELEX 编号就是案号。会用检索，比背多少条文都重要——因为你会自己查。",
+ l:"昨天懂层级，今天学怎么查。这是 JD 里「跟踪境外法规动态」的基本功。"},
+"14-3":{m:"单一市场的四大自由，像小区内部把四个门全打开：货一旦合法进入欧盟，就可以在内部自由流动。所以选择在哪个国家清关，是一门可以设计的功课。",
+ l:"会查之后，理解欧盟最核心的制度设计——为什么一次清关能覆盖 27 国。"},
+"14-4":{m:"欧盟市场监管和 GPSR 下的通报机制，像「市监局 + 消协」的加强版：产品出事不仅要召回，还会被挂到 Safety Gate 上公示，影响的是整个品牌。",
+ l:"前三天是制度，今天落到产品——这也是你 JD 里点名的欧盟合规主线。"},
+"14-5":{m:"复盘像出国前查一遍「这个国家能不能带这个东西」：适用哪部法、有没有责任人、要不要注册。走一遍流程，欧盟法就不神秘了。",
+ l:"第 14 周收口，下周进入最硬的产品合规：电池法、GPSR、EPR。"},
+"14-w":{m:"欧盟法适用性判断报告，就像查「这个国家能不能带这个东西」：先定产品类别，再找适用法规，最后列义务清单。这份报告是你给业务的第一份交付物。"},
+
+/* ---------- W15 产品合规 ---------- */
+"15-1":{m:"GPSR 要求产品有欧盟境内责任人、有技术文件、有可追溯标签——等于产品也要「有户口、有监护人、有身份证」。没有这三样，货就不是合法商品。",
+ l:"欧盟法通识学完，进入 JD 点名的硬骨头：产品合规。"},
+"15-2":{m:"新电池法规像给电池办一张「一辈子通行证」：从生产、碳足迹、标签、到废旧回收，全生命周期管到底。没有这张证，电池类商品进不了欧盟——这是你 JD 里被点名的那部法。",
+ l:"昨天看通用规则，今天钻进最难也最值钱的一部：电池法规（EU）2023/1542。"},
+"15-3":{m:"EPR 就是「谁污染谁付费」的物业费：在哪个国家卖，就要在哪个国家登记、交回收费、拿注册号。不交，平台直接下架——德国和法国查得最狠。",
+ l:"前两天看单部法规，今天看三国实操：同一件事在德、波、法怎么做。"},
+"15-4":{m:"CE 像产品护照，REACH 管化学成分（像配料表），RoHS 管有害物质（像禁用添加剂）。三套体系叠加，才构成「这个产品能不能卖」的完整答案。",
+ l:"新法规看完，今天补齐老牌的合规体系——新旧都要懂，客户才会信你。"},
+"15-5":{m:"复盘像整理签证材料：技术文件、符合性声明、注册号、标签、责任人，缺一份就拒签。这份清单以后你会反复用。",
+ l:"第 15 周收口，下周进入数据合规——GDPR 与数据出境。"},
+"15-w":{m:"合规文件清单与核验 SOP，就是一份签证材料清单加检查打勾表：业务拿到就能照着准备，不用每次来问法务。"},
+
+/* ---------- W16 数据合规 ---------- */
+"16-1":{m:"GDPR 的域外效力像「只要接待欧盟客人，就得守欧盟的规矩」：不管你公司开在哪，只要向欧盟的人提供商品服务或监测他们的行为，就归它管。",
+ l:"产品合规之后是数据合规。第一件事：判断它管不管得到你。"},
+"16-2":{m:"处理个人数据要有合法性基础，就像进别人家要有邀请函；DPA 是你跟数据处理者签的「不泄密协议」；SCC 是数据出境的「标准通关文书」。三件套缺一不可。",
+ l:"昨天定适用范围，今天看合规的三种工具——这是合同层面你能落地的部分。"},
+"16-3":{m:"数据主体权利像顾客有权要求查看和删除自己的消费记录；罚款上限是 2000 万欧元或全球营业额的 4%，就像超速罚款按收入百分比算——大公司会很疼。",
+ l:"工具和协议之后，看违规的后果：权利、事件响应、罚款三条线。"},
+"16-4":{m:"中国数据出境的三条路径像三种签证：安全评估、标准合同备案、保护认证。按数据量和敏感度选通道，选错就是违规出境。",
+ l:"GDPR 看完，回到中国侧——两边都要合规，才是跨境法务的价值。"},
+"16-5":{m:"复盘像画一张「家里所有钥匙都在谁手上」的图：数据在哪、流向哪、谁有权看。这张图（数据映射）是全部数据合规的地基。",
+ l:"第 16 周收口，下周进入最红线的一周：出口管制与制裁。"},
+"16-w":{m:"数据映射就是清点家里所有钥匙：每把钥匙开哪扇门、现在在谁手里、有没有配过备份。清点完才知道哪里该换锁。"},
+
+/* ---------- W17 出口管制与制裁 ---------- */
+"17-1":{m:"出口管制就是「某些东西出国要批文」：军民两用物项尤其敏感，管制清单就是那张「不许随便带出境」的物品清单。看不懂清单，就可能犯罪。",
+ l:"进入最硬的一条线：这条线上的错误不是赔钱，是坐牢。"},
+"17-2":{m:"美国 EAR 就是长臂管辖：哪怕货在中国、从中国发出去，只要里面有一颗美国芯片或用了美国技术，就归它管。判断的核心是算「受控成分比例」。",
+ l:"中国侧看完，看最凶的一部——美国 EAR，它是全球合规成本最高的规则。"},
+"17-3":{m:"SDN 名单就是黑名单通讯录：跟名单上的人做生意，你自己也会被拉黑；次级制裁连跟黑名单做生意的第三方一起罚。所以筛查不只是查客户，还要查客户的股东。",
+ l:"管制（物项）之后是制裁（对象）——两套规则要同时跑。"},
+"17-4":{m:"欧盟两用物项管制逻辑类似美国但要单独查：过了美国这一关，不等于过了欧盟这一关。同一票货，可能要过三道门。",
+ l:"中美两边看完，补上欧盟——三大法域全部到齐。"},
+"17-5":{m:"复盘像公司门口装安检门加访客登记：筛查什么、谁来筛、筛中了怎么办、记录留多久。制度比人可靠。",
+ l:"第 17 周收口，下周进入海外主体：德国、波兰、墨西哥。"},
+"17-w":{m:"搭筛查制度就是给公司装安检门：每个新客户、每票新订单，过一遍名单，留下记录。这套制度本身就是你的免责证据。"},
+
+/* ---------- W18 海外子公司 ---------- */
+"18-1":{m:"德国 GmbH 就像一套仪式感很强的开店流程：要公证、要实缴注册资本、要有总经理（Geschäftsführer），还得在商业登记簿上公告。慢，但稳。",
+ l:"合规规则学完，进入 JD 点名的三个国家。第一个是德国——欧盟的核心。"},
+"18-2":{m:"波兰 Sp. z o.o. 像快闪店：注册快、成本低；墨西哥的公司形式多，还有外资限制区域。同样是开公司，三个国家的难度和规矩完全不一样。",
+ l:"德国之后，看波兰和墨西哥——便宜和麻烦往往是一体两面。"},
+"18-3":{m:"当地用工最直观的差别在「辞退一个人有多难」：德国解雇保护很强，波兰相对灵活，墨西哥不但保护强还有法定利润分享。招人容易，辞退难才是真成本。",
+ l:"公司设立之后是用人——海外用工是中国法务最容易低估的坑。"},
+"18-4":{m:"常设机构就像你在当地有了「固定营业场所」：海外仓一旦被认定构成常设机构，就要在当地交税。这是海外仓布局最容易踩的税务地雷。",
+ l:"人之后是钱：税务决定你的海外仓到底赚不赚钱。"},
+"18-5":{m:"复盘像做一份「开店年检日历」：哪个月交年报、哪个月审执照、哪个月报税。海外公司的风险，多半来自忘记。",
+ l:"第 18 周收口，下周进入你的主战场：海外仓。"},
+"18-w":{m:"海外子公司设立与维护手册，就是一本开店年检日历：设立流程、治理动作、年度义务、当地对接人，一册在手，换谁来接手都不会乱。"},
+
+/* ---------- W19 海外仓 ---------- */
+"19-1":{m:"海外仓就是「在国外的共享储物间」。法律关系可能是纯租赁（你只租地）、仓储（连货一起管）或委托（还帮发货）——模式不同，责任天差地别。",
+ l:"主体合规学完，进入你的日常主战场：海外仓。"},
+"19-2":{m:"德国商业租赁像签了一份很难退的长租公寓：租期长、解约难，退租时还要把装修恢复原状。签之前不看清楚，退租时账单会吓一跳。",
+ l:"昨天看模式，今天看最重的一份合同——仓库租赁合同。"},
+"19-3":{m:"仓储服务协议的灵魂就三条：货丢了怎么赔、赔多少封顶、保险谁买。像停车场的免责告示，写清楚才有效，写不清楚等于全赔。",
+ l:"租好房子，今天签保管合同——这才是真正管货的那份文件。"},
+"19-4":{m:"库存盘点差异像超市月底盘货对不上账：盘点制度、监控录像、出入库记录就是你的证据。没有这些，货少了只能自己吞。",
+ l:"合同签完，今天看日常运营中的事故怎么处理——制度决定你能不能证明自己没错。"},
+"19-5":{m:"复盘像一次双重谈判的总结：既要像房客一样谈租约，又要像保管人一样谈责任。这两份合同是海外仓法务的全部家当。",
+ l:"第 19 周收口，下周把前 19 周变成一套可复用的合同模板。"},
+"19-w":{m:"谈判起草海外仓合同，就是同时扮演房客和保管人：一边争退租条件，一边争赔付封顶。这两场谈判的技巧完全不同。"},
+
+/* ---------- W20 合同模板体系 ---------- */
+"20-1":{m:"合同模板就是把过去 19 周踩过的坑写成标准菜谱：以后谁都能照着做，不用每次从头想，也不会因为谁休假就出错。",
+ l:"进入阶段四——把知识变成资产。第一件事：做模板库。"},
+"20-2":{m:"背靠背条款就是「我被上游追多少，就向下游追多少」：像装修队把业主的索赔原样转给材料商。核心是把上游的标准完整搬到下游合同里。",
+ l:"昨天做货代协议（对客户），今天做承运协议（对分包商）——两头要对齐。"},
+"20-3":{m:"仓储和清关代理这两份协议，灵魂都是「服务标准 + 责任封顶」，像外卖平台的配送时效承诺加赔付上限。没写清楚标准，封顶也站不住。",
+ l:"主合同之后，补齐两类高频协议。"},
+"20-4":{m:"三层结构就是「宪法、订单、实施细则」：框架协议定大原则，报价单定这次的价格，标准交易条件定执行细节。必须写明打架时谁说了算。",
+ l:"四份协议做完了，今天把它们组织成一个体系——这才是总监该交付的东西。"},
+"20-5":{m:"复盘像把个人经验装进制度：模板库 + 审批流程 + 例外清单。做完这一步，你的能力就不再依赖你本人。",
+ l:"第 20 周收口，下周进入法律英语——能不能自己写英文合同。"},
+"20-w":{m:"合同模板库 v1.0 加审批流程，就是把个人经验制度化：谁可以自己签、谁必须走法务、什么情况必须升级，一张图说清楚。"},
+
+/* ---------- W21 法律英语 ---------- */
+"21-1":{m:"英文合同像八股文：定义、义务、付款、陈述与保证、责任、终止、争议，七段式，位置基本固定。会认结构，一份 30 页的合同 10 分钟就能看完重点。",
+ l:"模板有了中文版，这周让它能出英文版。先认结构。"},
+"21-2":{m:"shall / may / best endeavours 就是三档油门：必须、可以、尽力而为。踩错一档，义务就从「尽力」变成「保证做到」。",
+ l:"结构之后是最容易踩雷的十个词——一个词能改掉整条义务的重量。"},
+"21-3":{m:"indemnify（替人赔钱）、hold harmless（不让人被牵连）、limitation of liability（赔到多少为止），三兄弟像「赔偿金、挡箭牌、封顶线」，用混一个，赔的钱差一个数量级。",
+ l:"昨天看单字，今天看词组——责任条款是英文合同的核心战场。"},
+"21-4":{m:"通知条款就是「官方联络地址」：写错了，对方的仲裁通知送不到你手上，你连自己在被起诉都不知道。最不起眼的条款，有时最致命。",
+ l:"实体条款之后，看程序性条款——它们决定实体权利能不能兑现。"},
+"21-5":{m:"英文索赔函和催款函像投诉信：事实、依据、诉求、期限，四段式，一段都不能少。写得专业，对方才会当回事。",
+ l:"会读会写合同条款之后，最后一天练沟通——这是日常用得最多的。"},
+"21-w":{m:"中英互译找茬：先把中文合同翻成英文，再拿一份真实的英文合同反向挑毛病。一进一出之间，语感就出来了。"},
+
+/* ---------- W22 争议解决 ---------- */
+"22-1":{m:"诉讼像公立医院：便宜、公开、能上诉，但慢且在国外难执行；仲裁像私立诊所：贵、保密、一裁终局，但全球 170 多个国家认账。选哪个，取决于你要的是便宜还是能执行。",
+ l:"合同体系建成后，这周解决谈崩了怎么办。"},
+"22-2":{m:"仲裁条款的七要素像填快递单：仲裁机构、地点、规则、语言、仲裁员人数、适用法律、仲裁范围，少填一项，包裹可能就送不到。",
+ l:"昨天选路，今天写条款——绝大多数无效仲裁条款都栽在「没写仲裁机构」上。"},
+"22-3":{m:"纽约公约让外国仲裁裁决能在 170 多个国家执行，像一张全球通用的欠条；而法院判决没有这个待遇。这就是为什么跨境合同几乎都选仲裁。",
+ l:"条款写好，今天看打赢之后怎么真的拿到钱——执行才是终点。"},
+"22-4":{m:"索赔时效就是保质期：海运一年、公路一年、空运两年，各不相同。权利还在但过了期，法院不保护。这是最贵也最蠢的错误。",
+ l:"程序走完，最后一天是时间管理——把时效做成台账，是法务最值钱的手艺之一。"},
+"22-5":{m:"复盘像做一张作战地图：选路、定条款、能执行、别过期，四个格子填满，才算能把一场跨境争议从头带到尾。",
+ l:"第 22 周收口，下周进入内控内审与反舞弊。"},
+"22-w":{m:"争议应对策略书就是作战地图加弹药预算：打不打、在哪打、花多少钱、多久出结果，一页纸给老板做决策。"},
+
+/* ---------- W23 内控内审与反舞弊 ---------- */
+"23-1":{m:"合同风险台账和合规风险库，就是家庭记账本：不记账就不知道钱花哪了，不记风险就不知道公司在裸奔。总监的第一件家当就是这两本账。",
+ l:"进入 JD 第 4 条和第 7 条：从「处理个案」升级到「管理人」。"},
+"23-2":{m:"内部审计像体检中心：目的不是抓坏人，是提前发现指标异常。年度计划就是体检套餐排期——查什么、多久查一次、谁负责整改。",
+ l:"台账是记录，今天是主动检查机制。"},
+"23-3":{m:"FCPA、UKBA、中国反不正当竞争法第 7 条是三套反作弊规则：都管给外国官员送钱，但 UKBA 连商业贿赂一起管、中国反法管对交易相对方的贿赂。三套都要过一遍。",
+ l:"流程之后是红线：反商业贿赂是境外合规里最容易出刑责的一块。"},
+"23-4":{m:"举报与调查机制像 110 加匿名信箱：既要让人敢报，又要保护被举报人的正当权利，还要保证证据合法。调查本身不合法，结果也白搭。",
+ l:"制度立好，今天看真收到线索时怎么动——这一步最容易反过来把公司告上法庭。"},
+"23-5":{m:"复盘像给公司装仪表盘加报警器加年检：看得见、响得了、查得动，三件事齐了，内控才不是纸面文章。",
+ l:"第 23 周收口，最后一周：从会做业务到能带团队。"},
+"23-w":{m:"三件套（台账 + 风险库 + 年度内审计划）就是公司的仪表盘、报警器和年检表：一套东西解决「看得见风险」这件事。"},
+
+/* ---------- W24 结业 ---------- */
+"24-1":{m:"从法务专家到法务总监，就像从大厨到餐厅老板：考核的不再是你能炒多好的菜，而是你不在时出餐是否稳定。核心能力从「我会做」变成「我让团队会做」。",
+ l:"最后一周，回答一个终极问题：我已经不是原来的我了，那我是谁。"},
+"24-2":{m:"外部律师、检验人、翻译就是你的外包供应商：选谁、怎么派活、怎么控成本。会管外部资源，一个人的法务部才能干五个人的活。",
+ l:"角色转变之后，是资源——总监的能力等于他能调动多少外部资源。"},
+"24-3":{m:"年度合规日历就是车辆年检日历：哪个月交年报、哪个月审执照、哪个月更新 EPR 注册。提前排好，就不会因为忘记而罚款。",
+ l:"能力、资源之后是机制——把重复的事固化成日历，才叫体系。"},
+"24-4":{m:"作品集是唯一能证明你的东西。面试时说「我学过什么」没有用，拿出模板库、制度、报告、案例推演——这些纸才替你说话。",
+ l:"所有学习最后要兑现成一份能拿出手的东西。"},
+"24-5":{m:"结业复盘像给这 24 周拍一张全景照：从看不懂报价单，到能独立判断一票跨境货的全部风险。回头看这条线，才知道自己走了多远。",
+ l:"全部 24 周收口，下一步是把它变成你真正的职业身份。"},
+"24-w":{m:"百日计划就是你到岗后 100 天要干的事清单：前 30 天摸清家底，中间 40 天补最痛的短板，最后 30 天拿出一个让老板记住的成果。"}
+};
+
+const METAW={
+1:{m:"画全链路法律关系图，就像给一票货拍一部纪录片：每一帧都标上「谁在场、拿了什么单据、出事谁负责」。拍完这部片子，后面 23 周的知识全都挂得上去。"},
+2:{m:"单证体检就是给一套单据做入职体检：抬头错、日期倒签、签章缺、背书断——任何一项指标不合格，半年后的索赔里你都可能哑口无言。"},
+3:{m:"审外贸合同的价格条款，就是看外卖订单备注有没有写清「谁付配送费、洒了算谁的」。一句 FOB 后面漏写装船费，就是几千美金的分歧。"},
+4:{m:"审信用证就是玩「大家来找茬」：在规定时间把不符点全挑出来。挑漏一个，银行就有理由拒付，几十万美金卡在半路。"},
+5:{m:"一票货损案推演就像交警还原碰撞现场：定责、定损、定限额、定追偿对象，四步跑完，才知道公司这次实际要掏多少钱。"},
+6:{m:"能力差距表就是一次职业体检报告：各项指标对照「法务总监」的岗位标准，哪里红字最多，未来 18 周就往哪里加练。"},
+7:{m:"海运货损案完整推演像刑侦片还原沉船：先定谁有义务，再看能不能免责，然后算限额，最后看有没有过期。四关全过完才拿得到钱。"},
+8:{m:"读提单背面条款就是读保险合同的免责小字：正面漂漂亮亮，真正的游戏规则全在背面那几段密密麻麻的英文里。"},
+9:{m:"四种运输方式对比与方案设计，就像给客户做「出行方案」：同样的货，走空、走海、走铁、走公路，责任、时效、成本完全不同，方案书要让老板一眼看懂。"},
+10:{m:"审查我方标准合同就是一次身份体检：逐条看有没有哪句话把自己写成了承运人，或者哪句话让限额条款因为没提示而失效。"},
+11:{m:"被查验扣货的应急处置方案就是火灾逃生预案：谁第一时间联系海关、谁通知客户、谁准备材料、什么时候升级，写成剧本，事发时照着念就行。"},
+12:{m:"目的国清关失败应急预案，就是出国前买的旅行保险加一张紧急联系电话表：真出事时，翻本子比现场想办法快十倍。"},
+13:{m:"综合大案例演练就是法考主观题：一份材料、多个主体、多个法域，按时间轴把每一步的权利义务写清楚。做对这一题，阶段二就真过了。"},
+14:{m:"欧盟法适用性判断报告，就像查「这个国家能不能带这个东西」：先定产品类别，再找适用法规，最后列义务清单。这是你给业务的第一份交付物。"},
+15:{m:"合规文件清单与核验 SOP，就是一份签证材料清单加检查打勾表：业务拿到就能照着准备，不用每次来问法务。"},
+16:{m:"数据映射就是清点家里所有钥匙：每把钥匙开哪扇门、现在在谁手里、有没有配过备份。清点完才知道哪里该换锁。"},
+17:{m:"搭筛查制度就是给公司装安检门：每个新客户、每票新订单，过一遍名单，留下记录。这套制度本身就是你的免责证据。"},
+18:{m:"海外子公司设立与维护手册，就是一本开店年检日历：设立流程、治理动作、年度义务、当地对接人，一册在手，换谁来接手都不会乱。"},
+19:{m:"谈判起草海外仓合同，就是同时扮演房客和保管人：一边争退租条件，一边争赔付封顶。这两场谈判的技巧完全不同。"},
+20:{m:"合同模板库 v1.0 加审批流程，就是把个人经验制度化：谁可以自己签、谁必须走法务、什么情况必须升级，一张图说清楚。"},
+21:{m:"中英互译找茬：先把中文合同翻成英文，再拿一份真实的英文合同反向挑毛病。一进一出之间，语感就出来了。"},
+22:{m:"争议应对策略书就是作战地图加弹药预算：打不打、在哪打、花多少钱、多久出结果，一页纸给老板做决策。"},
+23:{m:"三件套（台账 + 风险库 + 年度内审计划）就是公司的仪表盘、报警器和年检表：一套东西解决「看得见风险」这件事。"},
+24:{m:"百日计划就是你到岗后 100 天要干的事清单：前 30 天摸清家底，中间 40 天补最痛的短板，最后 30 天拿出一个让老板记住的成果。"}
+};
+
+
+/* ============ 数据与常量 ============ */
+const ROLE="你现在是我的跨境物流法务顾问兼导师。\n\n我的背景：985 法律硕士、已取得律师资格、现为港企法务，正在系统学习跨境物流（国际货运代理 / 海外仓 / 中欧班列 / FBA 头程）方向的法务总监能力。我的默认立场是【物流服务提供方（货代 / 海外仓 / 承运人）】。\n\n回答要求（违反即不合格）：\n1. 法条与公约须精确到「名称 + 条 + 款 + 项」，注明现行有效版本；已废止或修订的必须标明；没有把握的地方直接写「待核实」，并告诉我在哪里可以核对。绝对不要编造条文号、案号与数字。\n2. 涉及金额、期限、责任限额、比例的，一律给具体数字与货币单位（SDR / 欧元 / 美元 / 人民币），不许说「合理」「适当」。\n3. 涉及国际公约的，必须说明：中国是否为缔约国、对我国生效日期、有无保留声明。\n4. 每个知识点都要落到真实业务动作：谁、在什么时候、做什么、做完留什么证据、不做的后果是什么。\n5. 核心术语一律给「中文 + English + 缩写」三件套，为英文合同起草打底。\n6. 删除所有客套话、免责声明与「建议咨询专业律师」这类废话。\n7. 每个结论之后，另外给出「客户 / 对方可能怎么反制」的视角。\n\n今天的问题：\n\n";
+
+const WEEKS=DATA1.concat(DATA2).concat(DATA3).concat(DATA4);
+
+/* 合并「生活化比喻」数据：把 META / METAW 挂到每一天与每个周末项目上 */
+(function(){
+  if(typeof META==="undefined"&&typeof METAW==="undefined")return;
+  WEEKS.forEach(function(wk){
+    wk.d.forEach(function(dd,i){
+      var e=(typeof META!=="undefined")?META[wk.w+"-"+(i+1)]:null;
+      if(e){dd.m=e.m||"";dd.ml=e.l||"";}
+    });
+    var ew=(typeof METAW!=="undefined")?METAW[wk.w]:null;
+    if(ew&&wk.wk){wk.wk.m=ew.m||"";wk.wk.ml=ew.l||"";}
+  });
+})();
+/* 已跑出内容的天：链接到对应内容页，并隐藏该天的指令块（内容已产出，无需再下达指令） */
+var DONE_CONTENT={
+  "1":{d:["W1/W1-D1.html","W1/W1-D2.html","W1/W1-D3.html","W1/W1-D4.html","W1/W1-D5.html"],wk:"W1/W1-weekend.html"}
+};
+function contentLink(w,i,isWk){
+  var m=DONE_CONTENT[w];if(!m)return "";
+  return isWk?(m.wk||""):(m.d&&m.d[i]||"");
+}
+
+/* 生成指令前缀：把比喻写进下达给 AI 的指令里 */
+function mpre(o){
+  if(!o||!o.m)return "";
+  return "【先用这个生活化的比喻建立直觉】"+o.m+(o.ml?"\n【它和今天内容的关系】"+o.ml:"")+"\n\n";
+}
+const KEY="clj_plan_v1";
+let ST={ck:{},sc:{}};
+try{const r=localStorage.getItem(KEY);if(r)ST=JSON.parse(r);}catch(e){}
+if(!ST.ck)ST.ck={};if(!ST.sc)ST.sc={};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ST));}catch(e){}}
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function dk(w,i){return w+"-"+i;}
+function b64(s){return btoa(encodeURIComponent(s));}
+
+/* ============ Tab 切换 ============ */
+document.querySelectorAll(".tab").forEach(function(t){
+  t.onclick=function(){
+    document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});
+    document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on");});
+    t.classList.add("on");
+    document.getElementById(t.dataset.p).classList.add("on");
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+});
+function goTab(p,w){
+  document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});
+  document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on");});
+  var tb=document.querySelector('.tab[data-p="'+p+'"]');if(tb)tb.classList.add("on");
+  var pn=document.getElementById(p);if(pn)pn.classList.add("on");
+  if(w){showWeek(w);var el=document.getElementById("weekbox");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
+}
+
+/* ============ 阶段与路线图 ============ */
+(function(){
+  var b=document.getElementById("stages");if(!b)return;
+  b.innerHTML=STAGES.map(function(s){
+    return '<div class="card"><div style="font-size:11px;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">STAGE '+s.n+' · '+s.w+'</div>'+
+      '<h3 style="font-size:16px;margin-bottom:8px">'+esc(s.t.split("·")[1]||s.t)+'</h3>'+
+      '<p class="muted" style="font-size:13px;margin-bottom:10px">'+esc(s.goal)+'</p>'+
+      '<div class="small" style="margin-bottom:6px;color:var(--jade)">核心产出物</div>'+
+      '<ul class="foc">'+s.out.map(function(o){return '<li>'+esc(o)+'</li>';}).join("")+'</ul>'+
+      '<div class="act" style="margin-bottom:0"><b>结业标准：</b>'+esc(s.judge)+'</div></div>';
+  }).join("");
+})();
+
+(function(){
+  var b=document.getElementById("rmlist");if(!b)return;
+  b.innerHTML=WEEKS.map(function(wk){
+    var all=wk.d.every(function(_,i){return ST.ck[dk(wk.w,i)];});
+    var col=wk.st===1?"--jade":wk.st===2?"--gold":wk.st===3?"--blue":"--purple";
+    return '<div class="rmrow'+(all?' done':'')+'" data-w="'+wk.w+'" style="border-left-color:var('+col+')">'+
+      '<div class="wn">W'+wk.w+'</div>'+
+      '<div><div class="wt">'+esc(wk.th)+'</div><div class="wg">'+esc(wk.goal.slice(0,58))+(wk.goal.length>58?"…":"")+'</div></div>'+
+      '<div class="wa">›</div></div>';
+  }).join("");
+  b.querySelectorAll(".rmrow").forEach(function(r){
+    r.onclick=function(){goTab("daily",parseInt(r.dataset.w,10));};
+  });
+})();
+
+/* ============ 每日计划 ============ */
+var curW=1;
+(function(){
+  var nav=document.getElementById("wknav");if(!nav)return;
+  nav.innerHTML=WEEKS.map(function(wk){
+    var all=wk.d.every(function(_,i){return ST.ck[dk(wk.w,i)];});
+    return '<button class="wkbtn'+(all?' done':'')+'" data-w="'+wk.w+'">'+wk.w+'</button>';
+  }).join("");
+  nav.querySelectorAll(".wkbtn").forEach(function(btn){
+    btn.onclick=function(){showWeek(parseInt(btn.dataset.w,10));};
+  });
+})();
+
+function showWeek(w){
+  curW=w;
+  document.querySelectorAll("#wknav .wkbtn").forEach(function(b){b.classList.toggle("on",parseInt(b.dataset.w,10)===w);});
+  var wk=WEEKS.filter(function(x){return x.w===w;})[0];if(!wk)return;
+  var st=STAGES.filter(function(s){return s.n===wk.st;})[0];
+  var done=wk.d.filter(function(_,i){return ST.ck[dk(w,i)];}).length;
+  var h='<div class="weekhead">'+
+    '<div style="font-size:11px;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">第 '+w+' 周 · 阶段'+(st?st.n:'')+' · '+(st?esc(st.t.split("·")[1]||""):"")+'</div>'+
+    '<div class="wt">'+esc(wk.th)+'</div>'+
+    '<div class="wg">'+esc(wk.goal)+'</div>'+
+    '<div class="pbar" style="margin-top:12px"><i style="width:'+(done/wk.d.length*100)+'%"></i></div>'+
+    '<div class="statline"><span>本周进度</span><span>'+done+' / '+wk.d.length+' 天</span></div>'+
+    '</div>';
+
+  h+=wk.d.map(function(dd,i){
+    var key=dk(w,i),on=!!ST.ck[key];
+    var p=wk.d.length===5&&i===4?"第 5 天 · 复盘日":("第 "+(i+1)+" 天");
+    var PT=mpre(dd)+dd.p,CL=contentLink(w,i,false);
+    return '<div class="day'+(on?' done':'')+'" data-k="'+key+'">'+
+      '<div class="dayhd" data-tog>'+
+        '<div class="dnum">'+(i+1)+'</div>'+
+        '<div class="dtitle">'+p+'　'+esc(dd.t)+(CL?'<span class="donetag">已跑出内容</span>':'')+'</div>'+
+        '<div class="chk">✓</div><div class="caret">▶</div>'+
+      '</div>'+
+      '<div class="dbody">'+
+        (dd.m?'<div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">'+esc(dd.m)+'</div>'+(dd.ml?'<div class="mlink"><b>怎么串到今天</b>'+esc(dd.ml)+'</div>':'')+'</div></div>':'')+
+        '<div class="blk"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc">'+dd.f.map(function(f){return '<li>'+esc(f)+'</li>';}).join("")+'</ul></div>'+
+        '<div class="blk"><div class="lb">今日产出物</div><div class="out">'+dd.o+'</div></div>'+
+        (CL?'<div class="blk"><div class="lb">今日内容（已跑出，直接看）</div>'+
+            '<a class="gotobtn" href="'+CL+'" target="_blank" rel="noopener">打开第 '+w+' 周第 '+(i+1)+' 天完整内容 →</a>'+
+            '<div class="btnrow"><button class="btn gold" data-go="'+CL+'">在本页打开</button>'+
+            '<button class="btn" data-go="'+CL+'" data-new="1">新窗口打开</button>'+
+            '<button class="btn" data-done>标记本日完成 ✓</button></div></div>'
+           :
+          '<div class="blk"><div class="lb">今天下达的指令（点右侧按钮复制，直接粘贴到对话框）</div>'+
+          '<div class="prbox">'+esc(PT)+'</div>'+
+          '<div class="btnrow"><button class="btn gold" data-cp="'+b64(ROLE+PT)+'">复制完整指令（含角色设定）</button>'+
+          '<button class="btn" data-cp="'+b64(PT)+'">只复制问题部分</button>'+
+          '<button class="btn" data-done>标记本日完成 ✓</button></div>'+
+        '</div>')+
+      '</div></div>';
+  }).join("");
+
+  var WP=mpre(wk.wk)+wk.wk.p,WL=contentLink(w,0,true);
+  h+='<div class="wknd"><div class="lb">WEEKEND PROJECT · 周末实战 '+w+'</div><h3>'+esc(wk.wk.t)+'</h3>'+
+     (wk.wk.m?'<div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">'+esc(wk.wk.m)+'</div></div></div>':'')+
+     '<p class="muted" style="font-size:13.5px">'+esc(wk.wk.d)+'</p>'+
+     (WL?'<div class="blk"><div class="lb">周末实战内容（已跑出，直接看）</div>'+
+         '<a class="gotobtn" href="'+WL+'" target="_blank" rel="noopener">打开第 '+w+' 周周末实战完整内容 →</a>'+
+         '<div class="btnrow"><button class="btn gold" data-go="'+WL+'">在本页打开</button>'+
+         '<button class="btn" data-go="'+WL+'" data-new="1">新窗口打开</button></div></div>'
+        :
+      '<div class="blk"><div class="lb">周末实战指令</div><div class="prbox">'+esc(WP)+'</div>'+
+      '<div class="btnrow"><button class="btn gold" data-cp="'+b64(ROLE+WP)+'">复制完整指令（含角色设定）</button>'+
+      '<button class="btn" data-cp="'+b64(WP)+'">只复制问题部分</button></div></div>')+'</div>';
+
+  var box=document.getElementById("weekbox");box.innerHTML=h;
+
+  box.querySelectorAll(".dayhd").forEach(function(hd){
+    hd.onclick=function(e){
+      if(e.target.dataset.done!==undefined)return;
+      hd.parentNode.classList.toggle("open");
+    };
+  });
+  box.querySelectorAll("[data-done]").forEach(function(btn){
+    btn.onclick=function(e){
+      e.stopPropagation();
+      var d=btn.closest(".day"),k=d.dataset.k;
+      ST.ck[k]=!ST.ck[k];save();
+      d.classList.toggle("done",!!ST.ck[k]);
+      btn.textContent=ST.ck[k]?"已完成 ✓":"标记本日完成 ✓";
+      refreshProgress();
+    };
+    var d=btn.closest(".day");if(ST.ck[d.dataset.k])btn.textContent="已完成 ✓";
+  });
+  bindCopy(box);
+}
+
+function refreshProgress(){
+  var total=WEEKS.reduce(function(a,w){return a+w.d.length;},0);
+  var n=Object.keys(ST.ck).filter(function(k){return ST.ck[k];}).length;
+  document.querySelectorAll("#wknav .wkbtn").forEach(function(b){
+    var w=parseInt(b.dataset.w,10);
+    var wk=WEEKS.filter(function(x){return x.w===w;})[0];
+    b.classList.toggle("done",wk.d.every(function(_,i){return ST.ck[dk(w,i)];}));
+  });
+  document.querySelectorAll("#rmlist .rmrow").forEach(function(r){
+    var w=parseInt(r.dataset.w,10);
+    var wk=WEEKS.filter(function(x){return x.w===w;})[0];
+    r.classList.toggle("done",wk.d.every(function(_,i){return ST.ck[dk(w,i)];}));
+  });
+  if(document.getElementById("weekbox").innerHTML){
+    var wk=WEEKS.filter(function(x){return x.w===curW;})[0];
+    var done=wk.d.filter(function(_,i){return ST.ck[dk(curW,i)];}).length;
+    var bar=document.querySelector("#weekbox .pbar i");
+    var sl=document.querySelector("#weekbox .statline span:last-child");
+    if(bar)bar.style.width=(done/wk.d.length*100)+"%";
+    if(sl)sl.textContent=done+" / "+wk.d.length+" 天";
+  }
+  var m=document.getElementById("mDone");if(m)m.textContent=n+" / "+total;
+}
+
+function bindCopy(root){
+  (root||document).querySelectorAll("[data-cp]").forEach(function(btn){
+    btn.onclick=function(){
+      var txt=decodeURIComponent(atob(btn.dataset.cp));
+      copy(txt,btn);
+    };
+  });
+  (root||document).querySelectorAll("[data-go]").forEach(function(btn){
+    btn.onclick=function(e){
+      e.stopPropagation();
+      if(btn.dataset.new){window.open(btn.dataset.go,"_blank");}
+      else{window.location.href=btn.dataset.go;}
+    };
+  });
+}
+function copy(txt,btn){
+  var ta=document.createElement("textarea");
+  ta.value=txt;ta.style.position="fixed";ta.style.left="-9999px";
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand("copy");}catch(e){}
+  document.body.removeChild(ta);
+  if(btn){var o=btn.textContent;btn.classList.add("copied");btn.textContent="已复制 ✓";
+    setTimeout(function(){btn.classList.remove("copied");btn.textContent=o;},1600);}
+}
+document.querySelectorAll("[data-copy]").forEach(function(btn){
+  btn.onclick=function(){
+    var el=document.getElementById(btn.dataset.copy);
+    copy(el?el.textContent:btn.dataset.copy,btn);
+  };
+});
+
+/* ============ 术语地基 ============ */
+(function(){
+  var b=document.getElementById("glossbox");if(!b)return;
+  function render(q){
+    q=(q||"").trim().toLowerCase();
+    var html="";
+    GLOSS.forEach(function(g){
+      var its=g.items.filter(function(it){
+        if(!q)return true;
+        return (it.t+it.e+it.a+it.d+it.u).toLowerCase().indexOf(q)>=0;
+      });
+      if(!its.length)return;
+      html+='<div class="ckgroup"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'+
+        '<span class="tag '+g.c+'">'+esc(g.g)+'</span><span class="small">'+its.length+' 条</span></div>';
+      html+=its.map(function(it){
+        return '<div class="gitem"><div class="gterm"><b>'+esc(it.t)+'</b>'+
+          (it.e?'<span style="color:var(--tx2);font-size:13px"> · '+esc(it.e)+'</span>':"")+
+          (it.a?'<span class="gabbr">'+esc(it.a)+'</span>':"")+'</div>'+
+          '<div class="gdef">'+esc(it.d)+'</div>'+
+          '<div class="guse">在哪用到：'+esc(it.u)+'</div></div>';
+      }).join("");
+      html+='</div>';
+    });
+    b.innerHTML=html||'<p class="muted">没有匹配的术语，换个词试试。</p>';
+  }
+  render("");
+  var q=document.getElementById("gq");
+  q.oninput=function(){render(q.value);};
+})();
+
+/* ============ 指令库 ============ */
+(function(){
+  var b=document.getElementById("libbox");if(!b)return;
+  var groups={};
+  LIB.forEach(function(x){(groups[x.g]=groups[x.g]||[]).push(x);});
+  b.innerHTML=Object.keys(groups).map(function(g){
+    return '<h2 class="sec">'+esc(g)+'（'+groups[g].length+' 条）</h2>'+
+    groups[g].map(function(x,i){
+      return '<div class="libitem"><div class="lh"><span class="tag '+x.c+'">'+esc(x.g)+'</span>'+
+        '<b style="font-size:14.5px">'+esc(x.t)+'</b></div>'+
+        '<p class="muted" style="font-size:13px;margin-bottom:10px">'+esc(x.d)+'</p>'+
+        '<div class="prbox">'+esc(x.p)+'</div>'+
+        '<div class="btnrow"><button class="btn gold" data-cp="'+b64(ROLE+x.p)+'">复制完整指令（含角色设定）</button>'+
+        '<button class="btn" data-cp="'+b64(x.p)+'">只复制正文</button></div></div>';
+    }).join("");
+  }).join("");
+  bindCopy(b);
+})();
+
+/* ============ 法规库 ============ */
+(function(){
+  var b=document.getElementById("lawbox");if(!b)return;
+  b.innerHTML=LAWS.map(function(g){
+    return '<div class="card" style="margin-bottom:14px"><h3>'+esc(g.g)+
+      ' <span class="tag '+(g.lv==="必精读"?"a":g.lv==="常备"?"b":"c")+'">'+esc(g.lv)+'</span></h3>'+
+      '<table><tr><th style="width:34%">法规 / 公约</th><th style="width:30%">解决什么问题</th><th>关键条款与提示</th></tr>'+
+      g.items.map(function(it){
+        return '<tr><td><b>'+esc(it.n)+'</b></td><td>'+esc(it.d)+'</td><td>'+esc(it.k)+'</td></tr>';
+      }).join("")+'</table></div>';
+  }).join("");
+})();
+
+/* ============ 能力自检 ============ */
+var DIMS=[
+ {n:"行业与单据",ks:["行业理解","单据体系"]},
+ {n:"贸易·结算·保险",ks:["贸易与结算","保险"]},
+ {n:"运输责任·身份",ks:["运输责任","货代身份"]},
+ {n:"海关与通关",ks:["海关"]},
+ {n:"合同与英文",ks:["合同","英文"]},
+ {n:"境外合规·争议内控",ks:["欧盟合规","数据与制裁","海外主体","争议解决","内控与团队"]}
+];
+(function(){
+  var b=document.getElementById("ckbox");if(!b)return;
+  b.innerHTML='<div style="font-size:13px;color:var(--tx2);margin-bottom:10px">点击每个能力项右侧的 1-5 分自评（1=完全不会，5=能独立带人做）。</div>'+
+    CHECKS.map(function(c,i){
+      var cur=ST.sc[i]||1;
+      return '<div class="ckrow" data-i="'+i+'"><div style="flex:1">'+
+        '<div class="cktx"><b>'+esc(c.k)+'</b> · '+esc(c.t)+'</div></div>'+
+        '<div style="flex:none;display:flex;gap:3px">'+
+        [1,2,3,4,5].map(function(n){
+          return '<button class="btn sc'+(n<=cur?' gold':'')+'" data-n="'+n+'" style="padding:4px 9px;min-width:30px">'+n+'</button>';
+        }).join("")+'</div></div>';
+    }).join("")+
+    '<div class="pbar" style="margin-top:14px"><i id="scbar"></i></div>'+
+    '<div class="statline"><span>总分（满分 120）</span><span id="sctot"></span></div>';
+  b.querySelectorAll(".ckrow").forEach(function(row){
+    var i=parseInt(row.dataset.i,10);
+    row.querySelectorAll(".sc").forEach(function(btn){
+      btn.onclick=function(e){
+        e.stopPropagation();
+        var n=parseInt(btn.dataset.n,10);
+        ST.sc[i]=n;save();
+        row.querySelectorAll(".sc").forEach(function(x){
+          x.classList.toggle("gold",parseInt(x.dataset.n,10)<=n);
+        });
+        drawRadar();updScore();
+      };
+    });
+  });
+})();
+function updScore(){
+  var tot=CHECKS.reduce(function(a,_,i){return a+(ST.sc[i]||1);},0);
+  var el=document.getElementById("sctot");if(el)el.textContent=tot+" / 120";
+  var bar=document.getElementById("scbar");if(bar)bar.style.width=(tot/120*100)+"%";
+}
+function drawRadar(){
+  var el=document.getElementById("radar");if(!el)return;
+  var cx=190,cy=190,R=130,n=DIMS.length;
+  function pt(i,r){
+    var a=-Math.PI/2+i*2*Math.PI/n;
+    return [cx+Math.cos(a)*r,cy+Math.sin(a)*r];
+  }
+  var vals=DIMS.map(function(d){
+    var idx=CHECKS.map(function(c,i){return d.ks.indexOf(c.k)>=0?i:-1;}).filter(function(i){return i>=0;});
+    return idx.reduce(function(a,i){return a+(ST.sc[i]||1);},0)/idx.length/5;
+  });
+  var s='<svg viewBox="0 0 380 380" style="width:100%;height:auto">';
+  [0.25,0.5,0.75,1].forEach(function(r){
+    var pts=DIMS.map(function(_,i){return pt(i,R*r).join(",");}).join(" ");
+    s+='<polygon points="'+pts+'" fill="none" stroke="#2a3140" stroke-width="1"/>';
+  });
+  for(var i=0;i<n;i++){var p=pt(i,R);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#2a3140"/>';}
+  var pp=DIMS.map(function(_,i){return pt(i,R*vals[i]).join(",");}).join(" ");
+  s+='<polygon points="'+pp+'" fill="rgba(201,162,39,.22)" stroke="#c9a227" stroke-width="2"/>';
+  for(var j=0;j<n;j++){
+    var q=pt(j,R*vals[j]);
+    s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="3.5" fill="#c9a227"/>';
+    var lp=pt(j,R+26);
+    var anchor=lp[0]>cx+8?"start":lp[0]<cx-8?"end":"middle";
+    s+='<text x="'+lp[0]+'" y="'+(lp[1]+4)+'" text-anchor="'+anchor+'" fill="#9fa8b8" font-size="12">'+DIMS[j].n+'</text>';
+    s+='<text x="'+lp[0]+'" y="'+(lp[1]+18)+'" text-anchor="'+anchor+'" fill="#6b7688" font-size="10.5">'+vals[j].toFixed(2)+' / 5</text>';
+  }
+  s+='</svg>';
+  el.innerHTML=s;
+}
+drawRadar();updScore();
+
+/* ============ 进度导出 / 导入 / 清空 ============ */
+(function(){
+  var ex=document.getElementById("btnExport");
+  if(ex)ex.onclick=function(){
+    var blob=new Blob([JSON.stringify(ST,null,2)],{type:"application/json"});
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="跨境物流法务总监养成计划_进度_"+new Date().toISOString().slice(0,10)+".json";
+    a.click();
+  };
+  var im=document.getElementById("btnImport");
+  if(im)im.onclick=function(){
+    var inp=document.createElement("input");inp.type="file";inp.accept="application/json";
+    inp.onchange=function(){
+      var f=inp.files[0];if(!f)return;
+      var r=new FileReader();
+      r.onload=function(){
+        try{ST=JSON.parse(r.result);if(!ST.ck)ST.ck={};if(!ST.sc)ST.sc={};save();location.reload();}
+        catch(e){alert("文件格式不正确");}
+      };
+      r.readAsText(f);
+    };
+    inp.click();
+  };
+  var rs=document.getElementById("btnReset");
+  if(rs)rs.onclick=function(){
+    if(confirm("确定清空全部学习进度与自评分数？此操作不可撤销。")){ST={ck:{},sc:{}};save();location.reload();}
+  };
+})();
+
+/* ============ 初始化 ============ */
+(function(){
+  var total=WEEKS.reduce(function(a,w){return a+w.d.length;},0);
+  var n=Object.keys(ST.ck).filter(function(k){return ST.ck[k];}).length;
+  var hd=document.querySelector(".metrics");
+  if(hd){var d=document.createElement("div");d.className="metric";
+    d.innerHTML='<b id="mDone">'+n+' / '+total+'</b><span>已完成天数</span>';hd.appendChild(d);}
+  var lc=document.createElement("div");lc.className="metric";
+  lc.innerHTML='<b>'+(total+WEEKS.length+LIB.length)+'</b><span>条可复制指令</span>';
+  if(hd)hd.appendChild(lc);
+  var gt=document.createElement("div");gt.className="metric";
+  var tn=GLOSS.reduce(function(a,g){return a+g.items.length;},0);
+  gt.innerHTML='<b>'+tn+'</b><span>条术语地基</span>';
+  if(hd)hd.appendChild(gt);
+})();
+showWeek(1);
+refreshProgress();
+
+</script>
+</body>
+</html>

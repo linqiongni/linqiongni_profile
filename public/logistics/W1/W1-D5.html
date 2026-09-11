@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·第5天｜复盘与自测：第 1 周知识固化</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · DAY 5 / 5　·　阶段一　打地基</div><h1>复盘与自测：第 1 周知识固化</h1><div class="sub">第 1 周主题：跨境物流行业解剖 —— 这门生意的钱、链路与角色</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像学完菜谱后第一次凭记忆做完整桌菜——不看配方，能不能说出每道菜的关键火候？说不出的地方，就是明天要补的地基。</div><div class="mlink"><b>怎么串到今天</b>第 1 周收口：把行业、角色、模式、钱串成一条线，下周开始进入单据证据学。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>把前 4 天的产出物汇编成《学习手册·第1章》</li><li>费曼检验：能不能用大白话给一个客户讲清楚「为什么 DDP 比 DDU 贵又更危险」</li><li>自测：10 道题检验本周吸收率</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《学习手册·第1章：行业与商业模式》定稿 + 自测成绩</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 1 周结束，请对我做一次严格检验：
+
+1. 出 10 道题（单选 5 + 场景案例 3 + 简答 2），覆盖：8 类产品与法律关系、主体身份辨析、跨境电商监管代码、进口商 IOR、计费与附加费
+2. 我作答后逐题批改，错的要讲透，并告诉我这个点在实务中会怎么坑到我
+3. 给我一道费曼检验题：如果我要给一个第一次做跨境的卖家，用 3 分钟讲清楚「DDP 和 DDU 的差别，以及为什么你不要随便答应 DDP」，该怎么讲？给我口语化讲稿
+4. 最后：帮我整合本周产出物成《学习手册·第1章》，并给我下周学习的 3 条提醒</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、第 1 周自测（10 题）</h2>
+<p>先闭卷作答，再对照下方答案。错 3 题以上，说明地基未打牢，第 2 周请先回头补本周。</p>
+<h3>单选题（5 题）</h3>
+<ol><li>下列哪一项<b>最能</b>证明货代在交易中是「缔约承运人」而非「代理人」？<br>A. 收取佣金　B. 签发自己的 House B/L　C. 代客户订舱　D. 代垫运费</li><li>一批服装实重 80 kg，体积 100×80×60 cm。若走国际快递（÷5000），计费重是多少？<br>A. 80 kg　B. 96 kg　C. 100 kg　D. 120 kg</li><li>下列监管代码中，属于「跨境电商出口海外仓」的是：<br>A. 9610　B. 9710　C. 9810　D. 1210</li><li>FBA 模式下，亚马逊通常的身份是：<br>A. 进口商 IOR　B. 收货方 / 履约服务商　C. 承运人　D. 货主</li><li>目的港集装箱超期未还产生的费用，正确名称是：<br>A. Demurrage　B. Detention　C. Storage　D. PSS</li></ol>
+<h3>场景案例题（3 题）</h3>
+<ol><li><b>案例 1</b>：我方货代与客户签「门到门全程包干价」，未签发提单，货在海运途中因船员管货不当湿损，客户索赔 30 万美元。我方主张「我只是代理」。请判断我方抗辩成功的可能性，并说明理由。</li><li><b>案例 2</b>：客户无欧盟实体，希望我方德国子公司担任某批蓝牙耳机的 IOR。货物已取得 CE 与电池法合规文件。请给出你的处理意见与至少两项合同安排。</li><li><b>案例 3</b>：目的港无人提货，滞箱费累计 6 万美元，船公司已向我方（缔约承运人）收取。客户失联。请列出你现在能做的三件事，以及今后应在合同中加入哪两条条款。</li></ol>
+<h3>简答题（2 题）</h3>
+<ol><li>请说明「货权决定民事责任，身份决定行政责任」这句话在海外仓业务中的具体含义。</li><li>请列举报价单中最容易埋雷的三处，并分别说明我方应争取的写法。</li></ol>
+<h2>二、答案与批改要点</h2>
+<table><thead><tr><th>题号</th><th>答案</th><th>讲透与实务提示</th></tr></thead><tbody><tr><td>单选 1</td><td>B</td><td>签发 House B/L 是认定 Principal 最强的证据。实务坑：很多货代为了「方便客户」签发自己的提单，却没同步加入责任限额与首要条款，结果身份升级了、保护没跟上，这是最差组合。</td></tr><tr><td>单选 2</td><td>B</td><td>体积重 = 100×80×60÷5000 = 96 kg，大于实重 80 kg，计费重取 96 kg。实务坑：报价单若只写「按重量计费」，客户可拒付 16 kg 的差额。</td></tr><tr><td>单选 3</td><td>C</td><td>9810 = 跨境电商出口海外仓；9610 = 零售出口直邮；9710 = B2B 直接出口；1210 = 网购保税进口。实务坑：代码选错，退税口径与通关单证全变，客户会把损失算在你头上。</td></tr><tr><td>单选 4</td><td>B</td><td>亚马逊明示不作为 IOR，只作为收货方 / 履约服务商。实务坑：若我方子公司当了 IOR，产品合规与税务责任就落在我方。</td></tr><tr><td>单选 5</td><td>B</td><td>Detention = 箱提出码头后超期未还；Demurrage = 箱在码头内超期。实务坑：两个词混用会导致免费期起算点争议，几天就是几千美金。</td></tr></tbody></table>
+<h3>案例题批改要点</h3>
+<ul><li><b>案例 1</b>：抗辩成功可能性低。「全程包干价 + 门到门」已经构成 Principal 的强证据，法院大概率认定缔约承运人。若能证明我方仅收取佣金、逐项代收代付、且客户明知实际承运人为船公司，尚有争辩空间。<b>实务坑</b>：这类案子真正的损失不在赔偿金额，而在「先赔后追偿」中追偿落空。</li><li><b>案例 2</b>：可以接，但必须：① 单独签 IOR 服务协议，明确我方仅为名义进口商，因客户申报不实 / 产品缺陷产生的罚款、召回、索赔由客户全额补偿（Indemnity）；② 收取与风险匹配的服务费；③ 要求客户提供 CE、符合性声明、电池法合规文件、EPR 注册号、VAT 税号并作为协议附件；④ 约定我方有权在文件缺失时拒绝清关且不承担责任。</li><li><b>案例 3</b>：现在能做的：① 立即书面通知客户并留存送达证据；② 向船公司申请减免 / 延长免费期并留痕；③ 评估弃置或拍卖，止损优先于追偿。合同应加：a. 目的港费用与无人提货费用由托运人承担并授权我方代为处置；b. 我方有权在费用达到货值一定比例时自行弃置，费用由托运人承担。</li></ul>
+<h3>简答题批改要点</h3>
+<ul><li><b>简答 1</b>：货权在卖家，因此库存灭失、损坏的民事赔偿责任发生在卖家与海外仓之间（保管关系）；但行政合规责任不看货权，而看你在链条中的身份——只要海外仓从事仓储、包装、贴标、发运，GPSR 下即构成履约服务提供商（FSP），需承担通知、配合、信息保存等法定义务。所以海外仓「不拥有货却要担责」。</li><li><b>简答 2</b>：三处埋雷 = ① 燃油附加「随行就市」（应改为公开指数 + 调整频率 + 通知义务）；② 汇率条款缺失（应约定基准汇率与波动分担）；③ 目的港未知费用未约定（应明确由收货人承担、托运人连带）。</li></ul>
+<h2>三、费曼讲稿：3 分钟讲清 DDP 与 DDU</h2>
+<p>下面是可以直接照着念的口语化讲稿，面向第一次做跨境的卖家。</p>
+<blockquote>「您这个货，从深圳发到德国，中间有两笔钱和两类风险，我先说钱，再说风险。</blockquote>
+<blockquote>第一笔钱是运费，无论 DDU 还是 DDP 都要付，没区别。区别在于第二笔——进口环节的关税和增值税。DDU（未完税交货）的意思是：我只负责把货送到您客户门口，<b>税由收货人自己交</b>，货到了他自己去办手续、去交钱。DDP（完税交货）的意思是：税我替您交了，您客户什么都不用管，货直接送到手上。</blockquote>
+<blockquote>所以为什么 DDP 更贵？因为我替您垫了税，还替您承担了办手续的成本和资金占用。为什么 DDP 更危险？您听重点——<b>DDP 下，进口商是我，不是您</b>。一旦申报的价格、品名、归类出了问题，海关找的是我，罚款、补税、甚至货物被扣，第一责任人都是我。而且税是提前垫的，如果最后客户不要货了，这笔税退不回来，就是净损失。</blockquote>
+<blockquote>所以我的建议是：如果您的客户在德国有公司，<b>让他自己当进口商，您做 DDU</b>。这样您清爽，他也能用自己的税号抵扣增值税。只有当您的客户是个人消费者、或者坚持要求门到门一站式，您再考虑 DDP，而且一定要先确认三件事：货值申报准不准、品名的 HS 编码对不对、目的国税号能不能办下来。这三件事任何一件没底，DDP 就是个坑——不是坑客户，是坑您自己。」</blockquote>
+<h2>四、《学习手册·第 1 章》整合</h2>
+<p>本章由四份产出物汇编而成，建议在 Obsidian 或你的知识库中按以下结构归档：</p>
+<table><thead><tr><th>产出物</th><th>来源</th><th>用途</th></tr></thead><tbody><tr><td>《跨境物流产品图谱》</td><td>D1</td><td>接到新产品需求时，先查我方身份与责任上限</td></tr><tr><td>《主体身份对照表》+ 三条英文身份条款</td><td>D2</td><td>签合同 / 打官司时锁定身份</td></tr><tr><td>《跨境电商物流模式法律对照表》+ IOR 决策图</td><td>D3</td><td>决定接不接单、谁当进口商</td></tr><tr><td>《报价单法律审查清单》20 项</td><td>D4</td><td>每一份报价单与商务合同上线前的检查表</td></tr></tbody></table>
+<h2>五、下周（第 2 周 · 单据体系）的三条提醒</h2>
+<ol><li><b>带着「谁拿着纸谁有理」的视角学</b>。第 2 周全部围绕单据，核心问题只有一个：出事时你手上那张纸能不能证明你的主张。每学一种单据，都问自己一句「它能不能转让、能不能押汇、丢了怎么办」。</li><li><b>重点预习提单的三个属性</b>：物权凭证、运输合同证明、收货凭证。这三个属性不是并列的，物权凭证是它区别于空运单、铁路运单、公路运单的唯一关键。</li><li><b>把本周的「身份」概念带过去</b>。第 10 周会系统讲货代身份，但第 2 周学提单时你会提前撞上它——House B/L 是身份认定的最强证据，学的时候先留个记号。</li></ol><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">DDU (Delivered Duty Unpaid)</div><div class="cn">未完税交货</div><div class="df">卖方送货至目的地，进口税费由买方承担</div></div><div class="ti"><div class="en">DDP (Delivered Duty Paid)</div><div class="cn">完税交货</div><div class="df">卖方承担进口税费，通常是进口商</div></div><div class="ti"><div class="en">HS Code</div><div class="cn">商品编码</div><div class="df">协调制度编码，决定税率与监管条件</div></div><div class="ti"><div class="en">IOR</div><div class="cn">进口商</div><div class="df">对进口申报与税费承担责任的人</div></div><div class="ti"><div class="en">Straight B/L</div><div class="cn">记名提单</div><div class="df">收货人特定，不可背书转让</div></div><div class="ti"><div class="en">Order B/L</div><div class="cn">指示提单</div><div class="df">凭指示交付，可背书转让</div></div></div></div><div class="foot"><a href="W1-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W1-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>
