@@ -186,6 +186,7 @@ const WEEKS: Week[] = [
         id: 'week09-day1',
         localHtml: '/food-safety-week9.html',
       },
+      { title: '第 9 周第 2 天 · 《餐饮业促进和经营管理办法》(2025)逐条实操', id: 'week09-day2' },
     ],
   },
   {
@@ -273,6 +274,7 @@ const LOCAL_LESSON_IDS = new Set([
   'xSYQ2TpwHK2GTHcFldtuMb',
   'yH99fOLzMSgjrd5OIaYJux',
   'yb4Ny8nApNOXvwjO0mrWna',
+  'week09-day2',
 ]);
 const lessonLocalUrl = (id: string) => `/lessons/${id}.html`;
 const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);
