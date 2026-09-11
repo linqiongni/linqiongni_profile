@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { TabType } from '../types';
-import { HomeCats } from './HomeCats';
 
 interface HeroProps {
   onScrollToContent: () => void;
@@ -16,9 +15,6 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
       id="hero-section"
       className="relative min-h-screen flex flex-col justify-center items-center px-6 sm:px-12 pt-20 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
     >
-      {/* 首页装饰猫咪（蜷书页 / 翻肚皮 / 招手） */}
-      <HomeCats />
-
       {/* Background Subtle Geometric / Grain Accent */}
       <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">
         <div className="w-[680px] h-[680px] rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] blur-2xl" />
