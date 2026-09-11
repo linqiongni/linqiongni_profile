@@ -9,6 +9,7 @@ import { InsightsTab } from './components/InsightsTab';
 import { NotesTab } from './components/NotesTab';
 import { CateringLegalTab } from './components/CateringLegalTab';
 import { LogisticsLegalTab } from './components/LogisticsLegalTab';
+import { ForeignContractTab } from './components/ForeignContractTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { WaterRippleBackground } from './components/WaterRippleBackground';
@@ -138,6 +139,7 @@ export default function App() {
             {activeTab === 'catering' && <CateringLegalTab />}
 
             {activeTab === 'logistics' && <LogisticsLegalTab />}
+            {activeTab === 'foreign-contracts' && <ForeignContractTab />}
           </motion.div>
         </AnimatePresence>
       </main>
