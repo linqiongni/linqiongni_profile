@@ -38,6 +38,9 @@ export default function App() {
     }
   };
 
+  // 跨境物流法务 tab 内嵌完整计划 HTML，需要通栏展示（不受 7xl 容器与左右留白限制）
+  const isFullBleed = activeTab === 'logistics';
+
   const handleScrollToContent = () => {
     if (contentSectionRef.current) {
       const topOffset = contentSectionRef.current.offsetTop - 80;
@@ -69,7 +72,11 @@ export default function App() {
       <main
         ref={contentSectionRef}
         id="main-content-section"
-        className="flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16"
+        className={
+          isFullBleed
+            ? 'flex-1 w-full px-4 sm:px-6 pt-10 pb-8'
+            : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
+        }
       >
         {/* Tab switcher secondary bar for quick in-page navigation */}
         <div className="flex items-center justify-between pb-6 mb-10 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
