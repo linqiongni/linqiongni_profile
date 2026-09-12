@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·周末实战｜一套完整单证的「体检」</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战②：一套完整单证的「体检」与缺陷清单</h1><div class="sub">第 2 周主题：单据体系 —— 涉外法务的证据学</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">单证体检就是给一套单据做入职体检：抬头错、日期倒签、签章缺、背书断——任何一项指标不合格，半年后的索赔里你都可能哑口无言。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳→汉堡，40HQ 一柜，拼箱含 3 家工厂货，客户要求出 FCR 不出提单）。把这票货从头到尾会产生的全部单据列出来，逐张标注：谁签发、证明什么、有什么缺陷、如果打官司够不够用。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要给一票货的单据做全身体检。设定：深圳三家工厂的货拼一个 40HQ 到汉堡，我方作为货代向客户签发 FCR（不出提单），客户是德国电商卖家。
+请输出：
+1. 《单证全景清单》……
+2. 逐张做缺陷检查……
+3. FCR 的法律性质专论……
+4. 《单证缺陷检查清单》30 项</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳三家工厂的货拼一个 40HQ 到汉堡，我方是<b>货代</b>，向客户（德国电商卖家）签发 <b>FCR、不出提单</b>。关键风险点：① 拼箱意味着三家货混装，任一家货损可能牵连整体；② FCR 下客户<b>无物权凭证</b>、不能凭单控货，我方责任限于「收货 + 代运」；③ 客户是德国主体，争议可能适用德国法或约定仲裁。</p>
+<h2>二、《单证全景清单》：从头到尾会产生的单</h2>
+<table><thead><tr><th>流转节点</th><th>单证</th><th>谁签发</th><th>证明什么</th><th>物权凭证？</th><th>证据效力等级</th></tr></thead><tbody><tr><td>订舱</td><td>Booking Note / S/O 订舱单</td><td>客户→我方→承运人</td><td>运输要约与舱位确认</td><td>否</td><td>中</td></tr><tr><td>收货</td><td>FCR 货运代理收货凭证</td><td><b>我方（货代）</b></td><td>已按记载收到三家工厂货物</td><td><b>否</b></td><td>中（仅收据）</td></tr><tr><td>装箱</td><td>装箱单 Packing List</td><td>工厂/我方</td><td>件数、重量、体积、包装</td><td>否</td><td>高（实货核对）</td></tr><tr><td>贸易</td><td>商业发票 Commercial Invoice</td><td>客户/卖方</td><td>货物价值与结算依据</td><td>否</td><td>高</td></tr><tr><td>报关</td><td>出口报关单</td><td>报关行（我方委托）</td><td>海关申报内容</td><td>否</td><td>高（官方）</td></tr><tr><td>原产</td><td>产地证 CO / RCEP</td><td>贸促会/海关</td><td>原产国与关税待遇</td><td>否</td><td>中</td></tr><tr><td>运输</td><td>海运提单（海运段，我方为托运人）</td><td>承运人/船代</td><td>我方与承运人的运输合同</td><td>是（但我方持有）</td><td>高</td></tr><tr><td>保险</td><td>保险单</td><td>保险公司</td><td>险别与保额</td><td>否</td><td>中</td></tr><tr><td>到货</td><td>到货通知 Arrival Notice</td><td>目的港代理</td><td>货已到港、待提</td><td>否</td><td>中</td></tr><tr><td>交付</td><td>POD 签收单</td><td>收货人（德国卖家）</td><td>已实际交付</td><td>否</td><td>高（交付终局）</td></tr><tr><td>退/损</td><td>货损报告 / 商务记录</td><td>承运人或检验人</td><td>货损事实与责任线索</td><td>否</td><td>中</td></tr></tbody></table>
+<h2>三、逐张缺陷检查（实务里最常出问题的点）</h2>
+<ul><li><b>FCR</b>：日期是否倒签（工厂实际交货晚于记载）？收货人写的是德国卖家还是其指定方？记载件重体若与装箱单不符，将削弱收据效力。</li><li><b>装箱单</b>：三家工厂混装时若未逐票分列，出险时无法区分责任份额，极易全柜连带责任争议。</li><li><b>商业发票</b>：低报货值（为省运费/避税）是刑事风险；金额须与报关单、保单一致。</li><li><b>报关单</b>：品名笼统、HS 编码错归，触发海关查验与申报不实处罚。</li><li><b>海运提单</b>：因出 FCR，这份提单由<b>我方</b>作为托运人持有，需明确保管责任，避免「我方既是 FCR 签发人又是提单托运人」的身份冲突。</li><li><b>POD</b>：签收人是否确为德国卖家授权人？代签/盖章不清将导致「是否交付」争议。</li></ul>
+<h2>四、FCR 法律性质专论（本课最关键）</h2>
+<div class="key"><b>FCR 是「收据」，不是「物权凭证」</b>。它与提单的核心差别：① 提单可背书转让、凭单控货；FCR 不可转让、仅证明货代已收货。② 客户拿着 FCR <b>不能向承运人提货</b>（提货靠海运提单/电放，由我方或我方指定的主体控制）。③ 我方作为 FCR 签发人，承担的是<b>「收到货物并妥善安排运输」的责任</b>，而非全程承运人责任——这正是客户要求出 FCR 而非提单时，我方风险反而更可控的原因。</div>
+<h3>但有两个陷阱</h3>
+<ul><li>陷阱 A：若合同或 FCR 文本写成了「可转让」或含「据以交付」措辞，可能被解释为具物权凭证性质，我方责任被放大——<b>措辞必须严格按 FIATA FCR 标准文本</b>。</li><li>陷阱 B：三家工厂拼箱时，我方对「整体货损」可能按代理责任 + 过错担责；FCR 不豁免我方因<b>自身过错</b>（如配载不当、未妥善交接）导致的损失。</li></ul>
+<h2>五、《单证缺陷检查清单》30 项（内部风控抽查用）</h2>
+<ol><li>FCR 签发人是否为我方授权主体</li><li>FCR 文本是否采用 FIATA 标准、无「可转让/据以交付」措辞</li><li>FCR 日期与工厂实际交货日是否一致（倒签风险）</li><li>FCR 收货人名称与合同买方是否一致</li><li>FCR 记载件数/重量/体积与装箱单是否吻合</li><li>三家工厂货物是否在 FCR 与装箱单中逐票分列</li><li>装箱单是否标注每件 factory 来源与唛头</li><li>商业发票金额是否真实（无低报）</li><li>发票币种、贸易术语与合同一致</li><li>报关单品名/H.S. 编码与发票一致</li><li>报关单收发货人信息准确</li><li>原产地证类型与客户享惠需求匹配（CO/RCEP）</li><li>产地证申领机构与印章真实</li><li>海运提单托运人是否为我方、正本由谁保管</li><li>提单通知人（Notify）是否为德国卖家或其代理</li><li>提单清洁状况与实货一致（无隐瞒批注）</li><li>保险单被保险人、险别、保额足额</li><li>保险区间覆盖门到门（含仓到港、港到仓）</li><li>订舱单 S/O 船名航次/港口准确</li><li>到货通知是否在货到后立即发给收货人</li><li>目的港代理放货指令是否经我方书面确认</li><li>POD 签收人身份是否获授权（盖章/授权书）</li><li>POD 记载货况与交接时是否一致（差异即记）</li><li>货损是否在法定/约定时限内编制记录</li><li>各类单证份数齐全、无缺页</li><li>电子单证（邮件指令）是否时间戳存证</li><li>电放/改收货人/扣货指令是否书面+邮件双轨</li><li>全套单证是否录入台账、可追溯</li><li>争议高发票（高值/易碎/危险品）是否附加专项审核</li></ol>
+<div class="key">实战口诀：<b>出 FCR 不等于「甩锅」——它只卸掉了「承运人全程责任」，卸不掉「货代自身过错责任」。三招守底线：标准文本、逐票分列、过错留证。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Booking Note / S/O</div><div class="cn">订舱单/装货单</div><div class="df">托运人向承运人订舱的凭据；启动运输链条的第一张单</div></div><div class="ti"><div class="en">FCR</div><div class="cn">货运代理收货凭证</div><div class="df">本课设定下我方向客户签发的核心单；非物权凭证</div></div><div class="ti"><div class="en">POD</div><div class="cn">货物签收单</div><div class="df">Proof of Delivery；证明货物已交付收货人的回单</div></div><div class="ti"><div class="en">D/O</div><div class="cn">提货单</div><div class="df">Deliver Order；凭以向承运人/仓库提取货物的单据</div></div></div></div><div class="foot"><a href="W2-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W2-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

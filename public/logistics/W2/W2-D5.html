@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·第5天｜复盘：单证体系与证据规则</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · DAY 5 / 5　·　阶段一　打地基</div><h1>复盘：单证体系与证据规则</h1><div class="sub">第 2 周主题：单据体系 —— 涉外法务的证据学</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">单据就是案件的监控录像：录像缺一段，你说得再有理也没人信。今天把这一周的单据按「出什么事故、拿哪张纸」重新排一遍。</div><div class="mlink"><b>怎么串到今天</b>第 2 周收口，下周进入 Incoterms——风险在哪一米分界。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出物</li><li>自测 10 题</li><li>核心问题：出事之后，我手上有什么证据能证明「货交出去了、交了多少、何时交的、交给谁了」</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《单证管理与证据留存制度》第一版（可直接发文）+ 自测 10 题 + 控货口诀</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 2 周结束，请帮我做知识固化：
+1. 出 10 道题自测……
+2. 错题讲透……
+3. 起草《单证管理与证据留存制度》第一版……
+4. 给一个判断口诀</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>提单 B/L</b>：唯一可转让的物权凭证；三功能、三维度种类、背书连续、清洁批注、保函换单有雷。</li><li><b>电放 / SWB</b>：本质是卖方放弃控货；无单放货赔货值、不适用限额。</li><li><b>空/铁/公运单</b>：都不是物权凭证，控货靠「钱」和「停运指令」。</li><li><b>FIATA 四件套</b>：FCR 是收条、FBL 是提单；出 FBL ＝当 MTO 背全程责任。</li><li><b>随附单证</b>：发票/箱单/产地证/保险，齐套一致才能顺利清关结算。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】下列哪项是物权凭证？A. AWB  B. 海运提单  C. CMR 运单  D. 铁路运单</li><li>【单选】指示提单的转让方式是？A. 无需背书  B. 记名背书或空白背书  C. 不得转让  D. 交回承运人</li><li>【单选】无单放货的赔偿一般？A. 适用 666.67 SDR/件限额  B. 按货值 CIF 全赔  C. 只赔运费  D. 不赔</li><li>【单选】FBL 与 FCR 的核心区别？A. 颜色不同  B. FBL 可转让且签单人担全程责任  C. 签发人不同  D. 都不可转让</li><li>【单选】电放完成后，提单？A. 仍可背书转让  B. 物权功能解除、凭身份提货  C. 变成 SWB  D. 失效不可提货</li><li>【案例】客户要求出 FCR 但随后把货转卖第三方，第三方能凭 FCR 提货吗？为什么？</li><li>【案例】空运货到目的港后买方拒付，我方能凭 AWB 控制货物吗？可用什么替代手段？</li><li>【案例】指示提单只背书一次却转手三次，最后持单人被拒放，原因是什么？</li><li>【简答】列出「我方应当坚持出提单」的三种情形。</li><li>【简答】简述《出口单证齐套检查表》中「三单一致」指哪三单、为什么重要。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B；2-B；3-B（无单放货一般不适用单位责任限制，按货值赔）；4-B；5-B。</li><li>案例 6：不能。FCR 非物权凭证、不可转让，第三方无权凭它提货；客户转卖的是「货权」而非「单权」，需另签买卖/仓储协议。</li><li>案例 7：不能凭 AWB 控货（非物权凭证）；可用暂停交付（stoppage）、改收货人、书面扣货函，且须在货到前行动。</li><li>案例 8：背书不连续，承运人可向记载的被背书人交付，连续背书链条外的持单人无法证明权利。</li><li>简答 9：① 信用证结汇；② 货物需中途转卖；③ 需以单质押融资。</li><li>简答 10：报关单、商业发票、装箱单「三单一致」——信息不符会被海关认定为申报不实，导致扣货、罚款甚至刑事调查。</li></ul>
+<h2>三、《单证管理与证据留存制度》第一版（可直接发文）</h2>
+<h3>第一章 总则</h3>
+<p>为规范公司跨境物流单证的签发、保管与证据留存，确保出险时可完整还原事实，降低无单放货、错放、货损索赔风险，特制定本制度。</p>
+<h3>第二章 单证清单与责任岗</h3>
+<ul><li>单证管理岗：负责提单/运单/FCR/FBL 等单证的签发前审核、正本登记与流转。</li><li>操作岗：负责随附单证（发票、箱单、报关单、产地证）的齐套与一致性核对。</li><li>法务岗：负责非常规单证（电放、FBL、保函、无单放货）的审批与文本审阅。</li></ul>
+<h3>第三章 签发与审批权限</h3>
+<ul><li>FCR/FCT/常规 SWB：单证管理岗审核即可签发。</li><li><b>FBL（多式联运提单）</b>：须法务 + 主管双签，且确认责任险覆盖。</li><li><b>电放 / 无单放货 / 保函放货</b>：一律走「申请—法务审批—留痕」流程，禁止业务员自行承诺。</li></ul>
+<h3>第四章 正本保管与流转登记</h3>
+<ul><li>全套正本提单须在签收台账登记编号、份数、去向，借阅需审批并记录。</li><li>电放须留存：电放申请书、保函、退回/作废正本的签收、承运人放货指令邮件。</li></ul>
+<h3>第五章 电子单证效力与存证</h3>
+<ul><li>电邮、系统指令、电子签名单证，须保留原始载体与时间戳；重要指令同步区块链/可信时间戳存证。</li><li>往来关键函件（扣货、停运、改收货人）一律书面 + 邮件双轨留痕。</li></ul>
+<h3>第六章 留存期限（按时效倒推）</h3>
+<ul><li>海运货损/无单放货索赔时效为 2 年（自应交付日起，待核实现行法），单证至少留存 <b>3 年</b>。</li><li>税务/海关相关单证按海关规定（通常 3 年+），建议统一留存 <b>5 年</b>。</li><li>高值/争议货件单证永久归档至争议终结后 5 年。</li></ul>
+<h3>第七章 出险证据调取流程</h3>
+<p>争议发生后 24 小时内，单证管理岗依「订舱→签收→运输→交付」链条调取并固定全部单证，法务评估举证策略，严禁私自销毁或遗漏。</p>
+<h2>四、控货判断口诀（背下来）</h2>
+<div class="key"><b>能交单就出提单（控货最稳）；要转卖/质押必出可转让单（B/L 或 FBL）；客户不控货就出 FCR（风险最低）；空铁公无单可控，就把控货前移到「钱」（预付款/保函/停运指令）。</b> 一句话：<b>单不能控货，就用钱控货。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Evidence Preservation</div><div class="cn">证据留存</div><div class="df">在争议发生前系统保存单证与往来记录，使出险时能还原事实</div></div><div class="ti"><div class="en">Chain of Custody</div><div class="cn">证据链</div><div class="df">从订舱到签收各环节单证的连续、可印证关系</div></div><div class="ti"><div class="en">Statute of Limitations</div><div class="cn">诉讼时效</div><div class="df">请求赔偿的法定期间（如海上货损 2 年，待核实）</div></div></div></div><div class="foot"><a href="W2-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W2-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·第1天｜提单 B/L：为什么它叫「物权凭证」</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · DAY 1 / 5　·　阶段一　打地基</div><h1>提单 B/L：为什么它叫「物权凭证」</h1><div class="sub">第 2 周主题：单据体系 —— 涉外法务的证据学</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">提单同时是「快递柜取件码」和「房产证」：取件码决定谁能提货，房产证决定这货是谁的。一张纸同时管提货权和所有权，所以它才被称为物权凭证——这是整个跨境物流最值钱的一张纸。</div><div class="mlink"><b>怎么串到今天</b>上周把链路看完了，这周进入证据学：出事时，你手上有什么纸，决定你能要到多少钱。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>提单三功能：货物收据、运输合同证明、物权凭证（document of title）</li><li>提单种类：记名/指示/不记名；已装船/收货待运；清洁/不清洁；直达/转船/联运</li><li>背书与转让：提单怎么流转，谁持有谁有权提货</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">一份《提单种类与控货能力对照表》+ 一份《提单审核清单 20 项》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透提单（Bill of Lading, B/L）。输出：
+1. 提单三功能逐项讲解……
+2. 《提单种类与控货能力对照表》……
+3. 背书（endorsement）怎么做才有效……
+4. 什么叫清洁提单，保函换单是否有效……
+5. 《提单审核清单》20 项</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：提单是跨境贸易里「最接近钱」的那张纸</h2>
+<p>在国内物流，收货靠「运单号 + 身份证明」；在跨境贸易，一柜货价值几百万，谁手里握着<b>正本提单</b>，谁就能在目的港把这柜货提走、转卖、质押。所以提单被叫作「物权凭证」——它不是一份普通的收据，而是一张<b>可以代表货物本身的纸</b>。本课的全部内容，都是为了让你拿到任何一张提单，三秒内说出：它能转让吗？谁有权提货？凭它能不能控货？</p>
+<h2>二、提单的三项法律功能（海商法第 71 条）</h2>
+<table><thead><tr><th>功能</th><th>法律效果</th><th>在诉讼中怎么用</th><th>对应条文（待核实现行条号）</th></tr></thead><tbody><tr><td>1. 货物收据<br>Receipt</td><td>承运人已按提单记载接收/装船货物，并对其记载内容负责</td><td>托运人可用提单证明「货交出去了、交了多少、什么状态」；承运人想推翻须举证</td><td>《海商法》第 71 条、第 76 条</td></tr><tr><td>2. 运输合同证明<br>Evidence</td><td>提单是承运人与托运人间运输合同的书面证明（合同在装货前已成立，提单只是证据）</td><td>发生货损货差时，提单条款（责任、免责、管辖）是首要依据</td><td>《海商法》第 71 条、第 44 条（条款无效情形）</td></tr><tr><td>3. 物权凭证<br>Doc. of Title</td><td>提单中载明「凭指示/交持有人交付」的条款，构成承运人据以交付货物的保证</td><td>谁持单谁提货；可背书转让、可质押融资；这是提单与海运单最本质的区别</td><td>《海商法》第 71 条、第 79 条（转让规则）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：上述条号引自《中华人民共和国海商法》（1992 年通过，1993 年施行）。海商法修订已列入立法规划，部分条款可能调整；正式引用前请到 flk.npc.gov.cn 核对现行文本与条号。本书中所有「海商法条」均作同口径标注。</div>
+<h2>三、提单种类三维交叉：决定你能不能控货</h2>
+<p>提单可以按三个维度组合，不同组合直接影响「谁能提货、能不能转让、风险点在哪」。实务里最常踩坑的是把「记名提单」当「指示提单」用。</p>
+<table><thead><tr><th>维度</th><th>类型</th><th>能否转让</th><th>谁有权提货</th><th>典型风险/适用</th></tr></thead><tbody><tr><td>抬头<br>收货人</td><td>记名提单<br>Straight</td><td><b>不得转让</b>（《海商法》第 79 条）</td><td>只能是记名收货人，凭身份</td><td>近洋/信任客户；风险：买方不付款时，卖方已失去对货的控制</td></tr><tr><td></td><td>指示提单<br>Order</td><td><b>可经背书转让</b>（最常用）</td><td>凭背书连续的持有人</td><td>信用证结汇标配；风险：空白背书后谁捡到谁提货</td></tr><tr><td></td><td>不记名提单<br>Bearer</td><td><b>无需背书即可转让</b></td><td>任何提单持有人</td><td>极少用；风险极高，丢失即失控</td></tr><tr><td>装船<br>状态</td><td>已装船提单<br>Shipped</td><td>—</td><td>—</td><td>结汇首选；证明货已上船</td></tr><tr><td></td><td>收货待运提单<br>Received for Shipment</td><td>—</td><td>—</td><td>货进港区未装船；信用证通常要求装船批注</td></tr><tr><td>表面<br>状况</td><td>清洁提单<br>Clean</td><td>—</td><td>—</td><td>无不良批注；银行与买方要求</td></tr><tr><td></td><td>不清洁提单<br>Unclean/Foul</td><td>—</td><td>—</td><td>有货损/包装不良批注；影响结汇与提货</td></tr></tbody></table>
+<h2>四、背书与转让：一张纸怎么「转手」</h2>
+<ul><li><b>空白背书（Endorsement in blank）</b>：仅背书人签字，不写被背书人。效果 = 不记名提单，任何持单人可提货。风险最高，但流通最方便。</li><li><b>记名背书（Special endorsement）</b>：签字并写明「交付给 XX」。效果：只有 XX 可凭单提货/再背书。控货更稳。</li><li><b>不背书（无背书）</b>：指示提单未经背书，承运人可向提单记载的托运人/指示人交付；受让人无法以持单人身份提货。</li></ul>
+<h3>3 个「背书写错放错货」的真实类型案例</h3>
+<ul><li>案例 A：空白背书后提单遗失，拾得人直接凭单在目的港提走整柜货，真正买方钱货两空——教训：<b>高值货慎用空白背书</b>，或背书时加「仅交付给指定银行/买方」限制。</li><li>案例 B：指示提单只背书了一次，但中间转手三次未连续背书，最后持单人被承运人拒放，因「背书不连续」——教训：背书必须<b>连续、可追溯</b>。</li><li>案例 C：记名提单误当作指示提单去银行议付，银行拒收，货到港后买方不付款，卖方因记名提单不可转让、已失去货物控制权——教训：先看清抬头再决定交易结构。</li></ul>
+<h2>五、清洁提单与「保函换单」的雷区</h2>
+<p>承运人在货物表面状况不良（破包、湿损、短少）时，有权在提单上作<b>不清洁批注</b>（《海商法》第 75、76 条）。但卖方为了能去银行结汇，常常请承运人<b>凭保函签发清洁提单（Letter of Indemnity）</b>——即托运人保证：因「隐瞒的货损」引发的一切索赔，由托运人承担。</p>
+<div class="key">关键判断：保函换清洁提单，对<b>承运人与托运人之间</b>通常有效（双方约定），但<b>不能对抗善意第三人（收货人）</b>。若货物实际严重受损，收货人仍可向承运人索赔；承运人赔付后，再依保函向托运人追偿——但这取决于保函本身的合法性与可执行性，且涉及「欺诈性换单」（如明知全损仍换清洁单）时保函可能无效甚至触及刑责。</div>
+<h2>六、今日落地：提单审核清单 20 项</h2>
+<p>拿到一张提单，按下面顺序逐项核对（这是你未来每天都会做的动作）：</p>
+<ol><li>提单抬头类型（记名/指示/不记名）是否与贸易合同、信用证一致</li><li>承运人/船代签章是否真实有效，是否为无船承运人或实际承运人</li><li>是否为「已装船」提单，有无装船批注与日期</li><li>船名、航次、装货港、卸货港是否准确</li><li>集装箱号、封志号（Seal No.）与设备交接单是否一致</li><li>件数/重量/体积与装箱单、报关单是否吻合</li><li>货物描述是否笼统（如仅写「general cargo」应要求细化）</li><li>是否为清洁提单；如有批注，批注内容是否影响结汇</li><li>收货人（Consignee）与通知人（Notify）是否填写正确</li><li>运费预付（Prepaid）还是到付（Collect），与合同是否一致</li><li>背书是否连续、完整（指示提单）</li><li>是否有「不知条款（Says of Said to be）」等削弱效力的表述</li><li>提单份数（Full set 3/3）是否齐全，防止一货多单</li><li>是否有甲板货（On Deck）、转运（Transhipment）批注及影响</li><li>冻结/留置（Lien）条款是否存在</li><li>管辖权与法律适用条款（中国法/外国法/仲裁）是否可接受</li><li>责任限制条款是否引用海商法或公约</li><li>是否标注「货物 Received for Shipment」而非已装船</li><li>是否要求电放（Telex Release），如需则应走电放流程而非交单</li><li>目的港-free time / demurrage 条款与租赁合同是否衔接</li></ol>
+<div class="key">记忆口诀：<b>抬头看控货、批注看清洁、背书看连续、份数看齐全</b>。四句背完，提单这关过了 80%。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Bill of Lading (B/L)</div><div class="cn">提单</div><div class="df">承运人签发的、证明海上货物运输合同和货物已装船/收货，并据以交付货物的单证；核心特征是**物权凭证**</div></div><div class="ti"><div class="en">Document of Title</div><div class="cn">物权凭证</div><div class="df">持有人凭单即可请求交付货物的法律文书；谁持正本提单，谁就有权提货</div></div><div class="ti"><div class="en">Clean B/L</div><div class="cn">清洁提单</div><div class="df">表面状况良好、无批注的提单；银行结汇与买方收货的基本前提</div></div><div class="ti"><div class="en">Endorsement</div><div class="cn">背书</div><div class="df">转让提单权利的行为；分空白背书、记名背书、不背书</div></div><div class="ti"><div class="en">Order B/L</div><div class="cn">指示提单</div><div class="df">凭指示交付、可经背书转让的提单；国际贸易最常用</div></div><div class="ti"><div class="en">Straight B/L</div><div class="cn">记名提单</div><div class="df">只能交付给记名收货人、依法不得转让的提单</div></div><div class="ti"><div class="en">Letter of Indemnity (LOI)</div><div class="cn">保函</div><div class="df">为换取清洁提单或电放等，一方向另一方出具的赔偿担保书</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W2-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1790,7 +1790,8 @@ const WEEKS=DATA1.concat(DATA2).concat(DATA3).concat(DATA4);
 })();
 /* 已跑出内容的天：链接到对应内容页，并隐藏该天的指令块（内容已产出，无需再下达指令） */
 var DONE_CONTENT={
-  "1":{d:["W1/W1-D1.html","W1/W1-D2.html","W1/W1-D3.html","W1/W1-D4.html","W1/W1-D5.html"],wk:"W1/W1-weekend.html"}
+  "1":{d:["W1/W1-D1.html","W1/W1-D2.html","W1/W1-D3.html","W1/W1-D4.html","W1/W1-D5.html"],wk:"W1/W1-weekend.html"},
+  "2":{d:["W2/W2-D1.html","W2/W2-D2.html","W2/W2-D3.html","W2/W2-D4.html","W2/W2-D5.html"],wk:"W2/W2-weekend.html"}
 };
 function contentLink(w,i,isWk){
   var m=DONE_CONTENT[w];if(!m)return "";

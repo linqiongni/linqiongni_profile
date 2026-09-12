@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·第4天｜FIATA 单证家族与随附商业单证</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · DAY 4 / 5　·　阶段一　打地基</div><h1>FIATA 单证家族与随附商业单证</h1><div class="sub">第 2 周主题：单据体系 —— 涉外法务的证据学</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">FIATA 单证家族和随附商业单证，就像医院的病历体系：门诊记录、检查报告、住院小结，每张单据只记录一段诊疗，出事时把它们拼起来才是完整病历。少一张，就有一段时间说不清。</div><div class="mlink"><b>怎么串到今天</b>前三天把主角单据看完，今天补齐配角——它们决定索赔时你能不能把故事讲圆。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>FIATA 四件套：FCR（收货凭证）、FCT（运输凭证）、FBL（可转让多式联运提单）、FWR（仓单）</li><li>商业单证：发票、装箱单、产地证（CO / Form A / RCEP 原产地声明）、保险单</li><li>清关单证：报关单、合同、发票、装箱单、提运单、许可证件</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《FIATA 单证选择决策表》+《随附单证清单》+《出口单证齐套检查表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透 FIATA 单证家族与随附单证。输出：
+1. FIATA 四件套逐个讲解……
+2. FBL 与 FCR 的关键辨析……
+3. 《FIATA 单证选择决策表》……
+4. 随附商业单证清单……
+5. 《出口单证齐套检查表》</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、FIATA 是什么：货代行业的「标准单证工厂」</h2>
+<p>FIATA（国际货运代理协会联合会）制定了一套国际通行单证，统一了各国货代单证的叫法与效力。你作为货代法务，签发哪一种单，直接决定你方<b>是代理人还是承运人、要不要承担运输责任、客户能不能控货</b>。所以今天的核心是「选单」——选错一张单，身份和责任全变。</p>
+<h2>二、FIATA 四件套逐个讲</h2>
+<table><thead><tr><th>单证</th><th>全称 / 性质</th><th>是否物权凭证</th><th>签发人承担的责任</th><th>适用场景</th></tr></thead><tbody><tr><td>FCR</td><td>Forwarders Certificate of Receipt<br>货运代理收货凭证</td><td><b>否</b></td><td>仅「收货 + 代保管」责任，不当然承担全程运输责任</td><td>拼箱集货、客户不要求控货/议付时</td></tr><tr><td>FCT</td><td>Forwarders Certificate of Transport<br>货运代理运输凭证</td><td><b>否</b></td><td>证明已接管并安排运输，责任视约定</td><td>货代作为订舱代理、分段安排运输</td></tr><tr><td>FBL</td><td>FIATA Bill of Lading<br>多式联运提单</td><td><b>是（可转让）</b></td><td><b>作为多式联运经营人（MTO）承担全程责任</b></td><td>多式联运、客户需控货/议付/转卖</td></tr><tr><td>FWR</td><td>FIATA Warehouse Receipt<br>仓储收据</td><td>可转让（视约定）</td><td>仓储方对货物的保管责任</td><td>海外仓、保税仓货权证明与质押</td></tr></tbody></table>
+<h2>三、最关键的辨析：FBL vs FCR</h2>
+<div class="key">一句话：<b>FBL 是「货代当承运人的提单」，FCR 是「货代开的收货条」</b>。FCR 下客户拿它不能提货、不能转卖、不能质押；FBL 下客户可以像拿海运提单一样背书转让、凭单控货。对货代而言，<b>签发 FBL ＝主动把自己摆到「多式联运经营人（MTO）」位置，要对全程运输负责</b>——风险敞口远大于 FCR。</div>
+<h3>什么时候坚决不签 FBL</h3>
+<ul><li>我方只是订舱代理、并不实际掌控全程运输节点时（签了等于替别人背锅）；</li><li>客户要求出 FBL 但我方未投保足够责任险、或分包链条中存在责任缺口时；</li><li>高值货、易碎/危险品等超出我方风控能力的货物。</li></ul>
+<h2>四、《FIATA 单证选择决策表》</h2>
+<table><thead><tr><th>客户要不要控货</th><th>客户要不要议付/转卖</th><th>是否多式联运</th><th>该签哪张单</th></tr></thead><tbody><tr><td>不要</td><td>不要</td><td>否</td><td>FCR（最省事、风险最低）</td></tr><tr><td>要</td><td>不要</td><td>否</td><td>海运单 SWB / FCT（凭身份放货）</td></tr><tr><td>要</td><td>要</td><td>是</td><td><b>FBL</b>（可转让、控货）</td></tr><tr><td>要</td><td>要</td><td>否</td><td>海运提单 B/L</td></tr><tr><td>货在仓</td><td>—</td><td>—</td><td>FWR（仓储收据，可质押）</td></tr></tbody></table>
+<h2>五、随附商业单证清单（清关与结算的「配角」）</h2>
+<ul><li><b>商业发票（Commercial Invoice）</b>：结算与海关估价依据。<b>⚠ 低报货值</b>以逃税/省运费是刑事风险（走私/虚报），绝不可为客户代填虚假金额。</li><li><b>装箱单（Packing List）</b>：件数、重量、体积、包装方式，须与提单/AWB 一致，否则清关卡关。</li><li><b>产地证（CO / Form A / RCEP 原产地声明）</b>：决定关税待遇。CO 为一般产地证；Form A 为普惠制（注意：欧盟、日本等已取消对华普惠制，但仍可在部分市场使用）；RCEP 项下可享成员国优惠税率，需合规申领或自主声明。</li><li><b>保险单（Insurance Policy）</b>：CIF/CIP 下卖方投保；看清险别（ICC A/B/C）与免责。</li></ul>
+<h2>六、《出口单证齐套检查表》（直接给操作岗用）</h2>
+<ol><li>报关单（与合同、发票、装箱单三单一致）</li><li>商业发票（金额、币种、买卖双方信息准确，未低报）</li><li>装箱单（件重体、包装、唛头与实货一致）</li><li>销售合同（贸易术语与运输委托一致）</li><li>提运单（B/L、AWB、铁路/公路运单，与申报一致）</li><li>产地证（如享优惠税率，已合规申领/声明）</li><li>保险单（如 CIF/CIP，险别与金额足额）</li><li>许可证件（如涉及两用物项、危险品、配额）</li><li>特殊单证（如 FDA、CE、能效标签，按目的国要求）</li><li>客户指定单证（FCR/FBL/FWR 等，与委托约定一致）</li></ol>
+<div class="key">今日口诀：<b>不想背运输责任就出 FCR，要客户能控货才出 FBL；出 FBL 前先确认责任险够不够。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">FCR</div><div class="cn">货运代理收货凭证</div><div class="df">Forwarders Certificate of Receipt；货代收到货物的收据，**非物权凭证、不可转让**</div></div><div class="ti"><div class="en">FBL</div><div class="cn">FIATA 多式联运提单</div><div class="df">FIATA Bill of Lading；**可转让**、具物权凭证性质，签发的货代承担承运人责任</div></div><div class="ti"><div class="en">FCT</div><div class="cn">货运代理运输凭证</div><div class="df">Forwarders Certificate of Transport；证明货代接管货物并安排运输，非物权凭证</div></div><div class="ti"><div class="en">FWR</div><div class="cn">FIATA 仓储收据</div><div class="df">FIATA Warehouse Receipt；仓库出具的仓储与货权证明，可转让</div></div><div class="ti"><div class="en">Certificate of Origin</div><div class="cn">产地证</div><div class="df">证明货物原产国的文件；影响关税（如 RCEP 项下优惠税率）</div></div><div class="ti"><div class="en">Commercial Invoice</div><div class="cn">商业发票</div><div class="df">买卖双方结算与海关估价的依据；低报货值有刑事风险</div></div></div></div><div class="foot"><a href="W2-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W2-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

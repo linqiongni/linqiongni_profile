@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·第3天｜空运单、铁路运单与公路运单：都不是物权凭证</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · DAY 3 / 5　·　阶段一　打地基</div><h1>空运单、铁路运单与公路运单：都不是物权凭证</h1><div class="sub">第 2 周主题：单据体系 —— 涉外法务的证据学</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">空运单、铁路运单、公路运单都只是「快递面单」，不是房产证。面单丢了可以凭身份证补办，房产证丢了要公告挂失。所以它们不能转让，也不能拿去银行押汇。</div><div class="mlink"><b>怎么串到今天</b>昨天讲提单的特殊地位，今天用「没有这个地位」的三种单据做反面对照，对比才记得牢。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>空运单 AWB：不可转让，收货人凭身份提货，为什么空运没有「无单放货」问题</li><li>铁路：中欧班列两套运单体系——SMGS 与 CIM，中国是 SMGS 成员</li><li>公路：CMR 运单三份联单与证据效力</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《四种运输单证对照表》：提单 / AWB / 铁路运单 / CMR，逐项比法律性质、可转让性、签发份数、证据效力</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请给我一份覆盖四种运输方式的《运输单证对照表》：
+1. 对比维度……
+2. 空运单 AWB 专题……
+3. 中欧班列专题（SMGS/CIM）……
+4. CMR 公路运单专题……
+5. 《不同运输方式下如何控货》操作指引</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、先立住：只有海运提单是「物权凭证」，空/铁/公都不算</h2>
+<p>这是跨境法务最常混淆的点。空运单、铁路运单、公路运单，本质都是<b>运输合同证明 + 货物收据</b>，但<b>都不是物权凭证</b>——收货人凭身份提货，单证不能背书转让、不能用来控货或质押。后果很直接：<b>这些方式下，发货人一旦交货，对货物的控制力大幅下降</b>，只能靠「暂停交付/停运权」等替代手段补救。</p>
+<h2>二、《四种运输单证对照表》</h2>
+<table><thead><tr><th>维度</th><th>海运提单 B/L</th><th>空运单 AWB</th><th>铁路运单（货协/国际货协）</th><th>公路运单 CMR</th></tr></thead><tbody><tr><td>是否物权凭证</td><td><b>是</b></td><td>否</td><td>否</td><td>否</td></tr><tr><td>可否转让</td><td>可（指示/不记名）</td><td><b>不可转让</b></td><td>不可转让</td><td>不可转让</td></tr><tr><td>提货依据</td><td>正本提单</td><td>收货人身份</td><td>收货人身份</td><td>收货人身份</td></tr><tr><td>签发份数</td><td>通常 3 正 3 副</td><td>主运单 1 正本（11 联）</td><td>运单通常 5 联</td><td>3 联（发货人/收货人/承运人）</td></tr><tr><td>适用公约</td><td>海牙/维斯比/汉堡等</td><td>华沙/蒙特利尔公约</td><td>SMGS / COTIF-CIM</td><td>CMR 公约</td></tr><tr><td>中国是否缔约国</td><td>—</td><td><b>是</b>（蒙特利尔 1999，2005 对中国生效，待核实）</td><td><b>是</b>（SMGS 成员国）</td><td><b>待核实</b>：中国非 CMR 缔约国，跨境公路多走双边/上合协定</td></tr><tr><td>出事凭什么索赔</td><td>提单 + 批注</td><td>AWB + 差错记录</td><td>运单 + 商务记录</td><td>CMR 运单 + 保留条款</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 蒙特利尔公约对中国生效日期、② 中国是否为 CMR 缔约国（主流观点：非缔约国，但中欧卡车经 CMR 成员国路段适用该国法）、③ 铁路运单具体联数与「国际货协/国际货约」换单规则。正式引用前请核对 ICAO、UNCETRAL 及铁路合作组织（OSJD）官方文本。</div>
+<h2>三、空运单 AWB 专题</h2>
+<h3>为什么空运没有「无单放货」问题</h3>
+<p>因为 AWB 不可转让、凭身份提货——从设计上就不存在「谁拿单谁提货」的物权逻辑，自然没有「无单放货」的争议空间。但代价是：<b>客户无法靠持有 AWB 控货</b>。</p>
+<h3>空运下的控货替代方案</h3>
+<ul><li><b>指示提货 / 改收货人</b>：在货到前书面通知航空公司更改收货人（收费且有时限）。</li><li><b>暂停交付（Stoppage in transit）</b>：在买方违约/无力付款时，请求承运人中止交付，待付清款项再放。</li><li><b>扣货指令</b>：向航空公司/代理发书面扣货函，明确货物状态与放货前提（务必留邮件证据）。</li></ul>
+<h3>AWB 上谁填、填错谁负责</h3>
+<p>品名、件数、重量一般由<b>托运人/货代据实填写</b>；航空公司对托运人申报内容通常不负核实义务（除非明显异常）。填错导致运输错误/罚款/退运的，由填制方承担；但航空公司对「已装运」事实负责。所以<b>填单环节的责任划分，要在委托单里写清</b>。</p>
+<h2>四、中欧班列专题：SMGS 与 CIM 两套运单</h2>
+<p>中欧班列横跨两套铁路体系：中国/中亚段用 <b>SMGS（国际货协）运单</b>，欧洲段用 <b>CIM（国际货约，COTIF 附录 B）运单</b>。在口岸（如阿拉山口/阿腾科里）需要<b>换单/换轨</b>——把货协运单转换成货约运单，才能使货物继续在欧盟铁路网内流转。</p>
+<div class="key">实务要点：① 运单是铁路联运索赔的核心凭证，但<b>运单本身不能转让、不能控货</b>；② 货损索赔需在到站 24 小时内提出并编制「商务记录」，逾期可能丧失索赔权（具体时限待核实当地规则）；③ 换单环节最容易出错（品名、重量、收货人不一致），应在启运前反复核对两份运单内容一致。</div>
+<h2>五、CMR 公路运单专题</h2>
+<p>CMR 运单分三份联单：发货人联、收货人联、承运人联，各有其作用。运单是运输合同证明与货物收据，<b>不是物权凭证</b>。</p>
+<h3>保留（Reservation）怎么写才有证据效力</h3>
+<p>承运人在接收货物时发现货损/包装不良，应在运单上作<b>保留批注（reservation）</b>，否则视为「按运单记载良好接收」。批注要具体（「外包装破损 3 处」「件数短少 2 件」），笼统写「货况不详」证据力弱。这点和提单的「不清洁批注」逻辑一致。</p>
+<h2>六、《不同运输方式下如何控货》操作指引</h2>
+<ul><li><b>海运</b>：首选提单，保管好全套正本；确需电放/SWB 时走审批 + 保函 + 留痕。</li><li><b>空运</b>：失去 AWB 控货后，立即用「暂停交付/改收货人/扣货函」替代，且必须在货到前行动。</li><li><b>铁路</b>：无法靠运单控货，控货靠「启运前收款/保函」+ 到站前的书面停运指令。</li><li><b>公路（跨境）</b>：同样无运单控货，靠合同条款 + 分段承运人指令 + 货物保险覆盖。</li><li><b>通用</b>：任何方式下，控货的终极手段都是「钱没到账就不放货」——把付款节点写进贸易合同和运输委托。</li></ul>
+<div class="key">今日口诀：<b>海运靠单、空铁公靠钱（预付款/保函）</b>。单证不能控货的运输方式，就要把控货前移到「钱」上。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Air Waybill (AWB)</div><div class="cn">航空运单</div><div class="df">航空公司/代理签发的空运单证；**不可转让**，收货人凭身份提货，非物权凭证</div></div><div class="ti"><div class="en">SMGS</div><div class="cn">国际铁路货物联运协定</div><div class="df">中国、蒙古、俄及东欧国家间的铁路联运规则；使用《国际货协》运单</div></div><div class="ti"><div class="en">CIM</div><div class="cn">国际铁路货物运输合同</div><div class="df">COTIF 附录 B，欧洲铁路联运规则；与 SMGS 在口岸换单衔接</div></div><div class="ti"><div class="en">CMR</div><div class="cn">国际公路货物运输合同公约</div><div class="df">1956 年公路运输公约；运单为运输合同证明，非物权凭证</div></div><div class="ti"><div class="en">Stoppage in transit</div><div class="cn">中途停运权</div><div class="df">卖方在买方无力付款时，请求承运人暂停交付货物的权利</div></div></div></div><div class="foot"><a href="W2-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W2-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>
