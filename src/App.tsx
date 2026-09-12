@@ -33,13 +33,18 @@ export default function App() {
 
   const handleSelectTab = (tab: TabType) => {
     setActiveTab(tab);
+    // 跨境物流法务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
+    if (tab === 'logistics') {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      return;
+    }
     if (contentSectionRef.current) {
       const topOffset = contentSectionRef.current.offsetTop - 80;
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
     }
   };
 
-  // 跨境物流法务 tab 内嵌完整计划 HTML，需要通栏展示（不受 7xl 容器与左右留白限制）
+  // 跨境物流法务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
   const isFullBleed = activeTab === 'logistics';
 
   const handleScrollToContent = () => {
@@ -63,11 +68,13 @@ export default function App() {
         onOpenContact={() => setContactModalOpen(true)}
       />
 
-      {/* Hero Section (100vh Apple style) */}
-      <Hero
-        onScrollToContent={handleScrollToContent}
-        onExploreTab={handleSelectTab}
-      />
+      {/* Hero Section 仅非全屏 tab 显示；跨境物流法务为铺满大页面，不需要 Hero */}
+      {!isFullBleed && (
+        <Hero
+          onScrollToContent={handleScrollToContent}
+          onExploreTab={handleSelectTab}
+        />
+      )}
 
       {/* Main Content Area */}
       <main
@@ -75,43 +82,45 @@ export default function App() {
         id="main-content-section"
         className={
           isFullBleed
-            ? 'flex-1 w-full px-4 sm:px-6 pt-10 pb-8'
+            ? 'flex-1 w-full px-0 pt-20'
             : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
         }
       >
-        {/* Tab switcher secondary bar for quick in-page navigation */}
-        <div className="flex items-center justify-between pb-6 mb-10 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#B89F6B]" />
-            <span className="text-xs uppercase tracking-widest text-[#86868B]">
-              Current View / 当前视图
-            </span>
-          </div>
+        {/* 当前视图副导航条：跨境物流法务为铺满大页面，不显示，避免框住内容 */}
+        {!isFullBleed && (
+          <div className="flex items-center justify-between pb-6 mb-10 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B89F6B]" />
+              <span className="text-xs uppercase tracking-widest text-[#86868B]">
+                Current View / 当前视图
+              </span>
+            </div>
 
-          <div className="flex items-center gap-1 sm:gap-2">
-            {[
-              { id: 'about', label: '关于我' },
-              { id: 'expertise', label: '专业技能' },
-              { id: 'cases', label: '案例展示' },
-              { id: 'insights', label: '思考观点' },
-              { id: 'notes', label: '日常分享' },
-              { id: 'catering', label: '餐饮法务' },
-              { id: 'logistics', label: '跨境物流法务' },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleSelectTab(tab.id as TabType)}
-                className={`px-3 py-1 text-xs rounded-full transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
-                    : 'text-[#86868B] hover:text-[#B89F6B]'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+            <div className="flex items-center gap-1 sm:gap-2">
+              {[
+                { id: 'about', label: '关于我' },
+                { id: 'expertise', label: '专业技能' },
+                { id: 'cases', label: '案例展示' },
+                { id: 'insights', label: '思考观点' },
+                { id: 'notes', label: '日常分享' },
+                { id: 'catering', label: '餐饮法务' },
+                { id: 'logistics', label: '跨境物流法务' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => handleSelectTab(tab.id as TabType)}
+                  className={`px-3 py-1 text-xs rounded-full transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
+                      : 'text-[#86868B] hover:text-[#B89F6B]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Tab Content with Page-Turn Fade Transition (0.3s) */}
         <AnimatePresence mode="wait">
@@ -144,8 +153,8 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* Footer */}
-      <Footer onOpenContact={() => setContactModalOpen(true)} />
+      {/* Footer 仅非全屏 tab 显示 */}
+      {!isFullBleed && <Footer onOpenContact={() => setContactModalOpen(true)} />}
 
       {/* Contact & WeChat Modal */}
       <ContactModal
