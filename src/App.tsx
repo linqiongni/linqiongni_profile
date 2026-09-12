@@ -68,8 +68,8 @@ export default function App() {
         onOpenContact={() => setContactModalOpen(true)}
       />
 
-      {/* Hero Section 仅非全屏 tab 显示；跨境物流法务为铺满大页面，不需要 Hero */}
-      {!isFullBleed && (
+      {/* Hero Section 仅非全屏 tab 显示；跨境物流法务、涉外合同学习直接进内容页，不显示主页 Hero */}
+      {!isFullBleed && activeTab !== 'foreign-contracts' && (
         <Hero
           onScrollToContent={handleScrollToContent}
           onExploreTab={handleSelectTab}
@@ -86,8 +86,8 @@ export default function App() {
             : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
         }
       >
-        {/* 当前视图副导航条：跨境物流法务为铺满大页面，不显示，避免框住内容 */}
-        {!isFullBleed && (
+      {/* 当前视图副导航条：跨境物流法务为铺满大页面、涉外合同学习为独立内容页，均不显示，避免冗余 */}
+      {!isFullBleed && activeTab !== 'foreign-contracts' && (
           <div className="flex items-center justify-between pb-6 mb-10 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#B89F6B]" />
