@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TabType } from '../types';
+import { NAV_GROUPS, SUB_TAB_META } from '../navConfig';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Moon, Sun, Menu, X, Mail, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
+  activeGroup: string;
   activeTab: TabType;
+  onSelectGroup: (id: string) => void;
   onSelectTab: (tab: TabType) => void;
   darkMode: boolean;
   onToggleDarkMode: () => void;
   onOpenContact: () => void;
 }
 
-const TABS: { id: TabType; label: string; enLabel: string }[] = [
-  { id: 'about', label: '关于我', enLabel: 'About' },
-  { id: 'expertise', label: '专业技能', enLabel: 'Expertise' },
-  { id: 'cases', label: '案例展示', enLabel: 'Cases' },
-  { id: 'insights', label: '思考观点', enLabel: 'Insights' },
-  { id: 'notes', label: '日常分享', enLabel: 'Notes' },
-  { id: 'catering', label: '餐饮法务', enLabel: 'Catering Legal' },
-  { id: 'logistics', label: '跨境物流法务', enLabel: 'Logistics Legal' },
-  { id: 'foreign-contracts', label: '涉外合同学习', enLabel: 'Foreign Contracts' },
-];
-
 export const Navbar: React.FC<NavbarProps> = ({
+  activeGroup,
   activeTab,
+  onSelectGroup,
   onSelectTab,
   darkMode,
   onToggleDarkMode,
@@ -73,15 +67,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
 
-        {/* Center/Right: 5 Tabs (Desktop) */}
+        {/* Center/Right: 2 分组 Tabs (Desktop) */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-          {TABS.map((tab) => {
-            const isActive = activeTab === tab.id;
+          {NAV_GROUPS.map((g) => {
+            const isActive = activeGroup === g.id;
             return (
               <button
-                key={tab.id}
-                id={`nav-tab-${tab.id}`}
-                onClick={() => onSelectTab(tab.id)}
+                key={g.id}
+                id={`nav-group-${g.id}`}
+                onClick={() => onSelectGroup(g.id)}
                 className="relative py-2 text-[15px] font-normal transition-colors group focus:outline-none"
               >
                 <span
@@ -91,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
                   } transition-colors`}
                 >
-                  {tab.label}
+                  {g.label}
                 </span>
 
                 {/* Champagne Gold Underline */}
@@ -161,24 +155,44 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="mobile-dropdown-menu"
             className="md:hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] border-b border-[#E8E8E6] dark:border-[#2C2C2E] px-6 py-5 shadow-xl"
           >
-            <div className="flex flex-col space-y-4">
-              {TABS.map((tab) => (
-                <button
-                  key={tab.id}
-                  id={`mobile-nav-${tab.id}`}
-                  onClick={() => {
-                    onSelectTab(tab.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`text-left py-2 flex items-center justify-between text-base ${
-                    activeTab === tab.id
-                      ? 'text-[#B89F6B] font-medium'
-                      : 'text-[#1D1D1F] dark:text-[#F5F5F7]'
-                  }`}
-                >
-                  <span>{tab.label}</span>
-                  <span className="text-xs text-[#86868B]">{tab.enLabel}</span>
-                </button>
+            <div className="flex flex-col space-y-5">
+              {NAV_GROUPS.map((g) => (
+                <div key={g.id}>
+                  <button
+                    id={`mobile-group-${g.id}`}
+                    onClick={() => {
+                      onSelectGroup(g.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`text-left py-2 flex items-center justify-between w-full text-base ${
+                      activeGroup === g.id
+                        ? 'text-[#B89F6B] font-medium'
+                        : 'text-[#1D1D1F] dark:text-[#F5F5F7]'
+                    }`}
+                  >
+                    <span>{g.label}</span>
+                    <span className="text-xs text-[#86868B]">{g.enLabel}</span>
+                  </button>
+                  <div className="ml-1 mt-1 flex flex-col space-y-1 border-l border-[#E8E8E6] dark:border-[#2C2C2E] pl-3">
+                    {g.subTabs.map((t) => (
+                      <button
+                        key={t}
+                        id={`mobile-nav-${t}`}
+                        onClick={() => {
+                          onSelectTab(t);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`text-left py-1.5 text-sm ${
+                          activeTab === t
+                            ? 'text-[#B89F6B] font-medium'
+                            : 'text-[#86868B]'
+                        }`}
+                      >
+                        {SUB_TAB_META[t].label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
 
               <div className="pt-4 border-t border-[#E8E8E6] dark:border-[#2C2C2E] flex justify-between items-center">

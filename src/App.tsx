@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TabType } from './types';
+import { NAV_GROUPS, SUB_TAB_META, groupOfTab } from './navConfig';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutTab } from './components/AboutTab';
@@ -18,6 +19,7 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('about');
+  const [activeGroup, setActiveGroup] = useState<string>(groupOfTab('about'));
   const [darkMode, setDarkMode] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const contentSectionRef = useRef<HTMLDivElement>(null);
@@ -32,12 +34,25 @@ export default function App() {
   }, [darkMode]);
 
   const handleSelectTab = (tab: TabType) => {
+    setActiveGroup(groupOfTab(tab));
     setActiveTab(tab);
     // 跨境物流法务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
     if (tab === 'logistics') {
       window.scrollTo({ top: 0, behavior: 'auto' });
       return;
     }
+    if (contentSectionRef.current) {
+      const topOffset = contentSectionRef.current.offsetTop - 80;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  };
+
+  // 点击顶层分组：进入该分组第一个子板块
+  const handleSelectGroup = (groupId: string) => {
+    const group = NAV_GROUPS.find((g) => g.id === groupId);
+    if (!group) return;
+    setActiveGroup(groupId);
+    setActiveTab(group.subTabs[0]);
     if (contentSectionRef.current) {
       const topOffset = contentSectionRef.current.offsetTop - 80;
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
@@ -61,7 +76,9 @@ export default function App() {
 
       {/* Top Fixed Navbar */}
       <Navbar
+        activeGroup={activeGroup}
         activeTab={activeTab}
+        onSelectGroup={handleSelectGroup}
         onSelectTab={handleSelectTab}
         darkMode={darkMode}
         onToggleDarkMode={() => setDarkMode(!darkMode)}
@@ -97,25 +114,17 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-1 sm:gap-2">
-              {[
-                { id: 'about', label: '关于我' },
-                { id: 'expertise', label: '专业技能' },
-                { id: 'cases', label: '案例展示' },
-                { id: 'insights', label: '思考观点' },
-                { id: 'notes', label: '日常分享' },
-                { id: 'catering', label: '餐饮法务' },
-                { id: 'logistics', label: '跨境物流法务' },
-              ].map((tab) => (
+              {NAV_GROUPS.find((g) => g.id === activeGroup)?.subTabs.map((tab) => (
                 <button
-                  key={tab.id}
-                  onClick={() => handleSelectTab(tab.id as TabType)}
+                  key={tab}
+                  onClick={() => handleSelectTab(tab)}
                   className={`px-3 py-1 text-xs rounded-full transition-all duration-300 ${
-                    activeTab === tab.id
+                    activeTab === tab
                       ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
                       : 'text-[#86868B] hover:text-[#B89F6B]'
                   }`}
                 >
-                  {tab.label}
+                  {SUB_TAB_META[tab].label}
                 </button>
               ))}
             </div>
