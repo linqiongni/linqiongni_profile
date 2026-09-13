@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>知识产权法务专家养成计划 · 32 周</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.hero{max-width:1180px;margin:0 auto;padding:44px 22px 18px}
+.hero h1{font-size:30px;line-height:1.4;margin-bottom:10px}
+.hero .lead{color:var(--tx2);font-size:14.5px;max-width:820px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;color:var(--tx2)}
+.stat b{color:var(--gold);font-size:16px;font-weight:600;margin-right:5px}
+.tabs{position:sticky;top:0;z-index:20;background:#0e1014;border-bottom:1px solid var(--line);padding:10px 0}
+.tabs .wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tab{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:12.5px;color:var(--tx2);cursor:pointer;font-family:inherit}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.panels{max-width:1180px;margin:0 auto;padding:22px}
+.panel{display:none}
+.panel.on{display:block}
+.lhdr{display:flex;align-items:flex-start;gap:12px;margin:26px 0 12px;padding:14px 16px;border-radius:10px;border:1px solid var(--line);border-left:3px solid var(--jade);background:linear-gradient(135deg,rgba(74,157,156,.1),rgba(201,162,39,.05))}
+.lhdr .n{color:var(--gold);font-size:12px;letter-spacing:.16em;flex:0 0 auto;padding-top:3px}
+.lhdr .nm{font-size:16px;color:var(--tx);font-weight:600}
+.lhdr .ds{font-size:13px;color:var(--tx2);margin-top:4px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.wk.done{border-color:rgba(201,162,39,.45);background:#141822}
+.wk .wh{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
+.wk .wn{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.wk .wt{font-size:14.5px;color:var(--tx);font-weight:600;line-height:1.5}
+.wk .wt a{color:inherit;text-decoration:none}
+.wk .wt a:hover{color:var(--gold)}
+.wk ol{margin:6px 0 0 4px;padding-left:18px}
+.wk ol li{font-size:12.8px;color:var(--tx2);margin:3px 0;line-height:1.7}
+.wk .wm{font-size:12.3px;color:var(--jade);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.wk .wo{font-size:12.3px;color:var(--tx3);margin-top:4px}
+.wk .wr{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.chk{display:inline-flex;align-items:center;gap:6px;font-size:12.3px;color:var(--tx2);cursor:pointer;user-select:none}
+.chk input{width:14px;height:14px;accent-color:var(--gold);cursor:pointer}
+.pill{font-size:11px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 9px}
+.pill.live{color:var(--jade);border-color:rgba(74,157,156,.4)}
+.prog{margin:14px 0 4px}
+.pbar{height:7px;background:var(--bg2);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade),var(--gold));width:0}
+.ptxt{font-size:12.3px;color:var(--tx3);margin-top:6px}
+@media(max-width:640px){.hero h1{font-size:23px}.panels{padding:16px}}
+</style></head><body><div class="hero"><div class="kicker">INTELLECTUAL PROPERTY · 32 WEEK TRAINING PROGRAM</div><h1>知识产权法务专家养成计划</h1><div class="lead">从普通民商事律师到能独立办理商标、专利、著作权、商业秘密与不正当竞争各类案件的实务律师。32 周、160 个学习日、32 个周末实战，每天 90 分钟。四层结构：地基总论 → 四大部门法 → 办案能力 → 行业专精。案例锚定珠宝 · 时尚 · 消费品，学完即可复用。</div><div class="stats"><div class="stat"><b>32</b>周</div><div class="stat"><b>160</b>个学习日</div><div class="stat"><b>90</b>分钟 / 天</div><div class="stat"><b>32</b>个周末实战</div><div class="stat"><b>5</b>大权利版块</div></div></div><div class="tabs"><div class="wrap"><button class="tab on" data-p="1">32 周总纲</button><button class="tab" data-p="2">AI 指令库</button><button class="tab" data-p="3">术语表（35）</button><button class="tab" data-p="4">已核实法规库</button><button class="tab" data-p="5">使用说明</button></div></div><div class="panels"><div class="panel on" id="p1"><div class="prog"><div class="pbar"><i id="pbi"></i></div><div class="ptxt" id="ptxt">已完成 0 / 32 周</div></div><div class="lhdr"><div class="n">第 1 层</div><div><div class="nm">第一层 地基 · 总论与通用规则　·　W1–W4</div><div class="ds">水泥沙子。权利谱系、取得方式、权能与限制、侵权救济、程序证据。这一层不过关，后面每一层都会漏。</div></div></div><div class="grid"><div class="wk" id="wk1"><div class="wh"><span class="wn">WEEK 1</span><span class="wt"><a href="W1/index.html">知识产权的权利谱系与法律渊源</a></span></div><ol><li>知识产权是什么：无形财产与八类客体</li><li>权利取得方式三分：自动 / 确权 / 使用产生</li><li>法律渊源全景：法律·法规·司法解释·审查指南·案例</li><li>国际公约框架：巴黎·伯尔尼·TRIPS·马德里·海牙·PCT</li><li>权利冲突与竞合：同一客体的多重保护</li></ol><div class="wm">周末实战：给一款珠宝产品做「权利地图」：拆客体 → 配权利 → 排时间轴</div><div class="wo">产出物：一页纸产品权利组合方案 + 公司 IP 资产台账（v0）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="1" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk2"><div class="wh"><span class="wn">WEEK 2</span><span class="wt">权利内容与边界</span></div><ol><li>著作权权能：人身权 4 项 + 财产权 13 项</li><li>专利权能：制造·使用·许诺销售·销售·进口</li><li>商标专用权与禁用权：核定商品与核准注册的边界</li><li>保护期限与维持：20 / 10 / 15 / 10+续展 / 无期限</li><li>权利限制总论：合理使用·权利用尽·先用权·Bolar·反向工程</li></ol><div class="wm">周末实战：做一个产品的「权利维持日历」：官费、期限、续展节点</div><div class="wo">产出物：IP 期限与官费速查表 + 12 个月维持日历</div><div class="wr"><label class="chk"><input type="checkbox" data-w="2" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk3"><div class="wh"><span class="wn">WEEK 3</span><span class="wt">侵权与救济通论</span></div><ol><li>侵权构成四要件与归责原则差异</li><li>停止侵害及其例外（公共利益与比例原则）</li><li>损害赔偿四档计算与合理开支</li><li>惩罚性赔偿：故意 + 情节严重的 1-5 倍</li><li>其他救济：消除影响·销毁·诉前禁令·诉前保全</li></ol><div class="wm">周末实战：用一组虚拟财务数据跑通四档赔偿计算</div><div class="wo">产出物：赔偿计算模型表（Excel 公式化）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="3" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk4"><div class="wh"><span class="wn">WEEK 4</span><span class="wt">程序与证据地图</span></div><ol><li>三条路径：行政 / 民事 / 刑事的启动与衔接</li><li>管辖体系：知识产权法院·专门法庭·最高法知产庭</li><li>证据形式：公证购买·时间戳·区块链存证·电子数据审查</li><li>举证责任分配与举证妨碍规则</li><li>行为保全·财产保全·证据保全的申请要件</li></ol><div class="wm">周末实战：为一起电商侵权案设计完整证据链</div><div class="wo">产出物：IP 案件证据清单模板 + 取证 SOP</div><div class="wr"><label class="chk"><input type="checkbox" data-w="4" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div></div><div class="lhdr"><div class="n">第 2 层</div><div><div class="nm">第二层 支柱 · 四大部门法　·　W5–W16</div><div class="ds">商标（W5-W8）、著作权（W9-W11）、专利（W12-W15）、商业秘密与反不正当竞争（W16）。逐法打穿构成要件与抗辩。</div></div></div><div class="grid"><div class="wk" id="wk5"><div class="wh"><span class="wn">WEEK 5</span><span class="wt">商标法基础</span></div><ol><li>商标构成要素与显著性（固有 / 获得）</li><li>禁用禁注条款：商标法第 10、11、12 条</li><li>尼斯分类与类似商品服务区分表、一标多类</li><li>注册全流程时间轴：9 个月审查 + 3 个月公告</li><li>商标检索与可注册性判断</li></ol><div class="wm">周末实战：为一个新品牌名做注册可行性检索报告</div><div class="wo">产出物：商标可注册性分析意见 + 类目选择表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="5" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk6"><div class="wh"><span class="wn">WEEK 6</span><span class="wt">商标确权程序</span></div><ol><li>驳回复审（15 日）</li><li>异议（初审公告 3 个月内）</li><li>无效宣告：绝对理由与相对理由（5 年 + 恶意不受限）</li><li>撤三：连续三年不使用</li><li>证据规则：使用证据·知名度证据·在先权利证据</li></ol><div class="wm">周末实战：写一份撤三答辩 + 一份无效宣告申请书</div><div class="wo">产出物：商标确权程序时限表 + 证据组织清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="6" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk7"><div class="wh"><span class="wn">WEEK 7</span><span class="wt">商标侵权与抗辩</span></div><ol><li>混淆可能性标准</li><li>双相同与类似商品近似商标</li><li>驰名商标认定与跨类保护</li><li>抗辩：描述性·指示性·在先使用·权利用尽</li><li>与企业字号、域名、包装装潢的冲突</li></ol><div class="wm">周末实战：出具一份商标侵权比对意见书</div><div class="wo">产出物：商标近似比对表 + 抗辩路径图</div><div class="wr"><label class="chk"><input type="checkbox" data-w="7" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk8"><div class="wh"><span class="wn">WEEK 8</span><span class="wt">商标实战：打假与维权</span></div><ol><li>线下打假：调查·公证购买·行政投诉·诉讼</li><li>电商投诉：阿里 IPP·京东·拼多多·抖音·小红书</li><li>海关备案与依申请 / 依职权扣留</li><li>假冒注册商标罪与行刑衔接</li><li>批量维权与商业化维权的合规边界</li></ol><div class="wm">周末实战：设计一次完整的电商打假行动方案</div><div class="wo">产出物：打假行动手册（含平台入口与材料清单）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="8" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk9"><div class="wh"><span class="wn">WEEK 9</span><span class="wt">著作权法基础</span></div><ol><li>作品定义与独创性标准</li><li>作品类型与开放式兜底条款</li><li>权属：职务作品·委托作品·合作作品·视听作品</li><li>邻接权：出版·表演·录音录像·广播组织</li><li>著作权登记的作用与证据价值</li></ol><div class="wm">周末实战：审查一个设计项目的完整权属链</div><div class="wo">产出物：设计项目权属审查清单 + 合同补签方案</div><div class="wr"><label class="chk"><input type="checkbox" data-w="9" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk10"><div class="wh"><span class="wn">WEEK 10</span><span class="wt">著作权权能与限制</span></div><ol><li>人身权四项</li><li>财产权十三项逐条精读</li><li>合理使用与法定许可</li><li>技术措施与权利管理电子信息</li><li>软件著作权与开源协议风险</li></ol><div class="wm">周末实战：做一次公司字体 / 图片 / 软件合规自查</div><div class="wo">产出物：著作权合规自查表 + 风险整改清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="10" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk11"><div class="wh"><span class="wn">WEEK 11</span><span class="wt">著作权侵权与平台责任</span></div><ol><li>接触 + 实质性相似与抽象-过滤-比较法</li><li>信息网络传播权与直接 / 间接侵权</li><li>避风港·通知-删除·红旗规则·必要措施</li><li>新型客体：AI 生成物·短视频·直播·NFT</li><li>侵犯著作权罪与刑事边界</li></ol><div class="wm">周末实战：设计一份平台投诉与反通知应对方案</div><div class="wo">产出物：投诉 / 申诉文书包 + 平台规则对照表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="11" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk12"><div class="wh"><span class="wn">WEEK 12</span><span class="wt">专利法基础（上）</span></div><ol><li>三类专利：发明·实用新型·外观设计</li><li>可授权客体与排除领域（第 25 条）</li><li>新颖性：现有技术·抵触申请·6 个月宽限期</li><li>创造性：突出的实质性特点 + 显著进步（三步法）</li><li>实用性与外观设计的授权条件</li></ol><div class="wm">周末实战：精读一份专利文本并拆解权利要求</div><div class="wo">产出物：专利阅读笔记模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="12" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk13"><div class="wh"><span class="wn">WEEK 13</span><span class="wt">专利文件与授权（不撰写，只审）</span></div><ol><li>权利要求书：独立·从属·前序与特征部分</li><li>说明书构成与充分公开</li><li>清楚·简要·以说明书为依据·必要技术特征</li><li>审查流程：18 个月公开·3 年实审请求·答复意见</li><li>代理所稿件质量评审清单</li></ol><div class="wm">周末实战：给代理所的一份撰稿做质量评审</div><div class="wo">产出物：专利稿件质检表 + 代理所沟通函模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="13" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk14"><div class="wh"><span class="wn">WEEK 14</span><span class="wt">专利侵权判定</span></div><ol><li>权利要求解释：折中原则与内部证据优先</li><li>全面覆盖原则</li><li>等同原则与禁止反悔、捐献原则</li><li>抗辩：现有技术·先用权·合法来源·Bolar</li><li>外观设计侵权：整体观察综合判断与设计空间</li></ol><div class="wm">周末实战：做一份技术特征比对表</div><div class="wo">产出物：权利要求比对表模板 + 等同判断流程</div><div class="wr"><label class="chk"><input type="checkbox" data-w="14" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk15"><div class="wh"><span class="wn">WEEK 15</span><span class="wt">专利稳定性与布局</span></div><ol><li>无效宣告的理由与证据</li><li>无效程序、口审与行政诉讼</li><li>FTO 自由实施分析</li><li>规避设计与专利布局基础</li><li>标准必要专利与 FRAND</li></ol><div class="wm">周末实战：出一份 FTO 报告框架 + 一份无效请求思路</div><div class="wo">产出物：FTO 检索与结论模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="15" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk16"><div class="wh"><span class="wn">WEEK 16</span><span class="wt">商业秘密与不正当竞争</span></div><ol><li>商业秘密三性：秘密性·保密性·价值性</li><li>密点的确定与举证</li><li>接触 + 实质相同 - 合法来源</li><li>反不正当竞争法各条款精读</li><li>保密协议·竞业限制·员工管理</li></ol><div class="wm">周末实战：做一次公司商业秘密体系体检</div><div class="wo">产出物：商业秘密体检表 + 保密制度整改建议</div><div class="wr"><label class="chk"><input type="checkbox" data-w="16" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div></div><div class="lhdr"><div class="n">第 3 层</div><div><div class="nm">第三层 能力 · 办案全流程　·　W17–W26</div><div class="ds">尽调、合同、布局、证据保全、赔偿计算、庭审、行政与电商维权、刑事控告、互联网新型 IP、跨境。把法条变成活。</div></div></div><div class="grid"><div class="wk" id="wk17"><div class="wh"><span class="wn">WEEK 17</span><span class="wt">IP 尽调与权属链</span></div><ol><li>尽调范围与清单</li><li>权属链审查：职务发明·职务作品·委托·共有·继受</li><li>官方检索与法律状态核验（质押·许可·失效）</li><li>风险识别与报告撰写</li><li>交易结构中的 IP 条款</li></ol><div class="wm">周末实战：写一份 IP 尽调报告</div><div class="wo">产出物：IP 尽调报告模板 + 风险分级表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="17" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk18"><div class="wh"><span class="wn">WEEK 18</span><span class="wt">IP 合同</span></div><ol><li>许可：独占 / 排他 / 普通与备案</li><li>转让与质押登记</li><li>供应链 IP 条款：OEM·ODM·经销</li><li>第三方 IP：广告·代言·影视·软件采购·SaaS</li><li>违约与救济条款设计</li></ol><div class="wm">周末实战：起草一份 IP 许可合同 + 一份代工协议 IP 条款</div><div class="wo">产出物：IP 合同模板库 v1（含批注版）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="18" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk19"><div class="wh"><span class="wn">WEEK 19</span><span class="wt">布局与申请策略</span></div><ol><li>商标布局：类目·防御·联合</li><li>专利布局：核心 + 外围</li><li>著作权登记与创作证据留存</li><li>预算·官费·代理所管理与 KPI</li><li>马德里 / 海牙 / PCT 成本对比</li></ol><div class="wm">周末实战：做一份三年 IP 布局方案与预算</div><div class="wo">产出物：三年布局路线图 + 预算模型</div><div class="wr"><label class="chk"><input type="checkbox" data-w="19" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk20"><div class="wh"><span class="wn">WEEK 20</span><span class="wt">诉讼证据与保全</span></div><ol><li>证据类型与取证工具选型</li><li>公证购买全流程与公证书要点</li><li>区块链与时间戳存证的效力</li><li>诉前禁令·证据保全·财产保全申请</li><li>举证妨碍与账簿调取</li></ol><div class="wm">周末实战：写一份诉前行为保全申请材料</div><div class="wo">产出物：保全申请材料包 + 担保计算表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="20" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk21"><div class="wh"><span class="wn">WEEK 21</span><span class="wt">赔偿计算与主张</span></div><ol><li>四档计算的选择策略</li><li>侵权获利的计算与财务证据</li><li>许可费倍数与可比许可</li><li>法定赔偿的酌定因素</li><li>惩罚性赔偿的主张与举证</li></ol><div class="wm">周末实战：做一份赔偿计算与举证清单</div><div class="wo">产出物：赔偿计算书模板 + 举证清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="21" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk22"><div class="wh"><span class="wn">WEEK 22</span><span class="wt">庭审与裁判</span></div><ol><li>起诉状与诉讼请求设计</li><li>技术比对表与可视化表达</li><li>鉴定·专家辅助人·技术调查官</li><li>一审庭审焦点与质证</li><li>上诉（最高法知产庭）·再审·执行</li></ol><div class="wm">周末实战：写一份代理词 + 一份上诉状</div><div class="wo">产出物：IP 诉讼文书模板库</div><div class="wr"><label class="chk"><input type="checkbox" data-w="22" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk23"><div class="wh"><span class="wn">WEEK 23</span><span class="wt">行政维权与电商投诉</span></div><ol><li>市场监管投诉与行政查处</li><li>版权行政投诉</li><li>电商平台投诉体系与申诉应对</li><li>展会投诉与展会保护</li><li>海关备案·扣留·担保与放行</li></ol><div class="wm">周末实战：行政投诉全流程演练 + 海关备案材料</div><div class="wo">产出物：行政维权路径手册</div><div class="wr"><label class="chk"><input type="checkbox" data-w="23" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk24"><div class="wh"><span class="wn">WEEK 24</span><span class="wt">刑事保护</span></div><ol><li>假冒注册商标罪（刑法 213）</li><li>销售假冒注册商标的商品罪（214）与标识罪（215）</li><li>侵犯著作权罪（217）与销售侵权复制品罪（218）</li><li>侵犯商业秘密罪（219）</li><li>立案标准·报案材料·刑民交叉与先刑后民</li></ol><div class="wm">周末实战：写一份刑事报案材料</div><div class="wo">产出物：刑事控告文书包 + 立案标准速查表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="24" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk25"><div class="wh"><span class="wn">WEEK 25</span><span class="wt">互联网与新型 IP</span></div><ol><li>直播带货与代购</li><li>短视频·二次创作·剪辑</li><li>AI 生成内容与训练数据</li><li>数据权益与数据竞争</li><li>游戏·虚拟财产·数字藏品</li></ol><div class="wm">周末实战：出一份新型业务 IP 合规意见</div><div class="wo">产出物：新业务合规论证模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="25" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk26"><div class="wh"><span class="wn">WEEK 26</span><span class="wt">跨境 IP</span></div><ol><li>巴黎公约：国民待遇·优先权·独立性</li><li>马德里体系与单一国注册</li><li>海牙体系（外观设计）</li><li>PCT 与巴黎途径对比</li><li>中国香港 / 美国 / 欧盟要点 + 亚马逊品牌备案 + 337 调查</li></ol><div class="wm">周末实战：做一份跨境布局与维权方案</div><div class="wo">产出物：跨境布局决策树 + 成本表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="26" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div></div><div class="lhdr"><div class="n">第 4 层</div><div><div class="nm">第四层 出师 · 行业专精　·　W27–W32</div><div class="ds">珠宝时尚专项、企业 IP 制度搭建、案源与专业标签、两套综合模拟实战与个人知识体系固化。</div></div></div><div class="grid"><div class="wk" id="wk27"><div class="wh"><span class="wn">WEEK 27</span><span class="wt">珠宝时尚专项（一）</span></div><ol><li>款式保护组合拳：外观 + 著作权 + 商标 + 反法</li><li>元素·系列·经典款的保护节奏</li><li>发布会·订货会·社交媒体的公开风险</li><li>申请时机与成本</li><li>珠宝行业典型判例精读</li></ol><div class="wm">周末实战：给一条产品线做完整保护方案</div><div class="wo">产出物：产品线保护方案书</div><div class="wr"><label class="chk"><input type="checkbox" data-w="27" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk28"><div class="wh"><span class="wn">WEEK 28</span><span class="wt">珠宝时尚专项（二）</span></div><ol><li>仿款与抄袭的界定</li><li>攀附·混淆与包装装潢</li><li>代言·肖像权与形象权</li><li>渠道管控：经销·代购·窜货·微商</li><li>代工厂与供应商泄密</li></ol><div class="wm">周末实战：做一份渠道管控与打假方案</div><div class="wo">产出物：渠道管控协议条款 + 打假 SOP</div><div class="wr"><label class="chk"><input type="checkbox" data-w="28" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk29"><div class="wh"><span class="wn">WEEK 29</span><span class="wt">企业 IP 管理制度</span></div><ol><li>IP 资产台账与盘点</li><li>员工发明与职务作品制度</li><li>保密制度与离职管理</li><li>培训·内控·风险台账</li><li>危机应对与舆情</li></ol><div class="wm">周末实战：产出一套 IP 管理制度文件包</div><div class="wo">产出物：IP 管理制度全套文件</div><div class="wr"><label class="chk"><input type="checkbox" data-w="29" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk30"><div class="wh"><span class="wn">WEEK 30</span><span class="wt">案源与专业标签</span></div><ol><li>从法务到 IP 律师的业务路径</li><li>客户沟通与需求转化</li><li>报价与服务方案写作</li><li>专业文章与演讲</li><li>知识管理与个人工具箱</li></ol><div class="wm">周末实战：写一份服务方案 + 一篇专业文章</div><div class="wo">产出物：个人 IP 业务手册</div><div class="wr"><label class="chk"><input type="checkbox" data-w="30" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk31"><div class="wh"><span class="wn">WEEK 31</span><span class="wt">综合实战（一）</span></div><ol><li>案件受理与策略制定</li><li>证据组织与补强</li><li>文书起草</li><li>谈判与和解</li><li>复盘与知识入库</li></ol><div class="wm">周末实战：完整案件全流程演练 A（商标 + 电商 + 行政）</div><div class="wo">产出物：全套案件卷宗</div><div class="wr"><label class="chk"><input type="checkbox" data-w="31" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div><div class="wk" id="wk32"><div class="wh"><span class="wn">WEEK 32</span><span class="wt">综合实战（二）</span></div><ol><li>跨境案件演练</li><li>刑事控告演练</li><li>技术类案件演练</li><li>谈判与调解</li><li>出师清单与知识体系固化</li></ol><div class="wm">周末实战：能力自评 + 个人知识库交付</div><div class="wo">产出物：出师能力自评表 + 个人 IP 知识体系</div><div class="wr"><label class="chk"><input type="checkbox" data-w="32" onchange="tog(this)"> 标记完成</label><span class="pill">待生成</span></div></div></div><div class="note" style="margin-top:22px"><b>⚠ 使用提示</b><br>每日内容为个人学习计划，所有法条、期限、金额与案例在正式使用前必须核对现行有效文本。标注「待核实」处优先核查。</div></div><div class="panel" id="p2"><div class="sub">每条指令可直接复制粘贴给 AI 教练。第 1 周另有逐日指令（在每个学习日的页面内）。其余周为周级总指令，生成该周内容后会在对应日页面内给出逐日指令。</div><details><summary>WEEK 1　知识产权的权利谱系与法律渊源　·　W1 逐日指令（见 W1/index.html）</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 1 周《知识产权的权利谱系与法律渊源》。
+本周五个学习日依次为：1) 知识产权是什么：无形财产与八类客体；2) 权利取得方式三分：自动 / 确权 / 使用产生；3) 法律渊源全景：法律·法规·司法解释·审查指南·案例；4) 国际公约框架：巴黎·伯尔尼·TRIPS·马德里·海牙·PCT；5) 权利冲突与竞合：同一客体的多重保护。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：给一款珠宝产品做「权利地图」：拆客体 → 配权利 → 排时间轴；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button><a class="btn" href="W1/index.html" style="text-decoration:none;line-height:1.6">打开第 1 周</a></div></details><details><summary>WEEK 2　权利内容与边界　·　第 2 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 2 周《权利内容与边界》。
+本周五个学习日依次为：1) 著作权权能：人身权 4 项 + 财产权 13 项；2) 专利权能：制造·使用·许诺销售·销售·进口；3) 商标专用权与禁用权：核定商品与核准注册的边界；4) 保护期限与维持：20 / 10 / 15 / 10+续展 / 无期限；5) 权利限制总论：合理使用·权利用尽·先用权·Bolar·反向工程。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一个产品的「权利维持日历」：官费、期限、续展节点；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 3　侵权与救济通论　·　第 3 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 3 周《侵权与救济通论》。
+本周五个学习日依次为：1) 侵权构成四要件与归责原则差异；2) 停止侵害及其例外（公共利益与比例原则）；3) 损害赔偿四档计算与合理开支；4) 惩罚性赔偿：故意 + 情节严重的 1-5 倍；5) 其他救济：消除影响·销毁·诉前禁令·诉前保全。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：用一组虚拟财务数据跑通四档赔偿计算；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 4　程序与证据地图　·　第 4 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 4 周《程序与证据地图》。
+本周五个学习日依次为：1) 三条路径：行政 / 民事 / 刑事的启动与衔接；2) 管辖体系：知识产权法院·专门法庭·最高法知产庭；3) 证据形式：公证购买·时间戳·区块链存证·电子数据审查；4) 举证责任分配与举证妨碍规则；5) 行为保全·财产保全·证据保全的申请要件。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：为一起电商侵权案设计完整证据链；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 5　商标法基础　·　第 5 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 5 周《商标法基础》。
+本周五个学习日依次为：1) 商标构成要素与显著性（固有 / 获得）；2) 禁用禁注条款：商标法第 10、11、12 条；3) 尼斯分类与类似商品服务区分表、一标多类；4) 注册全流程时间轴：9 个月审查 + 3 个月公告；5) 商标检索与可注册性判断。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：为一个新品牌名做注册可行性检索报告；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 6　商标确权程序　·　第 6 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 6 周《商标确权程序》。
+本周五个学习日依次为：1) 驳回复审（15 日）；2) 异议（初审公告 3 个月内）；3) 无效宣告：绝对理由与相对理由（5 年 + 恶意不受限）；4) 撤三：连续三年不使用；5) 证据规则：使用证据·知名度证据·在先权利证据。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份撤三答辩 + 一份无效宣告申请书；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 7　商标侵权与抗辩　·　第 7 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 7 周《商标侵权与抗辩》。
+本周五个学习日依次为：1) 混淆可能性标准；2) 双相同与类似商品近似商标；3) 驰名商标认定与跨类保护；4) 抗辩：描述性·指示性·在先使用·权利用尽；5) 与企业字号、域名、包装装潢的冲突。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：出具一份商标侵权比对意见书；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 8　商标实战：打假与维权　·　第 8 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 8 周《商标实战：打假与维权》。
+本周五个学习日依次为：1) 线下打假：调查·公证购买·行政投诉·诉讼；2) 电商投诉：阿里 IPP·京东·拼多多·抖音·小红书；3) 海关备案与依申请 / 依职权扣留；4) 假冒注册商标罪与行刑衔接；5) 批量维权与商业化维权的合规边界。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：设计一次完整的电商打假行动方案；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 9　著作权法基础　·　第 9 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 9 周《著作权法基础》。
+本周五个学习日依次为：1) 作品定义与独创性标准；2) 作品类型与开放式兜底条款；3) 权属：职务作品·委托作品·合作作品·视听作品；4) 邻接权：出版·表演·录音录像·广播组织；5) 著作权登记的作用与证据价值。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：审查一个设计项目的完整权属链；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 10　著作权权能与限制　·　第 10 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 10 周《著作权权能与限制》。
+本周五个学习日依次为：1) 人身权四项；2) 财产权十三项逐条精读；3) 合理使用与法定许可；4) 技术措施与权利管理电子信息；5) 软件著作权与开源协议风险。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一次公司字体 / 图片 / 软件合规自查；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 11　著作权侵权与平台责任　·　第 11 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 11 周《著作权侵权与平台责任》。
+本周五个学习日依次为：1) 接触 + 实质性相似与抽象-过滤-比较法；2) 信息网络传播权与直接 / 间接侵权；3) 避风港·通知-删除·红旗规则·必要措施；4) 新型客体：AI 生成物·短视频·直播·NFT；5) 侵犯著作权罪与刑事边界。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：设计一份平台投诉与反通知应对方案；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 12　专利法基础（上）　·　第 12 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 12 周《专利法基础（上）》。
+本周五个学习日依次为：1) 三类专利：发明·实用新型·外观设计；2) 可授权客体与排除领域（第 25 条）；3) 新颖性：现有技术·抵触申请·6 个月宽限期；4) 创造性：突出的实质性特点 + 显著进步（三步法）；5) 实用性与外观设计的授权条件。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：精读一份专利文本并拆解权利要求；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 13　专利文件与授权（不撰写，只审）　·　第 13 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 13 周《专利文件与授权（不撰写，只审）》。
+本周五个学习日依次为：1) 权利要求书：独立·从属·前序与特征部分；2) 说明书构成与充分公开；3) 清楚·简要·以说明书为依据·必要技术特征；4) 审查流程：18 个月公开·3 年实审请求·答复意见；5) 代理所稿件质量评审清单。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：给代理所的一份撰稿做质量评审；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 14　专利侵权判定　·　第 14 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 14 周《专利侵权判定》。
+本周五个学习日依次为：1) 权利要求解释：折中原则与内部证据优先；2) 全面覆盖原则；3) 等同原则与禁止反悔、捐献原则；4) 抗辩：现有技术·先用权·合法来源·Bolar；5) 外观设计侵权：整体观察综合判断与设计空间。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一份技术特征比对表；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 15　专利稳定性与布局　·　第 15 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 15 周《专利稳定性与布局》。
+本周五个学习日依次为：1) 无效宣告的理由与证据；2) 无效程序、口审与行政诉讼；3) FTO 自由实施分析；4) 规避设计与专利布局基础；5) 标准必要专利与 FRAND。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：出一份 FTO 报告框架 + 一份无效请求思路；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 16　商业秘密与不正当竞争　·　第 16 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 16 周《商业秘密与不正当竞争》。
+本周五个学习日依次为：1) 商业秘密三性：秘密性·保密性·价值性；2) 密点的确定与举证；3) 接触 + 实质相同 - 合法来源；4) 反不正当竞争法各条款精读；5) 保密协议·竞业限制·员工管理。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一次公司商业秘密体系体检；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 17　IP 尽调与权属链　·　第 17 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 17 周《IP 尽调与权属链》。
+本周五个学习日依次为：1) 尽调范围与清单；2) 权属链审查：职务发明·职务作品·委托·共有·继受；3) 官方检索与法律状态核验（质押·许可·失效）；4) 风险识别与报告撰写；5) 交易结构中的 IP 条款。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份 IP 尽调报告；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 18　IP 合同　·　第 18 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 18 周《IP 合同》。
+本周五个学习日依次为：1) 许可：独占 / 排他 / 普通与备案；2) 转让与质押登记；3) 供应链 IP 条款：OEM·ODM·经销；4) 第三方 IP：广告·代言·影视·软件采购·SaaS；5) 违约与救济条款设计。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：起草一份 IP 许可合同 + 一份代工协议 IP 条款；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 19　布局与申请策略　·　第 19 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 19 周《布局与申请策略》。
+本周五个学习日依次为：1) 商标布局：类目·防御·联合；2) 专利布局：核心 + 外围；3) 著作权登记与创作证据留存；4) 预算·官费·代理所管理与 KPI；5) 马德里 / 海牙 / PCT 成本对比。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一份三年 IP 布局方案与预算；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 20　诉讼证据与保全　·　第 20 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 20 周《诉讼证据与保全》。
+本周五个学习日依次为：1) 证据类型与取证工具选型；2) 公证购买全流程与公证书要点；3) 区块链与时间戳存证的效力；4) 诉前禁令·证据保全·财产保全申请；5) 举证妨碍与账簿调取。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份诉前行为保全申请材料；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 21　赔偿计算与主张　·　第 21 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 21 周《赔偿计算与主张》。
+本周五个学习日依次为：1) 四档计算的选择策略；2) 侵权获利的计算与财务证据；3) 许可费倍数与可比许可；4) 法定赔偿的酌定因素；5) 惩罚性赔偿的主张与举证。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一份赔偿计算与举证清单；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 22　庭审与裁判　·　第 22 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 22 周《庭审与裁判》。
+本周五个学习日依次为：1) 起诉状与诉讼请求设计；2) 技术比对表与可视化表达；3) 鉴定·专家辅助人·技术调查官；4) 一审庭审焦点与质证；5) 上诉（最高法知产庭）·再审·执行。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份代理词 + 一份上诉状；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 23　行政维权与电商投诉　·　第 23 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 23 周《行政维权与电商投诉》。
+本周五个学习日依次为：1) 市场监管投诉与行政查处；2) 版权行政投诉；3) 电商平台投诉体系与申诉应对；4) 展会投诉与展会保护；5) 海关备案·扣留·担保与放行。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：行政投诉全流程演练 + 海关备案材料；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 24　刑事保护　·　第 24 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 24 周《刑事保护》。
+本周五个学习日依次为：1) 假冒注册商标罪（刑法 213）；2) 销售假冒注册商标的商品罪（214）与标识罪（215）；3) 侵犯著作权罪（217）与销售侵权复制品罪（218）；4) 侵犯商业秘密罪（219）；5) 立案标准·报案材料·刑民交叉与先刑后民。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份刑事报案材料；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 25　互联网与新型 IP　·　第 25 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 25 周《互联网与新型 IP》。
+本周五个学习日依次为：1) 直播带货与代购；2) 短视频·二次创作·剪辑；3) AI 生成内容与训练数据；4) 数据权益与数据竞争；5) 游戏·虚拟财产·数字藏品。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：出一份新型业务 IP 合规意见；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 26　跨境 IP　·　第 26 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 26 周《跨境 IP》。
+本周五个学习日依次为：1) 巴黎公约：国民待遇·优先权·独立性；2) 马德里体系与单一国注册；3) 海牙体系（外观设计）；4) PCT 与巴黎途径对比；5) 中国香港 / 美国 / 欧盟要点 + 亚马逊品牌备案 + 337 调查。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一份跨境布局与维权方案；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 27　珠宝时尚专项（一）　·　第 27 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 27 周《珠宝时尚专项（一）》。
+本周五个学习日依次为：1) 款式保护组合拳：外观 + 著作权 + 商标 + 反法；2) 元素·系列·经典款的保护节奏；3) 发布会·订货会·社交媒体的公开风险；4) 申请时机与成本；5) 珠宝行业典型判例精读。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：给一条产品线做完整保护方案；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 28　珠宝时尚专项（二）　·　第 28 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 28 周《珠宝时尚专项（二）》。
+本周五个学习日依次为：1) 仿款与抄袭的界定；2) 攀附·混淆与包装装潢；3) 代言·肖像权与形象权；4) 渠道管控：经销·代购·窜货·微商；5) 代工厂与供应商泄密。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：做一份渠道管控与打假方案；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 29　企业 IP 管理制度　·　第 29 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 29 周《企业 IP 管理制度》。
+本周五个学习日依次为：1) IP 资产台账与盘点；2) 员工发明与职务作品制度；3) 保密制度与离职管理；4) 培训·内控·风险台账；5) 危机应对与舆情。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：产出一套 IP 管理制度文件包；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 30　案源与专业标签　·　第 30 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 30 周《案源与专业标签》。
+本周五个学习日依次为：1) 从法务到 IP 律师的业务路径；2) 客户沟通与需求转化；3) 报价与服务方案写作；4) 专业文章与演讲；5) 知识管理与个人工具箱。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：写一份服务方案 + 一篇专业文章；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 31　综合实战（一）　·　第 31 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 31 周《综合实战（一）》。
+本周五个学习日依次为：1) 案件受理与策略制定；2) 证据组织与补强；3) 文书起草；4) 谈判与和解；5) 复盘与知识入库。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：完整案件全流程演练 A（商标 + 电商 + 行政）；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details><details><summary>WEEK 32　综合实战（二）　·　第 32 周指令</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 32 周《综合实战（二）》。
+本周五个学习日依次为：1) 跨境案件演练；2) 刑事控告演练；3) 技术类案件演练；4) 谈判与调解；5) 出师清单与知识体系固化。
+请按以下结构输出：
+1) 逐日精讲：每天给出核心概念、法条依据（精确到条、款、项并标注现行版本）、易混概念对比表、常见实务错误；
+2) 每个主题配一个珠宝 / 时尚消费品行业的真实业务场景（例如款式被抄、代工厂泄密、电商仿店、代言图片侵权）；
+3) 每天指定一份可交付的产出物（文书、表格、清单或意见书框架）；
+4) 每个知识点同时给出被诉方 / 侵权方视角的抗辩路径；
+5) 涉及期限、金额、赔偿上限、官费一律给具体数字与货币单位，不说「合理」「较高」；
+6) 周末实战题：能力自评 + 个人知识库交付；
+7) 最后出 5 道自测题，我答完你逐题讲评。
+要求：法条与数字不确定处明确标注「待核实」，禁止编造案号与金额。</div><div class="btnrow"><button class="btn gold" onclick="cpb(this)">复制本条指令</button></div></details></div><div class="panel" id="p3"><div class="sub">随学习进度持续累积，中英对照为跨境业务与英文合同打底。</div><div class="terms"><div class="ti"><div class="en">Intellectual Property (IP)</div><div class="cn">知识产权</div><div class="df">民事主体依法就智力成果与工商业标记享有的专有权利的总称</div></div><div class="ti"><div class="en">Exclusive Right</div><div class="cn">专有权利 / 排他权</div><div class="df">权利人禁止他人为特定行为的权利，是 IP 救济的核心</div></div><div class="ti"><div class="en">Intangible Asset</div><div class="cn">无形资产</div><div class="df">无实物形态但能带来经济利益的资源，IP 是其主要形式</div></div><div class="ti"><div class="en">Subject Matter</div><div class="cn">权利客体</div><div class="df">法律保护所指向的对象，如作品、发明、商标</div></div><div class="ti"><div class="en">Territoriality</div><div class="cn">地域性</div><div class="df">知识产权仅在授权或产生它的法域内有效的特性</div></div><div class="ti"><div class="en">Right-conferring vs Conduct-regulating</div><div class="cn">设权模式与行为规制模式</div><div class="df">前者赋予排他权，后者只禁止不正当行为</div></div><div class="ti"><div class="en">Automatic Protection</div><div class="cn">自动保护</div><div class="df">著作权自创作完成自动产生，无需履行任何手续</div></div><div class="ti"><div class="en">Registration</div><div class="cn">注册取得</div><div class="df">商标权、专利权须经行政程序核准或授权方能产生</div></div><div class="ti"><div class="en">Use-based Right</div><div class="cn">使用产生</div><div class="df">通过使用取得知名度而获得反法保护的标识权益</div></div><div class="ti"><div class="en">Voluntary Registration</div><div class="cn">自愿登记</div><div class="df">著作权登记仅具初步证据效力，非权利产生要件</div></div><div class="ti"><div class="en">Novelty-destroying Disclosure</div><div class="cn">破坏新颖性的公开</div><div class="df">申请日前公开导致专利丧失新颖性</div></div><div class="ti"><div class="en">Prior Art / Prior Design</div><div class="cn">现有技术 / 现有设计</div><div class="df">申请日以前已为公众所知的技术或设计</div></div><div class="ti"><div class="en">Judicial Interpretation</div><div class="cn">司法解释</div><div class="df">最高法对法律具体适用问题的解释，IP 裁判的实际依据</div></div><div class="ti"><div class="en">Examination Guidelines</div><div class="cn">审查指南</div><div class="df">专利 / 商标授权确权的审查操作标准</div></div><div class="ti"><div class="en">Nice Classification</div><div class="cn">尼斯分类</div><div class="df">商标注册用商品和服务国际分类</div></div><div class="ti"><div class="en">Guiding Cases</div><div class="cn">指导性案例</div><div class="df">最高法发布、各级法院应当参照的案例</div></div><div class="ti"><div class="en">Statutory Damages</div><div class="cn">法定赔偿</div><div class="df">权利人与侵权人均难以举证时由法院在法定幅度内酌定的赔偿</div></div><div class="ti"><div class="en">Case Retrieval</div><div class="cn">类案检索</div><div class="df">查找与在办案件类似的生效裁判，用于统一裁判尺度</div></div><div class="ti"><div class="en">Priority Right</div><div class="cn">优先权</div><div class="df">依巴黎公约，在首次申请后法定期限内在他国申请可回溯首次申请日</div></div><div class="ti"><div class="en">National Treatment</div><div class="cn">国民待遇</div><div class="df">成员国须给予其他成员国国民不低于本国国民的保护</div></div><div class="ti"><div class="en">Independence of Protection</div><div class="cn">独立保护</div><div class="df">各国授予的专利 / 商标相互独立，互不影响</div></div><div class="ti"><div class="en">Madrid System</div><div class="cn">马德里体系</div><div class="df">商标国际注册体系，一份申请指定多成员国</div></div><div class="ti"><div class="en">Hague System</div><div class="cn">海牙体系</div><div class="df">工业品外观设计国际注册体系，中国 2022 年 5 月 5 日生效</div></div><div class="ti"><div class="en">PCT</div><div class="cn">专利合作条约</div><div class="df">专利申请国际阶段程序，30 个月内进入国家阶段</div></div><div class="ti"><div class="en">Central Attack</div><div class="cn">中心打击</div><div class="df">马德里国际注册自基础注册被撤销之日起 5 年内随之失效的风险</div></div><div class="ti"><div class="en">Concurrence of Claims</div><div class="cn">请求权竞合</div><div class="df">同一行为同时符合多个请求权构成要件时的路径选择问题</div></div><div class="ti"><div class="en">Prior Rights</div><div class="cn">在先权利</div><div class="df">商标法保护的他人既有的在先合法权益</div></div><div class="ti"><div class="en">Non-use Defense</div><div class="cn">未使用抗辩</div><div class="df">注册商标三年未实际使用则不承担赔偿责任</div></div><div class="ti"><div class="en">Prior Use Defense</div><div class="cn">在先使用抗辩</div><div class="df">在先使用并有一定影响可在原使用范围内继续使用</div></div><div class="ti"><div class="en">Protection Mix</div><div class="cn">权利组合</div><div class="df">针对同一产品叠加运用多种 IP 权利的策略</div></div><div class="ti"><div class="en">Abuse of Rights</div><div class="cn">权利滥用</div><div class="df">以损害他人为主要目的行使权利，法院可不予支持</div></div><div class="ti"><div class="en">Protection Mix</div><div class="cn">权利组合</div><div class="df">针对同一产品叠加运用多种 IP 权利的策略</div></div><div class="ti"><div class="en">Work-for-hire</div><div class="cn">委托创作</div><div class="df">委托他人创作作品时，著作权归属依合同约定，无约定则归受托人</div></div><div class="ti"><div class="en">NDA</div><div class="cn">保密协议</div><div class="df">与代工厂、供应商、员工签署的保密约定，是商业秘密成立的基础</div></div><div class="ti"><div class="en">Freedom-to-operate</div><div class="cn">自由实施分析</div><div class="df">上市前排查产品是否可能落入他人在先有效专利的保护范围</div></div></div></div><div class="panel" id="p4"><div class="sub">位置：references/verified_laws_ip.md。每核实一条，append 一条，标注核实日期。这是 32 周后最值钱的资产。</div><table><thead><tr><th>法规 / 条款</th><th>核心内容</th><th>版本与施行</th><th>易错点</th></tr></thead><tbody><tr><td>《民法典》第 123 条</td><td>知识产权的定义与八类客体（作品、发明实用新型外观设计、商标、地理标志、商业秘密、集成电路布图设计、植物新品种、法律规定的其他客体）</td><td>2021-01-01 施行</td><td>整个 IP 体系的目录；客体识别的起点</td></tr><tr><td>《著作权法》</td><td>作品定义与类型、著作权自创作完成自动产生、人身权与财产权、保护期、合理使用、技术措施、赔偿与法定赔偿上限</td><td>2020 年修正，2021-06-01 施行</td><td>注意修法后「视听作品」等表述变化；引用时核对条号</td></tr><tr><td>《专利法》</td><td>三类专利定义、授权条件（新颖性/创造性/实用性）、申请与审查程序、专利权自公告之日起生效、期限（发明 20 年、实用新型 10 年、外观设计 15 年）、侵权判定与赔偿</td><td>2020 年修正，2021-06-01 施行</td><td>外观设计 15 年期限自 2021-06-01 起适用</td></tr><tr><td>《商标法》</td><td>商标注册取得原则、禁用禁注条款、异议与无效、撤三、商标专用权与禁用权、侵权情形、正当使用与在先使用抗辩、赔偿与未使用抗辩</td><td>2019 年修正，2019-11-01 施行</td><td>惩罚性赔偿与法定赔偿上限以现行条文为准</td></tr><tr><td>《反不正当竞争法》</td><td>混淆行为、虚假宣传、侵犯商业秘密、商业诋毁、互联网条款、一般条款、损害赔偿</td><td>2019 年修正为已知版本；⚠ 待核实最新修订的施行日期与条款序号</td><td>⚠ 条款序号必须以现行有效文本核对后再引用</td></tr><tr><td>《刑法》第 213-220 条</td><td>假冒注册商标罪、销售假冒注册商标的商品罪、非法制造销售注册商标标识罪、侵犯著作权罪、销售侵权复制品罪、侵犯商业秘密罪、单位犯罪</td><td>以现行刑法及修正案为准</td><td>立案追诉标准见相关司法解释（⚠ 待核实现行标准数值）</td></tr><tr><td>国际条约</td><td>巴黎公约、伯尔尼公约、TRIPS、马德里体系、海牙协定、PCT</td><td>中国加入/生效日期见第 1 周第 4 天</td><td>⚠ 生效日期与优先权期限以官方文本核对</td></tr></tbody></table></div><div class="panel" id="p5"><h2>每日节奏（90 分钟）</h2><table><thead><tr><th>时长</th><th>环节</th><th>做什么</th></tr></thead><tbody><tr><td>15 分钟</td><td>地基概念</td><td>读「水泥沙子」清单，把术语念一遍，能默写出定义</td></tr><tr><td>40 分钟</td><td>正文精读</td><td>对照法条读正文，每个表格自己复述一遍；遇到「待核实」当场核对</td></tr><tr><td>20 分钟</td><td>产出物</td><td>完成当日指定的文书 / 表格 / 清单，存进 outputs/</td></tr><tr><td>15 分钟</td><td>AI 自查</td><td>复制当日指令给 AI，用它出的自测题检验；答错的回看正文</td></tr></tbody></table><h2>每周结构</h2><ul><li>周一至周五：每天一个主题，一个产出物</li><li>周末：一个完整案件 / 项目的实操演练（90 分钟一次做完）</li></ul><h2>每个学习日页面的五段结构</h2><ol><li>今日主题与比喻（建立直觉）</li><li>地基概念（必背术语）</li><li>今日产出物（必须留下文件）</li><li>可复制 AI 指令</li><li>正文 + 对比表 + 术语表 + 上下天导航</li></ol><h2>三条铁律</h2><div class="key">1. <b>先客体、后权利、再救济</b>——任何问题先问「保护的到底是什么」，再说权利范围，最后说救济。</div><div class="key">2. <b>先申请、后公开</b>——外观设计与发明在公开前必须递交申请，这个节点一旦错过不可补救。</div><div class="key">3. <b>双视角</b>——每学一个权利，同时想清楚被诉方的抗辩路径。只会进攻的律师打不赢硬仗。</div><h2>更新与上线</h2><ul><li>本站：linqiongni.top/ip/（主页「法务实务 · 知识产权」标签页）</li><li>源文件：/Users/linqiongni/Downloads/知识产权/（_build 为生成器，W1 为第 1 周内容）</li><li>每周内容生成后同步到站点仓库 public/ip/ 并重新部署</li></ul></div></div><div style="max-width:1180px;margin:0 auto;padding:0 22px 50px"><div class="disc">本计划为个人学习系统，所有产出须经本人审查确认后方可作为正式文件使用。法条、期限、金额与判例以现行有效文本为准。</div></div><script>document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});b.classList.add("on");document.getElementById("p"+b.dataset.p).classList.add("on");window.scrollTo({top:0,behavior:"smooth"});};});function cpb(btn){var t=btn.closest("details").querySelector(".prbox").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){var o=btn.innerText;btn.innerText="已复制";setTimeout(function(){btn.innerText=o},1500);});}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();btn.innerText="已复制";}}var KEY="ipplan32";function load(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return {}};}function save(o){localStorage.setItem(KEY,JSON.stringify(o));}function upd(){var o=load();var n=Object.keys(o).filter(function(k){return o[k]}).length;document.getElementById("pbi").style.width=(n/32*100)+"%";document.getElementById("ptxt").innerText="已完成 "+n+" / 32 周";document.querySelectorAll(".chk input").forEach(function(i){i.checked=!!o[i.dataset.w];var card=document.getElementById("wk"+i.dataset.w);if(card){card.classList.toggle("done",!!o[i.dataset.w]);}});}function tog(el){var o=load();o[el.dataset.w]=el.checked;save(o);upd();}upd();</script></body></html>

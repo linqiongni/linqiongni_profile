@@ -32,7 +32,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'legal',
     label: '法务实务',
     enLabel: 'Legal Practice',
-    subTabs: ['catering', 'logistics', 'foreign-contracts'],
+    subTabs: ['catering', 'logistics', 'ip', 'foreign-contracts'],
   },
 ];
 
@@ -44,6 +44,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   notes: { label: '日常分享', enLabel: 'Notes' },
   catering: { label: '餐饮法务', enLabel: 'Catering' },
   logistics: { label: '跨境物流法务', enLabel: 'Logistics' },
+  ip: { label: '知识产权', enLabel: 'IP' },
   'foreign-contracts': { label: '涉外合同学习', enLabel: 'Foreign Contracts' },
 };
 

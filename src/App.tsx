@@ -10,6 +10,7 @@ import { InsightsTab } from './components/InsightsTab';
 import { NotesTab } from './components/NotesTab';
 import { CateringLegalTab } from './components/CateringLegalTab';
 import { LogisticsLegalTab } from './components/LogisticsLegalTab';
+import { IpLegalTab } from './components/IpLegalTab';
 import { ForeignContractTab } from './components/ForeignContractTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
@@ -36,8 +37,8 @@ export default function App() {
   const handleSelectTab = (tab: TabType) => {
     setActiveGroup(groupOfTab(tab));
     setActiveTab(tab);
-    // 跨境物流法务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
-    if (tab === 'logistics') {
+    // 跨境物流法务、知识产权为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
+    if (tab === 'logistics' || tab === 'ip') {
       window.scrollTo({ top: 0, behavior: 'auto' });
       return;
     }
@@ -59,8 +60,8 @@ export default function App() {
     }
   };
 
-  // 跨境物流法务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
-  const isFullBleed = activeTab === 'logistics';
+  // 跨境物流法务、知识产权 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip';
 
   const handleScrollToContent = () => {
     if (contentSectionRef.current) {
@@ -157,6 +158,9 @@ export default function App() {
             {activeTab === 'catering' && <CateringLegalTab />}
 
             {activeTab === 'logistics' && <LogisticsLegalTab />}
+
+            {activeTab === 'ip' && <IpLegalTab />}
+
             {activeTab === 'foreign-contracts' && <ForeignContractTab />}
           </motion.div>
         </AnimatePresence>

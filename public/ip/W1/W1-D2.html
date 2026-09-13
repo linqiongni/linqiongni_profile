@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第1周·第2天｜权利取得方式三分：自动 / 确权 / 使用产生</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 1 · DAY 2 / 5　·　第一层 地基 · 总论</div><h1>权利取得方式三分：自动 / 确权 / 使用产生</h1><div class="sub">知识产权的权利谱系与法律渊源</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">同样是「你的」，著作权像头发——长出来就是你的；商标专利像驾照——必须考了才有；装潢商誉像名声——得别人知道才算数。</div><div class="mlink"><b>业务落点</b>业务落点：取得方式决定你要准备什么证据、什么时候必须行动、败诉风险在哪。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>自动取得（Automatic Protection）</li><li>行政确权（Registration）</li><li>使用产生（Use-based Right）</li><li>自愿登记（Voluntary Registration）</li><li>现有技术 / 现有设计（Prior Art / Prior Design）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">公司 IP 资产取得方式清单——在台账 v0 的每一项上标注取得方式、权利产生时点、现有证据强度（强 / 弱 / 无）、待补动作。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。请帮我梳理「权利取得方式三分法」：
+1) 用对比表说明自动取得（著作权、商业秘密）、行政确权（专利、商标）、使用产生（有一定影响的标识）三类在权利产生时点、关键证据、典型败点上的差异；
+2) 逐条给我法条依据（著作权法、专利法、商标法、反不正当竞争法的具体条款号与现行版本）；
+3) 针对珠宝 / 时尚消费品行业举例：一款新吊坠从设计手稿到上市，哪一步产生著作权、哪一步需要申请外观设计、品牌名何时必须注册、门店装潢靠什么保护；
+4) 给我一份「证据准备清单」：哪些证据现在就要固定，哪些事后补不回来；
+5) 重点讲清「发明专利申请公布后至授权前」的临时保护期为什么不能提起侵权之诉。
+不确定的条号与数字请标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、为什么要先学取得方式</h2>
+<p>因为<b>取得方式决定了你要准备什么证据、什么时候必须行动、以及败诉风险在哪</b>。很多案子不是输在法律理解，是输在「权利根本没产生」或「证据没留下来」。</p>
+<h2>二、三种取得方式总表</h2>
+<table><thead><tr><th>取得方式</th><th>涵盖权利</th><th>权利产生时点</th><th>关键证据</th><th>典型败点</th></tr></thead><tbody><tr><td>自动取得</td><td>著作权、商业秘密</td><td>著作权：作品创作完成之时；商业秘密：符合三性并采取保密措施之时</td><td>创作底稿、时间戳、文件属性、保密措施记录</td><td>拿不出创作时间证据，被对方反诉「你抄我的」</td></tr><tr><td>行政确权</td><td>专利权、商标权、布图设计、植物新品种</td><td>商标：核准注册之日；专利：授权公告之日</td><td>注册证、申请文件、缴费凭证、续展证明</td><td>以为「申请了就有权」，在授权前起诉被驳回</td></tr><tr><td>使用产生</td><td>有一定影响的商品名称、包装、装潢；未注册驰名商标</td><td>通过使用取得知名度之时</td><td>销售数据、广告投放、媒体报道、获奖、持续时间与地域</td><td>知名度证据不足，法院不认「有一定影响」</td></tr></tbody></table>
+<h2>三、自动取得：著作权</h2>
+<p>《著作权法》规定：中国公民、法人或者非法人组织的作品，不论是否发表，依照本法享有著作权；<b>著作权自作品创作完成之日起产生</b>。</p>
+<p>关键推论：<b>著作权登记不是权利产生要件。</b> 中国版权保护中心的「作品自愿登记」只具有<b>初步证据</b>效力（证明某人在某日提交了这份作品），并不能证明作品确由他原创。</p>
+<div class="key">实务动作：设计稿定稿当日就做<b>时间戳 / 区块链存证</b>（可信时间戳、公证云等），成本几十元，作用是固定「创作在先」。诉讼中这份证据常常是胜负手。</div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：司法实践对区块链存证的采信要件（平台资质、存证过程可核验、哈希值比对等），请以最高人民法院相关司法解释及各地高院最新裁判指引为准。</div>
+<h2>四、行政确权：商标与专利</h2>
+<p>商标：《商标法》第 3 条第 1 款——经商标局核准注册的商标为注册商标，商标注册人享有<b>商标专用权</b>，受法律保护。注意「注册」二字：<b>中国以注册取得为原则，使用本身不产生专用权</b>（驰名商标等为例外）。</p>
+<p>专利：《专利法》规定发明、实用新型、外观设计专利申请经审查没有发现驳回理由的，作出授权决定，发给证书并登记和公告，<b>专利权自公告之日起生效</b>。</p>
+<blockquote>由此推出一个高频考点：<b>发明专利申请公布后、授权前</b>，申请人只能要求实施其发明的单位或个人支付适当费用（临时保护），<b>此时还不能提起侵权之诉</b>。很多原告在这个阶段起诉，直接被驳回起诉或驳回诉讼请求。</blockquote>
+<h2>五、使用产生：反法的兜底保护</h2>
+<p>反不正当竞争法对「有一定影响的商品名称、包装、装潢等标识」提供保护。核心是「有一定影响」——这是<b>事实问题</b>，靠证据说话。</p>
+<p>法院通常综合考量：使用持续时间、地域范围、销售量与销售额、广告宣传投入与覆盖范围、市场知名度与获奖情况、受保护记录。</p>
+<div class="key">珠宝行业典型场景：开了十年的老店，柜台陈列方式、包装盒配色、丝带样式被隔壁新店整套照搬——没有注册商标也没有外观专利，只能靠反法主张装潢。此时你要拿出的是<b>十年来所有的销售单据、媒体报导、门店照片</b>，而不是设计稿。</div>
+<h2>六、证据准备清单</h2>
+<table><thead><tr><th>权利</th><th>现在就要做</th><th>出事时补不回来的</th></tr></thead><tbody><tr><td>著作权</td><td>定稿即存证；保留分层源文件（PSD / AI / 3D 原始文件）；合同约定权属</td><td>创作时间、作者身份、独创性说明</td></tr><tr><td>商业秘密</td><td>分级标注、访问权限、保密协议、离职交接</td><td>保密措施的存在与合理性</td></tr><tr><td>商标</td><td>提前注册（注册在先原则）；持续留存使用证据</td><td>申请日（决定权利先后）</td></tr><tr><td>专利</td><td>申请前不得公开；做好申请前检索</td><td>申请日 / 优先权日</td></tr><tr><td>装潢与字号</td><td>持续留存销售与宣传证据</td><td>知名度形成的时间与范围</td></tr></tbody></table>
+<h2>七、一个致命误区：公开在申请之前</h2>
+<p>这是外观设计专利最常见的事故：品牌方在时装周、订货会、小红书上先发了新品图，三个月后才想起申请外观专利——此时该设计已构成「现有设计」，专利即使授权也极易被无效。</p>
+<div class="key"><b>铁律：先申请，后公开。</b> 珠宝行业尤其致命，因为新品发布的商业节奏往往等不及专利授权。第 27 周会专门讲「申请时机与公开风险」的应对方案。</div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Automatic Protection</div><div class="cn">自动保护</div><div class="df">著作权自创作完成自动产生，无需履行任何手续</div></div><div class="ti"><div class="en">Registration</div><div class="cn">注册取得</div><div class="df">商标权、专利权须经行政程序核准或授权方能产生</div></div><div class="ti"><div class="en">Use-based Right</div><div class="cn">使用产生</div><div class="df">通过使用取得知名度而获得反法保护的标识权益</div></div><div class="ti"><div class="en">Voluntary Registration</div><div class="cn">自愿登记</div><div class="df">著作权登记仅具初步证据效力，非权利产生要件</div></div><div class="ti"><div class="en">Novelty-destroying Disclosure</div><div class="cn">破坏新颖性的公开</div><div class="df">申请日前公开导致专利丧失新颖性</div></div><div class="ti"><div class="en">Prior Art / Prior Design</div><div class="cn">现有技术 / 现有设计</div><div class="df">申请日以前已为公众所知的技术或设计</div></div></div><div class="foot"><a href="W1-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W1-D3.html">第 3 天 →</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
