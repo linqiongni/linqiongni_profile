@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第3周·第4天｜CISG：国际货物买卖合同的统一法</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 3 · DAY 4 / 5　·　阶段一　打地基</div><h1>CISG：国际货物买卖合同的统一法</h1><div class="sub">第 3 周主题：Incoterms 2020 与国际贸易买卖 —— 风险在哪里分界</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">CISG 是国际贸易的「普通话」：双方没特别约定，就自动讲普通话；觉得别扭，可以明确写「我们讲方言（选某国法）」。很多中国公司不知道自己一直在讲普通话。</div><div class="mlink"><b>怎么串到今天</b>Incoterms 只管交货那一米，买卖合同整体归谁管？今天补上这块拼图。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>《联合国国际货物销售合同公约》（CISG）：中国 1986 年交存加入书，1988.1.1 对中国生效</li><li>适用条件：营业地在不同缔约国 + 合同具有国际性 + 当事人未排除适用</li><li>我国加入时的两项保留：第 1 条第 1 款(b)项保留、第 11 条合同形式保留（注：第 11 条保留已于 2013 年撤回，请核对）</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《CISG 适用判断流程图》+ 一份《国际货物买卖合同条款对照表》（CISG vs 民法典合同编）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解《联合国国际货物销售合同公约》（CISG / 维也纳公约）：
+1. 适用判断流程图：第一步看营业地是否在不同国家、第二步看是否都是缔约国（或依冲突规范指向缔约国法）、第三步看当事人是否排除适用（opt-out）、第四步看标的是否属于排除范围（消费货物、船舶飞机、电力等）
+2. 中国的加入与保留：加入时间、生效时间、作了哪些保留、保留的现状（注意第 11 条形式保留的撤回情况，请注明「待核实」并告诉我在哪查）
+3. CISG 与《民法典》合同编的实质差异对照表（这张表最有价值）：
+   · 合同成立（要约承诺、逾期承诺的效力）
+   · 根本违约（fundamental breach）vs 我国「不能实现合同目的」
+   · 损害赔偿范围与可预见性
+   · 货物不符的通知期限与最长 2 年期限
+   · 预期违约与中止履行
+4. 实务重点：为什么跨境卖家在合同里经常「排除 CISG」？排除是明智还是愚蠢？给客户起草合同时我方的建议立场
+5. 最后给我一份《国际货物买卖合同必备条款清单》（含 CISG 下的特殊注意点）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：CISG 是国际贸易的「普通话」</h2>
+<p>中国和德国、波兰、美国等绝大多数贸易大国都加入了 CISG。这意味着：<b>只要买卖双方营业地在不同缔约国，且没特别约定，这份买卖合同就自动讲「普通话」（CISG），而不是某一方的本国法</b>。很多中国公司签跨境合同从没写过「适用什么法」，却一直在 CISG 的管辖下——只是自己不知道。理解 CISG，是判断「这份合同到底归哪国法管」的第一把钥匙。</p>
+<h2>二、适用判断流程图（四步）</h2>
+<ol><li><b>第一步：营业地是否在两国？</b> 双方营业地在不同国家是前提；同国企业之间不适用。</li><li><b>第二步：是否都是缔约国？</b> 双方营业地所在国均为 CISG 缔约国 → 自动适用。若一方非缔约国，则要看冲突规范是否指向缔约国法（<b>中国对此作保留，详见下文</b>）。</li><li><b>第三步：有没有 opt-out？</b> 当事人可书面约定排除 CISG、改适用某国法（第 6 条）。写了「本合同受英格兰法管辖」通常即排除 CISG。</li><li><b>第四步：标的是否排除范围？</b> 仅供个人/家庭使用的消费品、拍卖、股票证券、船舶飞机、电力等不适用 CISG（第 2 条）。</li></ol>
+<h3>中国的保留（必须标清）</h3>
+<ul><li><b>第 1 条第 1 款(b)项保留</b>：CISG 原本规定，即便双方营业地不在同一缔约国，只要依国际私法规则指向缔约国法，仍适用 CISG。中国对该「扩大适用」条款作了保留——<b>即只有双方营业地都在缔约国时，CISG 才自动适用</b>。</li><li><b>第 11 条形式保留（已撤回）</b>：CISG 原本规定合同无需书面即可成立（口头也行）。中国加入时作了「合同须书面形式」的保留，但<b>已于 2013 年 1 月 16 日撤回</b>。撤回后，在中国法下 CISG 合同也承认口头形式。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 中国交存加入书日期（1986-12-11）与对中国生效日（1988-01-01）以联合国条约库（treaties.un.org）CISG  depositary 信息为准；② 第 11 条保留撤回的具体生效日以外交部或商务部公告为准；③ 实务中我国法院对 CISG 的适用与解释口径，请核对最新司法案例。</div>
+<h2>三、CISG vs 《民法典》合同编：五处实质差异（最有价值的一张表）</h2>
+<table><thead><tr><th>议题</th><th>CISG</th><th>我国《民法典》合同编</th><th>实务影响</th></tr></thead><tbody><tr><td>合同成立</td><td>要约/承诺规则（第 14-24 条）；逾期承诺原则可归原要约人，视其及时追认</td><td>以承诺通知到达为成立（第 483 条）；更强调到达主义</td><td>跨境邮件/系统往来下，成立时点可能不同，影响「合同何时生效应诉期」</td></tr><tr><td>根本违约</td><td>第 25 条：实质上剥夺对方预期利益</td><td>第 563 条：「不能实现合同目的」</td><td>标准措辞不同，解除合同门槛的表述须对应</td></tr><tr><td>损害赔偿</td><td>第 74 条：可预见性规则 + 含利润损失</td><td>第 584 条：可预见规则 + 含合同履行后可获利益</td><td>口径接近，但 CISG 不涵盖精神损害，且计算以「时价」为基准</td></tr><tr><td>货物不符通知</td><td>须在合理时间通知，最长 <b>2 年</b>（第 39 条）</td><td>质量异议期依约定/合理期限，无统一 2 年上限</td><td>超 2 年未通知，CISG 下丧失索赔权，这是硬期限</td></tr><tr><td>预期违约</td><td>第 71-73 条：中止履行 / 宣告合同无效</td><td>第 527-528 条：不安抗辩权</td><td>均可中止履行，但行使条件与程序表述不同</td></tr></tbody></table>
+<h2>四、实务重点：为什么卖家爱「排除 CISG」</h2>
+<ul><li><b>常见动机</b>：① 不熟悉 CISG 的 2 年通知期、根本违约标准，怕踩坑；② 想用本国法（如卖方熟悉的中国法或买方熟悉的英国法）减少不确定性；③ 某些条款（如宣告合同无效）对卖方不利。</li><li><b>是明智还是愚蠢？</b> 没有定论，取决于谈判地位：强势卖方排除 CISG 改适用己方熟悉法域，能降低不确定性；但排除后若约定适用外国法，反而增加己方举证与适用成本。<b>我方建议立场</b>：除非客户坚持，否则不必主动排除；若要排除，务必明确写清「本合同不适用 CISG，适用 XX 国法律」，避免「半排除」导致争议。</li></ul>
+<h2>五、《国际货物买卖合同必备条款清单》（CISG 视角）</h2>
+<ol><li>适用法律与争议解决（仲裁地/法院、排除或保留 CISG 须明示）</li><li>贸易术语（Incoterms 2020 版本、港口/地点写全）</li><li>货物描述、数量、规格、包装与检验标准</li><li>价格与支付（币种、结算方式、付款节点）</li><li>交货与风险转移（对应所选术语）</li><li>货物不符的通知期限（建议明确短于或等于 2 年）</li><li>违约与救济（根本违约、解除合同、减价、损害赔偿计算）</li><li>不可抗力与情势变更</li><li>知识产权担保与第三方权利要求</li><li>保密与数据保护（跨境场景含个保法/GDPR）</li></ol>
+<div class="key">今日口诀：<b>营业地跨国 + 都是缔约国 + 没排除 = 自动讲 CISG 普通话。中国只认「双方都缔约国」这一条（保留 b 项）；2 年通知期是硬死线，超期即失权。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">CISG</div><div class="cn">联合国国际货物销售合同公约</div><div class="df">United Nations Convention on Contracts for the International Sale of Goods；1980 维也纳通过，1988.1.1 生效，统一国际货物买卖合同规则</div></div><div class="ti"><div class="en">Fundamental Breach</div><div class="cn">根本违约</div><div class="df">一方违约使另一方实质上丧失合同预期利益；CISG 第 25 条，是宣告合同无效（avoidance）的前提</div></div><div class="ti"><div class="en">Opt-out</div><div class="cn">排除适用</div><div class="df">当事人可书面约定不适用 CISG（第 6 条），改选某国国内法</div></div><div class="ti"><div class="en">Avoidance</div><div class="cn">宣告合同无效</div><div class="df">在根本违约等情形下，受害方单方解除合同的 CISG 术语，对应我国「解除合同」</div></div><div class="ti"><div class="en">Conformity of Goods</div><div class="cn">货物相符</div><div class="df">卖方交付的货物须在数量、质量、规格上与合同一致，否则买方可在通知期内主张</div></div></div></div><div class="foot"><a href="W3-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W3-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

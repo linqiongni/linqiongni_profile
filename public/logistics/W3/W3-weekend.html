@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第3周·周末实战｜审查一份外贸合同的价格条款</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 3 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战③：审查一份外贸合同的价格条款与物流衔接</h1><div class="sub">第 3 周主题：Incoterms 2020 与国际贸易买卖 —— 风险在哪里分界</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">审外贸合同的价格条款，就是看外卖订单备注有没有写清「谁付配送费、洒了算谁的」。一句 FOB 后面漏写装船费，就是几千美金的分歧。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 + 德国买方，FOB 深圳，带电产品含锂电池，海运拼箱，买方指定我方为货代）。只审价格条款与运输条款，做一份审查意见：术语选对了吗、风险转移点和实际交货方式匹配吗、保险谁买买够了吗、与我方运输合同的衔接有没有缺口。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要审查一份外贸买卖合同的价格与运输条款。设定：深圳卖方与德国买方签 FOB 深圳条款，货物为带电产品（含锂电池），走海运拼箱，买方指定我方为货代。
+
+请输出：
+1. 这份合同里价格条款的完整审查意见：FOB 术语下买卖双方在「风险转移、费用划分、订舱义务、保险、清关」五件事上的分配，以及本例中的具体错配
+2. 带电产品 + FOB 的特殊风险：危险品申报义务在谁、瞒报的后果、MSDS 与 UN38.3 谁出
+3. 术语与实际操作的衔接缺口：FOB 下买方订舱但卖方负责装船前的风险，这段「空窗期」谁管？货代在这个空窗期出事找谁
+4. 给我一份《外贸合同价格条款审查清单》20 项（法务视角，含应争取的改写建议）
+5. 最后：如果让我给这个客户做咨询，我会建议改成什么术语？说明理由和三个替代方案</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖方 + 德国买方，签 <b>FOB Shenzhen</b>，货物是<b>含锂电池的带电产品</b>（属第 9 类危险品，UN3480/UN3481），走<b>海运拼箱</b>，买方指定<b>我方为货代</b>。关键风险点：① FOB 下买方订舱、卖方装船，装船前有一段责任真空；② 锂电池是高危品，申报稍有差池就是船货俱焚级别事故；③ 拼箱意味着多票货混装，任一瞒报牵连整柜；④ 我方是买方指定的货代，极易在买卖双方的术语争议里被夹。</p>
+<h2>二、FOB 价格条款审查意见：五件事的分配与错配</h2>
+<table><thead><tr><th>事项</th><th>FOB 规则分配</th><th>本例实际</th><th>错配/风险</th></tr></thead><tbody><tr><td>风险转移</td><td>深圳装运港装上船时转买方</td><td>装上船前货在卖方/港区</td><td>装船前真空期，买卖互推，货代易被拉入</td></tr><tr><td>费用划分</td><td>主运费买方付至 Hamburg</td><td>买方订舱付运费</td><td>基本吻合（运费买方担）</td></tr><tr><td>订舱义务</td><td>买方</td><td>买方指定我方代订</td><td>我方身份=订舱代理，须书面固化</td></tr><tr><td>保险</td><td>买方自购</td><td>买方投保</td><td>吻合；但卖方有及时通知义务</td></tr><tr><td>清关</td><td>出口卖方 / 进口买方</td><td>卖方办出口、买方办进口</td><td>吻合；但锂电池出口需危险品审批</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：锂电池按《国际海运危险货物规则》（IMDG Code）归类与包装要求，以及中国《危险化学品安全管理条例》《民用航空危险品运输管理规定》的出口审批口径，以最新官方文本为准；上表为通用分析框架。</div>
+<h2>三、带电产品 + FOB 的特殊风险（本案最致命）</h2>
+<ul><li><b>危险品申报义务在谁</b>：托运人（本案深圳卖方）对危险品的<b>正确申报、包装、标记</b>负首要责任；货代（我方）作为代理人，须审核 SDS/UN38.3 并如实向承运人申报，<b>不得代客瞒报</b>。</li><li><b>瞒报后果</b>：轻则承运人拒运、收取违约金；重则构成《刑法》第 136 条危险物品肇事罪或危害公共安全类责任，且保险公司对瞒报导致的损失<b>拒赔</b>。</li><li><b>MSDS 与 UN38.3 谁出</b>：由生产/卖方（深圳卖方）出具并随货提供；我方作为货代须索要并核验，留存记录以自证已尽合理审查。</li><li><b>拼箱叠加风险</b>：一票瞒报锂电池可能引燃同柜货物，整柜全损，所有货主与代理连带受损——我方须在接单时做危险品专项尽调。</li></ul>
+<div class="key">货代自保三动作：① 接单即索要 MSDS + UN38.3 + 危险品包装证明；② 在委托合同写「托运人保证申报真实，瞒报一切后果及第三方索赔由其承担」；③ 发现可疑即拒接，不以「客户要求」为由冒险。</div>
+<h2>四、术语与实际操作的衔接缺口：FOB 空窗期</h2>
+<p>FOB 规则上风险在「装上船」才转买方，所以装船前损失理论上卖方担。但买方指定船公司、我方代订舱，货一旦进港区即由承运人/港区接管，<b>这一段到底算卖方还是买方、货代有没有「经手责任」，极易扯皮</b>。若我方在空窗期替双方传递指令、代垫费用、甚至参与装箱监装，就可能被认定为「实际介入」，从而被拉入货损索赔。</p>
+<ul><li><b>切割做法</b>：我方只做订舱代理与港区交接见证，所有装船前风险用书面交接单（receipt）固化在买卖双方之间。</li><li><b>谁找货代</b>：买卖任何一方在空窗期受损，都会先找「手里有货、有单、有动作」的货代要说法；所以我方须保留全部指令邮件与时间戳，证明自己仅居间。</li></ul>
+<h2>五、《外贸合同价格条款审查清单》20 项（法务视角）</h2>
+<ol><li>术语是否写明「Incoterms 2020」（无版本年份=隐患）</li><li>术语与运输方式匹配（空运/铁公/多式联运不应用 FOB/CFR/CIF）</li><li>交货地点/港口是否具体到码头</li><li>风险转移点与买方实际收货能力是否匹配</li><li>运费支付方与支付节点是否明确</li><li>保险由谁买、险别（ICC A/B/C）是否写清</li><li>出口清关责任方与单证（报关单、许可证）是否落实</li><li>进口清关与税费承担方（DDP 才归卖方）是否明确</li><li>危险品/带电产品的申报责任与证明文件谁出</li><li>MSDS、UN38.3、危险品包装证明是否作为合同附件</li><li>订舱义务方与货代指定方式是否写明</li><li>货代身份（代理/承运/多式联运经营人）是否在合同中定性</li><li>术语与结算方式是否冲突（如 DDP+后 T/T 双重风险）</li><li>价格是否含目的国 VAT/反倾销税（DDP 必含）</li><li>滞箱费/滞港费（demurrage/detention）由谁承担</li><li>货损通知期限与索赔路径是否衔接 CISG/海商法</li><li>责任限额与免责条款是否提示并双方确认</li><li>不可抗力与海关查验导致延误的分担</li><li>知识产权与合规（CE/UKCA/认证）责任方</li><li>争议解决与适用法律是否排除/保留 CISG 明示</li></ol>
+<h2>六、咨询建议：改成什么术语？三个替代方案</h2>
+<ul><li><b>首选替代：FCA Shenzhen（或 FCA 深圳某仓库）</b>。卖方将货交买方指定承运人即完成交货，风险早早转移，且 FCA 适用任何运输方式（含拼箱与多式联运），比 FOB 更贴合本案非整柜、需陆运进港的实情；并可在 FCA 下约定由买方指示承运人向卖方签发已装船提单，解决结汇。</li><li><b>替代二：CPT Hamburg / CIP Hamburg</b>。若卖方愿多担一点、换取报价含运费保费，用 CIP 还能把保险（ICC(A)）一并包掉，对买方省心；但风险仍在交第一承运人时转，卖方须算清运费保费。</li><li><b>替代三：保留 FOB 但补「危险品专项附件 + 货代责任切割条款」</b>。若双方坚持 FOB，则必须单独签署危险品申报责任书与货代居间免责条款，把空窗期与瞒报责任钉死在买卖双方之间。</li></ul>
+<div class="key">实战口诀：<b>FOB 遇上锂电池，比的不是谁便宜，是谁先把危险品责任钉死。货代接这类单，证照不全不接、条款不切不离、瞒报不背锅——三条守住，这票才敢做。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">FOB Shenzhen</div><div class="cn">FOB 深圳</div><div class="df">装运港船上交货（深圳）；风险在深圳装运港装上船时转移，运费与保险由买方负责</div></div><div class="ti"><div class="en">Dangerous Goods Declaration</div><div class="cn">危险品申报</div><div class="df">托运人对危险品如实申报的义务；锂电池属第 9 类危险品，瞒报可触刑责</div></div><div class="ti"><div class="en">MSDS</div><div class="cn">化学品安全说明书</div><div class="df">Material Safety Data Sheet；载明货物危险性与应急处置，承运人与海关要求提供</div></div><div class="ti"><div class="en">UN38.3</div><div class="cn">锂电池运输测试</div><div class="df">联合国《关于危险货物运输的建议书》第 38.3 节测试；锂电池出货前须通过的运输安全测试</div></div><div class="ti"><div class="en">Carve-out Clause</div><div class="cn">责任切割条款</div><div class="df">物流合同中明确「我方仅按约定运输/代理，不入买卖双方贸易术语风险划分」</div></div></div></div><div class="foot"><a href="W3-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W3-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>
