@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·第3天｜证据形式：公证购买·时间戳·区块链存证·电子数据审查</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · DAY 3 / 5　·　第 1 层 地基 · 总论与通用规则</div><h1>证据形式：公证购买·时间戳·区块链存证·电子数据审查</h1><div class="sub">程序与证据地图</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">知产案件的胜负 80% 在证据。侵权行为发生在网页上、直播间里、微信群里——这些证据明天就可能消失。所以你要掌握三种"把瞬间变成永久"的工具：公证（最贵最硬）、可信时间戳（便宜够用）、区块链存证（技术派的选择）。</div><div class="mlink"><b>业务落点</b>业务落点：接到线索后先固定、再维权。没固定的证据等于没有。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>公证购买（Notarized Purchase）</li><li>公证保全（Notarized Preservation）</li><li>可信时间戳（Trusted Timestamp）</li><li>区块链存证（Blockchain Evidence）</li><li>电子数据（Electronic Data）</li><li>清洁性检查</li><li>哈希值校验</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《取证工具选型表》——按证据类型（网页、直播、微信聊天、实物购买、销售数据、设计稿）列出：用哪种工具、成本、证据效力、操作要点、常见瑕疵。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**知识产权案件的证据形式与取证工具**。请：
+1) 用选型表对比公证、可信时间戳、区块链存证、自行截图录屏四类方式：成本、办理时长、证据效力、适用场景、典型瑕疵；
+2) 讲清公证购买的完整流程与操作要点：申请、公证员身份、**清洁性检查**（使用公证处设备、清除缓存与历史记录、全程录像）、下单、收货、封存、出具公证书；涉网购公证的**异地管辖**问题；
+3) 讲清可信时间戳的原理（RFC 3161）与司法采信现状，以及区块链存证的采信要件（平台资质、存证过程可核验、哈希值可比对）；
+4) 讲解电子数据的审查规则（《最高人民法院关于民事诉讼证据的若干规定》中关于电子数据真实性审查与推定真实的条款，⚠ 条号待核实）；
+5) 逐项给操作要点：网页、直播、短视频、微信聊天记录、朋友圈、邮件、云平台后台数据、实物购买；
+6) 列出**最常见的五种取证瑕疵**（如未做清洁性检查、截图无网址与时间、录屏未连续、公证处跨区域执业、未保存原始载体）；
+7) 出 5 道判断题并讲评。
+不确定处一律标注「待核实」，不得编造案号。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、取证工具选型表</h2>
+<table><thead><tr><th>方式</th><th>成本</th><th>时长</th><th>证据效力</th><th>适用场景</th><th>典型瑕疵</th></tr></thead><tbody><tr><td>公证（线下购买 / 现场）</td><td>高</td><td>数天</td><td><b>最强</b>（公文书证，推定真实）</td><td>线下门店购买、展会现场、实物封存</td><td>跨区域执业、未做清洁性检查</td></tr><tr><td>公证（网页 / 录屏）</td><td>中高</td><td>数天</td><td>强</td><td>电商详情页、店铺首页、销量展示</td><td>未全程录像、未显示网址与时间</td></tr><tr><td>可信时间戳</td><td><b>低</b></td><td>即时</td><td>较强（需可验证）</td><td>网页、图片、文档、设计稿</td><td>未保留原始文件与验证路径</td></tr><tr><td>区块链存证</td><td>低</td><td>即时</td><td>较强（需平台与过程可核验）</td><td>网页、图片、视频、文件</td><td>平台资质存疑、无法当庭验证</td></tr><tr><td>自行截图 / 录屏</td><td>无</td><td>即时</td><td><b>弱</b>（易被质疑真实性）</td><td>辅助材料、内部线索</td><td>无网址、无时间、可编辑性强</td></tr></tbody></table>
+<div class="key"><b>成本与效力的权衡原则</b>：核心侵权事实（"他确实在卖"）用公证；辅助事实与批量证据用时间戳或区块链；内部线索与排查阶段用截图。一个案件的取证预算，通常 60% 花在最关键的一两次公证上。</div>
+<h2>二、公证购买：标准流程与七个要点</h2>
+<table><thead><tr><th>步骤</th><th>要点</th><th>易错点</th></tr></thead><tbody><tr><td>① 申请</td><td>向有管辖权的公证处提出申请，说明公证事项与用途</td><td>跨区域执业问题（⚠ 公证执业区域规定待核实）</td></tr><tr><td>② 设备</td><td><b>使用公证处提供的设备</b>进行网络操作</td><td>用自己的电脑可能被质疑可被篡改</td></tr><tr><td>③ 清洁性检查</td><td>清除浏览器缓存、Cookie、历史记录；检查 hosts 文件；必要时重装系统或换机</td><td><b>漏做清洁性是最常见的致命瑕疵</b></td></tr><tr><td>④ 全程录像</td><td>从开机、联网、输入网址到下单、支付、确认订单全程连续录制</td><td>录制中断、跳转剪辑</td></tr><tr><td>⑤ 信息固定</td><td>显示完整网址、当前日期时间、店铺主体信息、商品标题与详情页</td><td>只截商品图不截网址</td></tr><tr><td>⑥ 收货与封存</td><td>收货过程一并公证，实物当场封存并拍照</td><td>快递被代收、未当场拆封公证</td></tr><tr><td>⑦ 出证</td><td>核对公证书内容与附件（截图、录像光盘、实物照片）</td><td>附件与正文不一致</td></tr></tbody></table>
+<div class="key"><b>收货环节的价值被严重低估</b>：收货公证能证明"这个东西确实从这个卖家寄出、实物长这样"，把线上主体与线下实物连接起来。只做网页不做收货，被告可以辩称"发的货与网页不一致"。</div>
+<h2>三、时间戳与区块链存证</h2>
+<table><thead><tr><th></th><th>可信时间戳</th><th>区块链存证</th></tr></thead><tbody><tr><td>原理</td><td>由权威时间戳服务机构对文件哈希值签发时间凭证（RFC 3161）</td><td>将文件哈希写入区块链，利用分布式账本不可篡改特性固定时间与内容</td></tr><tr><td>成本</td><td>低（数十元级别，⚠ 以服务机构现行收费为准）</td><td>低</td></tr><tr><td>验证</td><td>通过签发机构官网验证证书与哈希值</td><td>通过链上浏览器或平台验证</td></tr><tr><td>司法采信</td><td>多数法院认可，要求<b>可当庭验证</b></td><td>需证明平台资质、存证过程规范、哈希可比对（⚠ 具体要件以现行司法解释与指引核对）</td></tr><tr><td>适用</td><td>设计稿定稿、网页快照、文件版本固定</td><td>批量网页、视频、图片固定</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 司法实践对区块链存证的审查通常包括：存证平台的资质与中立性、存证过程的规范性与可回溯、哈希值的一致性验证、是否有其他证据佐证。<b>仅有存证证书而无验证路径的，可能被质疑</b>。</div>
+<h2>四、电子数据的审查规则</h2>
+<p>《最高人民法院关于民事诉讼证据的若干规定》对电子数据的真实性审查与推定真实作了规定。法院审查电子数据时通常综合考虑：</p>
+<table><thead><tr><th>审查因素</th><th>具体内容</th></tr></thead><tbody><tr><td>生成、存储、传输所依赖的计算机系统的硬件、软件环境是否完整可靠</td><td>是否处于正常运行状态、是否具备防止出错的监测与核查手段</td></tr><tr><td>电子数据的生成主体与时间是否明确</td><td>是否具备有效的防止篡改措施</td></tr><tr><td>保存、传输、提取的方法是否可靠</td><td>提取主体是否适当、是否由中立第三方保存</td></tr><tr><td>是否经过公证或由中立第三方记录保存</td><td>由中立第三方平台提供或确认的，真实性更易被认可</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 上述审查因素的条号与表述请以现行《民事诉讼证据规定》核对。</div>
+<h2>五、分类型操作要点</h2>
+<table><thead><tr><th>证据类型</th><th>推荐工具</th><th>操作要点</th></tr></thead><tbody><tr><td>电商网页（详情页、店铺页）</td><td>公证或时间戳</td><td>完整网址 + 时间 + 店铺主体 + 商品标题 + 销量 + 全屏滚动录像</td></tr><tr><td>直播</td><td>公证录屏 + 时间戳</td><td>完整录制（含开播前进入路径）、记录主播 ID、商品链接、口述内容、销量变化</td></tr><tr><td>短视频</td><td>时间戳 + 公证</td><td>保存原始视频文件与 URL，不要只截封面</td></tr><tr><td>微信聊天记录</td><td>公证（手机操作全程录像）+ 原始载体</td><td><b>必须出示原始手机</b>，展示登录状态、对方信息、完整对话；注意隐私与合法性边界</td></tr><tr><td>朋友圈 / 小红书 / 微博</td><td>时间戳或公证</td><td>含发布时间、账号主体、完整互动区</td></tr><tr><td>设计稿与源文件</td><td>定稿即时间戳 + 保留分层源文件</td><td>保留 PSD / AI / 3D 原始文件，只交导出件等于放弃最强证据</td></tr><tr><td>销售数据</td><td>平台后台导出 + 公证 / 第三方数据</td><td>自行导出的数据需公证固定，否则易被质疑</td></tr></tbody></table>
+<div class="key"><b>原始载体是电子数据的命门。</b> 微信聊天记录、邮件、后台数据，法院几乎都会要求出示原始载体（手机、电脑）。截图打印件在任何时候都不够——这点是新手最容易犯的错。</div>
+<h2>六、五种致命取证瑕疵</h2>
+<ol><li><b>未做清洁性检查</b>——被告抗辩"你访问的可能是自己伪造的页面"；</li><li><b>截图无网址与时间</b>——无法证明来自哪个网站、什么时间；</li><li><b>录屏中断或剪辑</b>——连续性被破坏，真实性受质疑；</li><li><b>公证处跨区域执业</b>——可能被质疑公证程序不合法（⚠ 以现行公证执业区域规定核对）；</li><li><b>未保存原始载体</b>——电子数据无法核对原件。</li></ol>
+<h2>七、今日自测</h2>
+<ol><li>做网络公证为什么必须用公证处的电脑？</li><li>只做网页公证不做收货公证，有什么风险？</li><li>微信聊天记录只提交截图打印件够吗？</li><li>时间戳证书在法庭上怎么验证？</li><li>设计稿定稿后最该做什么？</li></ol><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Notarized Purchase</div><div class="cn">公证购买</div><div class="df">由公证员全程见证并固定的购买取证</div></div><div class="ti"><div class="en">Cleanliness Check</div><div class="cn">清洁性检查</div><div class="df">公证前清除缓存记录以排除伪造可能</div></div><div class="ti"><div class="en">Trusted Timestamp</div><div class="cn">可信时间戳</div><div class="df">由权威机构签发的时间凭证</div></div><div class="ti"><div class="en">Blockchain Evidence</div><div class="cn">区块链存证</div><div class="df">将哈希写入区块链以固定电子数据</div></div><div class="ti"><div class="en">Electronic Data</div><div class="cn">电子数据</div><div class="df">以电子形式存在的证据材料</div></div><div class="ti"><div class="en">Hash Value</div><div class="cn">哈希值</div><div class="df">文件内容的唯一数字指纹</div></div><div class="ti"><div class="en">Original Carrier</div><div class="cn">原始载体</div><div class="df">生成并存储电子数据的原始设备</div></div></div><div class="foot"><a href="W4-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W4-D4.html">第 4 天 →</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

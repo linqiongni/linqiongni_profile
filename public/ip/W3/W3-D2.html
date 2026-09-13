@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第3周·第2天｜停止侵害及其例外（公共利益与比例原则）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 3 · DAY 2 / 5　·　第 1 层 地基 · 总论与通用规则</div><h1>停止侵害及其例外（公共利益与比例原则）</h1><div class="sub">侵权与救济通论</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">停止侵害是 IP 诉讼的第一诉求，也是最"不讲道理"的救济——不问过错、不问损失，只要侵权在持续或有可能再犯，法院原则上就判停。但在极少数案件中，法院会因为「停下来的代价太大、又涉及公众利益」而改判以赔偿替代。这个例外极小，但你必须知道它的边界。</div><div class="mlink"><b>业务落点</b>业务落点：写诉讼请求时，「停止侵害」要写得具体可执行（下架哪些链接、销毁哪些模具），否则赢了官司拿不到实际效果。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>停止侵害（Injunction to Cease Infringement）</li><li>消除危险 / 排除妨碍</li><li>永久性禁令 vs 临时禁令</li><li>公共利益抗辩</li><li>比例原则（Proportionality）</li><li>判而不停与迟延履行金</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《停止侵害请求撰写模板》——把你公司主商标 / 主要专利的停止侵害请求按「行为描述 + 范围限定 + 履行期限 + 违反后果」四要素重写一遍，做成可直接复制进起诉状的条款。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**停止侵害及其例外**。请：
+1) 讲清停止侵害的性质：为什么它不以过错为要件、不要求已经造成实际损失；
+2) 说明法律依据（民法典第 179 条、第 1167 条，以及各单行法的对应条款，⚠ 条号待核实）；
+3) 讲清司法实践中"不判停止侵害"的例外情形及其考量因素（公共利益、比例原则、当事人利益平衡、权利滥用），并说明这类案例的**罕见性**与举证门槛；
+4) 说明停止侵害与「消除影响」「销毁侵权产品与工具」的关系，以及法院判决销毁的法律依据与执行难点；
+5) 教我如何撰写可执行的停止侵害请求（要具体到：哪些行为、哪些范围、多长期限、违反后果），给我 3 个可直接复制的条款范例（商标侵权 / 外观设计侵权 / 商业秘密侵权各一）；
+6) 讲清判决生效后对方拒不停止的救济路径（迟延履行金、申请执行、再次起诉、拒不执行判决裁定罪）；
+7) 出 5 道判断题并讲评。
+引用判例时不得编造案号，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、停止侵害为什么是"第一诉求"</h2>
+<p>《民法典》第 179 条列举了承担民事责任的方式，其中第（一）项即<b>停止侵害</b>。第 1167 条进一步规定：侵权行为危及他人人身、财产安全的，被侵权人有权请求侵权人承担停止侵害、排除妨碍、消除危险等侵权责任。</p>
+<table><thead><tr><th>特性</th><th>说明</th></tr></thead><tbody><tr><td>不以过错为要件</td><td>只要行为具有违法性且在持续或存在重复风险，即可请求</td></tr><tr><td>不要求实际损失</td><td>与损害赔偿不同，停止侵害针对的是"状态"而非"后果"</td></tr><tr><td>面向未来</td><td>针对尚未发生但可能发生的侵害，可一并请求</td></tr><tr><td>可诉前申请</td><td>符合条件的可申请诉前行为保全（第 4 周展开）</td></tr></tbody></table>
+<div class="key"><b>停止侵害保护的不是"已经损失的"，而是"权利边界本身"。</b> 这就是为什么即使赔偿额很低，律师也一定要把停止侵害写进诉讼请求——它决定了你今后还能不能独占这个市场。</div>
+<h2>二、例外：判赔但不判停</h2>
+<p>司法实践中存在极少数「认定侵权成立、判赔但不判停止侵害」的案例。法院考量的通常是：</p>
+<ul><li><b>公共利益</b>：责令停止将严重损害不特定多数人的利益（如涉及公共基础设施、公共服务的在建工程）；</li><li><b>比例原则</b>：侵权部分在整个产品 / 工程中占比极小，停止将造成远超权利价值的损失；</li><li><b>利益平衡</b>：停止对被告造成的损害显著超过不停止对原告造成的损害；</li><li><b>权利滥用</b>：权利人主要以损害他人为目的行使权利。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 这类案例<b>极为罕见且高度个案化</b>，不得作为常规预期。⚠ 本页不列举具体案号——引用判例前请在裁判文书网核定案号、裁判要旨与是否仍具参考价值。</div>
+<div class="key"><b>作为原告律师的应对</b>：预判被告会提公共利益 / 比例原则抗辩时，主动提出替代方案（支付更高许可费、设置过渡期、限定使用范围），把「全有或全无」变成「有条件的许可」，反而更容易拿到可执行的结果。</div>
+<h2>三、停止侵害请求的写法（可复制模板）</h2>
+<table><thead><tr><th>要素</th><th>要求</th><th>反例</th><th>正例</th></tr></thead><tbody><tr><td>行为描述</td><td>具体列出被禁止的行为</td><td>「停止侵权」（空泛，无法执行）</td><td>「立即停止制造、销售、许诺销售侵害原告第 ZLXXXX 号外观设计专利权的耳饰产品」</td></tr><tr><td>范围限定</td><td>覆盖线上线下全渠道与关联变体</td><td>仅写「停止销售涉案商品」</td><td>「包括但不限于其天猫旗舰店、抖音店铺、线下门店及分销渠道，以及与涉案产品实质相同的任何变体款式」</td></tr><tr><td>履行期限</td><td>明确自判决生效之日起几日内</td><td>未写</td><td>「自本判决生效之日起十日内」</td></tr><tr><td>违反后果</td><td>提示迟延履行金与执行后果</td><td>未写</td><td>「逾期履行的，依照法律规定支付迟延履行金」</td></tr></tbody></table>
+<p>三个可直接复制的条款范例：</p>
+<table><thead><tr><th>类型</th><th>条款范例</th></tr></thead><tbody><tr><td>商标侵权</td><td>判令被告立即停止侵犯原告第 XXXXX 号注册商标专用权的行为，即停止在其生产、销售的首饰商品及包装、店铺招牌、网络店铺页面、宣传材料上使用「星河」「STELLARIVER」或与之近似的标识，并停止销售带有上述标识的商品；上述停止义务自本判决生效之日起十日内履行完毕。</td></tr><tr><td>外观设计侵权</td><td>判令被告立即停止制造、许诺销售、销售、进口侵害原告第 ZLXXXXXXXX.X 号外观设计专利权的产品，包括但不限于销毁库存侵权产品、删除各电商平台商品链接与宣传图片、撤回展会展品；上述义务自本判决生效之日起十五日内履行完毕。</td></tr><tr><td>商业秘密侵权</td><td>判令被告立即停止披露、使用或允许他人使用原告的商业秘密（具体密点见本判决书附件），即停止使用原告供应商名录、成本报价与工艺参数从事与原告相同或类似的业务，并在判决生效之日起十日内返还或销毁载有上述商业秘密的全部载体。</td></tr></tbody></table>
+<h2>四、消除影响与销毁</h2>
+<table><thead><tr><th>救济</th><th>适用条件</th><th>实务要点</th></tr></thead><tbody><tr><td>消除影响、赔礼道歉</td><td>主要适用于人身权益受损（著作人身权）或商誉受损（商标、仿冒）</td><td>法院通常判令在指定媒体刊登声明；范围应与侵权影响范围相当</td></tr><tr><td>销毁侵权商品</td><td>行政查处中有明确依据（商标法第 60 条可没收、销毁）</td><td>民事判决中亦常见，但需明确销毁范围与执行方式</td></tr><tr><td>销毁制造工具与模具</td><td>主要用于防止再犯</td><td>举证难点：需证明该模具专用于制造侵权产品</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 行政程序中「没收、销毁侵权商品和主要用于制造侵权商品、伪造注册商标标识的工具」的依据见商标法第 60 条；民事程序中销毁判项的依据与执行规则，请以现行条文与司法解释核对。</div>
+<h2>五、判决生效后对方不停怎么办</h2>
+<ol><li><b>申请强制执行</b>：向一审法院或被执行财产所在地法院申请执行；</li><li><b>迟延履行金</b>：被执行人未按判决指定的期间履行其他义务的，应当支付迟延履行金（⚠ 计算规则以民事诉讼法现行条文核对）；</li><li><b>再次起诉</b>：针对判决生效后发生的<b>新的</b>侵权行为另行起诉（注意不要与既判力冲突）；</li><li><b>拒不执行判决、裁定罪</b>：情节严重的可移送刑事（刑法第 313 条）⚠ 立案标准待核实；</li><li><b>申请失信与限高</b>：将被执行人纳入失信名单并限制高消费。</li></ol>
+<div class="key"><b>预防优于救济</b>：在诉前或诉中争取行为保全，让对方在判决前就停下来，往往比判决后追着执行更有效。这直接引出第 4 周第 5 天的行为保全。</div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Injunction</div><div class="cn">禁令</div><div class="df">法院判令或裁定要求当事人为或不为一定行为的救济</div></div><div class="ti"><div class="en">Permanent Injunction</div><div class="cn">永久性禁令</div><div class="df">判决生效后持续有效的停止侵害命令</div></div><div class="ti"><div class="en">Public Interest Defense</div><div class="cn">公共利益抗辩</div><div class="df">以停止将损害公共利益为由请求不判停止侵害</div></div><div class="ti"><div class="en">Proportionality</div><div class="cn">比例原则</div><div class="df">救济强度应与权利侵害程度相当</div></div><div class="ti"><div class="en">Delayed Performance Penalty</div><div class="cn">迟延履行金</div><div class="df">被执行人逾期履行非金钱义务应支付的费用</div></div><div class="ti"><div class="en">Destruction of Infringing Goods</div><div class="cn">销毁侵权商品</div><div class="df">对库存侵权产品及专用制造工具予以销毁</div></div></div><div class="foot"><a href="W3-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W3-D3.html">第 3 天 →</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

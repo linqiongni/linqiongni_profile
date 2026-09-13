@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第6周·第4天｜撤三：连续三年不使用</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 6 · DAY 4 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>撤三：连续三年不使用</h1><div class="sub">商标确权程序</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">注册商标不是"终身制"。没有正当理由连续三年不使用，任何人都可以申请撤销它。撤三是清理僵尸商标的公共机制，也是被诉方反击、扫清注册障碍的常用武器。对权利人而言，它意味着一件事：<b>注册之后必须持续使用并留下证据</b>。</div><div class="mlink"><b>业务落点</b>业务落点：每个品牌方都应建立"商标使用证据档案"，按商标、按年度归档。这不是形式主义，是保住商标的唯一方法。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>连续三年不使用撤三（Non-use Cancellation）</li><li>商标的使用（第 48 条）</li><li>2 个月答辩期</li><li>正当理由</li><li>象征性使用</li><li>使用证据五要素</li><li>撤销复审与起诉</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《商标使用证据年度归档规范》——一份可执行的内部制度：每个商标每年必须归档哪些材料、由谁负责、何时归档、保存在哪里。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**商标撤三（连续三年不使用撤销）**。请：
+1) 讲清《商标法》第 49 条第 2 款：注册商标成为其核定使用的商品的通用名称或者**没有正当理由连续三年不使用**的，任何单位或者个人可以向商标局申请撤销该注册商标；商标局应自收到申请之日起九个月内作出决定（可延长三个月）（⚠ 条号与期限以现行条文核对）；
+2) 讲清第 48 条"商标的使用"的定义：将商标用于商品、商品包装或者容器以及商品交易文书上，或者将商标用于广告宣传、展览以及其他商业活动中，**用于识别商品来源**的行为；
+3) 讲清使用证据的**五要素**（商标标识 + 商品 / 服务 + 使用主体 + 使用时间 + 使用地域）与常见的不被认可情形（象征性使用、仅转让或许可未实际使用、仅在内部文件出现等）；
+4) 讲清"正当理由"（不可抗力、政策性限制、破产清算等，⚠ 以现行规定核对）；
+5) 讲清撤三程序：申请 → 通知答辩（2 个月）→ 审查（9 个月 + 3 个月）→ 决定 → 复审（15 日）→ 起诉（30 日）；
+6) 讲清撤三的**攻守两用**：作为攻击者清除注册障碍；作为防守者应对他人对自己商标的撤三；
+7) 给我一份**《商标使用证据年度归档规范》**；
+8) 出 5 道判断题并讲评。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、撤三的立法逻辑</h2>
+<p>商标的价值来自使用，不是来自证书。一个注册了却从不使用的商标，白白占用了公共资源、阻塞了他人的注册空间。撤三就是这套"不用就收回"的机制。</p>
+<table><thead><tr><th>要点</th><th>规则（⚠ 以现行条文核对）</th></tr></thead><tbody><tr><td>触发条件</td><td>注册商标<b>没有正当理由连续三年不使用</b></td></tr><tr><td>申请人</td><td><b>任何单位或者个人</b>（不限于利害关系人）</td></tr><tr><td>另一触发情形</td><td>注册商标成为其核定使用的商品的<b>通用名称</b></td></tr><tr><td>商标局审限</td><td>自收到申请之日起 9 个月（可延长 3 个月）</td></tr><tr><td>答辩期</td><td>商标注册人自收到通知之日起 <b>2 个月</b>内提交使用证据</td></tr><tr><td>后续救济</td><td>复审（15 日）→ 起诉（30 日）</td></tr></tbody></table>
+<div class="key"><b>"任何单位或者个人"是撤三最狠的地方</b>：你的竞争对手可以雇一个无关主体来申请撤销你的商标。所以每个商标都必须有证据兜底，不能只靠"我觉得我在用"。</div>
+<h2>二、什么算"使用"（第 48 条）</h2>
+<table><thead><tr><th>使用形式</th><th>是否构成使用</th><th>说明</th></tr></thead><tbody><tr><td>将商标用于商品、商品包装或容器</td><td>是</td><td>最典型的使用</td></tr><tr><td>用于商品交易文书（合同、发票、报价单、报关单）</td><td>是</td><td><b>发票是最有力的证据之一</b></td></tr><tr><td>用于广告宣传（平面、电视、网络、户外）</td><td>是</td><td>需体现商标与商品的对应关系</td></tr><tr><td>用于展览及其他商业活动</td><td>是</td><td>展会照片、订货会物料</td></tr><tr><td>用于电商平台店铺、详情页</td><td>是</td><td><b>注意保存时间戳或公证</b></td></tr><tr><td>单纯的商标注册、转让、许可</td><td><b>否</b></td><td>权利处分行为不是使用</td></tr><tr><td>仅为维持注册的象征性使用</td><td><b>否</b></td><td>以维持注册为目的、无真实商业意图的使用不被认可</td></tr><tr><td>未实际进入流通领域的内部使用</td><td><b>否</b></td><td>需面向相关公众</td></tr></tbody></table>
+<div class="key"><b>识别商品来源是核心。</b> 第 48 条的定义落脚在"用于识别商品来源的行为"。所以使用证据必须能看出"这个标识是用来告诉消费者这是谁家产品的"，而不是装饰性图案或内部编号。</div>
+<h2>三、使用证据五要素</h2>
+<table><thead><tr><th>要素</th><th>要求</th><th>常见材料</th></tr></thead><tbody><tr><td>① 商标标识</td><td>清晰显示商标图样，与核准注册的商标一致或基本相同</td><td>产品照片、包装照片、网页截图</td></tr><tr><td>② 商品 / 服务</td><td>明确指向核定使用的商品或服务</td><td>销售合同、发票上的商品名称</td></tr><tr><td>③ 使用主体</td><td>显示系商标注册人（或被许可人）使用</td><td>合同主体、发票抬头</td></tr><tr><td>④ 使用时间</td><td><b>在指定的三年期间内</b>，且时间可验证</td><td>发票日期、广告发布记录、网页时间戳</td></tr><tr><td>⑤ 使用地域</td><td>在中国境内（含相关公众可及范围）</td><td>销售区域、物流单据</td></tr></tbody></table>
+<div class="key"><b>五个要素缺一不可</b>，其中"时间"最容易出问题：很多公司拿得出一堆产品图，却证明不了这些图是三年前拍的。<b>解决办法是即时存证</b>——每次上新、每次投放广告，同步做时间戳或归档到带时间标记的系统。</div>
+<h2>四、正当理由</h2>
+<ul><li><b>不可抗力</b>（自然灾害、疫情等导致无法经营）；</li><li><b>政策性限制</b>（因政府政策、审批未获批准而无法使用）；</li><li><b>破产清算</b>等法定程序期间；</li><li>其他不可归责于商标注册人的客观事由。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ "正当理由"的具体范围与认定标准，请以现行商标法实施条例、审查审理指南及实践口径核对。</div>
+<h2>五、撤三的攻守两用</h2>
+<table><thead><tr><th>身份</th><th>用法</th><th>要点</th></tr></thead><tbody><tr><td><b>攻击者</b>（清除障碍）</td><td>对阻碍自己注册的在先商标提起撤三，待其被撤销后再行申请</td><td>① 先查该商标是否真实使用（店铺、电商、广告）；② 撤三申请 + 驳回复审可并行推进；③ 注意撤三审查周期</td></tr><tr><td><b>防守者</b>（应对撤三）</td><td>收到答辩通知后 2 个月内提交完整使用证据</td><td>① 第一时间调取近三年销售与广告证据；② 补齐时间要素（时间戳、发票日期）；③ 若无使用，评估放弃或以正当理由抗辩</td></tr><tr><td><b>权利人</b>（日常预防）</td><td>建立年度归档制度</td><td>见下</td></tr></tbody></table>
+<div class="key"><b>攻击战术的核心组合</b>：当你申请商标被在先近似商标驳回时——① 对引证商标提撤三；② 同时申请驳回复审并请求暂缓审理；③ 若引证商标被撤销，你的申请障碍消失。这是商标律师最常用的"组合拳"。</div>
+<h2>六、《商标使用证据年度归档规范》（今日产出物）</h2>
+<table><thead><tr><th>项</th><th>要求</th></tr></thead><tbody><tr><td>归档对象</td><td><b>每一个注册商标</b>，一标一档</td></tr><tr><td>归档周期</td><td>每年度一次（建议每年 1 月归档上一年度证据）</td></tr><tr><td>必收材料</td><td>① 销售发票（≥3 张，覆盖不同季度）；② 销售合同或订单；③ 产品 / 包装照片（带商标）；④ 电商店铺页面截图（含日期）；⑤ 广告宣传合同 + 投放证明 + 样张；⑥ 参展证明与照片；⑦ 媒体报道</td></tr><tr><td>时间要素</td><td><b>所有材料必须能验证时间</b>：发票日期、网页时间戳、广告发布记录</td></tr><tr><td>责任人</td><td>法务指定专人 + 市场部配合</td></tr><tr><td>存储</td><td>电子档（云端 + 本地双备份）+ 关键材料纸质存档</td></tr><tr><td>核查</td><td>每年核查一次：每枚商标是否有连续三年的完整证据链</td></tr></tbody></table>
+<div class="key"><b>这份制度是第 6 周最有价值的产出。</b> 它把"商标被撤三"这个高风险事件，变成一个每年花两小时就能预防的常规动作。</div>
+<h2>七、今日自测</h2>
+<ol><li>谁可以申请撤三？</li><li>使用证据的五个要素是什么？</li><li>象征性使用能维持商标吗？</li><li>撤三答辩期是多久？</li><li>遇到在先近似商标阻碍注册，撤三如何与驳回复审配合？</li></ol><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Non-use Cancellation</div><div class="cn">撤三</div><div class="df">因连续三年不使用而撤销注册商标</div></div><div class="ti"><div class="en">Use of a Trademark</div><div class="cn">商标的使用</div><div class="df">用于识别商品来源的商业使用行为</div></div><div class="ti"><div class="en">Symbolic Use</div><div class="cn">象征性使用</div><div class="df">仅为维持注册的非真实使用</div></div><div class="ti"><div class="en">Justifiable Reasons</div><div class="cn">正当理由</div><div class="df">阻碍使用的客观正当事由</div></div><div class="ti"><div class="en">Evidence Archive</div><div class="cn">证据档案</div><div class="df">为应对撤三而持续归档的使用证据</div></div><div class="ti"><div class="en">Continuous Three Years</div><div class="cn">连续三年</div><div class="df">撤三所要求的未使用期间</div></div></div><div class="foot"><a href="W6-D3.html">← 第 3 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W6-D5.html">第 5 天 →</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·第1天｜商标构成要素与显著性（固有 / 获得）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · DAY 1 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>商标构成要素与显著性（固有 / 获得）</h1><div class="sub">商标法基础</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">商标的本质是"区分来源的标记"。能不能注册，第一道门槛叫显著性——这个标识能不能让人一眼认出"这是谁家的"。显著性有强弱五档：越天马行空越强（臆造），越直白描述越弱（描述性），完全通用则彻底没有。</div><div class="mlink"><b>业务落点</b>业务落点：给品牌起名时，多花两小时选一个臆造词，能省掉后面两年的驳回复审与无效风险。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>商标（Trademark / 商标）</li><li>显著性（Distinctiveness）</li><li>臆造商标（Fanciful） / 任意商标（Arbitrary） / 暗示商标（Suggestive）</li><li>描述性标志（Descriptive） / 通用名称（Generic）</li><li>获得显著性（Acquired Distinctiveness）</li><li>商标构成要素（第 8 条）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《品牌名显著性强度分级表》——把你公司现有的与计划使用的所有品牌名、系列名、副线名逐个打分：属于哪一档、能否直接注册、是否需要通过使用取得显著性、风险等级。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**商标的构成要素与显著性**。请：
+1) 逐项解释《商标法》第 8 条规定的商标构成要素（文字、图形、字母、数字、三维标志、颜色组合、声音等及其组合），并说明第 9 条"应当有显著特征、便于识别、不得与他人在先取得的合法权利相冲突"的要求；
+2) 用**显著性五档谱系**（臆造 / 任意 / 暗示 / 描述 / 通用）逐档讲解，每档给 3 个珠宝或时尚消费品行业的例子（如：臆造型自造词、任意型把常见词用于无关商品、暗示型间接暗示品质、描述型直接说明材质、通用型品类名称）；
+3) 讲清《商标法》第 11 条第 2 款"经过使用取得显著特征并便于识别的，可以作为商标注册"（获得显著性）；
+4) 讲清实践中如何判断"暗示"与"描述"的边界（是否需要想象 / 思考 / 推理）；
+5) 给我一份**品牌名显著性自检清单**（10 条以内），供我在给客户起名时逐条排查；
+6) 出 5 道判断题并讲评。
+法条引用精确到条、款、项并标注版本；不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、商标是什么：一个"识别来源"的标记</h2>
+<p>《商标法》第 8 条：任何能够将自然人、法人或者其他组织的商品与他人的商品区别开的标志，包括<b>文字、图形、字母、数字、三维标志、颜色组合和声音等，以及上述要素的组合</b>，均可以作为商标申请注册。</p>
+<p>第 9 条第 1 款：申请注册的商标，应当有<b>显著特征，便于识别</b>，并不得与他人在先取得的合法权利相冲突。</p>
+<table><thead><tr><th>构成要素</th><th>说明</th><th>珠宝行业实例</th><th>注册难度</th></tr></thead><tbody><tr><td>文字</td><td>中文、外文、数字</td><td>星河、STELLARIVER、14K</td><td>视显著性而定</td></tr><tr><td>图形</td><td>图案、Logo</td><td>星轨图形 Logo</td><td>视独创性而定</td></tr><tr><td>字母</td><td>外文字母组合</td><td>SR 组合字母</td><td>易因字母组合近似被驳</td></tr><tr><td>数字</td><td>—</td><td>数字本身显著性弱，通常需与图形组合</td><td>高</td></tr><tr><td>三维标志</td><td>立体形状</td><td><b>包装盒造型、瓶身、首饰展示架造型</b>、经典产品外观</td><td><b>高</b>（受第 12 条限制）</td></tr><tr><td>颜色组合</td><td>两种以上颜色的组合</td><td>品牌专属配色（如深蓝 + 金）</td><td><b>高</b>（需证明经使用取得显著性）</td></tr><tr><td>声音</td><td>—</td><td>门店特定音乐、广告音效</td><td><b>高</b>（需长期使用取得显著性）</td></tr><tr><td>组合</td><td>上述要素的组合</td><td>文字 + 图形 + 颜色</td><td>最常见</td></tr></tbody></table>
+<div class="key"><b>立体商标（三维标志）是珠宝行业的高价值武器，也是最容易踩第 12 条的地方。</b> 第 12 条规定：仅由商品自身的性质产生的形状、为获得技术效果而需有的商品形状、使商品具有实质性价值的形状，不得注册。<b>装饰性造型可以注册，功能性或价值性形状不行</b>——这条线在第 7 周会细讲。</div>
+<h2>二、显著性五档谱系（核心模型）</h2>
+<table><thead><tr><th>档位</th><th>定义</th><th>保护强度</th><th>能否直接注册</th><th>示例（虚拟）</th></tr></thead><tbody><tr><td>臆造（Fanciful）</td><td>为商标目的自造、无任何固有含义</td><td><b>最强</b></td><td>能</td><td>自造词如"STELLARIVER"（非固有组合）</td></tr><tr><td>任意（Arbitrary）</td><td>真实存在的词，但用于完全无关的商品</td><td>强</td><td>能</td><td>把"星河"用于珠宝（若非行业常用语）</td></tr><tr><td>暗示（Suggestive）</td><td>间接暗示商品特点，需想象或推理</td><td>中强</td><td>能</td><td>暗示轻盈、闪耀但不直接描述</td></tr><tr><td>描述（Descriptive）</td><td>直接描述质量、原料、功能、用途、产地等</td><td>弱</td><td><b>不能</b>（除非经使用取得显著性）</td><td>直接描述"18K 金镶钻"</td></tr><tr><td>通用（Generic）</td><td>商品或服务的通用名称</td><td><b>无</b></td><td>不能</td><td>"耳钉""项链"作为首饰的通用名称</td></tr></tbody></table>
+<div class="key"><b>判断"暗示 vs 描述"的实用测试</b>：消费者需要<b>几步</b>才能把这个词和商品特点联系起来？需要想象、思考、推理的 = 暗示（可注册）；一步即达、直接说明的 = 描述（不可注册，除非通过使用获得显著性）。</div>
+<h2>三、第 11 条：缺乏显著性不得注册</h2>
+<p>《商标法》第 11 条第 1 款：下列标志不得作为商标注册：（一）仅有本商品的通用名称、图形、型号的；（二）仅直接表示商品的质量、主要原料、功能、用途、重量、数量及其他特点的；（三）其他缺乏显著特征的。</p>
+<p><b>第 2 款（关键出口）</b>：前款所列标志<b>经过使用取得显著特征，并便于识别的，可以作为商标注册</b>。</p>
+<table><thead><tr><th>情形</th><th>能否注册</th><th>路径</th></tr></thead><tbody><tr><td>仅有通用名称 / 图形 / 型号</td><td>否</td><td>无（永远不会通过使用获得显著性）</td></tr><tr><td>仅直接表示质量、原料、功能、用途等</td><td>否</td><td><b>可通过长期使用取得显著性后注册</b>（需大量使用证据）</td></tr><tr><td>其他缺乏显著特征（过于简单的线条、普通口号等）</td><td>否</td><td>同上</td></tr></tbody></table>
+<div class="key"><b>通用名称是绝路，描述性标志是活路。</b> 一个是"永远不能注册"，一个是"先用出知名度再注册"。给客户做可行性分析时，第一步就要区分这两者——结论完全不同。</div>
+<h2>四、获得显著性的证明</h2>
+<p>主张获得显著性时，通常需要提交：使用持续时间（通常需数年）、使用地域范围、销售量与销售额、广告宣传的投入与覆盖范围、市场知名度（调查、排名、获奖）、相关公众的认知证据、行政或司法保护记录。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 关于"经过使用取得显著特征"的认定标准与证据要求，请以现行《商标审查审理指南》及司法解释核对。⚠ 本页不引用具体案例与案号。</div>
+<h2>五、品牌名显著性自检清单（今日产出物）</h2>
+<table><thead><tr><th>#</th><th>检查项</th><th>是 / 否</th></tr></thead><tbody><tr><td>1</td><td>该名称是否为该商品 / 服务的通用名称？若"是" → 绝路</td><td>—</td></tr><tr><td>2</td><td>是否直接描述了质量、原料、功能、用途、产地、数量？若"是" → 需通过使用取得显著性</td><td>—</td></tr><tr><td>3</td><td>是否仅为常见姓氏、地名、行业通用语？</td><td>—</td></tr><tr><td>4</td><td>是否为自造词或跨行业借用（臆造 / 任意）？若是 → 显著性最强</td><td>—</td></tr><tr><td>5</td><td>是否与他人驰名商标相同或近似（跨类风险）？</td><td>—</td></tr><tr><td>6</td><td>是否与他人在相同或类似商品上的在先商标近似？</td><td>—</td></tr><tr><td>7</td><td>是否包含国家名称、国际组织标志、民族歧视性、欺骗性等禁用内容（第 10 条）？</td><td>—</td></tr><tr><td>8</td><td>是否可能损害他人在先权利（商号、著作权、外观设计、姓名权、肖像权）？</td><td>—</td></tr><tr><td>9</td><td>是否属于功能性或价值性形状（若申请立体商标）？</td><td>—</td></tr><tr><td>10</td><td>是否已在目标市场做过近似检索？</td><td>—</td></tr></tbody></table>
+<h2>六、今日自测</h2>
+<ol><li>「钻石」能否作为首饰的商标注册？为什么？</li><li>一个描述性标志永远不能注册吗？</li><li>暗示与描述的边界如何判断？</li><li>立体商标在珠宝行业最大的障碍是什么？</li><li>颜色组合商标为什么注册难度大？</li></ol><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Trademark</div><div class="cn">商标</div><div class="df">用以区分商品或服务来源的标志</div></div><div class="ti"><div class="en">Distinctiveness</div><div class="cn">显著性</div><div class="df">商标识别与区分商品来源的能力</div></div><div class="ti"><div class="en">Fanciful Mark</div><div class="cn">臆造商标</div><div class="df">为商标目的自造的无含义标识</div></div><div class="ti"><div class="en">Arbitrary Mark</div><div class="cn">任意商标</div><div class="df">固有词汇用于无关商品的商标</div></div><div class="ti"><div class="en">Suggestive Mark</div><div class="cn">暗示商标</div><div class="df">间接暗示商品特点的商标</div></div><div class="ti"><div class="en">Descriptive Mark</div><div class="cn">描述性标志</div><div class="df">直接描述商品特点的标志</div></div><div class="ti"><div class="en">Generic Term</div><div class="cn">通用名称</div><div class="df">商品或服务的品类名称，不可作为商标</div></div><div class="ti"><div class="en">Acquired Distinctiveness</div><div class="cn">获得显著性</div><div class="df">经长期使用取得识别能力</div></div></div><div class="foot"><a href="index.html">← 本周目录</a><a class="idx" href="../index.html">返回总计划</a><a href="W5-D2.html">第 2 天 →</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
