@@ -1,4 +1,4 @@
-export type TabType = 'about' | 'expertise' | 'cases' | 'insights' | 'notes' | 'catering' | 'logistics' | 'foreign-contracts' | 'ip';
+export type TabType = 'about' | 'expertise' | 'cases' | 'insights' | 'notes' | 'catering' | 'logistics' | 'foreign-contracts' | 'ip' | 'film-law';
 
 export interface TimelineItem {
   year: string;

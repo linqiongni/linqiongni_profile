@@ -12,6 +12,7 @@ import { CateringLegalTab } from './components/CateringLegalTab';
 import { LogisticsLegalTab } from './components/LogisticsLegalTab';
 import { IpLegalTab } from './components/IpLegalTab';
 import { ForeignContractTab } from './components/ForeignContractTab';
+import { FilmLawTab } from './components/FilmLawTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { WaterRippleBackground } from './components/WaterRippleBackground';
@@ -61,7 +62,7 @@ export default function App() {
   };
 
   // 跨境物流法务、知识产权 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
-  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip';
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law';
 
   const handleScrollToContent = () => {
     if (contentSectionRef.current) {
@@ -162,6 +163,8 @@ export default function App() {
             {activeTab === 'ip' && <IpLegalTab />}
 
             {activeTab === 'foreign-contracts' && <ForeignContractTab />}
+
+            {activeTab === 'film-law' && <FilmLawTab />}
           </motion.div>
         </AnimatePresence>
       </main>
