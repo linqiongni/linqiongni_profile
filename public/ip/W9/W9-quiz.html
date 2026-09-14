@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第9周 自测卷｜著作权法基础</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.qz-day{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;margin:16px 0}
+.qz-day.wk{border-left-color:var(--gold)}
+.qz-day .dt{font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:5px}
+.qz-day .dh{font-size:16px;color:var(--tx);margin-bottom:10px;font-weight:600}
+.qz-day .dh2{font-size:16px;color:var(--tx);font-weight:600;margin-bottom:6px}
+.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78}
+.qa .qn{color:var(--gold);font-weight:700;margin-right:6px}
+.qa .badge{font-size:11px;border:1px solid var(--line2);color:var(--tx3);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}
+.qa .an{color:var(--jade);font-weight:700;margin-right:6px}
+.qz-deliv{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.qz-deliv .dl{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px}
+.sub2{color:var(--tx2);font-size:13.5px;margin:6px 0 4px}
+@media(max-width:640px){.qa .q{font-size:13.6px}.qa .a{font-size:13px}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 9 / 32 · 自测卷　·　第 2 层 支柱 · 四大部门法</div><h1>第 9 周 自测卷</h1><div class="sub">著作权法基础　·　答案内嵌显示，无需点击展开</div><div class="sub2">本周学著作权基础：客体与独创性、归属、侵权判定、合理使用、维权实务，以及周末设计稿被抄袭实战。一句话：先客体后权利再救济，图物分离要记牢。答案内嵌显示。</div><div class="qz-day"><div class="dt">D1 · 自测</div><div class="dh">著作权客体与独创性</div><div class="qa"><div class="q"><span class="qn">QD1-1</span>著作权法保护「思想」「创意」「概念」。<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span><b>错。</b> 著作权只保护表达不保护思想（思想与表达二分法）；创意/概念不受保护，只有把创意落到具体表达（设计图/实物造型/文案）才可能构成作品。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-2</span>珠宝设计图与按图制作的实物，著作权保护有何差异？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>设计图是图形作品（产品设计图）受著作权保护；按图做出的实物一般<b>不构成</b>著作权作品（图物分离），除非该实物本身具美术作品美感。故实物款式维权常靠外观设计专利或反法（有一定影响的商品名称/包装装潢）。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-3</span>一颗常规圆钻戒指想用著作权保护款式，可行吗？应怎么组合保护？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>难，纯常规几何组合独创性不足。应组合保护：设计图用著作权 + 实物款式用<b>外观设计专利</b> + 系列名/包装用商标 + 攀附情形用反法，形成「图+物+标+包装」组合拳。</div></div></div><div class="qz-day"><div class="dt">D2 · 自测</div><div class="dh">著作权归属</div><div class="qa"><div class="q"><span class="qn">QD2-1</span>特殊职务作品与一般职务作品在著作权归属上有何差异？珠宝设计师在职画图最该担心什么？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>特殊职务作品（第 18 条第 1 款：主要利用单位物质技术条件 + 由单位担责的设计图等）著作权除署名权外归单位；一般职务作品（第 18 条第 2 款）归作者，单位仅业务范围内优先使用 + 2 年限转。最该担心：若无法证明「主要利用单位条件」，图纸会被认定为一般职务作品，著作权留在设计师手里，公司只拿使用权。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-2</span>委托外部设计师创作作品，合同未作约定，著作权归委托方（品牌方）。<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span><b>错。</b> 第 19 条：无约定或约定不明，著作权归<b>受托人</b>（设计师）。品牌方只取得使用权、无权禁止第三方使用。必须合同明确「著作权归委托方」。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-3</span>公司内部组织拍摄的品牌宣传片，著作权归谁？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>由单位主持、代表单位意志、由单位担责的，法人视为作者（第 11 条第 2 款），著作权归公司；视听作品（第 17 条）无约定时通常由制作者（公司）享有。</div></div></div><div class="qz-day"><div class="dt">D3 · 自测</div><div class="dh">著作权侵权判定</div><div class="qa"><div class="q"><span class="qn">QD3-1</span>著作权侵权的两个核心要件是什么？接触如何证明？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span><b>接触 + 实质性相似</b>。接触 = 被告有合理机会接触原作，可证明原作已公开发表/销售/参展/行业圈广泛传播（接触推定），或双方有业务往来（代工/经销曾接触源文件）；实质性相似 = 受保护表达实质相同。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-2</span>两款珠宝「看着像」，就一定是著作权侵权。<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span><b>错。</b> 须「实质性相似」且仅指受保护表达的相似；过滤思想、通用元素（心形/圆形/常规镶嵌）、功能性结构后若不相似，不侵权。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-3</span>用抽象-过滤-比较法比对一对疑似抄袭珠宝款，怎么做？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>① 抽象：把款式分为思想层与表达层，只比具体造型不比主题；② 过滤：剔除通用几何、必要镶嵌结构、公有领域元素；③ 比较：剩余「独特装饰性表达」（独特排布、主题化线条）是否实质相同。只比非功能性、具独创性的部分。</div></div></div><div class="qz-day"><div class="dt">D4 · 自测</div><div class="dh">著作权合理使用</div><div class="qa"><div class="q"><span class="qn">QD4-1</span>「三步检验法」三步分别是什么？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>① 使用的须为<b>已发表作品</b>（且属法定情形）；② 目的<b>适当</b>（个人欣赏、介绍评论、教学等）；③ <b>不影响作品正常使用</b>且<b>不不合理损害</b>著作权人合法权益。三步须同时成立才免责（已落到第 24 条条内）。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-2</span>著作权合理使用成立，即可同时豁免商标侵权与不正当竞争责任。<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span><b>错。</b> 合理使用仅约束著作权。同一行为若造成来源混淆（商标）或攀附商誉（反法包装装潢），仍另构侵权。权利竞合须分别判断。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-3</span>把一幅名画元素做成「戏仿」珠宝款售卖，能主张合理使用吗？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>若属「转换性使用」（增加新表达/讽刺/评论意义），司法实践可能认定合理使用；但若实质是搬运名画元素商用、未增新意义，则非合理使用且可能侵犯原作演绎权（第 13 条）。⚠ 个案裁量，名画是否过保护期亦须核实。</div></div></div><div class="qz-day"><div class="dt">D5 · 自测</div><div class="dh">著作权维权实务</div><div class="qa"><div class="q"><span class="qn">QD5-1</span>著作权赔偿四档与商标的「严格顺序」有何差异？惩罚性赔偿怎么算？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>商标严格顺序（损失→获利→许可费→法定）；著作权法第 54 条将「实际损失」与「侵权获利」<b>并列可选</b>，再参照许可费倍数，最后法定 500 万以下。惩罚性：故意 + 情节严重，在前述基数上 × 1 至 5 倍（合理开支一般不计入基数）。⚠ 以第 54 条现行文本为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-2</span>未做著作权登记，不能起诉著作权侵权。<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span><b>错。</b> 著作权自动产生，登记非前置。但原告须举证权属（底稿/源文件/时间戳/首发记录）；登记证书只是「初步证据」，降低举证负担。重要设计图仍建议登记 + 时间戳。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-3</span>发现电商有仿款，维权第一步做什么？为什么？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>先固定证据（公证购买/时间戳网页 + 销量截图），再发函/平台投诉。先取证防对方下架销毁证据；珠宝行业优先公证详情页挂图（许诺销售，成本低、无需真成交）。</div></div></div><div class="qz-day wk"><div class="dt">WEEKEND · 实战复盘</div><div class="dh">周末实战复盘｜设计稿被抄袭维权</div><div class="qa"><div class="q"><span class="qn">QWE-1</span>任务A：代工厂把公司设计图外流给竞品做同款，第一步与证据链怎么搭？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>第一步：固定权属（确认图纸著作权归公司——特殊职务作品或委托合同约定归委托方）+ 固定侵权证据（外流记录、竞品实物/页面公证、代工往来证明接触）；再发律师函要求停止 + 披露下游，并平台投诉下架。切忌先打草惊蛇。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-2</span>任务B：对方辩称「图纸是我独立创作的」，如何反制并叠加其他路径？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>反证三连：① 我方完成时间更早（时间戳/首发）；② 双方代工往来（接触）；③ 表达实质相同（抽象过滤后剩余独特部分相同）。同时查代工保密协议/竞业限制违约，叠加违约与商业秘密路径，形成多线压制。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-3</span>只抄了「设计图」没抄实物，著作权能管吗？和「照图做同款实物」有何区别？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>抄图能管——设计图是图形作品，未经许可复制/发行图即侵权。若对方仅「照图做实物」未复制图，实物一般不受著作权保护（图物分离），需转外观设计专利或反法。所以维权要分清对方抄的是「图」还是「物」，分别主张。</div></div></div><div class="qz-deliv"><div class="dl">本周核心产出物 · 参考标准答案</div><div class="dh2">设计项目权属审查清单 + 抄袭比对表 · 参考标准答案（结构骨架）</div><h2>一、权属审查清单（D2 落点）</h2>
+<ol><li>一、确认作者：自然人创作 / 法人视为作者（第 11 条）</li><li>二、是否职务作品：特殊（第 18 条第 1 款，归单位）还是一般（第 18 条第 2 款，归作者）</li><li>三、是否委托作品：合同是否约定「著作权归委托方」（第 19 条）</li><li>四、是否合作作品：共有，可分割部分可单独行使（第 14 条）</li><li>五、是否视听作品：无约定归制作者（第 17 条）</li><li>六、是否演绎作品：有无原作授权（第 13 条）</li><li>七、结论：著作权归谁 + 补签/补登记建议</li></ol>
+<h2>二、侵权比对表（D3 落点）</h2>
+<table><thead><tr><th>比对项</th><th>内容</th><th>结论</th></tr></thead><tbody><tr><td>权利基础</td><td>原告作品类型 + 权属证据</td><td>成立/不成立</td></tr><tr><td>接触</td><td>公开/销售/往来记录</td><td>成立/不成立</td></tr><tr><td>相似点</td><td>受保护表达的具体相同处</td><td>列出</td></tr><tr><td>过滤项</td><td>思想/通用元素/必要结构</td><td>已剔除</td></tr><tr><td>实质性相似</td><td>剩余独特装饰表达是否相同</td><td>构成/不构成</td></tr><tr><td>抗辩预判</td><td>独立创作/合理使用/权属瑕疵</td><td>应对</td></tr></tbody></table>
+<div class="key">维权铁三角：权属链锁死（职务/委托合同写明归公司）+ 证据先固定后发函 + 著作权叠加外观专利/商标/反法。图物分离决定了单走著作权护不住实物款式，组合拳才是珠宝款式维权的正解。</div></div><div class="foot"><a href="W8-quiz.html">← 第 8 周自测</a><a class="idx" href="index.html">本周目录</a><a href="W10-quiz.html">第 10 周自测 →</a></div><div class="disc">本页自测题用于个人学习检验。答案中涉及的法条条号、数字与日期须以现行有效文本核对后方可作为正式依据；标注「待核实」处请优先核查。</div></div></body></html>

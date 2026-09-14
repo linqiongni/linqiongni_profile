@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第9周·周末实战｜周末实战｜设计稿被抄袭维权实战</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 9 · WEEKEND　·　第 2 层 支柱 · 四大部门法</div><h1>周末实战｜设计稿被抄袭维权实战</h1><div class="sub">著作权法基础</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">把这一周串成一条线：从「代工厂外流设计图、竞品出了同款」到「固定权属与侵权证据 → 发函/平台投诉 → 民事索赔/刑事 217 衔接」落地。</div><div class="mlink"><b>业务落点</b>业务落点：产出一份可直接照着执行的《设计稿被抄袭维权作战包》。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>权属链（Chain of Title）</li><li>侵权证据固定</li><li>律师函/停止侵权函（Cease-and-Desist Letter）</li><li>下架通知（Takedown Notice）</li><li>刑民衔接（Criminal-Civil Linkage）</li><li>侵犯著作权罪（Copyright Infringement Crime）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《设计稿被抄袭维权作战包》：选定一个真实/假设情形（代工厂外流设计图、竞品出同款），产出——① 权属链自查结论（归公司吗）；② 取证清单（底稿/时间戳/公证/销量）；③ 发函要点；④ 平台投诉路径；⑤ 民事赔偿四档主张；⑥ 刑事 217 衔接判断。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。请基于本周 W9 内容，陪我做一次完整的设计稿被抄袭维权实战推演：从发现仿款开始，逐步给出每一步动作、文书要点与证据清单，并在关键节点提示被告可能提出的抗辩与我的应对。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、作战流程总图</h2>
+<ol><li><b>发现</b>：监测（电商巡检、图反向搜、线下扫街）发现疑似仿款/外流图；</li><li><b>固定权属</b>：确认设计图著作权归公司（特殊职务作品/委托合同约定，D2 落点）；</li><li><b>固定侵权</b>：公证购买/时间戳网页 + 销量截图，固定「图/实物 + 销售链接 + 销量」；</li><li><b>威慑</b>：发律师函（停止侵权 + 赔偿 + 披露上游）；</li><li><b>平台</b>：电商/社媒知识产权通道投诉下架；</li><li><b>民事/刑事</b>：损失大则起诉（四档赔偿 + 惩罚性），规模化复制发行则衔接刑法第 217 条。</li></ol>
+<h2>二、各步动作与文书要点</h2>
+<ul><li><b>权属链自查</b>：先确认「我是权利人」——设计图是否特殊职务作品、委托合同是否约定归委托方（D2）；</li><li><b>取证清单</b>：权属证据（底稿/源文件/登记/时间戳）+ 侵权证据（公证实物/网页时间戳/销量截图/代工往来记录）；</li><li><b>发函要点</b>：载明权属、侵权事实、停止要求、赔偿金额与计算、披露上游义务、时限；</li><li><b>平台投诉</b>：提交权属证书 + 侵权链接 + 比对说明，走电商/社媒 IP 通道；</li><li><b>刑事衔接</b>：以营利为目的复制发行他人作品，数额/情节达标的，衔接刑法第 217 条侵犯著作权罪。</li></ul>
+<div class="key">珠宝行业最危险缺口：代工厂/经销渠道泄密。应在委托/保密协议里锁死「设计图著作权归委托方 + 禁止外流 + 违约披露下游」，否则维权时权属与接触证据都弱。</div>
+<h2>三、被告抗辩预判（打之前先想他怎么挡）</h2>
+<table><thead><tr><th>被告可能出的牌</th><th>我的反制</th></tr></thead><tbody><tr><td>「图是我独立创作的」</td><td>反证：我方完成时间更早（时间戳）+ 双方代工往来（接触）+ 表达实质相同</td></tr><tr><td>「实物款式不受著作权保护（图物分离）」</td><td>转而主张外观设计专利/反法包装装潢；若其复制了「图」本身则图侵权成立</td></tr><tr><td>「已获授权/合理使用」</td><td>要求出示授权合同；核对是否落第 24 条情形</td></tr><tr><td>「原告不是权利人」</td><td>出示职务作品认定/委托合同约定/登记证书</td></tr></tbody></table>
+<h2>四、周末自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：发现代工厂把公司设计图外流给竞品做同款，第一步？</div><div class="a"><span class="an">参考答案</span>先固定权属（确认图纸著作权归公司：特殊职务作品或委托合同约定）与侵权证据（外流记录、竞品实物/页面公证），再发律师函要求停止 + 披露下游，并平台投诉下架。切忌先打草惊蛇致证据销毁。</div><div class="q">Q2：对方辩称「图纸是我独立创作的」，如何应对？</div><div class="a"><span class="an">参考答案</span>反证：① 我方设计图完成时间早于对方（时间戳/首发）；② 双方有代工往来（接触）；③ 表达实质相同（抽象过滤后剩余独特部分相同）。同时查代工保密/竞业限制违约，可叠加违约/商业秘密路径。</div><div class="q">Q3：民事不够，能否刑事？侵犯著作权罪（217）门槛？</div><div class="a"><span class="an">参考答案</span>可衔接刑法第 217 条侵犯著作权罪（以营利为目的，未经许可复制发行他人作品，违法所得数额较大或有其他严重情节）。⚠ 具体立案追诉数额标准须核实现行司法解释，勿照搬旧标准。</div><div class="q">Q4：只抄了「设计图」没抄实物，著作权能管吗？</div><div class="a"><span class="an">参考答案</span>能。设计图是图形作品，未经许可复制/发行设计图本身即侵权。但若对方仅「照图做实物」未复制图，实物一般不受著作权保护（图物分离），需转外观设计专利/反法。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Copyright Infringement Crime</div><div class="cn">侵犯著作权罪</div><div class="df">刑法第 217 条</div></div><div class="ti"><div class="en">Chain of Title</div><div class="cn">权属链</div><div class="df">权利归属证据链</div></div><div class="ti"><div class="en">Cease-and-Desist Letter</div><div class="cn">律师函/停止侵权函</div><div class="df">威慑 + 披露下游</div></div><div class="ti"><div class="en">Takedown Notice</div><div class="cn">下架通知</div><div class="df">平台投诉</div></div><div class="ti"><div class="en">Criminal-Civil Linkage</div><div class="cn">刑民衔接</div><div class="df">民事索赔 + 刑事报案</div></div></div><div class="foot"><a href="W9-D5.html">← 第 5 天</a><a class="idx" href="../index.html">返回总计划</a><a href="index.html">本周目录 →</a><a class="qz" href="W9-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
