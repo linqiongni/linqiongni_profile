@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第32周·第5天｜出师清单与知识体系：把 32 周熬成你自己的「IP 作战手册」</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 32 · DAY 5 / 5　·　第 4 层 出师 · 行业专精</div><h1>出师清单与知识体系：把 32 周熬成你自己的「IP 作战手册」</h1><div class="sub">综合实战（二）</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">32 周训练像「考驾照」——课时刷完不代表会开车，最后要把交规、路况、应急都装进一本随身手册，遇到事翻得到、用得上，才是真出师。知识不固化，等于白学。</div><div class="mlink"><b>业务落点</b>业务落点：产出《出师能力自评表》+《个人 IP 知识体系目录树》，作为后续 12 个月进阶与日常检索的母本。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>32 周能力自评表（打分）</li><li>常犯错误清单</li><li>个人 IP 知识体系目录树</li><li>更新与维护机制</li><li>下一步 12 个月计划</li><li>从「学法」到「用法」的跃迁</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《出师能力自评表 + 个人 IP 知识体系目录树》——自评表按能力维度 1-5 分打分并标薄弱项；知识库按商标/专利/著作/商业秘密/反法/跨境/刑事/诉讼/谈判九大模块列三级目录。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天做收官：出师清单与知识体系固化。请：
+1) 给出《32 周能力自评表》的九大维度与 1-5 分定义，说明低于 3 分即薄弱项；
+2) 列常犯错误清单（含跨境表述红线）；
+3) 给出《个人 IP 知识体系目录树》九大模块三级目录；
+4) 讲清更新维护机制（版本+核对日+触发更新）；
+5) 给下一步 12 个月计划（补薄弱项/跟真实案/攻专项/带教）；
+6) 双视角：自评既看权利方进攻也看被诉方防守；
+7) 出 4 道判断题并讲评。
+法条标版本，跨境表述坚持目标法域、中国香港/中国澳门/中国台湾为中国一部分。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、32 周能力自评表（怎么打）</h2>
+<p>自评不是「感受」，是按能力维度逐分。每个维度 1-5 分：1 入门、2 了解、3 能独立做、4 熟练、5 可带教。低于 3 的项即薄弱项，列入下阶段主攻。</p>
+<table><thead><tr><th>能力维度</th><th>1-5 分</th><th>薄弱项动作</th></tr></thead><tbody><tr><td>商标布局与维权</td><td>____ 分</td><td><3 补马德里/异议/撤三</td></tr><tr><td>专利（含外观）申请与比对</td><td>____ 分</td><td><3 补权利要求解释/比对表</td></tr><tr><td>著作权与实用艺术品</td><td>____ 分</td><td><3 补登记与实质性相似</td></tr><tr><td>商业秘密保密体系</td><td>____ 分</td><td><3 补保密措施/密点清单</td></tr><tr><td>反法（混淆/数据/虚假宣传）</td><td>____ 分</td><td><3 补第 6/8/12 条</td></tr><tr><td>跨境（布局/取证/平台）</td><td>____ 分</td><td><3 补海牙/认证/区际</td></tr><tr><td>刑事控告（罪名/数额/报案）</td><td>____ 分</td><td><3 补 213-219 条与立案监督</td></tr><tr><td>诉讼（诉状/比对/鉴定）</td><td>____ 分</td><td><3 补技术调查官/专家辅助人</td></tr><tr><td>谈判调解（BATNA/ZOPA）</td><td>____ 分</td><td><3 补让步阶梯/司法确认</td></tr></tbody></table>
+<div class="key">双视角：自评既看「权利方进攻能力」（布局/维权/控告），也看「被诉方防守能力」（抗辩/无效/和解）——两套都 3 分以上才算合格 IP 法务。</div>
+<h2>二、常犯错误清单（高频雷区）</h2>
+<ul><li><b>优先权日超期</b>：国内申请外观后才想海外，过 6 个月丢优先权；</li><li><b>马德里中心打击</b>：疏于维护中国基础，5 年内被无效海外连带崩；</li><li><b>商业秘密三性不全</b>：只签保密协议无实际措施，密点不成立；</li><li><b>赔偿直接要顶格</b>：不列前档与锚点，法定赔偿从低裁；</li><li><b>跨境表述红线</b>：把中国香港/中国澳门/中国台湾当外国计数——须用「目标法域数」；</li><li><b>技术比对客体错</b>：商标比商品+标识、专利比权利要求特征，搞错全盘输。</li></ul>
+<h2>三、个人 IP 知识体系目录树</h2>
+<p>把 32 周内容固化为可检索的目录树（三级），日常按模块查：</p>
+<ul><li><b>模块一 商标</b>：注册/异议/撤三/无效/马德里/侵权比对/惩罚性；</li><li><b>模块二 专利（发明/实用新型/外观）</b>：申请/权利要求解释/全面覆盖/等同/禁止反悔/现有技术抗辩/无效/海牙；</li><li><b>模块三 著作权</b>：作品类型/登记/实质性相似/实用艺术品/诉前保全；</li><li><b>模块四 商业秘密</b>：三性/密点清单/保密措施/刑民交叉（第 219 条）；</li><li><b>模块五 反不正当竞争</b>：第 6 条装潢/第 8 条虚假宣传/第 11 条/第 12 条数据；</li><li><b>模块六 跨境</b>：巴黎公约/马德里/海牙/PCT/区际安排/公证认证/平台投诉；</li><li><b>模块七 刑事</b>：213-217、219 罪名/数额/报案/行刑衔接/立案监督；</li><li><b>模块八 诉讼</b>：诉状/比对表/鉴定/技术调查官/专家辅助人/管辖；</li><li><b>模块九 谈判调解</b>：BATNA/ZOPA/调解书/司法确认/跨境刑事特殊。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：各模块对应法条条号以现行有效文本核对（如反法第 11 条是否仍规定、刑法各罪数额以最新司法解释为准），知识库须标注版本与核对日期。</div>
+<h2>四、更新与维护机制 + 12 个月计划</h2>
+<ol><li><b>版本管理</b>：知识库每模块标「最后核对日 + 法条版本」，半年一审；</li><li><b>触发更新</b>：新法/司法解释出台、经办案件出新口径，立即回写对应模块；</li><li><b>12 个月计划</b>：第 1-3 月补薄弱项（按自评 <3 维度）；第 4-6 月跟 2 个真实案件全流程；第 7-9 月攻跨境/刑事专项；第 10-12 月带教 1 名新人并产出 SOP。</li></ol>
+<div class="key">出师标准：九大模块目录齐备、自评均 ≥3、常犯错误清单能倒背、遇新案能 30 分钟内定位法条与路径——届时你已从「学法人」转为「能打的 IP 法务」。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：能力自评为什么每个维度都要「双视角」（进攻+防守）打分？</div><div class="a"><span class="an">参考答案</span>因为 IP 法务既要当权利方维权（布局/控告/诉讼），也要当被诉方抗辩（无效/和解/不侵权）。只懂攻不懂守，遇到公司被诉就抓瞎。两套都 ≥3 分才算合格。</div><div class="q">Q2：常犯错误里哪条是「红线级」不能犯？</div><div class="a"><span class="an">参考答案</span>把中国香港、中国澳门、中国台湾当外国、按外国口径计数是表述红线，违反即政治与法律错误。必须改用「目标法域数」，并明确其为中国一部分、单独关税区/单独法域。</div><div class="q">Q3：个人 IP 知识库为什么要标「法条版本 + 核对日」？</div><div class="a"><span class="an">参考答案</span>因为法条与司法解释会修订（如 2020 刑法修正案十一改商业秘密罪表述、反法条文调整），不标版本与日期，日后引用可能引用已失效条文。知识库须可审计、可追溯。⚠ 以现行有效文本为准。</div><div class="q">Q4：出师后 12 个月计划为什么先补「自评 <3 的薄弱项」？</div><div class="a"><span class="an">参考答案</span>因为自评 <3 表示还不能独立做，先填坑再上真实案件最稳；若带病跟案，易在关键动作（如丢优先权、密点不成立）上出错。薄弱项清零后才进入跟案与带教阶段。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Competency Self-Assessment</div><div class="cn">能力自评</div><div class="df">对照能力矩阵打分</div></div><div class="ti"><div class="en">IP Knowledge System</div><div class="cn">IP知识体系</div><div class="df">个人知识库目录树</div></div><div class="ti"><div class="en">Error Checklist</div><div class="cn">常犯错误清单</div><div class="df">高频失误固化</div></div><div class="ti"><div class="en">Maintenance Mechanism</div><div class="cn">更新维护机制</div><div class="df">定期复核与版本管理</div></div><div class="ti"><div class="en">12-Month Plan</div><div class="cn">12个月计划</div><div class="df">出师后进阶路线</div></div></div><div class="foot"><a href="W32-D4.html">← 第 4 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W32-weekend.html">周末实战 →</a><a class="qz" href="W32-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

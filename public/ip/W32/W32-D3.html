@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第32周·第3天｜技术类案件演练：「可换戒托结构」专利被诉，逐特征比对定生死</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 32 · DAY 3 / 5　·　第 4 层 出师 · 行业专精</div><h1>技术类案件演练：「可换戒托结构」专利被诉，逐特征比对定生死</h1><div class="sub">综合实战（二）</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">专利比对像「对着说明书拼乐高」——权利要求是图纸，被诉产品是成品，每一颗积木（技术特征）都得对上号；差一颗或用别的零件达到同样效果，就要看算不算「等同」。看错一颗，整盘都输。</div><div class="mlink"><b>业务落点</b>业务落点：实用新型/发明专利被诉或维权，先做《技术特征比对表》——逐特征「落入/等同/未覆盖」三栏定结论。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>权利要求解释（字面/说明书/禁止反悔）</li><li>技术特征比对表（逐特征）</li><li>全面覆盖与等同侵权</li><li>禁止反悔原则</li><li>现有技术/现有设计抗辩</li><li>无效反击与技术调查官/鉴定</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《技术特征比对表（可换戒托结构案）》——把权利要求拆成技术特征 A/B/C/D，逐格与被诉产品对照，标落入/等同/未覆盖，并附现有技术抗辩与无效反击预案。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天做技术类案件演练：品牌一项「可换戒托结构」实用新型/发明专利被诉或被侵权。请：
+1) 讲清权利要求解释（字面为准、说明书及附图辅助、禁止反悔划界）；
+2) 给《技术特征比对表》逐特征对照（落入/等同/未覆盖）；
+3) 讲清全面覆盖原则与等同侵权（手段-功能-效果基本相同）；
+4) 讲清禁止反悔与现有技术/现有设计抗辩；
+5) 讲清无效反击（向复审和无效审理部门提无效，⚠45天/3个月待核实）与技术调查官/鉴定/勘验；
+6) 双视角：权利方怎么攻 + 被诉方怎么挡；
+7) 出 4 道判断题并讲评。
+法条精确到条并标版本，期限标⚠待核实。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、权利要求解释：先定「比什么」</h2>
+<p>专利侵权比对的第一关是解释权利要求、确定保护范围。解释以权利要求字面为准，结合说明书及附图（专利法第 64 条），不能脱离说明书随意扩。审查授权/确权过程中为获权而放弃的内容，不得再纳入保护——这就是<b>禁止反悔原则</b>。</p>
+<div class="key">实务口诀：<b>字面为界、说明书为尺、禁止反悔划红线</b>。把「可换戒托结构」拆成独立权利要求的技术特征，再逐特征比，不先定范围就比，等于没带尺上考场。</div>
+<h2>二、技术特征比对表（逐特征）</h2>
+<p>把权利要求拆成最小可比对单元（特征 A 戒托卡接结构、B 快拆机关、C 限位凸点、D 防脱簧片），与被诉产品一一对照，三栏结论：落入 / 等同 / 未覆盖。</p>
+<table><thead><tr><th>权利要求特征</th><th>被诉产品对应</th><th>比对结论</th></tr></thead><tbody><tr><td>A 戒托卡接结构</td><td>设有相同卡接槽</td><td>落入（相同）</td></tr><tr><td>B 快拆机关</td><td>设快拆钮，结构略异但功能同</td><td>等同（⚠ 待认定）</td></tr><tr><td>C 限位凸点</td><td>有对应凸点</td><td>落入（相同）</td></tr><tr><td>D 防脱簧片</td><td>改为磁吸防脱</td><td>等同或不同（争议点）</td></tr></tbody></table>
+<div class="key">双视角：权利方把每特征往「落入/等同」靠，重点攻争议特征 D（主张等同）；<b>被诉方</b>逐特征找未覆盖，主张 D 的磁吸方案手段不同、非等同。</div>
+<h2>三、全面覆盖 vs 等同侵权</h2>
+<table><thead><tr><th>规则</th><th>要件</th><th>结论</th></tr></thead><tbody><tr><td>全面覆盖原则</td><td>权利要求每一技术特征均在被诉品中找到相同/等同对应</td><td>成立侵权</td></tr><tr><td>等同原则</td><td>手段—功能—效果基本相同、本领域易联想到</td><td>视为落入（⚠ 认定以现行判例）</td></tr><tr><td>未覆盖</td><td>有一项必要特征既不相同也不等同</td><td>不侵权</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：等同侵权的「三基本」认定标准与「捐献原则/特意排除」等限制，以现行《专利法》（2020 修正）第 64 条及司法解释、典型判例为准。</div>
+<h2>四、禁止反悔与现有技术抗辩</h2>
+<ul><li><b>禁止反悔</b>：授权/无效程序中为区别现有技术而限缩或放弃的内容，不得在侵权诉中再扩张回保护（如曾强调「簧片防脱」区别于现有磁吸，则不能再主张磁吸等同）；</li><li><b>现有技术抗辩</b>：被诉技术方案属于申请日前的现有技术/现有设计，则不构成侵权；被告须举证一项现有技术覆盖全部特征或显而易见组合；</li><li><b>反向视角（被诉方）</b>：双管齐下——既主张特征未覆盖/非等同，又提现有技术抗辩 + 禁止反悔锁死权利方扩张。</li></ul>
+<div class="key">珠宝实例：若权利方在无效答辩中曾明确「本实用新型区别于现有技术的要点在于簧片防脱」，则其不能再把被诉的磁吸防脱主张为等同——禁止反悔直接封口。</div>
+<h2>五、无效反击与技术事实查明</h2>
+<ul><li><b>无效反击</b>：被诉方（或任何单位/个人）可向专利复审和无效审理部门请求宣告专利无效（⚠ 提起时限、举证期限如 45 天/3 个月等以现行程序规定为准，待核实）；无效成立则侵权基础消失；</li><li><b>技术调查官</b>：知产法院/最高法知产庭配备，就技术事实出调查意见供法官参考（非证据）；</li><li><b>鉴定与勘验</b>：复杂结构可司法鉴定比对，法院也可勘验实物；质证看检材与方法。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：专利无效宣告请求的提出时限、补充证据期限（常见 45 天/3 个月等表述以现行《专利法实施细则》及复审委员会规程为准）、技术调查官职权，以现行规定核对，本文不编造具体天数。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：专利侵权比对第一步为什么必须先解释权利要求？</div><div class="a"><span class="an">参考答案</span>因为比对单元是权利要求的技术特征而非产品整体。解释以字面为准、结合说明书及附图（专利法第 64 条），并用禁止反悔划定边界（授权/无效中放弃的内容不得再纳入）。不先定范围就比，结论不可靠。</div><div class="q">Q2：全面覆盖原则下，少一个必要特征还构成侵权吗？</div><div class="a"><span class="an">参考答案</span>不构成。全面覆盖要求每一项必要技术特征都在被诉产品中找到相同/等同对应；若有一项既不相同也不等同（未覆盖），则不侵权。等同只放宽「相同」、不豁免「缺特征」。</div><div class="q">Q3：禁止反悔原则在「可换戒托」案如何封口权利方？</div><div class="a"><span class="an">参考答案</span>若权利方在授权或无效中为区别于现有技术，明确限缩了某特征（如强调「簧片防脱」区别于现有磁吸），则侵权诉中不能再把被诉磁吸防脱主张为等同。禁止反悔锁死其扩张，被诉方据此可脱罪。⚠ 以现行判例为准。</div><div class="q">Q4：被诉方除了「特征不落入」，还有什么王牌？技术调查官意见能直接判输吗？</div><div class="a"><span class="an">参考答案</span>两张王牌：① 现有技术/现有设计抗辩（属申请日前现有技术则不侵权）；② 无效反击（提无效宣告，专利无效则基础消失）。技术调查意见仅供法官参考、非证据、不替代裁判；复杂结构可另申请鉴定或勘验。⚠ 无效时限与调查官职权以现行规定为准。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Claim Interpretation</div><div class="cn">权利要求解释</div><div class="df">确定专利保护范围，说明书及附图辅助</div></div><div class="ti"><div class="en">All Elements Rule</div><div class="cn">全面覆盖原则</div><div class="df">权利要求每一技术特征均落入才侵权</div></div><div class="ti"><div class="en">Doctrine of Equivalents</div><div class="cn">等同原则</div><div class="df">手段/功能/效果基本相同视为覆盖</div></div><div class="ti"><div class="en">Prosecution History Estoppel</div><div class="cn">禁止反悔原则</div><div class="df">审查中放弃的内容不得再纳入保护</div></div><div class="ti"><div class="en">Prior Art Defense</div><div class="cn">现有技术抗辩</div><div class="df">被诉技术属现有技术不侵权</div></div></div><div class="foot"><a href="W32-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W32-D4.html">第 4 天 →</a><a class="qz" href="W32-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
