@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·第2天｜UCP600 与审单：5 个银行工作日的游戏规则</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · DAY 2 / 5　·　阶段一　打地基</div><h1>UCP600 与审单：5 个银行工作日的游戏规则</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">银行审单像机场安检：只看你的证件和票对不对得上，不管你箱子里是不是真的装了货。这叫「表面相符」，是信用证全部规则的灵魂。</div><div class="mlink"><b>怎么串到今天</b>昨天看了四种结算，今天钻进最复杂也最讲规矩的那一种：信用证。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>UCP600 = ICC 第 600 号出版物，2007.7.1 生效，把 L/C 的审单游戏规则全球统一；我国银行实务全面采纳</li><li>第 14(b) 条：开证行/保兑行/指定行有「最多 5 个银行工作日」审单并决定相符与否，且「交单日当天不算」</li><li>第 16 条：发现不符点，银行须在 5 个银行工作日内一次性发出拒付通知（须列明每一处不符 + 单据处置方式），否则丧失拒付权</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《UCP600 关键条款速查表》+《交单前单证自查清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 UCP600（《跟单信用证统一惯例》2007 修订版）的审单规则，输出《UCP600 关键条款速查表》与《交单前单证自查清单》：
+1. 先讲 UCP600 的法律性质：它是国际惯例不是法律，靠信用证「available subject to UCP600」援引才适用；中国是否采纳、实务地位
+2. 逐条讲透与「审单/拒付」最相关的条款，必须精确到条号：
+   · 第 2 条 关键定义（honour 承付 / negotiation 议付 / complying presentation 相符交单）
+   · 第 4 条 信用证与合同相互独立；银行不管货物
+   · 第 6 条 信用证不可撤销（UCP600 取消了可撤销信用证）
+   · 第 14 条 审单标准（单证一致、单单一致；未规定单据不审核；交单期 21 天；5 个银行工作日规则）
+   · 第 15 条 相符交单银行必须承付/议付
+   · 第 16 条 拒付通知的形式、内容与时限（一次性列明所有不符点、单据处置方式）
+   · 第 34–37 条 银行免责（信息传递、翻译、不可抗力、外国法律）
+3. 讲透「5 个银行工作日」规则的准确含义：从哪天起算、交单日当天算不算、「reasonable time」旧标准为什么被废
+4. 讲透「不符点（discrepancy）」：最常见的 10 类不符点，银行怎样据此拒付
+5. 输出《交单前单证自查清单》（受益人发货前/交单前逐项核对的 20 项）
+6. 站在物流商/货代视角：我方作为托运人/拼箱货代，常要帮客户准备或核对哪些单据，哪些不符点是我方能提前掐掉的</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：UCP600 是信用证的「裁判规则书」</h2>
+<p>信用证的灵魂是「单证相符、单单一致」——银行只看单据、不管货。UCP600 就是规定「银行怎么看单、看单看几天、不符怎么退」的全球统一裁判书。把它想成外卖平台的「收货验收规则」：平台（开证行）不关心你点的菜好不好吃（货），只核对「你拍的收货照（单据）」和订单（信用证）一不一致；一致就放款，不一致就退单。<b>怎么串到今天：客户选了 L/C 结算，卖方能不能拿到钱，全看这套审单规则——而提单（下一天的三角主角）就是最常被挑不符点的单据。</b></p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ UCP600 是国际惯例（ICC 第 600 号出版物，2007.7.1 生效），不是条约、也不是哪国法律。它只在信用证明示「subject to UCP600」时适用。我国银行（开证行、通知行、议付行）在实务中全面采纳 UCP600，但纠纷若进入我国法院，仍可能叠加适用我国《民法典》合同编与《最高人民法院关于审理信用证纠纷案件若干问题的规定》（法释〔2021〕18 号，请核对现行有效版本）。</div>
+<h2>二、《UCP600 关键条款速查表》（审单/拒付相关）</h2>
+<table><thead><tr><th>条号</th><th>主题</th><th>核心规则（速记）</th></tr></thead><tbody><tr><td>第 2 条</td><td>关键定义</td><td>honour=承付（付款/承兑后付/议付统称）；negotiation=议付（买单给对价）；complying presentation=相符交单</td></tr><tr><td>第 4 条</td><td>独立抽象性</td><td>信用证与基础合同相互独立；银行不处理货物/服务，只看单据</td></tr><tr><td>第 6 条</td><td>不可撤销</td><td>UCP600 下信用证<b>一律不可撤销</b>；取消了 UCP500 的可撤销类型</td></tr><tr><td>第 14(a)</td><td>审单标准</td><td>按「单证相符、单单一致」标准，在表面上审核</td></tr><tr><td>第 14(b)</td><td>审单时限</td><td>指定行/保兑行/开证行最多 <b>5 个银行工作日</b>审单并定夺相符与否</td></tr><tr><td>第 14(c)</td><td>交单期限</td><td>单据须在<b>提单日后 21 个日历日内</b>且在效期内交单</td></tr><tr><td>第 14(d)</td><td>单据日期</td><td>单据日期可早于信用证开证日，但不得晚于交单日</td></tr><tr><td>第 14(l)</td><td>非单据条件</td><td>信用证要求但未规定提交单据的条件，银行视为未规定、不予理会</td></tr><tr><td>第 15 条</td><td>相符须付款</td><td>单证相符时，开证行/保兑行<b>必须</b>承付，指定行须议付</td></tr><tr><td>第 16 条</td><td>拒付通知</td><td>须一次性列明所有不符点 + 单据处置方式，并在 5 银行工作日内发出</td></tr><tr><td>第 34 条</td><td>免责：传递</td><td>银行对报文/单据传递延误、遗失、翻译错误免责</td></tr><tr><td>第 35 条</td><td>免责：电讯</td><td>电讯传递失误、残缺、翻译错，银行免责</td></tr><tr><td>第 36 条</td><td>免责：不可抗力</td><td>罢工、暴乱、恐怖、天灾等，银行免责</td></tr><tr><td>第 37 条</td><td>免责：外国法</td><td>银行不对其营业地以外法律/惯例的后果负责</td></tr></tbody></table>
+<h2>三、「5 个银行工作日」到底怎么算（最易被误解）</h2>
+<p><b>起算点</b>：从「交单日」的<b>次日</b>起算，交单当天不算。例如受益人周一交单，银行从周二开始数 5 个银行工作日（跳过周末与当地银行假日）。<b>「最多」的含义</b>：银行可以更早审完，但不能超过 5 个银行工作日；一旦超期还没说「拒付」，法律后果是——<b>银行丧失以不符点拒付的权利，必须付款</b>（第 16(f) 反向效果 + 第 14(b) 时限）。为何废掉旧「reasonable time（合理时间）」？因为 UCP500 只说「合理时间内」，各银行尺度不一、扯皮不断，UCP600 直接钉死为「5 个银行工作日」，给受益人确定性。</p>
+<div class="key">记忆点：<b>5 个工作日 = 从交单次日数、跳过周末节假日、超期不拒 = 默认付款。受益人最怕的不是不符点，而是「银行拖过 5 天又想反悔」——这种反悔在法律上站不住。</b></div>
+<h2>四、第 16 条拒付通知：形式、内容、时限三件套</h2>
+<ol><li><b>时限</b>：银行决定不符后，须「毫不延迟」、且<b>最迟不超过交单日后第 5 个银行工作日</b>发出拒付通知。</li><li><b>形式</b>：必须用电讯方式（如 SWIFT），不可能时才用其他快捷方式。口头拒付无效、邮件补正也危险。</li><li><b>内容三要素（缺一不可，否则拒付不成立）</b>：① 声明「本行拒绝承付/议付」；② <b>以「单独」形式列明每一处不符点</b>（不能写「详见附件」或笼统说「有不符」）；③ 说明单据处置方式——是「留候受益人指示」「凭指示代管」「退还受益人」还是「依开证行指示办理」。</li><li><b>一次性原则</b>：所有不符点必须<b>一次</b>提完；若漏提某点，事后不能补提（preclusion，第 16(e) 精神）。</li><li><b>致命后果</b>：银行若未满足上述任一要求，就<b>丧失</b>声称单据不符的权利，必须付款。</li></ol>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① UCP600 第 16 条「5 个银行工作日」与「毫不延迟」的关系——通说为不得超过交单日后第 5 个银行工作日，且须在决定不符后毫不延迟发出，以较早者为准；② 我国法院对「不符点未一次性提清」是否绝对导致银行失权，须结合最高法信用证规定逐案核对；③ ISBP（国际标准银行实务，现行版本 821，请核对）是第 14 条审单的具体操作细则，审单必查。</div>
+<h2>五、最常见的 10 类不符点（受益人踩坑榜）</h2>
+<ul><li><b>迟交单</b>：超过提单日后 21 天或信用证效期（第 14(c) 条）——最硬的不符点。</li><li><b>迟装运</b>：实际装运日晚于信用证「最迟装运日」。</li><li><b>提单不清洁</b>：提单有「货物包装不良/残损」等不良批注（unclean），而信用证要求 clean B/L。</li><li><b>未显示已装船批注</b>：提单仅有「received for shipment」而无「on board」批注及日期。</li><li><b>货装甲板（on deck）</b>：信用证未允许而提单显示 on deck。</li><li><b>收货人不符</b>：提单 consignee 非「to order of issuing bank / to order」等与信用证要求不符。</li><li><b>发票金额超证</b>：发票金额超过信用证金额，或币种/溢短装不符。</li><li><b>保险不足</b>：保险金额低于发票金额 110%，或险别/保单背书不满足 46A 要求。</li><li><b>单单不一致</b>：如发票唛头与提单唛头不一致、产地证货描与发票不符。</li><li><b>缺证/过期证</b>：信用证要求的质量证、植检证、原产地证缺失或签发人/日期不符。</li></ul>
+<h2>六、《交单前单证自查清单》（受益人 20 项）</h2>
+<ol><li>信用证效期与最迟装运日是否都未过</li><li>提单日 + 21 天是否 ≤ 效期（交单期满足）</li><li>提单是否为 full set（通常 3/3）clean on board，且有装船批注与日期</li><li>提单 consignee / notify 与 50/59 字段一致</li><li>提单未显示 on deck、未被通知人以外的卸货港</li><li>发票金额、币种、溢短装与 32B/45A 一致</li><li>发票货描不与信用证矛盾（可简写但不得冲突）</li><li>保险单金额 ≥ 发票 110%、险别与 46A 一致、已背书</li><li>各类证书（产地/质检/植检）签发人、日期、货描一致</li><li>所有单据日期逻辑：单据日 ≤ 交单日，提单日 ≤ 最迟装运日</li><li>唛头在所有单据间完全一致</li><li>转运/分批是否与 43P/43T 一致</li><li>46A 要求的每份单据是否都备齐</li><li>47A 附加条件（如第三方单据、装船通知）是否履行</li><li>48 交单期限（若有特殊约定）是否满足</li><li>41/42 规定的兑用银行与汇票期限是否匹配</li><li>71B 费用承担条款是否理解（费用超支风险）</li><li>单据是否均为正本或信用证允许份数</li><li>签字/盖章处是否齐全（如要求 signed invoice）</li><li>是否留存全套复印件/扫描件与 SWIFT 交单回执</li></ol>
+<h2>七、物流商视角：我方能提前掐掉哪些不符点</h2>
+<p>货代/拼箱货代常是提单的「签发方或信息源」，也是客户单证的第一道把关人。<b>提单类不符点（清洁、已装船、consignee、on deck、份数）多半是我方能控制的</b>——错一个，客户就可能被拒付、进而赖掉我方运费。</p>
+<ul><li><b>反制点（物流商立场）</b>：在订舱委托单里要求客户准确填写 consignee/notify/唛头，并书面确认「因客户提供信息错误导致单证不符、被开证行拒付的，客户自行承担且运费照付」；签发 HBL 时严格按客户指示，但发现明显与 L/C 冲突（如要求 to order of issuing bank 却写 to order of shipper）立即提示。</li><li><b>客户反制点</b>：卖方会要求货代保证「提单清洁、已装船、全套份数正确」，否则索赔运费损失；货代须用交接单固化「货物交接时的表面状况」，避免被栽赃「本可出清洁单却不给」。</li><li><b>分包方视角</b>：实际承运人（船公司）签发 MBL，货代据此换 HBL；若 MBL 已显示 on deck，货代无法在 HBL 上抹掉，只能提示客户改证或改配舱位——这给了货代「提前预警」的抓手。</li></ul>
+<div class="key">今日口诀：<b>L/C 玩的是单据不是货；5 个工作日从交单次日起、超期不拒即付款；拒付通知要「一次性、列清单、说处置」，缺一样银行失权。货代把住提单这道关，客户的拒付风险就少一半。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">UCP600</div><div class="cn">Uniform Customs and Practice for Documentary Credits / 跟单信用证统一惯例</div><div class="df">ICC 第 600 号出版物，2007.7.1 生效，统一全球信用证审单与付款规则</div></div><div class="ti"><div class="en">Complying Presentation</div><div class="cn">相符交单</div><div class="df">单据在表面上与信用证条款、UCP600 及 ISBP 一致；满足则银行须承付</div></div><div class="ti"><div class="en">Discrepancy</div><div class="cn">不符点</div><div class="df">单据与信用证条款或单据之间相互矛盾之处，是银行拒付的法定理由</div></div><div class="ti"><div class="en">Banking Day</div><div class="cn">银行工作日</div><div class="df">银行在其营业地对外办公并办理信用证规定业务之日；审单时限按此计算</div></div><div class="ti"><div class="en">Honour</div><div class="cn">承付</div><div class="df">UCP600 对即期付款、延期付款承诺下的付款、承兑后付款与议付的统称</div></div></div></div><div class="foot"><a href="W4-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W4-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

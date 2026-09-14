@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·第5天｜复盘：钱—单—货三角</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · DAY 5 / 5　·　阶段一　打地基</div><h1>复盘：钱—单—货三角</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">钱、单、货是一张三条腿的凳子，任何一条腿短了都坐不稳。今天把这一周按「钱什么时候动、单什么时候转、货什么时候交」重新排一遍时间轴。</div><div class="mlink"><b>怎么串到今天</b>第 4 周收口，下周进入保险——赔出去的钱怎么要回来。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出：结算方式、UCP600、提单耦合、外汇合规</li><li>自测 10 题覆盖四类结算、5 工作日、三份正本、三流一致</li><li>核心问题：客户说「我们走 L/C」，我怎么在 30 秒内判断单据能不能顺利拿到钱</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《结算与单证风险速查手册》（定稿）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 4 周结束，请帮我固化：
+1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：四种结算方式风险排序、UCP600 第 14/16 条、提单三份正本、三流一致、汇率条款
+2. 错题讲透并关联业务场景
+3. 整合本周产出成《结算与单证风险速查手册》，至少含：结算方式风险对照表、选择矩阵、UCP600 速查、提单角色图、收付汇合规清单、汇率条款模板
+4. 给我一条「30 秒判断法」：客户报出「我们走 L/C / 后 T/T」时，我如何 30 秒问出三个问题、判断这笔钱到底稳不稳
+5. 给出可复制的判断方法：从「结算方式 → 单据要求 → 外汇合规 → 物流商自保」四步推导</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 结算全景</b>：T/T→L/C→D/P→D/A→后 T/T，卖方收款风险从 0 升到 100%；L/C 是银行信用、保理是卖断应收。</li><li><b>D2 UCP600</b>：5 个银行工作日（交单次日起算）、第 16 条一次性列明不符点+处置方式、超期不拒即付款。</li><li><b>D3 提单耦合</b>：提单是物权凭证故能押汇；三份正本防丢防重提、银行要全套才承付；货代卡在无单放货与不赎单。</li><li><b>D4 外汇合规</b>：经常项目可兑换、资本项目管制；三流一致是安检；名录不办=收付卡死、第三方代付=红灯。</li><li><b>总纲</b>：钱走在单上、单跟着货走——结算方式决定单据要求，单据要求决定物流商动作，外汇合规决定钱能否落袋。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】按卖方收款风险从低到高排序，正确的是？A. L/C < 预付T/T < D/A < 后T/T  B. 预付T/T < L/C < D/P < D/A < 后T/T  C. L/C < D/P < 预付T/T < 后T/T  D. 后T/T < D/A < L/C < 预付T/T</li><li>【单选】UCP600 下银行审单的最长时限是？A. 合理时间  B. 3 个银行工作日  C. <b>5 个银行工作日</b>（自交单次日起）  D. 7 个日历日</li><li>【单选】信用证要求 full set clean on board B/L，受益人只提交 2/3 正本，银行应？A. 必须付款  B. 可拒付（短交正本=不符点）  C. 自行补全  D. 视为副本</li><li>【单选】我国货物贸易外汇收支的前提是？A. 出口核销单  B. <b>贸易外汇收支企业名录登记</b>  C. 进口许可证  D. 无须任何登记</li><li>【单选】服务贸易单笔对外支付达到多少须税务备案？A. 1 万美元  B. 3 万美元  C. <b>5 万美元</b>  D. 10 万美元</li><li>【案例】客户走 L/C，货代签发 HBL 时把 consignee 写成「to order of shipper」而信用证要求「to order of issuing bank」，会发生什么、怎么救？</li><li>【案例】客户选后 T/T（OA 60 天），货已入我方德国海外仓但客户到期不付款，我方作为海外仓运营方怎么自保、能否扣货？</li><li>【案例】客户用三家境内个人每人 4.9 万美元「拼付」我方运费（规避 5 万备案），我方收了会有什么后果、怎么拒？</li><li>【简答】用一句话说明「为什么三份正本提单、银行要全套才承付」，并说明若只交 1/3 正本但买方已付款赎单，货权是否转移。</li><li>【简答】给客户起草跨境合同时，汇率条款应写清哪四件事？用模板要点回答。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B；2-C；3-B（短交正本属单证不符可拒付）；4-B；5-C（5 万美元）。</li><li>案例 6：consignee 与信用证不符=不符点，开证行可拒付→受益人收不到款、进而可能拒付我方运费；救法：签发前核对 L/C 46A 的 consignee 字段，立即要求改证或重签 HBL，并书面提示客户。</li><li>案例 7：运输/仓储协议须预埋「未付清费用前我方对库存货物享有留置权、可拒绝放货/转售/退运」，费用客户承担；OA 大单实行「款到释放最后一批」切碎风险。</li><li>案例 8：多人分拆规避备案=外汇违规红线，银行反洗钱会追到收款方；我方应拒收、要求客户以自身名义经银行正规支付，并约定违规赔偿。</li><li>简答 9：三份正本互为备份防丢/被窃，且「一份提货其余失效」解决流通与放货矛盾；银行要全套才承付是为防第三方持余份提货。买方付款赎单取得 1/3 正本即合法提货、货权转移，其余份自动失效。</li><li>简答 10：① 计价币种；② 汇率基准与锁定方式；③ 波动超阈值的调价触发与公式；④ 汇兑损益与外汇管制风险的承担方。</li></ul>
+<h2>三、《结算与单证风险速查手册》结构（定稿）</h2>
+<ul><li>模块 1：四种结算方式风险对照表（风险在买卖双方的分配）</li><li>模块 2：客户信用 × 订单金额 选择矩阵（优/中/差 × 小/中/大）</li><li>模块 3：UCP600 速查表（第 2/4/6/14/15/16/34–37 条）</li><li>模块 4：交单前单证自查清单 20 项</li><li>模块 5：提单角色图（钱—单—货流转）+ 三份正本逻辑</li><li>模块 6：单证流转登记台账模板</li><li>模块 7：跨境收付汇合规清单 20 项 + 三流一致原则</li><li>模块 8：汇率与币种条款模板 + 物流商自保反制点</li></ul>
+<h2>四、30 秒判断法：客户说「我们走 L/C / 后 T/T」</h2>
+<div class="key"><b>问三个问题，30 秒定位这笔钱稳不稳：</b>
+1. <b>哪种结算、对方信用如何？</b> 预付T/T/保兑L/C=稳；后T/T/D/A=我先垫资冒风险，须查客户信用与投保保理。
+2. <b>单据能不能做齐相符？</b> 走L/C就追问「全套清洁已装船提单、consignee、保单110%、21天交单」能否满足——做不齐就是埋雷，货代须在签单前核对46A。
+3. <b>钱能不能合法跨境？</b> 问「你们办了贸易外汇名录吗、谁付汇、走什么币种」；第三方代付/拼付=红灯，我方运费也别接。
+<b>三问答完：钱稳不稳、单齐不齐、汇合规不合规，立刻有数。</b></div>
+<h2>五、可复制的四步推导法</h2>
+<ol><li><b>第一步 结算方式</b>：先定风险轴（谁先出钱/出货）→ 决定我方垫资与坏账敞口。</li><li><b>第二步 单据要求</b>：L/C/托收才要全套物权单据；据此反推提单如何签、保单怎么做、21 天交单倒排期。</li><li><b>第三步 外汇合规</b>：确认名录、三流一致、币种与付汇路径，钱能否落袋。</li><li><b>第四步 物流商自保</b>：把「放货指令」与「收款状态」绑定（留置权/分批释放），用切割条款把买卖风险与我方运输责任分开。</li></ol>
+<div class="key">本周收口口诀：<b>钱走在单上、单跟着货走。结算定风险、单据定动作、外汇定落袋、物流商把放货开关焊在收款上——四步走完，钱单货三角才焊死，这票才稳。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Money-Doc-Goods Triangle</div><div class="cn">钱—单—货三角</div><div class="df">跨境贸易中资金、物权单据与货物三者的耦合关系，理解它是看懂结算与单证的前提</div></div><div class="ti"><div class="en">Risk Cheat-sheet</div><div class="cn">风险速查手册</div><div class="df">把本周全部产出压缩成一页可随时查阅的判断清单</div></div><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">30-second Rule</div><div class="cn">30 秒判断法</div><div class="df">客户报出结算方式后，用三个问题快速定位我方收款与放货风险</div></div><div class="ti"><div class="en">Document Flow Ledger</div><div class="cn">单证流转台账</div><div class="df">登记提单等物权单据从签发到议付、赎单、放货全过程与持有人</div></div></div></div><div class="foot"><a href="W4-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W4-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

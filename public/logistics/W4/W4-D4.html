@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·第4天｜外汇管理与收付汇合规</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · DAY 4 / 5　·　阶段一　打地基</div><h1>外汇管理与收付汇合规</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">跨境收付款像银行换汇窗口：不是不能换，而是要说明钱从哪来、货有没有真出去。货流、资金流、单证流三流对不上，轻则被银行退回，重则被认定逃汇。</div><div class="mlink"><b>怎么串到今天</b>前三天是商业规则，今天是监管红线——收不到钱和收了钱被罚，都不算赢。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>中国外汇管理基本框架：经常项目可兑换、资本项目管制；核心法规《外汇管理条例》（2008 修订，国务院令第 532 号）</li><li>货物贸易：2012 年改革取消核销，改为「企业名录登记 + 非现场核查」；收付汇前提是办妥「贸易外汇收支企业名录」</li><li>「三流一致」= 货物流、资金流、单证流必须相互印证，是外汇局核查与银行展业的核心</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《跨境收付汇合规清单》+《汇率与币种条款模板》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解中国跨境贸易的外汇管理与收付汇合规，输出《跨境收付汇合规清单》与《汇率与币种条款模板》：
+1. 先讲框架：中国外汇管理的主管机关（外汇局 SAFE）、基本方针「经常项目可兑换、资本项目管制」、现行核心法规《外汇管理条例》的版本与施行日
+2. 货物贸易外汇管理：① 2012 年改革取消了什么（出口收汇核销、进口付汇核销）；② 现在企业收付汇的前提「贸易外汇收支企业名录」怎么来的、不办的后果；③ B 类/C 类企业的差别待遇
+3. 「三流一致」原则：货物流（报关单/物流）、资金流（收付款水单）、单证流（合同/发票/提单）如何相互印证；银行「展业三原则」是什么；不一致时银行与会面临什么
+4. 服务贸易对外支付：单笔等值 5 万美元以上须做什么（税务备案）；个人年度便利化额度 5 万美元
+5. 跨境人民币结算：适用规则与「本外币一体化」监管
+6. 给具体合规动作：谁、何时、做什么、留什么证据、不做的后果。列《跨境收付汇合规清单》20 项
+7. 输出《汇率与币种条款模板》：固定价/浮动价、币种选择、汇率风险的承担与调价公式
+8. 站在物流商视角：我方收运费/海外仓费涉及跨境收付汇，怎样避免被卷入客户的「三流不一致」违规（如客户用第三方付汇、地下钱庄）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：外汇管理是「钱的国门」，三流一致是安检</h2>
+<p>海关管「货」进出国门，外汇局管「钱」进出国门。跨境贸易里，<b>货、钱、单</b>三条线都必须对得上号，否则钱就出不来、货也清不了关。把它想成「出国安检」：你人（货流）过了、登机牌（单证流）对了、票款（资金流）也付了，才放行；人到了钱没付，或者票是别人的名字，安检就把你拦下。<b>怎么串到今天：前三天讲「钱怎么走、单怎么开」，今天讲「这笔钱能不能合法跨境」——三流对不上，前面的 L/C、T/T 全卡在外汇这道关。</b></p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 《中华人民共和国外汇管理条例》现行版本为 2008 年修订、国务院令第 532 号公布、2008.8.5 起施行；② 货物贸易外汇管理制度 2012 年 8 月起改革（取消核销、名录管理），后续通过「多证合一」与网上办理进一步简化，具体办事口径以 SAFE 最新公告与银行展业要求为准；③ 税务备案 5 万美元阈值、个人年度便利化额度 5 万美元等数字，以现行有效规定为准。</div>
+<h2>二、管理框架：经常项目可兑换、资本项目管制</h2>
+<ul><li><b>主管机关</b>：国家外汇管理局（SAFE）及分支局；银行是「代位核查」前台，按展业原则办业务。</li><li><b>基本方针</b>：经常项目（货物贸易、服务贸易）原则可兑换、凭真实交易单证办理；资本项目（投资、外债、跨境担保）仍受管制、须审批/登记。</li><li><b>核心法规</b>：《外汇管理条例》（2008 修订）+ 货物贸易外汇管理指引及实施细则 + 服务贸易外汇管理指引 + 跨境人民币相关规定。</li></ul>
+<h2>三、货物贸易收付汇：从「核销」到「名录 + 核查」</h2>
+<table><thead><tr><th>事项</th><th>改革前（2012 前）</th><th>改革后（现行）</th><th>实务要点</th></tr></thead><tbody><tr><td>出口收汇</td><td>逐笔出口收汇核销</td><td>取消核销</td><td>凭报关单与收汇水单留存备查</td></tr><tr><td>进口付汇</td><td>逐笔进口付汇核销</td><td>取消核销</td><td>银行按展业原则审单付汇</td></tr><tr><td>企业前提</td><td>核销资格</td><td><b>贸易外汇收支企业名录</b>登记</td><td>未名录登记不得办货物贸易外汇收支</td></tr><tr><td>分类监管</td><td>无</td><td>A/B/C 三类</td><td>B/C 类受限（如 B 类需电子数据核查、C 类逐笔登记）</td></tr><tr><td>核查方式</td><td>人工核销</td><td>非现场监测 + 现场核查</td><td>指标异常（如资金货物流不匹配）被列重点</td></tr></tbody></table>
+<ul><li><b>不办名录的后果</b>：银行不得为企业办理货物贸易外汇收支，业务直接卡死；新企业须先办登记（现多并入「多证合一」或网上办理）。</li><li><b>B/C 类代价</b>：B 类企业部分业务须电子数据核查、额度受限；C 类企业近乎逐笔审批，且可能影响客户信用与银行授信。</li></ul>
+<h2>四、「三流一致」：货物流·资金流·单证流</h2>
+<p>外汇局与银行核查的本质，是确认「你收/付的钱，对应真实的货和真实的单」。三流任一对不上，就触发「分拆交易、虚假贸易、地下钱庄」疑点。</p>
+<table><thead><tr><th>流</th><th>对应凭证</th><th>谁来核对</th><th>典型不一致信号</th></tr></thead><tbody><tr><td>货物流</td><td>报关单、物流单、提单</td><td>海关 / 外汇局</td><td>报关金额与合同/收汇金额偏差过大</td></tr><tr><td>资金流</td><td>收付款水单、银行回单</td><td>银行 / 外汇局</td><td>第三方代付、资金来自非交易对手</td></tr><tr><td>单证流</td><td>买卖合同、发票、装箱单</td><td>银行展业</td><td>发票金额与报关单、收汇不匹配</td></tr></tbody></table>
+<ul><li><b>银行展业三原则</b>：「了解客户、了解业务、尽职审查」——银行须穿透核实交易真实性，而非只看单据表面。</li><li><b>不一致的后果</b>：轻则退单要求补证，重则列入 B/C 类、移交外汇检查、行政处罚（罚款、责令调回外汇），涉嫌洗钱/逃汇的可触刑责。</li></ul>
+<h2>五、服务贸易与个人：两道常被忽略的线</h2>
+<ul><li><b>服务贸易对外支付</b>：单笔等值 <b>5 万美元以上</b>，须先向主管税务机关办理《服务贸易等项目对外支付税务备案》（备案表号由税务出具，银行凭以付汇）；5 万美元以下通常免备案但须真实交易证明。</li><li><b>个人</b>：每人每年便利化结售汇额度 <b>5 万美元</b>（含）；超额度须提供真实性材料。物流商帮客户「走个人额度」付运费 = 典型分拆违规。</li><li><b>跨境人民币</b>：以人民币跨境结算适用《跨境贸易人民币结算管理办法》，与外币「本外币一体化」监管，同样要真实交易、同样三流一致。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 服务贸易税务备案的等值 5 万美元阈值、是否含跨境人民币，以最新税务与外汇联合规定为准；② 个人年度便利化额度确为 5 万美元，但「便利化」不等于「无条件」，大额仍须真实性审核；③ 部分区域试点（如自贸区）有更高便利度，须核对当地政策。</div>
+<h2>六、《跨境收付汇合规清单》20 项（法务视角）</h2>
+<ol><li>企业是否办妥「贸易外汇收支企业名录」登记（货物贸易前提）</li><li>企业分类是否为 A 类（B/C 类须额外核查/审批）</li><li>收/付汇金额与报关单、合同、发票三者是否匹配</li><li>交易对手是否为合同/发票载明的买卖方（防第三方代付）</li><li>是否存在「境外同一付款人反复付多家境内企业」等分拆特征</li><li>服务贸易单笔是否超 5 万美元需税务备案</li><li>对外支付是否涉及资本项目（投资/外债）须前置登记</li><li>跨境人民币业务是否同样留存真实交易单证</li><li>是否通过银行正规渠道，严禁地下钱庄/境内外对敲</li><li>收汇后是否按规定办理结汇或留存外汇账户</li><li>付汇是否超「进口报关金额 + 合理费用」范围</li><li>是否就关联交易（如集团内转移定价）备妥定价依据</li><li>物流单据（提单/运单）收货人/发货人与资金流是否印证</li><li>海外仓/货代费收汇是否对应真实服务合同与账单</li><li>是否就大额预收/预付货款向银行说明并留痕</li><li>退汇（错汇/退货）是否按规定原路退回并申报</li><li>国际收支申报是否按时（银行代申报，机构单笔等值 5000 美元以上通常须申报，请核对现行阈值）</li><li>是否就外汇违规建立内部合规清单与责任人</li><li>是否定期对账：报关数据、银行收付款、会计账簿三账一致</li><li>留存全套单证与申报记录（通常 ≥ 5 年备查）</li></ol>
+<h2>七、《汇率与币种条款模板》</h2>
+<p>跨境合同里「用哪种钱、按哪天汇率、谁担波动」必须写死，否则货没到汇率先吃掉利润。</p>
+<blockquote>【币种与汇率条款（模板）】
+1. 本合同价款以 ______（USD/EUR/CNY）计价结算。
+2. 汇率基准：按 ______（装运日 / 发票日 / 付款日）前 ______ 个营业日中国外汇交易中心或约定的 ______ 中间价确定；或锁定固定汇率 ______。
+3. 汇率风险：若计价币种对卖方记账币种波动超过 ______%（或 ±______ 元），任一方有权按 ______ 公式调整价款。
+4. 若以 CNY 支付外币合同，汇兑损益由 ______ 方承担；因外汇管制导致无法按期付汇的，______ 方须在 ______ 日内书面通知并承担 ______ 责任。
+5. 禁止通过非正规渠道换汇，所有收付须经由银行合规办理。</blockquote>
+<ul><li><b>固定价 vs 浮动价</b>：强势卖方争取固定汇率/预付锁汇；弱势卖方用「浮动 + 调价触发线」自保。</li><li><b>币种选择</b>：尽量用自身可自由结售汇的硬通货（USD/EUR）；收弱币（如高通胀国本币）须加贬值保护。</li></ul>
+<h2>八、物流商视角：别被客户的「三流不一致」拖下水</h2>
+<p>货代/海外仓收运费、仓储费时，若客户用「第三方代付」「多个个人账户拼付」「非交易对手境外公司付汇」，很可能踩中分拆或地下钱庄红线。<b>银行反洗钱与外汇展业会顺藤摸瓜追到收款的物流商</b>。</p>
+<ul><li><b>反制点（物流商立场）</b>：在计费协议写明「客户须以自身名义、经银行正规渠道支付，因付款来源不合规导致我方被银行/外汇局问询或处罚的，客户全额赔偿并承担滞纳金」；对异常付款（第三方代付、频繁小额拼付）一律要求出具付款说明与关系证明，必要时拒收。</li><li><b>客户反制点</b>：大客户集团内多主体结算常见，会要求「关联公司代付」，我方须让其提供股权关系与代付授权，把「三流不一」变成「有合理解的例外」，否则宁可暂缓放货。</li><li><b>分包方视角</b>：境外承运人对「谁付运费」不敏感，但一旦涉及中方收款主体被查，会牵连整个运费链；物流商应统一收款主体、保留计费单与发票对应。</li></ul>
+<div class="key">今日口诀：<b>外汇是钱的国门，三流一致是安检。名录不办=收付卡死，B/C 类=处处受限，第三方代付=红灯。物流商收运费要盯紧「付款人是不是客户本人」，异常付款一律要说明——这关过了，前面的 L/C/T/T 才算真正落袋。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">SAFE</div><div class="cn">State Administration of Foreign Exchange / 国家外汇管理局</div><div class="df">中国外汇管理主管机关，负责经常与资本项目外汇收支、国际收支统计与核查</div></div><div class="ti"><div class="en">Enterprise List</div><div class="cn">贸易外汇收支企业名录</div><div class="df">企业办理货物贸易外汇收支须在外汇局办理的名录登记，是合规收付汇前提</div></div><div class="ti"><div class="en">Three Streams Consistency</div><div class="cn">三流一致 / 货物流·资金流·单证流</div><div class="df">货物进出口、外汇收支与报关/商业单证须相互印证的合规核查原则</div></div><div class="ti"><div class="en">Tax Filing for Outward Payment</div><div class="cn">服务贸易税务备案</div><div class="df">单笔等值 5 万美元以上服务贸易对外支付，须向主管税务机关备案</div></div><div class="ti"><div class="en">Cross-border RMB</div><div class="cn">跨境贸易人民币结算</div><div class="df">以人民币进行跨境贸易结算，适用《跨境贸易人民币结算管理办法》，本外币一体化监管</div></div></div></div><div class="foot"><a href="W4-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W4-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

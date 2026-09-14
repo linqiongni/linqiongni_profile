@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·第3天｜提单与结算的耦合：为什么提单要三份正本</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · DAY 3 / 5　·　阶段一　打地基</div><h1>提单与结算的耦合：为什么提单要三份正本</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">三份正本提单就是三把一模一样的家门钥匙，随便一把都能开门，所以必须三把全收回才算安全。少任何一把在外流通，都可能有人半夜进门把货提走。</div><div class="mlink"><b>怎么串到今天</b>把提单和信用证接起来：为什么这张纸的数量和流转方式，直接决定你收不收得到钱。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>提单三大功能：货物收据 + 运输合同证明 + 物权凭证；只有提单（与 FIATA FBL）是物权凭证，AWB/铁路运单/CMR/FCR 都不是</li><li>信用证下「全套清洁已装船提单」= 银行承兑汇票的「抵押品」：受益人交单=交物权，银行付款=买下货权</li><li>三份正本的设计目的：防止单一正本丢失/被窃导致货权失控，且「一份提货后其余自动失效」解决流通与放货矛盾</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《提单在结算中的角色示意图》（文字版）+《单证流转登记台账》模板</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透提单（B/L）与结算（尤其是信用证）之间的耦合关系，输出《提单在结算中的角色示意图》（文字版）与《单证流转登记台账》模板：
+1. 先用生活化比喻讲清「提单=提货的取件码（且可背书转让）」，再落到物权凭证
+2. 提单三大功能：货物收据、运输合同证明、物权凭证——其中只有「物权凭证」这一条让它能在结算里当「抵押品」；对比 AWB/铁路运单/FCR 为什么不能用于信用证押汇
+3. 核心问题：为什么提单要印「三份正本」（3/3）？逐一讲：① 防丢失/被窃 ② 一份提货后其余失效的流通设计 ③ 银行要求「全套」才承付的逻辑 ④ 若只交 2/3 正本银行能否拒付
+4. 画出《提单在结算中的角色示意图》（文字版）：从发货人→承运人签单→通知行/议付行→开证行→申请人付款赎单→凭单提货，每一步谁持单、单的状态、钱怎么动
+5. 《单证流转登记台账》模板：字段含 单据类型、份数、正本/副本、签收人、签收时间、流转节点、当前持有人、备注；给 10 行以上示例
+6. 站在物流商视角：我方作为货代签发 HBL，在「钱—单—货」三角里处在哪个位置、最容易被哪一环卡住（如无单放货、客户不赎单导致货压港）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：提单就是「提货的取件码」，还能转让</h2>
+<p>快递柜取件码=凭码取货；提单更狠——它不只是一串码，还是<b>可以背书转让的「货权证」</b>：发货人把提单背书给银行，银行等于「拿着货」；银行再转给买方，买方凭它去港口提货。<b>这就是「钱—单—货」三角的核心：钱走在单上、单跟着货走</b>。怎么串到今天：昨天讲 L/C 银行「只看单不看货」，今天揭晓它看的到底是什么单——就是这张能代表货权的提单。AWB（空运单）、铁路运单、FCR 不是物权凭证，所以空运/铁路/快递结算基本没法像海运那样「凭单押汇」。</p>
+<div class="key">记忆点：<b>提单 = 货物收据 + 运输合同证明 + 物权凭证。三功能里，只有「物权凭证」这一条让它能在信用证里当抵押品；AWB/运单/FCR 缺这一条，所以押不了汇、只能先款或先货。</b></div>
+<h2>二、为什么只有提单能进结算、AWB 进不了</h2>
+<table><thead><tr><th>单据</th><th>物权凭证？</th><th>能否凭单押汇/控货</th><th>在 L/C 结算中的角色</th></tr></thead><tbody><tr><td>海运提单 B/L</td><td><b>是</b></td><td>能（可背书转让）</td><td>核心押汇单据，凭全套正本承付</td></tr><tr><td>FIATA FBL</td><td>是（多式联运）</td><td>能</td><td>多式联运下替代 B/L</td></tr><tr><td>空运单 AWB</td><td>否</td><td>不能（凭身份提货）</td><td>仅作运输证明，银行不控货</td></tr><tr><td>铁路运单（CIM/SMGS）</td><td>否</td><td>不能</td><td>运输证明，非物权</td></tr><tr><td>CMR 公路运单</td><td>否</td><td>不能</td><td>运输证明，非物权</td></tr><tr><td>FCR 收货证明</td><td>否</td><td>不能</td><td>买方收货确认，卖方已交货证据</td></tr></tbody></table>
+<h2>三、核心问题：为什么提单要「三份正本」（3/3）</h2>
+<ol><li><b>防丢失/被窃</b>：海运航程长、单据靠快递流转，一份丢失可能导致货到港却无单提货；印三份互为备份，任一份有效即可提货。</li><li><b>流通与放货矛盾的解法</b>：提单是可转让物权凭证，正本可能在银行间背书流转；设计上「<b>任何一份正本提货后，其余各份自动失效</b>」，避免同一票货被多人重复提取。</li><li><b>银行要「全套」的逻辑</b>：信用证 46A 通常要求「full set (3/3) original clean on board B/L」。银行承付前提是拿到全部正本——若只交 2/3，少了的那份仍在流通，货权有被第三方提走的风险，所以<b>银行有权以「短交正本」为不符点拒付</b>（属第 14 条单证不符）。</li><li><b>实务权衡</b>：三份正本由托运人/议付行持有并流转，买方付款赎单后拿任意一份去提货；承运人 system 在放货时核销该份、其余失效。</li></ol>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 提单「全套」份数由当事人约定，常见 3 份正本，但法律并未强制必须 3 份（海牙-维斯比/汉堡均只提「一套可流通提单」，具体份数依商业习惯）；② 我国《海商法》第 71 条对提单物权性的界定、以及「一份提货其余失效」的国内法表述，请核对现行条文；③ 电放（telex release）与正本提单并存时的放货风险，须逐案核对。</div>
+<h2>四、《提单在结算中的角色示意图》（文字版）</h2>
+<p>把「钱—单—货」三条线叠在一起看（→ 表示流转方向）：</p>
+<blockquote>发货人 ──(交货)──▶ 承运人
+   │                        │
+   │ 签发 3/3 正本 B/L       │ 货物装船出运
+   ▼                        ▼
+发货人 ──(交单+背书)──▶ 议付行/通知行 ──(审单相符)──▶ 开证行
+   │                                                │
+   │ 拿到货款（或议付对价）                          │ 垫款承付
+   ▼                                                ▼
+受益人收款 ◀───────────── 申请人(买方) ──(付款赎单)── 开证行交付 1/3 正本 B/L
+                                                    │
+                                                    ▼
+                                          买方凭单 ──▶ 目的港提货（该份核销，其余失效）
+货：始终随船/车流动，最终在目的港被「持单买方」提取。</blockquote>
+<p><b>关键耦合</b>：银行付款的那一刻，买的是「提单代表的货权」；买方赎单，买回的是「提货权」。所以「全套清洁已装船提单」本质是信用证下银行的抵押品——单证一不符，抵押品不成立，银行不付，链条断。</p>
+<h2>五、《单证流转登记台账》模板 + 示例</h2>
+<table><thead><tr><th>单据类型</th><th>份数</th><th>正/副</th><th>签收人</th><th>签收时间</th><th>流转节点</th><th>当前持有人</th><th>备注</th></tr></thead><tbody><tr><td>海运提单 MBL</td><td>3 正 3 副</td><td>正</td><td>船代</td><td>2026-03-02</td><td>签单</td><td>货代</td><td>已收妥</td></tr><tr><td>货代提单 HBL</td><td>3 正 3 副</td><td>正</td><td>货代</td><td>2026-03-02</td><td>签发</td><td>货代</td><td>待交客户</td></tr><tr><td>商业发票 Inv</td><td>3 正</td><td>正</td><td>受益人</td><td>2026-03-03</td><td>制单</td><td>受益人</td><td>金额 USD 100,000</td></tr><tr><td>装箱单 PL</td><td>3 正</td><td>正</td><td>受益人</td><td>2026-03-03</td><td>制单</td><td>受益人</td><td>与 Inv 一致</td></tr><tr><td>保险单 Ins</td><td>1 正 1 副</td><td>正</td><td>保险公司</td><td>2026-03-03</td><td>投保</td><td>受益人</td><td>110% CIF, ICC(A)</td></tr><tr><td>产地证 FTA</td><td>1 正</td><td>正</td><td>贸促会</td><td>2026-03-04</td><td>申领</td><td>受益人</td><td>FORM E</td></tr><tr><td>检验证</td><td>1 正</td><td>正</td><td>SGS</td><td>2026-03-04</td><td>出证</td><td>受益人</td><td>装船前</td></tr><tr><td>提单(交单 3/3)</td><td>3 正</td><td>正</td><td>议付行</td><td>2026-03-10</td><td>交单</td><td>议付行</td><td>21 天内</td></tr><tr><td>提单(赎单 1/3)</td><td>1 正</td><td>正</td><td>开证行</td><td>2026-03-18</td><td>赎单</td><td>申请人</td><td>已付款</td></tr><tr><td>提单(核销)</td><td>1 正</td><td>正</td><td>目的港</td><td>2026-03-20</td><td>提货</td><td>承运人</td><td>已放货失效</td></tr><tr><td>副本归档</td><td>全套副本</td><td>副</td><td>受益人</td><td>2026-03-20</td><td>归档</td><td>受益人</td><td>留存 2 年+</td></tr><tr><td>退单(未用 2/3)</td><td>2 正</td><td>正</td><td>开证行</td><td>2026-03-20</td><td>退回</td><td>受益人</td><td>其余份失效</td></tr></tbody></table>
+<h2>六、物流商视角：我方在三角里的位置与卡点</h2>
+<p>货代签发 HBL，处在「承运人（MBL）」与「客户（HBL 托运人/收货人）」之间。<b>我方既不是银行也不是买卖任何一方，却是「单」的实际制造者和流转枢纽</b>——卡点全在这张单上。</p>
+<ul><li><b>卡点一 无单放货</b>：客户（HBL 收货人）没付款赎单却凭保函/电放要求我方放货，我方若放，HBL 下构成「无单放货」须对托运人承担全赔责任（远超运费）。对策：HBL 放货严格凭正本或书面电放授权，且电放前确认已收讫运费与货款状态。</li><li><b>卡点二 客户不赎单、货压港</b>：L/C 下买方拒付或 D/A 承兑后不付，货到港我方海外仓/代理手里，产生堆存费。对策：运输委托单列「目的港无人赎货/拒付时，我方有权转售、退运或拍卖，费用由客户承担」。</li><li><b>反制点（物流商立场）</b>：海外仓放货指令必须与「客户付款状态」绑定；对 OA 客户实行「款到释放最后一批」。客户反制：大买方会要求「凭提单副本+付款承诺先放货」，我方须用保函+尾款锁定，不裸放。</li></ul>
+<div class="key">今日口诀：<b>提单是取件码还能转让；三份正本防丢防重提，银行要全套才肯付；货代卡在单的中间，无单放货=全赔、不赎单=压港费自理。把「放货」和「收款状态」焊死，这票才安全。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">B/L</div><div class="cn">Bill of Lading / 提单</div><div class="df">承运人签发的货物收据、运输合同证明与物权凭证；信用证下「全套」通常指 3 份正本</div></div><div class="ti"><div class="en">Full Set Clean On Board B/L</div><div class="cn">全套清洁已装船提单</div><div class="df">含全部正本、无不良批注、载有已装船批注的提单，是信用证押汇的典型物权单据</div></div><div class="ti"><div class="en">Negotiable Document</div><div class="cn">可转让物权单据</div><div class="df">经背书+交付可转移货权；提单与 FIATA FBL 是，AWB/运单/FCR 不是</div></div><div class="ti"><div class="en">HBL</div><div class="cn">House Bill of Lading / 货代提单</div><div class="df">货代（无船承运人）签发的提单，用于拼箱/多式联运，可流通但依赖货代资信</div></div><div class="ti"><div class="en">LOI</div><div class="cn">Letter of Indemnity / 保函</div><div class="df">单证不符或正本缺失时由一方出具的赔偿保证，用于换取放货或变通交单</div></div></div></div><div class="foot"><a href="W4-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W4-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

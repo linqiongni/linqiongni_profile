@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·第1天｜货物保险：保什么、保给谁、赔多少</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · DAY 1 / 5　·　阶段一　打地基</div><h1>货物保险：保什么、保给谁、赔多少</h1><div class="sub">第 5 周主题：货运保险与责任险 —— 赔了以后找谁要回来</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">货物保险三档像医保档次：平安险只保全损和翻船这种大事（像只保骨折住院），水渍险加保部分损失，一切险把能保的都保上。以为买了「保险」就全赔，是最常见的误会。</div><div class="mlink"><b>怎么串到今天</b>责任认定学完了，这周解决：赔出去的钱，能不能从别处要回来。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>货物保险保的是「货主的货物」本身，赔的是货主的货物损失；与物流商赔别人的责任保险是两条独立的线</li><li>PICC 中国保险条款三档：平安险(FPA)/水渍险(WPA)/一切险(AR)；ICC 协会货物条款三档：A/B/C</li><li>保险金额惯例为 CIF 加成 10%（110%），但须核对合同约定；保险利益与保单背书转让决定索赔权能否转移</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《PICC 条款 vs ICC 条款对照表》+《险别选择建议表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解跨境物流中的「货物保险」（Cargo Insurance），输出两份交付物：《PICC 条款 vs ICC 条款对照表》和《险别选择建议表》：
+1. 先讲清货物保险的本质：它保的是「货物本身价值损失」，被保险人是货主（卖方或买方），与物流商/承运人的责任保险完全不是一回事。用「搬家公司给电视买保险」的比喻引入。
+2. PICC 中国保险条款（CIC）三档逐个讲：平安险(FPA)、水渍险(WPA)、一切险(AR)——各自保什么、不保什么、承保方式（正面列举 vs 列明除外）。
+3. ICC 协会货物条款（Institute Cargo Clauses）三档：ICC(A)、ICC(B)、ICC(C)，讲清 A 用「除外责任法」、B/C 用「列明风险法」，以及战争/罢工须另加附加险。
+4. 给出《PICC 条款 vs ICC 条款对照表》：把 PICC 三档与 ICC 三档在承保方式、近似对应、全损/部分损失、外来原因、战争罢工、条款版本六个维度并排列出。
+5. 保险金额惯例：CIF 价加成 10%（即按 110% 投保）是通行做法，讲清加成是覆盖预期利润；保险费率如何算；保险利益（Insurable Interest）何时存在；保单如何通过背书（Endorsement）随货权转让。
+6. 最后给《险别选择建议表》：按货物类型（普货/易碎/高值/食品/带电）、运输方式、客户议价力，建议选 FPA/WPA/AR 还是 ICC(A)/(B)/(C)。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：货物保险是「货主的保险」，不是「物流商的保险」</h2>
+<p>请搬家公司最经典的坑引入：你搬家花 200 块给电视机买了「搬家险」，师傅把电视摔了，保险公司赔你 5000 块买新机——这笔钱赔的是<b>你（货主）</b>，跟搬家公司赔不赔你是两件事。<b>货运货物保险就是这个「电视险」：保的是货物本身的价值损失，被保险人是货主（卖方或买方），赔的是货主的货物损失。</b>它和「物流商赔别人」的责任保险是两条完全独立的线。这周要搞清：货主买了货险，出事先找保险公司；保险公司赔完，转头可能来找<b>我们（物流商）</b>代位追偿——所以货险表面不关我们事，链条末端却绕回我们。</p>
+<div class="key">记忆点：<b>货物保险 = 货主给自己的货买保险，赔货主；责任保险 = 物流商给自己买兜底，赔别人后由保险公司补我们。两条线起点不同、终点不同，但会在「代位求偿」处交汇。</b> 怎么串到今天：昨天讲完贸易术语（谁担风险），今天讲风险真的发生时，第一道「钱从哪来」——货主的保险。</div>
+<h2>二、PICC 三档：从「只保大的」到「几乎都保」</h2>
+<ul><li><b>平安险 FPA</b>：只保全损、共同海损、施救/救助费用、转运落海等重大事故损失；<b>自然灾害造成的部分损失不保</b>。这是「最抠」的一档，近似 ICC(C)。</li><li><b>水渍险 WPA</b>：FPA 的全部 + 自然灾害（恶劣气候、雷电、海啸、洪水等）造成的部分损失。注意它<b>不含偷窃、破碎、短少等一般外来原因</b>——这是和一切险最关键的分界。</li><li><b>一切险 AR</b>：WPA 的全部 + <b>一般外来原因</b>（偷窃提货不着、淡水雨淋、短量、破碎、渗漏、串味等）造成的全部/部分损失。但<b>战争、罢工、交货不到、进口关税等特殊风险仍不保</b>，需另投附加险。</li><li><b>承保方式差异</b>：PICC 三档都是「正面列举保什么」；一切险虽叫「一切」，实际上是「正面列举一般外来原因」，并非字面的一切。</li></ul>
+<h2>三、ICC 三档：A 用「除外法」，B/C 用「列明法」</h2>
+<ul><li><b>ICC(A)</b>：<b>列明「不保什么」（除外责任法）</b>，除列明除外外一切风险都保，是三档最宽。注意它与「一切险 AR」不等同——AR 是正面列举，ICC(A) 是反面排除，二者在部分风险（如某些人为疏忽、集装箱海水渍）上范围有差异。</li><li><b>ICC(B)</b>：<b>列明风险法</b>，逐条列明承保的意外事故（沉没、触礁、碰撞、火灾、爆炸、地震、火山、海水入舱等），未列明的不保，范围窄于 A。</li><li><b>ICC(C)</b>：仅保最重大的意外事故（沉没、火灾、爆炸、触礁、搁浅、暴力盗窃等），自然灾害部分损失不保，近似平安险。</li><li><b>战争与罢工</b>：ICC 三档<b>均不含</b>战争、罢工、暴动风险，须另加《协会战争险条款（货物）》与《协会罢工险条款（货物）》；PICC 三档同样需另投战争/罢工附加险。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① PICC 现行货运险条款版本（常用为 2009 版）与 ICC 现行版本（ICC 1/1/09 取代 1/1/82）以保险人/ICC 官方文本为准；② 各档「近似对应」仅为便于理解的功能类比，法律文本范围以条款原文为准，切勿在合同里写「AR 等同于 ICC(A)」；③ 一般外来原因的具体清单、除外责任细节以所投保单载明条款为准。</div>
+<h2>四、《PICC 条款 vs ICC 条款对照表》（六维并列）</h2>
+<table><thead><tr><th>维度</th><th>PICC 平安险(FPA)</th><th>PICC 水渍险(WPA)</th><th>PICC 一切险(AR)</th><th>ICC(C)</th><th>ICC(B)</th><th>ICC(A)</th></tr></thead><tbody><tr><td>承保方式</td><td>正面列举</td><td>正面列举</td><td>正面列举（含一般外来原因）</td><td>正面列举</td><td>列明风险</td><td><b>列明除外（其余都保）</b></td></tr><tr><td>功能近似</td><td>≈ ICC(C)</td><td>介于 B/C 间，无直接对应</td><td>≈ ICC(A) 但范围不同</td><td>≈ 平安险</td><td>介于平安/一切间</td><td>≈ 一切险但更宽</td></tr><tr><td>全损/共同海损</td><td>保</td><td>保</td><td>保</td><td>保</td><td>保</td><td>保</td></tr><tr><td>自然灾害部分损失</td><td>不保（除非全损）</td><td>保</td><td>保</td><td>不保（除非全损）</td><td>保（列明）</td><td>保</td></tr><tr><td>一般外来原因（偷窃/破碎/雨淋）</td><td>不保</td><td>不保</td><td><b>保</b></td><td>不保</td><td>视列明</td><td><b>保（除除外）</b></td></tr><tr><td>战争/罢工</td><td>不保（需附加）</td><td>不保（需附加）</td><td>不保（需附加）</td><td>不保（需附加）</td><td>不保（需附加）</td><td>不保（需附加）</td></tr><tr><td>常用条款版本</td><td>PICC 2009 版【待核实】</td><td>同上</td><td>同上</td><td>ICC 1/1/09【待核实】</td><td>同上</td><td>同上</td></tr></tbody></table>
+<h2>五、保险金额：CIF 加成 10% 是通行做法，但须核对合同</h2>
+<ul><li><b>加成惯例</b>：以 CIF 发票金额加成 <b>10%</b>（即按 110%）投保，这 10% 是覆盖买方预期利润与部分费用；也有加成 20%–30% 的情形，取决于买卖约定。</li><li><b>须核对合同约定</b>：加成比例是合同/信用证约定的事项，并非法定。若合同只写「按发票金额投保」则无加成；CIF 下卖方有投保义务但险别/加成须看约定（Incoterms 2020 仅要求 CIF 投最低险别，未强制加成）。</li><li><b>保费计算</b>：保险费 = 保险金额 × 保险费率；费率随货物、航线、险别浮动，高值/易碎/带电货费率显著更高。</li><li><b>不在 CIF 的情况</b>：FOB/CFR/CPT/FCA 下卖方无投保义务，买方须自行按货值投保；若买方漏保，货损自负——这是客户反制点来源（见下）。</li></ul>
+<div class="key">物流商自保动作：① 凡是 FOB/CFR 等「卖方不投保」术语，交运前必须书面提醒客户「请自行投保货运险」，并留存提醒记录；② 我方绝不替客户「代投」而不留凭证，否则客户会说「你答应过保」。客户反制点：客户会以「货代未尽提醒义务」主张我方连带，所以提醒动作要留痕。</div>
+<h2>六、保险利益与保单背书转让：索赔权怎么转给买方</h2>
+<ul><li><b>保险利益（Insurable Interest）</b>：投保时或损失发生时，被保险人须对货物有法律上经济利益（如拥有货权或承担风险）。CIF 下风险在装运港转移，因此<b>装船前保险利益在卖方、装船后在买方</b>——这是为何 CIF 保单必须能转让。</li><li><b>背书转让（Endorsement）</b>：CIF 卖方投保后，通过<b>空白背书或记名背书</b>把保险单随提单转让给买方，买方凭受让的保单在目的港向保险人索赔。未背书转让，买方无索赔权。</li><li><b>空白背书最常用</b>：卖方在保单背面签章不写被背书人，单据可自由流转，像提单空白背书一样。</li><li><b>转让的是「索赔权」不是「保险利益」本身</b>：买方须在自己承担风险时段（装船后）发生损失才有权索赔；装船前损失仍归卖方索赔。</li></ul>
+<h2>七、《险别选择建议表》：按货型与议价力选</h2>
+<table><thead><tr><th>货物类型</th><th>建议险别</th><th>理由</th><th>客户反制点</th></tr></thead><tbody><tr><td>普货/低值（建材、原料）</td><td>FPA 或 ICC(C)</td><td>损失概率低，控成本</td><td>客户若主张「应投一切险」，须看合同是否约定</td></tr><tr><td>易碎/易损（陶瓷、玻璃）</td><td>AR 或 ICC(A)</td><td>破碎、渗漏属一般外来原因，FPA 不保</td><td>客户可凭「险别不足」拒赔差额，须在合同锁定险别</td></tr><tr><td>高值货（珠宝、电子）</td><td>ICC(A) + 偷窃附加</td><td>高值最怕偷窃短少，务必 AR/A 级</td><td>高值货若只投 FPA，差额巨大，客户必追偿物流商</td></tr><tr><td>食品/农产品</td><td>AR + 受潮/发霉附加</td><td>温湿、短量风险高</td><td>霉变常属「除外」，须加保，否则客户自担</td></tr><tr><td>带电/危险品</td><td>AR + 危品特别约定</td><td>普通险常除外电池/危品</td><td>瞒报导致拒赔，客户转而向我方索赔，须切割</td></tr><tr><td>客户强势/报价含险</td><td>按客户指定 ICC(A)</td><td>争取业务让利</td><td>我方须确认保费已收，避免「包险不收费」</td></tr></tbody></table>
+<div class="key">今日落地三动作：① 把上面 PICC/ICC 对照表存进术语库，记住「AR 不等于 ICC(A)、FPA 不等于 ICC(C)」；② 凡我方代客户投保，必须在委托书写清险别与加成，客户确认后执行；③ 交付保单时一并交付「背书转让说明」，避免买方到目的港索赔被拒。</div>
+<blockquote>一句话收口：<b>货物保险是货主的「电视险」，赔货主不赔物流商；但保险公司赔完货主，会掉头用代位求偿找我们——所以今天搞清「保什么、保给谁、赔多少」，是为 D2 的「追偿」埋伏笔。</b></blockquote><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">CIC</div><div class="cn">China Insurance Clauses / 中国保险条款</div><div class="df">PICC 制定的货物运输保险条款，分平安险、水渍险、一切险三档；2009 版为现行常用版本【版本待核实】</div></div><div class="ti"><div class="en">FPA</div><div class="cn">Free from Particular Average / 平安险</div><div class="df">只保全损、共同海损、施救费用等重大损失，不保单独海损（部分损失），近似 ICC(C) 但非等同</div></div><div class="ti"><div class="en">WPA</div><div class="cn">With Particular Average / 水渍险</div><div class="df">平安险 + 自然灾害（恶劣气候、雷电、海啸等）造成的部分损失；无直接 ICC 对应，介于 B/C 之间</div></div><div class="ti"><div class="en">All Risks (AR)</div><div class="cn">一切险 / 综合险</div><div class="df">水渍险 + 一般外来原因（偷窃、破碎、雨淋、短量等）造成的全部/部分损失；不含战争、罢工等特殊附加险</div></div><div class="ti"><div class="en">ICC(A)</div><div class="cn">Institute Cargo Clauses (A) / 协会货物条款 A</div><div class="df">最宽承保，采用「列明除外责任、其余都保」方式，近似一切险但范围不同；现行版本 ICC 1/1/09【版本待核实】</div></div><div class="ti"><div class="en">ICC(B)</div><div class="cn">Institute Cargo Clauses (B) / 协会货物条款 B</div><div class="df">列明风险承保（如沉没、碰撞、火灾、地震、火山等），范围窄于 A、宽于 C</div></div><div class="ti"><div class="en">ICC(C)</div><div class="cn">Institute Cargo Clauses (C) / 协会货物条款 C</div><div class="df">仅保重大意外事故（沉没、火灾、爆炸、触礁等），不保自然灾害部分损失，近似平安险</div></div><div class="ti"><div class="en">Insurable Interest</div><div class="cn">保险利益</div><div class="df">投保人或被保险人须对保险标的具有法律上认可的经济利益，无保险利益则保单无效，须在损失发生时存在</div></div><div class="ti"><div class="en">Endorsement</div><div class="cn">背书 / 保单背书转让</div><div class="df">通过背书将保险权益随货权（提单）转移给买方，是 CIF 下卖方把索赔权转让给买方的法定方式</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W5-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·第5天｜复盘：保险与责任体系</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · DAY 5 / 5　·　阶段一　打地基</div><h1>复盘：保险与责任体系</h1><div class="sub">第 5 周主题：货运保险与责任险 —— 赔了以后找谁要回来</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像做一次事故重演：货损发生→谁先知道→谁取证→谁赔→谁能追回来→谁最终承担。把这条链条跑通一遍，保险和责任才算真懂。</div><div class="mlink"><b>怎么串到今天</b>第 5 周收口，下周进入法律全景图与岗位画像，回答「我到底要成为谁」。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出：货险两条线、PICC/ICC 对照、代位追偿链、FFL/P&I 责任险、保价免赔限额条款库</li><li>核心判断法：出事后先问两件事——客户自己买货险了吗？我方买责任险了吗？</li><li>自测 10 题覆盖：险别选择、代位、除外、P&I、三套条款适用</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《保险与责任管理手册》第一版</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 5 周结束，请帮我固化：
+1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：货物保险本质、PICC/ICC 对照、保险金额加成、代位求偿、FFL 除外、P&amp;I、三套条款适用。
+2. 错题讲透并关联业务场景。
+3. 帮我整合本周产出物成《保险与责任管理手册》第一版，至少包含：两条线总图、货险速查、代位追偿链、责任险 FFL/P&amp;I、保价免赔限额条款库、出事两线判断法。
+4. 最后给我一条可复制的判断方法：一票货出事，我如何在 30 秒内判断「谁先掏钱、我方最多掏多少、找谁追回来」。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 货险</b>：货物保险是货主的「电视险」，保货不保物流商；PICC 三档(FPA/WPA/AR) vs ICC 三档(A/B/C)，AR≠ICC(A)、FPA≠ICC(C)；CIF 加成 10% 须核对合同；保单背书转让索赔权。</li><li><b>D2 代位</b>：保险公司赔货主后，用代位求偿(第 60 条)掉头找我们；追偿链六环节；24/48/72 小时证据动作是自卫弹药。</li><li><b>D3 责任险</b>：责任险是我们赔别人时的钱袋子；FFL 十项除外是雷区；P&I 是船东互助、商业险是固定保费，别混。</li><li><b>D4 条款库</b>：保价/免赔/限额三道闸门；严格/平衡/宽松三套条款对应三种谈判地位；间接损失永远排除。</li><li><b>总纲</b>：货险与责任险方向相反却同决定「谁掏钱」；没有责任险，代位的坑直接打穿利润。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】货物保险的本质是？A. 保物流商的责任  B. 保货物本身价值、被保险人是货主  C. 保运费  D. 保延迟</li><li>【单选】下列关于 PICC 与 ICC 的说法，正确的是？A. AR 等同于 ICC(A)  B. FPA 等同于 ICC(A)  C. AR 与 ICC(A) 不等同、FPA 与 ICC(C) 仅为近似  D. 一切险保战争风险</li><li>【单选】CIF 下保险金额加成 10% 是？A. 法定强制  B. 通行惯例但须核对合同  C. 必须 30%  D. 不适用 CIF</li><li>【单选】保险人代位求偿的法律基础是？A. 保险法第 59 条  B. 保险法第 60 条  C. 海商法第 60 条  D. CISG</li><li>【单选】保赔协会(P&I)的本质是？A. 商业固定保费保险  B. 船东互助保险、交 call  C. 货代责任险  D. 货物保险</li><li>【案例】客户 FOB 出货未自购货险，到港发现水湿，直接向我方(货代)索赔，我方应如何应对？</li><li>【案例】我方作为缔约承运人签发 House B/L，货损后保险人代位找我方，我方主张海牙-维斯比责任限制，保险人能否主张更高？</li><li>【案例】我方 FFL 保单把「延迟」列为除外，客户因延迟导致旺季缺货损失向我方索赔，结果如何？</li><li>【简答】列举货代责任险(FFL)至少 5 项常见除外责任，并说明物流商如何自防。</li><li>【简答】三套条款（严格/平衡/宽松）分别在什么谈判地位下使用？宽松版「放弃责任限制」有何有效性边界？</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B；2-C（AR 与 ICC(A) 不等同、FPA 与 ICC(C) 仅为功能近似，且均不含战争）；3-B（加成是惯例非强制，须核对合同/信用证）；4-B（第 60 条代位求偿；第 59 条是物上代位/委付）；5-B（P&I 为互助、交会费 call）。</li><li>案例 6：FOB 下卖方无投保义务，客户未投保则损失自负；但客户会以「货代未尽提醒/管货不当」转向我方，我方须出示已书面提醒投保的记录 + 证明非我方管货过错（封志完好、交接单），否则在过错范围内赔。</li><li>案例 7：保险人代位不得超过被保险人(货主)原本可向我方主张的范围；我方依法享有的责任限制对保险人同样有效，保险人不能主张高于法定限额——除非我方合同明示放弃限制（宽松版情形）。</li><li>案例 8：延迟在 FFL 多为除外，客户旺季缺货属间接/利润损失，通常被拒；我方须在合同与保单双重排除间接损失，并留存保单除外条款页给客户确认。</li><li>简答 9：除外含固有缺陷、包装不当、延迟、战争罢工、欺诈、超出法定责任、未披露、恐怖、间接损失、高值未申报等；自防=接货验包装留记录、合同限定延迟责任、如实告知、别乱承诺超法定责任。</li><li>简答 10：严格版用于我方强势/低毛利/高损风险；平衡版默认对等；宽松版用于战略大客/争单。放弃限制通常允许（向货方有利），但欺诈/故意/重大过失常不可排除，须保留兜底例外。</li></ul>
+<h2>三、《保险与责任管理手册》第一版（结构）</h2>
+<ul><li>模块 1：两条线总图——货物保险线(赔货主) vs 责任保险线(补我们)，方向相反同决谁掏钱。</li><li>模块 2：货险速查——PICC(FPA/WPA/AR) 与 ICC(A/B/C) 六维对照；CIF 加成 10% 须核对；背书转让索赔权。</li><li>模块 3：代位追偿链——六环节 + 我方四关抗辩(定性免责/责任限制/转嫁追偿/责任险兜底) + 24/48/72 证据动作。</li><li>模块 4：责任险 FFL/P&I——FFL 十项除外核对清单；P&I 互助机制与 4/4ths；投保审查 10 问 + 保单核对(limits/excess/extensions/exclusions/warranties)。</li><li>模块 5：保价/免赔/限额条款库——严格/平衡/宽松三套中英条款；间接损失必排除；限额对齐责任险。</li><li>模块 6：出事两线判断法（见下）。</li></ul>
+<h2>四、可复制判断法：一票货出事，30 秒定位</h2>
+<div class="key"><b>先问两件事，再走四步：</b>
+<b>两问</b>：① 客户自己买了货险吗？→ 有：客户先找保险，我们只是被代位对象；无：客户直接找我们。② 我方买了责任险吗？→ 有：我们赔了有人补；无：自己扛。
+<b>四步（定责→定损→定限额→定追偿）</b>：
+1. <b>定责</b>：损失是不是我们的过错/法定责任？（封志完好、交接单、检验报告说话）
+2. <b>定损</b>：受损货值多少、残值多少（以检验报告为准）
+3. <b>定限额</b>：我方最多赔多少 = min(损失−免赔, 申报值/法定限额)；无责则 0
+4. <b>定追偿</b>：我方赔后，向实际承运人/分包商追（看其 P&I/责任险）；客户有货险则保险人代位，我方以对货主抗辩对抗保险人。
+<b>三问答完 + 四步走完，谁先掏钱、我方最多掏多少、找谁追回来，立刻清楚。</b></div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 本周涉及《保险法》第 59/60/21/26 条、《海商法》责任限制与 1 年时效、海牙-维斯比 666.67 SDR/件或 2 SDR/公斤等数值与条号，落地合同或诉讼前须逐条核对现行文本；② 各保险/P&I 保单具体条款以保单原文为准，本手册为判断框架非保险条款依据。</div>
+<div class="key">本周收口口诀：<b>货险赔货主、责任险补我们，方向相反却同决谁掏钱。出事先问「客户有货险没、我有责任险没」，再走定责定损定限额定追偿四步——这页手册就是 Week5 的全部精华，存进术语库随时翻。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Two-track Rule</div><div class="cn">两条线判断法</div><div class="df">出事先分「货物保险线」与「责任保险线」：前者决定货主找谁拿钱，后者决定我方赔别人时谁补我</div></div><div class="ti"><div class="en">Risk Manual</div><div class="cn">风险速查手册</div><div class="df">把本周全部产出压缩成一页可随时查阅的保险与责任判断清单</div></div><div class="ti"><div class="en">30-second Rule</div><div class="cn">30 秒判断法</div><div class="df">客户报货损后，用三个问题快速定位赔偿来源、我方上限与追偿对象</div></div><div class="ti"><div class="en">Subrogation Chain</div><div class="cn">代位追偿链</div><div class="df">货主→保险人赔付→保险人代位→向我方追偿→我方赔后向分包/实际承运人转嫁</div></div></div></div><div class="foot"><a href="W5-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W5-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

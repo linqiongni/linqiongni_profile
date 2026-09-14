@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第4周·周末实战｜审查一份信用证并找出不符点</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战④：审查一份信用证并找出不符点</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">审信用证就是玩「大家来找茬」：在规定时间把不符点全挑出来。挑漏一个，银行就有理由拒付，几十万美金卡在半路。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 + 波兰买方，CIF Gdańsk，海运整柜，适用 UCP600，买方开证、我方为货代并签发 HBL）。只审这份 SWIFT MT700 信用证，做一份审查意见：逐字段读懂条款、列出全部应挑出的不符点、说明每条不符点的 UCP600 依据与银行拒付后果、给出受益人改单/改证与货代自保建议。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要审查一份 SWIFT MT700 信用证。设定：深圳卖方（受益人）与波兰买方（申请人）签 CIF Gdańsk 合同，海运整柜，适用 UCP600，买方通过波兰银行开证、中国银行通知，我方为货代并签发 HBL。
+
+请输出：
+1. 这份 MT700 的「字段逐项解读」：把 40A/20/31C/31D/50/59/32B/41/42/43/44/45A/46A/47A/48/49/71B/78 等字段逐一说明含义（给中文对照），并指出其中对受益人不利或易踩坑的措辞
+2. 《不符点清单》：基于我虚构的交单事实（提单日、金额、保险、consignee 等），系统列出应挑出的全部不符点，每条给出：① 不符点描述 ② UCP600 依据（条号）③ 银行将如何拒付 ④ 受益人如何补救
+3. 重点讲透三处硬伤：迟交单（超 21 天/效期）、短交正本（只交 2/3）、保险不足（&lt;110%）；并讲「银行未在 5 工作日一次性列明不符点则失权」的实务运用
+4. 《交单前最后核对》（结合上周清单压缩到实战 12 项）
+5. 站在货代视角：我方签发 HBL，哪些不符点是我方在签单环节就能掐掉的；若受益人被拒付、赖掉我方运费，我方如何凭切割条款自保
+6. 给受益人三条改证/改单建议，让这票能顺利收款</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖方（受益人）+ 波兰买方（申请人），<b>CIF Gdańsk</b>，海运整柜，适用 <b>UCP600</b>，波兰银行开证、中国银行通知，<b>我方为货代并签发 HBL</b>。关键风险点：① CIF 下卖方自付运费保费，但风险在装运港转移，货在海上全损买方也只能找保险公司——所以单据必须做齐才能拿到钱；② 这是「单证买卖」，受益人能不能收款 100% 取决于单据相符；③ 我方签 HBL，是提单不符点的第一道制造/把关人，也是受益人被拒付后最可能赖账的对象。</p>
+<h2>二、MT700 字段逐项解读（中文对照 + 坑点）</h2>
+<table><thead><tr><th>字段</th><th>含义（中文）</th><th>本例内容</th><th>坑点/不利措辞</th></tr></thead><tbody><tr><td>40A</td><td>信用证形式</td><td>IRREVOCABLE（不可撤销）</td><td>UCP600 下本就不可撤销，写否都不可撤</td></tr><tr><td>20</td><td>信用证编号</td><td>LC2026-0315-PL</td><td>通知行/交单行对账用，须一致</td></tr><tr><td>31C</td><td>开证日</td><td>2026-03-01</td><td>单据日不得晚于交单日</td></tr><tr><td>31D</td><td>效期与地点</td><td>2026-03-25 IN POLAND</td><td><b>地点在波兰=受益人须在该日前将单据交至波兰指定行，时间极紧</b></td></tr><tr><td>50</td><td>申请人</td><td>Poland Buyer Sp. z o.o.</td><td>与合同买方一致才可</td></tr><tr><td>59</td><td>受益人</td><td>Shenzhen Seller Co., Ltd.</td><td>名称地址须与发票完全一致</td></tr><tr><td>32B</td><td>币种金额</td><td>USD 90,000.00</td><td><b>低于合同货值 USD 100,000，信用证金额不足</b></td></tr><tr><td>41A</td><td>兑用银行/方式</td><td>ANY BANK BY NEGOTIATION</td><td>自由议付，但须相符</td></tr><tr><td>42C</td><td>汇票期限</td><td>AT SIGHT（即期）</td><td>即期，无远期占用</td></tr><tr><td>42A</td><td>付款人</td><td>Issuing Bank</td><td>开证行付款</td></tr><tr><td>43P</td><td>分批</td><td>NOT ALLOWED</td><td>不允许分批</td></tr><tr><td>43T</td><td>转运</td><td>ALLOWED</td><td>允许转运</td></tr><tr><td>44A/E</td><td>装/卸港</td><td>Shenzhen / Gdańsk</td><td>须与提单一致</td></tr><tr><td>45A</td><td>货描</td><td>LED lights, CIF Gdańsk</td><td>货描须与发票不矛盾</td></tr><tr><td>46A</td><td>单据要求</td><td>Full set 3/3 clean on board B/L to order of issuing bank + Inv + PL + Ins policy 110% ICC(A) + Certificate of Origin (CCPIT)</td><td><b>consignee 严格、保险 110%、产地证签发人明确</b></td></tr><tr><td>47A</td><td>附加条件</td><td>All docs must show L/C No.; 3rd party docs not acceptable</td><td><b>不接受第三方单据，货代单须显名受益人</b></td></tr><tr><td>48</td><td>交单期限</td><td>Within 15 days after B/L date</td><td><b>比 UCP600 默认的 21 天更短，须严控</b></td></tr><tr><td>49</td><td>保兑指示</td><td>WITHOUT（不加保）</td><td>无保兑，依赖开证行信用</td></tr><tr><td>71B</td><td>费用</td><td>All banking charges outside issuing bank for beneficiary's account</td><td><b>我方境外费用也可能转嫁受益人</b></td></tr><tr><td>78</td><td>对银行的指示</td><td>Upon receipt complying docs, we will remit at maturity</td><td>相符即付款</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① MT700 各字段编号与含义以 SWIFT 用户手册（MT 700 Issue of a Documentary Credit）为准；② 效期地点在「波兰」意味着受益人须在该日前把单据交到波兰指定银行，而非中国通知行，实务极易因邮路误判超期——应争取改在「China」或「any bank」；③ 47A「不接受第三方单据」与货代提单 HBL 的兼容性须逐案核对 ISBP。</div>
+<h2>三、《不符点清单》：基于本例交单事实应挑出的全部不符点</h2>
+<p>虚构交单事实：提单日 2026-03-01；受益人 2026-03-26 才交单（迟）；发票金额 USD 100,000 但信用证仅 USD 90,000；提交 2/3 正本 HBL（少 1 份）；HBL consignee 写为「to order of shipper」而非「to order of issuing bank」；保险单金额 USD 100,000（=发票 100%，<110%）；产地证由非 CCPIT 机构签发。逐项拆解如下。</p>
+<table><thead><tr><th>#</th><th>不符点</th><th>UCP600 依据</th><th>银行如何拒付</th><th>受益人补救</th></tr></thead><tbody><tr><td>1</td><td>迟交单：提单日 03-01、效期 03-25，交单 03-26 已超效期（且超 48 字段 15 天）</td><td>第 14(c) 条 / 31D</td><td>开证行拒付，且不承担付款</td><td>无法补救，只能改证延长效期或电提取得申请人接受</td></tr><tr><td>2</td><td>发票金额 USD 100,000 > 信用证 USD 90,000（超证）</td><td>第 14(a) 条单证相符</td><td>拒付</td><td>减额改发票或要求增额改证</td></tr><tr><td>3</td><td>短交正本：仅交 2/3 正本 HBL（full set 3/3 不符）</td><td>第 14(a) 条</td><td>拒付</td><td>补齐第 3 份正本或电放/担保提货</td></tr><tr><td>4</td><td>consignee 为 to order of shipper，非 46A 要求的 to order of issuing bank</td><td>第 14(a) 条</td><td>拒付</td><td>重签 HBL 或改证接受</td></tr><tr><td>5</td><td>保险金额 USD 100,000 < 发票 110%（USD 110,000）</td><td>第 14(a) 条 / 46A</td><td>拒付</td><td>补开保单或加保至 110%</td></tr><tr><td>6</td><td>产地证签发人非 CCPIT（46A/47A 明确要求）</td><td>第 14(a)/14(l) 条</td><td>拒付</td><td>重出 CCPIT 产地证</td></tr><tr><td>7</td><td>单据未显示信用证号（违反 47A 附加条件）</td><td>第 14(a) 条</td><td>拒付</td><td>补印证号重制单据</td></tr></tbody></table>
+<h2>四、三处硬伤讲透</h2>
+<ul><li><b>硬伤① 迟交单</b>：31D 效期 2026-03-25、48 交单期 15 天（短于默认 21 天），提单日 03-01 意味着最迟 03-16 前必须交单。受益人 03-26 交单，双超。这是最致命、无法用「担保」绕过的硬不符点——只能改证或取得申请人书面接受（电提）。</li><li><b>硬伤② 短交正本</b>：46A 要 full set 3/3，只交 2/3 意味着余下 1 份仍在流通，货权有被第三方提走风险，银行必拒。补救是找回第 3 份正本，或在申请人同意下凭担保放货（适用 FCR/电放场景不适用正本押汇）。</li><li><b>硬伤③ 保险不足</b>：CIF 下 46A 要求保单 ≥ 发票 110%、ICC(A)；本案仅 100%。补救是向保险公司加保并换单。</li></ul>
+<h3>实务运用：银行「未在 5 个工作日一次性列明不符点则失权」</h3>
+<p>若开证行收到单据后超过交单日后第 5 个银行工作日才发拒付，或拒付通知只笼统写「documents discrepant」而未<b>逐条列明</b>每一处不符（第 16(c)(ii) 要求以单独形式列明），银行即<b>丧失</b>以不符点拒付的权利、必须付款。受益人/议付行应留存 SWIFT 交单回执与收单时间戳，据此反制拖延拒付的开证行——这是实务中逼银行付款的杀手锏。</p>
+<h2>五、《交单前最后核对》（实战 12 项）</h2>
+<ol><li>效期地点在哪、交单倒排期（本例波兰=极紧，须改中国）</li><li>48 交单期 vs 默认 21 天，取短者严控</li><li>32B 金额 ≥ 发票金额（本例严重不足，先改证）</li><li>提单 full set 份数、clean、on board 批注与日期</li><li>提单 consignee/notify 与 46A 一字不差</li><li>保单金额 ≥ 110% 发票、险别 ICC(A)、已背书</li><li>产地证等证书签发人符合 46A/47A（CCPIT）</li><li>所有单据显示信用证号（47A 附加）</li><li>货描不与 45A 矛盾（可简写不得冲突）</li><li>唛头、日期逻辑全单一致</li><li>第三方单据是否被 47A 禁止（HBL 显名受益人）</li><li>留存 SWIFT 交单回执与时间戳（反制拖延拒付）</li></ol>
+<h2>六、货代视角：哪些不符点我方能提前掐掉、如何自保</h2>
+<p>我方签发 HBL，是「consignee 写错、份数少、未显名」这几类不符点的直接制造/把关人。<b>签单前对照 46A/47A 一字一审，能把一半不符点掐死在出厂前</b>。</p>
+<ul><li><b>可掐掉的不符点</b>：HBL 的 consignee 是否按 46A 写「to order of issuing bank」（本例写成 shipper 即我方责任）；是否出齐 3/3 正本；HBL 是否显名受益人（满足 47A 禁第三方）；装船批注与日期是否齐。签单前发现即提示受益人改证/改单。</li><li><b>反制点（货代立场）</b>：委托合同写「因受益人提供信息错误（如 consignee 指示错）或信用证本身缺陷导致拒付的，客户自行承担、运费照付；我方已按指示签发 HBL 不构成过错」。受益人被拒付后赖账不付运费，我方凭此追偿并行使留置权。</li><li><b>客户反制点</b>：受益人会要求货代「保证提单清洁、全套、consignee 正确」，否则索赔运费损失；货代须用交接单固化货物交接时表面状况与授权指示，证明已按客示签发、无过错。</li></ul>
+<h2>七、给受益人的三条改证/改单建议</h2>
+<ul><li><b>建议一 先改证再发货（治本）</b>：在装运前要求申请人改证——把 32B 增额至 USD 100,000、31D 效期与地点改到「China / 2026-04-15」、48 交单期放宽为 21 天。源头消除金额不足与迟交单两大硬伤。</li><li><b>建议二 严格按 46A/47A 制单（治标）</b>：HBL consignee 改「to order of issuing bank」、出齐 3/3、显名受益人；保单加保至 110% ICC(A)；产地证改 CCPIT；全单印信用证号。单据相符，开证行必须付款。</li><li><b>建议三 备好反制弹药（兜底）</b>：若已交单且开证行拖延/笼统拒付，立即整理 SWIFT 交单回执与时间戳，依据第 16 条主张银行失权要求付款；同时施压申请人（货已在途/到港）促其接受不符点或担保提货。</li></ul>
+<div class="key">实战口诀：<b>审 MT700 先盯三件事——效期地点（决定你几天交单）、32B 金额（够不够收）、46A/47A（单怎么签）。三处硬伤（迟交、短正本、保险不足）一踩就拒付；但银行若 5 天没一次性列清不符点，它反而必须付款。货代把住 HBL 这道关，受益人的拒付风险就少一半，自己的运费也保住了。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">MT700</div><div class="cn">SWIFT MT700 / 跟单信用证开证格式</div><div class="df">SWIFT 系统开立跟单信用证的标准电文格式，字段化表达信用证全部条款</div></div><div class="ti"><div class="en">Discrepancy</div><div class="cn">不符点</div><div class="df">单据与信用证条款或单据间相互矛盾之处，是开证行拒付的法定理由</div></div><div class="ti"><div class="en">Full Set B/L</div><div class="cn">全套提单</div><div class="df">信用证通常要求 full set（如 3/3）正本提单，短交正本即不符</div></div><div class="ti"><div class="en">Insurance 110%</div><div class="cn">保险金额 110%</div><div class="df">CIF 下保险单金额须≥发票金额 110%，不足即不符</div></div><div class="ti"><div class="en">Notice of Refusal</div><div class="cn">拒付通知</div><div class="df">UCP600 第 16 条要求银行在 5 银行工作日内一次性列明全部不符点并说明单据处置</div></div></div></div><div class="foot"><a href="W4-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W4-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

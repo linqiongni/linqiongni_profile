@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第6周·第5天｜阶段一复盘：地基是否打牢（第 1–6 周收口）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 6 · DAY 5 / 5　·　阶段一　打地基</div><h1>阶段一复盘：地基是否打牢（第 1–6 周收口）</h1><div class="sub">第 6 周主题：法律全景图与岗位画像 —— 我要成为什么样的人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">阶段复盘像盖楼前的验槽：地基的钢筋位置对不对、混凝土浇实了没有。这五周的内容不扎实，后面海商法和公约全是空中楼阁。</div><div class="mlink"><b>怎么串到今天</b>第 6 周收口，阶段一结束，下周正式进入主干法律——海商法。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>阶段一 = 第 1-6 周：行业链路、单据、Incoterms/CISG、结算 UCP600、保险与责任、全景与管辖</li><li>自测 10 题须覆盖：行业链路、单据、Incoterms/CISG、结算与 UCP600、保险与责任、全景与管辖</li><li>三个短板识别法：① 差距表低分维度 ② 自测错题对应知识点 ③ 业务中最常被问住的问题</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《学习手册·第一阶段：行业·单据·贸易·结算·保险·全景》定稿 + 自测 10 题成绩 + 三个短板识别法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 6 周收口，请帮我做阶段一（第 1–6 周）总复盘：
+1. 先出《学习手册·第一阶段》定稿结构：六大模块（行业链路 / 单据 / 贸易术语与 CISG / 结算 UCP600 / 保险与责任 / 全景与管辖），每模块给出「核心结论 3 条 + 必存文件」
+2. 出 10 道自测题（单选 4 + 案例 3 + 简答 3），覆盖第 1–6 周全部重点，附答案要点
+3. 给「三个短板识别法」：① 用 D4 能力差距表的最低分维度；② 用自测错题映射到具体知识点；③ 用工作中最常被业务问住/答不出的问题
+4. 帮我写一段「阶段一小结」收口语：地基打没打牢、下一步（阶段二）往哪走
+5. 站在物流商视角总结：阶段一哪些知识是「天天要用」的保命符，哪些是「关键时救命」的底牌</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：复盘不是复习，是给地基做一次探伤</h2>
+<p>盖楼最怕地基有暗缝——表面看都懂，真到出事（货损索赔、客户扯皮、监管稽查）时某一块一踩就塌。<b>阶段一复盘就是给这六周的地基做「探伤」：哪里是实心、哪里是空心，用自测题敲一敲就知道了。</b> 今天把六周知识压成一本手册 + 一次考试 + 一张短板清单。</p>
+<div class="key">记忆点：<b>复盘三问——手册有没有？题会不会？短板在哪？三问答完，阶段一才算真正收口，否则只是「学过」不是「学到」。</b></div>
+<h2>二、核心交付：《学习手册·第一阶段》定稿结构</h2>
+<table><thead><tr><th>模块</th><th>核心结论 3 条</th><th>必存文件</th></tr></thead><tbody><tr><td>① 行业链路</td><td>头程→干线→海外仓→尾程四段；货代/海外仓/承运/卖家的角色与责任切分</td><td>《跨境物流链路与角色责任图》</td></tr><tr><td>② 单据</td><td>仅提单与 FIATA FBL 是物权凭证；AWB/铁路运单/CMR/FCR 不是</td><td>《单据功能对照表》</td></tr><tr><td>③ 贸易术语与 CISG</td><td>Incoterms 2020 管交货那一米；CISG 跨国营业地自动适用，中国保留 b 项</td><td>《11 术语全景表》《CISG 流程图》</td></tr><tr><td>④ 结算 UCP600</td><td>信用证是银行信用；单证严格相符才付款；软条款是陷阱</td><td>《UCP600 审单要点》</td></tr><tr><td>⑤ 保险与责任</td><td>保险是责任的最终买家；限额随运输方式（海 666.67/空 22/公 8.33 SDR）</td><td>《责任限额与保险对照表》</td></tr><tr><td>⑥ 全景与管辖</td><td>三层法律（中/公约/域外）；条款写清适用法+管辖+执行</td><td>《法律全景图》《中英条款模板库》</td></tr></tbody></table>
+<h2>三、自测 10 题（先做，再对答案）</h2>
+<ol><li>【单选】下列哪种单据是物权凭证？A. 空运提单 AWB  B. 提单 B/L 与 FIATA FBL  C. CMR 运单  D. FCR</li><li>【单选】Incoterms 2020 中，风险在「货交第一承运人」时转移的是？A. FOB  B. CPT/CIP  C. CIF  D. DAP</li><li>【单选】CISG 对中国生效且中国保留的是？A. 第 11 条形式保留（现行有效）  B. 第 1 条(b)项扩大适用保留  C. 无保留  D. 全部保留</li><li>【单选】UCP600 下信用证付款的核心原则是？A. 货物合格即付款  B. 单证严格相符  C. 买方确认收货  D. 卖方信用</li><li>【案例】深圳卖家用 FOB 深圳出口带电产品，买方指定我方为货代。装船前港区货损，谁担？我方如何自保？</li><li>【案例】空运货物到德国，凭 AWB 提货后发现部分灭失。责任限额与时效适用什么？卖家（客户）如何反制物流商？</li><li>【案例】中德买卖合同未约定适用法，营业地分属缔约国。CISG 是否自动适用？中国保留对它有何影响？</li><li>【简答】列出跨境物流「三层法律结构」，并各举一部位法。</li><li>【简答】作为货代，NVOCC 与纯货运代理的身份差别是什么？「骑墙」为何最危险？</li><li>【简答】用「三个短板识别法」说明：你阶段一最该补的三个知识点是什么，为什么。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（提单与 FBL 是物权凭证）；2-B（CPT/CIP 风险在交第一承运人）；3-B（仅保留第 1 条(b)项，第 11 条保留已撤回）；4-B（单证严格相符）。</li><li>案例 5：FOB 风险在「装上船」才转买方，装船前损失理论上卖方担；我方作为货代只用交接单固化「货交承运人」时点，不越界承担装船前风险，并在委托合同写责任切割条款。</li><li>案例 6：适用蒙特利尔公约（中国已加入），货物限额 22 SDR/kg、时效 2 年；客户（卖家）反制点：若我方未恰当申报或 AWB 未并入公约，可主张更高赔偿，并依纽约公约在我方所在地申请执行。</li><li>案例 7：双方营业地均属 CISG 缔约国且未排除 → 自动适用；中国保留第 1 条(b)项，即「只有双方营业地都在缔约国才自动适用」（本例满足），故 CISG 适用。</li><li>简答 8：① 中国法（海商法/民法典/海关法）管家门内；② 国际公约（蒙特利尔/SMGS/纽约公约）管跨国途中；③ 域外法（德国法/欧盟 GPSR）管落地后。</li><li>简答 9：NVOCC 签发自己 House B/L、以承运人身份担全程、须备案+保证金；纯代理只收佣金、不担全程。骑墙（既当代理又当承运）导致责任定性不清、可能双重担责。</li><li>简答 10：① 差距表最低分维度（如行业业务理解）；② 自测错题映射（如域外法/公约）；③ 业务最常被问住的问题（如「德国海外仓 EPR 谁担」）。三角定位。</li></ul>
+<h2>四、三个短板识别法（今天的关键方法）</h2>
+<ol><li><b>法一·差距表低分维度</b>：D4 能力差距表里自评 ≤2 的维度，就是硬短板（你大概率在「行业/业务理解」「域外法」上栽）。</li><li><b>法二·自测错题映射</b>：上面 10 题答错的，直接对应到具体知识点——错公约就补公约，错单据就补单据。</li><li><b>法三·业务卡点</b>：工作中最常被业务/客户问住、答不上来的问题，是真实战场短板（比考试更准）。</li></ol>
+<div class="key">反制点（物流商视角）：阶段一里<b>「天天要用」的保命符</b>是——单据性质判断（能不能控货）、Incoterms 风险分界、责任切割条款；<b>「关键时救命」的底牌</b>是——纽约公约执行路径、蒙特利尔/海商法责任限额、出口管制三联筛查。前者防日常背锅，后者防倾覆级事故。</div>
+<h2>五、阶段一小结（收口语）</h2>
+<p>六周走完，你手里应有：一张法律全景图、一套中英条款模板、一份资质与合规日历、一张能力差距表、一本第一阶段手册。<b>地基是否打牢，看两件事：自测 10 题能否稳定对 8 题以上；业务中货损/术语/管辖三类问题能否 30 秒给结论。</b> 若不能，回头补对应模块。</p>
+<div class="key">今日落地三动作：① 把自测成绩记进笔记（目标 ≥80 分）；② 用三个短板识别法列出你的 Top 3 短板，写进 D4 差距表；③ 把《学习手册·第一阶段》六模块文件在电脑里建好文件夹——阶段二（第 7 周起）将在其上盖楼。</div>
+<h2>六、串联到今天：阶段一收口，剑指阶段二</h2>
+<p>D1 地图、D2 选座、D3 资格、D4 画像、D5 收口——五块拼成阶段一的完整地基。<b>周末实战⑥</b> 你要亲手填一份《个人能力差距表》并对一票真实业务做法律风险初判，把纸上能力变成手上功夫。阶段二我们将进入具体业务条线的深水区。</p><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Stage 1 Recap</div><div class="cn">阶段一复盘</div><div class="df">对第 1-6 周知识体系的收口与自测，确认地基是否牢固</div></div><div class="ti"><div class="en">Self-test Score</div><div class="cn">自测成绩</div><div class="df">用 10 题量化检验阶段一掌握度，错题即短板坐标</div></div><div class="ti"><div class="en">Three Shortboard Methods</div><div class="cn">三个短板识别法</div><div class="df">差距表低分 + 自测错题 + 业务卡点，三角定位真实短板</div></div><div class="ti"><div class="en">Learning Handbook</div><div class="cn">学习手册</div><div class="df">把阶段产出物压缩成可随时查阅的定稿手册</div></div><div class="ti"><div class="en">Foundation Check</div><div class="cn">地基校验</div><div class="df">判断前六周知识是否足以支撑后续进阶学习</div></div></div></div><div class="foot"><a href="W6-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W6-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>
