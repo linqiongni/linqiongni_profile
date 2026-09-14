@@ -40,4 +40,9 @@
 - **改完线上看不到 = 缓存，不是没部署**。GH Pages 响应头 `cache-control: max-age=600` + `x-cache: HIT`，浏览器会缓存旧 `index.html`（引用旧 bundle hash）。
   排查顺序：① `curl -s https://linqiongni.top/ | grep -o '/assets/[^"]*\.js'` 拿当前 bundle 名；② `curl -s https://linqiongni.top/assets/<bundle>.js | grep '新tab名'` 判断是否已上线；
   ③ 已上线却看不到 → 用户侧硬刷（Mac Cmd+Shift+R / Win Ctrl+F5），或访问 `https://linqiongni.top/?v=<时间戳>` 绕开缓存。站内无 service worker，不必查 SW。
+- **验证「新 tab 是否真上线」必须查 NAV_GROUPS 数组，不能只 grep 字符串**：bundle 里 `SUB_TAB_META` 有该 tab 名但 `NAV_GROUPS` 数组没有时，导航不会渲染。
+  正确做法：`curl -s https://linqiongni.top/assets/<bundle>.js`，取 `id:"profile"` 起的整段，数 `{id:...subTabs:[...]}` 个数。只 grep 名字会命中文案常量而误判成功（2026-09-14 踩过）。
+- **`raw.githubusercontent.com` 有 CDN 缓存**，可能返回旧文件内容。判断远端真实状态用 `git fetch origin` + `git show origin/main:<path>` 或 GitHub API `/commits/main`。
+- **并发会话风险**：多个 WorkBuddy 会话可能同时操作本仓库（2026-09-14 有会话推餐饮法务第 11/12 周）。已提交的 Edit 可能在磁盘上被回退，
+  **改完立即 grep 逐处校验**，不要只信工具返回成功；跨多行的大块编辑更脆弱，优先单行写法。push 前先 `git fetch` 确认无分叉。
 - push 失败时按序排查：① 清 `.git/*.lock`（见上）；② 带 `-c http.proxy= -c https.proxy=`；③ 若报 `HTTP/2 framing layer` 或 `Couldn't connect to server (port 443)`，是当前环境无外网/被隔离，改用 `git -c http.version=HTTP/1.1 push` 仍连不上则只能等联网，本地用 `npm run dev`（端口 3000 被占则 3001）预览。
