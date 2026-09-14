@@ -242,6 +242,31 @@ const WEEKS: Week[] = [
       { title: '第 13 周周末实战', id: 'yb4Ny8nApNOXvwjO0mrWna' },
     ],
   },
+  {
+    id: 'week-14',
+    label: '第 14 周',
+    theme: '争议解决与判例精研：真刀真枪',
+    lessons: [
+      { title: '第 14 周第 1 天 · 冷静期退费：裁判规则与庭审实战', id: 'week14-day1' },
+      { title: '第 14 周第 2 天 · 虚假宣传与信披不实：裁判规则与庭审', id: 'week14-day2' },
+      { title: '第 14 周第 3 天 · 撤店欠费与违约金：裁判规则与庭审', id: 'week14-day3' },
+      { title: '第 14 周第 4 天 · 诉讼、仲裁与执行策略', id: 'week14-day4' },
+      { title: '第 14 周第 5 天 · 第14周收官 · 争议解决能力体系（模拟开庭）', id: 'week14-day5' },
+    ],
+  },
+  {
+    id: 'week-16',
+    label: '第 16 周',
+    theme: '综合实战与结业：从学习者到法务总监',
+    lessons: [
+      { title: '第 16 周第 1 天 · 法务体系搭建：制度树与流程嵌入', id: 'week16-day1' },
+      { title: '第 16 周第 2 天 · 年度法务规划、预算与外部律师管理', id: 'week16-day2' },
+      { title: '第 16 周第 3 天 · 成果整合：法务工具箱与个人条款库', id: 'week16-day3' },
+      { title: '第 16 周第 4 天 · 述职与面试演练：把能力讲出来', id: 'week16-day4' },
+      { title: '第 16 周第 5 天 · 结业：综合测验 50 题 + 100 天进阶计划', id: 'week16-day5' },
+      { title: '第 16 周第 6 天 · 周末实战⑯ · 法务总监上任 90 天工作方案', id: 'week16-day6' },
+    ],
+  },
 ];
 
 const lessonUrl = (id: string) => `https://www.workbuddy.cn/space/d/${id}`;
@@ -329,6 +354,17 @@ const LOCAL_LESSON_IDS = new Set([
   'week12-day3',
   'week12-day4',
   'week12-day5',
+  'week14-day1',
+  'week14-day2',
+  'week14-day3',
+  'week14-day4',
+  'week14-day5',
+  'week16-day1',
+  'week16-day2',
+  'week16-day3',
+  'week16-day4',
+  'week16-day5',
+  'week16-day6',
 ]);
 const lessonLocalUrl = (id: string) => `/lessons/${id}.html`;
 const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);

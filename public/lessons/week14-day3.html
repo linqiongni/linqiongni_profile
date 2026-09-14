@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 14 周第 3 天 · 撤店、欠费与违约金：裁判规则与庭审</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 14 周第 3 天 · 撤店、欠费与违约金：裁判规则与庭审</h1>
+    <div class="meta">争议解决与判例精研：真刀真枪</div>
+  </header>
+  <div class="lead">这一类是总部<strong>当原告</strong>的案子：加盟商欠费、弃店、到期不摘牌。总部赢面大但拿不到钱——难点不在胜诉，在<u>金额能不能被支持、判决能不能执行到</u>。核心是民法典第 585 条第 2 款的违约金调减规则。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、保证金能不能没收</div><div class="tab" data-p="p2">二、违约金调减</div><div class="tab" data-p="p3">三、管理费与瞒报营业额</div><div class="tab" data-p="p4">四、弃店与执行</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>保证金没收：法院支持的三个前提</h3>
+<p>保证金（履约保证金）<strong>不是违约金</strong>，其性质是担保，但实务中常被当作违约金一并处理。法院支持没收，通常要满足三个前提：</p><p><b>① 合同明确约定了没收情形</b>——「乙方有下列情形之一，甲方有权没收保证金并解除合同」，并把情形逐项列出（欠费超 X 日、擅自转让、擅自停用系统、销售非统配原料、被行政处罚等）。</p><p><b>② 违约事实有客观证据</b>——欠费要有对账单与催收记录，弃店要有连续停业照片与物业证明。</p><p><b>③ 金额不过分高于实际损失</b>——保证金超过实际损失过多时，法院会参照第 585 条第 2 款予以调减。</p><div class="act"><b>我的落地动作：</b>把保证金拆成「履约保证金」与「商品质量保证金」两笔，并在合同中分别约定扣划条件与补足义务。单笔金额建议不超过 3 个月管理费或 5 万元，金额越大越容易被调减。</div>
+</div>
+<div class="card"><h3>保证金 vs 违约金 vs 定金（别再用错）</h3>
+<table><thead><tr><th>项目</th><th>性质</th><th>能否没收/不退</th><th>能否调减</th></tr></thead><tbody><tr><td>保证金</td><td>担保（非定金）</td><td>按约定情形没收，须有约定</td><td>过高可参照 585 条调减</td></tr><tr><td>违约金</td><td>违约责任</td><td>需证明违约 + 损失</td><td>超过损失 30% 可被调减</td></tr><tr><td>定金</td><td>债的担保（第 586–588 条）</td><td>适用定金罚则（双倍/不退）</td><td>不得超过主合同标的额 20%，超出部分不适用</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>民法典第 585 条第 2 款：30% 这条线怎么用</h3>
+<p>约定的违约金<strong>过分高于造成的损失</strong>的，人民法院或者仲裁机构可以根据当事人的请求予以适当减少。</p><p><b>「过分高于」的量化参照</b>：超过造成损失的 <b>30%</b> 一般可以认定为「过分高于」（原合同法司法解释二第 29 条的裁判思路，实务中仍在沿用）。</p><p><b>关键</b>：调减<strong>必须当事人提出请求</strong>，法院一般不主动调减。所以总部作为原告时，要预判对方一定会请求调减，并提前准备损失证据。</p><h4>我方的三步应对</h4><p><b>① 把损失做实</b>：列出实际损失（欠付管理费、垫付费用、重新招商成本、品牌商誉损失、律师费），逐项举证。</p><p><b>② 把违约金拆项</b>：不要只写一个总数，拆成「欠费违约金（按日万分之五）+ 擅自解约违约金（X 个月管理费）+ 未摘牌违约金（按日 X 元）」，逐项分别判断，避免总额一次性被砍。</p><p><b>③ 主动降一点</b>：庭上主动将违约金调整为 X 元的，能显著降低被大幅调减的概率，并争取调解。</p><div class="anti"><b>加盟商反制点：</b>加盟商的标准动作是：先主张违约金过高请求调减，再主张保证金应抵扣欠费，最后反诉总部未尽支持义务。我方要在起诉状里就<u>预写</u>损失构成，别等到对方提调减才手忙脚乱补证据。</div>
+</div>
+<div class="card"><h3>违约金设定的安全区间（按年管理费 12 万测算）</h3>
+<table><thead><tr><th>项目</th><th>约定值</th><th>是否安全</th><th>说明</th></tr></thead><tbody><tr><td>欠费违约金</td><td>日万分之五（年化 18.25%）</td><td>较安全</td><td>与 LPR 四倍相比仍在合理区间</td></tr><tr><td>擅自解约违约金</td><td>6 个月管理费 = 6 万</td><td>较安全</td><td>约等于重新招商周期成本</td></tr><tr><td>擅自解约违约金</td><td>24 个月管理费 = 24 万</td><td>高危</td><td>远超实际损失，大概率被调减至 3–6 个月</td></tr><tr><td>未按期摘牌</td><td>500 元/日</td><td>较安全</td><td>有品牌混淆的实际损失支撑</td></tr><tr><td>违反竞业</td><td>20 万</td><td>看情形</td><td>须证明商业秘密价值与泄密后果</td></tr><tr><td>全部违约金合计</td><td>≤ 年管理费的 100%</td><td>相对安全</td><td>超过部分被调减风险显著上升</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>追讨管理费：难点在「基数」，不在「比例」</h3>
+<p>管理费按营业额抽成时，加盟商最常见的动作是<strong>瞒报</strong>。我方要拿到真实营业额，有四条路径：</p><p><b>① 合同约定数据接入义务</b>：POS 系统、外卖平台账号、会员系统由总部统一提供，数据实时回传——这是<u>最根本的解法</u>，必须写进合同并约定「不接入即视为违约」。</p><p><b>② 合同约定的审计权</b>：总部有权聘请第三方审计，发现瞒报的，审计费由加盟商承担，并支付差额 <b>2–3 倍</b>的违约金。</p><p><b>③ 申请法院调取证据</b>：起诉后申请法院向平台、收单机构、税务部门调取流水（民诉法第 67 条第 2 款、民诉法解释第 94 条）。</p><p><b>④ 推定与酌定</b>：总部已提供同业平均数据的，法院可参照酌定营业额。</p><div class="act"><b>我的落地动作：</b>在合同里加一句最管用的话：「乙方每日营业数据须实时上传至甲方系统；连续 3 日未上传或数据明显异常且不能说明的，甲方有权按乙方前 3 个月日均营业额的 120% 计收管理费，并有权暂停供货。」有这一句，诉讼中举证压力大幅下降。</div>
+</div>
+<div class="card"><h3>瞒报的取证成本与效果对比</h3>
+<table><thead><tr><th>取证方式</th><th>成本</th><th>周期</th><th>证明力</th></tr></thead><tbody><tr><td>系统实时数据（合同约定）</td><td>近乎为零</td><td>实时</td><td>最强</td></tr><tr><td>外卖平台后台导出</td><td>低</td><td>1 日</td><td>强（可申请公证）</td></tr><tr><td>门店监控与客流统计</td><td>中</td><td>1 周</td><td>中等，需结合客单价</td></tr><tr><td>申请法院调取银行/收单流水</td><td>中</td><td>1–3 个月</td><td>最强，但周期长</td></tr><tr><td>第三方审计</td><td>高（1–5 万）</td><td>2–4 周</td><td>强，且费用可主张由对方承担</td></tr><tr><td>税务申报数据</td><td>低</td><td>2–4 周</td><td>强，但对方可能同样低报</td></tr></tbody></table></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>加盟商弃店（一夜关门失联）的处置 SOP</h3>
+<p><b>第 1 日</b>：现场取证（关门照片、招牌仍在、物业证明），同步冻结供货与系统账号。</p><p><b>第 3 日</b>：向合同地址与身份证地址双线 EMS 发送《催告函》，要求 7 日内恢复营业并结清欠费。</p><p><b>第 10 日</b>：未响应的，发《解除通知》，同时主张违约金与保证金没收。</p><p><b>第 15 日</b>：安排摘牌（合同须有「甲方有权进入并拆除标识」条款，否则只能走诉讼）。</p><p><b>第 30 日</b>：评估是否起诉。标的额 &lt; 5 万且对方无财产的，建议不起诉，转为坏账核销 + 内部黑名单。</p><div class="act"><b>我的落地动作：</b>在合同里预先写三条：①解除后甲方有权进入门店拆除标识并处置遗留物品，费用由乙方承担；②乙方逾期撤场的，按 X 元/日支付占用费；③乙方确认合同载明地址为诉讼文书送达地址，地址变更不通知的，文书退回之日视为送达。第三条能省掉公告送达的 3 个月。</div>
+</div>
+<div class="card"><h3>起诉前必须先做的成本效益评估</h3>
+<table><thead><tr><th>考量项</th><th>阈值</th><th>结论</th></tr></thead><tbody><tr><td>标的额</td><td>≥ 5 万</td><td>值得起诉</td></tr><tr><td>标的额</td><td>1–5 万</td><td>先发律师函，看响应再定</td></tr><tr><td>标的额</td><td>< 1 万</td><td>不建议起诉，走催收 + 黑名单</td></tr><tr><td>对方是否有可执行财产</td><td>有房产/车辆/股权</td><td>起诉 + 保全</td></tr><tr><td>对方是否已负债累累</td><td>多起被执行</td><td>起诉意义有限，但可拿判决抵税/威慑</td></tr><tr><td>品牌影响</td><td>是否引发跟风</td><td>跟风风险高时，哪怕亏本也要打完</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">欠费撤店案件出庭准备 20 项</strong><div class="progress"><i id="bar3"></i></div><span id="cnt3" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">1. 合同及全部补充协议<span class="m-note"> — 含违约条款</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">2. 保证金收据与扣划依据<span class="m-note"> — 金额</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">3. 欠费对账单（逐月）<span class="m-note"> — 含计算口径</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">4. 催收记录（EMS + 微信 + 电话录音）<span class="m-note"> — 证明催告</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">5. 解除通知及送达证据<span class="m-note"> — 生效时点</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">6. 营业数据（POS/外卖/会员）<span class="m-note"> — 管理费基数</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">7. 数据异常或断传记录<span class="m-note"> — 瞒报证据</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">8. 第三方审计报告（如有）<span class="m-note"> — 差额</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">9. 连续停业的照片与物业证明<span class="m-note"> — 弃店事实</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">10. 摘牌费用凭证<span class="m-note"> — 损失项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">11. 重新招商的成本凭证<span class="m-note"> — 损失项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">12. 律师费合同与发票<span class="m-note"> — 可主张由违约方承担（有约定时）</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">13. 对方财产线索（房产/车/股权/账户）<span class="m-note"> — 保全用</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">14. 财产保全申请书与担保<span class="m-note"> — 诉前或诉中</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">15. 送达地址确认条款<span class="m-note"> — 省公告</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">16. 违约金计算表（拆项）<span class="m-note"> — 抗调减</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">17. 损失构成说明<span class="m-note"> — 抗调减</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">18. 同类判决的违约金支持比例<span class="m-note"> — 参考</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">19. 诉讼费测算（按标的额分段）<span class="m-note"> — 成本</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">20. 是否申请执行的预案<span class="m-note"> — 2 年内申请</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

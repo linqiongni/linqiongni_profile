@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 14 周第 2 天 · 虚假宣传与信息披露不实：裁判规则与庭审</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 14 周第 2 天 · 虚假宣传与信息披露不实：裁判规则与庭审</h1>
+    <div class="meta">争议解决与判例精研：真刀真枪</div>
+  </header>
+  <div class="lead">这类案子的胜负手只有一个词：<strong>实质影响</strong>。加盟商能证明你说了假话，不等于他能赢——他还要证明这句话「足以影响他作出缔约决定」。我方所有抗辩都应该围绕切断这一层因果关系来组织。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、两条进攻路线</div><div class="tab" data-p="p2">二、实质影响矩阵与判例</div><div class="tab" data-p="p3">三、庭审与证据</div><div class="tab" data-p="p4">四、三大抗辩</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>路线 A：欺诈撤销（民法典第 148 条）vs 路线 B：违约解除（信息披露义务）</h3>
+<h4>路线 A · 欺诈撤销</h4><p><b>构成</b>：故意告知虚假情况或隐瞒真实情况 → 使对方陷入错误认识 → 基于错误认识作出意思表示。<b>法律后果</b>：合同自始无效，返还财产 + 赔偿损失（缔约过失）。</p><p><b>时间</b>：自知道或应当知道撤销事由之日起 <b>1 年</b>内行使（第 152 条），最长自民事法律行为发生之日起 <b>5 年</b>。<strong>除斥期间，不适用中止中断</strong>——这是总部最有力的一道防线。</p><p><b>证明标准</b>：欺诈的证明标准高于一般民事案件，需达到「排除合理怀疑」的高度（民诉法解释第 109 条）。</p><h4>路线 B · 违约解除</h4><p><b>构成</b>：信息披露义务（条例第 22 条 + 办法第 5 条 12 项）违反 → 达到实质影响 → 合同目的不能实现。<b>法律后果</b>：解除，返还 + 赔偿，但<u>不溯及既往无效</u>，已履行部分按结算处理。</p><p><b>时间</b>：诉讼时效 3 年。</p><p><b>两者对比</b>：A 门槛高（欺诈的证明标准）、后果重（自始无效）；B 门槛低、后果轻。加盟商通常<u>两条同时主张</u>，我方答辩第一件事就是要求其明确选择，并指出不能重复获利。</p><div class="act"><b>我的落地动作：</b>答辩状开篇固定一句：「原告就同一事实同时主张撤销与解除，请求权基础相互冲突，请法庭释明并要求其明确择一主张。」这一步能把对方的两条腿砍掉一条。</div>
+</div>
+<div class="card"><h3>构成要件逐项拆解与我方切入点</h3>
+<table><thead><tr><th>要件</th><th>加盟商要证明什么</th><th>我方怎么切</th></tr></thead><tbody><tr><td>存在虚假/隐瞒</td><td>具体哪句话、哪个数据、哪份材料不实</td><td>要求具体化；无法指明的，主张不符合起诉条件</td></tr><tr><td>该信息属法定披露范围</td><td>属条例第 22 条 12 项之一</td><td>不属于 12 项范围的信息，不构成披露义务违反</td></tr><tr><td>实质影响</td><td>该信息足以影响其缔约决定</td><td>用「已看店/已核算/已咨询」证明其独立判断</td></tr><tr><td>因果关系</td><td>若不实信息则不会签约</td><td>用「签约后长期正常履约」切断因果</td></tr><tr><td>在除斥期间内</td><td>1 年内主张撤销</td><td>超期即丧失撤销权（第 152 条）</td></tr><tr><td>总部存在过错</td><td>明知或应知</td><td>数据有真实来源、已标注统计口径与截止日</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>「实质影响」的判断：把信息分成三档</h3>
+<p><b>第一档 · 必然构成实质影响</b>（几乎必败）：注册商标权属瑕疵、未备案且隐瞒、直营店数量造假、重大诉讼/行政处罚未披露、虚构门店数与营业额。</p><p><b>第二档 · 可能构成</b>（看情节）：投资回报预测表述、供应商与采购价格的说明、区域保护范围的模糊表述、培训内容的承诺。</p><p><b>第三档 · 一般不构成</b>（可抗辩）：一般性的商业吹嘘（「前景广阔」「行业领先」）、未精确到数字的宣传、加盟商签约时已知或应知的信息。</p><div class="anti"><b>加盟商反制点：</b>第二档是主战场。加盟商一定会把「招商 PPT 上的投资回报测算表」拿出来主张——我方必须证明：①该表是<u>测算</u>而非<u>承诺</u>；②表上已标注假设条件与免责说明；③加盟商另行签署了风险提示书。三件齐全，第二档基本守得住。</div>
+</div>
+<div class="card"><h3>判例要旨（沿用已核实清单）</h3>
+<table><thead><tr><th>案号</th><th>裁判要旨</th><th>我方启示</th></tr></thead><tbody><tr><td>(2019)川01民初6406号 /(2020)川知民终405号</td><td>未披露重大诉讼与行政处罚，构成信息披露瑕疵，支持解除</td><td>诉讼与处罚是必披露项，宁可披露不可隐瞒</td></tr><tr><td>（2018）沪0110民初4081号</td><td>宣传中使用绝对化用语与收益承诺，构成欺诈撤销事由</td><td>招商话术红黄线表必须落地到市场部</td></tr><tr><td>（2022）沪0110民初6755号</td><td>被特许人已实地考察并签署风险提示书的，减轻总部责任</td><td>风险提示书 + 看店记录 = 最便宜的抗辩证据</td></tr><tr><td>（2019）沪0110民初15846号</td><td>一般商业吹嘘不构成欺诈，需达到足以影响缔约决定的程度</td><td>把「吹嘘」与「事实陈述」分开，主张前者不受调整</td></tr><tr><td>(2021)沪0110民初20803号</td><td>被特许人签约后长期正常经营并续费的，视为认可合同履行</td><td>正常履约是切断因果关系的最强事实</td></tr><tr><td>(2025)陕01知民终178号</td><td>数据引证未标明出处与统计口径的，可被认定为误导</td><td>所有数字必须标注「截至 X 年 X 月，样本 X 家」</td></tr><tr><td>(2023)浙8601民初706号</td><td>区域保护约定不清导致冲突的，按不利于格式条款提供方的解释（第 498 条）</td><td>区域保护条款要写清半径/商圈/例外，别留模糊</td></tr><tr><td>（2020）川知民终405号</td><td>隐瞒未备案事实影响缔约决定的，支持解除并返还</td><td>备案状态如实披露，隐瞒的代价远高于补办</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>原告证据预测表：提前一步把他的牌看穿</h3>
+<p>加盟商在虚假宣传案里的证据几乎是固定的，开庭前按这个清单逐项准备好「反制证据」，庭上就不会被动。</p>
+</div>
+<div class="card"><h3>原告常见证据 → 我方反制</h3>
+<table><thead><tr><th>原告证据</th><th>证明目的</th><th>我方反制证据</th></tr></thead><tbody><tr><td>招商 PPT / 手册</td><td>存在收益承诺</td><td>同版 PPT 的免责页 + 我方版本管理记录</td></tr><tr><td>招商人员微信聊天</td><td>口头承诺回本周期</td><td>聊天纪律制度 + 培训记录 + 该员工非授权声明</td></tr><tr><td>官网/短视频截图</td><td>对外虚假宣传</td><td>页面已标注统计口径；或已整改的截图时间戳</td></tr><tr><td>其他加盟商证言</td><td>普遍亏损、模式不真实</td><td>同类门店经营数据（脱敏）+ 正常履约统计</td></tr><tr><td>信息披露文件</td><td>披露不完整</td><td>披露回执（签收日期 + 12 项清单）</td></tr><tr><td>未备案的查询结果</td><td>隐瞒重大事实</td><td>备案受理通知 / 已披露披露文件中已载明状态</td></tr><tr><td>投资测算表</td><td>误导投资回报</td><td>表内假设条件页 + 风险提示书（手写 + 签名）</td></tr><tr><td>12315 / 行政投诉回复</td><td>已被认定违法</td><td>区分行政认定与民事欺诈，行政违法不必然构成欺诈</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">虚假宣传案件出庭准备 22 项</strong><div class="progress"><i id="bar2"></i></div><span id="cnt2" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">1. 信息披露文件全本 + 12 项对照索引<span class="m-note"> — 核心</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">2. 披露回执（原件）<span class="m-note"> — 含签署日期</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">3. 保密协议（披露之前签署）<span class="m-note"> — 证明程序合规</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">4. 风险提示书（加盟商手写部分）<span class="m-note"> — 最有力的抗辩</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">5. 看店/考察记录与照片<span class="m-note"> — 证明其审慎</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">6. 招商物料的版本管理记录<span class="m-note"> — 证明非我方发布或已停用</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">7. 招商话术与培训签到<span class="m-note"> — 证明已规范</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">8. 所有宣传数字的原始来源<span class="m-note"> — 统计口径+截止日</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">9. 官网/小程序页面历史快照<span class="m-note"> — 时间戳</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">10. 加盟商签约后正常履约的凭证<span class="m-note"> — 切断因果</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">11. 督导巡店与培训记录<span class="m-note"> — 已提供持续服务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">12. 其他加盟商同期开业的统计<span class="m-note"> — 证明模式真实</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">13. 商标证与授权链文件<span class="m-note"> — 权属无瑕疵</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">14. 备案证明或受理通知<span class="m-note"> — 合规状态</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">15. 行政处罚查询记录（无处罚）<span class="m-note"> — 澄清</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">16. 诉讼查询记录<span class="m-note"> — 澄清</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">17. 除斥期间计算表<span class="m-note"> — 1 年 + 5 年</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">18. 原告起诉状的具体化缺陷清单<span class="m-note"> — 要求释明</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">19. 证据目录与证明目的<span class="m-note"> — 庭前提交</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">20. 代理词（先打请求权基础，再打实质影响）<span class="m-note"> — 庭后</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">21. 同类判例检索报告（3–5 份）<span class="m-note"> — 提交法庭参考</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">22. 舆情应对预案（加盟商可能同步发帖）<span class="m-note"> — 非诉</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>三大抗辩的标准写法</h3>
+<h4>抗辩一：不构成实质影响</h4><p>「原告所指信息即便属实，亦不足以影响其缔约决定：原告在签约前已实地考察 X 次、已自行核算投资回报、已签署风险提示书确认『知悉投资风险、未获收益承诺』，其缔约决定系基于独立商业判断作出。」</p><h4>抗辩二：原告未尽审慎义务</h4><p>「特许经营系商业投资行为，被特许人负有基本的审慎注意义务。原告在未核实任何数据的情况下签约，自身存在重大过失，应自行承担商业风险。」</p><h4>抗辩三：损失与总部行为无因果关系</h4><p>「原告亏损系因选址不当、经营不善、市场竞争等自身原因所致，与被告行为之间不存在因果关系。原告开业后 X 个月内营业额为 X 元，与同区域同类门店持平，不能证明模式不真实。」</p><div class="act"><b>我的落地动作：</b>三大抗辩不要全用，选一条打透。最稳的组合是：有风险提示书 → 主打抗辩一；有看店记录 → 主打抗辩二；有同期经营数据 → 主打抗辩三。</div>
+</div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

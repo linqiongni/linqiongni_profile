@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 16 周第 4 天 · 述职与面试演练：把能力讲出来</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 16 周第 4 天 · 述职与面试演练：把能力讲出来</h1>
+    <div class="meta">综合实战与结业：从学习者到法务总监</div>
+  </header>
+  <div class="lead">法务岗位有个残酷的现实：<strong>你的成果天然不可见</strong>——没有事故，没人知道是你防住的；合同顺利，没人知道你改了哪一句。所以述职与面试不是「表现自己」，是<u>把不可见的成果变成可验证的证据</u>。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、高频问题</div><div class="tab" data-p="p2">二、讲「最难的问题」</div><div class="tab" data-p="p3">三、三分钟行业洞察</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>回答的总框架：STAR + 量化 + 可迁移</h3>
+<p><b>S</b> 情境（Situation）：一句话说清背景与规模；<b>T</b> 任务（Task）：你承担的角色与目标；<b>A</b> 行动（Action）：你做了什么（<u>重点讲判断，不讲流程</u>）；<b>R</b> 结果（Result）：<strong>必须有数字</strong>＋可迁移的方法论。</p><p>错误示范：「我负责处理加盟纠纷，工作认真负责，有效维护了公司利益。」——零信息量。</p><p>正确示范：「公司 300 家门店，年新增加盟纠纷 40 起（S）；我负责把诉讼量降下来（T）；我判断问题出在签约环节而不是条款本身，于是把信息披露回执、冷静期告知、风险提示书、主体核验、全程录像标准化为五步（A）；一年后诉讼量降到 26 起，退费争议从 22 起降到 9 起，年节省诉讼与退费成本约 180 万（R）。这套做法的核心是：把举证动作前置到签约现场。」</p><div class="act"><b>我的落地动作：</b>准备 5 个自己的 STAR 案例，覆盖：① 处理过的最难的纠纷；② 避免的一次重大损失；③ 推动的一项制度落地；④ 与业务的一次冲突与解决；⑤ 一次失败与复盘。每个案例控制在 90 秒讲完。</div>
+</div>
+<div class="card"><h3>法务总监面试高频 20 问（含回答要点）</h3>
+<table><thead><tr><th>问</th><th>回答要点</th></tr></thead><tbody><tr><td>1. 你怎么理解法务在公司的定位？</td><td>不是「审批部门」，是「风险管理与交易设计部门」；目标是让业务安全地做成，不是让业务做不成</td></tr><tr><td>2. 业务说你阻碍业务发展，怎么办？</td><td>先给出可行路径再谈限制；把「不能做」改写成「这样做可以做」；用数据说明风险成本</td></tr><tr><td>3. 你处理过最难的案子？</td><td>STAR + 数字 + 方法论可迁移</td></tr><tr><td>4. 怎么判断一个风险要不要上报？</td><td>按「金额 × 概率 × 不可逆性」三维；涉刑、涉品牌、涉资质的一律上报</td></tr><tr><td>5. 法务部怎么考核？</td><td>避免损失额、纠纷发生率、处理周期、审查覆盖率、制度落地率、回款额</td></tr><tr><td>6. 外部律师怎么管？</td><td>名册 + 主办律师锁定 + 预算上限 + 季度评分</td></tr><tr><td>7. 你怎么看「法务要懂业务」？</td><td>不懂业务的法务只能给否定意见；要能算出单店模型，才知道哪个条款值多少钱</td></tr><tr><td>8. 合同审查多久出意见？</td><td>标准件 1 个工作日，非标 3 个工作日，并说明分级机制</td></tr><tr><td>9. 遇到老板要求「先签后补」怎么办？</td><td>区分风险等级；给出替代方案（如先签框架 + 生效条件）；书面留痕意见</td></tr><tr><td>10. 你做过的最大一次止损？</td><td>STAR + 具体金额</td></tr><tr><td>11. 怎么建立法务团队？</td><td>按门店数配置；内部分工（合同/争议/合规）；标准件内部化、专项外部化</td></tr><tr><td>12. 你怎么看待合规与业务的冲突？</td><td>底线问题不让步，非底线问题给方案；把判断标准事先制度化</td></tr><tr><td>13. 最近关注的法规变化？</td><td>必答：新反法（2025.10.15）、104 号令（2025.12.1）、新仲裁法（2026.3.1）</td></tr><tr><td>14. 怎么做信息披露？</td><td>12 项 + 30 日 + 三步留痕 + 回执</td></tr><tr><td>15. 加盟商闹事怎么处理？</td><td>分级响应；先稳后谈；区分个案与群体；舆情与法律双线</td></tr><tr><td>16. 怎么处理与前加盟商的关系？</td><td>摘牌、数据、竞业、保证金四条线结清；避免留下事实特许关系</td></tr><tr><td>17. 你犯过最大的错误？</td><td>真实 + 具体 + 复盘后的制度改进（不要说「太较真」这类伪缺点）</td></tr><tr><td>18. 怎么推动制度落地？</td><td>卡点嵌入流程（不靠自觉）+ 系统强制 + 纳入考核</td></tr><tr><td>19. 你的三年规划？</td><td>第一年建体系、第二年降指标、第三年支撑扩张/融资</td></tr><tr><td>20. 你为什么适合这个岗位？</td><td>行业深度 + 体系能力 + 可验证的数字</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>讲法：把「难」讲出来，而不是把「忙」讲出来</h3>
+<p>面试官问这个问题，不是想听你辛苦，是想看你的<strong>判断力与承压方式</strong>。结构是：<u>难在哪（两难而非辛苦）→ 我怎么判断 → 我做了什么取舍 → 结果与方法论</u>。</p><p><b>三类真正「难」的素材</b>：</p><p>① <b>两难取舍</b>：法律上稳但商业上会丢一个好加盟商，或商业上要但这个条款有瑕疵——讲你怎么权衡。</p><p>② <b>信息不全下的决策</b>：事故刚发生、证据还没固定、要不要先发声——讲你怎么在不确定性里做决定。</p><p>③ <b>对抗内部</b>：业务已经答应了对方，你要不要推翻——讲你怎么既守住底线又不撕破脸。</p><div class="act"><b>我的落地动作：</b>用 3 分钟版本写一稿，然后压成 90 秒版本。面试时先讲 90 秒，对方追问再展开。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>餐饮加盟法律趋势：三分钟演讲的骨架</h3>
+<p><b>开场 30 秒 · 给一个判断</b>：「未来三年，餐饮加盟的法律风险重心会从<u>签约端</u>转移到<u>运营端</u>。」</p><p><b>第一点 60 秒 · 监管在穿透</b>：104 号令要求连锁总部对食品安全承担穿透式管理责任，「食安责任由加盟商自负」的免责条款已经无效（第 9 条第 4 款，罚 5 万以下）。这意味着总部<u>不能再用「管得浅」来隔离责任</u>，新的边界是：管理责任必须留痕，经营替代绝不能碰（不派人、不发薪、不排班）。</p><p><b>第二点 60 秒 · 竞争在升级</b>：2025 年新反不正当竞争法把混淆行为扩张到新媒体账号名称、APP 图标、搜索关键词，并新增「虚假评价」与「滥用平台规则」两类行为（第 9 条、第 13 条第 4 款），罚则 100 万起、情节严重 100–200 万并可吊销营业执照。打假与反刷单会从「民事维权」变成「行政处罚 + 民事索赔」双线。</p><p><b>第三点 30 秒 · 数据在收紧</b>：个人信息保护的双罚制（情节严重 5000 万或上年营收 5%）与预付卡的资金存管（品牌发卡企业 40%）会把「加盟店自己发卡、总部不管」的模式彻底终结（法释〔2025〕4 号第 5 条：特许人可能共同担责）。</p><p><b>收尾 30 秒 · 落到自己</b>：「所以我的工作思路是三句话：把合规动作前置到签约现场，把管控嵌入到流程卡点，把证据留存在日常运营中。」</p><div class="act"><b>我的落地动作：</b>背下来的是结构，不是稿子。三分钟讲 3 个点 + 1 个判断 + 1 个收尾，每个点配一个具体数字，说服力比讲十个概念强。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">述职与面试准备 20 项</strong><div class="progress"><i id="bar4"></i></div><span id="cnt4" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">1. 准备 5 个 STAR 案例<span class="m-note"> — 各 90 秒</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">2. 每个案例有量化结果<span class="m-note"> — 金额/数量/周期</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">3. 整理「避免损失金额」清单<span class="m-note"> — 内部确认单支撑</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">4. 整理「追偿回款」数据<span class="m-note"> — 回款额</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">5. 准备体系建设的证据<span class="m-note"> — 制度树、模板库、卡点</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">6. 准备一次失败与复盘<span class="m-note"> — 真诚 + 改进</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">7. 20 问逐题写出回答要点<span class="m-note"> — 不背稿</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">8. 三分钟行业洞察稿<span class="m-note"> — 3 点 + 数字</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">9. 梳理近一年法规变化（3 部新规）<span class="m-note"> — 必答项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">10. 准备对目标公司的提问<span class="m-note"> — 至少 3 个有质量的问题</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">11. 了解目标公司门店数与纠纷情况<span class="m-note"> — 做功课</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">12. 准备薪资与到岗的底线<span class="m-note"> — 提前想清楚</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">13. 着装与线上环境检查<span class="m-note"> — 视频面试</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">14. 准备作品集（12 份文件目录页）<span class="m-note"> — 脱敏</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">15. 准备条款库节选（脱敏 5 条）<span class="m-note"> — 展示专业度</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">16. 准备判例库节选（脱敏）<span class="m-note"> — 展示积累</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">17. 模拟面试一次并录音<span class="m-note"> — 回听</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">18. 准备 30 秒自我介绍<span class="m-note"> — 定位清晰</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">19. 准备对「空窗期/转行」的解释<span class="m-note"> — 如有</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">20. 复盘本次 16 周学习成果<span class="m-note"> — 个人年度复盘</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>
