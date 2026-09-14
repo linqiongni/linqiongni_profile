@@ -202,6 +202,30 @@ const WEEKS: Week[] = [
     ],
   },
   {
+    id: 'week-11',
+    label: '第 11 周',
+    theme: '劳动用工：总部与门店的双层结构',
+    lessons: [
+      { title: '第 11 周第 1 天 · 总部用工：劳动合同·竞业限制·民主程序', id: 'week11-day1' },
+      { title: '第 11 周第 2 天 · 门店用工：谁来当用人单位（责任隔离四防线）', id: 'week11-day2' },
+      { title: '第 11 周第 3 天 · 工伤·工时·特殊用工', id: 'week11-day3' },
+      { title: '第 11 周第 4 天 · 违纪处理与劳动争议应对', id: 'week11-day4' },
+      { title: '第 11 周第 5 天 · 第11周收官 · 用工合规体系固化（自测＋综合案例）', id: 'week11-day5' },
+    ],
+  },
+  {
+    id: 'week-12',
+    label: '第 12 周',
+    theme: '数据合规与预付卡：两个被低估的雷区',
+    lessons: [
+      { title: '第 12 周第 1 天 · 个保法：门店每天都在处理的个人信息', id: 'week12-day1' },
+      { title: '第 12 周第 2 天 · 加盟体系内的数据权属设计', id: 'week12-day2' },
+      { title: '第 12 周第 3 天 · 单用途商业预付卡：预收资金的法律雷区', id: 'week12-day3' },
+      { title: '第 12 周第 4 天 · 外卖平台与网络交易', id: 'week12-day4' },
+      { title: '第 12 周第 5 天 · 第12周收官 · 数据合规与预付卡固化', id: 'week12-day5' },
+    ],
+  },
+  {
     id: 'BYrhHqoMDFRR5qonLJQe6y',
     label: '第 13 周',
     theme: '统采统配与用工 · 数据合规',
@@ -295,6 +319,16 @@ const LOCAL_LESSON_IDS = new Set([
   'week10-day3',
   'week10-day4',
   'week10-day5',
+  'week11-day1',
+  'week11-day2',
+  'week11-day3',
+  'week11-day4',
+  'week11-day5',
+  'week12-day1',
+  'week12-day2',
+  'week12-day3',
+  'week12-day4',
+  'week12-day5',
 ]);
 const lessonLocalUrl = (id: string) => `/lessons/${id}.html`;
 const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);

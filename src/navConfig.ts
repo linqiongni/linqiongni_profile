@@ -41,6 +41,12 @@ export const NAV_GROUPS: NavGroup[] = [
     enLabel: 'Film & Law',
     subTabs: ['film-law'],
   },
+  {
+    id: 'labor',
+    label: '双视角劳动法务',
+    enLabel: 'Labor Law',
+    subTabs: ['labor'],
+  },
 ];
 
 export const SUB_TAB_META: Record<TabType, SubTabMeta> = {

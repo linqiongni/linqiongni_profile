@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 12 周第 3 天 · 单用途商业预付卡：预收资金的法律雷区</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 12 周第 3 天 · 单用途商业预付卡：预收资金的法律雷区</h1>
+    <div class="meta">数据合规与预付卡：两个被低估的雷区</div>
+  </header>
+  <div class="lead">预付卡是加盟体系唯一一个「加盟商出事、总部必然被牵连」的业务：钱是加盟商收的，顾客认的是品牌。依据商务部令 2012 年第 9 号（2012 年 11 月 1 日施行）+ 法释〔2025〕4 号，把三条线管住：<b>备案、存管、责任主体</b>。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、三类企业与备案</div><div class="tab" data-p="p2">二、资金管理</div><div class="tab" data-p="p3">三、加盟店发卡的责任主体</div><div class="tab" data-p="p4">四、合规检查表</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>先判自己是哪一类（第 3、4 条）</h3>
+<table><thead><tr><th>类型</th><th>定义</th><th>备案机关</th><th>存管比例</th><th>季度报送</th></tr></thead><tbody><tr><td><b>规模发卡企业</b>（第 4 条）</td><td>除集团、品牌发卡企业外，上一会计年度年营业收入 <b>500 万元以上</b>，或<u>工商注册登记不足一年、注册资本 100 万元以上</u>的企业</td><td>工商登记注册地<u>设区的市</u>人民政府商务主管部门</td><td>不低于上一季度预收资金余额的 <b>20%</b></td><td>季度结束后 <b>15 个工作日</b>内（第 31 条）</td></tr><tr><td><b>集团发卡企业</b>（第 3 条）</td><td>发行在本集团内使用的单用途卡的<u>集团母公司</u>（由同一企业法人绝对控股的企业法人联合体）</td><td>省、自治区、直辖市商务主管部门</td><td>不低于 <b>30%</b></td><td>季度结束后 <b>20 个工作日</b>内</td></tr><tr><td><b>品牌发卡企业</b>（第 3 条）</td><td>发行在<u>同一品牌特许经营体系内</u>使用的单用途卡，且拥有该品牌的企业标志或注册商标，或者经授权拥有排他使用权的法人企业</td><td>省、自治区、直辖市商务主管部门</td><td>不低于 <b>40%</b></td><td>季度结束后 <b>20 个工作日</b>内</td></tr><tr><td>其他发卡企业</td><td>上述三类之外</td><td>县（市、区）商务主管部门</td><td>不要求</td><td>每年 <b>1 月 31 日</b>前报年度报告表</td></tr></tbody></table><p><b>关键点</b>：第 2 条明确适用对象为<u>企业法人</u>，从事<b>零售业、住宿和餐饮业、居民服务业</b>。<strong>加盟店若为个体工商户，不具备发卡企业主体资格</strong>——这是加盟体系预付卡设计的第一块基石。</p><h4>备案时限与罚则</h4><p>第 7 条：发卡企业应在<u>开展单用途卡业务之日起 30 日内</u>办理备案。第 12 条：备案事项发生变更、发卡企业类型改变或业务终止的，应在变化之日起 <b>15 个工作日</b>内办理变更、注销。<b>第 36 条</b>：未按规定备案的，责令限期改正；逾期仍不改正的，处 <b>1 万元以上 3 万元以下</b>罚款。</p><div class="act"><b>我的落地动作：</b>先在商务部「单用途商业预付卡业务信息系统」查本品牌是否已完成品牌发卡企业备案；未备案的，30 日内补办——罚款只是 1–3 万，真正的代价是出事时「连合规动作都没做」的定性。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>三条资金红线 + 一条减压阀</h3>
+<p><b>① 存管（第 26 条）</b>：规模 20%、集团 30%、<b>品牌 40%</b>，基数均为<u>上一季度预收资金余额</u>；须确定一个商业银行账户作为资金存管账户并与银行签存管协议，协议应约定银行<u>对超额调用存管资金的指令予以拒绝</u>（第 27 条）。</p><p><b>② 用途限制（第 24 条）</b>：预收资金只能用于发卡企业主营业务，<strong>不得用于不动产、股权、证券等投资及借贷</strong>。</p><p><b>③ 规模上限（第 25 条）</b>：主营业务为零售业、住宿和餐饮业的发卡企业，预收资金余额<u>不得超过其上一会计年度主营业务收入的 40%</u>；集团发卡企业预收资金余额不得超过上一会计年度本集团营业收入的 30%；工商注册登记不足一年的，不得超过注册资本的 2 倍。</p><p><b>④ 减压阀（第 28 条）</b>：规模、集团、品牌发卡企业<u>可以使用担保预收资金的保证保险、银行保函等方式冲抵全部或部分存管资金</u>。这是现金流压力最大的一条出路的法定依据。</p><p class="note2">算一笔账：若全体系预收资金余额 5000 万元，按品牌发卡企业 40% 计，存管资金为 <b>2000 万元</b>。用银行保函冲抵后（保函费率通常年化 0.5%–2%），可释放绝大部分现金占用，成本约 <b>10–40 万/年</b>。这是本条最值钱的用法。</p>
+</div>
+<div class="card"><h3>发行与服务的硬性要求（第 13–22 条）</h3>
+<table><thead><tr><th>事项</th><th>规则</th><th>条号</th><th>违反后果</th></tr></thead><tbody><tr><td>单张限额</td><td>记名卡 ≤ <b>5000 元</b>；不记名卡 ≤ <b>1000 元</b>；充值后余额同样受限</td><td>第 18 条</td><td>第 37 条：责令改正，逾期不改 1 万–3 万</td></tr><tr><td>有效期</td><td><b>记名卡不得设有效期</b>；不记名卡有效期<u>不得少于 3 年</u></td><td>第 19 条</td><td>同上</td></tr><tr><td>实名购卡</td><td>购买/充值记名卡的，或一次性购买 1 万元以上不记名卡的，须出示并留存身份证件信息</td><td>第 15 条</td><td>同上</td></tr><tr><td>非现金购卡</td><td>单位一次性购卡 ≥ <b>5000 元</b>或个人一次性购卡 ≥ <b>5 万元</b>，以及非现场购卡的，应通过银行转账，不得使用现金</td><td>第 17 条</td><td>同上</td></tr><tr><td>登记信息保存</td><td>购卡人登记信息保存 <b>5 年以上</b>；除法律另有规定外不得向第三方提供</td><td>第 16 条</td><td>同上</td></tr><tr><td>章程与协议</td><td>应公示或向购卡人提供单用途卡章程，并应购卡人要求签订购卡协议；章程/协议须含名称、购买充值使用退卡方式、收费标准、权利义务、纠纷处理与违约责任</td><td>第 14 条</td><td>同上</td></tr><tr><td>退卡</td><td>应依章程或协议提供退卡服务；退卡须核验身份并退至<u>同名银行账户</u>；余额不足 100 元的可付现金</td><td>第 21 条</td><td>同上</td></tr><tr><td>终止兑付</td><td>终止兑付未到期卡的，应提供<u>免费退卡</u>服务，并在终止兑付日前<u>至少 30 日</u>在指定媒体公示</td><td>第 22 条</td><td>同上</td></tr><tr><td>业务系统</td><td>规模/集团/品牌发卡企业应在境内建立与发卡规模相适应的业务处理系统；重大或不可恢复的技术故障应立即报告备案机关</td><td>第 29 条</td><td>第 38 条：造成重大损失的 1 万–3 万</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>这是全周最难、也最值钱的一个判断</h3>
+<p><b>事实</b>：① 商务部令第 2 条要求发卡企业为<u>企业法人</u>，个体工商户不具备主体资格；② 但加盟店（大量为个体工商户）实际在收钱、在发卡；③ 顾客认的是品牌。</p><p><b>法律后果</b>：《最高人民法院关于审理预付式消费民事纠纷案件适用法律若干问题的解释》（法释〔2025〕4 号，2025 年 5 月 1 日施行）<b>第 5 条</b>：经营者许可他人使用其营业执照、名称、字号，<u>或者在加盟模式下</u>，消费者可以请求<u>实际经营者与特许人共同承担责任</u>。同解释<b>第 14 条</b>：消费者自付款之日起 <b>7 日</b>内请求返还预付款本金的，应予支持。</p><p><b>结论</b>：<u>「加盟店发卡、总部不管」在法律上不成立</u>。总部要么把发卡主体收归统一，要么就必须做实管理并承担兜底准备。</p><table><thead><tr><th>架构</th><th>设计</th><th>优点</th><th>风险</th><th>适配</th></tr></thead><tbody><tr><td><b>A. 总部统一发卡</b>（推荐）</td><td>总部作为<b>品牌发卡企业</b>备案，全体系统一发行、统一资金归集、统一存管；加盟店为<u>售卡企业</u>，资金 T+1 全额上划总部</td><td>主体合规；资金可控；退出时可无缝承接；存管与报送只需做一遍</td><td>总部承担全部兑付责任；存管比例最高（40%）；加盟商现金流被抽走，谈判难</td><td>强管控品牌；会员体系统一运营的体系</td></tr><tr><td><b>B. 加盟商各自发卡</b></td><td>加盟商（须为公司法人）自行备案、自行存管、自行兑付；总部仅提供系统与品牌授权</td><td>总部责任隔离；现金流留在门店</td><td><b>法释 4 号第 5 条下仍可能被判共同责任</b>；个体户门店无法备案；退出跑路即引爆群体性事件</td><td>不建议采用</td></tr><tr><td><b>C. 总部发卡 + 加盟商担保</b>（折中）</td><td>总部统一发卡与兑付，加盟商就<u>本店售出卡片的未兑付余额</u>向总部提供反担保（保证金 / 银行保函 / 总部扣留货款）</td><td>对外合规统一，对内把风险转回加盟商</td><td>需配套系统与清算能力；保证金比例需精算（建议按未兑付余额的 30%–50%）</td><td><b>加盟商话语权较强时推荐</b></td></tr></tbody></table><div class="act"><b>我的落地动作：</b>第一步先做余额盘点：全体系未兑付余额 = 多少？分布在多少家门店？其中个体户门店占比多少？这张表决定架构选 A 还是 C，也决定存管与保函的金额。</div>
+</div>
+<div class="card"><h3>购卡协议必备条款（建议版本摘录）</h3>
+<div class="clause"><p><b>第 X 条 卡片性质与范围</b>：本卡为单用途商业预付卡，仅限在【发卡企业名称】所属的【品牌】特许经营体系内（门店清单以官方小程序公示为准）兑付商品或服务，不兑现、不找零、不计息。</p><p><b>第 X 条 有效期</b>：记名卡<u>不设有效期</u>；不记名卡有效期为【3】年，自<u>最后一笔充值之日</u>起算；超过有效期尚有余额的，持卡人可办理激活或换卡，激活/换卡【不收取】费用。</p><p><b>第 X 条 退卡</b>：持卡人可凭有效身份证件及原卡申请退卡，自申请之日起【7】个工作日内，将卡内余额退还至与持卡人<u>同名</u>的银行账户；卡内余额低于 100 元的，可支付现金。<b>持卡人自付款之日起 7 日内要求返还本金的，应予返还</b>（法释〔2025〕4 号第 14 条）。</p><p><b>第 X 条 挂失与转让</b>：记名卡可挂失、可转让，具体方式见章程；不记名卡不挂失、不补办。</p><p><b>第 X 条 门店变更的处理</b>：因门店关闭、加盟关系终止等原因致持卡人无法在原门店使用的，持卡人可在<u>体系内任一门店</u>继续使用，或申请退款。</p><p><b>第 X 条 资金安全</b>：发卡企业已按《单用途商业预付卡管理办法（试行）》办理备案并落实资金存管，备案编号：【XXXX】。</p></div>
+</div>
+</div><div class="panel" id="p4">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">预付卡合规检查（24 项）</strong><div class="progress"><i id="bar103"></i></div><span id="cnt103" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">1. 已完成发卡企业备案（且在开展业务后 30 日内）<span class="m-note"> — 第 7 条；罚则 1 万–3 万</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">2. 发卡企业类型已正确判定（规模/集团/品牌）<span class="m-note"> — 第 3、4 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">3. 备案机关层级正确（市/省/县）<span class="m-note"> — 第 7 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">4. 备案事项变更已在 15 个工作日内办理<span class="m-note"> — 第 12 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">5. 资金存管账户已开立并签存管协议<span class="m-note"> — 第 27 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">6. 存管比例达标（20%/30%/40%）<span class="m-note"> — 第 26 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">7. 存管协议含银行拒绝超额调用条款<span class="m-note"> — 第 27 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">8. 已评估用保函/保证保险冲抵存管资金<span class="m-note"> — 第 28 条，现金流减压阀</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">9. 预收资金余额未超上一年度主营收入 40%<span class="m-note"> — 第 25 条（餐饮业）</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">10. 预收资金未用于不动产/股权/证券投资及借贷<span class="m-note"> — 第 24 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">11. 单张记名卡 ≤ 5000 元、不记名卡 ≤ 1000 元<span class="m-note"> — 第 18 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">12. 记名卡未设有效期，不记名卡有效期 ≥ 3 年<span class="m-note"> — 第 19 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">13. 购卡章程已公示、购卡协议可按需签订<span class="m-note"> — 第 14 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">14. 购卡协议含名称/购买充值使用退卡/收费/权责/纠纷处理<span class="m-note"> — 第 14 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">15. 实名购卡已落实并留存身份证件信息<span class="m-note"> — 第 15 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">16. 大额与非现场购卡已走银行转账（5000/5 万门槛）<span class="m-note"> — 第 17 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">17. 购卡登记信息保存 ≥ 5 年<span class="m-note"> — 第 16 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">18. 退卡机制已开通且退至同名账户<span class="m-note"> — 第 21 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">19. 7 日内无理由返本机制已落实<span class="m-note"> — 法释 4 号第 14 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">20. 业务处理系统在境内建立<span class="m-note"> — 第 29 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">21. 季度/年度业务报送按时完成（15/20 个工作日）<span class="m-note"> — 第 31 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">22. 加盟店（个体户）未以其自身名义发卡<span class="m-note"> — 第 2 条主体资格</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">23. 加盟店发卡责任与兜底方案已在合同中约定<span class="m-note"> — 法释 4 号第 5 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar103','cnt103')"><span class="m-txt">24. 门店关闭时的余额承接方案已备<span class="m-note"> — 群体性事件防线</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 11 周第 4 天 · 违纪处理与劳动争议应对</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 11 周第 4 天 · 违纪处理与劳动争议应对</h1>
+    <div class="meta">劳动用工：总部与门店的双层结构</div>
+  </header>
+  <div class="lead">违纪解除打官司，企业输的原因九成不是「员工没错」，而是<b>程序没走完、证据没留住</b>。这一天的核心是把解除做成一条可回溯的证据链。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、员工手册与违纪处理</div><div class="tab" data-p="p2">二、劳动争议应对</div><div class="tab" data-p="p3">三、解除程序自查</div><div class="tab" data-p="p4">四、模拟问答</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>违纪处理的四个层级与各自的证据要求</h3>
+<table><thead><tr><th>层级</th><th>适用</th><th>程序要求</th><th>证据要求</th></tr></thead><tbody><tr><td>口头提醒</td><td>轻微、首次</td><td>可口头，建议留简短记录</td><td>谈话记录（时间、事由、承诺）</td></tr><tr><td>书面警告</td><td>重复或较重</td><td>书面送达本人签收</td><td>警告信 + 送达回证 + 事实材料（监控、单据）</td></tr><tr><td>记过/调岗降薪</td><td>较重违纪</td><td>书面 + 说明理由 + 允许申辩</td><td>违纪事实证据 + 制度依据条款 + 申辩记录</td></tr><tr><td>解除劳动合同</td><td>严重违纪（第 39 条）</td><td>书面 + 通知工会（第 43 条）+ 送达 + 出具证明与转移手续（第 50 条）</td><td><b>四件套</b>：制度依据、违纪事实、调查记录、送达凭证</td></tr></tbody></table><h4>「严重违反规章制度」要成立，三个前提缺一不可</h4><p>① 规章制度<b>内容合法</b>（不违反法律强制规定、不显失公平）；<br>② 经过<b>民主程序</b>并已<b>公示告知</b>（第 4 条）；<br>③ 员工的违纪行为<b>达到制度中列明的严重程度</b>（制度必须把「严重违纪」列举清楚，不能只写「严重违反公司制度」）。</p><p class="note2">餐饮门店高频的严重违纪：偷窃（含私收货款、外卖跑单）、使用过期原料、伪造考勤、酒后上岗、与顾客严重冲突、泄露配方。这些<b>必须在员工手册里逐条写死</b>，并对应「可立即解除劳动合同，不支付经济补偿」。</p>
+</div>
+<div class="card"><h3>可直接落地的员工手册核心条款（门店版摘录）</h3>
+<div class="clause"><p><b>第 X 条 严重违纪行为（可立即解除劳动合同，不支付经济补偿）</b></p><p>员工有下列行为之一的，属于严重违反公司规章制度，公司有权立即解除劳动合同且不支付经济补偿；造成公司损失的，公司有权要求赔偿：</p><p>（一）偷窃顾客、公司或同事财物，或私收营业款、私自截留外卖/外卖平台款项、伪造优惠券或退款单据的；<br>（二）<b>明知</b>原料过期、变质仍加工出售，或伪造、篡改保质期标签、进货查验记录的；<br>（三）伪造、篡改考勤记录，或代他人打卡的；<br>（四）酒后、吸毒后上岗，或在经营场所内斗殴的；<br>（五）与顾客发生严重冲突、侮辱或殴打顾客，造成投诉、报警或媒体传播的；<br>（六）泄露公司配方、工艺、供应商价格、会员数据等商业秘密或敏感信息的；<br>（七）连续旷工【3】个工作日或一年内累计旷工【5】个工作日的；<br>（八）被依法追究刑事责任的。</p><p><b>调查与申辩</b>：公司作出解除决定前，应就违纪事实进行调查并制作调查记录；员工有权就指控提交书面申辩，公司应在【3】个工作日内予以答复。</p></div><div class="act"><b>我的落地动作：</b>「调查与申辩」这一句一定要写、一定要做。仲裁庭审查解除是否合法时，有没有给员工申辩机会是重要裁量因素。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>仲裁前置、时效、举证倒置：三个必须先记住的规则</h3>
+<p><b>① 仲裁前置（调解仲裁法第 5 条）</b>：劳动争议必须先申请仲裁，对仲裁裁决不服的才能起诉（部分一裁终局案件除外）。</p><p><b>② 时效（第 27 条）</b>：劳动争议申请仲裁的时效期间为 <b>1 年</b>，从当事人知道或者应当知道其权利被侵害之日起计算。<u>劳动关系存续期间因拖欠劳动报酬发生争议的，不受 1 年时效限制</u>；但劳动关系终止的，应当自终止之日起 <b>1 年</b>内提出。</p><p><b>③ 举证责任倒置（第 6 条）</b>：发生劳动争议，当事人对自己提出的主张有责任提供证据；<strong>与争议事项有关的证据属于用人单位掌握管理的，用人单位应当提供；用人单位不提供的，应当承担不利后果</strong>。</p><p><b>一裁终局（第 47 条）</b>：追索劳动报酬、工伤医疗费、经济补偿或者赔偿金，不超过当地月最低工资标准十二个月金额的争议，以及因执行国家劳动标准在工作时间、休息休假、社会保险等方面发生的争议，仲裁裁决为终局裁决——<u>用人单位只能向中级法院申请撤销，不能再起诉</u>。</p>
+</div>
+<div class="card"><h3>四类高频诉求的抗辩要点与证据清单</h3>
+<table><thead><tr><th>诉求</th><th>员工的举证</th><th>我方抗辩要点</th><th>我方必交证据</th></tr></thead><tbody><tr><td>未签合同二倍工资（第 82 条）</td><td>劳动关系存在的初步证据（工牌、排班截图、转账记录）</td><td>① 已签（举合同原件）；② 未签系员工原因且公司已书面通知签订；③ 超过仲裁时效（逐月起算口径）</td><td><b>劳动合同原件</b>、签订通知及送达记录、入职登记表</td></tr><tr><td>加班费（第 44 条）</td><td>考勤截图、排班表、工作群消息</td><td>① 已安排补休；② 已支付（工资表列明加班费项）；③ 员工岗位为经审批的不定时/综合计算工时；④ 部分月份超时效</td><td><b>考勤记录（完整可导出）</b>、工资表（有签字确认）、工时审批文件、补休记录</td></tr><tr><td>经济补偿/赔偿金（第 46、47、87 条）</td><td>解除通知、退工证明</td><td>① 属第 39 条过失性解除（无需补偿）；② 员工主动辞职（第 37 条）；③ 计算基数与年限有误</td><td><b>违纪调查与申辩记录</b>、制度民主程序材料、解除通知与工会通知、送达回证</td></tr><tr><td>未缴社保的损失赔偿</td><td>社保查询记录</td><td>① 已依法缴纳；② 未缴系员工本人书面承诺放弃（<b>该承诺无效，仅可作为减轻过错的情节</b>）；③ 损失与未缴之间无因果关系</td><td>社保缴费记录、员工签字的放弃承诺（作为情节证据）</td></tr></tbody></table></div>
+<div class="card"><h3>劳动争议应对手册：接案到结案的六步</h3>
+<p><b>Step 1 接案 24 小时</b>：锁定四件套——劳动合同、员工手册（含民主程序）、涉案期间考勤与工资、解除/处分的全部书面材料。<br><b>Step 2 定性</b>：判断属第 39 条（过失性解除、无补偿）、第 40 条（无过失性、需提前 30 日或代通知金 + 补偿）、还是第 87 条（违法解除、赔偿金 2N）。<br><b>Step 3 算钱</b>：经济补偿按工作年限每满一年支付一个月工资；六个月以上不满一年按一年计；不满六个月支付半个月工资（第 47 条）；月工资高于当地上年度职工月平均工资三倍的，按三倍计且年限不超过 12 年。<br><b>Step 4 定策略</b>：<u>能调则调</u>——一裁终局的金额门槛低、周期短，企业方程序空间小；金额不大、证据有瑕疵的，调解成本通常低于败诉成本。<br><b>Step 5 出庭</b>：举证不能 = 败诉，凡属用人单位掌握管理的证据务必主动提交。<br><b>Step 6 复盘</b>：每结一案，回到制度与 SOP 改一处。</p><div class="anti"><b>加盟商反制点：</b>员工最常用的一招是「先投诉后仲裁」：向劳动监察投诉未缴社保/拖欠工资，监察的处理文书会成为仲裁里的有力证据。所以门店一旦被投诉，总部法务要<b>第一时间介入答复口径</b>，不要由门店自行回应。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">违纪解除合法性的 20 项检查（缺一项即可能违法解除）</strong><div class="progress"><i id="bar4"></i></div><span id="cnt4" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">1. 员工手册经民主程序（职代会/全体职工讨论）<span class="m-note"> — 第 4 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">2. 员工手册已公示或告知员工（有签字）<span class="m-note"> — 第 4 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">3. 违纪行为在手册中被明确列举为「严重」<span class="m-note"> — 不列举 = 无依据</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">4. 违纪事实有客观证据（监控、单据、第三方证言）<span class="m-note"> — 单纯口供不足</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">5. 已制作调查记录（时间、人员、内容）<span class="m-note"> — 程序正当</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">6. 已给予员工书面申辩机会并留存记录<span class="m-note"> — 裁量重要因素</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">7. 解除依据条款与事实对应（写清第几条）<span class="m-note"> — 通知书写错即瑕疵</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">8. 已事先将解除理由通知工会<span class="m-note"> — 第 43 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">9. 解除通知已书面送达本人（签收或 EMS）<span class="m-note"> — 送达是生效要件</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">10. 送达地址确认为合同载明地址<span class="m-note"> — 避免送达无效</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">11. 已出具解除劳动合同证明<span class="m-note"> — 第 50 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">12. 离职证明内容仅限法定四项（不写负面评价）<span class="m-note"> — 否则可能侵权</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">13. 15 日内办理档案与社保关系转移<span class="m-note"> — 第 50 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">14. 经济补偿（如需）已按第 47 条正确计算<span class="m-note"> — 三倍封顶规则</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">15. 无过失性解除已提前 30 日或支付代通知金<span class="m-note"> — 第 40 条 + 实施条例第 20 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">16. 竞业限制人员已发出启动或解除的书面通知<span class="m-note"> — 止损阀动作</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">17. 未在三期（医疗期、孕期产期哺乳期）内违法解除<span class="m-note"> — 第 42 条禁止情形</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">18. 未对工会主席、职工代表、工伤职工等违规解除<span class="m-note"> — 特殊保护</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">19. 离职结算（工资、年假、报销）已结清<span class="m-note"> — 减少衍生争议</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">20. 全部材料归档保存 ≥ 2 年<span class="m-note"> — 覆盖仲裁时效 + 宽限</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>三个高频追问的标准答案</h3>
+<h4>Q1：员工严重违纪，但员工手册是三年前的、没走民主程序，怎么办？</h4><p>两种选择：① 不走第 39 条过失性解除，改走<u>协商一致解除</u>（第 36 条）并支付补偿，代价是 N 或 N+1；② 立即启动制度修订与民主程序（约 2–4 周），对新发生的违纪适用新制度。<b>不建议硬用旧制度解除</b>——一旦制度被认定无效，赔偿金是 2N，且会引发连锁主张。</p><h4>Q2：门店员工签了「自愿放弃社保承诺书」，有效吗？</h4><p><b>无效。</b>缴纳社保是法定义务，不能由双方约定免除。该承诺书在仲裁中不被采纳为免责依据，但可作为<u>减轻企业过错程度、影响赔偿数额</u>的情节证据。同时企业仍面临社保法第 86 条的责令补缴 + 滞纳金 + 1–3 倍罚款。</p><h4>Q3：员工主张二倍工资，但已经过了两年，还要给吗？</h4><p>要看时效起算口径：主流做法认为二倍工资<b>不属于劳动报酬</b>，适用 1 年仲裁时效。多数地区按月分别起算（逐月计算），也有地区从违法行为终了之日或劳动关系终止之日起算。<b>实操建议</b>：先按当地口径核算，同时主张未签合同系员工原因（举证已书面通知签订而员工拒签），这是唯一能实质降低金额的实体抗辩。</p>
+</div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

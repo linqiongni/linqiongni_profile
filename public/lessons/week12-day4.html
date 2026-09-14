@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 12 周第 4 天 · 外卖平台与网络交易</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 12 周第 4 天 · 外卖平台与网络交易</h1>
+    <div class="meta">数据合规与预付卡：两个被低估的雷区</div>
+  </header>
+  <div class="lead">外卖这条线有两个容易被忽略的合规主体问题：① 加盟店入网，谁是被监管的「入网餐饮服务提供者」；② <b>总部建网站/小程序为门店提供网络交易服务的，参照第三方平台的规定执行</b>（网络餐饮办法第 45 条）——这一条把总部直接拉进了监管视野。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、网络餐饮办法</div><div class="tab" data-p="p2">二、平台协议审查要点</div><div class="tab" data-p="p3">三、刷单炒信与虚假评价</div><div class="tab" data-p="p4">四、网络交易合规清单</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>总部最该知道的三条</h3>
+<p><b>第 4 条</b>：入网餐饮服务提供者应当<u>具有实体经营门店</u>并依法取得食品经营许可证，并按照许可证载明的<u>主体业态、经营项目</u>从事经营活动，不得超范围经营。违反的依食安法<b>第 122 条</b>处罚（第 27 条）。</p><p><b>第 45 条（关键）</b>：<strong>餐饮服务连锁公司总部建立网站为其门店提供网络交易服务的，参照本办法关于网络餐饮服务第三方平台提供者的规定执行。</strong></p><p><b>第 18 条第（四）项</b>：入网餐饮服务提供者应当<u>在自己的加工操作区内加工食品，不得将订单委托其他食品经营者加工制作</u>；第（五）项：网络销售的餐饮食品应当与实体店销售的餐饮食品<u>质量安全保持一致</u>。</p><p class="note2">第 45 条的实务含义：如果总部运营自有小程序/点餐系统为加盟店提供网络交易服务，总部就<b>参照平台义务</b>——审查入网门店的食品经营许可证、与门店签食品安全协议、公示证照与量化分级、记录订单信息保存 ≥ 6 个月、建立投诉举报处理制度、对门店经营行为抽查监测。这不是选择项，是法定义务。</p>
+</div>
+<div class="card"><h3>入网与配送的硬性要求（条号可直接引）</h3>
+<table><thead><tr><th>义务</th><th>内容</th><th>条号</th><th>罚则</th></tr></thead><tbody><tr><td>实体门店 + 许可证</td><td>须有实体门店且持证，不得超范围</td><td>第 4 条</td><td>第 27 条：依食安法第 122 条</td></tr><tr><td>证照公示</td><td>主页面公示食品经营许可证；公示名称、地址、量化分级信息；入网者公示菜品名称和主要原料</td><td>第 9、10、11 条</td><td>第 32 条：责令改正、警告；拒不改正 5000 元–3 万元</td></tr><tr><td>平台审查</td><td>（总部参照）审查入网者许可证、登记名称地址法定代表人联系方式、签订食品安全协议</td><td>第 8 条 + 第 45 条</td><td>第 31 条：依食安法第 131 条</td></tr><tr><td>不得委托加工</td><td>在自己的加工操作区内加工，不得将订单委托其他食品经营者加工制作</td><td>第 18 条第（四）项</td><td>第 39 条：责令改正、警告；拒不改正 5000 元–3 万元</td></tr><tr><td>线上线下同质</td><td>网络销售餐饮食品应与实体店质量安全一致</td><td>第 18 条第（五）项</td><td>同上</td></tr><tr><td>配送容器</td><td>送餐人员保持个人卫生、使用安全无害的配送容器、定期清洗消毒；使用无毒清洁包装避免直接接触食品；保鲜保温冷藏冷冻须采取措施</td><td>第 14、19、20 条</td><td>第 35、40、41 条：依食安法第 132 条</td></tr><tr><td>订单记录</td><td>如实记录订单信息（名称、下单时间、送餐人员、送达时间、收货地址），保存 <b>≥ 6 个月</b></td><td>第 15 条</td><td>第 36 条：责令改正、警告；拒不改正 5000 元–3 万元</td></tr><tr><td>投诉举报</td><td>（总部参照）建立投诉举报处理制度、公开方式、及时处理</td><td>第 17 条 + 第 45 条</td><td>第 38 条：责令改正、警告；拒不改正 5000 元–3 万元</td></tr></tbody></table></div>
+<div class="anti"><b>加盟商反制点：</b>加盟商/门店常见的三个违规，最后都可能算到总部头上：① 用总部的许可证「套证」上线（一址多证、实际经营地址与许可地址不符）；② 订单转给隔壁店代加工（违反第 18 条第（四）项）；③ 证照变更后 10 个工作日内未更新公示。总部既然参照平台义务（第 45 条），就必须建立<b>入网门店证照核验清单并至少每 6 个月核验一次</b>。</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>外卖平台协议十大审查点</h3>
+<table><thead><tr><th>审什么</th><th>常见坑</th><th>谈判要点</th></tr></thead><tbody><tr><td>佣金费率与调整机制</td><td>平台单方上调佣金；「以平台公告为准」的表述</td><td>要求：<u>费率调整须提前 30 日书面通知</u>；设置费率上限或变更须双方确认</td></tr><tr><td>排名与流量</td><td>流量分配规则不透明；付费 rank 强制</td><td>要求披露排名规则；付费推广与基础服务<u>分开签约</u>，可单独停止</td></tr><tr><td>排他条款</td><td>要求「独家上线」或不得在其他平台经营</td><td><b>重点风险</b>：可能被认定为限定交易。尽量删除；确实需要的，限定在<u>单一城市/单一时段</u>并换取对价</td></tr><tr><td>活动补贴分摊</td><td>平台发起活动，补贴从商家货款中直接扣</td><td>要求：<u>活动须逐次确认</u>；未确认的活动不得扣款；分摊比例在活动页明示</td></tr><tr><td>数据与评价归属</td><td>平台主张用户评价、交易数据归平台所有</td><td>要求商家<u>可导出本店订单与评价数据</u>；数据使用授权不得及于品牌体系外的用途</td></tr><tr><td>结算周期与对账</td><td>T+N 结算、对账单不提供明细</td><td>要求提供<u>逐笔明细</u>；争议账期不超过 15 日；明确扣款项的异议通道</td></tr><tr><td>退出与数据迁移</td><td>退出后会员与评价数据清零</td><td>约定退出后 <b>30 日内</b>提供数据导出；已购卡/券的承接安排</td></tr><tr><td>责任分担（食安/客诉）</td><td>平台将全部食安责任推给商家</td><td>平台未尽<u>入网审查义务</u>的，应自行承担相应责任（第 8 条），写入协议</td></tr><tr><td>单方变更协议</td><td>平台可随时修改协议并公告生效</td><td>要求<u>重大变更须书面通知且不溯及既往</u>；商家有异议的可无责终止</td></tr><tr><td>争议解决与管辖</td><td>约定平台所在地法院/仲裁</td><td>争取<u>商家所在地</u>；或约定被告所在地</td></tr></tbody></table></div>
+<div class="card"><h3>平台规则突变（佣金上调、强制活动）的应对三步</h3>
+<p><b>Step 1 固定证据</b>：截图平台公告、保存协议原版本与新版本、导出被扣款项明细（时间戳 + 页面完整截图）。<br><b>Step 2 分层应对</b>：① 协议已有「变更须通知/确认」条款的，书面提出异议并要求按原条款执行；② 涉及<b>限定交易或排他</b>的，可评估是否触及反不正当竞争法与反垄断法关于平台规则滥用、限定交易的规制；③ 涉及<b>强制参加活动并扣款</b>的，主张该扣款无合同依据，要求返还。<br><b>Step 3 商业决策</b>：核算单店平台依赖度（平台订单占比）。占比 &gt; 50% 的门店不宜硬碰，优先谈判并同步<b>降低依赖</b>——做自有小程序、企微社群、到店复购。</p><div class="act"><b>我的落地动作：</b>把「平台依赖度」做成月度看板指标：单店平台订单占比、平台综合费率（佣金 + 活动 + 配送）、自有渠道复购率。占比超 50% 的门店自动进入降依赖项目。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>红线的法律依据（2025 年新反法已升级）</h3>
+<p><b>《反不正当竞争法》（2025 年修订，2025 年 10 月 15 日施行）第 9 条</b>：经营者不得对其商品的性能、功能、质量、<u>销售状况、用户评价、曾获荣誉</u>等作虚假或者引人误解的商业宣传，欺骗、误导消费者和其他经营者；经营者不得<u>通过组织虚假交易、虚假评价等方式，帮助其他经营者</u>进行虚假或者引人误解的商业宣传。</p><p><b>第 13 条第 4 款</b>：经营者不得<u>滥用平台规则</u>，直接或者指使他人对其他经营者实施<u>虚假交易、虚假评价或者恶意退货</u>等行为，损害其他经营者合法权益、扰乱市场竞争秩序。</p><p><b>第 25 条（罚则）</b>：违反第 9 条的，责令停止违法行为，处 <b>100 万元以下</b>罚款；情节严重的，处 <b>100 万元以上 200 万元以下</b>罚款，可以并处<b>吊销营业执照</b>。</p><p><b>并行依据</b>：《电子商务法》第 17 条（不得以虚构交易、编造用户评价等方式进行虚假或者引人误解的商业宣传）；《网络交易监督管理办法》第 14 条第 2 款（不得虚假交易、编造用户评价）；《网络反不正当竞争暂行规定》第 9 条第 1 款第（一）项（不得虚假交易、虚假排名）；情节严重的还可能触及<b>《刑法》第 222 条虚假广告罪</b>。</p><p class="note2">注意 2025 年新反法<u>新增了「虚假评价」</u>这一行为类型，并明确<u>无论正向刷单还是反向刷单</u>都在禁止范围内。给竞争对手刷差评同样违法，且可能同时构成民事侵权（侵害网络虚拟财产）。</p>
+</div>
+<div class="card"><h3>被刷差评时怎么维权（取证与路径）</h3>
+<table><thead><tr><th>步骤</th><th>动作</th><th>要点</th></tr></thead><tbody><tr><td>① 固定证据</td><td>截图异常差评、集中下单又退款记录、搜索降权/扣分记录；必要时做<u>时间戳或区块链存证</u></td><td>证据完整性决定成败，先存证再投诉</td></tr><tr><td>② 平台投诉</td><td>通过平台商家后台提交申诉，附异常数据比对（时间集中、账号集中、无真实消费凭证）</td><td>要求平台提供评价者身份线索</td></tr><tr><td>③ 行政投诉</td><td>向市场监管部门投诉，依据新反法第 13 条第 4 款（滥用平台规则）</td><td>行政处罚同时形成对我方有利的证据</td></tr><tr><td>④ 民事诉讼</td><td>对实施刷单的竞争对手、组织刷单的中介与刷手主张侵权</td><td>可主张侵害网络虚拟财产；已有判例支持公开赔礼道歉与赔偿</td></tr><tr><td>⑤ 刑事线索</td><td>规模化的刷单平台可涉<b>虚假广告罪（刑法第 222 条）</b></td><td>已有团伙被追究刑责的公开案例</td></tr></tbody></table></div>
+</div><div class="panel" id="p4">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">网络交易与外卖合规（20 项）</strong><div class="progress"><i id="bar104"></i></div><span id="cnt104" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">1. 入网门店均有实体经营门店<span class="m-note"> — 网络餐饮办法第 4 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">2. 入网门店食品经营许可证在有效期内<span class="m-note"> — 逐店核验</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">3. 实际经营地址与许可证地址一致<span class="m-note"> — 一址一证</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">4. 无「套证」「一址多证」情形<span class="m-note"> — 套证是行业顽疾，重点查</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">5. 总部已按第 45 条建立入网审查制度<span class="m-note"> — 参照平台义务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">6. 总部与入网门店已签食品安全协议<span class="m-note"> — 第 8 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">7. 主页面已公示食品经营许可证<span class="m-note"> — 第 9 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">8. 名称、地址、量化分级信息已公示<span class="m-note"> — 第 10 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">9. 菜品名称与主要原料已公示<span class="m-note"> — 第 11 条，及时更新</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">10. 证照变更后 10 个工作日内更新公示<span class="m-note"> — 部分地方有更严要求</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">11. 无将订单委托其他经营者加工制作<span class="m-note"> — 第 18 条第（四）项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">12. 线上线下餐品质量安全一致<span class="m-note"> — 第 18 条第（五）项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">13. 配送容器安全无害并定期清洗消毒<span class="m-note"> — 第 14 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">14. 保鲜/保温/冷藏/冷冻食品配送措施到位<span class="m-note"> — 第 20 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">15. 订单信息记录保存 ≥ 6 个月<span class="m-note"> — 第 15 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">16. 投诉举报处理制度已建立并公开方式<span class="m-note"> — 第 17 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">17. 入网门店证照每 6 个月核验一次<span class="m-note"> — 总部自查动作</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">18. 平台协议已过十大审查点<span class="m-note"> — 佣金/排名/排他/补贴/数据等</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">19. 无刷单炒信（含正向与反向）<span class="m-note"> — 新反法第 9 条、第 13 条第 4 款</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar104','cnt104')"><span class="m-txt">20. 差评异常时已按五步维权流程处理<span class="m-note"> — 存证—平台—行政—民事—刑事</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

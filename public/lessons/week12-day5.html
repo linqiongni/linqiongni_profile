@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 12 周第 5 天 · 收官：数据合规与预付卡管理手册定稿</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 12 周第 5 天 · 收官：数据合规与预付卡管理手册定稿</h1>
+    <div class="meta">数据合规与预付卡：两个被低估的雷区</div>
+  </header>
+  <div class="lead">本周两个雷区的共同点：<b>都不是「合同风险」，是「群体性风险」</b>——一个顾客投诉会变成一批，一个门店跑路会连累整个品牌。所以这周的交付物不是条款，是<b>架构 + SOP</b>。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、自测 10 题</div><div class="tab" data-p="p2">二、综合案例（满分答案）</div><div class="tab" data-p="p3">三、手册定稿与架构建议</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>单选 5 题</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>1</td><td>处理敏感个人信息（如人脸识别），应当取得：A.一般同意 B.单独同意 C.书面同意即可 D.无需同意</td><td>B（个保法第 29 条：单独同意，并告知必要性与影响）</td></tr><tr><td>2</td><td>向第三方提供个人信息，应当：A.在隐私政策里写一句即可 B.取得单独同意并告知接收方信息 C.口头告知 D.公告即可</td><td>B（第 23 条）</td></tr><tr><td>3</td><td>单用途商业预付卡中，品牌发卡企业资金存管比例不低于上一季度预收资金余额的：A.20% B.30% C.40% D.50%</td><td>C（商务部令第 26 条：规模 20%、集团 30%、品牌 40%）</td></tr><tr><td>4</td><td>发卡企业应在开展单用途卡业务之日起多久内办理备案？A.15 日 B.30 日 C.60 日 D.90 日</td><td>B（第 7 条；未备案责令改正，逾期不改罚 1 万–3 万）</td></tr><tr><td>5</td><td>单张不记名卡限额不得超过：A.500 元 B.1000 元 C.5000 元 D.1 万元</td><td>B（第 18 条；记名卡为 5000 元）</td></tr></tbody></table></div>
+<div class="card"><h3>案例 3 题</h3>
+<table><thead><tr><th>#</th><th>案情</th><th>问</th><th>满分答案要点</th></tr></thead><tbody><tr><td>6</td><td>门店会员注册页面把「同意会员协议」与「同意接收营销信息」放在同一个勾选框内，且不接受就无法注册</td><td>合规吗？</td><td><b>不合规</b>。① 营销同意须与注册同意分开，一揽子授权不符合第 14 条「自愿、明确」的要求；② 「不接受就无法注册」属于<u>强制同意</u>，参照法释〔2021〕15 号第 4 条的精神，以此类方式强迫取得的同意不成立。改法：注册同意单独勾选；营销同意<u>另设勾选框且默认不勾选</u>，不勾选不影响注册与点餐</td></tr><tr><td>7</td><td>某加盟店（个体工商户）自行发行储值卡，售出 80 万元后关门跑路，顾客围堵同品牌另一家门店并称「品牌跑路」</td><td>顾客可以向谁主张？</td><td>① 向<u>实际经营者（加盟商）</u>主张：合同相对方，退还未兑付余额；② 依<b>法释〔2025〕4 号第 5 条</b>，加盟模式下消费者可请求<u>实际经营者与特许人（总部）共同承担责任</u>；③ 自付款之日起 <b>7 日内</b>要求返还本金的，依该解释第 14 条应予支持。总部虽非发卡人，仍<b>大概率被判共同责任</b></td></tr><tr><td>8</td><td>总部自建小程序为加盟店提供点餐与网络交易服务</td><td>总部承担什么义务？</td><td>依<b>网络餐饮办法第 45 条</b>，连锁公司总部建立网站为门店提供网络交易服务的，<u>参照本办法关于第三方平台提供者的规定执行</u>。即：审查入网门店许可证（第 8 条）、签订食品安全协议、公示证照（第 9、10 条）、记录订单信息保存 ≥ 6 个月（第 15 条）、建立投诉举报处理制度（第 17 条）、对经营行为抽查监测（第 16 条）</td></tr></tbody></table></div>
+<div class="card"><h3>简答 2 题</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>满分答案要点</th></tr></thead><tbody><tr><td>9</td><td>预付卡业务的法律架构怎么搭才既好用又安全？</td><td><b>推荐架构 A（总部统一发卡）</b>或 <b>C（总部发卡 + 加盟商反担保）</b>：① 总部作为<u>品牌发卡企业</u>在省级商务主管部门备案（开展业务 30 日内）；② 全体系统一发行、统一资金归集、统一存管（40%）；③ 用<b>银行保函/保证保险冲抵存管资金</b>（第 28 条）释放现金流；④ 加盟店作为<u>售卡企业</u>，资金 T+1 全额上划；⑤ 加盟商就本店未兑付余额向总部提供反担保（保证金/扣留货款，比例 30%–50%）；⑥ 门店退出时由总部指定就近门店承接并告知顾客。<b>核心判断：绝不让个体户门店以自身名义发卡</b>（第 2 条要求企业法人）</td></tr><tr><td>10</td><td>会员数据归谁？法律没有明文，怎么设计？</td><td><b>推荐方案 C：共同处理 + 总部统一运营</b>。① 加盟合同中明确：数据由双方共同处理，总部为品牌会员体系统一运营方，加盟商享有本店数据使用权益但不得用于体系外；② 在会员注册环节以<u>独立弹窗 + 单独同意</u>就「向同一品牌体系内共享」取得顾客同意；③ 与系统服务商签<u>委托处理协议</u>（第 21 条，禁止转委托、不得用于自身目的）；④ 退出时：冻结权限 → 清点 → 加盟商删除全部原始数据及导出件并出具确认书 → 总部承接并向加盟商提供<u>脱敏统计</u>。关键：条款须<u>加粗 + 单独签署</u>，对抗格式条款主张</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>案情：加盟店发卡 80 万后跑路</h3>
+<p>某加盟店（个体工商户）自行发行储值卡，售出 <b>80 万元</b>后突然关门跑路。消费者集体维权，围堵了同品牌另一家门店，并在社交平台称「XX 品牌跑路」。经查：<u>总部未做预付卡备案</u>，且该店会员系统接入了总部 CRM，总部掌握全部会员数据。</p>
+</div>
+<div class="card"><h3>五问五答（满分答案）</h3>
+<table><thead><tr><th>问</th><th>满分答案</th></tr></thead><tbody><tr><td>(1) 消费者可以向谁主张权利？</td><td>① <b>实际经营者（加盟商）</b>：合同相对方，退还未兑付余额 + 预付款利息；② <b>特许人（总部）</b>：依法释〔2025〕4 号<b>第 5 条</b>，加盟模式下消费者可请求<u>实际经营者与特许人共同承担责任</u>；③ 自付款之日起 <b>7 日内</b>主张返还本金的，依该解释<b>第 14 条</b>直接支持；④ 若总部存在<u>未备案、未存管</u>等违规，还可向商务主管部门举报</td></tr><tr><td>(2) 总部承担责任的可能性有多大？</td><td><b>高，约 70%–85%</b>。三个加重因素同时存在：① 顾客基于<u>品牌信赖</u>购卡，门店招牌、小票、系统界面均指向品牌；② 总部<u>掌握全部会员数据</u>（说明总部实际参与并控制了发卡业务，难以主张「与我无关」）；③ 总部<u>未做预付卡备案</u>，本身即违反商务部令第 7 条，在过错认定上极为不利。若总部能证明<u>已尽审查与管理义务</u>（如禁止门店自行发卡的合同明确、巡检记录齐全、发现后立即解约并公示），责任可显著降低</td></tr><tr><td>(3) 品牌声誉损失怎么止损？</td><td><b>黄金 24 小时</b>：① 立即发布品牌声明：说明涉事门店为<u>独立经营的加盟商</u>、总部已启动处理、<b>持卡人可在就近门店继续使用或申请退款</b>；② <b>总部先行垫付</b>（这是商业决策不是法律义务，需 CEO 审批并签代付协议），垫付金额通常远低于品牌声誉损失；③ 开通专项客服通道并在被围堵门店张贴告示；④ 同步向属地商务、市场监管部门报备处理方案；⑤ 事后向加盟商追偿（保证金、货物扣留、诉讼）</td></tr><tr><td>(4) 行政监管会找谁？</td><td>分三条线：① <b>商务主管部门</b>：预付卡未备案的，责令限期改正，逾期不改处 <b>1 万–3 万元</b>罚款（第 36 条）；存管、报送违规同档（第 37 条）；② <b>市场监管部门</b>：涉虚假宣传、侵害消费者权益行为；③ <b>网信/工信</b>：若会员数据处理存在未取得同意等问题，按个保法第 66 条处理。<b>注意：总部掌握数据这一点，会使其成为个保法下的处理者而直接被监管</b></td></tr><tr><td>(5) 事前 redesign 的完整预防方案（合同 + 制度 + 技术）</td><td><b>合同</b>：① 加盟合同明确<u>禁止门店以自身名义发卡</u>，违者总部可立即解约并扣保证金；② 明确会员数据共同处理与总部统一运营；③ 加盟商就本店未兑付余额提供反担保。<b>制度</b>：① 总部以品牌发卡企业完成备案（30 日内）；② 落实存管 40% 或用保函冲抵；③ 建立门店发卡月度盘点与余额预警；④ 门店退出四步流程（冻结—清点—删除—承接）。<b>技术</b>：① 全体系统一发卡与资金 T+1 上划，门店账户<u>不得留存预收资金</u>；② 会员系统权限最小化，门店仅可查询本店、禁止全量导出；③ 余额异常（集中充值、集中退卡）自动预警；④ 卡面与小票统一印制品牌与备案编号</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>《预付卡业务法律架构建议书》三种架构对比与推荐</h3>
+<table><thead><tr><th>维度</th><th>A 总部统一发卡</th><th>B 加盟商各自发卡</th><th>C 总部发卡 + 加盟商反担保</th></tr></thead><tbody><tr><td>主体合规性</td><td><b>优</b>（总部为企业法人）</td><td>差（个体户门店无资格）</td><td><b>优</b></td></tr><tr><td>对外责任</td><td>总部承担全部兑付责任</td><td>表面上隔离，但法释 4 号第 5 条仍可能共同责任</td><td>总部对外承担，对内反担保回收</td></tr><tr><td>资金安全</td><td><b>优</b>（统一归集 + 存管 40%）</td><td>差（分散在各门店，无法监控）</td><td><b>优</b></td></tr><tr><td>现金流压力</td><td>大（可用保函冲抵，第 28 条）</td><td>小</td><td>中（反担保回收部分）</td></tr><tr><td>退出承接</td><td><b>无缝</b></td><td>无人承接，引爆舆情</td><td><b>无缝</b></td></tr><tr><td>加盟商接受度</td><td>低（现金流被抽走）</td><td>高</td><td>中</td></tr><tr><td><b>推荐结论</b></td><td colspan="3"><b>首选 A；加盟商话语权强时选 C；B 不建议采用</b>——它在法律上隔离不了责任（法释 4 号第 5 条），却放弃了资金与数据控制权，是最差组合</td></tr></tbody></table><h4>落地步骤（90 天）</h4><p><b>第 1–30 天</b>：全体系余额盘点 → 确定架构 → 总部完成品牌发卡企业备案 → 开立存管账户并谈保函。<br><b>第 31–60 天</b>：修订加盟合同（禁止门店自行发卡 + 数据共同处理 + 反担保）→ 改造会员系统（统一发卡、T+1 上划、权限最小化）。<br><b>第 61–90 天</b>：存量门店分批切换 → 门店培训与顾客告知 → 建立月度余额盘点与异常预警机制 → 退出四步流程上线。</p><div class="act"><b>我的落地动作：</b>第一步只需两个数字：全体系<u>未兑付余额</u>与<u>个体户门店家数</u>。拿着这两个数字去和 CFO 谈保函额度、和加盟商谈切换方案。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">第 12 周落地清单（15 项）</strong><div class="progress"><i id="bar105"></i></div><span id="cnt105" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">1. 《门店个人信息处理合规清单》发布<span class="m-note"> — Day1 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">2. 隐私政策（门店版）上线并公示<span class="m-note"> — 含「我们不做什么」</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">3. 扫码点餐取消强制关注公众号与强制手机号<span class="m-note"> — 监管点名项优先整改</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">4. 监控区域显著提示标识已张贴<span class="m-note"> — 个保法第 26 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">5. 人脸识别（如有）已单独同意且非唯一方式<span class="m-note"> — 法释 15 号第 2、4、10 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">6. 《加盟体系数据权属设计方案》定稿<span class="m-note"> — Day2 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">7. 《数据处理协议》已与全部加盟商签署<span class="m-note"> — 加粗 + 单独签署</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">8. 与系统服务商签委托处理协议（禁转委托）<span class="m-note"> — 个保法第 21 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">9. 共享会员信息已取得顾客单独同意<span class="m-note"> — 第 23 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">10. 《预付卡合规检查表》发布<span class="m-note"> — Day3 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">11. 总部品牌发卡企业备案完成（或已排期）<span class="m-note"> — 开展业务 30 日内</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">12. 存管账户与保函方案已确定<span class="m-note"> — 40% + 第 28 条冲抵</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">13. 加盟合同禁止门店自行发卡条款已修订<span class="m-note"> — 个体户无主体资格</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">14. 《外卖平台协议审查要点表》+《网络交易合规清单》发布<span class="m-note"> — Day4 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar105','cnt105')"><span class="m-txt">15. 入网门店证照每 6 个月核验机制上线<span class="m-note"> — 网络餐饮办法第 45 条</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

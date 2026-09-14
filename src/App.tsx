@@ -63,7 +63,7 @@ export default function App() {
   };
 
   // 跨境物流法务、知识产权 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
-  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law';
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'labor';
 
   const handleScrollToContent = () => {
     if (contentSectionRef.current) {
