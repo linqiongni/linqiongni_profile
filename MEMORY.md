@@ -12,6 +12,13 @@
 - [ ] 是否把「案例展示」卡片也从黑白→hover 变彩改为常驻彩色（用户未定）。
 - [ ] AGENTS.md / MEMORY.md 为用户「约束先行」规则要求，本文件于 2026-09-12 首次补齐。
 
+## 双视角劳动法务 tab（2026-09-14 新增）
+- 第 4 个**顶层分组** `labor`（与「个人 / 法务实务 / 影视法律」并列），TabType 扩 `labor`，组件 `src/components/LaborLegalTab.tsx`（iframe `/labor/` + loading + 新窗口打开浮层，沿用 IpLegalTab）。
+- 静态内容在 **`public/labor/`**：9 页 588 KB —— index / base（通用底座）/ employer（A 用人单位合规）/ employee（B 劳动者维权）/ clash（C 攻防对照 12 场景）/ tools（6 个纯前端计算器）/ templates（12 份文书）/ law（法条+术语）/ route（28 天路线）。纯本地零上传，全部相对链接、无外部依赖。
+- 线上：`https://linqiongni.top/labor/`。
+- 源文件：`/Users/linqiongni/Downloads/知识产权/劳动用工实务/`，构建脚本 `_build/gen.js` + `_build/data/*.json`（11 个数据文件）。更新流程：那边改 JSON → `node gen.js` → 重新 `cp *.html public/labor/` → `npx tsc --noEmit` → commit/push。
+- Navbar 顶层分组增至 4 个，间距改 `gap-4 lg:gap-8` 防中等屏拥挤。
+
 ## 跨境物流法务 tab（2026-09-12 新增）
 - 第 8 个 tab：`logistics`（TabType 已扩），组件 `src/components/LogisticsLegalTab.tsx`。
 - 静态内容放在 **`public/logistics/`**：`index.html` = 24 周养成计划主页（385 KB 单文件），`W1/*.html` = 第 1 周 5 天 + 周末实战。
