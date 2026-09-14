@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周 自测卷｜著作权侵权与平台责任</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.qz-day{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;margin:16px 0}
+.qz-day.wk{border-left-color:var(--gold)}
+.qz-day .dt{font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:5px}
+.qz-day .dh{font-size:16px;color:var(--tx);margin-bottom:10px;font-weight:600}
+.qz-day .dh2{font-size:16px;color:var(--tx);font-weight:600;margin-bottom:6px}
+.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78}
+.qa .qn{color:var(--gold);font-weight:700;margin-right:6px}
+.qa .badge{font-size:11px;border:1px solid var(--line2);color:var(--tx3);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}
+.qa .an{color:var(--jade);font-weight:700;margin-right:6px}
+.qz-deliv{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.qz-deliv .dl{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px}
+.sub2{color:var(--tx2);font-size:13.5px;margin:6px 0 4px}
+@media(max-width:640px){.qa .q{font-size:13.6px}.qa .a{font-size:13px}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 / 32 · 自测卷　·　第 2 层 支柱 · 四大部门法</div><h1>第 11 周 自测卷</h1><div class="sub">著作权侵权与平台责任　·　答案内嵌显示，无需点击展开</div><div class="sub2">本周聚焦著作权侵权判定（接触 + 实质性相似、抽象-过滤-比较法）、信息网络传播权与直接/间接侵权、避风港与通知-删除、新型客体（AI/短视频/直播/NFT）与侵犯著作权罪。每题答案直接附在题后，无需点击展开。</div><div class="qz-day"><div class="dt">D1 · 自测</div><div class="dh">接触 + 实质性相似与抽象-过滤-比较法</div><div class="qa"><div class="q"><span class="qn">QD1-1</span>原告作品从未公开发表，能否直接推定被告「接触」？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不能。未公开则无接触推定基础，原告须举证被告有实际接触渠道（如邮件寄样、共同代工厂、前员工流动）。此时被告「独立创作」抗辩空间更大。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-2</span>「接触 + 实质性相似」与商业秘密「接触 + 实质相同 - 合法来源」有何区别？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>前者著作权标准，比表达相似，被告无需自证来源；后者商业秘密标准，比实质相同，被告须证明合法来源/独立研发才能免责。两套客体、两套标准，不可混用。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-3</span>珠宝设计图已在订货会公开，对方推出高度雷同款，我方第一步做什么？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>固定「公开时间戳 + 订货会证据」证接触推定成立，再用抽象-过滤-比较法做表达层比对表证实质性相似；被告只能靠独立创作/有限表达抗辩。</div></div></div><div class="qz-day"><div class="dt">D2 · 自测</div><div class="dh">信息网络传播权与直接/间接侵权</div><div class="qa"><div class="q"><span class="qn">QD2-1</span>品牌把走秀视频放到官网供随时回看，行使的是哪项权利？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>信息网络传播权（著作权法第10条第1款第12项）——交互式，公众可在选定时间地点获得；区别于线性广播的非交互传播。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-2</span>直接侵权需要证明商家「故意」吗？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>一般不需。直接侵权倾向无过错责任，只要未经许可实施了信息网络传播行为即构成；主观状态主要影响赔偿（恶意可触发惩罚性 1-5 倍）。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-3</span>平台说「我是技术中立、只存 UGC」就一定能免责吗？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不一定。仅提供自动存储且接到通知及时删除可走避风港；若对侵权内容编辑、推荐、置顶、付费推广（应知），则突破避风港承担帮助侵权。</div></div></div><div class="qz-day"><div class="dt">D3 · 自测</div><div class="dh">避风港·通知-删除·红旗规则·必要措施</div><div class="qa"><div class="q"><span class="qn">QD3-1</span>我发通知只写了「XX 店盗我图」，没给链接和权属，平台必须删吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不必。合格通知须含权利人信息、侵权内容定位（链接）、初步权属与侵权证明、真实性承诺（条例第14条）。缺项平台可不予受理。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-2</span>反通知的期限与效果是什么？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>被诉方收到转送后 15 日内提交反通知（声明未侵权 + 初步证据），平台应恢复并转送权利人；权利人不得再发通知，只能去起诉（条例第16、17条）。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-3</span>什么情况下平台的「避风港」会失效？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>红旗规则：侵权内容像红旗一样明显（如平台首页推荐、热卖榜置顶、付费推广），平台「应知」仍不处理，避风港失效，承担帮助侵权（民法典第1197条）。</div></div></div><div class="qz-day"><div class="dt">D4 · 自测</div><div class="dh">新型客体：AI 生成物·短视频·直播·NFT</div><div class="qa"><div class="q"><span class="qn">QD4-1</span>AI 一键生成的图，能直接登记著作权并告人侵权吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>难。目前司法倾向要求有「人类创造性投入」（提示词设计、参数调整、筛选修图）才可能被认定为作品；纯随机一键生成、无人类独创性干预通常不受保护。⚠ 以最新判例为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-2</span>买了一个 NFT，是不是就拥有该图的著作权？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>不是。NFT 只是区块链权属凭证，著作权仍在原作者；购买通常仅获得 token 所有权与平台约定的使用权，不当然取得复制、发行、改编等著作财产权。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-3</span>达人用我方走秀视频二创带货，侵犯什么权？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>可能同时侵犯信息网络传播权（传播视频）与改编权（二创形成新作品）。品牌应在 MCN/达人合同中预先约定素材授权范围与二创权限，事后追责成本高。</div></div></div><div class="qz-day"><div class="dt">D5 · 自测</div><div class="dh">侵犯著作权罪与刑事边界</div><div class="qa"><div class="q"><span class="qn">QD5-1</span>民事能赢的仿款案，能直接刑事报案吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不一定。刑事需「以营利为目的 + 违法所得数额较大/有其他严重情节」。先固定销售金额与数量证据；未达立案追诉标准（⚠待核实最新数字）的走民事/行政，达标才报案。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-2</span>我只「卖」侵权复制品、没复制，定何罪？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>可能构成第218条销售侵权复制品罪（明知 + 违法所得数额巨大），而非第217条。复制与销售分属不同罪名，按行为定性。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-3</span>公司售假侵权，刑责由个人还是公司承担？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>单位犯罪（第220条）：对单位判处罚金，对直接负责的主管人员与其他直接责任人员依各条处罚，双罚制。</div></div></div><div class="qz-day wk"><div class="dt">WEEKEND · 实战复盘</div><div class="dh">周末实战复盘 · 平台投诉与反通知应对方案</div><div class="qa"><div class="q"><span class="qn">QWE-1</span>方案里「权利方投诉包」和「被诉方应诉包」为什么要一起写？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>双视角闭环：提前预判被告会出的反通知与抗辩（授权/合理使用/权属争议），把应对写进预案，既用于进攻也用于防守，避免临阵被动。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-2</span>合格通知最容易被退回的原因是什么？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>缺「侵权内容定位（链接）」或「权属与侵权初步证明」。只发一句「他盗我图」无链接无证据，平台直接驳回。须附时间戳 + 链接 + 同款对比三件套。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-3</span>平台已删除我的商品，被诉方还能恢复上架吗？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>能。被诉方 15 日内交合格反通知（声明未侵权 + 初步证据），平台应恢复并转送权利人；权利人只能去起诉，不得再循环通知。滥用通知致损须赔偿。</div></div></div><div class="qz-deliv"><div class="dl">本周核心产出物 · 参考标准答案</div><div class="dh2">本周核心产出物参考标准答案</div><h2>产出物一：平台投诉通知模板（合格通知三件套）</h2>
+<ul><li>权利人姓名/企业 + 联系方式 + 地址</li><li>侵权内容定位（逐条链接 URL）</li><li>权属证明（官网首发时间戳/登记证书）+ 同款对比</li><li>真实性承诺 + 删除/屏蔽/断开要求</li></ul>
+<h2>产出物二：反通知与抗辩路径图</h2>
+<table><thead><tr><th>被诉情形</th><th>反通知/抗辩</th><th>证据</th></tr></thead><tbody><tr><td>已获授权</td><td>声明已授权</td><td>授权链合同</td></tr><tr><td>合理使用</td><td>声明符合合理使用</td><td>使用目的与性质说明</td></tr><tr><td>权属争议</td><td>双方都主张同一设计</td><td>己方在先创作底稿/时间戳</td></tr><tr><td>非实质相似</td><td>比对证明</td><td>创作过程记录</td></tr></tbody></table>
+<div class="key">实务结论：投诉先备三件套、被诉方 15 日交反通知；平台规则对照表逐平台核对；规模化侵权走行政 + 刑事。⚠ 条例 15 日反通知与平台内部 SLA 注意区分。</div></div><div class="foot"><a href="W10-quiz.html">← 第 10 周自测</a><a class="idx" href="index.html">本周目录</a><a href="W12-quiz.html">第 12 周自测 →</a></div><div class="disc">本页自测题用于个人学习检验。答案中涉及的法条条号、数字与日期须以现行有效文本核对后方可作为正式依据；标注「待核实」处请优先核查。</div></div></body></html>

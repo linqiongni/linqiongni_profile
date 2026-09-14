@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·第5天｜侵犯著作权罪与刑事边界</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · DAY 5 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>侵犯著作权罪与刑事边界</h1><div class="sub">著作权侵权与平台责任</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">民事赔偿是「要钱」，刑事是「要命」。但刑事有门槛：得是「为了赚钱」+「数额够大/情节严重」的规模化盗版，才从赔钱升级到坐牢。近似擦边、非营利二创，一般只在民事里打。</div><div class="mlink"><b>业务落点</b>业务落点：遇到规模化制假售假式盗版（仿款图批量印售、网盘传播），民事打不完，应走刑事报案/配合侦查清场。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>侵犯著作权罪（刑法第217条）</li><li>销售侵权复制品罪（第218条）</li><li>单位犯罪（第220条）</li><li>复制发行/信息网络传播</li><li>立案追诉标准</li><li>行刑衔接</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《著作权刑事报案材料清单与边界审查》——针对一个规模化网络/实体盗版线索，列出报案需准备的权属、侵权实物、鉴定、金额证据，对应罪名，以及行政前置与刑事报案的衔接步骤。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习侵犯著作权罪与刑事边界。请：
+1) 用总表区分刑法第217条（侵犯著作权罪）与第218条（销售侵权复制品罪）的构成要件与核心要件；
+2) 说明「以营利为目的 + 违法所得数额较大/有其他严重情节」为何是刑民分界；
+3) 讲清行刑衔接：行政投诉/平台举报如何转化为刑事线索，权利人如何配合侦查；
+4) 说明单位犯罪（第220条）双罚制；
+5) 立案追诉具体数额标准请标注「待核实」，给出核对渠道；
+6) 出 4 道判断题并讲评。
+法条引用精确到条并标注版本，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、刑民分界：哪些行为入罪</h2>
+<p>著作权民事侵权门槛低（未经许可 + 接触 + 实质相似即可），刑事则要求<b>以营利为目的 + 违法所得数额较大 / 有其他严重情节</b>。民事打不完的规模化盗版，才升格到刑事。</p>
+<div class="key"><b>实务口诀：民事是「赔钱」，刑事是「坐牢」；先固定「营利目的 + 复制发行数量/金额」证据，再决定是否报案。</b></div>
+<h2>二、刑法第217条：侵犯著作权罪</h2>
+<p>刑法第217条规定，未经著作权人许可，复制发行、通过信息网络向公众传播其文字/音乐/美术/视听/计算机软件等作品，违法所得数额较大或有其他严重情节的，构成侵犯著作权罪。常见行为：盗版复制销售、网盘/网站传播、私服、破解软件。</p>
+<ul><li><b>权利方动作</b>：固定侵权实物、销售金额、传播量、鉴定报告，向公安报案或推动行政机关移送；</li><li><b>被诉方抗辩</b>：主张「非营利/教学」无营利目的、获利未达门槛、或作品不具独创性/权属有争议、或「复制发行」认定应限缩；</li><li><b>情节抗辩</b>：金额/数量未达立案标准，争取仅民事或行政。</li></ul>
+<h2>三、第218条与单位犯罪</h2>
+<p>刑法第218条<b>销售侵权复制品罪</b>针对「明知是侵权复制品而销售，违法所得数额巨大」的行为——聚焦销售环节。第220条<b>单位犯罪</b>：公司售假侵权的，对单位判处罚金，并对直接负责的主管人员与其他直接责任人员依各条处罚（双罚制）。</p>
+<table><thead><tr><th>罪名</th><th>刑法条文</th><th>核心要件</th></tr></thead><tbody><tr><td>侵犯著作权罪</td><td>第217条</td><td>未经许可复制发行/信网传播 + 营利目的 + 数额较大/严重情节</td></tr><tr><td>销售侵权复制品罪</td><td>第218条</td><td>明知侵权而销售 + 违法所得数额巨大</td></tr><tr><td>单位犯罪</td><td>第220条</td><td>双罚：单位罚金 + 责任人依各条处罚</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：第217、218条现行「违法所得数额/非法经营数额/复制发行数量」的立案追诉标准历次司法解释有调整（含 2020 年相关解释（三）），请以最高检、公安部最新立案追诉标准为准，切勿照搬旧数字。</div>
+<h2>四、行刑衔接与刑事边界（双视角）</h2>
+<p>行政投诉/平台举报固定证据 → 涉嫌犯罪移送公安；权利人不自营侦查，而是提供权属、真假鉴别、价格证明配合。</p>
+<ul><li><b>权利方动作</b>：先平台下架止损 + 行政查处扣货，构成犯罪的坚决刑事报案，刑事附带民事一并索赔；</li><li><b>被诉方边界防守</b>：在立案前积极和解/获权利人谅解、证明销量与获利低、权属争议未决，争取不立案或轻缓；</li><li><b>珠宝行业</b>：水贝/番禺规模化仿款制售，单靠民事「九牛一毛」，应推动行政 + 刑事清场。</li></ul>
+<div class="key"><b>边界提示</b>：并非所有「实质相似」都入刑——刑事须证明「复制发行」且达数额/情节门槛；近似擦边、非营利的二创一般只走民事。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：对方仿了我方设计图售卖，民事能赢，能直接刑事报案吗？</div><div class="a"><span class="an">参考答案</span>不一定。刑事需「以营利为目的 + 违法所得数额较大/有其他严重情节」。先固定销售金额与数量证据；未达立案追诉标准（⚠待核实最新数字）的，走民事/行政，达标才报案。</div><div class="q">Q2：我只是「卖」侵权复制品，没复制，构成第217条吗？</div><div class="a"><span class="an">参考答案</span>可能构成第218条销售侵权复制品罪（明知 + 违法所得数额巨大），而非第217条。复制与销售是两条不同罪名，按行为定。</div><div class="q">Q3：公司售假侵权，是个人还是公司担刑责？</div><div class="a"><span class="an">参考答案</span>单位犯罪（第220条）：对单位判罚金，对直接负责的主管人员与其他直接责任人员依各条处罚，双罚。</div><div class="q">Q4：被诉后想避免坐牢，什么动作最关键？</div><div class="a"><span class="an">参考答案</span>立案前积极与权利人和解/获谅解、证明获利与销量低、厘清权属争议；同时平台下架止损。但规模化制售达到门槛的，和解不影响已涉嫌犯罪的侦查，应尽早合规整改。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Crime of Infringing Copyright</div><div class="cn">侵犯著作权罪</div><div class="df">刑法第217条，复制发行/信网传播 + 营利目的 + 情节严重</div></div><div class="ti"><div class="en">Crime of Selling Infringing Copies</div><div class="cn">销售侵权复制品罪</div><div class="df">刑法第218条，明知 + 违法所得数额巨大</div></div><div class="ti"><div class="en">Unit Crime</div><div class="cn">单位犯罪</div><div class="df">第220条，双罚制</div></div><div class="ti"><div class="en">Profit-Making Purpose</div><div class="cn">以营利为目的</div><div class="df">著作权罪主观要件，区别于非营利</div></div><div class="ti"><div class="en">Administrative-Criminal Linkage</div><div class="cn">行刑衔接</div><div class="df">行政查处线索移送刑事侦查</div></div></div><div class="foot"><a href="W11-D4.html">← 第 4 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W11-weekend.html">周末实战 →</a><a class="qz" href="W11-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
