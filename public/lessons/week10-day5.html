@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10周收官：供应链法律体系固化</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第10周收官：供应链法律体系固化</h1>
+    <div class="meta">总部（特许人）立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">第10周结束固化：10题自测、综合案例（汤底料包8元进15元售）5问满分答案、核心《供应链结构优化建议》落地清单。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 自测10题</div><div class="tab" data-p="p2">② 综合案例（我先答你批改）</div><div class="tab" data-p="p3">③ 核心：供应链结构优化建议</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>第10周自测（5单选+3案例+2简答）</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案要点</th></tr></thead><tbody><tr><td>1单</td><td>RPM（限定最低转售价）是否需具备市场支配地位？</td><td>不需要，本身违法（反垄断法18条）</td></tr><tr><td>2单</td><td>统采统配差价是否须披露？</td><td>是，条例22④产品/服务/设备价格条件</td></tr><tr><td>3单</td><td>单城市市场份额多少推定具支配地位？</td><td>≥1/2（反垄断法24条）</td></tr><tr><td>4单</td><td>定制代工贴牌，法律上的生产者是谁？</td><td>委托方（总部），承担标签责任</td></tr><tr><td>5单</td><td>新反法商业贿赂对个人的罚则？</td><td>法代/主要负责人/直接责任人100万以下（24条）</td></tr><tr><td>案1</td><td>总部强令全部物料统配且加价90%，反垄断风险？</td><td>限定交易+暴利争议，核心外须开放自采</td></tr><tr><td>案2</td><td>供应商断供致门店停售，总部如何免责减损？</td><td>双源+72h预案+追偿违约金</td></tr><tr><td>案3</td><td>采购收供方回扣，公司能否免责？</td><td>建廉洁制度+审计+及时处置可减轻</td></tr><tr><td>简1</td><td>三种供应链模式推荐组合？</td><td>核心统配+非核心自采备案</td></tr><tr><td>简2</td><td>供应链差价合理加价率建议？</td><td>核心≤15%、封顶≤30%并公示</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">自测订正清单</strong><div class="progress"><i id="bar17"></i></div><span id="cnt17" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">1. RPM本身违法，只用建议零售价<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">2. 差价须写入信息披露（条例22④）<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">3. 支配地位推定≥1/2（反垄断24条）<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">4. 采购价格/调价/最惠/验收条款<span class="m-note"> — Day2</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">5. 断供72h预案+双源<span class="m-note"> — Day2</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">6. 标签GB7718+总部为委托方生产<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">7. 追溯保存期满6月/无期2年（53条）<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">8. 召回一二三级24/48/72h（63条）<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">9. 供应商评分表+全生命周期<span class="m-note"> — Day4</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar17','cnt17')"><span class="m-txt">10. 反法第8条双罚+个人100万（24条）<span class="m-note"> — Day4</span></span></label></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>案例事实</h3>
+<p>总部向加盟商统一配送核心汤底料包，<strong>进价8元、售价15元</strong>。加盟商集体投诉：①差价过高；②强制采购。同时市场监管接举报称总部涉嫌<strong>限定交易</strong>。</p><h4>五问</h4><p>① 加盟商主张能否成立？② 反垄断风险多大？如何判断支配地位？③ 差价要不要披露、不披露后果？④ 我方合规整改方案？⑤ 加盟商沟通与危机化解方案？</p>
+</div>
+<div class="card"><h3>满分答案（先答后看）</h3>
+<p>① 差价返还难支持（属货款），但<strong>强制采购+未披露</strong>可打'披露不实'与'限定交易'。② 风险中等：若单城市份额<50%且统配限于核心物料（食安/品质正当理由），限定交易抗辩成立；若>50%或强统配无关品则高危。③ 差价率<strong>必须写入信息披露文件</strong>（条例22④），不披露→披露不实→冷静期/撤销风险（见虚假宣传攻防）。④ 整改：核心物料附'正当理由清单'开放非核心自采、加价率降至≤15%并年度公示、条款改'建议价非强制'。⑤ 沟通：开加盟商说明会亮成本结构+调价程序+异议机制，化对抗为透明。</p><div class="act"><b>我的落地动作：</b>把'核心物料目录+正当理由+加价率公示+非核心自采备案'四件套写进合同与披露文件，是本次案例的制度落点。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>既赚钱又安全的供应链结构</h3>
+<p><strong>结构</strong>：核心物料（汤底/酱料/VI餐具）100%统配并独立签《供货框架协议》；非核心开放自采备案；价格用'成本加成+年度降价'；销售用'建议零售价'非强制。</p><p><strong>三道防线</strong>：① 合同（供货协议+廉洁协议+信息披露）；② 制度（双源/追溯/召回/飞检）；③ 证据（加价率公示+验收记录+审计）。</p><div class="act"><b>我的落地动作：</b>输出《供应链合规管理手册》定稿，整合本周5份产出，作为总部供应链法务总入口。</div><div class="anti"><b>加盟商反制点：</b>加盟商应争取：统配加价率上限写入合同、非核心自采权、统配原料质量总部先行赔付——三方面把'总部利润'关进'透明笼子'。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">供应链结构优化落地清单</strong><div class="progress"><i id="bar18"></i></div><span id="cnt18" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">1. 核心物料目录锁定+正当理由清单<span class="m-note"> — 反垄断抗辩基础</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">2. 非核心物料开放自采备案<span class="m-note"> — 降限定交易风险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">3. 加价率≤15%封顶≤30%并年度公示<span class="m-note"> — 化暗箱为明示</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">4. 销售价用'建议价'非强制<span class="m-note"> — 避开RPM</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">5. 双源供应+追溯+召回三制度<span class="m-note"> — 食安与断供防护</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">6. 廉洁协议+审计权+反贿制度<span class="m-note"> — 采购反腐</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">7. 统配协议独立签+质检留档<span class="m-note"> — 切割总部全责</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar18','cnt18')"><span class="m-txt">8. 整合为《供应链合规管理手册》<span class="m-note"> — 本周交付总入口</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

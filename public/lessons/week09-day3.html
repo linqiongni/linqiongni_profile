@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品安全事故处置：从出事到收尾</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>食品安全事故处置：从出事到收尾</h1>
+    <div class="meta">特许人立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">一个食安事故可以毁掉一个品牌。本篇讲清事故分级、2小时报告、黄金4小时现场处置、行政处罚与十倍赔偿应对、刑民交叉升格红线，以及四类危机沟通话术。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 事故分级与报告义务</div><div class="tab" data-p="p2">② 现场处置黄金4小时</div><div class="tab" data-p="p3">③ 行政处罚与消费者索赔</div><div class="tab" data-p="p4">④ 刑民交叉：何时升格刑事</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>食品安全事故分级标准（按危害程度）</h3>
+<table><thead><tr><th>级别</th><th>判定标准（人数/危害）</th><th>响应层级</th></tr></thead><tbody><tr><td>一般事故</td><td>无死亡、≤30人食物中毒或食源性疾病，或局部影响</td><td>门店+总部运营/品控，24h内处置闭环</td></tr><tr><td>较大事故</td><td>≤100人中毒且无死亡，或出现死亡病例，或跨门店同批次问题</td><td>总部应急小组+属地监管介入，12h内上报</td></tr><tr><td>重大事故</td><td>≥100人中毒，或出现≥2人死亡，或跨省/品牌级舆情</td><td>总部一把手+政府指挥部，2h内初报、随时续报</td></tr></tbody></table></div>
+<div class="card"><h3>报告义务：向谁、何时、报什么</h3>
+<h4>法定时限与对象</h4><p>《食品安全法》第103条：事故单位应立即采取措施防止扩大，并<span class='num'>及时</span>向事故发生地<span class='num'>县级人民政府食品安全监督管理、卫生行政部门</span>报告；接收病人的医疗机构也应及时报告。实操按《食品安全事故应急预案》执行<span class='num'>初报≤2小时</span>、续报随查随报、终报事后书面。</p><h4>报告内容</h4><p>① 发生时间、地点、人数、症状；② 可疑食品/批次/供应商；③ 已采取措施（封存、停售、就医）；④ 初步原因研判；⑤ 联系人。</p><h4>不报的后果（注意：别引错条号）</h4><p><strong>事故单位</strong>在事故发生后未进行处置、报告的：依《食品安全法》<strong>第128条</strong>责令改正、给予警告；<strong>隐匿、伪造、毁灭有关证据</strong>的，责令停产停业、没收违法所得，并处<strong>10万–50万</strong>罚款；造成严重后果的<b>吊销许可证</b>。</p><p>（易混点：第142条约束的是<strong>地方政府/监管部门</strong>隐瞒、谎报、缓报，对直接负责的主管和其他直接责任人员降级、撤职、开除，造成严重后果的主要负责人引咎辞职——<b>不直接罚企业</b>。写文书时不要混用。）</p><p>构成犯罪的，依《刑法》第143/144条及渎职条款追责。</p><div class="act"><b>我的落地动作：</b>门店张贴《食品安全事故上报卡》（含属地监管/卫健/总部应急电话）；演练时把'2小时初报'写入店长KPI；总部设7×24应急专线并录音留痕。</div><div class="anti"><b>加盟商反制点：</b>加盟商常被要求'内部消化'事故——如总部强令不报，加盟商可主张总部干预经营、加重己方责任，并保留向监管主动报告的权利（法不禁止个人报告）。</div>
+</div>
+<div class="card"><h3>🔴 新规加码：104号令的强制应急义务</h3>
+<p>《餐饮服务连锁企业落实食品安全主体责任监督管理规定》（市场监管总局令<span class='num'>第104号</span>，2025.9.2公布、<strong>2025.12.1施行</strong>）——使用同一品牌、统一规范化管理、<strong>≥10家门店（含直营/加盟/合营）</strong>的餐饮连锁企业适用，我方必然在列。</p><h4>第18条：应急预案与演练成为法定义务</h4><p>企业总部<strong>应当制定食品安全事故和舆情应急处置方案，开展必要的应急演练</strong>。未制定的，依第26条第（四）项责令改正、警告；拒不改正处<strong>5000元–5万元</strong>罚款；情节严重责令停产停业直至吊销许可证。</p><h4>第30条：处罚到人</h4><p>故意实施违法行为／性质恶劣／造成严重后果的，对企业<strong>法定代表人、主要负责人、食品安全总监和食品安全员</strong>等直接责任人员，处其上一年度从本单位取得收入的<strong>1–10倍</strong>罚款；食安总监、食安员已依法履职尽责的不予处罚。</p><div class="act"><b>我的落地动作：</b>把本周产出的《食品安全事故应急预案》正式发文、组织年度演练并留存记录（签到+照片+复盘），直接对应104号令第18条的合规证据；同时确认食品安全总监/食安员任命到位。</div><div class="anti"><b>加盟商反制点：</b>加盟商若因总部未提供应急预案/未组织演练而处置失当，可主张总部未尽第18条管理义务，在内部追偿中要求总部分担损失。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>四件事顺序：封存→保全→口径→配合</h3>
+<h4>1. 留样封存</h4><p>立即封存有留样记录的剩余食品、原料、半成品，<b>留样冰箱上锁标注</b>；无留样时封存同批次在库原料、供应商发货单、菜单。封存范围覆盖'可疑餐次'前后48小时所有相关物料。</p><h4>2. 监控与证据保全</h4><p>导出就餐区、后厨、仓储监控（覆盖事发前后≥4小时），<b>复制光盘+哈希校验</b>；保存点餐小票、外卖订单、支付记录以锁定受影响顾客范围。</p><h4>3. 员工口径统一</h4><p>指定唯一发言人（店长/总部PR），其他人'不接受采访、由XX统一答复'；禁止在微信群、小红书、抖音发言。</p><h4>4. 配合调查</h4><p>主动提交台账、留样、供应商资质；不销毁、不篡改；依法配合抽检。</p><div class="act"><b>我的落地动作：</b>出《门店食安事故黄金4小时处置卡》（勾选式）：0-30min封样→30-60min调监控→1-2h报总部+监管→2-4h登记顾客信息+统一口径。</div><div class="anti"><b>加盟商反制点：</b>加盟商若被总部要求'先别报'，应书面留痕：'X月X日总部指示暂缓上报'——事后可作减轻己方责任、追加总部过错的证据。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">现场处置动作清单（店长逐项勾选）</strong><div class="progress"><i id="bar1"></i></div><span id="cnt1" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">1. 立即封存可疑食品/原料/留样，留样冰箱上锁并贴封条<span class="m-note"> — 防篡改，留样125g×48h规则见Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">2. 导出并备份后厨+就餐区监控（事发前后≥4小时），做哈希校验<span class="m-note"> — 监控是分清总部/加盟商/供应商责任的关键</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">3. 登记所有就诊/不适顾客信息（姓名电话就餐时间餐品）<span class="m-note"> — 用于召回与赔偿范围确定</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">4. 2小时内向属地监管+卫健+总部应急专线报告<span class="m-note"> — 食安法第103条，超期追责个人</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">5. 指定唯一发言人，全员禁对外发声<span class="m-note"> — 避免口径不一被截图传播</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">6. 暂停相关产品线/供应商批次，下架同批次<span class="m-note"> — 防止损害扩大加重责任</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">7. 保全供应商发货单、检测报告、进货查验记录<span class="m-note"> — 追偿供应商的核心证据</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">8. 员工访谈做书面笔录并签字<span class="m-note"> — 固定事实，防事后翻供</span></span></label></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>行政处罚：罚则口径</h3>
+<p>无证/违规经营：《食品安全法》第122条——没收+违法物品，货值不足1万罚<span class='num'>5万–10万</span>，货值≥1万处货值<span class='num'>10–20倍</span>。一般违法（过期原料、标签不符等）第124条同档。</p><p>总部作为特许人，若被认定<b>共同侵权或未尽管理义务</b>，按《民法典》第1168条（共同侵权）承担<strong>连带责任</strong>；若仅品牌背书且已尽督导，通常以加盟商为处罚对象。</p><div class="act"><b>我的落地动作：</b>建立《行政处罚应对SOP》：收到《责令改正/处罚告知》24h内法务介入→核对违法事实与法条适用→陈述申辩/听证（货值认定、从轻情节：主动召回、首犯、危害轻微）→同步整改留痕争取从轻。</div>
+</div>
+<div class="card"><h3>消费者索赔：《食品安全法》第148条 退一赔十+最低1000</h3>
+<p>生产不符合安全标准食品或经营<b>明知</b>不符合→消费者可要求<b>退一赔十</b>，增加赔偿不足<span class='num'>1000元按1000元</span>。<b>首负责任制</b>：消费者可任选经营者或生产者先行赔付，不得推诿。</p><h4>什么情况不轻易认赔</h4><p>① 标签/说明书瑕疵<b>不影响食品安全且不会误导消费者</b>的，不适用十倍（法释2024食品药品惩罚性赔偿解释第8条：错别字/繁体/翻译不准但不致误解不予支持）；② 职业打假人以'生活消费'为名批量索赔，可主张其非消费者、且已尽标签自查义务；③ 损害与食品无因果关系的，不赔。</p><div class="act"><b>我的落地动作：</b>门店接到索赔：先固定证据（实物、购买记录、病历），区分'真客诉'与'职业打假'；小额真实损害走保险+正式赔付通道，<b>禁止店长私了转账</b>（避免成为行政处罚自认）。</div><div class="anti"><b>加盟商反制点：</b>加盟商被总部要求'全额兜底'索赔时，可主张：若原料来自总部统配且有问题，加盟商仅为销售者，依第148条可向总部（生产者/供货者）追偿，且首负责任由总部先行承担更合理。</div>
+</div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>两条红线：刑法第143条 / 第144条</h3>
+<h4>第143条 生产、销售不符合安全标准的食品罪</h4><p>足以造成严重食物中毒事故或其他严重食源性疾病即构罪：<b>足以→3年以下</b>；对人体健康造成严重危害/情节严重→<b>3–7年</b>；后果特别严重→<b>7年以上至无期</b>。</p><h4>第144条 生产、销售有毒、有害食品罪</h4><p>掺入有毒有害非食品原料或销售明知含此类原料的食品：<b>5年以下</b>；严重危害→<b>5–10年</b>；致人死亡/特别严重→<b>10年以上、无期、死刑</b>。</p><h4>行刑衔接触发点</h4><p>出现<b>死亡/多人重伤/省部级舆情/故意使用非食品原料（如罂粟壳、工业明胶）</b>→监管移送公安。'足以造成严重食源性疾病'的司法鉴定（致病菌超标、农残兽残超标）是升格关键。</p><div class="act"><b>我的落地动作：</b>总部设《刑民交叉上报线》：一旦涉死亡/投毒/故意添加，立即停供相关原料、保全供应链全链证据、聘请刑事合规律师，禁止与监管'协商私了'。</div><div class="anti"><b>加盟商反制点：</b>加盟商个人（店长/厨师）可能因直接行为人被追刑责；若总部统配原料带毒，加盟商可主张'受总部指令、不知情'作为减轻情节，但需证明已尽进货查验义务。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">危机沟通话术手册（四类对象）</strong><div class="progress"><i id="bar2"></i></div><span id="cnt2" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">1. 对顾客：'非常抱歉给您带来困扰，我们已封存留样并上报，请您保留就医凭证，专人跟进赔付'<span class="m-note"> — 先共情后流程，不推责不认错定性</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">2. 对媒体：'我们已启动应急机制，正配合监管调查，以官方通报为准'<span class="m-note"> — 只讲已做的动作，不猜测原因</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">3. 对监管：'已封存、已上报、已下架，提交全部台账等待抽检'<span class="m-note"> — 主动配合、留痕从轻</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">4. 对员工：'由XX统一对外，任何人不得擅自发声或外传监控'<span class="m-note"> — 统一口径防二次舆情</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">5. 对外声明三版（轻微/中等/严重）预先拟好空模板，按级别启用<span class="m-note"> — 见下一项勾选</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

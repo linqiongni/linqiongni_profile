@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9周收官：食安合规体系固化</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第9周收官：食安合规体系固化</h1>
+    <div class="meta">特许人立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">第9周结束固化：10题自测、综合案例（过期汤底致15人中毒）6问满分答案、核心判断'总部在食安上管多深'的边界清单。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 自测10题</div><div class="tab" data-p="p2">② 综合案例（我先答你批改）</div><div class="tab" data-p="p3">③ 核心判断：管多深</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>第9周自测（5单选+3案例+2简答，答案见末列）</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案要点</th></tr></thead><tbody><tr><td>1单</td><td>食品经营许可有效期几年？一地一证原则出自哪条？</td><td>5年；食安法第35条</td></tr><tr><td>2单</td><td>进货查验记录与凭证保存期限？</td><td>保质期满后6个月；无保质期≥2年（第53条）</td></tr><tr><td>3单</td><td>留样'125g×48h'适用于哪类门店？普通社会餐饮是否强制？</td><td>学校/托幼/养老/工地食堂、集体配送、重大活动、超100人聚餐；普通不强制但建议</td></tr><tr><td>4单</td><td>退一赔十最低赔偿额？首负责任含义？</td><td>最低1000元；消费者可任选经营者或生产者先行赔付</td></tr><tr><td>5单</td><td>食安事故发生后向哪两级部门报告、初报时限？</td><td>县级监管+卫健；≤2小时</td></tr><tr><td>案1</td><td>加盟店用过期汤底致15人中毒，总部统一配送且督导仅口头提醒、店长由总部委派。总部责任概率？</td><td>高；统配原料+实质控制+未尽管理义务三重叠加，且104号令第6条已把总部管理责任法定化</td></tr><tr><td>案2</td><td>顾客米线发现钢丝球发小红书，门店能否'私了转账'了事？</td><td>不宜；私了可能成为行政处罚自认，应走保险+正式赔付</td></tr><tr><td>案3</td><td>职业打假人买标签错别字食品主张十倍，是否支持？</td><td>若不影响安全且不误导，法释2024第8条不予支持</td></tr><tr><td>简1</td><td>总部在食安上'管多深'最安全？给边界标准</td><td>104号令下'必须管'（制度/巡查/日周月台账＝管理责任），但'不能替代经营'（不派店长/不发薪/不排班）；边界＝管理责任 vs 经营替代</td></tr><tr><td>简2</td><td>三层防线是哪三层？</td><td>合同层+制度层+证据层</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">自测订正清单（答对打勾）</strong><div class="progress"><i id="bar7"></i></div><span id="cnt7" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">1. 许可5年、一地一证（食安法35条）<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">2. 索证索票保存：期满6个月/无期2年（53条）<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">3. 留样125g×48h的强制范围<span class="m-note"> — Day1</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">4. 第148条退一赔十+最低1000+首负责任<span class="m-note"> — Day1/Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">5. 事故2小时初报监管+卫健<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">6. 现场处置四件事：封存/保全/口径/配合<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">7. 刑民交叉：刑法143/144升格触发点<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">8. 总部担责五情形+不担责两判例<span class="m-note"> — Day4</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">9. 三层防线：合同+制度+证据<span class="m-note"> — Day4</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">10. 食安责任险保额建议≥100万/店<span class="m-note"> — Day4</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">11. 104号令适用门槛：同一品牌≥10家门店（含加盟）<span class="m-note"> — Day4·2025.12.1施行</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">12. 加盟合同免除/减轻总部食安责任＝无效且罚5万以下（104号令9④+27条）<span class="m-note"> — Day4</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">13. 事故瞒报罚则：事故单位用第128条，政府用第142条（勿混）<span class="m-note"> — Day3</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar7','cnt7')"><span class="m-txt">14. 104号令第18条：应急预案+演练已升为法定义务<span class="m-note"> — Day3/Day4</span></span></label></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>案例事实</h3>
+<p>某加盟店使用<strong>过期汤底原料</strong>导致15名顾客食物中毒，市场监管立案。调查发现：(a) 原料由<span class='num'>总部统一配送</span>；(b) 总部督导<strong>3个月前已发现该店有过期原料未整改，只做了口头提醒</strong>；(c) 该店<strong>店长是总部委派</strong>。</p><h4>六问</h4><p>① 行政处罚对象是谁？② 消费者可向谁索赔？③ 总部担责概率多大？④ 三个事实中哪个对总部最致命？⑤ 总部事后如何向加盟商追偿？⑥ 若事前redesign督导流程，哪个环节能救总部？</p>
+</div>
+<div class="card"><h3>满分答案（供你对照，先答后看）</h3>
+<p>① 处罚：加盟商（实际经营者）为主，总部因统配原料问题+未尽督导可一并被罚（第122/124条+第1168条）。</p><p>② 索赔：消费者依第148条可任选<strong>加盟店或总部</strong>先行赔付（首负责任），总部赔付后向加盟商/供应商追偿。</p><p>③ 概率：<strong>高</strong>。三重叠加——统配原料（供货方责任）+实质控制（委派店长）+未尽管理义务（仅口头提醒未闭环）。</p><p>④ 最致命：<strong>(c)店长由总部委派</strong>，直接坐实'实质控制'，比原料问题更难切割。</p><p>⑤ 追偿：依合同食安条款（Day4范本）扣保证金+另案起诉，凭《整改通知书》回执证明加盟商拒不整改、过错更大。</p><p>⑥ 救总部环节：把'口头提醒'升级为<strong>书面《整改通知书》+限期3日+逾期解约</strong>（Day4证据层），即可证明已尽管理义务，切断'未尽管理义务'的连带责任。</p><div class="act"><b>我的落地动作：</b>据此把总部督导SOP从'发现即提醒'改为'发现即发函、逾期即解约'，这是本次案例最大的制度收益。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>可操作的边界标准（104号令后的新张力）</h3>
+<p><strong>⚠️ 前提变了</strong>：104号令（2025.12.1施行）已把连锁总部的<strong>管理责任法定化</strong>——制度、日管控/周排查/月调度三本台账、年度全覆盖实地巡查、明厨亮灶、应急演练，都是<b>强制义务</b>。所以现在的问题不是'要不要管'，而是<b>'必须管，但要管成管理责任、而非经营替代'</b>。</p><p><b>安全区（管理责任·必做且留痕）</b>：建制度与风险管控清单、培训考核、定期/飞行检查、下达书面整改通知、日周月三本台账、明厨亮灶、依约解约。</p><p><b>危险区（经营替代·绝不做）</b>：总部委派店长、总部发工资缴社保、总部统排班考勤、总部直接处罚员工、总部直接控制门店人财物。</p><p><b>结论</b>：把管控落到<strong>制度 + 记录 + 合同权（检查/整改/解约）</strong>，绝不落到'人财物'的直接控制。前者是104号令要求的合规动作，后者才是连带责任与事实劳动关系的真正来源。</p><div class="act"><b>我的落地动作：</b>出具《总部食安管理行为红线清单》一页纸发给运营/督导：可做（查、训、函、解）/不可做（派店长、发工资、统排班、直接罚）。</div><div class="anti"><b>加盟商反制点：</b>加盟商若被总部'管太深'，可反向收集'委派店长+统发薪+统排班'证据，在食安事故或用工争议中把总部拽入连带责任圈。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">总部食安管理边界判定清单</strong><div class="progress"><i id="bar8"></i></div><span id="cnt8" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">1. 可：提供操作手册与培训（不替代执行）<span class="m-note"> — 安全</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">2. 可：定期/飞行检查并出报告<span class="m-note"> — 安全</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">3. 可：下达书面整改通知+逾期解约<span class="m-note"> — 安全·且是免责关键</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">4. 可：统配核心原料但独立签供货协议+质检<span class="m-note"> — 安全·留追溯</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">5. 不可：委派店长并纳入总部编制<span class="m-note"> — 危险·实质控制</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">6. 不可：总部直接发工资缴社保给门店员工<span class="m-note"> — 危险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">7. 不可：总部统排班考勤直接管门店员工<span class="m-note"> — 危险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar8','cnt8')"><span class="m-txt">8. 不可：总部直接处罚门店员工<span class="m-note"> — 危险</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

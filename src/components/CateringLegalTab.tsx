@@ -184,6 +184,21 @@ const WEEKS: Week[] = [
         localHtml: '/food-safety-week9.html',
       },
       { title: '第 9 周第 2 天 · 《餐饮业促进和经营管理办法》(2025) 逐条实操手册', id: 'week09-day2' },
+      { title: '第 9 周第 3 天 · 食品安全事故处置 · 分级报告与黄金4小时', id: 'week09-day3' },
+      { title: '第 9 周第 4 天 · 加盟体系食安责任隔离方案（104号令落地）', id: 'week09-day4' },
+      { title: '第 9 周第 5 天 · 第9周收官 · 食安合规体系固化（自测＋综合案例）', id: 'week09-day5' },
+    ],
+  },
+  {
+    id: 'week-10',
+    label: '第 10 周',
+    theme: '供应链与采购合规',
+    lessons: [
+      { title: '第 10 周第 1 天 · 供应链模式设计与反垄断边界', id: 'week10-day1' },
+      { title: '第 10 周第 2 天 · 采购合同核心条款设计', id: 'week10-day2' },
+      { title: '第 10 周第 3 天 · 食品标签·追溯·召回与冷链', id: 'week10-day3' },
+      { title: '第 10 周第 4 天 · 供应商管理与反商业贿赂', id: 'week10-day4' },
+      { title: '第 10 周第 5 天 · 第10周收官 · 供应链法律体系固化', id: 'week10-day5' },
     ],
   },
   {
@@ -272,6 +287,14 @@ const LOCAL_LESSON_IDS = new Set([
   'yH99fOLzMSgjrd5OIaYJux',
   'yb4Ny8nApNOXvwjO0mrWna',
   'week09-day2',
+  'week09-day3',
+  'week09-day4',
+  'week09-day5',
+  'week10-day1',
+  'week10-day2',
+  'week10-day3',
+  'week10-day4',
+  'week10-day5',
 ]);
 const lessonLocalUrl = (id: string) => `/lessons/${id}.html`;
 const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);
