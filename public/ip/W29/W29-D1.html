@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第29周·第1天｜IP 资产台账与盘点：别让专利因忘缴年费悄悄死掉</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 29 · DAY 1 / 5　·　第 4 层 出师 · 行业专精</div><h1>IP 资产台账与盘点：别让专利因忘缴年费悄悄死掉</h1><div class="sub">企业 IP 管理制度</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">IP 资产像「公司的隐形仓库」——商标、专利、著作权堆在里面，平时看不见，但断缴年费、错过续展，权利就像仓库里的货悄悄过期报废。台账就是仓库的库存管理系统。</div><div class="mlink"><b>业务落点</b>业务落点：先建《IP 资产台账》把家底盘清，再定季度/年度盘点节奏，避免漏缴年费、被撤三、权属混同三类高发事故。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>IP 资产客体清单（商标/专利/著作/商业秘密/域名）</li><li>权利状态与届满日字段</li><li>专利法年费维持义务与滞纳期</li><li>商标法续展窗口与撤三（连续三年不使用）</li><li>台账核心字段设计</li><li>盘点节奏与常见坑</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《IP 资产台账（模板）》——建一张表，字段含：编号、客体类型、名称、权利号/申请号、申请日、授权/注册日、届满日、年费/续展费、下次缴费日、权利状态、权利人、发明人/设计人、代理机构、使用部门、备注。拿公司实际一件商标+一项专利试填。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习「IP 资产台账与盘点」。请：
+1) 用对比表列出商标、发明/实用新型/外观设计专利、著作权、商业秘密的期限与维持义务（《专利法》（2020 修正）第 43 条年费、《商标法》（2019 修正）第 40 条续展、第 49 条撤三）；
+2) 给出台账核心字段设计（至少 12 个字段）并说明易错点；
+3) 双视角：权利方如何防漏缴/防撤三，被诉或被异议方如何用「维持瑕疵」抗辩；
+4) 列出盘点常见坑与对策；
+5) 出 4 道判断题并逐题讲评。
+法条引用精确到条、款并标注版本，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、先客体：IP 资产到底有哪些</h2>
+<p>企业 IP 资产不止商标专利。珠宝时尚品牌常见客体：<b>商标</b>（第 14 类珠宝、第 35 类零售）；<b>专利</b>（发明/实用新型/外观设计，如镶嵌结构、3D 建模方法、款式造型）；<b>著作权</b>（款式设计图、宣发海报、小程序代码、产品摄影）；<b>商业秘密</b>（3D 建模源文件、供应商名单、定价策略）；<b>域名</b>、<b>商誉</b>。台账第一列就是「客体清单」，先把家底列全。</p>
+<div class="key">实务口诀：<b>先列全、再分级、后维护</b>。漏列一件海外商标，后面全盘失效。客体清单要覆盖中、外、线上（域名/平台账号）、线下（门店招牌/陈列）。</div>
+<h2>二、对比表：各客体的期限与维持义务</h2>
+<table><thead><tr><th>客体</th><th>有效期/期限</th><th>维持义务（法条）</th><th>逾期后果</th></tr></thead><tbody><tr><td>商标</td><td>10 年，自核准注册日起算</td><td>期满前 12 个月续展，宽展 6 个月（《商标法》第 40 条）</td><td>未续展注销；连续 3 年不使用可被撤销（第 49 条）</td></tr><tr><td>发明专利</td><td>20 年，自申请日起</td><td>逐年缴年费（《专利法》第 43 条）</td><td>未缴且过滞纳期→专利权终止</td></tr><tr><td>实用新型</td><td>10 年，自申请日起</td><td>逐年缴年费</td><td>同上</td></tr><tr><td>外观设计</td><td>15 年（2021.6.1 起），自申请日起</td><td>逐年缴年费</td><td>同上</td></tr><tr><td>著作权</td><td>自然人终生+50 年；法人 50 年</td><td>登记非强制，无年费</td><td>无维持义务</td></tr><tr><td>商业秘密</td><td>无期限，靠保密</td><td>持续保密措施（《反法》第 9 条）</td><td>泄密即失权</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：专利年费具体金额与递增档位、商标续展规费，以国家知识产权局最新收费公示为准（例：发明专利年费第 1-3 年约 900 元/年，逐年递增；商标续展规费每类约 500 元——以官方公告为准，勿直接引用数字）。</div>
+<h2>三、台账核心字段设计</h2>
+<table><thead><tr><th>字段</th><th>含义</th><th>易错点</th></tr></thead><tbody><tr><td>编号</td><td>唯一标识</td><td>用「IP-类型-年份-序号」规则，避免重号</td></tr><tr><td>权利号/申请号</td><td>官方文号</td><td>商标/专利号混写，需分列</td></tr><tr><td>届满日</td><td>权利到期日</td><td>按「申请日+期限」倒推，不能手填</td></tr><tr><td>下次缴费日</td><td>年费/续展日</td><td>早于届满日前置 3-6 个月预警</td></tr><tr><td>权利状态</td><td>有效/审查中/质押/许可</td><td>状态变更未同步更新</td></tr><tr><td>权利人</td><td>法律主体</td><td>个人 vs 公司混同最致命</td></tr><tr><td>使用部门</td><td>业务归属</td><td>多头使用无人盯缴费</td></tr></tbody></table>
+<div class="key">至少 12 字段：编号、客体类型、名称、权利号、申请日、授权/注册日、届满日、年费/续展费、下次缴费日、状态、权利人、发明人/设计人、代理机构、使用部门、备注。字段缺失＝盘点失真。</div>
+<h2>四、双视角：维持义务下的攻防</h2>
+<ul><li><b>权利方（防守）</b>：设缴费预警（届满前 6 个月提醒、前 3 个月二次提醒）、专人专岗、年费预算单列；商标每 3 年留存使用证据（吊牌、广告、销售记录）防撤三；</li><li><b>被诉/被异议方（进攻）</b>：查对方专利是否因漏缴年费已终止、商标是否连续 3 年未使用可被撤三、权利人与实际主体是否一致（权属瑕疵）；以此作为不侵权或无效抗辩支点。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：专利年费滞纳期（期满未缴有 6 个月滞纳期，每月加收当年全额年费 5% 滞纳金，超期则终止）与商标「撤三」举证责任分配，以《专利法实施细则》与《商标法实施条例》为准。</div>
+<h2>五、盘点节奏与常见坑</h2>
+<ol><li><b>季度盘点</b>：核对状态变更、缴费预警、使用证据收集；</li><li><b>年度盘点</b>：全面复核客体清单、权属、海外权利、代理机构续约；</li><li><b>常见坑</b>：① 漏缴年费致专利权悄悄终止；② 商标被撤三（三年未使用）；③ 权利人写创始人个人而非公司，离职后权属争议；④ 名义地址变更未同步，官方文书送达不到；⑤ 海外权利（马德里/PCT）未纳入台账。</li></ol>
+<div class="key">珠宝行业高发：代工厂代持外观专利、设计师个人名义申请专利，离职后公司拿不回——台账「权利人」字段必须写法律主体，代持一律补转让/变更手续。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：商标续展的窗口期怎么算？完全错过会怎样？</div><div class="a"><span class="an">参考答案</span>商标有效期 10 年，自核准注册日起算；期满前 12 个月可办续展，错过还有 6 个月宽展期。宽展期仍未续展的，商标将被注销，他人可重新申请。⚠ 续展规费以官方公告为准。</div><div class="q">Q2：发明专利年费漏缴，多久会终止权利？</div><div class="a"><span class="an">参考答案</span>专利年费应在每年申请日对应日前缴；期满未缴有 6 个月滞纳期（每月加收当年全额年费 5% 滞纳金），超 6 个月未缴则专利权终止。漏缴半年内尚可补救。⚠ 具体档位与滞纳规则以《专利法实施细则》为准。</div><div class="q">Q3：商标被「撤三」是什么意思？法务怎么防？</div><div class="a"><span class="an">参考答案</span>「撤三」指注册商标连续三年不使用，任何单位或个人可依《商标法》第 49 条申请撤销。防范：每 3 年留存使用证据（吊牌、广告、销售发票、电商页面），台账标注「最近使用日」，专人盯使用证据链。</div><div class="q">Q4：台账里「权利人」写创始人个人还是公司，区别多大？</div><div class="a"><span class="an">参考答案</span>区别致命。写个人＝权利归个人，公司只是使用人，设计师离职可主张权利、公司无权许可或维权。必须写法律主体（公司），代持/个人名义申请的要补转让或著录变更。这是珠宝业最高发的权属混同坑。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">IP Ledger</div><div class="cn">IP 资产台账</div><div class="df">记录 IP 客体、状态、期限、责任人的管理系统</div></div><div class="ti"><div class="en">Annuity / Maintenance Fee</div><div class="cn">年费/维持费</div><div class="df">专利为维持有效须逐年缴纳的费用</div></div><div class="ti"><div class="en">Renewal</div><div class="cn">续展</div><div class="df">商标期满前办理有效期延长的程序</div></div><div class="ti"><div class="en">Non-use Cancellation</div><div class="cn">撤三</div><div class="df">注册商标连续三年不使用可被撤销（商标法第 49 条）</div></div><div class="ti"><div class="en">Right Holder</div><div class="cn">权利人</div><div class="df">IP 的法律归属主体，须为公司而非个人</div></div></div><div class="foot"><a href="index.html">← 本周目录</a><a class="idx" href="../index.html">返回总计划</a><a href="W29-D2.html">第 2 天 →</a><a class="qz" href="W29-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
