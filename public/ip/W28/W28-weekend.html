@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第28周·周末实战｜周末实战｜做一份渠道管控与打假方案</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 28 · WEEKEND　·　第 4 层 出师 · 行业专精</div><h1>周末实战｜做一份渠道管控与打假方案</h1><div class="sub">珠宝时尚专项（二）</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">把这一周五天的知识串成一条线：从仿款监测、装潢维权、代言合规，到渠道窜货管控与代工厂保密，最后落成一个可执行的方案包。</div><div class="mlink"><b>业务落点</b>业务落点：产出《渠道管控协议条款》+《打假 SOP》两份可直接落地的文件。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>仿款三网排查</li><li>装潢攀附维权</li><li>代言肖像合规</li><li>渠道窜货管控</li><li>代工厂保密审计</li><li>打假 SOP 全流程</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《渠道管控与打假方案》：选定你公司一条产品线，产出——① 渠道管控协议核心条款（区域/价格/窜货/微商/终止）；② 打假 SOP（监测→取证→发函→投诉→诉讼/行政→代工厂保密审计），含各节点责任人、时限与产出文件。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。请基于本周 W28 内容，陪我做一次「渠道管控与打假方案」实战推演：从一条产品线的供应链出发，逐步给出渠道管控协议条款与打假 SOP 的每一节点动作、文书要点与责任人，并在关键节点提示被诉方/经销商/代工厂可能提出的抗辩与我的应对。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、方案总图：两条线并行</h2>
+<ol><li><b>渠道管控线</b>：经销协议条款（区域/价格/窜货/微商/终止）+ 代工厂保密审计条款；</li><li><b>打假维权线</b>：仿款监测 → 客体排查（专利/著作/装潢）→ 取证 → 发函/投诉 → 行政/民事/刑事；</li><li><b>交叉点</b>：代工厂泄密是仿款源头，渠道窜货是乱价源头，两条线在「供应链」汇合。</li></ol>
+<div class="key">珠宝行业实战逻辑：<b>上游管模具（保密），下游管区域（窜货），面上管仿款（打假）</b>。三者缺一，品牌资产都会漏。</div>
+<h2>二、渠道管控协议核心条款（可直接嵌入主合同）</h2>
+<ul><li><b>区域独家</b>：经销商仅在指定区域销售，跨区须书面同意；</li><li><b>价格合规</b>：列「建议零售价」，避免写入强制最低转售价（⚠ 反垄断红线）；</li><li><b>窜货处罚</b>：防伪码/批次追溯，阶梯处罚（警告→扣保证金→取消返利→终止）；</li><li><b>微商/电商限制</b>：未经同意不得上架第三方平台或朋友圈低价甩货；</li><li><b>代工厂保密</b>：密点清单 + 访问权限 + 定期审计 + 竞业限制≤2 年 + 泄密违约金。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：纵向垄断协议中「建议价」与「强制限价」的边界、竞业限制期限上限，以现行《反垄断法》与《劳动合同法》为准。</div>
+<h2>三、打假 SOP：六步闭环</h2>
+<table><thead><tr><th>步骤</th><th>动作</th><th>责任人</th><th>时限/产出</th></tr></thead><tbody><tr><td>① 监测</td><td>电商巡检+反向搜图+线下扫街</td><td>品牌/外包</td><td>每周；监测台账</td></tr><tr><td>② 客体排查</td><td>查专利/著作/装潢知名度</td><td>法务</td><td>2 个工作日；排查表</td></tr><tr><td>③ 取证</td><td>公证购买/时间戳/销量截图</td><td>法务+公证处</td><td>发现即固定</td></tr><tr><td>④ 发函/投诉</td><td>律师函+平台知识产权投诉</td><td>法务/律师</td><td>取证后 3 日</td></tr><tr><td>⑤ 行政/民事/刑事</td><td>市监举报/起诉/刑事报案</td><td>法务+外部</td><td>按情节选路径</td></tr><tr><td>⑥ 源头治理</td><td>代工厂审计+窜货清理</td><td>供应链+法务</td><td>季度复盘</td></tr></tbody></table>
+<div class="key">黄金顺序：<b>先取证，后发函</b>。发函会打草惊蛇；且代工厂审计要突击，不能提前通知。</div>
+<h2>四、周末自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：渠道管控和打假，为什么要在「供应链」汇合？</div><div class="a"><span class="an">参考答案</span>代工厂泄密是仿款源头（模具/3D 文件外流），渠道窜货是乱价源头。上游管保密、下游管区域、面上管仿款，三者都指向供应链管控，所以方案必须两条线并行、在供应链汇合。</div><div class="q">Q2：打假 SOP 第一步是发函还是取证？</div><div class="a"><span class="an">参考答案</span>先取证。监测发现后先公证购买/时间戳固定证据，再发函或投诉。直接发函会打草惊蛇导致下架销毁证据。</div><div class="q">Q3：经销协议里写「建议零售价」和「不得低于 X 元」有区别吗？</div><div class="a"><span class="an">参考答案</span>有。建议零售价一般安全；强制最低转售价可能构成纵向垄断协议（反垄断法），条款或无效。实务用「建议价+违约处罚」而非强制限价。⚠ 以现行法为准。</div><div class="q">Q4：代工厂审计为什么要突击、不能提前通知？</div><div class="a"><span class="an">参考答案</span>突击才能看到真实状态（模具是否隔离、文件日志是否异常、有无私单）。提前通知代工厂会掩盖泄密痕迹，失去审计意义。</div></div><div class="foot"><a href="W28-D5.html">← 第 5 天</a><a class="idx" href="../index.html">返回总计划</a><a href="index.html">本周目录 →</a><a class="qz" href="W28-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

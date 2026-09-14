@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第27周·第3天｜发布会·订货会·社交媒体的公开风险</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 27 · DAY 3 / 5　·　第 4 层 出师 · 行业专精</div><h1>发布会·订货会·社交媒体的公开风险</h1><div class="sub">珠宝时尚专项（一）</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">同一场发布会，对四种权利影响相反：对专利/外观是「雷」（可能丧新颖性），对著作权/商标/反法是「粮」（固定在先证据）。公开是把双刃剑，用错时机就炸。</div><div class="mlink"><b>业务落点</b>业务落点：建立《公开前风控清单》——待申专利的款「先申请、后曝光」；要守商誉的款「早曝光、留证据」；样品签保密协议防偷拍。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>宽限期（Grace Period）</li><li>主动公开（Self-Disclosure）</li><li>现有设计抗辩（Prior Art Defense）</li><li>展会/订货会（Trade Show）</li><li>可信时间戳（Timestamp）</li><li>保密义务（Confidentiality）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《公开风险审查清单》——列出发布会/订货会/社媒三类场景，逐条标注：是否已完成外观申请、是否签保密协议、是否做时间戳、是否会丧失新颖性，形成可照做的发布前检查表。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练，我是珠宝企业法务。今天学习珠宝行业发布会、订货会、社交媒体的公开风险。请：
+1) 讲清同一公开行为对四种权利的正负影响（专利丧新颖性 vs 著作权/商标/反法固定在先证据）；
+2) 讲清专利法第 24 条宽限期只覆盖三种特定情形（国际展、学术会议、他人泄露），自己主动发图/发布会不享；
+3) 讲清公开后仿款方如何拿「现有设计抗辩」这把盾；
+4) 给出发布会/订货会/社媒的公开风控清单（含先申请后曝光、保密协议、时间戳）；
+5) 从仿款方视角列出如何利用权利方公开；
+6) 出 4 道判断题并讲评。
+法条精确到条并标注版本，不确定处标「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、先客体：公开行为在法律上「一分为二」</h2>
+<p>先客体、后权利：同一场发布会，对四种权利影响相反。对专利/外观是「雷」（可能丧失新颖性），对著作权/商标/反法是「粮」（固定在先证据）。先分清再行动，别一刀切。</p>
+<table><thead><tr><th>公开场景</th><th>对外观设计专利</th><th>对著作权</th><th>对商标·反法</th></tr></thead><tbody><tr><td>自己主动发布会/订货会/社媒</td><td>丧新颖性（无宽限期，除非他人泄露）</td><td>正面：固定创作底稿 + 时间戳</td><td>正面：固定在先使用、知名度起点</td></tr><tr><td>他人未经同意泄露样品图</td><td>享 6 个月宽限期（专利法第 24 条）</td><td>正面</td><td>正面</td></tr></tbody></table>
+<div class="key">实务口诀：<b>要申请专利的款，先申请、后曝光；要守商誉的款，早曝光、留证据</b>。</div>
+<h2>二、宽限期：只有三种「免费公开」不丧新颖性</h2>
+<ul><li>中国政府主办或承认的国际展览会首次展出（专利法第 24 条第（二）项）；</li><li>规定的学术会议或技术会议首次发表（第（三）项）；</li><li>他人未经申请人同意而泄露（第（四）项）——订货会样品被同行偷拍即属此类。</li></ul>
+<p>例外不含：自己发朋友圈、上小红书、开新品发布会、给经销商看样——这些主动公开一律不享宽限期，公开日之后申请即丧失新颖性。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：宽限期具体情形与「规定的学术会议」范围，以《专利法》（2020 修正）第 24 条及《专利审查指南》为准。</div>
+<h2>三、反向风险：公开后仿款方拿到「合法抄」的盾</h2>
+<p>你主动公开一款未申专利的造型，6 个月后仿款方照抄。因该造型已成为「现有设计」，你再申请外观会被驳回（丧失新颖性），且难以主张侵权——仿款方可在侵权诉讼中主张现有设计抗辩（实施属现有设计不侵权）。</p>
+<div class="key">珠宝行业最痛的坑：订货会大放异彩的新款，没申外观就被同行拍去量产，因已公开丧失新颖性，告不了。问诊式结论：发布会/订货会前必须完成外观设计申请递交，拿到申请号再开发布。</div>
+<h2>四、流程：三类场景的公开风控清单</h2>
+<ol><li>发布会前：完成待保护款的外观设计申请递交（拿到申请号再开发布）；</li><li>订货会：样品签署保密协议 + 标注「保密·未申请专利勿仿」；若被偷拍，立即取证（时间戳）锁定「他人泄露」以享宽限期；</li><li>社媒：上新图同步做著作权登记/时间戳；系列宣传统一视觉，积累「一定影响」证据；</li><li>上市后：监测（电商巡检、图反向搜），发现仿款先取证再发函。</li></ol>
+<h3>反向视角：仿款方如何利用公开</h3>
+<table><thead><tr><th>权利方公开行为</th><th>仿款方利用</th></tr></thead><tbody><tr><td>主动发未申专利新款</td><td>主张现有设计抗辩（不侵权）</td></tr><tr><td>发布会讲解工艺</td><td>主张功能性/通用（不授权外观）</td></tr><tr><td>社媒曝光经典款</td><td>主张装潢通用/不具一定影响（反法）</td></tr></tbody></table>
+<div class="key">被告律师会扒你所有公开记录找「现有设计」与「通用造型」两把刀。权利方纪律 = 未申不晒、已申再晒、晒了留证。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：公司在小红书主动发布了一款未申专利的新项链，3 个月后才申请外观，能授权吗？</div><div class="a"><span class="an">参考答案</span>难。自己主动公开不享宽限期，发布日即构成现有设计，申请日之后申请因丧失新颖性会被驳回。正确做法：先递交外观申请，再发小红书。⚠ 以专利法第 24 条为准。</div><div class="q">Q2：订货会上样品被同行偷拍并量产，我公司能否申请外观并告他？</div><div class="a"><span class="an">参考答案</span>能。他人未经同意泄露属专利法第 24 条第（四）项宽限期情形，自泄露起 6 个月内申请不丧新颖性；且立即取证锁定「他人泄露」可享宽限。</div><div class="q">Q3：主动公开造型后，还能靠什么拦仿款？</div><div class="a"><span class="an">参考答案</span>可走著作权（若造型达美术作品高度，且设计稿时间戳早于仿款）与反法（若已具一定影响的装潢）；但外观/专利路径因丧新颖性基本关闭。</div><div class="q">Q4：仿款方拿到我方已公开的发布会图，在外观侵权案中主张不侵权，依据是什么？</div><div class="a"><span class="an">参考答案</span>现有设计抗辩：被控侵权设计属于申请日前已公开的现有设计，不构成侵犯专利权。这把盾来自权利方自己提前公开。⚠ 抗辩条号以现行专利法为准。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Grace Period (GP)</div><div class="cn">宽限期</div><div class="df">专利法第 24 条 6 个月，仅限国际展/学术会议/他人泄露</div></div><div class="ti"><div class="en">Self-Disclosure</div><div class="cn">主动公开</div><div class="df">自己发图/发布会不享宽限期，丧失新颖性</div></div><div class="ti"><div class="en">Prior Art Defense</div><div class="cn">现有设计抗辩</div><div class="df">侵权案中主张实施属现有设计不侵权</div></div><div class="ti"><div class="en">Trade Show</div><div class="cn">展会/订货会</div><div class="df">公开高风险场景，需保密 + 先申请</div></div><div class="ti"><div class="en">Timestamp (TS)</div><div class="cn">可信时间戳</div><div class="df">固定创作/公开时间的低成本证据</div></div><div class="ti"><div class="en">Confidentiality (CF)</div><div class="cn">保密义务</div><div class="df">样品/图纸签保密协议防泄露</div></div></div><div class="foot"><a href="W27-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W27-D4.html">第 4 天 →</a><a class="qz" href="W27-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
