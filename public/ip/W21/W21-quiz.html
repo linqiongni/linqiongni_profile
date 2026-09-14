@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第21周 自测卷｜赔偿计算与主张</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.qz-day{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;margin:16px 0}
+.qz-day.wk{border-left-color:var(--gold)}
+.qz-day .dt{font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:5px}
+.qz-day .dh{font-size:16px;color:var(--tx);margin-bottom:10px;font-weight:600}
+.qz-day .dh2{font-size:16px;color:var(--tx);font-weight:600;margin-bottom:6px}
+.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78}
+.qa .qn{color:var(--gold);font-weight:700;margin-right:6px}
+.qa .badge{font-size:11px;border:1px solid var(--line2);color:var(--tx3);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}
+.qa .an{color:var(--jade);font-weight:700;margin-right:6px}
+.qz-deliv{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.qz-deliv .dl{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px}
+.sub2{color:var(--tx2);font-size:13.5px;margin:6px 0 4px}
+@media(max-width:640px){.qa .q{font-size:13.6px}.qa .a{font-size:13px}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 21 / 32 · 自测卷　·　第 3 层 能力 · 办案全流程</div><h1>第 21 周 自测卷</h1><div class="sub">赔偿计算与主张　·　答案内嵌显示，无需点击展开</div><div class="sub2">本周聚焦四档计算的选择策略、侵权获利的计算与财务证据、许可费倍数与可比许可、法定赔偿的酌定因素、惩罚性赔偿的主张与举证。每题答案直接附在题后，无需点击展开。</div><div class="qz-day"><div class="dt">D1 · 自测</div><div class="dh">四档计算的选择策略</div><div class="qa"><div class="q"><span class="qn">QD1-1</span>原告能不能直接请求法定赔偿 500 万，跳过实际损失和侵权获利？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>通常不行。四档有严格顺序（实际损失→获利→许可费倍数→法定赔偿），原告应先举证前档确属难以确定才能落到法定赔偿；起诉状应完整写四档主张与计算，跳档易被法官要求补证。⚠ 以现行商标法第 63 条等为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-2</span>为什么反不正当竞争法第 6 条的混淆行为（如仿冒有一定影响的装潢）没有「许可使用费倍数」这一档？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>因为反法第 17 条只规定实际损失、侵权获利、法定赔偿三档，未设许可费倍数；许可费倍数档是商标、著作权、专利三法特有。未注册但有一定影响的装潢被仿，只能走前三档。⚠ 反法条号以现行文本为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-3</span>法定赔偿各法上限是否都是 500 万？下限有何差异？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>商标、著作权、专利三法上限均为 500 万；下限不同——专利 3 万元、著作权 500 元，反法⚠ 100 万元（待核实）。上限 500 万是通行上限。⚠ 反法数额以现行文本为准。</div></div></div><div class="qz-day"><div class="dt">D2 · 自测</div><div class="dh">侵权获利的计算与财务证据</div><div class="qa"><div class="q"><span class="qn">QD2-1</span>星河·星芒仿款案：被告售仿款 3000 件、售价 800 元、单位成本 300 元，侵权获利是多少？若被告称含 1000 件刷单呢？<span class="badge">计算</span></div><div class="a"><span class="an">参考答案</span>正常：3000×500=150 万元，或 240 万×62.5%=150 万，两式一致。若剔刷单：真实 2000 件×500=100 万元；被告须举证刷单（后台/退款流水），否则按前台 3000 件计 150 万。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-2</span>被告拿着账本不交，原告怎么办？毛利率该按什么口径算？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>援引举证妨碍（商标法第 63 条第 2 款）：权利人已尽力举证+账册在被告手里，请求法院责令提供；拒交或造假可参考原告主张。毛利率应按净利润口径（售价减进货/制造、推广、物流、平台扣点等全部合理成本），只减原料会高估获利。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-3</span>司法审计/鉴定一般何时启动、周期多久？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>原告通常在举证期限届满前（立案后约 15-30 日）申请；法院委托会计师后周期一般 30-60 日；被告应在指定期限（约 10-15 日）提交账册，逾期可推定原告主张。⚠ 费用承担与逾期推定标准以现行证据规则为准。</div></div></div><div class="qz-day"><div class="dt">D3 · 自测</div><div class="dh">许可费倍数与可比许可</div><div class="qa"><div class="q"><span class="qn">QD3-1</span>星河案：我方普通经销许可费率 8%，被告侵权销售额 240 万，合理许可费与乘 2 倍各多少？<span class="badge">计算</span></div><div class="a"><span class="an">参考答案</span>合理许可费=240 万×8%=19.2 万元；乘 2 倍=38.4 万元。司法倍数通常 1-3 倍（法律未封顶但不合理高倍数难获支持）。注意：本案侵权获利 150 万更高，应优先主张获利档，许可费倍数档仅在损失/获利难确定时显优势。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-2</span>可比许可须满足哪「三性」？珠宝行业常见来源有哪些？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>三性：真实性（真实签署且履行，有付款开票）、关联性（同商标/同品类/同地域/同时期）、合理性（费率市场公允、不含品牌外服务水分）。来源：品牌加盟/经销授权、联名许可、OEM 代工品牌许可、交叉许可。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-3</span>被告说我方 8% 费率含培训和铺货支持，不能全算商标许可费，怎么应对？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>拆分合同列明纯商标许可费与其他服务费分别计价；若未拆分，用行业纯商标许可费率佐证 8% 中商标部分占比，压缩被告分摊空间，把尺子焊死。</div></div></div><div class="qz-day"><div class="dt">D4 · 自测</div><div class="dh">法定赔偿的酌定因素</div><div class="qa"><div class="q"><span class="qn">QD4-1</span>原告主张法定赔偿，能否完全不提前档就直接要 500 万？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不能。法定赔偿是兜底档，原告应先说明前档为何难以确定，并最好给锚点区间（如参照获利档 150 万，请求 80-150 万区间裁量）；直接要顶格无依据，法官多从低裁量。⚠ 以现行商标法第 63 条等为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-2</span>珠宝/时尚行业拉高法定赔偿的关键证据是什么？被告如何压低？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>原告把「品牌知名度证据包」堆满（设计获奖、明星代言、大促销量、展会曝光），知名度越高裁量越接近上限，合理开支单独列示附票据。被告则攻击：知名度低、期间短规模小、属过失非故意、合理开支虚高（风险代理无票据）、混售正品。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-3</span>各法法定赔偿下限差异对「小微侵权」有何影响？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>专利下限 3 万元、著作权下限 500 元、商标与反法（⚠100 万待核实）低位更高；下限决定了小微侵权的最低赔额，主张时别漏算下限档。⚠ 以现行文本为准。</div></div></div><div class="qz-day"><div class="dt">D5 · 自测</div><div class="dh">惩罚性赔偿的主张与举证</div><div class="qa"><div class="q"><span class="qn">QD5-1</span>星河案：基数 150 万、恶意主张 1.5 倍、合理开支 10 万，合计主张多少？<span class="badge">计算</span></div><div class="a"><span class="an">参考答案</span>补偿性基数 150 万（不含合理开支）；惩罚性 150 万×1.5=225 万；合理开支 10 万在基数外另计；合计 235 万。起诉状须写明数额、计算方式与事实理由。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-2</span>惩罚性赔偿的两道门槛是什么？星河案用什么证据坐实？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>两道门槛：故意（恶意）+ 情节严重。星河案用「警告函及签收记录」（坐实恶意）+「收函后持续售假的公证购买」（坐实明知后仍侵权、情节持续）坐实；曾被处罚/判决记录可补强。⚠ 情节严重认定以现行司法解释为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-3</span>被告主张「只卖了三个月、规模小」，对惩罚性有何影响？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>直接攻击「情节严重」门槛——期间短、规模小可能使情节不严重，惩罚性不被支持或倍数取低（如 1 倍）；若门槛都不够则仅补补偿性。原告须用销量与持续证据反制。</div></div></div><div class="qz-day wk"><div class="dt">WEEKEND · 实战复盘</div><div class="dh">周末实战复盘 · 赔偿计算书与举证清单</div><div class="qa"><div class="q"><span class="qn">QWE-1</span>星河案四档算出来，为什么优先选侵权获利档而不是实际损失档？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>实际损失档要求证明「这 3000 件本会是我的」，因果关系难证且原告未必能承接全部销量；侵权获利档用平台可见销量×单位毛利，证据更稳、数额更可主张。故优先获利档，损失档作备选。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-2</span>惩罚性赔偿的 10 万合理开支，为什么不算进 1.5 倍基数？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>合理开支是维权费用，一般在惩罚性基数之外另行计算，不计入基数、不被乘倍；基数只取补偿性四档之一（本案为获利 150 万）。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-3</span>举证清单里「警告函签收记录」作用是什么？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>它是认定惩罚性「故意（恶意）」的核心证据——证明被告被明确告知后仍继续/扩大侵权，配合收函后公证购买把恶意门槛焊死。</div></div></div><div class="qz-deliv"><div class="dl">本周核心产出物 · 参考标准答案</div><div class="dh2">本周核心产出物参考标准答案</div><h2>产出物一：赔偿计算书模板（四档全列）</h2>
+<table><thead><tr><th>档位</th><th>星河案计算</th><th>金额</th></tr></thead><tbody><tr><td>① 实际损失</td><td>3000×正品单位毛利1300元</td><td>3,900,000 元（因果关系难证，慎用）</td></tr><tr><td>② 侵权获利</td><td>3000×500 或 2,400,000×62.5%</td><td>1,500,000 元（最稳，优先）</td></tr><tr><td>③ 许可费倍数</td><td>2,400,000×8%×2 倍</td><td>384,000 元（有可比许可时用）</td></tr><tr><td>④ 法定赔偿</td><td>法院裁量（锚点参考获利档）</td><td>≤500 万（兜底）</td></tr></tbody></table>
+<h2>产出物二：惩罚性叠加</h2>
+<ul><li>补偿性基数：侵权获利 1,500,000 元</li><li>惩罚性（1.5 倍）：1,500,000×1.5 = 2,250,000 元</li><li>合理开支（另计）：律师费 8 万 + 公证费 2 万 = 100,000 元</li><li>合计主张：2,350,000 元</li></ul>
+<h2>产出物三：举证清单（按档对应）</h2>
+<ul><li>权属：星河商标注册证、星芒吊坠外观专利/著作权登记</li><li>获利档：平台销量截图、成交价、被告账册（拒交则举证妨碍）</li><li>许可费倍数档：8% 经销许可合同+履行凭证（真实/关联/合理）</li><li>法定赔偿酌定：品牌知名度证据包、侵权期间与规模</li><li>惩罚性：警告函签收记录、收函后公证购买、曾处罚记录</li><li>合理开支：律师费/公证费/调查费票据</li></ul>
+<div class="key">实务结论：先按四档顺序选最稳的侵权获利档为主张核心，用可比许可与法定赔偿作补充与兜底，恶意情节叠加 1-5 倍惩罚性；合理开支永远在基数外另计，并用警告函+收函后公证把恶意门槛焊死。</div></div><div class="foot"><a href="W20-quiz.html">← 第 20 周自测</a><a class="idx" href="index.html">本周目录</a><a href="W22-quiz.html">第 22 周自测 →</a></div><div class="disc">本页自测题用于个人学习检验。答案中涉及的法条条号、数字与日期须以现行有效文本核对后方可作为正式依据；标注「待核实」处请优先核查。</div></div></body></html>

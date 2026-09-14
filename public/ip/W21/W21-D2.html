@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第21周·第2天｜侵权获利的计算与财务证据：三件套相乘</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 21 · DAY 2 / 5　·　第 3 层 能力 · 办案全流程</div><h1>侵权获利的计算与财务证据：三件套相乘</h1><div class="sub">赔偿计算与主张</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">算他赚了多少，像查一家店的真实账本——不能只看他嘴上说多少，要看销量、单价、毛利率三件套。被告藏着利润率，法律有办法把他逼出来。</div><div class="mlink"><b>业务落点</b>业务落点：起诉前就要策划如何拿到被告销量与毛利证据（平台数据、公证购买、举证妨碍、司法审计）。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>侵权获利公式</li><li>单位侵权毛利</li><li>销量证据</li><li>举证妨碍（第 63 条第 2 款）</li><li>司法审计/鉴定</li><li>合理开支另计</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《侵权获利计算表（含财务证据清单）》——用「星河·星芒」仿款案，按公式算出被告获利，并列出每个变量的证据来源与取证动作。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习侵权获利的计算与财务证据。请：
+1) 给出侵权获利的核心公式（销量×单位侵权毛利 = 销售额×利润率），并用一个珠宝仿款案代入具体数字演示；
+2) 拆解销量、单价、毛利率三个变量的取证路径（平台前台销量、成交价、进货发票、账册），并说明被告可能如何反驳每个变量；
+3) 讲清举证妨碍规则（商标法第63条第2款）如何把账簿举证责任转给被告；
+4) 说明司法审计/鉴定的启动时机、周期（给天数）与费用承担；
+5) 从被诉方视角，列出压低「侵权获利」的五个抗辩点；
+6) 出 4 道计算/实务题并讲评。
+法条引用精确到条、款并标注版本（商标法2019修正），不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、核心公式：三件套相乘</h2>
+<div class="key"><b>侵权获利 = 侵权销量 × 单位侵权毛利 = 侵权销售额 × 侵权利润率。</b> 两套写法必须算出来一致，否则被对方攻击计算逻辑。</div>
+<p>代入「星河·星芒」仿款案：被告电商店售仿款吊坠 <b>3,000 件</b>，售价 <b>800 元/件</b>，单位成本 <b>300 元</b>，单位侵权毛利 <b>500 元</b>，毛利率 <b>62.5%</b>。</p>
+<table><thead><tr><th>算法</th><th>计算</th><th>结果</th></tr></thead><tbody><tr><td>销量×单位毛利</td><td>3,000 件 × 500 元</td><td>1,500,000 元</td></tr><tr><td>销售额×利润率</td><td>(3,000×800) × 62.5% = 2,400,000 × 62.5%</td><td>1,500,000 元</td></tr><tr><td>校验</td><td>两式结果一致</td><td>✓ 获利 150 万元</td></tr></tbody></table>
+<div class="key">珠宝/时尚行业要点：仿款多用「低价走量」，单位毛利低但销量大；主张获利时务必用「销售额×利润率」与「销量×单位毛利」双向校验，防止被告只报一种口径。</div>
+<h2>二、三个变量各自的证据怎么拿</h2>
+<table><thead><tr><th>变量</th><th>原告可取的证</th><th>被告可能抗辩</th></tr></thead><tbody><tr><td>销量</td><td>平台前台销量、订单截图、公证购买实物、直播录屏</td><td>刷单、自营刷量、大比例退货应剔除</td></tr><tr><td>单价</td><td>详情页标价、实际成交价、促销记录</td><td>长期折扣/秒杀，应按实际成交价而非标价</td></tr><tr><td>毛利率</td><td>被告会计账册、进货发票、代工厂结算单</td><td>不提供→触发举证妨碍，可采信原告估算</td></tr></tbody></table>
+<h2>三、举证妨碍：把账本逼出来</h2>
+<p>权利人已尽举证义务 + 账簿、资料主要由侵权人掌握 → 法院可责令侵权人提供；侵权人拒不提供或提供虚假资料，可参考权利人的主张确定赔偿（商标法第 63 条第 2 款）。</p>
+<div class="key">这是打「大经销商」「平台大店」的利器：你证明他卖了 3,000 件（平台销量可见），他藏着 62.5% 的毛利率不报，法院可据此采信你的获利估算 150 万元。</div>
+<h2>四、司法审计/鉴定（程序时间轴给天数）</h2>
+<ol><li><b>举证期限内申请</b>：原告一般应在举证期限届满前（通常立案后 15-30 日）申请司法审计；</li><li><b>法院委托</b>：裁定准许后委托有资质的会计师事务所，周期一般 <b>30-60 日</b>；</li><li><b>双方提交账册</b>：被告应在指定期限（通常 10-15 日）提交财务资料，逾期可推定原告主张成立；</li><li> </li><li><b>质证与采用</b>：审计报告出庭质证，法院结合举证妨碍规则采信。</li></ol>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：司法审计/鉴定的费用预交与最终承担规则、以及「逾期提交账册即推定」的具体适用标准，以现行民事诉讼法及知产证据规定为准。</div>
+<h2>五、反向视角：被诉方如何驳减获利</h2>
+<ul><li><b>剔刷单与退货</b>：提供后台真实成交与退款数据，把「前台销量」压到真实成交数；</li><li><b>扣合理成本</b>：毛利应按「售价-进货/制造成本-推广/物流/平台扣点」计算，而非只减原料；</li><li><b>分通用利润</b>：仿款中通用造型部分利润与「星河」品牌贡献利润分摊，只赔品牌贡献部分；</li><li><b>部分不侵权</b>：若店铺同时售正品或其他款式，剔除与本案无关销量；</li><li><b>举不出账册的反制</b>：以「规模小、毛利低、已下架」降低法院心证。</li></ul>
+<div class="key">被告核心战术：把「侵权获利」拆小——扣成本、剔刷单、分通用利润、挤水分。原告要预先用平台数据+举证妨碍堵住这些口子。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：「星河·星芒」仿款案中，被告称前台销量 3,000 件含 1,000 件刷单，真实获利怎么算？</div><div class="a"><span class="an">参考答案</span>先剔刷单：真实销量 2,000 件 × 单位毛利 500 元 = 1,000,000 元。被告须举证刷单（后台数据/退款流水），否则法院按前台 3,000 件计，获利 150 万元。</div><div class="q">Q2：被告拿着账本不交，原告怎么办？</div><div class="a"><span class="an">参考答案</span>援引举证妨碍（商标法第 63 条第 2 款）：权利人已尽力举证+账册在被告手里，请求法院责令提供；被告拒交或造假，可参考原告主张（如 150 万元）确定赔偿。</div><div class="q">Q3：毛利率到底按「售价减原料」还是「售价减全部成本」算？</div><div class="a"><span class="an">参考答案</span>按全部成本。侵权获利是净利润口径，应扣除进货/制造、推广、物流、平台扣点等合理支出，只减原料会高估获利，被告可抗辩调减。</div><div class="q">Q4：被告说仿款是「通用造型」，利润不全是星河品牌的贡献，怎么处理？</div><div class="a"><span class="an">参考答案</span>这是「利润贡献分摊」抗辩。法院可能按品牌溢价在利润中的占比分摊，只赔品牌贡献部分；原告应举证星河知名度带来溢价（对比无标同款售价），压缩分摊空间。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Infringer’s Profit</div><div class="cn">侵权获利</div><div class="df">侵权销量×单位侵权毛利，或销售额×利润率</div></div><div class="ti"><div class="en">Unit Infringing Margin</div><div class="cn">单位侵权毛利</div><div class="df">仿款售价减全部合理成本后的单位利润</div></div><div class="ti"><div class="en">Burden of Proof Obstruction</div><div class="cn">举证妨碍</div><div class="df">拒不提供账册可采信对方主张（商标63条2款）</div></div><div class="ti"><div class="en">Forensic Audit</div><div class="cn">司法审计</div><div class="df">法院委托会计师查账，周期约30-60日</div></div><div class="ti"><div class="en">Reasonable Expenses</div><div class="cn">合理开支</div><div class="df">维权费用，在赔偿基数外另计</div></div></div><div class="foot"><a href="W21-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W21-D3.html">第 3 天 →</a><a class="qz" href="W21-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

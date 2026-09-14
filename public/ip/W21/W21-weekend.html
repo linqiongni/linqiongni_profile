@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第21周·周末实战｜周末实战｜赔偿计算书模板 + 举证清单</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 21 · WEEKEND　·　第 3 层 能力 · 办案全流程</div><h1>周末实战｜赔偿计算书模板 + 举证清单</h1><div class="sub">赔偿计算与主张</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">把这一周的五天串成一份可交付的《赔偿计算书 + 举证清单》：从四档选档，到获利计算、许可费倍数、法定赔偿酌定，再到惩罚性叠加。</div><div class="mlink"><b>业务落点</b>业务落点：产出一份可直接照填的赔偿计算书模板与按档对应的举证清单。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>四档选择</li><li>获利计算</li><li>许可费倍数</li><li>法定赔偿酌定</li><li>惩罚性主张</li><li>举证清单</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《赔偿计算书模板 + 举证清单》——用「星河·星芒」仿款案完整算出四档与惩罚性，形成可直接照填的模板。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。请基于本周 W21 内容，陪我做一次完整的赔偿计算与举证清单实战：用「星河·星芒」仿款案（仿款销量3000件、售价800元、成本300元、收过警告函仍售、律师费8万+公证费2万），完整算出四档金额、选定最优档、叠加惩罚性，并产出一份按档对应的举证清单。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、赔偿计算书模板（四档全列）</h2>
+<table><thead><tr><th>档位</th><th>星河案计算</th><th>金额</th></tr></thead><tbody><tr><td>① 实际损失</td><td>若 3000 件本属我方：3000×单位毛利1300元（正品）</td><td>3,900,000 元（因果关系难证，慎用）</td></tr><tr><td>② 侵权获利</td><td>3000×500 或 2,400,000×62.5%</td><td>1,500,000 元（最稳，优先）</td></tr><tr><td>③ 许可费倍数</td><td>2,400,000×8%×2 倍</td><td>384,000 元（有可比许可时用）</td></tr><tr><td>④ 法定赔偿</td><td>法院裁量（锚点参考获利档）</td><td>≤500 万（兜底）</td></tr></tbody></table>
+<div class="key">选定策略：优先主张<b>侵权获利档 150 万</b>（证据最稳）；同时列明实际损失档作备选、许可费倍数档作补充，法定赔偿作兜底锚点。</div>
+<h2>二、惩罚性叠加（星河案）</h2>
+<table><thead><tr><th>项目</th><th>计算</th><th>金额</th></tr></thead><tbody><tr><td>补偿性基数</td><td>侵权获利 3000×500</td><td>1,500,000 元</td></tr><tr><td>惩罚性（1.5倍）</td><td>1,500,000×1.5</td><td>2,250,000 元</td></tr><tr><td>合理开支（另计）</td><td>律师费8万+公证费2万</td><td>100,000 元</td></tr><tr><td>合计主张</td><td>—</td><td>2,350,000 元</td></tr></tbody></table>
+<h2>三、举证清单（按档对应）</h2>
+<ul><li><b>权属证据</b>：星河商标注册证、星芒吊坠外观设计专利/著作权登记；</li><li><b>获利档</b>：平台前台销量截图、订单与成交价、被告进货发票/账册（拒交则举证妨碍）；</li><li><b>许可费倍数档</b>：我方 8% 经销许可合同+履行凭证（真实、关联、合理三性）；</li><li><b>法定赔偿酌定</b>：品牌知名度证据包（获奖/代言/销量/展会）、侵权期间与规模；</li><li><b>惩罚性</b>：警告函及签收记录、收函后持续售假的公证购买、曾被处罚/判决记录；</li><li><b>合理开支</b>：律师费合同+发票、公证费发票、调查费凭证。</li></ul>
+<div class="key">珠宝/时尚取证黄金两点：① 电商详情页挂图（许诺销售，公证成本最低）；② 收函后再次公证购买（坐实恶意）。两者都不必等到真成交。</div>
+<h2>四、周末自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：星河案四档算出来，为什么优先选侵权获利档而不是实际损失档？</div><div class="a"><span class="an">参考答案</span>实际损失档要求证明「这 3000 件本会是我的」，因果关系难证且原告未必能承接全部销量；侵权获利档用平台可见销量×单位毛利，证据更稳、数额更可主张。故优先获利档，损失档作备选。</div><div class="q">Q2：惩罚性赔偿的 10 万合理开支，为什么不算进 1.5 倍基数？</div><div class="a"><span class="an">参考答案</span>合理开支是维权费用，法律与司法实践一般在惩罚性基数之外另行计算，不计入基数、不被乘倍；基数只取补偿性四档之一（本案为获利150万）。</div><div class="q">Q3：举证清单里「警告函签收记录」作用是什么？</div><div class="a"><span class="an">参考答案</span>它是认定惩罚性「故意（恶意）」的核心证据——证明被告在被明确告知后仍继续/扩大侵权，配合收函后公证购买，把恶意门槛焊死。</div><div class="q">Q4：如果被告庭上才提交账册显示毛利率仅 30%，原告怎么应对？</div><div class="a"><span class="an">参考答案</span>先核账册真伪与完整性（是否只报部分成本、是否含刷单退货）；若属实则获利重算为 3000×800×30%=72万，基数下调；同时主张其逾期提交可结合举证妨碍规则，要求按原告原估算或不利推定。⚠ 以现行证据规则为准。</div></div><div class="foot"><a href="W21-D5.html">← 第 5 天</a><a class="idx" href="../index.html">返回总计划</a><a href="index.html">本周目录 →</a><a class="qz" href="W21-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

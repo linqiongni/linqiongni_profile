@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第22周·第2天｜技术比对表与可视化表达</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 22 · DAY 2 / 5　·　第 3 层 能力 · 办案全流程</div><h1>技术比对表与可视化表达</h1><div class="sub">庭审与裁判</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">技术比对表像「大家来找茬」的记分卡——把你的权利和对方产品一格一格对照，哪里相同、哪里不同、哪处是「要害」用颜色标出来，法官和对方一眼就懂。</div><div class="mlink"><b>业务落点</b>业务落点：无论商标、专利还是著作权侵权，开庭前必须产出一份《技术比对表》+ 可视化图（标注图/比对图），这是庭审最硬的「弹药」。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>全面覆盖原则（专利）</li><li>接触+实质性相似（著作权）</li><li>商标比对（商品类似+标识近似+混淆）</li><li>要部比对/整体观察</li><li>可视化：标注图与比对图</li><li>比对表的「相同/近似/不同」三栏法</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《技术比对表模板（专利/商标/著作权三版）》——选一个真实/假设侵权情形，按三栏法（原告要素 / 被告要素 / 比对结论）填全，并配一张标注图思路说明。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习技术比对表与可视化表达。请：
+1) 讲清商标/专利/著作权三种侵权判定下「比对对象」的本质差异（商标：商品+标识+混淆；专利：权利要求技术特征 vs 被诉技术方案；著作权：接触+实质性相似）；
+2) 给出《技术比对表》的通用「三栏法」结构（原告要素/被告要素/比对结论），分别针对外观设计专利、商标、设计图著作权给示例；
+3) 讲清「整体观察综合判断」（外观设计）与「要部比对」的关系，以及设计空间概念；
+4) 讲清可视化表达：标注图（在对方产品图上圈出与权利要求对应特征）、比对图（左右并排放大）、如何用颜色区分相同/近似/不同；
+5) 讲清被诉方如何「反向比对」攻击（拆特征、找差异、主张设计空间/功能性）；
+6) 出 4 道判断题并讲评。
+法条精确到条、款并标注版本，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、比对前先定「比什么」：三部门法对象不同</h2>
+<table><thead><tr><th>部门法</th><th>比对客体</th><th>核心规则</th><th>结论措辞</th></tr></thead><tbody><tr><td>商标</td><td>核定商品 vs 被诉商品；注册商标 vs 被诉标识</td><td>类似商品+近似标识+混淆可能（第57条）</td><td>相同/类似/不类似</td></tr><tr><td>专利（发明/新型）</td><td>权利要求技术特征 vs 被诉技术方案</td><td>全面覆盖；等同（第64条保护范围）</td><td>一一对应/等同/未覆盖</td></tr><tr><td>外观设计</td><td>专利图片所示设计 vs 被诉产品外观</td><td>整体观察综合判断+设计空间（第64条）</td><td>相同/近似/不相同不近似</td></tr><tr><td>著作权</td><td>原作品 vs 被诉作品</td><td>接触+实质性相似（抽象-过滤-比较）</td><td>实质性相似/不相似</td></tr></tbody></table>
+<div class="key">实务关键：比对客体搞错，全盘皆输。商标比「商品+标识」，专利比「权利要求字面特征」，著作权比「表达」而非「思想」。原告的比对表第一列必须是<b>法律要求的比对单元</b>。</div>
+<h2>二、通用结构：三栏法比对表</h2>
+<p>不论哪类案件，《技术比对表》都用同一骨架：<b>「原告要素 | 被告要素 | 比对结论（相同/近似/不同 + 理由）」</b>。把抽象的权利「拆成可逐格对照的单元」。</p>
+<ul><li><b>外观设计</b>：按视图（主视图/俯视图）拆部件——戒托造型、镶嵌方式、链节纹样，逐格比；</li><li><b>商标</b>：拆「商品类别 + 标识音形义 + 使用方式」三格；</li><li><b>著作权（设计图）</b>：拆「线条、构图、配色、元素排布」逐格比，并说明「接触」可能性（如被告曾见设计稿）。</li></ul>
+<div class="key">珠宝行业实战：一条「星河」项链被抄，比对表应把项链拆成「吊坠星形轮廓 / 链节连接方式 / 表面拉丝纹路 / 整体佩戴效果」四格，逐格与专利视图/原设计图对照，标注相同与差异。这种「拆件比对」让法官一目了然，避免对方以「整体不像」搪塞。</div>
+<h2>三、外观设计：整体观察 + 设计空间</h2>
+<ul><li><b>整体观察综合判断</b>：不以单点相似定论，看整体视觉印象是否相近；</li><li><b>要部比对</b>：整体难分时对显著识别部分（如吊坠主造型）比对；</li><li><b>设计空间</b>：某类设计的常见表达越有限（如素圈戒指），近似越易被认定；设计空间大则更容忍差异。⚠ 设计空间的司法认定标准以现行判例为准。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：外观设计「整体观察综合判断」与「要部」的权重、以及设计空间对近似判断的具体影响，以现行《专利法》（2020 修正）第 64 条及司法解释、典型判例为准。</div>
+<h2>四、可视化表达：让法官「看见」侵权</h2>
+<ul><li><b>标注图</b>：在对方产品照片/截图上一一圈出与权利要求/原设计对应的特征，配引线说明；</li><li><b>比对图</b>：左右并排放大，相同处绿框、近似处黄框、不同处红框（或统一色系标注）；</li><li><b>时间轴图</b>：著作权「接触」用时间线证明（我方发表日早于对方）；</li><li><b>避免</b>：原图直接贴、不标注、比例失真——会被对方质疑比对失真。</li></ul>
+<div class="key">双视角：原告用可视化「放大」相同点；<b>被诉方反向比对</b>——逐特征找差异、主张「该差异是视觉要害」、主张设计空间有限致近似不可避免、或主张功能性设计不受保护。比对表谁先做得细，谁占庭审主动。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：商标侵权和专利侵权，比对的第一列应该分别写什么？</div><div class="a"><span class="an">参考答案</span>商标写「核定商品/注册商标标识」（比商品+标识+混淆）；专利写「权利要求的技术特征」（比特征是否一一落入）。客体不同，比对单元不同，搞错全盘输。</div><div class="q">Q2：外观设计用「整体观察综合判断」，是不是单点相似就没用？</div><div class="a"><span class="an">参考答案</span>不是。整体印象相近才构成近似，但整体难分时对显著「要部」（如吊坠主造型）比对权重高。单点相似若恰是要部，仍可能认定整体近似。⚠ 权重以判例为准。</div><div class="q">Q3：什么是「设计空间」，对仿款比对有何影响？</div><div class="a"><span class="an">参考答案</span>某类产品的常见设计表达越有限（如素圈戒指），近似越易被认定；设计空间大则更容忍差异。被告可主张设计空间有限致近似不可避免以脱罪，原告则反之。⚠ 以现行判例为准。</div><div class="q">Q4：被诉方拿到原告的比对表，第一反应该做什么？</div><div class="a"><span class="an">参考答案</span>反向比对：逐特征找差异、主张关键差异在视觉要害、主张设计空间有限/功能性设计不受保护、质疑可视化标注失真（比例/选取角度）。用细比对夺回主动。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Comparison Table</div><div class="cn">技术比对表</div><div class="df">三栏法：原告要素/被告要素/结论</div></div><div class="ti"><div class="en">Overall Observation</div><div class="cn">整体观察综合判断</div><div class="df">外观设计近似认定的总方法</div></div><div class="ti"><div class="en">Design Space</div><div class="cn">设计空间</div><div class="df">常见表达有限度，影响近似认定宽严</div></div><div class="ti"><div class="en">All Elements Rule</div><div class="cn">全面覆盖原则</div><div class="df">专利权利要求特征须全部落入</div></div><div class="ti"><div class="en">Substantial Similarity</div><div class="cn">实质性相似</div><div class="df">著作权侵权比对核心（接触+实质相似）</div></div><div class="ti"><div class="en">Annotation Chart</div><div class="cn">标注图</div><div class="df">在对方产品上圈出对应特征的可视化</div></div></div><div class="foot"><a href="W22-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W22-D3.html">第 3 天 →</a><a class="qz" href="W22-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
