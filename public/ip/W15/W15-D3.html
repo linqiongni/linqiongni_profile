@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·第3天｜FTO 自由实施分析：上市前先查「雷区」</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · DAY 3 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>FTO 自由实施分析：上市前先查「雷区」</h1><div class="sub">专利稳定性与布局</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">新品要上市，先查这片地有没有别人的「产权雷」。FTO 自由实施分析就是专利版的「查产权、排雷」——上市前把同行有效专利扫一遍，确认你能不能自由卖，不能就绕开或买路钱（许可）。</div><div class="mlink"><b>业务落点</b>业务落点：珠宝新品/智能珠宝（含 NFC、无线充电）/代工新款上线前，做 FTO 查清侵权雷区，避免上市后被诉。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>自由实施分析（FTO）</li><li>权利要求比对表（Claim Chart）</li><li>地域性（第 11 条）</li><li>全面覆盖原则</li><li>双视角：权利方机会 + 被诉方防守</li><li>不视为侵权（第 75 条）/合法来源（第 77 条）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《FTO 检索与结论模板（初稿）》——选你公司一款拟上市产品（建议智能珠宝或新款项链），按「产品→地域→检索→筛选→比对→结论→建议」七步填出一份简化 FTO 框架，标注哪些是自由、哪些是受限需许可、哪些高风险需无效或停售。这正是本周核心交付物。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。我是一位纯法律背景的珠宝企业法务。今天学习 FTO 自由实施分析。请：
+1) 用生活化比喻讲清 FTO 是什么，以及它和「侵权分析」在时点、对象、目的上的区别（配对比表）；
+2) 给出一套可复制的 FTO 操作流程（锁定产品→锁定地域→检索→筛选→比对→结论→建议）；
+3) 讲清「权利要求比对表（Claim Chart）」怎么用，结合「全面覆盖原则」说明只要缺一个必要技术特征就不侵权，这也正是规避设计的突破口；
+4) 用珠宝/智能珠宝（蓝牙、NFC、无线充电）例子走一遍；
+5) 给双视角：我做 FTO 排查风险 vs 别人做 FTO 发现踩中我的专利（我的变现机会）；
+6) 出 4 道判断题并讲评。
+法条引用精确到条并标注版本（专利法第 11、64、75、77 条已核实），不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、FTO 是什么：上市前的「排雷」</h2>
+<p>FTO（Freedom to Operate，自由实施/自由实施分析）是企业在<b>将产品投放某一市场前</b>，检索该地区<b>他人有效专利</b>，评估自己的产品是否会侵犯他人专利权，并给出「能否自由实施」结论的专业分析。它回答一个问题：<b>我的产品在这个国家/地区，能不能放心卖？</b></p>
+<div class="key">企业法务的核心价值：FTO 不是律师炫技，是<b>商业决策输入</b>——产品上市前发现踩了别人专利，要么改设计（规避）、要么花钱买许可、要么把对方专利打掉（无效），三条路都比「上市后被诉」便宜。</div>
+<h2>二、FTO vs 侵权分析（易混对比）</h2>
+<table><thead><tr><th>维度</th><th>FTO 自由实施分析</th><th>侵权分析</th></tr></thead><tbody><tr><td>时点</td><td>上市前/研发中（事前）</td><td>被诉后（事后）</td></tr><tr><td>对象</td><td>自己产品 vs 他人专利</td><td>对方产品 vs 己方专利</td></tr><tr><td>目的</td><td>评估并规避风险</td><td>确认对方是否侵权、主张赔偿</td></tr><tr><td>结论</td><td>自由 / 受限需许可 / 建议无效</td><td>构成或不构成侵权</td></tr></tbody></table>
+<h2>三、FTO 操作流程（可复制 SOP）</h2>
+<ol><li><b>锁定产品</b>：明确要上市的产品/款式的技术特征与设计要点；</li><li><b>锁定地域</b>：产品在哪些国家/地区销售（专利地域性，第 11 条权能仅在该国有效）；</li><li><b>检索</b>：用关键词 + IPC/洛迦诺分类号，检索该地域有效/审中专利；</li><li><b>筛选</b>：剔除过期、撤回、明显不相关，保留高风险专利；</li><li><b>比对</b>：用权利要求比对表（Claim Chart）逐特征比对（全面覆盖/等同）；</li><li><b>出结论</b>：自由实施 / 受限（建议规避或许可）/ 高风险（建议无效或停售）；</li><li><b>给建议</b>：规避设计、许可谈判或提起无效宣告（第 45 条）。</li></ol>
+<div class="key">珠宝行业 FTO 重点：① 款式外观——检索同类外观专利避免「仿款」踩雷；② 智能珠宝——NFC、无线充电、蓝牙模块可能落入通信 SEP，需专项 FTO；③ 代工厂——让代工协议约定「知识产权瑕疵担保」，风险转嫁。</div>
+<h2>四、比对工具：权利要求比对表（Claim Chart）</h2>
+<table><thead><tr><th>权利要求技术特征</th><th>自家产品对应特征</th><th>是否覆盖</th></tr></thead><tbody><tr><td>特征 A（前序）</td><td>产品具备 A</td><td>是</td></tr><tr><td>特征 B（区别）</td><td>产品以 C 替代 B</td><td>否 → 不全面覆盖</td></tr><tr><td>特征 C</td><td>产品具备 C</td><td>是</td></tr></tbody></table>
+<p>只要有一个必要技术特征未被覆盖，就不构成「全面覆盖」，原则上不侵权（等同另论）。这也正是规避设计的突破口——从权利要求的缺口突围。</p>
+<h2>五、双视角：权利方机会 + 被诉方防守</h2>
+<ul><li><b>权利方（你持有专利）</b>：竞争对手做 FTO 时若发现踩中你的专利，会主动来谈许可——这是<b>把专利变现</b>的窗口，可开许可条件（也可备无效抗辩防被拆）；</li><li><b>被诉/防守方</b>：上市前自己做 FTO，发现风险即改设计或储备无效证据，避免被动挨打；被诉时也可用 FTO 报告佐证「已尽合理注意」。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：FTO 检索的地域范围、分类号体系（IPC 用于发明/实用新型、洛迦诺用于外观设计）及比对标准，以现行《专利法》（2020 修正、2021-06-01 施行）第 11 条、第 64 条、第 75 条、第 77 条为准；分类体系细节以专利审查指南为准。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：我的新品下月就要上架，FTO 现在做还来得及吗？该先查什么？</div><div class="a"><span class="an">参考答案</span>来得及但要从紧。第一步<b>锁定地域</b>（在哪些国卖，专利地域性，第 11 条），第二步锁定产品技术/设计特征，再检索当地有效专利。上市前至少跑完「检索→筛选→高风险比对」三步走。</div><div class="q">Q2：FTO 和侵权分析是一回事吗？</div><div class="a"><span class="an">参考答案</span>不是。FTO 是<b>上市前</b>查自己会不会踩别人专利（事前、防风险）；侵权分析是<b>被诉后</b>确认对方是否踩你专利（事后、主张赔偿）。时点、对象、目的都不同。</div><div class="q">Q3：比对发现我方产品缺对方权利要求里的一个必要技术特征，这意味着什么？</div><div class="a"><span class="an">参考答案</span>原则上不构成「全面覆盖」，不侵权。这正是规避设计的原理——从权利要求缺口突围。但要小心「等同原则」能否兜底，必要时让技术/代理所复核。</div><div class="q">Q4：我做 FTO 发现竞品踩中了我公司的一项外观专利，我能怎么用？</div><div class="a"><span class="an">参考答案</span>这是变现窗口：竞品做 FTO 会主动来找你谈许可，你可开许可条件收「路费」；同时备好专利稳定性证据，防对方反手提无效拆你的专利。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Freedom to Operate (FTO)</div><div class="cn">自由实施分析</div><div class="df">上市前检索他人有效专利评估侵权风险</div></div><div class="ti"><div class="en">Claim Chart</div><div class="cn">权利要求比对表</div><div class="df">自家产品特征 vs 专利权利要求逐条比对</div></div><div class="ti"><div class="en">Infringement Opinion</div><div class="cn">侵权分析意见</div><div class="df">FTO 输出现状结论与建议</div></div><div class="ti"><div class="en">Clearance Search</div><div class="cn">侵权 clearance 检索</div><div class="df">针对具体产品的自由实施检索</div></div><div class="ti"><div class="en">All-Elements Rule</div><div class="cn">全面覆盖原则</div><div class="df">产品须具备权利要求全部技术特征才侵权</div></div><div class="ti"><div class="en">Right to Use</div><div class="cn">使用权</div><div class="df">在他人专利有效地域内能否实施</div></div></div><div class="foot"><a href="W15-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W15-D4.html">第 4 天 →</a><a class="qz" href="W15-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>

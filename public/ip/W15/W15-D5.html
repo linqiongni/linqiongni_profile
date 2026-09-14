@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·第5天｜标准必要专利与 FRAND：把专利变成「行业税」</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style></head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · DAY 5 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>标准必要专利与 FRAND：把专利变成「行业税」</h1><div class="sub">专利稳定性与布局</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">标准像行业的「交通规则」，SEP 是规则里绕不开的专利；FRAND 是「公平、合理、无歧视」的过路费标准。持有 SEP 的人能收「行业税」，但不能漫天要价——否则反垄断找上门。</div><div class="mlink"><b>业务落点</b>业务落点：珠宝做智能珠宝（蓝牙/NFC/无线充电）可能踩 SEP；作为实施方谈费率，作为持有方管许可，都要懂 FRAND。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>标准必要专利（SEP）</li><li>FRAND 承诺</li><li>标准制定组织（SSO）</li><li>许可费率</li><li>禁令边界与反垄断</li><li>双视角：权利人 vs 实施方</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《SEP/FRAND 谈判要点卡》——假设你公司智能珠宝要用蓝牙/NFC，列出谈判前该准备的：必要性检验、费率基数选择（最小可销售单元）、可比协议、自上而下法思路，以及实施方可用 FRAND/反垄断反制的要点。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。我是一位纯法律背景的珠宝企业法务。今天学习标准必要专利（SEP）与 FRAND 谈判。请：
+1) 用比喻讲清 SEP 与 FRAND 是什么，以及它为何被称为「行业税」；
+2) 给出 FRAND 谈判流程（必要性检验→费率基数→自上而下法→offer/counter-offer→争议）；
+3) 给双视角：权利人（持 SEP 收许可费但受 FRAND 约束）vs 实施方（用技术但可用 FRAND/反垄断反制）；
+4) 用珠宝「智能戒指/项链内置蓝牙/NFC/无线充电」场景说明；
+5) 讲清 SEP 禁令的审慎边界与反垄断风险；
+6) 出 4 道判断题并讲评。
+法条引用：专利法第 11 条权能已核实；FRAND 具体成文与反垄断依据标「待核实」并给核对渠道。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、SEP 与 FRAND 是什么</h2>
+<p>标准必要专利（SEP，Standard-Essential Patent）是实施某<b>技术标准</b>（如 5G、Wi-Fi、蓝牙、NFC）时<b>无法避开</b>的专利。标准制定组织（SSO）要求成员承诺以 <b>FRAND</b>（Fair, Reasonable and Non-Discriminatory，公平、合理、无歧视）条件许可，避免持专利者「绑标勒索」。</p>
+<div class="key">商业本质：SEP 把专利变成「行业税」。你的智能珠宝用了蓝牙，就得向蓝牙 SEP 池交许可费。持有 SEP 是躺赚，但受 FRAND 约束——不能对 A 收 1 块对 B 收 100 块，也不能动辄发禁令逼对手就范。</div>
+<h2>二、FRAND 谈判流程</h2>
+<ol><li><b>必要性检验</b>：确认你的专利确为某标准「必要」专利（实施标准无法绕过）；</li><li><b>确定费率基数</b>：通常以「最小可销售单元」或整机，依 SSO 政策与可比协议确定；</li><li><b>自上而下法（Top-Down）</b>：用标准所有 SEP 总池费率 × 该专利占比，避免叠加过高；</li><li><b>Offer / Counter-offer</b>：双方依 FRAND 报价还价，保留书面记录；</li><li><b>争议解决</b>：协商不成可仲裁或诉讼，反垄断法兜底。</li></ol>
+<h2>三、双视角：权利人 vs 实施方</h2>
+<table><thead><tr><th>权利人（持 SEP）</th><th>实施方（用技术）</th></tr></thead><tbody><tr><td>须按 FRAND 给机会谈许可</td><td>可用 FRAND 抗辩过高费率</td></tr><tr><td>不得无理由拒许可/滥发禁令</td><td>可主张反垄断（搭售、过高定价）</td></tr><tr><td>费率要合理可解释</td><td>可要求必要性检验、剔除非必要专利</td></tr><tr><td>滥用可能触反垄断法</td><td>恶意拖延谈判亦可能违约</td></tr></tbody></table>
+<div class="key">珠宝行业场景：智能戒指、智能项链内置蓝牙/NFC/无线充电，这些通信技术几乎都被 SEP 覆盖。作为品牌方（实施方），你应向 SEP 池（如蓝牙 SIG、Avanci 物联网池）统一谈许可，而非逐个应对，避免被重复收费。</div>
+<h2>四、禁令与反垄断边界</h2>
+<p>SEP 持有人原则上<b>不得滥用禁令</b>胁迫实施方接受不公平费率——多法域（含中国反垄断实践）对 SEP 禁令持审慎态度。若权利人「违反 FRAND 义务 + 寻求禁令 + 高价」可能构成滥用市场支配地位。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：FRAND 的具体成文依据、SEP 相关反垄断规则及强制许可触发条件（专利法相关条款、反垄断法），以现行《专利法》（2020 修正）、《反垄断法》及司法解释、标准组织政策为准，条文序号请逐条核对。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：我公司做智能戒指用了蓝牙，对方拿一件蓝牙 SEP 来要高价，我能怎么挡？</div><div class="a"><span class="an">参考答案</span>作为实施方：① 要求必要性检验（确为必要专利吗）；② 主张 FRAND——费率应公平合理、可解释，要求看可比协议与自上而下法；③ 若对方高价+滥发禁令，可主张反垄断。别直接认高价。</div><div class="q">Q2：SEP 持有人是不是拿到专利就能随便发禁令逼我签城下之盟？</div><div class="a"><span class="an">参考答案</span>不是。SEP 受 FRAND 约束，多法域对 SEP 禁令持审慎态度；权利人违反 FRAND 又高价的，可能构成滥用市场支配地位（反垄断）。禁令不是 SEP 的常规武器。</div><div class="q">Q3：FRAND 里的「合理费率」一般按什么算？</div><div class="a"><span class="an">参考答案</span>常见以「最小可销售单元」或整机为基数，用自上而下法（SEP 总池费率 × 该专利占比）避免叠加过高；也要参考可比许可协议。具体以 SSO 政策与谈判为准 ⚠待核实。</div><div class="q">Q4：作为珠宝品牌方，智能珠宝的 SEP 许可怎么谈最省事？</div><div class="a"><span class="an">参考答案</span>向 SEP 池（如蓝牙 SIG、Avanci 物联网池）统一谈一揽子许可，而不是跟每个专利权人单挑，避免重复收费、节省谈判成本。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Standard-Essential Patent (SEP)</div><div class="cn">标准必要专利</div><div class="df">实施技术标准无法避开的专利</div></div><div class="ti"><div class="en">FRAND</div><div class="cn">公平、合理、无歧视</div><div class="df">SEP 持有人许可承诺与谈判基准</div></div><div class="ti"><div class="en">Standard Setting Org (SSO)</div><div class="cn">标准制定组织</div><div class="df">制定标准并管理 FRAND 承诺</div></div><div class="ti"><div class="en">Royalty Rate</div><div class="cn">许可费率</div><div class="df">SEP 许可费，常以最小可销售单元为基</div></div><div class="ti"><div class="en">Injunction</div><div class="cn">禁令</div><div class="df">SEP 持有人原则上不得滥发以胁迫</div></div><div class="ti"><div class="en">Top-Down Method</div><div class="cn">自上而下法</div><div class="df">以 SEP 总池费率×专利占比定费率</div></div></div><div class="foot"><a href="W15-D4.html">← 第 4 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W15-weekend.html">周末实战 →</a><a class="qz" href="W15-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script></body></html>
