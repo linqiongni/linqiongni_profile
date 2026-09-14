@@ -1,0 +1,570 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>文书模板库 · 劳动用工实务</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+.hero{border:1px solid rgba(201,162,39,.34);border-radius:12px;padding:22px 24px;margin:18px 0 8px;background:linear-gradient(135deg,rgba(74,157,156,.10),rgba(201,162,39,.06))}
+.hero h1{margin-bottom:10px}
+.hero .sub{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;margin:14px 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px;margin:14px 0}
+.mcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 17px;text-decoration:none;transition:.15s}
+.mcard:hover{border-color:var(--gold);background:#141922}
+.mcard .mt{color:var(--tx);font-size:15px;font-weight:600;margin-bottom:5px}
+.mcard .md{color:var(--tx3);font-size:12.6px;line-height:1.75}
+.mcard .mn{color:var(--gold);font-size:11px;letter-spacing:.16em;margin-bottom:6px}
+.mcard.a{border-left:3px solid var(--blue)}
+.mcard.b{border-left:3px solid var(--jade)}
+.mcard.c{border-left:3px solid var(--gold)}
+.badge{display:inline-block;font-size:11.5px;letter-spacing:.06em;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--tx2);margin:0 6px 6px 0}
+.badge.g{border-color:rgba(201,162,39,.5);color:var(--gold)}
+.badge.j{border-color:rgba(74,157,156,.5);color:var(--jade)}
+.badge.r{border-color:rgba(192,92,78,.5);color:var(--red)}
+.badge.b{border-color:rgba(91,141,214,.5);color:var(--blue)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:14px 0}
+.side{border:1px solid var(--line);border-radius:9px;padding:13px 15px;background:var(--card)}
+.side.emp{border-top:2px solid var(--blue)}
+.side.wkr{border-top:2px solid var(--jade)}
+.side .sh{font-size:12px;letter-spacing:.14em;margin-bottom:9px;font-weight:600}
+.side.emp .sh{color:var(--blue)}
+.side.wkr .sh{color:var(--jade)}
+.side .sb{font-size:13.4px;color:var(--tx2);line-height:1.85}
+.side .sb b{color:var(--tx)}
+.mid{display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.2em;color:var(--tx3);margin:10px 0}
+.chk{list-style:none;margin:12px 0;padding:0}
+.chk li{display:flex;gap:10px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:9px 13px;margin:7px 0;font-size:13.6px;color:var(--tx2);cursor:pointer}
+.chk li input{margin-top:5px;accent-color:var(--gold);flex:0 0 auto}
+.chk li.done{opacity:.5}
+.chk li.done span{text-decoration:line-through}
+.pbar{height:5px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:12px 0 4px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade),var(--gold));width:0;transition:.3s}
+.pnum{font-size:12px;color:var(--tx3);text-align:right}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:17px 19px;margin:16px 0}
+.calc .ct{font-size:15px;color:var(--gold);font-weight:600;margin-bottom:12px}
+.frow{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:11px}
+.fld{flex:1 1 150px;display:flex;flex-direction:column;gap:5px}
+.fld label{font-size:12.2px;color:var(--tx3)}
+.fld input,.fld select{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--tx);font-size:13.5px;font-family:inherit;width:100%}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold)}
+.res{background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:13px 15px;margin-top:12px;font-size:13.6px;line-height:2;color:var(--tx2);white-space:pre-wrap}
+.res b{color:var(--gold)}
+.res .big{font-size:19px;color:var(--jade);font-weight:600}
+.res .sm{font-size:12.3px;color:var(--tx3)}
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:9px 0 9px 38px;font-size:13.8px;color:var(--tx2);border-bottom:1px dashed var(--line)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:23px;height:23px;border-radius:50%;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.45);color:var(--gold);font-size:12px;display:flex;align-items:center;justify-content:center}
+.tpl{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:14px 0;overflow:hidden}
+.tpl .th2{padding:12px 16px;font-size:14px;color:var(--gold);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tpl pre{background:#0c0e12;padding:14px 17px;font-size:12.9px;color:var(--tx2);white-space:pre-wrap;line-height:1.9;font-family:inherit;max-height:340px;overflow:auto;margin:0}
+.rt{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:14px 0}
+.rd{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.rd .rn{color:var(--gold);font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+.rd .rt2{color:var(--tx);font-size:13.6px;line-height:1.6}
+.rd .rl{color:var(--tx3);font-size:12px;margin-top:5px}
+.warn{background:rgba(192,92,78,.07);border:1px dashed rgba(192,92,78,.4);border-radius:7px;padding:10px 14px;font-size:13.2px;color:var(--tx2);margin:12px 0}
+.warn b{color:var(--red)}
+.sw{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.sw button{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:12.8px;color:var(--tx2);cursor:pointer;font-family:inherit}
+.sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
+@media(max-width:700px){.split{grid-template-columns:1fr}}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html" style="border-color:var(--gold);color:var(--gold)">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>文书模板库</h1><p class="sub">点右上角复制，把括号里的内容换成你的</p></div><h2 style="border-left-color:var(--jade)">本节目录</h2><ul class="idxlist"><li><a href="#h_E1"><span class="n">E1</span><span class="t">用人单位侧：从录用到离职的文书模板</span></a></li><li><a href="#h_E2"><span class="n">E2</span><span class="t">劳动者侧：催告、异议与主张的文书模板</span></a></li></ul><section id="E1"><h2 id="h_E1">E1　用人单位侧：从录用到离职的文书模板</h2><div><span class="badge g">单位侧</span><span class="badge g">可直接用</span></div><p class="sub" style="margin:10px 0 4px">点右上角复制到文本编辑器，把「______」替换成你的内容即可。</p><p>本节是各章节未收录的补充模板。已在正文中出现的模板（录用条件确认书、员工手册签收单、催签函、三份解除通知书、协商解除协议、加班管理制度）请到&lt;a href=&quot;employer.html&quot;&gt;用人单位视角&lt;/a&gt;对应章节查看。</p><div class="note">所有模板均为通用示例，<b>不构成法律意见</b>。涉及重大金额、集体裁员、竞业限制的，建议由律师审阅后使用。</div><div class="tpl"><div class="th2"><span>1 · 违纪事实调查谈话笔录</span><button class="btn gold" onclick="cp('cp64',this)">复制</button></div><pre id="cp64">违纪事实调查谈话笔录
+
+时间：______年____月____日____时____分
+地点：____________
+调查人：______（部门）　______（HR）　记录人：______
+被调查人：______　工号：______　岗位：______
+
+问：我们就______年____月____日发生的______一事向你了解情况，请如实陈述。
+答：________________________________________________
+
+问：当时你在何处？做了什么？
+答：________________________________________________
+
+问：是否有其他人在场？
+答：________________________________________________
+
+问：公司《______制度》第 X 条规定：______。你是否知晓该规定？
+答：________________________________________________
+
+问：你还有什么需要补充说明的吗？
+答：________________________________________________
+
+被调查人签字：______　日期：______
+调查人签字：______
+记录人签字：______
+
+【留痕要点】
+1. 两名以上调查人在场并签字；
+2. 让被调查人**本人手写**补充内容与签名，不要代写；
+3. 被调查人拒绝签字的，由调查人注明“被调查人拒绝签字”并双人签字确认；
+4. 同步保存监控、系统日志、书面材料等客观证据，笔录只是证据链的一环；
+5. 谈话前告知调查事由，不得诱导、不得威胁。</pre></div><div class="tpl"><div class="th2"><span>2 · 书面警告通知书</span><button class="btn gold" onclick="cp('cp65',this)">复制</button></div><pre id="cp65">书面警告通知书
+
+______（姓名，工号______）：
+
+经查，你于______年____月____日存在下列行为：
+________________________________________________（客观描述事实：时间、地点、行为、后果）
+
+上述行为违反《______公司员工手册》（版本____，你于______年____月____日签收）第 X 条第 X 款之规定：______。
+
+根据制度规定，现对你作出如下处理：
+□ 口头警告　□ 书面警告　□ 记过　□ 记大过
+
+同时要求你：
+1. 立即停止上述行为；
+2. 于______年____月____日前完成整改：______；
+3. 如再次发生同类行为，公司将依制度从重处理，**直至解除劳动合同**。
+
+你有权在收到本通知之日起 3 个工作日内提出书面申辩。
+
+______公司（盖章）
+______年____月____日
+
+----------------------------------------
+签 收 回 执
+本人已于______年____月____日收到本通知书。
+本人意见：□ 认可　□ 不认可，理由：______
+签收人：______　日期：______
+
+【要点】
+1. **先警告再解除**——这是证明“处罚相当”与“屡教不改”的关键证据，能大幅降低日后被认定“处罚过重”的风险；
+2. 警告要写明“再犯将解除”，为后续解除铺垫；
+3. 拒签的注明拒签并由双人签字证明，同时用 EMS 与邮件同步送达。</pre></div><div class="tpl"><div class="th2"><span>3 · 试用期考核表（与录用条件对应版）</span><button class="btn gold" onclick="cp('cp66',this)">复制</button></div><pre id="cp66">试用期考核表
+
+姓名：______　工号：______　岗位：______
+入职日期：______　试用期：______至______　考核日期：______
+
+一、考核说明
+本表依据你于入职当日签署的《录用条件确认书》（签署日期：______年____月____日）所列录用条件逐项考核。
+
+二、逐项考核（每项 0–10 分，满分 100）
+| 序号 | 录用条件（引自确认书） | 评分标准 | 得分 | 事实与依据 |
+|---|---|---|---|---|
+| 1 | 试用期累计完成销售额不低于____元 | 达标 10 分，每低 10% 扣 2 分 | | |
+| 2 | 独立完成____并通过直属主管验收 | 按期通过 10 分 | | |
+| 3 | 出勤率不低于 95%，无旷工 | 达标 10 分，每旷工 1 天扣 3 分 | | |
+| 4 | 遵守《员工手册》，无违纪 | 无违纪 10 分，每次违纪扣 3 分 | | |
+| 5 | 学历、证书、工作经历真实有效 | 经核验真实 10 分 | | |
+
+三、总分与结论
+总分：______（满分 100，合格线：______分）
+结论：□ 符合录用条件，按期转正　□ 不符合录用条件
+
+不符合录用条件的具体说明（须逐项对应）：
+1. ____________________________________
+2. ____________________________________
+
+四、确认
+直属主管签字：______　日期：______
+部门负责人签字：______　日期：______
+人力资源部签字：______　日期：______
+员工本人签字：______　日期：______
+（员工拒签的，由两名在场人员签字证明：______、______）
+
+【要点】
+1. 考核项必须与《录用条件确认书》**逐条一一对应**，这是试用期解除能成立的核心；
+2. 尽量用**可量化的客观数据**，避免“工作态度不好”这类主观评价；
+3. **必须在试用期届满前完成考核并得出结论**——试用期满后再以“不符合录用条件”解除，一般不能成立；
+4. 员工拒签不影响效力，但要有拒签证明与送达记录。</pre></div><div class="tpl"><div class="th2"><span>4 · 竞业限制协议（要点版）</span><button class="btn gold" onclick="cp('cp67',this)">复制</button></div><pre id="cp67">竞业限制协议
+
+甲方（用人单位）：______　统一社会信用代码：______
+乙方（劳动者）：______　身份证号：______　岗位：______
+
+鉴于乙方在甲方任职期间将接触甲方的商业秘密（定义见第 1 条），双方就竞业限制事宜约定如下：
+
+**第 1 条　商业秘密的范围**
+包括但不限于：客户名单与联系方式、定价策略与成本数据、技术方案与源代码、供应商信息与采购价格、未公开的经营计划与财务数据。
+
+**第 2 条　竞业限制的适用**
+2.1 乙方属于《中华人民共和国劳动合同法》第二十四条规定的下列人员（勾选）：
+□ 高级管理人员　□ 高级技术人员　□ 其他负有保密义务的人员（说明：______）
+2.2 竞业限制期限：自劳动合同解除或终止之日起______个月，**不得超过 24 个月**。
+
+**第 3 条　竞业限制的范围与地域**
+3.1 乙方在竞业限制期内，不得：
+（1）到与甲方生产或者经营同类产品、从事同类业务的有竞争关系的用人单位任职（竞争单位包括但不限于：______）；
+（2）自己开业生产或者经营同类产品、从事同类业务；
+（3）以顾问、咨询、代持、技术支持等任何形式，为竞争单位提供服务。
+3.2 地域范围：______省/市（**范围应合理，不宜写“全国”“全球”**）。
+
+**第 4 条　经济补偿**
+4.1 甲方在竞业限制期限内**按月**向乙方支付经济补偿，标准为：乙方离职前十二个月平均工资的______%（建议不低于 30%），且**不低于当地最低工资标准**，即每月人民币______元。
+4.2 支付时间：每月______日前支付至乙方指定账户。
+4.3 甲方**连续 3 个月未支付**经济补偿的，乙方有权书面通知甲方解除本协议。
+
+**第 5 条　违约金的约定**
+乙方违反本协议的，应向甲方支付违约金人民币______元，并返还已收取的经济补偿。违约金**明显过高的，可请求人民法院或仲裁机构予以适当减少**。
+
+**第 6 条　协议的启动与解除**
+6.1 劳动合同解除或终止时，甲方应**书面通知**乙方是否启动竞业限制；未通知视为不启动。
+6.2 甲方在竞业限制期内可提前解除本协议，但应额外支付乙方______个月的经济补偿（⚠ 各地口径不同，请按当地规定填写）。
+
+**第 7 条　其他**
+本协议一式两份，双方各执一份，自双方签字（盖章）之日起生效。
+
+甲方（盖章）：______　日期：______
+乙方（签字）：______　日期：______
+
+【律师提示】
+1. **只对真正接触核心秘密的人签**——对全员签竞业既无效（对普通员工）又费钱（要付补偿）；
+2. **不按月支付补偿金 = 放弃权利**，务必保留银行流水；
+3. 范围与地域写得太宽（如“所有互联网行业”“全国”）可能被认定不合理；
+4. 离职时务必**书面确认是否启动**，不启动就及时书面通知解除。</pre></div><div class="tpl"><div class="th2"><span>5 · 经济性裁员：说明情况与报告函</span><button class="btn gold" onclick="cp('cp68',this)">复制</button></div><pre id="cp68">关于经济性裁员的情况说明与报告
+
+致：______区/县人力资源和社会保障局
+
+我单位______公司（统一社会信用代码：______，注册地址：______，法定代表人：______），现就经济性裁员事项报告如下：
+
+一、裁员原因（勾选并说明）
+□ 依照企业破产法规定进行重整（附：法院裁定书）
+□ 生产经营发生严重困难（附：近____年审计报告、财务报表）
+□ 企业转产、重大技术革新或者经营方式调整，经变更劳动合同后仍需裁减人员（附：决议与变更说明）
+□ 其他因劳动合同订立时所依据的客观经济情况发生重大变化致使劳动合同无法履行（说明：______）
+
+二、裁员规模
+现有职工总数______人；本次拟裁减______人，占职工总数的______%。
+
+三、已履行的程序
+1. 已于______年____月____日向工会/全体职工**说明情况**（附：会议纪要、签到表、照片）；
+2. 已**听取**工会/职工的意见（附：意见汇总与采纳情况说明）；
+3. 本次报告即为向劳动行政部门**报告**程序。
+（注：说明与听取意见须在裁员前 **30 日**完成）
+
+四、优先留用执行情况
+本单位已按《中华人民共和国劳动合同法》第四十一条第二款优先留用下列人员：
+（一）与本单位订立较长期限固定期限劳动合同的：______人；
+（二）与本单位订立无固定期限劳动合同的：______人；
+（三）家庭无其他就业人员，有需要扶养的老人或者未成年人的：______人。
+未被留用人员中，不属于《劳动合同法》第四十二条规定的禁止裁减人员（三期女职工、医疗期内、工伤丧失劳动能力等）。
+
+五、经济补偿方案
+按《劳动合同法》第四十七条支付经济补偿：每满 1 年支付 1 个月工资；6 个月以上不满 1 年按 1 年计；不满 6 个月支付半个月工资。预计总额人民币______元。
+
+六、后续安排
+1. 裁员后 6 个月内重新招用人员的，将**通知被裁减人员并在同等条件下优先招用**；
+2. 将依法出具解除证明并在 15 日内办理档案与社保关系转移。
+
+附件：1. 营业执照复印件　2. 职工名册　3. 裁减人员名单　4. 会议纪要与签到表　5. 工会/职工意见　6. 财务或重整证明文件
+
+______公司（盖章）
+______年____月____日
+
+【要点】
+1. **三道程序缺一不可**：提前 30 日说明 → 听取意见 → 向劳动行政部门报告；
+2. 报告要取得**回执或受理凭证**，这是程序合规的关键证据；
+3. 优先留用顺序必须实际执行并留有记录；
+4. 不得裁减第 42 条六类人员。</pre></div><div class="tpl"><div class="th2"><span>6 · 解除劳动合同理由通知工会函</span><button class="btn gold" onclick="cp('cp69',this)">复制</button></div><pre id="cp69">关于解除与______劳动合同的理由通知函
+
+______工会（或：______区/县总工会）：
+
+我单位拟解除与职工______（工号：______，岗位：______，入职日期：______）的劳动合同。依据《中华人民共和国劳动合同法》第四十三条规定，现将解除理由通知如下：
+
+一、拟解除的法律依据
+《中华人民共和国劳动合同法》第____条第____款第____项：______
+
+二、解除的事实依据
+1. ____________________________________
+2. ____________________________________
+（附：证据清单及材料）
+
+三、制度依据
+《______公司员工手册》（版本____）第 X 条第 X 款：______
+该制度已于______年____月____日经职工代表大会讨论并与工会/职工代表协商确定，已于______年____月____日向全体职工公示，该职工于______年____月____日签收。
+
+四、已履行的程序
+□ 已进行违纪调查并制作谈话笔录
+□ 已听取该职工申辩
+□ 已作出书面警告（日期：______）
+□ 属第 40 条情形的：已培训/调岗（日期：______），已再次考核（日期：______），已提前 30 日书面通知/已支付代通知金
+□ 拟支付经济补偿：人民币______元
+
+请工会研究并提出意见。我单位将研究工会意见，并将处理结果书面通知工会。
+
+______公司（盖章）
+______年____月____日
+
+----------------------------------------
+工 会 回 执
+本工会已于______年____月____日收到上述通知函。
+工会意见：____________________________________
+
+工会（盖章）：______
+______年____月____日
+
+【要点】
+1. **必须在作出解除决定之前**通知工会，不要把通知当成走过场；
+2. 没有工会的单位，一般向**上级工会或所在地总工会**送达（⚠ 各地口径不同），务必取得回执；
+3. ⚠ 事后补正能否治愈程序瑕疵，各地口径不同，**不要寄希望于补正**；
+4. 回执与意见是解除程序合规的核心证据，务必归档保存。</pre></div><div class="tpl"><div class="th2"><span>7 · 解除劳动合同证明书（离职证明）</span><button class="btn gold" onclick="cp('cp70',this)">复制</button></div><pre id="cp70">解除劳动合同证明书
+
+兹证明：
+姓名：______　性别：__　身份证号：____________________
+工作岗位：______
+劳动合同期限：自______年____月____日至______年____月____日
+解除/终止劳动合同的日期：______年____月____日
+在本单位的工作年限：______年____个月
+
+解除/终止原因：□ 劳动合同期满终止　□ 双方协商一致解除　□ 劳动者提出解除　□ 用人单位提出解除
+
+依据《中华人民共和国劳动合同法实施条例》第二十四条规定，本证明仅载明上述法定事项。
+
+本单位已依法办理：
+□ 出具本证明
+□ 办理档案转移手续（将于 15 日内完成）
+□ 办理社会保险关系转移手续（将于 15 日内完成）
+□ 结清工资并支付经济补偿/赔偿金人民币______元
+
+______公司（盖章）
+______年____月____日
+
+----------------------------------------
+签 收 回 执
+本人已于______年____月____日收到本证明书原件一份。
+签收人：______　日期：______
+
+【要点】
+1. **不得写对劳动者不利的内容**——不得写“因严重违纪被辞退”“工作能力不足”“双方存在争议”等（第 24 条）；
+2. 只写法定四项：合同期限、解除/终止日期、工作岗位、本单位工作年限；
+3. 必须为**非本人意愿中断就业**的劳动者如实申报，否则可能影响失业金领取；
+4. 应在**解除或终止时**出具，并**15 日内**办理档案与社保转移；
+5. 拒不出具或拖延造成劳动者损失的，应承担赔偿责任。</pre></div></section><section id="E2"><h2 id="h_E2">E2　劳动者侧：催告、异议与主张的文书模板</h2><div><span class="badge g">劳动者侧</span><span class="badge g">留痕中断时效</span></div><p class="sub" style="margin:10px 0 4px">维权文书的核心作用有两个：说明你的主张，以及让仲裁时效中断。</p><p>每一份书面文书都有双重作用：<b>表达主张</b> + <b>留下时效中断的证据</b>。发完之后一定要保留送达凭证。</p><div class="tpl"><div class="th2"><span>1 · 催告支付函（欠薪 / 加班费 / 经济补偿通用）</span><button class="btn gold" onclick="cp('cp71',this)">复制</button></div><pre id="cp71">催告支付函
+
+致：______公司（统一社会信用代码：______）
+
+本人______（工号______），于______年____月____日至______年____月____日（或至今）在你处工作，担任______岗位。
+
+截至本函发出之日，你公司尚有以下款项未支付：
+1. ______年____月至______年____月工资，合计人民币______元；
+2. ______年____月至______年____月加班费，合计人民币______元；
+3. 未休年休假折算工资（____天），合计人民币______元；
+4. 解除/终止劳动合同的经济补偿（或赔偿金），合计人民币______元；
+5. 其他：______，合计人民币______元。
+以上合计人民币______元。
+
+请你公司于收到本函之日起 **5 个工作日内**将上述款项支付至本人下列账户：
+开户行：______　户名：______　账号：____________
+
+逾期未支付的，本人将：
+1. 向劳动保障监察部门投诉，并依法主张加付赔偿金；
+2. 依法申请劳动仲裁；
+3. 依法申请支付令。
+
+本函的发出即构成本人向用人单位主张权利，**依法产生仲裁时效中断的法律效果**。
+
+本人保留依法主张其他一切权利的权利。
+
+催告人：______
+______年____月____日
+
+【送达与留痕要点】
+1. **三路送达**：EMS（详情单注明“催告支付函”）+ 公司邮箱/企业微信 + 短信，全部截图；
+2. 保留 EMS 存根、签收记录（可在邮政官网查询并截图）；
+3. 自己留存一份原件与全部送达凭证；
+4. 本函最重要的作用之一是**让 1 年仲裁时效重新计算**——所以一定要发出去并留证。</pre></div><div class="tpl"><div class="th2"><span>2 · 要求签订书面劳动合同函（劳动者版）</span><button class="btn gold" onclick="cp('cp72',this)">复制</button></div><pre id="cp72">要求签订书面劳动合同函
+
+致：______公司人力资源部
+
+本人______，于______年____月____日入职你公司，担任______岗位，双方已建立劳动关系，但至今未订立书面劳动合同。
+
+依据《中华人民共和国劳动合同法》第十条规定，建立劳动关系应当订立书面劳动合同；已建立劳动关系未同时订立书面劳动合同的，应当自用工之日起一个月内订立书面劳动合同。
+
+现本人要求：
+1. 请于收到本函之日起 5 个工作日内与本人签订书面劳动合同，并将其中一份交付本人持有（依据同法第十六条第二款，劳动合同文本由用人单位和劳动者各执一份）；
+2. 逾期未订立的，本人将依法主张自用工之日起满一个月的次日至满一年的前一日期间的**二倍工资**（最长 11 个月）。
+
+本函以 EMS 邮寄至公司注册地址/经营地址，并同步以电子邮件与微信送达。
+
+要求人：______
+______年____月____日
+附：本人工作证据（工牌照片 / 考勤截图 / 工资流水 / 工作群记录）
+
+【要点】
+1. 发了这封函，**单位就很难再主张“是劳动者拒签”**；
+2. 保留所有能证明你**实际在岗**的证据；
+3. 同时保存本函的送达凭证，用于日后二倍工资的计算与举证；
+4. ⚠ 二倍工资的仲裁时效起算各地口径不同，发函也是对时效的有力保护。</pre></div><div class="tpl"><div class="th2"><span>3 · 竞业限制补偿金催告函与解除通知函</span><button class="btn gold" onclick="cp('cp73',this)">复制</button></div><pre id="cp73">（一）催告函
+
+竞业限制补偿金催告函
+
+致：______公司
+
+本人______于______年____月____日与你公司解除/终止劳动合同。双方签有《竞业限制协议》（签订日期：______年____月____日），约定竞业限制期限自______年____月____日至______年____月____日。
+
+依据《中华人民共和国劳动合同法》第二十三条规定，对负有保密义务的劳动者，用人单位可以在竞业限制期限内**按月**给予劳动者经济补偿。
+
+截至本函发出之日，你公司已连续______个月未支付竞业限制补偿金（应自______年____月起支付，每月人民币______元）。
+
+现催告如下：请于收到本函之日起 5 个工作日内补付上述补偿金，并自本月起按月支付。逾期未付的，本人将依法**解除**竞业限制协议，并不再承担竞业限制义务。
+
+催告人：______　日期：______年____月____日
+
+（二）解除通知函（催告后逾期未付时使用）
+
+解除竞业限制协议通知书
+
+致：______公司
+
+本人______就你公司未支付竞业限制补偿金一事，已于______年____月____日发出《竞业限制补偿金催告函》（EMS 单号：______），要求你公司于 5 个工作日内补付并恢复按月支付。
+
+截至本函发出之日，你公司仍未支付。依据相关法律规定及双方协议第 X 条约定，本人现**通知**如下：
+
+1. 自本通知送达之日起，双方《竞业限制协议》**解除**，本人不再承担竞业限制义务；
+2. 请你公司在收到本通知后 5 个工作日内，支付已拖欠的竞业限制补偿金人民币______元。
+
+本通知以 EMS 邮寄并同步以电子邮件、微信送达。
+
+通知人：______　日期：______年____月____日
+
+【要点】
+1. **先催告、后解除**——走完程序再就业，风险最低；
+2. 各地对“未付补偿”的后果口径不同（有的规定连续 3 个月未付可请求解除），⚠ 请查当地规定；
+3. 保留全部送达凭证，这是你日后免责的关键证据；
+4. 单位**按月足额支付**了补偿金的，协议对你有约束力，去同行前务必评估。</pre></div><div class="tpl"><div class="th2"><span>4 · 劳动争议证据清单（模板）</span><button class="btn gold" onclick="cp('cp74',this)">复制</button></div><pre id="cp74">劳动争议证据清单
+
+案由：______
+申请人：______　被申请人：______公司
+
+| 编号 | 证据名称 | 证据类型 | 来源/形成时间 | 证明目的 | 页数 |
+|---|---|---|---|---|---|
+| 1 | 劳动合同 | 书证 | ______年____月签订 | 双方存在劳动关系、约定工资标准与岗位 | |
+| 2 | 银行工资流水 | 书证 | 银行打印并盖章 | 劳动关系存续期间、**实际工资标准**、工作年限 | |
+| 3 | 社保缴费记录 | 书证 | 社保 APP 截图 | 劳动关系存续期间、未依法足额缴费 | |
+| 4 | 个人所得税 APP 申报记录 | 电子数据 | 个税 APP 截图 | **实际工资标准**（反驳单位主张的“基本工资”）| |
+| 5 | 考勤/排班记录 | 电子数据 | OA/钉钉/企业微信导出 | 加班事实、出勤情况 | |
+| 6 | 工作群聊天记录 | 电子数据 | 微信/企业微信（保留原始载体）| 主管安排加班、工作内容、管理关系 | |
+| 7 | 解除通知书 | 书证 | 单位出具 | 单位作出解除决定及其理由 | |
+| 8 | 谈话录音及文字稿 | 视听资料 | ______年____月 | 解除的真实原因、沟通过程 | |
+| 9 | 工作证/工牌/工位照片 | 书证/物证 | — | 劳动关系与岗位 | |
+| 10 | 《员工手册》及签收单 | 书证 | — | 制度内容、是否已公示告知 | |
+| 11 | 绩效考核结果 | 书证 | — | 工资构成、考核是否客观 | |
+| 12 | 同事证言 | 证人证言 | — | 加班事实、工作年限、管理关系 | |
+
+【编制要点】
+1. **按证明目的分组编号**，不要杂乱堆砌；
+2. 每项证据都要写清**证明什么**，让仲裁员一眼看懂；
+3. 电子证据**保留原始载体**（手机、电脑），开庭时可能需要当庭展示；
+4. 微信记录要能**证明对方身份**（头像、昵称、备注、手机号、历史转账）；
+5. 录音要整理成**文字稿**并标注时间、地点、人物；
+6. 提交时按“原件核对 + 复印件入卷”的方式，原件自己保管好；
+7. 涉密的、不利于自己的证据也要如实评估，不要抱着侥幸心理。</pre></div><div class="tpl"><div class="th2"><span>5 · 劳动仲裁立案材料准备清单</span><button class="btn gold" onclick="cp('cp75',this)">复制</button></div><pre id="cp75">劳动仲裁立案材料准备清单
+
+一、去哪里
+□ **劳动合同履行地**（你实际干活的地方）或 **用人单位所在地** 的劳动人事争议仲裁委员会；
+□ 双方分别向两地申请的，由**劳动合同履行地**管辖；
+□ 仲裁**不收费**。
+
+二、需要准备的材料
+□ 仲裁申请书（**份数 = 被申请人人数 + 2**，一般准备 3 份）
+□ 申请人身份证原件及复印件
+□ 被申请人主体信息（**国家企业信用信息公示系统**打印的企业信用信息公示报告）
+□ 证据清单及证据材料（**份数同申请书**）
+□ 有委托代理人的：授权委托书、代理人身份证明
+
+三、仲裁申请书必备内容
+□ 申请人姓名、性别、身份证号、住址、联系电话
+□ 被申请人**全称**、统一社会信用代码、住所、法定代表人姓名与职务、联系电话
+□ **仲裁请求**：分项列明，每项写清金额与**计算式**
+□ **事实与理由**：按时间顺序写清入职、岗位、工资、争议经过、法律依据
+□ 此致：______劳动人事争议仲裁委员会
+□ 申请人签名与日期
+
+四、时间节点提醒
+□ 仲裁时效 **1 年**（劳动报酬争议：劳动关系存续期间不受限，终止后 1 年内提出）
+□ 仲裁审理 **45 日**，最长 **60 日**
+□ 收到裁决书后 **15 日**内决定是否起诉
+□ 终局裁决：劳动者可起诉，单位只能向中院申请撤销
+
+五、开庭注意事项
+□ 带齐**证据原件**（手机、电脑等原始载体）
+□ 提前写一份**发言提纲**：我是谁、我要什么、依据是什么
+□ 质证时从**真实性、合法性、关联性**三方面发表意见
+□ 对方提出的调解方案，不要当场答应，可以说“我需要考虑”
+□ 全程保持理性，只说事实与证据，不做情绪化表达
+
+六、免费帮助
+□ 12333 人社服务热线（政策咨询与投诉指引）
+□ 12348 法律援助热线（符合条件可申请免费律师）
+□ 当地总工会职工法律援助中心</pre></div></section><div class="foot"><a class="idx" href="index.html">返回首页</a><a href="route.html">28 天学习路线</a></div><div class="disc">本页内容为劳动法实务知识梳理，不构成法律意见，具体案件请咨询当地执业律师或拨打 12348 法律援助热线。引用法条以现行有效版本为准，地域性标准（产假奖励天数、工伤补助金、最低工资、社平工资等）以当地人社部门公布口径为准。</div></div><script>
+document.querySelectorAll('.chk').forEach(function(u){
+  var pb=document.getElementById(u.dataset.pb), pn=document.getElementById(u.dataset.pn);
+  function up(){
+    var all=u.querySelectorAll('input'), dn=u.querySelectorAll('input:checked');
+    u.querySelectorAll('li').forEach(function(li,i){ li.classList.toggle('done', u.querySelectorAll('input')[i].checked); });
+    if(pb) pb.firstElementChild.style.width=(all.length?dn.length/all.length*100:0)+'%';
+    if(pn) pn.textContent=dn.length+' / '+all.length;
+  }
+  u.addEventListener('change',up); up();
+});
+function cp(id,btn){
+  var t=document.getElementById(id).innerText, ok=function(){
+    var o=btn.textContent; btn.textContent='已复制'; setTimeout(function(){btn.textContent=o;},1400);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}
+  else{fb(t);ok();}
+  function fb(x){var a=document.createElement('textarea');a.value=x;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+}
+</script></body></html>

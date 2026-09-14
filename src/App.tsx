@@ -13,6 +13,7 @@ import { LogisticsLegalTab } from './components/LogisticsLegalTab';
 import { IpLegalTab } from './components/IpLegalTab';
 import { ForeignContractTab } from './components/ForeignContractTab';
 import { FilmLawTab } from './components/FilmLawTab';
+import { LaborLegalTab } from './components/LaborLegalTab';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { WaterRippleBackground } from './components/WaterRippleBackground';
@@ -38,8 +39,8 @@ export default function App() {
   const handleSelectTab = (tab: TabType) => {
     setActiveGroup(groupOfTab(tab));
     setActiveTab(tab);
-    // 跨境物流法务、知识产权为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
-    if (tab === 'logistics' || tab === 'ip') {
+    // 跨境物流法务、知识产权、双视角劳动法务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
+    if (tab === 'logistics' || tab === 'ip' || tab === 'labor') {
       window.scrollTo({ top: 0, behavior: 'auto' });
       return;
     }
@@ -165,6 +166,8 @@ export default function App() {
             {activeTab === 'foreign-contracts' && <ForeignContractTab />}
 
             {activeTab === 'film-law' && <FilmLawTab />}
+
+            {activeTab === 'labor' && <LaborLegalTab />}
           </motion.div>
         </AnimatePresence>
       </main>

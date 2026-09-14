@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1"><title>计算器 · 劳动用工实务</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+.hero{border:1px solid rgba(201,162,39,.34);border-radius:12px;padding:22px 24px;margin:18px 0 8px;background:linear-gradient(135deg,rgba(74,157,156,.10),rgba(201,162,39,.06))}
+.hero h1{margin-bottom:10px}
+.hero .sub{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;margin:14px 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px;margin:14px 0}
+.mcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 17px;text-decoration:none;transition:.15s}
+.mcard:hover{border-color:var(--gold);background:#141922}
+.mcard .mt{color:var(--tx);font-size:15px;font-weight:600;margin-bottom:5px}
+.mcard .md{color:var(--tx3);font-size:12.6px;line-height:1.75}
+.mcard .mn{color:var(--gold);font-size:11px;letter-spacing:.16em;margin-bottom:6px}
+.mcard.a{border-left:3px solid var(--blue)}
+.mcard.b{border-left:3px solid var(--jade)}
+.mcard.c{border-left:3px solid var(--gold)}
+.badge{display:inline-block;font-size:11.5px;letter-spacing:.06em;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--tx2);margin:0 6px 6px 0}
+.badge.g{border-color:rgba(201,162,39,.5);color:var(--gold)}
+.badge.j{border-color:rgba(74,157,156,.5);color:var(--jade)}
+.badge.r{border-color:rgba(192,92,78,.5);color:var(--red)}
+.badge.b{border-color:rgba(91,141,214,.5);color:var(--blue)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:14px 0}
+.side{border:1px solid var(--line);border-radius:9px;padding:13px 15px;background:var(--card)}
+.side.emp{border-top:2px solid var(--blue)}
+.side.wkr{border-top:2px solid var(--jade)}
+.side .sh{font-size:12px;letter-spacing:.14em;margin-bottom:9px;font-weight:600}
+.side.emp .sh{color:var(--blue)}
+.side.wkr .sh{color:var(--jade)}
+.side .sb{font-size:13.4px;color:var(--tx2);line-height:1.85}
+.side .sb b{color:var(--tx)}
+.mid{display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.2em;color:var(--tx3);margin:10px 0}
+.chk{list-style:none;margin:12px 0;padding:0}
+.chk li{display:flex;gap:10px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:9px 13px;margin:7px 0;font-size:13.6px;color:var(--tx2);cursor:pointer}
+.chk li input{margin-top:5px;accent-color:var(--gold);flex:0 0 auto}
+.chk li.done{opacity:.5}
+.chk li.done span{text-decoration:line-through}
+.pbar{height:5px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:12px 0 4px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade),var(--gold));width:0;transition:.3s}
+.pnum{font-size:12px;color:var(--tx3);text-align:right}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:17px 19px;margin:16px 0}
+.calc .ct{font-size:15px;color:var(--gold);font-weight:600;margin-bottom:12px}
+.frow{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:11px}
+.fld{flex:1 1 150px;display:flex;flex-direction:column;gap:5px}
+.fld label{font-size:12.2px;color:var(--tx3)}
+.fld input,.fld select{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--tx);font-size:13.5px;font-family:inherit;width:100%}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold)}
+.res{background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:13px 15px;margin-top:12px;font-size:13.6px;line-height:2;color:var(--tx2);white-space:pre-wrap}
+.res b{color:var(--gold)}
+.res .big{font-size:19px;color:var(--jade);font-weight:600}
+.res .sm{font-size:12.3px;color:var(--tx3)}
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:9px 0 9px 38px;font-size:13.8px;color:var(--tx2);border-bottom:1px dashed var(--line)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:23px;height:23px;border-radius:50%;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.45);color:var(--gold);font-size:12px;display:flex;align-items:center;justify-content:center}
+.tpl{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:14px 0;overflow:hidden}
+.tpl .th2{padding:12px 16px;font-size:14px;color:var(--gold);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tpl pre{background:#0c0e12;padding:14px 17px;font-size:12.9px;color:var(--tx2);white-space:pre-wrap;line-height:1.9;font-family:inherit;max-height:340px;overflow:auto;margin:0}
+.rt{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:14px 0}
+.rd{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.rd .rn{color:var(--gold);font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+.rd .rt2{color:var(--tx);font-size:13.6px;line-height:1.6}
+.rd .rl{color:var(--tx3);font-size:12px;margin-top:5px}
+.warn{background:rgba(192,92,78,.07);border:1px dashed rgba(192,92,78,.4);border-radius:7px;padding:10px 14px;font-size:13.2px;color:var(--tx2);margin:12px 0}
+.warn b{color:var(--red)}
+.sw{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.sw button{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:12.8px;color:var(--tx2);cursor:pointer;font-family:inherit}
+.sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
+@media(max-width:700px){.split{grid-template-columns:1fr}}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html" style="border-color:var(--gold);color:var(--gold)">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>计算器</h1><p class="sub">经济补偿、加班费、年休假、二倍工资、工伤待遇、仲裁时效，六个纯前端计算器</p></div><div class="key">所有计算都在<b>你自己的浏览器里完成</b>，不上传任何数据，可以离线使用。结果仅供估算，实际以当地公布标准与裁审口径为准。</div><div class="calc"><div class="ct">1 · 经济补偿 / 赔偿金计算器（N / N+1 / 2N）</div><div class="frow"><div class="fld"><label>入职日期</label><input type="date" id="c1a" value="2026-09-14"></div><div class="fld"><label>离职（解除/终止）日期</label><input type="date" id="c1b" value="2026-09-14"></div><div class="fld"><label>离职前 12 个月平均应发工资（元/月）</label><input type="number" id="c1w" placeholder="如 12000"></div><div class="fld"><label>当地上年度职工月平均工资（选填，用于 3 倍封顶）</label><input type="number" id="c1s" placeholder="不填则不封顶"></div></div><button class="btn gold" onclick="run1()">计算</button><div class="res" id="c1r">填好后点“计算”</div></div><div class="calc"><div class="ct">2 · 加班费计算器</div><div class="frow"><div class="fld"><label>月工资（元）</label><input type="number" id="c2w" placeholder="如 8000"></div><div class="fld"><label>工作日延长（小时）</label><input type="number" id="c2h1" value="0"></div><div class="fld"><label>休息日且未补休（小时）</label><input type="number" id="c2h2" value="0"></div><div class="fld"><label>法定节假日（小时）</label><input type="number" id="c2h3" value="0"></div></div><button class="btn gold" onclick="run2()">计算</button><div class="res" id="c2r">填好后点“计算”</div></div><div class="calc"><div class="ct">3 · 年休假折算计算器</div><div class="frow"><div class="fld"><label>累计工作年限（年）</label><input type="number" id="c3y" placeholder="如 6"></div><div class="fld"><label>当年已休天数</label><input type="number" id="c3u" value="0"></div><div class="fld"><label>月工资（元）</label><input type="number" id="c3w" placeholder="如 8000"></div><div class="fld"><label>是否按离职日折算</label><select id="c3s"><option value="n">全年计算</option><option value="y">按离职日折算</option></select></div><div class="fld"><label>离职日期</label><input type="date" id="c3d" value="2026-09-14"></div></div><button class="btn gold" onclick="run3()">计算</button><div class="res" id="c3r">填好后点“计算”</div></div><div class="calc"><div class="ct">4 · 未签书面合同二倍工资计算器</div><div class="frow"><div class="fld"><label>用工日（实际上班日）</label><input type="date" id="c4a" value="2026-09-14"></div><div class="fld"><label>签订书面合同日（未签则填满一年日）</label><input type="date" id="c4b" value="2026-09-14"></div><div class="fld"><label>月工资（元）</label><input type="number" id="c4w" placeholder="如 8000"></div></div><button class="btn gold" onclick="run4()">计算</button><div class="res" id="c4r">填好后点“计算”</div></div><div class="calc"><div class="ct">5 · 工伤待遇估算器</div><div class="frow"><div class="fld"><label>劳动能力鉴定伤残等级</label><select id="c5l"><option value="1">1 级</option><option value="2">2 级</option><option value="3">3 级</option><option value="4">4 级</option><option value="5">5 级</option><option value="6">6 级</option><option value="7">7 级</option><option value="8">8 级</option><option value="9">9 级</option><option value="10">10 级</option></select></div><div class="fld"><label>本人工资（元/月）</label><input type="number" id="c5w" placeholder="如 8000"></div><div class="fld"><label>统筹地区上年度职工月平均工资（选填）</label><input type="number" id="c5s" placeholder="用于 300%/60% 调整"></div></div><button class="btn gold" onclick="run5()">计算</button><div class="res" id="c5r">填好后点“计算”</div></div><div class="calc"><div class="ct">6 · 仲裁时效计算器</div><div class="frow"><div class="fld"><label>权利被侵害之日 / 劳动关系终止日</label><input type="date" id="c6d" value="2026-09-14"></div><div class="fld"><label>情形</label><select id="c6m"><option value="n">一般争议（知道权利被侵害日起算）</option><option value="y">劳动报酬争议（劳动关系终止日起算）</option></select></div></div><button class="btn gold" onclick="run6()">计算</button><div class="res" id="c6r">填好后点“计算”</div></div><div class="foot"><a class="idx" href="index.html">返回首页</a><a href="clash.html">去看攻防对照</a></div><div class="disc">本页内容为劳动法实务知识梳理，不构成法律意见，具体案件请咨询当地执业律师或拨打 12348 法律援助热线。引用法条以现行有效版本为准；地域性标准（产假奖励天数、工伤一次性补助金、最低工资、社平工资等）以当地人社部门公布口径为准。</div></div><script>
+function num(id){var v=document.getElementById(id).value;return v===''||isNaN(parseFloat(v))?0:parseFloat(v);}
+function money(x){return (Math.round(x*100)/100).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function monDiff(a,b){var A=new Date(a),B=new Date(b);if(isNaN(A)||isNaN(B))return -1;return (B.getFullYear()-A.getFullYear())*12+(B.getMonth()-A.getMonth())+(B.getDate()>=A.getDate()?0:-1);}
+function addYear(dstr,y){var d=new Date(dstr);d.setFullYear(d.getFullYear()+y);return d;}
+function ymd(d){return d.getFullYear()+' 年 '+(d.getMonth()+1)+' 月 '+d.getDate()+' 日';}
+function run1(){
+  var a=document.getElementById('c1a').value,b=document.getElementById('c1b').value;
+  var w=num('c1w'),avg=num('c1s'),mode=document.getElementById('c1m').value;
+  var m=monDiff(a,b); if(m<0){document.getElementById('c1r').innerHTML='<span style="color:var(--red)">请填写有效的入职与离职日期</span>';return;}
+  var y=Math.floor(m/12),r=m%12;
+  var N=y+(r>=6?1:(r>0?0.5:0));
+  var cap=false, base=w, Nn=N;
+  if(avg>0 && w>avg*3){base=avg*3; Nn=Math.min(N,12); cap=true;}
+  var amt=base*Nn, dnm=base*1;
+  var out='工作年限：<b>'+y+' 年 '+(r)+' 个月</b>　（共 '+m+' 个月）\n';
+  out+='经济补偿月数 N = <b>'+N+'</b>'+(cap?'　（触发封顶，按 12 个月计 → <b>'+Nn+'</b>）':'')+'\n';
+  out+='计算基数 = <b>'+money(base)+' 元/月</b>'+(cap?'　（超过当地社平工资 3 倍，按 3 倍封顶 = '+money(avg*3)+'）':'')+'\n\n';
+  out+='经济补偿 N　　　　　= <span class="big">'+money(amt)+' 元</span>\n';
+  out+='代通知金 +1　　　　 = '+money(dnm)+' 元（第 40 条未提前 30 日通知时另付）\n';
+  out+='　　　　N+1 合计　 = <b>'+money(amt+dnm)+' 元</b>\n';
+  out+='违法解除赔偿金 2N　 = <span class="big">'+money(amt*2)+' 元</span>\n\n';
+  out+='<span class="sm">口径：月工资 = 解除/终止前十二个月平均应得工资（含奖金津贴）。满 1 年计 1 个月；6 个月以上不满 1 年按 1 个月计；不满 6 个月计半个月。月工资高于当地上年度职工月平均工资 3 倍的，按 3 倍计且年限最高不超过 12 年（《劳动合同法》第 47 条）。代通知金按该劳动者上一个月的工资标准。本结果为估算，以实际裁审口径为准。</span>';
+  document.getElementById('c1r').innerHTML=out;
+}
+function run2(){
+  var w=num('c2w'),h1=num('c2h1'),h2=num('c2h2'),h3=num('c2h3');
+  var day=w/21.75, hour=day/8;
+  var a=hour*1.5*h1,b=hour*2*h2,c=hour*3*h3;
+  var out='月工资 <b>'+money(w)+'</b> 元　→　日薪 '+money(day)+' 元　时薪 '+money(hour)+' 元\n';
+  out+='（月计薪天数 21.75 天，月计薪小时 174 小时）\n\n';
+  out+='工作日延长 '+h1+' 小时 × 150% = <b>'+money(a)+' 元</b>\n';
+  out+='休息日 '+h2+' 小时 × 200% = <b>'+money(b)+' 元</b>\n';
+  out+='法定节假日 '+h3+' 小时 × 300% = <b>'+money(c)+' 元</b>\n\n';
+  out+='合计加班费 = <span class="big">'+money(a+b+c)+' 元</span>\n\n';
+  out+='<span class="sm">口径：《劳动法》第 44 条。休息日安排工作<b>又不能安排补休</b>的才付 200%；法定休假日必须付 300%，<b>不能用补休替代</b>。加班费计算基数各地口径不同（有的按合同约定、有的按正常出勤月工资的 70%），以当地裁审口径为准。每月加班一般不得超过 36 小时。</span>';
+  document.getElementById('c2r').innerHTML=out;
+}
+function run3(){
+  var y=num('c3y'),used=num('c3u'),w=num('c3w'),dd=document.getElementById('c3d').value,sep=document.getElementById('c3s').value;
+  var base=y<1?0:(y<10?5:(y<20?10:15));
+  var day=w/21.75;
+  var wc=document.getElementById('c3w');
+  var out='累计工作年限 <b>'+y+' 年</b>　→　法定年休假 <b>'+base+' 天</b>\n';
+  out+='（满 1 年不满 10 年 5 天；满 10 年不满 20 年 10 天；满 20 年 15 天）\n';
+  if(sep==='y'&&dd){
+    var d=new Date(dd), passed=(d-new Date(d.getFullYear(),0,0))/86400000;
+    var ent=Math.floor(base*passed/365);
+    out+='\n离职折算：当年已过 '+Math.floor(passed)+' 天 → 折算应休 <b>'+ent+' 天</b>（不足 1 整天的部分不计）\n';
+    out+='已休 '+used+' 天　→　未休 <b>'+Math.max(0,ent-used)+' 天</b>\n';
+    out+='\n折算金额 = 日薪 '+money(day)+' × '+Math.max(0,ent-used)+' 天 × 300% = <span class="big">'+money(day*Math.max(0,ent-used)*3)+' 元</span>\n';
+    out+='<span class="sm">其中已包含正常工作期间工资，实际另行支付 200%。</span>';
+  }else{
+    var left=Math.max(0,base-used);
+    out+='已休 '+used+' 天　→　未休 <b>'+left+' 天</b>\n';
+    out+='\n未休年休假折算 = 日薪 '+money(day)+' × '+left+' 天 × 300% = <span class="big">'+money(day*left*3)+' 元</span>\n';
+    out+='<span class="sm">《职工带薪年休假条例》第 5 条：对职工应休未休的年休假天数，单位应按该职工日工资收入的 300% 支付年休假工资报酬（含正常工作期间工资，即另补 200%）。跨年度安排需职工本人同意；单位已安排而职工本人书面提出不休的，只支付正常工作期间工资。</span>';
+  }
+  document.getElementById('c3r').innerHTML=out;
+}
+function run4(){
+  var a=document.getElementById('c4a').value,b=document.getElementById('c4b').value,w=num('c4w');
+  var m=monDiff(a,b); if(m<0){document.getElementById('c4r').innerHTML='<span style="color:var(--red)">请填写有效日期</span>';return;}
+  var start=new Date(a); start.setMonth(start.getMonth()+1); start.setDate(start.getDate()+1);
+  var lim=new Date(a); lim.setFullYear(lim.getFullYear()+1);
+  var end=new Date(b)<lim?new Date(b):lim;
+  var k=monDiff(start.toISOString().slice(0,10),end.toISOString().slice(0,10))+1;
+  if(k<0)k=0; if(k>11)k=11;
+  var out='用工日：<b>'+a+'</b>　签约日：<b>'+b+'</b>\n';
+  out+='起算（用工满 1 个月的次日）：'+start.toISOString().slice(0,10)+'\n';
+  out+='截止（签约前一日，最长至用工满 1 年）：'+end.toISOString().slice(0,10)+'\n\n';
+  out+='可主张二倍工资月数 = <span class="big">'+k+' 个月</span>　（法定上限 11 个月）\n';
+  out+='二倍工资差额 = '+money(w)+' × '+k+' = <span class="big">'+money(w*k)+' 元</span>\n\n';
+  out+='<span class="sm">口径：《劳动合同法》第 82 条——用人单位自用工之日起超过 1 个月不满 1 年未与劳动者订立书面劳动合同的，应当向劳动者每月支付二倍的工资；满 1 年未签的，视为已订立无固定期限劳动合同（第 14 条第 3 款），二倍工资最多支持 11 个月。<b>二倍工资的仲裁时效起算各地口径存在分歧</b>（有的自应签未签满 1 年起算、有的逐月分别起算），以当地裁审口径为准。此处已支付的那一倍工资不再重复主张，故"差额"= 再付一倍。</span>';
+  document.getElementById('c4r').innerHTML=out;
+}
+function run5(){
+  var lv=parseInt(document.getElementById('c5l').value,10),w=num('c5w'),avg=num('c5s');
+  var M={1:27,2:25,3:23,4:21,5:18,6:16,7:13,8:11,9:9,10:7};
+  var base=w; var capped=false;
+  if(avg>0){ if(w>avg*3){base=avg*3;capped=true;} if(w<avg*0.6){base=avg*0.6;capped=true;} }
+  var grant=base*M[lv];
+  var out='伤残等级：<b>'+lv+' 级</b>　本人工资：<b>'+money(w)+' 元/月</b>\n';
+  if(capped) out+='（本人工资已按统筹地区职工平均工资的 300%/60% 调整，计算基数 = <b>'+money(base)+'</b>）\n';
+  out+='\n一次性伤残补助金 = '+money(base)+' × '+M[lv]+' 个月 = <span class="big">'+money(grant)+' 元</span>\n';
+  if(lv<=4){var r={1:90,2:85,3:80,4:75}[lv];out+='\n按月伤残津贴 = '+money(base)+' × '+r+'% = <b>'+money(base*r/100)+' 元/月</b>（保留劳动关系、退出工作岗位）\n';}
+  else if(lv<=6){var r2={5:70,6:60}[lv];out+='\n难以安排工作的，按月伤残津贴 = '+money(base)+' × '+r2+'% = <b>'+money(base*r2/100)+' 元/月</b>\n';}
+  else{out+='\n7–10 级：劳动合同期满终止或职工本人提出解除的，由工伤保险基金支付<b>一次性工伤医疗补助金</b>、由用人单位支付<b>一次性伤残就业补助金</b>，<b style="color:var(--red)">具体标准由省级人民政府规定，本工具不估算</b>，请查当地人社局公布标准。\n';}
+  out+='\n<span class="sm">口径：《工伤保险条例》第 35–37 条、第 64 条。"本人工资"指工伤职工因工作遭受事故伤害或者患职业病前 12 个月平均月缴费工资，高于统筹地区职工平均工资 300% 的按 300% 计，低于 60% 的按 60% 计。<b>用人单位未依法缴纳工伤保险费的，全部工伤保险待遇由用人单位承担</b>（第 62 条）。本结果为估算，不构成待遇承诺。</span>';
+  document.getElementById('c5r').innerHTML=out;
+}
+function run6(){
+  var d=document.getElementById('c6d').value,mode=document.getElementById('c6m').value;
+  if(!d){document.getElementById('c6r').innerHTML='<span style="color:var(--red)">请选择日期</span>';return;}
+  var end=addYear(d,1), now=new Date();
+  var left=Math.ceil((end-now)/86400000);
+  var out='起算日：<b>'+d+'</b>\n';
+  out+='时效届满日：<b>'+ymd(end)+'</b>　（劳动争议申请仲裁的时效期间为 1 年）\n\n';
+  out+= left>=0 ? '距届满还有 <span class="big">'+left+' 天</span>\n' : '<span style="color:var(--red)">已超过 '+(-left)+' 天（仅按此起算点计算，实际可能因中断、中止而重新计算）</span>\n';
+  out+='\n<span class="sm">口径：《劳动争议调解仲裁法》第 27 条。仲裁时效期间从当事人知道或者应当知道其权利被侵害之日起计算。<b>劳动关系存续期间因拖欠劳动报酬发生争议的，不受 1 年仲裁时效期间的限制</b>；但劳动关系终止的，应当自劳动关系终止之日起 1 年内提出。时效可因主张权利、请求救济、对方同意履行而<b>中断</b>（重新计算），也可因不可抗力或其他正当理由<b>中止</b>。本工具只做简单推算。</span>';
+  document.getElementById('c6r').innerHTML=out;
+}
+function cp(id,btn){
+  var t=document.getElementById(id).innerText;
+  function ok(){var o=btn.textContent;btn.textContent='已复制';setTimeout(function(){btn.textContent=o;},1400);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}
+  function fb(x){var a=document.createElement('textarea');a.value=x;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+}
+</script></body></html>

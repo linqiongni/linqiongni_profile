@@ -67,8 +67,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
 
-        {/* Center/Right: 2 分组 Tabs (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+        {/* Center/Right: 顶层分组 Tabs (Desktop)；分组增至 4 个后中等屏收紧间距防拥挤 */}
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8" aria-label="Main Navigation">
           {NAV_GROUPS.map((g) => {
             const isActive = activeGroup === g.id;
             return (

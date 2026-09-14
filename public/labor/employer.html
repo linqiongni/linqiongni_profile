@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>用人单位视角 · 合规 · 劳动用工实务</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+.hero{border:1px solid rgba(201,162,39,.34);border-radius:12px;padding:22px 24px;margin:18px 0 8px;background:linear-gradient(135deg,rgba(74,157,156,.10),rgba(201,162,39,.06))}
+.hero h1{margin-bottom:10px}
+.hero .sub{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;margin:14px 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px;margin:14px 0}
+.mcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 17px;text-decoration:none;transition:.15s}
+.mcard:hover{border-color:var(--gold);background:#141922}
+.mcard .mt{color:var(--tx);font-size:15px;font-weight:600;margin-bottom:5px}
+.mcard .md{color:var(--tx3);font-size:12.6px;line-height:1.75}
+.mcard .mn{color:var(--gold);font-size:11px;letter-spacing:.16em;margin-bottom:6px}
+.mcard.a{border-left:3px solid var(--blue)}
+.mcard.b{border-left:3px solid var(--jade)}
+.mcard.c{border-left:3px solid var(--gold)}
+.badge{display:inline-block;font-size:11.5px;letter-spacing:.06em;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--tx2);margin:0 6px 6px 0}
+.badge.g{border-color:rgba(201,162,39,.5);color:var(--gold)}
+.badge.j{border-color:rgba(74,157,156,.5);color:var(--jade)}
+.badge.r{border-color:rgba(192,92,78,.5);color:var(--red)}
+.badge.b{border-color:rgba(91,141,214,.5);color:var(--blue)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:14px 0}
+.side{border:1px solid var(--line);border-radius:9px;padding:13px 15px;background:var(--card)}
+.side.emp{border-top:2px solid var(--blue)}
+.side.wkr{border-top:2px solid var(--jade)}
+.side .sh{font-size:12px;letter-spacing:.14em;margin-bottom:9px;font-weight:600}
+.side.emp .sh{color:var(--blue)}
+.side.wkr .sh{color:var(--jade)}
+.side .sb{font-size:13.4px;color:var(--tx2);line-height:1.85}
+.side .sb b{color:var(--tx)}
+.mid{display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.2em;color:var(--tx3);margin:10px 0}
+.chk{list-style:none;margin:12px 0;padding:0}
+.chk li{display:flex;gap:10px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:9px 13px;margin:7px 0;font-size:13.6px;color:var(--tx2);cursor:pointer}
+.chk li input{margin-top:5px;accent-color:var(--gold);flex:0 0 auto}
+.chk li.done{opacity:.5}
+.chk li.done span{text-decoration:line-through}
+.pbar{height:5px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:12px 0 4px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade),var(--gold));width:0;transition:.3s}
+.pnum{font-size:12px;color:var(--tx3);text-align:right}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:17px 19px;margin:16px 0}
+.calc .ct{font-size:15px;color:var(--gold);font-weight:600;margin-bottom:12px}
+.frow{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:11px}
+.fld{flex:1 1 150px;display:flex;flex-direction:column;gap:5px}
+.fld label{font-size:12.2px;color:var(--tx3)}
+.fld input,.fld select{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--tx);font-size:13.5px;font-family:inherit;width:100%}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold)}
+.res{background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:13px 15px;margin-top:12px;font-size:13.6px;line-height:2;color:var(--tx2);white-space:pre-wrap}
+.res b{color:var(--gold)}
+.res .big{font-size:19px;color:var(--jade);font-weight:600}
+.res .sm{font-size:12.3px;color:var(--tx3)}
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:9px 0 9px 38px;font-size:13.8px;color:var(--tx2);border-bottom:1px dashed var(--line)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:23px;height:23px;border-radius:50%;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.45);color:var(--gold);font-size:12px;display:flex;align-items:center;justify-content:center}
+.tpl{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:14px 0;overflow:hidden}
+.tpl .th2{padding:12px 16px;font-size:14px;color:var(--gold);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tpl pre{background:#0c0e12;padding:14px 17px;font-size:12.9px;color:var(--tx2);white-space:pre-wrap;line-height:1.9;font-family:inherit;max-height:340px;overflow:auto;margin:0}
+.rt{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:14px 0}
+.rd{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.rd .rn{color:var(--gold);font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+.rd .rt2{color:var(--tx);font-size:13.6px;line-height:1.6}
+.rd .rl{color:var(--tx3);font-size:12px;margin-top:5px}
+.warn{background:rgba(192,92,78,.07);border:1px dashed rgba(192,92,78,.4);border-radius:7px;padding:10px 14px;font-size:13.2px;color:var(--tx2);margin:12px 0}
+.warn b{color:var(--red)}
+.sw{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.sw button{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:12.8px;color:var(--tx2);cursor:pointer;font-family:inherit}
+.sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
+@media(max-width:700px){.split{grid-template-columns:1fr}}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html" style="border-color:var(--gold);color:var(--gold)">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>用人单位视角 · 合规</h1><p class="sub">从招工到解聘、赔偿的全流程合规</p></div><h2 style="border-left-color:var(--jade)">本节目录</h2><ul class="idxlist"><li><a href="#h_A1"><span class="n">A1</span><span class="t">招录用：Offer 发出去那一刻风险就开始了</span></a></li><li><a href="#h_A2"><span class="n">A2</span><span class="t">签约：一个月不签合同，代价是十一个月双倍工资</span></a></li><li><a href="#h_A3"><span class="n">A3</span><span class="t">规章制度：民主程序走不完，严重违纪就开不掉</span></a></li><li><a href="#h_A4-1"><span class="n">A4-1</span><span class="t">工时、加班与工资：加班费是最容易被翻旧账的一项</span></a></li><li><a href="#h_A4-2"><span class="n">A4-2</span><span class="t">社保、假期、调岗、竞业：在职阶段剩下的硬骨头</span></a></li><li><a href="#h_A5"><span class="n">A5</span><span class="t">解聘与赔偿：N、N+1、2N 一次算清</span></a></li><li><a href="#h_A6"><span class="n">A6</span><span class="t">被申请仲裁了：用人单位的应对流程</span></a></li><li><a href="#h_A7"><span class="n">A7</span><span class="t">用工合规自查清单</span></a></li></ul><section id="A1"><h2 id="h_A1">A1　招录用：Offer 发出去那一刻风险就开始了</h2><div><span class="badge g">招聘合规</span><span class="badge g">个保法</span><span class="badge g">Offer 效力</span></div><p class="sub" style="margin:10px 0 4px">招聘广告写错一句话可能构成就业歧视；录用条件没书面化，试用期就别想辞退人。</p><p>用工风险不是从签劳动合同开始的，是从<b>发招聘启事</b>开始的。这一节讲四件事：招聘广告的红线、背景调查的边界、Offer 的法律效力、以及入职环节绝对不能做的事。</p><h3>一、招聘广告的红线：就业歧视</h3><p>《就业促进法》规定劳动者依法享有平等就业的权利，不因民族、种族、性别、宗教信仰等不同而受歧视（第 3 条）；用人单位招用人员、职业中介机构从事职业中介活动，应当向劳动者提供平等的就业机会和公平的就业条件，<b>不得实施就业歧视</b>（第 26 条）。</p><table><thead><tr><th>常见表述</th><th>风险</th><th>合规写法</th></tr></thead><tbody><tr><td style="color:var(--tx)">限男性 / 男性优先</td><td>性别歧视</td><td>岗位无性别要求的，删除；确属法定不适合妇女的工种，须列明法律依据</td></tr><tr><td style="color:var(--tx)">已婚已育优先</td><td>性别+婚育歧视</td><td>删除，不得询问婚育情况作为录用条件</td></tr><tr><td style="color:var(--tx)">不招某省/某市人</td><td>地域歧视</td><td>删除</td></tr><tr><td style="color:var(--tx)">35 岁以下</td><td>年龄歧视（争议中）</td><td>建议删除；确有特殊岗位要求的，说明客观必要性 ⚠ 各地口径不同</td></tr><tr><td style="color:var(--tx)">乙肝携带者不予录用</td><td>违反乙肝表面抗原携带者入学就业禁令</td><td>删除；除法定特殊职业外不得检测乙肝项目</td></tr><tr><td style="color:var(--tx)">不招残疾人</td><td>残疾歧视</td><td>删除，按比例安排残疾人就业是法定义务</td></tr></tbody></table><div class="note">招聘广告不只是“不合规”这么简单。近几年已有因招聘歧视被起诉并判赔精神损害抚慰金、公开道歉的案例。⚠ 具体案号请以裁判文书网/人民法院案例库核实为准。</div><h3>二、背景调查与个人信息：个保法下的边界</h3><p>《个人信息保护法》第 13 条：处理个人信息应当具有明确、合理的目的，并应当与处理目的直接相关。招聘场景下收集求职者信息，要注意：</p><ul><li><b>告知义务</b>：处理前应当以显著方式、清晰易懂的语言真实、准确、完整地告知处理者名称与联系方式、处理目的、处理方式、个人信息种类、保存期限（第 17 条）；</li><li><b>单独同意</b>：处理<b>敏感个人信息</b>（如生物识别、医疗健康、金融账户、行踪轨迹，以及不满十四周岁未成年人的个人信息），应当取得个人的<b>单独同意</b>（第 29 条）；</li><li><b>最小必要</b>：不得超范围收集。婚育计划、病史、宗教信仰、家庭财产状况，与岗位无直接关系的，不应收集；</li><li><b>不得强制</b>：不得将同意作为订立劳动合同的前置条件（超出必要范围的）；</li><li><b>背景调查前取得授权</b>：查学历、查履历、联系前雇主，建议先取得求职者书面授权。</li></ul><div class="note">入职体检环节的常见违法点：<b>强制乙肝项目检测</b>。除国家法律、行政法规和国务院卫生行政部门规定禁止从事的易使乙肝扩散的工作外，用人单位不得以劳动者携带乙肝表面抗原为由拒绝录用或辞退；入职体检一般不得强制检测乙肝项目（⚠ 具体依据为原卫生部与人社部相关规定，请核实最新版本）。</div><h3>三、Offer（录用通知书）的法律效力</h3><div class="key">Offer 一经送达即产生<b>要约</b>效力。劳动者基于合理信赖接受 Offer 后，用人单位无正当理由撤销的，构成<b>缔约过失责任</b>，应当赔偿劳动者因此遭受的实际损失。</div><ul><li>常见可赔损失：为入职支出的交通费、搬家费、体检费、原单位离职后的工资损失（空窗期）、放弃其他录用机会的损失；</li><li>司法实践中赔偿数额一般不高，但会结合劳动者举证、过错程度与可预见范围认定；</li><li>Offer 内容与后续劳动合同不一致时，通常以<b>劳动合同</b>为准（劳动合同是双方最终合意）；但劳动者能证明受 Offer 诱导作出重大决定的，仍有争议空间。</li></ul><h3>四、Offer 的写法（避坑要点）</h3><ul><li>写明<b>有效期</b>与<b>答复期限</b>；</li><li>写明生效条件：如“本 Offer 以背景调查通过、体检合格、原单位离职证明齐全为生效前提”；</li><li>写明<b>录用条件</b>（岗位、职级、薪酬结构、汇报关系、工作地点），并与后续劳动合同保持一致；</li><li>写明 Offer 被劳动合同取代的条款；</li><li><b>不要写死“年薪 X 万”却不说构成</b>——绩效部分、浮动部分要写清发放条件，否则争议时按劳动者主张解释的风险很高。</li></ul><h3>五、入职环节绝对不能做的事</h3><table><thead><tr><th>禁止行为</th><th>依据</th><th>后果</th></tr></thead><tbody><tr><td style="color:var(--tx)">扣押劳动者居民身份证等证件</td><td>《劳动合同法》第 9 条</td><td>由劳动行政部门责令限期退还并依法处罚</td></tr><tr><td style="color:var(--tx)">要求劳动者提供担保或以其他名义收取财物（押金、培训押金、工装费）</td><td>《劳动合同法》第 9 条</td><td>责令限期退还，并以每人 <b>500 元以上 2000 元以下</b>的标准处以罚款（第 84 条第 2 款）；给劳动者造成损害的承担赔偿责任</td></tr><tr><td style="color:var(--tx)">招用未满 16 周岁未成年人</td><td>《劳动法》第 15 条、禁止使用童工规定</td><td>责令改正、罚款；情节严重的吊销营业执照</td></tr><tr><td style="color:var(--tx)">以实习名义使用在校生从事与专业无关的常规劳动</td><td>⚠ 各地口径不同</td><td>可能被认定事实劳动关系</td></tr></tbody></table><h3>六、录用条件必须书面化（这是试用期辞退的唯一前提）</h3><p>想在试用期内以“不符合录用条件”辞退（第 39 条第 1 项），必须同时具备三件事：<b>录用条件事先书面明确 + 已告知并签收 + 有不符合的客观证据</b>。三者缺一，解除就是违法解除，代价是 2N。</p><ol class="steps"><li>在《录用条件确认书》中列明：岗位职责、绩效指标、资质要求（学历/证书/经验真实性）、出勤要求、合规要求、禁止行为</li><li>量化：能用数字写就用数字（如“试用期销售额不低于 X 元”“出勤率不低于 95%”）</li><li>入职当天让劳动者签署并注明日期，单位留存一份</li><li>录用条件与后续试用期考核表<b>一一对应</b>，考核表逐项打分</li><li>试用期届满前完成考核并得出结论，不要等到试用期最后一天才说</li></ol><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">提交有劳动者签字的《录用条件确认书》+ 与录用条件逐项对应的考核结果 + 送达记录</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">攻击点：① 从未见过所谓录用条件 ② 录用条件是事后补做的 ③ 考核标准主观、未量化 ④ 考核未在其试用期内完成</div></div></div><div class="mid">争议焦点：录用条件是否事先明确且已告知</div><h3>七、A1 自查清单</h3><div class="pbar" id="pb7"><i></i></div><ul class="chk" data-pb="pb7" data-pn="pn7"><li><input type="checkbox" id="pb7_0"><label for="pb7_0" style="cursor:pointer"><span>招聘广告已删除性别、婚育、地域、乙肝、年龄等歧视性表述</span></label></li><li><input type="checkbox" id="pb7_1"><label for="pb7_1" style="cursor:pointer"><span>背景调查已取得求职者书面授权</span></label></li><li><input type="checkbox" id="pb7_2"><label for="pb7_2" style="cursor:pointer"><span>个人信息收集遵循最小必要原则并履行告知义务</span></label></li><li><input type="checkbox" id="pb7_3"><label for="pb7_3" style="cursor:pointer"><span>Offer 写明了有效期、生效条件与薪酬构成</span></label></li><li><input type="checkbox" id="pb7_4"><label for="pb7_4" style="cursor:pointer"><span>未扣押证件、未收取任何形式的押金或财物</span></label></li><li><input type="checkbox" id="pb7_5"><label for="pb7_5" style="cursor:pointer"><span>录用条件已书面化并在入职当天由劳动者签收</span></label></li><li><input type="checkbox" id="pb7_6"><label for="pb7_6" style="cursor:pointer"><span>试用期考核表与录用条件逐项对应且可量化</span></label></li><li><input type="checkbox" id="pb7_7"><label for="pb7_7" style="cursor:pointer"><span>入职登记表信息完整，包含送达地址与紧急联系人</span></label></li></ul><div class="pnum" id="pn7">0 / 8</div><div class="tpl"><div class="th2"><span>录用条件确认书（要点版）</span><button class="btn gold" onclick="cp('cp8',this)">复制</button></div><pre id="cp8">录用条件确认书
+
+姓名：______　拟任岗位：______　所属部门：______
+入职日期：______　试用期：自______至______
+
+一、岗位职责
+1. ______
+2. ______
+
+二、试用期应当达到的录用条件（逐项量化）
+1. 绩效类：______（例：试用期内累计完成销售额不低于人民币____元）
+2. 能力类：______（例：独立完成____并通过直属主管验收）
+3. 出勤类：试用期出勤率不低于 95%，无旷工记录
+4. 合规类：遵守《员工手册》及公司各项规章制度，无严重违纪行为
+5. 资质类：所提供的学历、证书、工作经历真实有效
+
+三、考核方式
+试用期内由直属主管按上述条件逐项考核，考核结果分为“符合录用条件 / 不符合录用条件”，于试用期届满前____日完成。
+
+四、确认
+本人已完整阅读并理解上述录用条件，知悉试用期内被证明不符合上述录用条件的，公司可依据《中华人民共和国劳动合同法》第三十九条第一项解除劳动合同。
+
+劳动者签字：______　日期：______
+用人单位：______（盖章）　日期：______
+
+（本确认书一式两份，双方各执一份）</pre></div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第八条
+用人单位招用劳动者时，应当如实告知劳动者工作内容、工作条件、工作地点、职业危害、安全生产状况、劳动报酬，以及劳动者要求了解的其他情况；用人单位有权了解劳动者与劳动合同直接相关的基本情况，劳动者应当如实说明。
+
+《中华人民共和国劳动合同法》第九条
+用人单位招用劳动者，不得扣押劳动者的居民身份证和其他证件，不得要求劳动者提供担保或者以其他名义向劳动者收取财物。
+
+《中华人民共和国劳动合同法》第八十四条第二款
+用人单位违反本法规定，以担保或者其他名义向劳动者收取财物的，由劳动行政部门责令限期退还劳动者本人，并以每人五百元以上二千元以下的标准处以罚款；给劳动者造成损害的，应当承担赔偿责任。
+
+《中华人民共和国就业促进法》第三条、第二十六条（平等就业与禁止就业歧视）
+
+《中华人民共和国个人信息保护法》第十三条、第十七条、第二十九条</div></details></section><section id="A2"><h2 id="h_A2">A2　签约：一个月不签合同，代价是十一个月双倍工资</h2><div><span class="badge g">二倍工资</span><span class="badge g">试用期</span><span class="badge g">无固定期限</span></div><p class="sub" style="margin:10px 0 4px">书面合同、试用期、无固定期限——签约阶段三个高频雷区，每一个都直接换算成钱。</p><div class="key"><b>自用工之日起 1 个月内</b>必须订立书面劳动合同。超过 1 个月不满 1 年未订立的，从第 2 个月起向劳动者<b>每月支付二倍的工资</b>，最长 11 个月；满 1 年仍未订立的，<b>视为已订立无固定期限劳动合同</b>。</div><h3>一、签约时间表</h3><table><thead><tr><th>时间节点</th><th>状态</th><th>法律后果</th></tr></thead><tbody><tr><td style="color:var(--tx)">用工之日</td><td>劳动关系建立（第 7 条）</td><td>签订书面合同进入 1 个月倒计时</td></tr><tr><td style="color:var(--tx)">用工满 1 个月次日</td><td>未签书面合同</td><td>起算二倍工资（第 82 条第 1 款）</td></tr><tr><td style="color:var(--tx)">用工满 11 个月</td><td>二倍工资累计上限</td><td>最多支持 11 个月差额</td></tr><tr><td style="color:var(--tx)">用工满 1 年</td><td><b>视为已订立无固定期限劳动合同</b>（第 14 条第 3 款）</td><td>同时应补订书面合同</td></tr></tbody></table><h3>二、二倍工资的三个常见误解</h3><ol><li><b>误解：二倍工资 = 再付两倍。</b> 错。二倍工资是“每月支付二倍的工资”，劳动者已正常领取一倍，差额是<b>再付一倍</b>。</li><li><b>误解：只要没签就一直算。</b> 错。最长 11 个月；满 1 年后视为已订立无固定期限劳动合同，进入另一个法律效果。</li><li><b>误解：员工拒签就没我责任。</b> 部分成立。若能证明是劳动者本人拒签或不配合（有书面催签通知、送达记录），多数地区可免除二倍工资责任；但<b>用工地熟人、亲戚“自愿不签”的口头约定无效</b>。⚠ 各地对“劳动者拒签”的举证要求不同。</li></ol><div class="note">⚠ 待核实：二倍工资的仲裁时效起算，各地裁判口径存在明显分歧（有自用工满 1 个月之次日起算、有逐月分别起算、有自用工满 1 年起算三种做法）。涉及具体案件务必查当地高院或人社部门指导意见。</div><h3>三、必备条款 9 项（第 17 条）</h3><ol><li>用人单位名称、住所和法定代表人或者主要负责人</li><li>劳动者姓名、住址和居民身份证或者其他有效身份证件号码</li><li><b>劳动合同期限</b></li><li><b>工作内容和工作地点</b></li><li><b>工作时间和休息休假</b></li><li><b>劳动报酬</b></li><li><b>社会保险</b></li><li><b>劳动保护、劳动条件和职业危害防护</b></li><li>法律、法规规定应当纳入劳动合同的其他事项</li></ol><p>除上述必备条款外，可约定试用期、培训、保守秘密、补充保险和福利待遇等。<b>劳动合同文本由用人单位和劳动者各执一份</b>（第 16 条第 2 款）——不给劳动者持有，本身就是违法。</p><h3>四、试用期规则表（第 19、20 条）</h3><table><thead><tr><th>劳动合同期限</th><th>试用期上限</th><th>备注</th></tr></thead><tbody><tr><td style="color:var(--tx)">3 个月以下</td><td><b>不得约定</b></td><td>—</td></tr><tr><td style="color:var(--tx)">以完成一定工作任务为期限</td><td><b>不得约定</b></td><td>—</td></tr><tr><td style="color:var(--tx)">3 个月以上不满 1 年</td><td>不超过 <b>1 个月</b></td><td>—</td></tr><tr><td style="color:var(--tx)">1 年以上不满 3 年</td><td>不超过 <b>2 个月</b></td><td>—</td></tr><tr><td style="color:var(--tx)">3 年以上固定期限</td><td>不超过 <b>6 个月</b></td><td>—</td></tr><tr><td style="color:var(--tx)">无固定期限</td><td>不超过 <b>6 个月</b></td><td>—</td></tr></tbody></table><ul><li><b>同一用人单位与同一劳动者只能约定一次试用期</b>（续签、转岗都不能再约）；</li><li><b>试用期包含在劳动合同期限内</b>；劳动合同<b>仅约定试用期的，试用期不成立，该期限为劳动合同期限</b>（这是很贵的坑：只签 3 个月“试用期合同”，等于签了 3 个月固定期限合同，且不能再约试用期）；</li><li>试用期工资<b>不得低于本单位相同岗位最低档工资或者劳动合同约定工资的 80%</b>，并<b>不得低于用人单位所在地的最低工资标准</b>（第 20 条）；</li><li>试用期内用人单位解除劳动合同的，<b>应当向劳动者说明理由</b>（第 21 条），且只能依据第 39 条与第 40 条第 1、2 项。</li></ul><h3>五、无固定期限劳动合同：三种触发</h3><table><thead><tr><th>触发情形</th><th>内容</th><th>单位能否拒绝</th></tr></thead><tbody><tr><td style="color:var(--tx)">连续工作满 10 年</td><td>劳动者在该用人单位连续工作满十年的</td><td>劳动者提出或同意续订的，<b>应当订立</b>，除非劳动者提出订立固定期限</td></tr><tr><td style="color:var(--tx)">连续两次固定期限后续订</td><td>连续订立二次固定期限劳动合同，且劳动者无第 39 条和第 40 条第 1、2 项情形，续订劳动合同的</td><td>同上</td></tr><tr><td style="color:var(--tx)">满 1 年未签书面合同</td><td>用人单位自用工之日起满一年不与劳动者订立书面劳动合同的</td><td><b>视为已订立</b>无固定期限劳动合同（第 14 条第 3 款）</td></tr></tbody></table><div class="note">重要：连续两次固定期限合同期满后，只要劳动者提出续订且无第 39 条、第 40 条第 1/2 项情形，单位<b>必须</b>签无固定期限，<b>不能以合同期满为由终止</b>。此时强行终止，极可能被认定为违法终止，代价 2N。⚠ 各地对“连续订立二次”的起算（自 2008 年 1 月 1 日起）与例外情形的把握略有差异。</div><h3>六、劳动合同无效的三种情形（第 26 条）</h3><ul><li>以<b>欺诈、胁迫</b>的手段或者<b>乘人之危</b>，使对方在违背真实意思的情况下订立或者变更劳动合同的；</li><li>用人单位<b>免除自己的法定责任、排除劳动者权利</b>的；</li><li><b>违反法律、行政法规强制性规定</b>的。</li></ul><p>常见无效条款：约定“自愿放弃社保”“工伤自负”“离职后不得主张任何权利”“单位可随时调整工作地点至全国任意城市”“女职工入职三年内不得生育”等。此类条款无效，<b>不影响其余部分效力</b>（第 27 条）。</p><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">提交书面合同文本及劳动者签收记录；主张劳动者拒签的，提交催签通知与送达证据；试用期争议提交合同期限与试用期长度的对应证据</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">未拿到合同文本的，主张单位未交付；没签合同的，用工资流水、考勤、社保记录证明事实劳动关系并主张二倍工资；试用期超期的，主张超期部分无效并要求补足工资差额</div></div></div><div class="mid">争议焦点：合同是否签订、试用期是否合法</div><h3>七、A2 自查清单</h3><div class="pbar" id="pb9"><i></i></div><ul class="chk" data-pb="pb9" data-pn="pn9"><li><input type="checkbox" id="pb9_0"><label for="pb9_0" style="cursor:pointer"><span>所有在职员工均在用工之日起 1 个月内订立书面劳动合同</span></label></li><li><input type="checkbox" id="pb9_1"><label for="pb9_1" style="cursor:pointer"><span>合同文本双方各执一份，且劳动者签收记录齐全</span></label></li><li><input type="checkbox" id="pb9_2"><label for="pb9_2" style="cursor:pointer"><span>合同包含法定 9 项必备条款</span></label></li><li><input type="checkbox" id="pb9_3"><label for="pb9_3" style="cursor:pointer"><span>试用期长度与合同期限匹配，且未重复约定</span></label></li><li><input type="checkbox" id="pb9_4"><label for="pb9_4" style="cursor:pointer"><span>试用期工资不低于约定工资的 80% 且不低于当地最低工资</span></label></li><li><input type="checkbox" id="pb9_5"><label for="pb9_5" style="cursor:pointer"><span>不存在“仅约定试用期”的合同</span></label></li><li><input type="checkbox" id="pb9_6"><label for="pb9_6" style="cursor:pointer"><span>连续工作满 10 年或连续两次固定期限的员工，已按规则处理续订</span></label></li><li><input type="checkbox" id="pb9_7"><label for="pb9_7" style="cursor:pointer"><span>合同中无放弃社保、工伤自负等无效条款</span></label></li><li><input type="checkbox" id="pb9_8"><label for="pb9_8" style="cursor:pointer"><span>合同变更（岗位、地点、薪酬）已采用书面形式</span></label></li></ul><div class="pnum" id="pn9">0 / 9</div><div class="tpl"><div class="th2"><span>签订劳动合同催告函（应对劳动者拖延/拒签）</span><button class="btn gold" onclick="cp('cp10',this)">复制</button></div><pre id="cp10">关于签订书面劳动合同的催告函
+
+______（劳动者姓名）：
+
+你于______年____月____日入职我司，双方已建立劳动关系。根据《中华人民共和国劳动合同法》第十条规定，建立劳动关系应当订立书面劳动合同，已建立劳动关系未同时订立书面劳动合同的，应当自用工之日起一个月内订立书面劳动合同。
+
+我司已于______年____月____日、______年____月____日两次通知你签订书面劳动合同，你至今未予配合。现再次催告如下：
+
+一、请于收到本函之日起 3 个工作日内，携带身份证原件至______（地点）签订书面劳动合同；
+二、逾期仍未签订的，我司将依据相关规定与你终止劳动关系，由此产生的一切后果由你自行承担；
+三、本函以 EMS 邮寄至你在入职登记表中确认的地址，并以短信/电子邮件同步送达。
+
+联系人：______　联系电话：______
+
+______公司（盖章）
+______年____月____日
+
+【送达留痕要求】
+1. EMS 详情单注明“签订劳动合同催告函”，保留寄件存根与签收记录；
+2. 同步短信/邮件截图归档；
+3. 员工最终签收或拒收的证据一并保存。
+（⚠ 提醒：能否据此免除二倍工资责任，各地裁判口径不同，请结合当地意见使用。）</pre></div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第十条
+建立劳动关系，应当订立书面劳动合同。
+已建立劳动关系，未同时订立书面劳动合同的，应当自用工之日起一个月内订立书面劳动合同。
+用人单位与劳动者在用工前订立劳动合同的，劳动关系自用工之日起建立。
+
+《中华人民共和国劳动合同法》第十四条（无固定期限劳动合同）、第十六条（文本各执一份）、第十七条（必备条款）、第十九条（试用期）、第二十条（试用期工资）、第二十一条（试用期解除）、第二十五条（违约金限制）、第二十六条至第二十八条（无效与后果）、第八十二条
+用人单位自用工之日起超过一个月不满一年未与劳动者订立书面劳动合同的，应当向劳动者每月支付二倍的工资。
+用人单位违反本法规定不与劳动者订立无固定期限劳动合同的，自应当订立无固定期限劳动合同之日起向劳动者每月支付二倍的工资。</div></details></section><section id="A3"><h2 id="h_A3">A3　规章制度：民主程序走不完，严重违纪就开不掉</h2><div><span class="badge g">民主程序</span><span class="badge g">高频败诉点</span><span class="badge g">公示留痕</span></div><p class="sub" style="margin:10px 0 4px">第 39 条“严重违反用人单位的规章制度”是单位最好用的一把刀，但前提是这把刀得先合法。</p><p>绝大多数“严重违纪解除”败诉案，不是败在员工确实没违纪，而是败在<b>制度本身不合法</b>。制度不合法 → 不能作为解除依据 → 解除违法 → 2N。</p><h3>一、第 4 条的三道程序（缺一不可）</h3><ol class="steps"><li><b>讨论</b>：用人单位在制定、修改或者决定有关劳动报酬、工作时间、休息休假、劳动安全卫生、保险福利、职工培训、劳动纪律以及劳动定额管理等直接涉及劳动者切身利益的规章制度或者重大事项时，应当<b>经职工代表大会或者全体职工讨论</b>，提出方案和意见</li><li><b>平等协商</b>：与工会或者职工代表<b>平等协商确定</b></li><li><b>公示或告知</b>：用人单位应当将直接涉及劳动者切身利益的规章制度和重大事项决定<b>公示，或者告知劳动者</b></li></ol><div class="key">三句话记住：<b>讨论 → 协商 → 公示</b>。缺任何一步，这套制度在“严重违纪解除”里就可能被认定不能适用。</div><h3>二、缺程序的后果有多严重</h3><table><thead><tr><th>缺失环节</th><th>典型表现</th><th>后果</th></tr></thead><tbody><tr><td style="color:var(--tx)">未讨论/未协商</td><td>制度由管理层直接发文，无职工代表大会记录</td><td>制度对劳动者不具有约束力，不能作为解除依据</td></tr><tr><td style="color:var(--tx)">有讨论无协商</td><td>开了会发了通知，但没有与工会/职工代表协商的记录</td><td>⚠ 各地口径不同，部分法院认定程序瑕疵</td></tr><tr><td style="color:var(--tx)">未公示未告知</td><td>制度锁在 OA 里，员工说从没见过</td><td>对未获告知的员工不生效，解除被认定违法</td></tr><tr><td style="color:var(--tx)">版本混乱</td><td>解除时引用的制度版本与员工签收的版本不一致</td><td>举证失败，承担不利后果</td></tr></tbody></table><div class="note">⚠ 待核实：对于“未经民主程序但有公示且内容合理”的制度能否作为解除依据，各地裁判口径存在分歧——部分地区严格把握（必须三道程序齐全），部分地区则认可只要内容不违反法律、已向劳动者公示且处罚合理即可适用。涉及具体案件请查当地指导意见。</div><h3>三、内容也要合理：处罚与过错相当</h3><p>即使程序齐全，制度内容本身还必须<b>合理</b>。司法实践中会审查：违纪行为与解除后果是否<b>相当</b>、是否<b>显失公平</b>、是否违反<b>比例原则</b>。</p><table><thead><tr><th>违纪行为</th><th>直接解除是否合理</th><th>建议处理</th></tr></thead><tbody><tr><td style="color:var(--tx)">连续旷工 3 日以上、伪造学历/资质、泄露商业秘密、暴力伤人</td><td>一般认可</td><td>可直接解除（第 39 条）</td></tr><tr><td style="color:var(--tx)">一次迟到、一次未按规定着装、偶尔未打卡</td><td><b>不合理</b>，易被认定处罚过重</td><td>警告 → 记过 → 屡教不改后解除</td></tr><tr><td style="color:var(--tx)">“末位淘汰”排名靠后</td><td><b>不合法</b></td><td>末位 ≠ 不能胜任；应先培训或调岗，仍不能胜任才可依第 40 条第 2 项解除并支付 N</td></tr><tr><td style="color:var(--tx)">轻微过失造成小额损失</td><td>一般不合理</td><td>先批评教育、扣减绩效（须有制度依据且不违反最低工资）</td></tr></tbody></table><div class="note"><b>“末位淘汰”直接解除是违法的</b>。绩效考核末位不等于“不能胜任工作”。正确路径：证明不能胜任 → 培训或调整岗位 → 仍不能胜任 → 依第 40 条第 2 项解除并支付 N（或 N+1）。跳过中间步骤直接以末位解除，就是 2N。</div><h3>四、处罚适配评估矩阵（8 维度打分）</h3><p>决定是否解除前，先按 8 个维度逐项评估。任一维度明显不利，都不建议直接解除。</p><table><thead><tr><th>维度</th><th>评估要点</th><th>不利信号</th></tr></thead><tbody><tr><td style="color:var(--tx)">1. 违纪性质</td><td>是行为违纪（旷工、造假）还是能力问题（业绩不达标）</td><td>能力问题走第 39 条 → 高风险</td></tr><tr><td style="color:var(--tx)">2. 损害后果</td><td>实际损失金额、影响范围、可否挽回</td><td>无实际损失或损失轻微</td></tr><tr><td style="color:var(--tx)">3. 主观过错</td><td>故意 / 重大过失 / 一般过失 / 无过失</td><td>无故意、属于一般过失</td></tr><tr><td style="color:var(--tx)">4. 过往记录</td><td>是否有同类违纪、是否已被警告</td><td>首次违纪、从未被提醒</td></tr><tr><td style="color:var(--tx)">5. 同类先例</td><td>同部门其他员工同类行为如何处理的</td><td>别人同样行为只被口头提醒</td></tr><tr><td style="color:var(--tx)">6. 制度依据</td><td>制度是否有明确对应的解除条款、条款是否合法</td><td>制度无对应条款或条款笼统</td></tr><tr><td style="color:var(--tx)">7. 程序完满度</td><td>是否调查、是否听取申辩、是否通知工会</td><td>未调查、未听申辩、未通知工会</td></tr><tr><td style="color:var(--tx)">8. 替代措施可行性</td><td>除解除外是否有更轻的处理方式</td><td>警告、调岗、培训即可解决</td></tr></tbody></table><h3>五、公示与告知：怎么留痕才有效</h3><ol><li><b>最稳妥</b>：纸质《员工手册》签收单，员工手写“已阅读并理解全部内容”并签名 + 日期</li><li><b>常用</b>：入职培训签到表（注明培训内容含《员工手册》）+ 培训照片 + 考核问卷</li><li><b>电子化</b>：OA 系统发布并要求点击“已阅读确认”，保留系统日志与时间戳；企业邮箱发送并要求回复确认</li><li><b>关键点</b>：能证明<b>该员工本人</b>收到了<b>该版本</b>的制度，而不是“公司发过”</li><li><b>修订时</b>：制度修订后必须<b>重新</b>走民主程序并重新告知，不能用旧签收单套新制度</li></ol><h3>六、制度里的常见无效条款</h3><table><thead><tr><th>条款</th><th>效力</th><th>风险</th></tr></thead><tbody><tr><td style="color:var(--tx)">员工迟到/违纪罚款 XX 元</td><td><b>无效</b></td><td>企业无行政罚款权；直接扣工资可能构成克扣工资，劳动者可依第 38 条被迫离职并主张 N</td></tr><tr><td style="color:var(--tx)">员工自愿放弃缴纳社保，公司补贴 XX 元</td><td><b>无效</b></td><td>缴纳社保是法定义务，约定无效；仍需补缴，且工伤待遇全部由单位承担</td></tr><tr><td style="color:var(--tx)">离职后双方再无争议、不得主张任何权利</td><td><b>部分无效</b></td><td>笼统免除法定责任的条款无效；具体、明确、金额合理的和解条款才可能被认可</td></tr><tr><td style="color:var(--tx)">公司可根据经营需要随时调整工作地点至全国任意城市</td><td><b>无效或受限</b></td><td>属于排除劳动者权利，调岗仍须具备合理性</td></tr><tr><td style="color:var(--tx)">女职工入职三年内不得生育</td><td><b>无效</b></td><td>违反法律强制性规定，且构成就业歧视</td></tr><tr><td style="color:var(--tx)">员工离职须支付违约金（非服务期/竞业限制情形）</td><td><b>无效</b></td><td>除第 22、23 条外不得约定由劳动者承担违约金（第 25 条）</td></tr></tbody></table><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">① 职工代表大会签到表与讨论纪要 ② 与工会/职工代表协商的记录 ③ 制度公示的照片或 OA 日志 ④ 该员工的签收单 ⑤ 解除时引用的条款与签收版本一致</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">① 从未见过该制度、未签收 ② 签收的版本与解除引用的版本不一致 ③ 制度未经民主程序，只有管理层单方面发文 ④ 处罚明显过重，同类行为他人未被处理 ⑤ 制度条款本身违反法律（如罚款条款）</div></div></div><div class="mid">争议焦点：制度能否作为解除依据（举证责任在用人单位）</div><h3>七、A3 自查清单</h3><div class="pbar" id="pb11"><i></i></div><ul class="chk" data-pb="pb11" data-pn="pn11"><li><input type="checkbox" id="pb11_0"><label for="pb11_0" style="cursor:pointer"><span>现行《员工手册》经过职工代表大会或全体职工讨论</span></label></li><li><input type="checkbox" id="pb11_1"><label for="pb11_1" style="cursor:pointer"><span>有与工会或职工代表平等协商的书面记录</span></label></li><li><input type="checkbox" id="pb11_2"><label for="pb11_2" style="cursor:pointer"><span>制度已公示或告知，且保留了每位员工的签收证据</span></label></li><li><input type="checkbox" id="pb11_3"><label for="pb11_3" style="cursor:pointer"><span>制度签收单上的版本号与解除时引用的版本一致</span></label></li><li><input type="checkbox" id="pb11_4"><label for="pb11_4" style="cursor:pointer"><span>制度修订后重新履行了民主程序与告知程序</span></label></li><li><input type="checkbox" id="pb11_5"><label for="pb11_5" style="cursor:pointer"><span>制度中没有罚款、放弃社保、笼统免除权利的条款</span></label></li><li><input type="checkbox" id="pb11_6"><label for="pb11_6" style="cursor:pointer"><span>违纪行为与处罚档次在制度中有明确对应、有梯度</span></label></li><li><input type="checkbox" id="pb11_7"><label for="pb11_7" style="cursor:pointer"><span>制度中没有末位淘汰直接解除的条款</span></label></li><li><input type="checkbox" id="pb11_8"><label for="pb11_8" style="cursor:pointer"><span>除服务期与竞业限制外，没有约定劳动者承担违约金</span></label></li><li><input type="checkbox" id="pb11_9"><label for="pb11_9" style="cursor:pointer"><span>解除前已按处罚适配矩阵做过 8 维度评估</span></label></li></ul><div class="pnum" id="pn11">0 / 10</div><div class="tpl"><div class="th2"><span>员工手册签收单（要点版）</span><button class="btn gold" onclick="cp('cp12',this)">复制</button></div><pre id="cp12">员工手册签收单
+
+本人______（工号：______），确认已收到并完整阅读《______公司员工手册》（版本号：______，生效日期：______）及下列附件：
+□ 《考勤与休假管理办法》（版本____）
+□ 《薪酬绩效管理办法》（版本____）
+□ 《员工行为规范与奖惩办法》（版本____）
+□ 《保密与竞业限制管理办法》（版本____）
+
+本人确认：
+一、已充分理解上述制度的全部内容，特别是其中关于**严重违纪行为及相应处理（包括但不限于解除劳动合同）**的规定；
+二、知悉上述制度可通过公司 OA / 公告栏查阅后续修订版本，公司修订后将另行公示或告知；
+三、承诺严格遵守上述制度，如有违反，自愿接受公司依制度作出的处理。
+
+劳动者签字（手写）：______________
+日期：______年____月____日
+
+【留痕要点】
+1. 必须本人手写签字，不接受打印名或他人代签；
+2. 版本号与生效日期必须写清，便于日后与引用版本比对；
+3. 制度修订后必须重新签收，不要让旧签收单“带病续用”；
+4. 签收单一式两份，单位留存原件并扫描归档。</pre></div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第四条
+用人单位应当依法建立和完善劳动规章制度，保障劳动者享有劳动权利、履行劳动义务。
+用人单位在制定、修改或者决定有关劳动报酬、工作时间、休息休假、劳动安全卫生、保险福利、职工培训、劳动纪律以及劳动定额管理等直接涉及劳动者切身利益的规章制度或者重大事项时，应当经职工代表大会或者全体职工讨论，提出方案和意见，与工会或者职工代表平等协商确定。
+在规章制度和重大事项决定实施过程中，工会或者职工认为不适当的，有权向用人单位提出，通过协商予以修改完善。
+用人单位应当将直接涉及劳动者切身利益的规章制度和重大事项决定公示，或者告知劳动者。
+
+《中华人民共和国劳动合同法》第三十九条第二项
+劳动者有下列情形之一的，用人单位可以解除劳动合同：……（二）严重违反用人单位的规章制度的；……
+
+《中华人民共和国劳动合同法》第二十五条
+除本法第二十二条和第二十三条规定的情形外，用人单位不得与劳动者约定由劳动者承担违约金。
+
+《最高人民法院关于审理劳动争议案件适用法律问题的解释（一）》第五十条
+用人单位根据劳动合同法第四条规定，通过民主程序制定的规章制度，不违反国家法律、行政法规及政策规定，并已向劳动者公示的，可以作为确定双方权利义务的依据。
+（⚠ 条文序号请以现行有效版本为准）</div></details></section><section id="A4-1"><h2 id="h_A4-1">A4-1　工时、加班与工资：加班费是最容易被翻旧账的一项</h2><div><span class="badge g">高频争议</span><span class="badge g">举证责任倒置</span><span class="badge g">台账 2 年</span></div><p class="sub" style="margin:10px 0 4px">加班费可以被追溯、考勤在单位手里、台账要留两年——这三件事叠加起来，是最常见的败诉来源。</p><p>在职阶段的争议，一半以上跟钱有关；跟钱有关的争议，一半以上是加班费。原因很简单：加班费一追就是好几年，而<b>考勤记录在单位手里</b>。</p><h3>一、三种工时制度</h3><table><thead><tr><th>制度</th><th>内容</th><th>是否需审批</th><th>加班费</th></tr></thead><tbody><tr><td style="color:var(--tx)">标准工时制</td><td>每日工作时间不超过 8 小时、平均每周工作时间不超过 44 小时（实践中按每周 40 小时执行），每周至少休息 1 日</td><td>不需要</td><td><b>要付</b>：150% / 200% / 300%</td></tr><tr><td style="color:var(--tx)">不定时工作制</td><td>因生产特点、工作性质特殊需要连续作业或机动作业，无法按标准时间衡量</td><td><b>须经劳动行政部门批准</b></td><td>一般<b>不执行</b>加班费规定（⚠ 法定节假日是否支付 300% 各地口径不同）</td></tr><tr><td style="color:var(--tx)">综合计算工时工作制</td><td>以周、月、季、年为周期综合计算工作时间，平均工作时间与标准工时基本相同</td><td><b>须经劳动行政部门批准</b></td><td>周期内超出总时长的部分按 <b>150%</b> 支付；法定节假日工作按 <b>300%</b>（⚠ 各地口径）</td></tr></tbody></table><div class="note"><b>最贵的坑</b>：公司实行不定时工时或综合计算工时，但<b>没去劳动行政部门审批</b>。这种情况下，司法实践通常按标准工时处理，平时与周末加班照样要付加班费。审批文件（批复）要留存，且只在<b>批准的岗位范围与有效期内</b>有效。</div><h3>二、加班的三条上限（第 41 条）</h3><ul><li>用人单位因生产经营需要，经与<b>工会和劳动者协商</b>后可以延长工作时间，<b>一般每日不得超过 1 小时</b>；</li><li>因特殊原因需要延长的，在保障劳动者身体健康的条件下<b>每日不得超过 3 小时</b>，但<b>每月不得超过 36 小时</b>；</li><li>安排加班应当按照国家有关规定向劳动者支付加班费；用人单位<b>不得强迫或者变相强迫</b>劳动者加班（第 31 条）。</li></ul><h3>三、加班费三档（第 44 条）</h3><table><thead><tr><th>情形</th><th>支付标准</th><th>能否用补休替代</th></tr></thead><tbody><tr><td style="color:var(--tx)">安排劳动者<b>延长工作时间</b>（工作日加点）</td><td>不低于工资的 <b>150%</b></td><td>一般不适用补休</td></tr><tr><td style="color:var(--tx)"><b>休息日</b>安排工作又<b>不能安排补休</b>的</td><td>不低于工资的 <b>200%</b></td><td><b>可以</b>：优先安排补休，不能补休才付 200%</td></tr><tr><td style="color:var(--tx)"><b>法定休假日</b>安排工作</td><td>不低于工资的 <b>300%</b></td><td><b>不可以</b>：必须支付 300%，补休不能替代</td></tr></tbody></table><div class="key">法定节假日加班是<b>三倍工资且不能补休</b>——这是最常见的违法点。很多公司“节假日上班给调休”，这在法律上是不够的。</div><h3>四、加班费怎么算（基数与时薪）</h3><ul><li>月计薪天数 = <b>21.75 天</b>（（365 − 104 休息日）÷ 12，法定节假日 11 天计入计薪天数）；</li><li>月计薪小时 = <b>174 小时</b>（21.75 × 8）；</li><li>日工资 = 月工资收入 ÷ 21.75；小时工资 = 月工资收入 ÷ 174；</li><li>加班费 = 小时工资 × 加班小时数 × 对应倍数（150% / 200% / 300%）。</li></ul><p><b>加班费计算基数</b>的确定顺序：① 劳动合同有约定的，按不低于劳动合同约定的劳动者本人所在岗位相对应的工资标准确定；② 劳动合同未约定的，可由用人单位与职工代表通过集体协商确定；③ 无任何约定的，按劳动者本人<b>正常出勤月工资的 70%</b> 确定（各地口径不同）。同时不得低于当地最低工资标准。</p><div class="warn">⚠ 待核实：加班费计算基数能否约定为“当地最低工资”，各地口径差异很大。多数地区认为<b>约定基数不得低于正常出勤月工资</b>，明显低于实际工资的约定可能被认定无效。请以当地规定与裁审口径为准。</div><h3>五、加班审批制的双刃剑</h3><p>很多单位用“未经审批不算加班”来抗辩。这个抗辩<b>不是绝对有效</b>：</p><table><thead><tr><th>情形</th><th>审批制抗辩是否成立</th><th>理由</th></tr></thead><tbody><tr><td style="color:var(--tx)">公司明确要求加班须审批，员工明知但未申请，自行留岗</td><td>一般<b>成立</b></td><td>员工未履行必要程序，公司不知情且未受益</td></tr><tr><td style="color:var(--tx)">公司要求审批，但主管口头安排加班、事后不批</td><td>一般<b>不成立</b></td><td>公司实际安排并受益，不能以程序对抗实体</td></tr><tr><td style="color:var(--tx)">公司有审批制但实际从未执行，全员长期默认加班</td><td>一般<b>不成立</b></td><td>制度形同虚设，不能对抗事实</td></tr><tr><td style="color:var(--tx)">考勤系统显示员工在工作场所且完成工作任务</td><td>结合其他证据判断</td><td>考勤与工作量是认定加班事实的关键证据</td></tr></tbody></table><div class="note"><b>“员工自愿加班”抗辩</b>的成立条件很高：公司需证明① 明确禁止或要求审批；② 未安排、未受益；③ 已对超时工作进行过制止或提醒。只是写在制度里而没有实际执行，基本没用。</div><h3>六、举证：考勤在谁手里</h3><div class="key">加班事实的举证分两步：① 劳动者提供<b>初步证据</b>证明存在加班（排班表、工作群安排、门禁记录、工作成果时间）；② 之后由用人单位提供<b>考勤记录</b>（属用人单位掌握管理）。用人单位不提供或提供的记录不完整、明显篡改的，承担不利后果。</div><p>工资支付台账、考勤记录应当<b>至少保存 2 年</b>备查（《工资支付暂行规定》）。这意味着：追溯 2 年以上的加班费，单位如果拿不出台账，反而可能因为举证不能而承担不利后果。</p><h3>七、工资支付规则</h3><ul><li>工资应当以<b>货币形式</b>按月支付给劳动者本人，<b>不得克扣或者无故拖欠</b>（第 50 条）；</li><li>用人单位应当<b>书面记录</b>支付劳动者工资的数额、时间、领取者的姓名以及签字，并<b>保存两年以上</b>备查；</li><li>支付工资时应当向劳动者提供一份其<b>个人的工资清单</b>；</li><li>依法安排劳动者休假或参加社会活动期间，应依法支付工资（第 51 条）；</li><li><b>代扣代缴</b>：个人所得税、社会保险费个人负担部分、法院判决裁定要求代扣的抚养费赡养费等可以代扣；其他扣款（如罚款）<b>缺乏法律依据</b>。</li></ul><h3>八、拖欠工资的加码后果（第 85 条）</h3><p>用人单位有下列情形之一的，由劳动行政部门<b>责令限期支付</b>劳动报酬、加班费或者经济补偿；劳动报酬低于当地最低工资标准的，应当支付其差额部分；<b>逾期不支付的，责令用人单位按应付金额 50% 以上 100% 以下的标准向劳动者加付赔偿金</b>：</p><ol><li>未按照劳动合同的约定或者国家规定及时足额支付劳动报酬的；</li><li>低于当地最低工资标准支付劳动者工资的；</li><li>安排加班不支付加班费的；</li><li>解除或者终止劳动合同，未依照本法规定向劳动者支付经济补偿的。</li></ol><div class="note">这是<b>唯一一个劳动者可以拿到“额外 50%–100%”的法定加付项目</b>，前提是：劳动行政部门已责令限期支付，而单位逾期仍不支付。实务操作：先去劳动监察投诉拿到责令改正/行政处理文书，单位仍不付的，再主张加付赔偿金。⚠ 有的地区要求先经行政程序，有的可在仲裁中一并主张，口径不同。</div><h3>九、包薪制与年薪制</h3><p>“月薪打包、含加班费”的约定<b>不是当然无效</b>，但有条件：① 明确约定工资中包含加班费及对应的加班时长；② 折算后加班费<b>不低于法定标准</b>且不低于最低工资；③ 实际加班时长超出约定时长的，超出部分仍应另行支付加班费。约定不明或明显低于法定标准的，按法定标准补足。</p><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">① 经审批的不定时/综合计算工时批复 ② 加班审批制度及员工未申请的记录 ③ 已安排补休的记录 ④ 完整考勤台账与工资表（含加班费列项） ⑤ 已足额支付的银行回单</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">① 工作群/邮件里的加班安排、主管指令 ② 门禁、打卡、监控、系统日志 ③ 工作成果的时间戳 ④ 主张考勤在单位手里（举证责任倒置） ⑤ 加班费基数约定低于法定标准的，主张按实际工资计算</div></div></div><div class="mid">争议焦点：加班事实与加班费基数</div><h3>十、A4-1 自查清单</h3><div class="pbar" id="pb13"><i></i></div><ul class="chk" data-pb="pb13" data-pn="pn13"><li><input type="checkbox" id="pb13_0"><label for="pb13_0" style="cursor:pointer"><span>特殊工时岗位已取得劳动行政部门批复，且在有效期与岗位范围内</span></label></li><li><input type="checkbox" id="pb13_1"><label for="pb13_1" style="cursor:pointer"><span>每月加班未超过 36 小时，每日未超过 3 小时</span></label></li><li><input type="checkbox" id="pb13_2"><label for="pb13_2" style="cursor:pointer"><span>法定节假日加班已按 300% 支付，未用补休替代</span></label></li><li><input type="checkbox" id="pb13_3"><label for="pb13_3" style="cursor:pointer"><span>休息日加班已优先安排补休，未能补休的已付 200%</span></label></li><li><input type="checkbox" id="pb13_4"><label for="pb13_4" style="cursor:pointer"><span>加班费计算基数符合当地规定，不低于最低工资</span></label></li><li><input type="checkbox" id="pb13_5"><label for="pb13_5" style="cursor:pointer"><span>考勤台账按月导出归档，至少保存 2 年</span></label></li><li><input type="checkbox" id="pb13_6"><label for="pb13_6" style="cursor:pointer"><span>工资台账（数额、时间、领取人签字）保存 2 年以上</span></label></li><li><input type="checkbox" id="pb13_7"><label for="pb13_7" style="cursor:pointer"><span>每月向员工提供个人工资清单</span></label></li><li><input type="checkbox" id="pb13_8"><label for="pb13_8" style="cursor:pointer"><span>工资按月以货币形式支付，无克扣或无故拖欠</span></label></li><li><input type="checkbox" id="pb13_9"><label for="pb13_9" style="cursor:pointer"><span>制度中无“罚款”条款，扣款均有法定或约定依据</span></label></li></ul><div class="pnum" id="pn13">0 / 10</div><div class="tpl"><div class="th2"><span>加班管理制度（核心条款示例）</span><button class="btn gold" onclick="cp('cp14',this)">复制</button></div><pre id="cp14">第 X 条　加班原则
+1. 公司不鼓励加班。确因生产经营需要延长工作时间的，须经与工会和员工协商后安排，一般每日不超过 1 小时；因特殊原因需要延长的，在保障员工身体健康的条件下每日不超过 3 小时，每月不超过 36 小时。
+2. 员工不得自行延长工作时间。未经审批自行留岗的，不视为加班。
+
+第 X 条　加班审批
+1. 加班实行**事前审批制**：由用人部门于加班前在 OA 提交《加班申请单》，经直属主管与部门负责人批准后生效；因紧急情况无法事前审批的，应于加班结束后 2 个工作日内补办。
+2. 加班申请单应载明：加班事由、起止时间、工作内容、参与人员。
+
+第 X 条　加班费与补休
+1. 工作日延长工作时间的，支付不低于工资的 150% 的加班费。
+2. 休息日安排工作的，**优先安排补休**；不能安排补休的，支付不低于工资的 200% 的加班费。
+3. **法定休假日安排工作的，支付不低于工资的 300% 的加班费，不得以补休替代。**
+4. 加班费计算基数按劳动合同约定执行，且不低于当地最低工资标准；约定不明的，按员工正常出勤月工资的____% 确定。（⚠ 请按当地规定填写）
+
+第 X 条　考勤与台账
+1. 考勤记录由人力资源部统一管理，每月导出归档，保存不少于 2 年。
+2. 工资支付台账（支付数额、时间、领取人签字）保存不少于 2 年。
+3. 员工对考勤记录有异议的，应于收到月度考勤确认后 3 个工作日内提出，逾期未提出视为认可。
+
+第 X 条　特别提示
+公司保留对未经审批的超时工作进行提醒、制止和处理的权利，员工应予配合。</pre></div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动法》第三十六条
+国家实行劳动者每日工作时间不超过八小时、平均每周工作时间不超过四十四小时的工时制度。
+
+《中华人民共和国劳动法》第三十八条
+用人单位应当保证劳动者每周至少休息一日。
+
+《中华人民共和国劳动法》第四十一条
+用人单位由于生产经营需要，经与工会和劳动者协商后可以延长工作时间，一般每日不得超过一小时；因特殊原因需要延长工作时间的，在保障劳动者身体健康的条件下延长工作时间每日不得超过三小时，但是每月不得超过三十六小时。
+
+《中华人民共和国劳动法》第四十四条
+有下列情形之一的，用人单位应当按照下列标准支付高于劳动者正常工作时间工资的工资报酬：
+（一）安排劳动者延长工作时间的，支付不低于工资的百分之一百五十的工资报酬；
+（二）休息日安排劳动者工作又不能安排补休的，支付不低于工资的百分之二百的工资报酬；
+（三）法定休假日安排劳动者工作的，支付不低于工资的百分之三百的工资报酬。
+
+《中华人民共和国劳动法》第五十条
+工资应当以货币形式按月支付给劳动者本人。不得克扣或者无故拖欠劳动者的工资。
+
+《中华人民共和国劳动合同法》第三十一条
+用人单位应当严格执行劳动定额标准，不得强迫或者变相强迫劳动者加班。用人单位安排加班的，应当按照国家有关规定向劳动者支付加班费。
+
+《中华人民共和国劳动合同法》第八十五条（责令支付 + 50%–100% 加付赔偿金）
+
+《工资支付暂行规定》（劳部发〔1994〕489 号）第六条（书面记录并保存两年以上、提供个人工资清单）
+
+《关于职工全年月平均工作时间和工资折算问题的通知》（劳社部发〔2008〕3 号）：月计薪天数 21.75 天</div></details></section><section id="A4-2"><h2 id="h_A4-2">A4-2　社保、假期、调岗、竞业：在职阶段剩下的硬骨头</h2><div><span class="badge g">社保强制</span><span class="badge g">年休假</span><span class="badge g">竞业限制</span></div><p class="sub" style="margin:10px 0 4px">服务期违约金不是随便能约定的，竞业限制不给补偿金就失效，调岗调薪的边界在哪里。</p><h3>一、社会保险：不能放弃，也不能折现</h3><div class="key">缴纳社会保险费是<b>用人单位与劳动者的共同法定义务</b>，约定“员工自愿放弃社保、公司给现金补贴”的条款<b>无效</b>。即使员工签了字，公司仍须补缴，且可能承担滞纳金与赔偿。</div><table><thead><tr><th>未缴/少缴的后果</th><th>具体内容</th></tr></thead><tbody><tr><td style="color:var(--tx)">1. 补缴 + 滞纳金</td><td>社保经办机构或税务机关责令限期缴纳或补足，并自欠缴之日起按日加收万分之五的滞纳金；逾期仍不缴纳的，处欠缴数额 1 倍以上 3 倍以下的罚款（⚠ 以《社会保险法》现行规定为准）</td></tr><tr><td style="color:var(--tx)">2. 工伤待遇全额自担</td><td><b>用人单位未依法缴纳工伤保险费的，发生工伤事故的，由用人单位支付全部工伤保险待遇</b>（《工伤保险条例》第 62 条）——一次性伤残补助金、伤残津贴、医疗补助金、就业补助金，一分不少</td></tr><tr><td style="color:var(--tx)">3. 无法享受待遇的损失赔偿</td><td>因未缴或断缴导致劳动者无法领取养老金、无法报销医疗费用、无法领取生育津贴、无法领取失业金的，由单位赔偿相应损失（⚠ 各地口径不同）</td></tr><tr><td style="color:var(--tx)">4. 被迫离职主张 N</td><td><b>未依法为劳动者缴纳社会保险费的，劳动者可以解除劳动合同并主张经济补偿</b>（第 38 条第 1 款第 3 项 + 第 46 条第 1 项）</td></tr></tbody></table><div class="note">第 4 项是最容易被忽视的成本：只要单位没依法缴社保，劳动者可以<b>随时提出解除并要 N</b>。而实践中“未按实际工资足额缴纳”（基数低报）是否构成该项情形，各地口径不一——⚠ 部分地区要求“完全未缴”才支持，部分地区认为长期低报也构成。</div><h3>二、年休假（三个数字 + 一个 300%）</h3><table><thead><tr><th>累计工作年限</th><th>年休假天数</th></tr></thead><tbody><tr><td style="color:var(--tx)">满 1 年不满 10 年</td><td><b>5 天</b></td></tr><tr><td style="color:var(--tx)">满 10 年不满 20 年</td><td><b>10 天</b></td></tr><tr><td style="color:var(--tx)">满 20 年及以上</td><td><b>15 天</b></td></tr></tbody></table><ul><li><b>累计工作年限</b>是指劳动者<b>所有单位</b>的工作年限之和（含别的单位、含视同缴费年限），不是只算本单位；</li><li>职工<b>新进用人单位</b>且符合连续工作 1 年以上的，当年度年休假天数按在本单位<b>剩余日历天数</b>折算确定，折算后不足 1 整天的部分不享受；</li><li><b>解除或终止</b>劳动合同时，当年度未休年休假按职工当年已工作时间折算应休未休天数并支付未休年休假工资报酬，折算后不足 1 整天的部分不支付；</li><li>未休年休假工资报酬 = 日工资收入 × 未休天数 × <b>300%</b>（其中含用人单位支付职工正常工作期间的工资收入，<b>实际另行支付 200%</b>）；</li><li>用人单位<b>确因工作需要</b>不能安排职工年休假或者跨 1 个年度安排年休假的，<b>应征得职工本人同意</b>；</li><li>用人单位已安排年休假，职工因<b>本人原因且书面提出</b>不休年休假的，用人单位可以只支付其正常工作期间的工资收入。</li></ul><div class="note">“年休假期满自动清零”是<b>无效</b>的。跨年清零必须满足：单位因工作需要不能安排 + <b>征得职工本人同意</b> + 跨一个年度安排。员工自己不休且没书面提出的，单位仍要付 300%。</div><h3>三、各类假期速查</h3><table><thead><tr><th>假期</th><th>天数/期限</th><th>待遇</th><th>依据</th></tr></thead><tbody><tr><td style="color:var(--tx)">法定节假日</td><td>全体公民放假 11 天（元旦 1、春节 3、清明 1、劳动节 1、端午 1、中秋 1、国庆 3）</td><td>带薪；加班 300%</td><td>《全国年节及纪念日放假办法》</td></tr><tr><td style="color:var(--tx)">婚假</td><td>⚠ 各地不同（国家层面 1–3 天，地方另有延长）</td><td>带薪</td><td>地方人口与计划生育条例</td></tr><tr><td style="color:var(--tx)">丧假</td><td>⚠ 一般为 1–3 天（直系亲属）</td><td>带薪</td><td>原国家劳动总局规定，⚠ 待核实</td></tr><tr><td style="color:var(--tx)">病假 / 医疗期</td><td><b>3–24 个月</b>（见下表）</td><td>病假工资或疾病救济费，不低于当地最低工资标准的 <b>80%</b>（⚠ 各地口径）</td><td>《企业职工患病或非因工负伤医疗期规定》</td></tr><tr><td style="color:var(--tx)">产假</td><td>国家基础 <b>98 天</b>（产前可休 15 天）+ 难产 +15 天 + 多胞胎每多 1 个 +15 天 + <b>地方奖励假</b></td><td>生育津贴或产假工资（就高）</td><td>《女职工劳动保护特别规定》第 7 条 + 地方条例</td></tr><tr><td style="color:var(--tx)">护理假 / 陪产假</td><td>⚠ 各地不同，一般 7–30 天</td><td>视同出勤</td><td>地方人口与计划生育条例</td></tr><tr><td style="color:var(--tx)">事假</td><td>无统一法定天数，由单位制度规定</td><td>一般不计发事假期间工资</td><td>—</td></tr></tbody></table><h3>四、医疗期（3–24 个月）</h3><p>医疗期是指企业职工因患病或非因工负伤停止工作治病休息<b>不得解除劳动合同</b>的时限，按本人<b>实际参加工作年限</b>与<b>在本单位工作年限</b>综合确定：</p><table><thead><tr><th>实际工作年限</th><th>本单位工作年限</th><th>医疗期</th></tr></thead><tbody><tr><td style="color:var(--tx)">10 年以下</td><td>5 年以下</td><td><b>3 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以下</td><td>5 年以上</td><td><b>6 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以上</td><td>5 年以下</td><td><b>6 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以上</td><td>5 年以上 10 年以下</td><td><b>9 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以上</td><td>10 年以上 15 年以下</td><td><b>12 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以上</td><td>15 年以上 20 年以下</td><td><b>18 个月</b></td></tr><tr><td style="color:var(--tx)">10 年以上</td><td>20 年以上</td><td><b>24 个月</b></td></tr></tbody></table><p>医疗期的计算有累计周期规则（如医疗期 3 个月的按 6 个月内累计病休时间计算，24 个月的按 30 个月内累计病休时间计算），⚠ 具体见《企业职工患病或非因工负伤医疗期规定》第 4 条。医疗期内，用人单位<b>不得依第 40、41 条解除</b>（第 42 条第 3 项）。</p><h3>五、调岗调薪：能不能单方调</h3><table><thead><tr><th>情形</th><th>能否单方调岗</th><th>依据与要点</th></tr></thead><tbody><tr><td style="color:var(--tx)">协商一致</td><td>可以（<b>最佳路径</b>）</td><td>变更劳动合同应当采用书面形式（第 35 条）</td></tr><tr><td style="color:var(--tx)">劳动者患病或非因工负伤，医疗期满后不能从事原工作</td><td><b>可以</b></td><td>第 40 条第 1 项：另行安排工作</td></tr><tr><td style="color:var(--tx)">劳动者不能胜任工作</td><td><b>可以</b></td><td>第 40 条第 2 项：培训或者调整工作岗位</td></tr><tr><td style="color:var(--tx)">劳动合同订立时所依据的客观情况发生重大变化</td><td><b>可以</b>（须先协商）</td><td>第 40 条第 3 项：经协商未能就变更合同内容达成协议</td></tr><tr><td style="color:var(--tx)">女职工三期（孕期不适、哺乳期）</td><td><b>应当</b>调整</td><td>减轻劳动量或安排其他能够适应的劳动（《女职工劳动保护特别规定》第 6 条）</td></tr><tr><td style="color:var(--tx)">职业禁忌证、职业病病人</td><td><b>应当</b>调离原岗位</td><td>《职业病防治法》相关规定</td></tr><tr><td style="color:var(--tx)">单纯因经营需要或绩效考核</td><td><b>一般不能单方调</b></td><td>属变更劳动合同，须协商一致</td></tr></tbody></table><div class="key">调岗合理性的四个判断维度（司法实践常用）：① <b>经营必要性</b>——确因经营需要；② <b>工资待遇不降低</b>——调岗后薪酬水平未明显下降；③ <b>不具有侮辱性与惩罚性</b>——不是把经理调去扫厕所；④ <b>不违反其他法定情形</b>——不是对三期女职工、工伤职工的变相打压。</div><p><b>“薪酬随岗变”条款</b>：合同里约定“工资随岗位调整而调整”的，一般有效，但仍需满足调岗本身合法合理。调岗不合法，则降薪也不合法。劳动者可主张补足工资差额，情节严重的可以构成第 38 条“未及时足额支付劳动报酬”而被迫离职并主张 N。</p><h3>六、培训与服务期（第 22 条）</h3><div class="note"><b>只有同时满足两个条件才能约定服务期和违约金</b>：① 用人单位<b>提供专项培训费用</b>；② 对该劳动者进行<b>专业技术培训</b>。普通的入职培训、岗前培训、日常业务培训、内部轮岗培训——<b>都不行</b>。</div><table><thead><tr><th>培训类型</th><th>能否约定服务期与违约金</th></tr></thead><tbody><tr><td style="color:var(--tx)">送外参加付费专业认证、境外技术培训、专项技能深造（有实际费用支出凭证）</td><td><b>可以</b></td></tr><tr><td style="color:var(--tx)">内部新员工入职培训、企业文化培训、通用技能培训</td><td><b>不可以</b></td></tr><tr><td style="color:var(--tx)">日常业务交流会、部门内训、线上课程</td><td><b>不可以</b></td></tr><tr><td style="color:var(--tx)">提供住房、落户、购车等特殊待遇并约定服务期</td><td>⚠ 各地口径不同，部分地区允许约定违约赔偿，但金额受限制</td></tr></tbody></table><ul><li>违约金的数额<b>不得超过用人单位提供的培训费用</b>；</li><li>用人单位要求劳动者支付的违约金<b>不得超过服务期尚未履行部分所应分摊的培训费用</b>（即按未履行比例递减）；</li><li>约定服务期<b>不影响</b>按照正常的工资调整机制提高劳动者在服务期期间的劳动报酬；</li><li>培训费用要有<b>实际支出凭证</b>（发票、付款记录、培训协议），不能凭空估算。</li></ul><h3>七、保密与竞业限制（第 23、24 条）</h3><table><thead><tr><th>要素</th><th>法律要求</th></tr></thead><tbody><tr><td style="color:var(--tx)">适用人员</td><td>限于<b>高级管理人员、高级技术人员和其他负有保密义务的人员</b>；对普通员工约定竞业限制，实践中常被认定无效或不合理</td></tr><tr><td style="color:var(--tx)">期限</td><td>解除或终止劳动合同后，竞业限制期限<b>不得超过 2 年</b></td></tr><tr><td style="color:var(--tx)">补偿金</td><td>在竞业限制期限内<b>按月</b>给予劳动者经济补偿；未约定的，⚠ 多地按劳动者离职前 12 个月平均工资的 <b>30%</b> 且不低于当地最低工资标准确定（各地口径不同）</td></tr><tr><td style="color:var(--tx)">范围</td><td>范围、地域由双方约定，<b>不得违反法律法规</b>；约定“不得从事全行业”“全国范围内”过宽的，可能被认定不合理</td></tr><tr><td style="color:var(--tx)">违约金</td><td>可以约定，但金额明显过高的，法院可酌情调整</td></tr><tr><td style="color:var(--tx)">未付补偿的后果</td><td>用人单位未按月支付经济补偿达到一定期限（多地口径为 <b>3 个月</b>），劳动者可以请求解除竞业限制约定；⚠ 各地规定不同</td></tr></tbody></table><div class="note">两个高频误区：① <b>只签竞业协议不给补偿金</b>——协议虽不当然无效，但单位不付补偿就无权要求劳动者履行；② <b>对所有人都签竞业协议</b>——对保洁、前台等无保密义务的人员约定竞业限制，既无效又浪费成本（要付补偿才能生效）。正确做法：只对真正接触核心秘密的人签，并按月如实支付补偿。</div><h3>八、特殊用工</h3><table><thead><tr><th>用工形式</th><th>核心规则</th><th>风险点</th></tr></thead><tbody><tr><td style="color:var(--tx)">劳务派遣</td><td>只能在<b>临时性（不超 6 个月）、辅助性、替代性</b>岗位使用；用工比例<b>不得超过 10%</b>；同工同酬；派遣单位是参保与支付经济补偿的义务人</td><td>超比例、超三性 → 责令改正、罚款；给被派遣劳动者造成损害的，用工单位与派遣单位承担<b>连带赔偿责任</b></td></tr><tr><td style="color:var(--tx)">非全日制用工</td><td>日均 ≤4 小时、周累计 ≤24 小时；结算周期 ≤15 日；可口头协议；<b>不得约定试用期</b>；任何一方可随时终止且<b>无经济补偿</b></td><td>超时即被认定为标准劳动关系，须补付加班费与经济补偿</td></tr><tr><td style="color:var(--tx)">业务外包</td><td>发包的是<b>工作成果</b>，承包方自行管理人员</td><td><b>假外包真派遣</b>：若发包方直接对人员考勤、排班、考核、发指令，可能被认定劳务派遣甚至事实劳动关系</td></tr></tbody></table><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">调岗：提交经营必要性的证据、调岗前后薪酬对比、沟通协商记录、制度依据。服务期：提交培训协议、培训费发票与付款凭证、实际参加专业技术培训的证据。竞业：提交协议、竞业范围合理性说明、<b>按月支付补偿金的银行流水</b>。</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">调岗：主张未经协商、薪酬明显下降、具有侮辱惩罚性，书面提出异议并保留证据。服务期：主张属于普通入职/日常培训，非专项技术培训，违约金条款无效。竞业：主张自己不属于法定适用人员、范围过宽、或单位未按月支付补偿金（可请求解除）。</div></div></div><div class="mid">争议焦点：调岗是否合理 / 服务期与竞业条款是否有效</div><h3>九、A4-2 自查清单</h3><div class="pbar" id="pb15"><i></i></div><ul class="chk" data-pb="pb15" data-pn="pn15"><li><input type="checkbox" id="pb15_0"><label for="pb15_0" style="cursor:pointer"><span>所有员工均依法参保，缴费基数为实际工资</span></label></li><li><input type="checkbox" id="pb15_1"><label for="pb15_1" style="cursor:pointer"><span>不存在“自愿放弃社保”的协议或条款</span></label></li><li><input type="checkbox" id="pb15_2"><label for="pb15_2" style="cursor:pointer"><span>年休假天数按累计工龄正确计算，跨年安排已征得员工同意</span></label></li><li><input type="checkbox" id="pb15_3"><label for="pb15_3" style="cursor:pointer"><span>离职时已按当年度已工作时间折算未休年休假并支付</span></label></li><li><input type="checkbox" id="pb15_4"><label for="pb15_4" style="cursor:pointer"><span>医疗期按实际工作年限与本单位年限正确确定</span></label></li><li><input type="checkbox" id="pb15_5"><label for="pb15_5" style="cursor:pointer"><span>调岗均基于法定或协商情形，且工资待遇未明显下降</span></label></li><li><input type="checkbox" id="pb15_6"><label for="pb15_6" style="cursor:pointer"><span>服务期协议仅限于有实际专项培训费用支出的情形</span></label></li><li><input type="checkbox" id="pb15_7"><label for="pb15_7" style="cursor:pointer"><span>服务期违约金不超过培训费用且按未履行部分分摊</span></label></li><li><input type="checkbox" id="pb15_8"><label for="pb15_8" style="cursor:pointer"><span>竞业限制人员限于高管、高技与负保密义务人员</span></label></li><li><input type="checkbox" id="pb15_9"><label for="pb15_9" style="cursor:pointer"><span>竞业限制期限不超过 2 年且已按月支付补偿金</span></label></li><li><input type="checkbox" id="pb15_10"><label for="pb15_10" style="cursor:pointer"><span>劳务派遣用工比例未超过 10%，岗位符合三性</span></label></li><li><input type="checkbox" id="pb15_11"><label for="pb15_11" style="cursor:pointer"><span>外包合同以成果为标的，未直接对人员考勤排班</span></label></li></ul><div class="pnum" id="pn15">0 / 12</div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第二十二条（服务期）、第二十三条（保密与竞业限制）、第二十四条（竞业限制人员与期限）、第二十五条（违约金限制）、第三十五条（变更合同）、第三十八条（被迫解除）、第五十八条至第六十六条（劳务派遣）、第六十八条至第七十二条（非全日制用工）
+
+《职工带薪年休假条例》（国务院令第 514 号）第三条（5/10/15 天）、第五条（300%）
+
+《企业职工患病或非因工负伤医疗期规定》（劳部发〔1994〕479 号）第三条、第四条
+
+《女职工劳动保护特别规定》（国务院令第 619 号）第六条、第七条
+
+《工伤保险条例》（2010 年修订）第六十二条
+用人单位依照本条例规定应当参加工伤保险而未参加的，由社会保险行政部门责令限期参加，补缴应当缴纳的工伤保险费，并自欠缴之日起，按日加收万分之五的滞纳金；逾期仍不缴纳的，处欠缴数额 1 倍以上 3 倍以下的罚款。
+依照本条例规定应当参加工伤保险而未参加工伤保险的用人单位职工发生工伤的，由该用人单位按照本条例规定的工伤保险待遇项目和标准支付费用。
+
+《劳务派遣暂行规定》（人社部令第 22 号）第三条（三性岗位）、第四条（10% 比例）</div></details></section><section id="A5"><h2 id="h_A5">A5　解聘与赔偿：N、N+1、2N 一次算清</h2><div><span class="badge g">核心</span><span class="badge g">七种走法</span><span class="badge g">2N 风险</span></div><p class="sub" style="margin:10px 0 4px">全站核心。先分清“解除”和“终止”两条线，再往下看七种走法各要付多少钱、走什么程序。</p><p>所有解雇争议都可以拆成三个问题：<b>① 走的是哪条路？② 程序走全了吗？③ 该付多少？</b> 本节按这个顺序讲完。</p><h3>一、先分两条线：解除 ≠ 终止</h3><ul><li><b>解除</b>：劳动合同尚未期满，提前结束。分协商解除（第 36 条）、劳动者单方解除（第 37、38 条）、用人单位单方解除（第 39、40、41 条）。</li><li><b>终止</b>：劳动合同期满或出现法定终止事由（第 44 条）。</li></ul><div class="note">这两条线的法律后果完全不同。比如“合同期满终止”要给 N（除单位维持或提高条件续订而劳动者不同意外），但<b>不需要</b>提前 30 日通知、不需要通知工会（各地口径有差异）；而“第 40 条解除”必须提前 30 日或给代通知金，且必须先通知工会。搞混会直接导致程序违法。</div><h3>二、七种走法全表</h3><table><thead><tr><th>走法</th><th>依据</th><th>是否付补偿</th><th>关键程序</th><th>备注</th></tr></thead><tbody><tr><td style="color:var(--tx)">协商解除（<b>单位先提</b>）</td><td>第 36 条</td><td><b>N</b></td><td>签订书面解除协议</td><td>谁先提出决定要不要给钱</td></tr><tr><td style="color:var(--tx)">协商解除（<b>劳动者先提</b>）</td><td>第 36 条</td><td><b>无</b></td><td>书面解除协议</td><td>劳动者主动提出的不给补偿</td></tr><tr><td style="color:var(--tx)">过失性辞退</td><td>第 39 条</td><td><b>无</b></td><td>说明理由；单方解除须<b>事先通知工会</b></td><td>6 种情形，见下文</td></tr><tr><td style="color:var(--tx)">无过失性辞退</td><td>第 40 条</td><td><b>N 或 N+1</b></td><td><b>提前 30 日书面通知</b>或额外支付 1 个月工资；通知工会</td><td>3 种情形，受第 42 条限制</td></tr><tr><td style="color:var(--tx)">经济性裁员</td><td>第 41 条</td><td><b>N</b></td><td>提前 30 日说明 → 听取意见 → <b>向劳动行政部门报告</b>；通知工会</td><td>20 人以上或占职工总数 10% 以上</td></tr><tr><td style="color:var(--tx)">合同期满终止（单位不同意续订 / 降低条件续订）</td><td>第 44 条第 1 项</td><td><b>N</b></td><td>—</td><td>单位维持或提高条件续订而劳动者不同意的，<b>无补偿</b></td></tr><tr><td style="color:var(--tx)">单位主体消灭（破产、吊销执照、责令关闭、撤销、提前解散）</td><td>第 44 条第 4、5 项</td><td><b>N</b></td><td>—</td><td>—</td></tr><tr><td style="color:var(--tx)">劳动者享受基本养老保险待遇 / 死亡或宣告死亡失踪</td><td>第 44 条第 2、3 项</td><td><b>无</b></td><td>—</td><td>—</td></tr><tr><td style="color:var(--tx)"><b>违法解除或终止</b></td><td>第 48 条 + 第 87 条</td><td><b>2N</b>（或劳动者选择继续履行）</td><td>—</td><td>最贵的后果</td></tr></tbody></table><h3>三、第 39 条：过失性辞退（不用付补偿）</h3><table><thead><tr><th>情形</th><th>证据要求</th><th>易错点</th></tr></thead><tbody><tr><td style="color:var(--tx)">（一）在试用期间被证明<b>不符合录用条件</b></td><td>书面录用条件（事先签收）+ 与条件对应的考核结果 + 在试用期内完成考核</td><td>录用条件未事先明确、考核超期、标准主观</td></tr><tr><td style="color:var(--tx)">（二）<b>严重违反</b>用人单位的规章制度</td><td>制度经民主程序 + 已公示告知 + 违纪事实证据 + 处罚相当</td><td>制度无民主程序、处罚过重、未通知工会</td></tr><tr><td style="color:var(--tx)">（三）严重失职，营私舞弊，给用人单位造成<b>重大损害</b></td><td>岗位职责 + 失职行为 + <b>实际重大损害</b>的证明 + 因果关系</td><td>“重大损害”无制度量化标准</td></tr><tr><td style="color:var(--tx)">（四）同时与其他用人单位建立劳动关系，对完成本单位工作任务造成<b>严重影响</b>，或经提出<b>拒不改正</b></td><td>兼职事实 + 影响证明，或书面提出后仍不改正的证据</td><td>未经“提出”程序直接解除</td></tr><tr><td style="color:var(--tx)">（五）因本法第 26 条第 1 款第 1 项（欺诈胁迫乘人之危）导致合同无效</td><td>学历造假、履历造假、资质造假的核查证据</td><td>未做背景核查，事后才发现</td></tr><tr><td style="color:var(--tx)">（六）<b>被依法追究刑事责任</b></td><td>生效刑事判决书/不起诉决定等（⚠ 注意：刑事拘留、逮捕不等于被追究刑事责任）</td><td>把行政拘留、刑事羁押当成了“被追究刑事责任”</td></tr></tbody></table><div class="key"><b>第 39 条最重要的优势：不受第 42 条禁止解除情形的限制。</b> 也就是说，即使是三期女职工、医疗期内员工、工伤职工，只要有第 39 条的法定情形，依然可以解除且无需支付经济补偿。但——证据与程序要求一样都不能少。</div><h3>四、第 40 条：无过失性辞退（N 或 N+1）</h3><table><thead><tr><th>情形</th><th>前置条件</th><th>程序</th></tr></thead><tbody><tr><td style="color:var(--tx)">（一）劳动者患病或非因工负伤，医疗期满后<b>不能从事原工作</b>，也<b>不能从事</b>由用人单位<b>另行安排的工作</b></td><td>① 医疗期已满 ② 不能从事原工作 ③ 已另行安排工作仍不能从事</td><td>提前 30 日书面通知本人，或额外支付 1 个月工资；通知工会；支付 N</td></tr><tr><td style="color:var(--tx)">（二）劳动者<b>不能胜任工作</b>，经过<b>培训或者调整工作岗位</b>，仍不能胜任工作</td><td>① 有合法有效的考核标准 ② 首次被证明不能胜任 ③ 已培训或调岗 ④ <b>再次</b>考核仍不能胜任</td><td>同上</td></tr><tr><td style="color:var(--tx)">（三）劳动合同订立时所依据的<b>客观情况发生重大变化</b>，致使劳动合同无法履行，经协商未能就变更合同达成协议</td><td>① 客观情况发生重大变化（非主观经营决策）② 合同确实无法履行 ③ <b>已协商</b>且未达成一致</td><td>同上</td></tr></tbody></table><div class="note">第 40 条第 2 项的完整链条是：<b>不能胜任 → 培训或调岗 → 仍不能胜任 → 解除（N 或 N+1）</b>。这是“末位淘汰”的合法替代路径。直接以考核末位解除 = 违法解除 = 2N。</div><h3>五、第 41 条：经济性裁员</h3><ul><li><b>门槛</b>：需要裁减人员<b>二十人以上</b>，或者裁减不足二十人但<b>占企业职工总数百分之十以上</b>；</li><li><b>四种情形</b>：① 依照企业破产法规定进行重整；② 生产经营发生严重困难；③ 企业转产、重大技术革新或者经营方式调整，经变更劳动合同后仍需裁减人员；④ 其他因劳动合同订立时所依据的客观经济情况发生重大变化致使劳动合同无法履行的；</li><li><b>程序</b>：<b>提前 30 日</b>向工会或者全体职工说明情况 → <b>听取</b>工会或者职工的意见 → 裁减人员方案<b>向劳动行政部门报告</b> → 方可裁减；</li><li><b>优先留用</b>：① 与本单位订立较长期限固定期限劳动合同的；② 与本单位订立无固定期限劳动合同的；③ 家庭无其他就业人员，有需要扶养的老人或者未成年人的；</li><li><b>优先招用</b>：6 个月内重新招用人员的，应当通知被裁减人员，并在<b>同等条件下优先招用</b>被裁减人员。</li></ul><h3>六、第 42 条：六种不得解除的情形</h3><table><thead><tr><th>情形</th><th>限制范围</th></tr></thead><tbody><tr><td style="color:var(--tx)">（一）从事接触职业病危害作业的劳动者未进行<b>离岗前职业健康检查</b>，或者疑似职业病病人在诊断或者医学观察期间的</td><td>不得依第 40、41 条解除</td></tr><tr><td style="color:var(--tx)">（二）在本单位患职业病或者因工负伤并被确认<b>丧失或者部分丧失劳动能力</b>的</td><td>不得依第 40、41 条解除（按工伤保险规定执行）</td></tr><tr><td style="color:var(--tx)">（三）患病或者非因工负伤，在规定的<b>医疗期内</b>的</td><td>不得依第 40、41 条解除</td></tr><tr><td style="color:var(--tx)">（四）女职工在<b>孕期、产期、哺乳期</b>的</td><td>不得依第 40、41 条解除</td></tr><tr><td style="color:var(--tx)">（五）在本单位<b>连续工作满十五年，且距法定退休年龄不足五年</b>的</td><td>不得依第 40、41 条解除</td></tr><tr><td style="color:var(--tx)">（六）法律、行政法规规定的其他情形</td><td>—</td></tr></tbody></table><div class="key">再强调一次：第 42 条<b>只挡第 40 条和第 41 条</b>，<b>不挡第 39 条</b>，也<b>不挡第 36 条协商解除</b>。同时，第 45 条规定：劳动合同期满，有第 42 条规定情形之一的，劳动合同应当<b>续延至相应的情形消失时终止</b>。</div><h3>七、单方解除必须通知工会（第 43 条）</h3><p>用人单位<b>单方解除劳动合同，应当事先将理由通知工会</b>。用人单位违反法律、行政法规规定或者劳动合同约定的，工会有权要求用人单位纠正；用人单位应当研究工会的意见，并将处理结果<b>书面通知工会</b>。</p><ul><li>没有工会的单位怎么履行？实务中一般通过<b>通知上级工会或所在地总工会</b>的方式履行，并保留送达证据（⚠ 各地口径不同）；</li><li>程序瑕疵的补正：部分地区允许在<b>起诉前</b>补正程序，即事后补通知工会并得到认可；但也有地区认为未通知即构成违法解除。⚠ 各地口径差异较大，务必查当地意见；</li><li><b>安全做法</b>：在作出解除决定前完成通知工会并保留签收/回函，不要寄希望于事后补正。</li></ul><h3>八、经济补偿怎么算（第 47 条，详见 00-6）</h3><table><thead><tr><th>要素</th><th>规则</th></tr></thead><tbody><tr><td style="color:var(--tx)">补偿月数 N</td><td>每满 1 年支付 1 个月工资；6 个月以上不满 1 年按 1 年计；不满 6 个月支付半个月工资</td></tr><tr><td style="color:var(--tx)">月工资</td><td>解除或终止前<b>十二个月的平均应得工资</b>（含奖金、津贴、补贴）</td></tr><tr><td style="color:var(--tx)">封顶规则</td><td>月工资高于当地上年度职工月平均工资 <b>3 倍</b>的，按 3 倍计，且年限<b>最高 12 年</b></td></tr><tr><td style="color:var(--tx)">托底规则</td><td>月平均工资低于当地最低工资标准的，按<b>最低工资标准</b>计算</td></tr><tr><td style="color:var(--tx)">代通知金（+1）</td><td>按该劳动者<b>上一个月</b>的工资标准确定（《实施条例》第 20 条）</td></tr></tbody></table><h3>九、违法解除的代价（第 48、87 条）</h3><p>用人单位违反本法规定解除或者终止劳动合同，<b>劳动者要求继续履行劳动合同的，用人单位应当继续履行</b>；劳动者不要求继续履行劳动合同或者劳动合同已经不能继续履行的，用人单位应当依照第 47 条规定的经济补偿标准的<b>二倍</b>向劳动者支付<b>赔偿金（2N）</b>。</p><table><thead><tr><th>劳动者的选择</th><th>单位代价</th></tr></thead><tbody><tr><td style="color:var(--tx)">要求继续履行</td><td>恢复劳动关系 + 支付违法解除期间的<b>工资损失</b>（标准各地口径不同，一般为正常工资）</td></tr><tr><td style="color:var(--tx)">不要求继续履行</td><td><b>2N 赔偿金</b>（2N 同样受 3 倍基数与 12 年年限的封顶限制）</td></tr></tbody></table><div class="note">注意：<b>选择权在劳动者，不在单位</b>。单位不能以“我愿意付 2N”来对抗劳动者要求继续履行的主张；反之亦然。</div><h3>十、离职手续（第 50 条、《实施条例》第 24 条）</h3><ol class="steps"><li>出具<b>解除或者终止劳动合同的证明</b>：应当在解除或终止劳动合同时出具，并在 <b>15 日内</b>为劳动者办理档案和社会保险关系转移手续</li><li><b>结清工资</b>：按实际出勤与应得项目结清，不得拖延</li><li><b>工作交接</b>：按约定办理；单位依规定应向劳动者支付经济补偿的，在<b>办结工作交接时</b>支付</li><li><b>保存已解除或终止的劳动合同文本至少 2 年</b>备查</li><li><b>离职证明内容</b>：应当写明劳动合同期限、解除或终止劳动合同的日期、工作岗位、在本单位的工作年限；<b>不得写对劳动者不利的内容</b>（如“因严重违纪被辞退”“能力不足”）</li></ol><h3>十一、协商解除协议怎么写才有效</h3><ul><li><b>列明</b>所有已结清项目：工资、加班费、未休年休假折算、经济补偿/赔偿金、奖金提成、报销款，逐项写金额；</li><li><b>明确</b>支付方式与期限（如“于协议签订后 5 个工作日内支付至劳动者指定账户”）；</li><li><b>写明</b>“双方确认除本协议约定外，不存在其他未了结的劳动争议”——但仅写笼统的“再无争议”不足以免除法定责任；</li><li><b>不得</b>显失公平：金额明显低于法定标准（如应付 10 万只给 1 万），劳动者仍可主张撤销或补足（⚠ 各地口径不同）；</li><li><b>不得</b>限制劳动者依法主张社会保险、工伤待遇等法定权利；</li><li>由劳动者<b>本人签字并注明日期</b>，单位盖章，一式两份各执一份。</li></ul><h3>十二、败诉四因与处罚适配</h3><p>据 HR 侧实战统计（⚠ 非官方数据），用人单位在违纪解除类案件中败诉的原因分布大致为：</p><table><thead><tr><th>败诉原因</th><th>占比</th><th>防控动作</th></tr></thead><tbody><tr><td style="color:var(--tx)"><b>处罚过重</b></td><td>约 <b>33%</b></td><td>用处罚适配矩阵 8 维度打分；建立警告 → 记过 → 解除的梯度</td></tr><tr><td style="color:var(--tx)"><b>证据链断裂</b></td><td>约 <b>25%</b></td><td>违纪发生即固定证据，形成“制度 → 事实 → 通知 → 送达”完整链条</td></tr><tr><td style="color:var(--tx)"><b>管理漏洞</b></td><td>约 <b>25%</b></td><td>区分真实违纪与借名处理；避免以违纪名义处理绩效或人际关系问题</td></tr><tr><td style="color:var(--tx)"><b>程序瑕疵</b></td><td>约 <b>17%</b></td><td>解除前完成调查取证、听取申辩、通知工会、书面送达</td></tr></tbody></table><h3>十三、处罚适配评估矩阵（8 维度）</h3><table><thead><tr><th>维度</th><th>评估要点</th><th>不利信号（不建议直接解除）</th></tr></thead><tbody><tr><td style="color:var(--tx)">1. 违纪性质</td><td>行为违纪（旷工、造假、泄密）还是能力问题（业绩不达标）</td><td>属于能力问题却走第 39 条</td></tr><tr><td style="color:var(--tx)">2. 损害后果</td><td>实际损失金额、影响范围、可否挽回</td><td>无实际损失或损失轻微</td></tr><tr><td style="color:var(--tx)">3. 主观过错</td><td>故意 / 重大过失 / 一般过失 / 无过失</td><td>无故意、属一般过失</td></tr><tr><td style="color:var(--tx)">4. 过往记录</td><td>是否同类违纪、是否已警告</td><td>首次违纪、未曾提醒</td></tr><tr><td style="color:var(--tx)">5. 同类先例</td><td>同部门他人同类行为如何处理</td><td>他人同样行为仅被口头提醒</td></tr><tr><td style="color:var(--tx)">6. 制度依据</td><td>制度是否有明确对应的解除条款、条款是否合法</td><td>制度无对应条款或条款笼统</td></tr><tr><td style="color:var(--tx)">7. 程序完满度</td><td>是否调查、听申辩、通知工会、书面送达</td><td>任一环节缺失</td></tr><tr><td style="color:var(--tx)">8. 替代措施可行性</td><td>警告、调岗、培训能否解决</td><td>存在明显更轻的处理方式</td></tr></tbody></table><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">① 解除所依据的事实证据 ② 制度经民主程序并已公示的证据 ③ 已通知工会的证据 ④ 书面解除通知及送达证据 ⑤ 属第 40 条的，另有培训/调岗/协商记录与提前 30 日通知或代通知金支付凭证</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">① 制度无民主程序或未公示 ② 违纪证据不足或系单方制作 ③ 未通知工会 ④ 处罚明显过重（同类行为他人未被处理）⑤ 属第 42 条禁止解除情形 ⑥ 未做离岗前职业健康检查 ⑦ 未提前 30 日通知且未付代通知金 ⑧ 解除通知未有效送达</div></div></div><div class="mid">争议焦点：解除是否合法（举证责任在用人单位）</div><h3>十四、A5 自查清单（解除前逐项打勾）</h3><div class="pbar" id="pb16"><i></i></div><ul class="chk" data-pb="pb16" data-pn="pn16"><li><input type="checkbox" id="pb16_0"><label for="pb16_0" style="cursor:pointer"><span>已确定走的是哪条路（39 / 40 / 41 / 36 / 44），并写明法律依据</span></label></li><li><input type="checkbox" id="pb16_1"><label for="pb16_1" style="cursor:pointer"><span>不属于第 42 条禁止解除的情形（或走的是第 39 条）</span></label></li><li><input type="checkbox" id="pb16_2"><label for="pb16_2" style="cursor:pointer"><span>制度依据明确、经民主程序制定、已向该员工公示告知</span></label></li><li><input type="checkbox" id="pb16_3"><label for="pb16_3" style="cursor:pointer"><span>违纪/不胜任的事实证据已固定且形成完整链条</span></label></li><li><input type="checkbox" id="pb16_4"><label for="pb16_4" style="cursor:pointer"><span>已按处罚适配矩阵 8 维度评估，处罚与过错相当</span></label></li><li><input type="checkbox" id="pb16_5"><label for="pb16_5" style="cursor:pointer"><span>属第 40 条的，已完成培训或调岗且再次考核仍不达标</span></label></li><li><input type="checkbox" id="pb16_6"><label for="pb16_6" style="cursor:pointer"><span>属第 40 条的，已提前 30 日书面通知或已支付代通知金</span></label></li><li><input type="checkbox" id="pb16_7"><label for="pb16_7" style="cursor:pointer"><span>属第 41 条的，已提前 30 日说明、听取意见并向劳动行政部门报告</span></label></li><li><input type="checkbox" id="pb16_8"><label for="pb16_8" style="cursor:pointer"><span>已事先将解除理由通知工会并保留证据</span></label></li><li><input type="checkbox" id="pb16_9"><label for="pb16_9" style="cursor:pointer"><span>解除通知书已书面送达且保留送达证据</span></label></li><li><input type="checkbox" id="pb16_10"><label for="pb16_10" style="cursor:pointer"><span>经济补偿/赔偿金金额已按双封顶规则核算</span></label></li><li><input type="checkbox" id="pb16_11"><label for="pb16_11" style="cursor:pointer"><span>已安排离岗前职业健康检查（接触职业病危害岗位）</span></label></li><li><input type="checkbox" id="pb16_12"><label for="pb16_12" style="cursor:pointer"><span>离职证明将在 15 日内出具，档案社保将在 15 日内转移</span></label></li><li><input type="checkbox" id="pb16_13"><label for="pb16_13" style="cursor:pointer"><span>解除文本将保存至少 2 年</span></label></li></ul><div class="pnum" id="pn16">0 / 14</div><div class="tpl"><div class="th2"><span>解除劳动合同通知书（第 39 条 · 严重违纪版）</span><button class="btn gold" onclick="cp('cp17',this)">复制</button></div><pre id="cp17">解除劳动合同通知书
+
+______（劳动者姓名，工号：______）：
+
+经查，你在职期间存在以下严重违反公司规章制度的行为：
+
+一、事实
+1. ______年____月____日，你______（具体行为，如：未履行任何请假手续，连续旷工 3 个工作日，分别为__月__日、__月__日、__月__日）；
+2. ______（其他事实，逐条列明，附证据编号）。
+
+二、依据
+上述行为违反《______公司员工手册》（版本____，你于______年____月____日签收）第 X 条第 X 款之规定：“______”。
+该条款属于公司规章制度中**严重违纪**情形，公司可依据《中华人民共和国劳动合同法》第三十九条第二项解除劳动合同。
+
+三、决定
+公司决定自______年____月____日起解除与你签订的劳动合同。依据《中华人民共和国劳动合同法》第三十九条规定，公司**无需向你支付经济补偿**。
+
+四、后续事项
+1. 请于______年____月____日前至人力资源部办理工作交接；
+2. 公司将于办结工作交接后为你出具解除劳动合同证明，并在 15 日内办理档案和社会保险关系转移手续；
+3. 本月工资将按实际出勤结算，于次月发薪日发放。
+
+五、申辩权利
+你有权在收到本通知之日起 3 个工作日内向公司提出书面申辩。
+
+______公司（盖章）
+______年____月____日
+
+----------------------------------------
+签 收 回 执
+本人已于______年____月____日收到本通知书。
+签收人：______　日期：______
+
+【送达与留痕要点】
+1. 优先当面送达并由本人签收；拒签的，由两名在场人员签字证明；
+2. 无法当面送达的，用 EMS 寄往入职登记表确认的地址，详情单注明“解除劳动合同通知书”，保留存根与签收记录；
+3. 同步以企业邮箱、短信送达并截图；
+4. **送达前必须已完成通知工会**，并保留工会的签收回执或复函。</pre></div><div class="tpl"><div class="th2"><span>解除劳动合同通知书（第 40 条 · 无过失性辞退版）</span><button class="btn gold" onclick="cp('cp18',this)">复制</button></div><pre id="cp18">解除劳动合同通知书
+
+______（劳动者姓名，工号：______）：
+
+一、事实与依据
+因______（选择一项并展开）：
+□ 你患病/非因工负伤，医疗期于______年____月____日届满，医疗期满后不能从事原工作，公司于______年____月____日另行安排你从事______岗位工作，你仍不能从事；
+□ 你经考核不能胜任______岗位工作，公司于______年____月____日至______年____月____日对你进行了专项培训 / 于______年____月____日将你调整至______岗位，经再次考核仍不能胜任；
+□ 劳动合同订立时所依据的客观情况发生重大变化（______），致使劳动合同无法履行，公司于______年____月____日与你协商变更劳动合同内容，未能达成协议。
+
+依据《中华人民共和国劳动合同法》第四十条第___项，公司决定解除与你的劳动合同。
+
+二、通知与补偿
+1. 公司选择：□ 提前 30 日书面通知（解除日期为______年____月____日）／ □ 额外支付你一个月工资作为代通知金（解除日期为______年____月____日）；
+2. 公司将依法支付经济补偿：按你在本单位工作年限______年，支付______个月工资，合计人民币______元；
+3. 代通知金：人民币______元（按你上一个月的工资标准确定）；
+4. 上述款项将于办结工作交接后支付。
+
+三、后续事项
+请于______年____月____日前办理工作交接；公司将在 15 日内出具解除证明并办理档案和社保转移。
+
+______公司（盖章）
+______年____月____日
+
+【要点】
+1. 第 40 条受第 42 条限制：确认该员工不属于三期、医疗期内、工伤丧失劳动能力等情形；
+2. 第 40 条**必须**提前 30 日书面通知或支付代通知金，两者择一；
+3. **必须**事先通知工会。</pre></div><div class="tpl"><div class="th2"><span>协商解除劳动合同协议书（要点版）</span><button class="btn gold" onclick="cp('cp19',this)">复制</button></div><pre id="cp19">协商解除劳动合同协议书
+
+甲方（用人单位）：______　统一社会信用代码：______
+乙方（劳动者）：______　身份证号：______
+
+鉴于双方于______年____月____日签订的劳动合同，经**甲方提出**并与乙方协商一致，现就解除劳动合同及相关事宜达成如下协议：
+
+一、双方一致同意于______年____月____日解除劳动合同。
+
+二、工资、加班费与福利结算（逐项列明，不要笼统）
+1. 工资结算至______年____月____日，金额人民币______元；
+2. 未休年休假____天，折算金额人民币______元；
+3. 加班费：人民币______元；
+4. 奖金/提成/报销：人民币______元。
+
+三、经济补偿
+甲方向乙方支付解除劳动合同经济补偿人民币______元（按乙方在甲方工作年限____年，计____个月，月工资标准人民币______元）。
+
+四、支付与税务
+上述款项合计人民币______元，甲方于本协议签订后 5 个工作日内一次性支付至乙方指定账户（开户行：______，账号：______）。个人所得税依法代扣代缴。
+
+五、工作交接
+乙方应于______年____月____日前完成工作交接；甲方于交接完成后出具解除劳动合同证明，并在 15 日内办理档案和社会保险关系转移手续。
+
+六、确认
+1. 除本协议约定外，双方就劳动关系的建立、履行、解除不存在其他未了结的争议；
+2. 乙方确认已充分知悉相关法律规定，签署本协议系其真实意思表示；
+3. 本协议不影响乙方依法享有的社会保险、工伤保险等法定权利。
+
+七、其他
+本协议一式两份，双方各执一份，自双方签字（盖章）之日起生效。
+
+甲方（盖章）：______　日期：______
+乙方（签字）：______　日期：______
+
+【律师提示】
+1. **必须逐项列明金额**，只写“一次性包干 XX 元、双方再无争议”在部分地区可能被认定显失公平；
+2. 金额明显低于法定标准的（如应付 10 万只给 1 万），劳动者仍可能主张补足；
+3. 不要写“乙方自愿放弃一切权利”这类笼统条款，涉及法定权利的部分无效；
+4. 乙方必须本人签字，注明日期。</pre></div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第三十六条（协商解除）、第三十九条（过失性辞退）、第四十条（无过失性辞退）、第四十一条（经济性裁员）、第四十二条（禁止解除情形）、第四十三条（通知工会）、第四十四条（终止）、第四十五条（期满顺延）、第四十六条（应当支付经济补偿的情形）、第四十七条（计算与封顶）、第四十八条（违法解除的后果）、第五十条（离职手续）、第八十七条（赔偿金）
+
+《中华人民共和国劳动合同法》第四十六条
+有下列情形之一的，用人单位应当向劳动者支付经济补偿：
+（一）劳动者依照本法第三十八条规定解除劳动合同的；
+（二）用人单位依照本法第三十六条规定向劳动者提出解除劳动合同并与劳动者协商一致解除劳动合同的；
+（三）用人单位依照本法第四十条规定解除劳动合同的；
+（四）用人单位依照本法第四十一条第一款规定解除劳动合同的；
+（五）除用人单位维持或者提高劳动合同约定条件续订劳动合同，劳动者不同意续订的情形外，依照本法第四十四条第一项规定终止固定期限劳动合同的；
+（六）依照本法第四十四条第四项、第五项规定终止劳动合同的；
+（七）法律、行政法规规定的其他情形。
+
+《中华人民共和国劳动合同法》第八十七条
+用人单位违反本法规定解除或者终止劳动合同的，应当依照本法第四十七条规定的经济补偿标准的二倍向劳动者支付赔偿金。
+
+《中华人民共和国劳动合同法实施条例》第二十条（代通知金标准）、第二十四条（离职证明内容不得写不利内容）、第二十七条（月工资的计算口径）</div></details></section><section id="A6"><h2 id="h_A6">A6　被申请仲裁了：用人单位的应对流程</h2><div><span class="badge g">10 日答辩</span><span class="badge g">终局裁决</span><span class="badge g">证据清单</span></div><p class="sub" style="margin:10px 0 4px">收到仲裁申请书副本之后该做什么，以及为什么“终局裁决”对单位特别不友好。</p><h3>一、应对流程（时间线）</h3><ol class="steps"><li><b>签收与核对</b>：核对申请人是否为本单位员工、被申请人名称是否与营业执照一致、仲裁请求与金额</li><li><b>10 日内提交答辩书</b>（《劳动争议调解仲裁法》第 30 条）：被申请人收到仲裁申请书副本后，应当在 10 日内向劳动争议仲裁委员会提交答辩书；不提交不影响程序进行，但会丧失说清事实的机会</li><li><b>举证期限</b>：在仲裁庭指定的举证期限内提交证据，逾期可能不被采纳</li><li><b>开庭</b>：陈述、质证（真实性/合法性/关联性）、辩论、最后陈述</li><li><b>调解</b>：仲裁庭会先行调解，可考虑在可控范围内和解以缩短周期</li><li><b>裁决</b>：受理之日起 45 日内结束，案情复杂可延长但不超过 15 日</li><li><b>决定后续</b>：判断是否属终局裁决；不属的，15 日内决定是否起诉；属终局裁决且对单位不利的，只能向中院申请撤销</li></ol><h3>二、单位必须主动提交的证据（举证责任倒置）</h3><table><thead><tr><th>争议事项</th><th>单位须提交的证据</th></tr></thead><tbody><tr><td style="color:var(--tx)">劳动关系起始与工作年限</td><td>职工名册、入职登记表、社保缴纳记录、历次劳动合同</td></tr><tr><td style="color:var(--tx)">工资标准与支付情况</td><td>工资表、银行代发回单、签收记录（保存 2 年以上）</td></tr><tr><td style="color:var(--tx)">加班与考勤</td><td>考勤台账、加班审批单、排班表、补休记录</td></tr><tr><td style="color:var(--tx)">解除的合法性</td><td>解除依据的事实证据、制度及民主程序记录、公示签收单、通知工会的证据、解除通知书及送达证据</td></tr><tr><td style="color:var(--tx)">年休假</td><td>休假审批记录、年休假工资支付记录</td></tr><tr><td style="color:var(--tx)">调岗调薪</td><td>经营必要性证据、前后薪酬对比、协商记录</td></tr><tr><td style="color:var(--tx)">工伤争议</td><td>参保记录、职业健康检查档案、事故报告</td></tr></tbody></table><div class="note">与争议事项有关的证据属于用人单位掌握管理的，用人单位应当提供；<b>不提供的，应当承担不利后果</b>（第 6 条）。因开除、除名、辞退、解除劳动合同、减少劳动报酬、计算工作年限等决定发生的劳动争议，<b>用人单位负举证责任</b>。</div><h3>三、终局裁决：对单位特别不友好的设计</h3><p>下列争议，仲裁裁决为终局裁决，裁决书<b>自作出之日起发生法律效力</b>（第 47 条）：</p><ul><li>追索劳动报酬、工伤医疗费、经济补偿或者赔偿金，不超过当地月最低工资标准<b>十二个月金额</b>的争议；</li><li>因执行国家的劳动标准在工作时间、休息休假、社会保险等方面发生的争议。</li></ul><table><thead><tr><th>主体</th><th>终局裁决后可做什么</th></tr></thead><tbody><tr><td style="color:var(--tx)"><b>劳动者</b></td><td>可以自收到裁决书之日起 <b>15 日内</b>向人民法院<b>提起诉讼</b>（第 48 条）</td></tr><tr><td style="color:var(--tx)"><b>用人单位</b></td><td><b>不能起诉</b>，只能自收到裁决书之日起 <b>30 日内</b>向劳动争议仲裁委员会所在地的<b>中级人民法院申请撤销</b>裁决（第 49 条），且仅限于法定事由：适用法律确有错误、无管辖权、违反法定程序、裁决所根据的证据是伪造的、对方隐瞒了足以影响公正裁决的证据、仲裁员有索贿受贿徇私舞弊枉法裁决行为</td></tr></tbody></table><div class="note">实务含义：金额较小的追索劳动报酬、经济补偿、赔偿金案件，单位一旦在仲裁阶段输了，基本没有翻盘机会（撤销的门槛极高）。所以<b>这类小金额案件的胜负基本在仲裁阶段就定了</b>，必须重视首次答辩与举证。</div><h3>四、答辩的两个层次</h3><ol><li><b>第一层：攻击合法性</b>。优先证明解除/处理本身合法——制度合法、事实清楚、证据充分、程序完满。这是全赢的路。</li><li><b>第二层：攻击金额</b>。若合法性难以成立，退而求其次核对算法：工作年限是否算错（有无中断、有无关联公司调动）、月工资基数是否应为应得工资、是否触发 3 倍封顶与 12 年年限封顶、加班费基数与小时数是否准确、是否已支付部分款项应抵扣、仲裁时效是否经过（<b>时效是最有力的抗辩之一</b>）。</li></ol><div class="key">别忘了<b>时效抗辩</b>：劳动争议仲裁时效为 1 年。二倍工资、加班费等追溯多年的请求，务必逐笔核对时效起算点。时效抗辩应当在仲裁阶段提出。</div><h3>五、常见败诉点复盘</h3><div class="pbar" id="pb20"><i></i></div><ul class="chk" data-pb="pb20" data-pn="pn20"><li><input type="checkbox" id="pb20_0"><label for="pb20_0" style="cursor:pointer"><span>制度未经民主程序或未向该员工公示告知</span></label></li><li><input type="checkbox" id="pb20_1"><label for="pb20_1" style="cursor:pointer"><span>违纪证据系单方制作、无员工确认或无其他证据佐证</span></label></li><li><input type="checkbox" id="pb20_2"><label for="pb20_2" style="cursor:pointer"><span>未事先通知工会，或通知证据缺失</span></label></li><li><input type="checkbox" id="pb20_3"><label for="pb20_3" style="cursor:pointer"><span>处罚明显过重，与同类行为的处理不一致</span></label></li><li><input type="checkbox" id="pb20_4"><label for="pb20_4" style="cursor:pointer"><span>考勤与工资台账未保存或保存不完整（举证不能）</span></label></li><li><input type="checkbox" id="pb20_5"><label for="pb20_5" style="cursor:pointer"><span>属第 42 条禁止解除情形而仍依第 40/41 条解除</span></label></li><li><input type="checkbox" id="pb20_6"><label for="pb20_6" style="cursor:pointer"><span>未提前 30 日通知且未支付代通知金</span></label></li><li><input type="checkbox" id="pb20_7"><label for="pb20_7" style="cursor:pointer"><span>解除通知书未有效送达</span></label></li><li><input type="checkbox" id="pb20_8"><label for="pb20_8" style="cursor:pointer"><span>未在举证期限内提交证据</span></label></li><li><input type="checkbox" id="pb20_9"><label for="pb20_9" style="cursor:pointer"><span>未提出仲裁时效抗辩</span></label></li></ul><div class="pnum" id="pn20">0 / 10</div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动争议调解仲裁法》第六条（举证责任）、第三十条（10 日答辩）、第三十九条（用人单位掌握管理的证据）、第四十三条（45+15 日）、第四十七条（终局裁决范围）、第四十八条（劳动者可起诉）、第四十九条（用人单位申请撤销）、第五十条（15 日起诉期）、第五十一条（强制执行）
+
+《最高人民法院关于审理劳动争议案件适用法律问题的解释（一）》第四十四条（用人单位负举证责任的六类决定）</div></details></section><section id="A7"><h2 id="h_A7">A7　用工合规自查清单</h2><div><span class="badge g">可直接用</span><span class="badge g">带进度条</span></div><p class="sub" style="margin:10px 0 4px">按 A1–A6 顺序，一份可以直接拿去体检公司的清单。勾不上的，就是风险。</p><p>按下面六个模块逐项打勾。<b>勾不上的项目，在争议中往往会直接导致败诉</b>。建议每半年做一次全量自查，人员变动、制度修订后及时补查。</p><h3>风险等级对照</h3><table><thead><tr><th>风险等级</th><th>含义</th><th>整改优先级</th></tr></thead><tbody><tr><td style="color:var(--tx)"><b>红色</b></td><td>直接导致违法解除或二倍工资等大额赔付</td><td>立即整改（1 个月内）</td></tr><tr><td style="color:var(--tx)"><b>橙色</b></td><td>可能被认定程序瑕疵，影响个案胜负</td><td>限期整改（3 个月内）</td></tr><tr><td style="color:var(--tx)"><b>黄色</b></td><td>管理不规范，一般不直接导致败诉</td><td>逐步完善</td></tr></tbody></table><h3>A1 招录用</h3><div class="pbar" id="pb21"><i></i></div><ul class="chk" data-pb="pb21" data-pn="pn21"><li><input type="checkbox" id="pb21_0"><label for="pb21_0" style="cursor:pointer"><span>[红] 招聘广告无性别、婚育、地域、乙肝、残疾等歧视性表述</span></label></li><li><input type="checkbox" id="pb21_1"><label for="pb21_1" style="cursor:pointer"><span>[黄] 背景调查已取得书面授权</span></label></li><li><input type="checkbox" id="pb21_2"><label for="pb21_2" style="cursor:pointer"><span>[黄] 个人信息收集遵循最小必要原则并履行告知义务</span></label></li><li><input type="checkbox" id="pb21_3"><label for="pb21_3" style="cursor:pointer"><span>[橙] Offer 写明有效期、生效条件与薪酬构成</span></label></li><li><input type="checkbox" id="pb21_4"><label for="pb21_4" style="cursor:pointer"><span>[红] 未扣押证件、未收取押金或任何形式财物</span></label></li><li><input type="checkbox" id="pb21_5"><label for="pb21_5" style="cursor:pointer"><span>[红] 录用条件已书面化并在入职当天由劳动者签收</span></label></li><li><input type="checkbox" id="pb21_6"><label for="pb21_6" style="cursor:pointer"><span>[红] 试用期考核标准与录用条件逐项对应且可量化</span></label></li></ul><div class="pnum" id="pn21">0 / 7</div><h3>A2 签约与试用期</h3><div class="pbar" id="pb22"><i></i></div><ul class="chk" data-pb="pb22" data-pn="pn22"><li><input type="checkbox" id="pb22_0"><label for="pb22_0" style="cursor:pointer"><span>[红] 所有员工均在用工之日起 1 个月内订立书面劳动合同</span></label></li><li><input type="checkbox" id="pb22_1"><label for="pb22_1" style="cursor:pointer"><span>[橙] 合同文本双方各执一份且有签收记录</span></label></li><li><input type="checkbox" id="pb22_2"><label for="pb22_2" style="cursor:pointer"><span>[黄] 合同包含法定 9 项必备条款</span></label></li><li><input type="checkbox" id="pb22_3"><label for="pb22_3" style="cursor:pointer"><span>[红] 试用期长度与合同期限匹配，未重复约定</span></label></li><li><input type="checkbox" id="pb22_4"><label for="pb22_4" style="cursor:pointer"><span>[红] 试用期工资不低于约定工资 80% 且不低于当地最低工资</span></label></li><li><input type="checkbox" id="pb22_5"><label for="pb22_5" style="cursor:pointer"><span>[红] 不存在“仅约定试用期”的合同</span></label></li><li><input type="checkbox" id="pb22_6"><label for="pb22_6" style="cursor:pointer"><span>[红] 满 10 年或连续两次固定期限员工已按规则处理续订</span></label></li><li><input type="checkbox" id="pb22_7"><label for="pb22_7" style="cursor:pointer"><span>[橙] 合同变更已采用书面形式</span></label></li></ul><div class="pnum" id="pn22">0 / 8</div><h3>A3 规章制度</h3><div class="pbar" id="pb23"><i></i></div><ul class="chk" data-pb="pb23" data-pn="pn23"><li><input type="checkbox" id="pb23_0"><label for="pb23_0" style="cursor:pointer"><span>[红] 制度经职工代表大会或全体职工讨论</span></label></li><li><input type="checkbox" id="pb23_1"><label for="pb23_1" style="cursor:pointer"><span>[红] 有与工会或职工代表平等协商的书面记录</span></label></li><li><input type="checkbox" id="pb23_2"><label for="pb23_2" style="cursor:pointer"><span>[红] 制度已公示或告知，且保留每位员工的签收证据</span></label></li><li><input type="checkbox" id="pb23_3"><label for="pb23_3" style="cursor:pointer"><span>[红] 解除时引用的制度版本与员工签收版本一致</span></label></li><li><input type="checkbox" id="pb23_4"><label for="pb23_4" style="cursor:pointer"><span>[橙] 制度修订后重新履行民主程序与告知程序</span></label></li><li><input type="checkbox" id="pb23_5"><label for="pb23_5" style="cursor:pointer"><span>[红] 无罚款、放弃社保、笼统免除权利等无效条款</span></label></li><li><input type="checkbox" id="pb23_6"><label for="pb23_6" style="cursor:pointer"><span>[橙] 违纪行为与处罚档次有明确对应且有梯度</span></label></li><li><input type="checkbox" id="pb23_7"><label for="pb23_7" style="cursor:pointer"><span>[红] 无末位淘汰直接解除条款</span></label></li></ul><div class="pnum" id="pn23">0 / 8</div><h3>A4 在职管理</h3><div class="pbar" id="pb24"><i></i></div><ul class="chk" data-pb="pb24" data-pn="pn24"><li><input type="checkbox" id="pb24_0"><label for="pb24_0" style="cursor:pointer"><span>[红] 特殊工时已取得劳动行政部门批复且在有效期与岗位范围内</span></label></li><li><input type="checkbox" id="pb24_1"><label for="pb24_1" style="cursor:pointer"><span>[橙] 每月加班不超过 36 小时，每日不超过 3 小时</span></label></li><li><input type="checkbox" id="pb24_2"><label for="pb24_2" style="cursor:pointer"><span>[红] 法定节假日加班已按 300% 支付，未用补休替代</span></label></li><li><input type="checkbox" id="pb24_3"><label for="pb24_3" style="cursor:pointer"><span>[橙] 休息日加班已优先安排补休</span></label></li><li><input type="checkbox" id="pb24_4"><label for="pb24_4" style="cursor:pointer"><span>[橙] 加班费计算基数符合当地规定</span></label></li><li><input type="checkbox" id="pb24_5"><label for="pb24_5" style="cursor:pointer"><span>[红] 考勤台账按月归档，保存不少于 2 年</span></label></li><li><input type="checkbox" id="pb24_6"><label for="pb24_6" style="cursor:pointer"><span>[红] 工资台账保存 2 年以上且提供个人工资清单</span></label></li><li><input type="checkbox" id="pb24_7"><label for="pb24_7" style="cursor:pointer"><span>[红] 全员依法参保，缴费基数为实际工资</span></label></li><li><input type="checkbox" id="pb24_8"><label for="pb24_8" style="cursor:pointer"><span>[橙] 年休假按累计工龄正确计算，跨年安排已征得同意</span></label></li><li><input type="checkbox" id="pb24_9"><label for="pb24_9" style="cursor:pointer"><span>[橙] 离职时已折算支付未休年休假工资</span></label></li><li><input type="checkbox" id="pb24_10"><label for="pb24_10" style="cursor:pointer"><span>[橙] 调岗基于法定或协商情形，薪酬未明显下降</span></label></li><li><input type="checkbox" id="pb24_11"><label for="pb24_11" style="cursor:pointer"><span>[橙] 服务期协议限于有实际专项培训费用支出的情形</span></label></li><li><input type="checkbox" id="pb24_12"><label for="pb24_12" style="cursor:pointer"><span>[红] 竞业限制人员限于法定范围且期限不超过 2 年</span></label></li><li><input type="checkbox" id="pb24_13"><label for="pb24_13" style="cursor:pointer"><span>[红] 竞业限制已按月支付补偿金</span></label></li><li><input type="checkbox" id="pb24_14"><label for="pb24_14" style="cursor:pointer"><span>[橙] 劳务派遣用工比例未超 10%，岗位符合三性</span></label></li></ul><div class="pnum" id="pn24">0 / 15</div><h3>A5 解聘与赔偿</h3><div class="pbar" id="pb25"><i></i></div><ul class="chk" data-pb="pb25" data-pn="pn25"><li><input type="checkbox" id="pb25_0"><label for="pb25_0" style="cursor:pointer"><span>[红] 已确定解除路径并写明法律依据</span></label></li><li><input type="checkbox" id="pb25_1"><label for="pb25_1" style="cursor:pointer"><span>[红] 不属于第 42 条禁止解除情形（或走第 39 条）</span></label></li><li><input type="checkbox" id="pb25_2"><label for="pb25_2" style="cursor:pointer"><span>[红] 事实证据已固定并形成完整链条</span></label></li><li><input type="checkbox" id="pb25_3"><label for="pb25_3" style="cursor:pointer"><span>[红] 已按处罚适配矩阵 8 维度评估，处罚相当</span></label></li><li><input type="checkbox" id="pb25_4"><label for="pb25_4" style="cursor:pointer"><span>[红] 属第 40 条的，已完成培训或调岗且再次考核仍不达标</span></label></li><li><input type="checkbox" id="pb25_5"><label for="pb25_5" style="cursor:pointer"><span>[红] 属第 40 条的，已提前 30 日通知或支付代通知金</span></label></li><li><input type="checkbox" id="pb25_6"><label for="pb25_6" style="cursor:pointer"><span>[红] 属第 41 条的，已完成说明、听取意见与报告程序</span></label></li><li><input type="checkbox" id="pb25_7"><label for="pb25_7" style="cursor:pointer"><span>[红] 已事先通知工会并保留证据</span></label></li><li><input type="checkbox" id="pb25_8"><label for="pb25_8" style="cursor:pointer"><span>[红] 解除通知书已书面送达且保留送达证据</span></label></li><li><input type="checkbox" id="pb25_9"><label for="pb25_9" style="cursor:pointer"><span>[橙] 补偿金额已按双封顶规则核算</span></label></li><li><input type="checkbox" id="pb25_10"><label for="pb25_10" style="cursor:pointer"><span>[橙] 离职证明 15 日内出具，档案社保 15 日内转移</span></label></li><li><input type="checkbox" id="pb25_11"><label for="pb25_11" style="cursor:pointer"><span>[橙] 离职证明未写对劳动者不利的内容</span></label></li><li><input type="checkbox" id="pb25_12"><label for="pb25_12" style="cursor:pointer"><span>[黄] 解除文本保存至少 2 年</span></label></li></ul><div class="pnum" id="pn25">0 / 13</div><h3>A6 争议应对</h3><div class="pbar" id="pb26"><i></i></div><ul class="chk" data-pb="pb26" data-pn="pn26"><li><input type="checkbox" id="pb26_0"><label for="pb26_0" style="cursor:pointer"><span>[橙] 收到副本后 10 日内提交答辩书</span></label></li><li><input type="checkbox" id="pb26_1"><label for="pb26_1" style="cursor:pointer"><span>[红] 在举证期限内提交单位掌握的证据（考勤、工资台账、制度、解除依据）</span></label></li><li><input type="checkbox" id="pb26_2"><label for="pb26_2" style="cursor:pointer"><span>[橙] 已判断案件是否属终局裁决</span></label></li><li><input type="checkbox" id="pb26_3"><label for="pb26_3" style="cursor:pointer"><span>[橙] 已提出仲裁时效抗辩（如适用）</span></label></li><li><input type="checkbox" id="pb26_4"><label for="pb26_4" style="cursor:pointer"><span>[黄] 已核对仲裁请求的算法（年限、基数、封顶）</span></label></li><li><input type="checkbox" id="pb26_5"><label for="pb26_5" style="cursor:pointer"><span>[黄] 收到裁决后 15 日/30 日内已决定起诉或申请撤销</span></label></li></ul><div class="pnum" id="pn26">0 / 6</div><p>打完勾后，把所有标 <b>[红]</b> 且未勾选的项目单独列出来——那就是你当前的合规负债清单，按整改成本从低到高排个序，先做成本低的。</p><p>想核算具体金额，打开&lt;a href=&quot;tools.html&quot;&gt;计算器&lt;/a&gt;；想看同类场景的攻防要点，去&lt;a href=&quot;clash.html&quot;&gt;攻防对照&lt;/a&gt;。</p></section><div class="foot"><a class="idx" href="index.html">返回首页</a><a href="route.html">28 天学习路线</a></div><div class="disc">本页内容为劳动法实务知识梳理，不构成法律意见，具体案件请咨询当地执业律师或拨打 12348 法律援助热线。引用法条以现行有效版本为准，地域性标准（产假奖励天数、工伤补助金、最低工资、社平工资等）以当地人社部门公布口径为准。</div></div><script>
+document.querySelectorAll('.chk').forEach(function(u){
+  var pb=document.getElementById(u.dataset.pb), pn=document.getElementById(u.dataset.pn);
+  function up(){
+    var all=u.querySelectorAll('input'), dn=u.querySelectorAll('input:checked');
+    u.querySelectorAll('li').forEach(function(li,i){ li.classList.toggle('done', u.querySelectorAll('input')[i].checked); });
+    if(pb) pb.firstElementChild.style.width=(all.length?dn.length/all.length*100:0)+'%';
+    if(pn) pn.textContent=dn.length+' / '+all.length;
+  }
+  u.addEventListener('change',up); up();
+});
+function cp(id,btn){
+  var t=document.getElementById(id).innerText, ok=function(){
+    var o=btn.textContent; btn.textContent='已复制'; setTimeout(function(){btn.textContent=o;},1400);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}
+  else{fb(t);ok();}
+  function fb(x){var a=document.createElement('textarea');a.value=x;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+}
+</script></body></html>

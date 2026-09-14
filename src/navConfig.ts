@@ -7,7 +7,8 @@ import { TabType } from './types';
  *   1) types.ts 的 TabType 加一个 union 成员；
  *   2) 下方 NAV_GROUPS 对应分组的 subTabs 里加一行；
  *   3) App.tsx 的渲染分支加一行 <XxxTab />。
- * 顶层默认两个分组；2026-09-14 起按站长要求新增第三个分组「影视法律」(film-law)。
+ * 顶层默认两个分组；2026-09-14 起按站长要求新增第三个分组「影视法律」(film-law)、
+ * 第四个分组「双视角劳动法务」(labor)。
  */
 export interface NavGroup {
   id: string;
@@ -53,6 +54,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   ip: { label: '知识产权', enLabel: 'IP' },
   'foreign-contracts': { label: '涉外合同学习', enLabel: 'Foreign Contracts' },
   'film-law': { label: '影视法律', enLabel: 'Film & Law' },
+  labor: { label: '双视角劳动法务', enLabel: 'Labor Law' },
 };
 
 /** 给定子板块，返回它所属的分组 id */
