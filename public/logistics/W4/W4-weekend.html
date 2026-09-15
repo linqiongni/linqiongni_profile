@@ -66,7 +66,27 @@ summary::marker{color:var(--gold)}
 .idxlist .t{color:var(--tx);font-size:14.5px}
 .idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
 @media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
-</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战④：审查一份信用证并找出不符点</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">审信用证就是玩「大家来找茬」：在规定时间把不符点全挑出来。挑漏一个，银行就有理由拒付，几十万美金卡在半路。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 + 波兰买方，CIF Gdańsk，海运整柜，适用 UCP600，买方开证、我方为货代并签发 HBL）。只审这份 SWIFT MT700 信用证，做一份审查意见：逐字段读懂条款、列出全部应挑出的不符点、说明每条不符点的 UCP600 依据与银行拒付后果、给出受益人改单/改证与货代自保建议。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要审查一份 SWIFT MT700 信用证。设定：深圳卖方（受益人）与波兰买方（申请人）签 CIF Gdańsk 合同，海运整柜，适用 UCP600，买方通过波兰银行开证、中国银行通知，我方为货代并签发 HBL。
+</style><style id="light-theme-override">
+/* 浅色主题覆盖 —— 与主站米白 #FDFCF9 统一，改善可读性 */
+:root{
+  --bg:#FDFCF9; --bg2:#F5F3EC; --card:#FFFFFF; --card2:#FAF8F3;
+  --line:#E8E8E6; --line2:#D8D5CC;
+  --tx:#1D1D1F; --tx2:#5A5A5F; --tx3:#86868B;
+  --txt:#1D1D1F; --sub:#5A5A5F; --sub2:#86868B;
+  --gold:#96792F; --gold2:#B89F6B;
+  --jade:#2E7C7B; --red:#A8453A; --red2:#C0392B;
+  --blue:#3D6FB0; --purple:#6B5B95;
+}
+html,body{background:#FDFCF9 !important;color:#1D1D1F !important}
+.topbar,header,.hero{background:#FFFFFF !important}
+.card,.checklist,details,.ti,.out,.idxlist a{background:#FFFFFF !important}
+th{background:#F1EEE6 !important;color:#6B5518 !important}
+td{border-color:#E8E8E6 !important}
+.prbox,.progress,.idxlist a:hover,.btn{background:#F1EEE6 !important;color:#1D1D1F !important}
+tr:nth-child(even) td{background:rgba(0,0,0,.025) !important}
+blockquote{background:#F5F3EC !important;color:#3A3A3C !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 4 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战④：审查一份信用证并找出不符点</h1><div class="sub">第 4 周主题：跨境支付与外汇 —— 钱怎么走，单怎么流转</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">审信用证就是玩「大家来找茬」：在规定时间把不符点全挑出来。挑漏一个，银行就有理由拒付，几十万美金卡在半路。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 + 波兰买方，CIF Gdańsk，海运整柜，适用 UCP600，买方开证、我方为货代并签发 HBL）。只审这份 SWIFT MT700 信用证，做一份审查意见：逐字段读懂条款、列出全部应挑出的不符点、说明每条不符点的 UCP600 依据与银行拒付后果、给出受益人改单/改证与货代自保建议。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要审查一份 SWIFT MT700 信用证。设定：深圳卖方（受益人）与波兰买方（申请人）签 CIF Gdańsk 合同，海运整柜，适用 UCP600，买方通过波兰银行开证、中国银行通知，我方为货代并签发 HBL。
 
 请输出：
 1. 这份 MT700 的「字段逐项解读」：把 40A/20/31C/31D/50/59/32B/41/42/43/44/45A/46A/47A/48/49/71B/78 等字段逐一说明含义（给中文对照），并指出其中对受益人不利或易踩坑的措辞
