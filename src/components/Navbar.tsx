@@ -144,6 +144,69 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
+      {/* 第二 / 第三层导航：当前分组下的子板块。
+          固定在 Navbar 内（不随内容滚动），因此铺满型 tab（跨境物流 / 知识产权 / 影视法律 / 劳动法务）
+          也能随时切换兄弟板块；影视法律分组按「剧集 → 季」再分一层。 */}
+      {(() => {
+        const group = NAV_GROUPS.find((g) => g.id === activeGroup);
+        if (!group) return null;
+        const sections = group.sections;
+        return (
+          <div
+            id="navbar-subnav"
+            className="hidden md:block border-t border-[#E8E8E6] dark:border-[#2C2C2E] bg-[#FDFCF9]/90 dark:bg-[#1C1C1E]/90 backdrop-blur-xl"
+          >
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 h-12 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-[#B89F6B]" />
+                <span className="text-[11px] uppercase tracking-widest text-[#86868B]">
+                  {sections ? '剧集 / Series' : '当前视图 / Current'}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto">
+                {sections
+                  ? sections.map((sec) => (
+                      <React.Fragment key={sec.id}>
+                        <span className="pl-2 pr-3 mr-1 text-xs font-medium text-[#1D1D1F] dark:text-[#F5F5F7] whitespace-nowrap border-r border-[#E8E8E6] dark:border-[#2C2C2E]">
+                          {sec.label}
+                        </span>
+                        {sec.tabs.map((t) => (
+                          <button
+                            key={t}
+                            id={`subnav-${t}`}
+                            onClick={() => onSelectTab(t)}
+                            className={`px-3 py-1 text-xs rounded-full transition-all duration-300 whitespace-nowrap ${
+                              activeTab === t
+                                ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
+                                : 'text-[#86868B] hover:text-[#B89F6B]'
+                            }`}
+                          >
+                            {SUB_TAB_META[t].label}
+                          </button>
+                        ))}
+                      </React.Fragment>
+                    ))
+                  : group.subTabs.map((t) => (
+                      <button
+                        key={t}
+                        id={`subnav-${t}`}
+                        onClick={() => onSelectTab(t)}
+                        className={`px-3 py-1 text-xs rounded-full transition-all duration-300 whitespace-nowrap ${
+                          activeTab === t
+                            ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
+                            : 'text-[#86868B] hover:text-[#B89F6B]'
+                        }`}
+                      >
+                        {SUB_TAB_META[t].label}
+                      </button>
+                    ))}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -174,23 +237,48 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span className="text-xs text-[#86868B]">{g.enLabel}</span>
                   </button>
                   <div className="ml-1 mt-1 flex flex-col space-y-1 border-l border-[#E8E8E6] dark:border-[#2C2C2E] pl-3">
-                    {g.subTabs.map((t) => (
-                      <button
-                        key={t}
-                        id={`mobile-nav-${t}`}
-                        onClick={() => {
-                          onSelectTab(t);
-                          setMobileMenuOpen(false);
-                        }}
-                        className={`text-left py-1.5 text-sm ${
-                          activeTab === t
-                            ? 'text-[#B89F6B] font-medium'
-                            : 'text-[#86868B]'
-                        }`}
-                      >
-                        {SUB_TAB_META[t].label}
-                      </button>
-                    ))}
+                    {g.sections
+                      ? g.sections.map((sec) => (
+                          <React.Fragment key={sec.id}>
+                            <div className="pt-1.5 text-[11px] uppercase tracking-widest text-[#B89F6B]">
+                              {sec.label}
+                            </div>
+                            {sec.tabs.map((t) => (
+                              <button
+                                key={t}
+                                id={`mobile-nav-${t}`}
+                                onClick={() => {
+                                  onSelectTab(t);
+                                  setMobileMenuOpen(false);
+                                }}
+                                className={`text-left py-1.5 text-sm ${
+                                  activeTab === t
+                                    ? 'text-[#B89F6B] font-medium'
+                                    : 'text-[#86868B]'
+                                }`}
+                              >
+                                {SUB_TAB_META[t].label}
+                              </button>
+                            ))}
+                          </React.Fragment>
+                        ))
+                      : g.subTabs.map((t) => (
+                          <button
+                            key={t}
+                            id={`mobile-nav-${t}`}
+                            onClick={() => {
+                              onSelectTab(t);
+                              setMobileMenuOpen(false);
+                            }}
+                            className={`text-left py-1.5 text-sm ${
+                              activeTab === t
+                                ? 'text-[#B89F6B] font-medium'
+                                : 'text-[#86868B]'
+                            }`}
+                          >
+                            {SUB_TAB_META[t].label}
+                          </button>
+                        ))}
                   </div>
                 </div>
               ))}

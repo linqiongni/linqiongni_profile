@@ -13,7 +13,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen flex flex-col justify-center items-center px-6 sm:px-12 pt-20 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
+      className="relative min-h-screen flex flex-col justify-center items-center px-6 sm:px-12 pt-20 md:pt-32 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
     >
       {/* Background Subtle Geometric / Grain Accent */}
       <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">

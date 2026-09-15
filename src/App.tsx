@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TabType } from './types';
-import { NAV_GROUPS, SUB_TAB_META, groupOfTab } from './navConfig';
+import { NAV_GROUPS, groupOfTab } from './navConfig';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutTab } from './components/AboutTab';
@@ -63,8 +63,12 @@ export default function App() {
     }
   };
 
-  // 跨境物流法务、知识产权 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
+  // 跨境物流法务、知识产权、影视法律、双视角劳动法务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
   const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'labor';
+
+  // 主页 Hero 大图只在「个人」分组展示。
+  // 之前点击「法务实务」会先渲染整屏主页再进内容，观感像“闪回主页”，故按分组收敛。
+  const showHero = activeGroup === 'profile';
 
   const handleScrollToContent = () => {
     if (contentSectionRef.current) {
@@ -78,7 +82,7 @@ export default function App() {
       {/* 全屏水面波纹背景（跟随鼠标，不拦截交互） */}
       <WaterRippleBackground darkMode={darkMode} />
 
-      {/* Top Fixed Navbar */}
+      {/* Top Fixed Navbar（内含第二 / 第三层子板块导航条） */}
       <Navbar
         activeGroup={activeGroup}
         activeTab={activeTab}
@@ -89,8 +93,8 @@ export default function App() {
         onOpenContact={() => setContactModalOpen(true)}
       />
 
-      {/* Hero Section 仅非全屏 tab 显示；跨境物流法务、涉外合同学习直接进内容页，不显示主页 Hero */}
-      {!isFullBleed && activeTab !== 'foreign-contracts' && (
+      {/* Hero Section 仅「个人」分组显示；其余分组直接进内容，不再出现主页大图 */}
+      {showHero && (
         <Hero
           onScrollToContent={handleScrollToContent}
           onExploreTab={handleSelectTab}
@@ -103,37 +107,14 @@ export default function App() {
         id="main-content-section"
         className={
           isFullBleed
-            ? 'flex-1 w-full px-0 pt-20'
-            : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
+            ? 'flex-1 w-full px-0 pt-20 md:pt-32'
+            : showHero
+              ? 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
+              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 md:pt-32 pb-16'
         }
       >
-      {/* 当前视图副导航条：跨境物流法务为铺满大页面、涉外合同学习为独立内容页，均不显示，避免冗余 */}
-      {!isFullBleed && activeTab !== 'foreign-contracts' && (
-          <div className="flex items-center justify-between pb-6 mb-10 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#B89F6B]" />
-              <span className="text-xs uppercase tracking-widest text-[#86868B]">
-                Current View / 当前视图
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1 sm:gap-2">
-              {NAV_GROUPS.find((g) => g.id === activeGroup)?.subTabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleSelectTab(tab)}
-                  className={`px-3 py-1 text-xs rounded-full transition-all duration-300 ${
-                    activeTab === tab
-                      ? 'bg-[#1D1D1F] text-white dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium'
-                      : 'text-[#86868B] hover:text-[#B89F6B]'
-                  }`}
-                >
-                  {SUB_TAB_META[tab].label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* 子板块导航条已上移到 Navbar 内（navbar-subnav），
+            全部分组统一在顶部切换，且铺满型 tab 也能切换兄弟板块，此处不再重复渲染 */}
 
         {/* Tab Content with Page-Turn Fade Transition (0.3s) */}
         <AnimatePresence mode="wait">

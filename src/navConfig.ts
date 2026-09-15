@@ -1,20 +1,32 @@
 import { TabType } from './types';
 
 /**
- * 两级导航配置（数据驱动）。
- * - 顶层只有「个人」「法务实务」两个分组，避免 tab 太多拥挤。
- * - 以后要加新板块（新执业领域 / 新个人栏目）：
+ * 三级导航配置（数据驱动）。
+ * - 第一层：顶层分组（个人 / 法务实务 / 影视法律 / 双视角劳动法务）。
+ * - 第二层：每个分组下的子板块 subTabs。
+ * - 第三层（可选）：分组内再按「剧集 / 栏目」分层 sections，
+ *   例如 影视法律 → The Good Wife → 第一季 S1 / 第二季 S2。
+ *   只有需要分层的分组才写 sections，其余分组保持两级，不增加复杂度。
+ *
+ * 以后要加新板块（新执业领域 / 新个人栏目 / 新剧集）：
  *   1) types.ts 的 TabType 加一个 union 成员；
- *   2) 下方 NAV_GROUPS 对应分组的 subTabs 里加一行；
+ *   2) 下方 NAV_GROUPS 对应分组的 subTabs（或 section.tabs）里加一行；
  *   3) App.tsx 的渲染分支加一行 <XxxTab />。
- * 顶层默认两个分组；2026-09-14 起按站长要求新增第三个分组「影视法律」(film-law)、
- * 第四个分组「双视角劳动法务」(labor)。
  */
+export interface NavSection {
+  id: string;
+  label: string;
+  enLabel: string;
+  tabs: TabType[];
+}
+
 export interface NavGroup {
   id: string;
   label: string;
   enLabel: string;
   subTabs: TabType[];
+  /** 可选：分组内按「剧集 / 栏目」再分一层 */
+  sections?: NavSection[];
 }
 
 export interface SubTabMeta {
@@ -40,6 +52,14 @@ export const NAV_GROUPS: NavGroup[] = [
     label: '影视法律',
     enLabel: 'Film & Law',
     subTabs: ['film-law', 'film-law-s2'],
+    sections: [
+      {
+        id: 'tgw',
+        label: 'The Good Wife',
+        enLabel: 'The Good Wife',
+        tabs: ['film-law', 'film-law-s2'],
+      },
+    ],
   },
   {
     id: 'labor',
@@ -67,3 +87,18 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 /** 给定子板块，返回它所属的分组 id */
 export const groupOfTab = (tab: TabType): string =>
   NAV_GROUPS.find((g) => g.subTabs.includes(tab))?.id ?? NAV_GROUPS[0].id;
+
+/** 分组内所有子板块（含 section 下的），用于平铺展示 */
+export const tabsOfGroup = (group: NavGroup): TabType[] =>
+  group.sections
+    ? group.sections.reduce<TabType[]>((acc, s) => acc.concat(s.tabs), [])
+    : group.subTabs;
+
+/** 给定子板块，返回它所属分组的 section（若该分组有分层） */
+export const sectionOfTab = (tab: TabType): NavSection | undefined => {
+  for (const g of NAV_GROUPS) {
+    const s = g.sections?.find((sec) => sec.tabs.includes(tab));
+    if (s) return s;
+  }
+  return undefined;
+};
