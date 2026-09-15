@@ -131,25 +131,144 @@ summary::marker{color:var(--gold)}
 .sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
 @media(max-width:700px){.split{grid-template-columns:1fr}}
 @media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
-</style><style id="light-theme-override">
-/* 浅色主题覆盖 —— 与主站米白 #FDFCF9 统一，改善可读性 */
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
 :root{
-  --bg:#FDFCF9; --bg2:#F5F3EC; --card:#FFFFFF; --card2:#FAF8F3;
-  --line:#E8E8E6; --line2:#D8D5CC;
-  --tx:#1D1D1F; --tx2:#5A5A5F; --tx3:#86868B;
-  --txt:#1D1D1F; --sub:#5A5A5F; --sub2:#86868B;
-  --gold:#96792F; --gold2:#B89F6B;
-  --jade:#2E7C7B; --red:#A8453A; --red2:#C0392B;
-  --blue:#3D6FB0; --purple:#6B5B95;
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
 }
-html,body{background:#FDFCF9 !important;color:#1D1D1F !important}
-.topbar,header,.hero{background:#FFFFFF !important}
-.card,.checklist,details,.ti,.out,.idxlist a{background:#FFFFFF !important}
-th{background:#F1EEE6 !important;color:#6B5518 !important}
-td{border-color:#E8E8E6 !important}
-.prbox,.progress,.idxlist a:hover,.btn{background:#F1EEE6 !important;color:#1D1D1F !important}
-tr:nth-child(even) td{background:rgba(0,0,0,.025) !important}
-blockquote{background:#F5F3EC !important;color:#3A3A3C !important}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
 </style>
 </head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html" style="border-color:var(--gold);color:var(--gold)">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>攻防对照</h1><p class="sub">同一场景：劳动者怎么打、单位怎么防、举证责任归谁</p></div><h2 style="border-left-color:var(--jade)">本节目录</h2><ul class="idxlist"><li><a href="#h_C01"><span class="n">C01</span><span class="t">未签书面劳动合同：二倍工资攻防</span></a></li><li><a href="#h_C02"><span class="n">C02</span><span class="t">加班费争议：考勤在谁手里</span></a></li><li><a href="#h_C03"><span class="n">C03</span><span class="t">试用期辞退：录用条件说了算</span></a></li><li><a href="#h_C04"><span class="n">C04</span><span class="t">严重违纪解除：制度、证据、程序三缺一不可</span></a></li><li><a href="#h_C05"><span class="n">C05</span><span class="t">不能胜任工作与 PIP：末位淘汰为什么违法</span></a></li><li><a href="#h_C06"><span class="n">C06</span><span class="t">调岗调薪：用工自主权的边界在哪</span></a></li><li><a href="#h_C07"><span class="n">C07</span><span class="t">竞业限制：签了不等于必须赔</span></a></li><li><a href="#h_C08"><span class="n">C08</span><span class="t">违法解除 2N：选择权在劳动者手里</span></a></li><li><a href="#h_C09"><span class="n">C09</span><span class="t">工伤（未参保）：全部待遇由单位承担</span></a></li><li><a href="#h_C10"><span class="n">C10</span><span class="t">三期女职工：保护与边界</span></a></li><li><a href="#h_C11"><span class="n">C11</span><span class="t">末位淘汰：绩效排名能不能当解除理由</span></a></li><li><a href="#h_C12"><span class="n">C12</span><span class="t">经济性裁员：程序缺一步就变 2N</span></a></li></ul><section id="C01"><h2 id="h_C01">C01　未签书面劳动合同：二倍工资攻防</h2><div><span class="badge g">二倍工资</span><span class="badge g">11 个月上限</span></div><p class="sub" style="margin:10px 0 4px">入职半年了还没签合同——公司说“签了是你不签”，你说“根本没给我签”。谁赢？</p><p><b>典型场景</b>：张三 2024 年 3 月 1 日入职，公司一直没提签合同的事，2025 年 1 月张三离职后申请仲裁，要求支付未签书面劳动合同的二倍工资差额。公司抗辩：合同签了，是张三自己拿走了；或者：是张三一直拖着不签。</p><h3>规则</h3><div class="key">用人单位自用工之日起<b>超过 1 个月不满 1 年</b>未与劳动者订立书面劳动合同的，应当向劳动者<b>每月支付二倍的工资</b>（第 82 条第 1 款）。自用工之日起<b>满 1 年</b>不与劳动者订立书面劳动合同的，<b>视为已订立无固定期限劳动合同</b>（第 14 条第 3 款）。</div><table><thead><tr><th>时间</th><th>效果</th></tr></thead><tbody><tr><td style="color:var(--tx)">用工之日 – 满 1 个月</td><td>合法签约期，无二倍工资</td></tr><tr><td style="color:var(--tx)">满 1 个月次日 – 满 1 年</td><td>二倍工资期间，<b>最长 11 个月</b></td></tr><tr><td style="color:var(--tx)">满 1 年之日</td><td><b>视为已订立无固定期限劳动合同</b></td></tr></tbody></table><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">① 提交有劳动者签字的劳动合同文本 ② 主张劳动者拒签的，提交<b>催签通知</b>及送达证据、沟通记录 ③ 主张合同由劳动者领取的，提交签收记录 ④ 提出<b>仲裁时效抗辩</b>（各地起算口径不同）</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">① 主张从未签订，要求单位出示合同原件 ② 单位出示的，可申请<b>笔迹鉴定</b> ③ 用工资流水、社保、考勤证明劳动关系与起止时间 ④ 主张单位未交付合同文本（第 16 条第 2 款）⑤ 针对时效：提供曾主张权利的书面痕迹</div></div></div><div class="mid">举证责任：是否已签订书面合同的事实，主要由用人单位举证</div><h3>裁判要点</h3><ul><li>二倍工资是<b>差额</b>——劳动者已正常领取一倍，再付一倍，不是付两倍；</li><li><b>最长 11 个月</b>，自用工满 1 个月的次日起算至满 1 年前一日；</li><li>视为订立无固定期限劳动合同后，劳动者一般<b>不能再主张</b>此后的二倍工资（⚠ 各地口径不同）；</li><li>单位能证明系<b>劳动者本人拒签或不配合</b>（有催签通知与送达证据）的，多数地区可免除二倍工资责任；</li><li><b>时效是最大的变量</b>：二倍工资的仲裁时效起算各地分歧明显（自应签未签满 1 个月之次日起算 / 逐月分别起算 / 自用工满 1 年起算），务必查当地口径。</li></ul><h3>金额</h3><p>二倍工资差额 = 月工资 × 可支持月数（≤11）。月工资按对应月份的<b>应得工资</b>计算（⚠ 部分地区按实际发放的应发工资逐月计算）。</p><h3>劳动者 checklist</h3><div class="pbar" id="pb42"><i></i></div><ul class="chk" data-pb="pb42" data-pn="pn42"><li><input type="checkbox" id="pb42_0"><label for="pb42_0" style="cursor:pointer"><span>我确认了入职（用工）日期</span></label></li><li><input type="checkbox" id="pb42_1"><label for="pb42_1" style="cursor:pointer"><span>我确认从未签过书面合同，或签了但没拿到自己那份</span></label></li><li><input type="checkbox" id="pb42_2"><label for="pb42_2" style="cursor:pointer"><span>我有工资流水、社保记录证明劳动关系起止</span></label></li><li><input type="checkbox" id="pb42_3"><label for="pb42_3" style="cursor:pointer"><span>我算过可主张的月数（上限 11 个月）</span></label></li><li><input type="checkbox" id="pb42_4"><label for="pb42_4" style="cursor:pointer"><span>我查过当地关于二倍工资时效的口径</span></label></li></ul><div class="pnum" id="pn42">0 / 5</div><h3>单位 checklist</h3><div class="pbar" id="pb43"><i></i></div><ul class="chk" data-pb="pb43" data-pn="pn43"><li><input type="checkbox" id="pb43_0"><label for="pb43_0" style="cursor:pointer"><span>所有员工均在用工之日起 1 个月内订立书面合同</span></label></li><li><input type="checkbox" id="pb43_1"><label for="pb43_1" style="cursor:pointer"><span>合同签收记录完整（含日期、本人签字）</span></label></li><li><input type="checkbox" id="pb43_2"><label for="pb43_2" style="cursor:pointer"><span>劳动者拒签的，已发出书面催签通知并保留送达证据</span></label></li><li><input type="checkbox" id="pb43_3"><label for="pb43_3" style="cursor:pointer"><span>已建立合同到期预警机制（到期前 30 日提醒）</span></label></li><li><input type="checkbox" id="pb43_4"><label for="pb43_4" style="cursor:pointer"><span>已评估本案的二倍工资时效抗辩空间</span></label></li></ul><div class="pnum" id="pn43">0 / 5</div><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第十条、第十四条第三款、第十六条第二款、第八十二条第一款
 《中华人民共和国劳动合同法实施条例》第五条、第六条、第七条

@@ -107,25 +107,144 @@ summary::marker{color:var(--gold)}
 .pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade),var(--gold));width:0}
 .ptxt{font-size:12.3px;color:var(--tx3);margin-top:6px}
 @media(max-width:640px){.hero h1{font-size:23px}.panels{padding:16px}}
-</style><style id="light-theme-override">
-/* 浅色主题覆盖 —— 与主站米白 #FDFCF9 统一，改善可读性 */
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
 :root{
-  --bg:#FDFCF9; --bg2:#F5F3EC; --card:#FFFFFF; --card2:#FAF8F3;
-  --line:#E8E8E6; --line2:#D8D5CC;
-  --tx:#1D1D1F; --tx2:#5A5A5F; --tx3:#86868B;
-  --txt:#1D1D1F; --sub:#5A5A5F; --sub2:#86868B;
-  --gold:#96792F; --gold2:#B89F6B;
-  --jade:#2E7C7B; --red:#A8453A; --red2:#C0392B;
-  --blue:#3D6FB0; --purple:#6B5B95;
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
 }
-html,body{background:#FDFCF9 !important;color:#1D1D1F !important}
-.topbar,header,.hero{background:#FFFFFF !important}
-.card,.checklist,details,.ti,.out,.idxlist a{background:#FFFFFF !important}
-th{background:#F1EEE6 !important;color:#6B5518 !important}
-td{border-color:#E8E8E6 !important}
-.prbox,.progress,.idxlist a:hover,.btn{background:#F1EEE6 !important;color:#1D1D1F !important}
-tr:nth-child(even) td{background:rgba(0,0,0,.025) !important}
-blockquote{background:#F5F3EC !important;color:#3A3A3C !important}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
 </style>
 </head><body><div class="hero"><div class="kicker">INTELLECTUAL PROPERTY · 32 WEEK TRAINING PROGRAM</div><h1>知识产权法务专家养成计划</h1><div class="lead">从普通民商事律师到能独立办理商标、专利、著作权、商业秘密与不正当竞争各类案件的实务律师。32 周、160 个学习日、32 个周末实战，每天 90 分钟。四层结构：地基总论 → 四大部门法 → 办案能力 → 行业专精。案例锚定珠宝 · 时尚 · 消费品，学完即可复用。</div><div class="stats"><div class="stat"><b>32</b>周</div><div class="stat"><b>160</b>个学习日</div><div class="stat"><b>90</b>分钟 / 天</div><div class="stat"><b>32</b>个周末实战</div><div class="stat"><b>5</b>大权利版块</div><div class="stat"><b>32</b>周内容已上线（W1–W32）</div></div></div><div class="tabs"><div class="wrap"><button class="tab on" data-p="1">32 周总纲</button><button class="tab" data-p="2">AI 指令库</button><button class="tab" data-p="3">术语表（783）</button><button class="tab" data-p="4">已核实法规库</button><button class="tab" data-p="5">使用说明</button></div></div><div class="panels"><div class="panel on" id="p1"><div class="prog"><div class="pbar"><i id="pbi"></i></div><div class="ptxt" id="ptxt">已完成 0 / 32 周</div></div><div class="lhdr"><div class="n">第 1 层</div><div><div class="nm">第一层 地基 · 总论与通用规则　·　W1–W4</div><div class="ds">水泥沙子。权利谱系、取得方式、权能与限制、侵权救济、程序证据。这一层不过关，后面每一层都会漏。</div></div></div><div class="grid"><div class="wk" id="wk1"><div class="wh"><span class="wn">WEEK 1</span><span class="wt"><a href="W1/index.html">知识产权的权利谱系与法律渊源</a></span></div><ol><li>知识产权是什么：无形财产与八类客体</li><li>权利取得方式三分：自动 / 确权 / 使用产生</li><li>法律渊源全景：法律·法规·司法解释·审查指南·案例</li><li>国际公约框架：巴黎·伯尔尼·TRIPS·马德里·海牙·PCT</li><li>权利冲突与竞合：同一客体的多重保护</li></ol><div class="wm">周末实战：给一款珠宝产品做「权利地图」：拆客体 → 配权利 → 排时间轴</div><div class="wo">产出物：一页纸产品权利组合方案 + 公司 IP 资产台账（v0）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="1" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk2"><div class="wh"><span class="wn">WEEK 2</span><span class="wt"><a href="W2/index.html">权利内容与边界</a></span></div><ol><li>著作权权能：人身权 4 项 + 财产权 13 项</li><li>专利权能：制造·使用·许诺销售·销售·进口</li><li>商标专用权与禁用权：核定商品与核准注册的边界</li><li>保护期限与维持：20 / 10 / 15 / 10+续展 / 无期限</li><li>权利限制总论：合理使用·权利用尽·先用权·Bolar·反向工程</li></ol><div class="wm">周末实战：做一个产品的「权利维持日历」：官费、期限、续展节点</div><div class="wo">产出物：IP 期限与官费速查表 + 12 个月维持日历</div><div class="wr"><label class="chk"><input type="checkbox" data-w="2" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk3"><div class="wh"><span class="wn">WEEK 3</span><span class="wt"><a href="W3/index.html">侵权与救济通论</a></span></div><ol><li>侵权构成四要件与归责原则差异</li><li>停止侵害及其例外（公共利益与比例原则）</li><li>损害赔偿四档计算与合理开支</li><li>惩罚性赔偿：故意 + 情节严重的 1-5 倍</li><li>其他救济：消除影响·销毁·诉前禁令·诉前保全</li></ol><div class="wm">周末实战：用一组虚拟财务数据跑通四档赔偿计算</div><div class="wo">产出物：赔偿计算模型表（Excel 公式化）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="3" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk4"><div class="wh"><span class="wn">WEEK 4</span><span class="wt"><a href="W4/index.html">程序与证据地图</a></span></div><ol><li>三条路径：行政 / 民事 / 刑事的启动与衔接</li><li>管辖体系：知识产权法院·专门法庭·最高法知产庭</li><li>证据形式：公证购买·时间戳·区块链存证·电子数据审查</li><li>举证责任分配与举证妨碍规则</li><li>行为保全·财产保全·证据保全的申请要件</li></ol><div class="wm">周末实战：为一起电商侵权案设计完整证据链</div><div class="wo">产出物：IP 案件证据清单模板 + 取证 SOP</div><div class="wr"><label class="chk"><input type="checkbox" data-w="4" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div></div><div class="lhdr"><div class="n">第 2 层</div><div><div class="nm">第二层 支柱 · 四大部门法　·　W5–W16</div><div class="ds">商标（W5-W8）、著作权（W9-W11）、专利（W12-W15）、商业秘密与反不正当竞争（W16）。逐法打穿构成要件与抗辩。</div></div></div><div class="grid"><div class="wk" id="wk5"><div class="wh"><span class="wn">WEEK 5</span><span class="wt"><a href="W5/index.html">商标法基础</a></span></div><ol><li>商标构成要素与显著性（固有 / 获得）</li><li>禁用禁注条款：商标法第 10、11、12 条</li><li>尼斯分类与类似商品服务区分表、一标多类</li><li>注册全流程时间轴：9 个月审查 + 3 个月公告</li><li>商标检索与可注册性判断</li></ol><div class="wm">周末实战：为一个新品牌名做注册可行性检索报告</div><div class="wo">产出物：商标可注册性分析意见 + 类目选择表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="5" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk6"><div class="wh"><span class="wn">WEEK 6</span><span class="wt"><a href="W6/index.html">商标确权程序</a></span></div><ol><li>驳回复审（15 日）</li><li>异议（初审公告 3 个月内）</li><li>无效宣告：绝对理由与相对理由（5 年 + 恶意不受限）</li><li>撤三：连续三年不使用</li><li>证据规则：使用证据·知名度证据·在先权利证据</li></ol><div class="wm">周末实战：写一份撤三答辩 + 一份无效宣告申请书</div><div class="wo">产出物：商标确权程序时限表 + 证据组织清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="6" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk7"><div class="wh"><span class="wn">WEEK 7</span><span class="wt"><a href="W7/index.html">商标侵权与抗辩</a></span></div><ol><li>混淆可能性标准</li><li>双相同与类似商品近似商标</li><li>驰名商标认定与跨类保护</li><li>抗辩：描述性·指示性·在先使用·权利用尽</li><li>与企业字号、域名、包装装潢的冲突</li></ol><div class="wm">周末实战：出具一份商标侵权比对意见书</div><div class="wo">产出物：商标近似比对表 + 抗辩路径图</div><div class="wr"><label class="chk"><input type="checkbox" data-w="7" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk8"><div class="wh"><span class="wn">WEEK 8</span><span class="wt"><a href="W8/index.html">商标实战：打假与维权</a></span></div><ol><li>线下打假：调查·公证购买·行政投诉·诉讼</li><li>电商投诉：阿里 IPP·京东·拼多多·抖音·小红书</li><li>海关备案与依申请 / 依职权扣留</li><li>假冒注册商标罪与行刑衔接</li><li>批量维权与商业化维权的合规边界</li></ol><div class="wm">周末实战：设计一次完整的电商打假行动方案</div><div class="wo">产出物：打假行动手册（含平台入口与材料清单）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="8" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk9"><div class="wh"><span class="wn">WEEK 9</span><span class="wt"><a href="W9/index.html">著作权法基础</a></span></div><ol><li>作品定义与独创性标准</li><li>作品类型与开放式兜底条款</li><li>权属：职务作品·委托作品·合作作品·视听作品</li><li>邻接权：出版·表演·录音录像·广播组织</li><li>著作权登记的作用与证据价值</li></ol><div class="wm">周末实战：审查一个设计项目的完整权属链</div><div class="wo">产出物：设计项目权属审查清单 + 合同补签方案</div><div class="wr"><label class="chk"><input type="checkbox" data-w="9" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk10"><div class="wh"><span class="wn">WEEK 10</span><span class="wt"><a href="W10/index.html">著作权权能与限制</a></span></div><ol><li>人身权四项</li><li>财产权十三项逐条精读</li><li>合理使用与法定许可</li><li>技术措施与权利管理电子信息</li><li>软件著作权与开源协议风险</li></ol><div class="wm">周末实战：做一次公司字体 / 图片 / 软件合规自查</div><div class="wo">产出物：著作权合规自查表 + 风险整改清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="10" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk11"><div class="wh"><span class="wn">WEEK 11</span><span class="wt"><a href="W11/index.html">著作权侵权与平台责任</a></span></div><ol><li>接触 + 实质性相似与抽象-过滤-比较法</li><li>信息网络传播权与直接 / 间接侵权</li><li>避风港·通知-删除·红旗规则·必要措施</li><li>新型客体：AI 生成物·短视频·直播·NFT</li><li>侵犯著作权罪与刑事边界</li></ol><div class="wm">周末实战：设计一份平台投诉与反通知应对方案</div><div class="wo">产出物：投诉 / 申诉文书包 + 平台规则对照表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="11" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk12"><div class="wh"><span class="wn">WEEK 12</span><span class="wt"><a href="W12/index.html">专利法基础（上）</a></span></div><ol><li>三类专利：发明·实用新型·外观设计</li><li>可授权客体与排除领域（第 25 条）</li><li>新颖性：现有技术·抵触申请·6 个月宽限期</li><li>创造性：突出的实质性特点 + 显著进步（三步法）</li><li>实用性与外观设计的授权条件</li></ol><div class="wm">周末实战：精读一份专利文本并拆解权利要求</div><div class="wo">产出物：专利阅读笔记模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="12" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk13"><div class="wh"><span class="wn">WEEK 13</span><span class="wt"><a href="W13/index.html">专利文件与授权（不撰写，只审）</a></span></div><ol><li>权利要求书：独立·从属·前序与特征部分</li><li>说明书构成与充分公开</li><li>清楚·简要·以说明书为依据·必要技术特征</li><li>审查流程：18 个月公开·3 年实审请求·答复意见</li><li>代理所稿件质量评审清单</li></ol><div class="wm">周末实战：给代理所的一份撰稿做质量评审</div><div class="wo">产出物：专利稿件质检表 + 代理所沟通函模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="13" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk14"><div class="wh"><span class="wn">WEEK 14</span><span class="wt"><a href="W14/index.html">专利侵权判定</a></span></div><ol><li>权利要求解释：折中原则与内部证据优先</li><li>全面覆盖原则</li><li>等同原则与禁止反悔、捐献原则</li><li>抗辩：现有技术·先用权·合法来源·Bolar</li><li>外观设计侵权：整体观察综合判断与设计空间</li></ol><div class="wm">周末实战：做一份技术特征比对表</div><div class="wo">产出物：权利要求比对表模板 + 等同判断流程</div><div class="wr"><label class="chk"><input type="checkbox" data-w="14" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk15"><div class="wh"><span class="wn">WEEK 15</span><span class="wt"><a href="W15/index.html">专利稳定性与布局</a></span></div><ol><li>无效宣告的理由与证据</li><li>无效程序、口审与行政诉讼</li><li>FTO 自由实施分析</li><li>规避设计与专利布局基础</li><li>标准必要专利与 FRAND</li></ol><div class="wm">周末实战：出一份 FTO 报告框架 + 一份无效请求思路</div><div class="wo">产出物：FTO 检索与结论模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="15" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk16"><div class="wh"><span class="wn">WEEK 16</span><span class="wt"><a href="W16/index.html">商业秘密与不正当竞争</a></span></div><ol><li>商业秘密三性：秘密性·保密性·价值性</li><li>密点的确定与举证</li><li>接触 + 实质相同 - 合法来源</li><li>反不正当竞争法各条款精读</li><li>保密协议·竞业限制·员工管理</li></ol><div class="wm">周末实战：做一次公司商业秘密体系体检</div><div class="wo">产出物：商业秘密体检表 + 保密制度整改建议</div><div class="wr"><label class="chk"><input type="checkbox" data-w="16" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div></div><div class="lhdr"><div class="n">第 3 层</div><div><div class="nm">第三层 能力 · 办案全流程　·　W17–W26</div><div class="ds">尽调、合同、布局、证据保全、赔偿计算、庭审、行政与电商维权、刑事控告、互联网新型 IP、跨境。把法条变成活。</div></div></div><div class="grid"><div class="wk" id="wk17"><div class="wh"><span class="wn">WEEK 17</span><span class="wt"><a href="W17/index.html">IP 尽调与权属链</a></span></div><ol><li>尽调范围与清单</li><li>权属链审查：职务发明·职务作品·委托·共有·继受</li><li>官方检索与法律状态核验（质押·许可·失效）</li><li>风险识别与报告撰写</li><li>交易结构中的 IP 条款</li></ol><div class="wm">周末实战：写一份 IP 尽调报告</div><div class="wo">产出物：IP 尽调报告模板 + 风险分级表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="17" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk18"><div class="wh"><span class="wn">WEEK 18</span><span class="wt"><a href="W18/index.html">IP 合同</a></span></div><ol><li>许可：独占 / 排他 / 普通与备案</li><li>转让与质押登记</li><li>供应链 IP 条款：OEM·ODM·经销</li><li>第三方 IP：广告·代言·影视·软件采购·SaaS</li><li>违约与救济条款设计</li></ol><div class="wm">周末实战：起草一份 IP 许可合同 + 一份代工协议 IP 条款</div><div class="wo">产出物：IP 合同模板库 v1（含批注版）</div><div class="wr"><label class="chk"><input type="checkbox" data-w="18" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk19"><div class="wh"><span class="wn">WEEK 19</span><span class="wt"><a href="W19/index.html">布局与申请策略</a></span></div><ol><li>商标布局：类目·防御·联合</li><li>专利布局：核心 + 外围</li><li>著作权登记与创作证据留存</li><li>预算·官费·代理所管理与 KPI</li><li>马德里 / 海牙 / PCT 成本对比</li></ol><div class="wm">周末实战：做一份三年 IP 布局方案与预算</div><div class="wo">产出物：三年布局路线图 + 预算模型</div><div class="wr"><label class="chk"><input type="checkbox" data-w="19" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk20"><div class="wh"><span class="wn">WEEK 20</span><span class="wt"><a href="W20/index.html">诉讼证据与保全</a></span></div><ol><li>证据类型与取证工具选型</li><li>公证购买全流程与公证书要点</li><li>区块链与时间戳存证的效力</li><li>诉前禁令·证据保全·财产保全申请</li><li>举证妨碍与账簿调取</li></ol><div class="wm">周末实战：写一份诉前行为保全申请材料</div><div class="wo">产出物：保全申请材料包 + 担保计算表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="20" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk21"><div class="wh"><span class="wn">WEEK 21</span><span class="wt"><a href="W21/index.html">赔偿计算与主张</a></span></div><ol><li>四档计算的选择策略</li><li>侵权获利的计算与财务证据</li><li>许可费倍数与可比许可</li><li>法定赔偿的酌定因素</li><li>惩罚性赔偿的主张与举证</li></ol><div class="wm">周末实战：做一份赔偿计算与举证清单</div><div class="wo">产出物：赔偿计算书模板 + 举证清单</div><div class="wr"><label class="chk"><input type="checkbox" data-w="21" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk22"><div class="wh"><span class="wn">WEEK 22</span><span class="wt"><a href="W22/index.html">庭审与裁判</a></span></div><ol><li>起诉状与诉讼请求设计</li><li>技术比对表与可视化表达</li><li>鉴定·专家辅助人·技术调查官</li><li>一审庭审焦点与质证</li><li>上诉（最高法知产庭）·再审·执行</li></ol><div class="wm">周末实战：写一份代理词 + 一份上诉状</div><div class="wo">产出物：IP 诉讼文书模板库</div><div class="wr"><label class="chk"><input type="checkbox" data-w="22" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk23"><div class="wh"><span class="wn">WEEK 23</span><span class="wt"><a href="W23/index.html">行政维权与电商投诉</a></span></div><ol><li>市场监管投诉与行政查处</li><li>版权行政投诉</li><li>电商平台投诉体系与申诉应对</li><li>展会投诉与展会保护</li><li>海关备案·扣留·担保与放行</li></ol><div class="wm">周末实战：行政投诉全流程演练 + 海关备案材料</div><div class="wo">产出物：行政维权路径手册</div><div class="wr"><label class="chk"><input type="checkbox" data-w="23" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk24"><div class="wh"><span class="wn">WEEK 24</span><span class="wt"><a href="W24/index.html">刑事保护</a></span></div><ol><li>假冒注册商标罪（刑法 213）</li><li>销售假冒注册商标的商品罪（214）与标识罪（215）</li><li>侵犯著作权罪（217）与销售侵权复制品罪（218）</li><li>侵犯商业秘密罪（219）</li><li>立案标准·报案材料·刑民交叉与先刑后民</li></ol><div class="wm">周末实战：写一份刑事报案材料</div><div class="wo">产出物：刑事控告文书包 + 立案标准速查表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="24" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk25"><div class="wh"><span class="wn">WEEK 25</span><span class="wt"><a href="W25/index.html">互联网与新型 IP</a></span></div><ol><li>直播带货与代购</li><li>短视频·二次创作·剪辑</li><li>AI 生成内容与训练数据</li><li>数据权益与数据竞争</li><li>游戏·虚拟财产·数字藏品</li></ol><div class="wm">周末实战：出一份新型业务 IP 合规意见</div><div class="wo">产出物：新业务合规论证模板</div><div class="wr"><label class="chk"><input type="checkbox" data-w="25" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk26"><div class="wh"><span class="wn">WEEK 26</span><span class="wt"><a href="W26/index.html">跨境 IP</a></span></div><ol><li>巴黎公约：国民待遇·优先权·独立性</li><li>马德里体系与单一国注册</li><li>海牙体系（外观设计）</li><li>PCT 与巴黎途径对比</li><li>中国香港 / 美国 / 欧盟要点 + 亚马逊品牌备案 + 337 调查</li></ol><div class="wm">周末实战：做一份跨境布局与维权方案</div><div class="wo">产出物：跨境布局决策树 + 成本表</div><div class="wr"><label class="chk"><input type="checkbox" data-w="26" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div></div><div class="lhdr"><div class="n">第 4 层</div><div><div class="nm">第四层 出师 · 行业专精　·　W27–W32</div><div class="ds">珠宝时尚专项、企业 IP 制度搭建、案源与专业标签、两套综合模拟实战与个人知识体系固化。</div></div></div><div class="grid"><div class="wk" id="wk27"><div class="wh"><span class="wn">WEEK 27</span><span class="wt"><a href="W27/index.html">珠宝时尚专项（一）</a></span></div><ol><li>款式保护组合拳：外观 + 著作权 + 商标 + 反法</li><li>元素·系列·经典款的保护节奏</li><li>发布会·订货会·社交媒体的公开风险</li><li>申请时机与成本</li><li>珠宝行业典型判例精读</li></ol><div class="wm">周末实战：给一条产品线做完整保护方案</div><div class="wo">产出物：产品线保护方案书</div><div class="wr"><label class="chk"><input type="checkbox" data-w="27" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk28"><div class="wh"><span class="wn">WEEK 28</span><span class="wt"><a href="W28/index.html">珠宝时尚专项（二）</a></span></div><ol><li>仿款与抄袭的界定</li><li>攀附·混淆与包装装潢</li><li>代言·肖像权与形象权</li><li>渠道管控：经销·代购·窜货·微商</li><li>代工厂与供应商泄密</li></ol><div class="wm">周末实战：做一份渠道管控与打假方案</div><div class="wo">产出物：渠道管控协议条款 + 打假 SOP</div><div class="wr"><label class="chk"><input type="checkbox" data-w="28" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk29"><div class="wh"><span class="wn">WEEK 29</span><span class="wt"><a href="W29/index.html">企业 IP 管理制度</a></span></div><ol><li>IP 资产台账与盘点</li><li>员工发明与职务作品制度</li><li>保密制度与离职管理</li><li>培训·内控·风险台账</li><li>危机应对与舆情</li></ol><div class="wm">周末实战：产出一套 IP 管理制度文件包</div><div class="wo">产出物：IP 管理制度全套文件</div><div class="wr"><label class="chk"><input type="checkbox" data-w="29" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk30"><div class="wh"><span class="wn">WEEK 30</span><span class="wt"><a href="W30/index.html">案源与专业标签</a></span></div><ol><li>从法务到 IP 律师的业务路径</li><li>客户沟通与需求转化</li><li>报价与服务方案写作</li><li>专业文章与演讲</li><li>知识管理与个人工具箱</li></ol><div class="wm">周末实战：写一份服务方案 + 一篇专业文章</div><div class="wo">产出物：个人 IP 业务手册</div><div class="wr"><label class="chk"><input type="checkbox" data-w="30" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk31"><div class="wh"><span class="wn">WEEK 31</span><span class="wt"><a href="W31/index.html">综合实战（一）</a></span></div><ol><li>案件受理与策略制定</li><li>证据组织与补强</li><li>文书起草</li><li>谈判与和解</li><li>复盘与知识入库</li></ol><div class="wm">周末实战：完整案件全流程演练 A（商标 + 电商 + 行政）</div><div class="wo">产出物：全套案件卷宗</div><div class="wr"><label class="chk"><input type="checkbox" data-w="31" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div><div class="wk" id="wk32"><div class="wh"><span class="wn">WEEK 32</span><span class="wt"><a href="W32/index.html">综合实战（二）</a></span></div><ol><li>跨境案件演练</li><li>刑事控告演练</li><li>技术类案件演练</li><li>谈判与调解</li><li>出师清单与知识体系固化</li></ol><div class="wm">周末实战：能力自评 + 个人知识库交付</div><div class="wo">产出物：出师能力自评表 + 个人 IP 知识体系</div><div class="wr"><label class="chk"><input type="checkbox" data-w="32" onchange="tog(this)"> 标记完成</label><span class="pill live">内容已上线</span></div></div></div><div class="note" style="margin-top:22px"><b>⚠ 使用提示</b><br>每日内容为个人学习计划，所有法条、期限、金额与案例在正式使用前必须核对现行有效文本。标注「待核实」处优先核查。</div></div><div class="panel" id="p2"><div class="sub">每条指令可直接复制粘贴给 AI 教练。已生成内容周次（W1 / W2 / W3 / W4 / W5 / W6 / W7 / W8 / W9 / W10 / W11 / W12 / W13 / W14 / W15 / W16 / W17 / W18 / W19 / W20 / W21 / W22 / W23 / W24 / W25 / W26 / W27 / W28 / W29 / W30 / W31 / W32）另有逐日指令，在该周每个学习日的页面内。其余周为周级总指令，生成该周内容后会在对应日页面内给出逐日指令。</div><details><summary>WEEK 1　知识产权的权利谱系与法律渊源　·　W1 逐日指令（见 W1/index.html）</summary><div class="prbox">你是我的知识产权实务教练。我们现在进入第 1 周《知识产权的权利谱系与法律渊源》。
 本周五个学习日依次为：1) 知识产权是什么：无形财产与八类客体；2) 权利取得方式三分：自动 / 确权 / 使用产生；3) 法律渊源全景：法律·法规·司法解释·审查指南·案例；4) 国际公约框架：巴黎·伯尔尼·TRIPS·马德里·海牙·PCT；5) 权利冲突与竞合：同一客体的多重保护。

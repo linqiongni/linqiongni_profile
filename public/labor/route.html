@@ -131,24 +131,143 @@ summary::marker{color:var(--gold)}
 .sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
 @media(max-width:700px){.split{grid-template-columns:1fr}}
 @media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
-</style><style id="light-theme-override">
-/* 浅色主题覆盖 —— 与主站米白 #FDFCF9 统一，改善可读性 */
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
 :root{
-  --bg:#FDFCF9; --bg2:#F5F3EC; --card:#FFFFFF; --card2:#FAF8F3;
-  --line:#E8E8E6; --line2:#D8D5CC;
-  --tx:#1D1D1F; --tx2:#5A5A5F; --tx3:#86868B;
-  --txt:#1D1D1F; --sub:#5A5A5F; --sub2:#86868B;
-  --gold:#96792F; --gold2:#B89F6B;
-  --jade:#2E7C7B; --red:#A8453A; --red2:#C0392B;
-  --blue:#3D6FB0; --purple:#6B5B95;
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
 }
-html,body{background:#FDFCF9 !important;color:#1D1D1F !important}
-.topbar,header,.hero{background:#FFFFFF !important}
-.card,.checklist,details,.ti,.out,.idxlist a{background:#FFFFFF !important}
-th{background:#F1EEE6 !important;color:#6B5518 !important}
-td{border-color:#E8E8E6 !important}
-.prbox,.progress,.idxlist a:hover,.btn{background:#F1EEE6 !important;color:#1D1D1F !important}
-tr:nth-child(even) td{background:rgba(0,0,0,.025) !important}
-blockquote{background:#F5F3EC !important;color:#3A3A3C !important}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
 </style>
 </head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html" style="border-color:var(--gold);color:var(--gold)">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>28 天导学路线</h1><p class="sub">按这个顺序读，四星期走完全站</p></div><div class="key">不知道从哪开始就按这个顺序读。每天一节，约 30–60 分钟。点标题直接跳到对应页面。</div><h2>第一周 · 打地基（两边都得懂）</h2><div class="rt"><a class="rd" href="base.html#h_00-1" style="text-decoration:none;display:block"><div class="rn">D1</div><div class="rt2">00-1 先确认是不是劳动关系</div></a><a class="rd" href="base.html#h_00-2" style="text-decoration:none;display:block"><div class="rn">D2</div><div class="rt2">00-2 不是劳动关系还能怎么维权</div></a><a class="rd" href="base.html#h_00-3" style="text-decoration:none;display:block"><div class="rn">D3</div><div class="rt2">00-3 谁该拿出证据</div></a><a class="rd" href="base.html#h_00-4" style="text-decoration:none;display:block"><div class="rn">D4</div><div class="rt2">00-4 别错过时间：时效与期限</div></a><a class="rd" href="base.html#h_00-5" style="text-decoration:none;display:block"><div class="rn">D5</div><div class="rt2">00-5 出了事走哪条路</div></a><a class="rd" href="base.html#h_00-6" style="text-decoration:none;display:block"><div class="rn">D6</div><div class="rt2">00-6 月工资、N 和封顶</div></a><a class="rd" href="tools.html" style="text-decoration:none;display:block"><div class="rn">D7</div><div class="rt2">复盘：用计算器算一遍自己的 N</div></a></div><h2>第二周 · 用人单位合规（上）</h2><div class="rt"><a class="rd" href="employer.html#h_A1" style="text-decoration:none;display:block"><div class="rn">D8</div><div class="rt2">A1 招录用：Offer 发出去风险就开始了</div></a><a class="rd" href="employer.html#h_A2" style="text-decoration:none;display:block"><div class="rn">D9</div><div class="rt2">A2 签约：一个月不签，代价是 11 个月双倍</div></a><a class="rd" href="employer.html#h_A3" style="text-decoration:none;display:block"><div class="rn">D10</div><div class="rt2">A3 规章制度：民主程序走不完，违纪就开不掉</div></a><a class="rd" href="employer.html#h_A4-1" style="text-decoration:none;display:block"><div class="rn">D11</div><div class="rt2">A4-1 工时、加班与工资</div></a><a class="rd" href="employer.html#h_A4-2" style="text-decoration:none;display:block"><div class="rn">D12</div><div class="rt2">A4-2 社保、假期、调岗、竞业</div></a><a class="rd" href="employer.html#h_A5" style="text-decoration:none;display:block"><div class="rn">D13</div><div class="rt2">A5 解聘与赔偿：N / N+1 / 2N（上半：解除的七种走法）</div></a><a class="rd" href="employer.html#h_A6" style="text-decoration:none;display:block"><div class="rn">D14</div><div class="rt2">复盘：A5 下半 + A6 被申请仲裁怎么办</div></a></div><h2>第三周 · 劳动者维权（含两大重点）</h2><div class="rt"><a class="rd" href="employee.html#h_B1" style="text-decoration:none;display:block"><div class="rn">D15</div><div class="rt2">B1 求职防坑 + B2 入职必做的 6 件事</div></a><a class="rd" href="employee.html#h_B3" style="text-decoration:none;display:block"><div class="rn">D16</div><div class="rt2">B3 在职权益：工资、加班、年假、调岗</div></a><a class="rd" href="employee.html#h_B4-1" style="text-decoration:none;display:block"><div class="rn">D17</div><div class="rt2">B4-1 工伤（上）：认定情形与上下班途中</div></a><a class="rd" href="employee.html#h_B4-1" style="text-decoration:none;display:block"><div class="rn">D18</div><div class="rt2">B4-1 工伤（下）：流程、鉴定与待遇怎么算</div></a><a class="rd" href="employee.html#h_B4-2" style="text-decoration:none;display:block"><div class="rn">D19</div><div class="rt2">B4-2 三期女职工：产假、津贴与解雇保护</div></a><a class="rd" href="employee.html#h_B4-3" style="text-decoration:none;display:block"><div class="rn">D20</div><div class="rt2">B4-3 职业病、医疗期与性骚扰</div></a><a class="rd" href="employee.html#h_B5" style="text-decoration:none;display:block"><div class="rn">D21</div><div class="rt2">B5 被解聘：先分清六种走法，再谈钱</div></a></div><h2>第四周 · 维权实操与攻防对抗</h2><div class="rt"><a class="rd" href="employee.html#h_B6" style="text-decoration:none;display:block"><div class="rn">D22</div><div class="rt2">B6 维权实操：证据、路径、申请书怎么写</div></a><a class="rd" href="clash.html#h_C01" style="text-decoration:none;display:block"><div class="rn">D23</div><div class="rt2">C01–C04 未签合同 / 加班费 / 试用期 / 违纪解除</div></a><a class="rd" href="clash.html#h_C05" style="text-decoration:none;display:block"><div class="rn">D24</div><div class="rt2">C05–C08 PIP / 调岗 / 竞业 / 违法解除 2N</div></a><a class="rd" href="clash.html#h_C09" style="text-decoration:none;display:block"><div class="rn">D25</div><div class="rt2">C09–C12 工伤未参保 / 三期 / 末位淘汰 / 裁员</div></a><a class="rd" href="templates.html" style="text-decoration:none;display:block"><div class="rn">D26</div><div class="rt2">文书实操：挑三个模板改成自己的</div></a><a class="rd" href="law.html" style="text-decoration:none;display:block"><div class="rn">D27</div><div class="rt2">法条与术语：把高频条文过一遍</div></a><a class="rd" href="employer.html#h_A7" style="text-decoration:none;display:block"><div class="rn">D28</div><div class="rt2">总复盘：A7 合规自查清单 + 六个计算器全跑一遍</div></a></div><h2>学完自测：这 12 个问题你能答上来吗</h2><div class="card"><ol><li>试用期最长可以约定几个月？工资下限是多少？</li><li>单位超过多久不签书面合同要付二倍工资？最多几个月？</li><li>规章制度要经哪三道程序才能拿来做辞退依据？</li><li>每月加班不得超过多少小时？法定节假日加班是几倍？</li><li>N、N+1、2N 分别在什么情形下出现？</li><li>什么情况下经济补偿要双封顶？</li><li>上下班路上出车祸，什么条件下能认定工伤？</li><li>单位没缴工伤保险，工伤待遇由谁出？</li><li>产假国家基础是多少天？生育津贴低于本人工资怎么办？</li><li>三期女职工严重违纪，单位能不能解除？</li><li>哪些文件绝对不能签？</li><li>劳动争议仲裁时效是多久？劳动报酬争议有什么例外？</li></ol><p style="margin-top:10px;color:var(--tx2);font-size:13.5px">答不上来的，回<a href="index.html" style="color:var(--gold)">首页</a>按板块地图找对应页面。</p></div><div class="foot"><a class="idx" href="index.html">返回首页</a><a href="tools.html">打开计算器</a></div><div class="disc">本页内容为劳动法实务知识梳理，不构成法律意见，具体案件请咨询当地执业律师或拨打 12348 法律援助热线。引用法条以现行有效版本为准；地域性标准（产假奖励天数、工伤一次性补助金、最低工资、社平工资等）以当地人社部门公布口径为准。</div></div><script></script></body></html>

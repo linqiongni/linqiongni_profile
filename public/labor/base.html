@@ -131,25 +131,144 @@ summary::marker{color:var(--gold)}
 .sw button.on{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.10)}
 @media(max-width:700px){.split{grid-template-columns:1fr}}
 @media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
-</style><style id="light-theme-override">
-/* 浅色主题覆盖 —— 与主站米白 #FDFCF9 统一，改善可读性 */
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
 :root{
-  --bg:#FDFCF9; --bg2:#F5F3EC; --card:#FFFFFF; --card2:#FAF8F3;
-  --line:#E8E8E6; --line2:#D8D5CC;
-  --tx:#1D1D1F; --tx2:#5A5A5F; --tx3:#86868B;
-  --txt:#1D1D1F; --sub:#5A5A5F; --sub2:#86868B;
-  --gold:#96792F; --gold2:#B89F6B;
-  --jade:#2E7C7B; --red:#A8453A; --red2:#C0392B;
-  --blue:#3D6FB0; --purple:#6B5B95;
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
 }
-html,body{background:#FDFCF9 !important;color:#1D1D1F !important}
-.topbar,header,.hero{background:#FFFFFF !important}
-.card,.checklist,details,.ti,.out,.idxlist a{background:#FFFFFF !important}
-th{background:#F1EEE6 !important;color:#6B5518 !important}
-td{border-color:#E8E8E6 !important}
-.prbox,.progress,.idxlist a:hover,.btn{background:#F1EEE6 !important;color:#1D1D1F !important}
-tr:nth-child(even) td{background:rgba(0,0,0,.025) !important}
-blockquote{background:#F5F3EC !important;color:#3A3A3C !important}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
 </style>
 </head><body><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html" style="border-color:var(--gold);color:var(--gold)">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>通用底座</h1><p class="sub">劳动关系认定 · 举证责任 · 时效 · 维权通道 · 金额单位</p></div><h2 style="border-left-color:var(--jade)">本节目录</h2><ul class="idxlist"><li><a href="#h_00-1"><span class="n">00-1</span><span class="t">先确认：你和他之间到底是不是劳动关系</span></a></li><li><a href="#h_00-2"><span class="n">00-2</span><span class="t">不是劳动关系，还能怎么维权</span></a></li><li><a href="#h_00-3"><span class="n">00-3</span><span class="t">打官司就是打证据：谁该拿出证据</span></a></li><li><a href="#h_00-4"><span class="n">00-4</span><span class="t">别错过时间：时效与期限总表</span></a></li><li><a href="#h_00-5"><span class="n">00-5</span><span class="t">出了事走哪条路：维权与处理通道全景</span></a></li><li><a href="#h_00-6"><span class="n">00-6</span><span class="t">算钱之前先搞懂：月工资、N 与封顶</span></a></li></ul><section id="00-1"><h2 id="h_00-1">00-1　先确认：你和他之间到底是不是劳动关系</h2><div><span class="badge g">入口问题</span><span class="badge g">决定适用哪部法</span></div><p class="sub" style="margin:10px 0 4px">整部劳动法都建立在“存在劳动关系”这个前提上。这一步判断错了，后面全白算。</p><p>不管是被辞退要 2N，还是上下班路上出车祸要工伤待遇，第一步永远是同一件事：<b>你们之间到底是不是劳动关系</b>。是劳动关系，走劳动仲裁、适用劳动合同法、有经济补偿；不是劳动关系，可能要走法院、适用民法典、没有经济补偿。</p><div class="key">判断的核心不是“签没签合同”，而是<b>三要素同时具备</b>：主体资格 + 管理从属性 + 有偿劳动。没签书面合同不影响劳动关系的成立。</div><h3>一、三要素逐项拆开看</h3><table><thead><tr><th>要素</th><th>具体含义</th><th>常见表现</th></tr></thead><tbody><tr><td style="color:var(--tx)">主体资格</td><td>一方是用人单位（企业、个体经济组织、民办非企业单位等），另一方是符合法定年龄的自然人</td><td>公司、个体工商户、律所、诊所；劳动者年满 16 周岁（特殊行业除外）</td></tr><tr><td style="color:var(--tx)">管理从属性</td><td>劳动者被纳入用人单位的组织体系，接受管理、指挥与监督，遵守规章制度</td><td>打卡考勤、接受指派、按流程汇报、违反制度会被处罚</td></tr><tr><td style="color:var(--tx)">有偿劳动</td><td>劳动者提供的劳动是用人单位业务的组成部分，用人单位支付报酬</td><td>按月发薪、岗位属于公司主营业务环节</td></tr></tbody></table><p>三个要素里，<b>管理从属性是最关键、也最容易产生争议的</b>。判断从属性不要只看某一个点，要看整体：是否要考勤、能否自主决定工作时间、是否必须用单位提供的工具与场地、是否需要遵守单位规章制度、报酬是否定期固定发放而不是按成果结算。</p><h3>二、什么时候建立劳动关系</h3><p><b>自用工之日起</b>建立劳动关系，不是签合同那天，也不是转正那天（《劳动合同法》第 7 条第 1 句）。用工之日通常指劳动者实际开始提供劳动、接受管理的那一天。</p><blockquote>用人单位自用工之日起即与劳动者建立劳动关系。用人单位应当建立职工名册备查。</blockquote><details><summary>法条依据（点击展开）</summary><div class="prbox">《中华人民共和国劳动合同法》（2012 年修正）第七条
 用人单位自用工之日起即与劳动者建立劳动关系。用人单位应当建立职工名册备查。
