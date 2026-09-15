@@ -4,7 +4,7 @@ import avatarPortrait from '../assets/images/lin_qiongni_portrait_new.jpg';
 export const PERSONAL_INFO = {
   name: '林琼霓',
   englishName: 'Qiongni Lin',
-  title: 'Legal Counsel · Chow Sang Sang',
+  title: 'Legal Counsel · HK Jewellery Retail Group',
   subtitle: '多年港企法务实战 | 合同 · 合规 · 争议解决',
   heroHeadline: '法律是商业的底层代码',
   email: 'qiongnilin@gmail.com',
@@ -13,7 +13,7 @@ export const PERSONAL_INFO = {
   avatarUrl: avatarPortrait,
   heroDecorImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200',
   bio: {
-    introParagraph1: '从理工科的逻辑严密，到法学院的严谨论证，再到知名律所的商事实战洗礼，最终沉淀于香港知名珠宝零售集团（周生生 Chow Sang Sang）的法务中枢。多年间，我深度参与了数百起复杂商业谈判、跨国联名合作与重大商事纠纷，见证了传统零售向数字新零售的合规转型。',
+    introParagraph1: '从理工科的逻辑严密，到法学院的严谨论证，再到知名律所的商事实战洗礼，最终沉淀于香港知名珠宝零售集团的法务中枢。多年间，我深度参与了数百起复杂商业谈判、跨国联名合作与重大商事纠纷，见证了传统零售向数字新零售的合规转型。',
     introParagraph2: '在企业法务的实践中，我始终坚持：我不只是说“不行”的人，我是帮业务找到“行”的方法的人。真正的法律专业主义，不是把风险锁在抽屉里，而是用精密的规则设计，为商业野心铺设安全前行的坚实轨道。',
     tags: ['#法律职业资格(A证)', '#多年港企法务经验', '#华南理工法学硕士']
   }
@@ -34,14 +34,14 @@ export const TIMELINE_DATA: TimelineItem[] = [
   },
   {
     year: '2018',
-    title: '加入香港周生生集团 (Chow Sang Sang)',
+    title: '加入香港珠宝零售集团',
     organization: '大中华区法务部',
     description: '统筹全国数百家实体门店与电商全渠道商事合同审查，搭建标准化采购与分销模板库。'
   },
   {
     year: '2021',
     title: '主导跨国联名 IP 与全渠道合规体系升级',
-    organization: '周生生品牌法务风控项目组',
+    organization: '品牌法务风控项目组',
     description: '牵头跨国知名IP衍生珠宝合作谈判，建立全流程广告合规预警机制，达成行政零处罚。'
   },
   {
@@ -326,7 +326,7 @@ export const NOTES_DATA: NotePost[] = [
   {
     id: 'note-4',
     image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=900',
-    caption: '周生生旗舰店的珠宝橱窗手绘稿。每一枚珠宝的雕琢都需要千锤百炼的匠心，法务雕琢每一处合同条款亦如是。',
+    caption: '品牌旗舰店的珠宝橱窗手绘稿。每一枚珠宝的雕琢都需要千锤百炼的匠心，法务雕琢每一处合同条款亦如是。',
     date: '2024.03.20',
     tags: ['#生活剪影', '#法务日常'],
     location: '设计工坊'
