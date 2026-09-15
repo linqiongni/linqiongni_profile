@@ -39,7 +39,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'film',
     label: '影视法律',
     enLabel: 'Film & Law',
-    subTabs: ['film-law'],
+    subTabs: ['film-law', 'film-law-s2'],
   },
   {
     id: 'labor',
@@ -59,7 +59,8 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   logistics: { label: '跨境物流法务', enLabel: 'Logistics' },
   ip: { label: '知识产权', enLabel: 'IP' },
   'foreign-contracts': { label: '涉外合同学习', enLabel: 'Foreign Contracts' },
-  'film-law': { label: '影视法律', enLabel: 'Film & Law' },
+  'film-law': { label: '第一季 S1', enLabel: 'Season 1' },
+  'film-law-s2': { label: '第二季 S2', enLabel: 'Season 2' },
   labor: { label: '双视角劳动法务', enLabel: 'Labor Law' },
 };
 
