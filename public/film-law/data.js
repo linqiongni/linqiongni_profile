@@ -304,6 +304,46 @@ window.TERMS = {
     zh:"证言：证人经宣誓所作的证据（口头或笔录）。",
     ex:"I'm not going to lie on the stand.", m:["testify","testimony","on the stand"] },
 
+  // ---- S1E16-E23 new terms ----
+    first_degree_murder: { term:"first-degree murder", ipa:"/fɜːrst dɪˈɡriː ˈmɜːrdər/", en:"Unlawful killing that is deliberate and premeditated, or that occurs during certain felonies.", zh:"一级谋杀（蓄意、有预谋的杀人，或在特定重罪过程中发生）", ex:"Dorfman was arrested for first-degree murder.", cat:"Homicide", m:["first-degree murder","first degree murder"] },
+    witness_tampering: { term:"witness tampering", ipa:"/ˈwɪtnəs ˈtæmprɪŋ/", en:"Intentionally coercing, intimidating, or hindering a witness from testifying.", zh:"干扰证人（以胁迫/恐吓阻止或妨碍证人作证）", ex:"Dorfman gave the witness's name to the killer — classic witness tampering.", cat:"Criminal", m:["witness tampering","tampering with a witness"] },
+    brady_violation: { term:"Brady violation", ipa:"/ˈbreɪdi vaɪəˈleɪʃən/", en:"Prosecutor's failure to disclose material exculpatory evidence to the defense (Brady v. Maryland).", zh:"布雷迪违规（检方未向辩方披露对其有利的实质性证据）", ex:"Suppressing the SUV evidence was a clear Brady violation.", cat:"Evidence", m:["brady","brady violation","brady material"] },
+    work_product: { term:"work product (doctrine)", ipa:"/wɜːrk ˈprɑːdʌkt/", en:"Materials prepared in anticipation of litigation, protected from forced disclosure.", zh:"工作成果原则（为诉讼准备的材料受保密保护，不被强制开示）", ex:"We do not grant you permission to confiscate our work product.", cat:"Evidence", m:["work product"] },
+    obstruction_of_justice: { term:"obstruction of justice", ipa:"/əbˈstrʌkʃən əv ˈdʒʌstɪs/", en:"Corruptly impeding the administration of justice (e.g. hiding evidence).", zh:"妨碍司法（以不正当手段阻碍司法运作，如藏匿证据）", ex:"Withholding key evidence can be obstruction of justice.", cat:"Criminal", m:["obstruction of justice","obstructing justice"] },
+    asset_freeze: { term:"asset freeze", ipa:"/ˈæset friːz/", en:"A court or agency order preventing a party from dissipating assets.", zh:"资产冻结（法院/机关命令禁止转移资产）", ex:"His assets are frozen.", cat:"Remedies", m:["asset freeze","assets are frozen","frozen"] },
+    declaratory_judgment: { term:"declaratory judgment", ipa:"/dɪˈklærətɔːri ˈdʒʌdʒmənt/", en:"A court ruling that declares the parties' rights or status without ordering action.", zh:"确认判决（宣告当事人权利或法律状态，不命令作为）", ex:"Plaintiff's request for declaratory judgment on the medical procedure.", cat:"Civil", m:["declaratory judgment","declaratory"] },
+    rescission: { term:"rescission", ipa:"/rɪˈsɪʒən/", en:"Cancellation of a contract, returning the parties to their pre-contract position.", zh:"撤销（合同）/ rescission（使合同归于无效）", ex:"This misrepresentation gives Life State the right to rescind his policy.", cat:"Contracts", m:["rescind","rescission"] },
+    misrepresentation: { term:"misrepresentation", ipa:"/ˌmɪsrɛprɪzɛnˈteɪʃən/", en:"A false statement of material fact that induces another to enter a contract.", zh:"虚假陈述（诱使缔约的重大事实不实陈述）", ex:"Mr. Willoughby misrepresented his medical history.", cat:"Contracts", m:["misrepresentation","misrepresented"] },
+    bad_faith: { term:"bad faith", ipa:"/bæd feɪθ/", en:"Dishonest or unfair dealing; esp. an insurer's unreasonable denial of a claim.", zh:"恶意/违反诚信（尤指保险人不合理拒赔）", ex:"An entire department dedicated to finding specious ways to rescind policies.", cat:"Insurance", m:["bad faith"] },
+    injunction: { term:"injunction", ipa:"/ɪnˈdʒʌŋkʃən/", en:"A court order compelling a party to do, or restraining a party from doing, a specific act.", zh:"禁令（强制或禁止某行为的法院命令）", ex:"An emergency injunction preventing nonpayment by the insurer.", cat:"Remedies", m:["injunction","injunctive"] },
+    jury_deliberation: { term:"jury deliberation", ipa:"/ˈdʒʊri dɪˌlɪbəˈreɪʃən/", en:"The closed discussion by which jurors reach a verdict.", zh:"陪审团评议（陪审员闭门商议以达成裁决）", ex:"After deliberation, the jury split six guilty, six not guilty.", cat:"Trial", m:["deliberation","jury deliberation","deliberating"] },
+    second_degree_murder: { term:"second-degree murder", ipa:"/ˈsɛkənd dɪˈɡriː ˈmɜːrdər/", en:"Unlawful killing with intent but without premeditation, or with extreme recklessness.", zh:"二级谋杀（有杀人故意但无预谋，或极端罔顾人命）", ex:"Miss Price agreed to a charge of second-degree murder.", cat:"Homicide", m:["second-degree murder","second degree murder"] },
+    impeachment_witness: { term:"impeachment (of a witness)", ipa:"/ɪmˈpiːtʃmənt/", en:"Challenging a witness's credibility or prior inconsistent statements.", zh:"（对证人的）质疑/弹劾（攻击其可信度）", ex:"The defense used an Internal Affairs report to impeach Detective Burton.", cat:"Evidence", m:["impeach","impeachment"] },
+    internal_affairs: { term:"Internal Affairs", ipa:"/ɪnˈtɜːrnl əˈfɛrz/", en:"The police division that investigates officer misconduct.", zh:"（警方）内部事务调查科", ex:"This Internal Affairs report could show Burton planted evidence.", cat:"Criminal", m:["internal affairs"] },
+    evidence_tampering: { term:"evidence tampering", ipa:"/ˈɛvɪdəns ˈtæmprɪŋ/", en:"Altering, concealing, or destroying evidence to impair its use.", zh:"篡改/毁坏证据", ex:"You're implying Detective Burton planted evidence.", cat:"Criminal", m:["planted evidence","tampering with evidence","evidence tampering"] },
+    wrongful_death: { term:"wrongful death", ipa:"/ˈrɔːŋfəl dɛθ/", en:"A civil claim that a defendant's wrongful act caused another's death.", zh:"非正常死亡之诉（因不当行为致死提起的侵权赔偿请求）", ex:"A wrongful-death suit over the pipe-bomb attack.", cat:"Torts", m:["wrongful death","wrongful-death"] },
+    intentional_act: { term:"intentional act", ipa:"/ɪnˈtɛnʃənl ækt/", en:"Deliberate conduct (as opposed to accident), often unlocking punitive damages.", zh:"故意行为（区别于意外，常触发惩罚性赔偿）", ex:"An intentional act opens you up to punitive damages.", cat:"Torts", m:["intentional act"] },
+    contributory_negligence: { term:"contributory negligence", ipa:"/kəntrɪˈbjʊtəri ˈnɛɡlɪdʒəns/", en:"A plaintiff's own negligence that contributes to the harm suffered.", zh:"与有过失/共同过失（原告自身疏忽助成损害）", ex:"Sanborn was contributorily negligent in publishing the cartoon.", cat:"Torts", m:["contributory negligence","contributory"] },
+    capped_damages: { term:"capped damages", ipa:"/kæpt ˈdæmɪdʒɪz/", en:"Recovery limited to a contractual or statutory ceiling.", zh:"限额赔偿（受保单或法定上限限制）", ex:"$250,000 from capped business insurance.", cat:"Remedies", m:["capped","capped insurance","capped business insurance"] },
+    removal_proceeding: { term:"removal proceeding", ipa:"/rɪˈmuːvl prəˈsiːdɪŋ/", en:"An immigration hearing to order a non-citizen's deportation.", zh:"递解出境程序（移民庭决定驱离非公民）", ex:"I.C.E. petitions the court for Simran's removal and deportation.", cat:"Immigration", m:["removal","deportation","removal proceeding","deport"] },
+    false_claim_citizenship: { term:"false claim of citizenship", ipa:"/fɔːls kleɪm əv ˈsɪtɪzənʃɪp/", en:"Fraudulently asserting U.S. citizenship; a bar to admission.",
+ zh:"虚假声称公民身份（入籍禁止事由）", ex:"She checked the voter box, making a false claim of citizenship.", cat:"Immigration", m:["false claim of citizenship","false claim"] },
+    summary_judgment: { term:"summary judgment", ipa:"/ˈsʌməri ˈdʒʌdʒmənt/", en:"A judgment entered without a full trial where no genuine dispute of material fact exists.", zh:"即决判决（无实质事实争议时不开庭直接裁判）", ex:"Summary judgment approved. Deportation is approved.", cat:"Civil", m:["summary judgment"] },
+    castle_doctrine: { term:"castle doctrine", ipa:"/ˈkæsl ˈdɑːktrɪn/", en:"The right to use force, including deadly force, against an intruder in one's home.", zh:"城堡原则（对侵入住宅者可动用武力乃至致命武力自卫）", ex:"A mock trial on castle law and trespass.", cat:"Criminal", m:["castle","castle law","castle doctrine"] },
+    trespass: { term:"trespass", ipa:"/ˈtrɛspəs/", en:"Unlawful entry onto another person's land or property.", zh:"非法侵入（土地/财产）", ex:"Interesting legal issues: trespass, castle law.", cat:"Torts", m:["trespass"] },
+    divorce_settlement: { term:"divorce settlement", ipa:"/dɪˈvɔːrs ˈsɛtlmənt/", en:"An agreement resolving property division and support upon divorce.", zh:"离婚财产/扶养协议", ex:"We've reached a signed divorce agreement.", cat:"Family", m:["divorce settlement","divorce agreement","divorce"] },
+    legal_guardianship: { term:"legal guardianship", ipa:"/ˈliːɡl ˈɡɑːrdiənʃɪp/", en:"A court appointment to care for the person or estate of an incompetent individual.", zh:"法定监护", ex:"Shaina filed a petition for legal guardianship.", cat:"Family", m:["guardianship","legal guardianship"] },
+    living_will: { term:"living will", ipa:"/ˈlɪvɪŋ wɪl/", en:"An advance directive stating a person's end-of-life medical wishes.", zh:"生前遗嘱（预先医疗指示）", ex:"If he had a living will, I would've known.", cat:"Estate", m:["living will"] },
+    paternity: { term:"paternity", ipa:"/pəˈtɜːrnəti/", en:"Legal fatherhood, often established by DNA testing.", zh:"父子关系/亲子认定（常经 DNA 鉴定）", ex:"These are the results of his paternity test.", cat:"Family", m:["paternity","paternity test"] },
+    power_of_attorney: { term:"power of attorney", ipa:"/ˈpaʊər əv əˈtɜːrni/", en:"A document authorizing another person to act on one's behalf.", zh:"授权委托书", ex:"What does it say on power of attorney?", cat:"Estate", m:["power of attorney"] },
+    peterson_law: { term:"Peterson Law", ipa:"/ˈpiːtərsən lɔː/", en:"An Illinois statute allowing certain hearsay where the accused benefits from the declarant's death.", zh:"彼得森法（伊利诺伊州：被指控人因死者死亡获益时可采纳特定传闻证据）", ex:"Illinois passed the Peterson Law allowing such hearsay.", cat:"Evidence", m:["peterson law","peterson"] },
+    involuntary_manslaughter: { term:"involuntary manslaughter", ipa:"/ɪnˈvɑːlənteri ˌmænslɔːtər/", en:"An unintentional killing resulting from recklessness or criminal negligence.", zh:"过失杀人（非故意杀人，因鲁莽或刑事疏忽）", ex:"We want involuntary manslaughter, five years.", cat:"Homicide", m:["involuntary manslaughter"] },
+    confrontation_clause: { term:"Confrontation Clause", ipa:"/kənfrʌnˈteɪʃən klɔːz/", en:"The Sixth Amendment right to cross-examine witnesses against you.", zh:"对质条款（第六修正案：与不利证人对质、交叉询问之权）", ex:"Mr. Florrick has a right to challenge his accuser.", cat:"Evidence", m:["confront","challenge his accuser","cross-examine"] },
+    stalker_statute: { term:"stalker statute", ipa:"/ˈstɔːkər ˈstætʃuːt/", en:"Laws criminalizing stalking; some bar leniency for those who stalk.", zh:"跟踪防治法", ex:"There are stalker statutes my husband instituted.", cat:"Criminal", m:["stalker statute","stalker statutes"] },
+    witness_protection: { term:"witness protection", ipa:"/ˈwɪtnəs prəˈtɛkʃən/", en:"A government program protecting cooperating witnesses from retaliation.", zh:"证人保护（项目）", ex:"The FBI is selective with Witness Protection monies.", cat:"Criminal", m:["witness protection","witness protection program"] },
+    staged_scene: { term:"staged crime scene", ipa:"/steɪdʒd kraɪm siːn/", en:"A manipulated scene arranged to mislead investigators.", zh:"伪造现场（为误导调查而布置）", ex:"It was staged. We'll need ballistics.", cat:"Evidence", m:["staged","staged scene"] },
+    statute_of_limitations: { term:"statute of limitations", ipa:"/ˈstætʃuːt əv ˌlɪmɪˈteɪʃənz/", en:"A law setting the time limit within which a legal action must be commenced.", zh:"诉讼时效（提起诉讼请求的法定时限）", ex:"There's a statute of limitations on playing that card.", cat:"Civil", m:["statute of limitations"] },
+
   aggravated_battery: { term:"aggravated battery", ipa:"/ˈæɡrəveɪtɪd ˈbætəri/", cat:"Criminal",
     en:"A battery made more serious by a weapon, injury, or that the victim is a protected person (e.g. a police officer); often a felony.",
     zh:"加重殴打罪：因使用武器、造成伤害或受害者属受保护身份（如警察）而加重处罚的殴打，常构成重罪。",
@@ -696,9 +736,9 @@ window.EPISODES = [
          zh:"美国第一修正案在英国无孪生条款；英国依《欧洲人权公约》第 9 条与《2010 年平等法》保护宗教表达，但须让位于相称的法律。voir dire 为美国术语；英国陪审团由选民名册随机抽签产生，回避仅限个别偏见。" }
   },
   {
-    id:"S01E08", ep:8, title:"On Tap", zhTitle:"在逃",
-    summary:{ en:"A cloning professor is charged with arson; Peter's bail appeal turns on new exculpatory evidence and a Fifth Amendment strategy.",
-              zh:"一位克隆研究教授被控纵火；Peter 的保释上诉系于新免责证据与第五修正案策略。" },
+    id:"S01E08", ep:8, title:"Unprepared", zhTitle:"毫无准备",
+    summary:{ en:"A university scientist (Prof. Whitton) is accused of arson in her lab; Alicia and Cary prepare her as a witness while Peter's bail hinges on an evidentiary hearing and a Fifth Amendment strategy.",
+              zh:"一位大学科学家（Whitton 教授）被控在实验室纵火；Alicia 与 Cary 为她做证人准备，同时 Peter 的保释取决于证据听证与第五修正案策略。" },
     themes:[ {en:"Arson",zh:"纵火"}, {en:"Evidentiary hearing & bail",zh:"证据听证与保释"},
              {en:"Exculpatory evidence",zh:"免责证据"}, {en:"Fifth Amendment",zh:"第五修正案"} ],
     scenes:[
@@ -901,7 +941,216 @@ window.EPISODES = [
     terms:["murder","ballistics","motive","eyewitness_id","spousal_privilege","point_blank","cross_examination","arrest","testimony"],
     uk:{ en:"In the U.S., murder is graded by intent (first/second degree); England & Wales distinguish murder (mandatory life) from manslaughter. 'Spousal privilege' in the U.S. contrasts with the English rule that spouses are competent but generally not compellable to testify against each other in criminal proceedings, and expert ballistics evidence is adduced similarly in both.",
          zh:"美国谋杀按意图分级（一/二级）；英格兰威尔士区分谋杀（强制无期徒刑）与过失杀人。美国的「配偶特权」对应英国规则：配偶具作证能力但通常不得被强迫在刑案中相互作证；弹道学专家证据两法系运用相似。" }
+  },
+
+  {
+    id:"S01E16", ep:16, title:"Fleas", zhTitle:"跳蚤",
+    summary:{ en:"Firm client Eric Dorfman, a lawyer, is arrested for first-degree murder of a prosecution witness; Will defends, exposing Brady violations and suppressed evidence, until the real killer confesses.",
+              zh:"事务所客户、律师 Eric Dorfman 因涉嫌谋杀一名检方证人被捕；Will 辩护，揭出布雷迪违规与被藏匿的证据，直到真凶自首。" },
+    themes:["First-degree murder","Witness tampering","Brady violation","Work product","Contempt"],
+    scenes:[
+      { sp:"Alicia Florrick", t:"What's the charge this time?" },
+      { sp:"AUSA Rivers", t:"First degree murder." },
+      { sp:"AUSA Rivers", t:"Kelli Gerber Smith. She was innocent, and you gave her over to that scum." },
+      { sp:"Alicia Florrick", t:"Sir, we are lawyers with Stern, Lockhart and Gardner. We are not employees of this firm. We do not grant you permission to confiscate our work product." },
+      { sp:"AUSA Rivers", t:"Dorfman gave her name to his client, the drug dealer, who then had her killed." },
+      { sp:"AUSA Rivers", t:"It would be a federal crime to influence the IRS. Mr. Dorfman is in trouble. He is guilty, and his assets are frozen." },
+      { sp:"Will Gardner", t:"Too late. I already am. As of ten seconds ago. Congratulations, Rivers. You just won Dorfman an attorney." },
+      { sp:"Will Gardner", t:"This SUV was kept from us intentionally. The only reason the court knows about it at all is because we brought it up. It should be thrown out." },
+      { sp:"Will Gardner", t:"Not according to your own lab's time stamp. Mr. Rivers was holding on to this key discovery evidence for weeks, lying to this court about its very existence." },
+      { sp:"Judge", t:"Would you like to be held in contempt, Mr. Gardner?" },
+      { sp:"Will Gardner", t:"I still want a ruling. A ruling I can appeal." },
+      { sp:"Tony Gurstelle", t:"My name is Tony Gurstelle, and I am guilty of the murder of Kelli Gerber. I acted alone and with no consultation from anybody else." }
+    ],
+    sceneNote:{ en:"These lines show a federal murder prosecution built on witness tampering, the work-product privilege, Brady disclosure duties, and a contempt standoff — classic U.S. criminal-procedure flashpoints.",
+               zh:"这些台词集中展示了美国刑诉的几个典型节点：以干扰证人构建的联邦谋杀指控、律师的「工作成果」保密特权、检方披露有利证据的布雷迪义务，以及因坚持要法院裁决而引发的藐视法庭对峙。" },
+    terms:["first_degree_murder","witness_tampering","work_product","brady_violation","contempt","asset_freeze","objection"],
+    uk:{ en:"In England & Wales the equivalent is murder (no 'degrees'); witness intimidation is an offence under the Criminal Justice and Public Order Act 1994. There is no 'Brady' label, but prosecutors must disclose unused material under the CPIA 1996. 'Contempt of court' exists but is narrower, and there is no routine pre-conviction asset freeze by the prosecutor.",
+         zh:"在英格兰与威尔士，对应概念是谋杀（无「级别」之分）；干扰证人依《1994 年刑事司法与公共秩序法》构成犯罪。没有「布雷迪」之名，但检方依《1996 年刑事程序与调查法》(CPIA) 须开示未使用材料。「藐视法庭」概念更窄，且检方一般不能在定罪前常规冻结资产。" }
+  },
+
+  {
+    id:"S01E17", ep:17, title:"Heart", zhTitle:"心脏",
+    summary:{ en:"In a hospital emergency court, Alicia and Will sue an insurer that denies coverage for life-saving in-utero fetal surgery, exposing post-claims underwriting and a rescission for misrepresentation.",
+              zh:"在一场设在医院的紧急庭审中，Alicia 与 Will 起诉拒赔救命的宫内胎儿手术的保险公司，揭出其「理赔后核保」与以虚假陈述撤销保单的做法。" },
+    themes:["Declaratory judgment","Insurance rescission","Misrepresentation","Bad faith","Injunction"],
+    scenes:[
+      { sp:"Clerk", t:"Judge Robert Parks, emergency on-call justice presiding over plaintiff request for declaratory judgment on medical procedure R-HLHS." },
+      { sp:"Will Gardner", t:"Life State's strategy is to run down the clock. They have no defense, they want to make your ruling irrelevant. In three days time, my client's baby could be dead." },
+      { sp:"Mr. Harper", t:"Objection. Your client's fetus." },
+      { sp:"Patti Nyholm", t:"Fetal surgery is simply not a covered procedure per the terms of the Willoughbys' policy. This is an experimental treatment." },
+      { sp:"Ms. Pomeroy", t:"PAM: Policy Application Management. It's organized post-claims underwriting. It's illegal in some states, legislation in Illinois is on the horizon." },
+      { sp:"Will Gardner", t:"We can use it. We just can't use it in court. It's fruit of the poisonous tree." },
+      { sp:"Will Gardner", t:"An entire department dedicated to finding specious ways to rescind policies when patients need them most." },
+      { sp:"Patti Nyholm", t:"Mr. Willoughby misrepresented his medical history. This misrepresentation gives Life State the right to rescind his policy entirely." },
+      { sp:"Will Gardner", t:"Your Honor, this is not a buffet. Ms. Nyholm can't pick one attack and then, failing that, try another." },
+      { sp:"Judge Robert Parks", t:"A just decision cannot, will not be rushed. You still have two days for the surgery." },
+      { sp:"Will Gardner", t:"In utero surgery for spina bifida, 23 weeks. So as far as Life State's concerned, this isn't a baby." },
+      { sp:"Patti Nyholm", t:"You take away their coverage altogether, that baby gets no surgery at all. That's on you, Will. Drop the class action." }
+    ],
+    sceneNote:{ en:"A civil insurance-coverage fight turning on declaratory relief, the fetus/baby distinction, post-claims underwriting, rescission for misrepresentation, and the fruit-of-the-poisonous-tree limit on illegally obtained evidence.",
+               zh:"一场保险理赔的民事之争，核心在确认判决、胎儿/婴儿的身份区分、理赔后核保、因虚假陈述撤销保单，以及以「毒树之果」限制非法取得证据的使用。" },
+    terms:["declaratory_judgment","rescission","misrepresentation","bad_faith","injunction","fruit_poisonous_tree","class_action"],
+    uk:{ en:"English courts grant declaratory relief under the Senior Courts Act 1981; insurers may avoid a policy for misrepresentation (the Consumer Insurance Act 2012 now distinguishes dishonest from careless). 'Post-claims underwriting' has no exact label, but the uberrimae fidei duty once governed insurance. Inherent jurisdiction over contempt and injunction is broader than in the U.S.",
+         zh:"英格兰法院依《1981 年高等法院法》给予宣告式救济；保险人可因虚假陈述撤销保单（《2012 年消费者保险法》区分「不诚实」与「疏忽」）。无「理赔后核保」之名，但保险曾受「最大诚信」原则约束。藐视法庭/禁令的固有管辖权比美国更宽。" }
+  },
+
+  {
+    id:"S01E18", ep:18, title:"Doubt", zhTitle:"疑云",
+    summary:{ en:"Alicia and Will defend sorority student Bianca Price for murder; jury deliberations, a last-second plea to second-degree murder, ballistics gaps, and an Internal Affairs impeachment over planted evidence.",
+              zh:"Alicia 与 Will 为涉嫌谋杀的女大学生 Bianca Price 辩护；陪审团评议、临门一脚的二级谋杀认罪协议、弹道学疑点，以及针对警察栽赃的内部事务弹劾。" },
+    themes:["Jury deliberation","Reasonable doubt","Plea bargain","Second-degree murder","Ballistics"],
+    scenes:[
+      { sp:"Juror", t:"Reasonable doubt. What do we mean by reasonable doubt?" },
+      { sp:"Juror", t:"So when you take that vote, you have to ask yourself, is this young woman capable of murder? Six guilty, six not guilty." },
+      { sp:"Detective", t:"The murder weapon? It was the defendant's, registered in her name. With her fingerprints on the trigger." },
+      { sp:"Judge", t:"That wasn't a question, Mr. Gardner. But I would warn the witness to avoid editorializing." },
+      { sp:"Judge", t:"The prosecution and defense have agreed to a plea bargain just seconds ago. Miss Price agreed to a charge of second-degree murder. Ten years." },
+      { sp:"Will Gardner", t:"If I were you, I'd plead out. The jury needs to be told a story. Our story needs to be just as simple: Bianca didn't shoot Heather." },
+      { sp:"Alicia Florrick", t:"Yes, it was Bianca's gun, but her mother had given it her for protection. What we need to tell the jury is who else had access to Bianca's gun?" },
+      { sp:"Will Gardner", t:"Regarding the witness prep, we have to delay on the ballistics expert. We lost him. We're shopping." },
+      { sp:"Alicia Florrick", t:"On this one, that guy's foot is on the rug, and on this one it's not. She took another picture? It's on video. Cell phone video. Find it." },
+      { sp:"Will Gardner", t:"So if I asked you about this Internal Affairs report. Any Internal Affairs charge is completely relevant. You're trying to imply Detective Burton planted evidence." },
+      { sp:"Juror", t:"The judge admonished us not to consider it. But I still don't trust Speedy." },
+      { sp:"Kurt McVeigh", t:"She's guilty. Given the evidence, yes." }
+    ],
+    sceneNote:{ en:"A murder trial in motion: jury deliberation and reasonable doubt, a negotiated plea to second-degree murder, ballistics gaps, and a defense attempt to impeach a police witness over planted evidence.",
+               zh:"一桩进行中的谋杀审判：陪审团评议与合理怀疑、协商成的二级谋杀认罪协议、弹道学漏洞，以及辩方以栽赃为由弹劾警察证人的努力。" },
+    terms:["jury_deliberation","reasonable_doubt","plea_bargain","second_degree_murder","ballistics","impeachment_witness","internal_affairs","evidence_tampering"],
+    uk:{ en:"In England & Wales a jury must be unanimous (or 10–2 in some cases); there is no 'not proven' verdict. A 'plea bargain' is called a guilty plea, often with a sentencing discount. Impeachment of witnesses is governed by the hearsay and bad-character rules (CJA 2003); police misconduct is investigated by the IOPC, not 'Internal Affairs'.",
+         zh:"英格兰与威尔士的陪审团须一致（特定情形可 10–2）；无「罪证不足」 verdict。「认罪协议」称为 guilty plea，常伴量刑折减。弹劾证人受《2003 年刑事司法法》的传闻与不良品格规则约束；警员不当行为由 IOPC 调查，而非「内部事务」。" }
+  },
+
+  {
+    id:"S01E19", ep:19, title:"Boom", zhTitle:"轰",
+    summary:{ en:"The firm sues an insurer for capped wrongful-death benefits after a pipe-bomb attack on a newspaper that published a Muhammad cartoon; the fight turns on intentional act, punitive damages, and contributory negligence.",
+              zh:"报社因刊载穆罕默德漫画遭管炸弹袭击后，事务所就限额的非正常死亡赔偿起诉保险公司；争点落在故意行为、惩罚性赔偿与与有过失。" },
+    themes:["Wrongful death","Capped damages","Intentional act","Punitive damages","Free press"],
+    scenes:[
+      { sp:"Defense Counsel", t:"The explosion killed the plaintiff, Mr. Jeffrey Sanborn, 42, managing editor of the Cook County Vindicator." },
+      { sp:"Julius Cain", t:"$250,000 from capped business insurance and $100,000 from capped renter's insurance, but only if we agree now." },
+      { sp:"Karen Sanborn", t:"And you're telling me that he's worth $350,000?" },
+      { sp:"Julius Cain", t:"The insurance has been capped at $350,000. Unless it was an intentional act. Intentional act opens you up to punitive damages." },
+      { sp:"Julius Cain", t:"Your client published an editorial cartoon which depicts The Prophet Muhammad being humiliated. It was intended to criticize racial profiling." },
+      { sp:"Alicia Florrick", t:"Jeffrey told me that the decision to change it to Muhammad was Mr. Clay's, to generate more controversy." },
+      { sp:"Alicia Florrick", t:"My job is to provoke. Because freedom of the press is meaningless unless somebody actually uses it." },
+      { sp:"Mr. Clay", t:"Sanborn was contributorily negligent. Might not be a total win, but it's enough to get us back to the table." },
+      { sp:"Spokesman", t:"And so we gladly admit that we have committed this attack upon the blasphemous, who published this cartoon, to defend the honor of all Muslims." },
+      { sp:"Alicia Florrick", t:"The plaintiff says it's no secret this group's been active in Chicago. Six months earlier, they committed an identical bombing at a synagogue. And you had to know that cartoon might provoke them." },
+      { sp:"Kalinda Sharma", t:"We don't threaten with a subpoena unless he refuses to testify." },
+      { sp:"Cary Agos", t:"Stern keeps taking our clients. In one year, your firm will be nothing but an empty floor in an office building." }
+    ],
+    sceneNote:{ en:"A wrongful-death and insurance-coverage clash raising capped damages, the intentional-act gateway to punitive damages, contributory negligence, and the free-press defense to a blasphemy-motivated bombing.",
+               zh:"一场非正常死亡与保险理赔的碰撞，牵出限额赔偿、通往惩罚性赔偿的「故意行为」门槛、与有过失，以及针对亵渎动机爆炸案的新闻自由抗辩。" },
+    terms:["wrongful_death","capped_damages","intentional_act","damages_punitive","contributory_negligence","first_amendment"],
+    uk:{ en:"English law has no general punitive (exemplary) damages except in narrow statutory or exceptional cases (Rookes v Barnard). There is no 'capped damages' insurance ceiling as in the U.S.; defamation (not blasphemy, abolished in 2008) is stricter for claimants. Free speech is the qualified Article 10 ECHR right, not the U.S. First Amendment.",
+         zh:"英格兰法原则上不承认惩罚性赔偿（仅《Rookes v Barnard》等极少数例外）；无美国式「限额赔偿」保险上限概念；诽谤（而非亵渎，已于 2008 年废除）对原告更严苛。言论自由是《欧洲人权公约》第 10 条的有保留权利，而非美国第一修正案。" }
+  },
+
+  {
+    id:"S01E20", ep:20, title:"Mock", zhTitle:"模拟",
+    summary:{ en:"Peter's home-monitoring bracelet 'breach' and an I.C.E. deportation hearing for Simran Verma (false citizenship claim as a bar), plus a law-school mock trial on castle law and trespass.",
+              zh:"Peter 的居家监控手环「越界」，以及 Simran Verma 的移民递解听证（以虚假公民声明作为禁止事由），外加一场关于城堡原则与侵入的法学模拟庭审。" },
+    themes:["Deportation","False claim of citizenship","Summary judgment","Castle doctrine","Trespass"],
+    scenes:[
+      { sp:"Grace Florrick", t:"This is Sergeant Thacker at HMD center. There's been an unauthorized breach of the perimeter." },
+      { sp:"Daniel Golden", t:"I'm going to ask Mr. and Mrs. Florrick not to answer any more of your questions. I'm Daniel Golden's partner." },
+      { sp:"Elsbeth Tascioni", t:"Who installed the HMD unit? Do you know how much wire you installed? It's still an infraction." },
+      { sp:"Alicia Florrick", t:"Deportations fall under I.C.E. The U.S. Attorney's office can't countermand their order of removal. We can still authorize an S-1 visa." },
+      { sp:"Simran", t:"I was the courier between the Pujari brothers and their buyers. You get the rest when you get the visa." },
+      { sp:"Alicia Florrick", t:"Excuse me, gentlemen. Is Amal a suspect here? Because if so, you probably should read him his rights." },
+      { sp:"I.C.E. Attorney", t:"On the application, she checked the voter registration box, thus making a false claim of citizenship, a federal offense." },
+      { sp:"Judge Gordon Tomlin", t:"I.C.E. is petitioning the court for summary judgment on Simran Verma's immediate removal and deportation to her native India." },
+      { sp:"Alicia Florrick", t:"Mrs. Verma has demonstrated good moral character. She more than qualifies for an adjusted residence status." },
+      { sp:"Will Gardner", t:"Even though this is a mock trial, I do not want the jury discussing the case. Let's thank our judge, Mr. Gardner." },
+      { sp:"Ms. Cabrini", t:"Objection, Your Honor. Calls for speculation. Yes, that is the definition of speculation. Sustained." },
+      { sp:"Will Gardner", t:"Court is a lesson in humility, and you came back with another question. The textbooks go out the window when you're in court." }
+    ],
+    sceneNote:{ en:"Two parallel proceedings: a real immigration removal hearing turning on a false claim of citizenship and summary judgment, and a classroom mock trial on castle law, trespass, and objection practice.",
+               zh:"两条并行程序：真实的移民递解听证（以虚假公民声明与即决判决为焦点），以及课堂模拟庭审（城堡原则、侵入与异议练习）。" },
+    terms:["removal_proceeding","false_claim_citizenship","summary_judgment","castle_doctrine","trespass","miranda_rights"],
+    uk:{ en:"The UK has no ICE and no 'removal proceeding' label; deportation is by the Home Office under the Immigration Rules, with Article 8 ECHR family-life balancing. There is no castle doctrine, but a 'householder' partial defence to murder (CJA 2008) allows disproportionate force against intruders in the home. Trespass is largely civil.",
+         zh:"英国无 ICE、无「递解程序」之名；由内政部依《移民规则》驱逐，并权衡《欧洲人权公约》第 8 条家庭权。无城堡原则，但《2008 年刑事司法法》设「住户」对住宅入侵者使用过当武力的部分抗辩。侵入主要为民事责任。" }
+  },
+
+  {
+    id:"S01E21", ep:21, title:"Unplugged", zhTitle:"断电",
+    summary:{ en:"Max Wilder's coma upends his divorce: a missing signed page, a paternity fight over a secret child, and a guardianship battle between wife and fiancée over end-of-life decisions.",
+              zh:"Max Wilder 昏迷打乱其离婚案：缺失的签署页、关于私生子的亲子之争，以及妻子与未婚妻就临终决定的监护权大战。" },
+    themes:["Divorce settlement","Legal guardianship","Living will","Paternity","Power of attorney"],
+    scenes:[
+      { sp:"David Lee", t:"He's coming in today for a divorce settlement." },
+      { sp:"David Lee", t:"Max Wilder is on probation for a 2007 possession charge, but he got judicial permission to leave the country this weekend." },
+      { sp:"David Lee", t:"We need an answer now, or we walk. Then walk. Nicely played. $300,000." },
+      { sp:"David Lee", t:"In our rush to get to court, we may have overlooked the very last page of the divorce agreement. This just turned into a $40 million divorce." },
+      { sp:"Doctor", t:"It's a subdural hematoma. Which means? Your husband is effectively brain dead." },
+      { sp:"Alicia Florrick", t:"Doctor, I look at contracts all day long, and when I see the word 'effectively', I know it means 'no'." },
+      { sp:"David Lee", t:"Shaina has filed a petition for legal guardianship, so she can unplug Max. Wife trumps girlfriend." },
+      { sp:"David Lee", t:"Both Max Wilder and Caroline initialed all but the last missing page of a divorce settlement." },
+      { sp:"Doctor", t:"He fell off a ladder in 1988 and ended up in a persistent vegetative state. He was a one-in-a-million shot." },
+      { sp:"David Lee", t:"Your Honor, we would like to introduce a new piece of evidence. These are the results of his paternity test. I've got the fiance, who also happens to be the mother of Mr. Wilder's sole offspring." },
+      { sp:"David Lee", t:"In legal terms, wife trumps mistress." },
+      { sp:"Margie", t:"You made notes on the Wilder prenup. What does it say on power of attorney? She could get half." }
+    ],
+    sceneNote:{ en:"A family-law scramble: a divorce settlement voided by a missing signed page, a paternity fight over a secret child, and a guardianship contest over withdrawing life support, all pivoting on prenup and power of attorney.",
+               zh:"一场家事法的混战：因缺失签署页而失效的离婚协议、关于私生子的亲子之争、以及就撤除生命维持的监护权之争，全部系于婚前协议与授权书。" },
+    terms:["divorce_settlement","legal_guardianship","living_will","paternity","power_of_attorney","prenuptial_agreement"],
+    uk:{ en:"In England & Wales divorce is 'dissolution' (no-fault since 2022); a Living Will is an Advance Decision, and a Power of Attorney is a Lasting Power of Attorney (LPA). Guardianship of an adult is via the Court of Protection under the Mental Capacity Act 2005. Paternity is determined by DNA under the Family Law Reform Act 1987.",
+         zh:"英格兰与威尔士的离婚称 dissolution（2022 年起无过错）；生前遗嘱为 Advance Decision，授权书为 Lasting Power of Attorney (LPA)。成年监护由《2005 年心智能力法》下的保护法院管辖。亲子经 DNA 依《1987 年家庭法改革法》认定。" }
+  },
+
+  {
+    id:"S01E22", ep:22, title:"Hybristophilia", zhTitle:"恋罪癖",
+    summary:{ en:"The Kozko 'suicide' murder case: the Peterson Law lets hearsay in when the accused profits from a death; Alicia invokes the slayer statute and Confrontation Clause until Elsbeth proves Kozko is alive.",
+              zh:"Kozko「自杀」谋杀案：彼得森法允许在被指控人因死者死亡获益时采纳传闻；Alicia 援引杀人者条款与对质条款，直到 Elsbeth 证明 Kozko 还活着。" },
+    themes:["Slayer statute","Peterson Law","Hearsay","Video proffer","Confrontation Clause"],
+    scenes:[
+      { sp:"Colin Sweeney", t:"This is a video proffer completed by Mr. Kozko before his death. The prosecution plans to introduce it into evidence. But they can't, because it's hearsay." },
+      { sp:"Glenn Childs", t:"We move to introduce into evidence the video proffer made by our witness Gerald Kozko, recently deceased. I can't cross-examine a dead witness." },
+      { sp:"Judge", t:"Illinois passed the Peterson Law which allows hearsay evidence such as this proffer when the accused benefits from the death." },
+      { sp:"Alicia Florrick", t:"The Peterson Law requires the accused benefit not just from a death, but from a murder he committed. Mr. Kozko committed suicide." },
+      { sp:"Colin Sweeney", t:"I did kill my wife. So I guess the universe is having its little joke at my expense." },
+      { sp:"Detective", t:"You're under arrest for murder, Mr. Sweeney. You have the right to remain silent. Anything you say can and will be used against you." },
+      { sp:"Alicia Florrick", t:"These letters are filled with details from his trial. It's like someone in the business. A juror?" },
+      { sp:"Alicia Florrick", t:"We want involuntary manslaughter, five years. We have proof that Sweeney was stalked. Can we at least stipulate the victim stalked him?" },
+      { sp:"Alicia Florrick", t:"There are stalker statutes on the books that my husband instituted when he was in office." },
+      { sp:"Elsbeth Tascioni", t:"Arthur wasn't in college. In fact, Arthur was a stillborn birth in 1992." },
+      { sp:"Elsbeth Tascioni", t:"Mr. Kozko's video proffer is likewise inadmissible for the very simple reason that Mr. Kozko is still alive." },
+      { sp:"Colin Sweeney", t:"I killed my dog. You actually killed your dog? Hardest thing I've ever done." }
+    ],
+    sceneNote:{ en:"An evidentiary battle over a dead witness's video proffer: the Peterson Law's hearsay exception, the slayer (forfeiture) statute, the Confrontation Clause, and a stalker-angle involuntary-manslaughter plea — resolved only when the 'dead' man is proved alive.",
+               zh:"围绕死者视频 proffer 的证据战：彼得森法的传闻例外、杀人者（没收）条款、对质条款，以及以跟踪为由的过失杀人认罪——直到「死者」被证明确实还活着才瓦解。" },
+    terms:["slayer_statute","peterson_law","hearsay","proffer","confrontation_clause","involuntary_manslaughter","stalker_statute"],
+    uk:{ en:"England has the 'forfeiture rule' (a killer cannot inherit), statutory since the Forfeiture Act 1982 — the closest analogue to a slayer statute. Hearsay is admissible only within CJA 2003 exceptions; there is no Peterson Law. The right to confront witnesses is a common-law/cross-examination right, not a constitutional 'Clause'.",
+         zh:"英格兰有「没收规则」（杀人者不得继承），经《1982 年没收法》成文化——最接近杀人者条款。传闻仅在符合《2003 年刑事司法法》例外时可采；无彼得森法。对质权是普通法/交叉询问权，非宪法「条款」。" }
+  },
+
+  {
+    id:"S01E23", ep:23, title:"Running", zhTitle:"逃",
+    summary:{ en:"Jack Arkins's witness-protection proffer, a corrupt task-force shooting, a wrongful-death suit against Cook County (staged-scene ballistics), and Peter's re-election campaign built on a rape-release case.",
+              zh:"Jack Arkins 的证人保护 proffer、腐败特警队的枪击、针对库克县的非正常死亡之诉（伪造现场的弹道学），以及 Peter 以一起强奸释放案为基底的连任竞选。" },
+    themes:["Witness protection","Proffer","Wrongful death","Ballistics","Staged scene"],
+    scenes:[
+      { sp:"Alicia Florrick", t:"Due to agency-wide budget cuts, the FBI has to be very selective with its Federal Witness Protection monies. You have our proffer." },
+      { sp:"Wendy Arkins", t:"Jack Arkins is part of a joint task force. He witnessed and was pressured to participate in illegal activities by other members of his drug task force." },
+      { sp:"Jack Arkins", t:"Mr. Arkin took photos of the task force's drop house, and he will gladly share the location upon receipt of an immunity deal." },
+      { sp:"Kalinda Sharma", t:"You ever worry about getting caught? Slipping you things, crime reports and evidence? No. Just part of doing business." },
+      { sp:"Kurt McVeigh", t:"Arkin fell as he was firing here on the landing, while another member of the task force rushed in and fired three shots from here." },
+      { sp:"Alicia Florrick", t:"You seem to accord the police a great deal of honesty. It's because of my feelings for you that I've shown you this." },
+      { sp:"Peter Florrick", t:"Justice is what this job should be about. With your support, I hope to become the state's attorney of Cook County once again." },
+      { sp:"Cary Agos", t:"So, there's no pressure in this. It's just a deposition. How much money did your husband make last year?" },
+      { sp:"Alicia Florrick", t:"I know that you would stipulate, but I'm looking to itemize. Now, let's turn to your domestic dispute charges against your husband." },
+      { sp:"Kalinda Sharma", t:"All available units reporting to Dispatch, we got an officer down. Jack Arkin's down." },
+      { sp:"Alicia Florrick", t:"Lab found Jack's blood mixed with his saliva exactly two feet from the body. That he fell face-first, then someone flipped him over. It was staged. We'll need ballistics." },
+      { sp:"Eli Gold", t:"This is Mimi Collins. Two years ago, she was raped. Placedo was sentenced to 20 years by the state's attorney at the time, your husband. Childs argued Placedo be released with time served." }
+    ],
+    sceneNote:{ en:"A Season-1 finale blending a witness-protection proffer, an immunity deal, a corrupt task-force shooting litigated as a staged-scene wrongful-death suit, and the political use of a rape-conviction release.",
+               zh:"第一季季终，交织证人保护的 proffer、豁免交易、被当作伪造现场非正常死亡之诉起诉的腐败特警队枪击，以及把一起强奸定罪释放案用作政治筹码。" },
+    terms:["witness_protection","proffer","wrongful_death","ballistics","deposition","staged_scene","statute_of_limitations","immunity"],
+    uk:{ en:"The UK has no federal witness-protection programme; protected witnesses are managed by police (e.g. the NCA). Wrongful death is a fatal-accidents claim under the Fatal Accidents Act 1976. Depositions do not exist (witness statements are exchanged); the limitation period is generally 6 years (3 for personal injury) under the Limitation Act 1980.",
+         zh:"英国无联邦证人保护项目；受保护证人由警方（如 NCA）管理。非正常死亡依《1976 年致命事故法》主张。无 deposition 制度（改交换书面证人证言）；一般时效《1980 年时效法》为 6 年（人身伤害 3 年）。" }
   }
+
 ];
 
-window.SITE_NOTE = "Transcripts compiled for personal language study from public subtitle/transcript sources (fair use). Primary sources: springfieldspringfield.co.uk, subslikescript.com. Episode dialogue excerpts (scenes) are curated from the same sources; full transcripts are embedded per episode. Episodes covered: Season 1, E01–E15.";
+window.SITE_NOTE = "Transcripts compiled for personal language study from public subtitle/transcript sources (fair use). Primary sources: springfieldspringfield.co.uk, subslikescript.com, taicishe.com. Episode dialogue excerpts (scenes) are curated from the same sources; full transcripts are embedded per episode. Episodes covered: Season 1, E01–E23.";
