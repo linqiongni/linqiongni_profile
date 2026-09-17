@@ -22,7 +22,9 @@
 ## 融资法务 tab（2026-09-17 新增，当晚已挂载上线）
 - 顶层目录 `融资法务/`（与 `法律AI/` 同级）：`index.html` + `ch01…ch12` + `assets/{style.css,app.js}` + `README.md`，约 240 KB。
 - 12 站：创业股权架构 / ESOP / Term Sheet / 尽调 / 合资协议 / 设立与红筹 / 合规风控 / 股权变更并购 / 治理结构 / 港股上市规则 / IPO 全流程 / 上市后披露。主线为虚构案例「霓光珠宝」Y1–Y10 从水贝档口到港股挂牌。
-- 每站八段结构：剧情 → 术语卡 → 打比方 → SVG 结构图 → 案例对照 → 条款样板 → 自检清单 → 法源索引。
+- **第 13 站 `ch13-cases.html`（2026-09-17 增）＝ 真实案例库**：29 个案件（海富案／华工案／九民纪要、俏江南张兰新加坡信托击穿、真功夫、雷士照明、当当、ofo、滴滴、蚂蚁、瑞幸、康美、紫晶存储、恒大地产、汉能、辉山、18C 四样本等），每条标案号／金额／出处 URL 与「案情—结论—法务视角」三段；末尾附「怎么自己求证」检索路径（cn-rules.hkex.com.hk、hkexnews、csrc.gov.cn、gongbao.court.gov.cn、scia.com.cn）。前十二站末尾各有一段「延伸：真实案例对照」并指向第 13 站。
+- 每站八段结构：剧情 → 术语卡 → 打比方 → SVG 结构图 → 案例对照 → 条款样板 → **延伸真实案例** → 自检清单 → 法源索引。
+- **港股规则三处易过期数据（已多源核校 2026-09-17，引用请一律用新版）**：① 公众持股量自 2025-08-04 改为分层门槛（≤60亿→25%；60–300亿→15亿市值或15%取高；>300亿→45亿市值或10%取高），旧「划一 25%」作废；② 18C 市值门槛 2024-09-01 起临时下调至 2027-08-31（已商业化 40 亿／未商业化 80 亿）；③ WVR 自 2026-07-24 起降至 200 亿，或 60 亿市值＋6 亿收入，10:1→市值≥400亿可 20:1，保密递交已扩展至所有新申请人。8.05 三项财务测试未变（现行值系 2022-01-01 上调结果）。
 - 技术：`assets/app.js` 注入顶部导航/上下篇/深浅色/阅读进度，数据源是 `STATIONS` 数组；正文页只需 `<body data-station="chNN">`。**新增/改章节名只需改 app.js 一处。**
 - **已挂载**（2026-09-17 23:10，commit a8ce2ee 已 push）：静态站副本在 `public/financing-legal/`（iframe `/financing-legal/`，组件 `src/components/FinancingLegalTab.tsx`）；`types.ts` 加 `'financing'`、`navConfig.ts` 的 `legal.subTabs` 末尾加 `'financing'` + `SUB_TAB_META.financing = {融资法务 / Financing}`、`App.tsx` 加渲染分支 + `isFullBleed` + 滚动置顶。子导航第 9 个按钮。线上 `https://linqiongni.top/financing-legal/`。
 - **改内容流程**：改根目录 `融资法务/` 的源文件 → `npm run sync:financing`（`rsync -a 融资法务/ public/financing-legal/ --exclude README.md`）→ `npx tsc --noEmit` → commit/push。**不要只改 public 副本，会被覆盖。**
