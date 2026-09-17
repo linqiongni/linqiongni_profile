@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const PLAN_URL = '/financing-legal/';
+const PLAN_URL = '/financing-legal/index.html';
 
 /**
  * 融资法务 · 从 0 到 1（十二站）。
