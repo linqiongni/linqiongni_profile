@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 11 周第 3 天 · 工伤、工时与特殊用工</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 11 周第 3 天 · 工伤、工时与特殊用工</h1>
+    <div class="meta">劳动用工：总部与门店的双层结构</div>
+  </header>
+  <div class="lead">餐饮是工伤高发行业：烫伤、切割伤、滑倒、燃气。工伤这件事的残酷之处在于——<b>缴了社保是社保基金赔，没缴社保是老板自己赔</b>，差额可以到几十万。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、工伤认定与待遇</div><div class="tab" data-p="p2">二、工时制度设计</div><div class="tab" data-p="p3">三、特殊用工</div><div class="tab" data-p="p4">四、工时与工伤自查</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>工伤认定的三类情形（第 14、15、16 条）</h3>
+<p><b>应当认定为工伤（第 14 条）</b>：① 在工作时间和工作场所内，因工作原因受到事故伤害的；② 工作时间前后在工作场所内，从事与工作有关的预备性或者收尾性工作受到事故伤害的；③ 在工作时间和工作场所内，因履行工作职责受到暴力等意外伤害的；④ 患职业病的；⑤ 因工外出期间，由于工作原因受到伤害或者发生事故下落不明的；⑥ 在上下班途中，受到<u>非本人主要责任</u>的交通事故或者城市轨道交通、客运轮渡、火车事故伤害的；⑦ 法律、行政法规规定应当认定为工伤的其他情形。</p><p><b>视同工伤（第 15 条）</b>：在工作时间和工作岗位，突发疾病死亡或者在 <b>48 小时</b>之内经抢救无效死亡的；在抢险救灾等维护国家利益、公共利益活动中受到伤害的。</p><p><b>不得认定（第 16 条）</b>：故意犯罪的；醉酒或者吸毒的；自残或者自杀的。</p><h4>餐饮门店最常见的四个争议点</h4><p>① <b>熬汤/炸制被热油烫伤</b>——典型工伤，几乎无争议；<br>② <b>上下班途中摔伤</b>——只有「非本人主要责任的交通事故」才算，自己滑倒不算工伤；<br>③ <b>员工宿舍内受伤</b>——一般不属工作场所，除非是单位安排的待命场所；<br>④ <b>操作不规范致伤</b>——<strong>违章操作不影响工伤认定</strong>（工伤实行无过错责任），但可按规章制度处理违纪。</p>
+</div>
+<div class="card"><h3>未缴社保的代价（第 62 条，全额自付）</h3>
+<table><thead><tr><th>项目</th><th>已缴工伤保险</th><th>未缴工伤保险</th></tr></thead><tbody><tr><td>医疗费</td><td>工伤保险基金支付</td><td><b>用人单位全额支付</b></td></tr><tr><td>停工留薪期工资（第 33 条）</td><td>用人单位支付（原工资福利不变）</td><td>用人单位支付</td></tr><tr><td>一次性伤残补助金</td><td>基金支付</td><td><b>用人单位支付</b></td></tr><tr><td>一次性工伤医疗补助金</td><td>基金支付</td><td><b>用人单位支付</b></td></tr><tr><td>一次性伤残就业补助金</td><td>用人单位支付</td><td>用人单位支付</td></tr><tr><td>护理费、住院伙食补助、交通食宿</td><td>基金支付</td><td><b>用人单位支付</b></td></tr><tr><td>未缴社保的行政责任</td><td>—</td><td>社保法第 86 条：责令限期缴纳/补足，自欠缴之日起按日加收<b>万分之五</b>滞纳金；逾期仍不缴纳的，处欠缴数额 <b>1 倍以上 3 倍以下</b>罚款</td></tr><tr><td>员工可否据此解除并索赔</td><td>—</td><td>可以：劳动合同法第 38 条第 1 款第（三）项解除 + 第 46 条第（一）项经济补偿</td></tr></tbody></table></div>
+<div class="card"><h3>工伤处置 72 小时 SOP</h3>
+<p><b>0–1 小时</b>：送医救治（先救人，费用先行垫付）→ 现场拍照、封存监控、取两名在场员工书面证言。<br><b>1–24 小时</b>：通知加盟商（或总部人力）→ 确认是否已缴工伤保险 → 准备工伤认定申请材料。<br><b>30 日内</b>：用人单位向统筹地区社会保险行政部门提出工伤认定申请（第 17 条第 1 款）；用人单位未在规定期限内提出的，工伤职工或其近亲属、工会在事故伤害发生之日起 <b>1 年</b>内可以直接提出（第 17 条第 2 款）。<br><b>提示</b>：用人单位未在 30 日内申请的，<strong>在此期间发生的符合条例规定的工伤待遇等有关费用由该用人单位负担</strong>（第 17 条第 4 款）。</p><div class="act"><b>我的落地动作：</b>把「30 日申报」做成人力系统的硬提醒：事故发生当天建档，第 7 日、第 20 日两次催办。逾期申报会让本可由基金支付的费用转由企业自担。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>三种工时制度：餐饮业怎么选</h3>
+<table><thead><tr><th>制度</th><th>规则</th><th>是否需审批</th><th>适用岗位</th><th>加班费</th></tr></thead><tbody><tr><td>标准工时</td><td>每日 ≤ 8 小时、平均每周 ≤ 44 小时（劳动法第 36 条）；每周至少休息 1 日（第 38 条）</td><td>不需要</td><td>总部职能岗</td><td>延长时间 150%、休息日 200%、法定节假日 300%（第 44 条）</td></tr><tr><td>综合计算工时</td><td>以周/月/季/年为周期综合计算，周期内平均工作时间应与法定标准工作时间基本相同</td><td><b>需行政审批</b>（劳部发〔1994〕503 号）</td><td>门店倒班、中央厨房</td><td>周期内超总工时的部分 150%；<b>法定节假日仍 300%</b></td></tr><tr><td>不定时工作制</td><td>不受日/周加班时间限制，一般也无 150%/200% 加班费（多地规定法定节假日是否 300% 口径不一）</td><td><b>需行政审批</b></td><td>店长、外勤拓展、司机</td><td>一般无；须确保休息权</td></tr></tbody></table><p><b>加班的法定上限（第 41 条）</b>：一般每日不得超过 <b>1 小时</b>；因特殊原因需要延长的，在保障身体健康的条件下每日不得超过 <b>3 小时</b>，但是<b>每月不得超过 36 小时</b>。</p><p class="note2">餐饮门店营业时间长（10–14 小时/天），最稳妥的组合是：<b>门店员工申请综合计算工时（以月或季为周期）+ 排班错峰 + 法定节假日按 300% 支付</b>。没有审批的综合计算工时约定无效，超 8 小时的部分一律按加班算。</p>
+</div>
+<div class="card"><h3>加班费怎么算（给数字）</h3>
+<table><thead><tr><th>场景</th><th>计算</th><th>示例（月薪 6000 元，月计薪 21.75 天）</th></tr></thead><tbody><tr><td>工作日延长 2 小时</td><td>小时工资 × 2 × 150%</td><td>6000÷21.75÷8 = 34.48 元/小时；34.48 × 2 × 1.5 = <b>103.44 元</b></td></tr><tr><td>休息日上班 1 天（未补休）</td><td>日工资 × 200%</td><td>6000÷21.75 = 275.86 元；× 2 = <b>551.72 元</b></td></tr><tr><td>法定节假日上班 1 天</td><td>日工资 × 300%（另付，不含正常工资）</td><td>275.86 × 3 = <b>827.59 元</b></td></tr><tr><td>未休年休假 1 天</td><td>日工资 × 300%（含正常工资，实为额外 200%）</td><td>额外支付 <b>551.72 元</b>（职工带薪年休假条例第 5 条）</td></tr></tbody></table></div>
+<div class="anti"><b>加盟商反制点：</b>加班费争议里员工几乎必胜的两点：① 考勤记录由用人单位举证（调解仲裁法第 6 条），没有考勤或考勤不完整的，仲裁倾向采信员工主张的工时；② 加班审批制度虽有效，但「实际安排了加班且未安排补休」的事实一旦成立，以「未经审批」抗辩多数不被支持。所以<b>控加班要控在排班，不是控在审批</b>。</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>四类特殊用工：能用什么、不能用什么</h3>
+<table><thead><tr><th>类型</th><th>法律关系</th><th>关键规则</th><th>风险与对冲</th></tr></thead><tbody><tr><td>退休返聘</td><td>一般为劳务关系（实施条例第 21 条：达到法定退休年龄劳动合同终止）</td><td>签劳务协议，明确工作内容、报酬、意外处理</td><td><b>工伤风险最大</b>：无法参加工伤保险的，按民法典第 1192 条（提供劳务者受害）按过错分担。<b>必须投保雇主责任险/意外伤害险</b>，保额 ≥ 80 万</td></tr><tr><td>未成年工（16–18 周岁）</td><td>劳动关系</td><td>劳动法第 58–65 条：不得安排从事矿山井下、有毒有害、第四级体力劳动强度等禁忌劳动（第 64 条）；须定期健康检查</td><td>不得安排夜班、不得安排重体力（后厨搬货、油炸长时间站立需谨慎）；登记并保存健康检查记录</td></tr><tr><td>童工（< 16 周岁）</td><td>禁止</td><td>劳动法第 15 条禁止招用；《禁止使用童工规定》（国务院令第 364 号）第 6 条：按每使用一名童工<b>每月 5000 元</b>罚款，并责令限期送回；逾期不送的，自责令改正之日起按<b>每名每月 1 万元</b>处罚</td><td><b>红线中的红线</b>：餐饮后厨、外卖出餐高峰常出现「亲戚家孩子来帮忙」，必须在门店张贴禁令并写入加盟合同违约事由</td></tr><tr><td>实习生（在校生勤工助学）</td><td>一般不视为就业、不建立劳动关系</td><td>劳部发〔1995〕309 号第 12 条：在校生利用业余时间勤工助学不视为就业</td><td>签三方实习协议；投保实习责任保险；不得安排夜班与危险作业；<b>毕业即转正式用工</b>，避免长期实习</td></tr><tr><td>非全日制用工</td><td>劳动关系（特殊形态）</td><td>劳动合同法第 68–72 条：平均每日 ≤ 4 小时、每周累计 ≤ <b>24 小时</b>；不得约定试用期；任何一方可随时终止且<b>不支付经济补偿</b>；计酬不低于当地最低小时工资标准；结算周期最长不超过 <b>15 日</b></td><td>适合高峰时段小时工；<b>必须按小时计酬并保留工时记录</b>，超 24 小时即可能被认定全日制</td></tr></tbody></table></div>
+<div class="card"><h3>门店工伤防控的七件事（成本极低，效果极大）</h3>
+<p>① <b>入职当天工伤保险生效</b>——社保增员当日申报，杜绝「下个月再办」；<br>② <b>热汤/热油区物理隔离</b>——熬汤桶加盖、地面防滑、设置防烫手套与长柄勺；<br>③ <b>监控覆盖后厨且保存 ≥ 30 天</b>——工伤争议时是最有力的证据；<br>④ <b>班前安全例会留签字</b>——证明已进行安全教育；<br>⑤ <b>设备定期检修台账</b>——燃气阀、绞肉机、和面机；<br>⑥ <b>雇主责任险</b>——覆盖未缴社保、退休返聘、实习生三类漏洞；<br>⑦ <b>事故 24 小时内上报</b>——超过 30 日申报期，基金本可支付的部分转由企业自担（第 17 条第 4 款）。</p><div class="act"><b>我的落地动作：</b>把七件事做成《门店工伤防控七件套》一页纸，和食安巡检表合并为一次巡店、一张表、一次签字。</div>
+</div>
+</div><div class="panel" id="p4">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">门店工时与工伤合规自查（24 项）</strong><div class="progress"><i id="bar3"></i></div><span id="cnt3" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">1. 全体门店员工工伤保险参保率 100%<span class="m-note"> — 新入职当日增员</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">2. 无「下月补缴」「试用期后缴」情形<span class="m-note"> — 违法且风险敞口极大</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">3. 工伤保险缴费基数与工资一致<span class="m-note"> — 少缴会被责令补缴</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">4. 近 12 个月工伤事故均已 30 日内申报<span class="m-note"> — 第 17 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">5. 工伤事故台账完整（时间、原因、处理、费用）<span class="m-note"> — 可复盘可举证</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">6. 门店已张贴禁止使用童工告示<span class="m-note"> — 红线公示</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">7. 无 16 周岁以下人员在任何岗位工作<span class="m-note"> — 含亲戚家孩子帮忙</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">8. 未成年工（16–18 岁）已登记并体检<span class="m-note"> — 劳动法第 65 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">9. 未成年工未安排夜班与禁忌劳动<span class="m-note"> — 第 64 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">10. 退休返聘人员已签劳务协议<span class="m-note"> — 明确非劳动关系</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">11. 退休返聘人员已投意外险/雇主责任险<span class="m-note"> — 保额 ≥ 80 万</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">12. 实习生签三方协议且有实习责任险<span class="m-note"> — 毕业即转正</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">13. 非全日制用工周工时 ≤ 24 小时<span class="m-note"> — 超时即可能认定全日制</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">14. 非全日制按小时计酬且结算 ≤ 15 日<span class="m-note"> — 第 72 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">15. 门店排班已按综合计算工时执行或已获审批<span class="m-note"> — 未审批无效</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">16. 加班总时长每月 ≤ 36 小时<span class="m-note"> — 第 41 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">17. 法定节假日加班按 300% 支付<span class="m-note"> — 第 44 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">18. 休息日加班已优先安排补休或支付 200%<span class="m-note"> — 补休优先</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">19. 考勤系统数据可导出且保存 ≥ 2 年<span class="m-note"> — 举证倒置的胜负手</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">20. 考勤记录有员工月度确认<span class="m-note"> — 避免事后否认</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">21. 年休假已安排或有未休 300% 支付记录<span class="m-note"> — 带薪年休假条例第 5 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">22. 后厨监控覆盖且保存 ≥ 30 天<span class="m-note"> — 工伤与食安双用</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">23. 班前安全例会记录有签字<span class="m-note"> — 已尽安全教育义务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">24. 设备检修台账完整<span class="m-note"> — 燃气、绞肉机、和面机</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 12 周第 1 天 · 个保法：门店每天都在处理的个人信息</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 12 周第 1 天 · 个保法：门店每天都在处理的个人信息</h1>
+    <div class="meta">数据合规与预付卡：两个被低估的雷区</div>
+  </header>
+  <div class="lead">门店一天要收多少个人信息？扫码点餐、会员注册、外卖订单、监控、人脸支付——五条线同时在收集。个保法的罚则是<b>双罚</b>：既罚单位（最高 5000 万或上年营收 5%），也罚直接责任人员（最高 100 万）。这一天的目标是把五条线全部管起来。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、五大收集场景</div><div class="tab" data-p="p2">二、隐私政策与告知</div><div class="tab" data-p="p3">三、门店个人信息合规自查</div><div class="tab" data-p="p4">四、模拟问答</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>门店五条数据线：各自的合规要点与条号</h3>
+<table><thead><tr><th>场景</th><th>信息类型</th><th>合法性基础</th><th>红线</th><th>必做动作</th></tr></thead><tbody><tr><td><b>扫码点餐</b></td><td>手机号、微信 openid、可能含位置与设备信息</td><td>第 13 条：<u>为订立、履行合同所必需</u>，或取得同意</td><td><b>强制关注公众号、强制收集手机号</b>（不授权就不能点餐）已被监管点名为高频违规</td><td>提供<u>不授权也能点餐</u>的替代路径；点餐本身不收集手机号的，一律不收</td></tr><tr><td><b>会员注册</b></td><td>手机号、生日、消费记录、偏好</td><td>同意（第 13 条第 1 款第 1 项）</td><td>注册时把营销同意与注册同意<u>捆绑</u>成一揽子授权</td><td>注册同意与营销同意<b>分开勾选</b>，营销同意默认不勾选</td></tr><tr><td><b>外卖订单</b></td><td>姓名、电话、收货地址</td><td>履行合同所必需</td><td>把地址信息用于营销画像、向第三方共享未单独同意</td><td>订单目的外使用须另行取得同意；向平台提供须签协议并告知</td></tr><tr><td><b>监控摄像</b></td><td>人脸等生物识别特征、行踪</td><td>第 26 条：<u>为维护公共安全所必需</u></td><td>把监控用于<u>客流分析、顾客画像</u>；无显著提示标识</td><td>设置<b>显著提示标识</b>；图像仅用于公共安全；用于其他目的须<u>单独同意</u></td></tr><tr><td><b>人脸识别</b></td><td>生物识别信息（<b>敏感个人信息</b>）</td><td>第 29 条：<u>单独同意</u>；第 31 条：不满 14 周岁须监护人同意</td><td>把刷脸作为<u>唯一</u>支付或验证方式；「不同意就不提供服务」</td><td>单独同意（不能一揽子、不能捆绑）；<b>必须提供替代方式</b></td></tr></tbody></table><p class="note2">人脸识别另有专门司法解释：《最高人民法院关于审理使用人脸识别技术处理个人信息相关民事案件适用法律若干问题的规定》（法释〔2021〕15 号，2021 年 8 月 1 日施行）<b>第 2 条</b>：在经营场所、公共场所违反法律、行政法规的规定使用人脸识别技术进行人脸验证、辨识或者分析的，以及未征得<b>单独同意</b>的，属于侵害自然人人格权益的行为；<b>第 4 条</b>：采取「与其他授权捆绑」「不点击同意就不提供服务」等方式强迫或变相强迫同意的，法院<b>不予支持</b>其已取得同意的抗辩；<b>第 10 条</b>：以人脸识别作为唯一验证方式的，当事人请求提供其他合理验证方式的，法院支持。</p>
+</div>
+<div class="card"><h3>三条核心规则：告知同意、最小必要、目的限制</h3>
+<p><b>① 告知同意（第 13、14、17 条）</b>：处理个人信息应当取得个人同意（或属于订立履行合同所必需等法定情形）；同意应当由个人在<u>充分知情</u>的前提下<u>自愿、明确</u>作出；处理前应当显著、清晰、易懂地告知处理者身份与联系方式、处理目的、处理方式、信息种类、保存期限、个人行使权利的方式。</p><p><b>② 最小必要（第 6 条）</b>：处理个人信息应当具有明确、合理的目的，并应当与处理目的<b>直接相关</b>，采取<u>对个人权益影响最小</u>的方式；收集个人信息应当限于实现处理目的的<b>最小范围</b>，不得过度收集。</p><p><b>③ 目的限制与单独同意（第 6、23、29 条）</b>：变更处理目的须重新取得同意；向第三方<u>提供</u>个人信息须取得<b>单独同意</b>（第 23 条）；处理<u>敏感个人信息</u>须取得<b>单独同意</b>并向个人告知处理的必要性与对个人的影响（第 29 条）。</p><h4>罚则（第 66 条）：双罚，且数字很大</h4><p>违反本法规定处理个人信息，或者处理个人信息未履行保护义务的，由履行个人信息保护职责的部门责令改正、给予警告、没收违法所得，对违法处理个人信息的应用程序<u>责令暂停或者终止提供服务</u>；拒不改正的，并处 <b>100 万元以下</b>罚款，对直接负责的主管人员和其他直接责任人员处 <b>1 万元以上 10 万元以下</b>罚款。</p><p>情节严重的，由省级以上部门责令改正、没收违法所得，并处 <b>5000 万元以下</b>或者上一年度营业额 <b>5% 以下</b>罚款，并可责令暂停相关业务或停业整顿、通报有关主管部门吊销相关业务许可或营业执照；对直接负责的主管人员和其他直接责任人员处 <b>10 万元以上 100 万元以下</b>罚款，并可决定<u>禁止其一定期限内担任相关企业的董事、监事、高级管理人员和个人信息保护负责人</u>。</p><div class="act"><b>我的落地动作：</b>把「最小必要」做成一句话标准写进取数需求评审表：「这个字段不收，业务还能跑吗？」——能跑就不收。扫码点餐是重灾区，先砍掉强制手机号。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>门店隐私政策（精简可用版）</h3>
+<div class="clause"><p><b>我们收集哪些信息、为什么收集</b></p><p>1. <b>点餐与结账</b>：为完成您的订单，我们收集<u>订单内容、桌号/取餐号</u>；如您选择外卖配送，还需<u>收件人姓名、联系电话、收货地址</u>。上述信息为订立、履行合同所必需，不提供将无法完成配送。</p><p>2. <b>会员注册</b>：经您同意，我们收集<u>手机号码</u>用于注册会员与积分；<u>生日</u>为可选项，用于生日礼遇，您可以不填。</p><p>3. <b>营销推送</b>：是否接收优惠信息由您<u>单独勾选</u>决定，不勾选不影响任何服务；您可随时在本店小程序「我的—设置」中关闭。</p><p>4. <b>安全保障</b>：我们在经营场所安装视频监控，目的为<u>维护公共安全</u>，并在显著位置设置提示标识；监控资料仅用于安全目的，保存期限【30】日后自动覆盖。</p><p>5. <b>我们不做什么</b>：不强制要求关注公众号、不强制收集手机号方可点餐；不使用人脸识别作为唯一支付或验证方式；不向任何第三方出售您的个人信息。</p><p><b>您的权利</b>：查阅、复制、更正、补充、删除、要求解释处理规则；撤回同意；注销账号。客服电话【400-XXX-XXXX】，我们承诺【15】个工作日内答复。</p></div><div class="act"><b>我的落地动作：</b>把最后一段的「我们不做什么」写在门店收银台立牌上，一句话的版本：「不关注公众号也能点餐」。这一句能同时解决监管点名的高频违规与顾客观感。</div>
+</div>
+<div class="card"><h3>三类「同意」的区别（最容易做错的地方）</h3>
+<table><thead><tr><th>场景</th><th>需要什么</th><th>常见错误</th><th>正确做法</th></tr></thead><tbody><tr><td>注册会员（一般个人信息）</td><td>一般同意（第 13 条）</td><td>注册协议里夹带一堆授权</td><td>单独弹窗、明确告知、勾选</td></tr><tr><td>向第三方提供会员数据</td><td><b>单独同意</b>（第 23 条）</td><td>写在隐私政策里一揽子授权</td><td>独立弹窗单独同意，并告知接收方名称、联系方式、处理目的、信息种类</td></tr><tr><td>处理人脸等敏感个人信息</td><td><b>单独同意</b>（第 29 条）+ 告知必要性与影响</td><td>与会员注册授权合并勾选</td><td>独立授权、可拒绝、提供替代方式</td></tr><tr><td>不满 14 周岁未成年人</td><td><b>监护人单独同意</b> + 专门处理规则（第 31 条）</td><td>未做年龄分层</td><td>注册流程加年龄判断，不满 14 周岁的走监护人同意流程</td></tr><tr><td>变更原有处理目的</td><td><b>重新取得同意</b>（第 6、14 条）</td><td>改个隐私政策版本就算了</td><td>主动推送告知 + 重新授权</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">门店个人信息处理合规自查（30 项）</strong><div class="progress"><i id="bar101"></i></div><span id="cnt101" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">1. 扫码点餐不强制关注公众号<span class="m-note"> — 监管点名高频违规项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">2. 扫码点餐不强制收集手机号<span class="m-note"> — 点餐本身不需要手机号</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">3. 会员注册同意与营销同意分开勾选<span class="m-note"> — 禁止一揽子授权</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">4. 营销同意默认不勾选<span class="m-note"> — 同意须由个人主动作出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">5. 隐私政策在小程序/门店显著位置可查<span class="m-note"> — 第 17 条告知义务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">6. 隐私政策列明处理者名称与联系方式<span class="m-note"> — 第 17 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">7. 隐私政策列明处理目的、方式、种类、保存期限<span class="m-note"> — 第 17 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">8. 收集字段已过「最小必要」评审<span class="m-note"> — 第 6 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">9. 无过度收集（如点餐收集通讯录、相册）<span class="m-note"> — 典型超范围</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">10. 监控区域已设置显著提示标识<span class="m-note"> — 第 26 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">11. 监控图像仅用于公共安全<span class="m-note"> — 挪作客流分析须单独同意</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">12. 监控资料保存期限已明确并到期覆盖<span class="m-note"> — 建议 30 日</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">13. 人脸识别（如有）已取得单独同意<span class="m-note"> — 第 29 条 + 法释 15 号第 2 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">14. 人脸识别非唯一验证/支付方式<span class="m-note"> — 法释 15 号第 10 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">15. 无人脸识别的「不同意就不服务」设计<span class="m-note"> — 法释 15 号第 4 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">16. 不满 14 周岁走监护人同意流程<span class="m-note"> — 第 31 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">17. 向第三方提供数据已取得单独同意<span class="m-note"> — 第 23 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">18. 与第三方签署数据处理协议<span class="m-note"> — 明确目的、期限、方式、安全措施</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">19. 对个人信息安全事件有应急预案<span class="m-note"> — 第 51 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">20. 数据分类分级与权限管理已落地<span class="m-note"> — 第 51 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">21. 员工个人信息访问权限按最小必要授权<span class="m-note"> — 门店店长不应能导出全量会员</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">22. 数据导出有审批与水印留痕<span class="m-note"> — 防内鬼外泄</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">23. 会员数据加密存储<span class="m-note"> — 第 51 条技术措施</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">24. 员工签署保密承诺并接受培训<span class="m-note"> — 第 51 条教育培训</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">25. 个人行使权利的渠道（查阅/删除/注销）已开通<span class="m-note"> — 第 44–50 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">26. 响应时限承诺（建议 15 个工作日）已公示<span class="m-note"> — 第 45 条及时</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">27. 跨境传输（如有）已做合规安排<span class="m-note"> — 第 38–43 条；境外服务器须评估</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">28. 委托处理（系统服务商）已签委托协议<span class="m-note"> — 第 21 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">29. 对委托方处理活动进行监督<span class="m-note"> — 第 21 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar101','cnt101')"><span class="m-txt">30. 个人信息保护负责人已指定并公示<span class="m-note"> — 第 52 条（达到数量门槛时）</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>三个高频追问的标准答案</h3>
+<h4>Q1：不收集手机号，怎么发优惠券？</h4><p>分层处理：点餐环节<u>不收</u>；在「领券」这个独立环节，由顾客<u>主动</u>填写手机号并单独勾选「愿意接收优惠信息」。关键在<u>场景分离</u>——点餐是刚需（不能拿刚需换授权），领券是可选（可以用授权换利益）。</p><h4>Q2：会员数据存在系统服务商的云上，算「提供」还是「委托处理」？</h4><p>如果服务商<u>仅按我方指令处理、不自主决定处理目的与方式</u>，属于<b>委托处理</b>（第 21 条），应签委托协议、约定处理目的期限方式、信息种类、保护措施与双方权利义务，并对受托方的处理活动进行监督；<u>无需取得个人单独同意</u>。如果服务商可以<u>自主决定</u>（如自行用于其广告业务），则构成<u>共同处理或提供</u>，需要单独同意。<b>合同里一定要写死「不得用于自身目的」。</b></p><h4>Q3：被顾客投诉到网信部门，第一步做什么？</h4><p>① <b>24 小时内固定证据</b>：封存相关系统的操作日志、授权页面的历史版本截图、隐私政策版本记录；② 立即自查并在<u>责令改正期限内</u>完成整改（罚则的结构是「责令改正 → 拒不改正才罚款」，<b>改得快是关键</b>）；③ 同步评估是否属于「情节严重」，若涉及敏感信息或大规模数据，须由法务负责人直接介入并准备对外口径；④ 整改完成后形成书面报告留存，作为已履行义务的证明。</p><div class="anti"><b>加盟商反制点：</b>顾客/加盟商一方的打法：以「未取得单独同意」为由主张处理行为违法，再依第 69 条主张损害赔偿（<b>处理者不能证明自己没有过错的，应当承担损害赔偿等侵权责任</b>——举证责任倒置）。所以授权链路的留痕（弹窗版本、勾选日志、时间戳）比隐私政策文本本身更重要。</div>
+</div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

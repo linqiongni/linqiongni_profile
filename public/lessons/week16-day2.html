@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 16 周第 2 天 · 年度法务规划、预算与外部资源管理</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 16 周第 2 天 · 年度法务规划、预算与外部资源管理</h1>
+    <div class="meta">综合实战与结业：从学习者到法务总监</div>
+  </header>
+  <div class="lead">年度计划决定了你明年是被业务推着走，还是你推着业务走。预算决定了你的话语权——<strong>没有预算的法务部只有建议权，没有否决权</strong>。这一份给三张可直接用的表：计划表、预算表、外部律师管理办法要点。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、年度法务计划</div><div class="tab" data-p="p2">二、预算</div><div class="tab" data-p="p3">三、外部律师管理</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>年度计划的结构：目标 → 举措 → 资源 → 里程碑</h3>
+<p><b>目标必须可量化</b>，且与业务目标挂钩。错误写法：「加强合同管理，防范法律风险」；正确写法：「加盟纠纷诉讼数量同比下降 30%，单案平均处理周期由 120 天降至 90 天，招商物料合规审查覆盖率 100%」。</p><p><b>四个维度</b>：① 风险控制（诉讼、处罚、事故）；② 效率提升（周期、成本、自动化）；③ 体系建设（制度、模板、培训）；④ 价值创造（追偿回款、避免损失、支撑新业务）。</p><div class="act"><b>我的落地动作：</b>年度计划里一定要写「<u>避免损失金额</u>」这一栏。这是法务部唯一能证明自己赚钱的指标，口径：通过审查/谈判/诉讼避免或挽回的金额，需有内部确认单作为依据。</div>
+</div>
+<div class="card"><h3>年度法务计划示例（中型连锁，约 300 家门店）</h3>
+<table><thead><tr><th>目标</th><th>关键举措</th><th>量化指标</th><th>里程碑</th></tr></thead><tbody><tr><td>加盟纠纷下降</td><td>签约流程五步标准化 + 冷静期条款优化</td><td>诉讼数量 ↓30%，退费争议 ↓40%</td><td>Q2 完成条款改版</td></tr><tr><td>食安零重大事故</td><td>104 号令三本台账落地 + 季度飞检</td><td>重大事故 0，飞检覆盖率 100%</td><td>Q1 完成制度发布</td></tr><tr><td>品牌保护</td><td>监测体系 + 分级响应 SLA</td><td>仿冒发现到处置 ≤15 日，打假 ≥20 起</td><td>Q1 上线监测</td></tr><tr><td>用工合规</td><td>门店用工隔离方案 + 雇主责任险</td><td>事实劳动关系认定案件 0</td><td>Q2 完成合同改版</td></tr><tr><td>数据合规</td><td>扫码点餐改造 + 隐私政策更新</td><td>监管投诉 0，整改按期完成率 100%</td><td>Q1 完成改造</td></tr><tr><td>效率提升</td><td>合同审批线上化 + 模板库</td><td>平均审查周期 ≤2 个工作日</td><td>Q3 系统上线</td></tr><tr><td>追偿回款</td><td>欠费与撤店专项清收</td><td>回款 ≥300 万</td><td>Q4 完成</td></tr><tr><td>能力建设</td><td>业务培训 12 场 + 判例库 50 份</td><td>培训覆盖率 100%</td><td>每季度 3 场</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>预算的六个科目与测算口径</h3>
+<p><b>① 人力</b>：法务人数建议按门店数配置，参考口径为每 100–150 家门店配 1 名法务（不含劳动与食安专员）。300 家门店约需 2–3 人 + 1 名法务总监。</p><p><b>② 外部律师</b>：常法顾问 + 专项（诉讼、知产、劳动、食安、数据）。常法顾问年费参考：中小连锁 8–20 万；诉讼按件计费或风险代理。</p><p><b>③ 诉讼与仲裁费</b>：诉讼费按标的额分段累计（财产案件 1 万以下 50 元；1 万–10 万部分 2.5%；10 万–20 万 2%；20 万–50 万 1.5%；50 万–100 万 1%）；仲裁费通常为诉讼费的 2–4 倍。</p><p><b>④ 知识产权</b>：商标申请（每类官费 270 元 + 代理费 800–2000 元）、著作权登记、监测服务、打假费用。</p><p><b>⑤ 保险</b>：食安责任险、雇主责任险、保全责任保险（费率约为保全金额的 0.5%–1%）、董责险。</p><p><b>⑥ 系统与数据</b>：合同管理系统、电子签、商标监测、合规培训平台。</p><div class="act"><b>我的落地动作：</b>预算申请时把「避免损失」与「追偿回款」放在同一页——300 家门店的连锁，法务年度总投入通常在营收的 0.3%–0.8% 区间，而单次重大食安事故或败诉风波的损失即可超过全年预算。</div>
+</div>
+<div class="card"><h3>年度法务预算表示例（营收 3 亿、300 家门店）</h3>
+<table><thead><tr><th>科目</th><th>测算</th><th>金额（万元）</th><th>占比</th></tr></thead><tbody><tr><td>人力（3 人 + 总监）</td><td>年薪包</td><td>90</td><td>45%</td></tr><tr><td>外部律师（常法 + 专项）</td><td>常法 15 万 + 专项 25 万</td><td>40</td><td>20%</td></tr><tr><td>诉讼与仲裁费</td><td>按 15 起案件测算</td><td>25</td><td>12.5%</td></tr><tr><td>知识产权</td><td>商标 20 类 + 监测 + 打假</td><td>20</td><td>10%</td></tr><tr><td>保险</td><td>食安险 + 雇主责任险 + 保全险</td><td>15</td><td>7.5%</td></tr><tr><td>系统与培训</td><td>合同系统 + 电子签 + 培训</td><td>10</td><td>5%</td></tr><tr><td>合计</td><td></td><td>200</td><td>100%</td></tr><tr><td>占营收比</td><td>200 万 / 3 亿</td><td>0.67%</td><td>行业合理区间</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>什么时候用外部律师，怎么选，怎么控</h3>
+<p><b>该用的四种情形</b>：① 需要本地资源（异地诉讼、异地执行）；② 需要专业深度（知识产权、反垄断、数据合规、刑事）；③ 需要独立性（内部调查、合规举报核查）；④ 工作量峰值（批量案件、集中打假）。</p><p><b>不该用的情形</b>：标准合同审查、日常咨询、制度起草——这些应当内部化，否则法务部永远长不大，且成本不可控。</p><p><b>怎么选</b>：看三个东西——① 同类案件经验（要求提供 3 份同类判决或办案说明）；② 实际承办人（<u>签合同要写明主办律师，禁止随意换人</u>）；③ 响应时限（写入合同：24 小时内响应、3 个工作日出文书初稿）。</p><p><b>怎么控成本与质量</b>：① 年度打包 vs 按件计费的选择：案件量稳定用打包，波动大用按件；② 阶段计费（立案、一审、二审、执行分段）；③ 风险代理（回款分成，适合清收类，比例参考 10%–30%，但<u>刑事与部分民事不适用风险代理</u>）；④ 每季度评分（专业性、响应速度、结果、费用合规性），评分低于 70 分启动更换。</p><div class="act"><b>我的落地动作：</b>建立《外部律师名册》，按专业分 5 类，每类至少 2 家形成竞争；所有委托须有《案件委托书》写明目标、预算上限、阶段成果与时限——没有预算上限的委托，最后一定会超支。</div>
+</div>
+<div class="card"><h3>计费方式对比</h3>
+<table><thead><tr><th>方式</th><th>适用</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>年度常法顾问</td><td>日常咨询、合同审查</td><td>成本可预测</td><td>响应可能被排优先级</td></tr><tr><td>按件计费</td><td>诉讼、专项</td><td>清晰</td><td>总额不可控</td></tr><tr><td>计时计费</td><td>复杂专项、尽调</td><td>灵活</td><td>需严控工时与级别</td></tr><tr><td>风险代理</td><td>清收、执行回款</td><td>与结果绑定</td><td>比例高、适用范围受限</td></tr><tr><td>阶段计费</td><td>多审级案件</td><td>可按结果止损</td><td>需事先约定清楚</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">年度规划与外脑管理 20 项</strong><div class="progress"><i id="bar2"></i></div><span id="cnt2" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">1. 年度计划四维度目标写全<span class="m-note"> — 风险/效率/体系/价值</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">2. 所有指标可量化<span class="m-note"> — 禁「加强」类表述</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">3. 设置「避免损失金额」指标<span class="m-note"> — 口径与确认单</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">4. 预算六科目齐全<span class="m-note"> — 人力/外脑/诉讼/知产/保险/系统</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">5. 预算占营收比测算<span class="m-note"> — 0.3%–0.8%</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">6. 建立外部律师名册（5 类 × 2 家）<span class="m-note"> — 竞争机制</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">7. 委托书写明主办律师<span class="m-note"> — 禁随意换人</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">8. 委托书写明预算上限<span class="m-note"> — 超支审批</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">9. 响应时限写入合同<span class="m-note"> — 24h 响应 / 3 日初稿</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">10. 每季度对外脑评分<span class="m-note"> — <70 分启动更换</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">11. 区分内部化与外部化事项<span class="m-note"> — 标准件内部做</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">12. 风险代理适用范围合规审查<span class="m-note"> — 禁用于不适用领域</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">13. 诉讼费测算表<span class="m-note"> — 按标的额分段</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">14. 仲裁费与诉讼费对比<span class="m-note"> — 2–4 倍</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">15. 保险配置清单<span class="m-note"> — 食安/雇主/保全</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">16. 系统与工具预算<span class="m-note"> — 合同系统、电子签</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">17. 培训计划 12 场<span class="m-note"> — 每季度 3 场</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">18. 判例库年度新增目标<span class="m-note"> — ≥50 份</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">19. 月度/季度报告模板<span class="m-note"> — 给管理层</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar2','cnt2')"><span class="m-txt">20. 年度复盘与次年计划衔接<span class="m-note"> — 闭环</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

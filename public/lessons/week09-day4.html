@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加盟体系食安责任隔离方案</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>加盟体系食安责任隔离方案</h1>
+    <div class="meta">特许人立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">加盟店出食安事故，总部要不要担责？本篇给出责任认定框架、总部担责五情形与不担责判例、合同+制度+证据三层防线、食安责任险与72小时SOP。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 责任认定法律框架</div><div class="tab" data-p="p2">② 合同层：食安条款范本</div><div class="tab" data-p="p3">③ 制度层与证据层</div><div class="tab" data-p="p4">④ 保险与72h SOP</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>责任认定框架：104号令把总部责任法定化、穿透化</h3>
+<p>加盟商持照经营、自负食安责任仍是基本原则，但<span class='num'>《餐饮服务连锁企业落实食品安全主体责任监督管理规定》（市场监管总局令第104号，2025.9.2公布、2025.12.1施行）</span>已把连锁总部的食安责任<strong>法定化</strong>，<b>不能再用加盟合同切割</b>。</p><h4>适用门槛（第32条第1项）</h4><p>使用同一品牌 + 实施统一规范化管理 + <strong>≥10家门店（含直营、加盟、合营）</strong>＝'餐饮服务连锁经营'。蒙自源类品牌（300+门店）<strong>必然适用</strong>。</p><h4>穿透式责任链（第6条）</h4><p>企业总部对分支机构、中央厨房、门店的食品安全<strong>承担管理责任</strong>；经总部授权的分支机构承担相应管理责任；中央厨房、门店对其加工制作食品的安全<strong>负直接责任</strong>。</p><h4>⚠️ 加盟合同免责条款无效（第9条第4款 + 第27条）</h4><p>'企业总部不得通过订立合同等方式减轻或者免除自身依法应当承担的食品安全责任'——违反者责令改正并处<strong>5万元以下</strong>罚款。即合同中'食安责任一律由加盟商自负、总部不担责'类<strong>概括免责条款既无效、又可被处罚</strong>。</p><h4>但并非当然民事连带</h4><p>104号令设定的是总部<strong>行政管理责任</strong>；民事上总部是否对消费者承担连带责任，仍看是否存在实质控制、统配原料、未尽管理义务等具体过错（见下）。</p><div class="act"><b>我的落地动作：</b>① 全面排查所有加盟/合作协议，删除一切'免除或减轻总部食安责任'的表述（第27条罚5万以下）；② 营业执照增项'餐饮服务连锁管理'并取得对应食品经营许可（第6条）；③ 任命食品安全总监+各门店食品安全员并公示（第7条）。</div><div class="anti"><b>加盟商反制点：</b>加盟商可援引104号令主张：总部负有法定管理责任，若总部只收加盟费而不履责，不仅可被行政处罚，也构成加盟商在内部追偿中要求总部分担甚至免除自身部分责任的依据。</div>
+</div>
+<div class="card"><h3>总部何时会被追责：五种情形</h3>
+<p>① 总部是食品<strong>实际提供者</strong>（统采统配原料有问题）；② 对门店有<strong>实质控制</strong>（委派店长、直接管员工、控制经营）；③ <strong>明知违规不制止</strong>（督导发现隐患仅口头提醒未闭环）；④ <strong>品牌背书</strong>致消费者合理信赖；⑤ <strong>共同侵权</strong>（《民法典》第1168条）。</p><div class="anti"><b>加盟商反制点：</b>加盟商反驳路径：证明总部'管得太深'（派店长、统排班、统发薪）→主张事实劳动关系或实质控制→把总部拽进责任圈；或证明问题原料来自总部统配→总部作为供货者担责。</div>
+</div>
+<div class="card"><h3>近年裁判要旨：总部担责 vs 不担责</h3>
+<table><thead><tr><th>方向</th><th>要点</th><th>对总部启示</th></tr></thead><tbody><tr><td>担责·实质控制型</td><td>总部委派店长、统一排班考勤、直接处罚员工，被认定对门店经营有实质管理</td><td>派驻须'指导不替代'，工资社保由加盟商发</td></tr><tr><td>担责·统配原料型</td><td>问题原料由总部指定/统配，总部作为供货链条一环担责</td><td>统配原料质量责任写入供货协议+保险</td></tr><tr><td>不担责·已尽督导型</td><td>总部有完整督导、培训、整改记录，加盟商独立经营</td><td>日常留痕是免责的命门</td></tr><tr><td>不担责·品牌背书限缩</td><td>仅授权商标、提供手册，未介入具体经营</td><td>合同与制度划清'指导≠经营'</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>《加盟合同》食安条款核心要素</h3>
+<h4>责任划分</h4><p>'乙方（加盟商）为门店食品安全的<strong>第一责任人</strong>，独立承担因食安违法/侵权产生的行政、民事、刑事责任。'</p><h4>赔偿与追偿</h4><p>'因乙方违规致甲方（总部）被处罚/索赔的，乙方应全额赔偿甲方损失（含律师费、商誉损失），甲方有权从保证金扣除。'</p><h4>检查权与整改</h4><p>'甲方有权不定期巡查，发现隐患可下达《整改通知书》，乙方须于<strong>3日</strong>内完成；逾期未改甲方可<strong>单方解约</strong>。'</p><h4>事故报告义务</h4><p>'发生食安事故乙方须于<strong>2小时</strong>内报甲方应急专线，隐瞒不报视为根本违约。'</p><h4>品牌保护性解约权</h4><p>'发生重大食安事故或受到吊销许可处罚，甲方可立即解约并收回品牌授权。'</p><div class="act"><b>我的落地动作：</b>把上述条款落进合同第22章（或现有'双方权利义务'章），与Day1《食安自查表》、Day3《应急预案》形成'合同+制度+证据'三层闭环。</div><div class="anti"><b>加盟商反制点：</b>加盟商可要求对等：总部统配原料出问题时，合同须明确总部作为供货方的质量担保与先行赔付义务，避免'只收钱不担责'。</div>
+</div>
+<div class="card"><h3>三层防线对照</h3>
+<table><thead><tr><th>防线</th><th>载体</th><th>关键动作</th></tr></thead><tbody><tr><td>合同层</td><td>加盟合同条款</td><td>责任划分/追偿/检查权/解约权</td></tr><tr><td>制度层</td><td>督导/培训/飞检制度</td><td>证明'已尽管理义务'</td></tr><tr><td>证据层</td><td>督导报告/整改通知/培训签到</td><td>日常留痕对抗连带追责</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">总部应建制度（证明已尽管理义务）</strong><div class="progress"><i id="bar3"></i></div><span id="cnt3" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">1. 《门店食安督导制度》：频次（每季度≥1次）+检查表+闭环整改<span class="m-note"> — 频次与留痕是免责核心</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">2. 《食安培训制度》：新员工上岗前培训+年度复训+签到考核<span class="m-note"> — 培训记录对抗'未尽管理义务'</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">3. 《预警机制》：抽检异常/投诉集中的自动预警与处置流程<span class="m-note"> — 证明主动而非被动</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">4. 《飞行检查制度》：不预告抽查+录像<span class="m-note"> — 比定期巡查更有说服力</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">5. 《统配原料质量管控制度》：入库检验+批次追溯<span class="m-note"> — 原料出问题时有据可追</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">6. 《食安事故上报与应急制度》：2小时专线+演练<span class="m-note"> — 与Day3预案衔接</span></span></label></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">日常须留存证据（对抗连带追责）</strong><div class="progress"><i id="bar4"></i></div><span id="cnt4" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">1. 每次督导的《检查报告》+门店签收<span class="m-note"> — 证明已发现并要求整改</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">2. 《整改通知书》及加盟商回执/照片<span class="m-note"> — 闭环证据，防'仅口头提醒'</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">3. 培训签到表+考核成绩+课件<span class="m-note"> — 证明已尽培训义务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">4. 统配原料的检验报告+批次号+发货单<span class="m-note"> — 原料责任可追溯到供货链</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">5. 加盟商《食安承诺书》年度签署<span class="m-note"> — 强化'第一责任人'认知</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">6. 飞检录像哈希存证<span class="m-note"> — 抗篡改，诉讼可用</span></span></label></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">104号令强制动作清单（2025.12.1起适用）</strong><div class="progress"><i id="bar5"></i></div><span id="cnt5" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">1. 营业执照增项'餐饮服务连锁管理'并取得对应食品经营许可<span class="m-note"> — 第6条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">2. 任命食品安全总监（高管兼任）+各门店/中央厨房食品安全员<span class="m-note"> — 第7条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">3. 建立《食品安全风险管控清单》+门店《每日食品安全检查记录》<span class="m-note"> — 第8条 门店日管控</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">4. 分支机构形成《每周食品安全排查治理报告》<span class="m-note"> — 第8条 分支周排查</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">5. 总部形成《每月食品安全调度会议纪要》<span class="m-note"> — 第8条 总部月调度</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">6. 每年至少一次对所有分支机构/中央厨房/门店全覆盖实地巡查<span class="m-note"> — 第10条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">7. 推进'互联网+明厨亮灶'，视频信息至少保存14天<span class="m-note"> — 第11条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">8. 建立进货查验记录制度并保存凭证（期满6个月/无期2年）<span class="m-note"> — 第13条+食安法第53条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">9. 统一采购配送的，与供货者订立合同明确食安责任<span class="m-note"> — 第14条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">10. 制定食安事故和舆情应急处置方案并开展演练<span class="m-note"> — 第18条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">11. 每年12月向监管部门报告门店清单/准入退出/责任落实情况<span class="m-note"> — 第20条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">12. 删除一切免除或减轻总部食安责任的合同条款<span class="m-note"> — 第9条第4款+第27条罚5万以下</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">13. 食安总监/食安员每年专项培训并考核、档案归档<span class="m-note"> — 第7条配套</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>食品安全责任险怎么买</h3>
+<p>建议总部统一投保<strong>食品安全责任险</strong>，被保险人含<b>总部+全部加盟店</b>（按门店数计费），单次事故赔偿限额建议<strong>≥100万/店</strong>、累计≥500万。覆盖顾客人身损害、医疗、一定的财产损失。</p><div class="act"><b>我的落地动作：</b>将'乙方须纳入甲方统保食安险或自购等额保险'写入合同；保费可由总部代付后列入统配成本，既控风险又稳关系。</div><div class="anti"><b>加盟商反制点：</b>加盟商应确认保单被保险人含自己、理赔不扯皮；总部代投的，要求提供保单副本与理赔联络人。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">加盟店食安事故总部72小时SOP</strong><div class="progress"><i id="bar6"></i></div><span id="cnt6" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">1. 0-2h：接报即启动应急群，指派对接人，确认门店已封存+上报监管<span class="m-note"> — 抢时间窗口</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">2. 2-6h：调阅统配记录，判断问题是否源于总部原料<span class="m-note"> — 决定总部角色（受害者/供货方）</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">3. 6-24h：发出《督导介入函》，固定门店操作证据，保全监控<span class="m-note"> — 防止证据灭失</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">4. 24-48h：视情节决定是否派员现场、是否启动保险理赔<span class="m-note"> — 大额/伤亡必须到场</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">5. 48-72h：出具《总部立场声明》（配合监管/不推责不揽责），复盘责任归属<span class="m-note"> — 为后续追偿/解约留底</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar6','cnt6')"><span class="m-txt">6. 持续：如加盟商瞒报或重大违规，启动品牌保护解约程序<span class="m-note"> — 见品牌保护体系第5份</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

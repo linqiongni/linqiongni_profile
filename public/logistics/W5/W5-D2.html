@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·第2天｜索赔流程与代位求偿：保险公司赔完会来找我</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · DAY 2 / 5　·　阶段一　打地基</div><h1>索赔流程与代位求偿：保险公司赔完会来找我</h1><div class="sub">第 5 周主题：货运保险与责任险 —— 赔了以后找谁要回来</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">代位求偿就是保险公司赔完货主，转头穿上货主的鞋来找你算账：「我是替他来的」。所以客户拿到赔款不是结束，是你第二场官司的开始。</div><div class="mlink"><b>怎么串到今天</b>昨天讲保什么，今天讲赔完之后谁会站在你面前——往往就是当初和和气气的保险公司。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>代位求偿（Subrogation）：保险人在赔付金额范围内，取得被保险人对第三方的请求权（《保险法》第 60 条，条号须核对）</li><li>追偿链条：货主受损 → 找保险公司赔 → 保险公司赔付后代位 → 回头找承运人/货代（我们）追偿</li><li>货主拿到赔款不免除我方对保险人的代位债务；及时通知与证据保全有硬时限，过期保险人对无法确定部分免责</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《货损索赔 SOP》+《事故通知与证据保全清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透货物保险理赔与代位求偿，站在物流服务提供方（货代/承运人）视角：
+1. 货损索赔的完整流程 SOP：从发现货损、通知、检验（survey）、提交索赔单证、定损、赔款，到各方角色。给出《货损索赔 SOP》步骤清单。
+2. 代位求偿（Subrogation）的法律基础：保险人在赔付范围内取得被保险人对第三方的请求权。讲清《保险法》第 60 条（条号须核对）的要件、与第 59 条「物上代位/委付」的区别。
+3. 完整追偿链条：货主（被保险人）受损 → 向保险人索赔 → 保险人赔付 → 保险人取得代位权 → 保险人向造成损失的第三方（承运人/货代/分包商）追偿。每一个环节谁、何时、做什么。
+4. 及时通知与证据保全：货损通知期限、检验申请、证据（照片、理货记录、集装箱封志、检验报告）保全的时限动作；逾期后果。引用《保险法》第 21 条、第 26 条（条号与期间均须核对）。
+5. 给我《事故通知与证据保全清单》：物流商接到货损报案后 24/48/72 小时内必须做的动作与必须留存的证据。
+6. 客户（货主）反制点：货主在哪些情形下可以「绕过保险」直接向我方索赔，或保险公司代位后我方有哪些抗辩。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：保险公司赔你客户，再找你「讨债」</h2>
+<p>接着昨天的「电视险」：电视摔了，保险公司赔了客户 5000 块。但保险公司不是做慈善——它赔出去的钱，会回头找「真正把电视摔了的人」（搬家公司）要回来，这叫<b>代位求偿（Subrogation）</b>。在跨境物流里，我们就是那个「搬家公司」。<b>客户买了货险，出了事客户先找保险公司拿钱（不找我们），但保险公司付完钱，立刻变成客户的「替身」，拿着客户的索赔权来向我们追偿。</b>所以 D1 说「货险不关我们事」是半对——不关我们「赔」，但关我们「被追偿」。</p>
+<div class="key">记忆点：<b>代位求偿 = 保险人花钱买下客户的索赔权，然后以自己名义向我们追偿。我们最终要对谁负责，取决于「损失到底是不是我们的过错造成」。今天讲清这条追偿链，以及我们怎么在链上自卫。</b></div>
+<h2>二、《货损索赔 SOP》（从发现到赔款）</h2>
+<ol><li><b>发现与通知</b>：收货人发现货损，立即通知承运人/货代与保险人；海运下须在提货时或提货后合理时间内（通常提货时或次日前）向承运人以书面（如提单批注、货物残损单）提出表面异议。</li><li><b>保全证据</b>：拍照/录像、留存集装箱封志号与原状、理货记录、磅单；<b>不擅自处理受损货</b>，等待检验。</li><li><b>申请检验（Survey）</b>：由独立公估行（SGS 等）或保险人指定检验人出具《检验报告》，认定货损原因（海上事故/管货不当/包装缺陷/固有性质）与金额。</li><li><b>提交索赔单证</b>：保险单（背书后）、提单、发票、装箱单、检验报告、货损通知、索赔清单。</li><li><b>定损与赔款</b>：保险人核定损失，扣除免赔额后赔付被保险人；CIF/ICC(A) 下通常全赔（除除外）。</li><li><b>代位启动</b>：保险人赔付后，被保险人签署《权益转让书（Letter of Subrogation）》，保险人取得代位权，向责任第三方追偿。</li></ol>
+<h3>物流商接到货损报案的应急动作（24/48/72 小时）</h3>
+<ul><li><b>24 小时内</b>：书面记录客户报案内容（时间、票号、箱号、损坏描述）；向实际承运人/分包商发函保留追偿权；冻结该票相关操作记录与系统日志。</li><li><b>48 小时内</b>：取得并固定集装箱封志照片、装箱/拆箱视频、仓库理货记录；若有检验人到场，派员陪同并取证。</li><li><b>72 小时内</b>：向保险人（若我方有货代责任险）报案并通知 broker；整理该票全程交接单、签收单、温控记录；形成内部事故说明。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 《保险法》第 60 条代位求偿要件与原文措辞以现行《保险法》为准，引用前核对条号；② 第 21 条（出险及时通知）、第 26 条（非人寿保险索赔时效 2 年）的条号与「自知道或应当知道保险事故发生之日起算」的起算点须核对；③ 海商法下货物索赔通知时限（如明显损坏交付时、隐蔽损坏交付后 3 日内等）与 1 年时效，条号须核对现行《海商法》。</div>
+<h2>三、代位求偿的法律基础：第 60 条 vs 第 59 条</h2>
+<ul><li><b>第 60 条（代位求偿）</b>：因第三者对保险标的的损害造成保险事故的，保险人自向被保险人赔偿之日起，在<b>赔偿金额范围内</b>代位行使被保险人对第三者请求赔偿的权利。要件：① 保险事故由第三者造成；② 保险人已实际赔付；③ 代位范围以赔付额为限。</li><li><b>第 59 条（物上代位 / 委付）</b>：保险标的发生推定全损，被保险人将标的<b>所有权</b>转让给保险人（委付），保险人全额赔付后取得残余物所有权。这是「取得东西」，与第 60 条「取得索赔权」不同。</li><li><b>二者不冲突</b>：实务中货损多为部分损失，适用第 60 条代位；全损且委付才触发第 59 条。我们作为被追偿方，面对的是第 60 条的代位权。</li></ul>
+<div class="key">我方抗辩点（站在物流商视角）：① 损失非我方造成（如系固有缺陷、包装不当、天灾免责）——切断代位基础；② 我方依法/依约享有<b>责任限制</b>（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤），保险人代位不能超过此限；③ 被保险人/货主自身过错（如错报、未妥善包装）可相应减责。客户反制点：客户会主张「你作为缔约承运人未尽管货义务」，须用交接记录与封志完好反证。</div>
+<h2>四、完整追偿链条：六个环节谁、何时、做什么</h2>
+<table><thead><tr><th>环节</th><th>主体</th><th>动作</th><th>时限/后果</th></tr></thead><tbody><tr><td>① 货损发生</td><td>货主(被保险人)</td><td>发现损失、通知、保全</td><td>逾期通知→承运人可以抗辩；保险人对无法确定部分免责</td></tr><tr><td>② 向保险索赔</td><td>货主</td><td>提交保单/提单/检验报告等</td><td>单证不全→拒赔或减赔</td></tr><tr><td>③ 保险人赔付</td><td>保险人</td><td>核定损失、扣免赔、付款</td><td>赔付是代位的前提</td></tr><tr><td>④ 签署权益转让</td><td>货主</td><td>签 Letter of Subrogation</td><td>不签→保险人无法代位</td></tr><tr><td>⑤ 保险人代位</td><td>保险人(成为原告)</td><td>以自己名义向我方追偿</td><td>追偿额≤已赔付额</td></tr><tr><td>⑥ 我方应对</td><td>我方(物流商)</td><td>举证免责/限制/减责</td><td>败诉→在限额内赔付，再向分包商追偿</td></tr></tbody></table>
+<h2>五、《事故通知与证据保全清单》（物流商视角）</h2>
+<ul><li><b>必须做的动作</b>：① 接报立即建案编号；② 书面固化客户描述；③ 向实际承运人/分包商发「保留追偿权」函；④ 派员见证检验；⑤ 向自身责任险保险人/broker 报案；⑥ 冻结并备份该票全部系统记录。</li><li><b>必须留存的证据</b>：集装箱封志号与原状照片、装箱/拆箱视频、理货单与磅单、仓库温控/湿度记录、交接单与签收单、检验报告（Survey Report）、往来邮件与时间戳、我方内部操作日志。</li><li><b>不做的后果</b>：未留存封志完好证据 → 无法证明「非我方管货不当」；未及时通知责任险保险人 → 责任险可能拒赔；未向分包商发保留函 → 追偿时效过期或分包商抗辩。</li></ul>
+<div class="key">客户（货主）反制点梳理：① 货主可<b>不经保险</b>直接依运输合同向我方索赔（若我方有过错且未投足额责任险）；② 若货主投保不足（如仅 FPA 而损失属不保范围），货主会转向我方主张「你作为物流商应预见」；③ 保险公司代位后，我方只能以「对货主的抗辩」对抗保险人（如责任限制、免责、货主自身过错），不能因「已对货主赔过」而双重免责。</div>
+<h2>六、如何把「被追偿」金额压到最低</h2>
+<ul><li><b>第一关：定性免责</b>：证明损失属天灾、固有缺陷、包装不当、托运人瞒报等我方无责情形，直接切断代位。</li><li><b>第二关：责任限制</b>：即便有责，主张适用法定/约定单位责任限制（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤等），把赔偿封顶。</li><li><b>第三关：转嫁追偿</b>：我方赔付后，凭分包/实际承运人合同向真正责任方追偿；若实际承运人有 P&I 兜底（D3 讲），可向其保赔协会追偿。</li><li><b>第四关：责任险兜底</b>：我方投保的货代责任险在限额内赔付我方对外赔款（D3 讲），这是最后一道钱袋子。</li></ul>
+<div class="key">今日口诀：<b>客户先找保险拿钱，保险再当我们债主——代位求偿是保险公司「花钱买索赔权来追我们」。我们自卫靠四关：定性免责、责任限制、转嫁追偿、责任险兜底。24/48/72 小时的证据动作，是四关的弹药。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Subrogation</div><div class="cn">代位求偿 / 代位权</div><div class="df">保险人在赔付保险金后，在赔付金额范围内取得被保险人对第三者请求赔偿的权利，是保险人向责任方追偿的法律基础</div></div><div class="ti"><div class="en">Survey</div><div class="cn">检验 / 公证检验</div><div class="df">由独立检验人（如 SGS、公估行）对货损原因与金额出具检验报告，是保险索赔与追偿的核心证据</div></div><div class="ti"><div class="en">Letter of Subrogation</div><div class="cn">代位求偿权转让书 / 权益转让书</div><div class="df">被保险人收到赔款后签署，确认将向第三方的索赔权转让给保险人，保险人凭此行使代位</div></div><div class="ti"><div class="en">Insurance Interest Transfer</div><div class="cn">保险权益转让（背书）</div><div class="df">通过保单背书将保险索赔权随货权转移，使买方成为有权索赔的被保险人</div></div><div class="ti"><div class="en">Limitation of Claim</div><div class="cn">索赔时效</div><div class="df">保险索赔与代位追偿的诉讼时效；非人寿保险一般为 2 年（自知道保险事故发生之日起），条号与起算点须核对</div></div></div></div><div class="foot"><a href="W5-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W5-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script><script src="/theme-toggle.js"></script>
+</body></html>

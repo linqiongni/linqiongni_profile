@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>港资珠宝零售集团 · 公司法律 AI 从 0 搭建总纲</title>
+<style>
+:root{
+  --bg:#FDFCF9; --bg2:#F6F3EC; --card:#FFFFFF; --ink:#1D1D1F; --ink2:#4A4A4E; --ink3:#7C7C82;
+  --gold:#B89F6B; --gold2:#D9C79B; --gold3:#8A7448; --line:#E6E1D5; --line2:#D8D2C4;
+  --red:#B5453C; --green:#4E7B52; --blue:#3F6A8F; --amber:#A6762B;
+  --shadow:0 1px 2px rgba(28,28,30,.04),0 4px 16px rgba(28,28,30,.05);
+}
+[data-theme="dark"]{
+  --bg:#1D1D1F; --bg2:#161618; --card:#252527; --ink:#EDEAE3; --ink2:#BFBBB2; --ink3:#8E8A82;
+  --gold:#C9B183; --gold2:#8A7448; --gold3:#D9C79B; --line:#3A3A3D; --line2:#4A4A4E;
+  --red:#D9756B; --green:#7FA984; --blue:#7BA6C9; --amber:#C9A15A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+  font-size:15.5px; line-height:1.85; -webkit-font-smoothing:antialiased;
+}
+.sans{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:1500px;margin:0 auto;padding:0 24px;display:flex;gap:32px;align-items:flex-start}
+#side{
+  width:250px;flex:0 0 250px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  padding:28px 0 60px;border-right:1px solid var(--line);
+}
+#main{flex:1;min-width:0;padding:28px 0 120px}
+@media(max-width:1080px){ #side{display:none} .wrap{padding:0 16px} }
+
+/* ---------- Header ---------- */
+.hd{padding-bottom:20px;margin-bottom:24px;border-bottom:2px solid var(--gold)}
+.hd .kicker{font-size:12px;letter-spacing:.32em;color:var(--gold);margin-bottom:10px}
+.hd h1{font-size:31px;line-height:1.35;letter-spacing:.02em;font-weight:600}
+.hd .sub{margin-top:12px;color:var(--ink2);font-size:14.5px;line-height:1.8}
+.hd .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-block;padding:3px 11px;border:1px solid var(--line2);border-radius:2px;
+  font-size:12px;color:var(--ink2);background:var(--bg2);
+}
+.chip.g{border-color:var(--gold);color:var(--gold3);background:transparent}
+
+/* ---------- Side nav ---------- */
+#side .navt{font-size:11px;letter-spacing:.24em;color:var(--gold);margin:0 0 12px 2px}
+#side a{
+  display:block;padding:7px 10px;color:var(--ink2);text-decoration:none;font-size:13.5px;
+  border-left:2px solid transparent;border-radius:0 2px 2px 0;transition:.15s;
+}
+#side a:hover{background:var(--bg2);color:var(--ink)}
+#side a.on{border-left-color:var(--gold);color:var(--gold3);background:var(--bg2);font-weight:600}
+#side a .n{color:var(--gold);margin-right:7px;font-size:12px}
+
+/* ---------- Sections ---------- */
+section{margin-bottom:56px;scroll-margin-top:20px}
+h2{
+  font-size:22px;font-weight:600;letter-spacing:.02em;margin-bottom:6px;
+  padding-bottom:12px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;
+}
+h2 .num{
+  font-size:13px;color:#fff;background:var(--gold);min-width:30px;height:24px;
+  display:inline-flex;align-items:center;justify-content:center;border-radius:2px;padding:0 7px;
+}
+h3{font-size:17px;font-weight:600;margin:30px 0 12px;color:var(--ink);
+   border-left:3px solid var(--gold);padding-left:11px;line-height:1.5}
+h4{font-size:15px;font-weight:600;margin:20px 0 8px;color:var(--ink)}
+p{margin-bottom:12px;color:var(--ink2)}
+b,strong{color:var(--ink);font-weight:600}
+a{color:var(--gold3);text-decoration:none;border-bottom:1px dotted var(--gold2)}
+a:hover{border-bottom-style:solid}
+ul,ol{margin:0 0 14px 22px;color:var(--ink2)}
+li{margin-bottom:6px}
+code{
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;
+  background:var(--bg2);padding:1px 6px;border-radius:2px;color:var(--ink);
+  border:1px solid var(--line);
+}
+
+/* ---------- Callouts ---------- */
+.box{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  padding:16px 18px;margin:18px 0;border-radius:0 3px 3px 0;box-shadow:var(--shadow);
+}
+.box .t{font-weight:600;color:var(--ink);margin-bottom:7px;font-size:14.5px}
+.box.warn{border-left-color:var(--red)}
+.box.warn .t{color:var(--red)}
+.box.ok{border-left-color:var(--green)}
+.box.ok .t{color:var(--green)}
+.box.info{border-left-color:var(--blue)}
+.box.info .t{color:var(--blue)}
+.box p:last-child{margin-bottom:0}
+.box ul{margin-bottom:0}
+
+/* ---------- Tables ---------- */
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:3px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th{
+  background:var(--bg2);text-align:left;padding:11px 13px;font-weight:600;color:var(--ink);
+  border-bottom:1px solid var(--line2);white-space:nowrap;font-size:13px;letter-spacing:.03em;
+}
+td{padding:10px 13px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.7}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg2)}
+td b,th b{color:var(--ink)}
+.tc{text-align:center}.tr{text-align:right}
+
+/* ---------- Tags ---------- */
+.tag{display:inline-block;padding:1px 8px;border-radius:2px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-p0{background:var(--red);color:#fff}
+.t-p1{background:var(--amber);color:#fff}
+.t-p2{background:var(--blue);color:#fff}
+.t-ok{background:rgba(78,123,82,.14);color:var(--green);border:1px solid var(--green)}
+.t-no{background:rgba(181,69,60,.13);color:var(--red);border:1px solid var(--red)}
+.t-mid{background:rgba(166,118,43,.14);color:var(--amber);border:1px solid var(--amber)}
+.t-g{background:rgba(184,159,107,.16);color:var(--gold3);border:1px solid var(--gold)}
+
+/* ---------- Cards grid ---------- */
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.card h5{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.card p{font-size:13.5px;margin-bottom:8px;line-height:1.75}
+.card ul{font-size:13px;margin:8px 0 0 18px}
+.card li{margin-bottom:4px}
+
+/* ---------- Check list ---------- */
+.ck{list-style:none;margin:14px 0 0 0}
+.ck li{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 12px;margin-bottom:5px;
+  background:var(--card);border:1px solid var(--line);border-radius:2px;font-size:13.5px;
+  color:var(--ink2);cursor:pointer;transition:.15s;line-height:1.7;
+}
+.ck li:hover{border-color:var(--gold2)}
+.ck li input{margin-top:5px;accent-color:var(--gold);cursor:pointer;flex:0 0 auto;width:15px;height:15px}
+.ck li.done{opacity:.5;text-decoration:line-through}
+.ck li.done .bx{text-decoration:none}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;margin:22px 0 0 0;padding-left:0;list-style:none}
+.tl:before{
+  content:"";position:absolute;left:88px;top:8px;bottom:8px;width:1px;background:var(--line2);
+}
+.tl li{position:relative;padding:0 0 26px 116px;margin:0}
+.tl .wk{
+  position:absolute;left:0;top:0;width:74px;text-align:right;font-size:12.5px;
+  color:var(--gold3);font-weight:600;padding-top:2px;
+}
+.tl .dot{
+  position:absolute;left:83px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--gold);
+}
+.tl .dot.solid{background:var(--gold)}
+.tl h5{font-size:15px;font-weight:600;margin-bottom:7px;color:var(--ink)}
+.tl p{font-size:13.5px;margin-bottom:6px}
+.tl .dl{font-size:12.5px;color:var(--ink3);margin-top:6px}
+.tl .dl b{color:var(--gold3)}
+
+/* ---------- Arch diagram ---------- */
+.arch{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px;margin:18px 0;box-shadow:var(--shadow)}
+.layer{display:flex;align-items:stretch;gap:12px;margin-bottom:10px}
+.layer .lb{
+  flex:0 0 128px;background:var(--bg2);border:1px solid var(--line2);border-radius:2px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 8px;text-align:center;
+}
+.layer .lb .n{font-size:11px;color:var(--gold);letter-spacing:.16em;margin-bottom:3px}
+.layer .lb .v{font-size:14px;font-weight:600;color:var(--ink)}
+.layer .ct{flex:1;background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:12px 14px}
+.layer .ct .row{font-size:13px;color:var(--ink2);margin-bottom:5px;line-height:1.7}
+.layer .ct .row:last-child{margin-bottom:0}
+.layer .ct b{color:var(--ink)}
+.arrow{text-align:center;color:var(--gold);font-size:15px;line-height:1;margin:-4px 0 6px}
+@media(max-width:720px){ .layer{flex-direction:column} .layer .lb{flex:none} }
+
+/* ---------- Misc ---------- */
+.kv{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.kv .i{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:13px 15px}
+.kv .i .k{font-size:12px;color:var(--ink3);margin-bottom:3px}
+.kv .i .v{font-size:19px;font-weight:600;color:var(--gold3);line-height:1.4}
+.kv .i .v small{font-size:12px;color:var(--ink3);font-weight:400}
+
+.fold{margin:12px 0;border:1px solid var(--line);border-radius:3px;background:var(--card);overflow:hidden}
+.fold>summary{
+  padding:12px 16px;cursor:pointer;font-weight:600;font-size:14.5px;color:var(--ink);
+  background:var(--bg2);list-style:none;display:flex;align-items:center;gap:9px;
+}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary:before{content:"▸";color:var(--gold);transition:.2s;display:inline-block}
+.fold[open]>summary:before{transform:rotate(90deg)}
+.fold>summary:hover{background:var(--bg)}
+.fold .bd{padding:16px 18px}
+
+.foot{margin-top:60px;padding-top:22px;border-top:2px solid var(--gold);color:var(--ink3);font-size:12.5px;line-height:1.9}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+.btn{
+  background:var(--card);border:1px solid var(--line2);color:var(--ink2);padding:6px 14px;
+  border-radius:2px;cursor:pointer;font-size:13px;font-family:inherit;transition:.15s;
+}
+.btn:hover{border-color:var(--gold);color:var(--gold3)}
+.prog{font-size:12.5px;color:var(--ink3)}
+
+@media print{
+  #side,.topbar{display:none}
+  body{background:#fff;color:#000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav id="side">
+  <div class="navt">目 录</div>
+  <a href="#s0" class="on"><span class="n">序</span>怎么用这份方案</a>
+  <a href="#s1"><span class="n">01</span>诊断：法务工作量地图</a>
+  <a href="#s2"><span class="n">02</span>目标与红线边界</a>
+  <a href="#s3"><span class="n">03</span>场景优先级矩阵</a>
+  <a href="#s4"><span class="n">04</span>总体技术架构</a>
+  <a href="#s5"><span class="n">05</span>开源选型与License</a>
+  <a href="#s6"><span class="n">06</span>知识库建设（成败关键）</a>
+  <a href="#s7"><span class="n">07</span>双法域合规与风控</a>
+  <a href="#s8"><span class="n">08</span>24周落地路线图</a>
+  <a href="#s9"><span class="n">09</span>预算三档</a>
+  <a href="#s10"><span class="n">10</span>评测与度量</a>
+  <a href="#s11"><span class="n">11</span>风险登记册</a>
+  <a href="#s12"><span class="n">12</span>第一周就做的5件事</a>
+  <a href="#s13"><span class="n">13</span>开源资源总清单</a>
+</nav>
+
+<main id="main">
+
+<div class="topbar">
+  <div class="hd sans" style="border:none;padding:0;margin:0;flex:1">
+    <div class="kicker">法 务 数 字 化 · 内 部 立 项 文 件</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <span class="prog" id="pg"></span>
+    <button class="btn" id="tm">切换深色</button>
+    <button class="btn" onclick="window.print()">打印 / 存 PDF</button>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="kicker">LEGAL AI · FROM ZERO TO ONE</div>
+  <h1>港资珠宝零售集团<br>公司法律 AI 从 0 搭建总纲</h1>
+  <div class="sub">
+    面向「内地 + 香港」双法域、直营门店为主的珠宝零售集团法务部。<br>
+    这份文件回答三件事：<b>到底该做什么场景</b>、<b>用什么开源栈、花多少钱</b>、<b>24 周怎么一步步跑完</b>。
+  </div>
+  <div class="meta">
+    <span class="chip g">版本 v1.0</span>
+    <span class="chip">编制日期 2026-09-15</span>
+    <span class="chip">编制：法务部（法务总监视角）</span>
+    <span class="chip">适用范围：集团法务 + IT + 合规</span>
+    <span class="chip g">已脱敏 · 可公开</span>
+  </div>
+</header>
+
+<!-- ========== S0 ========== -->
+<section id="s0">
+  <h2><span class="num">序</span>怎么用这份方案</h2>
+
+  <div class="box warn">
+    <div class="t">脱敏声明（先读这一条）</div>
+    <p>本文件<b>全篇不出现集团真实商号、门店具名、供应商名称、租金与抽成比例、毛利数据</b>，一律以「集团 / H 集团」「A 类门店」「供应商 S」等代号表述。原因是本文件拟对外发布（个人网站 / 行业交流），而珠宝零售的<b>租金条款、抽成比例、采购价格</b>属核心商业秘密，披露即构成竞争损害。</p>
+    <p>内部落地版请另建一份未脱敏副本，按第 06 章权限矩阵管控，<b>两份文件不得混用</b>。</p>
+  </div>
+
+  <h3>这份方案的方法论立场</h3>
+  <p>市面上讲「企业法律 AI」的材料，九成在讲模型多强、RAG 多先进。但法务 AI 项目失败的真正原因从来不是模型——是三件事：<b>场景选错</b>（做了没人用的东西）、<b>语料没整理</b>（垃圾进垃圾出）、<b>没有引用溯源</b>（编了一条不存在的法条，从此再没人敢用）。</p>
+  <p>所以本方案的重心分配是：<b>场景与数据 60%、合规与治理 20%、技术选型 15%、模型 5%</b>。模型是最不值得纠结的一环。</p>
+
+  <div class="grid g3">
+    <div class="card">
+      <h5>◆ 判断一：不要自研</h5>
+      <p>2026 年的开源生态已经成熟到「法务部 + 1 名 IT」就能搭出生产级系统。自研 RAG 是浪费预算。选 Apache-2.0 / MIT 栈，站在社区肩膀上。</p>
+    </div>
+    <div class="card">
+      <h5>◆ 判断二：不要上法律垂类模型</h5>
+      <p>中文法律垂类模型普遍停更、License 带非商用限制（ChatLaw 是 AGPL-3.0，HanFei / Lawyer-LLaMA 明确禁商用），且能力已被 Qwen3、DeepSeek 等通用强基座反超。<b>强通用基座 + 私域语料 + 强制引用</b>是更优解。</p>
+    </div>
+    <div class="card">
+      <h5>◆ 判断三：先做「不性感」的场景</h5>
+      <p>租赁合同审查、法规问答、投诉话术——这些不酷，但占了法务部 70% 的工时。先打穿它们拿到可信度，再谈智能体。</p>
+    </div>
+  </div>
+
+  <h3>本文件的用法</h3>
+  <ul>
+    <li><b>报预算</b>：直接拿第 08 章 + 第 09 章做立项材料，三档预算任选其一。</li>
+    <li><b>给 IT 看</b>：第 04 章架构 + 第 05 章选型 + 第 13 章资源清单，可直接执行。</li>
+    <li><b>给老板看</b>：第 01 章诊断 + 第 03 章场景矩阵 + 第 09 章预算 + 第 10 章度量，一页讲清投入产出。</li>
+    <li><b>自己执行</b>：第 12 章「第一周就做的 5 件事」，本周就能开工，不需要等预算批下来。</li>
+  </ul>
+
+  <div class="box info">
+    <div class="t">关于文中法条的准确性</div>
+    <p>本文件引用的法律法规、标准编号、生效日期，用途是<b>界定知识库入库优先级</b>，不是法律意见。落地时每一条都必须回官方源核验现行有效版本（第 06 章给了具体数据源与核验要求）。凡本文件标注「须核实」的，务必核实后再入库或对外引用。</p>
+  </div>
+</section>
+
+<!-- ========== S1 ========== -->
+<section id="s1">
+  <h2><span class="num">01</span>诊断：港企珠宝直营的法务工作量地图</h2>
+  <p>直营模式（区别于加盟）的法务工作量有一个鲜明特征：<b>高度重复、高度标准化、高度集中</b>。200+ 家门店面对的是同一份租赁合同模板、同一套供应商框架协议、同一部消法、同一批劳动争议。这正是 AI 最擅长的地方。</p>
+
+  <h3>1.1 法务工作量分布（典型港资珠宝直营集团）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:15%">业务域</th>
+        <th style="width:9%" class="tc">工时占比</th>
+        <th style="width:11%" class="tc">年频次</th>
+        <th style="width:11%" class="tc">标准化度</th>
+        <th>主要工作内容</th>
+        <th style="width:10%" class="tc">AI 可替代度</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>门店租赁</b></td><td class="tc">22%</td><td class="tc">60–90 份/年</td><td class="tc"><span class="tag t-ok">高</span></td><td>续租谈判、租约审查、免租期与装修期、抽成租金条款、提前解约、保证金回收、商场统一收银结算</td><td class="tc"><span class="tag t-ok">70%</span></td></tr>
+        <tr><td><b>日常咨询</b></td><td class="tc">18%</td><td class="tc">1500+ 次/年</td><td class="tc"><span class="tag t-ok">高</span></td><td>门店店长 / 区域经理的微信、电话咨询：退换货、顾客纠纷、工商检查、会员信息、促销活动合规</td><td class="tc"><span class="tag t-ok">85%</span></td></tr>
+        <tr><td><b>消费者纠纷</b></td><td class="tc">14%</td><td class="tc">300–500 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>退货拒单、质量鉴定争议、以旧换新、预付卡退卡、直播带货投诉、12315 / 消委会转办</td><td class="tc"><span class="tag t-ok">65%</span></td></tr>
+        <tr><td><b>商品合规</b></td><td class="tc">11%</td><td class="tc">持续</td><td class="tc"><span class="tag t-ok">高</span></td><td>贵金属纯度标识、珠宝玉石命名、价格标签、广告用语审核、有害元素限量、计量器具</td><td class="tc"><span class="tag t-ok">75%</span></td></tr>
+        <tr><td><b>劳动用工</b></td><td class="tc">10%</td><td class="tc">80–150 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>导购高流动、排班与加班费、离职补偿、工伤、劳务派遣、竞业限制、集体协商</td><td class="tc"><span class="tag t-mid">55%</span></td></tr>
+        <tr><td><b>采购与供应商</b></td><td class="tc">9%</td><td class="tc">100–200 份/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>框架协议、订单条款、质量保证、退换货与索赔、账期、知识产权归属</td><td class="tc"><span class="tag t-mid">50%</span></td></tr>
+        <tr><td><b>知识产权</b></td><td class="tc">7%</td><td class="tc">50–120 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>商标续展与监测、外观设计、电商仿冒投诉、真假鉴定配合、侵权取证</td><td class="tc"><span class="tag t-mid">45%</span></td></tr>
+        <tr><td><b>数据合规 / 反洗钱</b></td><td class="tc">5%</td><td class="tc">持续</td><td class="tc"><span class="tag t-no">低</span></td><td>PIPL + 香港 PDPO 双轨、门店人脸客流采集、会员数据出境、大额现金交易登记</td><td class="tc"><span class="tag t-mid">40%</span></td></tr>
+        <tr><td><b>争议与诉讼</b></td><td class="tc">4%</td><td class="tc">20–40 起/年</td><td class="tc"><span class="tag t-no">低</span></td><td>诉讼、仲裁、执行、律师管理</td><td class="tc"><span class="tag t-no">15%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">注：上表为行业典型分布估算，<b>落地第一步必须替换为集团真实工单统计</b>（见第 12 章第 1 件事）。用真实数据定优先级，别用感觉。</p>
+
+  <h3>1.2 四象限：先啃哪一块</h3>
+  <div class="grid g2">
+    <div class="card" style="border-left:3px solid var(--red)">
+      <h5>◆ 第一优先：高频率 × 高标准</h5>
+      <p><b>门店租赁审查、日常法规咨询、商品合规标识</b></p>
+      <ul>
+        <li>占法务工时 51%，规则明确，答案可枚举</li>
+        <li>有现成的历史文件可当语料（200+ 份租约、大量审查意见）</li>
+        <li>出错代价可控，适合试错</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h5>◆ 第二优先：高频 × 中标准</h5>
+      <p><b>消费者纠纷、劳动用工</b></p>
+      <ul>
+        <li>频次高但个案差异大，AI 做「初判 + 要点提示」而非定论</li>
+        <li>必须设计人工复核闭环</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <h5>◆ 后置：中频 × 中标准</h5>
+      <p><b>采购合同、知识产权</b></p>
+      <ul>
+        <li>等第一优先场景跑通、语料积累足够后再开</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--ink3)">
+      <h5>◆ 明确不做：AI 只做辅助</h5>
+      <p><b>诉讼策略、重大商务谈判、监管应对决策</b></p>
+      <ul>
+        <li>低频、高判断、高责任，AI 只做检索与材料准备</li>
+        <li>涉及执业边界，见第 02 章红线</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>1.3 珠宝零售特有的四个「坑」</h3>
+  <p>通用企业法律 AI 方案不会覆盖这些，但它们是珠宝行业的高频雷区，必须在知识库里专门建库：</p>
+  <div class="grid g2">
+    <div class="card">
+      <h5>① 贵金属纯度与命名的强制标准</h5>
+      <p>首饰的<b>纯度标识、命名方法、印记</b>受强制性国家标准约束（GB 11887 系列，具体版本须核实）。命名错一个字——例如把「足金」标成「千足金」、把「合成」写成「天然」——就是《产品质量法》与《消法》下的欺诈风险，客诉高发。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：门店上架标签 / 详情页文案批量合规预检。</p>
+    </div>
+    <div class="card">
+      <h5>② 「三包」误区</h5>
+      <p>珠宝首饰<b>通常不在国家《部分商品修理更换退货责任规定》的目录内</b>（该目录以家电、摩托车等为主）。所以「7 天无理由」不等于「珠宝适用」，但电商渠道又受《电子商务法》与平台规则约束，线下则靠企业自定承诺。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：按渠道（线下 / 电商 / 直播 / 境外）给出差异化的退换货口径，避免门店乱承诺。</p>
+    </div>
+    <div class="card">
+      <h5>③ 大额现金与反洗钱（双法域）</h5>
+      <p>珠宝是典型的现金高发行业。内地《反洗钱法》项下特定非金融机构义务范围、以及香港《打击洗钱及恐怖分子资金筹集条例》（第 615 章）下的<b>贵金属及宝石交易商（DPMS）注册与尽职调查制度</b>，构成两套并行要求。香港侧对现金交易的门槛与登记义务有明确规则（须核实现行门槛与最新修订）。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：门店大额现金交易 SOP 问答 + 尽调留痕清单生成。</p>
+    </div>
+    <div class="card">
+      <h5>④ 门店人脸采集与会员数据出境</h5>
+      <p>门店客流分析用的人脸采集，在内地属敏感个人信息，PIPL 项下须单独同意且须有必要性论证；会员数据回传香港总部则触发<b>数据出境</b>合规路径（PIPL 第 38 条）。香港侧 PDPO 虽无出境限制，但六项保障资料原则仍适用。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：新店 / 新系统上线前的合规 checklist 自动生成。这也是<b>本项目自身</b>必须先过关的一关（第 07 章）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S2 ========== -->
+<section id="s2">
+  <h2><span class="num">02</span>目标与红线边界</h2>
+  <p>在谈技术之前，先把「能做什么、绝不能做什么」写死。这份边界清单的价值高于任何技术方案——它决定了这个项目会不会在某个时刻被一个幻觉法条毁掉。</p>
+
+  <h3>2.1 系统定位：一句话</h3>
+  <div class="box">
+    <p style="font-size:16px;color:var(--ink);line-height:1.9">
+      本系统是<b>「法务部内部的检索增强起草与初筛工具」</b>，不是自动律师、不是法律意见生成器、不对任何人直接输出终局结论。<br>
+      它的全部产出，法律性质上是<b>「助理起草的草稿」</b>，必须经法务人员复核签字后方可对外。
+    </p>
+  </div>
+
+  <h3>2.2 六条红线（写入系统提示词 + 员工手册）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:5%" class="tc">#</th><th style="width:26%">红线</th><th>具体规则与技术实现</th></tr></thead>
+      <tbody>
+        <tr><td class="tc"><b>1</b></td><td><b>无引用不作答</b></td><td>凡涉及法条、标准、公司制度的表述，必须附带可点击溯源（文件名 + 条号 + 版本日期）。系统层面：检索无命中或置信度低于阈值时，强制输出「未检索到依据，请转人工」，<b>禁止模型自由发挥</b>。</td></tr>
+        <tr><td class="tc"><b>2</b></td><td><b>不做终局结论</b></td><td>禁止输出「应当 / 必须 / 一定不构成」等确定性判断，一律改为「依据 X 第 N 条，通常理解为……，但需结合……确认」。系统层面：后处理正则拦截 + 强制免责尾注。</td></tr>
+        <tr><td class="tc"><b>3</b></td><td><b>不对外直发</b></td><td>AI 产出不得直接发送给顾客、供应商、房东、监管机关。对外文本一律人工复核并留痕。系统层面：导出文件带水印「AI 初稿 · 未经复核不得外发」。</td></tr>
+        <tr><td class="tc"><b>4</b></td><td><b>涉密数据隔离</b></td><td>租金、抽成比例、采购价、毛利、未决诉讼、员工个人信息——分级管控，默认不进向量库或仅存脱敏摘要。系统层面：L3 语料独立命名空间 + 角色级权限 + 全量查询审计日志。</td></tr>
+        <tr><td class="tc"><b>5</b></td><td><b>不替代执业判断</b></td><td>诉讼策略、是否起诉 / 上诉、和解方案、对外承诺——AI 只做材料准备与要点罗列，决策权在人。系统层面：命中此类关键词时转入「要点罗列模式」。</td></tr>
+        <tr><td class="tc"><b>6</b></td><td><b>不跨境混存</b></td><td>内地业务数据与香港业务数据分库存储，默认不出境；确需共享的走脱敏摘要。系统层面：双区部署，见第 07 章。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.3 成功标准（一年后怎么算做成）</h3>
+  <div class="kv">
+    <div class="i"><div class="k">法务重复咨询</div><div class="v">↓ 60%<small> 门店常规问题由 AI 首答</small></div></div>
+    <div class="i"><div class="k">租约初审耗时</div><div class="v">40min → 12min<small> 单份标准租约</small></div></div>
+    <div class="i"><div class="k">引用准确率</div><div class="v">≥ 95%<small> 黄金测试集回归</small></div></div>
+    <div class="i"><div class="k">幻觉率</div><div class="v">≤ 2%<small> 编造法条 / 条款</small></div></div>
+    <div class="i"><div class="k">周活法务人数</div><div class="v">≥ 80%<small> 部门月活占比</small></div></div>
+    <div class="i"><div class="k">首年净节省</div><div class="v">≥ 200 工时<small> / 季度（法务部）</small></div></div>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">这些数字是<b>立项承诺值</b>，不是乐观估计。第 10 章给了测量方法。承诺给老板的数字要能被测出来，否则第二年预算就没了。</p>
+</section>
+
+<!-- ========== S3 ========== -->
+<section id="s3">
+  <h2><span class="num">03</span>场景优先级矩阵</h2>
+  <p>八个场景，分三批上线。<b>每批次只做一个主打场景</b>，做完再开下一个——同时开三个的结果通常是三个都是半成品。</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:5%" class="tc">批</th>
+        <th style="width:14%">场景</th>
+        <th style="width:20%">痛点</th>
+        <th style="width:22%">AI 做什么</th>
+        <th style="width:19%">产出物</th>
+        <th style="width:20%">验收标准</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tc" rowspan="2"><span class="tag t-p0">P0</span><br><span style="font-size:11px;color:var(--ink3)">W3–W8</span></td>
+          <td><b>① 双法域法规问答</b><br><span style="font-size:11.5px;color:var(--ink3)">门店店长 / 区域经理</span></td>
+          <td>门店每天几十个微信咨询：顾客戴了三天要退钻戒、工商来查标签、促销文案能不能写「最低价」……法务部 18% 工时耗在这上面，且 80% 是重复问题。</td>
+          <td>自然语言提问 → 检索内地法规 + 香港法例 + 公司 SOP → 给出口径 + 引用 + 「转人工」判断。命中公司既有口径时，优先输出公司口径。</td>
+          <td>结构化答复：结论 / 依据（可点开原文）/ 操作要点 / 需转人工的情形</td>
+          <td>黄金集 50 题，引用准确率 ≥95%；门店首答可用率 ≥70%</td>
+        </tr>
+        <tr>
+          <td><b>② 门店租约审查</b><br><span style="font-size:11.5px;color:var(--ink3)">法务内部</span></td>
+          <td>200+ 门店，每年 1/3 到期续签。每份 30–60 页，法务逐条看，真正有问题的往往集中在 8–10 个条款上，但必须全看一遍才找得出来。</td>
+          <td>上传租约 PDF → 按条款切分 → 对照公司谈判底线清单逐项比对 → 输出风险清单 + 修订建议稿 + 与标准范本的差异表</td>
+          <td>风险分级表（红/黄/绿）+ 逐条修订意见（可直接粘进 Word 批注）+ 缺失条款提醒</td>
+          <td>20 份历史租约回测：风险点召回率 ≥90%（对比法务人工标注）</td>
+        </tr>
+        <tr>
+          <td class="tc" rowspan="3"><span class="tag t-p1">P1</span><br><span style="font-size:11px;color:var(--ink3)">W9–W16</span></td>
+          <td><b>③ 消费者投诉处置</b></td>
+          <td>门店一线面对顾客时口径不一，有的乱承诺导致被动，有的强硬拒绝激化矛盾，最后都升级到法务部。</td>
+          <td>输入：争议事实 + 渠道 + 购买时长 → 输出：法律地位初判 + 阶梯式处理话术（第一轮 / 第二轮 / 底线）+ 证据清单</td>
+          <td>处置建议书 + 话术模板 + 留痕清单</td>
+          <td>投诉升级到法务部的比例下降 30%</td>
+        </tr>
+        <tr>
+          <td><b>④ 商品与营销合规预检</b></td>
+          <td>标签命名、广告文案、促销规则，上新前没人逐条核，出事才回溯。直播带货话术尤其高危。</td>
+          <td>批量导入商品标题 / 详情页 / 直播脚本 → 对照强制标准与广告法禁用词库 → 输出违规点定位与改法</td>
+          <td>违规清单（行号定位 + 原文 + 依据 + 建议改法）</td>
+          <td>抽检 100 条历史文案，违规识别率 ≥85%，误报率 ≤15%</td>
+        </tr>
+        <tr>
+          <td><b>⑤ 劳动争议应对</b></td>
+          <td>导购流动率高，离职补偿、加班费、工伤频发，区域 HR 常自行处理留下隐患。</td>
+          <td>输入案情 → 输出法律分析 + 证据要点 + 计算（经济补偿金 / 加班费）+ 应诉材料清单</td>
+          <td>分析意见 + 金额试算 + 文书模板</td>
+          <td>与法务历史结论一致率 ≥80%</td>
+        </tr>
+        <tr>
+          <td class="tc" rowspan="3"><span class="tag t-p2">P2</span><br><span style="font-size:11px;color:var(--ink3)">W17–W24</span></td>
+          <td><b>⑥ 知识产权监测与投诉</b></td>
+          <td>电商仿冒泛滥，人工搜不完；发现后写投诉书又占时间。</td>
+          <td>定期检索 + 相似度初筛（人复核）+ 自动生成平台投诉文书</td>
+          <td>疑似侵权清单 + 投诉书初稿</td>
+          <td>覆盖主平台，人工复核后采纳率 ≥70%</td>
+        </tr>
+        <tr>
+          <td><b>⑦ 供应商合同审查</b></td>
+          <td>框架协议与订单条款审核，量大但风险相对可控。</td>
+          <td>同租约审查逻辑，换一套规则卡</td>
+          <td>风险清单 + 修订意见</td>
+          <td>审查耗时降 50%</td>
+        </tr>
+        <tr>
+          <td><b>⑧ 数据合规影响评估</b></td>
+          <td>新店 / 新系统上线前的 PIPL / PDPO 评估，专业门槛高、容易漏项。</td>
+          <td>问卷式输入 → 自动生成评估表 + 待办清单 + 需审批事项</td>
+          <td>PIA / 合规 checklist</td>
+          <td>覆盖双法域必检项，无漏项</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box ok">
+    <div class="t">为什么 P0 选「法规问答」而不是「合同审查」？</div>
+    <p>因为<b>合同审查的验收成本高</b>——需要法务逐份比对，一轮回测就是几天。而法规问答可以立刻用 50 道题测出引用准确率，一周内就能给老板看到「这个东西靠不靠谱」。</p>
+    <p>先用低验收成本的场景建立信任与使用权，再攻高价值场景。<b>顺序反了，项目会死在第一个场景上</b>——因为合同审查做得不够好时，法务会直接判定「AI 不行」，而法规问答做得不够好时，大家只会说「还得再调调」。</p>
+  </div>
+
+  <h3>3.1 场景卡：门店租约审查（P0 主打，展开说明）</h3>
+  <p>这是投入产出比最高的场景，值得单独设计。一份典型商场珠宝专柜租赁合同的审查，本质是「<b>把这份合同和公司的谈判底线逐条对齐</b>」，而不是从零做法律判断。</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h5>输入</h5>
+      <ul>
+        <li>合同 PDF（扫描件 / 电子版，30–60 页）</li>
+        <li>门店类型（商场专柜 / 街铺 / 购物中心）、面积、区域</li>
+        <li>本次是<b>新签 / 续签 / 变更</b>（规则不同）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h5>规则卡（法务部先写出来，这是核心资产）</h5>
+      <ul>
+        <li>租金与物业管理费：构成、涨幅上限、是否含税</li>
+        <li>抽成租金：基数口径（含税/不含税、是否扣退换货）、保底 vs 抽成取高</li>
+        <li>免租期 / 装修期：天数、起算点、是否免物业与推广费</li>
+        <li>保证金：金额、退还条件与时限、可否抵扣欠租</li>
+        <li>续租与优先承租权、转租与分租</li>
+        <li>提前解约：通知期、违约金、装修残值补偿</li>
+        <li>商场统一收银：结算账期、对账、扣点</li>
+        <li>装修与消防责任、恢复原状义务</li>
+        <li>商场闭店 / 业态调整时的补偿</li>
+        <li>不可抗力与情势变更、停业损失分担</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="t">输出模板（三件套）</div>
+    <ol style="margin-bottom:0">
+      <li><b>风险分级表</b>：每个条款一行，标注红（不可接受）/ 黄（需谈判）/ 绿（可接受）+ 理由 + 依据（公司底线第 N 条 / 法条）。</li>
+      <li><b>修订建议稿</b>：直接给出可替换的条款文字，法务复制粘贴即可，不用重新措辞。</li>
+      <li><b>缺失条款提醒</b>：标准范本里有、这份合同里没有的条款（常见于商场强势格式合同）。</li>
+    </ol>
+  </div>
+
+  <div class="box warn">
+    <div class="t">关键前提：先有「谈判底线清单」</div>
+    <p>如果公司没有一份成文的租赁谈判底线，这个场景<b>做不出来</b>。AI 没法凭空知道你们能接受多少天免租期。<br>
+    <b>所以 W3–W4 的第一件事不是装系统，是法务部坐下来把这张表写出来。</b>这件事本身就有巨大价值——它把老师傅脑子里的经验变成了组织资产，而且这份表在未来几年都会持续有用，即使 AI 项目失败也不亏。</p>
+  </div>
+</section>
+
+<!-- ========== S4 ========== -->
+<section id="s4">
+  <h2><span class="num">04</span>总体技术架构</h2>
+  <p>五层架构，全部私有化部署，数据不出公司网络。下面这张图可以直接给 IT 和供应商看。</p>
+
+  <div class="arch">
+    <div class="layer">
+      <div class="lb"><div class="n">LAYER 5</div><div class="v">接入层</div></div>
+      <div class="ct">
+        <div class="row"><b>企业微信 / 钉钉机器人</b>（门店店长主入口，零学习成本）· <b>Web 工作台</b>（法务部主入口，支持上传合同、批注、导出）· <b>API</b>（未来接 OA / 合同管理系统）</div>
+        <div class="row">统一身份：对接公司 AD / LDAP，<b>按角色授权语料可见范围</b>（见 4.2 权限矩阵）</div>
+      </div>
+    </div>
+    <div class="arrow">▼</div>
+    <div class="layer">
+      <div class="lb"><div class="n">LAYER 4</div><div class="v">编排层</div></div>
+      <div class="ct">
+        <div class="row"><b>Dify</b>（工作流编排）：合同审查多步流程 —— 文档解析 → 条款切分 → 逐条比对规则卡 → 风险分级 → 生成修订建议 → 人工复核节点</div>
+        <div class="row"><b>提示词工程</b>：每个场景一套 system prompt，内置六条红线（第 02 章）；输出格式强制 JSON Schema，便于后处理与校验</div>
+        <div class="row"><b>护栏（Guardrails）</b>：输入侧敏感词与涉密识别；输出侧「无引用拒答」「确定性强断言」拦截、免责尾注自动追加</div>
+      </div>
+    </div>
+    <div class="arrow">▼</div>
+    <div class="layer">
+      <div class="lb"><div class="n">LAYER 3</div><div class="v">检索层</div></div>
+      <div class="ct">
+        <div class="row"><b>RAGFlow</b>：文档解析（DeepDoc：OCR + 版面 + 表格）· 模板化分块 · 混合检索（向量 + 关键词 BM25）· Rerank 精排 · <b>可视化引用溯源</b></div>
+        <div class="row"><b>向量库</b>：RAGFlow 内置（Elasticsearch / Infinity）；数据量上规模后可换 Milvus / Qdrant</div>
+        <div class="row"><b>检索策略</b>：法条库按「法规 ID + 条号」结构化过滤 + 语义召回；合同库按「门店 / 年份 / 类型」元数据过滤后召回</div>
+      </div>
+    </div>
+    <div class="arrow">▼</div>
+    <div class="layer">
+      <div class="lb"><div class="n">LAYER 2</div><div class="v">模型层</div></div>
+      <div class="ct">
+        <div class="row"><b>本地推理</b>：vLLM / Ollama 部署通用中文基座（Qwen3 系列或同级，14B–32B 起步；硬件允许上 70B+）</div>
+        <div class="row"><b>Embedding</b>：BAAI/bge-m3（中文强、支持稠密 + 稀疏 + 多向量）；<b>Rerank</b>：bge-reranker-v2-m3</div>
+        <div class="row"><b>云端兜底</b>：复杂推理可选接合规商用 API，但<b>涉密语料禁止出网</b>——涉密场景只允许走本地模型（这是硬约束）</div>
+        <div class="row"><b>版本锁定</b>：模型版本写死并纳入变更管理，升级前必须跑黄金集回归（第 10 章）</div>
+      </div>
+    </div>
+    <div class="arrow">▼</div>
+    <div class="layer">
+      <div class="lb"><div class="n">LAYER 1</div><div class="v">数据层</div></div>
+      <div class="ct">
+        <div class="row"><b>L1 外部法规库</b>（内地 + 香港）· <b>L2 公司制度与范本</b> · <b>L3 历史合同与审查意见</b>（涉密）· <b>L4 案例与 FAQ 沉淀</b></div>
+        <div class="row"><b>治理</b>：入库前脱敏 → 版本与生效日期标注 → 权限标签 → 定期复核（法条变更监控）</div>
+        <div class="row"><b>存储</b>：内地数据与香港数据<b>分库</b>，默认不出境（第 07 章）</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>4.1 一条查询的完整生命周期（以门店提问为例）</h3>
+  <ol>
+    <li><b>输入</b>：店长在企业微信问「顾客买了 3 天的钻戒，吊牌没拆，要求退货，能退吗？」</li>
+    <li><b>路由</b>：编排层识别为「消费者纠纷 + 退换货 + 线下渠道」，选择对应 prompt 与语料集合（消法 + 电商法 + 公司退换货 SOP）</li>
+    <li><b>检索</b>：向量召回 Top 20 → BM25 补充 → RRF 融合 → Rerank 精排到 Top 5</li>
+    <li><b>生成</b>：本地模型基于 Top 5 生成，强制每条结论标注来源编号</li>
+    <li><b>护栏</b>：校验引用是否真实存在于检索结果（正则抽取条号 + 比对原文）→ 无引用或匹配失败则触发拒答或转人工</li>
+    <li><b>输出</b>：结论 + 依据（可点开原文）+ 操作要点 + 「如涉以下情形请转法务」（金额超阈值 / 顾客已投诉 / 媒体介入）</li>
+    <li><b>留痕</b>：问答全链路日志（提问人、时间、命中语料、模型版本、最终答复），用于审计与后续评测</li>
+  </ol>
+
+  <h3>4.2 权限矩阵（涉密管控的核心）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:16%">角色</th>
+        <th style="width:16%" class="tc">L1 法规</th>
+        <th style="width:16%" class="tc">L2 制度范本</th>
+        <th style="width:16%" class="tc">L3 历史合同</th>
+        <th style="width:16%" class="tc">L3 审查意见</th>
+        <th class="tc">说明</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>门店店长 / 一线</b></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-no">禁</span></td><td class="tc"><span class="tag t-no">禁</span></td><td>只能用问答场景，看不到任何合同原文</td></tr>
+        <tr><td><b>区域经理</b></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-mid">本区</span></td><td class="tc"><span class="tag t-no">禁</span></td><td>仅可见本区域门店合同脱敏摘要</td></tr>
+        <tr><td><b>法务专员</b></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-ok">可写</span></td><td class="tc"><span class="tag t-ok">可读</span></td><td class="tc"><span class="tag t-ok">可写</span></td><td>主力使用者</td></tr>
+        <tr><td><b>法务总监</b></td><td class="tc"><span class="tag t-ok">全</span></td><td class="tc"><span class="tag t-ok">全</span></td><td class="tc"><span class="tag t-ok">全</span></td><td class="tc"><span class="tag t-ok">全</span></td><td>含审计日志查看权</td></tr>
+        <tr><td><b>IT 运维</b></td><td class="tc"><span class="tag t-mid">仅运维</span></td><td class="tc"><span class="tag t-no">禁</span></td><td class="tc"><span class="tag t-no">禁</span></td><td class="tc"><span class="tag t-no">禁</span></td><td>系统权限 ≠ 数据权限，查询内容对运维脱敏</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box warn">
+    <div class="t">IT 权限这条最容易被忽略</div>
+    <p>运维人员有服务器 root 权限，天然能读到所有向量与原文。技术上无法完全阻断，只能靠<b>制度 + 审计</b>：运维账号的所有数据访问记录进审计日志，入职签保密承诺，并在立项时向管理层书面说明这一风险敞口。<b>不要假装它不存在。</b></p>
+  </div>
+</section>
+
+<!-- ========== S5 ========== -->
+<section id="s5">
+  <h2><span class="num">05</span>开源选型与 License 核查</h2>
+  <p>2016 年选开源看 star 数，2026 年选开源先看 <b>License</b>。法务部自己做的项目，如果在 License 上翻车，是最大的职业尴尬。以下 star 数与 License 均于 2026-09-15 从 GitHub 官方 API 与仓库 LICENSE 原文核实。</p>
+
+  <h3>5.1 平台底座对比</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:15%">项目</th>
+        <th style="width:8%" class="tc">Star</th>
+        <th style="width:14%">License</th>
+        <th style="width:9%" class="tc">私有化</th>
+        <th style="width:9%" class="tc">文档解析</th>
+        <th style="width:9%" class="tc">引用溯源</th>
+        <th style="width:9%" class="tc">工作流</th>
+        <th>结论</th>
+      </tr></thead>
+      <tbody>
+        <tr style="background:rgba(184,159,107,.07)">
+          <td><b>RAGFlow</b><br><span style="font-size:11px;color:var(--ink3)">infiniflow</span></td>
+          <td class="tc">90.7k</td>
+          <td><span class="tag t-ok">Apache-2.0</span></td>
+          <td class="tc">●</td><td class="tc"><span class="tag t-ok">最强</span></td><td class="tc"><span class="tag t-ok">原生</span></td><td class="tc">○</td>
+          <td><b>主选底座。</b>DeepDoc 内置 OCR + 表格 + 版面解析，开箱处理扫描件合同；模板化分块可按条款切；答案带可视化溯源。Apache-2.0 无商用与多租户障碍。</td>
+        </tr>
+        <tr style="background:rgba(184,159,107,.07)">
+          <td><b>Dify</b><br><span style="font-size:11px;color:var(--ink3)">langgenius</span></td>
+          <td class="tc">155.8k</td>
+          <td><span class="tag t-mid">Dify Open Source<br>License</span></td>
+          <td class="tc">●</td><td class="tc">○</td><td class="tc"><span class="tag t-ok">有</span></td><td class="tc"><span class="tag t-ok">最强</span></td>
+          <td><b>主选编排层。</b>可视化工作流最适合「合同审查」多步流程。<span style="color:var(--red)"><b>⚠ 须核实</b></span>：其开源 License 基于 Apache-2.0 修改，含<b>多租户限制</b>（禁止未经授权将本系统作为多租户服务提供给第三方）。内部单个 workspace 自用通常不触发，但落地前必须由法务本人读一遍 LICENSE 原文并留存书面结论。</td>
+        </tr>
+        <tr>
+          <td>AnythingLLM</td><td class="tc">66.1k</td><td><span class="tag t-ok">MIT</span></td><td class="tc">●</td><td class="tc">○</td><td class="tc">○</td><td class="tc">○</td>
+          <td>License 最干净，但文档解析与溯源弱，只适合做「轻量问答」的备选。可作为 POC 第一周的临时验证工具。</td>
+        </tr>
+        <tr>
+          <td>Langflow</td><td class="tc">154.8k</td><td><span class="tag t-ok">MIT</span></td><td class="tc">●</td><td class="tc">○</td><td class="tc">○</td><td class="tc"><span class="tag t-ok">有</span></td>
+          <td>MIT 友好，但定位偏开发原型工具，企业级溯源与权限弱。备选。</td>
+        </tr>
+        <tr>
+          <td>Open WebUI</td><td class="tc">152.1k</td><td><span class="tag t-mid">自定义<br>（禁托管服务）</span></td><td class="tc">●</td><td class="tc">○</td><td class="tc">○</td><td class="tc">○</td>
+          <td>优秀的前端界面，License 禁止将其作为托管服务转售（内部自用不受限）。可作为统一聊天入口，不做核心。</td>
+        </tr>
+        <tr>
+          <td>n8n</td><td class="tc">204.4k</td><td><span class="tag t-mid">fair-code<br>非 OSI</span></td><td class="tc">●</td><td class="tc">—</td><td class="tc">—</td><td class="tc"><span class="tag t-ok">有</span></td>
+          <td>自动化流程强（如「新法规发布 → 通知法务」），但非 RAG 原生。可作为外围自动化补充，不承载检索。</td>
+        </tr>
+        <tr style="opacity:.62">
+          <td>Flowise</td><td class="tc">55.5k</td><td><span class="tag t-no">已归档</span></td><td class="tc">—</td><td class="tc">—</td><td class="tc">—</td><td class="tc">—</td>
+          <td><b>直接排除：仓库已 archived，停止维护。</b></td>
+        </tr>
+        <tr style="opacity:.62">
+          <td>khoj / Quivr / onyx</td><td class="tc">37–40k</td><td><span class="tag t-no">AGPL 或自定义</span></td><td class="tc">●</td><td class="tc">○</td><td class="tc">○</td><td class="tc">○</td>
+          <td>偏个人 / 企业搜索知识库。khoj 为 AGPL-3.0（对外提供服务触发开源义务）；溯源能力不足以支撑法条引用。<b>排除。</b></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sans" style="font-size:12px;color:var(--ink3)">● 表示能力完整，○ 表示有但较弱，— 表示不适用。star 数为 2026-09-15 抓取值，仅为活跃度参考。</p>
+
+  <h3>5.2 模型与组件选型</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:14%">环节</th><th style="width:20%">选型</th><th style="width:14%">License</th><th>判断依据</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>生成模型</b></td>
+          <td>Qwen3 系列 / DeepSeek / GLM-4 等通用中文强基座（14B–32B 起步）</td>
+          <td><span class="tag t-ok">Apache-2.0 / MIT</span></td>
+          <td><b>不采用法律垂类模型。</b>理由：ChatLaw 为 AGPL-3.0（私有化对外服务触发开源义务）；HanFei、Lawyer-LLaMA 明确声明禁商用；LawGPT 无 License（默认保留所有权利）；DISC-LawLLM 虽为 Apache-2.0 但 7B 且已非 SOTA。垂类模型普遍 2023–2024 后停更，能力已被通用强基座反超，且 RAG 场景下<b>语料质量与引用约束远比模型本身的法律预训练重要</b>。</td>
+        </tr>
+        <tr>
+          <td><b>Embedding</b></td>
+          <td>BAAI/bge-m3</td>
+          <td><span class="tag t-ok">FlagEmbedding 代码 MIT</span></td>
+          <td>中文效果第一梯队，同时支持稠密向量 + 稀疏向量 + 多向量，一套模型覆盖混合检索。<b>须核实</b>：权重的具体 License 以模型卡为准（HuggingFace 本次不可达）。备选：Conan-embedding、gte-Qwen2，均需先核 License。</td>
+        </tr>
+        <tr>
+          <td><b>Rerank</b></td>
+          <td>BAAI/bge-reranker-v2-m3</td>
+          <td><span class="tag t-ok">Apache-2.0（待核）</span></td>
+          <td>本地可跑，中文重排效果显著优于纯向量召回，是提升引用准确率的关键一环。Cohere Rerank 为商业 API，私有化场景排除。</td>
+        </tr>
+        <tr>
+          <td><b>文档解析</b></td>
+          <td>PaddleOCR / RapidOCR（OCR）+ docling（版面与表格）</td>
+          <td><span class="tag t-ok">Apache-2.0（PaddleOCR、RapidOCR）<br>MIT（docling）</span></td>
+          <td>繁体合同与扫描件：PaddleOCR 对简体 / 繁体支持最好；RapidOCR 纯 ONNX、离线部署轻量。MinerU 解析能力最强（79.9k star）但 License 为自定义（NOASSERTION），<b>须法务逐条审阅是否含商用限制后再决定</b>——docling（MIT）是更安全的默认选择。RAGFlow 内置 DeepDoc 已覆盖大部分需求，外部解析器作补充。</td>
+        </tr>
+        <tr>
+          <td><b>评测</b></td>
+          <td>Ragas + DeepEval + LexEval</td>
+          <td><span class="tag t-ok">Apache-2.0 / MIT</span></td>
+          <td>Ragas 的 <code>faithfulness</code>、DeepEval 的 <code>hallucination</code> 指标直接测「是否编造」；LexEval（MIT，105 star）为中文法律综合基准，可作外部对标。LegalBench 为英文基准且无 License，参考价值有限。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box ok">
+    <div class="t">最终选型结论</div>
+    <p><b>RAGFlow（检索与溯源底座）+ Dify（工作流编排）+ 本地通用中文基座（生成）+ bge-m3（向量）+ bge-reranker-v2-m3（重排）+ PaddleOCR/docling（解析）+ Ragas/DeepEval（评测）</b>，全部私有化部署。</p>
+    <p>三条硬原则：<b>① Apache-2.0 / MIT 优先，AGPL 与「自定义 License」一律先经法务审阅；② 已归档项目不碰；③ 权重与代码的 License 要分别核</b>（代码 MIT 不代表权重可商用）。</p>
+  </div>
+
+  <h3>5.3 选型踩坑清单</h3>
+  <ul>
+    <li><b>Dify 多租户条款</b>：若未来想给集团旗下其他品牌 / 关联公司各开一个工作区，可能触发 License 限制。立项时就要确定是「单一 workspace + 权限分组」还是采购商业授权。</li>
+    <li><b>RAGFlow 资源占用</b>：内置 embedding 模型 + DeepDoc OCR 对内存与算力要求高，官方建议 16GB+ 内存，OCR 密集场景建议 GPU。别在 8GB 内存的旧服务器上试。</li>
+    <li><b>MinerU 的自定义 License</b>：79.9k star 很诱人，但 License 写的是 NOASSERTION（非标准），不能默认当 Apache 用。要用就先做一次书面 License 审阅，留档。</li>
+    <li><b>模型升级破坏效果</b>：基座模型小版本更新可能改变输出风格、打断已有的 prompt 与输出解析。<b>版本必须锁死</b>，升级走变更流程 + 黄金集回归。</li>
+    <li><b>繁体处理</b>：香港法例与港方合同为繁体。检索侧建议保留原文繁体（不要强行转简），生成侧在 prompt 中按用户所在法域指定输出语种。</li>
+  </ul>
+</section>
+
+<!-- ========== S6 ========== -->
+<section id="s6">
+  <h2><span class="num">06</span>知识库建设：这个项目 60% 的工作量在这里</h2>
+  <p>如果只记住这份文件的一页，记这页。所有 RAG 项目的成败，分水岭都在语料。模型可以换、框架可以换，语料没建好就是垃圾进垃圾出，而且会以「AI 编了个不存在的法条」这种最致命的方式失败。</p>
+
+  <h3>6.1 语料四层模型</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h5><span class="tag t-g">L1</span> 外部法规与标准</h5>
+      <p><b>谁都能看，优先建。</b>内地法律法规 + 部门规章 + 强制性国家标准；香港法例与附属法例。</p>
+      <ul>
+        <li>特点：公开、结构化、有明确版本与生效日期</li>
+        <li>风险：版本过时。必须带「生效日期 + 效力状态 + 来源 URL」</li>
+        <li>规模预估：300–800 部，10 万级条目</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h5><span class="tag t-g">L2</span> 公司制度与范本</h5>
+      <p><b>核心价值所在，也是 AI 能不能「说公司的话」的关键。</b></p>
+      <ul>
+        <li>标准租赁合同范本 + <b>谈判底线清单</b>、供应商框架协议范本</li>
+        <li>门店运营 SOP、商品标识规范、退换货政策、投诉处理指引</li>
+        <li>员工手册、劳动合同范本、授权审批权限表</li>
+        <li>特点：内部、权威、需要版本管理</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h5><span class="tag t-g">L3</span> 历史合同与审查意见（涉密）</h5>
+      <p><b>最脏也最值钱。</b>法务过往在合同上写的批注，本质是「公司风险偏好的真实标注数据」。</p>
+      <ul>
+        <li>200+ 份已签租约（<b>入库前必须脱敏</b>：房东主体、租金金额、抽成比例）</li>
+        <li>历史审查意见与批注</li>
+        <li>争议与诉讼材料（单独最高权限，建议不进向量库，只做受控检索）</li>
+        <li>风险：涉密泄露。默认只存脱敏摘要 + 条款级片段，原文不出权限边界</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h5><span class="tag t-g">L4</span> 案例与 FAQ 沉淀</h5>
+      <p><b>让系统越用越聪明的一层。</b></p>
+      <ul>
+        <li>法务部 FAQ：把重复回答过的问题整理成标准问答对</li>
+        <li>监管动态与处罚案例（同行被罚的公开案例，警示价值极高）</li>
+        <li>系统上线后的「人工修正记录」：AI 答错了、法务改了什么 → 回流成语料</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>6.2 入库语料清单（可直接当采购/整理任务派下去）</h3>
+
+  <details class="fold">
+    <summary>L1 · 内地法律法规与标准（优先级排序，先入库前 20 项）</summary>
+    <div class="bd">
+      <div class="tw"><table>
+        <thead><tr><th style="width:6%" class="tc">优先级</th><th style="width:30%">名称</th><th>覆盖的门店 / 法务场景</th></tr></thead>
+        <tbody>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>民法典（合同编、侵权责任编、物权编）</td><td>一切合同与侵权问题的底层依据</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>消费者权益保护法 + 实施条例</td><td>退换货、虚假宣传、三包、预付卡（实施条例 2024-07-01 施行，须核实现行文本）</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>产品质量法</td><td>商品质量责任、标识义务、欺诈认定</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>广告法</td><td>促销文案、直播话术、绝对化用语</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>劳动合同法 + 劳动法</td><td>用工、离职、加班、工伤</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>GB 11887 首饰 贵金属纯度的规定及命名方法</td><td><b>珠宝特有</b>：纯度标识、命名、印记（版本须核实）</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>GB/T 16552 珠宝玉石 名称</td><td><b>珠宝特有</b>：定名规则，天然/合成/处理的命名</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>GB 28480 饰品 有害元素限量的规定</td><td><b>珠宝特有</b>：强制性安全指标</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>个人信息保护法 / 数据安全法 / 网络安全法</td><td>会员数据、门店人脸采集、数据出境</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>电子商务法</td><td>线上渠道、直播带货、平台责任</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>价格法 + 明码标价相关规定</td><td>价格标签、促销标价</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>反不正当竞争法</td><td>仿冒、混淆、虚假宣传</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>商标法 / 专利法 / 著作权法</td><td>品牌保护、外观设计、侵权投诉</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>反洗钱法 + 相关规章</td><td>大额现金交易、客户尽职调查（<b>义务主体范围须核实</b>）</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>单用途商业预付卡管理办法（试行）</td><td>储值卡、会员充值</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>零售商供应商公平交易管理办法</td><td>采购与供应商关系</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>零售商促销行为管理办法</td><td>促销活动合规</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>标准化法</td><td>强制性标准的效力与适用</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>计量法 + 零售商品称重计量监督管理办法</td><td>贵金属称重、计量器具检定</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>消防法 / 安全生产法</td><td>门店安全（归口行政部门，法务备查）</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>GB/T 16553 / 16554 珠宝玉石鉴定与钻石分级</td><td>鉴定争议、以旧换新</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>地方性消费者权益保护条例（各门店所在省/市）</td><td>地方差异，尤其退货与预付卡</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:12.5px;color:var(--ink3);margin-top:10px">以上名称与编号用于确定入库优先级，<b>落地时必须回官方源核验现行有效版本与最新修订</b>，不得直接以本表为准引用。</p>
+    </div>
+  </details>
+
+  <details class="fold">
+    <summary>L1 · 香港法例与规例（双法域的另一半）</summary>
+    <div class="bd">
+      <div class="tw"><table>
+        <thead><tr><th style="width:6%" class="tc">优先级</th><th style="width:32%">名称</th><th>覆盖场景</th></tr></thead>
+        <tbody>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>《个人资料（私隐）条例》（第 486 章，PDPO）</td><td>会员资料、门店监控、跨境传港</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>《商品说明条例》（第 362 章）</td><td>商品描述、虚假商品说明、不良营商手法</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>《度量衡条例》（第 68 章）</td><td>贵金属成色标记与称量</td></tr>
+          <tr><td class="tc"><span class="tag t-p0">P0</span></td><td>《打击洗钱及恐怖分子资金筹集条例》（第 615 章，AMLO）</td><td><b>珠宝特有</b>：贵金属及宝石交易商（DPMS）注册与尽职调查义务（制度自 2023-04-01 起实施，具体门槛与最新修订须核实）</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>《雇佣条例》（第 57 章）</td><td>香港门店用工</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>《竞争条例》（第 619 章）</td><td>与商场、供应商的协议安排</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>《商标条例》（第 559 章）</td><td>香港品牌保护</td></tr>
+          <tr><td class="tc"><span class="tag t-p1">P1</span></td><td>《防止贿赂条例》（第 201 章）</td><td>采购与商场合作中的合规红线</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>《服务提供（隐含条款）条例》（第 458 章）</td><td>服务质量与隐含责任</td></tr>
+          <tr><td class="tc"><span class="tag t-p2">P2</span></td><td>《不合情理合约条例》（第 458 章）</td><td>消费合约条款公平性</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box info" style="margin-top:12px">
+        <div class="t">香港法例怎么合法批量获取（关键）</div>
+        <p>香港「電子版香港法例」（BLIS, <code>elegislation.gov.hk</code>）的使用条款<b>明确禁止以程序批量下载</b>。<b>不要爬它。</b></p>
+        <p>正确路径：<b>政府资料一线通（data.gov.hk）</b>提供香港法例现行版的开放数据集（繁体 / 简体 / 英文，定期更新），可合法批量下载入库。这也是本项目「尊重数据源条款」这一原则的实际体现——法务部自己做的项目，不能在数据源上留把柄。</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="fold">
+    <summary>L2 · 公司内部制度与范本（AI 说「公司的话」的燃料）</summary>
+    <div class="bd">
+      <ul>
+        <li><b>租赁谈判底线清单</b>（第 03 章列的 10 类条款，逐条写明可接受区间与红线）—— <span class="tag t-p0">P0</span> <b>最重要，没有它租约审查场景不成立</b></li>
+        <li>标准租赁合同范本（按业态分：商场专柜 / 街铺 / 购物中心）</li>
+        <li>供应商框架协议范本 + 采购订单标准条款</li>
+        <li>门店运营手册（SOP）、开店 / 闭店合规 checklist</li>
+        <li>商品标识与标签规范（材质、纯度、价格、产地、警示语）</li>
+        <li>退换货与售后政策（分渠道：线下 / 电商 / 直播 / 境外）</li>
+        <li>消费者投诉处理指引 + 升级机制 + 授权金额阈值</li>
+        <li>员工手册、劳动合同范本、加班与排班制度</li>
+        <li>广告与营销审核规范（含禁用词库）</li>
+        <li>大额现金交易 SOP 与反洗钱登记流程</li>
+        <li>授权审批权限表（谁有权签什么）</li>
+        <li>法务部过往出具的法律意见（脱敏后）</li>
+      </ul>
+    </div>
+  </details>
+
+  <h3>6.3 入库流程（八道工序，一步都不能省）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:5%" class="tc">#</th><th style="width:14%">工序</th><th style="width:30%">做什么</th><th>为什么不能省</th></tr></thead>
+      <tbody>
+        <tr><td class="tc">1</td><td><b>归集</b></td><td>从共享盘、邮箱、OA、个人电脑收集原始文件，统一命名与目录</td><td>不归集就不知道有什么。这一步通常会发现「法务资产散落在 7 个地方」</td></tr>
+        <tr><td class="tc">2</td><td><b>分级</b></td><td>按 L1–L4 分层，标注密级（公开 / 内部 / 秘密）</td><td>密级决定了后面所有权限与脱敏策略</td></tr>
+        <tr><td class="tc">3</td><td><b>脱敏</b></td><td>租金金额、抽成比例、采购价、主体名称、个人信息 → 替换为占位符或区间</td><td><b>珠宝零售的价格与租金条款是核心商业秘密</b>，一旦进向量库很难彻底清除</td></tr>
+        <tr><td class="tc">4</td><td><b>清洗</b></td><td>去水印页眉页脚、修正 OCR 错字、删除修订痕迹与批注中的无关内容、统一繁简与标点</td><td>OCR 错字会直接导致检索失败；残留批注会污染答案</td></tr>
+        <tr><td class="tc">5</td><td><b>结构化</b></td><td>为每份文件补元数据：类型、法域、生效/签署日期、版本、适用区域、密级、来源 URL</td><td>元数据是「过滤 + 溯源 + 版本控制」的基础，缺了它检索质量减半</td></tr>
+        <tr><td class="tc">6</td><td><b>分块</b></td><td>见 6.4 分块策略</td><td>分块错了，检索到的上下文就是错的，答案必然错</td></tr>
+        <tr><td class="tc">7</td><td><b>向量化</b></td><td>bge-m3 生成向量，写入按密级隔离的命名空间</td><td>命名空间隔离是权限落地的技术手段</td></tr>
+        <tr><td class="tc">8</td><td><b>验证</b></td><td>抽样 50 条检索，人工确认「问 A 能不能召回 A」，记录失败案例回流</td><td>不验证就上线，等于把未测系统交给门店用</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.4 分块策略（按文档类型分别设计）</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h5>法规 / 标准</h5>
+      <p><b>一条（款）一个 chunk</b>，绝不跨条切分。每条 chunk 头部注入上下文标头：<code>《XX法》第N条 | 生效日期 | 效力状态</code>。</p>
+      <ul><li>理由：法条引用必须精确到条，跨条切会导致引用指向错误的条文</li></ul>
+    </div>
+    <div class="card">
+      <h5>合同 / 协议</h5>
+      <p><b>按条款编号切分</b>（第 X 条一段），保留「合同类型 + 当事人类别 + 签署年份 + 区域」元数据。长条款按款再分，但标头保留条号。</p>
+      <ul><li>理由：审查场景需要「这份合同第 8 条 vs 底线第 8 条」的对齐</li></ul>
+    </div>
+    <div class="card">
+      <h5>公司制度 / SOP</h5>
+      <p><b>按章节切分</b>，chunk 头部注入「制度名 + 章节路径 + 版本日期」。</p>
+      <ul><li>理由：制度问答常问「XX 流程怎么走」，需要完整章节上下文</li></ul>
+    </div>
+    <div class="card">
+      <h5>FAQ / 案例</h5>
+      <p><b>一条问答一个 chunk</b>（Q 与 A 不分开），带场景标签。</p>
+      <ul><li>理由：语义相似度最高，是最容易被正确召回的一类</li></ul>
+    </div>
+  </div>
+  <div class="box warn">
+    <div class="t">一条硬性禁令</div>
+    <p><b>禁止跨文档合并切块。</b>把 A 合同和 B 合同拼进同一个 chunk，会导致检索命中 A 却引用了 B 的条款——这是法务 AI 最危险的一类错误，因为它看起来完全合理，引用也「有」，但指向的是另一份文件。</p>
+  </div>
+
+  <h3>6.5 更新机制：法条会变，知识库不能睡着</h3>
+  <ul>
+    <li><b>变更监控</b>：对国家法律法规数据库、香港 data.gov.hk 法例数据集设置定期（建议每周）比对，发现版本变化自动通知法务部。</li>
+    <li><b>失效标注</b>：法条修订后，旧版本不删除，但标记为「已废止 / 已被修订」，检索时默认过滤，避免 AI 引用失效条文。</li>
+    <li><b>复核节奏</b>：L1 每季度全量核验一次效力状态；L2 随制度修订同步更新；L3 每半年评估是否继续保留。</li>
+    <li><b>责任人</b>：明确到人（建议法务专员 + IT 各一名），写进岗位说明书。没责任人的知识库，半年后就烂了。</li>
+  </ul>
+</section>
+
+<!-- ========== S7 ========== -->
+<section id="s7">
+  <h2><span class="num">07</span>双法域合规与风控：法务部自己先过关</h2>
+  <p>这一章是法务总监的「自证清白」章节。我们做的是法律 AI，如果它自己不合规，那不只是项目失败，是职业风险。以下每一项都应在立项前形成<b>书面结论并留档</b>。</p>
+
+  <h3>7.1 内地侧合规判断</h3>
+  <div class="box ok">
+    <div class="t">关键判断：这是「内部工具」，不是「生成式 AI 服务」</div>
+    <p>《生成式人工智能服务管理暂行办法》（2023-08-15 施行）规制的是<b>向境内公众提供</b>生成式 AI 服务的情形。本系统<b>仅面向公司内部员工（法务部、门店）开放，不向社会公众提供</b>，因此<span style="color:var(--red)">通常不构成该办法项下的「生成式 AI 服务提供者」，一般无需履行备案与安全评估程序</span>。</p>
+    <p><b>但这个结论有三个前提，任一不成立即需重新评估：</b>① 系统不对外（顾客、供应商、公众）开放；② 不嵌入对外产品（如面向消费者的智能客服）；③ 不生成对外发布的内容。若未来要上线「顾客-facing 的法律问答机器人」，合规义务完全不同，须单独评估。</p>
+    <p style="font-size:12.5px;color:var(--ink3);margin-top:8px">提示：此判断属法律判断，<b>建议以书面形式报备并留存</b>，必要时咨询外部律师确认。切勿默认成立。</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:20%">合规维度</th><th style="width:32%">要求</th><th>本项目落地的具体动作</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>内容标识</b></td>
+          <td>AI 生成合成内容标识相关规定（含 2025 年施行的《人工智能生成合成内容标识办法》，<b>须核实具体条文与适用范围</b>）</td>
+          <td>即便适用存疑，也<b>主动对所有 AI 产出添加「AI 生成 · 未经复核不得外发」水印与元数据标识</b>。成本极低，能规避一整类争议。</td>
+        </tr>
+        <tr>
+          <td><b>个人信息保护</b><br><span style="font-size:11.5px;color:var(--ink3)">PIPL</span></td>
+          <td>处理个人信息须有合法性基础；敏感个人信息（含生物识别）须单独同意 + 必要性论证</td>
+          <td>① 顾客 / 员工个人信息<b>不进向量库</b>，或仅进脱敏摘要；② 历史合同中的自然人信息（房东联系人、导购姓名）入库前脱敏；③ 门店人脸采集数据不接入本系统；④ 系统用户问答日志中的个人信息按最短期限留存。</td>
+        </tr>
+        <tr>
+          <td><b>数据安全</b></td>
+          <td>数据分类分级、访问控制、日志审计</td>
+          <td>按 4.2 权限矩阵落实；全量查询审计日志留存；向量库加密存储；备份加密。</td>
+        </tr>
+        <tr>
+          <td><b>算法与伦理</b></td>
+          <td>避免歧视性输出、避免误导</td>
+          <td>prompt 中禁止基于地域、性别、年龄等因素给出差别化法律判断；所有输出附免责声明。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>7.2 香港侧合规判断</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:20%">合规维度</th><th style="width:32%">要求</th><th>本项目落地的具体动作</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>个人资料私隐</b><br><span style="font-size:11.5px;color:var(--ink3)">PDPO（第 486 章）</span></td>
+          <td>六项保障资料原则：收集目的与方式、准确性、使用限制、保安、透明度、查阅更正</td>
+          <td>① 系统收集员工使用数据的目的须明确告知并限于系统运维与改进；② 香港门店 / 员工的个人资料同样不进向量库；③ 提供查阅与更正渠道；④ 参考个人资料私隐专员公署发布的 AI 相关指引（建议核实最新版本）。</td>
+        </tr>
+        <tr>
+          <td><b>反洗钱</b><br><span style="font-size:11.5px;color:var(--ink3)">AMLO（第 615 章）</span></td>
+          <td>贵金属及宝石交易商（DPMS）注册与尽职调查义务（制度自 2023-04-01 起实施，门槛与细则<b>须核实现行版本</b>）</td>
+          <td>本系统<b>不替代</b>法定的客户尽职调查与记录保存动作，只做 SOP 问答与清单生成；所有 AI 输出不得作为已履行 CDD 的证据。</td>
+        </tr>
+        <tr>
+          <td><b>AI 治理参考</b></td>
+          <td>香港金融管理局等机构发布的 GenAI 应用风险管理指引（如 2024 年相关白皮书，<b>须核实</b>）</td>
+          <td>虽不直接适用于零售业，但其「治理架构 / 模型风险管理 / 人工监督」框架是本方案的良好参照，建议采纳为内部治理标准，提升方案在集团层面的说服力。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>7.3 数据出境：本项目最容易踩雷的地方</h3>
+  <div class="box warn">
+    <div class="t">问题本质</div>
+    <p>集团总部在香港，内地 200+ 门店的合同、会员、员工数据如果统一回传香港服务器，构成 <b>PIPL 第 38 条项下的数据出境</b>，需走安全评估 / 标准合同 / 认证三条路径之一。对内部 AI 系统而言，这是一笔不必要的合规成本与风险。</p>
+  </div>
+  <p><b>架构解法：双区部署，数据不出境。</b></p>
+  <div class="arch">
+    <div class="layer">
+      <div class="lb"><div class="n">REGION A</div><div class="v">内地</div></div>
+      <div class="ct">
+        <div class="row"><b>部署</b>：RAGFlow + Dify + 本地模型，部署在内地机房 / 内网</div>
+        <div class="row"><b>数据</b>：内地门店合同、内地法规、内地员工与顾客数据（脱敏后）</div>
+        <div class="row"><b>用户</b>：内地法务、内地门店店长、区域经理</div>
+        <div class="row"><b>红线</b>：原始合同与个人信息<b>不出境</b></div>
+      </div>
+    </div>
+    <div class="arrow" style="color:var(--red)">▲ 仅脱敏统计指标 / 知识条目摘要，且须经法务审批 ▲</div>
+    <div class="layer">
+      <div class="lb"><div class="n">REGION B</div><div class="v">香港</div></div>
+      <div class="ct">
+        <div class="row"><b>部署</b>：独立实例，香港服务器</div>
+        <div class="row"><b>数据</b>：香港法例、香港门店合同、集团层面制度（不含内地个人信息）</div>
+        <div class="row"><b>用户</b>：香港总部法务、香港门店</div>
+        <div class="row"><b>红线</b>：PDPO 项下的保障资料原则适用</div>
+      </div>
+    </div>
+  </div>
+  <p>两侧共享的只有<b>不含个人信息的法律知识点</b>（例如「某类条款的风险提示」「法条释义」），且共享前经法务审批。这样既保证了「香港总部能沉淀方法论」，又避免了大规模数据出境的合规负担。</p>
+
+  <h3>7.4 执业边界与免责</h3>
+  <ul>
+    <li><b>系统名称不要叫「AI 律师」</b>，叫「法务助手 / 法务知识库」。名称会影响使用者对其产出的信任度定位。</li>
+    <li><b>免责声明模板</b>（每次输出自动追加）：<i>「本答复由 AI 基于内部知识库生成，为助理级初稿，未经法务复核不构成法律意见，不得直接对外使用。涉及具体权利义务的判断，请转法务部确认。」</i></li>
+    <li><b>使用者告知</b>：上线前对门店与区域经理做一次培训，明确「AI 给的是口径，不是授权」。特别是赔偿金额、对外承诺，仍需走既有审批。</li>
+    <li><b>责任归属</b>：写入员工手册——使用 AI 不减免使用人的注意义务，因未复核导致的后果由使用人与复核人承担。</li>
+  </ul>
+</section>
+
+<!-- ========== S8 ========== -->
+<section id="s8">
+  <h2><span class="num">08</span>24 周落地路线图</h2>
+  <p>四个阶段，24 周（约 6 个月）跑出可用系统。每个阶段都有<b>可验收的交付物</b>——没有交付物的周次就是没有进展。</p>
+
+  <h3>8.1 阶段总览</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:8%" class="tc">阶段</th><th style="width:10%" class="tc">周次</th><th style="width:16%">目标</th>
+        <th style="width:34%">关键交付物</th><th style="width:16%" class="tc">验收门槛</th><th class="tc">投入</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tc"><span class="tag t-g">S0</span><br>立项</td><td class="tc">W1–W2</td>
+          <td><b>把「要不要做」变成「怎么做」</b></td>
+          <td>法务工单统计报告 · 场景优先级决议 · 合规书面结论（第 07 章）· 立项与预算批复 · 项目组名单</td>
+          <td class="tc">预算批复<br>红线规则签署</td>
+          <td class="tc">法务 60%<br>IT 20%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p0">S1</span><br>试点</td><td class="tc">W3–W8</td>
+          <td><b>法规问答跑通，建立信任</b></td>
+          <td>服务器与 RAGFlow 部署 · L1 内地法规入库（P0 的 8 项）· 双法域问答助手上线 · 黄金测试集 v1（50 题）· 第一批 FAQ 沉淀</td>
+          <td class="tc">引用准确率 ≥90%<br>法务周活 ≥60%</td>
+          <td class="tc">法务 50%<br>IT 50%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p1">S2</span><br>打透</td><td class="tc">W9–W16</td>
+          <td><b>租约审查上线，产出真实价值</b></td>
+          <td>租赁谈判底线清单 · 50 份历史租约脱敏入库 · 租约审查工作流（Dify）上线 · 企微入口 · 权限矩阵落地 · 香港法例入库</td>
+          <td class="tc">风险点召回率 ≥85%<br>审查耗时降 40%</td>
+          <td class="tc">法务 60%<br>IT 40%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p2">S3</span><br>扩张</td><td class="tc">W17–W24</td>
+          <td><b>扩场景 + 建度量 + 常态化</b></td>
+          <td>商品合规预检 · 投诉处置 · 劳动争议三个场景上线 · 自动化回归评测流水线 · 运营手册与责任人 · 第二批预算提案</td>
+          <td class="tc">月节省 ≥200 工时<br>引用准确率 ≥95%</td>
+          <td class="tc">法务 40%<br>IT 40%<br>业务 20%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>8.2 逐周明细</h3>
+
+  <h4>阶段 S0 · 立项（W1–W2）</h4>
+  <ul class="tl">
+    <li><span class="wk">W1</span><span class="dot solid"></span>
+      <h5>拉数据：法务工单全年统计</h5>
+      <p>从 OA / 邮箱 / 企微里导出过去 12 个月全部法务工单，按业务域分类计数，产出真实的工作量分布表（替换第 01 章的估算值）。</p>
+      <p class="dl"><b>交付：</b>《法务工作量分布报告》——这是整个项目的地基，也是说服老板最有力的材料</p>
+    </li>
+    <li><span class="wk">W1</span><span class="dot"></span>
+      <h5>组团队 + 申请测试环境</h5>
+      <p>项目组：法务总监（发起人）+ 法务专员 1–2 名（业务负责人、语料负责人）+ IT 1 名（部署运维）。申请一台测试服务器（建议 16 核 / 32–64GB 内存起步，有 GPU 更好）。</p>
+      <p class="dl"><b>交付：</b>项目组名单与职责、测试环境到位</p>
+    </li>
+    <li><span class="wk">W2</span><span class="dot"></span>
+      <h5>合规书面结论</h5>
+      <p>按第 07 章逐项形成书面判断：是否构成生成式 AI 服务提供、数据出境方案、个人信息处理合法性基础、License 核查结论（尤其 Dify）。</p>
+      <p class="dl"><b>交付：</b>《法律 AI 项目合规意见》（留档，这是法务部的护身符）</p>
+    </li>
+    <li><span class="wk">W2</span><span class="dot"></span>
+      <h5>立项报批</h5>
+      <p>一页纸立项：问题（工单数据）+ 方案（场景优先级）+ 投入（第 09 章预算）+ 回报（第 02 章成功标准）+ 风险（第 11 章）。</p>
+      <p class="dl"><b>交付：</b>预算批复、六条红线规则签署确认</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S1 · 试点（W3–W8）</h4>
+  <ul class="tl">
+    <li><span class="wk">W3</span><span class="dot solid"></span>
+      <h5>部署 RAGFlow（Docker Compose）</h5>
+      <p>IT 按官方文档起服务，接本地 Ollama / vLLM 与 bge-m3。法务同步准备 P0 法规文本。</p>
+      <p class="dl"><b>交付：</b>系统可访问，能上传文档并问答</p>
+    </li>
+    <li><span class="wk">W3–W4</span><span class="dot"></span>
+      <h5>L1 内地法规入库（先做 P0 的 8 项）</h5>
+      <p>民法典（合同编/侵权编）、消法 + 实施条例、产品质量法、广告法、劳动合同法、GB 11887、GB/T 16552、GB 28480。<b>每条带生效日期与来源 URL</b>，按「条」分块。</p>
+      <p class="dl"><b>交付：</b>L1 核心法规库可用；抽样 30 条检索验证通过</p>
+    </li>
+    <li><span class="wk">W4</span><span class="dot"></span>
+      <h5>写第一批 prompt + 六条红线落地</h5>
+      <p>把第 02 章六条红线写进 system prompt：无引用拒答、禁止终局判断、强制免责尾注。输出格式用 JSON Schema 约束。</p>
+      <p class="dl"><b>交付：</b>prompt v1 + 护栏规则文档</p>
+    </li>
+    <li><span class="wk">W5</span><span class="dot"></span>
+      <h5>出黄金测试集 v1（50 题）</h5>
+      <p>法务部自己出题，覆盖 P0 场景的真实高频问题，每题标注<b>标准答案 + 应命中的正确依据</b>。这是未来所有回归测试的基准，不能外包、不能让 AI 出题。</p>
+      <p class="dl"><b>交付：</b>Golden Set v1（50 题，含标准答案与预期引用）</p>
+    </li>
+    <li><span class="wk">W6</span><span class="dot"></span>
+      <h5>内部小范围试用 + 首轮调优</h5>
+      <p>法务部 3–5 人先用，记录每一个答错 / 答得不好的案例，分类归因（检索没召回？分块错了？prompt 问题？模型问题？）。</p>
+      <p class="dl"><b>交付：</b>问题清单 + 调优记录（<b>这份归因表比任何文档都值钱</b>）</p>
+    </li>
+    <li><span class="wk">W7</span><span class="dot"></span>
+      <h5>接入企业微信 + 开放给 2 个试点区域</h5>
+      <p>选 2 个配合度高的区域做试点，门店店长通过企微提问。<b>关键是入口要顺手</b>——让店长另外登录一个网站，等于没人用。</p>
+      <p class="dl"><b>交付：</b>企微机器人可用；试点区域培训完成</p>
+    </li>
+    <li><span class="wk">W8</span><span class="dot solid"></span>
+      <h5>S1 验收 + 阶段汇报</h5>
+      <p>跑黄金集，出引用准确率报告；统计试点区域使用数据；向管理层汇报，争取 S2 资源。</p>
+      <p class="dl"><b>门槛：</b>引用准确率 ≥90%，法务周活 ≥60%</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S2 · 打透（W9–W16）</h4>
+  <ul class="tl">
+    <li><span class="wk">W9–W10</span><span class="dot solid"></span>
+      <h5>写《租赁谈判底线清单》</h5>
+      <p>法务部闭门产出：10 类核心条款 × 每类的可接受区间 / 谈判目标 / 红线。<b>这件事不需要任何技术，是纯法务资产，且即使项目中断也不亏。</b></p>
+      <p class="dl"><b>交付：</b>《门店租赁谈判底线清单 v1》（密级：内部）</p>
+    </li>
+    <li><span class="wk">W10–W11</span><span class="dot"></span>
+      <h5>50 份历史租约脱敏入库</h5>
+      <p>选 50 份有代表性的（不同业态、不同区域、不同年份）。脱敏：房东主体、租金金额、抽成比例。按条款切分，带元数据。</p>
+      <p class="dl"><b>交付：</b>L3 租约库（脱敏）；脱敏规则文档</p>
+    </li>
+    <li><span class="wk">W12–W13</span><span class="dot"></span>
+      <h5>Dify 搭建租约审查工作流</h5>
+      <p>流程：上传 PDF → 条款切分 → 逐条比对底线清单 → 风险分级（红/黄/绿）→ 生成修订建议 → <b>人工复核节点</b>。复核节点必须是流程里的硬卡点，不能跳过。</p>
+      <p class="dl"><b>交付：</b>租约审查工作流可用；产出模板三件套</p>
+    </li>
+    <li><span class="wk">W14</span><span class="dot"></span>
+      <h5>20 份回测</h5>
+      <p>拿 20 份法务已审过的租约做回测：AI 找出的风险点 vs 法务当年人工标注的风险点，算召回率与误报率。</p>
+      <p class="dl"><b>交付：</b>回测报告；<b>门槛：召回率 ≥85%</b></p>
+    </li>
+    <li><span class="wk">W15</span><span class="dot"></span>
+      <h5>权限矩阵落地 + 审计日志</h5>
+      <p>按 4.2 表配置角色与语料可见范围；开启全量查询审计；运维账号访问留痕。</p>
+      <p class="dl"><b>交付：</b>权限配置文档 + 审计日志可查</p>
+    </li>
+    <li><span class="wk">W15–W16</span><span class="dot"></span>
+      <h5>香港法例入库 + 双法域切换</h5>
+      <p>从 data.gov.hk 开放数据获取香港法例现行版，建香港法域语料库；prompt 支持按法域切换输出语种与依据。</p>
+      <p class="dl"><b>交付：</b>双法域问答可用</p>
+    </li>
+    <li><span class="wk">W16</span><span class="dot solid"></span>
+      <h5>S2 验收</h5>
+      <p class="dl"><b>门槛：</b>风险点召回率 ≥85%；单份租约审查耗时下降 40%</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S3 · 扩张（W17–W24）</h4>
+  <ul class="tl">
+    <li><span class="wk">W17–W18</span><span class="dot"></span><h5>商品与营销合规预检</h5>
+      <p>建禁用词库与强制标准映射，批量预检商品标题 / 详情页 / 直播脚本。</p>
+      <p class="dl"><b>交付：</b>预检工具上线；抽检 100 条历史文案验证</p></li>
+    <li><span class="wk">W19–W20</span><span class="dot"></span><h5>消费者投诉处置 + 劳动争议</h5>
+      <p>两个场景并行：处置话术与证据清单；劳动分析与金额试算。</p>
+      <p class="dl"><b>交付：</b>两个场景上线；话术模板库</p></li>
+    <li><span class="wk">W21</span><span class="dot solid"></span><h5>自动化回归评测流水线</h5>
+      <p>把黄金集 + Ragas/DeepEval 接进 CI：每次 prompt 改动、语料更新、模型升级都自动跑一遍，指标下跌就报警。<b>这是系统不腐坏的保险丝。</b></p>
+      <p class="dl"><b>交付：</b>评测流水线；指标看板</p></li>
+    <li><span class="wk">W22</span><span class="dot"></span><h5>运营手册 + 责任人 + 培训</h5>
+      <p>写《法务 AI 系统运营手册》：语料更新流程、责任人、复核要求、红线。对全员做一次培训。</p>
+      <p class="dl"><b>交付：</b>运营手册；培训完成；责任人任命</p></li>
+    <li><span class="wk">W23</span><span class="dot"></span><h5>效果复盘 + 度量报告</h5>
+      <p>统计工时节省、采纳率、引用准确率、幻觉率，与第 02 章承诺值对比。</p>
+      <p class="dl"><b>交付：</b>《首期效果复盘报告》</p></li>
+    <li><span class="wk">W24</span><span class="dot solid"></span><h5>S3 验收 + 二期规划</h5>
+      <p class="dl"><b>门槛：</b>季度净节省 ≥200 工时；引用准确率 ≥95%；<b>交付：</b>二期预算提案（P2 场景 + CLM 集成）</p></li>
+  </ul>
+
+  <div class="box">
+    <div class="t">排期上唯一不能让步的一点</div>
+    <p><b>W5 的黄金测试集必须在系统调优之前，而不是之后。</b>很多团队先调系统、调到最后才想起「怎么证明它变好了」，结果只能凭感觉。先出题、后调优，才有客观基线。</p>
+  </div>
+</section>
+
+<!-- ========== S9 ========== -->
+<section id="s9">
+  <h2><span class="num">09</span>预算：三档方案</h2>
+  <p>按集团规模给三档。建议<b>从轻量档起步</b>——先用现有资源证明价值，再追加投入。一次性上重资产，风险是「钱花了但没人用」。</p>
+
+  <div class="grid g3">
+    <div class="card">
+      <h5>方案 A · 轻量起步</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥8–15 万</p>
+      <ul>
+        <li>复用现有服务器（16C / 32–64GB）</li>
+        <li>全部开源自建，零 license 费用</li>
+        <li>生成模型走云端合规 API（非涉密场景）</li>
+        <li>IT 兼职投入，法务自己整理语料</li>
+        <li>覆盖：法规问答 + 单一场景</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：先验证价值、预算未批</p>
+    </div>
+    <div class="card" style="border:2px solid var(--gold)">
+      <h5>方案 B · 标准（推荐）</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥45–70 万</p>
+      <ul>
+        <li>GPU 服务器 ×1（48GB 显存级）约 ¥15–22 万</li>
+        <li>应用与数据库服务器 约 ¥5 万</li>
+        <li>本地模型部署与调优 约 ¥10–15 万</li>
+        <li>语料整理（可外包部分）约 ¥8–12 万</li>
+        <li>实施与培训 约 ¥5–8 万</li>
+        <li>年度运维 约 ¥5–8 万</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：200+ 门店规模，全本地私域，覆盖 5 个场景</p>
+    </div>
+    <div class="card">
+      <h5>方案 C · 规模化</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥120–200 万</p>
+      <ul>
+        <li>GPU 服务器 ×2 + 高可用架构</li>
+        <li>双法域双区部署（内地 + 香港）</li>
+        <li>与合同管理系统（CLM）/ OA 集成</li>
+        <li>专职 AI 运营岗 ×1</li>
+        <li>覆盖全部 8 个场景 + 定制开发</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：集团级推广、多品牌共用</p>
+    </div>
+  </div>
+
+  <div class="box info">
+    <div class="t">预算谈判的三个支点</div>
+    <ul style="margin-bottom:0">
+      <li><b>对标外部律师费</b>：一份租约外部律师审查的市场价 vs 系统年化成本，分母是「每年 60–90 份」。这个对比最容易打动 CFO。</li>
+      <li><b>对标风险成本</b>：一次标签不合规的行政处罚 + 舆情损失，往往高于系统首年投入。把同行公开处罚案例放进立项材料（L4 语料本来就要收集）。</li>
+      <li><b>不要承诺「减少法务编制」</b>。承诺效率提升与风险控制，不承诺裁员——后者会让项目在内部失去配合，而且也不属实。</li>
+    </ul>
+  </div>
+
+  <h3>成本构成表（方案 B 明细）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:24%">科目</th><th style="width:14%" class="tr">首年（万元）</th><th style="width:14%" class="tr">次年（万元）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>硬件（GPU + 应用服务器）</td><td class="tr">20–27</td><td class="tr">—</td><td>一次性投入，按 3 年折旧</td></tr>
+        <tr><td>软件 License</td><td class="tr">0</td><td class="tr">0</td><td>全部 Apache-2.0 / MIT 开源。<b>若需 Dify 多租户则另计商业授权</b></td></tr>
+        <tr><td>实施与集成</td><td class="tr">10–15</td><td class="tr">3–5</td><td>部署、工作流开发、企微集成</td></tr>
+        <tr><td>语料整理</td><td class="tr">8–12</td><td class="tr">4–6</td><td><b>最大的人力项，也是最容易低估的一项</b></td></tr>
+        <tr><td>培训与变革管理</td><td class="tr">3–5</td><td class="tr">2</td><td>别省这笔，没人用等于白做</td></tr>
+        <tr><td>运维与电费等</td><td class="tr">4–8</td><td class="tr">5–8</td><td>GPU 服务器电费与托管需计入</td></tr>
+        <tr style="background:var(--bg2)"><td><b>合计</b></td><td class="tr"><b>45–67</b></td><td class="tr"><b>14–21</b></td><td>次年成本大幅下降，硬件已摊完</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">金额为人民币估算，基于 2026 年市场行情，仅供立项参考，实际以采购询价为准。</p>
+</section>
+
+<!-- ========== S10 ========== -->
+<section id="s10">
+  <h2><span class="num">10</span>评测与度量：让系统不腐坏</h2>
+  <p>没有评测的 AI 系统，三个月后就会悄悄变差——语料更新了、prompt 改了、模型升了，没人知道效果怎么样了。评测体系是这个项目的保险丝。</p>
+
+  <h3>10.1 黄金测试集（Golden Set）</h3>
+  <div class="box">
+    <div class="t">怎么出题</div>
+    <ul style="margin-bottom:0">
+      <li><b>来源必须是真实问题</b>：从过去一年的工单、企微咨询记录里挑，不是拍脑袋编。</li>
+      <li><b>每题三部分</b>：问题 + 标准答案要点 + <b>应命中的正确依据</b>（法规第几条 / 制度第几章）。第三部分最关键——它让「引用对不对」变得可自动判定。</li>
+      <li><b>覆盖分布</b>：按第 01 章工作量分布配比，高频场景多出题。</li>
+      <li><b>必须包含「陷阱题」</b>：10% 的题目是知识库里<b>没有答案</b>的，用来测试系统会不会老实说「不知道」。系统敢不敢拒答，比它答对多少更重要。</li>
+      <li><b>规模</b>：v1 出 50 题（W5），S2 扩到 100 题，稳定后 150–200 题。</li>
+      <li><b>禁止 AI 出题</b>：让模型自己生成测试题，等于让它自己出考卷自己判分。</li>
+    </ul>
+  </div>
+
+  <h3>10.2 核心指标</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:14%">指标</th><th style="width:12%" class="tc">目标值</th><th style="width:26%">怎么测</th><th>为什么是它</th></tr></thead>
+      <tbody>
+        <tr><td><b>引用准确率</b></td><td class="tc">≥95%</td><td>抽取回答中的引用编号 → 与知识库原文比对是否存在且内容一致</td><td><b>第一指标。</b>引用错了，一切免谈</td></tr>
+        <tr><td><b>幻觉率</b></td><td class="tc">≤2%</td><td>Ragas <code>faithfulness</code> / DeepEval <code>hallucination</code>：逐句判断答案是否被检索上下文支持</td><td>法务场景的致命指标，一次编法条就能毁掉信任</td></tr>
+        <tr><td><b>拒答正确率</b></td><td class="tc">≥90%</td><td>陷阱题上是否输出「未检索到依据 / 转人工」</td><td>衡量系统是否「知道自己的边界」</td></tr>
+        <tr><td><b>检索召回率</b></td><td class="tc">≥90%</td><td>正确依据是否出现在 Top-5 检索结果中</td><td>用于区分「检索没找到」和「找到了但生成错了」</td></tr>
+        <tr><td><b>采纳率</b></td><td class="tc">≥60%</td><td>AI 产出被法务采纳（未大幅修改）的比例</td><td>业务价值指标，比准确率更真实</td></tr>
+        <tr><td><b>首答可用率</b></td><td class="tc">≥70%</td><td>门店提问后无需转人工即可解决的比例</td><td>衡量一线场景是否真跑通</td></tr>
+        <tr><td><b>工时节省</b></td><td class="tc">≥200h/季</td><td>场景前后耗时对比 × 使用频次</td><td>汇报用，也是立项承诺的兑现证据</td></tr>
+        <tr><td><b>周活人数</b></td><td class="tc">≥80%</td><td>系统后台统计</td><td>没人用说明场景选错了，其他指标再好也没意义</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>10.3 回归评测流水线（W21 建）</h3>
+  <ol>
+    <li><b>触发条件</b>：语料批量更新、prompt 修改、模型版本升级、RAG 参数调整——任一发生即触发。</li>
+    <li><b>自动执行</b>：跑完整黄金集 → 计算全部指标 → 与基线对比。</li>
+    <li><b>熔断规则</b>：引用准确率或幻觉率跌破阈值 → 自动阻断上线 + 通知法务负责人。</li>
+    <li><b>人工抽检</b>：每月法务人工抽 20 条真实问答，检查「自动化指标看不出来的问题」（比如语气、口径与公司文化不符）。</li>
+    <li><b>回流机制</b>：人工修正过的答案 → 进入 L4 语料 → 下次遇到同类问题答对。<b>这是系统越用越聪明的唯一路径。</b></li>
+  </ol>
+</section>
+
+<!-- ========== S11 ========== -->
+<section id="s11">
+  <h2><span class="num">11</span>风险登记册</h2>
+  <p>立项材料里必须带风险表——不是走形式，而是提前把「如果出事怎么办」想清楚。老板对懂风险的方案更放心。</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:4%" class="tc">#</th><th style="width:14%">风险</th><th style="width:7%" class="tc">概率</th><th style="width:7%" class="tc">影响</th>
+        <th style="width:34%">缓解措施</th><th style="width:14%">责任人</th><th class="tc">触发信号</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tc">1</td><td><b>幻觉法条</b><br><span style="font-size:11.5px;color:var(--ink3)">最高风险</span></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-no">极高</span></td>
+          <td>强制引用 + 无引用拒答 + 引用与原文自动比对 + 黄金集回归 + 人工复核硬卡点 + 免责声明</td>
+          <td>法务总监</td>
+          <td class="tc">黄金集引用准确率 &lt;95%</td>
+        </tr>
+        <tr>
+          <td class="tc">2</td><td><b>语料质量差</b></td>
+          <td class="tc"><span class="tag t-no">高</span></td><td class="tc"><span class="tag t-no">高</span></td>
+          <td>八道入库工序（6.3）；抽样验证；责任人制；先小批入库验证再放量</td>
+          <td>语料负责人</td>
+          <td class="tc">检索抽样失败率 &gt;20%</td>
+        </tr>
+        <tr>
+          <td class="tc">3</td><td><b>没人用</b></td>
+          <td class="tc"><span class="tag t-no">高</span></td><td class="tc"><span class="tag t-no">高</span></td>
+          <td>入口嵌进企微（零额外登录）；场景选在真实痛点；试点区域先跑；培训与激励；月度通报使用数据</td>
+          <td>法务总监</td>
+          <td class="tc">周活 &lt;40% 连续两周</td>
+        </tr>
+        <tr>
+          <td class="tc">4</td><td><b>涉密泄露</b></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-no">极高</span></td>
+          <td>入库前脱敏（尤其租金 / 抽成 / 采购价）；权限矩阵；命名空间隔离；审计日志；运维访问留痕与保密承诺</td>
+          <td>法务总监 + IT</td>
+          <td class="tc">审计日志异常访问</td>
+        </tr>
+        <tr>
+          <td class="tc">5</td><td><b>跨境数据违规</b></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-no">极高</span></td>
+          <td>双区部署（7.3）；内地数据不出境；共享仅限脱敏知识点并经审批；合规意见留档</td>
+          <td>法务总监</td>
+          <td class="tc">新增跨境数据流需求</td>
+        </tr>
+        <tr>
+          <td class="tc">6</td><td><b>License 违规</b></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>Apache-2.0 / MIT 优先；AGPL 与自定义 License 先审后用（尤其 Dify 多租户条款、MinerU 的 NOASSERTION）；权重 License 单独核；留存 License 台账</td>
+          <td>法务部</td>
+          <td class="tc">引入新组件 / 多品牌共用</td>
+        </tr>
+        <tr>
+          <td class="tc">7</td><td><b>模型升级破坏效果</b></td>
+          <td class="tc"><span class="tag t-no">高</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>版本锁定；升级走变更流程；升级前必须跑黄金集回归；保留回滚方案</td>
+          <td>IT</td>
+          <td class="tc">指标无预警下跌</td>
+        </tr>
+        <tr>
+          <td class="tc">8</td><td><b>法条过时</b></td>
+          <td class="tc"><span class="tag t-no">高</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>变更监控（6.5）；失效标注与检索过滤；季度全量核验；责任人制</td>
+          <td>语料负责人</td>
+          <td class="tc">引用到已废止条文</td>
+        </tr>
+        <tr>
+          <td class="tc">9</td><td><b>范围蔓延</b></td>
+          <td class="tc"><span class="tag t-no">高</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>严格按 P0/P1/P2 分批；每批只做一个主打场景；新需求进 backlog 排下一期</td>
+          <td>法务总监</td>
+          <td class="tc">同期并行场景 &gt;2 个</td>
+        </tr>
+        <tr>
+          <td class="tc">10</td><td><b>IT 人力不足</b></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>选开箱即用栈（Docker Compose 一键起）；必要时采购外部实施；法务自己承担语料与 prompt（不依赖 IT）</td>
+          <td>IT 负责人</td>
+          <td class="tc">里程碑延期 &gt;2 周</td>
+        </tr>
+        <tr>
+          <td class="tc">11</td><td><b>被当成「权威」滥用</b></td>
+          <td class="tc"><span class="tag t-mid">中</span></td><td class="tc"><span class="tag t-mid">中</span></td>
+          <td>命名去权威化（叫「助手」不叫「律师」）；培训强调「口径不是授权」；输出带水印与免责；写入员工手册</td>
+          <td>法务总监</td>
+          <td class="tc">出现未复核外发</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== S12 ========== -->
+<section id="s12">
+  <h2><span class="num">12</span>第一周就能做的 5 件事（不等预算）</h2>
+  <p>这五件事<b>不需要任何预算、不需要 IT 配合、不需要老板批</b>，本周就能全部做完。做完之后，你会对这个项目能不能成有完全不同的判断。</p>
+
+  <div class="grid g2">
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <h5>① 拉全年法务工单统计（半天）</h5>
+      <p>从 OA、邮箱、企微导出过去 12 个月全部法务请求，按业务域分桶计数。<b>产出一张饼图。</b></p>
+      <p>为什么先做这个：它会直接告诉你第 01 章的估算表对不对。如果你们家的工单分布和估算差很远（比如租赁只占 8%），整个场景优先级都要重排。<b>用数据替代直觉，这是这个项目里最值钱的半天。</b></p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <h5>② 建法务知识四层目录（1 天）</h5>
+      <p>在共享盘建 <code>L1-法规 / L2-制度范本 / L3-历史合同 / L4-FAQ案例</code> 四个目录，把散在各处的法务资产挪进去。</p>
+      <p>为什么先做这个：这一步通常会暴露一个残酷现实——<b>「我们以为有的东西，其实找不到」</b>。而且无论 AI 项目做不做，这个目录都有用。</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <h5>③ 出黄金测试集前 30 题（1 天）</h5>
+      <p>从工单里挑 30 个真实高频问题，每题写清标准答案要点 + 应命中依据。</p>
+      <p>为什么先做这个：未来所有「效果变好还是变差」的判断都靠它。先出题，后面才有基线。而且出题的过程会逼你厘清「这个场景到底要答成什么样才算对」。</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <h5>④ 写六条红线，让全部门签字（半天）</h5>
+      <p>把第 02 章的六条红线改成一页纸，部门内传阅确认。</p>
+      <p>为什么先做这个：<b>规则要在系统之前确立，不是在系统出问题之后补。</b>而且这份签字文件，是未来万一出事时证明「我们尽到了注意义务」的关键证据。</p>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--gold);margin-top:14px">
+    <h5>⑤ 写《租赁谈判底线清单》第一版（2 天）</h5>
+    <p>10 类核心条款 × 每类的可接受区间 / 谈判目标 / 红线。先写个粗版，后面再迭代。</p>
+    <p>为什么先做这个：<b>这是整份方案里唯一「纯法务产出、不依赖任何技术」的高价值资产。</b>它把资深法务脑子里的经验变成组织资产。即使最后 AI 项目因为任何原因停了，这份清单本身也已经值回票价——新来的法务专员照着它就能审租约。</p>
+  </div>
+
+  <div class="box ok">
+    <div class="t">这五件事做完之后</div>
+    <p>你会拥有：一张真实的工作量分布图、一个整理过的知识目录、一套 30 题的验收基准、一份签署过的红线规则、一份租赁谈判底线清单。<b>这五样东西加起来，已经是一个能拿去立项的完整材料包</b>——而且一分钱没花。</p>
+  </div>
+
+  <h3>执行清单（勾选后自动保存在本机浏览器）</h3>
+  <ul class="ck" id="ck1">
+    <li><input type="checkbox"><span class="bx">拉取过去 12 个月法务工单，按业务域分类统计，产出分布表</span></li>
+    <li><input type="checkbox"><span class="bx">建 L1–L4 四层知识目录，归集现有法务资产</span></li>
+    <li><input type="checkbox"><span class="bx">出黄金测试集前 30 题（含标准答案与预期引用）</span></li>
+    <li><input type="checkbox"><span class="bx">写六条红线一页纸，部门内传阅签字</span></li>
+    <li><input type="checkbox"><span class="bx">写《租赁谈判底线清单》v1</span></li>
+  </ul>
+
+  <h3>立项前必须完成的合规动作</h3>
+  <ul class="ck" id="ck2">
+    <li><input type="checkbox"><span class="bx">判断是否构成《生成式人工智能服务管理暂行办法》项下的服务提供者，形成书面结论</span></li>
+    <li><input type="checkbox"><span class="bx">核查 Dify 开源 License 的多租户条款，确认单 workspace 自用不触发</span></li>
+    <li><input type="checkbox"><span class="bx">核查拟用模型权重的 License（代码 MIT ≠ 权重可商用）</span></li>
+    <li><input type="checkbox"><span class="bx">确定数据出境方案（建议双区部署），形成书面意见</span></li>
+    <li><input type="checkbox"><span class="bx">梳理个人信息处理清单，确认入库前脱敏规则</span></li>
+    <li><input type="checkbox"><span class="bx">确认数据源使用条款合规（香港法例走 data.gov.hk，不爬 BLIS）</span></li>
+    <li><input type="checkbox"><span class="bx">建立开源组件 License 台账并指定维护人</span></li>
+  </ul>
+</section>
+
+<!-- ========== S13 ========== -->
+<section id="s13">
+  <h2><span class="num">13</span>开源资源总清单</h2>
+  <p>以下为本项目涉及的全部开源组件，star 数与 License 于 2026-09-15 核实。引入任何新组件前请更新本台账。</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:16%">项目</th><th style="width:22%">仓库</th><th style="width:8%" class="tc">Star</th>
+        <th style="width:14%">License</th><th style="width:14%">在本项目中的角色</th><th>备注</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>RAGFlow</b></td><td><code>infiniflow/ragflow</code></td><td class="tc">90.7k</td><td><span class="tag t-ok">Apache-2.0</span></td><td>检索与溯源底座</td><td>主选。DeepDoc 解析 + 可视化引用</td></tr>
+        <tr><td><b>Dify</b></td><td><code>langgenius/dify</code></td><td class="tc">155.8k</td><td><span class="tag t-mid">Dify Open Source License</span></td><td>工作流编排</td><td><b>须核实多租户条款</b></td></tr>
+        <tr><td>AnythingLLM</td><td><code>Mintplex-Labs/anything-llm</code></td><td class="tc">66.1k</td><td><span class="tag t-ok">MIT</span></td><td>POC 快速验证（可选）</td><td>License 最干净，能力较弱</td></tr>
+        <tr><td>Langflow</td><td><code>langflow-ai/langflow</code></td><td class="tc">154.8k</td><td><span class="tag t-ok">MIT</span></td><td>编排备选</td><td>偏开发原型</td></tr>
+        <tr><td>Open WebUI</td><td><code>open-webui/open-webui</code></td><td class="tc">152.1k</td><td><span class="tag t-mid">自定义</span></td><td>统一聊天界面（可选）</td><td>禁作为托管服务转售</td></tr>
+        <tr><td>n8n</td><td><code>n8n-io/n8n</code></td><td class="tc">204.4k</td><td><span class="tag t-mid">fair-code</span></td><td>外围自动化（法规更新通知）</td><td>非 OSI 许可</td></tr>
+        <tr><td>PaddleOCR</td><td><code>PaddlePaddle/PaddleOCR</code></td><td class="tc">89.6k</td><td><span class="tag t-ok">Apache-2.0</span></td><td>扫描件 OCR（简繁体）</td><td>繁体合同首选</td></tr>
+        <tr><td>RapidOCR</td><td><code>RapidAI/RapidOCR</code></td><td class="tc">7.8k</td><td><span class="tag t-ok">Apache-2.0</span></td><td>轻量 OCR 备选</td><td>纯 ONNX，离线好部署</td></tr>
+        <tr><td>docling</td><td><code>docling-project/docling</code></td><td class="tc">66.4k</td><td><span class="tag t-ok">MIT</span></td><td>版面与表格解析</td><td>商用安全，默认选择</td></tr>
+        <tr><td>MinerU</td><td><code>opendatalab/MinerU</code></td><td class="tc">79.9k</td><td><span class="tag t-no">自定义 NOASSERTION</span></td><td>解析备选（能力最强）</td><td><b>须逐条审阅 License 后方可商用</b></td></tr>
+        <tr><td>FlagEmbedding</td><td><code>FlagOpen/FlagEmbedding</code></td><td class="tc">12.1k</td><td><span class="tag t-ok">MIT（代码）</span></td><td>bge-m3 / bge-reranker-v2-m3</td><td><b>权重 License 须单独核</b></td></tr>
+        <tr><td>Ragas</td><td><code>explodinggradients/ragas</code></td><td class="tc">15.7k</td><td><span class="tag t-ok">Apache-2.0</span></td><td>评测（faithfulness）</td><td>回归流水线核心</td></tr>
+        <tr><td>DeepEval</td><td><code>confident-ai/deepeval</code></td><td class="tc">18.3k</td><td><span class="tag t-ok">Apache-2.0</span></td><td>评测（hallucination）</td><td>与 Ragas 互补</td></tr>
+        <tr><td>LexEval</td><td><code>CSHaitao/LexEval</code></td><td class="tc">105</td><td><span class="tag t-ok">MIT</span></td><td>中文法律基准</td><td>可作外部能力对标</td></tr>
+        <tr style="opacity:.6"><td>ChatLaw</td><td><code>PKU-YuanGroup/ChatLaw</code></td><td class="tc">7.6k</td><td><span class="tag t-no">AGPL-3.0</span></td><td><b>不采用</b></td><td>强 copyleft，商用风险</td></tr>
+        <tr style="opacity:.6"><td>HanFei 华风</td><td><code>synlp/HanFei</code></td><td class="tc">132</td><td><span class="tag t-no">禁商用声明</span></td><td><b>不采用</b></td><td>明确仅限学术</td></tr>
+        <tr style="opacity:.6"><td>Lawyer-LLaMA</td><td><code>AndrewZhe/lawyer-llama</code></td><td class="tc">998</td><td><span class="tag t-no">禁商用声明</span></td><td><b>不采用</b></td><td>商用受限</td></tr>
+        <tr style="opacity:.6"><td>Flowise</td><td><code>FlowiseAI/Flowise</code></td><td class="tc">55.5k</td><td><span class="tag t-no">已归档</span></td><td><b>不采用</b></td><td>停止维护</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>官方数据源（可合法获取）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:22%">数据源</th><th style="width:16%">内容</th><th style="width:14%" class="tc">获取方式</th><th>注意事项</th></tr></thead>
+      <tbody>
+        <tr><td>国家法律法规数据库<br><code>flk.npc.gov.cn</code></td><td>内地法律法规</td><td class="tc"><span class="tag t-mid">谨慎爬取</span></td><td>无官方 API；社区发现的非官方接口存在稳定性与使用条款风险。<b>入库后须以官方公报 / 正式文本为准</b>，每条标注来源与抓取日期</td></tr>
+        <tr><td>政府资料一线通<br><code>data.gov.hk</code></td><td>香港法例现行版<br>（繁/简/英）</td><td class="tc"><span class="tag t-ok">开放数据</span></td><td><b>推荐路径。</b>提供定期更新的批量数据集，可合法下载入库</td></tr>
+        <tr><td>電子版香港法例 BLIS<br><code>elegislation.gov.hk</code></td><td>香港法例</td><td class="tc"><span class="tag t-no">禁止批量下载</span></td><td><b>不要爬。</b>站点条款明确禁止程序化批量下载，改走 data.gov.hk</td></tr>
+        <tr><td>HKLII<br><code>hklii.hk</code></td><td>香港判案书</td><td class="tc"><span class="tag t-ok">可合理使用</span></td><td>免费提供案例检索与下载，遵守其使用条款</td></tr>
+        <tr><td>立法会 BillsDB<br><code>legco.gov.hk</code></td><td>香港法案与会议记录</td><td class="tc"><span class="tag t-ok">OData API</span></td><td>开放数据，可程序化获取</td></tr>
+        <tr><td>裁判文书网 / 人民法院案例库</td><td>内地裁判文书</td><td class="tc"><span class="tag t-no">不建议</span></td><td>不开放批量获取，存在合规风险。<b>本项目不入库</b>，需要案例时人工检索</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <div class="t">数据源这一条，法务部要带头守规矩</div>
+    <p>我们自己在做知识库，就更不能靠违规爬取来喂它。<b>「禁止批量下载」的站点不爬、「无 API 但有接口」的谨慎使用、入库数据全部标注来源与抓取日期。</b>这既是合规要求，也是万一被质疑时的免责基础。BLIS 那一条尤其要写进项目纪律。</p>
+  </div>
+</section>
+
+<div class="foot">
+  <p><b>港资珠宝零售集团 · 公司法律 AI 从 0 搭建总纲 v1.0</b>　编制日期 2026-09-15　编制：法务部</p>
+  <p>本文件为内部立项与方法论文件，已做脱敏处理，可对外发布。<b>文中涉及的法律法规名称、标准编号、生效日期、金额门槛、star 数与 License 信息，均为 2026-09-15 时的检索结果，用于确定入库优先级与技术选型，不构成法律意见。</b>落地执行前，每一项都应回官方源核验现行有效版本。</p>
+  <p>凡文中标注「须核实」的内容，务必核实后再入库或对外引用。技术组件的 License 以仓库 LICENSE 原文为准，引入新组件前请更新第 13 章台账。</p>
+</div>
+
+</main>
+</div>
+
+<script>
+(function(){
+  // ---- theme (与主站及其他 iframe 统一 key：site_theme) ----
+  var root=document.documentElement, btn=document.getElementById('tm');
+  var saved=null;
+  try{saved=localStorage.getItem('site_theme');}catch(e){}
+  if(saved){root.setAttribute('data-theme',saved);}
+  function syncBtn(){
+    var d=root.getAttribute('data-theme')==='dark';
+    btn.textContent=d?'切换浅色':'切换深色';
+  }
+  function broadcast(v){
+    try{
+      if(window.parent && window.parent!==window){
+        window.parent.postMessage({type:'theme',mode:v},'*');
+      }
+    }catch(e){}
+  }
+  syncBtn();
+  broadcast(root.getAttribute('data-theme')||'light');
+  btn.addEventListener('click',function(){
+    var d=root.getAttribute('data-theme')==='dark';
+    var v=d?'light':'dark';
+    root.setAttribute('data-theme',v);
+    try{localStorage.setItem('site_theme',v);}catch(e){}
+    syncBtn();
+    broadcast(v);
+  });
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme' && (d.mode==='light'||d.mode==='dark')){
+      root.setAttribute('data-theme',d.mode);
+      try{localStorage.setItem('site_theme',d.mode);}catch(e){}
+      syncBtn();
+    }
+  });
+
+  // ---- checklist persistence ----
+  var lists=[].slice.call(document.querySelectorAll('ul.ck'));
+  lists.forEach(function(ul){
+    var id=ul.id; if(!id) return;
+    var boxes=[].slice.call(ul.querySelectorAll('input[type=checkbox]'));
+    var key='legalai_ck_'+id;
+    var st={};
+    try{st=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){st={};}
+    boxes.forEach(function(b,i){
+      if(st[i]){b.checked=true;b.parentNode.classList.add('done');}
+      b.addEventListener('change',function(){
+        b.parentNode.classList.toggle('done',b.checked);
+        try{
+          var o=JSON.parse(localStorage.getItem(key)||'{}');
+          o[i]=b.checked;
+          localStorage.setItem(key,JSON.stringify(o));
+        }catch(e){}
+        upd();
+      });
+    });
+  });
+  function upd(){
+    var all=[].slice.call(document.querySelectorAll('ul.ck input[type=checkbox]'));
+    var done=all.filter(function(b){return b.checked;}).length;
+    var el=document.getElementById('pg');
+    if(el) el.textContent='待办 '+done+' / '+all.length;
+  }
+  upd();
+
+  // ---- nav highlight ----
+  var links=[].slice.call(document.querySelectorAll('#side a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var y=window.scrollY+120, cur=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

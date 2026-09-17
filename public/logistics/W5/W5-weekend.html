@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·周末实战｜一票货损案的保险与责任推演</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · WEEKEND PROJECT　·　阶段一　打地基</div><h1>周末实战⑤：一票货损案的保险与责任推演</h1><div class="sub">第 5 周主题：货运保险与责任险 —— 赔了以后找谁要回来</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">一票货损案推演就像交警还原碰撞现场：定责、定损、定限额、定追偿对象，四步跑完，才知道公司这次实际要掏多少钱。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖家→德国海外仓，FCL 海运，我方作缔约承运人签发 House B/L，船公司 B 实际承运；货主买 ICC(A) 且保单已背书转让，我方有 FFL 货代责任险）。按「定责→定损→定限额→定追偿对象」四步推演，算出公司实际要掏多少钱（数字标待核实）。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要做一票货损案的保险与责任推演。设定：深圳卖家发德国海外仓，整箱(FCL)海运，我方(货代 A)作为缔约承运人签发 House B/L，实际由船公司 B 承运。货到汉堡拆箱发现部分货物水湿受损。货主（德国买方）已凭背书转让的 ICC(A) 保单向保险人索赔。我方已投保货代责任险(FFL)。
+
+请按四步输出：
+1. 设定复述：把本案的风险剖面列清（谁签单、谁实际承运、保险谁买、保单是否转让、我方有无责任险）。
+2. 定责：水湿原因如何认定（封志/箱体/检验报告），我方作为缔约承运人是否有管货过错，海牙-维斯比下哪些情形免责。
+3. 定损：受损货值、残值、净损（给具体数字但标待核实）。
+4. 定限额：我方作为 House B/L 缔约承运人的法定责任限制是多少（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤，按本案箱数与重量算），与净损比较看是否封顶。
+5. 定追偿对象：保险人代位后向我方追偿，我方赔后向谁追（实际承运人 B 及其 P&amp;I）；给出两种情形（我方免责 / 我方有责）下公司实际净出血的计算。
+6. 最后给一条实战结论：这类案子我方如何把净出血压到最低。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖家 → 德国海外仓，<b>整箱 FCL 海运</b>；<b>我方（货代 A）作为缔约承运人签发 House B/L</b>，实际由<b>船公司 B 承运</b>。货到汉堡拆箱发现部分货物水湿。关键事实：① 货主（德国买方）买了 <b>ICC(A) 一切险</b>，且保单已<b>背书转让给买方</b>——买方是合法被保险人；② 我方是 House B/L 的签单方，依约对全程负责，是保险人代位的首选目标；③ 我方已投保 <b>FFL 货代责任险</b>，赔外有兜；④ 实际承运人 B 有船壳险 + P&I 保赔协会。这条链把本周 D1 货险、D2 代位、D3 责任险、D4 限额一次性串起来。</p>
+<h2>二、定责：水湿到底谁的错</h2>
+<ul><li><b>证据三件套</b>：集装箱<b>封志完好</b>（无撬动）→ 排除运输途中被盗/擅自开箱；箱体密封完好、内部受潮 → 疑为<b>装货前箱内残留水汽或包装吸水</b>，或装载时未做干燥处理；独立检验人(Survey)出具报告认定原因。</li><li><b>我方管货义务</b>：作为缔约承运人，依海牙-维斯比须「适当谨慎装载、搬移、积载、运输、保管、照料、卸载」。若水湿源于我方装箱/积载过错 → 有责；若源于装货前（托运人装箱的 FCL，托运人负责装箱计数封志，CY/CY 交接）→ 我方可主张非我方过错。</li><li><b>免责情形</b>：海牙-维斯比承运人免责含海上/水上危险、天灾、战争、托运人包装/标记不良、货物固有缺陷等。若检验报告指向「装前受潮/包装缺陷」，属托运人责任，我方免责。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 本案为托运人装箱封志的 FCL（CY/CY），依海运实务与海牙-维斯比，承运人对「装箱封志完好」的货损常可主张非管货过错，但具体归责以检验报告与适用法为准；② 海牙-维斯比免责清单条号、责任限制数值（666.67 SDR/件或 2 SDR/公斤）须核对《海商法》或公约现行文本；③ SDR 兑欧元汇率以理赔日 IMF 公布为准。</div>
+<h2>三、定损：受损货值、残值、净损（数字均待核实）</h2>
+<table><thead><tr><th>项目</th><th>数值(欧元)</th><th>说明</th></tr></thead><tbody><tr><td>本票总货值</td><td>200,000</td><td>1000 箱电子配件【待核实】</td></tr><tr><td>受损箱数</td><td>400 箱</td><td>水湿变质，无法销售【待核实】</td></tr><tr><td>受损货值</td><td>80,000</td><td>按单价折算【待核实】</td></tr><tr><td>受损货残值</td><td>10,000</td><td>可作次品处理【待核实】</td></tr><tr><td><b>净损</b></td><td><b>70,000</b></td><td>受损货值−残值【待核实】</td></tr><tr><td>我方收取运费(all-in)</td><td>8,000</td><td>与赔偿上限无关，仅参考【待核实】</td></tr></tbody></table>
+<h2>四、定限额：我方法定责任上限算一算（数字待核实）</h2>
+<ul><li><b>适用限制</b>：我方作为 House B/L 缔约承运人，责任限制引海牙-维斯比 <b>666.67 SDR/件 或 2 SDR/公斤，以较高者为准</b>。</li><li><b>本案计算</b>：1000 箱（件）→ 666.67 × 1000 = <b>666,670 SDR</b>；总毛重 1000 箱 × 20kg = 20,000kg → 2 × 20,000 = <b>40,000 SDR</b>。较高者 = <b>666,670 SDR</b>。</li><li><b>折欧元</b>：按理赔日 SDR≈1.2 欧元【汇率待核实】→ 约 <b>800,000 欧元</b> 责任上限。</li><li><b>比较</b>：净损 70,000 欧元 <b>远小于</b> 限额 800,000 欧元 → <b>限额不封顶</b>，若我方有责须全赔 70,000，而非被限额砍低。</li></ul>
+<div class="key">关键结论：本案限额高达约 80 万欧元，而净损仅 7 万，<b>责任限制帮不上忙</b>——真正决定我方掏多少的，是「定责」（有没有过错），不是「限额」。这是很多新人误以为「有公约限额就安全」的反例。</div>
+<h2>五、定追偿对象与两种情形推演</h2>
+<ol><li><b>第一跳（货主→保险人）</b>：德国买方凭背书 ICC(A) 保单，向保险人索赔净损 70,000 欧元 → ICC(A) 涵盖水湿（非除外）→ 保险人<b>全赔 70,000</b>。</li><li><b>第二跳（保险人→我方代位）</b>：保险人赔付后取得代位权，向我方（House B/L 签单方）追偿 70,000 欧元。</li><li><b>第三跳（我方赔后→实际承运人 B）</b>：我方若赔付，凭海运合同/分包协议向实际承运人 B 追偿其区段责任；B 若有责可用其 <b>P&I 保赔协会</b>兜底。</li></ol>
+<h3>情形一：检验报告认定「装前受潮/包装缺陷」→ 我方免责</h3>
+<ul><li>我方举证封志完好 + 检验报告归责装前/包装 → 主张海牙-维斯比免责，对保险人代位<b>抗辩成功，赔付 0</b>。</li><li>保险人自行承担 70,000（或转向装箱方/卖方追偿）。</li><li><b>我方实际净出血 = 0 欧元</b>（仅支出检验费 + 律师费，约 [X] 欧元【待核实】）。</li></ul>
+<h3>情形二：检验认定「我方积载/管货过错」→ 我方有责</h3>
+<ul><li>我方在责任限额内赔保险人 <b>70,000 欧元</b>（不封顶，因限额远高于损失）。</li><li>我方随即向 <b>FFL 货代责任险</b>索赔回补：保单限额内赔付我方对外赔款，扣<b>免赔额</b>（假设 5,000 欧元【待核实】）后回补约 65,000。</li><li>同时我方向实际承运人 B 追偿——若 B 证明非其过错（封志完好、海上无事故）亦可免责，则追偿失败，损失停留在我方。</li><li><b>我方实际净出血 ≈ 5,000 欧元（FFL 免赔自担）+ 检验/律师费 [X] 欧元【待核实】</b>，而非 70,000。</li></ul>
+<table><thead><tr><th>项目</th><th>情形一(我方免责)</th><th>情形二(我方有责)</th></tr></thead><tbody><tr><td>对外赔付(给保险人)</td><td>0</td><td>70,000</td></tr><tr><td>FFL 回补</td><td>0</td><td>65,000(扣免赔 5,000)</td></tr><tr><td>向实际承运人 B 追</td><td>—</td><td>视 B 是否有责</td></tr><tr><td><b>公司净出血</b></td><td><b>≈ 检验/律师费 [X]</b></td><td><b>≈ 5,000 + 检验/律师费 [X]</b></td></tr></tbody></table>
+<h2>六、实战结论：这类案子如何把净出血压到最低</h2>
+<ul><li><b>第一关定性免责（最省钱）</b>：接货时验集装箱与封志、留存装箱/积载证据；FCL 坚持 CY/CY、托运人装箱封志，把「装前风险」钉在托运人身上——情形一就是靠这关归零。</li><li><b>第二关责任限制</b>：本案限额够高用不上，但高值/少件货（如 1 件高值设备）限额可能低于损失，务必算清并主张。</li><li><b>第三关 FFL 回补</b>：确保保单限额覆盖单票峰值、免赔可承受；出险 72 小时内报 broker，留全证据链。</li><li><b>第四关转嫁追偿</b>：赔后立刻向实际承运人 B 发保留函并追偿，B 的 P&I 是最后回血点。</li><li><b>前置防线</b>：提醒客户自购 ICC(A)（本案买方有险，保险人先赔，我方只是被代位，压力大减）；我方自身 FFL 必保。</li></ul>
+<div class="key">实战口诀：<b>这票水湿案，限额 80 万、净损 7 万，限额根本用不上——决定掏多少的是「定责」不是「限额」。封志完好+装前归责=我方免责净出血≈0；若我方有过错，70,000 由 FFL 回补、自担免赔 5,000。记住：货主有货险，保险人先当冤大头，我们只是被代位；证据留全，才能把净出血压到几千块。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">House B/L</div><div class="cn">House Bill of Lading / 货代提单</div><div class="df">无船承运人或货代签发的提单，货代作为缔约承运人对全程负责，可被货主/保险人直接代位追偿</div></div><div class="ti"><div class="en">ICC(A) Endorsed</div><div class="cn">协会货物条款 A（已背书）</div><div class="df">最宽货险，保单经背书随货权转让买方，买方凭此向保险人索赔并转移代位权</div></div><div class="ti"><div class="en">Hague-Visby Limit</div><div class="cn">海牙-维斯比责任限制</div><div class="df">承运人单位责任限制 666.67 计算单位/件或 2 计算单位/公斤，以较高者为准（数值与条号待核实）</div></div><div class="ti"><div class="en">Subrogation Recovery</div><div class="cn">代位追偿</div><div class="df">保险人赔付货主后，以自己名义向责任方(我方)追偿，追偿额不超过已赔付额</div></div><div class="ti"><div class="en">FFL Claim-back</div><div class="cn">货代责任险回补</div><div class="df">我方对外赔付后，在 FFL 保单限额内(扣免赔)向保险人索赔回补，是最后兜底</div></div></div></div><div class="foot"><a href="W5-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W5-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script><script src="/theme-toggle.js"></script>
+</body></html>

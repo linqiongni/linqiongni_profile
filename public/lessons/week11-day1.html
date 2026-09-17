@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 11 周第 1 天 · 总部用工：组织、合同与竞业限制</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 11 周第 1 天 · 总部用工：组织、合同与竞业限制</h1>
+    <div class="meta">劳动用工：总部与门店的双层结构</div>
+  </header>
+  <div class="lead">总部这一层是最容易管明白的：人都是自己的、合同都是自己签的。风险不在「要不要签」，在试用期、工作地点（连锁高频调店）、竞业限制与规章制度四个点上——四个点全部有明确条号和明确的钱。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、劳动合同核心条款</div><div class="tab" data-p="p2">二、竞业限制设计</div><div class="tab" data-p="p3">三、规章制度与民主程序</div><div class="tab" data-p="p4">四、总部用工 30 项自查</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>劳动合同的四个必争条款</h3>
+<h4>① 期限与试用期（第 19 条）</h4><p>合同期限 <b>3 个月以上不满 1 年</b>的，试用期不得超过 <b>1 个月</b>；<b>1 年以上不满 3 年</b>的，不超过 <b>2 个月</b>；<b>3 年以上及无固定期限</b>的，不超过 <b>6 个月</b>。以完成一定工作任务为期限或期限不满 3 个月的，<strong>不得约定试用期</strong>。同一单位与同一劳动者<strong>只能约定一次试用期</strong>——续签、调岗都不能再约定。</p><p>试用期工资不得低于本单位相同岗位最低档工资或劳动合同约定工资的 <b>80%</b>，且不得低于当地最低工资标准（第 20 条）。</p><h4>② 工作地点（连锁的雷区）</h4><p>餐饮总部招聘时习惯写「工作地点：本公司及其关联公司、各门店所在地」，这种写法在调店时会被认定为<strong>约定不明</strong>，员工拒绝调店时总部很被动。</p><p><b>可执行的写法</b>：主地址 + 「因经营需要，甲方可在<u>同一城市行政区域内</u>调整乙方工作地点，跨市调整的须双方协商一致并签订变更协议」。</p><h4>③ 岗位与调岗</h4><p>岗位写「管理类岗位（营运/拓展/采购序列）」比写死一个岗位名称稳妥；但调岗仍需具备<strong>合理性</strong>（薪酬不降、不具惩罚性、有经营必要性），否则员工可拒绝并按第 38 条主张。</p><h4>④ 书面合同的时限（第 10 条 + 第 82 条）</h4><p>自用工之日起<strong>一个月内</strong>必须订立书面合同；超过一个月不满一年未订立的，应当<b>每月支付二倍工资</b>；用工满一年仍未订立的，视为已订立<strong>无固定期限</strong>劳动合同（第 14 条第 3 款）。</p><div class="act"><b>我的落地动作：</b>把「入职当天签合同」写进 HR 的入转调离 SOP，并设置第 25 天未完成签字的系统硬拦截。二倍工资是最容易批量爆发的索赔——一个疏忽，全员可主张。</div>
+</div>
+<div class="card"><h3>试用期与二倍工资的法律账（算得出来的数字）</h3>
+<table><thead><tr><th>情形</th><th>法律后果</th><th>金额算法</th></tr></thead><tbody><tr><td>合同 2 年，约定试用期 3 个月</td><td>超过法定 2 个月的部分无效，已履行的超额部分按转正工资补差 + 可能赔偿</td><td>补差额 = 超期月数 × (转正工资 − 试用期工资)</td></tr><tr><td>用工 10 个月未签书面合同</td><td>第 82 条二倍工资</td><td>9 个月 × 月工资（第一个月为宽限期）</td></tr><tr><td>用工满 1 年未签书面合同</td><td>视为无固定期限 + 二倍工资（各地对上限口径不一）</td><td>11 个月 × 月工资 为常见上限口径</td></tr><tr><td>违法约定试用期并已履行</td><td>按已履行超期期间、转正工资标准支付赔偿金</td><td>超期月数 × 转正工资</td></tr></tbody></table></div>
+<div class="anti"><b>加盟商反制点：</b>员工侧最狠的一招：不签合同不违法，但主张二倍工资可以「等离职时一次性提」，且工资支付记录、考勤记录由用人单位举证（调解仲裁法第 6 条）——总部举证不能即败。所以总部必须把「已签合同」的证据留在自己手里。</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>竞业限制：能签谁、能签多久、要给多少钱</h3>
+<p>《劳动合同法》<b>第 23 条</b>：可以约定保密与竞业限制，并约定违约金。<b>第 24 条</b>：竞业限制人员限于<strong>高级管理人员、高级技术人员和其他负有保密义务的人员</strong>；范围、地域、期限由双方约定，不得违反法律；竞业限制期限自劳动合同解除或终止之日起<strong>不得超过二年</strong>；在竞业限制期限内应当<strong>按月</strong>给予经济补偿。</p><p><b>第 25 条</b>是硬边界：除第 22 条（专项培训服务期）和第 23 条（竞业限制）外，<strong>不得约定由劳动者承担违约金</strong>。所以「提前辞职赔 3 个月工资」这类条款无效。</p><h4>总部三类核心岗位的设计差异</h4><table><thead><tr><th>岗位</th><th>是否可签</th><th>期限</th><th>补偿标准（建议）</th><th>特别要点</th></tr></thead><tbody><tr><td>研发（配方/汤底/工艺）</td><td>可以，最该签</td><td>2 年（顶格）</td><td>离职前 12 个月平均工资的 30%–50%</td><td>配方入商业秘密库，签双重保护（保密 + 竞业）</td></tr><tr><td>采购（供应链/成本）</td><td>可以</td><td>2 年</td><td>30%–50%</td><td>重点防「带供应商资源跳槽」，违约金可设较高</td></tr><tr><td>拓展（选址/加盟商资源）</td><td>可以</td><td>1–2 年</td><td>30%–50%</td><td>加盟商名单属经营信息，须先做保密措施（第 39 条反法举证前提）</td></tr><tr><td>门店普通员工</td><td>原则上不签</td><td>—</td><td>—</td><td>签了也难执行且要付补偿，成本大于收益</td></tr></tbody></table><p><b>按月支付是效力要件</b>：约定「一次性支付」或「包含在工资中」的，多数地区认定为无效或未履行；<strong>未支付补偿满 3 个月</strong>，劳动者可请求解除竞业限制约定（各地有细则，主流口径如此）。</p><div class="act"><b>我的落地动作：</b>给研发、采购、拓展三类岗位单独签《保密与竞业限制协议》：期限 2 年、补偿按月银行转账并留凭证、违约金设为已付补偿总额的 3–5 倍（过高会被酌减，民法典 585 条第 2 款的 30% 参考线同样适用）。</div>
+</div>
+<div class="card"><h3>可直接落地的竞业限制条款（建议版本）</h3>
+<div class="clause"><p><b>第 X 条 竞业限制</b></p><p>1. 乙方属于公司高级管理人员／高级技术人员／其他负有保密义务的人员（研发岗），双方约定竞业限制条款。</p><p>2. 竞业限制期限自劳动合同解除或终止之日起计算，<b>不超过 24 个月</b>。</p><p>3. 竞业限制范围为：不得自营或为他人经营与甲方生产或经营同类产品、从事同类业务的有竞争关系的单位（<b>限于中式快餐／米线品类及甲方已开业的省级行政区</b>）。</p><p>4. 甲方于竞业限制期内<b>按月</b>向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的<b>【40】%</b>，且不低于当地最低工资标准；每月【15】日前支付至乙方指定账户。</p><p>5. 乙方违反本条约定的，应返还已收取的全部经济补偿，并向甲方支付违约金【已付补偿总额的 3 倍】；违约金不足以弥补甲方损失的，乙方应继续赔偿差额部分。</p><p>6. 甲方有权在劳动合同解除或终止前，<b>书面通知乙方解除本竞业限制条款</b>；通知送达后，甲方自通知载明之日起停止支付补偿，乙方不再承担竞业限制义务。</p></div><p class="note2">第 6 句是总部的<b>止损阀</b>：不想留的人、不重要的岗位，离职时发一份书面解除通知即可，不必白付 24 个月补偿。这个动作必须写进离职 SOP。</p>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>员工手册三要件：内容合法 + 程序民主 + 公示告知</h3>
+<p>《劳动合同法》<b>第 4 条</b>：用人单位在制定、修改或者决定有关劳动报酬、工作时间、休息休假、劳动安全卫生、保险福利、职工培训、劳动纪律以及劳动定额管理等<strong>直接涉及劳动者切身利益的规章制度或者重大事项</strong>时，应当经<u>职工代表大会或者全体职工讨论</u>，提出方案和意见，与<u>工会或者职工代表平等协商</u>确定；并应当<strong>公示，或者告知劳动者</strong>。</p><p>三要件缺一，员工手册在仲裁里就<strong>不作为裁判依据</strong>——据此作出的违纪解除会被认定为违法解除，赔偿金 2N（第 87 条）。</p><h4>可留痕的民主程序四步（每一步都要有纸）</h4><p>① 起草后发全员征求意见（邮件/公告，<b>留发送记录与意见汇总表</b>）；② 召开职工代表大会或全体职工大会讨论（<b>签到表 + 会议纪要 + 现场照片</b>）；③ 与工会/职工代表协商确定（<b>协商纪要 + 双方签字的确认书</b>）；④ 公示告知（<b>公示照片 + 员工签字的《规章制度告知确认书》</b>，人手一份入档案）。</p><div class="act"><b>我的落地动作：</b>把四步做成《制度发布留痕包》模板：意见汇总表、签到表、协商纪要、告知确认书四个文件，每次修订制度跑一遍，归档保存至员工离职后 2 年。</div>
+</div>
+<div class="card"><h3>制度里最容易被判无效的五类条款</h3>
+<table><thead><tr><th>条款类型</th><th>为什么有风险</th><th>改法</th></tr></thead><tbody><tr><td>迟到一次罚款 200 元</td><td>企业无罚款权（行政处罚权），扣工资涉嫌克扣</td><td>改「绩效扣减」，且扣减后不低于当地最低工资，月扣减不超过工资 20%</td></tr><tr><td>旷工一天扣三天工资</td><td>同理，且惩罚性过重</td><td>改记过/警告累计制，达到次数按严重违纪解除</td></tr><tr><td>辞职需提前 3 个月通知</td><td>违反第 37 条（提前 30 日），加重劳动者义务无效</td><td>改为「涉密岗位另行约定脱密期，最长不超过 6 个月」</td></tr><tr><td>入职交押金/保证金</td><td>第 9 条禁止，第 84 条第 2 款罚 500–2000 元/人并退还</td><td>一律取消；门店合伙保证金方案同理须废</td></tr><tr><td>员工辞职需支付违约金</td><td>第 25 条，除服务期与竞业限制外不得约定</td><td>仅对专项培训（第 22 条）与竞业限制（第 23 条）保留</td></tr></tbody></table></div>
+</div><div class="panel" id="p4">
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">总部用工合规自查表（30 项）</strong><div class="progress"><i id="bar1"></i></div><span id="cnt1" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">1. 书面合同签订率 100%，且均在用工之日起 30 日内<span class="m-note"> — 第 10 条；第 82 条二倍工资</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">2. 无「空白合同」「他人代签」情形<span class="m-note"> — 代签合同对员工不生效，等同未签</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">3. 试用期期限与合同期限匹配，未超法定上限<span class="m-note"> — 第 19 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">4. 试用期工资 ≥ 转正工资 80% 且 ≥ 当地最低工资<span class="m-note"> — 第 20 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">5. 同一员工仅约定一次试用期<span class="m-note"> — 续签/调岗不得重设</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">6. 合同工作地点为「主地址 + 同城可调整」<span class="m-note"> — 避免约定不明</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">7. 跨市调店须签书面变更协议<span class="m-note"> — 协商一致是前提</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">8. 员工手册经职代会/全体职工讨论<span class="m-note"> — 第 4 条民主程序</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">9. 有工会或职工代表的协商确认书<span class="m-note"> — 第 4 条平等协商</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">10. 制度已公示且员工签《告知确认书》<span class="m-note"> — 留痕是效力要件</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">11. 入职登记表信息真实且有员工签字确认<span class="m-note"> — 招工记录由用人单位举证</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">12. 无收取押金、保证金、扣押证件情形<span class="m-note"> — 第 9 条、第 84 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">13. 研发/采购/拓展岗位已单独签竞业限制协议<span class="m-note"> — 第 23、24 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">14. 竞业限制期限 ≤ 2 年<span class="m-note"> — 第 24 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">15. 竞业补偿按月支付且有银行转账凭证<span class="m-note"> — 未按月付存在失效风险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">16. 离职时对无需限制者发出书面解除通知<span class="m-note"> — 止损阀动作</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">17. 专项培训（费用真实）才约定服务期<span class="m-note"> — 第 22 条；违约金不超过未履行分摊额</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">18. 除服务期/竞业外无其他员工违约金条款<span class="m-note"> — 第 25 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">19. 社保自用工之日起 30 日内办理登记<span class="m-note"> — 社保法第 58 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">20. 社保缴费基数与工资一致<span class="m-note"> — 少缴可被责令补缴 + 滞纳金</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">21. 工资表有员工签字或电子确认记录<span class="m-note"> — 调解仲裁法第 6 条举证倒置</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">22. 考勤记录保存 ≥ 2 年且可导出<span class="m-note"> — 加班费争议的胜负手</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">23. 加班有审批，且有补休或 150%/200%/300% 支付记录<span class="m-note"> — 劳动法第 44 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">24. 年休假安排有记录，未休的已支付 300% 工资<span class="m-note"> — 职工带薪年休假条例第 5 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">25. 解除/终止有书面通知且已送达<span class="m-note"> — 程序瑕疵 = 违法解除</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">26. 单方解除已事先通知工会<span class="m-note"> — 第 43 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">27. 离职 15 日内办理档案和社保转移<span class="m-note"> — 第 50 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">28. 离职证明已出具且内容仅限法定四项<span class="m-note"> — 第 50 条；不得写负面评价</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">29. 竞业限制人员离职后有月度履行核查记录<span class="m-note"> — 发现违约及时取证</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">30. 用工档案保存至员工离职后 ≥ 2 年<span class="m-note"> — 覆盖仲裁时效 1 年 + 宽限</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

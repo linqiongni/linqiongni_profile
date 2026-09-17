@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·第4天｜保价、免赔与责任限额的合同设计</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · DAY 4 / 5　·　阶段一　打地基</div><h1>保价、免赔与责任限额的合同设计</h1><div class="sub">第 5 周主题：货运保险与责任险 —— 赔了以后找谁要回来</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">保价与责任限额就是快递单上那个「是否保价」的勾：不勾，丢了只赔运费三倍；勾了，按声明价值赔。合同里的责任限额就是这个勾，写多少决定你将来赔多少。</div><div class="mlink"><b>怎么串到今天</b>昨天看保险怎么兜底，今天看合同怎么写才让兜底真正生效——这是你能主动设计的部分。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>保价(Declared Value)是客户提高赔偿上限的付费选项；免赔(Deductible)是我方自留风险额；责任限额(Limit)是法定或约定封顶</li><li>三套条款（严格/平衡/宽松）对应我方三种谈判地位：强势承运、对等交易、争取客户</li><li>放弃法定责任限制（如宽松版）在多数公约下允许，但重大过失/故意时常不可排除，须核对</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《保价与责任限额条款库》——严格版 / 平衡版 / 宽松版三套条款文本</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请输出《保价与责任限额条款库》，给可直接落地的中英对照条款，分三套：
+1. 先讲清三个概念：保价(Declared Value / 货物声明价值)、免赔额(Deductible / Excess)、责任限额(Liability Limit)——各自是什么、在合同里怎么相互作用。用「快递保价」比喻引入。
+2. 严格版（Strict）：适用于我方谈判强势、低毛利、高损风险业务。给出：责任限额条款(以运费为限/封顶)、免赔额条款(高免赔)、保价条款(须书面申报+付费才提高)。中英对照，措辞偏向保护物流商。
+3. 平衡版（Balanced）：默认适用。责任限额引用法定单位责任限制(如海牙-维斯比 666.67 SDR/件或 2 SDR/公斤)、保价可选、免赔适中，且不排除重大过失。
+4. 宽松版（Loose）：客户强势/战略客户。接受申报价值为赔偿上限、免赔降至极低或免、明示放弃法定责任限制。说明「放弃限制」在公约下的有效性边界（重大过失常不可排除）。
+5. 每套说明「在什么谈判地位下用」，并给选择决策表。
+6. 最后给一条硬规则：无论哪套，必须把「间接损失/利润损失」明确排除或限低，并写明责任限制丧失的情形（如欺诈、重大过失）。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：保价、免赔、限额是「赔多少」的三道闸门</h2>
+<p>用快递保价比喻：你寄手机选「保价 5000 元」多付几块，碎了顺丰按 5000 赔；不保价只按运费三倍赔，且每票还有「免赔 100 元」自己扛，单票最高不超「限额」。跨境物流的赔偿逻辑一模一样：<b>保价</b>是客户花钱把赔偿天花板抬高；<b>免赔</b>是我方先扣一笔自己不赔；<b>限额</b>是法律/合同给我的硬封顶。三道闸门叠在一起，决定「这票货真出事，我方最多掏多少」。今天给可直接抄进合同的三套条款。</p>
+<div class="key">记忆点：<b>保价=客户加钱抬高赔偿上限；免赔=我方先扣一笔自留；限额=法律/合同硬封顶。三者相乘，就是我方对一票货的「最大出血额」。今天三套条款，本质是在不同谈判地位下，把这道闸门开多大。</b></div>
+<h2>二、三个概念如何相互作用</h2>
+<table><thead><tr><th>概念</th><th>定义</th><th>谁受益</th><th>合同作用</th></tr></thead><tbody><tr><td>保价 Declared Value</td><td>客户书面申报货值+付费</td><td>客户(赔得多)</td><td>把赔偿上限从「限额」抬到「申报值」</td></tr><tr><td>免赔 Deductible</td><td>每票自担额</td><td>我方(少赔)</td><td>损失先扣免赔，我方只赔超出部分</td></tr><tr><td>限额 Limit</td><td>法定/约定封顶</td><td>我方(封顶)</td><td>无论损失多大，最多赔到限额</td></tr><tr><td>三者叠加</td><td>申报值≥限额≥(损失−免赔)</td><td>—</td><td>实际赔付=min(损失−免赔, 申报值/限额)</td></tr></tbody></table>
+<h2>三、严格版（Strict）：我方强势、低毛利、高损风险</h2>
+<h3>① 责任限额条款（中英对照）</h3>
+<blockquote>【中】我方对本合同项下任何货物的灭失或损坏所承担之全部赔偿责任，以该票货物所收取之运费总额为限；单票赔偿总额最高不超过 [X] 美元（或等值 SDR）。对于任何间接损失、利润损失、市场价值损失或营业中断损失，我方概不负责。
+【EN】Our aggregate liability for any loss of or damage to goods under this Contract shall not exceed the total freight charged for the relevant consignment, with an absolute cap of [X] USD (or equivalent SDR) per shipment. We shall not be liable for any consequential, loss-of-profit, market-value or business-interruption loss whatsoever.</blockquote>
+<h3>② 免赔额条款（中英对照）</h3>
+<blockquote>【中】每票货物设有免赔额，金额为 [X] 美元或核定损失之 [X]%，以较高者为准。免赔额范围内之损失，我方不予赔偿。
+【EN】A deductible of [X] USD or [X]% of the adjusted loss, whichever is higher, applies to each shipment. Losses within the deductible are not recoverable from us.</blockquote>
+<h3>③ 保价条款（中英对照）</h3>
+<blockquote>【中】除非客户于托运时以书面形式明确申报货物价值，并按申报价值之 [X]% 支付保价费，否则我方赔偿责任按上述限额执行，不以货物实际价值为准。
+【EN】Unless the Customer declares the cargo value in writing at the time of booking and pays a declared-value fee of [X]% of the declared value, our liability shall be governed by the aforesaid limits and not by the actual value of the goods.</blockquote>
+<div class="key">严格版适用场景：我方是强势承运/头程庄家、单票货值远高于运费、行业惯例即低责任（如部分专线）；或客户信用差、易碰瓷。代价：客户可能因此转单，须用低价对冲。</div>
+<h2>四、平衡版（Balanced）：默认适用、对等交易</h2>
+<h3>① 责任限额条款（中英对照）</h3>
+<blockquote>【中】我方责任依所适用之国际公约或法律之单位责任限制（如经修正之海牙-维斯比规则 666.67 计算单位/件或 2 计算单位/公斤，以较高者为准）确定，双方确认该等法定限额于本合同有效适用。
+【EN】Our liability shall be determined in accordance with the applicable unit limitation under the relevant international convention or law (e.g., the Hague-Visby Rules as amended, 666.67 SDR per package or 2 SDR per kg, whichever is higher), and the parties confirm such statutory limits apply to this Contract.</blockquote>
+<h3>② 保价与免赔（中英对照）</h3>
+<blockquote>【中】客户可于托运时选择申报货物价值并支付保价费；申报价值经我方接受后，赔偿上限提高至申报价值，但最低仍不低于法定责任限制。每票设免赔额 [X] 美元，不适用于我方重大过失或故意情形。
+【EN】The Customer may optionally declare the cargo value and pay a declared-value fee at booking; once accepted, the compensation cap rises to the declared value, subject to a floor of the statutory limitation. A deductible of [X] USD applies per shipment, except in cases of our gross negligence or wilful misconduct.</blockquote>
+<div class="key">平衡版适用场景：绝大多数常规客户、对等议价。引用法定限额既合法又清晰，保价可选给客户灵活度，免赔适中控制小额频发索赔。是「默认模板」。</div>
+<h2>五、宽松版（Loose）：客户强势、战略大客、争单</h2>
+<h3>① 责任与保价条款（中英对照）</h3>
+<blockquote>【中】我方接受客户于托运时书面申报之货物价值作为本票货物赔偿之上限；在申报价值范围内之全部灭失或损坏，我方予以赔偿。除双方另有约定外，本合约不设免赔额；单票微小损失亦按实际损失赔偿。
+【EN】We accept the cargo value declared by the Customer in writing at booking as the compensation cap for that shipment; we shall indemnify all loss or damage within the declared value. Unless otherwise agreed, no deductible applies under this Contract; even minor losses per shipment are compensated at actual loss.</blockquote>
+<h3>② 放弃责任限制（中英对照）</h3>
+<blockquote>【中】我方在此明示放弃援引任何法定责任限制之权利，按申报价值或实际损失（以较高者）赔偿。但本放弃不适用于因我方欺诈、故意或重大过失造成之情形。
+【EN】We expressly waive the right to invoke any statutory limitation of liability and shall compensate based on declared value or actual loss, whichever is higher; provided that this waiver shall not apply to loss caused by our fraud, intent or gross negligence.</blockquote>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 「放弃法定责任限制」在多数公约（如海牙-维斯比第 3 条第 8 款精神，向货方有利地提高责任通常被允许；但承运人故意/重大过失致损时，许多法系规定不得限制/排除责任——故宽松版必须保留「欺诈/故意/重大过失除外」兜底；② 我国《海商法》关于责任限制丧失（如第 59 条故意或明知可能造成损失而轻率地作为/不作为）的条号与要件须核对；③ 上述 [X] 数值须按我方风险偏好与再保险/责任险限额填定。</div>
+<div class="key">宽松版适用场景：战略大客户、为拿单不得不让利、客户以「不接此条款就换供应商」施压。代价：我方风险敞口极大，须同步把该客户单票货值控制在责任险限额内，或要求客户自购货险转移。客户反制点：客户会拿宽松版去压其他供应商，也须防客户故意低报价值高索赔。</div>
+<h2>六、三套条款选择决策表</h2>
+<table><thead><tr><th>我方谈判地位</th><th>客户特征</th><th>推荐版本</th><th>核心取舍</th></tr></thead><tbody><tr><td>强势(庄家/低毛利)</td><td>价格敏感、易碰瓷</td><td>严格版</td><td>保利润、控敞口，用低价对冲</td></tr><tr><td>对等(常规)</td><td>正常电商/工厂</td><td>平衡版</td><td>法定限额+可选保价，安全默认</td></tr><tr><td>弱势(争单)</td><td>战略大客/强议价</td><td>宽松版</td><td>拿单优先，须用货险/责任险再兜</td></tr><tr><td>混合</td><td>同客户不同产品线</td><td>分产品套用</td><td>高值线用平衡/宽松，普货线用严格</td></tr></tbody></table>
+<h2>七、硬规则：无论哪套都必须写死的两件事</h2>
+<ul><li><b>排除/限低间接损失</b>：间接损失、利润损失、市场损失、营业中断，必须明确排除或限额——这是吞噬利润的无底洞，任何版本都不能留白。</li><li><b>写明责任限制丧失情形</b>：欺诈、故意、重大过失导致责任限制/免赔失效，须明示（如宽松版兜底），否则法庭可能直接判全部赔。</li><li><b>保价须「书面+付费」双要件</b>：未书面申报或未付费，一律按限额赔，杜绝客户口头说「我的货很贵」事后加价索赔。</li><li><b>限额数值与责任险对齐</b>：合同承诺的限额不得超过我方货代责任险的每次事故限额，否则「承诺的赔不起、保险不补」。</li></ul>
+<div class="key">今日口诀：<b>保价抬高天花板、免赔先扣自留、限额硬封顶——三道闸门相乘就是我方最大出血额。严格版护己、平衡版默认、宽松版争单；但间接损失永远要排除，限额永远别超过责任险。三套条款模板可直接抄进合同，填 [X] 即可。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Declared Value</div><div class="cn">保价 / 货物声明价值</div><div class="df">客户托运时书面申报较高货值并付费，使赔偿上限提高至申报值；未申报则按限额赔</div></div><div class="ti"><div class="en">Deductible / Excess</div><div class="cn">免赔额</div><div class="df">每票损失中由客户自担、我方不赔的部分，按固定金额或损失比例计，是风险自留工具</div></div><div class="ti"><div class="en">Liability Limit</div><div class="cn">责任限额</div><div class="df">法定或合同约定的赔偿封顶；海运常引海牙-维斯比 666.67 SDR/件或 2 SDR/公斤等</div></div><div class="ti"><div class="en">Hague-Visby Rules</div><div class="cn">海牙-维斯比规则(1971 议定书)</div><div class="df">海运承运人责任与单位限制公约蓝本；我国《海商法》借鉴其 666.67 SDR/件或 2 SDR/公斤【数值与条号待核实】</div></div><div class="ti"><div class="en">Waiver of Limitation</div><div class="cn">放弃责任限制</div><div class="df">承运人明示放弃法定限额、按全额赔偿；多数公约允许向货方有利地提高，但重大过失/故意常不可排除【待核实】</div></div></div></div><div class="foot"><a href="W5-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W5-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script><script src="/theme-toggle.js"></script>
+</body></html>

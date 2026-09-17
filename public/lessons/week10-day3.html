@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品标签、追溯、召回与冷链</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>食品标签、追溯、召回与冷链</h1>
+    <div class="meta">总部（特许人）立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">从定制包装谁担责、GB7718标签合规、一物一码追溯、一二三级召回时限到冷链温度证据，建立产品质量与召回合规体系。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 食品标签合规</div><div class="tab" data-p="p2">② 追溯体系</div><div class="tab" data-p="p3">③ 食品召回</div><div class="tab" data-p="p4">④ 冷链与配送</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>预包装标签强制标示（GB 7718）</h3>
+<p>必须标示：<strong>名称、规格、净含量、生产日期；成分或配料表；生产者名称地址联系方式；保质期；产品标准代号；贮存条件；生产许可证编号（SC）；营养成分表（GB 28050）</strong>等。</p><p><strong>总部定制包装谁生产？</strong>代工贴牌时，<b>法律上的'生产者'是营业执照标示的委托方（总部）</b>，标签责任由总部承担——这是定制代工的核心风险点。</p><div class="act"><b>我的落地动作：</b>所有定制包装由总部法务审核标签，建立《标签合规库》；代工协议明确'委托方为总部、承担标签责任'，但向代工厂追偿条款单列。</div><div class="anti"><b>加盟商反制点：</b>加盟商若自行贴牌或改标签，责任自负；总部应禁止加盟商擅改统配包装标签，违者依合同解约。</div>
+</div>
+<div class="card"><h3>职业打假最爱的标签问题</h3>
+<table><thead><tr><th>问题</th><th>风险</th><th>防范</th></tr></thead><tbody><tr><td>配料表排序错误（未按递减量）</td><td>十倍/行政处罚</td><td>按配方精确排序</td></tr><tr><td>添加剂未标或标错码</td><td>第148条/第124条</td><td>GB 2760核对</td></tr><tr><td>虚假宣称'无添加''纯天然'</td><td>虚假宣传（反法第9条）</td><td>禁绝对化宣称</td></tr><tr><td>营养标签不符GB 28050</td><td>十倍/整改</td><td>送检核定</td></tr><tr><td>生产日期涂改/模糊</td><td>严重违法</td><td>喷码清晰可追溯</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">食品标签合规检查表</strong><div class="progress"><i id="bar12"></i></div><span id="cnt12" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">1. 名称/净含量/生产日期齐全清晰<span class="m-note"> — GB7718</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">2. 配料表按递减量排序、添加剂标码<span class="m-note"> — GB2760</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">3. 生产者名称地址联系方式正确（总部为委托方）<span class="m-note"> — 代工责任归属</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">4. 保质期+贮存条件标示<span class="m-note"> — 防过期误售</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">5. 产品标准代号+SC编号<span class="m-note"> — 准入要件</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">6. 营养成分表符合GB28050<span class="m-note"> — 强制</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">7. 无'无添加/纯天然'等虚假宣称<span class="m-note"> — 反法第9条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar12','cnt12')"><span class="m-txt">8. 转基因/致敏原按规定标示<span class="m-note"> — 特殊要求</span></span></label></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>进货查验记录保存期限与批次管理</h3>
+<p>《食品安全法》第53条：进货查验记录与凭证保存期限<strong>不得少于产品保质期满后6个月；无明确保质期的，不得少于2年</strong>。批次管理：一物一码、先进先出（FIFO）。</p><div class="act"><b>我的落地动作：</b>总部统建'一物一码'追溯系统：原料入库→批次→门店→菜品，全链可查；门店每日录入进货查验，系统自动预警临期。</div><div class="anti"><b>加盟商反制点：</b>加盟商自采部分也须自留查验记录≥2年，否则出事时无法自证合规、责任自担。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">追溯体系落地清单</strong><div class="progress"><i id="bar13"></i></div><span id="cnt13" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">1. 统配原料一物一码+批次号<span class="m-note"> — 全链可溯</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">2. 门店进货查验系统每日录入<span class="m-note"> — 替代纸质台账</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">3. 先进先出+临期自动预警<span class="m-note"> — 减过期风险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">4. 记录保存：期满6个月/无期2年<span class="m-note"> — 法53条硬线</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">5. 召回时可30分钟定位受影响门店<span class="m-note"> — 见下栏召回</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar13','cnt13')"><span class="m-txt">6. 异常处理：锁定批次+通知门店下架<span class="m-note"> — 闭环</span></span></label></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>召回分级与启动</h3>
+<p>《食品安全法》第63条+《食品召回管理办法》：</p><p><strong>一级召回</strong>（食用后可能导致严重健康损害）：<span class='num'>24小时</span>内公告；<strong>二级</strong>（较大损害）：<span class='num'>48小时</span>；<strong>三级</strong>（一般风险）：<span class='num'>72小时</span>。</p><p><strong>主动召回 vs 责令召回</strong>：主动召回体现整改态度、可从轻；被责令召回说明未主动履职、处罚更重。召回费用原则上由<strong>生产者（总部/供应商）承担</strong>，依供货合同向责任方追偿。</p><div class="act"><b>我的落地动作：</b>总部设《产品召回管理制度》：决策流程（品控+法务+PR）→通知模板→公告→处置销毁→监管报告→复盘，并写入统配协议'召回费由责任方担'。</div><div class="anti"><b>加盟商反制点：</b>加盟商被牵连召回时，可凭进货记录向总部/供应商追偿下架损失、消费者赔付，合同须明确此路径。</div>
+</div>
+<div class="card"><h3>召回管理制度要素</h3>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>分级标准</td><td>一/二/三级对应24/48/72h</td></tr><tr><td>决策流程</td><td>品控发起→法务评估→负责人批准</td></tr><tr><td>通知模板</td><td>门店/监管/消费者三版</td></tr><tr><td>处置与销毁</td><td>下架封存+影像+记录</td></tr><tr><td>费用承担</td><td>责任方（总部/供应商）</td></tr><tr><td>报告义务</td><td>向监管书面报告召回情况</td></tr><tr><td>复盘</td><td>根因+制度修补</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">召回执行清单（总部）</strong><div class="progress"><i id="bar14"></i></div><span id="cnt14" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">1. 启动：品控确认风险等级<span class="m-note"> — 定一二三级</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">2. 24/48/72h内发公告并下架<span class="m-note"> — 法63条时限</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">3. 通知相关门店停止销售+封存<span class="m-note"> — 防损害扩大</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">4. 通知监管并提交召回计划<span class="m-note"> — 主动从轻</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">5. 善后：退货/赔偿/销毁留档<span class="m-note"> — 闭环</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">6. 向责任供应商追偿<span class="m-note"> — 合同依据</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar14','cnt14')"><span class="m-txt">7. 复盘并修补制度<span class="m-note"> — 防再发</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>温度记录的证据意义</h3>
+<p>冷链断链导致食安问题，<strong>温度记录是划分总部/供方/门店责任的关键证据</strong>。配送须全程温控（冷冻≤-18℃、冷藏0–8℃），到店测温签收。</p><p><strong>断链责任</strong>：供方运输断链→供方责；门店收货不测温→门店责；统配系统故障→总部责。故<strong>每一环测温留痕</strong>。</p><div class="act"><b>我的落地动作：</b>冷链车装温度记录仪+GPS，到店门店测温上传系统；异常自动报警并冻结该批使用。</div><div class="anti"><b>加盟商反制点：</b>加盟商收货须当场测温并留证，否则断链损害自担；对总部统配冷链异常应拒收并上报。</div>
+</div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

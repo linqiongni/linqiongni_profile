@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 16 周第 3 天 · 成果整合：我的法务工具箱</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 16 周第 3 天 · 成果整合：我的法务工具箱</h1>
+    <div class="meta">综合实战与结业：从学习者到法务总监</div>
+  </header>
+  <div class="lead">十六周下来真正属于你的、别人拿不走的，不是那些制度文件，是<strong>你自己的条款库</strong>——每一条都是被真案子或真谈判磨出来的，知道它在什么情形下写过、被谁挑战过、最后改成了什么样。制度可以抄，条款库抄不走。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、12 份核心文件</div><div class="tab" data-p="p2">二、个人条款库</div><div class="tab" data-p="p3">三、判例库与法规库</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>工具箱里必须有、且能随时拿出来的 12 份</h3>
+<p>按「用得最频繁 → 用得最少」排序，这 12 份要能在 10 分钟内从电脑里调出来，并且每份都有<u>当前版本号与最后修订日期</u>。</p>
+</div>
+<div class="card"><h3>餐饮加盟法务工具箱 · 12 份核心文件</h3>
+<table><thead><tr><th>#</th><th>文件</th><th>来源周</th><th>关键内容</th></tr></thead><tbody><tr><td>1</td><td>特许经营合同（特许人版）+ 6 附件</td><td>W6–W7</td><td>52 条 + 全套附件</td></tr><tr><td>2</td><td>信息披露文件 + 12 项对照表 + 回执</td><td>W3</td><td>30 日 + 三步留痕</td></tr><tr><td>3</td><td>招商话术红黄线表</td><td>W5</td><td>红线/黄线/绿线各 20 条</td></tr><tr><td>4</td><td>餐饮门店租赁合同审查清单（40 项）</td><td>W8</td><td>含餐饮特殊条款 20 项</td></tr><tr><td>5</td><td>选址法律尽调清单（30 项）+ 否决项（11 项）</td><td>W8</td><td>含住宅底商专题</td></tr><tr><td>6</td><td>门店食品安全合规手册（含 104 号令）</td><td>W9</td><td>八环节 + 自查 100 条</td></tr><tr><td>7</td><td>食品安全事故应急预案（72h SOP）</td><td>W9</td><td>分级报告 + 黄金 4 小时</td></tr><tr><td>8</td><td>统采统配供货框架协议 + 反垄断自查表</td><td>W10</td><td>RPM 只做建议价</td></tr><tr><td>9</td><td>加盟体系用工合规手册</td><td>W11</td><td>管标准不管人</td></tr><tr><td>10</td><td>数据处理协议 + 预付卡合规检查表</td><td>W12</td><td>权属 + 存管 20/30/40%</td></tr><tr><td>11</td><td>品牌保护年度方案 + 打假案件台账</td><td>W13</td><td>监测 + 分级 SLA</td></tr><tr><td>12</td><td>加盟纠纷应诉手册（分案由作战手册）</td><td>W14</td><td>请求权基础 + 谈判区间</td></tr></tbody></table></div>
+<div class="act"><b>我的落地动作：</b>把这 12 份做成一个目录页（一页纸），每份标注：版本号、最后修订日、责任人、下次复核日。法务总监的第一份「资产清单」就是这一页。</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>条款库怎么建：不是收藏夹，是带「伤疤记录」的活库</h3>
+<p><b>一条合格的条款记录，至少六个字段</b>：</p><p>① <b>条款正文</b>（可直接复制使用）；② <b>适用场景</b>（什么合同、什么情形）；③ <b>我方立场</b>（为什么这样写对我们有利）；④ <b>被挑战记录</b>（对方怎么改、法官怎么问、最后改成什么样）——<u>这是最有价值的字段</u>；⑤ <b>法律依据</b>（条号）；⑥ <b>版本号与日期</b>。</p><p><b>分类建议</b>：按合同类型分 8 大类（特许经营 / 租赁 / 采购供应 / 劳动 / 数据处理 / 知识产权 / 争议解决 / 通用），每类下再按条款功能分（定义、义务、违约、解除、兜底）。</p><div class="act"><b>我的落地动作：</b>从今天起，每遇到一次「被对方改动」或「被法官质疑」，就把该条款和当时的情形记一笔，标注「被改原因」。一年下来 30 条，三年 100 条——这就是你的护城河，也是你面试时最硬的素材。</div>
+</div>
+<div class="card"><h3>条款库记录卡（示例）</h3>
+<table><thead><tr><th>字段</th><th>内容</th></tr></thead><tbody><tr><td>条款名</td><td>管理费按营业额计收 + 数据接入义务</td></tr><tr><td>正文</td><td>乙方应于每日营业结束后将当日营业数据实时上传至甲方指定系统；连续 3 日未上传或数据明显异常且不能作出合理说明的，甲方有权按乙方前 3 个月日均营业额的 120% 计收管理费，并有权暂停供货直至数据恢复上传。</td></tr><tr><td>适用场景</td><td>特许经营合同 · 费用条款</td></tr><tr><td>我方立场</td><td>把管理费基数从「对方申报」改为「系统直采」，并把举证责任反向压给对方</td></tr><tr><td>被挑战记录</td><td>某加盟商主张「数据属商业秘密，无义务上传」，法院未支持其主张，但要求甲方说明数据用途 → 后续版本增加「甲方仅用于费用结算，不用于其他商业目的，并承担保密义务」一句</td></tr><tr><td>法律依据</td><td>民法典第 509 条（全面履行）、第 510 条（约定不明）</td></tr><tr><td>版本</td><td>v3.2 / 2026-09</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>两个库的建法与维护节奏</h3>
+<p><b>判例库</b>：按案由分 7 类（冷静期 / 信息披露与虚假宣传 / 欠费撤店 / 商标与仿冒 / 用工 / 食安 / 数据与预付卡）。每份记录 5 个字段：案号、裁判要旨（一句话）、对我方的启示、对应条款、来源与检索日。</p><p><b>维护节奏</b>：每季度补充 10–15 份，每年清一次「被新规推翻」的条目。目标：一年内 50 份，两年内 100 份。</p><p><b>法规库</b>：按效力层级分（法律 / 行政法规 / 部门规章 / 司法解释 / 地方性规定 / 国家标准），每份标注<u>施行日期与最近修订</u>。餐饮加盟高频：商业特许经营管理条例、备案管理办法、信息披露管理办法、食品安全法及实施条例、<strong>104 号令</strong>、餐饮业促进和经营管理办法（2025）、商标法、反不正当竞争法（2025）、广告法、个人信息保护法、单用途商业预付卡管理办法（商务部令 2012 年第 9 号）、网络餐饮服务食品安全监督管理办法、劳动合同法及实施条例、<strong>仲裁法（2026.3.1 新施行）</strong>、民法典。</p><div class="act"><b>我的落地动作：</b>建一个「法规变更提醒」清单：每月花 30 分钟扫一次市场监管总局、商务部、最高法的新规发布。2025–2026 这一年就出了三部影响加盟实务的新规（新反法、餐饮业办法、104 号令），不盯着就会用旧条文签新合同。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">工具箱整合 20 项</strong><div class="progress"><i id="bar3"></i></div><span id="cnt3" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">1. 12 份核心文件齐备<span class="m-note"> — 含版本号</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">2. 一页纸资产清单（目录页）<span class="m-note"> — 含复核日</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">3. 条款库建库（8 大类）<span class="m-note"> — 至少 30 条起</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">4. 每条含「被挑战记录」字段<span class="m-note"> — 核心</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">5. 条款版本管理规则<span class="m-note"> — vX.Y + 日期</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">6. 判例库建库（7 类）<span class="m-note"> — ≥50 份</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">7. 判例每季补 10–15 份<span class="m-note"> — 节奏</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">8. 法规库按效力层级分类<span class="m-note"> — 含施行日</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">9. 高频法规清单（15 部以上）<span class="m-note"> — 含最新修订</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">10. 法规变更月度扫描（30 分钟）<span class="m-note"> — 日历提醒</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">11. 标准模板库 ≥12 套<span class="m-note"> — 卡点</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">12. 招商话术红黄线表最新版<span class="m-note"> — 市场部签字确认</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">13. 食安 104 号令台账模板<span class="m-note"> — 三本台账</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">14. 预付卡备案与存管日历<span class="m-note"> — 30 日 / 季度</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">15. 用工隔离四防线检查表<span class="m-note"> — 季度复核</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">16. 数据处理协议与退出流程<span class="m-note"> — 含删除确认书</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">17. 打假案件台账（26 字段）<span class="m-note"> — W13</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">18. 诉讼案件台账（18 字段）<span class="m-note"> — W14</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">19. 诉讼成本效益评估表<span class="m-note"> — 起诉前必填</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar3','cnt3')"><span class="m-txt">20. 个人年度复盘报告<span class="m-note"> — 结业前完成</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

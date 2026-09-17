@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第30周 自测卷｜案源与专业标签</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.qz-day{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;margin:16px 0}
+.qz-day.wk{border-left-color:var(--gold)}
+.qz-day .dt{font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:5px}
+.qz-day .dh{font-size:16px;color:var(--tx);margin-bottom:10px;font-weight:600}
+.qz-day .dh2{font-size:16px;color:var(--tx);font-weight:600;margin-bottom:6px}
+.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78}
+.qa .qn{color:var(--gold);font-weight:700;margin-right:6px}
+.qa .badge{font-size:11px;border:1px solid var(--line2);color:var(--tx3);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}
+.qa .an{color:var(--jade);font-weight:700;margin-right:6px}
+.qz-deliv{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.qz-deliv .dl{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px}
+.sub2{color:var(--tx2);font-size:13.5px;margin:6px 0 4px}
+@media(max-width:640px){.qa .q{font-size:13.6px}.qa .a{font-size:13px}}
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 30 / 32 · 自测卷　·　第 4 层 出师 · 行业专精</div><h1>第 30 周 自测卷</h1><div class="sub">案源与专业标签　·　答案内嵌显示，无需点击展开</div><div class="sub2">本周聚焦从法务到 IP 专业人的双通道路径、内部客户沟通与需求转化、报价与服务方案、专业文章与演讲分寸、个人知识管理与工具箱，以及周末的服务方案与文章实战。每题答案直接附在题后，无需点击展开。</div><div class="qz-day"><div class="dt">D1 · 自测</div><div class="dh">从法务到 IP 专业人的业务路径</div><div class="qa"><div class="q"><span class="qn">QD1-1</span>企业法务的「案源」和执业律师一样，都是外部客户付费委托？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>错。企业法务的案源是「内部业务需求 + 外部专业声誉」双通道——内部来自各业务部门，外部来自行业里挂出的专业标签；执业律师才是外部客户付费委托、按件计费。两者获客与考核逻辑相反。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-2</span>专业标签为什么要押注「珠宝时尚 IP」这种细分，而不是泛泛说「我懂 IP」？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>行业里懂 IP 的人太多，「我懂 IP」无识别度。细分才有记忆点：珠宝时尚 IP 行业 IP 密度高（设计/商标/外观/肖像全占）、你已有行业语境与案例、外部复合标签稀缺。标签公式 = 行业 × 职能 × 差异点，要能一句话说清。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-3</span>企业法务对外以「IP 专家」名义写文章、演讲，有哪些合规红线？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>⚠ 待核实。核心红线：你是企业法务非执业律师，对外表达须落「企业内部视角」，不出具具有对外法律效力的意见，避免触及「未经律所执业非法提供法律服务」的边界（《律师法》2017 修正）。实务做法：署名带公司职务、注明「基于企业实践、非对外法律意见」、不点评未决个案、不泄露客户/公司秘密。</div></div></div><div class="qz-day"><div class="dt">D2 · 自测</div><div class="dh">客户沟通与需求转化</div><div class="qa"><div class="q"><span class="qn">QD2-1</span>业务方说「赶紧发函告他抄袭」，法务应立刻发函以显效率？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>错。应先做需求访谈五问，确认权利基础与证据是否充分。贸然发函可能打草惊蛇、且若根本无权利基础或证据不足会反噬。先把模糊诉求变成有要件的案子，再定发函/投诉/起诉路径。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-2</span>需求访谈「五问」是哪五问？各自要挖出什么？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>① 你想要什么业务结果（锁定目标）；② 发生了什么事实（固定要件）；③ 你手里有什么权利基础（查底数）；④ 时间多紧、预算多少（定路径与成本阈值）；⑤ 谁拍板、谁配合（排资源）。五问把模糊诉求变成有要件的案子。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-3</span>业务方问「这案子能赢吗」「多久能下架」，你怎么回应既不承诺结果又不得罪人？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>用「动作 + 时限 + 阶段产出」：如「我先做胜诉率与证据评估，本周五给可行性结论」；下架取决于平台审核，「我会同步推进并每日反馈进度」。禁说「包赢」「一周搞定」「肯定赔 50 万」。把期望管理成可控，而非给结果。</div></div></div><div class="qz-day"><div class="dt">D3 · 自测</div><div class="dh">报价与服务方案写作</div><div class="qa"><div class="q"><span class="qn">QD3-1</span>服务方案里「除外条款」可有可无，写了反而显得不专业？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>错。除外条款是护城河，明确不含诉讼代理、不含中国港澳台等，防止越界承诺与白嫖。范围写得宽易被加塞、写得窄被说甩锅，除外条款正是平衡边界的工具，专业方案必备。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-2</span>计时、计件、包年三种计费分别适合什么场景（给出区间⚠）？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>计时适零散咨询/疑难研究（约 2000-5000 元/小时 ⚠待核实）；计件适模板化交付如合同/注册/发函（单份联名合同约 8000-30000 元 ⚠待核实）；包年适常年顾问/持续需求（约 20 万-80 万/年 ⚠待核实）。企业法务自身不收费，仅用于量化对内价值与理解外部律师报价。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-3</span>风险代理在哪些案件被禁止？依据是什么？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>⚠ 待核实。依据《律师服务收费管理办法》及《关于进一步规范律师服务收费的意见》，刑事诉讼、行政诉讼、国家赔偿、群体性诉讼案件不得适用风险代理；其他民商事案件风险代理收费比例有上限（通常不超过标的额 30%，⚠ 具体以现行规定为准）。本条仅用于理解外部律师报价，企业法务自身不收费。</div></div></div><div class="qz-day"><div class="dt">D4 · 自测</div><div class="dh">专业文章与演讲</div><div class="qa"><div class="q"><span class="qn">QD4-1</span>专业文章选题追热点最安全，因为阅读量高、曝光大？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>错。热点易空、易过时、易踩未核实信息；「选题从案来」最稳——你真办过的案自带细节与行业语境，难被挑错。没办过的先研究再写、标「研究型」。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-2</span>公开演讲「三不」红线是什么？被问未决个案怎么答？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>三不 = 不泄露客户/公司秘密、不评价未决案件、不给出位法律意见。被问未决个案时答：「公开场合不对具体个案给意见，可会后私聊通用框架」，既守红线又不冷场。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-3</span>文章被同行指法条引用错误，怎么处理最专业？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不硬杠。24 小时内核查原文与法条，确有误则发「更正与说明」、保留修改记录、并把正确版本更新进知识库。硬杠只会放大错误，专业人用更正显严谨。⚠ 发表合规边界以《律师法》及公司制度为准。</div></div></div><div class="qz-day"><div class="dt">D5 · 自测</div><div class="dh">知识管理与个人工具箱</div><div class="qa"><div class="q"><span class="qn">QD5-1</span>用 AI 辅助法务，可以把客户合同原文喂给公开大模型以提高效率？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>错。凡含公司/客户名称、未公开合同、未决案件细节，一律不进公开大模型，违保密红线。可用脱敏/匿名材料做梳理论点、起草初稿、整理检索思路、翻译校对，但绝不让 AI 出具具法律效力的结论。⚠ 以公司数据安全制度为准。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-2</span>个人知识库为什么要分「案件/模板/研究」三层、法条库为何标版本+核对日？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>三层分离让经验可搜、模板可抄、研究可查，散落微信邮件的经验等于零。法条常修订（反法 2019 修正、著作权法 2020 修正），过时法条比没有更危险，标版本+核对日、季度复核，确保引用现行有效条文。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-3</span>检索中国香港/中国澳门/中国台湾的 IP 信息，为什么不能混同大陆库？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>港澳台各自独立 IP 制度（中国香港/中国澳门有独立注册体系、中国台湾有单独商标专利制度），与大陆不互通。须用当地官方系统（如中国香港知识产权署、中国台湾经济部智慧财产局）分别检索，表述写「中国香港/中国澳门/中国台湾」绝不当国家。⚠ 以当地官方规定为准。</div></div></div><div class="qz-day wk"><div class="dt">WEEKEND · 实战复盘</div><div class="dh">周末实战复盘 · 服务方案与专业文章</div><div class="qa"><div class="q"><span class="qn">QWE-1</span>服务方案「除外条款」写「不含中国港澳台」为什么必须、怎么写不出错？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>港澳台 IP 制度独立，不应纳入你的服务能力范围，列出可防越界承诺与责任。表述必须写「中国香港/中国澳门/中国台湾」绝不当国家，并建议加「不含诉讼代理、不含未列明监管申报」。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-2</span>文章首段为什么放「真实困境」钩子 + 非意见声明？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>真实困境（脱敏）建立共鸣与专业可信度，比空泛开场强；非意见声明（基于企业法务实务、不构成对外法律意见、法条以现行版为准）守住合规红线，避免被当作出具对外法律意见。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-3</span>周末产出的「个人 IP 业务手册」为什么是本周核心交付物？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>把 D1-D5 路径/沟通/报价/写作/知识库碎片钉成册，接活一拎就走、交接可复制、对外有实体证据，标签才立得住。手册 = 双通道（内部影响力 + 外部专业标签）的实体化。</div></div></div><div class="qz-deliv"><div class="dl">本周核心产出物 · 参考标准答案</div><div class="dh2">本周核心产出物参考标准答案</div><h2>产出物一：服务方案目录骨架（可抄）</h2>
+<ul><li>① 项目背景与目标</li><li>② 服务范围（具体做什么）</li><li>③ 除外条款（不含诉讼/不含中国港澳台）</li><li>④ 计费方式与报价（计时/计件/包年）</li><li>⑤ 工作方式与时间计划</li><li>⑥ 成果与验收标准（交付物清单 + 节点）</li><li>⑦ 对接人与变更机制</li></ul>
+<h2>产出物二：专业文章完整大纲（可抄）</h2>
+<table><thead><tr><th>段落</th><th>内容</th></tr></thead><tbody><tr><td>标题</td><td>珠宝品牌联名合同的 5 个 IP 雷区</td></tr><tr><td>钩子</td><td>「一次联名，赔了设计又赔了商标」真实困境（脱敏）</td></tr><tr><td>主体</td><td>①商标许可范围 ②设计著作权归属 ③代言肖像 ④保密与竞业限制 ⑤终止清理</td></tr><tr><td>结尾</td><td>可抄的联名合同 checklist</td></tr><tr><td>声明</td><td>非对外法律意见 + 法条以现行版为准</td></tr></tbody></table>
+<h2>产出物三：文章首段示例（可抄）</h2>
+<p>「去年一家珠宝品牌和我们聊起一桩头疼事：和设计师联名的限量款卖爆了，却在分账时被对方拿走整套设计著作权……本文基于企业法务实务，梳理珠宝联名合同最易踩的 5 个 IP 雷区，并给出可抄的条款清单（本文不构成对外法律意见，法条以现行版本为准）。」</p>
+<h2>产出物四：个人 IP 业务手册结构</h2>
+<ul><li>路径层：内部业务地图五板块 + 能力矩阵自评表（D1）</li><li>沟通层：需求访谈五问 + 期望管理话术（D2）</li><li>报价层：服务方案骨架 + 三种计费对照 + 除外条款（D3）</li><li>表达层：文章大纲模板 + 演讲三不红线（D4）</li><li>知识层：知识库三层 + 法条/判例库 + 检索路径（D5）</li></ul>
+<div class="key">实务结论：手册 = 双通道（内部影响力 + 外部专业标签）的实体化。范围/计费/除外/验收四段是方案底线；从案来、三不红线、AI 保密是表达与工具底线。⚠ 风险代理限制、对外发表合规边界以现行法及公司制度为准。</div></div><div class="foot"><a href="W29-quiz.html">← 第 29 周自测</a><a class="idx" href="index.html">本周目录</a><a href="W31-quiz.html">第 31 周自测 →</a></div><div class="disc">本页自测题用于个人学习检验。答案中涉及的法条条号、数字与日期须以现行有效文本核对后方可作为正式依据；标注「待核实」处请优先核查。</div></div><script src="/theme-toggle.js"></script>
+</body></html>

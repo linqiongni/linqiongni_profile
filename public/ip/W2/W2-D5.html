@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第2周·第5天｜权利限制总论：合理使用·权利用尽·先用权·Bolar·反向工程</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 2 · DAY 5 / 5　·　第 1 层 地基 · 总论与通用规则</div><h1>权利限制总论：合理使用·权利用尽·先用权·Bolar·反向工程</h1><div class="sub">权利内容与边界</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">任何排他权都不是无限的。法律在圈出你的地的同时，也留了几条公共通道：为了评论可以引用几句（合理使用）、买来的正版书可以转卖（权利用尽）、你在我申请专利前就在用的可以继续用（先用权）、为了审批仿制药可以提前试（Bolar）、拆开别人的产品研究不违法（反向工程）。这五条通道是被诉方最常用的武器。</div><div class="mlink"><b>业务落点</b>业务落点：只会进攻的律师打不赢硬仗。每学一个权利，必须同时把它的例外背下来。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>合理使用（Fair Use / Permitted Use）</li><li>三步检验（Three-step Test）</li><li>法定许可（Statutory License）</li><li>发行权用尽（Exhaustion）</li><li>先用权（Prior Use Right）</li><li>Bolar 例外（Bolar Exemption）</li><li>反向工程（Reverse Engineering）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《权利限制速查表》——五类限制 × 适用权利 × 法律依据 × 构成要件 × 珠宝行业抗辩场景，一页纸。要求：看到任何一个被诉场景，能在 30 秒内判断有哪条限制可用。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**知识产权权利限制总论**。请：
+1) 用总表对比五类限制：著作权合理使用（第 24 条）、著作权法定许可、发行权用尽、专利权限制（第 75 条五项：权利用尽、先用权、临时过境、科研实验、Bolar）、商标正当使用（第 59 条）、商业秘密的合法获取（独立研发、反向工程）；
+2) 逐项说明法律依据（精确到条、款、项）、构成要件、举证责任在谁；
+3) 重点讲清著作权的「三步检验」但书（不得影响作品的正常使用、不得不合理地损害著作权人的合法权益）如何限制合理使用的适用；
+4) 讲清先用权的两个硬条件：**申请日前已制造相同产品/使用相同方法或已作准备 + 仅在原有范围内继续**；
+5) 讲清专利第 75 条第（一）项权利用尽与著作权发行权用尽的区别，以及为什么**出租权不适用权利用尽**；
+6) 每个限制给一个珠宝 / 时尚消费品行业的被诉抗辩场景；
+7) 出 5 道判断题并讲评。
+法条引用精确到条、款、项并标注现行版本；不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、五类限制总表</h2>
+<table><thead><tr><th>限制类型</th><th>适用权利</th><th>法律依据（待核实条号）</th><th>核心要件</th><th>举证责任</th></tr></thead><tbody><tr><td>合理使用</td><td>著作权</td><td>《著作权法》第 24 条（13 项 + 兜底）</td><td>列入法定情形 + 指明作者与作品名 + <b>不违反三步检验</b></td><td>被诉方</td></tr><tr><td>法定许可</td><td>著作权</td><td>教科书、报刊转载、录音制品、广播等条款</td><td>法定情形 + 付费 + 不得侵犯其他权利</td><td>被诉方</td></tr><tr><td>发行权用尽</td><td>著作权</td><td>学理与司法实践（法律未明文）</td><td>合法复制件<b>经权利人同意售出后</b>，其转售不再受发行权控制</td><td>被诉方</td></tr><tr><td>权利用尽</td><td>专利</td><td>《专利法》第 75 条第（一）项</td><td>专利产品或依专利方法直接获得的产品<b>售出后</b>，使用、许诺销售、销售、进口不视为侵权</td><td>被诉方</td></tr><tr><td>先用权</td><td>专利</td><td>《专利法》第 75 条第（二）项</td><td>申请日前已制造相同产品 / 使用相同方法或已做好必要准备 + <b>原有范围内继续</b></td><td>被诉方</td></tr><tr><td>临时过境</td><td>专利</td><td>第 75 条第（三）项</td><td>外国运输工具临时通过中国领土领水领空，为自身需要而在装置设备中使用</td><td>被诉方</td></tr><tr><td>科研实验</td><td>专利</td><td>第 75 条第（四）项</td><td>专为科学研究和实验而使用</td><td>被诉方</td></tr><tr><td>Bolar 例外</td><td>专利</td><td>第 75 条第（五）项</td><td>为提供行政审批所需信息而制造、使用、进口专利药品或医疗器械</td><td>被诉方</td></tr><tr><td>正当使用</td><td>商标</td><td>《商标法》第 59 条第 1 款</td><td>描述性使用（通用名称、图形型号、质量原料功能用途数量等）</td><td>被诉方</td></tr><tr><td>在先使用抗辩</td><td>商标</td><td>第 59 条第 3 款</td><td>申请日前已使用并<b>有一定影响</b> + 原有范围内 + 可被要求附加区别标识</td><td>被诉方</td></tr><tr><td>合法获取</td><td>商业秘密</td><td>学理与司法解释</td><td>独立研发、反向工程、公开渠道获得</td><td>被诉方</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 上述条号基于现行法律的一般记忆，2020 年修法后部分条号发生变动（如专利法原第 69 条现为第 75 条）。<b>引用前务必逐条核对现行文本</b>。</div>
+<h2>二、著作权合理使用与三步检验</h2>
+<p>第 24 条列举了 13 项情形 + 兜底。但<b>列入列举不等于必然免责</b>——第 24 条同时设有但书：不得影响该作品的正常使用，也不得不合理地损害著作权人的合法权益。这就是<b>三步检验</b>的中国化表达（源自伯尔尼公约第 9 条第 2 款）。</p>
+<p>常见情形速记：个人学习研究欣赏；适当引用（为介绍、评论作品或说明问题）；新闻报道中不可避免地再现；媒体转载时事性文章；公开讲话（作者未声明不许刊登播放）；教学科研少量复制（<b>不得出版发行</b>）；国家机关执行公务；图书馆等为陈列或保存版本复制；免费表演（<b>未向公众收费、未向表演者付酬</b>）；对设置或陈列在<b>公共场所</b>的艺术作品进行临摹、绘画、摄影、录像；翻译成少数民族文字在国内出版；改成盲文。</p>
+<div class="key"><b>珠宝行业最常踩的坑</b>：门店与商场里播放背景音乐。这既不是「免费表演」（营业场所播放通常被认定具有商业性），也不属于机械表演的合理使用——应通过音著协（MCSC）取得许可。这是著作权批量维权的高发区。</div>
+<h2>三、发行权用尽 vs 专利权利耗尽</h2>
+<table><thead><tr><th></th><th>著作权发行权用尽</th><th>专利权利用尽</th></tr></thead><tbody><tr><td>逻辑</td><td>合法复制件售出后，权利人不能再控制该特定复制件的转售</td><td>专利产品售出后，购买者可自由使用、转售</td></tr><tr><td>边界</td><td><b>出租权不适用用尽</b>（视听作品、计算机软件仍受出租权控制）</td><td>出租是否用尽存在争议，通说认为销售即耗尽</td></tr><tr><td>跨境</td><td><b>平行进口</b>：境内权利用尽 vs 国际用尽，各国立场不同。中国著作权法未明文规定</td><td>平行进口是否侵权，司法实践个案判断（⚠ 待核实现行口径）</td></tr></tbody></table>
+<div class="key"><b>平行进口对港资珠宝企业是真实问题</b>：从中国香港或海外采购正品后运回内地销售，是否侵犯内地商标权或著作权？司法主流倾向是<b>商标平行进口原则上不侵权</b>（不产生混淆、商标功能未受损），但若存在重新包装、去除识别码、改变商品状况等情形，可能被认定侵权。⚠ 结论以现行判例为准。</div>
+<h2>四、先用权抗辩：被诉方的王牌之一</h2>
+<p>构成要件（第 75 条第（二）项）：</p>
+<ol><li><b>时间</b>：在<b>专利申请日前</b>已经制造相同产品、使用相同方法，或者已经作好制造、使用的<b>必要准备</b>；</li><li><b>范围</b>：仅在<b>原有范围</b>内继续制造、使用。</li></ol>
+<p>「必要准备」通常指已完成技术准备（图纸、模具、工艺文件）和物质准备（设备、原料、厂房），且准备是为实施该技术而专门作出的。</p>
+<div class="key">珠宝行业典型：代工厂 A 在你申请卡扣实用新型专利前，已为另一品牌开模生产同款卡扣。A 可主张先用权，但只能在<b>原有产能与原客户范围</b>内继续——扩产或转售新客户就超出范围。</div>
+<h2>五、反向工程与商业秘密</h2>
+<p>商业秘密的保护不排斥他人通过<b>独立研发</b>或<b>反向工程</b>获得相同信息。关键区别在于手段是否正当：</p>
+<table><thead><tr><th>手段</th><th>是否构成侵权</th><th>说明</th></tr></thead><tbody><tr><td>独立研发</td><td>否</td><td>自主研发出相同技术，可自行使用甚至申请专利</td></tr><tr><td>反向工程（拆解公开销售产品）</td><td><b>否</b></td><td>以合法取得的公开产品为对象进行拆解分析，属正当手段</td></tr><tr><td>违反保密义务披露使用</td><td>是</td><td>员工、代工厂、合作方泄密</td></tr><tr><td>以盗窃、贿赂、欺诈、电子侵入等不正当手段获取</td><td>是</td><td>反法明列禁止</td></tr><tr><td>明知或应知前述违法仍获取使用</td><td>是（视为侵犯）</td><td>第三人责任</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 反向工程的具体规则与举证要求，请以《反不正当竞争法》现行条文及相关司法解释核对（第 16 周会深入）。</div>
+<div class="key"><b>反向工程是对付商业秘密诉讼的最强抗辩</b>，但有两个前提：① 产品是<b>合法取得</b>的（买了、拾得、公开渠道）；② 分析过程未违反任何保密义务。如果被告的工程师曾在原告处接触过该技术，反向工程抗辩通常不被采信（法院会认为其无法证明技术来源独立）。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：公司官网转载了一篇行业分析文章并注明出处，是否一定构成合理使用？</div><div class="a"><span class="an">参考答案</span>不一定。依《著作权法》（2020 修正）第 24 条，列入列举情形只是前提之一，还须符合但书（<b>三步检验</b>：不得影响作品正常使用、不得不合理损害权利人合法权益）；且「注明出处」是第 24 条列举情形的一项要件，不是免责的充分条件。商业性转载往往难以落入法定情形。⚠ 条号以现行文本为准。</div><div class="q">Q2：顾客买了正版首饰图册后在二手平台转卖，是否侵犯发行权？</div><div class="a"><span class="an">参考答案</span>不侵犯。发行权<b>用尽</b>（权利用尽）：合法复制件经权利人同意售出后，其转售不再受发行权控制。但若是<b>出租</b>则例外——视听作品、计算机软件的出租权不适用用尽。</div><div class="q">Q3：代工厂在你申请日前已开模生产同款结构，能继续供货给新客户吗？</div><div class="a"><span class="an">参考答案</span>不能当然继续。依《专利法》第 75 条第（二）项先用权，仅能在<b>原有范围</b>（原有产能、原客户）内继续制造/使用；扩产或转售新客户超出原有范围，不享先用权，构成侵权。⚠ 条号以现行文本为准。</div><div class="q">Q4：拆解竞品公开销售的首饰研究其镶嵌结构，是否侵犯商业秘密？</div><div class="a"><span class="an">参考答案</span>不侵犯。以<b>合法取得的公开产品</b>为对象进行拆解分析属正当<b>反向工程</b>，不构成商业秘密侵权。但两前提：产品合法取得、分析过程未违反保密义务；若被告工程师曾在原告处接触过该技术，该抗辩通常不被采信。</div><div class="q">Q5：门店播放正版购买的音乐 CD，是否还需要另外取得许可？</div><div class="a"><span class="an">参考答案</span>需要。购买唱片不等于取得表演权/广播权许可；营业场所播放通常被认定具商业性，不属于「免费表演」的合理使用，应通过音著协（MCSC）取得许可，否则是著作权批量维权的常见雷区。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Fair Use / Permitted Use</div><div class="cn">合理使用</div><div class="df">在特定法定情形下可不经许可、不付酬使用作品</div></div><div class="ti"><div class="en">Three-step Test</div><div class="cn">三步检验</div><div class="df">限于特定情形、不影响正常使用、不不合理损害合法权益</div></div><div class="ti"><div class="en">Statutory License</div><div class="cn">法定许可</div><div class="df">依法可不经许可使用但须付酬</div></div><div class="ti"><div class="en">Exhaustion Doctrine</div><div class="cn">权利用尽</div><div class="df">合法售出后权利人对该件商品的控制权即告用尽</div></div><div class="ti"><div class="en">Prior Use Right</div><div class="cn">先用权</div><div class="df">申请日前已实施或准备就绪者可在原有范围内继续</div></div><div class="ti"><div class="en">Bolar Exemption</div><div class="cn">Bolar 例外</div><div class="df">为行政审批目的实施专利不视为侵权</div></div><div class="ti"><div class="en">Reverse Engineering</div><div class="cn">反向工程</div><div class="df">拆解合法取得的公开产品以获取技术信息</div></div><div class="ti"><div class="en">Parallel Import</div><div class="cn">平行进口</div><div class="df">未经权利人授权的跨境真品进口与销售</div></div></div><div class="foot"><a href="W2-D4.html">← 第 4 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W2-weekend.html">周末实战 →</a><a class="qz" href="W2-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

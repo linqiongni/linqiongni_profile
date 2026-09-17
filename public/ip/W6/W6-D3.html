@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第6周·第3天｜无效宣告：绝对理由与相对理由（5 年 + 恶意不受限）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 6 · DAY 3 / 5　·　第 2 层 支柱 · 四大部门法</div><h1>无效宣告：绝对理由与相对理由（5 年 + 恶意不受限）</h1><div class="sub">商标确权程序</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">商标已经拿到注册证，不等于终局。法律留了两道"撤销已发证书"的通道：绝对理由——标志本身就有问题，任何人任何时候都能申请无效；相对理由——侵犯了我的在先权利，我要在 5 年内提（恶意注册驰名商标的不受限制）。</div><div class="mlink"><b>业务落点</b>业务落点：遇到抢注，先判断是绝对理由还是相对理由，再决定"我能不能提"和"还来不来得及"。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>无效宣告（Invalidation）</li><li>绝对理由（第 44 条 · 任何人 · 无时限）</li><li>相对理由（第 45 条 · 5 年）</li><li>恶意注册的驰名商标不受 5 年限制</li><li>商标评审部门 9 / 12 个月审限</li><li>30 日起诉</li><li>无效宣告的溯及力</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《无效宣告路径决策表》——把你公司可能遇到的四类抢注场景（代理人抢注、同业恶意抢注、囤积商标、损害在先著作权）逐项判定：走绝对理由还是相对理由、主体资格、时限、需要哪些证据、预期成功率。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**商标无效宣告**。请：
+1) 用对照表讲清《商标法》第 44 条（绝对理由，商标局可依职权宣告，其他单位或个人可请求，无时限）与第 45 条（相对理由，在先权利人或利害关系人，**自商标注册之日起五年内**；对恶意注册的，驰名商标所有人**不受五年限制**）的差异（⚠ 条号以现行条文核对）；
+2) 逐条列出可引用的条款：绝对理由（第 4、10、11、12、19 条第 4 款、以欺骗手段或其他不正当手段取得注册）；相对理由（第 13 条第 2、3 款、第 15 条、第 16 条第 1 款、第 30 条、第 31 条、第 32 条）；
+3) 讲清审限：绝对理由 9 个月（可延长 3 个月）；相对理由 12 个月（可延长 6 个月）；不服的 30 日内起诉；
+4) 讲清无效宣告的**效力**（是否具有溯及力、对已执行判决与已履行合同的影响，⚠ 以现行条文核对）；
+5) 给四个抢注场景的路径选择：代理人抢注、同业恶意抢注、商标囤积、损害在先著作权 / 商号权；
+6) 出 5 道判断题并讲评。
+条号与期限不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、两条通道的核心差异</h2>
+<table><thead><tr><th></th><th>绝对理由（第 44 条）</th><th>相对理由（第 45 条）</th></tr></thead><tbody><tr><td>针对什么</td><td>标志本身不应获准注册（禁用、缺乏显著性、立体标志、恶意囤积、欺骗手段）</td><td>损害特定主体的在先权利</td></tr><tr><td>谁可以提</td><td><b>商标局依职权</b> + <b>任何单位或个人</b></td><td><b>在先权利人或者利害关系人</b></td></tr><tr><td>时限</td><td><b>无时限</b>（随时可提）</td><td><b>自商标注册之日起 5 年内</b>；恶意注册的驰名商标所有人<b>不受 5 年限制</b></td></tr><tr><td>审限</td><td>9 个月（可延长 3 个月）</td><td>12 个月（可延长 6 个月）</td></tr><tr><td>救济</td><td>不服的 30 日内起诉</td><td>同</td></tr></tbody></table>
+<div class="key"><b>判断顺序：先看"我能不能提"，再看"还来不来得及"。</b> 如果你只是在先使用人而非在先权利人，走相对理由要证明"利害关系"；如果商标本身违反第 10 条（如含地名误导），你可以作为"任何人"走绝对理由——<b>这条通道不受 5 年限制，是过期案件的救命稻草</b>。</div>
+<h2>二、可引用的条款清单</h2>
+<table><thead><tr><th>类别</th><th>条款</th><th>内容</th><th>要点</th></tr></thead><tbody><tr><td>绝对</td><td>第 4 条</td><td>不以使用为目的的恶意商标注册申请，应当予以驳回</td><td><b>2019 年修正重点</b>，打击囤积</td></tr><tr><td>绝对</td><td>第 10 条</td><td>禁用标志</td><td>任何人可提</td></tr><tr><td>绝对</td><td>第 11 条</td><td>缺乏显著性</td><td>任何人可提</td></tr><tr><td>绝对</td><td>第 12 条</td><td>立体标志排除</td><td>任何人可提</td></tr><tr><td>绝对</td><td>第 19 条第 4 款</td><td>商标代理机构除对其代理服务申请商标注册外，不得申请注册其他商标</td><td>针对代理所囤积</td></tr><tr><td>绝对</td><td>第 44 条第 1 款</td><td>以欺骗手段或者其他不正当手段取得注册</td><td>兜底，针对大规模抢注</td></tr><tr><td>相对</td><td>第 13 条第 2、3 款</td><td>驰名商标保护（未注册同类、已注册跨类）</td><td><b>恶意不受 5 年限制</b></td></tr><tr><td>相对</td><td>第 15 条</td><td>未经授权，代理人或代表人以自己名义注册被代理人商标；以及因合同、业务往来或其他关系明知他人在先商标存在而抢注</td><td><b>举证重点：关系 + 明知</b></td></tr><tr><td>相对</td><td>第 16 条第 1 款</td><td>地理标志误导</td><td>—</td></tr><tr><td>相对</td><td>第 30 条</td><td>同种或类似商品上相同或近似</td><td>最常见</td></tr><tr><td>相对</td><td>第 31 条</td><td>申请在先 / 使用在先</td><td>同一天申请时使用在先</td></tr><tr><td>相对</td><td>第 32 条</td><td>损害他人在先权利；以不正当手段抢注他人在先使用并有一定影响的商标</td><td><b>打击抢注的主力条款</b></td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 以上条款序号基于现行商标法的一般记忆，<b>引用前逐条核对现行有效文本</b>。</div>
+<h2>三、第 32 条：打击抢注的主力</h2>
+<p>第 32 条有两句话，对应两种情形：</p>
+<table><thead><tr><th>情形</th><th>要件</th><th>证据</th></tr></thead><tbody><tr><td>前半句：损害他人现有的在先权利</td><td>① 他人在申请日之前已享有合法权利（著作权、外观设计专利权、商号权、姓名权、肖像权等）；② 系争商标损害了该权利</td><td>在先权利权属证明（著作权登记 / 创作底稿 / 专利证书 / 商号登记）、接触可能性证据、实质性相似比对</td></tr><tr><td>后半句：以不正当手段抢先注册他人已经使用并有一定影响的商标</td><td>① 他人在先<b>使用</b>；② 该商标<b>有一定影响</b>；③ 抢注人采取了<b>不正当手段</b></td><td>在先使用时间线（销售合同、发票、广告）、知名度证据、双方关系或同地域同业证据</td></tr></tbody></table>
+<div class="key"><b>"有一定影响"的证明是胜负手。</b> 它不要求达到驰名商标的高度，但必须证明在中国境内相关公众中具有一定知晓度。证据三件套：<b>销售数据 + 广告投放 + 媒体报道</b>，且要覆盖申请日之前的时间段。</div>
+<h2>四、5 年时限与恶意例外</h2>
+<table><thead><tr><th>情形</th><th>时限</th></tr></thead><tbody><tr><td>一般相对理由</td><td>自商标注册之日起 <b>5 年内</b></td></tr><tr><td>恶意注册他人<b>驰名商标</b></td><td><b>不受 5 年限制</b>（第 45 条第 2 款的精神，⚠ 以现行条文核对）</td></tr><tr><td>绝对理由</td><td>无时限</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ "对恶意注册的，驰名商标所有人不受五年的时间限制"的表述与适用条件，请以现行《商标法》第 45 条核对。</div>
+<h2>五、四个抢注场景的路径选择</h2>
+<table><thead><tr><th>场景</th><th>路径</th><th>条款</th><th>关键证据</th></tr></thead><tbody><tr><td>代理人抢注（经销商 / 代工厂抢注品牌方商标）</td><td>相对理由</td><td><b>第 15 条第 1 款</b></td><td>代理 / 代表关系证明（经销合同、代工合同、授权书）+ 商标归属沟通记录</td></tr><tr><td>同业恶意抢注（同地域同行注册你已使用多年的未注册商标）</td><td>相对理由</td><td><b>第 32 条后半句</b></td><td>在先使用时间线 + 一定影响证据 + 同地域同业 / 接触证据</td></tr><tr><td>商标囤积（某公司注册数百件商标无实际使用）</td><td>绝对理由</td><td><b>第 4 条 + 第 44 条第 1 款</b></td><td>其申请数量、经营范围、无使用事实、兜售行为证据</td></tr><tr><td>损害在先著作权 / 商号权</td><td>相对理由</td><td><b>第 32 条前半句</b></td><td>著作权登记 + 创作底稿 + 接触可能性 + 实质性相似</td></tr></tbody></table>
+<div class="key"><b>代理人抢注优先走第 15 条而非第 32 条</b>：第 15 条不要求证明"有一定影响"，只要证明代理 / 代表关系即可，举证负担轻得多。<b>选对条款，难度减半。</b></div>
+<h2>六、无效宣告的效力</h2>
+<table><thead><tr><th>问题</th><th>规则（⚠ 以现行条文核对）</th></tr></thead><tbody><tr><td>溯及力</td><td>被宣告无效的注册商标，其商标专用权视为<b>自始即不存在</b></td></tr><tr><td>对已执行判决的影响</td><td>原则上不具有追溯力，但因商标注册人恶意给他人造成损失的应赔偿（具体规则以现行条文核对）</td></tr><tr><td>对已履行合同的影响</td><td>同理，恶意情形除外</td></tr><tr><td>一年隔离期</td><td>注册商标被撤销、宣告无效或注销之日起一年内，商标局对相同或近似的注册申请不予核准（⚠ 以现行条文核对）</td></tr></tbody></table>
+<h2>七、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">绝对理由与相对理由无效宣告的时限有何不同？</div><div class="a"><span class="an">参考答案</span>绝对理由（第 44 条）：商标局依职权或<b>任何单位/个人</b>请求，<b>无时限</b>；相对理由（第 45 条）：在先权利人或利害关系人自<b>注册之日起 5 年内</b>提出（商标法 2019 修正）。⚠ 条号以现行文本核对。</div><div class="q">什么情况下相对理由不受 5 年限制？</div><div class="a"><span class="an">参考答案</span>对<b>恶意注册他人驰名商标</b>的，驰名商标所有人不受 5 年限制（第 45 条第 2 款精神，商标法 2019 修正）。⚠ 适用条件以现行文本核对。</div><div class="q">代理人抢注应优先引用哪一条？为什么？</div><div class="a"><span class="an">参考答案</span>优先第 15 条第 1 款（代理人/代表人抢注）：只要证明代理/代表关系即可，<b>不要求证明「有一定影响」</b>，举证负担比第 32 条轻得多、成功率更高（商标法 2019 修正）。⚠ 条号以现行核对。</div><div class="q">证明"有一定影响"的常规证据三件套是什么？</div><div class="a"><span class="an">参考答案</span><b>销售数据 + 广告投放 + 媒体报道</b>，且须覆盖对方申请日之前的时间段（第 32 条后半句，商标法 2019 修正）。⚠ 认定标准以现行口径核对。</div><div class="q">商标被宣告无效后，专用权从何时起不存在？</div><div class="a"><span class="an">参考答案</span>被宣告无效的注册商标，其专用权<b>视为自始即不存在</b>（溯及力，商标法 2019 修正）。⚠ 对已执行判决、已履行合同的影响以现行条文核对。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Invalidation</div><div class="cn">无效宣告</div><div class="df">宣告已注册商标自始无效的制度</div></div><div class="ti"><div class="en">Absolute Grounds</div><div class="cn">绝对理由</div><div class="df">标志本身不应获准注册的理由</div></div><div class="ti"><div class="en">Relative Grounds</div><div class="cn">相对理由</div><div class="df">损害特定主体在先权利的理由</div></div><div class="ti"><div class="en">Five-year Limitation</div><div class="cn">五年限制</div><div class="df">相对理由无效宣告的法定期间</div></div><div class="ti"><div class="en">Bad Faith / Malice</div><div class="cn">恶意</div><div class="df">明知他人权利而抢注的主观状态</div></div><div class="ti"><div class="en">Retroactive Effect</div><div class="cn">溯及力</div><div class="df">无效宣告追溯至注册之日的效力</div></div></div><div class="foot"><a href="W6-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W6-D4.html">第 4 天 →</a><a class="qz" href="W6-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

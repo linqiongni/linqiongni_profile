@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 14 周第 1 天 · 冷静期退费纠纷：裁判规则全解</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 14 周第 1 天 · 冷静期退费纠纷：裁判规则全解</h1>
+    <div class="meta">争议解决与判例精研：真刀真枪</div>
+  </header>
+  <div class="lead">冷静期是加盟纠纷里数量最多的一类。本周这一份与已交付的《冷静期退费纠纷抗辩手册》配套：手册讲「我方怎么设计条款、怎么防」，这一份讲「法院到底怎么判、庭上怎么打」。核心是两件事：加盟商的请求权基础能不能立住，以及立住之后退多少钱。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、请求权基础与退费算法</div><div class="tab" data-p="p2">二、判例规则（10 则）</div><div class="tab" data-p="p3">三、庭审实战</div><div class="tab" data-p="p4">四、答辩与谈判</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>加盟商能拿出来的四张牌，以及各自的命门</h3>
+<h4>① 合同约定的冷静期解除权（最常见，也最稳）</h4><p>《商业特许经营管理条例》<b>第 12 条</b>：特许人和被特许人应当在特许经营合同中约定，被特许人在合同订立后一定期限内，可以单方解除合同。这是<strong>法定要求约定的条款</strong>，不是可约定可不约定的任意条款。</p><p><b>命门</b>：必须<strong>在约定期限内</strong>行使，且通常以<u>解除通知到达总部</u>为时点（民法典第 565 条）。加盟商过了期限再提，这条路就断了。</p><h4>② 合同没约定冷静期时，能不能主张？</h4><p>这是分歧最大的一块。<strong>主流观点</strong>：条例第 12 条是强制性规定，即使合同未约定，被特许人仍享有合理期限内的单方解除权，法院多会参照行业惯例酌定（常见 3–30 日不等）。<strong>防守策略</strong>：合同必须写、且写得明确，否则「没约定」反而给了法官自由裁量的空间，结果往往比约定了更差。</p><h4>③ 信息披露不实 → 解除或撤销</h4><p>隐瞒/虚假信息达到「实质影响」标准的，加盟商可主张解除；构成欺诈的，还可在知道或应当知道撤销事由之日起 <b>1 年</b>内主张撤销（民法典第 152 条）。</p><h4>④ 根本违约 → 法定解除（民法典第 563 条）</h4><p>总部未提供手册、未培训、未履约支持义务，致使合同目的不能实现的，加盟商可直接主张法定解除。<strong>命门</strong>：必须达到「不能实现合同目的」的高度，一般的服务瑕疵不够。</p><div class="act"><b>我的落地动作：</b>把这四条做成一个判断表：加盟商来函时先看他援引哪一条，再决定我方是打「期限已过」还是打「未达实质影响」。不要一上来就谈退多少钱——先把请求权基础打断，谈判筹码完全不同。</div>
+</div>
+<div class="card"><h3>退费怎么算：法院在用的四种算法</h3>
+<table><thead><tr><th>算法</th><th>适用情形</th><th>计算方式</th><th>典型结果区间</th></tr></thead><tbody><tr><td>A. 全额退还</td><td>加盟商未实际使用经营资源、未开店、总部有明显过错（未备案/虚假宣传/未披露）</td><td>加盟费全额 + 保证金全额</td><td>少数，多伴随总部其他瑕疵</td></tr><tr><td>B. 扣除已提供服务的对价</td><td>已培训、已选址、已出图纸、已交付手册</td><td>加盟费 − 已发生服务成本（须总部举证）</td><td>退 50%–80%</td></tr><tr><td>C. 按已履行期间比例酌定</td><td>合同履行一段时间、加盟商自身原因退出</td><td>加盟费 × (1 − 已履行月数÷合同总月数)</td><td>退 10%–50%</td></tr><tr><td>D. 扣除违约赔偿后退还余额</td><td>加盟商违约在先（欠费、擅自转让、违反竞业）</td><td>加盟费 − 违约金 − 欠费 − 实际损失</td><td>退 0%–30%，甚至反诉</td></tr></tbody></table></div>
+<div class="anti"><b>加盟商反制点：</b>加盟商最常用的组合拳是：①先主张没约定冷静期或期限太长→无效；②同时主张信息披露不实→叠加撤销；③把已收的「品牌使用费/设计费/培训费」一并主张为特许经营费要求全退。我方必须在答辩中<u>逐笔定性</u>，不要把不同性质的钱混在一个数字里谈。</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>冷静期退费：裁判要旨与总部启示</h3>
+<table><thead><tr><th>案号 / 来源</th><th>裁判要旨</th><th>对总部的启示</th></tr></thead><tbody><tr><td>(2019)最高法民申4414号</td><td>特许经营合同的冷静期条款系条例强制要求，当事人未约定的，不影响被特许人在合理期限内单方解除合同</td><td>不写不等于没有——写清楚反而能限定期限与退费比例</td></tr><tr><td>(2016)鲁民终1867号</td><td>冷静期内单方解除的，已提供服务的对价应予扣除，不得简单全额退还</td><td>总部必须留存服务成本证据（培训签到、选址报告、图纸交付记录）</td></tr><tr><td>(2020)浙01民终300号</td><td>冷静期行使以解除通知到达为准，口头主张无效</td><td>收函当日就要固定送达时间，回函不要写「双方协商中」以免被认定为默认</td></tr><tr><td>(2019)苏01民终9615号</td><td>被特许人已实际开店经营的，超出冷静期合理范畴</td><td>「已开业」是最有力的抗辩事实，务必取证（外卖上线记录、营业流水）</td></tr><tr><td>(2020)渝01民终3236号</td><td>已参加培训、已选址的，可扣除相应服务对价后退还</td><td>培训签到表、选址报告须有加盟商签字，且标注日期</td></tr><tr><td>(2019)渝0192民初13346号</td><td>冷静期条款约定过短（如 3 日）显失公平的，法院可予以调整</td><td>期限设计建议 7–15 日，太短反而被调、被认定不诚信</td></tr><tr><td>(2020)粤0111民初3130号</td><td>加盟商主张未披露但未能证明实质影响的，不予支持</td><td>把披露回执、风险提示书做成证据链，是总部最划算的投入</td></tr><tr><td>(2019)沪0115民初100722号</td><td>加盟费与保证金性质不同，保证金应全额退还，加盟费按履约情况酌定</td><td>合同里要把两笔钱分开写、分开收、分开开票</td></tr><tr><td>(2024)鲁0891民初2571号 /(2025)鲁08民终108号</td><td>冷静期与信息披露瑕疵竞合时，法院择一支持，不重复计算</td><td>答辩中要主动指出「重复主张」，压低总额</td></tr><tr><td>(2021)京73民终1296号</td><td>品牌方已履行主要合同义务的，被特许人主张全额退还缺乏依据</td><td>履约证据比条款更能决定退费比例</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>法官在冷静期案件里一定会问的 8 个问题</h3>
+<p><b>1. 合同约定的冷静期是几天？从哪天起算？</b>——我方须一秒内答出条款号与具体日期。</p><p><b>2. 加盟商的解除通知什么时候到达？以什么方式？</b>——EMS 面单、签收回执、微信记录，三者要能互相印证。</p><p><b>3. 加盟商有没有实际使用经营资源？</b>——手册签收、培训记录、招牌订制、外卖账号、开业照片。</p><p><b>4. 总部已提供了哪些服务？成本多少？</b>——这是扣减的根据，必须有金额、有凭证。</p><p><b>5. 信息披露是否在签约前 30 日完成？有没有回执？</b></p><p><b>6. 加盟商主张的虚假宣传，具体是哪一句、在哪个载体上？</b>——要求其「具体化」，无法具体化的不予支持。</p><p><b>7. 有没有混合过错？</b>——加盟商自身是否尽到审慎义务（看店、核算、咨询）。</p><p><b>8. 有没有其他加盟商在同样条款下正常履约？</b>——用「同类履行」证明条款公平、模式真实。</p><div class="act"><b>我的落地动作：</b>开庭前做一份《法官提问应答卡》，每问配一句话答案 + 证据编号，法务与出庭律师各一份。答不上来的问题，庭上代价极高。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">冷静期案件出庭准备 24 项</strong><div class="progress"><i id="bar1"></i></div><span id="cnt1" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">1. 冷静期条款原文与签署页复印件<span class="m-note"> — 标注条款号</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">2. 合同签署日期与实际付款日期凭证<span class="m-note"> — 判断起算点</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">3. 加盟商解除通知的送达证据<span class="m-note"> — EMS面单+签收+微信</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">4. 我方回函及送达证据<span class="m-note"> — 证明未默认</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">5. 信息披露文件及签署回执<span class="m-note"> — 含日期</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">6. 风险提示书（加盟商手写并签名）<span class="m-note"> — 对抗欺诈主张</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">7. 培训签到表与培训照片<span class="m-note"> — 服务对价</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">8. 选址报告与选址出行记录<span class="m-note"> — 服务对价</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">9. 装修设计图纸交付记录<span class="m-note"> — 服务对价</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">10. 手册交付签收单<span class="m-note"> — 经营资源已交付</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">11. 设备物料发货单与签收<span class="m-note"> — 成本项</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">12. 开业证据：外卖上线、营业流水、大众点评<span class="m-note"> — 证明已实际经营</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">13. 督导巡店记录<span class="m-note"> — 证明持续服务</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">14. 总部资质：商标证、备案证明<span class="m-note"> — 主体合规</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">15. 两店一年证明材料<span class="m-note"> — 主体合规</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">16. 加盟商看店/考察记录<span class="m-note"> — 证明其审慎</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">17. 同类加盟商正常履约的统计<span class="m-note"> — 证明模式真实</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">18. 费用性质拆分表（加盟费/保证金/设计费/货款）<span class="m-note"> — 逐笔定性</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">19. 已发生成本明细与凭证<span class="m-note"> — 扣减依据</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">20. 违约金计算表与合同依据<span class="m-note"> — 反诉准备</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">21. 反诉状（如决定反诉）<span class="m-note"> — 欠费/违约</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">22. 授权委托书与主体资格材料<span class="m-note"> — 程序</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">23. 证据目录（编号+页码+证明目的）<span class="m-note"> — 庭前提交</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar1','cnt1')"><span class="m-txt">24. 代理词提纲（请求权基础为主线）<span class="m-note"> — 庭后提交</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>我方的「三句话答辩」结构</h3>
+<p><b>第一句：定性</b>——「原告主张的是约定冷静期解除权，合同第 X 条约定为 X 日，自 X 年 X 月 X 日起算，原告于 X 年 X 月 X 日方才主张，<strong>已超过约定期限</strong>。」</p><p><b>第二句：事实</b>——「原告已实际使用经营资源：已参加培训 X 天、已确认选址、已接收手册与图纸、已开业经营 X 天，不符合冷静期制度的保护目的。」</p><p><b>第三句：金额</b>——「即便认定应当退还，亦应扣除已提供服务的对价 X 元、已发生成本 X 元、原告欠付费用 X 元，<strong>实际应退 X 元</strong>。」</p><div class="act"><b>我的落地动作：</b>庭前调解时，把第三句的数字先算好并做成一张表。谈判永远是「数字对数字」，不是「道理对道理」。</div>
+</div>
+<div class="card"><h3>谈判区间表（以 20 万加盟费、已培训未开店为例）</h3>
+<table><thead><tr><th>项目</th><th>金额</th><th>依据</th></tr></thead><tbody><tr><td>加盟费总额</td><td>200,000</td><td>合同约定</td></tr><tr><td>扣：培训服务对价</td><td>−8,000</td><td>培训签到+外部讲师成本</td></tr><tr><td>扣：选址服务对价</td><td>−12,000</td><td>选址报告+差旅</td></tr><tr><td>扣：设计图纸</td><td>−15,000</td><td>设计合同+图纸交付</td></tr><tr><td>扣：手册与系统开通</td><td>−5,000</td><td>交付记录</td></tr><tr><td>我方开局报价（退）</td><td>80,000</td><td>成本加成口径</td></tr><tr><td>可让步区间</td><td>100,000–120,000</td><td>参照同类判例酌定结果</td></tr><tr><td>底线</td><td>140,000</td><td>低于此不如判决，因为判决还有执行周期与舆情成本</td></tr></tbody></table></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

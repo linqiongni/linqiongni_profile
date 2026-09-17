@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第5周·周末实战｜周末实战｜为一个新品牌名做注册可行性检索报告</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 5 · WEEKEND　·　第 2 层 支柱 · 四大部门法</div><h1>周末实战｜为一个新品牌名做注册可行性检索报告</h1><div class="sub">商标法基础</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">今天把第 5 周五天的内容全部用在一个真实动作上：给一个新品牌名出具《可注册性分析意见》。这是商标律师最高频、最能体现专业度的交付物。</div><div class="mlink"><b>业务落点</b>业务落点：这份报告写完，你就有了一个模板。以后市场部每提一个新名字，你 30 分钟就能给出结论。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>显著性判断</li><li>禁用禁注排查</li><li>四层检索</li><li>类目规划</li><li>风险分级</li><li>结论与建议</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《「月相 MOONPHASE」商标可注册性分析意见》+《类目选择表》。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练，我们现在做第 5 周周末实战。
+场景：港资珠宝品牌「星河 STELLARIVER」计划推出面向年轻客群的副线品牌，拟定中文名「月相」、英文名「MOONPHASE」，主打银饰与轻奢 K 金，价位 800–3,000 元，计划 2027 年春季上市，先在天猫与抖音销售，2027 年下半年开设独立门店。母公司已持有第 14 类「星河」「STELLARIVER」、第 35 类「星河」。
+请你扮演甲方评审，帮我完成：
+1) **显著性分析**：「月相」与「MOONPHASE」分别属于哪一档显著性？用于银饰与 K 金首饰是否构成描述性或暗示性？有无第 10 条 / 第 11 条障碍？
+2) **四层检索**：列出我应该检索的渠道与关键词（相同、近似、跨类、在先权利），并模拟检索结果中**最可能出现的三类在先障碍**（说明形态而非编造具体注册号）；
+3) **类目规划**：给出核心 / 关联 / 防御三层类目清单及是否必须的理由；
+4) **风险分级**：给出「月相」「MOONPHASE」各自的风险等级与理由；
+5) **结论与建议**：能申 / 改后申 / 放弃，并给出替代方案（如增加图形要素、加前缀）；
+6) **时间轴**：结合 2027 年春季上市，倒推申请节点；
+7) Executive Summary：最大风险 Top 3 + 下周待办。
+⚠ 本实战为模拟练习，**不得编造具体商标注册号、申请人名称或案例**。请以"形态描述"方式呈现可能的在先障碍。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>场景与目标</h2>
+<p>见上方指令。产出：《「月相 MOONPHASE」商标可注册性分析意见》 +《类目选择表》。</p>
+<h2>第一步：显著性分析（20 分钟）</h2>
+<table><thead><tr><th>商标</th><th>分析</th><th>档位判断</th></tr></thead><tbody><tr><td>月相</td><td>「月相」是天文学术语（月球相位），用于首饰属于<b>借用固有词汇</b>——既非直接描述银饰 / K 金的材质或功能，也非通用名称；需要轻微联想才能与"月亮""阴晴圆缺"的设计意象关联</td><td><b>任意商标 / 偏暗示</b>，显著性中上</td></tr><tr><td>MOONPHASE</td><td>英文对应词，同样为固有词汇用于无关商品</td><td>同「月相」</td></tr><tr><td>组合申请</td><td>中文 + 英文组合，识别性更强</td><td>建议组合申请，同时<b>分别单独申请</b></td></tr></tbody></table>
+<div class="key"><b>分别申请 vs 组合申请的取舍</b>：组合申请官费省，但<b>保护范围窄</b>（只有整体组合受保护，他人单独用「月相」可能不构成侵权）；分别申请（月相 / MOONPHASE 各一件）保护更完整，成本翻倍。<b>对核心品牌名，一律分别申请。</b></div>
+<h2>第二步：四层检索（25 分钟）</h2>
+<table><thead><tr><th>层次</th><th>检索动作</th><th>关键词 / 范围</th></tr></thead><tbody><tr><td>① 相同</td><td>中国商标网检索「月相」「MOONPHASE」</td><td>全类，重点第 14 类</td></tr><tr><td>② 近似</td><td>按音形义扩展</td><td>月象、月湘、悦相、MOONPHAZE、MOON PHASE、MOONPHASES、月相图、月相表</td></tr><tr><td>③ 跨类</td><td>检索高知名度 / 驰名商标中是否含「月相」「MOON」「PHASE」要素</td><td>全类，关注钟表（第 14 类 1404 类似群）与化妆品、服装</td></tr><tr><td>④ 在先权利</td><td>企业信用信息公示系统查「月相」商号；版权中心查「月相」美术作品；专利检索系统查「月相」外观设计；域名与平台查 moonphase 相关店铺</td><td>—</td></tr></tbody></table>
+<p><b>最可能出现的三类在先障碍（形态描述，非真实数据）</b>：</p>
+<table><thead><tr><th>障碍形态</th><th>风险</th><th>应对</th></tr></thead><tbody><tr><td>① 第 14 类已有他人在先注册的「月相」或高度近似商标（尤其钟表类似群）</td><td><b>高</b></td><td>改后申请（加图形 / 加前缀）；或评估购买 / 许可</td></tr><tr><td>② 存在含「MOON」要素的在先商标群（多个主体持有 MOON 系列）</td><td>中</td><td>论证整体差异；避开 MOON 单独作为显著部分</td></tr><tr><td>③ 存在以「月相」为商号或店铺名的在先经营者</td><td>中</td><td>评估其在先使用范围；必要时共存谈判</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 本表为<b>形态推演</b>，不是真实检索结果。真实作业时必须在中国商标网逐项核验，并保存检索截图与日期。</div>
+<h2>第三步：类目规划（15 分钟）</h2>
+<table><thead><tr><th>层级</th><th>类别</th><th>是否必须</th><th>理由</th></tr></thead><tbody><tr><td>核心</td><td>第 14 类（银饰、K 金首饰、宝石）</td><td><b>必须</b></td><td>主营商品</td></tr><tr><td>核心</td><td>第 35 类（替他人推销、商业管理、进出口代理）</td><td><b>必须</b></td><td>天猫 / 抖音店铺 + 2027 下半年独立门店</td></tr><tr><td>关联</td><td>第 26 类（发饰、服饰配件）</td><td>建议</td><td>轻奢配饰延伸</td></tr><tr><td>关联</td><td>第 37 类（清洗、维修、翻新）</td><td>建议</td><td>银饰氧化清洗是高频服务</td></tr><tr><td>关联</td><td>第 42 类（设计服务）</td><td>建议</td><td>定制设计</td></tr><tr><td>关联</td><td>第 9 类（眼镜、可穿戴）</td><td>视产品线</td><td>—</td></tr><tr><td>防御</td><td>第 3 类（香水、化妆品）</td><td>视预算</td><td>—</td></tr></tbody></table>
+<h2>第四步：风险分级与结论（20 分钟）</h2>
+<table><thead><tr><th>商标</th><th>风险</th><th>结论</th></tr></thead><tbody><tr><td>月相（第 14 类）</td><td><b>中</b></td><td><b>改后申请</b>——建议增加图形要素或加前缀形成组合商标，同时保留单独申请</td></tr><tr><td>MOONPHASE（第 14 类）</td><td><b>中低</b></td><td>可申请，但需先完成英文近似检索</td></tr><tr><td>月相 / MOONPHASE（第 35 类）</td><td><b>中</b></td><td>与第 14 类同步递交，一标多类或分别申请</td></tr><tr><td>图形 Logo</td><td><b>低</b></td><td>若原创且做过著作权检索，可申请并同步做著作权登记 / 存证</td></tr></tbody></table>
+<div class="key"><b>给市场部的建议要具体到动作</b>：不是"月相有风险"，而是"月相在第 14 类存在在先近似可能，建议加前缀 X 或配套原创图形，8 月 20 日前递交；若坚持原名，预计需 15 个月且有驳回风险，可能影响 2027 春季上市"。</div>
+<h2>第五步：时间轴（10 分钟）</h2>
+<table><thead><tr><th>时间</th><th>动作</th><th>备注</th></tr></thead><tbody><tr><td>2026-09</td><td>完成检索与可注册性意见</td><td>本周末产出</td></tr><tr><td>2026-09</td><td>设计稿 / Logo 时间戳存证</td><td>固定创作在先</td></tr><tr><td>2026-10</td><td>递交第 14 类 + 第 35 类申请</td><td><b>距 2027 春季上市约 6 个月，偏紧</b></td></tr><tr><td>2026-10</td><td>同步递交副线造型的外观设计申请</td><td><b>必须早于任何公开</b></td></tr><tr><td>2027-01</td><td>跟踪审查进度</td><td>约 9 个月审查期末</td></tr><tr><td>2027-03</td><td>上市前核查注册状态</td><td>若未核准，评估风险是否可上市</td></tr></tbody></table>
+<div class="key"><b>时间轴的最大风险</b>：2026 年 10 月递交，2027 年 3 月上市，中间只有 5 个月——<b>大概率拿不到注册证</b>。应对方案：① 现在就递交（别拖）；② 上市时以"申请中"状态运营，同时依靠著作权（Logo 与包装）与外观设计（造型）提供即时保护；③ 若市场部无法接受，考虑购买一件已注册的在先商标。</div>
+<h2>自检清单</h2>
+<ul><li>显著性分析是否给出了具体档位判断？</li><li>四层检索是否都列出了渠道与关键词？</li><li>类目规划是否区分了必须 / 建议 / 视预算？</li><li>是否给出了明确结论（能申 / 改后申 / 放弃）而不是"有风险"？</li><li>时间轴是否指出了上市时的风险与应对？</li><li>是否避免了编造任何具体的注册号、主体名称或案例？</li></ul><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Sub-brand</div><div class="cn">副线品牌</div><div class="df">主品牌下面向特定客群的子品牌</div></div><div class="ti"><div class="en">House Mark</div><div class="cn">主商标</div><div class="df">企业核心品牌标识</div></div><div class="ti"><div class="en">Blocking Citation</div><div class="cn">在先障碍</div><div class="df">阻止在后商标注册的在先近似商标</div></div><div class="ti"><div class="en">Filing Strategy</div><div class="cn">申请策略</div><div class="df">组合申请与分别申请的取舍安排</div></div></div><div class="foot"><a href="W5-D5.html">← 第 5 天</a><a class="idx" href="../index.html">返回总计划</a><a href="index.html">本周目录 →</a><a class="qz" href="W5-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

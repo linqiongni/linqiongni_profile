@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 14 周第 5 天 · 收官：争议解决能力体系（自测 + 模拟开庭）</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 14 周第 5 天 · 收官：争议解决能力体系（自测 + 模拟开庭）</h1>
+    <div class="meta">争议解决与判例精研：真刀真枪</div>
+  </header>
+  <div class="lead">本周的核心问题不是「怎么打赢官司」，是<strong>「法务总监的核心价值是打赢官司，还是不打官司」</strong>。这一份用 10 道题 + 一场模拟开庭把这个答案逼出来，并给出《加盟纠纷应诉手册》的定稿结构。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、自测 10 题</div><div class="tab" data-p="p2">二、模拟开庭：综合案例</div><div class="tab" data-p="p3">三、应诉手册定稿</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>自测（单选 5 + 案例 3 + 简答 2，答案在最后一列）</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>满分答案要点</th></tr></thead><tbody><tr><td>单1</td><td>条例第 12 条要求合同必须约定冷静期，未约定的后果是？</td><td>不导致合同无效；多数法院仍支持合理期限内单方解除，期限由法院酌定 → 写清楚反而能限定</td></tr><tr><td>单2</td><td>冷静期解除权的行使时点如何确定？</td><td>解除通知<u>到达</u>总部时（民法典第 565 条）；口头主张不成立</td></tr><tr><td>单3</td><td>欺诈撤销的除斥期间？</td><td>自知道或应当知道撤销事由之日起 <b>1 年</b>，最长 5 年（第 152 条）；不适用中止中断</td></tr><tr><td>单4</td><td>违约金超过实际损失多少可被调减？</td><td>超过损失 <b>30%</b> 一般认定为「过分高于」（第 585 条第 2 款）；须当事人请求</td></tr><tr><td>单5</td><td>新《仲裁法》把申请撤销裁决的期限改为多久？</td><td>由 6 个月缩短为 <b>3 个月</b>，自收到裁决书之日起（2026.3.1 施行）</td></tr><tr><td>案1</td><td>加盟商签约后 40 天才提出冷静期解除，合同约定期限 15 日，期间已参加 5 天培训并确认选址。我方如何应对？</td><td>①超期抗辩（15 日已过）；②已使用经营资源（培训+选址）；③退费按算法 B 扣除对价；④如已开业，退费比例显著下降</td></tr><tr><td>案2</td><td>加盟商以招商 PPT 上的「10 个月回本」主张欺诈撤销，我方有风险提示书但无看店记录。胜算如何？</td><td>风险提示书是强证据，但缺看店记录使「未尽审慎义务」抗辩削弱；应主打实质影响抗辩 + 主张测算非承诺 + 标注口径</td></tr><tr><td>案3</td><td>加盟商弃店失联，欠费 8 万、保证金 5 万、合同违约金约定 24 个月管理费共 24 万。起诉策略？</td><td>起诉 + 财产保全；违约金拆项并预判调减，主动调整为 6 个月（6 万）更稳；保证金抵扣欠费；标的 13 万值得起诉</td></tr><tr><td>简1</td><td>连锁企业为什么更应该选择仲裁？</td><td>保密（裁决不公开，避免成为下一个加盟商的素材）；专业性；一裁终局的确定性与风险</td></tr><tr><td>简2</td><td>法务总监的价值是打赢官司还是不打官司？</td><td>不打官司。赢了官司但执行不到、且裁判文书公开引发跟风，是净损失。真正的价值是把争议消灭在条款与制度环节</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>案情</h3>
+<p>2025 年 3 月，张某与甲公司签订《特许经营合同》，加盟费 18 万、保证金 5 万、管理费按月营业额 5% 计收，合同期 3 年，冷静期约定为签约后 7 日，争议解决约定为<u>甲方所在地仲裁委仲裁</u>。</p><p>张某参加了 3 天培训、确认了选址并支付了装修设计费 2 万（第三方收取）。签约后第 25 日，张某发函要求「依据冷静期全额退款」，理由是：①招商时口头承诺「半年回本」；②甲公司未告知其商标在第 30 类（调味品）尚未注册；③甲公司备案状态为「已受理未备案」但未主动说明。</p><p>甲公司已交付手册、已完成培训与选址，张某尚未开业。</p>
+</div>
+<div class="card"><h3>六问满分答案</h3>
+<table><thead><tr><th>问</th><th>满分答案</th></tr></thead><tbody><tr><td>Q1 张某能否主张冷静期解除？</td><td>约定 7 日，第 25 日主张，<strong>已超期</strong>。但如果法院认定 7 日显失公平而调长（有先例），仍可能进入实质审理 → 不能只押超期一张牌</td></tr><tr><td>Q2 「半年回本」口头承诺如何定性？</td><td>属<u>收益承诺</u>，违反条例第 17 条（广告不得含收益内容，罚 3–10 万 / 严重 10–30 万）；民事上构成欺诈撤销的事由。<strong>这是本案最大风险点</strong></td></tr><tr><td>Q3 第 30 类未注册要不要披露？</td><td>要。商标权属与注册状态属条例第 22 条披露范围，第 30 类（调味品）若涉及统配底料，则属<u>实质影响</u>；仅第 43 类已注册不足以覆盖</td></tr><tr><td>Q4 备案「已受理未备案」未说明的后果？</td><td>属披露瑕疵，且已有判例支持据此解除。<strong>正确做法是在披露文件中如实写明备案状态</strong>，写明即合规，隐瞒即风险</td></tr><tr><td>Q5 我方的抗辩组合怎么排？</td><td>①超期（冷静期）；②已提供服务的对价扣减（培训 3 天、选址、手册、设计费为第三方收取不属加盟费）；③口头承诺无证据（微信/录音是否存在是关键）；④第 30 类未注册对「米线门店经营」无实质影响（经营范围抗辩）</td></tr><tr><td>Q6 最优的结案方式？</td><td>调解。测算：18 万 − 服务对价约 5 万 − 已发生成本约 2 万 = 退 11 万左右。低于此打到底，考虑仲裁费约 2–3 万 + 可能的第 17 条行政处罚风险 + 后续跟风，<strong>退 13–14 万调解是理性解</strong></td></tr></tbody></table></div>
+<div class="anti"><b>加盟商反制点：</b>这类案子真正的杀伤力不在个案：一旦仲裁裁决或行政处罚落地，"半年回本"的话术会被其他加盟商复用。所以结案要伴随两件事：① 全渠道话术整改与留痕；② 与张某签署<strong>保密条款</strong>（调解协议必备）。</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>《加盟纠纷应诉手册》定稿结构（四层）</h3>
+<p><b>第一层 · 总则</b>：适用范围、案件分级（A 类标的 ≥50 万或影响 ≥3 家门店；B 类 10–50 万；C 类 &lt;10 万）、响应时限（A 类 24 小时、B 类 3 日、C 类 7 日）。</p><p><b>第二层 · 分案由作战手册</b>：冷静期 / 信息披露与虚假宣传 / 欠费撤店 / 商标与仿冒 / 用工 / 食安 / 数据与预付卡，每类含请求权基础、证据清单、抗辩要点、判例库、谈判区间表。</p><p><b>第三层 · 程序工具</b>：管辖与仲裁条款、保全三件套、执行手段、台账模板、外脑管理。</p><p><b>第四层 · 复盘与闭环</b>：每案结案 15 日内出《经验教训表》，指向具体的合同条款或制度修订，并跟踪修订落地。</p><div class="act"><b>我的落地动作：</b>手册的价值不在写，在<b>每季度更新一次判例库与谈判区间</b>。判例库少于 30 份、谈判区间表半年没更新，手册就只是一本装订精美的废纸。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">第 14 周落地清单 15 项</strong><div class="progress"><i id="bar5"></i></div><span id="cnt5" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">1. 为三类高频纠纷各做一份《出庭准备清单》<span class="m-note"> — 冷静期/信披/欠费</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">2. 建立法官提问应答卡模板<span class="m-note"> — 每问配证据编号</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">3. 建立退费谈判区间测算表<span class="m-note"> — Excel 化</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">4. 检查所有合同的争议解决条款并统一<span class="m-note"> — 仲裁 + 独立性表述</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">5. 把收到裁决 3 日内评估写进 SOP<span class="m-note"> — 新仲裁法</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">6. 制作保全申请材料包<span class="m-note"> — 含保函渠道与费率</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">7. 制作前加盟商摘牌的行为保全预案<span class="m-note"> — 模板</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">8. 建立诉讼案件管理台账（18 字段）<span class="m-note"> — 上线</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">9. 建立外部律师名册与费率表<span class="m-note"> — 分专业</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">10. 制作《诉讼成本效益评估表》<span class="m-note"> — 起诉前必填</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">11. 判例库建库，目标 30 份<span class="m-note"> — 按案由分类</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">12. 建立加盟商黑名单（内部共享）<span class="m-note"> — 招商+营运可见</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">13. 把典型败诉案例转为条款修订<span class="m-note"> — 闭环</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">14. 给招商/营运做一次案例培训<span class="m-note"> — 每季度</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">15. 完成《加盟纠纷应诉手册》定稿<span class="m-note"> — 四层结构</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

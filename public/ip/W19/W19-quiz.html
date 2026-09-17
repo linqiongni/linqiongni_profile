@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第19周 自测卷｜布局与申请策略</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+
+.qz-day{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px;padding:14px 16px;margin:16px 0}
+.qz-day.wk{border-left-color:var(--gold)}
+.qz-day .dt{font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:5px}
+.qz-day .dh{font-size:16px;color:var(--tx);margin-bottom:10px;font-weight:600}
+.qz-day .dh2{font-size:16px;color:var(--tx);font-weight:600;margin-bottom:6px}
+.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78}
+.qa .qn{color:var(--gold);font-weight:700;margin-right:6px}
+.qa .badge{font-size:11px;border:1px solid var(--line2);color:var(--tx3);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}
+.qa .an{color:var(--jade);font-weight:700;margin-right:6px}
+.qz-deliv{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.qz-deliv .dl{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px}
+.sub2{color:var(--tx2);font-size:13.5px;margin:6px 0 4px}
+@media(max-width:640px){.qa .q{font-size:13.6px}.qa .a{font-size:13px}}
+</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 19 / 32 · 自测卷　·　第 3 层 能力 · 办案全流程</div><h1>第 19 周 自测卷</h1><div class="sub">布局与申请策略　·　答案内嵌显示，无需点击展开</div><div class="sub2">本周聚焦商标类目布局与防御/联合、专利核心+外围布局、著作权登记与创作证据、预算/官费/代理所KPI、马德里/海牙/PCT成本对比。每题答案直接附在题后，无需点击展开。</div><div class="qz-day"><div class="dt">D1 · 自测</div><div class="dh">商标布局：类目·防御·联合</div><div class="qa"><div class="q"><span class="qn">QD1-1</span>客户只在第 14 类注册了「星河」，发现有人在第 35 类开了「星河珠宝」网店，能否直接禁止其使用？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>通常不能。专用权以核准注册+核定商品为限（商标法第 3 条、第 56 条），第 14 类≠第 35 类。除非「星河」为跨类驰名的注册商标（第 13 条），否则不落入禁用权圈。这正是第 35 类防御商标要提前布局的原因。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-2</span>防御商标与联合商标有什么区别？各自解决什么问题？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>防御商标跨类注册相同标识，堵住他人在关联方目开同名店/出品；联合商标在同一种或类似商品上注册近似变体（星河、星河·臻、星河坊），堵住同类近似蹭标。前者防跨类、后者防同类变体。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD1-3</span>一标多类申请是不是只交一份官费？全类注册有什么隐患？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不是，每个类目独立缴费、独立审查、独立维持（官费⚠待核实）。全类45类注册维持成本高，且多数类目三年不使用反成撤三（第49条）靶子，应核心类必注、关联类随业务补注。</div></div></div><div class="qz-day"><div class="dt">D2 · 自测</div><div class="dh">专利布局：核心+外围</div><div class="qa"><div class="q"><span class="qn">QD2-1</span>一条热卖项链的造型，用发明专利保护最划算，对吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不对。纯造型用外观设计专利最划算：授权快、官费低、直接护颜值，期限15年（专利法第42条）。发明/实用新型护的是技术方案而非颜值；若造型由新结构实现，才另申实用新型补刀。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-2</span>核心专利与外围专利的关系，用一句话类比说明。<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>核心专利是「活眼」（占住最难回避的基础方案），外围专利是「外势」（变体/工艺/应用铺成网）；只下活眼易被规避，连成专利包（patent family）让对手绕不开也仿不全。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD2-3</span>发明专利「3年内提实审请求」错过会怎样？珠宝快时尚款该用哪类专利控成本？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>逾期视为撤回，专利权直接没了（第35条⚠条号待核实）。快时尚短期流行款用外观设计（15年、快、便宜）最划算，核心结构/工艺才值得发明投入，避免为每款堆发明导致预算爆。</div></div></div><div class="qz-day"><div class="dt">D3 · 自测</div><div class="dh">著作权登记与创作证据留存</div><div class="qa"><div class="q"><span class="qn">QD3-1</span>一款珠宝造型没做著作权登记就被人抄，还能主张著作权侵权吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>能。著作权自创作完成即自动产生，登记不是要件；但须自证权属与创作完成时间（底稿、时间戳、发表记录）。没登记=举证更重、更易被推翻，故高价值款建议登记+时间戳双保险。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-2</span>委托 freelancer 画的设计图，著作权归谁？企业该怎么防风险？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>无约定归受托人（freelancer）。企业必须在委托/设计合同中写明「委托作品，著作权归委托方（公司）所有」，否则公司只可能拿到使用权，无权以著作权人身份维权或再授权。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD3-3</span>创作证据「三件套」指什么？为什么要形成时间链？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>底稿过程稿+时间戳/区块链存证+公开发表留痕（高价值再加登记证书）。三者互相印证固定「在先创作/公开」的时间点，诉讼中让「我是原创」站得住；登记证书只是初步证据，仍可被更早创作反证推翻。</div></div></div><div class="qz-day"><div class="dt">D4 · 自测</div><div class="dh">预算·官费·代理所管理与KPI</div><div class="qa"><div class="q"><span class="qn">QD4-1</span>IP预算只算「今年申请花多少」足够吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不够。漏了维持费（商标续展、专利年费逐年递增）和维权备用金（监测/发函/诉讼）。注册多而维持断档权利会悄悄失效；维权突发大额没预留遇事措手不及。模型要申请+维持+维权三块齐备。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-2</span>代理所 KPI 为什么不能只看「申请件数」？应看哪五项？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>件数虚高但核心款漏保、撰写差易被规避/无效等于白花钱。应看：授权率、撰写质量（被无效/规避比例）、流程时效、成本偏差、维权ROI，考核「护住多少核心资产、花得值不值」。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD4-3</span>官费数字能直接写进给老板的报价单吗？什么情况可不用代理所？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不能，所有官费⚠待核实，须以国知局/版权中心现行公示核对后用。小批量、低风险、国内常规申请可走网上系统自行提交省代理费；高价值核心资产、涉外（马德里/海牙/PCT）、复杂撰写才外包，用「自行+关键外包」控成本。</div></div></div><div class="qz-day"><div class="dt">D5 · 自测</div><div class="dh">马德里/海牙/PCT成本对比</div><div class="qa"><div class="q"><span class="qn">QD5-1</span>用马德里体系注册国际商标，所有指定国都会自动授权保护，对吗？<span class="badge">判断</span></div><div class="a"><span class="an">参考答案</span>不对。马德里「一份申请指定多国」但各指定国仍按其国内法审查；且最大风险是中心打击——基础商标注册后5年内被撤/无效，则所有指定国国际注册随之失效。关键市场建议马德里+关键国单注双轨。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-2</span>珠宝款式出海护「造型」、护「结构」、护「标识」分别走哪个国际通道？<span class="badge">简答</span></div><div class="a"><span class="an">参考答案</span>造型走海牙协定（外观设计，2022对中国生效）；结构/工艺走PCT（发明/实用新型，30个月进国家阶段）；标识走马德里体系（商标）。三客体通道不同，不能混用。</div></div>
+<div class="qa"><div class="q"><span class="qn">QD5-3</span>PCT 能让发明在各国直接授权吗？优先权窗口怎么用来省成本？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不能，PCT只是国际申请通道，授权仍由各国依国内法决定。先国内申请锁申请日，享发明/实用新型12个月、外观/商标6个月优先权，窗口内看市场再定进哪些国，避免一上来全球狂注浪费涉外费。</div></div></div><div class="qz-day wk"><div class="dt">WEEKEND · 实战复盘</div><div class="dh">周末实战复盘 · 三年 IP 布局方案与预算</div><div class="qa"><div class="q"><span class="qn">QWE-1</span>三年路线图为啥第1年先打「核心类目+核心款」而不是全类狂注？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>预算与撤三双重约束：全类注册维持成本高且多数类目三年不使用反成撤三（第49条）靶子；第1年先占核心（第14/35类）+核心款外观，第2年随业务扩关联类、第3年转维持防守，节奏更稳更省。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-2</span>跨境出海第一年该直接全球狂注吗？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>不该。先国内申请锁优先权（商标/外观6个月、发明12个月），窗口内看市场再定进哪些国；主力市场用马德里/海牙+关键国单注双轨防中心打击，省下大量无谓涉外费。</div></div>
+<div class="qa"><div class="q"><span class="qn">QWE-3</span>这份方案交老板前，哪三处必须标⚠待核实？<span class="badge">实务</span></div><div class="a"><span class="an">参考答案</span>①所有官费/年费数字；②马德里/海牙/PCT规费与中心打击细则；③代理所市场报价。三处都须以现行公示与比价核对后再定稿，不能拿结构示意当报价。</div></div></div><div class="qz-deliv"><div class="dl">本周核心产出物 · 参考标准答案</div><div class="dh2">本周核心产出物参考标准答案</div><h2>产出物一：商标类目布局表（核心 + 防御）</h2>
+<p>以品牌为对象，先填核心类目，再填关联方目与状态：</p>
+<table><thead><tr><th>类目</th><th>布局性质</th><th>注册状态</th><th>优先级</th></tr></thead><tbody><tr><td>第 14 类 珠宝</td><td>核心</td><td>已注 / 待注</td><td>P0</td></tr><tr><td>第 35 类 门店零售</td><td>强防御</td><td>已注 / 待注</td><td>P0</td></tr><tr><td>第 18 类 包袋</td><td>强防御</td><td>已注 / 待注</td><td>P1</td></tr><tr><td>第 25 / 26 类 服装饰品</td><td>关联</td><td>已注 / 待注</td><td>P2</td></tr><tr><td>第 40 / 42 类 加工设计</td><td>业务</td><td>已注 / 待注</td><td>P1</td></tr><tr><td>第 3 / 9 / 21 类 延伸</td><td>延伸</td><td>已注 / 待注</td><td>P3</td></tr></tbody></table>
+<h2>产出物二：专利布局矩阵（核心 + 外围）</h2>
+<ul><li>核心专利：最基础、最难回避的方案（如悬浮镶嵌结构，发明/实用新型）</li><li>外围专利：结构变体、工艺、应用、外观四方向铺开（3-5项外观设计）</li><li>系列外观：同一设计多件相似设计合案，降低单件成本</li><li>标注每项类型、保护层级、申请年度</li></ul>
+<h2>产出物三：三年 IP 预算模型（结构示意，数字⚠待核实）</h2>
+<table><thead><tr><th>年度</th><th>申请官费+代理(⚠)</th><th>维持费(⚠)</th><th>维权备用金(⚠)</th><th>合计</th></tr></thead><tbody><tr><td>第 1 年</td><td>占大头（集中申请）</td><td>低</td><td>预留 10-15%</td><td>⚠按实际测算</td></tr><tr><td>第 2 年</td><td>中（补类+跨境）</td><td>中（年费起）</td><td>预留 10-15%</td><td>⚠按实际测算</td></tr><tr><td>第 3 年</td><td>低（转维持）</td><td>高（年费累积）</td><td>预留 10-15%</td><td>⚠按实际测算</td></tr></tbody></table>
+<div class="key">实务结论：先盘点资产缺口 → 类目补核心防御 → 专利排核心+外围 → 著作权登记+时间戳固化证据 → 算三年预算+定代理所KPI+跨境双轨兜底。所有官费/规费数字交稿前必须⚠待核实核对现行公示。</div></div><div class="foot"><a href="W18-quiz.html">← 第 18 周自测</a><a class="idx" href="index.html">本周目录</a><a href="W20-quiz.html">第 20 周自测 →</a></div><div class="disc">本页自测题用于个人学习检验。答案中涉及的法条条号、数字与日期须以现行有效文本核对后方可作为正式依据；标注「待核实」处请优先核查。</div></div><script src="/theme-toggle.js"></script>
+</body></html>

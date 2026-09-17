@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 14 周第 4 天 · 诉讼、仲裁与执行策略</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 14 周第 4 天 · 诉讼、仲裁与执行策略</h1>
+    <div class="meta">争议解决与判例精研：真刀真枪</div>
+  </header>
+  <div class="lead">连锁企业选诉讼还是仲裁，答案不是「仲裁更高级」。要看三件事：<strong>是不是批量案件、要不要保密、判决要不要公开给加盟商看</strong>。另外，2026 年 3 月 1 日起新《仲裁法》已施行，撤销裁决期限从 6 个月缩短到 <b>3 个月</b>——这是实操里最容易踩的新变化。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、诉讼 vs 仲裁</div><div class="tab" data-p="p2">二、争议解决条款设计</div><div class="tab" data-p="p3">三、保全与执行</div><div class="tab" data-p="p4">四、案件台账与外脑</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>对连锁企业，真正的五个比较维度</h3>
+<p><b>① 保密性</b>：仲裁不公开审理、裁决不公开，加盟纠纷里这一点<strong>对总部极其重要</strong>——一份公开的判决书会成为下一个加盟商的谈判素材。</p><p><b>② 专业性</b>：仲裁员可选熟悉特许经营的专家；法官则分散在各民庭，专业度不稳定。</p><p><b>③ 成本</b>：仲裁费通常高于诉讼费（同标的额约 2–4 倍），且不可缓减免；诉讼费按《诉讼费用交纳办法》分段累计，财产案件 1 万以下仅 50 元。</p><p><b>④ 效率与终局</b>：仲裁一裁终局，无法上诉；诉讼两审终审 + 再审。一裁终局意味着<u>败了没地方说理</u>。</p><p><b>⑤ 执行与保全</b>：两者都由法院执行与保全，但仲裁保全需通过仲裁机构转交，实务中略慢。</p><div class="act"><b>我的落地动作：</b>给不同合同配不同条款：加盟合同用<u>仲裁</u>（保密 + 集中管辖）；采购/供货合同用<u>诉讼</u>（金额小、要保全快、要上诉权）；劳动合同只能走<u>劳动仲裁</u>（法定，不可约定）。</div>
+</div>
+<div class="card"><h3>成本对照（以标的额 50 万为例，2026 年口径）</h3>
+<table><thead><tr><th>项目</th><th>诉讼</th><th>仲裁（以 typical 机构为例）</th></tr></thead><tbody><tr><td>受理费/仲裁费</td><td>约 8,800 元（分段累计）</td><td>约 25,000–35,000 元（含机构管理费）</td></tr><tr><td>审理周期</td><td>一审 3–6 个月，二审再加 3–6 个月</td><td>通常 3–6 个月（一裁终局）</td></tr><tr><td>救济途径</td><td>上诉 + 再审 + 抗诉</td><td>仅撤销裁决（3 个月内）</td></tr><tr><td>公开性</td><td>裁判文书网上公开</td><td>不公开</td></tr><tr><td>保全</td><td>直接向法院申请</td><td>经仲裁机构转交，亦可仲裁前直接申请</td></tr><tr><td>执行</td><td>向法院申请执行</td><td>同样向法院申请执行</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>管辖地集中 + 格式条款风险：两头都要顾</h3>
+<p>总部最想要的是<strong>所有案件都在总部所在地</strong>。但加盟合同是总部提供的格式合同，约定管辖过远导致加盟商诉讼明显不便的，可能被认定加重对方责任而无效（民法典第 496–498 条）。</p><p><b>相对安全的写法</b>：</p><p>① 约定<strong>仲裁</strong>（仲裁地写总部所在地）——仲裁条款适用格式条款审查相对宽松，且天然规避了地域不便的抗辩；</p><p>② 若坚持诉讼，约定「由<u>合同履行地</u>或<u>甲方住所地</u>法院管辖」，并在签约时<u>加粗 + 单独签名确认</u>；</p><p>③ 无论哪种，都在合同末尾做「争议解决条款特别提示」，由加盟商手写「已阅读并同意」。</p><div class="act"><b>我的落地动作：</b>把争议解决条款单独成页、加粗、单独签名。这一页在诉讼里往往是决定管辖归属的关键证据。</div>
+</div>
+<div class="card"><h3>仲裁条款的四个必备要素（缺一可能无效）</h3>
+<p>依《仲裁法》第 16 条（新法施行后条文序号请以新法文本核对），仲裁协议应当具有：<b>① 请求仲裁的意思表示；② 仲裁事项；③ 选定的仲裁机构</b>。三者缺一，仲裁协议可能无效。</p><p><b>可直接用的范本</b>：「因本合同引起的或与本合同有关的任何争议，双方应友好协商解决；协商不成的，任何一方均可将争议提交<u>XX 仲裁委员会</u>（仲裁地：XX 市）按照该会届时有效的仲裁规则进行仲裁。仲裁裁决是终局的，对双方均有约束力。本条款独立存在，合同的变更、解除、终止、无效、被撤销或<u>不成立</u>，均不影响本条款的效力。」</p><p><b>最后一句是新增的保护</b>：新《仲裁法》明确合同是否成立、不生效、被撤销均不影响已达成仲裁协议的效力，写进去更稳。</p>
+</div>
+<div class="card"><h3>2026 年新《仲裁法》的六个实操变化</h3>
+<p>新《仲裁法》2025 年 9 月 12 日修订通过，<strong>2026 年 3 月 1 日起施行</strong>，共 8 章 96 条，是 1995 年施行以来的首次全面修订。与连锁企业相关的六点：</p><p><b>① 申请撤销裁决的期限由 6 个月缩短为 3 个月</b>——自收到裁决书之日起算。这一个变化最致命：<u>过去有 6 个月考虑期，现在只有 3 个月</u>。收到裁决的当天就要启动评估。</p><p><b>② 仲裁协议独立性进一步强调</b>：合同是否成立、不生效、被撤销，均不影响已经达成的仲裁协议的效力。</p><p><b>③ 默示仲裁协议</b>：一方主张有仲裁协议，另一方在首次开庭前不予否认的，经仲裁庭提示并记录，视为存在仲裁协议——所以<u>有异议必须在首次开庭前提出</u>。</p><p><b>④ 仲裁前的保全</b>：情况紧急时，当事人可在申请仲裁前直接向法院申请<u>财产保全、行为保全、证据保全</u>，法院应依法及时处理。这对防止对方转移财产极有价值。</p><p><b>⑤ 行为保全入法</b>：仲裁保全明确包含「责令作出一定行为或禁止作出一定行为」，可用来<strong>快速制止前加盟商继续使用品牌</strong>。</p><p><b>⑥ 在线仲裁、诚信原则与防范虚假仲裁</b>：在线开庭被正式写入，加盟批量案件可大幅降低出庭成本。</p><div class="act"><b>我的落地动作：</b>把「收到裁决 3 日内启动撤裁评估」写进法务 SOP 的日历提醒；并在所有仲裁条款中补上「本条款独立存在，合同不成立/不生效/被撤销均不影响其效力」一句。</div>
+</div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>三件保全，分别用在什么时候</h3>
+<p><b>财产保全</b>（民诉法第 103、104 条）：冻结账户、查封房产车辆股权。<u>加盟纠纷里主要用于防止加盟商转移财产</u>，诉前保全须在法院采取保全措施后 <b>30 日</b>内起诉或申请仲裁，否则解除。</p><p><b>证据保全</b>（民诉法第 84 条）：证据可能灭失或以后难以取得时。典型场景：加盟商门店的营业数据、监控录像（通常只存 30 天）。</p><p><b>行为保全</b>（民诉法第 103 条，责令作出或禁止作出一定行为）：<strong>加盟场景的王牌</strong>——前加盟商合同终止后继续挂招牌、继续使用商标、继续使用会员数据的，可申请行为保全<u>先行制止</u>，不必等判决生效。知识产权纠纷中另有专门的行为保全规定。</p><div class="act"><b>我的落地动作：</b>发现前加盟商到期不摘牌的，在发函的同时就准备行为保全申请——多挂一天招牌，市场上就多一天混淆。保全担保通常可用保险公司的保全责任保险，保费约为保全金额的 0.5%–1%。</div>
+</div>
+<div class="card"><h3>执行：赢了官司拿不到钱，才是常态</h3>
+<p><b>申请执行期间 2 年</b>（民诉法第 246 条），从法律文书规定的履行期间最后一日起算，<u>分期履行的从最后一期起算</u>。过期丧失强制执行申请权。</p><p><b>能用的手段</b>：网络查控（银行、证券、车辆、不动产、公积金）、限制高消费、纳入失信被执行人名单、限制出入境、悬赏执行、拒不执行判决裁定罪（刑法第 313 条）。</p><p><b>企业作为被执行人时</b>：可申请<u>追加未缴纳出资的股东</u>为被执行人（公司法及相关执行规定），这是对付「空壳公司 + 实缴为 0」的加盟商的关键一招；一人有限责任公司还可主张股东连带责任举证倒置。</p><p><b>个体工商户</b>：经营者以<u>个人财产</u>承担债务，可直接执行经营者个人财产——这也是前期要求「实际控制人连带担保」的价值所在。</p><div class="anti"><b>加盟商反制点：</b>加盟商最常见的规避手法是：用一家注册资本 10 万、实缴为 0 的有限公司签约，欠费后弃店。所以在签约环节就要把<u>实际控制人（及其配偶）连带保证</u>做实——这一张纸，在三年后的执行阶段价值几十万。</div>
+</div>
+<div class="card"><h3>执行的成本与周期（实务口径）</h3>
+<table><thead><tr><th>环节</th><th>周期</th><th>成本</th><th>备注</th></tr></thead><tbody><tr><td>申请执行</td><td>立案 7 日内</td><td>不预交申请费</td><td>执行后由被执行人承担</td></tr><tr><td>网络查控</td><td>1–2 个月</td><td>无</td><td>可多轮</td></tr><tr><td>限高 / 失信</td><td>1 个月内</td><td>无</td><td>对自然人生效明显</td></tr><tr><td>悬赏执行</td><td>视公告</td><td>赏金由申请人承担</td><td>通常标的额的 5%–20%</td></tr><tr><td>追加股东</td><td>3–6 个月</td><td>另案或执行异议之诉</td><td>需证明未实缴/抽逃</td></tr><tr><td>拒不执行罪</td><td>6 个月以上</td><td>移送公安</td><td>威慑大于实际</td></tr></tbody></table></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>《诉讼案件管理台账》应该记什么</h3>
+<p>台账不是为了存档，是为了<strong>让老板看得见法务的价值</strong>。建议至少 18 个字段：</p>
+</div>
+<div class="card"><h3>案件台账字段</h3>
+<table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td>案件编号 / 案由</td><td>便于统计类型分布</td></tr><tr><td>对方主体与类型</td><td>加盟商 / 供应商 / 员工 / 仿冒者</td></tr><tr><td>我方地位</td><td>原告 / 被告 / 第三人</td></tr><tr><td>标的额</td><td>起诉金额或索赔金额</td></tr><tr><td>争议焦点</td><td>一句话</td></tr><tr><td>管辖与程序</td><td>诉讼 / 仲裁 / 一审 / 二审 / 执行</td></tr><tr><td>立案日 / 开庭日 / 结案日</td><td>周期管控</td></tr><tr><td>承办人</td><td>内部 + 外部律师</td></tr><tr><td>外部费用</td><td>律师费、仲裁费、诉讼费、公证费</td></tr><tr><td>保全情况</td><td>是否保全、保全金额</td></tr><tr><td>判决/裁决结果</td><td>支持金额 vs 起诉金额</td></tr><tr><td>实际回款</td><td>执行到位金额</td></tr><tr><td>胜负评价</td><td>胜 / 部分胜 / 败 / 调解</td></tr><tr><td>经验教训</td><td>可复用的规则</td></tr><tr><td>需修订的文件</td><td>指向合同条款或制度</td></tr><tr><td>舆情风险等级</td><td>是否需公关介入</td></tr></tbody></table></div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">本日落地 20 项</strong><div class="progress"><i id="bar4"></i></div><span id="cnt4" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">1. 梳理全部在办案件并建台账<span class="m-note"> — 18 字段</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">2. 按案由统计分布，找出前三类高发纠纷<span class="m-note"> — 数据驱动</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">3. 检查所有加盟合同的争议解决条款<span class="m-note"> — 是否统一</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">4. 仲裁条款补「独立性 + 不成立亦有效」表述<span class="m-note"> — 新仲裁法</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">5. 采购合同改为诉讼 + 总部所在地法院<span class="m-note"> — 保留上诉权</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">6. 建立收到裁决 3 日内评估撤裁的 SOP<span class="m-note"> — 新法 3 个月</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">7. 制作《保全申请材料包》模板<span class="m-note"> — 含保函渠道</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">8. 对接 1–2 家保全责任保险机构<span class="m-note"> — 费率 0.5%–1%</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">9. 建立前加盟商摘牌的行为保全预案<span class="m-note"> — 模板 + 证据清单</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">10. 梳理执行案件并核对 2 年申请期<span class="m-note"> — 防过期</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">11. 对空壳公司类被执行人启动追加股东<span class="m-note"> — 未实缴</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">12. 建立外部律师名册与费率表<span class="m-note"> — 分专业</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">13. 制定律师费审批权限矩阵<span class="m-note"> — 金额分级</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">14. 建立案件月报模板<span class="m-note"> — 给管理层</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">15. 制作《诉讼成本效益评估表》<span class="m-note"> — 起诉前必填</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">16. 建立判例库（按案由分类）<span class="m-note"> — 至少 30 份</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">17. 建立加盟商黑名单<span class="m-note"> — 内部共享</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">18. 把典型败诉案例转为合同条款修订<span class="m-note"> — 闭环</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">19. 给招商/营运做一次案例培训<span class="m-note"> — 复盘</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar4','cnt4')"><span class="m-txt">20. 建立判决文书的保密与舆情评估流程<span class="m-note"> — 防外传</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

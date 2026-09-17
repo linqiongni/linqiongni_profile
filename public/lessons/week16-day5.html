@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 16 周第 5 天 · 结业：综合测验 50 题 + 100 天进阶计划</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 16 周第 5 天 · 结业：综合测验 50 题 + 100 天进阶计划</h1>
+    <div class="meta">综合实战与结业：从学习者到法务总监</div>
+  </header>
+  <div class="lead">16 周 50 题，覆盖全部五个模块：主体与备案、信息披露与冷静期、合同与运营、食安与供应链、用工数据与争议解决。<strong>合格线 40 题，优秀线 45 题</strong>。答错的题回到对应周次重读，不要直接看答案了事。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、第 1–10 题 · 主体与备案</div><div class="tab" data-p="p2">二、第 11–20 题 · 信披与冷静期</div><div class="tab" data-p="p3">三、第 21–30 题 · 合同与运营</div><div class="tab" data-p="p4">四、第 31–40 题 · 食安与供应链</div><div class="tab" data-p="p5">五、第 41–50 题 · 用工、数据与争议</div><div class="tab" data-p="p6">六、成绩与进阶</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>模块一：主体资格、两店一年、备案、罚则</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>1</td><td>特许经营的三个法定要素？</td><td>经营资源 + 统一经营模式 + 支付特许经营费（条例第 3 条），缺一不可</td></tr><tr><td>2</td><td>企业以外的单位和个人能否作为特许人？</td><td>不能（第 3 条第 2 款），效力性强制性规定</td></tr><tr><td>3</td><td>「两店一年」的准确表述？</td><td>拥有至少 2 个直营店且经营时间超过 1 年（第 7 条第 2 款）</td></tr><tr><td>4</td><td>可计入的直营店形态（举 3 种）？</td><td>分公司、持股 51% 以上子公司、持股 51% 以上母公司及其子公司、股东配偶的个体工商户、店中店、委托投资店</td></tr><tr><td>5</td><td>首次备案的时限与机关？</td><td>首次订立合同之日起 15 日内；跨省向省级商务主管部门</td></tr><tr><td>6</td><td>备案后信息变更的时限？</td><td>工商登记/经营资源/店铺分布变化 30 日内变更</td></tr><tr><td>7</td><td>上一年度合同情况年报的截止日？</td><td>每年 3 月 31 日前</td></tr><tr><td>8</td><td>不具备两店一年从事特许经营的罚则？</td><td>责令改正、没收违法所得、10–50 万罚款并公告（第 24 条）</td></tr><tr><td>9</td><td>未备案的罚则？</td><td>责令限期备案、1–5 万；逾期仍不备案 5–10 万并公告（第 25 条）</td></tr><tr><td>10</td><td>广告含收益宣传的罚则？</td><td>3–10 万；情节严重 10–30 万（第 27 条）</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>模块二：信息披露、冷静期、持续义务</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>11</td><td>信息披露的法定项数与时点？</td><td>12 项（条例第 22 条 + 办法第 5 条）；订立合同之日前至少 30 日，书面形式</td></tr><tr><td>12</td><td>信息披露的三步留痕？</td><td>先签保密协议 → 交付披露文件 → 签署回执</td></tr><tr><td>13</td><td>冷静期的法律性质？</td><td>法定<u>要求约定</u>的条款（条例第 12 条），不是任意约定</td></tr><tr><td>14</td><td>合同未约定冷静期时怎么办？</td><td>多数法院仍支持合理期限内单方解除，期限由法院酌定 → 写清楚反而能限定</td></tr><tr><td>15</td><td>冷静期解除的生效时点？</td><td>解除通知<u>到达</u>总部（民法典第 565 条）</td></tr><tr><td>16</td><td>冷静期期限建议？</td><td>7–15 日；过短（如 3 日）可能被认定显失公平而调长</td></tr><tr><td>17</td><td>欺诈撤销的除斥期间？</td><td>自知道或应当知道撤销事由之日起 1 年，最长 5 年（第 152 条）</td></tr><tr><td>18</td><td>「实质影响标准」指什么？</td><td>隐瞒/虚假信息是否对合同目的实现产生实质影响，是信息披露类案件的核心裁判标准</td></tr><tr><td>19</td><td>条例第 13 条要求的合同形式与必备条款？</td><td>书面形式；11 项必备条款（第 11 条）</td></tr><tr><td>20</td><td>推广宣传费的使用要求？</td><td>按约定用途使用，使用情况应及时披露（第 15 条）</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>模块三：主体、授权、费用、违约与退出</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>21</td><td>餐饮加盟应采用哪种许可性质？</td><td>普通许可；给独占/排他等于自缚手脚</td></tr><tr><td>22</td><td>区域保护条款怎么写才稳？</td><td>写清半径/商圈/例外情形；约定不明按不利于格式条款提供方解释（第 498 条）</td></tr><tr><td>23</td><td>加盟费的法律性质？</td><td>一次性对价；能否不退关键在合同怎么写（服务对价已发生 + 成本扣减）</td></tr><tr><td>24</td><td>保证金与定金的区别？</td><td>保证金是担保，按约定情形没收且过高可参照 585 条调减；定金适用定金罚则，不得超过主合同标的额 20%</td></tr><tr><td>25</td><td>违约金超过损失多少可被调减？</td><td>超过 30% 一般认定为过分高于（第 585 条第 2 款），须当事人请求</td></tr><tr><td>26</td><td>解除程序的标准步骤？</td><td>催告 → 整改期 → 解除通知 → 生效</td></tr><tr><td>27</td><td>终止后竞业禁止有效的四个要素？</td><td>期限、地域、范围、对价，缺一可能无效</td></tr><tr><td>28</td><td>终止后必须处理的四件事？</td><td>停止使用标识与摘牌、竞业确认、保证金与存货结算、会员数据移交</td></tr><tr><td>29</td><td>门店租赁的餐饮特殊条款（举 3 项）？</td><td>排烟排污责任、办证配合义务、营业时间与外卖通道、垃圾清运、招牌位</td></tr><tr><td>30</td><td>选址否决项（举 3 项）？</td><td>住宅楼底商禁餐饮（大气法第 81 条第 2 款）、无商业/餐饮用途、无法办理食品经营许可</td></tr></tbody></table></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>模块四：食安、104 号令、供应链、反垄断</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>31</td><td>104 号令的准确名称与施行日？</td><td>《餐饮服务连锁企业落实食品安全主体责任监督管理规定》（市场监管总局令第 104 号），2025 年 12 月 1 日施行</td></tr><tr><td>32</td><td>104 号令的适用门槛？</td><td>同一品牌门店数达到一定数量的连锁企业（含加盟），通常以 10 家为口径，具体以地方细则为准</td></tr><tr><td>33</td><td>104 号令对加盟合同的直接影响？</td><td>第 9 条第 4 款：总部不得通过合同减轻或免除自身食安责任；违反罚 5 万以下</td></tr><tr><td>34</td><td>食安事故瞒报，事故单位适用哪一条？</td><td>食安法<b>第 128 条</b>（隐匿伪造证据，10 万–50 万，可吊照）；第 142 条管的是地方政府与监管部门</td></tr><tr><td>35</td><td>惩罚性赔偿的标准？</td><td>第 148 条：退一赔十（价款十倍或损失三倍），最低赔偿额 1000 元</td></tr><tr><td>36</td><td>食品召回的三级时限？</td><td>一级 24 小时、二级 48 小时、三级 72 小时启动</td></tr><tr><td>37</td><td>统采统配的反垄断红线？</td><td>限定交易、搭售、<u>转售价格维持（RPM）</u>；RPM 属本身违法，只用建议零售价</td></tr><tr><td>38</td><td>新反法（2025.10.15 施行）新增的虚假宣传类型？</td><td>第 9 条新增「虚假评价」；第 13 条第 4 款规制滥用平台规则</td></tr><tr><td>39</td><td>新反法虚假宣传的罚则？</td><td>第 25 条：100 万以下；情节严重 100 万–200 万，可吊销营业执照</td></tr><tr><td>40</td><td>新反法第 8 条商业贿赂的双罚？</td><td>对单位与<u>个人</u>双罚，个人罚款可达 100 万</td></tr></tbody></table></div>
+</div><div class="panel" id="p5">
+<div class="card"><h3>模块五：用工、个保、预付卡、争议解决</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>41</td><td>事实劳动关系的三要件？</td><td>主体适格 + 受管理并从事有报酬劳动 + 劳动是业务组成部分（劳社部发〔2005〕12 号第 1 条）</td></tr><tr><td>42</td><td>认定凭证中由用人单位举证的是哪四项？</td><td>工资支付凭证、社保记录、招工登记表、考勤记录</td></tr><tr><td>43</td><td>工伤未缴社保的后果？</td><td>第 62 条：由用人单位按条例标准<u>全额支付</u>；且单位未在 30 日内申报的，期间待遇费用由单位负担（第 17 条第 4 款）</td></tr><tr><td>44</td><td>竞业限制的三条硬规则？</td><td>只限高管/高技/保密人员；期限 ≤2 年；<u>按月</u>支付经济补偿</td></tr><tr><td>45</td><td>个保法情节严重的罚则？</td><td>5000 万以下或上一年度营业额 5%；责任人 10–100 万并可禁业（第 66 条）</td></tr><tr><td>46</td><td>门店能否发单用途预付卡？</td><td>个体户<u>不能</u>（商务部令第 2 条要求企业法人）；且加盟模式下总部仍可能共同担责（法释〔2025〕4 号第 5 条）</td></tr><tr><td>47</td><td>预付卡存管比例三个数？</td><td>规模 20% / 集团 30% / <b>品牌 40%</b>（上一季度预收资金余额）</td></tr><tr><td>48</td><td>存管资金的法定减压出口？</td><td>第 28 条：保证保险、银行保函可冲抵全部或部分存管资金</td></tr><tr><td>49</td><td>网络餐饮办法对连锁总部的关键一条？</td><td>第 45 条：总部建网站为门店提供网络交易服务的，<u>参照第三方平台义务</u>执行</td></tr><tr><td>50</td><td>新《仲裁法》申请撤销裁决的期限？</td><td>由 6 个月缩短为 <b>3 个月</b>，自收到裁决书之日起（2026.3.1 施行）</td></tr></tbody></table></div>
+</div><div class="panel" id="p6">
+<div class="card"><h3>评分与复盘</h3>
+<p><b>评分</b>：每题 2 分，满分 100 分。<u>80 分（40 题）合格，90 分（45 题）优秀</u>。</p><p><b>复盘方法</b>：答错的题按模块归类。某一模块错 3 题以上，说明该模块还停留在「看过」而非「会用」，回到对应周次的三份核心文件重读，并把错题转化为<u>一条条款修订或一项检查表动作</u>。</p><div class="act"><b>我的落地动作：</b>把错题清单贴在电脑旁 30 天。30 天后再做一次，错两次的题要单独做一张卡片。</div>
+</div>
+<div class="card"><h3>下一阶段：100 天进阶学习计划</h3>
+<p><b>第 1–30 天 · 补短板</b>：针对错题模块，每天 60 分钟；同时把 12 份核心文件按自己公司的实际情况改造一版（这是把知识变成资产的关键一步）。</p><p><b>第 31–60 天 · 建体系</b>：画出自己公司的法务制度树，完成合同模板库 12 套、卡点 6 个、审批权限矩阵 1 张。</p><p><b>第 61–100 天 · 出成果</b>：落地一次培训、完成一次专项整改（建议选食安 104 号令或预付卡）、输出一份《年度法务工作计划》与预算，并在季度会上汇报一次。</p><div class="act"><b>我的落地动作：</b>100 天后回头看，判断标准只有一个：<b>公司有没有因为你的工作，少打一场官司、少赔一笔钱、或多做成一件事。</b>有，就是学成了；没有，就继续改。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">结业自检 15 项</strong><div class="progress"><i id="bar5"></i></div><span id="cnt5" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">1. 50 题自测完成并评分<span class="m-note"> — ≥80 合格</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">2. 错题按模块归类<span class="m-note"> — ≥3 题的模块重读</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">3. 错题转化为条款或动作<span class="m-note"> — 至少 5 条</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">4. 12 份核心文件本土化改造<span class="m-note"> — 按自己公司</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">5. 制度树画完<span class="m-note"> — 三层</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">6. 合同模板库 12 套<span class="m-note"> — 含版本号</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">7. 六个卡点上线<span class="m-note"> — 含放行标准</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">8. 审批权限矩阵发布<span class="m-note"> — 会签</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">9. 判例库 ≥30 份<span class="m-note"> — 分类</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">10. 条款库 ≥30 条<span class="m-note"> — 含被挑战记录</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">11. 完成一次专项整改<span class="m-note"> — 食安或预付卡</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">12. 完成一次业务培训<span class="m-note"> — ≥1 场</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">13. 输出年度计划与预算<span class="m-note"> — 含避免损失指标</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">14. 完成一次管理层汇报<span class="m-note"> — 数据说话</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">15. 个人年度复盘报告<span class="m-note"> — 结业</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

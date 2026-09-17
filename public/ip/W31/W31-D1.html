@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第31周·第1天｜接案第一步：把「星河臻选」拆成「权利—事实—目标—路径」四张表</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 31 · DAY 1 / 5　·　第 4 层 出师 · 行业专精</div><h1>接案第一步：把「星河臻选」拆成「权利—事实—目标—路径」四张表</h1><div class="sub">综合实战（一）</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">接到「星河臻选」仿款案，像急诊接诊——不能上来就开药（发函/起诉），得先问诊建档：查清楚你有什么权利、对方做了什么、你想达到什么、走哪条路最快最稳。病历没建好就下药，轻则打草惊蛇，重则被对方提撤三反诉。</div><div class="mlink"><b>业务落点</b>业务落点：接案当天产出《案件策略表》，锁定「权利基础—侵权事实—主体—目标—路径排序—预算周期—风险告知」七栏，作为全周行动总纲。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>接案访谈与诉求澄清</li><li>权利基础核查（注册证/续展/撤三风险）</li><li>侵权事实与主体锁定（店铺+档口）</li><li>目标三档（下架止血/索赔/震慑）</li><li>路径组合与排序（平台+行政+民事+刑事）</li><li>预算与周期测算</li><li>风险告知书（抗辩预判）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《案件策略表》——文件名：星河珠宝诉星河臻选商标侵权案_案件策略表.docx。填项：① 权利基础（商标注册号、类别、专用权期限、续展日、近三年使用证据清单、撤三风险评级）；② 侵权事实（链接、标题关键词「星河同款/星轨款」、月销、供货档口）；③ 主体（店铺经营者实名、档口工商信息、平台）；④ 目标（主/次）；⑤ 路径排序与预计周期；⑥ 预算（律师费/公证费/鉴定费）；⑦ 风险告知（被诉方可能抗辩+反制）。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习「案件受理与策略制定」（商标+电商+行政综合实战第一周 D1）。请：
+1) 用「权利—事实—主体—目标—路径」框架，讲清接案访谈要问清哪三件事；
+2) 讲清权利基础核查要点（注册证/续展/撤三风险 商标法第49条），并预判被诉方「撤三+无效」两张程序牌及反制；
+3) 用对比表区分平台投诉（电商法42条）、行政投诉（商标法60条）、民事诉讼（商标法63条）、刑事报案（刑法213/214条）四路径的速度/成本/效果/可执行性，并给出排序；
+4) 讲清目标三档（下架止血/索赔/震慑）与预算周期、风险告知书内容；
+5) 出 4 道判断题并逐题讲评。
+法条引用精确到条、款并标注版本，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、接案访谈：先问清三件事</h2>
+<p>接案不是听委托人讲故事，而是用结构化问题把模糊诉求变成可诉目标。对星河珠宝法务/外聘律师，访谈核心是三问：① 你主张什么权利（商标「星河/XINGHE」第14类，2016年注册，经典款「星轨」系列镶钻戒指）？② 对方做了什么（店铺「星河臻选」销售近似款，标题用「星河同款」「星轨款」，月销数千；深圳水贝档口供货并提供3D建模文件）？③ 你到底要什么（先下架止血，再索赔，是否要震慑到刑事）？</p>
+<div class="key">实务口诀：诉求不清不接案，目标分档好排序。止血第一、索赔第二、震慑看证据。</div>
+<h2>二、权利基础核查（防撤三与无效抗辩）</h2>
+<table><thead><tr><th>核查项</th><th>要点</th><th>被诉方可能攻击</th></tr></thead><tbody><tr><td>注册证有效性</td><td>注册号、第14类、专用权期限2016起10年、续展是否已办</td><td>提商标无效（缺乏显著性，「星河」是否为通用描述）</td></tr><tr><td>近三年使用证据</td><td>销售合同、发票、广告、专柜照片</td><td>提撤三（商标法第49条 连续三年不使用撤销）</td></tr><tr><td>知名度证据</td><td>「星轨」系列获奖、媒体、销量</td><td>提「不具一定影响」以降低赔偿</td></tr><tr><td>商品类似与商标近似</td><td>第14类戒指 vs 仿款戒指</td><td>提「不类似/不近似」</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：商标「星河」在第14类是否具备固有显著性、被诉方提起无效/撤三的成功率，以及「星河」是否含直接描述性（「星河」非珠宝通用词，显著性较强），以《商标法》（2019修正）第11、49条及商标审查审理指南为准。</div>
+<div class="key">双视角：权利方须备齐近三年使用证据链（防撤三）；被诉方最易拿「撤三」+「无效」两张牌拖延，权利方要在接案阶段就把使用证据固化，等于提前拆弹。</div>
+<h2>三、路径组合与排序（核心对比表）</h2>
+<table><thead><tr><th>路径</th><th>速度</th><th>成本</th><th>效果</th><th>可执行性</th><th>适用阶段</th></tr></thead><tbody><tr><td>平台投诉（电商法42条通知-删除）</td><td>最快 3-7 日下架</td><td>低</td><td>仅下架链接，不赔钱</td><td>强（平台执行）</td><td>止血首选</td></tr><tr><td>行政投诉（市监/知产局查处 商标法60条）</td><td>15-90 日（⚠以规定为准）</td><td>中</td><td>下架+罚款+没收，不直接赔</td><td>强</td><td>止血+震慑</td></tr><tr><td>民事诉讼（索赔 商标法63条）</td><td>3-12 月（一审普通程序）</td><td>高</td><td>赔偿+停止+消除影响</td><td>需执行</td><td>索赔主战场</td></tr><tr><td>刑事报案（假冒注册商标罪 刑法213/214条）</td><td>侦查期长</td><td>中</td><td>震慑最强，但本案为近似非相同</td><td>弱（门槛高）</td><td>评估震慑</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：市场监督管理行政处罚案件办理期限（《市场监督管理行政处罚程序规定》第60条 一般90日，复杂可延长），以及电商平台知识产权投诉审核时效，以现行规定与平台规则为准。刑事上本案「星河同款」「星轨款」属近似商标致混淆，不同于「相同商标」，假冒注册商标罪（刑法第213条）要求「相同商标」，故刑事门槛高，需评估是否构成司法解释扩张情形，⚠以司法解释为准。</div>
+<div class="key">排序铁律：先平台/行政下架止血（1-2周见效），同步公证购买取证；取证闭环后启动民事索赔；刑事作为震慑筹码，不宜一开始就报案（会打草惊蛇且门槛高）。</div>
+<h2>四、目标设定三档与预算周期</h2>
+<table><thead><tr><th>目标档</th><th>定义</th><th>路径</th><th>周期</th><th>预算</th></tr></thead><tbody><tr><td>止血档（主）</td><td>最快下架所有侵权链接</td><td>平台+行政</td><td>1-2 月</td><td>公证费+律师费约数万</td></tr><tr><td>索赔档（次）</td><td>民事判赔</td><td>诉讼</td><td>6-18 月</td><td>律师费+可能的鉴定费 十万级</td></tr><tr><td>震慑档（评估）</td><td>刑事/高额惩罚性赔偿</td><td>刑事报案+惩罚性赔偿</td><td>不定</td><td>视情况</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：民事诉讼一审普通程序审限（民事诉讼法第152条 6个月）、简易程序（第160条 3个月），以及行为保全审查期限（知识产权行为保全司法解释 48小时/30日），以现行法为准。</div>
+<h2>五、风险告知书（抗辩预判）</h2>
+<ul><li>商标不近似抗辩：被诉方称「星河臻选」与「星河」不近似、「星轨款」为描述性 / 反制：整体视觉效果+混淆比对报告+消费者误认证据</li><li>合法来源抗辩（商标法64条第2款）：档口称有「授权」或不知侵权 / 反制：查授权链真实性，档口提供3D文件证明明知近似</li><li>撤三/无效抗辩：拖延程序 / 反制：提前固化近三年使用证据</li><li>诉讼时效：侵权持续中，时效从知道起算3年（民法典188条）/ 本案持续侵权，未过时效</li></ul>
+<div class="key">双视角收口：接案阶段就把「被诉方四张抗辩牌」写进风险告知书，并附反制证据动作，等于把诉讼剧本先读一遍。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：接案后第一步该发函还是该取证？为什么？</div><div class="a"><span class="an">参考答案</span>先取证。监测发现后先做公证购买/时间戳固定证据，再发函或投诉。直接发函会打草惊蛇，导致店铺下架链接、销毁库存与3D文件，证据灭失。本案应先固证「星河臻选」戒指实物与网页，再启动平台/行政下架。</div><div class="q">Q2：被诉方最可能用哪两张程序性牌拖延本案？权利方怎么反制？</div><div class="a"><span class="an">参考答案</span>① 撤三（商标法第49条 连续三年不使用撤销）——反制：接案即固化近三年使用证据链（销售合同、发票、广告、专柜照片）；② 商标无效（缺乏显著性/通用描述）——反制：证明「星河」非珠宝通用词、固有显著性较强，并备知名度证据。两张牌本质拖延，权利方提前拆弹。</div><div class="q">Q3：本案为什么刑事门槛高，不宜一开始就报案？</div><div class="a"><span class="an">参考答案</span>假冒注册商标罪（刑法第213条）要求「相同商标」，本案店铺用「星河臻选」「星轨款」属近似商标致混淆，非相同商标，刑事立案门槛高；且一开始报案会打草惊蛇、证据灭失。应先民事/行政下架止血，把刑事作为谈判震慑筹码（主张惩罚性赔偿）而非首选路径。⚠ 近似商标入罪边界以司法解释为准。</div><div class="q">Q4：平台投诉和行政投诉在「止血」上有什么不同，怎么排序？</div><div class="a"><span class="an">参考答案</span>平台投诉（电商法第42条 通知-删除）最快 3-7 日下架链接，但不赔钱、仅平台内；行政投诉（商标法第60条 市监查处）可责令停止+没收+罚款，有震慑但周期较长（一般90日）。排序：先平台投诉快速止血，同步行政投诉扩大震慑，再民事索赔。两者都快于诉讼，属「止血组合」。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Trademark Registration</div><div class="cn">商标注册</div><div class="df">商标法第3条，经核准取得专用权，本案第14类</div></div><div class="ti"><div class="en">Cancellation for Non-use</div><div class="cn">撤三/连续三年不使用撤销</div><div class="df">商标法第49条，无正当理由连续三年不使用可撤销</div></div><div class="ti"><div class="en">Likelihood of Confusion</div><div class="cn">混淆可能性</div><div class="df">商标法第57条第2项 近似+类似+混淆</div></div><div class="ti"><div class="en">Notice-and-Takedown</div><div class="cn">通知-删除规则</div><div class="df">电子商务法第42-45条，平台接到有效通知应删除</div></div><div class="ti"><div class="en">Injunctive Relief</div><div class="cn">行为保全/禁令</div><div class="df">民事诉讼法第100-101条+知产行为保全司法解释</div></div></div><div class="foot"><a href="index.html">← 本周目录</a><a class="idx" href="../index.html">返回总计划</a><a href="W31-D2.html">第 2 天 →</a><a class="qz" href="W31-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>保险 · 法律维权知识体系</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="mark"></span>
+    <div>
+      <div class="t1">保险 · 法律维权</div>
+      <div class="t2">Insurance Claim Defense · 中国大陆 / 广东判例</div>
+    </div>
+  </div>
+  <div class="searchwrap">
+    <input id="search" type="search" placeholder="全文搜索：如实告知 / 隐性免责 / 两年不可抗辩 / 顺风车 / 既往症…" autocomplete="off">
+    <span id="searchCount" class="scount"></span>
+  </div>
+  <button id="tocBtn" class="menu-btn toc-btn" aria-label="本页目录">目录</button>
+  <button id="menuBtn" class="menu-btn" aria-label="导航">导航</button>
+</header>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar">
+    <nav id="nav"></nav>
+    <div class="sidefoot">
+      <div class="badge">案例可信度</div>
+      <div class="lv"><b>A</b> 裁判文书原文</div>
+      <div class="lv"><b>B</b> 法院官网 / 官媒</div>
+      <div class="lv"><b>C</b> 二手 · 待核验</div>
+    </div>
+  </aside>
+  <main id="main" class="main">
+    <div id="crumb" class="crumb"></div>
+    <div class="bodywrap">
+      <article id="content" class="content"></article>
+      <aside id="toc" class="toc"></aside>
+    </div>
+    <footer class="foot">
+      个人知识管理与学习资料，不构成针对具体案件的法律意见。法条与判例引用前须核对原始来源。
+    </footer>
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第29周·第2天｜员工发明与职务作品制度：设计师画的图到底归谁</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 29 · DAY 2 / 5　·　第 4 层 出师 · 行业专精</div><h1>员工发明与职务作品制度：设计师画的图到底归谁</h1><div class="sub">企业 IP 管理制度</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">员工在职画的款式图，像「在公司厨房用公司食材做的菜」——食材工具都是公司的，菜归谁？多数情况归公司，但得有制度把这道理写明白，否则离职时设计师反手把图带走。</div><div class="mlink"><b>业务落点</b>业务落点：出台《职务发明与奖酬办法》，把「职务/非职务」「委托/合作」权属约定固化，避免设计师离职带走款式图、代持专利。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>职务发明认定（专利法第 6 条 + 实施细则第 12 条）</li><li>奖酬法定最低标准（专利法第 15 条 + 实施细则）</li><li>职务作品著作权归属（著作权法第 18 条）</li><li>委托开发 vs 合作开发权属</li><li>约定优先原则</li><li>设计师离职权属交接</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《职务发明与职务作品权属认定清单》——拿「在职设计师画的经典款设计图」「外部自由设计师外包图」「与院校合作开发的新工艺」三场景，分别判定权属、适用法条、应在合同/制度里写哪条，并填奖酬测算（发明/实用新型/外观最低奖金、实施提取比例）。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习「员工发明与职务作品制度」。请：
+1) 讲清职务发明认定标准（专利法第 6 条、实施细则第 12 条，含离职 1 年内规则）与归属；
+2) 用对比表列职务发明奖励与报酬的法定最低标准（专利法第 15 条 + 实施细则奖酬条款），标注⚠待核实具体数额；
+3) 区分一般职务作品与特殊职务作品（著作权法第 18 条）的著作权归属；
+4) 讲清委托开发/合作开发权属约定（民法典第 859-860 条、计算机软件保护条例第 11 条），双视角：权利方怎么锁权属、被诉方怎么争权属；
+5) 出 4 道判断题并逐题讲评。
+法条引用精确到条、款并标注版本，不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、职务发明认定：三要件</h2>
+<p>专利法（2020 修正）第 6 条规定，<b>执行本单位的任务</b>或者<b>主要是利用本单位的物质技术条件</b>所完成的发明创造为职务发明创造，申请专利的权利属于该单位。实施细则第 12 条细化「执行本单位任务」：① 在本职工作中作出的；② 履行本单位交付的本职工作之外的任务作出的；③ <b>退休、调离原单位后或劳动、人事关系终止后 1 年内</b>作出的，与其在原单位承担的本职工作或原单位分配的任务有关的发明创造。</p>
+<div class="key">珠宝实战：设计师本职就是画图，其作出的镶嵌结构、款式造型通常属职务发明；即便「八小时外」画的，只要与本职相关，仍可能属职务发明。离职 1 年内的相关成果也归原单位。</div>
+<h2>二、对比表：职务发明 vs 非职务发明</h2>
+<table><thead><tr><th>维度</th><th>职务发明</th><th>非职务发明</th></tr></thead><tbody><tr><td>认定</td><td>执行任务/主要利用单位条件</td><td>个人自发、与本职无关、自筹条件</td></tr><tr><td>归属</td><td>申请权与专利权归单位</td><td>归发明人个人</td></tr><tr><td>奖酬</td><td>单位须发奖励+合理报酬</td><td>无</td></tr><tr><td>珠宝例子</td><td>在职设计师的款式/镶嵌专利</td><td>员工业余独立做的与本职无关的小发明</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：职务发明奖励与报酬的具体数额以现行《专利法实施细则》（2023 修订，2024.1.20 施行）第 93、94 条为准；旧版（2010）标准不同（发明≥2000、实用新型/外观≥500），注意版本差异，引用时务必标注版本。</div>
+<h2>三、奖酬法定最低标准（双视角）</h2>
+<table><thead><tr><th>项目</th><th>法定最低（现行细则）</th><th>备注</th></tr></thead><tbody><tr><td>发明专利奖金</td><td>≥ 3000 元/项</td><td>专利权公告起 3 个月内发放</td></tr><tr><td>实用新型/外观奖金</td><td>≥ 1000 元/项</td><td>同上</td></tr><tr><td>单位自行实施报酬</td><td>发明/实用新型≥营业利润 2%；外观≥0.2%</td><td>每年提取</td></tr><tr><td>许可他人实施报酬</td><td>≥ 使用费 10%</td><td>一次性或按约</td></tr></tbody></table>
+<div class="key">双视角：<b>权利方（单位）</b>——依法发奖酬是义务，也是激励与留证；约定可高于法定但不得低于最低。<b>被诉/被主张方</b>——若单位从未发奖酬，发明人可主张报酬，但权属仍归单位；奖酬争议不影响专利归属。⚠ 具体比例以现行细则为准。</div>
+<h2>四、职务作品：著作权法第 18 条</h2>
+<p>著作权法（2020 修正）第 18 条：自然人为完成法人工作任务所创作的作品是职务作品，<b>一般职务作品著作权由作者享有</b>；但两类<b>特殊职务作品</b>，作者仅享署名权、其他权利由单位享有：① 主要利用单位物质技术条件创作并由单位承担责任的工程设计图、产品设计图、地图、示意图、计算机软件等；② 法律行政法规规定或合同约定著作权由法人享有的。</p>
+<table><thead><tr><th>类型</th><th>著作权归属</th><th>珠宝例子</th></tr></thead><tbody><tr><td>一般职务作品</td><td>归作者（员工）</td><td>员工写的新媒体推文、随手拍</td></tr><tr><td>特殊职务作品</td><td>署名权归作者，其他归单位</td><td>产品设计图、3D 建模文件、小程序代码</td></tr></tbody></table>
+<div class="key">珠宝关键：款式设计图、3D 建模源文件通常属「特殊职务作品」——主要利用单位设备/数据、由单位承担责任，单位享有除署名外全部著作权。制度要明确，否则设计师离职带走源文件、另起炉灶。</div>
+<h2>五、委托 vs 合作开发权属</h2>
+<ul><li><b>委托开发</b>：民法典第 859 条，除另有约定，申请专利的权利属于研究开发人（受托方）；计算机软件保护条例第 11 条：受托软件著作权无约定归受托方；</li><li><b>合作开发</b>：民法典第 860 条，除另有约定，申请专利的权利属于合作各方共有；</li><li><b>双视角</b>：权利方（委托品牌）务必在合同写明「著作权/专利申请权归委托方」；被诉方（设计师）若合同无约定，可主张归己方，反制公司禁用。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：委托作品中「主要利用委托人物质技术条件」是否改变归属的裁判口径，以及合作开发共有时的实施与收益分配，以现行民法典与判例为准。</div>
+<h2>六、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：员工离职 1 年内作出的与原单位任务相关的发明创造，归谁？</div><div class="a"><span class="an">参考答案</span>归原单位。专利法实施细则第 12 条明确，劳动/人事关系终止后 1 年内作出的、与其在原单位承担的本职工作或分配任务有关的发明创造，属职务发明，申请权与专利权归原单位。</div><div class="q">Q2：职务发明奖酬的法定最低标准是多少（现行细则）？约定优先吗？</div><div class="a"><span class="an">参考答案</span>现行《专利法实施细则》（2023 修订）第 93、94 条：发明专利奖金≥3000 元/项、实用新型/外观≥1000 元/项；单位自行实施每年提营业利润≥2%（发明/实用新型）或≥0.2%（外观），许可实施提使用费≥10%。约定可高于但不得低于法定最低，⚠ 具体以现行细则为准。</div><div class="q">Q3：委托外部自由设计师做的款式图，著作权归谁？没约定怎么办？</div><div class="a"><span class="an">参考答案</span>有约定从约定；无约定，依计算机软件保护条例第 11 条与委托作品规则，著作权归受托方（设计师）。所以品牌必须合同明确约定「归委托方/公司」，否则拿不到版权、无法维权。</div><div class="q">Q4：珠宝设计师在职画的产品设计图，是一般还是特殊职务作品？著作权怎么分？</div><div class="a"><span class="an">参考答案</span>通常属特殊职务作品：主要利用单位物质技术条件、由单位承担责任的设计图/3D 文件，作者（设计师）仅享署名权，其他著作权（复制、发行、改编等）归单位。一般职务作品（如随手拍）才全归员工。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Employee Invention</div><div class="cn">职务发明</div><div class="df">执行单位任务或主要利用单位条件完成的发明，权属归单位（专利法第 6 条）</div></div><div class="ti"><div class="en">Service Work</div><div class="cn">职务作品</div><div class="df">为完成单位任务创作的作品，分一般与特殊两类（著作权法第 18 条）</div></div><div class="ti"><div class="en">Statutory Award</div><div class="cn">法定奖酬</div><div class="df">单位对职务发明须发的奖励与合理报酬（专利法第 15 条）</div></div><div class="ti"><div class="en">Commissioned Work</div><div class="cn">委托作品</div><div class="df">委托他人创作，权属依约定，无约定归受托方</div></div><div class="ti"><div class="en">Joint Development</div><div class="cn">合作开发</div><div class="df">合作完成的发明创造，除约定外由各方共有（民法典第 860 条）</div></div></div><div class="foot"><a href="W29-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W29-D3.html">第 3 天 →</a><a class="qz" href="W29-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

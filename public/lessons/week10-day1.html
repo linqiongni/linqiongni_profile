@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>供应链模式设计与反垄断边界</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>供应链模式设计与反垄断边界</h1>
+    <div class="meta">总部（特许人）立场 · 餐饮（米线/快餐/小吃）加盟场景 · 法条精确到条款项</div>
+  </header>
+  <div class="lead">统采统配是总部主要利润来源，也是反垄断、食安、商业贿赂三重风险交汇点。本篇对比三种模式、拆解差价披露与合理边界、给出反垄断自查表与执法教训。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">① 三种供应链模式对比</div><div class="tab" data-p="p2">② 供应链差价风险</div><div class="tab" data-p="p3">③ 反垄断风险自查</div><div class="tab" data-p="p4">④ 执法案例与教训</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>供应链模式七维度对比（蒙自源类米线品牌）</h3>
+<table><thead><tr><th>维度</th><th>统采统配（总部转售）</th><th>指定供应商（加盟商直签）</th><th>中央厨房直供（自产自销）</th></tr></thead><tbody><tr><td>法律关系</td><td>买卖（总部→加盟商）</td><td>居间/准入（总部审核）</td><td>生产+买卖一体</td></tr><tr><td>利润来源</td><td>进销差价</td><td>无直接差价，收管理费</td><td>生产利润+差价</td></tr><tr><td>食安责任</td><td>总部作为供货方担责</td><td>加盟商+供应商</td><td>总部全链担责</td></tr><tr><td>税务处理</td><td>总部确认收入+增值税</td><td>仅收管理费</td><td>生产+销售两道税</td></tr><tr><td>资金占用</td><td>总部垫资压库存</td><td>加盟商自付</td><td>总部重资产</td></tr><tr><td>加盟商接受度</td><td>中（嫌差价高）</td><td>高（自主）</td><td>高（品质稳）</td></tr><tr><td>总部风险</td><td>反垄断+食安双高</td><td>低</td><td>资产重、食安全担</td></tr></tbody></table></div>
+<div class="card"><h3>推荐方案：核心统配+非核心自采备案</h3>
+<p>对米线品牌：<b>核心物料（汤底料包、招牌酱料、统一VI餐具）100%统配</b>（品质/食安/品牌识别正当理由），<b>非核心（生鲜、调料辅材）开放自采备案</b>，既保利润又降滥用风险。</p><div class="act"><b>我的落地动作：</b>在合同中列明'核心物料目录'（附件四）并锁定，非核心物料加盟商可自采但须备案质检；年度披露统配加价率（建议封顶≤15%）以证合理。</div><div class="anti"><b>加盟商反制点：</b>加盟商可主张：核心物料目录应'影响品质/食安'才合理，若把无关品（如纸巾、清洁用品）强制统配，可援用条例第27条主张指定供应商利益输送。</div>
+</div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>差价=货款还是变相特许费？法院怎么看</h3>
+<p>司法主流：统采统配差价是<strong>货物买卖对价</strong>，非特许经营费用，一般<strong>不支持返还</strong>。但有两个敞口：</p><p>① <strong>披露义务</strong>：《商业特许经营管理条例》第22条第4项要求披露'向被特许人提供产品、服务、设备的价格、条件'——<b>差价率应写进信息披露文件</b>，否则构成披露不实（见虚假宣传攻防手册）。</p><p>② <strong>合理性边界</strong>：差价率过高（如汤底料包进价8元售价15元，加价近90%）易被质疑暴利、引发群体投诉与监管关注；无司法硬性上限，但<strong>建议核心物料加价率≤15%、封顶不超30%</strong>，并年度公示。</p><div class="act"><b>我的落地动作：</b>把统配加价率与定价依据写入《信息披露文件》+合同附件，年度向加盟商披露成本结构与调价程序，化'暗箱'为'明示'。</div><div class="anti"><b>加盟商反制点：</b>加盟商主张差价过高时，可打'披露不实'（条例22④未披露实际加价）而非'应当返还'，后者难赢；并可依反垄断'限定交易'路径施压（见下）。</div>
+</div>
+<div class="card"><h3>差价率参考与合规动作</h3>
+<table><thead><tr><th>品类</th><th>建议加价率</th><th>动作</th></tr></thead><tbody><tr><td>核心料包/酱料</td><td>≤15%</td><td>年度披露成本结构</td></tr><tr><td>统一VI餐具</td><td>≤15%</td><td>合同列明</td></tr><tr><td>生鲜辅材（自采）</td><td>—</td><td>备案质检即可</td></tr><tr><td>临时调价</td><td>提前30日书面通知</td><td>留痕防争议</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>餐饮加盟易触的反垄断红线</h3>
+<p>① <strong>转售价格维持（RPM）</strong>：《反垄断法》第18条禁止固定/限定向第三人转售的最低价格，<b>本身违法（per se）</b>，不要求具备市场支配地位；安全港极难适用。<b>结论：绝不约定强制统一零售价或最低价，只用'建议零售价'。</b></p><p>② <strong>限定交易</strong>：第22条第4项，无正当理由限定只能与总部/指定方交易——统配核心物料（品质/食安/品牌识别）属正当理由抗辩；但<strong>非核心物料强制指定</strong>即危险。</p><p>③ <strong>搭售</strong>：第22条第5项，搭售无关商品/附加不合理条件。</p><p>④ <strong>支配地位推定</strong>：第24条，相关市场份额≥1/2推定具支配地位（细分市场'云南米线快餐'+某城市）。多数全国品牌未必过半，但<strong>单城市独大（>50%）时滥用风险骤升</strong>。</p><div class="act"><b>我的落地动作：</b>供应链条款一律用'建议零售价'+'核心物料统配（附正当理由清单）'+'非核心自采备案'；年度披露加价率+设异议机制，留痕证'合理限制非滥用'。</div><div class="anti"><b>加盟商反制点：</b>加盟商若被强制从指定方高价采购无关品，可依据条例第27条（指定供应商利益输送）向商务主管部门举报，或依反垄断法第22条主张限定交易。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">供应链反垄断合规自查表</strong><div class="progress"><i id="bar9"></i></div><span id="cnt9" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">1. 是否出现'统一零售价''最低售价'等强制表述<span class="m-note"> — RPM本身违法，必须删除</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">2. 统配物料是否限于'影响品质/食安/品牌识别'<span class="m-note"> — 非核心须开放自采</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">3. 是否搭售与经营无关的商品<span class="m-note"> — 第22条⑤搭售风险</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">4. 是否在单城市市场份额>50%仍强统配<span class="m-note"> — 支配地位下须允许多源</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">5. 加价率是否公示且≤合理区间<span class="m-note"> — 留痕证合理限制</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">6. 是否设加盟商异议/替代采购机制<span class="m-note"> — 对抗'限定交易'指控</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar9','cnt9')"><span class="m-txt">7. 供货协议是否独立签、质检留档<span class="m-note"> — 切割总部食安全责</span></span></label></div>
+</div><div class="panel" id="p4">
+<div class="card"><h3>近年 RPM / 限定交易执法参考</h3>
+<table><thead><tr><th>类型</th><th>要点</th><th>教训</th></tr></thead><tbody><tr><td>RPM处罚</td><td>品牌方与经销商约定最低转售价被认定为纵向垄断协议，处上年度销售额1%–10%罚款（反垄断法第56条）</td><td>只用建议价，不写最低价</td></tr><tr><td>限定交易</td><td>具有支配地位的经营者强制独家采购被罚</td><td>有支配地位时放开多源</td></tr><tr><td>搭售</td><td>强制搭售无关品被认定附加不合理条件</td><td>核心物料外不捆绑</td></tr><tr><td>个人责任</td><td>达成垄断协议负有个人责任的法代/主要负责人可处100万以下罚款（第56条第2款）</td><td>条款合规也是高管个人风险</td></tr></tbody></table></div>
+<div class="card"><h3>罚则衔接</h3>
+<p>达成并实施垄断协议：责令停止+没收违法所得+处<strong>上年度销售额1%–10%</strong>罚款；负有个人责任的法代/主要负责人可处<strong>100万以下</strong>罚款。违约金若'超过损失30%'可依《民法典》第585条第2款酌减，故统采/处罚条款须锚定实际损失。</p><div class="act"><b>我的落地动作：</b>把'建议零售价非强制''核心物料统配附正当理由''加价率公示'三句话写进《供应链合规手册》与招商培训，作为全员红线。</div>
+</div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

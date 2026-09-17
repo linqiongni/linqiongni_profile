@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme-default="dark"><head><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1"><title>计算器与清单 · 刑事辩护全流程实务</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0f1115;--bg2:#161b23;--card:#141922;--line:#272e3a;--line2:#3a4351;--tx:#e9e7e2;--tx2:#a9b1be;--tx3:#6d7683;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 70px}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0f1115);border-bottom:1px solid var(--line);padding:13px 0;margin-bottom:26px;position:sticky;top:0;z-index:50}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.brand{font-size:12.5px;letter-spacing:.2em;color:var(--gold)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:11.5px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:3px 8px}
+.nav a:hover,.nav a.on{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;margin-bottom:12px;font-weight:600}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+h2{font-size:19px;margin:32px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 8px;color:var(--gold)}
+p{font-size:14.5px;margin:9px 0}
+p b,li b,td b{color:var(--gold);font-weight:600}
+ul,ol{margin:9px 0 9px 4px;padding-left:20px}
+li{font-size:14.5px;margin:5px 0}
+table{width:100%;border-collapse:collapse;margin:13px 0;font-size:13.2px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--bg2);color:var(--gold);font-weight:600;white-space:nowrap}
+.box{border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px;border:1px solid var(--line)}
+.law{background:rgba(201,162,39,.07);border-left:3px solid var(--gold)}
+.warn{background:rgba(192,92,78,.09);border-left:3px solid var(--red)}
+.tip{background:rgba(74,157,156,.09);border-left:3px solid var(--jade)}
+.lb{font-size:11px;letter-spacing:.16em;margin-bottom:6px;display:block}
+.law .lb{color:var(--gold)}.warn .lb{color:var(--red)}.tip .lb{color:var(--jade)}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.rowf{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:9px 0}
+.rowf label{flex:0 0 168px;font-size:13.5px;color:var(--tx2)}
+input,select{background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:6px;padding:6px 9px;font-size:13.5px;font-family:inherit}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+button.act{background:rgba(201,162,39,.14);border:1px solid var(--gold);color:var(--gold);border-radius:6px;padding:6px 14px;font-size:13px;cursor:pointer;font-family:inherit}
+button.act:hover{background:rgba(201,162,39,.25)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;line-height:1.9;white-space:pre-wrap}
+.out .k{color:var(--gold)}
+.chk{list-style:none;padding-left:0}
+.chk li{padding-left:26px;position:relative;cursor:pointer;font-size:14px;margin:7px 0;color:var(--tx2)}
+.chk li::before{content:"□";position:absolute;left:4px;top:0;color:var(--gold);font-size:15px}
+.chk li.done{color:var(--tx3);text-decoration:line-through}
+.chk li.done::before{content:"■";color:var(--jade)}
+.foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--tx3)}
+@media(max-width:640px){table{display:block;overflow-x:auto;white-space:nowrap}h1{font-size:21px}.rowf label{flex:0 0 100%}}
+</style></head><body>
+<div class="topbar"><div class="wrap"><span class="brand">刑事辩护 · 全流程实务</span><nav class="nav">
+<a href="index.html">总纲</a><a href="flow.html">流程鸟瞰</a><a href="intake.html">收案委托</a><a href="meeting.html">会见</a><a href="investigation.html">侦查辩护</a><a href="review.html">阅卷·起诉</a><a href="trial.html">一审庭审</a><a href="post.html">二审·复核·执行</a><a href="special.html">特别程序·风险</a><a href="templates.html">文书库</a><a class="on" href="tools.html">工具</a><a href="plan.html">30天计划</a><a href="law.html">法条术语</a>
+</nav></div></div>
+
+<div class="wrap">
+<div class="kicker">MODULE 10 · CALCULATORS & CHECKLISTS</div>
+<h1>计算器与清单</h1>
+<div class="sub">三个纯本地计算器（数据不上传，刷新即清空）+ 四张可勾选清单（浏览器本地保存）。办案时打开这一页就够了。</div>
+
+<h2>一、37 天期限计算器</h2>
+<div class="calc">
+<div class="rowf"><label>刑事拘留日期</label><input type="date" id="d1"></div>
+<div class="rowf"><label>是否属于三类重大嫌疑分子</label><select id="d2"><option value="normal">一般（3 日提请批捕）</option><option value="special">特殊情况（3+4 日）</option><option value="three">流窜/多次/结伙作案（30 日）</option></select></div>
+<div class="rowf"><label></label><button class="act" onclick="calc1()">计算</button></div>
+<div class="out" id="o1">填好日期后点击「计算」。<br>
+规则：期间开始的日不计算在内（次日起算）。</div>
+</div>
+
+<h2>二、刑期折抵与释放日期计算器</h2>
+<div class="calc">
+<div class="rowf"><label>刑罚种类</label><select id="p1"><option value="yz">有期徒刑</option><option value="jy">拘役</option><option value="gz">管制</option></select></div>
+<div class="rowf"><label>判处刑期（月）</label><input type="number" id="p2" placeholder="如 24" style="width:120px"></div>
+<div class="rowf"><label>先行羁押开始</label><input type="date" id="p3"></div>
+<div class="rowf"><label>先行羁押结束</label><input type="date" id="p4"></div>
+<div class="rowf"><label>指定居所监视居住天数</label><input type="number" id="p5" placeholder="可留空" style="width:120px"></div>
+<div class="rowf"><label>判决执行开始日</label><input type="date" id="p6"></div>
+<div class="rowf"><label></label><button class="act" onclick="calc2()">计算</button></div>
+<div class="out" id="o2">填好后点击「计算」。<br>
+折抵规则：羁押 1 日 → 管制折抵 2 日、拘役/有期徒刑折抵 1 日；<br>
+指定居所监视居住 → 管制 1 日折抵 1 日、拘役/有期徒刑 2 日折抵 1 日；取保候审不折抵。</div>
+</div>
+
+<h2>三、量刑三步法试算器</h2>
+<div class="calc">
+<div class="rowf"><label>① 量刑起点（月）</label><input type="number" id="s1" placeholder="如 24" style="width:120px"></div>
+<div class="rowf"><label>② 增加刑罚量（月）</label><input type="number" id="s2" placeholder="如 12" style="width:120px"></div>
+<div class="rowf"><label>③ 从宽情节（用负号，%）</label><input type="text" id="s3" placeholder="-30,-20,-10" style="width:180px"></div>
+<div class="rowf"><label>④ 从重情节（正号，%）</label><input type="text" id="s4" placeholder="20" style="width:180px"></div>
+<div class="rowf"><label></label><button class="act" onclick="calc3()">试算</button></div>
+<div class="out" id="o3">填好后点击「试算」。<br>算法：基准刑 = 起点 + 增加量；宣告刑 = 基准刑 ×(1 + 从宽合计 + 从重合计)。<br>
+<b>说明</b>：这是简化模型，仅用于快速估算与谈判准备；实际量刑以《量刑指导意见》及所在地省级实施细则为准，且以定性分析为主、定量分析为辅。</div>
+</div>
+
+<h2>四、可勾选清单（本地保存，随时回来接着打勾）</h2>
+
+<h3>A. 证据合法性审查清单（阅卷时逐项过）</h3>
+<ul class="chk" id="ckA">
+<li>讯问是否个别进行、侦查人员不少于二人</li>
+<li>拘留后是否 24 小时内送看守所</li>
+<li>讯问是否全程录音录像；录像与笔录是否一致</li>
+<li>入所健康检查表是否记载伤情；有无异常</li>
+<li>讯问时间是否合理（有无深夜、超长、连续讯问）</li>
+<li>有无《犯罪嫌疑人诉讼权利义务告知书》及签名</li>
+<li>搜查：有无搜查证、搜查笔录、见证人签名</li>
+<li>扣押：清单是否与实际一致、有无见证人与持有人签名</li>
+<li>物证：来源—提取—保管—送检链条是否完整（同一性）</li>
+<li>辨认：是否个别进行、陪衬对象是否具有相似性、有无暗示</li>
+<li>鉴定：机构与人员资质、检材来源、方法标准、是否在委托范围内</li>
+<li>电子数据：是否原始介质、有无完整性校验值与封存记录</li>
+<li>证人证言：是否个别询问、有无诱导性发问、是否经核对签名</li>
+<li>讯问笔录：是否经被告人核对、有无补正要求被拒的记载</li>
+<li>前科材料：是否真实、是否已过构成累犯的期限</li>
+</ul>
+
+<h3>B. 会见前清单</h3>
+<ul class="chk" id="ckB">
+<li>三证齐备（执业证、律所介绍信、委托书或法律援助公函）</li>
+<li>委托人关系证明与身份证复印件</li>
+<li>是否已完成预约；该看守所有无特殊要求</li>
+<li>本次会见的 3—5 个目标已写在纸上</li>
+<li>纸笔、印台、法条小册</li>
+<li>排非线索固定问题清单（模块 03 第五节）</li>
+<li>权利义务告知清单</li>
+<li>待当事人签署的文件（委托书补签、文书）</li>
+<li>生活类通知（存款、衣物、药品）已与家属确认</li>
+<li>是否需要双人会见（建议）</li>
+</ul>
+
+<h3>C. 庭审前夜清单</h3>
+<ul class="chk" id="ckC">
+<li>辩护手续已提交法院，确认在出庭通知名单内</li>
+<li>《庭前辩护意见》已提交并入卷</li>
+<li>排非申请、证人/鉴定人出庭申请、调取证据申请已提交并留回执</li>
+<li>《质证意见表》已做好，每份证据标好页码</li>
+<li>《发问提纲》已定稿，每个问题都预知答案</li>
+<li>辩护词已定稿，口头版压缩为 3 个核心点</li>
+<li>《量刑情节清单》《量刑计算表》《类案检索报告》已作为附件准备</li>
+<li>辩方证据已编号、装订，证明对象写清</li>
+<li>与当事人确认：庭审发言顺序、是否认罪、最后陈述内容</li>
+<li>预判公诉人观点，准备好第二轮辩论要点</li>
+<li>庭审当天：卷宗、法条、笔、电脑、充电器、律师袍（如需）、身份证明</li>
+</ul>
+
+<h3>D. 宣判后清单</h3>
+<ul class="chk" id="ckD">
+<li>当场询问并书面确认上诉意愿</li>
+<li>记录收到判决书的日期，从<b>第二日</b>起算上诉期（判决 10 日、裁定 5 日）</li>
+<li>重算刑期起止与折抵，发现错误立即书面提出</li>
+<li>核对判决书对从宽情节是否认定、理由是否回应</li>
+<li>上诉期倒数第 3 天再次书面确认上诉意愿</li>
+<li>不上诉的，请当事人签署《不上诉确认书》并入卷</li>
+<li>上诉的，在期限内提交上诉状（通过原审法院或直接向二审法院）</li>
+<li>财产刑、追缴、涉案财物部分是否有异议，一并主张</li>
+<li>结案归档（见模块 02 卷宗目录）</li>
+</ul>
+
+<div class="box warn"><span class="lb">免责</span>本页计算器为办案辅助的快速估算工具，不构成法律意见，计算结果不得直接作为法律文书依据。所有期限、刑期、量刑的最终认定，以办案机关的正式文书与现行有效法律规定为准。</div>
+
+<div class="foot">刑事辩护 · 全流程实务手册 ｜ 模块 10 计算器与清单 ｜ 数据全部保存在本地浏览器，不上传任何服务器</div>
+</div>
+
+<script>
+function fmt(d){var y=d.getFullYear(),m=('0'+(d.getMonth()+1)).slice(-2),da=('0'+d.getDate()).slice(-2);return y+'-'+m+'-'+da;}
+function addDays(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x;}
+function days(a,b){return Math.round((b-a)/86400000);}
+
+function calc1(){
+  var v=document.getElementById('d1').value;if(!v){alert('请先选择刑事拘留日期');return;}
+  var D=new Date(v+'T00:00:00');
+  var t=document.getElementById('d2').value;
+  var qbName,qb,end;
+  if(t==='normal'){qbName='一般情况（3 日内）';qb=3;end=addDays(D,3+7);}
+  else if(t==='special'){qbName='特殊情况（3+4 日）';qb=7;end=addDays(D,7+7);}
+  else{qbName='流窜/多次/结伙作案重大嫌疑分子（30 日）';qb=30;end=addDays(D,30+7);}
+  var lines=[];
+  lines.push('刑事拘留日：<span class="k">'+fmt(D)+'</span>（当日不计入，次日起算）');
+  lines.push('送看守所截止：<span class="k">'+fmt(addDays(D,1))+' 前（拘留后 24 小时内）</span>');
+  lines.push('通知家属截止：<span class="k">'+fmt(addDays(D,1))+' 前（无法通知或国安/恐怖犯罪有碍侦查的除外）</span>');
+  lines.push('公安提请批准逮捕截止（'+qbName+'）：<span class="k">'+fmt(addDays(D,qb))+'</span>');
+  lines.push('检察院作出批捕决定截止：<span class="k">'+fmt(addDays(D,qb+7))+'（自接到提请批准逮捕书之日起 7 日内）</span>');
+  lines.push('');
+  lines.push('★ <span class="k">最长羁押届满日：'+fmt(end)+'</span>（即「37 天」终点，实际为 '+ (qb+7) +' 天）');
+  lines.push('');
+  lines.push('律师动作建议：');
+  lines.push('· 提前 7—10 日提交《不予批准逮捕法律意见书》与《取保候审申请书》');
+  lines.push('· 提前 5 日电话跟进承办人，确认是否已报捕');
+  lines.push('· 批捕结果作出后 24 小时内掌握，并立即启动下一步（羁押必要性审查准备 / 办理取保）');
+  document.getElementById('o1').innerHTML=lines.join('\n');
+}
+
+function calc2(){
+  var kind=document.getElementById('p1').value;
+  var months=parseFloat(document.getElementById('p2').value);
+  var a=document.getElementById('p3').value,b=document.getElementById('p4').value;
+  var sms=parseFloat(document.getElementById('p5').value)||0;
+  var ex=document.getElementById('p6').value;
+  if(!months||!a||!b){alert('请填写刑罚种类、刑期与羁押起止日期');return;}
+  var A=new Date(a+'T00:00:00'),B=new Date(b+'T00:00:00');
+  var jyDays=days(A,B);
+  var rateJy = (kind==='gz')?2:1;
+  var rateSms = (kind==='gz')?1:0.5;
+  var zhe = jyDays*rateJy + sms*rateSms;
+  var totalDays = months*30.4167;
+  var left = totalDays - zhe;
+  var L=[];
+  L.push('刑罚：'+(kind==='gz'?'管制':kind==='jy'?'拘役':'有期徒刑')+' '+months+' 个月　≈ '+totalDays.toFixed(0)+' 日');
+  L.push('先行羁押：'+fmt(A)+' 至 '+fmt(B)+'，共 <span class="k">'+jyDays+' 日</span>，折抵率 <span class="k">'+rateJy+'</span> → 折抵 '+jyDays*rateJy+' 日');
+  L.push('指定居所监视居住：'+sms+' 日，折抵率 <span class="k">'+rateSms+'</span> → 折抵 '+(sms*rateSms).toFixed(0)+' 日');
+  L.push('取保候审：不折抵');
+  L.push('');
+  L.push('★ <span class="k">合计折抵：'+zhe.toFixed(0)+' 日</span>');
+  L.push('★ <span class="k">尚需执行：'+left.toFixed(0)+' 日</span>（约 '+(left/30.4167).toFixed(1)+' 个月）');
+  if(left<=0){L.push('　→ 折抵后已无剩余刑期，应当依法释放。请核对判决书折抵表述！');}
+  if(ex){
+    var E=new Date(ex+'T00:00:00');
+    L.push('');
+    L.push('判决执行开始日：'+fmt(E));
+    L.push('预计刑期届满日：<span class="k">'+fmt(addDays(E,Math.round(left)))+'</span>（不含后续减刑、假释）');
+  }
+  L.push('');
+  L.push('注：① 按月 30.4167 日估算，仅供快速核对；② 实际执行另受减刑、假释影响；');
+  L.push('③ 行政拘留依法应予折抵的，记得一并计入；④ 判决书表述有误的，立即书面申请补正。');
+  document.getElementById('o2').innerHTML=L.join('\n');
+}
+
+function calc3(){
+  var s1=parseFloat(document.getElementById('s1').value)||0;
+  var s2=parseFloat(document.getElementById('s2').value)||0;
+  var s3=document.getElementById('s3').value,s4=document.getElementById('s4').value;
+  function sum(str){var r=0;if(!str)return 0;str.split(',').forEach(function(x){x=x.trim().replace('%','');if(x){r+=parseFloat(x);}});return r;}
+  var kuan=sum(s3),zhong=sum(s4);
+  var base=s1+s2;
+  var net=kuan+zhong;
+  var res=base*(1+net/100);
+  var L=[];
+  L.push('① 量刑起点：<span class="k">'+s1+' 个月</span>');
+  L.push('② + 增加刑罚量：<span class="k">'+s2+' 个月</span>　→　基准刑 = <span class="k">'+base+' 个月</span>（约 '+(base/12).toFixed(1)+' 年）');
+  L.push('③ 情节调节：从宽合计 <span class="k">'+kuan+'%</span>，从重合计 <span class="k">'+zhong+'%</span>，净调节 <span class="k">'+net+'%</span>');
+  L.push('');
+  L.push('★ <span class="k">试算宣告刑 ≈ '+res.toFixed(1)+' 个月（约 '+(res/12).toFixed(1)+' 年）</span>');
+  if(res<=36){L.push('　→ 在 3 年以下区间，可重点论证<b>缓刑</b>适用（犯罪情节较轻、有悔罪表现、无再犯危险、对社区无重大不良影响）。');}
+  if(res<=12){L.push('　→ 在 1 年以下区间，可重点争取酌定不起诉 / 免予刑事处罚。');}
+  L.push('');
+  L.push('提醒：① 本模型为简化估算（同向相加、逆向相减的简化版），实际按《量刑指导意见》');
+  L.push('　及所在省实施细则计算；② 多个从宽情节叠加时，实际从宽幅度往往低于简单相加；');
+  L.push('③ 定性分析为主、定量分析为辅，数字是用来谈判的，不是用来背诵的。');
+  document.getElementById('o3').innerHTML=L.join('\n');
+}
+
+(function(){
+  ['ckA','ckB','ckC','ckD'].forEach(function(id){
+    var ul=document.getElementById(id);if(!ul)return;
+    var key='crim_'+id;
+    var saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){saved={};}
+    Array.prototype.forEach.call(ul.children,function(li,i){
+      if(saved[i])li.className='done';
+      li.onclick=function(){
+        li.className=li.className==='done'?'':'done';
+        saved[i]=li.className==='done';
+        try{localStorage.setItem(key,JSON.stringify(saved));}catch(e){}
+      };
+    });
+  });
+})();
+</script>
+<script src="/theme-toggle.js"></script>
+</body></html>

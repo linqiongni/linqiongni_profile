@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第19周·第2天｜专利布局：核心 + 外围</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 19 · DAY 2 / 5　·　第 3 层 能力 · 办案全流程</div><h1>专利布局：核心 + 外围</h1><div class="sub">布局与申请策略</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">专利布局像下围棋——核心专利是「活眼」（必争的技术要点，如一项新镶嵌结构），外围专利是「外势」（围绕它的改进、应用、变体，让对手绕不开也仿不全）。只下一个活眼容易被「点眼」破解，要连成一片。</div><div class="mlink"><b>业务落点</b>业务落点：新款式 / 新结构立项时同步做《专利布局矩阵》，把核心方案与外围变体一次排布，而非事后补救。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>三类专利（发明 / 实用新型 / 外观设计）</li><li>外观设计 15 年（专利法第 42 条）</li><li>核心专利 vs 外围专利</li><li>设计空间</li><li>申请日与优先权</li><li>18 个月公布 + 3 年实审</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《专利布局矩阵》——选你公司一个产品方向（如「悬浮镶嵌结构」或一条款式系列），列出 1 项核心专利（发明或实用新型）+ 3-5 项外围专利（结构变体 / 工艺 / 外观设计），标注类型、保护与权利要求层级。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习专利布局（核心 + 外围）。请：
+1) 用「围棋活眼 vs 外势」比喻讲清核心专利与外围专利的关系，并指出珠宝时尚企业最该用哪类专利；
+2) 用总表对比发明 / 实用新型 / 外观设计三类专利（保护对象、期限、审查、适合场景）；
+3) 用金字塔表说明核心 / 外围 / 防御专利三层布局，并给「悬浮镶嵌」的具体例子；
+4) 讲清外观设计专利的时间轴与「快时尚」款式的成本取舍；
+5) 出 4 道判断题并逐题讲评。
+法条引用精确到条并标注版本，官费与不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、先客体：专利保护的是「技术方案 / 设计」，不是「产品名字」</h2>
+<p>专利保护的是<b>技术方案（发明、实用新型）或产品的形状、图案、色彩设计（外观设计）</b>，与商标保护「标识」是两条线。珠宝时尚企业最容易用的是<b>外观设计专利</b>——一条项链的造型、一枚戒指的线条、表盘的纹样都能申请；涉及新结构（如自锁扣、悬浮镶嵌）可申请发明或实用新型。</p>
+<h2>二、三类专利怎么选（对比表）</h2>
+<table><thead><tr><th>类型</th><th>保护对象</th><th>期限</th><th>审查</th><th>适合珠宝场景</th></tr></thead><tbody><tr><td>发明</td><td>产品 / 方法的技术方案</td><td>20 年（第 42 条，自申请日）</td><td>实质审查（18 个月公布 + 3 年内提实审）</td><td>新镶嵌结构、新工艺术、智能珠宝算法</td></tr><tr><td>实用新型</td><td>产品的形状 / 构造</td><td>10 年（第 42 条）</td><td>初步审查（无实审，较快）</td><td>扣件、连接结构改进</td></tr><tr><td>外观设计</td><td>产品的形状 / 图案 / 色彩</td><td>15 年（第 42 条，2021-06-01 起适用）</td><td>初步审查（无实审）</td><td>款式、造型、纹样、包装</td></tr></tbody></table>
+<div class="key">珠宝行业首选外观设计：授权快、成本低、直接护住「颜值」。但外观设计只护「相同 / 近似设计」，别人改线条绕开就不侵权——所以核心结构要用发明 / 实用新型补刀。</div>
+<h2>三、核心专利 vs 外围专利（布局金字塔）</h2>
+<table><thead><tr><th>层级</th><th>定义</th><th>例子（悬浮镶嵌）</th><th>作用</th></tr></thead><tbody><tr><td>核心专利</td><td>最宽、最基础的权利要求，护住关键技术点</td><td>一种悬浮镶嵌结构及方法（发明）</td><td>封死主赛道，对手难以回避</td></tr><tr><td>外围专利</td><td>围绕核心的改进、变体、应用、工艺</td><td>不同形状的悬浮托 / 快拆扣 / 镶嵌工艺</td><td>织成网，对手绕一个还有下一个</td></tr><tr><td>防御专利</td><td>为堵对方规避而申请的「看似无用」专利</td><td>多种备选托架造型</td><td>压缩对手设计空间</td></tr></tbody></table>
+<p>布局逻辑：先申请核心专利占住<b>最基础、最难回避</b>的方案；再沿「结构变体—工艺—应用—外观」四个方向铺外围，形成<b>专利包（patent family）</b>。对珠宝款式系列，可用<b>系列外观设计</b>（同一设计的多件、相似设计）一次性布局，降低单件成本。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：系列外观设计的合案申请条件与数量限制、外观设计本国优先权（6 个月）及海牙途径的具体规则，以《专利法》（2020 修正）及《专利审查指南》现行文本为准。</div>
+<h2>四、时间轴：专利申请到授权的天数</h2>
+<ol><li>申请日：提交，取得申请号；享有优先权（发明 / 实用新型 12 个月、外观设计 6 个月，巴黎公约 / PCT / 海牙）</li><li>外观设计 / 实用新型：初步审查，通常数月至约 1 年授权（无实审）</li><li>发明专利：满 18 个月公布；须自申请日起 3 年内提实质审查请求，审查后授权，整体常 2-3 年</li><li>授权后：每年缴年费维持，否则终止</li></ol>
+<div class="key">反向视角（成本约束）：发明审查周期长、代理费高，若只是护一款短期流行的「快时尚」款式，用外观设计（15 年、快、便宜）更划算；核心结构 / 工艺才值得发明投入。不要为每款都堆发明，预算会爆。</div>
+<h2>五、今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：一条热卖项链的造型，用哪种专利护最划算？为什么？</div><div class="a"><span class="an">参考答案</span>外观设计专利最划算：直接护「造型 / 纹样」，初步审查、授权快、官费低（官费⚠ 待核实），期限 15 年（专利法第 42 条）。发明 / 实用新型护的是技术方案而非「颜值」，对纯造型帮助有限。若造型由某新结构实现，可另申实用新型补刀。</div><div class="q">Q2：核心专利和外围专利的关系，类比怎么说？</div><div class="a"><span class="an">参考答案</span>核心专利是「活眼」（占住最难回避的基础方案），外围专利是「外势」（变体 / 工艺 / 应用铺成网）。只下活眼易被规避，连成专利包才能让对手绕不开也仿不全。</div><div class="q">Q3：发明专利为什么要「3 年内提实审请求」？</div><div class="a"><span class="an">参考答案</span>专利法（2020 修正）规定发明专利申请须自申请日起 3 年内提出实质审查请求，逾期视为撤回（第 35 条⚠ 条号待核实，以现行文本为准）。实务中要设日历提醒，错过窗口专利权直接没了。</div><div class="q">Q4：外观设计 15 年期限从哪天算？老申请适用吗？</div><div class="a"><span class="an">参考答案</span>自申请日起算（专利法第 42 条）。15 年期限自 2021-06-01 专利法修正施行起对新申请适用；此前申请的外观设计仍为 10 年。跨境用海牙协定的，保护期依协定（至少 5 年可续展⚠ 细则待核实）。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Invention Patent</div><div class="cn">发明专利</div><div class="df">保护技术方案，实质审查，20 年</div></div><div class="ti"><div class="en">Utility Model</div><div class="cn">实用新型</div><div class="df">保护形状 / 构造，初步审查，10 年</div></div><div class="ti"><div class="en">Design Patent</div><div class="cn">外观设计专利</div><div class="df">保护形状 / 图案 / 色彩，15 年（2021 起）</div></div><div class="ti"><div class="en">Patent Family</div><div class="cn">专利族 / 专利包</div><div class="df">核心 + 外围围绕同一技术的系列申请</div></div><div class="ti"><div class="en">Substantive Examination</div><div class="cn">实质审查</div><div class="df">发明专利必经，18 个月公布 + 3 年内提请求</div></div></div><div class="foot"><a href="W19-D1.html">← 第 1 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W19-D3.html">第 3 天 →</a><a class="qz" href="W19-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

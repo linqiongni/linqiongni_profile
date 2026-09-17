@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 11 周第 5 天 · 收官：加盟体系用工合规手册定稿</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f26;--card2:#161b21;--line:#2a313b;--gold:#c9a227;--jade:#5fb3a3;--red:#d4564b;--txt:#e8e6e0;--sub:#9aa4b2;--sub2:#6b7688}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+  .container{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header{border:1px solid var(--gold);border-radius:14px;padding:22px 26px;background:linear-gradient(135deg,#1c2129,#15191f);margin-bottom:22px;box-shadow:0 0 0 1px rgba(201,162,39,.12) inset}
+  header h1{margin:0 0 6px;font-size:23px;color:var(--gold);letter-spacing:1px}
+  header .meta{color:var(--sub);font-size:13px}
+  .lead{border-left:3px solid var(--jade);padding:6px 14px;color:var(--sub);margin:14px 0 4px;background:rgba(95,179,163,.06);border-radius:0 8px 8px 0}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 16px}
+  .tab{cursor:pointer;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card2);color:var(--sub);font-size:14px;transition:.18s}
+  .tab:hover{border-color:var(--gold);color:var(--txt)}
+  .tab.on{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
+  .panel{display:none;animation:fade .25s}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);margin-bottom:16px}
+  .card h3{margin:0 0 12px;color:var(--gold);font-size:17px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+  .card h4{color:var(--jade);font-size:15px;margin:16px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#20262f;color:var(--gold);font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;margin:2px 3px}
+  .t-gold{background:rgba(201,162,39,.16);color:var(--gold);border:1px solid rgba(201,162,39,.4)}
+  .t-jade{background:rgba(95,179,163,.14);color:var(--jade);border:1px solid rgba(95,179,163,.4)}
+  .t-red{background:rgba(212,86,75,.14);color:var(--red);border:1px solid rgba(212,86,75,.4)}
+  .act{border:1px solid var(--jade);background:rgba(95,179,163,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .act b{color:var(--jade)}
+  .anti{border:1px solid var(--red);background:rgba(212,86,75,.07);border-radius:10px;padding:12px 15px;margin:12px 0}
+  .anti b{color:var(--red)}
+  .num{color:var(--gold);font-weight:700}
+  .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);margin-bottom:16px}
+  .cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .progress{flex:1;height:9px;background:#222932;border-radius:6px;overflow:hidden;min-width:120px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:.3s}
+  .mat{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .mat:last-child{border-bottom:none}
+  .mat input{margin-top:5px;width:16px;height:16px;accent-color:var(--jade)}
+  .mat .m-txt{font-size:13.5px}
+  .mat .m-note{color:var(--sub2);font-size:12px}
+  .btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+  .btn:hover{background:var(--gold);color:#1a140a}
+  @media print{body{background:#fff;color:#111}.tabs,.btn{display:none}.panel{display:block}header{border-color:#999;background:#fff}.card,.checklist{border-color:#bbb;background:#fff}th{background:#eee}}
+</style>
+<style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>第 11 周第 5 天 · 收官：加盟体系用工合规手册定稿</h1>
+    <div class="meta">劳动用工：总部与门店的双层结构</div>
+  </header>
+  <div class="lead">本周的核心命题只有一句：<b>总部要在「必须管控」与「不能担责」之间走钢丝</b>。104 号令要求总部穿透管理食安，用工这边却是相反的——管得越深，越像用人单位。答案是：管<u>标准</u>不管<u>人</u>。</div>
+  <div class="tabs" id="tabs"><div class="tab on" data-p="p1">一、自测 10 题</div><div class="tab" data-p="p2">二、综合案例（满分答案）</div><div class="tab" data-p="p3">三、体系固化</div></div>
+<div class="panel on" id="p1">
+<div class="card"><h3>单选 5 题（答案与解析折叠在下表下方）</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>答案</th></tr></thead><tbody><tr><td>1</td><td>劳动合同期限 2 年，试用期最长不得超过：A.1 个月 B.2 个月 C.3 个月 D.6 个月</td><td>B（第 19 条：1 年以上不满 3 年，不超过 2 个月）</td></tr><tr><td>2</td><td>用人单位自用工之日起满 1 年未订立书面劳动合同的法律后果是：A.合同无效 B.视为已订立无固定期限劳动合同 C.自动终止劳动关系 D.须支付三倍工资</td><td>B（第 14 条第 3 款）</td></tr><tr><td>3</td><td>竞业限制期限自解除或终止劳动合同之日起不得超过：A.1 年 B.2 年 C.3 年 D.5 年</td><td>B（第 24 条）</td></tr><tr><td>4</td><td>职工发生事故伤害，用人单位提出工伤认定申请的期限是：A.15 日 B.30 日 C.60 日 D.1 年</td><td>B（第 17 条第 1 款；用人单位未申请的，职工方 1 年内可直接申请）</td></tr><tr><td>5</td><td>劳动争议申请仲裁的时效期间为：A.6 个月 B.1 年 C.2 年 D.3 年</td><td>B（调解仲裁法第 27 条；存续期间拖欠劳动报酬不受此限）</td></tr></tbody></table></div>
+<div class="card"><h3>案例 3 题</h3>
+<table><thead><tr><th>#</th><th>案情</th><th>问</th><th>满分答案要点</th></tr></thead><tbody><tr><td>6</td><td>门店员工王某在熬汤时被热汤烫伤，住院 15 天，医疗费 6 万元；门店未为其缴纳工伤保险</td><td>医疗费谁来承担？</td><td><b>用人单位（加盟商）全额承担</b>（工伤保险条例第 62 条：应当参加而未参加的，由用人单位按条例规定的项目和标准支付费用）；同时未缴社保本身面临社保法第 86 条责令补缴 + 日万分之五滞纳金 + 欠缴额 1–3 倍罚款；员工还可依第 38 条第 1 款第（三）项解除并主张经济补偿。若已投雇主责任险，由保险在保额内分担，不足部分仍由用人单位承担</td></tr><tr><td>7</td><td>总部为扶持新店，委派店长张某（总部签合同、总部发薪、总部考核），劳动合同抬头却是加盟商</td><td>张某主张与总部存在劳动关系，能否成立？</td><td><b>大概率成立</b>。判断劳动关系看实质：总部签合同（或实际签约）、总部发薪、总部考核 = 管理与被管理关系成立（劳社部发〔2005〕12 号第 1 条）。合同抬头不影响认定。后果：二倍工资（若未签总部合同）、经济补偿、工伤责任全部落到总部</td></tr><tr><td>8</td><td>门店员工李某私收外卖款 2000 元，店长当场口头辞退，未通知工会、未送达书面通知</td><td>解除是否合法？</td><td><b>不合法</b>，构成违法解除。理由：① 未书面送达解除通知；② 未事先通知工会（第 43 条）；③ 未做调查与申辩程序；④ 店长是否有解除权限存疑。后果：员工可主张继续履行合同，或不要求继续履行而主张<b>赔偿金 2N</b>（第 87 条）。正确做法：立即固定监控与流水证据 → 制作调查记录 → 书面申辩 → 通知工会 → 书面解除通知并送达</td></tr></tbody></table></div>
+<div class="card"><h3>简答 2 题</h3>
+<table><thead><tr><th>#</th><th>题目</th><th>满分答案要点</th></tr></thead><tbody><tr><td>9</td><td>总部如何在「要管控」与「不担责」之间走钢丝？给可操作的边界标准</td><td><b>管标准、不管人</b>。安全区：提供手册与培训、巡店并出具<u>抬头为加盟商</u>的整改建议书、要求加盟商投保并备案保单、对门店做营运评分、依加盟合同行使暂停供货与解约权。危险区：总部名义发录用通知、代签合同、代发工资代缴社保、总部系统直接排班考勤、直接给员工个人发奖惩与绩效、发放只印总部的工牌。<b>一句话：把管控落到「对门店的契约权」，绝不落到「对员工的人事权」。</b></td></tr><tr><td>10</td><td>门店工时制度怎么设计最稳妥？</td><td>门店员工申请<b>综合计算工时制</b>（以月或季为周期，须经行政审批，劳部发〔1994〕503 号），配合错峰排班；法定节假日一律按 300% 支付；周期内平均工时不超法定标准；店长等管理岗申请<b>不定时工作制</b>（同样需审批）；高峰时段小时工用<b>非全日制</b>（每日 ≤ 4 小时、每周 ≤ 24 小时、结算周期 ≤ 15 日）。无论哪种，考勤记录必须完整可导出并保存 2 年以上。</td></tr></tbody></table></div>
+</div><div class="panel" id="p2">
+<div class="card"><h3>案情：店长由总部招聘、发薪、考核，合同却与加盟商签</h3>
+<p>某加盟店店长<u>由总部招聘、总部发薪、总部考核</u>，但劳动合同是与加盟商签的。该店长离职后主张与总部存在劳动关系，要求总部支付未签合同二倍工资和经济补偿，并提供了<u>总部系统排班截图、总部绩效考核邮件、总部工牌</u>。</p>
+</div>
+<div class="card"><h3>六问六答（满分答案）</h3>
+<table><thead><tr><th>问</th><th>满分答案</th></tr></thead><tbody><tr><td>(1) 他主张成立的可能性？</td><td><b>高，约 70%–80%</b>。三要件中，主体资格无争议；「受用人单位管理、从事有报酬劳动」——总部招聘、发薪、考核、排班四项齐全，管理关系明确；「劳动是用人单位业务组成部分」——门店营运属品牌业务核心。合同抬头写加盟商不影响实质认定。</td></tr><tr><td>(2) 关键证据是哪几项？</td><td>他手里的三项（<b>排班截图、绩效邮件、工牌</b>）已形成证据链；再加上由用人单位举证的四项凭证——<b>工资支付凭证、社保缴纳记录、招工登记表、考勤记录</b>（劳社部发〔2005〕12 号第 2 条），若工资与社保均由总部发放缴纳，则几乎无抗辩空间。</td></tr><tr><td>(3) 我方最有杀伤力的抗辩是什么？</td><td><b>主张系「委派/借调」且已明确期限与归属</b>：① 出示三方签署的《委派协议》，载明委派期限、劳动关系归属加盟商、社保由加盟商承担（或委托总部代缴但费用由加盟商承担）；② 出示加盟商向总部出具的《代发工资委托书》及费用结算凭证，证明资金来源是加盟商；③ 出示员工入职时签署的《劳动关系归属确认书》。若三者皆无，退而求其次：<b>攻击其仲裁时效</b>（二倍工资按月起算，超 1 年部分不支持）与<b>核算经济补偿基数</b>（高收入者三倍封顶、年限不超 12 年）。</td></tr><tr><td>(4) 败诉的连锁反应有多大？</td><td><b>三层传导</b>：① 同类店长（若也是委派模式）可全部跟进主张，人数 × (二倍工资 + 经济补偿) 形成批量索赔；② 社保稽核：一旦认定与总部存在劳动关系，未缴社保期间需补缴 + 滞纳金 + 罚款；③ 工伤倒查：委派期间发生工伤的，全部由总部担责。<b>建议</b>：一旦收到此类仲裁，立即盘点全部委派人员并同步整改（改外包或改纯加盟），同时准备批量和解预算。</td></tr><tr><td>(5) 事后怎么整改？</td><td>① <b>立即停止总部代发薪、代缴社保</b>；② 存量委派人员签《委派协议》+《劳动关系归属确认书》，限期（一般不超过 3–6 个月）转为加盟商自聘；③ 总部系统关闭对门店员工的个人账号与排班权限，改为向加盟商管理员账号下发标准；④ 督导文件抬头一律改为加盟商，禁止直接给员工个人发奖惩；⑤ 工牌统一印制「XX 品牌 · XX 门店（加盟商主体全称）」；⑥ 新增《总部用工行为红线清单》并纳入员工培训与考核。</td></tr><tr><td>(6) 预防阶段应怎么设计（如果重来一次）？</td><td>新店扶持改为<b>「顾问式」而非「委派式」</b>：总部派驻人员与总部保持劳动关系（承认风险、自行承担），但<u>不担任店长、不签字用工、不进门店编制</u>，对外头衔为「营运顾问」；或直接采用<b>业务外包</b>——与第三方签署门店托管服务协议，按服务成果付费（不按人头计价，避免被认定假外包）。</td></tr></tbody></table></div>
+</div><div class="panel" id="p3">
+<div class="card"><h3>《加盟体系用工合规手册》结构树</h3>
+<p><b>第一层 · 总部用工</b>：劳动合同（期限/试用期/工作地点/岗位）· 保密与竞业限制（研发/采购/拓展）· 规章制度民主程序 · 员工手册</p><p><b>第二层 · 门店用工</b>：用人单位归属 · 三种派驻模式比较 · 责任隔离四道防线（合同/制度/证据/保险）· 总部用工行为红线清单</p><p><b>第三层 · 工伤与工时</b>：工伤认定与 30 日申报 · 未缴社保全额自付 · 三种工时制度与审批 · 特殊用工五类 · 门店工伤防控七件套</p><p><b>第四层 · 争议应对</b>：违纪处理四层级 · 解除四件套 · 仲裁前置/时效/举证倒置 · 四类高频诉求抗辩表 · 应对六步 SOP</p><div class="act"><b>我的落地动作：</b>把结构树落成四份文件：《总部用工合规清单》《门店用工责任隔离方案》《门店工伤防控与工时方案》《违纪处理与劳动争议应对手册》，加上一页纸的《总部用工行为红线清单》发给业务部门。</div>
+</div>
+<div class="checklist"><div class="cl-head"><strong style="color:var(--gold)">第 11 周落地清单（15 项）</strong><div class="progress"><i id="bar5"></i></div><span id="cnt5" style="color:var(--sub);font-size:13px">0 / 0</span><button class="btn" onclick="window.print()">打印清单</button></div><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">1. 《总部用工合规清单》定稿并发布<span class="m-note"> — Day1 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">2. 研发/采购/拓展岗位竞业限制协议签署完毕<span class="m-note"> — 三类核心岗位</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">3. 员工手册完成民主程序 + 公示告知<span class="m-note"> — 四步留痕包归档</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">4. 《门店用工责任隔离方案》发布<span class="m-note"> — Day2 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">5. 加盟合同用工条款与追偿条款已修订<span class="m-note"> — 新签合同即适用</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">6. 门店员工劳动合同抬头统一为加盟商主体<span class="m-note"> — 存量逐一排查</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">7. 总部停止代发薪、代缴社保<span class="m-note"> — 财务与人力联合核查</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">8. 总部系统关闭门店员工个人账号与排班权限<span class="m-note"> — IT 权限盘点</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">9. 《总部用工行为红线清单》一页纸发布并培训<span class="m-note"> — 业务部门人手一份</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">10. 《门店工伤防控手册》+《工时制度设计方案》发布<span class="m-note"> — Day3 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">11. 工伤保险参保率 100%，新入职当日增员<span class="m-note"> — 月度核查</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">12. 综合计算工时/不定时工作制审批申请提交<span class="m-note"> — 门店与店长分别申请</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">13. 雇主责任险投保并覆盖退休返聘、实习生<span class="m-note"> — 保额 ≥ 80 万/人</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">14. 《违纪处理与劳动争议应对手册》发布<span class="m-note"> — Day4 产出</span></span></label><label class="mat"><input type="checkbox" onchange="upd('bar5','cnt5')"><span class="m-txt">15. 劳动争议台账建立，每案复盘改一处 SOP<span class="m-note"> — 季度复盘</span></span></label></div>
+</div>
+</div>
+<script>
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById(t.dataset.p).classList.add('on');
+    };
+  });
+  function upd(barId,cntId){
+    var box=document.getElementById(cntId).closest('.checklist');
+    var all=box.querySelectorAll('.mat input'),n=0;
+    all.forEach(function(c){if(c.checked)n++;});
+    document.getElementById(barId).style.width=(all.length?n/all.length*100:0)+'%';
+    document.getElementById(cntId).textContent=n+' / '+all.length;
+  }
+</script>
+</body>
+</html>

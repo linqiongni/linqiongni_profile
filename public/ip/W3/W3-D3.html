@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第3周·第3天｜损害赔偿四档计算与合理开支</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+.foot a.qz{margin-left:auto;color:var(--gold);font-weight:700;border:1px solid var(--gold);border-radius:14px;padding:3px 12px;white-space:nowrap}.qzcard{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold)}.qzcard .lb{color:var(--gold)}.qzb{display:inline-block;margin-top:8px;color:var(--gold);font-weight:700}.qa{margin:11px 0;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:8px}.qa .q{font-size:14.3px;color:var(--tx);line-height:1.78;margin-bottom:2px}.qa .a{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2);font-size:13.4px;color:var(--tx2);line-height:1.82}.qa .an{color:var(--jade);font-weight:700;margin-right:6px}</style><style id="light-theme-override-v2">
+/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
+/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
+:root{
+  /* 底座 */
+  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
+  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  --line:#E3E0D8; --line2:#CFCABE;
+  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
+  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
+  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
+  --sub:#4A4A4F; --sub2:#6E6E73;
+  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
+  --muted:#5A5A5F; --dim:#6E6E73;
+  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
+  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
+  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
+  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
+  --blue:#2C5C99; --blue2:#2C5C99;
+  --purple:#5B4B85;
+  /* 彩色底纹（浅底上的淡色块） */
+  --red-bg:rgba(160,50,42,.08);
+  --green-bg:rgba(46,107,72,.08);
+  --blue-bg:rgba(44,92,153,.08);
+  --gold-bg:rgba(138,103,22,.08);
+}
+/* ---- 强制全站底色与主文字 ---- */
+html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
+/* ---- 容器类底色：逐个把深色面板刷白 ---- */
+.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
+  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
+}
+.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
+.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
+  background-color:#F5F3EC !important;background-image:none !important;
+}
+/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
+h1,h2{color:#7A5B12 !important}
+h3{color:#8A6716 !important}
+h4,h5,h6{color:#1D1D1F !important}
+strong,b{color:#7A5B12 !important}
+/* ---- 正文与列表 ---- */
+p,li,dd,dt,span,div{color:inherit}
+p,li,td,dd{color:#1D1D1F !important}
+em,i{color:#6E6E73 !important}
+small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
+  color:#6E6E73 !important;
+}
+/* ---- 链接 ---- */
+a{color:#2C5C99 !important}
+a:hover{color:#8A6716 !important}
+/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
+table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
+th{
+  background-color:#F1EEE6 !important;
+  background-image:none !important;
+  color:#6B5518 !important;border-color:#E3E0D8 !important;
+}
+thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
+th *{color:#6B5518 !important}
+td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
+td strong,td b{color:#7A5B12 !important}
+tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
+/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
+th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
+  background-image:none !important;background-color:#F1EEE6 !important;
+}
+/* ---- 引用块 ---- */
+blockquote{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+}
+blockquote p,blockquote li{color:#3A3A3C !important}
+/* ---- 代码 ---- */
+pre{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+}
+pre code{color:#3A3A3C !important}
+code{
+  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+}
+/* ---- 分隔线 ---- */
+hr{border-top-color:#E3E0D8 !important}
+/* ---- 标签 / 角标 ---- */
+.tag,.badge,.chip{border-color:currentColor !important}
+.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
+.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
+.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
+/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
+.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
+  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
+  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+}
+.t-red,.t-green,.t-blue{background-image:none !important}
+.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
+.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
+.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
+/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
+.tab,.tabs>*,nav .tab,.nav-tab{
+  background-color:#F5F3EC !important;background-image:none !important;
+  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+}
+.tab.on,.tab.active,.tab:hover,li.tab.on{
+  background-color:#EFE9D8 !important;background-image:none !important;
+  color:#6B5518 !important;border-color:#A08442 !important;
+}
+.tab.on *,.tab.active *{color:#6B5518 !important}
+/* ---- 按钮 / 印章 ---- */
+.btn,.btn-print,button,input[type=submit]{
+  background-color:#F1EEE6 !important;background-image:none !important;
+  color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
+.seal{border-color:#A0322A !important;color:#A0322A !important}
+/* ---- 进度条 ---- */
+.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
+/* ---- 表单控件 ---- */
+input,textarea,select{
+  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+}
+/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
+[style*="background:#0"],[style*="background: #0"],
+[style*="background-color:#0"],[style*="background-color: #0"],
+[style*="background:#1"],[style*="background: #1"]{
+  background-color:#FFFFFF !important;background-image:none !important;
+}
+/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+:root{color-scheme:light !important}
+html{scrollbar-color:#CFCABE #F5F3EC !important}
+::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
+::-webkit-scrollbar-track{background:#F5F3EC}
+::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
+</style>
+</head><body><div class="topbar"><div class="wrap"><div class="brand">知识产权法务专家养成计划</div><div class="nav"><a href="index.html">本周目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 3 · DAY 3 / 5　·　第 1 层 地基 · 总论与通用规则</div><h1>损害赔偿四档计算与合理开支</h1><div class="sub">侵权与救济通论</div><div class="mth"><div class="mthi">◆</div><div><div class="mtxt">赔偿是四把尺子，按顺序用：第一把量你的损失，第二把量他赚了多少，第三把量市场许可费，第四把是法官的自由心证。前三把只要有一把量得出来，就不能用第四把——这是很多律师主张被驳回的原因。</div><div class="mlink"><b>业务落点</b>业务落点：赔偿额不是"开口要价"，是"举证能力"的函数。你能拿出什么证据，决定你能用哪把尺子。</div></div></div><div class="card"><div class="lb">地基概念 · 水泥沙子（今日必背）</div><ul class="foc"><li>实际损失（Actual Loss）</li><li>侵权获利（Infringer's Profit）</li><li>许可使用费倍数（Multiple of Royalty）</li><li>法定赔偿（Statutory Damages）</li><li>合理开支（Reasonable Expenses）</li><li>填平原则（Full Compensation）</li></ul></div><div class="card"><div class="lb">今日产出物（必须留下一份文件）</div><div class="out">《赔偿计算选择决策树》——一张图：从"我手上有什么证据"出发，判定能用第几档尺子，以及每档需要的证据清单。</div></div><details><summary>今日 AI 指令 · 点击展开，复制后直接粘贴给我</summary><div class="prbox" id="pr">你是我的知识产权实务教练。今天学习**知识产权损害赔偿的四档计算**。请：
+1) 用对照表说明四档计算在著作权法、商标法、专利法、反不正当竞争法中的**具体条号与适用顺序差异**（特别注意：商标法是严格顺序，著作权法与专利法把"实际损失"与"侵权获利 / 违法所得"并列可选）；
+2) 逐档讲清计算公式与所需证据：实际损失（销量下降法 / 利润侵蚀法 / 许可费损失法）、侵权获利（销量 × 单价 × 利润率，以及举证妨碍时的裁量）、许可使用费倍数（可比许可的选取）、法定赔偿（酌定因素与上限）；
+3) 给出各法法定赔偿的**现行上限数字**并标注"待核实"（著作权、商标、专利、反不正当竞争法）；
+4) 讲清"合理开支"（律师费、公证费、调查费、差旅费）为何可以单独主张、如何举证（合同 + 发票 + 支付凭证 + 关联性说明）；
+5) 给我一份**赔偿计算选择决策树**：从证据出发判定可用档位；
+6) 给一个计算示例：权利人产品单价 3980 元、侵权前年销 12000 件、利润率 22%，侵权后降至 8400 件、单价降至 3180 元；侵权方销量 6500 件、单价 1180 元、利润率 18%；可比独占许可年费 60 万元。请分别算出四档并给出主张策略建议；
+7) 出 5 道判断题并讲评。
+所有数字与条号不确定处标注「待核实」。</div><div class="btnrow"><button class="btn gold" onclick="cp()">复制指令</button><button class="btn" onclick="window.print()">打印本页</button></div></details><h2>一、四档计算与适用顺序</h2>
+<table><thead><tr><th>档位</th><th>著作权法</th><th>商标法</th><th>专利法</th><th>反不正当竞争法</th></tr></thead><tbody><tr><td>第一档</td><td>权利人实际损失<b>或</b>侵权人违法所得（并列可选）</td><td>权利人因被侵权所受实际损失</td><td>权利人因被侵权所受实际损失<b>或</b>侵权人因侵权所获利益（并列可选）</td><td>权利人因被侵权所受实际损失</td></tr><tr><td>第二档</td><td>（同上）</td><td>侵权人因侵权所获利益</td><td>（同上）</td><td>侵权人因侵权所获利益</td></tr><tr><td>第三档</td><td>参照权利使用费</td><td>参照商标许可使用费的倍数</td><td>参照专利许可使用费的倍数</td><td>侵犯商业秘密的可参照许可使用费（⚠ 待核实）</td></tr><tr><td>第四档</td><td>法定赔偿</td><td>法定赔偿</td><td>法定赔偿</td><td>法定赔偿</td></tr><tr><td>上限</td><td>⚠ 500 万元以下（待核实）</td><td>⚠ 500 万元以下（待核实）</td><td>⚠ 3 万元至 500 万元（待核实）</td><td>⚠ 500 万元以下（待核实）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 以上条号与上限数字基于现行法律的一般记忆（著作权法第 54 条、商标法第 63 条、专利法第 71 条、反不正当竞争法第 17 条）。<b>正式使用前必须逐条核对现行文本</b>。</div>
+<div class="key"><b>关键差异</b>：商标法是<b>严格顺序</b>——实际损失 → 获利 → 许可费倍数 → 法定，前一档无法确定才能用下一档；著作权法与专利法把「实际损失 / 侵权获利」<b>并列供选择</b>，权利人可以挑对自己更有利且证据更充分的一个。这是主张策略上的重要空间。</div>
+<h2>二、每一档的公式与证据</h2>
+<table><thead><tr><th>档位</th><th>常用公式</th><th>核心证据</th><th>举证难点</th></tr></thead><tbody><tr><td>实际损失 · 销量下降法</td><td>（侵权前销量 − 侵权后销量）× 单件利润</td><td>侵权前后同期销售数据、审计报告、完税凭证</td><td>需排除市场波动、季节因素、替代品等其他原因</td></tr><tr><td>实际损失 · 利润侵蚀法</td><td>（原单价 − 侵权后单价）× 侵权后销量（或 × 利润率）</td><td>价格变动记录、促销记录、渠道数据</td><td>需证明降价系被侵权所迫</td></tr><tr><td>实际损失 · 许可费损失法</td><td>本可收取的许可费</td><td>许可政策、历史许可合同、行业惯例</td><td>需证明本可达成许可</td></tr><tr><td>侵权获利</td><td>销量 × 单价 × 利润率</td><td>平台销售数据、税务数据、进货发票、财务账簿</td><td><b>账簿多在对方手里</b> → 需申请法院责令提供或调查令</td></tr><tr><td>许可使用费倍数</td><td>可比许可费 × 倍数</td><td>已备案许可合同、行业许可惯例、许可费支付凭证</td><td>许可的<b>可比性</b>（主体、范围、时间、地域）常被攻击</td></tr><tr><td>法定赔偿</td><td>法院酌定</td><td>侵权持续时间、规模、主观过错、权利类型与知名度、维权成本</td><td>金额不可预测，通常低于当事人预期</td></tr></tbody></table>
+<div class="key"><b>举证妨碍规则是第二档的发动机</b>：商标法第 63 条第 2 款规定，在权利人已尽力举证、而与侵权行为相关的账簿资料主要由侵权人掌握的情况下，法院<b>可以责令侵权人提供</b>；侵权人不提供或提供虚假账簿资料的，法院可以<b>参考权利人的主张和提供的证据</b>判定赔偿数额。著作权法与专利法有对应条款。⚠ 条号待核实。</div>
+<h2>三、合理开支：别漏掉这笔钱</h2>
+<ul><li><b>可主张项目</b>：律师费、公证费、存证费、调查取证费、鉴定费、翻译费、差旅费中与本案直接相关的部分；</li><li><b>举证要求</b>：委托合同 + 发票 + 支付凭证 + 费用与本案关联性的说明；</li><li><b>实务提示</b>：律师费要证明「已实际发生且金额合理」，仅有合同无发票通常不被全额支持；过高或明显超出合理范围的，法院会酌减。</li></ul>
+<div class="key">很多律师只盯着赔偿额，忽略合理开支。在中小案件中，合理开支（尤其公证费与律师费）往往能占到实际到手金额的 30%–50%，且在适用法定赔偿时也可能一并支持。</div>
+<h2>四、计算示例（本周末实战会用同一组数据）</h2>
+<table><thead><tr><th>档位</th><th>计算过程</th><th>结果</th></tr></thead><tbody><tr><td>实际损失 · 销量下降</td><td>（12,000 − 8,400）× 3,980 × 22%</td><td>≈ <b>3,152,160 元</b></td></tr><tr><td>实际损失 · 利润侵蚀</td><td>（3,980 − 3,180）× 8,400 × 22%</td><td>≈ <b>1,478,400 元</b></td></tr><tr><td>实际损失合计</td><td>两项相加</td><td>≈ <b>4,630,560 元</b></td></tr><tr><td>侵权获利</td><td>6,500 × 1,180 × 18%</td><td>≈ <b>1,380,600 元</b></td></tr><tr><td>许可费倍数</td><td>独占许可年费 600,000 × 1.5</td><td>≈ <b>900,000 元</b></td></tr><tr><td>法定赔偿</td><td>法院酌定（上限待核实）</td><td>不可预测</td></tr></tbody></table>
+<p><b>主张策略建议</b>：</p>
+<ol><li>四档之间不是随意挑最高的，而是在<b>有证据支撑</b>的前提下挑最有利的。本例实际损失（约 463 万）远高于侵权获利（约 138 万），应优先主张实际损失；</li><li>但实际损失的举证责任重（需证明因果关系、排除其他因素）。若销售数据不干净，退而主张侵权获利更稳；</li><li>许可费倍数适合<b>许可业务成熟</b>的权利人（有真实可比许可合同），且数额相对稳定、易被法院接受；</li><li>法定赔偿是<b>兜底</b>，不要主动把它当成首选——除非你什么证据都没有。</li><li>若证据指向<b>故意 + 情节严重</b>，应同时主张惩罚性赔偿（明天第 4 天的主题），倍数叠加后差距巨大。</li></ol>
+<h2>五、赔偿计算选择决策树（今日产出物）</h2>
+<table><thead><tr><th>手上有什么证据</th><th>可用档位</th><th>策略</th></tr></thead><tbody><tr><td>完整的侵权前后销售与利润数据 + 审计报告</td><td>第一档 实际损失</td><td>主张销量下降 + 利润侵蚀两项合并计算</td></tr><tr><td>只有平台销量 / 税务数据，无自身损失数据</td><td>第二档 侵权获利</td><td>申请责令对方提供账簿；申请调查令调取平台数据</td></tr><tr><td>有真实可比许可合同</td><td>第三档 许可费倍数</td><td>证明许可的可比性（主体、范围、时间、地域）</td></tr><tr><td>以上都没有</td><td>第四档 法定赔偿</td><td>用侵权规模、持续时间、恶意程度、知名度等酌定因素争取上限</td></tr><tr><td>有证据证明故意 + 情节严重</td><td>惩罚性赔偿（叠加）</td><td>在前三档确定的<b>基数</b>上主张 1–5 倍（明天展开）</td></tr></tbody></table>
+<h2>今日自测（答案内嵌）</h2>
+<div class="qa"><div class="q">Q1：商标法四档赔偿的适用顺序与著作权法 / 专利法有何不同？</div><div class="a"><span class="an">参考答案</span>商标法为<b>严格顺序</b>（实际损失 → 获利 → 许可费倍数 → 法定），前档不确定才能用后档；著作权法 / 专利法把"实际损失 / 侵权获利"<b>并列供选择</b>，权利人可挑更有利的。⚠ 商标法第 63 条、著作权法第 54 条、专利法第 71 条以现行文本核对。</div><div class="q">Q2：法定赔偿的上限是多少？</div><div class="a"><span class="an">参考答案</span>著作权、商标、反不正当竞争法均<b>500 万元以下</b>；专利为 <b>3 万–500 万元</b>（均待核实）。⚠ 以现行条文核对，法定赔偿为兜底、不宜作首选。</div><div class="q">Q3：举证妨碍规则怎么触发"侵权获利"这一档？</div><div class="a"><span class="an">参考答案</span>权利人已尽力举证 + 与侵权相关的账簿资料主要由侵权人掌握 → 法院可责令提供（商标法第 63 条第 2 款）；不提供或提供虚假账簿的，可参考权利人主张判定。著作权法、专利法有对应条款。⚠ 条号待核实。</div><div class="q">Q4：合理开支能否单独主张？举证有什么要求？</div><div class="a"><span class="an">参考答案</span>可单独主张（律师费、公证费、调查费等）。须委托合同 + 发票 + 支付凭证 + 关联性说明；仅有合同无发票通常不被全额支持，过高部分会被酌减。合理开支一般<b>不计入惩罚性赔偿基数</b>，另行列支。</div></div><h2>术语表 · 中英对照</h2><div class="terms"><div class="ti"><div class="en">Actual Loss</div><div class="cn">实际损失</div><div class="df">权利人因侵权实际遭受的损失</div></div><div class="ti"><div class="en">Infringer's Profit</div><div class="cn">侵权获利</div><div class="df">侵权人因侵权行为获得的利益</div></div><div class="ti"><div class="en">Reasonable Royalty</div><div class="cn">合理许可费</div><div class="df">参照许可使用费确定的赔偿额</div></div><div class="ti"><div class="en">Statutory Damages</div><div class="cn">法定赔偿</div><div class="df">法律直接规定的赔偿数额区间</div></div><div class="ti"><div class="en">Reasonable Expenses</div><div class="cn">合理开支</div><div class="df">权利人为制止侵权支出的合理费用</div></div><div class="ti"><div class="en">Full Compensation</div><div class="cn">填平原则</div><div class="df">赔偿以弥补实际损失为限</div></div><div class="ti"><div class="en">Discovery / Evidence Obstruction</div><div class="cn">举证妨碍</div><div class="df">掌握证据一方拒不提供时法院可采信对方主张</div></div></div><div class="foot"><a href="W3-D2.html">← 第 2 天</a><a class="idx" href="../index.html">返回总计划</a><a href="W3-D4.html">第 4 天 →</a><a class="qz" href="W3-quiz.html">本周自测卷（含答案）</a></div><div class="disc">本页为个人学习计划，法条与数字须以现行有效文本核对后方可用于正式文件。标注「待核实」处请优先核查。</div></div><script>function cp(){var t=document.getElementById("pr").innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}var b=document.querySelector(".btn.gold");if(b){var o=b.innerText;b.innerText="已复制";setTimeout(function(){b.innerText=o;},1500);}}</script><script src="/theme-toggle.js"></script>
+</body></html>

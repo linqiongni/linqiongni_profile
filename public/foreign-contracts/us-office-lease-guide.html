@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法律英语 · 美国办公场地租赁合同精读 — 加州 AIR CRE 标准租约</title>
+<style>
+  :root{
+    --bg:#0e1014; --panel:#161a22; --panel2:#1c2230; --gold:#c9a227; --gold-dim:#8a7119;
+    --jade:#4a9d9c; --text:#d8dce4; --muted:#8b93a3; --line:#2a3242; --red:#c0564f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15.5px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px;}
+  header{text-align:center;padding:34px 0 22px;border-bottom:1px solid var(--line);position:relative;}
+  header h1{color:var(--gold);font-size:27px;letter-spacing:2px;font-weight:700;}
+  header .sub{color:var(--muted);margin-top:10px;font-size:14px;letter-spacing:1px;}
+  .seal{display:inline-block;border:2px solid var(--red);color:var(--red);border-radius:6px;padding:2px 10px;font-size:13px;letter-spacing:4px;margin-bottom:14px;transform:rotate(-3deg);font-weight:700;}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 28px;}
+  nav.tabs button{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:9px 16px;border-radius:8px;cursor:pointer;font-size:14.5px;transition:all .2s;}
+  nav.tabs button:hover{border-color:var(--gold-dim);}
+  nav.tabs button.active{background:linear-gradient(180deg,#2a2415,#1e1a0f);color:var(--gold);border-color:var(--gold);font-weight:600;}
+  .panel{display:none;animation:fade .25s;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+  .card h2{color:var(--gold);font-size:19px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px dashed var(--gold-dim);}
+  .card h3{color:var(--jade);font-size:16px;margin:18px 0 8px;}
+  .card p{margin:8px 0;}
+  .en{background:var(--panel2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:12px 0;font-family:Georgia,"Times New Roman",serif;font-size:15px;color:#e8e3d3;position:relative;}
+  .zh{background:rgba(74,157,156,.07);border-left:3px solid var(--jade);border-radius:0 8px 8px 0;padding:14px 18px;margin:12px 0;color:#c5dedd;}
+  .tag{display:inline-block;background:#241f10;color:var(--gold);border:1px solid var(--gold-dim);border-radius:20px;padding:2px 12px;font-size:13px;margin:3px 4px 3px 0;}
+  .tag.jade{background:#0f2020;border-color:#2c5a59;color:var(--jade);}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.2px;}
+  th{background:#1a2130;color:var(--gold);border:1px solid var(--line);padding:8px 10px;text-align:left;font-weight:600;}
+  td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;}
+  tr:nth-child(even) td{background:#131722;}
+  .note{background:rgba(192,86,79,.08);border:1px solid rgba(192,86,79,.4);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:#e0a29d;}
+  .tip{background:rgba(201,162,39,.07);border:1px solid var(--gold-dim);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--panel);border:1px solid var(--gold-dim);color:var(--gold);border-radius:6px;padding:2px 10px;font-size:12px;cursor:pointer;}
+  .copy-btn:hover{background:#2a2415;}
+  .clause-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .clause-no{background:var(--gold);color:#14120a;font-weight:700;border-radius:6px;padding:1px 10px;font-size:14px;}
+  .side{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+  .side .box{flex:1;min-width:260px;border-radius:8px;padding:10px 14px;font-size:14px;}
+  .side .ld{background:rgba(192,86,79,.07);border:1px solid rgba(192,86,79,.35);}
+  .side .ts{background:rgba(74,157,156,.07);border:1px solid rgba(74,157,156,.35);}
+  .side b{display:block;margin-bottom:4px;}
+  .side .ld b{color:var(--red);} .side .ts b{color:var(--jade);}
+  ul,ol{padding-left:22px;margin:8px 0;}
+  li{margin:5px 0;}
+  .chk{display:flex;align-items:flex-start;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);cursor:pointer;}
+  .chk input{margin-top:6px;accent-color:var(--gold);}
+  .chk.done span{color:var(--muted);text-decoration:line-through;}
+  .progress-wrap{position:sticky;top:0;background:var(--bg);padding:8px 0 10px;z-index:5;}
+  .progress-bar{height:10px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--jade),var(--gold));transition:width .3s;}
+  .progress-text{font-size:13px;color:var(--muted);margin-top:4px;text-align:right;}
+  .term-card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:10px 0;}
+  .term-card .t-en{color:var(--gold);font-size:16px;font-weight:600;font-family:Georgia,serif;}
+  .term-card .t-abbr{color:var(--muted);font-size:13px;margin-left:8px;}
+  .term-card .t-zh{color:var(--jade);font-size:14.5px;margin:2px 0 6px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:860px){.two-col{grid-template-columns:1fr;}}
+  .stage{display:flex;gap:14px;margin:12px 0;align-items:flex-start;}
+  .stage .n{min-width:34px;height:34px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="seal">法 律 英 语</div>
+  <h1>美国办公场地租赁合同精读</h1>
+  <div class="sub">Commercial Office Lease · 加州 AIR CRE 标准租约（Gross 形式）逐条拆解 · 英文在前 / 中文在后 · 面向 CET-6 读者</div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-p="p1">① 背景预设</button>
+  <button data-p="p2">② 法律英语术语库</button>
+  <button data-p="p3">③ 合同架构大纲</button>
+  <button data-p="p4">④ 条款详解 A（第1–7条）</button>
+  <button data-p="p5">⑤ 条款详解 B（第8–14条）</button>
+  <button data-p="p6">⑥ 谈判反制与落地</button>
+  <button data-p="p7">⑦ 学习路径与自检</button>
+</nav>
+
+<!-- ============ PANEL 1 背景预设 ============ -->
+<section class="panel active" id="p1">
+
+<div class="card">
+<h2>一、为什么选这份合同作为学习样本</h2>
+<p>我们要精读的样本是<b style="color:var(--gold)">美国加利福尼亚州商业办公场地租赁合同（Commercial Office Lease）</b>，蓝本采用加州 <b>AIR CRE（原 AIR Commercial Real Estate Association）Standard Multi-Tenant Office Lease — Gross（多租户办公租赁标准合同 · 毛租形式）</b>。选择它的理由：</p>
+<ul>
+  <li><b>行业事实标准</b>：AIR CRE 格式是加州（乃至美国西部）商业地产租赁使用最广的协会标准表单之一，大量真实租约（包括上市公司向 SEC 备案的租约）直接以此为蓝本，条款体系覆盖了办公租赁的绝大部分场景。</li>
+  <li><b>结构完整</b>：从 Basic Provisions（基本条款）到 Default &amp; Remedies（违约与救济）、Surrender（交还）、Broker（经纪人），一份表单走完租赁全生命周期。</li>
+  <li><b>语言地道</b>：条款语言是美国商业合同的典型 drafting 风格（defined terms 大写定义、herein/thereof 衔接、checkbox 填空），学会一份等于掌握一类。</li>
+  <li><b>中国业务高相关</b>：中资企业出海美国（跨境电商、科技公司、律所分所）第一步往往就是签 office lease，租户侧风险审查需求真实存在。</li>
+</ul>
+<div class="note">法律框架提示：加州商业租赁<b>没有住宅租赁那样的法定倾斜保护</b>（如租金上限、押金上限），权利义务几乎完全取决于合同文本本身——这正是"逐字读合同"的意义所在。承租人受加州《民事诉讼法典》Code of Civil Procedure § 1161（unlawful detainer 非法占有驱逐程序）等少数法定框架约束；保险与无障碍合规则受联邦《美国残疾人法》ADA（42 U.S.C. § 12181 et seq., Title III）影响。具体法条适用以加州执业律师意见为准。</div>
+</div>
+
+<div class="card">
+<h2>二、案例背景预设（Background Assumptions）</h2>
+<p>为了让每个条款都有"落点"，全程使用以下虚拟但贴近真实的交易背景。你扮演的角色是<b style="color:var(--jade)">租户（Lessee）一方的法务</b>：</p>
+<table>
+<tr><th>要素</th><th>预设内容</th><th>英文表述（合同写法）</th></tr>
+<tr><td>租户</td><td>Panda Tech Inc.（美国注册公司，中资背景）</td><td>Lessee / Tenant</td></tr>
+<tr><td>房东</td><td>Golden Gate Plaza Owner, LLC（持有物业的有限责任公司）</td><td>Lessor / Landlord</td></tr>
+<tr><td>物业</td><td>加州洛杉矶县某写字楼 12 层 1205 单元，约 2,500 rentable sq. ft.（可租面积）</td><td>Premises / Suite 1205, Building, Project</td></tr>
+<tr><td>用途</td><td>一般办公用途（跨境电商运营办公室）</td><td>Agreed Use: general office use</td></tr>
+<tr><td>租期</td><td>5 年，2026-10-01 起租</td><td>Original Term / Commencement Date / Expiration Date</td></tr>
+<tr><td>基本租金</td><td>首年 $4.00/sq.ft./月 ≈ $10,000/月，年递增 3%</td><td>Base Rent / Escalation</td></tr>
+<tr><td>押金</td><td>约 2 个月 Base Rent：$20,000</td><td>Security Deposit</td></tr>
+<tr><td>租户分摊比例</td><td>约 5.7%（分摊大厦共同区域运营费用）</td><td>Lessee's Share / Proportionate Share</td></tr>
+<tr><td>经纪人与担保</td><td>双方各有经纪人；房东要求母公司担保</td><td>Lessor's Broker / Lessee's Broker / Guarantor</td></tr>
+</table>
+<h3>先读懂租约类型：为什么本合同是 Gross Lease</h3>
+<table>
+<tr><th>类型</th><th>英文全称</th><th>租金包含什么</th><th>租户额外支付</th><th>常见用途</th></tr>
+<tr><td>毛租</td><td>Gross Lease / Full-Service Gross Lease</td><td>基本租金已含物业税、保险、维护、共同区域费用</td><td>运营费用<b>超出基年（Base Year）的部分</b>（本合同模式）</td><td>多租户写字楼（最常见）</td></tr>
+<tr><td>修正毛租</td><td>Modified Gross Lease</td><td>部分费用含在租金内</td><td>双方约定的某几项费用（如水电、清洁）</td><td>中层写字楼、医疗楼</td></tr>
+<tr><td>三净租</td><td>Triple Net Lease（NNN）</td><td>仅含场地本身</td><td>物业税 + 保险 + 全部维护（CAM）全由租户承担</td><td>独栋零售、仓库、工业</td></tr>
+<tr><td>百分比租</td><td>Percentage Lease</td><td>基本租金较低</td><td>按营业额一定百分比抽成</td><td>购物中心零售</td></tr>
+</table>
+<div class="tip">核心公式（Gross + Base Year 模式）：租户每月实付 = Base Rent +（当年大厦运营费用 − Base Year 运营费用）× Lessee's Share。读懂这个公式，第 4、7 条的一半内容就通了。</div>
+</div>
+
+<div class="card">
+<h2>三、读美式租约前的四个语言习惯</h2>
+<h3>1. 定义词一律大写首字母（Defined Terms）</h3>
+<div class="en">Lessor hereby leases to Lessee the <b>Premises</b> for the term and at the rental set forth in <b>Paragraph 1</b> (<b>"Basic Provisions"</b>).</div>
+<div class="zh">房东据此将<b>租赁物业（Premises）</b>出租给租户，租期与租金按<b>第 1 条（"基本条款"）</b>所载执行。</div>
+<p>大写词 = 合同内被定义的专有概念，含义以定义处为准，而不是词典义。Premises ≠ 泛指" premises（场所）"，而是特指合同第 1.2 条圈定的那个单元。</p>
+<h3>2. here-/there- 系列合成词</h3>
+<table>
+<tr><th>词</th><th>= ?</th><th>例句</th></tr>
+<tr><td>hereby</td><td>by this document（据此）</td><td>Lessor <b>hereby</b> leases...</td></tr>
+<tr><td>herein / hereinafter</td><td>in this contract / later in this contract</td><td>the Project as defined <b>herein</b></td></tr>
+<tr><td>thereof / thereto</td><td>of that / to that（指代前述对象）</td><td>the roof and exterior walls <b>thereof</b></td></tr>
+<tr><td>hereunder / thereunder</td><td>under this contract / under that clause</td><td>obligations arising <b>hereunder</b></td></tr>
+</table>
+<h3>3. shall vs. will vs. may（义务/将来/许可的三分）</h3>
+<p>美式合同中 <b>shall = 强制义务</b>（Lessee shall pay...），<b>may = 选择权</b>（Lessor may elect...），<b>will</b> 少用作义务、多用于事实性将来（含陈述与保证的将来时）。看到 shall 先找"谁对谁负什么义务"。</p>
+<h3>4. 填空 + 勾选框（Blanks &amp; Checkboxes）</h3>
+<p>AIR CRE 表单把所有交易变量（金额、日期、比例）集中在 <b>Paragraph 1 Basic Provisions</b> 的填空与勾选框中，正文条款再引用之。读合同先读第 1 条，等于先拿到全部"参数表"。</p>
+</div>
+
+</section>
+
+<!-- ============ PANEL 2 术语库 ============ -->
+<section class="panel" id="p2">
+<div class="card">
+<h2>核心术语 · 按四组分类记忆</h2>
+<p>每组按"出现的合同部位"排列。学习目标：看到术语能说清（a）中文（b）在本合同里指什么（c）谁的风险点。</p>
+
+<h3>A 组 · 当事方与物业（Parties &amp; Premises）</h3>
+<div class="term-card"><span class="t-en">Lessor / Lessee</span><span class="t-abbr">= Landlord / Tenant（同义替换）</span><div class="t-zh">出租人 / 承租人</div>同一份合同里两种叫法并存是常态（正文多用 Lessor/Lessee，附件或附函用 Landlord/Tenant）。阅读时视同同一个词。</div>
+<div class="term-card"><span class="t-en">Premises</span><div class="t-zh">租赁物业（特指合同圈定的具体单元，非泛指场所）</div>定义范围是第一个谈判点：是否含停车位、是否含屋顶/外墙使用权（AIR 格式默认<b>不含</b>）。</div>
+<div class="term-card"><span class="t-en">Rentable Square Feet (RSF) / Usable Square Feet (USF)</span><div class="t-abbr">RSF / USF</div><div class="t-zh">可租面积 / 可用面积</div>RSF = USF + 分摊的公共区域（电梯厅、走廊等），RSF &gt; USF，比值称 load factor（负载系数）。租金按 RSF 计——租户要多付"看不见的面积"的钱，签约前应实地核验（合同常注明"尺寸为约数，不作调整"）。</div>
+<div class="term-card"><span class="t-en">Building / Project / Common Areas</span><div class="t-zh">大厦 / 项目 / 共同区域</div>三层空间概念：Premises ⊂ Building ⊂ Project。Common Areas 指大堂、走廊、电梯、洗手间、停车场等共享部分，租户取得的是<b>非排他使用权（non-exclusive right）</b>。</div>
+<div class="term-card"><span class="t-en">Agreed Use</span><div class="t-zh">约定用途</div>租户可开展的业务范围。写太窄会限制业务转型；房东借此控制楼宇定位、防范竞品（exclusive use 排他条款）。</div>
+<div class="term-card"><span class="t-en">Guarantor / Guaranty</span><div class="t-zh">担保人 / 担保函</div>公司信用不足时，房东要求母公司或个人对租户租约义务承担保证责任。担保条款可能很苛刻（如"good guy guaranty"在退出时仍可能挂钩）。</div>
+
+<h3>B 组 · 租金与费用（Rent &amp; Expenses）</h3>
+<div class="term-card"><span class="t-en">Base Rent</span><div class="t-zh">基本租金</div>固定租金部分，与递增机制（Escalation）共同构成租金主干。</div>
+<div class="term-card"><span class="t-en">Escalation / Rent Adjustment</span><div class="t-zh">租金递增 / 调整机制</div>常见两种：固定年递增（fixed annual increase，本合同 3%）或挂钩 CPI（Consumer Price Index，消费者价格指数）。</div>
+<div class="term-card"><span class="t-en">Base Year</span><div class="t-zh">基年</div>Gross 租约的费用分摊基准年（通常为 Commencement Date 所在年度）。当年运营费用超出基年的部分由租户按比例补付。</div>
+<div class="term-card"><span class="t-en">Operating Expenses / CAM Charges</span><div class="t-abbr">CAM = Common Area Maintenance</div><div class="t-zh">运营费用 / 共同区域维护费</div>大厦物业税、保险、保洁、保安、公用事业等。谈判要点：排除条款（exclusions，如资本性支出 capital expenditures 不得全数转嫁）、封顶（cap）、审计权（audit right）。</div>
+<div class="term-card"><span class="t-en">Lessee's Share / Proportionate Share</span><div class="t-zh">租户分摊比例</div>= 物业面积 ÷ 项目面积（本合同 5.7%）。项目扩建/缩建时条款会要求重算。</div>
+<div class="term-card"><span class="t-en">Security Deposit</span><div class="t-zh">保证金</div>商业租赁加州<b>无法定上限</b>（区别于住宅的法定限制），市场惯例 1–3 个月租金。关注：可否抵扣（offset）、退回时限、房东转卖楼宇后的移交。</div>
+<div class="term-card"><span class="t-en">Tenant Improvement Allowance (TI Allowance) / Work Letter</span><div class="t-abbr">TI / Work Letter</div><div class="t-zh">租户改良补贴 / 工程函</div>房东给租户装修的补贴额度与施工规则。延伸概念：<b>Turnkey</b>（房东交钥匙式装修完交付）、<b>Restoration Obligation</b>（退租时恢复原状义务）。</div>
+<div class="term-card"><span class="t-en">Free Rent / Rent Abatement</span><div class="t-zh">免租期 / 租金减免</div>装修期常见优惠，但注意：免租金 ≠ 免费占用期（holdover 罚则、运营费用分摊、保险义务可能照常生效）。</div>
+
+<h3>C 组 · 风险与担保（Risk &amp; Protection）</h3>
+<div class="term-card"><span class="t-en">Certificate of Insurance (COI) / Additional Insured</span><div class="t-abbr">COI</div><div class="t-zh">保险凭证 / 附加被保险人</div>租户须投保商业综合责任险（Commercial General Liability, CGL），并把房东列为附加被保险人——出险时房东可直接索赔。</div>
+<div class="term-card"><span class="t-en">Indemnification / Hold Harmless</span><div class="t-zh">赔偿 / 使免受损害</div>"indemnify, defend and hold harmless"三连动词是标准写法：赔钱 + 出庭抗辩 + 免于连带受损。注意是否互惠（mutual）。</div>
+<div class="term-card"><span class="t-en">Casualty / Damage &amp; Destruction</span><div class="t-zh">意外毁损（火灾、水灾等保险事故）</div>约定部分/全部毁损时：房东修不修？租户能否解约？租金是否按日扣减（abatement）？</div>
+<div class="term-card"><span class="t-en">Condemnation / Eminent Domain / Taking</span><div class="t-zh">公用征收 / 征用</div>政府征收土地时租约自动终止、补偿如何分配（租户的 TI 投入能否分得补偿）。</div>
+<div class="term-card"><span class="t-en">Force Majeure</span><div class="t-zh">不可抗力</div>注意美式租约常把政府禁令、疫情列入或排除，且<b>付款义务通常明确排除在不可抗力之外</b>。</div>
+<div class="term-card"><span class="t-en">Quiet Enjoyment</span><div class="t-zh">安宁占有权</div>租户在履约前提下不受干扰占有物业的保障（源自普通法，租约中常明示为 covenant）。</div>
+
+<h3>D 组 · 违约与退出（Default &amp; Exit）</h3>
+<div class="term-card"><span class="t-en">Event of Default / Cure Period / Notice of Default</span><div class="t-zh">违约事件 / 补救期 / 违约通知</div>先通知、给宽限期（如付款违约 3–10 天，其他违约 30 天）、仍不改正才构成可救济的违约。Cure period 长短是租户的生命线。</div>
+<div class="term-card"><span class="t-en">Unlawful Detainer</span><div class="t-zh">非法占有（驱逐）程序</div>加州商业驱逐的法定快速程序（Code Civ. Proc. § 1161 项下的通知与诉讼），租户败诉速度极快，故违约预警必须前置。</div>
+<div class="term-card"><span class="t-en">Holdover</span><div class="t-zh">逾期占有</div>租期届满不搬走的后果条款，常见 150%–200% 月租金/月的惩罚性租金（美国法原则上认可，属 liquidated damages 范畴）。</div>
+<div class="term-card"><span class="t-en">Assignment / Subletting</span><div class="t-zh">租约转让 / 转租</div>两者区分：assignment = 整体转手租约权利义务；sublet = 保留自己与房东的租约、把部分空间转给别人。房东一般要求书面同意，租户要争取"不得无理拒绝（not unreasonably withheld）"。</div>
+<div class="term-card"><span class="t-en">Recapture Right</span><div class="t-zh">收回权</div>房东在租户申请转让/转租时，可选择收回全部/部分空间、终止租约——可能反而"帮"租户提前退场，也可能是反制工具。</div>
+<div class="term-card"><span class="t-en">Surrender</span><div class="t-zh">交还（物业）</div>租期届满/提前终止时按约定状态交还：broom clean（清扫干净）、恢复原状与否、遗留物视为放弃（deemed abandoned）。</div>
+<div class="term-card"><span class="t-en">Estoppel Certificate</span><div class="t-zh">禁反言证明书</div>房东出售/再融资时要求租户出具的"租约现状确认函"（租金多少、有无违约、有无口头修改），通常限定须在若干天内回复、内容以租约为准。</div>
+<div class="term-card"><span class="t-en">SNDA (Subordination, Non-Disturbance and Attornment Agreement)</span><div class="t-abbr">SNDA</div><div class="t-zh">从属、不干扰与承认协议</div>三件事：租约从属于银行的抵押（subordination）；若银行行使抵押权，承诺新业主继续承认租约（attornment）；换回的核心利益——只要租户不违约，新业主不得驱逐（non-disturbance）。租户最该争的是 non-disturbance。</div>
+<div class="term-card"><span class="t-en">Option to Renew / Option to Extend / Right of First Refusal (ROFR)</span><div class="t-zh">续租选择权 / 扩租优先权</div>续租权 = 单方权利（租户决定即可锁定续期）；ROFR = 房东收到第三方要约后租户有优先匹配权。注意行权窗口期（如届满前 9–12 个月内书面通知，逾期即失效）。</div>
+</div>
+</section>
+
+<!-- ============ PANEL 3 架构大纲 ============ -->
+<section class="panel" id="p3">
+<div class="card">
+<h2>英文办公租赁合同架构大纲（基于 AIR CRE Gross 表单）</h2>
+<p>一份完整的美国办公租约 = <b>基本条款（参数表） + 正文条款（规则） + 附件（细节）</b>。下表是大纲，第 ④⑤ 页按同一编号逐条精读加粗项。</p>
+<table>
+<tr><th>#</th><th>条款（EN）</th><th>功能</th><th>精读</th></tr>
+<tr><td>1</td><td><b>Basic Provisions</b>（基本条款）</td><td>参数总表：当事方、物业、租期、租金、押金、用途、经纪人、担保人、附件清单</td><td>✔ 详解 A-1</td></tr>
+<tr><td>2</td><td><b>Premises</b>（租赁物业）</td><td>2.1 Letting 出租宣告；2.2 Condition 交付状态与系统保证；2.6 停车；2.7 Common Areas 共同区域</td><td>✔ 详解 A-2</td></tr>
+<tr><td>3</td><td><b>Term</b>（租期）</td><td>起租日、提前占有（Early Possession）、租期届满与顺延</td><td>✔ 详解 A-3</td></tr>
+<tr><td>4</td><td><b>Base Rent</b>（基本租金）</td><td>4.1 支付（首日支付、to Lessor at address）；4.2 运营费用超出基年部分的分摊（Base Year 机制）</td><td>✔ 详解 A-4</td></tr>
+<tr><td>5</td><td><b>Security Deposit</b>（保证金）</td><td>性质（非预付租金）、可抵扣情形、补足义务、退还条件</td><td>✔ 详解 A-5</td></tr>
+<tr><td>6</td><td><b>Use of Premises</b>（约定用途）</td><td>许可用途、禁止行为、合规（含 ADA）、招牌</td><td>✔ 详解 A-6</td></tr>
+<tr><td>7</td><td><b>Services; Utilities</b>（服务与公用事业）</td><td>房东供给的服务清单（保洁、HVAC 等）、营业时间外加班空调费</td><td>✔ 详解 A-7</td></tr>
+<tr><td>8</td><td><b>Maintenance; Repairs; Alterations</b>（维护、维修与改造）</td><td>8.1 房东义务（结构、屋顶、共用系统）；8.2 租户义务（内部维护）；8.3 改造审批与 Trade Fixtures</td><td>✔ 详解 B-8</td></tr>
+<tr><td>9</td><td><b>Insurance; Indemnity</b>（保险与赔偿）</td><td>双方各自投保义务、CGL 保额、Additional Insured、互惠赔偿结构</td><td>✔ 详解 B-9</td></tr>
+<tr><td>10</td><td><b>Damage &amp; Destruction</b>（毁损）</td><td>部分/全部毁损时的修复义务、终止权、租金减免</td><td>✔ 详解 B-10</td></tr>
+<tr><td>11</td><td><b>Assignment &amp; Subletting</b>（转让与转租）</td><td>同意权、Recapture 收回权、转让收益归属</td><td>✔ 详解 B-11</td></tr>
+<tr><td>12</td><td><b>Default; Remedies</b>（违约与救济）</td><td>违约事件类型、cure period、房东救济、Holdover 罚则、律师费</td><td>✔ 详解 B-12</td></tr>
+<tr><td>13</td><td><b>Surrender</b>（交还）</td><td>交还状态、遗留物视为放弃、恢复原状</td><td>✔ 详解 B-13</td></tr>
+<tr><td>14</td><td><b>Notices; Brokers; Miscellaneous</b>（通知、经纪人与杂项）</td><td>书面通知地址与生效规则、经纪人佣金由房东支付与不欠佣声明、完整协议、可分割性、Estoppel/SNDA</td><td>✔ 详解 B-14</td></tr>
+<tr><td>15</td><td>Addendum / Exhibits（附录与附件）</td><td>Addendum（补充条款，如续租选择权 Option to Renew）、Exhibit A 物业平面图、Exhibit B 规则与制度（Rules &amp; Regulations）、Work Letter、个人/公司担保函（Guaranty）</td><td>大纲了解</td></tr>
+</table>
+<div class="tip">记忆口诀：<b>"人—房—期—钱—押—用—务—修—险—损—转—违—还—杂—附"</b>，十五字对应十五个部位。读陌生租约时先按这张图定位每条，再钻进去抠字。</div>
+</div>
+</section>
+
+<!-- ============ PANEL 4 条款详解 A ============ -->
+<section class="panel" id="p4">
+
+<!-- Clause 1 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-1</span> Basic Provisions — 基本条款（参数总表）</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>1. Basic Provisions ("Basic Provisions").</b><br>
+<b>1.1 Parties:</b> This Lease ("Lease"), dated for reference purposes only September 12, 2026, is made by and between Golden Gate Plaza Owner, LLC, a California limited liability company ("Lessor"), and Panda Tech Inc., a Delaware corporation ("Lessee"), (collectively the "Parties", or individually a "Party").<br>
+<b>1.2 Premises:</b> Suite 1205, consisting of approximately 2,500 rentable square feet ("RSF"), located at 888 Harbor Boulevard, in the City of Los Angeles, County of Los Angeles, State of California ("Premises"). Lessee shall have non-exclusive rights to the Common Areas, but shall not have any rights to the roof or exterior walls of the Building.<br>
+<b>1.3 Term:</b> five (5) years and zero (0) months ("Original Term") commencing October 1, 2026 ("Commencement Date") and expiring September 30, 2031 ("Expiration Date").<br>
+<b>1.5 Base Rent:</b> $10,000.00 per month ("Base Rent"), payable on the first day of each calendar month, with annual increases of three percent (3%).<br>
+<b>1.8 Agreed Use:</b> general office use, including but not limited to e-commerce operations, administrative and business purposes.<br>
+<b>1.11 Guarantor:</b> The obligations of Lessee shall be guaranteed by Panda Group Holdings Ltd. ("Guarantor").
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>1. 基本条款（"基本条款"）。</b><br>
+<b>1.1 当事方：</b>本租约（"租约"），日期仅为备查目的记载为 2026 年 9 月 12 日，由加利福尼亚州有限责任公司 Golden Gate Plaza Owner, LLC（"房东/Lessor"）与特拉华州公司 Panda Tech Inc.（"租户/Lessee"）签订（合称"双方"，单称"一方"）。<br>
+<b>1.2 租赁物业：</b>1205 室，约 2,500 可租平方英尺（"RSF"），位于加利福尼亚州洛杉矶县洛杉矶市 Harbor Boulevard 888 号（"租赁物业"）。租户享有对共同区域的非排他性使用权，但对大厦屋顶及外墙不享有任何权利。<br>
+<b>1.3 租期：</b>伍年（5）整（"原租期"），自 2026 年 10 月 1 日起（"起租日"）至 2031 年 9 月 30 日届满（"届满日"）。<br>
+<b>1.5 基本租金：</b>每月 $10,000.00（"基本租金"），于每个日历月第一日支付，每年递增百分之三（3%）。<br>
+<b>1.8 约定用途：</b>一般办公用途，包括但不限于电子商务运营、行政管理及商业用途。<br>
+<b>1.11 担保人：</b>租户在本租约项下的义务由 Panda Group Holdings Ltd.（"担保人"）提供担保。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>dated for reference purposes only</b>：签署日期"仅为备查"——因为权利起算看 Commencement Date 而非签署日，防止两者混淆。</li>
+  <li><b>a California limited liability company / a Delaware corporation</b>：主体身份+注册地，核实签约主体资格的第一手信息。中资背景企业常以 Delaware 子公司签约，注意与母公司担保（1.11）联动。</li>
+  <li><b>approximately ... RSF</b>："约"字 + 后文"尺寸为约数、不因实测增减调整租金"（2.1 条）——房东的标准保护。租户动作：签约前实地测量（AGENTS 提示：AIR 表单原文就写着 "Lessee is advised to verify the actual size prior to executing this Lease"，连表单自己都提醒你）。</li>
+  <li><b>including but not limited to</b>：非穷尽列举。写在 Agreed Use 里对租户有利（业务扩张有解释空间）；但房东正文条款可能反过来限缩，两处要对照读。</li>
+  <li><b>guaranteed by</b>：担保义务 = 租户违约时担保人被直接追索。担保函常作为附件（Guaranty）单独签署，其条款（是否限于部分义务、是否有金额上限、是否持续有效 continuing guaranty）同样要审。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① RSF 是否虚高：要求 BOMA 标准测量报告；② Base Rent 是否与 RSF 联动（若联动，面积缩水应调租）；③ Commencement Date 是否与装修期衔接（争取 Early Possession / Free Rent）；④ 担保范围、期限、能否以"良好履约记录换取担保降级（burn-down）"。</div>
+  <div class="box ld"><b>房东立场</b>面积按"约数"不调整、交付日即起租、担保人无限连带。其文本默认值处处向自己倾斜——这正是逐条谈判的起点。</div>
+</div>
+</div>
+
+<!-- Clause 2 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-2</span> Premises — 租赁物业（交付状态与共同区域）</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>2. Premises.</b><br>
+<b>2.1 Letting.</b> Lessor hereby leases to Lessee, and Lessee hereby leases from Lessor, the Premises, for the term, at the rental, and upon all of the terms, covenants and conditions set forth in this Lease. Unless otherwise provided herein, any statement of size set forth in this Lease, or that may have been used in calculating Rent, is an approximation which the Parties agree is reasonable and any payments based thereon are not subject to revision whether or not the actual size is more or less.<br>
+<b>2.2 Condition.</b> Lessor shall deliver the Premises to Lessee in a clean condition on the Commencement Date, and warrants that the existing electrical, plumbing, fire sprinkler, lighting, heating, ventilating and air conditioning systems ("HVAC"), and all other items which Lessor is obligated to construct pursuant to the Work Letter, shall be in good operating condition on said date.<br>
+<b>2.7 Common Areas.</b> Lessee shall have the non-exclusive right to use, in common with others, the common areas and facilities of the Project, including parking areas, walkways, driveways, lobbies, elevators and restrooms, as such areas may exist from time to time, subject to the Rules and Regulations adopted by Lessor.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>2. 租赁物业。</b><br>
+<b>2.1 出租。</b>房东据此将租赁物业出租给租户，租户据此向房东承租租赁物业，租期、租金及全部条款、约定与条件均按本租约执行。除本租约另有规定外，本租约所载或用于计算租金的任何面积陈述均为约数，双方同意其为合理，且据此支付的款项不因实际面积或多或少而调整。<br>
+<b>2.2 交付状态。</b>房东应于起租日以清洁状态向租户交付租赁物业，并保证现有的电气、给排水、消防喷淋、照明、供暖、通风与空调系统（"HVAC"），以及房东按工程函（Work Letter）负有施工义务的其他项目，于该日处于良好运行状态。<br>
+<b>2.7 共同区域。</b>租户享有与其他使用者共同使用项目共同区域及设施的非排他性权利，包括停车区、人行道、车行道、大堂、电梯与洗手间，以该等区域不时实际存在者为准，并须遵守房东制定的规则与制度。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>Lessor hereby leases to Lessee, and Lessee hereby leases from Lessor</b>：对偶句式（reciprocal drafting），一次宣告双向合意，这是租赁合同的开篇定式（letting = 出租行为）。</li>
+  <li><b>terms, covenants and conditions</b>：三连同义词罗列（rule of three），英美合同特色——用近义词堆叠扩大覆盖面，翻译成中文合并为"条款与条件"即可，但起草时不可只写一个词。</li>
+  <li><b>any payments based thereon are not subject to revision whether or not...</b>：让步状语 whether or not（无论是否）+ 被动否定，把"面积误差风险"整体推给租户。语言信号词：<i>not subject to / whether or not / is an approximation</i> 三者连用 = 免责条款。</li>
+  <li><b>warrants ... shall be in good operating condition</b>：warrant（保证）是比 represent（陈述）更强的责任承诺，违反保证可主张违约损害赔偿。注意保证范围只覆盖"交付当日"（on said date）——之后坏了一般归 8.1/8.2 的维修体系管。</li>
+  <li><b>as such areas may exist from time to time / subject to the Rules and Regulations</b>：两个"弹性口袋"——共同区域可变、规则房东单方制定。租户要加"不得实质性减损（no material adverse reduction）"的限制。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 交付检查表（delivery condition walkthrough）：逐项测试 HVAC、喷淋、照明并拍照留档，与 2.2 保证对应；② Work Letter 里写明房东装修范围（地板、墙面、天花板高度）；③ 共同区域规则作为 Exhibit B 附件"锁版"，修改须提前通知。</div>
+  <div class="box ld"><b>房东立场</b>"broom clean 清洁状态"即算合格交付；运行状态保证限于交付日；共同区域可随时调整。反制点：租户在交付验收单上注明缺陷，未在合理期限内修复的可主张房东违约在先。</div>
+</div>
+</div>
+
+<!-- Clause 3 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-3</span> Term — 租期、提前占有与顺延</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>3. Term.</b><br>
+<b>3.1</b> The term of this Lease shall be the Original Term as set forth in Paragraph 1.3, commencing on the Commencement Date and expiring at 11:59 p.m. Pacific Time on the Expiration Date, unless sooner terminated or extended pursuant to the provisions of this Lease.<br>
+<b>3.2 Early Possession.</b> If Lessor delivers possession of the Premises to Lessee prior to the Commencement Date ("Early Possession Date"), Lessee shall pay Base Rent on a per diem basis for the period prior to the Commencement Date, and all other terms of this Lease shall apply. Early possession shall not extend the Expiration Date.<br>
+<b>3.3 Holding Over.</b> If Lessee remains in possession of the Premises after the Expiration Date, and Lessor does not consent thereto, such occupancy shall be a tenancy at sufferance. If Lessor consents to Lessee's continued occupancy, such tenancy shall be on a month-to-month basis at one hundred fifty percent (150%) of the then monthly Base Rent, prorated on a daily basis for any partial month, and on all other terms of this Lease, provided that no renewal option therein shall apply during such month-to-month tenancy.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>3. 租期。</b><br>
+<b>3.1</b> 本租约租期为第 1.3 条所载原租期，自起租日起，至届满日太平洋时间晚上 11 时 59 分止，但依本租约约定提前终止或延长的除外。<br>
+<b>3.2 提前占有。</b>若房东于起租日前向租户交付租赁物业（"提前占有日"），租户应就起租日之前的期间按日计付基本租金，本租约其他条款一并适用。提前占有不延长届满日。<br>
+<b>3.3 逾期占有（Holdover）。</b>若租户于届满日后仍占有租赁物业且房东未予同意，该占有构成容忍租赁（tenancy at sufferance）。若房东同意租户继续占有，该租赁按月租约（month-to-month）进行，月租金为当时月基本租金的百分之一百五十（150%），不足整月按日折算，其余条款继续适用；但在该按月租赁期间不适用任何续租选择权。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>unless sooner terminated or extended pursuant to...</b>：标准弹性收尾，衔接毁损、征收、违约终止等特殊通道。</li>
+  <li><b>per diem</b>：拉丁语 per day，"按日计"。法律英语高频拉丁词还有 <i>inter alia</i>（其中）、<i>prima facie</i>（初步表面）、<i>pro rata</i>（按比例）。</li>
+  <li><b>tenancy at sufferance</b>：专业概念——租户无权而房东"容忍"其滞留的状态，房东可随时终止并走驱逐程序。与之并列的还有 tenancy at will（任意租赁，双方可随时终止）。</li>
+  <li><b>150% of the then monthly Base Rent</b>：then 是关键——按"届时"租金计算。Holdover 150%–200% 是美国市场惯例，其法律定性为对预期损害的预先约定（liquidated damages）。</li>
+  <li><b>provided that</b>：但书/限定条款的信号词，译作"但……""惟……"。起草规则：provided that 引出的是对主句的<b>限制</b>，不是新增独立义务。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 装修期争取 Early Possession + 免租（abated），避免"空付按日租金"；② 迁出计划倒排：150% 罚金 + 可能的房东损害赔偿，holdover 是最贵的一种"拖延"；③ 若可能延期，务必把 Option to Renew 写进附录并提前设日历提醒（行权窗口一旦错过即失权）。</div>
+  <div class="box ld"><b>房东立场</b>高溢价 holdover 租金补偿其另租损失。反制点：租户可在谈判中把 holdover 定为"最长期限 2–3 个月"，超期后按月支付损害赔偿而非无限期 150%。</div>
+</div>
+</div>
+
+<!-- Clause 4 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-4</span> Base Rent — 基本租金与基年费用分摊</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>4. Base Rent.</b><br>
+<b>4.1 Payment.</b> Lessee shall pay Base Rent to Lessor in lawful money of the United States, on or before the first day of each calendar month, in advance, without demand, deduction, abatement or setoff, at the address for notices set forth in Paragraph 14, or to such other person or place as Lessor may designate in writing.<br>
+<b>4.2 Operating Expense Increase.</b> If, in any calendar year (commencing with the calendar year immediately following the Base Year), the total of Lessor's costs of operation of the Project ("Operating Expenses"), including, without limitation, property taxes, insurance premiums, common area maintenance, utilities for common areas, janitorial services and security, shall exceed the amount of such costs incurred during the Base Year, then Lessee shall pay to Lessor, as Additional Rent, Lessee's Share of such excess. Within ninety (90) days after the end of each calendar year, Lessor shall deliver to Lessee a written statement of Operating Expenses, and any amount payable shall be due within thirty (30) days after delivery of such statement.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>4. 基本租金。</b><br>
+<b>4.1 支付。</b>租户应以美国法定货币，于每个日历月首日或之前<b>预付</b>基本租金至房东，不得要求催告、不得扣减、减免或抵销，支付至第 14 条所载通知地址，或房东书面指定的其他人员或地点。<br>
+<b>4.2 运营费用增加。</b>若任一日历年度（自基年之后的日历年度起算）房东运营项目的成本合计（"运营费用"）——包括但不限于物业税、保险费、共同区域维护、共同区域公用事业、保洁服务与安保——超过基年发生的该等成本数额，则租户应作为<b>附加租金</b>向房东支付该超额部分中租户分摊比例对应之金额。在每个日历年度结束后九十（90）日内，房东应向租户交付运营费用书面报表，应付金额应于报表交付后三十（30）日内支付。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>without demand, deduction, abatement or setoff</b>：四连否定是租金条款的"防御工事"——demand（房东不必催）、deduction（不得自行扣）、abatement（不得主张减租）、setoff（不得以对房东的债权抵销）。<b>setoff 是租户最值得争的一个</b>：删掉它，租户在房东违约时才有"扣着租金谈判"的杠杆。</li>
+  <li><b>including, without limitation</b>：= including but not limited to，变体写法。运营费用清单越长，租户的可变成本敞口越大，真正的防御在"排除清单（Exclusions）"。</li>
+  <li><b>shall exceed ... then Lessee shall pay</b>：条件句结构 if...shall exceed, then...shall pay——法律英语标准的"条件—后果"句型，翻译时保持"若……则……"。</li>
+  <li><b>as Additional Rent</b>：把费用分摊统一定性为"附加租金"意义重大——不付附加租金 = 拖欠租金，直接触发违约与驱逐程序。租户谈判目标：把重大费用争议期间的付款义务与争议解决机制挂钩，防止被"技术性违约"。</li>
+  <li><b>Within ninety (90) days ... shall deliver</b>：房东的对等义务。数字的拼写+阿拉伯数字双写（ninety (90)）是金额/期限类条款的防篡改惯例，中文合同同理（大写金额）。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 争 Exclusions：资本性支出（capital expenditures）、房东管理层费上限、折旧、债务本息不得计入运营费用，或资本支出按年限摊销；② 争 Audit Right：留存 12–24 个月查账权，发现多收超 5% 时房东承担审计费；③争 cap：年费用增长封顶（如累计不超过基年的 5%–8%）；④ Base Year 尽量定在费用较低的年份。</div>
+  <div class="box ld"><b>房东立场</b>宽口径费用清单 + 无抵销 + 附加租金定性，目的是现金流确定与成本全额传导。反制点：房东可同意审计权，但要求"误差低于阈值时租户自担费用"。</div>
+</div>
+</div>
+
+<!-- Clause 5 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-5</span> Security Deposit — 保证金</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>5. Security Deposit.</b> Lessee shall deposit with Lessor upon execution of this Lease the sum of $20,000.00 ("Security Deposit") as security for Lessee's faithful performance of its obligations under this Lease. The Security Deposit shall not be considered an advance payment of Rent or a measure of Lessor's damages in case of Lessee's default. Lessor may, but shall not be required to, apply all or any portion of the Security Deposit to the payment of Rent in default or to other amounts due, or to compensate Lessor for any other loss or damage; and if any portion thereof is so applied, Lessee shall, within ten (10) days after written demand, restore the Security Deposit to its original amount. Within thirty (30) days after the expiration of the Lease Term or earlier termination, and after Lessee has surrendered the Premises in accordance with Paragraph 13, Lessor shall return the Security Deposit, less any amounts retained in accordance with this Lease, to Lessee. If Lessor sells or transfers the Project, Lessor shall transfer the Security Deposit to the transferee, whereupon Lessor shall be relieved from any further liability therefor.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>5. 保证金。</b>租户应于签署本租约时向房东交存 $20,000.00（"保证金"），作为租户切实履行本租约项下义务之担保。保证金不视为租金预付，也不作为租户违约时房东损害赔偿数额之量度。房东可（但无义务）将保证金的全部或部分用于支付拖欠租金或其他应付款项，或补偿房东的任何其他损失或损害；如保证金任何部分被如此动用，租户应于书面催告后十（10）日内将保证金补足至原额。租期届满或提前终止后三十（30）日内，且租户已按第 13 条交还租赁物业后，房东应将保证金扣除依本租约留存之金额后退还租户。若房东出售或转让项目，房东应将保证金移交受让方，此后房东即免除其对该保证金的进一步责任。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>as security for Lessee's faithful performance</b>：目的状语点明性质——担保履约，不是预付租金（not an advance payment of Rent）。因此租户不能"最后一月不付租金、让房东扣押金"，否则双违约。</li>
+  <li><b>nor a measure of Lessor's damages</b>：押金不封顶房东的实际索赔——押 $20,000 不代表违约最多赔 $20,000。这是租户最常误解的一点。</li>
+  <li><b>may, but shall not be required to, apply</b>：插入语式许可——"可以但无义务"，房东保留选择权。同类结构还有 <i>nothing herein shall require...</i>（本约任何内容均不要求……）。</li>
+  <li><b>restore ... to its original amount</b>：补足机制（replenishment/restore obligation），押金被动用后须在催告后 10 天内回补，现金流管理要预留。</li>
+  <li><b>whereupon Lessor shall be relieved from any further liability</b>：whereupon = 紧接着即，"随之"。房东卖楼即甩手押金责任——租户风险点：若新业主跑了，押金找谁？租户反制：要求收到"押金移交+新业主确认"书面凭证后，房东的免责才生效。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 减押路径：预付若干月租金/ parent guaranty 换取降额，或履约满 24 个月自动减半（burn-down）；② 争 interest（押金利息归租户，虽非市场标配）；③ 退还触发条件必须客观（交还+结算），避免"房东单方认定损害即可扣"的开放式表述；④ 商业租赁加州无押金法定上限（对比住宅租赁的法定限制），金额全凭谈判——争取 1–2 个月。</div>
+  <div class="box ld"><b>房东立场</b>押金=信用不足时的第一道缓冲，动用灵活、免责顺畅。反制点：租户可要求"押金移交须以租户收到受让方书面承认为前提"。</div>
+</div>
+</div>
+
+<!-- Clause 6 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-6</span> Use of Premises — 约定用途与合规</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>6. Use of Premises.</b><br>
+<b>6.1 Permitted Use.</b> Lessee shall use and occupy the Premises only for the Agreed Use stated in Paragraph 1.8 and for no other purpose without the prior written consent of Lessor. Lessee shall comply with all laws, ordinances, orders and regulations of governmental authorities having jurisdiction, including without limitation all applicable requirements of the Americans with Disabilities Act ("ADA"), 42 U.S.C. § 12101 et seq.<br>
+<b>6.2 Prohibited Uses.</b> Lessee shall not use or permit the Premises to be used for any illegal or hazardous purpose, nor for any use which, in Lessor's reasonable opinion, would tend to injure the reputation of the Project, increase the insurance rates thereon, or create a nuisance to other tenants.<br>
+<b>6.3 Signage.</b> Lessee shall not place any sign, advertisement or notice visible from the exterior of the Premises without Lessor's prior written approval, which approval shall not be unreasonably withheld, conditioned or delayed.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>6. 租赁物业之使用。</b><br>
+<b>6.1 许可用途。</b>租户仅得按第 1.8 条所载约定用途使用与占有租赁物业，未经房东事先书面同意不得用于其他目的。租户应遵守对项目有管辖权的政府机关的一切法律、法令、命令与法规，包括但不限于《美国残疾人法》（"ADA"），42 U.S.C. § 12101 及以下，的一切适用要求。<br>
+<b>6.2 禁止用途。</b>租户不得将租赁物业用于或允许他人用于任何非法或危险用途，亦不得用于在房东合理看来将有损项目声誉、推高项目保险费率或对其他租户构成妨害的用途。<br>
+<b>6.3 招牌。</b>未经房东事先书面批准，租户不得设置从租赁物业外部可见的任何招牌、广告或告示；该批准不得被无理拒绝、附加条件或迟延。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>only for ... and for no other purpose without prior written consent</b>：双重限定（only + no other purpose）锁死用途弹性，租户的业务转型都要房东点头。</li>
+  <li><b>having jurisdiction</b>：有管辖权的——限定政府层级，避免泛指"任何机关"。</li>
+  <li><b>ADA, 42 U.S.C. § 12101 et seq.</b>：法律引注格式：法典名 + 章节号 + <b>et seq.（and the following ones，"及以下各条"）</b>。ADA Title III 对公共商业设施的无障碍要求会影响装修设计（门宽、卫生间、无障碍车位），改造费用谁担是真实谈判点。</li>
+  <li><b>in Lessor's reasonable opinion</b>：合理判断标准（reasonableness standard）——注意房东把"声誉、保险费率、妨害"三个模糊概念都塞进禁止用途，全靠 reasonable 缓冲。租户动作：把 reasonable opinion 升级为 objectively unreasonable 的可诉标准，或列举式排除。</li>
+  <li><b>not be unreasonably withheld, conditioned or delayed</b>：本页最重要的一句话——同意权的三重限制（不得无理拒绝、附加条件、迟延）。凡看到房东的"consent/approval"类权利，先检查有没有这句保护。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① Agreed Use 写宽："including e-commerce operations" 已经写进 1.8，再加 "and other lawful business purposes"；② ADA：装修合规费用争取计入 TI 或由房东承担公共区域部分；③ 招牌权：争取楼内导视 + 大厦名录（building directory）免批使用权。</div>
+  <div class="box ld"><b>房东立场</b>用途锁死+概括性禁止+外观控制，维护楼宇组合（tenant mix）与资产估值。反制点：房东可保留对竞品入驻的排他控制（exclusive use 以房东先前承诺为限）。</div>
+</div>
+</div>
+
+<!-- Clause 7 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 A-7</span> Services &amp; Utilities — 服务与公用事业</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>7. Services.</b><br>
+<b>7.1 Lessor-Supplied Services.</b> Subject to the provisions of Paragraph 4.2, Lessor shall furnish to the Project the following services: (a) janitorial services for the Premises on business days; (b) heating, ventilating and air conditioning in conformity with generally accepted standards for first-class office buildings during Building Hours; (c) elevator service; (d) security and building management services; and (e) water for restrooms and lavatories.<br>
+<b>7.2 HVAC After Hours.</b> If Lessee requests HVAC service outside Building Hours, Lessee shall pay Lessor Lessor's then prevailing charge therefor, which shall not exceed $75.00 per hour, payable within thirty (30) days after receipt of invoice.<br>
+<b>7.3 Utilities.</b> Lessee shall pay, directly to the provider thereof, all charges for electricity, gas, telephone, data and other utilities used by Lessee within the Premises. Lessor shall be responsible for utilities serving the Common Areas.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>7. 服务。</b><br>
+<b>7.1 房东供给服务。</b>在第 4.2 条之限制下，房东应向项目提供下列服务：(a) 营业日内针对租赁物业的保洁服务；(b) 营业时间内符合一流写字楼通行标准的供暖、通风与空调；(c) 电梯服务；(d) 安保与物业管理服务；及 (e) 洗手间与盥洗室用水。<br>
+<b>7.2 营业时间外空调。</b>若租户请求在营业时间外提供空调服务，租户应按房东届时通行收费标准支付，且每小时不超过 $75.00，于收到发票后三十（30）日内支付。<br>
+<b>7.3 公用事业。</b>租户应就其于租赁物业内使用的电力、燃气、电话、数据及其他公用事业之全部费用，直接向供应方支付。共同区域之公用事业由房东负责。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>furnish / supply / provide</b>：近义动词轮换，起草时同义词替换可避免指代漂移，但语义要稳定（本合同统一指"供给"）。</li>
+  <li><b>in conformity with generally accepted standards for first-class office buildings</b>：行业基准条款（industry standard clause）——用"一流写字楼通行标准"替代量化指标（如温度 22–25℃、湿度区间）。租户反制：量化关键指标（温度区间、新风量），否则"不冷不热"争议无法举证。</li>
+  <li><b>during Building Hours</b>：营业时间的定义（如 8:00–18:00 工作日）在第 1 条或 Rules &amp; Regulations 中——服务缩水与加班收费都围绕这条时间线。</li>
+  <li><b>then prevailing charge</b>：届时通行收费——开口价格条款（open price term），房东可单方涨价，故本句追加 not to exceed $75.00/hr 封顶，这是租户谈判成果的写法示范。</li>
+  <li><b>payable within thirty (30) days after receipt of invoice</b>：付款触发点设计——"收到发票后 30 天"而非"提供服务时即付"，给租户对账缓冲。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 加班空调费封顶（本句已示范）+ 免费额度（如每月 40 小时）；② 服务不达标救济：连续不达标可自修并向房东追偿（self-help），需写明；③ 直接缴费的 utilities 逾期断供风险：争取欠费断供前的通知机制。</div>
+  <div class="box ld"><b>房东立场</b>服务义务全部以"4.2 条限制下"（即费用可传导）为前提，加班服务开口定价。反制点：房东可要求加班空调按实际人工+能耗成本计费并随时调价。</div>
+</div>
+</div>
+
+</section>
+
+<!-- ============ PANEL 5 条款详解 B ============ -->
+<section class="panel" id="p5">
+
+<!-- Clause 8 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-8</span> Maintenance; Repairs; Alterations — 维护、维修与改造</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>8. Maintenance; Repairs; Alterations.</b><br>
+<b>8.1 By Lessor.</b> Subject to Lessee's compliance with the terms of this Lease, Lessor shall maintain in good order, condition and repair the roof, structural elements, foundation and exterior walls of the Building, and the Common Areas and Building systems not located within the Premises.<br>
+<b>8.2 By Lessee.</b> Subject to Lessor's obligations under Paragraph 8.1, Lessee shall, at Lessee's sole cost and expense, maintain the Premises, including the interior surfaces thereof and all systems located within the Premises, in good order, condition and repair, ordinary wear and tear and damage by casualty excepted.<br>
+<b>8.3 Alterations.</b> Lessee shall not make any alterations, additions or improvements to the Premises without Lessor's prior written consent, which shall not be unreasonably withheld, conditioned or delayed; provided, however, that non-structural alterations not affecting Building systems, costing less than $10,000 in the aggregate, shall not require such consent. All alterations shall become Lessor's property upon completion and shall remain upon and be surrendered with the Premises, except that trade fixtures and removable personal property installed by Lessee may be removed by Lessee prior to surrender, and Lessee shall repair any damage caused by such removal.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>8. 维护、维修与改造。</b><br>
+<b>8.1 房东义务。</b>在租户遵守本租约条款之前提下，房东应保持大厦屋顶、结构构件、地基与外墙，以及共同区域和位于租赁物业之外的大厦系统，处于良好秩序、状态与维修状态。<br>
+<b>8.2 租户义务。</b>在房东第 8.1 条义务之前提下，租户应自费将租赁物业（包括其内部表面及位于租赁物业内的全部系统）保持于良好秩序、状态与维修状态，正常损耗及意外毁损除外。<br>
+<b>8.3 改造。</b>未经房东事先书面同意（该同意不得被无理拒绝、附加条件或迟延），租户不得对租赁物业进行任何改造、增建或改良；但费用合计低于 $10,000 且不影响大厦系统的非结构性改造无需该等同意。全部改造于完成后成为房东财产，留存于租赁物业并随之交还；但租户安装的营业装置与可移动动产可由租户于交还前拆除，且租户应修复因拆除造成的任何损害。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>Subject to ...</b>：本页出现三次的万能开关——"在……的限制下"。主句义务永远让位于 subject to 所指条款，阅读时先追它指向哪条（8.1 subject to 租户守约；8.2 subject to 房东 8.1）。</li>
+  <li><b>at Lessee's sole cost and expense</b>：费用归属的最高级写法（sole = 独自承担，连间接成本也不转嫁房东）。</li>
+  <li><b>ordinary wear and tear excepted</b>：正常损耗除外——租户的护身符。没有这句，退租时墙上的自然褪色、地毯的正常磨旧都能被算作"维修欠账"。意外毁损（casualty damage）另由第 10 条分配，故一并除外。</li>
+  <li><b>provided, however, that ...</b>：provided 的加强版（但书中的但书），此处是租户的胜利成果——小额免批门槛（de minimis threshold, $10,000 aggregate）。数字门槛要"aggregate（合计）"限定，防止拆单规避。</li>
+  <li><b>trade fixtures</b>：营业装置（如货架、专用灯位、隔间设备）——可拆除带走 vs. 改造归房东（become Lessor's property），划界直接影响退租成本。谈判点：IT 布线、服务器机架、玻璃隔断归哪边。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 8.1 争回更多：屋顶渗漏导致的室内损害修复与业务损失（consequential damages）责任分配，与第 9 条赔偿联动；② 改造门槛从 $10,000 上调至 $25,000–50,000；③ 明确"房东同意视为批准的图纸即为标准"；④ 列入 trade fixture 清单附件，避免退租争议。</div>
+  <div class="box ld"><b>房东立场</b>改造留存归房东=资产增值，租户自担内部维护=成本下沉。反制点：房东可要求拆除后"恢复原状（restore to original condition）"而非仅修损害。</div>
+</div>
+</div>
+
+<!-- Clause 9 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-9</span> Insurance &amp; Indemnity — 保险与赔偿</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>9. Insurance; Indemnity.</b><br>
+<b>9.1 Lessee's Insurance.</b> Lessee shall, at its sole cost and expense, maintain: (a) commercial general liability insurance ("CGL") with limits of not less than $1,000,000 per occurrence and $2,000,000 aggregate, naming Lessor and Lessor's property manager as additional insureds; (b) property insurance covering Lessee's personal property, trade fixtures and improvements within the Premises; and (c) workers' compensation insurance as required by law. Prior to the Commencement Date, Lessee shall deliver certificates of insurance evidencing such coverage. All such policies shall provide that each insurer waives its right of subrogation against Lessor.<br>
+<b>9.2 Lessor's Insurance.</b> Lessor shall maintain property insurance covering the Building and liability insurance for the Common Areas.<br>
+<b>9.3 Indemnity.</b> To the extent caused by the negligence or willful misconduct of the indemnifying party, its agents, employees or contractors, each party ("Indemnitor") shall indemnify, defend and hold harmless the other party and its officers, directors, employees and agents ("Indemnitee") from and against any and all claims, demands, losses, liabilities, damages and expenses, including reasonable attorneys' fees, arising out of personal injury or property damage occurring in or about the Premises or the Project.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>9. 保险与赔偿。</b><br>
+<b>9.1 租户保险。</b>租户应自费维持：(a) 商业综合责任险（"CGL"），每次事故（per occurrence）不低于 $1,000,000、累计（aggregate）不低于 $2,000,000，并将房东及其物业管理人列为附加被保险人；(b) 覆盖租户动产、营业装置及租赁物业内改良部分的财产险；及 (c) 法律要求的工伤保险。租户应于起租日前交付证明上述保险的保险凭证。所有保单应约定各保险人放弃对房东的代位求偿权。<br>
+<b>9.2 房东保险。</b>房东应维持覆盖大厦的财产险及共同区域的责任险。<br>
+<b>9.3 赔偿。</b>在因赔偿义务方（"赔偿方"）及其代理人、雇员或承包商的过失或故意不当行为所致范围内，各方（"赔偿方"）应就发生于租赁物业或项目之内或周边的人身伤害或财产损害所引起的任何及一切索赔、请求、损失、责任、损害及费用（含合理律师费），赔偿、抗辩并使另一方及其高管、董事、雇员与代理人（"受偿方"）免受损害。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>not less than $1,000,000 per occurrence and $2,000,000 aggregate</b>：保险金额双维度——per occurrence（每次事故限额）× aggregate（年度累计限额），翻译保留英文括注，中文语境无完全对应概念。</li>
+  <li><b>naming ... as additional insureds</b>：naming 是"将……列为"，附加被保险人（additional insured）使房东可直接向租户的保险人索赔，无需先起诉租户。</li>
+  <li><b>waives its right of subrogation</b>：subrogation 代位求偿——保险人赔完被保险人后，向真正责任人追偿的权利。"放弃代位"条款防止：租户员工引发火灾→租户保险人赔了房东→转头告租户。双方都要互相放弃，才是完整保护。</li>
+  <li><b>To the extent caused by ...</b>：程度限定（to the extent）把赔偿义务锁定在"过错比例内"——互惠（each party）+ 过错挂钩 = 相对公平的版本。房东原始版本常是"租户赔一切，房东不赔任何"（one-way indemnity），务必对照。</li>
+  <li><b>indemnify, defend and hold harmless ... from and against</b>：黄金三连 + 固定搭配 indemnify A from/against B。defend 义务（出庭抗辩并承担费用）比 indemnify 更早触发，不可省略。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 互惠性：确认 9.3 是 mutual indemnity，若为单向立即改写；② 排除项：争取排除"indemnitee 自身过失所致"的赔偿（本句 to the extent 已含此逻辑，但房东版本常删）；③ 免赔额（deductible）与保费上涨由谁担；④ 弃代位双向化。</div>
+  <div class="box ld"><b>房东立场</b>保额越高、additional insured 越广，房东转嫁责任越彻底。反制点：房东可要求 waivers of subrogation 不作双向对等，并加"indemnity 不受保险覆盖范围限制"。</div>
+</div>
+</div>
+
+<!-- Clause 10 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-10</span> Damage &amp; Destruction — 意外毁损</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>10. Damage and Destruction.</b><br>
+<b>10.1 Partial Damage.</b> If the Premises are partially damaged by fire or other casualty, and such damage is repairable within sixty (60) days and the Building is not so damaged as to render the Project untenantable in whole or in material part, Lessor shall repair the same with reasonable diligence and the Rent shall abate in proportion to the degree to which Lessee's use of the Premises is impaired, until such repair is completed.<br>
+<b>10.2 Total or Extended Damage.</b> If the damage cannot be repaired within such sixty (60) day period, or if the Building is rendered untenantable in whole or in material part, either party may terminate this Lease upon thirty (30) days' written notice to the other, effective as of the date of such casualty. If neither party elects to terminate, Lessor shall restore the Premises with reasonable diligence, and Rent shall abate until restoration is substantially completed.<br>
+<b>10.3 No Termination Where Leasehold Interest Insured.</b> The foregoing rights of termination shall not apply if the casualty is caused by the act or omission of Lessee, its agents, employees or contractors.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>10. 毁损与灭失。</b><br>
+<b>10.1 部分毁损。</b>若租赁物业因火灾或其他意外事故遭受部分毁损，且该毁损可在六十（60）日内修复、大厦受损程度不致使项目整体或实质部分不可使用，房东应以合理勤勉进行修复，且租金应按租户对租赁物业使用受妨碍的程度按比例减免，直至修复完成。<br>
+<b>10.2 全部或长期毁损。</b>若毁损无法于该六十（60）日期间内修复，或大厦整体或实质部分变得不可使用，任何一方可提前三十（30）日书面通知对方终止本租约，终止自意外事故发生之日起生效。若双方均未选择终止，房东应以合理勤勉恢复租赁物业，租金减免至恢复基本完成时止。<br>
+<b>10.3 租户过错时不享终止权。</b>若意外事故系租户或其代理人、雇员或承包商作为或不作为所致，前述终止权利不适用。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>casualty</b>：保险法语境的"意外事故"（火灾、爆炸、水管爆裂等），与 damage（毁损事实）搭配成 damage and destruction by fire or other casualty 的标准表述。</li>
+  <li><b>render the Project untenantable</b>：render + 宾语 + 形容词 = "使……处于某状态"，比 make 正式。unt./tenantable（宜居可用）→ untenantable（不可使用）。</li>
+  <li><b>the Rent shall abate in proportion to ...</b>：abate（减免）+ in proportion to（按……比例），租金自动按使用妨碍度减免——租户核心保护，缺少则火灾后仍全额付租。</li>
+  <li><b>with reasonable diligence</b>：合理性标准修饰修复速度，为"房东拖着不修"留下争议空间。租户反制：加"beyond X days, Lessee may terminate or self-repair and offset"。</li>
+  <li><b>effective as of the date of such casualty</b>：as of = 截至并以该日为准——终止 retroactively 生效到事故日，已付租金按日结算退还。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 60 天修复期偏紧，争取 90–120 天；② 争 business interruption：长期毁损时除解约外增加"租户可自费修复并减免租金"选项；③ 10.3 范围：确认"其承包商"外延——装修承包商闯祸导致全楼报废时租户丧失终止权且面临赔偿，故装修承包商保险要求（第 8.3 条联动）要够高。</div>
+  <div class="box ld"><b>房东立场</b>尽量保留修复主动权（不终止→继续收租）。反制点：房东可加入"租户书面放弃终止权以换取更长期租约折扣"的打包交易。</div>
+</div>
+</div>
+
+<!-- Clause 11 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-11</span> Assignment &amp; Subletting — 转让与转租</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>11. Assignment and Subletting.</b><br>
+<b>11.1 Consent Required.</b> Lessee shall not assign this Lease or sublet all or any portion of the Premises without Lessor's prior written consent, which shall not be unreasonably withheld, conditioned or delayed; provided that no consent shall be required for an assignment to, or sublease to, any affiliate of Lessee or any successor by merger, consolidation or reorganization of Lessee, provided such entity has a net worth at least equal to that of Lessee as of the date of this Lease.<br>
+<b>11.2 Recapture.</b> If Lessee proposes an assignment or sublease of all or substantially all of the Premises to a creditworthy assignee or subtenant, Lessor may, at its option, elect to recapture the Premises by terminating this Lease as to the entire Premises upon written notice given within thirty (30) days after Lessee's request.<br>
+<b>11.3 Profits.</b> Any rents or other consideration received by Lessee from an assignment or sublease in excess of the Rent payable under this Lease shall be shared equally between Lessor and Lessee after deduction of Lessee's reasonable administrative, brokerage and legal costs incurred therein.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>11. 转让与转租。</b><br>
+<b>11.1 须经同意。</b>未经房东事先书面同意（该同意不得被无理拒绝、附加条件或迟延），租户不得转让本租约或转租全部或任何部分租赁物业；但转让或转租给租户的关联方，或因合并、兼并或重组承继租户的继受者的，无需该等同意，惟该实体净资产不低于本租约签署之日租户的净资产。<br>
+<b>11.2 收回权。</b>若租户拟将全部或实质全部租赁物业转让或转租给有支付能力的受让人或次承租人，房东可自行选择通过书面终止本租约（及于全部租赁物业）的方式收回租赁物业，该通知应于租户提出请求后三十（30）日内发出。<br>
+<b>11.3 收益分配。</b>租户因转让或转租所收取的、超过本租约应付租金的租金或其他对价，应在扣除租户为此发生的合理行政、经纪及法律费用后，由房东与租户平均分配。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>assign / assignment vs. sublet / sublease</b>：一对必分清的动词。assignment 租约整体易主（原租户一般仍连带担责，除非房东解除）；sublease 次承租关系，租户仍对房东负全部义务（"原租户仍是房东"）。合同首句通常 both 禁掉，破局靠 affiliate carve-out。</li>
+  <li><b>affiliate / successor by merger, consolidation or reorganization</b>：关联方与并购继受豁免——中资企业内部重组（换壳、并入新主体）不受阻的关键条款，<b>务必争取</b>，且注意 net worth 门槛别写死为公司当前规模（成长型公司会"不达标"）。net worth = 净资产（assets − liabilities）。</li>
+  <li><b>creditworthy</b>：有资信的/有支付能力的——房东借审查名义拖延或否决的抓手，租户反制：改为"financially reasonably comparable to Lessee at lease execution"。</li>
+  <li><b>at its option, elect to recapture</b>：at one's option + elect 双重强调单方选择权。recapture 逻辑：租户想走→房东可以选择收回全部空间终止租约（如果市场租金涨了，房东收回重租更划算；反之留存）。看似对租户不利，实则给了"提前退场通道"——关键看触发条件是否限缩。</li>
+  <li><b>shall be shared equally between ... after deduction of ...</b>：转租差价（transfer premium）五五分成 + 成本先行扣除，AIR 标准是房东拿全部差价，本句已是被缓和的版本。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① affiliate carve-out 必争（写宽 affiliate 定义）；② 争"房东沉默视为同意（deemed consent）"：房东 15–30 天不回复视为同意，防拖延；③ 11.2 的 recapture 通知期 30 天 + 房东未行权即视为放弃该次请求的收回权；④ 转让后原租户责任：争取 release（解除连带）至少对优质受让人。</div>
+  <div class="box ld"><b>房东立场</b>控制"谁来占用我的楼"+分享市场上涨收益。反制点：房东可要求任何转让后租户与担保人继续承担连带责任（continuing liability）。</div>
+</div>
+</div>
+
+<!-- Clause 12 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-12</span> Default &amp; Remedies — 违约与救济</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>12. Default; Remedies.</b><br>
+<b>12.1 Events of Default.</b> Each of the following shall be an "Event of Default": (a) Lessee fails to pay any Rent within three (3) business days after written notice thereof; (b) Lessee fails to perform any other obligation within thirty (30) days after written notice specifying such failure in reasonable detail, or if such failure cannot reasonably be cured within such period, within such further time as is reasonably required if Lessee commences to cure within such period and diligently prosecutes the cure thereof; (c) Lessee abandons the Premises; (d) Lessee becomes insolvent, makes an assignment for the benefit of creditors, or a bankruptcy proceeding is commenced by or against Lessee; and (e) any guaranty of Lessee's obligations is revoked or stays revoked.<br>
+<b>12.2 Remedies.</b> Upon an Event of Default, Lessor may, at its option and without further notice or demand: (a) terminate this Lease and re-enter and take possession of the Premises; (b) recover all Rent due and unpaid; (c) recover damages as permitted by law; and (d) exercise any other right or remedy available at law or in equity. No re-entry or termination shall relieve Lessee of its obligations hereunder with respect to the period prior to such re-entry or termination.<br>
+<b>12.3 Attorneys' Fees.</b> In any action or proceeding arising out of this Lease, the prevailing party shall be entitled to recover its reasonable attorneys' fees and costs from the non-prevailing party.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>12. 违约与救济。</b><br>
+<b>12.1 违约事件。</b>下列情形均构成"违约事件"：(a) 租户经书面通知后三（3）个营业日内未支付任何租金；(b) 租户经书面通知（以合理细节指明该未履行事项）后三十（30）日内未履行任何其他义务；如该未履行事项无法在该期间内合理补救，而租户已在该期间内着手补救并勤勉推进的，则在合理所需的进一步期间内补救亦可；(c) 租户放弃租赁物业；(d) 租户丧失清偿能力、为债权人利益作出概括让与，或对租户启动破产程序；及 (e) 租户义务的任何担保被撤销或失效。<br>
+<b>12.2 救济。</b>违约事件发生后，房东可自行选择且无需另行通知或催告：(a) 终止本租约并重新进入、占有租赁物业；(b) 追偿到期未付的全部租金；(c) 依法追偿损害赔偿；及 (d) 行使法律或衡平法上可得之任何其他权利或救济。重新进入或终止均不解除租户就重新进入或终止之前期间的本租约项下义务。<br>
+<b>12.3 律师费。</b>因本租约引起的任何诉讼或程序中，胜诉方有权向败诉方追偿其合理律师费与费用。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>fails to pay ... within three (3) business days after written notice thereof</b>：租金违约也有 cure period（3 个营业日）+ 书面通知前提——不是逾期即违约。租户要守的底线：租金支付精确到日，欠租通知一来立刻补。</li>
+  <li><b>or if such failure cannot reasonably be cured within such period, within such further time ... diligently prosecutes the cure</b>：分段补救条款（tailored cure）——非付款违约给 30 天，不能修完的只要"已开工+勤勉推进"可顺延。diligently prosecute（勤勉推进）是关键义务表述。</li>
+  <li><b>abandons / becomes insolvent / makes an assignment for the benefit of creditors</b>：放弃占有、失去清偿能力、为债权人利益让与财产——美国法上的概括性让与替代破产程序（ABC, Assignment for Benefit of Creditors），与 bankruptcy 并列为违约事件。中资企业关注：母公司境外破产会不会传导？"against Lessee"（针对租户启动的）已经把范围限定在本体。</li>
+  <li><b>at its option and without further notice or demand</b>：房东的"闪电权"——无需二次通知即可收楼。租户争取"二次通知+10 日犹豫期"。</li>
+  <li><b>at law or in equity</b>：普通法救济（金钱赔偿）与衡平法救济（禁令、实际履行）双轨，美国法系特色表述，翻译为"法律或衡平法上的"。</li>
+  <li><b>prevailing party shall be entitled to recover ... attorneys' fees</b>：胜诉方律师费转移条款（fee-shifting）——美国默认规则是各方自担律师费（American Rule），本条是合同例外。双向（prevailing party，不分房东租户）才是公平版本；单向"只房东得"必须改。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① waive jury trial 与连带条款常在同区，通读时别漏；② 争"付款争议期间不构成违约"机制：真诚争议的款项先付并存争议（pay and dispute / escrow）；③ 违约金与押金、担保的顺位说明；④ 记住加州驱逐（unlawful detainer）流程极快——内部付款审批链必须有兜底授权人。</div>
+  <div class="box ld"><b>房东立场</b>宽违约定义+快救济通道+费用全担。反制点：房东可加"每次违约通知可收违约手续费（late fee）"与按月利率计息条款。</div>
+</div>
+</div>
+
+<!-- Clause 13 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-13</span> Surrender — 交还</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>13. Surrender.</b> At the expiration of the Lease Term or earlier termination, Lessee shall surrender the Premises to Lessor in the condition required by this Lease, broom clean, ordinary wear and tear excepted, and shall deliver all keys and access devices to Lessor. Any property left in the Premises after such surrender shall be deemed abandoned and may be disposed of by Lessor, and Lessee shall remain liable for the costs of such disposal and for the storage of such property. Lessee's obligations under this Paragraph 13 shall survive the expiration or earlier termination of this Lease.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>13. 交还。</b>租期届满或提前终止时，租户应按本租约要求的状态向房东交还租赁物业，扫除洁净，正常损耗除外，并向房东交付全部钥匙与门禁设备。交还后留存于租赁物业内的任何物品视为放弃物，房东可自行处置，租户就处置费用及该等物品之保管继续承担责任。租户在本第 13 条项下的义务在本租约届满或提前终止后继续有效。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>broom clean</b>：行业术语"扫帚干净"——达到扫地不出灰的状态即可，不要求专业保洁级别。这是对租户有利的低标准，房东版本可能升级为 "in the condition existing as of the Commencement Date"（恢复至交付时状态）→ 与 8.3 恢复原状联动，务必核对口径一致。</li>
+  <li><b>deemed abandoned</b>：deemed（视为）是法律拟制的标志词——不论真实意思如何，法律上按"放弃"处理。同类：deemed consent（视为同意）、deemed notice（视为送达）。</li>
+  <li><b>shall survive the expiration</b>：survival clause（存续条款）——合同终止了，这条义务还活着。常配 survival 的还有：保密、赔偿、押金结算、通知义务。中文译法："在本租约届满或提前终止后继续有效"。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 与 8.3 对照：哪些要拆（trade fixtures）、哪些留（improvements），做搬迁交还清单（surrender checklist）留照片证据；② deemed abandoned 的处置前通知期（争取 10 天领回窗口）；③ 押金退还（第 5 条 30 天）与交还时点挂钩，交还凭证（surrender receipt）要拿到手。</div>
+  <div class="box ld"><b>房东立场</b>宽处置权+费用转嫁+义务存续。反制点：房东可要求交还时一并提供租户期内维修记录与保养凭证。</div>
+</div>
+</div>
+
+<!-- Clause 14 -->
+<div class="card">
+<h2 class="clause-head"><span class="clause-no">详解 B-14</span> Notices, Brokers &amp; Miscellaneous — 通知、经纪人与杂项</h2>
+<h3>① 条款原文（EN）</h3>
+<div class="en"><button class="copy-btn" onclick="copyText(this)">复制</button>
+<b>14. Notices; Brokers; Miscellaneous.</b><br>
+<b>14.1 Notices.</b> All notices required or permitted under this Lease shall be in writing and shall be deemed to have been duly given: (a) upon personal delivery; (b) one (1) business day after deposit with a nationally recognized overnight courier; or (c) three (3) business days after mailing by certified mail, return receipt requested, postage prepaid, addressed to the parties at the addresses set forth in Paragraph 1 or to such other address as a party may designate by notice.<br>
+<b>14.2 Brokers.</b> Lessor and Lessee each represent that it has dealt with no broker in connection with this Lease except [Broker X] (Lessor's Broker) and [Broker Y] (Lessee's Broker). Each party shall indemnify, defend and hold the other harmless from any claim for brokerage commissions or other compensation asserted against the other party based on representations made by the indemnifying party. Lessor shall pay all brokerage fees pursuant to separate written agreements.<br>
+<b>14.3 Entire Agreement.</b> This Lease, including its Addendum and Exhibits, constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior and contemporaneous negotiations, representations and agreements, whether written or oral. This Lease may be amended only by a written instrument signed by both parties.<br>
+<b>14.4 Estoppel Certificate; SNDA.</b> Each party shall, within fifteen (15) days after request, execute and deliver a certificate in recordable form, certifying the status of this Lease, provided the requested certification is consistent with the terms of this Lease. Lessor shall use commercially reasonable efforts to obtain, and shall cause any transferee to deliver to Lessee, a non-disturbance agreement in form reasonably acceptable to Lessee.
+</div>
+<h3>② 中文对照（ZH）</h3>
+<div class="zh">
+<b>14. 通知、经纪人与杂项。</b><br>
+<b>14.1 通知。</b>本租约要求或允许的全部通知均应以书面作出，并视为在下列时点有效送达：(a) 专人送达时；(b) 交存全国性隔夜快递后一（1）个营业日；或 (c) 以挂号信（要求回执、邮资预付）寄出后三（3）个营业日；寄往第 1 条所载各方地址，或一方以通知指定的其他地址。<br>
+<b>14.2 经纪人。</b>房东与租户各自声明：除 [X 经纪]（房东经纪人）与 [Y 经纪]（租户经纪人）外，就本租约未与任何经纪人接洽。任何一方就其所作声明而使他方被追索经纪佣金或其他报酬的，该方应赔偿、抗辩并使他方免受损害。房东应依单独书面协议支付全部经纪费。<br>
+<b>14.3 完整协议。</b>本租约（含附录与附件）构成双方就其标的事项的完整协议，并取代此前及同期的一切谈判、声明与协议，无论书面或口头。本租约仅可由双方签署书面文件予以修订。<br>
+<b>14.4 禁反言证明书与 SNDA。</b>任何一方应于收到请求后十五（15）日内签署并交付可登记形式的证书，证明本租约之现状，但所请求证明之内容须与本租约条款一致。房东应尽商业上合理努力取得，并促使任何受让方向租户交付形式上可为租户合理接受的不干扰协议（non-disturbance agreement）。
+</div>
+<h3>③ 语言与起草拆解</h3>
+<ul>
+  <li><b>shall be deemed to have been duly given</b>：通知生效规则（deemed delivery rule）——三种送达方式对应三个生效时点。negotiation 期间的"催告、解约通知、行使选择权"都靠这条起算时限，出争议时"哪天算送达"值几十万。</li>
+  <li><b>certified mail, return receipt requested, postage prepaid</b>：挂号回执邮件三件套——return receipt requested（要求回执）+ postage prepaid（邮资预付），完整对应中文"挂号信（回执）"。</li>
+  <li><b>each represent that it has dealt with no broker except</b>：不欠佣声明（no-broker representation）+ 交叉赔偿：谁隐瞒了暗佣金，谁赔。房东付佣是市场默认（Lessor shall pay all brokerage fees）。</li>
+  <li><b>entire agreement ... supersedes all prior and contemporaneous negotiations, representations and agreements</b>：完整协议条款（merger clause）——口头承诺一律清零。租户教训：中介口头答应的"免租两个月"只要没写进书面，就被本条吞掉。<b>all oral promises must be written into the Addendum.</b></li>
+  <li><b>commercially reasonable efforts</b>：商业上合理努力——介于 best efforts（最大努力）与 no obligation（无义务）之间的标准努力等级，美国合同常用梯度：best efforts &gt; commercially reasonable efforts &gt; reasonable efforts &gt; efforts as required。</li>
+  <li><b>recordable form</b>：可登记形式——证书按可向不动产登记机关备案的格式出具，供交易对手（银行、买方）核查。</li>
+</ul>
+<div class="side">
+  <div class="box ts"><b>租户（我方）关注点</b>① 14.4 后半句是租户权益：房东"尽合理努力"从银行拿 SNDA——在贷款再融资常态化的市场，没有 non-disturbance，租户可能因房东断供被新业主驱逐，务必确认本句存在且 not 被删；② estoppel 义务加"内容不一致时可暂缓出具、先行说明"；③ 通知地址写双联系人（法务+运营），避免通知遗漏。</div>
+  <div class="box ld"><b>房东立场</b>estoppel 义务刚性化（逾期视为确认房东版本）。反制点：房东可把 SNDA 努力等级降为"尽力但不承诺"。</div>
+</div>
+</div>
+
+</section>
+
+<!-- ============ PANEL 6 谈判反制与落地 ============ -->
+<section class="panel" id="p6">
+<div class="card">
+<h2>谈判要点速查表（按条款）</h2>
+<table>
+<tr><th>条款</th><th>房东默认立场</th><th>租户反制动作</th><th>优先级</th></tr>
+<tr><td>1 参数</td><td>面积约数不调整</td><td>签约前实测（BOMA）；租金与面积联动</td><td>★★★</td></tr>
+<tr><td>2 交付</td><td>broom clean + 当日保证</td><td>交付检查表拍照留档；Work Letter 写明装修范围</td><td>★★</td></tr>
+<tr><td>3 租期</td><td>holdover 150%–200%</td><td>免租期覆盖装修；行权提醒机制</td><td>★★</td></tr>
+<tr><td>4 租金</td><td>宽费用清单 + 不得抵销</td><td>Exclusions + Cap + 审计权 + 保留 setoff</td><td>★★★</td></tr>
+<tr><td>5 押金</td><td>2–3 个月 + 移交即免责</td><td>burn-down 减押；移交以租户收到确认为前提</td><td>★★</td></tr>
+<tr><td>6 用途</td><td>窄用途 + 概括禁止</td><td>用途写宽；同意权加 not unreasonably withheld</td><td>★★★</td></tr>
+<tr><td>7 服务</td><td>行业基准 + 开口定价</td><td>量化 HVAC 指标；加班空调封顶 + 免费额度</td><td>★</td></tr>
+<tr><td>8 维修改造</td><td>改造全归房东 + 恢复原状</td><td>小额免批门槛上调；trade fixture 清单附件化</td><td>★★</td></tr>
+<tr><td>9 保险</td><td>单向赔偿 + 高保额</td><td>互惠赔偿 + to the extent 过错限定 + 弃代位双向</td><td>★★★</td></tr>
+<tr><td>10 毁损</td><td>60 天修复期</td><td>延长修复期 + 自修抵扣选项 + 事故日起算终止</td><td>★★</td></tr>
+<tr><td>11 转让</td><td>全面同意制 + 差价归房东</td><td>affiliate carve-out + deemed consent + 差价分成谈判</td><td>★★★</td></tr>
+<tr><td>12 违约</td><td>无需二次通知收楼</td><td>付款争议 pay-and-dispute 机制；双向律师费</td><td>★★★</td></tr>
+<tr><td>13 交还</td><td>deemed abandoned + 存续</td><td>10 天领回窗口；交还凭证；口径与 8.3 对齐</td><td>★★</td></tr>
+<tr><td>14 杂项</td><td>estoppel 刚性 + SNDA 不承诺</td><td>SNDA non-disturbance 必争；口头承诺一律落纸</td><td>★★★</td></tr>
+</table>
+
+<h2>我的落地动作（Learning-to-Action Checklist）</h2>
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  <div class="progress-text" id="ptext">0 / 10</div>
+</div>
+<div id="chklist">
+<label class="chk"><input type="checkbox"><span>建立本合同"十五字架构"检索卡（人—房—期—钱—押—用—务—修—险—损—转—违—还—杂—附），读任何美式租约先定位再精读</span></label>
+<label class="chk"><input type="checkbox"><span>把 40 个核心术语（术语库 A–D 组）做成中英对照卡片，每周滚动复习一次</span></label>
+<label class="chk"><input type="checkbox"><span>精抄本合同 5 个"黄金句型"：subject to… / not unreasonably withheld / deemed… / shall survive… / to the extent caused by…，各自仿写一句</span></label>
+<label class="chk"><input type="checkbox"><span>拿一份真实（脱敏）租约，用第 ⑥ 页速查表逐条标注房东默认立场与我方反制点</span></label>
+<label class="chk"><input type="checkbox"><span>起草一页《租户审查要点备忘》（Tenant Review Memo）：交易背景 → 十大风险点 → 谈判指令清单</span></label>
+<label class="chk"><input type="checkbox"><span>对照读一份 NNN（三净租）版本同表单，列出费用承担差异对照表</span></label>
+<label class="chk"><input type="checkbox"><span>学习 SNDA 全文范本一份，理解 subordination / non-disturbance / attornment 三段各自保护谁</span></label>
+<label class="chk"><input type="checkbox"><span>研究一个真实商业租赁纠纷判例（加州上诉法院公开判决），标注判决引用的合同语言</span></label>
+<label class="chk"><input type="checkbox"><span>模拟谈判：就第 4 条（费用排除+封顶+审计权）与对方交换一轮 markup，输出红线版与让步版</span></label>
+<label class="chk"><input type="checkbox"><span>把本页方法沉淀为通用《英文租赁合同审查 SOP》，供后续任何法域复用</span></label>
+</div>
+
+<div class="note">执业边界提示：本文件为语言与结构学习材料，所引条款为教学用简化范本，不构成法律意见；涉及真实交易的加州/美国法问题（含 ADA、unlawful detainer、税与保险细节）应以当地执业律师意见为准。</div>
+</div>
+</section>
+
+<!-- ============ PANEL 7 学习路径 ============ -->
+<section class="panel" id="p7">
+<div class="card">
+<h2>六阶段学习路径（建议 3–4 周完成）</h2>
+<div class="stage"><div class="n">1</div><div><b>Day 1–2 · 背景与框架</b>：读完第 ① 页背景预设 + 第 ③ 页大纲；不看译文，通读一遍英文条款原文，标记所有"看不懂但不认识的词"（大概率就是 herein 系、大写定义词与拉丁语）。</div></div>
+<div class="stage"><div class="n">2</div><div><b>Day 3–5 · 术语攻坚</b>：背术语库 A、B 组；回读条款 1–7 详解，做中英遮盖互译（先遮中文自译，再对照）。</div></div>
+<div class="stage"><div class="n">3</div><div><b>Day 6–9 · 条款精读上</b>：逐句抠条款 1–7：每句先答"谁对谁负什么义务/风险归谁"，再答"语言上为什么这么写"。</div></div>
+<div class="stage"><div class="n">4</div><div><b>Day 10–13 · 条款精读下</b>：条款 8–14 同法炮制；重点吃透 Default、Assignment、Insurance 三条（律师费与赔偿句型复用率最高）。</div></div>
+<div class="stage"><div class="n">5</div><div><b>Day 14–18 · 输出倒逼</b>：完成"落地动作"第 4、5 项——真实租约标注 + 审查备忘。写不出备忘 = 还没读懂。</div></div>
+<div class="stage"><div class="n">6</div><div><b>Day 19–24 · 迁移泛化</b>：换一份 NNN 租约或纽约州版本，用同一张架构卡 90 分钟内完成初筛——检验方法已内化，而非背会了这一份。</div></div>
+
+<h2>自检：你真的读懂了吗（每题 30 秒口答）</h2>
+<ol>
+  <li>RSF 和 USF 的区别是什么？为什么租金按 RSF 算对租户不利？</li>
+  <li>"without demand, deduction, abatement or setoff" 挡住了租户的哪种操作？</li>
+  <li>Base Year 机制下，租户第 3 年多付的钱怎么算？</li>
+  <li>Holdover 150% 的法律性质是什么？租户最迟什么时候要启动搬迁？</li>
+  <li>assignment 和 sublease 有什么不同？affiliate carve-out 为什么必争？</li>
+  <li>"not unreasonably withheld, conditioned or delayed" 保护的是什么权利？哪些条款该有而没写？</li>
+  <li>waiver of subrogation 不写双向，会发生什么连锁反应？</li>
+  <li>deemed consent / deemed abandoned 里的 deemed 是什么法律技术？</li>
+  <li>SNDA 三段各保护谁？租户最该争哪一段？</li>
+  <li>entire agreement 条款会"吞掉"什么？中介的口头承诺怎么救？</li>
+</ol>
+<p>10 题全部流畅作答 → 可进入下一类合同（英文保密协议 NDA 或服务协议 MSA）。</p>
+</div>
+</section>
+
+<footer>
+  法律英语 · 美国办公租赁合同精读 ｜ 样本：加州 AIR CRE Standard Multi-Tenant Office Lease (Gross) ｜ 英文在前 · 中文在后 ｜ 仅供学习，不构成法律意见
+</footer>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('#tabs button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('#tabs button').forEach(function(x){x.classList.remove('active');});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+    b.classList.add('active');
+    document.getElementById(b.dataset.p).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+// Copy buttons
+function copyText(btn){
+  var block = btn.parentElement;
+  var text = block.innerText.replace(/^复制\n?/,'').trim();
+  navigator.clipboard.writeText(text).then(function(){
+    var old = btn.textContent; btn.textContent = '已复制';
+    setTimeout(function(){ btn.textContent = old; }, 1200);
+  });
+}
+// Checklist progress
+var boxes = document.querySelectorAll('#chklist input');
+var total = boxes.length;
+function updateProgress(){
+  var done = 0;
+  boxes.forEach(function(c){ if(c.checked) done++; });
+  document.getElementById('pfill').style.width = (done/total*100) + '%';
+  document.getElementById('ptext').textContent = done + ' / ' + total;
+}
+boxes.forEach(function(c){
+  c.addEventListener('change', function(){
+    c.closest('.chk').classList.toggle('done', c.checked);
+    updateProgress();
+  });
+});
+updateProgress();
+</script>
+</body>
+</html>
