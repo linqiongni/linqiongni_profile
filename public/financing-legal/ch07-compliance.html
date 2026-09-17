@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 合规审查与风险管控 ｜ 融资法务</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-station="ch07">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 07 · COMPLIANCE</div>
+    <h1>合规与风控：把「历史遗留问题」在它被问起之前解决掉</h1>
+    <p class="sub">合规工作的残酷之处在于：<strong>没出事的时候它不产生任何可见价值，出事的时候它产生的损失是数量级的</strong>。而上市，是唯一一次把一家公司过去七年的合规状况整体翻出来晒的机会。这一站给你一套能持续跑的合规体系，而不是一次性运动。</p>
+    <div class="meta-line"><span>主线 Y5 · 整改年</span><span>七大板块 · 风险矩阵 · 制度树</span><span>含刑事红线清单</span></div>
+  </div>
+
+  <div class="story">
+    <span class="tag">剧情 · Y5</span>
+    <p>券商进场做上市辅导，第一件事是把过去七年的合规情况摆上桌。霓光的问题清单列出来有 23 项：</p>
+    <p><em>社保按最低基数缴纳、三名设计师至今没签书面劳动合同、核心商标在第 14 类被一家贸易公司抢注、两家工厂消防未验收、会员系统里 40 万条个人信息没有单独的同意机制、 procurement 部门有两位同事长期收受供应商"返点"……</em></p>
+    <p>郭明的反应是："哪个公司不是这样。"这句话本身没错——<strong>但区别有人在被问之前就把它补齐了。</strong>这一站讲的，就是怎么把"每个公司都这样"变成"这家公司没有这个问题"。</p>
+  </div>
+
+  <h2>一、风险台账：先有一套量化工具，再谈合规</h2>
+  <p>没有分级系统的合规工作会退化成"谁喊得响先处理谁"。标准做法是<strong>可能性 × 影响</strong>二维打分，然后按分数排整改队列。</p>
+  <figure class="struct">
+    <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="风险矩阵">
+      <text x="20" y="20" font-size="12.5" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">风险矩阵 Risk Matrix：横轴＝影响程度，纵轴＝发生可能性</text>
+      <g font-family="-apple-system, PingFang SC, sans-serif" font-size="11.5">
+        <rect x="120" y="40" width="125" height="60" fill="var(--amber-soft)" stroke="var(--line)"/><text x="182" y="60" text-anchor="middle">中</text><text x="182" y="76" text-anchor="middle" fill="var(--ink-3)">④ 关注</text><text x="182" y="90" text-anchor="middle" fill="var(--ink-3)">建立监控</text>
+        <rect x="248" y="40" width="125" height="60" fill="var(--amber-soft)" stroke="var(--line)"/><text x="310" y="60" text-anchor="middle">中高</text><text x="310" y="76" text-anchor="middle" fill="var(--ink-3)">③ 优先关注</text><text x="310" y="90" text-anchor="middle" fill="var(--ink-3)">专人跟进</text>
+        <rect x="376" y="40" width="125" height="60" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.5"/><text x="438" y="60" text-anchor="middle">高</text><text x="438" y="76" text-anchor="middle" fill="var(--red)">② 重大风险</text><text x="438" y="90" text-anchor="middle" fill="var(--red)">限期整改＋上报</text>
+        <rect x="504" y="40" width="125" height="60" fill="var(--red)" stroke="var(--red)" stroke-width="1.5"/><text x="566" y="60" text-anchor="middle" fill="#fff">极高</text><text x="566" y="76" text-anchor="middle" fill="#fff">① 红旗</text><text x="566" y="90" text-anchor="middle" fill="#fff">立即处理＋可能停某项业务</text>
+
+        <rect x="120" y="103" width="125" height="60" fill="var(--green-soft)" stroke="var(--line)"/><text x="182" y="123" text-anchor="middle">低</text><text x="182" y="139" text-anchor="middle" fill="var(--ink-3)">⑤ 可接受</text><text x="182" y="153" text-anchor="middle" fill="var(--ink-3)">列入台账观察</text>
+        <rect x="248" y="103" width="125" height="60" fill="var(--amber-soft)" stroke="var(--line)"/><text x="310" y="123" text-anchor="middle">中</text><text x="310" y="139" text-anchor="middle" fill="var(--ink-3)">④ 关注</text><text x="310" y="153" text-anchor="middle" fill="var(--ink-3)">流程化控制</text>
+        <rect x="376" y="103" width="125" height="60" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.5"/><text x="438" y="123" text-anchor="middle">高</text><text x="438" y="139" text-anchor="middle" fill="var(--red)">② 重大风险</text><text x="438" y="153" text-anchor="middle" fill="var(--red)">专项治理</text>
+        <rect x="504" y="103" width="125" height="60" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.5"/><text x="566" y="123" text-anchor="middle">极高</text><text x="566" y="139" text-anchor="middle" fill="var(--red)">① 红旗</text><text x="566" y="153" text-anchor="middle" fill="var(--red)">立即处理</text>
+
+        <rect x="120" y="166" width="125" height="60" fill="var(--green-soft)" stroke="var(--line)"/><text x="182" y="186" text-anchor="middle">低</text><text x="182" y="202" text-anchor="middle" fill="var(--ink-3)">⑤ 可接受</text><text x="182" y="216" text-anchor="middle" fill="var(--ink-3)">年度复核</text>
+        <rect x="248" y="166" width="125" height="60" fill="var(--green-soft)" stroke="var(--line)"/><text x="310" y="186" text-anchor="middle">低中</text><text x="310" y="202" text-anchor="middle" fill="var(--ink-3)">⑤ 可接受</text><text x="310" y="216" text-anchor="middle" fill="var(--ink-3)">流程化控制</text>
+        <rect x="376" y="166" width="125" height="60" fill="var(--amber-soft)" stroke="var(--line)"/><text x="438" y="186" text-anchor="middle">中</text><text x="438" y="202" text-anchor="middle" fill="var(--ink-3)">④ 关注</text><text x="438" y="216" text-anchor="middle" fill="var(--ink-3)">建立监控</text>
+        <rect x="504" y="166" width="125" height="60" fill="var(--amber-soft)" stroke="var(--line)"/><text x="566" y="186" text-anchor="middle">中高</text><text x="566" y="202" text-anchor="middle" fill="var(--ink-3)">③ 优先关注</text><text x="566" y="216" text-anchor="middle" fill="var(--ink-3)">专人跟进</text>
+
+        <text x="90" y="75" text-anchor="end">高</text><text x="90" y="138" text-anchor="end">中</text><text x="90" y="201" text-anchor="end">低</text>
+        <text x="90" y="35" text-anchor="end" font-size="11" fill="var(--ink-3)">可能性</text>
+        <text x="182" y="244" text-anchor="middle">轻微</text><text x="310" y="244" text-anchor="middle">一般</text><text x="438" y="244" text-anchor="middle">重大</text><text x="566" y="244" text-anchor="middle">致命</text>
+        <text x="374" y="262" text-anchor="middle" font-size="11" fill="var(--ink-3)">影响程度 →</text>
+      </g>
+      <text x="660" y="60" font-size="12.5" font-weight="700" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">季度台账字段建议</text>
+      <text x="660" y="84" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 风险编号 / 板块 / 发现日期</text>
+      <text x="660" y="104" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 风险描述 + 法律依据</text>
+      <text x="660" y="124" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 影响敞口估算（金额/后果）</text>
+      <text x="660" y="144" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 等级分数 + 责任人 + 截止日</text>
+      <text x="660" y="164" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 整改措施 + 验收标准</text>
+      <text x="660" y="184" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 状态：未开始/进行中/已闭环</text>
+      <text x="660" y="204" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">· 剩余风险与是否接受</text>
+      <text x="660" y="230" font-size="11.5" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">★ 台账≠报告。它是要被持续更新的活文件。</text>
+      <text x="20" y="286" font-size="12" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">提示：上市情境下，「影响程度」要额外加上一个维度 —— <tspan fill="var(--red)">是否构成上市实质障碍（标准看一条：是否会影响信息披露真实性、是否符合上市适格性）</tspan>。</text>
+    </svg>
+    <figcaption>图 7-1　合规风险矩阵与台账字段</figcaption>
+  </figure>
+
+  <h2>二、七大板块与红线</h2>
+  <div class="tw"><table>
+    <thead><tr><th>板块</th><th>常见瑕疵</th><th>可能的后果</th><th>优先整改动作</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>① 劳动社保</b></td>
+        <td>社保按最低基数缴；未签书面劳动合同；大量劳务派遣/业务外包；加班费未足额支付</td>
+        <td>补缴 + 滞纳金；行政处罚；群体性仲裁影响 IPO 稳定性</td>
+        <td>三年补缴测算；规范合同签署；外包改自营的用工形态审查</td>
+      </tr>
+      <tr>
+        <td><b>② 税务</b></td>
+        <td>个人卡收货款；核定征收依赖；发票与实际业务不符；历史少缴</td>
+        <td>补税 + 滞纳金 + 罚款；情节严重的涉嫌虚开发票</td>
+        <td>资金流水穿透核查；两账合一；发票链条重构</td>
+      </tr>
+      <tr>
+        <td><b>③ 知识产权</b></td>
+        <td>核心商标被抢注；IP 在创始人个人名下；职务成果归属未约定</td>
+        <td>被诉侵权；核心资产权属瑕疵；上市审核障碍</td>
+        <td>全类别商标布局 + 无效宣告/回购；IP 权属归拢到公司</td>
+      </tr>
+      <tr>
+        <td><b>④ 数据与个人信息</b></td>
+        <td>会员数据无单独同意；默认勾选；向第三方共享无告知；数据出境无评估</td>
+        <td>行政处罚、负责人处罚；业务暂停</td>
+        <td>做个人信息保护影响评估、整改隐私政策与同意机制、建立数据共享清单</td>
+      </tr>
+      <tr>
+        <td><b>⑤ 环保 / 消防 / 安全生产</b></td>
+        <td>消防未验收擅自使用；建设项目未办环评/验收；危废处置无合同</td>
+        <td>停业整改；罚款；构成犯罪的追责</td>
+        <td>补办验收或搬迁；危废委托有资质单位并留存联单</td>
+      </tr>
+      <tr>
+        <td><b>⑥ 经营资质与零售租赁</b></td>
+        <td>门店租赁未备案；承租主体非上市主体；转包/分租无同意；租赁地址与实际不符</td>
+        <td>租赁合同效力争议；收入完整性受质疑</td>
+        <td>逐店核查并变更承租主体；签署业主同意函；补充长期安排</td>
+      </tr>
+      <tr>
+        <td><b>⑦ 反腐败 / 反舞弊</b></td>
+        <td>采购收受返点；销售向客户员工支付好处；员工职务侵占</td>
+        <td><b>刑事风险</b>；中介机构出具保留意见；声誉损失</td>
+        <td>建立举报渠道、供应商廉洁承诺、随机审计与轮岗</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout c-warn">
+    <span class="lbl">刑事红线（务必背熟，涉及人身自由）</span>
+    <p>
+      · <b>非国家工作人员受贿罪</b>（《刑法》第 163 条）：公司人员利用职务便利收受财物为他人谋利，数额较大的入罪。<br>
+      · <b>对非国家工作人员行贿罪</b>（《刑法》第 164 条）：为谋取不正当利益给予上述人员财物。<br>
+      · <b>职务侵占罪</b>（《刑法》第 271 条）：将本单位财物非法占为己有。<br>
+      · <b>挪用资金罪</b>（《刑法》第 272 条）：挪用本单位资金归个人使用或借贷他人。<br>
+      · <b>侵犯商业秘密罪</b>（《刑法》第 219 条）：工艺配方、客户名单、产品参数常在此列。<br>
+      · <b>侵犯公民个人信息罪</b>（《刑法》第 253 条之一）：非法获取、出售、提供公民个人信息。<br>
+      <small>——条号请以现行刑法文本核对；这类风险的处置原则是<b>立即止损 + 专业刑事律师介入 + 评估是否影响上市主体适格性</b>，不要试图内部消化。</small>
+    </p>
+  </div>
+
+  <h2>三、把合规做成体系：三道防线 + 制度树</h2>
+  <div class="say">
+    <span class="lbl">打个比方 · 三道防线</span>
+    <p class="analogy">合规体系像一个餐馆的食品安全。<strong>第一道防线是厨师自己</strong>（业务部门：自己按标准洗菜、自己记录温度）——出问题的最大比例在这里，所以它必须由业务负责人扛。<strong>第二道防线是后厨管理员</strong>（合规/法务/风控：定标准、抽查、培训）。<strong>第三道防线是外面的市场监督管理局和第三方检测</strong>（内审/审计：独立检查并直接向最高层或董事会报告）。<br>
+      大部分公司失败在第一道：<strong>把合规当成法务部的事</strong>。但法务部无法替销售决定要不要给客户返点。</p>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>层级</th><th>文件类型</th><th>示例</th></tr></thead>
+    <tbody>
+      <tr><td><b>L1 纲领</b></td><td>合规管理办法 / 行为准则 Code of Conduct</td><td>《员工合规手册》《供应商廉洁准则》</td></tr>
+      <tr><td><b>L2 专项制度</b></td><td>针对单一高风险领域</td><td>《个人信息保护管理办法》《反舞弊管理办法》《合同管理制度》《印章管理办法》</td></tr>
+      <tr><td><b>L3 操作指引</b></td><td>一线可直接照做</td><td>《门店租赁签约指引》《会员数据收集勾选规范》《供应商入库尽调清单》</td></tr>
+      <tr><td><b>L4 记录表单</b></td><td>留痕</td><td>合规承诺函、培训签到表、印章使用台账、举报登记表</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>四、案例剖析</h2>
+  <div class="case">
+    <div class="hd">案例 07｜采购部的一张购物卡，差点取消上市</div>
+    <div class="bd">
+      <p>内部审计发现：采购主管连续三年收受某物料供应商的"返点"，累计约 60 万元，采购价格比市场价高约 6%。该供应商占公司采购额 18%，属于前五大供应商。</p>
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 内部处理了事</div>
+          <p>辞退 + 追回部分钱款 + 更换采购。看上去解决了，但留下三个致命问题：①<b>没有刑事控报警示</b>，同部门其他人未必收手；②招股书中对<b>关联方与供应商独立性</b>的披露可能失真（该供应商是否为采购主管的关联方？）；③<b>未做全量采购价格回溯</b>，无法证明采购定价是否一直公允。<br>
+            中介机构在尽调一旦发现，会要求做专项核查，甚至可能导致<b>保荐人对管理层诚信作出保留</b>。</p></div>
+        <div class="vsb"><div class="vsh">✓ 专业处置五步</div>
+          <p>①<b>立即固定证据并请外部律师做专项尽调</b>，明确金额、人员、期间、是否存在单位犯罪风险；<br>
+            ②<b>刑事报案 / 移送</b>，同步向董事会与审计委员会书面报告（这正是提前设立审计委员会的意义）；<br>
+            ③<b>做全量采购价格回溯比对</b>，量化对财务的影响，评估是否需要重述报表；<br>
+            ④<b>处分与追偿</b>并行，同时做<b>供应商重新入库</b>与管理人员回避/轮岗；<br>
+            ⑤在招股书中做<b>如实披露</b>：事件、金额、整改、对财务的影响是否重大 —— 披露本身不是灾难，隐瞒才是。</p></div>
+      </div>
+      <div class="callout c-tip" style="margin-bottom:0"><span class="lbl">一个残酷但正确的判断</span><p>上市审核对待舞弊的态度通常是：<strong>事件本身未必致命，管理层是否知情、是否隐瞒、以及内控是否已经修复才是致命的</strong>。所以处置的第一原则是——主动、专业、留痕。</p></div>
+    </div>
+  </div>
+
+  <h2>五、上市前的合规整改时间表</h2>
+  <div class="tw"><table>
+    <thead><tr><th>时点</th><th>动作</th><th>为什么这么早</th></tr></thead>
+    <tbody>
+      <tr><td class="num">T-24M</td><td>启动全流程合规体检，建立风险台账</td><td>许多整改需要"跑够时间"（如社保补缴后的合规期、许可证照年检）</td></tr>
+      <tr><td class="num">T-18M</td><td>红旗问题清零（出资、权属、重大处罚）</td><td>报告期内不能有正在发生的重大违规</td></tr>
+      <tr><td class="num">T-12M</td><td>黄灯整改 + 制度树上线 + 培训留痕</td><td>让中介机构看到的是"已运行一段时间"的体系</td></tr>
+      <tr><td class="num">T-6M</td><td>专项核查报告出具、董监高合规培训</td><td>为招股书的法律意见提供支撑材料</td></tr>
+      <tr><td class="num">T-0</td><td>递表；同步提交必要的备案/报告</td><td>见第 06、11 站</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>六、自检清单</h2>
+  <ul class="check">
+    <li>是否有<b>统一的风险台账</b>？是否有责任人、截止日、闭环验收？（没有就不算体系）</li>
+    <li>社保公积金是否实现<b>全额、足额、全员工</b>覆盖？历史欠缴是否做过测算？</li>
+    <li>是否存在<b>个人账户收付公司款项</b>的情况？发票流、资金流、货物流是否一致？</li>
+    <li>核心商标是否在<b>主要类别与主要海外市场</b>完成布局？权属是否全部归公司？</li>
+    <li>会员/用户数据的收集是否<b>有明确同意、最小必要、明确目的</b>？第三方共享是否有清单与协议？</li>
+    <li>是否完成<b>个人信息保护影响评估</b>（PIA）？数据出境是否做过评估或申报？</li>
+    <li>所有经营场所是否<b>消防验收/备案</b>齐备？建设项目是否有环评批复与验收？</li>
+    <li>危废是否有<b>委托处置合同 + 转移联单</b>留存？</li>
+    <li>门店租赁：承租主体是否为拟上市主体？转租是否有业主同意？租赁是否备案？</li>
+    <li>是否建立<b>举报渠道、举报人保护和调查流程</b>？是否有真实的案件记录（证明体系在运转）？</li>
+    <li>供应商是否签署<b>廉洁承诺</b>？是否做随机采购价格回溯？</li>
+    <li>董事、监事、高管是否完成<b>合规培训并留痕</b>？是否签署过任职声明与合规承诺？</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">法源索引</div>
+    <ul>
+      <li>《中华人民共和国劳动法》《劳动合同法》《社会保险法》：用工与社保。</li>
+      <li>《中华人民共和国税收征收管理法》及各税种法规、《发票管理办法》。</li>
+      <li>《中华人民共和国商标法》《专利法》《著作权法》《反不正当竞争法》（含商业秘密条款）。</li>
+      <li>《个人信息保护法》《数据安全法》《网络安全法》《数据出境安全评估办法》等。</li>
+      <li>《中华人民共和国安全生产法》《消防法》《环境保护法》《建设项目环境保护管理条例》《固体废物污染环境防治法》。</li>
+      <li>《中华人民共和国刑法》第 163、164、219、253 条之一、271、272 条等（条号请以现行文本核对）。</li>
+      <li>《监察法》《反不正当竞争法》关于商业贿赂的规定。</li>
+      <li style="color:var(--red)">以上均为提纲式索引，具体条款请对照现行有效版本。</li>
+    </ul>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">融资法务 · 从 0 到 1 ｜ 第 07 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

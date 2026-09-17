@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 治理结构设计 ｜ 融资法务</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-station="ch09">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 09 · GOVERNANCE</div>
+    <h1>治理结构：公司章程是这家公司的宪法</h1>
+    <p class="sub">股权决定了「钱怎么分」，治理结构决定了「事谁说了算」。<strong>这两件事可以不一致</strong>——这正是治理设计的价值所在。而对于拟上市公司，治理结构还要回答第三个问题：<strong>这套安排能不能经受住交易所和监管的审视。</strong></p>
+    <div class="meta-line"><span>主线 Y6 · 股改前的章程重构</span><span>含四层权责表与控制权工具箱</span><span>含类别股与授权资本制要点</span></div>
+  </div>
+
+  <div class="story">
+    <span class="tag">剧情 · Y6</span>
+    <p>递表前一年，霓光面临一个尴尬：创始人合计持股被稀释到 42%，而 A 轮和 B 轮的机构加起来 38%，还剩 20% 是员工和管理层的池子。</p>
+    <p>郭明担心"以后公司不是我的了"。律师给了三个方案：<strong>① 让部分机构接受投票权委托；② 在境外架构下设置不同投票权（B 类股）；③ 通过董事会席位与提名机制实际控制。</strong></p>
+    <p>最终的组合很典型：<em>境外上市主体采用不同投票权架构（前提是要符合上市地的规则与门槛），境内则通过董事会构成与关键委员会的控制来补足。</em>——这就是治理设计真正的样子：<strong>不是选工具，而是把几个工具拼起来。</strong></p>
+  </div>
+
+  <h2>一、四层权力怎么分（现行公司法下的分工）</h2>
+  <figure class="struct">
+    <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四层治理结构">
+      <g font-family="-apple-system, PingFang SC, sans-serif" font-size="12">
+        <rect x="300" y="18" width="300" height="52" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="450" y="40" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--gold-deep)">股东会 Shareholders</text>
+        <text x="450" y="58" text-anchor="middle" fill="var(--ink-2)">公司最高权力机构 · 决定"钱与命"的大事</text>
+        <rect x="300" y="96" width="300" height="52" rx="10" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="450" y="118" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--blue)">董事会 Board</text>
+        <text x="450" y="136" text-anchor="middle" fill="var(--ink-2)">经营决策中枢 · 对股东会负责 · 可通过章程扩充职权</text>
+        <rect x="300" y="174" width="145" height="52" rx="10" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2"/>
+        <text x="372" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="var(--green)">监事会 / 审计委员会</text>
+        <text x="372" y="214" text-anchor="middle" fill="var(--ink-3)">监督 · 现行法允许以审计委员会替代</text>
+        <rect x="455" y="174" width="145" height="52" rx="10" fill="var(--bg-alt)" stroke="var(--line)" stroke-width="2"/>
+        <text x="527" y="196" text-anchor="middle" font-size="13" font-weight="700">经理 / 管理层</text>
+        <text x="527" y="214" text-anchor="middle" fill="var(--ink-3)">执行 · 职权由章程规定或董事会授权</text>
+        <rect x="300" y="252" width="300" height="36" rx="9" fill="var(--card)" stroke="var(--line)"/>
+        <text x="450" y="275" text-anchor="middle" fill="var(--ink-2)">公司内部：股东会 → 董事会 → 管理层 → 合规/风控/内审为第三道防线</text>
+        <g stroke="var(--gold)" stroke-width="1.8" fill="none"><path d="M450 70 L450 96"/><path d="M372 148 L372 174"/><path d="M527 148 L527 174"/><path d="M450 226 L450 252"/></g>
+        <polygon points="450,96 446,88 454,88" fill="var(--gold)"/>
+        <polygon points="372,174 368,166 376,166" fill="var(--gold)"/>
+        <polygon points="527,174 523,166 531,166" fill="var(--gold)"/>
+
+        <rect x="620" y="96" width="260" height="192" rx="10" fill="var(--card)" stroke="var(--line)"/>
+        <text x="750" y="118" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">控制权工具箱（按强度递增）</text>
+        <text x="636" y="142" font-size="11.5" fill="var(--ink-2)">① 股东会多数 —— 最直接但受融资稀释</text>
+        <text x="636" y="162" font-size="11.5" fill="var(--ink-2)">② 董事会席位 + 提名权 —— 关键中间层</text>
+        <text x="636" y="182" font-size="11.5" fill="var(--ink-2)">③ 保留事项 / 否决权 —— 防御型</text>
+        <text x="636" y="202" font-size="11.5" fill="var(--ink-2)">④ 投票权委托 / 一致行动 —— 无股权成本的加法</text>
+        <text x="636" y="222" font-size="11.5" fill="var(--ink-2)">⑤ 类别股 / 不同投票权 —— 最强，但上市地规则限制多</text>
+        <text x="636" y="248" font-size="11.5" fill="var(--gold-deep)">⑥ 关键岗位 + 公章/银行账户控制 —— 事实层面的手段，</text>
+        <text x="646" y="266" font-size="11.5" fill="var(--gold-deep)"> 依赖人而非制度，稳定性最差</text>
+
+        <rect x="20" y="96" width="260" height="192" rx="10" fill="var(--card)" stroke="var(--line)"/>
+        <text x="150" y="118" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">法定 vs 章程自治</text>
+        <text x="36" y="142" font-size="11.5" fill="var(--ink-2)">· 法定代表人：章程约定由何人担任</text>
+        <text x="36" y="162" font-size="11.5" fill="var(--ink-2)">· 股东会/董事会职权：可在法定之外<b>增设</b></text>
+        <text x="36" y="182" font-size="11.5" fill="var(--ink-2)">· 议事方式与表决程序：章程可细化</text>
+        <text x="36" y="202" font-size="11.5" fill="var(--ink-2)">· 经理职权：由章程规定或董事会授权</text>
+        <text x="36" y="222" font-size="11.5" fill="var(--ink-2)">· <b>不可自治</b>：法定强制规定、债权人保护、</text>
+        <text x="46" y="238" font-size="11.5" fill="var(--ink-2)">利润分配与减资程序、董监高忠实勤勉义务</text>
+        <text x="36" y="266" font-size="11.5" fill="var(--red)">⚠ 自治条款<b>不得违反强制性规定</b></text>
+      </g>
+    </svg>
+    <figcaption>图 9-1　股东会—董事会—监督—执行四层结构与控制权工具箱</figcaption>
+  </figure>
+
+  <h2>二、新公司法下的三个变化（务必核对现行条文）</h2>
+  <div class="callout c-law">
+    <span class="lbl">① 审计委员会可以替代监事会</span>
+    <p>现行《公司法》允许公司<b>按照章程规定，在董事会中设置由董事组成的审计委员会，行使监事会/监事的职权，不再设监事会或监事</b>（有限责任公司与股份有限公司各有对应条文，请核对条号）。这直接改变了过去的"三会一层"标配。<br>
+      <b>实务影响：</b>①简化治理层级，但独立董事占比、委员资格要写清楚；②上市地规则通常另行要求专门委员会构成，两边要对齐；③已设监事会的，改设要注意修改章程与登记。</p>
+  </div>
+  <div class="callout c-law">
+    <span class="lbl">② 类别股：钱和权可以解绑</span>
+    <p>股份有限公司可以发行<b>优先/劣后分配利润或剩余财产的股份、每一股表决权数多于或少于普通股的股份、转让受限的股份</b>等与普通股权利不同的类别股。<br>
+      <b>关键限制：</b>公开发行股份的公司<b>通常不得发行差异化表决权股和转让受限股</b>（公开发行前已发行的除外）——这意味着这类安排<b>必须在上市前完成</b>。<small>（条号请以现行文本核对。）</small></p>
+  </div>
+  <div class="callout c-law">
+    <span class="lbl">③ 授权资本制</span>
+    <p>股份有限公司章程或股东会可以<b>授权董事会在一定期限内决定发行不超过已发行股份一定比例的股份</b>（现行条文包含"三年"期间与"50%"比例的设定，请核对条号）。这使 IPO 阶段的股份发行更高效，但也需要<b>事后员工持股稀释披露</b>等配套控制。</p>
+  </div>
+
+  <h2>三、术语卡</h2>
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">忠实义务 / 勤勉义务</span><span class="en">Duty of Loyalty / Care</span></div><div class="def">董事、监事、高管的两大法定义务。<b>不可通过章程免除，只能通过制度降低违反的机会。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">关联交易的回避</span><span class="en">Related-party Recusal</span></div><div class="def">涉及自身或关联方的交易须<b>报告、回避表决、必要时由非关联方或股东会审议</b>。这是治理中最常被追问的点。</div></div>
+    <div class="term"><div class="tw"><span class="zh">公司机会</span><span class="en">Corporate Opportunity</span></div><div class="def">董事不得利用职务便利<b>谋取本属于公司的商业机会</b>。豁免通常需要事先的章程或决议授权。</div></div>
+    <div class="term"><div class="tw"><span class="zh">同业竞争</span><span class="en">Competition</span></div><div class="def">董事、高管自营或为他人经营与所任职公司同类的业务。需<b>向董事会或股东会报告并按章程决议</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh">一致行动协议</span><span class="en">Acting in Concert</span></div><div class="def">多个股东约定<b>在行使表决权时保持一致</b>。<b>关键：期限、争议解决、违约责任、是否可撤销、以及是否需要披露。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">投票权委托</span><span class="en">Voting Proxy</span></div><div class="def">把表决权交给他人行使。<b>稳定性弱于持股</b>：可随时撤销的委托在治理上等于没有。</div></div>
+    <div class="term"><div class="tw"><span class="zh">不同投票权</span><span class="en">WVR / Weighted Voting Rights</span></div><div class="def">创始人的股份享有高于普通股的每股表决权。<b>境内受类别股规则限制，境外须满足上市地的门槛与保障要求（见第 10 站）。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">独立董事</span><span class="en">Independent Director</span></div><div class="def">独立于管理层与主要股东。<b>核心作用：把关联交易、内部控制、审计与薪酬交给不受利益牵连的人把关。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">专门委员会</span><span class="en">Board Committees</span></div><div class="def">常见为<b>审计、薪酬与考核、提名</b>三个委员会，上市地规则通常有强制性要求。</div></div>
+    <div class="term"><div class="tw"><span class="zh">董事责任风险</span><span class="en">D&amp;O Exposure</span></div><div class="def">现行法下<b>董事、高管执行职务致他人损害且存在故意或重大过失的，可能对公司和第三人承担责任</b>（请核对条文）。催生了 D&amp;O 保险与董事赔偿责任限制的实践。</div></div>
+    <div class="term"><div class="tw"><span class="zh">议事规则</span><span class="en">Rules of Procedure</span></div><div class="def">召集通知、出席方式、委托出席、表决与回避、记录保存。<b>历史上绝大多数"决议效力争议"都是程序瑕疵，而不是实体错误。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">影子董事 / 实际控制人</span><span class="en">Shadow Director</span></div><div class="def">不担任董事但实际支配公司行为的人。<b>监管版本：名义上不担任职务并非免责事由。</b></div></div>
+  </div>
+
+  <h2>四、可以直接用的权责表</h2>
+  <div class="tw"><table>
+    <thead><tr><th>事项</th><th>股东会</th><th>董事会</th><th>管理层</th></tr></thead>
+    <tbody>
+      <tr><td>经营方针与投资计划</td><td>决定</td><td>制定</td><td>执行</td></tr>
+      <tr><td>选举更换董事、监事</td><td>决定</td><td>—</td><td>—</td></tr>
+      <tr><td>年度财务预算/决算</td><td>审议批准</td><td>制订</td><td>编制</td></tr>
+      <tr><td>利润分配与弥补亏损方案</td><td>审议批准</td><td>制订</td><td>测算</td></tr>
+      <tr><td>增资、减资、发债</td><td>决议（特别多数）</td><td>制订方案</td><td>测算</td></tr>
+      <tr><td>合并、分立、解散、变更形式</td><td>决议（特别多数）</td><td>制订方案</td><td>—</td></tr>
+      <tr><td>内部管理机构设置</td><td>—</td><td>决定</td><td>执行</td></tr>
+      <tr><td>聘任解聘经理及其报酬</td><td>—</td><td>决定</td><td>—</td></tr>
+      <tr><td>基本管理制度</td><td>—</td><td>制定</td><td>执行</td></tr>
+      <tr><td>章程约定的重大交易/担保</td><td>按章程</td><td>按章程</td><td>按授权</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>五、案例剖析</h2>
+  <div class="case">
+    <div class="hd">案例 09｜一致行动协议：签了五年，第三年就动了</div>
+    <div class="bd">
+      <p>郭明与李工签了一份《一致行动协议》，约定"在任何股东表决上保持一致意见"，未约定期限、未约定违约责任、也未约定解决机制。第三年，双方在一个重大融资方案上产生分歧，李工投了反对票。</p>
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 空壳式的一致行动</div>
+          <p>①<b>没有前置协商机制</b>：无法要求在表决前先行协商，也没说协商不成听谁的；②<b>没有违约责任</b>：只有抽象的协议约束，法院往往只能确认违约而不能强制变更投票；③<b>期限不明</b>：有的司法观点认为可以随时解除，稳定性为零；④<b>缺少对控制权稳定性的说明</b>：IPO 阶段监管会问"控股股东如何保持稳定"，回答会很弱。</p></div>
+        <div class="vsb"><div class="vsh">✓ 加固版</div>
+          <p>①<b>表决前的协商程序</b>：收到会议通知后 3 日内协商，未能达成一致时<b>以某某的意见为准</b>；<br>
+            ②<b>违约责任具体化</b>：约定违约金 + 损失赔偿 + 特定情形下的<b>股权强制回购或失去表决权委托</b>；<br>
+            ③<b>明确期限</b>：通常至上市之日起 36 个月，并约定<b>上市后不得随意解除</b>的锁定安排；<br>
+            ④<b>配套的投票权委托</b>不可撤销，或辅以<b>股权质押</b>作为履约保障；<br>
+            ⑤同步做<b>披露</b>：一致行动关系的形成、变动与终止都要按规则披露。</p></div>
+      </div>
+      <div class="callout c-tip" style="margin-bottom:0"><span class="lbl">判断标准</span><p>一份治理契约值不值钱，只看一个问题：<strong>对方违约时，你有没有强制执行的抓手</strong>？回答不上来，它就是一份意愿表达。</p></div>
+    </div>
+  </div>
+
+  <h2>六、自检清单</h2>
+  <ul class="check">
+    <li>股东会、董事会、管理层的<b>权限边界</b>是否在章程与议事规则中界定清楚？有无真空地带？</li>
+    <li>是否选择了<b>监事会 or 审计委员会</b>模式？选定后是否与章程、登记保持一致？</li>
+    <li>如需采用类别股/不同投票权，是否<b>在公开发行前完成设置</b>？是否符合两地规则？</li>
+    <li>是否需要<b>授权资本制</b>的章程条款？是否设定了内部审批上限与披露机制？</li>
+    <li>关联交易的<b>报告、回避、审批、披露</b>四步是否在制度中闭环？是否有台账？</li>
+    <li>同业竞争是否已清理或披露？董事高管的任职 conflict 是否有书面披露？</li>
+    <li>独立董事与专门委员会的构成是否满足拟上市地规则的强制性要求？</li>
+    <li>董事会的<b>召集通知、出席、委托、表决、记录</b>是否规范化？会议档案是否完整？（这是最常被忽视的证据）</li>
+    <li>法定代表人、公章、银行账户、网银 U 盾的<b>管理权是否分离</b>？</li>
+    <li>是否为董事高管投保 <b>D&amp;O 责任保险</b>，并在章程或决议中安排赔偿责任限制？</li>
+    <li>控制权嵌套（持股 + 协议 + 席位）的<b>每一层是否都经得起单独审查</b>？</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">法源索引</div>
+    <ul>
+      <li>《公司法》（2023 修订）：股东会/董事会/监事会职权、审计委员会、经理职权、类别股、授权资本、控股股东与实际控制人、关联交易、董监高义务与责任（条号请以现行文本核对）。</li>
+      <li>《证券法》（2019 修订）：信息披露与投资者保护相关要求（适用于公开发行与上市公司）。</li>
+      <li>上市地规则中关于董事会构成、独立董事比例、专门委员会与《企业管治守则》的要求（见第 10 站）。</li>
+      <li style="color:var(--red)">境内相关规则请以现行有效文本为准核对。</li>
+    </ul>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">融资法务 · 从 0 到 1 ｜ 第 09 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

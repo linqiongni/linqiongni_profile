@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 融资交易方案与 Term Sheet ｜ 融资法务</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-station="ch03">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 03 · DEAL TERMS</div>
+    <h1>融资交易：Term Sheet 与一张纸背后的所有权分配</h1>
+    <p class="sub">Term Sheet 只有三四页，却决定了后面上百页交易文件的骨架。真正的分歧点常年集中在五个词：<strong>估值口径、清算优先、反稀释、回购（对赌）、保护性条款</strong>。这一站把它们逐个拆到骨头。 </p>
+    <div class="meta-line"><span>主线 Y3 · A 轮 3000 万</span><span>含清算瀑布图与反稀释算例</span><span>条款样板 5 条</span></div>
+  </div>
+
+  <div class="story">
+    <span class="tag">剧情 · Y3</span>
+    <p>霓光珠宝的年流水做到 8000 万，毛利还不错。一家专注消费赛道的基金开出 Term Sheet：<em>投前估值 1.2 亿，投资 3000 万，占股 20%，同时要求设立 10% 期权池（从投前价值中扣除）</em>。</p>
+    <p>郭明第一个反应是"20% 还行"。法务算了笔账：<strong>加上投前释放的期权池，实际占比远不止 20%</strong>，稀释全落在创始团队头上。更麻烦的是第 8 条写着"如公司在 2029 年 12 月 31 日前未完成合格上市，投资人有权要求公司及创始人按投资额加年化 8% 回购"。</p>
+    <p>郭明说："这不就是保本吗？"——是的，这就是这一站点最重要的一句话：<strong>几乎所有"像保本"的安排，在境内法院的眼里都不是你想的那么简单。</strong></p>
+  </div>
+
+  <h2>一、先把估值口径拆清楚</h2>
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">投前 / 投后估值</span><span class="en">Pre-money / Post-money</span></div><div class="def">投后 = 投前 + 本轮投资额。<b>投资后占比 = 投资额 ÷ 投后估值</b>。写 Term Sheet 时务必标明是哪一个，这是最容易混淆也最容易被动手脚的地方。</div></div>
+    <div class="term"><div class="tw"><span class="zh">投前行权 / 投前释放期权池</span><span class="en">Pre-money Pool Shuffle</span></div><div class="def">新池子的稀释<b>完全由老股东承担</b>，投资人本轮拿到的比例不受影响。<b>这是投资人起草 TS 的标准动作</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh">全稀释口径</span><span class="en">Fully Diluted</span></div><div class="def">已发行 + 已授予未行权 + 未分配池 + 可转债/权证潜在转换股数。<b>算反稀释、算摊薄用它</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh">优先股（A/B 轮）</span><span class="en">Series A / B Preferred</span></div><div class="def">境外架构下投资人拿的是<b>有优先权利的类别股份</b>，境内则是"股权 + 合同权利"的组合来实现同等效果。</div></div>
+  </div>
+
+  <div class="say">
+    <span class="lbl">打个比方 · 投前释放期权池</span>
+    <p class="analogy">把公司想象成一张披萨。<strong>投资人说"我要买下这张披萨的 20%"</strong>，但要求是<strong>先切出一块 10% 给未来的员工</strong>。如果你在切给员工之前就把 20% 卖给他，那这 10% 是从你自己剩下的部分里切出来的。<br>
+      <br>
+      数学很直白：投前 1.2 亿、投 3000 万，若池子从投前释放，投资人仍占 <strong>20%</strong>，而创始团队从 90% → <strong>72%</strong>；若池子从投后释放，投资人实际变成 <strong>18%</strong>，创始人 72%。差别整整两个点的股份，值几百万。</p>
+  </div>
+
+  <h2>二、条款拆解：五个真正值钱的词</h2>
+
+  <h3>2.1 优先清算权（Liquidation Preference）</h3>
+  <p>公司"清算事件"发生时——不只是破产清算，<strong>被收购、出售主要资产、控制权变更全都算</strong>——谁先拿钱、拿多少、拿完还分不分。</p>
+  <div class="tw"><table>
+    <thead><tr><th>类型</th><th>怎么算</th><th>谁吃亏</th></tr></thead>
+    <tbody>
+      <tr><td><b>非参与型 1×</b></td><td>先拿回投资额（如 1 倍），<b>然后不再参与</b>剩余分配；或选择转普通股后按比例分（取高者）</td><td>相对平衡，<b>市场主流</b></td></tr>
+      <tr><td><b>参与型 Participating</b></td><td>先拿回投资额，<b>再与普通股按比例分剩余</b>（"double dip"）</td><td>创始人极亏，应坚决拒</td></tr>
+      <tr><td><b>有上限参与型 Cap</b></td><td>先拿回 + 参与分配，但累计不超过投资额的 2–3 倍</td><td>折中方案，务必写死倍数</td></tr>
+    </tbody>
+  </table></div>
+
+  <figure class="struct">
+    <svg viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="清算瀑布图">
+      <text x="20" y="24" font-size="12.5" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">清算瀑布 Waterfall（以出售价 2 亿、投资人成本 3000 万、1× 非参与型为例）</text>
+      <g font-family="-apple-system, PingFang SC, sans-serif" font-size="12.5">
+        <rect x="20" y="42" width="860" height="34" rx="8" fill="var(--bg-alt)" stroke="var(--line)"/>
+        <text x="36" y="64" fill="var(--ink-2)">① 变现总额 2.00 亿</text>
+        <rect x="20" y="84" width="130" height="34" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.5"/>
+        <text x="36" y="106" fill="var(--red)">② 债务与税费</text>
+        <rect x="158" y="84" width="150" height="34" rx="8" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="1.5"/>
+        <text x="174" y="106" fill="var(--amber)">③ 优先股 1× = 3000 万</text>
+        <rect x="316" y="84" width="330" height="34" rx="8" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="332" y="106" fill="var(--green)">④ 剩余财产：普通股按持股比例分配</text>
+        <rect x="654" y="84" width="226" height="34" rx="8" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="670" y="106" fill="var(--blue)">⑤ 高管/员工 Acceleration 行权部分</text>
+      </g>
+      <g stroke="var(--gold)" stroke-width="1.5" fill="none">
+        <path d="M85 76 L85 84"/><path d="M233 118 L233 126"/>
+      </g>
+      <text x="20" y="152" font-size="12.5" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--ink-2)">↓ 若改为「参与型」：投资人先取 3000 万，<tspan fill="var(--red)">再以其 20% 比例分走剩余的约 3400 万，合计约 6400 万</tspan> —— 创始人少拿近一倍。</text>
+      <text x="20" y="176" font-size="12.5" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--ink-2)">↓ 非参与型下投资人会做一笔比较：<tspan fill="var(--green)">拿回 3000 万 vs 转普通股按比例分 4000 万，取高者</tspan>，所以通常设置「自动转换或选择转换」条款。</text>
+      <line x1="20" y1="192" x2="880" y2="192" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <text x="20" y="216" font-size="12" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--ink-3)">提示：清算事件的<b>定义范围</b>比倍数更值得谈 —— 「控制权变更」「出售全部或实质全部资产」「重组」「上市前的架构重组是否豁免」都要写清楚。</text>
+    </svg>
+    <figcaption>图 3-1　同一笔交易，非参与型与参与型的差别可以是一倍钱</figcaption>
+  </figure>
+
+  <h3>2.2 反稀释（Anti-dilution）</h3>
+  <div class="say">
+    <span class="lbl">打个比方 · 全棘轮</span>
+    <p class="analogy">你在 Y3 用每股 10 元买了票。Y5 公司缺钱，只能按每股 5 元卖票。<strong>全棘轮</strong>说："那我当初那批票也按 5 元重算"——于是你的股数直接翻倍，缺口全部由创始人和普通股股东来填。<strong>加权平均</strong>说："要看这次一共发行了多少新票，按比例调整"，温柔很多。<br>记住：<strong>全棘轮是创始人的灾难条款</strong>，宁可在其他条款让步也不要轻易给。</p>
+  </div>
+  <div class="clause">
+    <div class="ch">算例 · 加权平均（广基）</div>
+    <div class="zh">调整后转换价 = 原价 ×（A + B）÷（A + C）<br>
+      <span style="color:var(--ink-2)">A = 调整前全稀释股本（10,000,000 股）；B = 新融资额 ÷ 原价（500 万 ÷ 10 = 500,000 股）；C = 新融资实际发行股数（500 万 ÷ 5 = 1,000,000 股）。<br>
+      调整后价格 = 10 ×（10,000,000 + 500,000）÷（10,000,000 + 1,000,000）= <b>9.55 元/股</b>。<br>
+      对照：同样的情形用<b>全棘轮</b>，价格直接降到 5 元/股，投资人持股几乎翻倍。</span></div>
+  </div>
+
+  <h3>2.3 回购 / 对赌（VAM）</h3>
+  <p>这是境内融资里法律技术含量最高的一块，核心问题是：<strong>这个回购义务挂在谁身上、法院认不认</strong>。</p>
+  <div class="callout c-law">
+    <span class="lbl">法源 · 九民纪要对「对赌」的态度</span>
+    <p>《全国法院民商事审判工作会议纪要》（九民纪要）第 5 条关于"与目标公司对赌"的裁判口径，大意是：<br>
+      ① 投资方与目标公司股东或者实际控制人订立的"对赌协议"，如无法定无效事由，一般认定有效；<br>
+      ② 投资方与目标公司订立的"对赌协议"，须审查是否存在《公司法》关于"股东不得抽逃出资"及利润分配强制性规定的违反，<strong>目标公司未完成减资程序的，人民法院应当驳回起诉</strong>；目标公司无可分配利润的，亦同。<br>
+      <small>——据此，把回购义务放在创始人/实际控制人身上，执行力远强于放在目标公司身上。这是谈判中可以直接拿来当理由的知识点。</small></p>
+  </div>
+  <div class="clause">
+    <div class="ch">条款 F · 回购义务的双层写法</div>
+    <div class="zh">若发生任一回购触发事件（包括但不限于：（i）公司未于【 】年【 】月【 】日前完成合格上市；（ii）创始人严重违反本协议或离职/丧失行为能力；（iii）公司核心资产被查封或主营业务发生重大不利变化），投资人有权书面要求<b>创始人及其指定的第三方</b>按"投资本金 + 按年【8】% 单利计算的利息 − 已分配利润"的价格回购其持有的全部股权；<b>公司为该等回购义务提供连带责任保证</b>的，须同时满足《公司法》及公司章程关于对外担保的内部决议程序。<br>
+      <span style="color:var(--ink-3)">（提示：投资人通常要求公司提供连带责任保证或股权质押作为增信；站在公司一侧，需评估该担保对后续融资与上市合规的影响，尤其是上市前必须清理这一类特殊权利。）</span></div>
+  </div>
+
+  <h3>2.4 保护性条款 / 投资人否决权</h3>
+  <p>境外架构下写进章程（作为类别股权利），境内则通过股东协议 + 章程里的一票否决条款实现。<strong>关键在于：章程里写的否决事项，能不能真的对抗工商登记和善意第三人？</strong>——所以境内通常还需要加上违约救济（违约金、回购、知情赔偿）。</p>
+  <div class="tw"><table>
+    <thead><tr><th>常见投资人否决清单</th><th>创始人应该争取的边界</th></tr></thead>
+    <tbody>
+      <tr><td>修改章程或增资减资</td><td>本轮融资已同意的事项（如 ESOP 池扩容）应预先排除</td></tr>
+      <tr><td>新增发型份额 / 设定新的优先股</td><td>给予小额自由额度（如年度 ≤5% 用于并购）</td></tr>
+      <tr><td>单笔超过一定金额的对外担保、借款、资产处置</td><td>设置<b>金额门槛与关联方排除</b>，避免日常经营被卡</td></tr>
+      <tr><td>控制权变更、合并分立、解散清算</td><td>通常应让，但要对「控制权变更」定义清楚</td></tr>
+      <tr><td>批准年度预算外的重大资本开支</td><td>设置预算「浮动区间」</td></tr>
+      <tr><td>聘任/更换审计师、改变会计政策</td><td>通常应让</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>2.5 Term Sheet 里真正有约束力的部分</h3>
+  <div class="callout c-tip">
+    <span class="lbl">实务</span>
+    <p>TS 首部通常会写 "除第 X、Y、Z 条外，本清单不具法律约束力"。真正有约束力的永远是这四类：<strong>①保密义务 ②排他期 / 分手费 ③中介费用与开支 ④适用法律与争议解决</strong>。排他期一旦签了，公司就不能同时跟别家谈，创业者常在这里吃亏：<strong>把排他期压到 30–45 天，并约定投资人超期未出 TS 的自动失效。</strong></p>
+  </div>
+
+  <h2>三、案例剖析</h2>
+  <div class="case">
+    <div class="hd">案例 03｜上市前夜，历史融资文件里的回购条款炸了</div>
+    <div class="bd">
+      <p>霓光珠宝递交 A1 之后，保荐人和律师做的第一件事是：把历轮融资文件的<strong>特殊权利清单</strong>摊开，对照拟适用的上市规则与企业自身的合规。结果发现 A、B 轮都有"未完成上市即回购"条款。</p>
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 拖到问询阶段才处理</div>
+          <p>联交所与保荐人必然追问：<b>该等特殊权利是否在上市时或之前彻底终止？</b>拖会带来三件套损失——①审核问询轮次增加，时间表后撤；②需要在财务报表中就该等负债做相应会计处理（可能构成金融负债而非权益，直接影响净利润这一财务测试）；③被迫在最被动的时间点与原投资人重新谈判。</p></div>
+        <div class="vsb"><div class="vsh">✓ 提前 12 个月做的清理方案</div>
+          <p>①在<b>递表前至少一轮</b>就与投资人签署《终止契据 Deed of Termination》，明确所有经济性特殊权利（回购／反稀释／参与型清算等）自生效时终止，并约定<b>复效条款</b>（若上市申请被拒或撤回则自动恢复，这是投资人通常可以接受的交换）；<br>
+            ②同时签署《章程修订》完成自动转换；<br>
+            ③在招股书「历史沿革与公司架构」章节做<b>完整披露</b>，包括原条款内容与终止时点；<br>
+            ④预留足够时间让会计师完成<b>优先股负债/权益分类</b>的转换，避免报表出现上市当年的大额公允价值变动损失。<br>
+            <b>注：</b>上市前投资的特殊权利安排请以联交所现行相关指引材料核对（见下方法源）。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>四、条款样板：两类严峻范本</h2>
+  <div class="clause">
+    <div class="ch">条款 G · 最惠国 MFN（站在公司一侧的写法）</div>
+    <div class="zh">若公司在本次投资完成之日起 12 个月内以<b>更优惠的条件</b>完成新的股权融资，投资人有权经书面通知后<b>自动适用</b>该等更优惠条款。<br>
+      <span style="color:var(--ink-3)">【站在公司一侧的修法】①限定"更优惠"仅指<b>清算优先权倍数与反稀释方式</b>两项，其他不自动援引；②限定适用主体为后轮的<b>领投方</b>；③期限压到 6 个月；④约定投资人须同时接受后轮的<b>兜底义务</b>。</span></div>
+  </div>
+  <div class="clause">
+    <div class="ch">条款 H · 领售权 Drag-along（站在投资人一侧的标准写法）</div>
+    <div class="zh">若<b>持有本公司【 】%以上投票权的股东（且其中包含本轮投资人）</b>同意一项出售交易（ bona fide third-party offer，估值不低于【 】），则其有权<b>拖带其他股东</b>一并按同等条件出售其全部股权；被拖带方应在收到通知后【10】个工作日内签署必要文件，否则构成<b>违约并确保公司有权通过董事指定的代理人代为签署</b>。<br>
+      <span style="color:var(--ink-3)">【站在公司一侧的关键防线】①阈值不低于<b>合计 2/3 且投资人持股 ≥ 其本轮的一半</b>；②排除<b>关联方收购</b>；③约定<b>最低估值地板</b>与公司核心团队的留任条件；④预先排除创始人被收购方强制留任之外的<b>个人连带责任</b>。</span></div>
+  </div>
+
+  <h2>五、自检清单</h2>
+  <ul class="check">
+    <li>TS 上标注的是投前还是投后估值？期权池是投前还是投后释放？</li>
+    <li>全稀释口径的 Cap Table 有没有把可转债、权证、未分配池都算进去？</li>
+    <li>清算优先权的倍数、是否参与、有没有 Cap？</li>
+    <li>反稀释是全棘轮还是加权平均？广基还是窄基？有没有 pay-to-play 条款？</li>
+    <li>回购义务挂在创始人还是公司名下？公司是否提供了担保/股权质押？</li>
+    <li>回购计算是否扣除已分配利润？是否有利息上限与复利限制？</li>
+    <li>保护性条款清单是否过长？有没有日常经营的金额豁免额度？</li>
+    <li>排他期多久？有没有未按期交割的自动失效机制？</li>
+    <li>TS 中是否有明确"除保密、排他、费用、管辖外不具约束力"的表述？</li>
+    <li><b>最重要的一条</b>：拟上市的情况下，这些特殊权利清理的时间表是否在递表前 6–12 个月启动？</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">法源索引</div>
+    <ul>
+      <li>《全国法院民商事审判工作会议纪要》（九民纪要）第 5 条：与目标公司对赌的处理。</li>
+      <li>《公司法》（2023 修订）：第 210 条等关于利润分配的强制性规定；第 224 条起关于减资的债权人保护程序（请以现行文本核对条号）。</li>
+      <li>《民法典》：第 153 条等关于法律行为效力的规定；违约金酌减（第 585 条）。</li>
+      <li>《企业会计准则第 37 号——金融工具列报》等相关准则：可转换 instruments 的负债/权益分类。</li>
+      <li>《香港联合交易所有限公司证券上市规则》关于上市前投资及特殊权利的相关指引材料（实务中应核对现行有效版本）：上市前授予投资者的特殊经济性权利通常须于上市前或上市时终止并作出相应披露。</li>
+      <li style="color:var(--red)">以上条号请在使用前对照现行官方文本复核。</li>
+    </ul>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">融资法务 · 从 0 到 1 ｜ 第 03 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

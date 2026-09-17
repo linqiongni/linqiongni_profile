@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 股权激励设计（ESOP）｜ 融资法务</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-station="ch02">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 02 · ESOP</div>
+    <h1>股权激励：把「打工的」变成「一起扛的」</h1>
+    <p class="sub">激励工具本身不复杂，复杂的是：给谁、给多少、什么时候真正到手、人走了怎么办、公司上市后这套东西还在不在。股权激励出问题的公司，九成不是因为激励太少，而是因为<strong>退出条款没写清</strong>。</p>
+    <div class="meta-line"><span>主线 Y2 · 引入李工与两位老师傅</span><span>术语 12 个</span><span>含四期成熟图与 Good/Bad Leaver 条款</span></div>
+  </div>
+
+  <div class="story">
+    <span class="tag">剧情 · Y2</span>
+    <p>郭明在奶茶店拍板给李工 10%，但法务<sup>（假设这时候已经有一个法务了）</sup>拦了一下：<em>"直接给，还是分批给？"</em></p>
+    <p>如果一次性登记过户 10%，李工三个月后被同行挖走，那 10% 就跟着人走了——公司白白损失一大块股权，后面每一轮融资都要用更多的份额才能补回来。改成<strong>分四年成熟</strong>，第一年悬崖期（干满一年才有 25%），之后按月解锁。</p>
+    <p>同时，车间两位做失蜡铸造的老师傅也要激励，但给他们股权不合适——人数多了股权散，每进每出都要工商变更。于是搭了一个<strong>有限合伙企业</strong>作为持股平台：创始人当 GP（说了算），员工当 LP（只分钱），人来人去只在平台内部转合伙份额，母公司的股权结构一天不乱。</p>
+  </div>
+
+  <h2>一、四种工具的差别（一张表讲清）</h2>
+  <div class="tw"><table>
+    <thead><tr><th>工具</th><th>本质</th><th>要不要掏钱</th><th>能否登记为股东</th><th>适合的场景</th></tr></thead>
+    <tbody>
+      <tr><td><b>股票期权 Option</b></td><td>未来按约定价买股的权利</td><td>行权时要</td><td>行权后可</td><td>成长期、高增长预期；<b>最主流</b></td></tr>
+      <tr><td><b>限制性股权 Restricted Shares</b></td><td>现在给但受限制，成熟才锁定</td><td>通常要（有的为象征性）</td><td>授予时即可</td><td>联合创始人、核心高管的成熟安排</td></tr>
+      <tr><td><b>虚拟股 / 增值权 Phantom / SAR</b></td><td>只分享经济收益，不给真实股权</td><td>不要</td><td>否</td><td>现金流稳定但不想稀释股权的公司</td></tr>
+      <tr><td><b>限制性股份单位 RSU</b></td><td>到期无条件给股（境外架构常用）</td><td>通常不要</td><td>归属时</td><td>境外/上市公司、税负需要延后场景</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="say">
+    <span class="lbl">打个比方 · 四种工具</span>
+    <p class="analogy"><strong>期权</strong>是电影预售票：票面价 40 块锁死，上映后市场价 100，你就赚 60；票价跌到 20，你不去电影院就是了，最多亏掉买票钱。<br>
+      <strong>限制性股权</strong>是先发你一把种子，种子是你领了，但要在地里干满四年，长出来的粮食才算你的；中途走了，没收。<br>
+      <strong>虚拟股</strong>是代金券：账面数字跟着公司值钱，但你看不见真实的公司股份，也投票不了任何事。<br>
+      <strong>RSU</strong>是公司答应的"到期白给"，像年终奖延期发放，到期一定兑现，不需要你掏钱——代价是它在境外架构和税务上的处理要复杂一些。</p>
+  </div>
+
+  <h2>二、术语卡</h2>
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">授予 / 成熟 / 行权</span><span class="en">Grant / Vest / Exercise</span></div><div class="def">Grant 是<b>答应给</b>，Vest 是<b>变成熟可以拿</b>，Exercise 是<b>真的掏钱买走</b>。三步分开，才有了约束的可能。</div></div>
+    <div class="term"><div class="tw"><span class="zh">悬崖期</span><span class="en">Cliff</span></div><div class="def">最短服务期限（通常 1 年）。一年内走人，<b>一分钱成熟都没有</b>。是防止"来三个月拿 25%"的关键设计。</div></div>
+    <div class="term"><div class="tw"><span class="zh">行权价</span><span class="en">Exercise / Strike Price</span></div><div class="def">每股价格。早期通常取<b>面值或优惠价</b>；税务局会看"明显偏低"是否有正当理由。</div></div>
+    <div class="term"><div class="tw"><span class="zh">行权窗口</span><span class="en">Exercise Window</span></div><div class="def">离职后可行权的时间（如 90 天）。<b>过期作废</b>。上市前应尽量延长或改为上市后 RSU。</div></div>
+    <div class="term"><div class="tw"><span class="zh">Good Leaver / Bad Leaver</span><span class="en">—</span></div><div class="def">离职原因分类。<b>Good</b>（退休、身故、公司裁撤、协商解除）：保留已成熟或继续成熟、按公允价回购；<b>Bad</b>（违纪、违反竞业、主动跳槽）：未成熟作废、按原价甚至零回购。</div></div>
+    <div class="term"><div class="tw"><span class="zh">持股平台</span><span class="en">Holding Platform</span></div><div class="def">通常为<b>有限合伙企业</b>：创始人或其公司当 GP，员工当 LP。避免母公司股权因人员进出而反复变更。</div></div>
+    <div class="term"><div class="tw"><span class="zh">GP / LP</span><span class="en">General / Limited Partner</span></div><div class="def">GP 承担无限责任但<b>掌握管理权</b>；LP 有限责任但<b>不得执行合伙事务</b>，否则可能丧失有限责任保护。</div></div>
+    <div class="term"><div class="tw"><span class="zh">全面摊薄口径</span><span class="en">Fully Diluted Basis</span></div><div class="def">把<b>已发行 + 已授予未行权 + 预留池</b>全部计入后的口径。谈估值和"我占多少"必须用这个口径，否则是幻觉。</div></div>
+    <div class="term"><div class="tw"><span class="zh">池子稀释</span><span class="en">Pool Dilution</span></div><div class="def">投资人常要求<b>投前</b>新设或扩大 ESOP 池，稀释落在老股东身上；如果是<b>投后</b>，投资人自己也稀释。<b>一字之差，钱差很多</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh">递延纳税</span><span class="en">Deferred Taxation</span></div><div class="def">符合条件的非上市公司股权激励，员工在取得时<b>暂不纳税</b>，待实际转让时按财产转让所得计征，但需向主管税务机关备案。</div></div>
+    <div class="term"><div class="tw"><span class="zh">第 17 章 / 股份计划</span><span class="en">Chapter 17 · Share Schemes</span></div><div class="def">联交所《上市规则》关于股份计划的专章。<b>2023 年 1 月 1 日起适用范围扩展至上市前授予、上市后仍有效的计划</b>，须符合授权限额、归属期等要求。</div></div>
+    <div class="term"><div class="tw"><span class="zh">信托持有 ESOP</span><span class="en">ESOP Trust</span></div><div class="def">红筹架构下由受托人代持激励股份。<b>注意</b>：如由发行人或核心关连人士出资，相关股份通常<b>不计入公众持股量</b>。</div></div>
+  </div>
+
+  <h2>三、结构：两条路径的图</h2>
+  <figure class="struct">
+    <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="股权激励两条持股路径">
+      <!-- 左：境内有限合伙平台 -->
+      <text x="180" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">路径 A · 境内架构：有限合伙持股平台</text>
+      <rect x="95" y="44" width="170" height="42" rx="10" fill="var(--card)" stroke="var(--gold)" stroke-width="2"/>
+      <text x="180" y="63" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">创始人 / 其控制的公司（GP）</text>
+      <text x="180" y="78" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">承担无限责任 · 掌握表决权</text>
+      <rect x="95" y="112" width="170" height="46" rx="10" fill="var(--bg-alt)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="180" y="132" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">员工持股平台（有限合伙）</text>
+      <text x="180" y="148" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">持有母公司 10% 股权</text>
+      <rect x="20" y="192" width="85" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="62" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">员工甲 LP</text>
+      <rect x="115" y="192" width="85" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="157" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">员工乙 LP</text>
+      <rect x="210" y="192" width="85" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="252" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">员工丙 LP</text>
+      <rect x="95" y="258" width="170" height="34" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text x="180" y="279" text-anchor="middle" font-size="12" fill="var(--gold-deep)" font-weight="600" font-family="-apple-system, PingFang SC, sans-serif">运营公司（有限责任公司）</text>
+      <g stroke="var(--gold)" stroke-width="1.6" fill="none">
+        <path d="M180 86 L180 112"/><path d="M62 192 L120 158"/><path d="M157 192 L170 158"/><path d="M252 192 L200 158"/>
+        <path d="M180 230 L180 258"/>
+      </g>
+      <polygon points="180,112 176,120 184,120" fill="var(--gold)"/>
+
+      <!-- 分隔 -->
+      <line x1="450" y1="20" x2="450" y2="295" stroke="var(--line)" stroke-dasharray="4 4"/>
+
+      <!-- 右：境外信托 -->
+      <text x="672" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">路径 B · 红筹架构：信托 + BVI</text>
+      <rect x="540" y="44" width="264" height="42" rx="10" fill="var(--card)" stroke="var(--gold)" stroke-width="2"/>
+      <text x="672" y="63" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">拟上市公司（开曼 / Cayman）</text>
+      <text x="672" y="78" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">发行 ESOP 预留股份</text>
+      <rect x="540" y="112" width="264" height="46" rx="10" fill="var(--bg-alt)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="672" y="132" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">ESOP 信托（受托人 Trustee 持有）</text>
+      <text x="672" y="148" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">下设 BVI SPV 分档管理</text>
+      <rect x="520" y="192" width="105" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="572" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">高管层 RSU</text>
+      <rect x="640" y="192" width="105" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="692" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">中层期权池</text>
+      <rect x="760" y="192" width="105" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
+      <text x="812" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">未分配余额</text>
+      <rect x="545" y="258" width="254" height="34" rx="8" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="672" y="279" text-anchor="middle" font-size="11.5" fill="var(--blue)" font-family="-apple-system, PingFang SC, sans-serif">员工行权：外汇登记 + 收益调回渠道须同步设计</text>
+      <g stroke="var(--gold)" stroke-width="1.6" fill="none">
+        <path d="M672 86 L672 112"/><path d="M572 192 L620 158"/><path d="M692 192 L690 158"/><path d="M812 192 L730 158"/>
+      </g>
+      <polygon points="672,112 668,120 676,120" fill="var(--gold)"/>
+    </svg>
+    <figcaption>图 2-1　境内架构用有限合伙隔离股东名单；红筹架构用信托分档管理、便于上市后转化</figcaption>
+  </figure>
+
+  <h2>四、成熟节奏怎么设</h2>
+  <figure class="struct">
+    <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四年成熟节奏">
+      <g font-family="-apple-system, PingFang SC, sans-serif" font-size="12" fill="var(--ink-2)">
+        <rect x="60" y="30" width="180" height="40" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="150" y="48" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--gold-deep)">第 1 年 · Cliff 悬崖期</text>
+        <text x="150" y="64" text-anchor="middle" font-size="11">干满 12 个月 → 一次性成熟 25%</text>
+        <rect x="245" y="30" width="180" height="40" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="335" y="48" text-anchor="middle" font-size="12.5" font-weight="700">第 2 年</text>
+        <text x="335" y="64" text-anchor="middle" font-size="11">按月 / 按季解锁至 50%</text>
+        <rect x="430" y="30" width="180" height="40" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="520" y="48" text-anchor="middle" font-size="12.5" font-weight="700">第 3 年</text>
+        <text x="520" y="64" text-anchor="middle" font-size="11">累计 75%</text>
+        <rect x="615" y="30" width="225" height="40" rx="8" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="727" y="48" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--green)">第 4 年 · 全部成熟</text>
+        <text x="727" y="64" text-anchor="middle" font-size="11">100% —— 此后仅受买卖限制约束</text>
+      </g>
+      <g stroke="var(--gold)" stroke-width="1.6" fill="none"><path d="M240 50 L245 50"/><path d="M425 50 L430 50"/><path d="M610 50 L615 50"/></g>
+      <polygon points="245,50 240,47 240,53" fill="var(--gold)"/>
+      <line x1="60" y1="96" x2="840" y2="96" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <text x="60" y="122" font-size="12.5" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--red)">★ 加速成熟 Acceleration：</text>
+      <text x="60" y="144" font-size="12" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--ink-2)">单方原则：公司被收购/控制权变更时，全部或部分期权提前成熟（保护员工，但买方会砍价）</text>
+      <text x="60" y="166" font-size="12" font-family="-apple-system, PingFang SC, sans-serif" fill="var(--ink-2)">双方原则：仅当员工是被遣散或被迫离职时才加速 —— 谈判中更常见的是「双层触发 + 单方管辖」折中写法</text>
+    </svg>
+    <figcaption>图 2-2　四年 + 一年悬崖 + 按月解锁，是市场通行的默认节奏</figcaption>
+  </figure>
+
+  <h2>五、案例剖析</h2>
+  <div class="case">
+    <div class="hd">案例 02｜技术总监走了，期权要不要退</div>
+    <div class="bd">
+      <p>李工主导搭建了 3D 建模产线，公司给了他 4% 期权，四年成熟。第 26 个月，他被一家更大的集团挖走，离职时已完成治理中层交接，但核心参数是他的私人设备上还有一份。</p>
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 草案（只有一句话）</div>
+          <p>"员工离职的，未成熟期权自动失效，已成熟期权可由公司回购。"<br>
+            <b>后果：</b>①「可由」= 可选，公司不回购员工照样持股；②没写<strong>回购价格</strong>，只有掏不起作用也没用（按净资产吗？按原价吗？）；③没定义「违反竞业」，无法按 Bad Leaver 处理；④没写行权窗口。</p></div>
+        <div class="vsb"><div class="vsh">✓ 修订版（分情形、有价格、有抓手）</div>
+          <p>①区分 <strong>Good / Bad Leaver</strong>；Bad Leaver 包括严重违纪、违反竞业限制、违反保密义务、未满服务期主动离职；<br>
+            ②未成熟部分<strong>自动作废，无需通知</strong>，平台 GP 有权直接变更登记；<br>
+            ③已成熟部分：Bad Leaver → 按<strong>原始行权价 + 同期银行定存利率</strong>回购；Good Leaver → 按<strong>最近一轮融资估值折价</strong>或净资产较高者回购；<br>
+            ④回购义务<strong>担保化</strong>：员工签署授权文件 + 份额质押，避免人走后就无法强制过户<br>
+            ⑤明确争议管辖与<strong>继续履行保密、竞业、不招揽义务</strong>作为回购前提。</p></div>
+      </div>
+      <div class="callout c-tip" style="margin-bottom:0">
+        <span class="lbl">实务要点</span>
+        <p>真正让回购条款落地的从来不是写得漂亮，而是三件事：<strong>事先签署好空白转让文件与授权委托书、事先做份额质押登记、事先约定价格公式</strong>。三者缺一，离职回购协议就只是一张纸。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>六、条款样板</h2>
+  <div class="clause">
+    <div class="ch">条款 D · Bad Leaver 回购价格</div>
+    <div class="zh">发生 Bad Leaver 事件的，公司或持股平台 GP 有权（但无义务）以下列价格回购该员工届时持有的全部合伙份额：<b>（a）其原始出资成本 + 按同期中国人民银行定期存款利率计算的利息</b>；如员工同时存在违反保密、竞业或忠实义务情形的，回购价格降为零（即仅返还名义出资），且公司有权要求其赔偿由此造成的损失。</div>
+  </div>
+  <div class="clause">
+    <div class="ch">条款 E · 上市前的过渡安排</div>
+    <div class="zh">若公司进行境外上市，上市前授予的期权可于上市后<b>由董事会决议转换为等值数量的 RSU 或现金结算的增值权</b>，以适配公开市场的股份计划规则与结算安排；转换后员工的经济利益总额保持不变。</div>
+  </div>
+
+  <h2>七、自检清单</h2>
+  <ul class="check">
+    <li>池子大小是否合理？通常首轮前预留 10%–15%，每一次新融资前重新测算未来 18 个月的需求。</li>
+    <li>池子是<b>投前</b>还是<b>投后</b>摊薄？Term Sheet 上一定要写明。</li>
+    <li>持股平台的 GP 由谁当？该主体的有限责任有没有被隔离？</li>
+    <li>LP 是否完全没有执行合伙事务？（LP 参与执行事务可能丧失有限责任保护）</li>
+    <li>Good / Bad Leaver 是否有明确定义、举证标准与回购定价公式？</li>
+    <li>回购的执行抓手是否齐备：空白转让文件、授权委托书、份额质押登记？</li>
+    <li>是否办理了递延纳税备案？（符合条件的非上市公司股权激励）</li>
+    <li>境外架构下，员工行权的外汇登记路径（含境内外资金闭环）是否设计完毕？</li>
+    <li>上市前授予的计划是否满足上市地规则（如香港《上市规则》第 17 章）的授权限额与归属期要求？</li>
+    <li>是否存在员工代持、口头承诺期权、或创始人私人 Promise？（尽调必炸）</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">法源索引</div>
+    <ul>
+      <li>《公司法》（2023 修订）：类别股相关规定（差异化表决权、转让受限股），请以现行文本核对条号。</li>
+      <li>《合伙企业法》：有限合伙 GP/LP 责任与事务执行限制。</li>
+      <li>《财政部、国家税务总局关于完善股权激励和技术入股有关所得税政策的通知》（财税〔2016〕101 号）：非上市公司符合条件的股权激励可递延纳税，须向主管税务机关备案。</li>
+      <li>国家外汇管理局关于特殊目的公司股权激励的相关登记规定（请核对现行有效文件与最新口径）。</li>
+      <li>《香港联合交易所有限公司证券上市规则》第 17 章（股份计划）：2023 年 1 月 1 日起适用范围包括上市前授予、上市后仍然有效的股份授予及期权计划；具体授权限额、归属期要求请以现行规则原文为准。</li>
+      <li style="color:var(--red)">税务与外汇政策口径变动频繁，落实前请与专业顾问同步确认。</li>
+    </ul>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">融资法务 · 从 0 到 1 ｜ 第 02 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
