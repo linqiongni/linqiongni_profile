@@ -20,7 +20,8 @@
     { id: "ch09", file: BASE + "ch09-governance.html", no: "09", name: "治理结构设计" },
     { id: "ch10", file: BASE + "ch10-hkex-rules.html", no: "10", name: "港股上市规则" },
     { id: "ch11", file: BASE + "ch11-ipo-process.html", no: "11", name: "IPO 全流程" },
-    { id: "ch12", file: BASE + "ch12-post-listing.html", no: "12", name: "上市后合规 · 披露" }
+    { id: "ch12", file: BASE + "ch12-post-listing.html", no: "12", name: "上市后合规 · 披露" },
+    { id: "ch13", file: BASE + "ch13-cases.html", no: "13", name: "真实案例库" }
   ];
 
   function applyTheme(t) {
