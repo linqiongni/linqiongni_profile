@@ -220,21 +220,21 @@ export default function App() {
 
           isFullBleed
 
-            ? 'flex-1 w-full px-0 pt-20 md:pt-32'
+            ? 'flex-1 w-full px-0 pt-20'
 
             : showHero
 
               ? 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
 
-              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 md:pt-32 pb-16'
+              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 pb-16'
 
         }
 
       >
 
-        {/* 子板块导航条已上移到 Navbar 内（navbar-subnav），
+        {/* 子板块导航已收进 Navbar 的悬停下拉面板（nav-group-dropdown-card），
 
-            全部分组统一在顶部切换，且铺满型 tab 也能切换兄弟板块，此处不再重复渲染 */}
+            Navbar 恢复单行 80px 高，故上边距收敛为 pt-20（原 md 断点值一并去掉） */}
 
 
 
