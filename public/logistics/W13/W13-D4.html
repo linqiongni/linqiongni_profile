@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·第4天｜延误、仓储费与服务费催收争议 + 留置权行使</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · DAY 4 / 5　·　阶段二　主干法律</div><h1>延误、仓储费与服务费催收争议 + 留置权行使</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">仓储费像停车费，每天都在涨；催收像要账，先礼后兵。关键是每一步都要留痕，最后主张利息和违约金时才有依据。</div><div class="mlink"><b>怎么串到今天</b>昨天讲货损索赔，今天讲延误和钱——另一类高频争议。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>延误责任认定看合同约定 + 免责条款效力边界；不可抗力/海关查验通常免责，但「一般延误」未必免责</li><li>免除己方责任条款须提示说明，否则可能不成为合同内容（格式条款规则，民法典 496-497 待核实）</li><li>留置权成立：合法占有 + 债权已届期 + 同一法律关系（企业间放宽，民法典 447/448 待核实）；行使须通知、不得扣错货</li><li>不当留置（扣错货/超范围/拒不放货）客户可主张损害赔偿，甚至强制放货 + 索赔</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《延误与费用催收作战手册》+《留置权行使 SOP》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透跨境物流里的延误责任与费用催收，重点攻克留置权这一物流商最锋利的催收武器，同时给客户反制点：
+1. 延误责任认定：合同有无约定时限与违约金；无约定按合理期限；海关查验/不可抗力通常免责，但船期一般延误是否免责要看合同与行业惯例
+2. 免责条款的效力边界：格式条款提示说明义务（民法典 496）、造成人身损害或故意重大过失致财产损失的免责条款无效（497）；海运承运人免责清单另受海商法约束
+3. 三项费用催收路径：滞箱费（D&amp;D）/ 堆存费 / 仓储费 / 服务费，分别怎么催、难点在哪
+4. 留置权专章：成立要件（合法占有+债权届期+同一法律关系，企业营业留置放宽，民法典 447/448 待核实）、行使边界（通知履行期、不得扣错货、法域差异）、我国物权编与合同编条文号须核对
+5. 产出《留置权行使 SOP》
+6. 客户反制点：不当留置的损害赔偿（扣错货、超范围、拒不放货导致客户无法交货/销售）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：费用催收像「长租公寓欠租，房东扣家具」</h2>
+<p>客户欠租不退房，房东最常见的反应是把屋里的东西扣下抵债——这招在法律上就叫「留置」。跨境物流一模一样：客户不付运费、不付 D&D、不付仓储费，我方手里有他的货（在库/在途），最自然的动作就是「扣货抵债」。但房东乱扣（扣了租客室友的东西、扣了远超欠租的金额）要赔，物流商乱扣也一样。<b>留置权是催收最锋利的刀，但刀刃也割手</b>——怎么串到今天：D3 讲怎么「要回货损的钱」，今天讲怎么「扣住货倒逼客户付运费和费用」，以及这把刀的合法边界。</p>
+<div class="key">记忆点：<b>留置权 = 合法占有 + 债权到期 + 财产属债务人 + 同一法律关系（企业放宽）。四要件缺一个，就是不当留置，要赔。普通法国家甚至没有物权性留置权概念，差异极大，必须核对当地法。</b></div>
+<h2>二、延误责任认定与免责条款效力边界</h2>
+<h3>1. 延误责任认定</h3>
+<ul><li><b>有约定从约定</b>：合同写了「X 天内送达、超期按 Y 元/天违约金」→ 直接适用，我方延误即赔。</li><li><b>无约定</b>：按「合理期限」判断，行业航线时效是参照；船期一般延误（非不可抗力）是否赔，看是否违反合理期限与合同默示义务。</li><li><b>通常免责</b>：不可抗力（自然灾害、战争）、海关查验/扣留、政府行为、罢工——这些致延误，我方一般免责，但须及时通知并减损。</li><li><b>不当然免责</b>：船公司甩柜、舱位不足、我方调度失误导致的延误，不在免责范围，须赔客户损失。</li></ul>
+<h3>2. 免责条款的效力边界（格式条款规则）</h3>
+<ul><li><b>提示说明义务（民法典第 496 条 待核实）</b>：免除或减轻己方责任的条款，须采取合理方式提示、按对方要求说明，否则对方可主张「不成为合同内容」。</li><li><b>绝对无效条款（第 497 条 待核实）</b>：造成对方人身损害，或因故意/重大过失造成对方财产损失的免责条款无效。</li><li><b>海运特殊</b>：承运人免责清单（海商法第 51-52 条）是法定免责，不以格式条款论，但仍受「管货义务不免」「丧失责任限制情形」约束。</li></ul>
+<h2>三、三项费用催收路径</h2>
+<table><thead><tr><th>费用</th><th>性质</th><th>催收路径</th><th>难点</th></tr></thead><tbody><tr><td>滞箱费 D&D</td><td>合同债权 + 用箱协议</td><td>发函催 → 扣货留置 → 诉讼/仲裁</td><td>须证明用箱关系与起止时间、free time 天数</td></tr><tr><td>堆存费</td><td>港口债权，常随 D&D</td><td>同上；注意港口自身也可能直接留置</td><td>港口与货代双重催收，易冲突</td></tr><tr><td>仓储费</td><td>仓储合同债权</td><td>留置库存货 → 发函 → 诉讼</td><td>海外仓所在地法管辖，跨境执行难</td></tr><tr><td>服务费</td><td>委托合同债权</td><td>发函 → 留置在途/在库货 → 诉讼</td><td>须业务单据（订舱/报关/派送记录）齐全</td></tr></tbody></table>
+<h2>四、留置权专章：成立要件与行使边界（民法典，须核对条文号）</h2>
+<h3>1. 成立要件</h3>
+<ul><li><b>合法占有</b>：我方须合法（依合同）占有债务人动产——托运/仓储合同下的在库货、在途货才合法占有；偷扣、骗扣不成立。</li><li><b>债权已届清偿期</b>：欠费已到支付日，未到期不能扣。</li><li><b>同一法律关系</b>：留置财产须与债权属同一法律关系（如运费对应同一票货）；但<b>企业间营业留置放宽</b>（民法典第 448 条 待核实），可跨个别合同就经营中占有的动产留置。</li><li><b>财产属债务人</b>：留置的须是债务人（欠费客户）的财产，扣了第三人货 = 不当留置。</li></ul>
+<h3>2. 行使边界</h3>
+<ul><li><b>通知履行期</b>：留置后须书面通知债务人在<b>不少于 2 个月</b>（或约定）期限内履行（民法典第 453 条 待核实），到期不履行方可折价/拍卖/变卖优先受偿。</li><li><b>不得超范围</b>：留置财产价值应与债权相当，明显超范围扣货可能被认定不当。</li><li><b>不得扣禁扣物</b>：鲜活易腐、法律禁止留置的动产不得扣。</li><li><b>法域差异极大</b>：普通法（英美）无物权性留置权概念，多靠「合同留置」或海事 lien 处理；欧盟各国规定不一。<b>凡在海外仓/目的国行使留置，必须先核对当地法，必要时当地律师意见</b>。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 民法典第 447 条（留置一般要件）、第 448 条（企业营业留置）、第 453 条（留置权实现程序与履行期）条文序号与措辞以原文为准；② 海事留置（maritime lien）与合同留置在各法域的差异，以目的国法律意见为准；③ 海商法下承运人/海运留置的特殊规则（如第 87-88 条 待核实）另查。</div>
+<h2>五、《留置权行使 SOP》（五步）</h2>
+<ol><li>确认债权真实、金额明确、已届清偿期，且我方<b>合法占有</b>该客户财产。</li><li>确认留置财产<b>属债务人</b>且属同一法律关系（或符合企业营业留置），价值与债权相当。</li><li>发<b>书面留置通知</b>，给不少于 2 个月履行期（或依合同约定短于 2 个月），载明债权金额与留置物。</li><li>期满未付，依法定程序（折价/拍卖/变卖）优先受偿，留存处置全过程证据。</li><li>全程避免扣错货、超范围、拒不放货，否则转为不当留置须赔偿。</li></ol>
+<h2>六、客户反制点：不当留置的损害赔偿</h2>
+<ul><li><b>扣错货</b>：留置了非债务人（如同一海外仓里其他客户的货）的财产 → 客户/第三人可主张返还 + 赔偿。</li><li><b>超范围</b>：债权 1 万元却扣了价值 10 万元的货且拒不部分放行 → 超出部分视为不当留置，赔占用损失。</li><li><b>未给履行期即扣/拒不放货</b>：未通知、未给合理期限就扣货导致客户无法交货/销售 → 赔利润损失 + 客户对下游的违约金。</li><li><b>反制组合拳</b>：客户可发函要求放货、主张减损、起诉返还原物 + 损害赔偿，甚至申请行为保全强制放货。</li></ul>
+<div class="key">反制点（客户视角，法务要提前堵）：在委托合同里预先写清「客户未按期付费，我方有权就所占有的该客户货物行使留置，并自通知之日起 X 日（不低于法定）后处置」——把 SOP 写进合同，既合法又减少争议。同时明确「留置范围限于该客户名下财产」，防止误扣第三人货。</div>
+<h2>七、《延误与费用催收作战手册》要点</h2>
+<ul><li><b>延误争议</b>：先翻合同有无时限与违约金条款；无约定则举证「合理期限」被违反；海关/不可抗力致延误及时通知+减损可免责。</li><li><b>费用催收</b>：D&D/堆存/仓储/服务费分别建账，每笔对应业务单据与时间戳，发函三连（催告→通牒→处置预告）。</li><li><b>留置武器</b>：四要件齐备才扣，扣前书面留证，扣后给履行期，绝不扣错货/超范围。</li><li><b>时效</b>：费用债权普通诉讼时效 3 年（民法典 188），但催收动作本身可中断时效，记得留催款证据。</li></ul>
+<div class="key">今日口诀：<b>催收两把刀：发函催告 + 合法留置。留置四要件（合法占有/债权到期/财产属债务人/同一关系）缺一即变不当留置要赔钱。海外行使先查当地法——普通法国家可能根本没有你要的这把刀。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Lien</div><div class="cn">留置权</div><div class="df">债权人合法占有债务人动产，未受偿可留置并优先受偿；民法典物权编+合同编规定，不同法域差异极大</div></div><div class="ti"><div class="en">Demurrage &amp; Detention (D&amp;D)</div><div class="cn">滞箱费与滞留费</div><div class="df">超期占用集装箱的费用，按天累进，是物流商最稳定的应收，常构成留置标的</div></div><div class="ti"><div class="en">Storage Fee</div><div class="cn">仓储费</div><div class="df">海外仓/仓库对货物存储收取的费用，按体积/天数计，属仓储合同债权</div></div><div class="ti"><div class="en">Service Fee</div><div class="cn">服务费</div><div class="df">订舱、报关、派送等操作服务费，属委托合同债权，催收须业务单据齐全</div></div><div class="ti"><div class="en">Wrongful Lien</div><div class="cn">不当留置</div><div class="df">留置权行使不符合法定要件（扣押非债务人财产、超范围、未给履行期）须赔偿对方损失</div></div></div></div><div class="foot"><a href="W13-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W13-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

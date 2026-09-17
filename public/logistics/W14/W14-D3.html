@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第14周·第3天｜欧盟单一市场与海关同盟：货在欧盟境内怎么流，海外仓怎么选</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 14 · DAY 3 / 5　·　阶段三　境外法域与合规</div><h1>欧盟单一市场与海关同盟：货在欧盟境内怎么流，海外仓怎么选</h1><div class="sub">第 14 周主题：欧盟法律环境通识 —— 打开欧盟法的大门</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">单一市场的四大自由，像小区内部把四个门全打开：货一旦合法进入欧盟，就可以在内部自由流动。所以选择在哪个国家清关，是一门可以设计的功课。</div><div class="mlink"><b>怎么串到今天</b>会查之后，理解欧盟最核心的制度设计——为什么一次清关能覆盖 27 国。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>关税同盟：货物在欧盟内部自由流通、对外统一关税（CET）；非欧盟货物入境须清关并缴共同外部关税</li><li>单一市场四大自由：货物、服务、人员、资本；货的自由靠海关同盟实现</li><li>海外仓选址法律维度：VAT 注册地、EORI、当地仓储许可与消防、用工、产品监管执法强度、退货处理</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《欧盟境内货物流通规则速查表》+《海外仓选址的法律考量清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透欧盟单一市场与海关同盟，并落到海外仓选址，站物流商立场给清单与客户反制点：
+1. 关税同盟（Customs Union）：定义、共同对外关税(CET)、内部自由流通；说明「非欧盟货物」进入欧盟后的海关状态：自由流通(union goods) vs 海关监管(non-union goods / 海关程序下)
+2. 单一市场四大自由：货物、服务、人员、资本；说明对物流商的意义（可在成员国间调拨货、跨境提供仓储服务）
+3. 欧盟内跨境仓储与调拨的海关含义：非欧盟货物在欧盟境内流转，若已「放行自由流通」则像欧盟货一样调拨；若仍在海关程序（如海关仓/自由区）则受监管。区分「自由区 free zone」与「海关仓库 customs warehouse」
+4. 海外仓选址的法律维度清单（重点）：① VAT 注册地与远程销售阈值(OSS/IOSS) ② EORI 号 ③ 当地仓储许可与消防/建筑规范 ④ 用工（雇佣/解雇/社保）⑤ 产品监管执法强度（哪国市场监管更严）⑥ 退货处理（销毁/再售/退第三国）
+5. 落到动作：我方在德国设海外仓 vs 波兰设仓，法律成本差异怎么比；给客户什么反制点</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：欧盟海关同盟像「一个超大保税区」，单一市场像「区内随便做生意」</h2>
+<p>把欧盟想成「一个把内部国界线拆了的超大自贸区」：对外它是一道统一的关税墙（CET，共同外部关税），货从墙外进来只交一次税；墙内 27 国之间<b>没有关税、没有内检</b>，货像在一个国家里流动。单一市场再叠加「服务、人、钱也能自由跑」。怎么串到今天：昨天讲了「欧盟文件怎么查」，今天讲「货进了这道墙之后是什么状态、我在墙内哪国租仓库法律上差多少」——这直接决定德国仓和波兰仓的成本与风险。</p>
+<div class="key">记忆点：<b>关税同盟 = 对外一道墙（CET）、对内零关税；单一市场 = 货/服务/人/钱四样自由。非欧盟货入境清完关=自由流通，可全欧调拨；未清关=海关监管，受约束。</b></div>
+<h2>二、关税同盟与货物海关状态</h2>
+<table><thead><tr><th>状态</th><th>含义</th><th>调拨自由度</th><th>税务</th></tr></thead><tbody><tr><td>Union goods / 自由流通</td><td>非欧盟货已清关缴税，或本就欧盟产</td><td>全欧自由调拨，无内关税</td><td>已缴 CET+VAT（进口环节）</td></tr><tr><td>Non-union / 海关监管</td><td>未清关，存海关仓或自由区</td><td>受海关监管，调拨须申报</td><td>暂缓缴税，出库/内销时缴</td></tr><tr><td>自由区 Free Zone</td><td>关境外的特定区域</td><td>存入不缴税，出区入盟才清关</td><td>区外视作未入境</td></tr></tbody></table>
+<p>关键操作：我方海外仓收货，若货是「自由流通」状态（客户已进口清关），我从德国仓调去法国仓、或一件代发给法国买家，<b>不再过海关</b>；若货还是「海关监管」状态（存海关仓），调拨要按海关程序走。海外仓接货第一件事——<b>问客户这票货的海关状态</b>，决定我方动作边界。</p>
+<h2>三、单一市场四大自由（对物流商的意义）</h2>
+<ul><li><b>货物自由</b>：可在成员国间自由调拨库存，无需内关税——支撑「欧洲仓网」模式。</li><li><b>服务自由</b>：我方可跨境提供仓储/配送服务，在一国设实体即可服务全欧（但须满足当地许可与雇佣法）。</li><li><b>人员自由</b>：可调动员工跨境，但雇佣仍受东道国劳动法约束。</li><li><b>资本自由</b>：跨境收款、设子公司、利润汇回更顺，但反洗钱/外汇申报仍要守。</li></ul>
+<div class="key">反制点（客户视角）：卖家选海外仓时，应要求物流商披露「该仓收货货物的海关状态」与「跨成员国调拨是否触发新清关」——若物流商把「海关监管」状态货当「自由流通」发，导致买家被补税，物流商担责。客户合同应写明「因仓方未识别海关状态致买方被税」的赔偿。</div>
+<h2>四、海外仓选址：六个法律维度（逐项比德国 vs 波兰）</h2>
+<table><thead><tr><th>维度</th><th>德国仓</th><th>波兰仓</th><th>我方动作</th></tr></thead><tbody><tr><td>VAT 注册</td><td>标准 19%（待核实），远程销售超阈值须注册</td><td>标准 23%（待核实），但成本结构更低</td><td>算清 VAT 现金占用与 OSS 申报义务</td></tr><tr><td>EORI</td><td>一国注册全欧通用，德注即可</td><td>同上</td><td>确保我方/客户有 EORI 再办海关手续</td></tr><tr><td>仓储许可/消防</td><td>建筑与消防规范严（各州不同）</td><td>规范较松、成本低</td><td>签约前查当地 Bauordnung/消防验收</td></tr><tr><td>用工</td><td>解雇保护强(KSchG)、成本高</td><td>雇佣成本低、灵活度高</td><td>用工合同用当地律师审</td></tr><tr><td>产品监管执法</td><td>市场监管严、召回响应快</td><td>执法强度相对低</td><td>严国仓货被查概率更高</td></tr><tr><td>退货处理</td><td>销毁/再售/退第三国流程成熟</td><td>类似但回收网络较弱</td><td>定退货再售与销毁的税务处理</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 德国/波兰标准 VAT 税率现行值（德 19%、波 23% 为通用口径，以各国税法为准）；② 远程销售阈值与 OSS/IOSS 适用规则（2021 年起欧盟统一 1 万欧元阈值，待核实现行值）；③ 自由区在德国的具体地点（如汉堡自由贸易区已 2013 取消，待核实现行自由区清单）；④ 各国仓储消防与建筑规范的具体法名。</div>
+<h2>五、落到动作：《海外仓选址法律考量清单》</h2>
+<ol><li>确认业务模式：一件代发/贴标/退货重包装，决定需要的许可与用工。</li><li>比 VAT：注册地、税率、OSS 申报义务、进口 VAT 现金占用。</li><li>查 EORI：我方或客户须持有效 EORI 才能办欧盟海关手续。</li><li>查当地仓储许可、消防验收、建筑规范，索要证书副本。</li><li>核用工：当地雇佣/解雇法、社保、最低工资，避免非法用工。</li><li>评产品监管：该成员国市场监管强度、召回响应速度、我方应急成本。</li><li>定退货：再售/销毁/退第三国的税务与环保处理路径，写进合同。</li><li>留档：选址法律比对表 + 各地证书，归入项目档案。</li></ol>
+<div class="key">今日口诀：<b>欧盟是一道墙、内里无税。货清关=自由流通可全欧调，未清关=海关监管受束缚。选仓六维：VAT/EORI/许可/用工/执法/退货——德国严但稳、波兰便宜但查得松，按货值与风险偏好选。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Customs Union</div><div class="cn">关税同盟</div><div class="df">欧盟对内取消关税、对外统一关税(CET)的区域安排；货物在成员国内自由流通，非欧盟货入境缴共同外部关税</div></div><div class="ti"><div class="en">Free Circulation</div><div class="cn">自由流通 / Union goods</div><div class="df">非欧盟货物完成进口清关、缴讫关税与税后的状态；此后在欧盟内像欧盟货一样自由调拨</div></div><div class="ti"><div class="en">Customs Warehouse</div><div class="cn">海关仓库</div><div class="df">非欧盟货可存入、暂缓缴税、出库时再清关或再出口的海关程序场所；与自由区并列</div></div><div class="ti"><div class="en">EORI</div><div class="cn">Economic Operators Registration and Identification</div><div class="df">经济经营者注册识别号；在欧盟办理海关手续的必备号，全欧盟通用，一国注册全境有效</div></div><div class="ti"><div class="en">VAT</div><div class="cn">Value Added Tax / 增值税</div><div class="df">欧盟各国税率不同（德 19%、波 23% 待核实）；跨境电商远程销售须注册 VAT 或用 OSS/IOSS 一站式申报</div></div><div class="ti"><div class="en">Four Freedoms</div><div class="cn">四大自由</div><div class="df">单一市场核心：货物、服务、人员、资本在成员国间自由流动</div></div></div></div><div class="foot"><a href="W14-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W14-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

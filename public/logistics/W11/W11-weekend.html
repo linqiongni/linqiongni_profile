@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·周末实战｜一票被查验扣货的应急处置方案</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · WEEKEND PROJECT　·　阶段二　主干法律</div><h1>周末实战⑪：一票被查验扣货的应急处置方案</h1><div class="sub">第 11 周主题：海关与通关（中国侧） —— 货被扣了怎么办</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">被查验扣货的应急处置方案就是火灾逃生预案：谁第一时间联系海关、谁通知客户、谁准备材料、什么时候升级，写成剧本，事发时照着念就行。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖家 + 德国海外仓，带电产品含锂电池，以 9810 出口海外仓，我方为货代兼海外仓运营）。货物在口岸查验时被扣，原因指向 HS 归类错误 + 危险品申报缺失。给出 24h/72h/7天三段式处置时间表、与海关沟通的书面动作清单、客户通知模板要点、以及事后整改。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要做一票货被查验扣货的应急处置方案。设定：深圳跨境电商卖家委托我方（货代兼德国海外仓运营方），将一批含锂电池的带电产品以 9810 监管方式出口到德国海外仓；在出境口岸海关查验时，货物被扣留，海关初步指出两个疑点：① HS 编码归类偏低（把含锂电池设备归入普通塑料/电子配件，少缴关税且漏触发无线电/3C 监管）；② 危险品申报缺失（锂电池属第 9 类危险品，未提供 MSDS/UN38.3 与危险品包装证明）。
+
+请输出：
+1. 这票货的风险剖面复盘：9810 + 含锂电池 + 我方双重身份（货代+海外仓）下的责任叠加
+2. 三段式处置时间表：扣货后 24 小时 / 72 小时 / 7 天，每段时间窗内我方必须完成的动作清单（取文书、定主体、准备说明、申请预裁定/改单、担保放行、补税、整改）
+3. 与海关沟通的书面动作清单：查验记录签收、补充说明/情况陈述、归类预裁定申请、担保放行申请、改单/补充申报——每份文书的作用与要点
+4. 客户通知模板要点：我方应在什么时点、用什么结构通知深圳卖家，包含扣因、责任初步判断、我方动作、客户需配合事项、费用预估
+5. 事后整改：归类复核机制、单证体系、危险品专项尽调、人员培训、协议切责补强</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖家 + 我方（<b>货代兼德国海外仓运营</b>）+ 含锂电池带电产品 + <b>9810 出口海外仓</b>。两个扣货疑点：① HS 归类偏低（把本应按通信设备/含电池设备归类的货，错归普通塑料或电子配件，既少缴关税，又漏触发无线电型号核准与 3C 强制认证）；② 危险品申报缺失（锂电池属联合国第 9 类危险品 UN3480/UN3481，须 MSDS、UN38.3 测试报告、危险品包装证明）。<b>双重身份放大风险</b>：我方既是替客户报关的货代（名义申报人，D1 讲的坑），又是海外仓运营方（货进我仓我管），责任链条比纯货代更长——海关、税务、客户三头都可能找我。</p>
+<div class="key">风险叠加点：<b>9810 出口即退税 + 含锂电池属高危品 + 我方以己名报关 = 一旦查证，可能同时触发「申报不实补税罚款」+「危险品瞒报处罚」+「9810 退税单证不实追税」。三险并发，处置必须快且留证。</b></div>
+<h2>二、三段式处置时间表：24h / 72h / 7天</h2>
+<table><thead><tr><th>阶段</th><th>时间窗</th><th>必须完成的动作</th><th>交付物/证据</th></tr></thead><tbody><tr><td>第一段 24h</td><td>扣货当日~次日</td><td>① 当场签收并核对《查验记录》，确认扣因两项；② 立即通知客户并锁定责任初步判断；③ 取扣货文书原件/复印件；④ 冻结该票出货与退税操作</td><td>查验记录、扣货通知书、首次客户通知、内部责任备忘录</td></tr><tr><td>第二段 72h</td><td>第 2-3 天</td><td>① 准备《情况说明/补充说明》并提交海关；② 若归类拿不准，申请归类预裁定或查已有归类决定；③ 补齐危险品单证(MSDS/UN38.3/包装证明)或说明无法提供原因；④ 评估能否担保放行，准备保证金/保函；⑤ 客户配合单证到位</td><td>补充说明、预裁定申请/归类决定、危险品单证、担保申请</td></tr><tr><td>第三段 7天</td><td>第 4-7 天</td><td>① 按海关要求改单/补充申报，纠正 HS 与危险品申报；② 能担保放行的办担保放行进海外仓或退运；③ 确定补税/罚款金额并走缴款；④ 形成处置报告与客户结算；⑤ 启动事后整改</td><td>改单/补充申报、担保放行书、税票、处置报告、整改清单</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 海关扣留货物的法定期限与延长规则（《海关法》《海关行政处罚实施条例》相关条，待核实）；② 担保放行的保证金计算与保函格式（按涉税金额，待核实）；③ 归类预裁定的申请渠道与效力期（通常 3 年，待核实）；④ 危险品申报缺失的处罚幅度（按《危险化学品安全管理条例》及海关规定，待核实）。以上时限与金额以最新法条/公告为准。</div>
+<h2>三、与海关沟通的书面动作清单（五份文书）</h2>
+<ol><li><b>查验记录签收</b>：海关查验当场制作，我方签收前逐项核对「记载问题是否属实」，不符处当场批注——这是后续申诉的第一手证据，不签或乱签都被动。</li><li><b>情况说明/补充说明</b>：针对两项疑点分别陈述：HS 偏低是「客户提供的编码、我方已尽合理审查」还是「我方归类失误」；危险品缺失是「客户未提供还是我方漏报」。措辞须客观、留余地，不轻易认「故意」。</li><li><b>归类预裁定申请</b>：对 HS 拿不准的，向海关申请预裁定，用官方裁定确定正确编码，反证「技术性差错」而非「申报不实」，把罚款风险压低。</li><li><b>担保放行申请</b>：在补税/罚款未定前，提交保证金或银行保函申请先放行，避免货长期扣在口岸产生滞箱费/仓储费（每天金额待核实，标「待核实」），保住 9810 海外仓上架节奏。</li><li><b>改单/补充申报</b>：确认错误后主动申请改单（HS 更正）与补充申报（补危险品信息），主动纠错是减轻/免除处罚的关键情节。</li></ol>
+<div class="key">反制点（客户视角）：卖家应要求货代在提交每份海关文书前，先把副本与要点同步给自己，确保货代没有「为自保而把责任推给客户」的措辞；并在委托协议中约定「因货代归类/申报过错导致的补税罚款、滞箱费、担保金利息，由货代承担」。</div>
+<h2>四、客户通知模板要点（何时、怎么写）</h2>
+<ul><li><b>通知时点</b>：扣货 24h 内首次通知（动作+责任初步判断），之后每阶段节点（72h/7天）滚动更新。</li><li><b>结构六要素</b>：① 扣货事实（时间/口岸/海关文书号）；② 扣因两项（HS 偏低、危险品缺失）；③ 责任初步判断（谁提供单证/谁名义申报）；④ 我方已做与将做动作（时间表）；⑤ 客户需配合事项（补 MSDS/UN38.3、确认正确 HS、盖章确认）；⑥ 费用预估（补税/罚款/滞箱费/担保金区间，标「待核实」）。</li><li><b>措辞原则</b>：客观陈述、不给确定性结论、不替客户认责；费用写区间并注明「以海关最终决定为准」。</li><li><b>留证</b>：通知用书面（邮件+系统消息），要求客户回执确认，闭环留痕。</li></ul>
+<div class="key">货代自保写法：通知里把「单证由客户提供并确认」「我方仅代办」写清，让客户回执确认正确 HS 与危险品单证责任——一旦日后客户反咬「是你报错」，这份回执就是切责证据。</div>
+<h2>五、事后整改：从一票扣货到一套机制</h2>
+<ol><li><b>归类复核机制</b>：建立「敏感品类 HS 双人复核 + 归类决定库」；含电池/带电/通信类货强制查预裁定或已有归类决定，不靠经验。</li><li><b>单证体系</b>：接单即建「危险品专项包」——MSDS、UN38.3、危险品包装证明、运输鉴定书，缺一不接不报。</li><li><b>危险品专项尽调</b>：含锂电池货列入高危清单，接单前核验 UN 编号与第 9 类申报完整性，瞒报一律拒接。</li><li><b>人员培训</b>：报关与海外仓操作员季度培训（HS 易错品类、危险品识别、海关文书签收规范），留培训记录。</li><li><b>协议切责补强</b>：在《报关委托协议》增加「危险品如实申报承诺 + 单证真实责任归客户 + 货代免责追偿 + 因货代过错导致的补税罚款/滞箱费/担保利息由货代担」条款。</li></ol>
+<div class="key">实战口诀：<b>扣货先签收查验记录、24h 通知客户、72h 交说明与预裁定、7天改单担保止损。文书留副本、责任让客户回执确认、整改建「敏感品类双人复核+危险品专项包」——一票扣货，炼出一套防火墙。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Detention</div><div class="cn">扣留 / 海关扣留</div><div class="df">海关对涉嫌违规货物采取的控制措施；出货主须先查清扣留文书与理由，再定处置路径</div></div><div class="ti"><div class="en">Inspection Record</div><div class="cn">查验记录 / 查验情况记录</div><div class="df">海关查验后制作的文书，记载查验发现的问题；货代须签收并核对，是后续申诉与责任划分的基础证据</div></div><div class="ti"><div class="en">Classification Ruling</div><div class="cn">归类预裁定 / 海关预裁定</div><div class="df">企业就 HS 归类向海关申请的事前裁定，有效期内有确定性；可用于佐证「技术性差错」而非申报不实</div></div><div class="ti"><div class="en">Bonded Release</div><div class="cn">担保放行</div><div class="df">在税款/罚款未最终确定前，提供保证金或保函先放行货物，避免长期滞港产生巨额费用</div></div><div class="ti"><div class="en">Amendment</div><div class="cn">改单 / 补充申报</div><div class="df">发现申报错误后，向海关申请修改报关单或补充申报，纠正差错（技术性差错通常改单不罚）</div></div><div class="ti"><div class="en">DG Declaration</div><div class="cn">危险品申报 / Dangerous Goods Declaration</div><div class="df">托运人对危险品（如锂电池第 9 类）如实申报并提供 MSDS/UN38.3/包装证明的义务；缺失可触发扣货与处罚</div></div></div></div><div class="foot"><a href="W11-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W11-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

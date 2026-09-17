@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第8周·周末实战｜读一份真实提单背面条款并写出风险报告</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 8 · WEEKEND PROJECT　·　阶段二　运输责任制度</div><h1>周末实战⑧：审查一份提单背面条款并出具风险报告</h1><div class="sub">第 8 周主题：海上公约体系 —— 海牙 / 维斯比 / 汉堡 / 鹿特丹</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">读提单背面条款就是读保险合同的免责小字：正面漂漂亮亮，真正的游戏规则全在背面那几段密密麻麻的英文里。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 / 德国买方，海运整柜，买方指定我方为契约承运人并签发 House B/L）。给一份我方起草的提单背面 clause paramount + 免责条款 + 管辖权条款节选，列出 6 条风险点并说明后果（免责过宽、管辖权在承运人老家、责任限制未声明价值导致限额极低等），给出货主/我方应对。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要对一份海运提单的背面条款做风险审查并出具《提单条款风险报告》。设定：深圳卖方 + 德国买方，海运整柜（FCL），买方指定我方为契约承运人（contractual carrier）并签发 House B/L。请输出：1. 我方（承运人）视角：起草这份提单背面条款时，clause paramount + 免责条款 + 管辖权条款应怎么写才对我方有利（给可复制节选）；2. 反之，若一份提单背面出现以下「危险信号」条款，逐条列出风险点（至少 6 条）并说明后果：① 首要条款含糊写「适用国际公约」而非具体公约；② 免责条款过宽（把管货义务也免了）；③ 管辖权/仲裁条款约定在承运人主营业地（如香港）；④ 责任限制未声明价值导致按最低限额赔；⑤ 并入「双方互碰过失条款」（both-to-blame collision）；⑥ 喜马拉雅条款缺失或无效；⑦ 集装箱/托盘内件数未载明；⑧ 货损通知期短于法定；3. 货主（客户）看到这些条款的反制动作；4. 我方（承运人）的发单前自查清单（10 项）；5. 最后给一份「如果我方是货主，看到这份提单会怎么还价」的谈判脚本。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖方 + 德国买方，海运<b>整柜（FCL）</b>，买方指定<b>我方为契约承运人</b>并签发 <b>House B/L</b>。关键事实：① 我方不是实际船东，而是「契约承运人 / 多式联运经营人」，对全程负责，但可援引实际承运人；② 我方自己签发提单，意味着<b>背面条款是我方起草的</b>——条款写得好，责任地基稳，写得差，等于给货主递刀；③ FCL 下货主自行装箱，箱内货损争议大；④ 中德航线，货主（德国买方）是欧盟主体，维权能力强。本次实战目标：把 D1-D5 的规则，落进一张可交付的《提单条款风险报告》。</p>
+<div class="key">记忆点：<b>自己签发提单=自己写责任地基。承运人签 House B/L 时，背面每一句免责、每一个管辖地、每一项限额，都是日后赔不赔、赔多少的伏笔。</b></div>
+<h2>二、我方（承运人）起草背面条款的「有利写法」节选</h2>
+<h3>节选 A：首要条款（明确锁定海牙-维斯比）</h3>
+<blockquote>"CLAUSE PARAMOUNT: This Bill of Lading shall be governed by the Hague-Visby Rules contained in the International Convention for the Unification of Certain Rules of Law relating to Bills of Lading dated Brussels 25 August 1924 as amended by the Protocol signed at Brussels 23 February 1968, and as enacted in the country of shipment. If the Hague-Visby Rules are not compulsorily applicable, the Hague Rules 1924 shall apply."
+要点：① 点名 Hague-Visby（不写「国际公约」含糊词）；② 保留航行过失免责；③ 限额锚定 666.67 SDR/件。</blockquote>
+<h3>节选 B：管辖权条款（约定在承运人主营业地，对我方省成本）</h3>
+<blockquote>"JURISDICTION: Any dispute arising under or in connection with this Bill of Lading shall be subject to the exclusive jurisdiction of the courts of Hong Kong, and the laws of Hong Kong shall apply."
+要点：约定香港法院专属管辖，我方主场应诉、降低跨境诉讼成本；但须提示货主（格式条款提示义务）。</blockquote>
+<h3>节选 C：喜马拉雅条款（保护我方代理人/分包人）</h3>
+<blockquote>"HIMALAYA CLAUSE: Every exemption, limitation, condition and immunity contained in this Bill of Lading shall also apply to and protect the carrier's servants, agents, stevedores and independent contractors as if such provisions were expressly for their benefit."
+要点：让我方受雇人、代理、装卸人、分包人都能援引限额与免责，防止货主绕开承运人直接告分包人全额索赔。</blockquote>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 管辖权约定在承运人主营业地可能被货主以「格式条款显失公平」或「消费者/弱方保护」挑战，欧盟法院对航运格式条款审查口径须核对；② 喜马拉雅条款在我国《海商法》下无明文，但司法实践一般尊重其效力，须核对最新判例；③ 节选文本为通用起草范式，正式制单须经法务复核并留存版本。</div>
+<h2>三、危险信号条款：6 条风险点 + 后果</h2>
+<table><thead><tr><th>#</th><th>危险信号条款</th><th>后果</th><th>谁吃亏</th></tr></thead><tbody><tr><td>1</td><td>首要条款含糊写「This B/L shall be subject to international conventions」不点名公约</td><td>法院/仲裁按最有利货主的规则解释，可能被认定为适用汉堡→航行过失免责没了、2 年时效</td><td>承运人（我方）</td></tr><tr><td>2</td><td>免责条款过宽，把管货义务（海牙第 3 条 2 款）也免了</td><td>超出强制性最低义务，被认定无效；且违反海牙/海商法强制免责清单，条款整体受挑战</td><td>承运人（我方）</td></tr><tr><td>3</td><td>管辖权/仲裁约定在承运人老家（如香港/深圳）</td><td>货主（德国买方）跨境维权成本高、举证难，但欧盟买方可能以格式条款抗辩使条款无效</td><td>货主（但条款可能反噬我方）</td></tr><tr><td>4</td><td>责任限制未声明价值，按最低单位限额赔</td><td>一柜货损只赔 666.67 SDR 或 2 SDR/公斤，高值货血亏；货主未申报价值即默认限额</td><td>货主</td></tr><tr><td>5</td><td>并入 both-to-blame collision 条款</td><td>船舶碰撞我方有过失时，货主仍须按比例向我方分摊，货主索赔被砍</td><td>货主</td></tr><tr><td>6</td><td>集装箱/托盘内件数未载明</td><td>一柜只算「一件」，限额锁死 666.67 SDR，整柜高值货按一件赔</td><td>货主</td></tr><tr><td>7（附加）</td><td>货损通知期短于法定（如写「卸货后 3 日」）</td><td>货主超短期限未通知即失权，但短于法定的约定可能无效，引发争议</td><td>货主（条款效力存疑）</td></tr><tr><td>8（附加）</td><td>喜马拉雅条款缺失</td><td>货主绕开承运人，直接告我方装卸分包人全额索赔，限额保护落空</td><td>承运人（我方）</td></tr></tbody></table>
+<h3>逐条后果展开</h3>
+<ul><li><b>风险 1（含糊首要条款）</b>：最致命。我方若收来同行/船东提单写「subject to international conventions」，一旦货损，货主主张适用对其最有利的公约（汉堡/鹿特丹），我方航行过失免责与 1 年时效全失。→ 后果：责任敞口翻倍。</li><li><b>风险 2（免责过宽）</b>：海牙/海商法对承运人免责是<b>封闭列举 + 强制最低义务</b>，写「一切损失不赔」超出范围即无效，反而让我方丧失「有效免责」的法律确定性。→ 后果：条款无效、全额赔。</li><li><b>风险 3（管辖在老家）</b>：短期看我方主场省成本，但欧盟买方可能依《布鲁塞尔条例》或格式条款规则挑战，且一旦被认定无效，我方反要去德国应诉。→ 后果：双刃剑，须评估货主实力。</li><li><b>风险 4（未声明价值）</b>：高值电子产品整柜若只赔 666.67 SDR/件，实际损失可能百万，限额形同虚设。→ 后果：货主巨额差额自担，但会激化索赔、影响客户关系。</li><li><b>风险 5（双方互碰过失）</b>：美国 COGSA 下典型，货主在碰撞案中须向我方分摊，削弱其索赔。→ 后果：货主索赔被砍，但仅限碰撞场景。</li><li><b>风险 6（未载明件数）</b>：一柜算一件，限额极低。→ 后果：整柜高值货按一件赔，货主巨亏。</li></ul>
+<h2>四、货主（客户）反制动作</h2>
+<ul><li><b>反制 1（针对含糊首要条款）</b>：签约/收货前要求我方明示首要条款点名公约；若已签发含糊条款，主张按最有利货主解释。</li><li><b>反制 2（针对管辖在老家）</b>：以格式条款显失公平挑战管辖条款，争取在货主所在地（德国）诉讼；或要求改为中立仲裁地（如新加坡/伦敦）。</li><li><b>反制 3（针对未声明价值）</b>：装运前书面申报货物价值并载入提单，直接突破单位限额；高值货务必做。</li><li><b>反制 4（针对未载明件数）</b>：提单/装箱单载明集装箱内件数，避免一柜算一件。</li><li><b>反制 5（针对免责过宽）</b>：主张超出强制性最低义务的免责无效，要求按海牙/海商法强制免责清单判。</li><li><b>谁、何时、做什么</b>：货主在<b>签单前</b>即要求我方提供完整背面条款并审核；装运前申报价值、载明件数；不做→ 出事按最低限额赔、且管辖地不利。</li></ul>
+<div class="key">货主口诀：<b>签单前先要背面全文、装运前申报价值、装箱单写清件数、含糊条款主张最有利解释、管辖不利就挑战。四件事做齐，限额与管辖的坑就避了大半。</b></div>
+<h2>五、我方（承运人）发单前自查清单（10 项）</h2>
+<ol><li>首要条款是否点名 Hague-Visby（不写「国际公约」含糊词）</li><li>免责条款是否仅限海牙/海商法强制免责清单，未越界免管货义务</li><li>航行过失免责是否明文保留（海牙-维斯比特征）</li><li>责任限额是否锚定 666.67 SDR/件或 2 SDR/公斤（标待核实/换算）</li><li>喜马拉雅条款是否完整纳入受雇人/代理/分包人</li><li>管辖权/仲裁地是否明确且对我方可行（评估货主挑战风险）</li><li>集装箱/托盘内件数是否载明（防止一柜算一件）</li><li>货损通知期是否不低于法定（海商法 1 年时效框架内）</li><li>格式条款是否对货主尽到提示义务（避免被认定不生效）</li><li>实际承运人/分包人责任衔接条款是否写清（MTO 场景）</li></ol>
+<h2>六、如果我方是货主，看到这份提单会怎么还价（谈判脚本）</h2>
+<ul><li><b>开场</b>：「这份 House B/L 背面首要条款写『subject to international conventions』太含糊，我们要求明确写 Hague-Visby，否则我们理解为可适用对货主更有利的规则。」</li><li><b>价值</b>：「本柜为高值电子产品，装运前我们申报价值 XX 万美元并请载入提单，按申报值赔付，不按单位限额。」</li><li><b>件数</b>：「请在提单和装箱单载明集装箱内件数 XX 件，避免争议时按一件计赔。」</li><li><b>管辖</b>：「管辖权约定在贵司香港，我方跨境维权成本过高，建议改为中立仲裁地（新加坡 SIAC）或我方所在地，否则我们将在收货地诉讼。」</li><li><b>免责</b>：「免责条款不得超出海牙规则强制免责清单，管货义务不可免，请删除越界表述。」</li><li><b>喜马拉雅</b>：「请确认喜马拉雅条款覆盖贵司分包的装卸与陆运方，防止绕开贵司直接索赔。」</li></ul>
+<div class="key">实战口诀：<b>自己签单写死 Hague-Visby、免责不越界、管辖算清挑战风险、件数价值必载明、喜马拉雅必加。反过来当货主，四件事（要全文、报价值、写件数、争管辖）做齐，把限额与管辖的刀收回来。一份提单背面，写的人省百万、读的人防百万。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Clause Paramount</div><div class="cn">首要条款</div><div class="df">提单背面约定适用哪部公约/国内法的开关条款；写清 Hague-Visby 对我方最稳</div></div><div class="ti"><div class="en">Jurisdiction / Arbitration Clause</div><div class="cn">管辖权/仲裁条款</div><div class="df">约定争议由哪地法院或仲裁管辖；约定在承运人主营业地=货主维权成本高</div></div><div class="ti"><div class="en">Both-to-Blame Collision Clause</div><div class="cn">双方互碰过失条款</div><div class="df">船舶碰撞时，即使我方船有过失，货主仍须按比例向我方分摊损失的条款；美国 COGSA 下典型</div></div><div class="ti"><div class="en">Himalaya Clause</div><div class="cn">喜马拉雅条款</div><div class="df">使承运人的受雇人/代理人/分包人也能援引承运人免责与限额的保护条款，法定化于维斯比</div></div><div class="ti"><div class="en">Declared Value</div><div class="cn">声明价值</div><div class="df">托运人在装运前申报货物价值并载入提单，可突破单位责任限额，按申报值赔</div></div></div></div><div class="foot"><a href="W8-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W8-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

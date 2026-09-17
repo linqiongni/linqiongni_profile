@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第16周·第3天｜数据主体权利、安全事件与罚款：被找上门时的 SOP 与代价</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 16 · DAY 3 / 5　·　阶段三　境外法域与合规</div><h1>数据主体权利、安全事件与罚款：被找上门时的 SOP 与代价</h1><div class="sub">第 16 周主题：数据合规 —— GDPR 与中国数据出境</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">数据主体权利像顾客有权要求查看和删除自己的消费记录；罚款上限是 2000 万欧元或全球营业额的 4%，就像超速罚款按收入百分比算——大公司会很疼。</div><div class="mlink"><b>怎么串到今天</b>工具和协议之后，看违规的后果：权利、事件响应、罚款三条线。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>第 12-22 条各项权利：访问、更正、删除（被遗忘权）、限制处理、可携带、反对；响应时限原则 1 个月、可延长 2 个月</li><li>第 33 条 72 小时向监管机构报告、第 34 条向数据主体通知——触发标准不同</li><li>第 32 条安全措施是「过程义务」，做不到会被推定有责</li><li>第 83 条两档罚款：1000 万欧元或全球年营业额 2%（较轻）；2000 万欧元或 4%（较重），取高者</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《数据主体权利响应 SOP》+《数据泄露应急预案》+ 罚款梯度与典型案例</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 GDPR 数据主体权利、安全事件应对与罚款体系，站货代+海外仓立场给 SOP、应急预案与客户反制点：
+1. 第 12-22 条各项权利逐项：访问权、更正权、删除权（被遗忘权）、限制处理权、可携带权、反对权；每条在物流场景怎么落地（如买家要求删除其收件人记录）
+2. 响应时限：原则 1 个月，复杂可延长 2 个月，须通知；超时的后果
+3. 第 32 条安全措施：技术性与组织性措施清单，为什么是「过程义务」
+4. 第 33 条 72 小时报告监管机构 + 第 34 条通知数据主体：触发标准、内容、时限差异
+5. 第 83 条罚款两档梯度（金额与计算基数）、影响罚款轻重的考量因素；给 2-3 个已公开执法案例的金额（标待核实）
+6. 落到动作：《数据主体权利响应 SOP》（分角色：我方是处理者时如何转交控制者）+《数据泄露应急预案》（分段时间表+证据留存）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：数据主体权利像「快递柜取件码的主人随时能改密码、删记录」</h2>
+<p>把个人数据想成「别人寄存在你快递柜里的包裹，柜主（数据主体）随时有权：查看里面有什么（访问）、改错的信息（更正）、让你把包裹扔了（删除）、暂停投递（限制）、整包搬去别家（可携带）、不让你拿去干别的（反对）」。GDPR 把这些权利写成了法条，且<b>响应有死线</b>——你不理或超时，柜主就去监管那告你。怎么串到昨天：昨天讲「凭什么处理、凭什么传出欧盟」，今天讲「数据主人找上门要权利、出事了要报告、违法了要挨罚」——这是数据合规的「售后与追责」闭环。</p>
+<div class="key">记忆点：<b>数据主体六项权利是「柜主的钥匙」；响应死线是 1 个月（可延 2 个月）；泄露 72 小时报监管；罚款两档取高者，最高可到全球营业额 4%（2000 万欧元兜底）。</b></div>
+<h2>二、第 12-22 条六项权利：物流场景落地</h2>
+<table><thead><tr><th>权利</th><th>条文</th><th>物流场景落地</th><th>我方动作（处理者）</th></tr></thead><tbody><tr><td>访问权</td><td>Art. 15</td><td>买家问「你们存了我哪些收件信息」</td><td>转交控制者，配合提供副本</td></tr><tr><td>更正权</td><td>Art. 16</td><td>收件人电话填错要求改</td><td>通知控制者更正并留痕</td></tr><tr><td>删除权</td><td>Art. 17</td><td>买家要求删其全部配送记录</td><td>评估是否豁免（如海关留痕义务冲突）</td></tr><tr><td>限制处理</td><td>Art. 18</td><td>争议期间暂停处理其数据</td><td>标记隔离、暂停相关处理</td></tr><tr><td>可携带权</td><td>Art. 20</td><td>买家要把订单数据搬到别家平台</td><td>结构化机器可读格式移交</td></tr><tr><td>反对权</td><td>Art. 21</td><td>反对我方用其数据做正当利益分析</td><td>停止该目的处理除非有压倒性理由</td></tr></tbody></table>
+<p><b>删除权（被遗忘权）最常踩坑</b>：买家要求删收件记录，但我方因海关申报、税务留痕有法定留存义务（法律义务基础），此时「删除权受例外限制」——须向买家说明不能立即删的原因，而非简单拒绝或违规删除。处理者（我方）无独立决定权，必须转交控制者（客户）并协助。</p>
+<h2>三、响应时限：1 个月是死线，可延长但不能无限</h2>
+<p>控制者须在<b>收到请求后 1 个月内</b>回应（Art. 12(3)），复杂或批量请求可<b>延长 2 个月</b>但须在此期间内通知数据主体并说明理由。免费为原则，明显无理或重复的请求可收费或拒绝（须说明）。<b>超时后果</b>：数据主体可向监管机构投诉、提起诉讼，监管可将「未配合权利」作为加重罚款的考量；我方作为处理者超时未协助控制者，构成对 DPA 的违约，控制者可索赔。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各权利对应条文号（访问 15、更正 16、删除 17、限制 18、可携带 20、反对 21，须核对是否跨条）；② 1 个月/延长 2 个月的起算与通知要求以 Art. 12 为准；③ 「免费」例外与收费标准以监管指南为准。</div>
+<h2>四、第 32 条安全措施：是「过程义务」不是「结果保证」</h2>
+<p>Art. 32 要求与风险相称的技术性与组织性措施（加密、假名化、持续保密性完整性可用性测试、事件响应）。它难在是<b>过程义务</b>——监管不只看「有没有出事」，更看「你有没有做该做的、有没有记录」。做不到的措施会被<b>推定你有责</b>，泄露时难逃罚。物流实操清单：传输加密（TLS）、数据库访问分级、操作员账号最小权限、日志留存、定期渗透测试（频率待核实）。</p>
+<h2>五、泄露应急：第 33 条 72 小时报监管 vs 第 34 条通知本人</h2>
+<table><thead><tr><th>维度</th><th>Art. 33 报监管机构</th><th>Art. 34 通知数据主体</th></tr></thead><tbody><tr><td>触发</td><td>可能发生「个人权益风险」的泄露</td><td>泄露「很可能带来高风险」</td></tr><tr><td>时限</td><td>知悉后 72 小时内</td><td>无硬期限，须「毫不迟延」</td></tr><tr><td>对象</td><td>成员国数据保护局（DPA）</td><td>受影响的数据主体本人</td></tr><tr><td>门槛</td><td>风险门槛较低</td><td>高风险门槛更高——并非每起都通知</td></tr></tbody></table>
+<h2>六、第 83 条罚款两档梯度与典型案例</h2>
+<p>罚款按两档计，<b>取高者</b>（Art. 83(4)/(5)）：</p>
+<table><thead><tr><th>档</th><th>上限</th><th>适用违规类型</th><th>示例</th></tr></thead><tbody><tr><td>较轻档</td><td>1000 万欧元 或 全球年营业额 2%</td><td>违反第 8 章（处理安全 Art. 32）、第 11 章（DPA/认证）等</td><td>未签 DPA、安全措施不足、分包未授权</td></tr><tr><td>较重档</td><td>2000 万欧元 或 全球年营业额 4%</td><td>违反第 5 章（基本原则）、第 6 章（合法性）、第 7 章（数据主体权利）、跨境传输等</td><td>无合法性基础、非法传输、拒不响应权利</td></tr></tbody></table>
+<p><b>影响轻重的考量因素</b>（Art. 83(2)）：违规性质/严重程度/持续时间、是否故意、是否减损措施、配合程度、既往违规、数据类别、主动补救。案例金额（<b>待核实，以 EDPB 年度执法报告与各 DPA 公开决定为准</b>）：① 某大型科技平台因广告追踪被罚 <b>12 亿欧元</b>（2023，须核对主体与金额）；② 某航司因不安全 API 泄露旅客数据被罚数千万欧元量级（须核对）；③ 某电商因未设合法传输机制被罚千万欧元量级（须核对）。<b>我方体量虽小，但「非法跨境传输 + 无 DPA」恰好落在较重档，单笔即可达 2000 万欧元或 4% 营业额——对中小货代是灭顶数字。</b></p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 两档金额基数（「全球年营业额」以集团合并营业额计，须核对计算口径）；② 上述案例的处罚主体、年份、金额以欧盟各成员国 DPA 与 EDPB 公开数据库（edpb.europa.eu）为准，引用前务必核对；③ 罚款裁量指南以 EDPB Guidelines 04/2022 为准。</div>
+<h2>七、落到动作：两份 SOP</h2>
+<h3>《数据主体权利响应 SOP》（我方为处理者）</h3>
+<ol><li>收到请求→24 小时内登记并转交控制者（客户），记录时间戳。</li><li>核实请求人身份（防冒领），要求控制者确认。</li><li>协助控制者调取相关数据，7 日内提供。</li><li>控制者决定删除/更正后，我方在 15 日内执行并留证据。</li><li>全程留痕：请求邮件、转交记录、执行截图，保存 ≥2 年（待核实）。</li></ol>
+<h3>《数据泄露应急预案》（分段时间表）</h3>
+<ol><li><b>0-4 小时</b>：发现人报数据安全负责人，冻结涉事系统访问、保留日志快照。</li><li><b>4-24 小时</b>：初步定级（是否触及个人数据、风险高低），成立应急小组。</li><li><b>24-72 小时</b>：若达 Art. 33 门槛，由控制者向 DPA 报告；我方提供事实材料与影响评估。</li><li><b>72 小时后</b>：若达 Art. 34 高风险门槛，协助控制者通知数据主体（内容含性质、后果、补救措施）。</li><li><b>事后 30 日</b>：复盘、补措施、更新 TIA，归档全部证据备查。</li></ol>
+<div class="key">反制点（客户/控制者视角）：客户会在 DPA 里约定「泄露通知时限短于 72 小时（如 24 小时）由我方先行通报客户」，并把我方未及时通报导致的监管罚款列为我方赔偿责任；客户还可要求我方购买网络安全责任险并将客户列为附加被保险人。</div>
+<div class="key">今日口诀：<b>六项权利是柜主钥匙，1 个月死线可延 2 月；泄露 72 小时报监管、高风险再告本人；罚款两档取高，非法传输落重档可到 4% 营业额。SOP 留痕、应急分段——被找上门时不慌。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Data Subject Rights</div><div class="cn">数据主体权利</div><div class="df">GDPR 第 12-22 条赋予个人的访问、更正、删除、限制、可携带、反对等权利</div></div><div class="ti"><div class="en">Right to Erasure</div><div class="cn">删除权 / 被遗忘权</div><div class="df">Art. 17：数据主体有权要求删除其个人数据，控制者须在无不当迟延内删除</div></div><div class="ti"><div class="en">Data Breach</div><div class="cn">个人数据泄露 / 安全事件</div><div class="df">Art. 4(12)：导致个人数据意外或非法毁损、丢失、 alteration、未经授权披露或访问的安全事件</div></div><div class="ti"><div class="en">72-hour Notification</div><div class="cn">72 小时通知义务</div><div class="df">Art. 33：控制者在知悉泄露后 72 小时内向监管机构报告（除非不太可能带来风险）</div></div><div class="ti"><div class="en">Administrative Fine</div><div class="cn">行政罚款</div><div class="df">Art. 83 两档：较轻 1000 万欧元或全球年营业额 2%；较重 2000 万欧元或 4%，取高</div></div><div class="ti"><div class="en">Security of Processing</div><div class="cn">处理安全 / 安全措施</div><div class="df">Art. 32：须采取与风险相称的技术性与组织性措施，是持续性过程义务</div></div></div></div><div class="foot"><a href="W16-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W16-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

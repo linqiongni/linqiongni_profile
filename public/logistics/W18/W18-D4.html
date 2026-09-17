@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第18周·第4天｜税务：VAT、常设机构与转让定价</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 18 · DAY 4 / 5　·　阶段三　境外法域与合规</div><h1>税务：VAT、常设机构与转让定价</h1><div class="sub">第 18 周主题：海外子公司 —— 德国、波兰、墨西哥</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">常设机构就像你在当地有了「固定营业场所」：海外仓一旦被认定构成常设机构，就要在当地交税。这是海外仓布局最容易踩的税务地雷。</div><div class="mlink"><b>怎么串到今天</b>人之后是钱：税务决定你的海外仓到底赚不赚钱。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>增值税登记与申报周期各国差异：德 19% 标准税率月/季申报，波 23%，墨 16%（均须核对现行税率）</li><li>常设机构 PE 构成要件：固定营业场所 + 企业部分营业通过它进行；海外仓是否构成 PE 是跨境电商最大坑</li><li>PE 触发点：仓储本身未必构成（预备性/辅助性豁免），但加人员（销售/签约）即可能构成</li><li>企业所得税：德 ~30%（含团结税/地税，待核实）、波 19%、墨 30%（均待核实）</li><li>转让定价三法（CUP/Resale Price/Cost Plus）+ 同期资料 Local/Master/CbCR 门槛须核对</li><li>预提税与税收协定：股息/利息/特许权使用费预提税率依协定，具体税率标「待核实」</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《常设机构风险自查表》+《集团关联交易合规清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解海外仓主体的税务合规，聚焦德国/波兰/墨西哥，站我方（物流商/海外仓）立场 + 客户反制点：
+1. 增值税 VAT：三国登记门槛、标准税率、申报周期（月/季/年）、OSS/IOSS 等简化机制（须核对）
+2. 常设机构 PE（Permanent Establishment）：OECD 与三国国内法下的构成要件；我方海外仓「纯仓储」是否构成 PE？什么人员/活动配置会触发 PE（销售、签约、存货管理权限）
+3. 企业所得税：三国税率区间（待核实），与 PE 的关系（PE 才有纳税义务）
+4. 预提税与税收协定：股息/利息/特许权使用费预提税率，中德/中波/中墨协定具体税率（标待核实）
+5. 转让定价 TP：可比非受控价格法 CUP / 再销售价格法 / 成本加成法 三种方法，同期资料 Local File / Master File / CbCR 的门槛（须核对），关联服务费定价文档要求
+6. 落到业务动作：《常设机构风险自查表》《集团关联交易合规清单》</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：海外仓税务像「在别人家客厅放了个储物柜」——放东西没事，天天在那做生意就得出租费</h2>
+<p>把 PE（常设机构）想成「在别人国家放东西」：你只是<b>寄存一个储物柜（纯仓储）</b>，房东（税务当局）通常不找你收「营业租费」；但你如果<b>天天在柜子前摆摊卖货、签合同、收钱</b>，税务局就认定你「在那儿做生意」了，要你按当地税交。最经典的坑是：我方德国海外仓本来只是存货，<b>客户（卖家）的销售团队或我方人员开始在那儿接单、定价、发货指令</b>，一脚踩进 PE，整个利润要在德国交企业所得税+增值税。怎么串到前三天：主体（D1-D2）解决了「合法存在」，用工（D3）解决了「谁干活」，今天解决「干这些活要不要在当地交税、怎么交、关联交易怎么定价才算干净」。</p>
+<div class="key">记忆点：<b>纯仓储未必是 PE，加销售/签约人员就是 PE；PE 一触发，当地企业所得税+增值税全来。海外仓税务第一问永远是：我的人在那儿动了什么？</b></div>
+<h2>二、增值税 VAT：三国税率与申报</h2>
+<table><thead><tr><th>国家</th><th>标准税率（待核实）</th><th>登记门槛</th><th>申报周期</th><th>简化机制</th></tr></thead><tbody><tr><td>德国</td><td>19%</td><td>达 threshold 或自愿（须核对）</td><td>月/季+年汇（须核对）</td><td>OSS/IOSS 适用于电商</td></tr><tr><td>波兰</td><td>23%</td><td>达 threshold（须核对）</td><td>月/季（须核对）</td><td>OSS/IOSS</td></tr><tr><td>墨西哥</td><td>16%</td><td>注册即征（须核对）</td><td>月（须核对）</td><td>无欧盟 OSS，走本地 RFC</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 三国 VAT 标准税率现行值（德国 19%、波兰 23%、墨西哥 16% 为常见值但须每年核对预算法）；② 远程销售登记门槛（德国/波兰受 EU 统一 threshold 影响，须核对现行额）；③ 申报周期与缴纳时限；④ OSS/IOSS 适用范围与注册路径以各国财政部公告为准。</div>
+<h2>三、常设机构 PE：海外仓的「命门」</h2>
+<p>OECD 税收协定范本与三国国内法下，<b>PE 一般要件 = 固定营业场所 + 企业通过它从事全部或部分营业</b>。对海外仓的关键判断：</p>
+<ul><li><b>纯仓储</b>：存货储存、交付前的保管，通常被认定为「预备性/辅助性活动」，<b>不构成 PE</b>（协定范本第 5(4) 条精神，须核对三国国内适用）。</li><li><b>加人员即危险</b>：若我方或客户人员在仓内<b>洽谈销售、签订销售合同、决定价格、管理客户信用</b>，该场所很可能被认定 PE。</li><li><b>存货管理权限</b>：仅按指令发货一般安全；若有权<b>修改订单、定价、选择客户</b>，风险上升。</li><li><b>服务型 PE / 代理型 PE</b>：通过固定代理人（经常有权以企业名义签合同）亦可能构成代理型 PE。</li></ul>
+<div class="key">自查动作（落到谁/何时/证据）：① 我方德国仓只做「收货-存储-按指令发货」，合同中写清<b>无销售、无定价、无签约权</b>；② 销售职能留在母公司或独立销售实体，仓内人员不碰客户合同；③ 留存仓内 SOP 与人员职责说明，证明「辅助性」；④ 一旦客户要求仓内人员代接单，立即评估 PE 并定价含当地税，否则后果：补企业所得税+利息+罚款（数额待核实）。</div>
+<h2>四、企业所得税 CIT 与 PE 的关系</h2>
+<table><thead><tr><th>国家</th><th>CIT 税率区间（待核实）</th><th>纳税义务触发</th></tr></thead><tbody><tr><td>德国</td><td>含团结税/地税约 ~30%</td><td>仅就德国 PE 利润或居民企业全球利润</td></tr><tr><td>波兰</td><td>19%（亦有优惠档，须核对）</td><td>仅就波兰 PE 利润或居民企业利润</td></tr><tr><td>墨西哥</td><td>30%（须核对）</td><td>仅就墨西哥 PE 利润或居民企业利润</td></tr></tbody></table>
+<p>核心逻辑：<b>没有 PE，就没有当地企业所得税</b>。所以 PE 自查不是学术题，是直接决定「这仓的利润要在当地交多少税」。我方作为物流商，若被认定在德国构成 PE，不仅自家利润要交，还可能被认定为代客户从事经营而牵连客户——这是双向风险。</p>
+<div class="key">反制点（客户视角）：跨境电商卖家用我方海外仓，应确认我方仓<b>不构成 PE</b>（避免卖家被认定为在当地有经营从而触发其自身纳税义务）；可在仓储协议要求我方出具「仓内活动范围声明」。我方立场：严守辅助性边界，是对自己和客户双重保护。</div>
+<h2>五、预提税与税收协定</h2>
+<p>集团内跨境付款（股息、利息、特许权使用费、服务费）在支付国可能被<b>预提税 Withholding Tax</b> 截流。中德/中波/中墨均有<b>税收协定</b>可降低预提率，但<b>具体协定税率须逐条核对</b>（如特许权使用费协定率常低于国内法定率）。不查协定直接付，等于白交差额税。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 中德、中波、中墨协定关于股息/利息/特许权使用费的具体限制税率与主要受益人（LOB）条款；② 申请协定优惠所需的税收居民证明（中国税务机关出具）与申报路径；③ 墨西哥对外国技术服务费等是否征预提（须核对）。以上以三国税务机关与国家税务总局协定文本为准。</div>
+<h2>六、转让定价 TP：关联交易必须「像外人一样算账」</h2>
+<ul><li><b>独立交易原则</b>：集团内我方海外仓与母公司/关联销售公司的交易，价格须等同非关联方（否则税务调整+罚息）。</li><li><b>三种方法</b>：可比非受控价格法 <b>CUP</b>（最优先，找可比市价）、再销售价格法（RPM，用下游毛利倒推）、成本加成法（Cost Plus，成本+合理毛利）。</li><li><b>同期资料三层</b>：主体文档 <b>Master File</b>、本地文档 <b>Local File</b>、国别报告 <b>CbCR</b>；触发门槛（合并营收、跨境关联交易额）<b>须核对</b>三国规定。</li><li><b>关联服务费</b>：母公司向海外仓收取管理费/IT 费/品牌费，须有真实服务基础、可量化受益、按市场费率——否则被认定为「利润转移」而调增。</li></ul>
+<div class="key">落地动作：① 我方海外仓与关联方的仓储/服务费定价，签<b>书面关联交易协议</b>并留存定价依据（可比分析）；② 达门槛即备 Local/Master File，CbCR 按集团要求；③ 不做后果：税务稽查调增利润+补缴 CIT+利息罚款（数额待核实），且可能引发三国同时调整（双重征税）。</div>
+<h2>七、落到动作：两份清单</h2>
+<ol><li>《常设机构风险自查表》：场所用途/人员职责/签约权/定价权/存货权限——逐项打勾，任一「销售/签约」即红灯。</li><li>《集团关联交易合规清单》：关联方清单、交易类型、定价方法、同期资料状态、税收居民证明、预提税协定适用。</li><li>证据留存：仓内 SOP、人员岗位职责、关联交易合同、定价分析、税务申报与缴纳凭证，保存至法定年限（须核对）。</li><li>年度复核：每年由三国税务顾问重评 PE 与 TP，政策/业务变动即更新。</li></ol>
+<div class="key">今日口诀：<b>纯仓储不 PE、加人即 PE；PE 触发当地 CIT+VAT；预提税先查协定再付；关联交易按独立原则定价、留同期资料。海外仓税务，先管住「人在仓里动了什么」，再管好「集团内部怎么算账」。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">VAT</div><div class="cn">Value Added Tax / 增值税</div><div class="df">对商品与服务增值额征收的间接税；德国 19%、波兰 23%、墨西哥 16% 为标准税率（均须核对现行值）</div></div><div class="ti"><div class="en">PE</div><div class="cn">Permanent Establishment / 常设机构</div><div class="df">税收协定下企业在一国设有固定营业场所并从事营业，即在该国产生纳税义务；海外仓是否构成是核心风险</div></div><div class="ti"><div class="en">CIT</div><div class="cn">Corporate Income Tax / 企业所得税</div><div class="df">对企业利润征收；税率德（含附加税）~30%、波 19%、墨 30% 均待核实，仅就 PE 或居民企业利润征</div></div><div class="ti"><div class="en">Withholding Tax</div><div class="cn">预提税 / 预扣税</div><div class="df">对跨境股息/利息/特许权使用费在源头的扣缴税；协定可降率，具体税率须核对税收协定</div></div><div class="ti"><div class="en">TP</div><div class="cn">Transfer Pricing / 转让定价</div><div class="df">关联企业间交易须按独立交易原则定价；方法含 CUP/再售价/成本加成，须同期资料</div></div><div class="ti"><div class="en">Local File / Master File / CbCR</div><div class="cn">本地文档/主体文档/国别报告</div><div class="df">转让定价同期资料三层；门槛（如合并营收、跨境关联交易额）须核对各国规定</div></div></div></div><div class="foot"><a href="W18-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W18-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

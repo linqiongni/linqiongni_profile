@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第12周·第3天｜美国清关：ISF、HTS、CBP 与 301——10+2 是进门前的安检</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 12 · DAY 3 / 5　·　阶段二　主干法律</div><h1>美国清关：ISF、HTS、CBP 与 301——10+2 是进门前的安检</h1><div class="sub">第 12 周主题：海关与通关（欧美侧） —— 目的国才是真正的战场</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">ISF 就像提前 24 小时报备来访名单，不报别想进门；CBP 是门卫，301 关税是额外加收的门票钱。美国线的规矩比欧洲更硬、罚得更狠。</div><div class="mlink"><b>怎么串到今天</b>欧盟看完，今天看美国——同一批货换个目的国，合规动作完全不同。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>ISF「10+2」：进口商报10项、承运人报2项；须在货物装船前24小时提交（时限须核对）</li><li>HTS 归类决定关税税率与是否落入 301 加征清单——归错类=补税+罚款+刑事风险</li><li>我方作为货代若被列为 ISF 申报主体之一，须对申报要素真实性负责；晚报/错报 CBP 罚金（数额待核实）</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《美国进口清关合规清单》+《ISF 申报要素核对表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解美国进口清关，站货代立场，给客户反制点，罚金数字标「待核实」：
+1. ISF（Importer Security Filing，"10+2"）：10项进口商要素（如制造商、卖主、收货人、HS-6、原产国等）与2项承运人要素（船名航次、集装箱号等）；申报时限（装船前24小时，须核对）、谁负责报、晚报/错报后果
+2. HTS 归类：Harmonized Tariff Schedule 是什么、归类错误后果、谁负责归类、我方能否代客户归类
+3. CBP 查验与扣货程序：查验类型（单证查验/人工查验/X光）、扣留(hold)/查封(seizure)/放行流程、货主怎么应对
+4. 301 关税：美国贸易法301条对中国商品加征关税，分 List 1-4 多批清单；加征税率（待核实）；排除申请(exclusion)路径与时效（待核实）
+5. 我方作为货代被列为 ISF 申报主体之一时的责任边界：什么情况下我方须报、错报我方担多少、如何切割
+6. 落地动作：给客户《美国进口清关合规清单》与《ISF 申报要素核对表》</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：ISF 是上飞机前的安检，漏报直接被拦</h2>
+<p>坐国际航班你得提前填安检信息，美国进口清关的 <b>ISF 就是「货物版安检」</b>：船还没开，CBP 就要先拿到这票货的「10+2」情报。晚交、错交，货到港可能被扣、罚款、甚至整柜退运。怎么串到今天：欧盟那套是「到了海关刷 EORI 取件」，美国这套是「没上船前就得先把情报交了」——两边战场不同，但核心一样：<b>清关主体责任与信息真实性，是物流方不能让渡的底线。</b> 昨天讲欧盟 VAT/代表，今天讲美国这套进场安检与关税加征。</p>
+<div class="key">记忆点：<b>ISF 10+2 是货物登船前的安全申报；HTS 归类决定「交多少税、是不是被 301 加码」；CBP 是拦人的关；货代若被列为 ISF 申报方，错报就要担责——切割在第一位。</b></div>
+<h2>二、ISF「10+2」逐项数</h2>
+<table><thead><tr><th>类别</th><th>要素</th><th>由谁报</th></tr></thead><tbody><tr><td>进口商 10 项</td><td>1.制造商/供货商 2.卖方 3.买方/收货人 4.海运集装箱装箱地点 5.拼箱收货人 6.收货人税号 7.HTS 6位编码 8.原产国 9.商品描述 10.集装箱/封条号(部分)</td><td>进口商(IOR)，常委托货代/报关行</td></tr><tr><td>承运人 2 项</td><td>1.船名/航次/国际航协识别 2.装箱港口/日期（载货船舶IMO号等）</td><td>承运人/船公司</td></tr></tbody></table>
+<p><b>时限（待核实）</b>：惯常要求是货物在外国港口<b>装船前 24 小时</b>提交 ISF（即「装船前」而非「到港前」）。晚交或信息不实，CBP 可拒装、扣货、罚款（罚金数额待核实，历史口径每票可至上千美元级，以 CBP 现行执法为准）。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① ISF 提交具体时限（装船前 24 小时为通用口径，核对 CBP 19 CFR 149 现行文本）；② 晚报/错报罚款具体数额与计算方式（CBP 执法更新频繁，标待核实）；③ 哪些要素由进口商 vs 承运人分别负责，以 CBP 指引为准。</div>
+<h2>三、HTS 归类：一行编码定生死</h2>
+<ul><li><b>是什么</b>：Harmonized Tariff Schedule of the US，10 位编码；前 6 位国际通用，后 4 位美国自用。</li><li><b>决定什么</b>：① 基础关税税率；② 是否落入 <b>301 加征清单</b>（对中国商品的额外关税）；③ 是否需许可证/认证。</li><li><b>归错后果</b>：低报税则=逃税（补税+罚款+刑事风险）；高报=白交钱客户亏。归类须依货物实质，引用 GRI（通用解释规则）。</li><li><b>谁负责</b>：法定由进口商负责归类；<b>货代可代客户初拟，但最终责任在进口商</b>——我方代归类须让客户书面确认并免责。</li></ul>
+<div class="key">反制点（客户/卖家视角）：卖家自己要掌握 HS/HTS 归类，别全甩货代。若货代归错导致 301 加征漏算，卖家要么被海关补税，要么被客户索赔。卖家应在出货前拿到货代归类书面确认，并保留「最终归类由我方核定」的主动权。</div>
+<h2>四、CBP 查验与扣货程序</h2>
+<ul><li><b>查验类型</b>：单证查验（文件审核）、X 光/扫描查验、人工开箱查验（intensive exam）。查验比例与命中率随品类/原产地浮动。</li><li><b>扣留(hold)/查封(seizure)</b>：CBP 可因申报不符、需许可、疑似侵权或违禁而<b>扣留</b>；涉嫌违法可<b>查封/没收</b>。</li><li><b>放行</b>：单证与货无误即放行；有疑点则进「审查/补税」流程。</li><li><b>货主应对</b>：收到 CBP 通知 24-48h 内补交单证、说明、申请延期；对查封可提抗议(protest)/申诉，时限须核对。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：CBP 查验后货主提交补充材料时限、对扣留/查封提起 protest 的法定时限（通常需在决定后 180 天内，待核对 19 CFR 174），以 CBP 规则为准。</div>
+<h2>五、301 关税：中美贸易战的加征清单</h2>
+<ul><li><b>来源</b>：美《1974 贸易法》第 301 条，对中国商品加征额外关税，分 <b>List 1-4</b> 多批，覆盖数千亿美金额度。</li><li><b>税率（待核实）</b>：各清单加征税率不同（历史区间约 7.5%–25%），须核对 USTR 现行清单与税率。</li><li><b>排除申请(exclusion)</b>：特定 HTS 税号可在 USTR 开放窗口期申请豁免；获批后追溯减免已缴加征。窗口期不定时开放，须盯 USTR 公告。</li><li><b>我方动作</b>：出货前查 HTS 是否落入 301 清单；若落入，向客户提示加征成本，并在报价单列明「301 加征由客户承担」。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 现行 301 加征清单与税率（USTR 官网、Federal Register）；② 排除申请开放窗口与获批追溯范围；③ 部分清单的豁免是否延期/失效，以最新公告为准。</div>
+<h2>六、我方作为货代被列为 ISF 申报主体时的责任切割</h2>
+<p>实务中进口商常委托我方货代提交 ISF。关键：<b>谁在 ISF 里被署名为「申报人」，谁就对申报要素的真实性负责</b>。若我方以自己名义提交且要素来自客户但未经核实，报错即我方担责。</p>
+<ul><li><b>切割做法①</b>：ISF 以客户（进口商）为申报主体，我方仅「代为传输」，合同写明「申报信息由客户提供并负责，我方仅技术传输」。</li><li><b>切割做法②</b>：要求客户提供 ISF 要素《确认单》并签章，留存记录；晚交导致的船期损失约定由客户承担。</li><li><b>切割做法③</b>：绝不代客户做「实质性归类判断」——HTS 由客户核定，我方初拟仅供确认。</li></ul>
+<h2>七、落地动作：两张表</h2>
+<ol><li>《美国进口清关合规清单》：EORI 等价物（美国无 EORI，用 Importer 税号/IRS 或 CBP  assigned）、HTS 核对、ISF 时限、301 筛查、CBP 应对人称</li><li>《ISF 申报要素核对表》：10+2 逐项勾选，标注「客户提供/我方代传/确认单已签」</li><li>合同必备：「ISF/HTS 信息由客户负责，我方不连带；301 加征由客户承担；晚交致损客户赔」</li></ol>
+<div class="key">今日口诀：<b>美国清关三件套——ISF 装船前交、HTS 决定税与301、CBP 拦人靠真实。货代只做传输不做主体、只代传不背锅；归类与税让客户拍板，合同切干净，这票才敢发美西。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">ISF</div><div class="cn">Importer Security Filing / 进口安全申报</div><div class="df">美国「10+2」安全申报；进口商报10项、承运人报2项；须在装船前规定时限提交（待核实具体小时数）</div></div><div class="ti"><div class="en">HTS</div><div class="cn">Harmonized Tariff Schedule / 美国协调关税表</div><div class="df">美国商品归类编码（10位）；决定关税税率与是否落入301加征清单；归类错误致补税罚款</div></div><div class="ti"><div class="en">CBP</div><div class="cn">U.S. Customs and Border Protection / 美国海关与边境保护局</div><div class="df">美国海关主管机关；负责查验、扣留、估价、征税与执法</div></div><div class="ti"><div class="en">Section 301</div><div class="cn">301 条款关税</div><div class="df">美《1974 贸易法》301条对中国商品加征的额外关税；分多批清单(List 1-4)，税率待核实</div></div><div class="ti"><div class="en">Exclusion</div><div class="cn">排除申请</div><div class="df">就特定 HTS 税号向 USTR 申请豁免 301 加征；须在规定窗口期提交，获批后追溯减免</div></div></div></div><div class="foot"><a href="W12-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W12-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

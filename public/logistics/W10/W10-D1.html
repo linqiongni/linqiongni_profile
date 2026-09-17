@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·第1天｜多式联运：网状责任制 vs 统一责任制——货损在哪一米，赔多少天差地别</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · DAY 1 / 5　·　阶段二　运输责任制度</div><h1>多式联运：网状责任制 vs 统一责任制——货损在哪一米，赔多少天差地别</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">网状责任制像「哪段出事按哪段法律赔」，统一责任制像「整趟按一个标准赔」。差别在于：当货损坏在不知道哪一段时，两种制度赔出来的钱能差好几倍。</div><div class="mlink"><b>怎么串到今天</b>单一方式学完，今天处理最现实的场景：一票货走了好几种运输方式。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>多式联运经营人（MTO）= 一人接全程、分段找分包（船/车/飞机/铁路），像包整栋长租公寓的总包</li><li>网状责任制：货损发生在哪一段，就按那一段的公约/法律赔；统一责任制：全程一把尺</li><li>《海商法》第四章第八节（第 102–106 条，条号待核实）规定我国多式联运采网状责任制</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《多式联运责任制度对照表》+《多式联运合同责任条款模板》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解多式联运（multimodal transport）的责任制度，输出《多式联运责任制度对照表》与《多式联运合同责任条款模板》：
+1. 先用生活化比喻讲清"多式联运经营人（MTO）"是什么：一个人跟客户签全程合同、收全程运费，自己不跑船不跑车，转手把各段分包给船公司、铁路、卡车、航空公司——他到底是"总包"还是"介绍所"？
+2. 网状责任制（network liability）vs 统一责任制（uniform liability）：两种制度下，货损赔偿分别怎么算？核心差异在哪？
+3. 重点讲透"货损区段不明"的赔差：网状制下若查不出货损发生在哪一段，后果是什么；统一制下又是如何。给出一个具体测算示例（含数字，金额标"待核实"）。
+4. 《海商法》第四章第八节（多式联运经营人责任，第 102–106 条，条号待核实）分别怎么规定的？我国采哪种制度？
+5. 国际公约层面：海牙-维斯比、汉堡规则、鹿特丹规则对多式联运分别是什么态度？中国缔约状态如何？
+6. 站在物流商（MTO）立场，合同条款应如何设计以争取有利的限额；同时给出客户（货主）的反制点</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：MTO 是“总包”，不是“介绍所”</h2>
+<p>把多式联运经营人（MTO）想成<b>包下整栋长租公寓的总包</b>：房客（货主）只跟总包签一份租约、付一笔租金，总包再分别找水电工、保洁、保安（船公司、铁路、卡车、航空）把活分包出去。总包收了全程的钱，对外就得对整栋负责——这就是 MTO 跟“纯介绍所”（只帮货主找船、自己不签全程合同的货代）最本质的区别。<b>怎么串到今天：上周我们一直在分清“代理还是承运”，今天把“承运”再拆开看——即便你是承运人，承运一段和承运全程，赔法完全不同。</b></p>
+<div class="key">记忆点：<b>MTO = 一份合同 + 全程收款 + 对全程负责；货代（纯代理）= 只牵线、不接盘。MTO 的身份一旦坐实，货损不论在哪段发生，货主第一句话就是找你赔。</b></div>
+<h2>二、两种制度对照表：网状 vs 统一</h2>
+<table><thead><tr><th>维度</th><th>网状责任制（Network Liability）</th><th>统一责任制（Uniform Liability）</th></tr></thead><tbody><tr><td>责任标准</td><td>货损在哪段，就按哪段的公约/国内法（海段用海牙-维斯比、空段用蒙特利尔、陆段用 CMR 等）</td><td>全程一把尺，不论货损发生在哪段，都按同一套规则</td></tr><tr><td>责任限额</td><td>随区段浮动（海运 666.67 SDR/件或2 SDR/kg；空运 22 SDR/kg；公路 CMR 8.33 SDR/kg）</td><td>固定一个值（如汉堡 835 SDR/件或2.5 SDR/kg；鹿特丹 875 SDR/件或3 SDR/kg）</td></tr><tr><td>货损区段不明时</td><td>最危险：规则或判例决定适用哪一限额，结果高度不确定，常对 MTO 有利</td><td>无争议：直接套全程标准</td></tr><tr><td>代表规则</td><td>我国《海商法》第八节、多数国家立法、UNCTAD 多式联运规则</td><td>《汉堡规则》思路、《鹿特丹规则》思路</td></tr><tr><td>对货主友好度</td><td>低（区段不明时常吃亏）</td><td>高（标准确定、易预测）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各公约单位限额现行值（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤；蒙特利尔 22 SDR/公斤；CMR 8.33 SDR/公斤；汉堡 835 SDR/件或 2.5 SDR/公斤；鹿特丹 875 SDR/件或 3 SDR/公斤）须以公约最新官方文本为准；② 我国《海商法》第四章第八节条文号以现行法律文本为准；③ 鹿特丹规则缔约国数量与生效状态须核对（截至本文件未生效）。</div>
+<h2>三、货损区段不明：赔差测算示例（数字均待核实）</h2>
+<p><b>场景</b>：一批机械设备走“海运+铁路”多式联运，毛重 <b>5,000 公斤</b>，申报价值 <b>100,000 美元</b>（约 <b>74,000 SDR</b>，按 1 USD≈0.74 SDR 待核实）。货到时设备变形，但无法确定是海上段（暴风雨）还是铁路段（野蛮装卸）造成——<b>区段不明</b>。</p>
+<table><thead><tr><th>适用制度/区段</th><th>计算方式（待核实）</th><th>赔偿上限（SDR）</th><th>占货值比例</th></tr></thead><tbody><tr><td>网状—推定海上段（海牙-维斯比）</td><td>2 SDR/公斤 × 5,000 公斤</td><td>10,000</td><td>约 13.5%</td></tr><tr><td>网状—推定铁路段（类比 CMR 8.33 SDR/公斤，我国未加入 CMR，按国内铁路法另算）</td><td>8.33 SDR/公斤 × 5,000 公斤</td><td>41,650</td><td>约 56%</td></tr><tr><td>统一—汉堡标准 2.5 SDR/公斤</td><td>2.5 SDR/公斤 × 5,000 公斤</td><td>12,500</td><td>约 17%</td></tr><tr><td>统一—鹿特丹标准 3 SDR/公斤</td><td>3 SDR/公斤 × 5,000 公斤</td><td>15,000</td><td>约 20%</td></tr></tbody></table>
+<div class="key">结论：<b>同一票货、同一损失，网状制下赔偿上限最低约 10,000 SDR、最高约 41,650 SDR，相差 4 倍以上</b>。区段不明时，MTO 会拼命往“低限额区段”靠，货主则拼命往“高限额区段”靠——这就是两种制度下最大的博弈点。货主反制：在合同里争取约定“区段不明时按统一责任制/按最高限额区段处理”。</div>
+<h2>四、《海商法》第八节：我国采网状责任制</h2>
+<ul><li><b>第 102 条（条号待核实）</b>：多式联运合同是指“多式联运经营人”以两种以上不同运输方式，负责将货物从接收地运至目的地交付收货人的合同。</li><li><b>第 103 条（条号待核实）</b>：多式联运经营人负责履行或组织履行多式联运合同，对全程运输享有承运人的权利、承担承运人的义务。</li><li><b>第 105 条（条号待核实）——网状核心</b>：货物的灭失或损坏发生于多式联运的某一特定区段的，多式联运经营人的赔偿责任和限额，适用调整该区段运输方式的有关法律。</li><li><b>第 106 条（条号待核实）</b>：在未能确定灭失或损坏发生的区段时，依照本章（海上运输）关于承运人赔偿责任和责任限额的规定负赔偿责任——即<b>区段不明时按海运（海商法）标准赔</b>，对 MTO 相对有利。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：上述第 102–106 条系按《海商法》第四章第八节“多式联运合同的特别规定”的通行结构转述，精确条号与措辞以现行法律文本为准；第 106 条“区段不明按海运标准”的适用口径，请核对最新司法解释与判例。</div>
+<h2>五、国际公约态度：中国缔约状态</h2>
+<ul><li><b>海牙-维斯比（1968/1979）</b>：我国未加入，但《海商法》第四章借鉴其规则（限额 666.67 SDR/件或 2 SDR/公斤）。</li><li><b>汉堡规则（1978）</b>：我国未加入；采统一责任制思路（835 SDR/件或 2.5 SDR/公斤，2 年时效）。</li><li><b>鹿特丹规则（2008）</b>：统一责任制 + 门到门，限额 875 SDR/件或 3 SDR/公斤；<b>我国已签署但未批准，截至本文件尚未生效</b>（须核对最新缔约国数）。</li><li><b>蒙特利尔公约（1999，空运）</b>：我国已批准，22 SDR/公斤，2 年。</li><li><b>CMR（1956，公路）</b>：我国未加入；CMR 限额 8.33 SDR/公斤，1 年（故意 3 年）。</li></ul>
+<h2>六、《多式联运合同责任条款模板》（落地用）</h2>
+<blockquote>【条款 A：争取网状责任制 + 区段不明按海运限额】（MTO 立场）
+"本多式联运合同适用中华人民共和国法律。货物的灭失、损坏或迟延发生于某一特定运输区段的，多式联运经营人的赔偿责任、责任限额及免责，适用调整该区段运输方式的强制性法律规定；在不能确定灭失或损坏发生区段时，适用《中华人民共和国海商法》第四章关于承运人赔偿责任与责任限额的规定。除非法律另有规定，多式联运经营人对货物灭失或损坏的赔偿责任每件或每单位不超过 666.67 计算单位，或每公斤不超过 2 计算单位（1 计算单位=SDR）。"
+
+【条款 B：货主反制版本——区段不明按统一/较高限额】
+"在无法确定货损发生区段的情形下，多式联运经营人应按对货主最有利（或全程统一）的责任限额与归责原则承担赔偿责任，不得低于本合同中任一适用区段法律所规定的最高责任限额。"</blockquote>
+<div class="key">今日落地三动作：① 看到“多式联运合同”，先翻到责任条款，确认写的是“网状”还是“统一”、区段不明怎么处理；② 我方作为 MTO，标准合同默认争取“网状+区段不明按海运限额”（第 106 条口径），并在报价时把限额风险算进保费/免责；③ 客户反制点写进谈判清单：争取“区段不明按统一责任制或最高限额区段”，否则货损说不清时吃大亏。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">MTO</div><div class="cn">Multimodal Transport Operator / 多式联运经营人</div><div class="df">与托运人订立全程运输合同并收取全程运费，对全程负责，但将各区段分包给实际承运人履行的经营者</div></div><div class="ti"><div class="en">Network Liability</div><div class="cn">网状责任制</div><div class="df">货物灭失或损坏发生于某一特定区段时，适用调整该区段运输方式的公约或国内法确定赔偿责任与限额</div></div><div class="ti"><div class="en">Uniform Liability</div><div class="cn">统一责任制</div><div class="df">不论货损发生在哪一区段，全程适用同一责任标准、免责事项与责任限额</div></div><div class="ti"><div class="en">Hague-Visby Rules</div><div class="cn">海牙-维斯比规则</div><div class="df">调整海上货物运输的国际公约；单位责任限额 666.67 SDR/件 或 2 SDR/公斤（现行值须核对）</div></div><div class="ti"><div class="en">Rotterdam Rules</div><div class="cn">鹿特丹规则 (2008)</div><div class="df">统一责任制公约；限额 875 SDR/件 或 3 SDR/公斤；截至本文件未生效（须核对最新缔约国数）</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W10-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

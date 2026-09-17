@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·第4天｜责任限制：666.67 计算单位与 2 计算单位</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · DAY 4 / 5　·　阶段二　运输责任制度</div><h1>责任限制：666.67 计算单位与 2 计算单位</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">责任限制就是网约车平台的赔付上限：不管你损失一个亿，承运人就赔到 666.67 SDR 每件封顶。海运之所以便宜，就是因为赔得少——这是整个行业的商业底座。</div><div class="mlink"><b>怎么串到今天</b>义务和免责之后，最后一关是「最多赔多少」。数字必须记死，用错一次就是几十万。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>单位责任限制（第 56 条 待核实）：666.67 计算单位/件或单位，或 2 计算单位/公斤（货物毛重），以高者为准；「计算单位」= SDR</li><li>每件/每公斤的限额之外，还有总限额：依第 56 条（待核实）约为 333.33 计算单位/立方米（须核对现行法）</li><li>丧失责任限制（第 57 条 待核实）：承运人有「明知可能造成损失而轻率地作为或不作为」时，不得限制责任——这是货主破限的唯一口子</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《赔偿责任限额计算表》+《责任限制突破与防守清单》（第 56/57 条，条号待核实）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解承运人的赔偿责任限制，必须给具体数字与算账示例，站物流商立场给防守打法，同时给客户反制点：
+1. 单位责任限制（第 56 条 待核实）：666.67 计算单位/件（或每单位），或 2 计算单位/公斤（货物毛重），以高者为准；说明「计算单位」= SDR（特别提款权），并给出 SDR 与人民币的换算思路（SDR 汇率待核实，约 1 SDR≈9.6 元人民币，须核对）
+2. 总责任限额（待核实条号）：集装箱货按提单载明件数，未载明则每集装箱按 1 件；并说明「货物毛重×2 SDR」与「666.67 SDR×件数」孰高规则；给出总限额 333.33 计算单位/立方米（须核对）的口径
+3. 丧失责任限制（第 57 条 待核实）：「明知可能造成损失而轻率地作为或不作为」（故意或明知可能造成损失而轻率地作为或不作为）的情形，举例（如明知船舶不适航仍开航、故意绕航）
+4. 算账示例：一票货 100 箱、毛重 2000 公斤、货值 50 万人民币，按「件数」和「毛重」两种方式分别算限额，并取高者；再算 SDR 折合人民币
+5. 《责任限制突破与防守清单》：货主怎么突破限制、承运人怎么守住限制（设立责任限制基金、及时通知、证据固定）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：责任限制=承运人的「赔偿封顶盖」</h2>
+<p>普通侵权里，摔了人家 50 万的货可能赔 50 万。海商法给承运人一个「封顶盖」：<b>不管货值多少，一票货的赔偿上限按固定公式算，往往远低于货值</b>。就像快递公司把一箱茅台摔了，按「每公斤赔几块」封顶——这是海运业的行业惯例，海商法第四章把它写成了法定权利。怎么串到今天：D2 讲义务、D3 讲免责，今天讲「就算承运人真要赔，赔多少也有天花板」，这是物流商立场的第三层、也是最实在的一层保护。</p>
+<div class="key">记忆点：<b>责任限制是海商法给承运人的第三层保护，也是最关键的一层——它把「无限赔偿」砍成「按件/按公斤封顶」。666.67 SDR/件 或 2 SDR/公斤，取高者；故意或明知可能损失而轻率作为，则封顶盖被掀翻。</b></div>
+<h2>二、单位责任限制（第 56 条 待核实）：两个数字 + 取高规则</h2>
+<ul><li><b>666.67 计算单位/件（或每单位）</b>：按货物件数/装运单位计。集装箱、托盘若提单载明内装件数，按载明件数；未载明则<b>一个集装箱/托盘算一件</b>。</li><li><b>2 计算单位/公斤（货物毛重）</b>：按灭失损坏货物的毛重计。</li><li><b>取高规则</b>：同一票货，分别按「件数法」和「毛重法」算出两个限额，<b>承运人对货主赔以高者</b>，不是叠加。</li><li><b>「计算单位」= SDR</b>：特别提款权，非美元非人民币；兑换按<b>受理案件的法院/仲裁机构裁决日</b>的 IMF 牌价。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 第 56 条单位责任限制数值（666.67 SDR/件、2 SDR/公斤）以海商法原文为准，海商法修订草案拟上调限额，须核对最新文本；② SDR 兑人民币约为 1 SDR≈9.6 元（2024 前后均值，待核实当日牌价）；③ 「总限额 333.33 计算单位/立方米」的现行法依据与适用条件须核对（部分口径源自迟延交付/特定情形，非普遍适用，标注待核实）。</div>
+<h2>三、算账示例（核心交付）：一票珠宝货的限额怎么算</h2>
+<h3>场景设定</h3>
+<ul><li>货物：珠宝首饰 100 箱（每箱独立包装），提单载明件数 100 件。</li><li>毛重：合计 2000 公斤（2 SDR/公斤口径用）。</li><li>货值：50 万人民币（约 52000 SDR，按 1 SDR≈9.6 元粗算）。</li><li>损失：整票全损。</li></ul>
+<h3>两种算法</h3>
+<table><thead><tr><th>算法</th><th>公式</th><th>限额（SDR）</th><th>折合人民币（≈9.6/SDR）</th></tr></thead><tbody><tr><td>按件数</td><td>666.67 × 100 件</td><td>66,667 SDR</td><td>约 640,000 元</td></tr><tr><td>按毛重</td><td>2 × 2000 公斤</td><td>4,000 SDR</td><td>约 38,400 元</td></tr><tr><td>取高者</td><td>max(66667, 4000)</td><td><b>66,667 SDR</b></td><td><b>约 640,000 元</b></td></tr></tbody></table>
+<p><b>结论</b>：本例按件数法（66,667 SDR≈64 万元）远高于按毛重法（4,000 SDR≈3.8 万元），取高者赔 <b>66,667 SDR</b>。但货值 50 万人民币≈52,000 SDR，而限额 66,667 SDR > 货值——本例货主能<b>基本全额获赔</b>（限额够覆盖）。反之若货物是 1 件重 20 吨的廉价矿石货值 2 万，则毛重法 40,000 SDR 远低于货值，封顶盖就显出威力。</p>
+<h3>集装箱未载明件数的坑</h3>
+<ul><li>若提单只写「1 个集装箱」未载明内装 100 箱，则按第 56 条（待核实）<b>整箱算 1 件</b>，限额骤降至 666.67 SDR——货主损失惨重。</li><li><b>货代自保</b>：签发提单时务必<b>载明内装件数</b>；作为承运人，这也是保护自己的「按件数算更高」反而对货主有利，但对低值重货按毛重封顶才是真保护。</li></ul>
+<h2>四、丧失责任限制（第 57 条 待核实）：封顶盖被掀翻的唯一口子</h2>
+<ul><li><b>法定情形</b>：承运人（及其受雇人、代理人）<b>「明知可能造成损失而轻率地作为或不作为」</b>——即我国法下的「故意或明知可能造成损失而轻率地作为或不作为」（待核实措辞）。</li><li><b>典型例子</b>：① 明知船舶不适航（如船壳有重大裂缝）仍开航；② 故意不合理绕航；③ 明知货物需冷藏却关闭冷机；④ 瞒报危险品致事故且知情。</li><li><b>后果</b>：一旦认定，承运人<b>不得限制责任</b>，须按实际损失全额赔（可能远超 66,667 SDR），且可能连免责（D3）也一并丧失。</li><li><b>主观要件是门槛</b>：仅是「一般过失」不破限，必须是「明知+轻率」——货主举证难度高，需证明承运人主观上知道风险仍放任。</li></ul>
+<div class="key">反制点（客户/货主视角）：货值高、件数少（如本案珠宝）时，按件数法限额可能仍低于货值吗？本案 100 件够高，但若是一票高值低件货（如 2 件精密仪器货值 500 万），限额仅 1,333 SDR，货主几乎拿不到全赔。<b>破封顶盖的唯一路径=证明承运人「明知可能损失而轻率作为」</b>：咬住适航（开航前明知缺陷）、绕航、危险品瞒报三项，逼承运人自证无主观轻率。</div>
+<h2>五、《责任限制突破与防守清单》</h2>
+<table><thead><tr><th>角色</th><th>动作</th><th>时点</th><th>证据/后果</th></tr></thead><tbody><tr><td>货主突破</td><td>证明承运人明知+轻率（适航缺陷/绕航/瞒报）</td><td>诉讼/仲裁中</td><td>航海日志、船检报告、海事声明；成功则全额赔</td></tr><tr><td>货主防守</td><td>收货时批注+24h 通知，固定货损在承运人责任期间</td><td>交付时</td><td>防止承运人辩称管货无责</td></tr><tr><td>承运人防守</td><td>及时通知索赔方并设立责任限制基金</td><td>知悉损失后尽快</td><td>基金设立后索赔人不得扣船/扣货</td></tr><tr><td>承运人防守</td><td>固定「一般过失非轻率」证据（检验报告、操作记录）</td><td>货损后 48h</td><td>阻断货主主观轻率主张</td></tr><tr><td>承运人防守</td><td>提单载明件数，避免整箱算 1 件</td><td>签发提单时</td><td>锁住按件数较高限额</td></tr></tbody></table>
+<h2>六、落到动作：责任限制基金与时效衔接</h2>
+<ol><li><b>知悉货损后立即评估</b>：按件数法与毛重法各算一版，确定封顶额，告知客户「我方拟限制责任」。</li><li><b>设立责任限制基金（第 58 条 待核实）</b>：在管辖法院设立基金，金额=责任限额+利息；设立后阻断财产保全。</li><li><b>同步启动 D5 的 1 年时效管理</b>：基金不影响时效，索赔仍须在装船后 1 年内提出。</li></ol>
+<div class="key">今日口诀：<b>666.67 SDR/件 或 2 SDR/公斤，取高赔；计算单位=SDR，按裁决日牌价折人民币。封顶盖只在「明知可能损失还轻率作为」时被掀翻——这是货主唯一破限口，也是承运人最该守住的底线。签提单载明件数，就是给自己上保险。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">SDR</div><div class="cn">特别提款权</div><div class="df">Special Drawing Right / 计算单位：国际货币基金组织创设的记账单位；海商法「计算单位」即 SDR，兑换率按法院判决/裁决日 IMF 牌价（约 1 SDR≈9.6 元人民币，待核实）</div></div><div class="ti"><div class="en">Package Limitation</div><div class="cn">单位责任限制</div><div class="df">第 56 条 待核实：666.67 计算单位/件或 2 计算单位/公斤（毛重），以高者为准</div></div><div class="ti"><div class="en">Limitation Fund</div><div class="cn">责任限制基金</div><div class="df">承运人为限制赔偿责任而设立的海事赔偿基金；设立后索赔人不得扣押其船舶或其他财产</div></div><div class="ti"><div class="en">Loss of Limitation</div><div class="cn">丧失责任限制</div><div class="df">第 57 条 待核实：承运人有「明知可能造成损失而轻率地作为或不作为」时，不得限制责任</div></div><div class="ti"><div class="en">Gross Weight</div><div class="cn">货物毛重</div><div class="df">计算重量限额的基准是货物毛重（含包装），非净重</div></div></div></div><div class="foot"><a href="W7-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W7-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

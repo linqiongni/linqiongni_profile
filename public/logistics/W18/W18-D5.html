@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第18周·第5天｜复盘：境外主体与用工合规</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 18 · DAY 5 / 5　·　阶段三　境外法域与合规</div><h1>复盘：境外主体与用工合规</h1><div class="sub">第 18 周主题：海外子公司 —— 德国、波兰、墨西哥</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像做一份「开店年检日历」：哪个月交年报、哪个月审执照、哪个月报税。海外公司的风险，多半来自忘记。</div><div class="mlink"><b>怎么串到今天</b>第 18 周收口，下周进入你的主战场：海外仓。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出物</li><li>自测 10 题</li><li>核心决策：要不要在当地设公司——六问法</li><li>D1 GmbH / D2 波墨公司 / D3 用工 / D4 税务 四块收口</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海外主体与用工合规手册》第一版 + 10 题自测 + 「要不要在当地设公司」六问决策法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 18 周结束，请帮我固化：
+1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：德国 GmbH 设立与董事责任、波兰/墨西哥公司形式、三国用工、PE 与转让定价
+2. 错题讲透并关联业务场景
+3. 帮我整合本周产出物成《海外主体与用工合规手册》第一版，至少包含：GmbH 合规清单、波墨对照、用工模式指南、PE 自查、TP 清单
+4. 最后给我「要不要在当地设公司」六问决策法：用六个问题判断我方/客户是否该在德/波/墨落地主体</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 德国 GmbH</b>：设立四步（公证→登记→税务→营业）、资本 €25,000 名义（待核实）、董事三项迟延个人责任、Transparenzregister 必登记。</li><li><b>D2 波兰/墨西哥</b>：波兰三证 KRS/NIP/REGON、S24 电子注册；墨西哥 S. de R.L. 轻便 + 外资 FOLIO；三国对照数字待核实；银行开户 KYC 是第二关。</li><li><b>D3 用工</b>：德 KSchG 护老员工、波 Kodeks 管通知与工时、墨 LFT 分红+严打外包；三种用工假外包变真雇主最危险。</li><li><b>D4 税务</b>：纯仓储不 PE、加人即 PE；VAT 三国税率待核实；预提税查协定；TP 独立原则+同期资料。</li><li><b>总纲</b>：主体（在哪合法存在）→ 用工（谁干活）→ 税务（干这些活交什么税）→ 闭环：合规底盘决定海外仓能不能长期跑。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】德国 GmbH 传统最低名义注册资本约为？A. €1  B. €25,000  C. €50,000  D. €100,000（均待核实）</li><li>【单选】德国董事哪项迟延可个人担责？A. 仅税务  B. 仅社保  C. 税务/社保/破产申请迟延  D. 均不个人担</li><li>【单选】波兰 Sp. z o.o. 的登记三证是？A. KRS/NIP/REGON  B. HRB/Steuernummer/USt  C. RFC/FOLIO  D. 无</li><li>【单选】海外仓「纯仓储」通常？A. 一定构成 PE  B. 不构成 PE（辅助性）  C. 自动交 CIT  D. 须登记 VAT</li><li>【单选】转让定价三层同期资料是？A. Local/Master/CbCR  B. CUP/RPM/Cost+  C. VAT/CIT/WHT  D. KRS/NIP/REGON</li><li>【案例】我方德国仓人员开始代客户接单、定价、签销售合同，会有什么税务后果？</li><li>【案例】墨西哥仓把分拣整体外包给服务商，但人员受我方指挥、用我方设备，风险是什么？</li><li>【案例】集团母公司向波兰仓收高额管理费却无真实服务依据，波兰税务会怎么处理？</li><li>【简答】列出德国董事「三项迟延个人责任」及各自免责/减责动作。</li><li>【简答】给客户解释「为什么用我方海外仓不一定触发客户的当地 PE」，要点是什么？</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（€25,000，待核实）；2-C（三项迟延均可个人担责）；3-A（KRS/NIP/REGON）；4-B（纯仓储辅助性不构成 PE）；5-A（Local/Master/CbCR）。</li><li>案例 6：仓内人员从事销售/签约/定价 → 德国仓很可能构成 PE → 我方在当地产生 CIT+VAT 纳税义务，且客户也可能被认定在当地经营；对策：仓内只按指令发货、销售职能隔离。</li><li>案例 7：被认定事实雇主（假外包真雇佣）→ 我方承担社保补缴、解雇保护、工伤赔偿；对策：外包合同写清服务商独立雇主、自缴社保、人员不受我方直接指挥并核验其社保记录。</li><li>案例 8：无真实服务依据的关联交易被认定为利润转移 → 波兰税务调增利润、补 CIT+利息罚款，可能双重征税；对策：真实服务基础+可量化受益+市场费率+同期资料。</li><li>简答 9：税务申报迟延、社保迟延、破产申请迟延（Insolvenzantragspflicht）；免责动作=设税务日历双签、用本地 Steuerberater、现金流告急即评估破产触发点早申请。</li><li>简答 10：我方仓只做收货-存储-按指令发货，无销售/定价/签约权，属辅助性不构成 PE；客户自身 PE 取决于其人员在当地的经营活动的配置，应在仓储协议取得我方「仓内活动范围声明」。</li></ul>
+<h2>三、《海外主体与用工合规手册》第一版结构</h2>
+<ul><li>模块 1：德国 GmbH 合规清单（设立四步材料、登记号、税号、董事任命、资本实缴、Transparenzregister）。</li><li>模块 2：波兰/墨西哥公司对照（三证/两形式、外资 FOLIO、三国资本时长税率表，数字待核实）。</li><li>模块 3：境外银行开户 KYC 包清单。</li><li>模块 4：三国用工速查（KSchG/Kodeks/LFT 要点、三种用工模式、假外包风险）。</li><li>模块 5：常设机构 PE 自查表 + 集团关联交易 TP 清单。</li><li>模块 6：年度合规日历雏形（见周末实战）。</li></ul>
+<h2>四、「要不要在当地设公司」六问决策法</h2>
+<ol><li><b>第一问：在当地有没有持续经营（≥1 年）的业务量？</b> 偶发/试水 → 先用服务商或母公司签约，不设。</li><li><b>第二问：客户/平台是否要求本地主体（如本地 VAT、本地退货地址、资质）？</b> 是 → 倾向设。</li><li><b>第三问：纯仓储还是有人做销售/签约？</b> 有人做销售 → 为隔离 PE 与责任，宜设本地主体承接。</li><li><b>第四问：用工规模是否触发当地强保护（如德 KSchG ≥10 人）？</b> 是 → 设主体便于合规雇佣。</li><li><b>第五问：银行/资金是否需要在当地落地（收付款、授信）？</b> 是 → 设主体+开户。</li><li><b>第六问：税负与协定是否算得过来（PE 利润税 vs 预提税 vs 维持成本）？</b> 算过来 → 设；算不过 → 暂缓或换国别。</li></ol>
+<div class="key">六问全过 = 设；任一红灯（尤其第一、三问）先别设，用服务商/母公司过渡。我方立场：设主体是为长期合规底盘；客户立场：要求我方主体干净（资本实缴、受益所有人透明、用工合规），把「主体不实致损」写进赔偿条款。</div>
+<div class="key">本周收口口诀：<b>主体合法存在、用工守住边界、税务管住 PE 与 TP、银行落地资金——四块闭环，海外仓才跑得稳。六问不过不设点，设之前先算账。下周末做《设立与年度维护手册》，把今天的手册变成可执行的年历。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">Compliance Handbook</div><div class="cn">合规手册</div><div class="df">把本周全部产出物压缩成可随时查阅的境外主体与用工判断清单</div></div><div class="ti"><div class="en">Six-question Test</div><div class="cn">六问决策法</div><div class="df">判断「要不要在当地设公司」的六个前置问题，逐关通过才建议落地主体</div></div><div class="ti"><div class="en">PE Trigger</div><div class="cn">PE 触发</div><div class="df">人员/签约/定价等配置使海外仓从纯仓储变为常设机构的关键动作</div></div></div></div><div class="foot"><a href="W18-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W18-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

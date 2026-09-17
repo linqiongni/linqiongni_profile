@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第19周·第1天｜海外仓的业务模式与法律关系：四种仓库，四种风险剖面</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 19 · DAY 1 / 5　·　阶段三　境外法域与合规</div><h1>海外仓的业务模式与法律关系：四种仓库，四种风险剖面</h1><div class="sub">第 19 周主题：海外仓专题 —— 租赁、仓储协议与货权</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">海外仓就是「在国外的共享储物间」。法律关系可能是纯租赁（你只租地）、仓储（连货一起管）或委托（还帮发货）——模式不同，责任天差地别。</div><div class="mlink"><b>怎么串到今天</b>主体合规学完，进入你的日常主战场：海外仓。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>海外仓本质是「租赁关系 + 保管/仓储关系」两层合同叠加：我方跟房东签租赁、跟客户签仓储服务，两层独立、互不穿透</li><li>四种模式：自营仓 / 租赁仓 / 第三方仓(3PL) / 平台仓，货权归属与风险转移点各不相同</li><li>民法典下保管合同与仓储合同的关键区别：仓储合同是「有偿+商事+仓单」，保管合同偏消费保管、可有偿可无偿</li><li>德国法下 Lagervertrag（仓储合同，HGB 第 467 条以下）与 Mietvertrag（租赁，BGB 第 535 条以下）责任标准不同，前者偏保管人严格责任、后者偏出租人瑕疵担保</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海外仓业务模式法律关系对照表》+《货权归属判定清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透海外仓的业务模式与法律关系，站物流服务提供方（我方在德国运营海外仓）立场，同时给客户（跨境电商卖家/工厂）反制点：
+1. 四种模式并列成表：自营仓 / 租赁仓 / 第三方仓(3PL) / 平台仓（如平台履约仓），每种模式下的合同链条（仓库租赁 → 仓储服务 → 一件代发 → 尾程配送）、货权归属与风险转移时间点（货在谁手里、谁承担灭失风险、谁有处分权）、以及「我方是否取得占有/是否构成保管人」的判定
+2. 讲清保管合同、仓储合同、承揽、委托四者在民法典合同编下的区分（须核对条文号，标注待核实），特别是仓储合同的有偿性、仓单、验收与保管人责任
+3. 德国法下 Lagervertrag（仓储合同）与 Mietvertrag（租赁）的关键差异：责任标准、交付义务、商事留置权、风险承担
+4. 落到业务动作：《货权归属判定清单》——收货、入仓、代发、退件各环节，货权与风险怎么切</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：海外仓 = 你公司在德国「长租了公寓，里面堆的是客户的行李」</h2>
+<p>把海外仓想成「你在德国租了个长租公寓，里面堆的是客户的行李」。你跟房东签的是<b>租赁合同</b>（你用房、付租金），你跟客户签的是<b>仓储服务合同</b>（你帮客户看行李、代发货）。这两份合同是<b>独立的两层</b>——房东只认你、不认客户；客户只认你、不认房东。出事了，客户先找你（你是保管人），你再拿租赁合同去找房东（你是承租人）。怎么串到今天：前 18 周我们讲了运输、清关、买卖术语、保险；从今天起进入「货到了德国、进了我方的仓，谁对这堆货负责」——这是海外仓法务最底层、也最易被两层合同互相甩锅的一层。</p>
+<div class="key"><b>记忆点：海外仓法律关系 = 租赁关系（我方↔房东）+ 仓储/保管关系（我方↔客户），两层分离、互不穿透。凡是「房东扣了客户的货」「客户说货在房东那你不赔」的扯皮，先问：哪一层合同在管这件事？</b></div>
+<h2>二、《海外仓业务模式法律关系对照表》：四种模式一次看全</h2>
+<table><thead><tr><th>模式</th><th>谁拥有/控制仓库</th><th>合同链条</th><th>我方角色</th><th>货权归属（常态）</th><th>核心风险点</th></tr></thead><tbody><tr><td>自营仓</td><td>我方自有/自建</td><td>我方直管：仓储服务→代发→尾程</td><td>仓库所有权人+保管人</td><td>客户（仅存储）</td><td>重资产、用工/税务/消防全自担</td></tr><tr><td>租赁仓</td><td>房东（出租方）</td><td>仓库租赁→我方再签仓储服务→代发→尾程</td><td>承租人+保管人</td><td>客户</td><td>房东风险（租约）+ 保管风险双层叠加</td></tr><tr><td>第三方仓(3PL)</td><td>我方（以自己名义对外）</td><td>我方对客户签总服务合同，分包仓配</td><td>契约保管人/履约方</td><td>客户</td><td>对外全责，分包风险靠追偿</td></tr><tr><td>平台仓（如平台履约）</td><td>平台（如 Amazon FBA）</td><td>卖家与平台签 FBA 条款→平台仓储+代发</td><td>平台为保管人，我方是用户</td><td>卖家</td><td>平台条款强势、责任限额低、数据不透明</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 民法典合同编「仓储合同」「保管合同」的精确章条号（现行《民法典》第 904 条起为仓储合同、第 888 条起为保管合同，引用前请核对现行文本）；② 德国 HGB 第 467 条以下（Lagervertrag）与 BGB 第 535 条以下（Mietvertrag）的现行条号与责任口径，以德文官方文本为准；③ 平台仓（FBA 等）的责任限额与丢失赔偿标准，以平台现行服务条款为准，且各国版本不同。</div>
+<h2>三、合同链条：仓库租赁 → 仓储服务 → 一件代发 → 尾程配送</h2>
+<ul><li><b>仓库租赁</b>（我方↔房东）：解决「有没有地方放货」。产出物是租约，约束租期、租金、还原义务、转租权。</li><li><b>仓储服务</b>（我方↔客户）：解决「货放这谁看、怎么收发货、坏了谁赔」。产出物是仓储服务协议/SLA，是本周 D3 重点。</li><li><b>一件代发</b>（我方按客户指令操作）：客户在平台出单 → 指令我方拣货打包 → 我方生成面单 → 交尾程。这一步我方是「受托人+实际操作人」。</li><li><b>尾程配送</b>（我方↔尾程承运人或客户自约）：把包裹送到终端消费者。责任在「交付承运人」那一刻如何切，是货权与风险转移的枢纽。</li></ul>
+<div class="key"><b>反制点（客户视角）：卖家选 3PL 海外仓时，应要求我方披露「底层仓库是自有还是租赁、房东是否限制分租/转租」。若我方只是二房东，客户货权可能因租约终止被房东留置——客户要在合同里加「租约终止时优先交接客户货物」条款，并设定我方对房东风险的担保。</b></div>
+<h2>四、货权归属与风险转移时间点：货在谁手里、谁担灭失、谁有处分权</h2>
+<table><thead><tr><th>环节</th><th>货在谁手里（占有）</th><th>谁承担灭失风险</th><th>谁有处分权</th><th>说明</th></tr></thead><tbody><tr><td>入库前国际运输</td><td>头程承运/我方</td><td>按贸易术语（如 DAP/DDU）</td><td>客户（所有权人）</td><td>入仓前风险通常未转移给我方仓储角色</td></tr><tr><td>入仓验收后</td><td><b>我方（保管人占有）</b></td><td><b>我方（保管责任起）</b></td><td>客户（所有权）</td><td>验收单签字 = 保管责任起算点，最关键</td></tr><tr><td>收到代发指令后</td><td>我方（按指令拣货）</td><td>仍我方，直至交尾程</td><td>客户</td><td>拣货打包中毁损，我方责</td></tr><tr><td>交尾程承运人</td><td>尾程承运</td><td>风险转消费者/买家（依销售条款）</td><td>客户/买家</td><td>交付承运 = 我方仓储责任止</td></tr><tr><td>退件回仓</td><td>我方</td><td>我方（重新入库）</td><td>客户</td><td>退件须重新验收，避免「已损当良品」</td></tr></tbody></table>
+<p><b>最关键的一刀：入仓验收。</b> 货一到仓，我方清点、系统上架、签验收单——这一刻起，我方从「承运人」变成「保管人」，灭失风险从「运输险/承运人」切到我方的保管责任。所以验收单写什么、异议期多长，直接决定我方赔不赔。D3 会细讲验收与异议期限。</p>
+<h2>五、我方是否「取得占有/构成保管人」：判定标准</h2>
+<p>民法典区分<b>仓储合同</b>与<b>保管合同</b>，核心看三点：① 是否<b>有偿</b>（仓储必有偿、保管可无偿）；② 是否<b>商事/营业性</b>（仓储是经营者提供的储存服务）；③ 是否出具<b>仓单</b>（仓储合同可背书转让货权凭证）。我方作为经营性海外仓，签的必然是<b>仓储合同</b>——有偿、商事、可出仓单，保管人责任重。若客户只是临时寄存几件样品、无偿，则可能落进保管合同甚至委托，责任与举证都不同。</p>
+<table><thead><tr><th>维度</th><th>仓储合同（我方常态）</th><th>保管合同</th><th>承揽</th><th>委托</th></tr></thead><tbody><tr><td>有偿性</td><td>必有偿</td><td>可有偿可无偿</td><td>有偿</td><td>可有偿可无偿</td></tr><tr><td>商事属性</td><td>经营者提供</td><td>偏消费/临时</td><td>完成工作成果</td><td>处理事务</td></tr><tr><td>验收义务</td><td>保管人须验收并出单</td><td>一般清点</td><td>按定作要求</td><td>按委托人指示</td></tr><tr><td>责任标准</td><td>妥善保管、过错/约定赔</td><td>过错责任</td><td>工作成果瑕疵责</td><td>过错责</td></tr><tr><td>货权凭证</td><td>可出仓单</td><td>一般不出具</td><td>成果交付</td><td>事务结果</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：民法典第 904 条（仓储合同定义）、第 908 条（验收与仓单）、第 917 条（保管人责任）等条号与现行表述，引用前核对《民法典》合同编现行文本；德国民法下 HGB 第 467 条以下对 Lagervertrag 的验收、留置与赔偿另有规定，须与 BGB 对照。</div>
+<h2>六、德国法下 Lagervertrag vs Mietvertrag 的关键差异（我方在德国运营必须懂）</h2>
+<table><thead><tr><th>维度</th><th>Lagervertrag 仓储合同（HGB 第 467 条以下 待核实）</th><th>Mietvertrag 租赁合同（BGB 第 535 条以下 待核实）</th></tr></thead><tbody><tr><td>法律性质</td><td>商事保管，偏保管人责任</td><td>用益租赁，出租人瑕疵担保</td></tr><tr><td>对货物的责任</td><td>保管人对灭失/毁损负较重责任（约定免责受限）</td><td>出租人不当然对货物毁损负责</td></tr><tr><td>交付义务</td><td>须按指令收货、保管、交付</td><td>仅交付房屋使用权</td></tr><tr><td>留置权</td><td>HGB 商事留置权，可留置货物担保费用（条文待核实）</td><td>一般无货物留置，仅房屋相关</td></tr><tr><td>风险承担</td><td>货物风险主要在保管人</td><td>房屋风险在出租人，货物风险不归房东</td></tr></tbody></table>
+<div class="key"><b>落地判断：我方在德国接货入仓那一刻，若合同写的是「仓储服务/Lagervertrag 性质」，我方就是保管人、对货损更重责；若仅「租个空库房让客户自己管」（纯 Mietvertrag），我方基本不担货损。所以租约里千万别把「我方提供仓储服务」写成「仅出租空间」——前者责任重但收费高、客户也认；后者想甩责却可能构成「名为租赁实为仓储」被法院按仓储认定。条款定性要跟收费和实际操作一致。</b></div>
+<h2>七、落到动作：《货权归属判定清单》（谁、何时、做什么、留什么证）</h2>
+<ol><li><b>收货</b>：头程到仓即开箱抽验，系统录入 SKU/数量/外箱状态；留验收照片+签收时间戳（防「到仓即损」扯皮）。</li><li><b>入仓</b>：签电子验收单，超 24/48 小时（具体以协议约定，标待核实）未提异议视为合格；留上架库位记录。</li><li><b>代发</b>：每单留拣货打包视频/系统日志 + 尾程面单号，证明「货交承运」节点。</li><li><b>退件</b>：退件回仓必须二次验收，标记良品/残品，避免残品当良品再发。</li><li><b>风险切换</b>：任何环节货权与风险切转，都用系统状态 + 书面交接单固化，不靠口头。</li></ol>
+<div class="key">今日口诀：<b>海外仓两层合同——租赁管房、仓储管货；入仓验收那一下，风险从承运人切到我方。四种模式看控制力，货权永远在客户、风险随占有走。条款定性要跟收费一致，别想用「纯租赁」甩保管责。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Overseas Warehouse</div><div class="cn">海外仓 / Overseas Fulfillment Center</div><div class="df">卖家在目标国自建或租用仓库，实现本地存储、一件代发与退件处理，缩短尾程时效的跨境履约模式</div></div><div class="ti"><div class="en">Self-operated Warehouse</div><div class="cn">自营仓</div><div class="df">卖家或物流商自购/自建并自营的海外仓库，控制力最强、合规与用工责任全自担</div></div><div class="ti"><div class="en">3PL</div><div class="cn">Third-Party Logistics / 第三方物流仓</div><div class="df">物流商以自己名义对外提供仓储+配送的综合服务，客户仅购买服务、不持有仓库</div></div><div class="ti"><div class="en">Fulfillment</div><div class="cn">一件代发 / 履约</div><div class="df">仓储方按客户指令拣货、打包、贴标并交尾程配送，完成「B2C 最后一米」的履约动作</div></div><div class="ti"><div class="en">Warehousing Contract</div><div class="cn">仓储合同</div><div class="df">民法典合同编典型合同之一；有偿、为存货人储存货物，保管人负验收与妥善保管义务（条文号待核实）</div></div><div class="ti"><div class="en">Custody Contract</div><div class="cn">保管合同</div><div class="df">民法典典型合同；可为无偿，偏消费场景的临时保管，与仓储合同的有偿/商事属性区分（条文号待核实）</div></div><div class="ti"><div class="en">Lagervertrag</div><div class="cn">仓储合同（德）</div><div class="df">德国民商法下由 HGB 第 467 条以下规范的仓储合同，属商事保管，保管人责任较重（条文号待核实）</div></div><div class="ti"><div class="en">Mietvertrag</div><div class="cn">租赁合同（德）</div><div class="df">德国民法典 BGB 第 535 条以下规范的租赁合同，出租人负瑕疵担保，不当然承担货物保管责任</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W19-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

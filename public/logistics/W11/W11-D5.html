@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·第5天｜复盘：中国侧海关合规与第 11 周自测</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · DAY 5 / 5　·　阶段二　主干法律</div><h1>复盘：中国侧海关合规与第 11 周自测</h1><div class="sub">第 11 周主题：海关与通关（中国侧） —— 货被扣了怎么办</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像一次消防演习回顾：从查验通知到放行，每一步谁做、留什么证据。演习不能等真着火时才做。</div><div class="mlink"><b>怎么串到今天</b>第 11 周收口，下周转到目的国——真正的战场往往在货到港之后。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合 D1-D4 产出物成一本手册</li><li>自测 10 题：单选 5 + 案例 3 + 简答 2</li><li>核心交付：货被扣四步法——查扣原因→定主体→定期限与救济→定止损方案</li><li>一切监管代码/退税/信用政策标「须核对现行公告」</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《中国侧海关合规手册》定稿 + 10 题自测 +「货被扣了怎么办」四步法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 11 周结束，请帮我固化中国侧海关合规体系：
+1. 出 10 道自测题（单选 5 + 案例 3 + 简答 2），覆盖：海关法四层框架、报关三类主体、双抬头责任、HS 归类申报不实 vs 技术性差错、完税价格构成、原产地与 RCEP 累积、五种监管方式、9810 先出后销、保税三段式、擅自内销后果
+2. 错题讲透并关联业务场景
+3. 整合本周产出成《中国侧海关合规手册》定稿，至少含：法规速查表、报关委托审查清单、HS 归类与估价清单、原产地核查表、监管方式决策表、9810 合规清单、保税与特殊区域指南、保税业务清单
+4. 给出可复制的「货被扣了怎么办」四步法：查扣原因→定主体→定期限与救济→定止损方案，每步给具体动作与时限</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 框架与主体</b>：海关法四层体系；三类报关主体；信用三档；双抬头最坑——以己名报关=己担责。</li><li><b>D2 编码价格产地</b>：HS 6+2(+2) 定税率；申报不实(罚) vs 技术性差错(改单)；完税价格=成交价+运保费+特许权费；原产地定减税、RCEP 累积。</li><li><b>D3 监管方式</b>：0110/9610/9710/9810/1210 五通道；9810 先出后销早退税；1210 退货回区最顺。</li><li><b>D4 保税</b>：综保区最全能；保税三段式（入保税、出区补、出口免）；加工贸易锁单耗；擅自内销从罚到刑。</li><li><b>总纲</b>：报关主体定责任、三栏（编码/价格/产地）定税额、监管方式定节奏、保税递延现金流——四层串成中国侧海关合规全图。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】海关法体系的最高层级是？A. 海关总署公告  B. 海关法(法律)  C. 海关规章  D. 关税条例</li><li>【单选】货代以自己名义替客户双抬头报关，谁是第一纳税与申报责任主体？A. 客户  B. 货代  C. 海关  D. 视货物归属</li><li>【单选】HS 编码我国实际使用几位决定税率？A. 前 6 位  B. 7-8 位(部分10位)  C. 仅 10 位  D. 全球统一 8 位</li><li>【单选】RCEP 原产地累积规则的作用是？A. 提高关税  B. 让成员国料件累积达原产门槛更易减税  C. 取消所有认证  D. 仅适用农产品</li><li>【单选】9810 出口海外仓的退税节奏是？A. 销售后办  B. 出口时办(先出后销)  C. 不能退税  D. 入海外仓时办</li><li>【案例】客户提供的 HS 编码导致少缴关税 50 万元，货代已查归类决定并让客户盖章，海关查到怎么定性、罚不罚？</li><li>【案例】卖家把综保区保税货未经补税直接内销国内，金额 200 万元，后果是什么、升格走私的边界在哪？</li><li>【案例】9810 出口海外仓后长期无销售、海外仓单证造假，税务核查会如何认定、追什么？</li><li>【简答】列出双抬头报关下货代自保的三道防线，并说明为什么单抬头最稳。</li><li>【简答】写出「货被扣了怎么办」四步法，每步一个具体动作与一个时限。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B；2-B（货代以己名报=己担责）；3-B（我国 8 位/部分 10 位定税率）；4-B（累积减税）；5-B（9810 出口即办退税）。</li><li>案例 6：货代已查归类决定+客户盖章，属「归类技术性差错」，通常改单+补税、不罚或从轻；若无任何依据才是申报不实(罚)。</li><li>案例 7：未补税擅自内销=违规/走私，补税+利息+罚款(幅度待核实)；额大、主观明显升格《刑法》154条走私，单位与个人双罚。</li><li>案例 8：无真实销售+单证造假，税务认定为「假出口骗退税」，追回已退税款+罚款，涉刑追责；海外仓与销售必须真实。</li><li>简答 9：单抬头客户自报最稳；双抬头三防线=书面委托协议切责、客户盖章确认单证、代垫税先收款。</li><li>简答 10：四步法见下文。</li></ul>
+<h2>三、《中国侧海关合规手册》定稿结构</h2>
+<ul><li>模块 1：法规速查表（四层体系+文件名称文号，待核实补全）。</li><li>模块 2：报关委托审查清单（信用档/名义/单证/代垫税/留档）。</li><li>模块 3：HS 归类与估价清单（6+2 结构、不实vs技术差错、完税价格公式）。</li><li>模块 4：原产地核查表（完全获得/实质性改变、CO vs RCEP 证、累积）。</li><li>模块 5：监管方式决策表（0110/9610/9710/9810/1210 五通道对照）。</li><li>模块 6：9810 合规清单（先出后销、退税四单证、退货路径）。</li><li>模块 7：保税与特殊区域指南（五类区域、三段式、内销补税）。</li><li>模块 8：保税业务清单（台账、单耗、边角料补税、报核）。</li></ul>
+<h2>四、「货被扣了怎么办」四步法（可复制）</h2>
+<table><thead><tr><th>步骤</th><th>核心问题</th><th>具体动作</th><th>时限</th></tr></thead><tbody><tr><td>第一步 查扣原因</td><td>为什么扣</td><td>向海关取《查验记录/扣留决定书》，查清是归类/价格/原产地/单证/禁限/危险品哪类</td><td>扣货后 24h 内拿到文书</td></tr><tr><td>第二步 定主体</td><td>谁担责</td><td>查报关名义：单抬头客户担、双抬头货代名义则货代首当其冲；翻委托协议切责条款</td><td>同步 24h 内确认</td></tr><tr><td>第三步 定期限与救济</td><td>能拖多久、怎么申诉</td><td>记清海关扣留期、陈述申辩期、复议/诉讼期(具体以海关法/复议法为准，待核实)；准备补充说明/预裁定/担保放行</td><td>陈述申辩尽早、复议期(待核实)内</td></tr><tr><td>第四步 定止损方案</td><td>怎么少亏</td><td>能改单改单、能补税补税、能担保放行进保税/退运；同步通知客户并留证</td><td>依案情 72h 内定方案</td></tr></tbody></table>
+<div class="key">反制点（客户视角）：货被扣，客户应立即要求货代书面说明「扣因+责任归属+处置时间表」，并把「因货代过错（如错报编码、漏单证）导致扣货的滞箱费/仓储费/罚款」列入货代赔偿；同时客户自己准备真实单证配合海关，缩短扣留期。</div>
+<div class="key">本周收口口诀：<b>主体定责任、三栏定税额、方式定节奏、保税递延钱。货被扣先查因、再定人、三限时、四止损——四步法就是中国侧海关合规的急救包。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Self-test</div><div class="cn">自测 / 周测</div><div class="df">用一组题目检验本周知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">Compliance Manual</div><div class="cn">合规手册 / 速查手册</div><div class="df">把本周全部产出压缩成一页可随时查阅的判断与动作清单</div></div><div class="ti"><div class="en">Detention 4-step</div><div class="cn">扣货四步法</div><div class="df">查扣原因→定责任主体→定期限与救济→定止损方案的标准处置流程</div></div><div class="ti"><div class="en">Relief Period</div><div class="cn">救济期限 / 复议诉讼期</div><div class="df">对海关扣留/处罚不服的申诉、复议、诉讼时限（具体以海关法/复议法为准，待核实）</div></div></div></div><div class="foot"><a href="W11-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W11-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第16周·第1天｜GDPR 的适用范围与域外效力：管得到谁、我是控制者还是处理者</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 16 · DAY 1 / 5　·　阶段三　境外法域与合规</div><h1>GDPR 的适用范围与域外效力：管得到谁、我是控制者还是处理者</h1><div class="sub">第 16 周主题：数据合规 —— GDPR 与中国数据出境</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">GDPR 的域外效力像「只要接待欧盟客人，就得守欧盟的规矩」：不管你公司开在哪，只要向欧盟的人提供商品服务或监测他们的行为，就归它管。</div><div class="mlink"><b>怎么串到今天</b>产品合规之后是数据合规。第一件事：判断它管不管得到你。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>GDPR = Regulation (EU) 2016/679，2018.5.25 直接适用全欧盟，是「条例」不是「指令」，无需成员国转化</li><li>两条属地连接点：在欧盟有设立机构（establishment）+ 针对欧盟数据主体提供商品/服务或监测行为（targeting），满足其一即域外适用</li><li>控制者 controller 与处理者 processor 的区分只看一件事：谁决定「处理的目的与方式」</li><li>跨境物流四类数据（运单收件人、海外仓 WMS、清关申报、客户员工）角色判定各不相同，不能一刀切</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《GDPR 适用性判断流程图》+《我方角色判定表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 GDPR 的适用范围、域外效力，以及控制者/处理者的区分，站国际货代+海外仓立场，同时给客户反制点：
+1. 先讲 GDPR 是什么：Regulation (EU) 2016/679，生效日与适用日，条例（Regulation）与指令（Directive）的区别（为什么条例对中国企业也有域外效力）
+2. 第 3 条（Art. 3）的两条属地连接点：① 在欧盟境内有设立机构，且处理与该机构活动有关；② 未在欧盟设机构，但向欧盟数据主体提供商品/服务（无论是否付费）或监测其行为。每条给判断标准
+3. 域外效力的边界：一个中国货代没有欧盟办公室，但官网德文版、收欧盟买家运单，是否落入？一个中国海外仓在德国有实体，处理员工与库存数据，是否落入？
+4. 控制者 controller 与处理者 processor（Art. 4(7)/4(8)）：区分标准是「谁决定处理的目的与方式」，给 3 个判定场景
+5. 共同控制者 joint controller（Art. 26）：什么情况成立、必须签 joint controller 协议
+6. 跨境物流典型场景角色判定表：运单收件人信息、海外仓 WMS 数据、清关申报数据、客户员工数据——我方分别是控制者还是处理者
+7. 落到动作：我方接单时如何用《适用性判断流程图》30 秒判断「GDPR 管不管这票」</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：GDPR 像「跨国酒店的住客登记本」，总部在不在欧盟都管用</h2>
+<p>把 GDPR 想成一家跨国连锁酒店的「住客信息登记本」。酒店总部在欧盟，登记本当然按欧盟规矩填；但 GDPR 最狠的是——<b>哪怕总部不在欧盟，只要你在欧盟开了分店（设立机构），或者你专门做欧盟客人的生意（靶向提供商品/服务），这本登记册照样得按欧盟规矩填</b>。一个中国货代没有欧盟办公室，但官网挂德文、专门接德国电商的运单，就等于「专门做欧盟客人生意」，登记本被 GDPR 罩住。怎么串到今天：前 15 周我们讲了运输、海关、贸易、争议，全是把「货」管好；从第 16 周起进入「货背后的「人」的数据」——收件人电话、仓库操作员信息、清关申报里的个人字段，这些一旦跨国，就掉进 GDPR 和我国个保法的双网。先搞清楚「这网罩不罩得到我」，是第一步。</p>
+<div class="key">记忆点：<b>GDPR 是欧盟条例（Regulation），全欧盟直接适用、不经成员国转化；它靠 Art. 3 的两条连接点把胳膊伸到欧盟境外。罩不罩得到你，只看「有没有欧盟机构」+「有没有冲着欧盟人做生意」。</b></div>
+<h2>二、GDPR 是什么：条例 vs 指令（为什么它能管到中国企业）</h2>
+<p>GDPR 全称 Regulation (EU) 2016/679，<b>2018 年 5 月 25 日生效、同日直接适用于所有欧盟成员国</b>（生效日与适用日须核对现行文本）。它是一部「条例（Regulation）」，不是「指令（Directive）」——这是理解域外效力的钥匙：<b>条例在欧盟具有直接法律效力，成员国无需再立法转化；指令则需要各成员国另行立法落地</b>。因为 GDPR 是条例，加上 Art. 3 的域外效力条款，它不需要中国加入或转化，就能直接约束符合连接点的中国/香港企业。<b>中国是 WTO 成员国但不是欧盟成员国，未与 GDPR 缔结任何双边数据条约——GDPR 对中国企业的约束力完全来自其单边域外效力，而非国际公约。</b></p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① GDPR 生效日（2018-05-25，确定）与是否有后续修正（如 Digital Markets Act 等并行立法不改动 GDPR 主体，须核对）；② 条例与指令的区分以欧盟条约（TFEU）第 288 条为准；③ 我国企业被 GDPR 域外管辖的判例与执法实践，以 EDPB（欧洲数据保护委员会）指南与成员国数据保护局（DPA）公开决定为准。</div>
+<h2>三、Art. 3 两条属地连接点：满足其一即落入</h2>
+<table><thead><tr><th>连接点</th><th>条文</th><th>判断标准</th><th>落入示例（我方视角）</th></tr></thead><tbody><tr><td>① 设立机构</td><td>Art. 3(1)</td><td>在欧盟境内有机构，且所处理的个人数据「与该机构活动有关」（不论处理是否发生在欧盟境内）</td><td>我方在德国/波兰设海外仓公司，处理当地员工、库存收件人数据——必然落入</td></tr><tr><td>② 靶向提供/监测</td><td>Art. 3(2)</td><td>未在欧盟设机构，但<b>向欧盟数据主体提供商品或服务</b>（无论是否收费），或<b>监测其在欧盟内的行为</b></td><td>我方无欧盟实体，但官网德文、专门承接德国电商一件代发运单——落入</td></tr><tr><td>都不满足</td><td>Art. 3(3)</td><td>处理发生在第三国，但由 Art. 3(1)/(2) 情形下的控制者/处理者出于其在欧盟的活动而触发</td><td>纯中国国内运输、收件人全在中国——不落入 GDPR</td></tr></tbody></table>
+<p><b>两个连接点是「或」的关系，不是「且」</b>：有欧盟机构是一种路径，没有机构但冲着欧盟人做生意是另一种路径。对港企法务最现实的场景是后者——我方（香港/内地主体）没有欧盟办公室，但只要客户是欧盟跨境电商、运单收件人在欧盟，或我方的德国海外仓实体存在，就触发 Art. 3(1) 或 3(2)。</p>
+<h2>四、控制者 vs 处理者：只问一句话——「谁决定目的与方式」</h2>
+<p>GDPR 把合规义务按「角色」分配，<b>控制者（controller）承担大头，处理者（processor）按指令办事、义务较轻</b>。区分标准只有一条（Art. 4(7)/4(8)）：<b>谁决定「为什么处理（目的）」和「怎么处理（方式）」，谁就是控制者；只按别人指令动手的，是处理者</b>。</p>
+<table><thead><tr><th>维度</th><th>控制者 Controller</th><th>处理者 Processor</th></tr></thead><tbody><tr><td>决策权</td><td>决定目的+方式</td><td>仅按控制者书面指令处理</td></tr><tr><td>义务来源</td><td>GDPR 第 5、6、12-22 等主线义务</td><td>Art. 28 限定义务（指令、保密、安全、协助、删除返还）</td></tr><tr><td>对外责任</td><td>直接对数据主体与监管负责</td><td>对控制者负责，但因己方过错仍可被罚</td></tr><tr><td>典型物流场景</td><td>客户（电商卖家）决定收集哪些收件人信息</td><td>我方（货代/海外仓）按客户指令存储、转发、清关</td></tr></tbody></table>
+<h3>三个判定场景</h3>
+<ul><li><b>场景① 运单收件人信息</b>：电商卖家决定要收集买家姓名/电话/地址用于配送——卖家是控制者；我方只是按运单字段存储转发，是处理者。</li><li><b>场景② 海外仓 WMS 系统日志</b>：若我方海外仓自行决定记录操作员账号、操作时间用于内部管理，我方对该部分数据是控制者；但若系统完全按客户指令记录客户订单履约轨迹，我方是处理者。</li><li><b>场景③ 清关申报数据</b>：申报目的与字段由海关规则+客户决定，我方代填代报，通常处理者；但我方若自行留存并二次利用申报中的个人字段做营销，则在该利用目的上变成控制者。</li></ul>
+<div class="key">反制点（客户/电商卖家视角）：卖家作为控制者，有权要求我方（处理者）提供 Art. 28 规定的 DPA、配合审计、协助响应数据主体请求；若我方擅自把收件人数据挪作他用（如转卖、二次营销），卖家可主张我方「超出指令范围、自任控制者」，向我方索赔并举报。</div>
+<h2>五、共同控制者（Art. 26）：一起决定就一起担</h2>
+<p>当两方<b>共同决定</b>处理的目的与方式，就是共同控制者（joint controller，Art. 26）。典型情形：我方海外仓与电商客户共用一套退货收件人信息系统，双方都决定显示哪些字段、用于什么——此时双方不是简单的控制者-处理者，而是共同控制者，<b>必须签 joint controller 协议，透明地划分各自对数据主体的责任（谁接待投诉、谁负责告知）</b>。不签的后果：任一方被监管处罚时，另一方难逃连带责任。</p>
+<h2>六、跨境物流四类数据《角色判定表》（我方视角）</h2>
+<table><thead><tr><th>数据类型</th><th>典型字段</th><th>我方角色</th><th>理由</th><th>合规动作</th></tr></thead><tbody><tr><td>运单收件人信息</td><td>姓名、电话、地址、邮箱</td><td>处理者</td><td>目的与方式由客户/卖家决定</td><td>签 DPA、按指令处理、不二次利用</td></tr><tr><td>海外仓 WMS 数据</td><td>客户订单轨迹、库存、操作员账号</td><td>混合（履约=处理者；自管员工=控制者）</td><td>区分目的</td><td>员工数据自任控制者并单独告知</td></tr><tr><td>清关申报数据</td><td>收发货人信息、身份证/税号</td><td>处理者（代填代报）</td><td>目的由海关+客户定</td><td>保密、按指令、留存期与海关一致</td></tr><tr><td>客户员工数据</td><td>客户对接人、销售、司机信息</td><td>控制者（我方自行决定用于自身商务）</td><td>我方决定商务联系目的</td><td>单独告知、限定保留期</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① Art. 3、4、26、28 的具体款项编号与表述以 GDPR 官方 consolidated text（eur-lex.europa.eu）为准；② 「与机构活动有关」的界定以 EDPB Guidelines 03/2018 为准；③ 香港主体是否因客户链条被认定为「在欧盟提供服务」需结合具体业务证据判断，建议核对 EDPB 关于域外适用的指南。</div>
+<h2>七、落到动作：《GDPR 适用性判断流程图》四步</h2>
+<ol><li><b>第一步：有没有欧盟机构？</b> 我方在德/波/法等有公司、仓库、雇员即触发 Art. 3(1)。</li><li><b>第二步：没机构，有没有冲着欧盟人做生意？</b> 官网德文/英文面向欧盟、收欧盟收件人运单、监测欧盟用户行为 → 触发 Art. 3(2)。</li><li><b>第三步：这票处理里，谁决定目的与方式？</b> 决定者=控制者（通常是客户），按指令动手者=处理者（通常是我方）。</li><li><b>第四步：落入且我方是处理者 → 必须签 DPA（Art. 28）；是控制者 → 必须做合法性基础、告知、安全措施全套。</b></li></ol>
+<div class="key">今日口诀：<b>条例直接适用、胳膊伸到欧盟外；establishment 或 targeting 满足其一就罩你；control/process 只问「谁定目的方式」；四类数据角色不一刀切，先判角色再定动作。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">GDPR</div><div class="cn">General Data Protection Regulation / 通用数据保护条例</div><div class="df">Regulation (EU) 2016/679；欧盟个人数据保护基本法，2018.5.25 生效直接适用全欧盟，含域外效力条款（Art. 3）</div></div><div class="ti"><div class="en">Establishment</div><div class="cn">设立机构 / 营业机构</div><div class="df">GDPR 域外适用的第一连接点（Art. 3(1)）：在欧盟境内设有机构，且数据处理与该机构活动有关（不论处理是否发生在欧盟境内）</div></div><div class="ti"><div class="en">Targeting</div><div class="cn">靶向 / 指向性提供</div><div class="df">GDPR 域外适用的第二连接点（Art. 3(2)）：未设欧盟机构，但向欧盟数据主体提供商品/服务或监测其在欧盟内的行为</div></div><div class="ti"><div class="en">Controller</div><div class="cn">控制者 / 数据控制者</div><div class="df">单独或与他人共同决定个人数据处理的目的与方式的一方（Art. 4(7)）；承担主要合规义务</div></div><div class="ti"><div class="en">Processor</div><div class="cn">处理者 / 数据处理者</div><div class="df">代控制者处理个人数据的一方（Art. 4(8)）；按控制者书面指令处理，义务由 Art. 28 规定</div></div><div class="ti"><div class="en">Joint Controller</div><div class="cn">共同控制者</div><div class="df">两个及以上控制者共同决定处理目的与方式（Art. 26）；须以透明方式界定各自责任并签协议</div></div><div class="ti"><div class="en">Personal Data</div><div class="cn">个人数据</div><div class="df">与已识别或可识别的自然人相关的任何信息（Art. 4(1)）；跨境物流的收件人姓名、电话、地址均属之</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W16-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

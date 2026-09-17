@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第20周·第2天｜运输合同 / 承运协议（分包方版）与背靠背条款库</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 20 · DAY 2 / 5　·　阶段四　岗位能力</div><h1>运输合同 / 承运协议（分包方版）与背靠背条款库</h1><div class="sub">第 20 周主题：中英文合同模板体系 —— 把前 19 周变成一套可复用的文件</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">背靠背条款就是「我被上游追多少，就向下游追多少」：像装修队把业主的索赔原样转给材料商。核心是把上游的标准完整搬到下游合同里。</div><div class="mlink"><b>怎么串到今天</b>昨天做货代协议（对客户），今天做承运协议（对分包商）——两头要对齐。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>背靠背(back-to-back) = 我方对客户的责任，在分包合同里镜像传导给分包商</li><li>背靠背有边界：法定责任、人身损害、故意重大过失、格式条款无效的情形不能简单背靠背</li><li>分包方视角：会要求「仅对自身可控环节担责」，并设独立限额</li><li>代位求偿(subrogation)配合条款，是我方赔付客户后向分包商追偿的钥匙</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《运输服务协议（分包方版）》中英对照 +《背靠背条款库》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请产出《运输服务协议（分包方版）》中英对照 +《背靠背条款库》。
+1. 背靠背原则讲透：我方对客户的责任如何在分包合同中镜像传导；给示意
+2. 背靠背的边界：哪些不能背靠背、哪些背靠背会因格式条款无效
+3. 条款覆盖：运输范围与时效、车辆与人员要求、装卸责任划分、货损货差责任与限额、保险与代位求偿配合、单证交接与签收、费用与账期、分包禁止与再委托、合规与制裁、留置与抵销、终止
+4. 给可直接用的中英对照条款文本</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：背靠背就像「租房转租，原房东的规矩照搬到二房东合同」</h2>
+<p>把背靠背想成「你租了房东的房子再转租给室友」：你和房东约定的「不能养宠、损坏照赔、提前退租罚一月房租」，你原样写进和室友的合同里。这样室友弄坏东西，你赔了房东，转头就能按你和室友的合同要回来——风险没停在你这层。货代也是这样：客户要求「全程 7 天到、丢一件赔 800 欧元」，你接下后，把「7 天到、丢一件赔 800 欧元」原样压给卡车公司/铁路/海运分包商。<b>背靠背的本质，是让责任像水流一样顺着合同链往下流，不在你这一节点积成池塘</b>。怎么串到昨天：昨天我们写「我方对客户」的货代协议，今天写「我方对分包商」的镜像合同——两面夹击，把风险锁死在中间。</p>
+<div class="key">记忆点：<b>背靠背 = 把客户给你的责任，等值写进分包合同。客户赔多少，你就能从分包商要回多少。但边界是：法定强制责任、人身损害、故意重大过失、显失公平格式条款，不能简单背靠背甩掉。</b></div>
+<h2>二、背靠背传导示意（谁赔谁）</h2>
+<table><thead><tr><th>层级</th><th>关系</th><th>责任流（出事时）</th></tr></thead><tbody><tr><td>客户 ↔ 货代</td><td>主合同（昨天的代理/承运协议）</td><td>客户先找货代赔</td></tr><tr><td>货代 ↔ 分包商</td><td>分包合同（今天，背靠背）</td><td>货代赔客户后，按背靠背向分包商追偿</td></tr><tr><td>分包商 ↔ 实际履行</td><td>再下一级</td><td>责任继续向下传导，但每多一层损耗一次</td></tr></tbody></table>
+<blockquote>EN (Back-to-back): "The Subcontractor shall indemnify the Forwarder against all claims, liabilities, and costs arising from the Subcontractor's performance to the same extent as the Forwarder is liable to its Customer under the main contract, including any service levels, time guarantees, and liability limits stated therein."
+CN (背靠背): "分包商应就因其履约产生的所有索赔、责任及费用，向货代作出赔偿，赔偿范围与货代依主合同对客户所负责任相同，包括其中所载之服务水平、时效保证及责任限额。"</blockquote>
+<div class="key">起草说明：背靠背条款要「引用主合同标准」而非重写数字，避免两边不一致。<b>客户反制点（此处是分包商反制）：分包商会拒绝「等同主合同」的开口写法，要求把责任上限钉死为「分包合同自身限额」，防止被客户的天价索赔穿透——你要权衡：全镜像能保你零损耗，但谈判中分包商常要求设 cap。</b></div>
+<h2>三、背靠背的边界（不能简单背靠背的情形）</h2>
+<ul><li><b>法定强制责任不能背靠背</b>：如《民法典》第 1232 条环境污染、第 1208 条机动车交通事故等法定赔偿，不因合同约定转移给无责任方。</li><li><b>人身损害/故意重大过失</b>：你替客户兜底了人身伤害，但分包商「故意或重大过失」所致，你赔付后仍可追偿，但<b>不能</b>用背靠背条款预先免除你自己对客户的人身损害责任。</li><li><b>格式条款无效风险</b>：若分包合同是你单方拟定、未合理提示，关键免责/限额条款可能被认定无效（《民法典》第 496-497 条）——背靠背不能靠「我单方面写死」生效，须对方确认。</li><li><b>超出分包商可控范围</b>：分包商只跑一段公路，却要他背「全程 7 天到」的时效罚则，显失公平，法院可调整。</li><li><b>强制保险覆盖部分</b>：道路运输强制险等法定险种赔付的部分，不在背靠背追偿范围内。</li></ul>
+<div class="key">反制点（分包商视角）：分包商会要求「背靠背仅限分包商过错导致的损失、仅限分包商可控环节、设独立责任上限」，并拒绝为货代自身管理过失买单。你的应对：保留「分包商原因→全镜像追偿」，但接受「非分包商原因→各自担责」的划分。</div>
+<h2>四、分包方版核心条款（中英对照）</h2>
+<h3>① 运输范围与时效</h3>
+<blockquote>EN: "The Subcontractor shall perform transport from <b>[origin]</b> to <b>[destination]</b> within <b>[•] days/hours</b>, failing which a delay penalty of <b>[•] per day</b> applies, capped at <b>[•]%</b> of the freight."
+CN: "分包商应自 <b>[起运地]</b> 运至 <b>[目的地]</b>，时限 <b>[•] 天/小时</b>，逾期按每日 <b>[•]</b> 计罚，上限为运费之 <b>[•]%</b>。"</blockquote>
+<h3>② 车辆与人员要求</h3>
+<blockquote>EN: "The Subcontractor shall provide vehicles fit for the Goods (e.g., temperature-controlled for reefer), with qualified drivers holding valid licenses. Non-compliant vehicles may be rejected without liability."
+CN: "分包商应提供适货车辆（如冷藏货用温控车）及持有效证照之合格司机。不符车辆可被拒收且不担责。"</blockquote>
+<h3>③ 装卸责任划分</h3>
+<blockquote>EN: "Loading is the Customer's/Shipper's responsibility and unloading the Consignee's, unless otherwise stated. The Subcontractor is liable only for loss/damage occurring during transit under its custody."
+CN: "装货由托运人、卸货由收货人负责（另有约定除外）。分包商仅对其保管期间运输途中之灭失损坏负责。"</blockquote>
+<h3>④ 货损货差责任与限额</h3>
+<blockquote>EN: "The Subcontractor's liability for loss/damage is limited to <b>[•] SDR per kg</b> or <b>[•] per consignment</b>, unless higher declared value agreed. The Subcontractor is not liable for inherent vice or force majeure."
+CN: "分包商货损责任限于 <b>[•] SDR/公斤</b> 或 <b>[•] /票</b>，另有高声明价值约定除外。固有缺陷或不可抗力所致不赔。"</blockquote>
+<h3>⑤ 保险与代位求偿配合</h3>
+<blockquote>EN: "The Subcontractor shall maintain carriage liability insurance of not less than <b>[•]</b>. Upon the Forwarder's payment to its Customer, the Subcontractor shall cooperate in subrogation and assign its recovery rights to the Forwarder."
+CN: "分包商应维持不低于 <b>[•]</b> 的运输责任险。货代向其客户赔付后，分包商应配合代位求偿并将追偿权让与货代。"</blockquote>
+<h3>⑥ 单证交接与签收</h3>
+<blockquote>EN: "The Subcontractor must obtain a clean signed receipt/POD at delivery and return it within <b>[•] days</b>. Discrepancies must be noted on the POD at the time of delivery."
+CN: "分包商须于交付时取得清洁签收单(POD)并于 <b>[•] 天</b>内返回。货差须于交付时注明于 POD。"</blockquote>
+<h3>⑦ 费用与账期 / ⑧ 分包禁止与再委托 / ⑨ 合规与制裁 / ⑩ 留置与抵销 / ⑪ 终止</h3>
+<blockquote>EN: "Invoices due in <b>[•] days</b>. Subcontracting of the whole or material part is prohibited without prior written consent. The Subcontractor warrants no sanctioned-party involvement. The Forwarder may set off against amounts due. Either party may terminate for material breach uncured after <b>[•] days</b>."
+CN: "发票 <b>[•] 天</b>内付清。未经书面同意禁止全部或实质性分包。分包商保证不涉及制裁主体。货代可抵销到期款项。任一方于重大违约经 <b>[•] 天</b>未补救可终止。"</blockquote>
+<div class="key">起草说明：第⑤条代位求偿配合是「追偿钥匙」——没有它，你赔了客户却没法找分包商要回。<b>反制点（分包商）：会要求「代位以保险赔付金额为限、且货代须先证明己方已实际赔付」才配合，防止货代虚构索赔。</b></div>
+<h2>五、《背靠背条款库》落地清单</h2>
+<ol><li>主合同签完即提取「客户责任清单」（时限、限额、罚则、赔偿范围）。</li><li>把清单逐条镜像写进分包合同，注明「same extent as main contract」。</li><li>标红不可背靠背项：法定强制、人身损害、故意重大过失、格式条款无效风险。</li><li>分包合同加「代位求偿配合 + 追偿权让与」条款。</li><li>要求分包商确认 STC/限额条款（合理提示+签字），防无效。</li><li>留存分包商资质、保单、签收单，作为追偿证据链。</li></ol>
+<div class="key">今日口诀：<b>背靠背是货代的风险导流管——客户压你的，原样压给分包商。但法定责任、人身损害、格式条款无效这三道墙，水流不过去，得自己扛。代位求偿条款是回流阀，赔完客户记得拧开它。</b></div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各责任限额、延迟罚则、保险最低额、账期天数均须按公司实际与分包商谈判结果填写，本模板为框架；② 道路运输法定责任与强制险范围以《民法典》《道路交通安全法》及最新司法解释为准；③ 格式条款效力认定以《民法典》第 496-497 条及最高法院判例为准。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Back-to-back</div><div class="cn">背靠背 / 镜像传导</div><div class="df">将主合同对客户的义务与责任，在原样或等同条件下转移给分包商，使风险沿链条传递</div></div><div class="ti"><div class="en">Subcontractor</div><div class="cn">分包商 / 实际承运人</div><div class="df">货代将部分运输服务转委托的实际履行方；其与货代签分包合同</div></div><div class="ti"><div class="en">Subrogation</div><div class="cn">代位求偿 / 权利代位</div><div class="df">保险人/赔偿方赔付后取得被保险人对第三方的索赔权；货代赔客户后可向分包商追偿</div></div><div class="ti"><div class="en">Demurrage/Detention</div><div class="cn">滞箱费/滞港费</div><div class="df">集装箱超期使用/滞留港区的费用，常按天计收，金额随港口而异（待核实）</div></div><div class="ti"><div class="en">Indemnity</div><div class="cn">赔偿保证 / 补偿</div><div class="df">一方承诺就特定损失使另一方免受损害，是背靠背传导的核心工具条款</div></div></div></div><div class="foot"><a href="W20-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W20-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

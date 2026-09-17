@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·第5天｜复盘：产品合规体系与第 15 周自测——一件货能不能入仓，五问定生死</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · DAY 5 / 5　·　阶段三　境外法域与合规</div><h1>复盘：产品合规体系与第 15 周自测——一件货能不能入仓，五问定生死</h1><div class="sub">第 15 周主题：欧盟产品合规 —— GPSR、电池法、EPR、CE</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像整理签证材料：技术文件、符合性声明、注册号、标签、责任人，缺一份就拒签。这份清单以后你会反复用。</div><div class="mlink"><b>怎么串到今天</b>第 15 周收口，下周进入数据合规——GDPR 与数据出境。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合 D1-D4 成产品合规手册第一版</li><li>自测 10 题（单选4+案例3+简答3）覆盖 GPSR/电池/EPR/CE/REACH</li><li>五问核验法：责任人 / 标识语言 / 电池合规 / EPR 号 / 化学关</li><li>物流商角色铁律：只做履约辅助人，不碰所有权、不以己名销售、不改标识</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《欧盟产品合规手册》第一版 + 10 题自测 +「一件货能不能入仓」五问核验法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 15 周结束，请帮我固化：
+1. 产出《欧盟产品合规手册》第一版目录（D1 GPSR + D2 电池 + D3 EPR + D4 CE/REACH 四块整合）
+2. 出 10 道题自测（单选 4 + 案例 3 + 简答 3），覆盖本周全部要点
+3. 错题讲透并关联业务场景
+4. 给我一套可复制的「一件货能不能入仓」五问核验法，直接能贴进海外仓 SOP
+5. 最后一条收口口诀</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 GPSR</b>：产品「身份+责任人」。条例直接适用、罚到年营收 2%。物流商怕被套成进口商/经销商。</li><li><b>D2 电池法规</b>：带电产品全生命周期。CE+UN38.3+碳足迹+护照+回收符号，分阶段。</li><li><b>D3 EPR</b>：货死了谁买单。WEEE/电池/包装三张账单，认定生产者看「欧盟有主体+以你名卖」。</li><li><b>D4 CE/UKCA/REACH/RoHS</b>：准入签证+化学关。自我声明 vs 公告机构；UKCA 英国独立；REACH SVHC 0.1% 通报、RoHS 限有害物质。</li><li><b>总纲</b>：四块合规从「出生(GPSR/电池)→入市(CE)→报废(EPR)→化学(REACH/RoHS)」形成闭环。海外仓是这道闭环的「最后一道闸门」。</li></ul>
+<h2>二、《欧盟产品合规手册》第一版目录</h2>
+<ol><li>模块 0：我方角色定位——履约辅助人 vs 进口商/经销商判定清单（源自 D1）。</li><li>模块 1：GPSR 义务主体对照表 + 欧盟责任人(RP)核验要点。</li><li>模块 2：电池法规义务时间表 + 带电产品入仓核验六步（UN38.3/MSDS/CE/语言/包装/回收符号，源自 D2）。</li><li>模块 3：EPR 三国速查（德/法/波）+ 客户 EPR 核验清单（源自 D3）。</li><li>模块 4：CE 判定流程图 + 技术文件与 DoC 核验清单 + UKCA 分支 + REACH/RoHS 声明（源自 D4）。</li><li>模块 5：五问核验法（见下文）与处置分支（放行/隔离/拒收）。</li></ol>
+<h2>三、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】GPSR 的法律形式是？A. 指令须各国转化  B. 条例直接适用  C. 公约  D. 建议</li><li>【单选】非欧盟制造商要把消费品卖进欧盟，必须？A. 自己飞去欧盟  B. 指定欧盟负责人(RP)  C. 什么都不用  D. 只做 CE</li><li>【单选】电池法规取代的旧法是？A. 2001/95/EC  B. 2006/66/EC  C. 2011/65/EU  D. 1907/2006</li><li>【单选】EPR 中「生产者」的认定关键？A. 工厂在哪  B. 在成员国设立或以自己名义销售  C. 谁设计  D. 谁运输</li><li>【案例】我方德国海外仓以自己公司名义帮中国卖家清关并上架转售一批 LED 灯饰，谁可能成为 GPSR 义务主体？有什么后果？</li><li>【案例】一批含锂电首饰入仓，客户只提供了包装 EPR 号，没有 WEEE 和电池 EPR 号，仓库该怎么处置？</li><li>【案例】客户说「我有 CE 就行」，仓库核验发现其无技术文件、无 DoC、说明书只有英文（发德国），应如何回应？</li><li>【简答】海外仓如何在合同中把 EPR/合规核验责任切回客户，避免被认定为生产者？</li><li>【简答】CE 自我声明与公告机构介入的判定逻辑是什么？本客户群通常走哪条？</li><li>【简答】列出「一件货能不能入仓」五问核验法的五个问题及其处置分支。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（条例直接适用）；2-B（必须指定欧盟责任人）；3-B（取代 2006/66/EC）；4-B（欧盟有主体+以己名销售）。</li><li>案例 5：我方以己名清关+转售→可能被认定为<b>进口商/经销商</b>甚至实质销售者，须履行 GPSR 核实合规、确保有 RP、标注自身信息、不售违规品等义务，违规可被下架/罚款；自保做法是不以己名销售，仅作履约辅助人并签切责条款。</li><li>案例 6：LED 灯饰同时触发 WEEE（电路）+电池（锂电）+包装三张 EPR 账单；缺 WEEE/电池号→按《客户 EPR 核验清单》打「待补正」，<b>隔离货位、不混正常库、限期 X 天补正，逾期拒收/转销毁，费用客户承担</b>（具体天数待核实，标「待核实」）。</li><li>案例 7：CE 不是「印个标就合规」。应要求客户补技术文件+DoC，且德国市场说明书须为<b>德语</b>（纯英文不合格）；缺文件即隔离待补正，并提示客户平台抽检风险。仓库不代做文件。</li><li>简答 8：合同写明「客户为产品生产者/进口商，负责办妥 EPR 并在入仓前提供编号；我方仅仓储履约、不以己名销售；未提供/失效导致下架罚款退运的损失费用（含仓储退运）由客户承担」；并附《EPR 核验清单》作为协议附件。</li><li>简答 9：看产品落入的指令是否要求第三方——LVD/EMC 等多可自我声明，医疗器械/PPE 等需公告机构。本客户群 LED/带电首饰多为 LVD+EMC 自我声明路径；含无线电(RED)须另行核对是否需公告机构。</li><li>简答 10：五问见下文。</li></ul>
+<h2>四、「一件货能不能入仓」五问核验法（直接贴 SOP）</h2>
+<table><thead><tr><th>问</th><th>核验内容</th><th>不合格处置</th></tr></thead><tbody><tr><td>① 有欧盟责任人(RP)吗？</td><td>非欧盟厂须有 EU RP 名称+联系方式，且标签标注</td><td>无→拒收/限期补正</td></tr><tr><td>② 标识与语言合规吗？</td><td>制造商/进口商信息+批次+销售国语言(德/法)警示</td><td>缺→隔离待补正</td></tr><tr><td>③ 带电合规齐吗？</td><td>UN38.3+MSDS+CE/UKCA+回收符号(锂电)</td><td>UN38.3 缺→拒收；余→隔离</td></tr><tr><td>④ EPR 号齐吗？</td><td>WEEE/电池/包装按品类全，且核验有效</td><td>缺→隔离限期补正，逾期拒收</td></tr><tr><td>⑤ 化学关过了吗？</td><td>REACH SVHC 声明+RoHS 测试报告(带电)</td><td>无声明→隔离待补正</td></tr></tbody></table>
+<div class="key">五问全部通过 = 放行入库；任一红灯(无 RP/无 UN38.3) = 直接拒收；黄灯(其余缺项) = 隔离货位、限期补正、逾期转拒收/销毁，费用客户承担（天数待核实）。五问法把本周四块合规压成仓库收货台的五步动作。</div>
+<h2>五、收口口诀</h2>
+<div class="key">本周收口口诀：<b>GPSR 管身份、电池管电芯、EPR 管报废、CE 管准入、REACH/RoHS 管化学。四块合规从生管到死，海外仓是最后一道闸门。五问核验法：责任人、标识语言、电池、EPR、化学——五关过才入库，仓库只做履约辅助人，不碰所有权、不以己名卖、不改标识，合规责任回写客户。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Compliance Manual</div><div class="cn">产品合规手册</div><div class="df">把 GPSR/电池/EPR/CE/REACH 等分散要求整合成一页可查、可执行的内部 SOP 与判定清单</div></div><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">5-Question Gate</div><div class="cn">五问核验法</div><div class="df">海外仓收货时，用五个问题快速判定一票货能否入仓：责任人/标识语言/电池合规/EPR号/化学关</div></div><div class="ti"><div class="en">Fulfilment Auxiliary</div><div class="cn">履约辅助人</div><div class="df">物流商仅按客户指令仓储运输、不碰所有权、不以己名销售时的安全身份，不直接承接产品合规义务主体身份</div></div></div></div><div class="foot"><a href="W15-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W15-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

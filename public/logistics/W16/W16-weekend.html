@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第16周·周末实战｜做一次数据映射（Data Mapping）与合规差距分析</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 16 · WEEKEND PROJECT　·　阶段三　境外法域与合规</div><h1>周末实战⑯：做一次数据映射（Data Mapping）与合规差距分析</h1><div class="sub">第 16 周主题：数据合规 —— GDPR 与中国数据出境</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">数据映射就是清点家里所有钥匙：每把钥匙开哪扇门、现在在谁手里、有没有配过备份。清点完才知道哪里该换锁。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">我方（国际货代 + 德国海外仓）为跨境电商客户提供一件代发。输出一份填好的数据流清单表、角色判定、差距清单与整改优先级（P0/P1/P2）及对应合同与制度动作。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要做一份数据映射与合规差距分析。设定：我方主体是「香港国际货代 + 其在德国注册的海外仓公司」，为一家中国跨境电商卖家（亚马逊/独立站）提供「一件代发」服务：卖家把订单推给我方 WMS，我方在德国仓拣货、打包、通过本地快递派送给欧盟买家。
+请输出：
+1. 一份填好的《数据流清单表》：列全数据类别 / 来源 / 字段举例 / 接收方 / 所在系统 / 法域 / 合法性基础 / 保留期（至少覆盖：买家收件人信息、卖家企业信息、卖家员工/对接人、订单与物流轨迹、清关申报个人字段、支付与退款信息、WMS 操作日志）
+2. 角色判定：逐条标清我方在每条数据流里是控制者还是处理者（或共同控制者），并说明理由
+3. 差距清单：对照本周学到的 GDPR（Art. 3/4/28/32/33/83 等）与 PIPL（第 38 条及豁免）要求，列出本场景缺什么（如缺 DPA、缺 SCC、保留期过长、分包处理者未披露、无 TIA、无 PIPIA、告知缺失等）
+4. 整改优先级排序：P0（立即/高危）/ P1（短期）/ P2（中长期），每条给对应的「合同动作」与「制度动作」
+5. 最后给一份《数据合规差距分析模板》，我之后可套用到其他客户</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票代发的「数据剖面」</h2>
+<p>我方 = 香港货代 + 德国海外仓公司，服务中国跨境电商卖家做欧盟一件代发。数据流从卖家系统 → 我方 WMS（德）→ 德国本地快递 → 欧盟买家，另有清关、支付、操作日志等支线。双法域同时触发：<b>欧盟侧收件人/员工数据落入 GDPR（我方有德国机构，Art. 3(1) 直接适用）；中国侧卖家与买家数据出境落入 PIPL（第 38 条）</b>。这正是本周讲的「双法域夹心」最典型场景，做映射就是先把这张网画清楚。</p>
+<div class="key">记忆点：<b>一件代发的数据从「卖家订单」出发，经「我方 WMS」「本地快递」「清关」「支付」四道关卡到买家。每一道都可能是控制者或处理者，每一道都可能触发 GDPR 或 PIPL——不画清单，就不知道风险藏在哪。</b></div>
+<h2>二、《数据流清单表》（填好的）</h2>
+<table><thead><tr><th>数据类别</th><th>来源</th><th>字段举例</th><th>接收方</th><th>所在系统</th><th>法域</th><th>合法性基础</th><th>保留期(现/应)</th></tr></thead><tbody><tr><td>买家收件人信息</td><td>卖家订单推送</td><td>姓名、电话、地址、邮箱</td><td>我方德仓、本地快递、清关行</td><td>WMS、快递系统</td><td>EU/中</td><td>GDPR:合同履行必要;PIPL:合同必需豁免</td><td>现 24 月 / 应 ≤ 配送+售后必要</td></tr><tr><td>卖家企业信息</td><td>卖家提供</td><td>公司名、税号、银行账号</td><td>我方、支付机构</td><td>OMS、财务</td><td>中/EU</td><td>合同履行必要</td><td>现 60 月 / 应 ≤ 合同+税务期</td></tr><tr><td>卖家员工/对接人</td><td>卖家提供</td><td>姓名、职务、工作邮箱手机</td><td>我方德仓</td><td>CRM、邮件</td><td>中/EU</td><td>PIPL:HR 必需豁免 / GDPR:合同履行</td><td>现无限 / 应 ≤ 雇佣关系+合理</td></tr><tr><td>订单与物流轨迹</td><td>系统生成</td><td>SKU、件数、轨迹时间戳</td><td>我方、卖家</td><td>WMS</td><td>EU/中</td><td>合同履行必要</td><td>现 36 月 / 应 ≤ 履约+争议期</td></tr><tr><td>清关申报个人字段</td><td>卖家/我方填</td><td>收发货人、身份证/税号</td><td>海关、清关行</td><td>报关系统</td><td>EU/中</td><td>法律义务(GDPR Art.6(1)(c))</td><td>按海关法定留存</td></tr><tr><td>支付与退款信息</td><td>支付机构</td><td>卡号片段、退款记录</td><td>我方、支付机构</td><td>支付网关</td><td>中/EU</td><td>合同履行必要+法律义务</td><td>现 72 月 / 应 ≤ 金融合规期</td></tr><tr><td>WMS 操作日志</td><td>德仓操作员</td><td>账号、操作时间、IP</td><td>我方</td><td>WMS 日志</td><td>EU</td><td>GDPR:我方自任控制者(内部管理)</td><td>现 12 月 / 应 ≤ 安全审计必要</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 须核对现行公告：① 各保留期与对应法定留痕义务（海关、税务、金融）以各国现行法为准，表中「应」为建议口径，须结合具体法域核对；② 合法性基础在 GDPR 与 PIPL 两侧须分别成立，不可只满足一侧。</div>
+<h2>三、角色判定：每条数据流我是控制者还是处理者</h2>
+<ul><li><b>买家收件人信息</b>：卖家（控制者）决定收集目的，我方按订单履约存储转发 → <b>我方处理者</b>；但若我方把该数据另作营销则在该目的上变控制者。</li><li><b>卖家企业/员工信息</b>：用于我方自身商务与 HR 对接，我方决定目的 → <b>我方控制者</b>（对卖家员工数据自任控制者并须单独告知）。</li><li><b>订单与物流轨迹</b>：按卖家指令记录履约 → <b>我方处理者</b>。</li><li><b>清关申报字段</b>：目的与字段由海关+卖家定，我方代填 → <b>我方处理者</b>。</li><li><b>支付信息</b>：若我方仅转接支付机构、不决定规则 → <b>我方处理者</b>；若我方自行决定扣款/退款策略则部分控制者。</li><li><b>WMS 操作日志</b>：我方为内部管理自行决定记录 → <b>我方控制者</b>（欧盟侧受 GDPR 全义务约束）。</li></ul>
+<div class="key">反制点（客户/卖家视角）：卖家作为多数数据流的控制者，可要求我方（处理者）补 DPA、限定不得把收件人数据传回香港/中国总部（除非走 SCC）、不得二次利用；并可在协议中约定「我方自任控制者的 WMS 日志若泄露欧盟员工数据，由我方独立担责」。</div>
+<h2>四、差距清单：对照 GDPR 与 PIPL 找缺口</h2>
+<ol><li><b>缺 DPA（Art. 28）</b>：我方作为处理者，与卖家控制者之间未签数据处理协议 → GDPR 违法，重档罚款风险。</li><li><b>缺 SCC + TIA（Schrems II）</b>：把欧盟收件人数据传回香港/中国总部，无 2021/914 SCC、无传输影响评估、无补充措施 → 非法传输，落较重档。</li><li><b>缺 PIPIA（PIPL）</b>：中国侧数据出境未做个人信息保护影响评估并留痕 → PIPL 违规。</li><li><b>分包处理者未披露</b>：德国本地快递、云服务商作为 sub-processor 未获卖家授权、未列名单、无责任穿透 → DPA 缺失项。</li><li><b>保留期过长</b>：多处保留远超必要（如员工信息无限、企业信息 60 月）→ 违反 GDPR 第 5(1)(e) 存储限制原则。</li><li><b>告知缺失</b>：未向买家告知境外接收方、出境路径、行权途径 → 违反 GDPR 第 13 条与 PIPL 告知义务。</li><li><b>安全措施待证（Art. 32）</b>：传输加密、访问分级、日志审计未成体系文档 → 过程义务无证据。</li></ol>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 上述差距对应的具体条文项（Art. 5(1)(e)、13、28、32、33、46 与 PIPL 第 38、55 条等）以官方文本为准；② SCC 模块选择（2021/914 的 Module 适用哪一款）须核对传输双方角色；③ 香港主体在 GDPR 下视为「第三国」，传回香港同样需 SCC。</div>
+<h2>五、整改优先级 P0 / P1 / P2</h2>
+<table><thead><tr><th>优先级</th><th>差距项</th><th>风险</th><th>合同动作</th><th>制度动作</th></tr></thead><tbody><tr><td>P0</td><td>补 DPA（Art.28 九项）</td><td>高：无协议双方违法</td><td>与卖家签 DPA，含分包授权/审计/删除返还</td><td>建立 DPA 模板库，接单必签</td></tr><tr><td>P0</td><td>补 SCC+TIA（传回总部）</td><td>高：非法传输重档罚</td><td>在 DPA 中嵌入 SCC 2021/914 模块</td><td>做 TIA 模板+补充措施（加密/假名）</td></tr><tr><td>P0</td><td>补 PIPIA（PIPL 出境）</td><td>高：PIPL 违规</td><td>出境前评估并双方确认路径/豁免</td><td>PIPIA 留痕 ≥3 年（须核对）</td></tr><tr><td>P1</td><td>披露分包处理者</td><td>中：sub-processor 失控</td><td>列本地快递/云商名单，取得卖家授权</td><td>分包准入审查+年度复核</td></tr><tr><td>P1</td><td>缩短保留期</td><td>中：存储限制违规</td><td>合同中写各数据保留上限</td><td>WMS/系统自动到期删除策略</td></tr><tr><td>P1</td><td>补告知（买家侧）</td><td>中：透明度缺失</td><td>隐私政策链接嵌入履约流程</td><td>告知文案中英文双版</td></tr><tr><td>P2</td><td>安全措施体系化</td><td>低-中：过程义务证据</td><td>—</td><td>加密/分级/日志/渗透测试制度+SOP</td></tr><tr><td>P2</td><td>应急与权利 SOP</td><td>低-中：响应能力</td><td>DPA 约定 24h 通报客户</td><td>建权利响应+泄露应急 SOP 并演练</td></tr></tbody></table>
+<div class="key">反制点（客户/卖家视角）：卖家可在 DPA 谈判中把 P0 三项设为「合同生效前提」——未签 DPA+未嵌入 SCC+未做 PIPIA 之前，卖家有权暂停推送订单数据，并主张我方违约赔偿；卖家还可要求整改时间表写入 SLA 并设违约金。</div>
+<h2>六、可套用的《数据合规差距分析模板》</h2>
+<ol><li><b>第一步 画清单</b>：按「数据类别/来源/字段/接收方/系统/法域/合法性基础/保留期」八列，逐条填。</li><li><b>第二步 定角色</b>：每条标控制者/处理者/共同控制者，理由一句话。</li><li><b>第三步 找缺口</b>：对照 GDPR（Art.3/4/28/32/33/83）与 PIPL（第 38 条+豁免）逐条打叉。</li><li><b>第四步 排优先级</b>：P0 高危立即、P1 短期、P2 中长期，每项配合同动作+制度动作。</li><li><b>第五步 留证据</b>：清单、判定、整改记录归档，作为合规自证。</li></ol>
+<div class="key">实战口诀：<b>一件代发先画数据流清单八列，再逐条定角色、找缺口、排 P0/P1/P2。P0 三件套（DPA+SCC/PIPIA）是生死线，合同动作与制度动作必须成对落地——客户能用它们反向卡我方上线，我方也能用它向监管自证已尽责。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Data Mapping</div><div class="cn">数据映射 / 数据流盘点</div><div class="df">系统梳理组织处理的所有个人数据的类别、来源、流向、系统、法域与保留期，是合规的起点</div></div><div class="ti"><div class="en">Data Inventory</div><div class="cn">数据流清单 / 数据资产清单</div><div class="df">Data Mapping 的产物，逐条记录数据从哪来、到哪去、谁碰、留多久</div></div><div class="ti"><div class="en">Gap Analysis</div><div class="cn">差距分析</div><div class="df">将现状与法律法规要求逐条比对，找出缺失与违规点</div></div><div class="ti"><div class="en">P0/P1/P2</div><div class="cn">整改优先级</div><div class="df">P0 高危立即整改、P1 短期、P2 中长期；按风险与可行性排序</div></div><div class="ti"><div class="en">Sub-processor</div><div class="cn">分包处理者</div><div class="df">代表处理者再委托处理个人数据的下游方（如本场景的德国本地快递、云服务商）</div></div></div></div><div class="foot"><a href="W16-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W16-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

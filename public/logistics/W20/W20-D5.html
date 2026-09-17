@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第20周·第5天｜复盘：合同模板体系与第 20 周自测</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 20 · DAY 5 / 5　·　阶段四　岗位能力</div><h1>复盘：合同模板体系与第 20 周自测</h1><div class="sub">第 20 周主题：中英文合同模板体系 —— 把前 19 周变成一套可复用的文件</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像把个人经验装进制度：模板库 + 审批流程 + 例外清单。做完这一步，你的能力就不再依赖你本人。</div><div class="mlink"><b>怎么串到今天</b>第 20 周收口，下周进入法律英语——能不能自己写英文合同。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>本周产出 5 份模板：货代协议、承运分包协议、海外仓协议、清关代理协议、三层体系说明</li><li>自测 10 题：覆盖身份条款、背靠背边界、代表形式、效力顺序、STC 并入、限额、留置权、制裁</li><li>五处必改清单：身份、限额、留置、单证保证、争议解决——接到任何合同先扫这五处</li><li>所有金额/天数仍标「待核实/须按公司实际调整」，模板不写死未批数字</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《跨境物流合同模板库 v1.0》定稿 + 10 题自测 +「拿到合同先改哪五处」清单</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 20 周结束，请固化：
+1. 把本周 D1-D4 产出整合为《跨境物流合同模板库 v1.0》定稿，列出 5 份模板名称与一句话用途
+2. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：身份条款(agent/carrier)、背靠背边界、直接/间接代表、效力顺序、STC 并入、责任限额、留置权、制裁拒运
+3. 给可复制的「拿到一份合同先改哪五处」清单
+4. 结合前 19 周，说明这套模板如何把已学规则固化成可复用文件</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 货代协议</b>：先把「我是 agent 还是 carrier」写死，11 条款中英对照。</li><li><b>D2 承运分包协议</b>：背靠背把客户责任镜像传导给分包商，边界是法定/人身/格式条款。</li><li><b>D3 海外仓+清关</b>：海外仓盯库存差异与 GDPR；清关盯直接/间接代表定谁扛海关责。</li><li><b>D4 三层体系</b>：框架>报价单>STC，效力顺序裁判冲突，STC 须合理提示+确认并入。</li><li><b>总纲</b>：前 19 周的提单、责任限制、Incoterms、CISG、海关规则，今天起全部收进这 5 份模板，变成「拿来就用」的文件。</li></ul>
+<h2>二、《跨境物流合同模板库 v1.0》定稿清单</h2>
+<table><thead><tr><th>模板名称</th><th>一句话用途</th><th>适用主体</th></tr></thead><tbody><tr><td>国际货运代理服务协议</td><td>定「我是谁」+ 11 核心条款</td><td>货代 ↔ 客户</td></tr><tr><td>运输服务协议（分包方版）</td><td>背靠背传导责任给分包商</td><td>货代 ↔ 分包商/实际承运人</td></tr><tr><td>海外仓服务协议</td><td>管库存差异+GDPR 处理者角色</td><td>海外仓 ↔ 客户</td></tr><tr><td>清关代理协议</td><td>定直接/间接代表+罚款分担</td><td>报关行 ↔ 客户</td></tr><tr><td>三层文件体系说明+STC</td><td>框架>报价单>STC 效力顺序</td><td>通用，配套所有交易</td></tr></tbody></table>
+<div class="key">落地动作：把 5 份模板存进公司共享盘，设版本号 v1.0 与生效日；每份留 [•] 占位符台账，审批后填实。前 19 周规则（海牙-维斯比限额、CISG 适用、HS 归类、监管代码）作为「条款注释」附在对应模板后，新人改合同能直接查依据。</div>
+<h2>三、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】货代协议最关键的第一条是？A. 费用 B. 身份条款(agent/carrier) C. 争议解决 D. 保密</li><li>【单选】背靠背不能简单传导的情形是？A. 运费差额 B. 货损限额 C. 法定人身损害责任 D. 延迟罚则</li><li>【单选】清关代理中，以自身名义申报、对海关债务连带的是？A. 直接代表 B. 间接代表 C. 都不连带 D. 仅客户</li><li>【单选】三层文件效力顺序通常应为？A. STC>框架>报价单 B. 框架>报价单>STC C. 报价单>框架>STC D. 平等</li><li>【单选】STC 有效并入的前提是？A. 写在合同里即可 B. 合理提示+对方确认 C. 收费即生效 D. 单方通知</li><li>【案例】你签 FBL 当多式联运经营人，却想用 agent 条款免责，客户货损索赔，法院会怎么认？</li><li>【案例】分包合同写「等同主合同责任」，分包商主张显失公平，哪些情况法院会调减？</li><li>【案例】清关选间接代表，客户 HS 编码错导致海关罚款，谁扛？怎么在协议里提前切？</li><li>【简答】列出「拿到一份合同先改哪五处」并说明每处不改的风险。</li><li>【简答】为什么框架协议改动必须双方书面签，而 STC 可单方提前通知修订？</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B；2-C（法定强制/人身损害不能背靠背）；3-B（间接代表）；4-B；5-B。</li><li>案例 6：签发 FBL 即滑向 contracting carrier，agent 免责条款与行为矛盾，法院按实质（签单+赚差价）认定 carrier，agent 条款可能被认定未如实披露而无效——身份须与行为一致。</li><li>案例 7：分包商仅跑一段却背「全程时效罚则」、或非其过错（如天气/海关）也罚、或限额远低于主合同致货代零损耗却不担自身管理过失，法院可认显失公平调减。</li><li>案例 8：间接代表下代理对海关债务连带，但协议须写「单证真实性由客户保证 + 罚款滞纳金客户担 + 代理过失封顶」，把客户数据错导致的罚款切回客户；选直接代表则客户主担。</li><li>简答 9：见下方五处清单。</li><li>简答 10：框架是双方合意主干，单方改破坏合意；STC 是通用细则且客户已整体接受，提前通知修订符合商业效率，但生效日后的票才适用、且不得减损已签框架核心权利。</li></ul>
+<h2>四、「拿到一份合同先改哪五处」清单（可复制）</h2>
+<ol><li><b>① 身份条款</b>：确认写清 agent 还是 carrier，且与我方实际行为（是否签单、赚差价、选承运人）一致；不一致立刻改，否则免责落空。</li><li><b>② 责任限额</b>：确认限额数字已填实且经审批，未填 [•] 占位或写「按实际价值」等于无限责任；补 STC 限额并确认提示。</li><li><b>③ 留置权</b>：确认有占有+通知+变卖三步骤，回款才有抓手；缺变卖权则只能扣不能卖。</li><li><b>④ 单证真实性保证+indemnity</b>：确认客户保证单证真实、虚假致罚款由客户赔；缺此条海关责任全压货代。</li><li><b>⑤ 争议解决与适用法</b>：确认管辖/仲裁地对我方可行（推荐香港 HKIAC 或中国 CIETAC），避免客户所在地法院管辖导致维权成本畸高。</li></ol>
+<div class="key">五处顺序记忆：<b>身(身份)限(限额)留(留置)证(单证)争(争议)</b>——接到任何合同，按这五字扫一遍，漏一处就可能亏一票。前 19 周学的责任限制、Incoterms、CISG、海关规则，最终都要落到这五处条款里才算真正复用。</div>
+<h2>五、与阶段四的衔接</h2>
+<p>第 20 周是阶段四（岗位能力）第一周，目标是「把前 19 周变成文件」。这 5 份模板不是终点，而是周末实战⑳要完成的《合同模板库 v1.0》与《合同审批流程制度》的输入。下周起将进入「用模板 + 审真实合同 + 复盘争议」的循环，模板会被真实业务不断打磨。现在先把 v1.0 地基打牢：身份写死、限额留痕、留置有手、单证有保、争议可控。</p>
+<div class="key">本周收口口诀：<b>框架定身份、背靠背传风险、代表定海关责、效力顺序裁冲突、STC 须确认并入。五处必改（身限留证争）是保命符，模板不写死未批数字，留 [•] 待审批。</b></div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各模板金额、天数、机构名、版本号须按公司实际与法务复核填写；② STC 并入效力以《民法典》第 496-497 条及最新司法解释为准；③ 香港/欧盟法下对应规则以当地现行法为准；④ 自测题答案为学习口径，正式适用前须核对原始法条。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Template Library v1.0</div><div class="cn">合同模板库 v1.0</div><div class="df">本周沉淀的 5 份可复用合同模板集合，是阶段四「岗位能力」交付物的基础</div></div><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">5-Point Checklist</div><div class="cn">五处必改清单</div><div class="df">接到任何合同先扫的五个高危条款：身份、限额、留置、单证保证、争议解决</div></div><div class="ti"><div class="en">Carve-out</div><div class="cn">责任切割</div><div class="df">在模板中写明「我方仅按约定提供服务、不入第三方关系责任」的自我保护条款</div></div></div></div><div class="foot"><a href="W20-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W20-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

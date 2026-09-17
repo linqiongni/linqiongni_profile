@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·第4天｜FIATA 示范规则与标准交易条件（STC）：没提示的条款，等于没写</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · DAY 4 / 5　·　阶段二　运输责任制度</div><h1>FIATA 示范规则与标准交易条件（STC）：没提示的条款，等于没写</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">标准交易条件（STC）像淘宝的用户协议：几乎没人读，但出事时它就是判你赔多少的依据。关键不在写了什么，而在有没有「显著提示」让对方确认过。</div><div class="mlink"><b>怎么串到今天</b>身份确定了，今天看把身份写进纸上——那几页没人看的背面条款。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>FIATA = 国际货运代理协会联合会，其示范规则与 FBL 是行业通用“模板书”</li><li>标准交易条件（STC）必须'合理提示 + 对方明示接受'才有效，否则格式条款不对抗</li><li>STC 是货代把'代理身份+责任限制'焊进合同的最后一道锁，但锁没锁好要看提示动作</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《标准交易条件（STC）条款库》+《STC 有效性加固方案》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 FIATA 示范规则与货代标准交易条件（STC），输出《标准交易条件（STC）条款库》与《STC 有效性加固方案》：
+1. 生活化比喻：STC 像外卖 App 的"用户协议"——你勾了'已读并同意'才生效；货代把'我只代理、限额很低、免责很多'写成 STC 塞进合同，但客户根本没看也没确认，这种条款打官司时大概率被认定"未订入合同"。
+2. FIATA 是什么？它的示范规则（FIATA Model Rules）和 FBL（FIATA 多式联运提单）在国际上的地位与适用条件（客户是否接受 FBL 作为物权凭证）。
+3. STC 的法律性质：为什么它是"格式条款"？我国《民法典》第 496-497 条对格式条款的"提示说明义务"怎么规定？不提示的后果（条款不成为合同内容 / 无效）。
+4. 核心结论：STC 必须"合理提示 + 对方明示接受"才有效。什么是"合理提示"（加粗、字号、单独页面、显著位置）？什么是"对方明示接受"（勾选、签字、回邮件）？
+5. 《STC 有效性加固方案》：给一套实操动作（加粗、单独签字确认页、邮件回执、电子勾选日志）把 STC 锁死。
+6. 《标准交易条件（STC）条款库》：给 5-8 条货代最该写进 STC 的条款（中英对照样板）：身份限定（仅代理）、责任限制、免责、费用与留置、时效、适用法律与争议解决。
+7. 客户（货主）反制点：货主如何攻击 STC 无效（未提示、显失公平、排除主要权利）。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：STC 是货代的'用户协议'，不勾不选就白写</h2>
+<p>把 STC（标准交易条件）想成<b>外卖 App 的“用户协议”</b>：App 把“配送延误不赔、丢餐只退跑腿费”写成小字条款塞进去，但你<b>从没点过'已读并同意'</b>——这种条款打官司时法院基本不认。<b>怎么串到今天：D2 我们讲用'as agent'措辞焊死代理身份、D3 讲签 HBL 会实锤承运；STC 是把'我只代理+限额很低+免责很多'系统写进合同的最后一道锁。但锁没锁好，不看提示动作、只看条款文字——这是 90% 货代踩的雷。</b></p>
+<div class="key">记忆点：<b>STC 是格式条款，格式条款的命门是'提示+接受'。条款再完美，客户没看到、没确认，等于没写。货代最该投入的不是条款起草，而是'让客户确实看到并同意'的证据链。</b></div>
+<h2>二、FIATA 与它的'模板书'</h2>
+<ul><li><b>FIATA 是什么</b>：国际货运代理协会联合会，制定行业示范规则（FIATA Model Rules for Freight Forwarding Services）与标准单证。</li><li><b>FIATA FBL（FIATA 多式联运提单）</b>：唯一被国际公认具有<b>物权凭证</b>功能的货代提单（对应 D3 讲的 HBL 家族）。但注意：FBL 是承运人型单证，<b>签发 FBL = 以承运人身份履约</b>，与'代理身份'目标冲突，须谨慎选择。</li><li><b>适用前提</b>：FIATA 规则与 FBL 均<b>须合同明确援引</b>才适用（和 Incoterms 同理），不援引则只是参考。我国货代若想用 FIATA 规则，必须在合同中写明'适用 FIATA 国际货运代理示范规则'。</li><li><b>客户接受度</b>：部分客户（尤其欧美大买家）不接受 FBL 作为议付/提货单证，仍要求船公司 MBL——这会影响你能否用 FBL 锁承运关系。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① FIATA 现行示范规则版本（如 2018 版）及其中关于货代身份（代理人/承运人）的默认推定；② FBL 在主要信用证惯例（UCP600）下的银行接受口径；③ 国内法院对 FIATA 规则援引效力的认定，请核对最新判例。</div>
+<h2>三、STC 的法律性质：为什么它是'格式条款'</h2>
+<ul><li><b>格式条款定义</b>：STC 是货代为重复使用而预先拟定、未与对方协商的条款 → 落入《民法典》第 496 条'格式条款'。</li><li><b>第 496 条（提示说明义务）</b>：提供格式条款一方须采取<b>合理方式提示</b>对方注意<b>免除或减轻其责任等与对方有重大利害关系的条款</b>；对方可要求说明，提供方应说明。未履行提示/说明，致使对方没注意或理解的，<b>对方可主张该条款不成为合同内容</b>。</li><li><b>第 497 条（无效情形）</b>：提供格式条款一方<b>不合理地免除或减轻自己责任、加重对方责任、限制对方主要权利</b>，或<b>排除对方主要权利</b>的，该条款<b>无效</b>。</li><li><b>后果链条</b>：未合理提示 → 条款不订入合同（对货主无约束力）；即便提示了，但内容显失公平/排除主要权利 → 条款无效。两种结果都让货代'裸奔'。</li></ul>
+<div class="key">货主反制点：货主攻击 STC 的标准三刀——①'我没看到也没确认'（攻击提示缺失，条款不订入）；②'限责太低、免责太宽，排除我主要索赔权'（攻击第 497 条无效）；③'你实际以承运人身份行事（签了 HBL），却用代理 STC，自相矛盾'（攻击适用前提）。我方对策见下方加固方案。</div>
+<h2>四、什么是'合理提示'与'对方明示接受'</h2>
+<table><thead><tr><th>要素</th><th>合理提示（怎么让对方'看到'）</th><th>明示接受（怎么让对方'确认'）</th></tr></thead><tbody><tr><td>形式</td><td>加粗/加大字号/异色；置于合同显著位置或单独确认页；关键条款不得'淹没'在正文中</td><td>签字、勾选'已读并同意'、邮件/系统回复确认、电子勾选日志</td></tr><tr><td>时机</td><td>缔约时即提供，而非纠纷后补交</td><td>在收到提示的同时作出，而非沉默推定</td></tr><tr><td>范围</td><td>重点提示免责、限责、管辖权、费用、留置等'重大利害关系'条款</td><td>覆盖全部 STC，而非仅部分</td></tr><tr><td>反例</td><td>正文小字夹带、仅写'详见附件'不交付、事后补发</td><td>仅'继续使用服务视为接受'的沉默条款（证明力弱）</td></tr></tbody></table>
+<h2>五、《STC 有效性加固方案》（实操动作，落地用）</h2>
+<ol><li><b>单独成册/单独页面</b>：STC 不从合同正文里'长'出来，而是作为独立附件或独立确认页，标题显著。</li><li><b>关键条款加粗异色</b>：免责、限责（666.67 SDR/件或2 SDR/kg 待核实）、留置、时效、管辖，全部加粗+较大字号。</li><li><b>单独签字确认页</b>：合同末设'标准交易条件确认'页，客户手写/电子签署'本人已阅读并接受全部 STC'。</li><li><b>缔约前邮件送达</b>：在签约邮件正文中附 STC 全文链接，要求客户回复'已阅并接受'，留邮件回执为证。</li><li><b>电子勾选日志</b>：线上下单系统设强制勾选'我已阅读并同意 STC'且记录 IP/时间戳，防止'没勾就说勾了'。</li><li><b>缔约后不补、纠纷时不补</b>：提示动作必须在争议发生前完成，事后补发 STC 一律无效。</li><li><b>留存证据链</b>：合同+确认页+邮件+系统日志，三证合一归档，至少保存至诉讼时效届满后。</li></ol>
+<h2>六、《标准交易条件（STC）条款库》中英对照样板</h2>
+<blockquote>【1 身份限定】中："本公司以货运代理人身份安排运输事宜，非承运人，不对运输过程之灭失损坏迟延负责。" / EN: "The Company acts as freight forwarder only and not as carrier, and assumes no liability for loss, damage or delay in carriage."
+【2 责任限制】中："除法律强制规定外，本公司对任何索赔之责任不超过所涉货物运费之X倍或每公斤2计算单位（SDR），以高者为准。" / EN: "Except where mandatory law provides otherwise, the Company's liability shall not exceed X times the freight or 2 SDR per kilogram, whichever is higher."
+【3 免责】中："因不可抗力、货物固有缺陷、包装不良、托运人申报不实、海关行为等所致损失，本公司不承担责任。" / EN: "The Company shall not be liable for loss arising from force majeure, inherent vice, defective packing, incorrect declaration by the shipper, or acts of customs authorities."
+【4 费用与留置】中："客户未付清费用前，本公司对货物享有留置权，并可中止运输、拍卖货物以受偿。" / EN: "The Company has a lien on the goods for unpaid charges and may suspend carriage or sell the goods to satisfy the debt."
+【5 时效】中："任何索赔须于货交之日起X日内书面提出，否则视为放弃。" / EN: "Any claim must be made in writing within X days from delivery, failing which it is waived."
+【6 适用法律与争议解决】中："本条件适用中华人民共和国法律；争议提交XX仲裁/法院。" / EN: "These Conditions are governed by the laws of the PRC; disputes shall be submitted to XX arbitration/court."</blockquote>
+<div class="key">今日落地三动作：① 把我方 STC 里所有免责/限责条款过一遍，凡'没加粗、没单独确认、没邮件回执'的全部列为高危；② 上线'单独签字确认页 + 缔约前邮件送达 + 系统勾选日志'三件套，形成证据链；③ 记住：STC 的有效性 90% 取决于'提示与接受的证据'，而不是条款写得多漂亮——别把力气全花在起草上。</div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：①《民法典》第 496、497 条现行精确表述与司法解释口径；② STC 中'责任限制倍数 X'、'索赔时效 X 日'的拟定是否触碰第 497 条'不合理免除/排除主要权利'红线，建议结合业务实际由法务复核；③ 跨境情形下（客户在欧盟/美国）STC 提示要求可能更高（如欧盟 unfair terms 指令），须按适用法另行加固。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">FIATA</div><div class="cn">International Federation of Freight Forwarders Associations / 国际货运代理协会联合会</div><div class="df">制定货代示范规则与标准单证（如 FBL）的国际行业组织，其规则须经合同援引才适用</div></div><div class="ti"><div class="en">FIATA FBL</div><div class="cn">FIATA 多式联运提单</div><div class="df">FIATA 制定的可转让多式联运提单，是唯一被承认具有物权凭证功能的货代提单</div></div><div class="ti"><div class="en">STC</div><div class="cn">Standard Trading Conditions / 标准交易条件</div><div class="df">货代在标准合同中预先拟定的统一交易条款（含身份、限额、免责等），属格式条款</div></div><div class="ti"><div class="en">Reasonable Notice</div><div class="cn">合理提示</div><div class="df">提供格式条款一方须以显著方式提醒对方注意免责/限责条款，否则条款不订入合同（《民法典》第 496 条）</div></div><div class="ti"><div class="en">Express Acceptance</div><div class="cn">明示接受</div><div class="df">对方以签字、勾选、邮件回复等积极行为确认接受条款，是 STC 生效的关键动作</div></div></div></div><div class="foot"><a href="W10-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W10-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

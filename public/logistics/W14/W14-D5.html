@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第14周·第5天｜复盘：欧盟法通识与第 14 周自测</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 14 · DAY 5 / 5　·　阶段三　境外法域与合规</div><h1>复盘：欧盟法通识与第 14 周自测</h1><div class="sub">第 14 周主题：欧盟法律环境通识 —— 打开欧盟法的大门</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像出国前查一遍「这个国家能不能带这个东西」：适用哪部法、有没有责任人、要不要注册。走一遍流程，欧盟法就不神秘了。</div><div class="mlink"><b>怎么串到今天</b>第 14 周收口，下周进入最硬的产品合规：电池法、GPSR、EPR。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出：形式对照表、EUR-Lex 检索 SOP、市场与海关状态、生产者风险</li><li>自测 10 题覆盖：四类形式、CELEX、转化与直接效力、四大自由、VAT/EORI、生产者认定、Safety Gate、消费者指令</li><li>三步判断法：看形式 → 看适用范围 → 看谁被定义为义务主体</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《欧盟法检索与适用手册》定稿 + 10 题自测 +「拿到一份欧盟文件三步判断法」</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 14 周结束，请帮我固化：
+1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：欧盟法四种形式与约束力、条例 vs 指令、EUR-Lex/CELEX/转化、单一市场与海关状态、海外仓选址六维、生产者认定、Safety Gate、消费者指令
+2. 错题讲透并关联业务场景
+3. 帮我整合本周产出物成《欧盟法检索与适用手册》定稿，至少包含：形式对照表、检索 SOP、货物流通状态、海外仓选址清单、生产者风险切割、召回预案
+4. 最后给我可复制的「拿到一份欧盟文件三步判断法」（看形式 → 看适用范围 → 看谁被定义为义务主体），以及 30 秒边界判断</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 形式</b>：条约最高、条例直接生效、指令须转化、决定只对人；EEC/EC/EU 看年代。</li><li><b>D2 检索</b>：EUR-Lex 自己查、CELEX 当身份证、consolidated 看最新、transposition 看德波落地。</li><li><b>D3 市场</b>：关税同盟一道墙、单一市场四自由；自由流通可全欧调、海关监管受束缚；选仓六维。</li><li><b>D4 责任</b>：Safety Gate 全欧预警；产品责任无过错也赔；贴自己标=变生产者；召回切责回客户。</li><li><b>总纲</b>：欧盟法管不管你，三件事定——什么形式、生不生效、管不管我。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】下列哪种欧盟文件在成员国直接生效、无需转化？A. 指令  B. 条例  C. 建议  D. 决定(对特定人外)</li><li>【单选】CELEX 号 32023R0988 中 R 表示？A. 指令  B. 条例  C. 决定  D. 条约</li><li>【单选】非欧盟货物在欧盟完成进口清关后状态是？A. 海关监管  B. 自由流通  C. 自由区  D. 海关仓库</li><li>【单选】海外仓替客户贴自己的品牌一件代发，最可能被认定为？A. 纯服务商  B. 生产者(own-brander)  C. 进口商  D. 消费者</li><li>【单选】货物销售指令 (EU) 2019/771 规定的法定质保期约为？A. 1 年  B. 2 年  C. 3 年  D. 6 个月</li><li>【案例】德国监管在 Safety Gate 通报某带电 SKU 危险，我方波兰仓有同批库存，应如何处置、不处置的后果？</li><li>【案例】客户要我方德国仓做「贴标换标+一件代发」并贴我方品牌，我方应接吗、怎么接？</li><li>【案例】一部欧盟指令在 EUR-Lex 显示德国 National transposition 为 No measures，我方作为物流商能否直接依据该指令约束客户？</li><li>【简答】列出海外仓选址六个法律维度，并说明德国 vs 波兰的核心差异。</li><li>【简答】说明「未转化指令的垂直直接效力」与「物流方为何不能拿指令告另一私人」。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（条例直接生效）；2-B（R=Regulation）；3-B（自由流通）；4-B（own-brander 自有品牌者）；5-B（约 2 年法定质保）。</li><li>案例 6：立即隔离同批、停代发、通知客户与监管、配合下架/退运；拖延致损害扩大，仓方就扩大部分可能担责，且可能被认定协助流通连带。</li><li>案例 7：原则不接「贴我方品牌」；若接须改贴客户标、用客户名，合同写「代贴标属客户委托、品牌与产品合规责归客户、我方非生产者」并留授权书；否则拒接。</li><li>案例 8：不能。未转化指令无水平直接效力，不能约束私人；且对客户的合同义务应基于转化后的德国国内法或双方约定，不能凭未转化指令直接约束。</li><li>简答 9：六维=VAT 注册地/EORI/仓储许可消防/用工/产品监管执法强度/退货处理；德严（19% VAT、解雇保护强、执法严）波便宜（23% VAT、用工灵活、执法松）。</li><li>简答 10：未转化且清晰无条件的指令可对成员国主管机关发生垂直直接效力（个人可主张），但<b>不能</b>在私人之间水平适用；物流方告另一私人须用转化后国内法或合同。</li></ul>
+<h2>三、《欧盟法检索与适用手册》定稿结构</h2>
+<ul><li>模块 1：欧盟法形式对照表（条约/条例/指令/决定/建议意见 + 约束力）。</li><li>模块 2：EUR-Lex 检索 SOP（编号/CELEX/主题三路径 + consolidated + transposition）。</li><li>模块 3：货物流通状态表（自由流通 vs 海关监管 vs 自由区）。</li><li>模块 4：海外仓选址六维清单（德 vs 波比对）。</li><li>模块 5：生产者风险切割（贴客户标、用客户名、合同三条款）。</li><li>模块 6：产品召回应急预案（预警-隔离-停发-通知-配合）。</li><li>模块 7：三步判断法速记卡（看形式→看范围→看义务主体）。</li></ul>
+<h2>四、可复制「三步判断法」+ 30 秒边界</h2>
+<div class="key"><b>拿到一份欧盟文件，三步走：</b>
+1. <b>看形式</b>：Regulation 直接管你；Directive 须查德/波是否已转化、转化后法名；Decision 只约束被指名对象；建议/意见不约束。
+2. <b>看适用范围</b>：生效日（一般公布后第 20 日）、适用日（可能更晚）、地域（全欧 or 特定国）。没到适用日先不慌。
+3. <b>看义务主体</b>：文件定义的是生产者/进口商/分销商/服务商/数据控制者？我方角色是否落入？纯仓储服务商≠生产者，除非贴自己标。
+<b>三步走完，这份文件管不管我、管到哪、我该留什么证，立刻清楚。</b></div>
+<div class="key">本周收口口诀：<b>欧盟法不管你靠「三看」：看形式定约束力、看范围定生不生效、看主体定管不管我。条例直接上、指令等落地、贴自己标变生产者——三句话，第 14 周毕业。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">Applicability</div><div class="cn">适用性 / 适用范围</div><div class="df">判断一份欧盟文件是否及何时对我方有约束力，取决于形式、生效/适用日、义务主体定义</div></div><div class="ti"><div class="en">Three-step Test</div><div class="cn">三步判断法</div><div class="df">看形式(Reg/Directive) → 看适用范围(生效/适用日/地域) → 看义务主体(我方角色是否在定义内)</div></div><div class="ti"><div class="en">Obliged Entity</div><div class="cn">义务主体</div><div class="df">文件定义的被约束对象（生产者/进口商/分销商/服务商/数据控制者）；我方角色是否落入决定直接义务</div></div><div class="ti"><div class="en">Cheat-sheet</div><div class="cn">速查手册</div><div class="df">把本周全部产出物压缩成一页可随时查阅的判断清单</div></div></div></div><div class="foot"><a href="W14-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W14-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

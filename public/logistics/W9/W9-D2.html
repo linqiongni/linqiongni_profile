@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第9周·第2天｜空运实务：IATA 规则、危险品与航空公司运输总条件</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 9 · DAY 2 / 5　·　阶段二　运输责任制度</div><h1>空运实务：IATA 规则、危险品与航空公司运输总条件</h1><div class="sub">第 9 周主题：空运、铁路、公路 —— 三大非海运责任制度</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">危险品申报就像过安检时申报充电宝：不申报被查出来是违法，申报了按规则装就行。瞒报的后果远超货值本身，甚至可能上刑。</div><div class="mlink"><b>怎么串到今天</b>昨天讲责任制度，今天讲空运实操里最容易出大事的一块——危险品与运输总条件。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>IATA DGR 是行业规则非法律，但航司 CoT（运输总条件）据此制定，约束力来自合同</li><li>锂电池属第 9 类危险品，须 UN38.3 测试 + MSDS + 对应 PI 包装说明（PI 966/967/968/969/970）</li><li>航司 CoT 的免责与限额往往援引 MC99，且常加「未如实申报危险品不赔」条款</li><li>瞒报危险品可能触《刑法》危险品肇事等责任，且保险公司拒赔——须标「待核实」</li><li>珠宝客户常含充电款/锂电池，空运合规是高频刚需</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《航空公司运输总条件审查清单》+《带电产品空运合规清单》（锂电池 UN38.3 / PI 966-970 / 瞒报刑责）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透空运实务中的 IATA 规则、危险品与航空公司运输总条件（Conditions of Carriage, CoT）：
+1. IATA 是什么、DGR（危险品规则）的法律性质：它是对公约/国内法的「行业细化」还是「软规则」？航司 CoT 与 DGR 的关系
+2. 航空公司运输总条件（CoT）审查清单：我方作为货代/缔约承运人，必查哪些条款（责任限额、免责、危险品申报、索赔时限、管辖权、代理关系定性）
+3. 带电产品空运合规清单：锂电池按 IATA DGR 第 9 类危险品处理，UN38.3 测试、PI 966/967/968/969/970 包装说明分别对应什么状态（锂电单独/与设备同包/内置于设备/装在设备上/备用电池）、MSDS 与运输鉴定书谁出
+4. 瞒报的法律后果：对托运人、对货代分别是什么（行政/民事/刑事），引用《刑法》第 136 条之一危险物质肇事等方向，标「待核实」
+5. 站在物流商视角，给客户（珠宝卖家）的反制点：客户不配合提供 UN38.3 时我方如何自保；客户提供了假检测报告谁担责</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：IATA 不是法，但航司的「店规」照它写</h2>
+<p>D1 讲了 MC99 这把「法定封顶尺」。但实操中，你每天打交道的不是公约条文，而是<b>航空公司的《运输总条件》（CoT）和 IATA 的《危险品规则》（DGR）</b>。把它们想成「快递柜取件码的使用须知」——本身不是国家法律，但你签了单、交了货，就等于接受了它的条款，违约照样追责。IATA DGR 是对联合国危险品建议书（橙皮书）的行业细化，航司的 CoT 基本照它落地，所以<b>不读 DGR，你根本不知道锂电池能不能上飞机、怎么包</b>。</p>
+<div class="key">记忆点：<b>IATA DGR = 行业操作手册（软规则），航司 CoT = 有合同约束力的「店规」，MC99 = 法定责任天花板。三者层级：DGR 管「能不能运/怎么包」，CoT 管「运了出事怎么赔」，MC99 管「赔多少封顶」。</b></div>
+<h2>二、《航空公司运输总条件（CoT）审查清单》</h2>
+<table><thead><tr><th>必查条款</th><th>查什么</th><th>我方风险点</th><th>动作</th></tr></thead><tbody><tr><td>责任限额</td><td>是否援引 MC99 19 SDR/kg；有无声明价值机制</td><td>未提示限额→客户主张未尽提示</td><td>接单前把 CoT 限额条款截图存档</td></tr><tr><td>免责条款</td><td>危险品瞒报、固有缺陷、政府行为等</td><td>「未如实申报不赔」常埋在此</td><td>向客户转述该免责并留痕</td></tr><tr><td>危险品申报</td><td>要求托运人如实申报并提供证明</td><td>我方作为代理，瞒报连带有责</td><td>接单即索要 UN38.3 + MSDS</td></tr><tr><td>索赔时限</td><td>货损书面异议期（通常 14 日内）</td><td>超期视为放弃索赔</td><td>在给客户的委托须知里写明</td></tr><tr><td>管辖权/准据法</td><td>争议由哪国法院/仲裁</td><td>CoT 常锁定航司所在国</td><td>我方合同须另定对己有利的争议条款</td></tr><tr><td>代理关系定性</td><td>我方是缔约承运人还是单纯代理</td><td>定性不清→责任被扩大</td><td>合同中明确我方身份</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：各航司 CoT 具体条款（尤其索赔时限、免责范围、管辖权）以该航司公开文本与其 IATA 备案为准；不同航司差异较大，不能套用模板。</div>
+<h2>三、带电产品空运合规清单（珠宝客户高频）</h2>
+<p>珠宝客户常含充电款、智能款，<b>锂电池按 IATA DGR 第 9 类危险品（UN3480 锂金属/UN3481 锂离子电池与设备）处理</b>，不是普通货。核心三件套 + 五条包装路径：</p>
+<ul><li><b>UN38.3 测试报告</b>：电池芯/电池组出货前须通过振动、冲击、热循环、外部短路等 8 项测试，由电池厂出具。</li><li><b>MSDS / 运输危险性鉴定书</b>：载明危险品类别与应急处置，国内多由公安机关消防/海关认可机构出具「运输条件鉴定书」。</li><li><b>对应 PI 包装说明</b>：按电池与设备的关系选编号（见下表）。</li><li><b>标记与文件</b>：危险品申报单（Shipper's Declaration）、锂电池操作标签、UN 编号、正确运输名称。</li><li><b>数量与功率阈值</b>：锂离子电芯瓦时（Wh）是否超过限值决定可否走客机/须走货机，须核对现行 DGR。</li></ul>
+<table><thead><tr><th>PI 编号</th><th>适用情形</th><th>包装要点方向</th></tr></thead><tbody><tr><td>PI 966</td><td>锂离子电池与设备<b>同包</b>运输（电池装在设备内/随设备）</td><td>设备须防意外启动，电池与设备隔离</td></tr><tr><td>PI 967</td><td>锂离子电池<b>装在设备内</b>（如手机/珠宝检测仪器内置）</td><td>设备整体包装，单件限额</td></tr><tr><td>PI 968</td><td><b>锂金属电池单独</b>运输（UN3090 方向）</td><td>仅货机，严格数量限制</td></tr><tr><td>PI 969</td><td>锂金属电池与设备同包</td><td>同 966 逻辑，金属体系</td></tr><tr><td>PI 970</td><td>锂金属电池装在设备内</td><td>同 967 逻辑，金属体系</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① PI 966-970 的适用拆分（锂离子 vs 锂金属、与设备关系）以最新版 IATA DGR 原文为准；② 瓦时阈值、单件数量上限、客机/货机差异每年修订，须查当年版；③ 运输鉴定书出具机构资质以海关/民航公告为准。</div>
+<h2>四、瞒报的法律后果：从拒运到坐牢</h2>
+<ul><li><b>对托运人</b>：航司可拒运、收取违约金/处置费；保险公司对瞒报导致的损失<b>拒赔</b>；货损殃及同舱其他货物须民事赔偿。</li><li><b>对货代（我方）</b>：作为代理人若未尽合理审查、甚至协助瞒报，承担连带赔偿；情节严重的可能被吊销经营资质。</li><li><b>刑事方向</b>：瞒报危险品引发事故，可能触及《刑法》第 136 条之一「危险物质肇事」、或以危险方法危害公共安全等责任——<b>具体罪名与构成要件须以现行刑法及司法解释为准（待核实）</b>，此处只作风险警示。</li><li><b>行业后果</b>：被 IATA/航司列入失信名单，后续订舱受限。</li></ul>
+<h3>客户反制点 + 我方自保</h3>
+<ul><li><b>客户反制</b>：客户若提供了真实 UN38.3 + MSDS 仍被我方拒运，可主张我方无理由违约；故我方拒运须基于明确 DGR 条款，不能「凭感觉」。</li><li><b>我方自保三动作</b>：① 接带电货即索要 <b>UN38.3 + 运输鉴定书 + MSDS</b>，缺一项不接；② 委托合同写「托运人保证申报真实，瞒报一切后果及第三方索赔由其承担，我方有权拒运且不退费」；③ 客户给的报告若明显造假，<b>我方不背书、不代交申报单</b>，并书面提示客户自担责任。</li></ul>
+<div class="key">今日口诀：<b>锂电池上飞机，UN38.3 + MSDS + 对号 PI 三件套缺一不可；瞒报不是罚款的事，是可能坐牢的事。货代接带电单：证照不全不接、条款不切不离、假报告不背锅。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">IATA DGR</div><div class="cn">国际航空运输协会危险品规则</div><div class="df">IATA Dangerous Goods Regulations；行业技术规则，细化联合国橙皮书，航司 CoT 据以制定操作标准</div></div><div class="ti"><div class="en">Conditions of Carriage (CoT)</div><div class="cn">航空公司运输总条件</div><div class="df">航司运输合同的一般条款；经乘客/托运人接受而具合同约束力，常援引 MC99 限额与免责</div></div><div class="ti"><div class="en">UN38.3</div><div class="cn">锂电池运输测试</div><div class="df">联合国《试验和标准手册》第 38.3 节；锂电池出货前须通过的振动/冲击/热等安全测试</div></div><div class="ti"><div class="en">Packing Instruction (PI)</div><div class="cn">包装说明</div><div class="df">IATA DGR 对危险品的包装规范编号；PI 966-970 对应不同锂电池配置状态</div></div><div class="ti"><div class="en">Misdeclaration</div><div class="cn">危险品瞒报</div><div class="df">托运人未如实申报危险品类别/数量；可触发拒运、违约金、保险拒赔乃至刑责</div></div></div></div><div class="foot"><a href="W9-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W9-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

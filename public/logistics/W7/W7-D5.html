@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·第5天｜索赔时效、诉讼管辖与第 7 周复盘</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · DAY 5 / 5　·　阶段二　运输责任制度</div><h1>索赔时效、诉讼管辖与第 7 周复盘</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">索赔时效就是食品保质期：权利还在，但过了期法院不保护。海运一年，过一天就归零。这是最贵也最不值得犯的错。</div><div class="mlink"><b>怎么串到今天</b>第 7 周收口，下周把中国海商法放进四大国际公约里对照着看。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>诉讼时效（第 257 条 待核实）：就海上货物运输向承运人索赔，时效 1 年，自承运人交付或应当交付货物之日起算</li><li>1 年是「诉讼时效」非「除斥期间」——可因索赔方起诉/提交仲裁/承运人同意而中断/延长，但须在 1 年内先「踩刹车」</li><li>管辖：合同有约定从约定（常约定仲裁/承运人主营业地法院）；无约定按海商法/民诉法连结点</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《索赔时效管理表》(第 257 条 1 年)+《索赔通知与时效延长协议》模板 + 本周自测</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 7 周收口，请讲透索赔时效与管辖，并做复盘：
+1. 诉讼时效（第 257 条 待核实）：1 年起算点（交付或应当交付之日）、性质（诉讼时效可中断/延长，非除斥）、和民法典 3 年普通时效的关系（特别法优先）
+2. 时效的「踩刹车」动作：在 1 年内起诉/提交仲裁/向承运人提出索赔要求并经同意，如何中断；给出《索赔通知与时效延长协议》模板（双方书面同意延长至 2 年）
+3. 诉讼管辖与仲裁：海商法下的连结点、提单管辖权条款效力（我国法下格式条款提示义务，民法典 496 条）、常见约定（伦敦仲裁、承运人主营业地）
+4. 第 7 周复盘：知识树（D1 边界→D2 义务→D3 免责→D4 限额→D5 时效）、自测 10 题、速查手册、可复制「看到货损 4 步判断法」
+5. 《索赔时效管理表》：不同索赔类型（货损/迟延交付/多式联运）的时效起算与期限</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：1 年时效=货主索赔的「倒计时炸弹」</h2>
+<p>普通合同官司你有 3 年（民法典第 188 条）。但海运货损索赔，<b>海商法只给 1 年</b>，从「货该交付那天」起算——过期起诉，法院直接驳回，承运人连实体答辩都不用做。这枚炸弹对物流商（承运人）是盾（过期即免赔），对货主是刀（晚一步就归零）。怎么串到今天：D2-D4 讲了「要不要赔、赔多少」，今天讲「晚多久就彻底不用赔」——时效是承运人的终极免责。</p>
+<div class="key">记忆点：<b>海商法第 257 条 1 年时效是特别法，优先于民法典 3 年。它是诉讼时效（可中断/延长），不是除斥期间（不可变）。货主必须在 1 年内「踩刹车」（起诉/仲裁/书面索赔），否则归零。</b></div>
+<h2>二、时效的起算与性质</h2>
+<ul><li><b>起算点</b>：自<b>承运人交付货物</b>或者<b>应当交付货物之日</b>起算（第 257 条 待核实）。「应当交付之日」= 提单约定/合理运到日，即使货实际未到也算到点。</li><li><b>性质</b>：诉讼时效，可因起诉、提交仲裁、索赔方提出要求且承运人同意而<b>中断</b>并重新计算；非除斥期间，不当然消灭实体权。</li><li><b>与民法典 3 年</b>：特别法优先，海运货损一律 1 年；但多式联运的陆段、空段可能适用其他法（待核实网状责任制）。</li></ul>
+<h2>三、《索赔通知与时效延长协议》模板（可复制）</h2>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：下列模板为教学示例，具体措辞与延长上限（海商法是否允许当事人约定长于 1 年，实务中可作，但须双方明示同意）以最新法为准。</div>
+<div class="key"><b>《索赔通知与时效延长协议》（模板要点）</b>
+甲方（索赔方/货主）：______
+乙方（承运人）：______
+鉴于：编号为____的提单项下货物发生____损，甲方拟索赔。
+双方确认：
+1. 甲方于____年__月__日发出书面索赔通知，乙方收讫，构成第 257 条项下时效中断；
+2. 双方同意将原 1 年时效延长至自应当交付之日起 <b>2 年</b>（或协商具体日期）；
+3. 延长期内甲方须起诉/仲裁方持续中断，否则期满时效届满；
+4. 本协议不影响双方实体权利义务与责任限制（第 56 条）的适用。
+签署：____ / ____  日期：____</div>
+<h2>四、诉讼管辖与仲裁</h2>
+<ul><li><b>有约定从约定</b>：提单/运输合同常约定仲裁（如伦敦海事仲裁 LMAA）或承运人主营业地法院；约定有效则排除法定管辖。</li><li><b>格式条款提示义务</b>：承运人单方印在提单背面的管辖权条款，属民法典第 496 条格式条款，<b>须合理提示说明</b>，否则货主可主张未尽提示而不成为合同内容。</li><li><b>无约定连结点</b>：被告住所地、运输始发地/目的地、事故发生地等（民诉法 + 海商法第 268 条以下涉外编，待核实）。</li><li><b>反制点（货主）</b>：签单前争取约定「货主所在地/中国法院+中文仲裁」，避免被拉到承运人主场（如伦敦）高成本应诉。</li></ul>
+<h2>五、《索赔时效管理表》</h2>
+<table><thead><tr><th>索赔类型</th><th>时效</th><th>起算点</th><th>来源</th></tr></thead><tbody><tr><td>货物灭失/损坏</td><td>1 年</td><td>交付或应当交付之日</td><td>第 257 条 待核实</td></tr><tr><td>迟延交付经济损失</td><td>1 年（另：迟延致合同目的落空可另行）</td><td>交付之日</td><td>第 257/第 50 条 待核实</td></tr><tr><td>多式联运（海上段）</td><td>1 年（海上段）</td><td>应当交付之日</td><td>网状责任制 待核实</td></tr><tr><td>航次租船合同请求</td><td>2 年</td><td>请求权发生之日</td><td>第 260 条 待核实</td></tr><tr><td>共同海损分摊</td><td>1 年</td><td>理算结束之日</td><td>第 263 条 待核实</td></tr><tr><td>油污损害（CLC）</td><td>3 年</td><td>损害发生之日</td><td>国际公约 待核实</td></tr></tbody></table>
+<h2>六、第 7 周复盘：知识树 + 自测</h2>
+<ul><li><b>D1 边界</b>：海商法第四章=海运特别法；承运人 vs 实际承运人（第 60-65 条）。</li><li><b>D2 义务</b>：适航（47，开航时点）/管货（48，七环节）/不绕航（49）。</li><li><b>D3 免责</b>：航海过失+火灾两张王牌（51/52），管货过失不免。</li><li><b>D4 限额</b>：666.67 SDR/件 或 2 SDR/公斤，取高；明知轻率则破限（56/57）。</li><li><b>D5 时效</b>：1 年起算于交付日，可中断不可变（257）。</li></ul>
+<h3>自测 10 题（先做再看答案）</h3>
+<ol><li>【单选】海商法下海上货损索赔时效为？A.3 年 B.2 年 C.1 年 D.6 个月</li><li>【单选】单位责任限制是？A.666.67 SDR/件或 2 SDR/公斤 B.835 SDR/件 C.22 SDR/公斤 D.8.33 SDR/公斤</li><li>【单选】下列免责中需索赔方反证承运人过失的是？A.天灾 B.战争 C.火灾 D.罢工</li><li>【单选】适航义务的时间界限是？A.全程 B.开航前和开航当时 C.装货时 D.运输中</li><li>【单选】承运人丧失责任限制的情形是？A.一般过失 B.明知可能损失而轻率作为 C.迟延交付 D.绕航</li><li>【案例】提单只写 1 个集装箱未载明内装 100 件，全损货值 50 万，限额怎么算？</li><li>【案例】船长驾驶过失致货舱进水货损，承运人能否免责？货主如何破？</li><li>【案例】船公司明知船舶适航证书过期仍开航致损，货主能拿到全额吗？</li><li>【简答】货损发生后，承运人 24/48/72 小时应分别做什么以锁定免责与限额证据？</li><li>【简答】货主如何在 1 年时效内「踩刹车」中断时效？给模板要点。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-C；2-A；3-C（火灾举证责任倒置）；4-B；5-B（第 57 条 待核实）。</li><li>案例 6：整箱算 1 件，限额仅 666.67 SDR，远低于货值——签单载明件数至关重要。</li><li>案例 7：可援引航海过失免责（属管船非管货）；货主破免须证明是「管货过失」（积载/装卸/照料）。</li><li>案例 8：能。明知证书过期仍开航=「明知可能损失而轻率作为」，丧失责任限制，须全额赔。</li><li>简答 9：24h 交海事声明；48h 出检验报告；72h 通知客户并报案。</li><li>简答 10：1 年内起诉/仲裁/发书面索赔通知且承运人同意即中断；用《索赔通知与时效延长协议》固定延长。</li></ul>
+<h2>七、可复制：看到货损的 4 步判断法</h2>
+<div class="key"><b>货损发生，4 步判断「能不能赔到」：</b>
+1. <b>定义务</b>：是承运人义务违反（适航/管货/绕航）还是免责事由？管货过失不免，管船/火灾可免。
+2. <b>看免责</b>：属第 51/52 条清单？航海过失、火灾承运人先免，货主须破（管货过失或承运人本人过失）。
+3. <b>算限额</b>：按 666.67 SDR/件 或 2 SDR/公斤取高；查是否「明知轻率」致破限（全额赔）。
+4. <b>查时效</b>：索赔是否在装船/应交付后 1 年内提出并已中断？超期即归零。
+<b>四步走完：免不免、限不限、过期没——货主能拿多少一目了然。</b></div>
+<div class="key">本周收口口诀：<b>边界定身份、义务划底线、免责开逃脱、限额封天花板、时效卡终点。承运人五层保护层层递进；货主破防也从这五层逐口咬——管货过失咬义务、本人过失咬火灾、明知轻率咬限额、1 年内咬时效。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Time-bar</div><div class="cn">时效</div><div class="df">第 257 条 待核实：海上货物运输赔偿请求权时效 1 年，自承运人交付或应当交付货物之日起算</div></div><div class="ti"><div class="en">Interrupt</div><div class="cn">时效中断</div><div class="df">在时效内起诉、提交仲裁、或索赔方提出索赔要求且承运人同意，时效中断并重新计算</div></div><div class="ti"><div class="en">Forum Clause</div><div class="cn">管辖权条款</div><div class="df">提单/合同约定争议管辖法院或仲裁的条款；格式条款须尽民法典 496 条提示说明义务</div></div><div class="ti"><div class="en">Letter of Claim</div><div class="cn">索赔通知书</div><div class="df">索赔方在时效内发出的书面索赔要求，是中断时效、固定证据的关键动作</div></div><div class="ti"><div class="en">Speed Cheat-sheet</div><div class="cn">速查手册</div><div class="df">把本周五层（边界/义务/免责/限额/时效）压缩成一页可复制判断清单</div></div></div></div><div class="foot"><a href="W7-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W7-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

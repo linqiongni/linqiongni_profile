@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第12周·第1天｜欧盟海关法典 UCC 与 EORI：谁有资格把货从海关领出来</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 12 · DAY 1 / 5　·　阶段二　主干法律</div><h1>欧盟海关法典 UCC 与 EORI：谁有资格把货从海关领出来</h1><div class="sub">第 12 周主题：海关与通关（欧美侧） —— 目的国才是真正的战场</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">EORI 号就是你在欧盟的「通关会员卡」，UCC 是会员规则手册。没有这张卡，货连申报系统都进不去，更别说清关。</div><div class="mlink"><b>怎么串到今天</b>中国侧通关学完，今天换到目的国视角：同一票货，在国外要过的第一道门。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>UCC = Regulation (EU) No 952/2013，2016.5.1 适用，是欧盟海关的「宪法」，由条例+授权条例+实施条例三层构成</li><li>EORI 号＝欧盟清关的「取件码」：格式=成员国2位国别码+字母数字（如 DE1234567890）；非欧盟卖家进口欧盟也必须先有 EORI</li><li>海关代表分直接代表（以客户名义，代理人不对税负责）与间接代表（以自己名义，与进口商承担连带纳税责任）——间接代表是货代最大雷</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《欧盟清关流程与主体对照表》+《EORI 与清关主体核查清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解欧盟海关法典 UCC 与 EORI，站货代/清关代理立场，同时给客户反制点：
+1. UCC 框架：Regulation (EU) No 952/2013（主体条例）+ Delegated Regulation (EU) 2015/2446（授权条例，细化规则）+ Implementing Regulation (EU) 2015/2447（实施条例，操作程序）。讲清三者关系、适用日（2016.5.1）、UCC 对中国卖家（非欧盟主体）意味着什么
+2. EORI 号：格式（2位国别码+字母数字）、谁来申领、在哪国海关申领、非欧盟进口商如何获得、常见错误（用错国别、号失效）
+3. 清关四类主体：进口商(Importer of Record)/收货人(Consignee)/报关代理(Customs Broker)/海关代表(Customs Representative)。各自在清关里的法定角色与责任
+4. 海关代表的两种形式（本节最重）：直接代表(direct representation) vs 间接代表(indirect representation)——间接代表下代理人与货主就关税等海关债承担连带责任。给一个真实判例式场景说明货代怎样一夜背上几十万欧元税债
+5. AEO 认证与简化申报（UCC 第38条等）：AEO 的好处、我方作为物流方要不要推客户去拿
+6. 落地动作：我方接欧盟清关委托时，前3件事必须做什么</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：清关像取国际快递柜，EORI 就是那张「取件码」</h2>
+<p>你在中国寄个包裹，到了德国还得在海关那个「大快递柜」前刷一下身份才能取出来——那个身份就是 <b>EORI 号 + 清关主体资格</b>。欧盟不认你在中国谁，它只认「谁有资格在欧盟海关把这批货领出来」。更狠的是：如果你是以自己名义去领（间接代表），海关就当你和货主是「连坐」的，货主不交税，海关直接找你收。怎么串到今天：前面11周讲了货怎么订舱、风险怎么切、承运人怎么担责、危险品怎么报——那都发生在「运输途中」；今天进入「货到了目的国口岸，海关拦下来问你是谁」这一刻，这才是跨境物流真正的战场，运河与运费都是前菜，清不了关货就是一堆废铁。</p>
+<div class="key">记忆点：<b>欧盟清关的两条命门——① 你有没有 EORI（取件码）；② 你以谁的名义申报（直接/间接代表）。间接代表＝与货主承担连带税债，是物流商在欧盟最该躲开的一个身份。</b></div>
+<h2>二、UCC 三层框架：条例是宪法，下面还有俩「实施条例」</h2>
+<table><thead><tr><th>层级</th><th>文件</th><th>作用</th><th>适用</th></tr></thead><tbody><tr><td>主体条例</td><td>Regulation (EU) No 952/2013（UCC）</td><td>定义海关债、代表、AEO、简化程序等顶层规则</td><td>2016.5.1 起，欧盟直接适用</td></tr><tr><td>授权条例</td><td>Delegated Regulation (EU) 2015/2446（UCC DA）</td><td>细化实体规则（如各类程序、担保、账簿）</td><td>与 UCC 同步适用</td></tr><tr><td>实施条例</td><td>Implementing Regulation (EU) 2015/2447（UCC IA）</td><td>操作程序、表格、时限、系统对接</td><td>与 UCC 同步适用</td></tr></tbody></table>
+<p><b>关键性质</b>：UCC 是「条例（Regulation）」，在欧盟全境直接适用、效力高于成员国国内法，不需要每个国家再立法转化。这意味着德国、波兰、法国的海关规则是同一套 UCC——但<b>具体操作细则（如放行时限、系统字段）由各国海关法配套</b>。中国卖家/货代不是欧盟主体，但货一旦进欧盟关境，就落入 UCC 管辖。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① UCC 适用日为 2016-05-01（确定）；② 授权条例与实施条例现行版本号（2015/2446、2015/2447）以 EUR-Lex 文本为准，后续有修订须核对；③ 各国配套海关法（如德国 Zollverwaltungsgesetz）对时限/系统字段的差异，落地前查目的国海关官网。</div>
+<h2>三、EORI 号：格式、申领、常见错</h2>
+<ul><li><b>格式</b>：2 位成员国国别码 + 字母数字组合，例 `DE123456789012345`、`PL876543210`。长度与字符规则由发号成员国定，没有统一位数。</li><li><b>谁申领</b>：在欧盟有清关活动的经济运营商；<b>非欧盟进口商</b>（如中国卖家）须委托欧盟境内的进口商/代表，或自己通过某成员国海关申请 EORI（多数成员国要求有欧盟境内地址或代表）。</li><li><b>在哪领</b>：向成员国海关申请，一旦获批在全欧盟通用（一个 EORI 走遍欧盟）。</li><li><b>常见错</b>：① 用错国别（本应在德国清关却拿波兰 EORI，虽通用但易引发海关对「实际进口商所在地」的质疑）；② 号失效（企业注销/信息过期未更新）；③ 拿错主体（用物流商 EORI 替客户清关，等于物流商成了进口商——连带税债风险）。</li></ul>
+<div class="key">反制点（客户/卖家视角）：卖家自己要有 EORI，别把清关全甩给货代。若货代用自己的 EORI 替你申报，等于货代是「进口商」，一旦货代和海关闹僵或破产，你的货会被扣，且你可能被认定为借名进口、面临补税+罚款。卖家应坚持「用我方 EORI、以直接代表方式清关」。</div>
+<h2>四、四类清关主体：谁在海关那张桌子上</h2>
+<table><thead><tr><th>主体</th><th>英文</th><th>法定角色</th><th>责任边界</th></tr></thead><tbody><tr><td>进口商(记录进口商)</td><td>Importer of Record (IOR)</td><td>对海关承担纳税义务、合规责任的人</td><td>关税+进口VAT+合规，第一责任人</td></tr><tr><td>收货人</td><td>Consignee</td><td>提单/运单上的收货方，常=进口商</td><td>配合提供信息，未必担税</td></tr><tr><td>报关代理</td><td>Customs Broker</td><td>持牌代办申报手续</td><td>仅对申报过失负责（多受雇于代表）</td></tr><tr><td>海关代表</td><td>Customs Representative</td><td>以客户或自身名义向海关申报</td><td>直接代表不担税；间接代表连带担税</td></tr></tbody></table>
+<h2>五、直接代表 vs 间接代表：一节定生死</h2>
+<p>这是 D1 最该钉死的概念。<b>直接代表（direct representation）</b>：代表以「被代理人（进口商）的名义」向海关申报，法律后果直接归进口商，代表本人不对关税承担个人责任——除非代表自己有欺诈或重大过失。<b>间接代表（indirect representation）</b>：代表以「自己的名义」申报，海关视代表为进口商一方，代表与进口商就关税、进口增值税等<b>海关债承担连带责任</b>。</p>
+<h3>真实场景：货代一夜背上 28 万欧元税债</h3>
+<p>某中国珠宝卖家走德国海外仓，委托我方货代清关。卖家为图省事，让我方「用你们自己名义报，税我们后补」。我方以<b>间接代表</b>申报，海关生成 28 万欧元进口 VAT + 关税海关债。卖家随后以「货卖不动」为由拒付税款并失联。结果：<b>德国海关直接向我方货代追 28 万欧元</b>——因为间接代表下，我方和卖家是连带债务人，海关不问谁真正受益，先找在欧盟有实体、有牌照、跑得掉的那一个（我方）。这就是「间接代表」三个字的价值。</p>
+<div class="key">货代自保铁律：<b>欧盟清关一律只做直接代表。合同写死「我方以客户（进口商）名义申报，客户为唯一纳税义务人，我方不就关税/进口VAT承担任何连带责任」。任何客户要求「你们名义报、税我们补」，一律拒绝或改签连带担保+预付款。</b></div>
+<h2>六、AEO 认证与简化申报</h2>
+<ul><li><b>AEO 是什么</b>：成员国海关依 UCC 第 38 条认证的高合规企业，分 AEO-C（通关便利）、AEO-S（安全）、AEO-F（全功能）。</li><li><b>好处</b>：单证后补、较少查验、优先放行、互认（中欧有 AEO 互认安排，待核实互认范围）。</li><li><b>物流方要不要推</b>：我方若做长期欧盟业务，自拿 AEO 能提速降本；但<b>客户的货合规性是客户的事</b>，我方 AEO 不替客户货的不合规背书。</li><li><b>简化申报</b>：AEO 或合规进口商可用「简化申报+后续补充申报」，先放行后补单——但初报信息不实仍触发海关债与罚款。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 中欧 AEO 互认具体范围与生效安排以海关总署公告为准；② AEO 申请条件、审查期与年审要求依成员国海关法，数字与时限须核对；③ 简化申报的初报字段与后补时限按 UCC IA 2015/2447 现行文本。</div>
+<h2>七、落地动作：接欧盟清关委托前三件事</h2>
+<ol><li><b>第一件（接单当天）</b>：要客户的 EORI 号 + 欧盟进口商全称地址，在海关系统核验有效性；无 EORI 拒绝接单。</li><li><b>第二件（签合同前）</b>：在委托合同写「我方仅以客户名义直接代表清关，客户为唯一纳税义务人；间接代表须经书面连带担保+全额预存税款」。</li><li><b>第三件（申报前）</b>：让客户签署《单证真实性保证函》，确认 HS 编码、货值、原产地由客户负责，不实致补税罚款由客户承担。</li></ol>
+<div class="key">今日产出物用法：①《欧盟清关流程与主体对照表》存进法规库；②《EORI 与清关主体核查清单》做成接单 SOP：无 EORI 不接、间接代表不接、无保证函不报。「三不」守住，这票欧盟清关才敢做。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">UCC</div><div class="cn">Union Customs Code / 欧盟海关法典</div><div class="df">Regulation (EU) No 952/2013；2016.5.1 起适用，统一欧盟海关规则、海关债、代表与AEO制度；条例在欧盟直接适用，无需成员国转化</div></div><div class="ti"><div class="en">EORI</div><div class="cn">Economic Operators Registration and Identification / 经济运营商注册识别号</div><div class="df">欧盟进出口清关主体识别号；格式＝成员国2位国别码+字母数字组合（如 DE123456789012345）；非欧盟进口商亦须持有方可在欧盟清关</div></div><div class="ti"><div class="en">Customs Representative</div><div class="cn">海关代表</div><div class="df">以被代理人名义（直接）或自身名义（间接）向海关办理申报与手续的人；间接代表与进口商就关税等海关债负连带责任</div></div><div class="ti"><div class="en">Direct Representation</div><div class="cn">直接代表</div><div class="df">海关代表以被代理人（进口商）名义申报，法律后果归被代理人；代表人对关税不承担个人责任（除非自身有过失）</div></div><div class="ti"><div class="en">Indirect Representation</div><div class="cn">间接代表</div><div class="df">海关代表以自身名义申报，与进口商就关税、进口增值税等海关债承担连带责任——货代在欧盟清关的最大风险点</div></div><div class="ti"><div class="en">AEO</div><div class="cn">Authorised Economic Operator / 认证经营者</div><div class="df">经成员国海关认证的合规企业（UCC 第38条）；享简化申报、单证后补、优先查验等便利</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W12-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

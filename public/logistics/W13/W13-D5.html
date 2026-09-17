@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·第5天｜阶段二总复盘与自测（W7-W13）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · DAY 5 / 5　·　阶段二　主干法律</div><h1>阶段二总复盘与自测（W7-W13）</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">阶段二复盘像一次期中考试：把海商法、四大公约、四种运输方式、海关、索赔串成一张地图。画得出这张图，主干法律才算立住了。</div><div class="mlink"><b>怎么串到今天</b>第 13 周收口，下周进入阶段三——境外合规，这是拉开身价的部分。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周产出物为阶段二定稿手册</li><li>自测 10 题覆盖 W7 海商法 / W8 海上公约 / W9 空铁公 / W10 多式联运与货代身份 / W11 中国海关 / W12 目的国清关</li><li>三个短板识别法：自测错题法、实务卡点法、他人复盘法</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《学习手册·第二阶段：运输责任·货代身份·海关》定稿 + 10 题自测 + 三个短板识别法</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 13 周是阶段二（W7-W13）收口，请帮我固化：
+1. 出 10 道题自测（单选 5 + 案例 3 + 简答 2），覆盖：W7 海商法（承运人与实际承运人/责任期间）、W8 海上公约（海牙-维斯比/汉堡限额）、W9 空铁公（蒙特利尔 22 SDR、CMR 未加入）、W10 多式联运与货代身份（House B/L 定性）、W11 中国海关（申报不实/HS）、W12 目的国清关（弃货/留置）
+2. 错题讲透并关联业务场景
+3. 整合阶段二产出物成《学习手册·第二阶段：运输责任·货代身份·海关》定稿，列出结构
+4. 给我三个短板识别法：自测错题法、实务卡点法、他人复盘法
+5. 最后给一条收口口诀</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、阶段二知识树（一图收口）</h2>
+<ul><li><b>W7 海商法</b>：承运人与实际承运人（签 House B/L 即从代理变承运）、责任期间、三项义务、免责清单、限额、1 年时效——海上责任的「特别交规」。</li><li><b>W8 海上公约</b>：海牙-维斯比 666.67 SDR/件或 2 SDR/公斤、汉堡 835/2.5（我国未加入）、鹿特丹 875/3（未生效）——限额必标待核实。</li><li><b>W9 空铁公</b>：蒙特利尔 22 SDR/公斤、空运 2 年时效；铁路 SMGS（已加入）；公路 CMR（未加入）8.33 SDR/公斤——AWB/运单非物权凭证。</li><li><b>W10 多式联运与货代身份</b>：网状责任制、货代身份看实质（合同/收费/签单）、骑墙最危险。</li><li><b>W11 中国海关</b>：申报如实、HS 归类、9810/9610 等监管代码、申报不实连带/相应责任。</li><li><b>W12 目的国清关</b>：欧盟 UCC、美国 19 CFR、弃货处置、留置催收。</li><li><b>W13 收口</b>：全链路责任地图（上/下半段）+ 货损索赔七步 + 延误费用催收与留置——把前面全挂到时间轴。</li></ul>
+<h2>二、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】货代签发以自己为承运人的 House B/L，其法律身份变为？A. 纯代理 B. 缔约承运人/无船承运人 C. 报关单位 D. 仓储方</li><li>【单选】海牙-维斯比规则下承运人对货物灭失的单位责任限制约为？A. 666.67 SDR/件或 2 SDR/公斤 B. 835 SDR/件 C. 22 SDR/公斤 D. 8.33 SDR/公斤</li><li>【单选】我国是否已加入 CMR（公路货运公约）？A. 已加入 B. 未加入（须核对） C. 已加入但保留 D. 不适用</li><li>【单选】蒙特利尔公约下空运货物索赔的单位责任限制约为？A. 666.67 SDR/公斤 B. 22 SDR/公斤 C. 8.33 SDR/公斤 D. 2 SDR/公斤</li><li>【单选】海上货损索赔的诉讼时效（我国海商法）是？A. 2 年 B. 1 年 C. 3 年 D. 6 个月</li><li>【案例】货代以自己名义 all-in 报价并签 House B/L，运输中货损，收货人直接告货代。货代能否以「我只是代理」抗辩？</li><li>【案例】目的港无人提货，D&D 滚到超过货值。我方作为货代，能否直接把货卖掉抵债？程序上要先做什么？</li><li>【案例】客户欠运费，我方扣下海外仓里「同一客户」的另一票货拒不放货。客户主张不当留置索赔，我方如何自证合法？</li><li>【简答】列出货代身份认定的三个实质标准（合同措辞/收费方式/签单），并说明「骑墙」为什么最危险。</li><li>【简答】客户不付运费也不提货，我方拟行使留置权，列出四要件与行使边界，并指出海外仓行使时为何必须先核对当地法。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（签 House B/L 即成缔约承运人）；2-A（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤，待核实）；3-B（我国未加入 CMR，须核对）；4-B（蒙特利尔 22 SDR/公斤，待核实）；5-B（海商法 1 年，第 257 条待核实）。</li><li>案例 6：不能。「签 House B/L + 以己名 all-in」已实质构成承运人，法院穿透认定，须对全程货损按海商法限额担责，代理抗辩不被采纳。</li><li>案例 7：不能直接卖。须先完成催告证据链（到港通知→费用催告→处置预告），超期后依<b>当地法</b>申请海关/法院拍卖，所得先抵债权；擅自变卖可能构成侵权/不当处分。</li><li>案例 8：自证四要件——合法占有（仓储合同）、债权到期（欠费已到日）、财产属该债务人（同名客户货）、同一法律关系/企业营业留置；并证明已发书面留置通知、给了履行期、未超范围扣货。</li><li>简答 9：三标准=合同措辞（代理 vs 承运）、收费方式（佣金 vs 运费差/all-in）、是否签自己提单。骑墙=合同写代理但实际以己名承揽+签单，法院按实质定承运人，责任上限与免责全变，风险不可控。</li><li>简答 10：四要件（合法占有/债权到期/财产属债务人/同一法律关系，企业放宽）；边界（通知履行期不少于 2 个月、不超范围、不扣禁扣物）；海外仓因普通法无物权性留置权、欧盟各国不一，必须先核对当地法+当地律师意见，否则留置无效甚至赔偿。</li></ul>
+<h2>三、《学习手册·第二阶段》定稿结构</h2>
+<ul><li>模块 1：海商法核心（承运人/实际承运人、责任期间、三义务、免责清单、限额、1 年时效）——W7。</li><li>模块 2：海上公约限额速查（海牙-维斯比/汉堡/鹿特丹，均标待核实）——W8。</li><li>模块 3：空铁公责任（蒙特利尔 22 SDR、SMGS 已加入、CMR 未加入、AWB 非物权凭证）——W9。</li><li>模块 4：多式联运与货代身份（网状责任、身份三标准、骑墙风险）——W10。</li><li>模块 5：中国海关（申报如实、HS 归类、监管代码 9810/9610、申报不实责任）——W11。</li><li>模块 6：目的国清关与弃货（UCC/19 CFR、弃货三路径、留置催收）——W12。</li><li>模块 7：全链路责任地图（上/下半段六问表）+ 货损索赔七步 + 延误费用催收与留置 SOP——W13。</li><li>模块 8：模板库（索赔函/时效延长/和解协议/弃货处置 SOP/留置 SOP）。</li></ul>
+<h2>四、三个短板识别法</h2>
+<ol><li><b>自测错题法</b>：每阶段 10 题自测，错题即盲区。把错题按「法条型（记不住条号）/ 判断型（分不清身份）/ 数字型（限额时效搞混）」分类，针对性回填法条库。</li><li><b>实务卡点法</b>：回顾本周处理过的真实业务，标出「当时拿不准、现查才答上」的环节（如弃货处置、留置边界），这些就是能力缺口。</li><li><b>他人复盘法</b>：读同行判例、行业通报、管理层复盘纪要，看别人在哪些环节栽跟头（如瞒报锂电池、HS 归类错），提前补自己的同类薄弱点。</li></ol>
+<div class="key">收口口诀：<b>阶段二一句话——海上特别法护承运，身份定性定生死，公约限额必标待核实，海关清关两条线，弃货留置是收口刀。W7-W13 七周，把「谁能赔、赔多少、怎么要、怎么扣」串成一条链，下次出事直接翻手册定位。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Phase-II Review</div><div class="cn">阶段二总复盘</div><div class="df">把第 7-13 周（海商法/海上公约/空铁公/多式联运货代/中国海关/目的国清关）知识体系收口整合</div></div><div class="ti"><div class="en">Self-test</div><div class="cn">自测</div><div class="df">用一组题目检验知识盲区，错题对应到具体业务风险点</div></div><div class="ti"><div class="en">Gap Identification</div><div class="cn">短板识别</div><div class="df">通过自测错题、实务卡点、他人复盘三法定位能力缺口</div></div><div class="ti"><div class="en">Learning Manual</div><div class="cn">学习手册</div><div class="df">把阶段产出物压缩成可随时查阅的判断清单与模板库</div></div></div></div><div class="foot"><a href="W13-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W13-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

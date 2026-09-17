@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第20周·第4天｜客户与供应商协议：框架、报价单与标准交易条件的三层结构</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 20 · DAY 4 / 5　·　阶段四　岗位能力</div><h1>客户与供应商协议：框架、报价单与标准交易条件的三层结构</h1><div class="sub">第 20 周主题：中英文合同模板体系 —— 把前 19 周变成一套可复用的文件</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">三层结构就是「宪法、订单、实施细则」：框架协议定大原则，报价单定这次的价格，标准交易条件定执行细节。必须写明打架时谁说了算。</div><div class="mlink"><b>怎么串到今天</b>四份协议做完了，今天把它们组织成一个体系——这才是总监该交付的东西。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>三层结构：框架协议(Framework)管长期关系 + 报价单/订舱单(Rate Quotation/Booking)管单次交易 + 标准交易条件(STC)管通用条款</li><li>核心是效力顺序条款(order of precedence)：三者冲突时谁优先，必须写死</li><li>STC 有效并入靠「合理提示 + 对方确认」，否则格式条款可能被认定无效</li><li>一页式报价单是「把 STC 拉进来」的最佳入口，须带 STC 引用与确认栏</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《三层文件体系设计说明》+《效力顺序条款与变更机制条款》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请产出《三层文件体系设计说明》+《效力顺序条款与变更机制条款》。
+1. 讲清三层结构：框架协议（Framework Agreement，管长期关系与通用条款）+ 报价单/订舱单（Rate Quotation / Booking Note，管单次交易的价格与航次）+ 标准交易条件 STC（Standard Trading Conditions，管通用交易条款）
+2. 核心是效力顺序条款（order of precedence）与变更机制：冲突时谁优先、STC 如何有效并入（合理提示 + 对方确认）、报价单有效期与自动失效、如何用一页式报价单把 STC 拉进来
+3. 给可直接用的中英对照条款文本</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：三层文件像「会员卡 + 每次点单小票 + 餐厅告示」</h2>
+<p>把三层结构想成「你去常去的餐厅」：你和餐厅签的「会员协议」（框架协议）定了一年有效、积分规则、出事找谁——这是长期关系；你每次点的「点菜单+价目」（报价单/订舱单）只管这一顿吃啥、多少钱、哪天送——这是单次交易；墙上贴的「本店概不负责保管遗失物品、最低消费的解释权」（STC 标准交易条件）是通用规矩，对所有人适用。三家文件打架时（比如点菜单写「免费保管」但告示写「不保管」），<b>效力顺序条款就是裁判：到底听谁的</b>。怎么串到前三天：D1-D3 我们写了单份协议（货代/承运/海外仓/清关），今天讲「怎么把这些协议拆成三层、长期的不用每次重写、单次的快速确认、通用的自动套用」——这是模板体系真正能复用的骨架。</p>
+<div class="key">记忆点：<b>框架=长期关系、报价单=单次交易、STC=通用条款。三者冲突靠效力顺序条款裁判。STC 不是写上去就生效，必须「合理提示+对方确认」才并入，否则格式条款无效。</b></div>
+<h2>二、三层结构职责分解表</h2>
+<table><thead><tr><th>层</th><th>文件</th><th>管什么</th><th>生命周期</th><th>变更频率</th></tr></thead><tbody><tr><td>第 1 层</td><td>Framework Agreement 框架协议</td><td>双方身份、通用责任、保密、合规、争议解决、效力顺序</td><td>长期（1-3 年，待核实）</td><td>低，年审</td></tr><tr><td>第 2 层</td><td>Rate Quotation / Booking Note 报价单/订舱单</td><td>单次运价、航次、时效、货物明细</td><td>短（有效期 <b>[•] 天</b> 或至航班离港）</td><td>高，每票</td></tr><tr><td>第 3 层</td><td>STC 标准交易条件</td><td>限额、免责、留置权、管辖等通用条款</td><td>长期，随版本更新</td><td>中，版本迭代</td></tr></tbody></table>
+<div class="key">起草说明：框架协议写「不变的主干」，报价单写「每票变的数」，STC 写「对所有票都适用的细则」。客户反制点：客户会要求「报价单具体条款优先于 STC 的通用免责」，并主张「STC 未单独确认的不对其生效」——这正是效力顺序条款要解决的问题。</div>
+<h2>三、效力顺序条款（order of precedence，中英对照）</h2>
+<blockquote>EN: "In the event of conflict, the documents shall prevail in this order: (1) Framework Agreement; (2) Rate Quotation / Booking Note for that specific shipment; (3) the Forwarder's Standard Trading Conditions. Express written amendments override the foregoing."
+CN: "如文件间冲突，效力依序为：(1) 框架协议；(2) 该票之报价单/订舱单；(3) 货代标准交易条件。明确的书面修改优先于上述顺序。"</blockquote>
+<div class="key">起草说明：推荐顺序「框架 > 报价单 > STC」。理由——框架是双方谈定的最高合意，报价单是当票特别约定应优先通用细则，STC 是兜底。<b>客户反制点：客户常要求「STC 仅在其不冲突时适用、冲突时以双方确认文件为准」，并把 STC 降为最后顺位——你应接受 STC 居末，但坚持「未明确冲突即 STC 自动适用」。</b></div>
+<h2>四、STC 如何有效并入（防格式条款无效）</h2>
+<ul><li><b>合理提示</b>：STC 须在缔约前以显著方式（加粗/单独页面/报价单链接）向客户展示，不能藏在合同末页小字。</li><li><b>对方确认</b>：客户须以签字/勾选/回传确认 STC，最好约定「未反对即视为接受」的 opt-out 机制（但诉讼中仍可能被要求证明已提示）。</li><li><b>司法红线</b>：依《民法典》第 496 条，提供格式条款一方未履行提示或说明义务，致使对方未注意重大利害条款（如免责、限额）的，对方可主张该条款不成为合同内容。</li><li><b>禁用霸王条款</b>：第 497 条：造成对方人身损害、因故意/重大过失致财产损失的免责，或排除对方主要权利的条款，无效。</li></ul>
+<div class="key">反制点（客户视角）：卖家会在框架协议里要求「货代 STC 中任何减免自身责任的条款，须经我方单独书面同意方生效」——这把 STC 效力锁死在逐条谈判上。你的应对：保留「标准限额/留置权/管辖等核心 STC 经签署框架即整体接受」的写法，仅把真正特殊的免责留作单独确认。</div>
+<h2>五、报价单有效期与自动失效（中英对照）</h2>
+<blockquote>EN: "This Rate Quotation is valid for <b>[•] days</b> from the date of issue and automatically expires thereafter unless confirmed in writing. Rates are subject to fuel/security surcharges prevailing at the time of carriage."
+CN: "本报价单自出具日起 <b>[•] 天</b>内有效，逾期自动失效，除非书面确认。运价受运输时有效之燃油/安保附加费调整。"</blockquote>
+<div class="key">起草说明：报价单必须设有效期，避免客户拿三个月前的低价来压你；附加费随行就市条款必写。<b>客户反制点：客户会要求「有效期内锁定运价、附加费封顶」，你可用「基准运价锁定、附加费按行业指数浮动且提前通知」折中。</b></div>
+<h2>六、一页式报价单把 STC 拉进来（模板要点）</h2>
+<ul><li>页眉：我方名称、报价单号、有效期。</li><li>主体：起止地、运价、时效、货物限制、附加费。</li><li><b>引用栏</b>：「本报价单受我方《标准交易条件 v[X]》约束，全文见 [网址/附件]，客户签章即视为接受。」</li><li><b>确认栏</b>：客户签字/盖章 + 日期，旁边加「本人已阅 STC 并同意」勾选项。</li><li>页脚：争议解决与管辖（与框架一致）。</li></ul>
+<div class="key">起草说明：一页式报价单是 STC 并入的最低成本入口——客户为拿运价必须签字，签字即确认 STC。<b>客户反制点：客户会要求「引用网址须可访问、STC 版本须固定不可单方改」，你须保证链接有效 + 版本号锁定。</b></div>
+<h2>七、变更机制（中英对照）</h2>
+<blockquote>EN: "STC may be amended by the Forwarder upon <b>[•] days</b> prior notice; amendments bind the Customer for shipments booked after the effective date. The Framework Agreement may be amended only by a written instrument signed by both parties."
+CN: "STC 可由货代提前 <b>[•] 天</b> 通知修订；修订对生效日后订舱之运输适用。框架协议仅经双方签署书面文件方可修订。"</blockquote>
+<div class="key">今日落地三动作：① 把「框架>报价单>STC」效力顺序写进每份框架协议；② 做一页式报价单模板，带 STC 引用+确认栏；③ STC 设「提前通知修订」机制，但框架协议改动必须双方书面签——别让销售口头改框架。</div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 效力顺序的具体顺位可依谈判调整，但以「双方明确约定」为生效前提；② STC 并入的提示标准以《民法典》第 496 条及最高法院格式条款司法解释为准；③ 报价单有效期天数、STC 修订提前通知天数须按公司实际政策填写；④ 香港法下 STC 效力与合理提示标准以香港案例及《管制免责条款条例》（待核实条例名）为准。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Framework Agreement</div><div class="cn">框架协议 / 框架合同</div><div class="df">约定双方长期合作关系的母合同，固化通用条款（责任、保密、合规、争议解决），单次交易另立子文件</div></div><div class="ti"><div class="en">Rate Quotation / Booking Note</div><div class="cn">报价单 / 订舱单</div><div class="df">针对单次运输的价格、航次、时效确认文件；有效期短，过期自动失效</div></div><div class="ti"><div class="en">Standard Trading Conditions</div><div class="cn">标准交易条件 / STC</div><div class="df">货代单方拟定的通用交易条款（限额、免责、留置权等），经合理提示可并入合同</div></div><div class="ti"><div class="en">Order of Precedence</div><div class="cn">效力顺序 / 优先级</div><div class="df">约定多份文件冲突时何者优先的解释规则，是三层结构的「裁判规则」</div></div><div class="ti"><div class="en">Incorporation by Reference</div><div class="cn">以引用方式并入</div><div class="df">通过指明「STC 见某文件/网址」使通用条款成为合同一部分；须合理提示+对方确认方有效</div></div></div></div><div class="foot"><a href="W20-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W20-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

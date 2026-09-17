@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第17周·周末实战｜搭一套《出口管制与制裁合规筛查制度》</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 17 · WEEKEND PROJECT　·　阶段三　境外法域与合规</div><h1>周末实战⑰：搭一套《出口管制与制裁合规筛查制度》</h1><div class="sub">第 17 周主题：出口管制与制裁 —— 会坐牢的那条线</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">搭筛查制度就是给公司装安检门：每个新客户、每票新订单，过一遍名单，留下记录。这套制度本身就是你的免责证据。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">把本周 D1-D5 的碎片拼成一套可直接落地的制度：组织与职责、五个触发节点、七类筛查字段、工具与频率、命中 SOP、记录年限、培训审计，以及把合规义务转嫁给客户的中英对照合同条款。输出一份可复制进公司手册的制度骨架。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要搭一套《出口管制与制裁合规筛查制度》，可直接落地。请输出：
+1. 组织与职责：谁负责日常筛查、谁有「一票否决权」、合规委员会怎么设、岗位责任怎么写
+2. 筛查触发节点：接单 / 订舱 / 报关前 / 放行前 / 付款前 五个节点的筛查动作与留痕要求
+3. 筛查对象与字段：主体名称、地址、国籍、最终用户、最终用途、收发货人、银行 七类字段怎么采、怎么比
+4. 筛查工具与频率：用哪些清单库（中/美/EAR/OFAC/EU/UK/UN）、工具（筛查系统/手动）、更新频率
+5. 命中处置 SOP：冻结→停交易→报告→留痕→许可前不动货 的标准动作与责任到人
+6. 记录保存年限：交易与筛查记录保存多久（须核对各法域，给区间并标「待核实」）
+7. 培训与审计：谁培训、多久一次、内部审计怎么查漏洞
+8. 把合规义务转嫁给客户的合同条款（中英对照）：客户陈述与保证、禁止转运/再出口、赔偿与解约权、我方暂停履行的权利——每条给中英文</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、制度定位：把本周五天的碎片拼成「天天要跑的闸机」</h2>
+<p>前五天我们分别讲了中国的红标清单、美国的 EAR 长臂、OFAC 的制裁名单、欧盟的统一总清单——这些是「规则」。周末要把规则变成「制度」：一套每天早上开门、每票接单都必须跑的闸机。制度不是写给人看的，是写给系统和中层操作的——谁查、何时查、查什么、查到红灯怎么办、记录留多久、客户不配合怎么用合同甩锅。怎么串到今天：本周是「会坐牢的那条线」，制度就是这条线的<b>日常护栏</b>；没有制度，靠个人记性必然漏，漏一次就可能刑事。</p>
+<div class="key">记忆点：<b>制度 = 组织职责 + 五节点 + 七字段 + 工具频率 + 命中SOP + 记录年限 + 培训审计 + 客户切责。八块拼齐，红线才守得住。</b></div>
+<h2>二、组织与职责：谁查、谁否决</h2>
+<table><thead><tr><th>角色</th><th>职责</th><th>否决权</th></tr></thead><tbody><tr><td>合规委员会</td><td>审定制度、重大命中裁决、对接监管</td><td>最高决策</td></tr><tr><td>合规负责人(CEO 下直属)</td><td>日常筛查终审、命中处置指挥</td><td><b>一票否决：红灯交易无条件暂停</b></td></tr><tr><td>操作岗(接单/订舱/放行)</td><td>按五节点初筛、留痕、上报可疑</td><td>上报权，无放行权（红灯时）</td></tr><tr><td>财务岗</td><td>付款前资金端筛查（银行/付款方）</td><td>付款否决（命中即止付</td></tr><tr><td>审计岗</td><td>定期抽查筛查执行、查漏洞</td><td>报告权</td></tr></tbody></table>
+<div class="key">落地动作：合规负责人须向 CEO 直线汇报、预算独立，否则业务压力一来就被架空；岗位责任写进《岗位说明书》，明确「未筛查即放货 = 重大违规，可解聘」。</div>
+<h2>三、筛查触发节点：五个必须停的点</h2>
+<ol><li><b>① 接单</b>：收客户需求即跑五问（货/地/人/用/钱）+ 四套名单，无结论不建档。</li><li><b>② 订舱</b>：订舱前复核物项 ECCN/受控类与目的地分组，确认许可/例外依据齐。</li><li><b>③ 报关前</b>：比对出口国管制清单（中国出口管制法/欧盟/EUGEA/UK），单证与许可一致才报关。</li><li><b>④ 放行前</b>：最终核对收货方/最终用户名单命中（含 50% 穿透），绿码才放货。</li><li><b>⑤ 付款前</b>：财务跑资金端（付款方/银行是否 SDN 或受制裁），绿码才收付。</li></ol>
+<div class="key">反制点（客户视角）：卖家催「先放货后补证」，制度必须写明「五节点任一层红灯，操作岗无权放行、合规负责人一票否决」——客户不得用交期胁迫跳过节点。客户应在合同中承认该内部制度对其有约束力，并接受因此产生的合理延误。</div>
+<h2>四、筛查对象与字段：七类必须采的数据</h2>
+<table><thead><tr><th>字段</th><th>采什么</th><th>怎么比</th></tr></thead><tbody><tr><td>主体名称</td><td>客户/供应商全称+别名</td><td>比四套名单（含曾用名/拼写变体）</td></tr><tr><td>地址</td><td>注册地与经营地</td><td>比名单地址、高危地区标注</td></tr><tr><td>国籍</td><td>注册国/实控人国籍</td><td>比禁运国、受关注国</td></tr><tr><td>最终用户</td><td>货物最终接收方</td><td>比 SDN/EU/UK/UN + 50% 穿透</td></tr><tr><td>最终用途</td><td>民用/军用/扩散</td><td>要 EUU 证明，违用途即停</td></tr><tr><td>收发货人</td><td>收/发件方实体</td><td>比名单，防壳公司中转</td></tr><tr><td>银行</td><td>付款/收款行</td><td>比 OFAC/欧盟金融机构制裁</td></tr></tbody></table>
+<div class="key">数据采集铁律：七字段在接单时一次性采全，缺任何一项视为红灯；名称比对应做模糊匹配（防拼写变体规避），地址比对应含转口高危国标记。</div>
+<h2>五、筛查工具与频率</h2>
+<ul><li><b>清单库</b>：中国两用物项清单 + EAR/CCL + OFAC SDN（含 50% 指引）+ EU 2021/821 附件一 + UK 清单 + UN 综合清单 + 四套制裁名单，字段标准化合并。</li><li><b>工具</b>：专业筛查系统（自动比对名称/地址/股权穿透，如 OFAC 提供 XML 批量筛查接口）+ 人工复核高危票；禁止纯 Excel 手工（易漏）。</li><li><b>频率</b>：清单库<b>每日增量更新 + 月度全量复核</b>；清单维护方发公告（如 BIS、OFAC、EEAS、OFSI）即时拉取。</li></ul>
+<h2>六、命中处置 SOP：责任到人</h2>
+<ol><li><b>冻结（操作岗执行）</b>：停货、停转运、停交付，货物与关联资金置冻结态；<b>不得退运/改道</b>。</li><li><b>停交易（操作岗）</b>：内部拉黑该主体，暂停新订单。</li><li><b>报告（合规负责人）</b>：启动 SOP，记录命中时间/字段/依据；如涉美连接点或应要求，配合监管并提供记录。</li><li><b>留痕（全岗）</b>：命中筛查记录、冻结指令、沟通留痕存档。</li><li><b>许可前不动（合规委员会）</b>：主张误命中则申请移除；确需交易向清单方申请许可，获批前货不动。</li></ol>
+<table><thead><tr><th>步骤</th><th>责任人</th><th>不做后果</th></tr></thead><tbody><tr><td>冻结</td><td>操作岗</td><td>退运/改道=违规</td></tr><tr><td>停交易</td><td>操作岗</td><td>继续接单=加重</td></tr><tr><td>报告</td><td>合规负责人</td><td>隐瞒=刑事</td></tr><tr><td>留痕</td><td>全岗</td><td>无据=自证不能</td></tr><tr><td>许可前不动</td><td>合规委员会</td><td>擅放=重罚</td></tr></tbody></table>
+<h2>七、记录保存年限（须核对各法域）</h2>
+<ul><li><b>区间</b>：多数法域要求交易与筛查记录保存 <b>不低于 5 年</b>（中国出口管制法、EAR 748.5、OFAC、EU 2021/821 普遍 5 年口径）；<b>精确年限与起算点须逐法域核对，标「待核实」</b>。</li><li><b>保存内容</b>：订单、运单、筛查记录与比对依据、许可/例外副本、EUU 证明、命中处置全程记录。</li><li><b>保管</b>：独立加密存档，审计与监管可查；离职交接不得灭失。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 中国《出口管制法》及《两用物项出口管制条例》规定的记录保存年限与起算；② EAR 748.5 的 5 年起算点（自交易完成/导出日）；③ OFAC 记录保存要求；④ EU 2021/821 第 21 条左右的保存义务与年限。以各官方最新文本为准。</div>
+<h2>八、培训与审计</h2>
+<ul><li><b>培训</b>：全员年度基础培训 + 操作/合规岗半年度专项；新清单/新规则发布即时补课；培训签到与试卷留档。</li><li><b>审计</b>：合规审计岗每半年抽查（抽样跑历史票重筛，查漏筛/错放）；外部年审可选；发现漏洞即修订制度并追责。</li></ul>
+<h2>九、把合规义务转嫁给客户的合同条款（中英对照）</h2>
+<blockquote>以下条款写入我方《物流服务合同/国际货运代理协议》附件，将出口管制与制裁合规义务转嫁客户，并保留我方暂停履行与解约权。</blockquote>
+<h3>条款一 客户陈述与保证（Representations & Warranties）</h3>
+<p><b>中文</b>：客户陈述并保证：其所交付运输的货物不属任何适用法域（中国、美国、欧盟、英国及联合国）出口管制清单所列受控物项，或若属受控物项已持有效出口许可；收货方、最终用户及其各自实控方均非 SDN、欧盟/英国综合制裁清单或联合国清单所列实体，且任一 SDN 实体合计持股未达 50%；货物最终用途合法，不涉军事/扩散。
+<b>EN</b>: The Customer represents and warrants that the goods do not constitute controlled items under any applicable export control list (China, US, EU, UK, UN), or if controlled are covered by a valid export license; that the consignee, end-user and their respective beneficial owners are not listed on any SDN, EU/UK consolidated or UN sanctions list, and no SDN entity holds 50% or more in aggregate; and that the end-use is lawful and not military/proliferation-related.</p>
+<h3>条款二 禁止转运/再出口（No Transshipment/Reexport）</h3>
+<p><b>中文</b>：未经我方书面同意及所需出口许可，客户不得对受控物项实施转运、再出口或变更最终用户/最终用途；客户须促其下游遵守相同限制，并向我方提供最终用户承诺函。
+<b>EN</b>: Without our prior written consent and required export licenses, the Customer shall not transship, reexport or change the end-user/end-use of controlled items; the Customer shall bind its downstream parties to the same restrictions and provide end-user undertaking letters to us.</p>
+<h3>条款三 赔偿与解约权（Indemnity & Termination）</h3>
+<p><b>中文</b>：因客户虚假陈述、隐瞒受控件或受制裁主体导致我方被监管调查、处罚、列入重点或丧失美元清算等，客户全额赔偿我方因此遭受的一切损失（含罚款、律师费、营业中断损失）；我方有权立即单方解除本合同且不退已收费用。
+<b>EN</b>: The Customer shall indemnify us in full against any loss (including fines, legal fees and business interruption) arising from its misrepresentation, concealment of controlled items or sanctioned parties; we may terminate this contract immediately and retain fees paid.</p>
+<h3>条款四 我方暂停履行的权利（Right to Suspend Performance）</h3>
+<p><b>中文</b>：任一筛查节点发现物项受控、主体命中制裁名单或最终用途可疑，我方有权无条件暂停订舱、运输、放货及资金收付，直至客户消除疑点并提供有效许可/证明；因此产生的滞期、仓储等费用由客户承担，且不构我方违约。
+<b>EN</b>: If any screening node reveals controlled items, a sanctioned party hit or suspicious end-use, we may unconditionally suspend booking, carriage, delivery and payment until the Customer clears the concern with valid license/proof; resulting storage/demurrage costs are borne by the Customer and such suspension is not a breach by us.</p>
+<div class="key">实战口诀：<b>制度八块拼齐=守得住红线。组织给否决权、五节点强制停、七字段一次采、清单日更月核、命中五步 SOP、记录五年起、培训审计防漏、四款中英切责把锅甩给客户——这套制度落地，货代才算真正把「会坐牢的那条线」挡在门外。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Screening System</div><div class="cn">合规筛查制度 / 出口管制与制裁合规筛查制度</div><div class="df">把清单库、主体库、触发节点、命中 SOP、记录保存、客户切责整合为可执行的内部制度</div></div><div class="ti"><div class="en">Veto Right</div><div class="cn">一票否决权 / 合规否决权</div><div class="df">合规负责人对触碰红线的交易拥有无条件暂停/拒绝放行权，不受业务压力动摇</div></div><div class="ti"><div class="en">Trigger Node</div><div class="cn">筛查触发节点 / 五节点</div><div class="df">接单/订舱/报关前/放行前/付款前五个强制筛查时点，任一红灯即升级</div></div><div class="ti"><div class="en">Hit SOP</div><div class="cn">命中处置 SOP / 命中标准作业</div><div class="df">冻结→停交易→报告→留痕→许可前不动货的标准动作序列</div></div><div class="ti"><div class="en">Carve-out Clause</div><div class="cn">切责条款 / 合规义务转嫁</div><div class="df">物流合同将出口管制与制裁合规义务转给客户的陈述保证、赔偿、解约与暂停履行条款</div></div></div></div><div class="foot"><a href="W17-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W17-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

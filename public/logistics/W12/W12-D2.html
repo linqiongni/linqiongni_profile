@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第12周·第2天｜欧盟 VAT、IOSS 与 OSS：150 欧元那条线的真相</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 12 · DAY 2 / 5　·　阶段二　主干法律</div><h1>欧盟 VAT、IOSS 与 OSS：150 欧元那条线的真相</h1><div class="sub">第 12 周主题：海关与通关（欧美侧） —— 目的国才是真正的战场</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">150 欧元像免税额度线：低于它走简化通道（IOSS），高于它走另一套。VAT 该谁交、什么时候交、谁来申报，全看这条线在哪。</div><div class="mlink"><b>怎么串到今天</b>昨天讲进门资格，今天讲进门要交多少钱——VAT 是欧洲线最常见的争议源头。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>欧盟 VAT 有两段：进口 VAT（货进欧盟时缴）+ 销售 VAT（B2C 卖出时缴）；远程销售统一按目的国税率</li><li>€150 是「内在价值」门槛：≤150 欧元货物免关税且走 IOSS 代征 VAT；≤22 欧元的 VAT 豁免已于 2021.7.1 取消（这条最易被误传）</li><li>我方作为物流方若以自己名义清关或代收 VAT，可能被认定为「视同进口商」连税带罚一起背——务必让客户自己走 IOSS/OSS</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《欧盟 VAT 与 IOSS 机制速查表》+《客户 VAT 合规核查清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解欧盟 VAT、IOSS、OSS，站物流方立场，给客户反制点，所有税率/门槛标「待核实」：
+1. 两段 VAT：进口 VAT（import VAT，货跨过欧盟边境时按 CIF 价征）与销售 VAT（B2C 售出时按售价征）。各自纳税人、计税基、申报节点
+2. 150 欧元门槛的真相：① ≤22 欧元 VAT 豁免已于 2021.7.1 取消（标待核实）；② ≤150 欧元内在价值(intrinsic value)货物免关税且可走 IOSS；③ 讲清「内在价值」不含运保费，和「完税价格」区别
+3. IOSS：Import One-Stop Shop 机制——谁注册、谁在销售时代收 VAT、每月如何申报缴纳、IOSS 中间人(intermediary)制度（非欧盟卖家可委托欧盟中介注册）。给申报时限与金额口径（待核实）
+4. OSS：One-Stop Shop 用于欧盟内 B2C 及非欧盟卖家远程销售 VAT 申报；Union / Non-Union scheme 区别
+5. 我方作为物流方的雷：什么情形下会被海关/EU 认定为「视同进口商」(deemed importer)而连带 VAT 与罚款？如何用合同与操作隔离
+6. 落地动作：给客户一份 VAT 合规核查清单</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：VAT 像外卖的「打包费」，进关收一次、卖出再收一次</h2>
+<p>你点份跨境外卖，平台在「出餐」（货进欧盟）时收一次 VAT，在「送到你手」（B2C 卖出）时又收一次 VAT——欧盟 VAT 就是这两段。而 <b>IOSS 是个「预缴神器」</b>：卖家在顾客下单那一刻就把 VAT 收了、按月交给税务局，货到海关不用再卡。怎么串到今天：昨天讲了「谁有资格清关」（EORI+代表身份），今天讲「清关时那笔税怎么算、谁替顾客把 VAT 先垫了」——IOSS 解决的就是小包裹别在海关排队补税。</p>
+<div class="key">记忆点：<b>欧盟 VAT 两段收（进口段+销售段）；IOSS 把进口段 VAT 提前到「下单时」代收，避免海关扣留；≤150 欧元是内在价值线，不是完税价格线。</b></div>
+<h2>二、两段 VAT 对照</h2>
+<table><thead><tr><th>维度</th><th>进口 VAT</th><th>销售 VAT（B2C）</th></tr></thead><tbody><tr><td>触发点</td><td>货物跨越欧盟外部边境（进口时）</td><td>在欧盟境内向消费者售出时</td></tr><tr><td>计税基</td><td>货物内在价值+运费保险费（CIF 口径，待核实）</td><td>含增值税前的销售价格</td></tr><tr><td>纳税人</td><td>进口商（记录进口商）</td><td>卖家/平台</td></tr><tr><td>申报路径</td><td>清关时缴，或走 IOSS 预缴</td><td>走 OSS / 本国 VAT 申报</td></tr><tr><td>税率</td><td>目的国标准/减让税率（待核实）</td><td>同左</td></tr></tbody></table>
+<h2>三、150 欧元门槛的三句话真相（最易被误传）</h2>
+<ul><li><b>真相①</b>：<b>≤22 欧元的进口 VAT 豁免已于 2021 年 7 月 1 日取消</b>——现在连 1 欧元的包裹进欧盟也要缴进口 VAT。网上很多「22 欧以下免税」是旧规则，已作废（待核实现行文本与适用日）。</li><li><b>真相②</b>：<b>≤150 欧元是「内在价值」门槛</b>：内在价值 ≤150 欧元的远程销售货物，<b>免关税</b>（customs duty de-minimis），且<b>可以走 IOSS 由卖家代缴进口 VAT</b>；超过 150 欧元则既要正式报关缴关税、又走正常进口 VAT。</li><li><b>真相③</b>：<b>「内在价值」不含运保费</b>。一双鞋卖 145 欧、运费 20 欧，内在价值仍是 145 欧 ≤150，可走 IOSS；若按「完税价格 165 欧」误判就错失 IOSS 通道。注意内在价值 vs 完税价格的口径差。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① ≤22 欧元 VAT 豁免取消日（2021-07-01，确定但须核对官方文本）与 ≤150 欧元关税 de-minimis 现行有效性；② 各成员国标准 VAT 税率（德国 19%、法国 20%、意大利 22%、波兰 23% 等，待核实现行值）；③ IOSS 适用的「内在价值≤150 欧元」是否含特定商品排除（如酒精、香水、 Tobacco，待核实）。</div>
+<h2>四、IOSS：卖家下单时把 VAT 收了</h2>
+<ul><li><b>谁注册</b>：非欧盟卖家（如中国跨境电商）可自己在欧盟某国注册 IOSS，或委托 <b>IOSS 中间人（intermediary，须欧盟设立）</b> 代注册代申报。</li><li><b>怎么运作</b>：顾客下单时，卖家/平台按目的国税率<b>把进口 VAT 加进售价代收</b>；货物在欧盟外发货、随货附 IOSS 号；清关时凭 IOSS 号<b>免检免缴</b>直接放行。</li><li><b>申报缴纳</b>：注册人<b>按月（日历月）汇总</b>申报并缴纳上月代收的进口 VAT；须在次月最后一个工作日或规定日前缴清（具体时限待核实）。</li><li><b>IOSS 中间人责任</b>：中间人对卖家未缴的 VAT 可能承担代缴/担保责任——所以中间人只接信用好的卖家，并要求预存或担保。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：IOSS 月度申报与缴税的具体截止日（通常次月，以成员国税务海关规则为准）；IOSS 号格式与随货传输方式（按 Union 系统接口）。</div>
+<h2>五、OSS：把分散的欧盟 VAT 申报并到一个口子</h2>
+<ul><li><b>Union scheme（欧盟方案）</b>：在欧盟有业务的卖家，把各成员国 B2C 远程销售 VAT 集中到「识别地」一国申报，不用逐国报。</li><li><b>Non-Union scheme（非欧盟方案）</b>：非欧盟卖家（如中国卖家）向欧盟消费者远程销售（含电子化服务/特定货物）的 VAT，可在任一成员国注册 Non-Union OSS 统一申报。</li><li><b>与 IOSS 关系</b>：IOSS 管「进口那一段」VAT，OSS 管「欧盟内销售那一段」VAT，两件套覆盖跨境电商全链路。</li></ul>
+<div class="key">反制点（客户/卖家视角）：卖家应自己注册 IOSS/OSS（或委托合规中间人），把 VAT 在平台下单时收掉，既合规又提速。若把所有 VAT 甩给货代「你帮我处理」，等于逼货代以自己名义清关——货代一旦成进口商，卖家反而失去货权控制权，且货代加收高额代办费与保证金。</div>
+<h2>六、我方作为物流方的雷：何时变「视同进口商」</h2>
+<p><b>视同进口商（deemed importer）</b>是物流方在欧盟最隐蔽的雷：当我方<b>以自身名义向海关申报</b>（间接代表），或<b>代客户向顾客收取并持有 VAT 却未走合规 IOSS</b>，或<b>代客户垫付进口 VAT 但未签代偿协议</b>时，海关/税务机关可能直接认定我方是进口商，连带追缴 VAT + 关税 + 罚款（罚款数字待核实，常以应缴税额一定比例计）。</p>
+<ul><li><b>隔离做法①</b>：清关只用直接代表，进口商写客户 EORI，VAT 走客户自己的 IOSS 号。</li><li><b>隔离做法②</b>：合同写明「VAT/关税由客户自行申报缴纳，我方仅代传输单证，不代收不代缴；若因客户未合规致我方被追索，客户全额补偿+利息」。</li><li><b>隔离做法③</b>：绝不垫付进口 VAT；如客户要求代垫，必须签连带担保+预存足额税款+违约金条款。</li></ul>
+<h2>七、落地动作：《客户 VAT 合规核查清单》</h2>
+<ol><li>客户是否在欧盟有有效 EORI？（无则拒接或客户先办）</li><li>≤150 欧元货物是否走 IOSS？IOSS 号是否有效、由谁注册？</li><li>客户是否注册 OSS（Union/Non-Union）覆盖 B2C 销售 VAT？</li><li>货值口径用「内在价值」还是「完税价格」？运保费是否分离？</li><li>我方是否仅直接代表？有无任何「代收付 VAT/代垫税」动作？</li><li>合同是否写明 VAT/关税由客户自担、我方不连带？</li><li>若客户要求间接代表/代垫，是否签连带担保+预存货款？</li></ol>
+<div class="key">今日口诀：<b>150 是内在价值线、22 免税已死；IOSS 下单收 VAT、OSS 管内销售；物流方三不——不以己名报关、不代收付 VAT、不垫进口税。踩中任一，就是下一个视同进口商。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">VAT</div><div class="cn">Value Added Tax / 增值税</div><div class="df">欧盟消费税；分进口 VAT（货入欧盟边境按 CIF 征）与销售 VAT（B2C 售出按售价征）两段</div></div><div class="ti"><div class="en">IOSS</div><div class="cn">Import One-Stop Shop / 进口一站式服务</div><div class="df">针对 ≤150 欧元内在价值远程销售货物的进口 VAT 集中机制；卖家/电子接口在销售时代收 VAT 并按月申报</div></div><div class="ti"><div class="en">OSS</div><div class="cn">One-Stop Shop / 一站式服务</div><div class="df">统一申报欧盟内及非欧盟远程 B2C 供应增值税的门户；分 Union 与 Non-Union scheme</div></div><div class="ti"><div class="en">Deemed Importer</div><div class="cn">视同进口商</div><div class="df">物流方因以自身名义清关或代收付 VAT 被海关认定为进口商、承担 VAT 与税债及罚款的风险身份</div></div><div class="ti"><div class="en">Intrinsic Value</div><div class="cn">内在价值</div><div class="df">货物本身价值（不含运费保险费）；决定 ≤150 欧元门槛，区别于含运保的完税价格</div></div></div></div><div class="foot"><a href="W12-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W12-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第14周·第2天｜EUR-Lex 与欧盟立法流程：怎么自己查法，不再靠别人翻译</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 14 · DAY 2 / 5　·　阶段三　境外法域与合规</div><h1>EUR-Lex 与欧盟立法流程：怎么自己查法，不再靠别人翻译</h1><div class="sub">第 14 周主题：欧盟法律环境通识 —— 打开欧盟法的大门</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">EUR-Lex 就是欧盟法的国家法律法规数据库，CELEX 编号就是案号。会用检索，比背多少条文都重要——因为你会自己查。</div><div class="mlink"><b>怎么串到今天</b>昨天懂层级，今天学怎么查。这是 JD 里「跟踪境外法规动态」的基本功。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>EUR-Lex 是欧盟官方法律数据库（eur-lex.europa.eu），免费、权威、有合并版(consolidated)与转化国别措施(national transposition)</li><li>CELEX 号格式 3+年份后两位+类型(R/L/D)+4位序号；查具体文件用 CELEX 比用俗名准</li><li>普通立法程序：委员会提案→欧洲议会与理事会一读/二读→签署公布于 OJ；生效一般自公布后第 20 日</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《EUR-Lex 检索操作手册》+《我常用的 10 个欧盟官方数据库清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透如何在 EUR-Lex 自己查欧盟法，站物流商立场，给可复制的检索步骤与客户反制点：
+1. EUR-Lex 是什么、为什么必须自己会查（不要只信第三方摘要）；给出官网地址与语言切换（24 种官方语言，含中文界面但法律文本以欧盟官方语言为准）
+2. 三条检索路径：① 按文件编号查（如 (EU) 2023/988）；② 按 CELEX 号查；③ 按主题/关键词查
+3. 怎么看一份文件：标题类型、生效日与适用日、ELI 链接、合并版 consolidated text（含后续修订）、以及「National transposition」标签怎么看成员国转化措施
+4. 怎么确认「一部指令在德国是否已转化、转化后的德国法叫什么」：手把手步骤（选国家=德国→看 transposition measures 列表→找到德国转化法的名称与文号）
+5. 普通立法流程（Ordinary Legislative Procedure）：委员会提案→议会一读（修正案）→理事会立场→二读（调解委员会 conciliation）→签署与公布于 OJ→生效。说明这对物流商的意义（立法周期长、可关注草案提意见）
+6. 附《我常用的 10 个欧盟官方数据库清单》：EUR-Lex、Access2Markets、RAPEX/Safety Gate、EU Open Data、TED 招标、Your Europe、EU Commission 行业门户、CIRCABC、ECHA、EUIPO 等，每项给用途
+7. 落到动作：我方建立「欧盟法检索 SOP」，每次新规出来怎么留证自保</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：EUR-Lex 是欧盟法的「官方图书馆」，自己会查才不被二手信息坑</h2>
+<p>把查欧盟法想成「查公司总部红头文件」：你当然可以听同事口述，但口述可能漏了最新修订、改了措辞。EUR-Lex 就是总部文件的<b>官方存档室</b>，免费、原文、带所有修订痕迹。怎么串到今天：昨天讲了「欧盟文件有四种类型」，今天讲「去哪把这份文件原原本本调出来、确认它现在长什么样、德国到底有没有落地」——否则你以为某指令管你，其实是它根本没在德国转化，白慌一场；或者反过来，你以为没事，其实 consolidated 版早加了新义务。</p>
+<div class="key">记忆点：<b>EUR-Lex = 欧盟法官方原文库；CELEX = 文件身份证号；consolidated = 含修订的最新版；National transposition = 看德/波有没有落地。四样用熟，欧盟法自己查，不靠别人翻译。</b></div>
+<h2>二、EUR-Lex 三条检索路径（可复制）</h2>
+<ol><li><b>按编号查</b>：首页搜索框直接输 (EU) 2023/988 → 跳出文件；最准，前提是你有编号。</li><li><b>按 CELEX 查</b>：输 32023R0988 → 精确定位；适合批量建档、合同引用，避免俗名歧义。</li><li><b>按主题/关键词查</b>：用英语关键词（如 product liability、customs warehouse）+ 过滤「法律类型=Directive/Regulation」+ 过滤「成员国」；适合不知道具体编号时摸排。</li></ol>
+<p>语言：界面可切中文，但<b>法律文本以欧盟官方语言（如英语、德语、法语）为准</b>，中文界面只是导航。引用条款时以官方语言文本核对，中文翻译仅供参考。</p>
+<h3>看一份文件要看哪几栏</h3>
+<ul><li><b>标题与类型</b>：Regulation / Directive / Decision 字样，决定约束力。</li><li><b>Date of effect / 生效日</b>与<b>Applicable date / 适用日</b>：条例一般公布后第 20 日生效，但适用日可能更晚（过渡期）。</li><li><b>ELI（European Legislation Identifier）</b>：永久链接，存档用。</li><li><b>Consolidated text</b>：点进去是含后续修订的现行版——<b>必须看这个</b>，别看初版。</li><li><b>National transposition 标签</b>：仅指令有，列各成员国转化法。</li></ul>
+<h2>三、手把手：确认「一部指令在德国是否已转化」</h2>
+<ol><li>打开该指令的 EUR-Lex 页面（如 (EU) 2019/771 货物销售指令）。</li><li>点左侧/上方 <b>National transposition</b> 标签。</li><li>在国家筛选选 <b>Germany</b>（或 Germany (until 1990: Federal Republic of 前西德口径，待核实）。</li><li>看列表里的 <b>transposition measures</b>：出现德国国内法名称+文号（如 BGB 修订、或某 Bundesgesetz），说明已转化；显示「No measures」或空白则未转化/未报送。</li><li>点进德国措施，记下<b>转化后德国法名与生效日</b>，这就是你真正要遵守的德国文本。</li></ol>
+<div class="key">反制点（客户视角）：卖家可要求物流商在合同里附「相关欧盟指令在德/波的转化状态与转化后法名」，物流商若只给欧盟原文不给德国落地法，等于信息不完整；客户有权主张「未充分提示合规义务」的赔偿责任。但反过来，物流商应把「各成员国转化差异由客户自行核实、我方仅提供检索路径」写进服务条款，避免替各国国内法背书。</div>
+<h2>四、普通立法程序：为什么物流商要盯草案</h2>
+<ul><li><b>委员会提案</b>：只有欧盟委员会能正式提案（立法主动权在委员会）。</li><li><b>一读</b>：欧洲议会读 + 提修正；理事会给立场。两者一致→通过。</li><li><b>二读 / 调解委员会（Conciliation）</b>：不一致则进入调解，三方（委员会+议会+理事会）磋商，再表决。</li><li><b>签署与公布</b>：在 OJ 公布后生效（一般第 20 日）。</li><li><b>实务意义</b>：一部影响物流的条例从提案到生效常<b>数年</b>；草案阶段物流商可向委员会/行业团体提意见（consultation），比生效后抱怨有用。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 具体立法的读程序细节与调解委员会触发条件，以 TFEU 第 294 条原文为准；② EUR-Lex 界面标签名称（如 National transposition 在某些版本称「Transposition」或「Implementation」）可能因系统改版变化，以官网当前界面为准；③ 德国转化措施筛选口径（统一口径 vs 两德）以 EUR-Lex 现行数据为准。</div>
+<h2>五、《我常用的 10 个欧盟官方数据库清单》</h2>
+<table><thead><tr><th>序号</th><th>数据库</th><th>用途</th><th>我方用法</th></tr></thead><tbody><tr><td>1</td><td>EUR-Lex</td><td>官方法律文本/转化措施</td><td>查条例指令原文与德波转化</td></tr><tr><td>2</td><td>Access2Markets</td><td>关税/贸易数据库</td><td>查 HS 在欧盟税率与 TARIC</td></tr><tr><td>3</td><td>Safety Gate (原 RAPEX)</td><td>产品安全快速预警</td><td>查我仓货物是否被列入预警</td></tr><tr><td>4</td><td>EU Open Data Portal</td><td>公开数据集</td><td>市场/贸易统计</td></tr><tr><td>5</td><td>TED (Tenders Electronic Daily)</td><td>欧盟官方招标</td><td>找欧盟公共物流标讯</td></tr><tr><td>6</td><td>Your Europe</td><td>企业与公民办事门户</td><td>跨境设仓/雇佣办事指引</td></tr><tr><td>7</td><td>EU Commission 行业门户</td><td>各行业政策页</td><td>电池/GPSR/海关专题</td></tr><tr><td>8</td><td>CIRCABC</td><td>委员会文件共享</td><td>查草案咨询与工作组文件</td></tr><tr><td>9</td><td>ECHA</td><td>化学品署</td><td>REACH/SCIP 通报</td></tr><tr><td>10</td><td>EUIPO</td><td>欧盟知产局</td><td>欧盟商标/外观设计</td></tr></tbody></table>
+<h2>六、落到动作：《欧盟法检索 SOP》</h2>
+<ol><li>新规/客户问起某欧盟法 → 先上 EUR-Lex 按编号或 CELEX 查原文。</li><li>存 consolidated 版 ELI 链接 + 生效日/适用日截图。</li><li>指令类 → 查 National transposition，确认德/波状态，记转化后法名。</li><li>产出一页《某法适用备忘录》：类型/生效/义务主体/我方角色/转化状态。</li><li>每月一次扫行业门户（电池/GPSR/海关），把草案加入监控清单。</li><li>所有检索留痕（链接+截图+日期），归入合规档案，留 3 年（期限待核实）。</li></ol>
+<div class="key">今日口诀：<b>EUR-Lex 自己查，CELEX 当身份证，consolidated 看最新，transposition 看德波落地。立法要走一读二读，草案阶段就能提意见——等生效再慌就晚了。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">EUR-Lex</div><div class="cn">欧盟法律数据库</div><div class="df">eur-lex.europa.eu；欧盟官方法律信息门户，收录条约/条例/指令/决定/判例与转化措施，免费可查，支持 24 种语言界面</div></div><div class="ti"><div class="en">CELEX</div><div class="cn">欧盟法律文献编号</div><div class="df">EUR-Lex 内部唯一编号；格式 3+YY+类型(R/L/D)+4位序号，如 32023R0988，查具体文件比俗名更准</div></div><div class="ti"><div class="en">Consolidated Text</div><div class="cn">合并版 / 整合文本</div><div class="df">含后续所有修订的现行有效文本；查法务必用 consolidated 版，避免引用被修订后的旧条款</div></div><div class="ti"><div class="en">National Transposition</div><div class="cn">成员国转化措施</div><div class="df">EUR-Lex 标签，列明某指令在各成员国转化成的国内法；用于确认德国/波兰转化状态与转化后法名</div></div><div class="ti"><div class="en">OJ</div><div class="cn">Official Journal / 官方公报</div><div class="df">欧盟官方公报；立法在此公布后生效，一般公布后第 20 日生效，适用日可另定</div></div><div class="ti"><div class="en">Ordinary Legislative Procedure</div><div class="cn">普通立法程序</div><div class="df">委员会提案、欧洲议会与理事会共同决策（一读/二读/调解）后公布生效；适用于多数二级立法</div></div></div></div><div class="foot"><a href="W14-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W14-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

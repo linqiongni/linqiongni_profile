@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·第5天｜复盘：责任归属判断与第 10 周自测——看到一票货损，30 秒判出'赔不赔'</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · DAY 5 / 5　·　阶段二　运输责任制度</div><h1>复盘：责任归属判断与第 10 周自测——看到一票货损，30 秒判出'赔不赔'</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">复盘像照镜子：把我方所有标准文件摊开，看写在纸上的自己，是中介还是二房东。纸上写的和心里想的不一致，就是最大的风险。</div><div class="mlink"><b>怎么串到今天</b>第 10 周收口，阶段二进入海关：货被扣了怎么办。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>整合本周：网状/统一责任制、代理/承运身份、NVOCC/HBL、STC 有效性</li><li>核心能力：看到一份合同/一票货损，按步骤判定我是代理还是承运、适用什么限额、能否限制责任</li><li>三步判定法 + 判定流程图 + 自测题，固化成可随时翻的手册</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《责任归属判定手册》定稿（含自测 + 判定流程图 + 三步判定法）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">第 10 周（阶段二收口）结束，请帮我固化《责任归属判定手册》定稿：
+1. 整合本周全部产出物成一份《责任归属判定手册》，至少含：①多式联运责任制度对照 ②身份认定四要素 ③NVOCC/HBL 合规要点 ④STC 有效性三件套 ⑤责任限额速查。
+2. 给我"三步判定法"：看到一份合同或一票货损，按哪三步在 30 秒内判出：我是代理还是承运、适用什么限额、能否限制责任。
+3. 画一份《责任归属判定流程图》（用文字/步骤描述，可转成图形）：从"收到委托"到"判定身份→适用制度→适用限额→能否限责"的完整路径。
+4. 出 10 道自测题（单选5+案例3+简答2），覆盖：网状vs统一、身份四要素、NVOCC备案、HBL后果、STC提示、海商法第八节、限额数字。
+5. 最后给一条收口口诀，把阶段二的"代理/承运/多式联运/STC"串成一句话。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、本周知识树（一图收口）</h2>
+<ul><li><b>D1 多式联运</b>：MTO 是'总包'，对全程负责；网状制（按区段法律）vs 统一制（全程一把尺）；我国《海商法》第八节采网状，区段不明按海运限额。</li><li><b>D2 身份之争</b>：代理（不赔）vs 缔约承运人（按限额赔）；四要素=措辞/提单签发/收费/实际操作；一句'保证送达'代理变承运。</li><li><b>D3 NVOCC/HBL</b>：无船承运人须备案+保证金（数额待核实）；签发 HBL=实锤承运，货主凭 HBL 直接告 NVOCC。</li><li><b>D4 STC</b>：格式条款命门是'提示+接受'；未合理提示→不订入合同；加固三件套=单独确认页+邮件回执+系统勾选。</li><li><b>总纲</b>：身份决定赔不赔，制度决定赔多少，STC 决定条款管不管用——三层叠加才是完整责任画像。</li></ul>
+<h2>二、三步判定法（30 秒定位）</h2>
+<div class="key"><b>第一步：判身份（代理 or 承运？）</b>
+问四件事——合同写'as agent'还是'as carrier'？谁签 HBL/FBL？收佣金还是 all-in 全包价？谁选分包商、是否披露实际承运人？四项越靠'承运'侧，越可能是承运人。
+
+<b>第二步：判制度（网状 or 统一？）</b>
+若是多式联运且合同写'网状'→ 货损按发生区段法律赔；写'统一'→ 全程一个标准；区段不明（我国）按《海商法》海运限额。
+
+<b>第三步：判限额与能否限责</b>
+查适用区段限额（海运 666.67 SDR/件或2 SDR/kg 待核实；空运 22 SDR/kg；CMR 8.33 SDR/kg 我国未加入）；再查 STC 是否'合理提示+对方明示接受'——没提示→限责条款可能无效、按货值全赔；有故意/重大过失→法定丧失限责。</div>
+<h2>三、《责任归属判定流程图》（文字版，可转图形）</h2>
+<ol><li><b>起点：收到委托 / 发生货损</b></li><li>↓ 第一步：翻合同与单证</li><li>→ 有 'as agent' + 不签 HBL + 实报实销 + 披露分包商 → <b>身份=代理人</b>（货损不赔，仅退服务费/过错赔）</li><li>→ 有 'as carrier' / 签 HBL / all-in 价 / 不披露分包商 → <b>身份=缔约承运人/MTO</b>（对全程负责）</li><li>↓ 第二步：若涉多式联运，判制度</li><li>→ 合同'网状' → 查货损区段 → 适用该区段法律限额</li><li>→ 合同'统一' → 全程一个限额</li><li>→ 区段不明（我国）→ 按《海商法》海运限额</li><li>↓ 第三步：判能否限制责任</li><li>→ STC 已合理提示+明示接受 ✔ → 按限额赔</li><li>→ STC 未提示/内容显失公平 ✘ → 条款无效，按货值/实际损失赔</li><li>→ 我方有故意或重大过失 ✘ → 法定丧失限责，全赔</li><li><b>终点：输出'身份 + 制度 + 限额 + 能否限责'四要素结论</b></li></ol>
+<h2>四、《责任归属判定手册》模块清单（定稿结构）</h2>
+<ul><li>模块1：多式联运责任制度对照表（网状 vs 统一 + 海商法第八节）</li><li>模块2：身份认定四要素表（措辞/提单/收费/操作）+ 禁用词清单</li><li>模块3：NVOCC 合规清单 + HBL 签发审核清单（各 10+ 项）</li><li>模块4：STC 有效性三件套（单独确认页+邮件回执+系统勾选）+ 条款库</li><li>模块5：责任限额速查（海运/空运/公路/统一，含 SDR 与时效）</li><li>模块6：三步判定法 + 判定流程图（即本页二、三节）</li></ul>
+<h2>五、自测 10 题（先做，再看答案）</h2>
+<ol><li>【单选】我国《海商法》对多式联运经营人责任采哪种制度？A.统一责任制 B.网状责任制 C.严格责任制 D.过错责任制</li><li>【单选】货代以'as agent'接单、代转船公司 MBL、收服务费，货损时？A.按限额全赔 B.仅退服务费/过错赔 C.按货值全赔 D.不承担责任</li><li>【单选】下列哪一行为最易被认定为'缔约承运人'？A.写'安排运输' B.披露实际承运人 C.签发自己的 House B/L D.收佣金</li><li>【单选】中国 NVOCC 经营须向哪个机关备案？A.商务部 B.交通运输部 C.海关 D.市场监管总局</li><li>【单选】STC 中免责条款未向客户合理提示，后果是？A.条款无效 B.条款不订入合同 C.整个合同无效 D.无影响</li><li>【案例】一批货走'铁路+海运'多式联运，到货变形但区段不明。我方是 MTO，合同写'网状责任制'。货主主张按铁路段高限额赔，我方如何抗辩？</li><li>【案例】货代签了 HBL、收 all-in 价、未在 HBL 背面有效提示责任限制。货损后货主告货代，货代能否主张限额？</li><li>【案例】STC 写在合同正文小字里，客户从未单独确认。货主以'未提示'主张 STC 不约束自己，是否成立？</li><li>【简答】列出身份认定四要素，并各给一个'代理侧'与'承运侧'的信号。</li><li>【简答】用三步判定法，描述'收到一票货损委托'时你如何在 30 秒内输出责任结论。</li></ol>
+<h3>答案要点</h3>
+<ul><li>1-B（网状）；2-B（仅退服务费/过错赔）；3-C（签发 HBL 最实锤）；4-B（交通运输部）；5-B（未提示→不订入合同，注意与'无效'区分：未提示是不成为合同内容，第497条显失公平才无效）。</li><li>案例6：依《海商法》第106条（条号待核实），区段不明时按海上运输（海商法）标准赔，即海运限额（666.67 SDR/件或2 SDR/kg 待核实），反驳货主'按铁路高限额'主张。</li><li>案例7：不能。签 HBL=承运身份坐实；且未有效提示责任限制→限责条款不订入/无效，货代可能按货值全赔（除非能补强提示证据）。</li><li>案例8：成立。STC 未单独提示、客户未明示接受，依《民法典》第496条不成为合同内容，对货主无约束力。</li><li>简答9：四要素=措辞（as agent/as carrier）、提单（是否签 HBL/FBL）、收费（佣金/all-in）、操作（谁选分包商、是否披露）；各给代理侧 vs 承运侧信号见 D2 表。</li><li>简答10：第一步判身份（四要素）→ 第二步判制度（网状/统一、区段不明按海运）→ 第三步判限额与能否限责（查 STC 提示、有无故意/重大过失）。</li></ul>
+<div class="key">阶段二收口口诀：<b>身份定赔不赔、制度定赔多少、STC 定条款管不管用；不备案别签 HBL、不提示别想限责、不锁身份就准备背锅——代理/承运/多式联运，一句话分生死。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">3-Step Test</div><div class="cn">三步判定法</div><div class="df">收到委托或货损后，依次判定：身份（代理/承运）→ 适用责任制度（网状/统一）→ 适用限额与能否限责</div></div><div class="ti"><div class="en">Limitation of Liability</div><div class="cn">责任限制</div><div class="df">依法或依约将赔偿额限制在单位限额（如 666.67 SDR/件或2 SDR/kg）内的制度；未有效提示或故意/重大过失时可丧失</div></div><div class="ti"><div class="en">Burden of Proof</div><div class="cn">举证责任</div><div class="df">主张免责/限责的一方须证明已履行提示义务、损失属免责范围、自身无故意或重大过失</div></div><div class="ti"><div class="en">Liability Cap</div><div class="cn">责任限额</div><div class="df">法定或约定赔偿上限；多式联运网状制下随区段浮动，统一制下固定</div></div><div class="ti"><div class="en">Cheat-sheet</div><div class="cn">速查手册</div><div class="df">把本周全部判定规则压缩成一页可随时查阅的判断清单</div></div></div></div><div class="foot"><a href="W10-D4.html">← 第 4 天</a><a class="idx" href="index.html">目录</a><a href="W10-weekend.html">周末实战 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·第2天｜全链路责任地图（二）：目的港到签收 + 目的港弃货处置</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · DAY 2 / 5　·　阶段二　主干法律</div><h1>全链路责任地图（二）：目的港到签收 + 目的港弃货处置</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">目的港到签收这一段就是「最后一公里」：无人提货产生的滞箱费和仓储费，像共享单车忘了还——按天计费，几个月下来比货值还贵。</div><div class="mlink"><b>怎么串到今天</b>昨天看前半段，今天看后半段，尤其是最容易拖出天价费用的环节。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>下半段覆盖到港通知→清关→拆箱/派送→签收异常；装船后风险开关已闭合，重点转入「目的港无人提货」这个物流商最怕的坑</li><li>滞箱费（Demurrage）与堆存费按天累进，目的港弃货 30-60 天费用可超过货值——必须早催告、早留证</li><li>弃货三条路径：拍卖 / 退运 / 弃货，每条都有前置程序且依赖当地法，须核对目的国</li><li>留置权是催收核心，但行使边界极严；不当留置（如扣错货、超范围扣）要赔客户损失</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《全链路责任地图（下半段）》+《目的港弃货处置 SOP》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请做《全链路责任地图（下半段）》，把「到港通知→清关→拆箱/派送→签收/异常」铺开，并重点攻克目的港无人提货/弃货这一物流商最头疼的坑：
+1. 下半段四段逐段回答六问（身份/适用法/风险/单证/限额/事故）
+2. 目的港无人提货/弃货专章：
+   · 滞箱费（Demurrage）与堆存费的增长逻辑（free time 几天、之后怎么按天累进、什么量级）
+   · 通知与催告的证据链（到港通知→二次催告→最终通牒，每步留什么证）
+   · 拍卖 / 退运 / 弃货三条路径的法律依据与前置程序（须核对当地法，给出核对渠道）
+   · 向谁追偿（发货人/收货人/买方，依 House B/L 关系）
+3. 产出《目的港弃货处置 SOP》（步骤化）
+4. 落到动作：free time 到期前我方必须做什么</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：下半段像「快递柜取件码过期 + 长租公寓退租扯皮」</h2>
+<p>货到目的港，就像快递放进了柜子、给了取件码——<b>取件码有免费期（free time），超期就开始按天收钱（Demurrage/堆存）</b>。更糟的是，客户像租了房突然失联不搬：房子（柜子）占着、钱（运费）没付、东西（货）砸手里。怎么串到今天：上半段讲「货怎么安全装上船」，下半段讲「货到了对岸，客户不提、不付、不认」这一整套物流商最怕的烂摊子——它把 W7 的承运人责任、W10 的货代身份、W12 的目的国清关全串起来了。</p>
+<div class="key">记忆点：<b>下半段的本质风险不是「货损」而是「人失联」——客户不提货、不付运费、还要求你赔。应对核心就四个字：早催告、留证据。free time 一到期，费用按天滚雪球，晚一天多一笔。</b></div>
+<h2>二、《全链路责任地图（下半段）》总表</h2>
+<table><thead><tr><th>链路段</th><th>我方身份</th><th>适用法 / 公约</th><th>主要风险</th><th>必备单证</th><th>责任限额（待核实）</th></tr></thead><tbody><tr><td>① 到港通知</td><td><b>通知方 / 代理</b></td><td>民法典合同编（通知义务）+ 运输合同</td><td>漏通知致 free time 起算争议、客户主张未收到</td><td>《到港通知书》+ 送达证明（邮件/系统已读回执）</td><td>一般无单独限额，漏通知导致损失按过错赔</td></tr><tr><td>② 清关（目的国）</td><td><b>报关代理 / 进口清关方</b></td><td>目的国海关法（如欧盟 UCC、美国 19 CFR）；受当地法管辖</td><td>单证不符被扣、HS 错、VAT 未缴、查验销毁、禁限物品</td><td>进口报关单、EORI、VAT 号、原产地证、合规文件（CE 等）</td><td>行政罚+补税；民事对委托人赔偿（依当地法）</td></tr><tr><td>③ 拆箱 / 派送</td><td><b>海外仓 / 末端承运</b></td><td>目的国运输法 + 民法典（若我方签末端合同）</td><td>派送延误、货损、错派、海外仓库存损耗、丢件</td><td>POD（签收单）、派送轨迹、海外仓 WMS 记录</td><td>按约定/当地法；海外仓多为保管不善赔偿</td></tr><tr><td>④ 签收 / 异常</td><td><b>交付方</b></td><td>运输合同 + 海商法（如已签 B/L）</td><td>无批注清洁交付后难追责、异常未当场批注</td><td>POD、货损批注、异常报告、拒收记录</td><td>清洁交付后货损推定交付前无责（待核实）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 目的国 free time 天数与 D&D 费率以承运人运价本/当地惯例为准（如欧线常见 7-14 天免费、Demurrage 约 50-150 美元/天/箱，待核实）；② 欧盟海关法（UCC, Regulation 952/2013）、美国 19 CFR 关于弃货/拍卖的条款以官方文本为准；③ 「清洁交付后货损免责」的适用条件（海商法第 81 条 待核实）以法条原文为准。</div>
+<h2>三、目的港无人提货 / 弃货：物流商最怕的「烫手山芋」</h2>
+<h3>1. 滞箱费与堆存费的增长逻辑</h3>
+<p>集装箱到港后一般有 <b>7-14 天 free time（免费用箱期）</b>。超期后 Demurrage（用箱费）按天累进，常见 <b>50-150 美元/天/箱</b>（待核实，视航线与箱型）；堆存费（港口对货物占场）另计，约 <b>10-50 美元/天/立方或吨</b>（待核实）。<b>30-60 天不提，D&D + 堆存累计可超过货值本身</b>——这是弃货最致命的数字逻辑：货不值钱了，债还在滚。</p>
+<h3>2. 通知与催告的证据链（每一步都要留证）</h3>
+<ul><li><b>第一环：到港通知</b>——货到即发《到港通知书》，留存邮件送达/系统已读回执，证明「已知会提货」。</li><li><b>第二环：费用催告（free time 到期前 7 天）</b>——发第一次费用预估与提货提醒，附费用起算说明。</li><li><b>第三环：最终通牒（超期）</b>——发二次催告 + 处置预告（将拍卖/退运/弃货），列明已发生费用与日增金额，给明确履行期。</li><li><b>证据形式</b>：邮件 + 系统消息 + 书面通知回签，三选一至少要有时间戳可追溯；失联客户用挂号信/公告补足。</li></ul>
+<h3>3. 拍卖 / 退运 / 弃货三条路径（须核对当地法）</h3>
+<ul><li><b>拍卖</b>：多数法域允许承运人在催告无果、费用超限后，申请海关/法院拍卖货物，所得先抵 D&D 与处置费用，余款返还（如美国 19 CFR、德国《商法》第 654 条以下，待核实）。前置：完整催告程序 + 当地法律意见 + 拍卖公证。</li><li><b>退运</b>：退回起运地，通常需收货人/发货人同意并承担退运费用，否则我方无权单方退运（可能构成不当处分）。前置：取得书面退运授权与费用承诺。</li><li><b>弃货</b>：向目的国海关申报放弃，由海关依法处理；我方须先确认无未了债权冲突、无留置权争议。前置：海关受理 + 费用结算确认。</li></ul>
+<h3>4. 向谁追偿</h3>
+<ul><li><b>合同相对方是发货人/托运人</b>：买方拒提时，依据 House B/L 的运输合同关系，向签发方（我方）的对手方——即委托我方的发货人追偿运费与 D&D。</li><li><b>买方（收货人）拒绝提货</b>：若我方与买方无直接合同，只能绕回发货人；若买方也是我方客户，直接依委托合同追偿。</li><li><b>留置权兜底</b>：对我方合法占有的该客户其他在库/在途货行使留置，优先受偿（见 D4 详讲）。</li></ul>
+<h2>四、《目的港弃货处置 SOP》（六步）</h2>
+<ol><li>到港当日发《到港通知书》并留存送达证明（邮件/系统/挂号信）。</li><li>free time 到期前 7 天发第一次《费用催告与提货提醒》，附已发生与预估费用。</li><li>超期未提，发第二次催告 +《处置预告函》，明确将走拍卖/退运/弃货之一，并给不少于 30 天履行期（或依当地法）。</li><li>超期 30 天仍无响应，委托目的国当地律师出具法律意见，确认可走的处置路径与前置程序。</li><li>按当地法申请拍卖/退运/弃货，全程公证、拍照、留痕，所得优先抵偿我方债权。</li><li>处置后出具《费用结算单》，不足部分向发货人追偿并保留诉权，同步更新客户信用黑名单。</li></ol>
+<div class="key">反制点（客户/收货人视角）：收货人可主张我方催告程序不合规（未给合理履行期、未真实送达）导致损失扩大，要求扣减不合理费用；也可主张我方未及时拍卖减损、反而放任费用滚雪球，违反减损义务（民法典 591 待核实）。所以物流商必须<b>程序合规 + 及时减损</b>，否则多出的费用自己吞。</div>
+<h2>五、下半段常见事故速查</h2>
+<table><thead><tr><th>事故</th><th>段</th><th>我方身份</th><th>应对要点</th><th>反制点</th></tr></thead><tbody><tr><td>目的港无人提货</td><td>到港/清关</td><td>通知方/承运</td><td>按 SOP 催告→处置→追偿</td><td>客户主张催告不合规、未减损</td></tr><tr><td>清关被扣（HS 错/VAT 漏）</td><td>清关</td><td>报关代理</td><td>补单/补税/申诉，费用由委托人担</td><td>客户索赔罚款，我方须证已提示</td></tr><tr><td>末端派送丢件</td><td>派送</td><td>海外仓/末端承运</td><td>查 WMS 与 POD，按保管不善赔</td><td>客户主张未当场签收确认</td></tr><tr><td>清洁交付后货损</td><td>签收</td><td>交付方</td><td>交付无批注推定前段无责</td><td>货主须证交付前已损且我方管货不当</td></tr></tbody></table>
+<div class="key">今日口诀：<b>下半段怕的不是货坏，是人不来。free time 是发令枪，早催告留证是护身符，拍卖退运弃货三条路每条都要当地法撑腰。程序不合规 + 不减速损 = 多出的钱自己背。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Arrival Notice</div><div class="cn">到港通知</div><div class="df">承运人/货代在货物到港后向收货人/通知方发出的提货通知，是起算 free time 与催告的证据起点</div></div><div class="ti"><div class="en">Demurrage</div><div class="cn">滞箱费</div><div class="df">集装箱超出免费使用期仍占用箱体的费用，按天累进，通常由用箱人（收货人/买方）承担</div></div><div class="ti"><div class="en">Detention</div><div class="cn">滞留费</div><div class="df">集装箱离开码头后超期未还空箱的费用；与 Demurrage 常并称 D&amp;D</div></div><div class="ti"><div class="en">Abandoned Cargo</div><div class="cn">弃货（目的港无人提货）</div><div class="df">收货人/买方拒绝提货或失联，货物滞留目的港，产生 D&amp;D 与堆存费，物流商须依法处置</div></div><div class="ti"><div class="en">Lien</div><div class="cn">留置权</div><div class="df">债权人合法占有债务人动产，债务人不清偿可留置并优先受偿；物流商催收费用的核心武器</div></div><div class="ti"><div class="en">Wharfage / Storage</div><div class="cn">堆存费</div><div class="df">港口/码头对滞留货物收取的货物堆场占用费，按天计</div></div></div></div><div class="foot"><a href="W13-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W13-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

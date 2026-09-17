@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·第3天｜WEEE、包装废弃物与 EPR：在欧盟卖货，你得为「它死后」买单</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · DAY 3 / 5　·　阶段三　境外法域与合规</div><h1>WEEE、包装废弃物与 EPR：在欧盟卖货，你得为「它死后」买单</h1><div class="sub">第 15 周主题：欧盟产品合规 —— GPSR、电池法、EPR、CE</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">EPR 就是「谁污染谁付费」的物业费：在哪个国家卖，就要在哪个国家登记、交回收费、拿注册号。不交，平台直接下架——德国和法国查得最狠。</div><div class="mlink"><b>怎么串到今天</b>前两天看单部法规，今天看三国实操：同一件事在德、波、法怎么做。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>EPR = Extended Producer Responsibility 生产者责任延伸，三种品类：电子电气 WEEE / 电池 / 包装废弃物</li><li>「生产者」= 在成员国设立或以其名义销售、首次将产品投放市场者；海外仓可能被认定为生产者</li><li>授权代表(Authorised Representative)制度：非欧盟卖家须指定，注册编号须核验</li><li>未注册后果：平台下架、罚款、仓储方可能承担连带/配合责任</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《EPR 三国注册速查表》（德/法/波）+《客户 EPR 合规核验清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 WEEE、包装与包装废弃物、EPR 三国实操，站物流商立场给核验清单与客户反制点：
+1. 一句话立住 + 生活比喻(长租公寓退租清洁费) + 怎么串到前两天的 GPSR/电池法规
+2. EPR 三种品类（WEEE/电池/包装废弃物）含义
+3. 谁被视为「生产者」——在成员国设立 + 以自己名义销售
+4. 授权代表制度与注册编号（德/法/波三国主管机关与编号格式须核对）
+5. 未注册的后果（下架/罚款/仓储方连带责任）
+6. 我方海外仓如何核验客户 EPR 编号并写入合同
+7. 落到动作：产《EPR 三国注册速查表》与《客户 EPR 合规核验清单》</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：EPR 是「长租公寓退租时的清洁费」——你卖的货，最后得有人收拾</h2>
+<p>把 EPR 想成「租公寓退租要付清洁费」：你住了一年搬走，墙脏了、家具旧了，房东（或法规）要求你留下一笔钱把房子复原。EPR 就是欧盟要求<b>「谁把产品卖进来，谁就负责把它回收处理掉」</b>——不管是电子垃圾(WEEE)、废电池还是快递纸箱(包装废弃物)。这不是道德倡议，是<b>强制缴费+注册</b>义务。怎么串到前两天的 GPSR/电池法规：GPSR 管「货活着时要安全」，电池法规管「电池全生命周期」，EPR 管「货死了（报废）谁买单」——三道合规，从出生管到入土。海外仓的角色在这里最微妙：你只是存货的，但如果你在欧盟「以自己名义」帮客户卖货，监管可能把你当「生产者」直接开账单。</p>
+<div class="key">记忆点：<b>EPR = 生产者为产品报废买单。三品类：WEEE（电子垃圾）、电池、包装。认定「生产者」看两点——在成员国有主体 + 以你名义卖。海外仓别踩「以己名销售」的雷，否则 EPR 账单寄给你。</b></div>
+<h2>二、EPR 三品类速览</h2>
+<table><thead><tr><th>品类</th><th>管什么</th><th>典型义务</th><th>客户货里对应</th></tr></thead><tbody><tr><td>WEEE（电子电气）</td><td>废弃电子电气设备的回收</td><td>注册+申报回收量+缴回收基金</td><td>LED 灯饰、带电首饰的电路部分</td></tr><tr><td>电池 EPR</td><td>废电池的收集处理</td><td>注册+回收目标+标识</td><td>首饰/灯饰内置锂电</td></tr><tr><td>包装废弃物</td><td>快递箱、填充物回收</td><td>注册+按重量申报+缴费</td><td>所有入仓货的外包装</td></tr></tbody></table>
+<p>注意：一件<b>含锂电池的 LED 灯饰</b>可能同时触发<b>三张 EPR 账单</b>——灯饰电路算 WEEE、内置锂电算电池 EPR、外纸箱算包装 EPR。卖家往往只办了包装，漏了 WEEE 和电池，结果在清关或平台审核时被卡。</p>
+<h2>三、谁算「生产者」——认定的两把尺子</h2>
+<ul><li><b>尺子一：在成员国境内有设立的主体</b>（公司/分支机构/税务代表），首次将产品投放该国市场。</li><li><b>尺子二：以自己名义销售</b>（品牌、发票、 VAT 主体显示为你），即便物理上货从海外仓发。</li><li><b>两把都中 = 生产者</b>，须在该国注册 EPR 并缴费。非欧盟卖家（如中国跨境卖家）没有欧盟主体，通常须<b>指定授权代表(Authorised Representative)</b>或在欧盟设公司，由授权代表代注册。</li></ul>
+<div class="key">反制点（客户视角）：跨境卖家最易踩的坑是「以为海外仓帮我卖就不算我生产」。错了——生产者看的是「谁以自己名义投放市场」，税务和平台记录里卖家是 VAT 主体、是品牌方，EPR 责任跑不掉。卖家应主动办齐三国 EPR，并把编号提供给仓库与平台，避免被下架。</div>
+<h2>四、三国注册速查（德 / 法 / 波，主管机关与编号格式须核对）</h2>
+<table><thead><tr><th>国别</th><th>WEEE 主管/系统</th><th>包装 EPR 主管/系统</th><th>电池 EPR</th><th>编号示例格式（待核实）</th></tr></thead><tbody><tr><td>德国 DE</td><td>Stiftung EAR（中央登记）</td><td>ZSVR / LUCID 中央库</td><td>GRS Batterien 等回收系统</td><td>WEEE: Reg.-Nr. DE 12345678；LUCID: DE 开头登记号</td></tr><tr><td>法国 FR</td><td>ADEME + 生态组织(eco-organisme)</td><td>CITEO 等</td><td>Screlec/ecosystemes 等</td><td>法国无单一全国号，按生态组织分配编号（格式待核实）</td></tr><tr><td>波兰 PL</td><td>BDO 数据库(登记机关)</td><td>BDO 下包装登记</td><td>BDO 下电池登记</td><td>BDO 编号（格式待核实）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各国主管机关名称与现行系统（德国 EAR/LUCID、法国 ADEME/CITEO、波兰 BDO）以各国环境部/市场监管官网现行文本为准；② 编号格式与「一国一号 vs 按品类多号」的差异；③ 电池 EPR 与 (EU) 2023/1542 的衔接——电池法规本身也含回收义务，可能与一国电池 EPR 系统叠加，须核对客户实际该注册哪套；④ 英国(UK)脱欧后自成体系，若我方有英国业务另行适用 UK 规定。</div>
+<h2>五、未注册的后果——下架、罚款、仓库波及</h2>
+<ul><li><b>平台下架</b>：亚马逊、eBay 等要求卖家填写 EPR 编号，缺号直接限制/下架对应品类 Listing。</li><li><b>行政罚款</b>：各国对未注册/未申报的生产者处行政罚，金额按国别与情节（具体上限待核实，标「待核实」）。</li><li><b>仓储方连带/配合责任</b>：若我方海外仓被认定参与了「以自己名义销售」，可能被当作生产者直接追责；即便只是仓储，监管也可能要求仓库配合提供客户身份与货量信息，拒不配合面临处罚。</li><li><b>货物扣押/退运</b>：无 EPR 合规证明的货，可能被海关或市场监管要求整改、退运，产生仓储费与物流费。</li></ul>
+<div class="key">反制点（客户视角）：卖家应把 EPR 编号作为「入仓前置条件」提前办好，并留存缴费凭证；若因仓库未尽核验导致无号货混入被查，卖家可依据服务协议要求仓库承担因此产生的下架/退运损失（前提是合同写清核验义务）。</div>
+<h2>六、我方海外仓如何核验客户 EPR 编号并写进合同</h2>
+<ol><li><b>要编号</b>：客户入仓前，向我方提供目标销售国的 EPR 注册号（WEEE/包装/电池，按品类要全）。</li><li><b>核验真伪</b>：德国可查 EAR/LUCID 公开登记库核对编号是否有效；法/波按对应系统核验（核验渠道待核实）。</li><li><b>登记货量</b>：仓库按出入库记录协助客户统计申报量（仅提供数据，不代申报）。</li><li><b>写入合同</b>：在海外仓服务协议列「客户保证已办妥 EPR 注册并将编号提供我方；未提供或编号失效导致下架/罚款/退运的，损失与费用（含仓储费、退运费）由客户承担」。</li></ol>
+<h3>《客户 EPR 合规核验清单》</h3>
+<ul><li>□ WEEE 注册号（如适用电子电气品类）____ 国 ____ 号，核验状态：有效/待核</li><li>□ 包装 EPR 注册号（所有货必备）____ 国 ____ 号</li><li>□ 电池 EPR 注册号（带电产品必备）____ 国 ____ 号</li><li>□ 授权代表信息（非欧盟卖家）姓名/公司+联系方式</li><li>□ 缴费凭证最近一期日期 ____</li><li>□ 编号已提供给销售平台（亚马逊/eBay 等）</li></ul>
+<h2>七、落到动作：两份产出物</h2>
+<ul><li>《EPR 三国注册速查表》：德/法/波三国 × WEEE/包装/电池 × 主管机关/系统/编号格式/核验渠道，标「待核实」字段。</li><li>《客户 EPR 合规核验清单》：六格打勾 + 合同切责条款模板，纳入海外仓入仓 SOP。</li></ul>
+<div class="key">今日口诀：<b>EPR 三张账单：WEEE、电池、包装。认定生产者看「欧盟有主体 + 以你名卖」。海外仓别以己名销售，否则账单寄给你。客户无 EPR 号，货不入库、平台会下架。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">EPR</div><div class="cn">Extended Producer Responsibility / 生产者责任延伸</div><div class="df">生产者须对其产品「生命末端」（回收、处理、再利用）负责并付费；欧盟通过 WEEE、电池、包装等法规落地</div></div><div class="ti"><div class="en">WEEE</div><div class="cn">Waste Electrical and Electronic Equipment / 废弃电子电气设备</div><div class="df">欧盟关于电子电器产品回收的指令/法规体系；在成员国须注册并申报回收量</div></div><div class="ti"><div class="en">Producer</div><div class="cn">生产者 / 首次投放市场者</div><div class="df">在成员国设立或以其名义销售、首次将产品投放该市场者；是 EPR 缴费与注册义务的第一人</div></div><div class="ti"><div class="en">Authorised Representative</div><div class="cn">授权代表 / 授权代理人</div><div class="df">非欧盟生产者指定的在欧盟主体，代行 EPR 注册与合规义务，是「本地代缴/对接机关」</div></div><div class="ti"><div class="en">LUCID / VerpackG</div><div class="cn">德国包装法登记库 / Verpackungsgesetz</div><div class="df">德国包装 EEEE? 实为包装废弃物法；LUCID 是其中央登记库(ZSVR)，包装 EPR 须在此注册拿号</div></div></div></div><div class="foot"><a href="W15-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W15-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

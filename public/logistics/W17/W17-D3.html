@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第17周·第3天｜OFAC 制裁与次级制裁：命中 SDN 不是拒运是冻结</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 17 · DAY 3 / 5　·　阶段三　境外法域与合规</div><h1>OFAC 制裁与次级制裁：命中 SDN 不是拒运是冻结</h1><div class="sub">第 17 周主题：出口管制与制裁 —— 会坐牢的那条线</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">SDN 名单就是黑名单通讯录：跟名单上的人做生意，你自己也会被拉黑；次级制裁连跟黑名单做生意的第三方一起罚。所以筛查不只是查客户，还要查客户的股东。</div><div class="mlink"><b>怎么串到今天</b>管制（物项）之后是制裁（对象）——两套规则要同时跑。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>OFAC 管 SDN 清单；美国人与 SDN 交易一律禁止，且 50% 规则穿透下游实体</li><li>50% 规则：SDN 合计持股 ≥50% 的下游客体自动受制裁（即便未列名），穿透计算须核对</li><li>一级制裁管美国人；次级制裁管非美国人，逼全球选边（断美元清算最狠）</li><li>欧盟清单(EEAS 综合清单)与联合国清单不同：UN 有约束力、EU 须转化、US 单边可重叠</li><li>命中后必须「冻结而非拒运」、停止交易、向谁报告、保留记录、申请许可解除；罚金区间标「待核实」</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《制裁筛查清单体系对照表》+《命中制裁后的处置 SOP》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 OFAC 制裁与次级制裁，站物流商立场给处置 SOP 与客户反制点：
+1. OFAC 是什么：美国财政部下属，维护 SDN 等清单；综合制裁 vs 定向制裁的区别
+2. SDN 清单与 50% 规则：所有权穿透怎么算（须核对）；下游实体未列名却被穿透的后果
+3. 一级制裁 vs 次级制裁：区别、为什么次级制裁让非美国物流商也怕
+4. 欧盟清单(EEAS 综合制裁清单)与联合国清单的差异：约束力、更新机制、我方要筛几套
+5. 命中制裁后的处置流程：为什么是「冻结而非拒运」、停止交易、向谁报告、保留什么记录、如何申请解除/许可
+6. 落到业务：具体罚金区间（标「待核实」）与命中 SOP 的动作清单</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：OFAC 是「全球黑名单闸机」，命中不是退单是扣人</h2>
+<p>把 OFAC 想成「机场安检的禁飞名单」：普通旅客过闸机，名字一比对进黑名单，不是「您不能登机请改签」，而是「请留下，您的机票和行李暂时冻结，谁都不能动」。物流也一样——收货方一命中 SDN，这票货不能简单「拒运退回」，而是必须<b>冻结资产、停止一切交易、报告监管</b>。很多新人误以为「命中就退给客户」了事，结果退运动作本身构成违规。怎么串到前两天：出口管制法管「物项能不能走」，EAR 管「跟美国沾不沾边的货」；今天 OFAC 管的是<b>人</b>——跟谁做生意。三条线叠加，货代每票要同时过「物项清单 + 美国连接点 + 制裁名单」三道筛。</p>
+<div class="key">记忆点：<b>OFAC 管人不管货。命中 SDN = 冻结不是拒运。50% 规则让「没上名单的子公司」也中招。次级制裁让非美国货代也得怕——因为断美元清算比罚款更狠。</b></div>
+<h2>二、OFAC 与两类制裁</h2>
+<ul><li><b>综合制裁(Comprehensive)</b>：对某国全面禁运（如伊朗、朝鲜部分时期），所有人/实体都禁。</li><li><b>定向制裁(Targeted)</b>：只针对特定个人/实体/行业（如某寡头、某军工企业），SDN 清单即此类。</li><li><b>清单体系</b>：SDN 是核心；另有行业制裁清单(SSI)、行业交割限制等。我方筛查以 SDN 为第一优先。</li></ul>
+<h2>三、50% 规则：没上名单也可能中招</h2>
+<p>规则：若某公司被<b>一个或多个 SDN 实体合计持股 ≥50%</b>，则该下游公司<b>自动视为受制裁</b>，即便它从没出现在 SDN 名单上。计算方式是<b>穿透累加</b>——SDN 甲持 30%、SDN 乙持 25%，合计 55%，下游即被穿透。实务大坑：客户给的收货方「干净」，但你没查它股东的股东，结果股东里藏着 SDN，这票货照样违规。所以筛查不能只看一层，要看<b>股权穿透</b>。</p>
+<table><thead><tr><th>情形</th><th>是否受制裁</th><th>货代动作</th></tr></thead><tbody><tr><td>收货方直接列 SDN</td><td>是</td><td>冻结、停交易、报告</td></tr><tr><td>收货方被单一 SDN 持股 50%+</td><td>是（50% 规则）</td><td>同上，即便未列名</td></tr><tr><td>收货方被两个 SDN 合计持股 55%</td><td>是（穿透累加）</td><td>同上</td></tr><tr><td>收货方被 SDN 持股 49%</td><td>否（未达线，但须警惕变动）</td><td>可走，留筛查记录</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 50% 规则的精确表述与「合计持股」计算口径（OFAC 2014 年 8 月 13 日指引及后续更新）；② 是否区分直接/间接持股、表决权与受益所有权；③ 被穿透实体的「反向»退出」机制（如 SDN 出售股权后是否自动解控）。以 OFAC 官网 FAQ 为准。</div>
+<h2>四、一级制裁 vs 次级制裁</h2>
+<table><thead><tr><th>维度</th><th>一级制裁</th><th>次级制裁</th></tr></thead><tbody><tr><td>管谁</td><td>美国人(US person)</td><td>非美国人（含中国货代）</td></tr><tr><td>逻辑</td><td>禁止美国主体与制裁对象交易</td><td>处罚与制裁对象交易的非美国主体，逼其选边</td></tr><tr><td>最狠手段</td><td>美国主体被罚/刑事诉讼</td><td>切断美元清算、列入 SDN、禁止进入美国市场</td></tr><tr><td>我方怕不怕</td><td>我方非美国人，一级基本不沾</td><td><b>怕</b>：次级制裁可让我方丢美元通道、上 SDN</td></tr></tbody></table>
+<div class="key">反制点（客户视角）：卖家为拿订单，可能隐瞒收货方是受制裁方关联企业。客户须在合同里保证「收货方及其实质控制方均非 SDN/受制裁实体」；一旦我方筛查命中，有权冻结货物并终止合作，客户须赔偿我方因此被 OFAC 调查/次级制裁波及的全部损失（含美元账户被关的营业损失）。</div>
+<h2>五、欧盟清单与联合国清单：要筛几套</h2>
+<ul><li><b>联合国清单</b>：安理会决议，对所有成员国<b>有约束力</b>，各国须转化执行；是「最低共同线」。</li><li><b>欧盟清单(EEAS 综合清单)</b>：欧盟自主制裁，经欧盟理事决议后<b>在欧盟直接适用</b>（条例）或成员国转化；覆盖资产冻结对象，与 OFAC 部分重叠但范围、口径不同。</li><li><b>英国清单(OFSI)</b>：脱欧后独立，见明日 D4。</li><li><b>我方要筛几套</b>：做欧线须同时筛 UN + EU + UK + US（OFAC）四套，且<b>任一套命中即按最严处理</b>——不能因为「美国没列、欧盟列了」就放行欧线货。</li></ul>
+<h2>六、命中制裁后的处置 SOP（最致命的动作顺序）</h2>
+<ol><li><b>冻结而非拒运</b>：发现命中，<b>立即停止放货/转运/交付</b>，将货物与关联资金置于冻结状态；不得「退给客户」或「改道第三国」——这些动作本身可能违规。</li><li><b>停止一切交易</b>：暂停与该主体的新订单、订舱、付款，内部标注黑名单。</li><li><b>内部报告</b>：合规负责人知悉，启动 SOP；记录命中时间、字段、比对依据。</li><li><b>对外报告（如适用）</b>：美国主体须向 OFAC 报告；我方（非美国人）一般无直接向 OFAC 报告义务，但若涉及美连接点或应客户/银行要求，须配合并提供记录。<b>向谁报告以我方注册地监管与合同为准，待核实</b>。</li><li><b>保留记录</b>：命中筛查记录、冻结指令、沟通留痕，保存 <b>至少 5 年</b>（年限待核实，须核对我方注册地与行业要求）。</li><li><b>解除/许可</b>：若主张误命中，收集所有权证据向清单维护方申请移除；若确需交易，向 OFAC 申请<b>通用许可(specific license)</b>，获批前不得动货。</li></ol>
+<table><thead><tr><th>步骤</th><th>动作</th><th>不做后果</th></tr></thead><tbody><tr><td>1 冻结</td><td>停货停钱</td><td>退运/改道 = 违规</td></tr><tr><td>2 停交易</td><td>内部拉黑</td><td>继续接单 = 加重</td></tr><tr><td>3 报告</td><td>合规+监管</td><td>隐瞒 = 刑事风险</td></tr><tr><td>4 留痕</td><td>记录 5 年</td><td>无记录 = 自证不能</td></tr><tr><td>5 许可</td><td>获批才动</td><td>擅自放 = 重罚</td></tr></tbody></table>
+<h2>七、落到业务：罚金区间与动作</h2>
+<table><thead><tr><th>违规</th><th>罚金（标「待核实」）</th><th>说明</th></tr></thead><tbody><tr><td>故意违反 OFAC</td><td>每笔最高约 <b>25 万美元或交易额两倍</b>（取高，具体以 IEEPA 为准，待核实）</td><td>民事罚，刑事另计</td></tr><tr><td>刑事违反</td><td>罚款 + 自然人最高 <b>20 年监禁</b>（幅度待核实）</td><td>故意违规</td></tr><tr><td>次级制裁波及</td><td>断美元清算、列入 SDN、禁入美市场</td><td>非金钱但致命</td></tr><tr><td>未留存记录/未筛查</td><td>行政罚（幅度待核实）</td><td>被列重点</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① OFAC 民事罚款的上限（IEEPA 下每笔违规约 25 万美元或交易额两倍，以最新调整数值为准）；② 刑事处罚条款与刑期；③ 我方作为非美国人、无美国连接点时是否仍受次级制裁波及的判断标准；④ 记录保存年限（OFAC 建议与行业要求，常 5 年，待核实）。以上以 OFAC 官网与最新法条为准。</div>
+<ol><li>每票接单即跑四套清单（UN/EU/UK/US）筛查，任一套命中即升级。</li><li>股权穿透查到 SDN 合计持股 ≥50% 的层级，不只看一层。</li><li>命中即冻结、停交易、留痕，不擅自退运/放货。</li><li>向合规负责人与（如适用）监管报告，申请移除或许可前不动货。</li><li>记录存档不低于 5 年（待核实）。</li></ol>
+<div class="key">今日口诀：<b>OFAC 管人不管货，命中即冻结不是退。50% 规则穿透子公司，次级制裁断你美元路。四套清单都要筛、股权穿透查到根、命中五步 SOP——货代制裁合规的保命线。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">OFAC</div><div class="cn">Office of Foreign Assets Control / 海外资产控制办公室</div><div class="df">美国财政部下属机构，执行经济制裁、维护 SDN 等清单；缩写 OFAC</div></div><div class="ti"><div class="en">SDN</div><div class="cn">Specially Designated Nationals / 特别指定国民清单</div><div class="df">被美国制裁的个人/实体名单；美国人与其交易一律禁止，且受 50% 规则所有权穿透</div></div><div class="ti"><div class="en">50% Rule</div><div class="cn">50% 规则 / 所有权穿透</div><div class="df">被 SDN 实体合计持股 ≥50% 的下游实体自动视为受制裁（即便未列名）；按持股比例穿透计算</div></div><div class="ti"><div class="en">Primary Sanctions</div><div class="cn">一级制裁 / 一级制裁</div><div class="df">禁止美国人(US person)与制裁对象交易；域外效力有限，主要约束美国主体</div></div><div class="ti"><div class="en">Secondary Sanctions</div><div class="cn">次级制裁 / 次级制裁</div><div class="df">针对非美国人的交易，迫使其选边；处罚（如切断美元清算）使全球实体被动遵守美国制裁</div></div><div class="ti"><div class="en">Consolidated List</div><div class="cn">综合制裁清单 / 欧盟综合清单</div><div class="df">欧盟对外行动署(EEAS)维护的制裁名单，含资产冻结对象；与 OFAC SDN 部分重叠但不等同</div></div></div></div><div class="foot"><a href="W17-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W17-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

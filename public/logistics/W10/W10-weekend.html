@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·周末实战｜审查我方标准合同与标准交易条件，判定身份风险</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · WEEKEND PROJECT　·　阶段二　运输责任制度</div><h1>周末实战⑩：审查我方标准合同与标准交易条件，判定身份风险</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">审查我方标准合同就是一次身份体检：逐条看有没有哪句话把自己写成了承运人，或者哪句话让限额条款因为没提示而失效。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">拿一份我方（货代/海外仓）虚构的《标准货运代理合同》全文节选 + 背面 STC，逐条判定哪些表述把自己写成了承运人、哪些 STC 条款会因未提示而失效，给出修订清单。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">请完成一次"自己人审自己人"的实战：审查我方（物流服务提供方，货代/海外仓）一份虚构的《标准货运代理合同》及背面标准交易条件（STC），判定身份风险。
+
+设定：我方为"鹏运国际货运代理有限公司"（持 NVOCC 资质但未重视 STC 提示流程）。下面是我方现行标准合同节选与 STC 条款（由你作为法务起草/假设），请：
+1. 把合同正文里"把自己写成承运人"的高危表述逐条点名（至少 5 处），说明每处为何危险、客户可如何据此把代理逼成承运。
+2. 把背面 STC 里"会因未合理提示而失效"的条款逐条点名（至少 5 处），说明依《民法典》第 496/497 条为什么失效、失效后果。
+3. 给出《身份风险修订清单》（具体改写建议，中英对照），把每一处高危表述改成安全的"代理"表述。
+4. 给出《STC 加固修订清单》：哪些条款要加粗、哪些要单独确认页、哪些要缔约前邮件送达留证。
+5. 最后输出一版"修订后合同核心条款 + STC 提示流程"的定稿样板，证明我能把身份锁死在代理、同时把限额条款焊进合同。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这次是'自己审自己'</h2>
+<p>我方是<b>鹏运国际货运代理有限公司</b>，持 NVOCC 资质，但日常只做<b>纯订舱/报关代理</b>，并不想当承运人。问题出在：① 标准合同里混进了一些'承运化'措辞；② STC 写在合同正文小字里，<b>从没让客户单独确认过</b>。下面逐条开刀——这一步的目的不是挑刺，是<b>在客户起诉前先把身份锁死在代理、把限额条款焊进合同</b>。</p>
+<h2>二、合同正文：把自己写成承运人的 5 处高危表述</h2>
+<table><thead><tr><th>条款原文（节选）</th><th>为什么危险</th><th>客户可据此如何反制</th></tr></thead><tbody><tr><td>'我方保证货物按期、安全送达目的地。'</td><td>'保证'二字构成承运承诺，代理身份被突破</td><td>凭此主张我方是缔约承运人，按运输责任全赔</td></tr><tr><td>'我方承担本票货物的全部运输责任。'</td><td>明示担责=认承运</td><td>直接锁定承运关系，绕开'只找实际承运人'</td></tr><tr><td>'我方负责将货物运至收货人仓库。'</td><td>漏写'安排'，从'安排运输'变'负责运输'</td><td>主张我方是履行主体而非居间</td></tr><tr><td>'运费为全包价 RMB 38,000（含我方利润）。'</td><td>all-in 价+赚差=承运特征</td><td>结合措辞推定我方为承运人并赚取运费差</td></tr><tr><td>'我方签发鹏运 House B/L 作为提货凭证。'</td><td>签 HBL=实锤承运（见 D3）</td><td>凭 HBL 直接告我方，HBL 即运输合同证明</td></tr></tbody></table>
+<div class="key">结论：<b>这 5 处里任意 1 处都足以让法院按'实质重于形式'认定你是承运</b>。尤其第 5 条签 HBL——如果你的业务确实要签 HBL，那就别装代理，直接走 D2 的 B 套'承运'条款并锁好限额；否则就是'既想签 HBL 又想免责'的骑墙死局。</div>
+<h2>三、背面 STC：会因未提示而失效的 5 处条款</h2>
+<ol><li><b>责任限制条款</b>：'本公司责任不超过运费 2 倍或 2 SDR/公斤'——写在背面小字，正面未加粗、未提示'详见背面'，客户未单独确认 → 依《民法典》第 496 条<b>不订入合同</b>，限责落空。</li><li><b>免责条款</b>：'因海关、罢工、不可抗力等所致损失不承担责任'——属'与对方有重大利害关系'条款，未合理提示 → 不成为合同内容。</li><li><b>留置权条款</b>：'未付清费用前我方有权留置并拍卖货物'——限制对方主要权利，未提示+未说明 → 可能被认定无效（第 497 条）。</li><li><b>短时效条款</b>：'索赔须于货交之日起 15 日内提出，逾期视为放弃'——大幅短于法定时效，未提示且显失公平 → 无效。</li><li><b>管辖条款</b>：'争议由我方所在地法院管辖'——格式条款中的管辖约定未提示 → 对方可主张未订入，管辖不成立。</li></ol>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：①《民法典》第 496、497 条关于格式条款提示说明与无效情形的现行精确表述及司法解释口径；② '15 日索赔时效'等短时效条款被认定无效的判例标准；③ 管辖条款作为格式条款未提示时的效力认定，以最新司法实践为准。</div>
+<h2>四、《身份风险修订清单》（改写建议，中英对照）</h2>
+<blockquote>【原句1】我方保证货物按期、安全送达目的地。
+→ 改："甲方（我方）作为<b>代理人</b>为乙方安排运输，不保证实际承运人之运输表现，亦不承担运输履约责任。" 
+  EN: "The Forwarder acts as agent in arranging carriage and gives no undertaking as to the performance of the actual carrier, assuming no liability for carriage."
+
+【原句2】我方承担本票货物的全部运输责任。
+→ 改："甲方仅对其自身过错（如未尽合理谨慎选任承运人、未及时传递单证）承担赔偿责任。"
+  EN: "The Forwarder is liable solely for its own negligence (e.g., failure to exercise due care in selecting the carrier)."
+
+【原句3】我方负责将货物运至收货人仓库。
+→ 改："甲方<b>安排</b>货物自起运地至收货人仓库之运输事宜。"
+  EN: "The Forwarder arranges the carriage of the goods from origin to the consignee's warehouse."
+
+【原句4】运费为全包价 RMB 38,000（含我方利润）。
+→ 改："海运费/运费按船公司实际账单由乙方承担，甲方收取服务费 RMB X，实报实销、不赚取运费差价。"
+  EN: "Freight is on a cost-plus basis; the Forwarder charges a service fee of RMB X and does not earn any margin on freight."
+
+【原句5】我方签发鹏运 House B/L 作为提货凭证。
+→ 如坚持代理身份：改"甲方仅代乙方<b>转交</b>实际承运人签发的提单，不签发以甲方为承运人的运输单证。"
+  EN: "The Forwarder merely forwards the bill of lading issued by the actual carrier and issues no transport document in its own name."</blockquote>
+<div class="key">改写铁律：<b>'保证/承担/负责运输/全包价/签HBL' 五个词，是代理身份的送命题。能删就删，不能删就改 'as agent' + '安排' + '实报实销' + '不签己方单证' 四件套。</b> 若业务必须签 HBL，则放弃代理伪装，转用 D2 的 B 套承运条款并锁限额。</div>
+<h2>五、《STC 加固修订清单》（让条款真正生效）</h2>
+<ol><li><b>结构改造</b>：STC 从合同正文'长'出来，改为<b>独立附件 + 单独签字确认页</b>，标题显著。</li><li><b>关键条款加粗异色</b>：责任限制、免责、留置、短时效、管辖全部加粗+较大字号，不得淹没。</li><li><b>单独确认页</b>：合同末设'标准交易条件确认'页，客户手写/电子签署'本人已阅读并接受全部 STC'。</li><li><b>缔约前邮件送达</b>：签约邮件正文附 STC 全文链接，要求客户回复'已阅并接受'，留邮件回执。</li><li><b>系统勾选日志</b>：线上下单强制勾选'已读并同意 STC'并记录 IP/时间戳。</li><li><b>短时效合理化</b>：将'15 日'改为与法律协调的区间（如'货交后合理期间内，且不少于法定时效'），避免第 497 条显失公平。</li><li><b>证据链归档</b>：合同+确认页+邮件+日志三证合一，保存至诉讼时效届满后。</li></ol>
+<h2>六、修订后定稿样板：核心条款 + STC 提示流程</h2>
+<blockquote>【修订后合同身份条款（定稿）】
+"第X条 身份与责任范围：甲方（鹏运国际货运代理有限公司）系以<b>货运代理人（freight forwarder as agent）</b>身份为乙方安排订舱、报关、运输事宜，不参与实际运输，不以承运人身份行事，不签发以甲方为承运人的运输单证。甲方仅对其自身过错（包括但不限于未尽合理谨慎选择/指示承运人、未及时传递或错误制作运输单证）承担赔偿责任，不就货物的灭失、损坏或运输迟延承担运输责任。运费及费用按实际发生额向乙方实报实销，甲方收取约定的服务费。"
+
+【STC 提示流程（定稿）】
+1. 缔约前 3 个工作日：向客户发送含 STC 全文的邮件，正文醒目提示'请重点阅读责任限制、免责、留置、时效、管辖条款'，要求回复'已阅并接受'。
+2. 签约时：合同末附独立'标准交易条件确认页'，客户签字/电子签确认。
+3. 线上场景：下单页强制勾选'我已阅读并同意 STC'，系统记录时间戳与 IP。
+4. 归档：合同+确认页+邮件回执+系统日志归入客户档案，保存至诉讼时效届满后 2 年。</blockquote>
+<div class="key">实战收口口诀：<b>自己审自己，先找'保证/承担/负责运输/全包价/签HBL'五个送命题，再找 STC 里'没加粗、没确认、没留证'的三无条款。改完五处、补上三件套，身份锁代理、限额焊进合同——这版合同才敢拿出来签。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Self-audit</div><div class="cn">自查 / 自我审查</div><div class="df">站在己方立场复核己方合同模板，识别把己方暴露在承运人责任下的表述与失效条款</div></div><div class="ti"><div class="en">As Agent / As Carrier</div><div class="cn">代理人 / 承运人（措辞）</div><div class="df">合同中对己方身份的定性措辞，直接决定责任归属，是身份锁定的第一道开关</div></div><div class="ti"><div class="en">STC Failure</div><div class="cn">标准交易条件失效</div><div class="df">因未合理提示或内容显失公平，STC 条款不订入合同或被认定无效，导致限责/免责落空</div></div><div class="ti"><div class="en">Red-line Clause</div><div class="cn">红线条款</div><div class="df">合同中绝对不得出现、一旦出现即把代理实锤为承运的表述（如'保证送达''承担运输责任'）</div></div><div class="ti"><div class="en">Evidence Chain</div><div class="cn">证据链</div><div class="df">由确认页+邮件回执+系统日志构成的'已提示且对方接受'证明体系，是 STC 生效的关键</div></div></div></div><div class="foot"><a href="W10-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W10-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

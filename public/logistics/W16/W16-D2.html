@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第16周·第2天｜合法性基础、DPA 与跨境传输：凭什么处理、凭什么传出去</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 16 · DAY 2 / 5　·　阶段三　境外法域与合规</div><h1>合法性基础、DPA 与跨境传输：凭什么处理、凭什么传出去</h1><div class="sub">第 16 周主题：数据合规 —— GDPR 与中国数据出境</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">处理个人数据要有合法性基础，就像进别人家要有邀请函；DPA 是你跟数据处理者签的「不泄密协议」；SCC 是数据出境的「标准通关文书」。三件套缺一不可。</div><div class="mlink"><b>怎么串到今天</b>昨天定适用范围，今天看合规的三种工具——这是合同层面你能落地的部分。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>第 6 条六种合法性基础：同意、合同履行、法律义务、重大利益、公共利益、正当利益；物流场景最常用「合同履行」与「正当利益」</li><li>第 9 条特殊类别数据（种族、健康、生物识别等）原则上禁止处理，跨境物流一般碰不到但要识别</li><li>DPA（Art. 28）必备条款清单：处理指令、保密、安全措施、分包处理者、协助数据主体权利、审计、删除/返还</li><li>第五章跨境传输三工具：充分性认定（白名单）、适当保障措施（SCC/BCR）、减损例外（derogations）；SCC 2021/914 须配 Schrems II 后的 TIA</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《合法性基础选择决策表》+《DPA 必备条款清单》+ 中英对照 DPA 核心条款</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 GDPR 合法性基础、数据处理协议 DPA 与跨境传输机制，站货代+海外仓立场给可直接改用的条款与客户反制点：
+1. 第 6 条六种合法性基础逐条讲：同意 / 合同履行之必要 / 法律义务 / 保护重大利益 / 公共利益 / 正当利益（legitimate interests）；每条在物流场景何时成立、何时不成立，给判定
+2. 第 9 条特殊类别数据：哪些数据被禁，物流场景（如健康品配送、员工体检）如何识别与规避
+3. DPA 第 28 条必备条款清单：列全（处理指令、保密义务、安全措施、分包处理者准入与通知、协助数据主体权利、审计权、删除/返还、终止后处理、责任），并给可直接复制的中英对照核心条款
+4. 第五章跨境传输三种工具：充分性认定 adequacy（白名单）、适当保障措施（SCC 2021/914、BCR）、特定情形减损 derogations（Art. 49）；各自适用条件
+5. Schrems II 判决后：光签 SCC 不够，要做 TIA（传输影响评估）+ 补充措施（加密、假名化、分包链审查）
+6. 落到动作：我方作为处理者，起草/审查 DPA 时必查哪些条款、客户作为控制者能反制我方什么</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：合法性基础像「搬家公司进门前的许可」，没许可动手就违法</h2>
+<p>把 GDPR 的合法性基础想成「搬家公司要进你家门搬东西，得有正当理由」：要么是业主点头同意（同意），要么是按合同本来就该搬（合同履行），要么是政府让搬（法律义务）。<b>没有这六种理由里的任何一种，你碰个人数据就是非法处理，跟「搬错了别人家」一样要担责</b>。跨境传输更严格——光有理由还不够，还得走「出境通道」（充分性/ SCC/ 减损）。怎么串到昨天：昨天判了「GDPR 罩不罩你、你是控制者还是处理者」，今天接着问「你凭什么处理这些数据、又凭什么把它们传到欧盟外」——这是数据合规的两道闸门。</p>
+<div class="key">记忆点：<b>处理数据先找合法性基础（第 6 条六选一）；把数据传出欧盟再找跨境传输工具（第五章三选一）。两道闸门缺一不可，跨境物流最常用「合同履行必要」+「SCC」组合。</b></div>
+<h2>二、第 6 条六种合法性基础：物流场景逐条判定</h2>
+<table><thead><tr><th>基础</th><th>条文</th><th>物流场景何时成立</th><th>何时不成立</th></tr></thead><tbody><tr><td>同意</td><td>Art. 6(1)(a)</td><td>客户明确勾选授权我方用其收件人数据做增值服务</td><td>默示勾选、捆绑同意——无效</td></tr><tr><td>合同履行必要</td><td>Art. 6(1)(b)</td><td>为履行运输/仓储合同而处理收件人配送信息——<b>最常用</b></td><td>把配送数据挪去营销——超出合同必要</td></tr><tr><td>法律义务</td><td>Art. 6(1)(c)</td><td>海关申报、税务留痕要求的个人字段</td><td>仅为内部便利而超范围留存</td></tr><tr><td>重大利益</td><td>Art. 6(1)(d)</td><td>急救情形下保护某人生命（物流极少用）</td><td>普通配送不适用</td></tr><tr><td>公共利益</td><td>Art. 6(1)(e)</td><td>政府防疫溯源等法定公共任务（罕见）</td><td>商业目的不能套</td></tr><tr><td>正当利益</td><td>Art. 6(1)(f)</td><td>反欺诈、网络安防、内部合规审计——须做利益权衡测试（LIA）</td><td>与数据主体基本权利冲突时不可用</td></tr></tbody></table>
+<p><b>实务排序</b>：跨境物流的运单配送信息，几乎都走「合同履行必要（Art. 6(1)(b)）」——因为处理收件人信息就是为了把货送到，天然落在合同目的内。想用「正当利益（Art. 6(1)(f)）」做反欺诈或安防，必须先做 <b>LIA（Legitimate Interests Assessment，正当利益权衡评估）</b>，证明我方利益压过个人权益，并留存记录。</p>
+<h2>三、第 9 条特殊类别数据：原则禁止，物流要会识别</h2>
+<p>特殊类别数据（Art. 9）包括种族、政治观点、宗教、工会、基因、生物识别、健康、性取向等，<b>原则禁止处理</b>，除非有明示同意、重大医疗利益等极窄例外。物流场景一般碰不到，但两种要警惕：① <b>健康品/药品配送</b>可能暴露收件人健康信息（如慢性病药直送）；② <b>员工体检/生物打卡</b>（指纹、人脸）属生物识别数据。处理前必须识别并走 Art. 9(2) 的例外，否则一碰就重罚。</p>
+<h2>四、DPA 第 28 条必备条款清单（处理者的「劳动合同」）</h2>
+<p>只要我方是处理者，控制者（客户）<b>必须</b>与我方签 DPA（Art. 28(3) 列了至少 9 项强制内容）。漏签 DPA，双方都违法。以下清单逐项给可直接改用的中英条款：</p>
+<ol><li><b>处理指令（instructions）</b>：仅按控制者书面指令处理，含跨境传输指令。</li><li><b>保密（confidentiality）</b>：接触数据的人员须保密义务约束。</li><li><b>安全措施（security）</b>：按 Art. 32 采取技术组织措施。</li><li><b>分包处理者（sub-processors）</b>：须控制者授权，变更须事先通知、给予反对权。</li><li><b>协助数据主体权利（assist data subject rights）</b>：协助控制者响应访问/删除等请求。</li><li><b>协助监管与审计（audit）</b>：控制者有权审计或派第三方审计。</li><li><b>删除/返还（erasure/return）</b>：服务结束删除或返还数据。</li><li><b>责任与赔偿（liability）</b>：按 Art. 82 界定赔偿责任。</li><li><b>终止后处理（on termination）</b>：明确数据处置方式与期限。</li></ol>
+<h3>可直接复制的中英对照核心条款</h3>
+<blockquote>【中文】处理者仅得按控制者之书面指令处理个人数据，包括有关跨境传输之指令；未经控制者事先书面授权，处理者不得聘用任何分包处理者。处理者应采取符合 GDPR 第 32 条之适当技术性与组织性措施保障数据安全，并在服务终止时删除或返还全部个人数据。控制者有权经合理事先通知对处理活动进行审计。
+【English】The Processor shall process Personal Data only on the documented instructions of the Controller, including with regard to international transfers. The Processor shall not engage any sub-processor without the Controller's prior specific or general written authorization. The Processor shall implement appropriate technical and organizational measures pursuant to Article 32 and, upon termination, delete or return all Personal Data. The Controller shall have the right to audit the processing activities upon reasonable notice.</blockquote>
+<div class="key">反制点（客户/控制者视角）：客户可在 DPA 里加码——要求我方「分包处理者名单事先书面确认 + 任一分包违约视为我方违约 + 审计可指定独立第三方且费用由我方承担」。客户还能要求「数据本地化于欧盟境内、禁止传回中国总部」，把我方跨境传输成本与风险抬高。</div>
+<h2>五、第五章跨境传输三工具：充分性 / 保障措施 / 减损</h2>
+<table><thead><tr><th>工具</th><th>条文</th><th>适用条件</th><th>我方现实可用度</th></tr></thead><tbody><tr><td>充分性认定</td><td>Art. 45</td><td>目的地在欧盟白名单（如英国、日本、瑞士；<b>中国不在白名单</b>）</td><td>对中国主体基本不可用</td></tr><tr><td>适当保障措施</td><td>Art. 46</td><td>签 SCC（2021/914）或 BCR，并做 TIA+补充措施</td><td><b>主通道：我方对中国总部/关联方传数据走 SCC</b></td></tr><tr><td>减损例外</td><td>Art. 49</td><td>明示同意、合同必要、重大利益等特定情形</td><td>仅偶发、辅助，不能常态化依赖</td></tr></tbody></table>
+<p><b>关键事实：中国（含内地）不在欧盟充分性白名单上</b>。所以我方（欧盟海外仓）要把个人数据传回中国总部或中国关联方，不能靠「白名单」走捷径，必须走 <b>SCC（2021/914）+ TIA + 补充措施</b> 这条路，或依赖 Art. 49 的减损例外（但减损只能偶发，不能当常态化传输依据）。</p>
+<h2>六、Schrems II 之后：光签 SCC 不够，要做 TIA</h2>
+<p>2020 年「Schrems II」判决（C-311/18）戳破了一个幻想：<b>SCC 是合同，但数据到了第三国，当地政府的访问权可能让合同保护落空</b>。所以欧盟数据保护委员会要求：签 SCC 后必须做 <b>TIA（传输影响评估）</b>——评估中国等法律是否允许政府大规模访问数据、是否削弱 SCC 保护；若评估发现风险，须加 <b>补充措施</b>（端到端加密、假名化、把密钥留欧盟、分包链逐层审查）。不做 TIA 的 SCC 等于裸奔。</p>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 第 6、9、28、45、46、49 条具体款项以 GDPR 官方文本为准；② SCC 决定号为 2021/914（取代 2001/497 与 2010/87，须核对现行版本与模块选择）；③ 中国是否进入任何「充分性」谈判进程、以及 EDPB 关于 Schrems II 的补充措施建议（Recommendation 01/2020）以官网为准。</div>
+<h2>七、落到动作：我方起草/审查 DPA 必查清单</h2>
+<ol><li>确认我方角色（处理者）→ 无 DPA 不接单。</li><li>核对 Art. 28 九项条款是否齐全，缺项即补。</li><li>分包处理者条款：是否要求我方提供名单+事先授权+责任穿透。</li><li>跨境传输条款：是否要求 SCC 2021/914 + TIA + 补充措施。</li><li>审计权：客户能否独立审计、费用谁担。</li><li>删除/返还：终止后时限（建议 ≤30 日）与证明方式。</li><li>责任与赔偿： cap（限额）是否合理、是否排除间接损失。</li></ol>
+<div class="key">今日口诀：<b>处理先找第 6 条六选一（物流多用合同履行必要）；传出欧盟再找第五章三选一（中国不在白名单，主走 SCC）；SCC 不是终点，Schrems II 后要 TIA+加密补充措施。DPA 九项缺一不可，客户能拿它反制我方分包与审计。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Lawful Basis</div><div class="cn">合法性基础 / 处理合法性依据</div><div class="df">GDPR 第 6 条规定的六种处理个人数据的正当依据；无依据处理即违法，罚则与第 83 条挂钩</div></div><div class="ti"><div class="en">DPA</div><div class="cn">Data Processing Agreement / 数据处理协议</div><div class="df">控制者与处理者之间的协议，Art. 28 强制要求，载明指令、保密、安全、审计等必备条款</div></div><div class="ti"><div class="en">SCC</div><div class="cn">Standard Contractual Clauses / 标准合同条款</div><div class="df">欧盟委员会 2021/914 号决定发布的跨境传输标准合同模板；属「适当保障措施」之一</div></div><div class="ti"><div class="en">Adequacy Decision</div><div class="cn">充分性认定 / 白名单</div><div class="df">欧盟委员会认定某第三国数据保护水平足够的决定（Art. 45）；向白名单国传输无需额外措施</div></div><div class="ti"><div class="en">TIA</div><div class="cn">Transfer Impact Assessment / 传输影响评估</div><div class="df">Schrems II 后向第三国传输前须评估目的地法律是否削弱 SCC 保护，并视情加补充措施</div></div><div class="ti"><div class="en">Derogation</div><div class="cn">减损例外 / 特定情形例外</div><div class="df">Art. 49 允许在无充分性/保障措施时，于特定情形（如明示同意、合同必要）跨境传输</div></div><div class="ti"><div class="en">Special Category Data</div><div class="cn">特殊类别个人数据</div><div class="df">Art. 9 规定的种族、政治、宗教、健康、生物识别等敏感数据，原则禁止处理</div></div></div></div><div class="foot"><a href="W16-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W16-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

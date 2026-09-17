@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第19周·第4天｜库存、保险与事故处理：货在仓里出事了，谁买单</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 19 · DAY 4 / 5　·　阶段三　境外法域与合规</div><h1>库存、保险与事故处理：货在仓里出事了，谁买单</h1><div class="sub">第 19 周主题：海外仓专题 —— 租赁、仓储协议与货权</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">库存盘点差异像超市月底盘货对不上账：盘点制度、监控录像、出入库记录就是你的证据。没有这些，货少了只能自己吞。</div><div class="mlink"><b>怎么串到今天</b>合同签完，今天看日常运营中的事故怎么处理——制度决定你能不能证明自己没错。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>风险七类：火灾/水渍/盗窃/错发漏发/过期呆滞/海关查封/产品责任召回，每类归谁担要写清</li><li>保险四件套搭配：财产险（保仓内货值）+ 仓储责任险（保我方保管过错）+ 货运险（保运输段）+ 营业中断险（保停运损失）</li><li>免赔额与责任限额的合同设计：保险赔多少、我方限额补多少、缺口谁担，三层对齐</li><li>事故 SOP 五步：现场保护→通知保险人→证据固定→损失核定→追偿；证据清单是理赔成败关键</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海外仓风险清单与保险方案》+《仓库事故应急 SOP》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透海外仓的库存风险、保险配置与事故处理，站我方（仓储方）立场，给客户反制点：
+1. 风险类别：火灾/水渍/盗窃/错发漏发/过期与呆滞/海关查封/产品责任召回，每类的风险归属与预防
+2. 保险配置：财产险、仓储责任险、货运险、营业中断险各自保什么、怎么搭配
+3. 免赔额（ deductible ）与责任限额的合同设计：保险赔多少、我方协议限额补多少、缺口谁担
+4. 事故发生后的 SOP：现场保护→通知保险人→证据固定→损失核定→追偿，给一份事故证据清单
+5. 落到业务动作：我方接客户货时如何把「保险缺口」钉死在客户身上</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：保险 = 给「货在仓里出事」买的「备用钱包」，但钱包有多厚、谁先掏，全在条款里</h2>
+<p>把保险想成「你帮人看行李，怕行李烧了赔不起，于是买份保险」。但保险不是万能：它<b>只赔保单写明的情形、只赔到保额、还要先扣免赔额</b>。所以「出了事谁买单」= 先看我方仓储协议的责任限额（我方封顶赔多少）+ 再看保险能报多少（保额减免赔）+ 最后看缺口谁扛（客户没保价的部分自己吞）。怎么串到今天：D3 写了「我方限额赔」，今天解决「限额不够时，保险来补、补不上客户自担」——把风险真正闭环。</p>
+<div class="key"><b>记忆点：海外仓风险闭环 = 协议责任限额（我方封顶）+ 保险额度（补限额）+ 保价机制（客户自补高值）。三者不对接，就会出现「我方赔到限额、保险又拒赔、客户要全额」的三输。</b></div>
+<h2>二、风险七类：每类归谁担、怎么防</h2>
+<table><thead><tr><th>风险</th><th>典型场景</th><th>常态归属</th><th>预防措施</th></tr></thead><tbody><tr><td>火灾</td><td>电路/邻仓起火</td><td>我方（保管过错）或保险</td><td>消防合规、禁烟、分区隔离</td></tr><tr><td>水渍</td><td>管道/屋顶漏水</td><td>我方或上游</td><td>防水巡检、货不贴地存放</td></tr><tr><td>盗窃</td><td>内盗/外盗</td><td>我方（安保义务）</td><td>门禁、监控、保险</td></tr><tr><td>错发漏发</td><td>拣货系统错</td><td>我方（操作过错）</td><td>系统校验、复核、SLA 罚则</td></tr><tr><td>过期呆滞</td><td>客户货卖不动</td><td>客户（货主）</td><td>客户预警、我方收超期仓储费</td></tr><tr><td>海关查封</td><td>货涉违规/扣关</td><td>客户（货主合规）</td><td>入仓 KYC、合规筛查</td></tr><tr><td>产品责任召回</td><td>缺陷品致损</td><td>生产者/进口商（客户）</td><td>批次追溯、隔离、通知义务</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 德国海外仓消防、安防的法定标准（如工业建筑防火规范、责任保险法对保管人责任的要求）；② 各风险在 HGB 仓储合同与民法典下的归属口径；③ 产品召回下海外仓的「通知/隔离/处置」义务边界，结合 GPSR（EU 2019/1020、EU 2023/988 待核实适用日）的欧盟负责人制度。</div>
+<h2>三、保险四件套：各保什么、怎么搭</h2>
+<ul><li><b>财产险</b>：保仓内货物与设施的物质损失（火、水、盗等）。可保我方自有，也可代客户投保其存货——代客户投保须在协议写清「保费谁付、保单受益人」。</li><li><b>仓储责任险（核心）</b>：保我方因保管过错致客户货损的赔偿责任，是海外仓的兜底险。没有它，我方限额赔出去的就是真金白银。</li><li><b>货运险</b>：保头程/尾程运输段。注意「入仓验收」与「交尾程」是两个保险段切换点，别留空窗——仓库到尾程揽收那几米的责权最易真空。</li><li><b>营业中断险</b>：事故导致仓库停运，赔利润损失与固定开支。海外仓一旦封仓，客户要赔、员工要发、租金要交——这份险补「货没了还能赔钱」的缺口。</li></ul>
+<div class="key"><b>反制点（客户视角）：卖家应要求我方「出示仓储责任险保单副本 + 保额不低于货值一定比例」，并把「我方未投保或保额不足致客户损失」列为我方违约赔偿。别等出事才发现我方保单早过期。</b></div>
+<h2>四、免赔额与责任限额的合同设计：三层对齐</h2>
+<p>保险单有<b>免赔额（Deductible）</b>——比如每次事故自留 EUR 5,000（待核实），以下保险不赔。我方协议又有<b>责任限额</b>——比如每次事故赔到 EUR 50,000（待核实）封顶。这两层怎么接？设计逻辑：<b>客户高值货必须保价</b>，保价额覆盖货值；未保价货按基础限额赔，限额与保险免赔之间的缺口，靠「谁过错谁补」或「协议约定我方补一部分」填。关键是——<b>协议限额、保险保额、保价机制三者数值要对齐，并在协议中明示「保险免赔部分由谁承担」</b>，否则理赔时三方扯皮。</p>
+<table><thead><tr><th>层级</th><th>含义</th><th>缺口处理</th></tr></thead><tbody><tr><td>协议责任限额</td><td>我方对客最高赔额</td><td>限额内我方先赔/保险报</td></tr><tr><td>保险保额</td><td>保险人最高报额</td><td>超限额部分保险不涉</td></tr><tr><td>免赔额</td><td>保险不赔的自留额</td><td>约定由我方或客户扛</td></tr><tr><td>保价</td><td>客户高值货加保</td><td>超限按保价、不限按基础</td></tr></tbody></table>
+<div class="key"><b>落地动作：我方接货即要求客户申报货值并选择「基础限额」或「保价」；系统对未保价高值货弹窗警示。协议写「保险免赔额由【我方/客户】承担」，绝不写「一切损失我方负责」——那是无限责任。</b></div>
+<h2>五、事故 SOP 五步 + 证据清单</h2>
+<ol><li><b>① 现场保护</b>：先止损（灭火/断水/隔离），不动现场、不擅自处置残货，防二次损与证据灭失。</li><li><b>② 通知保险人</b>：在保单约定的通知时限内（如 24/48 小时，待核实）报险，逾期可能拒赔。同步通知客户。</li><li><b>③ 证据固定</b>：拍照/录像、系统日志导出、监控调取、收货验收单、库存快照、目击记录——全留时间戳。</li><li><b>④ 损失核定</b>：配合公估人清点损失，区分「我方过错损 / 客户货自身损 / 第三方损」，对应不同赔付路径。</li><li><b>⑤ 追偿</b>：保险人赔付后行使代位求偿；我方若因上游（如尾程、房东消防）致损，向责任方追偿。</li></ol>
+<h3>事故证据清单（理赔成败关键）</h3>
+<ul><li>入仓验收单 + 上架截图（证明入仓时状态与数量）</li><li>事故前后监控录像 + 现场照片/视频（带时间水印）</li><li>系统库存快照与出入库流水（证明损失数量）</li><li>保单副本 + 报险记录与时效凭证</li><li>公估报告 + 损失清单 + 客户确认</li><li>我方已尽安保/消防义务的巡检与合规记录（用于抗辩保管无过错）</li></ul>
+<div class="key">今日口诀：<b>保险不是万能伞，只赔写明情形、只到保额、先扣免赔。海外仓风险闭环=协议限额+保险+保价三层对齐；出事五步：保现场、快报险、锁证据、核损失、追责任。证据时间戳不齐=理赔被拒=我方自吞。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Property Insurance</div><div class="cn">财产险 / 仓储财产险</div><div class="df">承保仓库内货物与设施因火灾、水渍等造成的物质损失；可保我方自有资产，亦可代客户投保其存货</div></div><div class="ti"><div class="en">Warehouse Liability Insurance</div><div class="cn">仓储责任险 / 保管人责任险</div><div class="df">承保我方作为保管人因过错致客户货损的赔偿责任，是海外仓的「兜底险」</div></div><div class="ti"><div class="en">Cargo Insurance</div><div class="cn">货运险</div><div class="df">承保运输段的货物灭失毁损；海外仓头程/尾程衔接段常需单独安排</div></div><div class="ti"><div class="en">Business Interruption Insurance</div><div class="cn">营业中断险</div><div class="df">承保因事故停产导致的利润损失与固定开支，补「货没了还能赔钱」的缺口</div></div><div class="ti"><div class="en">Deductible / Selbstbehalt</div><div class="cn">免赔额（德）</div><div class="df">保险单约定的「自己先扛一部分、超了保险才赔」的金额/比例；影响我方实际获赔</div></div><div class="ti"><div class="en">Subrogation</div><div class="cn">代位求偿</div><div class="df">保险人赔付后取得向真正责任人追偿的权利；我方若自身有过错，可能被保险人追偿</div></div><div class="ti"><div class="en">Product Recall</div><div class="cn">产品召回</div><div class="df">因产品缺陷由生产者/进口商发起的召回；海外仓常涉通知、隔离、处置义务与费用</div></div></div></div><div class="foot"><a href="W19-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W19-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

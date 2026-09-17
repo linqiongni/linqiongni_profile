@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第20周·周末实战｜完成《合同模板库 v1.0》与《合同审批流程制度》</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 20 · WEEKEND PROJECT　·　阶段四　岗位能力</div><h1>周末实战⑳：完成《合同模板库 v1.0》与《合同审批流程制度》</h1><div class="sub">第 20 周主题：中英文合同模板体系 —— 把前 19 周变成一套可复用的文件</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">合同模板库 v1.0 加审批流程，就是把个人经验制度化：谁可以自己签、谁必须走法务、什么情况必须升级，一张图说清楚。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">用本周 D1-D5 的 5 份模板，落地成一套可执行的制度：①模板库清单表（模板名称/适用主体/必填变量/风险等级/谁有权修改/版本与生效日）；②合同审批流程制度（分级审批矩阵、法务介入节点、必备附件、用印归档、例外与追责）；③版本管理与迭代规则。所有金额阈值标「待核实/须按公司实际调整」。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">请产出周末实战⑳的交付物，把第 20 周 5 份模板变成一套可落地制度：
+1. 模板库清单表：模板名称 / 适用主体 / 必填变量 / 风险等级 / 谁有权修改 / 版本与生效日（用表格）
+2. 合同审批流程制度：分级审批矩阵（按合同金额与风险等级划分审批权限）、法务介入节点、必备附件清单、用印与归档、例外审批与追责（给可直接落地的表格与条文）
+3. 版本管理与模板迭代规则：谁提修改、多久复审一次、如何记录变更（给条文）
+要求：金额/阈值一律「待核实/须按公司实际调整」，不得写死未批数字；给中英对照术语</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：模板库 + 审批制度 = 「乐高说明书 + 出厂质检线」</h2>
+<p>把本周成果想成「你给公司搭了一套乐高」：模板库是那本「说明书总册」，每页一个零件（货代协议、分包协议……）写明谁用、怎么拼、风险几颗星；审批制度则是「出厂质检线」，每拼好一台（每份合同），按大小和价值过不同关卡——小零件自己盖个章就放行，大工程必须总工签字。没有质检线，说明书再好也会被销售私自改坏；没有说明书，质检线也无物可检。<b>周末实战就是把 D1-D5 的 5 份模板，从「文件」变成「带门禁的制度」</b>。怎么串到本周：前四天我们写模板，昨天复盘整合，今天给模板装上「谁能动它、谁来审它、怎么迭代」的三道锁。</p>
+<div class="key">记忆点：<b>模板库管「有什么、谁改」；审批矩阵管「多大事谁批」；版本管理管「怎么演进」。三件套让模板活起来、不乱改、可追溯。</b></div>
+<h2>二、① 模板库清单表（v1.0）</h2>
+<table><thead><tr><th>模板名称</th><th>适用主体</th><th>必填变量</th><th>风险等级</th><th>谁有权修改</th><th>版本与生效日</th></tr></thead><tbody><tr><td>国际货运代理服务协议</td><td>货代 ↔ 客户</td><td>身份(agent/carrier)、限额[•]、账期[•]、管辖地</td><td>高</td><td>法务总监 + 授权法务</td><td>v1.0 / [生效日待填]</td></tr><tr><td>运输服务协议（分包方版）</td><td>货代 ↔ 分包商</td><td>起讫地、时效[•]、背靠背限额[•]、保险额[•]</td><td>中高</td><td>法务 + 运营负责人</td><td>v1.0 / [生效日待填]</td></tr><tr><td>海外仓服务协议</td><td>海外仓 ↔ 客户</td><td>仓储费[•]、差异率[•]、国家、DPA 签署</td><td>中</td><td>法务 + 海外仓负责人</td><td>v1.0 / [生效日待填]</td></tr><tr><td>清关代理协议</td><td>报关行 ↔ 客户</td><td>代表形式、报关费倍数[•]、滞纳金分担</td><td>中高</td><td>法务 + 关务负责人</td><td>v1.0 / [生效日待填]</td></tr><tr><td>三层文件体系说明 + STC</td><td>通用配套</td><td>框架有效期、STC 版本号、报价单有效期[•]</td><td>中</td><td>法务总监</td><td>v1.0 / [生效日待填]</td></tr></tbody></table>
+<div class="key">落地动作：把上表存为共享盘在线表格，设权限（仅法务可改内容、业务只读）；每个模板挂一个「[•] 占位符台账」，谁填实、何时审批，留痕可查。风险等级用于决定审批关卡（见下节矩阵）。</div>
+<h2>三、② 合同审批流程制度</h2>
+<h3>（一）分级审批矩阵（按金额 × 风险）</h3>
+<table><thead><tr><th>风险等级</th><th>合同金额阈值（待核实/须按公司实际调整）</th><th>审批权限</th><th>法务介入节点</th></tr></thead><tbody><tr><td>低</td><td>≤ [•] 元 或 标准模板未改</td><td>业务负责人 + 法务备案</td><td>事后抽查</td></tr><tr><td>中</td><td>[•]–[•] 元 或 改 STC 非核心条</td><td>部门负责人 + 法务审核</td><td>签约前必审</td></tr><tr><td>高</td><td>≥ [•] 元 或 改身份/限额/争议解决</td><td>法务总监 + 业务 VP</td><td>起草即介入 + 双签</td></tr><tr><td>特殊</td><td>涉制裁/数据出境/境外主体</td><td>合规官 + 法务总监 + 总经理</td><td>前置合规审查</td></tr></tbody></table>
+<div class="key">起草说明：金额阈值是矩阵骨干，必须用 [•] 占位并标注「待核实」；风险等级与金额「就高不就低」——任一项踩高线即升档。客户反制点（此处是内部业务视角）：业务会嫌审批慢，你可设「标准模板 + 未改 = 低档快速通道」让常规单不堵车，只有改核心条款才升档。</div>
+<h3>（二）必备附件清单</h3>
+<ul><li>客户/分包商资质文件（营业执照、AEO/信用证明如有、制裁清单筛查记录）。</li><li>模板原文 + 所有 [•] 占位符的填实依据（如限额测算、费率表）。</li><li>偏离标准模板的改动手痕（红字标注 + 改因说明）。</li><li>高风险合同附《合规筛查表》（物项/主体/目的地三联筛查）。</li><li>数据类合同（海外仓/IT）附 DPA 或数据处理条款签署页。</li></ul>
+<h3>（三）用印与归档</h3>
+<ul><li>用印：合同须走电子/纸质用印审批流，未经审批流不得盖章；骑缝章 + 末页签。</li><li>归档：盖章正本扫描入合同管理系统，原件库房保管；保存期 <b>[•] 年</b>（待核实，建议不短于诉讼时效 3 年）。</li><li>检索：每合同打标签（模板类型、金额档、风险档、生效日），便于复审与举证。</li></ul>
+<h3>（四）例外审批与追责</h3>
+<blockquote>EN: "Any deviation from the approved template or the approval matrix requires <b>Exception Approval</b> by the next-higher authority, documented with reason and risk acceptance. Unauthorized modification binds the offender to personal liability for resulting loss."
+CN: "任何对已批模板或审批矩阵的偏离，须经上一层级<b>例外审批</b>，载明理由与风险接受。擅自修改者须对因此所致损失承担个人责任。"</blockquote>
+<div class="key">落地动作：把「例外审批」做成系统强制节点——绕过即无法用印；追责条款写进员工合规承诺书，让销售知道「私自改核心条款 = 自己扛锅」。</div>
+<h2>四、③ 版本管理与模板迭代规则</h2>
+<ol><li><b>谁提修改</b>：任何使用方发现漏洞/新业务，填《模板修改建议单》提交法务，法务评估后决定是否入版，业务无权自行改线上模板。</li><li><b>多久复审一次</b>：常规模板 <b>[•] 个月</b>（建议 6–12，待核实）例行复审；遇法规变更（如制裁更新、GDPR 修订）或重大争议后 <b>即时复审</b>。</li><li><b>如何记录变更</b>：每次发版写《变更日志》——版本号、生效日、改了哪条、为什么改、谁批的；旧版标记「superseded」留存不删，便于追溯历史合同适用版本。</li><li><b>版本锁定</b>：已签合同适用「签约时生效版本」，新版本只对未来合同生效，避免溯及既往扯皮。</li><li><b>生效通知</b>：新版本发布须全员邮件 + 系统弹窗通知，旧模板链接自动跳转最新版。</li></ol>
+<div class="key">反制点（客户/分包商视角，写在外部协议里）：客户会要求「我方使用的 STC 版本须固定、不得单方不利修订」——故对外 STC 设「提前 [•] 天通知、仅对未来票生效」机制，既保内部迭代自由，又对客户公平。</div>
+<h2>五、周末交付清单（照着做）</h2>
+<ol><li>建共享盘「合同模板库 v1.0」文件夹，放入 5 份模板 + 本制度条文。</li><li>建在线《模板库清单表》，填完除金额阈值外的所有列；阈值列标 [•] 待法务实批。</li><li>把分级审批矩阵、附件清单、用印归档、例外追责四节存为《合同审批流程制度 v1.0》。</li><li>建《模板变更日志》空表，预填 v1.0 的发布记录。</li><li>给销售/运营发一页《五处必改清单》+ 审批流程图，作为下周用模板的须知。</li></ol>
+<div class="key">实战收口口诀：<b>模板库管物、审批矩阵管权、版本管理管命。金额阈值一律 [•] 待批，禁用未核数字；例外审批设系统强制节点，擅自改核心条款者自负其责。周末把 5 份文件变成「带门禁的制度」，第 20 周才算真正收口。</b></div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各级金额阈值、复审周期、归档年限均须按公司实际管理政策与法务/合规负责人确认后填入，本文件为制度框架；② 涉及数据出境的合同须同步满足中国个保法第 38 条（安全评估/标准合同/认证）与 GDPR 第五章路径，具体适用以最新法规为准；③ 制裁清单筛查频次与工具以公司合规手册为准。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Template Library</div><div class="cn">合同模板库</div><div class="df">集中管理可复用合同模板的台账系统，含版本、风险等级、修改权限元数据</div></div><div class="ti"><div class="en">Approval Matrix</div><div class="cn">审批矩阵 / 分级审批</div><div class="df">按合同金额与风险等级设定不同审批权限层级，决定谁签字生效</div></div><div class="ti"><div class="en">Version Control</div><div class="cn">版本管理 / 版本控制</div><div class="df">模板的版本号、生效日、变更记录与复审周期管理</div></div><div class="ti"><div class="en">Seal &amp; Archive</div><div class="cn">用印与归档</div><div class="df">合同盖章（公司印鉴）与归档保管流程，是合同生效与举证的关键节点</div></div><div class="ti"><div class="en">Exception Approval</div><div class="cn">例外审批 / 特批</div><div class="df">突破标准审批层级的非常规审批通道，须更高权限并留痕追责</div></div></div></div><div class="foot"><a href="W20-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W20-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

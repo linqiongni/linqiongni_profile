@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第9周·周末实战｜四种运输方式的责任对比与方案设计</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 9 · WEEKEND PROJECT　·　阶段二　运输责任制度</div><h1>周末实战⑨：四种运输方式的责任对比与方案设计</h1><div class="sub">第 9 周主题：空运、铁路、公路 —— 三大非海运责任制度</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">四种运输方式对比与方案设计，就像给客户做「出行方案」：同样的货，走空、走海、走铁、走公路，责任、时效、成本完全不同，方案书要让老板一眼看懂。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票货（深圳卖方 + 德国买方，200kg 精密仪器、货值 50 万人民币、含内置锂电池、走跨境贸易）。分别走空运/海运/铁路/公路四种方式，做一份《责任-成本-时效方案书》：算清每种方式下承运人最高赔多少、时效多久、我方该买什么险补足缺口，并给出合同适用法锁定建议。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要为同一票货做四种运输方式的责任-成本-时效方案书。设定：深圳卖方 + 德国买方，货物为 200kg 精密仪器、货值 50 万元人民币、含内置锂电池（UN3481，PI 967 类）、走跨境贸易，我方是该卖家的物流服务商（货代/缔约承运人视角）。
+
+请输出：
+1. 四种方式逐一看：① 适用公约与我国缔约状态；② 承运人法定最高赔偿（按 200kg、货值 50 万算具体金额，标「待核实」）；③ 诉讼时效；④ 运单性质与物权；⑤ 带电产品的特殊合规要求
+2. 一张《四种方式责任-成本-时效对比表》：方式 × 最高赔额 × 时效 × 大致成本档 × 时效档 × 我方风险点
+3. 保险补足方案：每种方式下 50 万货值 vs 承运人封顶赔额之间的缺口多少，该买什么险（货运险/声明价值/承运人责任险）补足，保费量级提示
+4. 合同适用法锁定建议：四种方式分别应在合同里写哪国法、哪地仲裁，特别是 CMR（我国未加入）与 CIM（我国未加入）段
+5. 给客户的最终建议：这票货（200kg 精密仪器、高值、含锂电、去德国）走哪种最优，说明理由与三个备选</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳卖方 + 德国买方，<b>200kg 精密仪器、货值 50 万人民币、含内置锂电池（UN3481，属 PI 967 类——电池装在设备内）</b>，我方是卖家的物流服务商。关键风险点：① <b>高值低重</b>（200kg 对应空运封顶仅约 19 SDR/kg，与 50 万货值缺口巨大）；② <b>带电</b>→ 四种方式里空运合规最严、瞒报最致命；③ <b>去德国</b>→ 铁路/公路段涉及 CIM/CMR（我国均未直接约束），适用法必须锁；④ 我方身份是货代/缔约承运人，全程责任要分层切。</p>
+<h2>二、四种方式逐一看（责任-时效-合规）</h2>
+<ul><li><b>空运（MC99）</b>：公约已批准；货物限额 <b>19 SDR/kg</b>（200kg≈3,800 SDR≈约 3.6 万人民币，待核实汇率）；时效 2 年；AWB 非物权凭证；带电须 UN38.3+运输鉴定书+PI 967。</li><li><b>海运（海商法/海牙-维斯比借鉴）</b>：限额约 <b>666.67 SDR/件或 2 SDR/kg</b>（按 2 SDR/kg≈400 SDR，待核实）；时效 1 年；<b>提单是物权凭证</b>（可质押融资）；带电走海运须 IMDG 危险品申报。</li><li><b>铁路（SMGS/CIM + CMIC 统一运单）</b>：国内/独联体段 SMGS（我国加入），欧盟段 CIM（我国未加入，待核实）；限额各按体系（待核实）；时效 SMGS 短/CIM 约 1 年；铁路运单非物权；中欧班列须 CMIC 格式。</li><li><b>公路（CMR）</b>：<b>我国未加入</b>（待核实）；限额 <b>8.33 SDR/kg</b>（200kg≈1,666 SDR，待核实）；时效 1 年（故意 3 年）；CMR 运单非物权；适用法可能落入对方国，必须合同锁定。</li></ul>
+<h2>三、《四种方式责任-成本-时效对比表》</h2>
+<table><thead><tr><th>方式</th><th>承运人最高赔（200kg, 待核实）</th><th>时效</th><th>成本档</th><th>时效档</th><th>我方核心风险</th></tr></thead><tbody><tr><td>空运 MC99</td><td>19 SDR/kg → 约 3.6 万人民币</td><td>2 年</td><td>高</td><td>最快</td><td>限额远低于货值；带电合规严</td></tr><tr><td>海运 海商法</td><td>2 SDR/kg → 约 0.4 万人民币（或按件）</td><td>1 年</td><td>低</td><td>最慢</td><td>限额极低；但提单可融资</td></tr><tr><td>铁路 SMGS/CIM</td><td>按各体系限额（待核实）</td><td>1 年方向</td><td>中</td><td>中</td><td>双轨衔接；CIM 未加入</td></tr><tr><td>公路 CMR</td><td>8.33 SDR/kg → 约 1.6 万人民币</td><td>1 年</td><td>中低</td><td>中</td><td><b>我国未加入，适用法落空风险</b></td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各方式限额按 200kg 毛重的估算金额，以 SDR 兑人民币支付/判决日汇率及公约现行值为准，上表为量级演示；② 海运若分多件托运，按「666.67 SDR/件」可能高于按重量，需按实际件数重算；③ 铁路具体限额须查 SMGS/CIM 文本。</div>
+<h2>四、保险补足方案：50 万货值 vs 封顶赔额的缺口</h2>
+<ul><li><b>缺口测算</b>：货值 50 万，空运封顶≈3.6 万 → 缺口≈46 万；海运封顶≈0.4 万 → 缺口≈49.6 万；铁路（待核实，量级类似）→ 缺口巨大；公路封顶≈1.6 万 → 缺口≈48 万。<b>四方式封顶都远不够覆盖 50 万。</b></li><li><b>补足手段一：货运险（Cargo Insurance）</b>。按 CIF/CIP 思路让卖方投保 ICC(A) 一切险，保额≥50 万+运费+预期利润；保费量级通常为货值 0.1%–0.3%（具体随货物/航线待核实）。这是补缺口的主力。</li><li><b>补足手段二：声明货值（Declared Value）</b>。在运单声明 50 万并付附加费，使承运人按声明值赔——但附加费可能高于货运险，且公路/铁路未必接受高值声明，故优先货运险。</li><li><b>补足手段三：我方承运人责任险</b>。我方作为缔约承运人自购责任险，覆盖「因我方过错致损且突破限额」的场景，与货主货运险不冲突（货主先找保险人，保险人代位向我方追偿时由责任险顶）。</li></ul>
+<div class="key">落地句：高值货（50 万/200kg）<b>绝不可只靠承运人限额</b>，必须「货运险 ICC(A) 保额≥货值」打底；带电货还要先把 UN38.3/PI 967 合规做齐，否则保险人可因瞒报拒赔——保险和合规是双胞胎，缺一不赔。</div>
+<h2>五、合同适用法锁定建议（四种方式）</h2>
+<table><thead><tr><th>方式</th><th>建议适用法</th><th>建议仲裁/管辖</th><th>理由</th></tr></thead><tbody><tr><td>空运</td><td>中国法或香港法</td><td>HKIAC/CIETAC</td><td>MC99 已批，限额明确，但合同仍须锁准据法防歧义</td></tr><tr><td>海运</td><td>中国法（海商法）</td><td>海事法院/仲裁</td><td>提单可约定，我国海商法体系成熟</td></tr><tr><td>铁路</td><td>中国法 + CMIC 约定</td><td>HKIAC/CIETAC</td><td>CIM 我国未加入，欧盟段风险靠合同与运单约定切割</td></tr><tr><td>公路 CMR</td><td><b>必锁中立法域（如香港法/新加坡法）</b></td><td><b>HKIAC/SIAC</b></td><td><b>我国未加入 CMR，不锁法必落入对方主场</b></td></tr></tbody></table>
+<h3>客户反制点 + 我方动作</h3>
+<ul><li><b>客户反制</b>：若我方合同锁定了不利己方的外国法或隐瞒 CMR 未加入事实，客户可主张未尽告知、要求赔偿其额外索赔成本；高值货若我方未提示买货运险，客户货损后将矛头指向我方「未充分风险提示」。</li><li><b>我方三动作</b>：① 报价单必附「责任限额提示 + 货运险建议」书面栏，留客户确认；② CMR/公路段合同明示适用法与仲裁地；③ 接带电货先收齐 UN38.3+PI 967+运输鉴定书，再出运。</li></ul>
+<h2>六、给客户的最终建议：这票货走哪种</h2>
+<ul><li><b>首选：空运 + 货运险 ICC(A)（保额 50 万+）</b>。理由：200kg 精密仪器时效敏感、去德国空运 2–4 天；虽空运封顶低，但用货运险补足缺口，且带电按 PI 967 合规后可正常走；整体责任与时效最可控。</li><li><b>备选二：铁路（中欧班列 CMIC）+ 货运险</b>。成本与时居中，适合非极急；须确保 CMIC 运单格式、欧盟段 CIM 责任靠合同切割。</li><li><b>备选三：海运 + 货运险 + 提单融资</b>。最省钱，但时效最慢（30+ 天）、封顶最低，仅适合不急且需提单融资的场景。</li><li><b>不推荐：纯公路 CMR</b>。我国未加入、适用法落空风险高、封顶也低，除非陆路毗邻且客户坚持，否则不建议作为高值带电货主方案。</li></ul>
+<div class="key">实战口诀：<b>200kg/50 万的带电精密仪，四条线承运人封顶都赔不够——空运最快但要货运险兜底，铁路中欧班列要 CMIC 运单，公路 CMR 我国没签字必须锁法，海运最省但要等。给客户的答案永远是「方式 + 货运险 + 适用法」三件套，缺一不可。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Carrier Liability Cap</div><div class="cn">承运人责任限额</div><div class="df">法定赔偿封顶额；货物类多按重量（SDR/kg）计，高值货须声明价值或买险补足缺口</div></div><div class="ti"><div class="en">Cargo Insurance</div><div class="cn">货物运输保险</div><div class="df">投保人/被保险人就货损向保险人索赔，弥补承运人限额不足；与承运人责任是两件事</div></div><div class="ti"><div class="en">Declared Value</div><div class="cn">声明货值</div><div class="df">托运人在运单声明货物价值并付附加费，使赔偿突破法定限额，按声明值赔</div></div><div class="ti"><div class="en">UN3481 / PI 967</div><div class="cn">内置锂电池货物</div><div class="df">锂离子电池装在设备内（如精密仪器内置），按 IATA DGR PI 967 包装与申报</div></div><div class="ti"><div class="en">Governing Law Lock-in</div><div class="cn">适用法锁定</div><div class="df">在未加入公约（CMR/CIM）或跨境段，合同明示适用法与仲裁地，防止落入对方主场法</div></div></div></div><div class="foot"><a href="W9-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W9-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

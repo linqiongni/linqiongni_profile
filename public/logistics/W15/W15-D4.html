@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·第4天｜CE / UKCA 标识、REACH / RoHS 与符合性评定：贴个标不是贴个奖</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · DAY 4 / 5　·　阶段三　境外法域与合规</div><h1>CE / UKCA 标识、REACH / RoHS 与符合性评定：贴个标不是贴个奖</h1><div class="sub">第 15 周主题：欧盟产品合规 —— GPSR、电池法、EPR、CE</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">CE 像产品护照，REACH 管化学成分（像配料表），RoHS 管有害物质（像禁用添加剂）。三套体系叠加，才构成「这个产品能不能卖」的完整答案。</div><div class="mlink"><b>怎么串到今天</b>新法规看完，今天补齐老牌的合规体系——新旧都要懂，客户才会信你。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>CE 是「符合性标志」不是「质量奖杯」——只证明达到准入门槛</li><li>CE 适用看具体指令/条例（低电压 LVD、EMC、玩具、机械、PPE 等，现行编号须核对）</li><li>符合性评定：自我声明(self-declaration) vs 公告机构(Notified Body)介入，取决于风险等级</li><li>UKCA 是英国脱欧后独立体系，覆盖 GB（英格兰/苏格兰/威尔士），北爱另有 NI 规则</li><li>REACH(SVHC 候选清单+物品通报) 与 RoHS(有害物质限制) 是带电产品的两道化学关</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《CE 标识合规判定流程图》+《技术文件与符合性声明核验清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 CE/UKCA 标识、REACH/RoHS 与符合性评定，站物流商立场给判定流程与客户反制点：
+1. 一句话立住 + 生活比喻(签证贴纸) + 怎么串到前三天的 GPSR/电池法规
+2. CE 的性质（符合性标志而非质量标志）、适用指令/条例清单（核对现行编号）
+3. 符合性评定模块：自我声明 vs 公告机构介入，判断流程
+4. EU Declaration of Conformity 必备要素
+5. 技术文件内容与保存年限
+6. UKCA（英国脱欧后单独体系、对我方英国业务的影响）
+7. REACH（SVHC 候选清单与物品中物质通报义务）与 RoHS（有害物质限制）要点
+8. 落到动作：产《CE 标识合规判定流程图》与《技术文件与符合性声明核验清单》</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：CE 是「签证贴纸」，不是「五星好评」</h2>
+<p>把 CE 想成「出国签证贴纸」：签证只证明你<b>被允许入境</b>（达到该国最低准入门槛），不代表你长得好看、能力强、受欢迎。CE 也一样——它只证明产品<b>满足了欧盟对该品类的法定准入要求</b>，不代表质量好、性能优。更关键：一件产品可能要同时满足好几本「签证」（低电压、电磁兼容、玩具安全……），少一本都不让进。怎么串到前三天：GPSR 管身份标签、电池法规管电池专项、EPR 管报废——CE 则是把这些「该符合的指令」汇总成一张「准入总签证」。海外仓收货时，CE 是绕不开的硬核验项。</p>
+<div class="key">记忆点：<b>CE = 准入签证不是质量奖。一件货可能要多本「签证」（LVD+EMC+…）。自我声明能办的就省钱办，高风险才请公告机构盖章。没 CE 的带电产品，欧盟仓库不收。</b></div>
+<h2>二、CE 的性质与适用指令/条例</h2>
+<p>CE 标识不是单一法规，而是一套<b>「贴标制度」</b>：产品落入哪几个欧盟指令/条例的适用范围，就得满足那几个，并在合格时加贴 CE。常见适用（现行编号须逐条核对）：</p>
+<table><thead><tr><th>指令/条例</th><th>简称</th><th>管什么</th><th>典型适用产品</th></tr></thead><tbody><tr><td>2014/35/EU</td><td>低电压指令 LVD</td><td>50–1000V 交流/75–1500V 直流电气设备安全</td><td>带电首饰的电路、LED 驱动电源</td></tr><tr><td>2014/30/EU</td><td>电磁兼容 EMC</td><td>设备不干扰他人、抗干扰</td><td>所有电子电气产品</td></tr><tr><td>2009/48/EC</td><td>玩具安全</td><td>玩具物理/化学/电气安全</td><td>若首饰含玩具属性须核对</td></tr><tr><td>2006/42/EC</td><td>机械指令</td><td>机械安全</td><td>含机械部件产品（一般非本业务）</td></tr><tr><td>(EU) 2016/425</td><td>个人防护 PPE</td><td>防护装备</td><td>非本业务重点</td></tr><tr><td>电池法规/RED 等</td><td>其他</td><td>特定属性</td><td>含无线电模块(RED)等须核对</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各指令现行编号与版本（上述为常见编号，引用前在欧盟「EUR-Lex」核对最新有效文本与修订）；② 我方客户货（充电款首饰、LED 灯饰）通常落入 LVD+EMC，是否触及玩具/RED 取决于功能，须逐案判定；③ CE 本身非指令，是依各指令产生的加贴义务。</div>
+<h2>三、符合性评定：自我声明 vs 公告机构介入（判定流程）</h2>
+<ol><li><b>第一步：确定产品适用的指令/条例清单</b>（如 LVD+EMC）。</li><li><b>第二步：查每个指令的「符合性评定模块」</b>。多数低风险指令（如 LVD、EMC）允许<b>制造商自我声明(self-declaration)</b>，不需第三方。</li><li><b>第三步：识别是否属高风险/需第三方指令</b>（如医疗器械、部分 PPE、燃气具等，本业务通常不涉及）。若需，则须<b>公告机构(Notified Body)介入</b>出证书。</li><li><b>第四步：完成技术文件 + 签署 EU DoC + 加贴 CE</b>。</li><li><b>判定口诀</b>：本客户群的 LED 灯饰/带电首饰→多为 LVD+EMC 自我声明路径；若含无线电(RED)则可能需公告机构，须核对。</li></ol>
+<div class="key">反制点（客户视角）：卖家切勿「自己印个 CE 就当合规」。监管会要求出示技术文件与 DoC，证明你真做了评估。卖家应保留评估记录、测试报告，并确认每个适用指令都已覆盖——否则平台抽检下架时，仓库不背这锅。</div>
+<h2>四、EU 符合性声明(DoC) 必备要素</h2>
+<ul><li>产品识别（型号、批次等）。</li><li>适用的欧盟指令/条例清单及引用标准。</li><li>制造商名称、地址；非欧盟须列<b>欧盟责任人/授权代表</b>。</li><li>如经公告机构，列其识别号与证书。</li><li>签署人、地点、日期。</li><li>我方海外仓入仓核验时，应要求客户随单提供 DoC 副本或声明已备，作为 CE 合规的证据链一环。</li></ul>
+<h2>五、技术文件内容与保存年限</h2>
+<p>技术文件(Technical Documentation)是 CE 合规的「卷宗」，须包含产品描述、设计图纸、材料清单、测试报告、风险评估、使用说明等，供监管查验。保存年限：欧盟多数指令要求自产品生产/投放后<b>至少 10 年</b>备查（具体年限依指令，待核实），且须可应监管要求在合理时限内提交。我方虽不制作文件，但应在服务协议中约定「客户保证技术文件与 DoC 真实有效，并在监管核查时及时提供」。</p>
+<h2>六、UKCA：英国脱欧后的独立体系</h2>
+<p>英国脱欧后，GB 市场（英格兰、苏格兰、威尔士）推行 <b>UKCA 标识</b>作为产品符合性标志，<b>独立于 CE</b>（北爱尔兰依《北爱议定书》适用特殊规则，常需 CE+UKNI 或 UKCA，须另行核对）。影响我方业务：若客户货也发英国仓/英国平台，<b>光有 CE 不够，可能要 UKCA</b>；标志、标准、公告机构(英国 Approved Body)均自成体系。实务上英国曾数度延长 CE 在 GB 的认可过渡期（具体截止日须核对现行英国政府公告），我方英国业务须单独跟踪，不能套用欧盟口径。</p>
+<div class="key">反制点（客户视角）：做英国生意的卖家，应确认货是走欧盟仓还是英国仓：走英国须评估 UKCA 需求与过渡期，避免到港才发现 CE 不被认可。客户可要求我方英国仓在入库核验单中单列 UKCA 一栏，避免混用欧盟标准误判。</div>
+<h2>七、REACH 与 RoHS：带电产品的两道化学关</h2>
+<ul><li><b>REACH (EC) 1907/2006</b>：管控化学品。重点：<b>SVHC 候选清单</b>物质若在某「物品(article)」中含量 > 0.1% w/w（重量比，阈值须核对），且年投放量 > 1 吨，则触发<b>通报义务(第 7(2) 条)</b>；高关注物质还可能进入授权清单。我方客户货的塑料、涂层、焊点都可能含 SVHC，须客户自查。</li><li><b>RoHS 2011/65/EU</b>：限制电子电气设备中铅、汞、镉、六价铬、多溴联苯/醚等有害物质（限值与豁免清单须核对）。LED 灯饰、带电首饰的电路/焊料均受其管。</li><li><b>我方角色</b>：不直接测化学，但入仓核验可要求客户声明「产品符合 REACH/RoHS 并备测试报告」，并把该声明纳入文件核验清单；发现客户无法提供时提示风险、隔离待补正。</li></ul>
+<h2>八、落到动作：两份产出物</h2>
+<h3>《CE 标识合规判定流程图》</h3>
+<ol><li>列出产品功能属性（是否带电/无线/玩具/机械）→ 映射适用指令。</li><li>逐指令查评定模块：自我声明 or 公告机构。</li><li>完成技术文件 + 签 DoC + 加贴 CE（多指令全覆盖才贴）。</li><li>英国业务另走 UKCA 分支。</li><li>海外仓入仓核验：有 CE+DoC+技术文件可查 = 放行；缺 = 隔离待补正。</li></ol>
+<h3>《技术文件与符合性声明核验清单》</h3>
+<ul><li>□ CE 标识加贴清晰、位置合规</li><li>□ EU DoC 含产品识别/适用指令/制造商与欧盟责任人/签署</li><li>□ 技术文件齐全（设计、测试、风险评估、说明），保存 ≥10 年（年限待核实）</li><li>□ 适用指令逐项覆盖（LVD/EMC/RED/玩具…）</li><li>□ REACH SVHC 声明与 RoHS 合规测试报告</li><li>□ 英国业务另备 UKCA（如适用）</li><li>□ 说明书/警示为销售国语言</li></ul>
+<div class="key">今日口诀：<b>CE 是准入签证不是奖杯，一件货可能要多本签证。低风险的自我声明，高风险的请公告机构。UKCA 是英国独一份，别拿 CE 套英国。REACH/RoHS 两道化学关，仓库核验要客户出声明与报告。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">CE Marking</div><div class="cn">CE 标识 / Conformité Européenne</div><div class="df">加贴于产品表明其符合适用欧盟指令/条例的准入要求；是符合性标志而非质量认证，覆盖多指令时须全部满足</div></div><div class="ti"><div class="en">UKCA</div><div class="cn">UK Conformity Assessed / 英国符合性评估标识</div><div class="df">英国脱欧后自 2021 起推行的 GB 市场产品符合性标识，独立于 CE（北爱适用特殊规则），我方英国业务须单独评估</div></div><div class="ti"><div class="en">Notified Body</div><div class="cn">公告机构 / 指定机构</div><div class="df">经成员国指定、欧盟公告的可执行第三方符合性评估的机构；高风险产品须其介入出证书</div></div><div class="ti"><div class="en">EU DoC</div><div class="cn">EU Declaration of Conformity / 欧盟符合性声明</div><div class="df">制造商声明产品符合适用欧盟法规的文件，须列法规、标准、制造商与责任人信息，随产品备查</div></div><div class="ti"><div class="en">REACH</div><div class="cn">Registration, Evaluation, Authorisation of Chemicals / 化学品注册评估授权</div><div class="df">EU 1907/2006；管控化学品；SVHC 候选清单物质在物品中超 0.1% w/w 触发通报义务（阈值须核对）</div></div><div class="ti"><div class="en">RoHS</div><div class="cn">Restriction of Hazardous Substances / 有害物质限制</div><div class="df">EU 2011/65/EU 及修订；限制电子电气设备中铅/汞/镉等有害物质（限值与豁免须核对）</div></div></div></div><div class="foot"><a href="W15-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W15-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·周末实战｜一次跨阶段的综合大案例演练</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · WEEKEND PROJECT　·　阶段二　主干法律</div><h1>周末实战⑬：一次跨阶段的综合大案例演练</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">综合大案例演练就是法考主观题：一份材料、多个主体、多个法域，按时间轴把每一步的权利义务写清楚。做对这一题，阶段二就真过了。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票含锂电池的跨境电商货物，中国 9810 出口海外仓，海运至汉堡，目的港被海关扣查，客户拒付运费并要求赔偿，货代签发了 House B/L。按「定身份→定适用法→定义务与免责→定限额→定海关责任→定催收与留置」六步推演，算出我方最终风险敞口（数字标待核实），并给出一份可提交管理层的处置建议书要点。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要做一次贯通全链路的跨阶段综合大案例演练。设定如下虚构但贴近真实的场景：
+
+场景：中国卖家（深圳某跨境电商公司）将一批含锂电池的消费品，以海关监管代码 9810（出口海外仓）方式出口，海运至德国汉堡海外仓。我方（物流商）作为货代，以自己名义向船公司订舱并签发了 House B/L（无船承运人身份）。货物到汉堡港后，被德国海关以「单证不符 + 疑似危险品申报不实」为由扣查。此时客户（中国卖家）拒绝支付我方运费及预付的 D&amp;D，反而要求我方赔偿「扣关导致的销售损失与海外仓占用费」。
+
+请按以下六步推演，并最终给出：
+1. 定身份：我方在这票业务里到底是代理还是承运人？签 House B/L 意味着什么？对中国卖家、对船公司、对德国海外仓分别是什么关系
+2. 定适用法：这票货涉及哪些法域与公约（中国海商法/海牙-维斯比、德国海关法/UCC、国际海运危规 IMDG、9810 监管规则）？冲突时怎么选
+3. 定义务与免责：作为 House B/L 承运人，我方对「货到港被扣」有无责任？扣关是海关行为（免责）还是我方申报/订舱过错？客户索赔销售损失能否成立
+4. 定限额：如我方需担责，单位责任限制是多少（海牙-维斯比 666.67 SDR/件或 2 SDR/公斤，待核实）？客户主张的「销售损失」是否受限额封顶、是否属可赔范围
+5. 定海关责任：9810 出口、锂电池危险品申报（MSDS/UN38.3/IMDG）、德国海关扣查的责任链条——谁该为「申报不实」负责，我方作为货代/无船承运人的合理审查义务边界在哪
+6. 定催收与留置：客户拒付运费与 D&amp;D，我方能否对在汉堡海外仓的该批货行使留置？在德国法下留置权是否成立（普通法/大陆法差异）、程序怎么走
+最后：算出我方「最终风险敞口」（分乐观/中性/悲观三档，数字一律标待核实），并给出一份可提交管理层的《处置建议书要点》（5-8 条）</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>中国卖家（深圳跨境电商）以 <b>9810 出口海外仓</b> 方式，发一批<b>含锂电池消费品</b>（UN3480/3481，第 9 类危险品）海运至<b>汉堡海外仓</b>。<b>我方货代签发了 House B/L（无船承运人身份）</b>。到港后德国海关以「单证不符 + 疑似危险品申报不实」扣查。客户<b>拒付运费与 D&D</b>，反而要求我方赔「扣关导致的销售损失与海外仓占用费」。一句话：货扣了、钱没收到、还被反咬一口——这是贯通 W7（承运人身份）、W8（限额）、W11（中国海关/9810）、W12（目的国清关/弃货/留置）的全链路典型爆雷。</p>
+<div class="key">记忆点：<b>六步推演的本质，是把「一票烂账」拆成六个可独立回答的法律问题。每个问题答完，风险敞口就自然浮出来了——别被客户「又扣货又索赔」的气势带节奏，按步骤一刀一刀切。</b></div>
+<h2>二、六步推演</h2>
+<h3>步骤 1 · 定身份</h3>
+<ul><li><b>我方 = 无船承运人（缔约承运人）</b>：签 House B/L + 以己名向船公司订舱 + all-in 报价，三要件齐备，法院/仲裁按承运人认定，对<b>全程</b>负责（W7/W10）。</li><li><b>对中国卖家</b>：运输合同相对方（House B/L 关系），我方是承运人、卖家是托运人/货主。</li><li><b>对船公司</b>：我方是托运人（订 Master B/L），船公司是实际承运人。</li><li><b>对德国海外仓</b>：仓储合同关系，海外仓是保管方，我方是存货人/客户。</li><li><b>结论</b>：想以「纯代理」脱身已不可能——签单那一刻身份就定了。</li></ul>
+<h3>步骤 2 · 定适用法</h3>
+<ul><li><b>运输段（中国—汉堡海运）</b>：我国海商法第四章（特别法优先）+ 海牙-维斯比规则（我国未加入但司法实践常参照，待核实）；House B/L 背面条款通常并如约定适用。</li><li><b>海关扣查（德国）</b>：德国海关法 + 欧盟海关法（UCC, Regulation 952/2013），受当地法管辖，我方须委托德国律师。</li><li><b>危险品规则</b>：国际海运危规 IMDG Code（全球统一）、中国《危险化学品安全管理条例》出口审批。</li><li><b>9810 监管</b>：中国海关 9810 出口海外仓规则（政策更新快，须核对现行公告）。</li><li><b>冲突选法</b>：运输责任按 B/L 约定法域/海商法；海关责任按行为地（德国）法；出口申报按中国法。</li></ul>
+<h3>步骤 3 · 定义务与免责</h3>
+<ul><li><b>扣关本身</b>：海关依职权扣查属政府行为，承运人通常<b>不因此对货损/延误负责</b>（海商法第 51 条政府行为免责，待核实）。</li><li><b>但前提</b>：扣查须非因我方过错。若扣查源于「我方/卖家危险品申报不实、单证造假」，则我方若有合理审查过失，要对卖家承担责任，且<b>免责不成立</b>。</li><li><b>客户索赔「销售损失」</b>：销售利润损失属间接损失，即便我方有责，也受责任限额封顶 + 可预见性规则限制（CISG/海商法均不轻易赔纯利润损失）。</li><li><b>关键反制</b>：我方须证明已索要 MSDS/UN38.3、已合理审查申报——把「申报不实」的锅Push给卖家（托运人保证真实申报）。</li></ul>
+<h3>步骤 4 · 定限额</h3>
+<ul><li><b>如我方需担责</b>，单位责任限制约 <b>666.67 SDR/件 或 2 SDR/公斤</b>（海牙-维斯比，待核实），按「件」或「公斤」高者适用。</li><li><b>客户主张的销售损失/海外仓占用费</b>：超出限额部分原则上不赔；且须证明损失与我方过错有因果、属可预见。</li><li><b>丧失限制情形</b>：若我方「故意或明知可能造成损失而轻率地作为/不作为」（海商法第 59 条 待核实），限额丧失，按实际损失赔——所以务必自证已尽合理审查，不踩红线。</li></ul>
+<h3>步骤 5 · 定海关责任</h3>
+<ul><li><b>9810 出口</b>：卖家作为出口方对货物如实申报负首要责任；我方作为货代/无船承运人负<b>合理审查</b>义务（索要 MSDS、UN38.3、核对 IMDG 包装与标记）。</li><li><b>锂电池申报链</b>：生产/卖家出具 MSDS 与 UN38.3；我方核验并据实向承运人/海关申报；任一环瞒报，整柜风险。</li><li><b>德国扣查归责</b>：若因卖家提供资料不实 → 卖家担主责，我方尽审查则免责或仅轻微过错；若我方未索要/未核验即代申报 → 我方与卖家向海关连带/相应责任，且对客户构成违约。</li><li><b>自保动作</b>：立即调取并固化「已向卖家索要 MSDS/UN38.3 的书面记录 + 卖家确认函」，这是把海关与民事责任的球踢回卖家的命门证据。</li></ul>
+<h3>步骤 6 · 定催收与留置</h3>
+<ul><li><b>债权</b>：客户欠我方运费 + 预付 D&D + 海外仓仓储费，真实且已届期。</li><li><b>能否留置汉堡海外仓的该批货</b>：① 我方合法占有（仓储合同存货人）；② 债权到期；③ 财产属该债务人（卖家）；④ 同一法律关系/企业营业留置——四要件在<b>中国法</b>下基本满足。</li><li><b>但海外仓在德国</b>：德国属大陆法，有物权性留置权（Zurückbehaltungsrecht），但行使须依德国法程序，且不得扣押第三人财产、须给履行期。<b>务必委托德国律师确认当地留置与拍卖路径</b>，不能想当然照搬中国规则。</li><li><b>程序</b>：发书面留置通知 → 给履行期 → 期满依德国法申请拍卖/变卖优先受偿；同时就中国卖家其他在库货（如有）在中国法下并行留置。</li></ul>
+<h2>三、我方最终风险敞口测算（数字一律标待核实）</h2>
+<table><thead><tr><th>风险项</th><th>乐观档（待核实）</th><th>中性档（待核实）</th><th>悲观档（待核实）</th><th>依据/说明</th></tr></thead><tbody><tr><td>未收运费 + 预付 D&D</td><td>已通过留置/拍卖回收</td><td>部分坏账（30%-50%）</td><td>全损（客户破产/货被海关没收）</td><td>取决于留置执行与货值</td></tr><tr><td>客户索赔赔偿（扣关/销售损失）</td><td>0（免责成立）</td><td>限额内赔付（666.67 SDR/件或 2 SDR/公斤，待核实）</td><td>丧失限制按实际损失（若被认定故意/重大过失）</td><td>取决于我方审查过失认定</td></tr><tr><td>海关罚款/补税（中德两边）</td><td>卖家独自承担</td><td>我方连带小部分</td><td>我方连带较大 + 刑事风险（若瞒报）</td><td>取决于申报不实归责</td></tr><tr><td>德国律师 + 诉讼/仲裁费</td><td>低（协商解决）</td><td>中</td><td>高（跨境争议）</td><td>争议解决路径</td></tr><tr><td>海外仓超期仓储费滚雪球</td><td>及时处置可控</td><td>累计数周费用</td><td>超货值</td><td>free time 后按天累进</td></tr><tr><td>合计敞口（估）</td><td><b>待核实</b></td><td><b>待核实</b></td><td><b>待核实</b></td><td>须结合货值/箱量/汇率精算</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 全部金额、限额、费率均标「待核实」，正式出具管理层报告前须：① 核对海商法第 56/59 条限额与丧失限制要件；② 核对 IMDG/9810 现行规则；③ 取得德国律师对留置与海关处置的当地法意见；④ 按实际箱量与 SDR 对人民币汇率换算敞口。</div>
+<h2>四、《处置建议书要点》（可提交管理层，8 条）</h2>
+<ol><li><b>立即固化免责/减责证据</b>：调取已向卖家索要 MSDS、UN38.3、危险品申报资料的书面记录与确认函，证明我方已尽合理审查，把申报不实责任锚定卖家。</li><li><b>书面拒赔客户的不当索赔</b>：客户「销售损失/海外仓占用费」属间接损失且多超责任限额，我方以海商法政府行为免责 + 限额抗辩，书面回函明确不认可。</li><li><b>启动德国当地法处置</b>：委托汉堡律师出具海关扣查处置意见 + 留置/拍卖路径，切勿自行变卖，避免当地法下侵权。</li><li><b>行使留置催收欠款</b>：对汉堡海外仓该批货及（如有）国内其他在库货，依法定程序（通知+履行期）留置，优先受偿运费与 D&D。</li><li><b>控制仓储费滚雪球</b>：在 free time 到期前推动海关放行或依法拍卖，避免堆存/D&D 超过货值。</li><li><b>核查我方危险品申报流程漏洞</b>：若发现我方未严格索要/核验即代申报，立即整改 SOP，补强「托运人保证 + 我方核验留痕」双轨。</li><li><b>评估是否对卖家反诉/追偿</b>：就客户拒付运费与不当索赔，依 House B/L 合同在中国法下提起仲裁/诉讼，主张运费债权与反索赔。</li><li><b>风险敞口三档上会</b>：按乐观/中性/悲观向管理层披露（数字待核实），建议拨备中性档准备金，并设止损线（如处置成本超货值 50% 即弃货止损）。</li></ol>
+<div class="key">实战口诀：<b>六步推演，刀刀见血——身份（已定承运）不恋战，适用法分三段选，扣关政府行为先免责，限额把销售损失挡门外，海关责任把球踢回卖家，留置催收在德国先问当地法。案例给管理层的不是「我怕了」，是「敞口多少、怎么止损、谁担主责」三句话。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">House B/L</div><div class="cn">货代提单（分提单）</div><div class="df">无船承运人/货代以自己为承运人签发的提单，是物权凭证，证明货代以承运人身份对全程负责，区别于船公司签发的 Master B/L</div></div><div class="ti"><div class="en">9810</div><div class="cn">跨境电商出口海外仓</div><div class="df">海关监管代码，境内企业将货物出口至海外仓，通过跨境电商平台销售后配送；政策更新极快，须核对现行公告</div></div><div class="ti"><div class="en">Lithium Battery (UN3480/3481)</div><div class="cn">锂电池（第 9 类危险品）</div><div class="df">属联合国第 9 类危险品，须 MSDS + UN38.3 测试 + IMDG 合规包装与申报，瞒报/错报后果严重</div></div><div class="ti"><div class="en">Customs Seizure</div><div class="cn">海关扣查</div><div class="df">海关依职权对涉嫌违规（单证不符/归类错/危险品申报不实）货物实施扣留，常见于跨境出口</div></div><div class="ti"><div class="en">Risk Exposure</div><div class="cn">风险敞口</div><div class="df">我方在事件中可能承受的最大经济损失，含赔偿 + 费用（D&amp;D/仓储/法律成本），须分档测算并标待核实</div></div></div></div><div class="foot"><a href="W13-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W13-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·第3天｜货损货差索赔实战：从事故发生到拿到钱</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · DAY 3 / 5　·　阶段二　主干法律</div><h1>货损货差索赔实战：从事故发生到拿到钱</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">索赔实战像医院急诊：黄金时间就那么几天，第一时间发书面通知、保全证据、找检验人。晚了，证据没了，权利还在也白搭。</div><div class="mlink"><b>怎么串到今天</b>链路看完了，今天学真出事时手该怎么动——顺序错了就追不回来。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>货损索赔七步：事故发现与通知（时限）→ 证据保全 → 定责（适用法与限额）→ 定损（怎么算）→ 索赔与谈判 → 时效管理 → 诉讼/仲裁</li><li>海运时效 1 年、空运 2 年是硬死线，超期即失权，必须在死线前发函中断/起诉</li><li>定损要算清：货值 + 检验费 + 施救费 + 合理附带损失，但不超过责任限额</li><li>三份模板（索赔函 / 时效延长协议 / 和解协议）给可直接改用的中文条款措辞</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《货损索赔全流程 SOP》+ 三份模板（索赔函 / 时效延长协议 / 和解协议）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透跨境物流货损货差索赔的完整实战，站在物流商（我方可能作为承运人或代理人被索赔，也可能作为受害方代位追偿）视角，同时给客户反制点：
+1. 货损索赔全流程七步，每步讲清「谁、何时、做什么、留什么证据、不做的后果」
+2. 事故发现与通知的时限（不同运输方式的通知期限，须核对）
+3. 证据保全清单：哪些证据、怎么固定（现场/公证/检验/单证链）
+4. 定责：适用法与责任限额（海商法 666.67 SDR、蒙特利尔 22 SDR/公斤等，须标待核实）
+5. 定损：货值怎么算、检验费/施救费/附带损失能不能要、是否受限额封顶
+6. 时效管理表：海运 1 年、空运 2 年、CMR 1 年、普通合同 3 年（民法典 188），说明性质差异
+7. 产出三份可直接改用的中文模板：索赔函、时效延长协议、和解协议</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：货损索赔像「外卖洒了要理赔」</h2>
+<p>外卖洒了，你要做的是：立刻拍照（证据）、马上联系平台（通知）、说清洒了多少（定损）、在平台规定时间内提交（时效）、谈怎么赔（谈判）、谈不拢就投诉/起诉（争议解决）。跨境货损一模一样，只是金额从几十块变成几十万，时限从「APP 里 48 小时」变成「海商法 1 年、空运 2 年」这种<b>过期作废的死线</b>。怎么串到今天：上半段讲责任地图定位「谁该负责」，今天讲定位之后「怎么把这笔钱真正拿到手」——从事故那一刻到钱入账的全流程。</p>
+<div class="key">记忆点：<b>索赔七步里，最值钱的两个字是「时效」。海商法 1 年、蒙特利尔 2 年都是硬死线，超期即失权，没有任何商量余地。所有动作都要先保住时效，再谈赔多少。</b></div>
+<h2>二、货损索赔全流程 SOP（七步）</h2>
+<ol><li><b>① 事故发现与通知</b>：收货人当场/合理期内发现货损并书面通知承运人/货代；海运须在交付次日起 <b>15 日内</b>（货损）或 <b>60 日内</b>（迟延，待核实）提书面索赔，否则推定交付时完好。不通知 → 丧失索赔权或推定无责。</li><li><b>② 证据保全</b>：现场拍照/视频、封存残货、申请中立检验（Survey）、保全提单/运单/POD/装箱单/温度记录。不保全 → 定责无据，必败。</li><li><b>③ 定责</b>：依运输方式确定适用法（海商法/蒙特利尔/CMR/民法典）与责任限额，判断承运人能否援引免责（航海过失/火灾等）。定错法 → 限额与免责全错。</li><li><b>④ 定损</b>：核算货值（发票/CIF 价）+ 检验费 + 合理施救费 + 附带损失，但总额受责任限额封顶。不定损 → 谈判无锚点。</li><li><b>⑤ 索赔与谈判</b>：发《索赔函》→ 对方核损 → 谈赔付比例与方式（现金/抵扣运费）→ 签《和解协议》。不谈判直接起诉 → 成本高、关系僵。</li><li><b>⑥ 时效管理</b>：死线前发函主张或起诉以中断/保住时效；必要时签《时效延长协议》。超期 → 权利消灭。</li><li><b>⑦ 诉讼/仲裁</b>：协商不成，依合同约定管辖提起仲裁/诉讼，凭证据链主张。</li></ol>
+<h3>通知时限速查（须核对）</h3>
+<table><thead><tr><th>运输方式</th><th>索赔通知时限</th><th>依据</th><th>不通知后果</th></tr></thead><tbody><tr><td>海运（海商法）</td><td>交付次日起 15 日（货损）/ 60 日（迟延）待核实</td><td>海商法第 81-82 条 待核实</td><td>推定交付时完好，索赔被驳回</td></tr><tr><td>空运（蒙特利尔）</td><td>收到货后 14 日内（货损）/ 21 日内（迟延）</td><td>蒙特利尔公约第 31 条</td><td>丧失索赔权</td></tr><tr><td>铁路（CIM/SMGS）</td><td>交付后 7 日内（货损显见）</td><td>CIM/SMGS 待核实</td><td>显见损失超期不可索赔</td></tr><tr><td>公路（CMR）</td><td>交付时或 7 日内（隐蔽损失）</td><td>CMR 第 30 条</td><td>丧失索赔权</td></tr></tbody></table>
+<h2>三、证据保全清单（固定什么、怎么固定）</h2>
+<ul><li><b>基础单证链</b>：提单/运单（B/L/AWB/CMR）、装箱单、发票、POD（签收单）、大副收据——证明「货交我方时状态」与「交付时状态」。</li><li><b>现场证据</b>：货损照片/视频、残货封存、集装箱封条号与完好性、温度记录仪数据（冷藏货）。</li><li><b>中立检验</b>：委托公估行/船级社出具 Survey Report，区分「管船 vs 管货」「天灾 vs 过失」，为定责定性。</li><li><b>沟通记录</b>：索赔通知邮件、微信/系统消息时间戳，证明「已在时限内主张」。</li><li><b>固定动作</b>：发现即拍、24h 内委托检验、48h 内书面通知对方并附初步证据——证据留不住，主张变空话。</li></ul>
+<h2>四、定责与定损：适用法与限额</h2>
+<table><thead><tr><th>运输方式</th><th>适用法/公约</th><th>单位责任限额（待核实）</th><th>定损口径</th></tr></thead><tbody><tr><td>海运</td><td>海商法（海牙-维斯比）</td><td>666.67 SDR/件 或 2 SDR/公斤</td><td>CIF 货值+合理费用，受限额封顶</td></tr><tr><td>海运（汉堡规则）</td><td>汉堡规则</td><td>835 SDR/件 或 2.5 SDR/公斤（我国未加入，待核实）</td><td>同上</td></tr><tr><td>空运</td><td>蒙特利尔公约</td><td>22 SDR/公斤</td><td>实际损失，受 22 SDR/公斤封顶</td></tr><tr><td>铁路</td><td>SMGS/CIM</td><td>按公约计算（待核实）</td><td>按约定/公约</td></tr><tr><td>公路</td><td>CMR</td><td>8.33 SDR/公斤（我国未加入 CMR，待核实）</td><td>实际损失受封顶</td></tr><tr><td>纯合同/多式联运网状</td><td>民法典合同编</td><td>无 SDR 强制，按约定/实际</td><td>实际损失</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 海商法第 81-82 条通知时限、第 56 条限额数值以法条原文为准；② 蒙特利尔公约第 22/31 条 22 SDR/公斤与通知时限；③ 我国未加入 CMR、CIM/COTIF，铁路适用 SMGS（已加入），具体限额以铁道规则为准；④ 海商法修订草案可能调整限额，正式引用前核对。</div>
+<h2>五、时效管理表（硬死线）</h2>
+<table><thead><tr><th>请求权</th><th>时效</th><th>性质（须说明）</th><th>起算</th></tr></thead><tbody><tr><td>海上货损索赔</td><td>1 年</td><td>诉讼时效（海商法第 257 条 待核实）</td><td>自交付或应交付之日起</td></tr><tr><td>空运索赔</td><td>2 年</td><td>诉讼时效（蒙特利尔第 35 条），性质有争议须说明</td><td>自航空器到达或应到达之日起</td></tr><tr><td>CMR 公路</td><td>1 年（故意 3 年）</td><td>诉讼时效（第 32 条，我国未加入 CMR 待核实）</td><td>自交付之日起</td></tr><tr><td>普通合同之债</td><td>3 年</td><td>诉讼时效（民法典第 188 条）</td><td>自知道或应知道权利受损之日起</td></tr></tbody></table>
+<div class="key">保住时效的三招：① 死线前发书面《索赔函》主张权利（中断/固定）；② 起诉/仲裁立案；③ 与对方签《时效延长协议》书面续期。物流商被索赔时反之：盯紧对方是否超期，超期直接以时效抗辩驳回。</div>
+<h2>六、三份可直接改用的中文模板</h2>
+<h3>模板一：货损索赔函（受害方发给责任方）</h3>
+<blockquote>致：【责任方名称】
+关于：【提单/运单号 ______】，货损索赔事宜
+一、事实：我方作为收货人/托运人，于【日期】收到上述运单项下货物，发现【货损描述，如外包装破损、短少 ___ 件、受潮 ___ 箱】。交付时已由【POD/检验报告】记载异常。
+二、依据：根据【海商法第 ___ 条 / 蒙特利尔公约第 ___ 条 / 双方运输合同第 ___ 条】，贵方作为承运人/货代应对上述货损承担赔偿责任。
+三、金额：暂计人民币 ______ 元，含货值 ______ 元、检验费 ______ 元、施救费 ______ 元（最终以检验报告为准）。
+四、主张：请于收函后【15/30】日内书面回复核定意见并赔付；本函不构成对贵方免责条款的放弃，亦不影响我方在时效内提起诉讼/仲裁的权利。
+索赔人：【名称】　日期：【____】</blockquote>
+<h3>模板二：时效延长协议（双方签署，保住死线）</h3>
+<blockquote>时效延长协议
+甲方（索赔人）：______　乙方（责任方）：______
+鉴于：甲方就【运单号 ______】货损向乙方主张权利，原时效将于【____年__月__日】届满。
+双方确认：
+1. 乙方不主张以时效届满为由抗辩，同意将上述索赔时效延长至【____年__月__日】。
+2. 本延长仅针对时效，不视为乙方承认责任或放弃任何免责/限额抗辩。
+3. 延长期内任何一方提起诉讼/仲裁，本协议的时效利益自动终止。
+甲方：______ 乙方：______ 日期：______</blockquote>
+<h3>模板三：和解协议（一次性了结）</h3>
+<blockquote>货损和解协议
+甲方（索赔人）：______　乙方（责任方）：______
+就【运单号 ______】货损事宜，双方自愿达成如下和解：
+1. 乙方一次性向甲方支付人民币 ______ 元，作为本次货损的<b>全部及最终</b>赔偿。
+2. 甲方收到款项后，就本次货损<b>不再以任何理由</b>向乙方及其关联方主张任何权利（含诉讼/仲裁/追偿）。
+3. 本协议签署即视为双方就本次货损<b>一次性了结、互不追究</b>；任何一方违约，应向对方支付违约金 ______ 元。
+4. 本协议不影响乙方对上游实际承运人的追偿权。
+甲方：______ 乙方：______ 日期：______</blockquote>
+<div class="key">反制点（客户/受害方视角）：① 收货时<b>当场验货、异常即批注、时限内书面通知</b>，把举证球踢回承运人；② 索赔函务必写「不放弃时效权利」，防止被对方套路成「默认放弃」；③ 和解金额低于责任限额时果断签，高于限额或对方免责成立时坚决诉——别被「限额」二字吓住，先查对方是否丧失责任限制（如绕航、故意）。</div>
+<div class="key">今日口诀：<b>索赔七步，时效二字值千金。海运 1 年、空运 2 年，过期作废不商量。证据三件套（单证链+现场+中立检验）留不住，再对的理也变空话。三份模板直接抄，改个名字就能用。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Claim Letter</div><div class="cn">索赔函</div><div class="df">货损发生后向责任方发出的书面索赔通知，须载明货损事实、金额、依据与时限，是中断时效与固定主张的关键</div></div><div class="ti"><div class="en">Time-bar</div><div class="cn">时效（诉讼时效/除斥期间）</div><div class="df">索赔权利消灭的期限；海运 1 年（海商法第 257 条 待核实）、空运 2 年（蒙特利尔）、普通合同 3 年（民法典 188）</div></div><div class="ti"><div class="en">Survey Report</div><div class="cn">检验报告</div><div class="df">独立公估/检验机构对货损原因与金额的鉴定，是定责定损核心证据，须由中立第三方出具</div></div><div class="ti"><div class="en">General Average</div><div class="cn">共同海损</div><div class="df">为共同安全有意作出的特殊牺牲，由受益方按价值比例分摊；货方须提供担保（保函/保证金）才能提货</div></div><div class="ti"><div class="en">Settlement Agreement</div><div class="cn">和解协议</div><div class="df">双方就索赔金额与责任达成的一次性了结协议，须写清「一次性了结、互不追究」以防反复</div></div></div></div><div class="foot"><a href="W13-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W13-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·第2天｜HS 归类、完税价格与原产地：一个编码定生死，一个价格定税额</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · DAY 2 / 5　·　阶段二　主干法律</div><h1>HS 归类、完税价格与原产地：一个编码定生死，一个价格定税额</h1><div class="sub">第 11 周主题：海关与通关（中国侧） —— 货被扣了怎么办</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">HS 编码是商品的身份证号，归类错等于报错户口；完税价格像二手房的核税价，不是你说多少就是多少；原产地像出生地，决定能不能享受优惠税率。三样都对，才不会被追税。</div><div class="mlink"><b>怎么串到今天</b>昨天确定谁负责，今天看海关最常挑刺的三个点——这也决定了罚多少钱。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>HS 编码国际前 6 位统一，我国用 8 位（部分 10 位）；编码错=税率错=申报不实</li><li>归类差错分「申报不实」（有主观/重大过失，罚）与「归类技术性差错」（无主观过错，通常改单不罚）——区分看主观</li><li>完税价格=成交价格+运保费+特许权使用费等调整项；成交价格法是原则，不是发票价直接抄</li><li>原产地决定税率（最惠国/协定/特惠）与能否享 RCEP 关税减让；完全获得 vs 实质性改变</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《HS 归类与估价合规清单》+《原产地证申领与核查表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透 HS 归类、完税价格与原产地规则，站物流商立场给合规动作与客户反制点：
+1. HS 编码结构：国际 6 位协调制度 + 我国 8 位（部分 10 位）的「6+2(+2)」结构；前 6 位统一、后位各国自定。举 2 个因 6 位之后归错导致税率天差地别的例子
+2. 归类差错的法律后果：区分「申报不实」（海关行政处罚，补税+罚款，幅度区间待核实）与「归类技术性差错」（无主观过错，改单为主）；怎么证明是技术性差错
+3. 完税价格：成交价格法为原则；完税价格构成=成交价格+境运费+保险费+特许权使用费+佣金等调整项；什么能加、什么不能加；特许权使用费何时计入（给判断标准）
+4. 原产地规则：完全获得标准 vs 实质性改变标准（税则归类改变/增值率/制造加工工序）；非优惠原产地证（CO）vs 优惠原产地证（如 Form E、RCEP 原产地证）；RCEP 原产地累积规则怎么用
+5. 落到动作：我方帮客户归类/估价/出原产地证时，必须留什么证据自证已尽责；给客户什么反制点</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：HS 编码=货物的「身份证号」，一位之差税率翻倍</h2>
+<p>把 HS 归类想成「超市扫码结账」：每件商品有个条码，条码扫错，价格就错。海关靠 HS 编码确定「这票货该按什么税率、要不要证、能不能享优惠」。编码错一位，可能从 0 关税变成 20% 关税，还可能触发出口许可证、3C 认证、危险品审批——错的不只是钱，是整票货的合规资格。怎么串到今天：昨天讲「谁报关谁担责」，今天讲「报的什么内容」——编码、价格、产地，这三样是报关单上最值钱、也最易错的三栏，错一处就够补税罚款。</p>
+<div class="key">记忆点：<b>HS 编码决定税率与监管条件；完税价格决定税基；原产地决定能否减税。三者任一差错=申报不实风险。货代帮客户填这三栏，等于替客户签了三份「价格保证书」。</b></div>
+<h2>二、HS 编码「6+2(+2)」结构</h2>
+<table><thead><tr><th>位段</th><th>含义</th><th>统一范围</th><th>举例</th></tr></thead><tbody><tr><td>前 6 位</td><td>国际协调制度 HS</td><td>全球统一</td><td>8517.62 通信设备</td></tr><tr><td>第 7-8 位</td><td>我国子目（税率/监管）</td><td>中国自定</td><td>8517.62.XX</td></tr><tr><td>第 9-10 位</td><td>附加监管（部分商品）</td><td>中国自定</td><td>监管/统计用</td></tr></tbody></table>
+<p>前 6 位全球一致，便于贸易统计；<b>真正的税率与监管条件藏在 7-8 位（及 10 位）</b>，这是各国自己加的。所以「国际通用 HS」只保证大类一致，落到中国口岸，必须看完整的 8/10 位。</p>
+<h3>两个「6 位之后归错、税率天差地别」的例子</h3>
+<ul><li><b>例① 服装</b>：同是针织衫，前 6 位可能相同，但第 7-8 位按「是否男式/女式/童装、是否弹力」分出不同税率，从 0 到 10%+ 不等——归错直接少缴或多缴关税。</li><li><b>例② 带电产品</b>：普通塑料壳 vs 带蓝牙模块，可能从普通塑料制品（低税）跳到通信设备（需无线电型号核准/3C），不仅税率变，还触发强制认证与进口许可。</li></ul>
+<h2>三、归类差错：申报不实 vs 归类技术性差错（决定罚不罚）</h2>
+<p>这是货代最该分清的一条线。<b>申报不实</b>：纳税人主观故意或重大过失导致 HS/价格/数量错误，造成漏税或影响监管——海关可补税+罚款（罚款幅度区间待核实，通常按漏缴税款一定比例，标「待核实」），严重涉走私。<b>**归类技术性差错</b>：企业已尽合理努力（查了归类决定、咨询了预裁定、有依据），但因对归类规则理解偏差导致错误，无主观过错——通常<b>改单、补税，不罚或从轻</b>。区分的核心证据是「你有没有合理依据 + 有没有主动纠错」。</p>
+<table><thead><tr><th>维度</th><th>申报不实（罚）</th><th>归类技术性差错（通常改单）</th></tr></thead><tbody><tr><td>主观</td><td>故意或重大过失</td><td>已尽合理注意仍偏差</td></tr><tr><td>有无依据</td><td>无归类依据/无视公告</td><td>有归类决定/预裁定/专业意见</td></tr><tr><td>后果</td><td>补税+罚款（区间待核实）</td><td>改单+补税，一般不罚</td></tr><tr><td>自救</td><td>事后难辩</td><td>主动发现并申请改单可减责</td></tr></tbody></table>
+<div class="key">货代自保动作：遇到拿不准的编码，<b>先申请海关预裁定（《海关预裁定管理暂行办法》待核实令号）</b>或查海关总署归类决定公告，把依据存档；申报时让客户盖章确认编码由其提供。这样即便日后改单，也能证明是「技术性差错」而非「申报不实」，把罚款风险压到最低。</div>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 申报不实的罚款幅度（《海关行政处罚实施条例》第 15 条，按比例罚款，具体区间与情节档次以法条为准）；② 归类预裁定的申请条件、效力期（通常 3 年，待核实）与申请渠道；③ 第 10 位附加监管的使用范围。</div>
+<h2>四、完税价格：成交价格法是原则</h2>
+<p>完税价格不是「发票写多少就按多少」，而是以<b>成交价格</b>为基础，加法定调整项。公式：完税价格 = 成交价格 + 境内输入地点起卸前的运费 + 保险费 + 特许权使用费（符合条件的）+ 卖方佣金等；<b>买方境外佣金、起卸后费用、国内税一般不计入</b>。特许权使用费（如商标权、专利权费）是否计入，看它是否「与进口货物有关 + 作为销售条件」——有关且是成交前提的，要计入。</p>
+<table><thead><tr><th>项目</th><th>是否计入完税价格</th><th>判断要点</th></tr></thead><tbody><tr><td>成交价格(实付应付)</td><td>计入</td><td>买方为货物实付应付价款</td></tr><tr><td>起卸前运费/保费</td><td>计入</td><td>输入地点起卸前</td></tr><tr><td>特许权使用费</td><td>视情形计入</td><td>与货物有关且为销售条件</td></tr><tr><td>卖方佣金</td><td>计入</td><td>卖方支付</td></tr><tr><td>买方境外佣金</td><td>不计入</td><td>买方自行支付</td></tr><tr><td>国内环节税/起卸后费</td><td>不计入</td><td>入境地之后发生</td></tr></tbody></table>
+<div class="key">反制点（客户视角）：卖家若把商标授权费、技术费另立合同不计入完税价格，海关可认定为「特许权使用费应计入」而补税+罚。客户应要求货代/报关行出具《估价确认单》，明确哪些费用计入、依据哪条，避免日后海关追索时互相推诿；并保留转移定价文档自证成交价格公允。</div>
+<h2>五、原产地规则：完全获得 vs 实质性改变</h2>
+<ul><li><b>完全获得标准</b>：货物在一国「出生」——如矿产、农产品、在该国捕捞/生产，原产国明确。</li><li><b>实质性改变标准</b>：货物在多国加工，以「税则归类改变」（HS 前 4/6 位变）、「区域价值成分（RVC 达标）」或「特定制造加工工序」判定原产国。</li><li><b>非优惠原产地证（CO）</b>：证明货物国籍，用于适用最惠国税率（MFN），各国互认。</li><li><b>优惠原产地证（如 Form E 中国-东盟、RCEP 原产地证）</b>：凭它享受协定税率（往往低于 MFN，甚至零关税）；<b>必须格式合规、直运规则满足</b>才生效。</li></ul>
+<h3>RCEP 原产地累积（最有用的规则）</h3>
+<p>RCEP 允许成员国的原材料和加工「累积」计算原产成分——例如中国工厂用日本、韩国料件加工，这些料件的原产价值可<b>累积</b>进中国成品的区域价值成分，更容易达到 40% RVC 门槛（具体比例待核实），从而拿到 RCEP 零关税。这对「中日韩供应链」的跨境电商卖家是实打实的减税工具。</p>
+<div class="key">反制点（客户视角）：卖家申请优惠原产地证，必须确保「货物流向真实、累积计算有据、直运合规」，否则海关不认、优惠落空还被追最惠国税差。客户应让货代核对每一票的原产地证格式与累积链条，并把「因单证错误导致优惠未享的损失」列入货代责任。</div>
+<h2>六、落到动作：《HS 归类与估价合规清单》+《原产地证核查表》</h2>
+<ol><li>归类：客户确认编码 → 我方查归类决定/预裁定 → 留依据 → 客户盖章 → 申报。</li><li>估价：列明计入项（运费/保费/特许权费）与不计入项，出《估价确认单》双方签。</li><li>原产地：确认用非优惠(CO)还是优惠证(RCEP/Form E)；核格式、签字、直运。</li><li>优惠证：查是否满足累积规则与区域价值成分门槛（比例待核实）。</li><li>存档：归类依据、估价确认、原产地证副本、沟通记录，留 3 年（待核实）。</li><li>发现错误：主动申请改单/补充申报，抢在海关稽查前自救。</li></ol>
+<div class="key">今日口诀：<b>HS 定税率、完税价格定税基、原产地定减税。三者任一错=申报不实。拿不准先预裁定、让客户盖章确认、主动改单自救——三招把罚款变改单。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">HS Code</div><div class="cn">Harmonized System / 商品名称及编码协调制度</div><div class="df">国际通用的商品分类编码；前 6 位全球统一，各国在此基础上加位（我国 8 位、部分 10 位）决定具体税率</div></div><div class="ti"><div class="en">Customs Value</div><div class="cn">完税价格 / 海关估价</div><div class="df">计算关税的税基；以成交价格为基础，加运费、保险费及符合规定的调整项（特许权使用费等）</div></div><div class="ti"><div class="en">Transaction Value</div><div class="cn">成交价格 / 实际支付价款</div><div class="df">买方为进口货物实付应付的价格；是完税价格的首要基础（成交价格法）</div></div><div class="ti"><div class="en">Rules of Origin</div><div class="cn">原产地规则 / 货物来源规则</div><div class="df">判定货物「国籍」的规则；决定适用最惠国/协定/特惠税率，分完全获得与实质性改变两类标准</div></div><div class="ti"><div class="en">RCEP</div><div class="cn">Regional Comprehensive Economic Partnership / 区域全面经济伙伴关系协定</div><div class="df">2022.1.1 对中国等成员国生效（生效日待核实）；含原产地累积规则，区域价值成分可累积计算</div></div><div class="ti"><div class="en">Cumulative Origin</div><div class="cn">累积原产地 / 区域累积</div><div class="df">RCEP 下成员国原材料/加工可累积计入原产成分，更易达原产地门槛</div></div></div></div><div class="foot"><a href="W11-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W11-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

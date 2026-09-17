@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·第3天｜NVOCC、House B/L 与无船承运业务：备案没做，签了 HBL 就是裸奔</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · DAY 3 / 5　·　阶段二　运输责任制度</div><h1>NVOCC、House B/L 与无船承运业务：备案没做，签了 HBL 就是裸奔</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">无船承运人（NVOCC）就是「自己没有船却开了船公司」：对货主你是承运人，对船公司你是货主，两头都是你、两头都担责。House B/L 就是你这个双重身份的产物。</div><div class="mlink"><b>怎么串到今天</b>昨天定性，今天看最典型的实操形态——无船承运与分提单。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>NVOCC = 无船承运人，自己不拥有船，却以承运人身份签发提单</li><li>中国 NVOCC 须交通运输部备案 + 保证金（数额待核实），否则不得经营</li><li>签发 House B/L（HBL）即可能被视为承运人，这是身份认定的'实锤'</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《NVOCC 合规清单》+《House B/L 签发审核清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解 NVOCC（无船承运人）、House B/L（HBL）与无船承运业务，输出《NVOCC 合规清单》与《House B/L 签发审核清单》：
+1. 生活化比喻：NVOCC 像"没有厨房的外卖品牌"——自己不炒菜（不拥有船），却以自己品牌接单、给顾客（货主）开自己小票（HBL），再找真厨房（船公司）做菜。
+2. NVOCC 的法定含义与资质：中国 NVOCC 必须做什么（交通运输部备案？保证金？数额多少？请标'待核实'）；不备案经营的法律后果。
+3. HBL vs MBL 的法律关系：HBL 是货代/无船承运人与货主之间的运输合同证明；MBL 是船公司与 NVOCC 之间的。两套提单并行时，货主凭哪张提货、谁对谁负责。
+4. 核心法理：为什么"签发 HBL"会被认定为承运人？讲透"签发运输单证=以承运人身份履约"的逻辑，以及这给 NVOCC 带来的责任（对全程负责、可能被货主按 HBL 直接告）。
+5. 《NVOCC 合规清单》（10+ 项）：备案、保证金、提单登记、运价备案、单证规范、责任保险等。
+6. 《House B/L 签发审核清单》（10+ 项）：签发前必须核对的项（资质、条款、限额、提示、编号、背面 STC 等）。
+7. 客户（货主）反制点：货主如何借 HBL 把 NVOCC 锁死成承运人。</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：NVOCC 是'没有厨房的外卖品牌'</h2>
+<p>把 NVOCC 想成<b>没有厨房的外卖品牌</b>：它自己不炒菜（不拥有船），却用自己品牌接单、给顾客（货主）开一张'自家小票'——这就是 <b>House B/L（HBL）</b>；然后它再去真厨房（船公司）下单，真厨房给它开'后厨单'——这是 <b>Master B/L（MBL）</b>。<b>怎么串到今天：昨天讲'签发自己的提单=被认定承运'，NVOCC 就是'合法地、成规模地'干这件事的主体。但它不是谁都能干，得先'办证交押金'。</b></p>
+<div class="key">记忆点：<b>NVOCC = 持证+交保证金+签 HBL 的无船承运人。HBL 是它给货主的'自家小票'，MBL 是船公司给它开的'后厨单'。两套票并行，货主永远凭 HBL 提货、凭 HBL 告 NVOCC。</b></div>
+<h2>二、NVOCC 资质与备案（中国现行，数额待核实）</h2>
+<ul><li><b>备案机关</b>：中国 NVOCC 业务须向<b>交通运输部</b>办理无船承运业务备案（依据《国际海运条例》及其实施细则，条号/文号待核实）。</li><li><b>保证金 / 保函</b>：备案通常须缴存<b>无船承运业务保证金</b>（历史标准约 <b>80 万元人民币</b>，现行数额与是否改为责任保险/保函替代<b>须核对最新规定</b>）。</li><li><b>提单登记</b>：NVOCC 使用的提单格式须向主管部门<b>登记</b>，未登记的提单不得用于经营。</li><li><b>不备案后果</b>：未取得资质擅自经营无船承运业务，面临<b>责令停止、罚款</b>，且签发 HBL 的合同效力与责任承担在争议中处于不利地位；境外（如美国 FMC）亦要求各自许可，无许可签发 HBL 属违法。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 中国《国际海运条例》关于 NVOCC 备案、保证金数额（原 80 万元，是否调整或改为责任保险/保函）的最新规定；② 提单格式登记要求与流程；③ 美国 FMC 的 NVOCC 许可（OTI-NVOCC）与保证金（约 75,000 美元，待核实）要求；④ 我国是否已加入《联合国多式联运公约》（未加入，待核实）。</div>
+<h2>三、HBL vs MBL：两套提单的法律关系</h2>
+<table><thead><tr><th>对比项</th><th>House B/L (HBL)</th><th>Master B/L (MBL)</th></tr></thead><tbody><tr><td>签发人</td><td>NVOCC / 货代（以自己名义）</td><td>实际承运人（船公司）</td></tr><tr><td>对象</td><td>货主（NVOCC 的客户）</td><td>NVOCC（船公司的客户）</td></tr><tr><td>证明的合同</td><td>NVOCC 与货主之间的运输合同</td><td>船公司与 NVOCC 之间的运输合同</td></tr><tr><td>物权凭证</td><td>是（可流转、凭单提货）</td><td>是（但货主通常拿不到，在 NVOCC 手中）</td></tr><tr><td>责任主线</td><td>货主 → 凭 HBL 告 NVOCC（承运关系）</td><td>NVOCC → 凭 MBL 告船公司（承运关系）</td></tr></tbody></table>
+<div class="key">实务要点：货主提货通常凭 <b>HBL 向 NVOCC 换单</b>后再凭 MBL 提货（或电放）。对货主而言，<b>HBL 才是他和 NVOCC 之间的'合同+小票'</b>，所以货损时货主第一反应是拿 HBL 找 NVOCC——NVOCC 由此被牢牢锁在承运人位置上。</div>
+<h2>四、核心法理：为什么'签发 HBL'会被认定承运</h2>
+<p>提单的三大功能（货物收据 + 运输合同证明 + 物权凭证）决定了：<b>谁签发运输单证，谁就以承运人身份对外承诺了运输义务</b>。NVOCC 签 HBL，等于向货主书面表明'我（NVOCC）是这票货的承运人'。于是逻辑链成立——货主凭 HBL 证明运输合同存在 → 合同相对方是 NVOCC → NVOCC 须按承运人的归责原则（含责任限额、免责、时效）对全程负责。<b>这比昨天讲的'措辞'实锤得多：签了字的小票，比嘴上说的'我是代理'管用。</b></p>
+<ul><li><b>对 NVOCC 的责任后果</b>：① 对全程运输向货主负责；② 货主可直接依 HBL 起诉，绕过实际承运人；③ 若 HBL 背面责任限制条款未有效提示，可能<b>丧失责任限制、按货值全赔</b>；④ 在陆空段（非海运）还可能被认定为多式联运经营人（MTO）。</li><li><b>客户反制点</b>：货主想拿 NVOCC 当承运人索赔时，最简路径就是<b>要求签 HBL</b>（而非代理转交 MBL），并把 HBL 编号、签发主体、背面条款全部留证——一旦出事，HBL 就是锁定承运关系的铁证。</li></ul>
+<h2>五、《NVOCC 合规清单》（10+ 项，经营前逐项打钩）</h2>
+<ol><li>已取得交通运输主管部门<b>无船承运业务备案</b>（未取得不得经营，标红禁行）</li><li>已缴存<b>保证金 / 提交等效担保</b>（数额按现行规定，待核实），且在有效期</li><li>所用 <b>HBL 提单格式已登记</b>，版本与登记一致，不得擅自改版</li><li>运价 / 服务费已按要求在<b>运价备案平台</b>公示（如适用）</li><li>已投保<b>责任险 / 提单责任保险</b>，覆盖 HBL 项下的承运人责任</li><li>公司章程与经营范围包含'无船承运/国际货运代理'相应类目</li><li>指定<b>合规负责人</b>对接监管，备案信息变更及时更新</li><li>HBL 背面<b>标准交易条件（STC）</b>已拟定并经法律审核、可独立提示</li><li>与船公司的 <b>MBL 订舱协议</b>齐备，明确 MBL 与 HBL 的责任衔接</li><li>建立 <b>HBL 签发台账</b>（编号、客户、货量、责任限额留痕）</li><li>境外经营（如美国）另持当地 NVOCC 许可（FMC OTI，待核实）</li><li>定期复核资质有效期，避免'过期裸奔'</li></ol>
+<h2>六、《House B/L 签发审核清单》（签发前 10+ 项）</h2>
+<ol><li><b>资质核验</b>：我方 NVOCC 备案与保证金有效，否则<b>禁止签 HBL</b></li><li><b>签发主体</b>：HBL 抬头须为我方登记主体，不得冒用他人提单</li><li><b>托运人/收货人</b>：与运输委托合同一致，避免'票货不符'</li><li><b>货描与件数</b>：与装箱单/报关资料一致，防止短装争议</li><li><b>责任条款</b>：是否已载明责任限额（666.67 SDR/件或2 SDR/kg 待核实）与免责</li><li><b>STC 提示</b>：背面标准交易条件是否已在正面显著提示'详见背面'且已获对方确认</li><li><b>清洁性</b>：是否签'clean'；有批注须与实货一致，不得擅自清洁</li><li><b>运输方式标注</b>：多式联运须注明各段与实际承运人，避免责任真空</li><li><b>编号与登记</b>：HBL 编号纳入台账，格式与登记版本一致</li><li><b>签发份数</b>：正本份数（通常 3 正）与流转管控，防重复提货</li><li><b>适用法律与仲裁</b>：争议解决条款明确，与 MBL 衔接不冲突</li><li><b>风险提示留证</b>：客户已确认条款的邮件/签收回执存档</li></ol>
+<div class="key">今日落地三动作：① 先查我方 NVOCC 备案与保证金是否在效（无证/过期 = 签 HBL 即裸奔，立即停）；② 草拟《HBL 签发审核清单》上墙，每次签发前 12 项逐条打钩留痕；③ 在 HBL 背面 STC 与正面提示上下功夫（见 D4），否则限额条款可能被判无效、按货值全赔。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">NVOCC</div><div class="cn">Non-Vessel Operating Common Carrier / 无船承运人</div><div class="df">自己不拥有或经营船舶，却以承运人身份向公众提供海上运输服务、签发自己的提单并承担承运人责任的人</div></div><div class="ti"><div class="en">House B/L (HBL)</div><div class="cn">分提单 / 货代提单</div><div class="df">由 NVOCC/货代签发给其客户的提单，是 HBL 签发人与货主之间的运输合同证明与物权凭证</div></div><div class="ti"><div class="en">Master B/L (MBL)</div><div class="cn">主提单</div><div class="df">由实际承运人（船公司）签发给 NVOCC 的提单，证明船公司与 NVOCC 之间的运输合同</div></div><div class="ti"><div class="en">Bond / Deposit</div><div class="cn">保证金 / 保函</div><div class="df">NVOCC 经营前须向主管部门缴存的担保，用于偿付可能发生的债务（中国为交通运输部保证金，数额待核实）</div></div><div class="ti"><div class="en">Filing / Registration</div><div class="cn">备案 / 登记</div><div class="df">NVOCC 须向交通运输主管部门办理业务备案、提单格式登记等法定程序</div></div></div></div><div class="foot"><a href="W10-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W10-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

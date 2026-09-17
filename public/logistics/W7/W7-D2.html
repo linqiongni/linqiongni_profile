@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·第2天｜承运人的三项基本义务：适航、管货、不绕航</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · DAY 2 / 5　·　阶段二　运输责任制度</div><h1>承运人的三项基本义务：适航、管货、不绕航</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">承运人三项义务就是开长途前的三件事：出车前检查车况（适航）、路上别把乘客甩了（管货）、按导航走别顺路办私事（不绕航）。三件事做到了，才谈得上后面的免责。</div><div class="mlink"><b>怎么串到今天</b>昨天划适用范围，今天进入义务——义务是免责的前提，顺序不能颠倒。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>适航义务（第 47 条 待核实）：只在「开航前和开航当时」、只要求「谨慎处理」(diligent)，不是绝对保证船舶完美</li><li>管货义务（第 48 条 待核实）：装载、搬移、积载、运输、保管、照料、卸载七环节妥善谨慎</li><li>不绕航义务（第 49 条 待核实）：按约定/习惯/地理航线走，绕航导致货损承运人难逃责</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《承运人义务清单》+《违反义务的后果对照表》（第 47/48/49 条，条号待核实）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透承运人的三项基本义务，站在物流商（承运人/货代）立场，同时给客户反制点：
+1. 适航义务（第 47 条 待核实）：时间界限（开航前和开航当时）、标准（谨慎处理而非绝对）、涵盖船舶（船体、船员、船舶文书、适货）、集装箱/车辆视为船舶一部分吗
+2. 管货义务（第 48 条 待核实）：七环节逐条说明（装载、搬移、积载、运输、保管、照料、卸载），什么是「妥善地、谨慎地」
+3. 不绕航义务（第 49 条 待核实）：正当航线是什么、什么算合理绕航（救助人命、避难）、绕航后果
+4. 《违反义务的后果对照表》：每项义务被违反，承运人丧失什么保护（免责？责任限制？）、举证责任在哪方、客户怎么取证
+5. 落到业务动作：货代作为承运人，在订舱/装箱/转运环节该留什么证据自证已尽责</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、先立住：三项义务像「搬家公司接单前的三件事」</h2>
+<p>把承运人想成搬家公司：① 出车前得保证车能开、能装（<b>适航</b>）；② 搬的时候轻拿轻放、码放稳当（<b>管货</b>）；③ 按约定路线走、不绕去办私事（<b>不绕航</b>）。民法典下搬家公司要对「一切损坏」负责，但海商法给承运人的是「打折版义务」——适航只管「开船那一刻」，管货只管「妥善谨慎」不是「零损坏」，绕航只在「不合理」时才罚。怎么串到今天：昨天讲了承运人是谁，今天讲这个「人」必须对货主做哪三件事，以及做砸了后果多大。</p>
+<div class="key">记忆点：<b>适航看时点（开航前+开航当时）、管货看过程（七环节妥善谨慎）、不绕航看路线（约定/习惯/地理）。三项都是「合理努力」标准，不是「绝对担保」——这是海商法给承运人的第一层保护。</b></div>
+<h2>二、适航义务（第 47 条 待核实）：只在开船那一刻</h2>
+<ul><li><b>时间界限</b>：仅「船舶<b>开航前和开航当时</b>」（before and at the beginning of the voyage）。航行中船舶出毛病，只要开航时无法合理预见，不违反适航——这是和民法典最大不同。</li><li><b>标准</b>：「谨慎处理」（exercise due diligence），是<b>合理注意</b>标准，不是担保船舶永无瑕疵。承运人雇了合格船检仍漏检潜在缺陷，可能已尽谨慎。</li><li><b>涵盖范围</b>：船体水密完好、主机辅机可运行、配足合格船员、船舶文书齐全、<b>货舱适于收受运载保管货物（适货）</b>。</li><li><b>集装箱/车辆</b>：集装箱若由承运人提供并装载，视为船舶一部分，其适航承运人负责；托运人自己的集装箱，承运人对其内容一般不负责适航（待核实口径）。</li></ul>
+<h2>三、管货义务（第 48 条 待核实）：七环节闭环</h2>
+<ol><li><b>装载（load）</b>：将货物装入船舶/集装箱，避免野蛮操作。</li><li><b>搬移（handle）</b>：港内搬移、船边作业。</li><li><b>积载（stow）</b>：在船/箱内合理摆放，重不压轻、液体远离干货、互抵货物分隔。</li><li><b>运输（carry）</b>：海上运输途中保管。</li><li><b>保管（keep）</b>：防湿、防盗、通风、温度控制（冷藏货）。</li><li><b>照料（care）</b>：活动物饲养、危险品监装等特殊照料。</li><li><b>卸载（discharge）</b>：目的港妥善卸下、交付。</li></ol>
+<p>「妥善地、谨慎地」= 一个<b>合理谨慎的承运人</b>在相同情形下会做的标准动作。集装箱整箱（FCL）由托运人装箱封箱的，承运人通常对箱内积载不当不负责——除非能证明承运人接收时外观可见异常。</p>
+<h2>四、不绕航义务（第 49 条 待核实）：路线不能乱改</h2>
+<ul><li><b>正当航线</b>：约定的航线，或装货港/卸货港之间的习惯航线，或地理上的直接航线。</li><li><b>合理绕航（免责）</b>：为<b>救助或企图救助人命/财产</b>而绕航，或为<b>避难</b>（恶劣天气、船舶故障避险）而绕航，属合理，不视为违约。</li><li><b>不合理绕航后果</b>：承运人丧失第 51 条多数免责保护，且<b>可能丧失责任限制</b>（与「绕航致损」挂钩，待核实条号联动第 59 条）；货主可就绕航直接索赔。</li></ul>
+<h2>五、《违反义务的后果对照表》（核心交付）</h2>
+<table><thead><tr><th>义务</th><th>违反情形举例</th><th>承运人丧失的保护</th><th>举证责任</th><th>客户取证动作</th></tr></thead><tbody><tr><td>适航（47）</td><td>开航时货舱有孔洞进水、船员无资质</td><td>丧失该货损的免责（第 51 条不适用的基础）</td><td>货主证货损+初步证不适航；承运人证已尽谨慎处理</td><td>船舶检验报告、开航前 PSC 检查、海事声明、目击证人</td></tr><tr><td>管货（48）</td><td>野蛮装卸致破损、积载不当致倒塌、冷藏断链</td><td>免责抗辩难成立（管货是积极义务，非过失免责）</td><td>货主证管货不当；承运人证已妥善谨慎</td><td>装箱照片/视频、温度记录仪数据、交货单批注、公证检验</td></tr><tr><td>不绕航（49）</td><td>为接私货绕去非约定港</td><td>丧失免责+可能丧失责任限制</td><td>货主证实际航线偏离正当航线</td><td>AIS 航迹、船舶日志、提单航线条款、燃油消耗记录</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 三项义务条号（47/48/49）以海商法第四章原文为准；② 「绕航导致丧失责任限制」的衔接条号（与第 59 条联动）及是否须「不合理绕航+致损因果」双重要件，需核对；③ 集装箱适航边界（承运人箱 vs 托运人箱）的司法口径以最新案例为准。</div>
+<h2>六、落到业务动作：货代当承运人时怎么自证已尽责</h2>
+<h3>订舱/装箱环节留证清单</h3>
+<ul><li><b>订舱时</b>：留存船公司适航证书副本、船舶规范、船龄与船级社信息，证明所选船舶适航。</li><li><b>装箱时</b>：要求并保存装箱照片/视频、封条号、重量验证（VGM，SOLAS 要求），证明积载合规。</li><li><b>转运时</b>：记录全程 AIS 或二程船提单航线，证明未绕航。</li><li><b>交付时</b>：交货单/提货单上的货损批注是日后免责抗辩的关键证据——<b>无批注的清洁交付，事后难辩管货不当</b>。</li></ul>
+<div class="key">反制点（客户视角）：货主索赔货损，第一步就查三点——提单是否「清洁已装船」、交货单有无货损批注、承运人能否拿出管货记录。承运人若交付时签了清洁单又拿不出管货证据，基本败诉。所以客户方应在收货时<b>当场验货、异常即批注、24 小时内书面通知</b>，把举证球踢回承运人。</div>
+<div class="key">今日口诀：<b>适航只管开船那一刻、管货管全过程七环节、不绕航管路线。三项都是合理努力不是绝对担保；但管货是积极义务，最容易被货主咬住。留证三件套：船舶证书+装箱记录+清洁/批注交付单。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Seaworthiness</div><div class="cn">适航</div><div class="df">第 47 条 待核实：承运人在船舶开航前和开航当时，谨慎处理使船舶适于航行、适于收受运载货物；仅此时间点，仅「谨慎处理」标准</div></div><div class="ti"><div class="en">Care of Goods</div><div class="cn">管货义务</div><div class="df">第 48 条 待核实：妥善谨慎地装载、搬移、积载、运输、保管、照料和卸载货物</div></div><div class="ti"><div class="en">Deviation</div><div class="cn">绕航</div><div class="df">第 49 条 待核实：承运人须按约定/习惯/地理航线运输；不合理绕航将使承运人丧失部分免责与责任限制保护</div></div><div class="ti"><div class="en">Diligent Standard</div><div class="cn">谨慎处理标准</div><div class="df">「合理谨慎」而非「结果绝对」；承运人尽合理注意即可，不担保船舶永不出问题</div></div><div class="ti"><div class="en">Due Diligence</div><div class="cn">谨慎处理</div><div class="df">适航义务的核心标准词，对应英文 due diligence / exercise due diligence</div></div></div></div><div class="foot"><a href="W7-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W7-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

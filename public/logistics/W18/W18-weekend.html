@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第18周·周末实战｜做一份《海外子公司设立与年度维护手册》</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 18 · WEEKEND PROJECT　·　阶段三　境外法域与合规</div><h1>周末实战⑱：做一份《海外子公司设立与年度维护手册》</h1><div class="sub">第 18 周主题：海外子公司 —— 德国、波兰、墨西哥</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">海外子公司设立与维护手册，就是一本开店年检日历：设立流程、治理动作、年度义务、当地对接人，一册在手，换谁来接手都不会乱。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">把第 18 周四块知识（德国 GmbH / 波兰墨西哥公司 / 三国用工 / 税务 PE 与 TP）固化成一份可执行的《海外子公司设立与年度维护手册》。产出：设立阶段时间轴与材料清单（公证、登记、税务、银行、保险）、年度合规日历（月度/季度/年度各项申报与例会）、责任分工表（母公司/当地董事/外部顾问）、年度维护成本估算表（数字标待核实）、常见失误清单。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要做一份《海外子公司设立与年度维护手册》，覆盖德国/波兰/墨西哥三国的海外仓主体。设定我方是物流企业，在德国已有 GmbH 海外仓，正评估波兰/墨西哥扩张。
+
+请输出：
+1. 设立阶段时间轴与材料清单：从决策到开业的每一步（公证/登记/税务/银行/保险），列出材料、责任方、时限（时限标待核实）
+2. 年度合规日历：按月度/季度/年度列出各项申报与例会——VAT 申报、年度财报编制与公告、商业登记年度确认、透明度登记更新、用工与社保申报、转让定价文档更新，给出频率与责任方
+3. 责任分工表：母公司 / 当地董事 / 外部顾问（律师/财税代理/HR）各自职责边界
+4. 年度维护成本估算表：三国分别列注册地址、财税代理、审计、法律、社保代理、银行、保险等，数字标「待核实」
+5. 常见失误清单：至少 15 项，每项给后果与正确做法
+6. 落到一句话：这份手册怎么用、谁每年更新</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这份手册是海外仓的「年度体检表」</h2>
+<p>我方是物流企业，德国已有 GmbH 海外仓，正评估波兰（Sp. z o.o.）/ 墨西哥（S. de R.L. de C.V.）扩张。这份《海外子公司设立与年度维护手册》的作用，像给公司办了一张「年度体检卡」：设立阶段是「办入院手续」（公证登记税务银行保险），年度维护是「每年复诊」（申报、公告、文档更新）。漏一次复诊，小则罚款、大则主体失信、银行账户冻结、仓被查——所以手册不是写给人看的，是写给人<b>照着打勾执行</b>的。</p>
+<div class="key">记忆点：<b>设立=办入院，年度=复诊。手册的核心价值是「可执行的 checklist + 责任到人 + 时限到日」，不是论文。</b></div>
+<h2>二、设立阶段时间轴与材料清单（以德 GmbH 为主线，波墨对应替换）</h2>
+<table><thead><tr><th>阶段</th><th>动作</th><th>材料</th><th>责任方</th><th>时限（待核实）</th></tr></thead><tbody><tr><td>决策</td><td>六问法通过，立项</td><td>商业计划、预算</td><td>母公司</td><td>—</td></tr><tr><td>公证</td><td>章程公证 Notarielle Beurkundung</td><td>章程草案、股东身份</td><td>外部律师+公证</td><td>数日</td></tr><tr><td>登记</td><td>商业登记 Handelsregister</td><td>公证件、申请表</td><td>外部律师</td><td>数周</td></tr><tr><td>税务</td><td>Steuernummer/USt-IdNr</td><td>登记证明、营业说明</td><td>财税代理</td><td>首次交易前</td></tr><tr><td>营业</td><td>Gewerbeanmeldung</td><td>登记号、经营范围</td><td>当地董事</td><td>同步</td></tr><tr><td>银行</td><td>KYC 开户</td><td>主体文件、受益所有人、业务证明</td><td>当地董事+顾问</td><td>数周</td></tr><tr><td>保险</td><td>责任/财产/雇主险</td><td>主体文件、资产清单</td><td>母公司风险部</td><td>开业前</td></tr><tr><td>用工</td><td>雇佣/派遣启动</td><td>劳动合同、社保登记</td><td>HR+当地董事</td><td>按需</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 各国各阶段实际时限（德国登记到开户整体常需 1-3 月，须核实）；② 波兰 S24 电子注册能否压缩时限；③ 墨西哥 FOLIO 外资登记与 RFC 税号办理顺序；④ 保险的最低险种（公众责任、雇主责任、仓储财产险）以当地强制要求为准。本表为通用框架，正式落地由本地顾问出具时间表。</div>
+<h2>三、年度合规日历（月度/季度/年度）</h2>
+<table><thead><tr><th>频率</th><th>事项</th><th>责任方</th><th>后果（不做）</th></tr></thead><tbody><tr><td>月度</td><td>VAT 申报与缴纳（德/波/墨周期须核对）</td><td>财税代理+董事</td><td>增值税罚款+利息</td></tr><tr><td>月度/双月</td><td>工资与社保申报（Sozialversicherung 等）</td><td>HR+财税代理</td><td>董事个人连带</td></tr><tr><td>季度</td><td>VAT 季度汇总/预缴企业所得税</td><td>财税代理</td><td>滞纳金</td></tr><tr><td>年度</td><td>年度财报编制与商业登记公告</td><td>审计+律师+董事</td><td>罚款、资信受损</td></tr><tr><td>年度</td><td>商业登记年度确认/信息核对</td><td>律师</td><td>登记异常</td></tr><tr><td>年度</td><td>透明度登记 Transparenzregister 更新</td><td>董事</td><td>罚款、账户冻结风险</td></tr><tr><td>年度</td><td>转让定价文档更新（Local/Master/CbCR 达门槛）</td><td>集团税务+外部顾问</td><td>TP 调整+罚息</td></tr><tr><td>年度</td><td>股东会/董事会例会（纪要存档）</td><td>董事+母公司</td><td>治理瑕疵</td></tr></tbody></table>
+<div class="key">落地动作：把上表做成「日历提醒 + 双签复核」——每项的<b>截止日前 5 个工作日</b>由财税代理提示，董事确认，母公司合规岗留痕。不做任一项的后果已在右列：董事个人责任优先于公司，这是德国法最狠的一点。</div>
+<h2>四、责任分工表 RACI</h2>
+<table><thead><tr><th>事项</th><th>母公司</th><th>当地董事</th><th>外部顾问（律师/财税/HR）</th></tr></thead><tbody><tr><td>设立与登记</td><td>A 批准预算</td><td>R 签字代表</td><td>R 办理、C 合规</td></tr><tr><td>VAT/税务申报</td><td>I 知会</td><td>A 最终负责（签字）</td><td>R 编制申报</td></tr><tr><td>年度财报/公告</td><td>A 审批</td><td>R 提供数据+签字</td><td>R 审计+编制</td></tr><tr><td>Transparenzregister</td><td>I</td><td>A/R 更新</td><td>C 提示</td></tr><tr><td>用工/社保</td><td>I 政策</td><td>A 雇主责任</td><td>R HR 代理</td></tr><tr><td>TP 文档</td><td>A 集团政策</td><td>C</td><td>R 编制</td></tr><tr><td>保险</td><td>A 采购</td><td>C</td><td>R 经纪</td></tr></tbody></table>
+<p><b>R=执行、A=最终负责、C=被咨询、I=被告知</b>。关键原则：<b>当地董事是多数合规事项的 A（最终负责）</b>——这也是为什么董事人选必须专业、不可随意派总部不懂当地法的人。母公司是预算与集团政策的 A，但<b>不能替董事背当地个人责任</b>。</p>
+<div class="key">反制点（客户视角）：卖家若依赖我方主体开展业务，应确认我方「董事专业+外部顾问到位+年度日历在执行」，并可在仓储协议要求我方每年提供合规证明；我方立场：分工清晰=责任可追，出问题不扯皮。</div>
+<h2>五、年度维护成本估算表（数字一律待核实）</h2>
+<table><thead><tr><th>成本项</th><th>德国 GmbH</th><th>波兰 Sp. z o.o.</th><th>墨西哥 S. de R.L.</th><th>备注</th></tr></thead><tbody><tr><td>注册地址租金</td><td>€X/年（待核实）</td><td>PLN X（待核实）</td><td>MXN X（待核实）</td><td>虚拟/实体地址</td></tr><tr><td>财税代理</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>月报+年报</td></tr><tr><td>审计</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>达门槛强制</td></tr><tr><td>法律服务</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>登记/合同/合规</td></tr><tr><td>社保代理/HR</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>仅雇员时</td></tr><tr><td>银行费用</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>账户/交易</td></tr><tr><td>保险</td><td>€X（待核实）</td><td>PLN X</td><td>MXN X</td><td>责任/财产/雇主</td></tr><tr><td>合计区间</td><td>待核实</td><td>待核实</td><td>待核实</td><td>落地前由本地顾问报价</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 全部成本数字标「待核实」：不同城市、规模、雇员数差异极大。正确做法是在设立前让三国本地顾问各出一份<b>年度维护预算书</b>（含上述 7 项），作为手册附件，每年复核更新，切勿用本表数字直接决策或对外报价。</div>
+<h2>六、常见失误清单（15 项）</h2>
+<ol><li>董事任命随意、不懂当地法 → 三项迟延个人责任爆发；正确：聘专业董事或本地资质者。</li><li>Transparenzregister 不登记/不更新 → 罚款+账户冻结；正确：年度复核更新。</li><li>VAT 在首次交易后才登记 → 增值税罚款；正确：交易前完成。</li><li>纯仓储仓内人员做销售/签约 → 触发 PE；正确：仓内只按指令发货。</li><li>关联交易无定价依据/无同期资料 → TP 调整+罚息；正确：独立原则+Local/Master File。</li><li>预提税未查协定直接付 → 白交差额税；正确：先出税收居民证明+适用协定率。</li><li>假外包真雇佣 → 事实雇主责任；正确：外包合同隔离雇主责任+核验社保。</li><li>固定期限合同反复续签同一人 → 变无固定期限；正确：错峰/用正规派遣。</li><li>银行 KYC 无本地经营痕迹 → 开户被拒拖慢上线；正确：先租地址+聘本地代理。</li><li>年度财报逾期/不公告 → 罚款+资信受损；正确：日历提醒+双签。</li><li>商业登记信息不核对 → 登记异常；正确：年度确认。</li><li>用工合同不缴本地社保 → 董事连带+补缴；正确：雇佣即登记缴纳。</li><li>主体资本不实/空壳注资 → 资信质疑+客户反咬；正确：足额实缴留银行水单。</li><li>墨西哥外资未办 FOLIO → 主体效力瑕疵；正确：设前确认流程。</li><li>手册一年不更新 → 政策变动漏报；正确：每年由合规岗+顾问复核重发。</li></ol>
+<h2>七、这份手册怎么用、谁更新</h2>
+<div class="key"><b>用法</b>：设立阶段照「时间轴」逐步打勾；运营后照「年度日历」逐项执行；每次出事对照「失误清单」自查。 <b>更新责任人</b>：母公司合规岗牵头，每年 Q4 联合当地董事与外部顾问（律师/财税/HR）复核一遍，更新时限、税率、成本与法规变动，重新签发版本号。手册不是写完存档，是「每年复诊一次」的活文件。</div>
+<div class="key">实战口诀：<b>设立照轴走、年度照历做、责任到人、成本待核、失误十五防。海外子公司不是设完就完，是「每年复诊」才活得久——这份手册，就是它的体检卡。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Set-up Timeline</div><div class="cn">设立时间轴</div><div class="df">从决策、公证、登记、税务、银行到保险开业的步骤序列与材料责任矩阵</div></div><div class="ti"><div class="en">Compliance Calendar</div><div class="cn">合规日历</div><div class="df">按月份/季度/年度排布的申报、公告、会议与文档更新清单，防止漏报</div></div><div class="ti"><div class="en">RACI</div><div class="cn">责任分工矩阵</div><div class="df">Responsible/Accountable/Consulted/Informed，明确母公司、董事、外部顾问的职责边界</div></div><div class="ti"><div class="en">Annual Maintenance Cost</div><div class="cn">年度维护成本</div><div class="df">主体存续的常规支出（地址/财税/审计/法律/社保/银行/保险），数字须标待核实</div></div><div class="ti"><div class="en">Transparenzregister</div><div class="cn">透明度登记</div><div class="df">德国受益所有人登记，须定期更新，错误遗漏可罚</div></div><div class="ti"><div class="en">Annual Financial Statement</div><div class="cn">年度财报</div><div class="df">公司年度编制并向商业登记公告的财务报表，逾期或缺失可被罚并影响资信</div></div></div></div><div class="foot"><a href="W18-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W18-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

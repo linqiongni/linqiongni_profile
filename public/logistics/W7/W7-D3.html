@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·第3天｜承运人的免责事由：航海过失与火灾</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · DAY 3 / 5　·　阶段二　运输责任制度</div><h1>承运人的免责事由：航海过失与火灾</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">航海过失免责像「老司机免责条款」：船长开船的技术失误，船东不赔；火灾也免责，除非是自己点的火。这是海商法最「偏心船东」的地方，也是货主最恨的地方。</div><div class="mlink"><b>怎么串到今天</b>昨天讲必须做什么，今天反过来讲做到位了还能不赔什么——这一组才是海运责任的核心。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>第 51 条（待核实）列了 12 项免责，最狠的是「航海过失免责」——船长船员驾驶/管理船舶的过失造成的损失，承运人免责</li><li>火灾免责（第 52 条 待核实）：承运人免责，但<b>索赔方须证明承运人本人/其受雇人/代理人有过失</b>才打破免责（举证责任倒置）</li><li>管货过失不在免责清单内——所以 D2 的管货义务是承运人躲不掉的硬责任</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《免责事由逐项解析表》+《免责抗辩举证清单》（第 51/52 条，条号待核实）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透承运人的免责事由，重点在航海过失与火灾，站物流商立场给抗辩打法，同时给客户反制点：
+1. 第 51 条（待核实）免责清单逐项解析：12 项逐条给「事由 / 适用条件 / 承运人举证难度 / 客户反制点」，至少包含：船长船员驾驶管理船舶过失、火灾、天灾、战争/民变、政府行为、罢工、救助/企图救助人命财产、货方包装不良、货方行为、货物固有缺陷、托运人谎报、非承运人过失的舱面货
+2. 航海过失免责（第 51 条第 1 款第 1 项 待核实）：为什么它最特殊——连承运人的雇员的过失都免，这是海商法给承运人最大的优待
+3. 火灾免责（第 52 条 待核实）：举证责任倒置，索赔方要证明承运人本人或其受雇人/代理人有过失；举证怎么取（海事声明、检验报告、航海日志）
+4. 《免责抗辩举证清单》：承运人对每项免责，需准备什么证据、在什么时点提交、不提交后果
+5. 落到动作：货损发生后，我方作为承运人应在 24/48/72 小时内做哪几件事来锁定免责证据</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：免责清单是承运人的「免死金牌抽屉」</h2>
+<p>民法典下，搬家公司把东西摔了基本全赔。海商法却给承运人一抽屉「免死金牌」——列了十几条「这些情况我不赔」。其中两张最牛：① <b>航海过失免责</b>（船长船员开船开岔了、管船管漏了，承运人照样免）；② <b>火灾免责</b>（船烧了货没了，除非你能证明是承运人自己点的火）。怎么串到今天：昨天讲承运人「必须做三件事」，今天讲「做了三件事还出事，哪些情形承运人合法甩锅」——这是物流商立场最值钱的一课。</p>
+<div class="key">记忆点：<b>免责清单是海商法给承运人的第二层保护。管货过失不在清单内（躲不掉），但驾驶/管理船舶的过失、火灾在清单内（可甩）。货主想破免，必须从「管货」或「承运人本人过失」两道口子突破。</b></div>
+<h2>二、第 51 条免责清单逐项解析（待核实条号）</h2>
+<table><thead><tr><th>项数</th><th>免责事由</th><th>适用条件</th><th>承运人举证难度</th><th>客户反制点</th></tr></thead><tbody><tr><td>(一)</td><td>驾驶/管理船舶过失（航海过失）</td><td>船长船员/引航员在驾驶或管船中的过失</td><td>极低（只需证属管船非管货）</td><td>证明是「管货」而非「管船」过失（如积载不当属管货不免）</td></tr><tr><td>(二)</td><td>火灾</td><td>非承运人本人/受雇人/代理人过失所致</td><td>低（举证责任在索赔方）</td><td>证明承运人本人或其人有过失（见第 52 条）</td></tr><tr><td>(三)</td><td>天灾/海上危险/意外事故</td><td>合理预见外的自然灾害/海难</td><td>中</td><td>证明承运人未尽合理谨慎避险</td></tr><tr><td>(四)</td><td>战争/民变</td><td>武装冲突、内乱</td><td>低</td><td>证明承运人本可绕避未绕</td></tr><tr><td>(五)</td><td>政府行为/检疫限制</td><td>扣押、封锁、检疫</td><td>低</td><td>证明承运人申报不实致扣押</td></tr><tr><td>(六)</td><td>罢工/停工</td><td>工人停工致延误</td><td>低</td><td>证明承运人可另雇替代未雇</td></tr><tr><td>(七)</td><td>救助/企图救助人命财产</td><td>为救助绕航致损</td><td>极低</td><td>证明非真正救助（借名绕航）</td></tr><tr><td>(八)</td><td>托运人/货方包装不良</td><td>固有包装缺陷</td><td>中</td><td>证明包装符合行业惯例仍损</td></tr><tr><td>(九)</td><td>货物固有缺陷/性质</td><td>自然损耗、本质缺陷</td><td>中</td><td>证明损失超合理自然损耗</td></tr><tr><td>(十)</td><td>托运人/货方行为或不行为</td><td>错误申报、指示错误</td><td>中</td><td>证明承运人未合理核验收货</td></tr><tr><td>(十一)</td><td>动物生病死亡（活动物）</td><td>海上运输动物特有风险</td><td>中</td><td>证明照料不当（管货义务）</td></tr><tr><td>(十二)</td><td>谨慎处理仍不能发现的潜在缺陷</td><td>船舶潜在缺陷</td><td>中</td><td>证明缺陷可合理发现（违反适航）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 第 51 条 12 项免责的完整条文序号与各项措辞以海商法原文为准；② 「航海过失免责」是否涵盖「管船过失」与「驾驶过失」两项（是，第 51 条第 1 款第 1 项）；③ 舱面货免责衔接第 53 条（待核实）；④ 海商法修订草案有「取消航海过失免责」的动向，正式引用前核对最新文本。</div>
+<h2>三、航海过失免责：承运人最大的优待</h2>
+<p>这是海商法最反直觉的一条：<b>连承运人自己的雇员（船长、船员、引航员）在开船、管船时的过失，承运人都免责</b>。注意区分「管船」与「管货」——前者（如船舶导航失误、船体维护不当）免责，后者（如装卸时摔坏、积载不当）不免。破免口子在：把损失归因为「管货过失」而非「管船过失」。例如货被海水泡坏——若是船壳洞（管船）免，若是装货时舱盖没关（管货）不免。</p>
+<h2>四、火灾免责：举证责任倒置是关键</h2>
+<p>火灾免责（第 52 条 待核实）的特殊性在于<b>举证责任倒置</b>：承运人<b>先免责</b>，索赔方（货主）要打破免责，必须证明<b>承运人本人、或其受雇人、或其代理人</b>对火灾有过失。仅仅证明「着火了+货没了」不够，必须证明「是人的过失」。这意味着——<b>货主想拿到火灾赔付款，举证难度极高</b>，几乎要进到船舱查起火原因。</p>
+<h3>货主破免的取证路径</h3>
+<ul><li><b>海事声明 / Sea Protest</b>：船长递交的事故声明，若其中承认船员操作失误，即成为货主证据。</li><li><b>航海日志 / 轮机日志</b>：记录起火前设备状态、巡检记录，若显示长期失修或违规操作，可推定承运人过失。</li><li><b>独立检验报告</b>：船级社/公估行对起火原因的鉴定（电路老化 vs 人为）。</li><li><b>承运人自身文件</b>：船公司安全管理制度缺失、船员培训记录空白，可佐证管理过失。</li></ul>
+<h2>五、《免责抗辩举证清单》（承运人对每项免责的准备）</h2>
+<table><thead><tr><th>免责类型</th><th>承运人需提交证据</th><th>提交时点</th><th>不提交的后果</th></tr></thead><tbody><tr><td>航海过失</td><td>航海日志、海事声明、检验报告（证属管船非管货）</td><td>货损通知后尽快、起诉前固定</td><td>无法区分管船/管货，可能被判管货过失不免</td></tr><tr><td>火灾</td><td>海事声明、消防报告、 logs 证明非承运人过失</td><td>立即（火灾后 24h 内）</td><td>举证责任倒置下，无法排除承运人过失即赔</td></tr><tr><td>天灾/海难</td><td>气象证明、海况报告、船舶操纵记录</td><td>事故发生后</td><td>法院不采信「天灾」主张</td></tr><tr><td>货方包装不良</td><td>装船前货物外观照片、包装缺陷公证</td><td>交货/检验时</td><td>被认定管货不当</td></tr><tr><td>政府/罢工</td><td>扣押令、罢工公告官方文件</td><td>发生后</td><td>免责抗辩不成立</td></tr></tbody></table>
+<h2>六、落到动作：货损后 24/48/72 小时三节点</h2>
+<ol><li><b>24 小时内</b>：船长递交海事声明（Sea Protest），固定「事故非承运人过失」的第一手陈述；拍照/视频保全现场。</li><li><b>48 小时内</b>：委托独立公估/船级社出具检验报告，区分「管船 vs 管货」「天灾 vs 过失」，为免责定性。</li><li><b>72 小时内</b>：书面通知托运人/收货人并附初步证据，启动责任限制基金准备（D4）；同时向保险公司报案。</li></ol>
+<div class="key">反制点（客户/货主视角）：承运人说「免责」时，货主三招破免——① 咬住「管货过失」而非「管船过失」（积载、装卸、照料环节）；② 火灾案逼承运人自证无过失，要求其公开航海日志与消防报告，不公开即推定有过失；③ 查承运人是否绕航、是否丧失责任限制（D4 第 57 条）。货主应在收货时<b>当场验货、异常即批注、24h 内书面通知</b>，把举证球踢回承运人。</div>
+<div class="key">今日口诀：<b>免责清单里，航海过失与火灾是两张王牌。航海过失靠「管船≠管货」挡刀；火灾靠「举证责任倒置」让货主自证承运人过失。货代当承运人，货损后 24h 交海事声明、48h 出检验报告、72h 通知客户——证据留不住，王牌变废牌。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Nautical Fault Exception</div><div class="cn">航海过失免责</div><div class="df">第 51 条第 1 款第 1 项 待核实：因船长、船员、引航员或承运人的其他受雇人在驾驶或管理船舶中的过失造成的货物灭失或损坏，承运人免责</div></div><div class="ti"><div class="en">Fire Exception</div><div class="cn">火灾免责</div><div class="df">第 52 条 待核实：承运人对火灾造成的货损免责，但索赔方证明承运人、其受雇人、代理人有过失的除外（举证责任倒置）</div></div><div class="ti"><div class="en">Excepted Perils</div><div class="cn">免责事由</div><div class="df">海商法第四章列明的承运人可不负赔偿责任的事由清单（第 51 条 12 项 + 第 52 条火灾）</div></div><div class="ti"><div class="en">Sea Protest</div><div class="cn">海事声明</div><div class="df">Master's protest / 海事声明：船长就海上事故向公证/领事机构递交的书面声明，证明事故非承运人过失，是免责核心证据</div></div><div class="ti"><div class="en">Deck Cargo</div><div class="cn">舱面货</div><div class="df">甲板货；非按规定/约定/惯例装载于甲板的货物致损，承运人不享免责（第 53 条 待核实）</div></div></div></div><div class="foot"><a href="W7-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W7-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

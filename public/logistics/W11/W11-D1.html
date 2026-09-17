@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·第1天｜海关法框架与报关主体：谁报关，谁就是纳税义务人</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · DAY 1 / 5　·　阶段二　主干法律</div><h1>海关法框架与报关主体：谁报关，谁就是纳税义务人</h1><div class="sub">第 11 周主题：海关与通关（中国侧） —— 货被扣了怎么办</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">海关就是小区保安和税务员的合体：他既查你搬进去的是什么（监管），也算你要交多少（征税）。谁去申报，谁就是责任主体——这是海关责任的第一原则。</div><div class="mlink"><b>怎么串到今天</b>责任体系学完，进入货物最容易被卡住的环节：通关。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>海关法体系是四层：法律（海关法）→ 行政法规（关税条例/稽查条例）→ 部门规章（海关总署令）→ 规范性文件（公告/署令解读）</li><li>报关三类主体：收发货人（进出口合同当事方）、报关企业（报关行）、报关代理人（受委托代办）</li><li>信用管理三档：认证企业(AEO) / 一般信用 / 失信企业；认证企业享低查验率</li><li>双抬头报关最坑货代：我方以自己名义报关 = 我方是纳税义务人，哪怕货是客户的</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海关监管法规速查表》+《报关委托关系审查清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解中国《海关法》的框架、报关主体与法律责任归属，站物流商（货代/海外仓）立场，同时给客户反制点：
+1. 海关法四层体系：法律（海关法）→ 行政法规（关税条例、稽查条例）→ 部门规章（海关总署令）→ 规范性文件（海关总署公告），逐一举出具体文件名称与文号（无文号的标「待核实」）
+2. 三类报关主体：进出口货物收发货人、报关企业、报关代理人，分别的定义、谁能报关、与海关的关系
+3. 报关单位注册登记与海关信用管理：认证企业(AEO)/一般信用/失信三档，各档的通关待遇差异（查验率、担保、稽查频次）；AEO 高级认证的条件与便利（给具体数字如查验率区间，标「待核实」）
+4. 最致命的坑：双抬头报关 vs 单抬头报关，谁是纳税义务人、谁是申报不实的责任主体。讲清「我方（货代）以自己名义报关」时，哪怕货是客户的，法律责任（补税+罚款+走私罪风险）落到我方头上的情形
+5. 落到业务动作：我方在接受客户报关委托时，必须审查什么、合同中怎么写才能把纳税与申报责任切回客户</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：海关法=进出口的「交通规则总则」，报关主体=「驾照上的持证人」</h2>
+<p>把报关想成「用别人名字叫外卖」：外卖平台要的是「下单人」负责付款和合规，至于是你自己点还是让同事代点，平台只认系统里那个名字。海关也一样——<b>报关单上「以谁的名义」申报，谁就是纳税与合规的第一责任人</b>。货代收客户钱、以自己名义把货报出去，海关根本不管货是谁的，只认你这张单。双抬头就像「公司采购、员工个人收货」：采购方（名义申报人）负责结账合规，员工（实收方）只管拿货——一旦出问题，结账的那个先被追责。怎么串到今天：前 10 周我们讲了运输合同、责任限制、买卖术语；从今天起进入「货到中国海关，谁替它签字画押、签了字要负什么责」——这是货代最常踩、也最容易被客户反咬的一层。</p>
+<div class="key">记忆点：<b>海关只看报关单上的名义申报人。以自己名义报关=自己担纳税+申报责任；即便货是客户的，海关也先找你。货代想自保，要么让客户自己名义报（单抬头），要么间接代理但合同把责任钉死回客户。</b></div>
+<h2>二、海关法四层体系：从「宪法级」到「操作手册」</h2>
+<table><thead><tr><th>层级</th><th>性质</th><th>典型文件</th><th>效力与用途</th></tr></thead><tbody><tr><td>第 1 层 法律</td><td>全国人大常委会制定</td><td>《中华人民共和国海关法》（待核实最新修正年份与修正次数）</td><td>基本法，管报关、关税、稽查、处罚、走私衔接</td></tr><tr><td>第 2 层 行政法规</td><td>国务院制定</td><td>《进出口关税条例》《海关稽查条例》《知识产权海关保护条例》（文号待核实）</td><td>细化法律，规定税率、稽查程序、保护程序</td></tr><tr><td>第 3 层 部门规章</td><td>海关总署令</td><td>《海关报关单位注册登记管理规定》《海关稽查操作规程》《海关行政处罚裁量基准》（令号待核实）</td><td>具体操作规则，报关单位准入、信用管理、处罚标准</td></tr><tr><td>第 4 层 规范性文件</td><td>海关总署公告/发文</td><td>各类监管方式公告、归类决定、原产地办法（公告号待核实）</td><td>最细、变化最快，如跨境电商监管代码、RCEP 实施公告</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：①《海关法》历次修正时间（2000/2013/2016/2021 多次修正，以全国人大官网现行文本为准）；② 各行政法规的国务院令号、各规章的海关总署令号，引用前在「海关总署官网—政策法规」核对现行有效版本；③ 第 4 层规范性文件更新极快，须按「公告发布日+实施日」双日期确认，过期公告即失效。</div>
+<h2>三、三类报关主体：谁有资格在海关「签字」</h2>
+<table><thead><tr><th>主体</th><th>定义</th><th>能否报关</th><th>与海关关系</th><th>货代常见身份</th></tr></thead><tbody><tr><td>进出口货物收发货人</td><td>进出口合同的卖方/买方</td><td>可自报，也可委托</td><td>海关直管对象，纳税义务第一人</td><td>客户（跨境电商卖家/工厂）</td></tr><tr><td>报关企业(报关行)</td><td>专业代办报关的企业</td><td>可报关</td><td>受委托，对申报真实性合法性负责</td><td>我方或我方合作的报关行</td></tr><tr><td>报关代理人</td><td>受收发货人委托代办报关</td><td>以委托人名义报</td><td>责任一般归于委托人（委托关系清晰时）</td><td>我方作为客户代理</td></tr></tbody></table>
+<p>关键区分：<b>直接代理</b>（以客户名义报关，法律责任主要归客户）vs <b>间接代理</b>（以报关行自己名义报关，报关行对外承担申报责任）。货代若以「自身名义」向海关申报，性质上滑向间接代理，海关直接找你——哪怕你只是帮客户走个流程。</p>
+<h2>四、报关单位注册登记与海关信用管理三档</h2>
+<ul><li><b>认证企业（AEO）</b>：海关信用最高档，分高级认证与一般认证（现行分档口径待核实）。通关便利：较低查验率（高级认证企业查验率显著低于一般信用，具体比例待核实）、优先通关、担保减免、AEO 互认国通关便利。</li><li><b>一般信用企业</b>：绝大多数企业的默认档，正常监管，无特殊便利也无惩戒。</li><li><b>失信企业</b>：因走私、严重申报不实、欠税等被列入；后果是<b>高比例查验、重点稽查、通关受限、联合惩戒</b>（如限制法定代表人高消费等，具体惩戒待核实）。</li><li><b>降级风险</b>：一般信用企业一旦发生走私或重大违规，直接降至失信；AEO 违规也会被下调，失去便利。</li></ul>
+<table><thead><tr><th>信用档</th><th>通关待遇</th><th>查验率（区间待核实）</th><th>我方业务影响</th></tr></thead><tbody><tr><td>认证企业(AEO)</td><td>低查验、优先放行、担保减免</td><td>明显低于一般信用（具体%待核实）</td><td>我方若为客户代理报关，可借客户 AEO 身份争取便利</td></tr><tr><td>一般信用</td><td>正常监管</td><td>基准（待核实）</td><td>默认状态</td></tr><tr><td>失信企业</td><td>高查验、重点稽查、联合惩戒</td><td>显著高于基准（待核实）</td><td>我方应避免代理失信企业报关，否则连带被盯</td></tr></tbody></table>
+<div class="key">反制点（客户视角）：跨境电商卖家选货代时，应查货代及合作报关行是否为 AEO、信用档如何——信用差的企业报关，等于把自己的货送进高查验通道。客户可在委托合同中要求货代披露报关主体信用状况，并把「因报关行失信导致查验/延误损失」列为货代赔偿责任。</div>
+<h2>五、双抬头 vs 单抬头：货代最致命的坑</h2>
+<p><b>单抬头</b>：境内收发货人 = 消费使用单位 = 生产销售单位，三者同一主体，责任清晰。<b>双抬头</b>：境内收发货人（常是货代或贸易公司）与消费使用单位/生产销售单位（实际客户）分列。海关的规则是——<b>以谁的名义申报、谁就是纳税义务人</b>；但「申报不实的行政处罚」与「谁提供单证」也相关。实务中最常见的翻车：货代以自己名义帮客户双抬头报关，客户提供的单证（HS 编码、价格、原产地）有误，海关查到后——补税找名义申报人（你），罚款找申报人（你），若构成伪报/走私，刑事风险也优先指向申报人（你）。客户一句「货是我的、单是你报的」就把球踢给你。</p>
+<table><thead><tr><th>情形</th><th>名义申报人</th><th>纳税与申报责任</th><th>货代风险</th></tr></thead><tbody><tr><td>单抬头，客户自报</td><td>客户</td><td>客户全担</td><td>货代无（除非代理过错）</td></tr><tr><td>双抬头，货代以客户名义(直接代理)</td><td>客户</td><td>客户担，货代对代理过错担责</td><td>中：代理过错才连带</td></tr><tr><td>双抬头，货代以自己名义(间接代理)</td><td>货代</td><td><b>货代担</b>（补税+罚款优先找你）</td><td>高：首当其冲</td></tr><tr><td>货代代垫税，客户事后不结账</td><td>货代</td><td>已垫付，向客户追偿</td><td>资金风险</td></tr></tbody></table>
+<div class="key">货代自保铁律：<b>能单抬头让客户自报的，绝不替客户扛名义。非要双抬头，必须签书面《报关委托协议》写明「单证真实性由客户提供并负责、申报不实导致补税罚款由客户承担、货代仅代办」；代垫税款须收押金或见税票付款，不垫不报。</b></div>
+<h2>六、落到业务动作：《报关委托关系审查清单》</h2>
+<ol><li>确认客户是否海关注册登记、信用档（AEO/一般/失信）——失信企业谨慎接单。</li><li>确认报关名义：单抬头自报，还是双抬头、以谁名义；我方是否作为名义申报人。</li><li>索要客户《报关委托书》+ 全套单证（合同、发票、装箱单、提单、许可证、原产地证），核验一致性。</li><li>查清 HS 编码由谁定——客户定则客户盖章确认，我方定则我方留归类依据。</li><li>代垫税款须先收押金/见票付款，合同写「税款客户实报实销，逾期按日 X% 计息」（利率待核实，标「待核实」）。</li><li>委托协议必备「单证真实合法承诺 + 申报不实责任归客户 + 货代免责追偿」三条款。</li><li>报关后留存报关单、委托书、沟通记录至少 3 年（海关稽查追溯期口径待核实，标「待核实」）。</li></ol>
+<div class="key">今日口诀：<b>海关只认报关单上的名字。以己之名报客户之货，补税罚款先找你。单抬头最稳、双抬头须切责、代垫税先收钱——货代报关三道防线，条条保命。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">CL</div><div class="cn">Customs Law / 海关法</div><div class="df">《中华人民共和国海关法》；海关监管的基本法，确立报关、关税、海关事务担保、稽查、行政处罚、走私罪衔接等制度（现行修正次数与最新修正日待核实）</div></div><div class="ti"><div class="en">Customs Declaration Entity</div><div class="cn">报关单位 / 海关注册登记单位</div><div class="df">在海关登记、有权办理报关业务的企业，分进出口货物收发货人与报关企业；须取得海关编码（统一社会信用代码+海关备案）</div></div><div class="ti"><div class="en">Consignor/Consignee</div><div class="cn">收发货人 / 进出口货物收发货人</div><div class="df">进出口货物的实际卖方或买方，通常是进出口合同的当事方；可自行报关也可委托报关企业</div></div><div class="ti"><div class="en">Customs Broker</div><div class="cn">报关企业 / 报关行</div><div class="df">接受收发货人委托、办理报关业务的企业；分直接代理（以委托人名义）与间接代理（以自己名义）</div></div><div class="ti"><div class="en">Dual-header Declaration</div><div class="cn">双抬头报关 / 双抬头进出口</div><div class="df">报关单「境内收发货人」与「消费使用单位/生产销售单位」分列不同主体；责任归属取决于谁以自己名义申报</div></div><div class="ti"><div class="en">AEO</div><div class="cn">Authorized Economic Operator / 认证经营者</div><div class="df">海关信用管理最高层级；享较低查验率、优先通关、担保减免等便利（现行分档与条件待核实）</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W11-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

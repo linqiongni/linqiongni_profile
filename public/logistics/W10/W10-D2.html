@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第10周·第2天｜货代身份之争：代理人还是缔约承运人——这一句话，决定赔不赔</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 10 · DAY 2 / 5　·　阶段二　运输责任制度</div><h1>货代身份之争：代理人还是缔约承运人——这一句话，决定赔不赔</h1><div class="sub">第 10 周主题：多式联运与货代的法律地位 —— 你是代理人还是承运人</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">货代身份之争就是「中介」和「二房东」的区别：中介只收佣金、房子漏水不归他管；二房东收了租，漏水就得赔。你是哪个身份，直接决定赔不赔。</div><div class="mlink"><b>怎么串到今天</b>这是整门课最关键的一天——前面 9 周的知识，都要通过「身份」这个开关落到钱上。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>身份认定四要素：合同措辞、提单签发主体、收费名目、实际操作</li><li>签发自己的提单（HBL/FBL）= 最容易被认定为承运人</li><li>一条措辞写错（如'we undertake to carry'），代理秒变承运</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《身份认定要素表》+《身份锁定条款库》（中英对照）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请讲透跨境物流里最致命的一个问题：货代到底是"代理人"还是"缔约承运人"？输出《身份认定要素表》和可直接落地的《身份锁定条款库》（中英对照）：
+1. 用生活化比喻讲：货代像外卖平台——它"只是帮你找到骑手"（代理），还是"它自己承诺把饭送到"（承运）？两种身份下，饭洒了谁来赔完全不同。
+2. 《身份认定要素表》：从哪几个维度判断？至少四个：①合同措辞（'as agent' vs 'as carrier'）②提单/运单由谁签发、签发什么（HBL 由货代签 vs MBL 由船公司签）③收费名目（佣金 commission vs 运费差 all-in rate）④实际操作（谁选分包商、是否披露实际承运人）。
+3. 核心风险：为什么"身份"直接决定赔不赔？给出 2 个案例——代理身份下货损不赔（只退佣金），承运身份下按限额赔（甚至丧失责任限制）。
+4. 《身份锁定条款库》中英对照：一套"我方明确为代理人"的条款（中英），一套"我方明确为承运人"的条款（中英）。分别说明：在什么谈判地位/业务场景下用哪一套？
+5. 最危险的"骑墙"表述：哪些常见写法会让我方从"代理"被认定为"承运"？逐句点名（如'保证按期送达''承担运输责任''签发自己的提单'）。
+6. 客户（货主）反制点：货主如何把"代理"逼成"承运"来拿到更高赔偿？</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：货代是“外卖平台”，身份决定谁来赔</h2>
+<p>把货代想成<b>外卖平台</b>：你点餐，平台说“我帮你找个骑手”（这是<b>代理</b>），还是平台说“我保证把饭送到你手上”（这是<b>承运</b>）？饭洒了——代理只退你跑腿费，承运得按餐费赔。<b>怎么串到今天：昨天我们确认 MTO 是“总包”要对全程负责；但绝大多数中小货代根本不是 MTO，而是'纯代理'。今天就是教你用合同条款把'我只是牵线'这四个字焊死，别让法院/客户把你当成那个'总包'来赔。</b></p>
+<div class="key">记忆点：<b>身份 = 责任开关。代理身份：货损不赔（仅退佣金/服务费）；承运身份：按责任限额赔，且在某些情形下丧失责任限制、按全额赔。一句话写错，开关就从'不赔'拨到'赔'。</b></div>
+<h2>二、《身份认定要素表》：四把尺子量身份</h2>
+<table><thead><tr><th>认定维度</th><th>倾向'代理人'的信号</th><th>倾向'承运人'的信号</th></tr></thead><tbody><tr><td>合同措辞</td><td>写明 'as agent' / 'as broker' / '安排运输'</td><td>写明 'as carrier' / 'undertake to carry' / '保证送达'</td></tr><tr><td>提单/运单签发</td><td>不签发任何运输单证；或仅代转船公司 MBL</td><td>签发自己的 House B/L、FIATA FBL 等</td></tr><tr><td>收费名目</td><td>收'佣金 commission'或'服务费'，运费实报实销</td><td>收 'all-in rate' 全包价，赚取运费差</td></tr><tr><td>实际操作</td><td>客户指定分包商；货代披露实际承运人</td><td>货代自行选定分包商、不向客户披露实际承运人</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：我国《民法典》关于居间/委托合同、《海商法》关于实际承运人与缔约承运人的规定，以及司法实践中“名为代理实为承运”的认定标准（参考最高人民法院相关判例），请核对最新文本与裁判口径。</div>
+<h2>三、为什么身份直接决定赔不赔：两个案例</h2>
+<ul><li><b>案例①（代理不赔）</b>：货代以 'as agent' 接单，代客户向船公司订舱并转交 MBL，收服务费。海运途中货损，客户找货代赔。法院认定货代是代理人，货损由船公司（实际承运人）按海牙-维斯比 666.67 SDR/件赔，<b>货代仅退还已收服务费，不赔货损</b>。客户反制：主张货代未披露实际承运人/未尽合理选任义务 → 转为过错责任。</li><li><b>案例②（承运全赔）</b>：货代签发 House B/L 给客户、收 all-in rate、自行找船公司。途中全损。客户凭 HBL 告货代。法院认定货代是<b>缔约承运人/MTO</b>，须按限额赔；更糟的是货代在 HBL 中写了'保证按期、安全送达'且未有效援引责任限制 → 被认定<b>丧失责任限制</b>，按货值全赔。</li></ul>
+<div class="key">货主反制点：<b>货主想拿到更高赔偿，核心策略就是把货代'拔高'成承运人</b>——逼货代签 HBL、收全包价、用'承运'措辞。一旦坐实承运身份，货主就能绕开'只找实际承运人'的限制，直接告货代，且可挑战责任限制条款的有效性（未合理提示）。我方对策：若要保代理身份，绝不签 H. own B/L、绝不用'承运'措辞、如实披露分包商。</div>
+<h2>四、《身份锁定条款库》中英对照（可直接落条款）</h2>
+<h3>【A 套】我方明确为代理人（争取谈判地位、纯订舱/报关代理业务用）</h3>
+<blockquote>中："甲方（我方）系以<b>代理人</b>身份为乙方安排运输/订舱/报关等事宜，不参与实际运输，不对货物的灭失、损坏或迟延承担运输责任；甲方仅就其自身过错（如未尽合理谨慎选择承运人、未及时传递单证）承担赔偿责任。运费、费用按实际发生额向乙方实报实销，甲方收取约定的服务费/佣金。"
+EN: "The Forwarder acts as <b>agent</b> only in arranging transportation/booking/customs clearance for the Client and is not a carrier. The Forwarder assumes no liability for loss of or damage to the goods or delay in transit, and shall be liable solely for its own negligence (e.g., failure to exercise due care in selecting the carrier, or delay in transmitting documents). Freight and charges shall be on a cost-plus basis, and the Forwarder is entitled to the agreed service fee/commission."</blockquote>
+<h3>【B 套】我方明确为承运人（强势承运/有 NVOCC 资质、做门到门总包时用）</h3>
+<blockquote>中："甲方（我方）作为<b>多式联运经营人/缔约承运人</b>，负责将货物从接收地运至目的地。除本合同明确约定的免责与责任限制外，甲方对全程运输负责。甲方对货物灭失或损坏的赔偿责任，每件或每单位不超过 666.67 计算单位，或每公斤不超过 2 计算单位（1 计算单位=SDR）；本责任限制依《海商法》及适用区段法律确定。"
+EN: "The Carrier acts as <b>multimodal transport operator / contracting carrier</b> and is responsible for the carriage from the place of receipt to the place of delivery. Except as otherwise expressly excluded or limited herein, the Carrier is liable for the entire carriage. The Carrier's liability for loss of or damage to the goods shall not exceed 666.67 SDR per package or 2 SDR per kilogram (1 SDR = Special Drawing Right); such limitation is subject to the Maritime Code and the law applicable to the relevant leg."</blockquote>
+<div class="key">选用原则：<b>没 NVOCC 资质、纯做订舱/报关 → 用 A 套焊死代理身份；有 NVOCC 备案、做门到门总包且已算清风险 → 用 B 套主动认承运、锁定限额</b>。绝不要'既写代理又签 HBL'——骑墙最危险，法院会按'实质重于形式'认定你是承运。</div>
+<h2>五、最危险的'骑墙'表述：这些写法让代理秒变承运</h2>
+<ul><li><b>'我方保证货物按期、安全送达'</b> → '保证'二字直接构成承运承诺，代理身份被突破。</li><li><b>'我方承担运输责任'</b> → 明示担责，等于认承运。</li><li><b>签发自己的 House B/L / FIATA FBL</b> → 最硬的证据：签发运输单证=以承运人身份履约。</li><li><b>收 'all-in rate' 全包价且不披露分包商</b> → 赚取运费差+不披露=承运特征。</li><li><b>'我方负责将货物运至目的地'（无'安排'二字）</b> → 漏写'安排'，从'安排运输'变'负责运输'。</li><li><b>对外宣称'我的船/我的舱'</b> → 营销话术在法庭上会被当事实。</li></ul>
+<div class="key">今日落地三动作：① 起草/审查合同时，先用《身份认定要素表》四把尺子量一遍我方表述，标红所有'承运化'措辞；② 纯代理合同必须同时具备'as agent'措辞 + 不签 HBL + 实报实销 + 披露实际承运人，四件套缺一不可；③ 把'保证/承担/负责运输/签发HBL'列入合同起草'禁用词清单'，写之前先过一遍。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Freight Forwarder as Agent</div><div class="cn">货代（代理人身份）</div><div class="df">以委托人名义或代委托人安排运输，仅收取佣金/服务费，不承担运输履约责任，货损原则上由实际承运人担</div></div><div class="ti"><div class="en">Contracting Carrier</div><div class="cn">缔约承运人</div><div class="df">与托运人订立运输合同、承诺完成运输的人，即便自己不实际运输，也对全程/全程运输负责</div></div><div class="ti"><div class="en">All-in Rate</div><div class="cn">全包价/一揽子运费</div><div class="df">货代以一个总价向客户报价并保留与实际承运人运费之间的差额，是认定为承运人的强信号</div></div><div class="ti"><div class="en">House B/L (HBL)</div><div class="cn">分提单/货代提单</div><div class="df">由货代（无船承运人）签发给自己客户的提单，签发即可能被视为以承运人身份履约</div></div><div class="ti"><div class="en">Disclosed / Undisclosed Principal</div><div class="cn">显名/隐名本人</div><div class="df">货代是否向对方披露实际承运人（委托人），影响代理关系与责任归属</div></div></div></div><div class="foot"><a href="W10-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W10-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

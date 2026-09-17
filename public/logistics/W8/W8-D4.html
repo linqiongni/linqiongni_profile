@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第8周·第4天｜首要条款（Clause Paramount）与提单法律适用</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 8 · DAY 4 / 5　·　阶段二　运输责任制度</div><h1>首要条款（Clause Paramount）与提单法律适用</h1><div class="sub">第 8 周主题：海上公约体系 —— 海牙 / 维斯比 / 汉堡 / 鹿特丹</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">首要条款（Clause Paramount）就像店里的「本店保留最终解释权」：它强行把某一部公约拉进提单。看到它，你就知道这票货按谁的规矩玩，按哪条算限额。</div><div class="mlink"><b>怎么串到今天</b>公约学完了，今天落到实操：翻开一张真实提单，第一眼先看哪个条款。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>Clause Paramount 是提单背面的「法律适用开关」，一句话把某一国际公约并入提单、决定全程责任规则</li><li>中国《海商法》第 268 条：国际条约优先于国内法（保留条款除外）；第 269 条：当事人可选择合同适用法律——这正是首要条款的合同基础</li><li>我方签发的 House B/L / FBL 首要条款写哪部公约，就按哪部法判责任；写错或含糊 = 法院按最有利货主的规则解释</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《首要条款识别与适用判断流程》+《常见国家/航线提单首要条款速查表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解提单中的「首要条款（Clause Paramount）」与提单法律适用：
+1. 先用生活化比喻引入：把首要条款想成「贴在搬家合同背面的小字——它决定摔了按哪本规则书赔」。再串到今天：D1-D3 把海牙/维斯比/汉堡/鹿特丹四本「规则书」讲完了，今天讲「怎么让其中一本真正管到这一票货」——靠的就是提单背面的首要条款。
+2. 首要条款是什么、它如何把国际公约「并入」（incorporate）进提单：合同条款 + 当事人选法（海商法第 269 条）的衔接
+3. 给可识别的英文样板（如 "This Bill of Lading shall be governed by the Hague-Visby Rules..."）：至少 4 种常见样板（海牙-维斯比、美国 COGSA 1936、汉堡、鹿特丹可选），逐句拆解关键词
+4. 中国《海商法》第 268 条（条约优先）+ 第 269 条（当事人选法）：国际条约优先于国内法、但公约未规定的仍适用海商法；首要条款与这两条如何咬合
+5. 《常见国家/航线提单首要条款速查表》：按航线（欧洲/美线/非洲西非/中东/东南亚）列出常见并入公约与识别要点
+6. 看到不同首要条款，我方（承运人/货代）应按哪部法判断责任——给出可复制的判断流程
+7. 给物流商落地动作 + 客户（货主）反制点</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：首要条款是「贴在提单背面的规则选择权」</h2>
+<p>四本规则书（海牙 / 维斯比 / 汉堡 / 鹿特丹）讲了三周，但<b>它们不会自动管到这一票货</b>——除非提单上有一句话把它们「请进来」。这句小字就是<b>首要条款（Clause Paramount）</b>：它通常躲在提单背面条款的最前面，写「本提单受某某规则管辖」。它像搬家公司合同背面那行「损坏按 XX 标准赔」——你不看，但真出事就按它算。怎么串到今天：D1-D3 是「规则书本身」，今天是「规则书怎么真正落到这一票货上」。我方（货代/承运人）签发自己的提单时，这句小字是你给自己选的责任地基，写错一字，责任敞口可能翻倍。</p>
+<div class="key">记忆点：<b>首要条款 = 提单的「法律适用开关」。它写哪部公约，这票货就按哪部法判责任、限额、时效。我方有权在自己签发的提单上决定它，这是最便宜也最致命的一行字。</b></div>
+<h2>二、首要条款如何把公约「并入」提单（法律机理）</h2>
+<ul><li><b>合同自由 + 选法自治</b>：提单是运输合同证明，背面条款是合同条款。承运人在背面写明适用某公约，等于当事人（通过标准条款）选择了该公约规则——落到中国法就是《海商法》第 269 条「合同当事人可以选择合同适用的法律」。</li><li><b>国际条约优先于国内法</b>：一旦首要条款并入某公约且该公约对中国生效（或当事人自愿并入），依《海商法》第 268 条，条约规定与本法不同的，<b>适用条约</b>（保留条款除外）。所以并入维斯比，限额就从海商法的水平跳到 666.67 SDR/件。</li><li><b>公约未规定的，回到海商法</b>：首要条款只并入公约「有规定」的部分；承运人的受雇人责任、实际承运人、留置权等公约没细说的，仍按《海商法》相关规定（第 269 条选法框架下的国内法补充适用）。</li><li><b>第三人也受约束</b>：提单流转到善意持有人，首要条款作为提单记载事项对其同样有效（维斯比保护善意第三人的延伸）——货主拿到提单，就等于接受了背面的首要条款。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 《海商法》第 268 条（条约优先、保留除外）、第 269 条（当事人选法）以现行法条为准；② 首要条款并入的公约若中国未加入（如汉堡），其适用基于当事人约定而非条约强制力，法院可能以公共秩序或最密切联系调整，须核对最新判例；③ 提单背面条款的「合理提示」义务（是否尽到提请注意）影响条款效力，请核对《民法典》第 496 条格式条款规则在提单场景的适用口径。</div>
+<h2>三、可识别英文样板（4 种，逐句拆解）</h2>
+<h3>样板 1：海牙-维斯比（最常见，欧线/多数航线）</h3>
+<blockquote>"This Bill of Lading shall be governed by the Hague-Visby Rules contained in the International Convention for the Unification of Certain Rules of Law relating to Bills of Lading dated Brussels the 25th August 1924 as amended by the Protocol signed at Brussels on 23rd February 1968 (the 'Hague-Visby Rules') and as enacted in the country of shipment."
+关键词拆解：① governed by = 受…管辖（开关词）；② dated Brussels 25 Aug 1924 = 原始海牙规则；③ as amended by Protocol 23 Feb 1968 = 维斯比修订；④ as enacted in the country of shipment = 同时受装货国国内化立法（如英国 COGSA 1971）约束。看到这句 → 我方按海牙-维斯比判责，航行过失免责保留。</blockquote>
+<h3>样板 2：美国 COGSA 1936（美线必现）</h3>
+<blockquote>"The provisions of the Carriage of Goods by Sea Act of the United States, approved April 16, 1936, as amended (COGSA) shall govern before the goods are loaded on and after they are discharged from the vessel. During the period before loading and after discharge the Carrier shall be liable in accordance with the Harter Act or other applicable US law."
+关键词拆解：① COGSA shall govern before loading and after discharge = 仅「钩到钩」适用 COGSA（≈海牙-维斯比水平）；② 装前卸后按 Harter Act / 其他美国法 = 门到门前的美国法补充。看到这句 → 美线，责任期间是「钩到钩」，装前卸后用美国法，限额同维斯比（COGSA 用词 500 USD/件，须核对现行值）。</blockquote>
+<h3>样板 3：汉堡规则（西非 / 非洲线偶现）</h3>
+<blockquote>"This Bill of Lading shall be subject to the United Nations Convention on the Carriage of Goods by Sea, 1978 (the 'Hamburg Rules') if and to the extent such Rules are compulsorily applicable by the law of the country of shipment or destination."
+关键词拆解：① subject to Hamburg Rules 1978 = 并入汉堡；② if compulsorily applicable = 仅在该公约强制适用时。看到这句 → 航经/目的国为汉堡缔约国（多为非洲、西非）时，航行过失免责没了、2 年时效、推定责任，我方责任骤增。</blockquote>
+<h3>样板 4：鹿特丹规则（自愿并入备选，尚未生效但可约定）</h3>
+<blockquote>"This Bill of Lading is subject to the United Nations Convention on Contracts for the International Carriage of Goods Wholly or Partly by Sea, 2008 (the 'Rotterdam Rules') to the extent the parties have agreed to its application."
+关键词拆解：① Rotterdam Rules 2008 = 门到门、完全推定责任；② to the extent the parties have agreed = 纯自愿（公约未生效）。看到这句 → 我方几乎「货损即赔」，须确认是否真要并入，默认不写。</blockquote>
+<div class="key">识别口诀：<b>扫提单背面第一屏，找 governed by / subject to / shall apply 三个开关词，后面跟的规则名就是责任地基。没写或写「国际公约」含糊其辞 → 法院按最有利货主的规则解释，我方限额保护落空。</b></div>
+<h2>四、《常见国家/航线提单首要条款速查表》</h2>
+<table><thead><tr><th>航线/国家</th><th>常见首要条款</th><th>识别要点</th><th>我方责任水平</th></tr></thead><tbody><tr><td>欧洲基本港（德/荷/比）</td><td>Hague-Visby（含装货国立法）</td><td>goverened by Hague-Visby + as enacted in country of shipment</td><td>中（保留航行过失免责，限额 666.67 SDR）</td></tr><tr><td>美线（美国进出口）</td><td>US COGSA 1936（钩到钩）</td><td>before loading and after discharge 限定词</td><td>中（≈维斯比，装前卸后美国法）</td></tr><tr><td>西非 / 中非</td><td>Hague-Visby 或 Hamburg</td><td>subject to Hamburg Rules 1978 字样</td><td>高（若汉堡强制适用，免责全失）</td></tr><tr><td>中东（海湾国）</td><td>Hague-Visby 为主</td><td>多数沿用欧洲格式提单</td><td>中</td></tr><tr><td>东南亚 / 近洋</td><td>Hague-Visby 或本国海商法</td><td>部分仅写「适用承运人主营业地法」</td><td>中-低（按海商法判）</td></tr><tr><td>中国出口（我方签发提单）</td><td>Hague-Visby 或 《海商法》</td><td>我方模板自定，写清 Hague-Visby 最稳</td><td>可控（自定地基）</td></tr><tr><td>多式联运（含陆/铁段）</td><td>Hague-Visby + 多式联运条款 或 MTO 规则</td><td>注意陆段是否「网状责任制」</td><td>中（分段或统一，看条款）</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：上表为通用航线经验口径，具体到某一船公司/某票货，务必以实际提单背面条款原文为准；部分非洲国家国内立法虽署名汉堡但司法实践不一，需核对目的港法院判例。</div>
+<h2>五、看到不同首要条款，我方应按哪部法判断责任（可复制流程）</h2>
+<ol><li><b>第一步：定位开关词</b>。翻提单背面，找 governed by / subject to / shall be governed，锁定它点名的规则名（海牙-维斯比 / COGSA / 汉堡 / 海商法）。</li><li><b>第二步：判断该规则对中国/本票是否强制适用</b>。海牙-维斯比：中国未加入但当事人可自愿并入（我方模板写即生效）；汉堡：仅目的国为缔约国时强制；COGSA：仅美线钩到钩段。</li><li><b>第三步：确定责任三件套</b>。按该规则查：① 免责（航行过失免不免）；② 限额（666.67 / 835 / 海商法水平）；③ 时效（1 年 / 2 年）。</li><li><b>第四步：补缺</b>。公约未规定的（如实际承运人、留置权、管辖权），回到《海商法》与当事人约定；含糊条款按「最有利货主解释」风险处理。</li><li><b>第五步：固化动作</b>。我方签发提单时，主动把首要条款写成明确「Hague-Visby Rules」，不写「国际公约」等模糊词；客户要求汉堡/鹿特丹时，升级审批并重算保险。</li></ol>
+<div class="key">判断口诀：<b>开关词 → 强制还是自愿 → 查免责/限额/时效 → 公约缺的补海商法 → 我方自签提单写死 Hague-Visby。五步走完，这票货按哪本法算得清清楚楚。</b></div>
+<h2>六、物流商落地动作 + 客户（货主）反制点</h2>
+<ul><li><b>我方落地动作 1（制单）</b>：签发 House B/L / FBL 时，首要条款模板默认写「Hague-Visby Rules」，删除一切「适用国际公约」等含糊表述；谁、何时、做什么：制单岗在提单签发前复核背面条款，留稿归档；不做→争议时被解释成适用汉堡，限额保护落空。</li><li><b>我方落地动作 2（审单）</b>：收到船东/同行提单，先扫首要条款确认并入规则，记入该票货《责任档案》；不做→无法预判客户索赔口径，应诉被动。</li><li><b>我方落地动作 3（谈判）</b>：客户要求并入汉堡/鹿特丹，升级法务+保险核保，重算责任险保额与报价风险溢价，书面确认再改模板。</li><li><b>货主反制点 1</b>：货主可主张提单首要条款含糊，要求按最有利货主的公约（如汉堡）解释——货主应在收货前要求我方明示首要条款。</li><li><b>货主反制点 2</b>：若目的国为汉堡缔约国且提单写「if compulsorily applicable」，货主可主张强制适用汉堡，突破航行过失免责——货主签约时应主动写入汉堡条款。</li><li><b>货主反制点 3</b>：货主可主张我方未尽格式条款提示义务（民法典 496 条），使不利的首要条款不生效；货主应在签单时要求我方醒目提示。</li></ul>
+<div class="key">今日收口：<b>首要条款是提单上最便宜的一行字、却决定最贵的责任。我方自签提单写死 Hague-Visby，收来提单先扫开关词，客户要改规则先过保险和法务。含糊=输，明确=赢。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Clause Paramount</div><div class="cn">首要条款</div><div class="df">提单背面约定本提单适用哪一部国际公约/国内法的条款；是「法律适用开关」，决定承运人责任基础、限额与时效</div></div><div class="ti"><div class="en">Incorporation</div><div class="cn">并入</div><div class="df">通过合同条款将某一国际公约的规则引入提单，使其约束提单关系人；首要条款是典型并入手段</div></div><div class="ti"><div class="en">Hague-Visby Rules</div><div class="cn">海牙-维斯比规则</div><div class="df">海牙规则经 1968 维斯比议定书（1979 SDR 议定书）修订后的统称；保留航行过失免责，限额 666.67 SDR/件</div></div><div class="ti"><div class="en">COGSA 1936</div><div class="cn">美国海上货物运输法</div><div class="df">Carriage of Goods by Sea Act, 1936；美国国内法，实质≈海牙-维斯比，美线提单常以 COGSA 为首要条款</div></div><div class="ti"><div class="en">Choice of Law</div><div class="cn">选法 / 法律适用</div><div class="df">合同当事人选择争议适用法律的自治权；中国海商法第 269 条确认，是首要条款的合法性基础</div></div></div></div><div class="foot"><a href="W8-D3.html">← 第 3 天</a><a class="idx" href="index.html">目录</a><a href="W8-D5.html">第 5 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

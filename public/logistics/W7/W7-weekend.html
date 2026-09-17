@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·周末实战｜一票海运货损案的完整责任推演</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · WEEKEND PROJECT　·　阶段二　运输责任制度</div><h1>周末实战⑦：一票海运货损案的完整责任推演</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">海运货损案完整推演像刑侦片还原沉船：先定谁有义务，再看能不能免责，然后算限额，最后看有没有过期。四关全过完才拿得到钱。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">虚构一票海运货损（深圳→汉堡，珠宝首饰，集装箱进水，提单清洁已装船，索赔在装船后 11 个月提出）。按「定义务→看免责→算限额→查时效」四步，推演货主能拿到多少钱、承运人能挡掉多少，并附承运人防守动作与货主破防路径。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要完整推演一票海运货损案。设定：深圳卖方（珠宝商）托运一票珠宝首饰，由我方（货代/缔约承运人）签发 House B/L，交由船公司（实际承运人）自深圳运至汉堡。运输中集装箱底部进水致部分珠宝氧化受损。提单为「清洁已装船」（clean on board）。收货人在汉堡提货时发现货损，于装船后第 11 个月向我方发出书面索赔通知。
+
+请按四步完整推演：
+1. 定义务：集装箱进水属于承运人哪类义务违反（适航/管货/不绕航）？清洁已装船提单对举证责任有什么影响？我方作为缔约承运人对全程负责的依据（第 60-65 条 待核实）
+2. 看免责：集装箱进水能否落入第 51 条免责（天灾/潜在缺陷/管船过失）？货主如何主张是「管货过失」破免？航海过失/火灾在此案是否适用
+3. 算限额：给出具体数字——货物 80 箱（提单载明件数 80）、毛重 1600 公斤、受损货值 30 万人民币、全部货物总货值 80 万。分别按件数与毛重算单位限额、取高，折合 SDR 与人民币；并判断本案货主能否拿满受损部分
+4. 查时效：装船后 11 个月索赔，是否在 1 年时效内？我方作为承运人应何时、以何方式「踩刹车」防止货主另诉？若货主第 13 个月才起诉会怎样
+5. 给我一份《承运人防守动作清单》+《货主破防路径清单》，以及本案四步推演的最终结论：货主能拿到多少、我方挡掉多少</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、设定复述：这票货的风险剖面</h2>
+<p>深圳珠宝商托运珠宝首饰，我方（货代）<b>签发 House B/L</b>→ 法律身份是<b>缔约承运人</b>（第 42 条 待核实），对全程负责；船公司是<b>实际承运人</b>。集装箱底部进水致部分珠宝氧化，提单为<b>清洁已装船</b>（clean on board），收货人<b>装船后第 11 个月</b>书面索赔。关键：① 我方身份=承运人，责任不限于居间；② 清洁提单把「收货时完好」的举证责任推给我方；③ 进水原因不明，是「管货」「适航」还是「免责」之争；④ 11 个月索赔卡在 1 年时效内但已很晚。</p>
+<h2>二、第一步：定义务——集装箱进水归哪类义务</h2>
+<ul><li><b>可能命中</b>：① 适航（第 47 条 待核实）——若集装箱风雨密缺陷（箱体破洞/封条失效）属「承运人提供的集装箱不适货」；② 管货（第 48 条 待核实）——若装卸/积载时未防雨、舱内冷凝未控、封箱不当。</li><li><b>清洁已装船提单的杀伤力</b>：提单正面无批注，推定<b>承运人接收时货物外观完好、集装箱适货</b>。货主只需证明「交付时受损」，承运人须反过来证明「进水非我方义务违反」——<b>举证责任倒向我方</b>。</li><li><b>我方对全程负责（第 60-65 条 待核实）</b>：作为缔约承运人签发 House B/L，我方须就全程（含实际承运人船公司承运段）向货主负责；与实际承运人的内部分摊另按第 63 条追偿。</li></ul>
+<div class="key">承运人防守第一招：立刻调取装船前集装箱检验报告、封条记录、装箱照片——证明「进水发生在海上段且我方管货无不当」，把责任推回「管船/天灾」或实际承运人区段。</div>
+<h2>三、第二步：看免责——进水能否甩锅</h2>
+<table><thead><tr><th>免责主张</th><th>能否成立</th><th>理由</th><th>货主破免路径</th></tr></thead><tbody><tr><td>天灾/海上危险（51三）</td><td>难</td><td>非风暴致进水，非合理预见外海难</td><td>证明是寻常风浪+箱况缺陷可避</td></tr><tr><td>船舶潜在缺陷（51十二）</td><td>可能</td><td>若箱体破洞经谨慎处理仍不能发现</td><td>证明缺陷可合理发现=违反适航</td></tr><tr><td>管船过失（航海过失）</td><td>可能</td><td>若进水因船壳/舱盖维护不当属管船</td><td>货主主张是「管货」（封箱/积载）非管船</td></tr><tr><td>火灾（52）</td><td>不适用</td><td>本案非火灾</td><td>—</td></tr><tr><td>管货过失（不在清单）</td><td>不成立（对承运人）</td><td>积载/封箱不当属管货，D3 已明不在免责</td><td>货主咬死「管货过失」即破免</td></tr></tbody></table>
+<p><b>核心争点</b>：进水是「管船」（船壳/舱盖缺陷，可免）还是「管货」（集装箱封箱/积载/防潮不当，不免）。承运人想往「管船/潜在缺陷」靠，货主想往「管货」靠——<b>清洁提单下，承运人要先证明自己管货妥善，否则默认管货过失不免</b>。</p>
+<h2>四、第三步：算限额——具体数字推演</h2>
+<h3>本案数据</h3>
+<ul><li>提单载明件数：80 箱（非整箱算 1 件，已载明，利好货主）。</li><li>受损货物：30 箱（受损货值 30 万人民币）；总货 80 箱货值 80 万。</li><li>毛重：全票 1600 公斤（受损 30 箱约 600 公斤，按受损部分算限额）。</li><li>SDR 汇率：1 SDR≈9.6 元人民币（待核实）。</li></ul>
+<h3>受损部分限额计算（取高规则）</h3>
+<table><thead><tr><th>算法</th><th>公式</th><th>限额（SDR）</th><th>折合人民币</th></tr></thead><tbody><tr><td>按件数（受损 30 件）</td><td>666.67 × 30</td><td>20,000 SDR</td><td>约 192,000 元</td></tr><tr><td>按毛重（受损约 600 公斤）</td><td>2 × 600</td><td>1,200 SDR</td><td>约 11,520 元</td></tr><tr><td>取高者</td><td>max(20000,1200)</td><td><b>20,000 SDR</b></td><td><b>约 192,000 元</b></td></tr></tbody></table>
+<p><b>结论</b>：受损货值 30 万人民币，但按件数法限额仅 <b>20,000 SDR≈19.2 万元</b>——<b>限额低于货值，货主拿不满</b>，封顶盖显威力：货主最多拿 19.2 万，我方挡掉约 10.8 万。若货主能证明我方「明知可能损失而轻率作为」（如已知集装箱破洞仍装货），则<b>破限，按 30 万全额赔</b>。</p>
+<h3>全票视角（若整票全损）</h3>
+<ul><li>按件数：666.67 × 80 = 53,334 SDR ≈ 51.2 万；货值 80 万 → 仍挡掉约 28.8 万。</li><li>按毛重：2 × 1600 = 3,200 SDR ≈ 3.07 万（远低于件数法，不取）。</li></ul>
+<h2>五、第四步：查时效——11 个月卡线</h2>
+<ul><li><b>是否在时效内</b>：装船后第 11 个月索赔 → <b>在 1 年时效内（第 257 条 待核实）</b>，货主请求权未灭。</li><li><b>我方「踩刹车」防守</b>：收到书面索赔通知即构成时效中断要件之一（须我方「同意」方完整中断，待核实口径）；更稳妥做法——<b>主动发函确认收讫并同意延长</b>，或引导货主在 1 年内起诉/仲裁，防止其以「未中断」为由争议。</li><li><b>若第 13 个月才起诉</b>：超 1 年，我方直接以时效抗辩驳回，货主归零——<b>这是承运人的终极免责</b>。</li><li><b>管辖</b>：House B/L 若约定「香港仲裁/承运人主营业地法院」，货主须去我方主场；未约定则连结点管辖（深圳/汉堡均可，待核实）。</li></ul>
+<div class="key">反制点（货主视角）：11 个月还在时效内，货主应立刻① 书面索赔并要我方「同意」以中断；② 同时准备起诉，双保险；③ 主张管货过失破免 + 查我方是否明知箱况缺陷以破限。若躺到第 13 个月，一切归零。</div>
+<h2>六、《承运人防守动作清单》+《货主破防路径清单》</h2>
+<h3>承运人防守动作清单</h3>
+<ol><li>收索赔通知 24h 内：调取装船前箱检、封条、装箱照片、VGM，固定「管货无不当」证据。</li><li>48h 内：委托公估出具进水原因报告，定性「管船/天灾/潜在缺陷」以靠免责。</li><li>书面回函：确认收讫并「同意」延长索赔协商，锁定时效中断；同时声明拟限制责任（第 56 条）。</li><li>核算限额：按件数法 20,000 SDR 备付，告知货主封顶额，避免被按货值索赔。</li><li>若涉明知缺陷：立即自查并补强证据，防破限；必要时设责任限制基金（第 58 条 待核实）。</li></ol>
+<h3>货主破防路径清单</h3>
+<ol><li>咬「管货过失」：证明积载/封箱/防潮不当（清洁提单下承运人先证清白）。</li><li>破免责：排除天灾/潜在缺陷（证明缺陷可合理发现=适航违反）。</li><li>破限（第 57 条）：证明我方明知集装箱缺陷仍装货/明知需防潮却放任=轻率作为→全额赔。</li><li>锁时效：书面索赔+要同意+准备起诉，三保险防 1 年过期。</li><li>查管辖权：争取在货主主场或中国法院，避免被拉伦敦高成本仲裁。</li></ol>
+<h2>七、四步推演最终结论</h2>
+<table><thead><tr><th>步骤</th><th>判断</th><th>结果</th></tr></thead><tbody><tr><td>① 义务</td><td>集装箱进水，清洁提单下推定承运人管货/适航责任</td><td>我方负举证责任</td></tr><tr><td>② 免责</td><td>管货过失不免；若定性管船/潜在缺陷可免</td><td>争点：管船 vs 管货</td></tr><tr><td>③ 限额</td><td>受损 30 箱：20,000 SDR≈19.2 万（封顶）</td><td>货主拿 ≤19.2 万，我方挡 ≥10.8 万；破限则全赔 30 万</td></tr><tr><td>④ 时效</td><td>第 11 个月，在 1 年内</td><td>货主请求权有效；迟至 13 月则归零</td></tr></tbody></table>
+<div class="key">本案结局（无破免破限情形下）：<b>货主最多拿 19.2 万元（20,000 SDR），我方依法挡掉约 10.8 万元</b>。若货主证明我方「明知箱况缺陷仍装货」（轻率作为），则突破责任限制，须全额赔 30 万。承运人的两张王牌——责任限制（挡 10.8 万）+ 1 年时效（卡线未过期）——是本票保本的关键；货主的突破口在「管货过失定性」与「破限举证」。</div>
+<div class="key">实战口诀：<b>签发 House B/L 那天起，你就不是代理是承运人。集装箱进水+清洁提单=举证倒置压我方；限额按件数封顶、时效 1 年卡线。防守三动作：24h 取证、48h 定性、回函锁时效；货主三破：管货过失、破限轻率、1 年内起诉。四步走完，谁拿多少一眼定。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Clean on Board B/L</div><div class="cn">清洁已装船提单</div><div class="df">提单正面无货损/包装不良批注且载明货物已装船；推定承运人收货时外观完好，货损在责任期间内的初步证据，加重承运人举证负担</div></div><div class="ti"><div class="en">House B/L</div><div class="cn">货代提单</div><div class="df">无船承运人/货代以自己为承运人签发的提单；签发即被认定为缔约承运人，对全程负责（第 42/60-65 条 待核实）</div></div><div class="ti"><div class="en">Container Sweat / Ingress</div><div class="cn">集装箱进水</div><div class="df">集装箱因风雨密缺陷或积载导致海水/冷凝水侵入致货损，常归因为管货或适航缺陷</div></div><div class="ti"><div class="en">Four-step Test</div><div class="cn">四步判断法</div><div class="df">看到货损：定义务→看免责→算限额→查时效，逐层判断货主能否获赔及数额</div></div><div class="ti"><div class="en">Break Limitation</div><div class="cn">破限</div><div class="df">货主证明承运人「明知可能损失而轻率作为」以掀翻责任限制（第 57 条 待核实）</div></div></div></div><div class="foot"><a href="W7-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W7-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第15周·周末实战｜为客户做一份《欧盟产品合规文件清单与核验 SOP》</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 15 · WEEKEND PROJECT　·　阶段三　境外法域与合规</div><h1>周末实战⑮：为客户做一份《欧盟产品合规文件清单与核验 SOP》</h1><div class="sub">第 15 周主题：欧盟产品合规 —— GPSR、电池法、EPR、CE</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">合规文件清单与核验 SOP，就是一份签证材料清单加检查打勾表：业务拿到就能照着准备，不用每次来问法务。</div></div></div><div class="card"><div class="lb">实战说明</div><div class="out">场景：客户是跨境卖家，委托我方德国海外仓入仓一批含锂电池的 LED 首饰/灯饰。请产出：逐品类文件清单（产品侧/电池侧/EPR 侧/CE 侧/运输侧）、每份文件核验要点与造假识别、核验不通过的处置分支（拒收/隔离/限期补正），以及把这套核验写进海外仓服务协议的中英对照条款。</div></div><details><summary>▸ 展开周末实战指令原文（可复制）</summary><div class="prbox" id="pt">我要为客户做一份《欧盟产品合规文件清单与核验 SOP》。设定：客户是跨境卖家，委托我方德国海外仓入仓一批含锂电池的 LED 首饰/灯饰。请输出：
+1. 逐品类文件清单：产品侧 / 电池侧 / EPR 侧 / CE 侧 / 运输侧，每侧列出必备文件
+2. 每份文件的核验要点 + 如何识别造假（假报告/假编号）
+3. 核验不通过的处置分支：拒收 / 隔离 / 限期补正，给出判定标准
+4. 把这套核验写进海外仓服务协议的中英对照条款文本
+5. 最后给客户一份「入仓前自查清单」与给仓库收货台的操作口诀</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、场景复述：这票货的合规剖面</h2>
+<p>客户（跨境卖家）+ 我方<b>德国海外仓</b> + 货是<b>含锂电池的 LED 首饰/灯饰</b>。这件货一进门，就同时撞上五套欧盟合规：GPSR（身份标签）、电池法规（锂电专项）、EPR（灯饰电路+锂电+包装三张账单）、CE（LVD+EMC 准入）、REACH/RoHS（化学关），再加上运输侧 UN38.3/MSDS。仓库收货台要做的，不是「签收」，而是「核验放行」——五侧文件缺一不可。怎么串到本周：把 D1-D4 的四块合规，今天压缩成一份可执行的《文件清单与核验 SOP》，直接能贴进德国仓的收货流程。</p>
+<div class="key">记忆点：<b>含锂电 LED 货 = 五侧合规同时触发。产品侧(GPSR)、电池侧(UN38.3/电池法)、EPR侧(三张账单)、CE侧(LVD+EMC+RoHS/REACH)、运输侧(危险品)。仓库收货 = 五侧文件核验，不是签收。</b></div>
+<h2>二、逐品类文件清单（五侧）</h2>
+<h3>① 产品侧（GPSR + 基础身份）</h3>
+<ul><li>GPSR：欧盟负责人(RP)信息（名称+欧盟地址+联系方式），须标注于产品或随附文件。</li><li>产品标识：制造商/进口商名称与可追溯信息（批次/序列号）。</li><li>德语安全警示与说明书（德国市场强制当地语言）。</li><li>（进口商如为客户在欧盟主体，须标注其信息——若我方非进口商则不填我方）</li></ul>
+<h3>② 电池侧（电池法规 (EU) 2023/1542）</h3>
+<ul><li>UN38.3 测试报告（锂电池运输安全，出货前必过）。</li><li>MSDS / SDS（锂电危险性与应急）。</li><li>电池 CE 标识与欧盟符合性声明(DoC)（如电池单独标识适用）。</li><li>电池回收符号（划叉带轮垃圾桶）等标识。</li><li>（碳足迹声明/电池护照按法规分阶段适用，现行阶段须核对是否触发）</li></ul>
+<h3>③ EPR 侧（德/法/波，本案德国仓重点德国）</h3>
+<ul><li>WEEE 注册号（德国 EAR，Reg.-Nr. DE 开头）——灯饰电路部分适用。</li><li>电池 EPR 注册号（德国 GRS Batterien 等系统）——内置锂电适用。</li><li>包装 EPR 注册号（德国 LUCID/ZSVR）——所有外包装适用。</li><li>缴费凭证（最近一期）。</li></ul>
+<h3>④ CE 侧（LVD + EMC + RoHS/REACH）</h3>
+<ul><li>CE 标识加贴（产品与包装可见）。</li><li>EU Declaration of Conformity（覆盖 LVD、EMC 等适用指令）。</li><li>技术文件（设计、测试报告、风险评估，保存 ≥10 年，年限待核实）。</li><li>RoHS 合规测试报告（有害物质限制）。</li><li>REACH SVHC 声明（含候选清单物质 >0.1% w/w 的通报证据，阈值待核实）。</li></ul>
+<h3>⑤ 运输侧（危险品/锂电池发运）</h3>
+<ul><li>UN38.3（同电池侧，运输必查）。</li><li>MSDS/SDS（同电池侧）。</li><li>锂电池运输文件/申报（按 IATA/IMDG/ADR 对应方式，含第 9 类危险品标记与随附文件）。</li><li>包装合规证明（UN 规格包装等，如适用）。</li></ul>
+<h2>三、每份文件核验要点 + 造假识别</h2>
+<table><thead><tr><th>文件</th><th>核验要点</th><th>造假识别方法</th></tr></thead><tbody><tr><td>UN38.3 报告</td><td>报告机构资质、型号与实物一致、在有效期</td><td>查发证实验室官网核验编号；型号对不上=假；过期=无效</td></tr><tr><td>MSDS/SDS</td><td>最新版、含锂电 UN 编号与应急措辞</td><td>版本过旧、缺 UN3480/3481 号、内容模板化无细节=可疑</td></tr><tr><td>EPR 注册号</td><td>国别匹配（德国 DE 号）、状态有效</td><td>上 EAR/LUCID 公开库输入编号核验；查无此号=假</td></tr><tr><td>EU DoC</td><td>列全适用指令、制造商与 RP、签署</td><td>指令漏列(如缺 EMC)、无 RP、无签署=不合格/假</td></tr><tr><td>CE 标识</td><td>清晰、位置合规、覆盖全部适用指令</td><td>模糊、贴错、仅贴 CE 无 DoC 支撑=空标</td></tr><tr><td>RoHS/REACH 报告</td><td>实验室资质、样品型号匹配</td><td>无 CNAS/ISO17025 资质章、型号不符=可疑</td></tr><tr><td>技术文件</td><td>内容完整可核查</td><td>仅目录无实质、无法提供=不合规</td></tr></tbody></table>
+<div class="key">反制点（客户视角）：卖家应要求供应商提供<b>带官方可查编号</b>的真实报告与注册号，并在采购合同写「文件造假导致欧盟下架/罚款的损失由供应商承担」。客户给仓库的文件也应留底，防止仓库核验失误时互相推诿。</div>
+<h2>四、核验不通过的处置分支：拒收 / 隔离 / 限期补正</h2>
+<table><thead><tr><th>判定</th><th>适用情形</th><th>动作</th><th>费用承担</th></tr></thead><tbody><tr><td>拒收(Reject)</td><td>红线缺失：无 UN38.3、无 MSDS、EPR 号全无且客户无法说明</td><td>直接拒收，不入仓，货退客户或按指令处理</td><td>客户承担退运费/仓储费</td></tr><tr><td>隔离(Quarantine)</td><td>黄灯缺失：标识语言不全、CE/DoC 待补、EPR 单类缺号</td><td>入隔离货位，不混正常库，系统标记「待补正」</td><td>客户承担隔离费</td></tr><tr><td>限期补正(Cure)</td><td>隔离项下可补救项</td><td>通知客户 X 天内补正（天数待核实，标「待核实」），复核通过后转正常库</td><td>逾期转拒收，费用客户担</td></tr></tbody></table>
+<div class="key">仓库操作铁律：<b>红拒收、黄隔离、可补则限期。隔离货位物理隔离、系统独立标记，绝不与合规货混放，防止监管抽查时整仓受牵连。所有处置留记录（邮件/系统工单）作证据。</b></div>
+<h2>五、写进海外仓服务协议的中英对照条款</h2>
+<h3>条款草案（中英对照）</h3>
+<blockquote>第 X 条 产品合规核验与责任划分 / Article X Product Compliance Verification and Allocation of Liability</blockquote>
+<p>中文：客户声明并保证，交付甲方（海外仓）仓储及履约的每一批次产品均符合欧盟适用法规，包括但不限于 (EU) 2023/988（GPSR）、(EU) 2023/1542（电池法规）、WEEE/包装/电池之 EPR 制度、相关 CE 指令（如 2014/35/EU、2014/30/EU）、(EU) 2011/65/EU（RoHS）及 (EC) 1907/2006（REACH）。客户应在入仓前提供本协议附件《合规文件清单》所列全部文件及有效 EPR 注册编号。甲方仅以履约辅助人身份提供仓储与履约服务，不以自身名义进口、销售或改装客户产品；因客户产品合规缺陷导致下架、罚款、召回、退运或第三方索赔的，全部损失、税款、罚款及费用（含仓储费、退运费、律师费）由客户承担。甲方依《合规核验 SOP》核验发现文件缺失的，有权拒收、隔离或限期补正，由此产生费用由客户承担。</p>
+<p>English: The Customer represents and warrants that each batch of Products delivered to the Warehouse Provider for storage and fulfilment complies with applicable EU law, including but not limited to Regulation (EU) 2023/988 (GPSR), Regulation (EU) 2023/1542 (Battery Regulation), the WEEE/packaging/battery EPR regimes, the relevant CE Directives (e.g. 2014/35/EU, 2014/30/EU), Directive 2011/65/EU (RoHS) and Regulation (EC) 1907/2006 (REACH). The Customer shall provide, prior to warehousing, all documents and valid EPR registration numbers listed in the Compliance File Kit attached hereto. The Warehouse Provider acts solely as a fulfilment auxiliary, and shall not import, sell or modify the Customer's Products in its own name. The Customer shall bear all losses, taxes, fines and costs (including storage, return freight and legal fees) arising from the Products' non-compliance, including takedown, fines, recalls, returns or third-party claims. Where the Warehouse Provider's verification under the Compliance Verification SOP reveals missing documents, it may reject, quarantine or require cure within a specified period, at the Customer's cost.</p>
+<h3>附件《合规文件清单》条款（中英对照要点）</h3>
+<ul><li>中文：客户须按产品/电池/EPR/CE/运输五侧提交文件；德国仓须提供德语说明书与德国 EPR 编号（WEEE/电池/LUCID）。</li><li>EN: The Customer must submit documents under five sides: Product / Battery / EPR / CE / Transport. For the German warehouse, German-language instructions and German EPR numbers (WEEE / battery / LUCID) are required.</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 条款中 EPR 编号的「一国一号 vs 按品类多号」以德国 EAR/LUCID 现行规则为准；② 限期补正天数、隔离/拒收的费用标准由双方商务约定，须填具体数字（标「待核实」处补具体值）；③ 英国业务若涉及，须另加 UKCA 分支与 NI 特殊规则；④ 本条款为立场草案，落地时按我方法务最终审定文本签署。</div>
+<h2>六、给客户的「入仓前自查清单」+ 仓库收货口诀</h2>
+<h3>客户入仓前自查清单（交付客户版）</h3>
+<ol><li>□ 非欧盟厂：已指定欧盟负责人(RP)并在产品/文件标注？</li><li>□ 产品德文警示与说明书齐备？有批次/序列号？</li><li>□ 锂电：UN38.3 + MSDS + 电池 CE/DoC + 回收符号？</li><li>□ EPR：德国 WEEE / 电池 / LUCID 三号齐全且在效？</li><li>□ CE：标识 + DoC（LVD+EMC）+ 技术文件 + RoHS/REACH 报告？</li><li>□ 运输：锂电池运输文件/申报 + UN 规格包装（如适用）？</li></ol>
+<h3>仓库收货台操作口诀</h3>
+<div class="key">收货台口诀：<b>一查 RP、二查语言标、三查电池 UN38.3、四查 EPR 三号、五查 CE+化学报告。红（无 UN38.3/无 RP）拒收，黄隔离限期补，五关过才入库。物理隔离待补货位，处置全留痕——这套 SOP 写进协议，责任回客户。</b></div>
+<div class="key">实战收口：<b>含锂电 LED 货入德国仓，五侧文件是硬门槛。仓库不是签收员是核验员——红拒黄隔可补则限期。把核验写进协议、把责任回客户，海外仓才不会被当成进口商/生产者替人背锅。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Compliance File Kit</div><div class="cn">产品合规文件包</div><div class="df">产品入欧盟海外仓须备齐的文件集合，分产品/电池/EPR/CE/运输五侧，是入仓核验的「材料清单」</div></div><div class="ti"><div class="en">Forgery Detection</div><div class="cn">造假识别</div><div class="df">核验时识别假测试报告/假注册编号的方法：查官方登记库、核报告防伪、比对型号一致性</div></div><div class="ti"><div class="en">Reject / Quarantine / Cure</div><div class="cn">拒收 / 隔离 / 限期补正</div><div class="df">核验不通过的三种处置：红线直接拒收、黄灯隔离待补、限期 X 天补正逾期转拒收（天数待核实）</div></div><div class="ti"><div class="en">Warehouse Service Agreement</div><div class="cn">海外仓服务协议</div><div class="df">约定仓储/履约/核验义务与责任划分的主合同；本实战给出产品合规核验的中英对照条款</div></div><div class="ti"><div class="en">SOP</div><div class="cn">Standard Operating Procedure / 标准作业程序</div><div class="df">把合规核验流程固定为可复制的操作步骤，贴进仓库收货台</div></div></div></div><div class="foot"><a href="W15-D5.html">← 第 5 天</a><a class="idx" href="index.html">目录</a><a href="W15-D1.html">回到第 1 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约、限额数字与监管代码均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第13周·第1天｜全链路责任地图（一）：从揽货到装船</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 13 · DAY 1 / 5　·　阶段二　主干法律</div><h1>全链路责任地图（一）：从揽货到装船</h1><div class="sub">第 13 周主题：阶段复盘 —— 全链路责任地图</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">从揽货到装船这一段，就像搬家公司把东西搬上车之前：货还在你手上，但海运的责任限额还没生效，只能按普通合同法赔全价。这反而是全链路最「裸露」的一段。</div><div class="mlink"><b>怎么串到今天</b>阶段二总复盘开始：把前六周的知识铺到链路的前半段。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>全链路责任地图=把 W7-W11 挂到一条时间轴上的那张总表：每段都问「我方身份 / 适用法 / 主要风险 / 必备单证 / 责任限额 / 常见事故」六问</li><li>身份是第一颗扣子：揽货与报价订舱阶段若签 House B/L 或以自己名义 all-in 报价，货代即从代理变为承运人</li><li>装船是海上风险转移的开关：集装箱货责任期间自装货港接收至卸货港交付（海商法第 46 条 待核实）</li><li>报关申报不实：货代作为申报单位与实际货主对海关承担连带/相应责任，HS 编码归类错是高频雷</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《全链路责任地图（上半段）》——把 W7-W11 挂到一条时间轴上：揽货→报价/订舱→内陆提货→仓储集拼→报关→装船 六段 ×（身份/适用法/风险/单证/限额/事故）六问</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请为阶段二收口，做一张《全链路责任地图（上半段）》，把第 7-11 周散落的知识点挂到「揽货→报价/订舱→内陆提货→仓储集拼→报关→装船」这条时间轴上：
+1. 先讲为什么要做这张地图：跨境一票货从客户下单到装船，前后经过六段，每段我方身份（代理/承运/仓储）可能不同，适用法不同，责任限额不同——不画出来，出了事根本不知道自己站在哪一段、该用哪条法、赔到哪个数
+2. 六段逐段铺开，每段回答六问：① 我方身份（代理/承运/仓储）→ ② 适用法/公约 → ③ 主要风险 → ④ 必备单证 → ⑤ 责任限额 → ⑥ 常见事故
+3. 重点讲「身份」如何在第一段（揽货）和第二段（报价/订舱）定型：为什么签 House B/L、以自己名义 all-in 报价、自己选分包商，就会把代理变成承运人
+4. 给一张《上半段常见事故 × 责任归属速查表》
+5. 落到业务动作：接单当天我方应在合同里先定性身份、写明责任边界</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：全链路责任地图像「外卖从下单到出餐的流水线」</h2>
+<p>点外卖时，你以为只有一个「平台」，其实背后是「接单员→派单→骑手取餐→商家出餐→打包→骑手送达」一串人，每一环出问题，赔的人不一样。跨境物流一模一样：一票货从客户电话进来，到装上船开走，中间经过<b>揽货、报价订舱、内陆提货、仓储集拼、报关、装船</b>六段，每一段我方可能是「纯代理」「承运人」或「仓储方」，身份一变，适用的法、赔的上限全变。怎么串到今天：W7 讲承运人是谁、W8-W9 讲各运输方式公约、W11-W12 讲海关，今天把它们<b>按时间顺序钉到一条轴上</b>，出事第一时间就能定位「我站在哪一段、该用哪条法、赔到哪个数」。</p>
+<div class="key">记忆点：<b>全链路责任地图的本质，是把「散落的法条」变成「带时间轴的责任清单」。六段六问（身份/适用法/风险/单证/限额/事故）是横切刀，时间轴是纵切刀，两刀一交，责任定位立刻清楚。</b></div>
+<h2>二、《全链路责任地图（上半段）》总表：六段 × 六问</h2>
+<table><thead><tr><th>链路段</th><th>我方身份（代理/承运/仓储）</th><th>适用法 / 公约</th><th>主要风险</th><th>必备单证</th><th>责任限额（待核实）</th></tr></thead><tbody><tr><td>① 揽货（接单/委托）</td><td><b>纯代理</b>（居间）或<b>缔约承运人</b>（若后续签 House B/L）</td><td>民法典合同编（委托/运输合同）；身份未定前无专门强制法</td><td>身份定性错（骑墙）、超范围承诺、口头委托无据、危险品未识别</td><td>《委托运输协议》、报价单、客户营业执照与货品资料、危险品预审表</td><td>代理：仅在过错范围内赔；承运：受单位责任限制（海商法，待核实）</td></tr><tr><td>② 报价 / 订舱</td><td><b>代理</b>（代订舱收佣金）或<b>无船承运人</b>（签发 House B/L / 以己名 all-in）</td><td>民法典合同编 + 海商法（若涉海运）；身份决定适用</td><td>身份误定、all-in 报价漏算附加费、超期舱位罚金、运价波动</td><td>《订舱委托书》、S/O、运价确认、舱位证明、订舱确认件</td><td>代理：过错赔偿；承运：666.67 SDR/件或 2 SDR/公斤（海牙-维斯比，待核实）</td></tr><tr><td>③ 内陆提货</td><td><b>陆段承运/分包</b>（公路/铁路）或<b>代理</b>（代安排拖车）</td><td>公路：民法典合同编 + 道路运输条例；铁路：SMGS/CIM（我国已加入 SMGS，待核实）</td><td>陆损、交通事故、延误、货差、司机卷货、未买陆运险</td><td>《拖车派单》、《司机签收单》、GPS 轨迹、陆运提单/运单</td><td>公路无强制限额，按约定/实际损失；铁路按 SMGS 限额（待核实）</td></tr><tr><td>④ 仓储集拼</td><td><b>仓储方 / CFS 经营人</b></td><td>民法典合同编（仓储合同）+ 海关监管仓规则；拼箱涉多货主</td><td>货损、错装、短装、保税仓违规、危险品混装、库存损耗</td><td>《入库单》、《仓单》、《装箱单》、CFS 理货记录、库存台账</td><td>仓储：保管不善赔偿（无 SDR 限额）；海关处罚另计</td></tr><tr><td>⑤ 报关</td><td><b>报关单位</b>（代理报关）或<b>进出口收发货人</b></td><td>《海关法》+《进出口关税条例》+ 报关单位管理办法</td><td>申报不实（HS 错、品名错、数量错）、漏报、伪报、单证不符</td><td>《报关单》、发票、装箱单、合同、许可证、HS 归类资料</td><td>行政罚款（漏缴税款 0.3-2 倍，待核实）+ 走私刑责风险；民事对委托人赔偿</td></tr><tr><td>⑥ 装船</td><td><b>承运人 / 实际承运人</b>（海运段）</td><td>海商法第四章（特别法优先）；集装箱责任期间第 46 条</td><td>货损、迟延、绕航、不洁交付、提单批注争议、VGM 差错</td><td>《已装船清洁 B/L》、VGM、舱单、大副收据（M/R）</td><td>666.67 SDR/件或 2 SDR/公斤（海牙-维斯比，待核实）；丧失限制情形另计</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 海商法集装箱责任期间（第 46 条）、单位责任限制（第 56 条 666.67 SDR/件或 2 SDR/公斤，海牙-维斯比规则）以法条原文为准；② 我国加入 SMGS（国际铁路货物联运协定）及 CIM/COTIF 未加入，以铁道部/交通运输部公告为准；③ 报关申报不实的罚款幅度（海关法第 86 条及行政处罚裁量基准）以最新文本为准；④ 海商法修订草案可能调整限额数值，正式引用前核对。</div>
+<h2>三、逐段拆解：身份如何在头两段定型</h2>
+<h3>1. 揽货：合同定性的第一颗扣子</h3>
+<ul><li>接单时写「我方作为贵司订舱代理人，代向承运人订舱、代收代付运费，收取佣金」→ 身份=<b>纯代理</b>，责任限于过错。写「我方以承运人身份承接本票货物，签发我司提单，全程对货负责」→ 身份=<b>缔约承运人</b>，对全程负责。</li><li><b>骑墙最危险</b>：合同写代理、实际却以自己名义 all-in 报价并签 House B/L——法院穿透看实质，按承运人认定。</li><li>接单当天必须做「身份定性三步」：看合同措辞、看收费方式（佣金 vs 运费差 vs all-in）、看是否签自己提单。</li></ul>
+<h3>2. 报价/订舱：身份在此刻定型</h3>
+<ul><li><b>代订舱收佣金</b>：费用透明、风险隔离，我方只是「二传手」，出事甩给实际承运人。</li><li><b>以自己名义 all-in 报价 + 签 House B/L</b>：我方成了无船承运人（NVOCC），要自己扛全程货损、自己面对货主索赔。</li><li><b>自己选分包商</b>：选谁、控不控运输，是认定承运人/代理人的核心事实——替客户选船公司只是代理，自己决定分包并赚差价就是承运。</li></ul>
+<h3>3. 内陆提货：陆段责任谁扛</h3>
+<ul><li>我方若只代安排拖车、费用实报实销→ 代理，陆损由实际拖车公司按道路运输条例担。</li><li>我方若以自己名义承接陆运段并出具陆运单→ 陆段承运人，按约定或实际损失赔（公路无 SDR 强制限额）。</li><li>陆运段务必留《司机签收单》+ GPS 轨迹，证明「货交第一陆承运」的时点，切割风险。</li></ul>
+<h3>4. 仓储集拼：海外仓 / CFS 的管货责任</h3>
+<ul><li>入库即签《入库单》，出库即签《出库单》，库存差异以 WMS 记录为准——这是保管责任的证据链。</li><li>拼箱（LCL）错装、短装，CFS 经营人按保管不善赔，无 SDR 限额，按实际损失算。</li><li>危险品混装是红线：一票锂电池瞒报可能引燃同柜，CFS 未尽合理审查要连带。</li></ul>
+<h3>5. 报关：申报不实谁背锅</h3>
+<ul><li>货代作为申报单位，对报关单真实性、准确性负合理审查义务；HS 归类错导致漏税，海关先罚申报单位，再追委托人。</li><li>必须留存客户提供的发票、合同、归类依据，证明「已尽合理审查」，否则难脱行政与民事双重责任。</li><li><b>反制点（客户视角）</b>：客户可主张货代未尽专业归类义务，索赔海关罚款与补税损失——所以货代须在委托合同写清「归类以客户提供的资料为准，错归客户担」。</li></ul>
+<h3>6. 装船：风险装上船才转</h3>
+<ul><li>集装箱货责任期间自<b>装货港接收</b>至<b>卸货港交付</b>（海商法第 46 条 待核实）；非集装箱货自装上船至卸下船。</li><li>装船前货在港区受损，风险未转买方，理论上卖方/相关方担——我方若在空窗期介入易被拉入（同 W3 的 FOB 空窗）。</li><li><b>已装船清洁 B/L</b> 是日后免责抗辩的命门：交付时有无批注，决定管货义务是否尽到。</li></ul>
+<h2>四、上半段常见事故 × 责任归属速查</h2>
+<table><thead><tr><th>事故</th><th>最可能涉及段</th><th>我方身份</th><th>责任归属倾向</th><th>反制点（客户 / 对方）</th></tr></thead><tbody><tr><td>货主谎报危险品致船公司拒运</td><td>揽货 / 报关</td><td>代理</td><td>我方尽合理审查且无过错则免责，但客户要我方赔「拒运损失」</td><td>客户反制：主张我方未提示危险品申报义务，须证明已书面提示并索要 MSDS/UN38.3</td></tr><tr><td>陆运途中车祸全损</td><td>内陆提货</td><td>陆段承运</td><td>我方若仅为代理则仅居间、转嫁分包承运；若为承运按陆运限额/约定</td><td>分包方反制：向我方追偿，我方再向客户收运费</td></tr><tr><td>CFS 错装致短装</td><td>仓储集拼</td><td>仓储 / CFS</td><td>我方保管不善赔偿，按实际损失（无 SDR）</td><td>货主反制：当场验货批注，证明我方理货记录缺失</td></tr><tr><td>HS 归类错误被海关罚</td><td>报关</td><td>报关单位</td><td>我方与委托人向海关连带/相应责任，罚款+补税</td><td>客户反制：主张我方未尽专业归类义务，索赔罚款损失</td></tr><tr><td>装船前货在港区受损</td><td>装船 / 揽货空窗</td><td>代理或承运</td><td>风险在装上船前未转买方，理论上卖方担；我方若介入空窗易被拉入</td><td>货代自保：书面交接单固化，不越界替任何一方承担</td></tr></tbody></table>
+<h2>五、今日落地三动作</h2>
+<div class="key">① 接单当天在合同里先定性「我方是代理/承运/仓储」哪一层，并据此限定责任；② 把《上半段责任地图》存进法条库，出事先翻这张表定位身份与适用法；③ 凡签 House B/L 的业务，立刻按承运人标准补责任限额条款与保险——别用代理人合同去扛承运人风险。今日口诀：<b>六段六问一张轴，身份是第一颗扣子；代理承运差一字，赔到哪个数天差地别。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Freight Forwarder (FF)</div><div class="cn">货运代理</div><div class="df">接受客户委托，以委托人名义或自己名义办理国际货运及相关业务并收取报酬的企业；身份是代理还是承运，取决于合同措辞、收费方式与是否签发自己提单</div></div><div class="ti"><div class="en">Booking</div><div class="cn">订舱</div><div class="df">托运人/货代向承运人申请舱位的行为；订舱确认后运输合同要素初步锁定，是身份定型的关键节点</div></div><div class="ti"><div class="en">CFS</div><div class="cn">集装箱货运站</div><div class="df">Container Freight Station；用于拼箱货（LCL）装箱、拆箱、集拼的场所，海外仓与货代仓库常兼具此功能</div></div><div class="ti"><div class="en">Customs Declaration</div><div class="cn">报关</div><div class="df">向海关申报进出口货物并办理纳税/放行手续；申报如实性由报关单位与委托人共担，HS 编码归类错误是高频雷</div></div><div class="ti"><div class="en">Shipping Order (S/O)</div><div class="cn">装货单（下货纸）</div><div class="df">承运人签发给托运人凭以向码头/船边交货的指令单据，是装船环节的衔接凭证，也是大副收据的前置</div></div><div class="ti"><div class="en">FCL / LCL</div><div class="cn">整箱 / 拼箱</div><div class="df">Full Container Load / Less than Container Load；整箱由托运人自装自封，拼箱由 CFS 集拼，责任与风险划分不同</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W13-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

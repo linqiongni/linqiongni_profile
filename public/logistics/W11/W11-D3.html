@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第11周·第3天｜跨境电商监管方式与海外仓出口：选对代码，退税与退货两不误</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 11 · DAY 3 / 5　·　阶段二　主干法律</div><h1>跨境电商监管方式与海外仓出口：选对代码，退税与退货两不误</h1><div class="sub">第 11 周主题：海关与通关（中国侧） —— 货被扣了怎么办</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">9610/9710/9810/1210 就是四条不同的通关车道：走错车道，要么被拦下，要么白错过退税和便利政策。跨境电商的合规，一半在这四个数字里。</div><div class="mlink"><b>怎么串到今天</b>传统贸易的通关规则看完，今天看跨境电商专属的四条通道。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>五个代码并列：0110 一般贸易 / 9610 直购进出口 / 9710 B2B 直接出口 / 9810 出口海外仓 / 1210 保税备货</li><li>9810 海外仓=「先出口后销售」，退税在出口时办、销售在境外发生，节奏与 0110 不同</li><li>退货：9810/9610 有退货通道，1210 保税备货退货直接回综合保税区；监管代码与退税政策变化快，一律标「须核对现行公告」</li><li>货代给客户选错监管方式=客户退不了税、退不了货，反咬货代</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《跨境电商监管方式选择决策表》+《9810 海外仓出口合规清单》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲透跨境电商五种海关监管方式，重点在 9810 海外仓出口，站物流商立场给决策表与客户反制点：
+1. 五种监管方式并列成表：0110 一般贸易 / 9610 直购进出口 / 9710 B2B 直接出口 / 9810 出口海外仓 / 1210 网购保税进口——每项给适用范围、报关单特征、能否退税、退货与二次销售如何处理、单证要求
+2. 9810 海外仓出口的核心逻辑：「先出口后销售」——货先以 9810 出口到海外仓，销售在境外平台发生；退税在哪个环节办、需要什么单证（海外仓租赁合同、销售订单、物流单）
+3. 退货与二次销售：9810 出口货物因滞销/质量问题退回境内的海关处理；1210 保税备货退货回综合保税区的便利；二次销售（已售退货再卖）的税务与海关处理
+4. 监管代码与退税政策变化极快，哪些字段必须标「须核对现行公告」
+5. 落到动作：客户咨询「我这票货走哪个代码」时，我方如何用决策表 30 秒给答案，并写进委托协议防范选错责任</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：监管方式=货物的「通关通道」，选错通道退不了税也退不了货</h2>
+<p>把五种监管方式想成「快递柜的五个格口」：普通包裹走格口 A（0110 一般贸易），跨境小包走格口 B（9610 直邮），企业对企业走格口 C（9710），先把货囤到海外仓走格口 D（9810），保税备货走格口 E（1210）。<b>每个格口的规矩不同：能不能退税、退货往哪退、要什么单证全不一样</b>。选错格口，货进去了却退不了税、退不了货——客户亏的钱，最后都来问货代「你当初为什么给我选这个」。怎么串到今天：前两天讲报关主体与编码价格，今天讲「这票跨境货走哪条海关通道」，通道决定整票货的资金节奏（退税）与售后（退货）。</p>
+<div class="key">记忆点：<b>监管方式决定退税节奏与退货路径。9810 海外仓是「先出口后销售」，退税在出口环节；1210 是「先备货后进区」，退货回保税区最顺。选错=资金与售后双坑。</b></div>
+<h2>二、五种监管方式并列决策表</h2>
+<table><thead><tr><th>代码</th><th>名称</th><th>适用</th><th>退税</th><th>退货处理</th><th>关键单证</th></tr></thead><tbody><tr><td>0110</td><td>一般贸易</td><td>B2B 传统进出口</td><td>出口后凭报关单等办（须核对）</td><td>退运按一般贸易退运办理</td><td>合同/发票/装箱单/报关单</td></tr><tr><td>9610</td><td>跨境电商直购</td><td>B2C 小包直邮进/出</td><td>按清单核放汇总申报（须核对）</td><td>可退回境内（通道待核实）</td><td>订单/支付/物流三单</td></tr><tr><td>9710</td><td>跨境电商 B2B 直接出口</td><td>B2B 平台交易出口</td><td>参照一般贸易办（须核对）</td><td>按出口退运</td><td>平台交易单/报关单</td></tr><tr><td>9810</td><td>出口海外仓</td><td>先出到海外仓后销售</td><td><b>出口时办退税（先出后销）</b></td><td>可退运回境或区内销售（须核对）</td><td>海外仓租赁/销售订单/物流单</td></tr><tr><td>1210</td><td>网购保税进口</td><td>保税备货进口</td><td>进口侧消费税增值税按行邮或保税（须核对）</td><td><b>退货直接回综合保税区</b></td><td>入区清单/订单</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 须核对现行公告：① 各监管方式的最新适用范围与「跨境电商」资质要求（企业须在海关注册为跨境电商类型，待核实）；② 9810/9610 退税的具体单证清单与办理时点，以国家税务总局与海关总署联合公告为准；③ 1210 退货回区的时限与税务处理，以最新跨境电商零售进口政策为准。政策几乎每年调整，引用前务必查「海关总署官网—跨境电商」专栏现行文本。</div>
+<h2>三、9810 海外仓出口：先出口后销售的资金节奏</h2>
+<p>9810 的灵魂是<b>「先出口、后销售」</b>：货先以 9810 代码报关出口到境外海外仓（我方或客户在德国的仓），<b>此时即可办理出口退税</b>（凭出口报关单、海外仓租赁证明、后续销售佐证等）；真正的零售发生在亚马逊/eBay 等平台，与出口报关脱钩。这解决了传统 0110「必须先把货卖给境外买家才能退税」的现金流痛点——卖家不用等卖完才拿到税。<b>风险点</b>：若出口后长期无销售记录、或海外仓单证造假，海关/税务会质疑「假出口骗退税」，追回税款+罚款。</p>
+<h3>9810 退税必备单证（清单，具体以现行公告为准）</h3>
+<ul><li>出口报关单（监管方式 9810）。</li><li>海外仓租赁/使用协议（证明货真在海外仓）。</li><li>境外销售订单、平台店铺证明、物流跟踪（证明「后销售」真实发生）。</li><li>收汇凭证（外汇入账，证明真实交易）。</li><li>以上单证须留存备查，税务核查时缺一不可（留存期待核实，标「待核实」）。</li></ul>
+<div class="key">反制点（客户视角）：卖家选 9810 要把「出口即退税」的现金流算进报价，但必须保证海外仓与销售真实，否则骗税风险自担。客户应要求货代提供「9810 出口报关单+海外仓入仓证明」闭环，并把「因货代单证瑕疵导致退税被拒」列为货代赔偿责任。</div>
+<h2>四、退货与二次销售：跨境售后的海关处理</h2>
+<ul><li><b>9810 退运</b>：海外仓滞销/质量问题货，可退运回境内（按跨境出口退运办理，税费规则须核对）或在海外仓所在国转售/销毁；退回境内的，若符合条件可免征进口税（条件待核实）。</li><li><b>9610 退运</b>：直购出口的退货，可退回境内，通道与时限须核对现行公告。</li><li><b>1210 保税备货退货</b>：消费者退货直接回<b>综合保税区</b>，不办进口清关、不缴进口税，最快最省——这是 1210 相对 9810 的最大售后优势。</li><li><b>二次销售</b>：已售又退回的货，1210 回区后可作为保税货物再售；9810 退回境内的，再销售按一般贸易或跨境电商规则重新报关（须核对）。</li></ul>
+<div class="key">货代给客户选代码的三问：<b>① 你是 B2B 还是 B2C？② 货先囤海外仓还是直发？③ 你最怕退税慢还是退货难？</b> B2B 传统走 0110/9710；要囤海外仓且想早退税走 9810；怕退货麻烦走 1210 保税备货。30 秒给答案，再写进委托协议「监管方式由客户确认、因选错致退税/退货损失由客户担」。</div>
+<h2>五、落到动作：《跨境电商监管方式选择决策表》+ 9810 合规清单</h2>
+<ol><li>接单先问客户：贸易模式(B2B/B2C)、是否用海外仓、退货预期。</li><li>用决策表匹配代码，让客户书面确认监管方式。</li><li>9810：核海外仓真实存在、出出口报关单、备退税单证四件套。</li><li>退货预案：按所选代码预先告知客户退货路径与税务后果。</li><li>政策跟踪：每月查海关总署跨境电商专栏，代码或退税规则变动即通知客户。</li><li>协议切责：监管方式由客户选定并确认，选错导致的退税/退货损失归客户。</li></ol>
+<div class="key">今日口诀：<b>0110 传统、9610 直邮、9710 企业对企业、9810 海外仓先出后销、1210 保税备货退货最顺。选代码三问定方向、客户确认切责任、政策月月核——跨境通关不吃亏。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Customs Supervision Mode</div><div class="cn">监管方式 / 贸易方式代码</div><div class="df">海关对进出口货物的监管分类代码，决定报关单格式、退税、退货规则；跨境常用 0110/9610/9710/9810/1210</div></div><div class="ti"><div class="en">Mode 0110</div><div class="cn">一般贸易 / General Trade</div><div class="df">最传统的进出口监管方式；企业对企业，需进出口权，退税在出口后凭单证办理</div></div><div class="ti"><div class="en">Mode 9610</div><div class="cn">跨境贸易电子商务(直购)</div><div class="df">B2C 直邮进出口；清单核放、汇总申报，适合小包直发</div></div><div class="ti"><div class="en">Mode 9710</div><div class="cn">跨境电商 B2B 直接出口</div><div class="df">企业对企业直接出口，平台交易；区别于 0110 在于「跨境电商」属性</div></div><div class="ti"><div class="en">Mode 9810</div><div class="cn">跨境电商出口海外仓</div><div class="df">先出口至海外仓、后销售；「先出后销」，海外仓企业凭出口单证办退税</div></div><div class="ti"><div class="en">Mode 1210</div><div class="cn">保税跨境贸易电子商务(网购保税)</div><div class="df">保税备货进口；货物先入综合保税区，消费者下单后清关出区，退货回区便利</div></div></div></div><div class="foot"><a href="W11-D2.html">← 第 2 天</a><a class="idx" href="index.html">目录</a><a href="W11-D4.html">第 4 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

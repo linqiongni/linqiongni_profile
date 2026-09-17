@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7周·第1天｜海商法的适用边界与船舶、货物、承运人</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 7 · DAY 1 / 5　·　阶段二　运输责任制度</div><h1>海商法的适用边界与船舶、货物、承运人</h1><div class="sub">第 7 周主题：海商法与海上货物运输 —— 承运人的义务与免责</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">海商法像「海上专用交通法」：只管海上（以及与海相通的可航水域）和特定船舶。先把「这条路归不归它管」搞清楚，否则后面所有条文都用错地方。</div><div class="mlink"><b>怎么串到今天</b>地基打完，进入主干。第一阶段的法律从最古老、最成熟的海运开始。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>海商法=海上运输的「行业特别法」，是合同法的特别法，很多规则跟民法典反着来（责任限制、免责清单）</li><li>船舶=海船等海上移动装置，不含军舰、公务船、20 总吨以下小艇；货物含活动物与舱面货</li><li>承运人（缔约承运人）vs 实际承运人：一个签合同、一个真开船，责任按第 60-65 条分担——这是货代/海外仓变承运人的命门</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海商法第四章条文结构图》+ 逐条笔记（适用范围 / 船舶与货物定义 / 承运人与实际承运人区分）</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解《中华人民共和国海商法》（1993.7.1 施行，现行有效，近年有修订草案待核实）的适用边界，以及海上货物运输场景下的三个核心定义：
+1. 先讲海商法的适用边界：调整哪些关系（海上运输关系、船舶关系）、第四章海上货物运输合同管什么、与民法典合同编的"特别法优先"关系。说明它在哪些场景被触发、哪些场景不适用（纯陆运/空运/国内内河）
+2. 船舶的定义（第 3 条 待核实）：什么算、什么不算（军舰、政府公务船、20 总吨以下小艇除外）
+3. 货物的定义（待核实条号）：包括活动物、舱面货；集装箱货的责任期间（第 46 条 待核实）从装货港接收至卸货港交付
+4. 承运人 vs 实际承运人：定义（第 42 条 待核实）、两人责任如何分担（第 60-65 条 待核实）、货代在什么情况下被认定为承运人（签发 House B/L、以自己名义订舱）
+5. 最后给我一张《海商法第四章条文结构图》：把第四章从责任期间、义务、免责、责任限制、时效的条文顺序画出来，并标注哪些是物流商最常中招的条款</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：海商法=海运的「行业特别交通规则」</h2>
+<p>普通买卖合同纠纷，你翻民法典合同编；但一旦货装上船走海运，<b>海商法第四章就跳出来接管</b>，而且它的很多规则和民法典相反——责任可以「限制」、免责可以「清单化」、时效只有 1 年。就像普通公路交规之外，海运还有一套「远洋特殊交规」：同样的撞车（货损），按这套交规赔得少得多。怎么串到今天：上周我们讲的是「货权与风险在买卖双方之间怎么切」（Incoterms/CISG），今天往后进入「货上了船，承运人要对货主负什么责」——这是物流商（承运人/货代）真正会被索赔的那一层。</p>
+<div class="key">记忆点：<b>海商法是合同法的特别法，海上货物运输纠纷「特别法优先」。承运人的义务、免责、限额、时效全在第四章，且普遍比民法典对「服务提供方」更友好——这正是物流商立场的护身符。</b></div>
+<h2>二、海商法的适用边界：什么时候它管、什么时候它不管</h2>
+<ul><li><b>管什么</b>：海上运输关系（海上货物运输合同、海上旅客运输合同）+ 船舶关系（船舶优先权、海事赔偿责任限制、船舶碰撞等）。第四章专管「海上货物运输合同」。</li><li><b>特别法优先</b>：同一件事海商法有规定的，优先用海商法；海商法没规定的，回到民法典合同编（如第 4 章未覆盖的托运人义务细节）。</li><li><b>触发条件</b>：运输的「海上区段」适用海商法；多式联运中，货物处于海上区段时按海商法，处于陆/空区段时按相应规则（网状责任制，待核实）。</li><li><b>不管什么</b>：纯空运（华沙/蒙特利尔体系）、纯铁路（COTIF/SMGS）、纯国内内河（有专门内河规定），以及货物还在卖方仓库未交承运人时（此时归买卖合同/民法典）。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 海商法生效日（1993-07-01，确定）；② 第四章对「中国港口间沿海运输」是否完全适用及赔偿限额有无差别，以法条原文为准；③ 海商法修订草案已进入立法程序，承运人与实际承运人定义、责任限额数值可能调整，正式引用前核对最新文本（全国人大/交通运输部官网）。</div>
+<h2>三、三个定义：船舶、货物、责任期间</h2>
+<h3>1. 船舶（第 3 条 待核实）</h3>
+<p>海商法所称船舶，指<b>海船和其他海上移动式装置</b>，但<b>不包括</b>：用于军事的、政府公务的船舶，以及 <b>20 总吨以下</b>的小型船艇。实务意义：你用一艘 15 总吨的近海小驳船运货出事，可能不落入海商法「船舶」定义，责任限制等优待就未必能用——这是小船运输的隐藏坑。</p>
+<h3>2. 货物（待核实条号）</h3>
+<ul><li>海上货物运输合同项下的货物，包括<b>活动物</b>与<b>舱面货（甲板货）</b>——这两类在普通运输里常被拒运，海商法单列规则。</li><li>集装箱货的<b>责任期间</b>（第 46 条 待核实）：从装货港<b>接收货物</b>时起，至卸货港<b>交付货物</b>时止，货物处于承运人掌管之下的全部期间。这是集装箱运输「门到门」责任的关键起点。</li></ul>
+<h3>3. 责任期间对比（集装箱 vs 非集装箱）</h3>
+<table><thead><tr><th>货物类型</th><th>责任期间起点</th><th>责任期间终点</th><th>来源</th></tr></thead><tbody><tr><td>集装箱货</td><td>装货港接收货物</td><td>卸货港交付货物</td><td>第 46 条 待核实</td></tr><tr><td>非集装箱货</td><td>货物装上船</td><td>货物卸下船</td><td>第 46 条 待核实</td></tr><tr><td>多式联运（含陆段）</td><td>收货地接收</td><td>交货地交付（网状责任制，海上段适用海商法）</td><td>待核实</td></tr></tbody></table>
+<h2>四、承运人与实际承运人：货代变承运人的命门</h2>
+<p>这是物流商最该盯死的一对概念。<b>承运人（缔约承运人）= 和托运人签运输合同的那个人</b>；<b>实际承运人 = 真正开船/跑这段运输的人</b>（接受承运人委托，本人没和托运人直接订约）。为什么重要？因为货代一旦「以自己名义签发提单、以自己名义向船公司订舱」，就可能从「代理人」被认定为「承运人」，从而要对全程负责——身份一变，责任天差地别。</p>
+<table><thead><tr><th>维度</th><th>承运人 / Carrier</th><th>实际承运人 / Actual Carrier</th></tr></thead><tbody><tr><td>与托运人关系</td><td>直接订约</td><td>接受承运人委托，未直接订约</td></tr><tr><td>典型身份</td><td>无船承运人（签 House B/L）、货代变身</td><td>船公司、二程船东、分包承运</td></tr><tr><td>对全程责任</td><td>对合同全程负责</td><td>仅对自己履行的运输区段负责</td></tr><tr><td>法律条文</td><td>第 42 条定义、第 60-65 条</td><td>第 42 条定义、第 60-65 条</td></tr><tr><td>货代踩雷点</td><td>签发 FBL/House B/L、以自己名义报价 all-in</td><td>被穿透：货主可越过承运人直索实际承运人</td></tr></tbody></table>
+<h3>第 60-65 条 责任分担（待核实条号，逐条标注）</h3>
+<ul><li><b>第 60 条（待核实）</b>：承运人将运输的全部或部分委托实际承运人履行的，承运人仍须对全程负责；实际承运人对其履行的区段负责。</li><li><b>第 61 条（待核实）</b>：实际承运人须承担第四章对其规定的责任（管货、责任限制等）。</li><li><b>第 62 条（待核实）</b>：承运人+实际承运人就货物灭失/损坏对托运人/收货人<b>负连带责任</b>。</li><li><b>第 63 条（待核实）</b>：连带责任中，一方赔付超过自己份额的，可向另一方追偿（内部按过错/区段分摊）。</li><li><b>第 64 条（待核实）</b>：索赔人可向承运人、实际承运人单独或共同起诉，但赔偿总额不超过责任限额。</li><li><b>第 65 条（待核实）</b>：本章不影响承运人对实际承运人及其受雇人、代理人的追偿权。</li></ul>
+<div class="key">货代自保定律：<b>签 House B/L 的那一刻，你就从代理人变成了承运人。</b> 想只做代理人？绝不签发以自己为承运人的提单、合同写明「代订舱/居间」、费用收佣金而非运费差。身份认定看实质不看招牌——法院穿透看谁控制运输、谁选分包、谁收运费差。</div>
+<h2>五、物流商（我方）最常中招的第四章条款速览</h2>
+<ol><li>第 46-49 条：责任期间 + 三项基本义务（适航/管货/不绕航）——D2 详讲。</li><li>第 51-54 条：免责清单（航海过失、火灾等）——D3 详讲，承运人最锋利的刀。</li><li>第 55-57 条：赔偿额计算 + 单位责任限制 666.67 SDR + 丧失限制情形——D4 详讲。</li><li>第 60-65 条：承运人与实际承运人责任分担（本节）。</li><li>第 257 条：1 年索赔时效——D5 详讲，过期即失权。</li></ol>
+<h2>六、《海商法第四章条文结构图》（速记骨架）</h2>
+<p>责任期间（46）→ 适航（47）→ 管货（48）→ 不绕航（49）→ 赔偿责任（50）→ 免责清单（51-54：航海过失、火灾、天灾、战争、政府行为、罢工、救助、货方过错等）→ 赔偿额（55）→ 单位责任限制（56）→ 迟延交付与丧失限制（57）→ 限制权效力（58-59）→ 承运人与实际承运人（60-65）→ 托运人义务（66-69）→ 运输单证（70-82）→ 货物交付（81-83）→ 诉讼时效（257）。<b>记住这条线：义务在前、免责在中、限额在后、时效收口。</b></p>
+<div class="key">今日落地三动作：① 在客户委托合同里先定性「我方是代理人还是承运人」，写明身份并据此限定责任；② 把第 60-65 条责任分担结构存进法条库；③ 凡签发 House B/L 的业务，立刻按承运人标准补充保险与责任限额条款——别用代理人合同去扛承运人风险。</div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Maritime Code</div><div class="cn">海商法</div><div class="df">《中华人民共和国海商法》，1992 通过、1993.7.1 施行；调整海上运输关系与船舶关系的特别法，是民法典合同编的特别法</div></div><div class="ti"><div class="en">Carrier</div><div class="cn">承运人</div><div class="df">Carrier / 缔约承运人：本人或委托他人以本人名义与托运人订立海上货物运输合同的人（第 42 条 待核实）</div></div><div class="ti"><div class="en">Actual Carrier</div><div class="cn">实际承运人</div><div class="df">Actual Carrier：接受承运人委托，从事货物全部或部分运输的人（含船长、船员），本人未与托运人直接订约（第 42 条 待核实）</div></div><div class="ti"><div class="en">Ship</div><div class="cn">船舶</div><div class="df">海商法所称船舶：海船和其他海上移动式装置，不含军事/政府公务船舶及 20 总吨以下小型船艇（第 3 条 待核实）</div></div><div class="ti"><div class="en">Goods</div><div class="cn">货物</div><div class="df">海上货物运输合同项下的货物，包括活动物、舱面货；集装箱货责任期间自装货港接收至卸货港交付</div></div></div></div><div class="foot"><a href="index.html">← 目录</a><a class="idx" href="index.html">目录</a><a href="W7-D2.html">第 2 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>

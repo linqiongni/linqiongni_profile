@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第8周·第2天｜维斯比规则与汉堡规则：限额上调与免责废立</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1014;--bg2:#151922;--card:#12161d;--line:#252b36;--line2:#39414f;--tx:#e8e6e1;--tx2:#a8b0bd;--tx3:#6b7480;--gold:#c9a227;--jade:#4a9d9c;--red:#c05c4e;--blue:#5b8dd6}
+body{background:var(--bg);color:var(--tx);font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;line-height:1.85;padding:0 0 60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(180deg,#12161d,#0e1014);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:26px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:13px;letter-spacing:.22em;color:var(--gold)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-size:12px;color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:5px;padding:4px 9px}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+h1{font-size:26px;line-height:1.45;font-weight:600;margin-bottom:14px}
+.sub{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.mth{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,rgba(74,157,156,.12),rgba(201,162,39,.07));border:1px solid rgba(74,157,156,.34);border-left:3px solid var(--jade);border-radius:8px;padding:13px 15px;margin:16px 0}
+.mthi{font-size:18px;flex:0 0 auto;line-height:1.4}
+.mtxt{font-size:14px;line-height:1.9}
+.mlink{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.14);font-size:13px;color:var(--tx2)}
+.mlink b{color:var(--gold);font-weight:500;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}
+.lb{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:9px}
+.foc{list-style:none}
+.foc li{padding:4px 0 4px 17px;position:relative;font-size:13.5px;color:var(--tx2)}
+.foc li::before{content:"";position:absolute;left:3px;top:13px;width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.out{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--jade)}
+h2{font-size:19px;margin:30px 0 12px;padding-left:12px;border-left:3px solid var(--gold);line-height:1.5}
+h3{font-size:15.5px;margin:20px 0 9px;color:var(--gold);font-weight:600}
+p{font-size:14.5px;color:var(--tx);margin:10px 0}
+p b,li b{color:var(--gold);font-weight:600}
+ul,ol{margin:10px 0 10px 4px;padding-left:20px}
+li{font-size:14.5px;color:var(--tx);margin:6px 0}
+ol li{margin:9px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.2px;display:block;overflow-x:auto;white-space:nowrap}
+@media(min-width:760px){table{display:table;white-space:normal}}
+th{background:var(--bg2);color:var(--gold);font-weight:500;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.04em}
+td{padding:9px 11px;border:1px solid var(--line);color:var(--tx2);vertical-align:top;line-height:1.75}
+td:first-child{color:var(--tx);white-space:normal;min-width:118px}
+.note{background:rgba(192,92,78,.09);border:1px solid rgba(192,92,78,.32);border-left:3px solid var(--red);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.3px;color:var(--tx2)}
+.note b{color:var(--red)}
+.key{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:14px}
+blockquote{background:var(--bg2);border-left:3px solid var(--jade);border-radius:0 7px 7px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:var(--tx2);line-height:1.9}
+blockquote b{color:var(--jade)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:16px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 17px;font-size:13px;color:var(--gold);letter-spacing:.06em;user-select:none}
+summary::marker{color:var(--gold)}
+.prbox{background:#0c0e12;border-top:1px solid var(--line);padding:14px 17px;font-size:13px;color:var(--tx2);white-space:pre-wrap;line-height:1.8;max-height:300px;overflow:auto}
+.btnrow{padding:0 17px 15px;display:flex;gap:9px;flex-wrap:wrap}
+.btn{background:var(--bg2);border:1px solid var(--line2);color:var(--tx);border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.gold{background:linear-gradient(180deg,rgba(201,162,39,.18),rgba(201,162,39,.08));border-color:rgba(201,162,39,.5);color:var(--gold)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:11px;margin-top:10px}
+.ti{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:10px 13px}
+.ti .en{color:var(--jade);font-size:13.5px;font-weight:600}
+.ti .cn{color:var(--tx);font-size:13px;margin:2px 0 4px}
+.ti .df{color:var(--tx3);font-size:12.3px;line-height:1.7}
+.foot{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.foot a{color:var(--tx2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
+.foot a:hover{border-color:var(--gold);color:var(--gold)}
+.foot .idx{color:var(--gold);border-color:rgba(201,162,39,.4)}
+.disc{margin-top:22px;font-size:12.3px;color:var(--tx3);border-top:1px dashed var(--line);padding-top:12px;line-height:1.8}
+.idxlist{list-style:none;margin-top:8px}
+.idxlist li{margin:0}
+.idxlist a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin-bottom:9px;text-decoration:none;transition:.15s}
+.idxlist a:hover{border-color:var(--gold);background:#141922}
+.idxlist .n{color:var(--gold);font-size:12px;letter-spacing:.1em;flex:0 0 auto}
+.idxlist .t{color:var(--tx);font-size:14.5px}
+.idxlist .o{color:var(--tx3);font-size:12.5px;margin-left:auto;flex:0 0 auto;text-align:right}
+@media(max-width:640px){h1{font-size:21px}.idxlist a{flex-wrap:wrap}.idxlist .o{margin-left:0;text-align:left;width:100%}}
+</style></head><body><div class="topbar"><div class="wrap"><div class="brand">跨境物流法务总监养成计划</div><div class="nav"><a href="index.html">目录</a><a href="../index.html">总计划</a></div></div></div><div class="wrap"><div class="kicker">WEEK 8 · DAY 2 / 5　·　阶段二　运输责任制度</div><h1>维斯比规则与汉堡规则：限额上调与免责废立</h1><div class="sub">第 8 周主题：海上公约体系 —— 海牙 / 维斯比 / 汉堡 / 鹿特丹</div><div class="mth"><div class="mthi">🪜</div><div><div class="mtxt">维斯比像给老规则打补丁（提高限额、增加集装箱条款），汉堡像推翻重来（取消航海过失免责）。结果是打补丁的流行，推倒重来的没人跟——现实往往偏爱改良。</div><div class="mlink"><b>怎么串到今天</b>昨天看原始版本，今天看两次修法尝试，理解为什么世界最后选了折中。</div></div></div><div class="card"><div class="lb">地基概念 · 今日必须搞懂</div><ul class="foc"><li>维斯比规则 = 海牙规则的修订议定书（1968 布鲁塞尔，1979 SDR 议定书改限额单位），保留航行过失免责但提高限额 + 加集装箱条款 + 保护善意第三人</li><li>汉堡规则 = 1978 联合国公约，废除航行过失免责、改推定承运人责任、2 年时效，对货主友好，中国未加入</li><li>三公约批准国数量差异巨大：海牙-维斯比实际适用最广，汉堡批准国少，鹿特丹（D3）未生效</li></ul><div class="lb" style="margin-top:14px">今日产出物</div><div class="out">《海牙 / 维斯比 / 汉堡三规则对照表》</div></div><details><summary>▸ 展开今日指令原文（可复制）</summary><div class="prbox" id="pt">请系统讲解维斯比规则（Visby）与汉堡规则（Hamburg），并做三规则对照：
+1. 维斯比规则（1968 议定书 + 1979 SDR 议定书）：① 为什么出台（海牙限额 100 英镑太低、集装箱算一件的漏洞）；② 核心改动：限额提高到 666.67 SDR/件或 2 SDR/公斤（金额待核实）、新增「集装箱/托盘内件数条款」、保护善意第三人（提单流转后持有人）、有价证券化；③ 是否保留航行过失免责（保留）
+2. 汉堡规则（1978 联合国）：① 出台背景（发展中国家推动、对货主友好）；② 核心改动：废除航行过失免责、承运人「推定责任」（ prima facie liable）、责任期间延到「接到货—交付货」、2 年时效、实际承运人（actual carrier）制度；③ 限额 835 SDR/件或 2.5 SDR/公斤（待核实）
+3. 中国立场：中国未加入汉堡规则；说明为什么
+4. 三公约批准国数量与适用现状对比（海牙/维斯比实际最普遍，汉堡少，鹿特丹未生效）
+5. 给物流商落地动作 + 客户反制点</div><div class="btnrow"><button class="btn gold" onclick="cp(1)">复制指令原文</button></div></details><div class="disc">以下是按该指令跑出的完整内容。凡标注「待核实」处，均须以官方来源核对后方可对外使用。</div><h2>一、一句话立住：维斯比是「海牙打补丁」，汉堡是「推倒重来」</h2>
+<p>海牙规则跑了 40 年，两个漏洞越来越撑不住：① <b>100 英镑限额</b>在通胀下等于没赔；② <b>集装箱</b>兴起后，一个柜里几千件货居然只算「一件」，承运人笑醒、货主哭晕。维斯比规则（1968 布鲁塞尔议定书，1979 又改限额单位）就是给海牙打补丁——<b>限额提高、集装箱算件数、保护提单善意持有人</b>，但航东的免死金牌（航行过失免责）原封不动留着。汉堡规则（1978 联合国）则更狠：发展中国家推动、直接把航行过失免责废了，改成「货损在你就推定你赔」。怎么串到今天：D1 讲的海牙是地基，今天看两块「加建」——一块补强（维斯比），一块革命（汉堡）。</p>
+<div class="key">记忆点：<b>维斯比 = 海牙 + 钱变多 + 集装箱算件数（免责不变）；汉堡 = 免责砍掉 + 责任反转（对货主友好）。中国海商法第四章≈海牙-维斯比，不是汉堡。</b></div>
+<h2>二、维斯比规则：海牙的三处关键打补丁</h2>
+<ul><li><b>限额上调（1979 SDR 议定书）</b>：每件或每单位 <b>666.67 SDR</b>，或毛重每公斤 <b>2 SDR</b>，以高者为准（金额须核对现行值，标「待核实」）。</li><li><b>集装箱条款（拆柜算件数）</b>：提单若载明集装箱/托盘内货物件数，按该件数计赔，不再是「一柜算一件」——堵住海牙最大漏洞。</li><li></li><li><b>保护善意第三人</b>：提单流转到善意持有人手中，承运人不得以对抗托运人的抗辩对抗持有人（如托运人少报价值）——提单的「有价证券」属性被夯实。</li><li><b>责任期间与抗辩延伸</b>：承运人的受雇人/代理人可援引承运人的免责与限额（喜马拉雅条款法定化）。</li></ul>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：① 维斯比限额 666.67 SDR/件或 2 SDR/公斤为通用口径，SDR 兑换率按 IMF 每日公布值，引用时须核现行 SDR 折合人民币/美元；② 1979 年《特别提款权议定书》将限额单位从金法郎改为 SDR，生效日 1979-12 等以联合国条约库为准。</div>
+<h2>三、汉堡规则：货主的翻身仗</h2>
+<table><thead><tr><th>改动点</th><th>海牙/维斯比</th><th>汉堡规则（1978）</th><th>影响</th></tr></thead><tbody><tr><td>航行过失免责</td><td>保留（船东护身符）</td><td><b>废除</b></td><td>承运人撞船也赔，货主大赢</td></tr><tr><td>责任基础</td><td>免责列举（承运人证明自己免责）</td><td><b>推定责任</b>（货损在承运期间即推定承运人有责，须自证免责）</td><td>举证责任倒置，承运人更难脱身</td></tr><tr><td>责任期间</td><td>装船—卸船（钩到钩）</td><td><b>接到货—交付货</b>（收到—交付）</td><td>装前卸后也管，覆盖仓库/堆场</td></tr><tr><td>限额</td><td>666.67 SDR/件或 2 SDR/kg</td><td><b>835 SDR/件或 2.5 SDR/kg</b>（待核实）</td><td>赔得更多</td></tr><tr><td>时效</td><td>1 年</td><td><b>2 年</b></td><td>货主索赔窗口翻倍</td></tr><tr><td>实际承运人</td><td>无</td><td><b>创设 actual carrier 制度</b></td><td>缔约承运人对全程负责，实际承运人对其段负责</td></tr><tr><td>延迟交付</td><td>未规管</td><td><b>明文规管</b></td><td>迟到也赔（限运费额内）</td></tr></tbody></table>
+<h3>汉堡规则为什么对物流商（我方）最不友好</h3>
+<div class="key">一句话：<b>汉堡规则下，货一进你手就推定你负责，撞船免责没了、1 年变 2 年、延迟交付也要赔。若你签的是适用汉堡规则的提单（多见于非洲/部分发展中国家航线），你的责任敞口比海牙-维斯比大得多——报价和保险必须重算。</b></div>
+<h2>四、中国立场：未加入汉堡规则</h2>
+<ul><li><b>中国不是汉堡规则缔约国</b>。原因：汉堡规则对承运人过严，与我国彼时（1993）立法取向（靠拢海牙-维斯比、保护本国航运业）不符；《海商法》第四章基本按海牙-维斯比起草。</li><li><b>实务后果</b>：中国承运人提单若首要条款并入汉堡规则（少数航线合同会这么写），仍可能受汉堡约束——取决于当事人约定与法院地。我方应默认合同与提单适用海牙-维斯比或中国海商法。</li></ul>
+<h2>五、三公约批准国数量与适用现状（关键！）</h2>
+<table><thead><tr><th>公约</th><th>通过/生效</th><th>核心特征</th><th>批准国数量（口径待核实）</th><th>实务适用现状</th></tr></thead><tbody><tr><td>海牙规则 1924</td><td>1924/1931</td><td>航行过失免责 + 100 英镑</td><td>多数海运国（经维斯比修订后）</td><td>被维斯比修订吸收，单独适用少见</td></tr><tr><td>维斯比规则 1968</td><td>1968/1977（1979 SDR）</td><td>限额提高 + 集装箱条款</td><td>约 30+ 国（待核实）</td><td><b>实务最普遍</b>，与中国海商法水平接近</td></tr><tr><td>汉堡规则 1978</td><td>1978/1992</td><td>废航行过失免责 + 推定责任</td><td>约 30+ 国（多为发展中国家，待核实）</td><td>仅特定航线（如中非、西非）合同适用</td></tr><tr><td>鹿特丹规则 2008</td><td>2008/<b>未生效</b></td><td>门到门 + 电子单证</td><td>未达 20 国生效门槛（待核实）</td><td>尚未生效，见 D3</td></tr></tbody></table>
+<div class="note"><b>⚠ 待核实 / 提示</b><br>⚠ 待核实：三公约批准国精确数量以联合国贸易法会（UNCITRAL）与联合国条约库最新统计为准，上表数量级为通用口径，正式引用前须核对；维斯比实际多以「海牙-维斯比规则」合并援引。</div>
+<h2>六、客户（货主）反制点 + 物流商落地动作</h2>
+<ul><li><b>货主反制点（汉堡航线）</b>：若合同适用汉堡规则，货主只需证明货损发生在「收到—交付」期间，承运人须自证免责，且 2 年内都可告——货主应主动在合同里争取写「适用汉堡规则」。</li><li><b>货主反制点（维斯比）</b>：务必在提单/装箱单载明集装箱内件数，否则一柜只赔 666.67 SDR；并考虑装运前声明价值突破限额。</li><li><b>物流商落地动作 1</b>：接单时查清航线合同并入哪部公约——非洲/西非线常并入汉堡，报价需加风险溢价与足额保险。</li><li><b>物流商落地动作 2</b>：签发 House B/L/FBL 时，首要条款明确写「Hague-Visby Rules」而非含糊「国际公约」，防止被解释适用汉堡。</li><li><b>谁、何时、做什么</b>：我方在制单（签发提单）时即固定首要条款与限额适用；不做→争议时法院可能按最有利货主的规则解释，我方限额保护落空。</li></ul>
+<div class="key">今日收口口诀：<b>维斯比补钱、汉堡翻案；航行过失免责在维斯比留着、在汉堡没了。中国海商法≈海牙-维斯比，别被汉堡航线合同暗算——看首要条款、看航线、看限额。</b></div><div class="card" style="margin-top:28px"><div class="lb">核心术语（中英对照）</div><div class="terms"><div class="ti"><div class="en">Visby Rules</div><div class="cn">维斯比规则 / 1968</div><div class="df">海牙规则的修订议定书（Protocol to amend the Hague Rules, 1968；1979 改为 SDR 限额）；保留航行过失免责，限额提到 666.67 SDR/件</div></div><div class="ti"><div class="en">SDR</div><div class="cn">特别提款权</div><div class="df">Special Drawing Right，IMF 记账单位；海运责任限额货币，每日浮动，须核对现行值</div></div><div class="ti"><div class="en">Hamburg Rules</div><div class="cn">汉堡规则 / 1978</div><div class="df">United Nations Convention on the Carriage of Goods by Sea, 1978；废除航行过失免责、推定承运人责任、2 年时效，对货主友好</div></div><div class="ti"><div class="en">Actual Carrier</div><div class="cn">实际承运人</div><div class="df">汉堡规则创设：承运人委托完成运输的人；缔约承运人对全程负责，实际承运人对其履行段负责</div></div><div class="ti"><div class="en">Prima Facie Liability</div><div class="cn">推定责任</div><div class="df">货损发生在承运期间即推定承运人负责，承运人须自证免责——汉堡规则颠覆海牙「免责推定」</div></div></div></div><div class="foot"><a href="W8-D1.html">← 第 1 天</a><a class="idx" href="index.html">目录</a><a href="W8-D3.html">第 3 天 →</a></div><div class="disc">本页由 AI 依据学习计划中的指令生成，用于个人学习。法条、公约条文号、责任限额数字与监管代码口径均会变动，请以官方来源现行有效文本为准。</div></div><script>function cp(){var t=document.getElementById("pt").textContent;navigator.clipboard.writeText(t).then(function(){alert("已复制指令原文");});}</script></body></html>
