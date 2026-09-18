@@ -95,6 +95,20 @@
   **改完立即 grep 逐处校验**，不要只信工具返回成功；跨多行的大块编辑更脆弱，优先单行写法。push 前先 `git fetch` 确认无分叉。
 - push 失败时按序排查：① 清 `.git/*.lock`（见上）；② 带 `-c http.proxy= -c https.proxy=`；③ 若报 `HTTP/2 framing layer` 或 `Couldn't connect to server (port 443)`，是当前环境无外网/被隔离，改用 `git -c http.version=HTTP/1.1 push` 仍连不上则只能等联网，本地用 `npm run dev`（端口 3000 被占则 3001）预览。
 
+## 融资法务站 · 内容深度化两种模式的取舍（2026-09-18）
+- **ch02 模式（已弃用）**：`.deep` 折叠面板放在页面下方 + `.xref` 锚点点击后 `scrollIntoView` 跳过去。缺点：看完要往回翻找原文，Andy 明确否决（"不要跳到下面去"）。
+- **ch03 起的标准模式（后续站位照此做）**：
+  1. `.peek` 原地展开详解——`<details class="peek"><summary><span class="pk-badge k">常见坑</span>标题</summary><div class="pk-bd">…</div></details>`，直接插在对应段落之后，写在 `assets/style.css`；徽章三类 k(红/坑) t(蓝/术语) d(金/模板)。
+  2. `.tpl` 可折叠协议模板——`<details class="tpl"><summary><span class="ch">条款 X · 标题</span><span class="cue"></span></summary><div class="clause">…</div></details>`，cue 文案由 CSS `content` 自动切换「展开全文/收起全文」。
+  3. `.tplbar` 控件条：`<button data-fold="open|close" data-fold-kind="peek|tpl" data-fold-scope="可选容器id">`，逻辑在 `assets/app.js` 的 `foldControls()`；**只切换 open，不滚动**。
+- 页首建议放一条页级控件条（展开/收起 全部详解、全部模板）；模板库小节再放一条局部控件（用 `data-fold-scope` 限定范围）。
+- 大块 Edit 后必须 grep 计数校验（本轮首块编辑报成功但未落盘）。
+
+## 关键法条条号（融资交易相关，已核对官方文本）
+- 九民纪要第 5 条引用的**旧**条号：35 抽逃出资 / 142 股份回购 / 166 利润分配 → 2023 修订《公司法》对应 **53 / 162 / 210**。
+- 2023 修订《公司法》：**144** 条股份有限公司类别股（有限公司无法定类别股，只能用章程+股东协议+合同拼）；**224** 条减资程序（决议起 10 日通知债权人、30 日公告、债权人 30/45 日内可要求清偿或提供担保）；**226** 条违法减资后果；**15** 条对外担保（为股东/实控人担保须股东会决议、关联股东回避表决）。
+- 对赌条款设计定式：创始人作主债务人 + 公司连带保证（须留存股东会决议与章程）+ 减资配合义务与违约金 + 配偶同意函 + 价格上限（本金 + 8% 单利 − 已分配利润）；拟上市须递表前 6–12 个月签终止契据并写复效条款。
+
 ## iframe tab 与主站深色模式同步（2026-09-18）
 - 主站 darkMode 不影响 iframe 内静态页。同步机制：iframe 页引入 `/theme-toggle.js`，监听 `postMessage({type:'theme',mode:'dark'|'light'})`。
 - React 侧 pattern（见 `IpLegalTab.tsx`）：`darkMode` prop + `iframeRef`，useEffect 依赖 `[darkMode, loading, loadedTick, nonce]`，onLoad 里 `setLoadedTick(t=>t+1)` 保证 iframe 加载完成后再发消息（监听器在页尾脚本注册，过早发会丢）。
