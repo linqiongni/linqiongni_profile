@@ -85,3 +85,8 @@
 - **并发会话风险**：多个 WorkBuddy 会话可能同时操作本仓库（2026-09-14 有会话推餐饮法务第 11/12 周）。已提交的 Edit 可能在磁盘上被回退，
   **改完立即 grep 逐处校验**，不要只信工具返回成功；跨多行的大块编辑更脆弱，优先单行写法。push 前先 `git fetch` 确认无分叉。
 - push 失败时按序排查：① 清 `.git/*.lock`（见上）；② 带 `-c http.proxy= -c https.proxy=`；③ 若报 `HTTP/2 framing layer` 或 `Couldn't connect to server (port 443)`，是当前环境无外网/被隔离，改用 `git -c http.version=HTTP/1.1 push` 仍连不上则只能等联网，本地用 `npm run dev`（端口 3000 被占则 3001）预览。
+
+## iframe tab 与主站深色模式同步（2026-09-18）
+- 主站 darkMode 不影响 iframe 内静态页。同步机制：iframe 页引入 `/theme-toggle.js`，监听 `postMessage({type:'theme',mode:'dark'|'light'})`。
+- React 侧 pattern（见 `IpLegalTab.tsx`）：`darkMode` prop + `iframeRef`，useEffect 依赖 `[darkMode, loading, loadedTick, nonce]`，onLoad 里 `setLoadedTick(t=>t+1)` 保证 iframe 加载完成后再发消息（监听器在页尾脚本注册，过早发会丢）。
+- IP tab 已接入；logistics / labor / insurance / financing / ai-law / film-law 系列尚未接入，同 pattern 复制即可。
