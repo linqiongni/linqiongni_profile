@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-7 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
+      className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-2 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
     >
       {/* Background Subtle Geometric / Grain Accent */}
       <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">
@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.1] mb-12 max-w-6xl text-balance"
+            className="text-[3rem] sm:text-7xl md:text-8xl lg:text-[6rem] font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.08] mb-14 max-w-6xl text-balance"
           >
             “{PERSONAL_INFO.heroHeadline}”
           </motion.h1>
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-xl md:text-[1.6rem] font-normal text-[#86868B] max-w-2xl leading-relaxed mb-16"
+            className="text-lg sm:text-xl md:text-2xl font-normal text-[#86868B] max-w-2xl leading-relaxed mb-18"
           >
             {PERSONAL_INFO.subtitle}
           </motion.p>
@@ -71,14 +71,14 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-center gap-7 sm:gap-20"
+            className="flex items-center justify-center gap-8 sm:gap-24"
           >
             {HERO_STATS.map((s, i) => (
               <React.Fragment key={s.label}>
-                {i > 0 && <span className="h-12 w-[1px] bg-[#E8E8E6] dark:bg-[#2C2C2E]" aria-hidden="true" />}
+                {i > 0 && <span className="h-14 w-[1px] bg-[#E8E8E6] dark:bg-[#2C2C2E]" aria-hidden="true" />}
                 <div className="flex flex-col items-center">
-                  <span className="text-4xl sm:text-5xl font-light tracking-tight text-[#B89F6B]">{s.num}</span>
-                  <span className="text-[11px] sm:text-xs text-[#86868B] mt-2 tracking-wide whitespace-nowrap">
+                  <span className="text-5xl sm:text-6xl font-light tracking-tight text-[#B89F6B]">{s.num}</span>
+                  <span className="text-[11px] sm:text-xs text-[#86868B] mt-2.5 tracking-wide whitespace-nowrap">
                     {s.label}
                   </span>
                 </div>
@@ -92,20 +92,20 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-auto w-full flex flex-col items-start gap-2.5 sm:gap-3.5"
+          className="mt-auto w-full flex flex-col items-start gap-1.5 sm:gap-2"
         >
           {NAV_GROUPS.map((group) => (
-            <div key={group.id} className="flex items-start gap-3 sm:gap-5">
-              <span className="shrink-0 w-11 sm:w-12 pt-[3px] sm:pt-1 text-left text-[10px] tracking-[0.14em] text-[#B89F6B] whitespace-nowrap">
+            <div key={group.id} className="flex items-start gap-2.5 sm:gap-4">
+              <span className="shrink-0 w-10 sm:w-11 pt-[2px] sm:pt-0.5 text-left text-[9px] sm:text-[10px] tracking-[0.14em] text-[#B89F6B] whitespace-nowrap opacity-80">
                 {group.label}
               </span>
-              <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2">
+              <div className="flex flex-wrap items-center gap-x-3.5 sm:gap-x-4.5 gap-y-1">
                 {group.subTabs.map((tab) => (
                   <button
                     key={tab}
                     id={`hero-map-${tab}`}
                     onClick={() => onExploreTab(tab)}
-                    className="group/chip relative py-0.5 text-[11px] sm:text-xs text-[#6E6E73] dark:text-[#98989D] hover:text-[#B89F6B] active:text-[#B89F6B] transition-colors duration-200"
+                    className="group/chip relative py-0.5 text-[10px] sm:text-[11px] text-[#6E6E73] dark:text-[#98989D] hover:text-[#B89F6B] active:text-[#B89F6B] transition-colors duration-200"
                   >
                     {SUB_TAB_META[tab].label}
                     <span
@@ -119,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
           ))}
           <button
             onClick={onScrollToContent}
-            className="group mt-1.5 inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] tracking-wide text-[#86868B] hover:text-[#B89F6B] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89F6B] rounded-full px-0.5 py-1"
+            className="group mt-0.5 inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-wide text-[#86868B] hover:text-[#B89F6B] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89F6B] rounded-full px-0.5 py-0.5"
           >
             <span>点击任意板块直达 · 顶部导航常驻，可随时切换</span>
             <ChevronDown
