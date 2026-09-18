@@ -111,6 +111,22 @@
     });
   }
 
+  // 折叠控件：[data-fold] 按钮 → 就地展开/收起，不做任何滚动跳转
+  function foldControls() {
+    var btns = document.querySelectorAll("[data-fold]");
+    Array.prototype.forEach.call(btns, function (btn) {
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("data-fold") === "open";
+        var kind = btn.getAttribute("data-fold-kind") || "all";
+        var scopeId = btn.getAttribute("data-fold-scope");
+        var root = scopeId ? (document.getElementById(scopeId) || document) : document;
+        var sel = kind === "all" ? "details.tpl, details.peek" : "details." + kind;
+        var ds = root.querySelectorAll(sel);
+        Array.prototype.forEach.call(ds, function (d) { d.open = open; });
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var cur = (document.body.getAttribute("data-station") || "index").trim();
     buildTopbar(cur);
@@ -118,5 +134,6 @@
     initTheme();
     progress();
     deepLinks();
+    foldControls();
   });
 })();
