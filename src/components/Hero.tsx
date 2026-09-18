@@ -12,8 +12,8 @@ interface HeroProps {
 
 /** 首屏数据条：用体量证明内容丰富度（数字与 public/ 静态页实际数量级一致） */
 const HERO_STATS: { num: string; label: string }[] = [
-  { num: '9', label: '大法务领域' },
-  { num: '400+', label: '篇实战笔记与课程' },
+  { num: '11', label: '大法务领域' },
+  { num: '470+', label: '篇实战笔记与课程' },
   { num: '3', label: '季影视律政拆解' },
 ];
 
