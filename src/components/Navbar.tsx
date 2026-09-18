@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TabType } from '../types';
 import { NAV_GROUPS, SUB_TAB_META, tabsOfGroup } from '../navConfig';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Moon, Sun, Menu, X, Mail, ChevronDown } from 'lucide-react';
+import { Moon, Sun, Menu, X, Mail } from 'lucide-react';
 
 interface NavbarProps {
   activeGroup: string;
@@ -30,15 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // 当前展开的顶层分组（悬停触发）。null = 全部收起。
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
-  // 下拉面板相对 header 的坐标（由悬停按钮实时测量）
-  const [dropdownX, setDropdownX] = useState(0);
-  const [dropdownTop, setDropdownTop] = useState(128);
-  // 关闭延时：鼠标从分组按钮经第二行移到面板时留容错，避免闪退。
-  const closeTimer = useRef<number | null>(null);
-  const headerRef = useRef<HTMLElement | null>(null);
-  const btnRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,104 +39,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const cancelClose = () => {
-    if (closeTimer.current !== null) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  };
-
-  const openMenu = (id: string) => {
-    cancelClose();
-    const g = NAV_GROUPS.find((x) => x.id === id);
-    const menuTabs: TabType[] = g
-      ? g.sections
-        ? g.sections.reduce<TabType[]>((a, s) => a.concat(s.tabs), [])
-        : g.subTabs
-      : [];
-    // 只有一个子板块的分组不展开面板（没有可选的第二项，展开纯属噪音）
-    if (menuTabs.length <= 1) return;
-    setOpenGroup(id);
-    const btn = btnRefs.current[id];
-    const header = headerRef.current;
-    if (btn && header) {
-      const b = btn.getBoundingClientRect();
-      const h = header.getBoundingClientRect();
-      let x = b.left + b.width / 2 - h.left;
-      x = Math.max(140, Math.min(x, window.innerWidth - 140));
-      setDropdownX(x);
-      setDropdownTop(header.offsetHeight);
-    }
-  };
-
-  const scheduleClose = () => {
-    cancelClose();
-    closeTimer.current = window.setTimeout(() => {
-      setOpenGroup(null);
-      closeTimer.current = null;
-    }, 140);
-  };
-
-  const closeMenu = () => {
-    cancelClose();
-    setOpenGroup(null);
-  };
-
-  // 键盘：Esc 收起面板；组件卸载时清理定时器
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        cancelClose();
-        setOpenGroup(null);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      if (closeTimer.current !== null) window.clearTimeout(closeTimer.current);
-    };
-  }, []);
-
-  /** 下拉面板里的一个子板块条目 */
-  const renderItem = (t: TabType) => {
-    const isCurrent = activeTab === t;
-    return (
-      <button
-        key={t}
-        id={`nav-dropdown-${t}`}
-        role="menuitem"
-        onClick={() => {
-          onSelectTab(t);
-          closeMenu();
-        }}
-        className={`w-full flex items-center justify-between gap-4 rounded-lg px-3 py-2 text-sm text-left transition-colors ${FOCUS_RING} ${
-          isCurrent
-            ? 'bg-[#B89F6B]/10 text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
-            : 'text-[#5F5F63] dark:text-[#A1A1A6] hover:bg-[#F5F2EA] dark:hover:bg-[#2C2C2E] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7]'
-        }`}
-      >
-        <span className="flex items-center gap-2">
-          <span
-            className={`h-1.5 w-1.5 rounded-full transition-colors ${
-              isCurrent ? 'bg-[#B89F6B]' : 'bg-transparent'
-            }`}
-          />
-          {SUB_TAB_META[t].label}
-        </span>
-        <span className="text-[10px] uppercase tracking-widest text-[#B89F6B]/70 whitespace-nowrap">
-          {SUB_TAB_META[t].enLabel}
-        </span>
-      </button>
-    );
-  };
-
   const activeGroupObj = NAV_GROUPS.find((g) => g.id === activeGroup);
   const subTabsFlat: TabType[] = activeGroupObj ? tabsOfGroup(activeGroupObj) : [];
 
   return (
     <header
       id="main-navbar"
-      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#FDFCF9]/85 dark:bg-[#1C1C1E]/85 backdrop-blur-xl border-b border-[#E8E8E6] dark:border-[#2C2C2E] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
@@ -176,79 +75,38 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         {/* Center/Right: 顶层分组 Tabs (Desktop)。
-            交互：鼠标悬停（无需点击）即在分组正下方展开该分组的子板块下拉面板；
-            点击分组名仍直接进入该分组第一个子板块（触屏设备因此也可用）。 */}
+            交互：点击分组名进入该分组第一个子板块并切换常驻第二行；
+            鼠标悬停不再弹面板（按用户要求撤销 hover 下拉）。 */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-8" aria-label="Main Navigation">
           {NAV_GROUPS.map((g) => {
             const isActive = activeGroup === g.id;
-            const isOpen = openGroup === g.id;
-            const menuTabs: TabType[] = g.sections
-              ? g.sections.reduce<TabType[]>((acc, s) => acc.concat(s.tabs), [])
-              : g.subTabs;
-            // 只有一个子板块的分组不展开面板（没有可选的第二项，展开纯属噪音）
-            const hasMenu = menuTabs.length > 1;
-
             return (
-              <div
+              <button
                 key={g.id}
-                className="relative"
-                onMouseEnter={hasMenu ? () => openMenu(g.id) : undefined}
-                onMouseLeave={scheduleClose}
-                onFocus={hasMenu ? () => openMenu(g.id) : undefined}
-                onBlur={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeMenu();
-                }}
+                id={`nav-group-${g.id}`}
+                onClick={() => onSelectGroup(g.id)}
+                className={`relative flex items-center py-2 text-[15px] font-normal transition-colors group ${FOCUS_RING}`}
               >
-                <button
-                  id={`nav-group-${g.id}`}
-                  ref={(el) => {
-                    btnRefs.current[g.id] = el;
-                  }}
-                  onClick={() => {
-                    // 触屏（无悬停）：首次点击先展开面板；面板已开时点击才跳转。
-                    // 鼠标用户悬停时面板已开，点击即跳转，行为符合直觉。
-                    if (hasMenu && openGroup !== g.id) {
-                      openMenu(g.id);
-                    } else {
-                      onSelectGroup(g.id);
-                      closeMenu();
-                    }
-                  }}
-                  aria-haspopup={hasMenu ? 'menu' : undefined}
-                  aria-expanded={hasMenu ? isOpen : undefined}
-                  className={`relative flex items-center gap-1.5 py-2 text-[15px] font-normal transition-colors group ${FOCUS_RING}`}
+                <span
+                  className={`${
+                    isActive
+                      ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
+                      : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
+                  } transition-colors`}
                 >
-                  <span
-                    className={`${
-                      isActive || isOpen
-                        ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
-                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
-                    } transition-colors`}
-                  >
-                    {g.label}
-                  </span>
+                  {g.label}
+                </span>
 
-                  {hasMenu && (
-                    <ChevronDown
-                      size={14}
-                      strokeWidth={2}
-                      className={`transition-all duration-300 ${
-                        isOpen ? 'rotate-180 text-[#B89F6B]' : 'text-[#86868B] group-hover:text-[#B89F6B]'
-                      }`}
-                    />
-                  )}
-
-                  {/* Champagne Gold Underline */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-tab-underline"
-                      id="navbar-active-line"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B89F6B] rounded-full"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </button>
-              </div>
+                {/* Champagne Gold Underline */}
+                {isActive && (
+                  <motion.div
+                    layoutId="active-tab-underline"
+                    id="navbar-active-line"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B89F6B] rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
             );
           })}
         </nav>
@@ -296,12 +154,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* 常驻第二行：当前分组的子板块（桌面显示，移动端在汉堡菜单内按 section 分组）。
-          同时充当 hover 桥接区——鼠标从分组按钮经本行移到下拉面板途中不会因空隙断掉 hover。 */}
+      {/* 常驻第二行：当前分组的子板块（桌面显示，移动端在汉堡菜单内按 section 分组）。 */}
       {activeGroupObj && subTabsFlat.length > 1 && (
         <div
           id="navbar-subnav"
-          onMouseEnter={cancelClose}
           className="hidden md:flex h-12 items-center border-t border-[#E8E8E6] dark:border-[#2C2C2E]"
         >
           <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 flex items-center gap-1.5">
@@ -335,51 +191,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       )}
-
-      {/* 悬停下拉面板：单例，锚在整体头部底部（第二行之下），按悬停按钮水平居中对齐。 */}
-      <AnimatePresence>
-        {openGroup &&
-          (() => {
-            const g = NAV_GROUPS.find((x) => x.id === openGroup);
-            if (!g) return null;
-            return (
-              <motion.div
-                key="nav-group-dropdown"
-                id="nav-group-dropdown"
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                onMouseEnter={cancelClose}
-                onMouseLeave={scheduleClose}
-                className="hidden md:block absolute z-40"
-                style={{ top: dropdownTop, left: dropdownX }}
-              >
-                <div
-                  id="nav-group-dropdown-card"
-                  role="menu"
-                  aria-label={`${g.label} 子菜单`}
-                  className="relative -translate-x-1/2 w-max min-w-[216px] rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-[#FDFCF9]/95 dark:bg-[#232325]/95 backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.10)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.45)] p-2"
-                >
-                  <div className="px-3 pt-1 pb-1.5 text-[10px] uppercase tracking-widest text-[#B89F6B]">
-                    {g.label} · {g.enLabel}
-                  </div>
-
-                  {g.sections
-                    ? g.sections.map((sec) => (
-                        <div key={sec.id} className="mb-0.5 last:mb-0">
-                          <div className="px-3 pt-1.5 pb-1 text-[10px] uppercase tracking-widest text-[#86868B]">
-                            {sec.label}
-                          </div>
-                          {sec.tabs.map((t) => renderItem(t))}
-                        </div>
-                      ))
-                    : g.subTabs.map((t) => renderItem(t))}
-                </div>
-              </motion.div>
-            );
-          })()}
-      </AnimatePresence>
 
       {/* Mobile Dropdown Menu */}
       <AnimatePresence>
