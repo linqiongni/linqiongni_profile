@@ -7,7 +7,7 @@ import React from 'react';
  */
 export const InsuranceTab: React.FC = () => {
   return (
-    <div id="tab-insurance-content" className="w-full" style={{ height: 'calc(100vh - 80px)' }}>
+    <div id="tab-insurance-content" className="w-full" style={{ height: 'calc(100vh - 128px)' }}>
       <iframe
         src="/insurance/"
         title="保险 · 法律维权"

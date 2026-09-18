@@ -101,7 +101,7 @@ export default function App() {
 
     if (contentSectionRef.current) {
 
-      const topOffset = contentSectionRef.current.offsetTop - 80;
+      const topOffset = contentSectionRef.current.offsetTop - 128;
 
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
 
@@ -125,7 +125,7 @@ export default function App() {
 
     if (contentSectionRef.current) {
 
-      const topOffset = contentSectionRef.current.offsetTop - 80;
+      const topOffset = contentSectionRef.current.offsetTop - 128;
 
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
 
@@ -153,7 +153,7 @@ export default function App() {
 
     if (contentSectionRef.current) {
 
-      const topOffset = contentSectionRef.current.offsetTop - 80;
+      const topOffset = contentSectionRef.current.offsetTop - 128;
 
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
 
@@ -223,21 +223,21 @@ export default function App() {
 
           isFullBleed
 
-            ? 'flex-1 w-full px-0 pt-20'
+            ? 'flex-1 w-full px-0 pt-20 md:pt-32'
 
             : showHero
 
               ? 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
 
-              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 pb-16'
+              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 md:pt-32 pb-16'
 
         }
 
       >
 
-        {/* 子板块导航已收进 Navbar 的悬停下拉面板（nav-group-dropdown-card），
+        {/* 第二层子板块：悬停下拉面板（nav-group-dropdown-card）+ 常驻第二行（navbar-subnav）。
 
-            Navbar 恢复单行 80px 高，故上边距收敛为 pt-20（原 md 断点值一并去掉） */}
+            Navbar 头部为 128px（主行 80px + 第二行 48px），故上边距为 pt-20 md:pt-32 */}
 
 
 
