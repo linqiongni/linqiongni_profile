@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const PLAN_URL = '/ai-law/';
+const PLAN_URL = '/ai-law/index.html';
 
 /**
  * AI+法律 · 港资珠宝集团法律 AI 从 0 搭建总纲。
@@ -29,8 +29,7 @@ export const AiLawTab: React.FC = () => {
           src={PLAN_URL}
           title="港资珠宝集团法律 AI 从 0 搭建总纲"
           onLoad={() => setLoading(false)}
-          className="block w-full border-0 bg-white dark:bg-[#1C1C1E]"
-          style={{ height: 'calc(100vh - 80px)' }}
+          className="block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]"
           loading="eager"
         />
       </div>
@@ -41,7 +40,7 @@ export const AiLawTab: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => setNonce((n) => n + 1)}
-        className="fixed top-24 right-5 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
       >
         <ExternalLink size={12} />
         新窗口打开

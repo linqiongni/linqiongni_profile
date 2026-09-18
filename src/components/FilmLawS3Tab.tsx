@@ -7,9 +7,9 @@ import React from 'react';
  */
 export const FilmLawS3Tab: React.FC = () => {
   return (
-    <div id="tab-film-law-s3-content" className="w-full" style={{ height: 'calc(100vh - 128px)' }}>
+    <div id="tab-film-law-s3-content" className="w-full h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]">
       <iframe
-        src="/film-law-s3/"
+        src="/film-law-s3/index.html"
         title="影视法律 · The Good Wife S3 法律英语学习"
         className="block w-full h-full border-0"
       />

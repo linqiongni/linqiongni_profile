@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const PLAN_URL = '/ip/';
+const PLAN_URL = '/ip/index.html';
 
 export const IpLegalTab: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -24,8 +24,7 @@ export const IpLegalTab: React.FC = () => {
           src={PLAN_URL}
           title="知识产权法务专家养成计划"
           onLoad={() => setLoading(false)}
-          className="block w-full border-0 bg-white dark:bg-[#1C1C1E]"
-          style={{ height: 'calc(100vh - 80px)' }}
+          className="block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]"
           loading="eager"
         />
       </div>
@@ -36,7 +35,7 @@ export const IpLegalTab: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => setNonce((n) => n + 1)}
-        className="fixed top-24 right-5 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
       >
         <ExternalLink size={12} />
         新窗口打开

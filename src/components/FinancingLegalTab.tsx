@@ -28,8 +28,7 @@ export const FinancingLegalTab: React.FC = () => {
           src={PLAN_URL}
           title="融资法务 · 从 0 到 1"
           onLoad={() => setLoading(false)}
-          className="block w-full border-0 bg-white dark:bg-[#1C1C1E]"
-          style={{ height: 'calc(100vh - 80px)' }}
+          className="block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]"
           loading="eager"
         />
       </div>
@@ -39,7 +38,7 @@ export const FinancingLegalTab: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => setNonce((n) => n + 1)}
-        className="fixed top-24 right-5 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#B89F6B] text-white text-xs font-medium shadow-lg hover:bg-[#A8905C] transition-colors"
       >
         <ExternalLink size={12} />
         新窗口打开
