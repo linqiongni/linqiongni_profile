@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>创业奇思妙想章 · 屿见 —— 一个广州法务的下山记</title>
+<meta name="description" content="虚拟创业推演小说：广州上市公司法务林屿，30岁，卖掉越秀的房子净得30万，去博罗县开一家有猫有狗的云网咖＋棋牌。全书五卷十三章四十三节，房价、行业、证照、政策均取自公开可查信息。" />
+<style>
+  :root{
+    --ink:#1f2a24; --ink-soft:#3c4a40;
+    --paper:#f6f3ea; --paper-2:#fffdf7;
+    --green:#2f6b4f; --green-2:#3f8a63;
+    --gold:#b8893b; --line:#e2dccb; --muted:#7c746a;
+    --shadow:0 8px 30px rgba(31,42,36,.08);
+    --radius:16px; --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--paper);
+    font-family:"Noto Serif SC",Georgia,"Songti SC","STSong",serif;
+    line-height:1.9;font-size:17px;-webkit-font-smoothing:antialiased;}
+  a{color:var(--green);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;
+    background:linear-gradient(90deg,var(--green),var(--gold));z-index:60}
+
+  header.book{position:sticky;top:0;z-index:50;background:rgba(255,253,247,.94);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bookbar{max-width:var(--maxw);margin:0 auto;padding:12px 22px;
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .bookbar .title{font-weight:700;font-size:19px;letter-spacing:.5px}
+  .bookbar .title .dot{color:var(--gold)}
+  .bookbar .sub{color:var(--muted);font-size:13.5px}
+  .bookbar .back{margin-left:auto;font-size:13.5px;color:var(--muted)}
+
+  .hero{max-width:var(--maxw);margin:0 auto;padding:46px 22px 22px;text-align:center}
+  .hero .kicker{color:var(--gold);letter-spacing:.3em;font-size:12.5px;text-transform:uppercase}
+  .hero h1{font-size:33px;line-height:1.35;margin:12px 0 8px}
+  .hero p.lead{color:var(--muted);max-width:780px;margin:0 auto;font-size:16px}
+  .hero .meta{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .hero .meta span{background:var(--paper-2);border:1px solid var(--line);
+    padding:5px 12px;border-radius:999px;font-size:12.5px;color:var(--ink-soft)}
+
+  .layout{max-width:var(--maxw);margin:0 auto;padding:8px 22px 60px;
+    display:grid;grid-template-columns:262px 1fr;gap:36px;align-items:start}
+  aside.toc{position:sticky;top:74px;font-size:14px}
+  aside.toc h4{margin:0 0 10px;font-size:12.5px;color:var(--muted);letter-spacing:.1em}
+  aside.toc .scroll{max-height:calc(100vh - 150px);overflow:auto;padding-right:6px}
+  aside.toc .vol{margin:12px 0 4px;font-weight:700;color:var(--green);font-size:13px;
+    border-top:1px solid var(--line);padding-top:10px}
+  aside.toc .vol:first-child{border-top:0;margin-top:0}
+  aside.toc .ch{display:block;padding:4px 8px;color:var(--ink);font-weight:600;font-size:13.5px}
+  aside.toc .sec{display:block;padding:3px 8px 3px 20px;color:var(--muted);font-size:13px}
+  aside.toc a:hover{background:var(--paper-2);text-decoration:none;border-radius:8px}
+  aside.toc a.cur{background:var(--green);color:#fff;border-radius:8px}
+  aside.toc a.cur:hover{background:var(--green)}
+
+  article{max-width:770px}
+  .volband{margin:40px 0 8px;padding:22px 26px;border-radius:var(--radius);
+    background:linear-gradient(120deg,#22402f,#2f6b4f);color:#eaf3ee;box-shadow:var(--shadow);scroll-margin-top:80px}
+  .volband .no{font-size:12.5px;letter-spacing:.25em;color:#a8d8bf}
+  .volband h2{margin:6px 0 0;font-size:24px}
+  .volband p{margin:6px 0 0;font-size:14.5px;color:#cfe3d8}
+  .chapter{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 34px;margin:0 0 18px;box-shadow:var(--shadow);scroll-margin-top:80px}
+  .chapter > h3{margin:0 0 4px;font-size:21px;color:var(--green)}
+  .chapter > .csub{color:var(--muted);font-size:13.5px;margin:0 0 18px;font-style:italic}
+  .sec{margin:0 0 20px;scroll-margin-top:86px;padding-top:6px}
+  .sec h4{font-size:16.5px;margin:0 0 8px;color:var(--ink)}
+  .sec h4 .n{color:var(--gold);font-variant-numeric:tabular-nums;margin-right:8px;font-weight:600}
+  .sec p{margin:0 0 12px}
+  .num{font-variant-numeric:tabular-nums;color:var(--green);font-weight:600}
+  .pull{background:linear-gradient(180deg,#fbf6e9,#f6f3ea);border-left:4px solid var(--gold);
+    padding:14px 18px;border-radius:10px;color:var(--ink-soft);font-size:15.5px;margin:16px 0}
+  .pull b{color:var(--green)}
+  .quote{font-style:italic;color:var(--ink-soft);border-left:3px solid var(--line);
+    padding-left:14px;margin:14px 0}
+  .fact{font-size:13.5px;color:var(--muted);background:var(--paper);border:1px dashed var(--line);
+    border-radius:10px;padding:10px 14px;margin:14px 0}
+  .fact b{color:var(--green-2)}
+
+  .anchor{background:#14201a;color:#dfe7df;border-radius:var(--radius);padding:28px 34px;margin-top:30px}
+  .anchor h3{color:#9fd6b6;margin:0 0 10px;font-size:19px}
+  .anchor a{color:#9fd6b6}
+  .anchor ul{margin:8px 0 0;padding-left:20px}
+  .anchor li{margin:6px 0;font-size:14px;line-height:1.7}
+  .anchor .note{color:#a9b3a9;font-size:13px;margin-top:14px}
+
+  #totop{position:fixed;right:20px;bottom:24px;width:44px;height:44px;border-radius:50%;
+    background:var(--green);color:#fff;border:0;cursor:pointer;font-size:18px;
+    box-shadow:0 6px 18px rgba(47,107,79,.35);display:none;z-index:55}
+  footer.site{max-width:var(--maxw);margin:0 auto;padding:24px 22px 56px;color:var(--muted);
+    font-size:13px;text-align:center;border-top:1px solid var(--line)}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr}
+    aside.toc{position:static;margin-bottom:16px}
+    aside.toc .scroll{max-height:none}
+    .chapter{padding:22px 20px}
+    .hero h1{font-size:25px}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="book">
+  <div class="bookbar">
+    <span class="title">屿见<span class="dot">·</span>创业奇思妙想章</span>
+    <span class="sub">一个广州法务的下山记 · 虚拟推演，数据可考证</span>
+    <a class="back" href="/">← 返回主站</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">A FICTIONAL BUT VERIFIABLE VENTURE</div>
+  <h1>屿见<br/>从广州法务，到博罗山下的网咖掌柜</h1>
+  <p class="lead">虚拟设计你想要的创业。一个在广州上市公司上班的法务，三十岁，月薪两万，越秀有房贷房；卖房清完按揭和负债，净得三十万，去一个他只去玩过、从没考察过的县城，开一间有猫有狗、能看罗浮山云海的云网咖＋棋牌。全书五卷十三章四十三节，房价、行业、证照、政策均取自公开可查信息——除人名与基础设定，尽量少虚构。</p>
+  <div class="meta">
+    <span>五卷 · 十三章 · 四十三节</span><span>现实推演</span><span>轻资产</span><span>云网咖</span><span>家庭后路</span>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="toc">
+    <h4>目 录</h4>
+    <div class="scroll">
+      <div class="vol">卷一 · 广州：写字楼里的困兽</div>
+      <a class="ch" href="#ch1">第一章 三十岁的法务</a>
+      <a class="sec" href="#s1-1">1.1 西晒的工位</a>
+      <a class="sec" href="#s1-2">1.2 越秀那套七十二平</a>
+      <a class="sec" href="#s1-3">1.3 两万块的去向</a>
+      <a class="ch" href="#ch2">第二章 罗浮山的周末</a>
+      <a class="sec" href="#s2-1">2.1 院子里的土狗和橘猫</a>
+      <a class="sec" href="#s2-2">2.2 一个不该有的念头</a>
+      <a class="sec" href="#s2-3">2.3 小宝的两句话</a>
+      <a class="ch" href="#ch3">第三章 像做尽调一样算账</a>
+      <a class="sec" href="#s3-1">3.1 卖房还剩多少</a>
+      <a class="sec" href="#s3-2">3.2 网咖这行还在不在</a>
+      <a class="sec" href="#s3-3">3.3 云网咖：把主机搬走</a>
+      <a class="sec" href="#s3-4">3.4 棋牌：县城最稳的现金流</a>
+      <a class="sec" href="#s3-5">3.5 他没查的那件事</a>
+
+      <div class="vol">卷二 · 决断：把后路押上去</div>
+      <a class="ch" href="#ch4">第四章 那一封辞呈</a>
+      <a class="sec" href="#s4-1">4.1 三页交接清单</a>
+      <a class="sec" href="#s4-2">4.2 门禁卡交出去那天</a>
+      <a class="sec" href="#s4-3">4.3 荔枝木窑鸡</a>
+      <a class="ch" href="#ch5">第五章 卖房</a>
+      <a class="sec" href="#s5-1">5.1 挂牌两个月</a>
+      <a class="sec" href="#s5-2">5.2 净到手三十万</a>
+      <a class="sec" href="#s5-3">5.3 小宝那份不动的钱</a>
+      <a class="ch" href="#ch6">第六章 下山</a>
+      <a class="sec" href="#s6-1">6.1 为什么是博罗</a>
+      <a class="sec" href="#s6-2">6.2 到了才第一次踩点</a>
+      <a class="sec" href="#s6-3">6.3 长宁镇不是做生意的地方</a>
+      <a class="sec" href="#s6-4">6.4 罗阳街道</a>
+
+      <div class="vol">卷三 · 落地：证照、装修与开门</div>
+      <a class="ch" href="#ch7">第七章 办证：法律的本行</a>
+      <a class="sec" href="#s7-1">7.1 筹建、消防、公安、食品</a>
+      <a class="sec" href="#s7-2">7.2 第一次没过的消防</a>
+      <a class="sec" href="#s7-3">7.3 那条红线</a>
+      <a class="ch" href="#ch8">第八章 装修与设备</a>
+      <a class="sec" href="#s8-1">8.1 森系轻工业</a>
+      <a class="sec" href="#s8-2">8.2 云终端到货那天</a>
+      <a class="sec" href="#s8-3">8.3 两只狗三只猫</a>
+      <a class="ch" href="#ch9">第九章 开业</a>
+      <a class="sec" href="#s9-1">9.1 屿见</a>
+      <a class="sec" href="#s9-2">9.2 第一天</a>
+      <a class="sec" href="#s9-3">9.3 柜台后的第一杯茶</a>
+
+      <div class="vol">卷四 · 现实：耳光与耳光之后</div>
+      <a class="ch" href="#ch10">第十章 现实的耳光</a>
+      <a class="sec" href="#s10-1">10.1 云网咖的延迟</a>
+      <a class="sec" href="#s10-2">10.2 棋牌的边界</a>
+      <a class="sec" href="#s10-3">10.3 现金流最紧的三个月</a>
+      <a class="sec" href="#s10-4">10.4 罗浮山的云，不是县城的客流</a>
+      <a class="ch" href="#ch11">第十一章 转机</a>
+      <a class="sec" href="#s11-1">11.1 一块小牌子</a>
+      <a class="sec" href="#s11-2">11.2 贴息政策贷</a>
+      <a class="sec" href="#s11-3">11.3 爬坡</a>
+      <a class="ch" href="#ch12">第十二章 一年之后</a>
+      <a class="sec" href="#s12-1">12.1 账</a>
+      <a class="sec" href="#s12-2">12.2 小宝来当甩手掌柜</a>
+      <a class="sec" href="#s12-3">12.3 父母住了一周</a>
+
+      <div class="vol">卷五 · 尾声</div>
+      <a class="ch" href="#ch13">第十三章 留言簿第一页</a>
+      <a class="sec" href="#s13-1">13.1 那段话</a>
+      <a class="sec" href="#s13-2">13.2 没暴富，也没倒闭</a>
+      <a class="sec" href="#s13-3">13.3 后路</a>
+      <a class="ch" href="#anchor">现实锚点 · 数据来源</a>
+    </div>
+  </aside>
+
+  <article>
+
+    <div class="volband" id="vol1">
+      <div class="no">VOLUME I</div>
+      <h2>卷一 · 广州：写字楼里的困兽</h2>
+      <p>三十岁，月薪两万，房子是资产也是锁。</p>
+    </div>
+
+    <section class="chapter" id="ch1">
+      <h3>第一章 三十岁的法务</h3>
+      <p class="csub">设定：林屿，30 岁，广州某上市公司法务，月薪 2 万，越秀有房贷房，已婚未育</p>
+
+      <div class="sec" id="s1-1">
+        <h4><span class="n">1.1</span>西晒的工位</h4>
+        <p>林屿今年三十。珠江新城一栋玻璃幕墙的写字楼里，他的工位对着西边，下午四点阳光会斜进来，把那份《股权投资协议》的批注照得发白。他是广州一家上市公司的法务，月薪两万，五险一金按上限交。公积金账户每个月进账不少，但房价更早就把人按在了原地。</p>
+      </div>
+      <div class="sec" id="s1-2">
+        <h4><span class="n">1.2</span>越秀那套七十二平</h4>
+        <p>房子在越秀，老楼梯房，七十二平方米。2021 年行情最热的时候买的，那时单价约 <span class="num">5.9 万/㎡</span>，总价约 <span class="num">425 万</span>。首付只凑了约 110 万——夫妻公积金加掏空积蓄，还借了父母一点。剩下的 <span class="num">315 万</span> 是银行的，三十年。月供一万七千多，五年还下来，大头全是利息。</p>
+      </div>
+      <div class="sec" id="s1-3">
+        <h4><span class="n">1.3</span>两万块的去向</h4>
+        <p>他和同龄的女孩结了婚。她在外企做法务，稳定、体面、也加班，但路线清楚。两人没孩子。家里管猫叫"小宝"的是他太太，后来"小宝"慢慢成了她对这段生活的自称：安心打工、按月领薪、不冒进。</p>
+        <p>林屿是独生子。父母在老家，早已退休，有固定的退休金，不多，没有多余积蓄，也不在广州。他每月给家里打一点，剩下的钱：房贷、通勤、外卖、偶尔和太太周末去罗浮山住一晚。工资两万，但广州的开销更高。存款基本是没有的——房子是资产，也是锁。</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch2">
+      <h3>第二章 罗浮山的周末</h3>
+      <p class="csub">念头：开网吧、养猫狗、有自己的空间，去小县城——不是养猫店</p>
+
+      <div class="sec" id="s2-1">
+        <h4><span class="n">2.1</span>院子里的土狗和橘猫</h4>
+        <p>每周最松弛的两个小时，是周六早上开上广惠高速，一个半小时后钻进罗浮山的林子里。罗浮山在惠州市博罗县，道教第七洞天，主峰飞云顶 1296 米。他在山上不爬山，就在民宿院子里坐着，看云从飞云顶压下来。那天院子里有只土狗趴在石阶上，民宿老板娘的橘猫跳上他膝盖。风是凉的。</p>
+      </div>
+      <div class="sec" id="s2-2">
+        <h4><span class="n">2.2</span>一个不该有的念头</h4>
+        <p>那天他本来在改一份保密协议，改着改着把电脑合上了。他忽然想：如果有一天，我不用周一赶回广州开会，而是就在这里，有一间自己的屋子——能上网、能打游戏、能撸猫撸狗、能招待同样想喘口气的人——那算不算也算一种"上班"？</p>
+        <p>他当时对博罗县本身一无所知，只知道罗浮山好玩。"去小县城开店"在他脑子里还只是一种情绪，不是一份选址报告——他连这座县城的城区在哪、常住人口多少、有没有竞品，都没想过。</p>
+        <p>他不是想开网红猫咖。猫咖他看过，毛利薄、卫生难过、复制难。他想的是更硬一点的东西：网吧。但又不只是网吧——一台好电脑、一张舒服的椅子、一杯喝的，加上几间能打牌的包房，再塞两只狗三只猫当治愈担当。这间屋子，既是他自己的第三空间，也能收钱。</p>
+      </div>
+      <div class="sec" id="s2-3">
+        <h4><span class="n">2.3</span>小宝的两句话</h4>
+        <p>当晚他给太太发了条语音，说想去小县城开个网咖加棋牌，自己当掌柜。太太回得很快，原话他记了一辈子：</p>
+        <div class="quote">"我是让你清清楚楚地去做。如果你都知道所有的风险后再去做，那你就可以开始计划做。"<br/>"好呀，等你干成了接小宝过去收钱，在那之前小宝就想安安心心打工上班。"</div>
+        <p>这两句定了调：他去闯，她守后方。她不拦，但要他先想清楚。这正好对上林屿的本行——一个法务最擅长的，本来就是把风险列清楚，再决定要不要签字。</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch3">
+      <h3>第三章 像做尽调一样算账</h3>
+      <p class="csub">卖房能剩多少？网咖还在不在？棋牌能不能沾？云网吧是什么？</p>
+
+      <div class="sec" id="s3-1">
+        <h4><span class="n">3.1</span>卖房还剩多少</h4>
+        <p>他先算自家账。2026 年卖，越秀老单元价格回落，叠加急售让价，成交约 <span class="num">4.8 万/㎡</span>，七十二平约 <span class="num">346 万</span>——比买价低了小八十万，妥妥站了岗。</p>
+        <p>交易口径（真实规则）：持有满两年，增值税及附加免征；不是"满五唯一"，个税按 1% 约 <span class="num">3.5 万</span>；中介费行规约 2% 约 <span class="num">6.9 万</span>；五年月供大头是利息，已还本金约 30 万，按揭尾款剩约 <span class="num">285 万</span>；另有一笔 2023 年装修和婚礼办的信用贷余约 <span class="num">18 万</span>，卖房时一并结清。净到手 ≈ <span class="num">346 − 285 − 18 − 3.5 − 6.9 ≈ 32.6 万</span>，约三十万。</p>
+      </div>
+      <div class="sec" id="s3-2">
+        <h4><span class="n">3.2</span>网咖这行还在不在</h4>
+        <p>他怕自己陷入情怀创业，于是查行业数据，结果出乎意料：被唱衰多年的网吧，2023 年后居然回暖了。全国上网服务场所从 2023 年约 <span class="num">7.7 万家</span>，回到 2025 年底的 <span class="num">12.26 万家</span>，全年总消费 <span class="num">55.71 亿人次</span>；行业营收从 2023 年的 <span class="num">543 亿</span>，冲到 2025 年的 <span class="num">1016.8 亿</span>。电竞馆占比已超过 <span class="num">75%</span>——传统黑网吧被品牌化、连锁化的电竞馆取代。</p>
+        <p>但他也读到另一面：一线城市单店投资动辄 500 万以上，回本 3–5 年；社区轻资产店单店投资约 <span class="num">50–100 万</span>。他只有三十万，正面硬刚电竞馆不现实。必须换打法。</p>
+      </div>
+      <div class="sec" id="s3-3">
+        <h4><span class="n">3.3</span>云网咖：把主机搬走</h4>
+        <p>他看到一个真正适合他的变量——<b>云网吧 / 云电竞</b>。简单说，门店不放高性能主机，只摆一台巴掌大的云终端盒子连显示器、键鼠，所有渲染跑在几十公里外的边缘数据中心 GPU 集群上。山西、南通、佛山已有门店完成"去主机化"改造，<span class="num">初期硬件投入降低约 70%</span>。一台传统电竞主机一到两万，云终端盒子加显示器只要两三千。</p>
+        <p>这对他几乎是天作之合：三十万预算、轻资产、又能逐步创建自己的生产工具——他租的是算力，不是沉没的硬件；硬件迭代的风险交给了云服务商。他给这个选项打了最高分。</p>
+      </div>
+      <div class="sec" id="s3-4">
+        <h4><span class="n">3.4</span>棋牌：县城最稳的现金流</h4>
+        <p>纯网咖在县城上座率不如城市，单靠上网费回本慢。他加了第二曲线：<b>自助棋牌室</b>。县城包间 <span class="num">10–20 元/小时</span>，一个八包间门店月净利约 <span class="num">2–2.5 万</span>，回本 8–12 个月，启动 15–25 万。但他划了一条红线——棋牌只收台费、茶水费，<b>绝不允许任何"抽水""抽头"</b>，那是赌博，碰了就完。这条红线，刚好是他作为法务的本能。</p>
+      </div>
+      <div class="sec" id="s3-5">
+        <h4><span class="n">3.5</span>他没查的那件事</h4>
+        <p>但有一点他没查，也查不动——博罗本地。他做的尽调全是行业层面：网吧还在不在、云网咖降不降本、棋牌合不合规、证照怎么走。至于"博罗到底有没有人、竞品几家、租金几何"，他潜意识里用一句"罗浮山那么好，山脚下总有人吧"糊弄过去了。这是他后来交的第一笔学费。</p>
+        <div class="pull">回广州的高架上，他打开备忘录，写下第一行：<b>"最优方案 = 轻资产 + 差异化 + 离罗浮山近 + 我用得上的本事。"</b></div>
+      </div>
+    </section>
+
+    <div class="volband" id="vol2">
+      <div class="no">VOLUME II</div>
+      <h2>卷二 · 决断：把后路押上去</h2>
+      <p>辞呈、卖房、下山——三十万，是一次性押注。</p>
+    </div>
+
+    <section class="chapter" id="ch4">
+      <h3>第四章 那一封辞呈</h3>
+      <p class="csub">从上市公司法务，到"无业游民"的三十天</p>
+
+      <div class="sec" id="s4-1">
+        <h4><span class="n">4.1</span>三页交接清单</h4>
+        <p>2026 年春天，林屿把辞呈递了上去。流程他很熟——毕竟离职协议、竞业、保密义务，都是他平时审的。他给自己的交接清单列了三页：未结合同、在审诉讼、待续签的年度法律顾问、还有那套没人接手的模板库。他摸着良心把活交干净，没给自己留后路，也没必要留。</p>
+      </div>
+      <div class="sec" id="s4-2">
+        <h4><span class="n">4.2</span>门禁卡交出去那天</h4>
+        <p>最后一天，行政把门禁卡收走。他站在大堂，忽然有点空。三十岁，月薪两万，公积金社保齐全，在外人眼里是好工作。但他清楚：<b>好工作不等于好出路</b>。人不可能一辈子一直打工，要么自己创业，要么挤进公务员那条被国家保障划定的路线。他选了前者。</p>
+      </div>
+      <div class="sec" id="s4-3">
+        <h4><span class="n">4.3</span>荔枝木窑鸡</h4>
+        <p>太太请了半天假，请他吃了一顿罗浮山脚那种荔枝木窑鸡。她没说"祝你成功"，说的是："你把风险都写下来了吗？写下来了，就去。"他点头。那张风险清单后来被他裱在博罗店的后台墙上。</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch5">
+      <h3>第五章 卖房</h3>
+      <p class="csub">清完按揭和负债，净到手约三十万</p>
+
+      <div class="sec" id="s5-1">
+        <h4><span class="n">5.1</span>挂牌两个月</h4>
+        <p>卖房比想象中顺。越秀老单元满两年，税费不重，挂牌两个月成交。</p>
+      </div>
+      <div class="sec" id="s5-2">
+        <h4><span class="n">5.2</span>净到手三十万</h4>
+        <p>钱到账，扣清按揭尾款、信用贷和交易税费，净到手约三十万，全部进了他的创业账户。他没告诉父母细节，只说"换种活法"，二老退休金够花，不必他们操心，也不必他们掏钱。</p>
+      </div>
+      <div class="sec" id="s5-3">
+        <h4><span class="n">5.3</span>小宝那份不动的钱</h4>
+        <p>这三十万，就是他全部的风险资本金。没有留七十万给妻子作安全垫——房子清完按揭和负债后，就只剩这点。妻子小宝没动这笔钱，她继续在 <b>广州</b> 做外企法务、租个小房子上班，用稳定的月薪和社保守着家庭另一头。</p>
+        <div class="pull">他去博罗，是把小两口共有的这点房产权益，一次性押进了自己的后路里。全家唯一没被押进创业的现金流，是太太那份外企工资。</div>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch6">
+      <h3>第六章 下山</h3>
+      <p class="csub">选博罗是情绪不是调研；到了才第一次真正"考察"</p>
+
+      <div class="sec" id="s6-1">
+        <h4><span class="n">6.1</span>为什么是博罗</h4>
+        <p>说实话，他选博罗没什么"选址逻辑"——纯粹是情绪。博罗是他除了广州之外，唯一有点感情、也想去住的地方，就因为罗浮山。他每个周末去的是罗浮山，是去玩的：民宿院子、山脚豆腐花、飞云顶压下来的云。他没在县城罗阳街道走过几步，没数过学生有多少、没问过租金几何、更没看过有没有同行。<b>他以为自己"熟"，其实只是"玩过"。</b>赣深高铁罗浮山站通车、广州过来四十分钟到一小时，这些他查过，但查的是通勤，不是生意。</p>
+      </div>
+      <div class="sec" id="s6-2">
+        <h4><span class="n">6.2</span>到了才第一次踩点</h4>
+        <p>真到博罗，他才第一次认真"考察"。此前所有判断，都建立在"我喜欢这里"之上。</p>
+      </div>
+      <div class="sec" id="s6-3">
+        <h4><span class="n">6.3</span>长宁镇不是做生意的地方</h4>
+        <p>先在长宁镇罗浮山脚转了三天——风景是好，但那是旅游镇：工作日和淡季人稀，沿街铺面租金被游客经济顶得偏高，住的几乎全是民宿和农家乐，没有稳定的常住人口来上网打牌。他原本想"住山脚、店也开山脚"，这一趟把念头打碎了。</p>
+      </div>
+      <div class="sec" id="s6-4">
+        <h4><span class="n">6.4</span>罗阳街道</h4>
+        <p>真正有年轻人、有职校、有返乡务工者、有全年客流的是三十分钟车程外的 <b>罗阳街道</b>——博罗的县城中心。于是他做了个妥协：店开在罗阳（营生），自己租住在长宁镇的小院（生活），把"生活"和"营生"硬拆成两处。<b>这拆法不是多聪明，是踩过坑才懂的。</b></p>
+        <p>他按法规筛点位，反而比普通创业者省事。开网吧的法律红线他背得出：<b>距中小学、幼儿园直线 200 米内不得设立；居民住宅楼内不得设；营业面积不低于 20㎡、每台计算机占地面积不低于 2㎡；不得装固定的封闭门窗栅栏</b>。到了博罗，他直接用手机地图拉了学校的 200 米缓冲圈，把候选商铺一个个排除，最后落在罗阳街道一处社区底商，150㎡，纯商业性质，离最近的小学 260 米，合规。不过合规他懂，"这条街到底会不会有人来"他并不真知道——签之前他没在晚高峰去那条街蹲过客流，只是凭"县城中心总有人"的直觉押了一注。</p>
+        <p>租金：县城 150㎡ 临街底商，月租约 <span class="num">6000–8000 元</span>，押三付一。他谈下 7000/月、免租期一个月。住处在长宁镇租了个小院，1200/月，推开窗能看见罗浮山的影子。</p>
+      </div>
+    </section>
+
+    <div class="volband" id="vol3">
+      <div class="no">VOLUME III</div>
+      <h2>卷三 · 落地：证照、装修与开门</h2>
+      <p>这辈子第一次，审批对象是自己。</p>
+    </div>
+
+    <section class="chapter" id="ch7">
+      <h3>第七章 办证：法律的本行</h3>
+      <p class="csub">筹建、消防、公安、食品；以及那条不能碰的红线</p>
+
+      <div class="sec" id="s7-1">
+        <h4><span class="n">7.1</span>筹建、消防、公安、食品</h4>
+        <p>办证是林屿最不慌的环节——毕竟审别人的证照是他的日常工作。流程他门儿清：先向文旅部门申请<b>筹建批准</b>（法定 20 个工作日），完成筹建后向公安机关承诺符合信息网络安全条件（告知承诺制），同时办<b>消防（公众聚集场所营业前消防安全检查）</b>，拿到消防意见和公安承诺书，再回文旅部门最终审核发《网络文化经营许可证》（15 个工作日）。卖饮料零食还要办《食品经营许可》。现在不少地方推"开办网吧一件事"一业一证，承诺时限可压到约 8 个工作日（不含筹建公示）。</p>
+      </div>
+      <div class="sec" id="s7-2">
+        <h4><span class="n">7.2</span>第一次没过的消防</h4>
+        <p>坑还是有的。消防第一次没过：棋牌包间隔音棉用的是可燃材料，喷淋间距不达标，被要求整改。他没抱怨，按《公众聚集场所消防安全要求》重做——包间隔墙换 A 级防火板，加独立烟感，棋牌区单独新风。第二次过。公安那边是告知承诺，他签了《信息网络安全审核告知承诺书》，装了经营管理技术系统和实名刷卡进门，未成年人进不来。</p>
+      </div>
+      <div class="sec" id="s7-3">
+        <h4><span class="n">7.3</span>那条红线</h4>
+        <p>开业前，有熟人说"县城棋牌哪有不抽水的，你不抽别人也不来"。林屿是法务，这种话他听得太多。他回得干脆：<b>只收台费、茶水费，谁要在我店里赌，我请他出去。</b>这一句，后来帮他避开了两次清查。合规不是成本，是这家店活过三年的护城河。</p>
+        <div class="pull">他给自己的店起了名：<b>"屿见·云咖棋舍"</b>。"屿"是他自己，"云"是云网咖，"棋舍"是棋牌＋猫狗的院子。招牌不大，挂在罗阳街道那处底商门口，绿底白字，像罗浮山下的苔藓。</div>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch8">
+      <h3>第八章 装修与设备</h3>
+      <p class="csub">25 台云终端 + 6 间棋牌 + 两只狗三只猫</p>
+
+      <div class="sec" id="s8-1">
+        <h4><span class="n">8.1</span>森系轻工业</h4>
+        <p>装修走"森系轻工业"：原木色桌椅、绿植墙、暖光，不豪华，但干净。他刻意控制硬装预算——县城店拼的是位置和体验，不是大理石。总装修约八万。</p>
+      </div>
+      <div class="sec" id="s8-2">
+        <h4><span class="n">8.2</span>云终端到货那天</h4>
+        <p>云终端到货那天，他拍了张照：没有轰鸣的主机，只有一排巴掌大的盒子。25 台云终端＋显示器＋键鼠约 <span class="num">7.5 万</span>；6 间棋牌包房（麻将机＋智能门禁＋隔音＋新风）约 <span class="num">7.2 万</span>；空调、家具、灯光约 3 万；证照＋押金＋备用金约 4 万。合计 <span class="num">约 29.7 万</span>。他卖房净到手约三十万，等于把这笔钱几乎全砸了进去，账上只留两三万作薄薄一层备用金——<b>没有第二笔钱可动，云网咖的轻资产打法不是锦上添花，是生死线。</b></p>
+        <p>云算力不是白用的：他按月租边缘节点的 GPU 算力，25 终端每月算力租约一万出头，替代了传统店的电费＋硬件折旧。账面上"电费"降了，多了一笔"算力订阅"，但总持有成本更低、且永远不卡——每次重启就是一台新机器。</p>
+      </div>
+      <div class="sec" id="s8-3">
+        <h4><span class="n">8.3</span>两只狗三只猫</h4>
+        <p>两只狗（一土狗一柯基）、三只猫，是"治愈区"的主角。它们不单独收费，但让人愿意多待、多点一杯喝的。县城年轻人拍照发抖音，免费给他带了客流。他给猫狗都做了宠物责任相关的准备，地面做了防滑易洁，怕扰民就放在网咖里侧、棋牌包房外侧的院子。</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch9">
+      <h3>第九章 开业</h3>
+      <p class="csub">2026 年夏末</p>
+
+      <div class="sec" id="s9-1">
+        <h4><span class="n">9.1</span>屿见</h4>
+        <p>2026 年夏末，"屿见"开业。绿底白字的招牌挂上去那天，他在门口站了很久。</p>
+      </div>
+      <div class="sec" id="s9-2">
+        <h4><span class="n">9.2</span>第一天</h4>
+        <p>第一天来了十几个附近职校的学生，和一个带着笔记本来"发呆"的中年男人。</p>
+      </div>
+      <div class="sec" id="s9-3">
+        <h4><span class="n">9.3</span>柜台后的第一杯茶</h4>
+        <p>林屿给自己泡了杯茶，坐在柜台后，第一次觉得：这份工，是自己的。</p>
+      </div>
+    </section>
+
+    <div class="volband" id="vol4">
+      <div class="no">VOLUME IV</div>
+      <h2>卷四 · 现实：耳光与耳光之后</h2>
+      <p>"当老板"不等于自由；前三个月账上只剩两万多。</p>
+    </div>
+
+    <section class="chapter" id="ch10">
+      <h3>第十章 现实的耳光</h3>
+      <p class="csub">浪漫只够撑一周</p>
+
+      <div class="sec" id="s10-1">
+        <h4><span class="n">10.1</span>云网咖的延迟</h4>
+        <p>开业第二周，几个老玩家吐槽"画面飘""按键有延迟"。云网咖的命门就是网络：边缘节点到门店的链路一抖，体验就崩。他没慌，像处理一个系统故障——换运营商、上双链路、把热点游戏预载到本地缓存。两周调稳。这事儿教会他：轻资产省的是钱，省不了"你得懂行"。</p>
+      </div>
+      <div class="sec" id="s10-2">
+        <h4><span class="n">10.2</span>棋牌的边界</h4>
+        <p>有人想来凑局抽水，被他请走；有邻里投诉棋牌声音大，他连夜加隔音、把营业时间卡在合法范围内。公安、消防各来过一次抽查，因为他证照齐全、实名到位，都是"没问题，保持"。</p>
+      </div>
+      <div class="sec" id="s10-3">
+        <h4><span class="n">10.3</span>现金流最紧的三个月</h4>
+        <p>前三个月，网咖上座率只有三成多（新店养成期），棋牌反而先跑起来。月流水约 5.5 万，扣掉房租、算力租、一个兼职店长＋保洁、水电耗材，净利润刚过万。三十万本金里，设备装修已砸进去近三十万，账上流动资金一度只剩两万多，够撑一个半月。</p>
+        <p>他一度想退回广州找份法务上班——那是他唯一还能退的后路；但退回去，这三十万就打了水漂，妻子那份稳定的支撑也少了一层来自他的分量。他没退。</p>
+      </div>
+      <div class="sec" id="s10-4">
+        <h4><span class="n">10.4</span>罗浮山的云，不是县城的客流</h4>
+        <p>最贵的一课，是关于"为什么选博罗"。他后来承认，当初选这里，不是因为考察过客群，而是因为喜欢在罗浮山脚下发呆——<b>他把度假的感觉，当成了做生意的底气。</b>现实是：来罗浮山的是游客，住县城的是另一拨人；他爱的那片云，不会自己走下来进店消费。头半年，县城本地的年轻人来得不如他想的多，反而是棋牌室先靠周边街坊和返乡的人撑起来。</p>
+        <div class="pull">他在留言簿上补了一句：<b>"选地方不能凭'我喜欢'，得凭'他们要不要'。"</b></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch11">
+      <h3>第十一章 转机</h3>
+      <p class="csub">老本行救了命</p>
+
+      <div class="sec" id="s11-1">
+        <h4><span class="n">11.1</span>一块小牌子</h4>
+        <p>转机来自他自己的老本行。博罗本地不少农家乐、民宿、小加工厂老板，根本请不起专职法务，合同、用工、食品许可一塌糊涂。林屿在店里挂了块小牌子："周边小本生意合规咨询，按次收费"。靠前同事介绍和本地口碑，他每月接几单远程法务顾问，多挣 <span class="num">5000–10000 元</span>。这钱不多，但把店的压力卸掉一半——<b>他用自己的知识和智慧给社会创造价值，而不是一味地输入、当牛马、交代啥干啥。</b></p>
+      </div>
+      <div class="sec" id="s11-2">
+        <h4><span class="n">11.2</span>贴息政策贷</h4>
+        <p>2025 年 8 月，财政部等九部门出台贷款贴息政策，网吧被归入"文化娱乐类"扶持范围，符合条件的经营者可拿最高 100 万元贷款、年 1% 的贴息。林屿后来用这笔政策贷补了周转——这是真实存在的红利，不是编的。</p>
+      </div>
+      <div class="sec" id="s11-3">
+        <h4><span class="n">11.3</span>爬坡</h4>
+        <p>上座率从三成多，慢慢爬到四成上下。棋牌先稳住，网咖跟上。那块合规咨询的小牌子一直挂着，后来成了他第二条腿。</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch12">
+      <h3>第十二章 一年之后</h3>
+      <p class="csub">没暴富，但后路是真的</p>
+
+      <div class="sec" id="s12-1">
+        <h4><span class="n">12.1</span>账</h4>
+        <p>到 2027 年夏，"屿见"满一年。账是这样的：</p>
+        <ul>
+          <li><b>网咖：</b>25 台云终端，县城均价 6–8 元/时，上座率稳在四成上下，月入约 <span class="num">2.5 万</span>。</li>
+          <li><b>棋牌：</b>6 间包房，县城 12–18 元/时，月入约 <span class="num">2.7 万</span>。</li>
+          <li><b>增值：</b>饮料零食、猫狗周边、合规咨询引流，月约 <span class="num">0.5 万</span>。</li>
+          <li><b>月总收：</b>约 <span class="num">5.7 万</span>；月固定成本约 <span class="num">3 万</span>（房租 0.7＋算力租 1＋人工 0.8＋水电 0.2＋杂费 0.3）。</li>
+          <li><b>月净利：</b>约 <span class="num">2.5–2.7 万</span>；年净利约 <span class="num">30 万</span>，回本约 14 个月。</li>
+        </ul>
+      </div>
+      <div class="sec" id="s12-2">
+        <h4><span class="n">12.2</span>小宝来当甩手掌柜</h4>
+        <p>他没回广州做法务，也没把店做黄。店活下来了，且比打工时"清醒"——钱是自己赚的，时间是自己的（除了棋牌包房偶尔半夜的呼叫）。太太小宝周末从广州坐高铁来，真的在柜台后当了回"甩手掌柜"，临走说："还行，比我想的干净。"她没辞职，仍在广州租房上班，外企的月薪和社保，是这间店最好的安全绳——<b>也是全家唯一没被押进创业的那笔现金流。</b></p>
+      </div>
+      <div class="sec" id="s12-3">
+        <h4><span class="n">12.3</span>父母住了一周</h4>
+        <p>父母来住过一周，在长宁镇的小院里种了点葱。他们不懂"云网咖"，只懂儿子不用再赶周一的早高峰了。</p>
+      </div>
+    </section>
+
+    <div class="volband" id="vol5">
+      <div class="no">VOLUME V</div>
+      <h2>卷五 · 尾声</h2>
+      <p>不是当大老板，是当自己的小老板。</p>
+    </div>
+
+    <section class="chapter" id="ch13">
+      <h3>第十三章 留言簿第一页</h3>
+      <p class="csub">每个人最终都得当老板</p>
+
+      <div class="sec" id="s13-1">
+        <h4><span class="n">13.1</span>那段话</h4>
+        <p>林屿后来在店里的留言簿第一页写了一段话，算是给"创业奇思妙想章"收尾：</p>
+        <div class="quote">"人不可能一辈子打工。出路要么是自己创业，要么是公务员——被国家保障划定路线一辈子。我没有选后者，选了前者。但创业不是暴富，也不是浪漫。它是把风险想清楚之后，依然愿意每天开门、擦桌子、修网络、守合规。我没能'财务自由'，但我有了后路：一间有猫有狗、能看罗浮山云海的屋子，和一份用得上我本事的副业。<br/><br/>如果非要被迫接受'每个人都得当老板'这件事，不如主动一点——清清楚楚地当，当自己的小老板，也是一种出路。"</div>
+      </div>
+      <div class="sec" id="s13-2">
+        <h4><span class="n">13.2</span>没暴富，也没倒闭</h4>
+        <p>故事没有大反转。网咖没上市，棋牌没开成连锁，他也没衣锦还乡。但他确实从那个对着西晒改协议的广州法务，变成了罗浮山下会修网络、会看合同、猫狗围脚的掌柜。这中间没有虚构的英雄主义，只有一个普通人，用自己仅有的一点钱、一点专业、和一份被太太允许的"想清楚再干"，把一条后路，走通了。</p>
+      </div>
+      <div class="sec" id="s13-3">
+        <h4><span class="n">13.3</span>后路</h4>
+        <p>每个人最终都得当老板。不是当大老板，是当自己的小老板。</p>
+      </div>
+    </section>
+
+    <section class="anchor" id="anchor">
+      <h3>现实锚点 · 数据来源（均可考证）</h3>
+      <ul>
+        <li>广州越秀二手房均价 2025–2026 约 5.1–5.4 万/㎡：58同城房价网、安居客、中国房价行情网（creprice.cn）越秀区板块。</li>
+        <li>罗浮山位于惠州市博罗县长宁镇，国家 5A，主峰飞云顶 1296 米；赣深高铁"罗浮山站"广州约 40 分钟–1 小时，自驾广惠高速约 1.5 小时：博罗县人民政府门户、携程/同程景点页、高铁时刻表。</li>
+        <li>全国上网服务场所 2025 年底 12.26 万家、年消费 55.71 亿人次、营收 1016.8 亿、电竞馆占比&gt;75%：中国互联网上网服务行业协会《2025 中国互联网上网服务行业发展白皮书》及行业报道。</li>
+        <li>云网咖/云电竞"去主机化"使初期硬件投入降约 70%：山西移动云电竞、江苏南通宇强电竞、广东佛山云虎科技公开案例。</li>
+        <li>证照规则（《网络文化经营许可证》、筹建 20 工作日、消防营业前检查、公安告知承诺、学校/幼儿园 200 米禁设、单机≥2㎡、食品经营许可）：国务院《互联网上网服务营业场所管理条例》及各地"开办网吧一件事"办事指南。</li>
+        <li>自助棋牌县城 10–20 元/时、8 包间月净利 2–2.5 万、回本 8–12 个月、严禁抽水只收台费：多家棋牌连锁经营实录与二三线棋牌室成本分析。</li>
+        <li>2025 年 8 月财政部等九部门贷款贴息，网吧归文化娱乐类，最高 100 万贷款年 1% 贴息：九部门消费领域服务业贷款贴息政策公开报道。</li>
+      </ul>
+      <p class="note">说明：本篇为"虚拟设计你想要的创业"的推演小说，人物与情节为虚构，但所引用的价格、行业、法规、政策均取自公开可查信息；文中具体经营数据为基于真实区间的合理测算，非某家真实门店的财务披露。</p>
+    </section>
+  </article>
+</div>
+
+<button id="totop" title="回到顶部">↑</button>
+
+<footer class="site">
+  创业奇思妙想章 · 屿见 · 本篇为虚构推演，数据可考证
+</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var totop = document.getElementById('totop');
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    progress.style.width = (sc * 100) + '%';
+    totop.style.display = h.scrollTop > 600 ? 'block' : 'none';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('aside.toc a'));
+  var map = {};
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    (map[id] = map[id] || []).push(a);
+  });
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('cur'); });
+        var arr = map[e.target.id];
+        if (arr) arr.forEach(function(a){ a.classList.add('cur'); });
+      }
+    });
+  }, {rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('article .sec, article .chapter, article .volband').forEach(function(s){ obs.observe(s); });
+</script>
+</body>
+</html>
