@@ -1,4 +1,4 @@
-export type TabType = 'about' | 'expertise' | 'cases' | 'insights' | 'notes' | 'catering' | 'logistics' | 'foreign-contracts' | 'ip' | 'film-law' | 'film-law-s2' | 'film-law-s3' | 'film-law-s4' | 'labor' | 'insurance' | 'ai-law' | 'criminal' | 'financing' | 'arbitration' | 'startup';
+export type TabType = 'about' | 'expertise' | 'cases' | 'insights' | 'notes' | 'catering' | 'logistics' | 'foreign-contracts' | 'ip' | 'film-law' | 'film-law-s2' | 'film-law-s3' | 'film-law-s4' | 'labor' | 'insurance' | 'ai-law' | 'criminal' | 'financing' | 'arbitration' | 'startup' | 'family-law';
 
 export interface TimelineItem {
   year?: string;
