@@ -312,6 +312,8 @@ export default function App() {
 
             {activeTab === 'film-law-s3' && <FilmLawS3Tab />}
 
+            {activeTab === 'film-law-s4' && <FilmLawS4Tab />}
+
 
 
             {activeTab === 'labor' && <LaborLegalTab />}
