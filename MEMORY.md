@@ -50,6 +50,15 @@
 - **改内容流程**：改根目录 `融资法务/` 的源文件 → `npm run sync:financing`（`rsync -a 融资法务/ public/financing-legal/ --exclude README.md`）→ `npx tsc --noEmit` → commit/push。**不要只改 public 副本，会被覆盖。**
 - 第 10 站的港股主板三项财务测试数值已对照 hkex 规则原文核校；其余数值标注「通行实务表述，请核原文」。
 
+### 融资法务 · 深度补充面板模式（2026-09-18 建立，ch02 首批落地）
+- 背景：Andy 要求把站内关键概念「展开细化」＝**大白话理解 + 专业术语 + 条款解析 + 协议模板**四段，并在正文该字眼上设**跳转链接**点开。
+- 结构：`<details class="deep" id="deep-xxx">` → `<summary>`（`.seal-sm`「补」印 + `.dtitle` + `.dmeta` + `.dcue`）→ `.deep-bd` 内用 `<h3>` 分 A1/B1… 四段；正文入口用 `<a class="xref" href="#deep-xxx" data-deep="deep-xxx">关键词<sup>详解</sup></a>`。
+- 样式（`融资法务/assets/style.css`）：`.xref`（香槟金 + 虚线下划线 + 「详解」胶囊）；`.deep`（国风折叠面板、左侧金边、`scroll-margin-top:78px` 避开 128px 顶栏）；`@media(max-width:640px)` 隐藏 `.dmeta` 并收窄内边距。术语用 `.tw` 表、模板用 `.clause`：
+- 交互（`融资法务/assets/app.js` 的 `deepLinks()`）：`[data-deep]` 点击 → `target.open = true` + `scrollIntoView({behavior:'smooth'})` + 写 `location.hash`；`<details>` 本身原生可折叠，无 JS 也能用。
+- 已落地 `ch02-esop.html`：`#deep-lp`（有限合伙企业持股平台全解）+ `#deep-vesting`（成熟计划 Vesting 全解），正文 3 处锚点（剧情段 / 术语卡「持股平台」/ 成熟节奏引导行）；header meta-line 加了「深度补充 2 篇」。
+- **已核实法条（gov.cn《合伙企业法》现行文本，2026-09-18）**：第 61 条 2–50 人且至少 1 名 GP；第 62 条名称含「有限合伙」；第 63 条协议必备 6 项；第 64 条 LP 不得以劳务出资；第 66 条登记载明 LP 及认缴额；第 67 条 GP 执行合伙事务；**第 68 条 LP 不执行合伙事务 + 8 项安全港**；第 69 条利润分配（不得全分给部分合伙人，协议另有约定除外）；第 70–73 条 LP 可交易 / 竞业 / 出质 / 对外转让应提前 30 日通知；第 74 条强执份额时其他合伙人优先购买权；第 75 条仅剩 LP 应解散；**第 76 条表见普通合伙**（LP 最易踩的雷）；第 77 条新入伙 LP 以认缴额为限。vesting 市场惯例：4 年 + 1 年 cliff + 之后每月 1/48 为标准；单层触发已少见，**双层触发（并购 + 被裁/未承接）为现代主流**。
+- 复用：其余站位（03–12）做同类细化直接复刻此模式。
+
 ## 双视角劳动法务 tab（2026-09-14 新增，2026-09-17 改为「法务实务」子板块）
 - 原第 4 个顶层分组，2026-09-17 起**移入「法务实务」`legal` 分组作为子 tab**（顶层恢复为个人 / 法务实务 / 影视法律 3 个）。`navConfig.ts` 的 `NAV_GROUPS` 删 `labor` 分组、`legal.subTabs` 末尾加 `'labor'`；`SUB_TAB_META.labor` 文案保留为子 tab 名；Navbar 注释改回 3 分组。`App.tsx` 的 `labor` 渲染分支与 `isFullBleed` 不变（子 tab 仍为铺满型）。
 - 进入「法务实务」分组后，子导航第 8 个按钮即「双视角劳动法务」（前 7 个：餐饮/物流/知产/涉外/保险/刑事/AI+法律）。
