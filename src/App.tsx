@@ -309,7 +309,7 @@ export default function App() {
 
 
 
-            {activeTab === 'film-law-s2' && <FilmLawS2Tab />}
+            {activeTab === 'film-law-s2' && <FilmLawS2Tab darkMode={darkMode} />}
 
             {activeTab === 'film-law-s3' && <FilmLawS3Tab />}
 
@@ -324,7 +324,7 @@ export default function App() {
             {activeTab === 'ai-law' && <AiLawTab />}
             {activeTab === 'financing' && <FinancingLegalTab />}
 
-            {activeTab === 'startup' && <StartupTab />}
+            {activeTab === 'startup' && <StartupTab darkMode={darkMode} />}
 
           </motion.div>
 

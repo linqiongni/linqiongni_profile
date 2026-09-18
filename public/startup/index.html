@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme-default="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -100,6 +100,18 @@
     .chapter{padding:22px 20px}
     .hero h1{font-size:25px}
   }
+  /* ---------- Dark mode ---------- */
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --ink:#E9E7E2; --ink-soft:#C7C2B6;
+    --paper:#16181A; --paper-2:#1E2123;
+    --green:#6FB39A; --green-2:#8FC9B0;
+    --gold:#D9B06A; --line:#34383B; --muted:#9A938A;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  html[data-theme="dark"] body{background:var(--paper);color:var(--ink);}
+  html[data-theme="dark"] header.book{background:rgba(30,33,35,.92);}
+  html[data-theme="dark"] .pull{background:linear-gradient(180deg,#23262A,#1E2123);color:var(--ink-soft);}
 </style>
 </head>
 <body>
@@ -553,5 +565,6 @@
   }, {rootMargin:'-25% 0px -65% 0px'});
   document.querySelectorAll('article .sec, article .chapter, article .volband').forEach(function(s){ obs.observe(s); });
 </script>
+  <script src="/theme-toggle.js"></script>
 </body>
 </html>
