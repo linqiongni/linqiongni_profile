@@ -37,6 +37,7 @@ import { InsuranceTab } from './components/InsuranceTab';
 import { CriminalDefenseTab } from './components/CriminalDefenseTab';
 import { AiLawTab } from './components/AiLawTab';
 import { FinancingLegalTab } from './components/FinancingLegalTab';
+import { ArbitrationTab } from './components/ArbitrationTab';
 import { StartupTab } from './components/StartupTab';
 
 import { Footer } from './components/Footer';
@@ -93,7 +94,7 @@ export default function App() {
 
     // 跨境物流法务、知识产权、双视角劳动法务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
 
-    if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'startup') {
+    if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'startup' || tab === 'arbitration') {
 
       window.scrollTo({ top: 0, behavior: 'auto' });
 
@@ -139,7 +140,7 @@ export default function App() {
 
   // 跨境物流法务、知识产权、影视法律、双视角劳动法务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
 
-  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'startup';
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'startup' || activeTab === 'arbitration';
 
 
 
@@ -330,6 +331,8 @@ export default function App() {
             {activeTab === 'criminal' && <CriminalDefenseTab />}
             {activeTab === 'ai-law' && <AiLawTab />}
             {activeTab === 'financing' && <FinancingLegalTab />}
+
+            {activeTab === 'arbitration' && <ArbitrationTab darkMode={darkMode} />}
 
             {activeTab === 'startup' && <StartupTab darkMode={darkMode} />}
 

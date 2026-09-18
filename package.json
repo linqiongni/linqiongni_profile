@@ -10,7 +10,8 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "sync:financing": "rsync -a \"融资法务/\" \"public/financing-legal/\" --exclude README.md --exclude assets/.DS_Store",
-    "sync:all-static": "npm run sync:financing"
+    "sync:arbitration": "rsync -a \"商事仲裁/\" \"public/arbitration/\" --exclude .DS_Store",
+    "sync:all-static": "npm run sync:financing && npm run sync:arbitration"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
