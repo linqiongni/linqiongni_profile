@@ -70,7 +70,9 @@ a { color: var(--gold-deep); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- 顶栏 ---------- */
-.topbar {
+/* 注意：顶栏容器是 <div id="topbar">（由 assets/app.js 注入 .topbar-inner），
+   此处必须用 #topbar 而非 .topbar，否则 sticky 规则不生效、导航栏会随页面滚走 */
+#topbar {
   position: sticky; top: 0; z-index: 60;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: saturate(160%) blur(14px);

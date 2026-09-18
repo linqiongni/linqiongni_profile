@@ -110,6 +110,8 @@
 - 对赌条款设计定式：创始人作主债务人 + 公司连带保证（须留存股东会决议与章程）+ 减资配合义务与违约金 + 配偶同意函 + 价格上限（本金 + 8% 单利 − 已分配利润）；拟上市须递表前 6–12 个月签终止契据并写复效条款。
 
 ## iframe tab 与主站深色模式同步（2026-09-18）
-- 主站 darkMode 不影响 iframe 内静态页。同步机制：iframe 页引入 `/theme-toggle.js`，监听 `postMessage({type:'theme',mode:'dark'|'light'})`。
-- React 侧 pattern（见 `IpLegalTab.tsx`）：`darkMode` prop + `iframeRef`，useEffect 依赖 `[darkMode, loading, loadedTick, nonce]`，onLoad 里 `setLoadedTick(t=>t+1)` 保证 iframe 加载完成后再发消息（监听器在页尾脚本注册，过早发会丢）。
-- IP tab 已接入；logistics / labor / insurance / financing / ai-law / film-law 系列尚未接入，同 pattern 复制即可。
+- 主站 darkMode 不影响 iframe 内静态页。同步机制：iframe 页引入 `/theme-toggle.js`，监听 `postMessage({type:'theme',mode:'dark'|'light'})`；或自身已实现兼容监听（ai-law）。
+- React 侧统一用公共组件 `src/components/ThemeIframe.tsx`：`darkMode` prop + `iframeRef`，useEffect 依赖 `[darkMode, loading, loadedTick, nonce]`，onLoad 里 `setLoadedTick(t=>t+1)` 保证 iframe 加载完成后再发消息（监听器在页尾脚本注册，过早发会丢）。App.tsx 每个 iframe tab 渲染处传 `darkMode={darkMode}`。
+- 已全部接入（ip / logistics / labor / criminal / film-law S1–S4 / insurance / ai-law / financing-legal / startup 共 11 个）。
+- 静态页补齐规则：① 已有 `[data-theme="dark"]` CSS 但缺监听 → 加 `<script src="/theme-toggle.js">` + `<html data-theme-default="light">`；② 纯浅色页 → 先在自身 CSS/style 写 `html[data-theme="dark"]` 变量覆盖（film-law S2–S4 直接复制 S1 的 47 条暗色段；insurance/startup 手写变量覆盖 + 针对性覆盖少量硬编码浅色），再接 theme-toggle.js。
+- 注意：引入 theme-toggle.js 的 iframe 页会自带"切换深色/浅色"浮层按钮（top:56px right:16px），与主站独立可控。

@@ -45,6 +45,15 @@
     });
   }
 
+  // 接收主站（ThemeIframe）发来的主题消息，使 iframe 正文跟随主站深/浅色切换。
+  // 用 app.js 自身监听，既保留顶栏自带的 ☾/☀ 按钮，又避免再引入 theme-toggle.js 造成双按钮。
+  window.addEventListener("message", function (e) {
+    var d = e.data || {};
+    if (d.type === "theme" && (d.mode === "dark" || d.mode === "light")) {
+      applyTheme(d.mode);
+    }
+  });
+
   function buildTopbar(cur) {
     var links = STATIONS.map(function (s) {
       return '<a href="' + s.file + '"' + (s.id === cur ? ' class="on"' : "") + ">" +
