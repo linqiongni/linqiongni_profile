@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 const PLAN_URL = '/ip/index.html';
 
-export const IpLegalTab: React.FC = () => {
+export const IpLegalTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => {
   const [loading, setLoading] = useState(true);
+  const [loadedTick, setLoadedTick] = useState(0);
   const [nonce, setNonce] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  // 把主站主题同步进 iframe（/ip/index.html 内的 theme-toggle.js 监听该消息）
+  useEffect(() => {
+    const win = iframeRef.current?.contentWindow;
+    if (!win) return;
+    try {
+      win.postMessage({ type: 'theme', mode: darkMode ? 'dark' : 'light' }, '*');
+    } catch (e) {
+      /* 跨域等场景忽略 */
+    }
+  }, [darkMode, loading, loadedTick, nonce]);
 
   return (
     <div className="relative w-full">
@@ -21,9 +34,13 @@ export const IpLegalTab: React.FC = () => {
         )}
         <iframe
           key={nonce}
+          ref={iframeRef}
           src={PLAN_URL}
           title="知识产权法务专家养成计划"
-          onLoad={() => setLoading(false)}
+          onLoad={() => {
+            setLoading(false);
+            setLoadedTick((t) => t + 1);
+          }}
           className="block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]"
           loading="eager"
         />

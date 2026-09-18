@@ -296,7 +296,7 @@ export default function App() {
 
 
 
-            {activeTab === 'ip' && <IpLegalTab />}
+            {activeTab === 'ip' && <IpLegalTab darkMode={darkMode} />}
 
 
 
