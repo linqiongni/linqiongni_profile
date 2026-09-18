@@ -104,7 +104,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Film & Law',
 
-    subTabs: ['film-law', 'film-law-s2', 'film-law-s3'],
+    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
 
     sections: [
 
@@ -116,7 +116,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
         enLabel: 'The Good Wife',
 
-        tabs: ['film-law', 'film-law-s2', 'film-law-s3'],
+        tabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
 
       },
 
@@ -152,6 +152,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
   'film-law-s2': { label: '第二季 S2', enLabel: 'Season 2' },
   'film-law-s3': { label: '第三季 S3', enLabel: 'Season 3' },
+  'film-law-s4': { label: '第四季 S4', enLabel: 'Season 4' },
 
   labor: { label: '双视角劳动法务', enLabel: 'Labor Law' },
   insurance: { label: '保险·法律维权', enLabel: 'Insurance' },
