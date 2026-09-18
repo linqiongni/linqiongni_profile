@@ -1,5 +1,22 @@
 # MEMORY.md — linqiongni_profile 长期记忆
 
+## 首页与导航结构（2026-09-18 改定，改前先读）
+- **头部 = 128px**：主行 80px（品牌 / 三个分组 / 主题+联系我）+ **常驻第二行 48px**（`#navbar-subnav`，当前分组的子板块横排 + 滑动金色胶囊）。第二行 `md:` 起显示，手机端隐藏（走汉堡菜单）。
+- 因此所有内容区顶部预留：`pt-20 md:pt-32`（正文页）、Hero `pt-24 md:pt-36`；`handleSelectTab` 的滚动偏移是 **-128**。改头部高度要同时改这三处。
+- **首屏（Hero）结构**：上区约占 3/4（职业标识 → 主标题 → 副标题 → 数据条「9 大法务领域 / 400+ 篇实战笔记与课程 / 3 季影视律政拆解」），下区约 1/4 是**全站内容地图**（三组 17 个 chip，点击直达；数据直接读 `NAV_GROUPS` + `SUB_TAB_META`，加新 tab 自动出现）。原来的两个按钮（探索实战案例 / 了解执业背景）已删除。
+- 数据条数字依据 `public/` 实际页数（ip 257 + lessons 92 + logistics 43 + financing 14 + criminal 13 + labor 9 ≈ 430），站点内容量变化大时记得同步。
+- **iframe 地址一律写显式 `index.html`**（如 `/ip/index.html`、`/financing-legal/index.html`）。写目录 URL（`/ip/`）在 `vite dev` 下会被 SPA 兜底成首页，本地看起来「iframe 里是主页」，线上 GH Pages 才正常 —— 本地验证会失真（2026-09-18 踩过）。
+- iframe 高度统一为 `h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]`（类名，不用 inline style，避免与既有 className 冲突）。
+- 「新窗口打开」金色浮标固定在**右下角**（`fixed bottom-6 right-6`）；原来在 `top-24 right-5`，会被 128px 头部压住。
+- 深色模式默认跟随系统 `prefers-color-scheme`（`App.tsx` 的 darkMode 初值）。
+- 首页进一步可做（未做）：背景加印章/诗句等国风水印、数据条下方加「最近上新」位、About 页放真人照片。
+
+## 本项目工具环境坑（2026-09-18）
+- 本机 shell 有 `HTTP_PROXY/HTTPS_PROXY=127.0.0.1:<port>`，`curl`/Chromium 访问 localhost 会被劫持成 502 或连接被拒。用浏览器本地验证前先 `export NO_PROXY="127.0.0.1,localhost" no_proxy=...`。
+- `agent-browser` 已全局安装（Chromium 已下载）。截图用位置参数：`agent-browser screenshot /tmp/x.png`（`--path` 无效会被当成 selector）。
+- `agent-browser eval` 的 JS 上下文会**保留上一次的顶层变量**，重复 `var r=...` 会报 "Identifier already declared"。务必用 IIFE 包裹。
+- 后台跑 `npx vite` 必须用工具的 run_in_background（普通 `&` 起的进程会在命令结束时被回收，导致后续连接被拒）。
+
 ## 项目关键事实
 - 部署：push `main` 自动 CI 构建发布 GH Pages；**本地不要 `npm run build`**（清空 dist 资源，曾拦截）。
 - 用户偏好（2026-09-10 起）：图片默认彩色；背景波纹必须克制（首版易发晕）。
