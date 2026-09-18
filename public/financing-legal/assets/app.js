@@ -91,11 +91,32 @@
     upd();
   }
 
+  // 正文中的「知识锚点」（.xref / [data-deep]）：
+  // 点击后自动展开目标 <details> 深度补充面板，并平滑滚动到该处。
+  function deepLinks() {
+    var links = document.querySelectorAll("[data-deep]");
+    Array.prototype.forEach.call(links, function (a) {
+      a.addEventListener("click", function (e) {
+        var id = a.getAttribute("data-deep");
+        var d = document.getElementById(id);
+        if (!d) return;
+        e.preventDefault();
+        if (d.tagName === "DETAILS" && !d.open) d.open = true;
+        // 展开会改变高度，稍等一帧再滚动，定位更准
+        setTimeout(function () {
+          d.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 40);
+        if (history.replaceState) history.replaceState(null, "", "#" + id);
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var cur = (document.body.getAttribute("data-station") || "index").trim();
     buildTopbar(cur);
     buildPager(cur);
     initTheme();
     progress();
+    deepLinks();
   });
 })();
