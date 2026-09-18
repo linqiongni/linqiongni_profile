@@ -3,7 +3,10 @@
 ## 首页与导航结构（2026-09-18 改定，改前先读）
 - **头部 = 128px**：主行 80px（品牌 / 三个分组 / 主题+联系我）+ **常驻第二行 48px**（`#navbar-subnav`，当前分组的子板块横排 + 滑动金色胶囊）。第二行 `md:` 起显示，手机端隐藏（走汉堡菜单）。
 - 因此所有内容区顶部预留：`pt-20 md:pt-32`（正文页）、Hero `pt-24 md:pt-36`；`handleSelectTab` 的滚动偏移是 **-128**。改头部高度要同时改这三处。
-- **首屏（Hero）结构**：上区约占 3/4（职业标识 → 主标题 → 副标题 → 数据条「9 大法务领域 / 400+ 篇实战笔记与课程 / 3 季影视律政拆解」），下区约 1/4 是**全站内容地图**（三组 17 个 chip，点击直达；数据直接读 `NAV_GROUPS` + `SUB_TAB_META`，加新 tab 自动出现）。原来的两个按钮（探索实战案例 / 了解执业背景）已删除。
+- **首屏（Hero）结构**（2026-09-18 二轮改定）：`section` 自身不留左右内边距，内部包一层与正文相同的栅格 `max-w-7xl mx-auto px-6 sm:px-12`，保证**首屏左缘与下方各板块严格对齐**（1440 下同为 125–128px，手机同为 24px）。
+  - 主视觉区 `flex-1` 占满整屏剩余高度（英文标识 → 主标题 → 副标题 → 数据条「9 大法务领域 / 400+ 篇实战笔记与课程 / 3 季影视律政拆解」），标题 `text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.25rem]` + **`text-balance`**（否则手机上断成「法律是商业的底 / 层代码」）。英文标识手机端 `text-[10px]` 且两侧金线 `hidden sm:block`，否则会折两行并溢出容器。
+  - **内容地图 `mt-auto` 贴左下角**，是**无边框文字导航**：默认灰字（`#6E6E73` / 暗色 `#98989D`），hover 变香槟金 + 1px 金色下划线由左展开（`group/chip` + `scale-x-0 → scale-x-100`）。**不要改回 border + rounded-full 胶囊**（用户 2026-09-18 明确要求去外框）。三组 17 项点击直达，数据读 `NAV_GROUPS` + `SUB_TAB_META`，加新 tab 自动出现。
+  - 原来的两个按钮（探索实战案例 / 了解执业背景）已删除。
 - 数据条数字依据 `public/` 实际页数（ip 257 + lessons 92 + logistics 43 + financing 14 + criminal 13 + labor 9 ≈ 430），站点内容量变化大时记得同步。
 - **iframe 地址一律写显式 `index.html`**（如 `/ip/index.html`、`/financing-legal/index.html`）。写目录 URL（`/ip/`）在 `vite dev` 下会被 SPA 兜底成首页，本地看起来「iframe 里是主页」，线上 GH Pages 才正常 —— 本地验证会失真（2026-09-18 踩过）。
 - iframe 高度统一为 `h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]`（类名，不用 inline style，避免与既有 className 冲突）。
