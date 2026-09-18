@@ -13,6 +13,8 @@ interface NavbarProps {
   darkMode: boolean;
   onToggleDarkMode: () => void;
   onOpenContact: () => void;
+  /** 强制实色（iframe 类 tab：主页面不滚动，isScrolled 永远 false，需手动置实色避免「看着像没固定」） */
+  solid?: boolean;
 }
 
 // 统一的键盘焦点环：香槟金，仅键盘聚焦时显示（鼠标/触摸不显示）
@@ -27,8 +29,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   onToggleDarkMode,
   onOpenContact,
+  solid = false,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  // 主站页面滚动过 或 处于 iframe 类 tab（主页面不滚动）→ 均显示实色钉条
+  const scrolled = isScrolled || solid;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // 当前展开的顶层分组（悬停触发）。null = 全部收起。
   const [openGroup, setOpenGroup] = useState<string | null>(null);
@@ -148,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navbar"
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        scrolled
           ? 'bg-[#FDFCF9]/85 dark:bg-[#1C1C1E]/85 backdrop-blur-xl border-b border-[#E8E8E6] dark:border-[#2C2C2E] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
           : 'bg-transparent border-b border-transparent'
       }`}

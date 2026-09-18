@@ -149,6 +149,11 @@ export default function App() {
 
   const showHero = activeGroup === 'profile';
 
+  // iframe 类 tab（主页面不滚动，isScrolled 永远 false）：强制主站 header 显示实色钉条，
+  // 避免透明 header 浮在 iframe 上方被误认为「没固定」。isFullBleed 已含融资/保险/物流/IP/劳动/影视，
+  // 补上 criminal / ai-law 这两个同样内嵌 iframe 但不在 isFullBleed 列表里的 tab。
+  const headerSolid = isFullBleed || activeTab === 'criminal' || activeTab === 'ai-law';
+
 
 
   const handleScrollToContent = () => {
@@ -192,6 +197,8 @@ export default function App() {
         onToggleDarkMode={() => setDarkMode(!darkMode)}
 
         onOpenContact={() => setContactModalOpen(true)}
+
+        solid={headerSolid}
 
       />
 
