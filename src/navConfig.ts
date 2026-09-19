@@ -92,7 +92,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Legal Practice',
 
-    subTabs: ['catering', 'logistics', 'ip', 'foreign-contracts', 'insurance', 'ai-law', 'labor', 'financing', 'arbitration'],
+    subTabs: ['catering', 'logistics', 'ip', 'foreign-contracts', 'insurance', 'ai-law', 'labor', 'financing'],
 
   },
 
