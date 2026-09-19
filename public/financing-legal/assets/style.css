@@ -490,6 +490,16 @@ body { height: 100%; overflow: hidden; }
 }
 .menu-btn:hover { border-color: var(--gold); color: var(--gold-deep); }
 
+/* 顶栏「全屏」按钮：当前页面内铺满整屏，不跳新页面（2026-09-19） */
+.fs-btn {
+  flex: none; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 8px;
+  padding: 6px 12px; font-size: 13px; color: var(--ink-2); cursor: pointer;
+  font-family: var(--sans); white-space: nowrap;
+}
+.fs-btn:hover { border-color: var(--gold); color: var(--gold-deep); }
+.fs-btn.on { background: var(--gold-deep); border-color: var(--gold-deep); color: #fff; }
+html[data-theme="dark"] .fs-btn.on { color: #16161a; }
+
 /* ===== 布局 ===== */
 .layout { display: flex; align-items: stretch; }
 

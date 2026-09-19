@@ -12,3 +12,6 @@ coverage/
 视频号策划与运营/06-资产素材/
 *.mp4
 *.mov
+
+# WorkBuddy 本地工作记忆（不发布）
+.workbuddy/

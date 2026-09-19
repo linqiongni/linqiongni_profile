@@ -18,7 +18,9 @@ export const FinancingLegalTab: React.FC<{ darkMode?: boolean }> = ({ darkMode =
     src={`/financing-legal/index.html?v=${IFRAME_V}`}
     title="融资法务 · 从 0 到 1"
     darkMode={darkMode}
-    // openUrl={null} = 不显示右下角「新窗口打开」浮层按钮（2026-09-19 Andy 要求正文区保持干净）
+    // openUrl={null} = 不显示右下角「新窗口打开」浮层按钮（2026-09-19 Andy 要求不要跳新页面）
     openUrl={null}
+    // 正文右上角「全屏」按钮：点击在当前页面内铺满整屏，不跳新窗口
+    allowFullscreen
   />
 );

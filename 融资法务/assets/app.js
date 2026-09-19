@@ -96,6 +96,41 @@
   topbar.appendChild(searchWrap);
 
   topbar.appendChild(el("span", "cur-chip", me.no === "总纲" ? me.t : "第 " + me.no + " 站 · " + me.t));
+
+  /* ---------- 全屏按钮：在当前页面内铺满整屏，不跳新页面 ---------- */
+  var fsBtn = el("button", "fs-btn", "全屏");
+  fsBtn.id = "fsBtn";
+  fsBtn.title = "全屏显示（不跳新页面，Esc 退出）";
+  fsBtn.setAttribute("aria-label", "全屏显示");
+  function isFs() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+  function syncFsBtn() {
+    var on = isFs();
+    fsBtn.textContent = on ? "退出全屏" : "全屏";
+    fsBtn.title = on ? "退出全屏（Esc）" : "全屏显示（不跳新页面，Esc 退出）";
+    fsBtn.classList.toggle("on", on);
+  }
+  fsBtn.addEventListener("click", function () {
+    var d = document, r = d.documentElement;
+    try {
+      if (isFs()) {
+        var ex = d.exitFullscreen || d.webkitExitFullscreen;
+        if (ex) { var p = ex.call(d); if (p && p["catch"]) p["catch"](function () {}); }
+        return;
+      }
+      var rq = r.requestFullscreen || r.webkitRequestFullscreen;
+      if (!rq) { fsBtn.title = "此浏览器不支持全屏"; return; }
+      var q = rq.call(r);
+      if (q && q["catch"]) q["catch"](function () { fsBtn.title = "浏览器拒绝全屏（直接访问本站可正常全屏）"; });
+    } catch (e) {
+      fsBtn.title = "全屏被浏览器拒绝（Esc 可退出）";
+    }
+  });
+  document.addEventListener("fullscreenchange", syncFsBtn);
+  document.addEventListener("webkitfullscreenchange", syncFsBtn);
+  topbar.appendChild(fsBtn);
+
   var themeBtn = el("button", "theme-btn", "☾");
   themeBtn.id = "themeBtn"; themeBtn.title = "切换深浅色";
   topbar.appendChild(themeBtn);

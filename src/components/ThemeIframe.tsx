@@ -79,6 +79,8 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
           }}
           className={iframeClassName}
           loading="eager"
+          // 允许 iframe 内的静态站自己调用 Fullscreen API（融资法务站顶栏的「全屏」按钮）
+          allow="fullscreen"
         />
       </div>
 
