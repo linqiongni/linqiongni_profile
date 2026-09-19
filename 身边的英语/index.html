@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#5E8B7E" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>身边的英语 · 一个上班族的一天</title>
+<style>
+  :root{
+    --bg:#FBF7F0;
+    --card:#FFFFFF;
+    --ink:#2E2E2E;
+    --muted:#7A7468;
+    --line:#ECE4D6;
+    --accent:#5E8B7E;      /* 柔和鼠尾草绿 */
+    --accent-soft:#E4EEEA;
+    --sand:#E8DCC4;
+    --me:#5E8B7E;
+    --partner:#7FA6C9;
+    --coworker:#D9A05B;
+    --shadow:0 2px 10px rgba(60,50,30,.07);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.55;
+    font-size:16px;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px;}
+  header.top{
+    background:linear-gradient(180deg,#FFFFFF 0%,#FBF7F0 100%);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:30;
+    padding-top:env(safe-area-inset-top);
+  }
+  .top-inner{padding:12px 14px 10px;}
+  .brand{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .brand h1{font-size:19px;margin:0;font-weight:700;letter-spacing:.3px;}
+  .brand .sub{font-size:13px;color:var(--muted);}
+  .controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+  .search{flex:1 1 160px;min-width:140px;position:relative;}
+  .search input{
+    width:100%;border:1px solid var(--line);background:#fff;border-radius:999px;
+    padding:10px 14px 10px 36px;font-size:15px;color:var(--ink);outline:none;
+  }
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5;}
+  .toggle{
+    border:1px solid var(--line);background:#fff;border-radius:999px;
+    padding:9px 14px;font-size:14px;cursor:pointer;color:var(--ink);
+    display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  }
+  .toggle b{color:var(--accent);font-weight:700;}
+
+  /* Tabs */
+  .tabs{display:flex;gap:8px;margin-top:10px;}
+  .tab{
+    flex:1;text-align:center;padding:11px 8px;border-radius:12px 12px 0 0;
+    background:var(--accent-soft);color:var(--muted);font-weight:700;font-size:15px;
+    cursor:pointer;border:1px solid transparent;border-bottom:none;
+  }
+  .tab.active{background:#fff;color:var(--accent);border-color:var(--line);}
+
+  /* Module chips nav */
+  .chips{
+    display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none;
+  }
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:7px 13px;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;
+  }
+  .chip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+  /* Progress */
+  .progress-bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:4px 0 2px;}
+  .progress-fill{height:100%;width:0;background:var(--accent);transition:width .3s;}
+  .progress-text{font-size:12px;color:var(--muted);margin-bottom:10px;}
+
+  section.module{margin:18px 0;}
+  .mod-head{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 16px;box-shadow:var(--shadow);
+  }
+  .mod-head .en{font-size:18px;font-weight:700;}
+  .mod-head .zh{font-size:14px;color:var(--muted);margin-top:2px;}
+  .mod-head .scene{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:13px 14px;margin-top:10px;box-shadow:var(--shadow);
+  }
+  .who{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:2px 9px;border-radius:999px;margin-bottom:7px;}
+  .who.Me{background:var(--me);}
+  .who.Partner{background:var(--partner);}
+  .who.Coworker{background:var(--coworker);}
+  .en-line{font-size:17px;font-weight:600;cursor:pointer;line-height:1.45;}
+  .en-line:active{color:var(--accent);}
+  .zh-line{font-size:15px;color:#444;margin-top:3px;}
+  .alts{font-size:13px;color:var(--muted);margin-top:7px;padding-left:2px;}
+  .alts .lab{font-weight:700;color:var(--accent);}
+  .row{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .btn{
+    border:1px solid var(--line);background:#fff;border-radius:11px;
+    padding:9px 13px;font-size:14px;cursor:pointer;color:var(--ink);
+    display:inline-flex;align-items:center;gap:6px;min-height:42px;
+  }
+  .btn.play{background:var(--accent-soft);border-color:var(--accent-soft);color:var(--accent);font-weight:700;}
+  .btn.slow{background:#fff;}
+  .btn.star{margin-left:auto;background:#fff;font-size:18px;padding:9px 12px;}
+  .btn.star.on{background:#FFF3D6;border-color:#F0D79A;}
+
+  /* Key phrases */
+  .kp{background:var(--accent-soft);border:1px solid #CFE0D8;border-radius:var(--radius);padding:13px 15px;margin-top:12px;}
+  .kp h4{margin:0 0 9px;font-size:15px;color:var(--accent);}
+  .kp-item{margin-bottom:10px;}
+  .kp-item:last-child{margin-bottom:0;}
+  .kp-en{font-weight:700;font-size:15px;}
+  .kp-zh{font-size:14px;color:#444;margin-top:1px;}
+  .kp-ex{font-size:13px;color:var(--muted);margin-top:3px;font-style:italic;}
+
+  .placeholder{
+    background:#fff;border:1px dashed var(--line);border-radius:var(--radius);
+    padding:22px 16px;text-align:center;color:var(--muted);margin-top:10px;font-size:14px;
+  }
+
+  .no-match{text-align:center;color:var(--muted);padding:30px 10px;font-size:14px;}
+
+  /* Back to top */
+  .totop{
+    position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));
+    width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;
+    border:none;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;
+    opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;
+  }
+  .totop.show{opacity:1;pointer-events:auto;}
+
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 10px 40px;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <h1>身边的英语</h1>
+      <span class="sub">一个广州上班族完整的一天 · 地道口语</span>
+    </div>
+    <div class="controls">
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="search" type="search" placeholder="搜英文或中文，如 snooze / 地铁" />
+      </div>
+      <button class="toggle" id="accentBtn">口音：<b id="accentLab">美音</b></button>
+      <button class="toggle" id="speedBtn">语速：<b id="speedLab">正常</b></button>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-tab="weekday">工作日</div>
+      <div class="tab" data-tab="weekend">休息日</div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  <div class="progress-text" id="ptext"></div>
+  <div id="content"></div>
+  <footer>点击任意英文句子或 🔊 即可朗读 · 数据保存在本机 · 慢速 0.75x 帮你听清连读</footer>
+</div>
+
+<button class="totop" id="totop" aria-label="回到顶部">↑</button>
+
+<script>
+/* ============== 数据：工作日（13 个模块） + 休息日（占位） ============== */
+const MODULES = [
+  /* ---------- 1 ---------- */
+  {
+    id:"waking-up", tab:"weekday", en:"Waking Up", zh:"起床醒来",
+    scene:"闹钟响了，新的一天开始。",
+    lines:[
+      {who:"Me", en:"Ugh, it's already seven?", zh:"靠，已经七点了？", alts:["No way it's seven already.","Is it really seven?"]},
+      {who:"Me", en:"Lemme hit snooze real quick.", zh:"让我再赖五分钟。", alts:["I'm gonna snooze for five more.","Just five more minutes."]},
+      {who:"Partner", en:"Babe, you said that ten minutes ago.", zh:"亲爱的，你十分钟前就这么说。", alts:["You said that already.","C'mon, get up."]},
+      {who:"Me", en:"I'm wide awake now… no I'm not.", zh:"我现在完全醒了……才怪。", alts:["Okay I'm up… nah.","Awake, kinda."]},
+      {who:"Me", en:"*yawns* Mornin'.", zh:"（打哈欠）早。", alts:["Mornin', babe.","Hey, you up?"]},
+      {who:"Partner", en:"Did you sleep okay?", zh:"睡得好吗？", alts:["Good night?","You rest well?"]},
+      {who:"Me", en:"Kinda. I kept dreaming about work.", zh:"还行吧，一直梦见工作。", alts:["So-so, work dreams again.","Eh, stressful dreams."]},
+      {who:"Me", en:"Babe, you gotta get up too.", zh:"亲爱的，你也得起来了。", alts:["Your turn, up you go.","Time to rise, babe."]},
+      {who:"Partner", en:"Five more minutes, pleeease.", zh:"再五分钟嘛，求你了。", alts:["Just a little longer.","One more snooze?"]},
+      {who:"Me", en:"C'mon, we're both gonna be late.", zh:"快点啦，咱俩都要迟到了。", alts:["We'll be late, move!","Hurry or we're screwed."]},
+      {who:"Me", en:"I'll go start the coffee.", zh:"我去煮咖啡了。", alts:["Coffee's on me.","Lemme fire up the coffee."]},
+      {who:"Partner", en:"You're a lifesaver.", zh:"你真是救星。", alts:["Bless you.","Best person ever."]},
+      {who:"Me", en:"*sits up* Okay, feet on the floor.", zh:"（坐起来）好，脚放地上。", alts:["Up and at 'em.","Let's do this."]},
+      {who:"Me", en:"Why's it so dark out?", zh:"外面怎么这么暗？", alts:["It's still dark?","No sun today?"]},
+      {who:"Partner", en:"It's cloudy, remember?", zh:"阴天啊，忘了？", alts:["Overcast, babe.","Gloomy day, yeah."]},
+      {who:"Me", en:"Right. Let's do this.", zh:"对哦。开工吧。", alts:["Oh yeah. Game on.","Right, let's go."]}
+    ],
+    kp:[
+      {en:"hit snooze", zh:"按掉贪睡键再赖会儿", ex:"I always hit snooze at least twice."},
+      {en:"five more minutes", zh:"再睡五分钟（经典赖床）", ex:"Just five more minutes, I promise."},
+      {en:"wide awake", zh:"完全清醒", ex:"After coffee I'm wide awake."},
+      {en:"c'mon", zh:"快点啦（催促）", ex:"C'mon, we're leaving in five."},
+      {en:"lifesaver", zh:"救星（口语夸张）", ex:"You brought snacks? Lifesaver!"}
+    ]
+  },
+  /* ---------- 2 ---------- */
+  {
+    id:"bedroom", tab:"weekday", en:"Bedroom 整理", zh:"卧室整理",
+    scene:"叠被子、开窗户、拉开窗帘、关空调。",
+    lines:[
+      {who:"Me", en:"I'll make the bed real quick.", zh:"我顺手把床铺一下。", alts:["Lemme tidy up the bed.","Gonna fix the sheets."]},
+      {who:"Me", en:"*smooths the blanket* There.", zh:"（抚平被子）搞定。", alts:["All neat now.","Done, looks tidy."]},
+      {who:"Partner", en:"Thanks, I never do it.", zh:"谢啦，我从来不叠。", alts:["I'm hopeless at that.","You always do it."]},
+      {who:"Me", en:"Open the window, get some fresh air in.", zh:"开窗通通风。", alts:["Crack the window open.","Let's air it out."]},
+      {who:"Me", en:"*pulls the curtains* Morning light, finally.", zh:"（拉开窗帘）终于有光了。", alts:["Let the light in.","Curtains open, nice."]},
+      {who:"Partner", en:"It's gloomy though.", zh:"不过阴沉沉的。", alts:["Pretty gray out.","No sun, huh."]},
+      {who:"Me", en:"I'll turn the AC off, it's not that hot.", zh:"关空调吧，也没多热。", alts:["Kill the AC, save some power.","Cut the AC, cool enough."]},
+      {who:"Me", en:"Where'd my sock go?", zh:"我一只袜子哪去了？", alts:["One sock's missing.","Other sock, where'd it go?"]},
+      {who:"Partner", en:"Under the nightstand, prob'ly.", zh:"估计在床头柜底下。", alts:["Check by the bed.","It's around here."]},
+      {who:"Me", en:"*finds it* Gotcha.", zh:"（找到）逮到了。", alts:["Found it.","There it is."]},
+      {who:"Me", en:"You want me to open the blinds too?", zh:"百叶窗也要拉开吗？", alts:["Blinds as well?","Leave the blinds?"]},
+      {who:"Partner", en:"Nah, leave 'em.", zh:"不用，算了。", alts:["Nah, it's fine.","Keep 'em shut."]},
+      {who:"Me", en:"Bed's done. Let's bounce.", zh:"床铺好了，走吧。", alts:["All set, let's go.","Room's tidy, move out."]},
+      {who:"Me", en:"*picks up clothes* Toss these in the hamper?", zh:"（捡衣服）这些丢脏衣篓？", alts:["Laundry bin?","Throw 'em in the basket?"]},
+      {who:"Partner", en:"Yeah, thanks.", zh:"嗯，谢了。", alts:["Please do.","Appreciate it."]}
+    ],
+    kp:[
+      {en:"make the bed", zh:"铺床 / 叠被", ex:"I make the bed every morning, old habit."},
+      {en:"crack the window", zh:"把窗开条缝通风", ex:"Crack the window, it's stuffy in here."},
+      {en:"kill / cut the AC", zh:"关空调", ex:"Kill the AC before we leave."},
+      {en:"there", zh:"好了 / 搞定（口语收尾）", ex:"I fixed it — there."},
+      {en:"let's bounce", zh:"咱们走吧 / 撤", ex:"Class is over, let's bounce."}
+    ]
+  },
+  /* ---------- 3 ---------- */
+  {
+    id:"kitchen", tab:"weekday", en:"Kitchen & Breakfast", zh:"厨房早餐",
+    scene:"开冰箱、拿食材、蒸蛋、做早餐、问吃什么、倒水咖啡。",
+    lines:[
+      {who:"Me", en:"I'll grab the eggs from the fridge.", zh:"我去冰箱拿鸡蛋。", alts:["Lemme grab some eggs.","Eggs are in the fridge, right?"]},
+      {who:"Partner", en:"Yeah, and the milk's almost out.", zh:"对，牛奶也快没了。", alts:["We're low on milk.","Milk's nearly gone."]},
+      {who:"Me", en:"*opens fridge* What do you feel like for breakfast?", zh:"（开冰箱）你早饭想吃点啥？", alts:["What are we having?","What sounds good?"]},
+      {who:"Partner", en:"Just toast or something.", zh:"随便吐司之类的。", alts:["Something light.","Whatever's easy."]},
+      {who:"Me", en:"I'll steam a couple eggs.", zh:"我蒸两个蛋吧。", alts:["Gonna soft-boil these.","Eggs in the steamer."]},
+      {who:"Me", en:"*puts water on* Coffee first, always.", zh:"（烧水）先来杯咖啡，雷打不动。", alts:["Coffee before anything.","Gotta have my coffee."]},
+      {who:"Partner", en:"You want a refill?", zh:"要我再添一杯吗？", alts:["Another cup?","Top you up?"]},
+      {who:"Me", en:"Nah, I'm good.", zh:"不用，够了。", alts:["I'm set, thanks.","No thanks, I'm fine."]},
+      {who:"Me", en:"*pours water* Here's your glass.", zh:"（倒水）你的水。", alts:["Water for you.","Catch."]},
+      {who:"Partner", en:"Thanks, babe.", zh:"谢啦亲爱的。", alts:["Cheers.","You're sweet."]},
+      {who:"Me", en:"Toast's ready, grab 'em.", zh:"吐司好了，拿吧。", alts:["Toast's up.","Get your toast."]},
+      {who:"Partner", en:"Smells amazing.", zh:"好香。", alts:["That smells so good.","Mmm, nice."]},
+      {who:"Me", en:"Eggs done? Lemme check.", zh:"蛋好了吗？我看下。", alts:["Let me peek at the eggs.","Time to check 'em."]},
+      {who:"Me", en:"*checks* Yep, perfect.", zh:"（看）嗯，刚好。", alts:["Done just right.","They're good."]},
+      {who:"Partner", en:"You're too good at this.", zh:"你太会弄了。", alts:["You're spoiling me.","Such a pro."]},
+      {who:"Me", en:"Eat up, we're on the clock.", zh:"快吃，赶时间。", alts:["Hurry and eat.","Chow down, we're late."]}
+    ],
+    kp:[
+      {en:"grab sth from the fridge", zh:"从冰箱拿某物", ex:"Grab the yogurt from the fridge?"},
+      {en:"what do you feel like", zh:"你想吃 / 来点啥", ex:"What do you feel like for dinner?"},
+      {en:"eat up", zh:"快吃 / 吃完", ex:"Eat up before it gets cold."},
+      {en:"on the clock", zh:"赶时间 / 计时中", ex:"We're on the clock, let's move."},
+      {en:"I'm good", zh:"我够了 / 我没事", ex:"More rice? Nah, I'm good."}
+    ]
+  },
+  /* ---------- 4 ---------- */
+  {
+    id:"bathroom", tab:"weekday", en:"Bathroom 洗漱", zh:"洗漱",
+    scene:"刷牙、洗脸、上厕所、护肤 / 化妆、梳头。",
+    lines:[
+      {who:"Me", en:"Brush my teeth, then I'm set.", zh:"刷个牙就齐活。", alts:["Gonna brush real quick.","Teeth first."]},
+      {who:"Me", en:"*squirts toothpaste* Where's my toothbrush?", zh:"（挤牙膏）我牙刷呢？", alts:["My brush, where?","Can't find my toothbrush."]},
+      {who:"Partner", en:"Next to mine, duh.", zh:"我旁边啊，笨。", alts:["Right here, silly.","By mine, obviously."]},
+      {who:"Me", en:"*washes face* Ahh, cold water, wake up.", zh:"（洗脸）啊，冷水醒神。", alts:["Splash some cold water.","Cold splash to wake up."]},
+      {who:"Me", en:"You done in here? I gotta pee.", zh:"你用完没？我要上厕所。", alts:["You almost done? Bathroom's mine.","Gotta go, hurry up."]},
+      {who:"Partner", en:"Almost, hold on.", zh:"马上，等下。", alts:["One sec.","Give me a minute."]},
+      {who:"Me", en:"*waits* Hurry, bladder's screaming.", zh:"（等）快点，憋不住了。", alts:["My bladder's about to burst.","Move it, I'm dying here."]},
+      {who:"Partner", en:"All yours.", zh:"你用吧。", alts:["Go ahead.","It's free now."]},
+      {who:"Me", en:"*skincare* Just moisturizer today, lazy.", zh:"（护肤）今天偷懒只涂个面霜。", alts:["Gonna skip makeup.","Bare face day."]},
+      {who:"Me", en:"*combs hair* Done. Looks okay?", zh:"（梳头）好了，还行吧？", alts:["Hair's done, decent?","How's it look?"]},
+      {who:"Partner", en:"You look fine.", zh:"挺好的。", alts:["Looks good.","You're fine."]},
+      {who:"Me", en:"Floss or nah?", zh:"用牙线还是算了？", alts:["Floss today?","Skip the floss?"]},
+      {who:"Me", en:"*flosses* Okay, mouth's clean.", zh:"（用牙线）好，嘴里清爽了。", alts:["All clean now.","Fresh mouth, nice."]},
+      {who:"Partner", en:"You're so thorough.", zh:"你真讲究。", alts:["So diligent.","Such a routine."]},
+      {who:"Me", en:"Better than coffee for waking up.", zh:"比咖啡还提神。", alts:["More awake than coffee.","That'll wake me up."]}
+    ],
+    kp:[
+      {en:"I'm set", zh:"我搞定了 / 齐活", ex:"With that done, I'm set."},
+      {en:"bladder's screaming", zh:"憋不住了（夸张）", ex:"Drive faster, my bladder's screaming."},
+      {en:"all yours", zh:"归你用了 / 你用吧", ex:"I'm done — all yours."},
+      {en:"bare face day", zh:"今天不化妆 / 素颜", ex:"It's a bare face day, too tired."},
+      {en:"or nah", zh:"还是算了 / 要不不（口语）", ex:"Pizza for dinner, or nah?"}
+    ]
+  },
+  /* ---------- 5 ---------- */
+  {
+    id:"leaving", tab:"weekday", en:"Leaving Home", zh:"出门",
+    scene:"换鞋、拿钥匙手机工牌、锁门、等电梯。",
+    lines:[
+      {who:"Me", en:"Let me put my shoes on.", zh:"我换鞋了。", alts:["Gimme a sec, shoes on.","Tying my laces."]},
+      {who:"Me", en:"*grabs keys* Phone, wallet, badge — check.", zh:"（拿钥匙）手机、钱包、工牌——齐了。", alts:["Keys, phone, badge, got 'em.","Got my stuff?"]},
+      {who:"Partner", en:"Don't forget your umbrella.", zh:"别忘带伞。", alts:["Grab your umbrella.","You'll need the umbrella."]},
+      {who:"Me", en:"*grabs it* Good catch, it's gonna rain.", zh:"（拿伞）好提醒，要下雨。", alts:["Nice save, rain's coming.","Good call, looks wet."]},
+      {who:"Me", en:"*locks door* Did it click?", zh:"（锁门）锁上了没？", alts:["Is it locked?","Hear it lock?"]},
+      {who:"Partner", en:"Yep, double-checked.", zh:"嗯，我看了。", alts:["Locked, I checked.","All good."]},
+      {who:"Me", en:"*waits by elevator* C'mon, hurry up.", zh:"（等电梯）快点啊电梯。", alts:["Elevator's taking forever.","Where's the damn elevator?"]},
+      {who:"Me", en:"*ding* Finally.", zh:"（叮）终于。", alts:["There it is.","About time."]},
+      {who:"Partner", en:"Hold the door!", zh:"帮我挡下门！", alts:["Wait for me!","Door, hold it!"]},
+      {who:"Me", en:"*holds it* Got it, come on in.", zh:"（挡门）挡着呢，快进。", alts:["Door's held, hurry.","In you go."]},
+      {who:"Me", en:"Which floor we on? 18, right.", zh:"咱几楼？18，对。", alts:["We're on 18? Yep.","Floor 18, that's us."]},
+      {who:"Partner", en:"Push 1, we're heading down.", zh:"按 1，下楼。", alts:["Hit 1, going down.","Ground floor, press 1."]},
+      {who:"Me", en:"*rides down* Okay, let's roll.", zh:"（下楼）好，出发。", alts:["Alright, moving out.","Let's head out."]},
+      {who:"Me", en:"*steps out* Fresh air, here we go.", zh:"（出楼）新鲜空气，走起。", alts:["Out we go.","Morning air, nice."]}
+    ],
+    kp:[
+      {en:"got it / got 'em", zh:"拿到了 / 齐了", ex:"Keys, phone, got 'em."},
+      {en:"good catch", zh:"好提醒 / 接得好", ex:"Good catch, almost forgot."},
+      {en:"taking forever", zh:"慢死了 / 等死人", ex:"The bus is taking forever."},
+      {en:"let's roll", zh:"走吧 / 出发", ex:"Bags packed? Let's roll."},
+      {en:"hold the door", zh:"帮挡下门", ex:"Hold the door, I'm coming!"}
+    ]
+  },
+  /* ---------- 6 ---------- */
+  {
+    id:"commute", tab:"weekday", en:"Commute to Work", zh:"上班路上",
+    scene:"走到地铁站、扫码进站、挤上车、坐 1 号线西门口→体育西路、共享单车、走到公司。",
+    lines:[
+      {who:"Me", en:"Walk to Ximenkou station, bout ten min.", zh:"走到西门口站，大概十分钟。", alts:["It's a ten-minute walk to the line.","Headin' to Ximenkou."]},
+      {who:"Me", en:"*at gate* Scan the QR code to get through.", zh:"（闸机前）扫码进站。", alts:["Tap through with my phone.","Scan in, easy."]},
+      {who:"Me", en:"*waits on platform* Train's always packed this time.", zh:"（站台等）这个点车永远挤。", alts:["Rush hour, ugh.","Gonna be sardines again."]},
+      {who:"Me", en:"*train arrives* Here it comes, brace yourself.", zh:"（车来）来了，做好心理准备。", alts:["Incoming, get ready.","Here we go, deep breath."]},
+      {who:"Partner", en:"Let's squeeze in before the doors close.", zh:"趁关门挤上去。", alts:["Hop in quick.","Push in, now!"]},
+      {who:"Me", en:"*on train* Jam-packed, can't even move.", zh:"（车上）挤爆了，动不了。", alts:["Packed like sardines.","No room to breathe."]},
+      {who:"Me", en:"I take Line 1 from Ximenkou to Tiyu Xilu.", zh:"我坐 1 号线从西门口到体育西路。", alts:["Line 1, Ximenkou to Tiyu Xilu.","The 1 train, same ride daily."]},
+      {who:"Partner", en:"That's my stop too, weirdly.", zh:"我也到那站，巧了。", alts:["Same stop, funny.","Me too, small world."]},
+      {who:"Me", en:"*arrives* Tiyu Xilu, let's get off.", zh:"（到站）体育西路，下。", alts:["We're here, off we go.","Tiyu Xilu, out."]},
+      {who:"Me", en:"*exits* Last mile on a shared bike.", zh:"（出站）最后一公里骑共享单车。", alts:["Grab a bike for the last stretch.","Shared bike for the final bit."]},
+      {who:"Me", en:"*unlocks bike* Got one, hop on.", zh:"（解锁车）有车了，上。", alts:["Bike's unlocked, let's ride.","Found one, get on."]},
+      {who:"Partner", en:"Pedal fast, almost nine.", zh:"快点蹬，快九点了。", alts:["Hurry, it's nearly nine.","Step on it, time's tight."]},
+      {who:"Me", en:"*locks bike* Parked. Walk to the office.", zh:"（锁车）停好，走去公司。", alts:["Locked up, walk from here.","Bike's put away, on foot."]},
+      {who:"Me", en:"*walks in* Made it, just in time.", zh:"（走进）到了，刚好。", alts:["Here we are, right on time.","Made it, whew."]}
+    ],
+    kp:[
+      {en:"scan the QR code to get through", zh:"扫码过闸", ex:"I scan the QR code to get through the gate."},
+      {en:"tap through", zh:"刷（手机/卡）进站", ex:"Just tap through with your card."},
+      {en:"jam-packed / packed like sardines", zh:"挤爆了", ex:"The train's jam-packed at eight."},
+      {en:"the last mile on a shared bike", zh:"最后一公里骑共享单车", ex:"I do the last mile on a shared bike."},
+      {en:"brace yourself", zh:"做好心理准备（口语）", ex:"Brace yourself, it's gonna be busy."}
+    ]
+  },
+  /* ---------- 7 ---------- */
+  {
+    id:"arriving", tab:"weekday", en:"Arriving at the Office", zh:"到公司",
+    scene:"打卡、开电脑、接水 / 冲咖啡、和同事打招呼。",
+    lines:[
+      {who:"Me", en:"*badge in* Clocked in, on time for once.", zh:"（打卡）打了，难得准时。", alts:["Swiped in, phew.","Punched in, made it."]},
+      {who:"Coworker", en:"Mornin'! You're early today.", zh:"早！你今天挺早。", alts:["Hey, early bird!","Morning, you're here already."]},
+      {who:"Me", en:"Don't jinx it.", zh:"别咒我。", alts:["Knock on wood.","Famous last words."]},
+      {who:"Me", en:"*boots laptop* Let 'er boot up.", zh:"（开电脑）让它启动。", alts:["Booting up now.","Let it fire up."]},
+      {who:"Me", en:"*fills water* Coffee run, who's in?", zh:"（接水）拼咖啡谁要？", alts:["Anyone want coffee?","Coffee? I'm going."]},
+      {who:"Coworker", en:"Me! Usual, thanks.", zh:"我要！老样子谢了。", alts:["I'm in, same as always.","Yes please, the usual."]},
+      {who:"Me", en:"*makes coffee* Black, no sugar, right?", zh:"（冲咖啡）黑咖不加糖对吧？", alts:["No sugar, black?","Plain black, yeah?"]},
+      {who:"Coworker", en:"Yep, you remembered.", zh:"对，你记得。", alts:["Exactly.","Good memory."]},
+      {who:"Me", en:"*sips* Ahh, now I'm human.", zh:"（喝）啊，现在像个正常人了。", alts:["Now I'm awake.","Coffee fixes everything."]},
+      {who:"Coworker", en:"Rough commute?", zh:"路上堵？", alts:["Busy train?","Rough trip in?"]},
+      {who:"Me", en:"Packed as always.", zh:"老样子挤。", alts:["Same old crush.","You know how it is."]},
+      {who:"Me", en:"*logs in* Okay, inbox, here we go.", zh:"（登录）好，收件箱来了。", alts:["Time to face the emails.","Inbox, bring it on."]},
+      {who:"Coworker", en:"Good luck with that.", zh:"祝好运（邮件多）。", alts:["Yikes, have fun.","Brace yourself."]}
+    ],
+    kp:[
+      {en:"clock in / punch in", zh:"打卡上班", ex:"I clock in around nine."},
+      {en:"don't jinx it", zh:"别咒我 / 别说早了", ex:"We might finish early — don't jinx it."},
+      {en:"coffee run", zh:"去打咖啡（常拼）", ex:"I'm doing a coffee run, anyone?"},
+      {en:"now I'm human", zh:"现在才活过来（咖啡后）", ex:"One coffee and now I'm human."},
+      {en:"here we go", zh:"来了 / 开始了（口语）", ex:"Another Monday, here we go."}
+    ]
+  },
+  /* ---------- 8 ---------- */
+  {
+    id:"morning", tab:"weekday", en:"Morning at Work", zh:"上午工作",
+    scene:"回邮件、开会、对接、问问题、处理文件。",
+    lines:[
+      {who:"Me", en:"*opens email* Inbox zero, let's try.", zh:"（开邮件）零收件箱，试试看。", alts:["Gonna clear these emails.","Reply-all hell, here we go."]},
+      {who:"Coworker", en:"Got a sec? Quick question.", zh:"有空吗？问个事。", alts:["You free a sec?","Got a minute?"]},
+      {who:"Me", en:"Shoot.", zh:"说吧。", alts:["Go ahead.","What's up?"]},
+      {who:"Coworker", en:"The client wants the file by noon.", zh:"客户要中午前给文件。", alts:["They need it before noon.","Noon deadline from the client."]},
+      {who:"Me", en:"*types* On it, I'll send a draft soon.", zh:"（打字）在弄，马上发草稿。", alts:["Working on it now.","Give me twenty."]},
+      {who:"Me", en:"*meeting invite* Ugh, another meeting at ten.", zh:"（会议邀请）又开会，十点。", alts:["Ten o'clock sync, again.","Another call at ten."]},
+      {who:"Coworker", en:"Tell me about it.", zh:"别提了。", alts:["I feel you.","Don't even."]},
+      {who:"Me", en:"*in meeting* Sorry, can you repeat that?", zh:"（会中）抱歉，能再说一遍吗？", alts:["Say that again?","Come again?"]},
+      {who:"Me", en:"*notes* Got it, I'll follow up after.", zh:"（记笔记）收到，会后跟进。", alts:["Noted, I'll circle back.","I'll take it from here."]},
+      {who:"Coworker", en:"Ping me if you need help.", zh:"需要帮忙 @ 我。", alts:["Hit me up if stuck.","Let me know, okay?"]},
+      {who:"Me", en:"*nods* Will do, thanks.", zh:"（点头）会的，谢了。", alts:["For sure, thanks.","You got it, cheers."]},
+      {who:"Me", en:"*files* Where do I save this one?", zh:"（文件）这个存哪？", alts:["Which folder for this?","Where does this go?"]},
+      {who:"Coworker", en:"Shared drive, Q3 folder.", zh:"共享盘，Q3 文件夹。", alts:["The shared drive, Q3.","Team folder, Q3 tab."]},
+      {who:"Me", en:"*uploads* Done, sent it over.", zh:"（上传）好了，发过去了。", alts:["Uploaded and shared.","It's sent, check it."]}
+    ],
+    kp:[
+      {en:"got a sec", zh:"有空吗（搭话）", ex:"Got a sec? Need your input."},
+      {en:"shoot / what's up", zh:"说吧 / 咋了", ex:"You wanted me? Shoot."},
+      {en:"on it", zh:"在处理了", ex:"The bug? I'm on it."},
+      {en:"follow up", zh:"跟进", ex:"I'll follow up with the client tomorrow."},
+      {en:"ping me", zh:"@ 我 / 找我（口语）", ex:"Ping me when it's ready."}
+    ]
+  },
+  /* ---------- 9 ---------- */
+  {
+    id:"lunch", tab:"weekday", en:"Lunch Break", zh:"午饭午休",
+    scene:"约同事、点餐、吃饭、趴桌小憩、睡醒。",
+    lines:[
+      {who:"Coworker", en:"Lunch? I'm starving.", zh:"吃饭？我饿扁了。", alts:["Food? I'm famished.","Hungry? Me too."]},
+      {who:"Me", en:"Same. Where to?", zh:"同感。去哪？", alts:["Me too, what sounds good?","Let's go, I'm famished."]},
+      {who:"Coworker", en:"That noodle place downstairs?", zh:"楼下那家面馆？", alts:["The ramen spot below?","Noodle joint downstairs?"]},
+      {who:"Me", en:"*orders* Two bowls, extra chili.", zh:"（点餐）两碗，多辣。", alts:["I'll get the spicy one.","Same as always."]},
+      {who:"Me", en:"*eats* This hits different today.", zh:"（吃）今天这碗格外香。", alts:["Tastes extra good now.","So good right now."]},
+      {who:"Coworker", en:"Right? Comfort food.", zh:"是吧？治愈系。", alts:["Totally.","Comfort meal, yes."]},
+      {who:"Me", en:"*finished* Ugh, so full.", zh:"（吃完）哎，撑死。", alts:["I'm stuffed.","Too much, ugh."]},
+      {who:"Coworker", en:"Nap time?", zh:"午睡？", alts:["Quick snooze?","Rest time?"]},
+      {who:"Me", en:"*head down* Just twenty min, don't judge.", zh:"（趴下）就二十分钟，别笑我。", alts:["Gonna rest my eyes.","Power nap, be right back."]},
+      {who:"Coworker", en:"I'll wake you at two.", zh:"两点叫你。", alts:["I'll get you at two.","Two o'clock, I'll nudge you."]},
+      {who:"Me", en:"*wakes* Wha— already?", zh:"（醒）啊——这么快？", alts:["Huh? Is it two?","No way that was twenty min."]},
+      {who:"Coworker", en:"Yep, rise and shine.", zh:"对，起床啦。", alts:["Up you go.","Time to shine."]},
+      {who:"Me", en:"*stretches* Okay, back to the grind.", zh:"（伸懒腰）好，继续搬砖。", alts:["Alright, back at it.","Ugh, back to work."]},
+      {who:"Coworker", en:"Don't say it.", zh:"别说了。", alts:["Stop, please.","I know, I know."]}
+    ],
+    kp:[
+      {en:"I'm starving / famished", zh:"饿死了", ex:"Skipped breakfast, I'm starving."},
+      {en:"hits different", zh:"格外到位 / 不一样的好", ex:"This song hits different live."},
+      {en:"rest my eyes", zh:"眯一会儿（午睡委婉）", ex:"Gonna rest my eyes at my desk."},
+      {en:"back to the grind", zh:"回到工作 / 继续搬砖", ex:"Weekend's over, back to the grind."},
+      {en:"rise and shine", zh:"起床啦（叫人）", ex:"Rise and shine, sleepyhead!"}
+    ]
+  },
+  /* ---------- 10 ---------- */
+  {
+    id:"afternoon", tab:"weekday", en:"Afternoon at Work", zh:"下午",
+    scene:"工作、犯困、开会、等下班。",
+    lines:[
+      {who:"Me", en:"*yawns* Post-lunch crash is real.", zh:"（打哈欠）饭后困是真要命。", alts:["Hit a wall after lunch.","So sleepy right now."]},
+      {who:"Coworker", en:"Same, want some gum?", zh:"同，要口香糖吗？", alts:["Me too, gum?","Want a mint?"]},
+      {who:"Me", en:"*chews* Helps a bit, thanks.", zh:"（嚼）有点用，谢。", alts:["Kinda works, cheers.","Little boost, thanks."]},
+      {who:"Me", en:"*slides* Another slide deck? Kill me.", zh:"（做 PPT）又做 slides？杀了我吧。", alts:["Not another deck.","Death by PowerPoint."]},
+      {who:"Coworker", en:"Three o'clock meeting, don't forget.", zh:"三点会，别忘了。", alts:["Sync at three, remember.","Three pm call, heads up."]},
+      {who:"Me", en:"*checks clock* Just wanna clock out already.", zh:"（看钟）只想下班了。", alts:["Counting down the minutes.","Is it five yet?"]},
+      {who:"Me", en:"*meeting* Can we make this quick?", zh:"（会）能快点吗？", alts:["Keep it short, yeah?","Let's be brief."]},
+      {who:"Coworker", en:"Agreed, let's wrap by four.", zh:"同意，四点前结束。", alts:["Yes, done by four.","Four's the cutoff."]},
+      {who:"Me", en:"*after* Finally free.", zh:"（会后）终于解放。", alts:["Done at last.","Freedom, kinda."]},
+      {who:"Coworker", en:"Last push, then home.", zh:"最后一波，然后回家。", alts:["Final stretch, then out.","One more then we're gone."]},
+      {who:"Me", en:"*types* Almost there, almost there.", zh:"（打字）快好了快好了。", alts:["Nearly done.","So close now."]}
+    ],
+    kp:[
+      {en:"post-lunch crash", zh:"饭后犯困", ex:"The post-lunch crash hits me every day."},
+      {en:"hit a wall", zh:"撞墙 / 没状态 / 卡住", ex:"I hit a wall around three."},
+      {en:"clock out", zh:"下班打卡", ex:"I clock out at six sharp."},
+      {en:"wrap (up)", zh:"收尾 / 结束", ex:"Let's wrap this meeting up."},
+      {en:"last push", zh:"最后一波 / 最后冲刺", ex:"One last push before the weekend."}
+    ]
+  },
+  /* ---------- 11 ---------- */
+  {
+    id:"commute-home", tab:"weekday", en:"Commute Home", zh:"下班回家",
+    scene:"打卡、进站、回程路上、顺路买菜。",
+    lines:[
+      {who:"Me", en:"*badge out* Clocked out, freedom!", zh:"（打卡）下班，自由！", alts:["Punched out, see ya.","Outta here."]},
+      {who:"Coworker", en:"Have a good one!", zh:"回见 / 愉快！", alts:["See you tomorrow!","Have a good night!"]},
+      {who:"Me", en:"*at station* Heading back, same old route.", zh:"（进站）回程，老路线。", alts:["On my way home.","Back the same way."]},
+      {who:"Me", en:"*on train* Way less packed now, nice.", zh:"（车上）现在松多了，爽。", alts:["Empty train, bless.","So much better than morning."]},
+      {who:"Me", en:"*exits Tiyu Xilu* Back to Ximenkou.", zh:"（体育西路出）回西门口。", alts:["Getting off at Ximenkou.","Reverse trip now."]},
+      {who:"Me", en:"*grocery* Grab some veg on the way.", zh:"（买菜）顺路买点菜。", alts:["Stop by the market.","Pick up dinner stuff."]},
+      {who:"Me", en:"*picks* Tomatoes, spinach, eggs.", zh:"（挑）番茄、菠菜、蛋。", alts:["Greens and eggs, that'll do.","Veg for tonight."]},
+      {who:"Cashier", en:"Twenty-three, please.", zh:"23 块。", alts:["That's twenty-three.","Twenty-three yuan."]},
+      {who:"Me", en:"*pays* Scan or cash? Scan.", zh:"（付）扫码还是现金？扫码。", alts:["I'll scan, thanks.","WeChat pay, please."]},
+      {who:"Me", en:"*bags* Got dinner, let's go home.", zh:"（拎袋）晚饭有了，回家。", alts:["Food's sorted, head home.","Dinner secured, let's bounce."]},
+      {who:"Me", en:"*walks* Quiet street, love this part.", zh:"（走）安静的街，喜欢这会儿。", alts:["Peaceful now, my favorite.","Calm streets, nice."]}
+    ],
+    kp:[
+      {en:"clock out", zh:"下班", ex:"I clock out and I'm gone."},
+      {en:"have a good one", zh:"回见 / 愉快", ex:"See you Monday, have a good one."},
+      {en:"stop by", zh:"顺路去 / 顺便停", ex:"I'll stop by the pharmacy."},
+      {en:"on the way", zh:"顺路 / 在路上", ex:"Grab milk on the way home."},
+      {en:"outta here", zh:"撤了 / 走了（口语）", ex:"Work's done, I'm outta here."}
+    ]
+  },
+  /* ---------- 12 ---------- */
+  {
+    id:"evening", tab:"weekday", en:"Evening at Home", zh:"晚上到家",
+    scene:"换居家服、做饭 / 热饭、吃晚饭、聊今天、洗碗。",
+    lines:[
+      {who:"Me", en:"*changes* Comfy clothes, finally.", zh:"（换衣）终于穿居家服了。", alts:["Sweats on, yes.","Outta the work clothes."]},
+      {who:"Me", en:"*heats food* Leftovers or cook? Leftovers.", zh:"（热饭）做饭还是热剩的？热剩的。", alts:["Cook or reheat? Reheat.","Leftovers it is."]},
+      {who:"Partner", en:"Smart, I'm beat too.", zh:"明智，我也累瘫。", alts:["Good call, exhausted.","Me too, wiped out."]},
+      {who:"Me", en:"*plates* Dinner's ready, come eat.", zh:"（装盘）晚饭好了，来吃。", alts:["Food's on the table.","Come get it while it's hot."]},
+      {who:"Partner", en:"How was your day?", zh:"今天咋样？", alts:["How'd it go?","Good day?"]},
+      {who:"Me", en:"*eats* Eh, busy but fine. Yours?", zh:"（吃）还行吧，忙。你呢？", alts:["Long, but okay.","Same old, same old."]},
+      {who:"Partner", en:"Same, meetings all day.", zh:"一样，一天会。", alts:["Meetings nonstop.","All-day calls."]},
+      {who:"Me", en:"*finished* That hit the spot.", zh:"（吃完）这下舒服了。", alts:["So satisfying.","Just what I needed."]},
+      {who:"Partner", en:"Dishes?", zh:"洗碗？", alts:["Kitchen duty?","Your turn or mine?"]},
+      {who:"Me", en:"*at sink* I got 'em, you relax.", zh:"（水槽）我来，你歇着。", alts:["I'll handle the dishes.","Your turn or mine? — I got it."]},
+      {who:"Partner", en:"You're the best.", zh:"你最好了。", alts:["Such a gem.","Thanks, love."]},
+      {who:"Me", en:"*washes* All clean, done for the night.", zh:"（洗）全干净了，今天收工。", alts:["Kitchen's done.","All washed, phew."]}
+    ],
+    kp:[
+      {en:"comfy clothes", zh:"居家服 / 舒服的衣服", ex:"I live in comfy clothes on weekends."},
+      {en:"I'm beat", zh:"累瘫了", ex:"After that hike, I'm beat."},
+      {en:"hit the spot", zh:"正合口味 / 舒服到了", ex:"That ramen really hit the spot."},
+      {en:"I got 'em", zh:"我来（收拾）", ex:"Dishes? I got 'em."},
+      {en:"done for the night", zh:"今晚收工了", ex:"Homework's done for the night."}
+    ]
+  },
+  /* ---------- 13 ---------- */
+  {
+    id:"night", tab:"weekday", en:"Night Routine", zh:"睡前",
+    scene:"瘫沙发、刷手机 / 看电视、洗澡洗头、吹发、护肤、定闹钟、上床、关灯。",
+    lines:[
+      {who:"Me", en:"*flops on couch* Brain off, scroll time.", zh:"（瘫沙发）脑子关机，刷手机。", alts:["Just gonna veg out.","Couch potato mode."]},
+      {who:"Me", en:"*watches* One episode, then bed.", zh:"（看）一集就睡。", alts:["One show, then sleep.","Just one episode."]},
+      {who:"Partner", en:"That's what you said last night.", zh:"你昨晚也这么说。", alts:["Same promise as yesterday.","Famous last words."]},
+      {who:"Me", en:"*showers* Shower time, wash the day off.", zh:"（洗澡）洗澡，洗掉一天。", alts:["Gonna wash my hair too.","Quick rinse."]},
+      {who:"Me", en:"*blow-dries* Hair's takin' forever.", zh:"（吹发）吹头发真慢。", alts:["Blow-dry takes ages.","Hair won't dry."]},
+      {who:"Me", en:"*skincare* Moisturizer, the last step.", zh:"（护肤）面霜，最后一步。", alts:["Night routine, done.","Splash and moisturize."]},
+      {who:"Me", en:"*sets alarm* Seven again, ugh.", zh:"（定闹钟）又是七点，唉。", alts:["Alarm at seven, set.","One more early one."]},
+      {who:"Partner", en:"Lights out?", zh:"关灯？", alts:["Ready to sleep?","Kill the lights?"]},
+      {who:"Me", en:"*in bed* Yep, goodnight.", zh:"（上床）嗯，晚安。", alts:["Turn it off, I'm out.","Lights off, see you tomorrow."]},
+      {who:"Partner", en:"Night, love you.", zh:"晚安，爱你。", alts:["Sleep tight.","G'night, babe."]},
+      {who:"Me", en:"*clicks off* Finally, peace.", zh:"（关灯）终于，安静了。", alts:["Quiet at last.","Dark and calm, nice."]}
+    ],
+    kp:[
+      {en:"veg out / brain off", zh:"瘫着 / 放空", ex:"I just wanna veg out tonight."},
+      {en:"wash the day off", zh:"洗掉一天的疲惫", ex:"A hot shower washes the day off."},
+      {en:"lights out", zh:"关灯睡觉", ex:"Lights out at eleven, strict."},
+      {en:"I'm out", zh:"我睡着了 / 撤了", ex:"Five min later, he was out."},
+      {en:"sleep tight", zh:"睡个好觉（晚安）", ex:"Big day tomorrow, sleep tight."}
+    ]
+  },
+
+  /* ---------- 休息日（占位，确认风格后补充） ---------- */
+  {id:"sleeping-in", tab:"weekend", en:"Sleeping In", zh:"睡懒觉", scene:"", placeholder:true,
+    lines:[], kp:[]},
+  {id:"brunch", tab:"weekend", en:"Brunch", zh:"早午餐", scene:"", placeholder:true,
+    lines:[], kp:[]},
+  {id:"chores", tab:"weekend", en:"Chores", zh:"家务", scene:"", placeholder:true,
+    lines:[], kp:[]},
+  {id:"going-out", tab:"weekend", en:"Going Out & Having Fun", zh:"出去玩", scene:"", placeholder:true,
+    lines:[], kp:[]},
+  {id:"sunday-evening", tab:"weekend", en:"Sunday Evening", zh:"周日晚上", scene:"", placeholder:true,
+    lines:[], kp:[]}
+];
+
+/* ============== 状态 ============== */
+const state = { tab:"weekday", accent:"en-US", slow:false, search:"" };
+
+/* 发音 */
+let voices = [];
+function loadVoices(){ try{ voices = window.speechSynthesis.getVoices() || []; }catch(e){ voices = []; } }
+loadVoices();
+if (typeof window.speechSynthesis !== "undefined" && "onvoiceschanged" in window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+function pickVoice(lang){
+  if(!voices.length) return null;
+  let v = voices.find(x => x.lang === lang);
+  if(!v) v = voices.find(x => x.lang && x.lang.toLowerCase().startsWith(lang.split("-")[0].toLowerCase()));
+  if(!v) v = voices.find(x => /en/i.test(x.lang));
+  return v || null;
+}
+function speak(text, forceSlow){
+  if(!text) return;
+  if(!("speechSynthesis" in window)){ alert("当前浏览器不支持语音朗读，建议用 Safari / Chrome。"); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = state.accent;
+  const v = pickVoice(state.accent);
+  if(v) u.voice = v;
+  u.rate = (forceSlow ? 0.75 : (state.slow ? 0.75 : 1.0));
+  u.pitch = 1.0;
+  window.speechSynthesis.speak(u);
+}
+
+/* 收藏（已会） */
+const MK = "ey_master_";
+function isMastered(modId, i){ return localStorage.getItem(MK + modId + "_" + i) === "1"; }
+function toggleMaster(modId, i){
+  const k = MK + modId + "_" + i;
+  if(localStorage.getItem(k) === "1") localStorage.removeItem(k);
+  else localStorage.setItem(k, "1");
+}
+
+/* 匹配搜索 */
+function matches(line, q){
+  if(!q) return true;
+  q = q.toLowerCase();
+  if(line.en.toLowerCase().includes(q)) return true;
+  if(line.zh.toLowerCase().includes(q)) return true;
+  if((line.alts||[]).some(a => a.toLowerCase().includes(q))) return true;
+  return false;
+}
+
+/* ============== 渲染 ============== */
+function modsForTab(tab){ return MODULES.filter(m => m.tab === tab); }
+
+function renderChips(){
+  const wrap = document.getElementById("chips");
+  const list = modsForTab(state.tab);
+  wrap.innerHTML = list.map(m =>
+    `<div class="chip" data-goto="${m.id}">${m.en.split(" ")[0]} · ${m.zh}</div>`
+  ).join("");
+}
+
+function renderContent(){
+  const q = state.search.trim();
+  const list = modsForTab(state.tab);
+  let html = "";
+  let total = 0, mastered = 0;
+
+  list.forEach(m => {
+    if(m.placeholder){
+      html += `<section class="module" id="mod-${m.id}">
+        <div class="mod-head"><div class="en">${m.en}</div><div class="zh">${m.zh}</div></div>
+        <div class="placeholder">休息日模块（${m.zh}）待补充 —— 确认工作日风格地道后我会接着写。</div>
+      </section>`;
+      return;
+    }
+    // 统计（仅非占位）
+    const visibleLines = m.lines.filter(l => matches(l, q));
+    total += m.lines.length;
+    m.lines.forEach((l, i) => { if(isMastered(m.id, i)) mastered++; });
+
+    if(q && visibleLines.length === 0){
+      // 整个模块无匹配，仍显示标题但不显示卡片
+      html += `<section class="module" id="mod-${m.id}">
+        <div class="mod-head"><div class="en">${m.en}</div><div class="zh">${m.zh}</div>
+        <div class="scene">${m.scene||""}</div></div>
+        <div class="no-match">此模块无匹配「${q}」</div></section>`;
+      return;
+    }
+
+    let cards = "";
+    m.lines.forEach((l, i) => {
+      if(!matches(l, q)) return;
+      const star = isMastered(m.id, i);
+      const altsHtml = (l.alts && l.alts.length)
+        ? `<div class="alts"><span class="lab">也可以说：</span>${l.alts.join(" / ")}</div>` : "";
+      cards += `<div class="card">
+        <span class="who ${l.who}">${l.who}</span>
+        <div class="en-line" data-play="${m.id}|${i}">${l.en}</div>
+        <div class="zh-line">${l.zh}</div>
+        ${altsHtml}
+        <div class="row">
+          <button class="btn play" data-act="play" data-mod="${m.id}" data-i="${i}">🔊 朗读</button>
+          <button class="btn slow" data-act="slow" data-mod="${m.id}" data-i="${i}">🐢 慢速</button>
+          <button class="btn star ${star?'on':''}" data-act="master" data-mod="${m.id}" data-i="${i}" title="标记已会">${star?'★':'☆'}</button>
+        </div>
+      </div>`;
+    });
+
+    let kpHtml = "";
+    if(m.kp && m.kp.length && !q){
+      kpHtml = `<div class="kp"><h4>Key Phrases 重点表达</h4>` +
+        m.kp.map(k => `<div class="kp-item"><div class="kp-en">${k.en}</div>
+          <div class="kp-zh">${k.zh}</div><div class="kp-ex">例：${k.ex}</div></div>`).join("") +
+        `</div>`;
+    }
+
+    html += `<section class="module" id="mod-${m.id}">
+      <div class="mod-head">
+        <div class="en">${m.en}</div><div class="zh">${m.zh}</div>
+        ${m.scene?`<div class="scene">${m.scene}</div>`:""}
+      </div>
+      ${cards}
+      ${kpHtml}
+    </section>`;
+  });
+
+  document.getElementById("content").innerHTML = html;
+
+  // 进度（仅统计当前 tab 非占位模块）
+  const pct = total ? Math.round(mastered/total*100) : 0;
+  document.getElementById("pfill").style.width = pct + "%";
+  document.getElementById("ptext").textContent = `本板块共 ${total} 句 · 已会 ${mastered} 句（${pct}%）`;
+}
+
+function renderAll(){ renderChips(); renderContent(); updateChipActive(); }
+
+function updateChipActive(){
+  // 高亮当前视口模块（简化：不强制）
+}
+
+/* ============== 事件 ============== */
+document.getElementById("accentBtn").addEventListener("click", () => {
+  state.accent = (state.accent === "en-US") ? "en-GB" : "en-US";
+  document.getElementById("accentLab").textContent = (state.accent === "en-US") ? "美音" : "英音";
+  // 触发一次空发音以确保语音已加载
+  if("speechSynthesis" in window) window.speechSynthesis.getVoices();
+});
+document.getElementById("speedBtn").addEventListener("click", () => {
+  state.slow = !state.slow;
+  document.getElementById("speedLab").textContent = state.slow ? "慢速 0.75x" : "正常";
+});
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    state.tab = t.dataset.tab;
+    // 切到休息日时清空搜索避免无结果
+    if(state.tab === "weekend"){ document.getElementById("search").value=""; state.search=""; }
+    renderAll();
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+});
+document.getElementById("search").addEventListener("input", (e) => {
+  state.search = e.target.value;
+  renderContent();
+});
+document.getElementById("chips").addEventListener("click", (e) => {
+  const c = e.target.closest(".chip"); if(!c) return;
+  const el = document.getElementById("mod-" + c.dataset.goto);
+  if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+});
+document.getElementById("content").addEventListener("click", (e) => {
+  // 朗读按钮
+  const btn = e.target.closest("[data-act]");
+  if(btn){
+    const mod = MODULES.find(m => m.id === btn.dataset.mod);
+    const line = mod.lines[+btn.dataset.i];
+    if(btn.dataset.act === "play") speak(line.en, false);
+    else if(btn.dataset.act === "slow") speak(line.en, true);
+    else if(btn.dataset.act === "master"){
+      toggleMaster(btn.dataset.mod, +btn.dataset.i);
+      renderContent();
+    }
+    return;
+  }
+  // 点击英文句子朗读
+  const en = e.target.closest("[data-play]");
+  if(en){
+    const [modId, i] = en.dataset.play.split("|");
+    const mod = MODULES.find(m => m.id === modId);
+    speak(mod.lines[+i].en, false);
+  }
+});
+
+/* 回到顶部 */
+const totop = document.getElementById("totop");
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 300) totop.classList.add("show");
+  else totop.classList.remove("show");
+});
+totop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+/* 首次交互兜底加载语音 */
+document.body.addEventListener("click", function once(){
+  if("speechSynthesis" in window) loadVoices();
+  document.body.removeEventListener("click", once);
+});
+
+/* 初始化 */
+renderAll();
+</script>
+</body>
+</html>
