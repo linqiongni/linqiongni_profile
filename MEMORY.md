@@ -127,6 +127,15 @@
 - 页首建议放一条页级控件条（展开/收起 全部详解、全部模板）；模板库小节再放一条局部控件（用 `data-fold-scope` 限定范围）。
 - 大块 Edit 后必须 grep 计数校验（本轮首块编辑报成功但未落盘）。
 
+## 子站移动端适配样板（2026-09-19 建立，融资法务 → 四站已铺开）
+- 样板源 = `融资法务/assets/style.css` 末尾 `@media (max-width:640px)` 块（顶栏 wrap、搜索独占次行、cur-chip 收缩省略、按钮收紧），仅窄屏生效，桌面零改动。
+- 已铺开：商事仲裁（源 `商事仲裁/assets/style.css`）、刑事（`public/criminal/assets/crim-style.css`，即源站）、婚姻家事（源 `婚姻家事与遗产继承/assets/style.css`，各页 `?v=` 已升 20260919b）、保险（`public/insurance/styles.css`，即源站）。commit 29d003a。
+- 四站追加的样板增强（融资法务本身没有，下次新站适配记得带上）：① `.main table{display:block;overflow-x:auto}` 宽表格窄屏横滚；② `.main{overflow-wrap:anywhere}` 治超长不可断串；③ insurance 专属 `.sidebar{top:96px}`（顶栏两行后抽屉下移）。
+- `public/theme-toggle.js`：「切换深色」浮层 ≤640px 自动改挂右下角（bottom:16 right:12），桌面仍 top:56px。
+- Arbitration/CriminalDefense/FamilyInheritance/Insurance 四个 Tab 组件已挂小时级 IFRAME_V（对齐 financing/english 的缓存穿透）。
+- 其余子站 390px 实测无溢出、未动：labor / film-law s1–s4 / ip / logistics / startup / english（english 另有手机端全屏方案，见 git log f278d59）。
+- 验收：390px 逐页 `documentElement.scrollWidth`==390（25 页全过）+ 桌面 1440x900 改前改后截图 md5 一致（零回归）。agent-browser 会启发式缓存 http.server 的 CSS，改完必须 `agent-browser close` 再重开。
+
 ## 关键法条条号（融资交易相关，已核对官方文本）
 - 九民纪要第 5 条引用的**旧**条号：35 抽逃出资 / 142 股份回购 / 166 利润分配 → 2023 修订《公司法》对应 **53 / 162 / 210**。
 - 2023 修订《公司法》：**144** 条股份有限公司类别股（有限公司无法定类别股，只能用章程+股东协议+合同拼）；**224** 条减资程序（决议起 10 日通知债权人、30 日公告、债权人 30/45 日内可要求清偿或提供担保）；**226** 条违法减资后果；**15** 条对外担保（为股东/实控人担保须股东会决议、关联股东回避表决）。
