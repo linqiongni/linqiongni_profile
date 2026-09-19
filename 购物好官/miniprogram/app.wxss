@@ -1,0 +1,6 @@
+/* 购物好官 · 全局样式 */
+page {
+  background: linear-gradient(160deg, #FFE9E3 0%, #E8F7F4 100%);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #4A4A4A;
+}

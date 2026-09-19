@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "sync:financing": "rsync -a \"融资法务/\" \"public/financing-legal/\" --exclude README.md --exclude assets/.DS_Store",
+    "sync:financing": "rsync -a \"融资法务/\" \"public/financing-legal/\" --exclude README.md --exclude AGENTS.md --exclude MEMORY.md --exclude .workbuddy --exclude assets/.DS_Store",
     "sync:arbitration": "rsync -a \"商事仲裁/\" \"public/arbitration/\" --exclude .DS_Store",
     "sync:family-law": "rsync -a \"婚姻家事与遗产继承/\" \"public/family-law/\" --exclude .DS_Store --exclude _build",
     "sync:english": "rsync -a \"身边的英语/\" \"public/english/\" --exclude .DS_Store",

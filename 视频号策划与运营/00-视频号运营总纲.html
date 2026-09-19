@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>视频号运营总纲 · 用 AI 把任意行业拆成可自学的路径</title>
+<style>
+  :root{
+    --bg:#FDFCF9; --panel:#FFFFFF; --ink:#1D1D1F; --muted:#6B6862;
+    --gold:#B89F6B; --gold-soft:#EDE4CF; --line:#E7E2D8; --red:#C0392B; --green:#2E7D5B;
+    --radius:14px; --shadow:0 2px 14px rgba(40,34,20,.06);
+  }
+  [data-theme="dark"]{
+    --bg:#161618; --panel:#1F1F22; --ink:#F2EFE9; --muted:#A7A298;
+    --gold:#C9AE74; --gold-soft:#332f26; --line:#33312b; --red:#E07368; --green:#7FC6A4;
+    --shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+  a{color:var(--gold);text-decoration:none}
+  header.hero{background:linear-gradient(135deg,var(--gold-soft),transparent);padding:42px 22px 30px;border-bottom:1px solid var(--line)}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  .sub{color:var(--muted);font-size:15px;max-width:760px}
+  .pill{display:inline-block;background:var(--gold);color:#fff;font-size:12px;padding:3px 10px;border-radius:99px;margin-right:6px;vertical-align:middle}
+  .toolbar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 12px;align-items:center}
+  .toolbar button{border:1px solid var(--line);background:transparent;color:var(--ink);font-size:13px;padding:6px 11px;border-radius:99px;cursor:pointer;white-space:nowrap}
+  .toolbar button.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .toolbar .spacer{flex:1}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  section:last-child{border-bottom:none}
+  h2{font-size:21px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-flex;width:30px;height:30px;border-radius:8px;background:var(--gold-soft);color:var(--gold);align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  h3{font-size:16px;margin:22px 0 8px}
+  p{margin:8px 0}
+  .lead{color:var(--muted);margin:2px 0 14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);margin:14px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  .kpi b{display:block;font-size:22px;color:var(--gold)}
+  .pillar{position:relative;padding-left:14px;border-left:3px solid var(--gold)}
+  .tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;background:var(--gold-soft);color:var(--gold);margin:2px 4px 2px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--gold-soft);color:var(--ink);font-weight:600}
+  tr:nth-child(even) td{background:rgba(184,159,107,.05)}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:5px 0}
+  .check{list-style:none;padding-left:0}
+  .check li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .check input{margin-top:5px;accent-color:var(--gold);width:16px;height:16px;flex:none}
+  .copy{position:relative}
+  .copybtn{position:absolute;right:10px;top:10px;border:1px solid var(--line);background:var(--panel);color:var(--gold);border-radius:7px;font-size:12px;padding:3px 9px;cursor:pointer}
+  .warn{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);border-radius:10px;padding:12px 14px;color:var(--ink)}
+  .warn b{color:var(--red)}
+  .ok{background:rgba(46,125,91,.08);border:1px solid rgba(46,125,91,.3);border-radius:10px;padding:12px 14px}
+  blockquote{margin:12px 0;padding:10px 16px;border-left:3px solid var(--gold);background:var(--gold-soft);border-radius:0 10px 10px 0;color:var(--ink)}
+  code{background:var(--gold-soft);padding:1px 6px;border-radius:5px;font-size:13px}
+  .footer{padding:26px 0 60px;color:var(--muted);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div><span class="pill">视频号运营总纲</span><span class="pill" style="background:var(--green)">v2 · 展示AI成果定位</span></div>
+    <h1>用 AI 把任意行业，拆成你 90 天能自学完的体系</h1>
+    <p class="sub">这不是一个法律科普号。你的网站（6 大法务板块 · 16–32 周养成计划 · 90+ 篇内容）本身就是「AI 能帮人体系化精通一个行业」的活体证据。视频号的任务只有两件：<b>展示 AI 能做到什么</b> + <b>教观众怎么用 AI 做到</b>。这份总纲是可交互的单文件，清单勾选会自动保存。</p>
+  </div>
+</header>
+
+<nav class="toolbar" id="nav">
+  <button data-t="s1" class="active">1 定位</button>
+  <button data-t="s2">2 账号搭建</button>
+  <button data-t="s3">3 内容三支柱</button>
+  <button data-t="s4">4 场景化脚本</button>
+  <button data-t="s5">5 拍摄SOP</button>
+  <button data-t="s6">6 90天排期</button>
+  <button data-t="s7">7 数据复盘</button>
+  <button data-t="s8">8 变现路径</button>
+  <button data-t="s9">9 合规红线</button>
+  <button data-t="s10">10 调研结论</button>
+  <span class="spacer"></span>
+  <button id="themeBtn">🌗 暗/亮</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ S1 ============ -->
+<section id="s1">
+  <h2><span class="num">1</span>重新理解这个号：不是普法，是「展示 AI 生产力」</h2>
+  <p class="lead">之前版本被做歪了——当成「法律科普号」。这里先把根正过来。</p>
+  <div class="card">
+    <blockquote>「我觉得 AI 可以帮助我们实现更进一步自主学习，深耕一个行业甚至精通多个行业。」—— 这是你的初心，也是这个号唯一要讲的故事。</blockquote>
+    <p><b>一句话定位：</b>用 AI 把任意行业拆成「你能 90 天自学完」的路径。我展示自己搭出来的成果，并拆开给你看怎么搭的。</p>
+    <p><b>为什么是你来做（资产即壁垒）：</b>绝大多数 AI 博主只会讲工具，拿不出体系化成果。而你手上已经有——</p>
+    <ul>
+      <li><b>餐饮法务总监养成计划</b>（16 周，给将入职的师弟）</li>
+      <li><b>知识产权法务专家养成计划</b>（32 周 / 160 学习日）</li>
+      <li><b>跨境物流法务总监养成计划</b>（冷门领域被 AI 拆透）</li>
+      <li>网站 6 大板块：餐饮 / 跨境物流 / 知识产权 / 涉外合同 / 影视法律 / 双视角劳动法</li>
+      <li>90+ 篇实战文章、4 个真实案例、合规手册、思考观点</li>
+    </ul>
+    <p>这些是「普通人 + AI 能体系化精通一个行业」的最强证据链。视频号的每一帧，都在为这条证据链做注脚。</p>
+  </div>
+  <div class="grid3">
+    <div class="kpi"><b>展示</b>录屏你的网站与 AI 对话，让观众「看见成果」</div>
+    <div class="kpi"><b>教学</b>拆开你用 AI 搭体系的方法论，让观众「学会复刻」</div>
+    <div class="kpi"><b>引流</b>完整版在 linqiongni.top，视频号是入口不是终点</div>
+  </div>
+</section>
+
+<!-- ============ S2 ============ -->
+<section id="s2">
+  <h2><span class="num">2</span>账号搭建包：头像 / 昵称 / 简介 / 背景</h2>
+  <p class="lead">记住一条铁律：昵称和简介<b>绝不能出现现雇主品牌</b>（换工作即废号 + 企业品牌用于个人号有授权风险）。统一写「港企零售集团法务主管」。</p>
+
+  <h3>昵称（三选一，推荐第一个）</h3>
+  <div class="card copy">
+    <button class="copybtn" data-c="琼霓的AI自习室">复制</button>
+    <p><b>① 琼霓的AI自习室</b> <span class="tag">推荐</span><br>亲切、体现「自主学习」、差异化强，不绑定具体行业，未来可延伸到任意领域。</p>
+    <p><b>② 用AI精通一个行业</b><br>直给价值主张，搜索友好，但略硬、人情味弱。</p>
+    <p><b>③ 林琼霓·AI学习搭子</b><br>强人设、强信任，适合后期做陪跑；前期略重。</p>
+  </div>
+
+  <h3>简介模板（可直接复制）</h3>
+  <div class="card copy">
+    <button class="copybtn" data-c="港企零售集团法务主管 | 用 AI 把任意行业拆成你能自学完的路径🔧 这里展示 AI 能做到什么 + 怎么做到📚 完整成果与养成计划在 linqiongni.top">复制</button>
+    <p>港企零售集团法务主管 | 用 AI 把任意行业拆成你能自学完的路径<br>🔧 这里展示 AI 能做到什么 + 怎么做到<br>📚 完整成果与养成计划在 linqiongni.top</p>
+  </div>
+
+  <h3>头像方向</h3>
+  <div class="card">
+    <p><b>不是「专家证件套照」，是「温暖 + 一点科技感」的真人半身。</b>观众要的是「一个用 AI 自学的人」，不是「权威大师」。</p>
+    <ul>
+      <li>真人职业半身、自然微笑、米白/浅灰纯底，主体居中留白 10%</li>
+      <li>可在角落叠一个极淡的 AI 像素/网格纹理（低饱和），强化「AI 感」但不喧宾夺主</li>
+      <li>给修图/AI 的提示词：<code>professional half-body portrait, warm natural lighting, soft champagne-beige background, subtle digital grid motif in corner, friendly confident expression, sharp focus, editorial style</code></li>
+    </ul>
+  </div>
+
+  <h3>背景图 & 视觉统一</h3>
+  <div class="card">
+    <p>背景图 = 你网站首页截图 + 一句 slogan「用 AI 把行业拆成可自学的路径」。配色沿用网站：浅底 <code>#FDFCF9</code> · 香槟金 <code>#B89F6B</code> · 暗底 <code>#1D1D1F</code>。所有视频封面、字幕配色、缩略图统一这套，形成视觉锤。</p>
+  </div>
+</section>
+
+<!-- ============ S3 ============ -->
+<section id="s3">
+  <h2><span class="num">3</span>内容三支柱（配比 = 收藏 / 涨粉 / 关注）</h2>
+  <p class="lead">三类内容各服务一个核心指标，混发才能同时拿「收藏 + 涨粉 + 关注」。</p>
+
+  <div class="grid3">
+    <div class="card pillar">
+      <h3 style="margin-top:0">① 成果巡展 · 收藏向 40%</h3>
+      <p>录屏你的网站，展示「一个行业知识体系长什么样」。人们会收藏「知识地图」。</p>
+      <p class="tag">例：点开16周餐饮计划逐周展示</p>
+      <p class="tag">例：6大板块一次巡展</p>
+      <p class="tag">例：IP 32周专家路径全貌</p>
+    </div>
+    <div class="card pillar">
+      <h3 style="margin-top:0">② AI 工作流 · 涨粉向 35%</h3>
+      <p>拆开你用 AI 从 0 搭出这些的方法论：prompt 结构、知识库搭建、迭代闭环。可复刻 = 涨粉。</p>
+      <p class="tag">例：一个prompt做行业地图</p>
+      <p class="tag">例：我的AI知识库全流程</p>
+      <p class="tag">例：1小时产出合规手册</p>
+    </div>
+    <div class="card pillar">
+      <h3 style="margin-top:0">③ 场景故事 · 关注向 25%</h3>
+      <p>真实场景：师弟问餐饮、朋友问 IP、同事问跨境……我用 AI 在 X 小时内搭出完整方案。人情味 + 利他 = 关注 + 私信。</p>
+      <p class="tag">例：师弟的16周计划怎么来的</p>
+      <p class="tag">例：刚毕业vsAI自学3个月</p>
+      <p class="tag">例：为什么信AI能精通行业</p>
+    </div>
+  </div>
+  <div class="ok" style="margin-top:14px">
+    <b>关键判断：</b>「成果巡展」负责让人<b>收藏</b>（知识焦虑的止痛药），「AI 工作流」负责让人<b>关注并转发</b>（实用可学），「场景故事」负责人<b>信任你这个人</b>（利他、真实）。三条线在一条视频里可以叠加——先展示成果，再拆工作流，最后用故事收尾。
+  </div>
+</section>
+
+<!-- ============ S4 ============ -->
+<section id="s4">
+  <h2><span class="num">4</span>场景化脚本结构（以「给师弟做 16 周计划」为模板）</h2>
+  <p class="lead">你举的例子就是最标准的模板。每条视频都按「钩子 → 展示 → 拆解 → 引导」四段走。</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">四段式结构</h3>
+    <table>
+      <tr><th>段落</th><th>时长</th><th>画面</th><th>口播要点</th></tr>
+      <tr><td><b>钩子</b></td><td>0–3s</td><td>网站截图/真人困惑脸</td><td>「我用一个周末，给刚毕业的师弟搭了一套 16 周的餐饮法务养成计划。」</td></tr>
+      <tr><td><b>展示</b></td><td>3–25s</td><td>录屏：点开 linqiongni.top → 法务实务 → 餐饮总监，逐周/逐模块滑动</td><td>「你看，从加盟合规、合同审查到争议解决，16 周每周学什么、产出什么，全在这里。」</td></tr>
+      <tr><td><b>拆解</b></td><td>25–45s</td><td>切到 AI 对话框 / 脑图，展示 prompt→骨架→我填实战</td><td>「这套计划不是我闷头写的。AI 先帮我搭出行业知识骨架，我再把十年实战填进去——普通人加 AI，就能体系化精通一个行业。」</td></tr>
+      <tr><td><b>引导</b></td><td>45–60s</td><td>真人出镜 / 网站首页 + 关注按钮</td><td>「完整版在 linqiongni.top。关注我，下次教你用 AI 搭你自己的行业路径。」</td></tr>
+    </table>
+  </div>
+  <p class="lead">前 12 条逐字脚本（含录屏画面、发布文案）已写好，见 <code>03-脚本库/前12条逐条脚本.md</code>。建议先做第 1、2、12 条作为<b>置顶三件套</b>。</p>
+  <div class="warn">
+    <b>⚠️ 录屏可读性红线：</b>电脑上 14px 的字，手机竖屏里小到看不清。录屏前浏览器必须 <b>缩放 150%+</b>，关键页面可再用剪辑软件放大局部。否则观众划走率飙升。
+  </div>
+</section>
+
+<!-- ============ S5 ============ -->
+<section id="s5">
+  <h2><span class="num">5</span>录屏拍摄 SOP（每一步）</h2>
+  <p class="lead">本号 80% 内容是录屏。把「展示」做干净，比买昂贵设备重要。</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">拍摄前</h3>
+      <ul class="check" id="chk1">
+        <li><input type="checkbox"><span>浏览器缩放到 <b>150%+</b>（手机竖屏可读）</span></li>
+        <li><input type="checkbox"><span>关闭所有无关通知 / 微信 / 邮件弹窗</span></li>
+        <li><input type="checkbox"><span>清理浏览器书签栏、只留要展示的标签页</span></li>
+        <li><input type="checkbox"><span>录屏区域固定为 16:9 或竖屏 9:16，画面不留黑边</span></li>
+        <li><input type="checkbox"><span>真人出镜段：手机支架 + 自然光/补光灯，背景干净</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">录制中</h3>
+      <ul class="check" id="chk2">
+        <li><input type="checkbox"><span>先录「静默操作」，口播后期配，避免口误重来</span></li>
+        <li><input type="checkbox"><span>鼠标移动放慢，关键点击处停顿 1 秒</span></li>
+        <li><input type="checkbox"><span>涉及真实合同/客户：全程打码或换脱敏样例</span></li>
+        <li><input type="checkbox"><span>重要步骤用剪辑软件加「圆圈标注 + 局部放大」</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">剪辑（剪映）</h3>
+      <ul class="check" id="chk3">
+        <li><input type="checkbox"><span>前 3 秒必须有钩子（字幕大字 + 画面冲击）</span></li>
+        <li><input type="checkbox"><span>自动识别字幕 → 人工校对专业术语</span></li>
+        <li><input type="checkbox"><span>配色统一香槟金，关键处加「高亮框」</span></li>
+        <li><input type="checkbox"><span>结尾 3 秒固定「关注 + 网站」引导模板</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">封面 & 发布</h3>
+      <ul class="check" id="chk4">
+        <li><input type="checkbox"><span>封面模板统一：大字标题 + 网站截图缩略</span></li>
+        <li><input type="checkbox"><span>标题带「数字 / 结果」：如「16周，从0到餐饮法务总监」</span></li>
+        <li><input type="checkbox"><span>文案首句点价值，正文放网站链接与引导关注</span></li>
+        <li><input type="checkbox"><span>发布后 24h 记录数据（见 s7 模板）</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead">完整版见 <code>04-拍摄剪辑SOP/录屏拍摄SOP.md</code>。</p>
+</section>
+
+<!-- ============ S6 ============ -->
+<section id="s6">
+  <h2><span class="num">6</span>90 天排期（W0–W12）</h2>
+  <p class="lead">先用 3 条置顶锚定人设，再日更打标签，最后靠数据锁方向。</p>
+  <table>
+    <tr><th>阶段</th><th>周次</th><th>节奏</th><th>重点</th></tr>
+    <tr><td>搭建</td><td>W0</td><td>—</td><td>定昵称/头像/简介；拍完置顶三件套（第1、2、12条）</td></tr>
+    <tr><td>打标签</td><td>W1–2</td><td>日更（14条）</td><td>三支柱混发，找到手感与完播；每条都带网站引导</td></tr>
+    <tr><td>锁方向</td><td>W3–6</td><td>每周 5 条</td><td>看哪类收藏/涨粉高，向高数据类型倾斜但仍保多样</td></tr>
+    <tr><td>稳运营</td><td>W7–12</td><td>每周 3–4 条 + 月直播</td><td>固定栏目化；每月 1 次直播/连麦答疑，沉淀社群</td></tr>
+  </table>
+  <div class="grid3">
+    <div class="kpi"><b>800粉</b>保守目标（12周）</div>
+    <div class="kpi"><b>2000粉</b>正常目标（12周）</div>
+    <div class="kpi"><b>私信 & 网站跳转</b>真正核心指标</div>
+  </div>
+  <p class="lead">详细周计划见 <code>05-排期与复盘/12周排期表.md</code>。</p>
+</section>
+
+<!-- ============ S7 ============ -->
+<section id="s7">
+  <h2><span class="num">7</span>数据复盘：关注什么，不关注什么</h2>
+  <p class="lead">播放量是虚荣指标。这个号真正要看的是「证据链有没有被信服」。</p>
+  <div class="grid3">
+    <div class="card"><h3 style="margin-top:0">① 收藏率 <span class="tag">最重要</span></h3><p>证明「知识地图」被认可能当参考资料。低于 3% 说明展示不够系统，要更「地图感」。</p></div>
+    <div class="card"><h3 style="margin-top:0">② 主页访客 & 网站跳转</h3><p>证明「展示引流」有效。视频号主页链接 + 文案引导，盯 linqiongni.top 的来路。</p></div>
+    <div class="card"><h3 style="margin-top:0">③ 私信咨询数</h3><p>证明「利他/可信」。有人来问「怎么用 AI 搭我的行业」= 信任成立，是变现前兆。</p></div>
+  </div>
+  <div class="ok" style="margin-top:14px">每周用 <code>05-排期与复盘/数据表模板.csv</code> 记录：播放 / 完播 / 点赞 / <b>收藏</b> / 转发 / 涨粉 / <b>主页访客</b> / <b>私信数</b>。每月用 <code>对标账号拆解表.csv</code> 拆 3 个同类号，抄结构不抄内容。</div>
+</section>
+
+<!-- ============ S8 ============ -->
+<section id="s8">
+  <h2><span class="num">8</span>变现路径（重定义：不接个案咨询）</h2>
+  <p class="lead">你不是来接法律案的。变现来自「教别人用 AI 构建知识体系」这件事本身。</p>
+  <div class="grid2">
+    <div class="card"><h3 style="margin-top:0">轻量（早期即可）</h3><ul>
+      <li>AI 工作流 / prompt 模板包售卖（你的「行业地图 prompt」就是产品）</li>
+      <li>网站 / newsletter 引流 → 个人品牌溢价</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">中量（有信任后）</h3><ul>
+      <li>「用 AI 搭你的行业学习路径」陪跑 / 咨询（按次或包月）</li>
+      <li>个人知识库搭建训练营（录播 + 作业 + 社群）</li>
+    </ul></div>
+  </div>
+  <div class="card"><h3 style="margin-top:0">重量（品牌成熟）</h3><ul>
+    <li>企业内训 / 演讲：面向法务、HR、培训岗的「AI + 自主学习」方法论</li>
+    <li>把视频号运营本身做成一门「AI 原生素材生产」课（你已在做）</li>
+  </ul></div>
+  <div class="warn"><b>⚠️ 边界：</b>不以律师名义接案、不给个案法律意见、不承诺结果。所有变现围绕「方法论 / 工具 / 陪跑」，不碰「法律代理」。</div>
+</section>
+
+<!-- ============ S9 ============ -->
+<section id="s9">
+  <h2><span class="num">9</span>合规红线（法务人做号更不能跳）</h2>
+  <div class="card">
+    <ul class="check" id="chk5">
+      <li><input type="checkbox"><span><b>AI 产出要标注</b>：视频/图文注明「AI 辅助生成，经人工校验」，不冒充纯原创权威</span></li>
+      <li><input type="checkbox"><span><b>不泄露真实合同 / 客户</b>：录屏涉及文件一律打码或用脱敏样例</span></li>
+      <li><input type="checkbox"><span><b>不做个案法律意见</b>：只讲方法/框架，不针对具体人给建议</span></li>
+      <li><input type="checkbox"><span><b>不承诺结果</b>：不说「学完就能做总监」，说「这是一条可参考的路径」</span></li>
+      <li><input type="checkbox"><span><b>个人号不用雇主品牌背书</b>：简介写「港企零售集团法务主管」，不写具体公司名</span></li>
+      <li><input type="checkbox"><span><b>成果可核验</b>：展示的计划/文章都真实存在于 linqiongni.top，不夸大</span></li>
+    </ul>
+  </div>
+  <div class="card copy">
+    <button class="copybtn" data-c="本视频由 AI 辅助整理，内容仅供学习参考，不构成任何法律意见，具体事务请咨询持证专业人士。">复制</button>
+    <p><b>标准免责声明（每条涉及方法/框架的视频可挂）：</b><br>本视频由 AI 辅助整理，内容仅供学习参考，不构成任何法律意见，具体事务请咨询持证专业人士。</p>
+  </div>
+</section>
+
+<!-- ============ S10 ============ -->
+<section id="s10">
+  <h2><span class="num">10</span>GitHub 调研结论：先有资产，后有变现</h2>
+  <p class="lead">去 GitHub 调了 AI 变现类高星仓库，结论直接决定本号打法。</p>
+  <div class="ok">
+    <ul>
+      <li><b>本质一致：</b>能跑通的 AI 变现，都是「用 AI 降低专业服务的边际成本」，不是「用 AI 批量产内容赚分成」。</li>
+      <li><b>资产优先：</b><code>AI Money Maker Handbook</code>(4.4k★)、<code>awesome-ai-money-tools</code> 都指向——先有可展示的成果资产，变现是副产品。</li>
+      <li><b>排除玩法：</b>明确不碰 <code>MoneyPrinterV2</code> 这类批量搬运号。易限流，且与你的「体系化专业人设」正面冲突。</li>
+      <li><b>对你的含义：</b>你的网站就是那个「资产」。视频号不是从零产内容，而是<b>为已有资产做展示与引流</b>——这正好踩中调研里最稳的那条路。</li>
+    </ul>
+  </div>
+  <blockquote>结论：不要做「AI 内容搬运号」，要做「AI 生产力展示号」。你已经有的，比 90% 创作者想产的都值钱。</blockquote>
+</section>
+
+<div class="footer">林琼霓 · 视频号运营总纲 v2（展示 AI 成果定位） · 配色沿用 linqiongni.top 米白 + 香槟金</div>
+</div>
+
+<script>
+  // 主题切换
+  const themeBtn=document.getElementById('themeBtn');
+  themeBtn.onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';};
+  // 导航高亮 + 点击
+  const nav=document.getElementById('nav');
+  const btns=[...nav.querySelectorAll('button[data-t]')];
+  btns.forEach(b=>b.onclick=()=>{document.getElementById(b.dataset.t).scrollIntoView({behavior:'smooth'});});
+  const secs=btns.map(b=>document.getElementById(b.dataset.t));
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;btns.forEach(b=>b.classList.toggle('active',b.dataset.t===id));}});},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+  // 清单本地保存
+  function bindChecks(id){const box=document.getElementById(id);if(!box)return;const key='vc_'+id;const saved=JSON.parse(localStorage.getItem(key)||'[]');[...box.querySelectorAll('input')].forEach((c,i)=>{c.checked=!!saved[i];c.onchange=()=>{const arr=[...box.querySelectorAll('input')].map(x=>x.checked);localStorage.setItem(key,JSON.stringify(arr));};});}
+  ['chk1','chk2','chk3','chk4','chk5'].forEach(bindChecks);
+  // 复制按钮
+  document.querySelectorAll('.copybtn').forEach(btn=>{btn.onclick=()=>{navigator.clipboard.writeText(btn.dataset.c).then(()=>{const t=btn.textContent;btn.textContent='已复制';setTimeout(()=>btn.textContent=t,1200);});};});
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@
     <div class="kicker">STATION 03 · DEAL TERMS</div>
     <h1>融资交易：Term Sheet 与一张纸背后的所有权分配</h1>
     <p class="sub">Term Sheet 只有三四页，却决定了后面上百页交易文件的骨架。真正的分歧点常年集中在五个词：<strong>估值口径、清算优先、反稀释、回购（对赌）、保护性条款</strong>。这一站把它们逐个拆到骨头。 </p>
-    <div class="meta-line"><span>主线 Y3 · A 轮 3000 万</span><span>含清算瀑布图与反稀释算例</span><span>6 组原地展开详解</span><span>协议模板 12 份（可折叠）</span></div>
+    <div class="meta-line"><span>主线 Y3 · A 轮 3000 万</span><span>含清算瀑布图与反稀释算例</span><span>8 组法务对话 + 19 词白话对照表（可折叠）</span><span>6 组原地展开详解</span><span>协议模板 12 份（可折叠）</span><span>术语就地注释</span></div>
   </div>
 
   <div class="story">
@@ -24,12 +24,63 @@
     <p>郭明说："这不就是保本吗？"——是的，这就是这一站点最重要的一句话：<strong>几乎所有"像保本"的安排，在境内法院的眼里都不是你想的那么简单。</strong></p>
   </div>
 
+  <div class="callout c-tip">
+    <span class="lbl">怎么读这一页（给看不懂条款的人）</span>
+    <p>① 正文里带<b>虚线下划线 + 上标「注」</b>的词，鼠标悬停就有白话解释，不用回头翻术语表。<br>
+      ② 每个核心条款下面都有一个<b>「法务对话」折叠块</b>：老板和投资人只说大白话（他们不懂法律，也不该懂），法务先用大白话答，再翻译成条款。<b>看不懂条款时，先看对话。</b><br>
+      ③ 对话里出现的三个角色：<b>郭明</b>＝创始人/你的老板；<b>投资人</b>＝基金那边的人；<b>法务</b>＝你。三方的立场都不一样，看清楚谁在说话。</p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页「对话 / 详解 / 模板」都是<b>原地展开</b>：</span>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
+    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
+    <button type="button" data-fold="open" data-fold-kind="tpl">展开全部模板</button>
+    <button type="button" data-fold="close" data-fold-kind="tpl">收起全部模板</button>
+  </div>
+
+  <h2>零、先把黑话翻成人话</h2>
+  <p>如果你看这一页卡住了，十有八九是卡在词上，不是卡在逻辑上。下面这张表把本页会遇到的词全部翻成老板听得懂的话。</p>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对照表</span>展开：19 个黑话 → 人话 → 老板为什么要在乎</summary>
+    <div class="dlg-bd">
+      <div class="tw"><table>
+        <thead><tr><th style="width:20%">黑话</th><th style="width:40%">人话</th><th>为什么要在乎</th></tr></thead>
+        <tbody>
+          <tr><td>投前估值</td><td>他投钱<b>之前</b>，公司值多少</td><td>同一句「估值 1.2 亿」，投前和投后能差 5 个点的股份</td></tr>
+          <tr><td>投后估值</td><td>投前估值 + 他这次投的钱</td><td>决定他占多少：3000 万 ÷ 1.5 亿 = 20%</td></tr>
+          <tr><td>期权池</td><td>先切出来留给员工的股份</td><td>从投前切，稀释 100% 落在老股东头上</td></tr>
+          <tr><td>全稀释口径</td><td>把「将来会变成股份」的东西全算上</td><td>少算一项，你的股份就被多算走一块</td></tr>
+          <tr><td>优先清算权</td><td>分家产时他排在前面先搬</td><td>1 倍还是参与型，差一倍的钱</td></tr>
+          <tr><td>清算事件</td><td>不只是关门，<b>卖公司也算</b></td><td>定义写得宽，你卖个仓库都要他点头</td></tr>
+          <tr><td>参与型</td><td>先搬走本金，再回来跟大家一起分一次</td><td>double dip（吃两轮），创始人最亏</td></tr>
+          <tr><td>反稀释</td><td>我买贵了，你后来卖便宜了，得补我票</td><td>补多少，看用哪把尺子量</td></tr>
+          <tr><td>全棘轮</td><td>直接按后来最低价重算，股数翻倍</td><td>创始人的灾难条款，宁可别的让步也不给</td></tr>
+          <tr><td>加权平均（广基）</td><td>按这次发行量加权着算，温柔很多</td><td>同样情形 9.55 元 vs 全棘轮 5 元</td></tr>
+          <tr><td>Pay-to-play</td><td>你不跟投，就别享受「降价补票」</td><td>筛掉只投一轮、坐等收割的投资人</td></tr>
+          <tr><td>回购 / 对赌</td><td>上不了市，你得把我买回去</td><td>挂在谁身上，决定那天能不能真拿到钱</td></tr>
+          <tr><td>减资</td><td>公司把股本退回去的法定程序</td><td>走不完这套程序，法院<b>驳回起诉</b></td></tr>
+          <tr><td>连带保证</td><td>他还不上，我替他还</td><td>公司替创始人担保，要走股东会决议</td></tr>
+          <tr><td>保护性条款</td><td>一堆事他有一票否决</td><td>清单太长，公司日常就瘫了</td></tr>
+          <tr><td>领售权</td><td>大股东要卖，能拖着你一起卖</td><td>你可能在不想卖的价钱上被卖掉</td></tr>
+          <tr><td>随售权</td><td>你要卖，他跟着一起卖</td><td>防止大股东悄悄套现走人</td></tr>
+          <tr><td>排他期</td><td>签完多少天不能跟别人谈</td><td>60 天还是 30 天，这是实打实的筹码</td></tr>
+          <tr><td>终止契据</td><td>上市前把这些特殊权利拆掉的协议</td><td>不拆，就上不了市</td></tr>
+        </tbody>
+      </table></div>
+      <p class="pk-mini">（这张表只解决「听不懂」，不解决「怎么谈」——怎么谈在下面每一条里。）</p>
+    </div>
+  </details>
+
   <h2>一、先把估值口径拆清楚</h2>
   <div class="terms">
-    <div class="term"><div class="tw"><span class="zh">投前 / 投后估值</span><span class="en">Pre-money / Post-money</span></div><div class="def">投后 = 投前 + 本轮投资额。<b>投资后占比 = 投资额 ÷ 投后估值</b>。写 Term Sheet 时务必标明是哪一个，这是最容易混淆也最容易被动手脚的地方。</div></div>
-    <div class="term"><div class="tw"><span class="zh">投前行权 / 投前释放期权池</span><span class="en">Pre-money Pool Shuffle</span></div><div class="def">新池子的稀释<b>完全由老股东承担</b>，投资人本轮拿到的比例不受影响。<b>这是投资人起草 TS 的标准动作</b>。</div></div>
-    <div class="term"><div class="tw"><span class="zh">全稀释口径</span><span class="en">Fully Diluted</span></div><div class="def">已发行 + 已授予未行权 + 未分配池 + 可转债/权证潜在转换股数。<b>算反稀释、算摊薄用它</b>。</div></div>
-    <div class="term"><div class="tw"><span class="zh">优先股（A/B 轮）</span><span class="en">Series A / B Preferred</span></div><div class="def">境外架构下投资人拿的是<b>有优先权利的类别股份</b>，境内则是"股权 + 合同权利"的组合来实现同等效果。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="投前估值＝投钱之前公司值多少；投后估值＝投前＋本轮投资额。投资后占比＝投资额÷投后估值。写 TS 必须标明是哪一个。">投前 / 投后估值</span></span><span class="en">Pre-money / Post-money</span></div><div class="def">投后 = 投前 + 本轮投资额。<b>投资后占比 = 投资额 ÷ 投后估值</b>。写 Term Sheet 时务必标明是哪一个，这是最容易混淆也最容易被动手脚的地方。</div></div>
+    <div class="term"><div class="tw"><span class="zh">投前行权 / <span class="anno" title="投前释放（Pool Shuffle）：新期权池的稀释全部由交割前的老股东承担，投资人本轮拿到的比例不受影响。这是投资人起草 TS 的标准动作。">投前释放期权池</span></span><span class="en">Pre-money Pool Shuffle</span></div><div class="def">新池子的稀释<b>完全由老股东承担</b>，投资人本轮拿到的比例不受影响。<b>这是投资人起草 TS 的标准动作</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="全稀释（Fully Diluted）：已发行 + 已授予未行权 + 未分配池 + 可转债／权证潜在转换股数。算反稀释、算摊薄都用它。">全稀释口径</span></span><span class="en">Fully Diluted</span></div><div class="def">已发行 + 已授予未行权 + 未分配池 + 可转债/权证潜在转换股数。<b>算反稀释、算摊薄用它</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="境外架构下投资人拿的是有优先权利的类别股份；境内非上市有限公司没有法定类别股制度，只能靠章程＋股东协议＋合同权利拼出近似效果，执行力天然更弱。2023 修订《公司法》第 144 条允许股份有限公司发行类别股。">优先股（A/B 轮）</span></span><span class="en">Series A / B Preferred</span></div><div class="def">境外架构下投资人拿的是<b>有优先权利的类别股份</b>，境内则是"股权 + 合同权利"的组合来实现同等效果。</div></div>
   </div>
 
   <div class="say">
@@ -39,13 +90,24 @@
       数学很直白：投前 1.2 亿、投 3000 万，若池子从投前释放，投资人仍占 <strong>20%</strong>，而创始团队从 90% → <strong>72%</strong>；若池子从投后释放，投资人实际变成 <strong>18%</strong>，创始人 72%。差别整整两个点的股份，值几百万。</p>
   </div>
 
-  <div class="tplbar">
-    <span>本页「详解」与「模板」都是<b>原地展开</b>（点开就在这一段下面，不会跳走）：</span>
-    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
-    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
-    <button type="button" data-fold="open" data-fold-kind="tpl">展开全部模板</button>
-    <button type="button" data-fold="close" data-fold-kind="tpl">收起全部模板</button>
-  </div>
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 01 · 估值 1.2 亿、投 3000 万，我到底卖了多少股份？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">他们说得挺清楚的：投前估值 1.2 亿，投 3000 万，占 20%。我自己算了一遍，3000 万 ÷ 1.5 亿 = 20%，没问题。可以签了吧？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">算式没错，但漏了一句。TS 第 3 条要求交割前把期权池扩大到 10%——这在行话里叫<em>投前释放</em>。这四个字才是关键。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那又怎样？池子是给员工的，反正也是要给的。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">回到那张披萨。他说「我要买这张披萨的 20%」，但要求你<em>先切 10% 给未来的员工</em>。如果你在切给员工之前就把 20% 卖给他，那 10% 只能从你剩下的那块里切。他还是 20%，你从 90% 掉到 <b>72%</b>。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">差多少？值钱吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两个点。按投后 1.5 亿算，大约 <b>300 万</b>。更要紧的不是这一次，是下一次——下一轮融资再切一次池子，还是从你身上切。三轮下来你会突然发现自己已经不是大股东了。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我跟他们怎么谈？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三句话：① TS 里必须出现「投前」两个字，并且写明<em>投资款不计入投前估值</em>；② 池子的 10% 要写死按<b>全稀释口径</b>算，不是按已发行股份算——这两种口径能差一到两个点；③ 没发出去的部分，交割后 18 个月<b>冲回</b>给你们。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        估值口径 + 投资款不计入投前 + 全稀释定义 + 池子扩容由老股东承担 + 未用部分冲回 + 后续扩容须经同意 → 见下方<b>模板 A</b>。<br>
+        谈判顺序建议：<b>先钉死口径（投前/投后 + 全稀释），再谈比例</b>。口径没钉死就谈比例，等于在浮动的尺子上量布。
+      </div>
+    </div>
+  </details>
 
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：四个估值术语背后的四个坑（含期权池条款模板）</summary>
@@ -88,15 +150,39 @@
   <h2>二、条款拆解：五个真正值钱的词</h2>
 
   <h3>2.1 优先清算权（Liquidation Preference）</h3>
+  <div class="plain"><span class="pl">一句话</span>公司<b>被卖掉</b>的那天，先给他 3000 万，剩下的才轮到你和团队分 —— 这条不只是"公司关门"才用得上。</div>
   <p>公司"清算事件"发生时——不只是破产清算，<strong>被收购、出售主要资产、控制权变更全都算</strong>——谁先拿钱、拿多少、拿完还分不分。</p>
   <div class="tw"><table>
     <thead><tr><th>类型</th><th>怎么算</th><th>谁吃亏</th></tr></thead>
     <tbody>
-      <tr><td><b>非参与型 1×</b></td><td>先拿回投资额（如 1 倍），<b>然后不再参与</b>剩余分配；或选择转普通股后按比例分（取高者）</td><td>相对平衡，<b>市场主流</b></td></tr>
-      <tr><td><b>参与型 Participating</b></td><td>先拿回投资额，<b>再与普通股按比例分剩余</b>（"double dip"）</td><td>创始人极亏，应坚决拒</td></tr>
-      <tr><td><b>有上限参与型 Cap</b></td><td>先拿回 + 参与分配，但累计不超过投资额的 2–3 倍</td><td>折中方案，务必写死倍数</td></tr>
+      <tr><td><b><span class="anno" title="非参与型（Non-participating）：先拿回本金，之后不再参与剩余财产分配；或选择转普通股后按比例分，两者取高。这是市场主流。">非参与型 1×</span></b></td><td>先拿回投资额（如 1 倍），<b>然后不再参与</b>剩余分配；或选择转普通股后按比例分（取高者）</td><td>相对平衡，<b>市场主流</b></td></tr>
+      <tr><td><b><span class="anno" title="参与型（Participating）：先拿回本金，再按持股比例参与剩余分配，即 double dip 吃两轮。创始人极亏，应坚决拒。">参与型 Participating</span></b></td><td>先拿回投资额，<b>再与普通股按比例分剩余</b>（"double dip"）</td><td>创始人极亏，应坚决拒</td></tr>
+      <tr><td><b><span class="anno" title="有上限参与型（Capped Participating）：先拿回本金并参与分配，但累计不超过投资额的 2–3 倍。务必写死倍数，不要写区间。">有上限参与型 Cap</span></b></td><td>先拿回 + 参与分配，但累计不超过投资额的 2–3 倍</td><td>折中方案，务必写死倍数</td></tr>
     </tbody>
   </table></div>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 02 · 清算优先权：我们不破产也不关门，这条跟我有什么关系？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我们要上市的，又不会破产清算。这条放就放吧，不值得花力气谈。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这是整份 TS 里被误解最深的一条。这里的「清算」<b>不是关门</b>。公司被卖掉、被并购、控股权换人，全都算<em>清算事件</em>。换句话说，将来有人出钱买霓光，第一笔钱先给他。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">先给他多少？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">看倍数。1 倍（1×）就是先把 3000 万还给他，剩下的大家按股份分。但如果写的是<em>参与型</em>，他先拿走 3000 万，<b>然后再按 20% 把剩下的分一次</b>——行话叫 double dip，吃两轮。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">差多少？说个数字。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">假设卖 2 亿：<b>非参与型</b>他拿 3000 万，剩下 1.7 亿归你和团队；<b>参与型</b>他先拿 3000 万，再从 1.7 亿里分走 20%（3400 万），合计 <b>6400 万</b>。你少拿将近一倍的钱。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那这条必须改。怎么改？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三个字：<b>不参与</b>。如果他咬死要参与，退一步给<em>有上限参与</em>（Cap），写死累计不超过本金的 2 倍，别写「2–3 倍」这种区间。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">除了倍数还有别的吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">有，而且<b>比倍数更值钱</b>——「什么算清算」如果他们写「出售任何重大资产」都算，那你将来的每一次资产处置都要他点头。我的做法是三件事：① 列<em>穷尽清单</em>；② 设金额门槛（比如所涉资产占最近一期经审计总资产的 50% 以上才算）；③ 明确<em>豁免</em>（为上市做架构重组、发期权、集团内部挪一挪，都不算）。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我要当场问他们什么？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">一句话就够：<b>「假设三年后有人出 2 个亿买公司，请你当场算一遍——你能拿走多少，拿完之后还剩多少给我和团队？」</b>算得出来就摊开看；算不出来、或者顾左右而言他，这里就有鬼。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        1× + 非参与 + 清算事件穷尽清单 + 金额门槛 + 豁免清单 + 各轮同顺位 + 自动转换 → 见下方<b>模板 B</b>。<br>
+        <b>提醒：</b>投资人几乎一定会在末尾补一句「违反本条即构成回购触发事件」。清算优先权和回购这两条是<b>用同一根绳子拴着的</b>，谈一条的时候要知道另一条会被拉紧。
+      </div>
+    </div>
+  </details>
 
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：清算优先权的六个坑 + 完整条款模板</summary>
@@ -154,9 +240,10 @@
   </figure>
 
   <h3>2.2 反稀释（Anti-dilution）</h3>
+  <div class="plain"><span class="pl">一句话</span>将来公司<b>降价融资</b>时，他有权要求"补票"，补多少看用哪把尺子 —— 最狠的那把尺子能让他的股份直接翻倍。</div>
   <div class="say">
     <span class="lbl">打个比方 · 全棘轮</span>
-    <p class="analogy">你在 Y3 用每股 10 元买了票。Y5 公司缺钱，只能按每股 5 元卖票。<strong>全棘轮</strong>说："那我当初那批票也按 5 元重算"——于是你的股数直接翻倍，缺口全部由创始人和普通股股东来填。<strong>加权平均</strong>说："要看这次一共发行了多少新票，按比例调整"，温柔很多。<br>记住：<strong>全棘轮是创始人的灾难条款</strong>，宁可在其他条款让步也不要轻易给。</p>
+    <p class="analogy">你在 Y3 用每股 10 元买了票。Y5 公司缺钱，只能按每股 5 元卖票。<strong><span class="anno" title="全棘轮（Full Ratchet）：不加权，直接按后来最低价重算投资人持股，股数近乎翻倍。创始人的灾难条款。">全棘轮</span></strong>说："那我当初那批票也按 5 元重算"——于是你的股数直接翻倍，缺口全部由创始人和普通股股东来填。<strong><span class="anno" title="加权平均（Weighted Average）：按新发行数量加权调整转换价，比全棘轮温和。广基把期权池、权证、可转债都算进分母，对创始人更有利。">加权平均</span></strong>说："要看这次一共发行了多少新票，按比例调整"，温柔很多。<br>记住：<strong>全棘轮是创始人的灾难条款</strong>，宁可在其他条款让步也不要轻易给。</p>
   </div>
   <div class="clause">
     <div class="ch">算例 · 加权平均（广基）</div>
@@ -165,6 +252,27 @@
       调整后价格 = 10 ×（10,000,000 + 500,000）÷（10,000,000 + 1,000,000）= <b>9.55 元/股</b>。<br>
       对照：同样的情形用<b>全棘轮</b>，价格直接降到 5 元/股，投资人持股几乎翻倍。</span></div>
   </div>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 03 · 反稀释：公司降价融资，凭什么要补他股份？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">反稀释是什么意思？我们下一轮估值只会更高，不会有事的吧。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">它是个安全垫：他 10 块一股买的，如果将来公司缺钱只能按 5 块卖，他就有权说「那我当初那批也按 5 块重算」，股数直接翻倍——多出来的股份<b>从你身上出</b>。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那不是逼我不能降价融资吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">比那更难受的地方在于：真走到降价那一步，你正在求人救命，这时候他多拿的每一股都是你的。所以这条要卡在<em>尺子</em>上：<b>加权平均</b>还是<b>全棘轮</b>。全棘轮＝直接按 5 块重算，股数近乎翻倍；加权平均＝看这次一共发了多少新股，按发行量摊着算。同样情形，加权平均算出 9.55 元，全棘轮是 5 元。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">还有个什么「基」的，广基窄基，那是啥？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">分母怎么取。<b>广基</b>把期权池、权证、可转债全算进分母，分母大、调得少，对我们好；<b>窄基</b>只算已发行的股份，分母小、调得多，对我们坏。写的时候要把「加权平均（<b>广基</b>）」四个字写全，只写「加权平均」等于把选择权送给他。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">有没有能反制他们的？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">有，<em>pay-to-play</em>：他不跟投下一轮，就别想享受降价补票，保护自动降级甚至强制转成普通股。这一条能把「只投一轮、坐等收割」的人筛掉。而且它是我们手里最好用的交换物——<b>用别的让步把它换回来很划算</b>。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">这条一直到什么时候？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">通常到<em>合格上市</em>为止，随优先股自动转换而终止，<b>千万别写成「永久」</b>。另外可以加一个地板价，避免极端情形下稀释失控。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        加权平均（广基）+ 例外清单（发期权、并购股份对价、拆股分红等不触发）+ pay-to-play + 上市即终止 → 见下方<b>模板 C</b>。<br>
+        <b>例外清单比算法更容易被漏。</b>没有例外清单，公司每发一次期权都会被调一次，等于给经营上了一道锁。
+      </div>
+    </div>
+  </details>
 
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：反稀释的完整算例、例外清单与条款模板</summary>
@@ -191,7 +299,7 @@
         <li>合格上市时的新股发行（同时触发优先股自动转换为普通股）。</li>
       </ul>
 
-      <h4>创始人最好的武器：Pay-to-play</h4>
+      <h4>创始人最好的武器：<span class="anno" title="Pay-to-play：投资人若未按持股比例足额参与后续融资，其反稀释保护自动降级（全棘轮降为加权平均）甚至强制转为普通股。用来筛掉「只投一轮、坐等收割」的投资人。">Pay-to-play</span></h4>
       <p class="pk-mini">大白话：你不跟投，就别享受"降价补票"。——若投资人在后续融资中<b>未按其持股比例足额参与</b>，则其反稀释权利降级（全棘轮降为加权平均，甚至优先股强制转为普通股）。这一条能把"只投一轮、坐等收割"的投资人筛出去，也是谈判中用其他让步换来的好东西。</p>
       <ul>
         <li><b>期限</b>：反稀释通常持续至合格上市（上市时随优先股自动转换而终止），不要写成"永久"。</li>
@@ -212,14 +320,43 @@
   </details>
 
   <h3>2.3 回购 / 对赌（VAM）</h3>
-  <p>这是境内融资里法律技术含量最高的一块，核心问题是：<strong>这个回购义务挂在谁身上、法院认不认</strong>。</p>
+  <div class="plain"><span class="pl">一句话</span>"上不了市就还钱加利息"看着像保本，其实<b>挂在谁身上</b>决定那天能不能真拿到钱 —— 挂公司身上，走不完减资程序，法院<b>驳回起诉</b>。</div>
+  <p>这是境内融资里法律技术含量最高的一块，核心问题是：<strong>这个<span class="anno" title="回购／对赌（VAM）：约定未达成目标（通常是未按期上市）时，由约定主体按本金加利息买回投资人股权。挂在创始人身上执行力最强；挂在目标公司身上须先完成减资程序，否则起诉会被驳回。">回购义务</span>挂在谁身上、法院认不认</strong>。</p>
   <div class="callout c-law">
     <span class="lbl">法源 · 九民纪要对「对赌」的态度</span>
     <p>《全国法院民商事审判工作会议纪要》（九民纪要）第 5 条关于"与目标公司对赌"的裁判口径，大意是：<br>
       ① 投资方与目标公司股东或者实际控制人订立的"对赌协议"，如无法定无效事由，一般认定有效；<br>
-      ② 投资方与目标公司订立的"对赌协议"，须审查是否存在《公司法》关于"股东不得抽逃出资"及利润分配强制性规定的违反，<strong>目标公司未完成减资程序的，人民法院应当驳回起诉</strong>；目标公司无可分配利润的，亦同。<br>
+      ② 投资方与目标公司订立的"对赌协议"，须审查是否存在《公司法》关于"股东不得抽逃出资"及利润分配强制性规定的违反，<strong>目标公司未完成<span class="anno" title="减资程序（《公司法》2023 修订第 224 条）：编制资产负债表及财产清单 → 决议之日起 10 日内通知债权人 → 30 日内公告 → 债权人 30 日／45 日内可要求清偿或提供担保。走不完这套程序，请求公司回购的起诉会被驳回。">减资程序</span>的，人民法院应当驳回起诉</strong>；目标公司无可分配利润的，亦同。<br>
       <small>——据此，把回购义务放在创始人/实际控制人身上，执行力远强于放在目标公司身上。这是谈判中可以直接拿来当理由的知识点。</small></p>
   </div>
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 04 · 回购："上不了市就还钱加 8%"——这不就是保本吗？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">投资人<br>基金</span><p class="utt">我们这条很简单：2029 年底之前没上市，公司或者郭总按本金加年化 8% 把我们买回去。这就是个保本安排，大家都懂，没什么好谈的。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">8% 也不算高，我觉得可以接受。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">等一下。我先问三个问题：<b>① 到时候这个钱找谁要？② 如果找公司要，法院认不认？③ 利息是单利还是复利？</b>这三个问题的答案差得非常远。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">找谁要不是一样的吗？公司账上有钱啊。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">完全不一样。<b>找您个人要</b>：是个人债务，您名下的房子、车子、股权都能执行，他拿到判决就能申请强制执行。<b>找公司要</b>：《九民纪要》第 5 条说得很明白——请求公司回购股权的，必须先完成<em>减资程序</em>：编制资产负债表和财产清单、决议之日起 10 日内通知债权人、30 日内公告，债权人还有权要求先还钱或提供担保。这套走完要几个月，<b>走不完，法院驳回起诉</b>——不是判输，是根本不进入实体审理。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那他这钱不就打水漂了？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">正是。所以《九民纪要》之后要记住一句话：<b>「有条款」和「拿得到钱」是两件事</b>。他赢在合同效力上，难在实际履行上。这也是为什么投资人一定会坚持让您个人做主债务人、让公司做担保人。</p></div>
+      <div class="dlg-line inv"><span class="who">投资人<br>基金</span><p class="utt">那就让公司提供连带责任保证，这个总没问题吧。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">可以，但<b>必须走对程序</b>：公司为股东提供担保，要开股东会决议，而且郭总作为被担保的股东<b>必须回避表决</b>。这一步漏掉，担保的效力可能被整个否定——这是实务里最常见、也最致命的一处瑕疵。我会把决议和章程复印件留档。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">8% 到底贵不贵？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">先写死<b>单利</b>再说贵不贵。五年下来：单利 40%，复利 46.9%。另外三件事要一并谈：<b>扣掉</b>已经分给他的利润和他已经拿到的任何补偿；设一个<b>总额上限</b>（比如本金的 130%）；把「已分配利润」的定义写清楚，不然到时候为这几个字能再吵半年。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">还有别的吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">有一件是您家里的事——<b>郭太要签字</b>。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我老婆签什么字？这跟她有什么关系？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">您持有的股权属于夫妻共同财产。真到执行那天，她一句「我不知情、不同意处分」，能拖上一两年。交割时同步拿一份<em>配偶同意函</em>（确认知悉、同意配合、承诺不提异议），是标准动作，不是不信任，是给将来省时间。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那如果真上不了市呢？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">所以还要谈<b>触发事件的范围</b>：只写「未按期上市」太窄还是太宽，要看我们有多大把握。我的建议是把「创始人重大违约、离职、丧失行为能力」「核心资产被查封」「主营业务重大不利变化」分开写，别一股脑塞进一条，也别把「任何违反交易文件」都做成回购触发——那等于给对方一个随时能按的按钮。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        <b>创始人作主债务人 + 公司连带保证（股东会决议、关联股东回避）+ 股权质押 + 减资配合义务与违约金 + 单利与总额上限 + 配偶同意函 + 上市前清理</b> → 见下方<b>模板 D / 条款 F</b>。<br>
+        法条落点：减资程序见《公司法》（2023 修订）<b>第 224 条</b>（通知与公告、债权人可要求清偿或担保）；对外担保决议见<b>第 15 条</b>；违约金酌减见《民法典》<b>第 585 条</b>；与目标公司对赌的裁判口径见《九民纪要》<b>第 5 条</b>。<b>九民纪要原文引用的是修订前条号（35 / 142 / 166），使用时须换算，正式文件引用前请复核现行官方文本。</b>
+      </div>
+    </div>
+  </details>
+
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：对赌条款的全套设计（九民纪要之后，怎么写才真拿得到钱）</summary>
     <div class="pk-bd">
@@ -270,6 +407,7 @@
   </details>
 
   <h3>2.4 保护性条款 / 投资人否决权</h3>
+  <div class="plain"><span class="pl">一句话</span>清单合理的部分可以让（卖公司、改章程），但<b>必须设金额门槛和预算豁免</b> —— 否则不是"融资"，是请了个天天签字的婆婆。</div>
   <p>境外架构下写进章程（作为类别股权利），境内则通过股东协议 + 章程里的一票否决条款实现。<strong>关键在于：章程里写的否决事项，能不能真的对抗工商登记和善意第三人？</strong>——所以境内通常还需要加上违约救济（违约金、回购、知情赔偿）。</p>
   <div class="tw"><table>
     <thead><tr><th>常见投资人否决清单</th><th>创始人应该争取的边界</th></tr></thead>
@@ -282,6 +420,25 @@
       <tr><td>聘任/更换审计师、改变会计政策</td><td>通常应让</td></tr>
     </tbody>
   </table></div>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 05 · 否决权：以后我干什么都得他批准？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">他们给了一长串否决清单。是不是以后公司什么事都得他点头？那我还怎么干活。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">看清单多长。<b>可以让的</b>：改章程、增资减资、合并分立解散、卖公司、换审计师、改会计政策——这些本来就是大事。<b>一定要删的</b>：买台设备、换个供应商、招个高管也要他批——那公司就瘫了。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我要是绕过去先干了呢？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这就是境内最尴尬的地方。写进<b>章程</b>，工商登记和第三人层面不一定挡得住；只写进<b>股东协议</b>，他只能事后找你赔钱。所以他一定会配一句「违反本条即构成回购触发事件」。您要明白：<b>否决权不是一张清单，它是拴在回购那根绳子上的。</b></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那怎么谈？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两样东西：<b>金额门槛</b>（比如单笔 500 万以上的担保、借款、资产处置才需要批）和<b>年度预算豁免</b>（预算内的支出，单笔不超过该科目的 15% 免批）。再加一句：为做股权激励、为上市做架构重组，都不需要他批——这两件事将来一定会发生，先免掉省很多事。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">对我们上市有影响吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">有，两个方向。① 否决事项过多过宽，可能影响<b>控股股东/实际控制人</b>的认定，进而牵连同业竞争、关联交易和锁定期安排。② 「随时查账、派观察员」这类深度信息权，递表前<b>必须收缩掉</b>，否则和内幕信息管理制度直接冲突——保荐人一定会要求清理。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        清单 + 表决门槛 + 金额门槛 + 年度预算豁免 + 违约救济（纠正/赔偿/触发回购）+ 上市衔接自动终止 → 见下方<b>模板 E</b>。<br>
+        落地要<b>三层都写</b>：章程（对外）+ 股东协议（违约要赔）+ 董事会议事规则（日常真正卡住你的那只手）。缺一层就漏一层。
+      </div>
+    </div>
+  </details>
 
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：否决权在境内怎么落地才不被架空（三层写法 + 模板）</summary>
@@ -309,10 +466,31 @@
   </details>
 
   <h3>2.5 Term Sheet 里真正有约束力的部分</h3>
+  <div class="plain"><span class="pl">一句话</span>TS 大半不作数，但<b>保密、排他期、费用、管辖</b>这四条签了就生效 —— 真正会咬人的是排他期。</div>
   <div class="callout c-tip">
     <span class="lbl">实务</span>
     <p>TS 首部通常会写 "除第 X、Y、Z 条外，本清单不具法律约束力"。真正有约束力的永远是这四类：<strong>①保密义务 ②排他期 / 分手费 ③中介费用与开支 ④适用法律与争议解决</strong>。排他期一旦签了，公司就不能同时跟别家谈，创业者常在这里吃亏：<strong>把排他期压到 30–45 天，并约定投资人超期未出 TS 的自动失效。</strong></p>
   </div>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 06 · Term Sheet 不是"没有法律效力"吗？那我先签着？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">TS 开头写了一句「除第 X、Y、Z 条外，本清单不具法律约束力」。那我先签着，反正不作数，慢慢看条款。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">大部分不作数，但<b>有四条是硬的</b>：保密义务、排他期、费用与开支、适用法律与争议解决。这四条签了就生效，违反是要赔钱的。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">哪一条最要命？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt"><em>排他期</em>（No-shop）。他给你 60 天，这 60 天里您不能跟任何别的基金谈。对创业者来说，时间是最贵的成本——万一他 60 天后来一句「我们投委会没过」，您这半年就白费了，而且错过窗口期。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那怎么改？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三条：① 压到 <b>30–45 天</b>；② 写「<b>期满自动终止</b>，除非双方另行书面延长」——千万别写「自动续期」或留默认续期口子；③ 再加一句「投资人未在排他期内出具正式 TS 或完成内部决策的，排他<b>自动解除</b>」。另外，把您现在已经在接触的几家基金<b>列成清单排除掉</b>，别把自己正在谈的路堵死。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">费用呢？尽调不是要花不少钱吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">设个<b>上限</b>（比如投资额的 1%，或者一个固定数），并且写清楚「无论是否交割如何承担」。反过来，他这边无缘无故不交割的，我们可以争取一笔<em>反向分手费</em>——虽然难谈，但写上就是筹码。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">还有别的坑吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两个高频坑：① 交割先决条件里写了「尽职调查满意」这种<b>主观条件</b>——等于给他留了一个无条件退出口，必须改成客观清单（重大不利变化的定义、诉讼与税务敞口的金额门槛）；② 忘了约定 TS 与正式交易文件的<b>冲突顺序</b>，后期解释起来各执一词。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        排他期限 + 自动终止 + 已接触对象豁免清单 + 投资人超期未决策自动解除 + 费用上限与承担 + 违约/恶意磋商赔偿 → 见下方<b>模板 F</b>。
+      </div>
+    </div>
+  </details>
 
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：TS 里那四条真正有约束力的，逐条怎么起草（含模板）</summary>
@@ -321,7 +499,7 @@
         <thead><tr><th style="width:20%">条款</th><th>公司一侧要盯的点</th></tr></thead>
         <tbody>
           <tr><td><b>保密</b></td><td>期限 2–3 年；明确投资人可向其 LP、顾问、关联基金披露，但应<b>要求其回传同等保密义务</b>；例外情形（依法披露、已公开信息）写清楚</td></tr>
-          <tr><td><b>排他期 No-shop</b></td><td>压到 <b>30–45 天</b>；约定<b>到期自动失效</b>且不得默认续期；把<b>已在洽谈的对象列明并排除</b>；投资人超期未出具正式 TS 或未完成内部立项的，排他自动解除</td></tr>
+          <tr><td><b><span class="anno" title="排他期（No-shop）：签了之后一段时间内公司不得与第三方洽谈同类交易。建议压到 30–45 天，并约定期满自动终止、投资人超期未出正式 TS 则自动解除。">排他期 No-shop</span></b></td><td>压到 <b>30–45 天</b>；约定<b>到期自动失效</b>且不得默认续期；把<b>已在洽谈的对象列明并排除</b>；投资人超期未出具正式 TS 或未完成内部立项的，排他自动解除</td></tr>
           <tr><td><b>费用与开支</b></td><td>设<b>上限</b>（如投资额的 1% 或固定金额）；明确"无论交割与否均由【各自承担 / 公司承担但不超过上限】"；投资人无故不交割的，是否支付<b>反向分手费</b>（reverse break-up fee）</td></tr>
           <tr><td><b>适用法与争议解决</b></td><td>境内主体一般约定中国法 + 境内法院/仲裁；红筹架构多为香港法 + HKIAC 仲裁；注意仲裁的保密性与执行便利度差异</td></tr>
         </tbody>
@@ -361,6 +539,23 @@
     <button type="button" data-fold="open" data-fold-kind="tpl" data-fold-scope="tpllib">全部展开</button>
     <button type="button" data-fold="close" data-fold-kind="tpl" data-fold-scope="tpllib">全部收起</button>
   </div>
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 08 · 领售权和随售权：一个拖着我卖，一个跟着我卖</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">领售权、随售权，名字长得差不多，到底哪个对我不利？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">记住方向就永远不会搞混：<b>领售权（Drag-along）是别人卖的时候能拖着你一起卖</b>——你是<b>被拖</b>的那个，所以要卡；<b>随售权（Tag-along）是你卖的时候他跟着一起卖</b>——他是<b>跟着</b>的那个，对你的实际影响是「你卖的时候不能只卖你一个人的」。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">领售权怎么卡？我最怕哪天被人在一个我不想卖的价钱上卖掉。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">四道防线：① <b>门槛</b>不低于合计三分之二，而且投资人自己要带上一半以上的本轮持股（不能他一个人拿 5% 就拖着你卖）；② <b>排除关联方收购</b>——不能让他把公司卖给自己的关联方；③ 设<b>最低估值地板</b>，低于某个数不能拖；④ 别在拖售交易里额外背上<b>个人的陈述保证赔偿责任</b>，最多按份，绝不连带。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">随售权呢？我什么时候会被它卡住？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">将来您想转让一点老股改善生活的时候。所以要写<em>豁免清单</em>：为做股权激励、转到持股平台、家族安排（但要受同等限制约束）、以及经他同意的转让，都不触发随售。另外两件事：① 受让方要求您做陈述保证时，随售方承担<b>按份</b>责任而不是连带责任；② 随售和拖售的<b>通知期要错开写清楚</b>，免得同一笔交易里两套期限打架，最后谁都说自己合规。</p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        领售：阈值 + 关联方排除 + 估值地板 + 按份责任 → 见<b>条款 H</b>。随售：通知内容 + 逾期视为放弃 + 按比例分摊 + 豁免清单 + 按份责任 → 见<b>条款 I</b>。<br>
+        顺带一提<b>最惠国（MFN，条款 G）</b>：如果给了，务必限定「更优惠」只指清算倍数与反稀释两项、只适用后轮领投方、期限压到 6–12 个月，并且要求他援引优惠时<b>一并接受后轮的义务</b>——只拿好处不担义务的援引，是下一轮纠纷的种子。
+      </div>
+    </div>
+  </details>
+
   <div id="tpllib">
 
     <details class="tpl">
@@ -418,6 +613,25 @@
 
   </div>
 
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 07 · 上市前为什么非要把这些权利拆掉？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">投资人<br>基金</span><p class="utt">我们这些回购、反稀释、优先清算，上市的时候是不是自动就没了？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不会自动没，必须专门签一份《终止契据》主动终止。联交所对上市前投资的特殊经济权利有明确要求：通常须于上市时或之前终止，并在招股书里披露。（具体要求请以现行有效的上市规则与指引材料核对，见本页法源索引。）</p></div>
+      <div class="dlg-line inv"><span class="who">投资人<br>基金</span><p class="utt">那为什么要现在签？等你们递表之后、被问到了再处理不行吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两个原因。<b>第一是会计。</b>带回购、可变对价特征的优先股，在报表上可能被列为<b>金融负债</b>而不是权益，它的公允价值变动会直接冲减净利润，而净利润是上市财务测试的一项。要完成负债/权益重分类，得留足一个完整会计年度。<b>第二是筹码。</b>现在签，你们还能要一个<em>复效条款</em>——上市申请被驳回或撤回，权利自动恢复，这对你们是最好的保护。拖到问询阶段再谈，时间表全压在你们手里，就是我们被动了。</p></div>
+      <div class="dlg-line inv"><span class="who">投资人<br>基金</span><p class="utt">复效条款我们肯定要。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">可以给。但请把触发范围写窄：只写「<b>申请被驳回</b>」或「<b>由公司撤回</b>」两种情形。<b>不要写「未完成上市」</b>——那等于在我们的时间表上又埋一颗雷，等于你们手里始终握着一个按钮。</p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我要做什么？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三件：<b>① 现在就把历轮融资文件的特殊权利清单拉出来</b>（包括治理性的：否决权、信息权、董事委派权，不只是经济性的）；② 同步做<b>章程修订</b>完成优先股自动转换——只终止权利不改章程，招股书和法律意见书会对不上，审核必被问；③ 招股书「历史沿革与公司架构」里<b>完整披露</b>原条款内容与终止时点，含糊其辞比不写更糟。</p></div>
+      <div class="dlg-note">
+        <span class="nt">倒排时间表（最低安全线）</span>
+        T-12 月 拉出历轮特殊权利清单 → T-10 月 与会计师确认负债/权益分类及影响 → T-9 月 与投资人谈终止范围与复效条件 → T-7 月 签署终止契据 + 章程修订 → T-6 月 完成董事会/股东会程序与工商变更 → T-5 月 招股书披露定稿 → T-4 月 递表。<br>
+        翻译成条款 → 见下方<b>条款 L · 终止契据</b>。
+      </div>
+    </div>
+  </details>
+
   <details class="peek">
     <summary><span class="pk-badge k">常见坑</span>展开：上市前特殊权利清理的六个坑（附递表前时间表）</summary>
     <div class="pk-bd">
@@ -467,6 +681,8 @@
     <li>保护性条款清单是否过长？有没有日常经营的金额豁免额度？</li>
     <li>排他期多久？有没有未按期交割的自动失效机制？</li>
     <li>TS 中是否有明确"除保密、排他、费用、管辖外不具约束力"的表述？</li>
+    <li>回购若由公司承担：减资配合义务与违约金写了吗？公司对外担保的<b>股东会决议</b>做了吗（关联股东回避表决）？</li>
+    <li><b>自测</b>：你能不能用大白话，向一个不懂法的老板讲清楚「清算优先权」和「回购」分别是什么？讲不清楚，说明你自己还没吃透，谈判桌上一定会被牵着走。</li>
     <li><b>最重要的一条</b>：拟上市的情况下，这些特殊权利清理的时间表是否在递表前 6–12 个月启动？</li>
   </ul>
 

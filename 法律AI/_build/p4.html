@@ -1,0 +1,292 @@
+
+<!-- ========== S8 ========== -->
+<section id="s8">
+  <h2><span class="num">08</span>24 周落地路线图</h2>
+  <p>四个阶段，24 周（约 6 个月）跑出可用系统。每个阶段都有<b>可验收的交付物</b>——没有交付物的周次就是没有进展。</p>
+
+  <h3>8.1 阶段总览</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:8%" class="tc">阶段</th><th style="width:10%" class="tc">周次</th><th style="width:16%">目标</th>
+        <th style="width:34%">关键交付物</th><th style="width:16%" class="tc">验收门槛</th><th class="tc">投入</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tc"><span class="tag t-g">S0</span><br>立项</td><td class="tc">W1–W2</td>
+          <td><b>把「要不要做」变成「怎么做」</b></td>
+          <td>法务工单统计报告 · 场景优先级决议 · 合规书面结论（第 07 章）· 立项与预算批复 · 项目组名单</td>
+          <td class="tc">预算批复<br>红线规则签署</td>
+          <td class="tc">法务 60%<br>IT 20%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p0">S1</span><br>试点</td><td class="tc">W3–W8</td>
+          <td><b>法规问答跑通，建立信任</b></td>
+          <td>服务器与 RAGFlow 部署 · L1 内地法规入库（P0 的 8 项）· 双法域问答助手上线 · 黄金测试集 v1（50 题）· 第一批 FAQ 沉淀</td>
+          <td class="tc">引用准确率 ≥90%<br>法务周活 ≥60%</td>
+          <td class="tc">法务 50%<br>IT 50%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p1">S2</span><br>打透</td><td class="tc">W9–W16</td>
+          <td><b>租约审查上线，产出真实价值</b></td>
+          <td>租赁谈判底线清单 · 50 份历史租约脱敏入库 · 租约审查工作流（Dify）上线 · 企微入口 · 权限矩阵落地 · 香港法例入库</td>
+          <td class="tc">风险点召回率 ≥85%<br>审查耗时降 40%</td>
+          <td class="tc">法务 60%<br>IT 40%</td>
+        </tr>
+        <tr>
+          <td class="tc"><span class="tag t-p2">S3</span><br>扩张</td><td class="tc">W17–W24</td>
+          <td><b>扩场景 + 建度量 + 常态化</b></td>
+          <td>商品合规预检 · 投诉处置 · 劳动争议三个场景上线 · 自动化回归评测流水线 · 运营手册与责任人 · 第二批预算提案</td>
+          <td class="tc">月节省 ≥200 工时<br>引用准确率 ≥95%</td>
+          <td class="tc">法务 40%<br>IT 40%<br>业务 20%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>8.2 逐周明细</h3>
+
+  <h4>阶段 S0 · 立项（W1–W2）</h4>
+  <ul class="tl">
+    <li><span class="wk">W1</span><span class="dot solid"></span>
+      <h5>拉数据：法务工单全年统计</h5>
+      <p>从 OA / 邮箱 / 企微里导出过去 12 个月全部法务工单，按业务域分类计数，产出真实的工作量分布表（替换第 01 章的估算值）。</p>
+      <p class="dl"><b>交付：</b>《法务工作量分布报告》——这是整个项目的地基，也是说服老板最有力的材料</p>
+    </li>
+    <li><span class="wk">W1</span><span class="dot"></span>
+      <h5>组团队 + 申请测试环境</h5>
+      <p>项目组：法务总监（发起人）+ 法务专员 1–2 名（业务负责人、语料负责人）+ IT 1 名（部署运维）。申请一台测试服务器（建议 16 核 / 32–64GB 内存起步，有 GPU 更好）。</p>
+      <p class="dl"><b>交付：</b>项目组名单与职责、测试环境到位</p>
+    </li>
+    <li><span class="wk">W2</span><span class="dot"></span>
+      <h5>合规书面结论</h5>
+      <p>按第 07 章逐项形成书面判断：是否构成生成式 AI 服务提供、数据出境方案、个人信息处理合法性基础、License 核查结论（尤其 Dify）。</p>
+      <p class="dl"><b>交付：</b>《法律 AI 项目合规意见》（留档，这是法务部的护身符）</p>
+    </li>
+    <li><span class="wk">W2</span><span class="dot"></span>
+      <h5>立项报批</h5>
+      <p>一页纸立项：问题（工单数据）+ 方案（场景优先级）+ 投入（第 09 章预算）+ 回报（第 02 章成功标准）+ 风险（第 11 章）。</p>
+      <p class="dl"><b>交付：</b>预算批复、六条红线规则签署确认</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S1 · 试点（W3–W8）</h4>
+  <ul class="tl">
+    <li><span class="wk">W3</span><span class="dot solid"></span>
+      <h5>部署 RAGFlow（Docker Compose）</h5>
+      <p>IT 按官方文档起服务，接本地 Ollama / vLLM 与 bge-m3。法务同步准备 P0 法规文本。</p>
+      <p class="dl"><b>交付：</b>系统可访问，能上传文档并问答</p>
+    </li>
+    <li><span class="wk">W3–W4</span><span class="dot"></span>
+      <h5>L1 内地法规入库（先做 P0 的 8 项）</h5>
+      <p>民法典（合同编/侵权编）、消法 + 实施条例、产品质量法、广告法、劳动合同法、GB 11887、GB/T 16552、GB 28480。<b>每条带生效日期与来源 URL</b>，按「条」分块。</p>
+      <p class="dl"><b>交付：</b>L1 核心法规库可用；抽样 30 条检索验证通过</p>
+    </li>
+    <li><span class="wk">W4</span><span class="dot"></span>
+      <h5>写第一批 prompt + 六条红线落地</h5>
+      <p>把第 02 章六条红线写进 system prompt：无引用拒答、禁止终局判断、强制免责尾注。输出格式用 JSON Schema 约束。</p>
+      <p class="dl"><b>交付：</b>prompt v1 + 护栏规则文档</p>
+    </li>
+    <li><span class="wk">W5</span><span class="dot"></span>
+      <h5>出黄金测试集 v1（50 题）</h5>
+      <p>法务部自己出题，覆盖 P0 场景的真实高频问题，每题标注<b>标准答案 + 应命中的正确依据</b>。这是未来所有回归测试的基准，不能外包、不能让 AI 出题。</p>
+      <p class="dl"><b>交付：</b>Golden Set v1（50 题，含标准答案与预期引用）</p>
+    </li>
+    <li><span class="wk">W6</span><span class="dot"></span>
+      <h5>内部小范围试用 + 首轮调优</h5>
+      <p>法务部 3–5 人先用，记录每一个答错 / 答得不好的案例，分类归因（检索没召回？分块错了？prompt 问题？模型问题？）。</p>
+      <p class="dl"><b>交付：</b>问题清单 + 调优记录（<b>这份归因表比任何文档都值钱</b>）</p>
+    </li>
+    <li><span class="wk">W7</span><span class="dot"></span>
+      <h5>接入企业微信 + 开放给 2 个试点区域</h5>
+      <p>选 2 个配合度高的区域做试点，门店店长通过企微提问。<b>关键是入口要顺手</b>——让店长另外登录一个网站，等于没人用。</p>
+      <p class="dl"><b>交付：</b>企微机器人可用；试点区域培训完成</p>
+    </li>
+    <li><span class="wk">W8</span><span class="dot solid"></span>
+      <h5>S1 验收 + 阶段汇报</h5>
+      <p>跑黄金集，出引用准确率报告；统计试点区域使用数据；向管理层汇报，争取 S2 资源。</p>
+      <p class="dl"><b>门槛：</b>引用准确率 ≥90%，法务周活 ≥60%</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S2 · 打透（W9–W16）</h4>
+  <ul class="tl">
+    <li><span class="wk">W9–W10</span><span class="dot solid"></span>
+      <h5>写《租赁谈判底线清单》</h5>
+      <p>法务部闭门产出：10 类核心条款 × 每类的可接受区间 / 谈判目标 / 红线。<b>这件事不需要任何技术，是纯法务资产，且即使项目中断也不亏。</b></p>
+      <p class="dl"><b>交付：</b>《门店租赁谈判底线清单 v1》（密级：内部）</p>
+    </li>
+    <li><span class="wk">W10–W11</span><span class="dot"></span>
+      <h5>50 份历史租约脱敏入库</h5>
+      <p>选 50 份有代表性的（不同业态、不同区域、不同年份）。脱敏：房东主体、租金金额、抽成比例。按条款切分，带元数据。</p>
+      <p class="dl"><b>交付：</b>L3 租约库（脱敏）；脱敏规则文档</p>
+    </li>
+    <li><span class="wk">W12–W13</span><span class="dot"></span>
+      <h5>Dify 搭建租约审查工作流</h5>
+      <p>流程：上传 PDF → 条款切分 → 逐条比对底线清单 → 风险分级（红/黄/绿）→ 生成修订建议 → <b>人工复核节点</b>。复核节点必须是流程里的硬卡点，不能跳过。</p>
+      <p class="dl"><b>交付：</b>租约审查工作流可用；产出模板三件套</p>
+    </li>
+    <li><span class="wk">W14</span><span class="dot"></span>
+      <h5>20 份回测</h5>
+      <p>拿 20 份法务已审过的租约做回测：AI 找出的风险点 vs 法务当年人工标注的风险点，算召回率与误报率。</p>
+      <p class="dl"><b>交付：</b>回测报告；<b>门槛：召回率 ≥85%</b></p>
+    </li>
+    <li><span class="wk">W15</span><span class="dot"></span>
+      <h5>权限矩阵落地 + 审计日志</h5>
+      <p>按 4.2 表配置角色与语料可见范围；开启全量查询审计；运维账号访问留痕。</p>
+      <p class="dl"><b>交付：</b>权限配置文档 + 审计日志可查</p>
+    </li>
+    <li><span class="wk">W15–W16</span><span class="dot"></span>
+      <h5>香港法例入库 + 双法域切换</h5>
+      <p>从 data.gov.hk 开放数据获取香港法例现行版，建香港法域语料库；prompt 支持按法域切换输出语种与依据。</p>
+      <p class="dl"><b>交付：</b>双法域问答可用</p>
+    </li>
+    <li><span class="wk">W16</span><span class="dot solid"></span>
+      <h5>S2 验收</h5>
+      <p class="dl"><b>门槛：</b>风险点召回率 ≥85%；单份租约审查耗时下降 40%</p>
+    </li>
+  </ul>
+
+  <h4>阶段 S3 · 扩张（W17–W24）</h4>
+  <ul class="tl">
+    <li><span class="wk">W17–W18</span><span class="dot"></span><h5>商品与营销合规预检</h5>
+      <p>建禁用词库与强制标准映射，批量预检商品标题 / 详情页 / 直播脚本。</p>
+      <p class="dl"><b>交付：</b>预检工具上线；抽检 100 条历史文案验证</p></li>
+    <li><span class="wk">W19–W20</span><span class="dot"></span><h5>消费者投诉处置 + 劳动争议</h5>
+      <p>两个场景并行：处置话术与证据清单；劳动分析与金额试算。</p>
+      <p class="dl"><b>交付：</b>两个场景上线；话术模板库</p></li>
+    <li><span class="wk">W21</span><span class="dot solid"></span><h5>自动化回归评测流水线</h5>
+      <p>把黄金集 + Ragas/DeepEval 接进 CI：每次 prompt 改动、语料更新、模型升级都自动跑一遍，指标下跌就报警。<b>这是系统不腐坏的保险丝。</b></p>
+      <p class="dl"><b>交付：</b>评测流水线；指标看板</p></li>
+    <li><span class="wk">W22</span><span class="dot"></span><h5>运营手册 + 责任人 + 培训</h5>
+      <p>写《法务 AI 系统运营手册》：语料更新流程、责任人、复核要求、红线。对全员做一次培训。</p>
+      <p class="dl"><b>交付：</b>运营手册；培训完成；责任人任命</p></li>
+    <li><span class="wk">W23</span><span class="dot"></span><h5>效果复盘 + 度量报告</h5>
+      <p>统计工时节省、采纳率、引用准确率、幻觉率，与第 02 章承诺值对比。</p>
+      <p class="dl"><b>交付：</b>《首期效果复盘报告》</p></li>
+    <li><span class="wk">W24</span><span class="dot solid"></span><h5>S3 验收 + 二期规划</h5>
+      <p class="dl"><b>门槛：</b>季度净节省 ≥200 工时；引用准确率 ≥95%；<b>交付：</b>二期预算提案（P2 场景 + CLM 集成）</p></li>
+  </ul>
+
+  <div class="box">
+    <div class="t">排期上唯一不能让步的一点</div>
+    <p><b>W5 的黄金测试集必须在系统调优之前，而不是之后。</b>很多团队先调系统、调到最后才想起「怎么证明它变好了」，结果只能凭感觉。先出题、后调优，才有客观基线。</p>
+  </div>
+</section>
+
+<!-- ========== S9 ========== -->
+<section id="s9">
+  <h2><span class="num">09</span>预算：三档方案</h2>
+  <p>按集团规模给三档。建议<b>从轻量档起步</b>——先用现有资源证明价值，再追加投入。一次性上重资产，风险是「钱花了但没人用」。</p>
+
+  <div class="grid g3">
+    <div class="card">
+      <h5>方案 A · 轻量起步</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥8–15 万</p>
+      <ul>
+        <li>复用现有服务器（16C / 32–64GB）</li>
+        <li>全部开源自建，零 license 费用</li>
+        <li>生成模型走云端合规 API（非涉密场景）</li>
+        <li>IT 兼职投入，法务自己整理语料</li>
+        <li>覆盖：法规问答 + 单一场景</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：先验证价值、预算未批</p>
+    </div>
+    <div class="card" style="border:2px solid var(--gold)">
+      <h5>方案 B · 标准（推荐）</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥45–70 万</p>
+      <ul>
+        <li>GPU 服务器 ×1（48GB 显存级）约 ¥15–22 万</li>
+        <li>应用与数据库服务器 约 ¥5 万</li>
+        <li>本地模型部署与调优 约 ¥10–15 万</li>
+        <li>语料整理（可外包部分）约 ¥8–12 万</li>
+        <li>实施与培训 约 ¥5–8 万</li>
+        <li>年度运维 约 ¥5–8 万</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：200+ 门店规模，全本地私域，覆盖 5 个场景</p>
+    </div>
+    <div class="card">
+      <h5>方案 C · 规模化</h5>
+      <p style="color:var(--gold3);font-weight:600">首年约 ¥120–200 万</p>
+      <ul>
+        <li>GPU 服务器 ×2 + 高可用架构</li>
+        <li>双法域双区部署（内地 + 香港）</li>
+        <li>与合同管理系统（CLM）/ OA 集成</li>
+        <li>专职 AI 运营岗 ×1</li>
+        <li>覆盖全部 8 个场景 + 定制开发</li>
+      </ul>
+      <p style="color:var(--ink3);font-size:12.5px;margin-top:8px">适合：集团级推广、多品牌共用</p>
+    </div>
+  </div>
+
+  <div class="box info">
+    <div class="t">预算谈判的三个支点</div>
+    <ul style="margin-bottom:0">
+      <li><b>对标外部律师费</b>：一份租约外部律师审查的市场价 vs 系统年化成本，分母是「每年 60–90 份」。这个对比最容易打动 CFO。</li>
+      <li><b>对标风险成本</b>：一次标签不合规的行政处罚 + 舆情损失，往往高于系统首年投入。把同行公开处罚案例放进立项材料（L4 语料本来就要收集）。</li>
+      <li><b>不要承诺「减少法务编制」</b>。承诺效率提升与风险控制，不承诺裁员——后者会让项目在内部失去配合，而且也不属实。</li>
+    </ul>
+  </div>
+
+  <h3>成本构成表（方案 B 明细）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:24%">科目</th><th style="width:14%" class="tr">首年（万元）</th><th style="width:14%" class="tr">次年（万元）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>硬件（GPU + 应用服务器）</td><td class="tr">20–27</td><td class="tr">—</td><td>一次性投入，按 3 年折旧</td></tr>
+        <tr><td>软件 License</td><td class="tr">0</td><td class="tr">0</td><td>全部 Apache-2.0 / MIT 开源。<b>若需 Dify 多租户则另计商业授权</b></td></tr>
+        <tr><td>实施与集成</td><td class="tr">10–15</td><td class="tr">3–5</td><td>部署、工作流开发、企微集成</td></tr>
+        <tr><td>语料整理</td><td class="tr">8–12</td><td class="tr">4–6</td><td><b>最大的人力项，也是最容易低估的一项</b></td></tr>
+        <tr><td>培训与变革管理</td><td class="tr">3–5</td><td class="tr">2</td><td>别省这笔，没人用等于白做</td></tr>
+        <tr><td>运维与电费等</td><td class="tr">4–8</td><td class="tr">5–8</td><td>GPU 服务器电费与托管需计入</td></tr>
+        <tr style="background:var(--bg2)"><td><b>合计</b></td><td class="tr"><b>45–67</b></td><td class="tr"><b>14–21</b></td><td>次年成本大幅下降，硬件已摊完</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">金额为人民币估算，基于 2026 年市场行情，仅供立项参考，实际以采购询价为准。</p>
+</section>
+
+<!-- ========== S10 ========== -->
+<section id="s10">
+  <h2><span class="num">10</span>评测与度量：让系统不腐坏</h2>
+  <p>没有评测的 AI 系统，三个月后就会悄悄变差——语料更新了、prompt 改了、模型升了，没人知道效果怎么样了。评测体系是这个项目的保险丝。</p>
+
+  <h3>10.1 黄金测试集（Golden Set）</h3>
+  <div class="box">
+    <div class="t">怎么出题</div>
+    <ul style="margin-bottom:0">
+      <li><b>来源必须是真实问题</b>：从过去一年的工单、企微咨询记录里挑，不是拍脑袋编。</li>
+      <li><b>每题三部分</b>：问题 + 标准答案要点 + <b>应命中的正确依据</b>（法规第几条 / 制度第几章）。第三部分最关键——它让「引用对不对」变得可自动判定。</li>
+      <li><b>覆盖分布</b>：按第 01 章工作量分布配比，高频场景多出题。</li>
+      <li><b>必须包含「陷阱题」</b>：10% 的题目是知识库里<b>没有答案</b>的，用来测试系统会不会老实说「不知道」。系统敢不敢拒答，比它答对多少更重要。</li>
+      <li><b>规模</b>：v1 出 50 题（W5），S2 扩到 100 题，稳定后 150–200 题。</li>
+      <li><b>禁止 AI 出题</b>：让模型自己生成测试题，等于让它自己出考卷自己判分。</li>
+    </ul>
+  </div>
+
+  <h3>10.2 核心指标</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:14%">指标</th><th style="width:12%" class="tc">目标值</th><th style="width:26%">怎么测</th><th>为什么是它</th></tr></thead>
+      <tbody>
+        <tr><td><b>引用准确率</b></td><td class="tc">≥95%</td><td>抽取回答中的引用编号 → 与知识库原文比对是否存在且内容一致</td><td><b>第一指标。</b>引用错了，一切免谈</td></tr>
+        <tr><td><b>幻觉率</b></td><td class="tc">≤2%</td><td>Ragas <code>faithfulness</code> / DeepEval <code>hallucination</code>：逐句判断答案是否被检索上下文支持</td><td>法务场景的致命指标，一次编法条就能毁掉信任</td></tr>
+        <tr><td><b>拒答正确率</b></td><td class="tc">≥90%</td><td>陷阱题上是否输出「未检索到依据 / 转人工」</td><td>衡量系统是否「知道自己的边界」</td></tr>
+        <tr><td><b>检索召回率</b></td><td class="tc">≥90%</td><td>正确依据是否出现在 Top-5 检索结果中</td><td>用于区分「检索没找到」和「找到了但生成错了」</td></tr>
+        <tr><td><b>采纳率</b></td><td class="tc">≥60%</td><td>AI 产出被法务采纳（未大幅修改）的比例</td><td>业务价值指标，比准确率更真实</td></tr>
+        <tr><td><b>首答可用率</b></td><td class="tc">≥70%</td><td>门店提问后无需转人工即可解决的比例</td><td>衡量一线场景是否真跑通</td></tr>
+        <tr><td><b>工时节省</b></td><td class="tc">≥200h/季</td><td>场景前后耗时对比 × 使用频次</td><td>汇报用，也是立项承诺的兑现证据</td></tr>
+        <tr><td><b>周活人数</b></td><td class="tc">≥80%</td><td>系统后台统计</td><td>没人用说明场景选错了，其他指标再好也没意义</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>10.3 回归评测流水线（W21 建）</h3>
+  <ol>
+    <li><b>触发条件</b>：语料批量更新、prompt 修改、模型版本升级、RAG 参数调整——任一发生即触发。</li>
+    <li><b>自动执行</b>：跑完整黄金集 → 计算全部指标 → 与基线对比。</li>
+    <li><b>熔断规则</b>：引用准确率或幻觉率跌破阈值 → 自动阻断上线 + 通知法务负责人。</li>
+    <li><b>人工抽检</b>：每月法务人工抽 20 条真实问答，检查「自动化指标看不出来的问题」（比如语气、口径与公司文化不符）。</li>
+    <li><b>回流机制</b>：人工修正过的答案 → 进入 L4 语料 → 下次遇到同类问题答对。<b>这是系统越用越聪明的唯一路径。</b></li>
+  </ol>
+</section>

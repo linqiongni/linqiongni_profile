@@ -1,0 +1,86 @@
+/* 购物好官 · 首页样式（可爱治愈风） */
+.page { padding: 24rpx 24rpx 200rpx; }
+
+.head { display: flex; align-items: center; gap: 16rpx; margin-bottom: 8rpx; }
+.head .logo { font-size: 56rpx; }
+.head .title { font-size: 40rpx; font-weight: 800; letter-spacing: 2rpx; color: #4A4A4A; }
+.head .sub { font-size: 22rpx; color: #8A8A8A; margin-top: 4rpx; }
+
+.card {
+  background: #fff; border-radius: 36rpx; padding: 28rpx; margin: 26rpx 0;
+  box-shadow: 0 12rpx 36rpx rgba(255,154,162,.16); border: 1rpx solid #F0E6DF;
+}
+.h2 { font-size: 30rpx; font-weight: 700; margin: 0 0 20rpx; display: flex; align-items: center; color: #4A4A4A; }
+.h2 .dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: #FF9AA2; margin-right: 12rpx; }
+.hint2 { font-size: 20rpx; color: #B0A89C; font-weight: 400; margin-left: 8rpx; }
+
+.label { font-size: 24rpx; color: #8A8A8A; margin: 22rpx 0 10rpx; }
+.hint { font-size: 21rpx; color: #B0A89C; margin-top: 10rpx; line-height: 1.5; }
+.foot-hint { text-align: center; font-size: 22rpx; color: #B0A89C; margin-top: -8rpx; }
+
+.row { display: flex; gap: 18rpx; }
+.col { flex: 1; }
+
+.inp {
+  width: 100%; border: 2rpx solid #F0E6DF; border-radius: 22rpx; padding: 18rpx 22rpx;
+  font-size: 26rpx; color: #4A4A4A; background: #FFF7F0; box-sizing: border-box;
+}
+.ta {
+  width: 100%; border: 2rpx solid #F0E6DF; border-radius: 22rpx; padding: 18rpx 22rpx;
+  font-size: 26rpx; color: #4A4A4A; background: #FFF7F0; box-sizing: border-box; min-height: 110rpx;
+}
+
+.seg { display: flex; background: #FFF7F0; border-radius: 26rpx; padding: 8rpx; gap: 8rpx; }
+.seg-btn {
+  flex: 1; border-radius: 20rpx; padding: 22rpx 12rpx; font-size: 26rpx;
+  color: #8A8A8A; text-align: center; font-weight: 600;
+}
+.seg-btn.on.g { background: #7BCFB6; color: #fff; }
+.seg-btn.on.b { background: #9AD0F5; color: #fff; }
+.seg-btn.on { background: #FF9AA2; color: #fff; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 14rpx; }
+.chip {
+  border: 2rpx solid #F0E6DF; background: #fff; border-radius: 999rpx; padding: 12rpx 24rpx;
+  font-size: 24rpx; color: #8A8A8A;
+}
+.chip.on { background: #FF9AA2; border-color: #FF9AA2; color: #fff; font-weight: 600; }
+.chip.mint.on { background: #A0E7E5; border-color: #A0E7E5; color: #2c5a52; }
+
+/* 卡片预览 */
+.mask {
+  position: fixed; inset: 0; background: rgba(74,74,74,.45);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 40rpx 24rpx; z-index: 50; overflow: auto;
+}
+.gcard {
+  width: 100%; max-width: 640rpx; background: #fff; border-radius: 40rpx; overflow: hidden;
+  box-shadow: 0 30rpx 80rpx rgba(0,0,0,.25); animation: pop .25s ease;
+}
+@keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.g-top { background: linear-gradient(135deg, #FF9AA2, #FFD3B6); padding: 30rpx 34rpx; color: #fff; }
+.g-t1 { font-size: 32rpx; font-weight: 800; letter-spacing: 2rpx; }
+.g-t2 { font-size: 21rpx; opacity: .92; margin-top: 6rpx; }
+.g-mode { padding: 22rpx 34rpx; font-size: 26rpx; font-weight: 700; display: flex; align-items: center; gap: 14rpx; border-bottom: 1rpx dashed #F0E6DF; }
+.g-mode .led { width: 22rpx; height: 22rpx; border-radius: 50%; }
+.g-sec { padding: 22rpx 34rpx; border-bottom: 1rpx solid #F0E6DF; }
+.g-lbl { font-size: 20rpx; color: #B0A89C; letter-spacing: 3rpx; margin-bottom: 12rpx; }
+.g-val { font-size: 27rpx; line-height: 1.7; color: #4A4A4A; }
+.badge { display: inline-block; background: #A0E7E5; color: #2c5a52; font-weight: 800; border-radius: 14rpx; padding: 4rpx 16rpx; font-size: 24rpx; margin-left: 10rpx; }
+.tag { display: inline-block; background: #FFF7F0; border: 1rpx solid #F0E6DF; border-radius: 12rpx; padding: 6rpx 16rpx; font-size: 22rpx; margin: 6rpx 8rpx 0 0; color: #4A4A4A; }
+.mini { font-size: 23rpx; margin-top: 10rpx; color: #4A4A4A; }
+.empty { color: #B0A89C; font-size: 24rpx; }
+.g-note { background: #FFF8E9; border-left: 6rpx solid #FFD3B6; padding: 18rpx 22rpx; font-size: 25rpx; line-height: 1.7; color: #7a6a4a; }
+.g-foot { padding: 20rpx 34rpx; font-size: 20rpx; color: #B0A89C; text-align: center; }
+.g-acts { display: flex; gap: 18rpx; padding: 24rpx 34rpx; }
+.btn-p { flex: 1; background: #7BCFB6; color: #fff; border-radius: 24rpx; padding: 22rpx; font-size: 27rpx; font-weight: 700; text-align: center; }
+.btn-c { flex: 1; background: #FFF7F0; color: #8A8A8A; border-radius: 24rpx; padding: 22rpx; font-size: 27rpx; font-weight: 700; text-align: center; }
+
+.offcanvas { position: fixed; left: -2000rpx; top: 0; width: 640rpx; height: 1080rpx; }
+
+.fab {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: 36rpx;
+  background: linear-gradient(135deg, #FF9AA2, #FFB7A0); color: #fff; border: none;
+  border-radius: 999rpx; padding: 26rpx 56rpx; font-size: 30rpx; font-weight: 700;
+  box-shadow: 0 16rpx 40rpx rgba(255,154,162,.5); width: calc(100% - 96rpx); max-width: 640rpx; text-align: center;
+}

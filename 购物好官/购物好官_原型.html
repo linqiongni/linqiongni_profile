@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>购物好官 · 原型</title>
+<style>
+  :root{
+    --coral:#FF9AA2; --mint:#A0E7E5; --peach:#FFD3B6; --cream:#FFF7F0;
+    --ink:#4A4A4A; --soft:#8A8A8A; --line:#F0E6DF; --ok:#7BCFB6; --blue:#9AD0F5;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    color:var(--ink); background:linear-gradient(160deg,#FFE9E3 0%,#E8F7F4 100%);
+    min-height:100vh; padding:18px 12px 120px;
+  }
+  .wrap{max-width:430px;margin:0 auto;}
+  .head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .head .logo{font-size:30px;}
+  .head h1{font-size:22px;margin:0;letter-spacing:1px;}
+  .head .sub{font-size:12px;color:var(--soft);margin-top:2px;}
+  .card{
+    background:#fff;border-radius:22px;padding:16px;margin:14px 0;
+    box-shadow:0 8px 24px rgba(255,154,162,.16);border:1px solid var(--line);
+  }
+  .card h2{font-size:15px;margin:0 0 12px;display:flex;align-items:center;gap:6px;}
+  .card h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);}
+  label.fld{display:block;font-size:13px;color:var(--soft);margin:12px 0 6px;}
+  input[type=text],input[type=number],textarea,select{
+    width:100%;border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;
+    font-size:14px;color:var(--ink);background:var(--cream);outline:none;font-family:inherit;
+  }
+  textarea{resize:vertical;min-height:58px;}
+  input:focus,textarea:focus,select:focus{border-color:var(--mint);}
+  .row{display:flex;gap:10px;}
+  .row>*{flex:1;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .chip{
+    border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;
+    font-size:13px;color:var(--soft);cursor:pointer;user-select:none;transition:.15s;
+  }
+  .chip.on{background:var(--coral);border-color:var(--coral);color:#fff;font-weight:600;}
+  .chip.mint.on{background:var(--mint);border-color:var(--mint);color:#2c5a52;}
+  .seg{display:flex;background:var(--cream);border-radius:16px;padding:5px;gap:5px;}
+  .seg button{
+    flex:1;border:none;background:transparent;border-radius:12px;padding:13px 8px;
+    font-size:14px;color:var(--soft);cursor:pointer;font-weight:600;transition:.15s;font-family:inherit;
+  }
+  .seg button.on.g{background:var(--ok);color:#fff;}
+  .seg button.on.b{background:var(--blue);color:#fff;}
+  .hint{font-size:11px;color:var(--soft);margin-top:6px;line-height:1.5;}
+  .fab{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:20px;
+    background:linear-gradient(135deg,var(--coral),#FFB7A0);color:#fff;border:none;
+    border-radius:999px;padding:15px 30px;font-size:16px;font-weight:700;cursor:pointer;
+    box-shadow:0 10px 26px rgba(255,154,162,.5);font-family:inherit;width:calc(100% - 48px);max-width:382px;
+  }
+  /* ===== 卡片预览 ===== */
+  .mask{position:fixed;inset:0;background:rgba(74,74,74,.45);display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow:auto;z-index:50;}
+  .mask.show{display:flex;}
+  .gcard{
+    width:100%;max-width:400px;background:#fff;border-radius:24px;overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);animation:pop .25s ease;
+  }
+  @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+  .gcard .top{background:linear-gradient(135deg,var(--coral),var(--peach));padding:16px 18px;color:#fff;}
+  .gcard .top .t1{font-size:17px;font-weight:800;letter-spacing:1px;}
+  .gcard .top .t2{font-size:12px;opacity:.92;margin-top:3px;}
+  .gcard .mode{padding:12px 18px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;border-bottom:1px dashed var(--line);}
+  .gcard .mode .led{width:12px;height:12px;border-radius:50%;}
+  .gcard .sec{padding:12px 18px;border-bottom:1px solid var(--line);}
+  .gcard .sec .lbl{font-size:11px;color:var(--soft);letter-spacing:1px;margin-bottom:7px;}
+  .gcard .sec .val{font-size:14px;line-height:1.7;}
+  .gcard .sizebadge{display:inline-block;background:var(--mint);color:#2c5a52;font-weight:800;border-radius:10px;padding:3px 10px;font-size:14px;margin-left:6px;}
+  .gcard .tag{display:inline-block;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;margin:3px 4px 0 0;color:var(--ink);}
+  .gcard .note{background:#FFF8E9;border-left:4px solid var(--peach);padding:11px 13px;font-size:13px;line-height:1.7;color:#7a6a4a;}
+  .gcard .foot{padding:11px 18px;font-size:11px;color:var(--soft);text-align:center;}
+  .gcard .acts{display:flex;gap:10px;padding:14px 18px;}
+  .gcard .acts button{flex:1;border:none;border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .gcard .acts .p{background:var(--ok);color:#fff;}
+  .gcard .acts .c{background:var(--cream);color:var(--soft);}
+  .empty{color:var(--soft);font-size:13px;}
+  @media print{
+    body *{visibility:hidden;}
+    .mask,.mask *{visibility:visible;}
+    .mask{position:absolute;background:#fff;padding:0;display:block;overflow:visible;}
+    .gcard{box-shadow:none;max-width:100%;}
+    .gcard .acts{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="logo">🛍️</div>
+    <div>
+      <h1>购物好官</h1>
+      <div class="sub">安静选衣，也能被好好服务</div>
+    </div>
+  </div>
+
+  <!-- 长期档案 -->
+  <div class="card">
+    <h2><span class="dot"></span>我的长期档案 <span style="font-size:11px;color:var(--soft);font-weight:400">（填一次，自动存）</span></h2>
+
+    <label class="fld">性别</label>
+    <div class="seg" id="sex">
+      <button data-v="女" class="on">女</button>
+      <button data-v="男">男</button>
+    </div>
+
+    <div class="row">
+      <div><label class="fld">身高 (cm)</label><input id="height" type="number" placeholder="165" inputmode="numeric"></div>
+      <div><label class="fld">体重 (kg)</label><input id="weight" type="number" placeholder="52" inputmode="numeric"></div>
+    </div>
+    <div class="row">
+      <div><label class="fld">胸围 (可选)</label><input id="bust" type="number" placeholder="84" inputmode="numeric"></div>
+      <div><label class="fld">腰围 (可选)</label><input id="waist" type="number" placeholder="68" inputmode="numeric"></div>
+    </div>
+    <div class="row">
+      <div><label class="fld">臀围 (可选)</label><input id="hip" type="number" placeholder="90" inputmode="numeric"></div>
+      <div><label class="fld">年龄 (可选)</label><input id="age" type="number" placeholder="28" inputmode="numeric"></div>
+    </div>
+
+    <label class="fld">体型 (可选)</label>
+    <div class="chips" id="shape">
+      <span class="chip mint" data-v="梨形">梨形</span>
+      <span class="chip mint" data-v="苹果">苹果</span>
+      <span class="chip mint" data-v="沙漏">沙漏</span>
+      <span class="chip mint" data-v="矩形">矩形</span>
+      <span class="chip mint" data-v="倒三角">倒三角</span>
+    </div>
+
+    <label class="fld">版型偏好</label>
+    <div class="seg" id="fit">
+      <button data-v="修身">修身</button>
+      <button data-v="标准" class="on">标准</button>
+      <button data-v="宽松">宽松</button>
+    </div>
+
+    <label class="fld">风格偏好 (可多选)</label>
+    <div class="chips" id="style">
+      <span class="chip" data-v="通勤">通勤</span>
+      <span class="chip" data-v="休闲">休闲</span>
+      <span class="chip" data-v="复古">复古</span>
+      <span class="chip" data-v="极简">极简</span>
+      <span class="chip" data-v="甜美">甜美</span>
+      <span class="chip" data-v="辣妹">辣妹</span>
+      <span class="chip" data-v="国风">国风</span>
+      <span class="chip" data-v="运动">运动</span>
+      <span class="chip" data-v="学院">学院</span>
+      <span class="chip" data-v="中性">中性</span>
+    </div>
+
+    <div class="row">
+      <div><label class="fld">喜欢的颜色</label><input id="likeColor" type="text" placeholder="米白/驼/蓝"></div>
+      <div><label class="fld">雷区</label><input id="dislike" type="text" placeholder="荧光/紧身"></div>
+    </div>
+  </div>
+
+  <!-- 本次出行 -->
+  <div class="card">
+    <h2><span class="dot"></span>本次出行需求</h2>
+
+    <label class="fld">沟通模式（核心开关）</label>
+    <div class="seg" id="mode">
+      <button data-v="self" class="on g">🟢 自助模式</button>
+      <button data-v="guide" class="b">🔵 导购模式</button>
+    </div>
+    <div class="hint" id="modeHint">我自己看，需要时在卡上勾的选项找您。</div>
+
+    <label class="fld">想找的品类 (可多选)</label>
+    <div class="chips" id="cat">
+      <span class="chip" data-v="上衣">上衣</span>
+      <span class="chip" data-v="裤子">裤子</span>
+      <span class="chip" data-v="裙子">裙子</span>
+      <span class="chip" data-v="外套">外套</span>
+      <span class="chip" data-v="连衣裙">连衣裙</span>
+      <span class="chip" data-v="内衣">内衣</span>
+      <span class="chip" data-v="鞋">鞋</span>
+      <span class="chip" data-v="配饰">配饰</span>
+    </div>
+
+    <label class="fld">场景 (可多选)</label>
+    <div class="chips" id="occ">
+      <span class="chip" data-v="上班">上班</span>
+      <span class="chip" data-v="约会">约会</span>
+      <span class="chip" data-v="旅行">旅行</span>
+      <span class="chip" data-v="日常">日常</span>
+      <span class="chip" data-v="面试">面试</span>
+      <span class="chip" data-v="聚会">聚会</span>
+    </div>
+
+    <div class="row">
+      <div><label class="fld">预算 (可选)</label><input id="budget" type="text" placeholder="100-300/件"></div>
+      <div><label class="fld">数量 (可选)</label><input id="qty" type="text" placeholder="2-3件"></div>
+    </div>
+
+    <label class="fld">希望店员提供的帮助 (可多选)</label>
+    <div class="chips" id="help">
+      <span class="chip mint" data-v="拿尺码">拿尺码</span>
+      <span class="chip mint" data-v="找试衣间">找试衣间</span>
+      <span class="chip mint" data-v="搭配建议">搭配建议</span>
+      <span class="chip mint" data-v="叫我去试">叫我去试</span>
+      <span class="chip mint" data-v="留货">帮我留货</span>
+      <span class="chip mint" data-v="全程陪同推荐">全程陪同推荐</span>
+    </div>
+
+    <label class="fld">给店员的礼貌提示语</label>
+    <textarea id="note">您好，我不太爱开口，但很需要您的专业眼光——请按这张卡帮我，谢谢！</textarea>
+  </div>
+
+  <div class="hint" style="text-align:center;margin-top:-4px">填完点下方按钮，生成「给店员的卡」→ 亮屏或打印即可。</div>
+</div>
+
+<button class="fab" onclick="openCard()">👀 预览我的购物卡</button>
+
+<!-- 卡片预览 -->
+<div class="mask" id="mask" onclick="if(event.target===this)closeCard()">
+  <div class="gcard" id="gcard">
+    <div class="top">
+      <div class="t1">🛍️ 购物好官卡</div>
+      <div class="t2">请按这张卡帮我 · 我不太爱开口，但很需要您的眼光</div>
+    </div>
+    <div class="mode" id="cMode"></div>
+    <div class="sec">
+      <div class="lbl">身 材</div>
+      <div class="val" id="cBody"></div>
+    </div>
+    <div class="sec">
+      <div class="lbl">风 格</div>
+      <div class="val" id="cStyle"></div>
+    </div>
+    <div class="sec">
+      <div class="lbl">本 次 需 求</div>
+      <div class="val" id="cNeed"></div>
+    </div>
+    <div class="sec">
+      <div class="lbl">希 望 您 帮 我</div>
+      <div class="val" id="cHelp"></div>
+    </div>
+    <div class="sec">
+      <div class="lbl">留 言 给 您</div>
+      <div class="note" id="cNote"></div>
+    </div>
+    <div class="foot">—— 由「购物好官」生成 · 尺码仅供参考，以试穿为准</div>
+    <div class="acts">
+      <button class="p" onclick="window.print()">🖨️ 打印 / 存图</button>
+      <button class="c" onclick="closeCard()">返回修改</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const SKEY = 'gougou_profile';
+
+// ---------- 多选 chip ----------
+function bindChips(boxId){
+  $(boxId).querySelectorAll('.chip').forEach(c=>{
+    c.onclick=()=>c.classList.toggle('on');
+  });
+}
+['shape','style','cat','occ','help'].forEach(bindChips);
+
+// ---------- 单选 seg ----------
+function bindSeg(boxId,cb){
+  const box=$(boxId);
+  box.querySelectorAll('button').forEach(b=>{
+    b.onclick=()=>{
+      box.querySelectorAll('button').forEach(x=>x.classList.remove('on','g','b'));
+      b.classList.add('on'); if(b.dataset.v==='self'||boxId==='mode'){}
+      cb&&cb(b.dataset.v);
+    };
+  });
+}
+bindSeg('sex');
+bindSeg('fit');
+bindSeg('mode', v=>{
+  $('modeHint').textContent = v==='self'
+    ? '我自己看，需要时在卡上勾的选项找您。'
+    : '请按以下需求帮我推荐 / 搭配，感谢！';
+});
+
+function getChips(boxId){
+  return [...$(boxId).querySelectorAll('.chip.on')].map(c=>c.dataset.v);
+}
+function getSeg(boxId){
+  const on=$(boxId).querySelector('.on'); return on?on.dataset.v:'';
+}
+
+// ---------- 自动尺码（粗算，仅供参考）----------
+function calcSize(sex,h,w,fit){
+  if(!h||!w) return '';
+  let size='';
+  if(sex==='女'){
+    if(h<158){ size = w<48?'XS':w<53?'S':w<60?'M':w<67?'L':'XL'; }
+    else if(h<165){ size = w<50?'S':w<57?'M':w<64?'L':'XL'; }
+    else if(h<172){ size = w<54?'M':w<62?'L':w<70?'XL':'XXL'; }
+    else { size = w<58?'L':w<66?'XL':'XXL'; }
+  }else{
+    if(h<170){ size = w<60?'S':w<70?'M':w<80?'L':'XL'; }
+    else if(h<178){ size = w<65?'M':w<75?'L':w<85?'XL':'XXL'; }
+    else { size = w<70?'L':w<82?'XL':'XXL'; }
+  }
+  if(fit==='宽松'){ const up={XS:'S',S:'M',M:'L',L:'XL',XL:'XXL'}; size=up[size]||size; }
+  else if(fit==='修身'){ const down={S:'XS',M:'S',L:'M',XL:'L',XXL:'XL'}; size=down[size]||size; }
+  return size;
+}
+
+// ---------- 存档 ----------
+function saveProfile(){
+  const p={
+    sex:getSeg('sex'),height:$('height').value,weight:$('weight').value,
+    bust:$('bust').value,waist:$('waist').value,hip:$('hip').value,age:$('age').value,
+    shape:getChips('shape'),style:getChips('style'),
+    likeColor:$('likeColor').value,dislike:$('dislike').value
+  };
+  try{localStorage.setItem(SKEY,JSON.stringify(p));}catch(e){}
+}
+function loadProfile(){
+  try{
+    const p=JSON.parse(localStorage.getItem(SKEY)||'{}'); if(!p.sex)return;
+    setSeg('sex',p.sex); $('height').value=p.height||''; $('weight').value=p.weight||'';
+    $('bust').value=p.bust||''; $('waist').value=p.waist||''; $('hip').value=p.hip||'';
+    $('age').value=p.age||''; $('likeColor').value=p.likeColor||''; $('dislike').value=p.dislike||'';
+    setChips('shape',p.shape); setChips('style',p.style);
+  }catch(e){}
+}
+function setSeg(boxId,v){
+  const box=$(boxId); box.querySelectorAll('button').forEach(b=>{
+    b.classList.toggle('on',b.dataset.v===v);
+  });
+}
+function setChips(boxId,arr){
+  if(!arr)return; $(boxId).querySelectorAll('.chip').forEach(c=>{
+    c.classList.toggle('on',arr.includes(c.dataset.v));
+  });
+}
+['height','weight','bust','waist','hip','age','likeColor','dislike'].forEach(id=>{
+  $(id).addEventListener('change',saveProfile);
+});
+['shape','style'].forEach(id=>$(id).addEventListener('click',()=>setTimeout(saveProfile,0)));
+
+// ---------- 生成卡片 ----------
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function tags(arr){return arr.length?arr.map(v=>`<span class="tag">${esc(v)}</span>`).join(''):'<span class="empty">未填</span>';}
+
+function openCard(){
+  const sex=getSeg('sex'), h=+$('height').value, w=+$('weight').value;
+  const fit=getSeg('fit');
+  const size=calcSize(sex,h,w,fit);
+  const mode=getSeg('mode');
+  $('cMode').innerHTML = mode==='self'
+    ? '<span class="led" style="background:var(--ok)"></span>🟢 自助模式：我自己看，需要时在卡上勾的选项找您'
+    : '<span class="led" style="background:var(--blue)"></span>🔵 导购模式：请按以下需求帮我推荐 / 搭配';
+  const bodyParts=[];
+  if(h)bodyParts.push(`身高 ${h}cm`);
+  if(w)bodyParts.push(`体重 ${w}kg`);
+  if($('bust').value)bodyParts.push(`胸 ${$('bust').value}`);
+  if($('waist').value)bodyParts.push(`腰 ${$('waist').value}`);
+  if($('hip').value)bodyParts.push(`臀 ${$('hip').value}`);
+  if($('age').value)bodyParts.push(`年龄 ${$('age').value}`);
+  let bodyHtml = bodyParts.length?bodyParts.join(' · '):'<span class="empty">未填</span>';
+  if(size) bodyHtml += `<span class="sizebadge">建议 ${size}</span>`;
+  const sh=getChips('shape');
+  if(sh.length) bodyHtml += ` <span style="font-size:12px;color:var(--soft)">(${sh.join('/')})</span>`;
+  if(fit && fit!=='标准') bodyHtml += ` <span style="font-size:12px;color:var(--coral)">${fit}</span>`;
+  $('cBody').innerHTML = bodyHtml;
+
+  let styleHtml = tags(getChips('style'));
+  const lc=$('likeColor').value.trim(), dl=$('dislike').value.trim();
+  if(lc) styleHtml += `<div style="margin-top:6px;font-size:13px">💛 喜欢：${esc(lc)}</div>`;
+  if(dl) styleHtml += `<div style="margin-top:4px;font-size:13px">🚫 雷区：${esc(dl)}</div>`;
+  $('cStyle').innerHTML = styleHtml;
+
+  const need=[];
+  const cat=getChips('cat'), occ=getChips('occ');
+  if(cat.length) need.push(`找：${cat.join('/')}`);
+  if(occ.length) need.push(`场景：${occ.join('/')}`);
+  if($('budget').value.trim()) need.push(`预算：${esc($('budget').value.trim())}`);
+  if($('qty').value.trim()) need.push(`数量：${esc($('qty').value.trim())}`);
+  $('cNeed').innerHTML = need.length?need.map(n=>`<div>${n}</div>`).join(''):'<span class="empty">未填</span>';
+
+  $('cHelp').innerHTML = tags(getChips('help'));
+  $('cNote').textContent = $('note').value.trim()||'（无）';
+  $('mask').classList.add('show');
+}
+function closeCard(){$('mask').classList.remove('show');}
+
+loadProfile();
+</script>
+</body>
+</html>

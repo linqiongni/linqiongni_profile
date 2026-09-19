@@ -1,0 +1,180 @@
+<view class="page">
+  <view class="head">
+    <view class="logo">🛍️</view>
+    <view>
+      <view class="title">购物好官</view>
+      <view class="sub">安静选衣，也能被好好服务</view>
+    </view>
+  </view>
+
+  <!-- 长期档案 -->
+  <view class="card">
+    <view class="h2"><text class="dot"></text>我的长期档案<text class="hint2">（填一次自动存）</text></view>
+
+    <view class="label">性别</view>
+    <view class="seg">
+      <view class="seg-btn {{sex==='女'?'on g':''}}" bindtap="setSex" data-v="女">女</view>
+      <view class="seg-btn {{sex==='男'?'on':''}}" bindtap="setSex" data-v="男">男</view>
+    </view>
+
+    <view class="row">
+      <view class="col">
+        <view class="label">身高 (cm)</view>
+        <input class="inp" type="digit" value="{{height}}" bindinput="onInput" data-k="height" placeholder="165" />
+      </view>
+      <view class="col">
+        <view class="label">体重 (kg)</view>
+        <input class="inp" type="digit" value="{{weight}}" bindinput="onInput" data-k="weight" placeholder="52" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="col">
+        <view class="label">胸围(可选)</view>
+        <input class="inp" type="digit" value="{{bust}}" bindinput="onInput" data-k="bust" placeholder="84" />
+      </view>
+      <view class="col">
+        <view class="label">腰围(可选)</view>
+        <input class="inp" type="digit" value="{{waist}}" bindinput="onInput" data-k="waist" placeholder="68" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="col">
+        <view class="label">臀围(可选)</view>
+        <input class="inp" type="digit" value="{{hip}}" bindinput="onInput" data-k="hip" placeholder="90" />
+      </view>
+      <view class="col">
+        <view class="label">年龄(可选)</view>
+        <input class="inp" type="digit" value="{{age}}" bindinput="onInput" data-k="age" placeholder="28" />
+      </view>
+    </view>
+
+    <view class="label">体型 (可选)</view>
+    <view class="chips">
+      <view wx:for="{{shapeList}}" wx:key="*this" class="chip mint {{shapeSel.indexOf(item)>-1?'on':''}}" bindtap="toggle" data-group="shapeSel" data-v="{{item}}">{{item}}</view>
+    </view>
+
+    <view class="label">版型偏好</view>
+    <view class="seg">
+      <view class="seg-btn {{fit==='修身'?'on':''}}" bindtap="setFit" data-v="修身">修身</view>
+      <view class="seg-btn {{fit==='标准'?'on g':''}}" bindtap="setFit" data-v="标准">标准</view>
+      <view class="seg-btn {{fit==='宽松'?'on':''}}" bindtap="setFit" data-v="宽松">宽松</view>
+    </view>
+
+    <view class="label">风格偏好 (可多选)</view>
+    <view class="chips">
+      <view wx:for="{{styleList}}" wx:key="*this" class="chip {{styleSel.indexOf(item)>-1?'on':''}}" bindtap="toggle" data-group="styleSel" data-v="{{item}}">{{item}}</view>
+    </view>
+
+    <view class="row">
+      <view class="col">
+        <view class="label">喜欢的颜色</view>
+        <input class="inp" value="{{likeColor}}" bindinput="onInput" data-k="likeColor" placeholder="米白/驼/蓝" />
+      </view>
+      <view class="col">
+        <view class="label">雷区</view>
+        <input class="inp" value="{{dislike}}" bindinput="onInput" data-k="dislike" placeholder="荧光/紧身" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 本次出行 -->
+  <view class="card">
+    <view class="h2"><text class="dot"></text>本次出行需求</view>
+
+    <view class="label">沟通模式（核心开关）</view>
+    <view class="seg">
+      <view class="seg-btn {{mode==='self'?'on g':''}}" bindtap="setMode" data-v="self">🟢 自助模式</view>
+      <view class="seg-btn {{mode==='guide'?'on b':''}}" bindtap="setMode" data-v="guide">🔵 导购模式</view>
+    </view>
+    <view class="hint">{{mode==='self'?'我自己看，需要时在卡上勾的选项找您。':'请按以下需求帮我推荐 / 搭配，感谢！'}}</view>
+
+    <view class="label">想找的品类 (可多选)</view>
+    <view class="chips">
+      <view wx:for="{{catList}}" wx:key="*this" class="chip {{catSel.indexOf(item)>-1?'on':''}}" bindtap="toggle" data-group="catSel" data-v="{{item}}">{{item}}</view>
+    </view>
+
+    <view class="label">场景 (可多选)</view>
+    <view class="chips">
+      <view wx:for="{{occList}}" wx:key="*this" class="chip {{occSel.indexOf(item)>-1?'on':''}}" bindtap="toggle" data-group="occSel" data-v="{{item}}">{{item}}</view>
+    </view>
+
+    <view class="row">
+      <view class="col">
+        <view class="label">预算 (可选)</view>
+        <input class="inp" value="{{budget}}" bindinput="onInput" data-k="budget" placeholder="100-300/件" />
+      </view>
+      <view class="col">
+        <view class="label">数量 (可选)</view>
+        <input class="inp" value="{{qty}}" bindinput="onInput" data-k="qty" placeholder="2-3件" />
+      </view>
+    </view>
+
+    <view class="label">希望店员提供的帮助 (可多选)</view>
+    <view class="chips">
+      <view wx:for="{{helpList}}" wx:key="*this" class="chip mint {{helpSel.indexOf(item)>-1?'on':''}}" bindtap="toggle" data-group="helpSel" data-v="{{item}}">{{item}}</view>
+    </view>
+
+    <view class="label">给店员的礼貌提示语</view>
+    <textarea class="ta" value="{{note}}" bindinput="onInput" data-k="note"></textarea>
+  </view>
+
+  <view class="foot-hint">填完点下方按钮，生成「给店员的卡」→ 亮屏或保存即可。</view>
+
+  <!-- 卡片预览 -->
+  <view class="mask" wx:if="{{showCard}}" bindtap="closeCard">
+    <view class="gcard" catchtap="noop">
+      <view class="g-top">
+        <view class="g-t1">🛍️ 购物好官卡</view>
+        <view class="g-t2">请按这张卡帮我 · 我不太爱开口，但很需要您的眼光</view>
+      </view>
+      <view class="g-mode">
+        <view class="led" style="background:{{card.led}}"></view>{{card.modeText}}
+      </view>
+      <view class="g-sec">
+        <view class="g-lbl">身 材</view>
+        <view class="g-val">{{card.bodyText}}<text wx:if="{{card.size}}" class="badge">建议 {{card.size}}</text></view>
+      </view>
+      <view class="g-sec">
+        <view class="g-lbl">风 格</view>
+        <view class="g-val">
+          <block wx:if="{{card.styleTags.length}}">
+            <text wx:for="{{card.styleTags}}" wx:key="*this" class="tag">{{item}}</text>
+          </block>
+          <view wx:if="{{likeColor}}" class="mini">💛 喜欢：{{likeColor}}</view>
+          <view wx:if="{{dislike}}" class="mini">🚫 雷区：{{dislike}}</view>
+        </view>
+      </view>
+      <view class="g-sec">
+        <view class="g-lbl">本 次 需 求</view>
+        <view class="g-val">
+          <block wx:if="{{card.needList.length}}">
+            <view wx:for="{{card.needList}}" wx:key="*this">{{item}}</view>
+          </block>
+          <view wx:else class="empty">未填</view>
+        </view>
+      </view>
+      <view class="g-sec">
+        <view class="g-lbl">希 望 您 帮 我</view>
+        <view class="g-val">
+          <block wx:if="{{card.helpTags.length}}">
+            <text wx:for="{{card.helpTags}}" wx:key="*this" class="tag">{{item}}</text>
+          </block>
+          <view wx:else class="empty">未填</view>
+        </view>
+      </view>
+      <view class="g-sec">
+        <view class="g-lbl">留 言 给 您</view>
+        <view class="g-note">{{note}}</view>
+      </view>
+      <view class="g-foot">—— 由「购物好官」生成 · 尺码仅供参考，以试穿为准</view>
+      <view class="g-acts">
+        <view class="btn-p" bindtap="saveImage">🖼️ 保存图片</view>
+        <view class="btn-c" bindtap="closeCard">返回修改</view>
+      </view>
+    </view>
+  </view>
+
+  <canvas type="2d" id="cardCanvas" class="offcanvas"></canvas>
+</view>
+
+<view class="fab" wx:if="{{!showCard}}" bindtap="openCard">👀 预览我的购物卡</view>

@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "购物好官",
+    "navigationBarBackgroundColor": "#FF9AA2",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFE9E3",
+    "backgroundColorTop": "#FFE9E3",
+    "backgroundColorBottom": "#FFE9E3"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

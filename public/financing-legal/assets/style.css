@@ -588,6 +588,88 @@ body { height: 100%; overflow: hidden; }
 .toc a:hover { color: var(--gold-deep); }
 
 /* ===== 响应式 ===== */
+/* ============================================================
+   法务对话体（details.dlg）+ 行内注释（.anno）+ 一句话白话（.plain）
+   用途：把老板/投资人的大白话提问，与法务的大白话回答、条款翻译放在一起
+   颜色全部走 CSS 变量，深浅色自动适配
+   ============================================================ */
+.dlg {
+  margin: 14px 0 18px; border: 1px solid var(--line);
+  border-radius: 12px; background: var(--card);
+}
+.dlg > summary {
+  list-style: none; cursor: pointer; padding: 11px 16px;
+  display: flex; align-items: center; gap: 9px;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.dlg > summary::-webkit-details-marker { display: none; }
+.dlg > summary::after { content: "▾"; margin-left: auto; color: var(--gold); font-size: 12px; }
+.dlg[open] > summary::after { content: "▴"; }
+.dlg > summary:hover { background: color-mix(in srgb, var(--gold) 8%, transparent); border-radius: 11px; }
+.dlg[open] > summary { border-bottom: 1px dashed var(--line); border-radius: 11px 11px 0 0; }
+.dlg-bd { padding: 14px 16px 16px; font-size: 14px; line-height: 1.78; }
+
+.dlg-line { display: flex; gap: 10px; margin: 0 0 10px; align-items: flex-start; }
+.dlg-line .who {
+  flex: 0 0 auto; width: 56px; text-align: center; padding: 5px 2px;
+  border-radius: 8px; border: 1px solid var(--line);
+  font-size: 11.5px; line-height: 1.35; font-weight: 700;
+}
+.dlg-line .utt {
+  margin: 0; flex: 1 1 auto; padding: 9px 13px; border-radius: 10px;
+  font-size: 13.9px; line-height: 1.78; border: 1px solid var(--line);
+}
+.dlg-line .utt b { color: var(--ink); }
+.dlg-line .utt em { font-style: normal; color: var(--gold-deep); font-weight: 600; }
+.dlg-line.boss .who { color: var(--amber); background: var(--amber-soft); }
+.dlg-line.boss .utt { background: var(--amber-soft); }
+.dlg-line.inv  .who { color: var(--blue);  background: var(--blue-soft); }
+.dlg-line.inv  .utt { background: var(--blue-soft); }
+.dlg-line.me   .who { color: var(--green); background: var(--green-soft); }
+.dlg-line.me   .utt { background: var(--green-soft); }
+
+.dlg-note {
+  margin-top: 12px; padding: 10px 14px; border-left: 3px solid var(--gold);
+  background: var(--bg-alt); border-radius: 0 8px 8px 0;
+  font-size: 13.2px; color: var(--ink-2); line-height: 1.76;
+}
+.dlg-note b { color: var(--ink); }
+.dlg-note .nt {
+  display: block; font-size: 11.5px; letter-spacing: .1em;
+  color: var(--gold-deep); font-weight: 700; margin-bottom: 3px;
+}
+.dlg-note p:last-child, .dlg-note ul:last-child { margin-bottom: 0; }
+.dlg-note ul { margin: 6px 0 8px; padding-left: 20px; }
+.dlg-note li { margin: 3px 0; }
+
+/* 一句话白话：放在 h3 下面，先给结论 */
+.plain {
+  margin: 10px 0 14px; padding: 9px 14px; border-radius: 10px;
+  background: var(--bg-alt); font-size: 13.8px; color: var(--ink-2);
+  border: 1px dashed color-mix(in srgb, var(--gold) 50%, transparent);
+}
+.plain b { color: var(--ink); }
+.plain .pl {
+  font-weight: 700; color: var(--gold-deep);
+  margin-right: 6px; letter-spacing: .06em;
+}
+
+/* 行内注释：虚线下划线 + 上标「注」，悬停看 title */
+.anno {
+  border-bottom: 1px dashed var(--gold);
+  cursor: help; color: var(--ink);
+}
+.anno::after {
+  content: "注"; font-size: 9.5px; vertical-align: super;
+  color: var(--gold-deep); margin-left: 1px; letter-spacing: 0;
+}
+
+@media (max-width: 640px) {
+  .dlg-line { gap: 7px; }
+  .dlg-line .who { width: 44px; font-size: 11px; }
+  .dlg-line .utt { padding: 8px 10px; font-size: 13.4px; }
+}
+
 @media (max-width: 1180px) {
   .pagetoc { display: none !important; }
 }

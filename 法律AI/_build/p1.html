@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>港资珠宝零售集团 · 公司法律 AI 从 0 搭建总纲</title>
+<style>
+:root{
+  --bg:#FDFCF9; --bg2:#F6F3EC; --card:#FFFFFF; --ink:#1D1D1F; --ink2:#4A4A4E; --ink3:#7C7C82;
+  --gold:#B89F6B; --gold2:#D9C79B; --gold3:#8A7448; --line:#E6E1D5; --line2:#D8D2C4;
+  --red:#B5453C; --green:#4E7B52; --blue:#3F6A8F; --amber:#A6762B;
+  --shadow:0 1px 2px rgba(28,28,30,.04),0 4px 16px rgba(28,28,30,.05);
+}
+[data-theme="dark"]{
+  --bg:#1D1D1F; --bg2:#161618; --card:#252527; --ink:#EDEAE3; --ink2:#BFBBB2; --ink3:#8E8A82;
+  --gold:#C9B183; --gold2:#8A7448; --gold3:#D9C79B; --line:#3A3A3D; --line2:#4A4A4E;
+  --red:#D9756B; --green:#7FA984; --blue:#7BA6C9; --amber:#C9A15A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+  font-size:15.5px; line-height:1.85; -webkit-font-smoothing:antialiased;
+}
+.sans{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:1500px;margin:0 auto;padding:0 24px;display:flex;gap:32px;align-items:flex-start}
+#side{
+  width:250px;flex:0 0 250px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  padding:28px 0 60px;border-right:1px solid var(--line);
+}
+#main{flex:1;min-width:0;padding:28px 0 120px}
+@media(max-width:1080px){ #side{display:none} .wrap{padding:0 16px} }
+
+/* ---------- Header ---------- */
+.hd{padding-bottom:20px;margin-bottom:24px;border-bottom:2px solid var(--gold)}
+.hd .kicker{font-size:12px;letter-spacing:.32em;color:var(--gold);margin-bottom:10px}
+.hd h1{font-size:31px;line-height:1.35;letter-spacing:.02em;font-weight:600}
+.hd .sub{margin-top:12px;color:var(--ink2);font-size:14.5px;line-height:1.8}
+.hd .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-block;padding:3px 11px;border:1px solid var(--line2);border-radius:2px;
+  font-size:12px;color:var(--ink2);background:var(--bg2);
+}
+.chip.g{border-color:var(--gold);color:var(--gold3);background:transparent}
+
+/* ---------- Side nav ---------- */
+#side .navt{font-size:11px;letter-spacing:.24em;color:var(--gold);margin:0 0 12px 2px}
+#side a{
+  display:block;padding:7px 10px;color:var(--ink2);text-decoration:none;font-size:13.5px;
+  border-left:2px solid transparent;border-radius:0 2px 2px 0;transition:.15s;
+}
+#side a:hover{background:var(--bg2);color:var(--ink)}
+#side a.on{border-left-color:var(--gold);color:var(--gold3);background:var(--bg2);font-weight:600}
+#side a .n{color:var(--gold);margin-right:7px;font-size:12px}
+
+/* ---------- Sections ---------- */
+section{margin-bottom:56px;scroll-margin-top:20px}
+h2{
+  font-size:22px;font-weight:600;letter-spacing:.02em;margin-bottom:6px;
+  padding-bottom:12px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;
+}
+h2 .num{
+  font-size:13px;color:#fff;background:var(--gold);min-width:30px;height:24px;
+  display:inline-flex;align-items:center;justify-content:center;border-radius:2px;padding:0 7px;
+}
+h3{font-size:17px;font-weight:600;margin:30px 0 12px;color:var(--ink);
+   border-left:3px solid var(--gold);padding-left:11px;line-height:1.5}
+h4{font-size:15px;font-weight:600;margin:20px 0 8px;color:var(--ink)}
+p{margin-bottom:12px;color:var(--ink2)}
+b,strong{color:var(--ink);font-weight:600}
+a{color:var(--gold3);text-decoration:none;border-bottom:1px dotted var(--gold2)}
+a:hover{border-bottom-style:solid}
+ul,ol{margin:0 0 14px 22px;color:var(--ink2)}
+li{margin-bottom:6px}
+code{
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;
+  background:var(--bg2);padding:1px 6px;border-radius:2px;color:var(--ink);
+  border:1px solid var(--line);
+}
+
+/* ---------- Callouts ---------- */
+.box{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  padding:16px 18px;margin:18px 0;border-radius:0 3px 3px 0;box-shadow:var(--shadow);
+}
+.box .t{font-weight:600;color:var(--ink);margin-bottom:7px;font-size:14.5px}
+.box.warn{border-left-color:var(--red)}
+.box.warn .t{color:var(--red)}
+.box.ok{border-left-color:var(--green)}
+.box.ok .t{color:var(--green)}
+.box.info{border-left-color:var(--blue)}
+.box.info .t{color:var(--blue)}
+.box p:last-child{margin-bottom:0}
+.box ul{margin-bottom:0}
+
+/* ---------- Tables ---------- */
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:3px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th{
+  background:var(--bg2);text-align:left;padding:11px 13px;font-weight:600;color:var(--ink);
+  border-bottom:1px solid var(--line2);white-space:nowrap;font-size:13px;letter-spacing:.03em;
+}
+td{padding:10px 13px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.7}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg2)}
+td b,th b{color:var(--ink)}
+.tc{text-align:center}.tr{text-align:right}
+
+/* ---------- Tags ---------- */
+.tag{display:inline-block;padding:1px 8px;border-radius:2px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-p0{background:var(--red);color:#fff}
+.t-p1{background:var(--amber);color:#fff}
+.t-p2{background:var(--blue);color:#fff}
+.t-ok{background:rgba(78,123,82,.14);color:var(--green);border:1px solid var(--green)}
+.t-no{background:rgba(181,69,60,.13);color:var(--red);border:1px solid var(--red)}
+.t-mid{background:rgba(166,118,43,.14);color:var(--amber);border:1px solid var(--amber)}
+.t-g{background:rgba(184,159,107,.16);color:var(--gold3);border:1px solid var(--gold)}
+
+/* ---------- Cards grid ---------- */
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.card h5{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.card p{font-size:13.5px;margin-bottom:8px;line-height:1.75}
+.card ul{font-size:13px;margin:8px 0 0 18px}
+.card li{margin-bottom:4px}
+
+/* ---------- Check list ---------- */
+.ck{list-style:none;margin:14px 0 0 0}
+.ck li{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 12px;margin-bottom:5px;
+  background:var(--card);border:1px solid var(--line);border-radius:2px;font-size:13.5px;
+  color:var(--ink2);cursor:pointer;transition:.15s;line-height:1.7;
+}
+.ck li:hover{border-color:var(--gold2)}
+.ck li input{margin-top:5px;accent-color:var(--gold);cursor:pointer;flex:0 0 auto;width:15px;height:15px}
+.ck li.done{opacity:.5;text-decoration:line-through}
+.ck li.done .bx{text-decoration:none}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;margin:22px 0 0 0;padding-left:0;list-style:none}
+.tl:before{
+  content:"";position:absolute;left:88px;top:8px;bottom:8px;width:1px;background:var(--line2);
+}
+.tl li{position:relative;padding:0 0 26px 116px;margin:0}
+.tl .wk{
+  position:absolute;left:0;top:0;width:74px;text-align:right;font-size:12.5px;
+  color:var(--gold3);font-weight:600;padding-top:2px;
+}
+.tl .dot{
+  position:absolute;left:83px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--gold);
+}
+.tl .dot.solid{background:var(--gold)}
+.tl h5{font-size:15px;font-weight:600;margin-bottom:7px;color:var(--ink)}
+.tl p{font-size:13.5px;margin-bottom:6px}
+.tl .dl{font-size:12.5px;color:var(--ink3);margin-top:6px}
+.tl .dl b{color:var(--gold3)}
+
+/* ---------- Arch diagram ---------- */
+.arch{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px;margin:18px 0;box-shadow:var(--shadow)}
+.layer{display:flex;align-items:stretch;gap:12px;margin-bottom:10px}
+.layer .lb{
+  flex:0 0 128px;background:var(--bg2);border:1px solid var(--line2);border-radius:2px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 8px;text-align:center;
+}
+.layer .lb .n{font-size:11px;color:var(--gold);letter-spacing:.16em;margin-bottom:3px}
+.layer .lb .v{font-size:14px;font-weight:600;color:var(--ink)}
+.layer .ct{flex:1;background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:12px 14px}
+.layer .ct .row{font-size:13px;color:var(--ink2);margin-bottom:5px;line-height:1.7}
+.layer .ct .row:last-child{margin-bottom:0}
+.layer .ct b{color:var(--ink)}
+.arrow{text-align:center;color:var(--gold);font-size:15px;line-height:1;margin:-4px 0 6px}
+@media(max-width:720px){ .layer{flex-direction:column} .layer .lb{flex:none} }
+
+/* ---------- Misc ---------- */
+.kv{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.kv .i{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:13px 15px}
+.kv .i .k{font-size:12px;color:var(--ink3);margin-bottom:3px}
+.kv .i .v{font-size:19px;font-weight:600;color:var(--gold3);line-height:1.4}
+.kv .i .v small{font-size:12px;color:var(--ink3);font-weight:400}
+
+.fold{margin:12px 0;border:1px solid var(--line);border-radius:3px;background:var(--card);overflow:hidden}
+.fold>summary{
+  padding:12px 16px;cursor:pointer;font-weight:600;font-size:14.5px;color:var(--ink);
+  background:var(--bg2);list-style:none;display:flex;align-items:center;gap:9px;
+}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary:before{content:"▸";color:var(--gold);transition:.2s;display:inline-block}
+.fold[open]>summary:before{transform:rotate(90deg)}
+.fold>summary:hover{background:var(--bg)}
+.fold .bd{padding:16px 18px}
+
+.foot{margin-top:60px;padding-top:22px;border-top:2px solid var(--gold);color:var(--ink3);font-size:12.5px;line-height:1.9}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+.btn{
+  background:var(--card);border:1px solid var(--line2);color:var(--ink2);padding:6px 14px;
+  border-radius:2px;cursor:pointer;font-size:13px;font-family:inherit;transition:.15s;
+}
+.btn:hover{border-color:var(--gold);color:var(--gold3)}
+.prog{font-size:12.5px;color:var(--ink3)}
+
+@media print{
+  #side,.topbar{display:none}
+  body{background:#fff;color:#000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav id="side">
+  <div class="navt">目 录</div>
+  <a href="#s0" class="on"><span class="n">序</span>怎么用这份方案</a>
+  <a href="#s1"><span class="n">01</span>诊断：法务工作量地图</a>
+  <a href="#s2"><span class="n">02</span>目标与红线边界</a>
+  <a href="#s3"><span class="n">03</span>场景优先级矩阵</a>
+  <a href="#s4"><span class="n">04</span>总体技术架构</a>
+  <a href="#s5"><span class="n">05</span>开源选型与License</a>
+  <a href="#s6"><span class="n">06</span>知识库建设（成败关键）</a>
+  <a href="#s7"><span class="n">07</span>双法域合规与风控</a>
+  <a href="#s8"><span class="n">08</span>24周落地路线图</a>
+  <a href="#s9"><span class="n">09</span>预算三档</a>
+  <a href="#s10"><span class="n">10</span>评测与度量</a>
+  <a href="#s11"><span class="n">11</span>风险登记册</a>
+  <a href="#s12"><span class="n">12</span>第一周就做的5件事</a>
+  <a href="#s13"><span class="n">13</span>开源资源总清单</a>
+</nav>
+
+<main id="main">
+
+<div class="topbar">
+  <div class="hd sans" style="border:none;padding:0;margin:0;flex:1">
+    <div class="kicker">法 务 数 字 化 · 内 部 立 项 文 件</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <span class="prog" id="pg"></span>
+    <button class="btn" id="tm">切换深色</button>
+    <button class="btn" onclick="window.print()">打印 / 存 PDF</button>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="kicker">LEGAL AI · FROM ZERO TO ONE</div>
+  <h1>港资珠宝零售集团<br>公司法律 AI 从 0 搭建总纲</h1>
+  <div class="sub">
+    面向「内地 + 香港」双法域、直营门店为主的珠宝零售集团法务部。<br>
+    这份文件回答三件事：<b>到底该做什么场景</b>、<b>用什么开源栈、花多少钱</b>、<b>24 周怎么一步步跑完</b>。
+  </div>
+  <div class="meta">
+    <span class="chip g">版本 v1.0</span>
+    <span class="chip">编制日期 2026-09-15</span>
+    <span class="chip">编制：法务部（法务总监视角）</span>
+    <span class="chip">适用范围：集团法务 + IT + 合规</span>
+    <span class="chip g">已脱敏 · 可公开</span>
+  </div>
+</header>
+
+<!-- ========== S0 ========== -->
+<section id="s0">
+  <h2><span class="num">序</span>怎么用这份方案</h2>
+
+  <div class="box warn">
+    <div class="t">脱敏声明（先读这一条）</div>
+    <p>本文件<b>全篇不出现集团真实商号、门店具名、供应商名称、租金与抽成比例、毛利数据</b>，一律以「集团 / H 集团」「A 类门店」「供应商 S」等代号表述。原因是本文件拟对外发布（个人网站 / 行业交流），而珠宝零售的<b>租金条款、抽成比例、采购价格</b>属核心商业秘密，披露即构成竞争损害。</p>
+    <p>内部落地版请另建一份未脱敏副本，按第 06 章权限矩阵管控，<b>两份文件不得混用</b>。</p>
+  </div>
+
+  <h3>这份方案的方法论立场</h3>
+  <p>市面上讲「企业法律 AI」的材料，九成在讲模型多强、RAG 多先进。但法务 AI 项目失败的真正原因从来不是模型——是三件事：<b>场景选错</b>（做了没人用的东西）、<b>语料没整理</b>（垃圾进垃圾出）、<b>没有引用溯源</b>（编了一条不存在的法条，从此再没人敢用）。</p>
+  <p>所以本方案的重心分配是：<b>场景与数据 60%、合规与治理 20%、技术选型 15%、模型 5%</b>。模型是最不值得纠结的一环。</p>
+
+  <div class="grid g3">
+    <div class="card">
+      <h5>◆ 判断一：不要自研</h5>
+      <p>2026 年的开源生态已经成熟到「法务部 + 1 名 IT」就能搭出生产级系统。自研 RAG 是浪费预算。选 Apache-2.0 / MIT 栈，站在社区肩膀上。</p>
+    </div>
+    <div class="card">
+      <h5>◆ 判断二：不要上法律垂类模型</h5>
+      <p>中文法律垂类模型普遍停更、License 带非商用限制（ChatLaw 是 AGPL-3.0，HanFei / Lawyer-LLaMA 明确禁商用），且能力已被 Qwen3、DeepSeek 等通用强基座反超。<b>强通用基座 + 私域语料 + 强制引用</b>是更优解。</p>
+    </div>
+    <div class="card">
+      <h5>◆ 判断三：先做「不性感」的场景</h5>
+      <p>租赁合同审查、法规问答、投诉话术——这些不酷，但占了法务部 70% 的工时。先打穿它们拿到可信度，再谈智能体。</p>
+    </div>
+  </div>
+
+  <h3>本文件的用法</h3>
+  <ul>
+    <li><b>报预算</b>：直接拿第 08 章 + 第 09 章做立项材料，三档预算任选其一。</li>
+    <li><b>给 IT 看</b>：第 04 章架构 + 第 05 章选型 + 第 13 章资源清单，可直接执行。</li>
+    <li><b>给老板看</b>：第 01 章诊断 + 第 03 章场景矩阵 + 第 09 章预算 + 第 10 章度量，一页讲清投入产出。</li>
+    <li><b>自己执行</b>：第 12 章「第一周就做的 5 件事」，本周就能开工，不需要等预算批下来。</li>
+  </ul>
+
+  <div class="box info">
+    <div class="t">关于文中法条的准确性</div>
+    <p>本文件引用的法律法规、标准编号、生效日期，用途是<b>界定知识库入库优先级</b>，不是法律意见。落地时每一条都必须回官方源核验现行有效版本（第 06 章给了具体数据源与核验要求）。凡本文件标注「须核实」的，务必核实后再入库或对外引用。</p>
+  </div>
+</section>
+
+<!-- ========== S1 ========== -->
+<section id="s1">
+  <h2><span class="num">01</span>诊断：港企珠宝直营的法务工作量地图</h2>
+  <p>直营模式（区别于加盟）的法务工作量有一个鲜明特征：<b>高度重复、高度标准化、高度集中</b>。200+ 家门店面对的是同一份租赁合同模板、同一套供应商框架协议、同一部消法、同一批劳动争议。这正是 AI 最擅长的地方。</p>
+
+  <h3>1.1 法务工作量分布（典型港资珠宝直营集团）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th style="width:15%">业务域</th>
+        <th style="width:9%" class="tc">工时占比</th>
+        <th style="width:11%" class="tc">年频次</th>
+        <th style="width:11%" class="tc">标准化度</th>
+        <th>主要工作内容</th>
+        <th style="width:10%" class="tc">AI 可替代度</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>门店租赁</b></td><td class="tc">22%</td><td class="tc">60–90 份/年</td><td class="tc"><span class="tag t-ok">高</span></td><td>续租谈判、租约审查、免租期与装修期、抽成租金条款、提前解约、保证金回收、商场统一收银结算</td><td class="tc"><span class="tag t-ok">70%</span></td></tr>
+        <tr><td><b>日常咨询</b></td><td class="tc">18%</td><td class="tc">1500+ 次/年</td><td class="tc"><span class="tag t-ok">高</span></td><td>门店店长 / 区域经理的微信、电话咨询：退换货、顾客纠纷、工商检查、会员信息、促销活动合规</td><td class="tc"><span class="tag t-ok">85%</span></td></tr>
+        <tr><td><b>消费者纠纷</b></td><td class="tc">14%</td><td class="tc">300–500 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>退货拒单、质量鉴定争议、以旧换新、预付卡退卡、直播带货投诉、12315 / 消委会转办</td><td class="tc"><span class="tag t-ok">65%</span></td></tr>
+        <tr><td><b>商品合规</b></td><td class="tc">11%</td><td class="tc">持续</td><td class="tc"><span class="tag t-ok">高</span></td><td>贵金属纯度标识、珠宝玉石命名、价格标签、广告用语审核、有害元素限量、计量器具</td><td class="tc"><span class="tag t-ok">75%</span></td></tr>
+        <tr><td><b>劳动用工</b></td><td class="tc">10%</td><td class="tc">80–150 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>导购高流动、排班与加班费、离职补偿、工伤、劳务派遣、竞业限制、集体协商</td><td class="tc"><span class="tag t-mid">55%</span></td></tr>
+        <tr><td><b>采购与供应商</b></td><td class="tc">9%</td><td class="tc">100–200 份/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>框架协议、订单条款、质量保证、退换货与索赔、账期、知识产权归属</td><td class="tc"><span class="tag t-mid">50%</span></td></tr>
+        <tr><td><b>知识产权</b></td><td class="tc">7%</td><td class="tc">50–120 起/年</td><td class="tc"><span class="tag t-mid">中</span></td><td>商标续展与监测、外观设计、电商仿冒投诉、真假鉴定配合、侵权取证</td><td class="tc"><span class="tag t-mid">45%</span></td></tr>
+        <tr><td><b>数据合规 / 反洗钱</b></td><td class="tc">5%</td><td class="tc">持续</td><td class="tc"><span class="tag t-no">低</span></td><td>PIPL + 香港 PDPO 双轨、门店人脸客流采集、会员数据出境、大额现金交易登记</td><td class="tc"><span class="tag t-mid">40%</span></td></tr>
+        <tr><td><b>争议与诉讼</b></td><td class="tc">4%</td><td class="tc">20–40 起/年</td><td class="tc"><span class="tag t-no">低</span></td><td>诉讼、仲裁、执行、律师管理</td><td class="tc"><span class="tag t-no">15%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">注：上表为行业典型分布估算，<b>落地第一步必须替换为集团真实工单统计</b>（见第 12 章第 1 件事）。用真实数据定优先级，别用感觉。</p>
+
+  <h3>1.2 四象限：先啃哪一块</h3>
+  <div class="grid g2">
+    <div class="card" style="border-left:3px solid var(--red)">
+      <h5>◆ 第一优先：高频率 × 高标准</h5>
+      <p><b>门店租赁审查、日常法规咨询、商品合规标识</b></p>
+      <ul>
+        <li>占法务工时 51%，规则明确，答案可枚举</li>
+        <li>有现成的历史文件可当语料（200+ 份租约、大量审查意见）</li>
+        <li>出错代价可控，适合试错</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h5>◆ 第二优先：高频 × 中标准</h5>
+      <p><b>消费者纠纷、劳动用工</b></p>
+      <ul>
+        <li>频次高但个案差异大，AI 做「初判 + 要点提示」而非定论</li>
+        <li>必须设计人工复核闭环</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <h5>◆ 后置：中频 × 中标准</h5>
+      <p><b>采购合同、知识产权</b></p>
+      <ul>
+        <li>等第一优先场景跑通、语料积累足够后再开</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--ink3)">
+      <h5>◆ 明确不做：AI 只做辅助</h5>
+      <p><b>诉讼策略、重大商务谈判、监管应对决策</b></p>
+      <ul>
+        <li>低频、高判断、高责任，AI 只做检索与材料准备</li>
+        <li>涉及执业边界，见第 02 章红线</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>1.3 珠宝零售特有的四个「坑」</h3>
+  <p>通用企业法律 AI 方案不会覆盖这些，但它们是珠宝行业的高频雷区，必须在知识库里专门建库：</p>
+  <div class="grid g2">
+    <div class="card">
+      <h5>① 贵金属纯度与命名的强制标准</h5>
+      <p>首饰的<b>纯度标识、命名方法、印记</b>受强制性国家标准约束（GB 11887 系列，具体版本须核实）。命名错一个字——例如把「足金」标成「千足金」、把「合成」写成「天然」——就是《产品质量法》与《消法》下的欺诈风险，客诉高发。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：门店上架标签 / 详情页文案批量合规预检。</p>
+    </div>
+    <div class="card">
+      <h5>② 「三包」误区</h5>
+      <p>珠宝首饰<b>通常不在国家《部分商品修理更换退货责任规定》的目录内</b>（该目录以家电、摩托车等为主）。所以「7 天无理由」不等于「珠宝适用」，但电商渠道又受《电子商务法》与平台规则约束，线下则靠企业自定承诺。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：按渠道（线下 / 电商 / 直播 / 境外）给出差异化的退换货口径，避免门店乱承诺。</p>
+    </div>
+    <div class="card">
+      <h5>③ 大额现金与反洗钱（双法域）</h5>
+      <p>珠宝是典型的现金高发行业。内地《反洗钱法》项下特定非金融机构义务范围、以及香港《打击洗钱及恐怖分子资金筹集条例》（第 615 章）下的<b>贵金属及宝石交易商（DPMS）注册与尽职调查制度</b>，构成两套并行要求。香港侧对现金交易的门槛与登记义务有明确规则（须核实现行门槛与最新修订）。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：门店大额现金交易 SOP 问答 + 尽调留痕清单生成。</p>
+    </div>
+    <div class="card">
+      <h5>④ 门店人脸采集与会员数据出境</h5>
+      <p>门店客流分析用的人脸采集，在内地属敏感个人信息，PIPL 项下须单独同意且须有必要性论证；会员数据回传香港总部则触发<b>数据出境</b>合规路径（PIPL 第 38 条）。香港侧 PDPO 虽无出境限制，但六项保障资料原则仍适用。</p>
+      <p style="color:var(--gold3);font-size:12.5px">AI 用途：新店 / 新系统上线前的合规 checklist 自动生成。这也是<b>本项目自身</b>必须先过关的一关（第 07 章）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S2 ========== -->
+<section id="s2">
+  <h2><span class="num">02</span>目标与红线边界</h2>
+  <p>在谈技术之前，先把「能做什么、绝不能做什么」写死。这份边界清单的价值高于任何技术方案——它决定了这个项目会不会在某个时刻被一个幻觉法条毁掉。</p>
+
+  <h3>2.1 系统定位：一句话</h3>
+  <div class="box">
+    <p style="font-size:16px;color:var(--ink);line-height:1.9">
+      本系统是<b>「法务部内部的检索增强起草与初筛工具」</b>，不是自动律师、不是法律意见生成器、不对任何人直接输出终局结论。<br>
+      它的全部产出，法律性质上是<b>「助理起草的草稿」</b>，必须经法务人员复核签字后方可对外。
+    </p>
+  </div>
+
+  <h3>2.2 六条红线（写入系统提示词 + 员工手册）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:5%" class="tc">#</th><th style="width:26%">红线</th><th>具体规则与技术实现</th></tr></thead>
+      <tbody>
+        <tr><td class="tc"><b>1</b></td><td><b>无引用不作答</b></td><td>凡涉及法条、标准、公司制度的表述，必须附带可点击溯源（文件名 + 条号 + 版本日期）。系统层面：检索无命中或置信度低于阈值时，强制输出「未检索到依据，请转人工」，<b>禁止模型自由发挥</b>。</td></tr>
+        <tr><td class="tc"><b>2</b></td><td><b>不做终局结论</b></td><td>禁止输出「应当 / 必须 / 一定不构成」等确定性判断，一律改为「依据 X 第 N 条，通常理解为……，但需结合……确认」。系统层面：后处理正则拦截 + 强制免责尾注。</td></tr>
+        <tr><td class="tc"><b>3</b></td><td><b>不对外直发</b></td><td>AI 产出不得直接发送给顾客、供应商、房东、监管机关。对外文本一律人工复核并留痕。系统层面：导出文件带水印「AI 初稿 · 未经复核不得外发」。</td></tr>
+        <tr><td class="tc"><b>4</b></td><td><b>涉密数据隔离</b></td><td>租金、抽成比例、采购价、毛利、未决诉讼、员工个人信息——分级管控，默认不进向量库或仅存脱敏摘要。系统层面：L3 语料独立命名空间 + 角色级权限 + 全量查询审计日志。</td></tr>
+        <tr><td class="tc"><b>5</b></td><td><b>不替代执业判断</b></td><td>诉讼策略、是否起诉 / 上诉、和解方案、对外承诺——AI 只做材料准备与要点罗列，决策权在人。系统层面：命中此类关键词时转入「要点罗列模式」。</td></tr>
+        <tr><td class="tc"><b>6</b></td><td><b>不跨境混存</b></td><td>内地业务数据与香港业务数据分库存储，默认不出境；确需共享的走脱敏摘要。系统层面：双区部署，见第 07 章。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.3 成功标准（一年后怎么算做成）</h3>
+  <div class="kv">
+    <div class="i"><div class="k">法务重复咨询</div><div class="v">↓ 60%<small> 门店常规问题由 AI 首答</small></div></div>
+    <div class="i"><div class="k">租约初审耗时</div><div class="v">40min → 12min<small> 单份标准租约</small></div></div>
+    <div class="i"><div class="k">引用准确率</div><div class="v">≥ 95%<small> 黄金测试集回归</small></div></div>
+    <div class="i"><div class="k">幻觉率</div><div class="v">≤ 2%<small> 编造法条 / 条款</small></div></div>
+    <div class="i"><div class="k">周活法务人数</div><div class="v">≥ 80%<small> 部门月活占比</small></div></div>
+    <div class="i"><div class="k">首年净节省</div><div class="v">≥ 200 工时<small> / 季度（法务部）</small></div></div>
+  </div>
+  <p class="sans" style="font-size:12.5px;color:var(--ink3)">这些数字是<b>立项承诺值</b>，不是乐观估计。第 10 章给了测量方法。承诺给老板的数字要能被测出来，否则第二年预算就没了。</p>
+</section>
