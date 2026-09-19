@@ -21,6 +21,10 @@ interface NavbarProps {
 const FOCUS_RING =
   'focus-visible:outline-none focus-visible:[text-shadow:0_0_12px_rgba(184,159,107,1),0_0_28px_rgba(184,159,107,0.65),0_0_44px_rgba(184,159,107,0.4)]';
 
+// 统一的悬停反馈：不加底色块/边框，文字变香槟金 + 柔和金色光晕（参照「ENGLISH」样式）
+const HOVER_GLOW =
+  'hover:text-[#B89F6B] hover:[text-shadow:0_0_12px_rgba(184,159,107,0.85),0_0_26px_rgba(184,159,107,0.45)]';
+
 export const Navbar: React.FC<NavbarProps> = ({
   activeGroup,
   activeTab,
@@ -127,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className={`w-full flex items-center justify-between gap-4 rounded-lg px-3 py-2 text-sm text-left transition-colors ${FOCUS_RING} ${
           isCurrent
             ? 'bg-[#B89F6B]/10 text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
-            : 'text-[#5F5F63] dark:text-[#A1A1A6] hover:bg-[#F5F2EA] dark:hover:bg-[#2C2C2E] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7]'
+            : `text-[#5F5F63] dark:text-[#A1A1A6] ${HOVER_GLOW}`
         }`}
       >
         <span className="flex items-center gap-2">
@@ -228,7 +232,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`${
                       isActive || isOpen
                         ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
-                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
+                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B] group-hover:[text-shadow:0_0_12px_rgba(184,159,107,0.85),0_0_26px_rgba(184,159,107,0.45)]'
                     } transition-colors`}
                   >
                     {g.label}
@@ -265,7 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="theme-toggle-btn"
             onClick={onToggleDarkMode}
             aria-label="Toggle Theme"
-            className={`p-2 rounded-full text-[#86868B] hover:text-[#B89F6B] hover:bg-[#E8E8E6]/40 dark:hover:bg-[#2C2C2E]/60 transition-all ${FOCUS_RING}`}
+            className={`p-2 rounded-full text-[#86868B] transition-all ${HOVER_GLOW} ${FOCUS_RING}`}
             title={darkMode ? '切换至明亮模式' : '切换至暗夜模式'}
           >
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -274,7 +278,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             id="nav-contact-btn"
             onClick={onOpenContact}
-            className={`flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F5F5F7] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-full hover:border-[#B89F6B] hover:text-[#B89F6B] transition-all duration-300 ${FOCUS_RING}`}
+            className={`group flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F5F5F7] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-full transition-all duration-300 ${HOVER_GLOW} ${FOCUS_RING}`}
           >
             <Mail size={14} className="text-[#86868B] group-hover:text-[#B89F6B]" />
             <span>联系我</span>
@@ -324,7 +328,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`relative inline-flex items-center px-3 py-1.5 rounded-full text-[13px] transition-colors ${FOCUS_RING} ${
                     isCurrent
                       ? 'font-medium text-[#1D1D1F] dark:text-[#1D1D1F]'
-                      : 'text-[#5F5F63] dark:text-[#A1A1A6] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] hover:bg-[#F5F2EA] dark:hover:bg-[#2C2C2E]'
+                      : `text-[#5F5F63] dark:text-[#A1A1A6] ${HOVER_GLOW}`
                   }`}
                 >
                   {isCurrent && (
