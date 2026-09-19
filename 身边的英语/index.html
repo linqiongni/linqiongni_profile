@@ -219,9 +219,8 @@
   </div>
 </div>
 
-<script src="scenes.js"></script>
 <script>
-(function(){
+function EN_START(){
   "use strict";
   var synth = window.speechSynthesis;
   var voices = [];
@@ -555,6 +554,20 @@
 
   renderDir();
   renderScene();
+}
+
+/* 加载内容数据：把 iframe 上带的版本号透传给 scenes.js，避免命中旧缓存（旧 index + 新/旧数据不匹配会白屏） */
+(function(){
+  var m = location.search.match(/[?&]v=([^&]+)/);
+  var v = m ? m[1] : "";
+  var s = document.createElement("script");
+  s.src = "scenes.js" + (v ? "?v=" + v : "");
+  s.onload = function(){ try { EN_START(); } catch(e){ console.error(e); } };
+  s.onerror = function(){
+    var r = document.getElementById("reader");
+    if(r) r.innerHTML = '<div class="empty">内容没加载出来，刷新一下试试</div>';
+  };
+  document.head.appendChild(s);
 })();
 </script>
 </body>
