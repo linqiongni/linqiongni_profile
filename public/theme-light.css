@@ -5,6 +5,8 @@
   /* 底座 */
   --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
   --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
+  /* 面板变量（左栏目录 .side 常用 --panel3 作底色，缺失会导致浅色文字压深后黑底黑字） */
+  --panel:#FFFFFF; --panel2:#FAF7F0; --panel3:#F5F1E7;
   --line:#E3E0D8; --line2:#CFCABE;
   /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
   --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;

@@ -69,6 +69,13 @@
   var layout = el('div', 'layout');
   var side = el('aside', 'side');
   side.id = 'side';
+  var sideHd = el('div', 'side-hd');
+  sideHd.appendChild(el('span', 't', '目录'));
+  var collapseBtn = el('button', 'collapse-btn', '⟨');
+  collapseBtn.setAttribute('aria-label', '收起目录');
+  collapseBtn.title = '收起目录（左折叠）';
+  sideHd.appendChild(collapseBtn);
+  side.appendChild(sideHd);
   var main = el('div', 'main');
   main.id = 'main';
   var bodywrap = el('div', 'bodywrap');
@@ -142,6 +149,20 @@
   Object.keys(linkMap).forEach(function (k) {
     linkMap[k].addEventListener('click', function () { side.classList.remove('open'); });
   });
+
+  /* ---------- 左折叠收起（可记忆） ---------- */
+  var fab = el('button', 'side-fab', '⟩ 目录');
+  fab.setAttribute('aria-label', '展开目录');
+  body.appendChild(fab);
+  function setCollapsed(on) {
+    document.body.classList.toggle('side-collapsed', on);
+    try { localStorage.setItem('crim_side_collapsed', on ? '1' : '0'); } catch (e) {}
+  }
+  collapseBtn.addEventListener('click', function () { setCollapsed(true); });
+  fab.addEventListener('click', function () { setCollapsed(false); });
+  try {
+    if (localStorage.getItem('crim_side_collapsed') === '1' && isWide()) setCollapsed(true);
+  } catch (e) {}
 
   search.addEventListener('input', function () {
     var q = (search.value || '').trim().toLowerCase();
