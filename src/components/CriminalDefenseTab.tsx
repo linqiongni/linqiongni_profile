@@ -8,10 +8,10 @@ import { ThemeIframe } from './ThemeIframe';
  */
 export const CriminalDefenseTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => (
   <ThemeIframe
-    src="/criminal/plan.html"
-    title="刑事辩护 · 30 天训练计划"
+    src="/criminal/index.html"
+    title="刑事辩护全流程实务手册"
     darkMode={darkMode}
     openUrl="/criminal/index.html"
-    openLabel="完整手册（新窗口）"
+    openLabel="新窗口打开完整手册"
   />
 );
