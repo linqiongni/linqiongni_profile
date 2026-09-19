@@ -517,7 +517,11 @@ function EN_START(){
     html += '<div class="foot">整段播放由浏览器语音合成，句子随朗读高亮。点任意一句可从该句开始；0.75× 适合听连读。进度与「已听」记在本机浏览器。</div>';
 
     reader.innerHTML = html;
-    $("playThis").onclick = function(){ list = sents(); playFrom(0); };
+    $("playThis").onclick = function(){
+      list = sents();
+      if(state.playing){ var i = state.idx; stopAll(); state.idx = i; }
+      else playFrom(0);
+    };
     $("down").onclick = function(){
       if(done[s.id]) delete done[s.id]; else done[s.id] = 1;
       store.set("en-done", JSON.stringify(done));
@@ -566,9 +570,25 @@ function EN_START(){
     updateBar();
   }
 
+  /* iOS Safari 限制：首次 speechSynthesis.speak() 必须在用户点击的手势内同步发生，
+     否则引擎保持锁定、之后所有 speak 都静默失败（无声、无暂停态）。
+     在点击处理器里先同步说一声静音 utterance 解锁引擎，后续程序触发的 speak 才正常。 */
+  var ttsUnlocked = false;
+  function unlockTTS(){
+    if(ttsUnlocked || !synth) return;
+    try {
+      var u0 = new SpeechSynthesisUtterance(" ");
+      u0.volume = 0;
+      u0.rate = 2;
+      synth.speak(u0);
+      ttsUnlocked = true;
+    } catch(e){}
+  }
+
   function playFrom(i){
     list = sents();
     if(!list.length) return;
+    unlockTTS();
     stopAll();
     if(i >= list.length) i = 0;
     if(i < 0) i = 0;
@@ -597,7 +617,8 @@ function EN_START(){
       else { stopAll(); state.idx = 0; updateBar(); }
     };
     u.onerror = function(){ if(myRun === runId){ state.playing = false; updateBar(); } };
-    setTimeout(function(){ if(myRun === runId){ try { synth.speak(u); } catch(e){} } }, 40);
+    /* iOS 手势链要求：speak 必须同步调用（原 setTimeout 40ms 会导致 iOS 静默不发声） */
+    if(myRun === runId){ try { synth.speak(u); } catch(e){} }
   }
 
   function toggle(){
@@ -610,6 +631,10 @@ function EN_START(){
     $("pSub").textContent = (n ? (state.idx + 1) : 0) + " / " + n;
     $("fill").style.width = (n ? ((state.idx + 1) / n * 100) : 0) + "%";
     $("play").innerHTML = state.playing ? "&#10074;&#10074;" : "&#9654;";
+    /* 正文里的播放按钮同步变暂停：手机上播放条在屏幕底部不显眼，
+       暂停控件直接出现在用户点击的位置（iOS 暂停用 cancel 实现，恢复从当前句续播） */
+    var pt = $("playThis");
+    if(pt) pt.innerHTML = state.playing ? "&#10074;&#10074; 暂停播放" : "&#9654; 播放这一篇";
   }
 
   function closeSide(){ $("app").classList.add("collapsed"); }
