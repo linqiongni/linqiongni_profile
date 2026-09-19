@@ -1,14 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { ChevronDown } from 'lucide-react';
-import { TabType } from '../types';
-import { NAV_GROUPS, SUB_TAB_META } from '../navConfig';
-
-interface HeroProps {
-  onScrollToContent: () => void;
-  onExploreTab: (tab: TabType) => void;
-}
 
 /** 首屏数据条：用体量证明内容丰富度（数字与 public/ 静态页实际数量级一致） */
 const HERO_STATS: { num: string; label: string }[] = [
@@ -17,7 +9,7 @@ const HERO_STATS: { num: string; label: string }[] = [
   { num: '3', label: '季影视律政拆解' },
 ];
 
-export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) => {
+export const Hero: React.FC = () => {
   return (
     <section
       id="hero-section"
@@ -87,48 +79,6 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
           </motion.div>
         </div>
 
-        {/* 内容地图：贴左下角，无边框文字导航 */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-auto w-full flex flex-col items-start gap-1 sm:gap-1.5"
-        >
-          {NAV_GROUPS.map((group) => (
-            <div key={group.id} className="flex items-start gap-2 sm:gap-3.5">
-              <span className="shrink-0 w-9 sm:w-10 pt-[2px] sm:pt-0.5 text-left text-[8px] sm:text-[9px] tracking-[0.14em] text-[#B89F6B] whitespace-nowrap opacity-70">
-                {group.label}
-              </span>
-              <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-0.5">
-                {group.subTabs.map((tab) => (
-                  <button
-                    key={tab}
-                    id={`hero-map-${tab}`}
-                    onClick={() => onExploreTab(tab)}
-                    className="group/chip relative py-0.5 text-[9px] sm:text-[10px] text-[#6E6E73] dark:text-[#98989D] hover:text-[#B89F6B] active:text-[#B89F6B] transition-colors duration-200"
-                  >
-                    {SUB_TAB_META[tab].label}
-                    <span
-                      className="pointer-events-none absolute left-0 right-0 bottom-0 h-[1px] origin-left scale-x-0 bg-[#B89F6B] transition-transform duration-300 group-hover/chip:scale-x-100"
-                      aria-hidden="true"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-          <button
-            onClick={onScrollToContent}
-            className="group mt-0.5 inline-flex items-center gap-1.5 text-[8px] sm:text-[9px] tracking-wide text-[#86868B] hover:text-[#B89F6B] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89F6B] rounded-full px-0.5 py-0.5"
-          >
-            <span>点击任意板块直达 · 顶部导航常驻，可随时切换</span>
-            <ChevronDown
-              size={13}
-              strokeWidth={1.8}
-              className="text-[#B89F6B] transition-transform group-hover:translate-y-0.5"
-            />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

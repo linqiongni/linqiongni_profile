@@ -159,20 +159,6 @@ export default function App() {
 
 
 
-  const handleScrollToContent = () => {
-
-    if (contentSectionRef.current) {
-
-      const topOffset = contentSectionRef.current.offsetTop - 128;
-
-      window.scrollTo({ top: topOffset, behavior: 'smooth' });
-
-    }
-
-  };
-
-
-
   return (
 
     <div className="min-h-screen flex flex-col bg-[#FDFCF9] dark:bg-[#1C1C1E] text-[#1D1D1F] dark:text-[#F5F5F7] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
@@ -211,13 +197,7 @@ export default function App() {
 
       {showHero && (
 
-        <Hero
-
-          onScrollToContent={handleScrollToContent}
-
-          onExploreTab={handleSelectTab}
-
-        />
+        <Hero />
 
       )}
 
