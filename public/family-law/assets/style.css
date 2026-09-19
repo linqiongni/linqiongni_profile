@@ -367,4 +367,4 @@ ul.chk li::before {
 .side-collapsed .side{flex-basis:0!important;width:0!important;padding-left:0;padding-right:0;border-right:none;overflow:hidden;}
 .side-collapsed .side>*{opacity:0;pointer-events:none;transition:opacity .12s;}
 .side-collapsed .side-fab{display:flex;}
-@media (max-width:1000px){ .side-fab{display:none!important;} .side-collapsed .side{width:0;flex-basis:0;} }
+@media (max-width:1000px){ .side-fab{display:none!important;} .side-collapsed .side{width:0;flex-basis:0;} .side-hd .collapse-btn{display:none!important;} }
