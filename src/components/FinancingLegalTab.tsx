@@ -18,5 +18,7 @@ export const FinancingLegalTab: React.FC<{ darkMode?: boolean }> = ({ darkMode =
     src={`/financing-legal/index.html?v=${IFRAME_V}`}
     title="融资法务 · 从 0 到 1"
     darkMode={darkMode}
+    // openUrl={null} = 不显示右下角「新窗口打开」浮层按钮（2026-09-19 Andy 要求正文区保持干净）
+    openUrl={null}
   />
 );
