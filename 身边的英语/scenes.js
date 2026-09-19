@@ -328,7 +328,7 @@ const SCENES = [
   },
 
   {
-    id: "s17", part: "weekend", time: "周六 9:30",
+    id: "s17", part: "weekend", time: "Sat 9:30",
     t: "The market run", z: "周末去菜市场",
     lead: "周末上午的菜市场，是一周里唯一一个不用排队也不用解释的地方。",
     paras: [
@@ -348,7 +348,7 @@ const SCENES = [
   },
 
   {
-    id: "s18", part: "weekend", time: "周日 17:00",
+    id: "s18", part: "weekend", time: "Sun 5:00",
     t: "One more set", z: "最后一组",
     lead: "健身房的谎言只有一句，就是「最后一组」。它跟「再睡五分钟」是同一句。",
     paras: [

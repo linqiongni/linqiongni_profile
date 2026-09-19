@@ -71,10 +71,10 @@
   }
   .item:hover{background:var(--gold-soft);}
   .item.on{background:var(--paper);border-color:var(--line);box-shadow:var(--shadow);}
-  .item .tm{flex:0 0 44px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .item .tm{flex:0 0 52px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
   .item .tx{min-width:0;}
-  .item .t1{font-size:13.5px;color:var(--ink);line-height:1.35;}
-  .item .t2{font-size:11px;color:var(--muted);line-height:1.35;margin-top:2px;font-family:var(--serif);font-style:italic;}
+  .item .t1{display:block;font-size:13.5px;color:var(--ink);line-height:1.35;}
+  .item .t2{display:block;font-size:11px;color:var(--muted);line-height:1.35;margin-top:2px;font-family:var(--serif);font-style:italic;}
   .item .done{margin-left:auto;font-size:11px;color:var(--gold-deep);flex:0 0 auto;}
   .item.hide{display:none;}
 
@@ -140,7 +140,7 @@
   body[data-mode="zh"] .p-en,body[data-mode="zh"] .h-en{display:none;}
   body[data-mode="zh"] .p-zh{color:var(--ink);font-size:16px;margin-top:0;}
   body[data-mode="zh"] .s.on{background:transparent;}
-  body[data-mode="zh"] .para.say .p-en{display:block;}
+  body[data-mode="zh"] .para.say .p-zh{padding-left:14px;border-left:2px solid var(--line);}
   body[data-mode="en"] .para.say .who{display:none;}
 
   .player{
@@ -163,7 +163,11 @@
   .track{flex:1;height:4px;background:var(--line);border-radius:999px;cursor:pointer;position:relative;min-width:60px;}
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:999px;width:0;transition:width .2s;}
   .p-right{display:flex;align-items:center;gap:7px;flex:0 0 auto;}
-  @media (max-width:640px){ .p-left{display:none;} .p-right .hide-sm{display:none;} }
+  @media (max-width:640px){ .p-left{display:none;} .p-right .hide-sm{display:none;} .track{min-width:44px;} .p-right{gap:5px;} }
+  .scrim{display:none;}
+  @media (max-width:900px){
+    .app:not(.collapsed) .scrim{display:block;position:fixed;inset:0;background:rgba(20,16,8,.3);z-index:35;}
+  }
   .foot{margin-top:34px;font-size:11.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line-soft);padding-top:14px;}
   .empty{padding:60px 0;text-align:center;color:var(--muted);font-size:13px;}
 </style>
@@ -181,6 +185,8 @@
     </div>
     <nav class="dir" id="dir"></nav>
   </aside>
+
+  <div class="scrim" id="scrim"></div>
 
   <main class="main" id="main">
     <div class="topbar">
@@ -209,7 +215,7 @@
     <button class="mini" id="rate">1.0×</button>
     <button class="mini" id="voice">美音</button>
     <button class="mini hide-sm" id="loop">循环</button>
-    <button class="mini" id="mark">标记已听</button>
+    <button class="mini hide-sm" id="mark">标记已听</button>
   </div>
 </div>
 
@@ -256,6 +262,8 @@
 
   function renderDir(){
     var html = "", p, items;
+    var sub = document.querySelector(".brand-sub");
+    if(sub) sub.textContent = "一个上班族完整的一天 · 场景短文 " + SCENES.length + " 篇";
     for(var k = 0; k < PARTS.length; k++){
       p = PARTS[k];
       items = SCENES.filter(function(s){ return s.part === p.id; });
@@ -360,7 +368,8 @@
     el.classList.add("on");
     var box = el.getBoundingClientRect(), mbox = main.getBoundingClientRect();
     if(box.top < mbox.top + 70 || box.bottom > mbox.bottom - 40){
-      main.scrollTo({ top: main.scrollTop + box.top - mbox.top - mbox.height * 0.38, behavior: "smooth" });
+      var to = main.scrollTop + box.top - mbox.top - mbox.height * 0.38;
+      if(main.scrollTo) main.scrollTo({ top: to, behavior: "smooth" }); else main.scrollTop = to;
     }
   }
 
@@ -373,13 +382,14 @@
   }
 
   function playFrom(i){
-    if(!synth){ alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     list = sents();
     if(!list.length) return;
     stopAll();
     if(i >= list.length) i = 0;
     if(i < 0) i = 0;
     state.idx = i;
+    highlight(i);
+    if(!synth){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
     updateBar();
     run();
@@ -420,14 +430,14 @@
   function closeSide(){ $("app").classList.add("collapsed"); }
 
   function go(id){
-    if(id === state.id){ main.scrollTo({ top: 0, behavior: "smooth" }); if(window.innerWidth <= 900) closeSide(); return; }
+    if(id === state.id){ if(main.scrollTo) main.scrollTo({ top: 0, behavior: "smooth" }); else main.scrollTop = 0; if(window.innerWidth <= 900) closeSide(); return; }
     stopAll();
     state.id = id;
     store.set("en-id", id);
     state.idx = 0;
     renderDir();
     renderScene();
-    main.scrollTo({ top: 0, behavior: "smooth" });
+    if(main.scrollTo) main.scrollTo({ top: 0, behavior: "smooth" }); else main.scrollTop = 0;
     if(window.innerWidth <= 900) closeSide();
   }
 
@@ -516,13 +526,36 @@
   $(modes[state.mode]).classList.add("on");
 
   $("menu").addEventListener("click", function(){ $("app").classList.toggle("collapsed"); });
+  $("scrim").addEventListener("click", closeSide);
+  if(window.innerWidth <= 900) closeSide();
 
   window.addEventListener("beforeunload", function(){ if(synth){ try { synth.cancel(); } catch(e){} } });
+
+  function applyTheme(mode){
+    document.documentElement.setAttribute("data-theme", mode);
+    var mc = document.querySelector('meta[name="theme-color"]');
+    if(mc) mc.setAttribute("content", mode === "dark" ? "#171614" : "#FBF9F4");
+  }
+  window.addEventListener("message", function(e){
+    var d = e.data;
+    if(d && d.type === "theme" && (d.mode === "dark" || d.mode === "light")) applyTheme(d.mode);
+  });
+  if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+
+  function applyTheme(mode){
+    document.documentElement.setAttribute("data-theme", mode);
+    var mc = document.querySelector('meta[name="theme-color"]');
+    if(mc) mc.setAttribute("content", mode === "dark" ? "#171614" : "#FBF9F4");
+  }
+  window.addEventListener("message", function(e){
+    var d = e.data;
+    if(d && d.type === "theme" && (d.mode === "dark" || d.mode === "light")) applyTheme(d.mode);
+  });
+  if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
 
   renderDir();
   renderScene();
 })();
 </script>
-<script src="/theme-toggle.js"></script>
 </body>
 </html>
