@@ -146,7 +146,7 @@
   .player{
     position:fixed;left:0;right:0;bottom:0;z-index:60;
     background:var(--bar);border-top:1px solid var(--line);
-    padding:9px 16px calc(9px + env(safe-area-inset-bottom));
+    padding:9px 150px calc(9px + env(safe-area-inset-bottom)) 16px;
     display:flex;align-items:center;gap:14px;
   }
   .p-left{flex:0 0 auto;min-width:0;}
@@ -164,6 +164,7 @@
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:999px;width:0;transition:width .2s;}
   .p-right{display:flex;align-items:center;gap:7px;flex:0 0 auto;}
   @media (max-width:640px){ .p-left{display:none;} .p-right .hide-sm{display:none;} .track{min-width:44px;} .p-right{gap:5px;} }
+  @media (max-width:760px){ .player{padding-right:104px;gap:9px;} .mini{padding:4px 8px;font-size:11.5px;} }
   .scrim{display:none;}
   @media (max-width:900px){
     .app:not(.collapsed) .scrim{display:block;position:fixed;inset:0;background:rgba(20,16,8,.3);z-index:35;}
@@ -213,7 +214,7 @@
   <div class="track" id="track"><i id="fill"></i></div>
   <div class="p-right">
     <button class="mini" id="rate">1.0×</button>
-    <button class="mini" id="voice">美音</button>
+    <button class="mini hide-sm" id="voice">美音</button>
     <button class="mini hide-sm" id="loop">循环</button>
     <button class="mini hide-sm" id="mark">标记已听</button>
   </div>
