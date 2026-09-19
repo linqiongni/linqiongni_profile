@@ -20,5 +20,7 @@ export const EnglishTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false 
     src={`/english/index.html?v=${IFRAME_V}`}
     title="身边的英语 · 一个上班族完整的一天"
     darkMode={darkMode}
+    // 手机端改为全屏打开（iframe 内部滚动在 iOS 上不可靠：回不到顶部、朗读控件被挡）
+    mobileFullscreen
   />
 );

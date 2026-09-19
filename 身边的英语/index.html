@@ -135,6 +135,10 @@
   }
   @media (max-width:760px){ .topbar{margin:-20px -18px 16px;padding:9px 18px;} }
   .menu{display:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:9px;width:34px;height:32px;font-size:15px;cursor:pointer;}
+  /* 全屏独立打开时（手机端从主站跳进来）才显示「← 主页」；嵌在 iframe 里时由浏览器返回兜底。
+     注意：默认用 display:none，显示时加 .on 类切换——不能用 style.display="" 清空（会落回默认 none）。 */
+  .back-home{display:none;text-decoration:none;white-space:nowrap;flex:0 0 auto;}
+  .back-home.on{display:inline-block;}
   @media (max-width:900px){
     .menu{display:block;}
     .side{position:fixed;left:0;top:0;}
@@ -237,6 +241,7 @@
 
   <main class="main" id="main">
     <div class="topbar">
+      <a class="mini back-home" id="backHome" href="/" title="返回主页">&#8592; 主页</a>
       <button class="menu" id="menu" aria-label="目录">&#9776;</button>
       <div class="crumb" id="crumb"></div>
       <button class="mini" id="mBoth">双语</button>
@@ -741,6 +746,8 @@ function EN_START(){
   $(modes[state.mode]).classList.add("on");
 
   $("menu").addEventListener("click", function(){ $("app").classList.toggle("collapsed"); });
+  /* 只有全屏独立打开（非 iframe 嵌入）时才显示返回主页：手机端由主站跳转进来就是这个形态 */
+  if(window.self === window.top){ var bh = $("backHome"); if(bh) bh.classList.add("on"); }
   $("scrim").addEventListener("click", closeSide);
   if(window.innerWidth <= 900) closeSide();
 
