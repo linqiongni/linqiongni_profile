@@ -21,63 +21,107 @@
     --coworker:#D9A05B;
     --shadow:0 2px 10px rgba(60,50,30,.07);
     --radius:16px;
+    --sidebar-w:280px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;height:100%;}
   body{
     background:var(--bg);
     color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     line-height:1.55;
     font-size:16px;
-    padding-bottom:env(safe-area-inset-bottom);
   }
-  .wrap{max-width:760px;margin:0 auto;padding:0 14px;}
-  header.top{
+
+  /* Layout */
+  .app{min-height:100%;}
+  .sidebar{
+    position:fixed;left:0;top:0;width:var(--sidebar-w);height:100%;height:100dvh;
     background:linear-gradient(180deg,#FFFFFF 0%,#FBF7F0 100%);
-    border-bottom:1px solid var(--line);
-    position:sticky;top:0;z-index:30;
-    padding-top:env(safe-area-inset-top);
+    border-right:1px solid var(--line);
+    z-index:50;
+    transform:translateX(0);transition:transform .25s ease;
+    overflow-y:auto;overflow-x:hidden;
+    padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
   }
-  .top-inner{padding:12px 14px 10px;}
-  .brand{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
-  .brand h1{font-size:19px;margin:0;font-weight:700;letter-spacing:.3px;}
-  .brand .sub{font-size:13px;color:var(--muted);}
-  .controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center;}
-  .search{flex:1 1 160px;min-width:140px;position:relative;}
+  .sidebar-inner{padding:14px;}
+  .app.sidebar-closed .sidebar{transform:translateX(-100%);}
+
+  .main{margin-left:var(--sidebar-w);min-height:100%;transition:margin-left .25s ease;}
+  .app.sidebar-closed .main{margin-left:0;}
+
+  /* Backdrop for mobile drawer */
+  .backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .app:not(.sidebar-closed) .backdrop{opacity:1;pointer-events:auto;}
+
+  /* Sidebar header */
+  .sidebar-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+  .brand h1{font-size:20px;margin:0;font-weight:700;letter-spacing:.3px;line-height:1.2;}
+  .brand .sub{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4;}
+  .collapse-btn{
+    flex:0 0 auto;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);
+    background:#fff;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Controls inside sidebar */
+  .controls{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+  .search{position:relative;width:100%;}
   .search input{
-    width:100%;border:1px solid var(--line);background:#fff;border-radius:999px;
-    padding:10px 14px 10px 36px;font-size:15px;color:var(--ink);outline:none;
+    width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;
+    padding:11px 12px 11px 36px;font-size:15px;color:var(--ink);outline:none;
   }
   .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5;}
+  .control-row{display:flex;gap:8px;}
   .toggle{
-    border:1px solid var(--line);background:#fff;border-radius:999px;
-    padding:9px 14px;font-size:14px;cursor:pointer;color:var(--ink);
-    display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+    flex:1;border:1px solid var(--line);background:#fff;border-radius:999px;
+    padding:9px 12px;font-size:13px;cursor:pointer;color:var(--ink);
+    display:inline-flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;
   }
   .toggle b{color:var(--accent);font-weight:700;}
 
-  /* Tabs */
-  .tabs{display:flex;gap:8px;margin-top:10px;}
+  /* Tabs in sidebar */
+  .tabs{display:flex;gap:8px;margin-top:14px;}
   .tab{
-    flex:1;text-align:center;padding:11px 8px;border-radius:12px 12px 0 0;
-    background:var(--accent-soft);color:var(--muted);font-weight:700;font-size:15px;
-    cursor:pointer;border:1px solid transparent;border-bottom:none;
+    flex:1;text-align:center;padding:10px 6px;border-radius:12px;
+    background:var(--accent-soft);color:var(--muted);font-weight:700;font-size:14px;
+    cursor:pointer;border:1px solid transparent;
   }
   .tab.active{background:#fff;color:var(--accent);border-color:var(--line);}
 
-  /* Module chips nav */
+  /* Module directory chips (vertical in sidebar) */
+  .dir-title{
+    font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;
+    margin:18px 0 8px;font-weight:700;
+  }
   .chips{
-    display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none;
+    display:flex;flex-direction:column;gap:6px;
   }
-  .chips::-webkit-scrollbar{display:none;}
   .chip{
-    flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:999px;
-    padding:7px 13px;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;
+    background:#fff;border:1px solid var(--line);border-radius:11px;
+    padding:10px 12px;font-size:14px;color:var(--muted);cursor:pointer;
+    display:flex;align-items:center;gap:8px;transition:background .15s,border-color .15s;
   }
+  .chip:hover{background:var(--accent-soft);}
   .chip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5;}
 
-  /* Progress */
+  /* Topbar (only visible when sidebar collapsed / mobile) */
+  .topbar{
+    position:sticky;top:0;z-index:30;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:10px 14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .menu-btn{
+    width:40px;height:40px;border-radius:10px;border:1px solid var(--line);
+    background:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .top-title{font-size:17px;font-weight:700;}
+
+  /* Main content */
+  .wrap{max-width:760px;margin:0 auto;padding:16px 14px 30px;}
   .progress-bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:4px 0 2px;}
   .progress-fill{height:100%;width:0;background:var(--accent);transition:width .3s;}
   .progress-text{font-size:12px;color:var(--muted);margin-bottom:10px;}
@@ -141,43 +185,72 @@
   .totop.show{opacity:1;pointer-events:auto;}
 
   footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 10px 40px;}
+
+  /* Responsive */
+  @media (max-width:1023px){
+    .sidebar{width:260px;box-shadow:2px 0 20px rgba(0,0,0,.12);}
+    .main{margin-left:0 !important;}
+    .collapse-btn{display:none;}
+    body.sidebar-open{overflow:hidden;} /* prevent body scroll when drawer open */
+  }
+  @media (min-width:1024px){
+    .topbar{display:none;}
+    .backdrop{display:none;}
+  }
 </style>
 </head>
-<body>
+<body class="app">
 
-<header class="top">
-  <div class="top-inner">
-    <div class="brand">
-      <h1>身边的英语</h1>
-      <span class="sub">一个广州上班族完整的一天 · 地道口语</span>
+<aside class="sidebar" id="sidebar" aria-label="目录">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div class="brand">
+        <h1>身边的英语</h1>
+        <span class="sub">一个广州上班族完整的一天 · 地道口语</span>
+      </div>
+      <button class="collapse-btn" id="collapseBtn" aria-label="收起目录">◀</button>
     </div>
+
     <div class="controls">
       <div class="search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input id="search" type="search" placeholder="搜英文或中文，如 snooze / 地铁" />
       </div>
-      <button class="toggle" id="accentBtn">口音：<b id="accentLab">美音</b></button>
-      <button class="toggle" id="speedBtn">语速：<b id="speedLab">正常</b></button>
+      <div class="control-row">
+        <button class="toggle" id="accentBtn">口音：<b id="accentLab">美音</b></button>
+        <button class="toggle" id="speedBtn">语速：<b id="speedLab">正常</b></button>
+      </div>
     </div>
+
     <div class="tabs">
       <div class="tab active" data-tab="weekday">工作日</div>
       <div class="tab" data-tab="weekend">休息日</div>
     </div>
-    <div class="chips" id="chips"></div>
-  </div>
-</header>
 
-<div class="wrap">
-  <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
-  <div class="progress-text" id="ptext"></div>
-  <div id="content"></div>
-  <footer>点击任意英文句子或 🔊 即可朗读 · 数据保存在本机 · 慢速 0.75x 帮你听清连读</footer>
+    <div class="dir-title">场景目录</div>
+    <nav class="chips" id="chips"></nav>
+  </div>
+</aside>
+
+<div class="backdrop" id="backdrop"></div>
+
+<div class="main">
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="打开目录">☰</button>
+    <span class="top-title">身边的英语</span>
+  </header>
+
+  <div class="wrap">
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+    <div class="progress-text" id="ptext"></div>
+    <div id="content"></div>
+    <footer>点击任意英文句子或 🔊 即可朗读 · 数据保存在本机 · 慢速 0.75x 帮你听清连读</footer>
+  </div>
 </div>
 
 <button class="totop" id="totop" aria-label="回到顶部">↑</button>
 
 <script>
-/* ============== 数据：工作日（13 个模块） + 休息日（占位） ============== */
 const MODULES = [
   /* ---------- 1 ---------- */
   {
@@ -607,7 +680,7 @@ function renderChips(){
   const wrap = document.getElementById("chips");
   const list = modsForTab(state.tab);
   wrap.innerHTML = list.map(m =>
-    `<div class="chip" data-goto="${m.id}">${m.en.split(" ")[0]} · ${m.zh}</div>`
+    `<div class="chip" data-goto="${m.id}"><span class="dot"></span>${m.en.split(" ")[0]} · ${m.zh}</div>`
   ).join("");
 }
 
@@ -625,13 +698,11 @@ function renderContent(){
       </section>`;
       return;
     }
-    // 统计（仅非占位）
     const visibleLines = m.lines.filter(l => matches(l, q));
     total += m.lines.length;
     m.lines.forEach((l, i) => { if(isMastered(m.id, i)) mastered++; });
 
     if(q && visibleLines.length === 0){
-      // 整个模块无匹配，仍显示标题但不显示卡片
       html += `<section class="module" id="mod-${m.id}">
         <div class="mod-head"><div class="en">${m.en}</div><div class="zh">${m.zh}</div>
         <div class="scene">${m.scene||""}</div></div>
@@ -678,7 +749,6 @@ function renderContent(){
 
   document.getElementById("content").innerHTML = html;
 
-  // 进度（仅统计当前 tab 非占位模块）
   const pct = total ? Math.round(mastered/total*100) : 0;
   document.getElementById("pfill").style.width = pct + "%";
   document.getElementById("ptext").textContent = `本板块共 ${total} 句 · 已会 ${mastered} 句（${pct}%）`;
@@ -686,15 +756,37 @@ function renderContent(){
 
 function renderAll(){ renderChips(); renderContent(); updateChipActive(); }
 
+/* 滚动高亮当前模块 */
 function updateChipActive(){
-  // 高亮当前视口模块（简化：不强制）
+  const chips = document.querySelectorAll('.chip');
+  const sections = [...document.querySelectorAll('section.module')].filter(s => s.offsetParent !== null);
+  if(!sections.length){ chips.forEach(c => c.classList.remove('active')); return; }
+  let current = sections[0].id.replace('mod-','');
+  const center = window.scrollY + window.innerHeight * 0.35;
+  for(const sec of sections){
+    if(sec.offsetTop <= center) current = sec.id.replace('mod-','');
+  }
+  chips.forEach(c => c.classList.toggle('active', c.dataset.goto === current));
 }
+
+/* ============== 侧边栏打开 / 收起 ============== */
+const body = document.body;
+function isNarrow(){ return window.innerWidth < 1024; }
+function openSidebar(){ body.classList.remove('sidebar-closed'); if(isNarrow()) body.classList.add('sidebar-open'); }
+function closeSidebar(){ body.classList.add('sidebar-closed'); body.classList.remove('sidebar-open'); }
+function toggleSidebar(){ if(body.classList.contains('sidebar-closed')) openSidebar(); else closeSidebar(); }
+
+/* 默认：桌面展开，移动端收起 */
+if(isNarrow()) closeSidebar(); else openSidebar();
+
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('collapseBtn').addEventListener('click', closeSidebar);
+document.getElementById('backdrop').addEventListener('click', closeSidebar);
 
 /* ============== 事件 ============== */
 document.getElementById("accentBtn").addEventListener("click", () => {
   state.accent = (state.accent === "en-US") ? "en-GB" : "en-US";
   document.getElementById("accentLab").textContent = (state.accent === "en-US") ? "美音" : "英音";
-  // 触发一次空发音以确保语音已加载
   if("speechSynthesis" in window) window.speechSynthesis.getVoices();
 });
 document.getElementById("speedBtn").addEventListener("click", () => {
@@ -706,7 +798,6 @@ document.querySelectorAll(".tab").forEach(t => {
     document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
     t.classList.add("active");
     state.tab = t.dataset.tab;
-    // 切到休息日时清空搜索避免无结果
     if(state.tab === "weekend"){ document.getElementById("search").value=""; state.search=""; }
     renderAll();
     window.scrollTo({top:0, behavior:"smooth"});
@@ -719,10 +810,12 @@ document.getElementById("search").addEventListener("input", (e) => {
 document.getElementById("chips").addEventListener("click", (e) => {
   const c = e.target.closest(".chip"); if(!c) return;
   const el = document.getElementById("mod-" + c.dataset.goto);
-  if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+  if(el){
+    el.scrollIntoView({behavior:"smooth", block:"start"});
+    if(isNarrow()) closeSidebar();
+  }
 });
 document.getElementById("content").addEventListener("click", (e) => {
-  // 朗读按钮
   const btn = e.target.closest("[data-act]");
   if(btn){
     const mod = MODULES.find(m => m.id === btn.dataset.mod);
@@ -735,7 +828,6 @@ document.getElementById("content").addEventListener("click", (e) => {
     }
     return;
   }
-  // 点击英文句子朗读
   const en = e.target.closest("[data-play]");
   if(en){
     const [modId, i] = en.dataset.play.split("|");
@@ -749,6 +841,7 @@ const totop = document.getElementById("totop");
 window.addEventListener("scroll", () => {
   if(window.scrollY > 300) totop.classList.add("show");
   else totop.classList.remove("show");
+  updateChipActive();
 });
 totop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
 
