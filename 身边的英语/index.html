@@ -62,78 +62,67 @@
   .side{
     flex:0 0 var(--side-w);width:var(--side-w);height:100%;
     background:var(--side);border-right:1px solid var(--line);
-    display:flex;flex-direction:column;overflow:hidden;
-    transition:transform .24s ease, margin-left .24s ease;z-index:40;
+    display:flex;flex-direction:column;transition:transform .24s ease, margin-left .24s ease;z-index:40;
   }
   .app.collapsed .side{margin-left:calc(var(--side-w) * -1);}
-  .side-top{padding:22px 20px 12px;}
-  .brand{font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:.5px;margin:0;}
-  .brand-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5;letter-spacing:.2px;}
-
-  /* 视图切换：分段控件（按类型 / 按场景），一次只看一个视角 */
-  .view-switch{display:flex;gap:3px;margin:2px 16px 10px;padding:3px;background:var(--line-soft);border-radius:12px;}
-  .view-switch button{
-    flex:1;border:0;background:transparent;cursor:pointer;text-align:center;
-    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);
-    padding:8px 6px 6px;border-radius:9px;transition:background .18s,color .18s,box-shadow .18s;letter-spacing:.3px;line-height:1.2;
-  }
-  .view-switch button .en{display:block;font-size:9px;font-weight:400;font-style:italic;font-family:var(--ital);opacity:.6;letter-spacing:.4px;margin-top:2px;}
-  .view-switch button.on{background:var(--paper);color:var(--gold-deep);box-shadow:0 1px 2px rgba(60,50,30,.08);}
-  .view-switch button:hover:not(.on){color:var(--ink-soft);}
-  html[data-theme="dark"] .view-switch button.on{background:var(--hl);}
-
-  .side-search{padding:0 16px 12px;}
+  .side-top{padding:18px 16px 10px;}
+  .brand{font-family:var(--display);font-size:18.5px;font-weight:500;letter-spacing:.6px;margin:0;}
+  .brand-sub{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+  .side-search{padding:0 16px 10px;}
   .side-search input{
     width:100%;border:1px solid var(--line);background:var(--paper);color:var(--ink);
     border-radius:10px;padding:9px 11px;font-size:13px;outline:none;font-family:var(--sans);
   }
   .side-search input:focus{border-color:var(--gold);}
-
-  .dir{flex:1;overflow-y:auto;padding:4px 14px 92px;overscroll-behavior:contain;}
-  .srch-hint{font-size:11px;color:var(--muted);padding:6px 8px 10px;letter-spacing:.3px;}
-
-  /* 组标题：小而精的金色小标 */
-  .ghead{
-    display:flex;align-items:center;gap:8px;width:100%;cursor:pointer;text-align:left;
-    font-family:var(--sans);font-size:11px;font-weight:700;color:var(--gold-deep);
-    letter-spacing:.16em;text-transform:uppercase;
-    margin:18px 0 5px;padding:2px 6px;background:transparent;border:0;
+  .dir{flex:1;overflow-y:auto;padding:4px 10px 88px;overscroll-behavior:contain;}
+  .dir-group{
+    display:flex;align-items:center;gap:6px;width:100%;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);
+    margin:14px 0 4px;padding:7px 10px;background:var(--gold-soft);border:0;border-radius:9px;
   }
-  .ghead:first-child{margin-top:6px;}
-  .ghead .caret{flex:0 0 auto;font-size:9px;color:var(--muted);transition:transform .15s;}
-  .grp.fold .ghead .caret{transform:rotate(-90deg);}
-  .ghead .cnt{margin-left:auto;font-size:10px;color:var(--muted);font-weight:400;letter-spacing:0;}
-  .ghead:hover{color:var(--gold);}
-
-  .grp-b{margin-left:5px;padding-left:11px;border-left:1px solid var(--line);}
-
-  /* 日标题 */
-  .dhead{
+  .dir-group:hover{background:var(--hl);color:var(--gold-deep);}
+  .dir-group .caret{flex:0 0 auto;font-size:10px;color:var(--muted);transition:transform .15s;}
+  .grp.fold .grp-b{display:none;}
+  .grp.fold .dir-group .caret{transform:rotate(-90deg);}
+  .dir-group .en{font-weight:400;font-size:10.5px;color:var(--muted);font-family:var(--ital);font-style:italic;letter-spacing:.2px;}
+  .dir-group .cnt{margin-left:auto;font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .dir-day{
+    display:flex;align-items:center;gap:6px;width:100%;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:11.5px;color:var(--muted);letter-spacing:.2px;
+    margin:2px 0 2px 10px;padding:4px 10px;background:transparent;border:0;border-radius:9px;
+  }
+  .dir-day:hover{background:var(--gold-soft);color:var(--ink);}
+  .dir-day .caret{flex:0 0 auto;font-size:9px;transition:transform .15s;}
+  .day.fold .day-b{display:none;}
+  .day.fold .dir-day .caret{transform:rotate(-90deg);}
+  .dir-day .en{font-size:10px;color:var(--muted);font-family:var(--ital);font-style:italic;letter-spacing:.2px;}
+  .day-b .item{margin-left:20px;}
+  .grp-b>.item{margin-left:8px;}
+  .dir-view{
     display:flex;align-items:center;gap:7px;width:100%;cursor:pointer;text-align:left;
-    font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);letter-spacing:.3px;
-    margin:3px 0 1px;padding:5px 8px;background:transparent;border:0;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);
+    margin:12px 0 2px;padding:8px 10px;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px;
   }
-  .dhead .caret{flex:0 0 auto;font-size:8px;color:var(--muted);transition:transform .15s;}
-  .day.fold .dhead .caret{transform:rotate(-90deg);}
-  .dhead .en{font-size:10px;color:var(--muted);font-style:italic;font-family:var(--ital);letter-spacing:.2px;}
-  .dhead:hover{color:var(--ink);}
-  .day-b{margin-left:4px;padding-left:10px;border-left:1px solid var(--line-soft);}
-
-  .grp.hide,.day.hide,.item.hide{display:none;}
-
-  /* 条目 */
+  .dir-view:hover{border-color:var(--gold);color:var(--gold-deep);}
+  .dir-view .caret{flex:0 0 auto;font-size:10px;color:var(--muted);transition:transform .15s;}
+  .view.fold .view-b{display:none;}
+  .view.fold .dir-view .caret{transform:rotate(-90deg);}
+  .dir-view .en{font-weight:400;font-size:10.5px;color:var(--muted);font-family:var(--ital);font-style:italic;letter-spacing:.2px;}
+  .view .dir-group{margin:8px 0 4px;}
+  .grp.hide,.day.hide,.view.hide{display:none;}
   .item{
     display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:10px;
-    cursor:pointer;position:relative;border:1px solid transparent;margin:2px 0;
-    transition:background .14s,border-color .14s;
+    cursor:pointer;border:1px solid transparent;
   }
   .item:hover{background:var(--gold-soft);}
-  .item.on{background:var(--paper);border-color:var(--line);box-shadow:var(--shadow);border-left:2px solid var(--gold);padding-left:9px;}
-  .item .tm{flex:0 0 auto;font-size:10.5px;color:var(--gold-deep);opacity:.75;font-variant-numeric:tabular-nums;font-family:var(--ital);letter-spacing:.3px;}
-  .item .tx{min-width:0;flex:1;}
+  .item.on{background:var(--paper);border-color:var(--line);box-shadow:var(--shadow);}
+  .item .tm{flex:0 0 46px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .item .tx{min-width:0;}
   .item .t1{display:block;font-size:13px;color:var(--ink);line-height:1.35;}
   .item .t2{display:block;font-size:11px;color:var(--muted);line-height:1.35;margin-top:2px;font-family:var(--ital);font-style:italic;letter-spacing:.2px;}
-  .item .done{margin-left:6px;font-size:10.5px;color:var(--gold-deep);flex:0 0 auto;}
+  .item .done{margin-left:auto;font-size:11px;color:var(--gold-deep);flex:0 0 auto;}
+  .item.hide{display:none;}
 
   .main{flex:1;min-width:0;height:100%;overflow-y:auto;scroll-behavior:smooth;}
   .reader{max-width:720px;margin:0 auto;padding:28px 26px 120px;}
@@ -238,10 +227,6 @@
       <h1 class="brand">身边的英语</h1>
       <div class="brand-sub">广州 · 一个外企法务的一年 · 场景短文</div>
     </div>
-    <div class="view-switch" id="viewSwitch">
-      <button data-view="type" class="on">按类型<span class="en">When</span></button>
-      <button data-view="place">按场景<span class="en">Where</span></button>
-    </div>
     <div class="side-search">
       <input id="q" type="search" placeholder="搜英文或中文，如 dim sum / 外卖" />
     </div>
@@ -293,7 +278,6 @@ function EN_START(){
   };
   var state = {
     id: (store.get("en-id") || SCENES[0].id),
-    view: (store.get("en-view") || "type"),
     idx: 0, playing: false, rate: 1, accent: "en-US", loop: false, mode: "both"
   };
   var done = {};
@@ -365,11 +349,23 @@ function EN_START(){
     for(i = 0; i < kids.length; i++){ if(cs[f] === kids[i].id) return true; }
     return false;
   }
+  function viewHasCurrent(vid){
+    var cs = currentScene(), i, j, g, f, kids;
+    if(!cs) return false;
+    for(i = 0; i < GROUPS.length; i++){
+      g = GROUPS[i];
+      if((g.view || "type") !== vid) continue;
+      f = fieldOf(g); kids = kidsOf(g);
+      for(j = 0; j < kids.length; j++){ if(cs[f] === kids[j].id) return true; }
+    }
+    return false;
+  }
   function isFold(k){
     var v = store.get("en-fold:" + k);
     if(v === "1") return true;
     if(v === "0") return false;
-    /* 未记录过的默认态：只展开「当前篇目所在」的组与日，其余收起 */
+    /* 未记录过的默认态：只展开「当前篇目所在」的视角 / 组 / 日，其余收起来 */
+    if(k.indexOf("v:") === 0) return !viewHasCurrent(k.slice(2));
     if(k.indexOf("g:") === 0) return !groupHasCurrent(k.slice(2));
     var cs = currentScene();
     if(k.indexOf("d:") === 0) return !cs || cs.part !== k.slice(2);
@@ -387,77 +383,50 @@ function EN_START(){
       (done[s.id] ? '<span class="done">已听</span>' : '') + '</div>';
   }
 
-  function treeHTML(viewId, forceOpen){
-    var html = "", gs, g, f, kids, d, items, count, j, m;
-    gs = GROUPS.filter(function(x){ return (x.view || "type") === viewId; });
-    for(j = 0; j < gs.length; j++){
-      g = gs[j];
-      f = fieldOf(g);
-      kids = kidsOf(g);
-      count = 0;
-      kids.forEach(function(x){ count += SCENES.filter(function(t){ return t[f] === x.id; }).length; });
-      if(!count) continue;
-      var gFold = (!forceOpen && isFold("g:" + g.id));
-      html += '<div class="grp' + (gFold ? " fold" : "") + '" data-g="' + g.id + '">' +
-        '<button class="ghead" data-toggle="g:' + g.id + '" type="button">' +
-        '<span class="caret">&#9662;</span><span>' + g.label + '</span>' +
-        '<span class="cnt">' + count + '</span></button>' +
-        '<div class="grp-b">';
-      for(m = 0; m < kids.length; m++){
-        d = kids[m];
-        items = SCENES.filter(function(t){ return t[f] === d.id; });
-        if(!items.length) continue;
-        if(d.label){
-          var dFold = (!forceOpen && isFold("d:" + d.id));
-          html += '<div class="day' + (dFold ? " fold" : "") + '" data-d="' + d.id + '">' +
-            '<button class="dhead" data-toggle="d:' + d.id + '" type="button">' +
-            '<span class="caret">&#9662;</span><span>' + d.label + '</span>' +
-            '<span class="en">' + d.en + '</span></button><div class="day-b">';
-          items.forEach(function(t){ html += itemHTML(t); });
-          html += '</div></div>';
-        } else {
-          items.forEach(function(t){ html += itemHTML(t); });
+  function renderDir(){
+    var html = "", v, gs, g, kids, d, items, count, f, i, j, m;
+    var sub = document.querySelector(".brand-sub");
+    if(sub) sub.textContent = "广州 · 一个外企法务的一年 · 场景短文 " + SCENES.length + " 篇";
+    for(i = 0; i < VIEWS.length; i++){
+      v = VIEWS[i];
+      gs = GROUPS.filter(function(x){ return (x.view || "type") === v.id; });
+      html += '<div class="view' + (isFold("v:" + v.id) ? " fold" : "") + '" data-v="' + v.id + '">' +
+        '<button class="dir-view" data-toggle="v:' + v.id + '" type="button">' +
+        '<span class="caret">&#9662;</span><span>' + v.label + '</span>' +
+        '<span class="en">' + v.en + '</span></button><div class="view-b">';
+      for(j = 0; j < gs.length; j++){
+        g = gs[j];
+        f = fieldOf(g);
+        kids = kidsOf(g);
+        count = 0;
+        kids.forEach(function(x){ count += SCENES.filter(function(t){ return t[f] === x.id; }).length; });
+        if(!count) continue;
+        html += '<div class="grp' + (isFold("g:" + g.id) ? " fold" : "") + '" data-g="' + g.id + '">' +
+          '<button class="dir-group" data-toggle="g:' + g.id + '" type="button">' +
+          '<span class="caret">&#9662;</span><span>' + g.label + '</span>' +
+          '<span class="en">' + g.en + '</span><span class="cnt">' + count + '</span></button>' +
+          '<div class="grp-b">';
+        for(m = 0; m < kids.length; m++){
+          d = kids[m];
+          items = SCENES.filter(function(t){ return t[f] === d.id; });
+          if(!items.length) continue;
+          if(d.label){
+            html += '<div class="day' + (isFold("d:" + d.id) ? " fold" : "") + '" data-d="' + d.id + '">' +
+              '<button class="dir-day" data-toggle="d:' + d.id + '" type="button">' +
+              '<span class="caret">&#9662;</span><span>' + d.label + '</span>' +
+              '<span class="en">' + d.en + '</span></button><div class="day-b">';
+            items.forEach(function(t){ html += itemHTML(t); });
+            html += '</div></div>';
+          } else {
+            items.forEach(function(t){ html += itemHTML(t); });
+          }
         }
+        html += '</div></div>';
       }
       html += '</div></div>';
     }
-    return html;
-  }
-
-  function renderDir(q){
-    q = (q || "").trim().toLowerCase();
-    var sub = document.querySelector(".brand-sub");
-    if(sub) sub.textContent = "广州 · 一个外企法务的一年 · 场景短文 " + SCENES.length + " 篇";
-    Array.prototype.forEach.call(document.querySelectorAll("#viewSwitch button"), function(b){
-      b.classList.toggle("on", b.getAttribute("data-view") === state.view);
-    });
-    if(q){
-      dir.innerHTML = '<div class="srch-hint">搜索「' + q + '」· 同时翻两个视角</div>' + treeHTML("type", true) + treeHTML("place", true);
-      Array.prototype.forEach.call(dir.querySelectorAll(".grp, .day"), function(el){ el.classList.remove("fold"); });
-      filterHide(q);
-      keepCurrentVisible();
-      return;
-    }
-    /* 没有 place 的篇目只出现在「按类型」，必要时回落，避免当前篇目从目录里消失 */
-    if(state.view === "place"){
-      var cs = currentScene();
-      if(!cs || !cs.place) state.view = "type";
-    }
-    dir.innerHTML = treeHTML(state.view, false);
+    dir.innerHTML = html;
     keepCurrentVisible();
-  }
-
-  function filterHide(q){
-    Array.prototype.forEach.call(dir.querySelectorAll(".item"), function(el){
-      if(el.getAttribute("data-kw").indexOf(q) === -1) el.classList.add("hide");
-      else el.classList.remove("hide");
-    });
-    Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(d){
-      d.classList.toggle("hide", d.querySelectorAll(".item:not(.hide)").length === 0);
-    });
-    Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(g){
-      g.classList.toggle("hide", g.querySelectorAll(".item:not(.hide)").length === 0);
-    });
   }
 
   function keepCurrentVisible(){
@@ -468,7 +437,22 @@ function EN_START(){
   function filterDir(q){
     q = (q || "").trim().toLowerCase();
     if(!q){ renderDir(); return; }
-    renderDir(q);
+    Array.prototype.forEach.call(dir.querySelectorAll(".view"), function(el){ el.classList.remove("fold"); });
+    Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(el){ el.classList.remove("fold"); });
+    Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(el){ el.classList.remove("fold"); });
+    Array.prototype.forEach.call(dir.querySelectorAll(".item"), function(el){
+      if(el.getAttribute("data-kw").indexOf(q) === -1) el.classList.add("hide");
+      else el.classList.remove("hide");
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(d){
+      d.classList.toggle("hide", d.querySelectorAll(".item:not(.hide)").length === 0);
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(g){
+      g.classList.toggle("hide", g.querySelectorAll(".item:not(.hide)").length === 0);
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".view"), function(v){
+      v.classList.toggle("hide", v.querySelectorAll(".item:not(.hide)").length === 0);
+    });
   }
 
   function splitSents(text){
@@ -667,11 +651,10 @@ function EN_START(){
   function focusPlace(pid){
     var pl = placeOf(pid), el;
     if(!pl) return;
-    state.view = "place";
-    store.set("en-view", "place");
+    setFold("v:place", false);
     setFold("g:" + pl.g.id, false);
     renderDir();
-    el = dir.querySelector('.grp[data-g="' + pl.g.id + '"] .ghead');
+    el = dir.querySelector('.grp[data-g="' + pl.g.id + '"] .dir-group');
     if(el && el.scrollIntoView){ try { el.scrollIntoView({ block: "start" }); } catch(e){ el.scrollIntoView(true); } }
     if(window.innerWidth <= 900) openSide();
   }
@@ -700,13 +683,6 @@ function EN_START(){
   });
 
   $("q").addEventListener("input", function(e){ filterDir(e.target.value); });
-  $("viewSwitch").addEventListener("click", function(e){
-    var b = e.target.closest("button[data-view]");
-    if(!b) return;
-    state.view = b.getAttribute("data-view");
-    store.set("en-view", state.view);
-    renderDir();
-  });
   $("play").addEventListener("click", toggle);
   $("prev").addEventListener("click", function(){
     var i = Math.max(0, state.idx - 1);
