@@ -136,3 +136,13 @@
 - 已全部接入（ip / logistics / labor / criminal / film-law S1–S4 / insurance / ai-law / financing-legal / startup 共 11 个）。
 - 静态页补齐规则：① 已有 `[data-theme="dark"]` CSS 但缺监听 → 加 `<script src="/theme-toggle.js">` + `<html data-theme-default="light">`；② 纯浅色页 → 先在自身 CSS/style 写 `html[data-theme="dark"]` 变量覆盖（film-law S2–S4 直接复制 S1 的 47 条暗色段；insurance/startup 手写变量覆盖 + 针对性覆盖少量硬编码浅色），再接 theme-toggle.js。
 - 注意：引入 theme-toggle.js 的 iframe 页会自带"切换深色/浅色"浮层按钮（top:56px right:16px），与主站独立可控。
+
+## 身边的英语 tab（2026-09-19 重做，场景化短文阅读器）
+- **源站**：仓库根 `身边的英语/` = `index.html`（布局 + 播放引擎）+ `scenes.js`（内容数据，本次拆出）；部署副本 `public/english/`（`npm run sync:english`，整目录 rsync）。组件 `src/components/EnglishTab.tsx`。
+- **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time` / `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`），分组由 `PARTS` 决定。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 18 篇 / 5 组（早/通勤/上班/晚/周末）。
+- **播放**：整段连读（句子队列，逐句 speak + onend 续读），当前句高亮 + 自动滚动；底栏 上一句/播放/下一句/进度跳句/循环/语速 0.75–1.15/美音英音。暂停＝记录 idx 后 cancel，继续＝从 idx 重播（Safari 无 pause 也适用）。
+- **布局**：左栏时间线目录（搜索 + 已听标记）+ 居中阅读器（英文 serif 19px）+ 底部常驻播放条；≤900px 侧栏转抽屉 + 遮罩 + 默认收起。双语三档由 `body[data-mode]` 驱动（both/en/zh）。
+- **深色**：自己监听主站 `postMessage({type:'theme'})`；**不要引 `/theme-toggle.js`**（浮动按钮 top:56px 会压住阅读器顶栏）。
+- **必须保留**：iframe src 挂 `IFRAME_V` 日期版本号 + index.html 把 `?v=` 透传给 scenes.js（防「旧 HTML + 新数据」白屏）；localStorage 一律走 `store.get/set` 的 try/catch（受限环境抛错会整站白屏）。
+- 线上：`https://linqiongni.top/english/index.html`。
+- **别把 `.workbuddy/`、`AGENTS.md`、`MEMORY.md` 放进 `身边的英语/`** —— rsync 整目录同步会把它们发布到线上。
