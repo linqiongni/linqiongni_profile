@@ -7,30 +7,56 @@
         notes 本篇值得带走的说法（e 英文 c 中文 x 例句）
    加新场景：往 SCENES 数组末尾追加一条即可，目录与播放会自动带上。 */
 
-const PARTS = [
-  { id: "weekday", label: "工作日", en: "Weekdays", kids: [
+/* 两种看法：按类型（什么时候）/ 按场景（在哪个地方）。
+   同一篇会同时出现在两个视角里 —— part 决定它挂在「周几 / 哪个假期」下，place 决定它挂在哪个地点下。
+   place 留空的篇目只出现在「按类型分类」里（比如堵在高速上那篇，不属于任何一个地点）。 */
+
+const VIEWS = [
+  { id: "type",  label: "按类型分类", en: "When" },
+  { id: "place", label: "按场景分类", en: "Where" }
+];
+
+/* by: "part" 按时间分组 / "place" 按地点分组。kids 为空或 label 为空时，篇目直接挂在组下面，不再多一层。 */
+const GROUPS = [
+  /* ---- 按类型 ---- */
+  { id: "weekday", view: "type", by: "part", label: "工作日", en: "Weekdays", kids: [
     { id: "mon", label: "周一", en: "Mon" },
     { id: "tue", label: "周二", en: "Tue" },
     { id: "wed", label: "周三", en: "Wed" },
     { id: "thu", label: "周四", en: "Thu" },
     { id: "fri", label: "周五", en: "Fri" }
   ]},
-  { id: "weekend", label: "周末", en: "Weekend", kids: [
+  { id: "weekend", view: "type", by: "part", label: "周末", en: "Weekend", kids: [
     { id: "sat", label: "周六", en: "Sat" },
     { id: "sun", label: "周日", en: "Sun" }
   ]},
-  { id: "holiday", label: "节假日", en: "Holidays", kids: [
+  { id: "holiday", view: "type", by: "part", label: "节假日", en: "Holidays", kids: [
     { id: "midautumn", label: "中秋", en: "Mid-Autumn" },
     { id: "national", label: "国庆", en: "Oct 1st" },
     { id: "spring", label: "春节", en: "Spring Festival" },
     { id: "labour", label: "五一", en: "May Day" },
-    { id: "dragon", label: "端午", en: "Dragon Boat" }
-  ]}
+    { id: "dragon", label: "端午", en: "Dragon Boat" },
+    { id: "chongyang", label: "重阳", en: "Chongyang" }
+  ]},
+  /* ---- 按场景 ---- */
+  { id: "gp-tiyu",     view: "place", by: "place", label: "体育西路地铁站", en: "Tiyu Xilu" },
+  { id: "gp-station",  view: "place", by: "place", label: "广州火车站", en: "Guangzhou Station" },
+  { id: "gp-yuexiu",   view: "place", by: "place", label: "越秀公园", en: "Yuexiu Park" },
+  { id: "gp-baiyun",   view: "place", by: "place", label: "白云山", en: "Baiyun Mountain" },
+  { id: "gp-office",   view: "place", by: "place", label: "写字楼楼下", en: "Outside the office" },
+  { id: "gp-market",   view: "place", by: "place", label: "肉菜市场", en: "The wet market" },
+  { id: "gp-teahouse", view: "place", by: "place", label: "早茶楼", en: "The dim sum place" },
+  { id: "gp-mall",     view: "place", by: "place", label: "天河城", en: "Teemall" },
+  { id: "gp-tower",    view: "place", by: "place", label: "广州塔 · 花城广场", en: "Canton Tower" },
+  { id: "gp-airport",  view: "place", by: "place", label: "白云机场", en: "Baiyun Airport" },
+  { id: "gp-shamian",  view: "place", by: "place", label: "沙面", en: "Shamian Island" },
+  { id: "gp-river",    view: "place", by: "place", label: "猎德涌 · 珠江边", en: "By the river" },
+  { id: "gp-home",     view: "place", by: "place", label: "出租屋", en: "The flat" }
 ];
 
 const SCENES = [
   {
-    id: "s01", part: "mon", time: "7:10",
+    id: "s01", part: "mon", place: "gp-tiyu", time: "7:10",
     t: "Line 1 at eight in the morning", z: "早八点的一号线",
     lead: "从出租屋走到地铁站八分钟。这八分钟决定我今天迟不迟到，也决定我今天是什么心情。",
     paras: [
@@ -60,7 +86,7 @@ const SCENES = [
   },
 
   {
-    id: "s02", part: "tue", time: "12:15",
+    id: "s02", part: "tue", place: "gp-office", time: "12:15",
     t: "The lunch question", z: "中午吃什么",
     lead: "每天十二点一刻，办公室里会准时出现一个难题：吃什么。它不难在没得选，难在所有人都不肯先说。",
     paras: [
@@ -88,7 +114,7 @@ const SCENES = [
   },
 
   {
-    id: "s03", part: "wed", time: "18:40",
+    id: "s03", part: "wed", place: "gp-home", time: "18:40",
     t: "Cook or order in", z: "做饭还是点外卖",
     lead: "出门前我说好今晚自己做饭。出了地铁我就开始跟这句话谈判。",
     paras: [
@@ -116,7 +142,7 @@ const SCENES = [
   },
 
   {
-    id: "s04", part: "thu", time: "21:05",
+    id: "s04", part: "thu", place: "gp-home", time: "21:05",
     t: "The nine o'clock call", z: "晚上九点那场会",
     lead: "公司总部在欧洲。这意味着每年有几十个晚上，我九点钟还在说英语。",
     paras: [
@@ -147,7 +173,7 @@ const SCENES = [
   },
 
   {
-    id: "s05", part: "fri", time: "18:20",
+    id: "s05", part: "fri", place: "gp-office", time: "18:20",
     t: "Friday, off the hook", z: "周五，下班了",
     lead: "六点整，我合上电脑。周五的下班和别的日子不一样：不是逃离，是结束。",
     paras: [
@@ -175,7 +201,7 @@ const SCENES = [
   },
 
   {
-    id: "s06", part: "sat", time: "10:20",
+    id: "s06", part: "sat", place: "gp-teahouse", time: "10:20",
     t: "Dim sum at eleven on a Saturday", z: "周六十一点的早茶",
     lead: "广州的早茶不是在「吃早餐」，它是一项需要排号的活动。十一点到，等于迟到。",
     paras: [
@@ -205,7 +231,7 @@ const SCENES = [
   },
 
   {
-    id: "s07", part: "sat", time: "20:10",
+    id: "s07", part: "sat", place: "gp-home", time: "20:10",
     t: "A Saturday night in", z: "周六，在家",
     lead: "朋友群里有人在清吧，有人在珠江边跑步。我们在家，煮一锅饭，把窗户全打开。",
     paras: [
@@ -233,7 +259,7 @@ const SCENES = [
   },
 
   {
-    id: "s08", part: "sun", time: "17:40",
+    id: "s08", part: "sun", place: "gp-home", time: "17:40",
     t: "The Sunday feeling", z: "周日傍晚的那种感觉",
     lead: "周日下午五点，快乐里开始掺东西。不是难过，是下周开始往回渗。",
     paras: [
@@ -262,7 +288,7 @@ const SCENES = [
   },
 
   {
-    id: "s09", part: "midautumn", time: "八月十五",
+    id: "s09", part: "midautumn", place: "gp-office", time: "八月十五",
     t: "The mooncake economy", z: "月饼经济学",
     lead: "中秋前十天，办公室开始出现一个现象：没人买月饼，但每个人都有月饼。",
     paras: [
@@ -312,7 +338,7 @@ const SCENES = [
   },
 
   {
-    id: "s11", part: "spring", time: "除夕",
+    id: "s11", part: "spring", place: "gp-station", time: "除夕",
     t: "Getting home for New Year", z: "过年回家",
     lead: "抢票这件事每年一次，每年都像第一次：你准备好了，然后它开始了，然后它结束了。",
     paras: [
@@ -343,7 +369,7 @@ const SCENES = [
   },
 
   {
-    id: "s12", part: "labour", time: "5/1",
+    id: "s12", part: "labour", place: "gp-home", time: "5/1",
     t: "Five days off, one of them real", z: "放五天，其中一天是真的",
     lead: "五一放五天。仔细一看，其中两天是周末，两天是调休补回来的。这事每年都要算一遍。",
     paras: [
@@ -369,7 +395,7 @@ const SCENES = [
   },
 
   {
-    id: "s13", part: "dragon", time: "五月初五",
+    id: "s13", part: "dragon", place: "gp-river", time: "五月初五",
     t: "Dragon boats on the Liede", z: "猎德涌上看龙舟",
     lead: "端午在广州不只是吃粽子。是有那么一天，整条涌边上站满了人，为了看二十几个人划一条船。",
     paras: [
@@ -393,6 +419,379 @@ const SCENES = [
       { e: "year after year", c: "年复一年", x: "People come back year after year for forty seconds." },
       { e: "give away", c: "送人 / 分发出去", x: "She made sixty zongzi and is giving them away." },
       { e: "there's no arguing with ...", c: "跟……是没道理可讲的", x: "There's no arguing with an auntie holding a bag." }
+    ]
+  },
+  {
+    id: "s14", part: "sat", place: "gp-tiyu", time: "15:40",
+    t: "How do I get to Quzhuang?", z: "你要去区庄？",
+    lead: "周六下午在体育西路，一个外国人拿着手机拦住我问路。巧的是我也往那边去——仲裁委在环市东，从区庄走过去十分钟。于是我们同路了三站。",
+    paras: [
+      { p: "It's a Saturday afternoon and I'm at Tiyu Xilu with a folder of papers under my arm, which is not a normal Saturday. The Guangzhou Arbitration Commission sits on Huanshi East Road and they want a hard copy of something, and in 2026 that is still a thing that happens.", z: "周六下午，我夹着一袋文件站在体育西路——这本身就不正常。广州仲裁委在环市东路，他们要一份纸质材料，这种事在 2026 年依然会发生。" },
+      { p: "The transfer corridor is running at about seventy percent of a weekday, which at Tiyu Xilu still means a lot of people. I'm heading for the Line 1 side when a man steps into my path with his phone held out — the universal gesture for I'm lost and you look like someone who knows.", z: "换乘通道里的人大概是工作日的七成，在体育西路这仍然算很多。我正往一号线那边走，一个人横到我面前把手机递过来——全世界通用的「我迷路了，你看起来像知道路的人」的手势。" },
+      { p: "Excuse me — do you speak English?", z: "不好意思，你会说英语吗？", w: "Tom" },
+      { p: "More than a bit, yeah. Where are you trying to get to?", z: "会一点，还不止一点。你要去哪？", w: "Me" },
+      { p: "Quzhuang. The map says change at Yangji, but I've been down here twice and both times I ended up on the wrong platform.", z: "区庄。地图说在杨箕换乘，但我下来两次了，两次都走到了错的站台。", w: "Tom" },
+      { p: "You've made the classic Tiyu Xilu mistake. This station is two stations pretending to be one, and most of the signs point at Line 3 because most of the people want Line 3. Don't follow the crowd. Follow the yellow.", z: "你犯了体育西路的经典错误。这个站是两个站假装成一个站，而且大部分指示牌都指向三号线，因为大部分人要坐三号线。别跟着人流走，跟着黄色走。" },
+      { p: "Quzhuang is on Line 5. Take Line 1 one stop to Yangji, go down to Line 5, then two stops — Dongwuyuan, then Quzhuang. Twelve minutes on the train, plus five for the walk inside Yangji, because that interchange was designed by somebody who has never carried a suitcase.", z: "区庄在五号线上。坐一号线一站到杨箕，下到五号线，再坐两站——动物园、区庄。车上十二分钟，外加杨箕站内走五分钟，因为那个换乘通道是某个从没拎过行李箱的人设计的。", w: "Me" },
+      { p: "I'm going that way as well. Come on — I'll walk you to the platform.", z: "我也往那边去。走吧，我带你到站台。", w: "Me" },
+      { p: "Strictly I'm only going as far as Taojin, one stop past his. But directions given once are directions wasted; the only version that works is the one where you walk it. My grandmother taught me that, and she never took a train in her life.", z: "严格说我只到淘金，比他多一站。但指路只说一遍等于白说，唯一有效的版本是陪着走一遍。这是我奶奶教我的，而她一辈子没坐过地铁。" },
+      { p: "On the train he tells me his name is Tom, he's from Manchester, he buys lighting for a company that sells it to hotels, and he has been in Guangzhou fourteen months.", z: "车上他说他叫 Tom，曼彻斯特人，替一家把灯具卖给酒店的公司做采购，来广州十四个月了。" },
+      { p: "How's your Cantonese?", z: "你粤语怎么样了？", w: "Me" },
+      { p: "Three words. Two of them are food. The third one I use on taxis and it means turn left, but I'm not certain it only means turn left.", z: "三个词。两个是吃的。第三个我用来跟出租车说，意思是左转，但我不确定它是不是只有左转的意思。", w: "Tom" },
+      { p: "I teach him the one phrase that actually matters down here: m goi, je gwo — excuse me, let me through. He tries it. It comes out like a sneeze. I tell him nobody gets it right the first time, and that saying it badly still works, because people move for the attempt, not the tone.", z: "我教了他一句在这里真正有用的话：唔该，借过。他试着说了一遍，听起来像个喷嚏。我告诉他没人第一次就说对，而且说得难听也照样管用——人是看你肯开口才让的，不是看你音调准不准。" },
+      { p: "What's surprised you most?", z: "最让你意外的是什么？", w: "Me" },
+      { p: "Delivery. I ordered at twenty to twelve and a man was at my door at eleven minutes past. In Manchester that's a text message saying it's on its way.", z: "外卖。我十一点四十下单，十一点五十一人到门口。在曼彻斯特，那个时间点你收到的只是一条短信：正在配送中。", w: "Tom" },
+      { p: "And the thing he likes: dim sum on a Sunday, the banyan trees that make whole streets feel like rooms, and the fact that there is a shop underneath his building that will sell him a single bulb at ten at night. The thing he doesn't like: the humidity in March, when nothing dries.", z: "他喜欢的：周日的早茶、把整条街盖成房间的榕树、还有楼下那家晚上十点还愿意卖他一个灯泡的小店。他不喜欢的：三月的回南天，什么都干不了。" },
+      { p: "I bought a dehumidifier. It filled up in two days. Two days! I have lived in England my whole life and I have never seen water behave like this.", z: "我买了台抽湿机。两天就满了。两天！我在英国活了半辈子，从没见过水能这样。", w: "Tom" },
+      { p: "Next station, Quzhuang. Doors will open on the left.", z: "下一站，区庄。列车运行方向左侧车门将会打开。", w: "Announcement" },
+      { p: "This is you. Exit B, then keep walking — don't turn off at the first junction, everyone does and it's wrong.", z: "你到了。B 出口，然后一直走——第一个路口别拐，所有人都拐，都是错的。", w: "Me" },
+      { p: "Thanks. You didn't have to walk me through it.", z: "谢谢。你其实不用陪我走这一趟。", w: "Tom" },
+      { p: "It's nothing. Enjoy Quzhuang. It's mostly roadworks and one extremely good brisket noodle shop.", z: "没什么。好好逛区庄吧。那儿基本都在修路，外加一家非常好吃的牛腩粉。", w: "Me" },
+      { p: "The doors close and he's gone, and I ride one more stop thinking about how that was seven minutes of English with no business words in it at all — no clause, no liability, no counterparty — and it was easily the most useful English I've used all week.", z: "车门关上，他走了。我又坐了一站，想着刚才那七分钟英语里一个商务词都没有——没有条款、没有责任、没有对方当事人——却是我这周用过的最有用的一段英语。" },
+      { p: "We didn't add each other on WeChat. Three stops together is a complete thing. It doesn't have to be the start of one.", z: "我们没加微信。同路三站本身就是一件完整的事，不必非得是另一件事的开始。" }
+    ],
+    notes: [
+      { e: "I'm going that way (as well)", c: "我也顺路", x: "I'm going that way too — I'll walk you to the platform." },
+      { e: "change at ... / transfer", c: "在……换乘", x: "Take Line 1 one stop and change at Yangji." },
+      { e: "walk someone through something", c: "陪人把某事走一遍 / 给人说清楚", x: "You didn't have to walk me through it." },
+      { e: "it's on its way", c: "在路上了 / 正在配送", x: "In Manchester that's a text saying it's on its way." },
+      { e: "give someone directions", c: "给某人指路", x: "He asked me for directions at the interchange." },
+      { e: "don't follow the crowd", c: "别跟着人流走", x: "Don't follow the crowd — follow the yellow signs." }
+    ]
+  },
+  {
+    id: "s15", part: "fri", place: "gp-tiyu", time: "18:50",
+    t: "Ten minutes under the awning", z: "在雨棚下站了十分钟",
+    lead: "广州夏天的雨不讲道理，也不打招呼。六点四十出闸，体育西路站口站着两百个人，都在等同一件事：雨小一点。",
+    paras: [
+      { p: "I hear the rain before I see it. Not the rain itself — the rain hitting the metal awning over the exit, which sounds like someone pouring a bag of beans onto a drum.", z: "我先听见雨，才看见雨。不是雨声，是雨砸在出站口那块金属雨棚上的声音，听起来像有人把一袋豆子倒在鼓面上。" },
+      { p: "There are maybe two hundred of us under here and none of us are going anywhere. Half are on their phones. The other half are filming the rain to send to somebody, which is what you do when you're stuck: you turn the waiting into content.", z: "雨棚下大概两百人，没人打算动。一半在看手机，另一半在拍雨发给别人——被困住的时候人就会干这个：把等待变成素材。" },
+      { p: "A woman next to me is on video with her boyfriend. Don't come and get me, she says. You can't get through either. We'd just be two people in a car instead of two people under a roof.", z: "我旁边一个女生在跟男朋友视频：你别来接我，你也进不来。那样我们只是从「两个人在雨棚下」变成「两个人在车里」。" },
+      { p: "The delivery riders go anyway. They always go. Their time is the most expensive thing on this street, and the rain has already been priced in — a wet rider who is late pays twice, so they pull the poncho over the bag first and themselves second.", z: "外卖骑手照样冲进雨里。他们永远冲。在这条街上他们的时间最贵，而且雨早就折算进成本了——一个迟到的湿身骑手要付两次代价，所以他们先把雨衣盖在箱子上，再盖自己。" },
+      { p: "An uncle appears with a trolley of umbrellas. Fifteen yuan yesterday, twenty-five now. Nobody argues, because everybody understands the mechanism: the price isn't the umbrella, it's the distance between you and the nearest dry place.", z: "一个阿伯推着一车伞过来。昨天十五，现在二十五。没人还价，因为大家都懂这个机制：你买的不是伞，是你和最近的干燥地点之间的距离。" },
+      { p: "My own calculation takes about thirty seconds. The bike is seven minutes. In this rain it's seven minutes of not seeing, plus a wet shirt through a meeting if I had one, plus the specific danger of a white line in the road that has become a slide. A taxi is forty-seven people ahead of me in the queue. Walking is twenty-five minutes home.", z: "我自己的计算用了三十秒。骑车七分钟。这种雨里骑车等于七分钟看不见路，外加一件湿衬衫——如果有会的话——再加路面标线变成滑道的那种具体危险。打车前面排了四十七个人。走路回家二十五分钟。" },
+      { p: "So I wait. Everyone waits. This is the part people from dry countries never understand about a Guangzhou summer: waiting out the rain is not a delay, it's the schedule.", z: "于是我等。所有人都等。这是干燥国家的人永远理解不了的广州夏天：等雨停不是延误，等雨停就是日程本身。" },
+      { p: "At ten to seven the noise on the awning drops half a level, and two hundred people make the same decision within about four seconds. You can hear it: two hundred phone screens unlocking at once, the little beep of a hundred shared bikes waking up.", z: "六点五十分，雨棚上的声音降了半级，两百个人在大约四秒内做了同一个决定。你能听见：两百块手机屏幕同时解锁，一百辆共享单车同时被唤醒的那声嘀。" },
+      { p: "I get the fourth bike again. Some things are consistent.", z: "我又选了第四辆车。有些事是稳定的。" },
+      { p: "I ride home slowly, and I am soaked anyway — not from the rain, mostly from the spray off the road and the water that comes up through the sole of the shoe. By the time I'm at our door my socks are a separate weather system.", z: "我慢慢骑回去，结果还是湿透了——主要不是雨，是路面溅起来的水和从鞋底渗进来的水。到家门口时，我的袜子已经自成一套天气系统。" },
+      { p: "You said it wasn't going to rain.", z: "你说过不会下雨的。", w: "Wife" },
+      { p: "I know. I'm aware of the record.", z: "我知道。我有在记账。", w: "Me" }
+    ],
+    notes: [
+      { e: "wait out the rain", c: "等雨停 / 躲雨", x: "Waiting out the rain isn't a delay, it's the schedule." },
+      { e: "the rain eased off", c: "雨小了", x: "At ten to seven the rain eased off and everyone moved." },
+      { e: "soaked (through)", c: "湿透了", x: "I rode slowly and was soaked anyway." },
+      { e: "be priced in", c: "已经被算进去了", x: "For riders the rain is already priced in." },
+      { e: "I'm aware of the record", c: "我有在记账（我知道自己说过什么）", x: "You said it wasn't going to rain. — I know. I'm aware of the record." }
+    ]
+  },
+  {
+    id: "s16", part: "sun", place: "gp-station", time: "16:20",
+    t: "Picking someone up at Guangzhou Station", z: "在广州火车站接人",
+    lead: "表弟第一次来广州。我让他别出站，站在出站口左边第三根柱子下面别动——在广州火车站接过人的人都懂，谁动谁就永远找不到对方。",
+    paras: [
+      { p: "Guangzhou Station is always like this and always has been: the rolling of a hundred suitcase wheels, a man holding a sign that says Mr. Chen, a woman asking nobody in particular if we need a room, and three different people offering Dongguan, Shenzhen, Foshan.", z: "广州火车站永远是这样，一直都是：一百个拉杆箱轮子的滚动声、一个举着「陈总」牌子的男人、一个对着空气问我们要不要住宿的女人，还有三个人分别喊着东莞、深圳、佛山。" },
+      { p: "I stand at the third pillar on the left of the exit, which is the arrangement every Guangzhou person has with their visiting relatives. Don't move, I tell him. If you move, we will spend forty minutes doing this.", z: "我站在出站口左边第三根柱子旁——每个广州人和来探亲的亲戚都是这么约定的。别动，我告诉他。你一动，我们就得花四十分钟来演这一出。" },
+      { p: "The board says his train is twelve minutes late, which for a K-train is basically on time. Next to me a mother is holding an A4 sheet with a name printed on it, and a driver is holding a phone with a name on the screen. Two systems, same purpose.", z: "屏幕上显示他的车晚点十二分钟，对 K 字头来说这基本等于准点。我旁边一个妈妈举着一张印着名字的 A4 纸，一个司机举着一部亮着名字的手机。两套系统，同一个目的。" },
+      { p: "He comes out with a backpack and the face of someone who expected a station and got a city. This is big, he says. I know, I say. It's the oldest one. The newer ones are bigger and further away.", z: "他背着包出来，脸上是那种「以为是车站、结果是座城市」的表情。好大啊，他说。我知道，我说。这是最老的一个。新的更大，也更远。" },
+      { p: "How do we get to your place?", z: "怎么去你那儿？", w: "Cousin" },
+      { p: "Metro. Line 2, then change to Line 1. Forty minutes, door to door.", z: "地铁。二号线换一号线。四十分钟，门到门。", w: "Me" },
+      { p: "Can't we just get a taxi?", z: "不能打车吗？", w: "Cousin" },
+      { p: "We can. The queue is about twenty minutes and then we sit on the road for another thirty. The metro is bored, predictable and moving. In this city the word metro solves about eighty percent of going anywhere; shared bikes do most of the other twenty.", z: "可以。排队二十分钟，然后再在路上坐三十分钟。地铁无聊、可预期、而且在动。这座城市里「地铁」两个字能解决大约八成的出行，剩下两成大部分靠共享单车。", w: "Me" },
+      { p: "An auntie asks him if he wants a room. I say no thank you for him. He asks what she said, I tell him, and he looks faintly disappointed, as if he'd expected something more dramatic from his first ten minutes in Guangzhou.", z: "一个阿姨问他要不要住宿。我替他说了不用了谢谢。他问她说的是什么，我翻译了，他有点失望，好像以为来广州的头十分钟应该发生点更戏剧性的事。" },
+      { p: "We buy water outside the station and I watch him look at the price. Inside it's three yuan. Outside, same bottle, five. He says nothing. I say nothing. This is also part of the tour.", z: "我们在站外买水，我看着他看价格的样子。站里三块，站外同样一瓶五块。他没说话，我也没说话。这也是行程的一部分。" },
+      { p: "On the train he watches the windows go from concrete to trees and says the thing everyone says the first time: there are so many trees. It's my favourite thing about this city too — the banyans that close over a street until the street is a room with a roof.", z: "在车上他看着窗外从水泥变成树，说出了每个第一次来的人都会说的那句：树好多。这也是我最喜欢这座城市的地方——榕树把一条街盖起来，盖到那条街变成一个有屋顶的房间。" },
+      { p: "Are the trees here all year?", z: "这些树一年四季都在吗？", w: "Cousin" },
+      { p: "All year. That's the trick. Nothing in this city ever admits what month it is.", z: "一年四季都在。这就是它的本事。这座城市从来不承认现在是几月。", w: "Me" }
+    ],
+    notes: [
+      { e: "pick someone up", c: "接人", x: "I'm picking up my cousin at Guangzhou Station." },
+      { e: "the train is running late", c: "火车晚点", x: "His train is twelve minutes late." },
+      { e: "door to door", c: "门到门（全程）", x: "Forty minutes, door to door." },
+      { e: "stand still and I'll find you", c: "你站着别动，我去找你", x: "Don't move — stand still and I'll find you." },
+      { e: "no thank you (for him)", c: "替他回绝", x: "I said no thank you for him." }
+    ]
+  },
+  {
+    id: "s17", part: "spring", place: "gp-station", time: "腊月廿八",
+    t: "You're at the wrong station", z: "你跑错站了",
+    lead: "朋友从武汉来广州转车，票上写的是广州南站，人却站在广州火车站门口给我打电话。这是这座城市给外地人的第一课。",
+    paras: [
+      { p: "I'm at the station, he says. Where are you?", z: "我到车站了，他说。你在哪？", w: "Friend" },
+      { p: "I'm at the station too. The problem is that your train isn't.", z: "我也在车站。问题是你那趟车不在。", w: "Me" },
+      { p: "There are four places in this city that call themselves Guangzhou on a ticket: Guangzhou, Guangzhou East, Guangzhou South, Guangzhou North. The fast trains to Wuhan leave from the south one, which is twenty-five minutes away by metro and roughly forty by road on a good day, and today is not a good day.", z: "这座城市有四个在票面上都叫「广州」的地方：广州站、广州东站、广州南站、广州北站。去武汉的高铁从南站走，坐地铁过去二十五分钟，路况好的时候开车大概四十分钟，而今天路况不好。" },
+      { p: "I find him by the pillar with a suitcase and the particular expression of a man who has been betrayed by a noun. It says Guangzhou, he says. It does, I say. That's the whole trick. It says Guangzhou the way a menu says soup.", z: "我在柱子旁边找到他，他拎着箱子，脸上有一种「被一个名词背叛了」的表情。票上写的是广州啊，他说。是的，我说。整套把戏就在这里。它写着「广州」的方式，跟菜单上写着「汤」是一回事。" },
+      { p: "How much time have I got?", z: "我还剩多少时间？", w: "Friend" },
+      { p: "Fifty-eight minutes. Enough, but not enough to be calm about it. Come on — Line 2 goes there directly, no changes.", z: "五十八分钟。够，但不够从容。走吧——二号线直达，不用换乘。", w: "Me" },
+      { p: "This is the one thing about Guangzhou Station that I actually like: Line 2 runs straight from here to the south station, no changing, no thinking. Twenty-five minutes of sitting down, which is twenty-five minutes he can stop being frightened.", z: "这是广州火车站唯一一件我真心喜欢的事：二号线从这儿直达南站，不用换乘，不用思考。坐着二十五分钟，这二十五分钟他可以不用再慌。" },
+      { p: "Is it far from the metro to the platform?", z: "地铁到站台远吗？", w: "Friend" },
+      { p: "Ten minutes on foot once you're inside, and the place is the size of an airport terminal. You'll run. Everyone runs. Running inside Guangzhou South is not embarrassing, it's the local custom.", z: "进去之后还要走十分钟，那地方有一个航站楼那么大。你会跑的，所有人都跑。在广州南站里跑步不丢人，那是本地风俗。", w: "Me" },
+      { p: "At the south station he goes, and I get back on Line 2 alone. The carriage is full of people carrying new-year things: boxes of biscuits, two bottles of something, a bag of mandarins, a plastic bag containing a whole frozen chicken that has started to give up.", z: "在南站他跑进去了，我一个人又坐上二号线。车厢里全是拎着年货的人：饼干礼盒、两瓶什么酒、一袋橘子，还有一只装在塑料袋里、已经开始放弃的冻鸡。" },
+      { p: "He messages at the platform: made it. Two words and a photo of a departure board. That's the whole thank-you, and it's plenty.", z: "他在站台发来消息：到了。两个字加一张车次显示屏的照片。这就是全部的感谢，而且足够了。" },
+      { p: "I ride back thinking about how a city's friendliness isn't measured by its skyline. It's measured by what happens in the ten minutes when somebody is standing in the wrong place with a suitcase and no idea.", z: "回去的路上我在想，一座城市是否友好，不是看天际线。是看那十分钟里会发生什么——有人拎着箱子站在错的地方，一无所知的那十分钟。" }
+    ],
+    notes: [
+      { e: "you're at the wrong station", c: "你跑错站了", x: "The problem is that your train isn't here — you're at the wrong station." },
+      { e: "no changes / direct", c: "不用换乘 / 直达", x: "Line 2 goes there directly, no changes." },
+      { e: "cut it fine", c: "时间卡得很紧", x: "Fifty-eight minutes — enough, but we're cutting it fine." },
+      { e: "make it (in time)", c: "赶上了", x: "He made it, with four minutes to spare." },
+      { e: "give up (on something)", c: "撑不住了 / 放弃了", x: "A frozen chicken that has started to give up." }
+    ]
+  },
+  {
+    id: "s18", part: "sat", place: "gp-yuexiu", time: "8:30",
+    t: "Five goats and a man with a loudspeaker", z: "五羊和那个拿喇叭的人",
+    lead: "周六早上八点半的越秀公园不属于游客，属于晨练的人。我们本来是来看五羊石像的，结果整个公园的日常先把我们接管了。",
+    paras: [
+      { p: "We get to Yuexiu Park at half past eight, which is the hour that belongs to nobody visiting. The tourists haven't arrived and the morning people have already finished their first round. The air under the trees smells filtered, which is the only way I can describe it — like the park has done something to it on the way in.", z: "我们八点半到越秀公园，这是一个不属于任何游客的时段。游客还没来，晨练的人已经练完第一轮。树下的空气闻起来像被过滤过——我只能这样描述，好像公园在空气进来的路上对它做了点什么。" },
+      { p: "Within two minutes of the gate there is a man with a loudspeaker singing, a group doing tai chi at a speed that suggests they have been doing it together for a decade, and an old man writing characters on the pavement with a brush the size of a broom and a bottle of water. Water calligraphy. It dries in ten minutes and he does it again.", z: "进门不到两分钟：一个拿喇叭的人在唱歌，一伙人打太极的速度说明他们已经一起打了十年，还有一个老人拿着扫帚那么大的毛笔和一瓶水在地上写字。地书。十分钟就干，然后他再写一遍。" },
+      { p: "My wife says what she says every time: people here don't visit a park, they use one. It's not a place you look at. It's a room with a roof made of trees, and everybody has brought something to do in it.", z: "我老婆说了她每次都会说的那句：这儿的人不是「逛」公园，是「用」公园。这不是用来看的地方，是一个树做的屋顶盖着的房间，每个人都带了点事来里面干。" },
+      { p: "At the Five Goats statue there is, as always, a queue of people being photographed, and a tour group with a little flag. A man in his forties hands me his phone and asks in careful English if I wouldn't mind.", z: "五羊石像前照例排着一队等着拍照的人，还有一个举小旗的旅行团。一个四十来岁的男人把手机递给我，用很谨慎的英语问我方不方便。" },
+      { p: "Of course. One, two, three — say qiezi.", z: "当然。一、二、三——茄子。", w: "Me" },
+      { p: "Cheese?", z: "说 cheese？", w: "Him" },
+      { p: "We say the word for aubergine. Nobody in China says cheese. We've been saying the name of a vegetable for forty years and nobody has ever thought to question it.", z: "我们说的是「茄子」。中国没人说 cheese。我们把一种蔬菜的名字喊了四十年，从来没人觉得应该质疑一下。", w: "Me" },
+      { p: "He laughs, takes the phone back, and asks the question I have been waiting for, because it's the only interesting thing about this statue.", z: "他笑了，拿回手机，然后问了那个我一直在等的问题——这是这座石像唯一有意思的地方。" },
+      { p: "Why five goats? Is there a story, or is it just five goats?", z: "为什么是五只羊？是有故事，还是就是五只羊？", w: "Him" },
+      { p: "There's a story. Five immortals came down on five goats and brought rice with them, and that's why the city is called the City of Goats. Nobody finds this strange. My firm is on a road called Ring Road East and our logo has a ram on it, and none of us have ever asked why.", z: "有故事。五位仙人骑着五只羊下来，带来了稻穗，所以这座城市叫羊城。没人觉得这有什么奇怪。我公司在环市东路，我们的 logo 上有只羊，而我们从没问过为什么。", w: "Me" },
+      { p: "And is it true?", z: "那是真的吗？", w: "Him" },
+      { p: "Allegedly. Which, speaking as a lawyer, is my favourite category of story: the kind nobody can verify and everybody repeats.", z: "据说是。作为律师，这是我最喜欢的一类故事：没人能证实，但所有人都在讲。", w: "Me" },
+      { p: "We walk up past the old city wall and the Zhenhai Tower, and my wife points at a kapok tree that isn't flowering yet and tells me the exact month it will. She knows this about four trees in this city and I have never once remembered which.", z: "我们往上走过古城墙和镇海楼，我老婆指着一棵还没开的木棉树，告诉我会开在哪个月。这座城市里有四棵树她知道得这么清楚，而我一次也没记住是哪四棵。" },
+      { p: "We come out of the north gate at ten and eat rice noodle rolls at a place that has been there longer than the queue outside it. She says we should bring my mother next time. I say yes. We both know we'll be back in August, when it's too hot for this and we won't.", z: "十点从北门出来，在一家比它门口的队更老的店吃了肠粉。她说下次带我妈来。我说好。我们都知道下一次是八月，那时候太热，来不了。" }
+    ],
+    notes: [
+      { e: "would you mind (doing something)", c: "你介意……吗", x: "He asked if I wouldn't mind taking the photo." },
+      { e: "allegedly", c: "据说是", x: "Allegedly — the kind of story nobody can verify." },
+      { e: "say cheese / say qiezi", c: "拍照喊「茄子」", x: "One, two, three — say qiezi." },
+      { e: "be made of", c: "由……做成", x: "A room with a roof made of trees." },
+      { e: "point at / point out", c: "指着 / 指出来", x: "She pointed at a kapok tree and told me the month it flowers." }
+    ]
+  },
+  {
+    id: "s19", part: "sun", place: "gp-baiyun", time: "6:40",
+    t: "Up Baiyun Mountain before the heat", z: "趁还没热，上白云山",
+    lead: "周日六点四十出门。在广州爬白云山有一条硬规则：十点之后上山，那是另一种活动，而且不是给游客准备的那种。",
+    paras: [
+      { p: "We meet at the gate at twenty to seven: my wife, my colleague Nina, and Nina's boyfriend, who has agreed to this in the way people agree to things on a Saturday night.", z: "六点四十在山门口集合：我老婆、同事 Nina，还有 Nina 的男朋友——他答应这件事的方式，就是人们在周六晚上答应事情的那种方式。" },
+      { p: "Are we walking up or taking the shuttle bus?", z: "我们爬上去还是坐电瓶车？", w: "Nina" },
+      { p: "I'd like to say walk up and take the bus down. This has been my position on every mountain for ten years, and I see no reason to change it now.", z: "我想说的是爬上去、坐车下来。这个立场我保持了十年，没理由现在改。", w: "Me" },
+      { p: "We're here to climb. That's the verb.", z: "我们是来爬的。爬是个动词。", w: "Nina" },
+      { p: "Halfway up, Nina has stopped being a person who says things like that's the verb. The steps are the enemy, not the slope: it's the fact that they never stop being steps. My wife counts them out loud for a while and then stops, which I take as a serious medical signal.", z: "爬到一半，Nina 已经不再是那种会说「爬是个动词」的人了。敌人不是坡度，是台阶——它们永远都是台阶这件事本身。我老婆念了一段时间的台阶数，然后不念了，我认为这是个严重的医学信号。" },
+      { p: "An uncle coming down tells us it's twenty minutes more. Every uncle on every mountain in Guangdong says twenty minutes, and it always means forty. I have never understood why they do this. I think it's kindness with the numbers changed.", z: "一个下山的大爷跟我们说还有二十分钟。广东每座山上的每个大爷都说二十分钟，而它永远意味着四十分钟。我一直不明白为什么。我觉得这是把数字改过了的善意。" },
+      { p: "At the top we buy douhua and soy milk from a stall that has clearly been carrying things up this mountain for a very long time. Ten yuan for a bowl of bean curd that costs four down there, and not one of us mentions it, because we all know what the carrying costs.", z: "山顶我们在一家小摊买了豆腐花和豆浆——那家摊子显然已经往这座山上搬了很久的东西。一碗山下四块的豆腐花卖十块，我们谁都没提，因为大家都知道搬上来要多少成本。" },
+      { p: "The view from the platform is grey. Not fog exactly — Guangzhou visibility. You can't see the city, but you can see that it's there, which on a clear morning is apparently a completely different experience and which I have never once had.", z: "平台上看出去是灰的。不完全是雾——是广州的能见度。你看不见这座城市，但你知道它在那儿。听说天气好的早上完全是另一种体验，而我一次也没赶上过。" },
+      { p: "Is it worth it?", z: "值吗？", w: "Nina" },
+      { p: "The view, no. The fact that at half past eleven on a Sunday we have already done something — yes, that's worth a lot.", z: "风景不值。但「周日十一点半我们已经做完了一件事」这件事——值很多。", w: "Me" },
+      { p: "We take the shuttle bus down, which Nina agrees to immediately and without comment. Back at the flat by eleven, showered, on the sofa, all four of us in the same silence. Nobody says that was nice. It's understood.", z: "我们坐电瓶车下山，Nina 立刻同意，一句话没说。十一点回到出租屋，洗完澡，摊在沙发上，四个人陷入同一种沉默。没人说「挺好的」。这不用讲。" }
+    ],
+    notes: [
+      { e: "be worth it", c: "值得", x: "The view, no. The fact we've done something — yes, that's worth a lot." },
+      { e: "walk up / take the bus down", c: "爬上去坐车下来", x: "My position is walk up and take the bus down." },
+      { e: "halfway up", c: "爬到一半", x: "Halfway up, Nina stopped saying things like that." },
+      { e: "not one of us", c: "我们中没有一个人", x: "Not one of us mentioned the price." },
+      { e: "call it a day", c: "收工 / 到此为止", x: "We got back at eleven and called it a day." }
+    ]
+  },
+  {
+    id: "s20", part: "sat", place: "gp-market", time: "9:10",
+    t: "The wet market on a Saturday morning", z: "周六早上的肉菜市场",
+    lead: "菜市场是我在广州最喜欢的一间教室。这里的句子都很短，而且每个词都有后果：说错了，你今晚吃的就是错的鱼。",
+    paras: [
+      { p: "Nine in the morning and the floor is wet, which is not a defect — it's how you know the fish is fresh and the vegetables have been sprayed. There is ice, there is light, there is a man with a knife who works faster than I can follow.", z: "早上九点，地面是湿的——这不是缺陷，这是你判断鱼新不新鲜、菜有没有喷过水的方式。有冰，有灯，还有一个挥刀速度跟不上的男人。" },
+      { p: "There used to be live chickens in here. There aren't any more — the city decided that after one bird flu season too many, and now it's all chilled, and everybody still calls it fresh. My wife tells me this every time and I forget it every time.", z: "以前这里有活鸡。现在没有了——经历过一次禽流感之后城市做了这个决定，现在全是冰鲜的，但所有人都还是管它叫「鲜」。我老婆每次都跟我说一遍，我每次都忘记。" },
+      { p: "We have a division of labour: she chooses, I hold the bags. My second job, which I have learned the hard way, is to say nothing while she is choosing.", z: "我们有分工：她挑，我拎袋子。我的第二份工作——这个我是吃过亏才学会的——是在她挑的时候闭嘴。" },
+      { p: "The auntie on the greens has recognised us for about six months. Every single week she puts two spring onions on top of the bag and every single week my wife tries to refuse them and every single week she loses. This is not a discount. It's a relationship, and it's not up for discussion.", z: "卖青菜的阿姨认得我们大概半年了。每周她都在袋子上放两根葱，每周我老婆都试图拒绝，每周她都输。这不是打折，这是一段关系，而且不接受讨论。" },
+      { p: "Today we're having fish. Which one?", z: "今天吃鱼。哪条？", w: "Wife" },
+      { p: "For steaming, take this one. For frying, don't take this one. Steaming wants a fish that doesn't fall apart; frying wants one that doesn't mind.", z: "清蒸拿这条，煎不要拿这条。清蒸要一条蒸不散的；煎要一条不怕煎的。", w: "Auntie" },
+      { p: "She says it in about four seconds and I catch maybe seventy percent. My wife catches all of it, which is the real reason she does the choosing and I do the holding.", z: "她四秒内说完，我大概听懂七成。我老婆全听懂了——这才是她负责挑、我负责拎的真正原因。" },
+      { p: "The greens are three fifty. My wife says three. The auntie says three. Then she says three thirty and puts in another handful, and everyone wins by twenty fen. Haggling at a wet market is not about money. It's a short ceremony that ends with both people having been reasonable.", z: "青菜三块五。我老婆说三块。阿姨说三块。然后她说三块三，又抓了一把，双方各赢两毛。菜市场讲价不是为了钱，是一个简短的仪式，结束时双方都显得通情达理。" },
+      { p: "She pays by scanning the code taped to the stall. Next to it is a smaller sign saying cash is fine — for the old ones, she says, meaning people older than her, which at this stall means people in their eighties who have been shopping here since before the code existed.", z: "她扫摊位上贴着的码付钱。旁边还有一块小牌子写着「现金也可以」——给老人家的，她说，指的是比她更老的人；在这个摊位，那意味着八十多岁、在这个码出现之前就来买菜的人。" },
+      { p: "A neighbour auntie stops us by the door and asks when my mother is coming down. My wife answers for both of us, because she keeps the calendar of two families in her head and I keep the calendar of one company.", z: "门口一个邻居阿姨拦住我们，问我妈什么时候来广州。我老婆替我们两个回答了，因为她脑子里装着两个家庭的日程，而我只装了一家公司的。" },
+      { p: "We walk home with four bags and my hands hurt in exactly the same place they hurt every Saturday. Every sentence in this place is short and every one of them has consequences, and I have never once learned the word for the thing I was pointing at.", z: "我们拎着四个袋子走回家，我的手疼在每周六都会疼的同一个位置。这里的每个句子都很短，而且每一句都有后果；而我至今没学会我指着的那个东西叫什么。" }
+    ],
+    notes: [
+      { e: "for steaming / for frying", c: "清蒸用 / 煎用", x: "For steaming, take this one. For frying, don't." },
+      { e: "throw in (something extra)", c: "搭送 / 额外给", x: "She throws in two spring onions every week." },
+      { e: "haggle / knock something off", c: "讲价 / 便宜一点", x: "We knocked twenty fen off and both felt reasonable." },
+      { e: "be up for discussion", c: "可以商量", x: "It's not a discount — it's a relationship, and it's not up for discussion." },
+      { e: "learn the hard way", c: "吃过亏才学会", x: "I learned the hard way to say nothing while she chooses." }
+    ]
+  },
+  {
+    id: "s21", part: "sat", place: "gp-mall", time: "15:20",
+    t: "Do you have this in a bigger size?", z: "这有大一号的吗？",
+    lead: "我一年逛两次商场，两次都在换季。天河城里有两套排队系统：试衣间门口的，和奶茶店门口的。",
+    paras: [
+      { p: "I shop twice a year, both times at the change of season, and my wife has decided today is one of them. I don't like buying clothes, because trying clothes on requires a second language that I don't have: the language of it's a bit tight here.", z: "我一年逛两次店，两次都在换季，而我老婆认定今天就是其中一次。我不喜欢买衣服，因为试衣服需要第二套语言——「这里有点紧」的那种语言，而我没有。" },
+      { p: "A shop assistant appears within four seconds of the door. Just looking, thanks — I'll have a look myself first. In Guangzhou the interesting question isn't whether they approach you; it's whether they know when to stop. The good ones do.", z: "进门四秒内店员就出现了。「随便看看，谢谢——我先自己看看。」在广州有意思的问题不是他们会不会上来，而是他们知不知道什么时候停。好的知道。" },
+      { p: "Can I try this on?", z: "可以试穿吗？", w: "Me" },
+      { p: "Sure. Fitting rooms at the back. What size are you?", z: "可以。试衣间在里面。你穿什么码？", w: "Assistant" },
+      { p: "Forty-one, I think. In Europe I'm a forty, here I'm usually a forty-one, and I never remember which way round until I'm in the room with the curtain.", z: "四十一吧。在欧洲我穿四十，在这里通常四十一，而我一直要到拉上试衣间的帘子才记得清顺序。", w: "Me" },
+      { p: "The shoulders are fine and the sleeves are a bit tight. Which is my whole problem with shirts in this city: they're cut for someone whose arms end earlier than mine.", z: "肩膀没问题，袖子有点紧。这就是我在这座城市买衬衫的终极问题：衣服是照着一个手臂比我早结束的人剪的。", w: "Me" },
+      { p: "Do you have this in a bigger size? Or the same size in a different cut?", z: "这有大一号的吗？或者同码的不同版型？", w: "Me" },
+      { p: "This one's a slim fit. There's a regular fit in the same colour — it'll give you room in the arm.", z: "这是修身版。同色有常规版，手臂那里会松一点。", w: "Assistant" },
+      { p: "At the till she asks if I'm a member, which means a phone number, which means a code, which means I now receive a message every season whether I like it or not. Then: can I get an invoice? It's an occupational disease. I ask for receipts the way other people ask for directions.", z: "收银台她问我是不是会员，这意味着手机号，意味着验证码，意味着从此每季都会收到一条不管我愿不愿意的短信。然后是：可以开发票吗？这是职业病。我要发票的样子，就像别人问路。" },
+      { p: "Outside, the milk tea place has sixty-one orders ahead of it. Nobody in this city queues for anything except milk tea, hot pot, and the toilet at a scenic spot — and we do all three with the same patience, which I've never been able to explain to anyone from anywhere else.", z: "外面那家奶茶店前面排了六十一杯。这座城市里没人为任何事排队，除了奶茶、火锅和景区厕所——而且这三件事我们都用同一种耐心排，这点我从没能向任何外地人解释清楚。" },
+      { p: "Two shirts. I'll like one of them until I get it home, and then I won't. This is my most consistent record in any category of my life.", z: "两件衬衫。其中一件我会喜欢到回家为止，然后就不喜欢了。这是我人生中所有类别里最稳定的记录。" }
+    ],
+    notes: [
+      { e: "just looking, thanks", c: "随便看看，谢谢", x: "Just looking, thanks — I'll have a look myself first." },
+      { e: "try something on", c: "试穿", x: "Can I try this on?" },
+      { e: "do you have this in ...?", c: "这有……号的吗？", x: "Do you have this in a bigger size?" },
+      { e: "it's a bit tight", c: "有点紧", x: "The sleeves are a bit tight." },
+      { e: "Can I get an invoice / a receipt?", c: "可以开发票 / 给张小票吗？", x: "Can I get an invoice? It's an occupational disease." },
+      { e: "be ahead of (someone) in the queue", c: "排在前面", x: "There are sixty-one orders ahead of us." }
+    ]
+  },
+  {
+    id: "s22", part: "sun", place: "gp-shamian", time: "15:00",
+    t: "Shamian on a Sunday", z: "周日的沙面",
+    lead: "朋友从上海来出差，只剩半天。我带他去沙面——这是我在广州唯一愿意当一次游客的地方。",
+    paras: [
+      { p: "Shamian is an island, which is the first thing that matters about it. You cross a little bridge and the noise drops about thirty percent. The buildings are low and old, the roads are stone, and the trees are the kind that were planted by someone who expected to be dead before they mattered.", z: "沙面是个岛，这是关于它的第一件要紧事。你过一座小桥，噪音大概降三成。楼是矮的、旧的，路是石板的，树是那种「种的人没指望自己活着看到它成气候」的树。" },
+      { p: "What was this place?", z: "这地方以前是什么？", w: "Friend" },
+      { p: "Foreign concession. British and French, mostly, from the eighteen-fifties onwards. The trade houses were on the other side of the water at Thirteen Hongs, and this is where the foreigners lived. Now it's apartments, consulates, coffee shops and about eight weddings a day.", z: "租界。主要是英法租界，十九世纪五十年代起。洋行在水对面十三行那边，外国人住这儿。现在是民居、领馆、咖啡馆，还有一天大概八场婚礼。", w: "Me" },
+      { p: "Eight is not an exaggeration. Every twenty metres there is a couple in white standing under a tree while a photographer tells the groom to move closer, and every twenty metres there is another one, and none of them are annoyed, because everyone understands that on a Sunday this island belongs to the brides.", z: "八场不是夸张。每二十米就有一对穿白的站在树下，摄影师在喊新郎靠近一点；再二十米又是一对。没人不耐烦，因为大家都懂：周日的这座岛归新娘。" },
+      { p: "Are these buildings actually old?", z: "这些楼是真的老吗？", w: "Friend" },
+      { p: "Some are. Some are rebuilt in the old style, which in this city is a different thing and nobody here pretends otherwise. We're not precious about it. A building that looks a hundred years old and is forty still does the job of making a street feel like a street.", z: "有些是。有些是按老样子重建的——在这座城市里这是另一回事，而且这儿没人装作不是。我们不太纠结这个。一栋看着一百年、实际四十年的楼，照样能把一条街撑得像一条街。", w: "Me" },
+      { p: "We sit down for coffee that costs twice what it costs three streets away, and I don't mind, because what you're buying isn't the coffee. You're buying forty minutes inside an old room with a ceiling that's too high, which on a Sunday afternoon is worth more than the difference.", z: "我们坐下喝了杯比三条街外贵一倍的咖啡，我不介意，因为你买的不是咖啡。你买的是在一个天花板过高的旧房间里待四十分钟——周日下午，这比差价值钱。" },
+      { p: "An old foreign gentleman passes with a small dog and greets the woman sweeping the steps in Cantonese — proper Cantonese, the kind that takes twenty years. She answers without looking up, which is how you know he lives here and isn't a visitor.", z: "一位外国老先生牵着一只小狗经过，用粤语跟正在扫台阶的阿姨打招呼——真正的粤语，那种要学二十年的粤语。她头也没抬就回了，这就是你知道他住这儿、不是游客的方式。" },
+      { p: "The cats are the civil servants of Shamian. They have posts, they have regular hours, and they are fed by at least four separate people who each believe they are the only one.", z: "猫是沙面的公务员。它们有岗位，有固定作息，而且至少有四个人在喂它们，每个人都以为只有自己在喂。" },
+      { p: "This doesn't feel like Guangzhou, he says on the way out. It is Guangzhou, I say. That's the thing about this city that takes people a year to get: it's five completely different places stacked on top of each other, and every one of them is real, and none of them cancels the others out.", z: "这里不像广州啊，他走的时候说。这就是广州，我说。这座城市要花一年才让人明白的就是这点：它是五个完全不同的地方叠在一起，每一个都是真的，而且谁也不把谁抵消掉。" }
+    ],
+    notes: [
+      { e: "used to be", c: "以前是", x: "It used to be a foreign concession." },
+      { e: "be worth (the money / it)", c: "值这个钱 / 值得", x: "Forty minutes in an old room is worth more than the difference." },
+      { e: "without looking up", c: "头也不抬", x: "She answered without looking up." },
+      { e: "on the way out", c: "走的时候 / 临走", x: "He said it on the way out." },
+      { e: "cancel each other out", c: "互相抵消", x: "None of them cancels the others out." }
+    ]
+  },
+  {
+    id: "s23", part: "wed", place: "gp-river", time: "周三 20:30",
+    t: "A run along the river", z: "沿江跑一圈",
+    lead: "周三晚上八点半，我终于做成了那件一周计划三次、大概只执行一次的事。换衣服花了十分钟，其中八分钟在跟自己谈判。",
+    paras: [
+      { p: "Getting changed takes ten minutes, eight of which are negotiation. The negotiation is not about whether I want to run. Nobody wants to run. It's about whether the version of me that gets out of the door can be produced from the version of me that is currently on the sofa.", z: "换衣服花了十分钟，其中八分钟在谈判。谈判的内容不是我想不想跑。没人想跑。谈判的内容是：从沙发上这个我，能不能生产出那个会出门的我。" },
+      { p: "By the water at half past eight the whole street is in use, and everybody is using a different part of it. The running lane is for running. The square is for dancing — two groups, two songs, one of them clearly louder than the other and neither of them caring. The steps are for sitting and looking at a phone. Every bench has a couple on it.", z: "八点半的江边，整条街都在被使用，而且每个人用的是不同的部分。跑道是给跑的。广场是给跳舞的——两拨人、两首歌，其中一首明显比另一首响，谁也不在乎。台阶是给坐着看手机的。每张长椅上都有一对。" },
+      { p: "There is a man fishing with a bucket that is empty, and he has been empty for a while, and he doesn't care at all. I have decided this is the correct way to fish.", z: "有个男人在钓鱼，桶是空的，而且已经空了一阵了，他一点都不在意。我认定这才是钓鱼的正确方式。" },
+      { p: "Then the running club goes past: fifteen people in matching vests, all at exactly the same speed, not talking. They scare me slightly every single time. Running in silence and in formation is not exercise, it's a statement.", z: "然后跑团过去了：十五个人穿着同款背心，速度一模一样，不说话。每次都让我有点怕。安静地、成队形地跑步那不叫锻炼，那叫表态。" },
+      { p: "A boy on a shared bike overtakes me at the two kilometre mark. He is not going fast. I am going slower than a person who is not going fast, and I want that written down somewhere.", z: "两公里处，一个骑共享单车的男生超过了我。他骑得并不快。我比一个骑得不快的人还慢，这句话我想被记录在某个地方。" },
+      { p: "There's an uncle walking barefoot on the pebble path, which is a fitness thing here — the stones press the bottom of your feet and this is supposed to be good for you. I watch his face every time I pass and his face says the same thing every time, and it is not this is good for me.", z: "有个大爷光脚在鹅卵石路上走，这是这儿的一种健身方式——石头压脚底，据说有好处。我每次经过都看他的脸，他的脸每次说的都是同一句话，而那句话不是「这对我有好处」。" },
+      { p: "I stop at three kilometres and sit on the steps. Across the water is the Zhujiang New Town skyline doing its colours, and the tower is purple tonight, which means nothing and which everybody photographs anyway.", z: "三公里我停了，坐在台阶上。水对面是珠江新城的天际线在换颜色，今晚塔是紫色的——这颜色没有任何含义，而所有人照样在拍。" },
+      { p: "You actually went?", z: "你真去了？", w: "Wife" },
+      { p: "Three kilometres. Slowly.", z: "三公里。很慢。", w: "Me" },
+      { p: "You say three kilometres the way other people say I tried.", z: "你说「三公里」的语气，跟别人说「我试过了」是一样的。", w: "Wife" },
+      { p: "Running doesn't fix anything. What it does is cut the day into two pieces: before the run and after it. And the piece after is always the better one, which is the only argument for it that has ever worked on me.", z: "跑步解决不了任何事。它做的事情是把一天切成两半：跑之前和跑之后。而后面那一半永远更好——这是唯一一个对我有效的论据。" }
+    ],
+    notes: [
+      { e: "talk myself into (doing something)", c: "说服自己去做", x: "Eight of those ten minutes were me talking myself into it." },
+      { e: "get overtaken (by someone)", c: "被……超过", x: "A boy on a shared bike overtook me at two kilometres." },
+      { e: "be in use", c: "在被使用", x: "By half past eight the whole street is in use." },
+      { e: "cut something into two", c: "把……分成两半", x: "It cuts the day into two pieces." },
+      { e: "work on someone", c: "对某人有效（说服得了某人）", x: "It's the only argument that has ever worked on me." }
+    ]
+  },
+  {
+    id: "s24", part: "thu", place: "gp-tower", time: "20:10",
+    t: "The tower and the ten-minute walk", z: "塔，和那十分钟的路",
+    lead: "总部来的 Marcus 在广州待两天，今晚是最后一晚。他点名要看广州塔，还用了一种很客气的方式说：如果不太麻烦的话。",
+    paras: [
+      { p: "Marcus is the one person at head office who has never once opened an email with the phrase just to flag. He arrives, he does two days of meetings, he leaves. Tonight is the last night and he wants to see the tower, and he asks for it in the way English people ask for things: if it's not too much trouble.", z: "Marcus 是总部唯一一个从来不用「只是想提醒一下」开头发邮件的人。他来，开两天会，走。今晚是最后一晚，他想看塔，而且是用英国人请求事情的方式提出来的：如果不麻烦的话。" },
+      { p: "It is a bit of trouble. It's a Thursday, I have a call at seven tomorrow morning, and the queue for the observation deck on a clear night is not a joke. I say of course, because some of my job is clauses and some of it is this.", z: "确实有点麻烦。今天是周四，我明早七点有电话会，而且天气好的晚上观景台的队不是开玩笑的。我说当然，因为我这份工作一部分是条款，一部分是这个。" },
+      { p: "We come out of the metro at Chigang Pagoda and the tower is right there, doing that thing it does — 600 metres of it, leaning, lit in a colour that nobody chose and everybody photographs. Marcus stops walking for a second, which is the correct response.", z: "我们从赤岗塔站出来，塔就在那儿，做着它一贯做的事——六百米，扭曲着，亮着一个没人选的、所有人都在拍的颜色。Marcus 停了半秒，这是正确的反应。" },
+      { p: "Why is it twisted? Is it structural?", z: "它为什么是扭的？结构需要吗？", w: "Marcus" },
+      { p: "No. It's a decision. Someone sat in a room and said: make it twisted, and everybody agreed, and now it's our tower.", z: "不是。这是个决定。有人坐在一个房间里说：把它做成扭的。所有人都同意了。现在它就是我们的塔。", w: "Me" },
+      { p: "We don't go up. Sixty-nine yuan to stand in a queue for forty minutes to look at a city that is grey anyway — I tell him the honest version instead, which is that the best view of that tower is not from the tower. It's from the bridge, ten minutes' walk, at no cost.", z: "我们没上去。六十九块钱排四十分钟，看一座本来就是灰的城市——我直接跟他说了实话：看那座塔最好的角度不在塔里，在桥上，走过去十分钟，不要钱。" },
+      { p: "The bridge is where everyone in this city has had the same photograph taken. Couples, families, one man with a tripod and the patience of a monk. A boy is selling little glowing hairbands off a trolley at the bottom, and his entire business model is the twenty minutes between the bridge and the car park.", z: "桥上就是这座城市所有人拍过同一张照片的地方。情侣、一家人、一个架着三脚架耐心如僧的男人。桥下有个男生推着车卖发光发箍，他整个商业模式就是「从桥到停车场这二十分钟」。" },
+      { p: "The locals call it Xiaomanyao. Little waist. Nobody here says Canton Tower unless they're reading a road sign.", z: "本地人管它叫小蛮腰。这儿没人说 Canton Tower，除非在读路牌。", w: "Me" },
+      { p: "So the official name is wrong?", z: "所以官方名字是错的？", w: "Marcus" },
+      { p: "The official name works in documents. That's what official names are for. In conversation you use the one that the city gave it, and the city's name is better, and every city does this. In London you say the Eye, not the London Eye. Nobody has time.", z: "官方名字用在文件里。官方名字就是干这个的。日常说话你用这座城市给它起的名字，而城市的名字更好——每座城市都这样。在伦敦你说 the Eye，不说 the London Eye。没人有那个时间。", w: "Me" },
+      { p: "Afterwards we eat noodles at a place with plastic stools and a queue that moves because everybody eats in eleven minutes. Marcus asks whether air conditioning counts as a human right in this city. I say it should.", z: "之后我们在一家塑料凳子的店吃面，队伍一直动着，因为每个人十一分钟吃完。Marcus 问空调在这座城市算不算人权。我说应该算。" },
+      { p: "He pays for the noodles and will not let me pay him back. He says head office owes me a dinner. What he means, and what I decline to explain to him, is that head office already owes me about four hundred of them.", z: "他抢着付了面钱，也不让我还给他。他说总部欠我一顿饭。他真正的意思——而我不打算跟他解释的是——总部已经欠我大概四百顿了。" },
+      { p: "At the hotel he says the thing he's been holding all evening: you don't sound like a lawyer when you talk about this city. And I say: that's the only subject.", z: "到酒店门口，他说出了憋了一晚上的那句话：你聊这座城市的时候，一点都不像律师。我说：那是唯一一个我不像律师的话题。" }
+    ],
+    notes: [
+      { e: "if it's not too much trouble", c: "如果不麻烦的话", x: "He asked if it's not too much trouble." },
+      { e: "not a joke", c: "不是开玩笑的（很夸张 / 很厉害）", x: "The queue on a clear night is not a joke." },
+      { e: "the honest version", c: "实话版本", x: "I told him the honest version instead." },
+      { e: "counts as", c: "算作", x: "Does air conditioning count as a human right here?" },
+      { e: "let someone pay you back", c: "让某人还钱", x: "He won't let me pay him back." },
+      { e: "owe someone (one)", c: "欠某人（一顿 / 一个人情）", x: "Head office owes me about four hundred dinners." }
+    ]
+  },
+  {
+    id: "s25", part: "fri", place: "gp-airport", time: "7:20",
+    t: "Meeting the boss off the plane", z: "去机场接老板",
+    lead: "总部 GC 来两天。她只有一天半的时间，所以我们把她的全部日程压缩到了一辆车上——这是我这份工作里最不写在合同里的部分。",
+    paras: [
+      { p: "Baiyun Airport has two terminals and they are twenty minutes apart by road, which is the kind of detail that has ended careers. I check the flight number twice, then photograph the arrivals board and send it to her assistant, which is what you do when you want to be able to prove that you were right about a fact.", z: "白云机场有两个航站楼，路上相隔二十分钟——这种细节毁过人的职业生涯。我核了两遍航班号，然后拍了到达屏幕的照片发给她助理。当你想留下「这件事我是对的」的证据时，你就是这样做的。" },
+      { p: "She comes out with one carry-on bag and the specific calm of someone who has been in the air for twelve hours and has decided not to mention it. I start to apologise for the early start. She says: it's fine, the meetings are the point.", z: "她出来时只带一个登机箱，带着那种飞了十二小时、并且决定不提这件事的人特有的平静。我正要为这么早开始道歉。她说：没事，会才是重点。" },
+      { p: "Where are we going first?", z: "我们先去哪？", w: "GC" },
+      { p: "Office. Forty-five minutes if the road behaves. I've printed everything and put the indemnity section at the front, since it's the only one where you're going to disagree with the other side.", z: "公司。路况好的话四十五分钟。我把所有材料都打印了，把赔偿条款放在最前面——因为那是唯一一个你会跟对方意见不同的部分。", w: "Me" },
+      { p: "In the car, then. Let's talk in the car.", z: "那就在车上谈。我们在车上谈。", w: "GC" },
+      { p: "This is the part of the job that nobody explains when you interview. A general counsel flying from Europe with thirty-six hours on the ground does not want a meeting room, a projector and an agenda. She wants the thing narrowed down before the meeting starts, and she wants it narrowed down in a car, because the car is the only time she has that isn't already somebody else's.", z: "这就是面试时没人会跟你解释的那部分工作。一位从欧洲飞来、在地面只有三十六小时的总法律顾问，不想要会议室、投影仪和议程。她想要的是在会议开始之前把事情收窄，而且要在一辆车里收窄——因为车上是她唯一一段还没被别人的日程占掉的时间。" },
+      { p: "So we do it at 70 kilometres an hour with a Cantonese radio station arguing about football in the background. The cap, the carve-outs, the jurisdiction clause that the other side has quietly moved from Guangzhou to Singapore, and the one sentence on page nineteen that I want her to read out loud so that there are two people who have noticed it.", z: "于是我们在时速七十公里、背景是粤语电台在吵足球的情况下谈完了。上限、排除项、对方悄悄从广州改到新加坡的管辖条款，还有第十九页上那一句——我要她念出声来，这样就有两个人注意到了它。" },
+      { p: "Say page nineteen again.", z: "第十九页再说一遍。", w: "GC" },
+      { p: "Nineteen, second paragraph. They've added a review right without a time limit. It's one line and it's the whole contract.", z: "第十九页，第二段。他们加了一个没有期限的复核权。就一行，但它是整份合同。", w: "Me" },
+      { p: "Good. You found it. That's why I'm here and not on a video call. Video calls are for people who have already agreed.", z: "很好。你找到了。这就是我来这儿、而不是开视频的原因。视频会是为已经谈成的人准备的。", w: "GC" },
+      { p: "There is a version of this morning where I say something clever. In the real version I say thank you and look out of the window at the banyan trees going past, and think about how the best compliment I've had this year came at forty kilometres from an airport.", z: "这个早上本有一个我说句漂亮话的版本。真实的版本是我说了声谢谢，然后看着窗外掠过的榕树，想着今年我得到的最好的夸奖，是在离机场四十公里的地方听到的。" },
+      { p: "The driver has the radio on the whole way and never once looks at us. Not because he isn't listening. Because he's decided that whatever we're doing back there is none of his business, which is a level of professionalism I would like to be able to buy.", z: "司机一路开着收音机，一次都没回头看我们。不是因为他没在听。是因为他决定后面那两个人在干什么不关他的事——这种职业素养我想花钱买。" }
+    ],
+    notes: [
+      { e: "on the ground", c: "在当地 / 在现场（的时间内）", x: "She has thirty-six hours on the ground." },
+      { e: "narrow something down", c: "把范围收窄", x: "She wants it narrowed down before the meeting." },
+      { e: "the point (of something)", c: "重点 / 关键所在", x: "The meetings are the point." },
+      { e: "it's the whole contract", c: "这就是整份合同（的要害）", x: "It's one line and it's the whole contract." },
+      { e: "if the road behaves", c: "如果路况好的话", x: "Forty-five minutes if the road behaves." },
+      { e: "none of my business", c: "不关我的事", x: "He decided it was none of his business." }
+    ]
+  },
+  {
+    id: "s26", part: "spring", place: "gp-yuexiu", time: "正月十五",
+    t: "Lanterns, and a boy who lost his balloon", z: "灯，和一个飞走气球的小孩",
+    lead: "广州人一年里几乎不为任何东西排队。元宵这晚例外——整个城市都去越秀公园看灯，而且心甘情愿。",
+    paras: [
+      { p: "One night a year this city agrees to queue. Lantern Festival, Yuexiu Park, and a crowd that the park has clearly not been designed for. There are marshals with megaphones, there is a one-way system through the gardens, and there is absolutely no chance of moving at your own speed.", z: "一年就这么一晚，这座城市愿意排队。元宵，越秀公园，人多到这座公园显然不是为这个设计的。有拿喇叭的引导员，有单向通行的园区路线，而且完全没可能按自己的速度走。" },
+      { p: "My wife has a specific ambition and it involves a photograph of the lanterns over the water. This is a project. We have been talking about this photograph since January.", z: "我老婆有一个明确的目标，跟「水上那组灯的合影」有关。这是一个项目。我们从一月就开始讨论这张照片。" },
+      { p: "The queue for tickets is an hour. We have bought them on the phone, so it is only forty minutes of queueing to get the phone scanned, which is the oldest joke in this city and everybody still tells it every year.", z: "买票的队伍一小时。我们在手机上买好了，所以只剩下四十分钟排队等扫码——这是这座城市最老的笑话，而每年所有人都还在讲。" },
+      { p: "Is it always like this?", z: "每次都是这样吗？", w: "Wife" },
+      { p: "Every year. And every year you say the same thing, which is: why do we do this. And every year we do it again.", z: "每年都这样。而且每年你都说同一句话，就是：我们为什么要来。然后每年我们照样来。", w: "Me" },
+      { p: "She is right, though, and I know she's right, which is why I'm not arguing. The lanterns over the lake are genuinely good — twenty metres of a single gold fish swimming through the water, a peacock made of lights, and the whole east side of the park hung with red that turns everybody's face red as well.", z: "不过她说得对，我知道她说得对，所以我不争。湖上的灯是真好——一条二十米的金鱼在水里游，一只灯做的孔雀，公园整个东侧挂满红色，把每个人的脸也照成红的。" },
+      { p: "There is a stall selling tangyuan and it costs four yuan for five, and here is the thing nobody outside Guangdong understands: the soup is not sweet. It's ginger. Ginger and sugar, and the ginger is the whole point, because it's still cold at night in the first month of the year.", z: "有个摊子卖汤圆，四块钱五个，而这里有一件广东以外的人都不懂的事：汤不是甜的。是姜的。姜和糖，而姜才是全部重点——因为正月里的晚上还是冷的。" },
+      { p: "Halfway round, a small boy lets go of his balloon. It goes up through the lights and into the dark and he stands there with his arm still up, and every adult within five metres looks up with him. Nobody laughs. This is a group of maybe thirty people who have all agreed, without discussing it, that this is a tragedy.", z: "走到一半，一个小男孩把气球放飞了。气球从灯里穿上去，进了黑暗，他就站在那儿，手臂还举着，五米以内的每个成年人跟着他一起抬头。没人笑。这是大概三十个人在没有商量的情况下达成的一致：这是一件悲剧。" },
+      { p: "His father does the correct thing, which is not to buy another one immediately. He says: it went to see the whole city. The boy considers this. Then he accepts it, which is the most impressive thing I see all evening.", z: "他爸爸做了正确的事——没有马上再买一个。他说：它去看整座城市了。小孩想了想，然后接受了。这是我今晚看到的最了不起的一件事。" },
+      { p: "We eat noodles at eleven on the way home and my wife, looking at her phone, says the photograph came out badly. I say we'll come back next year. She says yes. Both of us know it will be exactly as crowded, and that this is not a reason not to come, and we will be standing in the same queue and having the same argument about the soup.", z: "十一点我们在回家路上吃面，我老婆看着手机说照片拍得不好。我说明年再来。她说好。我们俩都知道明年还是一样挤，而这不是不来的理由；而且我们还会站在同一个队伍里，为同一碗汤再争一次。" }
+    ],
+    notes: [
+      { e: "one night a year", c: "一年就这么一晚", x: "One night a year this city agrees to queue." },
+      { e: "it's the whole point", c: "这才是重点", x: "The ginger is the whole point." },
+      { e: "let go of (something)", c: "放开 / 松手", x: "He let go of the balloon and it went up." },
+      { e: "come out badly", c: "（照片）拍糊了 / 效果不好", x: "She said the photograph came out badly." },
+      { e: "there is absolutely no chance of ...", c: "完全不可能……", x: "There's no chance of moving at your own speed." }
+    ]
+  },
+  {
+    id: "s27", part: "chongyang", place: "gp-baiyun", time: "九月初九 7:00",
+    t: "Nine-nine, and everyone goes up the mountain", z: "九九重阳，全城上山",
+    lead: "重阳这天，广州人会做一件平时不做的事：爬白云山。我丈母娘走得比我快，而且她从不回头看我们。",
+    paras: [
+      { p: "Chongyang, the ninth day of the ninth month, and in this city that means one thing: go up a mountain. Not a tourist thing. Not a photo thing. An instruction, roughly two thousand years old, that for one morning everybody follows.", z: "重阳，九月初九。在这座城市，这一天的意思只有一件事：上山。不是旅游，不是拍照，是一条大约两千年前的指令，一整个早上所有人都照做。" },
+      { p: "We go with my wife's parents. Her mother is seventy-one and she puts on the shoes she walks in every day and she goes, and by the halfway point she is ahead of us and has not once looked back to check that we are coming.", z: "我们跟岳父岳母一起去。我丈母娘七十一岁，穿上她每天走路穿的那双鞋就走了，到一半的时候她已经在我们前面，而且一次都没回头看我们有没有跟上。" },
+      { p: "She says the same thing every year: the mountain doesn't care how old you are, it only cares whether you keep moving. This is not a proverb. She is telling me something.", z: "她每年都说同一句话：山不管你多大年纪，它只管你有没有在走。这不是谚语。她是在跟我说一件事。", w: "Wife" },
+      { p: "There are two kinds of people coming down as we go up: the ones who started at six and are done, and the ones who came last night and camped on the ridge. The second group look like they have had an argument with nature and lost on points.", z: "我们上山的时候，下山的有两种人：六点就出发、现在已经完事的；还有昨晚就上来、在山脊上扎营的。第二种人看起来像跟自然吵了一架，然后点数输了。" },
+      { p: "At the top there is a man selling chrysanthemum wine in small plastic bottles and a woman selling kite strings, and both of them have been doing this on this one day for twenty years, which means they do not have a plan B and they do not need one.", z: "山顶有个男人用小塑料瓶卖菊花酒，有个女人在卖风筝线，两个人都已经在这一天做这件事做了二十年——这意味着他们没有备用方案，也不需要。" },
+      { p: "An old man next to us shouts one long note off the edge of the ridge, the way people do, and waits. Then he does it again. I ask my father-in-law why and he says: you shout up here so the year goes well. I ask whether it matters what you shout. He thinks about it and says no, that nobody has ever tested that.", z: "旁边一个老人对着山脊边缘喊了一声长音，跟别人一样，然后等。然后他又喊了一次。我问岳父为什么。他说：在这儿喊一声，这一年会顺。我问喊什么内容重不重要。他想了想说，不重要，而且没人测试过。" },
+      { p: "My wife buys two bottles of the chrysanthemum wine and gives one to her mother, and they drink it standing up with the city grey and enormous underneath them. Then her mother says the thing that she only ever says on this mountain: that she wants to be walked up here for as long as she can be walked up here.", z: "我老婆买了两瓶菊花酒，一瓶给她妈，母女俩站着喝，脚下是灰蒙蒙、巨大的一座城市。然后她妈说了那句只在山上才会说的话：只要还能被扶着上来，她就想一直上来。" },
+      { p: "We go down the way we came, which is harder than going up, and my knees file a formal complaint at the four hundredth step. The whole mountain is full of people doing exactly this, at exactly this speed, and nobody is in a hurry, because getting down from this mountain in a hurry is how you end up hurt.", z: "我们原路下山，比上山更难，到第四百级台阶时我的膝盖提出了正式投诉。整座山都是人在做同一件事、用同一个速度，没人着急——因为从这座山上着急下来，就是你会受伤的方式。" },
+      { p: "At the bottom we eat at a place with no menu and no prices, and my father-in-law pays before anyone can argue, and my wife tells me this is not something I should ever try to win. I wasn't planning to.", z: "山下我们在一家没有菜单也没有价目表的店吃饭，岳父在任何人开口之前就付了钱，我老婆告诉我这件事我永远不要试图赢。我也没打算赢。" },
+      { p: "Nine-nine. Two nines, meaning long life, and the whole day exists because of that. People come up here for the number, and what they actually get is one morning of walking with the people they came with, which is the older and better reason.", z: "九九，两个九，意思是长久。这一整天就是因为这个数字存在的。人们为了这个数字上山，实际拿到的却是一个上午——跟一起来的人走路的一个上午。这才更古老、也更好的理由。" }
+    ],
+    notes: [
+      { e: "keep moving", c: "继续走 / 不停下来", x: "The mountain doesn't care how old you are — only whether you keep moving." },
+      { e: "have a plan B", c: "有备用方案", x: "They've done this one day for twenty years and don't need a plan B." },
+      { e: "on points", c: "按点数（输了）", x: "They look like they lost an argument on points." },
+      { e: "in a hurry", c: "着急", x: "Getting down in a hurry is how you get hurt." },
+      { e: "as long as ...", c: "只要……", x: "As long as she can be walked up here, she wants to come." }
     ]
   }
 ];

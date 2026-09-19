@@ -86,7 +86,20 @@
   .day.fold .dir-day .caret{transform:rotate(-90deg);}
   .dir-day .en{font-size:10px;color:var(--muted);font-family:var(--serif);font-style:italic;}
   .day-b .item{margin-left:20px;}
-  .grp.hide,.day.hide{display:none;}
+  .grp-b>.item{margin-left:8px;}
+  .dir-view{
+    display:flex;align-items:center;gap:7px;width:100%;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);
+    margin:12px 0 2px;padding:8px 10px;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px;
+  }
+  .dir-view:hover{border-color:var(--gold);color:var(--gold-deep);}
+  .dir-view .caret{flex:0 0 auto;font-size:10px;color:var(--muted);transition:transform .15s;}
+  .view.fold .view-b{display:none;}
+  .view.fold .dir-view .caret{transform:rotate(-90deg);}
+  .dir-view .en{font-weight:400;font-size:10.5px;color:var(--muted);font-family:var(--serif);font-style:italic;}
+  .view .dir-group{margin:8px 0 4px;}
+  .grp.hide,.day.hide,.view.hide{display:none;}
   .item{
     display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:10px;
     cursor:pointer;border:1px solid transparent;
@@ -282,66 +295,121 @@ function EN_START(){
     return vs[0];
   }
 
+  function groupById(gid){
+    var i, g;
+    for(i = 0; i < GROUPS.length; i++){ if(GROUPS[i].id === gid) return GROUPS[i]; }
+    return null;
+  }
+  function fieldOf(g){ return (g && g.by) || "part"; }
+  function kidsOf(g){ return (g && g.kids && g.kids.length) ? g.kids : [{ id: g.id, label: "", en: "" }]; }
+
   function pathOf(pid){
     var i, j, g, kids;
-    for(i = 0; i < PARTS.length; i++){
-      g = PARTS[i]; kids = g.kids || [];
+    for(i = 0; i < GROUPS.length; i++){
+      g = GROUPS[i];
+      if(g.by !== "part") continue;
+      kids = kidsOf(g);
       for(j = 0; j < kids.length; j++){ if(kids[j].id === pid) return { g: g, d: kids[j] }; }
     }
     return { g: { label: "其他", en: "" }, d: { label: "", en: "" } };
   }
 
-  function currentPart(){
-    var s = SCENES.filter(function(x){ return x.id === state.id; })[0];
-    return s ? s.part : "";
+  /* 场景分类：由 scene.place 反查所属地点组 */
+  function placeOf(pid){
+    var i, j, g, kids;
+    if(!pid) return null;
+    for(i = 0; i < GROUPS.length; i++){
+      g = GROUPS[i];
+      if(g.by !== "place") continue;
+      kids = kidsOf(g);
+      for(j = 0; j < kids.length; j++){ if(kids[j].id === pid) return { g: g, d: kids[j] }; }
+    }
+    return null;
+  }
+
+  function currentScene(){
+    var r = SCENES.filter(function(x){ return x.id === state.id; })[0];
+    return r || null;
   }
   function groupHasCurrent(gid){
-    var g = PARTS.filter(function(x){ return x.id === gid; })[0];
-    if(!g) return false;
-    var cp = currentPart(), kids = g.kids && g.kids.length ? g.kids : [{ id: g.id }];
-    for(var i = 0; i < kids.length; i++){ if(kids[i].id === cp) return true; }
+    var g = groupById(gid), cs = currentScene(), f, kids, i;
+    if(!g || !cs) return false;
+    f = fieldOf(g); kids = kidsOf(g);
+    for(i = 0; i < kids.length; i++){ if(cs[f] === kids[i].id) return true; }
+    return false;
+  }
+  function viewHasCurrent(vid){
+    var cs = currentScene(), i, j, g, f, kids;
+    if(!cs) return false;
+    for(i = 0; i < GROUPS.length; i++){
+      g = GROUPS[i];
+      if((g.view || "type") !== vid) continue;
+      f = fieldOf(g); kids = kidsOf(g);
+      for(j = 0; j < kids.length; j++){ if(cs[f] === kids[j].id) return true; }
+    }
     return false;
   }
   function isFold(k){
     var v = store.get("en-fold:" + k);
     if(v === "1") return true;
     if(v === "0") return false;
-    /* 未记录过：默认只把当前篇目所在的组/日展开，其余收起来 */
+    /* 未记录过的默认态：只展开「当前篇目所在」的视角 / 组 / 日，其余收起来 */
+    if(k.indexOf("v:") === 0) return !viewHasCurrent(k.slice(2));
     if(k.indexOf("g:") === 0) return !groupHasCurrent(k.slice(2));
-    return false; /* 二级（周一…周日、各假期）默认展开，点一级一次就能看到篇目 */
+    var cs = currentScene();
+    if(k.indexOf("d:") === 0) return !cs || cs.part !== k.slice(2);
+    return false;
   }
   function setFold(k, v){ store.set("en-fold:" + k, v ? "1" : "0"); }
 
+  function itemHTML(s){
+    var kw = (s.t + " " + s.z + " " + s.lead + " " +
+      s.paras.map(function(x){ return x.p + " " + x.z; }).join(" ") + " " +
+      (s.place || "")).toLowerCase().replace(/"/g, "");
+    return '<div class="item' + (s.id === state.id ? " on" : "") + '" data-go="' + s.id + '" data-kw="' + kw + '">' +
+      '<span class="tm">' + s.time + '</span>' +
+      '<span class="tx"><span class="t1">' + s.z + '</span><span class="t2">' + s.t + '</span></span>' +
+      (done[s.id] ? '<span class="done">已听</span>' : '') + '</div>';
+  }
+
   function renderDir(){
-    var html = "", g, kids, d, items, gcount, k, m;
+    var html = "", v, gs, g, kids, d, items, count, f, i, j, m;
     var sub = document.querySelector(".brand-sub");
     if(sub) sub.textContent = "广州 · 一个外企法务的一年 · 场景短文 " + SCENES.length + " 篇";
-    for(k = 0; k < PARTS.length; k++){
-      g = PARTS[k];
-      kids = g.kids && g.kids.length ? g.kids : [{ id: g.id, label: "", en: "" }];
-      gcount = 0;
-      kids.forEach(function(x){ gcount += SCENES.filter(function(s){ return s.part === x.id; }).length; });
-      if(!gcount) continue;
-      html += '<div class="grp' + (isFold("g:" + g.id) ? " fold" : "") + '" data-g="' + g.id + '">' +
-        '<button class="dir-group" data-toggle="g:' + g.id + '" type="button">' +
-        '<span class="caret">&#9662;</span><span>' + g.label + '</span>' +
-        '<span class="en">' + g.en + '</span><span class="cnt">' + gcount + '</span></button>' +
-        '<div class="grp-b">';
-      for(m = 0; m < kids.length; m++){
-        d = kids[m];
-        items = SCENES.filter(function(s){ return s.part === d.id; });
-        if(!items.length) continue;
-        html += '<div class="day' + (isFold("d:" + d.id) ? " fold" : "") + '" data-d="' + d.id + '">' +
-          '<button class="dir-day" data-toggle="d:' + d.id + '" type="button">' +
-          '<span class="caret">&#9662;</span><span>' + d.label + '</span>' +
-          '<span class="en">' + d.en + '</span></button><div class="day-b">';
-        items.forEach(function(s){
-          var kw = (s.t + " " + s.z + " " + s.lead + " " + s.paras.map(function(x){ return x.p + " " + x.z; }).join(" ")).toLowerCase().replace(/"/g, "");
-          html += '<div class="item' + (s.id === state.id ? " on" : "") + '" data-go="' + s.id + '" data-kw="' + kw + '">' +
-            '<span class="tm">' + s.time + '</span>' +
-            '<span class="tx"><span class="t1">' + s.z + '</span><span class="t2">' + s.t + '</span></span>' +
-            (done[s.id] ? '<span class="done">已听</span>' : '') + '</div>';
-        });
+    for(i = 0; i < VIEWS.length; i++){
+      v = VIEWS[i];
+      gs = GROUPS.filter(function(x){ return (x.view || "type") === v.id; });
+      html += '<div class="view' + (isFold("v:" + v.id) ? " fold" : "") + '" data-v="' + v.id + '">' +
+        '<button class="dir-view" data-toggle="v:' + v.id + '" type="button">' +
+        '<span class="caret">&#9662;</span><span>' + v.label + '</span>' +
+        '<span class="en">' + v.en + '</span></button><div class="view-b">';
+      for(j = 0; j < gs.length; j++){
+        g = gs[j];
+        f = fieldOf(g);
+        kids = kidsOf(g);
+        count = 0;
+        kids.forEach(function(x){ count += SCENES.filter(function(t){ return t[f] === x.id; }).length; });
+        if(!count) continue;
+        html += '<div class="grp' + (isFold("g:" + g.id) ? " fold" : "") + '" data-g="' + g.id + '">' +
+          '<button class="dir-group" data-toggle="g:' + g.id + '" type="button">' +
+          '<span class="caret">&#9662;</span><span>' + g.label + '</span>' +
+          '<span class="en">' + g.en + '</span><span class="cnt">' + count + '</span></button>' +
+          '<div class="grp-b">';
+        for(m = 0; m < kids.length; m++){
+          d = kids[m];
+          items = SCENES.filter(function(t){ return t[f] === d.id; });
+          if(!items.length) continue;
+          if(d.label){
+            html += '<div class="day' + (isFold("d:" + d.id) ? " fold" : "") + '" data-d="' + d.id + '">' +
+              '<button class="dir-day" data-toggle="d:' + d.id + '" type="button">' +
+              '<span class="caret">&#9662;</span><span>' + d.label + '</span>' +
+              '<span class="en">' + d.en + '</span></button><div class="day-b">';
+            items.forEach(function(t){ html += itemHTML(t); });
+            html += '</div></div>';
+          } else {
+            items.forEach(function(t){ html += itemHTML(t); });
+          }
+        }
         html += '</div></div>';
       }
       html += '</div></div>';
@@ -358,6 +426,7 @@ function EN_START(){
   function filterDir(q){
     q = (q || "").trim().toLowerCase();
     if(!q){ renderDir(); return; }
+    Array.prototype.forEach.call(dir.querySelectorAll(".view"), function(el){ el.classList.remove("fold"); });
     Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(el){ el.classList.remove("fold"); });
     Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(el){ el.classList.remove("fold"); });
     Array.prototype.forEach.call(dir.querySelectorAll(".item"), function(el){
@@ -369,6 +438,9 @@ function EN_START(){
     });
     Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(g){
       g.classList.toggle("hide", g.querySelectorAll(".item:not(.hide)").length === 0);
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".view"), function(v){
+      v.classList.toggle("hide", v.querySelectorAll(".item:not(.hide)").length === 0);
     });
   }
 
@@ -388,12 +460,14 @@ function EN_START(){
     document.body.setAttribute("data-mode", state.mode);
     $("crumb").textContent = pt.g.label + (pt.d.label ? " · " + pt.d.label : "") + " · " + s.time + " · " + s.z;
 
+    var pl = s.place ? placeOf(s.place) : null;
     var html = '<div class="scene-head">' +
       '<div class="kicker">scene · ' + s.time + '</div>' +
       '<h2 class="h-en">' + s.t + '</h2>' +
       '<div class="h-zh">' + s.z + '</div>' +
       '<div class="lead">' + s.lead + '</div>' +
       '<div class="head-tools">' +
+        (pl ? '<button class="mini place-chip" data-place="' + s.place + '">&#9679; ' + pl.g.label + '</button>' : '') +
         '<button class="play-this" id="playThis">&#9654; 播放这一篇</button>' +
         '<button class="mini" id="down">' + (done[s.id] ? "取消标记" : "标记已听") + '</button>' +
       '</div></div>';
@@ -537,7 +611,21 @@ function EN_START(){
     if(it) go(it.getAttribute("data-go"));
   });
 
+  function openSide(){ $("app").classList.remove("collapsed"); }
+  function focusPlace(pid){
+    var pl = placeOf(pid), el;
+    if(!pl) return;
+    setFold("v:place", false);
+    setFold("g:" + pl.g.id, false);
+    renderDir();
+    el = dir.querySelector('.grp[data-g="' + pl.g.id + '"] .dir-group');
+    if(el && el.scrollIntoView){ try { el.scrollIntoView({ block: "start" }); } catch(e){ el.scrollIntoView(true); } }
+    if(window.innerWidth <= 900) openSide();
+  }
+
   reader.addEventListener("click", function(e){
+    var pc = e.target.closest("[data-place]");
+    if(pc){ focusPlace(pc.getAttribute("data-place")); return; }
     var n = e.target.closest(".e");
     if(n && n.getAttribute("data-say")){
       if(synth){
