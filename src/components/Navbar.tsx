@@ -21,9 +21,8 @@ interface NavbarProps {
 const FOCUS_RING =
   'focus-visible:outline-none focus-visible:[text-shadow:0_0_12px_rgba(184,159,107,1),0_0_28px_rgba(184,159,107,0.65),0_0_44px_rgba(184,159,107,0.4)]';
 
-// 统一的悬停反馈：不加底色块/边框，文字变香槟金 + 柔和金色光晕（参照「ENGLISH」样式）
-const HOVER_GLOW =
-  'hover:text-[#B89F6B] hover:[text-shadow:0_0_12px_rgba(184,159,107,0.85),0_0_26px_rgba(184,159,107,0.45)]';
+// 统一的悬停反馈：不加底色块/边框/光晕，仅文字变香槟金
+const HOVER_GLOW = 'hover:text-[#B89F6B]';
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeGroup,
@@ -130,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         }}
         className={`w-full flex items-center justify-between gap-4 rounded-lg px-3 py-2 text-sm text-left transition-colors ${FOCUS_RING} ${
           isCurrent
-            ? 'bg-[#B89F6B]/10 text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
+            ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
             : `text-[#5F5F63] dark:text-[#A1A1A6] ${HOVER_GLOW}`
         }`}
       >
@@ -232,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`${
                       isActive || isOpen
                         ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
-                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B] group-hover:[text-shadow:0_0_12px_rgba(184,159,107,0.85),0_0_26px_rgba(184,159,107,0.45)]'
+                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
                     } transition-colors`}
                   >
                     {g.label}
@@ -327,14 +326,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => onSelectTab(t)}
                   className={`relative inline-flex items-center px-3 py-1.5 rounded-full text-[13px] transition-colors ${FOCUS_RING} ${
                     isCurrent
-                      ? 'font-medium text-[#1D1D1F] dark:text-[#1D1D1F]'
+                      ? 'font-semibold text-[#1D1D1F] dark:text-[#F5F5F7]'
                       : `text-[#5F5F63] dark:text-[#A1A1A6] ${HOVER_GLOW}`
                   }`}
                 >
                   {isCurrent && (
                     <motion.span
                       layoutId="subnav-active-pill"
-                      className="absolute inset-0 rounded-full bg-[#B89F6B]"
+                      className="absolute left-2.5 right-2.5 bottom-1 h-[2px] rounded-full bg-[#B89F6B]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -413,7 +412,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     }}
                     className={`text-left py-2 flex items-center justify-between w-full text-base ${FOCUS_RING} ${
                       activeGroup === g.id
-                        ? 'text-[#B89F6B] font-medium'
+                        ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-semibold border-l-2 border-[#B89F6B] pl-2'
                         : 'text-[#1D1D1F] dark:text-[#F5F5F7]'
                     }`}
                   >
@@ -437,7 +436,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                                 }}
                                 className={`text-left py-1.5 text-sm ${FOCUS_RING} ${
                                   activeTab === t
-                                    ? 'text-[#B89F6B] font-medium'
+                                    ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
                                     : 'text-[#86868B]'
                                 }`}
                               >
@@ -456,7 +455,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             }}
                             className={`text-left py-1.5 text-sm ${FOCUS_RING} ${
                               activeTab === t
-                                ? 'text-[#B89F6B] font-medium'
+                                ? 'text-[#1D1D1F] dark:text-[#F5F5F7] font-medium'
                                 : 'text-[#86868B]'
                             }`}
                           >
