@@ -13,6 +13,7 @@
     "sync:arbitration": "rsync -a \"商事仲裁/\" \"public/arbitration/\" --exclude .DS_Store",
     "sync:family-law": "rsync -a \"婚姻家事与遗产继承/\" \"public/family-law/\" --exclude .DS_Store --exclude _build",
     "sync:english": "rsync -a \"身边的英语/\" \"public/english/\" --exclude .DS_Store --exclude .workbuddy",
+    "check:english": "node scripts/check-english-scenes.cjs",
     "sync:all-static": "npm run sync:financing && npm run sync:arbitration && npm run sync:family-law && npm run sync:english"
   },
   "dependencies": {
