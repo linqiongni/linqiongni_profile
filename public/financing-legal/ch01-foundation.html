@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>01 创业起步 · 股权架构设计 ｜ 融资法务</title>
-<link rel="stylesheet" href="assets/style.css?v=20260919b">
+<link rel="stylesheet" href="assets/style.css?v=20260919e">
 </head>
 <body data-station="ch01">
 <div id="topbar"></div>
@@ -14,7 +14,7 @@
     <div class="kicker">STATION 01 · FOUNDATION</div>
     <h1>创业起步：选主体、分股权、定出资</h1>
     <p class="sub">一家公司的命运，很大一部分在营业执照下来的那天就写好了。这一步最便宜——改一次章程几百块；但这一步最贵，因为后面每一轮的融资、股改、上市，都要为当初的草率付费。</p>
-    <div class="meta-line"><span>主线 Y1 · 2016 水贝</span><span>术语 14 个</span><span>含股权生命线比例尺</span></div>
+    <div class="meta-line"><span>主线 Y1 · 2016 水贝</span><span>8 组法务对话 + 24 处生活比方</span><span>14 词白话对照表（可折叠）</span><span>术语就地注释</span><span>含股权生命线比例尺</span></div>
   </div>
 
   <div class="story">
@@ -24,7 +24,52 @@
     <p>这个决定里，埋了三个雷：<strong>注册资本虚高</strong>、<strong>技术出资没评估</strong>、以及——<strong>夫妻二人的股权被当成"一坨"处理</strong>。</p>
   </div>
 
+
+  <div class="callout c-tip">
+    <span class="lbl">怎么读这一页（给看不懂条款的人）</span>
+    <p>① 正文里带<b>虚线下划线 + 上标「注」</b>的词，鼠标悬停就有白话解释，不用回头翻术语表。<br>
+      ② 每个核心环节下面都有一个<b>「法务对话」折叠块</b>：老板和合伙人只说大白话（他们不懂法律，也不该懂），法务先用大白话答，再翻译成条款。<b>看不懂条款时，先看对话。</b><br>
+      ③ 对话里凡是<b>法律腔的句子</b>，后面立刻跟一段金色底的<b>「就好比……」</b>——用买房、合伙开饭馆、结婚过日子这种日常场景再讲一遍。看不懂那句法律话的时候，直接看它下面那句就好比。<br>
+      ④ 三个角色：<b>郭明</b>＝创始人/你的老板；<b>陈霓</b>＝联合创始人；<b>法务</b>＝你。这一站是「从零搭架子」，所有问题都发生在公司刚成立的那几天。</p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页「对话」都是<b>原地展开</b>（点开就在这一段下面，不会跳走）：</span>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <h2>零、先把黑话翻成人话</h2>
+  <p>如果你看这一页卡住了，十有八九是卡在词上，不是卡在逻辑上。下面这张表把本页会遇到的词全部翻成老板听得懂的话。</p>
+
+  <details class="dlg" open>
+    <summary><span class="pk-badge d">对照表</span>展开：14 个黑话 → 人话 → 老板为什么要在乎</summary>
+    <div class="dlg-bd">
+      <div class="tw"><table>
+        <thead><tr><th style="width:22%">黑话</th><th style="width:38%">人话</th><th>为什么要在乎</th></tr></thead>
+        <tbody>
+          <tr><td>注册资本</td><td>你<em>答应</em>往公司里放多少钱</td><td>不是越多越有面子，写多了就是写下一笔债</td></tr>
+          <tr><td>认缴 / 实缴</td><td>答应给 vs 真的给</td><td>认缴的那笔钱，公司周转不灵时会被要求提前交</td></tr>
+          <tr><td>出资期限</td><td>这笔钱最晚什么时候到位</td><td>法定上限已在收紧，写 20 年的老章程要改</td></tr>
+          <tr><td>加速到期</td><td>还没到期，也可以被要求马上交</td><td>公司现金流一紧，这条就会被激活</td></tr>
+          <tr><td>非货币出资</td><td>用技术、设备、房子代替现金入股</td><td>不评估、不过户，法律上等于没出</td></tr>
+          <tr><td>出资瑕疵</td><td>说了要出，结果没出或没出到位</td><td>上市时会被追问，通常要补缴或减资</td></tr>
+          <tr><td>股权代持</td><td>股份登记在别人名下，实际是你的</td><td>名义股东离婚、欠债、反悔，都烧到你身上</td></tr>
+          <tr><td>股权生命线</td><td>34% / 51% / 67% 三条门槛</td><td>决定你到底是「能挡事」还是「说了算」</td></tr>
+          <tr><td>Cap Table</td><td>一张表，写清公司股份都是谁的</td><td>融资每一轮都要更新，算错就白让股份</td></tr>
+          <tr><td>股权池</td><td>先划出来留给员工的一块股份</td><td>不预留，将来招人要临时从你身上割</td></tr>
+          <tr><td>法人人格否认</td><td>公司和你个人的账混在一起，法院不认「有限责任」了</td><td>一旦被刺破，你的房子车子都要拿来还债</td></tr>
+          <tr><td>人格混同</td><td>公司的钱和自己的钱分不清</td><td>这是上面那条被触发的最常见原因</td></tr>
+          <tr><td>夫妻共同财产持股</td><td>你名下的股份，配偶也有一半</td><td>离婚或签字时会被卡住，上市前必被问</td></tr>
+          <tr><td>同股同权 / 类别股</td><td>一股一票 vs 有的股一票顶十票</td><td>想保控制权，这是要提前设计的工具</td></tr>
+        </tbody>
+      </table></div>
+      <p class="pk-mini">（这张表只解决「听不懂」，不解决「怎么谈」——怎么谈在下面每一组对话里。）</p>
+    </div>
+  </details>
+
   <h2>一、选什么样的「壳」：五种主体横向对比</h2>
+  <div class="plain"><span class="pl">一句话</span>选主体不是选面子，是选<b>责任边界</b>：出了事，是拿公司那点钱赔，还是拿你家的房子赔。</div>
   <p>先解决第一个问题：为什么是"有限责任公司"，而不是个体户、个体独资、或者合伙企业。这张表以后你会反复用到。</p>
   <div class="tw"><table>
     <thead><tr><th>主体形式</th><th>投资人责任</th><th>税负</th><th>能否融资/上市</th><th>适用场景</th></tr></thead>
@@ -49,24 +94,58 @@
   </div>
 
   <h2>二、术语卡：这一站的黑话</h2>
+  <div class="plain"><span class="pl">一句话</span>这 14 个词里真正会咬人的是<b>认缴实缴、非货币出资、代持、人格混同</b>这四个——它们都藏在「当时觉得没事」的操作里。</div>
   <div class="terms">
-    <div class="term"><div class="tw"><span class="zh">注册资本</span><span class="en">Registered Capital</span></div><div class="def">章程上写的股东"承诺要出的钱"总额。<b>它不是实力的证明，是责任的边界</b>——因为股东就以这个数额为限承担亏损。写大了等于把有限责任的范围撑大。</div></div>
-    <div class="term"><div class="tw"><span class="zh">认缴 · 实缴</span><span class="en">Subscribed / Paid-in</span></div><div class="def">认缴是"答应给"，实缴是"真给了"。认缴制下可以不马上掏钱，但期限、金额是写进章程的<b>硬承诺</b>，到期就必须到位。</div></div>
-    <div class="term"><div class="tw"><span class="zh">出资期限 / 加速到期</span><span class="en">Acceleration</span></div><div class="def">公司还不上到期债务时，债权人可以要求"还没到期限"的股东<b>提前把钱交出来</b>。认缴不是免死金牌。</div></div>
-    <div class="term"><div class="tw"><span class="zh">非货币财产出资</span><span class="en">Contribution in Kind</span></div><div class="def">用技术、设备、IP、股权、债权代替现金出资。核心要求三个字：<b>可估价、可转让、合法</b>。</div></div>
-    <div class="term"><div class="tw"><span class="zh">股权代持</span><span class="en">Nominee Holding</span></div><div class="def">实际出资人不登记，由名义股东代持。<b>内部协议有效，但对外不产生股东资格</b>；名义股东擅自处置股权、离婚继承、强制执行都会爆雷。</div></div>
-    <div class="term"><div class="tw"><span class="zh">股权生命线</span><span class="en">Control Thresholds</span></div><div class="def">持股 <b>67% / 51% / 34% / 10%</b> 所分别对应的完全控制、普通决议控制、否决权与临时股东会召集权。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="注册资本：股东认缴的出资额总和。认缴不等于不用交——公司不能清偿到期债务时，可能被要求提前缴纳。写大不等于实力强，反而放大了出资义务。">注册资本</span></span><span class="en">Registered Capital</span></div><div class="def">章程上写的股东"承诺要出的钱"总额。<b>它不是实力的证明，是责任的边界</b>——因为股东就以这个数额为限承担亏损。写大了等于把有限责任的范围撑大。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="认缴＝承诺要缴的金额；实缴＝已经缴到位的金额。二者差额就是股东对公司尚未履行的出资义务，会计上未必体现，但法律上一直挂着。">认缴 · 实缴</span></span><span class="en">Subscribed / Paid-in</span></div><div class="def">认缴是"答应给"，实缴是"真给了"。认缴制下可以不马上掏钱，但期限、金额是写进章程的<b>硬承诺</b>，到期就必须到位。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="出资期限：章程约定的缴付期限。加速到期：公司不能清偿到期债务时，债权人可要求未届期股东提前缴纳。期限约定过长在现行法下已受到限制，条号请以现行文本复核。">出资期限 / 加速到期</span></span><span class="en">Acceleration</span></div><div class="def">公司还不上到期债务时，债权人可以要求"还没到期限"的股东<b>提前把钱交出来</b>。认缴不是免死金牌。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="非货币财产出资：以实物、知识产权、土地使用权等作价入股。必须评估作价并办理财产权转移手续，两者缺一，法律上视为未履行出资义务。">非货币财产出资</span></span><span class="en">Contribution in Kind</span></div><div class="def">用技术、设备、IP、股权、债权代替现金出资。核心要求三个字：<b>可估价、可转让、合法</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="股权代持：实际出资人借他人名义持有股权。风险在名义股东一侧：其离婚、负债、擅自转让或反悔，实际出资人只能内部追偿，对外未必能对抗第三人。">股权代持</span></span><span class="en">Nominee Holding</span></div><div class="def">实际出资人不登记，由名义股东代持。<b>内部协议有效，但对外不产生股东资格</b>；名义股东擅自处置股权、离婚继承、强制执行都会爆雷。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="股权生命线：34%（对特别决议的否决）、51%（普通决议通过）、67%（特别决议通过）三条表决权门槛。设差异化表决权类别股时需按实际表决权另行折算。">股权生命线</span></span><span class="en">Control Thresholds</span></div><div class="def">持股 <b>67% / 51% / 34% / 10%</b> 所分别对应的完全控制、普通决议控制、否决权与临时股东会召集权。</div></div>
     <div class="term"><div class="tw"><span class="zh">Cap Table</span><span class="en">Capitalization Table</span></div><div class="def">股权结构表。融资法务的<b>仪表盘</b>，每一轮融资前后都要重画一遍。务必区分"已发行口径"和"全稀释口径"。</div></div>
     <div class="term"><div class="tw"><span class="zh">股权池</span><span class="en">Option Pool / ESOP Pool</span></div><div class="def">为未来发期权预留的股份。关键：<b>投前还是投后释放</b>——这一个词，值几百万。</div></div>
-    <div class="term"><div class="tw"><span class="zh">法人人格否认</span><span class="en">Piercing the Veil</span></div><div class="def">股东滥用有限责任的，法院可以<b>揭开公司面纱</b>，追到股东个人。财务混同是最常见的触发。</div></div>
-    <div class="term"><div class="tw"><span class="zh">关联混合物 · 人格混同</span><span class="en">Commingling</span></div><div class="def">公司账和股东个人账混在一起。标志：老板用个人卡收客户货款、公司替老板买房买车还不挂账。</div></div>
-    <div class="term"><div class="tw"><span class="zh">夫妻共同财产持股</span><span class="en">—</span></div><div class="def">婚姻存续期间以夫妻共同财产出资取得的股权，<b>登记在一方名下仍可能被认定为共同财产</b>。离婚分割、股权冻结都会波及公司。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="法人人格否认：股东滥用公司独立地位与有限责任逃避债务、严重损害债权人利益的，可能被判对公司债务承担责任。一旦被刺破，有限责任这层保护就没有了。">法人人格否认</span></span><span class="en">Piercing the Veil</span></div><div class="def">股东滥用有限责任的，法院可以<b>揭开公司面纱</b>，追到股东个人。财务混同是最常见的触发。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="人格混同：公司与股东在财产、业务、人员、账户上边界不清，典型表现是个人账户收付公司款项、公私账不分。是触发法人人格否认最常见的原因。">关联混合物 · 人格混同</span></span><span class="en">Commingling</span></div><div class="def">公司账和股东个人账混在一起。标志：老板用个人卡收客户货款、公司替老板买房买车还不挂账。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="夫妻共同财产持股：婚姻存续期间取得的股权通常属于夫妻共同财产。处置、质押、离婚分割均可能受影响，实务上应做实名分割或书面财产约定，并备妥配偶同意函。">夫妻共同财产持股</span></span><span class="en">—</span></div><div class="def">婚姻存续期间以夫妻共同财产出资取得的股权，<b>登记在一方名下仍可能被认定为共同财产</b>。离婚分割、股权冻结都会波及公司。</div></div>
     <div class="term"><div class="tw"><span class="zh">同股同权 / 类别股</span><span class="en">Class Shares</span></div><div class="def">现行《公司法》允许股份有限公司发行<b>优先/劣后分配股、差异化表决权股、转让受限股</b>等类别股——这是把"钱"和"权"解绑的法律基础。</div></div>
-    <div class="term"><div class="tw"><span class="zh">出资瑕疵</span><span class="en">Defective Contribution</span></div><div class="def">未按期足额出资、评估虚高、出资后又抽回。后果：<b>补足 + 赔偿 + 设立时其他股东连带</b>，严重的构成抽逃出资。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="出资瑕疵：未按期、未足额出资，或非货币出资未评估、未过户。上市前通常要求补缴、置换为货币出资，或通过减资把注册资本降到与实际匹配的规模。">出资瑕疵</span></span><span class="en">Defective Contribution</span></div><div class="def">未按期足额出资、评估虚高、出资后又抽回。后果：<b>补足 + 赔偿 + 设立时其他股东连带</b>，严重的构成抽逃出资。</div></div>
     <div class="term"><div class="tw"><span class="zh">过时名称：注册资本"实缴登记" vs 认缴</span><span class="en">—</span></div><div class="def">2014 年起全国普遍认缴制，2024 年 7 月 1 日起<b>五年实缴期限入法</b>。这十年"写 500 万不用掏钱"的窗口关闭了。</div></div>
   </div>
 
-  <h2>三、股权生命线：一条比例尺讲清控制权</h2>
+    <details class="dlg" open>
+    <summary><span class="pk-badge d">法务对话</span>对话 01 · 注册资本写 500 万，是不是更有面子？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我们注册资本写 500 万吧，名片上好看，客户也觉得我们有实力。反正写的是认缴，又不用真掏钱。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不是「不用真掏」，是「答应了将来要掏」。认缴在法律上是一笔<b>已经欠下、只是还没到期</b>的债。写 500 万，就是你对公司欠了 500 万。<span class="sim"><b>就好比</b>买房办贷款，银行让你填收入。你填得越高额度越大，但每个月要还的钱也越多——<b>填的时候很爽，还的时候是实的</b>。注册资本也是一样：写的时候只是一个数字，公司周转不灵的时候，它就是真金白银。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">那什么时候会被要求真的交？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两种情况：一是章程写的期限到了；二是公司还不上债，债权人可以要求<b>加速到期</b>——还没到期也要提前交。<span class="sim"><b>就好比</b>你贷款买了房，说好二十年还清。银行通常不会中途叫你一次付清；但你连续断供、房子要被拍卖了，银行就有权要求<b>剩余贷款立刻全部还清</b>。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我们写多少合适？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">按实际经营规模和未来能拿出来的钱定，别按面子公司刚起步，写太大，将来要么实缴掏不出、要么在融资时被要求先减资。<span class="sim"><b>就好比</b>买第一套房，银行批多少你就贷多少，不要为了「看起来还得起」硬撑一个高月供。真撑不住的时候，断供的代价远大于面子。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        注册资本与实际经营、出资能力匹配 + 出资期限控制在法定上限内（历史公司要做期限调整，条号请以现行《公司法》复核）+ 交割前如需调整，走减资程序并同步更新章程。<br>落点：<b>案例 01</b>与<b>条款 A</b>。
+      </div>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 02 · 李工拿「技术」作价 50 万入股，为什么不行？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">李工没钱，但他是建模高手。他拿自己的 3D 建模技术作价 50 万入股，占 10%，这不挺合理的吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">合理，但<b>光说不合理，要办两件事</b>：找有资质的机构评估作价，再把这项技术的财产权正式转到公司名下。缺一样，法律上就认定为<b>没出资</b>。<span class="sim"><b>就好比</b>你拿一辆车抵给别人还债。光把车钥匙递过去不算数——要找人估个价，还要去车管所<b>把登记过户</b>。只递钥匙不过户，对方随时可以说「你没给」。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">技术是他的手艺，怎么「过户」？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">难点就在这里。手艺本身过不了户。所以要么把它<b>固化成能转让的东西</b>——专利申请权、软件著作权、成型的设计图纸与源代码；要么就别用它出资，改成现金分期或期权。<span class="sim"><b>就好比</b>老师傅说他用「祖传手艺」入股。手艺在他脑子里，没法过户。可行的办法是把配方、工艺参数<b>写成文档、申请专利或登记著作权</b>，变成一份能签字移交的财产；实在做不到，就别用它当出资。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那已经写了怎么办？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">补：要么补办评估与转移手续，要么改成现金出资，实在补不上就<b>把注册资本减到与实际相符</b>。上市前这几乎是必被追问的一项。<span class="sim"><b>就好比</b>你答应给朋友一幅画抵债，结果画送不出去了。三条路：真把画给他、改成给钱、或者把欠条金额改小。<b>不能就这么挂着不提</b>。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        非货币出资两要件（<b>有资质机构评估作价</b> + <b>办理财产权转移手续</b>）+ 技术须固化为可转让 IP（专利申请权／软件著作权／图纸与源代码）+ 无法补正的走货币置换或减资。<br>落点：<b>条款 B</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>三、股权生命线：一条比例尺讲清控制权</h2>
+  <div class="plain"><span class="pl">一句话</span>记住三根线：<b>34% 能挡事、51% 能办事、67% 能改规矩</b>。低于 34%，基本只能被通知。</div>
   <p>这张图请背下来。它比任何讲控制权的文章都管用。</p>
   <figure class="struct">
     <svg viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="股权比例生命线">
@@ -102,7 +181,40 @@
     <p class="analogy">股东会像一场投票游戏。<strong>51% 是"我能说了算"，67% 是"我连规则都能改"，34% 是"你们改不了我"</strong>。初创期最常见的错误是给第三个合伙人分 34% 以上——从此这家公司换章程、增资、引入新投资人，都得看他的脸色，公司等于被钉死。</p>
   </div>
 
-  <h2>四、霓光珠宝的雷，和它的标准修法</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 03 · 34%、51%、67%，我到底要守住哪一根线？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">什么 34%、51%、67%，我记不住。我就想知道我得守住哪一档。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三根线对应三种能力：<b>34% 能挡事</b>——修改章程、增资减资、合并分立解散这些大事，他过不了你这一关；<b>51% 能办事</b>——董事选举、一般经营事项，你说了算；<b>67% 能改规矩</b>——连章程都能改。<span class="sim"><b>就好比</b>小区业主大会：<b>三分之一</b>业主反对，大修方案就通不过（你能挡）；<b>过半数</b>同意，日常事项就定了（你能办）；<b>三分之二</b>同意，连业主公约都能改（你能改规矩）。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">那我拿 34% 就够了？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">看你要什么。只想不被强拆，34% 够；想自己说了算，得 51%；想连规矩都能改，得 67%。<b>低于 34%，就只剩下被通知的份</b>。<span class="sim"><b>就好比</b>买房你只占三分之一产权——别人要卖整套房，你可以不答应；但你想换门锁、想把房子租出去，得看别人脸色。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我们两个人，能不能一人一半？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">五五开是最差的结构。没有一方能过半数，任何事都可能永远议而不决。真功夫就是 41.74% 对 41.74%，最后拖成了刑事案。<span class="sim"><b>就好比</b>两个人合伙开饭馆，一人一半股份。今天你要点这道菜、他要撤那道菜，谁也压不过谁——最后不是餐厅关门，就是两个人打起来。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        三条生命线（34% 否决特别决议／51% 通过普通决议／67% 通过特别决议）+ 设差异化表决权类别股时按实际表决权折算 + <b>避免 50:50 与等额僵局结构</b>，僵局要配套处置机制。<br>落点：<b>图 1-1</b>与<b>延伸案例 真功夫</b>。
+      </div>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 04 · 股份挂在别人名下，方便吗？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我想让表弟代我持一部分股份，这样工商登记上就我一个人，干净。有问题吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">看着干净，实际是把风险转移到了你控制不了的地方。代持的风险<b>不在你这一侧</b>——在名义股东那一侧：他离婚、他欠债、他把股份卖了、或者他改口说这股份本来就是他的。<span class="sim"><b>就好比</b>你买了套房，为了省事把房产证写成亲戚的名字。房本上写的是他——他把房子拿去抵押、他离婚时配偶要分、他说房子本来就是他的，你都得去打官司。<b>房本上写谁的名字，法律上就先认谁。</b></span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">签一份代持协议不就行了？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">协议只能约束你们两个人，<b>约束不了外人</b>。他擅自把股份卖给不知情的第三人，你只能回头找他赔钱，股份要不回来。<span class="sim"><b>就好比</b>你和亲戚私下签了协议说房子是你的。但房本上是他，他把房子卖给了不知情的买家——买家合法取得，你只能回头找亲戚要钱。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">真要代持，怎么办？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">四件套：书面代持协议、<b>名义股东配偶同意函</b>、股权质押登记（把股份押回给你）、以及尽可能做公证。还要提前想好将来怎么还原。<span class="sim"><b>就好比</b>真要让亲戚代持，至少做到：写清楚房子是谁的、让他配偶签字确认不算夫妻共同财产、去办一个<b>抵押登记</b>把房子押回给你、再做公证。<b>四样缺一样，将来就多一场官司。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        代持四件套（书面协议／名义股东配偶同意函／股权质押登记／公证）+ 代持还原路径与时点（上市申报前完成穿透核查）+ 代持不得对抗善意第三人。<br>落点：<b>自检清单第 5 条</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>四、霓光珠宝的雷，和它的标准修法</h2>
+  <div class="plain"><span class="pl">一句话</span>这一节的两个雷——<b>注册资本虚高、技术出资没评估</b>——都是成立那几天埋下的，六年后才炸。</div>
   <div class="case">
     <div class="hd">案例 01｜500 万注册资本与技术出资 10%</div>
     <div class="bd">
@@ -125,7 +237,40 @@
     </div>
   </div>
 
-  <h2>五、可以直接用的模板</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 05 · 我名下的股份，我老婆也有一半？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">公司是我的，股份登记在我名下。这跟我太太有什么关系？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">婚姻存续期间取得的股权，通常属于<b>夫妻共同财产</b>。也就是说，你名下的股份，法律上她有一半。<span class="sim"><b>就好比</b>你婚后买的房，房本上只写你一个人的名字。但这不影响它是夫妻共有——卖房的时候，过户窗口会要求配偶签字。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">那会卡在哪儿？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三个地方：你转让或质押股份时可能被要求配偶同意；离婚时这部分要分割；上市时会被追问<b>股权权属是否清晰</b>。<span class="sim"><b>就好比</b>你要把房子拿去银行抵押，银行会让配偶签字。不签，这个抵押可能办不下来；将来离婚，这房子也要分。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我怎么处理？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">两条路：<b>实名分割</b>——做婚内财产约定，把这部分股权明确归你；或者至少备一份<b>配偶同意函</b>，承认股权由你独立处分。<span class="sim"><b>就好比</b>要么夫妻双方去签一份财产约定、写明这套房归你一个人；要么至少让你太太签一份同意书，确认「将来卖房她配合签字」。<b>别等到过户那天才发现缺一张纸。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        婚内财产约定或书面分割 + 配偶同意函（承认由登记方独立处分并承诺配合）+ 上市申报前的权属清晰性核查。<br>落点：<b>自检清单第 6 条</b>。
+      </div>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 06 · 公司的钱和我自己的钱，分开有那么重要吗？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">公司是我开的，公司账上的钱我先拿去周转一下，下个月补回来。这有什么问题？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">问题很大。公司和你个人是<b>两个法律上的人</b>。公私账不分，严重时法院可以<b>不认这层隔离</b>——判你对公司债务承担责任。<span class="sim"><b>就好比</b>你和成年子女是两个人。他的债通常不用你还；但如果你俩的钱长期混在一个账户里、不分彼此，债主就有理由说「你们其实是一家人一本账」，要求你一起还。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">「严重」是什么程度？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">典型的就是<b>人格混同</b>：用个人账户收公司的钱、公司替你付家里的开销、两套账不分、公司没有独立的财务记录。<span class="sim"><b>就好比</b>小卖部的收银机，你买菜的钱也从里面拿、孩子学费也从里面付、店里的进货也从里面出——到年底你说不清哪些是店的、哪些是你家的，这就叫<b>一本糊涂账</b>。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我现在要改什么？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">三件事：公司账户独立，不收个人款项；股东借款走书面协议并按期归还；每一笔往来留凭证。<span class="sim"><b>就好比</b>开店第一件事是单独开一个对公账户、单独记一本账。你从店里拿钱要写借条，还给店里也要留记录。<b>账本清晰，是最便宜的保险。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        公司账户独立（不收付个人款项）+ 股东借款书面化并按期归还 + 发票流、资金流、货物流三流一致 + 保留独立财务记录。<br>落点：<b>自检清单第 9 条</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>五、可以直接用的模板</h2>
+  <div class="plain"><span class="pl">一句话</span>章程里最该改的不是「经营范围」，是<b>出资期限、非货币出资、创始人分期成熟</b>这三条模板条款。</div>
 
   <h3>5.1 出资安排表（写进章程附件）</h3>
   <div class="tw"><table>
@@ -153,7 +298,23 @@
     <div class="zh">创始人股权分期成熟；在任一期未成熟前因任何原因离职的，未成熟部分由公司／其他创始人按<b>名义价格</b>回购。</div>
   </div>
 
-  <h2>延伸：真实世界的对照</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 07 · 员工股权池，什么时候留？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">现在公司就我们三个人，谈什么员工股权池？等要招人了再说。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">等到招人再留，就<b>只能从你身上割</b>。池子提前划出来，稀释由全体股东按持股比例一起承担；临时划，往往变成创始人单独承担。<span class="sim"><b>就好比</b>你们三家合伙开餐厅，一开始就说好「留一桌位子给将来的大厨」，这一桌的空位三家一起摊；等大厨都上门了才说要腾一桌，就只能从你自己那份里让出来。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">那留多少？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">首轮融资前通常预留 <b>10%–15%</b>，然后按未来 18 个月的招聘计划倒推。每次新融资前重新测算一次。<span class="sim"><b>就好比</b>餐厅留位子也要算：明年打算请几个厨师、几个店长，按这个数倒推要留多少桌。不是随手划一块，也不是越多越好。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">放在哪儿？直接给员工登记在母公司名下？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">一般放在<b>持股平台</b>里，母公司股东名册上只有平台一个名字，员工进出只在平台内部换。<b>详见第 02 站</b>。<span class="sim"><b>就好比</b>牌匾上刻名字很麻烦——每来一个员工、走一个员工都要重刻。更省事的是在旁边挂一个抽屉盒，让盒子当股东，员工在盒子里进进出出，牌匾一个字都不用改。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        池子比例（首轮前 10%–15%，按 18 个月招聘计划倒推）+ 池子主体形式（有限合伙持股平台 vs 代持）+ 投前／投后摊薄须在 TS 写明。<br>落点：<b>自检清单第 7 条</b>；与第 02、03 站衔接。
+      </div>
+    </div>
+  </details>
+
+<h2>延伸：真实世界的对照</h2>
   <div class="case">
     <div class="hd">真功夫：41.74% 对 41.74%，僵局是怎么变成刑事案的</div>
     <div class="bd">
@@ -168,7 +329,24 @@
       <a href="ch13-cases.html"><b>→ 打开完整案例库</b></a>。数字用于正式文件前请复核最新版本。</p>
   </div>
 
-  <h2>六、自检清单</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 08 · 六种主体，我们到底该选哪一个？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">个体户、个人独资、合伙企业、有限责任公司……为什么大家都要开「有限责任公司」？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">核心区别就一句话：<b>出了事，赔到哪儿为止</b>。个体户和个人独资，经营者拿个人财产无限承担；有限责任公司，股东原则上只以出资额为限。<span class="sim"><b>就好比</b>摆地摊，赚了是你的、赔了也是你的，债主可以追到你家里；开一家有限公司，公司亏了，债主原则上只能追公司账上那点钱，追不到你家的房子。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那合伙企业呢？我们两个人合伙不行吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">合伙企业里至少有一个人要承担<b>无限责任</b>。它适合当持股平台，不适合当经营主体——因为平台不经营，风险可控。<span class="sim"><b>就好比</b>合伙做生意，总得有人兜底。所以「合伙」这个形式拿来做<b>装股份的盒子</b>很合适（盒子不做生意，不会欠债），拿去开店就危险了。</span></p></div>
+      <div class="dlg-line inv"><span class="who">陈霓<br>合伙人</span><p class="utt">那选完了就没事了？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">选完还有一件事：章程里<b>有三条模板条款必须改</b>——出资期限、非货币出资、创始人股权分期成熟。<span class="sim"><b>就好比</b>买房签合同，开发商给的是格式合同。里面的交房日期、付款方式、违约责任，都是可以按你的情况改的——<b>照抄模板，等于把最关键的三件事交给了别人定。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        主体选择的核心是责任边界（无限 vs 有限）+ 合伙企业的普通合伙人承担无限责任，宜作持股平台不宜作经营主体 + 章程必改三条模板条款（出资期限／非货币出资／创始人分期成熟）。<br>落点：<b>一、五种主体对比表</b>与<b>5.2</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>六、自检清单</h2>
+  <div class="plain"><span class="pl">一句话</span>这一站的自检，本质是在问一件事：<b>公司刚成立那几天的决定，六年后经不经得起查</b>。</div>
   <ul class="check">
     <li>注册资本是否与实际经营、未来出资能力匹配？还是纯粹为了"好看"？</li>
     <li>全体股东的出资期限是否控制在法定五年以内？历史公司是否完成期限调整？</li>
@@ -196,6 +374,6 @@
   <div id="pager"></div>
 </div>
 <footer class="site">融资法务 · 从 0 到 1 ｜ 第 01 站 ｜ 主线案例为教学虚构</footer>
-<script src="assets/app.js?v=20260919b"></script>
+<script src="assets/app.js?v=20260919e"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>02 股权激励设计（ESOP）｜ 融资法务</title>
-<link rel="stylesheet" href="assets/style.css?v=20260919b">
+<link rel="stylesheet" href="assets/style.css?v=20260919e">
 </head>
 <body data-station="ch02">
 <div id="topbar"></div>
@@ -14,7 +14,7 @@
     <div class="kicker">STATION 02 · ESOP</div>
     <h1>股权激励：把「打工的」变成「一起扛的」</h1>
     <p class="sub">激励工具本身不复杂，复杂的是：给谁、给多少、什么时候真正到手、人走了怎么办、公司上市后这套东西还在不在。股权激励出问题的公司，九成不是因为激励太少，而是因为<strong>退出条款没写清</strong>。</p>
-    <div class="meta-line"><span>主线 Y2 · 引入李工与两位老师傅</span><span>术语 12 个</span><span>含四期成熟图与 Good/Bad Leaver 条款</span><span>深度补充 2 篇 · 含持股平台合伙协议与成熟条款模板</span></div>
+    <div class="meta-line"><span>主线 Y2 · 引入李工与两位老师傅</span><span>8 组法务对话 + 24 处生活比方</span><span>14 词白话对照表（可折叠）</span><span>术语就地注释</span><span>含四期成熟图与 Good/Bad Leaver 条款</span></div>
   </div>
 
   <div class="story">
@@ -24,7 +24,52 @@
     <p>同时，车间两位做失蜡铸造的老师傅也要激励，但给他们股权不合适——人数多了股权散，每进每出都要工商变更。于是搭了一个<a class="xref" href="#deep-lp" data-deep="deep-lp">有限合伙企业<sup>详解</sup></a>作为持股平台：创始人当 GP（说了算），员工当 LP（只分钱），人来人去只在平台内部转合伙份额，母公司的股权结构一天不乱。</p>
   </div>
 
+
+  <div class="callout c-tip">
+    <span class="lbl">怎么读这一页（给看不懂条款的人）</span>
+    <p>① 正文里带<b>虚线下划线 + 上标「注」</b>的词，鼠标悬停就有白话解释，不用回头翻术语表。<br>
+      ② 每个核心环节下面都有一个<b>「法务对话」折叠块</b>：老板和员工只说大白话（他们不懂法律，也不该懂），法务先用大白话答，再翻译成条款。<b>看不懂条款时，先看对话。</b><br>
+      ③ 对话里凡是<b>法律腔的句子</b>，后面立刻跟一段金色底的<b>「就好比……」</b>——用发工资、办健身卡、租房子这种日常场景再讲一遍。看不懂那句法律话的时候，直接看它下面那句就好比。<br>
+      ④ 三个角色：<b>郭明</b>＝创始人/你的老板；<b>李工</b>＝拿到激励的核心员工；<b>法务</b>＝你。这一站是「把打工的变成一起扛的」，两边立场天然相反，看清楚谁在说话。</p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页「对话」都是<b>原地展开</b>（点开就在这一段下面，不会跳走）：</span>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <h2>零、先把黑话翻成人话</h2>
+  <p>如果你看这一页卡住了，十有八九是卡在词上，不是卡在逻辑上。下面这张表把本页会遇到的词全部翻成老板听得懂的话。</p>
+
+  <details class="dlg" open>
+    <summary><span class="pk-badge d">对照表</span>展开：14 个黑话 → 人话 → 老板为什么要在乎</summary>
+    <div class="dlg-bd">
+      <div class="tw"><table>
+        <thead><tr><th style="width:22%">黑话</th><th style="width:38%">人话</th><th>为什么要在乎</th></tr></thead>
+        <tbody>
+          <tr><td>授予 Grant</td><td>公司说「我答应给你这么多」</td><td>答应不等于给了，中间还隔着一个「成熟」</td></tr>
+          <tr><td>成熟 Vest</td><td>这承诺里<em>真正归你</em>的部分，随时间一格格长出来</td><td>没长熟的部分，人走就自动收回</td></tr>
+          <tr><td>行权 Exercise</td><td>你掏钱把承诺换成真的股份</td><td>不掏钱、不办手续，股份就还不是你的</td></tr>
+          <tr><td>悬崖期 Cliff</td><td>第一年不干满，一分不给</td><td>防的就是「来三个月就跑」</td></tr>
+          <tr><td>行权价</td><td>你换股份时每股要付多少钱</td><td>公司涨了才有赚头，跌了就是废纸</td></tr>
+          <tr><td>行权窗口</td><td>离职后多久之内还来得及掏钱</td><td>不写清楚，人走了还挂着一笔说不清的账</td></tr>
+          <tr><td>Good / Bad Leaver</td><td>走得体面 vs 走得难看，回购价格差很多</td><td>这是整份计划里最值钱的一条定义</td></tr>
+          <tr><td>持股平台</td><td>装员工股份的「抽屉盒」，母公司股东名册上只有一个名字</td><td>员工进出不用动母公司的工商登记</td></tr>
+          <tr><td>GP / LP</td><td>平台的司机（掌权）与乘客（只出钱分红）</td><td>GP 承担无限责任，所以要用有限公司来当</td></tr>
+          <tr><td>全面摊薄口径</td><td>算比例时把池子、未行权期权全算进分母</td><td>口径不同，同一个百分比能差出一大块</td></tr>
+          <tr><td>池子稀释</td><td>新融资时池子被摊薄，要从谁身上补</td><td>投前还是投后，差的是创始人的股份</td></tr>
+          <tr><td>递延纳税</td><td>行权时先不交税，等真卖掉再交</td><td>不办备案，员工可能在没拿到钱时就要交税</td></tr>
+          <tr><td>第 17 章 / 股份计划</td><td>上市地管「员工股份怎么给」的那套规则</td><td>上市前授予的计划，上市后未必能照原样执行</td></tr>
+          <tr><td>信托持有 ESOP</td><td>红筹架构下由受托人代持、分档管理</td><td>员工行权还要走外汇登记，路径要提前设计</td></tr>
+        </tbody>
+      </table></div>
+      <p class="pk-mini">（这张表只解决「听不懂」，不解决「怎么谈」——怎么谈在下面每一组对话里。）</p>
+    </div>
+  </details>
+
   <h2>一、四种工具的差别（一张表讲清）</h2>
+  <div class="plain"><span class="pl">一句话</span>四种工具的差别，本质上是三件事：<b>要不要掏钱、什么时候算你的、走了怎么处理</b>。</div>
   <div class="tw"><table>
     <thead><tr><th>工具</th><th>本质</th><th>要不要掏钱</th><th>能否登记为股东</th><th>适合的场景</th></tr></thead>
     <tbody>
@@ -44,22 +89,56 @@
   </div>
 
   <h2>二、术语卡</h2>
+  <div class="plain"><span class="pl">一句话</span>这 12 个词里，<b>授予≠成熟≠行权</b>这条三步链最容易被混，一混就写出「给了却收不回」的条款。</div>
   <div class="terms">
-    <div class="term"><div class="tw"><span class="zh">授予 / 成熟 / 行权</span><span class="en">Grant / Vest / Exercise</span></div><div class="def">Grant 是<b>答应给</b>，Vest 是<b>变成熟可以拿</b>，Exercise 是<b>真的掏钱买走</b>。三步分开，才有了约束的可能。</div></div>
-    <div class="term"><div class="tw"><span class="zh">悬崖期</span><span class="en">Cliff</span></div><div class="def">最短服务期限（通常 1 年）。一年内走人，<b>一分钱成熟都没有</b>。是防止"来三个月拿 25%"的关键设计。</div></div>
-    <div class="term"><div class="tw"><span class="zh">行权价</span><span class="en">Exercise / Strike Price</span></div><div class="def">每股价格。早期通常取<b>面值或优惠价</b>；税务局会看"明显偏低"是否有正当理由。</div></div>
-    <div class="term"><div class="tw"><span class="zh">行权窗口</span><span class="en">Exercise Window</span></div><div class="def">离职后可行权的时间（如 90 天）。<b>过期作废</b>。上市前应尽量延长或改为上市后 RSU。</div></div>
-    <div class="term"><div class="tw"><span class="zh">Good Leaver / Bad Leaver</span><span class="en">—</span></div><div class="def">离职原因分类。<b>Good</b>（退休、身故、公司裁撤、协商解除）：保留已成熟或继续成熟、按公允价回购；<b>Bad</b>（违纪、违反竞业、主动跳槽）：未成熟作废、按原价甚至零回购。</div></div>
-    <div class="term"><div class="tw"><span class="zh">持股平台</span><span class="en">Holding Platform</span></div><div class="def">通常为<a class="xref" href="#deep-lp" data-deep="deep-lp">有限合伙企业<sup>详解</sup></a>：创始人或其公司当 GP，员工当 LP。避免母公司股权因人员进出而反复变更。</div></div>
-    <div class="term"><div class="tw"><span class="zh">GP / LP</span><span class="en">General / Limited Partner</span></div><div class="def">GP 承担无限责任但<b>掌握管理权</b>；LP 有限责任但<b>不得执行合伙事务</b>，否则可能丧失有限责任保护。</div></div>
-    <div class="term"><div class="tw"><span class="zh">全面摊薄口径</span><span class="en">Fully Diluted Basis</span></div><div class="def">把<b>已发行 + 已授予未行权 + 预留池</b>全部计入后的口径。谈估值和"我占多少"必须用这个口径，否则是幻觉。</div></div>
-    <div class="term"><div class="tw"><span class="zh">池子稀释</span><span class="en">Pool Dilution</span></div><div class="def">投资人常要求<b>投前</b>新设或扩大 ESOP 池，稀释落在老股东身上；如果是<b>投后</b>，投资人自己也稀释。<b>一字之差，钱差很多</b>。</div></div>
-    <div class="term"><div class="tw"><span class="zh">递延纳税</span><span class="en">Deferred Taxation</span></div><div class="def">符合条件的非上市公司股权激励，员工在取得时<b>暂不纳税</b>，待实际转让时按财产转让所得计征，但需向主管税务机关备案。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="三步链：授予＝公司承诺给；成熟＝随时间真正归你；行权＝你掏钱把承诺换成股份。三者不同，写条款时必须分开表述。">授予 / 成熟 / 行权</span></span><span class="en">Grant / Vest / Exercise</span></div><div class="def">Grant 是<b>答应给</b>，Vest 是<b>变成熟可以拿</b>，Exercise 是<b>真的掏钱买走</b>。三步分开，才有了约束的可能。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="悬崖期（Cliff）：授予后须满一定期限（通常 12 个月）才开始成熟，未满则一分不成熟。用于过滤短期加入者。">悬崖期</span></span><span class="en">Cliff</span></div><div class="def">最短服务期限（通常 1 年）。一年内走人，<b>一分钱成熟都没有</b>。是防止"来三个月拿 25%"的关键设计。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="行权价（Exercise Price）：员工行权时每股应付价格。公司估值上涨才有收益空间，估值下跌则激励失去意义。">行权价</span></span><span class="en">Exercise / Strike Price</span></div><div class="def">每股价格。早期通常取<b>面值或优惠价</b>；税务局会看"明显偏低"是否有正当理由。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="行权窗口（Exercise Window）：离职后可行权的期限。不写明会导致离职员工长期持有未决状态，上市前穿透核查时成为悬案。">行权窗口</span></span><span class="en">Exercise Window</span></div><div class="def">离职后可行权的时间（如 90 天）。<b>过期作废</b>。上市前应尽量延长或改为上市后 RSU。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="Good Leaver：因退休、工伤、公司裁员等无过错原因离职；Bad Leaver：因违反竞业、保密、忠实义务或被辞退。两者回购价格差异巨大，须明确定义与举证标准。">Good Leaver / Bad Leaver</span></span><span class="en">—</span></div><div class="def">离职原因分类。<b>Good</b>（退休、身故、公司裁撤、协商解除）：保留已成熟或继续成熟、按公允价回购；<b>Bad</b>（违纪、违反竞业、主动跳槽）：未成熟作废、按原价甚至零回购。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="持股平台：通常以有限合伙企业形式设立，作为运营公司的股东持有员工激励份额。母公司股东名册上只有平台一个名字，员工进出仅在平台内部变更。">持股平台</span></span><span class="en">Holding Platform</span></div><div class="def">通常为<a class="xref" href="#deep-lp" data-deep="deep-lp">有限合伙企业<sup>详解</sup></a>：创始人或其公司当 GP，员工当 LP。避免母公司股权因人员进出而反复变更。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="GP（普通合伙人）执行合伙事务并承担无限责任，通常由创始人 100% 持股的有限公司担任以隔离风险；LP（有限合伙人）只出资分红，不参与执行事务，否则可能丧失有限责任保护。">GP / LP</span></span><span class="en">General / Limited Partner</span></div><div class="def">GP 承担无限责任但<b>掌握管理权</b>；LP 有限责任但<b>不得执行合伙事务</b>，否则可能丧失有限责任保护。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="全面摊薄口径（Fully Diluted）：计算持股比例时把已发行股份、未行权期权、未分配池子、潜在转换股数全部计入分母。口径不同，同一百分比对应的实际股数差别很大。">全面摊薄口径</span></span><span class="en">Fully Diluted Basis</span></div><div class="def">把<b>已发行 + 已授予未行权 + 预留池</b>全部计入后的口径。谈估值和"我占多少"必须用这个口径，否则是幻觉。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="池子稀释：新一轮融资后期权池被摊薄。若约定投前释放，稀释由交割前老股东承担；若投后释放，影响投资人本轮比例。须在 TS 写明。">池子稀释</span></span><span class="en">Pool Dilution</span></div><div class="def">投资人常要求<b>投前</b>新设或扩大 ESOP 池，稀释落在老股东身上；如果是<b>投后</b>，投资人自己也稀释。<b>一字之差，钱差很多</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="递延纳税：符合条件的非上市公司股权激励，员工行权时可暂不纳税，待实际转让时按财产转让所得计税。须按规定办理备案，否则无法适用。">递延纳税</span></span><span class="en">Deferred Taxation</span></div><div class="def">符合条件的非上市公司股权激励，员工在取得时<b>暂不纳税</b>，待实际转让时按财产转让所得计征，但需向主管税务机关备案。</div></div>
     <div class="term"><div class="tw"><span class="zh">第 17 章 / 股份计划</span><span class="en">Chapter 17 · Share Schemes</span></div><div class="def">联交所《上市规则》关于股份计划的专章。<b>2023 年 1 月 1 日起适用范围扩展至上市前授予、上市后仍有效的计划</b>，须符合授权限额、归属期等要求。</div></div>
-    <div class="term"><div class="tw"><span class="zh">信托持有 ESOP</span><span class="en">ESOP Trust</span></div><div class="def">红筹架构下由受托人代持激励股份。<b>注意</b>：如由发行人或核心关连人士出资，相关股份通常<b>不计入公众持股量</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh"><span class="anno" title="信托持有 ESOP：红筹架构下由受托人代持 ESOP 预留股份，下设 BVI SPV 分档管理。员工行权需配套外汇登记与收益调回渠道。">信托持有 ESOP</span></span><span class="en">ESOP Trust</span></div><div class="def">红筹架构下由受托人代持激励股份。<b>注意</b>：如由发行人或核心关连人士出资，相关股份通常<b>不计入公众持股量</b>。</div></div>
   </div>
 
-  <h2>三、结构：两条路径的图</h2>
+    <details class="dlg" open>
+    <summary><span class="pk-badge d">法务对话</span>对话 01 · 为什么非要多搭一个「壳」？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">公司直接给我股份不就行了？为什么非要搞一个什么持股平台，听起来好复杂。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">因为母公司的股东名册每动一次，都要跑一趟工商登记。三十个员工进进出出，就要跑三十趟，而且<b>每个员工的名字都会出现在对外可查的登记里</b>。<span class="sim"><b>就好比</b>一栋楼的门牌上刻着所有住户的名字。每搬进来一个人、搬走一个人，都要重新刻一遍牌子，而且牌子挂在楼下，<b>路过的人都能看见谁住这儿</b>。更省事的做法是：门牌上只写「某某公寓」，住户名单锁在物业办公室里。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那为什么是有限合伙，不是有限公司？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">因为有限合伙可以做到<b>出钱的不掌权、掌权的不出钱</b>。GP 当司机，哪怕只出 1% 也握着方向盘；员工当乘客，出钱、分红，但不碰方向盘。换成有限公司，就得按出资比例表决，人一多你的表决权就散了。<span class="sim"><b>就好比</b>合伙买车跑运输：一个人当司机负责开车（出钱少但说了算），其他人只出钱分红（不碰方向盘）。要是改成「按出钱多少投票决定往哪开」，十几个人各有主意，这车就开不动了。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那 GP 谁当？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">用<b>你 100% 持股的有限公司</b>来当，不要用你自然人。因为 GP 承担无限责任——用公司当，这层责任就被隔在公司里了。<span class="sim"><b>就好比</b>司机责任大，出了事故要兜底。所以别让自己赤膊上阵，先注册一家小公司，让这家公司去当司机——<b>出了事，赔到这家公司为止。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        GP 由创始人 100% 持股的<b>有限公司</b>担任（隔离无限责任）+ 合伙经营范围写明「仅作为持股平台」+ 明确列举不视为执行合伙事务的安全港事项 + LP 不得对外代表企业。<br>落点：<b>A5 落地操作清单</b>。
+      </div>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 02 · 期权、限制性股权、虚拟股，我要哪个？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">公司说给我「期权」，又有人说「限制性股权」，还有「虚拟股」。这到底有什么区别？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">看三件事：① <b>要不要你掏钱</b>；② <b>什么时候真的算你的</b>；③ <b>走了怎么处理</b>。期权是给你一个「将来按约定价买」的权利，要掏钱才变成股份；限制性股权是先给你股份，但<b>附带条件</b>——条件没满足公司可以收回去；虚拟股根本不是股，只是一笔跟业绩挂钩的分红承诺。<span class="sim"><b>就好比</b>健身房三种卡：<b>期权</b>是优惠券——到时候你可以按优惠价买，但你得掏钱；<b>限制性股权</b>是直接给你一张卡，但背面写着「一年内不能转让、违规就收回」；<b>虚拟股</b>不是卡，只是前台记了一笔「你消费到一定额度就返现」。<b>只有前两种，你才是真的会员。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我给员工哪种好？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">早期、估值低的时候，期权最常见——员工掏的钱少，公司也不用现在就稀释。但期权有个问题：员工要掏钱才拿到股份，公司要是没涨，他就不会行权。<span class="sim"><b>就好比</b>给员工发优惠券，公司生意好、东西值钱，他才愿意掏钱用；公司要是没做起来，那张券就是一张纸。</span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">那我担心的是：公司涨了我掏钱买，公司没涨我白干？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">所以期权通常配<b>行权窗口</b>和<b>现金结算的增值权</b>两种出口——前者让你在离职后还有一段时间可以决定要不要买；后者让你不用掏钱，直接拿差价。<span class="sim"><b>就好比</b>优惠券到期了，你可以选择买，也可以放弃；还有一种做法是「不用你掏钱，直接把涨价的部分折成现金给你」。<b>两种出口都要提前写在合同里。</b></span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        四种工具的差别按「是否出资／何时归属／离职处理」三维对比 + 期权配行权窗口与现金结算增值权双出口 + 上市前授予的计划需评估上市地股份计划规则适配性。<br>落点：<b>一、四种工具对比表</b>与<b>条款 E</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>三、结构：两条路径的图</h2>
+  <div class="plain"><span class="pl">一句话</span>搭平台不是为了省事，是为了<b>把「人的进出」和「公司的股权结构」隔开</b>。</div>
   <figure class="struct">
     <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="股权激励两条持股路径">
       <!-- 左：境内有限合伙平台 -->
@@ -236,7 +315,40 @@
     </div>
   </details>
 
-  <h2>四、成熟节奏怎么设</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 03 · 「授予」和「成熟」，不都是给我了吗？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">合同上写「授予你 4%」，那这 4% 就是我的了吧？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不是。「授予」只是公司说了一句<b>「我答应给你」</b>；「成熟」才是这 4% 里<b>真正归你</b>的部分，随着你干的时间一格格长出来。<span class="sim"><b>就好比</b>公司说「年底给你发四万奖金」，这是授予；这笔钱<b>按月攒、干满一个月攒一份</b>，这是成熟。你年中走了，只拿到攒下来的那部分。</span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">为什么不能一次给完？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">因为人会说走就走。一次给完，他干三个月就跑，公司白白送出一大块股权，下一轮融资还得再割一块补窟窿。<span class="sim"><b>就好比</b>装修队要你一次性付清全款，他干三天就撤了。分期付款的意义就在这里——<b>干多少、付多少。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那第一部分为什么是一年？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">那叫<b>悬崖期</b>：第一年不干满，一分不给；干满一年先给 25%，之后按月一点点给，四年给完。<span class="sim"><b>就好比</b>健身房年卡有个「首月不满意可退」的条款反过来用——<b>头一年是试用期</b>，干满才开始算；过了这一年，每多待一个月就多解锁一点。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        三步链分列（授予／成熟／行权）+ 成熟安排（12 个月悬崖期届满 25%，其后每月 1/48，48 个月届满）+ 起算日定义与不因带薪年假暂停、因停薪留职顺延。<br>落点：<b>B5 模板第 X 条</b>。
+      </div>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 04 · 公司被收购了，我还没成熟的怎么办？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">要是公司被收购了，我还没成熟的那部分是不是就没了？我可是从一开始就在的。</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这要看条款里有没有<b>加速成熟</b>。有两种写法：<b>单方</b>——公司被收购，你的期权全部提前成熟（对你最好，但买方会砍价）；<b>双方</b>——只有你被遣散或被迫离职时才加速（谈判中更常见）。<span class="sim"><b>就好比</b>公司搬家到很远的地方，你的通勤卡怎么办？一种是「搬家就给你全额补偿」；另一种是「只有你因此被辞退才补偿」。<b>前者你最喜欢，公司最不愿意签。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我为什么要答应单方加速？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不一定要答应。但要知道代价：买方在做收购时会数一遍「还欠员工多少期权」，欠得越多，他出的价越低。<span class="sim"><b>就好比</b>你买下一家店，发现老板答应过员工一批「将来可以打折买」的券。这批券越多，这店对你越不值钱——<b>收购价里会先把这笔扣掉。</b></span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">那我能争到什么？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">常见的是<b>双层触发</b>：公司被收购，<em>且</em>你在交割后 12 个月内被无过错解除、或因公司未承接本计划而离职的，届时未成熟的部分提前成熟。<span class="sim"><b>就好比</b>店卖掉了，新老板留用你——那原来的承诺继续有效；新老板把你开了，或者干脆不认这个计划——那没解锁的部分<b>一次性全部解锁</b>给你。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        加速成熟双层触发（控制权变更 + 交割后 12 个月内被无过错解除／因公司未承接本计划而离职）+ 单方原则 vs 双方原则的取舍与买方压价效应。<br>落点：<b>B5 模板第 Y 条</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>四、成熟节奏怎么设</h2>
+  <div class="plain"><span class="pl">一句话</span>成熟计划的全部意义，是把「承诺」变成<b>按月到账的分期付款</b>——中途走，没到账的就收回。</div>
   <p class="deep-lead">同一套「成熟」逻辑，在不同工具里怎么落地？有哪几种主流节奏、各自适合谁？协议里那几行字究竟该怎么写 —— <a class="xref" href="#deep-vesting" data-deep="deep-vesting">点击展开「成熟计划全解」<sup>深度补充 B</sup></a>（大白话 + 术语 + 条款解析 + 协议模板）。</p>
   <figure class="struct">
     <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四年成熟节奏">
@@ -357,7 +469,24 @@
     </div>
   </details>
 
-  <h2>五、案例剖析</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 05 · 人走了，期权要不要退？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">李工干了两年两个月走了，四年成熟的期权他成熟了一半。剩下的要退，已经成熟的呢？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这就是<b>Good Leaver 和 Bad Leaver</b> 的区别。走得体面——退休、工伤、公司裁员——按一个价格回购；走得难看——违反竞业、泄密、被辞退——按另一个价格，甚至可以是零。<span class="sim"><b>就好比</b>租房退租：<b>正常到期退租</b>，押金退给你、还可能给点搬迁补偿；<b>把房子砸了、私自转租</b>被赶走，不但押金不退，还要赔维修费。<b>同样是走，两种算法。</b></span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">那「违反竞业」怎么算？他去同行那儿了才算吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">所以必须在条款里<b>写死定义</b>：什么叫违反竞业、违反保密、违反忠实义务，各自的举证标准是什么。不写清楚，将来就变成吵架。<span class="sim"><b>就好比</b>租约里只写「不得损坏房屋」，太笼统。要写清「墙面打洞超过三个算损坏」「养宠物算违约」——<b>不写清楚，退租那天就要吵。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">写「公司有权回购」够不够？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不够，而且这是最常见的坑。「有权」是<b>可选的</b>——公司不回购，员工照样持股。真正要紧的是三样：回购价格公式、执行抓手、行权窗口。<span class="sim"><b>就好比</b>租约里写「房东有权要求租客搬走」，听起来很强，但房东不催，租客就能一直住。真正有用的是写清「退房时按什么价结算」「钥匙什么时候必须交」「逾期怎么办」。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        Good / Bad Leaver 明确定义与举证标准 + Bad Leaver 回购定价（原始出资成本 + 同期定期存款利息；违反保密竞业的降为零）+ 执行抓手（空白转让文件／授权委托书／<b>份额质押登记</b>）+ 行权窗口。<br>落点：<b>案例 02</b>与<b>条款 D</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>五、案例剖析</h2>
+  <div class="plain"><span class="pl">一句话</span>这份计划值不值钱，只看一个问题：<b>人要走的那天，你有没有可执行的价格和抓手</b>。</div>
   <div class="case">
     <div class="hd">案例 02｜技术总监走了，期权要不要退</div>
     <div class="bd">
@@ -380,7 +509,24 @@
     </div>
   </div>
 
-  <h2>六、条款样板</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 06 · 回购条款，法院到底认不认？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">我在网上看到说，员工离职公司强制回购是霸王条款，不受法律保护。真的吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不是。从已公开的裁决看，主流态度是<b>认</b>。深圳国际仲裁院的案例里，「离职当然退伙、按上月末净资产回购」的约定被认定为有效；北京海淀法院也判过员工<b>原价转让并配合办理工商变更</b>。<span class="sim"><b>就好比</b>有人说「健身房合同里写了概不退费，这种条款没用」。但你去投诉，监管部门通常会说：如果是你自己违约、且条款写得清楚，那按合同办。<b>写了并说清楚，一般就认。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那是不是怎么写都行？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">不是。有两类地方容易被挑战：一是员工是<b>被违法解除</b>劳动合同的，这时候还按 Bad Leaver 处理，就有争议；二是<b>净资产算法不透明</b>——你算出来的数他不认。<span class="sim"><b>就好比</b>健身房说你违规所以不退费，但实际上是他们先关了你的柜子、不让你进门——这种情况你肯定不服。另外，退费金额怎么算也得写清楚，不能他说退多少就退多少。</span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">那我要签吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">可以签，但要盯住三点：<b>回购价格怎么算、什么情形触发、走了之后多久之内必须办完</b>。这三样写清楚，对双方都好。<span class="sim"><b>就好比</b>签健身卡合同，你真正要看的不是「概不退费」那一行，而是<b>退费怎么算、什么情况能退、多久到账</b>。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        已公开裁决方向（深圳国际仲裁院案例十八：离职当然退伙＋按净资产回购有效；北京海淀法院：判令原价转让并配合变更）+ 可确定的三条（条款原则上有效／合伙人身份不影响／员工负有配合变更义务）+ 未统一地带（被违法解除时的处理；净资产算法须透明）。<br>落点：<b>延伸：真实世界的对照</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>六、条款样板</h2>
+  <div class="plain"><span class="pl">一句话</span>Bad Leaver 条款最关键的是<b>定价公式</b>，不是「公司有权回购」这句话——「有权」是可选的，价格才是实的。</div>
   <div class="clause">
     <div class="ch">条款 D · Bad Leaver 回购价格</div>
     <div class="zh">发生 Bad Leaver 事件的，公司或持股平台 GP 有权（但无义务）以下列价格回购该员工届时持有的全部合伙份额：<b>（a）其原始出资成本 + 按同期中国人民银行定期存款利率计算的利息</b>；如员工同时存在违反保密、竞业或忠实义务情形的，回购价格降为零（即仅返还名义出资），且公司有权要求其赔偿由此造成的损失。</div>
@@ -390,7 +536,23 @@
     <div class="zh">若公司进行境外上市，上市前授予的期权可于上市后<b>由董事会决议转换为等值数量的 RSU 或现金结算的增值权</b>，以适配公开市场的股份计划规则与结算安排；转换后员工的经济利益总额保持不变。</div>
   </div>
 
-  <h2>延伸：真实世界的对照</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 07 · 行权还要交税？我没拿到钱为什么要交税？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">我听说行权的时候要交税，可我只是拿到了股份，一分钱现金都没有，为什么要交税？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这正是股权激励最容易伤人的地方：你可能<b>在没拿到钱的时候就要交税</b>。所以符合条件的非上市公司股权激励，可以办<b>递延纳税</b>——行权时先不交，等你真把股份卖掉再交。<span class="sim"><b>就好比</b>公司发年终奖，说「今年不发钱，发一批货给你抵奖金」。货在你手上，但你没现金——如果这时候就要你按货的市价交个税，你就得自己掏钱去交。合理的做法是<b>等你真把货卖掉、收到钱了再交</b>。</span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">那我们要做什么？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt"><b>办备案</b>。递延纳税不是自动适用的，要按规定向税务机关备案。不办，员工就得在行权当期缴税。<span class="sim"><b>就好比</b>有些补贴是自动到账的，有些要你先申请、交材料、批下来才有。<b>不申请就没有。</b></span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">还有别的要注意吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">平台和地方对自然人 LP 所得性质的口径不完全一致——有的按「经营所得」5%–35%，有的按「财产转让所得」。落地前要<b>确认当地口径</b>。<span class="sim"><b>就好比</b>同一笔收入，在不同城市可能被归成不同的类别、按不同的税率算。做之前先问清楚当地怎么算，别等到报税才发现差一大截。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        递延纳税备案（符合条件的非上市公司股权激励）+ 确认当地对自然人 LP 所得性质的口径（经营所得 5%–35% vs 财产转让所得）+ 境外架构下的外汇登记与收益调回路径。<br>落点：<b>A5 税务项</b>与<b>自检清单第 7、8 条</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>延伸：真实世界的对照</h2>
   <div class="case">
     <div class="hd">员工持股平台的回购条款，法院认不认</div>
     <div class="bd">
@@ -409,7 +571,24 @@
       <a href="ch13-cases.html"><b>→ 打开完整案例库</b></a>。数字用于正式文件前请复核最新版本。</p>
   </div>
 
-  <h2>七、自检清单</h2>
+    <details class="dlg">
+    <summary><span class="pk-badge d">法务对话</span>对话 08 · 境外架构下，员工怎么行权？</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">我们要搭红筹架构，员工的期权放在开曼公司的 ESOP 里。他们怎么行权？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">路径要提前设计，而且<b>两头都要通</b>：一头是境外——信托代持、BVI SPV 分档管理；另一头是境内——员工行权涉及外汇登记，收益还要有合规的调回渠道。<span class="sim"><b>就好比</b>你在国外买了一套房，租金要打回国内。不是钱到了境外就完了——<b>买房的钱怎么出去、租金怎么合法回来，两头都要有通道。</b></span></p></div>
+      <div class="dlg-line inv"><span class="who">李工<br>员工</span><p class="utt">那我掏钱行权，钱怎么出去？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">这就是最容易卡住的地方。实务上要在计划设计阶段就确认：员工购汇出境的路径是否可行、额度如何、需要哪些登记。<b>不能等员工要行权了才去问。</b><span class="sim"><b>就好比</b>你要给孩子汇一笔学费出去，得先确认换汇额度、需要哪些材料、能不能批。<b>到了开学前一天才去问，就来不及了。</b></span></p></div>
+      <div class="dlg-line boss"><span class="who">郭明<br>老板</span><p class="utt">还有个说法叫「第 17 章」，跟我们有关吗？</p></div>
+      <div class="dlg-line me"><span class="who">法务<br>你</span><p class="utt">有关。那是上市地规范「员工股份计划」的一套规则，对授予规模、行权价、有效期都有要求。<b>上市前授予的计划，上市后未必能照原样执行</b>——通常要提前设计转换路径。<span class="sim"><b>就好比</b>你在国内办的会员卡，到了国外这家连锁店未必能用——规则不一样。所以要么提前换成通用的卡种，要么预留一个<b>转换方案</b>。</span></p></div>
+      <div class="dlg-note">
+        <span class="nt">翻译成条款</span>
+        红筹 ESOP 路径（开曼预留 / 信托代持 / BVI SPV 分档）+ 员工行权的外汇登记与境内外资金闭环 + 上市地股份计划规则适配（上市前授予的部分可转换为 RSU 或现金结算增值权，经济利益总额不变）。<br>落点：<b>图 2-1 路径 B</b>与<b>条款 E</b>。
+      </div>
+    </div>
+  </details>
+
+<h2>七、自检清单</h2>
+  <div class="plain"><span class="pl">一句话</span>这一站的自检，核心是三样：<b>价格有没有公式、抓手有没有备齐、税务路径有没有设计</b>。</div>
   <ul class="check">
     <li>池子大小是否合理？通常首轮前预留 10%–15%，每一次新融资前重新测算未来 18 个月的需求。</li>
     <li>池子是<b>投前</b>还是<b>投后</b>摊薄？Term Sheet 上一定要写明。</li>
@@ -438,6 +617,6 @@
   <div id="pager"></div>
 </div>
 <footer class="site">融资法务 · 从 0 到 1 ｜ 第 02 站 ｜ 主线案例为教学虚构</footer>
-<script src="assets/app.js?v=20260919b"></script>
+<script src="assets/app.js?v=20260919e"></script>
 </body>
 </html>

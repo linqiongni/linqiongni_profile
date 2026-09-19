@@ -139,7 +139,8 @@
 
 ## 身边的英语 tab（2026-09-19 重做，场景化短文阅读器）
 - **源站**：仓库根 `身边的英语/` = `index.html`（布局 + 播放引擎）+ `scenes.js`（内容数据，本次拆出）；部署副本 `public/english/`（`npm run sync:english`，整目录 rsync）。组件 `src/components/EnglishTab.tsx`。
-- **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time` / `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`），分组由 `PARTS` 决定。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 18 篇 / 5 组（早/通勤/上班/晚/周末）。
+- **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time` / `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`）。**`PARTS` 是两级**（`kids`）：工作日(周一~周五) / 周末(周六周日) / 节假日(中秋·国庆·春节·五一·端午)，**`scene.part` 填的是二级 id**（`mon`/`sat`/`midautumn`…）。找所属分组用 `pathOf(pid)`。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 13 篇。
+- **目录折叠**：一级 `.dir-group`（金色胶囊）/ 二级 `.dir-day` / 三级 `.item`。折叠态存 `en-fold:g:<id>`、`en-fold:d:<id>`；默认只展开「当前篇目所在的组」，二级默认展开。搜索时先全展开再隐藏未命中的项与空组。`keepCurrentVisible()` 让当前项始终在视野内。
 - **播放**：整段连读（句子队列，逐句 speak + onend 续读），当前句高亮 + 自动滚动；底栏 上一句/播放/下一句/进度跳句/循环/语速 0.75–1.15/美音英音。暂停＝记录 idx 后 cancel，继续＝从 idx 重播（Safari 无 pause 也适用）。
 - **布局**：左栏时间线目录（搜索 + 已听标记）+ 居中阅读器（英文 serif 19px）+ 底部常驻播放条；≤900px 侧栏转抽屉 + 遮罩 + 默认收起。双语三档由 `body[data-mode]` 驱动（both/en/zh）。
 - **深色**：自己监听主站 `postMessage({type:'theme'})`；**不要引 `/theme-toggle.js`**（浮动按钮 top:56px 会压住阅读器顶栏）。
