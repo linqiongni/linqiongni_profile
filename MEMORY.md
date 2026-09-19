@@ -59,6 +59,8 @@
 - **港股规则三处易过期数据（已多源核校 2026-09-17，引用请一律用新版）**：① 公众持股量自 2025-08-04 改为分层门槛（≤60亿→25%；60–300亿→15亿市值或15%取高；>300亿→45亿市值或10%取高），旧「划一 25%」作废；② 18C 市值门槛 2024-09-01 起临时下调至 2027-08-31（已商业化 40 亿／未商业化 80 亿）；③ WVR 自 2026-07-24 起降至 200 亿，或 60 亿市值＋6 亿收入，10:1→市值≥400亿可 20:1，保密递交已扩展至所有新申请人。8.05 三项财务测试未变（现行值系 2022-01-01 上调结果）。
 - 技术：`assets/app.js` 注入顶部导航/上下篇/深浅色/阅读进度，数据源是 `STATIONS` 数组；正文页只需 `<body data-station="chNN">`。**新增/改章节名只需改 app.js 一处。**
 - **已挂载**（2026-09-17 23:10，commit a8ce2ee 已 push）：静态站副本在 `public/financing-legal/`（iframe `/financing-legal/`，组件 `src/components/FinancingLegalTab.tsx`）；`types.ts` 加 `'financing'`、`navConfig.ts` 的 `legal.subTabs` 末尾加 `'financing'` + `SUB_TAB_META.financing = {融资法务 / Financing}`、`App.tsx` 加渲染分支 + `isFullBleed` + 滚动置顶。子导航第 9 个按钮。线上 `https://linqiongni.top/financing-legal/`。
+- **全屏按钮（2026-09-19 加）**：做在**静态站自己的顶栏**（`融资法务/assets/app.js` 里注入的 `fsBtn`，`.fs-btn` 样式在 style.css），点击 `document.documentElement.requestFullscreen()`，页内全屏、**不跳新页面**；按钮文案随 `fullscreenchange` 切「全屏 / 退出全屏」，Esc 可退出。父级 `ThemeIframe` 只负责给 iframe 加 `allow="fullscreen"`（没有它 iframe 内调 Fullscreen API 会被拒）。**别再把全屏做成父级浮层按钮**——它会压住站内顶栏的深浅色 ☾ 与「目录」按钮，且直接访问 `/financing-legal/` 时就没有了。
+- **iframe 版本号取到小时**：`src/components/FinancingLegalTab.tsx` 的 `IFRAME_V` 用 `new Date().toISOString().slice(0,13).replace(/[-T]/g,'')`。原来按天（`slice(0,10)`）会导致同一天改完静态站后 src 不变 → 浏览器命中旧正文 HTML → 引用旧 `assets/app.js` → 新功能看不到。其他 iframe tab 若同天多次改动，照此处理。
 - **改内容流程**：改根目录 `融资法务/` 的源文件 → `npm run sync:financing`（`rsync -a 融资法务/ public/financing-legal/ --exclude README.md`）→ `npx tsc --noEmit` → commit/push。**不要只改 public 副本，会被覆盖。**
 - 第 10 站的港股主板三项财务测试数值已对照 hkex 规则原文核校；其余数值标注「通行实务表述，请核原文」。
 
@@ -108,6 +110,8 @@
   `python3 -c "import os;[os.remove(os.path.join(r,f)) for r,_,fs in os.walk('.git') for f in fs if f.endswith('.lock')]"`，
   且 add / commit / push 之间各清一次；bash 的 `rm -f` 同样会被拒。需免沙箱执行。
 - `vite build` 清空 dist 时也会 EPERM，用 `npm run build -- --emptyOutDir=false` 绕过。
+- **push 报 `Failed to connect to github.com port 443` / `Empty reply from server`：本机 HTTP_PROXY 会抽风，重试就行**（2026-09-19 连试 2 次失败、第 3 次成功）。写个 `for` 循环重试 + `git ls-remote` 校验，别去改 git 配置。
+- **别把 `.workbuddy/` 提交进去**：`git add "中文源目录"` 会把目录下的 `.workbuddy/memory/*.md` 工作日志一起带上（2026-09-19 踩到）。根 `.gitignore` 已加 `.workbuddy/`，并把历史上被跟踪的 9 个 `2026-09-*.md` 用 `git rm -r --cached` 移出（本地文件保留）。
 - **改完线上看不到 = 缓存，不是没部署**。GH Pages 响应头 `cache-control: max-age=600` + `x-cache: HIT`，浏览器会缓存旧 `index.html`（引用旧 bundle hash）。
   排查顺序：① `curl -s https://linqiongni.top/ | grep -o '/assets/[^"]*\.js'` 拿当前 bundle 名；② `curl -s https://linqiongni.top/assets/<bundle>.js | grep '新tab名'` 判断是否已上线；
   ③ 已上线却看不到 → 用户侧硬刷（Mac Cmd+Shift+R / Win Ctrl+F5），或访问 `https://linqiongni.top/?v=<时间戳>` 绕开缓存。站内无 service worker，不必查 SW。
@@ -143,8 +147,11 @@
 - **源站**：仓库根 `身边的英语/` = `index.html`（布局 + 播放引擎）+ `scenes.js`（内容数据，本次拆出）；部署副本 `public/english/`（`npm run sync:english`，整目录 rsync）。组件 `src/components/EnglishTab.tsx`。
 - **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time`（纯时间，**别再带「周六」前缀**，否则面包屑重复）/ `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`）。**目录是双视角**：`VIEWS` = 按类型分类(When) / 按场景分类(Where)；`GROUPS` 每组带 `by: "part"|"place"`。一篇同时挂两个维度：`scene.part`（周几·假期二级 id，如 `mon`/`sat`/`midautumn`/`chongyang`）+ `scene.place`（地点组 id，可缺省）。归属查询用 `pathOf(pid)`（类型）/ `placeOf(pid)`（场景）。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 27 篇。
 - **加地点必做**：新 `place` 值要同时在 `GROUPS` 里加一个 `by: "place"` 的组，否则该地点整组不显示；反之新增类型分组（如「重阳」）要加到对应 `kids`。
-- **折叠**：`v:` 视角 → `g:` 组 → `d:` 日/假期；默认只展开「当前篇目所在」的视角与组，二级默认展开。搜索先全展开、再隐藏未命中项与空 day/grp/view。正文头部的地点小标（`data-place`）点击后 `focusPlace()` 会把侧栏切到该地点。
-- **目录折叠**：一级 `.dir-group`（金色胶囊）/ 二级 `.dir-day` / 三级 `.item`。折叠态存 `en-fold:g:<id>`、`en-fold:d:<id>`；默认只展开「当前篇目所在的组」，二级默认展开。搜索时先全展开再隐藏未命中的项与空组。`keepCurrentVisible()` 让当前项始终在视野内。
+- **左侧目录栏 = 分段双视角（2026-09-19 重做，用户嫌旧版难看）**：顶部 `.view-switch`（按类型 When / 按场景 Where）**一次只渲染一个视角**的树（旧版两个视角同时铺开 + 四种背景处理打架，是「不好看」的真因）。树两层：`.grp`→`.ghead`（金色大写小标 + `.cnt` 计数）→ 可选 `.day`→`.dhead` → `.item`；地点视角的组无 kids，篇目直接挂组下（跳过 `.day` 层）。`state.view` 存 `en-view`。
+- **视觉规则**：层级靠 `.grp-b`/`.day-b` 的 **1px `border-left` 细导轨 + 缩进**区分，不用背景块；条目 hover = `--gold-soft` 极淡金，当前 `.item.on` = 纸底 + 细边框 + **左侧 2px 金色细标**。**深色下 `.view-switch button.on` 要用 `var(--hl)`**（用 `--paper` 会比轨道还暗，选中看着像凹陷）。
+- **折叠键只有 `g:` / `d:`**（`v:` 已废弃）：默认只展开「当前篇目所在」的组与日；`keepCurrentVisible()`（`.item.on` scrollIntoView）保留。
+- **搜索 `renderDir(q)`**：有 query 时**同时渲染两个视角**（强制展开）再 `filterHide(q)` 隐藏未命中项与空组/空日 —— 否则在「按场景」里搜不到只属于「按类型」的篇目；清空回到 `state.view`。
+- **切视角**：`#viewSwitch button[data-view]` → 写 `state.view`+`en-view`+`renderDir()`。正文地点小标 `[data-place]` → `focusPlace()` 切到 `place` 并展开/滚到该组。**无 `place` 的篇目（s10）只在按类型**，故 `renderDir()` 里 `state.view==="place"` 且当前篇目无 place 时回落 `type`。
 - **播放**：整段连读（句子队列，逐句 speak + onend 续读），当前句高亮 + 自动滚动；底栏 上一句/播放/下一句/进度跳句/循环/语速 0.75–1.15/美音英音。暂停＝记录 idx 后 cancel，继续＝从 idx 重播（Safari 无 pause 也适用）。
 - **布局**：左栏时间线目录（搜索 + 已听标记）+ 居中阅读器（英文 serif 19px）+ 底部常驻播放条；≤900px 侧栏转抽屉 + 遮罩 + 默认收起。双语三档由 `body[data-mode]` 驱动（both/en/zh）。
 - **深色**：自己监听主站 `postMessage({type:'theme'})`；**不要引 `/theme-toggle.js`**（浮动按钮 top:56px 会压住阅读器顶栏）。
