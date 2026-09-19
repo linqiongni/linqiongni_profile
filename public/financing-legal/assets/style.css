@@ -654,6 +654,17 @@ body { height: 100%; overflow: hidden; }
   margin-right: 6px; letter-spacing: .06em;
 }
 
+/* 生活比方（.sim）：紧跟在法律句子后面，用日常场景翻译一遍 */
+.sim {
+  display: block; margin-top: 8px; padding: 7px 11px;
+  border-left: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  border-radius: 0 8px 8px 0;
+  font-size: 13.1px; line-height: 1.74; color: var(--ink-2);
+}
+.sim b { color: var(--gold-deep); margin-right: 3px; letter-spacing: .04em; }
+.sim em { font-style: normal; color: var(--ink); font-weight: 600; }
+
 /* 行内注释：虚线下划线 + 上标「注」，悬停看 title */
 .anno {
   border-bottom: 1px dashed var(--gold);
