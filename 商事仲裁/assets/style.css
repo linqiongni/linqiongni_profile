@@ -381,3 +381,20 @@ ul.chk li::before {
   h2 { font-size: 19px; }
   .toc ol { columns: 1; }
 }
+
+
+/* ===== 手机端顶栏收纳（2026-09-19 移动适配，对齐融资法务样板；仅窄屏生效，宽屏样式零改动） =====
+   问题：390px 下顶栏 flex 不换行，cur-chip / 目录按钮被推出屏幕，整页横向溢出。
+   方案：允许换行；搜索框独占第二行；章节章收缩省略；不删除任何按钮。 */
+@media (max-width: 640px) {
+  .topbar { flex-wrap: wrap; row-gap: 8px; padding: 8px 12px; gap: 8px; }
+  .topbar .searchwrap { order: 10; flex: 1 1 100%; max-width: none; }
+  .topbar .searchwrap .scount { display: none; }
+  .topbar .brand { font-size: 12.5px; }
+  .cur-chip { flex: 1 1 auto; min-width: 0; max-width: none; font-size: 11.5px; padding: 3px 9px; }
+  .menu-btn { padding: 6px 10px; }
+  /* 正文宽表格窄屏改横向滚动，消除整页横向溢出 */
+  .main table { display: block; max-width: 100%; overflow-x: auto; }
+  /* 超长不可断串（URL/编号/模板占位）允许任意断行，消除残留横向溢出 */
+  .main { overflow-wrap: anywhere; }
+}

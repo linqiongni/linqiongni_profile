@@ -105,6 +105,15 @@
       'transition:border-color .15s, color .15s, background-color .15s'
     ].join(';');
 
+    // 手机端（≤640px）：顶栏会换成两行，右上角 56px 会盖住搜索框，改挂右下角（2026-09-19 移动适配样板）
+    if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
+      btn.style.top = 'auto';
+      btn.style.bottom = '16px';
+      btn.style.right = '12px';
+      btn.style.padding = '5px 10px';
+      btn.style.fontSize = '12px';
+    }
+
     btn.addEventListener('mouseenter', function () {
       btn.style.borderColor = 'var(--gold, var(--accent, #B89F6B))';
       btn.style.color = 'var(--gold, var(--accent, #B89F6B))';

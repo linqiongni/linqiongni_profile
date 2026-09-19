@@ -182,3 +182,20 @@ html[data-theme="dark"] .dlink:hover{background:#22302F;}
 html[data-theme="dark"] .content .warn{background:#3A3320;color:#F5E6A3;}
 html[data-theme="dark"] .content strong{color:#E6E6EA;}
 html[data-theme="dark"] tbody tr:hover{background:#2A2A2C;}
+
+
+/* ===== 手机端顶栏收纳（2026-09-19 移动适配，对齐融资法务样板；仅窄屏生效，宽屏样式零改动） =====
+   问题：390px 下顶栏 flex 不换行，搜索框 / 目录按钮被推出屏幕，整页横向溢出约 150px。
+   方案：允许换行；搜索框独占第二行；不删除任何按钮；左侧抽屉顶随两行顶栏下移。 */
+@media (max-width: 640px) {
+  .topbar { flex-wrap: wrap; row-gap: 8px; padding: 8px 14px; gap: 8px; }
+  .topbar .searchwrap { order: 10; flex: 1 1 100%; max-width: none; }
+  .topbar .searchwrap .scount { display: none; }
+  .brand { flex: 1 1 auto; min-width: 0; }
+  .brand .t1 { font-size: 13.5px; }
+  .toc-btn, .menu-btn { padding: 6px 10px; }
+  .sidebar { top: 96px; height: calc(100vh - 96px); }
+  /* 长代码串 / 判决书链接（white-space:nowrap）导致的正文残留溢出 */
+  .main code, .main a.dlink { overflow-wrap: anywhere; word-break: break-all; white-space: normal; }
+  .main { overflow-wrap: anywhere; }
+}
