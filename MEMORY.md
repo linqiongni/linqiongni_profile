@@ -10,13 +10,15 @@
 - 数据条数字依据 `public/` 实际页数（ip 257 + lessons 92 + logistics 43 + financing 14 + criminal 13 + labor 9 ≈ 430），站点内容量变化大时记得同步。
 - **iframe 地址一律写显式 `index.html`**（如 `/ip/index.html`、`/financing-legal/index.html`）。写目录 URL（`/ip/`）在 `vite dev` 下会被 SPA 兜底成首页，本地看起来「iframe 里是主页」，线上 GH Pages 才正常 —— 本地验证会失真（2026-09-18 踩过）。
 - iframe 高度统一为 `h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]`（类名，不用 inline style，避免与既有 className 冲突）。
-- 「新窗口打开」金色浮标固定在**右下角**（`fixed bottom-6 right-6`）；原来在 `top-24 right-5`，会被 128px 头部压住。
+- 「新窗口打开」金色浮标固定在**右下角**（`fixed bottom-6 right-6`）；原来在 `top-24 right-5`，会被 128px 头部压住。**2026-09-19 起融资法务 tab 传 `openUrl={null}` 关掉了该浮标**（Andy 要求正文区干净）；其他 tab 是否保留按各自意愿（FilmLaw 系列/Insurance/Startup 早已传 `null`）。
+- **查浮层按钮归属**：右下角金色胶囊 = `ThemeIframe` 的「新窗口打开」；**正文右上角**（`top:56px right:16px`）的深浅色浮标 = iframe 页引了 `/theme-toggle.js`。想去掉前者改组件 `openUrl`，想去掉后者去掉该页对 theme-toggle.js 的引用（但要保留 `postMessage` 监听，否则主站主题同步失效）。
 - 深色模式默认跟随系统 `prefers-color-scheme`（`App.tsx` 的 darkMode 初值）。
 - 首页进一步可做（未做）：背景加印章/诗句等国风水印、数据条下方加「最近上新」位、About 页放真人照片。
 
 ## 本项目工具环境坑（2026-09-18）
 - 本机 shell 有 `HTTP_PROXY/HTTPS_PROXY=127.0.0.1:<port>`，`curl`/Chromium 访问 localhost 会被劫持成 502 或连接被拒。用浏览器本地验证前先 `export NO_PROXY="127.0.0.1,localhost" no_proxy=...`。
 - `agent-browser` 已全局安装（Chromium 已下载）。截图用位置参数：`agent-browser screenshot /tmp/x.png`（`--path` 无效会被当成 selector）。
+- **Edit 工具在本仓库偶发「报 success 但未落盘」**（2026-09-19 英语站 CSS 批量替换：7 处只落 3 处；2026-09-19 家事 tab 的 App.tsx 也中过 2 次）。批量改 CSS/TSX 一律用 `python3` 的 `io.open(p,encoding='utf-8').read() → 断言 a in s → replace → write` 写盘，写完立刻 `grep -c`/`grep -n` 逐条核对，不信工具回执。
 - `agent-browser eval` 的 JS 上下文会**保留上一次的顶层变量**，重复 `var r=...` 会报 "Identifier already declared"。务必用 IIFE 包裹。
 - 后台跑 `npx vite` 必须用工具的 run_in_background（普通 `&` 起的进程会在命令结束时被回收，导致后续连接被拒）。
 
@@ -139,11 +141,16 @@
 
 ## 身边的英语 tab（2026-09-19 重做，场景化短文阅读器）
 - **源站**：仓库根 `身边的英语/` = `index.html`（布局 + 播放引擎）+ `scenes.js`（内容数据，本次拆出）；部署副本 `public/english/`（`npm run sync:english`，整目录 rsync）。组件 `src/components/EnglishTab.tsx`。
-- **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time` / `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`）。**`PARTS` 是两级**（`kids`）：工作日(周一~周五) / 周末(周六周日) / 节假日(中秋·国庆·春节·五一·端午)，**`scene.part` 填的是二级 id**（`mon`/`sat`/`midautumn`…）。找所属分组用 `pathOf(pid)`。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 13 篇。
+- **内容模型**：`SCENES` 数组，一篇 = 一个场景（`t` 英文标题 / `z` 中文 / `time`（纯时间，**别再带「周六」前缀**，否则面包屑重复）/ `lead` / `paras[{p,z,w}]` / `notes[{e,c,x}]`）。**目录是双视角**：`VIEWS` = 按类型分类(When) / 按场景分类(Where)；`GROUPS` 每组带 `by: "part"|"place"`。一篇同时挂两个维度：`scene.part`（周几·假期二级 id，如 `mon`/`sat`/`midautumn`/`chongyang`）+ `scene.place`（地点组 id，可缺省）。归属查询用 `pathOf(pid)`（类型）/ `placeOf(pid)`（场景）。**加场景只追加一条**，目录、篇数副标题、播放全自动带上。当前 27 篇。
+- **加地点必做**：新 `place` 值要同时在 `GROUPS` 里加一个 `by: "place"` 的组，否则该地点整组不显示；反之新增类型分组（如「重阳」）要加到对应 `kids`。
+- **折叠**：`v:` 视角 → `g:` 组 → `d:` 日/假期；默认只展开「当前篇目所在」的视角与组，二级默认展开。搜索先全展开、再隐藏未命中项与空 day/grp/view。正文头部的地点小标（`data-place`）点击后 `focusPlace()` 会把侧栏切到该地点。
 - **目录折叠**：一级 `.dir-group`（金色胶囊）/ 二级 `.dir-day` / 三级 `.item`。折叠态存 `en-fold:g:<id>`、`en-fold:d:<id>`；默认只展开「当前篇目所在的组」，二级默认展开。搜索时先全展开再隐藏未命中的项与空组。`keepCurrentVisible()` 让当前项始终在视野内。
 - **播放**：整段连读（句子队列，逐句 speak + onend 续读），当前句高亮 + 自动滚动；底栏 上一句/播放/下一句/进度跳句/循环/语速 0.75–1.15/美音英音。暂停＝记录 idx 后 cancel，继续＝从 idx 重播（Safari 无 pause 也适用）。
 - **布局**：左栏时间线目录（搜索 + 已听标记）+ 居中阅读器（英文 serif 19px）+ 底部常驻播放条；≤900px 侧栏转抽屉 + 遮罩 + 默认收起。双语三档由 `body[data-mode]` 驱动（both/en/zh）。
 - **深色**：自己监听主站 `postMessage({type:'theme'})`；**不要引 `/theme-toggle.js`**（浮动按钮 top:56px 会压住阅读器顶栏）。
+- **字体（2026-09-19 改定，用户要「典雅高级低调奢华、别浮夸」）**：英文分三层变量，都在 `:root` —— `--en-serif` 正文（Iowan Old Style → Charter → Baskerville → Palatino Linotype → Palatino → Book Antiqua → Constantia → Georgia）/ `--en-display` 标题（Baskerville → Hoefler Text → Iowan → Palatino → Georgia）/ `--en-ital` 斜体（Baskerville → Iowan → Palatino → Georgia，**Georgia 斜体是花体，永远别放前面**）；中文衬线单独 `--cjk-serif`，`--serif`/`--display`/`--ital` = 英文栈 + 中文栈。正文 `.p-en` 18.5px/1.95、标题 `.h-en` 28px/weight 500 正字距。**不引 Google Fonts**（国内不稳 + iframe 阻塞资源）。改字体只动 `:root` 变量 + `.brand/.h-en/.p-en/.kicker/.who/.dir-*.en/.item .t2/.note .*` 这几处。
+- **`IFRAME_V` 是「日期+小时」粒度**（2026-09-19 由日期粒度改）：同日多次改样式/内容也能穿透缓存，否则用户看不到更新。
 - **必须保留**：iframe src 挂 `IFRAME_V` 日期版本号 + index.html 把 `?v=` 透传给 scenes.js（防「旧 HTML + 新数据」白屏）；localStorage 一律走 `store.get/set` 的 try/catch（受限环境抛错会整站白屏）。
+- **内容校验**：`npm run check:english`（= `scripts/check-english-scenes.cjs`）。手写批次追加后必跑：抓语法错（漏/多逗号）、缺字段、id 重复、`part`/`place` 未在 `GROUPS` 登记（这类错页面不报错、只是少一个分组），并打印两个视角的分组计数。
 - 线上：`https://linqiongni.top/english/index.html`。
 - **别把 `.workbuddy/`、`AGENTS.md`、`MEMORY.md` 放进 `身边的英语/`** —— rsync 整目录同步会把它们发布到线上。
