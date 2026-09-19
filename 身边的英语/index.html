@@ -120,17 +120,6 @@
   }
   .top-title{font-size:17px;font-weight:700;}
 
-  /* Floating reopen button (desktop collapsed only) */
-  .open-btn{
-    position:fixed;top:12px;left:12px;z-index:35;
-    display:none;align-items:center;gap:6px;
-    background:var(--accent);color:#fff;border:none;border-radius:999px;
-    padding:9px 16px;font-size:14px;font-weight:700;cursor:pointer;
-    box-shadow:0 4px 14px rgba(0,0,0,.18);
-  }
-  .app.sidebar-closed .open-btn{display:flex;}
-  @media (max-width:1023px){ .open-btn{display:none !important;} }
-
   /* Main content */
   .wrap{max-width:760px;margin:0 auto;padding:16px 14px 30px;}
   .progress-bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:4px 0 2px;}
@@ -205,7 +194,6 @@
     body.sidebar-open{overflow:hidden;} /* prevent body scroll when drawer open */
   }
   @media (min-width:1024px){
-    .topbar{display:none;}
     .backdrop{display:none;}
   }
 </style>
@@ -244,8 +232,6 @@
 </aside>
 
 <div class="backdrop" id="backdrop"></div>
-
-<button class="open-btn" id="openBtn" aria-label="打开目录">☰ 目录</button>
 
 <div class="main">
   <header class="topbar">
@@ -792,9 +778,8 @@ function toggleSidebar(){ if(body.classList.contains('sidebar-closed')) openSide
 /* 默认：桌面展开，移动端收起 */
 if(isNarrow()) closeSidebar(); else openSidebar();
 
-document.getElementById('menuBtn').addEventListener('click', openSidebar);
-document.getElementById('collapseBtn').addEventListener('click', closeSidebar);
-document.getElementById('openBtn').addEventListener('click', openSidebar);
+document.getElementById('menuBtn').addEventListener('click', toggleSidebar);
+document.getElementById('collapseBtn').addEventListener('click', toggleSidebar);
 document.getElementById('backdrop').addEventListener('click', closeSidebar);
 
 /* ============== 事件 ============== */
