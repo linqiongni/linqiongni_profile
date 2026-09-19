@@ -1,369 +1,398 @@
 /* 身边的英语 · 内容数据
+   主人公：广州租房上班族，外企法务（in-house legal counsel），已婚未育。
+   住 1 号线沿线，坐 1 号线到体育西路，出站扫码共享单车去写字楼；9 点上班 6 点下班。
+   中午在楼下吃，晚上要么顺路买菜做饭、更经常是点外卖。
    一篇 = 一个场景。第一人称短文为主，对话片段嵌在里面。
    字段：t 英文标题 / z 中文标题 / lead 场景说明 / paras 段落（p 英文 z 中文 w 说话人）
         notes 本篇值得带走的说法（e 英文 c 中文 x 例句）
    加新场景：往 SCENES 数组末尾追加一条即可，目录与播放会自动带上。 */
 
 const PARTS = [
-  { id: "morning", label: "早上", en: "Morning" },
-  { id: "commute", label: "通勤", en: "On the way" },
-  { id: "work", label: "上班", en: "At work" },
-  { id: "evening", label: "晚上", en: "Evening" },
-  { id: "weekend", label: "周末", en: "Weekend" }
+  { id: "weekday", label: "工作日", en: "Weekdays", kids: [
+    { id: "mon", label: "周一", en: "Mon" },
+    { id: "tue", label: "周二", en: "Tue" },
+    { id: "wed", label: "周三", en: "Wed" },
+    { id: "thu", label: "周四", en: "Thu" },
+    { id: "fri", label: "周五", en: "Fri" }
+  ]},
+  { id: "weekend", label: "周末", en: "Weekend", kids: [
+    { id: "sat", label: "周六", en: "Sat" },
+    { id: "sun", label: "周日", en: "Sun" }
+  ]},
+  { id: "holiday", label: "节假日", en: "Holidays", kids: [
+    { id: "midautumn", label: "中秋", en: "Mid-Autumn" },
+    { id: "national", label: "国庆", en: "Oct 1st" },
+    { id: "spring", label: "春节", en: "Spring Festival" },
+    { id: "labour", label: "五一", en: "May Day" },
+    { id: "dragon", label: "端午", en: "Dragon Boat" }
+  ]}
 ];
 
 const SCENES = [
   {
-    id: "s01", part: "morning", time: "6:50",
-    t: "The snooze negotiation", z: "闹钟响了，跟自己谈判",
-    lead: "闹钟响第一遍。我跟自己达成协议：再睡五分钟。这份协议从来没有被执行过。",
+    id: "s01", part: "mon", time: "7:10",
+    t: "Line 1 at eight in the morning", z: "早八点的一号线",
+    lead: "从出租屋走到地铁站八分钟。这八分钟决定我今天迟不迟到，也决定我今天是什么心情。",
     paras: [
-      { p: "My alarm goes off at 6:50 and I do the thing I do every morning: I negotiate. Five more minutes, I tell myself, and then I'll be a completely different person — awake, motivated, maybe even someone who makes the bed.", z: "闹钟六点五十响，然后我开始每天早上都要做的事：跟自己谈判。再五分钟，我告诉自己，五分钟后的我会是另一个人——清醒、有干劲，说不定还会叠被子。" },
-      { p: "It's never true. Five minutes later I'm still me, just later.", z: "从来没实现过。五分钟后我还是我，只是晚了五分钟。" },
-      { p: "You said that twenty minutes ago.", z: "你二十分钟前就这么说了。", w: "Partner" },
-      { p: "I said it with feeling this time.", z: "这次我说得很有诚意。", w: "Me" },
-      { p: "My partner doesn't even open her eyes when she says these things. She's had the same conversation with me about four hundred times, and she can run it on autopilot now. I respect that.", z: "她说这些的时候眼睛都没睁。这段对话她跟我演过大概四百遍，现在可以自动驾驶了。我respect。" },
-      { p: "Outside it's still that flat grey that means either early morning or rain. I can't tell which, and honestly I don't have time to care. Feet on the floor. That's the whole trick — don't think, just stand up.", z: "外面还是那种一片灰，分不清是清晨还是要下雨。没空管了。脚落地，这是唯一的诀窍：别想，先站起来。" },
-      { p: "By the time I'm in the kitchen I've mostly forgiven myself for waking up late, which is the real reason I set the alarm early in the first place.", z: "等我走到厨房，我已经基本原谅自己起晚了——而这恰恰是我把闹钟定早的真正原因。" }
+      { p: "I leave the flat at seven ten. The walk to the station takes eight minutes if I don't stop for anything, nine if the lift is slow, and twelve if I remember something I forgot and have to turn back — which, on a Monday, is more or less guaranteed.", z: "七点十分出门。走到地铁站八分钟，前提是中途不停；电梯慢一点是九分钟；如果想起忘了东西折回去拿就是十二分钟——周一这天，折回去基本是必然的。" },
+      { p: "Did you take the umbrella?", z: "伞带了吗？", w: "Wife" },
+      { p: "It's not going to rain.", z: "不会下雨的。", w: "Me" },
+      { p: "This is the third time this week I've said it's not going to rain, and it has rained twice. In Guangzhou that sentence is not a weather forecast. It's a challenge.", z: "这已经是我这周第三次说不会下雨了，而前两次都下了。在广州，这句话不是天气预报，是 flag。" },
+      { p: "At the station I do the same three moves I do every morning: phone to the gate, bag on the belt, shoulder check for the security guy who is already waving me through, because he's seen me five hundred times and has decided I'm not worth stopping.", z: "进站后是每天早上固定的三件事：手机贴闸机、包放安检机、回头看一眼安检员——他已经懒得看我了，见过我五百次，判定我不值得拦。" },
+      { p: "The platform is already two deep. Everyone is standing in the exact spots where the doors will be, while pretending they're not doing that. Nobody makes eye contact. We have all silently agreed that we are not the kind of people who push.", z: "站台已经站了两层人。每个人都精准地站在车门将要停的位置，同时假装自己没在干这件事。没人跟人对视。大家默认达成一条默契：我们不是会挤人的那种人。" },
+      { p: "Stand clear of the doors, please. Let the passengers off first.", z: "请勿靠近车门，请先下后上。", w: "Announcement" },
+      { p: "The announcement says it in three languages and about forty percent of us listen. The train arrives, the doors open, and for four seconds there's a genuine standoff between the people getting off and the people getting on — a small, polite war that the people getting off always win, because they're already moving.", z: "广播用三种语言说这段话，大概四成的人听。车来了，门开了，下车的和上车的对峙了四秒——一场小型的、讲礼貌的战争，永远是下车的人赢，因为他们已经在动了。" },
+      { p: "I get a seat by the third stop. Ten minutes later we cross into the part of the line where the carriage fills up for real — shoulders touching, everybody holding their bag on their chest like a shield, everyone watching a phone screen nobody is really reading.", z: "到第三站我有了座位。十分钟后车开进真正拥挤的那一段——肩膀贴肩膀，所有人都把包抱在胸前当盾牌，都在看手机，但没人真的在看什么。" },
+      { p: "Next stop, Tiyu Xilu. Passengers for Line 3, please transfer here.", z: "下一站，体育西路。换乘三号线的乘客请在此站下车。", w: "Announcement" },
+      { p: "Tiyu Xilu is where the line breaks open. Half the carriage stands up at once and moves towards the doors in that particular way a crowd moves when it has done this exact thing every morning for years — fast, wordless, and somehow never actually colliding.", z: "体育西路是一号线爆开的那一站。半个车厢的人同时站起来涌向车门，那种「已经这么干了几年」的走法——快、不出声、而且神奇地从不真的撞上。" },
+      { p: "Up the escalator, out of the gate, and then the second half of the commute: four shared bikes, three of which have something wrong with them. One has a saddle you can't sit on, one has a chain that sounds like it's filing a complaint, one is somebody's private bike with the QR code scratched off. I take the fourth.", z: "上电梯、出闸，然后通勤的下半场：四辆共享单车，其中三辆有问题。一辆车座没法坐，一辆链条响得像在投诉，一辆是私人车、二维码被刮掉了。我选第四辆。" },
+      { p: "The ride is seven minutes. Down the bike lane, past the banyan trees that make this street feel ten degrees cooler than the next one, past a delivery guy going the wrong way at the speed of a small motorcycle, past the same auntie doing the same slow stretching routine on the same patch of pavement every single morning.", z: "骑七分钟。沿自行车道走，路过那些让这条街比隔壁凉快十度的榕树，路过一个逆行、速度快得像小摩托的外卖小哥，路过那位每天早上在同一块地砖上做同一套拉伸的阿姨。" },
+      { p: "I lock the bike in the rack at eight fifty-two, and I check the app out of habit — last month I forgot to end a ride once and paid for forty-one minutes of a bike I wasn't on.", z: "八点五十二把车锁进车架，然后习惯性地打开 App 确认——上个月有一次我忘了结束行程，为四十一个不在车上的分钟付了钱。" },
+      { p: "Eight minutes to nine. Enough time to get upstairs, sit down, and become the other version of me — the one who reviews contracts, instead of the one who negotiates with an alarm clock.", z: "还有八分钟到九点。够我上楼、坐下、切换成另一个版本的自己——那个审合同的我，而不是跟闹钟谈判的我。" }
     ],
     notes: [
-      { e: "go off", c: "（闹钟）响", x: "My alarm goes off at six and I ignore it at 6:01." },
-      { e: "five more minutes", c: "再五分钟（赖床专用）", x: "Just five more minutes, I promise." },
-      { e: "on autopilot", c: "自动驾驶模式，不用过脑子", x: "I brush my teeth on autopilot every morning." },
-      { e: "feet on the floor", c: "起床的第一步：脚落地", x: "No thinking. Feet on the floor." }
+      { e: "it's not going to rain", c: "不会下雨的（经典 flag）", x: "It's not going to rain — I've said that twice this week already." },
+      { e: "let the passengers off first", c: "先下后上", x: "The announcement always says let the passengers off first." },
+      { e: "shoulder to shoulder", c: "肩并肩，挤到贴着", x: "By the fourth stop we're shoulder to shoulder." },
+      { e: "wordless", c: "一言不发的", x: "The whole carriage moves wordless and fast." },
+      { e: "out of habit", c: "出于习惯", x: "I check the app now out of habit." }
     ]
   },
 
   {
-    id: "s02", part: "morning", time: "7:20",
-    t: "Where the other sock went", z: "找袜子大作战",
-    lead: "衣柜里大概有三十双袜子，但每天早上我只能找到二十九只。",
+    id: "s02", part: "tue", time: "12:15",
+    t: "The lunch question", z: "中午吃什么",
+    lead: "每天十二点一刻，办公室里会准时出现一个难题：吃什么。它不难在没得选，难在所有人都不肯先说。",
     paras: [
-      { p: "There is a law in this apartment: the sock you are looking for is never in the drawer with all the other socks. It's under the bed, or inside a sweater, or in the laundry basket pretending to be clean.", z: "这个公寓有条定律：你要找的那只袜子，从来不跟其他袜子待在同一个抽屉里。它在床底下，或者卷在某件毛衣里，或者在脏衣篓里假装自己是干净的。" },
-      { p: "I do the maths every morning. Thirty pairs should mean sixty socks. In practice it means about forty-one, eleven of which have holes I keep meaning to deal with.", z: "我每天早上都要算一遍。三十双应该是六十只。实际上大概四十一只，其中十一只有洞，我一直说要处理，一直没处理。" },
-      { p: "Have you seen a grey one?", z: "看到一只灰色的没？", w: "Me" },
-      { p: "They're all grey.", z: "全是灰的啊。", w: "Partner" },
-      { p: "She's right, of course. I bought one colour specifically so this wouldn't happen, and then it happened anyway, because that's what buying one colour does — it doesn't prevent the problem, it just makes it boring.", z: "她当然是对的。我特意只买一个颜色就是为了避免这件事，然后它还是发生了——这就是只买一个颜色的后果：它不解决问题，它只是让问题变得无聊。" },
-      { p: "I find it behind the radiator. Warm. I put it on and leave the bedroom looking like a small argument happened in it.", z: "我在暖气片后面找到了它，还是热的。穿上，然后把卧室留在身后——看起来像里面刚发生过一场小型争执。" }
+      { p: "At twelve fifteen somebody says the words that start the hardest negotiation of the day: what's for lunch?", z: "十二点一刻，有人说出开启一天中最难谈判的那句话：吃什么？" },
+      { p: "I'm easy. Anything.", z: "我随便，都行。", w: "Me" },
+      { p: "No, you're not. You said no noodles yesterday and no rice bowls the day before.", z: "你不随便。你昨天说不吃面，前天说不吃盖饭。", w: "Nina" },
+      { p: "She's right, and it's annoying. Nobody in this office is actually easy. We've all just agreed to pretend we are, because saying what you really want out loud makes you the person who has to decide — and nobody wants to be that person before the coffee has fully worked.", z: "她是对的，而且很烦。这间办公室里没有一个人真的「随便」。大家只是约定好假装随便——因为说出真实想法的人就成了拍板的那个，而咖啡还没完全起效之前，没人想当那个人。" },
+      { p: "There's a food street underneath the building, which sounds better than it is. The pig's trotter rice place that everybody goes to twice a week; the malaxiangguo place where you pay by weight and somehow always overshoot; the Lanzhou noodle shop where the guy pulls the noodles in the window; a salad place that costs sixty yuan and leaves me hungry at three; and a Shaxian that has been there longer than any of us.", z: "楼下有条美食街，听起来比实际好。有那家大家一周去两次的猪脚饭；有按重量称、永远会称多的麻辣香锅；有师傅在橱窗里拉面的兰州拉面；有一份六十块、下午三点就饿了的沙拉店；还有一家比我们所有人都更早在这里的沙县。" },
+      { p: "We end up at the trotter place. You scan the code at the door, order on your phone, and wait for your number to be shouted. Mine is 47 and they're on 39, which in this shop means either four minutes or eleven, depending on how many delivery orders just came in.", z: "最后去了猪脚饭。门口扫码、手机点单、等号被喊。我是 47 号，现在叫到 39 号——在这家店里这意味着四分钟或十一分钟，取决于刚进来多少外卖单。" },
+      { p: "Do you want the corner table?", z: "坐角落那桌？", w: "Nina" },
+      { p: "Yes. It's the only table in the room where you can't see your own screen reflection and pretend you're still working.", z: "坐。那是全店唯一一张看不见自己屏幕反光、不用假装还在工作的桌子。" },
+      { p: "Halfway through, Nina asks the question I get at least once a week, usually with food in her mouth.", z: "吃到一半，Nina 问了我那个每周至少被问一次的问题，通常是嘴里塞着东西问的。" },
+      { p: "Quick one — is it legal if a company makes you sign something saying you won't sue them?", z: "问个快的——公司让你签一个承诺不起诉的东西，合法吗？", w: "Nina" },
+      { p: "It depends what it says and who's asking you to sign it. Which is my professional answer, and also my way of not answering this before I've finished eating.", z: "要看它具体怎么写、谁让你签。这是我的职业回答，也是我在吃完之前不想回答这个问题的方式。", w: "Me" },
+      { p: "Every in-house lawyer I know has a version of this: the it depends answer, the let me look at the actual wording answer, and the real answer — which is usually no, but I'd need to see it. People hear the first one and think you're being careful. They're right. That's the job.", z: "我认识的每个法务都有这套回答的变体：「要看情况」、「我得看具体措辞」，和真正的答案——通常是「不行，但我得先看看原文」。大家听到第一句，觉得你谨慎。他们没错，这就是这份工作。" },
+      { p: "She laughs. We pay separately, even though we've eaten together twice a week for a year. Back at my desk at one, and the afternoon arrives like a wet blanket. I have a redline to finish on a vendor contract, and the words limitation of liability are about to become the most interesting thing in my day.", z: "她笑了。我们各付各的，尽管一周一起吃两次、吃了一年。一点回到工位，下午像一条湿毯子盖下来。我手上还有一份供应商合同的修订要完成，「责任限额」这几个字即将成为我今天最有趣的东西。" }
     ],
     notes: [
-      { e: "the sock you are looking for", c: "你正在找的那只", x: "The sock you are looking for is always under the bed." },
-      { e: "keep meaning to deal with", c: "一直想着要处理（但没处理）", x: "I keep meaning to fix that door." },
-      { e: "it happened anyway", c: "它还是发生了", x: "I locked the door twice and it happened anyway." }
+      { e: "I'm easy", c: "我随便 / 我好说话", x: "I'm easy — anything is fine with me." },
+      { e: "what's for lunch", c: "中午吃什么", x: "Every day at twelve: what's for lunch?" },
+      { e: "it depends", c: "要看情况（法务口头禅）", x: "It depends what the clause actually says." },
+      { e: "pay separately", c: "各付各的", x: "We always pay separately, even after a year." },
+      { e: "halfway through", c: "进行到一半时", x: "Halfway through lunch she asked me a legal question." }
     ]
   },
 
   {
-    id: "s03", part: "morning", time: "7:40",
-    t: "Breakfast in nine minutes", z: "九分钟的早餐",
-    lead: "冰箱门开三次，每次都希望里面出现了新东西。它没有。",
+    id: "s03", part: "wed", time: "18:40",
+    t: "Cook or order in", z: "做饭还是点外卖",
+    lead: "出门前我说好今晚自己做饭。出了地铁我就开始跟这句话谈判。",
     paras: [
-      { p: "I open the fridge three times in four minutes. This is not because I forget what's in there. It's because I'm hoping something new has appeared since the last time I looked, which is a feeling I have about the fridge maybe forty times a week.", z: "四分钟里我开了三次冰箱。不是因为我忘了里面有什么。是因为我希望上次看完之后，里面冒出了新东西——这种感觉我一周大概有四十次。" },
-      { p: "Eggs. There are always eggs. Eggs are the backup plan of every working adult I know, and the reason is simple: they cook fast and they're hard to ruin badly enough to matter.", z: "鸡蛋。永远有鸡蛋。鸡蛋是我认识的每个上班族的B计划，原因很简单：熟得快，而且很难难吃到影响心情的程度。" },
-      { p: "What do you want, toast or congee?", z: "你想吃啥，吐司还是粥？", w: "Me" },
-      { p: "Whatever's fastest.", z: "哪个快哪个来。", w: "Partner" },
-      { p: "Whatever's fastest is the answer to most questions in this house before eight a.m.", z: "早上八点前，这个家里大多数问题的答案都是「哪个快哪个来」。" },
-      { p: "I get the pan going, put bread in the toaster, and stand there for a second doing nothing — the only ten seconds of the morning that belong entirely to me. Then the toast pops and the day starts properly.", z: "我把锅热上，面包丢进烤面包机，然后站在那儿愣了一秒——这是整个早晨唯一完全属于我的十秒钟。然后吐司「叮」一声弹出来，一天正式开始。" }
+      { p: "I get off at six twenty with a plan. The plan is: stop at the vegetable shop on the way, cook something, eat at eight, feel like an adult. I make this plan about three nights a week and execute it roughly once.", z: "六点二十出站，带着一个计划。计划是：路上拐进菜店，做点东西，八点吃饭，感觉自己像个成年人。这个计划我一周做三次，执行大概一次。" },
+      { p: "There's a Qian Dama on the corner with the sign I've read a thousand times: we don't sell yesterday's meat. At seven they start discounting, and by a quarter to eight there's a small crowd of people who all had the same idea at the same time.", z: "转角有家钱大妈，招牌我看过一千遍：不卖隔夜肉。晚上七点开始打折，到七点四十五就聚了一小群人——大家都在同一时间想到了同一件事。" },
+      { p: "I go in and look at the greens. I pick up a bag of bean sprouts, put it back, pick it up again, and walk out with two spring onions and no dinner.", z: "我走进去看了看青菜，拿起一袋豆芽，放回去，又拿起来，最后拎着两根葱走出来了——没有晚饭。" },
+      { p: "At home my wife is already on the sofa, shoes off, in the specific posture that means the day is over and nothing else is happening tonight.", z: "到家时我老婆已经瘫在沙发上，鞋脱了，摆着那个特定姿势——意思是今天结束了，今晚不会再有任何事发生。" },
+      { p: "Do you feel like cooking?", z: "你想做饭吗？", w: "Me" },
+      { p: "Do you?", z: "你呢？", w: "Wife" },
+      { p: "I could. If you start the rice.", z: "我可以，如果你先把饭煮上。", w: "Me" },
+      { p: "If I start the rice, I'm cooking.", z: "我要是煮饭，那就是我在做饭。", w: "Wife" },
+      { p: "That's the whole negotiation, and it takes eleven seconds. We both know where it ends. We've had this exact conversation so many times that neither of us is even pretending any more — it's a ritual we perform before ordering food, like saying grace.", z: "这就是整场谈判，耗时十一秒。我们都知道结局。这段对话演过太多遍，双方连装都不装了——它基本是点外卖前的仪式，像饭前祷告。" },
+      { p: "So we order in. The app part takes twenty minutes, which is longer than cooking would have taken, and I want to be clear about that: we are not saving time. We are saving the part where somebody has to stand up.", z: "于是点外卖。在 App 里挑了二十分钟——比做饭还久，这点我要说清楚：我们不是在省时间，我们是在省「有人要站起来」这件事。" },
+      { p: "There's a thirty-yuan minimum, a five-yuan delivery fee, a two-yuan packaging fee, and a discount that only applies if we spend fifteen more — which of course we do, because everyone does, because that's the trick and it works on us every single time.", z: "有三十块起送、五块配送费、两块包装费，还有一个满减——当然我们会凑单，因为所有人都凑，因为这就是套路，而且每次都对我们奏效。" },
+      { p: "It arrives at seven forty. We eat at the coffee table with the TV on, which the internet says is bad for you and which is nonetheless the best part of a Wednesday. Rice, two dishes, one of them too salty, both of them somebody else's washing-up.", z: "七点四十到了。我们开着电视在茶几上吃，网上说这习惯不好，但这仍然是周三最好的一段。米饭、两个菜，其中一个偏咸，两个都不用我们自己洗锅。" },
+      { p: "The spring onions go back in the fridge. They'll still be there on Sunday, slightly sadder, and we'll throw them out together without discussing it — some things in a marriage don't need to be said.", z: "两根葱回到冰箱。周日它们还在，只是更蔫了一点，我们会一起扔掉、一句话不说——婚姻里有些事不用讲。" }
     ],
     notes: [
-      { e: "the backup plan", c: "备选方案、兜底的", x: "Eggs are my backup plan for every meal." },
-      { e: "whatever's fastest", c: "哪个快就哪个（不当真的选择）", x: "Lunch? Whatever's fastest." },
-      { e: "get the pan going", c: "先把锅热上", x: "Get the pan going while I chop the onions." },
-      { e: "the day starts properly", c: "一天才算真正开始", x: "After the first coffee the day starts properly." }
+      { e: "order in / get takeaway", c: "点外卖", x: "We were going to cook, but we ordered in." },
+      { e: "I can't be bothered", c: "我懒得动 / 提不起劲", x: "I could cook, but honestly I can't be bothered." },
+      { e: "do you feel like ...", c: "你想不想……", x: "Do you feel like cooking tonight?" },
+      { e: "the delivery fee", c: "配送费", x: "The delivery fee is five yuan and the food arrives cold." },
+      { e: "there's nothing in the fridge", c: "冰箱里什么都没有", x: "There's nothing in the fridge but two spring onions." }
     ]
   },
 
   {
-    id: "s04", part: "morning", time: "8:15",
-    t: "Keys, phone, badge", z: "出门前的那套仪式",
-    lead: "手机、钥匙、工牌、伞。出门前拍一遍口袋，这套动作比刷牙还熟练。",
+    id: "s04", part: "thu", time: "21:05",
+    t: "The nine o'clock call", z: "晚上九点那场会",
+    lead: "公司总部在欧洲。这意味着每年有几十个晚上，我九点钟还在说英语。",
     paras: [
-      { p: "Phone, keys, badge. I pat my pockets in that order, every single day, and about once a fortnight I still get to the lobby and find one of them missing — usually the badge, which is the one thing I actually cannot get into the building without.", z: "手机、钥匙、工牌。我每天都按这个顺序拍一遍口袋，大概每两周还是会有一次到了大堂发现少一样——通常是工牌，而工牌恰恰是我没它进不了大楼的那一样。" },
-      { p: "My partner is already at the door, holding my umbrella.", z: "我对象已经站在门口了，手里拿着我的伞。", w: "Partner" },
-      { p: "It's not raining.", z: "没在下雨啊。", w: "Me" },
-      { p: "It's going to rain. Check your app.", z: "要下了。你看看你那个app。", w: "Partner" },
-      { p: "I check. Sixty percent. Sixty percent means I carry an umbrella all day for a chance of rain that may never come, and if I don't, it rains — this is the deal I have with the weather, and the weather always wins.", z: "我看了。60%。60%的意思是：我得为了一场可能不会来的雨带一整天伞；而如果我不带，它就一定会下——这是我和天气之间的约定，而天气从来没输过。" },
-      { p: "I take the umbrella. Downstairs, the lift takes long enough that I have time to remember, briefly and with total clarity, that I left the kitchen light on.", z: "我拿了伞。楼下电梯来得够慢，慢到我有一段完整的时间想起来——清清楚楚地想起来——厨房灯没关。" }
+      { p: "Our head office is in Europe, which means roughly two evenings a week I'm on a call at nine at night. Not a crisis — just the arithmetic of time zones. Nine here is their afternoon, and somebody's calendar has to close the day.", z: "我们总部在欧洲，这意味着大概一周有两个晚上，我九点还在开会。不是出了什么事，就是时区算术：我们这儿九点是他们下午，总得有个地方收摊。" },
+      { p: "Tonight it's a vendor contract that's been going back and forth for three weeks. I've redlined it twice; they've rejected the limitation of liability clause both times and put it back the way it was, which is a very polite way of saying no.", z: "今晚谈的是一份来回拉扯了三周的供应商合同。我改了两稿，他们两次都把责任限额条款改回原样——这是一种非常礼貌的拒绝。" },
+      { p: "Thanks for joining. Let's kick off — I'll walk you through where we are on the vendor agreement.", z: "谢谢上线。我们开始吧——我先把供应商合同的进展过一遍。", w: "Me" },
+      { p: "Sure. Just to flag before you start: we're short on time, so if we could keep it to thirty minutes.", z: "好。开始前先说明一下：我们时间紧，能不能控制在三十分钟。", w: "Marcus" },
+      { p: "Thirty minutes, fine. My read on this is that we're actually arguing about one sentence, and everything else in these thirty pages is agreed. So let's argue about the sentence.", z: "三十分钟，行。我的判断是：我们其实只在争一句话，这三十页里其他都谈定了。那就争这句话。" },
+      { p: "The sentence is the one that says neither side pays more than the value of the contract if something goes wrong. Our vendor wants that. We want it too, mostly. What we don't want is the version where it also covers data breaches, because under PIPL a data incident is not a contract-sized problem.", z: "那句话是：出事时任一方赔付不超过合同金额。供应商想要，我们大体也想。我们不想要的是把它也覆盖数据泄露的版本——因为在个人信息保护法下，数据事故不是一个「合同大小」的问题。" },
+      { p: "Sorry — can I just check, are we recording this?", z: "抱歉打断一下——我们这会有在录吗？", w: "Marcus" },
+      { p: "Yes.", z: "在的。", w: "Me" },
+      { p: "Then let's take that offline. I'll email you.", z: "那这块我们线下聊，我发邮件给你。", w: "Marcus" },
+      { p: "Take it offline is the most useful four words in corporate English. It means: I don't want to say this where it's being recorded. It isn't rude. It's how grown-ups disagree.", z: "「线下聊」是职场英语里最有用的四个字。意思是：这话我不想留在录音里。它不粗鲁，这是成年人的分歧方式。" },
+      { p: "The line drops twice — Guangzhou wifi, European servers, and whatever sits between them. Both times somebody says can you hear me now, and both times I say you're breaking up a bit but go on, which is what you say when you've understood eighty percent and hope the rest is in the slides.", z: "掉了两次线——广州的 wifi、欧洲的服务器、中间那一大段不知道什么。两次都有人问「现在能听见吗」，两次我都说「有点断续你继续」——就是当你听懂八成、指望剩下两成在 PPT 里时会说的话。" },
+      { p: "We land it at nine forty. A thirty-minute call that runs forty minutes, which is the industry standard. I write the follow-up email immediately, because at ten at night the version of me that remembers what we agreed is about to go to bed.", z: "九点四十谈完。三十分钟的会开了四十分钟，这是行业标准。我立刻写跟进邮件，因为晚上十点，那个还记得我们谈了什么的我马上要睡了。" },
+      { p: "Action items, owners, one open question on data. Send. I close the laptop and go out to the living room, where my wife has been watching something with the sound low for the last forty minutes so she wouldn't be on my call.", z: "行动项、负责人、一个关于数据的未决问题。发送。合上电脑走到客厅——我老婆把声音调得很低看了四十分钟，就为了不出现在我的会议里。" },
+      { p: "Done?", z: "完了？", w: "Wife" },
+      { p: "Done. Sorry.", z: "完了。不好意思。", w: "Me" },
+      { p: "You say sorry every Thursday and I've stopped accepting it. Put the sound up.", z: "你每周四道歉，我已经不接受了。把声音开大。", w: "Wife" }
     ],
     notes: [
-      { e: "pat my pockets", c: "拍一遍口袋（检查东西）", x: "Phone, keys, wallet — I pat my pockets before every exit." },
-      { e: "about once a fortnight", c: "大概两周一次", x: "I lose my badge about once a fortnight." },
-      { e: "the weather always wins", c: "天气从来没输过", x: "I never take the umbrella and the weather always wins." },
-      { e: "with total clarity", c: "清清楚楚地（想起来）", x: "I remembered, with total clarity, that I'd left the oven on." }
+      { e: "kick off", c: "开始（会议）", x: "Let's kick off — I'll walk you through it." },
+      { e: "walk you through", c: "带你过一遍", x: "Let me walk you through the changes." },
+      { e: "my read on this is ...", c: "我的判断是……", x: "My read on this is that we're arguing about one sentence." },
+      { e: "let's take it offline", c: "这块线下聊（不想留痕）", x: "Let's take that offline — I'll email you." },
+      { e: "can you hear me now", c: "现在能听见吗", x: "Sorry, can you hear me now?" }
     ]
   },
 
   {
-    id: "s05", part: "commute", time: "8:35",
-    t: "Eight stops standing", z: "站八站",
-    lead: "早高峰的地铁里，所有人都在假装自己不挤。",
+    id: "s05", part: "fri", time: "18:20",
+    t: "Friday, off the hook", z: "周五，下班了",
+    lead: "六点整，我合上电脑。周五的下班和别的日子不一样：不是逃离，是结束。",
     paras: [
-      { p: "I get on at the third stop, which is the difference between sitting down and standing for eight stops. I've run this experiment many times. Third stop: standing. If I left ten minutes earlier, second stop: sitting. Ten minutes of sleep versus a seat. I choose sleep almost every day, and then I resent the seat I don't have.", z: "我在第三站上车——这一站的区别，就是坐着还是站八站。这个实验我做过很多次：第三站，站着；早出门十分钟，第二站，坐着。十分钟睡眠换一个座位。我几乎每天都选睡眠，然后又为自己没座位而生闷气。" },
-      { p: "Everyone on this train is doing the same thing: pretending not to be touching anyone. It's a skill you pick up in about a month and never formally learn. Elbows in, bag in front, eyes somewhere neutral and slightly above everyone's head.", z: "这趟车上的每个人都在做同一件事：假装自己没碰到任何人。这技能大概一个月就学会了，从来没人正式教过。手肘收进来，包抱在前面，眼睛看向某个中立的位置——略微高过所有人的头顶。" },
-      { p: "The doors open, nobody gets off, and somehow six more people get on. There is no physics to explain this. I've stopped trying.", z: "门开了，没人下车，然后神奇的又挤进来六个人。这事没有物理学能解释。我已经放弃理解了。" },
-      { p: "Next stop is mine. I start moving early, because on this line you either commit to getting off or you accept that you're getting off at the stop after.", z: "下一站是我的。我提前开始挪动，因为在这条线上，你要么果断下车，要么接受自己在下一站下车。" },
-      { p: "Excuse me, getting off.", z: "不好意思，下车。", w: "Me" },
-      { p: "I say it to nobody in particular and it works about sixty percent of the time, which in rush hour counts as a result.", z: "我不对着任何人说这句话，成功率大概六成——在早高峰里，这已经算成果了。" }
+      { p: "At six on Friday I close the laptop, and I want to point out that this is a different action from closing it at six on Monday. On Monday, closing the laptop means I've escaped. On Friday, it means the week is over and I'm allowed to stop thinking about it.", z: "周五六点，我合上电脑。我要指出这跟周一六点合电脑不是同一个动作：周一是「我逃出来了」，周五是「这周结束了，我可以不想了」。" },
+      { p: "We're going for a drink. You in?", z: "我们去喝一杯，你来吗？", w: "Nina" },
+      { p: "Next time. I've got nothing on tonight and I really want to keep it that way.", z: "下次吧。我今晚什么都没安排，而且我真的很想保持这个状态。", w: "Me" },
+      { p: "This is a newer skill than it sounds. In my twenties I said yes to everything on a Friday, because I was afraid the weekend would be wasted if I didn't. Now I know the opposite is true: the weekend is wasted by the Friday you spend recovering from it.", z: "这听起来简单，其实是后来才学会的本事。二十几岁时周五我什么都答应，因为怕不答应周末就被浪费了。现在我知道正好相反：周末是被那个用来恢复的周五浪费掉的。" },
+      { p: "I don't take the metro home on Fridays. I walk fifteen minutes to the next station and get a seat, which sounds like a worse deal than it is — fifteen minutes outside, in the part of Guangzhou where the light is going orange and the fruit shops are putting the good stuff out front.", z: "周五我不坐地铁。我走到下一站再坐，多走十五分钟换一个座位——听起来亏，其实不亏：十五分钟在外面，在广州这段天色转橙、水果店把好货摆到门口的时间里。" },
+      { p: "I buy a bag of lychees from the guy who never smiles and always gives me the ripe ones. I buy milk tea, no sugar, because I've decided this counts as restraint, and because my wife will ask and I want an answer ready.", z: "我在那个从不笑、但总给我挑熟的老板那儿买了一袋荔枝。又买了奶茶，不加糖，因为我认定这算克制，也因为我老婆会问，我得有个答案等着。" },
+      { p: "Home by seven. The flat is rented, which means the kitchen is somebody else's kitchen and the walls are the colour the landlord liked in 2016. But it's ours for now, and on a Friday evening with the window open, it's exactly the right size.", z: "七点到家。房子是租的，意味着厨房是别人的厨房，墙是房东 2016 年喜欢的颜色。但现在它是我们的，周五晚上开着窗，大小刚刚好。" },
+      { p: "My wife gets in ten minutes later. Neither of us cooks, because Friday has a rule, and the rule is: eating out, twenty minutes' walk, no reservation, wherever has a table.", z: "我老婆十分钟后到家。我们不做饭，因为周五有条规矩：下馆子，走二十分钟，不订位，哪家有座吃哪家。" },
+      { p: "Any plans tomorrow?", z: "明天有安排吗？", w: "Wife" },
+      { p: "Sleeping in. Then dim sum. Then nothing.", z: "睡到自然醒。然后喝早茶。然后什么都没有。", w: "Me" },
+      { p: "That's the whole plan.", z: "这就是全部计划。", w: "Me" },
+      { p: "Good. She says it like she's approving a document, which, given who she's married to, she probably learned from me.", z: "好。她说这话的口气像在批一份文件——考虑到她嫁的是谁，大概跟我学的。" },
+      { p: "We walk back slowly in the warm dark. No alarm tomorrow. I'll set one anyway out of habit, wake up before it, and lie there for a while — which is the actual luxury of this life: nobody is coming to get you on a Saturday morning.", z: "我们在暖烘烘的夜色里慢慢走回去。明天没有闹钟。我还是会定一个，出于习惯，然后在它响之前醒来，躺一会儿——这就是这种生活的真正奢侈品：周六早上没有人来找你。" }
     ],
     notes: [
-      { e: "get on / get off", c: "上车 / 下车（公交地铁）", x: "I get on at the third stop and get off at the eleventh." },
-      { e: "pick up a skill", c: "不知不觉学会一个技能", x: "You pick up the etiquette in about a month." },
-      { e: "commit to getting off", c: "果断下车（别犹豫）", x: "Either commit to getting off or you'll miss your stop." },
-      { e: "in rush hour", c: "在高峰时段", x: "In rush hour, sixty percent counts as a result." }
+      { e: "off the hook", c: "脱身了、没我事了", x: "Six o'clock Friday and I'm off the hook." },
+      { e: "you in?", c: "你来吗？", x: "We're going for a drink — you in?" },
+      { e: "I've got nothing on", c: "我什么安排都没有", x: "I've got nothing on tonight and I want to keep it that way." },
+      { e: "sleep in", c: "睡到自然醒", x: "No alarm tomorrow. We're sleeping in." },
+      { e: "wherever has a table", c: "哪家有位吃哪家", x: "No reservation — wherever has a table." }
     ]
   },
 
   {
-    id: "s06", part: "commute", time: "8:58",
-    t: "Elevator small talk", z: "电梯里的三十秒",
-    lead: "电梯里遇到同事，三十秒。够尴尬，不够聊完任何事。",
+    id: "s06", part: "sat", time: "10:20",
+    t: "Dim sum at eleven on a Saturday", z: "周六十一点的早茶",
+    lead: "广州的早茶不是在「吃早餐」，它是一项需要排号的活动。十一点到，等于迟到。",
     paras: [
-      { p: "The elevator is the worst place for a conversation, because it's long enough to require one and short enough that you can't actually finish it. Thirty seconds. Nobody is going to solve anything in thirty seconds, and yet every morning, we try.", z: "电梯是全世界最不适合聊天的地方：它长到必须有话说，又短到你根本说不完。三十秒。没人能在三十秒里解决任何事，但每天早上我们都在试。" },
-      { p: "Morning! You're early.", z: "早！今天挺早啊。", w: "Coworker" },
-      { p: "Yeah, meeting at nine. Didn't want to risk it.", z: "嗯，九点有个会，不想冒险。", w: "Me" },
-      { p: "Smart. The lift was down yesterday, did you hear?", z: "明智。昨天电梯坏了，你听说了吗？", w: "Coworker" },
-      { p: "I hadn't, and now I have twelve seconds to care about it. I make the right noises. The doors open on our floor and the conversation ends exactly where all elevator conversations end: mid-sentence, unresolved, fine.", z: "我没听说，现在我有十二秒来关心这件事。我发出得体的声音。门在我们那层打开，对话停在所有电梯对话都会停的地方：话说到一半、没有结论、也挺好的。" },
-      { p: "We both walk to our desks. It was a good conversation, by elevator standards.", z: "我们各自走向工位。按电梯的标准，这算是一次不错的对话。" }
+      { p: "We get to the tea house at ten twenty, which we thought was early. It isn't. The machine at the door spits out a number — A62 — and the screen says 41 tables ahead of us, which my wife reads out loud in the flat tone of someone delivering bad news she has delivered before.", z: "十点二十到茶楼，我们以为算早。并不。门口的取号机吐出一张 A62，屏幕上写着前面还有 41 桌——我老婆念出来的时候用的是那种报过很多遍坏消息的平腔。" },
+      { p: "Forty-one tables.", z: "四十一桌。", w: "Wife" },
+      { p: "We could go somewhere else.", z: "要不换一家。", w: "Me" },
+      { p: "Everywhere else is the same. It's Saturday.", z: "哪家都一样。今天是周六。", w: "Wife" },
+      { p: "She's right, and this is the first rule of weekend Cantonese dining: on a Saturday the queue is not a problem to be solved, it's the weather. You join it and you stand in it, next to a dozen other people who also knew better and came anyway.", z: "她是对的，这是广式周末用餐第一条：周六的队不是待解决的问题，是天气。你加入它、站在里面，旁边是十几个同样明知如此还是来了的人。" },
+      { p: "Around us: a family of nine negotiating seating with the intensity of a peace treaty; two aunties who have clearly been doing this together every weekend for thirty years and no longer need to speak; a couple our age taking photos of the menu instead of reading it.", z: "周围：一家九口以和平条约级别的强度在讨论座位；两位明显每周都来、一起喝了三十年、已经不需要说话的阿姨；一对跟我们年纪差不多的情侣在拍菜单而不是看菜单。" },
+      { p: "A62, please. Table for two.", z: "A62，两位。", w: "Staff" },
+      { p: "Forty minutes. We get a small table by the window, the one everyone walks past, which is the table you get when you arrive at ten twenty and think you're early.", z: "等了四十分钟。拿到靠窗的小桌，就是所有人都要从旁边走过的那张——十点二十到、还以为自己算早的人，拿到的就是这种桌子。" },
+      { p: "You order by ticking a paper list now, but the carts still come round, and the auntie with the cart still has the power to make you take something you didn't plan on. We end up with har gow, chicken feet, cheung fun, a plate of greens, and one thing we can't identify that arrived because I nodded at the wrong moment.", z: "现在是在纸单上勾选，但推车还在转，推车的阿姨仍然有能力让你拿下一份你没打算点的东西。最后我们桌上有了虾饺、凤爪、肠粉、一碟青菜，还有一样我们认不出来、因为我点头点错了时机而上桌的东西。" },
+      { p: "The tea is chrysanthemum, and it keeps coming. Nobody at this table is in a hurry, and that's the entire point — dim sum on a Saturday is not breakfast, it's the two hours where the week is not allowed to touch you.", z: "茶是菊普，一直有人来续。这桌上没人赶时间，而这正是全部意义——周六的早茶不是早餐，是那两个小时里，这一周不准碰你。" },
+      { p: "How's your mother?", z: "你妈最近怎样？", w: "Wife" },
+      { p: "Fine. She asked about children again. Third time this month.", z: "挺好的。她又问孩子的事了。这个月第三次。", w: "Me" },
+      { p: "Mine asked on Tuesday. They're syncing up.", z: "我妈周二问的。她们对过表了。", w: "Wife" },
+      { p: "We're not avoiding the subject so much as we're both waiting for the other one to start it, which is the same thing with better manners. We eat a chicken foot and change the subject, which in a marriage is also a form of agreement.", z: "我们不是回避这个话题，我们是在等对方先开口——本质一样，只是更有礼貌。我们啃了个凤爪，换了话题，在婚姻里这本身也算一种共识。" },
+      { p: "Two hours, ninety-two yuan, and one more pot of tea than we needed. We walk out into the light and both say the same thing at the same time: that was worth the queue.", z: "两个小时，九十二块，多喝了一壶本来不必喝的茶。我们走到阳光里，同时说了同一句话：这队排得值。" }
     ],
     notes: [
-      { e: "you're early", c: "你今天挺早（寒暄）", x: "Morning! You're early today." },
-      { e: "didn't want to risk it", c: "不想冒险（怕迟到）", x: "I left twenty minutes early — didn't want to risk it." },
-      { e: "make the right noises", c: "发出得体的回应（其实没在意）", x: "I wasn't listening, but I made the right noises." },
-      { e: "by ... standards", c: "按……的标准来说", x: "By my standards, that's a win." }
+      { e: "there are 41 tables ahead of us", c: "前面还有 41 桌", x: "There are forty tables ahead of us — it's Saturday." },
+      { e: "join the queue", c: "加入排队", x: "You don't solve the queue. You join it." },
+      { e: "table for two", c: "两位（用餐）", x: "Table for two, please." },
+      { e: "change the subject", c: "换话题", x: "We ate a chicken foot and changed the subject." },
+      { e: "worth the queue", c: "这队排得值", x: "Two hours in, and it was worth the queue." }
     ]
   },
 
   {
-    id: "s07", part: "work", time: "9:30",
-    t: "Stand-up", z: "晨会，三十秒汇报",
-    lead: "站会每人三十秒。我永远在说最后一句时才想明白自己今天要干嘛。",
+    id: "s07", part: "sat", time: "20:10",
+    t: "A Saturday night in", z: "周六，在家",
+    lead: "朋友群里有人在清吧，有人在珠江边跑步。我们在家，煮一锅饭，把窗户全打开。",
     paras: [
-      { p: "Stand-up is fifteen minutes and eight people, which means each of us gets roughly ninety seconds, minus the time someone spends explaining why their thing was blocked. I've learned to prepare my two sentences while the person before me is still talking, which I recognise is exactly the rudeness I complain about in others.", z: "站会十五分钟、八个人，也就是每人大概九十秒，还要扣掉某人解释自己为什么被卡住的时间。我学会了在前一个人还在说的时候就准备好自己的两句话——我承认，这恰恰是我抱怨别人做的那种没礼貌。" },
-      { p: "Yesterday I finished the reconciliation, today I'm starting on the vendor list, no blockers.", z: "昨天我把对账做完了，今天开始处理供应商名单，没有阻塞。", w: "Me" },
-      { p: "It sounds clean. What it leaves out is that I finished the reconciliation at 7 p.m., that the vendor list is a spreadsheet nobody has touched since March, and that 'no blockers' really means 'one blocker, but it's a person and I'd rather deal with it privately.'", z: "听起来很干净。它省略掉的是：那份对账我是晚上七点做完的；供应商名单是一张从三月起没人碰过的表；而「没有阻塞」真正的意思是「有一个，但那是一个人，我宁愿私下解决」。" },
-      { p: "Everyone nods. Nobody wants details at 9:30. We all want the same thing from stand-up: to say our piece, be briefly witnessed, and get back to it.", z: "大家都点头。九点半没人想要细节。我们对站会的要求是一样的：说两句、被短暂看见、然后回去干活。" }
+      { p: "Saturday night and we're home, which sounds like a failure of planning and is actually the thing we've been looking forward to all week. My phone shows a group chat with nine unread messages: someone at a bar in Zhujiang New Town, someone running along the river, someone sending a photo of a restaurant we can't get into tonight.", z: "周六晚上我们在家，听起来像计划失败，其实是我们盼了一周的事。手机群里九条未读：有人在珠江新城的清吧，有人沿江跑步，有人发了一家我们今晚订不到的餐厅的照片。" },
+      { p: "Do you want to go out?", z: "想出去吗？", w: "Me" },
+      { p: "Do you?", z: "你呢？", w: "Wife" },
+      { p: "There it is again — the same move we do about cooking, applied to the entire city. Two people who both secretly want to stay in, checking that the other one isn't being deprived. Neither of us moves for four seconds. Then she puts her phone down and that's the decision.", z: "又来了——跟做饭那套一模一样的招数，只是对象换成了整座城市。两个人都暗自想待在家，都在确认对方没有因此受委屈。我们僵了四秒。然后她放下手机，这事就定了。" },
+      { p: "Tonight we actually cook. Not the weekday version where cooking means reheating something, but the version with three dishes, actual garlic, and a pan that needs soaking afterwards. I chop. She cooks. This division of labour is not written down anywhere and has never once been discussed.", z: "今晚我们真的做饭。不是工作日那种「热一下」的做饭，是三个菜、真的用到蒜、事后锅要泡水的那种。我切，她炒。这个分工没有写下来，也从来没讨论过。" },
+      { p: "The window is open and the whole street is audible: a scooter, someone's TV through a wall, a child being told to come inside in Cantonese, and underneath all of it the low hum of a city that is not going to sleep just because it's Saturday.", z: "窗开着，整条街都听得见：一辆电瓶车、隔壁墙里透出来的电视声、一个小孩被用粤语喊回家，在这所有声音底下，是这座城市低频的嗡嗡声——它不会因为是周六就睡。" },
+      { p: "We eat at nine, which is late by weekday standards and early by everyone else's. There's a bottle of wine that's been on the shelf since someone gave it to us two years ago, and tonight is the night, because tonight there's no meeting tomorrow and no alarm to respect.", z: "九点吃饭，按工作日标准算晚，按别人算早。架子上有一瓶两年前别人送的酒，今晚就是今晚了——因为今晚之后没有会议、没有要respect的闹钟。" },
+      { p: "Afterwards we sit on the floor with our backs against the sofa, which is what you do when you're the only two people in a one-bedroom flat and the sofa is technically fine but the floor is better.", z: "吃完我们背靠沙发坐在地板上——当你俩是这套一居室里仅有的两个人时，你就会这样：沙发其实没毛病，但地板更好。" },
+      { p: "My wife is looking at flats on her phone again. Not seriously. Just the way you look at something you're not going to buy but want to know the price of. The numbers in this city are the same every time she checks, and she checks anyway.", z: "我老婆又在手机上看房子。不是认真的，就是那种「不会买但想知道价钱」的看。这座城市的数字每次看都一样，她还是看。" },
+      { p: "Don't.", z: "别看了。", w: "Me" },
+      { p: "I'm not doing anything. I'm just looking.", z: "我又没干什么，就看看。", w: "Wife" },
+      { p: "I know that tone. That's the tone that ends with a spreadsheet.", z: "我认得这个语气。这个语气的结局是一张 Excel。", w: "Me" },
+      { p: "She laughs and turns the phone over. The flat is rented, the lease runs to March, and neither of us knows what we'll do then. But right now the window is open, the dishes are soaking, and there is nobody in the world I would rather be not-deciding this with.", z: "她笑着把手机翻过去。房子是租的，租约到三月，我们谁也不知道到时候怎么办。但此刻窗开着，锅在泡，这个世界上没有第二个我更愿意跟ta一起「还没决定」的人。" }
     ],
     notes: [
-      { e: "no blockers", c: "没有阻塞（站会黑话）", x: "Yesterday I closed the tickets, today I'll pick up the new one, no blockers." },
-      { e: "say my piece", c: "把话说完（不一定有人听）", x: "Let me say my piece and then I'll drop it." },
-      { e: "get back to it", c: "回去干活", x: "Meeting's over — let's get back to it." },
-      { e: "I recognise that ...", c: "我承认……（自我吐槽）", x: "I recognise that I do the same thing." }
+      { e: "stay in", c: "待在家（不出去）", x: "We're staying in tonight — nothing on." },
+      { e: "go out", c: "出去玩 / 下馆子", x: "Do you want to go out? — Do you?" },
+      { e: "I'm just looking", c: "我就看看（不买）", x: "I'm not buying anything. I'm just looking." },
+      { e: "the lease runs to ...", c: "租约到……", x: "The flat is rented — the lease runs to March." },
+      { e: "not seriously", c: "不是认真的", x: "She's looking at flats again, not seriously." }
     ]
   },
 
   {
-    id: "s08", part: "work", time: "11:10",
-    t: "Can you squeeze this in", z: "临时插进来的活",
-    lead: "「这个能不能今天弄完」——这句话从来没有答案，只有代价。",
+    id: "s08", part: "sun", time: "17:40",
+    t: "The Sunday feeling", z: "周日傍晚的那种感觉",
+    lead: "周日下午五点，快乐里开始掺东西。不是难过，是下周开始往回渗。",
     paras: [
-      { p: "It always arrives in the same shape. A message, not a call. Starts with a sorry, ends with a deadline, and in the middle is a sentence I have learned to read very carefully: 'It's pretty quick, should only take you an hour.'", z: "它总是以同一种形状出现。一条消息，不是电话。开头是sorry，结尾是deadline，中间夹着一句我已经学会仔细读的话：「很快的，你一个小时应该就够了」。" },
-      { p: "Nothing that starts with 'pretty quick' has ever taken an hour. I've tested this. The sample size is large and the result is consistent.", z: "没有一件以「很快的」开头的事，在一个小时内完成过。我测过。样本量很大，结果很稳定。" },
-      { p: "Can you squeeze this in today?", z: "这个今天能挤进去吗？", w: "Coworker" },
-      { p: "Depends what moves.", z: "看什么要让路。", w: "Me" },
-      { p: "It's a good answer, and it took me four years to learn it. 'Sure' means it's now my problem. 'No' makes me the person who says no. 'Depends what moves' puts the decision back where it belongs — with the person who owns the deadline, not the person who owns the work.", z: "这是个好答案，我花了四年才学会。说「行」意味着这事从此是我的问题；说「不行」会让我变成那个说不行的人；而「看什么要让路」把决定权还回了它该在的地方——在拥有deadline的人手里，而不是在拥有这份工作的人手里。" },
-      { p: "We agree the Friday thing can slip. I write it down, because 'we agreed' without a written note is just a nice conversation.", z: "我们商定周五那件可以往后挪。我把它记下来，因为没有落在纸上的「我们商定过了」，只是一段愉快的对话。" }
+      { p: "It arrives around five on a Sunday, and it isn't sadness exactly. It's the week starting to seep back in. One minute you're fine, the next minute you're mentally in Monday's nine o'clock meeting, and the afternoon you were enjoying is suddenly something you're losing.", z: "它大概在周日五点左右到达，严格说不是难过。是这一周开始往回渗。上一分钟你还好好的，下一分钟你人已经在周一九点的会议里了，而你正享受着的这个下午，忽然变成了你正在失去的东西。" },
+      { p: "There's a name for it in English — the Sunday scaries — and naming it doesn't fix it, but it does mean that when I say I've got the Sunday scaries, my wife knows precisely what I mean and doesn't ask if I'm all right.", z: "英语里有个名字：Sunday scaries。给它命名治不好它，但好处是，当我说我 Sunday scaries 了，我老婆精确地知道我在说什么，不会问我「你还好吗」。" },
+      { p: "I deal with it the way a lot of people deal with it: by doing chores I don't need to do yet. I start the laundry at six on a Sunday, which is the least efficient possible time, because folding something feels like being in control of something.", z: "我跟大多数人一样应对它：提前做那些还不必做的家务。周日六点我开始洗衣服，这是一周里效率最低的时间点，因为叠东西这件事，让人感觉自己在掌控某件事。" },
+      { p: "In Guangzhou the laundry has a season of its own. There are weeks — usually March — when the air itself is wet, the walls sweat, the mirror fogs, and nothing you hang up ever actually dries. We call it the return of the south wind. The clothes don't care what we call it.", z: "在广州，晾衣服有自己的季节。有些周——通常是三月——空气本身是湿的，墙在出汗，镜子起雾，你晾上去的东西永远不会真的干。我们叫它回南天。衣服不在乎我们怎么叫它。" },
+      { p: "Is it dry?", z: "干了吗？", w: "Wife" },
+      { p: "It's optimistic.", z: "还很乐观。", w: "Me" },
+      { p: "While the machine runs, I do the thing that actually helps: I open my calendar and look at Monday. Not to work — just to see it. The scaries are always worse than the week. Seeing it written down, with the gaps visible, usually takes it down from a nine to a four.", z: "洗衣机转着的时候，我做那件真正有用的事：打开日历看一眼周一。不是工作，就是看看。那种慌永远比那一周本身严重。看到它写在那里、中间还有空隙，通常能把九分降到四分。" },
+      { p: "My phone buzzes. My mother, as she does most Sundays.", z: "手机震了。我妈，跟大多数周日一样。" },
+      { p: "Eat properly. Don't just order takeaway every night.", z: "好好吃饭，别天天点外卖。", w: "Mum" },
+      { p: "We cook.", z: "我们有做饭。", w: "Me" },
+      { p: "Last night you ordered takeaway.", z: "昨晚你们就点了外卖。", w: "Mum" },
+      { p: "I don't ask how she knows. Mothers have a second, undocumented source of intelligence about their children's dinner, and it is not worth investigating.", z: "我没问她怎么知道的。母亲们关于孩子晚饭有一个未公开的第二个情报来源，不值得追查。" },
+      { p: "By eight the flat is clean-ish, the laundry is on the rack doing its best, and I've made lunch for tomorrow — leftovers, in a container, in the fridge, which is the single highest-leverage thing you can do on a Sunday night.", z: "到八点，房子算收拾过了，衣服在架子上尽力晾着，明天的午饭做好了——剩菜，装盒，进冰箱。这是周日晚上你能做的杠杆最高的一件事。" },
+      { p: "We're in bed by eleven, which is late for a school night and early for anything else. Tomorrow is Monday. I've looked at it, it's fine, and I say so out loud, which is how you make something true at five o'clock on a Sunday.", z: "十一点上床，按上学日算晚，按别的算早。明天周一。我看过了，没事，我把这句话说出口——在周日五点，让一件事成真的方式就是把它说出来。" }
     ],
     notes: [
-      { e: "squeeze this in", c: "把这个挤进去（加活）", x: "Can you squeeze this in before Friday?" },
-      { e: "depends what moves", c: "看什么要让路（不答应也不拒绝）", x: "I can do it — depends what moves." },
-      { e: "the person who says no", c: "那个说不行的人（负面标签）", x: "Nobody wants to be the person who says no." },
-      { e: "without a written note", c: "没有落在纸面上的", x: "Verbal agreements without a written note don't survive Monday." }
+      { e: "the Sunday scaries", c: "周日傍晚的焦虑感", x: "I've got the Sunday scaries again." },
+      { e: "seep back in", c: "慢慢渗回来", x: "Around five, the week starts to seep back in." },
+      { e: "do the laundry", c: "洗衣服", x: "I deal with it by doing the laundry at six on a Sunday." },
+      { e: "leftovers", c: "剩菜", x: "I've made lunch for tomorrow — leftovers in a container." },
+      { e: "a school night", c: "第二天要上班的晚上", x: "Eleven is late for a school night." }
     ]
   },
 
   {
-    id: "s09", part: "work", time: "12:30",
-    t: "The lunch debate", z: "午饭吃什么",
-    lead: "十二点半，四个人，十五分钟，讨论一个永远没有结论的问题。",
+    id: "s09", part: "midautumn", time: "八月十五",
+    t: "The mooncake economy", z: "月饼经济学",
+    lead: "中秋前十天，办公室开始出现一个现象：没人买月饼，但每个人都有月饼。",
     paras: [
-      { p: "Lunch takes fifteen minutes to decide and twelve minutes to eat. This ratio is stable across every office I've worked in, and I've stopped expecting it to improve.", z: "午饭要花十五分钟决定、十二分钟吃完。这个比例在我待过的每个办公室都稳定成立，我已经不指望它会改善了。" },
-      { p: "The debate has four moves. Someone suggests something. Someone says they had it yesterday. Someone suggests the place that's too far. Someone says 'I'm easy, whatever you want,' which sounds flexible and actually means 'I will veto the first two options.'", z: "这场辩论有四步：有人提一个；有人说昨天吃过了；有人提一家太远的；有人说「我都行，你们定」——听上去随和，实际意思是「前两个我都会否决」。" },
-      { p: "I'm easy, whatever you want.", z: "我都行，你们定。", w: "Coworker" },
-      { p: "That's not an answer, Lin.", z: "那不是答案啊，Lin。", w: "Me" },
-      { p: "We end up at the noodle place on the corner, which is where we always end up. The walk there is seven minutes, which leaves five minutes of actual eating, which is why all of us are slightly hungry at 3 p.m. and all of us pretend it's a surprise.", z: "最后我们去了转角那家面馆，也就是我们每次最后都会去的那家。走过去七分钟，剩下五分钟真正吃饭——这就是为什么我们所有人下午三点都会有点饿，而所有人都在假装这是个意外。" }
+      { p: "Ten days before Mid-Autumn, a strange thing happens at work: nobody buys mooncakes, and everybody has mooncakes. They arrive in boxes the size of a laptop, from vendors, from clients, from the building management, from a bank I once opened an account with in 2019 and have not thought about since.", z: "中秋前十天，办公室会出现一个怪现象：没人买月饼，但每个人都有月饼。它们装在笔记本电脑那么大的盒子里，来自供应商、客户、物业，还有一家我 2019 年开过户、之后再没想起来的银行。" },
+      { p: "Take one. We've got about forty.", z: "拿一盒，我们还有差不多四十盒。", w: "Nina" },
+      { p: "Nobody wants the lotus seed ones.", z: "没人要莲蓉的。", w: "Me" },
+      { p: "Nobody has ever wanted the lotus seed ones.", z: "从来没有人要过莲蓉的。", w: "Nina" },
+      { p: "This is the mooncake economy: a gift that circulates. You give what you received, to someone who received something else, and by the end of the week everybody has had the same four boxes pass through their hands in different orders. It is not food any more. It is a token that says we remembered you existed.", z: "这就是月饼经济：一份在流通的礼物。你把收到的送给别人，别人再把收到的送出去，到周末，每个人都经手过同样的四盒月饼，只是顺序不同。它已经不是食物了，它是一个token，意思是「我们记得你还存在」。" },
+      { p: "The actual festival, we spend with my wife's parents this year, which was decided in August and is, as always, the result of a negotiation conducted entirely in hints.", z: "节本身，今年去我老婆父母家过。这件事八月就定了，而且一如既往，是一场完全靠暗示完成的谈判的产物。" },
+      { p: "Your mother already bought the tickets last week, didn't she.", z: "你妈上周就把票买好了吧。", w: "Me" },
+      { p: "She mentioned it.", z: "她提了一句。", w: "Wife" },
+      { p: "She mentioned it in a way that involved a date and a train number. That's not mentioning, that's booking.", z: "她提的时候带了日期和车次。那不叫提，那叫订。", w: "Me" },
+      { p: "We take the train on the Sunday before. Her mother cooks too much food, as mothers do, and her father asks me about work in the way that means he's proud but doesn't know how to say it, so he says has the company treated you well instead.", z: "我们前一个周日坐车过去。她妈做了一桌子菜，像所有妈妈那样；她爸问我工作的事，方式是那种——他其实是骄傲的，但不知道怎么说，于是说「公司待你还好吧」。" },
+      { p: "After dinner we go up to the roof. The moon is out, doing its job, and for a few minutes nobody says anything, which is the best part of the festival and the part nobody photographs.", z: "晚饭后我们上楼顶。月亮出来了，尽职尽责，有几分钟大家都不说话——这是这个节最好的部分，也是没人拍下来的部分。" },
+      { p: "On the way back we video-call my parents, hold the phone up so they can see the moon, and hold it at roughly the same angle they'd see it from their balcony two hundred kilometres away. It's the same moon. Everyone knows it's the same moon. We do it anyway, every year, and it works every year.", z: "回程路上我们跟我爸妈视频，把手机举起来让他们看月亮，角度大致是他们从两百公里外自家阳台看到的样子。是同一个月亮。谁都知道是同一个月亮。我们还是每年都这么做，而且每年都管用。" }
     ],
     notes: [
-      { e: "I'm easy", c: "我都行（其实有意见）", x: "I'm easy, whatever you want — just not spicy." },
-      { e: "veto an option", c: "否决一个选项", x: "He'll veto the first two options and call it being easy." },
-      { e: "end up at ...", c: "最后去了……", x: "We always end up at the noodle place." },
-      { e: "pretend it's a surprise", c: "假装这是个意外", x: "We're all tired at 3 p.m. and pretend it's a surprise." }
+      { e: "take one", c: "拿一个（别客气）", x: "Take one — we've got about forty." },
+      { e: "it's the thought that counts", c: "心意到了就行", x: "The mooncake is terrible, but it's the thought that counts." },
+      { e: "we're spending it with ...", c: "我们跟……一起过", x: "We're spending Mid-Autumn with her parents this year." },
+      { e: "she mentioned it", c: "她提了一句（轻描淡写）", x: "She mentioned it — with a date and a train number." },
+      { e: "video-call", c: "视频通话", x: "We video-call my parents and hold up the phone so they can see the moon." }
     ]
   },
 
   {
-    id: "s10", part: "work", time: "14:00",
-    t: "This could have been an email", z: "这个会本可以是一封邮件",
-    lead: "四十分钟的会，前二十五分钟在对齐背景，最后五分钟才是真正的事。",
+    id: "s10", part: "national", time: "10/2",
+    t: "Four hours for ninety kilometres", z: "九十公里开了四个小时",
+    lead: "国庆第二天，我们开车去汕头。导航说两小时四十分钟。导航是个乐观的人。",
     paras: [
-      { p: "There's a specific feeling you get around minute twenty-five of a meeting: the realisation that the actual decision will take four minutes, and the other twenty-one were spent getting eight people to the same sentence.", z: "会议开到第二十五分钟左右，会有一种特定的感觉：你意识到真正的决定只需要四分钟，而另外二十一分钟是用来把八个人带到同一句话上。" },
-      { p: "I don't mind meetings. I mind meetings that are documents pretending to be conversations. If the point is to tell me something, send it. If the point is to decide something with me, then let's decide it and go.", z: "我不讨厌开会。我讨厌那些假装是对话的文件。如果目的是告诉我一件事，那就发过来；如果目的是跟我一起决定一件事，那就决定完走人。" },
-      { p: "So, just to align on context —", z: "那，先对齐一下背景——", w: "Coworker" },
-      { p: "Sorry, quick one: what's the decision we need out of this?", z: "打断一下：我们这个会需要产出什么决定？", w: "Me" },
-      { p: "It's a risky sentence. It can read as impatient. But ninety percent of the time it saves twenty minutes, and the other ten percent the room says 'good question' and someone realises there isn't one — which is also worth knowing.", z: "这话有风险，可能被理解为不耐烦。但九成的情况下它能省二十分钟；另外一成的情况，全场会说「问得好」，然后有人意识到根本没有要做的决定——这也值得知道。" },
-      { p: "We decide it in six minutes. Everyone leaves happy. Nobody ever says the obvious thing out loud: we could have skipped the first twenty-five.", z: "我们用六分钟决定了。大家开心地散会。没人把那句显而易见的话说出口：前面那二十五分钟本来可以省掉。" }
+      { p: "We leave at eight in the morning on 2 October, heading for Shantou. The map app says two hours forty. The map app is an optimist, and it is working from data about a road that does not exist on 2 October.", z: "十月二号早上八点出发去汕头。导航说两小时四十。导航是个乐观主义者，它依据的是一条十月二号并不存在的路的数据。" },
+      { p: "By nine thirty we have moved forty kilometres. By ten we have moved three. The car in front has a window down and somebody's arm out, and the whole motorway is doing that thing where everyone is moving at walking pace and nobody has turned their engine off.", z: "九点半走了四十公里，到十点走了三公里。前面那辆车窗摇下来了，有只手伸在外面，整条高速都在做同一件事：所有人以步行的速度前进，没人熄火。" },
+      { p: "We should have taken the train.", z: "我们应该坐高铁的。", w: "Wife" },
+      { p: "The tickets went in eleven seconds.", z: "票十一秒就没了。", w: "Me" },
+      { p: "That's not a complaint, it's just a fact about this country in October: sixty million people have the same seven days off, and a large number of them had the same idea about where to spend them. You don't beat that. You join it, or you stay home.", z: "这不是抱怨，只是这个国家十月的一个事实：六千万人同时放这七天假，其中很多人想到了同一个地方。你斗不过这件事。你只能加入它，或者待在家里。" },
+      { p: "We stop at a service area that has been designed for four hundred people and is currently hosting four thousand. The queue for the toilets goes out the door and turns left. I buy two bottles of water and a thing on a stick that I regret immediately and finish anyway.", z: "我们在一个设计容纳四百人、此刻塞了四千人的服务区停了一下。厕所的队排到门外还拐了个弯。我买了两瓶水和一根签子上的东西，立刻后悔，还是吃完了。" },
+      { p: "The ninety kilometres take four hours. When we finally arrive it's one in the afternoon, and Shantou is, I should say, completely worth it — beef hotpot the size of a small swimming pool, streets that smell like broth and toasted sugar, and a beach we have entirely to ourselves on day three, because everyone else went home on day two.", z: "九十公里开了四个小时。到的时候下午一点。我得说，汕头是完全值得的——有小游泳池那么大的牛肉火锅，闻着像高汤和焦糖的街，还有第三天几乎被我们包场的一片海滩，因为别人都在第二天回去了。" },
+      { p: "On the way back we take the train. That sentence is the entire lesson of the trip, and I will forget it by next October.", z: "回程我们坐高铁。这句话就是这趟旅程的全部教训，而明年十月我会忘掉它。" }
     ],
     notes: [
-      { e: "this could have been an email", c: "这事发封邮件就行（吐槽开会）", x: "Forty minutes of context — this could have been an email." },
-      { e: "align on context", c: "对齐背景（会议黑话）", x: "Let's align on context before we discuss options." },
-      { e: "what's the decision we need", c: "我们要产出什么决定", x: "What's the decision we need out of this meeting?" },
-      { e: "it can read as ...", c: "这话可能被理解为……", x: "It's direct, but it can read as rude." }
+      { e: "the map app says ...", c: "导航说……", x: "The map app says two hours forty." },
+      { e: "walking pace", c: "步行的速度（堵车）", x: "Everyone is moving at walking pace and nobody has turned the engine off." },
+      { e: "a service area", c: "高速服务区", x: "We stopped at a service area built for four hundred people." },
+      { e: "the queue goes out the door", c: "队伍排到门外", x: "The queue goes out the door and turns left." },
+      { e: "it's worth it", c: "值了", x: "Four hours for ninety kilometres, and it was worth it." }
     ]
   },
 
   {
-    id: "s11", part: "work", time: "16:40",
-    t: "Chasing a file", z: "催人要文件",
-    lead: "催人是不好受的，尤其是催一个你不熟的人。于是催人变成了一门措辞的艺术。",
+    id: "s11", part: "spring", time: "除夕",
+    t: "Getting home for New Year", z: "过年回家",
+    lead: "抢票这件事每年一次，每年都像第一次：你准备好了，然后它开始了，然后它结束了。",
     paras: [
-      { p: "Chasing someone for a file is an art form, because the request is simple and the relationship is not. You need a thing. They have the thing. They haven't sent it. And you have to say all of this without sounding like you're keeping score.", z: "催人要文件是一门艺术，因为这件事本身简单，关系不简单。你需要一个东西，对方有这个东西，对方还没发。而你得把这一切说出口，又不能听起来像在记账。" },
-      { p: "The first message is always gentle: 'Hey, any chance you've had a look at that?' The second, two days later, is gentler still, which is strange, because by then you're actually more annoyed, not less.", z: "第一条消息总是温和的：「嘿，那个你看了吗？」两天后的第二条更温和——这很奇怪，因为到那时你其实更烦了，不是更不烦。" },
-      { p: "Hi! Just circling back on the numbers file — no rush if you're buried, I just want to check it's still on your list.", z: "嗨，我回来问一下那个数据表——你要是忙得埋起来了不着急，我就是确认一下它还在你清单上。", w: "Me" },
-      { p: "'Circling back' means I never stopped thinking about it. 'No rush' means there is a rush. 'Still on your list' means it has been on your list for six days. Everyone knows this. Everyone writes it anyway, because the alternative is honest and honesty at 4:40 p.m. on a Wednesday costs relationships.", z: "「回来问一下」意思是我从没停止想这件事；「不着急」意思是急；「还在你清单上」意思是它已经在你清单上躺了六天。所有人都知道。所有人还是这么写，因为另一选项是诚实，而周三下午四点四十的诚实是要花关系成本的。" },
-      { p: "It arrives at 6:12 p.m., with 'sorry for the delay!!' and no explanation. It's exactly what I needed. I say thanks, and mean it, and make a private note to ask two days earlier next time.", z: "它下午六点十二分到了，附一句「抱歉晚了！！」，没有任何解释。完全是我要的东西。我说谢谢，是真心的，然后私下记了一笔：下次提前两天问。" }
+      { p: "Ticket sales open at ten in the morning on a Thursday. I have the app open at nine fifty-eight, two devices, and my wife on the phone doing the same thing from her office, because we have learned that the only thing that helps is redundancy.", z: "周四上午十点开售。我九点五十八打开 App，两台设备，我老婆在办公室同步操作，因为我们早就学到：唯一有用的办法是冗余。" },
+      { p: "Got anything?", z: "抢到了吗？", w: "Wife" },
+      { p: "It's spinning.", z: "在转圈。", w: "Me" },
+      { p: "Mine's spinning too. Refresh?", z: "我的也在转。刷新？", w: "Wife" },
+      { p: "Don't refresh.", z: "别刷新。", w: "Me" },
+      { p: "Every year at ten o'clock on this Thursday, several hundred million people make the same journey home, and the ticketing system does its best, which is genuinely impressive and also not enough. We get two seats on the four p.m. train on the twenty-eighth. Not our first choice, not our second. Home.", z: "每年这个周四的十点，几亿人要做同一段回家的路，票务系统尽力了——确实了不起，但不够。我们抢到二十八号下午四点那趟的两个座。不是首选，也不是次选。但回家。" },
+      { p: "Before we go, there is the flower market. Guangzhou does this properly: for the week before Spring Festival the city builds whole streets of flowers, and everybody walks through them buying things they don't need and will throw away in ten days. Kumquats for luck, peach blossom for luck, a narcissus bulb in a shallow bowl for luck.", z: "走之前有花市。广州把这件事做得很认真：春节前一周，整座城市会搭出一整条条花街，所有人都从里面穿过去，买一堆自己不需要、十天后扔掉的东西。金桔为了吉利，桃花为了吉利，浅盆里的一颗水仙也为了吉利。" },
+      { p: "Do we need two kumquat trees?", z: "我们需要两棵金桔吗？", w: "Me" },
+      { p: "It's not about need.", z: "这不是需不需要的问题。", w: "Wife" },
+      { p: "That line settles every argument at the flower market, every year, and I walk home with a tree under each arm.", z: "这句话每年都能终结花市里所有的争论，然后我两只胳膊各夹一棵树走回家。" },
+      { p: "At my parents' house the questions come in the order they always do: how's work, when are you eating, are you eating enough, and then — usually on day two, usually when my mother and I are alone in the kitchen — the one that isn't really a question.", z: "在我爸妈家，问题按固定顺序来：工作怎样，什么时候吃饭，吃够了没有，然后——通常是第二天，通常是我妈跟我单独在厨房时——那个其实不是问题的问题。" },
+      { p: "You're not getting any younger.", z: "你们也不小了。", w: "Mum" },
+      { p: "I know.", z: "我知道。", w: "Me" },
+      { p: "I'm just saying.", z: "我就说说。", w: "Mum" },
+      { p: "We've agreed, my wife and I, not to make it a fight. It isn't a fight. It's a season. Every year my mother says it once, every year I say I know, and every year we both move on to whether there's enough rice. That's how families work: the big things get handled in small sentences.", z: "我和老婆说好了不为这事吵。这也不是吵架，这是一个季节。每年我妈说一次，每年我说我知道，每年我们接着聊饭够不够。家庭就是这么运转的：大事用很小的句子处理掉。" },
+      { p: "Back on the train on the fifth, two seats, four hours, one bag of oranges my mother put in at the last minute and which we will find at the bottom of the bag in March.", z: "初五回程的火车上，两个座，四小时，还有一袋我妈最后一刻塞进来的橘子——我们会在三月从包底翻出它。" }
     ],
     notes: [
-      { e: "circle back on sth", c: "回头再来问某事（催人）", x: "Just circling back on that file." },
-      { e: "if you're buried", c: "如果你忙得埋起来了", x: "No rush if you're buried, just checking." },
-      { e: "still on your list", c: "还在你待办里吗", x: "I just want to check it's still on your list." },
-      { e: "sorry for the delay", c: "抱歉晚了", x: "Sorry for the delay — here it is." }
+      { e: "ticket sales open at ...", c: "开售时间是……", x: "Ticket sales open at ten on Thursday." },
+      { e: "make the journey home", c: "踏上回家的路", x: "Millions of people make the same journey home." },
+      { e: "the flower market", c: "（迎春）花市", x: "Before we go, there's the flower market — the whole street is flowers." },
+      { e: "it's not about need", c: "这不是需不需要的问题", x: "Do we need two kumquat trees? — It's not about need." },
+      { e: "I'm just saying", c: "我就说说（不逼你）", x: "I'm not pushing. I'm just saying." }
     ]
   },
 
   {
-    id: "s12", part: "work", time: "18:35",
-    t: "Packing up", z: "收拾东西下班",
-    lead: "该走了，但没人动。第一个站起来的人承担了所有心理压力。",
+    id: "s12", part: "labour", time: "5/1",
+    t: "Five days off, one of them real", z: "放五天，其中一天是真的",
+    lead: "五一放五天。仔细一看，其中两天是周末，两天是调休补回来的。这事每年都要算一遍。",
     paras: [
-      { p: "The hardest part of leaving on time isn't the work. It's the standing up. At 6:30 everyone in the room is finished and nobody is leaving, because the first person to stand up makes a statement about everyone else.", z: "准时下班最难的部分不是工作，是站起来那一下。六点半，屋里所有人都做完了，没人走——因为第一个站起来的人，等于替所有人发表了一份声明。" },
-      { p: "So we all develop the same technique: pack slowly. Put the laptop in the bag at a normal pace. Don't put your coat on at your desk. Walk out like you're going to the bathroom and simply never come back.", z: "于是我们都练成了同一套技术：慢慢收拾。以正常速度把电脑放进包里。别在工位上穿外套。走出去的时候像是去洗手间，然后就再也没回来。" },
-      { p: "You heading off?", z: "你走了？", w: "Coworker" },
-      { p: "Yeah, I'll pick this up tomorrow. Night.", z: "嗯，明天接着弄。拜。", w: "Me" },
-      { p: "'I'll pick this up tomorrow' is the sentence that makes leaving legal. It tells the room you haven't abandoned anything, you've just scheduled the rest of it. It's almost always true. That's why it works.", z: "「明天接着弄」这句话让下班变得合法。它告诉全屋人你没丢下什么，你只是把剩下的排到了明天。而且它几乎总是真的——这正是它管用的原因。" },
-      { p: "Outside it's properly dark, which in winter means the day has been stolen from me in two installments: the morning by the office, the evening by the office. I get on the train and don't think about work for eleven minutes, which is a personal record.", z: "外面已经很黑了——冬天里，这意味着我的一天被分两期偷走了：早上被公司偷走，晚上被公司偷走。上了地铁，我有十一分钟没想工作，这是个人纪录。" }
+      { p: "The notice goes up in April: five days off for Labour Day. Five days. Everyone forwards it to everyone else, and then, about forty minutes later, somebody in the group chat does the maths.", z: "四月贴出通知：五一放五天。五天。所有人转发给所有人，大约四十分钟后，群里有人算了一下。" },
+      { p: "Wait. Two of these are the weekend.", z: "等等，其中两天本来就是周末。", w: "Nina" },
+      { p: "And the other two we work back. So it's one new day.", z: "另外两天要补班。所以只多了一天。", w: "Me" },
+      { p: "That's the holiday shuffle, and it's a very local piece of arithmetic: you move a Saturday and a Sunday around the calendar until they sit next to the actual public holiday, and then you work both of them before or after. You gain a long weekend. You lose a Saturday. Nobody complains, because five days sounds better than one.", z: "这就是调休，一个非常本地的算术：你把周六和周日在日历上挪来挪去，直到它们挨着那个真正的法定假日，然后你在这头或那头把这两天补回来。你得了一个长假，你丢了一个周六。没人抱怨，因为五天听起来比一天好。" },
+      { p: "I'm working this Saturday, by the way.", z: "顺便说，这周六我要补班。", w: "Me" },
+      { p: "For the holiday.", z: "为了那个假。", w: "Wife" },
+      { p: "For the holiday.", z: "为了那个假。", w: "Me" },
+      { p: "We say it like a prayer. We're not unhappy about it — the system delivers what it promises, just not in the way the headline suggests, and everyone over thirty has quietly made peace with that.", z: "我们像念祷告一样说这句话。我们并不不满——制度兑现了它承诺的，只是方式跟标题写的不一样，而所有三十岁以上的人都已经悄悄接受了这件事。" },
+      { p: "We don't travel. Three days is not enough to go anywhere worth going and long enough to make staying feel like wasting it, so we do the thing that actually works: we stay in the city and go to the places we never go to on weekends.", z: "我们不出远门。三天不够去任何值得去的地方，却长到让「待着」显得像浪费。于是我们做了那件真正有效的事：留在城里，去那些周末永远不会去的地方。" },
+      { p: "On the second day we walk through Sham Chun Island in the morning, when it's still quiet, and sit in a tea house where the only other customers are three old men who have been sitting there since before we were born. The city is different when the commuters aren't in it. Same streets, better ratio of people to pigeons.", z: "第二天早上我们走了沙面，那时还很安静，然后在一家茶楼坐下，店里另外只有三个从我们出生前就坐在那里的老人。通勤的人不在城里时，这座城市是另一个样子。街还是那些街，人和鸽子的比例好多了。" },
+      { p: "By four in the afternoon everyone else has had the same idea and it's a weekend again. We go home, order in, and watch something with the fan on. A five-day holiday, used properly: two days out, three days of nothing, one of which we'll work back on Saturday.", z: "下午四点，其他所有人也想到了同一件事，又变回周末了。我们回家、点外卖、开着风扇看点东西。五天假期，用得挺正确：两天出门，三天什么也没干，其中一天周六要补回来。" }
     ],
     notes: [
-      { e: "head off", c: "走了、出发了", x: "You heading off? I'll finish this." },
-      { e: "pick this up tomorrow", c: "明天接着弄（下班护身符）", x: "I'll pick this up tomorrow morning." },
-      { e: "make a statement about ...", c: "等于对……表态", x: "Leaving first makes a statement about everyone else." },
-      { e: "at a normal pace", c: "以正常速度（别显得急着跑）", x: "Pack up at a normal pace, don't sprint for the door." }
+      { e: "five days off", c: "放五天假", x: "Five days off for Labour Day — in theory." },
+      { e: "the holiday shuffle", c: "调休", x: "That's the holiday shuffle: you work a Saturday to get a Monday." },
+      { e: "work it back", c: "补班 / 补回来", x: "We work both days back before or after." },
+      { e: "do the maths", c: "算一笔账", x: "Somebody in the group chat did the maths." },
+      { e: "a long weekend", c: "连着周末的小长假", x: "You gain a long weekend and lose a Saturday." }
     ]
   },
 
   {
-    id: "s13", part: "evening", time: "19:40",
-    t: "What's for dinner", z: "晚饭吃什么",
-    lead: "回家打开冰箱，跟早上一样，还是那些东西。但晚上有耐心一点。",
+    id: "s13", part: "dragon", time: "五月初五",
+    t: "Dragon boats on the Liede", z: "猎德涌上看龙舟",
+    lead: "端午在广州不只是吃粽子。是有那么一天，整条涌边上站满了人，为了看二十几个人划一条船。",
     paras: [
-      { p: "I open the fridge, again, and it's the same fridge from this morning, with the same four things in it. The difference is that at night I have enough patience to actually cook, and at night the phrase 'let's just order something' is available, which it isn't at seven in the morning.", z: "我又打开冰箱，还是早上那个冰箱，里面还是同样的四样东西。区别在于，晚上我有足够的耐心真的做点什么，而且晚上「要不点外卖吧」这个选项是开放的——早上七点它不是。" },
-      { p: "There's a ten-minute window in every evening where cooking still feels like a good idea. After that window closes, it's delivery. I've learned to start within eight minutes of walking through the door, or not at all.", z: "每个晚上都有一个十分钟窗口，在那里面做饭还算是个好主意。窗口一关，就变外卖。我学会了在进门八分钟内动手，否则就别做。" },
-      { p: "I'll do the rice if you handle the greens.", z: "我煮饭，你弄青菜。", w: "Me" },
-      { p: "Deal. Don't put garlic in it this time.", z: "成交。这次别放蒜。", w: "Partner" },
-      { p: "I always put garlic in it. She always says this. Neither of us is going to change, and somehow this is one of the most stable things in my life.", z: "我每次都放蒜。她每次都说这句。我们俩谁都不会改，而这件事不知怎么成了我生活里最稳定的东西之一。" },
-      { p: "We eat at the small table with one chair pulled up and the TV off. Twenty minutes, no phones. It's the part of the day I'd defend in an argument.", z: "我们在小桌子上吃饭，拉过来一把椅子，电视关着。二十分钟，不看手机。这是一天里我会据理力争去保住的那一段。" }
+      { p: "Dragon Boat Festival in Guangzhou is not really about the rice dumplings. It's about one day a year when the whole village — and I mean village, because these used to be villages and still think of themselves that way — turns out to watch twenty-two men paddle a boat very fast up a very ordinary stretch of water.", z: "广州的端午其实不是关于粽子。它是一年中的那一天，整个村——我是说村，因为这些地方以前是村、现在心里也还是村——全体出动，去看二十二个人划着一条船在一段极其普通的水面上飞快经过。" },
+      { p: "We get to the bank at Liede at ten, and it's already shoulder to shoulder along the water. Grandparents with folding stools who clearly arrived at eight. Kids sitting on the wall with their legs through the railings. Someone's drone, which is not allowed and is nevertheless up there.", z: "十点到猎德涌边，水边已经肩挨着肩。带折叠凳的老人，显然八点就到了；把腿从栏杆缝里伸出去坐在墙上的小孩；还有人放了无人机——规定不许放，但它就在天上。" },
+      { p: "When do they start?", z: "什么时候开始？", w: "Wife" },
+      { p: "Soon. Nobody knows. That's traditional too.", z: "快了。没人知道具体几点。这也算传统的一部分。", w: "Me" },
+      { p: "Then it happens and it is much louder than you expect. There's a drum at the front setting the pace, twenty-two paddles hitting the water on the same beat, and the sound comes off the water and off the buildings on both sides at the same time, so you feel it before you work out where it's coming from.", z: "然后它开始了，比你想的吵得多。船头有鼓在定节奏，二十二支桨以同一拍打进水里，声音同时从水面和两岸的楼上传回来——你先感觉到它，才搞清楚它从哪来。" },
+      { p: "Forty seconds. That's the race. Two boats, one length of the creek, forty seconds of noise, and then it's over and everyone starts talking about the next one.", z: "四十秒。比赛就这么长。两条船，一段涌，四十秒的喧闹，然后结束，所有人开始聊下一场。" },
+      { p: "People come back year after year for forty seconds. I find this genuinely moving, and also very Cantonese: enormous organisation, decades of tradition, and absolute refusal to explain any of it to anybody.", z: "为了四十秒，人们年年来。我觉得这真的很动人，也很广东：巨大的组织工作量、几十年的传统，以及绝对拒绝向任何人解释这一切。" },
+      { p: "Afterwards we eat zongzi at her uncle's place — savoury, with pork and salted egg yolk, which is the correct kind, and I will not be taking questions on this. Her aunt has made about sixty of them and is now giving them away the way ammunition is given away.", z: "之后我们去她舅舅家吃粽子——咸的，有猪肉和咸蛋黄，这是正确的那一派，这个问题不接受提问。她姨妈做了大概六十个，现在正在以分发弹药的方式分发出去。" },
+      { p: "Take twenty.", z: "拿二十个。", w: "Aunt" },
+      { p: "We can't eat twenty.", z: "我们吃不了二十个。", w: "Me" },
+      { p: "Freeze them.", z: "冻起来。", w: "Aunt" },
+      { p: "There is no arguing with an auntie holding a bag. I know this. I've known it for eleven years. I take the bag.", z: "跟一个拎着袋子的阿姨是没有道理可讲的。这点我知道，已经知道十一年了。我接过袋子。" },
+      { p: "We walk home in the heat with twenty zongzi. Three days of holiday, one morning of noise, forty seconds of actual racing, and enough food to last until the Mid-Autumn boxes start arriving.", z: "我们拎着二十个粽子在热天里走回家。三天假，一上午的喧闹，四十秒真正的比赛，还有足够吃到月饼礼盒又开始出现的食物。" }
     ],
     notes: [
-      { e: "let's just order something", c: "要不点外卖吧", x: "Too tired to cook — let's just order something." },
-      { e: "I'll do X if you handle Y", c: "我干X你干Y（分工）", x: "I'll do the rice if you handle the greens." },
-      { e: "neither of us is going to change", c: "我们俩谁都不会改", x: "We've argued about it for years. Neither of us is going to change." },
-      { e: "with the TV off", c: "关着电视（不看）", x: "We eat with the TV off and the phones face down." }
-    ]
-  },
-
-  {
-    id: "s14", part: "evening", time: "20:50",
-    t: "Bath time and the missing homework", z: "洗澡与失踪的作业",
-    lead: "八点半到九点半是一天里最吵的半小时，也是最值得记录的一段英语。",
-    paras: [
-      { p: "The half hour between homework and bed is the loudest part of the day, and also the part where I do the most negotiating per minute. Nobody is being difficult on purpose. It's just that everyone in this flat wants a different version of the next thirty minutes.", z: "从作业到睡觉的那半小时，是一天里最吵的，也是我每分钟谈判次数最多的一段。没人故意为难谁。只是这套房子里每个人想要的，都是接下来三十分钟的不同版本。" },
-      { p: "You said five minutes and it's been twenty.", z: "你说五分钟，已经二十分钟了。", w: "Me" },
-      { p: "I'm on the last one.", z: "我在做最后一道了。", w: "Kid" },
-      { p: "'I'm on the last one' is the same sentence I say about socks, about emails, about everything. Hearing it come out of a nine-year-old is uncomfortable in a way I don't enjoy examining.", z: "「我在做最后一道了」——这句话我说袜子的时候说过，说邮件的时候说过，说什么都说过。听到它从一个九岁小孩嘴里说出来，那种不自在我不太想深究。" },
-      { p: "Bath first or homework first? We've had this debate eleven hundred times and the answer is always homework first, and it will still be asked tomorrow, because the function of the question isn't to get an answer. It's to delay.", z: "先洗澡还是先作业？这场辩论我们进行过一千一百次，答案永远是先作业，明天它还是会被问一遍——因为这个问题的功能不是得到答案，是拖延。" },
-      { p: "By 9:30 the flat goes quiet and I stand in the kitchen for a minute, not doing anything, enjoying a silence I was too tired to enjoy twenty minutes ago.", z: "九点半，屋里安静下来。我在厨房站了一分钟，什么都没做，享受着二十分钟前我累得享受不了的安静。" }
-    ],
-    notes: [
-      { e: "I'm on the last one", c: "我在做最后一个了（拖延专用）", x: "I'm on the last one, two minutes." },
-      { e: "on purpose", c: "故意的", x: "Nobody is being difficult on purpose." },
-      { e: "the function of the question", c: "这个问题的作用", x: "The function of the question isn't to get an answer." },
-      { e: "too tired to enjoy", c: "累得无法享受", x: "I was too tired to enjoy the quiet." }
-    ]
-  },
-
-  {
-    id: "s15", part: "evening", time: "22:10",
-    t: "Making plans", z: "微信上约周末",
-    lead: "约人这件事，中文里三句解决，英文里要绕一圈才显得不强势。",
-    paras: [
-      { p: "Making plans in English takes more words than it does in Chinese, and it took me a while to understand why. It's not that English is wordier. It's that English-speaking culture seems to treat a plan as something you arrive at together, not something you propose and confirm.", z: "用英文约人比中文费字，我花了好一阵才明白为什么。不是英文更啰嗦，而是英语文化似乎把「计划」当成一件大家一起走到那儿的事，而不是你提出、对方确认的事。" },
-      { p: "We should do something this weekend. Are you around Saturday?", z: "这周末咱们搞点什么吧。你周六在吗？", w: "Me" },
-      { p: "Saturday's a bit up in the air — can I let you know Friday?", z: "周六还有点悬，我周五告诉你行吗？", w: "Friend" },
-      { p: "'Up in the air' is the phrase I'd translate as 待定, and it's the honest version of 'maybe'. It means no decision has been made and nothing is being hidden from you. I've learned not to push it. Pushing turns a soft maybe into a hard no.", z: "「up in the air」我会翻译成「待定」，它是「maybe」的诚实版本。意思是还没决定，也没有瞒你什么。我学会了别逼问——一逼，软的maybe就变成硬的不行。" },
-      { p: "So I say 'sounds good, just let me know,' and I genuinely leave it. The plan may happen, may not, and both are fine. This took practice. My instinct is to pin everything down on the first message.", z: "于是我说「好啊，到时候告诉我」，然后真的就放下了。这事可能发生，也可能不发生，两种都行。这是练出来的——我的本能是在第一条消息里把一切都钉死。" }
-    ],
-    notes: [
-      { e: "are you around", c: "你在吗 / 有空吗", x: "Are you around this weekend?" },
-      { e: "up in the air", c: "悬着、待定", x: "Saturday's a bit up in the air." },
-      { e: "can I let you know Friday", c: "我周五告诉你行吗", x: "Can I let you know by Friday?" },
-      { e: "pin everything down", c: "把一切钉死（确定下来）", x: "My instinct is to pin everything down immediately." }
-    ]
-  },
-
-  {
-    id: "s16", part: "evening", time: "23:20",
-    t: "Scrolling in the dark", z: "关灯后刷手机",
-    lead: "说好十一点睡，现在十一点二十，屏幕亮度是我唯一承认的错误。",
-    paras: [
-      { p: "I said eleven. It's 11:23 and I'm lying in the dark, holding my phone above my face, reading about a city I will never visit. This is not relaxation. It's the day refusing to end.", z: "我说十一点。现在十一点二十三，我躺在黑暗里，把手机举在脸上方，读着一个我永远不会去的城市。这不是放松，这是这一天拒绝结束。" },
-      { p: "There's a moment, right around now, when I know exactly what I'm doing and do it anyway. I call it the last scroll. It's never the last scroll.", z: "总有这么一个时刻，大概就是现在，我清清楚楚知道自己在干嘛，然后继续干。我管它叫「最后刷一下」。它从来不是最后一下。" },
-      { p: "Five more minutes and I'm putting it down.", z: "再五分钟我就放下。", w: "Me" },
-      { p: "It's the same sentence from this morning, aimed at the other end of the day. I am, it turns out, extremely consistent.", z: "跟早上那句是同一句，只是对准了一天的另一头。事实证明，我这人非常一致。" },
-      { p: "Eventually I put it face down on the floor, which is far enough away that picking it up requires a decision. That's the whole system. Not discipline — distance.", z: "最后我把它屏幕朝下放在地板上，远到要拿起来就得做一个决定。这就是整套系统。不是自律，是距离。" }
-    ],
-    notes: [
-      { e: "I said eleven", c: "我说好十一点的（口语省略）", x: "I said eleven and it's already midnight." },
-      { e: "the last scroll", c: "最后刷一下（永远不会是最后）", x: "It's the last scroll. It's never the last scroll." },
-      { e: "do it anyway", c: "明知故犯", x: "I know exactly what I'm doing and do it anyway." },
-      { e: "face down", c: "屏幕朝下", x: "I put it face down on the floor." }
-    ]
-  },
-
-  {
-    id: "s17", part: "weekend", time: "Sat 9:30",
-    t: "The market run", z: "周末去菜市场",
-    lead: "周末上午的菜市场，是一周里唯一一个不用排队也不用解释的地方。",
-    paras: [
-      { p: "The market on a Saturday morning is the only place all week where I'm not waiting for anything. No ticket number, no ticket system, no 'we'll get back to you.' You point, they weigh it, you pay, done. Forty seconds, complete.", z: "周六上午的菜市场，是一周里唯一一个我不用等任何东西的地方。没有取号，没有系统，没有「我们回头联系你」。你指一下，他称一下，你付钱，完事。四十秒，闭环。" },
-      { p: "I've decided to stop asking for prices in advance. It's slower, but saying 'how much' before they wrap it makes the whole thing feel like a transaction, and I'd rather it feel like two people doing a small piece of business.", z: "我决定不再提前问价了。这样慢一点，但在他们包起来之前问「多少钱」，会让整件事变得像一笔交易；我宁愿它像两个人做了一笔小生意。" },
-      { p: "How much for the greens?", z: "青菜怎么卖？", w: "Me" },
-      { p: "Four. Take two bunches, six.", z: "四块。拿两把，六块。", w: "Vendor" },
-      { p: "I take two bunches. He throws in three spring onions without comment, which is not a discount, it's a relationship, and the difference matters to me more than fifty cents does.", z: "我拿了两把。他没说话，顺手丢进三根葱。这不是打折，这是关系——而这个区别对我的意义，比五毛钱大。" },
-      { p: "Back home I unpack on the counter and feel, briefly, like someone who has their life together. It lasts until about eleven, when I remember the laundry.", z: "回家把东西摊在灶台上，有那么一瞬间觉得自己是个把生活安排明白的人。这种感觉持续到大概十一点，然后我想起来还有衣服没洗。" }
-    ],
-    notes: [
-      { e: "how much for ...", c: "……怎么卖", x: "How much for the greens?" },
-      { e: "take two bunches", c: "拿两把", x: "Take two bunches, it's six." },
-      { e: "throw in", c: "额外送（搭着给）", x: "He threw in three spring onions." },
-      { e: "have my life together", c: "把生活安排明白", x: "For about an hour I feel like I have my life together." }
-    ]
-  },
-
-  {
-    id: "s18", part: "weekend", time: "Sun 5:00",
-    t: "One more set", z: "最后一组",
-    lead: "健身房的谎言只有一句，就是「最后一组」。它跟「再睡五分钟」是同一句。",
-    paras: [
-      { p: "Every gym has one sentence that keeps the whole business running, and it's 'one more set.' It's the same sentence as 'five more minutes,' just aimed at a different kind of tired.", z: "每家健身房都靠一句话运转，那就是「最后一组」。它跟「再睡五分钟」是同一句话，只是对准了另一种累。" },
-      { p: "I'm on my third one-more-set. There is a version of me that could have left after the second, but that version doesn't go to the gym on a Sunday, so here we are.", z: "我现在是第三个「最后一组」了。存在一个本可以在第二组之后就走的我，但那个我周日不会来健身房，所以我们走到了这里。" },
-      { p: "Are you using this?", z: "这个你还在用吗？", w: "Coworker" },
-      { p: "Yeah, two more. Take it after.", z: "嗯，还两组。用完给你。", w: "Me" },
-      { p: "'Are you using this' is the most efficient sentence in any gym. Five words, no ambiguity, and it prevents the thing everyone is quietly worried about: standing next to someone else's machine doing nothing.", z: "「这个你还在用吗」是任何健身房里效率最高的一句话。五个词，没有歧义，而且它避免了所有人私下都在担心的事：站在别人的器械旁边干瞪眼。" },
-      { p: "On the way out I feel the specific good tired that makes stairs an event. I'll be sore tomorrow, I'll complain about it, and I'll go back on Thursday. This is the deal.", z: "出门时我感到那种特定的、让楼梯变成一件大事的健康的累。明天我会酸痛，我会抱怨，然后周四我还会去。这就是约定。" }
-    ],
-    notes: [
-      { e: "one more set", c: "最后一组（通常不是最后）", x: "One more set and then I'm done." },
-      { e: "are you using this", c: "这个你还在用吗（健身房）", x: "Are you using this? No? Mind if I take it?" },
-      { e: "take it after", c: "用完给你", x: "I've got two more, take it after." },
-      { e: "the deal", c: "就这么说定了 / 这就是约定", x: "I'll complain, and I'll go back. That's the deal." }
+      { e: "shoulder to shoulder", c: "肩并肩（挤满人）", x: "By ten it's shoulder to shoulder along the water." },
+      { e: "set the pace", c: "定节奏", x: "There's a drum at the front setting the pace." },
+      { e: "year after year", c: "年复一年", x: "People come back year after year for forty seconds." },
+      { e: "give away", c: "送人 / 分发出去", x: "She made sixty zongzi and is giving them away." },
+      { e: "there's no arguing with ...", c: "跟……是没道理可讲的", x: "There's no arguing with an auntie holding a bag." }
     ]
   }
 ];

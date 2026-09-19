@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#FBF9F4" />
-<title>身边的英语 · 一个上班族的一天</title>
+<title>身边的英语 · 一个外企法务的一年</title>
 <style>
   :root{
     --bg:#FBF9F4;
@@ -63,17 +63,39 @@
     border-radius:10px;padding:9px 11px;font-size:13px;outline:none;font-family:var(--sans);
   }
   .side-search input:focus{border-color:var(--gold);}
-  .dir{flex:1;overflow-y:auto;padding:0 10px 20px;}
-  .dir-group{font-size:11px;letter-spacing:1.2px;color:var(--muted);margin:14px 6px 6px;text-transform:uppercase;}
+  .dir{flex:1;overflow-y:auto;padding:4px 10px 20px;overscroll-behavior:contain;}
+  .dir-group{
+    display:flex;align-items:center;gap:6px;width:100%;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);
+    margin:14px 0 4px;padding:7px 10px;background:var(--gold-soft);border:0;border-radius:9px;
+  }
+  .dir-group:hover{background:var(--hl);color:var(--gold-deep);}
+  .dir-group .caret{flex:0 0 auto;font-size:10px;color:var(--muted);transition:transform .15s;}
+  .grp.fold .grp-b{display:none;}
+  .grp.fold .dir-group .caret{transform:rotate(-90deg);}
+  .dir-group .en{font-weight:400;font-size:10.5px;color:var(--muted);font-family:var(--serif);font-style:italic;}
+  .dir-group .cnt{margin-left:auto;font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .dir-day{
+    display:flex;align-items:center;gap:6px;width:100%;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:11.5px;color:var(--muted);letter-spacing:.2px;
+    margin:2px 0 2px 10px;padding:4px 10px;background:transparent;border:0;border-radius:9px;
+  }
+  .dir-day:hover{background:var(--gold-soft);color:var(--ink);}
+  .dir-day .caret{flex:0 0 auto;font-size:9px;transition:transform .15s;}
+  .day.fold .day-b{display:none;}
+  .day.fold .dir-day .caret{transform:rotate(-90deg);}
+  .dir-day .en{font-size:10px;color:var(--muted);font-family:var(--serif);font-style:italic;}
+  .day-b .item{margin-left:20px;}
+  .grp.hide,.day.hide{display:none;}
   .item{
     display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:10px;
     cursor:pointer;border:1px solid transparent;
   }
   .item:hover{background:var(--gold-soft);}
   .item.on{background:var(--paper);border-color:var(--line);box-shadow:var(--shadow);}
-  .item .tm{flex:0 0 52px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .item .tm{flex:0 0 46px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
   .item .tx{min-width:0;}
-  .item .t1{display:block;font-size:13.5px;color:var(--ink);line-height:1.35;}
+  .item .t1{display:block;font-size:13px;color:var(--ink);line-height:1.35;}
   .item .t2{display:block;font-size:11px;color:var(--muted);line-height:1.35;margin-top:2px;font-family:var(--serif);font-style:italic;}
   .item .done{margin-left:auto;font-size:11px;color:var(--gold-deep);flex:0 0 auto;}
   .item.hide{display:none;}
@@ -179,10 +201,10 @@
   <aside class="side" id="side">
     <div class="side-top">
       <h1 class="brand">身边的英语</h1>
-      <div class="brand-sub">一个上班族完整的一天 · 场景短文 18 篇</div>
+      <div class="brand-sub">广州 · 一个外企法务的一年 · 场景短文</div>
     </div>
     <div class="side-search">
-      <input id="q" type="search" placeholder="搜英文或中文，如 snooze / 外卖" />
+      <input id="q" type="search" placeholder="搜英文或中文，如 dim sum / 外卖" />
     </div>
     <nav class="dir" id="dir"></nav>
   </aside>
@@ -260,31 +282,93 @@ function EN_START(){
     return vs[0];
   }
 
+  function pathOf(pid){
+    var i, j, g, kids;
+    for(i = 0; i < PARTS.length; i++){
+      g = PARTS[i]; kids = g.kids || [];
+      for(j = 0; j < kids.length; j++){ if(kids[j].id === pid) return { g: g, d: kids[j] }; }
+    }
+    return { g: { label: "其他", en: "" }, d: { label: "", en: "" } };
+  }
+
+  function currentPart(){
+    var s = SCENES.filter(function(x){ return x.id === state.id; })[0];
+    return s ? s.part : "";
+  }
+  function groupHasCurrent(gid){
+    var g = PARTS.filter(function(x){ return x.id === gid; })[0];
+    if(!g) return false;
+    var cp = currentPart(), kids = g.kids && g.kids.length ? g.kids : [{ id: g.id }];
+    for(var i = 0; i < kids.length; i++){ if(kids[i].id === cp) return true; }
+    return false;
+  }
+  function isFold(k){
+    var v = store.get("en-fold:" + k);
+    if(v === "1") return true;
+    if(v === "0") return false;
+    /* 未记录过：默认只把当前篇目所在的组/日展开，其余收起来 */
+    if(k.indexOf("g:") === 0) return !groupHasCurrent(k.slice(2));
+    return false; /* 二级（周一…周日、各假期）默认展开，点一级一次就能看到篇目 */
+  }
+  function setFold(k, v){ store.set("en-fold:" + k, v ? "1" : "0"); }
+
   function renderDir(){
-    var html = "", p, items;
+    var html = "", g, kids, d, items, gcount, k, m;
     var sub = document.querySelector(".brand-sub");
-    if(sub) sub.textContent = "一个上班族完整的一天 · 场景短文 " + SCENES.length + " 篇";
-    for(var k = 0; k < PARTS.length; k++){
-      p = PARTS[k];
-      items = SCENES.filter(function(s){ return s.part === p.id; });
-      if(!items.length) continue;
-      html += '<div class="dir-group">' + p.label + ' · ' + p.en + '</div>';
-      items.forEach(function(s){
-        var kw = (s.t + " " + s.z + " " + s.lead + " " + s.paras.map(function(x){ return x.p + " " + x.z; }).join(" ")).toLowerCase().replace(/"/g, "");
-        html += '<div class="item' + (s.id === state.id ? " on" : "") + '" data-go="' + s.id + '" data-kw="' + kw + '">' +
-          '<span class="tm">' + s.time + '</span>' +
-          '<span class="tx"><span class="t1">' + s.z + '</span><span class="t2">' + s.t + '</span></span>' +
-          (done[s.id] ? '<span class="done">已听</span>' : '') + '</div>';
-      });
+    if(sub) sub.textContent = "广州 · 一个外企法务的一年 · 场景短文 " + SCENES.length + " 篇";
+    for(k = 0; k < PARTS.length; k++){
+      g = PARTS[k];
+      kids = g.kids && g.kids.length ? g.kids : [{ id: g.id, label: "", en: "" }];
+      gcount = 0;
+      kids.forEach(function(x){ gcount += SCENES.filter(function(s){ return s.part === x.id; }).length; });
+      if(!gcount) continue;
+      html += '<div class="grp' + (isFold("g:" + g.id) ? " fold" : "") + '" data-g="' + g.id + '">' +
+        '<button class="dir-group" data-toggle="g:' + g.id + '" type="button">' +
+        '<span class="caret">&#9662;</span><span>' + g.label + '</span>' +
+        '<span class="en">' + g.en + '</span><span class="cnt">' + gcount + '</span></button>' +
+        '<div class="grp-b">';
+      for(m = 0; m < kids.length; m++){
+        d = kids[m];
+        items = SCENES.filter(function(s){ return s.part === d.id; });
+        if(!items.length) continue;
+        html += '<div class="day' + (isFold("d:" + d.id) ? " fold" : "") + '" data-d="' + d.id + '">' +
+          '<button class="dir-day" data-toggle="d:' + d.id + '" type="button">' +
+          '<span class="caret">&#9662;</span><span>' + d.label + '</span>' +
+          '<span class="en">' + d.en + '</span></button><div class="day-b">';
+        items.forEach(function(s){
+          var kw = (s.t + " " + s.z + " " + s.lead + " " + s.paras.map(function(x){ return x.p + " " + x.z; }).join(" ")).toLowerCase().replace(/"/g, "");
+          html += '<div class="item' + (s.id === state.id ? " on" : "") + '" data-go="' + s.id + '" data-kw="' + kw + '">' +
+            '<span class="tm">' + s.time + '</span>' +
+            '<span class="tx"><span class="t1">' + s.z + '</span><span class="t2">' + s.t + '</span></span>' +
+            (done[s.id] ? '<span class="done">已听</span>' : '') + '</div>';
+        });
+        html += '</div></div>';
+      }
+      html += '</div></div>';
     }
     dir.innerHTML = html;
+    keepCurrentVisible();
+  }
+
+  function keepCurrentVisible(){
+    var on = dir.querySelector(".item.on");
+    if(on && on.scrollIntoView){ try { on.scrollIntoView({ block: "nearest" }); } catch(e){ on.scrollIntoView(false); } }
   }
 
   function filterDir(q){
     q = (q || "").trim().toLowerCase();
+    if(!q){ renderDir(); return; }
+    Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(el){ el.classList.remove("fold"); });
+    Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(el){ el.classList.remove("fold"); });
     Array.prototype.forEach.call(dir.querySelectorAll(".item"), function(el){
-      if(q && el.getAttribute("data-kw").indexOf(q) === -1) el.classList.add("hide");
+      if(el.getAttribute("data-kw").indexOf(q) === -1) el.classList.add("hide");
       else el.classList.remove("hide");
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".day"), function(d){
+      d.classList.toggle("hide", d.querySelectorAll(".item:not(.hide)").length === 0);
+    });
+    Array.prototype.forEach.call(dir.querySelectorAll(".grp"), function(g){
+      g.classList.toggle("hide", g.querySelectorAll(".item:not(.hide)").length === 0);
     });
   }
 
@@ -300,9 +384,9 @@ function EN_START(){
   function renderScene(){
     var s = SCENES.filter(function(x){ return x.id === state.id; })[0];
     if(!s){ reader.innerHTML = '<div class="empty">没有找到这一篇</div>'; return; }
-    var part = PARTS.filter(function(x){ return x.id === s.part; })[0];
+    var pt = pathOf(s.part);
     document.body.setAttribute("data-mode", state.mode);
-    $("crumb").textContent = part.label + " · " + s.time + " · " + s.z;
+    $("crumb").textContent = pt.g.label + (pt.d.label ? " · " + pt.d.label : "") + " · " + s.time + " · " + s.z;
 
     var html = '<div class="scene-head">' +
       '<div class="kicker">scene · ' + s.time + '</div>' +
@@ -442,6 +526,13 @@ function EN_START(){
   }
 
   dir.addEventListener("click", function(e){
+    var tg = e.target.closest("[data-toggle]");
+    if(tg){
+      var key = tg.getAttribute("data-toggle");
+      var box = tg.parentNode;
+      setFold(key, box.classList.toggle("fold"));
+      return;
+    }
     var it = e.target.closest(".item");
     if(it) go(it.getAttribute("data-go"));
   });
@@ -530,17 +621,6 @@ function EN_START(){
   if(window.innerWidth <= 900) closeSide();
 
   window.addEventListener("beforeunload", function(){ if(synth){ try { synth.cancel(); } catch(e){} } });
-
-  function applyTheme(mode){
-    document.documentElement.setAttribute("data-theme", mode);
-    var mc = document.querySelector('meta[name="theme-color"]');
-    if(mc) mc.setAttribute("content", mode === "dark" ? "#171614" : "#FBF9F4");
-  }
-  window.addEventListener("message", function(e){
-    var d = e.data;
-    if(d && d.type === "theme" && (d.mode === "dark" || d.mode === "light")) applyTheme(d.mode);
-  });
-  if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
 
   function applyTheme(mode){
     document.documentElement.setAttribute("data-theme", mode);
