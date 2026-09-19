@@ -28,12 +28,22 @@
 ## 可复用脚本
 - `scripts/add_lesson.py`：把某周某天 HTML 合并进餐饮法务 tab（一键入库）。
 
-## 刑事辩护 tab（2026-09-16 新增）
-- `criminal`，挂在「法务实务」`legal` 分组（与 catering/logistics/ip/foreign-contracts/insurance/ai-law 并列），组件 `src/components/CriminalDefenseTab.tsx`（iframe `/criminal/`）。
-- 静态内容在 **`public/criminal/`**：13 页约 330 KB —— 总纲 / 流程鸟瞰 / 收案委托 / 会见 / 侦查辩护 / 阅卷·起诉 / 一审庭审 / 二审·复核·执行 / 特别程序·风险 / 文书库 / 工具 / 30 天计划 / 法条术语。纯本地零上传、全相对链接、无外部依赖，**可整目录拷贝到阿里云站点**。
+## 刑事辩护 tab（2026-09-16 新增，2026-09-19 改造）
+- 2026-09-19 起**从「法务实务」`legal` 分组移到「律师实务」`practice` 分组**（与 family-law 并列），组件 `src/components/CriminalDefenseTab.tsx`（iframe `/criminal/index.html`，已加入 `isFullBleed` 通栏）。
+- 同步改造为**与婚姻家事同款左栏目录 B 布局**：抽出共享 `public/criminal/assets/crim-style.css`（暗色国风 + 顶栏/左固定目录栏/主区/右页内目录，重定家事站布局）+ `public/criminal/assets/crim-app.js`（`STATIONS` 数组驱动 13 页侧栏，分组：总纲 / PART I 全流程实务(8) / PART II 工具与模板(3) / PART III 训练计划(1)；支持搜索过滤、scrollspy、上下篇、复制按钮兜底）。
+- 13 个 HTML 页已改写：去各页内联 `<style>`（合并去重为共享 CSS）→ 引 `crim-style.css`；去旧顶部横向 `.nav`；`<body data-ch="id">`；保留各页**内联 `<script>`**（plan.html 的 30 天 DAYS 渲染、templates/tools 内联脚本必须保留，只删外链 `/theme-toggle.js` 再在页尾重挂 `crim-app.js` + `/theme-toggle.js`）。
+- 静态内容在 **`public/criminal/`**：13 页（总纲/流程鸟瞰/收案委托/会见/侦查辩护/阅卷·起诉/一审庭审/二审·复核·执行/特别程序·风险/文书库/工具/30天计划/法条术语）。**`public/criminal/` 即源站，无独立源码目录、无 rsync 同步脚本**——改内容直接改这里。
 - 线上：`https://linqiongni.top/criminal/`。
 - 内容骨架 = 中华全国律师协会《律师办理刑事案件规范》（2017-08-27 通过）十八章；法条基准 = 刑诉法 2018 年修正本（308 条）+ 法释〔2021〕1 号。已在文中标注「刑诉法第四次修改在途，条号以现行文本为准」。
-- 后续要加新模块：复制任一页改内容，并在所有页的 `.nav` 里加一条链接（可用 scripts 批量替换）。
+- 后续加新模块：① 复制任一页改内容并在 `<body data-ch>` 设新 id；② 在 `assets/crim-app.js` 的 `STATIONS` 数组加一条（含 part 分组与 kw 搜索词）；③ 若需新分组，在 `PARTS` 数组加一项。不再手动维护各页 `.nav`。
+
+## 婚姻家事与遗产继承 tab（2026-09-19 新增，当晚已挂载上线）
+- **新顶层分组 `practice`（律师实务）**（与「法务实务」并列，第一个子板块），subTabs:['family-law']，SUB_TAB_META「婚姻家事与遗产继承 / Family & Inheritance」。组件 `src/components/FamilyInheritanceTab.tsx`（ThemeIframe → `/family-law/index.html`）；types/navConfig/App 四处已接线。
+- 源站：根目录 `婚姻家事与遗产继承/`（index + ch01–ch24 共 25 页 ≈560KB），B 布局（顶栏+左栏+右页内目录），assets 复用商事仲裁模式。同步：`npm run sync:family-law`（rsync 排除 _build）。
+- **法源基准事实表：`婚姻家事与遗产继承/_build/法源基准.md`（联网核实）**——含婚姻家庭编解释（一）91 条、解释（二）（法释〔2025〕1 号，2025-02-01 施行）23 条、继承编解释（一）45 条全文；民法典 1158=遗赠扶养协议；**「2026 继承新规」是谣言**；民诉法 2023 修正条号不写具体。改内容先查该表。
+- 结构：PART I 通用全流程 ch01–08 / PART II 十案由 ch09–18（每章五节：焦点/起草/证据/法条/抗辩坑点）/ PART III ch19–23（保护令/特别程序/执行/遗产管理人/再审三撤执行异议）/ ch24 附录。
+- 线上：`https://linqiongni.top/family-law/`。commit a1e4360 + dd2ec92（Hero 数据条改 11 领域/470+ 篇）。
+- 再次踩坑：App.tsx 多行条件 Edit 报成功未落盘（2 次），python replace 才写入；**改后必 grep 计数**。
 
 ## 待办 / 未决
 - [ ] 是否把「案例展示」卡片也从黑白→hover 变彩改为常驻彩色（用户未定）。
@@ -58,6 +68,17 @@
 - 已落地 `ch02-esop.html`：`#deep-lp`（有限合伙企业持股平台全解）+ `#deep-vesting`（成熟计划 Vesting 全解），正文 3 处锚点（剧情段 / 术语卡「持股平台」/ 成熟节奏引导行）；header meta-line 加了「深度补充 2 篇」。
 - **已核实法条（gov.cn《合伙企业法》现行文本，2026-09-18）**：第 61 条 2–50 人且至少 1 名 GP；第 62 条名称含「有限合伙」；第 63 条协议必备 6 项；第 64 条 LP 不得以劳务出资；第 66 条登记载明 LP 及认缴额；第 67 条 GP 执行合伙事务；**第 68 条 LP 不执行合伙事务 + 8 项安全港**；第 69 条利润分配（不得全分给部分合伙人，协议另有约定除外）；第 70–73 条 LP 可交易 / 竞业 / 出质 / 对外转让应提前 30 日通知；第 74 条强执份额时其他合伙人优先购买权；第 75 条仅剩 LP 应解散；**第 76 条表见普通合伙**（LP 最易踩的雷）；第 77 条新入伙 LP 以认缴额为限。vesting 市场惯例：4 年 + 1 年 cliff + 之后每月 1/48 为标准；单层触发已少见，**双层触发（并购 + 被裁/未承接）为现代主流**。
 - 复用：其余站位（03–12）做同类细化直接复刻此模式。
+
+## 商事仲裁 tab（2026-09-18 新增，当晚已挂载上线）
+- 顶层目录 `商事仲裁/`（与 `融资法务/` 同级）：`index.html` + `ch01…ch20` + `assets/{style.css,app.js}`，约 440 KB。**法务实务分组第 10 个子板块**（前 9 个：餐饮/物流/知产/涉外/保险/刑事/AI+法律/劳动法务/融资）。
+- 组件 `src/components/ArbitrationTab.tsx`（`ThemeIframe` → `/arbitration/index.html`）；`types.ts` 加 `'arbitration'`；`navConfig.ts` 的 `legal.subTabs` 末尾追加 + `SUB_TAB_META.arbitration = {商事仲裁 / Arbitration}`；`App.tsx` 加渲染分支＋回顶部＋`isFullBleed`。
+- 同步：`npm run sync:arbitration`（`rsync -a 商事仲裁/ public/arbitration/`），已串进 `sync:all-static`。**改内容只改根目录中文源目录，别只改 public 副本。**
+- 结构：第一部分通用流程（ch01 仲裁条款 → ch02 仲裁前 → ch03 立案 → ch04 组庭 → ch05 答辩/反请求 → ch06 举证质证 → ch07 开庭 → ch08 裁决 → ch09 与民诉差异对照）；第二部分 ch10—ch16 七类合同（买卖/建设工程/租赁/服务委托/特许经营/借款/国际贸易），每章固定六节（焦点／起草／证据／法条／抗辩坑点／对方抗辩＋应对＋裁判规则）＋第七节「其他」；第三部分 ch17 执行／ch18 撤裁／ch19 不予执行／ch20 附录。
+- **法源基准（关键，勿用旧法）**：《仲裁法》2025-09-12 修订通过、**2026-03-01 施行**，8 章 96 条。全站按新条号写：第 27 条三要素＋默示达成、第 30 条独立性、第 31 条异议须首次开庭前、第 41 条送达、第 45 条仲裁员披露、第 61 条虚假仲裁驳回、**第 72 条撤裁期限 3 个月（旧法 6 个月）**、第 81 条仲裁地、第 82 条特别（临时）仲裁、第 83/84 条涉外撤裁与不予执行、第 88 条境外裁决承认执行。配套司法解释尚未出台（最高法已表态加快制定），页内已标注「不抵触部分继续适用，须核对现行文本」。
+- 内容风格：律师实务干货＋踩坑清单＋自检清单；案例只写「裁判规则要点」并注明检索核校路径，**不编造案号与案情**。
+- 页面技术：`assets/app.js` 的 `STATIONS` 数组驱动章节条/上下篇/目录/进度条，正文页只写 `<body data-ch="chNN">`；暗色由 `/theme-toggle.js` 同步主站。
+- **布局（2026-09-19 改）**：改为「顶栏 + 左侧固定目录栏（独立滚动） + 主区独立滚动 + 右侧本页目录」的 app 式布局，与保险站一致。`html,body{height:100%}` + `body{overflow:hidden}` + `.layout{display:flex;height:calc(100vh-顶栏高)}`（顶栏高度由 JS 实测注入，勿写死）；左栏 280px、`overflow-y:auto`，主区 `.main{overflow-y:auto}`，右侧 `.pagetoc` sticky 且 ≥1181px 才显示、窄屏回落为页内 `.toc` 块（两种都生成，靠 CSS 媒体查询切换，勿用 JS 判断）。<1001px 时左栏变抽屉（`transform:translateX(-100%)` + 顶栏「目录」按钮）。滚动进度条/scrollspy 需同时监听 `main` 与 `window`（宽窄屏滚动容器不同）。`STATIONS` 增 `kw` 字段供搜索（否则「撤裁」搜不到「申请撤销仲裁裁决」）。
+- 经验：jsdom 无 `window.matchMedia`，用 `window.matchMedia ? ... : innerWidth` 兜底，否则 jsdom 冒烟脚本整页脚本报错。冒烟方式：`NODE_PATH=~/.workbuddy/binaries/node/workspace/node_modules node` + jsdom `runScripts:'dangerously'` 断言侧栏链接数/高亮/右侧目录条目/搜索命中。
 
 ## 双视角劳动法务 tab（2026-09-14 新增，2026-09-17 改为「法务实务」子板块）
 - 原第 4 个顶层分组，2026-09-17 起**移入「法务实务」`legal` 分组作为子 tab**（顶层恢复为个人 / 法务实务 / 影视法律 3 个）。`navConfig.ts` 的 `NAV_GROUPS` 删 `labor` 分组、`legal.subTabs` 末尾加 `'labor'`；`SUB_TAB_META.labor` 文案保留为子 tab 名；Navbar 注释改回 3 分组。`App.tsx` 的 `labor` 渲染分支与 `isFullBleed` 不变（子 tab 仍为铺满型）。
