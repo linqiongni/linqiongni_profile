@@ -17,9 +17,9 @@ interface NavbarProps {
   solid?: boolean;
 }
 
-// 统一的键盘焦点环：香槟金，仅键盘聚焦时显示（鼠标/触摸不显示）
+// 统一的键盘焦点反馈：不加方框，改为文字金色发光（text-shadow 可继承，按钮内文字同步发光）
 const FOCUS_RING =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89F6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFCF9] dark:focus-visible:ring-offset-[#1C1C1E]';
+  'focus-visible:outline-none focus-visible:[text-shadow:0_0_12px_rgba(184,159,107,1),0_0_28px_rgba(184,159,107,0.65),0_0_44px_rgba(184,159,107,0.4)]';
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeGroup,
