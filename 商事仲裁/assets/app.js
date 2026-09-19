@@ -77,6 +77,14 @@
   var layout = el('div', 'layout');
   var side = el('aside', 'side');
   side.id = 'side';
+  // 侧栏折叠：头部 + 折叠控件
+  var sideHd = el('div', 'side-hd');
+  sideHd.appendChild(el('span', 't', '目录'));
+  var collapseBtn = el('button', 'collapse-btn', '⟨');
+  collapseBtn.setAttribute('aria-label', '收起目录');
+  collapseBtn.title = '收起目录（左折叠）';
+  sideHd.appendChild(collapseBtn);
+  side.appendChild(sideHd);
   var main = el('div', 'main');
   main.id = 'main';
   var bodywrap = el('div', 'bodywrap');
@@ -137,6 +145,20 @@
   foot.appendChild(el('div', 'lv', '<b>·</b>撤裁期限：收到裁决书<br>之日起 3 个月内'));
   foot.appendChild(el('div', 'lv', '<b>·</b>《民法典》《民事诉讼法》<br>（2023 修正）及配套司法解释'));
   side.appendChild(foot);
+
+  /* ---------- 侧栏折叠（左折叠收起，可记忆） ---------- */
+  var fab = el('button', 'side-fab', '⟩ 目录');
+  fab.setAttribute('aria-label', '展开目录');
+  body.appendChild(fab);
+  function setCollapsed(on) {
+    document.body.classList.toggle('side-collapsed', on);
+    try { localStorage.setItem('arb_side_collapsed', on ? '1' : '0'); } catch (e) {}
+  }
+  collapseBtn.addEventListener('click', function () { setCollapsed(true); });
+  fab.addEventListener('click', function () { setCollapsed(false); });
+  try {
+    if (localStorage.getItem('arb_side_collapsed') === '1' && isWide()) setCollapsed(true);
+  } catch (e) {}
 
   // 当前项滚入可视区
   var onLink = linkMap[cur];

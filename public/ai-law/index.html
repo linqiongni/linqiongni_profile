@@ -57,6 +57,28 @@ body{
 #side a.on{border-left-color:var(--gold);color:var(--gold3);background:var(--bg2);font-weight:600}
 #side a .n{color:var(--gold);margin-right:7px;font-size:12px}
 
+/* 侧栏折叠（左折叠收起） */
+.side-hd{display:flex;align-items:center;justify-content:space-between;padding:0 2px 14px;margin-bottom:6px}
+.side-hd .t{font-size:11px;letter-spacing:.24em;color:var(--gold)}
+.collapse-btn{
+  width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg2);border:1px solid var(--line2);border-radius:6px;color:var(--ink2);
+  cursor:pointer;font-size:15px;line-height:1;font-family:inherit;transition:.15s;
+}
+.collapse-btn:hover{border-color:var(--gold);color:var(--gold)}
+.side-fab{
+  position:fixed;left:0;top:62px;z-index:20;display:none;align-items:center;gap:5px;
+  background:var(--card);border:1px solid var(--line2);border-left:none;
+  border-radius:0 8px 8px 0;padding:9px 11px;cursor:pointer;color:var(--ink2);
+  font-size:12.5px;font-family:inherit;box-shadow:var(--shadow);
+}
+.side-fab:hover{border-color:var(--gold);color:var(--gold)}
+@media(min-width:1081px){
+  #side{transition:flex-basis .25s ease,width .25s ease,padding .25s ease}
+  body.side-collapsed #side{flex-basis:0;width:0;padding-left:0;padding-right:0;border-right:none;overflow:hidden}
+  body.side-collapsed .side-fab{display:flex}
+}
+
 /* ---------- Sections ---------- */
 section{margin-bottom:56px;scroll-margin-top:20px}
 h2{
@@ -222,6 +244,7 @@ td b,th b{color:var(--ink)}
 <div class="wrap">
 
 <nav id="side">
+  <div class="side-hd"><span class="t">目录</span><button class="collapse-btn" aria-label="收起目录" title="收起目录（左折叠）">⟨</button></div>
   <div class="navt">目 录</div>
   <a href="#s0" class="on"><span class="n">序</span>怎么用这份方案</a>
   <a href="#s1"><span class="n">01</span>诊断：法务工作量地图</a>
@@ -1652,6 +1675,22 @@ td b,th b{color:var(--ink)}
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
+
+  // ---- 侧栏折叠（左折叠收起，可记忆） ----
+  var cBtn=document.querySelector('#side .collapse-btn');
+  var fab=document.createElement('button');
+  fab.className='side-fab';
+  fab.setAttribute('aria-label','展开目录');
+  fab.textContent='⟩ 目录';
+  document.body.appendChild(fab);
+  function isWide(){ return window.matchMedia ? window.matchMedia('(min-width:1081px)').matches : (window.innerWidth||1280)>=1081; }
+  function setCollapsed(on){
+    document.body.classList.toggle('side-collapsed', on);
+    try{ localStorage.setItem('ailaw_side_collapsed', on?'1':'0'); }catch(e){}
+  }
+  if(cBtn){ cBtn.addEventListener('click', function(){ setCollapsed(true); }); }
+  fab.addEventListener('click', function(){ setCollapsed(false); });
+  try{ if(localStorage.getItem('ailaw_side_collapsed')==='1' && isWide()) setCollapsed(true); }catch(e){}
 })();
 </script>
 </body>

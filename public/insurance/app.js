@@ -132,6 +132,38 @@
   }
 
   buildNav();
+
+  /* ---------- 侧栏折叠（左折叠收起，可记忆） ---------- */
+  var sideHd = document.createElement('div');
+  sideHd.className = 'side-hd';
+  sideHd.innerHTML = '<span class="t">目录</span>';
+  var cBtn = document.createElement('button');
+  cBtn.className = 'collapse-btn';
+  cBtn.setAttribute('aria-label', '收起目录');
+  cBtn.title = '收起目录（左折叠）';
+  cBtn.textContent = '⟨';
+  sideHd.appendChild(cBtn);
+  sidebar.insertBefore(sideHd, sidebar.firstChild);
+
+  var fab = document.createElement('button');
+  fab.className = 'side-fab';
+  fab.setAttribute('aria-label', '展开目录');
+  fab.textContent = '⟩ 目录';
+  document.body.appendChild(fab);
+
+  function isWide() {
+    return window.matchMedia ? window.matchMedia('(min-width: 1001px)').matches : (window.innerWidth || 1024) >= 1001;
+  }
+  function setCollapsed(on) {
+    document.body.classList.toggle('side-collapsed', on);
+    try { localStorage.setItem('ins_side_collapsed', on ? '1' : '0'); } catch (e) {}
+  }
+  cBtn.addEventListener('click', function () { setCollapsed(true); });
+  fab.addEventListener('click', function () { setCollapsed(false); });
+  try {
+    if (localStorage.getItem('ins_side_collapsed') === '1' && isWide()) setCollapsed(true);
+  } catch (e) {}
+
   route();
   window.addEventListener('hashchange', route);
   search.addEventListener('input', function () { filter(search.value); });

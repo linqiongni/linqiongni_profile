@@ -139,6 +139,31 @@ body {
 .sidefoot .lv { margin: 2px 0; }
 .sidefoot .lv b { color: var(--gold); margin-right: 6px; }
 
+/* 侧栏折叠（左折叠收起） */
+.side-hd { display: flex; align-items: center; justify-content: space-between; padding: 0 8px 12px; margin-bottom: 8px; border-bottom: 1px solid var(--line2); }
+.side-hd .t { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: .12em; }
+.collapse-btn {
+  width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+  background: var(--panel); border: 1px solid var(--line2); border-radius: 6px;
+  color: var(--ink2); cursor: pointer; font-size: 15px; line-height: 1; font-family: inherit; transition: .2s;
+}
+.collapse-btn:hover { border-color: var(--gold); color: var(--gold); }
+.side-fab {
+  position: fixed; left: 0; top: 64px; z-index: 45; display: none; align-items: center; gap: 5px;
+  background: var(--panel); border: 1px solid var(--line2); border-left: none;
+  border-radius: 0 8px 8px 0; padding: 9px 11px; cursor: pointer;
+  color: var(--ink2); font-size: 12.5px; font-family: inherit; box-shadow: var(--shadow);
+}
+.side-fab:hover { border-color: var(--gold); color: var(--gold); }
+
+@media (min-width: 1001px) {
+  .side { transition: flex-basis .25s ease, width .25s ease, padding .25s ease; }
+  body.side-collapsed .side {
+    flex-basis: 0; width: 0; padding-left: 0; padding-right: 0; border-right: none; overflow: hidden;
+  }
+  body.side-collapsed .side-fab { display: flex; }
+}
+
 /* 主区 */
 .main {
   flex: 1 1 auto; min-width: 0; padding: 24px 36px 60px;

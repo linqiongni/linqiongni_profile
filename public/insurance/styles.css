@@ -55,6 +55,28 @@ code,pre{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace
 .sidefoot .lv{margin:3px 0}
 .sidefoot .lv b{color:var(--gold);margin-right:6px}
 
+/* 侧栏折叠（左折叠收起） */
+.side-hd{display:flex;align-items:center;justify-content:space-between;padding:0 4px 12px;margin-bottom:10px;border-bottom:1px solid var(--line2)}
+.side-hd .t{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.1em}
+.collapse-btn{
+  width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--line);border-radius:6px;color:var(--tx2);
+  cursor:pointer;font-size:15px;line-height:1;font-family:inherit;transition:.15s;
+}
+.collapse-btn:hover{border-color:var(--gold2);color:var(--gold)}
+.side-fab{
+  position:fixed;left:0;top:64px;z-index:30;display:none;align-items:center;gap:5px;
+  background:var(--card);border:1px solid var(--line);border-left:none;
+  border-radius:0 8px 8px 0;padding:9px 11px;cursor:pointer;color:var(--tx2);
+  font-size:12.5px;font-family:inherit;box-shadow:var(--shadow);
+}
+.side-fab:hover{border-color:var(--gold2);color:var(--gold)}
+@media (min-width:1001px){
+  .sidebar{transition:flex-basis .25s ease,width .25s ease,padding .25s ease}
+  body.side-collapsed .sidebar{flex-basis:0;width:0;padding-left:0;padding-right:0;border-right:none;overflow:hidden}
+  body.side-collapsed .side-fab{display:flex}
+}
+
 .main{flex:1 1 auto; min-width:0; padding:26px 40px 60px; height:100%; overflow-y:auto; scroll-behavior:smooth}
 .crumb{font-size:12px;color:var(--tx3);letter-spacing:.04em;margin-bottom:6px;max-width:1240px}
 .bodywrap{display:flex; align-items:flex-start; gap:34px; max-width:1240px}
