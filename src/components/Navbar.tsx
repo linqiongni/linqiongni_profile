@@ -399,7 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
             id="mobile-dropdown-menu"
-            className="md:hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] border-b border-[#E8E8E6] dark:border-[#2C2C2E] px-6 py-5 shadow-xl"
+            className="md:hidden max-h-[calc(100vh-80px)] overflow-y-auto overscroll-contain bg-[#FDFCF9] dark:bg-[#1C1C1E] border-b border-[#E8E8E6] dark:border-[#2C2C2E] px-6 py-5 shadow-xl"
           >
             <div className="flex flex-col space-y-5">
               {NAV_GROUPS.map((g) => (
