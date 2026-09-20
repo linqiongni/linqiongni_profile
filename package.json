@@ -11,10 +11,11 @@
     "lint": "tsc --noEmit",
     "sync:financing": "rsync -a \"融资法务/\" \"public/financing-legal/\" --exclude README.md --exclude AGENTS.md --exclude MEMORY.md --exclude .workbuddy --exclude assets/.DS_Store",
     "sync:arbitration": "rsync -a \"商事仲裁/\" \"public/arbitration/\" --exclude .DS_Store",
+    "sync:commercial-ops": "rsync -a \"商业运营法务/\" \"public/commercial-ops/\" --exclude .DS_Store --exclude .workbuddy",
     "sync:family-law": "rsync -a \"婚姻家事与遗产继承/\" \"public/family-law/\" --exclude .DS_Store --exclude _build",
     "sync:english": "rsync -a \"身边的英语/\" \"public/english/\" --exclude .DS_Store --exclude .workbuddy",
     "check:english": "node scripts/check-english-scenes.cjs",
-    "sync:all-static": "npm run sync:financing && npm run sync:arbitration && npm run sync:family-law && npm run sync:english"
+    "sync:all-static": "npm run sync:financing && npm run sync:commercial-ops && npm run sync:arbitration && npm run sync:family-law && npm run sync:english"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
