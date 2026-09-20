@@ -7,5 +7,5 @@ import { ThemeIframe } from './ThemeIframe';
  * ?v= 用于打破 GitHub Pages 静态资源缓存（assets 同样带版本号）。
  */
 export const IpLegalTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => (
-  <ThemeIframe src="/ip/index.html?v=20260920a" title="知识产权法务从 0 到 1" darkMode={darkMode} />
+  <ThemeIframe src="/ip/index.html?v=20260920b" title="知识产权法务从 0 到 1" darkMode={darkMode} />
 );
