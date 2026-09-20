@@ -25,8 +25,8 @@ const HERO_STRENGTHS: {
   },
   {
     category: '法务实务',
-    title: '餐饮加盟法务',
-    desc: '连锁餐饮特许经营合规、加盟风险与品牌保护',
+    title: '加盟经销法务',
+    desc: '连锁特许经营与经销网络合规、加盟风险与品牌保护',
   },
   {
     category: '律师实务',

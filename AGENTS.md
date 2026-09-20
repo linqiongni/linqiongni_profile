@@ -3,7 +3,7 @@
 > 工作规则：本文件先于任何「干活」请求读取。改动文件 / 外部状态前先读完 MEMORY.md 并遵守下述约定。
 
 ## 项目定位
-- 个人主页 / 作品集站点（「林琼霓 · 港企珠宝法务」人设），含「餐饮加盟法务总监养成计划」等模块。
+- 个人主页 / 作品集站点（「林琼霓 · 港企珠宝法务」人设），含「加盟经销法务总监养成计划」等模块。
 - 技术栈：Vite + React + TypeScript + Tailwind CSS v4 + motion（framer-motion v12）。
 - 部署：GitHub Pages，CI 在 `.github/workflows/deploy.yml`（push main → `npm run build` → 发布，dist 不入库）。
 

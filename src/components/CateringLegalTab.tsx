@@ -20,7 +20,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-// ── 数据源（来自 WorkBuddy 资料库「餐饮加盟法务总监养成计划」）──
+// ── 数据源（来自 WorkBuddy 资料库「加盟经销法务总监养成计划」）──
 const SPACE_URL = 'https://www.workbuddy.cn/space/d/kzNoDzerpCUhVoRTJDxKms';
 
 const STATS = [
@@ -379,11 +379,11 @@ export const CateringLegalTab: React.FC = () => {
         <div className="flex items-center gap-2 mb-3">
           <span className="h-[1px] w-4 bg-[#B89F6B]" />
           <span className="text-xs uppercase tracking-widest text-[#86868B]">
-            Catering Franchise Legal · 餐饮连锁法务
+            Catering Franchise Legal · 加盟经销法务
           </span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-light text-[#1D1D1F] dark:text-[#F5F5F7] tracking-tight">
-          餐饮加盟法务总监养成计划
+          加盟经销法务总监养成计划
         </h2>
         <p className="text-sm text-[#86868B] mt-3 max-w-3xl font-normal leading-relaxed">
           面向「蒙自源」式中式快餐 / 米线连锁（直营 + 加盟 + 统采统配）的法务总监能力模型，
