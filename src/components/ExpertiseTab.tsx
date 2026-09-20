@@ -61,7 +61,7 @@ export const ExpertiseTab: React.FC<ExpertiseTabProps> = ({ onSelectTab }) => {
             专业技能与执业领域
           </h2>
           <p className="text-sm text-[#86868B] mt-2 max-w-2xl font-normal">
-            立足 8 年知名港企大中华区法务中枢，构建“事前模板防范、事中高效谈判、事后维权止损”的商业法务闭环。
+            立足 8 年知名港企法务中枢，构建“事前模板防范、事中高效谈判、事后维权止损”的商业法务闭环。
           </p>
         </div>
 
