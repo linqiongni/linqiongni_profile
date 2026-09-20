@@ -295,24 +295,24 @@ export default function App() {
 
 
 
-            {activeTab === 'film-law' && <FilmLawTab />}
+            {activeTab === 'film-law' && <FilmLawTab darkMode={darkMode} />}
 
 
 
             {activeTab === 'film-law-s2' && <FilmLawS2Tab darkMode={darkMode} />}
 
-            {activeTab === 'film-law-s3' && <FilmLawS3Tab />}
+            {activeTab === 'film-law-s3' && <FilmLawS3Tab darkMode={darkMode} />}
 
-            {activeTab === 'film-law-s4' && <FilmLawS4Tab />}
+            {activeTab === 'film-law-s4' && <FilmLawS4Tab darkMode={darkMode} />}
 
 
 
-            {activeTab === 'labor' && <LaborLegalTab />}
+            {activeTab === 'labor' && <LaborLegalTab darkMode={darkMode} />}
 
-            {activeTab === 'insurance' && <InsuranceTab />}
-            {activeTab === 'criminal' && <CriminalDefenseTab />}
-            {activeTab === 'ai-law' && <AiLawTab />}
-            {activeTab === 'financing' && <FinancingLegalTab />}
+            {activeTab === 'insurance' && <InsuranceTab darkMode={darkMode} />}
+            {activeTab === 'criminal' && <CriminalDefenseTab darkMode={darkMode} />}
+            {activeTab === 'ai-law' && <AiLawTab darkMode={darkMode} />}
+            {activeTab === 'financing' && <FinancingLegalTab darkMode={darkMode} />}
 
             {activeTab === 'commercial-ops' && <CommercialOpsLegalTab darkMode={darkMode} />}
 
