@@ -104,13 +104,6 @@ export const NAV_GROUPS: NavGroup[] = [
   },
 
   {
-    id: 'ventures',
-    label: '创业奇思妙想章',
-    enLabel: 'Startup Notes',
-    subTabs: ['startup'],
-  },
-
-  {
 
     id: 'film',
 
@@ -186,7 +179,6 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   'ai-law': { label: 'AI+法律', enLabel: 'AI + Law' },
   financing: { label: '融资法务', enLabel: 'Financing' },
   arbitration: { label: '商事仲裁', enLabel: 'Arbitration' },
-  startup: { label: '创业奇思妙想章', enLabel: 'Startup Notes' },
   'family-law': { label: '婚姻家事与遗产继承', enLabel: 'Family & Inheritance' },
   'english': { label: 'ENGLISH', enLabel: 'English' },
 
