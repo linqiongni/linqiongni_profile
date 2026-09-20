@@ -164,7 +164,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
   logistics: { label: '跨境物流法务', enLabel: 'Logistics' },
 
-  ip: { label: '知识产权', enLabel: 'IP' },
+  ip: { label: 'IP', enLabel: 'Intellectual Property' },
 
   'foreign-contracts': { label: '涉外合同学习', enLabel: 'Foreign Contracts' },
 
