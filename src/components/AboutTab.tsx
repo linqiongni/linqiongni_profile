@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { PERSONAL_INFO, TIMELINE_DATA } from '../data/portfolioData';
+import { PERSONAL_INFO, PROFILE_FACTS, TIMELINE_DATA } from '../data/portfolioData';
 import { Award, Briefcase, GraduationCap, ArrowUpRight } from 'lucide-react';
 
 interface AboutTabProps {
@@ -97,6 +97,20 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => {
               </span>
             ))}
           </div>
+
+          {/* 基本信息 (Basic Profile) */}
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 pt-6 border-t border-[#E8E8E6] dark:border-[#2C2C2E]">
+            {PROFILE_FACTS.map((fact) => (
+              <div key={fact.label} className="flex items-baseline gap-3">
+                <dt className="w-20 shrink-0 text-[11px] uppercase tracking-wider text-[#B89F6B]">
+                  {fact.label}
+                </dt>
+                <dd className="text-sm text-[#1D1D1F]/90 dark:text-[#F5F5F7]/90">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
 
           {/* Core Philosophy Callout */}
           <div className="p-6 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/40 dark:bg-[#242426]/40">
