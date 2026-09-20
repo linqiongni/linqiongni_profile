@@ -27,11 +27,17 @@
     { key: "附录", name: "APPENDIX 附录", desc: "终审清单 · 让步底线 · 法源索引" }
   ];
 
-  var cur = (document.body.getAttribute("data-station") || "index").trim();
+  var base0 = (document.body.getAttribute("data-station") || "index").trim();
+  var isTenant = /^t/.test(base0);
+  function tenantFile(f) { var b = f.replace(BASE, ""); if (b === "index.html") return BASE + "tindex.html"; return BASE + "t" + b; }
+  function landlordFile(f) { var b = f.replace(BASE, ""); if (b === "tindex.html") return BASE + "index.html"; return BASE + b.replace(/^t/, ""); }
+  var TSTATIONS = STATIONS.map(function (s) { var o = {}; for (var k in s) o[k] = s[k]; o.id = "t" + s.id; o.file = tenantFile(s.file); return o; });
+  var STATIONS_ACTIVE = isTenant ? TSTATIONS : STATIONS;
+  var cur = base0;
   var idx = -1;
-  for (var k = 0; k < STATIONS.length; k++) { if (STATIONS[k].id === cur) { idx = k; break; } }
+  for (var k = 0; k < STATIONS_ACTIVE.length; k++) { if (STATIONS_ACTIVE[k].id === cur) { idx = k; break; } }
   if (idx < 0) idx = 0;
-  var me = STATIONS[idx];
+  var me = STATIONS_ACTIVE[idx];
 
   function el(tag, cls, html) {
     var e = document.createElement(tag);
@@ -228,7 +234,7 @@
   search.addEventListener("input", function () {
     var q = (search.value || "").trim().toLowerCase();
     var n = 0;
-    STATIONS.forEach(function (s) {
+    STATIONS_ACTIVE.forEach(function (s) {
       var a = linkMap[s.id]; if (!a) return;
       if (!q) { a.classList.remove("hide"); return; }
       var hay = (s.no + " " + s.t + " " + s.part + " " + (s.kw || "")).toLowerCase();
