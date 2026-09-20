@@ -6,6 +6,16 @@
 
   var BASE = "";
 
+  // 页面级缓存穿透：所有站内跳转（切换视角 / 左侧目录 / 上下篇 / 品牌回首页）都带 ?v=，
+  // 否则 iframe 落地页虽经主站 IFRAME_V 刷新，但 app.js 内部 location.href 跳转会丢掉 query，
+  // 浏览器命中旧 HTML 缓存（仍指向旧 app.js），导致双视角切换后左栏不更新。
+  var PAGE_V = "20260920e";
+  function withV(f) {
+    if (!f) return f;
+    if (f.indexOf("?") >= 0) return f;
+    return f + "?v=" + PAGE_V;
+  }
+
   var STATIONS = [
     { id: "index", file: BASE + "index.html", no: "总纲", t: "总纲 · 审核指引地图", part: "开始", kw: "目录 怎么用 脱敏 立场 法源 八大模块 终审 风险地图 出租方 商场" },
     { id: "ch01", file: BASE + "ch01-lease-core.html", no: "01", t: "基础租赁核心条款审核", part: "第一卷 · 合同本体", kw: "主体资质 产权人 签约主体 收款主体 授权托管 转租权限 交付标准 面积确权 规划用途 配套点位 租期 免租期 开业节点 租金 递增 计价基数 抽成租金 欠费止损" },
@@ -29,8 +39,8 @@
 
   var base0 = (document.body.getAttribute("data-station") || "index").trim();
   var isTenant = /^t/.test(base0);
-  function tenantFile(f) { var b = f.replace(BASE, ""); if (b === "index.html") return BASE + "tindex.html"; return BASE + "t" + b; }
-  function landlordFile(f) { var b = f.replace(BASE, ""); if (b === "tindex.html") return BASE + "index.html"; return BASE + b.replace(/^t/, ""); }
+  function tenantFile(f) { var b = f.replace(BASE, ""); if (b === "index.html") return withV(BASE + "tindex.html"); return withV(BASE + "t" + b); }
+  function landlordFile(f) { var b = f.replace(BASE, ""); if (b === "tindex.html") return withV(BASE + "index.html"); return withV(BASE + b.replace(/^t/, "")); }
   var TSTATIONS = STATIONS.map(function (s) { var o = {}; for (var k in s) o[k] = s[k]; o.id = "t" + s.id; o.file = tenantFile(s.file); return o; });
   var STATIONS_ACTIVE = isTenant ? TSTATIONS : STATIONS;
   var cur = base0;
@@ -45,7 +55,7 @@
     if (html != null) e.innerHTML = html;
     return e;
   }
-  function hrefOf(s) { return s.file; }
+  function hrefOf(s) { return withV(s.file); }
 
   /* ---------- 主题（保留原有 postMessage + localStorage 同步） ---------- */
   function applyTheme(t) {
@@ -86,7 +96,7 @@
   var topbar = el("header", "topbar");
   topbar.id = "topbar";
   var brand = el("a", "brand", '<span class="seal">商</span><span class="txt">商业运营法务 · 租赁合同审核</span>');
-  brand.href = isTenant ? tenantFile(BASE + "index.html") : BASE + "index.html";
+  brand.href = withV(isTenant ? tenantFile(BASE + "index.html") : BASE + "index.html");
   topbar.appendChild(brand);
 
   var searchWrap = el("div", "searchwrap");
