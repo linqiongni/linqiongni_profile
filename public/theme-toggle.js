@@ -78,6 +78,10 @@
 
   function createBtn() {
     if (document.getElementById('theme-toggle-btn')) return;
+    // 嵌在主站 iframe 内时不注入页内按钮：主题统一由主站导航栏的月亮/太阳按钮控制
+    // （ThemeIframe 通过 postMessage 同步进来，见下方 message 监听）。
+    // 仅当子站被独立打开（新窗口 / 手机端全屏，window.parent === window）时才显示页内按钮。
+    try { if (window.parent && window.parent !== window) return; } catch (e) { return; }
 
     const isDark = root.getAttribute('data-theme') === 'dark';
     const btn = document.createElement('button');
