@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { TabType } from '../types';
 import { NAV_GROUPS, SUB_TAB_META, tabsOfGroup } from '../navConfig';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Moon, Sun, Menu, X, Mail, ChevronDown } from 'lucide-react';
+import { Moon, Menu, X, Mail, ChevronDown } from 'lucide-react';
 
 interface NavbarProps {
   activeGroup: string;
@@ -271,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className={`p-2 rounded-full text-[#86868B] transition-all ${HOVER_GLOW} ${FOCUS_RING}`}
             title={darkMode ? '切换至明亮模式' : '切换至暗夜模式'}
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            <Moon size={18} />
           </button>
 
           <button
@@ -292,7 +292,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className={`p-2 text-[#86868B] hover:text-[#B89F6B] ${FOCUS_RING}`}
             aria-label="Toggle Theme"
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            <Moon size={18} />
           </button>
           <button
             id="mobile-menu-toggle-btn"
