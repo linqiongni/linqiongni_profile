@@ -159,7 +159,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
   notes: { label: '日常分享', enLabel: 'Notes' },
 
-  catering: { label: '餐饮法务', enLabel: 'Catering' },
+  catering: { label: '加盟经销法务', enLabel: 'Franchise & Distribution' },
   'commercial-ops': { label: '商业运营法务', enLabel: 'Commercial Operations' },
 
   logistics: { label: '跨境物流法务', enLabel: 'Logistics' },
