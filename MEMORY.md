@@ -82,9 +82,11 @@
 - **布局（2026-09-19 改）**：改为「顶栏 + 左侧固定目录栏（独立滚动） + 主区独立滚动 + 右侧本页目录」的 app 式布局，与保险站一致。`html,body{height:100%}` + `body{overflow:hidden}` + `.layout{display:flex;height:calc(100vh-顶栏高)}`（顶栏高度由 JS 实测注入，勿写死）；左栏 280px、`overflow-y:auto`，主区 `.main{overflow-y:auto}`，右侧 `.pagetoc` sticky 且 ≥1181px 才显示、窄屏回落为页内 `.toc` 块（两种都生成，靠 CSS 媒体查询切换，勿用 JS 判断）。<1001px 时左栏变抽屉（`transform:translateX(-100%)` + 顶栏「目录」按钮）。滚动进度条/scrollspy 需同时监听 `main` 与 `window`（宽窄屏滚动容器不同）。`STATIONS` 增 `kw` 字段供搜索（否则「撤裁」搜不到「申请撤销仲裁裁决」）。
 - 经验：jsdom 无 `window.matchMedia`，用 `window.matchMedia ? ... : innerWidth` 兜底，否则 jsdom 冒烟脚本整页脚本报错。冒烟方式：`NODE_PATH=~/.workbuddy/binaries/node/workspace/node_modules node` + jsdom `runScripts:'dangerously'` 断言侧栏链接数/高亮/右侧目录条目/搜索命中。
 
-## 双视角劳动法务 tab（2026-09-14 新增，2026-09-17 改为「法务实务」子板块）
-- 原第 4 个顶层分组，2026-09-17 起**移入「法务实务」`legal` 分组作为子 tab**（顶层恢复为个人 / 法务实务 / 影视法律 3 个）。`navConfig.ts` 的 `NAV_GROUPS` 删 `labor` 分组、`legal.subTabs` 末尾加 `'labor'`；`SUB_TAB_META.labor` 文案保留为子 tab 名；Navbar 注释改回 3 分组。`App.tsx` 的 `labor` 渲染分支与 `isFullBleed` 不变（子 tab 仍为铺满型）。
-- 进入「法务实务」分组后，子导航第 8 个按钮即「双视角劳动法务」（前 7 个：餐饮/物流/知产/涉外/保险/刑事/AI+法律）。
+## 双视角劳动实务 tab（2026-09-14 新增，2026-09-17 入「法务实务」子板块，2026-09-20 改名并移入「律师实务」）
+- 原名「双视角劳动法务」，**2026-09-20 改名「双视角劳动实务」**，并从 `legal`(法务实务) 分组 `subTabs` **移入 `practice`(律师实务) 分组** `subTabs` 末尾（排在婚姻家事/刑事/商事仲裁/保险之后）。
+- `navConfig.ts`：`legal.subTabs` 删 `'labor'`、`practice.subTabs` 末尾加 `'labor'`；`SUB_TAB_META.labor` 标签 `双视角劳动实务`、enLabel `Labor Practice`；`App.tsx` 的 `labor` 渲染分支与 `isFullBleed` 不变（子 tab 仍为铺满型）。
+- 进入「律师实务」分组后，子导航第 5 个按钮即「双视角劳动实务」。
+- 前两次上线出现过「编辑被并发会话回退 / 只改 SUB_TAB_META 没改分组数组」的坑，本仓库 navConfig 改动改用**单进程原子重写 + 回读校验**，避免再次丢失。
 - 组件 `src/components/LaborLegalTab.tsx`（iframe `/labor/` + loading + 新窗口打开浮层，沿用 IpLegalTab）。
 - 静态内容在 **`public/labor/`**：9 页 588 KB —— index / base（通用底座）/ employer（A 用人单位合规）/ employee（B 劳动者维权）/ clash（C 攻防对照 12 场景）/ tools（6 个纯前端计算器）/ templates（12 份文书）/ law（法条+术语）/ route（28 天路线）。纯本地零上传，全部相对链接、无外部依赖。
 - 线上：`https://linqiongni.top/labor/`。
