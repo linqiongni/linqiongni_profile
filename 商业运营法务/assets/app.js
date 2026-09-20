@@ -86,7 +86,7 @@
   var topbar = el("header", "topbar");
   topbar.id = "topbar";
   var brand = el("a", "brand", '<span class="seal">商</span><span class="txt">商业运营法务 · 租赁合同审核</span>');
-  brand.href = BASE + "index.html";
+  brand.href = isTenant ? tenantFile(BASE + "index.html") : BASE + "index.html";
   topbar.appendChild(brand);
 
   var searchWrap = el("div", "searchwrap");
@@ -98,7 +98,30 @@
   searchWrap.appendChild(searchCount);
   topbar.appendChild(searchWrap);
 
-  topbar.appendChild(el("span", "cur-chip", (me.no === "总纲" || me.no === "附录") ? me.t : "第 " + me.no + " 章 · " + me.t));
+  topbar.appendChild(el("span", "cur-chip", (isTenant ? "承租人视角 · " : "出租人视角 · ") + ((me.no === "总纲" || me.no === "附录") ? me.t : "第 " + me.no + " 章 · " + me.t)));
+
+  /* ---------- 双视角切换：出租人视角 / 承租人视角（紧邻「全屏」） ---------- */
+  var views = el("div", "views");
+  var vsLandlord = el("button", "vs", "出租人视角");
+  vsLandlord.type = "button";
+  vsLandlord.title = "切换到出租人视角（甲方）";
+  vsLandlord.setAttribute("aria-label", "出租人视角（甲方）");
+  var vsTenant = el("button", "vs", "承租人视角");
+  vsTenant.type = "button";
+  vsTenant.title = "切换到承租人视角（乙方）";
+  vsTenant.setAttribute("aria-label", "承租人视角（乙方）");
+  if (isTenant) { vsTenant.classList.add("on"); } else { vsLandlord.classList.add("on"); }
+  vsLandlord.addEventListener("click", function () {
+    if (!isTenant) return;                 // 已在出租人视角，无需跳转
+    location.href = landlordFile(me.file);
+  });
+  vsTenant.addEventListener("click", function () {
+    if (isTenant) return;                  // 已在承租人视角，无需跳转
+    location.href = tenantFile(me.file);
+  });
+  views.appendChild(vsLandlord);
+  views.appendChild(vsTenant);
+  topbar.appendChild(views);
 
   /* ---------- 全屏按钮：在当前页面内铺满整屏，不跳新页面 ---------- */
   var fsBtn = el("button", "fs-btn", "全屏");
