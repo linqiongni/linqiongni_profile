@@ -205,13 +205,14 @@
   /* ---------- 左侧目录栏 ---------- */
   var linkMap = {};
   PARTS.forEach(function (p) {
-    var items = STATIONS.filter(function (s) { return s.part === p.key; });
+    var items = STATIONS_ACTIVE.filter(function (s) { return s.part === p.key; });
     if (!items.length) return;
     var g = el("div", "grp");
     g.appendChild(el("div", "grp-h", p.name));
     g.appendChild(el("div", "grp-d", p.desc));
     items.forEach(function (s) {
-      var label = s.id === "index" ? s.t : '<span class="no">' + s.no + "</span>" + s.t;
+      var isCover = s.no === "总纲" || s.no === "附录";
+      var label = isCover ? s.t : '<span class="no">' + s.no + "</span>" + s.t;
       var a = el("a", s.id === cur ? "on" : "", label);
       a.href = hrefOf(s); a.title = s.t;
       linkMap[s.id] = a; g.appendChild(a);
@@ -345,11 +346,11 @@
   if (pagerEl) {
     var ph = "";
     if (idx > 0) {
-      var p = STATIONS[idx - 1];
-      ph += '<a href="' + p.file + '"><div class="dir">← 上一站</div><div class="ttl">' + (p.id === "index" ? p.t : p.no + " " + p.t) + "</div></a>";
+      var p = STATIONS_ACTIVE[idx - 1];
+      ph += '<a href="' + p.file + '"><div class="dir">← 上一站</div><div class="ttl">' + (p.no === "总纲" || p.no === "附录" ? p.t : p.no + " " + p.t) + "</div></a>";
     }
-    if (idx < STATIONS.length - 1) {
-      var nx = STATIONS[idx + 1];
+    if (idx < STATIONS_ACTIVE.length - 1) {
+      var nx = STATIONS_ACTIVE[idx + 1];
       ph += '<a href="' + nx.file + '" style="text-align:right"><div class="dir">下一站 →</div><div class="ttl">' + nx.no + " " + nx.t + "</div></a>";
     }
     pagerEl.className = "pager";
