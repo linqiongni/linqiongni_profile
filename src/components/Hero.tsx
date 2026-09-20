@@ -2,11 +2,42 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-/** 首屏数据条：用体量证明内容丰富度（数字与 public/ 静态页实际数量级一致） */
-const HERO_STATS: { num: string; label: string }[] = [
-  { num: '11', label: '大法务领域' },
-  { num: '470+', label: '篇实战笔记与课程' },
-  { num: '3', label: '季影视律政拆解' },
+/** 首屏核心专长：用领域深度替代数字体量，突出港企法务实战纵深 */
+const HERO_STRENGTHS: {
+  category: string;
+  title: string;
+  desc: string;
+}[] = [
+  {
+    category: '法务实务',
+    title: '商业运营法务',
+    desc: '高端商业综合体租赁、品牌运营合规与合同风控',
+  },
+  {
+    category: '法务实务',
+    title: '融资法务',
+    desc: '投融资交易架构、条款谈判与退出机制设计',
+  },
+  {
+    category: '法务实务',
+    title: '知识产权',
+    desc: '商标、专利、著作权保护与侵权维权布局',
+  },
+  {
+    category: '法务实务',
+    title: '餐饮加盟法务',
+    desc: '连锁餐饮特许经营合规、加盟风险与品牌保护',
+  },
+  {
+    category: '律师实务',
+    title: '商事仲裁',
+    desc: '合同争议、股东纠纷与国际仲裁全流程实务',
+  },
+  {
+    category: '争议解决',
+    title: '法律维权',
+    desc: '保险理赔、消费者权益与商事争议维权策略',
+  },
 ];
 
 export const Hero: React.FC = () => {
@@ -53,32 +84,41 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-xl md:text-3xl font-normal text-[#86868B] max-w-2xl leading-relaxed mb-[5rem]"
+            className="text-lg sm:text-xl md:text-3xl font-normal text-[#86868B] max-w-2xl leading-relaxed mb-12 sm:mb-14"
           >
             {PERSONAL_INFO.subtitle}
           </motion.p>
 
-          {/* 数据条：一眼看到站点体量 */}
+          {/* 核心专长：领域深度替代数字体量 */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-center gap-6 sm:gap-28"
+            className="w-full max-w-5xl"
           >
-            {HERO_STATS.map((s, i) => (
-              <React.Fragment key={s.label}>
-                {i > 0 && <span className="h-16 w-[1px] bg-[#E8E8E6] dark:bg-[#2C2C2E]" aria-hidden="true" />}
-                <div className="flex flex-col items-center">
-                  <span className="text-5xl sm:text-7xl font-light tracking-tight text-[#B89F6B]">{s.num}</span>
-                  <span className="text-[10px] sm:text-[11px] text-[#86868B] mt-2.5 tracking-wide whitespace-nowrap">
-                    {s.label}
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B89F6B] font-medium mb-5 sm:mb-7">
+              核心专业领域 / Core Strengths
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-left">
+              {HERO_STRENGTHS.map((s) => (
+                <div
+                  key={s.title}
+                  className="group relative bg-[#FDFCF9] dark:bg-[#1C1C1E] border border-[#E8E8E6] dark:border-[#2C2C2E] border-t-2 border-t-[#B89F6B] p-5 sm:p-6 transition-all duration-300 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] hover:shadow-[0_2px_12px_rgba(184,159,107,0.08)]"
+                >
+                  <span className="inline-block text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-[#B89F6B] font-medium mb-2">
+                    {s.category}
                   </span>
+                  <h3 className="text-base sm:text-lg font-medium text-[#1D1D1F] dark:text-[#F5F5F7] tracking-tight mb-1.5">
+                    {s.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#86868B] leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
-              </React.Fragment>
-            ))}
+              ))}
+            </div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
