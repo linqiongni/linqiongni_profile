@@ -104,13 +104,6 @@ export const NAV_GROUPS: NavGroup[] = [
   },
 
   {
-    id: 'english',
-    label: 'ENGLISH',
-    enLabel: 'English',
-    subTabs: ['english'],
-  },
-
-  {
     id: 'ventures',
     label: '创业奇思妙想章',
     enLabel: 'Startup Notes',
@@ -125,7 +118,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Film & Law',
 
-    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
+    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'english'],
 
     sections: [
 
@@ -138,6 +131,18 @@ export const NAV_GROUPS: NavGroup[] = [
         enLabel: 'The Good Wife',
 
         tabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
+
+      },
+
+      {
+
+        id: 'daily',
+
+        label: '日常实用',
+
+        enLabel: 'Daily Tools',
+
+        tabs: ['english'],
 
       },
 
