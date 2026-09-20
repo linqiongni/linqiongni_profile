@@ -6,7 +6,7 @@ import { TabType } from './types';
 
  * 三级导航配置（数据驱动）。
 
- * - 第一层：顶层分组（个人 / 法务实务 / 影视法律）；双视角劳动法务作为「法务实务」的子板块。
+ * - 第一层：顶层分组（个人 / 法务实务 / 律师实务 / 影视法律）；双视角劳动实务作为「律师实务」的子板块。
 
  * - 第二层：每个分组下的子板块 subTabs。
 
@@ -92,7 +92,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Legal Practice',
 
-    subTabs: ['commercial-ops', 'financing', 'catering', 'logistics', 'ip', 'foreign-contracts', 'ai-law', 'labor'],
+    subTabs: ['commercial-ops', 'financing', 'catering', 'logistics', 'ip', 'foreign-contracts', 'ai-law'],
 
   },
 
@@ -100,7 +100,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'practice',
     label: '律师实务',
     enLabel: 'Lawyer Practice',
-    subTabs: ['family-law', 'criminal', 'arbitration', 'insurance'],
+    subTabs: ['family-law', 'criminal', 'arbitration', 'insurance', 'labor'],
   },
 
   {
@@ -174,7 +174,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   'film-law-s3': { label: '第三季 S3', enLabel: 'Season 3' },
   'film-law-s4': { label: '第四季 S4', enLabel: 'Season 4' },
 
-  labor: { label: '双视角劳动法务', enLabel: 'Labor Law' },
+  labor: { label: '双视角劳动实务', enLabel: 'Labor Practice' },
   insurance: { label: '保险·法律维权', enLabel: 'Insurance' },
   criminal: { label: '刑事辩护', enLabel: 'Criminal Defense' },
   'ai-law': { label: 'AI+法律', enLabel: 'AI + Law' },
