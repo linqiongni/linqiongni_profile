@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </div>
 
           <div className="flex items-center gap-6">
-            <span>港资珠宝零售集团（大中华区）法务实战派</span>
+            <span>港资珠宝零售集团法务实战派</span>
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-1.5 hover:text-[#B89F6B] transition-colors group"

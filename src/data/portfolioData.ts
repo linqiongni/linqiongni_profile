@@ -43,7 +43,6 @@ export const TIMELINE_DATA: TimelineItem[] = [
 ];
 
 export const PROFILE_FACTS = [
-  { label: '户籍', value: '广东 · 汕头' },
   { label: '现居', value: '广东 · 广州' },
   { label: '政治面貌', value: '中共党员' },
   { label: '学历', value: '华南理工大学 · 法律硕士' },
