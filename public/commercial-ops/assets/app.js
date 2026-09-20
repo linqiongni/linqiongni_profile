@@ -9,7 +9,7 @@
   // 页面级缓存穿透：所有站内跳转（切换视角 / 左侧目录 / 上下篇 / 品牌回首页）都带 ?v=，
   // 否则 iframe 落地页虽经主站 IFRAME_V 刷新，但 app.js 内部 location.href 跳转会丢掉 query，
   // 浏览器命中旧 HTML 缓存（仍指向旧 app.js），导致双视角切换后左栏不更新。
-  var PAGE_V = "20260920e";
+  var PAGE_V = "20260920f";
   function withV(f) {
     if (!f) return f;
     if (f.indexOf("?") >= 0) return f;
@@ -357,11 +357,11 @@
     var ph = "";
     if (idx > 0) {
       var p = STATIONS_ACTIVE[idx - 1];
-      ph += '<a href="' + p.file + '"><div class="dir">← 上一站</div><div class="ttl">' + (p.no === "总纲" || p.no === "附录" ? p.t : p.no + " " + p.t) + "</div></a>";
+      ph += '<a href="' + withV(p.file) + '"><div class="dir">← 上一站</div><div class="ttl">' + (p.no === "总纲" || p.no === "附录" ? p.t : p.no + " " + p.t) + "</div></a>";
     }
     if (idx < STATIONS_ACTIVE.length - 1) {
       var nx = STATIONS_ACTIVE[idx + 1];
-      ph += '<a href="' + nx.file + '" style="text-align:right"><div class="dir">下一站 →</div><div class="ttl">' + nx.no + " " + nx.t + "</div></a>";
+      ph += '<a href="' + withV(nx.file) + '" style="text-align:right"><div class="dir">下一站 →</div><div class="ttl">' + nx.no + " " + nx.t + "</div></a>";
     }
     pagerEl.className = "pager";
     pagerEl.innerHTML = ph;
