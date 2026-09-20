@@ -164,11 +164,13 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => {
                 </h4>
               </div>
 
-              <div className="text-xs text-[#86868B] font-medium mt-0.5 mb-2">
-                {item.organization}
-              </div>
+              {item.organization && (
+                <div className="text-xs text-[#86868B] font-medium mt-0.5 mb-2">
+                  {item.organization}
+                </div>
+              )}
 
-              <p className="text-sm text-[#86868B] dark:text-[#8E8E93] leading-relaxed max-w-3xl">
+              <p className={`text-sm text-[#86868B] dark:text-[#8E8E93] leading-relaxed max-w-3xl${item.organization ? '' : ' mt-3'}`}>
                 {item.description}
               </p>
             </div>

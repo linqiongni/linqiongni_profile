@@ -3,7 +3,7 @@ export type TabType = 'about' | 'expertise' | 'cases' | 'insights' | 'notes' | '
 export interface TimelineItem {
   year?: string;
   title: string;
-  organization: string;
+  organization?: string;
   description: string;
 }
 
