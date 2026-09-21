@@ -165,3 +165,8 @@
 - **内容校验**：`npm run check:english`（= `scripts/check-english-scenes.cjs`）。手写批次追加后必跑：抓语法错（漏/多逗号）、缺字段、id 重复、`part`/`place` 未在 `GROUPS` 登记（这类错页面不报错、只是少一个分组），并打印两个视角的分组计数。
 - 线上：`https://linqiongni.top/english/index.html`。
 - **别把 `.workbuddy/`、`AGENTS.md`、`MEMORY.md` 放进 `身边的英语/`** —— rsync 整目录同步会把它们发布到线上。
+
+## 融资法务站内容硬规则（2026-09-21 用户重申）
+- **英文缩写首次出现必须带英文全称注记**，格式 `ACRO（Full English Name，中文）`，如 `VIE（Variable Interest Entity，可变利益实体）`。适用该站全部 14 个页面及后续新站。全站已用脚本补齐约 65 处并扫描验证（46 缩写 × 14 文件 ALL CLEAN）。
+- **给注记做批量插入时的坑**：注记文本里绝不能含其他裸缩写（如 18C 注记里写 "HKEX Listing Rules" 会被后续 HKEX 扫描再次命中，嵌套出重复乱码）——要么拼全称（"Hong Kong Exchanges and Clearing Limited"），要么把注记排除在扫描范围外。插入须跳过 HTML 标签/SVG text/属性（首个非标签出现处才算正文首次出现）。
+- 缩写扫描脚本思路：正则词边界匹配 + `inside_tag` 回溯 `<`/`>` 判定 + 首 80 字符内找 `（[A-Za-z]...）` 视为已注记。可复用于其他子站。
