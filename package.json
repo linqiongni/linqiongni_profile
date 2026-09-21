@@ -15,8 +15,9 @@
     "sync:retail-ad": "rsync -a \"新零售与广告合规/\" \"public/retail-ad/\" --exclude .DS_Store --exclude .workbuddy",
     "sync:family-law": "rsync -a \"婚姻家事与遗产继承/\" \"public/family-law/\" --exclude .DS_Store --exclude _build",
     "sync:english": "rsync -a \"身边的英语/\" \"public/english/\" --exclude .DS_Store --exclude .workbuddy",
+    "sync:logistics": "rsync -a \"跨境物流法务/\" \"public/logistics/\" --exclude .DS_Store --exclude .workbuddy",
     "check:english": "node scripts/check-english-scenes.cjs",
-    "sync:all-static": "npm run sync:financing && npm run sync:commercial-ops && npm run sync:retail-ad && npm run sync:arbitration && npm run sync:family-law && npm run sync:english"
+    "sync:all-static": "npm run sync:financing && npm run sync:commercial-ops && npm run sync:retail-ad && npm run sync:arbitration && npm run sync:family-law && npm run sync:english && npm run sync:logistics"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

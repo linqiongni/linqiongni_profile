@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 海关通关 · 归类原产地与保税 ｜ 跨境物流法务</title>
+<link rel="stylesheet" href="assets/style.css?v=20260921a">
+</head>
+<body data-station="ch08">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 08 · CUSTOMS: CLASSIFICATION, ORIGIN &amp; BONDED</div>
+    <h1>海关通关 · 归类、原产地与保税</h1>
+    <p class="sub">归错一个编码，后果不是"改一下就好"，而是补税 + 滞纳金 + 可能的处罚，以及后续每一票都被重点查验。<br>
+      本站讲：归类怎么定、申报要素谁提供、原产地为什么值钱、查验与稽查怎么应对、预裁定和 AEO（Authorized Economic Operator，经认证的经营者） 值不值得办，以及保税与退运怎么用。</p>
+    <div class="meta-line"><span>主线：D12 出口报关（回溯）</span><span>含 8 组法务对话</span><span>含 22 处生活比方</span><span>含申报前七查清单</span></div>
+  </div>
+
+  <div class="story"><span class="tag">剧情 · D12（回溯）</span>
+    <p>报关行小美问："这批手镯是<em>贵金属首饰</em>还是<em>仿首饰</em>？含金量多少？有没有天然钻石？"阿杰回："你看着办，你们专业。"三个月后，海关稽查发现申报的材质与含金量与实际不符，要求补税并加收滞纳金。<strong>"你看着办"这四个字，把专业判断的责任交给了别人——但补税单寄到的却是霓光的地址。</strong></p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页均为原地展开：</span>
+    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
+    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <div class="callout c-tip">
+    <span class="lbl">先看这段（本站的结论）</span>
+    <p>海关环节的第一原则是：<strong>申报要素必须由最了解货物的人提供，且书面留痕</strong>。归类、价格、原产地这三件事，法律上的责任主体是收发货人（及申报单位），不会因为"我委托了报关行"而自动转移。</p>
+  </div>
+
+  <h2>一、HS（Harmonized System，协调制度商品编码体系） 归类：四步法</h2>
+  <div class="timeline">
+    <div class="pt"><div class="yr">第一步 · 确定材质</div><div class="ev">贵金属（金/银/铂及其合金）还是贱金属、还是其他材质？<b>珠宝行业的第一分水岭。</b>含量百分比要有检测报告支撑。</div></div>
+    <div class="pt"><div class="yr">第二步 · 确定加工程度</div><div class="ev">半成品（板、片、丝、链坯）还是成品（首饰）？<b>加工程度直接决定归入哪一章哪一品目。</b></div></div>
+    <div class="pt"><div class="yr">第三步 · 确定是否含宝石</div><div class="ev">是否含天然或养殖珍珠、宝石或半宝石？含钻石的还需 KP（Kimberley Process，金伯利进程国际毛坯钻石证书制度）相关随附文件。</div></div>
+    <div class="pt"><div class="yr">第四步 · 确定用途与包装状态</div><div class="ev">是个人佩戴首饰、陈列道具还是工业用件？是否成套（Set）零售包装？<b>成套零售包装的归类有专门规则。</b></div></div>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="lbl">重要提醒</span>
+    <p>本站<strong>不提供具体税号数字</strong>。HS（Harmonized System，协调制度商品编码体系）编码会随税则调整，贵金属首饰与仿首饰、含宝石与不含宝石、成品与半成品的归类路径完全不同，且各国子目存在差异。<b>正确做法：以现行税则与本国海关归类决定为准；不确定时申请海关预裁定。</b></p>
+  </div>
+
+  <h2>二、申报要素：谁提供，谁负责</h2>
+  <div class="tw"><table>
+    <thead><tr><th>要素</th><th>通常由谁掌握</th><th>常见错误</th><th>留痕方式</th></tr></thead>
+    <tbody>
+      <tr><td>材质与含量</td><td>生产商 / 质检</td><td>口头告知、无检测报告</td><td>检测报告 + 书面《申报要素确认单》</td></tr>
+      <tr><td>品名与规格</td><td>业务 / 产品部</td><td>中英文品名不一致、俗称代替学名</td><td>SKU（Stock Keeping Unit，最小存货单位） 主数据 + 与合同发票一致</td></tr>
+      <tr><td>数量与重量</td><td>仓储 / 生产</td><td>净重毛重填反、件数与装箱单不符</td><td>装箱单与过磅单</td></tr>
+      <tr><td>价格</td><td>财务 / 业务</td><td>未计入佣金、模具费、特许权使用费等应计入项目</td><td>合同、发票、付款凭证与价格构成说明</td></tr>
+      <tr><td>原产地</td><td>供应链</td><td>"中国造"与"在中国简单加工"混淆</td><td>原材料来源、加工工序记录与产地证</td></tr>
+      <tr><td>监管证件</td><td>法务 / 合规</td><td>钻石无 KP 随附文件、濒危物种材料无许可</td><td>证件清单与有效期台账</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="plain"><span class="pl">大白话：</span>报关行是"打字员 + 顾问"，不是"背锅侠"。<strong>要素错了，海关先找收发货人</strong>；你再向报关行追偿，能不能要回来是另一回事。所以要素必须书面给、书面留。</p>
+
+  <div class="say"><span class="lbl">大白话打比喻</span><p class="analogy">报关像填一份不能涂改的税务申报表：数字由企业提供，会计只负责填对格式。<em>税务局查出来少报了，问的是企业，不是会计。</em>所以每一份给会计的数据，都要留一份签字的底稿。</p></div>
+
+  <h2>三、原产地：为什么"在哪造"值钱</h2>
+  <div class="tw"><table>
+    <thead><tr><th>概念</th><th>是什么</th><th>作用</th><th>常见误区</th></tr></thead>
+    <tbody>
+      <tr><td>原产地（非优惠）</td><td>货物"国籍"的判定，一般按完全获得或实质性改变标准</td><td>适用最惠国税率、反倾销措施、贸易统计、原产地标记</td><td>以为"最后一道工序在哪就是哪国产"</td></tr>
+      <tr><td>优惠原产地</td><td>在特定协定项下满足原产资格</td><td>享受协定优惠税率</td><td>以为"有产地证就能享受优惠"，忽略了具体的税则归类改变或增值标准</td></tr>
+      <tr><td>实质性改变</td><td>判定原产地的核心标准之一（税则归类改变 / 增值百分比 / 特定工序）</td><td>决定能否"改国籍"</td><td>以为简单包装、分装就能改变原产地——<b>通常不能</b></td></tr>
+      <tr><td>转运/中转</td><td>货物经第三地转运</td><td>可能引发原产地与贸易管制上的额外审查</td><td>以为"经某地中转"不影响原产申报</td></tr>
+    </tbody>
+  </table></div>
+
+  <p><span class="sim"><b>就好比：</b>原产地像"国籍"：你在哪出生、父母是谁、有没有入籍，都有规则。<em>不是"我在哪待过"就算哪国人——简单包装和分装，通常改变不了国籍。</em></span></p>
+
+  <h2>四、查验、稽查与预裁定</h2>
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">查验</span><span class="en">Customs Inspection</span></div><div class="def">海关对货物实地或单证的检查。<b>被查验不等于违规</b>，但频次与通关时长直接相关。</div></div>
+    <div class="term"><div class="tw"><span class="zh">稽查</span><span class="en">Customs Audit</span></div><div class="def">海关在一定期限内对企业账册与申报记录的系统性检查。<b>稽查常追溯到过去若干年度的申报</b>，是"历史问题"爆发的常见场景。</div></div>
+    <div class="term"><div class="tw"><span class="zh">补税与滞纳金</span><span class="en">Duty Recovery &amp; Late Fee</span></div><div class="def">申报不实导致少征税款时，需补缴税款并按规定加收滞纳金。<b>《中华人民共和国关税法》自 2024 年 12 月 1 日起施行</b>，具体征管规则以其及配套规定为准。</div></div>
+    <div class="term"><div class="tw"><span class="zh">预裁定</span><span class="en">Advance Ruling</span></div><div class="def">在货物进出口前，就归类、原产地、价格等向海关申请裁定。<b>高值、新品、归类有争议的产品最值得用。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">AEO</span><span class="en">Authorized Economic Operator</span></div><div class="def">即"经认证的经营者"，通过海关认证的企业可获得较低的查验率等便利。<b>代价是要建立并保持一套合规体系。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">保税</span><span class="en">Bonded</span></div><div class="def">货物在境内特定区域/场所内暂不办理纳税手续。<b>适合退货维修、转口、待定销售去向的库存。</b></div></div>
+    <div class="term"><div class="tw"><span class="zh">退运与退货入区</span><span class="en">Returned Goods</span></div><div class="def">出口后退回的货物再进口时的税收处理。<b>跨境电商退货场景下高频使用，需提前设计流程与单证。</b></div></div>
+  </div>
+
+  <h2>五、八组法务对话</h2>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 1</span>「报关行说他们专业，我们别管」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">小美（报关行）</div><p class="utt">「归类交给我们，你们别管了。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「不行。<em>要素必须由我们书面提供，你们书面确认归类结论。</em>因为海关查的是申报行为与申报内容，责任主体是收发货人与申报单位。」</p></div>
+      <div class="dlg-line inv"><div class="who">小美（报关行）</div><p class="utt">「那你们提供错了怎么办？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「那就写清楚：<b>因我们提供的要素错误导致后果的，由我们承担；因你们的专业判断错误导致的，由你们承担</b>。这样双方都有动力把事情做对。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>报关委托协议责任分配条款：<b>甲方保证所提供归类要素（材质、含量、加工工艺、用途、单证）真实、完整、准确，并承担因要素错误导致的补税、滞纳金及处罚；乙方应基于甲方提供的要素作出专业归类判断并书面告知结论，因乙方判断错误导致的后果由乙方承担。</b></p></div>
+      <p class="sim"><b>就好比：</b>报税时你把收入数字给会计，会计负责选对税率——数字错了你负责，税率选错会计负责。<em>各管一段，才都有动力做好。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 2</span>「归错了，后果有多严重」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「归类差一位数，能有多大事？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「三层后果：<em>① 补税 + 滞纳金；② 后续查验率上升、通关变慢；③ 情节严重的可能影响企业信用等级</em>——第三层的长期成本最高。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「一次错误会被记多久？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「海关的稽查与企业管理是持续性的：<em>一次被认定申报不实，接下来每一票都可能被重点关注</em>。这就是为什么新品上市前值得做预裁定。」</p></div>
+      <div class="dlg-note"><span class="nt">成本对比</span><p>预裁定：一次性投入（准备材料与等待期）。归错：补税 + 滞纳金 + 查验成本 + 信用影响。<b>新品、高值货、归类边界模糊的产品，预裁定几乎总是划算的。</b></p></div>
+      <p class="sim"><b>就好比：</b>开车压了一次实线，不只是那一张罚单——后续保险和年检都可能被多看两眼。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 3</span>「原产地证要不要办」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「客户要优惠产地证，我们能办吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「<em>先看能不能满足原产资格，再看能不能证明。</em>优惠税率不是"办了证就有"，而是"货物本身符合规则才配得上"。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「我们在深圳做的，不就是中国原产吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「<em>不一定。</em>如果金料是进口的、只在深圳做了简单加工，可能不满足"实质性改变"。原产地看的是<b>原材料来源 + 加工工序</b>，不是"最后在哪打包"。」</p></div>
+      <div class="dlg-note"><span class="nt">证据准备</span><p>三套材料：<b>① 原材料来源与采购凭证；② 加工工序记录（工艺流程、工时、增值比例）；③ 成本核算</b>。申请优惠税率前，先确认是否满足具体的税则归类改变或增值标准。</p></div>
+      <p class="sim"><b>就好比：</b>"本地特产"不是说在本地装盒就是本地的——<em>得看原料和加工在哪。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 4</span>「被查验了，业务很急」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「柜子被查验了，能不能催一下？客户在等。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「可以配合查询状态，但<em>不要做两件事：不要试图"打招呼"，不要在查验结果出来前改单</em>。后者尤其危险——容易被理解为规避。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那我们能做什么？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「三件：<em>① 备齐单证并一次性提交；② 如实说明并保留沟通记录；③ 同步评估迟延的连锁影响（滞箱费、客户违约），提前通知相关方</em>。」</p></div>
+      <div class="dlg-note"><span class="nt">管理动作</span><p>把"查验"列入交付计划的<b>常规变量</b>：旺季预留缓冲、合同里约定查验导致的迟延处理方式。<b>把例外当常态管理，就不会每次都救火。</b></p></div>
+      <p class="sim"><b>就好比：</b>高速上遇到检查站，你能做的是备好证件、耐心等待、通知对方会晚到——<em>而不是试图绕过去。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 5</span>「海关来稽查，追溯几年」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「稽查是系统性的，会看账册、合同、单证与申报记录的一致性。<em>它查的不是一票，是一段时间里的全部。</em>」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那我们现在怎么办？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「先自查：<em>四单一致（合同、发票、装箱单、报关单）、价格构成是否完整、归类是否稳定、原产地是否有支撑</em>。发现问题主动处理的空间，通常大于被查出来之后。」</p></div>
+      <div class="dlg-note"><span class="nt">自查四查</span><p>① 品名与规格是否前后一致；② 数量重量是否与装箱单一致；③ 完税价格构成是否漏项；④ 归类与历史申报是否稳定。<b>四查每季度做一次，比年度突击有效。</b></p></div>
+      <p class="sim"><b>就好比：</b>体检不是等生病才做——<em>每年查一次血压血糖，比抢救便宜得多。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 6</span>「AEO 认证值不值得办」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「AEO（Authorized Economic Operator，经认证的经营者）听着高级，值得办吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「看出货频次与查验成本。<em>高频出货的企业，降低查验率带来的通关稳定性很值钱；低频企业投入产出比一般。</em>」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「代价是什么？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「代价是<b>要真的建立一套体系</b>：内控、单证管理、财务、贸易安全、培训与自查，而且要持续维持。<em>认证不是一块牌子，是一套长期运转的机制。</em>」</p></div>
+      <div class="dlg-note"><span class="nt">判断口径</span><p>算三笔账：<b>① 每年因查验产生的滞港、滞箱与迟延成本；② 建立与维护体系的年度投入；③ 客户/招标是否将其作为加分项。</b>三者相加再决策。</p></div>
+      <p class="sim"><b>就好比：</b>办健身卡值不值，取决于你每周去几次——<em>去了才值，办了不去就是浪费。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 7</span>「退货和退运，怎么处理才不亏两次」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「欧洲客户要退一批货回来，能退税吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「看情形：<em>出口后因品质或规格问题在期限内原状退回的，税收处理有专门规则</em>，但前提是要能证明"是原来那批货"。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「怎么证明？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「<em>出口报关单号、原发票装箱单、退货协议、货物原状照片与检验报告</em>。四样齐全，才谈得上顺利办理。所以退货流程要在<b>第一次发货前</b>就设计好。」</p></div>
+      <div class="dlg-note"><span class="nt">流程设计</span><p>三条建议：<b>① 合同里约定退货条件、责任与费用；② 建立"退货单证包"模板；③ 高退货率品类优先使用保税仓做退货中转。</b></p></div>
+      <p class="sim"><b>就好比：</b>退换货要有小票和原包装——<em>没有小票，商家没法确认这是他家卖的。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 8</span>「保税仓什么时候用」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「保税仓听着省钱，是不是该多用？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「三种场景适合：<em>① 去向未定（可能转口、可能内销）；② 需要退货维修或再加工；③ 想延后纳税、改善现金流</em>。其余场景未必划算。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「不适合的场景呢？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「去向明确、周转很快的货——<em>保税带来的操作与合规成本，可能超过延后纳税的收益。</em>高值珠宝还要额外考虑安保与保险成本。」</p></div>
+      <div class="dlg-note"><span class="nt">决策口径</span><p>算三笔：<b>① 延后纳税的资金收益；② 保税操作与合规成本；③ 安保与保险成本</b>。珠宝这类高值小体积的货，第③项常常被低估。</p></div>
+      <p class="sim"><b>就好比：</b>行李寄存柜按小时收费——<em>短暂中转很划算，长期存放不如直接带回家。</em></p>
+    </div>
+  </details>
+
+  <h2>六、就地展开的详解</h2>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>"四单一致"到底一致什么</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>合同、发票、装箱单、报关单上的品名、规格、数量、重量、金额、收发货人必须能对得上。任何一处对不上，都会成为查验或稽查的切入点。</p>
+      <h4>专业术语</h4><p>Commercial Invoice（商业发票）、Packing List（装箱单）、Declaration（报关单）、Consistency（单证一致性）。</p>
+      <h4>条款解析</h4><p>把"四单一致"做成<b>发货前的自动核对表</b>：由业务在订舱前填写、法务或合规复核、留存版本记录。<b>改单时按"先源头后下游"的顺序同步修改</b>，禁止只改一处。</p>
+      <h4>生活比方</h4><p>报销时发票、行程单、审批单要完全一致——差一块钱都得重新走流程。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>完税价格不只是发票金额</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>海关认定的计税价格，可能包含发票之外的项目：佣金、包装费、协助费用、特许权使用费、运费保险费等（具体以适用规则为准）。漏报这些项目，是价格申报类问题的高频来源。</p>
+      <h4>专业术语</h4><p>Customs Value（完税价格）、Transaction Value（成交价格）、Royalty（特许权使用费）、Assists（协助费用）。</p>
+      <h4>条款解析</h4><p>三条动作：<b>① 让财务列出本票所有对外支付项目；② 逐项判断是否应计入完税价格；③ 将结论书面留档并在后续票中保持一致。</b>尤其是品牌授权费、模具费这类容易被忽略的项目。</p>
+      <h4>生活比方</h4><p>买房的计税价不只是合同价，装修款、车位款有时也要算进去——<em>你以为的"总价"和税务认定的"总价"不是一回事。</em></p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>预裁定怎么用才有效</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>预裁定是在货物进出口前，请海关就归类、原产地、价格等事项给出书面结论。拿到之后，后续同类货物按此申报，稳定性大幅提升。</p>
+      <h4>专业术语</h4><p>Advance Ruling（预裁定）、Binding Tariff Information（约束性归类信息，依不同法域称谓不同）。</p>
+      <h4>条款解析</h4><p>适用三类产品：<b>① 新品（首次出口、归类未定）；② 高值货（错报成本高）；③ 归类边界模糊的产品</b>。申请要点：材料真实完整、技术说明清晰、后续申报与裁定保持一致（<b>产品发生变化时要重新评估</b>）。</p>
+      <h4>生活比方</h4><p>出发前查好高速收费标准和路线，比到了收费站再猜便宜得多。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>跨境电商退货入区的常见断点</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>退货最怕两件事：证明不了"是原来那批货"，以及退货流程没提前设计好导致货卡在口岸或仓库。</p>
+      <h4>专业术语</h4><p>Returned Goods（退运货物）、Bonded Zone（保税区域）、Re-import（复进口）。</p>
+      <h4>条款解析</h4><p>退货单证包五件套：<b>① 原出口报关单号与发票装箱单；② 退货协议/退货原因说明；③ 货物原状照片与检验报告；④ 运输与仓储记录；⑤ 与税务处理相关的申报材料。</b>五件套在第一次发货时就准备好模板。</p>
+      <h4>生活比方</h4><p>退换货要带小票和原包装，缺一样就要多跑一趟——<em>跨境退货只是把这个流程放大了一百倍。</em></p>
+    </div>
+  </details>
+
+  <h2>七、条款模板</h2>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 N · 报关委托责任分配</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 N · 报关委托协议中的责任分配</div>
+      <div class="zh">甲方应以书面方式向乙方提供完整、真实、准确的申报要素（品名、材质与含量、加工工艺、规格型号、数量重量、价格构成、原产地与监管证件），并对因要素错误导致的补税、滞纳金及行政处罚承担责任。乙方应基于甲方提供的要素作出归类与申报判断，并<b>书面告知归类结论与依据</b>；因乙方专业判断错误导致的后果，由乙方承担。双方均应保存往来记录不少于【3】年。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 O · 单证一致与改单流程</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 O · 四单一致与改单流程</div>
+      <div class="zh">双方确认：合同、商业发票、装箱单与报关单在品名、规格、数量、重量、金额及收发货人上应保持一致。任何一处的修改，应<b>自源头单据开始依次修改</b>（装箱数据 → 发票装箱单 → 运输单证 → 报关数据），每一步均应书面留痕并经对方确认。任何一方擅自修改单处单据造成另一方损失的，应予赔偿。</div>
+    </div>
+  </details>
+
+  <h2>八、本页 Checklist：申报前七查</h2>
+  <ul class="check">
+    <li><strong>归类：</strong>材质、含量、加工程度、是否含宝石四项要素齐备；新品/高值货已考虑预裁定。</li>
+    <li><strong>要素书面化：</strong>《申报要素确认单》由我方提供、报关行书面确认归类结论。</li>
+    <li><strong>四单一致：</strong>合同、发票、装箱单、报关单逐项比对一致。</li>
+    <li><strong>价格构成：</strong>佣金、模具费、特许权使用费、运保费等是否应计入已逐项判断。</li>
+    <li><strong>原产地：</strong>原材料来源与加工工序有支撑；优惠税率需先确认原产资格。</li>
+    <li><strong>监管证件：</strong>钻石 KP（Kimberley Process，金伯利进程国际毛坯钻石证书制度）随附文件、濒危物种许可等证件在有效期内。</li>
+    <li><strong>留痕：</strong>全部往来与底稿保存不少于 3 年；改单按"先源头后下游"流程执行。</li>
+    <li><strong>附加项：</strong>退货流程与单证包模板已就绪；查验、稽查的应对联系人与流程已明确。</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">本页法源（使用时请核对现行文本）</div>
+    <ul>
+      <li>《中华人民共和国关税法》（<b>2024 年 12 月 1 日起施行</b>）——关税征管的基本法律框架</li>
+      <li>《中华人民共和国海关法》及海关稽查、报关、预裁定、企业信用管理等相关规章</li>
+      <li>《中华人民共和国进出口关税条例》等配套规定；现行《进出口税则》与本国归类决定</li>
+      <li>HS（Harmonized System，协调制度商品编码体系）——归类规则；具体税号以现行税则为准</li>
+      <li>KP（Kimberley Process，金伯利进程国际毛坯钻石证书制度）——天然钻石随附证书要求</li>
+      <li>目的地海关关于 EORI（Economic Operators Registration and Identification，欧盟经营者注册与识别号）、进口申报与增值税的要求</li>
+    </ul>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="lbl">复核提示</span>
+    <p>本页<strong>刻意不给出具体税号与税率数字</strong>：税则与监管条件会调整，且各国子目不同。申报前请以现行税则、本国海关归类决定与官方公告为准；高值与新品优先使用预裁定。涉及处罚与信用等级的后果判断，应结合个案事实与当时的监管口径，并与报关专业人士或海关律师共同确认。</p>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">跨境物流法务 · 第 08 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js?v=20260921a"></script>
+</body>
+</html>

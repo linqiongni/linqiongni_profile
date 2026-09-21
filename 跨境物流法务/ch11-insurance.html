@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11 货运保险与理赔代位 ｜ 跨境物流法务</title>
+<link rel="stylesheet" href="assets/style.css?v=20260921a">
+</head>
+<body data-station="ch11">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 11 · CARGO INSURANCE &amp; SUBROGATION</div>
+    <h1>货运保险与理赔代位</h1>
+    <p class="sub">D50，鹿特丹拆箱发现 37 箱水湿、部分古法金手镯氧化（水湿发生在 D38 海运段）。<br>
+      保险公司林经理来查勘定损，抛出一个扎心问题："<em>你们这份保单，是 C 条款还是一切险？</em>"<br>
+      这一站讲清楚：险别差在哪、定值怎么算、免赔额怎么扣、保险公司赔完后怎么"站到你的位置"去告承运人。</p>
+    <div class="meta-line"><span>主线：D50 保险理赔</span><span>含 8 组法务对话</span><span>含理赔材料清单</span><span>含代位求偿流程图</span></div>
+  </div>
+
+  <div class="story"><span class="tag">剧情 · D50</span>
+    <p>阿杰（跨境业务负责人）在群里发了一张照片：37 箱外包装水湿、里面部分手镯表面起斑氧化。水湿是 D38 到港拆箱时就发现的，但正式走保险理赔拖到了 D50。林经理（保险公司理赔）到深圳办公室，第一句话是："保单给我看一下，<strong>投的是协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）的哪一款？C 条款只保重大意外，A 条款才接近'一切险'</strong>。"周总转头问小律："我们不是买了保险吗？买了不就该赔？"小律翻开保单，发现险别写的是 C 条款，而且<em>投保时间是装船之后才补的</em>——这一单，可能"漏保"了一整段风险。会议室空气凝固了。</p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页均为原地展开：</span>
+    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
+    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <div class="callout c-tip">
+    <span class="lbl">先看这段（本站的结论）</span>
+    <p>"买了保险"和"赔得到钱"之间，隔着四道坎：<strong>险别够不够（C/B/A）、保额与加成对不对、投保时点赶没赶上、被保险人写没写对</strong>。而且保险赔的是"你的损失"，赔完之后保险公司会<em>站到你的位置</em>去追承运人——所以保险和承运人的责任限制（第 04 站）是同一件事的两面，必须一起算。</p>
+  </div>
+
+  <span class="sim"><b>就好比：</b>你买了车险，但买的是"只赔撞车、不赔自燃"的险——车自燃了，保险公司一句"不在条款内"就免赔；你以为"买了保险"就等于"什么都赔"，这是最常见的误会。</span>
+
+  <h2>一、保单类型与险别：ICC A/B/C 与"一切险"误区</h2>
+  <p>国际货运险通行的条款体系是<strong>协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）</strong>，分 A、B、C 三款，保障范围从宽到窄。注意：这是一个<em>行业通行的条款体系</em>，具体措辞与版本以保单载明及现行文本为准，本章不编造条款号。中文合同里常说的"一切险"，并不当然等于 ICC A——要看保单到底载明了什么。</p>
+
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">协会货物条款 A</span><span class="en">ICC (A)</span></div><div class="def">行业通行体系中保障范围最宽的一款，<b>接近"一切险"思路</b>：除除外责任外，承保保险期间内货物的一切灭失或损害风险。高值珠宝通常至少要到这一档。</div></div>
+    <div class="term"><div class="tw"><span class="zh">协会货物条款 B</span><span class="en">ICC (B)</span></div><div class="def">中等保障，承保列明风险（如地震、火山、雷电、海水、淡水、装卸事故等），<strong>未列明的不保</strong>。比 C 宽、比 A 窄。</div></div>
+    <div class="term"><div class="tw"><span class="zh">协会货物条款 C</span><span class="en">ICC (C)</span></div><div class="def">最窄保障，仅承保重大意外事故类列明风险（如火灾、爆炸、船舶搁浅、碰撞、共同海损牺牲等），<strong>不保偷窃、淡水湿、钩损等"寻常风险"</strong>。本票 NG-2026-017 若只投了 C，37 箱水湿很可能不在承保内。</div></div>
+    <div class="term"><div class="tw"><span class="zh">定值保险</span><span class="en">Valued Policy</span></div><div class="def">保单载明<strong>约定保险价值</strong>，出险按约定值赔，不再核定市价。高值货强烈建议定值，避免"按比例赔"的扯皮。</div></div>
+    <div class="term"><div class="tw"><span class="zh">不定值保险</span><span class="en">Unvalued Policy</span></div><div class="def">保险价值按出险时的实际价值计算，<strong>易与免赔额、分项限额叠加打折</strong>，高值货慎用。</div></div>
+    <div class="term"><div class="tw"><span class="zh">可保利益</span><span class="en">Insurable Interest</span></div><div class="def">投保人对保险标的须有<strong>法律上承认的利益</strong>。风险在谁身上，谁才对该段有可保利益；按 Incoterms（International Commercial Terms，国际贸易术语解释通则） 风险点确定投保人与受益人。</div></div>
+    <div class="term"><div class="tw"><span class="zh">代位求偿</span><span class="en">Subrogation</span></div><div class="def">保险人赔付后，<b>取得被保险人对第三人的索赔地位</b>，回头去告承运人/货代。这是保险赔完"接力追债"的法律机制。</div></div>
+    <div class="term"><div class="tw"><span class="zh">共同海损</span><span class="en">GA (General Average)</span></div><div class="def">为<strong>共同安全</strong>有意作出的特殊牺牲或费用，由受益各方按比例分摊。提货前常需提交 GA 担保（保函/保证金）。</div></div>
+  </div>
+
+  <div class="tw"><table>
+    <thead><tr><th>对比项</th><th>ICC (A)</th><th>ICC (B)</th><th>ICC (C)</th></tr></thead>
+    <tbody>
+      <tr><td>保障思路</td><td>一切险思路（除除外）</td><td>列明风险</td><td>仅重大意外列明风险</td></tr>
+      <tr><td>偷窃 / 提货不着</td><td>通常涵盖（依除外责任判断）</td><td>一般不在列明范围</td><td>不保</td></tr>
+      <tr><td>淡水 / 海水湿</td><td>通常涵盖</td><td>涵盖（列明）</td><td>不保</td></tr>
+      <tr><td>钩损 / 包装破损</td><td>通常涵盖</td><td>视列明</td><td>不保</td></tr>
+      <tr><td>适合本票珠宝？</td><td><strong>建议至少此档</strong></td><td>不足</td><td>明显不足</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="say"><span class="lbl">大白话打比喻</span><p class="analogy">ICC A/B/C 好比三种手机意外险：A 是"进水、摔了、被偷、自燃全赔"（除了故意不赔）；B 是"只赔你列出来的几种坏法"；C 是"只赔火灾爆炸这种大意外，进水进灰一律不管"。你这票古法金手镯走海运怕的就是水湿和磕碰——投 C，等于买了个"只防爆炸"的保险，风险根本没兜住。<em>而"一切险"三个字，得看保单真写了什么，不是业务员嘴上说一句就算数。</em></p></div>
+
+  <span class="sim"><b>就好比：</b>买"全险"时销售说"啥都保"，合同小字写"不含进水"——出险后才发现，口头承诺不作数，白纸黑字的条款才作数。</span>
+
+  <h2>二、定值 / 不定值、保险金额与加成、免赔额</h2>
+  <p>保额不是"想写多少写多少"。行业惯例是按 <strong>CIF（Cost, Insurance and Freight，成本加保险费加运费）价值加成投保</strong>——即在货值 + 运费 + 保费的基础上加一定比例（常见加成，具体比例以保单约定与行业惯例为准，本章不编造固定百分比）。目的：覆盖预期利润与杂费，避免"不足额投保、出险按比例赔"。</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>要素</th><th>常见做法（以保单/惯例为准）</th><th>踩坑后果</th></tr></thead>
+    <tbody>
+      <tr><td>保险金额</td><td>按 CIF 价值加成；高值货建议足额甚至略高</td><td>不足额则按比例赔付，缺口自己扛</td></tr>
+      <tr><td>定值与否</td><td>高值货优先定值，载明约定价值</td><td>不定值按出险时市价，可能低于采购价</td></tr>
+      <tr><td>免赔额 / 免赔率</td><td>保单载明每次事故绝对免赔额或免赔率</td><td>小额水湿低于免赔额，保险公司不赔</td></tr>
+      <tr><td>加成幅度</td><td>依行业惯例与买方合同要求</td><td>加成过低，利润与杂费露在保障外</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="plain"><span class="pl">大白话：</span>免赔额就像医保的"起付线"——小伤小病自己掏，超过部分才报销。<strong>37 箱水湿如果单箱损失低于免赔额，或者整体损失扣完免赔率所剩无几，保险可能"赔了个寂寞"</strong>。所以投保时要看免赔额设多高，高值货尽量谈低或取消。</p>
+
+  <span class="sim"><b>就好比：</b>车险有"绝对免赔 500 元"，剐蹭花 300 自己修；货损免赔额同理，水湿损失没过线，保险一分不赔。</span>
+
+  <h2>三、投保时点与"漏保"、可保利益与卖方利益险</h2>
+  <p>保险的保障从<strong>风险转移点</strong>开始。按 Incoterms（International Commercial Terms，国际贸易术语解释通则），<strong>FOB（Free On Board，船上交货）</strong>下风险在装船时转移给买方，理论上买方投保；<strong>CIF（Cost, Insurance and Freight，成本加保险费加运费）</strong>下卖方负责投保并支付保费。但实务中，<em>卖方在装船前、运输中、直到买方风险点之前，这段"真空期"若没投保，就是漏保</em>。</p>
+
+  <span class="sim"><b>就好比：</b>房子从卖家过户给买家那天风险才转移；过户前着火，得卖家自己扛。如果卖家以为"反正买家会买保险"，没给自己这段买，火一烧就是裸奔。</span>
+
+  <p>本票 NG-2026-017 的致命点：<strong>投保在装船之后才补</strong>。若水湿发生在装船前（如盐田拖车段、仓库保管段），而保单责任起始晚于装船，那段损失保险不赔。补救手段是<strong>卖方利益险</strong>——在买方或其保险尚未覆盖的区段，为卖方自身利益投保，兜住"别人不赔、自己又担责"的空档。</p>
+
+  <span class="sim"><b>就好比：</b>主险保"从出门到进门"，但搬家当天早上在家门口摔了——主险没生效，得另买"出门前意外险"才有人赔。卖方利益险就是这个"出门前"的兜底。</span>
+
+  <h2>四、代位求偿（Subrogation）：保险公司赔完，回头去告承运人</h2>
+  <p>代位求偿（Subrogation）是海上保险的核心机制：<strong>保险人向被保险人赔付后，依法取得被保险人对造成损失的第三人的索赔权利</strong>，以自己的名义去追偿。对霓光而言，这意味着：保险公司先赔你 480 万里的水湿损失，<em>然后保险公司变成"站在你位置上的人"，去告鹏城通 / 船公司</em>。所以保险赔不足时，追承运人的那一步，往往由保险公司接着走。</p>
+
+  <div class="callout c-warn">
+    <span class="lbl">时效衔接（务必记牢）</span>
+    <p>追偿链条上有两个时效：对承运人的<strong>海上货物运输赔偿请求权时效为 1 年</strong>（依《海商法》相关规定，自承运人交付或应当交付之日起算）；对保险人的<strong>海上保险请求赔偿时效为 2 年</strong>（依《海商法》相关规定，自知道或应当知道保险事故发生之日起算）。<strong>保险公司在赔付后去代位，仍受那个 1 年时效约束</strong>——拖过 1 年，连保险公司的追偿也会被挡在门外。具体条号以现行文本为准。</p>
+  </div>
+
+  <p>代位求偿的典型流程（文字版流程图）：</p>
+  <div class="tw"><table>
+    <thead><tr><th>步骤</th><th>动作</th><th>关键文件 / 时点</th></tr></thead>
+    <tbody>
+      <tr><td>① 出险</td><td>发现水湿，固定证据（照片、理货、检验报告）</td><td>D38 拆箱记录</td></tr>
+      <tr><td>② 报险</td><td>及时向保险人报案并供材料</td><td>保单、提单、发票、装箱单、检验报告</td></tr>
+      <tr><td>③ 赔付</td><td>保险人核定后向被保险人赔付</td><td>赔款支付 = 代位起点</td></tr>
+      <tr><td>④ 权益转让</td><td>被保险人签《权益转让书》</td><td>保险人取得索赔地位</td></tr>
+      <tr><td>⑤ 代位追偿</td><td>保险人向承运人 / 货代追偿</td><td><strong>须在 1 年海运时效内</strong></td></tr>
+      <tr><td>⑥ 责任限制衔接</td><td>承运人援引第 57 条限额，差额由保险补</td><td>666.67 SDR（Special Drawing Right，特别提款权）/件 或 2 SDR/kg 择高</td></tr>
+    </tbody>
+  </table></div>
+
+  <span class="sim"><b>就好比：</b>你车被追尾，自己的车损险先赔你，保险公司拿到你签的"追偿权转让书"后，转头去告撞你的司机——你拿钱走人，打架的事交给保险公司。</span>
+
+  <h2>五、共同海损（GA）与担保；与责任限制衔接</h2>
+  <p>若运输途中为<strong>共同安全</strong>作出有意牺牲（如抛货、灭火、绕航避难），会成立<strong>共同海损（GA，General Average）</strong>。受益人（包括货主）须分摊。提货前，船东/理算人常要求提交<strong>GA 担保</strong>（保函或现金保证金），否则不放货。这与保险密切相关：GA 分摊通常可向保险人索赔（依保单约定），但流程复杂、单证要求高。</p>
+
+  <span class="sim"><b>就好比：</b>一车人遇险，司机为保大家把你的行李扔下船——损失由全车人平分，你先交"担保金"才能拿回剩下的行李，事后找保险公司按比例补。</span>
+
+  <p>保险赔不足时，<strong>向承运人的追偿要回到第 04 站的责任限制</strong>：承运人按《海商法》相关规定，赔偿以每件 666.67 计算单位（SDR）或每公斤 2 计算单位择高，<em>但托运人申报价值或双方另有约定更高的除外</em>；且<strong>故意或明知可能造成损失而轻率作为/不作为的，不得援引限额</strong>（依第 60 条相关规定）。保险代位追偿时，这个限额就是"天花板"。</p>
+
+  <span class="sim"><b>就好比：</b>保险先赔你 100 块，转头去问撞你的人要——但对方依法最多赔 60 块（限额），剩下 40 块保险自己吞；除非你能证明对方是"明知道会撞还故意猛冲"，才能突破 60 块的天花板。</span>
+
+  <h2>六、八组法务对话（本站核心）</h2>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 1</span>「我们不是买了保险吗？买了不就该赔？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「每年保费都没少交，水湿了保险公司凭什么不赔？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「赔不赔，先看<em>保单载明的险别</em>。咱们这份是 ICC（Institute Cargo Clauses，协会货物条款）的 C 条款，只保重大意外；37 箱是淡水湿、包装渗水，C 条款大概率不保。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那业务员当初说'一切险'的呢？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「口说无凭，<em>保单白纸黑字写 C 就是 C</em>。下次高值货一律投 ICC A，并在保单写明'一切险（all risks）'字样，别信口头。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）A/B/C 是行业通行体系，保障范围从 A 到 C 递减。投保时应以<strong>保单载明条款</strong>为准；"一切险"须明确载入，否则以实际条款认定。</p></div>
+      <span class="sim"><b>就好比：</b>你买"全险"销售口头说啥都保，合同写"不含进水"——出险后合同说了算，销售的嘴不算。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 2</span>「免赔额是什么？水湿这么少不赔？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「林经理说单箱损失没过免赔额，不给赔，这也行？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「行。免赔额是保单里的'起付线'，<em>低于它的损失保险公司不赔</em>。37 箱若单箱货值摊下来没过线，保险可能真的一分不出。」</p></div>
+      <div class="dlg-line inv"><div class="who">林经理（保险）</div><p class="utt">「保单写的是每次事故绝对免赔额，行业惯例，不是针对你们。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「理解。所以高值货投保时要<em>把免赔额谈低或争取取消</em>，否则风险没兜住。这次我们接受，但下次条款必须改。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>免赔额（Deductible）/ 免赔率（Franchise）是保单常见约定。建议在投保单与保单中写清：<b>高值货适用低免赔或零免赔；免赔计算方式（每次事故 vs 每张保单）</b>。</p></div>
+      <span class="sim"><b>就好比：</b>医保起付线 500，你看门诊花 300 全自费；货损没过免赔线，保险同样不掏。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 3</span>「投保是装船后才补的，有问题吗？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「有大问题。水湿可能发生在<em>装船前的拖车、仓库段</em>，而保单责任起始晚于装船，那段就是漏保——保险不赔装船前的损失。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那这段谁来赔？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「装船前是卖方/货代的责任段，可找鹏城通按仓储或陆运责任追；但更好的做法是<em>提前投卖方利益险</em>，把这段兜住。这次教训：投保必须在发货前完成。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>按 Incoterms（国际贸易术语解释通则），FOB（Free On Board，船上交货）风险装船转移、CIF（Cost, Insurance and Freight，成本加保险费加运费）卖方负责投保。但无论哪种，<b>卖方在自身风险段应自行为该段投保（含卖方利益险）</b>，避免真空期。</p></div>
+      <span class="sim"><b>就好比：</b>主险"从出家门到进新家"才生效，可东西在自家门口就摔了——主险没启动，得另有"出门前险"才赔。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 4</span>「被保险人写我们还是写买家？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「保单被保险人写的是 Nordlicht，可货在咱们风险段出的事，能赔到我们吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「写错就赔不到。被保险人是<em>对标的具有可保利益的人</em>。按风险点，装船前利益在咱们，这段出事得咱们是被保险人才能赔；可写买家，卖家这段就裸奔。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那怎么办？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「两种办法：① 保单被保险人写'卖方 + 买方'或'凭指示'；② 卖方另投<strong>卖方利益险</strong>。目的都是让'谁担风险谁拿得到赔'。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>可保利益（Insurable Interest）要求投保人对标的具合法利益。建议条款：<b>保单被保险人涵盖供应链各风险段利益方；或卖方就自身风险段投保卖方利益险，并约定保险公司赔付后取得代位权</b>。</p></div>
+      <span class="sim"><b>就好比：</b>车在你名下时撞了，保单被保险人却写的是前车主——保险公司问"你凭啥来领钱"，你答不上来。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 5</span>「保险公司赔完，还会去找鹏城通？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「会。这就是<strong>代位求偿（Subrogation）</strong>：保险公司赔你之后，签个权益转让书，就站到你的位置去告承运人，追它该赔的那份。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那我们不就省心了？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「省心一半。但有两个限制：① 保险公司追承运人也受<em>1 年海运时效</em>约束，拖久了它也被挡门外；② 承运人能援引责任限制，赔不到全额时，差额才是保险真正兜底的部分。」</p></div>
+      <div class="dlg-note"><span class="nt">时效衔接</span><p>《海商法》相关规定：海上货物运输赔偿请求权时效 1 年（自交付或应当交付之日起算）；海上保险请求赔偿时效 2 年（自知道或应当知道保险事故发生之日起算）。代位追偿仍受 1 年约束。条号以现行文本为准。</p></div>
+      <span class="sim"><b>就好比：</b>你车被追尾，自己的险先赔，保险公司拿到你的"转让书"后去告撞你的人——你拿钱走人，但保险公司去告也得在时效内，过期同样告不进。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 6</span>「承运人最多赔多少？凭什么这么少」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">林经理（保险）</div><p class="utt">「我们代位追鹏城通，但它说按件赔，每件才几百 SDR，跟 480 万差太远。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「这是<strong>法定责任限制</strong>：每件 666.67 SDR 或每公斤 2 SDR 择高，除非我们<em>申报了价值</em>或它能证明<em>故意或轻率</em>。所以保险代位的天花板，就是这个数。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那申报价值能突破？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「能。提单载明约定价值，或双方另约更高，就超过限额。这也是为什么第 01 站就强调'高值货必申报价值'——保险和承运限额是双保险，缺一不可。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>《海商法》相关规定：赔偿限额按件数或其他货运单位数计算，每件 666.67 计算单位（SDR），或按货物毛重每千克 2 计算单位，以较高者为准；托运人装运前申报价值并载明于提单，或双方另行约定高于该限额的除外。故意或明知可能造成损失而轻率作为/不作为的，不得援引限额（第 60 条相关规定）。</p></div>
+      <span class="sim"><b>就好比：</b>对方最多赔 60 块（限额），你损失 100，剩下 40 得自己或保险吞；除非证明他"明知道会撞还猛冲"，才能突破 60。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 7</span>「听说还有什么共同海损，要交钱才放货？」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「船东说为了共同安全抛了货，要我们交 GA 担保才放剩下的货？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「这是<strong>共同海损（GA，General Average）</strong>。为保大家安全的有意牺牲，由受益方分摊。提货前常要交担保，否则船东可不放货——这是行业通行做法。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那这笔钱找谁要？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「GA 分摊通常可依保单向保险人索赔，但<em>单证要求极高</em>：理算书、担保函、分摊通知都要齐。投保时确认保单含 GA 条款，并保留所有凭证。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>共同海损（General Average）依相关海商规则理算与分摊。建议保单明确：<b>承保共同海损分摊责任；被保险人配合提供 GA 担保与理算所需单证</b>。具体理算规则以现行文本与理算人适用规则为准。</p></div>
+      <span class="sim"><b>就好比：</b>遇险时司机把你行李扔下船保大家，损失全车平摊；你先交"押金"才能拿回剩的行李，事后找保险按比例补。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 8</span>「出险后第一周，我们该干什么」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「出险后 72 小时最金贵：<em>固定证据、报险、留单、别动货、追时效、配合检验</em>。证据一丢，后面保险和代位都难。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「证据具体指什么？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「拆箱照片、理货记录、检验人报告、货损照片、提单副本、保单、往来邮件——<strong>全留档，且时间线连贯</strong>。还要立刻算'交付日'，因为对承运人的 1 年时效从那天起算。」</p></div>
+      <div class="dlg-note"><span class="nt">落地动作</span><p>见本页末尾 Checklist「出险后 72 小时必做的六件事」。核心是：<b>证据链完整 + 时效意识</b>。海上货物运输赔偿请求权时效 1 年，逾期实体权利不受保护（依《海商法》相关规定）。</p></div>
+      <span class="sim"><b>就好比：</b>车祸后先拍照、报保险、别挪车、留对方信息——少一步，理赔和追责都卡壳。</span>
+    </div>
+  </details>
+
+  <h2>七、条款模板（可折叠，照抄改成自己的）</h2>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 1 · 险别与保单记载</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">中文条款</div>
+      <div class="zh">投保人就 NG-2026-017 向保险人投保协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）<b>A 款（一切险思路，all risks）</b>，承保自工厂出库至海外仓验收合格全程；保单明确载明险别、保险金额、免赔额（高值货争取低免赔/零免赔）、定值方式及责任起讫。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 2 · 保险金额与加成</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">中文条款</div>
+      <div class="zh">保险金额按 CIF（Cost, Insurance and Freight，成本加保险费加运费）价值加成投保（具体加成幅度依行业惯例与买方合同，不编造固定比例）；高值货采用<b>定值保险</b>，保单载明约定保险价值，出险按约定值赔付，不另核市价。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 3 · 投保时点与卖方利益险</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">中文条款</div>
+      <div class="zh">投保人应于<b>货物发运前</b>完成投保；在买方保险责任尚未覆盖的区段（如 FOB（Free On Board，船上交货）下装船前），投保人另行投保<b>卖方利益险</b>，就自身风险段利益获保障，避免漏保真空。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 4 · 代位配合与权益转让</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">中文条款</div>
+      <div class="zh">保险人赔付后，被保险人应签署<b>权益转让书</b>，配合提供追偿所需单证（保单、提单、检验报告、理货记录等），协助保险人依代位求偿（Subrogation）向第三人追偿；被保险人不得擅自免除第三人之责。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 5 · 共同海损与担保配合</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">中文条款</div>
+      <div class="zh">保单承保<b>共同海损（GA，General Average）</b>分摊责任；发生共同海损时，被保险人应按船东/理算人要求及时提交担保（保函或保证金），并保留理算书、分摊通知等全部单证，以便向保险人索赔。</div>
+    </div>
+  </details>
+
+  <h2>八、就地展开的详解（点开就看，不跳走）</h2>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span><span class="pk-badge k">常见坑</span>"一切险"到底保不保偷窃、淡水湿？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>"一切险"三个字听着万能，但<em>保单没真写进去，就不算数</em>。行业通行的 ICC（Institute Cargo Clauses，协会货物条款）A 款才接近一切险思路；C 款明确不保偷窃、淡水湿等寻常风险。</p>
+      <h4>专业术语</h4><p>协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）A/B/C；一切险（All Risks）；除外责任（Exclusions）。具体保障以保单载明条款与现行文本为准。</p>
+      <h4>条款解析</h4><p>投保时坚持：<b>保单险别栏写明"ICC (A) / all risks"，并删除或限制"偷窃、淡水湿、钩损"等常见除外</b>。高值珠宝绝不能接受 C 款。</p>
+      <h4>生活比方</h4><p>买"全险"销售说啥都保，合同小字"不含进水"——出险后合同说了算。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>漏保真空期：装船前那段谁扛？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>保险不是"一买就全程保"，它从约定责任起始点才开始。装船前（工厂、拖车、仓库）若没投保，那段损失谁都不赔。</p>
+      <h4>专业术语</h4><p>可保利益（Insurable Interest）、风险转移点（依 Incoterms）、卖方利益险（Seller's Interest Insurance）、责任起讫。</p>
+      <h4>条款解析</h4><p>标准做法：<b>发货前完成投保；卖方风险段另投卖方利益险</b>；保单责任起讫写清"自出库至海外仓验收"。</p>
+      <h4>生活比方</h4><p>主险"从出门到进门"才生效，家门口摔了主险不赔，得另买"出门前险"。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>代位求偿（Subrogation）的时效怎么算？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>保险公司赔你之后，站你位置去告责任人；但它去告，<em>也要受对承运人的 1 年时效限制</em>，不是"赔完就无限期追"。</p>
+      <h4>专业术语</h4><p>代位求偿（Subrogation）、权益转让书（Letter of Subrogation）、海上货物运输赔偿请求权时效（1 年）、海上保险请求赔偿时效（2 年）。条号以《海商法》现行文本为准。</p>
+      <h4>条款解析</h4><p>出险即起算"交付日"，代位追偿须在此后 1 年内启动（申请扣船等中断事由依规定）。保险赔付与代位应衔接记录，避免超期。</p>
+      <h4>生活比方</h4><p>保险替你告撞车人，也得在告状时效内，过期同样告不进。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>保险赔不足时，差额找谁？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>保险按保单赔（受免赔额、限额、险别约束），承运人按法定限额赔——两头都有限度，<em>差额可能得自己吞</em>，除非能证明承运人故意或已申报价值。</p>
+      <h4>专业术语</h4><p>责任限制（第 57 条相关规定：666.67 SDR/件 或 2 SDR/kg 择高）、申报价值除外、故意轻率不得援引限额（第 60 条相关规定）、保险不足额。</p>
+      <h4>条款解析</h4><p>双保险策略：① 高值货必申报价值以突破承运限额；② 足额投保 ICC A 并低免赔；③ 诉前评估承运人是否存在"故意或明知可能损失而轻率作为"，以突破限额。</p>
+      <h4>生活比方</h4><p>对方最多赔 60（限额），你损 100，差 40 自吞；证明他"明知道会撞还猛冲"，才能突破 60。</p>
+    </div>
+  </details>
+
+  <h2>九、案例卡：同一件事，两种写法</h2>
+  <div class="case">
+    <div class="hd">案例：保单险别与投保时点的两种写法（教学改编，案号虚构）</div>
+    <div class="bd">
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 常见写法（出事就扯皮）</div>
+          <p>"投保货运险，C 条款，装船后补投保，被保险人写买方。"<br>
+          问题：C 条款不保淡水湿（37 箱损失大概率不赔）；装船前真空期漏保；被保险人写买方，卖方风险段赔不到。水湿发生后，保险公司拒赔 C 条款不保部分，卖方自行承担，且因漏保无法追偿装船前责任。</p></div>
+        <div class="vsb"><div class="vsh">✓ 建议写法（把漏洞堵死）</div>
+          <p>"投保 ICC (A) 一切险思路，定值，保险金额按 CIF 加成；责任起讫自工厂出库至海外仓验收；发货前完成投保，卖方风险段另投卖方利益险；被保险人涵盖卖方；低免赔/零免赔；含共同海损分摊责任。"</p></div>
+      </div>
+      <p class="plain"><span class="pl">大白话：</span>差别在<em>"险别够不够、保得早不早、被保险人写谁"三件事</em>：C 款、装船后补、写买方，三连错；A 款、发货前保、写自己，三连对。</p>
+    </div>
+  </div>
+
+  <h2>十、本页 Checklist：出险后 72 小时必做的六件事</h2>
+  <ul class="check">
+    <li><strong>固定证据：</strong>立即拍摄拆箱、水湿/货损照片与视频，保全外包装、封条、箱内状态；记录时间线，证据链连贯。</li>
+    <li><strong>及时报险：</strong>在保单约定时限内向保险人报案，并书面通知承运人/货代，保留报案凭证。</li>
+    <li><strong>申请检验：</strong>委托独立检验人（surveyor）出具检验报告，作为保险理赔与代位追偿的核心文件。</li>
+    <li><strong>保全单证：</strong>提单、保单、商业发票、装箱单、理货记录、往来邮件全套留档，切勿遗失或涂改。</li>
+    <li><strong>锁定时效：</strong>立即核算"承运人交付/应当交付日"，对承运人的 1 年海运时效从此时起算，必要时采取保全或起诉以中断。</li>
+    <li><strong>勿擅自处分：</strong>在检验与保险定损完成前，不擅自返还、弃货或免除第三人责任；配合保险人签署权益转让书以便代位。</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">本页法源（使用时请核对现行文本，以现行规定为准）</div>
+    <ul>
+      <li>《中华人民共和国海商法》（2025 年 10 月 28 日修订通过，2026 年 5 月 1 日施行）——第 57 条：承运人对货物灭失/损害的赔偿限额（每件 666.67 计算单位 SDR，或每公斤 2 计算单位，择高；申报价值或另有约定更高者除外）；第 58 条：迟延交付赔偿以运费为限；第 60 条：故意或明知可能造成损失而轻率作为/不作为不得援引限额；第 61 条：承运人委托实际承运人仍对全部运输负责；第 284 条：海上货物运输赔偿请求权时效 1 年；第 291 条：海上保险合同请求赔偿时效 2 年（自知道或应当知道保险事故发生之日起算）。条号以现行文本为准</li>
+      <li>协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）A/B/C——行业通行险别体系；具体措辞与版本以保单载明及现行文本为准，本章不编造条款号</li>
+      <li>Incoterms（International Commercial Terms，国际贸易术语解释通则）——FOB（Free On Board，船上交货）/ CIF（Cost, Insurance and Freight，成本加保险费加运费）下的风险与投保分工</li>
+      <li>《中华人民共和国民法典》合同编——保险合同、代位求偿相关一般规定</li>
+      <li>缩写注记：SDR（Special Drawing Right，特别提款权）、ICC（Institute Cargo Clauses，协会货物条款）、GA（General Average，共同海损）、TPL（Third Party Liability，第三方责任险）、P&amp;I（Protection and Indemnity，保赔保险）</li>
+    </ul>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="lbl">复核提示</span>
+    <p>《海商法》于 2025 年完成系统修订、2026 年 5 月 1 日起施行，<strong>条号与旧版本差异较大</strong>：引用时请打开现行正式文本逐条核对。协会货物条款（ICC，Institute Cargo Clauses，协会货物条款）的具体措辞、版本与除外责任以保单载明及保险人现行文本为准，<em>本章未编造任何条款号</em>。代位追偿受海上货物运输 1 年时效约束，出险后务必立即锁定"交付日"并保留证据。</p>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">跨境物流法务 · 第 11 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js?v=20260921a"></script>
+</body>
+</html>

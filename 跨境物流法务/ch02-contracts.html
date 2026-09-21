@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 三份合同与背靠背 ｜ 跨境物流法务</title>
+<link rel="stylesheet" href="assets/style.css?v=20260921a">
+</head>
+<body data-station="ch02">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 02 · THREE CONTRACTS AND BACK-TO-BACK</div>
+    <h1>三份合同与背靠背</h1>
+    <p class="sub">同一票货上，你签了三份合同：跟货代签的、跟海外仓签的、跟买家签的。<br>
+      这三份合同各自的"责任期间"能不能严丝合缝地接上、各自的"责任上限"是不是同一个数量级、各自的"术语"是不是同一个风险点——决定出事之后<strong>你是收钱的那一方，还是夹在中间赔两头的那一方</strong>。</p>
+    <div class="meta-line"><span>主线：D3 签三份合同</span><span>含 8 组法务对话</span><span>含 22 处生活比方</span><span>含三份合同一致性自检表</span></div>
+  </div>
+
+  <div class="story"><span class="tag">剧情 · D3</span>
+    <p>三份合同同一天摆在桌上：与鹏城通的《国际货运代理协议》（格式化版本，对方说"行业标准，不改"）、与荷兰 WareHub 的《海外仓服务协议》（英文版，Kevin 说"我们标准条款不能改，但可以加附件"）、与 Nordlicht 的《供货合同》（对方律师坚持用 DAP（Delivered At Place，目的地交货）术语）。阿杰说"都差不多，签了吧"。<em>这三份合同里有两个时间差、一个术语冲突、一处责任上限差了六十倍。</em></p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页均为原地展开：</span>
+    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
+    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <div class="callout c-tip">
+    <span class="lbl">先看这段（本站的结论）</span>
+    <p>三份合同要做的不是"各自合理"，而是<strong>三者对齐</strong>。对齐三件事：① <b>风险点</b>（Incoterms（International Commercial Terms，国际贸易术语解释通则）术语与保险、单证控制权一致）；② <b>责任期间</b>（前一份的终点 = 后一份的起点，不留真空）；③ <b>责任上限</b>（不要出现上游能赔 480 万、下游只赔 100 美元的断层）。</p>
+  </div>
+
+  <h2>一、三份合同分别管什么</h2>
+  <div class="tw"><table>
+    <thead><tr><th>合同</th><th>管的事</th><th>关键条款</th><th>最容易谈崩的点</th></tr></thead>
+    <tbody>
+      <tr><td>供货合同（买卖）</td><td>交付、质量、价款、风险何时转移给买家</td><td>Incoterms 术语、付款与放单挂钩、检验与异议期、所有权保留</td><td>术语与运输单证不匹配（合同 DAP，实际按 FOB（Free On Board，船上交货） 走）</td></tr>
+      <tr><td>货运代理 / 运输合同</td><td>从收货到交付这一段怎么运、谁负责</td><td>身份条款（代理 or 承运人）、责任期间、责任上限、单证、保险配合</td><td>标准条款里的责任上限（常按运费倍数计）</td></tr>
+      <tr><td>海外仓服务协议</td><td>入库后到出库前的保管与操作</td><td>验收与异议期、盘点、保管条件、责任上限、留置权、保险</td><td>责任上限按"上月仓储费"计算，与货值完全脱钩</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="plain"><span class="pl">大白话：</span>三份合同就是三段接力。第一段跑完把棒交给第二段，第二段交给第三段。<strong>交接处如果谁都以为对方拿着棒，棒就掉在地上了</strong>——而掉在地上的那一刻，货正好在卸货平台上。</p>
+
+  <div class="say"><span class="lbl">大白话打比喻</span><p class="analogy">三份合同好比三个人合伙抬一块玻璃上楼：A 负责一楼到三楼，B 负责三楼到五楼，C 负责五楼进门。合同里只要有一个人把"我负责到哪儿"写得含糊，玻璃在转角处摔了，三个人就会同时指向另外两个人。而写清楚的办法极简单：<em>让三个人的起止点用同一句话写、同一个楼层号。</em></p></div>
+
+  <h2>二、Incoterms：术语决定"风险在哪一秒转移"</h2>
+  <p>Incoterms（International Commercial Terms，国际贸易术语解释通则）解决三件事：<strong>费用谁出、风险在哪一点转移、谁负责订舱与投保</strong>。它不解决所有权，也不解决货损之后谁赔——那是运输合同的事。<span class="sim"><b>就好比：</b>术语只回答"从哪一步开始东西算你的"，不回答"东西坏了谁赔"。就像租房合同里约定"水表之后的水费你付"，不代表水管爆了是你修。</span></p>
+
+  <div class="tw"><table>
+    <thead><tr><th>术语</th><th>风险转移点</th><th>谁订舱</th><th>谁投保</th><th>对卖方的单证控制权</th><th>在 NG-2026-017 里的含义</th></tr></thead>
+    <tbody>
+      <tr><td>EXW（Ex Works，工厂交货）</td><td>工厂交货时</td><td>买方</td><td>买方</td><td><b>卖方最弱</b>：货一出厂就不归你控</td><td>不适合高值货，出险后你连提单都未必拿到</td></tr>
+      <tr><td>FOB（Free On Board，船上交货）</td><td>货物装上船时</td><td>买方</td><td>买方</td><td>卖方需关注"实际托运人"身份与单证取得</td><td>买方指定货代时，提单可能直接落到买方手里</td></tr>
+      <tr><td>CFR（Cost and Freight，成本加运费）</td><td>装上船时</td><td>卖方</td><td>买方</td><td>卖方控单，但买方自担运输风险</td><td>订舱权在我，投保不在我，容易漏保</td></tr>
+      <tr><td>CIF（Cost, Insurance and Freight，成本加保险费加运费）</td><td>装上船时</td><td>卖方</td><td>卖方（最低险别即可）</td><td>卖方控单</td><td>注意"最低险别"往往不够，高值货要另行加保</td></tr>
+      <tr><td>DAP（Delivered At Place，目的地交货）</td><td>目的地交由买方处置时（不卸货、不进口清关）</td><td>卖方</td><td>卖方（通常）</td><td>卖方控单到目的地</td><td><b>本案采用</b>：卖家承担到门店前几乎全程风险，必须买足保险</td></tr>
+      <tr><td>DDP（Delivered Duty Paid，完税后交货）</td><td>目的地完税后交付</td><td>卖方</td><td>卖方</td><td>卖方控单且承担进口清关</td><td>还要承担进口国税务与合规身份，第 07、08 站展开</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout c-warn">
+    <span class="lbl">本案的冲突</span>
+    <p>供货合同约定 <strong>DAP</strong>（卖方负责运到目的地、风险到交付时才转移），但鹏城通的协议里责任期间只写到"货物装上船"，海外仓协议写到"入库验收合格起"。<strong>结果：卸货、拆箱、短驳这一段没人认领，而它恰好是整个链条里最容易磕碰的一段。</strong></p>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">背靠背</span><span class="en">Back-to-back</span></div><div class="def">上游合同赋予你的<b>权利与义务，原样传导给下游</b>。目的只有一个：别人找你赔的每一块钱，你都能向真正的责任方要回来。</div></div>
+    <div class="term"><div class="tw"><span class="zh">责任期间</span><span class="en">Period of Responsibility</span></div><div class="def">从接管到交付的时间段。<b>三份合同的起止点必须首尾相接</b>，且用同一套动词（接管 / 交付）与同一批地点。</div></div>
+    <div class="term"><div class="tw"><span class="zh">责任上限</span><span class="en">Limitation of Liability</span></div><div class="def">合同约定的最高赔偿额。<b>常见三种写法</b>：按运费倍数、按服务费倍数、按固定金额。高值货必须谈"按货值"或"提高上限 + 保险"。</div></div>
+    <div class="term"><div class="tw"><span class="zh">间接损失排除</span><span class="en">Exclusion of Consequential Loss</span></div><div class="def">把利润损失、门店缺货、违约金、商誉损失等"后果性损失"排除在赔偿之外。<b>对跨境电商杀伤力最大的一条</b>——旺季断货的利润损失往往远超货值本身。</div></div>
+    <div class="term"><div class="tw"><span class="zh">所有权保留</span><span class="en">Retention of Title</span></div><div class="def">货款付清前货仍是卖方的。与"风险转移"是两件事：<b>风险可以已转移给买方，所有权仍在你手上</b>，这是尾款未清时的重要抓手。</div></div>
+    <div class="term"><div class="tw"><span class="zh">检验与异议期</span><span class="en">Inspection &amp; Notice Period</span></div><div class="def">收货方在多长时间内必须提出异议，过期视为验收合格。<b>三份合同里的异议期要彼此留出余量</b>：下游给你 7 天，你就得给自己留至少 14 天向上追。</div></div>
+  </div>
+
+  <h2>三、黑话 → 人话（本页对照表）</h2>
+  <details class="dlg" open>
+    <summary><span class="pk-badge d">对照表</span>展开：黑话 → 人话 → 老板为什么要在乎</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「DAP、FOB 这些字母，跟我赔不赔钱有什么关系？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「关系大了：<em>它决定'东西从哪一秒起算别人的'</em>。DAP 意味着货送到门店前摔了，都算我们的，我们再去追货代和仓库。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>DAP（Delivered At Place，目的地交货）：卖方承担将货物运至约定目的地的一切风险与费用（进口清关除外）。<b>卖方买保险必须覆盖到目的地，而不是只保"港到港"。</b></p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「货代说他们标准条款不能改，那我谈什么？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「标准条款不动，<em>加一份《特别约定》或《补充条款》并写明'与标准条款不一致的，以本补充条款为准'</em>。这是行业通行做法，对方不会拒绝。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>补充条款的效力条款写法见本页条款模板 A。<b>关键不是改标准条款，是让特别约定"优先适用"。</b></p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「责任上限写多少算合适？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「按<b>货值</b>谈，或者按'不低于本票货值'谈。谈不下来就谈<b>提高上限 + 要求对方提供责任保险凭证</b>，两条路至少走通一条。」</p></div>
+      <div class="dlg-note"><span class="nt">红线数字</span><p>货值 USD 480 万；若货代责任上限是"运费的 2 倍"（假设运费 USD 8,000），上限仅 USD 16,000。<b>差 300 倍</b>——这就是必须在签约前处理的事。</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「买家律师说间接损失一定要排除，这个能让吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「可以排除，但要<b>把'货物本身的损失、我们为减损支出的合理费用、我们对下游的赔偿'留在赔偿范围内</b>。一刀切排除，等于我们替上游承担全部后果。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>建议写法：<b>任何一方对另一方的间接损失（利润损失、商誉损失）不承担责任；但本条不适用于：货物灭失或损坏本身、因一方违约导致另一方对第三方承担的赔偿责任、以及守约方为防止损失扩大而支出的合理费用。</b></p></div>
+    </div>
+  </details>
+
+  <h2>四、八组法务对话</h2>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 1</span>「三份合同三个风险点，到底以哪个为准」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「供货合同 DAP，货代协议写港到港，这不冲突吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「<em>不冲突，但会留一个洞。</em>我们对买家承诺到门店，对货代只买到装船为止——中间那一段的风险是我们自己在扛，而且没人赔。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那就把货代协议改成门到门呗。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「对，而且要<b>把海外仓协议的起点往前推</b>：从'入库验收合格'改成'货抵仓库卸货平台时'。两家之间就没有缝隙了。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>货代协议：<b>乙方责任期间自接管货物时起至货物交付至【海外仓卸货平台】并经仓方签收时止</b>；海外仓协议：<b>甲方责任期间自货物抵达仓库卸货平台时起，至出库交付承运人时止</b>。</p></div>
+      <p class="sim"><b>就好比：</b>你和搬家公司约定"搬到楼下"，和新房物业约定"进电梯后归我"，那么楼下到电梯口这段就没人管了。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 2</span>「背靠背到底怎么写才算接上」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「背靠背这词我听了十年，到底怎么写？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「一句话：<em>下游合同里我承担的每一项义务，都要在上游合同里找到对应的一模一样的义务</em>。包括标准、时限、验收方式、赔偿范围。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「举个小例子。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「买家要求'到货后 7 天内可退'；我们就得让海外仓协议写'支持 7 天内退货并 48 小时内完成质检回传'。<em>少写这一句，退的货就是我们在赔。</em>」</p></div>
+      <div class="dlg-note"><span class="nt">落地方法</span><p>做一张三列对照表：<b>对买家的承诺 / 我们自己能否做到 / 上游合同里有没有对应条款</b>。第三列是空白的，就是风险敞口。</p></div>
+      <p class="sim"><b>就好比：</b>你答应朋友"我帮你搬上六楼"，就得确保搬家公司也答应搬上六楼，而不是只搬到楼下。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 3</span>「标准条款不能改，是不是就没得谈」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「我们的标准条款是集团统一版本，不能改。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「理解。那就<b>加一份服务水平附件（SLA（Service Level Agreement，服务水平协议））</b>，写明'与标准条款不一致的，以本附件为准'。」</p></div>
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「这个可以做，附件是我们当地团队签的。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「好。附件里放五件事：<em>验收与异议期、盘点频率、保管条件与安防、责任上限、留置权行使的前置通知</em>。」</p></div>
+      <div class="dlg-note"><span class="nt">为什么这条路走得通</span><p>集团标准条款保护的是"规模化复制"，附件保护的是"这一单的特别安排"。<b>对方改标准条款需要总部审批，加附件只需要当地负责人签字。</b></p></div>
+      <p class="sim"><b>就好比：</b>连锁酒店的合同改不了，但你可以跟店长要一份书面承诺"明天早上七点叫醒 + 发票开公司名"。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 4</span>「责任上限差三百倍怎么办」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「这票货值 USD 480 万。货代协议上限是运费的两倍，约 USD 1.6 万；海外仓上限是上一个月仓储费，约 EUR 1.2 万。<em>加起来不到货值的 1%。</em>」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那还签？我不如自己扛。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「签，但要做三件事：<em>提高上限、要求提供责任保险凭证、剩下的敞口自己买货运险兜底</em>。三条一起做，敞口才能压到可控。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「提高上限他们会不会直接拒绝？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「会。所以<b>报价单上要有'高值货特别服务费'</b>这一行——你把加价摆出来，对方才有空间接。谈责任不谈钱，等于没谈。」</p></div>
+      <div class="dlg-note"><span class="nt">谈判口径</span><p>"我方理解贵司按标准费率承保的风险有限。本票货值 USD 480 万，我方拟支付【高值货服务费】，对应将责任上限提高至【USD X】；如贵司无法提高，请提供责任保险保单副本，由保险承接超出部分。"</p></div>
+      <p class="sim"><b>就好比：</b>搬家公司说"丢一件赔 50 块"，你说"那我加 200 块，请改成丢一件赔 5000 块"——<em>你得让他多收钱，他才肯多担责。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 5</span>「买方指定货代，提单在谁手里」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「买家说他们有长期合作的货代，便宜，用他们的？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「用可以，但<em>提单必须签给我们，或者至少我们是'实际托运人'</em>。否则货一上船，单证就到了买家手里，尾款没收清，货权先没了。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「FOB 不是都这样吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「正因为 FOB（Free On Board，船上交货）常见，才更要写清楚：<b>货代须向卖方交付全套正本提单，运费到付不影响此义务</b>。这句话值几百万。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>在与买家、与其指定货代的三方沟通中确认：<b>卖方为提单记载的托运人（或实际托运人），承运人/货代应将全套正本提单交付卖方；未经卖方书面同意不得电放、不得凭副本放货。</b></p></div>
+      <p class="sim"><b>就好比：</b>买家说他认识快递员、便宜，那快递单的存根你也得留一份，不然东西送到了你说不清是谁的。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 6</span>「免责条款里的'不可抗力'能信吗」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「他们合同里写'因港口拥堵、罢工、天气导致延误不承担责任'，这合理吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「部分合理，部分过头。<em>港口拥堵和罢工是这几年最常见的延误原因</em>，全免就等于把旺季延误的风险全给我们。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那怎么谈？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「三层写法：<em>① 免责限于'不可预见、不可避免、不可克服'；② 对方仍有及时通知与减损义务；③ 超过约定期限（如 15 天）我方有权改港、转运或解除合同并要求退还已付费用</em>。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>不可抗力条款三要素：<b>（1）定义与范围；（2）通知义务（发生之日起 X 日内书面通知并提供证明）；（3）后果（延期履行 / 部分免除 / 超过 X 日可解除并存退款与改港权）。</b>只写第一条的合同是不完整的。</p></div>
+      <p class="sim"><b>就好比：</b>航班延误不赔可以，但航司得告诉你延误到几点、给你改签或者退票。<em>只说"天气原因概不负责"，那是耍赖。</em></p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 7</span>「三份合同的争议条款不一样，会有多麻烦」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「现在的状态是：<em>货代协议去深圳，海外仓协议去荷兰，买家合同去德国</em>。真出事，我们要同时在三个国家打三场官司，而且三场的事实完全相同。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「能不能统一？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「争取统一到<b>同一个仲裁地、同一语言、同一规则</b>。退一步也要争取：至少让货代与海外仓这两份（我们可控的）统一；买家那份谈不下来就在报价里预留争议成本。」</p></div>
+      <div class="dlg-note"><span class="nt">优先级</span><p>统一不了时的兜底原则：<b>优先保住"责任链条上的相邻两份"一致</b>，这样至少能在一条线上把责任追到底，再回头单独处理买家关系。详见第 12 站。</p></div>
+      <p class="sim"><b>就好比：</b>一家人约饭，三个人给了三个餐厅地址——至少让其中两个人先去同一家，第三个人再单独协调。</p>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 8</span>「签之前最后过一遍什么」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「三份合同都摆在这了，你最后看什么？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「只看四行字：<em>责任期间的起止时间、责任上限的金额、免责与间接损失排除的范围、争议解决去哪儿</em>。其余文字出问题的概率远低于这四行。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「就四行？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「就四行。但<em>这四行必须在三份合同里彼此对齐</em>——对齐一次，抵得上后面十封索赔邮件。」</p></div>
+      <div class="dlg-note"><span class="nt">落地动作</span><p>把本页末尾的《三份合同一致性自检表》打印出来，每次签约逐行勾，签完存档。第 13 站有可复制版本。</p></div>
+      <p class="sim"><b>就好比：</b>体检报告上千字，医生真正看的就血压、血糖、血脂、心电图四项——但这四项必须互相印证。</p>
+    </div>
+  </details>
+
+  <h2>五、就地展开的详解</h2>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>责任期间"首尾不接"的三种典型写法</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>最常见的三种断点：① 上游写到"装船为止"，下游从"入库验收合格"起；② 上游写"交付至港口"，下游写"自货到仓库起"；③ 上游写"完成报关后"，下游写"入库后"。每一种断点都对应一段真实的物理搬运过程。</p>
+      <h4>专业术语</h4><p>责任期间（Period of Responsibility）、接管（Taking in charge）、交付（Delivery）、交接凭证（Interchange Receipt）。</p>
+      <h4>条款解析</h4><p>统一写法：<b>乙方自【接管货物】时起至【将货物交付至 XX 仓库卸货平台并经仓方签收】时止承担承运人责任；交接时双方应签署交接凭证，载明时间、件数、外观状态。</b>交接凭证是断点争议里唯一的客观证据。</p>
+      <h4>生活比方</h4><p>两个保安换班，一个说"我八点下班"、一个说"我八点半上班"，那半小时没人看门——小偷就挑这个点。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>责任上限的三种写法与应对</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>赔多少，合同里通常有三种写法，从上到下对你越来越不利：按货值 / 按固定金额 / 按运费或服务费的倍数。</p>
+      <h4>专业术语</h4><p>Limitation of Liability、Package Limitation、Per-occurrence Cap、Aggregate Cap。</p>
+      <h4>条款解析</h4><p>三种写法的对比与应对：<br>
+        ·<b>按货值</b>：最优，但对方会要求加收从价费；<br>
+        ·<b>按固定金额</b>（如 USD 100,000/票）：可接受，但要确认是"每次事故"还是"年度累计"；<br>
+        ·<b>按运费倍数</b>：最差，高值货必须谈掉或配保险。<br>
+        谈判三步：① 问上限金额；② 问是否含间接损失；③ 问有没有责任保险、保单能不能看。</p>
+      <h4>生活比方</h4><p>搬家公司说"丢了赔运费三倍"，等于你丢一台两万的相机，赔回来九十块。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>间接损失排除：哪些必须抢回来</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>对方写"不承担任何间接损失"，通常指的是利润损失、商誉损失。但有三类损失不属于间接损失，必须留在赔偿范围里。</p>
+      <h4>专业术语</h4><p>Consequential Loss（间接损失）、Direct Loss（直接损失）、Indemnity（赔偿/弥偿）、Mitigation Costs（减损费用）。</p>
+      <h4>条款解析</h4><p>必须保留的三项：<b>① 货物本身的灭失、损坏价值；② 守约方为防止损失扩大而支出的合理费用；③ 因一方违约导致守约方对第三方承担的赔偿责任。</b>写成"例外清单"附在排除条款后面。</p>
+      <h4>生活比方</h4><p>水管爆了，物业不赔你"心情不好"可以理解；但泡坏地板的钱、你临时住酒店的钱，总得赔。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>所有权保留与风险转移是两件事</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>"货算谁的"和"货坏了算谁的"是两个问题。合同可以约定：风险已经转移给买方（坏了买方承担），但所有权还在卖方手里（没付清钱，货还是我的）。</p>
+      <h4>专业术语</h4><p>Retention of Title（所有权保留）、Passing of Risk（风险转移）、Incoterms（International Commercial Terms，国际贸易术语解释通则）。</p>
+      <h4>条款解析</h4><p>建议条款：<b>货物所有权自买方付清全部价款时转移；风险自【DAP 交付点】起转移。所有权保留期间，买方应妥善保管并不得处分、抵押货物；买方破产或逾期付款超过 X 日的，卖方有权取回货物或要求其转售所得优先清偿。</b></p>
+      <h4>生活比方</h4><p>分期付款买的手机，摔了是你心疼（风险），但没付完钱之前手机还不完全是你的（所有权）。</p>
+    </div>
+  </details>
+
+  <h2>六、条款模板（可直接改）</h2>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 A · 补充条款优先适用</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 A · 补充条款 / 特别约定的优先效力</div>
+      <div class="zh">本《特别约定》为本协议的组成部分。本《特别约定》与协议正文、附件及任何一方提供的标准交易条款（含引用或链接方式纳入的标准条款）不一致的，以本《特别约定》为准；本《特别约定》未涉及的事项，仍适用协议正文。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 B · 责任期间首尾相接</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 B · 责任期间与交接凭证</div>
+      <div class="zh">乙方对货物的责任期间，自乙方或其代理人接管货物之时起，至货物交付至【目的地仓库卸货平台】并经该仓库签收之时止，包括其间的装卸、短驳、转运、拆装箱及临时存储环节。双方应在交接时签署书面交接凭证，载明交接时间、件数、封条号及外观状态；交接凭证是判断责任期间的依据。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 C · 责任上限与高值货</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 C · 责任上限、保险与间接损失例外</div>
+      <div class="zh">乙方就每一票货物承担的赔偿责任上限为【USD ___】或该票货物申报价值，以较高者为准。乙方应就其责任投保并保持有效，并在甲方要求时提供保险凭证。任何一方不对另一方的间接损失（含利润损失、商誉损失）承担责任，但本款不适用于：（一）货物本身的灭失或损坏；（二）守约方为防止损失扩大而支出的合理费用；（三）因一方违约导致守约方对第三方承担的赔偿责任。</div>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><div class="ch">条款 D · 单证交付与不得放货</div><span class="cue"></span></summary>
+    <div class="clause">
+      <div class="ch">条款 D · 单证交付与放货限制（背靠背用）</div>
+      <div class="zh">无论运费支付方式如何，乙方应将全套正本提单交付甲方（托运人/实际托运人）。未经甲方事先书面同意，乙方不得电放、不得凭副本提单或保函放货，亦不得应任何第三方要求变更收货人或交付地。乙方违反本款导致甲方丧失货权或无法收取货款的，应赔偿甲方因此遭受的全部损失。</div>
+    </div>
+  </details>
+
+  <h2>七、案例卡</h2>
+  <div class="case">
+    <div class="hd">案例：同一票货，两份合同的责任上限差 300 倍</div>
+    <div class="bd">
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 签约时没看上限</div>
+          <p>供货合同 DAP（Delivered At Place，目的地交货）、货值 USD 480 万；货代协议沿用标准条款，责任上限为"本次运费的两倍"（运费 USD 8,000，上限 USD 16,000）；海外仓上限为"上月仓储费"（约 EUR 12,000）。货物在卸货平台跌落受损 USD 62 万。<b>结果：两家合计最多赔约 USD 3 万，剩余敞口由货主自行承担。</b></p></div>
+        <div class="vsb"><div class="vsh">✓ 签约时谈了三件事</div>
+          <p>① 支付高值货服务费，将货代责任上限提高至 USD 50 万；② 要求两家提供责任保险凭证，由保险承接超出部分；③ 剩余敞口自投保运一切险（含仓到仓条款）。<b>结果：损失由保险 + 货代责任险分层承担，货主自留部分降至可控。</b></p></div>
+      </div>
+      <p class="plain"><span class="pl">大白话：</span>同样的货、同样的摔法，<em>差别只在于签约那天有没有多谈二十分钟</em>。责任上限这种条款，签之前是谈判筹码，签之后是既定事实。</p>
+    </div>
+  </div>
+
+  <h2>八、本页 Checklist：三份合同一致性自检表</h2>
+  <ul class="check">
+    <li><strong>术语一致：</strong>供货合同的 Incoterms 术语，与订舱单、保险单、提单记载的起运地/目的地一致。</li>
+    <li><strong>风险点一致：</strong>供货合同的风险转移点 ≥ 你实际能控制的范围（尤其 DAP/DDP 要确认保险覆盖到目的地）。</li>
+    <li><strong>责任期间首尾相接：</strong>货代协议的终点 = 海外仓协议的起点；两家之间必须有交接凭证。</li>
+    <li><strong>责任上限同量级：</strong>三份合同的上限金额打成一张表比对，出现"差十倍以上"的必须谈。</li>
+    <li><strong>异议期留余量：</strong>买家给你的异议期 ≥ 你向货代/仓库主张的异议期 + 至少 7 天。</li>
+    <li><strong>间接损失例外清单：</strong>货值、减损费用、对第三方的赔偿三项在例外清单里。</li>
+    <li><strong>单证控制权：</strong>谁持有正本提单、能否电放、变更收货人需要谁的书面同意。</li>
+    <li><strong>所有权保留：</strong>尾款未清期间保留所有权，并约定取回或转售所得优先清偿。</li>
+    <li><strong>不可抗力三要素：</strong>定义 + 通知义务 + 超期解除/改港权，缺一不可。</li>
+    <li><strong>争议解决对齐：</strong>至少让货代与海外仓两份指向同一仲裁地；买家那份谈不下来要记录风险并在报价中预留成本。</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">本页法源（使用时请核对现行文本）</div>
+    <ul>
+      <li>《中华人民共和国民法典》合同编——买卖合同、运输合同、仓储合同、委托合同章；违约责任、免责条款与格式条款的相关规定</li>
+      <li>Incoterms（International Commercial Terms，国际贸易术语解释通则）——风险与费用转移点、术语与保险/单证的匹配</li>
+      <li>《中华人民共和国海商法》（2025 年修订，2026 年 5 月 1 日施行）——第四章海上货物运输合同；第 57 条承运人赔偿责任限额与申报价值除外、第 61 条承运人对全程负责</li>
+      <li>《中华人民共和国国际海运条例》——第 7 条无船承运业务定义与提单登记、第 8 条保证金</li>
+      <li>《中华人民共和国保险法》——保险利益与代位求偿（详见第 11 站）</li>
+    </ul>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="lbl">复核提示</span>
+    <p>合同里的"责任上限""免责""间接损失排除"属于<b>每一次签约都要重新谈判</b>的条款，不存在一劳永逸的版本。本页模板给的是结构与谈判口径，不是可直接照抄的金额——金额必须结合本票货值、运费、保险与对方承保能力单独确定。涉及格式条款的效力判断，应结合《民法典》关于格式条款的规定个案分析。</p>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">跨境物流法务 · 第 02 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js?v=20260921a"></script>
+</body>
+</html>

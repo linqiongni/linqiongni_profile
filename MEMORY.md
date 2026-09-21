@@ -170,3 +170,8 @@
 - **英文缩写首次出现必须带英文全称注记**，格式 `ACRO（Full English Name，中文）`，如 `VIE（Variable Interest Entity，可变利益实体）`。适用该站全部 14 个页面及后续新站。全站已用脚本补齐约 65 处并扫描验证（46 缩写 × 14 文件 ALL CLEAN）。
 - **给注记做批量插入时的坑**：注记文本里绝不能含其他裸缩写（如 18C 注记里写 "HKEX Listing Rules" 会被后续 HKEX 扫描再次命中，嵌套出重复乱码）——要么拼全称（"Hong Kong Exchanges and Clearing Limited"），要么把注记排除在扫描范围外。插入须跳过 HTML 标签/SVG text/属性（首个非标签出现处才算正文首次出现）。
 - 缩写扫描脚本思路：正则词边界匹配 + `inside_tag` 回溯 `<`/`>` 判定 + 首 80 字符内找 `（[A-Za-z]...）` 视为已注记。可复用于其他子站。
+
+## 可复用 skill：domain-knowledge-static-site（2026-09-21 建）
+- 位置 `~/.workbuddy/skills/domain-knowledge-static-site/`，把融资法务站的国风知识站范式（左栏固定可折叠目录 + 顶栏搜索/深浅色/全屏 + 右栏本页目录 + 原地展开详解/协议模板/法务对话/生活比方/行内注释/术语卡/案例卡）固化为组件库。
+- references/ 内含：style.css + app.js（从融资法务站原样复制）、station/index 页面模板、acronym-insert.py（缩写注记插入+--check）。
+- 触发词：「做一个 XX 知识站/专题站」。部署到 linqiongni.top tab 配合 legal-domain-site-tab；只改源站目录，副本用 sync 脚本生成。

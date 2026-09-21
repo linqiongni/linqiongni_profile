@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 物流数据与跨境传输 ｜ 跨境物流法务</title>
+<link rel="stylesheet" href="assets/style.css?v=20260921a">
+</head>
+<body data-station="ch10">
+<div id="topbar"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">STATION 10 · LOGISTICS DATA &amp; CROSS-BORDER TRANSFER</div>
+    <h1>物流数据与跨境传输</h1>
+    <p class="sub">D20，ERP（Enterprise Resource Planning，企业资源计划一体化管理系统）要跟荷兰仓 WMS（Warehouse Management System，仓储管理系统）打通，<br>
+      面单上的收件人姓名、电话、地址要"出境"——这不是技术对接，是<strong>一次个人信息的跨境传输</strong>。<br>
+      这一站讲清楚：链条上到底有哪些个人信息、谁是把关人、数据怎么合法地"出国"、出了事谁通报。</p>
+  <span class="sim"><b>就好比：</b>老板以为"派个快递"是行政小事，没想到快递单上写着客户家门牌——这一单本身，就已经把客户的隐私"寄"出了国。</span>
+    <div class="meta-line"><span>主线：D20 系统打通</span><span>含 8 组法务对话</span><span>含数据流向图</span><span>含 DPA（Data Processing Agreement，数据处理协议） 要点清单</span></div>
+  </div>
+
+  <div class="story"><span class="tag">剧情 · D20</span>
+    <p>阿杰（跨境业务负责人）兴冲冲跑来说："小律，荷兰仓 WareHub 的 Kevin 发来对接文档，要把我们的 <strong>ERP</strong> 和他们的 <strong>WMS</strong> 打通，以后面单、库存、签收记录自动同步，省得每天人工导表。"周总在旁边补了一句："不就是个接口吗？让 IT 搞一下。"法务小律翻开那份对接文档，第一页就写着"数据将传输至荷兰服务器（EU 区）"——这意味着<strong>成千上万条欧洲买家的姓名、电话、地址、签收时间</strong>，要跨境传到境外的系统里，而且欧盟那边的 GDPR（General Data Protection Regulation，通用数据保护条例）还要求霓光和 WareHub 之间必须签一份 <strong>DPA（Data Processing Agreement，数据处理协议）</strong>。会议室一下子安静了。</p>
+  </div>
+
+  <div class="tplbar">
+    <span>本页均为原地展开：</span>
+    <button type="button" data-fold="open" data-fold-kind="peek">展开全部详解</button>
+    <button type="button" data-fold="close" data-fold-kind="peek">收起全部详解</button>
+    <button type="button" data-fold="open" data-fold-kind="dlg">展开全部对话</button>
+    <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
+  </div>
+
+  <div class="callout c-tip">
+    <span class="lbl">先看这段（本站的结论）</span>
+    <p>"接个口"这件事，法律上被拆成了好几层：<strong>传输的是什么数据（是不是个人信息）、谁决定用途（控制者）、谁只是帮忙处理（处理者）、数据要合法地"出国"走哪条路径、出问题怎么通报</strong>。这四层没想清楚，IT 把接口一开，公司的合规责任就跟着数据一起"出境"了——而 GDPR 的罚则是全球营业额 4%，不是运费那点钱。</p>
+  <span class="sim"><b>就好比：</b>你为省两百块运费没买保险，结果货值四百万的柜子没了——省的是小钱，赌的是身家。</span>
+  </div>
+
+  <span class="sim"><b>就好比：</b>你以为"物流数据"只是快递单，其实从下单到签收再到退货，整条链都在记"谁、寄给谁、送到哪、要不要退"——这些拼起来就是一份客户档案。</span>
+  <span class="sim"><b>就好比：</b>数据出境不是"传一次就完"，而是"从此在境外也有一份副本"，后面每一步处理都要按两边规矩来，想撤回都难。</span>
+
+  <h2>一、物流链条上到底有哪些个人信息</h2>
+  <p>很多人以为"物流数据"就是面单上那几个字。其实从你下单到买家签收、再到售后，<strong>整条链上至少沉淀了五类个人信息</strong>。每一类出境的法律性质都不一样，不能混着算。</p>
+
+  <div class="say"><span class="lbl">大白话打比喻</span><p class="analogy">这票货的物流数据，好比你给外地的朋友寄了一箱礼品，还要在对方城市找个"代收点"代管、再让"跑腿"送上门：面单是写有朋友电话地址的快递单，轨迹是你和朋友都能看到的"到哪儿了"，签收记录是跑腿拍的"已送达"照片，客户画像是你根据这些寄递记录给朋友打的标签（比如"喜欢贵价礼盒"），售后记录是后来退换货时留的对话。你把这些全部交给境外的代收点和跑腿，<em>等于把一整本"朋友通讯录 + 行为日记"送出了国</em>——这当然不是"接个口"那么简单。</p></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>类别</th><th>具体字段（举例）</th><th>在哪一环产生</th><th>出境与否</th><th>风险等级</th></tr></thead>
+    <tbody>
+      <tr><td>面单信息</td><td>收件人姓名、电话、详细地址、邮编、可能含"小心易碎/高价值"备注</td><td>你（托运人）制单时填写，传给货代、船公司、海外仓、末端派送</td><td><strong>必然出境</strong>（目的地在欧盟）</td><td>高：直接可识别到个人</td></tr>
+      <tr><td>运输轨迹</td><td>每个节点的时间、地点、操作人员、状态变更</td><td>各运输/仓储系统自动记录</td><td>通常同步到境外 WMS 与你的 ERP</td><td>中：间接识别 + 行为画像素材</td></tr>
+      <tr><td>签收记录</td><td>签收人、签收时间、GPS 定位、签收照片、拒收原因</td><td>末端派送完成或异常时产生</td><td>回传至 WMS 与 ERP</td><td>中高：可锁定"谁在何时收到货"</td></tr>
+      <tr><td>客户画像</td><td>基于购买/寄递行为生成的标签、偏好、复购预测</td><td>你或第三方基于上述数据加工</td><td>若存储在境外系统则出境</td><td>高：属"衍生个人信息/敏感画像"</td></tr>
+      <tr><td>售后记录</td><td>退货地址、沟通记录、退换原因、客服备注</td><td>售后环节产生</td><td>视系统部署地而定</td><td>中：含沟通内容与联系方式</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="plain"><span class="pl">大白话：</span>只要数据里能<em>直接或间接认出"这是哪个具体的人"</em>，它就是个人信息；一旦这份数据被传送到中国境外（含港澳台以外的服务器、境外主体的系统），就触发<strong>《个人信息保护法》关于跨境传输的合规义务</strong>，以及欧盟侧 GDPR 对"数据出口"的要求。具体门槛与路径以现行规定为准。</p>
+
+  <span class="sim"><b>就好比：</b>你家门禁卡上写了"3 栋 502 张三"，这是直接识别；只写"3 栋 502"虽没名字，但结合物业名册也能找到人，这就是间接识别——两种都算"个人信息"，出境都要管。</span>
+
+  <div class="terms">
+    <div class="term"><div class="tw"><span class="zh">个人信息</span><span class="en">Personal Information</span></div><div class="def">以电子或其他方式记录的、<b>可单独或与其他信息结合识别特定自然人</b>的各种信息。《个人信息保护法》相关规定对"可识别"采宽口径，昵称、设备号、位置都可能落入。</div></div>
+    <div class="term"><div class="tw"><span class="zh">控制者</span><span class="en">Controller</span></div><div class="def"><b>决定处理目的与方式</b>的一方。在 NG-2026-017 里，霓光作为卖家，决定"为了把货送到买家手里而收集并使用这些信息"，它通常就是控制者。</div></div>
+    <div class="term"><div class="tw"><span class="zh">处理者</span><span class="en">Processor</span></div><div class="def">受控制者委托、<b>按控制者的指示</b>处理个人信息的一方。WareHub 仓库、末端派送商如果只是按指令收发/存储面单，是处理者；若它自己决定怎么用这些数据做营销，就又成了控制者。</div></div>
+    <div class="term"><div class="tw"><span class="zh">受托处理方</span><span class="en">Entrusted Processor</span></div><div class="def">《个人信息保护法》语境下"受托处理个人信息的受托人"。与 GDPR 的 Processor 概念对应，但<strong>对外责任仍主要由控制者承担</strong>，受托人仅在过错范围内负责。</div></div>
+    <div class="term"><div class="tw"><span class="zh">跨境传输</span><span class="en">Cross-border Transfer</span></div><div class="def">个人信息从<strong>中国境内</strong>提供给境外组织、个人，或境外可访问境内存储的个人信息。三条常见路径见第三节，<b>门槛与程序以现行规定为准</b>。</div></div>
+    <div class="term"><div class="tw"><span class="zh">数据最小化</span><span class="en">Data Minimisation</span></div><div class="def">只收集、只传输<strong>实现目的所必需</strong>的最少字段、最短期限。面单上别顺手把买家生日、会员等级也传出去——多传一个字段，多一分责任。</div></div>
+    <div class="term"><div class="tw"><span class="zh">留存期限</span><span class="en">Retention Period</span></div><div class="def">数据"用到什么程度就该删"。面单、轨迹不是留得越久越好；<b>超过必要期限应删除或匿名化</b>，否则构成过度留存。</div></div>
+    <div class="term"><div class="tw"><span class="zh">数据主体权利</span><span class="en">Data Subject Rights</span></div><div class="def">个人对其信息的查询、更正、删除、携带、拒绝等权利。GDPR 下尤为完整；控制者须设计"协助机制"，不能把球踢给海外仓。</div></div>
+  </div>
+
+  <h2>二、谁是谁：控制者与处理者（中英对照）</h2>
+  <p>把 NG-2026-017 的链路拆开，你会发现<strong>同一个海外仓 Kevin，在不同场景下身份会变</strong>。这正是跨境物流数据合规最容易踩坑的地方：你以为签一份合同就万事大吉，其实身份没写清，责任就糊在中间。</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>环节</th><th>谁在动手</th><th>角色（中国法）</th><th>角色（GDPR）</th><th>谁定目的</th></tr></thead>
+    <tbody>
+      <tr><td>向买家发货制单</td><td>霓光（你）</td><td>个人信息处理者（控制者）</td><td>Controller</td><td>霓光决定"为履约而收集"</td></tr>
+      <tr><td>面单传输至货代/船公司</td><td>鹏城通 / 船公司</td><td>受托处理方</td><td>Processor（或次级）</td><td>按霓光指令传输</td></tr>
+      <tr><td>荷兰仓入库与拣货</td><td>WareHub（Kevin）</td><td>受托处理方</td><td>Processor</td><td>按系统指令操作</td></tr>
+      <tr><td>末端派送</td><td>当地派送商</td><td>受托处理方</td><td>Processor（子处理者）</td><td>按 WareHub 指令投递</td></tr>
+      <tr><td>用签收数据做复购分析</td><td>霓光（你）</td><td>个人信息处理者（控制者）</td><td>Controller</td><td>霓光决定"用于营销画像"</td></tr>
+      <tr><td>WareHub 用数据自营增值服务</td><td>WareHub（Kevin）</td><td>可能转为处理者（自定目的时）</td><td>Controller（自定目的时）</td><td>若它自己决定用途，身份翻转</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>关键判断就一句话：<strong>谁决定"为什么用这些数据、怎么用"，谁就是控制者</strong>；谁只是"照着别人写的说明书操作"，谁就是处理者。<span class="anno" title="很多货代/海外仓合同里写'双方均为独立控制者'，这会把责任推成各管各的，建议在主协议里明确'就面单履行数据而言，甲方为控制者、乙方为受托处理方'，避免责任真空">身份没写清，责任就真空</span>。身份写反了，后果是：该做的安全评估没做、该签的 DPA 没签、出事时互相说"是对方决定的"。</p>
+
+  <span class="sim"><b>就好比：</b>你雇保洁来家里打扫（处理者），你决定"擦桌子、别动抽屉"（控制者）；如果保洁自己翻你抽屉、把照片发朋友圈，那她就不再是"按指示做事的人"，而变成了另一个"自己做主的人"——责任完全变了。</span>
+
+  <h2>三、跨境传输的三条常见路径与适用条件</h2>
+  <p>个人信息要从中国出境，依现行《个人信息保护法》及《促进和规范数据跨境流动规定》相关规定，存在若干合法路径。<strong>具体哪条适用、门槛是多少（如是否达到特定数量阈值），以最新规定为准，本章不提供具体人数数字。</strong>实务中常见的三类路径如下，但务必落地前核对现行文本。</p>
+  <span class="sim"><b>就好比：</b>过海关有"红色通道、绿色通道、免申报通道"，走哪条看你怎么带、带多少；别凭感觉闯，先看清标志。</span>
+
+  <div class="tw"><table>
+    <thead><tr><th>路径</th><th>适用情形（概括）</th><th>主要动作</th><th>注意点</th></tr></thead>
+    <tbody>
+      <tr><td>依法需要通过安全评估</td><td>依现行规定，符合应当申报安全评估情形的处理者（如达到特定规模或特定类型）</td><td>向网信部门申报数据出境安全评估，通过后方可传输</td><td>门槛与材料以现行规定为准；评估周期较长，需提前规划</td></tr>
+      <tr><td>标准合同并备案</td><td>依现行规定可通过订立标准合同方式的情形</td><td>与境外接收方订立《个人信息出境标准合同》并向主管部门备案</td><td>须配套个人信息保护影响评估（PIPIA）；标准合同文本以官方发布版本为准</td></tr>
+      <tr><td>其他豁免 / 认证等情形</td><td>依现行规定存在的豁免情形（如必要且有限的跨境提供等）或通过保护认证等</td><td>按对应情形履行（如签订法律要求的文件、取得认证、履行告知同意义务等）</td><td>每一类豁免都有严格前提，<b>不能"自认豁免"</b>，须有依据</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="plain"><span class="pl">大白话：</span>出境有"三条正路"：要么走官方安全评估（大票、敏感走这条），要么签官方标准合同并备案（中小票常用），要么落在法定豁免里。哪条都行，但<em>不能"什么都不做直接传"</em>。具体落到你这笔量，要走哪条，<strong>以最新规定为准、必要时咨询数据合规律师</strong>。</p>
+
+  <span class="sim"><b>就好比：</b>你要带一箱东西出国，要么报关走正式通道（安全评估），要么填张申报单备案（标准合同），要么属于"自用合理数量免申报"那类（豁免）——但"我忘了"不属于任何一条合法通道。</span>
+
+  <span class="sim"><b>就好比：</b>货一到欧盟境内，就像进了另一套小区物业规则——你在家怎么管钥匙是一套，人家小区怎么管门禁是另一套，两套都得守。</span>
+
+  <h2>四、欧盟侧 GDPR 下的角色划分与 DPA 要点</h2>
+  <p>即便中国侧出境路径走通了，<strong>数据一到欧盟，GDPR 就要管</strong>。GDPR（General Data Protection Regulation，通用数据保护条例）2018-05-25 起适用，核心要求之一是：控制者与处理者之间必须有一份书面协议，也就是 DPA（Data Processing Agreement，数据处理协议）。霓光作为把数据带进欧盟的控制者，和 WareHub 作为处理者，这份 DPA 不能省。</p>
+
+  <div class="callout c-warn">
+    <span class="lbl">高频红线</span>
+    <p>GDPR 第 28 条（以现行文本为准）要求处理者"仅在控制者书面指示下处理"；没有书面 DPA 而让处理者动个人数据，<strong>控制者自身先违规</strong>。所以不是 WareHub 催你签，是你自己需要这份纸。罚则层面，GDPR 最高可处全球年营业额 4% 或 2000 万欧元（以高者为准，具体以条文为准）——这跟"运费省两千"完全不在一个量级。</p>
+  </div>
+
+  <p>DPA（Data Processing Agreement，数据处理协议）至少应覆盖以下要点，建议逐条对照、缺一条补一条：</p>
+  <ul class="check">
+    <li><strong>处理目的与方式：</strong>明确"仅为履行 NG-2026-017 的仓储、拣货、派送而处理面单信息"，禁止挪作营销或转售。</li>
+    <li><strong>处理期限：</strong>约定合同终止后 X 个工作日内删除或返还全部个人信息及衍生数据（见第六节留存期限）。</li>
+    <li><strong>子处理者：</strong>WareHub 如要再委托末端派送商，须事先书面告知并取得同意，且 WareHub 对子处理者行为向霓光负责。</li>
+    <li><strong>安全措施：</strong>加密传输与存储、访问控制、日志审计、漏洞管理，写清最低标准与认证要求。</li>
+    <li><strong>数据主体权利协助：</strong>约定 WareHub 在收到查询/更正/删除请求时的通知时限与配合义务，控制者不能把球踢给仓库。</li>
+    <li><strong>审计权：</strong>霓光有权定期或事件驱动地审计 WareHub 的数据处理活动，含调取日志。</li>
+    <li><strong>删除与返还：</strong>终止时须出具删除证明；拒不删除的违约责任。</li>
+    <li><strong>跨境传输机制：</strong>若 WareHub 进一步把数据传出欧盟，须依赖 SCC（Standard Contractual Clauses，标准合同条款）等合法机制，并在 DPA 中载明。</li>
+  </ul>
+
+  <span class="sim"><b>就好比：</b>DPA 就是你们两家就"客户通讯录"签的《借用公约》：只能用来送快递、不能拿去加微信卖货、用完必须销毁、借给第三方要打招呼、丢了要马上报——白纸黑字，谁违规章谁。</span>
+
+  <h2>五、八组法务对话（本站核心）</h2>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 1</span>「不就是个接口吗，让 IT 搞一下」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「ERP 接 WMS，不就是让 IT 开个接口？怎么还扯上法律了？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「接口一开，<em>几万条欧洲买家的姓名电话地址就实时传到荷兰服务器</em>了——这是一次个人信息的跨境传输，不是技术动作，是法律行为。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「有这么严重？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「欧盟那边的 GDPR 罚则是全球营业额的 4%。咱们这票货值 480 万美元，可公司年营收远大于此，<em>真出事不是运费那点钱能补的</em>。所以先定路径、再开接口。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>《个人信息保护法》相关规定要求个人信息出境具备合法路径；同时 GDPR（General Data Protection Regulation，通用数据保护条例）要求控制者与处理者之间有书面协议。两边规则叠加，<b>接口上线前必须完成：出境路径评估 + 与 WareHub 签署 DPA</b>。</p></div>
+      <span class="sim"><b>就好比：</b>你说"不就是把客人名册复印一份放分店嘛"，但分店在海外、当地法律管得极严，复印那一刻你就已经"把名册带出国"了——先办护照（合规路径），再复印。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 2</span>「面单信息也算个人信息？不就几个字」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「面单上不就收件人姓名电话地址嘛，这也算个人信息？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「算，而且是<em>最典型、最直接可识别的个人信息</em>。姓名 + 电话 + 地址，三样凑齐，任何一个欧洲买家都能被精确定位到门牌。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那轨迹、签收这些呢？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「轨迹和签收是<strong>间接识别 + 行为素材</strong>，结合面单一样能锁定个人；客户画像更是'衍生个人信息'。五类都算，不能挑着管。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>《个人信息保护法》对"个人信息"采"可单独或与其他信息结合识别特定自然人"的宽口径。面单、轨迹、签收、画像、售后五类均落入，处理前需有合法基础与告知。</p></div>
+      <span class="sim"><b>就好比：</b>"地址 + 电话"等于把别人的家门钥匙形状画了出来；单独一把钥匙坯打不开，但配上"这把钥匙开 3 栋 502"的标签，就够了。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 3</span>「出境要走哪条路？安全评估还是标准合同」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「依法有三类的常见路径：安全评估、标准合同备案、或法定豁免情形。<em>具体咱们这笔量走哪条、门槛数字多少，以《促进和规范数据跨境流动规定》最新文本为准</em>，我不给你编个数字。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「那我怎么知道用哪条？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「先做一次'数据盘点 + 出境路径判定'：传什么、传给谁、多少人、什么类型。判定结论出来再选路径、备材料。这一步不能省，否则备案报错了也是退回来重来。」</p></div>
+      <div class="dlg-note"><span class="nt">落地动作</span><p>建议流程：① 盘点字段与量级；② 对照现行规定判定适用路径；③ 走对应程序（评估/标准合同备案/豁免留痕）；④ 配套个人信息保护影响评估（PIPIA）。所有结论<strong>以现行规定为准，必要时咨询数据合规律师</strong>。</p></div>
+      <span class="sim"><b>就好比：</b>出国带东西，先称重量、看品类，再决定走"报关通道"还是"申报单"还是"免申报"——不问重量直接闯，过关时才知道错了就晚了。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 4</span>「Kevin 说他们模板合同不能改，DPA 怎么办」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「我们的海外仓主协议是标准模板，DPA 条款已经内置，不能单独改。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「内置可以，但请确认它<em>覆盖了八要件</em>：目的、期限、子处理者、安全措施、权利协助、审计、删除返还、跨境机制。缺哪条，我们补一份 DPA 附件，附件优先于模板。」</p></div>
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「子处理者那条，末端派送商我们一定会用，能写死吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「可以写'事先书面列名 + 一般授权'，但你要承诺<strong>对子处理者行为向我方负责</strong>，并且子处理者也要签同等级 DPA（flow-down）。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>GDPR（General Data Protection Regulation，通用数据保护条例）下，处理者再委托（子处理）须有控制者授权，且通过合同将相同的数据保护义务传导给子处理者。建议写明：<b>乙方委托子处理者须经甲方书面（含邮件）同意；乙方对子处理者违约向甲方承担连带责任</b>。</p></div>
+      <span class="sim"><b>就好比：</b>你把家门钥匙给了保洁，保洁又转交给她同事——你得事先同意，而且保洁要对她同事的行为负责，否则钥匙被乱用你只能找保洁。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 5</span>「我们到底是控制者还是处理者」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「WareHub 也在用我们的数据，他们算共同控制者吗？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「就'把货送到买家'这个目的，<em>我们决定目的、他们照做，我们是控制者（Controller）、他们是处理者（Processor）</em>。但若 WareHub 拿这些数据自营增值服务、自己定用途，那段它就是另一层的控制者。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「那身份写反了会怎样？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「写反了，责任就糊在中间：该我们做的出境合规没做、该他们签的 DPA 没签，出事互相踢。所以主协议里第一句就写清身份。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>建议主协议写明：<b>就 NG-2026-017 项下为履行仓储与派送而处理的个人信息，甲方（霓光）为个人信息处理者/控制者，乙方（WareHub）为受托处理方/处理者；乙方如就同一数据另定处理目的，应事先书面通知甲方并另行取得合法基础</b>。</p></div>
+      <span class="sim"><b>就好比：</b>婚庆公司帮你筹婚礼（你是导演、它是执行），它若私下用你的宾客名单去拉自己的婚庆客户，那一段它就变成了"自己的导演"，要为那段负责。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 6</span>「数据最小化，面单能不能少传点」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「能，而且应该。面单只传<em>履约必需字段</em>：收件人、电话、地址、邮编。买家生日、会员等级、消费偏好，<strong>别顺手带出去</strong>——多传一个字段，多一分责任、多一个泄露面。」</p></div>
+      <div class="dlg-line inv"><div class="who">阿杰（业务）</div><p class="utt">「可是仓库说要会员等级才能分优先级发货。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「那就让仓库<em>用我们给的'优先级代码'而非原始会员等级</em>，原始数据留在境内。这叫'去标识化后传输'。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>数据最小化（Data Minimisation）是 GDPR 原则之一，也是《个人信息保护法》"最小必要"精神的体现。建议在 DPA 中列明<strong>字段白名单</strong>，超出白名单的传输须事先书面同意。</p></div>
+      <span class="sim"><b>就好比：</b>去健身房只办"进门 + 淋浴"的卡，别顺手把家庭住址、工资条也复印给前台——他用不上，还增加泄露风险。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 7</span>「数据留多久？仓库说一直存着更方便」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「数据一直留在我们系统里，下次发货更方便，不用重新传。」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「方便是它的，风险是你的。<em>超过必要期限必须删除或匿名化</em>。建议面单数据在妥投 + 售后异议期满后删除，轨迹数据按运维需要短留。」</p></div>
+      <div class="dlg-line inv"><div class="who">Kevin（WareHub）</div><p class="utt">「那我们要保留日志做审计怎么办？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「日志可以留，但要做<strong>访问隔离与最短化</strong>，且明确'仅为安全审计、不得用于其他目的'。删除义务和日志留存是两个动作，分开写。」</p></div>
+      <div class="dlg-note"><span class="nt">建议留存周期（以业务实际与现行规定为准，非强制天数）</span><p>① 面单信息：妥投并完成售后异议处理后删除/匿名化；② 运输轨迹：运维与争议所需最短周期；③ 签收记录：与面单同周期或依税务/争议需要；④ 客户画像与售后：目的实现即删，营销用途须另行告知同意。</p></div>
+      <span class="sim"><b>就好比：</b>超市小票留一个月对账够了，非要留三年，等于把你的购物清单长期摊在柜台上——方便了柜员，危险了你。</span>
+    </div>
+  </details>
+
+  <details class="dlg">
+    <summary><span class="pk-badge d">对话 8</span>「系统对接的技术与合同要点，到底要管哪些」</summary>
+    <div class="dlg-bd">
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「技术点和合同点要一起管：<em>API（Application Programming Interface，应用程序接口）权限最小化、全量日志、传输加密、访问控制、事件通知</em>。接口不是'通了就行'，是'谁能在什么范围看什么'。」</p></div>
+      <div class="dlg-line boss"><div class="who">周总</div><p class="utt">「这些 IT 懂就行了吧？」</p></div>
+      <div class="dlg-line me"><div class="who">法务</div><p class="utt">「IT 管实现，法务管'写在合同里的承诺'：WareHub 须承诺加密标准、日志保留期、异常 24 小时内通知、配合安全事件调查。没写进合同，IT 做得再好也<em>没法追责</em>。」</p></div>
+      <div class="dlg-note"><span class="nt">条款翻译</span><p>建议在 DPA 与接口附件中列明：<b>传输采用 TLS 1.2+ 加密；API 采用最小权限令牌并按角色鉴权；双方保存处理日志不少于 X 个月；发生数据泄露或未经授权访问，接收方须在 24 小时内书面通知控制者</b>。</p></div>
+      <span class="sim"><b>就好比：</b>你给分店配了监控（日志）、装了门锁（加密）、只给店员开自己工位的钥匙（权限），但还得在合同里写"门锁坏了 24 小时内报总部"——否则锁坏了没人说，丢了算不清。</span>
+    </div>
+  </details>
+
+  <h2>六、就地展开的详解（点开就看，不跳走）</h2>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span><span class="pk-badge k">常见坑</span>个人信息的"可识别"到底怎么算？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>只要数据能让你"认出这是哪一个具体的人"，或者拼上别的资料能认出，就是个人信息。不是非得写全名才算。</p>
+      <h4>专业术语</h4><p>个人信息（Personal Information）、《个人信息保护法》"可单独或与其他信息结合识别特定自然人"；GDPR（General Data Protection Regulation，通用数据保护条例）的"identified or identifiable natural person"。间接识别、衍生画像均落入。</p>
+      <h4>条款解析</h4><p>建议在《数据出境清单》中逐字段标注"直接/间接识别"与"是否必需"，作为最小化与出境路径判定的基础。跨境物流场景下面单（直接）、轨迹（间接）、签收（直接+间接）均须纳入。</p>
+      <h4>生活比方</h4><p>门牌号单独看只是数字，配上小区名和住户表就是"谁家"；数据也一样，组合起来能认人，就受个保法管。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>"IT 开了接口，合规就自动完成"是最大误区</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>接口通了只是"管道通了"，管道里流的是受保护个人信息，这事本身要单独合规：出境路径 + DPA + 影响评估，一个都不能少。</p>
+      <h4>专业术语</h4><p>数据出境路径（安全评估 / 标准合同备案 / 豁免）、个人信息保护影响评估（PIPIA）、DPA（Data Processing Agreement，数据处理协议）、GDPR 第 28 条书面协议要求。</p>
+      <h4>条款解析</h4><p>上线前 checklist：① 出境路径已定并履行；② 与 WareHub 签署 DPA 且覆盖八要件；③ 完成 PIPIA 并留存；④ 字段最小化白名单生效；⑤ 日志与事件通知机制写入合同。</p>
+      <h4>生活比方</h4><p>水管接好了不代表水能合法用——还得有取水许可、水质检测、用水合同，否则一开水龙头就违规。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge t">术语</span>什么是 SCC（Standard Contractual Clauses，标准合同条款）？</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>当数据从欧盟再传出，或欧盟处理者向第三国提供数据，可用欧盟委员会发布的"标准合同条款"作为合法传输机制——相当于一份官方背书的"数据护送函"。</p>
+      <h4>专业术语</h4><p>SCC（Standard Contractual Clauses，标准合同条款），是 GDPR 下跨境传输的常用合法机制之一；与中国的《个人信息出境标准合同》是两套不同体系，<b>不能互相替代</b>。</p>
+      <h4>条款解析</h4><p>在 DPA 中约定：若 WareHub 或子处理者将个人数据进一步传出欧盟 / 欧洲经济区，须依赖有效的 SCC 或其他 GDPR 认可的传输机制，并向控制者提供副本。</p>
+      <h4>生活比方</h4><p>中国的"出国申报单"和欧盟的"出境护送函"是两张不同的纸，去不同关境用不同的；不能拿一张当两张使。</p>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge k">常见坑</span>数据事件应急：丢失、泄露怎么通报</summary>
+    <div class="pk-bd">
+      <h4>大白话</h4><p>一旦发生泄露或丢失，<em>别先想着捂</em>：控制者要能及时知道、及时通报、及时记档案。拖延通报在 GDPR 下本身就是违规。</p>
+      <h4>专业术语</h4><p>数据安全事件（Security Incident）、个人数据泄露（Personal Data Breach）、通报时限、事件记录（Record of Processing Activities）。具体时限以 GDPR 与《个人信息保护法》现行规定为准，本章不编造具体小时数。</p>
+      <h4>条款解析</h4><p>DPA 应写：接收方发现或合理怀疑事件后，<strong>在约定短时限内（建议 24 小时）书面通知控制者</strong>；控制者负责对外依法通报；双方共同保存事件调查与处置记录。</p>
+      <h4>生活比方</h4><p>家里漏水了，先关阀、叫物业、留照片台账；不是先拿抹布擦干假装没事——等楼下上来敲门，责任更大。</p>
+    </div>
+  </details>
+
+  <span class="sim"><b>就好比：</b>同一份接口文档，写清"谁控制、怎么用、用多久"就像把借出去的钥匙登记在册；不写，就等于把钥匙随手塞给陌生人。</span>
+
+  <h2>七、案例卡：同一件事，两种写法</h2>
+  <div class="case">
+    <div class="hd">案例：ERP ↔ WMS 对接条款的两种写法（教学改编，案号虚构）</div>
+    <div class="bd">
+      <div class="vs">
+        <div class="vsa"><div class="vsh">✗ 常见写法（出事就扯皮）</div>
+          <p>"双方系统对接，数据实时同步至荷兰服务器，WareHub 按运营需要存储与使用相关数据。"<br>
+          问题：没写谁控制、没签 DPA、没限制用途、没删期、没事件通知、没子处理者约束。后来 WareHub 把面单用于自营会员营销，且一次系统漏洞导致 3 万条地址泄露，双方互相说"是对方决定的 / 是对方系统的问题"，监管问询时拿不出任何书面依据。</p></div>
+        <div class="vsb"><div class="vsh">✓ 建议写法（把边界锁死）</div>
+          <p>"就 NG-2026-017 履约所需个人信息，甲方为控制者、乙方为受托处理方；双方另签 DPA（Data Processing Agreement，数据处理协议），覆盖目的、期限、子处理者、安全措施、权利协助、审计、删除返还、跨境机制八要件。乙方仅按甲方书面指示处理；超出白名单字段须事先同意；事件 24 小时内书面通知；合同终止后 X 个工作日内删除并出具证明。"</p></div>
+      </div>
+      <p class="plain"><span class="pl">大白话：</span>差别就在<em>"身份 + DPA + 边界"三件事写没写</em>：没写，数据出国像没护照；写了，每一份数据都有"护送函"和"归期"。</p>
+    </div>
+  </div>
+
+  <span class="sim"><b>就好比：</b>接接口前先过这八问，等于发车前检查油、电、胎、证——少查一项，半路抛锚的代价远大于五分钟。</span>
+
+  <h2>八、本页 Checklist：系统对接前八问</h2>
+  <ul class="check">
+    <li><strong>传什么？</strong>逐字段盘点面单/轨迹/签收/画像/售后，标注"直接/间接识别"与"是否必需"，形成《数据出境清单》。</li>
+    <li><strong>走哪条出境路径？</strong>依现行《个人信息保护法》及《促进和规范数据跨境流动规定》判定适用安全评估 / 标准合同备案 / 豁免，<strong>以最新规定为准</strong>。</li>
+    <li><strong>谁控制、谁处理？</strong>在主协议首句写清：霓光为控制者、WareHub 为受托处理方；WareHub 另定用途时须另行取得合法基础。</li>
+    <li><strong>DPA 签了没？</strong>与 WareHub 签署覆盖八要件的 DPA，缺失项以附件补齐，附件优先于模板。</li>
+    <li><strong>最小化做到没？</strong>面单只传履约必需字段；非必需字段（会员等级等）境内去标识化后传代码，不传原始值。</li>
+    <li><strong>留多久？</strong>明确面单/轨迹/签收/画像的删除或匿名化周期，写入 DPA，与日志留存分开约定。</li>
+    <li><strong>技术与合同咬合没？</strong>API 最小权限、TLS 加密、全量日志、访问控制、事件 24 小时通知——写进接口附件与 DPA。</li>
+    <li><strong>应急有预案没？</strong>泄露/丢失的通报路径、记录台账、对外依法通报责任归属，事先演练一遍。</li>
+  </ul>
+
+  <div class="lawref">
+    <div class="lbl">本页法源（使用时请核对现行文本，以现行规定为准）</div>
+    <ul>
+      <li>《中华人民共和国个人信息保护法》——个人信息定义（可识别特定自然人）、处理规则、跨境传输路径、受托处理、个人权利；条号以现行文本为准</li>
+      <li>《促进和规范数据跨境流动规定》（2024 年发布施行）——数据出境的路径与门槛；<strong>具体适用情形与数量阈值以最新规定为准，本章不提供具体数字</strong></li>
+      <li>欧盟 GDPR（General Data Protection Regulation，通用数据保护条例），2018-05-25 适用——控制者/处理者（Controller/Processor）、第 28 条书面协议（DPA）、数据最小化、跨境传输机制（含 SCC（Standard Contractual Clauses，标准合同条款））、罚则；条号与时限以现行文本为准</li>
+      <li>《中华人民共和国民法典》合同编——委托合同、数据处理相关约定的一般适用</li>
+      <li>缩写注记：ERP（Enterprise Resource Planning，企业资源计划一体化管理系统）、WMS（Warehouse Management System，仓储管理系统）、EDI（Electronic Data Interchange，电子数据交换）、API（Application Programming Interface，应用程序接口）、DPA（Data Processing Agreement，数据处理协议）、PIPL（Personal Information Protection Law，个人信息保护法）、GDPR（General Data Protection Regulation，通用数据保护条例）、SCC（Standard Contractual Clauses，标准合同条款）</li>
+    </ul>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="lbl">复核提示</span>
+    <p>数据跨境规则更新极快：《促进和规范数据跨境流动规定》的适用情形与门槛可能调整，<strong>具体路径、数量阈值、程序要求请以最新官方文本为准，必要时咨询数据合规律师</strong>。GDPR 的条款号、时限、罚则额度亦以欧盟官方现行文本为准。本章所有路径描述均为概括性说明，<em>不构成法律意见，亦未编造任何具体人数阈值或条号</em>。</p>
+  </div>
+
+  <div id="pager"></div>
+</div>
+<footer class="site">跨境物流法务 · 第 10 站 ｜ 主线案例为教学虚构</footer>
+<script src="assets/app.js?v=20260921a"></script>
+</body>
+</html>
