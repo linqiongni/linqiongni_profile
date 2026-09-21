@@ -327,7 +327,13 @@ function EN_START(){
         try {
           if(typeof u === "string" && u.indexOf("huggingface.co") > -1){
             var m = u.match(/Kokoro-82M-v1\.0-ONNX\/(?:resolve\/[^/]+\/)?(.+)$/);
-            if(m) u = "/english/models/onnx-community/Kokoro-82M-v1.0-ONNX/" + m[1];
+            if(m){
+              /* 主用国内镜像 hf-mirror.com（实测约 7MB/s，92MB 约 13 秒，且支持 CORS）；
+                 本站 GitHub Pages 上的同名副本实测仅约 34KB/s，仅在镜像不可用时代偿。 */
+              var mirror = "https://hf-mirror.com/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/" + m[1];
+              var local = "/english/models/onnx-community/Kokoro-82M-v1.0-ONNX/" + m[1];
+              return _fetch.call(window, mirror, o).catch(function(){ return _fetch.call(window, local, o); });
+            }
           }
         } catch(e){}
         return _fetch.call(window, u, o);
@@ -337,7 +343,14 @@ function EN_START(){
     }
     import("https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm").then(function(kmod){
       try { if(kmod.env){ kmod.env.allowRemoteModels = true; kmod.env.localModelPath = "/english/models/"; } } catch(e){}
-      return kmod.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm" })
+      return kmod.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm",
+        progress_callback: function(p){
+          if(p && p.total){
+            var pct = Math.round((p.loaded || 0) / p.total * 100);
+            var el = document.getElementById("kstate");
+            if(el) el.textContent = "配音模型下载中… " + pct + "%";
+          }
+        } })
         .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); });
     }).catch(function(e){
       console.warn("Kokoro 加载失败，退回系统语音", e);
