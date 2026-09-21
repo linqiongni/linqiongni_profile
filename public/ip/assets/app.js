@@ -7,16 +7,16 @@
   var BASE = "";
 
   var STATIONS = [
-    { id: "index", file: BASE + "index.html", no: "总纲", t: "总纲 · 九站地图", part: "开始", kw: "目录 法源 怎么用 主线 权利地图 九站 术语速查 知识产权" },
-    { id: "ch01", file: BASE + "ch01-overview.html", no: "01", t: "总论 · 权利谱系与取得方式", part: "第一卷 · 权利与四大部门法", kw: "知识产权 客体 权利谱系 自动取得 确权 使用产生 权能 保护期 法律渊源 巴黎公约 伯尔尼 TRIPS" },
-    { id: "ch02", file: BASE + "ch02-trademark.html", no: "02", t: "商标 · 从起名到拿证到维权", part: "第一卷 · 权利与四大部门法", kw: "商标 显著性 禁用 禁注 尼斯分类 注册流程 异议 撤销 侵权 驰名商标 马德里" },
-    { id: "ch03", file: BASE + "ch03-patent.html", no: "03", t: "专利 · 技术方案变权利", part: "第一卷 · 权利与四大部门法", kw: "专利 发明 实用新型 外观设计 三性 新颖性 创造性 实用性 审查 权利要求 侵权" },
-    { id: "ch04", file: BASE + "ch04-copyright.html", no: "04", t: "著作权 · 作品与表达", part: "第一卷 · 权利与四大部门法", kw: "著作权 作品 人身权 财产权 自动保护 署名 改编 剽窃 实用艺术品 职务作品" },
-    { id: "ch05", file: BASE + "ch05-trade-secret.html", no: "05", t: "商业秘密与不正当竞争", part: "第一卷 · 权利与四大部门法", kw: "商业秘密 保密措施 竞业限制 仿冒 混淆 虚假宣传 反法 有一定影响" },
-    { id: "ch06", file: BASE + "ch06-remedy.html", no: "06", t: "侵权救济与损害赔偿", part: "第二卷 · 救济与程序", kw: "侵权 四要件 归责 停止侵害 赔偿 惩罚性 法定赔偿 禁令 合理开支" },
-    { id: "ch07", file: BASE + "ch07-procedure.html", no: "07", t: "程序与证据地图", part: "第二卷 · 救济与程序", kw: "行政 民事 刑事 管辖 知识产权法院 公证购买 时间戳 区块链 举证 保全" },
-    { id: "ch08", file: BASE + "ch08-portfolio.html", no: "08", t: "IP 布局与组合策略", part: "第三卷 · 布局与行业", kw: "布局 权利地图 组合 跨境 马德里 PCT 巴黎公约 海牙 优先权" },
-    { id: "ch09", file: BASE + "ch09-industry.html", no: "09", t: "行业专精 · 珠宝时尚 + 案例库", part: "第三卷 · 布局与行业", kw: "珠宝 时尚 消费品 款式被抄 代工泄密 电商仿店 代言图 案例" }
+    { id: "index", file: BASE + "index.html?v=20260921", no: "总纲", t: "总纲 · 九站地图", part: "开始", kw: "目录 法源 怎么用 主线 权利地图 九站 术语速查 知识产权" },
+    { id: "ch01", file: BASE + "ch01-overview.html?v=20260921", no: "01", t: "总论 · 权利谱系与取得方式", part: "第一卷 · 权利与四大部门法", kw: "知识产权 客体 权利谱系 自动取得 确权 使用产生 权能 保护期 法律渊源 巴黎公约 伯尔尼 TRIPS" },
+    { id: "ch02", file: BASE + "ch02-trademark.html?v=20260921", no: "02", t: "商标 · 从起名到拿证到维权", part: "第一卷 · 权利与四大部门法", kw: "商标 显著性 禁用 禁注 尼斯分类 注册流程 异议 撤销 侵权 驰名商标 马德里" },
+    { id: "ch03", file: BASE + "ch03-patent.html?v=20260921", no: "03", t: "专利 · 技术方案变权利", part: "第一卷 · 权利与四大部门法", kw: "专利 发明 实用新型 外观设计 三性 新颖性 创造性 实用性 审查 权利要求 侵权" },
+    { id: "ch04", file: BASE + "ch04-copyright.html?v=20260921", no: "04", t: "著作权 · 作品与表达", part: "第一卷 · 权利与四大部门法", kw: "著作权 作品 人身权 财产权 自动保护 署名 改编 剽窃 实用艺术品 职务作品" },
+    { id: "ch05", file: BASE + "ch05-trade-secret.html?v=20260921", no: "05", t: "商业秘密与不正当竞争", part: "第一卷 · 权利与四大部门法", kw: "商业秘密 保密措施 竞业限制 仿冒 混淆 虚假宣传 反法 有一定影响" },
+    { id: "ch06", file: BASE + "ch06-remedy.html?v=20260921", no: "06", t: "侵权救济与损害赔偿", part: "第二卷 · 救济与程序", kw: "侵权 四要件 归责 停止侵害 赔偿 惩罚性 法定赔偿 禁令 合理开支" },
+    { id: "ch07", file: BASE + "ch07-procedure.html?v=20260921", no: "07", t: "程序与证据地图", part: "第二卷 · 救济与程序", kw: "行政 民事 刑事 管辖 知识产权法院 公证购买 时间戳 区块链 举证 保全" },
+    { id: "ch08", file: BASE + "ch08-portfolio.html?v=20260921", no: "08", t: "IP 布局与组合策略", part: "第三卷 · 布局与行业", kw: "布局 权利地图 组合 跨境 马德里 PCT 巴黎公约 海牙 优先权" },
+    { id: "ch09", file: BASE + "ch09-industry.html?v=20260921", no: "09", t: "行业专精 · 珠宝时尚 + 案例库", part: "第三卷 · 布局与行业", kw: "珠宝 时尚 消费品 款式被抄 代工泄密 电商仿店 代言图 案例" }
   ];
 
   var PARTS = [
@@ -78,7 +78,7 @@
   var topbar = el("header", "topbar");
   topbar.id = "topbar";
   var brand = el("a", "brand", '<span class="seal">知</span><span class="txt">知识产权 · 从 0 到 1</span>');
-  brand.href = BASE + "index.html";
+  brand.href = BASE + "index.html?v=20260921";
   topbar.appendChild(brand);
 
   var searchWrap = el("div", "searchwrap");
