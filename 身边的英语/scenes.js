@@ -793,5 +793,32 @@ const SCENES = [
       { e: "in a hurry", c: "着急", x: "Getting down in a hurry is how you get hurt." },
       { e: "as long as ...", c: "只要……", x: "As long as she can be walked up here, she wants to come." }
     ]
+  },
+  {
+    id: "s28", part: "midautumn", time: "20:00",
+    t: "Home for the moon festival", z: "回家过中秋",
+    lead: "中秋是潮汕人最当回事的节。请了半天假，从广州南坐高铁回普宁，就为这一晚——拜月娘、全家聚、看一年最圆的月亮。",
+    paras: [
+      { p: "Of all our holidays, Mid-Autumn is the one my family actually cares about. Not Spring Festival, not the New Year — the moon festival. So I took half a day off and caught the high-speed train from Guangzhou South back to Puning.", z: "我们所有的节里，中秋是我家真正最当回事的那个。不是春节，也不是元旦——是月亮节。所以我请了半天假，从广州南坐高铁回了普宁。" },
+      { p: "The G-train does it in under two hours now. Window seat, the city fading into rice paddies, and me quietly rehearsing the one line I always say walking through the door: I'm home.", z: "现在高铁两个小时不到就到。靠窗，城市退成稻田，我一路在心里默默练那句进门必说的话：我回来了。" },
+      { p: "You on the train yet? Your dad's got the soup on.", z: "上车没？你爸汤都炖上了。", w: "Mom" },
+      { p: "By the time I roll into Puning Station the sun's still up, but the air already smells like the holiday — incense, pomelo peel, something frying in the back.", z: "等我到普宁站，太阳还没落，可空气里已经全是过节的味儿——香灰、柚子皮，还有后屋什么东西在油锅里响。" },
+      { p: "Dinner's loud. My brother's kids are everywhere, my aunt's got a take on everybody's love life, and my mom keeps loading my bowl like she's topping up a tank.", z: "晚饭很吵。我哥的小孩满地跑，我姨对每个人的感情生活都有高见，我妈不停地往我碗里夹菜，像在给油箱加油。" },
+      { p: "But the part that's really ours comes after dinner — we do 拜月娘, paying respect to the moon lady. My grandma did it, her grandma before her, and now it's my mom laying out the table.", z: "但真正属于我们的环节在饭后——我们拜月娘，给月亮娘娘上供。我奶奶做，我奶奶的奶奶也做，现在轮到我妈摆桌子。" },
+      { p: "Out in the courtyard, facing the moon: a low table with mooncakes, a whole pomelo, a pot of tea, and a couple of sticky-rice cakes we put out as offerings. The pomelo's not optional — in Teochew, 柚 sounds just like 佑, which means protection or blessing, so you set one out to ask the moon lady to watch over the family.", z: "院子里，朝着月亮：一张矮桌，摆月饼、一整个柚子、一壶茶，还有几个当作供品的糯米糕。柚子不能省——潮汕话里「柚」音同「佑」，是保佑的意思，所以摆一个，是请月娘护着一家老小。" },
+      { p: "Don't go pointing at the moon now — the moon lady'll cut your ear off, you know that.", z: "别乱指月亮，月娘会割你耳朵的，你又不是不知道。", w: "Mom" },
+      { p: "That line's been in my head since I was tiny. My grandma said if you point at the moon, the moon lady comes down and slices your ear while you sleep. I believed it till I was, what, nine? And I still catch myself not pointing, out of habit, every time the moon's full.", z: "这句话从我很小就种在脑子里。我奶奶说，指月亮，月娘夜里就下来把你的耳朵割了。我信到大概九岁。可到现在，每次月圆，我还是会下意识不指——纯属习惯。" },
+      { p: "The festival goes back forever. It started as a harvest thing — the eighth month, the fullest, brightest moon of the year, the night the crops came in and everyone who'd scattered for work came home to eat under the same sky. Reunion's the whole point. 团圆.", z: "节日本身源远得很。最早是丰收的节——八月，一年里最圆最亮的月亮，庄稼收进来的那晚，外出谋生的人全回来，在同一片天下吃饭。团圆心才是重点。团圆。" },
+      { p: "We don't really pray. We just stand there a minute, the whole family, looking up, and somebody says the moon's bigger this year, and nobody argues — because on this night it always is.", z: "我们也不真拜。就那么站一会儿，一大家人，抬头看，总会有人说今年月亮特别大，也没人反驳——因为这晚的月亮，向来都特别大。" },
+      { p: "Tomorrow I'm back on the G-train to Guangzhou, alarm at six, Line 1 at seven. But tonight the moon's full and everybody's here, and that's the deal.", z: "明天我就坐高铁回广州，六点闹钟，七点一号线。但今晚月亮圆、人齐，这就够了。" }
+    ],
+    notes: [
+      { e: "the one we actually care about", c: "真正最当回事的那个", x: "Of all our holidays, Mid-Autumn is the one we actually care about." },
+      { e: "the high-speed train / the G-train", c: "高铁（动车）", x: "I caught the high-speed train from Guangzhou South back to Puning." },
+      { e: "pay respect to the moon lady", c: "拜月娘（给月亮娘娘上供）", x: "We do 拜月娘, paying respect to the moon lady." },
+      { e: "the moon lady'll cut your ear off", c: "月娘会割你耳朵（指月亮的忌讳）", x: "Don't point at the moon — the moon lady'll cut your ear off." },
+      { e: "the fullest, brightest moon of the year", c: "一年里最圆最亮的月亮", x: "It's the fullest, brightest moon of the year." },
+      { e: "reunion's the whole point", c: "团圆才是重点", x: "Everybody's home — reunion's the whole point." }
+    ]
   }
 ];
