@@ -33,6 +33,20 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Download Kokoro TTS model (q8, ~82MB) into dist
+        run: |
+          DEST="dist/english/models/onnx-community/Kokoro-82M-v1.0-ONNX/onnx"
+          mkdir -p "$DEST"
+          for i in 1 2 3; do
+            echo "attempt $i: downloading Kokoro q8 model..."
+            if curl -sSL --retry 3 -m 420 "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_q8.onnx" -o "$DEST/model_q8.onnx" && [ -s "$DEST/model_q8.onnx" ]; then
+              echo "downloaded:"; ls -la "$DEST"; break
+            else
+              echo "attempt $i failed, retrying"; rm -f "$DEST/model_q8.onnx"
+            fi
+          done
+          if [ ! -s "$DEST/model_q8.onnx" ]; then echo "::error::Kokoro model download failed"; exit 1; fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

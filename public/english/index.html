@@ -278,6 +278,57 @@ function EN_START(){
   var synth = window.speechSynthesis;
   var voices = [];
   var runId = 0;
+  /* ---- Kokoro 神经 TTS：地道美音，替代生硬的系统合成音 ---- */
+  var KOKO = {
+    ready: false, engine: "loading", tts: null, voice: "af_heart",
+    presets: [
+      { id: "af_heart", label: "美音·暖" },
+      { id: "af_bella", label: "美音·叙" },
+      { id: "am_adam", label: "美音·男" }
+    ],
+    pi: 0, src: null
+  };
+  var actx = null;
+  function kokoCtx(){
+    try { if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
+    if(actx && actx.state === "suspended"){ actx.resume(); }
+    return actx;
+  }
+  function kokoPlay(text, opts){
+    opts = opts || {};
+    return KOKO.tts.generate(text, { voice: KOKO.voice }).then(function(audio){
+      var ctx = kokoCtx();
+      if(!ctx) throw new Error("no audioctx");
+      var buf = ctx.createBuffer(1, audio.audio.length, audio.sampling_rate);
+      buf.copyToChannel(audio.audio, 0);
+      var s = ctx.createBufferSource();
+      s.buffer = buf;
+      if(opts.rate && opts.rate !== 1) s.playbackRate.value = opts.rate;
+      s.connect(ctx.destination);
+      s.onended = function(){ KOKO.src = null; if(opts.onend) opts.onend(); };
+      KOKO.src = s;
+      s.start();
+    }).catch(function(err){ KOKO.src = null; if(opts.onerror) opts.onerror(err); });
+  }
+  function updateKokoState(){
+    var el = document.getElementById("kstate");
+    if(!el) return;
+    if(KOKO.engine === "kokoro") el.textContent = "✓ 地道美音引擎已就绪（Kokoro 神经 TTS）";
+    else if(KOKO.engine === "loading") el.textContent = "配音引擎加载中…（首次需联网下载模型）";
+    else el.textContent = "系统语音模式（引擎未加载，可刷新重试）";
+  }
+  (function loadKoko(){
+    import("https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm").then(function(kmod){
+      var env = kmod.env;
+      env.allowRemoteModels = false;
+      env.localModelPath = "/english/models/";
+      return kmod.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm" })
+        .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); });
+    }).catch(function(e){
+      console.warn("Kokoro 加载失败，退回系统语音", e);
+      KOKO.engine = "web"; updateKokoState();
+    });
+  })();
   var store = {
     get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
     set: function(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
@@ -504,7 +555,7 @@ function EN_START(){
     });
     html += '</div>';
 
-    html += '<div class="foot">整段播放由浏览器语音合成，句子随朗读高亮。点任意一句可从该句开始；0.75× 适合听连读。进度与「已听」记在本机浏览器。</div>';
+    html += '<div class="foot">整段播放由浏览器语音合成，句子随朗读高亮。点任意一句可从该句开始；0.75× 适合听连读。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
 
     reader.innerHTML = html;
     $("playThis").onclick = function(){
@@ -522,6 +573,7 @@ function EN_START(){
     list = sents();
     state.idx = 0;
     updateBar();
+    updateKokoState();
   }
 
   function syncMark(){
@@ -555,6 +607,7 @@ function EN_START(){
   function stopAll(){
     runId++;
     if(synth){ try { synth.cancel(); } catch(e){} }
+    if(KOKO.src){ try { KOKO.src.stop(); } catch(e){} KOKO.src = null; }
     state.playing = false;
     clearHi();
     updateBar();
@@ -584,7 +637,7 @@ function EN_START(){
     if(i < 0) i = 0;
     state.idx = i;
     highlight(i);
-    if(!synth){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
+    if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
     updateBar();
     run();
@@ -595,6 +648,10 @@ function EN_START(){
     if(i >= list.length){ stopAll(); state.idx = 0; updateBar(); return; }
     highlight(i);
     updateBar();
+    if(KOKO.ready){
+      kokoPlay(list[i].txt, { rate: state.rate, onend: function(){ if(myRun !== runId) return; if(state.idx + 1 < list.length){ state.idx++; run(); } else if(state.loop){ state.idx = 0; run(); } else { stopAll(); state.idx = 0; updateBar(); } }, onerror: function(){ if(myRun === runId){ state.playing = false; updateBar(); } } });
+      return;
+    }
     var u = new SpeechSynthesisUtterance(list[i].txt);
     var v = pickVoice(state.accent);
     if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = state.accent; }
@@ -670,9 +727,11 @@ function EN_START(){
     if(pc){ focusPlace(pc.getAttribute("data-place")); return; }
     var n = e.target.closest(".e");
     if(n && n.getAttribute("data-say")){
-      if(synth){
+      var sayTxt = n.getAttribute("data-say");
+      if(KOKO.ready){ kokoPlay(sayTxt, { rate: state.rate }); }
+      else if(synth){
         try { synth.cancel(); } catch(err){}
-        var u = new SpeechSynthesisUtterance(n.getAttribute("data-say"));
+        var u = new SpeechSynthesisUtterance(sayTxt);
         u.lang = state.accent; u.rate = state.rate;
         var v = pickVoice(state.accent); if(v){ u.voice = v; u.lang = v.lang; }
         try { synth.speak(u); } catch(err){}
@@ -717,9 +776,15 @@ function EN_START(){
     if(state.playing) playFrom(state.idx);
   });
   $("voice").addEventListener("click", function(){
-    state.accent = (state.accent === "en-US") ? "en-GB" : "en-US";
-    this.textContent = (state.accent === "en-US") ? "美音" : "英音";
-    if(synth) loadVoices();
+    if(KOKO.ready){
+      KOKO.pi = (KOKO.pi + 1) % KOKO.presets.length;
+      KOKO.voice = KOKO.presets[KOKO.pi].id;
+      this.textContent = KOKO.presets[KOKO.pi].label;
+    } else {
+      state.accent = (state.accent === "en-US") ? "en-GB" : "en-US";
+      this.textContent = (state.accent === "en-US") ? "美音" : "英音";
+      if(synth) loadVoices();
+    }
     if(state.playing) playFrom(state.idx);
   });
   $("loop").addEventListener("click", function(){
