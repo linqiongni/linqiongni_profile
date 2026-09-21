@@ -41,20 +41,25 @@ jobs:
           # 按体积从小到大优先选 <100MB 的 int8/q8 变体（避开 GitHub Pages 单文件上限）；
           # 落地文件名统一为 model_q8.onnx，匹配 kokoro-js dtype:"q8" 的本地加载期望。
           # 硬性体积下限 10MB，防止 HF 返回的错误响应（如 "Entry not found"）蒙混过关。
-          for f in model_q8.onnx model_quantized.onnx model_q4.onnx model_q8f16.onnx model_fp16.onnx model.onnx; do
+          # transformers.js 在 dtype:"q8" 下实际请求的是 onnx/model_quantized.onnx（由 config.json 决定），
+          # 因此无论命中哪个候选，落地文件名统一为 model_quantized.onnx，避免名字对不上。
+          # 体积区间 10MB~100MB：下限排除 HF 错误响应，上限避开 GitHub Pages 单文件限制。
+          OUT="$DEST/model_quantized.onnx"
+          for f in model_quantized.onnx model_q8.onnx model_q4.onnx model_q8f16.onnx model_fp16.onnx model.onnx; do
             echo "尝试下载 $f ..."
-            if curl -sSL --retry 3 -m 480 "$BASE/$f" -o "$DEST/model_q8.onnx" \
-               && [ -s "$DEST/model_q8.onnx" ] \
-               && [ "$(stat -c%s "$DEST/model_q8.onnx")" -gt 10000000 ]; then
-              sz=$(stat -c%s "$DEST/model_q8.onnx")
-              echo "成功：源文件 $f -> model_q8.onnx，大小 $sz 字节"
+            if curl -sSL --retry 3 -m 480 "$BASE/$f" -o "$OUT" \
+               && [ -s "$OUT" ] \
+               && [ "$(stat -c%s "$OUT")" -gt 10000000 ] \
+               && [ "$(stat -c%s "$OUT")" -lt 100000000 ]; then
+              sz=$(stat -c%s "$OUT")
+              echo "成功：源文件 $f -> model_quantized.onnx，大小 $sz 字节"
               break
             else
-              echo "$f 不可用，尝试下一候选"
-              rm -f "$DEST/model_q8.onnx"
+              echo "$f 不可用或体积不合适，尝试下一候选"
+              rm -f "$OUT"
             fi
           done
-          if [ ! -s "$DEST/model_q8.onnx" ] || [ "$(stat -c%s "$DEST/model_q8.onnx" 2>/dev/null || echo 0)" -lt 10000000 ]; then
+          if [ ! -s "$OUT" ] || [ "$(stat -c%s "$OUT" 2>/dev/null || echo 0)" -lt 10000000 ]; then
             echo "::error::Kokoro 模型下载失败（所有候选均不可用或体积异常）"
             exit 1
           fi

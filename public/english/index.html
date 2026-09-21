@@ -318,10 +318,25 @@ function EN_START(){
     else el.textContent = "系统语音模式（引擎未加载，可刷新重试）";
   }
   (function loadKoko(){
+    /* HF 在部分网络环境不可达，且 kokoro-js 里 voices 地址是硬编码的 huggingface.co。
+       统一拦截 fetch：把 .../Kokoro-82M-v1.0-ONNX/... 重写到本站同源 /english/models/...，
+       使模型、tokenizer、voices 全部从 linqiongni.top 自身加载（jsDelivr 上的库仍正常加载）。 */
+    var _fetch = window.fetch;
+    if(_fetch && !_fetch.__kokoPatched){
+      var patched = function(u, o){
+        try {
+          if(typeof u === "string" && u.indexOf("huggingface.co") > -1){
+            var m = u.match(/Kokoro-82M-v1\.0-ONNX\/(?:resolve\/[^/]+\/)?(.+)$/);
+            if(m) u = "/english/models/onnx-community/Kokoro-82M-v1.0-ONNX/" + m[1];
+          }
+        } catch(e){}
+        return _fetch.call(window, u, o);
+      };
+      patched.__kokoPatched = true;
+      window.fetch = patched;
+    }
     import("https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm").then(function(kmod){
-      var env = kmod.env;
-      env.allowRemoteModels = false;
-      env.localModelPath = "/english/models/";
+      try { if(kmod.env){ kmod.env.allowRemoteModels = true; kmod.env.localModelPath = "/english/models/"; } } catch(e){}
       return kmod.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm" })
         .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); });
     }).catch(function(e){
