@@ -32,6 +32,14 @@
     <button type="button" data-fold="close" data-fold-kind="dlg">收起全部对话</button>
   </div>
 
+  <div class="tplbar">
+    <span>一键展开 / 收起：</span>
+    <button data-fold="open" data-fold-kind="peek">全部详解</button>
+    <button data-fold="close" data-fold-kind="peek">收起详解</button>
+    <button data-fold="open" data-fold-kind="tpl">全部模板</button>
+    <button data-fold="close" data-fold-kind="tpl">收起模板</button>
+  </div>
+
   <h2>零、先把黑话翻成人话</h2>
   <p>如果你看这一页卡住了，十有八九是卡在词上，不是卡在逻辑上。下面这张表把本页会遇到的词全部翻成老板听得懂的话。</p>
 
@@ -51,7 +59,7 @@
           <tr><td>未届出资期转让的责任</td><td>股权是「还没交钱」的，转给谁谁负责</td><td>接了这种股份，可能替对方补缴出资</td></tr>
           <tr><td>业绩承诺 Earn-out</td><td>先付一部分，剩下看业绩达标再付</td><td>对冲「买贵了」的风险，但要写清怎么算</td></tr>
           <tr><td>对价调整</td><td>交割后发现问题时，按比例调价格</td><td>比事后索赔省事，但算法要写死</td></tr>
-          <tr><td>交割先决条件 CP</td><td>钱付出去之前必须先办完的事</td><td>查出的问题大多落在这里</td></tr>
+          <tr><td>交割先决条件 CP（Conditions Precedent，先决条件）</td><td>钱付出去之前必须先办完的事</td><td>查出的问题大多落在这里</td></tr>
           <tr><td>过渡期承诺</td><td>签约到交割之间，对方不能乱来</td><td>不写，他可能在这几个月分红、卖设备</td></tr>
           <tr><td>尾款 / Escrow</td><td>扣一部分钱押在第三方，到期没出问题再付</td><td>这是唯一「钱还在你手上」的抓手</td></tr>
           <tr><td>经营者集中申报</td><td>买到一定规模要向反垄断部门申报</td><td>不报就交割，可能被罚并责令恢复原状</td></tr>
@@ -60,6 +68,11 @@
       <p class="pk-mini">（这张表只解决「听不懂」，不解决「怎么谈」——怎么谈在下面每一组对话里。）</p>
     </div>
   </details>
+
+  <div class="say">
+    <span class="lbl">打个比方 · 优先购买权</span>
+    <p class="analogy">优先购买权（<b>ROFR（Right of First Refusal，优先购买权），Right of First Refusal，优先购买权</b>）就像几个朋友合伙买房，其中一个要卖他的份额——他不能偷偷卖给外人，得先问你们买不买。不问就卖，这份合同可能被推翻。<strong>通知 + 同等条件 + 留答复期，三样少一样，转让就可能无效。</strong></p>
+  </div>
 
   <h2>一、四条路径横向对照</h2>
   <div class="plain"><span class="pl">一句话</span>四条路径的根本区别是：<b>你接过来的是公司，还是只是资产</b>——接公司，就连它的历史一起接。</div>
@@ -288,6 +301,145 @@
       </div>
     </div>
   </details>
+
+  <h2>补充：四条路径之外的「权利清单」与真实坑</h2>
+  <div class="plain"><span class="pl">一句话</span>这一节把交易文件里最容易「轻描淡写带过」的四类权利（SPA（Share Purchase Agreement，股权收购协议）/SHA（Shareholders' Agreement，股东协议）、ROFR/ROFO（Right of First Offer，优先谈判权）、随售/领售）和两类最贵的雷（隐性债务、股权代持）落成模板与案例。</div>
+
+  <details class="peek">
+    <summary><span class="pk-badge d">大白话</span>SPA / SHA 是什么？买股份时你签的到底是哪两份文件</summary>
+    <div class="pk-bd">
+      <p>买一家公司的股份，通常要签两份核心文件：<b>SPA（Share Purchase Agreement，股权收购协议）</b>——你和卖家之间「谁把股份卖给谁、多少钱、有什么保证」的买卖合同；<b>SHA（Shareholders' Agreement，股东协议）</b>——你和标的公司其他股东之间「以后怎么投票、怎么分红、怎么退出」的合伙约定。</p>
+      <p><span class="pk-badge t">术语</span> 只签 SPA 不签 SHA，等于买了房却没跟其他业主约定「日后卖房听谁的」。SHA 里的优先权条款，决定了你买完之后是不是「说了算」。</p>
+      <p><span class="pk-badge k">常见坑</span> ①把 SHA 当成 SPA 的附件草草签，漏掉领售/随售；②SPA 里的陈述保证太薄，交割后才发现雷；③SHA 违反章程或公司法强制性规定而部分无效。</p>
+      <h4>霓光珠宝怎么用</h4>
+      <ul><li>买鑫源精铸 60% 股权：SPA 写清价格、先决条件、赔偿；SHA 写清与原有小股东的表决、分红、退出安排；</li><li>两份文件都要和公司章程对齐，避免「协议说一套、章程写一套」。</li></ul>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge d">大白话</span>ROFR / ROFO / Tag-along / Drag-along：四个「卖股优先权」一次说清</summary>
+    <div class="pk-bd">
+      <p>股东之间关于「股份怎么卖」，有四种常见权利：</p>
+      <p><span class="pk-badge t">术语</span>
+      <b>ROFR（Right of First Refusal，优先购买权）</b>：别人先买，你有权按同样条件先买；<br>
+      <b>ROFO（Right of First Offer，优先要约权）</b>：卖家想卖，得先问你要不要，你不要他才能对外卖（比 ROFR 更照顾老股东，因为价格由你先挑）；<br>
+      <b>Tag-along（随售权）</b>：大股东卖股份时，小股东有权按同样价格「搭车」一起卖；<br>
+      <b>Drag-along（领售权）</b>：大股东要卖，能「拉着」小股东一起卖，确保买家能买下整个公司。</p>
+      <p><span class="pk-badge k">常见坑</span> ①Tag-along 和 Drag-along 方向正好相反，写反了会导致「想一起卖的卖不掉、不想卖的被强卖」；②俏江南案里，Drag-along 触发后创始人被迫整体出让控制权——条款写得好不好，直接决定谁出局。</p>
+      <h4>怎么写</h4>
+      <ul><li>Tag-along：明确触发比例、同等价格、行使期限；</li><li>Drag-along：设门槛（如估值/买方资质）、对小股东的锁价保护、税费承担。</li></ul>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge d">大白话</span>收购标的「藏着债」，买完才发现怎么办</summary>
+    <div class="pk-bd">
+      <p>买股权是「连公司的历史一起买」。历史里最怕的是<strong>隐性债务</strong>：没入账的担保、没申报的税务、私下的对赌、即将到期的劳动仲裁。</p>
+      <p><span class="pk-badge t">术语</span> <b>陈述与保证（R&W（Representations and Warranties，陈述与保证），Representations and Warranties）</b>：卖家在 SPA 里承诺「公司没这些雷」。但 R&W 只是事后诉权——等工厂停工、订单违约，赢了官司也补不回损失。</p>
+      <p><span class="pk-badge k">常见坑</span> ①只看审计报告，不查「账外」：个人卡、关联方资金往来、未决诉讼；②环保/社保这类「慢雷」在交割后才爆；③没留 Escrow，钱付完卖家失联。</p>
+      <h4>霓光珠宝的防守</h4>
+      <ul><li>把环保、税务、社保整改列为交割先决条件；</li><li>设 20% Escrow 托管 24 个月；</li><li>对环保/税务/社保/安全生产四类设特别赔偿，突破一般上限。</li></ul>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge d">大白话</span>股权代持：上市前为什么必须「还原」</summary>
+    <div class="pk-bd">
+      <p>代持就是「股份写在他名下，实际是你的」。早期创业常见（规避身份、凑人数、避税）。但上市前，监管要的是<strong>股权清晰、不存在纠纷</strong>，代持是明确的核查红线。</p>
+      <p><span class="pk-badge t">术语</span> <b>代持还原（Unwinding Nominee）</b>：把登记在名义股东名下的股权恢复至实际权利人。难点在两点：①税务机关是否认可「按原值还原」，还是按转让征税；②名义股东不配合怎么办。</p>
+      <p><span class="pk-badge k">常见坑</span> ①代持协议是口头/无书面，还原时无证据；②配偶没签同意函，还原时冒出「这是夫妻共同财产」争议；③还原后才发现实际权利人另有债务，股份被查封。</p>
+      <h4>整改动作</h4>
+      <ul><li>补签代持协议 + 出资凭证 + 双方及配偶同意函；</li><li>提前与主管税务机关沟通税务处理，拿到书面口径；</li><li>在招股书如实披露代持形成与还原全过程。</li></ul>
+    </div>
+  </details>
+
+  <details class="peek">
+    <summary><span class="pk-badge d">大白话</span>「控制权变更条款」：你买完，别人有权收回？</summary>
+    <div class="pk-bd">
+      <p>标的公司的关键合同里，常藏着 change of control（控制权变更）条款：一旦公司被收购，对方有权提前收贷、解约、涨价。你买完股份，才发现大客户说「换老板了，合同作废」。</p>
+      <p><span class="pk-badge t">术语</span> <b>控制权变更条款（Change of Control）</b>：约定控制权变动时相对方获得某种权利的条款，常见于银行借款、租赁、供货、品牌授权合同。</p>
+      <p><span class="pk-badge k">常见坑</span> ①尽调只查财务不查合同，漏掉 hidden clause；②以为「工商不变更就没事」，但协议按「实质控制」判断；③交割后才发现核心客户可无责终止，收入断崖。</p>
+      <h4>霓光珠宝的排查</h4>
+      <ul><li>拉前十大客户/供货/借款/租赁/许可合同，逐条筛 change of control；</li><li>把关键第三方同意列为交割先决条件；</li><li>至少拿下最关键的 3 份同意函再交割。</li></ul>
+    </div>
+  </details>
+
+  <details class="tpl">
+    <summary><span class="ch">条款 A · 股权收购协议（SPA）核心条款清单</span><span class="cue"></span></summary>
+    <div class="clause"><div class="zh">
+      <p><b>1. 交易结构</b>　转让标的、比例、对价、支付方式（含 Escrow 比例与释放条件）。</p>
+      <p><b>2. 先决条件 CP</b>　证照/资质补齐、第三方同意、经营者集中申报通过、历史瑕疵整改完成。</p>
+      <p><b>3. 陈述与保证 R&W</b>　权属清晰、无隐性债务、税务社保合规、无未决重大诉讼。</p>
+      <p><b>4. 赔偿</b>　一般上限 + 环保/税务/社保/安全生产四类特别赔偿（突破上限）。</p>
+      <p><b>5. 过渡期承诺</b>　不分红、不异常处置资产、不新签重大合同。</p>
+    </div></div>
+  </details>
+
+  <details class="tpl">
+    <summary><span class="ch">条款 B · 股东协议（SHA）优先权条款（节选）</span><span class="cue"></span></summary>
+    <div class="clause"><div class="zh">
+      <p><b>第 X 条（随售权 Tag-along）</b>　任一股东拟向第三方转让股份的，其他股东有权按同等价格、同等条件，按其持股比例一同转让。</p>
+      <p><b>第 Y 条（领售权 Drag-along）</b>　持股【　】%以上的股东拟向合格买方转让的，可要求其他股东按同等价格一同转让；买方要求 100% 收购时，小股东应予配合。</p>
+      <p><b>第 Z 条（优先购买/要约 ROFR/ROFO）</b>　股东对外转让前，须先书面通知其他股东，其他股东在【　】日内行使优先购买权/优先要约权。</p>
+    </div></div>
+  </details>
+
+  <details class="tpl">
+    <summary><span class="ch">条款 C · 股权代持还原协议（节选）</span><span class="cue"></span></summary>
+    <div class="clause"><div class="zh">
+      <p><b>一、代持确认</b>　名义股东确认：登记于其名下的【　】%股权，实际出资人为【实际权利人】，全部出资由实际权利人支付。</p>
+      <p><b>二、还原安排</b>　名义股东配合办理工商变更，将股权无偿/按原值还原至实际权利人；双方及各自配偶签署同意函，确认无权属争议。</p>
+      <p><b>三、税务</b>　双方确认已就税务处理与主管税务机关沟通，相关税费由【　】承担。</p>
+      <p><b>四、陈述</b>　名义股东承诺股权未被质押、冻结、查封，如因代持产生纠纷由名义股东赔偿。</p>
+    </div></div>
+  </details>
+
+  <details class="tpl">
+    <summary><span class="ch">条款 D · 交割先决条件（CP）清单（模板）</span><span class="cue"></span></summary>
+    <div class="clause"><div class="zh">
+      <p>□ 环保批复与验收、消防验收、排污许可齐备；</p>
+      <p>□ 银行/房东/核心客户的控制权变更条款同意函；</p>
+      <p>□ 经营者集中申报通过（如达到标准，2024 年国务院令调整后：全球合计超 120 亿元且至少两方境内各超 8 亿元，或境内合计超 40 亿元且至少两方境内各超 8 亿元）；</p>
+      <p>□ 历史税务/社保/环保瑕疵整改完成并取得主管部门书面确认；</p>
+      <p>□ 核心人员留任协议签署；</p>
+      <p>□ 无未决重大诉讼/仲裁。</p>
+    </div></div>
+  </details>
+
+  <details class="tpl">
+    <summary><span class="ch">条款 E · 隐性债务特别赔偿条款（节选）</span><span class="cue"></span></summary>
+    <div class="clause"><div class="zh">
+      <p>卖方承诺：标的公司不存在账外负债、未披露担保、未申报税款及未决重大争议。若交割后发现交割日前存在的下列事项，卖方应承担特别赔偿，<b>不受本协议一般赔偿上限限制</b>：①税务/社保/公积金补缴及滞纳金罚款；②环保/安全生产处罚及整改费用；③未披露担保/诉讼导致的赔付。</p>
+    </div></div>
+  </details>
+
+  <div class="case">
+    <div class="hd">案例 08-补｜买来的工厂，账外藏着一笔担保</div>
+    <div class="bd">
+      <h4>案情</h4><p>霓光收购鑫源精铸 60% 股权交割半年后，银行通知：鑫源原实控人曾以公司名义为关联企业借款 2000 万元提供连带责任保证，未入账、未披露。债权人主张鑫源承担担保责任。</p>
+      <h4>裁判 / 结果</h4><p>该担保属交割日前隐性债务。因 SPA 已设特别赔偿条款且留 20% Escrow，霓光从尾款中扣减并另行追偿；同时向监管如实披露。若当初没留 Escrow、没写特别赔偿，这笔钱只能自己扛。</p>
+      <h4>给霓光珠宝的启示</h4><p>隐性债务不在审计报告里，在「合同、个人卡、关联方往来、未决诉讼」里。尽调要查账外，更要靠 Escrow + 特别赔偿把风险留在卖家身上。</p>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="hd">案例 08-补｜上市前清理代持：一位「隐名股东」的还原</div>
+    <div class="bd">
+      <h4>案情</h4><p>股改前核查发现，霓光早期 5% 股权登记在创始人的大学同学名下，实际是创始人借名持有（用于规避当时外资股东比例限制）。递表前必须还原。</p>
+      <h4>裁判 / 结果</h4><p>双方补签代持协议、出资凭证、配偶同意函，与主管税务机关沟通后按原值还原并完税，完成工商变更，在招股书披露代持形成与还原全过程，未构成障碍。耗时约 5 个月，主要卡在税务口径确认。</p>
+      <h4>给霓光珠宝的启示</h4><p>代持还原越早做越好——它要「跑时间」（税务沟通、变更、披露留痕），不能在递表前夕补课。口头代持最危险，永远先补书面证据。</p>
+    </div>
+  </div>
+
+  <div class="say">
+    <span class="lbl">打个比方 · 股权代持</span>
+    <p class="analogy">股权代持就像<strong>借名买房</strong>：房子写在他名下，钱是你出的。平时没事，一到卖房、离婚、被起诉，问题就来了——他欠债，房子可能被查封；他想反悔，你说不清。上市就是那次「必须过户到真名下的卖房」，<strong>越早还原，税和麻烦都越少</strong>。</p>
+  </div>
+
+  <div class="say">
+    <span class="lbl">打个比方 · 随售与领售</span>
+    <p class="analogy"><b>Tag-along（随售权）</b>像几个合伙人卖房：大股东找好买家，小股东说「我也要按这价一起卖」——保小股东。<b>Drag-along（领售权）</b>相反：大股东要把整栋楼卖给开发商，能「拉」着不情愿的小股东一起卖，确保交易能 100% 成交。俏江南的故事里，正是 Drag-along 让创始人被整体拖出局。<strong>一个保小股东，一个保大买家，写反了就出事。</strong></p>
+  </div>
 
 <h2>五、自检清单</h2>
   <div class="plain"><span class="pl">一句话</span>这一站的自检，核心是一个判断：<b>你要的是这家公司的产能，还是它的壳</b>。</div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>02 股权激励设计（ESOP）｜ 融资法务</title>
+<title>02 股权激励设计（ESOP（Employee Stock Ownership Plan，员工持股计划））｜ 融资法务</title>
 <link rel="stylesheet" href="assets/style.css?v=20260919h">
 </head>
 <body data-station="ch02">
@@ -21,7 +21,7 @@
     <span class="tag">剧情 · Y2</span>
     <p>郭明在奶茶店拍板给李工 10%，但法务<sup>（假设这时候已经有一个法务了）</sup>拦了一下：<em>"直接给，还是分批给？"</em></p>
     <p>如果一次性登记过户 10%，李工三个月后被同行挖走，那 10% 就跟着人走了——公司白白损失一大块股权，后面每一轮融资都要用更多的份额才能补回来。改成<strong>分四年成熟</strong>，第一年悬崖期（干满一年才有 25%），之后按月解锁。</p>
-    <p>同时，车间两位做失蜡铸造的老师傅也要激励，但给他们股权不合适——人数多了股权散，每进每出都要工商变更。于是搭了一个<a class="xref" href="#deep-lp" data-deep="deep-lp">有限合伙企业<sup>详解</sup></a>作为持股平台：创始人当 GP（说了算），员工当 LP（只分钱），人来人去只在平台内部转合伙份额，母公司的股权结构一天不乱。</p>
+    <p>同时，车间两位做失蜡铸造的老师傅也要激励，但给他们股权不合适——人数多了股权散，每进每出都要工商变更。于是搭了一个<a class="xref" href="#deep-lp" data-deep="deep-lp">有限合伙企业<sup>详解</sup></a>作为持股平台：创始人当 GP（General Partner，普通合伙人；下面称"说了算"的那个），员工当 LP（Limited Partner，有限合伙人；下面称"只分钱"的那个），人来人去只在平台内部转合伙份额，母公司的股权结构一天不乱。</p>
   </div>
 
 
@@ -54,7 +54,7 @@
           <tr><td>池子稀释</td><td>新融资时池子被摊薄，要从谁身上补</td><td>投前还是投后，差的是创始人的股份</td></tr>
           <tr><td>递延纳税</td><td>行权时先不交税，等真卖掉再交</td><td>不办备案，员工可能在没拿到钱时就要交税</td></tr>
           <tr><td>第 17 章 / 股份计划</td><td>上市地管「员工股份怎么给」的那套规则</td><td>上市前授予的计划，上市后未必能照原样执行</td></tr>
-          <tr><td>信托持有 ESOP</td><td>红筹架构下由受托人代持、分档管理</td><td>员工行权还要走外汇登记，路径要提前设计</td></tr>
+          <tr><td>信托持有 ESOP（Employee Stock Ownership Plan，员工持股计划）</td><td>红筹架构下由受托人代持、分档管理</td><td>员工行权还要走外汇登记，路径要提前设计</td></tr>
         </tbody>
       </table></div>
       <p class="pk-mini">（这张表只解决「听不懂」，不解决「怎么谈」——怎么谈在下面每一组对话里。）</p>
@@ -68,8 +68,8 @@
     <tbody>
       <tr><td><b>股票期权 Option</b></td><td>未来按约定价买股的权利</td><td>行权时要</td><td>行权后可</td><td>成长期、高增长预期；<b>最主流</b></td></tr>
       <tr><td><b>限制性股权 Restricted Shares</b></td><td>现在给但受限制，成熟才锁定</td><td>通常要（有的为象征性）</td><td>授予时即可</td><td>联合创始人、核心高管的成熟安排</td></tr>
-      <tr><td><b>虚拟股 / 增值权 Phantom / SAR</b></td><td>只分享经济收益，不给真实股权</td><td>不要</td><td>否</td><td>现金流稳定但不想稀释股权的公司</td></tr>
-      <tr><td><b>限制性股份单位 RSU</b></td><td>到期无条件给股（境外架构常用）</td><td>通常不要</td><td>归属时</td><td>境外/上市公司、税负需要延后场景</td></tr>
+      <tr><td><b>虚拟股 / 增值权 Phantom / SAR（Stock Appreciation Right，股票增值权）</b></td><td>只分享经济收益，不给真实股权</td><td>不要</td><td>否</td><td>现金流稳定但不想稀释股权的公司</td></tr>
+      <tr><td><b>限制性股份单位 RSU（Restricted Stock Unit，限制性股票单位）</b></td><td>到期无条件给股（境外架构常用）</td><td>通常不要</td><td>归属时</td><td>境外/上市公司、税负需要延后场景</td></tr>
     </tbody>
   </table></div>
 
@@ -160,13 +160,13 @@
       <line x1="450" y1="20" x2="450" y2="295" stroke="var(--line)" stroke-dasharray="4 4"/>
 
       <!-- 右：境外信托 -->
-      <text x="672" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">路径 B · 红筹架构：信托 + BVI</text>
+      <text x="672" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gold-deep)" font-family="-apple-system, PingFang SC, sans-serif">路径 B · 红筹架构：信托 + BVI（British Virgin Islands，英属维尔京群岛）</text>
       <rect x="540" y="44" width="264" height="42" rx="10" fill="var(--card)" stroke="var(--gold)" stroke-width="2"/>
-      <text x="672" y="63" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">拟上市公司（开曼 / Cayman）</text>
+      <text x="672" y="63" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">拟上市公司（开曼 Cayman，开曼群岛）</text>
       <text x="672" y="78" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">发行 ESOP 预留股份</text>
       <rect x="540" y="112" width="264" height="46" rx="10" fill="var(--bg-alt)" stroke="var(--line)" stroke-width="1.5"/>
       <text x="672" y="132" text-anchor="middle" font-size="12.5" fill="var(--ink)" font-family="-apple-system, PingFang SC, sans-serif">ESOP 信托（受托人 Trustee 持有）</text>
-      <text x="672" y="148" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">下设 BVI SPV 分档管理</text>
+      <text x="672" y="148" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="-apple-system, PingFang SC, sans-serif">下设 BVI（British Virgin Islands，英属维尔京群岛） SPV（Special Purpose Vehicle，特殊目的载体）分档管理</text>
       <rect x="520" y="192" width="105" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
       <text x="572" y="215" text-anchor="middle" font-size="11.5" fill="var(--ink-2)" font-family="-apple-system, PingFang SC, sans-serif">高管层 RSU</text>
       <rect x="640" y="192" width="105" height="38" rx="8" fill="var(--card)" stroke="var(--line)"/>
@@ -211,7 +211,7 @@
           <tr><td><b>普通合伙人</b></td><td>GP（General Partner）</td><td>执行合伙事务、对外代表企业，对企业债务承担<b>无限（连带）责任</b></td><td>《合伙企业法》第 2、67 条</td></tr>
           <tr><td><b>有限合伙人</b></td><td>LP（Limited Partner）</td><td>只出资、只分红，<b>不执行合伙事务</b>，以认缴出资额为限担责</td><td>第 2、68 条</td></tr>
           <tr><td><b>执行事务合伙人</b></td><td>—</td><td>由 GP 担任（或受委托），代表企业签约、投票、办理登记；可约定报酬</td><td>第 67 条</td></tr>
-          <tr><td><b>有限合伙协议</b></td><td>LPA</td><td>持股平台的「宪法」，约定出资、分配、入伙退伙、份额转让</td><td>第 18、63 条</td></tr>
+          <tr><td><b>有限合伙协议</b></td><td>LPA（Limited Partnership Agreement，有限合伙协议）</td><td>持股平台的「宪法」，约定出资、分配、入伙退伙、份额转让</td><td>第 18、63 条</td></tr>
           <tr><td><b>安全港</b></td><td>Safe Harbor</td><td>LP 做这 8 类事不算「执行合伙事务」，不致丧失有限责任：参与决定 GP 入退伙、提经营建议、选会计师事务所、获取审计报告、查与自身相关的账簿、维权诉讼、督促 GP 行权、为本企业担保</td><td>第 68 条第 2 款（八项）</td></tr>
           <tr><td><b>表见普通合伙</b></td><td>—</td><td>第三人<b>有理由相信</b> LP 是 GP 而与其交易的，该 LP 对该笔交易承担与 GP 同样的责任</td><td>第 76 条（LP 最易踩的雷）</td></tr>
           <tr><td><b>财产份额</b></td><td>—</td><td>LP 在合伙企业里的「股份」，<b>不是公司股权</b>；退出走份额转让／退伙结算</td><td>第 72–74 条</td></tr>
