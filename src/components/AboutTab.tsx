@@ -16,7 +16,7 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => (
     <section className="grid gap-12 border-b border-[#D8D0C2] pb-16 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
       <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="relative max-w-md">
         <div className="absolute -left-4 -top-4 h-20 w-20 border-l border-t border-[#B89F6B]/70" />
-        <div className="aspect-[4/5] overflow-hidden bg-[#E5DED2] shadow-[0_28px_70px_rgba(28,31,38,.14)]">
+        <div className="aspect-[4/5] overflow-hidden shadow-[0_28px_70px_rgba(28,31,38,.14)]">
           <img src={PERSONAL_INFO.avatarUrl} alt="职业肖像" className="h-full w-full object-cover" />
         </div>
         <div className="mt-5 flex items-end justify-between border-b border-[#B89F6B]/50 pb-4">
