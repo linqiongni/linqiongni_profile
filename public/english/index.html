@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#FBF9F4" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>身边的英语 · 一个外企法务的一年</title>
 <style>
   :root{
@@ -802,20 +805,41 @@ function EN_START(){
       kokoPlay(list[i].txt, { rate: state.rate, onend: function(){ if(myRun !== runId) return; if(state.idx + 1 < list.length){ state.idx++; run(); } else if(state.loop){ state.idx = 0; run(); } else { stopAll(); state.idx = 0; updateBar(); } }, onerror: function(){ if(myRun === runId){ state.playing = false; updateBar(); } } });
       return;
     }
-    var u = new SpeechSynthesisUtterance(list[i].txt);
+    /* 系统语音模式（美音引擎没加载）：iOS Safari 有个著名 bug——连着 speak 多句时，
+       第二句起既不出声也不触发 onend，表现就是「读一句就卡住」。最稳的解法是把剩余句子
+       拼成一个 utterance 一次念完（单句 utterance 在 iOS 上永远正常），高亮按估算时长推进。 */
+    synthPlayAll(i, myRun);
+  }
+  /* 系统语音整段播放：剩余句子拼成一段一次念完，避开 iOS 多句 speechSynthesis 卡死；
+     高亮随估算时长逐句推进；结束（或循环）由 onend 统一决定。runId 与 stopAll 同套闸门，
+     中途点暂停/切篇会令 runId 变化，所有 setTimeout 自检后自动作废。 */
+  function synthPlayAll(startIdx, myRun){
+    if(!synth){ state.playing = false; updateBar(); return; }
+    list = list.length ? list : sents();
+    if(startIdx >= list.length){ stopAll(); state.idx = 0; updateBar(); return; }
+    var rest = [];
+    for(var k = startIdx; k < list.length; k++) rest.push(list[k].txt);
+    var full = rest.join("  ");
+    var u = new SpeechSynthesisUtterance(full);
     var v = pickVoice(state.accent);
     if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = state.accent; }
-    u.rate = state.rate;
-    u.pitch = 1;
-    u.onend = function(){
-      if(myRun !== runId) return;
-      if(state.idx + 1 < list.length){ state.idx++; run(); }
-      else if(state.loop){ state.idx = 0; run(); }
-      else { stopAll(); state.idx = 0; updateBar(); }
+    u.rate = state.rate; u.pitch = 1;
+    state.playing = true; updateBar();
+    /* 高亮按句子估算时长推进（系统语音模式不追求逐字精确，能跟着走即可） */
+    var t = 0;
+    for(var k2 = startIdx; k2 < list.length; k2++){
+      (function(kk, delay){
+        setTimeout(function(){ if(runId !== myRun) return; state.idx = kk; highlight(kk); updateBar(); }, delay);
+      })(k2, t);
+      t += Math.max(700, list[k2].txt.length * 60 / state.rate);
+    }
+    var finish = function(){
+      if(runId !== myRun) return;
+      if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
     };
-    u.onerror = function(){ if(myRun === runId){ state.playing = false; updateBar(); } };
-    /* iOS 手势链要求：speak 必须同步调用（原 setTimeout 40ms 会导致 iOS 静默不发声） */
-    if(myRun === runId){ try { synth.speak(u); } catch(e){} }
+    u.onend = finish;
+    u.onerror = finish;
+    try { synth.cancel(); synth.speak(u); } catch(e){ if(runId === myRun){ stopAll(); updateBar(); } }
   }
 
   function toggle(){
