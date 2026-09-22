@@ -13,15 +13,23 @@ const PRINCIPLES = [
 
 export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => (
   <div id="tab-about-content" className="lux-page py-5 sm:py-10">
-    <section className="grid gap-12 border-b border-[#D8D0C2] pb-16 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="relative max-w-md">
-        <div className="absolute -left-4 -top-4 h-20 w-20 border-l border-t border-[#B89F6B]/70" />
-        <div className="aspect-[4/5] overflow-hidden shadow-[0_28px_70px_rgba(28,31,38,.14)]">
-          <img src={PERSONAL_INFO.avatarUrl} alt="职业肖像" className="h-full w-full object-cover" />
-        </div>
-        <div className="mt-5 flex items-end justify-between border-b border-[#B89F6B]/50 pb-4">
-          <div><p className="font-serif text-xl">{PERSONAL_INFO.name}</p><p className="mt-1 text-[10px] uppercase tracking-[.18em] text-[#8A857C]">{PERSONAL_INFO.englishName}</p></div>
-          <span className="text-xs text-[#8D754B]">Legal Counsel</span>
+    <section className="grid gap-8 border-b border-[#D8D0C2] pb-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:pb-16">
+      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="relative lg:max-w-md">
+        <div className="absolute -left-4 -top-4 hidden h-20 w-20 border-l border-t border-[#B89F6B]/70 lg:block" />
+        {/* 手机端：人物以紧凑头像内嵌在「关于我」内容顶部；桌面端恢复大图 + 姓名卡 */}
+        <div className="flex items-start gap-4 sm:gap-5 lg:block">
+          <div className="aspect-[4/5] w-28 shrink-0 overflow-hidden shadow-[0_28px_70px_rgba(28,31,38,.14)] sm:w-32 lg:w-auto lg:max-w-md">
+            <img src={PERSONAL_INFO.avatarUrl} alt="职业肖像" className="h-full w-full object-cover" />
+          </div>
+          <div className="flex-1 lg:mt-5">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between lg:border-b lg:border-[#B89F6B]/50 lg:pb-4">
+              <div>
+                <p className="font-serif text-xl">{PERSONAL_INFO.name}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[.18em] text-[#8A857C]">{PERSONAL_INFO.englishName}</p>
+              </div>
+              <span className="mt-2 inline-block text-xs text-[#8D754B] lg:mt-0">Legal Counsel</span>
+            </div>
+          </div>
         </div>
       </motion.div>
 

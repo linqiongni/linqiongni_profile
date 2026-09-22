@@ -15,8 +15,7 @@ export const CommercialOpsLegalTab: React.FC<{ darkMode?: boolean }> = ({ darkMo
     src={`/commercial-ops/index.html?v=${IFRAME_V}`}
     title="商业运营法务 · 高端商业综合体商业租赁合同审核指引"
     darkMode={darkMode}
-    // 内容为长文 + 左侧固定目录 + 右侧本页目录，移动端 iframe 内滚动不可靠，
-    // 窄屏改为引导全屏打开子站（桌面端行为不变）。
-    mobileFullscreen
+    // 桌面端与手机端均在当前页内嵌打开，不再提示「全屏打开/另行页面」。
+    mobileFullscreen={false}
   />
 );
