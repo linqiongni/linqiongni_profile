@@ -286,7 +286,7 @@ function EN_START(){
       { id: "af_bella", label: "美音·叙" },
       { id: "am_adam", label: "美音·男" }
     ],
-    pi: 0, src: null, t0: Date.now(), pct: 0, warned: false
+    pi: 0, src: null, t0: Date.now(), pct: 0, warned: false, warnedAudio: false
   };
   /* 音色选择持久化：上次选了哪个音色，下次打开还是它 */
   (function(){
@@ -310,11 +310,27 @@ function EN_START(){
       buf.copyToChannel(audio.audio, 0);
       var s = ctx.createBufferSource();
       s.buffer = buf;
-      if(opts.rate && opts.rate !== 1) s.playbackRate.value = opts.rate;
+      var rate = (opts.rate && opts.rate !== 1) ? opts.rate : 1;
+      if(rate !== 1) s.playbackRate.value = rate;
       s.connect(ctx.destination);
-      s.onended = function(){ KOKO.src = null; if(opts.onend) opts.onend(); };
+      var done = false, tid = null;
+      var finish = function(){
+        if(done) return;
+        done = true;
+        if(tid) clearTimeout(tid);
+        KOKO.src = null;
+        if(opts.onend) opts.onend();
+      };
+      s.onended = finish;
       KOKO.src = s;
       s.start();
+      /* 兜底：个别设备（自动播放被拦、无音频输出设备）不会触发 onended，
+         按音频时长强推一次，避免整段朗读永久卡在第一句不前进。 */
+      tid = setTimeout(finish, (audio.audio.length / audio.sampling_rate) * 1000 / rate + 900);
+      if(ctx.state !== "running" && !KOKO.warnedAudio){
+        KOKO.warnedAudio = true;
+        kokoToast("浏览器暂时不允许播放声音，点一下屏幕再点播放即可（iPhone 请确认静音键已关）");
+      }
     }).catch(function(err){ KOKO.src = null; if(opts.onerror) opts.onerror(err); });
   }
   function updateKokoState(){
