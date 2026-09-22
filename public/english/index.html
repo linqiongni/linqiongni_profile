@@ -295,52 +295,57 @@ function EN_START(){
       if(v){ for(var i = 0; i < KOKO.presets.length; i++){ if(KOKO.presets[i].id === v){ KOKO.pi = i; KOKO.voice = v; break; } } }
     } catch(e){}
   })();
-  var actx = null;
-  function kokoCtx(){
-    try { if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
-    if(actx && actx.state === "suspended"){ actx.resume(); }
-    return actx;
+  /* 把 kokoro 生成的 Float32 PCM 编码成 16-bit WAV Blob，交给 <audio> 元素播放。
+     用 <audio> 而非 Web Audio 的 AudioContext：移动端（尤其 iOS Safari）对 AudioContext
+     的自动播放限制极严，缓冲源常常停在 suspended 状态而毫无声音；<audio>.play() 在用户
+     手势内被各端可靠放行，是跨设备最稳的播放方式。 */
+  function encodeWav(samples, sr){
+    var n = samples.length;
+    var buf = new ArrayBuffer(44 + n * 2);
+    var view = new DataView(buf);
+    function wstr(off, s){ for(var i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i)); }
+    wstr(0, "RIFF"); view.setUint32(4, 36 + n * 2, true);
+    wstr(8, "WAVE"); wstr(12, "fmt "); view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+    view.setUint32(24, sr, true); view.setUint32(28, sr * 2, true);
+    view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+    wstr(36, "data"); view.setUint32(40, n * 2, true);
+    var off = 44;
+    for(var i = 0; i < n; i++){
+      var v = Math.max(-1, Math.min(1, samples[i]));
+      view.setInt16(off, v < 0 ? v * 0x8000 : v * 0x7FFF, true);
+      off += 2;
+    }
+    return new Blob([view], { type: "audio/wav" });
   }
-  /* iOS / 移动端自动播放策略：AudioContext 必须在「用户手势」作用域里创建并 resume 才能真正出声。
-     kokoPlay 是在异步推理完成后才建上下文，已脱离手势作用域，故这里在页面的首个用户交互
-     （pointerdown/click/touchstart/keydown）里提前把共享 actx 解锁；之后朗读就能正常出声，
-     否则 iPhone 上只会弹「点一下屏幕」提示却始终没声音。 */
-  (function(){
-    function unlock(){ var c = kokoCtx(); if(c && c.state === "suspended"){ try { c.resume(); } catch(e){} } }
-    var evs = ["pointerdown", "touchstart", "click", "keydown"];
-    function onFirst(){ unlock(); for(var i = 0; i < evs.length; i++){ document.removeEventListener(evs[i], onFirst); } }
-    for(var i = 0; i < evs.length; i++){ document.addEventListener(evs[i], onFirst, { passive: true }); }
-  })();
   function kokoPlay(text, opts){
     opts = opts || {};
     return KOKO.tts.generate(text, { voice: KOKO.voice }).then(function(audio){
-      var ctx = kokoCtx();
-      if(!ctx) throw new Error("no audioctx");
-      var buf = ctx.createBuffer(1, audio.audio.length, audio.sampling_rate);
-      buf.copyToChannel(audio.audio, 0);
-      var s = ctx.createBufferSource();
-      s.buffer = buf;
+      var samples = audio && audio.audio;
+      if(!samples || !samples.length) throw new Error("no audio data");
+      var sr = audio.sampling_rate || 24000;
+      var url = URL.createObjectURL(encodeWav(samples, sr));
+      var a = new Audio();
+      a.src = url;
       var rate = (opts.rate && opts.rate !== 1) ? opts.rate : 1;
-      if(rate !== 1) s.playbackRate.value = rate;
-      s.connect(ctx.destination);
-      var done = false, tid = null;
+      if(rate !== 1) a.playbackRate = rate;
+      var done = false;
       var finish = function(){
-        if(done) return;
-        done = true;
-        if(tid) clearTimeout(tid);
+        if(done) return; done = true;
+        try { a.pause(); } catch(e){}
+        try { URL.revokeObjectURL(url); } catch(e){}
         KOKO.src = null;
         if(opts.onend) opts.onend();
       };
-      s.onended = finish;
-      KOKO.src = s;
-      s.start();
-      /* 兜底：个别设备（自动播放被拦、无音频输出设备）不会触发 onended，
-         按音频时长强推一次，避免整段朗读永久卡在第一句不前进。 */
-      tid = setTimeout(finish, (audio.audio.length / audio.sampling_rate) * 1000 / rate + 900);
-      if(ctx.state !== "running" && !KOKO.warnedAudio){
-        KOKO.warnedAudio = true;
-        kokoToast("浏览器暂时不允许播放声音，点一下屏幕再点播放即可（iPhone 请确认静音键已关）");
-      }
+      a.onended = finish;
+      a.onerror = function(){ finish(); };
+      KOKO.src = a;
+      var p = a.play();
+      if(p && p.catch){ p.catch(function(){
+        if(!KOKO.warnedAudio){ KOKO.warnedAudio = true; kokoToast("浏览器暂时不允许播放声音，点一下屏幕再点播放即可（iPhone 请确认静音键已关）"); }
+      }); }
+      /* 兜底：个别设备不触发 onended，按时长强推一次，避免整段朗读卡在第一句不前进。 */
+      setTimeout(finish, (samples.length / sr) / rate * 1000 + 900);
     }).catch(function(err){ KOKO.src = null; if(opts.onerror) opts.onerror(err); });
   }
   function updateKokoState(){
@@ -700,7 +705,7 @@ function EN_START(){
   function stopAll(){
     runId++;
     if(synth){ try { synth.cancel(); } catch(e){} }
-    if(KOKO.src){ try { KOKO.src.stop(); } catch(e){} KOKO.src = null; }
+    if(KOKO.src){ try { KOKO.src.pause(); } catch(e){} KOKO.src = null; }
     state.playing = false;
     clearHi();
     updateBar();
@@ -720,11 +725,26 @@ function EN_START(){
       ttsUnlocked = true;
     } catch(e){}
   }
+  /* iOS 媒体解锁：在首次用户手势内播一段静音 <audio>，之后 kokoPlay 异步生成的朗读
+     （WASM 推理完成后才 new Audio().play()）也能被系统放行，避免「点了没声音」。 */
+  var mediaUnlocked = false;
+  function unlockMedia(){
+    if(mediaUnlocked) return;
+    try {
+      var silent = encodeWav(new Float32Array(800), 24000);
+      var au = new Audio(URL.createObjectURL(silent));
+      au.volume = 0;
+      var pp = au.play();
+      if(pp && pp.catch) pp.catch(function(){});
+      mediaUnlocked = true;
+    } catch(e){}
+  }
 
   function playFrom(i){
     list = sents();
     if(!list.length) return;
     unlockTTS();
+    unlockMedia();
     stopAll();
     if(i >= list.length) i = 0;
     if(i < 0) i = 0;
