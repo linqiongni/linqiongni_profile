@@ -149,6 +149,9 @@ export const NAV_GROUPS: NavGroup[] = [
 
 export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
+  // 概览主页态：不属于任何分组 subTabs，不在导航中渲染，仅用于类型补全与初始进入态
+  home: { label: '主页', enLabel: 'Home' },
+
   about: { label: '关于我', enLabel: 'About' },
 
   expertise: { label: '专业技能', enLabel: 'Expertise' },

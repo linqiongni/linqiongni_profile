@@ -57,9 +57,9 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function App() {
 
-  const [activeTab, setActiveTab] = useState<TabType>('about');
+  const [activeTab, setActiveTab] = useState<TabType>('home');
 
-  const [activeGroup, setActiveGroup] = useState<string>(groupOfTab('about'));
+  const [activeGroup, setActiveGroup] = useState<string>(groupOfTab('home'));
 
   const [darkMode, setDarkMode] = useState<boolean>(() =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -251,6 +251,10 @@ export default function App() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
 
           >
+
+            {activeTab === 'home' && (
+              <AboutTab onExploreCases={() => handleSelectTab('cases')} />
+            )}
 
             {activeTab === 'about' && (
 
