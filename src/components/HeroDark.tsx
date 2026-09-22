@@ -47,11 +47,13 @@ export const HeroDark: React.FC = () => {
           <div className="mt-20 hidden max-w-sm border-t border-[#C9A86A]/65 pt-5 text-[9px] uppercase tracking-[.2em] text-[#728195] sm:block">Contract · Compliance · Dispute</div>
         </div>
 
-        <motion.div initial={{ opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .95, delay: .12 }} className="relative flex min-h-[520px] items-end justify-center lg:min-h-[720px]">
-          <div className="portrait-halo" />
-          <img ref={portraitRef} src={portraitTransparent} alt="职业肖像" className="luxury-portrait relative z-10 max-h-[78vh] w-auto max-w-full object-contain object-bottom" />
-          <div className="absolute bottom-[7%] left-[8%] z-20 border-l border-[#C9A86A] pl-4"><p className="text-[9px] uppercase tracking-[.22em] text-[#D7BA7F]">Legal Counsel</p><p className="mt-2 text-xs text-[#CFD7DF]">合同 · 合规 · 争议解决</p></div>
-        </motion.div>
+        <div className="lg:-translate-y-36">
+          <motion.div initial={{ opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .95, delay: .12 }} className="relative flex min-h-[520px] items-end justify-center lg:min-h-[720px]">
+            <div className="portrait-halo" />
+            <img ref={portraitRef} src={portraitTransparent} alt="职业肖像" className="luxury-portrait relative z-10 max-h-[78vh] w-auto max-w-full object-contain object-bottom" />
+            <div className="absolute bottom-[7%] left-[8%] z-20 border-l border-[#C9A86A] pl-4"><p className="text-[9px] uppercase tracking-[.22em] text-[#D7BA7F]">Legal Counsel</p><p className="mt-2 text-xs text-[#CFD7DF]">合同 · 合规 · 争议解决</p></div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -63,9 +63,7 @@ export default function App() {
 
   const [activeGroup, setActiveGroup] = useState<string>(groupOfTab('home'));
 
-  const [darkMode, setDarkMode] = useState<boolean>(() =>
-    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
