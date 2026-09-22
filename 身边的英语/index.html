@@ -286,8 +286,15 @@ function EN_START(){
       { id: "af_bella", label: "美音·叙" },
       { id: "am_adam", label: "美音·男" }
     ],
-    pi: 0, src: null
+    pi: 0, src: null, t0: Date.now(), pct: 0, warned: false
   };
+  /* 音色选择持久化：上次选了哪个音色，下次打开还是它 */
+  (function(){
+    try {
+      var v = localStorage.getItem("en-koko-voice");
+      if(v){ for(var i = 0; i < KOKO.presets.length; i++){ if(KOKO.presets[i].id === v){ KOKO.pi = i; KOKO.voice = v; break; } } }
+    } catch(e){}
+  })();
   var actx = null;
   function kokoCtx(){
     try { if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
@@ -316,6 +323,37 @@ function EN_START(){
     if(KOKO.engine === "kokoro") el.textContent = "✓ 地道美音引擎已就绪（Kokoro 神经 TTS）";
     else if(KOKO.engine === "loading") el.textContent = "配音引擎加载中…（首次需联网下载模型）";
     else el.textContent = "系统语音模式（引擎未加载，可刷新重试）";
+  }
+  function kokoToast(msg){
+    var t = document.getElementById("kktoast");
+    if(!t){
+      t = document.createElement("div"); t.id = "kktoast";
+      t.style.cssText = "position:fixed;left:50%;bottom:78px;transform:translateX(-50%);z-index:9999;max-width:86vw;" +
+        "background:rgba(28,28,30,.94);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;line-height:1.55;" +
+        "box-shadow:0 6px 24px rgba(0,0,0,.28);transition:opacity .3s;pointer-events:none;";
+      document.body.appendChild(t);
+    }
+    t.textContent = msg; t.style.opacity = "1";
+    clearTimeout(kokoToast._t);
+    kokoToast._t = setTimeout(function(){ if(t) t.style.opacity = "0"; }, 3400);
+  }
+  /* 让「美音」按钮的文案与当前实际音色保持一致（含上次持久化的音色） */
+  function syncVoiceBtn(){
+    var b = document.getElementById("voice");
+    if(b && KOKO.ready) b.textContent = KOKO.presets[KOKO.pi].label;
+  }
+  /* 播放前置闸门：模型还在下载时不要静默退回系统语音（那正是「生硬」的来源） */
+  function kokoGate(){
+    if(KOKO.ready) return true;
+    if(KOKO.engine === "loading" && (Date.now() - KOKO.t0) < 60000){
+      kokoToast("地道配音模型还在下载 " + (KOKO.pct || 0) + "%，首次约十几秒，下完就是地道美音，稍等一下再点播放～");
+      return false;
+    }
+    if(KOKO.engine === "web" && !KOKO.warned){
+      KOKO.warned = true;
+      kokoToast("配音引擎这次没加载成功，现在用的是系统语音（会比较生硬），刷新页面可以再试一次");
+    }
+    return true;
   }
   (function loadKoko(){
     /* HF 在部分网络环境不可达，且 kokoro-js 里 voices 地址是硬编码的 huggingface.co。
@@ -349,9 +387,10 @@ function EN_START(){
             var pct = Math.round((p.loaded || 0) / p.total * 100);
             var el = document.getElementById("kstate");
             if(el) el.textContent = "配音模型下载中… " + pct + "%";
+            KOKO.pct = pct;
           }
         } })
-        .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); });
+        .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); syncVoiceBtn(); });
     }).catch(function(e){
       console.warn("Kokoro 加载失败，退回系统语音", e);
       KOKO.engine = "web"; updateKokoState();
@@ -665,6 +704,7 @@ function EN_START(){
     if(i < 0) i = 0;
     state.idx = i;
     highlight(i);
+    if(!kokoGate()){ state.playing = false; updateBar(); return; }
     if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
     updateBar();
@@ -757,7 +797,7 @@ function EN_START(){
     if(n && n.getAttribute("data-say")){
       var sayTxt = n.getAttribute("data-say");
       if(KOKO.ready){ kokoPlay(sayTxt, { rate: state.rate }); }
-      else if(synth){
+      else if(kokoGate() && synth){
         try { synth.cancel(); } catch(err){}
         var u = new SpeechSynthesisUtterance(sayTxt);
         u.lang = state.accent; u.rate = state.rate;
@@ -808,6 +848,7 @@ function EN_START(){
       KOKO.pi = (KOKO.pi + 1) % KOKO.presets.length;
       KOKO.voice = KOKO.presets[KOKO.pi].id;
       this.textContent = KOKO.presets[KOKO.pi].label;
+      try { localStorage.setItem("en-koko-voice", KOKO.voice); } catch(e){}
     } else {
       state.accent = (state.accent === "en-US") ? "en-GB" : "en-US";
       this.textContent = (state.accent === "en-US") ? "美音" : "英音";
