@@ -325,6 +325,7 @@ function EN_START(){
      （KOKO.ready 为 false 时 run() 已走系统语音；这里是 ready 但单句 generate 抛错的情形。） */
   function kokoFallback(text, opts){
     opts = opts || {};
+    unlockTTS();
     if(synth){
       try { synth.cancel(); } catch(e){}
       var u = new SpeechSynthesisUtterance(text);
@@ -337,10 +338,12 @@ function EN_START(){
   }
   function kokoPlay(text, opts){
     opts = opts || {};
+    klog("kokoPlay: 生成中…「" + text.slice(0, 10) + "」");
     return KOKO.tts.generate(text, { voice: KOKO.voice }).then(function(audio){
       var samples = audio && audio.audio;
       if(!samples || !samples.length) throw new Error("no audio data");
       var sr = audio.sampling_rate || 24000;
+      klog("kokoPlay: 生成OK samples=" + samples.length + " sr=" + sr);
       var url = URL.createObjectURL(encodeWav(samples, sr));
       var a = new Audio();
       a.src = url;
@@ -360,18 +363,21 @@ function EN_START(){
         KOKO.src = null;
         try { URL.revokeObjectURL(url); } catch(e){}
         if(!KOKO.warned){ KOKO.warned = true; kokoToast("美音播放被拦截，已自动改用系统语音"); }
+        klog("kokoPlay: 退回系统语音兜底");
         kokoFallback(text, opts);
       };
       a.onended = finish;
       a.onerror = function(){ fallback(); };
       KOKO.src = a;
       var p = a.play();
-      if(p && p.catch){ p.catch(function(){ fallback(); }); }
+      klog("kokoPlay: audio.play() 已调用");
+      if(p && p.catch){ p.then(function(){ klog("kokoPlay: audio 已开始播放"); }).catch(function(){ klog("kokoPlay: play 被拒 -> 退回系统语音"); fallback(); }); }
       /* 兜底：个别设备不触发 onended，按时长强推一次，避免整段朗读卡在第一句不前进。 */
       setTimeout(finish, (samples.length / sr) / rate * 1000 + 900);
     }).catch(function(err){
       KOKO.src = null;
       if(!KOKO.warned){ KOKO.warned = true; kokoToast("美音引擎这一句没出声，已自动改用系统语音续播"); }
+      klog("kokoPlay: generate 失败 -> 系统语音：" + (err && err.message ? err.message : err));
       kokoFallback(text, opts); /* 不静默：退回系统语音，onend 仍会推进下一句 */
       if(opts.onerror) opts.onerror(err);
     });
@@ -396,6 +402,22 @@ function EN_START(){
     clearTimeout(kokoToast._t);
     kokoToast._t = setTimeout(function(){ if(t) t.style.opacity = "0"; }, 3400);
   }
+  /* 调试诊断条：把播放链路的每一步实时显示在页面左上角，便于在真机上定位「没声音」根因。
+     真机排障时让用户把这个面板的内容念/截给我即可，避免继续盲改。 */
+  function klog(msg){
+    var d = document.getElementById("kdiag");
+    if(!d){
+      d = document.createElement("div"); d.id = "kdiag";
+      d.style.cssText = "position:fixed;left:8px;top:8px;z-index:9998;max-width:80vw;max-height:42vh;overflow:auto;" +
+        "background:rgba(18,18,20,.92);color:#9fe89f;padding:8px 10px;border-radius:8px;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;" +
+        "box-shadow:0 4px 16px rgba(0,0,0,.32);pointer-events:none;white-space:pre-wrap;";
+      document.body.appendChild(d);
+    }
+    var t = new Date().toLocaleTimeString();
+    var lines = (d.textContent || "").split("\n");
+    lines.unshift("[" + t + "] " + msg);
+    d.textContent = lines.slice(0, 16).join("\n");
+  }
   /* 让「美音」按钮的文案与当前实际音色保持一致（含上次持久化的音色） */
   function syncVoiceBtn(){
     var b = document.getElementById("voice");
@@ -403,11 +425,13 @@ function EN_START(){
   }
   /* 播放前置闸门：模型还在下载时不要静默退回系统语音（那正是「生硬」的来源） */
   function kokoGate(){
-    if(KOKO.ready) return true;
+    if(KOKO.ready){ klog("gate: 通过(美音就绪)"); return true; }
     if(KOKO.engine === "loading" && (Date.now() - KOKO.t0) < 60000){
       kokoToast("地道配音模型还在下载 " + (KOKO.pct || 0) + "%，首次约十几秒，下完就是地道美音，稍等一下再点播放～");
+      klog("gate: 拦截(模型下载中 " + (KOKO.pct || 0) + "%)");
       return false;
     }
+    klog("gate: 通过(走系统语音 engine=" + KOKO.engine + ")");
     if(KOKO.engine === "web" && !KOKO.warned){
       KOKO.warned = true;
       kokoToast("配音引擎这次没加载成功，现在用的是系统语音（会比较生硬），刷新页面可以再试一次");
@@ -447,12 +471,13 @@ function EN_START(){
             var el = document.getElementById("kstate");
             if(el) el.textContent = "配音模型下载中… " + pct + "%";
             KOKO.pct = pct;
+            if(pct % 20 === 0 || pct === 100) klog("模型下载 " + pct + "%");
           }
         } })
-        .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); syncVoiceBtn(); });
+        .then(function(tts){ KOKO.tts = tts; KOKO.ready = true; KOKO.engine = "kokoro"; updateKokoState(); syncVoiceBtn(); klog("Kokoro 加载成功 ready=true voice=" + KOKO.voice); });
     }).catch(function(e){
       console.warn("Kokoro 加载失败，退回系统语音", e);
-      KOKO.engine = "web"; updateKokoState();
+      KOKO.engine = "web"; updateKokoState(); klog("Kokoro 加载失败 -> 系统语音：" + (e && e.message ? e.message : e));
     });
   })();
   var store = {
@@ -775,7 +800,7 @@ function EN_START(){
      保证无论先点哪个按钮，异步生成的 <audio>.play() 都能被 iOS/Android 放行。 */
   (function(){
     var evs = ["pointerdown", "touchstart", "click", "keydown"];
-    function onFirst(){ unlockMedia(); for(var i = 0; i < evs.length; i++){ document.removeEventListener(evs[i], onFirst); } }
+    function onFirst(){ unlockMedia(); unlockTTS(); for(var i = 0; i < evs.length; i++){ document.removeEventListener(evs[i], onFirst); } }
     for(var i = 0; i < evs.length; i++){ document.addEventListener(evs[i], onFirst, { passive: true }); }
   })();
 
@@ -801,6 +826,7 @@ function EN_START(){
     if(i >= list.length){ stopAll(); state.idx = 0; updateBar(); return; }
     highlight(i);
     updateBar();
+    klog("run: path=" + (KOKO.ready ? "koko" : "system") + " idx=" + i + " 共" + list.length + "句");
     if(KOKO.ready){
       kokoPlay(list[i].txt, { rate: state.rate, onend: function(){ if(myRun !== runId) return; if(state.idx + 1 < list.length){ state.idx++; run(); } else if(state.loop){ state.idx = 0; run(); } else { stopAll(); state.idx = 0; updateBar(); } }, onerror: function(){ if(myRun === runId){ state.playing = false; updateBar(); } } });
       return;
@@ -835,10 +861,12 @@ function EN_START(){
     }
     var finish = function(){
       if(runId !== myRun) return;
+      klog("系统语音: 结束 onend/error");
       if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
     };
     u.onend = finish;
     u.onerror = finish;
+    klog("系统语音: 整段 speak " + rest.length + " 句");
     try { synth.cancel(); synth.speak(u); } catch(e){ if(runId === myRun){ stopAll(); updateBar(); } }
   }
 
@@ -902,6 +930,8 @@ function EN_START(){
     var n = e.target.closest(".e");
     if(n && n.getAttribute("data-say")){
       var sayTxt = n.getAttribute("data-say");
+      unlockTTS(); unlockMedia();
+      klog(".e 朗读: " + (KOKO.ready ? "koko" : "system") + "「" + sayTxt.slice(0, 10) + "」");
       if(KOKO.ready){ kokoPlay(sayTxt, { rate: state.rate }); }
       else if(kokoGate() && synth){
         try { synth.cancel(); } catch(err){}
