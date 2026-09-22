@@ -301,6 +301,16 @@ function EN_START(){
     if(actx && actx.state === "suspended"){ actx.resume(); }
     return actx;
   }
+  /* iOS / 移动端自动播放策略：AudioContext 必须在「用户手势」作用域里创建并 resume 才能真正出声。
+     kokoPlay 是在异步推理完成后才建上下文，已脱离手势作用域，故这里在页面的首个用户交互
+     （pointerdown/click/touchstart/keydown）里提前把共享 actx 解锁；之后朗读就能正常出声，
+     否则 iPhone 上只会弹「点一下屏幕」提示却始终没声音。 */
+  (function(){
+    function unlock(){ var c = kokoCtx(); if(c && c.state === "suspended"){ try { c.resume(); } catch(e){} } }
+    var evs = ["pointerdown", "touchstart", "click", "keydown"];
+    function onFirst(){ unlock(); for(var i = 0; i < evs.length; i++){ document.removeEventListener(evs[i], onFirst); } }
+    for(var i = 0; i < evs.length; i++){ document.addEventListener(evs[i], onFirst, { passive: true }); }
+  })();
   function kokoPlay(text, opts){
     opts = opts || {};
     return KOKO.tts.generate(text, { voice: KOKO.voice }).then(function(audio){
