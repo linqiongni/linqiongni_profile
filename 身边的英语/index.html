@@ -405,18 +405,8 @@ function EN_START(){
   /* 调试诊断条：把播放链路的每一步实时显示在页面左上角，便于在真机上定位「没声音」根因。
      真机排障时让用户把这个面板的内容念/截给我即可，避免继续盲改。 */
   function klog(msg){
-    var d = document.getElementById("kdiag");
-    if(!d){
-      d = document.createElement("div"); d.id = "kdiag";
-      d.style.cssText = "position:fixed;left:8px;top:8px;z-index:9998;max-width:80vw;max-height:42vh;overflow:auto;" +
-        "background:rgba(18,18,20,.92);color:#9fe89f;padding:8px 10px;border-radius:8px;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;" +
-        "box-shadow:0 4px 16px rgba(0,0,0,.32);pointer-events:none;white-space:pre-wrap;";
-      document.body.appendChild(d);
-    }
-    var t = new Date().toLocaleTimeString();
-    var lines = (d.textContent || "").split("\n");
-    lines.unshift("[" + t + "] " + msg);
-    d.textContent = lines.slice(0, 16).join("\n");
+    /* 诊断信息现在只输出到控制台，不在页面上显示小窗口（避免遮挡内容）。需要排障时打开浏览器开发者工具看 Console 即可。 */
+    try { console.log("[klog] " + msg); } catch(e){}
   }
   /* 让「美音」按钮的文案与当前实际音色保持一致（含上次持久化的音色） */
   function syncVoiceBtn(){
@@ -706,7 +696,7 @@ function EN_START(){
     });
     html += '</div>';
 
-    html += '<div class="foot">整段播放由浏览器语音合成，句子随朗读高亮。点任意一句可从该句开始；0.75× 适合听连读。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
+    html += '<div class="foot">整篇播放默认走系统语音（手机上更流畅），点单句朗读优先用美音 Kokoro。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
 
     reader.innerHTML = html;
     $("playThis").onclick = function(){
@@ -826,14 +816,9 @@ function EN_START(){
     if(i >= list.length){ stopAll(); state.idx = 0; updateBar(); return; }
     highlight(i);
     updateBar();
-    klog("run: path=" + (KOKO.ready ? "koko" : "system") + " idx=" + i + " 共" + list.length + "句");
-    if(KOKO.ready){
-      kokoPlay(list[i].txt, { rate: state.rate, onend: function(){ if(myRun !== runId) return; if(state.idx + 1 < list.length){ state.idx++; run(); } else if(state.loop){ state.idx = 0; run(); } else { stopAll(); state.idx = 0; updateBar(); } }, onerror: function(){ if(myRun === runId){ state.playing = false; updateBar(); } } });
-      return;
-    }
-    /* 系统语音模式（美音引擎没加载）：iOS Safari 有个著名 bug——连着 speak 多句时，
-       第二句起既不出声也不触发 onend，表现就是「读一句就卡住」。最稳的解法是把剩余句子
-       拼成一个 utterance 一次念完（单句 utterance 在 iOS 上永远正常），高亮按估算时长推进。 */
+    /* 长文整篇播放强制走系统语音：Kokoro 在手机上逐句 WASM 推理会卡死 UI，
+       且 iOS 对异步生成的 <audio>.play() 时常拒绝。单句点读仍走 Kokoro 美音（体验可接受）。 */
+    klog("run: 整篇走系统语音 idx=" + i + " 共" + list.length + "句");
     synthPlayAll(i, myRun);
   }
   /* 系统语音整段播放：剩余句子拼成一段一次念完，避开 iOS 多句 speechSynthesis 卡死；
