@@ -89,3 +89,10 @@
 .theme-transition {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Shared editorial system for the five personal-profile pages */
+.lux-page { color: #172033; }
+.dark .lux-page { color: #f2ede3; }
+.lux-kicker { font-size: 10px; line-height: 1.4; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #967a48; }
+.lux-title { font-family: Georgia, 'Times New Roman', 'Noto Serif SC', serif; font-size: clamp(2.35rem, 5vw, 4.5rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 400; }
+.prose-lux p:first-child::first-letter { float: left; margin: .08em .12em 0 0; font-family: Georgia, serif; font-size: 3.7rem; line-height: .8; color: #9b7b42; }
