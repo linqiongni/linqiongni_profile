@@ -318,6 +318,20 @@ function EN_START(){
     }
     return new Blob([view], { type: "audio/wav" });
   }
+  /* 神经朗读彻底失败时的兜底：退回系统语音，至少让用户听到声音，绝不静默。
+     （KOKO.ready 为 false 时 run() 已走系统语音；这里是 ready 但单句 generate 抛错的情形。） */
+  function kokoFallback(text, opts){
+    opts = opts || {};
+    if(synth){
+      try { synth.cancel(); } catch(e){}
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = state.accent; u.rate = opts.rate || 1; u.pitch = 1;
+      var v = pickVoice(state.accent); if(v){ u.voice = v; u.lang = v.lang; }
+      u.onend = function(){ if(opts.onend) opts.onend(); };
+      u.onerror = function(){ if(opts.onend) opts.onend(); };
+      try { synth.speak(u); } catch(e){ if(opts.onend) opts.onend(); }
+    } else if(opts.onend){ opts.onend(); }
+  }
   function kokoPlay(text, opts){
     opts = opts || {};
     return KOKO.tts.generate(text, { voice: KOKO.voice }).then(function(audio){
@@ -346,7 +360,12 @@ function EN_START(){
       }); }
       /* 兜底：个别设备不触发 onended，按时长强推一次，避免整段朗读卡在第一句不前进。 */
       setTimeout(finish, (samples.length / sr) / rate * 1000 + 900);
-    }).catch(function(err){ KOKO.src = null; if(opts.onerror) opts.onerror(err); });
+    }).catch(function(err){
+      KOKO.src = null;
+      if(!KOKO.warned){ KOKO.warned = true; kokoToast("美音引擎这一句没出声，已自动改用系统语音续播"); }
+      kokoFallback(text, opts); /* 不静默：退回系统语音，onend 仍会推进下一句 */
+      if(opts.onerror) opts.onerror(err);
+    });
   }
   function updateKokoState(){
     var el = document.getElementById("kstate");
@@ -739,6 +758,14 @@ function EN_START(){
       mediaUnlocked = true;
     } catch(e){}
   }
+  /* 全局首批手势解锁：正文里点「朗读这一句」(.e) 直接走 kokoPlay，不经过 playFrom，
+     若只在 playFrom 里 unlock 会漏掉它。故在页面首个用户交互里也解锁一次，
+     保证无论先点哪个按钮，异步生成的 <audio>.play() 都能被 iOS/Android 放行。 */
+  (function(){
+    var evs = ["pointerdown", "touchstart", "click", "keydown"];
+    function onFirst(){ unlockMedia(); for(var i = 0; i < evs.length; i++){ document.removeEventListener(evs[i], onFirst); } }
+    for(var i = 0; i < evs.length; i++){ document.addEventListener(evs[i], onFirst, { passive: true }); }
+  })();
 
   function playFrom(i){
     list = sents();
