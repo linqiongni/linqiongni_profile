@@ -166,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           id="navbar-logo-btn"
           onClick={() => {
-            onSelectTab('about');
+            onSelectTab('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={`flex items-center gap-3 text-left group transition-opacity hover:opacity-80 ${FOCUS_RING}`}
