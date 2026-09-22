@@ -8,6 +8,8 @@ import { Navbar } from './components/Navbar';
 
 import { Hero } from './components/Hero';
 
+import { HeroDark } from './components/HeroDark';
+
 import { AboutTab } from './components/AboutTab';
 
 import { ExpertiseTab } from './components/ExpertiseTab';
@@ -194,11 +196,12 @@ export default function App() {
 
 
 
-      {/* Hero Section 仅「个人」分组显示；其余分组直接进内容，不再出现主页大图 */}
+      {/* Hero Section 仅「个人」分组显示；其余分组直接进内容，不再出现主页大图。
+          暗黑模式用深海军蓝豪华版 HeroDark，浅色模式用原浅色首屏 Hero */}
 
       {showHero && (
 
-        <Hero />
+        darkMode ? <HeroDark /> : <Hero />
 
       )}
 

@@ -1,57 +1,124 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import portraitTransparent from '../assets/images/lin_qiongni_portrait_transparent.png';
-import { DarkLuxuryBackground } from './DarkLuxuryBackground';
+
+/** 首屏核心专长：用领域深度替代数字体量，突出港企法务实战纵深 */
+const HERO_STRENGTHS: {
+  category: string;
+  title: string;
+  desc: string;
+}[] = [
+  {
+    category: '法务实务',
+    title: '商业运营法务',
+    desc: '高端商业综合体租赁、品牌运营合规与合同风控',
+  },
+  {
+    category: '法务实务',
+    title: '融资法务',
+    desc: '投融资交易架构、条款谈判与退出机制设计',
+  },
+  {
+    category: '法务实务',
+    title: '知识产权',
+    desc: '商标、专利、著作权保护与侵权维权布局',
+  },
+  {
+    category: '法务实务',
+    title: '加盟经销法务',
+    desc: '连锁特许经营与经销网络合规、加盟风险与品牌保护',
+  },
+  {
+    category: '律师实务',
+    title: '商事仲裁',
+    desc: '合同争议、股东纠纷与国际仲裁全流程实务',
+  },
+  {
+    category: '争议解决',
+    title: '法律维权',
+    desc: '保险理赔、消费者权益与商事争议维权策略',
+  },
+];
 
 export const Hero: React.FC = () => {
-  const portraitRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const el = portraitRef.current;
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const move = (e: PointerEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10;
-      const y = (e.clientY / window.innerHeight - 0.5) * 7;
-      el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1.012)`;
-    };
-    const reset = () => { el.style.transform = 'translate3d(0,0,0) scale(1)'; };
-    window.addEventListener('pointermove', move, { passive: true });
-    document.documentElement.addEventListener('mouseleave', reset);
-    return () => {
-      window.removeEventListener('pointermove', move);
-      document.documentElement.removeEventListener('mouseleave', reset);
-    };
-  }, []);
-
-  const goTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <section id="hero-section" className="luxury-hero relative min-h-screen overflow-hidden pt-24 md:pt-36">
-      <DarkLuxuryBackground />
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] w-full max-w-7xl items-center gap-10 px-6 pb-10 sm:px-12 md:min-h-[calc(100vh-9rem)] lg:grid-cols-[1fr_.92fr]">
-        <div className="pb-8 lg:pb-0">
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="mb-7 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.23em] text-[#C9A86A] sm:text-xs">
-            <span className="h-px w-10 bg-[#C9A86A]" /> Corporate Legal · Retail · Business
-          </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .05 }} className="font-serif text-4xl font-normal tracking-[.05em] text-[#F4EFE4] sm:text-5xl">{PERSONAL_INFO.name}</motion.h2>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .1 }} className="mt-2 text-sm tracking-[.28em] text-[#C9A86A]">QIONGNI LIN</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .14, duration: .8 }} className="mt-10 max-w-3xl text-balance font-serif text-[3.15rem] font-normal leading-[1.06] tracking-[-.04em] text-[#F4EFE4] sm:text-7xl lg:text-[5.15rem]">懂商业的<span className="text-[#D0AA62]">企业法务</span></motion.h1>
-          <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .22 }} className="mt-7 max-w-2xl text-base leading-8 text-[#B8C3CF] sm:text-lg">不只指出风险，更为业务找到可执行的路径。<br className="hidden sm:block" />以合同、合规与争议解决经验，支持复杂商业合作安全落地。</motion.p>
-          <p className="mt-7 text-[10px] font-medium uppercase tracking-[.24em] text-[#C9A86A] sm:text-xs">Legal · Business · Growth</p>
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .3 }} className="mt-10 flex flex-wrap gap-4">
-            <button onClick={() => goTo('main-content-section')} className="luxury-btn luxury-btn-gold"><span>查看专业经历</span><ArrowRight size={15} /></button>
-            <button onClick={() => goTo('main-content-section')} className="luxury-btn luxury-btn-outline"><span>阅读专业观点</span><ArrowRight size={15} /></button>
-          </motion.div>
-          <div className="mt-20 hidden max-w-sm border-t border-[#C9A86A]/65 pt-5 text-[9px] uppercase tracking-[.2em] text-[#728195] sm:block">Contract · Compliance · Dispute</div>
-        </div>
+    <section
+      id="hero-section"
+      className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-1 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
+    >
+      {/* Background Subtle Geometric / Grain Accent */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">
+        <div className="w-[760px] h-[760px] rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] blur-2xl" />
+      </div>
 
-        <motion.div initial={{ opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .95, delay: .12 }} className="relative flex min-h-[520px] items-end justify-center lg:min-h-[720px]">
-          <div className="portrait-halo" />
-          <img ref={portraitRef} src={portraitTransparent} alt="职业肖像" className="luxury-portrait relative z-10 max-h-[78vh] w-auto max-w-full object-contain object-bottom" />
-          <div className="absolute bottom-[7%] left-[8%] z-20 border-l border-[#C9A86A] pl-4"><p className="text-[9px] uppercase tracking-[.22em] text-[#D7BA7F]">Legal Counsel</p><p className="mt-2 text-xs text-[#CFD7DF]">合同 · 合规 · 争议解决</p></div>
-        </motion.div>
+      {/* 与正文共用同一栅格（max-w-7xl + px-6/12），使左侧内容与下方各板块严格对齐 */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 flex-1 min-h-0 flex flex-col">
+        {/* 主视觉区：占据首屏绝大部分高度 */}
+        <div className="flex-1 min-h-0 w-full flex flex-col items-center justify-center text-center">
+          {/* Top Eyebrow / Small Meta Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-10 flex items-center gap-2"
+          >
+            <span className="hidden sm:block h-[1px] w-6 bg-[#B89F6B]" />
+            <p className="text-[10px] sm:text-sm uppercase tracking-[0.14em] sm:tracking-[0.2em] text-[#86868B] font-medium whitespace-nowrap">
+              {PERSONAL_INFO.title}
+            </p>
+            <span className="hidden sm:block h-[1px] w-6 bg-[#B89F6B]" />
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[3.25rem] sm:text-8xl md:text-[6.5rem] lg:text-[7rem] font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.05] mb-[3.5rem] max-w-7xl text-balance"
+          >
+            “{PERSONAL_INFO.heroHeadline}”
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg sm:text-xl md:text-3xl font-normal text-[#86868B] max-w-2xl leading-relaxed mb-12 sm:mb-14"
+          >
+            {PERSONAL_INFO.subtitle}
+          </motion.p>
+
+          {/* 核心专长：领域深度替代数字体量 */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-5xl"
+          >
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B89F6B] font-medium mb-5 sm:mb-7">
+              核心专业领域 / Core Strengths
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-left">
+              {HERO_STRENGTHS.map((s) => (
+                <div
+                  key={s.title}
+                  className="group relative bg-[#FDFCF9] dark:bg-[#1C1C1E] border border-[#E8E8E6] dark:border-[#2C2C2E] border-t-2 border-t-[#B89F6B] p-5 sm:p-6 transition-all duration-300 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] hover:shadow-[0_2px_12px_rgba(184,159,107,0.08)]"
+                >
+                  <span className="inline-block text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-[#B89F6B] font-medium mb-2">
+                    {s.category}
+                  </span>
+                  <h3 className="text-base sm:text-lg font-medium text-[#1D1D1F] dark:text-[#F5F5F7] tracking-tight mb-1.5">
+                    {s.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#86868B] leading-relaxed">
+                    {s.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
