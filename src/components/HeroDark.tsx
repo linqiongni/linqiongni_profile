@@ -47,7 +47,8 @@ export const HeroDark: React.FC = () => {
           <div className="mt-20 hidden max-w-sm border-t border-[#C9A86A]/65 pt-5 text-[9px] uppercase tracking-[.2em] text-[#728195] sm:block">Contract · Compliance · Dispute</div>
         </div>
 
-        <div className="lg:-translate-y-36">
+        {/* 手机端人物排在上方（避免被文字挤到屏幕底部）；桌面端保持右列并上移与姓名平齐 */}
+        <div className="order-first lg:order-none lg:-translate-y-36">
           <motion.div initial={{ opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .95, delay: .12 }} className="relative flex min-h-[300px] items-end justify-center sm:min-h-[430px] lg:min-h-[720px]">
             <div className="portrait-halo" />
             <img

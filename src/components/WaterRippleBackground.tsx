@@ -27,17 +27,17 @@ export const WaterRippleBackground: React.FC<WaterRippleBackgroundProps> = ({
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     // ---- 模拟参数（整体走克制路线：大格子 = 更柔，低增益 = 更淡）----
-    const CELL = 16; // 每个模拟格代表的 CSS 像素（越大波纹越柔和）
-    const DAMPING = 0.976; // 阻尼，越小衰减越快（波纹不扩散太远）
-    const POINTER_STRENGTH = 0.28; // 鼠标注入强度
-    const POINTER_RADIUS = 3; // 鼠标注入半径（格）
-    const POINTER_MIN_DIST = 3.6; // 移动超过多少格才补一滴（避免连续糊成一片）
-    const POINTER_MIN_INTERVAL = 170; // 毫秒，注入节流
-    const AMBIENT_STRENGTH = 0.12; // 环境水波强度
-    const AMBIENT_RADIUS = 5;
-    const AMBIENT_INTERVAL = 3.4; // 秒
+    const CELL = 10; // 每个模拟格代表的 CSS 像素（格子越小，涟漪在屏幕上扩散范围越小）
+    const DAMPING = 0.955; // 阻尼，越小衰减越快（波纹只在光标附近一小圈）
+    const POINTER_STRENGTH = 0.18; // 鼠标注入强度
+    const POINTER_RADIUS = 2; // 鼠标注入半径（格）
+    const POINTER_MIN_DIST = 4.5; // 移动超过多少格才补一滴（避免连续糊成一片）
+    const POINTER_MIN_INTERVAL = 220; // 毫秒，注入节流
+    const AMBIENT_STRENGTH = 0.07; // 环境水波强度
+    const AMBIENT_RADIUS = 4;
+    const AMBIENT_INTERVAL = 4.2; // 秒
     const LIGHT_GAIN = 1.0; // 梯度 -> 明暗
-    const MAX_ALPHA = 0.085; // 单层最大不透明度
+    const MAX_ALPHA = 0.055; // 单层最大不透明度
 
     let width = 0;
     let height = 0;
