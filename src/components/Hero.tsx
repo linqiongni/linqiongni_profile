@@ -44,11 +44,11 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-1 overflow-hidden bg-[#FDFCF9] dark:bg-[#1C1C1E] transition-colors duration-300"
+      className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-1 overflow-hidden bg-[#FDFCF9] dark:bg-[#091A2E] transition-colors duration-300"
     >
       {/* Background Subtle Geometric / Grain Accent */}
       <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">
-        <div className="w-[760px] h-[760px] rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] blur-2xl" />
+        <div className="w-[760px] h-[760px] rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] blur-2xl" />
       </div>
 
       {/* 与正文共用同一栅格（max-w-7xl + px-6/12），使左侧内容与下方各板块严格对齐 */}
@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[3.25rem] sm:text-8xl md:text-[6.5rem] lg:text-[7rem] font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.05] mb-[3.5rem] max-w-7xl text-balance"
+            className="text-[3.25rem] sm:text-8xl md:text-[6.5rem] lg:text-[7rem] font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F4EFE4] leading-[1.05] mb-[3.5rem] max-w-7xl text-balance"
           >
             “{PERSONAL_INFO.heroHeadline}”
           </motion.h1>
@@ -103,12 +103,12 @@ export const Hero: React.FC = () => {
               {HERO_STRENGTHS.map((s) => (
                 <div
                   key={s.title}
-                  className="group relative bg-[#FDFCF9] dark:bg-[#1C1C1E] border border-[#E8E8E6] dark:border-[#2C2C2E] border-t-2 border-t-[#B89F6B] p-5 sm:p-6 transition-all duration-300 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] hover:shadow-[0_2px_12px_rgba(184,159,107,0.08)]"
+                  className="group relative bg-[#FDFCF9] dark:bg-[#091A2E] border border-[#E8E8E6] dark:border-[#1B2E45] border-t-2 border-t-[#B89F6B] p-5 sm:p-6 transition-all duration-300 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] hover:shadow-[0_2px_12px_rgba(184,159,107,0.08)]"
                 >
                   <span className="inline-block text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-[#B89F6B] font-medium mb-2">
                     {s.category}
                   </span>
-                  <h3 className="text-base sm:text-lg font-medium text-[#1D1D1F] dark:text-[#F5F5F7] tracking-tight mb-1.5">
+                  <h3 className="text-base sm:text-lg font-medium text-[#1D1D1F] dark:text-[#F4EFE4] tracking-tight mb-1.5">
                     {s.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#86868B] leading-relaxed">

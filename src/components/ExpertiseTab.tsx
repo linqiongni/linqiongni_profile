@@ -18,7 +18,7 @@ export const ExpertiseTab: React.FC<ExpertiseTabProps> = ({ onSelectTab }) => {
     </header>
     <nav className="my-10 flex flex-wrap gap-x-7 gap-y-3" aria-label="能力筛选">{FILTERS.map(f=><button key={f.id} onClick={()=>setFilter(f.id)} className={`border-b pb-2 text-sm transition-colors ${filter===f.id?'border-[#9B7B42] text-[#705E3D] dark:text-[#D7BE8A]':'border-transparent text-[#8D8982] hover:text-[#9B7B42]'}`}>{f.label}</button>)}</nav>
     <div className="grid gap-px overflow-hidden border border-[#D8D0C2] bg-[#D8D0C2] dark:border-white/10 dark:bg-white/10 md:grid-cols-2">
-      {items.map((s,i)=><motion.article layout key={s.id} initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:i*.04}} className="group bg-[#FDFCF9] p-7 dark:bg-[#1C1C1E] sm:p-9">
+      {items.map((s,i)=><motion.article layout key={s.id} initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:i*.04}} className="group bg-[#FDFCF9] p-7 dark:bg-[#091A2E] sm:p-9">
         <div className="flex items-start justify-between"><span className="font-serif text-xs text-[#A88E5E]">0{i+1}</span><span className="text-[10px] uppercase tracking-[.15em] text-[#9A958D]">{s.categoryName}</span></div>
         <h3 className="mt-9 font-serif text-2xl font-normal group-hover:text-[#987B47]">{s.title}</h3><p className="mt-4 text-sm leading-7 text-[#716E67] dark:text-[#9F9B93]">{s.description}</p>
         <div className="mt-7 flex flex-wrap gap-2">{s.tags.map(t=><span key={t} className="border border-[#DDD5C8] px-3 py-1.5 text-[10px] tracking-wide text-[#77736B] dark:border-white/10 dark:text-[#99958D]">{t}</span>)}</div>

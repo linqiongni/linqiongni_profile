@@ -58,12 +58,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-2xl bg-[#FDFCF9] dark:bg-[#1C1C1E] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden z-10"
+            className="relative w-full max-w-2xl bg-[#FDFCF9] dark:bg-[#091A2E] border border-[#E8E8E6] dark:border-[#1B2E45] rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden z-10"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full text-[#86868B] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] hover:bg-[#E8E8E6]/60 dark:hover:bg-[#2C2C2E]/60 transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full text-[#86868B] hover:text-[#1D1D1F] dark:hover:text-[#F4EFE4] hover:bg-[#E8E8E6]/60 dark:hover:bg-[#1B2E45]/60 transition-colors"
             >
               <X size={20} />
             </button>
@@ -76,7 +76,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     Get In Touch / 业务与专业交流
                   </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-light text-[#1D1D1F] dark:text-[#F5F5F7]">
+                <h3 className="text-2xl sm:text-3xl font-light text-[#1D1D1F] dark:text-[#F4EFE4]">
                   联系法律顾问
                 </h3>
                 <p className="text-xs sm:text-sm text-[#86868B] mt-1.5 font-normal">
@@ -87,14 +87,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               {/* Direct Quick Contact Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Email Card */}
-                <div className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/60 dark:bg-[#242426]/60 flex items-center justify-between">
+                <div className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/60 dark:bg-[#0C1B2B]/60 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-[#B89F6B]/15 text-[#B89F6B] flex items-center justify-center">
                       <Mail size={16} />
                     </div>
                     <div>
                       <div className="text-[11px] text-[#86868B]">工作电子邮箱</div>
-                      <div className="text-xs font-mono text-[#1D1D1F] dark:text-[#F5F5F7]">
+                      <div className="text-xs font-mono text-[#1D1D1F] dark:text-[#F4EFE4]">
                         {PERSONAL_INFO.email}
                       </div>
                     </div>
@@ -109,14 +109,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 </div>
 
                 {/* WeChat Card */}
-                <div className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/60 dark:bg-[#242426]/60 flex items-center justify-between">
+                <div className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/60 dark:bg-[#0C1B2B]/60 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-[#B89F6B]/15 text-[#B89F6B] flex items-center justify-center">
                       <MessageCircle size={16} />
                     </div>
                     <div>
                       <div className="text-[11px] text-[#86868B]">微信 (WeChat ID)</div>
-                      <div className="text-xs font-mono text-[#1D1D1F] dark:text-[#F5F5F7]">
+                      <div className="text-xs font-mono text-[#1D1D1F] dark:text-[#F4EFE4]">
                         lawyerLqn
                       </div>
                     </div>
@@ -137,7 +137,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   <div className="w-10 h-10 mx-auto rounded-full bg-[#B89F6B] text-white flex items-center justify-center">
                     <Check size={20} />
                   </div>
-                  <div className="text-base font-medium text-[#1D1D1F] dark:text-[#F5F5F7]">
+                  <div className="text-base font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
                     留言已成功送达
                   </div>
                   <p className="text-xs text-[#86868B]">
@@ -157,7 +157,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="例如：李先生 / 某品牌业务部"
-                        className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#242426] text-[#1D1D1F] dark:text-[#F5F5F7] focus:outline-none focus:border-[#B89F6B] transition-colors"
+                        className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#0C1B2B] text-[#1D1D1F] dark:text-[#F4EFE4] focus:outline-none focus:border-[#B89F6B] transition-colors"
                       />
                     </div>
 
@@ -171,7 +171,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="yourname@domain.com"
-                        className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#242426] text-[#1D1D1F] dark:text-[#F5F5F7] focus:outline-none focus:border-[#B89F6B] transition-colors"
+                        className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#0C1B2B] text-[#1D1D1F] dark:text-[#F4EFE4] focus:outline-none focus:border-[#B89F6B] transition-colors"
                       />
                     </div>
                   </div>
@@ -186,7 +186,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="例如：商事合同审查咨询 / 供应链合规尽调探讨"
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#242426] text-[#1D1D1F] dark:text-[#F5F5F7] focus:outline-none focus:border-[#B89F6B] transition-colors"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#0C1B2B] text-[#1D1D1F] dark:text-[#F4EFE4] focus:outline-none focus:border-[#B89F6B] transition-colors"
                     />
                   </div>
 
@@ -200,13 +200,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="请简要描述您的商业背景、法律痛点或沟通意向..."
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#242426] text-[#1D1D1F] dark:text-[#F5F5F7] focus:outline-none focus:border-[#B89F6B] transition-colors resize-none"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#0C1B2B] text-[#1D1D1F] dark:text-[#F4EFE4] focus:outline-none focus:border-[#B89F6B] transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-full bg-[#1D1D1F] text-[#FDFCF9] dark:bg-[#F5F5F7] dark:text-[#1D1D1F] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#B89F6B] dark:hover:bg-[#B89F6B] dark:hover:text-white transition-all shadow-sm"
+                    className="w-full py-3 rounded-full bg-[#1D1D1F] text-[#FDFCF9] dark:bg-[#F4EFE4] dark:text-[#1D1D1F] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#B89F6B] dark:hover:bg-[#B89F6B] dark:hover:text-white transition-all shadow-sm"
                   >
                     <Send size={15} />
                     <span>发送留言</span>

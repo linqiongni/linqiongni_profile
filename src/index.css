@@ -13,13 +13,13 @@
   }
 
   .dark {
-    --bg-main: #1C1C1E;
-    --text-primary: #F5F5F7;
-    --text-secondary: #8E8E93;
-    --border-subtle: #2C2C2E;
-    --accent-gold: #D4AF37;
-    --card-bg: #242426;
-    --footer-bg: #161618;
+    --bg-main: #091A2E;
+    --text-primary: #F4EFE4;
+    --text-secondary: #93A6BC;
+    --border-subtle: #1B2E45;
+    --accent-gold: #C9A86A;
+    --card-bg: #0C1B2B;
+    --footer-bg: #06101C;
   }
 
   html {
@@ -57,7 +57,7 @@
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #2C2C2E;
+  background: #1B2E45;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #B89F6B;
@@ -114,3 +114,11 @@
   .portrait-halo{inset:16% 8% 12%}
 }
 .dark-luxury-pointer{width:170px!important;height:170px!important;background:radial-gradient(circle,rgba(201,168,106,.055),transparent 64%)!important}
+
+/* ---- 全站暗黑：深海军蓝豪华风渐变底（与主页 Hero 同色系）---- */
+.dark body {
+  background-image:
+    radial-gradient(circle at 78% 8%, rgba(68,107,148,.24), transparent 46%),
+    linear-gradient(115deg, #050f1d 0%, #091a2e 57%, #102943 100%);
+  background-attachment: fixed;
+}

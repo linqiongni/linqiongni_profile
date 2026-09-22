@@ -14,11 +14,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
     <footer
       id="main-footer"
-      className="bg-[#F5F5F3] dark:bg-[#161618] border-t border-[#E8E8E6] dark:border-[#2C2C2E] text-[#1D1D1F] dark:text-[#F5F5F7] py-16 px-6 sm:px-12 transition-colors duration-300"
+      className="bg-[#F5F5F3] dark:bg-[#06101C] border-t border-[#E8E8E6] dark:border-[#1B2E45] text-[#1D1D1F] dark:text-[#F4EFE4] py-16 px-6 sm:px-12 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Top 3-Column Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pb-12 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pb-12 border-b border-[#E8E8E6] dark:border-[#1B2E45]">
           {/* Left: Email */}
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-widest text-[#86868B]">
@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <a
               id="footer-email-link"
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="text-base sm:text-lg font-normal text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors inline-flex items-center gap-2"
+              className="text-base sm:text-lg font-normal text-[#1D1D1F] dark:text-[#F4EFE4] hover:text-[#B89F6B] transition-colors inline-flex items-center gap-2"
             >
               <Mail size={16} className="text-[#86868B]" />
               <span>{PERSONAL_INFO.email}</span>
@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={onOpenContact}
-                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
+                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
                 title="微信名片 / 扫码联系"
               >
                 <QrCode size={15} />
@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
+                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
                 title="LinkedIn 职业档案"
               >
                 <Linkedin size={15} />
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="text-xs uppercase tracking-widest text-[#86868B]">
               Legal Creed / 执业信条
             </div>
-            <p className="text-sm italic font-light text-[#1D1D1F] dark:text-[#F5F5F7]">
+            <p className="text-sm italic font-light text-[#1D1D1F] dark:text-[#F4EFE4]">
               “{PERSONAL_INFO.quote}”
             </p>
           </div>

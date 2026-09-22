@@ -382,7 +382,7 @@ export const CateringLegalTab: React.FC = () => {
             Catering Franchise Legal · 加盟经销法务
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-light text-[#1D1D1F] dark:text-[#F5F5F7] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-light text-[#1D1D1F] dark:text-[#F4EFE4] tracking-tight">
           加盟经销法务总监养成计划
         </h2>
         <p className="text-sm text-[#86868B] mt-3 max-w-3xl font-normal leading-relaxed">
@@ -398,10 +398,10 @@ export const CateringLegalTab: React.FC = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/30 dark:bg-[#242426]/30"
+              className="p-4 rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/30 dark:bg-[#0C1B2B]/30"
             >
               <div className="text-2xl font-light text-[#B89F6B]">{s.value}</div>
-              <div className="text-xs text-[#1D1D1F] dark:text-[#F5F5F7] mt-1 font-medium">{s.label}</div>
+              <div className="text-xs text-[#1D1D1F] dark:text-[#F4EFE4] mt-1 font-medium">{s.label}</div>
               <div className="text-[11px] text-[#86868B] mt-0.5 leading-snug">{s.sub}</div>
             </motion.div>
           ))}
@@ -415,7 +415,7 @@ export const CateringLegalTab: React.FC = () => {
             Knowledge Map / 知识地图（特许人 · 总部立场）
           </span>
         </div>
-        <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F5F5F7] mb-6">
+        <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F4EFE4] mb-6">
           八大能力模块
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -427,15 +427,15 @@ export const CateringLegalTab: React.FC = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="group p-5 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/30 dark:bg-[#242426]/30 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] transition-all duration-300"
+                className="group p-5 rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/30 dark:bg-[#0C1B2B]/30 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] transition-all duration-300"
               >
                 <div className="text-[#86868B] group-hover:text-[#B89F6B] transition-colors mb-3">
                   <Icon size={22} strokeWidth={1.5} />
                 </div>
-                <h4 className="text-base font-normal text-[#1D1D1F] dark:text-[#F5F5F7] group-hover:text-[#B89F6B] transition-colors mb-1">
+                <h4 className="text-base font-normal text-[#1D1D1F] dark:text-[#F4EFE4] group-hover:text-[#B89F6B] transition-colors mb-1">
                   {m.title}
                 </h4>
-                <p className="text-xs text-[#86868B] dark:text-[#8E8E93] leading-relaxed">{m.desc}</p>
+                <p className="text-xs text-[#86868B] dark:text-[#93A6BC] leading-relaxed">{m.desc}</p>
               </motion.div>
             );
           })}
@@ -446,7 +446,7 @@ export const CateringLegalTab: React.FC = () => {
           <span className="text-xs uppercase tracking-widest text-[#86868B]">全链路</span>
           {CHAIN.map((c, i) => (
             <React.Fragment key={c}>
-              <span className="px-3 py-1 rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] text-[#1D1D1F] dark:text-[#F5F5F7]">
+              <span className="px-3 py-1 rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] text-[#1D1D1F] dark:text-[#F4EFE4]">
                 {c}
               </span>
               {i < CHAIN.length - 1 && <span className="text-[#B89F6B]">→</span>}
@@ -463,7 +463,7 @@ export const CateringLegalTab: React.FC = () => {
           </span>
         </div>
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F5F5F7]">
+          <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F4EFE4]">
             每周主题与当日计划
           </h3>
           <a
@@ -486,15 +486,15 @@ export const CateringLegalTab: React.FC = () => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/30 dark:bg-[#242426]/30 overflow-hidden"
+                className="rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/30 dark:bg-[#0C1B2B]/30 overflow-hidden"
               >
                 <button
                   onClick={() => setOpenWeek(isOpen ? '' : w.id)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[#E8E8E6]/20 dark:hover:bg-[#2C2C2E]/30 transition-colors"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[#E8E8E6]/20 dark:hover:bg-[#1B2E45]/30 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-sm font-medium text-[#B89F6B] w-14">{w.label}</span>
-                    <span className="text-[15px] text-[#1D1D1F] dark:text-[#F5F5F7]">{w.theme}</span>
+                    <span className="text-[15px] text-[#1D1D1F] dark:text-[#F4EFE4]">{w.theme}</span>
                   </div>
                   <div className="flex items-center gap-3 text-[#86868B]">
                     <span className="text-xs">{w.lessons.length} 篇</span>
@@ -506,8 +506,8 @@ export const CateringLegalTab: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-4 pt-1 border-t border-[#E8E8E6]/60 dark:border-[#2C2C2E]/60">
-                    <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
+                  <div className="px-5 pb-4 pt-1 border-t border-[#E8E8E6]/60 dark:border-[#1B2E45]/60">
+                    <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#1B2E45]/60">
                       {w.lessons.map((l) => {
                         // 有站内全文的跳站内（免登录），其余跳资料库原文
                         const href = hasLocalLesson(l.id)
@@ -519,7 +519,7 @@ export const CateringLegalTab: React.FC = () => {
                               href={href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group block py-2.5 text-sm text-[#1D1D1F] dark:text-[#F5F5F7] hover:text-[#B89F6B] transition-colors"
+                              className="group block py-2.5 text-sm text-[#1D1D1F] dark:text-[#F4EFE4] hover:text-[#B89F6B] transition-colors"
                             >
                               <span className="border-b border-transparent group-hover:border-[#B89F6B]/50 leading-relaxed">
                                 {l.title}
@@ -547,7 +547,7 @@ export const CateringLegalTab: React.FC = () => {
             Deliverables / 交付成果
           </span>
         </div>
-        <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F5F5F7] mb-6">
+        <h3 className="text-2xl font-light text-[#1D1D1F] dark:text-[#F4EFE4] mb-6">
           结业你将拥有的 12 份文本
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -557,12 +557,12 @@ export const CateringLegalTab: React.FC = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-              className="flex gap-4 p-5 rounded-xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white/30 dark:bg-[#242426]/30 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] transition-all duration-300"
+              className="flex gap-4 p-5 rounded-xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white/30 dark:bg-[#0C1B2B]/30 hover:border-[#B89F6B] dark:hover:border-[#B89F6B] transition-all duration-300"
             >
               <span className="text-2xl font-light text-[#B89F6B]/70 shrink-0 w-9">{d.no}</span>
               <div>
-                <h4 className="text-[15px] font-normal text-[#1D1D1F] dark:text-[#F5F5F7] mb-1">{d.title}</h4>
-                <p className="text-xs text-[#86868B] dark:text-[#8E8E93] leading-relaxed">{d.desc}</p>
+                <h4 className="text-[15px] font-normal text-[#1D1D1F] dark:text-[#F4EFE4] mb-1">{d.title}</h4>
+                <p className="text-xs text-[#86868B] dark:text-[#93A6BC] leading-relaxed">{d.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -575,7 +575,7 @@ export const CateringLegalTab: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <Sparkles size={16} className="text-[#B89F6B]" />
-              <span className="text-sm font-medium text-[#1D1D1F] dark:text-[#F5F5F7]">
+              <span className="text-sm font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
                 完整计划 · 每日指令 · 法规库
               </span>
             </div>

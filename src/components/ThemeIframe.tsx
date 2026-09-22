@@ -28,7 +28,7 @@ interface ThemeIframeProps {
 }
 
 const DEFAULT_IFRAME_CLASS =
-  'block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]';
+  'block w-full border-0 bg-white dark:bg-[#091A2E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]';
 
 /**
  * 统一的 iframe 容器：把主站 darkMode 通过 postMessage 同步进 iframe 内部。
@@ -86,9 +86,9 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
   if (mobileFullscreen && isNarrow && !forceEmbed) {
     return (
       <div className="w-full px-6 py-10" id={id}>
-        <div className="mx-auto max-w-md rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] px-6 py-8 text-center shadow-sm">
+        <div className="mx-auto max-w-md rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] px-6 py-8 text-center shadow-sm">
           <div className="text-[11px] tracking-[0.22em] text-[#86868B] uppercase">Mobile</div>
-          <h3 className="mt-3 text-lg font-medium text-[#1D1D1F] dark:text-[#F5F5F7]">{title}</h3>
+          <h3 className="mt-3 text-lg font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">{title}</h3>
           <p className="mt-3 text-[13px] leading-relaxed text-[#86868B]">
             手机端在全屏页面里读更顺：滑动、朗读、目录切换都是原生体验。打开后用浏览器「返回」即可回到主页。
           </p>
@@ -113,9 +113,9 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
 
   return (
     <div className="relative w-full" id={id}>
-      <div className="relative w-full bg-white dark:bg-[#1C1C1E]">
+      <div className="relative w-full bg-white dark:bg-[#091A2E]">
         {loading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white dark:bg-[#1C1C1E]">
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white dark:bg-[#091A2E]">
             <div className="flex items-center gap-2 text-xs text-[#86868B]">
               <span className="w-3.5 h-3.5 rounded-full border-2 border-[#B89F6B] border-t-transparent animate-spin" />
               正在载入…

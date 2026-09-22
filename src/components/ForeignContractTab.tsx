@@ -11,7 +11,7 @@ export const ForeignContractTab: React.FC = () => {
       <div className="flex items-start gap-3 px-1">
         <Scale size={20} className="text-[#B89F6B] shrink-0 mt-1" />
         <div>
-          <h2 className="text-xl font-medium text-[#1D1D1F] dark:text-[#F5F5F7] leading-tight">
+          <h2 className="text-xl font-medium text-[#1D1D1F] dark:text-[#F4EFE4] leading-tight">
             涉外合同学习
           </h2>
           <p className="text-xs text-[#86868B] mt-1">
@@ -30,11 +30,11 @@ export const ForeignContractTab: React.FC = () => {
         ].map(({ icon: Icon, label, value }) => (
           <div
             key={label}
-            className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-4"
+            className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-4"
           >
             <Icon size={16} className="text-[#B89F6B] mb-2" />
             <div className="text-[11px] text-[#86868B]">{label}</div>
-            <div className="text-sm font-medium text-[#1D1D1F] dark:text-[#F5F5F7] mt-0.5 leading-snug">
+            <div className="text-sm font-medium text-[#1D1D1F] dark:text-[#F4EFE4] mt-0.5 leading-snug">
               {value}
             </div>
           </div>
@@ -44,10 +44,10 @@ export const ForeignContractTab: React.FC = () => {
       {/* 内容卡片 */}
       <div className="grid sm:grid-cols-2 gap-4">
         {/* 精读指南 */}
-        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-6 flex flex-col">
+        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-3">
             <BookOpenText size={18} className="text-[#B89F6B]" />
-            <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F5F5F7]">
+            <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
               美国办公场地租赁合同精读
             </h3>
           </div>
@@ -71,10 +71,10 @@ export const ForeignContractTab: React.FC = () => {
         </div>
 
         {/* 完整合同 Word */}
-        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-6 flex flex-col">
+        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-3">
             <FileDown size={18} className="text-[#B89F6B]" />
-            <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F5F5F7]">
+            <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
               完整版租赁合同（Word）
             </h3>
           </div>
