@@ -351,13 +351,19 @@ function EN_START(){
         KOKO.src = null;
         if(opts.onend) opts.onend();
       };
+      /* 美音 <audio> 被拦截/出错：退回系统语音，绝不静默。done 守卫防止 onended 与兜底重复推进。 */
+      var fallback = function(){
+        if(done) return; done = true;
+        KOKO.src = null;
+        try { URL.revokeObjectURL(url); } catch(e){}
+        if(!KOKO.warned){ KOKO.warned = true; kokoToast("美音播放被拦截，已自动改用系统语音"); }
+        kokoFallback(text, opts);
+      };
       a.onended = finish;
-      a.onerror = function(){ finish(); };
+      a.onerror = function(){ fallback(); };
       KOKO.src = a;
       var p = a.play();
-      if(p && p.catch){ p.catch(function(){
-        if(!KOKO.warnedAudio){ KOKO.warnedAudio = true; kokoToast("浏览器暂时不允许播放声音，点一下屏幕再点播放即可（iPhone 请确认静音键已关）"); }
-      }); }
+      if(p && p.catch){ p.catch(function(){ fallback(); }); }
       /* 兜底：个别设备不触发 onended，按时长强推一次，避免整段朗读卡在第一句不前进。 */
       setTimeout(finish, (samples.length / sr) / rate * 1000 + 900);
     }).catch(function(err){
@@ -750,9 +756,12 @@ function EN_START(){
   function unlockMedia(){
     if(mediaUnlocked) return;
     try {
-      var silent = encodeWav(new Float32Array(800), 24000);
-      var au = new Audio(URL.createObjectURL(silent));
-      au.volume = 0;
+      /* iOS Safari 不会为「音量 0 / 全零静音」解锁音频会话，必须用一段真实（低振幅）音频。
+         这里放 0.1s 的 220Hz 轻音（音量 0.25，几乎听不见），专门用来解锁，播放一次即可。 */
+      var n = 2400, buf = new Float32Array(n), i;
+      for(i = 0; i < n; i++) buf[i] = 0.04 * Math.sin(2 * Math.PI * 220 * i / 24000);
+      var au = new Audio(URL.createObjectURL(encodeWav(buf, 24000)));
+      au.volume = 0.25;
       var pp = au.play();
       if(pp && pp.catch) pp.catch(function(){});
       mediaUnlocked = true;
