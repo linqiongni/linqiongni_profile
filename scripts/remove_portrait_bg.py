@@ -128,16 +128,28 @@ def remove_white_bg(input_path, output_path,
                 alpha_factor = max(0.0, (value - edge_value_threshold) / (255 - edge_value_threshold))
                 fp[x, y] = (r, g, b, int(a * (1 - alpha_factor)))
 
-    # 裁切空白
-    bbox = final.getbbox()
-    if bbox:
-        final = final.crop(bbox)
-
+    # 保留完整画布（含去背后的透明留白），不紧裁到人物，避免 object-cover 把头部切掉
     # 等比缩放至目标宽度
     if width and final.width > width:
         ratio = width / final.width
         new_h = int(final.height * ratio)
         final = final.resize((width, new_h), Image.LANCZOS)
+
+    # 加透明留白，使最终宽高比接近 4:5（0.8），保证在 aspect-[4/5]+object-cover 下完整显示头部
+    target_ratio = 0.8  # w/h
+    cur_w, cur_h = final.size
+    cur_ratio = cur_w / cur_h
+    if cur_ratio < target_ratio:
+        new_w = int(round(cur_h * target_ratio))
+        new_h = cur_h
+    else:
+        new_w = cur_w
+        new_h = int(round(cur_w / target_ratio))
+    pad_x = (new_w - cur_w) // 2
+    pad_y = (new_h - cur_h) // 2
+    canvas = Image.new('RGBA', (new_w, new_h), (0, 0, 0, 0))
+    canvas.paste(final, (pad_x, pad_y), final)
+    final = canvas
 
     # 输出
     if output_path.lower().endswith('.webp'):
