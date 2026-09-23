@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#FDFCF9]/85 dark:bg-[#091A2E]/85 backdrop-blur-xl border-b border-[#E8E8E6] dark:border-[#1B2E45] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
+          ? 'bg-[#FDFCF9]/85 dark:bg-[#1C1C1E]/85 backdrop-blur-xl border-b border-[#E8E8E6] dark:border-[#2C2C2E] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -231,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`${
                       isActive || isOpen
                         ? 'text-[#1D1D1F] dark:text-[#F4EFE4] font-medium'
-                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#93A6BC] dark:group-hover:text-[#B89F6B]'
+                        : 'text-[#86868B] group-hover:text-[#B89F6B] dark:text-[#8E8E93] dark:group-hover:text-[#B89F6B]'
                     } transition-colors`}
                   >
                     {g.label}
@@ -277,7 +277,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             id="nav-contact-btn"
             onClick={onOpenContact}
-            className={`group flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F4EFE4] border border-[#E8E8E6] dark:border-[#1B2E45] rounded-full transition-all duration-300 ${HOVER_GLOW} ${FOCUS_RING}`}
+            className={`group flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F4EFE4] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-full transition-all duration-300 ${HOVER_GLOW} ${FOCUS_RING}`}
           >
             <Mail size={14} className="text-[#86868B] group-hover:text-[#B89F6B]" />
             <span>联系我</span>
@@ -311,7 +311,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div
           id="navbar-subnav"
           onMouseEnter={cancelClose}
-          className="hidden md:flex h-12 items-center border-t border-[#E8E8E6] dark:border-[#1B2E45]"
+          className="hidden md:flex h-12 items-center border-t border-[#E8E8E6] dark:border-[#2C2C2E]"
         >
           <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 flex items-center gap-1.5">
             <span className="text-[11px] uppercase tracking-[0.18em] text-[#B89F6B] mr-2 whitespace-nowrap">
@@ -368,7 +368,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   id="nav-group-dropdown-card"
                   role="menu"
                   aria-label={`${g.label} 子菜单`}
-                  className="relative -translate-x-1/2 w-max min-w-[216px] rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-[#FDFCF9]/95 dark:bg-[#232325]/95 backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.10)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.45)] p-2"
+                  className="relative -translate-x-1/2 w-max min-w-[216px] rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-[#FDFCF9]/95 dark:bg-[#232325]/95 backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.10)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.45)] p-2"
                 >
                   <div className="px-3 pt-1 pb-1.5 text-[10px] uppercase tracking-widest text-[#B89F6B]">
                     {g.label} · {g.enLabel}
@@ -399,7 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
             id="mobile-dropdown-menu"
-            className="md:hidden max-h-[calc(100vh-80px)] overflow-y-auto overscroll-contain bg-[#FDFCF9] dark:bg-[#091A2E] border-b border-[#E8E8E6] dark:border-[#1B2E45] px-6 py-5 shadow-xl"
+            className="md:hidden max-h-[calc(100vh-80px)] overflow-y-auto overscroll-contain bg-[#FDFCF9] dark:bg-[#1C1C1E] border-b border-[#E8E8E6] dark:border-[#2C2C2E] px-6 py-5 shadow-xl"
           >
             <div className="flex flex-col space-y-5">
               {NAV_GROUPS.map((g) => (
@@ -419,7 +419,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span>{g.label}</span>
                     <span className="text-xs text-[#86868B]">{g.enLabel}</span>
                   </button>
-                  <div className="ml-1 mt-1 flex flex-col space-y-1 border-l border-[#E8E8E6] dark:border-[#1B2E45] pl-3">
+                  <div className="ml-1 mt-1 flex flex-col space-y-1 border-l border-[#E8E8E6] dark:border-[#2C2C2E] pl-3">
                     {g.sections
                       ? g.sections.map((sec) => (
                           <React.Fragment key={sec.id}>
@@ -466,7 +466,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               ))}
 
-              <div className="pt-4 border-t border-[#E8E8E6] dark:border-[#1B2E45] flex justify-between items-center">
+              <div className="pt-4 border-t border-[#E8E8E6] dark:border-[#2C2C2E] flex justify-between items-center">
                 <button
                   id="mobile-contact-btn"
                   onClick={() => {

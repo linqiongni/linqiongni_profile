@@ -142,3 +142,13 @@
 @media (prefers-reduced-motion: reduce) {
   .gold-particle-ribbon { opacity: 0.5; }
 }
+
+/* Hero CTA buttons (restored after v2 purge) */
+.luxury-btn{position:relative;display:inline-flex;align-items:center;gap:.75rem;overflow:hidden;border-radius:7px;padding:.95rem 1.7rem;font-size:.875rem;transition:transform .3s,border-color .3s,box-shadow .3s}
+.luxury-btn:hover{transform:translateY(-3px)}
+.luxury-btn-gold{color:#122033;border:1px solid #f0d79b;background:linear-gradient(110deg,#d2b170,#f0d79b,#c79e55);box-shadow:0 12px 34px rgba(201,168,106,.18)}
+.luxury-btn-gold::before{content:"";position:absolute;top:-50%;left:-80%;width:35%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);transform:rotate(20deg);transition:left .65s}
+.luxury-btn-gold:hover::before{left:130%}
+.luxury-btn-outline{color:#F4EFE4;border:1px solid rgba(201,168,106,.45);background:rgba(255,255,255,.05)}
+.luxury-btn-outline:hover{border-color:rgba(201,168,106,.85);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@media (prefers-reduced-motion: reduce){.luxury-btn:hover{transform:none}.luxury-btn-gold:hover::before{left:-80%}}

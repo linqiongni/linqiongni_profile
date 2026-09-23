@@ -30,7 +30,7 @@ export const ForeignContractTab: React.FC = () => {
         ].map(({ icon: Icon, label, value }) => (
           <div
             key={label}
-            className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-4"
+            className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-4"
           >
             <Icon size={16} className="text-[#B89F6B] mb-2" />
             <div className="text-[11px] text-[#86868B]">{label}</div>
@@ -44,7 +44,7 @@ export const ForeignContractTab: React.FC = () => {
       {/* 内容卡片 */}
       <div className="grid sm:grid-cols-2 gap-4">
         {/* 精读指南 */}
-        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-6 flex flex-col">
+        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-3">
             <BookOpenText size={18} className="text-[#B89F6B]" />
             <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
@@ -71,7 +71,7 @@ export const ForeignContractTab: React.FC = () => {
         </div>
 
         {/* 完整合同 Word */}
-        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#1B2E45] bg-white dark:bg-[#091A2E] p-6 flex flex-col">
+        <div className="rounded-2xl border border-[#E8E8E6] dark:border-[#2C2C2E] bg-white dark:bg-[#1C1C1E] p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-3">
             <FileDown size={18} className="text-[#B89F6B]" />
             <h3 className="text-base font-medium text-[#1D1D1F] dark:text-[#F4EFE4]">
