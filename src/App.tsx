@@ -49,7 +49,7 @@ import { Footer } from './components/Footer';
 
 import { ContactModal } from './components/ContactModal';
 
-import { WaterRippleBackground } from './components/WaterRippleBackground';
+import { AquaticLuxuryBackground } from './components/AquaticLuxuryBackground';
 
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -162,11 +162,11 @@ export default function App() {
 
   return (
 
-    <div className="min-h-screen flex flex-col bg-[#FDFCF9] dark:bg-transparent text-[#1D1D1F] dark:text-[#F4EFE4] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-transparent dark:bg-transparent text-[#1D1D1F] dark:text-[#F4EFE4] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
 
-      {/* 全屏水面波纹背景（跟随鼠标，不拦截交互） */}
+      {/* 全站水下背景：深海军蓝渐变 + 水面呼吸 + 自然鱼影 + 鼠标涟漪（不拦截交互） */}
 
-      <WaterRippleBackground darkMode={darkMode} />
+      <AquaticLuxuryBackground fishCount={6} darkMode={darkMode} />
 
 
 

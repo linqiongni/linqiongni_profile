@@ -1,0 +1,94 @@
+/* 深海军蓝水面 + 自然鱼影 + 鼠标涟漪 —— 全站背景层（深浅双档）
+   层级：背景渐变 → 水面 → 鱼影 → 涟漪 → 网站正文 */
+
+.aquatic-luxury-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aquatic-luxury-gradient,
+.aquatic-luxury-grain,
+.aquatic-luxury-water,
+.aquatic-luxury-fish,
+.aquatic-luxury-ripples {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 深海军蓝渐变底：只在深色模式显示（浅色模式由 body 的米白提供底色） */
+.aquatic-luxury-gradient { display: none; }
+
+.dark .aquatic-luxury-gradient {
+  display: block;
+  background:
+    radial-gradient(circle at 76% 43%, rgba(68, 107, 148, .25), transparent 40%),
+    linear-gradient(115deg, #050f1d 0%, #091a2e 57%, #102943 100%);
+}
+
+/* 细微噪点：浅色档压到几乎不可见 */
+.aquatic-luxury-grain {
+  opacity: .022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+.dark .aquatic-luxury-grain { opacity: .045; }
+
+/* 水面呼吸：浅色档用暖金细纹、压低不透明度 */
+.aquatic-luxury-water {
+  inset: 28% -18% -38%;
+  width: auto;
+  height: auto;
+  opacity: .3;
+  background: repeating-radial-gradient(ellipse at 72% 60%,
+    rgba(150, 120, 60, .07) 0 1px,
+    rgba(120, 140, 160, .05) 2px 3px,
+    transparent 5px 21px);
+  transform: perspective(900px) rotateX(61deg) scale(1.42);
+  transform-origin: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  animation: aquatic-water-breathe 10s ease-in-out infinite alternate;
+}
+
+.dark .aquatic-luxury-water {
+  opacity: .52;
+  background: repeating-radial-gradient(ellipse at 72% 60%,
+    rgba(211, 180, 117, .11) 0 1px,
+    rgba(90, 128, 163, .075) 2px 3px,
+    transparent 5px 21px);
+}
+
+.aquatic-luxury-fish { z-index: 2; }
+.aquatic-luxury-ripples { z-index: 3; }
+
+/* 正文必须显式定位并抬高层级，否则 canvas（z-index:0 的定位元素）会画在
+   静态的 main / footer 之上。用 0-1-1 的特异性压过 Tailwind 工具类。 */
+.aquatic-luxury-background ~ main,
+.aquatic-luxury-background ~ footer {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes aquatic-water-breathe {
+  to {
+    transform: perspective(900px) rotateX(61deg) scale(1.49);
+    filter: brightness(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .aquatic-luxury-water {
+    opacity: .22;
+    transform: perspective(800px) rotateX(64deg) scale(1.75);
+  }
+  .dark .aquatic-luxury-water { opacity: .38; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aquatic-luxury-water { animation: none; }
+}
