@@ -299,6 +299,87 @@ html{scrollbar-color:#CFCABE #F5F3EC !important}
 </style>
 </head>
 <body data-page-node-id="d5FZKRx7gV7vVgMpnUp7B0">
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~.wrap,body>.aq-bg~main,body>.aq-bg~.page,body>.aq-bg~article{position:relative;z-index:1}
+</style>
+<div class="aq-bg" aria-hidden="true"><canvas id="aq-fish"></canvas><canvas id="aq-ripple"></canvas></div>
+<script>(function(){if(window.__aqKit)return;window.__aqKit=1;try{
+var fc=document.getElementById('aq-fish'),rc=document.getElementById('aq-ripple');
+if(!fc||!rc)return;var fx=fc.getContext('2d'),rx=rc.getContext('2d');if(!fx||!rx)return;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var mobile=matchMedia('(max-width: 768px)').matches;var n=mobile?3:6;
+var w=0,h=0,d=1,raf=0,prev=performance.now(),lp=0,amb=0;
+var mouse={x:-9999,y:-9999},rips=[];
+var tones=[['rgba(46,62,80,.16)','rgba(88,98,110,.40)','rgba(146,112,54,.34)','rgba(58,74,92,.12)'],
+['rgba(40,58,76,.15)','rgba(78,96,112,.38)','rgba(120,104,66,.30)','rgba(52,70,88,.10)'],
+['rgba(50,66,84,.14)','rgba(96,110,124,.36)','rgba(150,120,64,.28)','rgba(60,78,96,.10)']];
+var fish=[];for(var i=0;i<n;i++){fish.push({x:(i%2===0?-0.12+i*0.17:1.12-i*0.13),y:0.51+(i%4)*0.09,
+s:mobile?20+(i%3)*7:23+(i%4)*10,v:0.000012+(i%4)*0.000003,a:0.11+(i%3)*0.03,
+dir:(i%2===0?1:-1),ph:i*1.37,depth:0.48+(i%4)*0.12,t:tones[i%3]});}
+function size(){d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;
+[fc,rc].forEach(function(c){c.width=Math.floor(w*d);c.height=Math.floor(h*d);c.style.width=w+'px';c.style.height=h+'px';});
+fx.setTransform(d,0,0,d,0,0);rx.setTransform(d,0,0,d,0,0);}
+function addRipple(x,y,s){if(rips.length>18)rips.shift();rips.push({x:x,y:y,r:5,l:1,s:s});}
+function drawFish(f,t){
+var x=f.x*w,y=f.y*h+Math.sin(t*0.00032+f.ph)*20*f.depth;
+var dx=mouse.x-x,dy=mouse.y-y;
+if(Math.sqrt(dx*dx+dy*dy)<170){x-=dx*0.032;y-=dy*0.045;}
+var swim=Math.sin(t*0.0032+f.ph),bend=swim*f.s*0.10;
+fx.save();fx.translate(x,y);if(f.dir<0)fx.scale(-1,1);
+fx.rotate(Math.sin(t*0.00055+f.ph)*0.035);fx.scale(1,0.72);
+fx.globalAlpha=f.a;fx.filter='blur('+((1-f.depth)*2.1)+'px)';
+var g=fx.createLinearGradient(-f.s,0,f.s,0);
+g.addColorStop(0,f.t[0]);g.addColorStop(0.42,f.t[1]);g.addColorStop(0.72,f.t[2]);g.addColorStop(1,f.t[3]);
+fx.fillStyle=g;
+fx.beginPath();fx.moveTo(-f.s*0.72,bend*0.18);
+fx.bezierCurveTo(-f.s*0.42,-f.s*0.34,f.s*0.34,-f.s*0.30,f.s*0.80,-f.s*0.05);
+fx.quadraticCurveTo(f.s*0.95,0,f.s*0.80,f.s*0.07);
+fx.bezierCurveTo(f.s*0.34,f.s*0.30,-f.s*0.42,f.s*0.34,-f.s*0.72,bend*0.18);
+fx.closePath();fx.fill();
+fx.save();fx.translate(-f.s*0.68,bend*0.18);fx.rotate(swim*0.24);
+fx.beginPath();fx.moveTo(0,0);
+fx.bezierCurveTo(-f.s*0.30,-f.s*0.08,-f.s*0.62,-f.s*0.42,-f.s*0.78,-f.s*0.32);
+fx.quadraticCurveTo(-f.s*0.55,0,-f.s*0.78,f.s*0.32);
+fx.bezierCurveTo(-f.s*0.62,f.s*0.42,-f.s*0.30,f.s*0.08,0,0);
+fx.fill();fx.restore();
+fx.globalAlpha=f.a*0.72;
+fx.beginPath();fx.moveTo(-f.s*0.10,-f.s*0.25);fx.quadraticCurveTo(f.s*0.05,-f.s*0.52,f.s*0.28,-f.s*0.22);fx.closePath();fx.fill();
+fx.beginPath();fx.moveTo(f.s*0.12,f.s*0.20);fx.quadraticCurveTo(f.s*0.28,f.s*0.43,f.s*0.40,f.s*0.14);fx.closePath();fx.fill();
+fx.globalAlpha=Math.min(0.34,f.a*1.4);fx.fillStyle='rgba(120,96,48,.55)';
+fx.beginPath();fx.arc(f.s*0.68,-f.s*0.055,Math.max(1.1,f.s*0.032),0,6.283);fx.fill();
+fx.restore();}
+function ring(o){rx.save();rx.translate(o.x,o.y);rx.scale(1,0.36);
+for(var i=0;i<3;i++){var r=o.r+i*12,a=o.l*o.s*(1-i/3.6);
+var g=rx.createLinearGradient(-r,0,r,0);
+g.addColorStop(0,'rgba(150,158,170,0)');
+g.addColorStop(0.3,'rgba(150,158,170,'+(a*0.16).toFixed(3)+')');
+g.addColorStop(0.58,'rgba(176,140,70,'+(a*0.30).toFixed(3)+')');
+g.addColorStop(1,'rgba(150,158,170,0)');
+rx.beginPath();rx.ellipse(0,0,r,r,0,0,6.283);rx.strokeStyle=g;rx.lineWidth=i?0.7:1.2;rx.stroke();}
+rx.restore();}
+function loop(t){var dt=Math.min(40,t-prev);prev=t;
+fx.clearRect(0,0,w,h);
+if(!reduce){for(var i=0;i<fish.length;i++){var f=fish[i];f.x+=f.v*dt*f.dir;
+if(f.dir>0&&f.x>1.18)f.x=-0.18;if(f.dir<0&&f.x<-0.18)f.x=1.18;}}
+fish.slice().sort(function(a,b){return a.depth-b.depth;}).forEach(function(f){drawFish(f,t);});
+rx.clearRect(0,0,w,h);
+if(!reduce&&t-amb>5200){amb=t;addRipple(w*(0.56+Math.random()*0.3),h*(0.46+Math.random()*0.26),0.18);}
+for(var i=rips.length-1;i>=0;i--){ring(rips[i]);rips[i].r+=reduce?0:0.6;rips[i].l-=reduce?0.02:0.0065;
+if(rips[i].l<=0)rips.splice(i,1);}
+raf=requestAnimationFrame(loop);}
+function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
+function start(){if(!raf){prev=performance.now();raf=requestAnimationFrame(loop);}}
+size();addEventListener('resize',size);
+addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;
+var now=performance.now();if(now-lp>190){lp=now;addRipple(e.clientX,e.clientY,0.5);}},{passive:true});
+addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
+document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+addRipple(innerWidth*0.72,innerHeight*0.58,0.24);start();
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
 <div data-page-node-id="znjrSfZ1mRKBlF9WkVprQi" class="wrap">
 <header data-page-node-id="aBPJdVBZXIIQkaPBY5ccEm"><h1 data-page-node-id="6EISNP4qcBehKOK6fZDKUm"><!--pnid:NNlCESelblHxXuZg7SIhYB-->加盟纠纷类型图谱与裁判直觉</h1><div data-page-node-id="D4p8Se4AufMoMXzOo7Ijfu" class="sub"><!--pnid:AUHtdRJmcuCky07d8dGcjS-->CANTEEN FRANCHISE LEGAL STUDY</div><div data-page-node-id="J9V1ZAVHKtRl8oMy9m06BH" class="seal"><!--pnid:MXOkrGHZapLDIM0WqO9CqT-->法务<br data-page-node-id="Wx2TwqGDeCnTlq8liE1WSA"><!--pnid:kxuyt1S1hZJLlIP28OTNgX-->研习</div></header>
 <nav data-page-node-id="aNejDhEGpEhLQQnCkfgeef"><div data-page-node-id="gXn4P2STeu8DYBzYgHKQRy" class="nt"><!--pnid:R2wncNgVjQo7zFt0edu7c2-->目 录</div><ol data-page-node-id="j9xbHeS3BBnICrN9qWAtnM"><li data-page-node-id="I2WYzIu9XH4E5BLHqFjThL"><a data-page-node-id="6EYVQhMFZeKex4LzMfCjXC" href="#一加盟纠纷类型图谱10类"><!--pnid:fD9g55S34n2UuytXR1gJkO-->一、加盟纠纷类型图谱（10 类）</a></li><li data-page-node-id="9bFGNJDMEpBe1RGJPPRMGF" class="lv3"><a data-page-node-id="Zb1fzcRvcFc9WjP4rYWzDd" href="#11总表"><!--pnid:PLJgrXXvWMUI17zaorOhPJ-->1.1 总表</a></li><li data-page-node-id="WuNSl3Xx5MDkh1ppxUiiqu" class="lv3"><a data-page-node-id="Nxn8kCRjlyamRq85fTLOBZ" href="#12三个反直觉的判断"><!--pnid:F8jLnxDkvpAH2FbmjB6RmH-->1.2 三个反直觉的判断</a></li><li data-page-node-id="vBnZpWQrz5APRagrnsyRe8"><a data-page-node-id="coxSWBZT4TfTvJProzWONv" href="#二两份审判指引核心规则与差异"><!--pnid:C7Mlze6OpoclAZjpDMey6J-->二、两份审判指引：核心规则与差异</a></li><li data-page-node-id="TbUzDAYq3qgaiAqyEmVKrt" class="lv3"><a data-page-node-id="6g120gqZx2dV10zL1tdu0A" href="#21规则对照表"><!--pnid:eSxkvzCnhbzdG5X6aqP2uV-->2.1 规则对照表</a></li><li data-page-node-id="Q4Or5qyJHKSrB76kmTICXT" class="lv3"><a data-page-node-id="mB7zsk6tS53fj8EC6jGARI" href="#22三条真正的差异以及实务后果"><!--pnid:w5MPlHLYwXDvp0msn5qmYe-->2.2 三条真正的差异，以及实务后果</a></li><li data-page-node-id="rBb1XxfOoSa6qqZDP7NLQX" class="lv3"><a data-page-node-id="wptaUfz1aTBaXe2w2opw8K" href="#23加盟商反制点"><!--pnid:yr1ncV9ij2Pp0dZaNvqDpb-->2.3 加盟商反制点</a></li><li data-page-node-id="kYBEFLwCKtFkTl2IziYe1C"><a data-page-node-id="zK7sFyDr27UQhWVit2zR1p" href="#三实质影响标准到底怎么把握"><!--pnid:hkmindS4QF8do4i137ICFn-->三、「实质影响标准」到底怎么把握</a></li><li data-page-node-id="cbKAMQNUCYLjzlxDjEwbxJ" class="lv3"><a data-page-node-id="wa2EsndK7Xt3R2RPrV8CQv" href="#31先搞清楚标准从哪来"><!--pnid:qLqGQfNqV5JXxxMKVv591q-->3.1 先搞清楚标准从哪来</a></li><li data-page-node-id="Z4cmjlXXJkw3VcDLRjZtg2" class="lv3"><a data-page-node-id="NkHcrnfTc8RSd88JMYxXE1" href="#32第一层信息类型分层哪些不实是致命的"><!--pnid:aVSLubHTG3YJ0u3Q5xe0rE-->3.2 第一层：信息类型分层——哪些不实是致命的</a></li><li data-page-node-id="C5FSCjMoYcXwbHkqK8E0Xw" class="lv3"><a data-page-node-id="3fMOF8egsF4g2GgxDIqV4i" href="#33第二层时间分层撤销还是解除路径完全不同"><!--pnid:aCPWDTdxmclrEsT1WXExWz-->3.3 第二层：时间分层——撤销还是解除，路径完全不同</a></li><li data-page-node-id="8QEpi4vx8hfmpsdbbMdOdO" class="lv3"><a data-page-node-id="85FYtjT55pmVdsa6LHbDhC" href="#34第三层举证分层"><!--pnid:aVpie2CMx4njzllgit6Ipm-->3.4 第三层：举证分层</a></li><li data-page-node-id="c31Jkf91G0dw061jX3nLMS" class="lv3"><a data-page-node-id="w9Nj6JEDY9TyLcPefDVsgs" href="#35两个走向相反的案例"><!--pnid:jIimNleYlHGfCZINGBOiPP-->3.5 两个走向相反的案例</a></li><li data-page-node-id="ZkootDhrjxjhaT5lz01IMZ" class="lv3"><a data-page-node-id="9BtfWXCpL3FCrpCt415aKS" href="#36总部的实质影响五问判断清单"><!--pnid:pwD8mm5dw8eXAEg0GC1PDX-->3.6 总部的「实质影响五问」判断清单</a></li><li data-page-node-id="Hr2rbcBUts41wk515ZMgGb"><a data-page-node-id="FJW5BqYyPjPXFN6zvGjwcN" href="#四裁判文书网检索方法"><!--pnid:oWpHXJreQtOxtlUFNnhzDg-->四、裁判文书网检索方法</a></li><li data-page-node-id="oRC5kqm7IW2F1vplZTVUz9" class="lv3"><a data-page-node-id="peSAKyRFuXXhOAWePGz5z8" href="#41先搞清楚去哪儿找这一步错了后面全白费"><!--pnid:LLJq2ld4Iz4sylkBs0b7aF-->4.1 先搞清楚去哪儿找——这一步错了，后面全白费</a></li><li data-page-node-id="QW4E3vL4EwTHJow3BoNRwa" class="lv3"><a data-page-node-id="O2Dao2lqOPIeqz6ThmkG7M" href="#42案由与关键词矩阵"><!--pnid:ug2FUbLbjwkAfVDmcAO5EX-->4.2 案由与关键词矩阵</a></li><li data-page-node-id="WOGDRiE5T1lNrvBc8ra6xy" class="lv3"><a data-page-node-id="b5Q09aQwOII0vmWyWARcjV" href="#43高效检索的六条经验"><!--pnid:q0gDvlHTS4wyHg2GiVsP02-->4.3 高效检索的六条经验</a></li><li data-page-node-id="bV8Z31y1BoNR3KotM1kobW" class="lv3"><a data-page-node-id="v9qdS69cIRymFuTWGyTjFq" href="#44建自己的判例库字段设计"><!--pnid:zbZJLBbGwqDRUe3IJqE23M-->4.4 建自己的判例库（字段设计）</a></li><li data-page-node-id="6sTOKzlPrr0p8IdyNAbhD6"><a data-page-node-id="jWTOEbVeq69jWRc2qSKarJ" href="#五今日四个可执行动作"><!--pnid:keQd04UHemTBLx4B8w5cWu-->五、今日四个可执行动作</a></li><li data-page-node-id="ITnVo38LOmyImTeYgNmkGM"><a data-page-node-id="GZBHJ85Jh6qxVkaXjRk44x" href="#附本次引用的权威文件清单"><!--pnid:Ixy8FPVutoGNpeTvzg7fAP-->附：本次引用的权威文件清单</a></li></ol></nav>
