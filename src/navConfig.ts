@@ -100,7 +100,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'practice',
     label: '律师实务',
     enLabel: 'Lawyer Practice',
-    subTabs: ['family-law', 'criminal', 'arbitration', 'insurance', 'labor'],
+    subTabs: ['family-law', 'criminal', 'econ-crime', 'arbitration', 'insurance', 'labor'],
   },
 
   {
@@ -181,6 +181,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   labor: { label: '双视角劳动实务', enLabel: 'Labor Practice' },
   insurance: { label: '保险·法律维权', enLabel: 'Insurance' },
   criminal: { label: '刑事辩护', enLabel: 'Criminal Defense' },
+  'econ-crime': { label: '经济犯罪辩护', enLabel: 'Economic Crime Defense' },
   'ai-law': { label: 'AI+法律', enLabel: 'AI + Law' },
   financing: { label: '融资法务', enLabel: 'Financing' },
   arbitration: { label: '商事仲裁', enLabel: 'Arbitration' },
