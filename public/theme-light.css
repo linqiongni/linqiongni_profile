@@ -1,151 +1,278 @@
-/* ===== light-theme-override-v2 ===== */
-/* ============ 浅色主题覆盖 v2 —— 与主站米白 #FDFCF9 统一 ============ */
-/* 说明：全部用 !important 压过原主题；background 简写与渐变冲突处单独拆开写 */
-:root{
-  /* 底座 */
-  --bg:#FDFCF9; --bg2:#F5F3EC; --bg3:#EFECE3;
-  --card:#FFFFFF; --card2:#FAF8F3; --card3:#F5F3EC;
-  /* 面板变量（左栏目录 .side 常用 --panel3 作底色，缺失会导致浅色文字压深后黑底黑字） */
-  --panel:#FFFFFF; --panel2:#FAF7F0; --panel3:#F5F1E7;
-  --line:#E3E0D8; --line2:#CFCABE;
-  /* 文字（原深色主题的浅色字，必须整体换成深色字，否则米白底上看不清） */
-  --txt:#1D1D1F; --txt2:#4A4A4F; --txt3:#6E6E73;
-  --tx:#1D1D1F; --tx2:#4A4A4F; --tx3:#6E6E73;
-  --sub:#4A4A4F; --sub2:#6E6E73;
-  --body:#1D1D1F; --text:#1D1D1F; --fg:#1D1D1F; --ink:#1D1D1F;
-  --muted:#5A5A5F; --dim:#6E6E73;
-  /* 强调色（调深以适配浅底，对比度 >= 4.5:1） */
-  --gold:#8A6716; --gold2:#7A5B12; --gold-dim:#A08442;
-  --jade:#1F6B6A; --green:#2E6B48; --green2:#2E6B48;
-  --red:#A0322A; --red2:#A0322A; --red3:#A0322A;
-  --blue:#2C5C99; --blue2:#2C5C99;
-  --purple:#5B4B85;
-  /* 彩色底纹（浅底上的淡色块） */
-  --red-bg:rgba(160,50,42,.08);
-  --green-bg:rgba(46,107,72,.08);
-  --blue-bg:rgba(44,92,153,.08);
-  --gold-bg:rgba(138,103,22,.08);
+/* ==========================================================================
+   子站浅色套件（统一版 · 2026-09-23）
+   --------------------------------------------------------------------------
+   设计：全部规则只在 <html data-theme="light"> 时生效，深色态由各页内联的
+   dark-unify / dark-unify-fix 负责（它们已收窄到 data-theme="dark"）。
+   因此本文件可以**常驻**在每页 <head> 里，不需要 JS 动态加载 / 卸载 —— 没有闪烁。
+
+   为什么需要它：子站是十几代手写静态页拼起来的，底色来源有两类
+     ① 变量派：靠 --bg / --card / --ink 这套 CSS 变量（dark-unify 重定义成深色）；
+     ② 硬编码派：内联 <style> 里直接写 #0f1216 这类深色底 + 深色渐变。
+   所以这里既覆盖变量，也用一组通用规则把硬编码的深底压成浅底。
+   ========================================================================== */
+
+/* ---- 1. 变量：与 dark-unify 同名单、成对替换成浅色 ----
+   注意：dark-unify 的变量带 !important，这里必须也带，否则在优先级拉平时会被压住。 */
+html[data-theme="light"]{
+  --bg:#FDFCF9 !important; --bg2:#F5F3EC !important; --bg3:#EFECE3 !important;
+  --bg-alt:#F5F3EC !important; --bg-soft:#F5F3EC !important;
+  --card:#FFFFFF !important; --card2:#FAF8F3 !important; --card3:#F5F3EC !important;
+  --panel:#FFFFFF !important; --panel2:#FAF7F0 !important; --panel3:#F5F1E7 !important;
+  --paper:#FFFFFF !important; --side:#FFFFFF !important; --bar:#F5F3EC !important;
+  --line:#E3E0D8 !important; --line2:#CFCABE !important; --line-soft:#EAE7DF !important;
+  --ink:#23201B !important; --ink2:#5A5449 !important; --ink3:#8A8275 !important;
+  --ink-soft:#5A5449 !important;
+  --tx:#23201B !important; --tx2:#5A5449 !important; --tx3:#8A8275 !important;
+  --txt:#23201B !important; --txt2:#5A5449 !important; --txt3:#8A8275 !important;
+  --text:#23201B !important; --body:#23201B !important; --fg:#23201B !important;
+  --muted:#5A5A5F !important; --muted2:#6E6E73 !important;
+  --sub:#5A5449 !important; --sub2:#8A8275 !important; --dim:#8A8275 !important;
+  /* 金色系在米白底上必须压深，否则对比度不足 */
+  --gold:#8A6716 !important; --gold2:#7A5B12 !important; --gold-deep:#7A5B12 !important;
+  --gold-dim:#A08442 !important; --gold-soft:rgba(138,103,22,.12) !important;
+  --accent:#8A6716 !important; --accent-soft:rgba(138,103,22,.10) !important;
+  --hl:#F7EFDD !important; --hl-ink:#5A4410 !important;
+  --codebg:#F1EEE6 !important; --hover:rgba(138,103,22,.08) !important;
+  --red:#A0322A !important; --green:#2E6B48 !important; --blue:#2C5C99 !important;
+  --jade:#1F6B6A !important; --purple:#5B4B85 !important; --amber:#8A6716 !important;
+  --shadow:0 1px 2px rgba(35,32,27,.05),0 8px 24px rgba(35,32,27,.06) !important;
+  color-scheme:light !important;
 }
-/* ---- 强制全站底色与主文字 ---- */
-html,body{background:#FDFCF9 !important;background-image:none !important;color:#1D1D1F !important}
-/* ---- 容器类底色：逐个把深色面板刷白 ---- */
-.topbar,header,.hero,.navbar,.sidebar,.wrap>header{
-  background-color:#FFFFFF !important;background-image:none !important;color:#1D1D1F !important;
-}
-.card,.card2,.panel,.box,.checklist,details,.ti,.out,.idxlist a,.prbox,.progress,
-.toc,nav,.nav,.stage,.step,.item,.row,.tile,.boxed,.note,.tip,.callout,.summary,.content,.inner{
-  background-color:#FFFFFF !important;background-image:none !important;
-}
-.card2,.bg2,.sub,.alt,tr:nth-child(even),tbody tr:nth-child(even){
-  background-color:#F5F3EC !important;background-image:none !important;
-}
-/* ---- 标题：h1/h2 原为亮金，浅底上要压深 ---- */
-h1,h2{color:#7A5B12 !important}
-h3{color:#8A6716 !important}
-h4,h5,h6{color:#1D1D1F !important}
-strong,b{color:#7A5B12 !important}
-/* ---- 正文与列表 ---- */
-p,li,dd,dt,span,div{color:inherit}
-p,li,td,dd{color:#1D1D1F !important}
-em,i{color:#6E6E73 !important}
-small,.muted,.dim,.sub,.sub2,.note,.footnote,footer{
-  color:#6E6E73 !important;
-}
-/* ---- 链接 ---- */
-a{color:#2C5C99 !important}
-a:hover{color:#8A6716 !important}
-/* ---- 表格：原表头是深褐渐变，background 简写会保留 background-image，必须单独清掉 ---- */
-table{background-color:#FFFFFF !important;background-image:none !important;border-color:#CFCABE !important}
-th{
-  background-color:#F1EEE6 !important;
+
+/* ---- 2. 底座：整页底色与主文字 ---- */
+html[data-theme="light"],
+html[data-theme="light"] body{
+  background-color:#FDFCF9 !important;
   background-image:none !important;
-  color:#6B5518 !important;border-color:#E3E0D8 !important;
+  color:#23201B !important;
 }
-thead,thead tr{background-color:#F1EEE6 !important;background-image:none !important}
-th *{color:#6B5518 !important}
-td{background-color:transparent !important;border-color:#E3E0D8 !important;color:#1D1D1F !important}
-td strong,td b{color:#7A5B12 !important}
-tbody tr:hover,tbody tr:hover td{background-color:#F5F3EC !important;background-image:none !important}
-/* 兜底：任何仍在用深色渐变/深色底的表格单元 */
-th[style*="linear-gradient"],[style*="linear-gradient(180deg,#33"],[style*="linear-gradient(180deg, #33"]{
-  background-image:none !important;background-color:#F1EEE6 !important;
+
+/* ---- 3. 顶部条 / 侧栏 / 容器的深底（含硬编码渐变）压成白/米白 ---- */
+html[data-theme="light"] .topbar,
+html[data-theme="light"] header,
+html[data-theme="light"] .hero,
+html[data-theme="light"] .navbar,
+html[data-theme="light"] .sidebar,
+html[data-theme="light"] .side,
+html[data-theme="light"] .wrap>header{
+  background-color:#FFFFFF !important;
+  background-image:none !important;
+  color:#23201B !important;
+  border-color:#E3E0D8 !important;
 }
-/* ---- 引用块 ---- */
-blockquote{
-  background-color:#F5F3EC !important;background-image:none !important;
-  color:#3A3A3C !important;border-left-color:#CFCABE !important;
+
+/* ---- 4. 面板 / 卡片 / 盒子 ---- */
+html[data-theme="light"] .card,
+html[data-theme="light"] .card2,
+html[data-theme="light"] .panel,
+html[data-theme="light"] .box,
+html[data-theme="light"] .checklist,
+html[data-theme="light"] details,
+html[data-theme="light"] .ti,
+html[data-theme="light"] .out,
+html[data-theme="light"] .idxlist a,
+html[data-theme="light"] .prbox,
+html[data-theme="light"] .toc,
+html[data-theme="light"] nav,
+html[data-theme="light"] .nav,
+html[data-theme="light"] .stage,
+html[data-theme="light"] .step,
+html[data-theme="light"] .item,
+html[data-theme="light"] .row,
+html[data-theme="light"] .tile,
+html[data-theme="light"] .boxed,
+html[data-theme="light"] .note,
+html[data-theme="light"] .tip,
+html[data-theme="light"] .callout,
+html[data-theme="light"] .summary,
+html[data-theme="light"] .content,
+html[data-theme="light"] .inner,
+html[data-theme="light"] .container,
+html[data-theme="light"] .res,
+html[data-theme="light"] .opt,
+html[data-theme="light"] .clause{
+  background-color:#FFFFFF !important;
+  background-image:none !important;
+  color:#23201B !important;
 }
-blockquote p,blockquote li{color:#3A3A3C !important}
-/* ---- 代码 ---- */
-pre{
-  background-color:#F5F3EC !important;background-image:none !important;
-  color:#3A3A3C !important;border-color:#E3E0D8 !important;
+
+html[data-theme="light"] .card2,
+html[data-theme="light"] .bg2,
+html[data-theme="light"] .sub,
+html[data-theme="light"] .alt,
+html[data-theme="light"] tbody tr:nth-child(even),
+html[data-theme="light"] tr:nth-child(even){
+  background-color:#F5F3EC !important;
+  background-image:none !important;
 }
-pre code{color:#3A3A3C !important}
-code{
-  background-color:#F1EEE6 !important;border-color:#E3E0D8 !important;color:#7A5B12 !important;
+
+/* ---- 5. 标题 / 强调字：原为亮金，浅底上压深 ---- */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2{color:#7A5B12 !important}
+html[data-theme="light"] h3{color:#8A6716 !important}
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] h6{color:#23201B !important}
+html[data-theme="light"] strong,
+html[data-theme="light"] b{color:#7A5B12 !important}
+
+/* ---- 6. 正文 / 次要文字 ---- */
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] td,
+html[data-theme="light"] dd,
+html[data-theme="light"] dt,
+html[data-theme="light"] .lead,
+html[data-theme="light"] .desc,
+html[data-theme="light"] .meta{color:#23201B !important}
+html[data-theme="light"] em,
+html[data-theme="light"] i{color:#6E6E73 !important}
+html[data-theme="light"] small,
+html[data-theme="light"] .muted,
+html[data-theme="light"] .dim,
+html[data-theme="light"] .sub2,
+html[data-theme="light"] .footnote,
+html[data-theme="light"] .kicker,
+html[data-theme="light"] footer{color:#6E6E73 !important}
+
+/* ---- 7. 链接 ---- */
+html[data-theme="light"] a{color:#2C5C99 !important}
+html[data-theme="light"] a:hover{color:#8A6716 !important}
+html[data-theme="light"] .idxlist a,
+html[data-theme="light"] .toc a,
+html[data-theme="light"] .side a{color:#4A4A4F !important}
+html[data-theme="light"] .idxlist a:hover,
+html[data-theme="light"] .toc a:hover,
+html[data-theme="light"] .side a:hover,
+html[data-theme="light"] .side a.active,
+html[data-theme="light"] .idxlist a.active{color:#7A5B12 !important}
+
+/* ---- 8. 表格：原表头是深褐渐变，必须 background-image:none 单独清掉 ---- */
+html[data-theme="light"] table{
+  background-color:#FFFFFF !important; background-image:none !important;
+  border-color:#CFCABE !important;
 }
-/* ---- 分隔线 ---- */
-hr{border-top-color:#E3E0D8 !important}
-/* ---- 标签 / 角标 ---- */
-.tag,.badge,.chip{border-color:currentColor !important}
-.tag-red,.badge-red{background-color:rgba(160,50,42,.08) !important;color:#A0322A !important}
-.tag-green,.badge-green{background-color:rgba(46,107,72,.08) !important;color:#2E6B48 !important}
-.tag-blue,.badge-blue{background-color:rgba(44,92,153,.08) !important;color:#2C5C99 !important}
-/* 浅底上的金色小标签：原为亮金 #d4a24c，浅底上对比度不足 */
-.t-gold,.tag-gold,.badge-gold,.gold-tag,.hl-gold{
-  background-color:rgba(138,103,22,.10) !important;background-image:none !important;
-  color:#7A5B12 !important;border-color:rgba(138,103,22,.35) !important;
+html[data-theme="light"] th,
+html[data-theme="light"] thead th{
+  background-color:#F1EEE6 !important; background-image:none !important;
+  color:#6B5518 !important; border-color:#E3E0D8 !important;
 }
-.t-red,.t-green,.t-blue{background-image:none !important}
-.t-red{background-color:rgba(160,50,42,.10) !important;color:#A0322A !important}
-.t-green{background-color:rgba(46,107,72,.10) !important;color:#2E6B48 !important}
-.t-blue{background-color:rgba(44,92,153,.10) !important;color:#2C5C99 !important}
-/* ---- 选项卡：原选中态是「深底 + 浅字」，浅色主题下必须反转 ---- */
-.tab,.tabs>*,nav .tab,.nav-tab{
-  background-color:#F5F3EC !important;background-image:none !important;
-  color:#4A4A4F !important;border-color:#E3E0D8 !important;
+html[data-theme="light"] thead,
+html[data-theme="light"] thead tr{background-color:#F1EEE6 !important; background-image:none !important}
+html[data-theme="light"] th *{color:#6B5518 !important}
+html[data-theme="light"] td{background-color:transparent !important; border-color:#E3E0D8 !important; color:#23201B !important}
+html[data-theme="light"] td strong,
+html[data-theme="light"] td b{color:#7A5B12 !important}
+html[data-theme="light"] tbody tr:hover,
+html[data-theme="light"] tbody tr:hover td{background-color:#F5F3EC !important; background-image:none !important}
+/* 兜底：仍带深色渐变背景的内联样式 */
+html[data-theme="light"] th[style*="linear-gradient"],
+html[data-theme="light"] [style*="linear-gradient(180deg,#33"],
+html[data-theme="light"] [style*="linear-gradient(180deg, #33"]{
+  background-image:none !important; background-color:#F1EEE6 !important;
 }
-.tab.on,.tab.active,.tab:hover,li.tab.on{
-  background-color:#EFE9D8 !important;background-image:none !important;
-  color:#6B5518 !important;border-color:#A08442 !important;
+
+/* ---- 9. 引用 / 代码 / 分隔线 ---- */
+html[data-theme="light"] blockquote{
+  background-color:#F5F3EC !important; background-image:none !important;
+  color:#3A3A3C !important; border-left-color:#CFCABE !important;
 }
-.tab.on *,.tab.active *{color:#6B5518 !important}
-/* ---- 按钮 / 印章 ---- */
-.btn,.btn-print,button,input[type=submit]{
-  background-color:#F1EEE6 !important;background-image:none !important;
-  color:#1D1D1F !important;border-color:#CFCABE !important;
+html[data-theme="light"] blockquote p,
+html[data-theme="light"] blockquote li{color:#3A3A3C !important}
+html[data-theme="light"] pre{
+  background-color:#F5F3EC !important; background-image:none !important;
+  color:#3A3A3C !important; border-color:#E3E0D8 !important;
 }
-.btn:hover,.btn-print:hover,button:hover{background-color:#E8E4D9 !important;border-color:#8A6716 !important}
-.seal{border-color:#A0322A !important;color:#A0322A !important}
-/* ---- 进度条 ---- */
-.progress,.bar,.meter{background-color:#F5F3EC !important;background-image:none !important}
-/* ---- 表单控件 ---- */
-input,textarea,select{
-  background-color:#FFFFFF !important;color:#1D1D1F !important;border-color:#CFCABE !important;
+html[data-theme="light"] pre code{color:#3A3A3C !important}
+html[data-theme="light"] code{
+  background-color:#F1EEE6 !important; border-color:#E3E0D8 !important; color:#7A5B12 !important;
 }
-/* ---- 兜底：任何仍带深色背景的常见容器 ---- */
-[style*="background:#0"],[style*="background: #0"],
-[style*="background-color:#0"],[style*="background-color: #0"],
-[style*="background:#1"],[style*="background: #1"]{
-  background-color:#FFFFFF !important;background-image:none !important;
+html[data-theme="light"] hr{border-top-color:#E3E0D8 !important}
+
+/* ---- 10. 标签 / 角标 ---- */
+html[data-theme="light"] .tag,
+html[data-theme="light"] .badge,
+html[data-theme="light"] .chip{border-color:currentColor !important}
+html[data-theme="light"] .tag-red,
+html[data-theme="light"] .badge-red{background-color:rgba(160,50,42,.08) !important; color:#A0322A !important}
+html[data-theme="light"] .tag-green,
+html[data-theme="light"] .badge-green{background-color:rgba(46,107,72,.08) !important; color:#2E6B48 !important}
+html[data-theme="light"] .tag-blue,
+html[data-theme="light"] .badge-blue{background-color:rgba(44,92,153,.08) !important; color:#2C5C99 !important}
+html[data-theme="light"] .t-gold,
+html[data-theme="light"] .tag-gold,
+html[data-theme="light"] .badge-gold,
+html[data-theme="light"] .gold-tag,
+html[data-theme="light"] .hl-gold{
+  background-color:rgba(138,103,22,.10) !important; background-image:none !important;
+  color:#7A5B12 !important; border-color:rgba(138,103,22,.35) !important;
 }
-/* ---- 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
-:root{color-scheme:light !important}
-html{scrollbar-color:#CFCABE #F5F3EC !important}
-::-webkit-scrollbar{width:10px;height:10px;background:#F5F3EC}
-::-webkit-scrollbar-track{background:#F5F3EC}
-::-webkit-scrollbar-thumb{background:#CFCABE;border-radius:5px}
-::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
-::selection{background:rgba(138,103,22,.18) !important;color:#1D1D1F !important}
-/* ===== light-theme-override-v3 ===== */
-/* ============ 浅色主题覆盖 v3 —— 交互态 + 残留深色面板 ============ */
-/* v2 只压住了静态态，漏了两类写死的深色：
-   ① :hover / :focus 态（鼠标移上去整块变黑，深色文字被吞掉）；
-   ② 深底深字面板（如 .res / .opt / .clause）。
-   这里把每页「原始规则里凡是深色底」的选择器原样搬过来，只把底色换浅：
-   悬停态用淡米色 #FAF8F3（配灰字 4.78:1 达标）保留反馈，面板用白/米白；
-   原文字是浅色的一并压深。悬停反馈由金色边框 + 淡金阴影承担，
-   不靠压暗底色 —— 压暗底色必然吃掉文字对比度。 */
-.tabs{background-color:#FFFFFF !important;background-image:none !important}
-.wk.done{background-color:#FFFFFF !important;background-image:none !important}
+html[data-theme="light"] .t-red,
+html[data-theme="light"] .t-green,
+html[data-theme="light"] .t-blue{background-image:none !important}
+html[data-theme="light"] .t-red{background-color:rgba(160,50,42,.10) !important; color:#A0322A !important}
+html[data-theme="light"] .t-green{background-color:rgba(46,107,72,.10) !important; color:#2E6B48 !important}
+html[data-theme="light"] .t-blue{background-color:rgba(44,92,153,.10) !important; color:#2C5C99 !important}
+
+/* ---- 11. 选项卡：原选中态多为「深底 + 浅字」，浅色下必须反转 ---- */
+html[data-theme="light"] .tab,
+html[data-theme="light"] .tabs>*,
+html[data-theme="light"] nav .tab,
+html[data-theme="light"] .nav-tab{
+  background-color:#F5F3EC !important; background-image:none !important;
+  color:#4A4A4F !important; border-color:#E3E0D8 !important;
+}
+html[data-theme="light"] .tab.on,
+html[data-theme="light"] .tab.active,
+html[data-theme="light"] .tab:hover,
+html[data-theme="light"] li.tab.on,
+html[data-theme="light"] .nav a.active,
+html[data-theme="light"] .chip.active{
+  background-color:#EFE9D8 !important; background-image:none !important;
+  color:#6B5518 !important; border-color:#A08442 !important;
+}
+html[data-theme="light"] .tab.on *,
+html[data-theme="light"] .tab.active *{color:#6B5518 !important}
+html[data-theme="light"] .tabs{background-color:#FFFFFF !important; background-image:none !important}
+html[data-theme="light"] .wk.done{background-color:#FFFFFF !important; background-image:none !important}
+
+/* ---- 12. 按钮 / 印章 / 进度条 / 表单 ---- */
+html[data-theme="light"] .btn,
+html[data-theme="light"] .btn-print,
+html[data-theme="light"] button,
+html[data-theme="light"] input[type=submit]{
+  background-color:#F1EEE6 !important; background-image:none !important;
+  color:#23201B !important; border-color:#CFCABE !important;
+}
+html[data-theme="light"] .btn:hover,
+html[data-theme="light"] .btn-print:hover,
+html[data-theme="light"] button:hover{
+  background-color:#E8E4D9 !important; border-color:#8A6716 !important;
+}
+html[data-theme="light"] .seal{border-color:#A0322A !important; color:#A0322A !important}
+html[data-theme="light"] .progress,
+html[data-theme="light"] .bar,
+html[data-theme="light"] .meter{background-color:#F5F3EC !important; background-image:none !important}
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select{
+  background-color:#FFFFFF !important; color:#23201B !important; border-color:#CFCABE !important;
+}
+
+/* ---- 13. 兜底：仍带深色底的内联样式 ---- */
+html[data-theme="light"] [style*="background:#0"],
+html[data-theme="light"] [style*="background: #0"],
+html[data-theme="light"] [style*="background-color:#0"],
+html[data-theme="light"] [style*="background-color: #0"],
+html[data-theme="light"] [style*="background:#1"],
+html[data-theme="light"] [style*="background: #1"]{
+  background-color:#FFFFFF !important; background-image:none !important;
+}
+
+/* ---- 14. 滚动条与选区（避免浏览器按系统深色渲染轨道） ---- */
+html[data-theme="light"]{scrollbar-color:#CFCABE #F5F3EC !important}
+html[data-theme="light"] ::-webkit-scrollbar{width:10px; height:10px; background:#F5F3EC}
+html[data-theme="light"] ::-webkit-scrollbar-track{background:#F5F3EC}
+html[data-theme="light"] ::-webkit-scrollbar-thumb{background:#CFCABE; border-radius:5px}
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover{background:#B8B2A4}
+html[data-theme="light"] ::selection{background:rgba(138,103,22,.18) !important; color:#23201B !important}
