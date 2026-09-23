@@ -1,6 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import './aquatic-luxury-background.css';
 
+/**
+ * 水下鱼影 + 鼠标涟漪 —— 全站背景层（**纯效果层，不铺底色**）
+ *
+ * 颜色决策（2026-09-23）：这一层原先自带深海军蓝渐变，把主页原本的底色盖掉了。
+ * 现在不再画任何底色，页面底色完全由站点自身提供（深 #2C2C2E / 浅 #E8E8E6），
+ * 这里只负责：深度晕影 + 水面细纹 + 鱼影 + 涟漪。
+ *
+ * 性能（之前卡顿的主因）：
+ * - 每帧不再调用 ctx.filter(blur) / shadowBlur（canvas 最贵的两类操作）。
+ *   改为**预渲染鱼精灵**：每条鱼按 8 个摆尾相位各生成一张离屏图，之后每帧只剩 drawImage。
+ * - 双 canvas 合成 → 单 canvas；DPR 封顶 1.5；帧率封顶 30fps；resize 去抖。
+ * - 切后台暂停 rAF；prefers-reduced-motion 只画静态一帧。
+ */
+
 type Fish = {
   x: number;
   y: number;
@@ -10,50 +24,101 @@ type Fish = {
   direction: 1 | -1;
   phase: number;
   depth: number;
-  tone: 'gold' | 'silver' | 'blue';
+  tone: number;
 };
 
-type Ripple = { x: number; y: number; radius: number; life: number; strength: number };
+type Ripple = { x: number; y: number; r: number; life: number; s: number };
 
-type Palette = {
-  /** 鱼身渐变（前段 → 中段 → 尾段） */
-  body: [string, string, string, string];
-  /** 鱼眼高光 */
-  eye: string;
-  /** 涟漪外圈 / 亮圈 / 内圈 */
-  ripple: [string, string, string];
-  /** 涟漪混合模式：screen 在亮底会消失，浅色档必须 source-over */
-  comp: GlobalCompositeOperation;
-  /** 整体亮度系数（站点是深浅双模式） */
-  gain: number;
-};
+type Sprite = { img: HTMLCanvasElement; w: number; h: number };
 
-const DARK_PALETTE: Palette = {
-  body: [
-    'rgba(87,108,128,.25)',
-    'rgba(164,151,122,.76)',
-    'rgba(208,175,108,.62)',
-    'rgba(96,122,147,.18)',
-  ],
-  eye: 'rgba(235,210,156,.9)',
-  ripple: ['rgba(110,145,178,', 'rgba(218,188,127,', 'rgba(102,139,173,'],
-  comp: 'screen',
-  gain: 1,
-};
+const PHASES = 8;
+const MAX_RIPPLES = 12;
+const TARGET_FPS = 30;
+const STEP = 1000 / TARGET_FPS;
 
-/** 浅色档：深墨金/墨蓝的"水下剪影"落在米白底上，仍保持层次但压得住 */
-const LIGHT_PALETTE: Palette = {
-  body: [
-    'rgba(58,74,92,.20)',
-    'rgba(96,104,116,.52)',
-    'rgba(150,116,58,.44)',
-    'rgba(70,88,108,.14)',
-  ],
-  eye: 'rgba(120,96,48,.55)',
-  ripple: ['rgba(140,150,164,', 'rgba(176,140,70,', 'rgba(150,160,172,'],
-  comp: 'source-over',
-  gain: 0.82,
-};
+const TONES: string[][] = [
+  ['rgba(46,62,80,.16)', 'rgba(88,98,110,.52)', 'rgba(158,124,62,.46)', 'rgba(58,74,92,.12)'],
+  ['rgba(40,58,76,.15)', 'rgba(78,96,112,.50)', 'rgba(132,114,70,.42)', 'rgba(52,70,88,.10)'],
+  ['rgba(50,66,84,.14)', 'rgba(96,110,124,.48)', 'rgba(164,132,70,.40)', 'rgba(60,78,96,.10)'],
+];
+
+const EYE = 'rgba(226,201,148,.9)';
+
+/** 把一条鱼在某个摆尾相位下画进 ctx（原点 = 鱼体中心，已含纵向压扁） */
+function paintFish(
+  ctx: CanvasRenderingContext2D,
+  size: number,
+  tone: string[],
+  bend: number,
+  tailRot: number,
+): void {
+  const grad = ctx.createLinearGradient(-size, 0, size, 0);
+  grad.addColorStop(0, tone[0]);
+  grad.addColorStop(0.42, tone[1]);
+  grad.addColorStop(0.72, tone[2]);
+  grad.addColorStop(1, tone[3]);
+  ctx.fillStyle = grad;
+
+  ctx.beginPath();
+  ctx.moveTo(-size * 0.72, bend * 0.18);
+  ctx.bezierCurveTo(-size * 0.42, -size * 0.34, size * 0.34, -size * 0.3, size * 0.8, -size * 0.05);
+  ctx.quadraticCurveTo(size * 0.95, 0, size * 0.8, size * 0.07);
+  ctx.bezierCurveTo(size * 0.34, size * 0.3, -size * 0.42, size * 0.34, -size * 0.72, bend * 0.18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.save();
+  ctx.translate(-size * 0.68, bend * 0.18);
+  ctx.rotate(tailRot);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.bezierCurveTo(-size * 0.3, -size * 0.08, -size * 0.62, -size * 0.42, -size * 0.78, -size * 0.32);
+  ctx.quadraticCurveTo(-size * 0.55, 0, -size * 0.78, size * 0.32);
+  ctx.bezierCurveTo(-size * 0.62, size * 0.42, -size * 0.3, size * 0.08, 0, 0);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.moveTo(-size * 0.1, -size * 0.25);
+  ctx.quadraticCurveTo(size * 0.05, -size * 0.52, size * 0.28, -size * 0.22);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(size * 0.12, size * 0.2);
+  ctx.quadraticCurveTo(size * 0.28, size * 0.43, size * 0.4, size * 0.14);
+  ctx.closePath();
+  ctx.fill();
+}
+
+/** 预渲染一条鱼的 8 个摆尾相位（blur 只在这里算一次） */
+function buildSprites(size: number, depth: number, tone: string[], dpr: number): Sprite[] {
+  const blur = (1 - depth) * 2.1;
+  const padW = size * 2.2 + blur * 8;
+  const padH = size * 1.3 + blur * 8;
+  const out: Sprite[] = [];
+  for (let i = 0; i < PHASES; i += 1) {
+    const swim = Math.sin((i / PHASES) * Math.PI * 2);
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.ceil(padW * dpr));
+    c.height = Math.max(1, Math.ceil(padH * dpr));
+    const g = c.getContext('2d');
+    if (!g) break;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.translate(padW / 2, padH / 2);
+    g.scale(1, 0.72);
+    if (blur > 0.05) g.filter = `blur(${blur}px)`;
+    paintFish(g, size, tone, swim * size * 0.1, swim * 0.24);
+    g.filter = 'none';
+    g.fillStyle = EYE;
+    g.globalAlpha = 0.5;
+    g.beginPath();
+    g.arc(size * 0.68, -size * 0.055, Math.max(1.15, size * 0.032), 0, Math.PI * 2);
+    g.fill();
+    out.push({ img: c, w: padW, h: padH });
+  }
+  return out;
+}
 
 export interface AquaticLuxuryBackgroundProps {
   fishCount?: number;
@@ -66,239 +131,198 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
   className = '',
   darkMode = true,
 }) => {
-  const fishCanvasRef = useRef<HTMLCanvasElement>(null);
-  const rippleCanvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const fishCanvas = fishCanvasRef.current;
-    const rippleCanvas = rippleCanvasRef.current;
-    if (!fishCanvas || !rippleCanvas) return;
-    const fishCtx = fishCanvas.getContext('2d');
-    const rippleCtx = rippleCanvas.getContext('2d');
-    if (!fishCtx || !rippleCtx) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const P: Palette = darkMode ? DARK_PALETTE : LIGHT_PALETTE;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const mobile = window.matchMedia('(max-width: 768px)').matches;
     const total = mobile ? Math.min(3, fishCount) : fishCount;
+    const gain = darkMode ? 1 : 0.8;
 
     let width = 0;
     let height = 0;
-    let dpr = 1;
+    let dprUsed = 1;
     let raf = 0;
-    let previous = performance.now();
+    let last = 0;
+    let elapsed = 0;
     let lastPointerAt = 0;
     let lastAmbientAt = 0;
+    let resizeTimer = 0;
+    let sprites: Sprite[][] = [];
+
     const mouse = { x: -9999, y: -9999 };
     const ripples: Ripple[] = [];
-    const tones: Fish['tone'][] = ['gold', 'blue', 'silver'];
 
     const fish: Fish[] = Array.from({ length: total }, (_, index) => ({
       x: index % 2 === 0 ? -0.12 + index * 0.17 : 1.12 - index * 0.13,
       y: 0.51 + (index % 4) * 0.09,
       size: mobile ? 20 + (index % 3) * 7 : 23 + (index % 4) * 10,
       speed: 0.000012 + (index % 4) * 0.000003,
-      alpha: (0.16 + (index % 3) * 0.045) * P.gain,
+      alpha: (0.18 + (index % 3) * 0.05) * gain,
       direction: index % 2 === 0 ? 1 : -1,
       phase: index * 1.37,
       depth: 0.48 + (index % 4) * 0.12,
-      tone: tones[index % tones.length],
+      tone: index % TONES.length,
     }));
 
-    const resize = () => {
+    const resize = (): void => {
       width = window.innerWidth;
       height = window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      for (const canvas of [fishCanvas, rippleCanvas]) {
-        canvas.width = Math.floor(width * dpr);
-        canvas.height = Math.floor(height * dpr);
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
+      dprUsed = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.max(1, Math.floor(width * dprUsed));
+      canvas.height = Math.max(1, Math.floor(height * dprUsed));
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dprUsed, 0, 0, dprUsed, 0, 0);
+      sprites = fish.map((f) => buildSprites(f.size, f.depth, TONES[f.tone], Math.min(dprUsed, 1.5)));
+    };
+
+    const addRipple = (x: number, y: number, s = 0.52): void => {
+      if (ripples.length >= MAX_RIPPLES) ripples.shift();
+      ripples.push({ x, y, r: 5, life: 1, s });
+    };
+
+    const drawRipple = (ripple: Ripple): void => {
+      const base = ripple.life * ripple.s;
+      if (base <= 0.004) return;
+      const R = ripple.r + 26;
+      ctx.save();
+      ctx.translate(ripple.x, ripple.y);
+      ctx.scale(1, 0.36); // 俯视水面的透视
+      const grad = ctx.createLinearGradient(-R, 0, R, 0);
+      grad.addColorStop(0, 'rgba(150,170,196,0)');
+      grad.addColorStop(0.3, 'rgba(150,170,196,.55)');
+      grad.addColorStop(0.58, 'rgba(214,182,122,1)');
+      grad.addColorStop(1, 'rgba(150,170,196,0)');
+      ctx.strokeStyle = grad;
+      for (let i = 0; i < 3; i += 1) {
+        ctx.globalAlpha = base * (1 - i / 3.4) * (darkMode ? 0.5 : 0.4);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, ripple.r + i * 12, ripple.r + i * 12, 0, 0, Math.PI * 2);
+        ctx.lineWidth = i === 0 ? 1.2 : 0.7;
+        ctx.stroke();
       }
-      fishCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      rippleCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.restore();
     };
 
-    const addRipple = (x: number, y: number, strength = 0.56) => {
-      if (ripples.length > 18) ripples.shift();
-      ripples.push({ x, y, radius: 5, life: 1, strength });
-    };
+    const render = (time: number): void => {
+      if (!width || !height) return;
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < ripples.length; i += 1) drawRipple(ripples[i]);
 
-    const drawFish = (item: Fish, time: number) => {
-      let x = item.x * width;
-      let y = item.y * height + Math.sin(time * 0.00032 + item.phase) * 20 * item.depth;
-      const dx = mouse.x - x;
-      const dy = mouse.y - y;
-      // 鼠标靠近时鱼轻微偏离（克制：只在 170px 内、位移很小）
-      if (Math.hypot(dx, dy) < 170) {
-        x -= dx * 0.032;
-        y -= dy * 0.045;
+      const order = [...fish].sort((a, b) => a.depth - b.depth);
+      for (let k = 0; k < order.length; k += 1) {
+        const f = order[k];
+        const frames = sprites[fish.indexOf(f)];
+        if (!frames || !frames.length) continue;
+        let x = f.x * width;
+        let y = f.y * height + Math.sin(time * 0.00032 + f.phase) * 20 * f.depth;
+        const dx = mouse.x - x;
+        const dy = mouse.y - y;
+        if (dx * dx + dy * dy < 28900) {
+          x -= dx * 0.032;
+          y -= dy * 0.045;
+        }
+        const idx = Math.floor(((time * 0.0032 + f.phase) / (Math.PI * 2)) * PHASES) % PHASES;
+        const sp = frames[(idx + PHASES) % PHASES];
+        ctx.save();
+        ctx.globalAlpha = f.alpha;
+        ctx.translate(x, y);
+        ctx.rotate(Math.sin(time * 0.00055 + f.phase) * 0.035);
+        if (f.direction < 0) ctx.scale(-1, 1);
+        ctx.drawImage(sp.img, -sp.w / 2, -sp.h / 2, sp.w, sp.h);
+        ctx.restore();
       }
-
-      const swim = Math.sin(time * 0.0032 + item.phase);
-      const bend = swim * item.size * 0.1;
-      fishCtx.save();
-      fishCtx.translate(x, y);
-      if (item.direction < 0) fishCtx.scale(-1, 1);
-      fishCtx.rotate(Math.sin(time * 0.00055 + item.phase) * 0.035);
-      fishCtx.scale(1, 0.72);
-      fishCtx.globalAlpha = item.alpha;
-      // 深度越浅 → 越模糊（水下层次），明暗由 alpha 控制
-      fishCtx.filter = `blur(${(1 - item.depth) * 2.1}px) drop-shadow(0 4px 8px rgba(0,0,0,.22))`;
-
-      const gradient = fishCtx.createLinearGradient(-item.size, 0, item.size, 0);
-      gradient.addColorStop(0, P.body[0]);
-      gradient.addColorStop(0.42, P.body[1]);
-      gradient.addColorStop(0.72, P.body[2]);
-      gradient.addColorStop(1, P.body[3]);
-      fishCtx.fillStyle = gradient;
-
-      // 流线型鱼身
-      fishCtx.beginPath();
-      fishCtx.moveTo(-item.size * 0.72, bend * 0.18);
-      fishCtx.bezierCurveTo(
-        -item.size * 0.42, -item.size * 0.34,
-        item.size * 0.34, -item.size * 0.3,
-        item.size * 0.8, -item.size * 0.05,
-      );
-      fishCtx.quadraticCurveTo(item.size * 0.95, 0, item.size * 0.8, item.size * 0.07);
-      fishCtx.bezierCurveTo(
-        item.size * 0.34, item.size * 0.3,
-        -item.size * 0.42, item.size * 0.34,
-        -item.size * 0.72, bend * 0.18,
-      );
-      fishCtx.closePath();
-      fishCtx.fill();
-
-      // 独立摆动的尾鳍
-      fishCtx.save();
-      fishCtx.translate(-item.size * 0.68, bend * 0.18);
-      fishCtx.rotate(swim * 0.24);
-      fishCtx.beginPath();
-      fishCtx.moveTo(0, 0);
-      fishCtx.bezierCurveTo(
-        -item.size * 0.3, -item.size * 0.08,
-        -item.size * 0.62, -item.size * 0.42,
-        -item.size * 0.78, -item.size * 0.32,
-      );
-      fishCtx.quadraticCurveTo(-item.size * 0.55, 0, -item.size * 0.78, item.size * 0.32);
-      fishCtx.bezierCurveTo(
-        -item.size * 0.62, item.size * 0.42,
-        -item.size * 0.3, item.size * 0.08,
-        0, 0,
-      );
-      fishCtx.fill();
-      fishCtx.restore();
-
-      // 背鳍 + 腹鳍
-      fishCtx.globalAlpha = item.alpha * 0.72;
-      fishCtx.beginPath();
-      fishCtx.moveTo(-item.size * 0.1, -item.size * 0.25);
-      fishCtx.quadraticCurveTo(item.size * 0.05, -item.size * 0.52, item.size * 0.28, -item.size * 0.22);
-      fishCtx.closePath();
-      fishCtx.fill();
-      fishCtx.beginPath();
-      fishCtx.moveTo(item.size * 0.12, item.size * 0.2);
-      fishCtx.quadraticCurveTo(item.size * 0.28, item.size * 0.43, item.size * 0.4, item.size * 0.14);
-      fishCtx.closePath();
-      fishCtx.fill();
-
-      // 鱼眼
-      fishCtx.globalAlpha = Math.min(0.42, item.alpha * 1.5);
-      fishCtx.fillStyle = P.eye;
-      fishCtx.beginPath();
-      fishCtx.arc(item.size * 0.68, -item.size * 0.055, Math.max(1.15, item.size * 0.032), 0, Math.PI * 2);
-      fishCtx.fill();
-      fishCtx.restore();
     };
 
-    const drawRipple = (ripple: Ripple) => {
-      rippleCtx.save();
-      rippleCtx.translate(ripple.x, ripple.y);
-      rippleCtx.scale(1, 0.36); // 椭圆 = 俯视水面的透视
-      rippleCtx.globalCompositeOperation = P.comp;
-      for (let index = 0; index < 4; index += 1) {
-        const radius = ripple.radius + index * 13;
-        const alpha = ripple.life * ripple.strength * (1 - index / 4.8);
-        const gradient = rippleCtx.createLinearGradient(-radius, 0, radius, 0);
-        gradient.addColorStop(0, `${P.ripple[0]}0)`);
-        gradient.addColorStop(0.28, `${P.ripple[0]}${(alpha * 0.22).toFixed(3)})`);
-        gradient.addColorStop(0.56, `${P.ripple[1]}${(alpha * 0.48).toFixed(3)})`);
-        gradient.addColorStop(0.82, `${P.ripple[2]}${(alpha * 0.18).toFixed(3)})`);
-        gradient.addColorStop(1, `${P.ripple[0]}0)`);
-        rippleCtx.beginPath();
-        rippleCtx.ellipse(0, 0, radius, radius, 0, 0, Math.PI * 2);
-        rippleCtx.strokeStyle = gradient;
-        rippleCtx.lineWidth = index === 0 ? 1.25 : 0.72;
-        rippleCtx.shadowColor = 'rgba(201,168,106,.25)';
-        rippleCtx.shadowBlur = index === 0 ? 7 : 3;
-        rippleCtx.stroke();
+    const step = (): void => {
+      if (!reduce) {
+        for (let i = 0; i < fish.length; i += 1) {
+          const f = fish[i];
+          f.x += f.speed * STEP * f.direction;
+          if (f.direction > 0 && f.x > 1.18) f.x = -0.18;
+          if (f.direction < 0 && f.x < -0.18) f.x = 1.18;
+        }
+        if (elapsed - lastAmbientAt > 4400) {
+          lastAmbientAt = elapsed;
+          addRipple(width * (0.56 + Math.random() * 0.3), height * (0.46 + Math.random() * 0.26), 0.22);
+        }
+        for (let i = ripples.length - 1; i >= 0; i -= 1) {
+          ripples[i].r += 1.1;
+          ripples[i].life -= 0.0116;
+          if (ripples[i].life <= 0) ripples.splice(i, 1);
+        }
       }
-      rippleCtx.restore();
+      render(elapsed);
     };
 
-    const onPointerMove = (event: PointerEvent) => {
+    const tick = (now: number): void => {
+      raf = requestAnimationFrame(tick);
+      const delta = now - last;
+      if (delta < STEP) return;
+      last = now - (delta % STEP);
+      elapsed += STEP;
+      step();
+    };
+
+    const onPointerMove = (event: PointerEvent): void => {
       mouse.x = event.clientX;
       mouse.y = event.clientY;
       const now = performance.now();
-      if (now - lastPointerAt > 170) {
+      if (now - lastPointerAt > 190) {
         lastPointerAt = now;
         addRipple(event.clientX, event.clientY);
+        if (reduce) render(elapsed);
       }
     };
-    const onPointerLeave = () => {
+
+    const onPointerLeave = (): void => {
       mouse.x = -9999;
       mouse.y = -9999;
     };
-    const onVisibility = () => {
-      if (document.hidden) {
-        cancelAnimationFrame(raf);
-        raf = 0;
-      } else if (!raf) {
-        previous = performance.now();
-        raf = requestAnimationFrame(animate);
-      }
+
+    const onResize = (): void => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        resize();
+        render(elapsed);
+      }, 160);
     };
 
-    const animate = (time: number) => {
-      const delta = Math.min(40, time - previous);
-      previous = time;
-      fishCtx.clearRect(0, 0, width, height);
-      if (!reduceMotion) {
-        for (const item of fish) {
-          item.x += item.speed * delta * item.direction;
-          if (item.direction > 0 && item.x > 1.18) item.x = -0.18;
-          if (item.direction < 0 && item.x < -0.18) item.x = 1.18;
-        }
-      }
-      [...fish].sort((a, b) => a.depth - b.depth).forEach((item) => drawFish(item, time));
+    const stop = (): void => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    };
 
-      rippleCtx.clearRect(0, 0, width, height);
-      if (!reduceMotion && time - lastAmbientAt > 4400) {
-        lastAmbientAt = time;
-        addRipple(width * (0.56 + Math.random() * 0.3), height * (0.46 + Math.random() * 0.26), 0.23);
-      }
-      for (let index = ripples.length - 1; index >= 0; index -= 1) {
-        const ripple = ripples[index];
-        drawRipple(ripple);
-        ripple.radius += reduceMotion ? 0 : 0.62;
-        ripple.life -= reduceMotion ? 0.02 : 0.0065;
-        if (ripple.life <= 0) ripples.splice(index, 1);
-      }
-      raf = requestAnimationFrame(animate);
+    const start = (): void => {
+      if (reduce || raf) return;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onVisibility = (): void => {
+      if (document.hidden) stop();
+      else start();
     };
 
     resize();
-    addRipple(window.innerWidth * 0.72, window.innerHeight * 0.58, 0.27);
-    window.addEventListener('resize', resize);
+    addRipple(window.innerWidth * 0.72, window.innerHeight * 0.58, 0.26);
+    render(0);
+    window.addEventListener('resize', onResize);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     document.documentElement.addEventListener('mouseleave', onPointerLeave);
     document.addEventListener('visibilitychange', onVisibility);
-    raf = requestAnimationFrame(animate);
+    start();
 
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
+      stop();
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener('resize', onResize);
       window.removeEventListener('pointermove', onPointerMove);
       document.documentElement.removeEventListener('mouseleave', onPointerLeave);
       document.removeEventListener('visibilitychange', onVisibility);
@@ -307,11 +331,10 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
 
   return (
     <div className={`aquatic-luxury-background ${className}`} aria-hidden="true">
-      <div className="aquatic-luxury-gradient" />
+      <div className="aquatic-luxury-vignette" />
       <div className="aquatic-luxury-grain" />
       <div className="aquatic-luxury-water" />
-      <canvas ref={fishCanvasRef} className="aquatic-luxury-fish" />
-      <canvas ref={rippleCanvasRef} className="aquatic-luxury-ripples" />
+      <canvas ref={canvasRef} className="aquatic-luxury-scene" />
     </div>
   );
 };
