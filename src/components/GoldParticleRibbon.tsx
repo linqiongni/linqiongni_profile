@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /**
  * 主页首屏的金色粒子丝带（斜贯整屏，亮部落在右上）。

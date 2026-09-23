@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /**
  * 首屏动态水面背景：低频自动水波 + 鼠标互动金色涟漪。
