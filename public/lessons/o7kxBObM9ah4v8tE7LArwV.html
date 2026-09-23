@@ -299,6 +299,87 @@ html{scrollbar-color:#CFCABE #F5F3EC !important}
 </style>
 </head>
 <body data-page-node-id="ylHqAKwcPDfQzRFw1GdDyk">
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~.wrap,body>.aq-bg~main,body>.aq-bg~.page,body>.aq-bg~article{position:relative;z-index:1}
+</style>
+<div class="aq-bg" aria-hidden="true"><canvas id="aq-fish"></canvas><canvas id="aq-ripple"></canvas></div>
+<script>(function(){if(window.__aqKit)return;window.__aqKit=1;try{
+var fc=document.getElementById('aq-fish'),rc=document.getElementById('aq-ripple');
+if(!fc||!rc)return;var fx=fc.getContext('2d'),rx=rc.getContext('2d');if(!fx||!rx)return;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var mobile=matchMedia('(max-width: 768px)').matches;var n=mobile?3:6;
+var w=0,h=0,d=1,raf=0,prev=performance.now(),lp=0,amb=0;
+var mouse={x:-9999,y:-9999},rips=[];
+var tones=[['rgba(46,62,80,.16)','rgba(88,98,110,.40)','rgba(146,112,54,.34)','rgba(58,74,92,.12)'],
+['rgba(40,58,76,.15)','rgba(78,96,112,.38)','rgba(120,104,66,.30)','rgba(52,70,88,.10)'],
+['rgba(50,66,84,.14)','rgba(96,110,124,.36)','rgba(150,120,64,.28)','rgba(60,78,96,.10)']];
+var fish=[];for(var i=0;i<n;i++){fish.push({x:(i%2===0?-0.12+i*0.17:1.12-i*0.13),y:0.51+(i%4)*0.09,
+s:mobile?20+(i%3)*7:23+(i%4)*10,v:0.000012+(i%4)*0.000003,a:0.11+(i%3)*0.03,
+dir:(i%2===0?1:-1),ph:i*1.37,depth:0.48+(i%4)*0.12,t:tones[i%3]});}
+function size(){d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;
+[fc,rc].forEach(function(c){c.width=Math.floor(w*d);c.height=Math.floor(h*d);c.style.width=w+'px';c.style.height=h+'px';});
+fx.setTransform(d,0,0,d,0,0);rx.setTransform(d,0,0,d,0,0);}
+function addRipple(x,y,s){if(rips.length>18)rips.shift();rips.push({x:x,y:y,r:5,l:1,s:s});}
+function drawFish(f,t){
+var x=f.x*w,y=f.y*h+Math.sin(t*0.00032+f.ph)*20*f.depth;
+var dx=mouse.x-x,dy=mouse.y-y;
+if(Math.sqrt(dx*dx+dy*dy)<170){x-=dx*0.032;y-=dy*0.045;}
+var swim=Math.sin(t*0.0032+f.ph),bend=swim*f.s*0.10;
+fx.save();fx.translate(x,y);if(f.dir<0)fx.scale(-1,1);
+fx.rotate(Math.sin(t*0.00055+f.ph)*0.035);fx.scale(1,0.72);
+fx.globalAlpha=f.a;fx.filter='blur('+((1-f.depth)*2.1)+'px)';
+var g=fx.createLinearGradient(-f.s,0,f.s,0);
+g.addColorStop(0,f.t[0]);g.addColorStop(0.42,f.t[1]);g.addColorStop(0.72,f.t[2]);g.addColorStop(1,f.t[3]);
+fx.fillStyle=g;
+fx.beginPath();fx.moveTo(-f.s*0.72,bend*0.18);
+fx.bezierCurveTo(-f.s*0.42,-f.s*0.34,f.s*0.34,-f.s*0.30,f.s*0.80,-f.s*0.05);
+fx.quadraticCurveTo(f.s*0.95,0,f.s*0.80,f.s*0.07);
+fx.bezierCurveTo(f.s*0.34,f.s*0.30,-f.s*0.42,f.s*0.34,-f.s*0.72,bend*0.18);
+fx.closePath();fx.fill();
+fx.save();fx.translate(-f.s*0.68,bend*0.18);fx.rotate(swim*0.24);
+fx.beginPath();fx.moveTo(0,0);
+fx.bezierCurveTo(-f.s*0.30,-f.s*0.08,-f.s*0.62,-f.s*0.42,-f.s*0.78,-f.s*0.32);
+fx.quadraticCurveTo(-f.s*0.55,0,-f.s*0.78,f.s*0.32);
+fx.bezierCurveTo(-f.s*0.62,f.s*0.42,-f.s*0.30,f.s*0.08,0,0);
+fx.fill();fx.restore();
+fx.globalAlpha=f.a*0.72;
+fx.beginPath();fx.moveTo(-f.s*0.10,-f.s*0.25);fx.quadraticCurveTo(f.s*0.05,-f.s*0.52,f.s*0.28,-f.s*0.22);fx.closePath();fx.fill();
+fx.beginPath();fx.moveTo(f.s*0.12,f.s*0.20);fx.quadraticCurveTo(f.s*0.28,f.s*0.43,f.s*0.40,f.s*0.14);fx.closePath();fx.fill();
+fx.globalAlpha=Math.min(0.34,f.a*1.4);fx.fillStyle='rgba(120,96,48,.55)';
+fx.beginPath();fx.arc(f.s*0.68,-f.s*0.055,Math.max(1.1,f.s*0.032),0,6.283);fx.fill();
+fx.restore();}
+function ring(o){rx.save();rx.translate(o.x,o.y);rx.scale(1,0.36);
+for(var i=0;i<3;i++){var r=o.r+i*12,a=o.l*o.s*(1-i/3.6);
+var g=rx.createLinearGradient(-r,0,r,0);
+g.addColorStop(0,'rgba(150,158,170,0)');
+g.addColorStop(0.3,'rgba(150,158,170,'+(a*0.16).toFixed(3)+')');
+g.addColorStop(0.58,'rgba(176,140,70,'+(a*0.30).toFixed(3)+')');
+g.addColorStop(1,'rgba(150,158,170,0)');
+rx.beginPath();rx.ellipse(0,0,r,r,0,0,6.283);rx.strokeStyle=g;rx.lineWidth=i?0.7:1.2;rx.stroke();}
+rx.restore();}
+function loop(t){var dt=Math.min(40,t-prev);prev=t;
+fx.clearRect(0,0,w,h);
+if(!reduce){for(var i=0;i<fish.length;i++){var f=fish[i];f.x+=f.v*dt*f.dir;
+if(f.dir>0&&f.x>1.18)f.x=-0.18;if(f.dir<0&&f.x<-0.18)f.x=1.18;}}
+fish.slice().sort(function(a,b){return a.depth-b.depth;}).forEach(function(f){drawFish(f,t);});
+rx.clearRect(0,0,w,h);
+if(!reduce&&t-amb>5200){amb=t;addRipple(w*(0.56+Math.random()*0.3),h*(0.46+Math.random()*0.26),0.18);}
+for(var i=rips.length-1;i>=0;i--){ring(rips[i]);rips[i].r+=reduce?0:0.6;rips[i].l-=reduce?0.02:0.0065;
+if(rips[i].l<=0)rips.splice(i,1);}
+raf=requestAnimationFrame(loop);}
+function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
+function start(){if(!raf){prev=performance.now();raf=requestAnimationFrame(loop);}}
+size();addEventListener('resize',size);
+addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;
+var now=performance.now();if(now-lp>190){lp=now;addRipple(e.clientX,e.clientY,0.5);}},{passive:true});
+addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
+document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+addRipple(innerWidth*0.72,innerHeight*0.58,0.24);start();
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
 <div data-page-node-id="5rSKaD3c7ynomuOSqqaIyo" class="wrap">
 <header data-page-node-id="Yv2LE0730e4Td0Idn3Aw3M"><h1 data-page-node-id="1Thgbj0sXCRrCmaGPVkRcl"><!--pnid:dGV8y5ggHccdj73XCmtV9V-->对标品牌加盟模式与法律风险初判报告 —— 以「蒙自源」为样本</h1><div data-page-node-id="6dPhv6TqwBg7mxPUK756FK" class="sub"><!--pnid:lhtlkWFbjjPDKuG1zYpPMu-->CANTEEN FRANCHISE LEGAL STUDY</div><div data-page-node-id="Zk2484nWtWLCd4ZPv9X8IR" class="seal"><!--pnid:xMG4MZKSVjpWNnKVClLLQY-->法务<br data-page-node-id="ebaUeipDnXM2CWnWZhN9Cz"><!--pnid:ZT1bB44VMu0t8cijzWPfAP-->研习</div></header>
 <nav data-page-node-id="rjFTb9CfvJi8Gyivfeqk0e"><div data-page-node-id="IJqTfwBK7mxYSShJqMuUKw" class="nt"><!--pnid:NnFAnDOTg8mO5tRS099ga8-->目 录</div><ol data-page-node-id="c0HVF1hNUGu03y3RTAzCm0"><li data-page-node-id="ES4VqYetqGdOHDzRExI8yJ"><a data-page-node-id="k5M5Rz4wGN7tUxNIuyuiDf" href="#〇报告框架6步对标法"><!--pnid:thxx680mSVSG5hMKWKzfA0-->〇、报告框架（6 步对标法）</a></li><li data-page-node-id="pPCcBe40KeZi8A4brjAL5f"><a data-page-node-id="9tGFIB0Xm2SJjthRIBZkaF" href="#一加盟模式识别它是直营为主加盟为主还是托管联营"><!--pnid:q4z8w395rCsSnGNnL2rU3K-->一、加盟模式识别：它是直营为主、加盟为主，还是托管/联营？</a></li><li data-page-node-id="r2j0GBzanRGbWO9oXjjeNM"><a data-page-node-id="f1VrTN1B9WzgjKx39JtFFz" href="#二收入结构拆解每一项的法律定性与退费风险"><!--pnid:wep7mQ0QjVuZjYe2j7T1hA-->二、收入结构拆解：每一项的法律定性与退费风险</a></li><li data-page-node-id="LDecKDbGMko1Mgk9QBrSZR"><a data-page-node-id="V7CtkvHlyBpzsvlaOLhTKZ" href="#三公开可见的法律风险6维度查什么在哪查怎么看"><!--pnid:0PeT2a0VFjaFgp5jrc2yQm-->三、公开可见的法律风险：6 维度「查什么 / 在哪查 / 怎么看」</a></li><li data-page-node-id="RaF643yaYFJWXYogy8ehbo" class="lv3"><a data-page-node-id="zbORpMfGG1A4pHf6TkoR5A" href="#维度1特许人资质主体资格"><!--pnid:GxMoA4V035XRr0Sy0QCiTU-->维度 1 · 特许人资质（主体资格）</a></li><li data-page-node-id="0ZO3DSIWet8p3srvla1gPh" class="lv3"><a data-page-node-id="alz6ZCWA5zNSGF3WIJwX4R" href="#维度2备案"><!--pnid:eKmHUdPLdPgG82xpCkvatP-->维度 2 · 备案</a></li><li data-page-node-id="ja5TiXHtXO9pGjuiqHooZr" class="lv3"><a data-page-node-id="VOtbU9mloeoRUfrfl63lS8" href="#维度3商标布局"><!--pnid:tI5rnNbeTsJeDK4Mz1EUgs-->维度 3 · 商标布局</a></li><li data-page-node-id="BF4pKocE81kAq3Vthl2Wfz" class="lv3"><a data-page-node-id="dB1oRPYILa85yzkMODYHIl" href="#维度4招商话术"><!--pnid:wtOcWmIJU15QxWHIF2W147-->维度 4 · 招商话术</a></li><li data-page-node-id="jHeaIqeIcU6VYkfSS5nsXq" class="lv3"><a data-page-node-id="y46RGjt4NV8dUQj5FUJKtj" href="#维度5门店纠纷司法"><!--pnid:21AxDYtp7cDBJ96QXobvgA-->维度 5 · 门店纠纷（司法）</a></li><li data-page-node-id="eno37pyWeLj0SjezLBnzdK" class="lv3"><a data-page-node-id="lQBOUqc3SvjGd4gkjztIeg" href="#维度6食安处罚"><!--pnid:fkmtPk2EXnfGzoDP3g5KKl-->维度 6 · 食安处罚</a></li><li data-page-node-id="wFMenLJs67BoohsTAI33uy"><a data-page-node-id="0aKbatcOIIvZthb8ncY9VQ" href="#四对标品牌风险初判表模板可直接复制复用"><!--pnid:pZD1GxC7c5hImxL1PAd6pt-->四、《对标品牌风险初判表》模板（可直接复制复用）</a></li><li data-page-node-id="UxFktQd6ZRKTNZqzMiavuj"><a data-page-node-id="4Kyw92UYFyd6qSRvrgdiE4" href="#五中式快餐品牌最致命的三个法律软肋"><!--pnid:KLU5IyMz6W3uAuLhhKx6ho-->五、中式快餐品牌最致命的三个法律软肋</a></li><li data-page-node-id="OMWR1F6guuYUc2JApuuTVt"><a data-page-node-id="PNz5oUwAGPEFxBRgGiCdGh" href="#附本次核实的线索来源清单"><!--pnid:QMIWETi6vNVDXoVbMcIYHo-->附：本次核实的线索来源清单</a></li></ol></nav>
