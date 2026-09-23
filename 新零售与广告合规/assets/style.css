@@ -51,6 +51,11 @@ html[data-theme="dark"] {
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
 }
 
+html[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html[data-theme="dark"] ::-webkit-scrollbar-track { background: #091A2E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #1B2E45; border-radius: 5px; border: 2px solid #091A2E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #2A3E52; }
+html[data-theme="dark"] { scrollbar-width: thin; scrollbar-color: #1B2E45 #091A2E; }
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
