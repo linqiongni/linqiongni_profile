@@ -6,8 +6,8 @@
 :root{
   --bg:#FDFCF9; --bg2:#F5F1E7; --card:#FFFFFF;
   --panel:#FFFFFF; --panel2:#FAF7F0; --panel3:#F5F1E7;
-  --tx:#1D1D1F; --tx2:#57575C; --tx3:#6E6E73;
-  --ink:#1D1D1F; --ink2:#57575C; --ink3:#6E6E73;
+  --tx:#091A2E; --tx2:#57575C; --tx3:#6E6E73;
+  --ink:#091A2E; --ink2:#57575C; --ink3:#6E6E73;
   --line:#E8E2D6; --line2:#D8D0BE;
   --gold:#8A6716; --gold-soft:rgba(138,103,22,.10); --hover:rgba(184,159,107,.12);
   --jade:#1F6B6A; --red:#A0322A; --blue:#2C5C8A;
@@ -18,14 +18,14 @@
 }
 /* 深色模式（主站切换 / 跟随系统） */
 html[data-theme="dark"]{
-  --bg:#0f1115; --bg2:#161b23; --card:#141922;
-  --panel:#141922; --panel2:#161b23; --panel3:#1b212b;
-  --tx:#e9e7e2; --tx2:#a9b1be; --tx3:#8b939f;
-  --ink:#e9e7e2; --ink2:#a9b1be; --ink3:#8b939f;
-  --line:#272e3a; --line2:#3a4351;
-  --gold:#c9a227; --gold-soft:rgba(201,162,39,.10); --hover:rgba(201,162,39,.10);
+  --bg:#091A2E; --bg2:#102943; --card:#0C1B2B;
+  --panel:#0C1B2B; --panel2:#102943; --panel3:#102943;
+  --tx:#F4EFE4; --tx2:#93A6BC; --tx3:#93A6BC;
+  --ink:#F4EFE4; --ink2:#93A6BC; --ink3:#93A6BC;
+  --line:#1B2E45; --line2:#1B2E45;
+  --gold:#C9A86A; --gold-soft:rgba(201,162,39,.10); --hover:rgba(201,162,39,.10);
   --jade:#4a9d9c; --red:#c05c4e; --blue:#5b8dd6;
-  --on-gold:#0f1115;
+  --on-gold:#091A2E;
   --dash:rgba(255,255,255,.10);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
   color-scheme:dark;

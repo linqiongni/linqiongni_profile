@@ -170,18 +170,18 @@ td code{font-size:12px}
 /* ---------- Dark mode ---------- */
 html[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#1C1C1E; --bg2:#232325; --card:#252527; --line:#3A3A3D; --line2:#4A4A4E;
-  --tx:#F5F5F7; --tx2:#A1A1AA; --tx3:#8E8E93;
-  --gold:#C9B183; --gold2:#C9A183; --blue:#7BA6C9; --red:#C98A82; --jade:#6FB3B1;
+  --bg:#091A2E; --bg2:#102943; --card:#0C1B2B; --line:#1B2E45; --line2:#1B2E45;
+  --tx:#F4EFE4; --tx2:#93A6BC; --tx3:#93A6BC;
+  --gold:#C9A86A; --gold2:#C9A86A; --blue:#7BA6C9; --red:#C98A82; --jade:#6FB3B1;
   --shadow:0 1px 3px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
 }
 html[data-theme="dark"] body{background:var(--bg);color:var(--tx);}
-html[data-theme="dark"] .sidebar a:hover{background:#2A2A2C;color:var(--tx);}
-html[data-theme="dark"] .sidebar a.on{background:#2F2F31;color:var(--gold);}
+html[data-theme="dark"] .sidebar a:hover{background:#102943;color:var(--tx);}
+html[data-theme="dark"] .sidebar a.on{background:#102943;color:var(--gold);}
 html[data-theme="dark"] .dlink:hover{background:#22302F;}
-html[data-theme="dark"] .content .warn{background:#3A3320;color:#F5E6A3;}
-html[data-theme="dark"] .content strong{color:#E6E6EA;}
-html[data-theme="dark"] tbody tr:hover{background:#2A2A2C;}
+html[data-theme="dark"] .content .warn{background:#2A2418;color:#F5E6A3;}
+html[data-theme="dark"] .content strong{color:#D9D4C9;}
+html[data-theme="dark"] tbody tr:hover{background:#102943;}
 
 
 /* ===== 手机端顶栏收纳（2026-09-19 移动适配，对齐融资法务样板；仅窄屏生效，宽屏样式零改动） =====

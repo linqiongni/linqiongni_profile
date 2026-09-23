@@ -143,8 +143,8 @@
     }
   });
 
-  // 初始化：默认浅色，与主站保持一致
-  const saved = getSaved() || 'light';
+  // 初始化：默认深色（深海军蓝），与主站默认模式保持一致
+  const saved = getSaved() || 'dark';
   setTheme(saved, { silent: true });
 
   if (document.readyState === 'loading') {

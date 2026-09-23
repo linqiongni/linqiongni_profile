@@ -27,7 +27,7 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #1C1C1E;
+  --bg: #091A2E;
   --panel: #232326;
   --panel2: #232326;
   --panel3: #2A2A2E;
@@ -36,7 +36,7 @@ html[data-theme="dark"] {
   --ink3: #8A8A90;
   --line: #35353A;
   --line2: #45454B;
-  --gold: #C9B183;
+  --gold: #C9A86A;
   --gold-soft: rgba(201, 177, 131, .16);
   --hover: rgba(201, 177, 131, .12);
   --codebg: #2A2A2E;
@@ -263,7 +263,7 @@ details:not([open]) > summary .cue::after { content: "展开"; }
   background: var(--gold); color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center;
   font-weight: 700;
 }
-html[data-theme="dark"] .flow .st::before { color: #1C1C1E; }
+html[data-theme="dark"] .flow .st::before { color: #091A2E; }
 .flow .st h4 { margin: 0 0 4px; }
 .flow .st p:last-child { margin-bottom: 0; }
 
