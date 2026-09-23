@@ -8,6 +8,9 @@ import './aquatic-luxury-background.css';
  * 现在不再画任何底色，页面底色完全由站点自身提供（深 #2C2C2E / 浅 #E8E8E6），
  * 这里只负责：深度晕影 + 水面细纹 + 鱼影 + 涟漪。
  *
+ * 交互（2026-09-23）：鱼影默认**朝向鼠标游动**——指针在窗口内时整群向光标聚拢并微微绕游，
+ * 鱼头始终对准游动方向；鼠标移出窗口后恢复水平漂游。
+ *
  * 性能（之前卡顿的主因）：
  * - 每帧不再调用 ctx.filter(blur) / shadowBlur（canvas 最贵的两类操作）。
  *   改为**预渲染鱼精灵**：每条鱼按 8 个摆尾相位各生成一张离屏图，之后每帧只剩 drawImage。
@@ -25,6 +28,9 @@ type Fish = {
   phase: number;
   depth: number;
   tone: number;
+  vx: number;
+  vy: number;
+  face: number;
 };
 
 type Ripple = { x: number; y: number; r: number; life: number; s: number };
@@ -120,6 +126,14 @@ function buildSprites(size: number, depth: number, tone: string[], dpr: number):
   return out;
 }
 
+/** 两角之差，结果落在 (-π, π]，用于平滑转向 */
+function angDiff(a: number, b: number): number {
+  let d = a - b;
+  while (d > Math.PI) d -= Math.PI * 2;
+  while (d < -Math.PI) d += Math.PI * 2;
+  return d;
+}
+
 export interface AquaticLuxuryBackgroundProps {
   fishCount?: number;
   className?: string;
@@ -164,10 +178,13 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       size: mobile ? 20 + (index % 3) * 7 : 23 + (index % 4) * 10,
       speed: 0.000012 + (index % 4) * 0.000003,
       alpha: (0.18 + (index % 3) * 0.05) * gain,
-      direction: index % 2 === 0 ? 1 : -1,
+      direction: (index % 2 === 0 ? 1 : -1) as 1 | -1,
       phase: index * 1.37,
       depth: 0.48 + (index % 4) * 0.12,
       tone: index % TONES.length,
+      vx: 0,
+      vy: 0,
+      face: index % 2 === 0 ? 0 : Math.PI,
     }));
 
     const resize = (): void => {
@@ -221,20 +238,15 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
         const frames = sprites[fish.indexOf(f)];
         if (!frames || !frames.length) continue;
         let x = f.x * width;
-        let y = f.y * height + Math.sin(time * 0.00032 + f.phase) * 20 * f.depth;
-        const dx = mouse.x - x;
-        const dy = mouse.y - y;
-        if (dx * dx + dy * dy < 28900) {
-          x -= dx * 0.032;
-          y -= dy * 0.045;
-        }
+        let y = f.y * height + Math.sin(time * 0.00032 + f.phase) * 14 * f.depth;
         const idx = Math.floor(((time * 0.0032 + f.phase) / (Math.PI * 2)) * PHASES) % PHASES;
         const sp = frames[(idx + PHASES) % PHASES];
+        if (!sp) continue;
         ctx.save();
         ctx.globalAlpha = f.alpha;
         ctx.translate(x, y);
-        ctx.rotate(Math.sin(time * 0.00055 + f.phase) * 0.035);
-        if (f.direction < 0) ctx.scale(-1, 1);
+        // 鱼头朝向游动方向（即鼠标方向），并叠加轻微摆头
+        ctx.rotate(f.face + Math.sin(time * 0.00055 + f.phase) * 0.05);
         ctx.drawImage(sp.img, -sp.w / 2, -sp.h / 2, sp.w, sp.h);
         ctx.restore();
       }
@@ -242,11 +254,46 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
 
     const step = (): void => {
       if (!reduce) {
+        const mouseActive = mouse.x > -9000;
         for (let i = 0; i < fish.length; i += 1) {
           const f = fish[i];
-          f.x += f.speed * STEP * f.direction;
-          if (f.direction > 0 && f.x > 1.18) f.x = -0.18;
-          if (f.direction < 0 && f.x < -0.18) f.x = 1.18;
+          let targetX: number;
+          let targetY: number;
+          if (mouseActive) {
+            // 朝鼠标游：吸引 + 轻微绕游，避免整群叠在指针上
+            const mx = mouse.x / width;
+            const my = mouse.y / height;
+            const tx = mx - f.x;
+            const ty = my - f.y;
+            const dist = Math.hypot(tx, ty) || 1;
+            const pull = Math.min(0.0024, 0.0005 + dist * 0.02);
+            const swirl = 0.0007 * (1 - f.depth);
+            targetX = f.x + (tx / dist) * pull + (-ty / dist) * swirl;
+            targetY = f.y + (ty / dist) * pull + (tx / dist) * swirl;
+          } else {
+            // 无鼠标时沿原方向水平漂游
+            targetX = f.x + f.speed * STEP * f.direction;
+            targetY = f.y;
+          }
+          f.vx += (targetX - f.x) * 0.12;
+          f.vy += (targetY - f.y) * 0.12;
+          const vmax = 0.0045;
+          const vmag = Math.hypot(f.vx, f.vy);
+          if (vmag > vmax) {
+            f.vx = (f.vx / vmag) * vmax;
+            f.vy = (f.vy / vmag) * vmax;
+          }
+          f.x += f.vx;
+          f.y += f.vy;
+          // 朝向实际游动方向（平滑过渡）
+          const vlen = Math.hypot(f.vx, f.vy);
+          const faceTarget = vlen > 1e-5 ? Math.atan2(f.vy, f.vx) : f.face;
+          f.face += angDiff(faceTarget, f.face) * 0.14;
+          // 水平环绕；垂直限制在画面内
+          if (f.x > 1.16) f.x = -0.16;
+          else if (f.x < -0.16) f.x = 1.16;
+          if (f.y > 1.12) f.y = -0.12;
+          else if (f.y < -0.12) f.y = 1.12;
         }
         if (elapsed - lastAmbientAt > 4400) {
           lastAmbientAt = elapsed;
