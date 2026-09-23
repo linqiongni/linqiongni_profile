@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { WaterRippleBackdrop } from './WaterRippleBackdrop';
 
 /** 首屏核心专长：用领域深度替代数字体量，突出港企法务实战纵深 */
 const HERO_STRENGTHS: {
@@ -51,9 +50,6 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 flex items-center justify-center">
         <div className="w-[760px] h-[760px] rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] blur-2xl" />
       </div>
-
-      {/* 动态水面背景：低频水波 + 鼠标互动涟漪（背景之上、正文之下） */}
-      <WaterRippleBackdrop />
 
       {/* 与正文共用同一栅格（max-w-7xl + px-6/12），使左侧内容与下方各板块严格对齐 */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 flex-1 min-h-0 flex flex-col">

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { DarkLuxuryBackground } from './DarkLuxuryBackground';
+import { WaterRippleBackdrop } from './WaterRippleBackdrop';
 
 /** 深海军蓝豪华风首屏（无人物肖像，纯文字排版） */
 export const HeroDark: React.FC = () => {
@@ -11,6 +12,8 @@ export const HeroDark: React.FC = () => {
   return (
     <section id="hero-section" className="luxury-hero relative min-h-screen overflow-hidden pt-24 md:pt-36">
       <DarkLuxuryBackground />
+      {/* 动态水面背景：低频金波 + 鼠标互动涟漪（背景之上、正文之下） */}
+      <WaterRippleBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 pb-12 sm:px-12 md:min-h-[calc(100vh-9rem)]">
         <div className="max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="mb-7 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.23em] text-[#C9A86A] sm:text-xs">
