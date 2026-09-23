@@ -284,85 +284,124 @@ html{scrollbar-color:#CFCABE #F5F3EC !important}
 </style>
 <link rel="stylesheet" href="assets/layout.css">
 </head><body data-station="employee">
-<!-- AQUATIC_BG_KIT_START -->
+<!-- AQUATIC_BG_KIT_START v2 -->
 <style id="aquatic-bg-kit">
 .aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
 body>.aq-bg~*{position:relative;z-index:1}
 </style>
-<div class="aq-bg" aria-hidden="true"><canvas id="aq-fish"></canvas><canvas id="aq-ripple"></canvas></div>
-<script>(function(){if(window.__aqKit)return;window.__aqKit=1;try{
-var fc=document.getElementById('aq-fish'),rc=document.getElementById('aq-ripple');
-if(!fc||!rc)return;var fx=fc.getContext('2d'),rx=rc.getContext('2d');if(!fx||!rx)return;
+<div class="aq-bg" id="aq-bg" aria-hidden="true"><canvas id="aq-scene"></canvas></div>
+<script>(function(){if(window.__aqKitV2)return;window.__aqKitV2=1;try{
+var cv=document.getElementById('aq-scene');if(!cv)return;var g=cv.getContext('2d');if(!g)return;
+var host=document.getElementById('aq-bg');
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var mobile=matchMedia('(max-width: 768px)').matches;var n=mobile?3:6;
-var w=0,h=0,d=1,raf=0,prev=performance.now(),lp=0,amb=0;
-var mouse={x:-9999,y:-9999},rips=[];
-var tones=[['rgba(46,62,80,.16)','rgba(88,98,110,.40)','rgba(146,112,54,.34)','rgba(58,74,92,.12)'],
-['rgba(40,58,76,.15)','rgba(78,96,112,.38)','rgba(120,104,66,.30)','rgba(52,70,88,.10)'],
-['rgba(50,66,84,.14)','rgba(96,110,124,.36)','rgba(150,120,64,.28)','rgba(60,78,96,.10)']];
-var fish=[];for(var i=0;i<n;i++){fish.push({x:(i%2===0?-0.12+i*0.17:1.12-i*0.13),y:0.51+(i%4)*0.09,
-s:mobile?20+(i%3)*7:23+(i%4)*10,v:0.000012+(i%4)*0.000003,a:0.11+(i%3)*0.03,
-dir:(i%2===0?1:-1),ph:i*1.37,depth:0.48+(i%4)*0.12,t:tones[i%3]});}
-function size(){d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;
-[fc,rc].forEach(function(c){c.width=Math.floor(w*d);c.height=Math.floor(h*d);c.style.width=w+'px';c.style.height=h+'px';});
-fx.setTransform(d,0,0,d,0,0);rx.setTransform(d,0,0,d,0,0);}
-function addRipple(x,y,s){if(rips.length>18)rips.shift();rips.push({x:x,y:y,r:5,l:1,s:s});}
-function drawFish(f,t){
+var mobile=matchMedia('(max-width: 768px)').matches;
+var N=mobile?3:6,PH=8,STEP=33.3;
+var w=0,h=0,d=1,raf=0,last=0,el=0,lp=0,amb=0,rt=0,built=0,vis=1;
+var mouse={x:-9999,y:-9999},rips=[],sprites=[],fish=[];
+function lum(){var s=getComputedStyle(document.body).backgroundColor||'rgb(255,255,255)';
+var m=/rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(s);if(!m)return 255;
+return 0.2126*(+m[1])+0.7152*(+m[2])+0.0722*(+m[3]);}
+var dark=lum()<128;
+var TON=dark
+?[['rgba(87,108,128,.22)','rgba(168,152,120,.72)','rgba(210,176,106,.60)','rgba(96,122,147,.16)'],
+['rgba(80,104,124,.20)','rgba(150,146,126,.66)','rgba(196,168,112,.54)','rgba(92,118,142,.14)'],
+['rgba(94,114,134,.18)','rgba(176,158,124,.62)','rgba(216,182,110,.52)','rgba(104,128,150,.14)']]
+:[['rgba(58,74,92,.20)','rgba(96,104,116,.52)','rgba(150,116,58,.44)','rgba(70,88,108,.14)'],
+['rgba(52,68,86,.18)','rgba(88,104,120,.48)','rgba(132,110,62,.40)','rgba(64,82,102,.12)'],
+['rgba(62,78,96,.17)','rgba(104,112,124,.46)','rgba(158,126,64,.38)','rgba(74,92,112,.12)']];
+var EYE=dark?'rgba(235,210,156,.88)':'rgba(120,96,48,.5)';
+var GAIN=dark?1:0.92;
+var RIP=dark?['rgba(150,172,200,','rgba(218,186,126,']:['rgba(150,160,176,','rgba(176,140,70,'];
+var COMP=dark?'lighter':'source-over';
+for(var i=0;i<N;i++){fish.push({x:(i%2===0?-0.12+i*0.17:1.12-i*0.13),y:0.51+(i%4)*0.09,
+s:mobile?20+(i%3)*7:23+(i%4)*10,v:0.000012+(i%4)*0.000003,a:(0.17+(i%3)*0.05)*GAIN,
+dir:(i%2===0?1:-1),ph:i*1.37,depth:0.48+(i%4)*0.12,t:i%3});}
+function paint(c,s,t,bend,tail){
+var gr=c.createLinearGradient(-s,0,s,0);
+gr.addColorStop(0,t[0]);gr.addColorStop(.42,t[1]);gr.addColorStop(.72,t[2]);gr.addColorStop(1,t[3]);
+c.fillStyle=gr;
+c.beginPath();c.moveTo(-s*.72,bend*.18);
+c.bezierCurveTo(-s*.42,-s*.34,s*.34,-s*.30,s*.80,-s*.05);
+c.quadraticCurveTo(s*.95,0,s*.80,s*.07);
+c.bezierCurveTo(s*.34,s*.30,-s*.42,s*.34,-s*.72,bend*.18);
+c.closePath();c.fill();
+c.save();c.translate(-s*.68,bend*.18);c.rotate(tail);
+c.beginPath();c.moveTo(0,0);
+c.bezierCurveTo(-s*.30,-s*.08,-s*.62,-s*.42,-s*.78,-s*.32);
+c.quadraticCurveTo(-s*.55,0,-s*.78,s*.32);
+c.bezierCurveTo(-s*.62,s*.42,-s*.30,s*.08,0,0);
+c.fill();c.restore();
+c.beginPath();c.moveTo(-s*.10,-s*.25);c.quadraticCurveTo(s*.05,-s*.52,s*.28,-s*.22);c.closePath();c.fill();
+c.beginPath();c.moveTo(s*.12,s*.20);c.quadraticCurveTo(s*.28,s*.43,s*.40,s*.14);c.closePath();c.fill();}
+function build(){sprites=[];
+for(var i=0;i<fish.length;i++){var f=fish[i],blur=(1-f.depth)*2.1;
+var pw=f.s*2.2+blur*8,ph=f.s*1.3+blur*8,arr=[];
+for(var k=0;k<PH;k++){var swim=Math.sin(k/PH*6.283185);
+var c=document.createElement('canvas');
+c.width=Math.max(1,Math.ceil(pw*d));c.height=Math.max(1,Math.ceil(ph*d));
+var q=c.getContext('2d');if(!q)continue;
+q.setTransform(d,0,0,d,0,0);q.translate(pw/2,ph/2);q.scale(1,0.72);
+if(blur>0.05)q.filter='blur('+blur+'px)';
+paint(q,f.s,TON[f.t],swim*f.s*.10,swim*.24);
+q.filter='none';q.fillStyle=EYE;q.globalAlpha=.5;
+q.beginPath();q.arc(f.s*.68,-f.s*.055,Math.max(1.15,f.s*.032),0,6.283185);q.fill();
+arr.push({i:c,w:pw,h:ph});}
+sprites.push(arr);}
+built=1;}
+function size(){d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;
+cv.width=Math.max(1,Math.floor(w*d));cv.height=Math.max(1,Math.floor(h*d));
+cv.style.width=w+'px';cv.style.height=h+'px';g.setTransform(d,0,0,d,0,0);}
+function addRip(x,y,s){if(rips.length>12)rips.shift();rips.push({x:x,y:y,r:5,l:1,s:s});}
+function ring(o){var base=o.l*o.s;if(base<=0.004)return;
+var R=o.r+26;g.save();g.translate(o.x,o.y);g.scale(1,0.36);g.globalCompositeOperation=COMP;
+var gr=g.createLinearGradient(-R,0,R,0);
+gr.addColorStop(0,RIP[0]+'0)');gr.addColorStop(.3,RIP[0]+'.5)');
+gr.addColorStop(.58,RIP[1]+'1)');gr.addColorStop(1,RIP[0]+'0)');
+g.strokeStyle=gr;
+for(var i=0;i<3;i++){g.globalAlpha=base*(1-i/3.4)*(dark?.5:.42);
+g.beginPath();g.ellipse(0,0,o.r+i*12,o.r+i*12,0,0,6.283185);
+g.lineWidth=i?0.7:1.2;g.stroke();}
+g.restore();}
+function render(t){if(!w||!h)return;g.clearRect(0,0,w,h);
+for(var i=0;i<rips.length;i++)ring(rips[i]);
+if(!built)return;
+var ord=fish.slice().sort(function(a,b){return a.depth-b.depth;});
+for(var k=0;k<ord.length;k++){var f=ord[k],fr=sprites[fish.indexOf(f)];
+if(!fr||!fr.length)continue;
 var x=f.x*w,y=f.y*h+Math.sin(t*0.00032+f.ph)*20*f.depth;
 var dx=mouse.x-x,dy=mouse.y-y;
-if(Math.sqrt(dx*dx+dy*dy)<170){x-=dx*0.032;y-=dy*0.045;}
-var swim=Math.sin(t*0.0032+f.ph),bend=swim*f.s*0.10;
-fx.save();fx.translate(x,y);if(f.dir<0)fx.scale(-1,1);
-fx.rotate(Math.sin(t*0.00055+f.ph)*0.035);fx.scale(1,0.72);
-fx.globalAlpha=f.a;fx.filter='blur('+((1-f.depth)*2.1)+'px)';
-var g=fx.createLinearGradient(-f.s,0,f.s,0);
-g.addColorStop(0,f.t[0]);g.addColorStop(0.42,f.t[1]);g.addColorStop(0.72,f.t[2]);g.addColorStop(1,f.t[3]);
-fx.fillStyle=g;
-fx.beginPath();fx.moveTo(-f.s*0.72,bend*0.18);
-fx.bezierCurveTo(-f.s*0.42,-f.s*0.34,f.s*0.34,-f.s*0.30,f.s*0.80,-f.s*0.05);
-fx.quadraticCurveTo(f.s*0.95,0,f.s*0.80,f.s*0.07);
-fx.bezierCurveTo(f.s*0.34,f.s*0.30,-f.s*0.42,f.s*0.34,-f.s*0.72,bend*0.18);
-fx.closePath();fx.fill();
-fx.save();fx.translate(-f.s*0.68,bend*0.18);fx.rotate(swim*0.24);
-fx.beginPath();fx.moveTo(0,0);
-fx.bezierCurveTo(-f.s*0.30,-f.s*0.08,-f.s*0.62,-f.s*0.42,-f.s*0.78,-f.s*0.32);
-fx.quadraticCurveTo(-f.s*0.55,0,-f.s*0.78,f.s*0.32);
-fx.bezierCurveTo(-f.s*0.62,f.s*0.42,-f.s*0.30,f.s*0.08,0,0);
-fx.fill();fx.restore();
-fx.globalAlpha=f.a*0.72;
-fx.beginPath();fx.moveTo(-f.s*0.10,-f.s*0.25);fx.quadraticCurveTo(f.s*0.05,-f.s*0.52,f.s*0.28,-f.s*0.22);fx.closePath();fx.fill();
-fx.beginPath();fx.moveTo(f.s*0.12,f.s*0.20);fx.quadraticCurveTo(f.s*0.28,f.s*0.43,f.s*0.40,f.s*0.14);fx.closePath();fx.fill();
-fx.globalAlpha=Math.min(0.34,f.a*1.4);fx.fillStyle='rgba(120,96,48,.55)';
-fx.beginPath();fx.arc(f.s*0.68,-f.s*0.055,Math.max(1.1,f.s*0.032),0,6.283);fx.fill();
-fx.restore();}
-function ring(o){rx.save();rx.translate(o.x,o.y);rx.scale(1,0.36);
-for(var i=0;i<3;i++){var r=o.r+i*12,a=o.l*o.s*(1-i/3.6);
-var g=rx.createLinearGradient(-r,0,r,0);
-g.addColorStop(0,'rgba(150,158,170,0)');
-g.addColorStop(0.3,'rgba(150,158,170,'+(a*0.16).toFixed(3)+')');
-g.addColorStop(0.58,'rgba(176,140,70,'+(a*0.30).toFixed(3)+')');
-g.addColorStop(1,'rgba(150,158,170,0)');
-rx.beginPath();rx.ellipse(0,0,r,r,0,0,6.283);rx.strokeStyle=g;rx.lineWidth=i?0.7:1.2;rx.stroke();}
-rx.restore();}
-function loop(t){var dt=Math.min(40,t-prev);prev=t;
-fx.clearRect(0,0,w,h);
-if(!reduce){for(var i=0;i<fish.length;i++){var f=fish[i];f.x+=f.v*dt*f.dir;
-if(f.dir>0&&f.x>1.18)f.x=-0.18;if(f.dir<0&&f.x<-0.18)f.x=1.18;}}
-fish.slice().sort(function(a,b){return a.depth-b.depth;}).forEach(function(f){drawFish(f,t);});
-rx.clearRect(0,0,w,h);
-if(!reduce&&t-amb>5200){amb=t;addRipple(w*(0.56+Math.random()*0.3),h*(0.46+Math.random()*0.26),0.18);}
-for(var i=rips.length-1;i>=0;i--){ring(rips[i]);rips[i].r+=reduce?0:0.6;rips[i].l-=reduce?0.02:0.0065;
-if(rips[i].l<=0)rips.splice(i,1);}
-raf=requestAnimationFrame(loop);}
+if(dx*dx+dy*dy<28900){x-=dx*0.032;y-=dy*0.045;}
+var idx=Math.floor(((t*0.0032+f.ph)/6.283185)*PH)%PH;
+var sp=fr[(idx+PH)%PH];
+g.save();g.globalAlpha=f.a;g.translate(x,y);
+g.rotate(Math.sin(t*0.00055+f.ph)*0.035);
+if(f.dir<0)g.scale(-1,1);
+g.drawImage(sp.i,-sp.w/2,-sp.h/2,sp.w,sp.h);g.restore();}}
+function step(){if(!reduce){
+for(var i=0;i<fish.length;i++){var f=fish[i];f.x+=f.v*STEP*f.dir;
+if(f.dir>0&&f.x>1.18)f.x=-0.18;if(f.dir<0&&f.x<-0.18)f.x=1.18;}
+if(el-amb>4400){amb=el;addRip(w*(0.56+Math.random()*0.3),h*(0.46+Math.random()*0.26),0.22);}
+for(var j=rips.length-1;j>=0;j--){rips[j].r+=1.1;rips[j].l-=0.0116;if(rips[j].l<=0)rips.splice(j,1);}}
+render(el);}
+function loop(now){raf=requestAnimationFrame(loop);
+var dt=now-last;if(dt<STEP)return;last=now-(dt%STEP);el+=STEP;
+if(!built)build();
+step();}
 function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
-function start(){if(!raf){prev=performance.now();raf=requestAnimationFrame(loop);}}
-size();addEventListener('resize',size);
+function start(){if(reduce||raf||!vis)return;last=performance.now();raf=requestAnimationFrame(loop);}
+function onSize(){clearTimeout(rt);rt=setTimeout(function(){size();if(!built)build();render(el);},160);}
+size();
+addEventListener('resize',onSize);
 addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;
-var now=performance.now();if(now-lp>190){lp=now;addRipple(e.clientX,e.clientY,0.5);}},{passive:true});
+var n=performance.now();if(n-lp>190){lp=n;addRip(e.clientX,e.clientY,dark?0.52:0.46);
+if(reduce){if(!built)build();render(el);}}},{passive:true});
 addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
-addRipple(innerWidth*0.72,innerHeight*0.58,0.24);start();
+if(window.IntersectionObserver&&host){new IntersectionObserver(function(es){
+vis=es[0].isIntersecting?1:0;vis?start():stop();},{threshold:0}).observe(host);}
+addRip(innerWidth*0.72,innerHeight*0.58,0.26);
+if(reduce){build();render(0);}else{start();}
 }catch(e){}})();</script>
 <!-- AQUATIC_BG_KIT_END --><div class="topbar"><div class="wrap"><div class="brand">劳动用工实务</div><div class="nav"><a href="index.html">首页</a><a href="base.html">通用底座</a><a href="employer.html">用人单位</a><a href="employee.html" style="border-color:var(--gold);color:var(--gold)">劳动者</a><a href="clash.html">攻防对照</a><a href="tools.html">计算器</a><a href="templates.html">文书模板</a><a href="law.html">法条术语</a><a href="route.html">28 天路线</a></div></div></div><div class="wrap"><div class="hero"><div class="kicker">劳动用工实务 · LABOR PRACTICE</div><h1>劳动者视角 · 维权</h1><p class="sub">从求职到被解聘、赔偿的常见维权场景</p></div><h2 style="border-left-color:var(--jade)">本节目录</h2><ul class="idxlist"><li><a href="#h_B1"><span class="n">B1</span><span class="t">求职防坑：骗局、陷阱与 Offer 的效力</span></a></li><li><a href="#h_B2"><span class="n">B2</span><span class="t">入职必做的 6 件事</span></a></li><li><a href="#h_B3"><span class="n">B3</span><span class="t">在职权益：工资、加班、年假与调岗</span></a></li><li><a href="#h_B4-1"><span class="n">B4-1</span><span class="t">工伤：上下班路上出车祸算不算？</span></a></li><li><a href="#h_B4-2"><span class="n">B4-2</span><span class="t">孕期、产期、哺乳期：三期不是免死金牌，但确实解雇保护</span></a></li><li><a href="#h_B4-3"><span class="n">B4-3</span><span class="t">职业病、医疗期与职场性骚扰</span></a></li><li><a href="#h_B5"><span class="n">B5</span><span class="t">被解聘：先分清六种走法，再谈钱</span></a></li><li><a href="#h_B6"><span class="n">B6</span><span class="t">维权实操：证据、路径、申请书与败诉反例</span></a></li></ul><section id="B1"><h2 id="h_B1">B1　求职防坑：骗局、陷阱与 Offer 的效力</h2><div><span class="badge g">求职</span><span class="badge g">收费陷阱</span><span class="badge g">Offer</span></div><p class="sub" style="margin:10px 0 4px">找工作阶段踩的坑，往往要到离职时才爆发。这一节帮你在签字之前就把雷排掉。</p><p>求职是劳动关系的起点，也是证据最少、最容易吃亏的阶段。这一节讲四类坑：招聘骗局、收费陷阱、试用期陷阱、用工形式陷阱。</p><h3>一、六类招聘骗局</h3><table><thead><tr><th>骗局</th><th>表现</th><th>怎么识别与应对</th></tr></thead><tbody><tr><td style="color:var(--tx)"><b>收费型</b></td><td>以报名费、体检费、培训费、押金、工装费、建档费等名义收钱</td><td><b>任何形式的收费都不合法</b>：用人单位招用劳动者，不得要求提供担保或以其他名义收取财物（第 9 条）。要你先交钱的，直接拒绝并保留证据向劳动监察投诉</td></tr><tr><td style="color:var(--tx)"><b>扣押证件型</b></td><td>扣押身份证、毕业证、学位证原件</td><td>同样违反第 9 条。原件一律不交，只能提供复印件并注明“仅供入职核验使用”</td></tr><tr><td style="color:var(--tx)"><b>试岗无薪型</b></td><td>先试岗 3–7 天，不合适不给钱</td><td><b>只要提供了劳动就应当支付报酬</b>，不存在“试岗无薪”。试岗期也应认定劳动关系，可主张工资</td></tr><tr><td style="color:var(--tx)"><b>培训贷型</b></td><td>以入职为名要求先参加付费培训，推荐贷款</td><td>正规入职培训不得收费，更不得诱导贷款。遇到“培训贷”立即终止并报警或投诉</td></tr><tr><td style="color:var(--tx)"><b>挂靠/皮包型</b></td><td>签约主体与实际工作单位不一致，或主体为无实际经营的空壳</td><td>签约前在<b>国家企业信用信息公示系统</b>查主体全称、统一社会信用代码、法定代表人、注册地址、经营状态</td></tr><tr><td style="color:var(--tx)"><b>虚假高薪型</b></td><td>招聘写月薪 1.5 万，入职后变成底薪 3000 + 提成</td><td>要求把薪酬结构<b>写进 Offer 与劳动合同</b>；口头承诺不写进合同基本无法主张</td></tr></tbody></table><div class="key">一条铁律：<b>正规用人单位不会向求职者收一分钱。</b> 任何名义的收费——报名费、体检费、培训费、押金、工装费、建档费——都是违法的，也是骗局的强信号。</div><h3>二、Offer（录用通知书）对你意味着什么</h3><p>Offer 送达后属于<b>要约</b>，你基于合理信赖接受后（比如辞掉原工作、搬家、拒绝其他录用），单位无正当理由撤销的，构成<b>缔约过失责任</b>，你可以主张赔偿实际损失。</p><ul><li><b>可主张的损失</b>：交通费、搬家费、体检费、原单位离职后的工资损失（空窗期）、放弃其他录用机会的损失；</li><li><b>举证关键</b>：Offer 原件（或邮件/微信）、你已接受的证据、实际支出凭证、原单位离职证明；</li><li><b>注意</b>：Offer 与后续劳动合同不一致的，一般以劳动合同为准。所以签合同时务必核对，发现被“降级”要当场提出。</li></ul><div class="note">Offer 里写“年薪 30 万”但没写构成的，风险很大。签合同前一定要求写明：<b>固定部分多少、浮动部分多少、发放条件是什么、发放时间</b>。入职后才发现“30 万里 20 万是绩效且几乎拿不到”，几乎无法维权。</div><h3>三、三方协议与应届生</h3><ul><li><b>三方协议</b>（毕业生、学校、用人单位）是民事协议，不等于劳动合同；毕业报到后仍应签订书面劳动合同；</li><li>三方协议中的违约金条款<b>一般有效</b>（属民事约定），但金额明显过高的可请求调整；</li><li><b>⚠ 待核实</b>：在校生实习期间是否构成劳动关系，各地口径不同。多数地区认为利用业余时间勤工助学不构成劳动关系，但已毕业或全职实习的，可能被认定事实劳动关系。</li></ul><h3>四、试用期陷阱</h3><table><thead><tr><th>陷阱</th><th>真相</th><th>你的应对</th></tr></thead><tbody><tr><td style="color:var(--tx)">“试用期不签合同，转正再签”</td><td>违法。用工之日起 1 个月内必须签书面合同，否则从第 2 个月起付<b>二倍工资</b></td><td>要求立即签；不签的保留上班证据（打卡、工作群、工资流水），日后可主张二倍工资</td></tr><tr><td style="color:var(--tx)">“试用期不缴社保”</td><td>违法。试用期包含在合同期内，必须依法参保</td><td>要求参保；未参保的可作为被迫离职的理由之一（⚠ 各地口径）</td></tr><tr><td style="color:var(--tx)">“试用期工资打八折”</td><td>不低于本单位同岗最低档工资或合同约定工资的 <b>80%</b>，且不低于当地最低工资</td><td>低于标准的补足差额</td></tr><tr><td style="color:var(--tx)">“试用期公司可以随便辞退”</td><td>错。只有被证明<b>不符合录用条件</b>（且录用条件事先书面告知）才能解除，且要说明理由</td><td>要求公司书面说明解除理由；没有事先书面录用条件的，属于违法解除，可主张 2N</td></tr><tr><td style="color:var(--tx)">“先签 3 个月试用期合同”</td><td><b>仅约定试用期的，试用期不成立，该期限即为劳动合同期限</b></td><td>主张该期限为正式合同期，且公司不得再约定试用期</td></tr><tr><td style="color:var(--tx)">“试用期延长一次”</td><td><b>同一单位与同一劳动者只能约定一次试用期</b></td><td>拒绝第二次试用期</td></tr></tbody></table><h3>五、用工形式陷阱</h3><table><thead><tr><th>陷阱</th><th>真相</th><th>风险</th></tr></thead><tbody><tr><td style="color:var(--tx)"><b>假外包真派遣</b></td><td>名义是外包，实际由发包方考勤、排班、考核、下指令</td><td>发生争议时可能认定劳务派遣甚至事实劳动关系，但维权时主体认定会很麻烦</td></tr><tr><td style="color:var(--tx)"><b>劳务派遣超范围</b></td><td>派遣只能在临时性（≤6 个月）、辅助性、替代性岗位，用工比例 ≤10%</td><td>超范围使用不影响你的劳动关系（与派遣单位），但同工同酬、社保可能有问题</td></tr><tr><td style="color:var(--tx)"><b>非全日制被当全日制用</b></td><td>名义 4 小时/日，实际天天 8 小时</td><td>超时即应认定标准劳动关系，可主张加班费与经济补偿</td></tr><tr><td style="color:var(--tx)"><b>个体户/灵活用工平台发薪</b></td><td>要求注册个体户，以“合作”名义发报酬</td><td>⚠ 各地口径不同。若不改变实际管理方式，仍可能认定劳动关系；但会大幅增加你维权的举证难度</td></tr></tbody></table><div class="note">最重要的一条：<b>搞清楚到底谁是你老板</b>。签约主体、发薪主体、实际管理主体可能不是同一家。发生争议时，被申请人写错主体会直接被驳回。签任何文件前，先看清楚<b>盖章的是哪家公司</b>，去国家企业信用信息公示系统核对全称与统一社会信用代码。</div><div class="split"><div class="side emp"><div class="sh">用人单位</div><div class="sb">Offer：主张已写明生效条件未成就，或劳动者未按期答复；试用期解除：提交事先书面告知并签收的录用条件 + 与条件对应的考核结果</div></div><div class="side wkr"><div class="sh">劳动者</div><div class="sb">Offer：提交 Offer 原件、已接受的证据、因信赖而产生的实际支出凭证与原单位离职证明；试用期解除：主张录用条件从未书面告知、考核标准主观、考核未在试用期内完成，属违法解除，主张 2N</div></div></div><div class="mid">争议焦点：Offer 是否可撤销 / 试用期解除是否合法</div><h3>六、B1 自查清单（入职前）</h3><div class="pbar" id="pb27"><i></i></div><ul class="chk" data-pb="pb27" data-pn="pn27"><li><input type="checkbox" id="pb27_0"><label for="pb27_0" style="cursor:pointer"><span>我查过公司全称、统一社会信用代码与经营状态</span></label></li><li><input type="checkbox" id="pb27_1"><label for="pb27_1" style="cursor:pointer"><span>我没有被收取任何名义的费用</span></label></li><li><input type="checkbox" id="pb27_2"><label for="pb27_2" style="cursor:pointer"><span>我没有交出身份证、毕业证等证件原件</span></label></li><li><input type="checkbox" id="pb27_3"><label for="pb27_3" style="cursor:pointer"><span>Offer 写明了薪酬构成、工作地点、岗位与生效条件</span></label></li><li><input type="checkbox" id="pb27_4"><label for="pb27_4" style="cursor:pointer"><span>我要求并确认了试用期长度与试用期工资</span></label></li><li><input type="checkbox" id="pb27_5"><label for="pb27_5" style="cursor:pointer"><span>我确认了签约主体与实际工作单位是否一致</span></label></li><li><input type="checkbox" id="pb27_6"><label for="pb27_6" style="cursor:pointer"><span>我保存了招聘广告截图（含薪酬与岗位描述）</span></label></li><li><input type="checkbox" id="pb27_7"><label for="pb27_7" style="cursor:pointer"><span>我保存了与 HR 的所有沟通记录（微信、邮件、短信）</span></label></li></ul><div class="pnum" id="pn27">0 / 8</div><div class="tpl"><div class="th2"><span>求职避坑：面试时该问清楚的 10 个问题</span><button class="btn gold" onclick="cp('cp28',this)">复制</button></div><pre id="cp28">1. 与我签订劳动合同的主体是哪家公司？（要求给出全称，当场去国家企业信用信息公示系统核对）
 2. 薪酬结构是什么？固定多少、浮动多少、浮动部分的考核标准与发放时间？
