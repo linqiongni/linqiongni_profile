@@ -96,3 +96,27 @@
 .lux-kicker { font-size: 10px; line-height: 1.4; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #967a48; }
 .lux-title { font-family: Georgia, 'Times New Roman', 'Noto Serif SC', serif; font-size: clamp(2.35rem, 5vw, 4.5rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 400; }
 .prose-lux p:first-child::first-letter { float: left; margin: .08em .12em 0 0; font-family: Georgia, serif; font-size: 3.7rem; line-height: .8; color: #9b7b42; }
+
+
+/* Homepage water ripple backdrop (low intensity) */
+.water-ripple-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.46;
+  transition: opacity 0.3s ease;
+}
+
+.dark .water-ripple-backdrop { opacity: 0.58; }
+
+@media (max-width: 768px) {
+  .water-ripple-backdrop { opacity: 0.34; }
+  .dark .water-ripple-backdrop { opacity: 0.38; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water-ripple-backdrop { opacity: 0.32; }
+}
