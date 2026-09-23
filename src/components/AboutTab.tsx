@@ -12,8 +12,9 @@ const PRINCIPLES = [
 ];
 
 export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => (
-  <div id="tab-about-content" className="lux-page py-5 sm:py-10">
-    <section className="grid gap-8 border-b border-[#D8D0C2] pb-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:pb-16">
+  <div id="tab-about-content" className="bg-[#FDFCF9] !text-[#091A2E] -mx-6 sm:-mx-12 px-6 sm:px-12">
+    <div className="max-w-7xl mx-auto py-5 sm:py-10">
+      <section className="grid gap-8 border-b border-[#D8D0C2] pb-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:pb-16">
       <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="relative lg:max-w-md">
         <div className="absolute -left-4 -top-4 hidden h-20 w-20 border-l border-t border-[#B89F6B]/70 lg:block" />
         {/* 手机端：人物以紧凑头像内嵌在「关于我」内容顶部；桌面端恢复大图 + 姓名卡 */}
@@ -56,5 +57,6 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => (
       <div className="mb-10 flex items-end justify-between"><div><p className="lux-kicker">Foundation</p><h3 className="mt-3 font-serif text-3xl">专业基础与实践轨迹</h3></div><p className="hidden text-xs uppercase tracking-[.16em] text-[#99948B] sm:block">Education · Practice · Growth</p></div>
       <div className="grid gap-0 lg:grid-cols-3">{TIMELINE_DATA.map((item,i)=><article key={`${item.title}-${i}`} className="relative border-l border-[#CBB98E] py-1 pl-7 pr-7 pb-10"><span className="absolute -left-[4px] top-1 h-[7px] w-[7px] rounded-full bg-[#B89F6B]"/><p className="text-[10px] uppercase tracking-[.16em] text-[#9B7B42]">{item.year || `0${i+1}`}</p><h4 className="mt-3 text-base font-medium leading-6">{item.title}</h4><p className="mt-3 text-sm leading-7 text-[#77736B]">{item.description}</p></article>)}</div>
     </section>
+    </div>
   </div>
 );
