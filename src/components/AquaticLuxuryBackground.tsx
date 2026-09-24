@@ -176,8 +176,8 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       x: index % 2 === 0 ? -0.12 + index * 0.17 : 1.12 - index * 0.13,
       y: 0.51 + (index % 4) * 0.09,
       size: mobile ? 20 + (index % 3) * 7 : 23 + (index % 4) * 10,
-      speed: 0.000012 + (index % 4) * 0.000003,
-      alpha: (0.18 + (index % 3) * 0.05) * gain,
+      speed: 0.0000075 + (index % 4) * 0.0000018,
+      alpha: (0.10 + (index % 3) * 0.03) * gain,
       direction: (index % 2 === 0 ? 1 : -1) as 1 | -1,
       phase: index * 1.37,
       depth: 0.48 + (index % 4) * 0.12,
@@ -275,9 +275,9 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
             targetX = f.x + f.speed * STEP * f.direction;
             targetY = f.y;
           }
-          f.vx += (targetX - f.x) * 0.12;
-          f.vy += (targetY - f.y) * 0.12;
-          const vmax = 0.0045;
+          f.vx += (targetX - f.x) * 0.08;
+          f.vy += (targetY - f.y) * 0.08;
+          const vmax = 0.0024;
           const vmag = Math.hypot(f.vx, f.vy);
           if (vmag > vmax) {
             f.vx = (f.vx / vmag) * vmax;
