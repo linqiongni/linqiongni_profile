@@ -1,0 +1,97 @@
+/* 水下鱼影 + 鼠标涟漪 + 水面波纹 —— 移植自主页 AquaticLuxuryBackground / WaterRippleBackground
+   纯效果层，不铺底色（底色由站点 var(--bg) 提供，已与主页一致 #FDFCF9 / #1C1C1E）
+   层级：鱼影 z-index:0 → 正文 z-index:10 → 水面波纹 canvas z-index:50(soft-light) */
+
+.aquatic-luxury-background {
+  position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+}
+.aquatic-luxury-vignette,
+.aquatic-luxury-grain,
+.aquatic-luxury-water,
+.aquatic-luxury-scene {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+
+/* 极淡深度晕影：不引入色相，只在视觉中心抬一点亮度 */
+.aquatic-luxury-vignette {
+  background: radial-gradient(ellipse at 66% 38%, rgba(255, 255, 255, .045), transparent 62%);
+}
+html[data-theme="dark"] .aquatic-luxury-vignette {
+  background: radial-gradient(ellipse at 66% 38%, rgba(198, 210, 228, .05), transparent 62%);
+}
+
+/* 细微噪点 */
+.aquatic-luxury-grain {
+  opacity: .018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+html[data-theme="dark"] .aquatic-luxury-grain { opacity: .035; }
+
+/* 水面细纹（俯视透视），浅色档压到几乎不可见 */
+.aquatic-luxury-water {
+  inset: 28% -18% -38%;
+  width: auto; height: auto;
+  opacity: .18;
+  background: repeating-radial-gradient(ellipse at 72% 60%,
+    rgba(150, 120, 60, .06) 0 1px,
+    rgba(120, 140, 160, .045) 2px 3px,
+    transparent 5px 21px);
+  transform: perspective(900px) rotateX(61deg) scale(1.42);
+  transform-origin: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  animation: aquatic-water-breathe 10s ease-in-out infinite alternate;
+}
+html[data-theme="dark"] .aquatic-luxury-water {
+  opacity: .3;
+  background: repeating-radial-gradient(ellipse at 72% 60%,
+    rgba(211, 180, 117, .075) 0 1px,
+    rgba(150, 175, 200, .055) 2px 3px,
+    transparent 5px 21px);
+}
+
+/* 承载鱼影的 canvas */
+.aquatic-luxury-scene { z-index: 1; }
+
+/* 水面波纹 canvas（soft-light 叠加，不遮挡文字，对齐主页 z-[45] 之上） */
+.water-ripple-canvas {
+  position: fixed; inset: 0; z-index: 50; width: 100%; height: 100%;
+  pointer-events: none; mix-blend-mode: soft-light;
+}
+
+/* ===== 正文玻璃化：让鱼影与波纹透出（对齐主页半透明面板风格） ===== */
+.topbar {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+}
+.side {
+  background: color-mix(in srgb, var(--panel3) 84%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 5;
+}
+.main {
+  position: relative;
+  z-index: 10;
+  background: transparent;
+  /* 给阅读区一层极淡纸面提亮，深色鱼影下仍保证文字可读；同时不遮住鱼影 */
+  background-image: linear-gradient(to bottom,
+    color-mix(in srgb, var(--bg) 68%, transparent),
+    color-mix(in srgb, var(--bg) 80%, transparent));
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+@keyframes aquatic-water-breathe { to { transform: perspective(900px) rotateX(61deg) scale(1.49); } }
+
+@media (max-width: 768px) {
+  .aquatic-luxury-water { opacity: .12; transform: perspective(800px) rotateX(64deg) scale(1.75); }
+  html[data-theme="dark"] .aquatic-luxury-water { opacity: .22; }
+  .main { background-image: linear-gradient(to bottom,
+    color-mix(in srgb, var(--bg) 78%, transparent),
+    color-mix(in srgb, var(--bg) 88%, transparent)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aquatic-luxury-water { animation: none; }
+}
