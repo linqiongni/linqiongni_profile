@@ -122,3 +122,22 @@
 - **现象**：多个会话同时操作本仓库（2026-09-14 有会话在推餐饮法务第 11/12 周），已提交的编辑可能在磁盘上被回退。
 - **解法**：改完**立即 grep 逐处校验**，不要只信工具返回成功；跨多行的大块编辑优先改成单行写法；push 前先 `git fetch` 确认无分叉。
 - **预防**：这条与 #08 是同一个病根——**不要相信任何一次写入的回执。**
+
+---
+
+### #19 · git push 报 `Empty reply from server`（本地代理挂了）
+
+- **现象**（2026-09-27 全环境都过了一遍才碰到）：`git push` 报 `Empty reply from server`，
+  而 `git config` 里 proxy / userAgent / http.version 全是对的。
+- **根因**：**本地代理 `HTTPS_PROXY=http://127.0.0.1:<端口>` 挂了**，不是网络、不是配置。
+  环境变量里的代理指向了一个已经失效的端口。
+- **解法**（一次判定，别靠眼看）：
+  ```bash
+  curl -s -o /dev/null -w "走代理: %{http_code}\n" https://github.com          # 000 = 代理挂了
+  curl -s -o /dev/null -w "绕过代理: %{http_code}\n" --noproxy '*' https://github.com  # 200 = 直连好的
+  env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push origin main
+  ```
+- **教训**：`git push` 失败但 `curl` 正常，**症状只有一个，根因却有四种**（空 proxy 配置 / UA 被拦 / HTTP2 被拒 / 代理挂了）。
+  排障必须走 checklist，不靠直觉。完整四步在 `MIGRATION.md` 第三节。
+- **预防**：这也说明 `MIGRATION.md` 的排障表要**写实测案例、不能凭记忆写**——这张表当初漏了「代理挂了」这一条，
+  才让这次多绕了一圈。

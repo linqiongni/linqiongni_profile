@@ -86,10 +86,27 @@ curl -x $HTTPS_PROXY https://github.com && echo OK
 
 **现行有效组合**：`http.userAgent = curl/8.7.1` + `http.version = HTTP/1.1`。两条一起设，别只设一条。
 
-### 第四步：以上都排除，才是网络
+### 第四步：本地代理挂了（2026-09-27 实际踩到，症状最迷惑）
 
-真正的代理挂掉时，`curl https://github.com` 自己也会返回 `000`。
-这时才重试或让 Andy 自推。
+症状：`git push` 报 `Empty reply from server`，而前三步配置全对。
+
+判定方法（**一次判定，别靠眼看**）：
+
+```bash
+curl -s -o /dev/null -w "走代理: %{http_code}\n" https://github.com
+curl -s -o /dev/null -w "绕过代理: %{http_code}\n" --noproxy '*' https://github.com
+```
+
+- 前者 `000`、后者 `200` → **本地代理（通常是 `127.0.0.1:<端口>`）挂了，直连是好的。**
+
+解法（直连是通的，直接绕过代理推）：
+
+```bash
+env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push origin main
+```
+
+**这是真·第五种情况**：前三步都是配置错，这一步是环境问题，周期性复发。
+看到 `000` 先别急着重试十分钟——先跑上面那两行 curl 分清是代理挂了还是网络断了。
 
 > 这四条写在这里，是因为它们**换机器后大概率会复现一次**。新机器上第一次 push 失败，先回来查这张表。
 
