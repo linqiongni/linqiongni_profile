@@ -163,3 +163,5 @@
 | 2026-09-27 | 新增 `scripts/verify-online.sh`：收工「验线上 + 验推送」从一句提醒变成一条命令（`--wait` 等 GH Pages 缓存、退出码可串链、网络不通明说没验成）；`CONTRACT.md` 五版标题改「收工六件事」 | — |
 | 2026-09-27 | `process/开场白.md` 五版：第三节话术的「验线上」提为独立的无条件硬要求（此前夹在机制说明里被整段跳过，Andy 连提三次）；日志七轮 | — |
 | 2026-09-27 | 全仓库结构体检（只读）：查出 sync 与子站补丁方向相反（#21）、`public/lessons` 92 页孤儿已上线（#22）；报告见 `01-项目现状/结构体检-2026-09-27.md` | — |
+| 2026-09-27 | 根治 #21：子站主题补丁脚本化（`scripts/apply-theme-kit.py` + `scripts/theme-kit/` golden copy），并接进每条 `sync:*`；新增 `theme:apply`/`theme:unify`/`theme:check`。顺带发现线上 8 站一直是旧苹果黑，已统一为深海军蓝 v2；8 站 122 页标签配平自检归零 | #21 已根治、#22 已结案 |
+| 2026-09-27 | `scripts/README.md` 立为目录总说明（主题管线 + 课程页流水线 + 脚本坑位）；15 份历史日志从 `.workbuddy/memory/` 归档进 `04-每日日志/`；`.workbuddy/memory/MEMORY.md` 超限精简重写 | #22 |

@@ -27,7 +27,7 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #091A2E;
+  --bg: #1C1C1E;
   --panel: #232326;
   --panel2: #232326;
   --panel3: #2A2A2E;
@@ -36,7 +36,7 @@ html[data-theme="dark"] {
   --ink3: #8A8A90;
   --line: #35353A;
   --line2: #45454B;
-  --gold: #C9A86A;
+  --gold: #C9B183;
   --gold-soft: rgba(201, 177, 131, .16);
   --hover: rgba(201, 177, 131, .12);
   --codebg: #2A2A2E;
@@ -48,6 +48,7 @@ html[data-theme="dark"] {
   --bluebg: rgba(126, 166, 212, .12);
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
 }
+
 html[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
 html[data-theme="dark"] ::-webkit-scrollbar-track { background: #091A2E; }
 html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #1B2E45; border-radius: 5px; border: 2px solid #091A2E; }
@@ -292,7 +293,7 @@ details:not([open]) > summary .cue::after { content: "展开"; }
   background: var(--gold); color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center;
   font-weight: 700;
 }
-html[data-theme="dark"] .flow .st::before { color: #091A2E; }
+html[data-theme="dark"] .flow .st::before { color: #1C1C1E; }
 .flow .st h4 { margin: 0 0 4px; }
 .flow .st p:last-child { margin-bottom: 0; }
 

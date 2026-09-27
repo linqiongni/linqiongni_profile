@@ -141,3 +141,31 @@
   排障必须走 checklist，不靠直觉。完整四步在 `MIGRATION.md` 第三节。
 - **预防**：这也说明 `MIGRATION.md` 的排障表要**写实测案例、不能凭记忆写**——这张表当初漏了「代理挂了」这一条，
   才让这次多绕了一圈。
+
+---
+
+### #21 · 子站主题补丁只打在 public/，sync 后暗黑模式会消失 —— 已根治（2026-09-27）
+
+- **根因**：四个主题补丁块（`DARK_UNIFY` / `SUB_THEME_KIT` / `AQUATIC_BG_KIT` / `SUB_THEME_BRIDGE`）
+  只存在于 `public/<slug>/`，中文源目录里没有，且**全库没有任何注入脚本**，纯手工。
+  `rsync` 用源覆盖同名 HTML 时，块连着文件内容一起被抹掉。
+- **附带发现**：`public/` 里那套补丁是**旧苹果黑 v1**（`#1C1C1E` 系），与 2026-09-22 定稿的
+  深海军蓝口径（`#091A2E` 系）不符——也就是说线上 8 个子站一直是旧配色，只是没人发现。
+- **解法**：建立 `scripts/apply-theme-kit.py` + `scripts/theme-kit/`（golden copy），
+  并接进每条 `sync:*`：`rsync ... && python3 scripts/apply-theme-kit.py public/<slug>`。
+  新增 `theme:apply` / `theme:unify` / `theme:check` 三条命令。默认只补缺失，`--fix` 才刷新旧版。
+- **验证**：跑 `npm run sync:arbitration` 复现——rsync 抹掉块，脚本补回 1 份（不叠加），
+  块数 = 1；`npm run theme:check` 对 8 站 122 个 HTML 全部通过；标签配平自检 0 异常。
+- **预防**：中文源目录保持纯净，补丁只由脚本打进 `public/`；改配色改
+  `scripts/theme-kit/dark_unify.navy.txt` 后跑 `npm run theme:unify`。详见 `scripts/README.md`。
+
+---
+
+### #22 · public/lessons/ 92 个课程页 —— 核实为有意设计，不用下掉（2026-09-27）
+
+- **结论**：这批页面不是误发布。它由 `fetch_space_lessons.py` → `wire_lessons.py` 整套流水线
+  产生，落到 `public/lessons/{nodeId}.html`，再被 `CateringLegalTab.tsx` 的 `LOCAL_LESSON_IDS`
+  引用走站内免登录阅读。没有 `navConfig.ts` 里的 tab 是因为它是**内容**，不是导航条目。
+- **处置**：保留。流水线已写入 `scripts/README.md`，下次加课程照那条走，不必重新调研。
+- **隐私**：已复核，命中 qq/微信/邮箱/手机的案例全在 `data-page-node-id` 随机串里，无泄露。
+
