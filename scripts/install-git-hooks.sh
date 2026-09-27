@@ -147,6 +147,14 @@ do_push(){
   local out rc=0
   out="$(AUTO_SYNC=1 git push 2>&1)" || rc=$?
   if [ "$rc" -ne 0 ]; then
+    # 判据来自 MIGRATION 第三节：走代理 000 且绕过代理 200 = 本地代理挂了（git 的 CONNECT 回 502，curl 却通）
+    if [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 https://github.com)" = "000" ] && \
+       [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 --noproxy '*' https://github.com)" = "200" ]; then
+      log "本地代理看着挂了（走代理不通、绕过代理通），绕开代理自动重试一次"
+      out="$(AUTO_SYNC=1 env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push 2>&1)" || rc=$?
+    fi
+  fi
+  if [ "$rc" -ne 0 ]; then
     log "push 失败：$(printf '%s' "$out" | head -6)"
     printf '%s\n' "$out"
     warn "push 失败，改动还在本地，没丢。手动执行：git push"
