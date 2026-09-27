@@ -118,7 +118,8 @@ if [ -n "$NEEDLE" ]; then
   found="no"
   page=$(fetch "$URL")
   printf '%s' "$page" | grep -qF -- "$NEEDLE" && found="yes"
-  if [ "$found" = "no" ] && [ -n "$SLUG" ]; then
+  # 页面 HTML 里没有 ≠ 没上线：React 站点的内容常在首页引用的 js bundle 里
+  if [ "$found" = "no" ]; then
     BD=$(bundle_of)
     if [ -n "$BD" ]; then
       printf '%s' "$(fetch "$SITE$BD")" | grep -qF -- "$NEEDLE" && found="yes"
