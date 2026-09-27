@@ -22,25 +22,36 @@
 
 给 `process/` 档案库补上「半途打包」机制——让一个做了一半的功能能被完整带走：**代码 + 当前状态 + 下一步第一步**。起因是 Andy 问「开发一半的功能怎么打包上去，换个电脑能继续干」。
 
+现在的形态：断点卡 `HANDOFF.md`（七节）+ 快照脚本 `wip-snapshot.py` + **一键打包脚本 `wip-pack.py`**（Andy 说一句话就能打包）+ 契约第七节（红线：只推 wip）+ 换机器开场白（`MIGRATION.md` 〇节）。
+
 ## 二、现在的状态
 
-- 分支 / 最近提交：`main` / `bd3231f`（**线上已发布的就是这一版**；本卡里的改动都还没提交）
-- 代码能跑吗：能。本次改动只碰 `process/` 与 `scripts/`，这两处**都不进发布路径**（`dist/` 由 CI 构建），不会影响 linqiongni.top
-- 这次改了哪些文件：`process/HANDOFF.md`（新增）、`scripts/wip-snapshot.py`（新增）、`process/CONTRACT.md`（新增第七节）、`process/MIGRATION.md`（开场白扩为五件事 + wip 分支切换）、`process/README.md`（索引表 / 阅读路径 / 任务路径三处挂载）
+- 分支 / 最近提交：`main` / `a4d7522`（**线上已发布的就是这一版**）
+- 代码能跑吗：能。全部改动只碰 `process/` 与 `scripts/`，这两处**都不进发布路径**（`dist/` 由 CI 构建），不影响 linqiongni.top
+- 这次改了哪些文件：`process/HANDOFF.md`、`scripts/wip-snapshot.py`、`scripts/wip-pack.py`（新增）、`process/CONTRACT.md`（第七节）、`process/MIGRATION.md`、`process/README.md`
+- **本卡尚未推送到远端**——下面第四节第一步就是把这批打包送出去
 
 ## 三、做完了 / 还没做完
 
 - [x] 断点卡 `HANDOFF.md`（七节；含与 OPEN 台账 / 每日日志的边界表）
-- [x] 现场快照脚本 `scripts/wip-snapshot.py`（已跑通：中文路径不转义、清单去重、第七节之后内容不被覆盖）
-- [x] 三份文档挂载完成
-- [x] 新 AI 实测走一遍打包流程（发现三个问题，正在修）
-- [ ] 修复落盘：脚本加「前三节还是空模板就拒绝继续」的校验、`CONTRACT.md` 第七节文案修正——**就是下面第四步**
-- [ ] 本地两个孤儿 stash 与一条从未推送的分支怎么处理（Andy 定，见 `03-问题台账/OPEN.md` #20）
+- [x] 现场快照脚本 `scripts/wip-snapshot.py`（中文路径不转义、清单去重、第七节之后内容不被覆盖）
+- [x] 契约第七节「半途打包」+ 红线「绝不推 main」
+- [x] 换机器开场白定型（`MIGRATION.md` 〇节）
+- [x] 新 AI 实测走一遍流程，三轮反馈都落到文档里了
+- [x] 空卡校验：断点卡关键节没填，快照/打包脚本直接拒绝（退码 2）
+- [ ] **把当前这批打包推到 `wip/20260927` 分支** —— 就是下面第四节第一步
+- [ ] 本地两个孤儿 stash（`stash@{0}` 含 09-17 日志、`stash@{1} wip-MEMORY`）与从未推送的分支 `save-visual-f276c11` 怎么处理（Andy 定，见 `03-问题台账/OPEN.md` #20；**换机器就永久消失**）
 - [ ] 长期遗留（Andy 未点头）：动 `.gitignore` 让 `.workbuddy/` 入库、把 15 份历史日志搬进 `04-每日日志/`
 
 ## 四、下一步第一步
 
-把上面那两条「还没做完」修完并提交：① 给 `scripts/wip-snapshot.py` 加一道校验——`HANDOFF.md` 前三节若仍是空占位符，就拒绝生成快照并提示先填（现在缺的正是这道校验，实测里新 AI 明确指出「跳过填卡照跑后面四行，没有任何东西拦得住」）；② 修正 `CONTRACT.md` 第七节「四行」与实际五行对不上；③ 重跑脚本刷新第七节快照，再按第七节打包到 wip 分支。
+跑一键打包，把「半途打包机制」自己打包送出去：
+
+```bash
+python3 scripts/wip-pack.py -m "档案库半途打包机制：断点卡 + 快照脚本 + 一键打包 + 换机器开场白"
+```
+
+它会做四件事：校验断点卡填了没 → 刷新第七节现场快照 → 从 main 开 `wip/20260927` 并提交 → push 到远端，最后打印新机器上的恢复命令。跑完这条，本卡的接力棒才算真的交出去。
 
 ## 五、卡住的地方与备选方案
 
@@ -55,22 +66,19 @@
 
 ## 七、现场快照（脚本生成，别手改）
 
-_由 `python3 scripts/wip-snapshot.py` 自动写入_
+_由 `python3 scripts/wip-pack.py` 自动写入_
 
-- **抓于**：2026-09-27 14:41
+- **抓于**：2026-09-27 14:51
 - **分支**：`main`
-- **最近提交**：`bd3231f 2026-09-27 docs(process): 换机器开场白定型 + 契约补认领判据（第三次实测反馈）`
+- **最近提交**：`a4d7522 2026-09-27 docs: 项目 MEMORY.md 补半途打包要点（HANDOFF + wip 分支红线 + 校验优先于叮嘱）`
 - **已暂存改动**：
 _（无）_
 - **未暂存改动**（含未提交的中途状态，**这些才是「做了一半」的主体**）：
-- `MEMORY.md`
-- `process/03-问题台账/OPEN.md`
+- `process/04-每日日志/2026-09-27.md`
 - `process/CONTRACT.md`
-- `process/MIGRATION.md`
-- `process/README.md`
-- **未跟踪的新文件**：
 - `process/HANDOFF.md`
-- `scripts/wip-snapshot.py`
+- **未跟踪的新文件**：
+- `scripts/wip-pack.py`
 - **今天（2026-09-27）动过的文件**：
 - `AGENTS.md`
 - `MEMORY.md`
@@ -87,11 +95,13 @@ _（无）_
 - `process/06-复盘/M09.md`
 - `process/06-复盘/W39.md`
 - `process/CONTRACT.md`
+- `process/HANDOFF.md`
 - `process/MIGRATION.md`
 - `process/README.md`
 - `process/_templates/决策日志.md`
 - `process/_templates/每日日志.md`
 - `process/_templates/问题台账.md`
+- `scripts/wip-snapshot.py`
 - `src/components/AquaticLuxuryBackground.tsx`
 
 ---
@@ -104,15 +114,15 @@ git 只带代码，**不带「我干到哪了、下一步是什么」**。半途
 
 **第二步：把代码推上去**，且**只能推 wip 分支**——`deploy.yml` 配的是 `on: push: branches: [main]`，推 main 会触发构建并**把半成品发布到线上**。
 
+**这两步现在是一条命令。** 在仓库根目录：
+
 ```bash
-# 本次打包（在仓库根目录）
-python3 scripts/wip-snapshot.py                    # 生成第七节现场快照
-# 然后照 HANDOFF 前三节填完，再执行下面四行
-git checkout -b wip/$(date +%Y%m%d)                # 从 main 拉一条，不碰 main
-git add -A
-git commit -m "wip: <一句话描述在做什么>"
-git push -u origin wip/$(date +%Y%m%d)             # push 前若失败，按 MIGRATION.md 第三节排障
+python3 scripts/wip-pack.py -m "在做什么的一句话"
 ```
+
+脚本会依次做：校验断点卡填了没（没填直接退码 2，不给你偷懒）→ 刷新第七节现场快照 → 从 main 拉 `wip/YYYYMMDD` 并提交 → push 到远端 → 打印新机器上的恢复命令。它**没有 main 的出口**，想推 main 也推不出去。
+
+想看清每一步在干什么、不想直接推：加 `--dry-run`（只看不改）或 `--no-push`（只 commit 不 push）。
 
 > 为什么用 commit 而不是 `git stash`：stash 推不到远端，换机器就没了。commit 是唯一能送出去的「未完工」形态。到了新机器上想拆回来接着改：
 > `git reset --soft HEAD~1` —— 改动全部回到工作区，一个不丢。
@@ -136,7 +146,7 @@ git push -u origin wip/$(date +%Y%m%d)             # push 前若失败，按 MIG
 **别忘了分支**。wip 分支不在默认分支上，clone 下来是 `main`，要手动切：
 
 ```bash
-git checkout wip/2026-09-27     # 换成你自己那天的分支名
+git checkout wip/20260927     # 换成你自己那天的分支名
 git branch -a                   # 确认远端分支真的带过来了
 ```
 
@@ -147,3 +157,4 @@ git branch -a                   # 确认远端分支真的带过来了
 | 日期 | 动作 |
 |---|---|
 | 2026-09-27 | 初版。起因：Andy 问「开发一半的功能怎么打包带走」。定死与 OPEN / 日志的边界；定 WIP 只能推 wip 分支（推 main 会发布半成品）；附一键打包命令与新机器 checkout 分支 |
+| 2026-09-27 | 二版。打包从「手填卡 + 手敲四行」压成 `scripts/wip-pack.py` 一条命令（空卡退码 2）；分支名统一为 `wip/YYYYMMDD`；补 `--dry-run` / `--no-push`。实测空卡校验对「整节清空」「只留标题」两种情况都正确拒绝 |

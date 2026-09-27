@@ -104,15 +104,15 @@
 
 **第一步 · 状态写成文字** → 更新 `process/HANDOFF.md` 的前五节（第三节打勾、第四节写「下一步第一步」到能直接开干的粒度）。
 
-**第二步 · 代码推上去**，且**只能推 wip 分支**（脚本命令 + 下面四行）：
+**第二步 · 代码推上去**，且**只能推 wip 分支**。两步合起来是一条命令，在仓库根目录：
 
 ```bash
-python3 scripts/wip-snapshot.py                 # 生成 HANDOFF 第七节现场快照（分支/HEAD/未提交改动）
-git checkout -b wip/$(date +%Y%m%d)             # 从 main 开一条，别动 main
-git add -A
-git commit -m "wip: <一句话描述在做什么>"
-git push -u origin wip/$(date +%Y%m%d)
+python3 scripts/wip-pack.py -m "在做什么的一句话"   # 一键：校验断点卡 → 刷新现场快照 → 开 wip 分支 → commit → push
+python3 scripts/wip-pack.py -m "……" --dry-run      # 只看会做什么，一点不改
+python3 scripts/wip-pack.py -m "……" --no-push      # 只 commit，不 push
 ```
+
+它替你做原本手敲的四步，但**只替你做机械的那一半**：断点卡没填会直接退码 2 让你回去填——**「你想到哪了」这件事脚本替不了，也别替**。
 
 - **绝不推 main。** 本仓库 `.github/workflows/deploy.yml` 配的是 `on: push: branches: [main]`，推上去就触发构建，并把半成品发布到 **linqiongni.top**。这是唯一一条会伤到线上用户的红线。
 - **用 commit，不用 `git stash`。** stash 推不到远端，换机器就没了。commit 是唯一能送出去的「未完工」形态；新机器上 `git reset --soft HEAD~1` 可原样拆回工作区。
@@ -135,3 +135,4 @@ git push -u origin wip/$(date +%Y%m%d)
 |---|---|---|
 | 2026-09-27 | 初版 | 冷启动测试证明「有档案库但没有行为规则」= 新 AI 不会维护它。契约补的是这层。 |
 | 2026-09-27 | 二版：日志「已存在则追加、禁止覆盖」；开工清单加第 4 条 `workflows.md`；push 前统一 `pull --rebase`；格式 snippet 与模板对齐 | 第二次冷启动（换机器的开场白实测）暴露四处漏洞，其中「写今日日志」照字面执行会**覆盖并销毁当天已有记录**。同一批 Edit 还有两条报成功未落盘，已串行重做并 grep 复核。 |
+| 2026-09-27 | 三版：第七节从「手敲四行」改为 `wip-pack.py` 一键打包（支持 `--dry-run` / `--no-push`），并写明「脚本只替机械那一半，填卡必须人来做」 | Andy 问「开发一半的东西怎么打包带走」，机制已建好但最后一公里还是要人填卡 + 手敲命令。实测新脚本把四步压成一条命令，空卡退码 2 的校验也一并验证了。 |
