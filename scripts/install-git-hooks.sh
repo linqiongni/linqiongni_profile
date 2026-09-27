@@ -131,7 +131,12 @@ do_push(){
   if [ "$rc" -ne 0 ]; then
     log "push 失败：$(printf '%s' "$out" | head -6)"
     printf '%s\n' "$out"
-    warn "push 失败，改动还在本地，没丢。修好后手动执行：git push"
+    warn "push 失败，改动还在本地，没丢。手动执行：git push"
+    # 实测过的解：本地代理挂了时 curl 能通、git 的 CONNECT 却回 502
+    if echo "$out" | grep -q "CONNECT tunnel failed\|Could not connect to server"; then
+      warn "看着像本地代理的问题（curl 通、git 不通）。绕开代理再试："
+      warn "  env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push"
+    fi
     return 1
   fi
   log "push ok（$BRANCH）"
