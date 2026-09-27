@@ -75,7 +75,7 @@ REMOTE="${UPSTREAM%%/*}"
 MODE="${1:-commit}"
 
 # hook 自己触发的动作（例如 post-commit 触发的 push）不重复 pull/push
-[ -n "${AUTO_SYNC:-}" ] && { log "跳过（递归守卫，$MODE）"; exit 0; }
+[ -n "${AUTO_SYNC:-}" ] && { log "跳过（递归守卫，${MODE}）"; exit 0; }
 
 has_upstream(){ [ -n "$UPSTREAM" ]; }
 worktree_clean(){ git diff --quiet && git diff --cached --quiet; }
@@ -112,7 +112,7 @@ do_pull(){
     warn "拉取失败。90% 的概率是本地有冲突 —— 解决冲突后重新提交即可，改动都还在。"
     return 1
   fi
-  log "pull ok（$BRANCH）"
+  log "pull ok（${BRANCH}）"
   return 0
 }
 
@@ -139,7 +139,7 @@ do_push(){
     fi
     return 1
   fi
-  log "push ok（$BRANCH）"
+  log "push ok（${BRANCH}）"
   return 0
 }
 
