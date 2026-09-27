@@ -1,5 +1,9 @@
 # MEMORY.md — linqiongni_profile 长期记忆
 
+> **这份文件只存结论，不存过程。** 过程在 `process/`，入口是 `process/README.md`。
+> 接手/开工顺序：**`process/README.md`**（是什么、挂了什么没解决）→ **`process/CONTRACT.md`**（你的收工动作：写日志 / 更新今日索引 / 提台账 / 提决策 / push）→ 再读这里补细节。
+> `.workbuddy/memory/` 已停用，日志只写 `process/04-每日日志/`。git 排障见 `process/MIGRATION.md` 第三节。
+
 ## 首页与导航结构（2026-09-18 改定，改前先读）
 - **头部 = 128px**：主行 80px（品牌 / 三个分组 / 主题+联系我）+ **常驻第二行 48px**（`#navbar-subnav`，当前分组的子板块横排 + 滑动金色胶囊）。第二行 `md:` 起显示，手机端隐藏（走汉堡菜单）。
 - 因此所有内容区顶部预留：`pt-20 md:pt-32`（正文页）、Hero `pt-24 md:pt-36`；`handleSelectTab` 的滚动偏移是 **-128**。改头部高度要同时改这三处。
@@ -175,3 +179,20 @@
 - 位置 `~/.workbuddy/skills/domain-knowledge-static-site/`，把融资法务站的国风知识站范式（左栏固定可折叠目录 + 顶栏搜索/深浅色/全屏 + 右栏本页目录 + 原地展开详解/协议模板/法务对话/生活比方/行内注释/术语卡/案例卡）固化为组件库。
 - references/ 内含：style.css + app.js（从融资法务站原样复制）、station/index 页面模板、acronym-insert.py（缩写注记插入+--check）。
 - 触发词：「做一个 XX 知识站/专题站」。部署到 linqiongni.top tab 配合 legal-domain-site-tab；只改源站目录，副本用 sync 脚本生成。
+
+## 项目过程档案库 process/（2026-09-27 建）
+- **唯一入口 `process/README.md`**，单向引用其余文件；任何改这个项目的人收工前更新它的「今日索引」。
+  读这个项目一律从 `process/README.md` 进，不要直接翻 `.workbuddy/memory/`。
+- 六分区：`01-项目现状 / 02-决策日志(DECISIONS.md) / 03-问题台账(OPEN+SOLVED) / 04-每日日志 /
+  05-想法池(ideas+拾遗) / 06-复盘`；模板在 `process/_templates/`，命名沿用 Andy Obsidian 库的 01-…06- 习惯。
+- `.workbuddy/memory/` 自 2026-09-27 起**停用**，日志一律写 `process/04-每日日志/YYYY-MM-DD.md`；此处只存结论不存过程。
+- 问题编号全局递增（#1…），跨文件引用。OPEN 条目四要素：现象 / 卡在哪 / 谁该动 / **下次第一步**。
+  决策记录四要素：否决了什么+为什么 / 代价 / 保留意见 / 日期范围；只记不可逆的事，总量 ≤20 条。
+- 每日日志固定栏目含「⚖️ 小律的补充」（风险、保留意见、如果重来怎么干）。
+- 迁移验收：**2026-09-27 跑过一次冷启动测试（一个全新子 agent 只读 README 答 5 个问题），结论「不合格」，
+  据此补了三处**：① 加 `06-复盘/M09.md` 月度层；② README 加「三个常见任务的路径」表（修跨文件串联）；
+  ③ README 加「视觉基调速查」（关键事实提到入口层）。
+  **改动这个档案库时保持三条原则：查阅时机写具体（别写"遇到反直觉的写法"）、关键事实提到入口层、任务路径跨文件串联。**
+- 编号已分配：`OPEN.md` #01–#06、`SOLVED.md` #07–#18（`workflows.md` 红线表里的编号与之对应）。新条目接着编号。
+- 复盘日期一律以 `git log --format="%h %ad %s" --date=short` 为准，不凭记忆写（曾把 09-24 的事记为 09-23）。
+- `process/` 在仓库根，不在任何 rsync 源内、GH Pages 只发 `dist/`，不会污染发布。
