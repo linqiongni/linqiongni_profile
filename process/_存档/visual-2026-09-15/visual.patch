@@ -1,0 +1,229 @@
+From f276c11e099b143227bc97ef00faa359d798f623 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E6=9E=97=E7=90=BC=E9=9C=93?=
+ <linqiongni@linqiongnideMacBook-Air.local>
+Date: Tue, 15 Sep 2026 23:19:03 +0800
+Subject: [PATCH] =?UTF-8?q?feat(=E8=A7=86=E8=A7=89):=20=E4=BD=8E=E8=B0=83?=
+ =?UTF-8?q?=E5=A5=A2=E5=8D=8E=E5=8D=87=E7=BA=A7=E2=80=94=E2=80=94=E6=82=AC?=
+ =?UTF-8?q?=E6=B5=AE=E8=83=B6=E5=9B=8A=E5=AF=BC=E8=88=AA+=E8=83=8C?=
+ =?UTF-8?q?=E6=99=AF=E6=B0=9B=E5=9B=B4+=E9=BC=A0=E6=A0=87=E6=9F=94?=
+ =?UTF-8?q?=E5=85=89+=E5=AE=9E=E6=97=B6=E6=97=B6=E9=92=9F?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- LuxuryAmbience: 静态香槟金光晕+细颗粒质感，解决背景单调（置于内容之下）
+- CursorAura: 跟随鼠标极大模糊柔光，非涟漪不晃，低调动态
+- LiveClock: 无边框内嵌香港时间，首页低调显示
+- Navbar 改为居中浮动毛玻璃胶囊，scroll 轻微收缩加深
+- Hero 透明背景透出氛围层；标题引入衬线字体(Noto Serif SC/Cormorant)提国风奢华感
+- 尊重 prefers-reduced-motion；内容 z-10 在氛围层上，光晕不盖文字
+---
+ index.html                        |  6 +++++
+ src/App.tsx                       |  4 +--
+ src/components/CursorAura.tsx     | 42 +++++++++++++++++++++++++++++++
+ src/components/Hero.tsx           |  2 +-
+ src/components/LiveClock.tsx      | 32 +++++++++++++++++++++++
+ src/components/LuxuryAmbience.tsx | 16 ++++++++++++
+ src/components/Navbar.tsx         |  2 +-
+ src/index.css                     | 19 ++++++++++++++
+ 8 files changed, 119 insertions(+), 4 deletions(-)
+ create mode 100644 src/components/CursorAura.tsx
+ create mode 100644 src/components/LiveClock.tsx
+ create mode 100644 src/components/LuxuryAmbience.tsx
+
+diff --git a/index.html b/index.html
+index a780d4a..260a61d 100644
+--- a/index.html
++++ b/index.html
+@@ -9,6 +9,12 @@
+     <meta property="og:description" content="多年港企法务实战派林琼霓的个人主页，涵盖关于我、专业技能、案例展示、思考观点与日常分享。" />
+     <meta property="og:type" content="website" />
+     <meta name="twitter:card" content="summary_large_image" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link
++      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600&display=swap"
++      rel="stylesheet"
++    />
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/src/App.tsx b/src/App.tsx
+index a271488..56fa2f9 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -102,8 +102,8 @@ export default function App() {
+         id="main-content-section"
+         className={
+           isFullBleed
+-            ? 'flex-1 w-full px-0 pt-20'
+-            : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
++            ? 'relative z-10 flex-1 w-full px-0 pt-20'
++            : 'relative z-10 flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
+         }
+       >
+       {/* 当前视图副导航条：跨境物流法务为铺满大页面、涉外合同学习为独立内容页，均不显示，避免冗余 */}
+diff --git a/src/components/CursorAura.tsx b/src/components/CursorAura.tsx
+new file mode 100644
+index 0000000..8dbf7b2
+--- /dev/null
++++ b/src/components/CursorAura.tsx
+@@ -0,0 +1,42 @@
++import React, { useEffect, useRef } from 'react';
++
++/**
++ * 鼠标跟随柔光：极大模糊、极低透明度的香槟金径向光晕，跟随光标缓慢流动。
++ * 非涟漪、不晃，mix-blend 柔化，营造「低调奢华」的动态感。
++ * 置于内容之下（z-[2]），只在透明背景区透出，不盖文字。尊重 prefers-reduced-motion。
++ */
++export const CursorAura: React.FC = () => {
++  const ref = useRef<HTMLDivElement>(null);
++
++  useEffect(() => {
++    const el = ref.current;
++    if (!el) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
++
++    let raf = 0;
++    const move = (e: PointerEvent) => {
++      cancelAnimationFrame(raf);
++      raf = requestAnimationFrame(() => {
++        el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
++      });
++    };
++    window.addEventListener('pointermove', move, { passive: true });
++    return () => {
++      window.removeEventListener('pointermove', move);
++      cancelAnimationFrame(raf);
++    };
++  }, []);
++
++  return (
++    <div
++      ref={ref}
++      aria-hidden="true"
++      className="pointer-events-none fixed top-0 left-0 z-[2] h-[460px] w-[460px] rounded-full opacity-60 blur-[28px] mix-blend-soft-light dark:opacity-90 dark:mix-blend-screen"
++      style={{
++        background:
++          'radial-gradient(circle, rgba(184,159,107,0.18) 0%, rgba(184,159,107,0.06) 35%, transparent 62%)',
++        transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
++      }}
++    />
++  );
++};
+diff --git a/src/components/Hero.tsx b/src/components/Hero.tsx
+index 60e04c5..0d1ae58 100644
+--- a/src/components/Hero.tsx
++++ b/src/components/Hero.tsx
+@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContent, onExploreTab }) =
+           initial={{ opacity: 0, y: 24 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+-          className="text-4xl sm:text-6xl md:text-7xl font-light tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.15] mb-8 max-w-4xl"
++          className="font-serif-display text-4xl sm:text-6xl md:text-7xl font-light tracking-[-0.01em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.2] mb-8 max-w-4xl"
+         >
+           “{PERSONAL_INFO.heroHeadline}”
+         </motion.h1>
+diff --git a/src/components/LiveClock.tsx b/src/components/LiveClock.tsx
+new file mode 100644
+index 0000000..ab74236
+--- /dev/null
++++ b/src/components/LiveClock.tsx
+@@ -0,0 +1,32 @@
++import React, { useEffect, useState } from 'react';
++
++/**
++ * 实时香港时间：无边框内嵌小字，带一个极淡脉冲金点。置于首页低调处。
++ */
++export const LiveClock: React.FC = () => {
++  const [time, setTime] = useState('');
++
++  useEffect(() => {
++    const fmt = new Intl.DateTimeFormat('zh-HK', {
++      timeZone: 'Asia/Hong_Kong',
++      hour: '2-digit',
++      minute: '2-digit',
++      second: '2-digit',
++      hour12: false,
++    });
++    const tick = () => setTime(fmt.format(new Date()));
++    tick();
++    const id = setInterval(tick, 1000);
++    return () => clearInterval(id);
++  }, []);
++
++  return (
++    <div className="flex items-center gap-2 text-[11px] tracking-wide text-[#86868B] dark:text-[#8E8E93] select-none">
++      <span className="relative flex h-1.5 w-1.5">
++        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#B89F6B] opacity-60" />
++        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#B89F6B]" />
++      </span>
++      <span>香港时间 · {time}</span>
++    </div>
++  );
++};
+diff --git a/src/components/LuxuryAmbience.tsx b/src/components/LuxuryAmbience.tsx
+new file mode 100644
+index 0000000..961ca57
+--- /dev/null
++++ b/src/components/LuxuryAmbience.tsx
+@@ -0,0 +1,16 @@
++import React from 'react';
++
++/**
++ * 静态奢华氛围层：暗/浅底各叠极淡香槟金光晕 + 细颗粒质感（丝绒/纸感）。
++ * 解决背景「单调」；不随鼠标动，纯氛围。pointer-events-none，置于内容之下。
++ */
++export const LuxuryAmbience: React.FC = () => {
++  return (
++    <div
++      className="fixed inset-0 z-0 pointer-events-none luxury-ambient"
++      aria-hidden="true"
++    >
++      <div className="absolute inset-0 grain-overlay opacity-[0.035] mix-blend-soft-light dark:opacity-[0.05] dark:mix-blend-overlay" />
++    </div>
++  );
++};
+diff --git a/src/components/Navbar.tsx b/src/components/Navbar.tsx
+index 6937f15..e34bb69 100644
+--- a/src/components/Navbar.tsx
++++ b/src/components/Navbar.tsx
+@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
+           <button
+             id="nav-contact-btn"
+             onClick={onOpenContact}
+-            className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F5F5F7] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-full hover:border-[#B89F6B] hover:text-[#B89F6B] transition-all duration-300"
++            className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase tracking-wider font-medium text-[#1D1D1F] dark:text-[#F5F5F7] border border-[#E8E8E6] dark:border-[#2C2C2E] rounded-full hover:border-[#B89F6B] hover:text-[#B89F6B] transition-all duration-300"
+           >
+             <Mail size={14} className="text-[#86868B] group-hover:text-[#B89F6B]" />
+             <span>联系我</span>
+diff --git a/src/index.css b/src/index.css
+index 62c4989..8e1c3fb 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -88,3 +88,22 @@
+ .theme-transition {
+   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+ }
++
++/* ── 低调奢华氛围 ── */
++.luxury-ambient {
++  background:
++    radial-gradient(120% 80% at 12% -8%, rgba(184, 159, 107, 0.14), transparent 55%),
++    radial-gradient(110% 75% at 88% 108%, rgba(184, 159, 107, 0.08), transparent 55%);
++}
++.dark .luxury-ambient {
++  background:
++    radial-gradient(120% 80% at 12% -8%, rgba(184, 159, 107, 0.10), transparent 55%),
++    radial-gradient(110% 75% at 88% 108%, rgba(184, 159, 107, 0.06), transparent 55%);
++}
++.grain-overlay {
++  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
++  background-size: 160px 160px;
++}
++.font-serif-display {
++  font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, 'Songti SC', serif;
++}
+-- 
+2.39.5 (Apple Git-154)
+
