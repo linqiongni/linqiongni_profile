@@ -160,3 +160,4 @@
 | 2026-09-27 | 半途打包压成一条命令 `scripts/wip-pack.py`（校验断点卡 → 刷新快照 → 开 `wip/YYYYMMDD` → commit → push，支持 `--dry-run` / `--no-push`）；机制本体实跑推上 `wip/20260927` | #20 |
 | 2026-09-27 | 开「每日补漏」定时任务；按换机器开场白实测抓出四处漏洞 → `CONTRACT.md` 二版（日志追加禁覆盖 / 开工清单加 workflows / push 前口径统一）、`OPEN.md` 加编号计数器 | 契约二版 |
 | 2026-09-27 | 把开场白抽成独立文件 `process/开场白.md`（唯一维护版，整段可复制），`MIGRATION.md` 第七节与 `README` 任务路径改为指向它 | — |
+| 2026-09-27 | 新增 `scripts/verify-online.sh`：收工「验线上 + 验推送」从一句提醒变成一条命令（`--wait` 等 GH Pages 缓存、退出码可串链、网络不通明说没验成）；`CONTRACT.md` 五版标题改「收工六件事」 | — |

@@ -40,6 +40,17 @@ curl -s -o /dev/null -w "%{http_code}\n" https://linqiongni.top/<slug>/index.htm
 
 **只 grep 字符串会误判成功**——它能命中文案常量，但导航未必渲染。必须数 `subTabs` 里的项。详见 `#04`。
 
+上面这三步已经收成一条命令，收工就敲它（推荐用法，别自己拼 curl）：
+
+```bash
+bash scripts/verify-online.sh <slug或完整URL> "这次改动的关键文本" --wait 120
+bash scripts/verify-online.sh --push      # 顺带验推送：本地 HEAD 与 origin/main 对不上 = 自动 push 静默失败
+```
+
+`--wait 120` 是等 GH Pages 刷掉缓存；退出码非 0 就别写「已上线」。查导航这类改动，
+"关键文本"要传导航数组的判别串（如 `id:"legal"`），别传页面标题——会误判。
+网络不通时它明说「没验成」，这时候**不要**当成「内容没上线」来汇报。
+
 浏览器还是旧的 → 硬刷（Cmd+Shift+R），或访问 `https://linqiongni.top/?v=<时间戳>`。
 
 ## 四、子站样式与交互的改法
