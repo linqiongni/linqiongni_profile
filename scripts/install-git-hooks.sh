@@ -106,10 +106,18 @@ do_pull(){
   local flag="--autostash" out rc=0
   worktree_clean && flag=""
   out="$(git pull --rebase --no-recurse-submodules $flag 2>&1)" || rc=$?
+  log "pull 退出码 ${rc}：$(printf '%s' "$out" | head -6)"
   if [ "$rc" -ne 0 ]; then
     log "pull 失败：$(printf '%s' "$out" | head -6)"
     printf '%s\n' "$out"
-    warn "拉取失败。90% 的概率是本地有冲突 —— 解决冲突后重新提交即可，改动都还在。"
+    warn "rebase 停在一处冲突上 —— **改动没有丢**，冲突标记就写在下面的文件里。"
+    warn "按这四步继续（注意是 rebase --continue，不是重新 commit）："
+    warn "  1) 打开冲突文件，删掉 <<<<<<< / ======= / >>>>>>> 三行，留下要保留的内容"
+    warn "  2) git add <那个文件>"
+    warn "  3) git rebase --continue          ← 你的提交会在这时回到 git log"
+    warn "     （若它打开了一个编辑器界面，直接保存退出即可）"
+    warn "  4) 之后再 git commit 才会自动推（或手动 git push）"
+    warn "想放弃这些改动回到原样：git rebase --abort"
     return 1
   fi
   log "pull ok（${BRANCH}）"
