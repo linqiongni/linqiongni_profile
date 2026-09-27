@@ -197,6 +197,12 @@
 - **日志动作是「追加」不是「写」**（2026-09-27 契约二版实测改）：当天日志已存在就在末尾加 `## 追加（当天下午）`，
   **禁止覆盖**——契约原文只写「写 04-每日日志/{今天}.md」，照字面执行会销毁当天已有记录。
 - 开工清单共四条，第 4 条是「动 `src/` 前必读 `01-项目现状/workflows.md`」（八条红线）；push 前一律先 `git pull --rebase`（与 workflows 红线 8、AGENTS 同一口径）。
+- **换机器的真正缺口是用户级文件，不是开场白**：`~/.workbuddy/` 下的 `MEMORY.md` / `SOUL.md` /
+  `IDENTITY.md` / `USER.md` / `skills/` **不在 git 里**，`git clone` 带不走。换机器必须先手工拷这四样，
+  否则新 AI 缺一层约束还不知道。已写进 `process/MIGRATION.md` 〇节（含 tar + scp 命令）。
+- **实测教训：指路段挂空不会报错，只会静默断掉**——用户级记忆没拷过来时，指向它的内容看着正常就是不生效。
+- **别指望靠话术约束 AI**：开场白末句「你收工前会做哪五件事」，删掉它 AI 照样做（契约本身是硬的），
+  区别只在它会不会主动汇报。那句买的是知情权，不是自觉。
 - **已开每日补漏自动化**：id `12d356ce`，每日 21:00 ACTIVE，做「查漏日志 / 挪 OPEN→SOLVED 并查断号 / 查今日索引 / 周一查周复盘 / commit+push」。设计上只检查不编造日志内容。
 - **行为层（2026-09-27 补，缺了这层档案库会腐烂）**：`process/CONTRACT.md` 定 AI 的行为——开工读 README+OPEN（署 Andy 的是等他拍板，别自己动）；收工五件事：写日志 / 更新 README 今日索引 / 提台账 / 新决定进决策日志 / **commit+push**。
   `.workbuddy/memory/` 写日志 = 没写（被 gitignore 排除）。
@@ -208,3 +214,27 @@
 - **未做（Andy 未点头）**：动 `.gitignore` 让 `.workbuddy/` 入库、开每日补漏自动化、搬 15 份旧日志进 `04-每日日志/`。
 - 复盘日期一律以 `git log --format="%h %ad %s" --date=short` 为准，不凭记忆写（曾把 09-24 的事记为 09-23）。
 - `process/` 在仓库根，不在任何 rsync 源内、GH Pages 只发 `dist/`，不会污染发布。
+
+## 全仓目录结构与同步漂移（2026-09-27 全量扫描，只读）
+- **四层结构**：`src/`（主站 React tab，37 组件）／中文源目录 ×8 → `npm run sync:*` 单向 rsync → `public/<slug>`
+
+  副本／`public/` 里另 10 个子站（ip·labor·insurance·criminal·foreign-contracts·ai-law·film-law 四季·lessons）
+
+  **无中文源目录，直接编辑 public**／`dist/` = public 全量 + 主站构建产物，CI 产物不入库。
+- **「两套并存的内容源」是重复的根源**：8 个站有双层（中文源 + public 副本），10 个站只有单层。全仓 17 组 md5 完全一致的
+
+  HTML 全部落在 `经济犯罪辩护/ ≡ public/econ-crime/`（17 个文件逐字节相同）——这是双层镜像的常态，不是错；但改内容仍只改中文目录。
+- **单向 rsync 会积两类垃圾，已知两处**：
+  1. `public/english/print.html` 比源目录多 208 行（`DARK_UNIFY` / `SUB_THEME_KIT` / `AQUATIC_BG_KIT` 三段主题注入），
+
+     三方体积 180K / 192K / 172K 各不相同 → **跑 `sync:english` 会丢这三段，英文站暗黑主题与鱼影背景失效**。副本上打过补丁必须先回写源目录。
+  2. `public/english/models/` 有 11 个 Kokoro TTS 语音模型（.bin）在源目录不存在，只增不减会永久留在仓库。
+- **本地 `dist/` 会落后于 `public/`**（曾缺 `econ-crime` 与 `retail-ad`）。本地 dist 缺目录 ≠ 上线失败，
+
+  上线以 `curl -o /dev/null -w "%{http_code}" https://linqiongni.top/<slug>/index.html` 为准（两者实测均 200）。
+- **`跨境物流法务_旧版存档/`（141 文件 / 3.3M）经核查是完整旧站快照**（W1–W20 + index，不含新版 ch01-map/工具箱等内容），
+
+  与现行物流站无重叠，属归档不是重复——**不要当垃圾清掉**。
+- **仓库体积真相**：`视频号策划与运营/` 215M（4 段 mp4）约占全仓 80%，且 `购物好官/`（微信小程序源码）、`skill-market/`（1.3M）、
+
+  `9月15日 (3).mp4.kdtmp`（0 字节临时垃圾）都与「个人主页」这个仓库定位无关，是否搬出去等 Andy 定。
