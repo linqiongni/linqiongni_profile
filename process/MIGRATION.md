@@ -38,6 +38,9 @@ bash scripts/setup-device.sh
 
 ### 3 · 开场白（直接整段复制）
 
+> 开场白已抽成独立文件 **`process/开场白.md`**，那里是唯一维护版（含换设备要先跑的两行 clone）。
+> 这里保留原段落只为向后兼容，别再改它——改就改 `开场白.md`。
+
 ```
 我换了台设备，继续开发 linqiongni_profile。
 仓库已经 clone 到 <新设备上的路径>。
