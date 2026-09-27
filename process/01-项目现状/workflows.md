@@ -68,7 +68,7 @@ npm run check:english
 | 5 | git 前先清 `.git/*.lock` | 本仓库 `.git/*.lock` 删不掉，下次操作直接报 index.lock 存在（`#09`） |
 | 6 | 别把 `.workbuddy/`、根节点文件放进中文源目录 | `npm run sync:english` 是整目录 rsync，会被发布上线（`#13`） |
 | 7 | 验证新 tab 要查 `NAV_GROUPS` | grep 名字命中文案常量，误判已上线（`#11`） |
-| 8 | push 前 `git fetch` 确认无分叉 | 并发会话会回退已提交的编辑 |
+| 8 | push 前先 `git pull --rebase` | 并发会话会回退已提交的编辑（`#18`）。与 `CONTRACT.md` 第四节同一条，以契约为准 |
 
 ## 七、排障顺序（线上看不到改动时）
 
