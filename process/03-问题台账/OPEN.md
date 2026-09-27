@@ -75,3 +75,41 @@
 - **谁该动**：`Andy`（署名的都等他拍板）。
 - **下次第一步**：先 `git stash show -p 'stash@{0}'` 看清内容有没有用；有用就 `git stash apply` 后 commit + push 上去，确认安全再 `git stash drop`；没用再考虑清理。别在没看内容之前 drop。
 - **记于**：2026-09-27，跑「半途打包」实测时被新 AI 提出来——当时它翻了一遍本地 git 对象才发现的，文档里没人写过。
+
+
+### #21 · sync 会把子站手工打的暗黑补丁抹掉，线上配色会静默回退
+
+- **现象**：`process/01-项目现状/sites-map.md` 约定「改内容改中文目录，再跑 `npm run sync:xxx`」。
+  但 `rsync --dry-run` 比对显示 8 个站里 7 个有文件不一致，且**方向是反的**——补丁打在 `public/` 上，中文源目录没有。
+- **证据**（2026-09-27 只读扫描）：`商事仲裁/ch01.html` 源版是 `data-theme-default="light"`，
+  `public/arbitration/ch01.html` 是 `data-theme="dark"` 并额外注入 `DARK_UNIFY_START v1` +
+  `SUB_THEME_KIT_START` + `AQUATIC_BG_KIT_START v3`；线上实测含 DARK_UNIFY、不含 `#091A2E`。
+  全库 grep `DARK_UNIFY` 只命中三个 md 文档，**没有任何注入脚本** → 纯手工，不可重放。
+- **会怎样**：任何人改中文目录内容后跑 `npm run sync:all-static`，rsync 用没打补丁的源覆盖
+  `public/` 同名文件，**那个子站的暗黑模式当场消失**。不报错、线上照样 200，只配色回退。
+- **谁该动**：Andy 拍板走哪条路（脚本化补丁 / 认 `public/` 为真源 / 至少在 workflows 加红字）。
+- **下次第一步**：先只改一个中文目录文件 + 跑 sync，在预发环境确认暗黑是否还在，用来复现再决定方案。
+- **记于**：2026-09-27，`process/01-项目现状/结构体检-2026-09-27.md` 风险一。
+
+---
+
+### #22 · public/lessons/ 92 个孤儿课程页已发布上线，导航里没有入口
+
+- **现象**：`public/lessons/` 92 个 HTML（6.4 MB，已入库），命名一半是长 ID（`0HlkUkNCNg115UbXjpU1uK.html`）
+  一半是 `week09-dayN.html`；`src/navConfig.ts` 里没有 `lessons` tab；
+  `https://linqiongni.top/lessons/0HlkUkNCNg115UbXjpU1uK.html` 实测 **HTTP 200，真的能打开**。
+  同类：`public/food-safety-week9.html`（漏在 `public/` 根上）。
+- **来源**：`scripts/add_lesson.py` / `fetch_space_lessons.py` / `wire_lessons.py` 这一组
+  「资料库课程 → HTML」脚本把产物直接写进了 `public/`（发布目录），工具产物顺带被发布。
+- **隐私复核**：扫到 qq/微信/邮箱/手机字样，逐条看命中位置全在 `data-page-node-id` 随机串里，
+  **不是真实联系方式，没有泄露**。内容是公开的餐饮法务课程（第 9 周食安/加盟），不算敏感。
+- **卡在哪**：Andy 定要不要下掉；下掉要改 `public/` 并等 GH Pages 重建，不是本地删了就没了。
+- **下次第一步**：Andy 说下就把它挪出 `public/`（如 `资料课程/`），然后 `git commit` 触发发布，
+  再用 `bash scripts/verify-online.sh lessons "食品安全"` 确认线上是否真的消失。
+- **记于**：2026-09-27，同上。
+
+---
+
+### 编号计数器
+
+下一个编号：**#23**
