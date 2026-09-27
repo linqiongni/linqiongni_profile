@@ -62,7 +62,8 @@ npm run check:english
 | # | 红线 | 踩过的代价 |
 |---|---|---|
 | 1 | **本地禁 `npm run build`** | 清空 `dist/`，已发布资源全没（`#07`） |
-| 2 | 只改 `public/` 不改中文源目录 | 下次 sync 白改 |
+| 2 | 对 8 个「中文源 + sync」站（financing-legal / commercial-ops / retail-ad / arbitration / family-law / econ-crime / logistics / english）：只改 `public/` | 下次 sync 白改。改中文目录看第八节对照表 |
+| 2b | 对 11 个「public 即源」站（ip / insurance / foreign-contracts / ai-law / film-law 四季 / criminal）：跑 `sync:*` 或新建中文目录 | 无意义，甚至会覆盖 public 里的源。这类直接编辑 public |
 | 3 | iframe 地址写显式 `index.html` | 写目录 URL 在本地被 SPA 兜底成首页，**本地验证失真**（`#12`） |
 | 4 | 改完用 `grep` 逐条核对，别信编辑工具回执 | Edit 报成功但未落盘，改了三次（`#08`） |
 | 5 | git 前先清 `.git/*.lock` | 本仓库 `.git/*.lock` 删不掉，下次操作直接报 index.lock 存在（`#09`） |
@@ -75,3 +76,24 @@ npm run check:english
 1. bundle 里的内容对不对（第三节）
 2. 线上的文件对不对（`git fetch` + `git show origin/main:<path>`，`raw.githubusercontent.com` 有 CDN 缓存）
 3. 才轮到浏览器缓存
+
+## 八、各子站内容源对照表（改内容前先查这张表）
+
+**本仓库不统一是有意为之（Andy 2026-09-27 决定：不做结构统一）。规矩只有一条：
+每站的内容只在一处，另外的路径只是入口。改错地方＝白改或被覆盖。**
+
+| # | 源类型 | 站（slug） | 内容源在哪 | 正确改法 |
+|---|---|---|---|---|
+| 1 | **中文源 + sync 副本**（8） | `financing-legal` `commercial-ops` `retail-ad` `arbitration` `family-law` `econ-crime` `logistics` `english` | 仓库根**中文目录**（融资法务/ 商事仲裁/ 经济犯罪辩护/ 婚姻家事与遗产继承/ 新零售与广告合规/ 商业运营法务/ 跨境物流法务/ 身边的英语） | 改中文目录 → `npm run sync:<slug>` → commit。**不要单独改 `public/` 副本，会被 rsync 覆盖** |
+| 2 | **public 即源**（9） | `ip` `insurance` `foreign-contracts` `ai-law` `film-law` `film-law-s2/3/4` `criminal` | `public/<slug>/` 本身就是源站，无中文目录 | 直接编辑 `public/<slug>/`。**改这里就是改源，不要建中文目录** |
+| 3 | **外部源产物**（1） | `labor` | `~/Downloads/知识产权/劳动用工实务/`（JSON + `_build/gen.js`） | 那边改 → `node gen.js` → 覆盖 `public/labor/`。别直接在 public 里改，下次生成就没了 |
+| 4 | **脚本生成**（1） | `lessons` | `scripts/fetch_space_lessons.py`（从 WorkBuddy 空间抓取） | 跑脚本重抓。单个 html 别手改，下次重抓会覆盖 |
+
+**副本上打过补丁＝定时炸弹。** 已知一处：`public/english/print.html` 比 `身边的英语/print.html`
+多三段主题注入（`DARK_UNIFY` / `SUB_THEME_KIT` / `AQUATIC_BG_KIT`），三方体积 180K/192K/172K 各不相同。
+**跑 `npm run sync:english` 这三段会消失，英文站暗黑主题与鱼影背景一起没。**
+要修就回写到 `身边的英语/` 源目录，别只在副本上修。
+
+**本地 `dist/` 会落后于 `public/`，属正常。** 线上是 CI 从 `public/` 现构建的，
+判断上线与否只看 `curl -o /dev/null -w "%{http_code}" https://linqiongni.top/<slug>/index.html`，
+不要拿本地 dist 缺目录当事故（2026-09-27 曾缺 `econ-crime` 与 `retail-ad`，线上均 200）。
