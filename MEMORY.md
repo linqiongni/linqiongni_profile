@@ -194,5 +194,12 @@
   ③ README 加「视觉基调速查」（关键事实提到入口层）。
   **改动这个档案库时保持三条原则：查阅时机写具体（别写"遇到反直觉的写法"）、关键事实提到入口层、任务路径跨文件串联。**
 - 编号已分配：`OPEN.md` #01–#06、`SOLVED.md` #07–#18（`workflows.md` 红线表里的编号与之对应）。新条目接着编号。
+- **行为层（2026-09-27 补，缺了这层档案库会腐烂）**：`process/CONTRACT.md` 定 AI 的行为——开工读 README+OPEN（署 Andy 的是等他拍板，别自己动）；收工五件事：写日志 / 更新 README 今日索引 / 提台账 / 新决定进决策日志 / **commit+push**。
+  `.workbuddy/memory/` 写日志 = 没写（被 gitignore 排除）。
+- **指路比内容更重要**：`AGENTS.md` 顶部「先读这个」段 + `MEMORY.md` 顶部指路段都指向 process/。
+  **AGENTS.md 原本一个字没提 process/，接手 AI 每次会话第一件事就读它，不提等于档案库不存在。**
+- 已 push 到远端（`86493f1`）；换机器 `git clone` 即可带全 18 个文件。git 排障见 `process/MIGRATION.md` 第三节。
+- **换机器的验收只能靠冷启动测试**，不能靠数文件：新机器上让新 AI 只读 README 答那 5 个问题，答不出就补 README。
+- **未做（Andy 未点头）**：动 `.gitignore` 让 `.workbuddy/` 入库、开每日补漏自动化、搬 15 份旧日志进 `04-每日日志/`。
 - 复盘日期一律以 `git log --format="%h %ad %s" --date=short` 为准，不凭记忆写（曾把 09-24 的事记为 09-23）。
 - `process/` 在仓库根，不在任何 rsync 源内、GH Pages 只发 `dist/`，不会污染发布。
