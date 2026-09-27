@@ -5,6 +5,69 @@
 
 ---
 
+## 零、换机器时你要做的三件事（这一节是给 Andy 看的，复制即用）
+
+**仓库 clone 得走，环境带不走。** 下面三样要亲手搬：
+
+| # | 做什么 | 说明 |
+|---|---|---|
+| 1 | clone 仓库 | 项目侧全自动，`process/` 在里面 |
+| 2 | 拷 `~/.workbuddy/` 下四样 | **用户级记忆和技能不在 git 里，clone 带不走。** 不拷，新 AI 会缺一层约束还不知道 |
+| 3 | 把下面的开场白贴给 WorkBuddy | 决定它「知不知道自己有记录义务」 |
+
+### 1 · clone
+
+```bash
+git clone https://github.com/linqiongni/linqiongni_profile.git
+cd linqiongni_profile
+```
+
+### 2 · 拷用户级文件
+
+要拷的就这四样（其余运行时文件不用管）：
+
+```bash
+# 在旧机器上执行，打包
+tar czf ~/workbuddy-user.tgz   ~/.workbuddy/MEMORY.md   ~/.workbuddy/SOUL.md   ~/.workbuddy/IDENTITY.md   ~/.workbuddy/USER.md   ~/.workbuddy/skills
+
+# 传到新机器（替换为你自己的传法）
+scp ~/workbuddy-user.tgz 新机器:~/
+
+# 在新机器上解包（会覆盖同名文件）
+tar xzf ~/workbuddy-user.tgz -C ~
+```
+
+其中 `MEMORY.md` 最长，装的是跨项目的习惯（Obsidian 库位置、git 排障四坑、档案库三层模式）；`skills/` 里的 `project-archive-kit` 是**新项目建档案库时用的**，不装就又得从零设计。
+
+### 3 · 开场白（直接整段复制）
+
+```
+我换了台电脑，继续开发 linqiongni_profile。
+仓库已经 clone 到 /Users/linqiongni/Downloads/linqiongni_profile。
+
+开工前按顺序做四件事：
+1. 读 process/CONTRACT.md —— 你的行为规则，含收工动作
+2. 读 process/README.md —— 项目是什么、现在挂了什么没解决
+3. 读 process/03-问题台账/OPEN.md —— 挑一条认领（署 Andy 的是等他拍板，别自己动）
+4. 要动代码/发布文件，先读 process/01-项目现状/workflows.md（八条红线）
+
+现在告诉我：这次接手要接着做什么，以及你今天收工前会做哪五件事。
+```
+
+最后那句「**以及你今天收工前会做哪五件事**」别删。它的作用诚实说：**不是让 AI 多做，是让它把五件事从「背景义务」变成「当场答应的事」，从而主动汇报。**
+
+实测（2026-09-27）的反馈很实在：删掉这句，AI **照样会做**那五步——契约本身是硬的；区别只在它会不会主动说一句「我今天干了什么」。**所以那句买的是你的知情权，不是它的自觉。** 别指望靠话术约束 AI。
+
+> 同一轮实测还暴露一条：**指路段挂空不会报错，只会静默断掉。** 用户级记忆（`~/.workbuddy/MEMORY.md`）没拷过来时，本文件里指向它的内容看起来一切正常，但就是不起作用。所以第 2 步不是可选的美化，它是第 3 步生效的前提。
+
+还没 clone 就把第一句换成：
+
+```
+帮我 clone https://github.com/linqiongni/linqiongni_profile.git 到 /Users/linqiongni/Downloads/
+```
+
+---
+
 ## 〇、先说当前状态（2026-09-27 更新）
 
 `process/` **已经 push 到远端**（18/18 文件入库，本地与远端 tree 一致）。换机器 `git clone` 就能完整带走。
@@ -151,3 +214,4 @@ env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push origin ma
 |---|---|
 | 2026-09-27 | 初版。含 git 推送排障四步、冷启动验收、换账号的远端改写法 |
 | 2026-09-27 | 二版：〇节状态改为「已 push」（原文写「尚未 push」已过时）、排障表补「两条都 000 = 网络断」分支。起因是 13:50 推不动，实测两条 curl 均 000 |
+| 2026-09-27 | 三版：新增〇节「换机器三件事」——用户级文件 `~/.workbuddy/` 四样（MEMORY/SOUL/IDENTITY/USER/skills）不在 git 里，clone 带不走，附 tar+scp 命令；开场白定型并附实测反馈。同批改契约开工清单补「认领判据」表 |
