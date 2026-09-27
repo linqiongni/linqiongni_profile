@@ -65,3 +65,6 @@ add_lesson.py           单页新增课程（复制 HTML + 插条目 + 加 id + 
   要写成 `"|".join(x + "_START" for x in items)`。
 - 改 `package.json` 这类 JSON 要用 `json.load` 复核一次合法性，别信「写入成功」。
 - 调 git 一律看返回码，不看 stdout（中文 locale 下成功也往 stderr 打东西）。
+- **`git rev-list --left-right --count A...B` 的输出是「A 独有 B 独有」**，不是「本地远端」。
+  `origin/main...HEAD` 打印 `0 2` 意思是本地领先 2 个（左边 0 = 远端没有本地没有的东西）。
+  方向反着读会得出完全相反的结论，2026-09-27 有过一次误报「本地落后 2 个提交」。
