@@ -2,16 +2,15 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { DarkLuxuryBackground } from './DarkLuxuryBackground';
 import { GoldParticleRibbon } from './GoldParticleRibbon';
 
-/** 深海军蓝豪华风首屏（无人物肖像，纯文字排版） */
+/** 深海军蓝豪华风首屏（无人物肖像，纯文字排版）
+ *  背景由 App 根部的全局 DarkLuxuryBackground 提供（fixed 全屏），此处不再重复挂载 */
 export const HeroDark: React.FC = () => {
   const goTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section id="hero-section" className="luxury-hero relative min-h-screen overflow-hidden pt-24 md:pt-36">
-      <DarkLuxuryBackground />
       {/* 金色粒子丝带：斜贯首屏，亮部落在右上（水下背景之上、正文之下） */}
       <GoldParticleRibbon />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 pb-12 sm:px-12 md:min-h-[calc(100vh-9rem)]">

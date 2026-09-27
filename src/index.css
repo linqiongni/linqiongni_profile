@@ -13,13 +13,13 @@
   }
 
   .dark {
-    --bg-main: #1C1C1E;
+    --bg-main: #091A2E;
     --text-primary: #F5F5F7;
     --text-secondary: #8E8E93;
-    --border-subtle: #2C2C2E;
+    --border-subtle: #1B2E45;
     --accent-gold: #D4AF37;
-    --card-bg: #242426;
-    --footer-bg: #161618;
+    --card-bg: #12263C;
+    --footer-bg: #06101C;
   }
 
   html {
@@ -57,7 +57,7 @@
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #2C2C2E;
+  background: #1B2E45;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #B89F6B;
@@ -152,3 +152,17 @@
 .luxury-btn-outline{color:#F4EFE4;border:1px solid rgba(201,168,106,.45);background:rgba(255,255,255,.05)}
 .luxury-btn-outline:hover{border-color:rgba(201,168,106,.85);box-shadow:0 10px 30px rgba(0,0,0,.25)}
 @media (prefers-reduced-motion: reduce){.luxury-btn:hover{transform:none}.luxury-btn-gold:hover::before{left:-80%}}
+
+/* Deep navy luxury background（「关于我」同款背景，恢复自 087ee6b 并升级为全站铺底）
+   .dark-luxury-bg          —— Hero 内 absolute 版（保留兼容）
+   .dark-luxury-bg--global  —— App 根部 fixed 全屏版：所有 tab 共用同一层深海军蓝渐变 + 光晕 */
+.luxury-hero{background:#050f1d;color:#f4efe4}
+.dark-luxury-bg{position:absolute;inset:0;overflow:hidden;background:radial-gradient(circle at 79% 38%,rgba(68,107,148,.28),transparent 31%),linear-gradient(115deg,#050f1d 0%,#091a2e 57%,#102943 100%)}
+.dark-luxury-bg--global{position:fixed;z-index:0}
+.dark-luxury-noise{position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+.dark-luxury-orbit{position:absolute;right:-17rem;top:3rem;width:48rem;height:48rem;border:1px solid rgba(201,168,106,.12);border-radius:999px;box-shadow:0 0 100px rgba(201,168,106,.04)}
+.dark-luxury-flow{position:absolute;right:-7%;bottom:10%;width:55%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,106,.75),transparent);box-shadow:0 0 20px rgba(201,168,106,.4);transform:rotate(-11deg)}
+.flow-two{bottom:7%;opacity:.36;transform:rotate(-8deg)}
+.dark-luxury-pointer{position:fixed;z-index:1;width:360px;height:360px;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(circle,rgba(201,168,106,.11),transparent 68%);transition:opacity .2s;will-change:transform}
+@media(max-width:1023px){.dark-luxury-flow{width:95%}}
+@media(prefers-reduced-motion:reduce){.dark-luxury-pointer{display:none}}
