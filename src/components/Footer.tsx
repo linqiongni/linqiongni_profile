@@ -14,11 +14,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
     <footer
       id="main-footer"
-      className="bg-[#F5F5F3] dark:bg-[#06101C] border-t border-[#E8E8E6] dark:border-[#1B2E45] text-[#1D1D1F] dark:text-[#F4EFE4] py-16 px-6 sm:px-12 transition-colors duration-300"
+      className="bg-[#F5F5F3] dark:bg-[#161618] border-t border-[#E8E8E6] dark:border-[#2C2C2E] text-[#1D1D1F] dark:text-[#F4EFE4] py-16 px-6 sm:px-12 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Top 3-Column Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pb-12 border-b border-[#E8E8E6] dark:border-[#1B2E45]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pb-12 border-b border-[#E8E8E6] dark:border-[#2C2C2E]">
           {/* Left: Email */}
           <div className="space-y-1">
             <div className="text-xs uppercase tracking-widest text-[#86868B]">
@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={onOpenContact}
-                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
+                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
                 title="微信名片 / 扫码联系"
               >
                 <QrCode size={15} />
@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#1B2E45] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
+                className="p-2.5 rounded-full border border-[#E8E8E6] dark:border-[#2C2C2E] text-[#86868B] hover:border-[#B89F6B] hover:text-[#B89F6B] transition-colors flex items-center gap-1.5 text-xs"
                 title="LinkedIn 职业档案"
               >
                 <Linkedin size={15} />

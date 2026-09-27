@@ -40,7 +40,7 @@ export const AboutTab: React.FC<AboutTabProps> = ({ onExploreCases }) => (
     <section className="py-16">
       <div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
         <div><p className="lux-kicker">Working Method</p><h3 className="mt-4 font-serif text-3xl font-normal">我的工作方法</h3><p className="mt-4 max-w-sm text-sm leading-7 text-[#77736B] dark:text-[#99958D]">专业不是复杂术语的堆叠，而是把复杂问题处理得清楚、稳妥、可执行。</p></div>
-        <div className="grid gap-px bg-[#D8D0C2] dark:bg-white/10 md:grid-cols-3">{PRINCIPLES.map(({icon: Icon,title,text},i)=><article key={title} className="bg-[#FDFCF9] p-7 dark:bg-[#0C1B2B]"><div className="flex items-center justify-between"><Icon size={20} strokeWidth={1.4} className="text-[#9B7B42]"/><span className="font-serif text-xs text-[#AAA296]">0{i+1}</span></div><h4 className="mt-8 text-base font-medium">{title}</h4><p className="mt-3 text-sm leading-7 text-[#77736B] dark:text-[#99958D]">{text}</p></article>)}</div>
+        <div className="grid gap-px bg-[#D8D0C2] dark:bg-white/10 md:grid-cols-3">{PRINCIPLES.map(({icon: Icon,title,text},i)=><article key={title} className="bg-[#FDFCF9] p-7 dark:bg-[#1C1C1E]"><div className="flex items-center justify-between"><Icon size={20} strokeWidth={1.4} className="text-[#9B7B42]"/><span className="font-serif text-xs text-[#AAA296]">0{i+1}</span></div><h4 className="mt-8 text-base font-medium">{title}</h4><p className="mt-3 text-sm leading-7 text-[#77736B] dark:text-[#99958D]">{text}</p></article>)}</div>
       </div>
     </section>
 

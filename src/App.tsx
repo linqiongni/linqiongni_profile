@@ -52,8 +52,6 @@ import { ContactModal } from './components/ContactModal';
 
 import { AquaticLuxuryBackground } from './components/AquaticLuxuryBackground';
 
-import { DarkLuxuryBackground } from './components/DarkLuxuryBackground';
-
 import { motion, AnimatePresence } from 'motion/react';
 
 import { Sparkles, ArrowRight } from 'lucide-react';
@@ -167,13 +165,7 @@ export default function App() {
 
     <div className="min-h-screen flex flex-col bg-transparent dark:bg-transparent text-[#1D1D1F] dark:text-[#F4EFE4] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
 
-      {/* 全站底色：「关于我」同款深海军蓝渐变 + 金线光晕，铺满所有 tab（暗色模式） */}
-
-      {darkMode && <DarkLuxuryBackground global />}
-
-
-
-      {/* 全站水下背景：水面呼吸 + 自然鱼影 + 鼠标涟漪（不拦截交互） */}
+      {/* 全站水下背景：深海军蓝渐变 + 水面呼吸 + 自然鱼影 + 鼠标涟漪（不拦截交互） */}
 
       <AquaticLuxuryBackground fishCount={6} darkMode={darkMode} />
 
