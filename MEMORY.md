@@ -200,6 +200,7 @@
   **AGENTS.md 原本一个字没提 process/，接手 AI 每次会话第一件事就读它，不提等于档案库不存在。**
 - 已 push 到远端（`86493f1`）；换机器 `git clone` 即可带全 18 个文件。git 排障见 `process/MIGRATION.md` 第三节。
 - **换机器的验收只能靠冷启动测试**，不能靠数文件：新机器上让新 AI 只读 README 答那 5 个问题，答不出就补 README。
+- **这套模式已固化为用户级技能 `project-archive-kit`**（2026-09-27）。Andy 要「也帮我建一套」时直接调用它，别从零设计。
 - **未做（Andy 未点头）**：动 `.gitignore` 让 `.workbuddy/` 入库、开每日补漏自动化、搬 15 份旧日志进 `04-每日日志/`。
 - 复盘日期一律以 `git log --format="%h %ad %s" --date=short` 为准，不凭记忆写（曾把 09-24 的事记为 09-23）。
 - `process/` 在仓库根，不在任何 rsync 源内、GH Pages 只发 `dist/`，不会污染发布。
