@@ -203,6 +203,14 @@
 - **实测教训：指路段挂空不会报错，只会静默断掉**——用户级记忆没拷过来时，指向它的内容看着正常就是不生效。
 - **别指望靠话术约束 AI**：开场白末句「你收工前会做哪五件事」，删掉它 AI 照样做（契约本身是硬的），
   区别只在它会不会主动汇报。那句买的是知情权，不是自觉。
+- **半途打包（换机器 / 中断前）**：`process/HANDOFF.md` 断点卡（七节：我在做什么 / 现在的状态 /
+  做完没做完 / **下一步第一步** / 卡住与备选 / 别碰 / 现场快照）+ `scripts/wip-snapshot.py` 生成现场快照。
+  边界：`HANDOFF` 记「此刻在干什么」，`OPEN.md` 记项目级问题，日志记流水——三者不可混。
+- **红线：半途打包只能推 wip 分支，绝不推 main**。`deploy.yml` 是 `on: push: branches: [main]`，
+  推 main 会触发构建并把半成品发布到 linqiongni.top。用 commit 不用 stash（stash 推不到远端）；
+  新机器 `git reset --soft HEAD~1` 可拆回。wip 分支不在默认分支，clone 后要手动 checkout。
+- **校验优先于叮嘱**：`wip-snapshot.py` 在 HANDOFF 前三节仍是空占位符时拒绝生成快照（退码 2）。
+  实测结论——「卡的不是流程是纪律」，靠人自觉的环节必须配一道机器校验才拦得住。
 - **已开每日补漏自动化**：id `12d356ce`，每日 21:00 ACTIVE，做「查漏日志 / 挪 OPEN→SOLVED 并查断号 / 查今日索引 / 周一查周复盘 / commit+push」。设计上只检查不编造日志内容。
 - **行为层（2026-09-27 补，缺了这层档案库会腐烂）**：`process/CONTRACT.md` 定 AI 的行为——开工读 README+OPEN（署 Andy 的是等他拍板，别自己动）；收工五件事：写日志 / 更新 README 今日索引 / 提台账 / 新决定进决策日志 / **commit+push**。
   `.workbuddy/memory/` 写日志 = 没写（被 gitignore 排除）。
