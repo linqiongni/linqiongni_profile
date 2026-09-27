@@ -58,6 +58,7 @@
 | **改某个子站的文字内容** | `sites-map.md` 确认它有源目录 | `workflows.md` 第一节 | `sync` → `grep` 核对 → push |
 | **新增一个子站 tab** | `sites-map.md` 登记源目录与 slug | `workflows.md` 第二节（四步）→ `tech-stack.md` 确认加载方式 | 上线后用 `workflows.md` 第三节验证 |
 | **改视觉（配色 / 字体 / 动效）** | `DECISIONS.md` 找同类先例，**别推翻没看过的决定** | `01-项目现状/` 无相关记录再看代码 | 改完回 `DECISIONS.md` 追加一条 |
+| **换设备 / 新 clone 之后** | `bash scripts/setup-device.sh`（装 hook + 自检六项），然后贴开场白 | `scripts/setup-device.sh` | 自动完成，每台设备一次 |
 | **提交代码（收工）** | 只写 `git commit`——hook 会自动 rebase 到线上最新并推上去，**别手写 push** | `scripts/install-git-hooks.sh`（已装） | 自动完成 |
 | **把做了一半的东西打包带走**（换电脑 / 中断） | 填 `HANDOFF.md` 前三节（脚本会拦空卡） | `python3 scripts/wip-pack.py -m "一句话"` 一条命令 | 自动从 `wip/` 分支 commit 并 push（**绝不推 main**） |
 
@@ -153,6 +154,7 @@
 | 2026-09-27 | 记录 #19：git push 报 Empty reply 的根因（本地代理挂了）；MIGRATION 排障表补「代理挂了」这一招 | #19 |
 | 2026-09-27 | 新增 `HANDOFF.md` 断点卡 + `scripts/wip-snapshot.py`；半途打包只能推 `wip/` 分支（推 main 会发布半成品）| — |
 | 2026-09-27 | 半途打包实测：脚本加「空卡拒绝生成快照」校验、`HANDOFF` 前五节填真实状态、台账开 #20（两个孤儿 stash 与未推分支） | #20 |
+| 2026-09-27 | 新增 `scripts/setup-device.sh`：新设备一条命令装好自动同步并自检六项；真 clone 一台新设备端到端跑通。场景定为「多设备共用」
 | 2026-09-27 | 装了 git 自动同步 hook（`scripts/install-git-hooks.sh`）：进入仓库自动拉、提交后自动 rebase+推、推 main 前警告；`pre-commit` 绝不 pull（会吞提交） |
 | 2026-09-27 | 打包压成一条命令 `scripts/wip-pack.py`；实跑把机制自己推上 `wip/20260927`（main 未动）；脚本自身修两个缺陷（git 看返回码、文本拼接粘连）| — |
 | 2026-09-27 | 半途打包压成一条命令 `scripts/wip-pack.py`（校验断点卡 → 刷新快照 → 开 `wip/YYYYMMDD` → commit → push，支持 `--dry-run` / `--no-push`）；机制本体实跑推上 `wip/20260927` | #20 |
