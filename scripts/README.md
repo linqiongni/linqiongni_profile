@@ -56,6 +56,9 @@ git config autosync.extraremote gitee     # 不想要了删掉这行即可
 - Gitee 那类国内远端常常不吃代理，hook **第一次就绕开环境变量试**，失败才走默认。
 - **主远端成、镜像挂是最危险的部分成功**，hook 会单独 warn「主远端推成功了，但 gitee 没推上去」，
   不会混进「push ok」里。报 `repository not found` 时还会提示去 Gitee 上建仓库。
+- **两个远端各自独立尝试，不用 `&&` 短路**：GitHub 挂的时候 Gitee（国内线路）常常是通的，
+  备份就是为这种时刻准备的（2026-09-27 晚实测：GitHub 连环 502 而 gitee.com 200，
+  主推失败、镜像照常推上）。反过来镜像推成功、GitHub 落后，网络恢复后 push 一次即追平。
 - 换设备时这条 config 不会被 clone 带过来，装完 hook 要自己再配一次。
 
 **另一个仓库是 partial clone（`blob:none`）**：本地没有完整 blob，首次推镜像远端时 git 会
