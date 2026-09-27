@@ -223,8 +223,11 @@ case "$MODE" in
   # 提交之后：改动已固化，此时 rebase + push 是安全的
   commit)
     do_pull || { warn "这次没自动推送，先解决拉取冲突再手动 git push"; exit 0; }
-    # 主远端成、镜像挂要单独报（do_mirror_push 内部 warn），别混进「push ok」里
-    do_push && do_mirror_push ;;
+    # 主远端、镜像各自独立尝试，不用 &&：GitHub 挂的时候 Gitee（国内线路）常常是通的，
+    # 备份就是为这种时刻准备的（实测：2026-09-27 晚 GitHub 连环 502 而 gitee.com 200）。
+    # 主远端失败已自带 warn；镜像成/挂也各有提示，不会谎报成功。
+    do_push
+    do_mirror_push ;;
   push) do_pull ;;
   *) do_pull ;;
 esac
