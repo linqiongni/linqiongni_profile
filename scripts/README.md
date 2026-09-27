@@ -42,6 +42,25 @@ npm run theme:check             # 只体检，不写盘；不干净时退出码�
 | `wip-snapshot.py` | 抓半途开发现场快照 | 配合 `wip-pack.py` |
 | `apply-theme-kit.py` | 主题补丁注入/体检 | 见上 |
 
+## 镜像远端（Gitee 备份，2026-09-27 加入）
+
+hook 默认只推主远端（GitHub）。要**每次 commit 顺带推一个镜像远端**（例如 Gitee 私有库当备份）：
+
+```bash
+git remote add gitee https://gitee.com/<用户名>/<仓库名>.git
+git config autosync.extraremote gitee     # 不想要了删掉这行即可
+```
+
+- 只用一个远端时保持这行 config 为空，hook 会跳过镜像步骤。
+- 镜像用显式 refspec（`HEAD:refs/heads/<branch>`）推，不依赖镜像远端上有 upstream。
+- Gitee 那类国内远端常常不吃代理，hook **第一次就绕开环境变量试**，失败才走默认。
+- **主远端成、镜像挂是最危险的部分成功**，hook 会单独 warn「主远端推成功了，但 gitee 没推上去」，
+  不会混进「push ok」里。报 `repository not found` 时还会提示去 Gitee 上建仓库。
+- 换设备时这条 config 不会被 clone 带过来，装完 hook 要自己再配一次。
+
+**另一个仓库是 partial clone（`blob:none`）**：本地没有完整 blob，首次推镜像远端时 git 会
+回头找 GitHub 补对象。推之前先 `git fetch origin --refetch` 拿全量更稳，免得在断网边缘卡住。
+
 ## 「餐饮加盟法务」课程页流水线（问题台账 #22 的实测结论）
 
 三个脚本是一套，产物落在 `public/lessons/`（发布目录，线上可直接打开）：

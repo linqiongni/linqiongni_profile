@@ -58,6 +58,7 @@ cat > "$CORE" <<'CORE_EOF'
 #   · 开工时（post-checkout）把线上最新拉下来
 #   · 提交后（post-commit）rebase 到最新并推上去
 #   · 推送前（pre-push）兜底再拉一次
+#   · 主远端推成后再推镜像远端（autosync.extraremote，例如 Gitee）
 # 递归守卫：hook 自己触发的动作带 AUTO_SYNC=1，遇到就跳过。
 
 GD="$(git rev-parse --git-dir)"
@@ -145,6 +146,7 @@ do_push(){
     warn "    做了一半的东西先 git checkout -b wip/$(date +%Y%m%d) 再提交，别推 main。"
   fi
   local out rc=0
+  PUSHED=0   # 给 do_mirror_push 判断用：主远端到底推没推成功
   out="$(AUTO_SYNC=1 git push 2>&1)" || rc=$?
   if [ "$rc" -ne 0 ]; then
     # 判据来自 MIGRATION 第三节：走代理 000 且绕过代理 200 = 本地代理挂了（git 的 CONNECT 回 502，curl 却通）
@@ -171,7 +173,45 @@ do_push(){
     fi
     return 1
   fi
+  PUSHED=1
   log "push ok（${BRANCH}）"
+  return 0
+}
+
+# 主远端推成之后的「镜像推送」（例如 Gitee 当备份）。
+# 用显式 refspec 而不是 git push <remote>，因为镜像远端通常没有 upstream。
+do_mirror_push(){
+  local extra rc=0 out
+  extra="${AUTOSYNC_EXTRA_REMOTE:-$(git config --get autosync.extraremote 2>/dev/null || true)}"
+  [ -n "$extra" ] || return 0
+  [ "$extra" = "$REMOTE" ] && { log "跳过镜像 push（$extra 就是主远端）"; return 0; }
+  git remote get-url "$extra" >/dev/null 2>&1 || {
+    log "跳过镜像 push（远端 $extra 不存在）"; return 0; }
+  # Gitee 那类国内远端常常不吃代理，所以第一次就绕开环境变量试，失败再走默认。
+  # 行续行这里只能写一个反斜杠：外面是 quoted heredoc，写两个会被 bash 缩成一个字面\，
+  # 结果变成 env 拿到参数「\」报错（实测：env: \: No such file or directory）。
+  out="$(AUTO_SYNC=1 env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy \
+             git push "$extra" "HEAD:refs/heads/$BRANCH" 2>&1)" || rc=$?
+  if [ "$rc" -ne 0 ]; then
+    out="$(AUTO_SYNC=1 git push "$extra" "HEAD:refs/heads/$BRANCH" 2>&1)" || rc=$?
+  fi
+  if [ "$rc" -ne 0 ]; then
+    log "镜像 push 失败（$extra）：$(printf '%s' "$out" | head -4)"
+    printf '%s\n' "$out" | head -6
+    # 主远端成、镜像挂 = 最危险的部分成功，必须比普通失败说得更狠
+    if [ "${PUSHED:-0}" = "1" ]; then
+      warn "主远端推成功了，但「$extra」没推上去 —— 现在只有主远端有这批提交。"
+    else
+      warn "「$extra」没推上去（主远端这次也没推）。"
+    fi
+    warn "改动没丢，手动补一条即可：git push $extra $BRANCH"
+    if printf '%s' "$out" | grep -qE "repository not found|does not appear to exist|404"; then
+      warn "看着像 Gitee 上那个仓库还没建（或名字对不上）："
+      warn "  git remote set-url $extra https://gitee.com/<你的用户名>/<仓库名>.git"
+    fi
+    return 1
+  fi
+  log "镜像 push ok（$extra）"
   return 0
 }
 
@@ -183,7 +223,8 @@ case "$MODE" in
   # 提交之后：改动已固化，此时 rebase + push 是安全的
   commit)
     do_pull || { warn "这次没自动推送，先解决拉取冲突再手动 git push"; exit 0; }
-    do_push ;;
+    # 主远端成、镜像挂要单独报（do_mirror_push 内部 warn），别混进「push ok」里
+    do_push && do_mirror_push ;;
   push) do_pull ;;
   *) do_pull ;;
 esac
@@ -230,4 +271,10 @@ say "    · 推送之前                 → 兜底再拉一次，避免被拒"
 say "    · 推 main 时               → 先警告一次（这个仓库推 main 等于发布上线）"
 say ""
 say "  不想要自动推：export AUTOSYNC_PUSH=0 后重跑本安装器（手动 push 照常）"
+say ""
+say "  多推一个镜像远端（例如 Gitee 当备份，私有也行）："
+say "    git remote add gitee https://gitee.com/<用户名>/<仓库名>.git"
+say "    git config autosync.extraremote gitee"
+say "    之后每次 commit 会依次推 GitHub + Gitee；只推一个时删掉那行 config 即可。"
+say ""
 say "  彻底卸载：      bash scripts/install-git-hooks.sh --uninstall"
