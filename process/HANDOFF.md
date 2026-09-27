@@ -39,7 +39,7 @@
 - [x] 换机器开场白定型（`MIGRATION.md` 〇节）
 - [x] 新 AI 实测走一遍流程，三轮反馈都落到文档里了
 - [x] 空卡校验：断点卡关键节没填，快照/打包脚本直接拒绝（退码 2）
-- [ ] **把当前这批打包推到 `wip/20260927` 分支** —— 就是下面第四节第一步
+- [x] **把当前这批打包推到 `wip/20260927` 分支** —— 已推（两条提交：`8f6bc8a` 机制本体、`2b9e417` 脚本修复）。**main 仍是 `a4d7522`，线上没被碰过**
 - [ ] 本地两个孤儿 stash（`stash@{0}` 含 09-17 日志、`stash@{1} wip-MEMORY`）与从未推送的分支 `save-visual-f276c11` 怎么处理（Andy 定，见 `03-问题台账/OPEN.md` #20；**换机器就永久消失**）
 - [ ] 长期遗留（Andy 未点头）：动 `.gitignore` 让 `.workbuddy/` 入库、把 15 份历史日志搬进 `04-每日日志/`
 
@@ -68,17 +68,15 @@ python3 scripts/wip-pack.py -m "档案库半途打包机制：断点卡 + 快照
 
 _由 `python3 scripts/wip-pack.py` 自动写入_
 
-- **抓于**：2026-09-27 14:51
-- **分支**：`main`
-- **最近提交**：`a4d7522 2026-09-27 docs: 项目 MEMORY.md 补半途打包要点（HANDOFF + wip 分支红线 + 校验优先于叮嘱）`
+- **抓于**：2026-09-27 14:52
+- **分支**：`wip/20260927`
+- **最近提交**：`2b9e417 2026-09-27 fix(wip): 用返回码判 git 成败（中文 locale 下成功也往 stderr 打 create mode）+ 修文件清单拼接粘连`
 - **已暂存改动**：
 _（无）_
 - **未暂存改动**（含未提交的中途状态，**这些才是「做了一半」的主体**）：
-- `process/04-每日日志/2026-09-27.md`
-- `process/CONTRACT.md`
 - `process/HANDOFF.md`
 - **未跟踪的新文件**：
-- `scripts/wip-pack.py`
+_（无）_
 - **今天（2026-09-27）动过的文件**：
 - `AGENTS.md`
 - `MEMORY.md`
@@ -101,6 +99,7 @@ _（无）_
 - `process/_templates/决策日志.md`
 - `process/_templates/每日日志.md`
 - `process/_templates/问题台账.md`
+- `scripts/wip-pack.py`
 - `scripts/wip-snapshot.py`
 - `src/components/AquaticLuxuryBackground.tsx`
 
@@ -158,3 +157,4 @@ git branch -a                   # 确认远端分支真的带过来了
 |---|---|
 | 2026-09-27 | 初版。起因：Andy 问「开发一半的功能怎么打包带走」。定死与 OPEN / 日志的边界；定 WIP 只能推 wip 分支（推 main 会发布半成品）；附一键打包命令与新机器 checkout 分支 |
 | 2026-09-27 | 二版。打包从「手填卡 + 手敲四行」压成 `scripts/wip-pack.py` 一条命令（空卡退码 2）；分支名统一为 `wip/YYYYMMDD`；补 `--dry-run` / `--no-push`。实测空卡校验对「整节清空」「只留标题」两种情况都正确拒绝 |
+| 2026-09-27 | 三版实跑。机制本体已推 `wip/20260927`（`8f6bc8a`）。实跑抓到脚本两个自身缺陷并修：① 用 stdout 判 git 成败 —— 中文 locale 下成功也往 stderr 打 `create mode …`，会把成功报成「建分支失败」并打印错提交信息；② 文件清单用 `+` 拼接多块文本导致粘连。**教训：调 git 一律看返回码，别看输出。** |
