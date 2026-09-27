@@ -64,7 +64,7 @@ tar xzf ~/workbuddy-user.tgz -C ~
 **注意分支**：wip 分支不在默认分支上。`git clone` 下来是 `main`，必须手动切过去，否则 HANDOFF 读到了、代码却不是那一版：
 
 ```bash
-git checkout wip/2026-09-27      # 换成你自己打包那天起的分支名
+git checkout wip/20260927        # 换成你自己打包那天起的分支名
 git branch -a                    # 确认远端分支真带过来了
 ```
 
@@ -228,4 +228,5 @@ env -u HTTPS_PROXY -u https_proxy -u HTTP_PROXY -u http_proxy git push origin ma
 | 2026-09-27 | 二版：〇节状态改为「已 push」（原文写「尚未 push」已过时）、排障表补「两条都 000 = 网络断」分支。起因是 13:50 推不动，实测两条 curl 均 000 |
 | 2026-09-27 | 五版：排障表补「两条都 000 是周期性的，别动配置，等或自推」。本仓库第二次遇到该症状（同日 14:5x） |
 | 2026-09-27 | 四版：开场白扩为五件事（插入 `HANDOFF.md`）；补 wip 分支切换说明。起因是 Andy 问「开发一半的功能怎么打包带走」——**推 main 会触发 CI 发布半成品** |
+| 2026-09-27 | 五版：补 `scripts/wip-pack.py` 一键打包（一句话完成「校验断点卡 → 刷新快照 → 开 wip 分支 → commit → push」）。起因是 Andy 问「我怎么让它把当前状态打包上去」，机制建好后最后一公里还是要手填卡 + 手敲命令——这是一条命令能解决的部分 |
 | 2026-09-27 | 三版：新增〇节「换机器三件事」——用户级文件 `~/.workbuddy/` 四样（MEMORY/SOUL/IDENTITY/USER/skills）不在 git 里，clone 带不走，附 tar+scp 命令；开场白定型并附实测反馈。同批改契约开工清单补「认领判据」表 |
