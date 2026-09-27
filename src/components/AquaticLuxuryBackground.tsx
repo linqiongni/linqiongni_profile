@@ -42,6 +42,18 @@ const MAX_RIPPLES = 12;
 const TARGET_FPS = 30;
 const STEP = 1000 / TARGET_FPS;
 
+/** 交互节奏（2026-09-27 调校：慢、更醒目）
+ *  鼠标**移动中** → 缓慢向光标聚拢；鼠标**静止** → 缓慢四散。
+ *  注意判据是「指针是否移动」而不是「指针是否停留在窗口内」——
+ *  后者会让光标停住后鱼继续贴着不动，正是要避免的感觉。 */
+const IDLE_MS = 650; // 静止超过这个时长判定为「散开」态
+const ACCEL = 0.06; // 加速度：越小越「慢悠悠」
+const VMAX = 0.0018; // 每步位移上限（归一化单位）≈ 每秒 5.4% 屏宽
+const SEP_R = 0.17; // 互斥半径：鱼与鱼靠得比这更近就互相推开
+const SEP_FORCE = 0.0016; // 互斥强度
+const DAMP = 0.95; // 每步阻尼：让速度收敛到匀速，而不是一路加速撞上限
+const DISPERSE_DRIFT = 0.18; // 散开态下横向漂移的权重（越小越安静）
+
 const TONES: string[][] = [
   ['rgba(46,62,80,.16)', 'rgba(88,98,110,.52)', 'rgba(158,124,62,.46)', 'rgba(58,74,92,.12)'],
   ['rgba(40,58,76,.15)', 'rgba(78,96,112,.50)', 'rgba(132,114,70,.42)', 'rgba(52,70,88,.10)'],
@@ -166,6 +178,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
     let elapsed = 0;
     let lastPointerAt = 0;
     let lastAmbientAt = 0;
+    let lastMoveAt = 0;
     let resizeTimer = 0;
     let sprites: Sprite[][] = [];
 
@@ -176,8 +189,8 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       x: index % 2 === 0 ? -0.12 + index * 0.17 : 1.12 - index * 0.13,
       y: 0.51 + (index % 4) * 0.09,
       size: mobile ? 20 + (index % 3) * 7 : 23 + (index % 4) * 10,
-      speed: 0.0000075 + (index % 4) * 0.0000018,
-      alpha: (0.10 + (index % 3) * 0.03) * gain,
+      speed: 0.000006 + (index % 4) * 0.0000015,
+      alpha: (0.24 + (index % 3) * 0.06) * gain,
       direction: (index % 2 === 0 ? 1 : -1) as 1 | -1,
       phase: index * 1.37,
       depth: 0.48 + (index % 4) * 0.12,
@@ -239,7 +252,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
         if (!frames || !frames.length) continue;
         let x = f.x * width;
         let y = f.y * height + Math.sin(time * 0.00032 + f.phase) * 14 * f.depth;
-        const idx = Math.floor(((time * 0.0032 + f.phase) / (Math.PI * 2)) * PHASES) % PHASES;
+        const idx = Math.floor(((time * 0.0021 + f.phase) / (Math.PI * 2)) * PHASES) % PHASES;
         const sp = frames[(idx + PHASES) % PHASES];
         if (!sp) continue;
         ctx.save();
@@ -255,33 +268,47 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
     const step = (): void => {
       if (!reduce) {
         const mouseActive = mouse.x > -9000;
+        // 判据是「指针还在动吗」，而不是「指针在窗口内吗」——
+        // 光标停在页面上不动时，鱼应当慢慢散开，不该继续贴着光标。
+        const gathering = mouseActive && performance.now() - lastMoveAt < IDLE_MS;
+
         for (let i = 0; i < fish.length; i += 1) {
           const f = fish[i];
-          let targetX: number;
-          let targetY: number;
-          if (mouseActive) {
-            // 朝鼠标游：吸引 + 轻微绕游，避免整群叠在指针上
+          if (gathering) {
+            // 缓慢聚拢：朝光标吸引 + 轻微绕游，避免整群叠在指针上
             const mx = mouse.x / width;
             const my = mouse.y / height;
             const tx = mx - f.x;
             const ty = my - f.y;
             const dist = Math.hypot(tx, ty) || 1;
-            const pull = Math.min(0.0024, 0.0005 + dist * 0.02);
-            const swirl = 0.0007 * (1 - f.depth);
-            targetX = f.x + (tx / dist) * pull + (-ty / dist) * swirl;
-            targetY = f.y + (ty / dist) * pull + (tx / dist) * swirl;
+            const pull = Math.min(0.0009, 0.00018 + dist * 0.008);
+            const swirl = 0.0003 * (1 - f.depth);
+            const targetX = f.x + (tx / dist) * pull + (-ty / dist) * swirl;
+            const targetY = f.y + (ty / dist) * pull + (tx / dist) * swirl;
+            f.vx += (targetX - f.x) * ACCEL;
+            f.vy += (targetY - f.y) * ACCEL;
           } else {
-            // 无鼠标时沿原方向水平漂游
-            targetX = f.x + f.speed * STEP * f.direction;
-            targetY = f.y;
+            // 鼠标静止 → 慢慢四散：彼此互斥推开，再叠加极缓的横向漂移
+            for (let j = 0; j < fish.length; j += 1) {
+              if (j === i) continue;
+              const g = fish[j];
+              const dx = f.x - g.x;
+              const dy = f.y - g.y;
+              const d = Math.hypot(dx, dy) || 0.0001;
+              if (d < SEP_R) {
+                const push = (1 - d / SEP_R) * SEP_FORCE;
+                f.vx += (dx / d) * push * ACCEL;
+                f.vy += (dy / d) * push * ACCEL;
+              }
+            }
+            f.vx += f.speed * STEP * f.direction * DISPERSE_DRIFT;
           }
-          f.vx += (targetX - f.x) * 0.08;
-          f.vy += (targetY - f.y) * 0.08;
-          const vmax = 0.0024;
+          f.vx *= DAMP;
+          f.vy *= DAMP;
           const vmag = Math.hypot(f.vx, f.vy);
-          if (vmag > vmax) {
-            f.vx = (f.vx / vmag) * vmax;
-            f.vy = (f.vy / vmag) * vmax;
+          if (vmag > VMAX) {
+            f.vx = (f.vx / vmag) * VMAX;
+            f.vy = (f.vy / vmag) * VMAX;
           }
           f.x += f.vx;
           f.y += f.vy;
@@ -321,6 +348,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       mouse.x = event.clientX;
       mouse.y = event.clientY;
       const now = performance.now();
+      lastMoveAt = now; // 指针一动就进入「聚拢」态
       if (now - lastPointerAt > 190) {
         lastPointerAt = now;
         addRipple(event.clientX, event.clientY);
