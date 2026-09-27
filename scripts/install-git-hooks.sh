@@ -157,6 +157,12 @@ do_push(){
   if [ "$rc" -ne 0 ]; then
     log "push 失败：$(printf '%s' "$out" | head -6)"
     printf '%s\n' "$out"
+    # 两边 curl 都 000 = 真的断网，不是代理问题：要说清楚，别写成笼统的「push 失败」
+    if [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 https://github.com)" = "000" ] && \
+       [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 --noproxy '*' https://github.com)" = "000" ]; then
+      warn "本机网络看着不通（走代理和绕开代理都拿不到 200）——是断网，不是代理配置问题"
+      warn "本次没验成：改动还在本地（没丢），等网络恢复再 git push"
+    fi
     warn "push 失败，改动还在本地，没丢。手动执行：git push"
     # 实测过的解：本地代理挂了时 curl 能通、git 的 CONNECT 却回 502
     if echo "$out" | grep -q "CONNECT tunnel failed\|Could not connect to server"; then
