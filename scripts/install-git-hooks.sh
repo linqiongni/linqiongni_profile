@@ -69,6 +69,16 @@ log(){ printf '[%s] %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; }
 # 空仓库（一次提交都还没有）时什么都别做，直接放行
 git rev-parse --verify -q HEAD >/dev/null 2>&1 || { log "仓库还没有任何提交，跳过 autosync"; exit 0; }
 
+# 完整性自检：hook 在、core 不在，说明装到一半或被删过。
+# 注意别指望「clone 下来会提醒你装」——clone 不跑任何第三方脚本，
+# 没装就是没装，安静得跟生效了一样。能说的话只有下面这段。
+if [ ! -f "$GD/hooks/git-autosync.sh" ]; then
+  log "自动同步不完整（core 缺失）"
+  warn "自动同步装得不完全：.git/hooks/ 里有入口，但没有核心脚本。"
+  warn "重跑一次即可：bash scripts/setup-device.sh"
+  exit 0
+fi
+
 BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
 UPSTREAM="$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true)"
 REMOTE="${UPSTREAM%%/*}"
