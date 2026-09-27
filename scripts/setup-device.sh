@@ -50,7 +50,7 @@ ok=1
 chk(){ # chk "说明" 命令…
   if eval "$2" >/dev/null 2>&1; then say "  ✓ $1"; else fail "  ✗ $1"; ok=0; fi
 }
-chk "入口 hook 已生成（$NAME）"        'test -f "$GD/hooks/post-commit"'
+chk "入口 hook 已生成：${NAME}"        'test -f "$GD/hooks/post-commit"'
 chk "hook 可执行"                      '[ -x "$GD/hooks/post-commit" ]'
 chk "核心脚本可执行"                   '[ -x "$CORE" ]'
 chk "核心脚本语法没问题"               'bash -n "$CORE"'
