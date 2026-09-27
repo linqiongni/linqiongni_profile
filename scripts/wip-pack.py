@@ -41,12 +41,21 @@ if '-m' in args:
 
 
 def git(*a):
+    """跑一条 git，返回 (stdout, stderr, 返回码)。
+
+    返回码是关键：git 成功时 stdout 经常是空串（中文 locale 下还往 stderr 打
+    "create mode …"），只判空会把成功误报成失败、把失败悄悄吞掉。
+    """
     try:
         p = subprocess.run(['git', '-c', 'core.quotepath=false', *a], cwd=REPO,
                            capture_output=True, text=True, timeout=60)
-        return (p.stdout.strip(), '') if p.returncode == 0 else (None, p.stderr.strip())
+        return p.stdout.strip(), p.stderr.strip(), p.returncode
     except Exception as e:                                  # noqa: BLE001
-        return None, str(e)
+        return '', str(e), -1
+
+
+def ok(r):
+    return r[2] == 0
 
 
 def sections_body(text, a, b):
@@ -83,10 +92,11 @@ def banner(t):
 
 
 def main():
-    branch, err = git('rev-parse', '--abbrev-ref', 'HEAD')
-    if err:
-        print('不是 git 仓库：', err)
+    r = git('rev-parse', '--abbrev-ref', 'HEAD')
+    if r[2] != 0:
+        print('不是 git 仓库或 git 不可用：' + r[1])
         return 1
+    branch = r[0]
     # 在 main 上是对的：脚本只会从当前分支另开 wip 分支，绝不在原地提交。
     # 唯一的例外要拦：已经站在某个 wip 分支上却想打包另一批 —— 先切回去，免得两个半成品混进一条提交。
     if branch.startswith('wip/') and branch != f'wip/{TODAY}':
@@ -95,12 +105,12 @@ def main():
         return 1
 
     banner('第 1 步 / 校验：断点卡填了吗')
-    head, _ = git('log', '-1', '--format=%h %ad %s', '--date=short')
-    staged, _ = git('diff', '--cached', '--name-only')
-    unstaged, _ = git('diff', '--name-only')
-    untracked, _ = git('ls-files', '--others', '--exclude-standard')
+    head = git('log', '-1', '--format=%h %ad %s', '--date=short')[0]
+    staged = git('diff', '--cached', '--name-only')[0]
+    unstaged = git('diff', '--name-only')[0]
+    untracked = git('ls-files', '--others', '--exclude-standard')[0]
     date_str = datetime.now().strftime('%Y-%m-%d')
-    today_files, _ = git('log', '--name-only', '--pretty=format:', f'--since={date_str} 00:00:00')
+    today_files = git('log', '--name-only', '--pretty=format:', f'--since={date_str} 00:00:00')[0]
 
     if not os.path.exists(HANDOFF):
         banner('!! 找不到 process/HANDOFF.md，拒绝打包。')
@@ -161,36 +171,42 @@ def main():
         print(f'[dry-run] 将 push 到 origin/{wip}')
         return 0
 
-    existing, _ = git('rev-parse', '--verify', f'refs/heads/{wip}')
-    if existing is None:
-        out, err = git('checkout', '-b', wip)
-        print('✓ 新建分支 ' + wip if out else '!! 建分支失败：' + err)
+    rc = git('rev-parse', '--verify', f'refs/heads/{wip}')[2]
+    if rc != 0:
+        r = git('checkout', '-b', wip)
+        print('✓ 已新建分支 ' + wip if ok(r) else '!! 建分支失败：' + r[1])
     else:
-        out, err = git('checkout', wip)
-        print('✓ 复用已有分支 ' + wip if out else '!! 切分支失败：' + err)
+        r = git('checkout', wip)
+        print('✓ 已复用分支 ' + wip if ok(r) else '!! 切分支失败：' + r[1])
         git('pull', '--rebase', 'origin', wip)
 
-    files = todo(unstaged) + todo(untracked) + todo(staged)
-    print('  本次将入库的文件（' + str(len([l for l in files.splitlines() if l.strip() not in ('- `_（无）_`',)])) + ' 处改动）：')
-    for l in files.splitlines()[:12]:
+    # 注意是换行拼接：todo() 返回的是多块文本，+ 会直接粘成一行
+    files = '\n'.join(x for x in (todo(unstaged), todo(untracked), todo(staged)) if x.strip())
+    lines = [l for l in files.splitlines() if l.strip() and not l.strip().startswith('_')]
+    print(f'  本次将入库 {len(lines)} 处改动：')
+    for l in lines[:12]:
         print('   ', l)
-    if len(files.splitlines()) > 12:
-        print('    …另有若干')
+    if len(lines) > 12:
+        print(f'   …另有 {len(lines) - 12} 处')
 
-    out, err = git('add', '-A')
-    if out is None:
-        print('!! git add 失败：' + err)
+    r = git('add', '-A')
+    if not ok(r):
+        print('!! git add 失败：' + r[1])
         return 1
-    out, err = git('commit', '-m', f'wip: {msg}')
-    print('✓ 已提交：' + (err if out is None else out.splitlines()[-1]))
+    r = git('commit', '-m', f'wip: {msg}')
+    if not ok(r):
+        print('!! git commit 失败：' + r[1])
+        return 1
+    new_head = git('log', '-1', '--format=%h %s')[0]
+    print('✓ 已提交：' + new_head)
 
     if NO_PUSH:
         banner('已生成，未推送。确认无误后手动：git push -u origin ' + wip)
         return 0
 
     banner('第 4 步 / 推送到远端')
-    out, err = git('push', '-u', 'origin', wip)
-    if out is None:
+    r = git('push', '-u', 'origin', wip)
+    if not ok(r):
         banner('!! push 失败。按顺序排查（完整表见 process/MIGRATION.md 第三节）：')
         print('   1) git config --global --get http.version       期望 HTTP/1.1')
         print('   2) git config --global --get http.userAgent      期望 curl/8.x')
