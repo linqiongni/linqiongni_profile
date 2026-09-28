@@ -115,12 +115,20 @@
   var fsBtn = el("button", "fs-btn", "全屏");
   fsBtn.id = "fsBtn";
   function isFs() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function isImmersive() { return document.documentElement.classList.contains("fs-immersive"); }
   function syncFsBtn() {
-    var on = isFs();
+    var on = isFs() || isImmersive();
     fsBtn.textContent = on ? "退出全屏" : "全屏";
     fsBtn.classList.toggle("on", on);
   }
   fsBtn.addEventListener("click", function () {
+    if (window.innerWidth <= 1000) {
+      var willOn = !isImmersive();
+      document.documentElement.classList.toggle("fs-immersive");
+      if (willOn) { try { window.scrollTo(0, 0); } catch (e) {} }
+      syncFsBtn();
+      return;
+    }
     var d = document, r = d.documentElement;
     try {
       if (isFs()) { var ex = d.exitFullscreen || d.webkitExitFullscreen; if (ex) { var p = ex.call(d); if (p && p["catch"]) p["catch"](function () {}); } return; }
@@ -128,6 +136,12 @@
       if (!rq) return;
       var q = rq.call(r); if (q && q["catch"]) q["catch"](function () {});
     } catch (e) {}
+  });
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1000 && isImmersive()) {
+      document.documentElement.classList.remove("fs-immersive");
+      syncFsBtn();
+    }
   });
   document.addEventListener("fullscreenchange", syncFsBtn);
   document.addEventListener("webkitfullscreenchange", syncFsBtn);

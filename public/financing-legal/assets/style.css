@@ -730,3 +730,11 @@ html[data-theme="dark"] .fs-btn.on { color: #16161a; }
   .cur-chip { flex: 1 1 auto; min-width: 0; max-width: none; font-size: 11.5px; padding: 3px 9px; }
   .menu-btn, .fs-btn { padding: 6px 10px; }
 }
+
+/* 手机端「全屏」按钮 → CSS 沉浸式（隐藏顶栏），不调用原生 Fullscreen API
+   原因：iOS Safari 进入原生全屏后，向上滑动会触发系统退出手势，体感很差。
+   改为隐藏顶栏、内容原生滚动，上滑是正常阅读滚动而非退出。仅在 <=1000px 生效。 */
+@media (max-width: 1000px) {
+  html.fs-immersive #topbar { display: none !important; }
+  html.fs-immersive body { overflow: visible; }
+}

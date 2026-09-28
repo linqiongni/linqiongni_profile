@@ -141,13 +141,24 @@
   function isFs() {
     return !!(document.fullscreenElement || document.webkitFullscreenElement);
   }
+  // 手机端（<=1000px）不调用原生 Fullscreen API：iOS Safari 全屏态上滑必退出，JS 拦不住。
+  // 改用 CSS 沉浸式（隐藏顶栏），内容原生滚动，上滑只是正常阅读不会退出。
+  function isImmersive() { return document.documentElement.classList.contains("fs-immersive"); }
   function syncFsBtn() {
-    var on = isFs();
+    var on = isFs() || isImmersive();
     fsBtn.textContent = on ? "退出全屏" : "全屏";
     fsBtn.title = on ? "退出全屏（Esc）" : "全屏显示（不跳新页面，Esc 退出）";
     fsBtn.classList.toggle("on", on);
   }
   fsBtn.addEventListener("click", function () {
+    // 手机端：切换 CSS 沉浸式，绕过原生全屏的「上滑退出」痛点
+    if (window.innerWidth <= 1000) {
+      var willOn = !isImmersive();
+      document.documentElement.classList.toggle("fs-immersive");
+      if (willOn) { try { window.scrollTo(0, 0); } catch (e) {} }
+      syncFsBtn();
+      return;
+    }
     var d = document, r = d.documentElement;
     try {
       if (isFs()) {
@@ -161,6 +172,13 @@
       if (q && q["catch"]) q["catch"](function () { fsBtn.title = "浏览器拒绝全屏（直接访问本站可正常全屏）"; });
     } catch (e) {
       fsBtn.title = "全屏被浏览器拒绝（Esc 可退出）";
+    }
+  });
+  // 旋转/拉伸到宽屏时清除可能残留的沉浸式，避免顶栏被永久隐藏
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1000 && isImmersive()) {
+      document.documentElement.classList.remove("fs-immersive");
+      syncFsBtn();
     }
   });
   document.addEventListener("fullscreenchange", syncFsBtn);

@@ -746,3 +746,11 @@ html[data-theme="dark"] .fs-btn.on { color: #16161a; }
 [data-theme="dark"] .tpl-bd { background: rgba(255,255,255,.06); }
 .c-note { margin: 10px 0; padding: 10px 14px; border-left: 3px solid var(--gold); background: rgba(184,159,107,.10); border-radius: 0 8px 8px 0; font-size: 14px; color: var(--ink-2); }
 [data-theme="dark"] .c-note { background: rgba(184,159,107,.16); }
+
+/* 手机端「全屏」按钮 → CSS 沉浸式（隐藏顶栏），不调用原生 Fullscreen API
+   原因：iOS Safari 进入原生全屏后，向上滑动会触发系统退出手势，体感很差。
+   改为隐藏顶栏、内容原生滚动，上滑是正常阅读滚动而非退出。仅在 <=1000px 生效。 */
+@media (max-width: 1000px) {
+  html.fs-immersive #topbar { display: none !important; }
+  html.fs-immersive body { overflow: visible; }
+}
