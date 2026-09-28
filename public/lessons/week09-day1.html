@@ -70,9 +70,21 @@ if(n.nodeType===1){glass(n);
 if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
 });
 mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var mo2=new MutationObserver(function(){
+if(__gDeb)return;
+__gDeb=setTimeout(function(){__gDeb=null;run();},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style"],subtree:true});
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
+
 
 
 
