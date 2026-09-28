@@ -96,11 +96,22 @@ if [ -z "$probe" ]; then
   exit 1
 fi
 echo "等线上刷新中……（GH Pages 有 10 分钟缓存，最多等 ${WAIT}s）"
+# 等待必须以「最终判定条件」为准：只等 HTTP 200 没用——旧版本同样返回 200，
+# 循环会立刻 break，内容检查只跑一次就判 FAIL，--wait 形同虚设（2026-09-28 实测：--wait 150 只跑了 3 秒）。
+# 给了 NEEDLE 就以「内容命中」为停等条件；没给 NEEDLE 才以「可达」为条件。
 code=""
+found="no"
 i=0
 while [ $i -lt "$MAXTRY" ]; do
   code=$(http_code "$URL")
-  if [ "$code" = "200" ] || [ "$code" = "304" ]; then break; fi
+  if [ "$code" = "200" ] || [ "$code" = "304" ]; then
+    if [ -z "$NEEDLE" ]; then found="yes"; break; fi
+    page=$(fetch "$URL")
+    if printf '%s' "$page" | grep -qF -- "$NEEDLE"; then found="yes"; break; fi
+    # 页面 HTML 里没有 ≠ 没上线：React 站点的内容常在首页引用的 js bundle 里
+    BD=$(bundle_of)
+    if [ -n "$BD" ] && printf '%s' "$(fetch "$SITE$BD")" | grep -qF -- "$NEEDLE"; then found="yes"; break; fi
+  fi
   i=$(( i + 1 ))
   [ $i -lt "$MAXTRY" ] && sleep 5
 done
@@ -115,20 +126,10 @@ fi
 
 # --- 文本核查：命中才算真生效，只 grep 字符串会误判 ---
 if [ -n "$NEEDLE" ]; then
-  found="no"
-  page=$(fetch "$URL")
-  printf '%s' "$page" | grep -qF -- "$NEEDLE" && found="yes"
-  # 页面 HTML 里没有 ≠ 没上线：React 站点的内容常在首页引用的 js bundle 里
-  if [ "$found" = "no" ]; then
-    BD=$(bundle_of)
-    if [ -n "$BD" ]; then
-      printf '%s' "$(fetch "$SITE$BD")" | grep -qF -- "$NEEDLE" && found="yes"
-    fi
-  fi
   if [ "$found" = "yes" ]; then
     echo "内容：PASS  (线上能查到「${NEEDLE}」)"
   else
-    echo "内容：FAIL  (线上查不到「${NEEDLE}」—— 要么没推上去，要么还在 GH Pages 缓存里，加 --wait 再试)"
+    echo "内容：FAIL  (等了 ${WAIT}s 仍查不到「${NEEDLE}」—— 要么没推上去，要么 CI/GH Pages 还没刷出来，加大 --wait 再试)"
     ok=1
   fi
 fi
