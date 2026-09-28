@@ -40,7 +40,8 @@ if(m){
 var a=m[4]===undefined?1:parseFloat(m[4]);
 if(a>=0.85&&!el.__gBg){
 var r=+m[1],g=+m[2],b=+m[3];
-if(dark(r,g,b)){
+var rr0=el.getBoundingClientRect();
+if(rr0.width>=200&&rr0.height>=120&&dark(r,g,b)){
 el.__gBg=1;
 el.style.setProperty("background-color","transparent","important");
 var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
@@ -69,6 +70,7 @@ mo.observe(document.documentElement,{childList:true,subtree:true});
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
+
 
 
 
