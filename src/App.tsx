@@ -90,6 +90,13 @@ export default function App() {
 
 
 
+  // 内容在 #app-scroll 容器内滚动（主页面不滚），所有滚动操作都作用于该容器
+  const scrollMain = (top: number, behavior: ScrollBehavior = 'smooth') => {
+    const el = document.getElementById('app-scroll');
+    if (el) el.scrollTo({ top, behavior });
+    else window.scrollTo({ top, behavior });
+  };
+
   const handleSelectTab = (tab: TabType) => {
 
     setActiveGroup(groupOfTab(tab));
@@ -100,7 +107,7 @@ export default function App() {
     // 让 Hero 首屏完整露出（定位到子标签条 + Hero 大字），而不是跳过 Hero 直达正文
     if (groupOfTab(tab) === 'profile') {
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollMain(0, 'smooth');
 
       return;
 
@@ -110,7 +117,7 @@ export default function App() {
 
     if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'arbitration' || tab === 'family-law' || tab === 'english' || tab === 'commercial-ops' || tab === 'retail-ad' || tab === 'econ-crime') {
 
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      scrollMain(0, 'auto');
 
       return;
 
@@ -118,9 +125,14 @@ export default function App() {
 
     if (contentSectionRef.current) {
 
-      const topOffset = contentSectionRef.current.offsetTop - 128;
+      // 容器内滚动：用可视位置 + 容器当前 scrollTop 换算目标位置（window.scrollY 恒为 0）
+      const el = document.getElementById('app-scroll');
+      const topOffset =
+        contentSectionRef.current.getBoundingClientRect().top +
+        (el ? el.scrollTop : window.scrollY) -
+        128;
 
-      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      scrollMain(Math.max(0, topOffset), 'smooth');
 
     }
 
@@ -157,9 +169,13 @@ export default function App() {
 
     if (contentSectionRef.current) {
 
-      const topOffset = contentSectionRef.current.offsetTop - 128;
+      const el = document.getElementById('app-scroll');
+      const topOffset =
+        contentSectionRef.current.getBoundingClientRect().top +
+        (el ? el.scrollTop : window.scrollY) -
+        128;
 
-      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      scrollMain(Math.max(0, topOffset), 'smooth');
 
     }
 
@@ -190,7 +206,7 @@ export default function App() {
 
   return (
 
-    <div className="min-h-screen flex flex-col bg-transparent dark:bg-transparent text-[#1D1D1F] dark:text-[#F4EFE4] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
+    <div className="h-[100dvh] overflow-hidden flex flex-col bg-transparent dark:bg-transparent text-[#1D1D1F] dark:text-[#F4EFE4] transition-colors duration-300 antialiased selection:bg-[#B89F6B] selection:text-white">
 
       {/* 全站水下背景：深海军蓝渐变 + 水面呼吸 + 自然鱼影 + 鼠标涟漪（不拦截交互） */}
 
@@ -220,6 +236,11 @@ export default function App() {
 
       />
 
+      {/* 内容滚动容器：顶部留出导航条高度（移动端 80 / 桌面 128），主页面本身不滚动。
+          这样内容与固定导航永不重叠 —— 导航可以一直钉在顶部且保持完全透明，
+          固定背景与鱼影完整透出（与 iframe 类 tab 的观感一致）。 */}
+
+      <div id="app-scroll" className="flex-1 min-h-0 overflow-y-auto mt-20 md:mt-32">
 
 
       {/* Hero Section 仅「个人」分组显示；其余分组直接进内容，不再出现主页大图。
@@ -245,13 +266,13 @@ export default function App() {
 
           isFullBleed
 
-            ? 'flex-1 w-full px-0 pt-20 md:pt-32'
+            ? 'flex-1 w-full px-0'
 
             : showHero
 
               ? 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 py-16'
 
-              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-20 md:pt-32 pb-16'
+              : 'flex-1 max-w-7xl w-full mx-auto px-6 sm:px-12 pb-16'
 
         }
 
@@ -371,6 +392,7 @@ export default function App() {
 
       {!isFullBleed && <Footer onOpenContact={() => setContactModalOpen(true)} />}
 
+      </div>{/* /#app-scroll */}
 
 
       {/* Contact & WeChat Modal */}

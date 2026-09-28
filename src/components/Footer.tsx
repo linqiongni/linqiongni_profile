@@ -8,7 +8,10 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 内容在 #app-scroll 容器内滚动（主页面不滚），回顶要作用于容器
+    const el = document.getElementById('app-scroll');
+    if (el) el.scrollTo({ top: 0, behavior: 'smooth' });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

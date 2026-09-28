@@ -34,9 +34,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenContact,
   solid = false,
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  // 主站页面滚动过 或 处于 iframe 类 tab（主页面不滚动）→ 均显示实色钉条
-  const scrolled = isScrolled || solid;
+  // 导航条常驻钉顶、永远透明（与 iframe 类 tab 一致）：
+  // 可滚动 tab 的内容在 #app-scroll 容器内滚动、顶部留出导航高度，内容永不到导航底下，
+  // 因此不需要任何底色/模糊来防叠字，固定背景与鱼影完整透出。
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // 当前展开的顶层分组（悬停触发）。null = 全部收起。
   const [openGroup, setOpenGroup] = useState<string | null>(null);
@@ -47,14 +47,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const closeTimer = useRef<number | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
   const btnRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const cancelClose = () => {
     if (closeTimer.current !== null) {
@@ -155,11 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       id="main-navbar"
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#FDFCF9]/85 backdrop-blur-xl dark:bg-transparent dark:backdrop-blur-none border-b border-[#E8E8E6] dark:border-[#2C2C2E]/60'
-          : 'bg-transparent border-b border-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-transparent"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Logo & Title */}
@@ -167,7 +155,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           id="navbar-logo-btn"
           onClick={() => {
             onSelectTab('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const sc = document.getElementById('app-scroll');
+            if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' });
+            else window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={`flex items-center gap-3 text-left group transition-opacity hover:opacity-80 ${FOCUS_RING}`}
         >
