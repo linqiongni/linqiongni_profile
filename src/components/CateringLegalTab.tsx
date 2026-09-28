@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import {
   Scale,
@@ -11,6 +11,7 @@ import {
   Gavel,
   Users,
   ChevronDown,
+  ChevronLeft,
   ExternalLink,
   GraduationCap,
   CalendarDays,
@@ -371,6 +372,82 @@ const hasLocalLesson = (id: string) => LOCAL_LESSON_IDS.has(id);
 
 export const CateringLegalTab: React.FC = () => {
   const [openWeek, setOpenWeek] = useState<string>(WEEKS[0].id);
+  // 课程阅读视图：点卡片后整个内容区换出（对齐影视法律点击剧集卡当页展示的体验）
+  const [reader, setReader] = useState<{ weekId: string; lessonId: string } | null>(null);
+
+  // 打开阅读视图时把主滚动容器带回顶部（换出后内容变短，避免停留在页脚）
+  useEffect(() => {
+    if (reader) {
+      const el = document.getElementById('app-scroll');
+      if (el) el.scrollTo({ top: 0 });
+    }
+  }, [reader]);
+
+  // ── 课程阅读视图（换出态）──
+  if (reader) {
+    // 由 weekId/lessonId 反查当前位置，并计算「下一天 / 下一周」目标（只找有站内全文的课）
+    const wi = WEEKS.findIndex((x) => x.id === reader.weekId);
+    const curWeek = WEEKS[wi];
+    const li = curWeek.lessons.findIndex((x) => x.id === reader.lessonId);
+    const curLesson = curWeek.lessons[li];
+    const nextLocal = (fromWeek: number) => {
+      for (let j = fromWeek; j < WEEKS.length; j++) {
+        const nl = WEEKS[j].lessons.find((x) => hasLocalLesson(x.id));
+        if (nl) return { weekId: WEEKS[j].id, lessonId: nl.id };
+      }
+      return null;
+    };
+    const nextDay =
+      li + 1 < curWeek.lessons.length && hasLocalLesson(curWeek.lessons[li + 1].id)
+        ? { weekId: curWeek.id, lessonId: curWeek.lessons[li + 1].id }
+        : nextLocal(wi + 1);
+    const nextWeek = nextLocal(wi + 1);
+    return (
+      <div id="tab-catering-content" className="py-6">
+        <div className="flex items-center justify-between gap-4 mb-4 text-sm">
+          <div className="flex items-center gap-2 min-w-0">
+            <button
+              onClick={() => setReader(null)}
+              className="group flex items-center gap-1 text-[#B89F6B] hover:text-[#A8905C] transition-colors shrink-0"
+            >
+              <ChevronLeft size={15} className="transition-transform group-hover:-translate-x-0.5" />
+              课程地图
+            </button>
+            <span className="text-[#86868B]">›</span>
+            <span className="text-[#86868B] truncate">{curWeek.label}</span>
+            <span className="text-[#86868B]">·</span>
+            <span className="text-[#86868B] truncate">{curLesson.title}</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            {nextDay && (
+              <button
+                onClick={() => setReader({ weekId: nextDay.weekId, lessonId: nextDay.lessonId })}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-[#B89F6B]/40 text-xs text-[#B89F6B] hover:bg-[#B89F6B]/10 transition-colors"
+              >
+                下一天
+                <ChevronLeft size={13} className="rotate-180" />
+              </button>
+            )}
+            {nextWeek && (
+              <button
+                onClick={() => setReader({ weekId: nextWeek.weekId, lessonId: nextWeek.lessonId })}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-[#B89F6B]/40 text-xs text-[#B89F6B] hover:bg-[#B89F6B]/10 transition-colors"
+              >
+                下一周
+                <ChevronLeft size={13} className="rotate-180" />
+              </button>
+            )}
+          </div>
+        </div>
+        <iframe
+          key={lessonLocalUrl(curLesson.id)}
+          src={lessonLocalUrl(curLesson.id)}
+          title={curLesson.title}
+          className="w-full rounded-2xl border border-[#E8E8E6]/50 dark:border-[#2C2C2E]/70 bg-transparent h-[calc(100dvh-12.5rem)] md:h-[calc(100dvh-14.5rem)]"
+        />
+      </div>
+    );
+  }
 
   return (
     <div id="tab-catering-content" className="space-y-12 py-6">
@@ -509,14 +586,27 @@ export const CateringLegalTab: React.FC = () => {
                   <div className="px-5 pb-4 pt-1 border-t border-[#E8E8E6]/60 dark:border-[#2C2C2E]/60">
                     <ul className="divide-y divide-[#E8E8E6]/60 dark:divide-[#2C2C2E]/60">
                       {w.lessons.map((l) => {
-                        // 有站内全文的跳站内（免登录），其余跳资料库原文
-                        const href = hasLocalLesson(l.id)
-                          ? lessonLocalUrl(l.id)
-                          : lessonUrl(l.id);
+                        // 有站内全文的 → 当页换出阅读视图；其余新窗口跳资料库原文
+                        if (hasLocalLesson(l.id)) {
+                          return (
+                            <li key={l.id}>
+                              <button
+                                onClick={() =>
+                                  setReader({ weekId: w.id, lessonId: l.id })
+                                }
+                                className="group block w-full text-left py-2.5 text-sm text-[#1D1D1F] dark:text-[#F4EFE4] hover:text-[#B89F6B] transition-colors"
+                              >
+                                <span className="border-b border-transparent group-hover:border-[#B89F6B]/50 leading-relaxed">
+                                  {l.title}
+                                </span>
+                              </button>
+                            </li>
+                          );
+                        }
                         return (
                           <li key={l.id}>
                             <a
-                              href={href}
+                              href={lessonUrl(l.id)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="group block py-2.5 text-sm text-[#1D1D1F] dark:text-[#F4EFE4] hover:text-[#B89F6B] transition-colors"
@@ -536,7 +626,7 @@ export const CateringLegalTab: React.FC = () => {
           })}
         </div>
         <p className="text-xs text-[#86868B] mt-3">
-          * 计划共 16 周。点击任意「第 x 周第 x 天」即在新窗口打开该课全文（已发布课程均存于本站，免登录）；需看资料库原文可点上方「在资料库查看全部」。
+          * 计划共 16 周。点击任意「第 x 周第 x 天」即在当前页打开该课全文（已发布课程均存于本站，免登录，点左上「课程地图」返回）；少数未发布课程将新窗口跳转资料库原文。
         </p>
       </section>
 
