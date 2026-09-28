@@ -34,7 +34,7 @@ if(heavyDark&&!el.__gImg){
 /* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
    .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
    金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
-if(!el.classList.contains("tab")){
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
 el.__gImg=1;
 el.style.setProperty("background-image","none","important");
 }}
@@ -45,7 +45,7 @@ var a=m[4]===undefined?1:parseFloat(m[4]);
 if(a>=0.85&&!el.__gBg){
 var r=+m[1],g=+m[2],b=+m[3];
 /* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab */
-if(!el.classList.contains("tab")&&dark(r,g,b)){
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&dark(r,g,b)){
 el.__gBg=1;
 el.style.setProperty("background-color","transparent","important");
 var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
@@ -85,6 +85,7 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
+
 
 
 
