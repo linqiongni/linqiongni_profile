@@ -1,3 +1,4 @@
+function __filmTop(){var el=document.querySelector('.page-scroll');if(el){el.scrollTop=0;return;}window.scrollTo(0,0);}
 /* =========================================================================
  * The Good Wife — Legal English Study · app logic (vanilla JS, hash router)
  * Depends on: data.js (window.TERMS,
@@ -112,7 +113,7 @@
       var el = document.getElementById('term-'+focus);
       setTimeout(function(){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); setTimeout(function(){ el.classList.remove('flash'); }, 1200); }, 60);
     } else {
-      window.scrollTo(0,0);
+      __filmTop();
     }
   }
 
@@ -155,7 +156,7 @@
       Array.prototype.forEach.call(this.children, function(c){ c.classList.toggle('active', c===chip); });
       draw();
     });
-    window.scrollTo(0,0);
+    __filmTop();
   }
 
   function renderAbout(){
@@ -177,7 +178,7 @@
       '<h2><span class="en">Extend it</span> · 如何扩展</h2>' +
       '<p>所有内容都在 <span class="kbd">data.js</span>（不再包含整集字幕）。往 <span class="kbd">EPISODES</span> 数组追加一个剧集对象即可新增一集；新术语加到 <span class="kbd">TERMS</span> 并写入该剧集的 <span class="kbd">terms</span> 列表。无需构建步骤，刷新即生效。</p>' +
       '</div>';
-    window.scrollTo(0,0);
+    __filmTop();
   }
 
   /* ---------- router ---------- */

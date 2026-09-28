@@ -9,12 +9,12 @@
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16px}
+html,body{margin:0;padding:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16px;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
 a{color:inherit;text-decoration:none}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px;
-  background:linear-gradient(180deg,#fff,#fbf9f4);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  background:linear-gradient(180deg,#fff,#fbf9f4);border-bottom:1px solid var(--line);position:relative;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-mark{font-size:30px;color:var(--accent)}
 .brand-title{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.2px}
@@ -24,6 +24,7 @@ a{color:inherit;text-decoration:none}
 .nav a:hover{background:var(--accent-soft);color:var(--accent)}
 .nav a.active{background:var(--accent);color:#fff}
 
+.page-scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:auto}
 #app{max-width:1040px;margin:0 auto;padding:26px 20px 60px}
 .footer{max-width:1040px;margin:0 auto;padding:22px 20px 40px;color:var(--muted);font-size:12.5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .footer .dot{opacity:.5}
