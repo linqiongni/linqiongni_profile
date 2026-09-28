@@ -29,11 +29,10 @@ var sa=sm[4]===undefined?1:parseFloat(sm[4]);
 if(sa>=0.3&&dark(+sm[1],+sm[2],+sm[3])){heavyDark=true;break;}
 }
 if(heavyDark&&!el.__gImg){
-var rr=el.getBoundingClientRect();
-/* 2026-09-29b 保护口径改为「通栏或大面板」：宽>=400（顶栏/导航条等通栏元素必须清透明）
-   或 高>=120（大面板）。旧的 宽>=200且高>=120 会把 61px 高的顶栏当小控件跳过，
-   深蓝底裸露（09-29 保险站实锤）；胶囊/指标小卡（<400宽且<120高）仍保留页面自身样式 */
-if(rr.width>=400||rr.height>=120){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!el.classList.contains("tab")){
 el.__gImg=1;
 el.style.setProperty("background-image","none","important");
 }}
@@ -43,8 +42,8 @@ if(m){
 var a=m[4]===undefined?1:parseFloat(m[4]);
 if(a>=0.85&&!el.__gBg){
 var r=+m[1],g=+m[2],b=+m[3];
-var rr0=el.getBoundingClientRect();
-if((rr0.width>=400||rr0.height>=120)&&dark(r,g,b)){
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab */
+if(!el.classList.contains("tab")&&dark(r,g,b)){
 el.__gBg=1;
 el.style.setProperty("background-color","transparent","important");
 var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
@@ -84,6 +83,7 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
+
 
 
 
