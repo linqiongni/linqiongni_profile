@@ -94,3 +94,10 @@
   .side-collapsed .side{width:0;flex-basis:0;}
   .topbar .brand .txt{display:none;}
 }
+
+/* 暗色滚动条（2026-09-28 全站统一灰黑基线，与其余子站一致） */
+html[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html[data-theme="dark"] ::-webkit-scrollbar-track { background: #1C1C1E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2C2C2E; border-radius: 5px; border: 2px solid #1C1C1E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #3A3A3C; }
+html[data-theme="dark"] { scrollbar-width: thin; scrollbar-color: #2C2C2E #1C1C1E; }
