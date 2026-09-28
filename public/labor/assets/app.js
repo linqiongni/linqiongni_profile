@@ -55,8 +55,27 @@
     return true;
   });
   // 物理移除 HTML 中的旧顶栏占位（避免与新顶栏 class 同名冲突）
+  // 旧顶栏里的 .nav（首页/用人单位/劳动者/攻防对照/计算器…横向 tab）要保留：
+  // 摘出来挂到新顶栏，否则站点导航只剩左侧目录栏（2026-09-28 Andy 反馈子菜单丢失）
   var oldTops = [].slice.call(body.querySelectorAll(".topbar"));
-  oldTops.forEach(function (t) { if (t.parentNode) t.parentNode.removeChild(t); });
+  var oldNav = null;
+  oldTops.forEach(function (t) {
+    if (!oldNav) {
+      var n = t.querySelector(".nav");
+      if (n) { oldNav = n; n.parentNode.removeChild(n); }
+    }
+    if (t.parentNode) t.parentNode.removeChild(t);
+  });
+
+  // 顶栏第二行放置横向 tab（flex-wrap + flex-basis:100%），窄屏隐藏走「目录」按钮
+  var navFixSt = document.createElement("style");
+  navFixSt.id = "topnav-fix";
+  navFixSt.textContent =
+    ".topbar{flex-wrap:wrap}" +
+    ".topbar .nav.topnav{flex:1 1 100%;order:9;margin-top:2px}" +
+    ".topbar .nav.topnav a{transition:border-color .15s,color .15s}" +
+    "@media(max-width:1000px){.topbar .nav.topnav{display:none}}";
+  document.head.appendChild(navFixSt);
 
   var topbar = el("header", "topbar");
   topbar.id = "topbar";
@@ -74,6 +93,7 @@
   topbar.appendChild(searchWrap);
 
   topbar.appendChild(el("span", "cur-chip", me.no === "总纲" ? me.t : "第 " + me.no + " 篇 · " + me.t));
+  if (oldNav) { oldNav.classList.add("topnav"); topbar.appendChild(oldNav); }
   var menuBtn = el("button", "menu-btn", "目录");
   menuBtn.setAttribute("aria-label", "打开目录");
   topbar.appendChild(menuBtn);

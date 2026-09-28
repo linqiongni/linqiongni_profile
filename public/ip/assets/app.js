@@ -127,7 +127,8 @@
 
   var themeBtn = el("button", "theme-btn", "☾");
   themeBtn.id = "themeBtn"; themeBtn.title = "切换深浅色";
-  topbar.appendChild(themeBtn);
+  // 主题按钮已按 Andy 要求（2026-09-28）移除：嵌入时主题由主站 postMessage 同步，独立打开时跟随系统/默认暗色
+  // topbar.appendChild(themeBtn);
   var menuBtn = el("button", "menu-btn", "目录");
   menuBtn.setAttribute("aria-label", "打开目录");
   topbar.appendChild(menuBtn);

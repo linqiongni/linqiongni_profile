@@ -76,7 +76,7 @@
     btn.title = isDark ? '切换至浅色模式' : '切换至深色模式';
   }
 
-  function createBtn() {
+  function createBtn() { return; // 主题按钮已按 Andy 要求（2026-09-28）全站移除
     if (document.getElementById('theme-toggle-btn')) return;
     // 嵌在主站 iframe 内时不注入页内按钮：主题统一由主站导航栏的月亮/太阳按钮控制
     // （ThemeIframe 通过 postMessage 同步进来，见下方 message 监听）。

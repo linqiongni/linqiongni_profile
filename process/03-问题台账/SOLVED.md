@@ -209,3 +209,20 @@
   2. 覆盖前确认被覆盖内容有没有副本——**git 历史就是副本**，`git log --follow -- <file>` 一行能查；
   3. 今天这条也说明：**档案库值得有机器化的巡检**（每日补漏），
      人不会记得「18:50 那次提交顺手清掉了九条决策」，但定时任务会。
+
+### #24 · apply-theme-kit 移除旧块时吞掉同行内容，labor 9 页 CSS 裸奔成正文（2026-09-28）
+
+- **现象**：本地「双视角劳动实务」（labor 全部 9 页）打开后整页显示 CSS 源码文本；线上正常。
+- **根因**：`apply-theme-kit.py` 的「移除旧块」逻辑是**从 START 注释删到 END 注释之后的第一个换行符**，
+  隐含假设「END 注释独占一行」。但 labor 的 HTML 里 `<!-- DARK_UNIFY_END -->` 与
+  `<meta charset>…<title>…<style>` **挤在同一行**——一刀切下去把 `<meta>`、`<title>`、
+  labor 自身 `<style>` 的**开标签**全删了：CSS 失去包裹被浏览器当正文渲染，`--ink` 等
+  变量全部失效。仅 labor 中招（9/9 页，END 同行布局是它独有）；lessons 缺 charset 是天生的，无关。
+- **解法**：移除逻辑改为**只删到 END 的 `-->` 为止**，仅当 END 后到行尾是纯空白才连换行一起删
+  （scripts/apply-theme-kit.py `inject()` 内注释有完整说明）。
+- **修复步骤**：`git checkout -- public/labor`（还原被啃的 9 页）→ 修脚本 → `--fix public` 重放
+  （27 处变更）→ `--check` 254 页通过。
+- **验证**：全库扫描 `<style>`/`</style>` 配平 + `<title>` 存在 + EMBEDDED_KIT_END 后无裸 CSS，
+  254 页 0 异常；agent-browser 实开 labor/index.html 与 employee.html 截图确认渲染恢复、无 JS 报错。
+- **预防**：注入器对 HTML 行结构的任何「独占一行」假设都必须先验证；以后给 HTML 做正则手术，
+  先扫一遍目标标记是否总独占一行（`grep -c "END -->."` 同行有内容即危险）。

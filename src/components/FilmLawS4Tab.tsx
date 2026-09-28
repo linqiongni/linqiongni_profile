@@ -7,7 +7,7 @@ import { ThemeIframe } from './ThemeIframe';
  */
 export const FilmLawS4Tab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => (
   <ThemeIframe
-    src="/film-law-s4/"
+    src="/film-law-s4/index.html"
     title="影视法律 · The Good Wife S4 法律英语学习"
     darkMode={darkMode}
     id="tab-film-law-s4-content"

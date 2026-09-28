@@ -60,6 +60,14 @@ const TONES: string[][] = [
   ['rgba(50,66,84,.14)', 'rgba(96,110,124,.48)', 'rgba(164,132,70,.40)', 'rgba(60,78,96,.10)'],
 ];
 
+/** 暗色模式专用鱼影（2026-09-27）：深海底色 #04070B 之后，原深色剪影完全隐身，
+ *  改为「月光下的鱼」——浅蓝灰身体 + 更实的金脊，在近纯黑上清晰可辨。 */
+const DARK_TONES: string[][] = [
+  ['rgba(120,152,188,.26)', 'rgba(152,178,206,.58)', 'rgba(218,186,124,.62)', 'rgba(104,136,172,.20)'],
+  ['rgba(110,144,182,.24)', 'rgba(142,168,198,.55)', 'rgba(196,164,112,.56)', 'rgba(96,128,164,.18)'],
+  ['rgba(128,158,192,.24)', 'rgba(160,184,210,.52)', 'rgba(228,196,132,.54)', 'rgba(112,144,178,.18)'],
+];
+
 const EYE = 'rgba(226,201,148,.9)';
 
 /** 把一条鱼在某个摆尾相位下画进 ctx（原点 = 鱼体中心，已含纵向压扁） */
@@ -209,7 +217,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dprUsed, 0, 0, dprUsed, 0, 0);
-      sprites = fish.map((f) => buildSprites(f.size, f.depth, TONES[f.tone], Math.min(dprUsed, 1.5)));
+      sprites = fish.map((f) => buildSprites(f.size, f.depth, (darkMode ? DARK_TONES : TONES)[f.tone], Math.min(dprUsed, 1.5)));
     };
 
     const addRipple = (x: number, y: number, s = 0.52): void => {
@@ -344,16 +352,32 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       step();
     };
 
-    const onPointerMove = (event: PointerEvent): void => {
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
+    // 指针应用：真实 pointermove 与 iframe 转发共用同一入口
+    const applyPointer = (clientX: number, clientY: number): void => {
+      mouse.x = clientX;
+      mouse.y = clientY;
       const now = performance.now();
       lastMoveAt = now; // 指针一动就进入「聚拢」态
       if (now - lastPointerAt > 190) {
         lastPointerAt = now;
-        addRipple(event.clientX, event.clientY);
+        addRipple(clientX, clientY);
         if (reduce) render(elapsed);
       }
+    };
+
+    const onPointerMove = (event: PointerEvent): void => {
+      applyPointer(event.clientX, event.clientY);
+    };
+
+    // iframe 子站转发来的指针事件：把子站视口坐标换算到主站视口
+    // （子站透明底后，主站背景板透过 iframe 可见，鼠标涟漪/聚拢需跨 iframe 连续）
+    const onForwardedPointer = (event: MessageEvent): void => {
+      const d = event.data as { type?: string; x?: number; y?: number } | null;
+      if (!d || d.type !== 'aquatic-pointer' || typeof d.x !== 'number' || typeof d.y !== 'number') return;
+      const frame = document.querySelector('iframe');
+      if (!frame) return;
+      const rect = frame.getBoundingClientRect();
+      applyPointer(d.x + rect.left, d.y + rect.top);
     };
 
     const onPointerLeave = (): void => {
@@ -390,6 +414,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
     render(0);
     window.addEventListener('resize', onResize);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('message', onForwardedPointer);
     document.documentElement.addEventListener('mouseleave', onPointerLeave);
     document.addEventListener('visibilitychange', onVisibility);
     start();
@@ -399,6 +424,7 @@ export const AquaticLuxuryBackground: React.FC<AquaticLuxuryBackgroundProps> = (
       window.clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('message', onForwardedPointer);
       document.documentElement.removeEventListener('mouseleave', onPointerLeave);
       document.removeEventListener('visibilitychange', onVisibility);
     };

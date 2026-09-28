@@ -25,6 +25,8 @@ KIT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "theme-kit")
 
 # 标记 -> (kit 文件, 注入位置, 文件过滤)
 BLOCKS = [
+    # EMBEDDED_KIT 必须放在 headtop：嵌入检测脚本要尽可能早执行，避免首帧闪一下白/深色底
+    ("EMBEDDED_KIT", "embedded_kit.txt", "headtop", "all"),
     ("DARK_UNIFY", "dark_unify.navy.txt", "head", "all"),
     ("SUB_THEME_KIT", "sub_theme_kit.txt", "head", "all"),
     ("AQUATIC_BG_KIT", "aquatic-bg-kit.txt", "body", "screen"),
@@ -62,24 +64,58 @@ def block_present(text, tag):
     return False, None
 
 
+def strip_legacy_embedded(text):
+    """清掉手工注入过的 embedded 三件套（无 START/END 注释包裹的旧版本）。
+
+    为什么必须：EMBEDDED_KIT 早期是靠手改塞进 17 个 index.html 的，injector 认不出它们；
+    不清就直接说我一块已经存在——结果是同一份脚本出现两次（玻璃化跑两遍，MutationObserver 翻倍）。
+    """
+    pats = [
+        r'<script>try\{if\(window\.parent&&window\.parent!==window\)\{[^<]*\}\s*</script>\n?',
+        r'<style id="embedded-transparent">.*?</style>\n?',
+        r'<script id="embedded-glassify">.*?</script>\n?',
+    ]
+    for p in pats:
+        text = re.sub(p, "", text, flags=re.S)
+    return text
+
+
+HEAD_RE = re.compile(r"<head[^>]*>", re.I)
+
+
 def inject(text, tag, pbody, payload, where, force):
     has, body = block_present(text, tag)
     if has and not force:
         return text, "skip"
     if has and body == pbody:
         return text, "same"
-    # 移除旧块
+    # 移除旧块。只删到 END 注释的 "-->" 为止；仅当 END 独占一行时才连换行一起删。
+    # （否则会吞掉与 END 同行的后续内容：labor 的 <meta>/<title>/<style> 开标签就是这么没的，
+    #   CSS 裸奔成正文——2026-09-28 实锤，见 process/03-问题台账。）
     if has:
         m = START_RE.search(text)
         while m:
             name = m.group(1).rsplit("_START", 1)[0]
-            en = text.find("<!-- %s_END -->" % name, m.start())
+            endmark = "<!-- %s_END -->" % name
+            en = text.find(endmark, m.start())
             if name == tag and en >= 0:
-                endline = text.find("\n", en)
-                text = text[:m.start()] + text[(endline + 1) if endline >= 0 else len(text):]
+                cut = en + len(endmark)
+                nl = text.find("\n", cut)
+                rest = text[cut:nl if nl >= 0 else len(text)]
+                if rest.strip() == "":
+                    cut = (nl + 1) if nl >= 0 else len(text)
+                text = text[:m.start()] + text[cut:]
                 break
             m = START_RE.search(text, m.end())
+    if tag == "EMBEDDED_KIT":
+        text = strip_legacy_embedded(text)
     # 插入新块
+    if where == "headtop":
+        m = HEAD_RE.search(text)
+        if not m:
+            return text, "noanchor"
+        text = text[: m.end()] + "\n" + payload + "\n" + text[m.end():]
+        return text, "replace" if has else "add"
     anchor = "</head>" if where == "head" else "</body>"
     idx = text.rfind(anchor)
     if idx < 0:

@@ -15,3 +15,10 @@ coverage/
 
 # WorkBuddy 本地工作记忆（不发布）
 .workbuddy/
+
+# 图片处理技能的中间备份（原图已在 git 历史中）
+*.bg-backup.*
+
+# Python 缓存
+__pycache__/
+*.pyc

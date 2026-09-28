@@ -13,7 +13,7 @@
   }
 
   .dark {
-    --bg-main: #1C1C1E;
+    --bg-main: #04070b; /* 深海黑洞底：近纯黑带一缕深蓝（2026-09-27 由 #1C1C1E 加深） */
     --text-primary: #F5F5F7;
     --text-secondary: #8E8E93;
     --border-subtle: #2C2C2E;
@@ -42,6 +42,28 @@
     background-color: #B89F6B;
     color: #FFFFFF;
   }
+}
+
+/* 深海黑洞背景层（2026-09-27）：叠在深海底色之上、所有内容之下的一层固定渐变。
+   顶部一缕极暗冷蓝 = 深海透光；中心微弱幽蓝 = 深渊回光；
+   底部与四角向近纯黑吸入 = 黑洞暗角。仅暗色模式可见。 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background:
+    radial-gradient(120% 68% at 50% -12%, rgba(38, 80, 140, 0.42), transparent 62%),
+    radial-gradient(88% 62% at 50% 44%, rgba(22, 54, 96, 0.34), transparent 72%),
+    linear-gradient(to bottom, transparent 50%, rgba(2, 5, 10, 0.6) 100%),
+    radial-gradient(145% 125% at 50% 45%, transparent 40%, rgba(0, 1, 3, 0.72) 100%);
+}
+
+.dark body::before {
+  opacity: 1;
 }
 
 /* Custom scrollbar for minimalist feel */

@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html data-page-node-id="yLrKBs7V3wlywd8UxxDiSK" lang="zh-CN" data-theme="dark">
 <head data-page-node-id="EyOOAiojH90hiupW11j2Kb">
-<!-- DARK_UNIFY_START v1 -->
-<style id="dark-unify">html[data-theme="dark"]{--bg:#1C1C1E !important; --bg2:#232326 !important; --bg3:#2A2A2E !important; --bg-alt:#232326 !important; --bg-soft:#232326 !important; --card:#232326 !important; --card2:#2A2A2E !important; --card3:#232326 !important; --panel:#232326 !important; --panel2:#2A2A2E !important; --panel3:#232326 !important; --paper:#232326 !important; --side:#1F1F21 !important; --bar:#232326 !important; --line:#35353A !important; --line2:#45454B !important; --line-soft:#2E2E31 !important; --ink:#F3F1EC !important; --ink2:#B3B3B8 !important; --ink3:#8A8A90 !important; --ink-soft:#B3B3B8 !important; --tx:#F3F1EC !important; --tx2:#B3B3B8 !important; --tx3:#8A8A90 !important; --txt:#F3F1EC !important; --txt2:#B3B3B8 !important; --txt3:#8A8A90 !important; --text:#F3F1EC !important; --body:#F3F1EC !important; --fg:#F3F1EC !important; --muted:#B3B3B8 !important; --muted2:#8A8A90 !important; --sub:#B3B3B8 !important; --sub2:#8A8A90 !important; --dim:#8A8A90 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#2A2A2E !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#1C1C1E !important;color:#F3F1EC !important}
-</style>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavyDark=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&dark(+sm[1],+sm[2],+sm[3])){heavyDark=true;break;}
+}
+if(heavyDark&&!el.__gImg){
+var rr=el.getBoundingClientRect();
+if(rr.width>=200&&rr.height>=120){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+if(dark(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
 
-<!-- DARK_UNIFY_END -->
+
+
+
 <!-- DARK_UNIFY_FIX_START v1 -->
 <style id="dark-unify-fix">html[data-theme="dark"] th,html[data-theme="dark"] thead th{background-color:#2A2A2E !important;color:#C9A86A !important}html[data-theme="dark"] .nav a.active,html[data-theme="dark"] .chip.active{color:#1C1C1E !important}
 </style>
@@ -87,153 +156,12 @@
 <!-- SUB_THEME_KIT_START -->
 <link rel="stylesheet" href="/theme-light.css?v=3">
 <!-- SUB_THEME_KIT_END -->
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
 </head>
 <body data-page-node-id="BuRKlWDDhuXNgS53ftXGDB">
-<!-- AQUATIC_BG_KIT_START v3 -->
-<style id="aquatic-bg-kit">
-.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
-body>.aq-bg~*{position:relative;z-index:1}
-</style>
-<div class="aq-bg" id="aq-bg" aria-hidden="true"><canvas id="aq-scene"></canvas></div>
-<script>(function(){if(window.__aqKitV3)return;window.__aqKitV3=1;try{
-var cv=document.getElementById('aq-scene');if(!cv)return;var g=cv.getContext('2d');if(!g)return;
-var host=document.getElementById('aq-bg');
-var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var mobile=matchMedia('(max-width: 768px)').matches;
-var N=mobile?3:6,PH=8,STEP=33.3,PI2=6.283185307179586;
-var w=0,h=0,d=1,raf=0,last=0,el=0,lp=0,amb=0,rt=0,built=0,vis=1;
-var mouse={x:-9999,y:-9999},rips=[],sprites=[],fish=[];
-var dark=1,TON=null,EYE='',GAIN=1,RIP=null,COMP='source-over';
-function lum(){var s=getComputedStyle(document.body).backgroundColor||'rgb(255,255,255)';
-var m=/rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(s);if(!m)return 255;
-return 0.2126*(+m[1])+0.7152*(+m[2])+0.0722*(+m[3]);}
-/* 配色随底色自适应：深底用金鱼、浅底用墨金剪影；切换主题后重算即可 */
-function palette(){
-dark=lum()<128?1:0;
-TON=dark
-?[['rgba(87,108,128,.22)','rgba(168,152,120,.72)','rgba(210,176,106,.60)','rgba(96,122,147,.16)'],
-['rgba(80,104,124,.20)','rgba(150,146,126,.66)','rgba(196,168,112,.54)','rgba(92,118,142,.14)'],
-['rgba(94,114,134,.18)','rgba(176,158,124,.62)','rgba(216,182,110,.52)','rgba(104,128,150,.14)']]
-:[['rgba(58,74,92,.20)','rgba(96,104,116,.52)','rgba(150,116,58,.44)','rgba(70,88,108,.14)'],
-['rgba(52,68,86,.18)','rgba(88,104,120,.48)','rgba(132,110,62,.40)','rgba(64,82,102,.12)'],
-['rgba(62,78,96,.17)','rgba(104,112,124,.46)','rgba(158,126,64,.38)','rgba(74,92,112,.12)']];
-EYE=dark?'rgba(235,210,156,.88)':'rgba(120,96,48,.5)';
-GAIN=dark?1:0.92;
-RIP=dark?['rgba(150,172,200,','rgba(218,186,126,']:['rgba(150,160,176,','rgba(176,140,70,'];
-COMP=dark?'lighter':'source-over';}
-function initFish(){fish=[];
-for(var i=0;i<N;i++){fish.push({x:(i%2===0?-0.12+i*0.17:1.12-i*0.13),y:0.51+(i%4)*0.09,
-s:mobile?20+(i%3)*7:23+(i%4)*10,v:0.000012+(i%4)*0.000003,a:(0.17+(i%3)*0.05)*GAIN,
-dir:(i%2===0?1:-1),ph:i*1.37,depth:0.48+(i%4)*0.12,t:i%3,
-vx:0,vy:0,ang:(i%2===0?0:Math.PI)});}}
-function paint(c,s,t,bend,tail){
-var gr=c.createLinearGradient(-s,0,s,0);
-gr.addColorStop(0,t[0]);gr.addColorStop(.42,t[1]);gr.addColorStop(.72,t[2]);gr.addColorStop(1,t[3]);
-c.fillStyle=gr;
-c.beginPath();c.moveTo(-s*.72,bend*.18);
-c.bezierCurveTo(-s*.42,-s*.34,s*.34,-s*.30,s*.80,-s*.05);
-c.quadraticCurveTo(s*.95,0,s*.80,s*.07);
-c.bezierCurveTo(s*.34,s*.30,-s*.42,s*.34,-s*.72,bend*.18);
-c.closePath();c.fill();
-c.save();c.translate(-s*.68,bend*.18);c.rotate(tail);
-c.beginPath();c.moveTo(0,0);
-c.bezierCurveTo(-s*.30,-s*.08,-s*.62,-s*.42,-s*.78,-s*.32);
-c.quadraticCurveTo(-s*.55,0,-s*.78,s*.32);
-c.bezierCurveTo(-s*.62,s*.42,-s*.30,s*.08,0,0);
-c.fill();c.restore();
-c.beginPath();c.moveTo(-s*.10,-s*.25);c.quadraticCurveTo(s*.05,-s*.52,s*.28,-s*.22);c.closePath();c.fill();
-c.beginPath();c.moveTo(s*.12,s*.20);c.quadraticCurveTo(s*.28,s*.43,s*.40,s*.14);c.closePath();c.fill();}
-function build(){sprites=[];
-for(var i=0;i<fish.length;i++){var f=fish[i],blur=(1-f.depth)*2.1;
-var pw=f.s*2.2+blur*8,ph=f.s*1.3+blur*8,arr=[];
-for(var k=0;k<PH;k++){var swim=Math.sin(k/PH*PI2);
-var c=document.createElement('canvas');
-c.width=Math.max(1,Math.ceil(pw*d));c.height=Math.max(1,Math.ceil(ph*d));
-var q=c.getContext('2d');if(!q)continue;
-q.setTransform(d,0,0,d,0,0);q.translate(pw/2,ph/2);q.scale(1,0.72);
-if(blur>0.05)q.filter='blur('+blur+'px)';
-paint(q,f.s,TON[f.t],swim*f.s*.10,swim*.24);
-q.filter='none';q.fillStyle=EYE;q.globalAlpha=.5;
-q.beginPath();q.arc(f.s*.68,-f.s*.055,Math.max(1.15,f.s*.032),0,PI2);q.fill();
-arr.push({i:c,w:pw,h:ph});}
-sprites.push(arr);}
-built=1;}
-function size(){d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;
-cv.width=Math.max(1,Math.floor(w*d));cv.height=Math.max(1,Math.floor(h*d));
-cv.style.width=w+'px';cv.style.height=h+'px';g.setTransform(d,0,0,d,0,0);}
-function addRip(x,y,s){if(rips.length>12)rips.shift();rips.push({x:x,y:y,r:5,l:1,s:s});}
-function ring(o){var base=o.l*o.s;if(base<=0.004)return;
-var R=o.r+26;g.save();g.translate(o.x,o.y);g.scale(1,0.36);g.globalCompositeOperation=COMP;
-var gr=g.createLinearGradient(-R,0,R,0);
-gr.addColorStop(0,RIP[0]+'0)');gr.addColorStop(.3,RIP[0]+'.5)');
-gr.addColorStop(.58,RIP[1]+'1)');gr.addColorStop(1,RIP[0]+'0)');
-g.strokeStyle=gr;
-for(var i=0;i<3;i++){g.globalAlpha=base*(1-i/3.4)*(dark?.5:.42);
-g.beginPath();g.ellipse(0,0,o.r+i*12,o.r+i*12,0,0,PI2);
-g.lineWidth=i?0.7:1.2;g.stroke();}
-g.restore();}
-function render(t){if(!w||!h)return;g.clearRect(0,0,w,h);
-for(var i=0;i<rips.length;i++)ring(rips[i]);
-if(!built)return;
-var ord=fish.slice().sort(function(a,b){return a.depth-b.depth;});
-for(var k=0;k<ord.length;k++){var f=ord[k],fr=sprites[fish.indexOf(f)];
-if(!fr||!fr.length)continue;
-var x=f.x*w,y=f.y*h+Math.sin(t*0.00032+f.ph)*14*f.depth;
-var idx=Math.floor(((t*0.0032+f.ph)/PI2)*PH)%PH;
-var sp=fr[(idx+PH)%PH];
-/* 鱼头朝向真实游动方向（鼠标方向）：水平镜像 + 俯仰，避免翻转后肚皮朝上 */
-var flip=Math.cos(f.ang)<0;
-g.save();g.globalAlpha=f.a;g.translate(x,y);
-g.rotate(Math.sin(f.ang)*(flip?-1:1)*0.9+Math.sin(t*0.00055+f.ph)*0.03);
-if(flip)g.scale(-1,1);
-g.drawImage(sp.i,-sp.w/2,-sp.h/2,sp.w,sp.h);g.restore();}}
-function step(){if(!reduce){
-var act=mouse.x>-9000;
-for(var i=0;i<fish.length;i++){var f=fish[i],tx,ty;
-if(act){
-/* 朝鼠标游：吸引力 + 轻微切向绕游，避免整群叠在指针上 */
-var nx=mouse.x/w,ny=mouse.y/h;
-var dx=nx-f.x,dy=ny-f.y,dist=Math.sqrt(dx*dx+dy*dy)||1;
-var pull=Math.min(0.0024,0.0005+dist*0.02),sw=0.0007*(1-f.depth);
-tx=f.x+dx/dist*pull-dy/dist*sw;ty=f.y+dy/dist*pull+dx/dist*sw;
-}else{tx=f.x+f.v*STEP*f.dir;ty=f.y;}
-f.vx+=(tx-f.x)*0.12;f.vy+=(ty-f.y)*0.12;
-var vm=Math.sqrt(f.vx*f.vx+f.vy*f.vy),vmax=0.0045;
-if(vm>vmax){f.vx=f.vx/vm*vmax;f.vy=f.vy/vm*vmax;}
-f.x+=f.vx;f.y+=f.vy;
-var vl=Math.sqrt(f.vx*f.vx+f.vy*f.vy);
-if(vl>1e-6){var want=Math.atan2(f.vy,f.vx),df=want-f.ang;
-while(df>Math.PI)df-=PI2;while(df<-Math.PI)df+=PI2;f.ang+=df*0.14;}
-if(f.x>1.16)f.x=-0.16;else if(f.x<-0.16)f.x=1.16;
-if(f.y>1.12)f.y=-0.12;else if(f.y<-0.12)f.y=1.12;}
-if(el-amb>4400){amb=el;addRip(w*(0.56+Math.random()*0.3),h*(0.46+Math.random()*0.26),0.22);}
-for(var j=rips.length-1;j>=0;j--){rips[j].r+=1.1;rips[j].l-=0.0116;if(rips[j].l<=0)rips.splice(j,1);}}
-render(el);}
-function loop(now){raf=requestAnimationFrame(loop);
-var dt=now-last;if(dt<STEP)return;last=now-(dt%STEP);el+=STEP;
-if(!built)build();
-step();}
-function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
-function start(){if(reduce||raf||!vis)return;last=performance.now();raf=requestAnimationFrame(loop);}
-function onSize(){clearTimeout(rt);rt=setTimeout(function(){size();build();render(el);},160);}
-function retheme(){var wasDark=dark;palette();if(wasDark!==dark){initFish();}
-built=0;build();render(el);}
-size();palette();initFish();build();
-addEventListener('resize',onSize);
-addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;
-var n=performance.now();if(n-lp>190){lp=n;addRip(e.clientX,e.clientY,dark?0.52:0.46);
-if(reduce){if(!built)build();render(el);}}},{passive:true});
-addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
-window.addEventListener('site-theme',function(){setTimeout(retheme,0);});
-window.addEventListener('message',function(e){var m=e.data||{};if(m.type==='theme')setTimeout(retheme,60);});
-document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
-if(window.IntersectionObserver&&host){new IntersectionObserver(function(es){
-vis=es[0].isIntersecting?1:0;vis?start():stop();},{threshold:0}).observe(host);}
-addRip(innerWidth*0.72,innerHeight*0.58,0.26);
-if(reduce){render(0);}else{start();}
-}catch(e){}})();</script>
-<!-- AQUATIC_BG_KIT_END -->
 <div data-page-node-id="SonSFzxRtEdHfvTV8NmWgI" class="container">
 
   <header data-page-node-id="MgNC1dTcZitB2pExPxiWj1">
@@ -847,5 +775,31 @@ X.8　本条约定为<b data-page-node-id="kv1N7XWEwqBYy4MDn6L2ZB"><!--pnid:f6K1
   else { addBtn(); }
 })();</script>
 <!-- SUB_THEME_BRIDGE_END -->
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
 </body>
 </html>

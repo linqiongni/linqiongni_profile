@@ -28,7 +28,7 @@ interface ThemeIframeProps {
 }
 
 const DEFAULT_IFRAME_CLASS =
-  'block w-full border-0 bg-white dark:bg-[#1C1C1E] h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]';
+  'block w-full border-0 bg-transparent h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]';
 
 /**
  * 统一的 iframe 容器：把主站 darkMode 通过 postMessage 同步进 iframe 内部。
@@ -113,7 +113,8 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
 
   return (
     <div className="relative w-full" id={id}>
-      <div className="relative w-full bg-white dark:bg-[#1C1C1E]">
+      {/* 透明容器：iframe 子站透出主站固定的背景板（切 tab 背景不动） */}
+      <div className="relative w-full bg-transparent">
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white dark:bg-[#1C1C1E]">
             <div className="flex items-center gap-2 text-xs text-[#86868B]">

@@ -96,6 +96,16 @@ export default function App() {
 
     setActiveTab(tab);
 
+    // 「个人」分组（home/about/expertise/cases/insights/notes）带 Hero：回到页面顶部，
+    // 让 Hero 首屏完整露出（定位到子标签条 + Hero 大字），而不是跳过 Hero 直达正文
+    if (groupOfTab(tab) === 'profile') {
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      return;
+
+    }
+
     // 跨境物流法务、知识产权、双视角劳动实务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
 
     if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'arbitration' || tab === 'family-law' || tab === 'english' || tab === 'commercial-ops' || tab === 'retail-ad' || tab === 'econ-crime') {
@@ -115,6 +125,21 @@ export default function App() {
     }
 
   };
+
+  // 子站（影视法律四季等）内部互跳时，iframe 里的页面会发消息通知主站同步顶部菜单，
+  // 避免「iframe 已切到 S3、子标签条仍高亮 S4」的不同步
+  useEffect(() => {
+    const onSiteNav = (e: MessageEvent) => {
+      const d = e.data as { type?: string; tab?: string } | null;
+      if (!d || d.type !== 'site-tab-navigate' || !d.tab) return;
+      const allowed: string[] = ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'];
+      if (allowed.indexOf(d.tab) === -1) return;
+      handleSelectTab(d.tab as TabType);
+    };
+    window.addEventListener('message', onSiteNav);
+    return () => window.removeEventListener('message', onSiteNav);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
 
@@ -152,12 +177,14 @@ export default function App() {
 
   // 之前点击「法务实务」会先渲染整屏主页再进内容，观感像“闪回主页”，故按分组收敛。
 
-  const showHero = activeGroup === 'profile';
+  // Hero 仅「关于我」显示（Andy 2026-09-28：专业技能/案例展示/思考观点/日常分享不放 Hero，直接进正文）；
+  // home 是初始态，与 about 渲染同一内容，一并保留 Hero
+  const showHero = activeTab === 'home' || activeTab === 'about';
 
-  // iframe 类 tab（主页面不滚动，isScrolled 永远 false）：强制主站 header 显示实色钉条，
-  // 避免透明 header 浮在 iframe 上方被误认为「没固定」。isFullBleed 已含融资/保险/物流/IP/劳动/影视，
-  // 补上 criminal / ai-law 这两个同样内嵌 iframe 但不在 isFullBleed 列表里的 tab。
-  const headerSolid = isFullBleed || activeTab === 'criminal' || activeTab === 'ai-law';
+  // iframe 类 tab 的 header 实色钉条（2026-09-28 废除）：Andy 拍板顶部要与「个人」页一致——
+  // 透明、能看见深渊板和鱼影（鼠标靠近菜单鱼会聚拢）。滚动后的玻璃钉条仍由 isScrolled 控制，行为与个人页相同。
+  // 原 headerSolid 强制逻辑（isFullBleed / criminal / ai-law）保留变量名但恒为 false，便于回滚。
+  const headerSolid = false;
 
 
 
@@ -167,7 +194,7 @@ export default function App() {
 
       {/* 全站水下背景：深海军蓝渐变 + 水面呼吸 + 自然鱼影 + 鼠标涟漪（不拦截交互） */}
 
-      <AquaticLuxuryBackground fishCount={6} darkMode={darkMode} />
+      <AquaticLuxuryBackground fishCount={9} darkMode={darkMode} />
 
 
 
@@ -290,7 +317,7 @@ export default function App() {
 
 
 
-            {activeTab === 'logistics' && <LogisticsLegalTab />}
+            {activeTab === 'logistics' && <LogisticsLegalTab darkMode={darkMode} />}
 
 
 
