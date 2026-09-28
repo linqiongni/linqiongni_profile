@@ -762,5 +762,6 @@ html[data-theme="dark"] .fs-btn.on { color: #16161a; }
    改为隐藏顶栏、内容原生滚动，上滑是正常阅读滚动而非退出。仅在 <=1000px 生效。 */
 @media (max-width: 1000px) {
   html.fs-immersive #topbar { display: none !important; }
-  html.fs-immersive body { overflow: visible; }
+  html.fs-immersive body { overflow: visible; overscroll-behavior-y: none; }
+  html.fs-immersive { overscroll-behavior-y: none; }
 }
