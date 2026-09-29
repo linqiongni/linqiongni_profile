@@ -41,6 +41,35 @@ say ""
 say "${GRN}✓ 自动同步已装到本设备${RST}"
 say "  仓库：$REPO"
 
+# ---- 技能接管：仓库 skills/ 是真源，软链进 ~/.workbuddy/skills -----------------
+# 为什么：本仓库专属技能（透明底/鱼影 bug、当前页打开、子站同步发布…）写在仓库里才能跟着 git 走。
+# 只写在本机 ~/.workbuddy/skills/ 的话，它不进 git，换台电脑就是「什么都不懂」的状态。
+# 所以一律改仓库那份，本机目录换成指向它的软链。
+say ""
+say "· 接管仓库自带的技能"
+SKILLS_HOME="$HOME/.workbuddy/skills"
+mkdir -p "$SKILLS_HOME"
+sk=1
+shopt -s nullglob
+for SRC in "$REPO"/skills/*/SKILL.md; do
+  NAME="$(basename "$(dirname "$SRC")")"
+  DST="$SKILLS_HOME/${NAME}"
+  if [ -L "$DST" ]; then
+    CUR="$(readlink "$DST")"
+    if [ "$CUR" = "$REPO/skills/${NAME}" ]; then say "  ✓ ${NAME}（软链已正确）"; continue; fi
+    rm "$DST" && ln -s "$REPO/skills/${NAME}" "$DST" && say "  → ${NAME}（旧软链已指向新仓库）"
+  elif [ -d "$DST" ]; then
+    fail "  ✗ ${NAME}：本机已有一份实体目录，且内容可能与仓库不同。"
+    say "     先把本机那份有用的改动并入仓库 skills/${NAME}，再删目录重跑本脚本。"
+    say "     本机目录：$DST"
+    sk=0
+  else
+    ln -s "$REPO/skills/${NAME}" "$DST" && say "  + ${NAME}（已软链）"
+  fi
+done
+shopt -u nullglob
+if [ "$sk" -eq 0 ]; then fail "有技能没接管成功，重跑本脚本确认全绿"; fi
+
 # ---- 自检：装了 ≠ 生效。逐项验，别只信安装器说"装好了" -------------------
 say ""
 say "· 自检"

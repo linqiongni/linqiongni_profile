@@ -12,6 +12,7 @@
 | `process/CONTRACT.md` | **行为契约。你的收工动作：写日志 / 更新今日索引 / 提台账 / 提决策 / push** |
 | `process/MIGRATION.md` | 换机器、换账号、git 推不动的排障 |
 | `process/03-问题台账/OPEN.md` | 开工先看有没有轮到你认领的（署 `Andy` 的是等他点头，别自己动） |
+| `skills/` | **本仓库专属技能（透明底/鱼影 bug、当前页打开、子站同步发布…）。是唯一真源，`~/.workbuddy/skills/` 里的同名目录是软链。新设备跑 `scripts/setup-device.sh` 自动接管** |
 
 **`.workbuddy/memory/` 已停用**，日志只写进 `process/04-每日日志/`。往 `.workbuddy/` 里写 = 没写（被 gitignore 排除，同步不到 git）。
 

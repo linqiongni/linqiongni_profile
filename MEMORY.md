@@ -180,6 +180,18 @@
 - references/ 内含：style.css + app.js（从融资法务站原样复制）、station/index 页面模板、acronym-insert.py（缩写注记插入+--check）。
 - 触发词：「做一个 XX 知识站/专题站」。部署到 linqiongni.top tab 配合 legal-domain-site-tab；只改源站目录，副本用 sync 脚本生成。
 
+## 技能层已入 git（2026-09-29，技能本身会跟着仓库走）
+- 仓库 `skills/` = **唯一真源**，六份本仓库专属技能：`fixed-bg-fish-bug`（透明底/鱼影 bug 决策树 + 十项回归清单）、
+  `inline-reading-view`（当前页打开四步模板）、`legal-domain-site-tab`、`profile-site-sync-publish`、
+  `sub-site-style-align`、`weekly-plan-publish`。一览见 `skills/README.md`。
+- 本机 `~/.workbuddy/skills/<name>` 是**指向仓库的软链**（改仓库那份即生效）；新设备靠
+  `bash scripts/setup-device.sh` 自动接管并进自检——**换机器还是一条命令，不用手工拷技能**。
+  若本机已存在实体目录，脚本会拒绝覆盖并提示先合并（故意的，避免静默删除）。
+- 仍未入 git 的跨项目缺口只有 `~/.workbuddy/` 下的 `MEMORY.md` / `SOUL.md` / `IDENTITY.md` / `USER.md`
+  四样（Andy 2026-09-27 决定暂不同步），见 `process/MIGRATION.md`。
+- **写日志认准 `process/04-每日日志/`**：2026-09-29 凌晨的日志写进了 `.workbuddy/memory/`（被 gitignore），
+  等于没写，当天上午已整体迁入 `process/04-每日日志/2026-09-29.md`。
+
 ## 项目过程档案库 process/（2026-09-27 建）
 - **唯一入口 `process/README.md`**，单向引用其余文件；任何改这个项目的人收工前更新它的「今日索引」。
   读这个项目一律从 `process/README.md` 进，不要直接翻 `.workbuddy/memory/`。
