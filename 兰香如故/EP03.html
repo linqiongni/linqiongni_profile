@@ -94,7 +94,6 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   details.zhfold[open] summary { margin-bottom:8px; }
   details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
   footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
-  .native { margin-bottom:30px; }
 </style>
 </head>
 <body>
@@ -112,11 +111,10 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
     </div>
     <div class="speed" id="spd">1.0×</div>
   </div>
-  <div class="err" id="err">内嵌播放器无法在此预览面板播放（沙箱限制）。请用本机浏览器直接打开本文件，或点击下方原生控件 / 打开 EP03_audio.mp3。</div>
-  <div class="native"><audio id="au2" controls src="EP03_audio.mp3" preload="metadata"></audio></div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP03_audio.mp3）重试。</div>
 
   <div class="story">
-<p class="seg" data-i="0" data-start="0.0" data-end="26.856">Let me tell you about episode three. Episode two left our girl Lanxiang — still secretly Shen Jialan — three streets from the family that disowned hers, and it left Lin Jinqi, the man who was once promised to her, a war hero coming home to a cold house. Episode three is the moment those two orbits finally, inevitably, begin to tilt toward each other — and it starts with a betrayal that isn&#x27;t Jialan&#x27;s at all.</p>
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="26.856">Let me tell you about episode three. Episode two left our girl Lanxiang — still secretly Shen Jialan — three streets from the family that disowned hers, and it left Lin Jinqi, the man who was once promised to her, a war hero coming home to a cold house. Episode three is the moment those two orbits finally, inevitably, begin to tilt toward each other — and it starts with a betrayal that isn&#x27;t Jialan&#x27;s at all.</blockquote>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第三集。第二集把我们的姑娘兰香——其实仍是沈嘉兰——搁在了抛弃她家的那一家三条街外，也把曾与她有婚约的林锦岐，一个成了英雄、却回到冰冷家里的男人，摆在了归途上。第三集，是这两个人的轨迹终于、不可避免地开始彼此倾斜的时刻——而它始于一场与嘉兰无关的背叛。</p></details>
 
 <p class="seg" data-i="1" data-start="26.856" data-end="62.736">Lin Jinqi has been away six years, fighting the coastal raiders. He comes home expecting his house to be his. Instead he finds that his wife, Zhao Xingtang, has spent those years quietly remaking it. His own trusted maid, Yuchan — the girl who used to be at his shoulder — has been married off to a simpleton, on Zhao Xingtang&#x27;s order. The message is unmistakable: the general has been away, and in his absence the lady of the house has taken everything that was his and made it hers. He has been emptied out of his own home.</p>

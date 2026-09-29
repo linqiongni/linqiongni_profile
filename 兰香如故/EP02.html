@@ -94,7 +94,6 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   details.zhfold[open] summary { margin-bottom:8px; }
   details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
   footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
-  .native { margin-bottom:30px; }
 </style>
 </head>
 <body>
@@ -112,11 +111,10 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
     </div>
     <div class="speed" id="spd">1.0×</div>
   </div>
-  <div class="err" id="err">内嵌播放器无法在此预览面板播放（沙箱限制）。请用本机浏览器直接打开本文件，或点击下方原生控件 / 打开 EP02_audio.mp3。</div>
-  <div class="native"><audio id="au2" controls src="EP02_audio.mp3" preload="metadata"></audio></div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP02_audio.mp3）重试。</div>
 
   <div class="story">
-<p class="seg" data-i="0" data-start="0.0" data-end="14.328">Let me tell you about episode two, because episode one left a girl on a boat with a single word of blood, and episode two is what happens when someone who was raised to die has to learn, day by painful day, how to keep on living.</p>
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="14.328">Let me tell you about episode two, because episode one left a girl on a boat with a single word of blood, and episode two is what happens when someone who was raised to die has to learn, day by painful day, how to keep on living.</blockquote>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二集吧，因为第一集把一个女孩连同她母亲用血写下的一个字留在了船上，而第二集，讲的是那个被养来赴死的人，要如何一天天、一寸寸地，学着继续活下去。</p></details>
 
 <p class="seg" data-i="1" data-start="14.328" data-end="69.264">The boat carries them downriver to Jinling — the Lin family&#x27;s home seat, the city the family retreated to when they washed their hands of the Shen name. That&#x27;s the bitter joke of it: the only safe place for a dead girl&#x27;s daughter to hide is the very city her former fiancé&#x27;s family calls home. Xu Wanquan and his wife know this. They know too that no one in Jinling has ever seen Shen Jialan&#x27;s face — back in the capital, their own Lanxiang was sickly and rarely let out of doors, and Jialan, wrapped in a stranger&#x27;s cloak, was just another blurred figure on a road. So they make a pact, quiet and practical: if anyone asks, they&#x27;ll say she&#x27;s grown. A girl changes past all recognition as she grows; no one will look twice. It&#x27;s a flimsy story, but when your whole life is built on a corpse and a borrowed name, flimsy is all you get.</p>

@@ -19,11 +19,11 @@ interface Episode {
 
 const EPISODES: Episode[] = [
   { id: 'ep01', label: 'EP01', enLabel: 'Episode 01', src: '/lanxiang/EP01.html?v=20260929c' },
-  { id: 'ep02', label: 'EP02', enLabel: 'Episode 02', src: '/lanxiang/EP02.html?v=20260929e' },
-  { id: 'ep03', label: 'EP03', enLabel: 'Episode 03', src: '/lanxiang/EP03.html?v=20260929e' },
-  { id: 'ep04', label: 'EP04', enLabel: 'Episode 04', src: '/lanxiang/EP04.html?v=20260929e' },
-  { id: 'ep05', label: 'EP05', enLabel: 'Episode 05', src: '/lanxiang/EP05.html?v=20260929e' },
-  { id: 'ep06', label: 'EP06', enLabel: 'Episode 06', src: '/lanxiang/EP06.html?v=20260929e' },
+  { id: 'ep02', label: 'EP02', enLabel: 'Episode 02', src: '/lanxiang/EP02.html?v=20260929f' },
+  { id: 'ep03', label: 'EP03', enLabel: 'Episode 03', src: '/lanxiang/EP03.html?v=20260929f' },
+  { id: 'ep04', label: 'EP04', enLabel: 'Episode 04', src: '/lanxiang/EP04.html?v=20260929f' },
+  { id: 'ep05', label: 'EP05', enLabel: 'Episode 05', src: '/lanxiang/EP05.html?v=20260929f' },
+  { id: 'ep06', label: 'EP06', enLabel: 'Episode 06', src: '/lanxiang/EP06.html?v=20260929f' },
   // EP07–EP37 续做时在此追加一行（html + _audio.mp3 放进 public/lanxiang/，由 兰香如故/工具/gen_story.py 生成）
 ];
 

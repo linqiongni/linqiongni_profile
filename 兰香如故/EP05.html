@@ -94,7 +94,6 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   details.zhfold[open] summary { margin-bottom:8px; }
   details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
   footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
-  .native { margin-bottom:30px; }
 </style>
 </head>
 <body>
@@ -112,11 +111,10 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
     </div>
     <div class="speed" id="spd">1.0×</div>
   </div>
-  <div class="err" id="err">内嵌播放器无法在此预览面板播放（沙箱限制）。请用本机浏览器直接打开本文件，或点击下方原生控件 / 打开 EP05_audio.mp3。</div>
-  <div class="native"><audio id="au2" controls src="EP05_audio.mp3" preload="metadata"></audio></div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP05_audio.mp3）重试。</div>
 
   <div class="story">
-<p class="seg" data-i="0" data-start="0.0" data-end="25.032">Episode five is where the mask starts to crack. Up to now the marriage between Lin Jinqi and Zhao Xingtang has been a thing of paper — an alliance of interests, a union in name only, two strangers bound by their families and nothing else. Episode five is the first time we see the paper tear, and the first time Jialan is forced to choose whose side the unseen girl is really on.</p>
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="25.032">Episode five is where the mask starts to crack. Up to now the marriage between Lin Jinqi and Zhao Xingtang has been a thing of paper — an alliance of interests, a union in name only, two strangers bound by their families and nothing else. Episode five is the first time we see the paper tear, and the first time Jialan is forced to choose whose side the unseen girl is really on.</blockquote>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第五集，是那张面具开始裂缝的一集。至此，林锦岐与赵星棠的婚姻，始终只是一纸空文——利益的结盟，名分的凑合，两个被家族绑在一起、除此之外毫无瓜葛的陌生人。第五集，是我们头一回看见那张纸被撕开，也是嘉兰头一回被迫去选：这个隐身的姑娘，究竟站在谁一边。</p></details>
 
 <p class="seg" data-i="1" data-start="25.032" data-end="55.728">Lin Jinqi moves first. He has spent his years at the border gathering proof of what Zhao Xingtang has been doing behind the smiling face — the usury, the private lending, the money that flows where it should not. He lays it before his mother, the Senior Lady Lin, not to shame his wife but to arm his family. The Senior Lady, who never wanted this match to begin with, now holds the proof in her hands and decides the time has come to cut her daughter-in-law down to size.</p>
