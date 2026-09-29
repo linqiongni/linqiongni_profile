@@ -12,7 +12,7 @@ import { TabType } from './types';
 
  * - 第三层（可选）：分组内再按「剧集 / 栏目」分层 sections，
 
- *   例如 影视法律 → The Good Wife → 第一季 S1 / 第二季 S2。
+ *   例如 影视法律 → The Good Wife（一部剧一项，季与季由子站页内链接切换）。
 
  *   只有需要分层的分组才写 sections，其余分组保持两级，不增加复杂度。
 
@@ -123,7 +123,11 @@ export const NAV_GROUPS: NavGroup[] = [
 
         enLabel: 'The Good Wife',
 
-        tabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
+        // 一部剧一项（与兰香如故同款）：不再平铺四季；
+        // S2–S4 通过子站页内的「S2 · 第二季 →」链接互跳 + site-tab-navigate 同步主站。
+        // 注意：film-law-s2/s3/s4 仍须保留在上方 subTabs 里（groupOfTab 只认 subTabs，
+        // 删掉会导致页内切季时 activeGroup 误判回 profile 分组）。
+        tabs: ['film-law'],
 
       },
 
@@ -184,7 +188,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
   'foreign-contracts': { label: '涉外合同学习', enLabel: 'Foreign Contracts' },
 
-  'film-law': { label: '第一季 S1', enLabel: 'Season 1' },
+  'film-law': { label: '傲骨贤妻', enLabel: 'The Good Wife' },
 
   'film-law-s2': { label: '第二季 S2', enLabel: 'Season 2' },
   'film-law-s3': { label: '第三季 S3', enLabel: 'Season 3' },

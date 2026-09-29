@@ -109,7 +109,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   /** 下拉面板里的一个子板块条目 */
   const renderItem = (t: TabType) => {
-    const isCurrent = activeTab === t;
+    // 傲骨贤妻已收成一项，S2–S4 由子站页内链接切换：
+    // 停留在任一季时都让「傲骨贤妻」保持当前态高亮
+    const isCurrent =
+      activeTab === t ||
+      (t === 'film-law' && /^film-law-s[234]$/.test(activeTab));
     return (
       <button
         key={t}
@@ -308,7 +312,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               {activeGroupObj.label} · {activeGroupObj.enLabel}
             </span>
             {subTabsFlat.map((t) => {
-              const isCurrent = activeTab === t;
+              // 与下拉面板同款：S2–S4 时「傲骨贤妻」保持当前态
+              const isCurrent =
+                activeTab === t ||
+                (t === 'film-law' && /^film-law-s[234]$/.test(activeTab));
               return (
                 <button
                   key={t}
