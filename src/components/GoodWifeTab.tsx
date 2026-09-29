@@ -24,10 +24,10 @@ interface Season {
 }
 
 const SEASONS: Season[] = [
-  { id: 'film-law', label: 'S1', enLabel: 'Season 1', src: '/film-law/index.html?v=20260929b2' },
-  { id: 'film-law-s2', label: 'S2', enLabel: 'Season 2', src: '/film-law-s2/index.html?v=20260929b2' },
-  { id: 'film-law-s3', label: 'S3', enLabel: 'Season 3', src: '/film-law-s3/index.html?v=20260929b2' },
-  { id: 'film-law-s4', label: 'S4', enLabel: 'Season 4', src: '/film-law-s4/index.html?v=20260929b2' },
+  { id: 'film-law', label: 'S1', enLabel: 'Season 1', src: '/film-law/index.html?v=20260929b3' },
+  { id: 'film-law-s2', label: 'S2', enLabel: 'Season 2', src: '/film-law-s2/index.html?v=20260929b3' },
+  { id: 'film-law-s3', label: 'S3', enLabel: 'Season 3', src: '/film-law-s3/index.html?v=20260929b3' },
+  { id: 'film-law-s4', label: 'S4', enLabel: 'Season 4', src: '/film-law-s4/index.html?v=20260929b3' },
 ];
 
 /** 本季页面视图：与子站 hash 路由一一对应 */
