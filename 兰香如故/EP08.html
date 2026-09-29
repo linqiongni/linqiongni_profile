@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 08 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP08_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="70.58">Let me tell you about episode eight, because this is the episode where a birthday feast becomes a trap, and the trap is sprung by the one person everyone at the table is pretending not to notice. We open at the Zhao family home, where the mother&#x27;s birthday is being celebrated with exactly the kind of loud, careful joy that families use to hide a crack they have agreed never to name. Zhao Xingtang has brought Lanxiang and Xiaolian along as her own attendants, and the three of them move through the feast like people walking on glass — because the slap from last episode, Lin Jinqi&#x27;s refusal to appear, is still ringing in every ear that is forbidden to hear it. The eldest son Zhao Gang plays the gracious host. The father Zhao Xuede keeps his dignity polished and his eyes elsewhere. And Qian Shaoze, the cousin who is no lady at all, drinks until the wine loosens his tongue and then drinks until he disappears altogether. When Zhao Xingtang discovers he is gone, she does not call for him in the open. She walks, quickly and quietly, toward the one place in this house built for secrets: the library.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第八集，因为这一集，一场本无人敢点破的寿宴，变成了一桩无人敢点名的陷阱。我们开场在赵府，赵母的寿辰正办得热闹而小心——那是世家大族用来遮一道裂痕的热闹，那道裂痕，满府都约好了绝口不提。赵星棠带了兰香与小莲作随身丫鬟同来，三人穿行在宴中，像走在玻璃上——因为上一集那记耳光，林锦岐的拒不到场，仍在每一只奉命不得听见的耳朵里嗡嗡作响。长子赵刚做足了东道的主意。父亲赵学德把体面擦得锃亮，眼睛朝着别处。而那位根本不是姑娘的表哥钱少泽，一杯接一杯灌到舌头发松，再灌到整个人凭空消失。赵星棠发现他不见了，并不声张去唤。她快步、悄声，走向这府里专为此事而建的那一处——藏书楼。</p></details>
+
+<p class="seg" data-i="1" data-start="70.58" data-end="141.36">Zhao Xingtang reaches the library and does the telling thing: she sends Lanxiang away, and keeps Xiaolian at the door. A mistress does not want two pairs of eyes on what she is about to do; one is enough, and the one she keeps is the friend she trusts, not the maid she suspects. Lanxiang walks off as told, and the moment she is out of sight she becomes what she has spent seven episodes becoming — a girl who reads the board three moves ahead. She knows, with the cold certainty of someone trained by fear, that this is the exact opening Lin Jinqi has been waiting for. So she finds the hand he keeps in the Zhao household, Jiugao or one of his men loitering where a servant might loiter, and she passes the message plainly: the mistress has gone to the library, alone, and do not let her leave unobserved. Then — and this is the part that will cost her later — she turns back. She will not leave Xiaolian standing at that door as the only witness to a sin that could get a maid killed for having seen it. She reaches the girl, pulls her into the shadows, and hides her where no one coming up the stairs will think to look.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>赵星棠到了藏书楼，做了那桩露馅的事：她打发兰香走开，却把小莲留在门口。主母不愿有两双眼睛瞧见她要做什么；一双够了，而她留下的是信得过的朋友，不是起了疑的丫鬟。兰香依言退下，一出视线，便成了她用七集熬成的那种人——一个比棋局早看三步的姑娘。她以被恐惧训出来的冷澈确知：这正是林锦岐苦等的那个缺口。于是她寻到林锦岐安在赵府的那只手——九皋，或他手下一个混在奴仆堆里的人——平平地递了话：主母独自去了藏书楼，莫教她脱了眼。而后——正是这一步，日后要她付出代价——她折了回去。她不肯把小莲独自留在那道门边，做唯一一个见了丑事、便可能因&quot;见了&quot;而被灭口的证人。她摸到那姑娘，将她拽进暗处，藏到任谁上了楼都不会去想的地方。</p></details>
+
+<p class="seg" data-i="2" data-start="141.36" data-end="211.3">Now we watch Lin Jinqi play the longest move on the board. He does not storm the library. He summons a name — Mr. Shouyi, the literatus Fang Shouyi, a man of letters whose favor the Zhao family has courted for years. To Zhao Xuede and Zhao Gang he is all courtesy and opportunity: a rare chance, he says, to meet the gentleman here, tonight, away from the noise of the feast, in the quiet of the library where a scholar might actually consent to be introduced. It is the perfect lure, because it wears the face of honor. The father, pleased to be thought a patron of letters, agrees. The eldest son, eager to be seen at his father&#x27;s side, follows. They walk toward the book tower with no suspicion at all, flattered and unsuspecting, two men being led by courtesy into the room where their own house&#x27;s shame is waiting to be unveiled. Lin Jinqi walks behind them, unhurried. He has not raised his voice. He has not laid a hand. He has simply made the truth walk itself into the light, wearing the clothes of a civil visit.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>此刻且看林锦岐落最长远的一子。他不是去踹藏书楼的门。他搬出一个名号——守一先生，方守一，赵家多年攀交的那位名士。对赵学德与赵刚，他满是礼数与&quot;机会&quot;：他说，今夜难得的机缘，可于宴外清静的藏书楼引见那位先生，文人雅集，最相宜。这是绝妙的饵，因它披着体面的皮。父亲高兴被认作惜才的东主，应了。长子盼着立在主父身侧让人瞧见，跟了。他们朝着书楼走去，全无戒心，受着奉承、浑然不知，两个被人以礼数领进房间的男人，正走向自家耻辱候着被揭开的所在。林锦岐走在其后，不慌不忙。他没高声，没动手。他只是让真相自己披着&quot;雅访&quot;的外衣，走到了光下。</p></details>
+
+<p class="seg" data-i="3" data-start="211.3" data-end="278.16">The door opens, and the scene inside is the one every person in this house has been secretly rehearsing and publicly denying. Zhao Xingtang and Qian Shaoze are caught in the library, together, in a way no cousin and no lady should ever be. For a moment the room holds its breath — the father, the brother, the scholar, the husband standing in the doorway, and the two people who thought the door would stay shut. Then Qian Shaoze does the thing that turns a scandal into a wound that will not close. He turns on Zhao Xingtang in front of them all and says it was she who came to him; that she, bored and restless in a loveless marriage, seduced the willing cousin and now would hang the blame on him to save her own name. He saves himself by carving her open. Zhao Xingtang stands there, and the thing you see die in her eyes is not shame but certainty — the certainty that the man she risked her marriage, her household, her very safety to meet in secret has just handed her, living, to the people who will destroy her. The cousin she loved becomes the cousin who buried her.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>门开了，屋里的光景，是满府每个人都暗自排练、又公然否认过的那一幕。赵星棠与钱少泽，在藏书楼里被撞个正着，在一处任是谁的表哥、任是谁的姑娘都不该有的样子。刹那间满室屏息——父亲、兄长、名士、立在门边的丈夫，以及那两个以为门会关着的人。而后钱少泽做了那件把丑闻变成不愈之创的事。他当着众人的面，反咬赵星棠，说本是她来就他；说她在这无爱的婚姻里寂寥难耐，勾引了肯从的表哥，如今倒要把罪名扣在他头上自保。他献出她，换自己活命。赵星棠立在那里，你看见她眼里死去的，不是羞，是确信——确信那个她肯拿婚姻、拿府第、拿自身安危去私会的人，方才把她，活生生，交到了要毁她的人手里。她爱的表哥，成了埋她的表哥。</p></details>
+
+<p class="seg" data-i="4" data-start="278.16" data-end="345.38">Zhao Xingtang does not scream. That is the detail worth holding onto. She does not fall, does not weep, does not reach for the man who just betrayed her. She goes still, the way a person goes still when the floor they were standing on is suddenly gone and there is nothing left to grab. Lin Jinqi watches all of it with the calm of a man who has already won and is only now deciding how to spend the win. He has what he came for: the living proof of a wife&#x27;s infidelity, witnessed by her own father and brother, certified by the betrayal of her lover&#x27;s own mouth. The Zhao men are horrified, of course — but horror in this house is a useful thing, because it can be pointed wherever the powerful choose to point it. Zhao Xuede, the father who kept his eyes elsewhere through the whole feast, can no longer look away. The crack he agreed never to name has been named for him, loudly, in his own library, by the son-in-law he underestimated. The shame is now a fact, and facts, in Lin Jinqi&#x27;s hands, are instruments.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>赵星棠没有尖叫。这一点，值得你记住。她没有跌倒，没有落泪，没有去抓那个刚卖了她的人。她定住了，像一个人脚下的地忽地没了、再没什么可抓时的定住。林锦岐把这一切看在眼里，平静得像一个已经赢了、正在盘算如何花这笔赢的人。他要的，到手了：妻子不贞的活证，由她亲父亲兄亲眼见证，再由她情夫的嘴亲自认证。赵家男人自是骇然——可这府里的骇然是个有用的东西，因为它能被有权势的人指向任何地方。赵学德，那个整场宴都把眼朝向别处的父亲，再不能移开目光。那道他约好不提的裂痕，被人用响亮的声口，在他自家的藏书楼里，由他小看的女婿，替他点破了名。耻辱如今成了事实，而事实，到了林锦岐手里，便是器具。</p></details>
+
+<p class="seg" data-i="5" data-start="345.38" data-end="421.44">Lin Jinqi does not gloat, because gloating is for smaller men. He simply lays the matter down as a problem to be solved, and the solution he offers is divorce — he li, a settlement between two houses, framed in the gentle language of &quot;incompatibility of feeling,&quot; as if the marriage had simply worn thin instead of being caught in the act. He li is the civilized form; it spares Zhao Xingtang the worse brand of being cast off in disgrace, and it spares the Zhao family the louder shame of a public repudiation. But make no mistake — it is still ruin. A divorced daughter, sent home in the middle of her mother&#x27;s birthday feast, is a daughter unmade. Zhao Xuede is given the choice that is not a choice: sign the document, preserve what little face the family has left, and let the marriage end quietly. Or refuse, and watch the scandal walk out of the library and into every drawing room in the city. The old man signs. He writes his daughter&#x27;s release with the same hand that, an hour before, polished his dignity and looked away. Episode eight is where a marriage is ended not by hatred, but by a man who knew exactly which room to open, and when.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林锦岐不张扬，张扬是下乘人的事。他只把此事当作一桩待解的麻烦平平摆下，而他给的解法，是离——和离，以两府之间的了断，裹在&quot;感情不和&quot;的软话里，仿佛这段婚姻不是被捉奸在床，只是自己磨薄了。和离是体面的一途：它免了赵星棠被休的更难听的污名，也免了赵家被公然斥逐的更响的羞。但别会错意——它仍是毁。一个离了婚的女儿，在母亲寿宴正中间被送回家，便是被撤去名分的女儿。赵学德得到的，是个不成选择的选：签了字据，替家里留一点残面，让这段婚姻悄然而终；或不签，看丑闻走出藏书楼，走进满城每一处内室。老人签了。他写就女儿的放归，用的那只手，一小时前还在擦体面、还在移开目光。第八集，是一段婚姻不是被恨、而是被一个清楚该开哪扇门、又该在何时开的人，了结的。</p></details>
+
+<p class="seg" data-i="6" data-start="421.44" data-end="485.04">Through all of this, Lanxiang has not been a witness in the room. She has been a witness in the dark — she and Xiaolian, hidden where she put them, close enough to hear the door open and the silence that followed, far enough not to be seen. And here is the quiet horror of episode eight for the girl who once had a name: she set this in motion. Not the betrayal — that was Zhao Xingtang&#x27;s own — but the reporting of it, the message passed to Jiugao that sent Lin Jinqi&#x27;s men to the door at the right moment. She did it to survive, and to save Xiaolian, and because the man who owns her family&#x27;s lives asked her to be his eyes. But survival bought this way leaves a mark. She hears the paper signed and understands, with a clarity she will carry for the rest of the story, that she is no longer merely a maid who watches. She is a hand on the lever. And the lever, tonight, divorced a woman and remade the whole balance of the house — while she stood in the shadows, holding her friend, and said nothing.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这一切里，兰香从不是屋里的见证。她是暗处的见证——她与小莲，藏在她安顿的地方，近得听得见门开、听得见随后的死寂，远得不被看见。而第八集于那个曾有过名字的姑娘，静处的骇人处在此：这局，是她推开的。背叛不是她——那是赵星棠自己的；可那&quot;报信&quot;，那传给九皋、教林锦岐的人赶在恰当时刻到了门口的话，是她递的。她这么做是为活命，为救小莲，也因为那个攥着她一家性命的人，要她做他的眼。但这样买来的活命，留痕。她听见纸落了印，便以往后余生都要背着的那份清明，懂了：她不再只是个&quot;看着&quot;的丫鬟。她是压在杆上的一只手。而那根杆，今夜，休了一个女人，重排了整座府的格局——而她立在暗处，揽着朋友，一言未发。</p></details>
+
+<p class="seg" data-i="7" data-start="485.04" data-end="546.5">When the night is over, the Zhao residence is a house with its front cracked open. Zhao Xingtang is stripped of the standing she fought for and sent back to the rooms she came from, a wife unmade in the middle of the very feast meant to honor her mother. The birthday, which was to be a show of the family&#x27;s grace, becomes the day the family&#x27;s grace broke in half. Xiaolian, once she is safe and the door is shut, cries for a woman she never much liked, because cruelty and catastrophe are different things and even a servant can tell them apart. Lanxiang walks back to the Lin estate changed in a way no one will see — her steps are the same, her eyes are not. She has learned the longest lesson of the inner court: that to be useful to power is to be complicit in it, and that complicity, once tasted, does not wash off. The girl who traded her name for a dead maid&#x27;s life has now traded her silence for a family&#x27;s survival, and her innocence for a front-row seat to how the great houses fall.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>夜尽了，赵府是座前脸裂开的宅子。赵星棠被剥去她争来的体面，送回她来的那几间屋子，在本是贺她母亲的寿宴正中间，成了一个被撤名的妻子。那场本要显一家风仪的寿辰，成了这家风仪从中断开的一天。小莲一旦脱了险、门一关，为一个她从不甚喜欢的女人落了泪——因为狠与祸是两回事，连个丫鬟也分得清。兰香走回林府，变了一种旁人看不出的样子——步子依旧，眼睛不依旧。她学到了内宅最长的一课：于权势有用，便是与权势同谋，而同谋一旦尝过，洗不掉。那个拿自己名字换一个死丫鬟性命的姑娘，如今拿沉默换了一家的活命，又拿清白，换了一张看巨室如何倾颓的前排座。</p></details>
+
+<p class="seg" data-i="8" data-start="546.5" data-end="617.44">Episode eight leaves the board rearranged. Lin Jinqi emerges with his wife removed and, more importantly, with the Zhao family indebted to his discretion — he could have ruined them publicly and chose, gentlemanly, to settle instead. That restraint is its own power; it binds the Zhao house to him without a word of threat. Zhao Xingtang leaves with no husband, no household of her own, and no mother&#x27;s roof that can shelter her name. The alliance she was born into has collapsed, and she is its rubble. And Lanxiang — Shen Jialan, the granddaughter beneath the name — stands one step deeper inside Lin Jinqi&#x27;s machine, trusted now because she proved she would act, feared later precisely for that reason. The episode asks the question the whole story keeps asking: who is the villain? The wife who loved the wrong man? The husband who caught her with a scholar&#x27;s courtesy? The maid who reported her to live? In this house the answer is never one person. It is the game itself, and the game does not care who it unmakes, only that someone always holds the door.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第八集，落子重排。林锦岐去了一个妻子，更要紧的，是让赵家欠了他的人情——他本可公开毁了他们，却&quot;绅士&quot;地选了了断。这份克制，本身就是力；它不用半句威胁，便把赵府绑在了他身上。赵星棠走时，无夫、无自己的府第、也无娘家能护她名分的屋顶。她生来依附的那门姻亲塌了，她是其瓦砾。而兰香——沈嘉兰，名字底下的孙女——又深了一脚，陷进林锦岐的机器里，因证成了自己&quot;会动手&quot;而被信，也恰因这&quot;会动手&quot;日后被惧。这一集问出整部戏反复在问的问题：恶人究竟是谁？爱错了人的妻子？以名士之礼捉奸的丈夫？报信活命的丫鬟？在这府里，答案从不是一个人。是棋局本身，而棋局不在乎它毁了谁，只在乎总有人，握着那扇门。</p></details>
+
+<p class="seg" data-i="9" data-start="617.44" data-end="684.52">So we close episode eight the way these stories close — not with justice, but with a rearrangement that everyone will pretend was order. A marriage that began as a transaction ends as a settlement, signed by a father who would not meet his daughter&#x27;s eyes. A cousin who was a lover is now a liability to be erased. And a maid who was meant to be invisible has become the quiet hinge on which a great family turned. What comes next is the cleaning. With Zhao Xingtang fallen, the inner court she commanded must be remade — the Zhichun Residence will be washed of her people, its doors opened to new ones, and among those new ones a certain maid will step, at last, into the inner study where letters are read and futures are written. Episode nine is where Lanxiang stops being a pair of eyes in the dark and becomes a hand on the page. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, the door that matters is never the one you are told to guard. It is the one someone else is opening, quietly, behind your back.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如这些故事惯常那样收束第八集——不是以公道，而是以一场人人要装作是秩序的重排。一段始自交易的婚姻，以一纸了断终了，由一个不敢看女儿眼睛的父亲签下。曾为情人的表哥，如今是待除的隐患。一个本该无名的丫鬟，成了巨室转向时那枚静默的轴。接下来，是清洗。赵星棠既倒，她掌着的内宅须得重造——知春馆要洗去她的人，门为新人而开，而在那些新人里，某个丫鬟将终于踏入内书房，那里读信、也写命。第九集，是兰香不再做暗处的一双眼睛、而成页上的一只手的一集。但那是下周的讲法。此刻你只记一句：在林府，要紧的那扇门，从来不是吩咐你去守的那扇。是别的人在背后，悄悄开着的，那一扇。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 08 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP08_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 70.58], [70.58, 141.36], [141.36, 211.3], [211.3, 278.16], [278.16, 345.38], [345.38, 421.44], [421.44, 485.04], [485.04, 546.5], [546.5, 617.44], [617.44, 684.52]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
