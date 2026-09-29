@@ -100,7 +100,7 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
 <div class="wrap">
   <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
   <div class="sub">EPISODE 1 · TOLD LIKE A STORY · 有声版</div>
-  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
 
   <div class="player">
     <button class="playbtn" id="btn" aria-label="播放">▶</button>
@@ -112,6 +112,7 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
     <div class="speed" id="spd">1.0×</div>
   </div>
   <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP01_audio.mp3）重试。</div>
+  
 
   <div class="story">
 <blockquote class="seg live" data-i="0" data-start="0.0" data-end="8.472">Let me tell you about the first episode, because it doesn't ease you in — it grabs you by the collar and drops you straight into the deep end.</blockquote>
@@ -144,7 +145,7 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
 <p class="seg" data-i="9" data-start="348.0" data-end="374.448">For a girl who watched her whole family choose death over dishonour, living is the cruelest thing anyone could ask of her. But it's the only inheritance left: a borrowed name, a dead girl's face, and one bloodstained word telling her to go on. From this moment, the granddaughter of a grand academician will walk the world as Xu Lanxiang, a third-class maid — and the long, slow work of surviving will begin.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>对于一个眼睁睁看着全家以死明志、不肯受辱的女孩来说，活下去，是旁人能强加于她的最残忍的事。可这也是她仅剩的遗产：一个借来的名字，一张死去的女孩的脸，和一个以血写就、命她继续走下去的字。从这一刻起，大学士府的嫡长孙女，将以"三等丫鬟许兰香"之名行走人间——而那漫长、迟缓的、关于"活下去"的功课，才刚刚开始。</p></details>
 
-<p class="seg" data-i="10" data-start="374.448" data-end="407.496">Somewhere in those opening scenes the show plants seeds it doesn't bother to explain — a painting called <em>Cold Mountain</em> hanging in the grandfather's study, an old tale told aloud about a loyal man who backed the wrong side and was destroyed for it, a household library stuffed with law books because her grandfather was Minister of Rites and her father the realm's chief judge. The episode just buries them and trusts you to come back and watch them bloom. That's episode one. It doesn't explain. It just begins.</p>
+<p class="seg" data-i="10" data-start="374.448" data-end="407.496">Somewhere in those opening scenes the show plants seeds it doesn't bother to explain — a painting called *Cold Mountain* hanging in the grandfather's study, an old tale told aloud about a loyal man who backed the wrong side and was destroyed for it, a household library stuffed with law books because her grandfather was Minister of Rites and her father the realm's chief judge. The episode just buries them and trusts you to come back and watch them bloom. That's episode one. It doesn't explain. It just begins.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>在那些开场画面里，剧集悄悄埋下了它懒得解释的伏笔——祖父书房里挂着一幅《寒山图》，一段被人大声讲出的旧事，说的是一个忠心耿耿、却站错了队、终被碾碎的人；还有满屋的律法藏书，因她的祖父是礼部尚书，父亲是天下掌刑之官。这一集只是把它们埋下，然后笃定地等你回来，看它们开花。这就是第一集。它不解释。它只是，开始了。</p></details>
 
   </div>
@@ -191,11 +192,6 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
 </script>
 <script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
-/* 鱼影只有一个真相源（对齐 film-law-s3 金本 2026-09-28）：
-   嵌入主站 iframe 时本页绝不自绘鱼影——主站 AquaticLuxuryBackground（9 条月光鱼）
-   在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
-   让涟漪与鱼群聚拢跨 iframe 连续。
-   独立打开（新窗口/手机全屏）时动态加载 theme-kit/profile-bg.js 自绘同参鱼影。 */
 var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
 if(EMBEDDED){
 var lastFwd=0;

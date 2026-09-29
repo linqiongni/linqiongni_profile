@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 07 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP07_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="55.992">Let me tell you about episode seven, because this is the episode where the boy and the girl who were once promised to each other finally, at last, speak — and the first thing he says to her is not a word of love but a sentence about keeping a family alive. You have waited six episodes for this meeting, and what you get is not romance. It is a transaction, signed in fear. We open where episode six left Lanxiang: she has volunteered to accompany Zhao Xingtang to the Jinxiu Embroidery Workshop, and pressed against her own arm, under the sleeve, is the inked pattern of a seal she was never meant to see. She carries it the way a person carries a hot coal — certain it will burn, unsure yet where. She thinks she is walking in to watch a mistress. She does not yet know she is walking into the room where her own old life, and her old betrothal, will come back to find her.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第七集，因为这一集，是那曾被许配给彼此的男孩与女孩，终于、终于开口说话的一集——而他对她说的第一句话，不是一句情话，而是一句关于保一家人性命的话。你等了六集才等到这场见面，换来的却不是风花雪月，是一桩签在恐惧里的交易。我们接第六集收尾处讲起：兰香已自请随赵星棠去锦绣坊，而她袖下臂上，按着一枚她本不该见到的印章图样，墨痕未干。她揣着它，像揣着一块炭——明知会烫，却还不知烫在何处。她以为自己是走进去盯一位主母的。她尚不知道，她正走进那个房间，她自己旧日的性命、旧日的婚约，会在那里找上她。</p></details>
+
+<p class="seg" data-i="1" data-start="55.992" data-end="115.296">The Jinxiu Workshop is Zhao Xingtang&#x27;s own dowry shop, and the person waiting for her there is introduced as &quot;Miss Qian&quot; — a delicate, soft-spoken young lady come to call. Lanxiang is sent to wait below, but she has spent six years learning to see what she is not supposed to see, and she sees it at once. &quot;Miss Qian&quot; is no lady. The hands are too large, the throat too flat, the way of moving too careless of a woman&#x27;s careful grace. It is Qian Shaoze, Zhao Xingtang&#x27;s cousin and her lover, dressed in a woman&#x27;s clothes and smuggled upstairs to a private room. Lanxiang watches him climb, and understands the shape of the trap she has stepped into. If Zhao Xingtang learns that the maid saw her shame, a seen servant is a dead servant. And if Lin Jinqi&#x27;s men report that she shielded her mistress, she is no safer. There is, suddenly, no safe corner left in the room.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>锦绣坊本是赵星棠的陪嫁铺子，而在那里候着她的那位，被引见作&quot;钱小姐&quot;——一位娇怯怯、轻声细语的年轻姑娘，特来探看。兰香被支在楼下等着，可她用六年学会了去看那些她本不该看的东西，于是她一眼便看穿了。&quot;钱小姐&quot;绝非姑娘。手太大，喉太平，走动的作派也太不顾一个女人那份小心翼翼的娴静。那是钱少泽，赵星棠的表哥、也是她的情夫，男扮女装，被人悄悄带上楼，进了那间私室。兰香望着他上楼，便懂得了自己这一步踏进的是何种陷阱。若赵星棠知晓这丫鬟见了她的丑事，见过的主意便是死主意；若林锦岐的人报称她替主母遮掩，她也未必活得了。倏忽之间，这屋里竟再无一处安全的角落。</p></details>
+
+<p class="seg" data-i="2" data-start="115.296" data-end="169.32">So Lanxiang does what the clever and the cornered have always done: she manufactures her own innocence. She complains of a sudden indisposition, asks leave to step out for a warming draft of brown-sugar rice wine, and the moment she is on the street she picks a quarrel — loudly, clumsily, with a market woman who never did her any harm. She makes a scene. She means to. The louder the row, the more certain it is that Lin Jinqi&#x27;s watchers, posted somewhere in the crowd, will see Xu Lanxiang exactly where and when she is meant to be nowhere near the workshop&#x27;s upstairs room. A public, foolish fuss becomes her alibi. It is not a clever move, she would be the first to say so. It is only a half-step ahead of the danger, the way she has learned to live — never above the game, only a breath before it closes.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是兰香做了聪明人、也是走投无路之人向来会做的事：她给自己造一份清白。她推说身子忽然不适，告假出去喝一口红糖醪糟暖暖，一上街便寻衅——又响又笨地，跟一个从未得罪过她的市井妇人吵了起来。她闹了一场。她是成心的。吵得越凶，林锦岐安插在人群某处的眼线，便越会清清楚楚看见许兰香，正出现在、也只该出现在那间铺子楼上的私室绝无可能的地方与时刻。一场当众的、蠢兮兮的喧哗，成了她的不在场证明。这算不得高明，她自己头一个会这么说。它只是比危险早半步，是她学会的活法——从不凌驾于棋局之上，只在它合拢前一息。</p></details>
+
+<p class="seg" data-i="3" data-start="169.32" data-end="237.12">And the scene does its work. The noise climbs the stairs and breaks the moment apart; Qian Shaoze, hearing a commotion that might bring eyes, slips out and runs. Up in the shadows, Lin Jinqi has been watching all along, and he had already seen through the man in a woman&#x27;s dress before Lanxiang ever raised her voice. What he sees now is something else: a maid who, without being told, has just handed herself a reason not to have been present. She has interrupted the assignation and cleared her own name in a single loud, stupid-sounding quarrel. He files it away the way he files everything — with interest. The girl is more awake than her station allows. That, to a man like Lin Jinqi, is not a threat to be crushed. It is a tool to be picked up. He does not yet know her real name, or that the hand he suspects belongs to a dead scholar&#x27;s granddaughter. He only knows the surface: a maid who thinks three moves ahead of her fear, and is therefore worth keeping close — and worth breaking, if she will not bend.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而这场喧哗，确起了作用。声响顺着楼梯爬上去，把那片刻搅得粉碎；钱少泽听见动静，怕招来眼睛，溜出去便跑了。暗处高处，林锦岐一直看着，早在兰香出声之前，他就看穿了那身女装的男人。此刻他另有所见：一个丫鬟，不待人吩咐，方才已替自己备下了一桩&quot;并不在场&quot;的理由。她用一场又响又蠢的吵闹，既打断了私会，又洗清了自己的名。他把它同别的事一起记下——带着兴味。这姑娘，比她的身份所允许的，醒得早。对林锦岐这样的人，这并非须碾碎的威胁，而是一件可以拾起的器具。他还不知她真正的名字，也不知那只他起疑的手，属于一位已故学士的孙女。他只看见表层：一个比恐惧早想三步的丫鬟，因而值得拢在身边——也值得折断，若她不肯弯。</p></details>
+
+<p class="seg" data-i="4" data-start="237.12" data-end="290.208">Back at the estate, Zhao Xingtang returns with her own fury and nowhere clean to spend it. She does not ask what happened. She does not want the truth; she wants a neck to step on. So she orders Xu Lanxiang to kneel in the courtyard, out in the snow, and she means it as punishment for the noise, for the shame, for the simple fact of having been present where something went wrong. Xiaolian — Du Xiaolian, the friend who wants only to be a wife — throws herself down to beg, and is punished beside her. Gantang brings what comfort a maid can: a cloth, a shoulder, silence. It is Nanny Feng who finally steps in, reminding her mistress that the mother&#x27;s birthday feast is days off and a dead or broken maid would spoil the spectacle. Only then does Zhao Xingtang relent, and let the girl rise.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>回到府中，赵星棠带着一腔无处干净发泄的怒火回来了。她不问出了什么事。她不要真相，她要一个可踩的脖子。于是她命许兰香跪在院中、跪在雪地里，以此罚她喧哗、罚她丢人、罚她偏偏在出了岔子的地方&quot;在场&quot;。杜小莲——那个只求做个正经妻子的朋友——扑通跪下求情，也一同受了罚。甘棠尽一个丫鬟所能，递来一方布、一副肩、一片静默。最后是冯嬷嬷出面，提醒主母母亲的寿宴就在数日之后，死了一个或是废了一个丫鬟，是要坏那场排场的。直到这时，赵星棠才松了口，准那姑娘起身。</p></details>
+
+<p class="seg" data-i="5" data-start="290.208" data-end="341.016">Lanxiang walks home on legs that barely hold her, and there she does the one thing the house has never taught her: she asks. She begs her foster mother for the coins to make good the shop&#x27;s loss, the small debt her foolish scene incurred, and in doing so she feels the plain, unperfumed love of the people who are not her blood and have never once asked her to be less than she is. They wrap the money, and the wound, without question. Later, back in the servants&#x27; quarters, it is Xiaolian and Gantang who pull a quilt over her shivering body and press close to share their warmth. The great house trades in marriages, ledgers, and reputations. A few maidens can offer only one thin blanket and the heat of their own bodies. Episode seven shows you which of the two keeps a person alive.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香拖着几乎撑不住的双腿走回家，在那里，她做了那宅子从未教过她的事：她开口求。她向养母讨几枚钱，去补上她那场蠢闹惹出的、赔给铺子的小小亏空，而这么做时，她感到了那不属于她血脉、却从不曾要求她收敛半分的人们，那份素净的、不施脂粉的爱。他们包好钱，也包好伤口，不问原由。后来，回到下房，是杜小莲与甘棠把一床被褥拉过她打颤的身子，贴上来分给她暖。那高门大户，做的是婚姻、账目与名声的买卖。几个丫鬟拿得出手的，只有一床薄被，与她们自己身子的热气。第七集让你看清，这两样里，是哪一样，留住了人的命。</p></details>
+
+<p class="seg" data-i="6" data-start="341.016" data-end="396.216">Night is when Lin Jinqi sends for her. Jiugao comes, as his master&#x27;s hand always comes, and leads Xu Lanxiang into the first quiet, private conversation she has ever had with the man she was once meant to marry. He does not circle. He names the secret she has guarded since she stepped through the gate: he knows she can read. In this house a maid who reads in private commits a crime that can be fatal, and the crime does not stop with her — it drags the family that vouched for her down into the same pit. He lays the bargain on the table as flatly as a man laying tiles. Be his eyes and ears inside the women&#x27;s court; report Zhao Xingtang&#x27;s every move. Do that, and the Xu family keeps its breath. Refuse, and they do not. The childhood promise has become a threat, spoken in the same calm voice.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>夜里，林锦岐派人来唤她。九皋来了，像他主子那只手素来那样来，把许兰香领进她与那曾许配给她的男人之间，第一场安静的、私密的对话里。他不绕弯子。他点破了她自跨进府门便守着的秘密：他晓得她识得字。在这府里，一个私下识字的丫鬟，犯的是可致死的重罪，而这罪不止于她一人——它会把替她作保的那家人，一同拖进同一个坑。他把交易摊在桌上，平得像一个人铺瓦。做他安插在内宅的眼与耳；报上赵星棠的一举一动。做到，许家便留着一口气。拒了，便没有。那童年的婚约，已成了一句威胁，用同一副平静的嗓音说出。</p></details>
+
+<p class="seg" data-i="7" data-start="396.216" data-end="448.296">What he does not know is the name under the name. The girl who stands before him, head bowed, is Shen Jialan — the granddaughter the scholar&#x27;s house lost, the child who traded her own identity for a dead maid&#x27;s so she might live. She hears the bargain and feels the humiliation the way a person feels cold water down the spine, but she has spent a lifetime learning that survival is a series of small, swallowed things. So she answers watertight and small. She will keep to her place. She will serve her master as a maid ought. She gives him nothing he can use against her, and she gives him everything he asked for. Inside, the real girl knots her hands and bears it. She has become a piece on the enemy&#x27;s son&#x27;s board, moved for her family&#x27;s lives, and she will not let him see her flinch.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他所不知的，是那名字底下的名字。此刻垂首立在他面前的姑娘，是沈嘉兰——学士府失却的孙女，那个用自己的身份换一个死丫鬟的命、只为活下去的孩子。她听清了这笔交易，屈辱之感像冷水顺着脊背淌下，可她用一生学会了：活命，原是一连串小小咽下的东西。于是她答得滴水不漏，也答得卑小。她会守本分。她会如丫鬟本分那样，侍奉主子。她没给他半句可拿捏她的把柄，却给了他所要的一切。内里，那个真正的姑娘攥紧了手，忍着。她已成了仇人之子棋盘上的一枚子，为家人的性命被人挪动，而她不会让他看见她有一丝退缩。</p></details>
+
+<p class="seg" data-i="8" data-start="448.296" data-end="507.216">And someone is watching even this. Lü Jí&#x27;ér lurks at the edge of the lamplight, the maid who came close to being beaten to death the last time she overreached, and came out of it twisted. She watches Lanxiang rise in favor and feels the old jealousy sharpen — but she has also learned that the girl who is rising might be the only ledge left to cling to. So she hangs there, torn between wanting to pull Lanxiang down and wanting to hold her coat while she climbs, ready, at the right moment, to sell her for the price of her own skin. The inner court breeds this: not monsters, but people narrowed to a single instinct, survival, until even loyalty is only a posture they try on and take off again. Lanxiang knows she is watched. She has known it since the snow. She simply adds one more pair of eyes to the ledger of threats she must outlive, and goes on, because going on is the only move left.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而连这，也有人在看。吕蕺儿潜伏在灯影的边缘，那个上回妄动、险些被打死、捡回命来却已扭曲的丫鬟。她看着兰香得宠，旧日的妒意便磨得尖利——可她也学乖了：那正往上走的姑娘，或许是唯一还能攀附的崖角。于是她悬在那里，在&quot;想拖兰香下来&quot;与&quot;想替她牵着衣襟助她往上&quot;之间撕扯，只待时机一到，便拿她换自己一张皮的价钱。内宅养出的，正是这个：不是怪物，是把人逼窄到只剩一个本能——活命——直到连忠心，也不过是他们穿上又脱下的一副姿态。兰香知道有人在窥伺。她自那场雪后便知道了。她只是把又一双眼睛，添进那本她必须活过其上的威胁册里，然后继续走，因为继续走，是仅剩的一步棋。</p></details>
+
+<p class="seg" data-i="9" data-start="507.216" data-end="560.16">The episode ends where the marriage ends its last pretense. Lin Jinqi simply refuses to attend the birthday feast for Zhao Xingtang&#x27;s mother, and the refusal lands like a slap that everyone in the house is forbidden to acknowledge. Zhao Xingtang is enraged, and the crack between husband and wife, between his faction and hers, hardens into something that will not close again. Episode seven lays the whole spine of the story bare: inside the Lin estate there are no pure heroes and no pure villains. Lin Jinqi has his reasons and his line, and he wields his power without flinching. Zhao Xingtang is cruel and proud, and also a casualty of the marriage she was sold into. And the girl who once had a name and a promise now trades her one weapon — her silence — for the lives of the family that took her in.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这一集，结束在那段婚姻最后一点遮掩落幕之处。林锦岐干脆不去赴赵星棠母亲的寿宴，而这拒赴，像一记耳光，落得满府上下都奉命不得声张。赵星棠怒极，而夫妻之间、他与她两派之间的裂痕，便硬成一道再合不拢的缝。第七集把整部戏的脊骨，摊开给你看：林府之内，没有纯粹的好人，也没有纯粹的恶人。林锦岐有自己的道理与底线，出手毫不手软。赵星棠狠厉而骄，却也是被卖进这段婚姻的牺牲品。而那个曾有过名字、有过婚约的姑娘，如今拿自己唯一的武器——她的沉默——去换那收留她的一家的性命。</p></details>
+
+  </div>
+
+  <footer>兰香如故 · 第 07 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP07_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 55.992], [55.992, 115.296], [115.296, 169.32], [169.32, 237.12], [237.12, 290.208], [290.208, 341.016], [341.016, 396.216], [396.216, 448.296], [448.296, 507.216], [507.216, 560.16]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
