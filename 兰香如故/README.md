@@ -38,7 +38,7 @@
 | EP05 | ✅ 已完成（有声版，交付物4 扩写 6→10 段上线，补原 6 段短板） | `EP05.html` + `EP05_audio.mp3` + `EP05_英文剧集介绍.md` |
 | EP06 | ✅ 已完成（有声版，交付物3 上线，未改） | `EP06.html` + `EP06_audio.mp3` + `EP06_英文剧集介绍.md` |
 | EP07 | ✅ 已完成（有声版，交付物4 新增上线） | `EP07.html` + `EP07_audio.mp3` + `EP07_英文剧集介绍.md` |
-| EP08 | 🟢 本地完成（剧本 `EP08_英文剧集介绍.md` + 金标准预览 `EP08.html` + 真实合成音频 `EP08_audio.mp3` 684.52s，en-US-AriaNeural/-4%；dev 服务器 localhost:3000 可播放；待 push 上线） | `EP08.html` + `EP08_audio.mp3` + `EP08_英文剧集介绍.md` |
+| EP08 | ✅ 已完成（有声版，沙箱 edge-tts 合成 684.52s / en-US-AriaNeural/-4%，已推 main 上线 linqiongni.top） | `EP08.html` + `EP08_audio.mp3` + `EP08_英文剧集介绍.md` |
 | EP09–EP37 | ⬜ 未开始 | 由 `工具/gen_story.py` 按 `制作规范.md` 逐集推进 |
 
 > 交付物4（2026-09-29 晚间）含 EP01–EP07：EP01/03/04/05 为用户修订剧本（EP03/04/05 由 8/8/6 段扩写至 10 段，EP05 补足原短板），EP07 为新集。全部重镀主站主题（透明嵌入 + 双栈字体 + 明暗桥接 + aquatic 鱼影脚本 + 删原生播放器 + 第一段钩子 blockquote），对照线上 EP01/EP02 金标准。EP08+ 依 `工具/制作规范.md` 续做。
@@ -47,7 +47,7 @@
 
 - **已定**：未来挂 linqiongni.top 做模块时，音频 mp3 随 **GitHub Pages 同目录公开**（即进 git 仓库）。
 - 因此本目录内容**将随仓库版本管理**，覆盖交接包早期「纯本地、不进 git/Gitee」的约定（该约定已被用户本次决策推翻）。
-- 当前状态：EP01–EP07 已随交付物4 推 main 上线（可公网访问）；EP08 本地已完成（含真实合成音频），commit/push 待确认后上线。
+- 当前状态：EP01–EP08 均已推 main 上线（可公网访问 linqiongni.top）；EP08 由**沙箱 edge-tts 直接合成音频**（推翻早期「沙箱无 ffmpeg/edge-tts 需本机跑」的错误结论，见 `工具/` 合成管线）。
 - 跨设备接手资料见 `跨设备交接包.md`。
 
 ## 文件清单（本目录）
