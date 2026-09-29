@@ -1,74 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>兰香如故 · Episode 2 — Audio Story</title>
-<script>
-document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
-(function () {
-  var r = document.documentElement;
-  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
-  if (r.classList.contains('embedded')) { apply('dark'); }
-  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
-  window.addEventListener('message', function (e) {
-    var d = e.data || {};
-    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
-  });
-})();
-</script>
 <style>
-  :root, html[data-theme="light"] {
-    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
-    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
-    --gold:#B89F6B; --gold-deep:#92702f;
-    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
-    --zh:#4a423a; --bar:#e7ddc7;
-    --shadow:0 6px 20px rgba(120,90,40,.08);
-    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
-    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
-    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  :root{
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --serif: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
+    --gold:#B89F6B; --gold-d:#9c7f4a;
+    --ink:#23201b; --ink-soft:#4a443b; --ink-faint:#8a8175;
+    --card:#fffdf8; --seg-hover:#f3ecdd; --seg-active:#f7f0e1; --bq-bg:#f6efe0; --bq-ink:#3a342c;
+    --zh:#5b554c; --line:#e7ddc9;
   }
-  html[data-theme="dark"] {
-    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
-    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
-    --gold:#C9A86A; --gold-deep:#A08442;
-    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
-    --zh:#C7CBBF; --bar:#1B2E45;
-    --shadow:0 6px 22px rgba(0,0,0,.35);
-    --bq-bg:#12263C; --bq-ink:#D9C79B;
-    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
-    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  html[data-theme="dark"]{
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --serif: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
+    --gold:#C9A86A; --gold-d:#a98c54;
+    --ink:#F4EFE4; --ink-soft:#cdd3da; --ink-faint:#7e8a99;
+    --card:#0C1B2B; --seg-hover:#13283c; --seg-active:#16314a; --bq-bg:#10243a; --bq-ink:#dfe6ee;
+    --zh:#a9b6c6; --line:#22364c;
   }
-  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
-  html.embedded body { background:transparent !important; background-image:none !important; }
-  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
-  html.embedded blockquote.seg { background:transparent !important; }
-  html.embedded .seg:hover { background:var(--seg-hover) !important; }
-  html.embedded .seg.active { background:var(--seg-active) !important; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
-  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
-  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
-  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
-  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
-    padding:18px 22px; display:flex; align-items:center; gap:18px;
-    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
-  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
-    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 12px rgba(168,133,63,.4); }
-  .playbtn:hover { background:var(--gold-deep); }
-  .meta { flex:1 1 auto; }
-  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
-  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
-  .fill { height:100%; width:0%; background:var(--gold); }
-  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
-  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
-    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
-  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+  html.embedded body{ background:transparent; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:var(--sans); color:var(--ink);
+    background:var(--card); line-height:1.85; padding:26px 20px 60px; }
+  .wrap{ max-width:760px; margin:0 auto; }
+  h1{ font-family:var(--serif); font-weight:600; font-size:30px; line-height:1.25;
+    margin:0 0 6px; color:var(--ink); letter-spacing:.3px; }
+  .sub{ font-family:var(--sans); font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold); margin:0 0 14px; }
+  .hint{ font-size:13px; color:var(--ink-faint); margin:0 0 16px; }
+  .player{ display:flex; align-items:center; gap:14px; padding:12px 16px; border-radius:14px;
+    background:transparent; border:1px solid var(--line); margin-bottom:6px; }
+  html.embedded .player{ background:transparent; border-color:transparent;
+    border-bottom:1px solid var(--line); border-radius:0; }
+  .playbtn{ flex:0 0 auto; width:46px; height:46px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--gold); color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 10px rgba(184,159,107,.35); transition:transform .12s; }
+  .playbtn:hover{ transform:scale(1.06); }
+  .meta{ flex:1 1 auto; min-width:0; }
+  .track{ font-size:13px; color:var(--ink-soft); margin-bottom:6px; font-family:var(--sans); }
+  .bar{ height:6px; border-radius:4px; background:var(--line); cursor:pointer; overflow:hidden; }
+  .fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-d)); }
+  .time{ display:flex; justify-content:space-between; font-size:11px; color:var(--ink-faint); margin-top:4px;
+    font-variant-numeric:tabular-nums; }
+  .speed{ flex:0 0 auto; font-size:13px; color:var(--gold); cursor:pointer; user-select:none;
+    border:1px solid var(--line); border-radius:20px; padding:4px 10px; }
+  .seg{ margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
     padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
   .seg:hover { background:var(--seg-hover); }
   .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
@@ -76,7 +55,9 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   .seg.active::before { content:"\25B6\00A0"; opacity:1; }
   .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
   blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
-    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink);
+    background:transparent; }
+  html.embedded blockquote.seg{ background:transparent; }
   blockquote.seg:hover { background:var(--seg-hover); }
   details.zhfold { margin:0 0 22px 0; }
   details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
@@ -92,7 +73,7 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
 <div class="wrap">
   <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
   <div class="sub">EPISODE 2 · TOLD LIKE A STORY · 有声版</div>
-  <div class="hint">点击任意一段英文即可播放该段配音；下方「🇨🇳 中文翻译」展开对应译文</div>
+  <div class="hint">点击任意一段英文即可从该段开始播放整篇配音；下方「🇨🇳 中文翻译」展开对应译文</div>
   <div class="player">
     <button class="playbtn" id="btn" aria-label="播放">▶</button>
     <div class="meta">
@@ -107,37 +88,37 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
 <blockquote class="seg" data-i="0">Let me tell you about episode two, because episode one left a girl on a boat with a single word of blood, and episode two is what happens when someone who was raised to die has to learn, day by painful day, how to keep on living.</blockquote>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二集吧，因为第一集把一个女孩连同她母亲用血写下的一个字留在了船上，而第二集，讲的是那个被养来赴死的人，要如何一天天、一寸寸地，学着继续活下去。</p></details>
 <p class="seg" data-i="1">The boat carries them downriver to Jinling — the Lin family's home seat, the city the family retreated to when they washed their hands of the Shen name. That's the bitter joke of it: the only safe place for a dead girl's daughter to hide is the very city her former fiancé's family calls home. Xu Wanquan and his wife know this. They know too that no one in Jinling has ever seen Shen Jialan's face — back in the capital, their own Lanxiang was sickly and rarely let out of doors, and Jialan, wrapped in a stranger's cloak, was just another blurred figure on a road. So they make a pact, quiet and practical: if anyone asks, they'll say she's grown. A girl changes past all recognition as she grows; no one will look twice. It's a flimsy story, but when your whole life is built on a corpse and a borrowed name, flimsy is all you get.</p>
-<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二集吧，因为第一集把一个女孩连同她母亲用血写下的一个字留在了船上，而第二集，讲的是那个被养来赴死的人，要如何一天天、一寸寸地，学着继续活下去。</p></details>
-<p class="seg" data-i="2">What they're most afraid of isn't discovery. It's the girl herself. They watch her the way you watch someone standing too close to a ledge. Jialan moves through those first weeks like a sleepwalker — eating because she's told to, breathing because her body refuses not to. The will to live was written on a talisman by a dying mother's hand, not born in Jialan's own heart, and the two haven't met yet. Xu Wanquan makes a promise to himself, the only kind a man in his position can make: he'll work harder here, take on more, and not let her want for anything. She has lost everything; the least he can do is make sure she doesn't lose her footing on top of it.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>船顺流而下，把他们带到了金陵——林家的本家，正是林家与沈家撇清干系后退守的那座城。这其中的讽刺够苦的：一个死去的女孩的女儿，最安全的藏身之处，偏偏就是她前未婚夫家称作家乡的地方。许万全夫妻心里清楚。他们也清楚，金陵从没有人见过沈嘉兰的脸——当年在京城，他们自己的兰香病弱，极少出门，而嘉兰裹在陌生人的斗篷里，不过是路上一个模糊的身影。于是他们悄悄定下一条约定，朴素而务实：若有人问起，只说姑娘长大了。"女大十八变"，没人会多看第二眼。这是个经不起推敲的说法，可当你的整个人生都搭在一具尸体和一桩借来的名字上，你能有的，也只有经不起推敲而已。</p></details>
-<p class="seg" data-i="3">They settle into a crowded courtyard shared with other bonded households — the Lü family among them, also in service, and not the sort you'd pick to live next to. Xu Wanquan finds work as a hired hand in a Lin-family curio and painting shop, the Rongbao Pavilion, wrapping and carrying and keeping the shelves. The month's wages haven't come yet, so the three of them eat hard corn buns and call it a meal. Jialan, who once turned up her nose at nothing because she'd never been given reason to, chokes the buns down without complaint. She won't add a burden to the two people carrying her. That much, at least, she can do for them.</p>
+<p class="seg" data-i="2">What they're most afraid of isn't discovery. It's the girl herself. They watch her the way you watch someone standing too close to a ledge. Jialan moves through those first weeks like a sleepwalker — eating because she's told to, breathing because her body refuses not to. The will to live was written on a talisman by a dying mother's hand, not born in Jialan's own heart, and the two haven't met yet. Xu Wanquan makes a promise to himself, the only kind a man in his position can make: he'll work harder here, take on more, and not let her want for anything. She has lost everything; the least he can do is make sure she doesn't lose her footing on top of it.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他们最怕的，其实不是被人识破。是这女孩自己。他们看她，就像看一个站在悬崖边上的人。嘉兰头几个礼拜像个梦游的人——叫她吃她就吃，身体的本能不肯停下的呼吸她也就呼吸着。活下去的意志，是临终母亲写在一张符上的，不是从嘉兰自己心里长出来的，这两样东西，还没有合上。许万全对自己许下一个承诺，一个身处他这般境地的人唯一能许的承诺：到了这儿，他要更卖力地做工、多揽活计，不让她缺了什么。她已经失去了一切，他至少能做的，是不让她在这一切之上，再失了立足之地。</p></details>
-<p class="seg" data-i="4">Then the Lin family throws a wedding, and the household distributes festive cakes to everyone in bonded service — a small, careless kindness from the high rooms to the low. Xu's wife saves two for "Lanxiang" and brings them home. Jialan takes one look at the character stamped on the cake — 林, the Lin name — and the floor drops out from under her all over again. This is the family that broke its word to hers. This is the family whose grandson she was promised to, the one who now, the courtyard gossips whisper, is marrying the daughter of the Zhao clan, a favorite at the new emperor's court. The girl who was supposed to be his wife watches his wedding cake sit in her palm and finally breaks. Her adoptive mother doesn't shush her. She just holds her, and lets her cry it all the way out, because she knows the only way forward is through it. "Cry," she says, in effect. "Cry now, properly, so you can stand up afterward."</p>
+<p class="seg" data-i="3">They settle into a crowded courtyard shared with other bonded households — the Lü family among them, also in service, and not the sort you'd pick to live next to. Xu Wanquan finds work as a hired hand in a Lin-family curio and painting shop, the Rongbao Pavilion, wrapping and carrying and keeping the shelves. The month's wages haven't come yet, so the three of them eat hard corn buns and call it a meal. Jialan, who once turned up her nose at nothing because she'd never been given reason to, chokes the buns down without complaint. She won't add a burden to the two people carrying her. That much, at least, she can do for them.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他们住进了一处挤挤挨挨的大杂院，同院的还有许多别的奴籍人家——吕家便在其中，一样是给人当差的，却不是你挑得到的好邻居。许万全在林家一家字画古玩铺子里寻了份帮工的活，那铺子叫荣宝阁，他包包扎扎、搬搬抬抬，守着货架。这个月的工钱还没发，三个人就啃硬邦邦的窝头，聊以当饭。嘉兰，从前什么都不缺、因而从不知挑剔为何物的女孩，一声不响地把窝头咽了下去。她不愿给这两个扛着她的人，再添半分重担。这一点，至少她能为他们做到。</p></details>
-<p class="seg" data-i="5">And slowly, Jialan does stand up. The cakes mark a turning — after that, she stops being a ghost in her own body. She learns to build a fire. She learns to scrub clothes at the well. She learns the thousand small humiliations of a life lived below stairs, and she bears them without flinching because she has seen what the alternative costs.</p>
+<p class="seg" data-i="4">Then the Lin family throws a wedding, and the household distributes festive cakes to everyone in bonded service — a small, careless kindness from the high rooms to the low. Xu's wife saves two for "Lanxiang" and brings them home. Jialan takes one look at the character stamped on the cake — 林, the Lin name — and the floor drops out from under her all over again. This is the family that broke its word to hers. This is the family whose grandson she was promised to, the one who now, the courtyard gossips whisper, is marrying the daughter of the Zhao clan, a favorite at the new emperor's court. The girl who was supposed to be his wife watches his wedding cake sit in her palm and finally breaks. Her adoptive mother doesn't shush her. She just holds her, and lets her cry it all the way out, because she knows the only way forward is through it. "Cry," she says, in effect. "Cry now, properly, so you can stand up afterward."</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>后来林家办喜事，府里把喜庆的喜饼分发给每一个奴籍下人——高堂对底下人一点漫不经心的小恩小惠。许母省下两块留给"兰香"，带了回家。嘉兰只一眼，就看见了饼上印着的那一个字——"林"，林家的林——脚下的大地，又一次整个塌了。这是背弃了她家的那一家。这是她曾被许配给其孙儿的那个家，而如今，院里的闲言碎语说，那位孙少爷正要娶赵家的女儿，新帝跟前红得发紫的人家。那个本该做他妻子的女孩，望着掌心里他家的喜饼，终于崩了。她的养母没有嘘她安静。只是把她搂住，由着她一场大哭哭到尽兴，因为她知道，往前走的唯一法子，是从这哭里穿过去。"哭吧，"她其实是在说，"此刻哭个痛快，往后才能站得起来。"</p></details>
-<p class="seg" data-i="6">Six years pass. The show doesn't make a fuss of it; it just lets the girl grow. Jialan is a young woman now, weathered and quick, and the Lü children have grown too — including Lü Jí'ér, a sharp-faced girl who has decided, for no reason Jialan ever gave her, that the new "sister" is fair game. She hoards the drying line, she snaps and jeers. Most of it Jialan lets roll off. But when Jí'ér pushes her one time too many over a scrap of space to hang laundry, Jialan doesn't argue — she simply leads her, all innocent helpfulness, onto a patch of stone slick with moss. Jí'ér goes down hard. And Jialan, standing over her, shows not a flicker of triumph, not even a word. That's the lesson she's learned in six years: survival isn't about winning the fights. It's about not giving anyone a reason to make you the loser.</p>
+<p class="seg" data-i="5">And slowly, Jialan does stand up. The cakes mark a turning — after that, she stops being a ghost in her own body. She learns to build a fire. She learns to scrub clothes at the well. She learns the thousand small humiliations of a life lived below stairs, and she bears them without flinching because she has seen what the alternative costs.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而慢慢地，嘉兰当真站了起来。那两块饼是个转折——自那以后，她不再做困在自己身体里的游魂。她学会了生火。她学会了在井边浆洗衣裳。她学会了活在底层所要受的千般细小折辱，而她一一受下、眉头都不皱，因为她见过，另一种选择要价几何。</p></details>
-<p class="seg" data-i="7">One evening Xu Wanquan comes home from the shop with news that loosens something in Jialan's chest she didn't know was still clenched. A traveler from the capital told him: someone — some stranger with a conscience — gathered up the Shen dead and given them burial. The whole family, and little Lanxiang too, put properly in the ground at last. For six years Jialan has carried the image of her mother's body unmourned, of the baby sister she last saw drinking poison, of the friend whose death bought her life left to rot. To hear they've been laid to rest is the first mercy she's been handed since the boat. She doesn't weep this time. She just breathes, and for the first time the breathing feels like hers.</p>
+<p class="seg" data-i="6">Six years pass. The show doesn't make a fuss of it; it just lets the girl grow. Jialan is a young woman now, weathered and quick, and the Lü children have grown too — including Lü Jí'ér, a sharp-faced girl who has decided, for no reason Jialan ever gave her, that the new "sister" is fair game. She hoards the drying line, she snaps and jeers. Most of it Jialan lets roll off. But when Jí'ér pushes her one time too many over a scrap of space to hang laundry, Jialan doesn't argue — she simply leads her, all innocent helpfulness, onto a patch of stone slick with moss. Jí'ér goes down hard. And Jialan, standing over her, shows not a flicker of triumph, not even a word. That's the lesson she's learned in six years: survival isn't about winning the fights. It's about not giving anyone a reason to make you the loser.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>六年过去。剧集不声张，只由着这女孩长大。嘉兰如今是个年轻妇人了，饱经风霜而机敏，吕家的孩子们也长大了——包括吕蕺儿，一个面容尖削的姑娘，不知因着嘉兰什么不曾给过的缘由，认定这个新来的"妹妹"可以随便拿捏。她霸着晾衣绳，她抢白嘲弄。大多时候嘉兰由她去。可当蕺儿为一方挂衣裳的空隙，把人逼得太甚的那一回，嘉兰没有吵——她只一脸天真地热心的，把人引到了一块长着青苔、滑不唧溜的石板上。蕺儿结结实实摔了下去。而嘉兰站在她上方，脸上不露半分得色，连一句话也没有。这是她在六年里学来的道理：活下去，不在于打赢那些架。在于不给人把你打成输家的由头。</p></details>
-<p class="seg" data-i="8">Then comes the episode's real set piece — the one that shows you exactly what Jialan is made of, and quietly pays back the foreshadowing episode one buried in the grandfather's study. Jialan brings her father his noon meal at the Rongbao Pavilion as she does most days, and walks in on a catastrophe. Xu Wanquan, left to mind the counter, accepted a scroll painting from a seller — and the head clerk, the Da Zhanggui, has declared it a forgery. Five taels of silver in damages, or his post. For the Xu family, five taels isn't a fine. It's ruin.</p>
+<p class="seg" data-i="7">One evening Xu Wanquan comes home from the shop with news that loosens something in Jialan's chest she didn't know was still clenched. A traveler from the capital told him: someone — some stranger with a conscience — gathered up the Shen dead and given them burial. The whole family, and little Lanxiang too, put properly in the ground at last. For six years Jialan has carried the image of her mother's body unmourned, of the baby sister she last saw drinking poison, of the friend whose death bought her life left to rot. To hear they've been laid to rest is the first mercy she's been handed since the boat. She doesn't weep this time. She just breathes, and for the first time the breathing feels like hers.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>一天傍晚，许万全从铺子里回来，带了一桩消息，松开了一直在嘉兰胸口、她自己都不知道还攥着的东西。一个从京城来的客商告诉他：有人——某个尚有良知的陌生人——把沈家的死人收拢了，给了他们安葬。一家人，连同小兰香，终于妥妥帖帖入了土。六年来，嘉兰心里一直压着母亲曝尸无人收殓的影像，压着最后见到的、饮下毒药的幼妹，压着那个以死换得她生的朋友任其腐坏。听说他们已被安葬，是那艘船之后，命运头一回递到她手里的慈悲。这一回她没有哭。只是呼吸，而头一回，这呼吸像是她自己的。</p></details>
-<p class="seg" data-i="9">But Jialan looks at that painting and something in her stirs — a story her grandfather, the old academician, used to tell, about a famous work whose surface was a deliberate copy laid over the true original, the forger's trick to smuggle a treasure past greedier eyes. She'd heard it as a child, among the law books and the scroll racks. She'd thought it a tale. Now she sees it hanging on her father's wall. She doesn't announce what she knows. Instead she coaches her father: when Old Master Lin comes to inspect the shop — as he does, unpredictable, to keep his clerks honest — make sure he sees this painting. And when he asks, answer plainly, let him draw his own conclusion. Xu Wanquan, terrified, does exactly as he's told.</p>
+<p class="seg" data-i="8">Then comes the episode's real set piece — the one that shows you exactly what Jialan is made of, and quietly pays back the foreshadowing episode one buried in the grandfather's study. Jialan brings her father his noon meal at the Rongbao Pavilion as she does most days, and walks in on a catastrophe. Xu Wanquan, left to mind the counter, accepted a scroll painting from a seller — and the head clerk, the Da Zhanggui, has declared it a forgery. Five taels of silver in damages, or his post. For the Xu family, five taels isn't a fine. It's ruin.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>接着来的，是这一集真正的重场戏——那一幕把你清清楚楚地亮出嘉兰是块什么材料，也悄悄兑现了第一集埋在她祖父书房里的伏笔。嘉兰像平日那样，去荣宝阁给父亲送午饭，撞进一场塌天大祸。许万全留下来看柜台，从一个卖画人手里收下了一轴画——而大掌柜，断它是赝品。五两银子的赔累，不然就丢差事。对许家来说，五两不是罚银，是灭顶。</p></details>
-<p class="seg" data-i="10">The old master arrives. He spots the "forgery," frowns, looks closer — and finds it. The copy peels, and beneath it, the genuine article. Whether he was meant to or not, Xu Wanquan comes out of it looking like a man who'd spotted the trick himself. The Da Zhanggui, cornered, does the sensible thing and promotes him to third steward on the spot, and the old master adds a ten-tael reward for good measure. The five-tael debt vanishes. Ten taels of surplus appear. By a stroke so clean it feels arranged, the family is suddenly holding exactly the sum needed to buy Jialan's freedom from bonded status.</p>
+<p class="seg" data-i="9">But Jialan looks at that painting and something in her stirs — a story her grandfather, the old academician, used to tell, about a famous work whose surface was a deliberate copy laid over the true original, the forger's trick to smuggle a treasure past greedier eyes. She'd heard it as a child, among the law books and the scroll racks. She'd thought it a tale. Now she sees it hanging on her father's wall. She doesn't announce what she knows. Instead she coaches her father: when Old Master Lin comes to inspect the shop — as he does, unpredictable, to keep his clerks honest — make sure he sees this painting. And when he asks, answer plainly, let him draw his own conclusion. Xu Wanquan, terrified, does exactly as he's told.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可嘉兰望着那幅画，心里有什么被拨动了——一个故事，她的祖父，那位老大学士，从前常讲：有一幅名作，表层是刻意覆上去的摹本，真迹藏在底下，是作伪者用以把珍宝瞒过更贪婪的眼目的诡计。她小时候在律法书与画轴架之间听过，只当是个故事。如今她看它挂在了父亲的墙上。她没有声张自己所知。她只点拨父亲：等林老太爷来巡店——他常来，没个准时候，为的是敲打手下人莫要糊弄——务必让他看见这幅画。而他问起时，照实答，让他自己下结论。许万全吓得要命，却一字不差地照做了。</p></details>
-<p class="seg" data-i="11">Her parents want to do it — free her first, the one they owe everything to. But Jialan refuses. She's spent six years learning that she is not separate from these two people; they are the only family the word "Live" ever delivered her to. She wants them all out, together, or not at all. She believes, with the stubborn hope of someone who has already beaten impossible odds once, that if they keep working, they'll earn the rest.</p>
+<p class="seg" data-i="10">The old master arrives. He spots the "forgery," frowns, looks closer — and finds it. The copy peels, and beneath it, the genuine article. Whether he was meant to or not, Xu Wanquan comes out of it looking like a man who'd spotted the trick himself. The Da Zhanggui, cornered, does the sensible thing and promotes him to third steward on the spot, and the old master adds a ten-tael reward for good measure. The five-tael debt vanishes. Ten taels of surplus appear. By a stroke so clean it feels arranged, the family is suddenly holding exactly the sum needed to buy Jialan's freedom from bonded status.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>老太爷到了。他瞥见那"赝品"，皱眉，再凑近一瞧——找到了。摹本掀开，底下，是真迹。不论是不是故意，许万全这一回，倒像个自己看破了机关的人。大掌柜被将了一军，识相地当场把他擢为三掌柜，老太爷又额外赏了十两银子。那五两的债，没了。凭空多出十两余钱。如此干净利落、简直像安排好的一笔，一家人忽然手里，正好攥着赎出嘉兰奴籍所需的那笔数目。</p></details>
-<p class="seg" data-i="12">And underneath all of it, the episode lets slip the thread that will pull everything taut in episodes to come. Lin Jinqi — the former fiancé, the grandson who married the Zhao girl while Jialan was learning to scrub floors — is recalled to Jinling, decorated for driving off coastal raiders, a war hero now. But the welcome home is cold. His father is displeased with the son's choices, and the distance between them is sharp enough to cut. The girl who borrowed a dead girl's name is building a life three streets from the family that disowned hers — and the man who was once promised to her is coming home to a marriage already sour. Episode two doesn't draw the line between them yet. It just lays the pieces side by side, and trusts you to see the board.</p>
+<p class="seg" data-i="11">Her parents want to do it — free her first, the one they owe everything to. But Jialan refuses. She's spent six years learning that she is not separate from these two people; they are the only family the word "Live" ever delivered her to. She wants them all out, together, or not at all. She believes, with the stubborn hope of someone who has already beaten impossible odds once, that if they keep working, they'll earn the rest.</p>
 <details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她的父母想这就办了——先赎她，这个他们欠尽一切的人。可嘉兰不肯。她花了六年才学明白，自己与这两人分不开；他们，是"活"这个字唯一把她交付过去的人家。她要他们一起出去，否则就都不出去。她怀着一份已曾从绝境里赢过一次的、执拗的希望，相信只要接着做下去，余下的，他们也挣得出来。</p></details>
+<p class="seg" data-i="12">And underneath all of it, the episode lets slip the thread that will pull everything taut in episodes to come. Lin Jinqi — the former fiancé, the grandson who married the Zhao girl while Jialan was learning to scrub floors — is recalled to Jinling, decorated for driving off coastal raiders, a war hero now. But the welcome home is cold. His father is displeased with the son's choices, and the distance between them is sharp enough to cut. The girl who borrowed a dead girl's name is building a life three streets from the family that disowned hers — and the man who was once promised to her is coming home to a marriage already sour. Episode two doesn't draw the line between them yet. It just lays the pieces side by side, and trusts you to see the board.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而在这一切底下，这一集悄悄漏出了一根线，那根线会在往后的集数里，把一切收紧。林锦岐——那个前未婚夫，在嘉兰学着浆洗衣裳时娶了赵家女儿的孙少爷——被召回金陵，因击退海疆来犯之敌而受勋，如今是个英雄了。可归来的迎接是冷的。他的父亲对儿子的抉择不满，两人之间的嫌隙，利得能割破人。那个借了死去的女孩之名的人，正把日子过在抛弃了她家的那一家，不过三条街外——而那个曾与她有婚约的男人，正回到一桩已然酸涩的婚姻里。第二集还没有把两人之间的线连起来。它只把棋子并排摆好，由你去看那棋盘。</p></details>
 <blockquote class="seg" data-i="13">That's episode two. Nobody dies. Nobody leaps from a roof. But a girl who was raised to choose death learns, in the small, stubborn currency of corn buns and moss-slick stones and a painting with a secret, how to choose living instead — and the world starts, almost without her noticing, to turn back toward her.</blockquote>
-<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而在这一切底下，这一集悄悄漏出了一根线，那根线会在往后的集数里，把一切收紧。林锦岐——那个前未婚夫，在嘉兰学着浆洗衣裳时娶了赵家女儿的孙少爷——被召回金陵，因击退海疆来犯之敌而受勋，如今是个英雄了。可归来的迎接是冷的。他的父亲对儿子的抉择不满，两人之间的嫌隙，利得能割破人。那个借了死去的女孩之名的人，正把日子过在抛弃了她家的那一家，不过三条街外——而那个曾与她有婚约的男人，正回到一桩已然酸涩的婚姻里。第二集还没有把两人之间的线连起来。它只把棋子并排摆好，由你去看那棋盘。</p></details>  </div>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那就是第二集。没有人死。没有人从房顶跃下。可一个被养来赴死选择死亡的女孩，以窝头、以长着青苔的滑石、以一幅藏着秘密的画，这些细小而执拗的代价，学着自己选择活下去——而世界，几乎在她不曾察觉时，开始朝她转了回来。</p></details>  </div>
   <footer>兰香如故 · 第 2 集有声剧集介绍 · 逐段中英对照（母语英语配音）</footer>
 </div>
-<audio id="au" preload="metadata"></audio>
+<audio id="au" preload="auto" src="EP02_whole.m4a"></audio>
 <script>
   const HAS_AUDIO = true;
-  const SEG = ['EP02_seg_01.m4a','EP02_seg_02.m4a','EP02_seg_03.m4a','EP02_seg_04.m4a','EP02_seg_05.m4a','EP02_seg_06.m4a','EP02_seg_07.m4a','EP02_seg_08.m4a','EP02_seg_09.m4a','EP02_seg_10.m4a','EP02_seg_11.m4a','EP02_seg_12.m4a','EP02_seg_13.m4a','EP02_seg_14.m4a'];
+  const OFF = [[0.0,13.119],[13.119,60.209],[60.209,96.92],[96.92,132.516],[132.516,184.669],[184.669,203.988],[203.988,252.959],[252.959,291.62],[291.62,324.128],[324.128,367.108],[367.108,402.565],[402.565,426.458],[426.458,467.65],[467.65,485.646]];
   const au=document.getElementById('au'), btn=document.getElementById('btn'),
         bar=document.getElementById('bar'), fill=document.getElementById('fill'),
         cur=document.getElementById('cur'), dur=document.getElementById('dur'),
@@ -153,22 +134,28 @@ document.documentElement.classList.toggle('embedded', !!(window.parent && window
   }
   function playSeg(i){
     if(active===i && !au.paused){ au.pause(); return; }
-    if(au.src.indexOf(SEG[i])===-1) au.src=SEG[i];
-    track.textContent='EP seg '+(i+1)+' / '+SEG.length;
+    au.currentTime = OFF[i][0] + 0.03;
+    track.textContent='EP seg '+(i+1)+' / '+segs.length;
     au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
   }
   segs.forEach(s=>s.addEventListener('click',()=>{playAll=false;playSeg(+s.dataset.i);}));
   au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
-  au.addEventListener('timeupdate',()=>{ if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime);} });
-  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    if(active>=0 && !playAll && au.currentTime >= OFF[active][1]-0.06){ au.pause(); }
+    let i=OFF.findIndex(o=>au.currentTime>=o[0] && au.currentTime<o[1]);
+    if(i<0 && au.currentTime>=au.duration) i=OFF.length-1;
+    if(i!==active && i>=0) setActive(i, !au.paused);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; });
   au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
   au.addEventListener('ended',()=>{
     if(playAll && active < segs.length-1){ playSeg(active+1); }
     else { btn.textContent='▶'; setActive(-1,false); playAll=false; track.textContent='English narration · 逐段母语配音'; }
   });
-  au.addEventListener('error',()=>{ err.textContent='音频加载失败：请确认 EP2_seg_XX.m4a 与本页同目录'; err.style.display='block'; });
+  au.addEventListener('error',()=>{ err.textContent='音频加载失败：请确认 EP02_whole.m4a 与本页同目录'; err.style.display='block'; });
   btn.onclick=()=>{
-    if(au.paused){ if(active<0){ playAll=true; playSeg(0); } else { au.play(); } }
+    if(au.paused){ if(active<0){ playAll=true; au.currentTime=OFF[0][0]+0.03; playSeg(0); } else { au.play(); } }
     else { au.pause(); }
   };
   bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};

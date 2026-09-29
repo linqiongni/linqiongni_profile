@@ -22,7 +22,7 @@ const EPISODES: Episode[] = [
   { id: 'ep02', label: 'EP02', enLabel: 'Episode 02', src: '/lanxiang/EP02.html?v=20260929c' },
   { id: 'ep03', label: 'EP03', enLabel: 'Episode 03', src: '/lanxiang/EP03.html?v=20260929c' },
   { id: 'ep04', label: 'EP04', enLabel: 'Episode 04', src: '/lanxiang/EP04.html?v=20260929c' },
-  { id: 'ep05', label: 'EP05', enLabel: 'Episode 05', src: '/lanxiang/EP05.html?v=20260929c' },
+  { id: 'ep05', label: 'EP05', enLabel: 'Episode 05', src: '/lanxiang/EP05.html?v=20260929d' },
   // EP06–EP37 续做时在此追加一行（html + 分段 m4a 放进 public/lanxiang/，由 scripts/gen_lanxiang.py 生成）
 ];
 
