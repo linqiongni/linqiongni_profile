@@ -5,6 +5,11 @@
 
 **新设备**：`bash scripts/setup-device.sh` 会自动把这里的技能软链进 `~/.workbuddy/skills/`（已纳入自检）。
 
+> ⚠️ **软链是「最后跑的那个仓库」说了算**：软链名不含仓库区分，任何 clone 里跑一次 setup-device.sh 都会把
+> `~/.workbuddy/skills/<name>` 指向**它自己的** `skills/`。这是刻意的（这台设备当前活跃的就是那个仓库），
+> 但要注意：A/B 两台 clone 来回切换作业前重跑一次脚本即可；**别把测试用的临时 clone 当主力**——实测它抢走过本机链接。
+> 判断当前软链指向谁：`ls -l ~/.workbuddy/skills/`。
+
 ## 一览
 
 | 技能 | 什么时候会触发 | 管什么 |
