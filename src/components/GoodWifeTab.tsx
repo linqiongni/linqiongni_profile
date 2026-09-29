@@ -24,15 +24,17 @@ interface Season {
 }
 
 const SEASONS: Season[] = [
-  { id: 'film-law', label: 'S1', enLabel: 'Season 1', src: '/film-law/index.html?v=20260929b3' },
-  { id: 'film-law-s2', label: 'S2', enLabel: 'Season 2', src: '/film-law-s2/index.html?v=20260929b3' },
-  { id: 'film-law-s3', label: 'S3', enLabel: 'Season 3', src: '/film-law-s3/index.html?v=20260929b3' },
-  { id: 'film-law-s4', label: 'S4', enLabel: 'Season 4', src: '/film-law-s4/index.html?v=20260929b3' },
+  { id: 'film-law', label: 'S1', enLabel: 'Season 1', src: '/film-law/index.html?v=20260929b4' },
+  { id: 'film-law-s2', label: 'S2', enLabel: 'Season 2', src: '/film-law-s2/index.html?v=20260929b4' },
+  { id: 'film-law-s3', label: 'S3', enLabel: 'Season 3', src: '/film-law-s3/index.html?v=20260929b4' },
+  { id: 'film-law-s4', label: 'S4', enLabel: 'Season 4', src: '/film-law-s4/index.html?v=20260929b4' },
 ];
 
-/** 本季页面视图：与子站 hash 路由一一对应 */
+/**
+ * 本季页面视图（2026-09-29 二轮收敛）：「课程地图」按钮撤掉——默认就是地图，
+ * 再点当前季的季按钮即回到地图；侧边栏只留 术语表 / 方法&版权，沉底排布。
+ */
 const VIEWS: { key: string; label: string; hash: string }[] = [
-  { key: 'map', label: '课程地图', hash: '#/' },
   { key: 'glossary', label: '术语表', hash: '#/glossary' },
   { key: 'about', label: '方法 & 版权', hash: '#/about' },
 ];
@@ -52,20 +54,25 @@ export const GoodWifeTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false
     return () => window.removeEventListener('goodwife-season', onSeason);
   }, []);
 
-  // iframe 实际加载地址：视图编进 hash（课程地图无 hash，保持干净 URL）
-  const activeView = VIEWS.find((v) => v.key === view) ?? VIEWS[0];
+  // iframe 实际加载地址：视图编进 hash；view='map'（默认）无 hash，保持干净 URL
+  const activeView = VIEWS.find((v) => v.key === view);
   const src =
-    current && activeView.key !== 'map' ? `${current.src}${activeView.hash}` : current?.src ?? '';
+    current && activeView ? `${current.src}${activeView.hash}` : current?.src ?? '';
 
   const pickSeason = (id: string) => {
+    // 再点当前季 = 回到该季课程地图（课程地图按钮已撤，这是唯一的返回口）
+    if (id === selected) {
+      setView('map');
+      return;
+    }
     setSelected(id);
     setView('map'); // 换季回到该季课程地图
   };
 
   return (
     <div className="flex w-full flex-col md:flex-row">
-      {/* 左侧栏：上半季列表 + 下半本季页面（视觉对齐兰香如故） */}
-      <aside className="shrink-0 border-b border-[#E8E8E6] p-3 dark:border-[#2C2C2E] md:h-[calc(100vh-128px)] md:w-60 md:overflow-y-auto md:border-b-0 md:border-r">
+      {/* 左侧栏：上半季列表 + 底部本季页面（mt-auto 沉底；视觉对齐兰香如故） */}
+      <aside className="flex shrink-0 flex-col border-b border-[#E8E8E6] p-3 dark:border-[#2C2C2E] md:h-[calc(100vh-128px)] md:w-60 md:overflow-y-auto md:border-b-0 md:border-r">
         <div className="mb-2 px-1 text-[10px] uppercase tracking-[0.18em] text-[#B89F6B]">
           The Good Wife
         </div>
@@ -92,8 +99,8 @@ export const GoodWifeTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false
           })}
         </div>
 
-        {/* 本季页面：接管原子站顶栏的 课程地图 / 术语表 / 方法&版权 */}
-        <div className="mb-2 mt-4 px-1 text-[10px] uppercase tracking-[0.18em] text-[#B89F6B]">
+        {/* 本季页面：接管原子站顶栏的 术语表 / 方法&版权（沉到侧边栏底部） */}
+        <div className="mb-2 mt-8 px-1 text-[10px] uppercase tracking-[0.18em] text-[#B89F6B] md:mt-auto md:pt-6">
           本季页面
         </div>
         <div className="flex gap-1.5 overflow-x-auto md:flex-col md:overflow-visible">
