@@ -28,7 +28,7 @@ import { IpLegalTab } from './components/IpLegalTab';
 
 import { ForeignContractTab } from './components/ForeignContractTab';
 
-import { FilmLawTab } from './components/FilmLawTab';
+import { GoodWifeTab } from './components/GoodWifeTab';
 
 import { FilmLawS2Tab } from './components/FilmLawS2Tab';
 import { FilmLawS3Tab } from './components/FilmLawS3Tab';
@@ -139,15 +139,18 @@ export default function App() {
 
   };
 
-  // 子站（影视法律四季等）内部互跳时，iframe 里的页面会发消息通知主站同步顶部菜单，
-  // 避免「iframe 已切到 S3、子标签条仍高亮 S4」的不同步
+  // 子站（影视法律四季、兰香如故）内部互跳时，iframe 里的页面会发消息通知主站同步菜单。
+  // 傲骨贤妻已是 hub：四季收在 GoodWifeTab 内部左侧栏，切季消息转成 CustomEvent 让 hub
+  // 同步选中态、全局 tab 始终停在 film-law（不再整页换到 film-law-s2/3/4）。
   useEffect(() => {
     const onSiteNav = (e: MessageEvent) => {
       const d = e.data as { type?: string; tab?: string } | null;
       if (!d || d.type !== 'site-tab-navigate' || !d.tab) return;
       const allowed: string[] = ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'];
       if (allowed.indexOf(d.tab) === -1) return;
-      handleSelectTab(d.tab as TabType);
+      if (d.tab !== 'film-law') {
+        window.dispatchEvent(new CustomEvent('goodwife-season', { detail: d.tab }));
+      }
     };
     window.addEventListener('message', onSiteNav);
     return () => window.removeEventListener('message', onSiteNav);
@@ -351,7 +354,7 @@ export default function App() {
 
 
 
-            {activeTab === 'film-law' && <FilmLawTab darkMode={darkMode} />}
+            {activeTab === 'film-law' && <GoodWifeTab darkMode={darkMode} />}
 
 
 
