@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · Episode 4 — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+  .native { margin-bottom:30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 4 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 8 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">内嵌播放器无法在此预览面板播放（沙箱限制）。请用本机浏览器直接打开本文件，或点击下方原生控件 / 打开 EP04_audio.mp3。</div>
+  <div class="native"><audio id="au2" controls src="EP04_audio.mp3" preload="metadata"></audio></div>
+
+  <div class="story">
+<p class="seg" data-i="0" data-start="0.0" data-end="18.528">Episode four is the quiet one — the kind of episode that looks like nothing happens, and is actually where everything is decided. Lanxiang is inside the Lin mansion now, and the question the episode asks is simple and merciless: now that you&#x27;ve gotten in, can you stay without being seen?</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第四集是安静的一集——那种看上去什么都没发生、实则一切都在此定局的集数。兰香如今进了林府，这一集抛出的问题简单而冷酷：你既进了门，能不能不被看穿地，站住脚？</p></details>
+
+<p class="seg" data-i="1" data-start="18.528" data-end="49.752">Qingxiang, Zhao Xingtang&#x27;s sharp-eyed confidante, is put in charge of settling the four new girls. She shows them their quarters and, under cover of ordinary kindness, sizes each of them up. Jialan keeps her head down and her face blank, and Qingxiang reads her as a timid, empty-headed little thing — exactly the mask Jialan wants her to see. Lü Jí&#x27;ér, by contrast, wears her ambition on her sleeve, and Qingxiang marks her at once as the one to watch.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>赵星棠身边那个目光锐利的亲信青葙，奉命安顿四名新来的丫鬟。她领她们认了住处，又借着寻常的关切，把每一个人暗暗打量了个透。嘉兰低着头，面无表情，青葙便把她看成个怯懦、没心眼的傻丫头——这正是嘉兰要她看见的壳子。吕蕺儿则相反，野心写在脸上，青葙一眼就把她标成了要盯紧的那个。</p></details>
+
+<p class="seg" data-i="2" data-start="49.752" data-end="92.232">Rank decides everything. As third-class maids, the four cannot serve the masters directly; they&#x27;re passed down to a second-class girl named Bao Gai, and set to boiling water by the stove — a post that can never be left unmanned. Jialan takes the drudgery without a word. That first night, the watch is meant to be shared, Lü Jí&#x27;ér and Jialan by turns. But Lü Jí&#x27;ér simply falls asleep and wakes at dawn, then, with no trace of shame, blames Jialan for not waking her. Jialan doesn&#x27;t argue, doesn&#x27;t complain. She only lets it pass, the way a person who has survived worse has learned to let things pass.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>等级决定一切。身为三等丫鬟，四人不能近身侍奉主子，被拨给一个叫宝盖的二等丫鬟，派去炉边烧水——这是个离不得人的差事。嘉兰一声不响地受了这等苦役。头一夜，本该两人轮班守着，可吕蕺儿倒头便睡，一觉睡到天亮，再无半分愧色地，怪嘉兰没叫她。嘉兰不争，也不诉苦。只是由它去，像一个熬过更糟光景的人，学会的那样由它去。</p></details>
+
+<p class="seg" data-i="3" data-start="92.232" data-end="122.808">Autumn comes to the garden. Picking chrysanthemums, Lü Jí&#x27;ér covets the basket Jialan has arranged so prettily and simply takes it — then, as the price of her silence, promises to guard Jialan&#x27;s deepest secret: that the quiet, &#x27;stupid&#x27; girl can in fact read and write. It&#x27;s a small bargain, struck over flowers, and Jialan agrees to it the way she agrees to everything now — calculating exactly what it costs her to be known, and deciding the cost is worth paying.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>园子里秋意渐起。采菊花时，吕蕺儿看中了嘉兰摆得齐整好看的那一篮，径自拿了去——又以此要挟，许诺替嘉兰守住她最深的秘密：这个安安静静、“蠢笨”的丫头，其实识字。这是一笔在花丛间达成的小交易，嘉兰答应它，正如她如今答应一切那样——先算清“被人识破”要她付出什么，再判定这代价，值得付。</p></details>
+
+<p class="seg" data-i="4" data-start="122.808" data-end="155.88">Then the episode hands Jialan its first real secret. A maid from the senior wife&#x27;s rooms asks the two girls to deliver a Buddhist scripture to the young master, Lin Jinqi. Lü Jí&#x27;ér, hungry for any excuse to cross his path, snatches the errand. But the sky turns, rain comes, and on a shortcut she crashes into Qingxiang and drops the wrapped book — then, in her hurry, scoops up the wrong one and runs. She doesn&#x27;t know it, but the book she&#x27;s carrying is not a scripture at all.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>接着，这一集把第一个真正的秘密，递到了嘉兰手里。大太太房里的丫鬟，托她们两个给大少爷林锦岐送一本佛经。吕蕺儿恨不得寻个由头接近他，一把抢下了这差事。可天色骤变，落下雨来，她抄近路时撞上了青葙，怀里的书掉在地上——慌乱中，她捞起一本错的便跑。她不知道，自己手里捧着的，根本不是佛经。</p></details>
+
+<p class="seg" data-i="5" data-start="155.88" data-end="195.216">Jialan opens the book to check it — and freezes. Inside the scripture&#x27;s covers, where prayers should be, is a ledger. Names, sums, accounts that don&#x27;t belong in a holy text. Her mind flies back to the Da Zhanggui and his flattened books, and the shape of it clicks into place: this is Zhao Xingtang&#x27;s private money — the usury, the lending, the quietly growing fortune behind the lady&#x27;s smiling face. Jialan closes the book and tells Lü Jí&#x27;ér to rush it to the master at once. But Lü Jí&#x27;ér, giddy at the thought of standing before Lin Jinqi, only goes back to her room to primp.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰翻开书想看个究竟——随即僵住。佛经的封皮之内，本该是经文的所在，却是一本账。人名、数目、不该出现在圣洁书册里的账。她的思绪一下子飞回大掌柜与那本被抹平的账册，整件事便咔哒一声，落了位：这是赵星棠的私房钱——是印子钱，是放贷，是那位主母含笑面容背后，悄悄涨起来的家业。嘉兰合上书，催吕蕺儿立刻送呈主子。可吕蕺儿满心想着能站到林锦岐跟前，只回房梳妆去了。</p></details>
+
+<p class="seg" data-i="6" data-start="195.216" data-end="231.552">Qingxiang, back in the senior wife&#x27;s rooms, realizes at once that the wrong book was taken. Zhao Xingtang sweeps to the girls&#x27; quarters with her people. She finds the scripture exactly where it was left, untouched, and reads the two of them in a glance: they cannot read a word. The danger she feared dissolves — there is no one here who could have understood what they held. So she says nothing. She simply takes the book and walks away, leaving Jialan and Lü Jí&#x27;ér none the wiser, and the secret safe exactly where Zhao Xingtang means it to stay.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>青葙回到大太太房中，立刻发觉拿错了书。赵星棠带着人，一路杀到丫鬟住处。她看见佛经原样搁着，动也未动，一眼便把两人看了个透：她们一个字也不认得。她所惧的危险，就此消散——这里没人能读懂自己捧过什么。于是她一言不发。只是取了书，转身便走，留下嘉兰与吕蕺儿懵然不知，而那桩秘密，仍安安稳稳地，停在赵星棠要它停的地方。</p></details>
+
+<p class="seg" data-i="7" data-start="231.552" data-end="256.008">That&#x27;s episode four. It&#x27;s the episode where you learn that in this house, the most dangerous thing you can do is understand what you&#x27;re looking at — and the safest thing is to make everyone believe you don&#x27;t. Jialan has read the ledger and pretended she cannot. The board is set, the secrets are buried, and the girl who sees everything has, once again, chosen to be unseen.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那就是第四集。这一集教你明白：在这座宅子里，最危险的事，是看懂你眼前的东西；最安全的，是让所有人都以为你不懂。嘉兰读过那本账，却装作不识。棋盘摆定，秘密埋好，而那个看穿一切的姑娘，又一次，选了隐身。</p></details>
+
+  </div>
+
+  <footer>兰香如故 · 第 4 集有声剧集介绍 · 音频由母语英语嗓音合成</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP04_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 18.528], [18.528, 49.752], [49.752, 92.232], [92.232, 122.808], [122.808, 155.88], [155.88, 195.216], [195.216, 231.552], [231.552, 256.008]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
