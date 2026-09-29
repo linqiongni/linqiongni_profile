@@ -181,3 +181,9 @@
 | 2026-09-29 | **技能层拉进 git**：新增仓库 `skills/`（六份本仓库专属技能，唯一真源），本机改软链；`setup-device.sh` 加「接管技能」步骤，新设备仍是一条命令 | #26 |
 | 2026-09-29 | 第二台机器接入走通（开场白第三节流程）；修掉钥匙串里 gitee.com 的错误凭据（GitHub OAuth 串占位），Gitee 令牌已正确入钥匙串、双远端实测连通 | — |
 | 2026-09-29 | 新沙箱接手：克隆（Gitee 镜像，GitHub TLS 不通）＋装自动同步 hook（6/6 自检过）＋读 CONTRACT/README/开场白/OPEN/MEMORY；把「兰香如故」英文剧集介绍项目沉淀进 MEMORY.md + 今日日志 | — |
+| 2026-09-29 | 兰香如故「跨设备交接包」落地本地整理：`EP01.html` 有声成片 + `EP01_audio.mp3`(2.3M/407.5s) + `跨设备交接包.md` 三件落入仓库 `兰香如故/`；修掉 `README.md`/两份底稿旧「文末翻译、无音频」约定与 `EP01.html` 实际「逐段折叠」不符的矛盾（已重写 README 以 EP01.html 为准）；托管决策覆盖：音频随 GitHub Pages 同目录公开，推翻交接包「纯本地不进 git」 | — |
+| 2026-09-29 | 兰香如故接入站点：新增 `lanxiang` tab（hub 模式，剧集列表收在 tab 内、全局菜单仅一项），归入「影视法律」分组下新建 section「兰香如故」；`public/lanxiang/EP01.html`+mp3 就位；改 types/navConfig/App/LanxiangTab 四处，`npx tsc --noEmit` 通过（本地禁 build，待 `npm run dev` 或 CI 看效果） | — |
+| 2026-09-29 | 兰香如故打磨：分组「影视法律」改名为「影视 · 英语」(Film & English)；`EP01.html` 改为自包含主题版——`data-theme` 驱动 CSS 变量（浅态米白/香槟金、暗态深海军蓝/金/米白，对齐主站视觉口径），嵌入态背景透明透出主站固定鱼影、明暗随主站 `ThemeIframe` 经 postMessage 下发；两份 EP01（站点副本+真源）同步改，`npx tsc --noEmit` 通过 | — |
+| 2026-09-29 | 兰香如故修字体+玻璃化：EP01 英文字体对齐主站（`--sans` 无衬线 SF Pro/PingFang、`--serif` 衬线 Georgia，弃用 macOS 独占的 Iowan/Palatino 解决跨设备跳字）；嵌入态把播放器卡片 `.player`、引言 `blockquote.seg` 清透明（玻璃化，对齐 film-law 金本），整页透出主站固定背景+鱼影——修掉「字体不统一 / 背景鱼影没生效」两条 | — |
+| 2026-09-29 | 兰香如故补跨 iframe 鼠标联动+破缓存：EP01 补进全站子站标配的 aquatic 金本脚本（嵌入态转发 `aquatic-pointer` 给主站→鱼群聚拢/涟漪跨 iframe 连续；独立开自动载 `/theme-kit/profile-bg.js` 自绘同参鱼影，`__aqKitV4` 防重入）；`LanxiangTab` iframe src 加 `?v=20260929b` 破浏览器缓存（用户「都没改」体感=缓存旧版 HTML）；脚本 `node --check` 过、`tsc` 过 | — |
+| 2026-09-29 | 兰香如故 EP02 重排上线（本地未提交）：原 `EP02_英文剧集介绍.md` 是「全文末尾翻译」旧格式，拆成 EP01 同款**逐段折叠** HTML（`public/lanxiang/EP02.html`+真源 `兰香如故/EP02.html`）；英文 14 段与中文逐段一一对应、可点击展开译文；**音频缺 mp3** → `HAS_AUDIO=false` 占位，播放键/段落点击提示「放入 EP02_audio.mp3 发声」，OFF 偏移表留空待音频生成后填；已接 `LanxiangTab` EPISODES、aquatic 金本、`node --check`+`tsc` 过。EP03–05 无原文无音频、未做 | — |

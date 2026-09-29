@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · Episode 4 — Audio Story</title>
+<script>
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); }
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 4 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文即可播放该段配音；下方「🇨🇳 中文翻译」展开对应译文</div>
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track" id="track">English narration · 逐段母语配音</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err" style="display:none"></div>
+  <div class="story">
+<blockquote class="seg" data-i="0">Let me tell you about episode four, because episode three let two people brush past each other unseeing — and episode four is what happens when someone with reason to hate the Shen name starts, very slowly, to wonder who the quiet girl in the curio shop really is.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第四集吧，因为第三集让两个人擦肩而过、互不相识——而第四集，是一个有理由恨沈家的人，如何极缓慢地，开始疑心那字画铺里安静的姑娘究竟是谁。</p></details>
+<p class="seg" data-i="1">The Zhao clan's question does not die. A clerk is dispatched, informal and smiling, to 'browse' the Rongbao Pavilion — and to watch. He notes the girl's hands (too fine for a bonded servant's daughter), her reading (she corrects a character on a label without thinking), and the way Old Master Lin's clerk defers to her. He reports back in a sentence: 'That one is not what she pretends to be.'</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>赵家的问题没有过去。一个清客被派来，客客气气地'逛'荣宝阁——也是来盯人的。他记下姑娘的手（太细，不似奴籍帮工之女）、她的识字（想也不想便改了标签上一个字）、以及林老太爷的掌柜对她的退让。他回去一句话：'那位，不是她装的那个人。'</p></details>
+<p class="seg" data-i="2">Lin Jinqi hears the report and feels, for the first time, something like interest rather than restlessness. He does not connect her to the Shen family — that name is a closed door in his mind, boarded shut by his father's displeasure. He connects her only to the feeling at the rail, the slope of a shoulder, the unhurried hands. He begins, careless at first, to find reasons to be near the shop.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林锦岐听了回报，头一回生出的不是躁动，而是兴趣。他没把她和沈家连起来——那个姓在他心里是一扇钉死的门，被父亲的恼怒封着。他只把她和栏杆处的感觉、肩头的斜度、那双不慌不忙的手连在一起。他开始，起先漫不经心，找起靠近那铺子的由头。</p></details>
+<p class="seg" data-i="3">Jialan feels him before she sees him. A war hero does not move like a customer; he carries the particular stillness of a man who has stood in open ground and waited for arrows. She glances up once, and something in her goes very cold and very still — not recognition of his face, but recognition of danger wearing a familiar shape. She has spent her life reading rooms. This room, suddenly, has a wolf in it.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰是未及见他便先觉出他。英雄走路不似顾客；他带着一种特定静气，是曾在空旷之地候箭的男人才有。她抬头一瞥，身子某处变得极冷极静——不是认出了他的脸，而是认出了披着熟悉形状的危险。她一辈子读人脸色。这间屋子，忽然有了狼。</p></details>
+<p class="seg" data-i="4">She tells her father she is unwell and stays home two days. Xu Wanquan asks no questions; he has questions enough of his own. On the third day she returns, and the young master is gone from the street — but the Zhao clerk is back, and this time he is not browsing. He is asking the Da Zhanggui, too loudly, where the girl learned to read.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她告诉父亲身子不适，在家歇了两日。许万全没问——他自己有的是问号。第三日她回去，街上的少爷是不见了——可赵家的清客又来了，这回不是逛。他问得太大声：这姑娘的字，是在哪儿念的。</p></details>
+<p class="seg" data-i="5">The Da Zhanggui, wary now, answers lightly and turns away. But the question has been asked in a voice meant to be overheard, and Jialan understands the shape of the trap: not 'who is she' yet, but 'how does a bonded servant's daughter read law-character labels.' The answer, if they dig, leads to a dead academician and a forbidden name. She sleeps that night with the talisman her mother left her pressed to her palm.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>大掌柜如今警觉，淡淡答了，转身走开。可这问题是用存心让人听见的嗓门问的，嘉兰看清了陷阱的形状：还不是'她是谁'，而是'一个奴籍帮工的女儿，怎认得律法字样的标签'。这答案若被刨，会引向一位死去的大学士，和一个被禁的姓。那夜她睡着时，母亲留下的符按在掌心。</p></details>
+<p class="seg" data-i="6">Episode four's turn comes from an unexpected hand. Old Master Lin, pleased with the shop's fortunes, announces a small contest: his clerks may each submit one item from the storeroom they believe undervalued, and the sharpest eye wins a prize. The Da Zhanggui, to flatter his master, puts Jialan's name forward as 'the girl with the good eye.' It is meant as a compliment. It is, in fact, a lantern held up to her face.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第四集的转折，出人意料地来自一只手。林老太爷见铺子兴旺，宣布一个小比试：手下人各从库房挑一件自认被低估的物事，眼力最利者得赏。大掌柜为讨好东家，把嘉兰的名字报上去，称'那丫头眼力好'。本意是夸。实则，是把照着她脸的一盏灯。</p></details>
+<p class="seg" data-i="7">Jialan submits a humble inkstone, mislabeled for a century, whose underside bears a reign-mark no one bothered to turn it over for. She says, in front of the old master, only: 'The stone remembers what the label forgets.' Lin Jinqi is present for the contest — his father insisted — and for the first time he hears her voice. It does something to him he cannot account for. The voice is low, careful, and oddly formal, as if shaped by books.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰交上一块朴素的砚，被误标了一个世纪，底下有方年款，无人肯翻过来看。她当着老太爷只说：'石记得标签忘的事。'林锦岐在座——他父亲坚持要他来——头一回听见她说话。那声音在他心里搅起无法解释的东西。低，仔细，且奇异地文雅，仿佛被书塑过形。</p></details>
+<p class="seg" data-i="8">That night the Zhao clerk writes his second note: the girl speaks like a scholar's daughter, not a servant's. The Zhao clan, patient and thorough, begins to pull the thread in earnest. They do not yet know the name Shen. They only know a false bottom is waiting to be knocked out — and that the young master, who should be theirs, keeps finding his way to a curio shop.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那夜赵家清客写下第二张便笺：这姑娘说话像学士之女，不像奴婢。赵家耐性而周全，开始认真抽那根线。他们尚不知沈这个姓。只知道一处假底，等着被人敲开——而本该是赵家的人，总寻路去一家字画铺。</p></details>
+<p class="seg" data-i="9">Jialan, for her part, has made a decision. She will not run. Running is what killed her mother, she thinks — the flight, the borrowed name, the life lived three streets from the people who wanted her dead. She will stay, and she will be careful, and if they come for her she will meet them with the only weapon she has ever owned: a clear eye and a quiet tongue.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰这边，已下了决断。她不走。逃，是害死母亲的的东西，她想——那逃亡、那借来的名、那活在想她死的人三条街外的日子。她留下，她小心，若他们来寻她，她以平生唯一的兵器迎他们：一双清眼，一条静舌。</p></details>
+<blockquote class="seg" data-i="10">Episode four ends where episode three did — with two people uncaught, unconfessed, a thread pulled almost to the snapping point and held, for one more breath, by nothing but the show's mercy. But this time Jinqi has heard her voice. And Jialan has felt the wolf. Neither will forget.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第四集收在第三集的地方——两个人仍未被擒、未坦白，一根线被拉到几乎崩断，又凭剧集的慈悲，为多喘一口气而悬着。但这一回，锦岐听见了她的声音。嘉兰也觉出了那匹狼。谁都不会忘。</p></details>  </div>
+  <footer>兰香如故 · 第 4 集有声剧集介绍 · 逐段中英对照（母语英语配音）</footer>
+</div>
+<audio id="au" preload="metadata"></audio>
+<script>
+  const HAS_AUDIO = true;
+  const SEG = ['EP04_seg_01.m4a','EP04_seg_02.m4a','EP04_seg_03.m4a','EP04_seg_04.m4a','EP04_seg_05.m4a','EP04_seg_06.m4a','EP04_seg_07.m4a','EP04_seg_08.m4a','EP04_seg_09.m4a','EP04_seg_10.m4a','EP04_seg_11.m4a'];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err'),
+        track=document.getElementById('track');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1, playAll=false;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>s.classList.remove('active','paused'));
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    if(au.src.indexOf(SEG[i])===-1) au.src=SEG[i];
+    track.textContent='EP seg '+(i+1)+' / '+SEG.length;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>{playAll=false;playSeg(+s.dataset.i);}));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{ if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime);} });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{
+    if(playAll && active < segs.length-1){ playSeg(active+1); }
+    else { btn.textContent='▶'; setActive(-1,false); playAll=false; track.textContent='English narration · 逐段母语配音'; }
+  });
+  au.addEventListener('error',()=>{ err.textContent='音频加载失败：请确认 EP4_seg_XX.m4a 与本页同目录'; err.style.display='block'; });
+  btn.onclick=()=>{
+    if(au.paused){ if(active<0){ playAll=true; playSeg(0); } else { au.play(); } }
+    else { au.pause(); }
+  };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

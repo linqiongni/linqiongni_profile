@@ -107,11 +107,11 @@ export const NAV_GROUPS: NavGroup[] = [
 
     id: 'film',
 
-    label: '影视法律',
+    label: '影视 · 英语',
 
-    enLabel: 'Film & Law',
+    enLabel: 'Film & English',
 
-    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'english'],
+    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english'],
 
     sections: [
 
@@ -124,6 +124,18 @@ export const NAV_GROUPS: NavGroup[] = [
         enLabel: 'The Good Wife',
 
         tabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4'],
+
+      },
+
+      {
+
+        id: 'lanxiang',
+
+        label: '兰香如故',
+
+        enLabel: 'The Fragrance of Orchids',
+
+        tabs: ['lanxiang'],
 
       },
 
@@ -187,6 +199,8 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   arbitration: { label: '商事仲裁', enLabel: 'Arbitration' },
   'family-law': { label: '婚姻家事与遗产继承', enLabel: 'Family & Inheritance' },
   'english': { label: 'ENGLISH', enLabel: 'English' },
+
+  'lanxiang': { label: '兰香如故', enLabel: 'The Fragrance of Orchids' },
 
 };
 

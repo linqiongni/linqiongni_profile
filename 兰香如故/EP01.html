@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · Episode 1 — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 1 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 11 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP01_audio.mp3）重试。</div>
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="8.472">Let me tell you about the first episode, because it doesn't ease you in — it grabs you by the collar and drops you straight into the deep end.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第一集吧，因为它根本不跟你客气——它一把攥住你的衣领，直接把你拖进深水区。</p></details>
+
+<p class="seg" data-i="1" data-start="8.472" data-end="77.256">The story opens in bright, ordinary happiness. Shen Jialan, eldest granddaughter of one of the empire's most respected scholarly families, is walking home from the temple with her mother, Lady Cui. They'd been burning incense and praying for the family — the kind of small, contented ritual you do when life is good and the future feels safe. On the road they come across a ragged couple half-carrying, half-dragging a feverish child. It's Xu Wanquan and his wife, household slaves of the Lin family, and their daughter Lanxiang is burning with sickness. They've been turned away at every door — no money, and no one wants a sick slave and her family cluttering up the place; their masters threw them out the moment the girl fell ill. Jialan, who has never once wanted for anything, looks at the shivering child and does the simplest thing in the world: she presses ten taels of silver into the father's hand and slips her own spare cloak around Lanxiang's shoulders. That's all. A small mercy from a girl who has no idea how much that cloak is going to cost someone to repay.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>故事的开场是明亮而寻常的幸福。沈嘉兰，当朝最显赫的书香世家沈家的嫡长孙女，正和母亲崔氏从庙里回来。她们方才上香祈福——那种日子安稳、觉得未来可期时才会做的小小心愿。路上，她们撞见一对衣衫褴褛的夫妻，半抱着、半拖着一个发高烧的孩子。那是许万全和他的妻子，林府的家奴，他们的女儿兰香烧得滚烫。家家闭门不见——没钱，也没人愿意收留一个病怏怏的丫头连同她一家子碍眼；主家早在女孩病倒时就将他们赶了出去。嘉兰从不曾缺过什么，她望着那瑟瑟发抖的孩子，做了件再自然不过的事：把十两银子塞进父亲手里，又把自己备用的斗篷裹在兰香肩上。仅此而已。一个娇养女孩随手的善意，她不知道，这件斗篷日后要被人拿命来还。</p></details>
+
+<p class="seg" data-i="2" data-start="77.256" data-end="145.872">Jialan has just turned fifteen — of marriageable age — and she's been promised since childhood to Lin Jinqi, grandson of the Minister of Personnel. They've never met. Her mother, meaning to settle the match properly, sends word to the Lin family for a quiet tea. And this is where the ground gives way. The Lin family never arrives. What shows up instead is a letter — a letter breaking the engagement, cold and final. The reason has nothing to do with romance. Years earlier, the grandfathers of both clans had urged the now-deposed emperor to strip the regional princes of their power. But the princes won. One of them sits on the throne now, and he is settling old scores with everyone who backed the losing side. The Lin family reads the room, denounces the fallen emperor, resigns their posts, and quietly retreats to their seat in Jinling. The Shen patriarch — Jialan's grandfather — refuses to bend. And that refusal is a death sentence for everyone who carries his name.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰刚满十五，到了及笄之年，自幼便许给了吏部尚书的孙儿林锦岐。两人从未谋面。母亲想着把这门亲事好好定下，便遣人去林家，约一场清净的茶叙。而地面，就是在这里塌的。林家的人始终没来。送到的，是一封信——一封退婚的书函，冷而决绝。原因与情爱无关。多年前，两家的祖父都曾劝谏那位如今已被废的皇帝，削去藩王之权。可藩王赢了。其中一位如今坐在龙椅上，正逐一清算当年站错队的人。林家审时度势，声讨废帝失德，递了辞呈，悄无声息地退回金陵本家。沈家的老太爷——嘉兰的祖父——不肯低头。而这不肯，便是满门性命的判词。</p></details>
+
+<p class="seg" data-i="3" data-start="145.872" data-end="177.48">The purge comes fast. The Shen men are sentenced to die; the women are consigned to the Jiaofangsi. You have to understand what that word means: officially it's a bureau of music and entertainment, but in practice it's a state-run brothel — the single deepest disgrace the court can visit on the women of an honourable house. The moment Lady Cui understands where they're being taken, the decision is made almost before it's spoken. They will not go. They would rather die.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>清算来得很快。沈家的男丁尽数问斩，女眷则被发配教坊司。你得明白这两个字意味着什么：名义上是个礼乐教坊，实际上，那是官办的青楼——朝廷能加到清白人家女眷身上最深的耻辱。崔氏一旦明白她们将被带去何处，那个决定几乎在话音落下之前便已做成。她们不去。她们宁可死。</p></details>
+
+<p class="seg" data-i="4" data-start="177.48" data-end="236.808">And here is the part that wrecks people. Behind those walls, the Shen women walk toward death not with screams but with a terrible, quiet grace. The Old Madam, the family matriarch, has poison, and she gives it first to the youngest. Ten-year-old Jialian, Jialan's little sister, takes it without a flicker. She looks at the women who raised her and says, almost lightly, "Grandmother, Mother, Sister — I'll go on ahead. Down below, we'll eat peach-blossom cakes together again." And then she's gone. The other daughters-in-law tear strips from their own dresses, knot them to the beams, and hang themselves, one after another. There's nothing to stand on, so the Old Madam kneels, and lets them step on her shoulders to reach the noose. "I send you on your way," she tells them. "In this life the Shen family wronged you. In the next, we will make it right."</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而这一段，是最让人心碎的。在那道围墙之内，沈家的女眷走向死亡，没有哭喊，唯有一种令人心悸的、静默的体面。老夫人，一族的主母，备着毒药，她先递给了最年幼的那个。十岁的嘉莲，嘉兰的小妹，面不改色地接过去。她望着将她养大的女人们，近乎轻快地开口："祖母、母亲、姐姐，我先走一步。到了地下，咱们再一起吃桃花酥。"然后，她便去了。其余的儿媳们扯下自己衣裙上的布条，系上房梁，一个接一个悬颈自尽。没有垫脚的凳子，老夫人便跪下，让她们踩着自己的肩膀去够那根绳。"我送你们上路，"她说，"这辈子是沈家对不住你们，下辈子，再还。"</p></details>
+
+<p class="seg" data-i="5" data-start="236.808" data-end="269.88">Lady Cui, as the eldest daughter-in-law, sees the Old Madam off last. Then she turns to her own daughter. To spare Jialan the disgrace of the Jiaofangsi, she takes up a length of white silk and strangles her own child with her own hands — meaning to let her die with dignity rather than shame. But when she checks for breath, Jialan has only fainted. She's still alive. And Cui, who had found the courage to kill her out of love, cannot find it in her to do it twice.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>崔氏作为长媳，最后送走了老夫人。然后她转向自己的女儿。为免嘉兰受教坊司之辱，她取过一截白绫，亲手扼住亲生女儿的脖颈——是想让她死得体面，而非蒙羞。可当她去探那口鼻间气息时，嘉兰不过是昏了过去。她还有气。而崔氏，方才为了爱鼓起赴死的勇气扼女的人，却再没有勇气下手第二次。</p></details>
+
+<p class="seg" data-i="6" data-start="269.88" data-end="310.176">And this is where the thread from the very first scene pulls tight. Xu Wanquan and his wife are there — set to labour in the Jiaofangsi, and their own daughter, the little Lanxiang Jialan clothed on the road, has just died of her fever. They remember the silver, the cloak, the warmth of a stranger who owed them nothing. So they do the only thing they can: they lay their dead daughter where Jialan lies, and carry the living girl away into the dark. When the officials come to count the bodies, they're stunned by the Shen women's honour, and they close the matter. Lady Cui takes her own life. The swap is complete.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而这里，第一幕埋下的线，终于收紧。许万全夫妇就在当场——他们被派到教坊司做苦役，而他们自己的女儿，那个路上被嘉兰披过斗篷的小兰香，刚刚病死。他们记着那十两银子、那件斗篷，记着一个毫无亏欠的陌生人给过的暖意。于是他们做了唯一能做的事：把死去的女儿放在嘉兰方才躺过的地方，将活着的女孩抱进黑暗里带走。当官差前来清点尸身，他们为沈家女眷的刚烈所震，便将此事了结。崔氏自尽。这场掉包，至此完成。</p></details>
+
+<p class="seg" data-i="7" data-start="310.176" data-end="346.272">Jialan wakes on a river boat, gasping, the world gone to ash. Her first thought is to throw herself into the water and be done. But Lanxiang's mother catches her — if they're found, all of them die, and the dead would have died for nothing. Then Lanxiang's father presses something into her hand: a yellow talisman, the very one Jialan used to pray for her parents. Her mother had entrusted it to them before the end. And on it, in a hand shaking with the last of her strength, Lady Cui had bitten her own finger and written a single word in blood.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>嘉兰在一艘小船上醒来，大口喘气，天地已成灰烬。她第一个念头，是跳进江里，一了百了。可兰香的母亲拦住了她——一旦事发，他们全都得死，那死去的人的牺牲便毫无意义。接着，兰香的父亲将一物塞进她手心：一张黄表纸，正是嘉兰用来为父母祈福的那张。母亲在终局之前，将它托付给了他们。而纸上，是崔氏以最后一丝力气、咬破指尖写下的一个血字。</p></details>
+
+<blockquote class="seg live" data-i="8" data-start="346.272" data-end="348.0"><strong>Live.</strong></blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p><strong>活。</strong></p></details>
+
+<p class="seg" data-i="9" data-start="348.0" data-end="374.448">For a girl who watched her whole family choose death over dishonour, living is the cruelest thing anyone could ask of her. But it's the only inheritance left: a borrowed name, a dead girl's face, and one bloodstained word telling her to go on. From this moment, the granddaughter of a grand academician will walk the world as Xu Lanxiang, a third-class maid — and the long, slow work of surviving will begin.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>对于一个眼睁睁看着全家以死明志、不肯受辱的女孩来说，活下去，是旁人能强加于她的最残忍的事。可这也是她仅剩的遗产：一个借来的名字，一张死去的女孩的脸，和一个以血写就、命她继续走下去的字。从这一刻起，大学士府的嫡长孙女，将以"三等丫鬟许兰香"之名行走人间——而那漫长、迟缓的、关于"活下去"的功课，才刚刚开始。</p></details>
+
+<p class="seg" data-i="10" data-start="374.448" data-end="407.496">Somewhere in those opening scenes the show plants seeds it doesn't bother to explain — a painting called <em>Cold Mountain</em> hanging in the grandfather's study, an old tale told aloud about a loyal man who backed the wrong side and was destroyed for it, a household library stuffed with law books because her grandfather was Minister of Rites and her father the realm's chief judge. The episode just buries them and trusts you to come back and watch them bloom. That's episode one. It doesn't explain. It just begins.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>在那些开场画面里，剧集悄悄埋下了它懒得解释的伏笔——祖父书房里挂着一幅《寒山图》，一段被人大声讲出的旧事，说的是一个忠心耿耿、却站错了队、终被碾碎的人；还有满屋的律法藏书，因她的祖父是礼部尚书，父亲是天下掌刑之官。这一集只是把它们埋下，然后笃定地等你回来，看它们开花。这就是第一集。它不解释。它只是，开始了。</p></details>
+
+  </div>
+
+  <footer>兰香如故 · 第 1 集有声剧集介绍 · 音频由母语英语嗓音合成</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP01_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 8.472], [8.472, 77.256], [77.256, 145.872], [145.872, 177.48], [177.48, 236.808], [236.808, 269.88], [269.88, 310.176], [310.176, 346.272], [346.272, 348.0], [348.0, 374.448], [374.448, 407.496]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }      // 再点一次 → 暂停
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 鱼影只有一个真相源（对齐 film-law-s3 金本 2026-09-28）：
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站 AquaticLuxuryBackground（9 条月光鱼）
+   在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续。
+   独立打开（新窗口/手机全屏）时动态加载 theme-kit/profile-bg.js 自绘同参鱼影。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
