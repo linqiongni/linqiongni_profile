@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 13 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 8 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP13_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="60.43">Let me tell you about episode thirteen, because this is the episode where a maid walks alone into a wolf&#x27;s house and comes out with the wolf&#x27;s name — and nearly does not come out at all. Jiugao and Nankè report back to the Lin residence, and the news is half a victory. Jiugao, still in his peddler&#x27;s disguise, has charmed a neighbor woman — Lady Li, wife to one of the workshop&#x27;s hired hands — into talking, and from her he has learned the shape of the den: a certain Luo household, its menservants hard and trained, a vicious dog at the gate, the layout mapped but the door itself never crossed. He has the outside of the place in his head and the inside still a mystery. Lin Jinqi, wary now that the case touches the capital&#x27;s officials, refuses to drag his friend at the Court of Judicature into it; he will solve this himself, quietly, before it becomes a matter of ministers. And the only way in, he sees, is a face the Luo household will not fear.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第十三集，因为这一集，是一个丫鬟独走进狼的宅、带出狼的名姓——而几乎没出来。九皋与南客回林府复命，消息是半胜。九皋仍着货郎装，哄得一个邻妇——李四娘子，作坊雇工之妻——说了话，从她那里摸出了那窝的形状：某个罗家，家丁精悍、门上一只恶犬，地形摸熟了、门却始终没跨过。他脑子里有了那处的外壳，内里仍是谜。林锦岐如今警觉此案牵到京官，不肯把刑部好友拖下水；他要自己悄悄解，趁它还没成大臣的事。而唯一的门路，他看出，是一张罗家不會怕的脸。</p></details>
+
+<p class="seg" data-i="1" data-start="60.43" data-end="117.0">The face is Lanxiang&#x27;s. She volunteers — and the word is chosen, because no one orders a maid into a den of hard men and a dog. She proposes to disguise herself as a woman seeking work, the widow of a peddler, come to the city to earn the road home after her husband died — a story plausible enough that a household needing hands might let her through the gate to sweep or sort. Lin Jinqi hesitates; a clever maid is one thing, a maid walking into a knife&#x27;s reach is another. But he has no better door, and he reads in her the same cold calculus she used on the flower: she is not offering courage, she is offering a calculated risk with the odds tilted by her own plainness. He agrees, with two conditions — she carries a hidden needle, and he and his men will be close, though not so close they are seen. The girl who was a pair of eyes becomes, for one afternoon, the bait.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那张脸，是兰香的。她请缨——这词是拣的，因没人会命令一个丫鬟走进硬汉与狗的窝。她拟扮一个寻活计的妇人，货郎的寡妻，丈夫死后来城投亲、凑盘缠回乡——这说法够真，一个要人手的宅或许会放她进门扫洒分拣。林锦岐迟疑；聪明的丫鬟是一回事，走进刀距的丫鬟是另一回事。可他没有更好的门，而他从她身上读出她对那花用的同一笔冷账：她不是献勇，是献一道被她自己&quot;平实&quot;倾斜了概率的算计。他应了，两个前提——她带一枚暗针，他与手下就近、却不近到被看见。那双&quot;眼&quot;的姑娘，有一下午，做了饵。</p></details>
+
+<p class="seg" data-i="2" data-start="117.0" data-end="167.45">She enters the Luo household as the widow she invented, and the gate opens exactly as she predicted — a household with secrets still needs brooms, and a plain woman asking for work is no threat. She is set to sort cotton in a back room, and there, with a steadiness that would shame a soldier, she slips a cloth soaked in the sleep herb into the dog&#x27;s water bowl when no one watches. The beast drinks, sways, and settles — the first seam in the den&#x27;s armor opened by a hand that looks like a servant&#x27;s. Then she does the bolder thing: she takes a basket of the stolen cotton and calls, as if to a buyer, toward the inner rooms, offering the fine padded cloth for sale. It is a lure of her own making, and it works — a man&#x27;s voice answers from within, and a figure steps into the light to look at what she sells.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她以自造的寡妇进了罗家，门开得恰如她料——有秘密的宅仍要扫帚，而一个求活的平实妇人，不是威胁。她被派在里屋分拣棉花，而那里，以连兵都该愧的镇定，她趁无人，把浸过迷药的布投入狗碗。那兽饮下、晃、伏——窝的第一道甲，被一只像仆人的手掀开。而后她做更冒险的：她提一篮偷来的棉，朝内室像唤买主般喊，售那好衬的布。这是她自设的饵，而它成了——里头应一声男的，一个身影步入光里，看她卖的。</p></details>
+
+<p class="seg" data-i="3" data-start="167.45" data-end="221.79">And Lanxiang sees the face she was sent to find. It is Lu Dalang — the merchant who supplied the coats, the man Jiugao could not run down, the thread&#x27;s end. She knows him at once from the description: the narrow eyes, the ease of a man who has killed inconvenience by paying for it. She has what Lin Jinqi needs. But the dog, though asleep, has betrayed her by its silence; Lu Dalang, glancing down, sees the beast not stirring, and in the same instant sees the woman who should be sorting cotton watching him with a recognition no servant ought to hold. He understands. He crosses the room in two strides, one arm around her throat, a knife at her side, and he hisses the question every conspirator asks when caught: who sent you, and what do they know. The bait has been taken, and the hook is in her own neck.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而兰香看见要找的那张脸。是卢大郎——供袄的商，九皋寻不到的人，线的末端。她由形容一眼认出：窄眼，一个以付钱消去不便的人的从容。她得了林锦岐要的。可那狗虽睡，却以它的静出卖了她；卢大郎垂眼，见兽不动，同一刻，见那本该分拣棉的妇人，以仆人不该有的认，望着他。他懂了。两步跨过屋，一条臂锁她喉、一刀抵她肋，吐出每个被捉的密谋者都问的话：谁派你来、他们知多少。饵被咬了，钩在她自己颈上。</p></details>
+
+<p class="seg" data-i="4" data-start="221.79" data-end="282.05">But the men who were close were close enough. Before Lu Dalang can drag her deeper, Lin Jinqi and Jiugao and Nankè are through the gate the sleeping dog no longer guards, and the room fills with the people he did not believe were coming. In the scramble Lanxiang does the only thing her pinned hands allow: she drives the hidden needle into Lu Dalang&#x27;s body and twists free of his grip in the same motion. She does not fight — she escapes, the way a maid who has spent the season learning which door matters most simply steps out of the one now open. Lu Dalang, wounded and cornered, does not surrender. He turns the knife on himself, opening his belly in the old warrior&#x27;s end, the cut laid sideways — and in that sideways cut, and in the thick callus on his toes, Lin Qi reads what the man&#x27;s death was meant to bury: this was no merchant. The dead man&#x27;s feet are those of a sea soldier, a wokou, a Japanese raider, and the rotten coats were never only theft.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可那些&quot;就近&quot;的人，近得够了。卢大朗还没把她拖深，林锦岐、九皋、南客已穿过睡狗不再守的门，屋子里满了他不信会来的人。乱中兰香只做被锁的手能做的：她把暗针扎进卢大郎身、同一势扭出他的擒。她不战——她逃，像一个用一季学懂&quot;哪扇门要紧&quot;的丫鬟，径直踏出那扇此刻开的门。卢大郎伤而穷途，不降。他反刀向己，开了腹——老卒的终，刀横切——而那横切里、与他趾上厚茧里，林锦岐读出这人死要埋的：这不是商。死人的脚，是水兵的脚，是倭寇的脚；而那烂袄，从不只是窃。</p></details>
+
+<p class="seg" data-i="5" data-start="282.05" data-end="335.19">The proof is read by a friend. Liu Xiaochuan, the commander of the Capital Gendarmerie and Lin Jinqi&#x27;s comrade, comes to view the body, and it is he who confirms what the wound and the callus already said: the dead man is a wokou, and the padded cotton was a cover for moving forbidden goods — the same route, the same men, who have been smuggling military stores and seizing old women off the riverbanks. Lin Jinqi, cleared at last of the thief&#x27;s charge, now holds something far heavier: proof that the capital&#x27;s own quartermasters are in league with raiders, and that the coats which killed his soldiers were a move in a game larger than a household&#x27;s shame. He looks at Lanxiang, who sits pale and shaking in the outer room, and files her under the final heading — not eyes, not hand, not even mind, but the person who, when the door opened, walked through it.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>证据由一个朋友读。兵马司指挥使刘晓川，林锦岐的战友，来验尸，是他确认了伤口与茧已说的：死人是倭寇，而那衬棉是运禁物的遮掩——同一路、同一伙，一直在私运军需、在江边掳老妇。林锦岐洗脱了贼名，此刻握着重得多的东西：证出京里军需官与倭寇勾结，而冻死他兵的袄，是一盘大于府耻的棋里的一着。他看兰香，她坐在外屋苍白发抖，把她归到最后一档——不是眼、不是手、甚至不是脑，而是那个门开了、便踏过去的人。</p></details>
+
+<p class="seg" data-i="6" data-start="335.19" data-end="402.1">That night, the courage spends itself in the only coin it has. Lanxiang, back in the residence, wakes from a dream in which the knife is still at her side and the dog is still awake, and for the first time since she traded her name for a dead maid&#x27;s life she wonders aloud whether the standing up was worth the nearly dying. Gantang, the quiet second-class maid who seldom speaks, comes to her then — and repays a debt Lanxiang did not know she had earned. It was the flower business, Gantang says; the reward silver from that day was exactly the sum her family needed for her brother&#x27;s bride-price, the sum that would have meant Gantang sold off to a stranger for coin. Because Lanxiang turned the trap, Gantang kept her place and her brother kept his bride. The brave girl, Gantang says simply, saved the frightened one without knowing she did. And in that small accounting, Lanxiang&#x27;s terror loses a little of its weight — she did not walk through the door only for the house. She walked through it for the girl who now sits beside her, thanking her in the dark.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那夜，勇气以它仅有的币付清。兰香回府，从梦里醒——刀还在肋边、狗还醒着——而自她拿名字换一个死丫鬟的命以来，头回出声疑：那&quot;站出来&quot;，值不值几乎的死。甘棠，那个少言的二等丫鬟，这时来她身边——还一笔兰香不知自己挣的债。是那花的事，甘棠说；那日的赏银，恰是她家凑她兄长彩禮要的数，那数本意味着甘棠被卖与陌生人换钱。因兰香拨转了阱，甘棠留了位、她兄留了妻。勇敢的姑娘，甘棠平平说，救了怕的的那个、而不自知。而在那笔小账里，兰香的惧轻了一分——她踏过那门，不只为府。她为此刻坐身边、在暗里谢她的姑娘踏的。</p></details>
+
+<p class="seg" data-i="7" data-start="402.1" data-end="474.03">So we close episode thirteen with a wolf unmasked and a maid unbroken, and the house still not understanding what it holds. The merchant was a raider; the coats were a cover; the master is cleared and now dangerous to the men who framed him. And the girl who walked through the door sits trembling, forgiven by the friend she saved, and filed by the master under a heading that will, before the season ends, decide more than one life. Episode fourteen is where the frame closes around the framers — where the second daughter&#x27;s broken match becomes a key, and an old general is fetched to the river. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, the person who walks through the open door is never the one you expected. And the dog, asleep, was the only guard who ever told the truth. In the weeks to come the master will use what she brought him the way a smith uses a found blade — quietly, and to an edge no one expected — but for this night the house simply lets her shake, and lets the truth she carried sit, still warm, in the room where a girl who was a pair of eyes first became a person the house could not unmake.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们在一匹狼现形、一个丫鬟未碎里收束第十三集，而府仍不懂自己握着什么。商是倭；袄是遮；主子清了、如今对栽他的人成了险。而那踏过门的姑娘，坐着发抖，被她救的友原谅，被主子归到一档——这档，在季终前，要决不止一条命。第十四集，是_FRAME合到设局者头上一集——二小姐退的亲成了一把钥，一位老将被请到江边。但那是下周的讲法。此刻你只记一句：在林府，踏过开着的门的人，从不是你以为的那个。而那睡着的狗，是唯一个说了真话的守卫。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 13 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP13_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 60.43], [60.43, 117.0], [117.0, 167.45], [167.45, 221.79], [221.79, 282.05], [282.05, 335.19], [335.19, 402.1], [402.1, 474.03]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

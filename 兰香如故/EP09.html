@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 09 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 9 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP09_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="60.07">Let me tell you about episode nine, because this is the episode where a great house finishes what a scandal started — it cleans. A fall, in a place like the Lin estate, is never a single event; it is a signal, and every ambitious soul in the courtyard reads that signal the same way: someone must be swept out so that someone else may step in. The marriage is ended, the document signed, Zhao Xingtang sent home with no roof of her own to shelter her name. And now the rooms she commanded — the Zhichun Residence, the inner study, the long corridors where her people kept watch — must be washed of her, the way you scrub a stain before you paint over it. Lanxiang and Xiaolian are still in the dark of that library night when the first summons comes, but it does not come from the mistress they served. It comes from a man with a brush and a name, and it is the beginning of the only kind of mercy this house knows: the kind that asks you a riddle before it decides whether you live.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第九集，因为这一集，是一座巨宅把一场丑闻开了头的事做完——它清洗。在这样的林府，一次倾覆从不是孤立的事件；它是一个信号，而院里每一个有野心的人，读这信号的方式都一样：得把谁扫出去，才容得下谁踏进来。婚姻已了，字据已签，赵星棠被送回娘家，再没有能护她名分的屋顶。而她掌着的那些屋子——知春馆、内书房、她的人值守的长廊——得把她的痕迹洗去，像你刷掉污渍才好覆上新漆。兰香与小莲还陷在那藏书楼之夜的暗处，第一道传唤就到了，可传她们的，不是她们侍奉的主母。是一个执笔、有名姓的人，而那是这座府第唯一肯给的仁慈的开端：一种先考你一道谜、再决定你活不活的仁慈。</p></details>
+
+<p class="seg" data-i="1" data-start="60.07" data-end="131.64">The man at the door is Mr. Shouyi — Fang Shouyi, the literatus whose name Lin Jinqi borrowed to spring the trap in the library. He is not here to accuse; he is here to read. He lays a single stalk of dried grass across the table and asks Lanxiang, plainly, what she sees. It is the old divination of the countryside, cao bu, grass-reading, the kind of thing a village auntie does at a wedding to tell if the rain will hold. But in this house a game of grass is never a game. Lanxiang, who has spent eight episodes learning to read the board three moves ahead, does not name the obvious. She names the fear behind it: that a maid who reported a mistress&#x27;s sin could as easily be blamed for it, and that the safest lie for the powerful is always that the servant did it for spite. She answers with her head bowed but her logic straight, and Mr. Shouyi writes a name on a card — a name ticket, a ming tie — and hands it to her. It is her pass. Whoever holds it is cleared. The grass said what the powerful needed it to say, and the powerful, for once, let her keep her life.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>门边那人，是守一先生——方守一，那位被林锦岐借来在藏书楼设局的名士。他不是来问罪的；他是来&quot;读&quot;的。他把一根干草平铺在桌上，平平地问兰香：你看见什么。那是乡间旧卜，草卜，办喜事时村中阿娘用来卜雨停不停的那种。可在这府里，一场草戏从不是戏。兰香用了八集学来的&quot;早看三步&quot;，没有说那显而易见的。她点破的是它背后的惧：一个报了主母之罪的丫鬟，一样容易被栽成&quot;因私怨而为之&quot;，而权贵最安全的谎，永远是把事推到奴婢头上。她垂首而理直，答得通透，守一先生便在一张纸上写下一个名姓——一名帖，ming tie——递给她。那是她的通关符。持它者，无罪。草说了权贵要它说的话，而权贵这一回，容她留了命。</p></details>
+
+<p class="seg" data-i="2" data-start="131.64" data-end="191.23">But a name ticket clears one girl and condemns two women. Nanny Feng and Zijin — Zhao Xingtang&#x27;s own attendants, the ones who knew where the letters were hidden and which seals were borrowed in the night — are not summoned to be read. They are taken. The house does not announce their disposal; it simply stops accounting for them, the way a ledger drops a line that no one is permitted to read aloud. By the next morning their pallets are gone, their names unspoken, and the younger maids learn the lesson without being told: in the Zhichun Residence, to have served the fallen mistress is itself a crime, and the punishment for it is to become a person the household agrees never existed. Lanxiang hears the silence where their voices used to be, and she understands the second law of the inner court — that mercy, when it comes, is never general. It lands on one and passes over the next, and which one you are is decided by a game of grass you did not write.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可一名帖洗清了一个姑娘，却定了两个女人的罪。冯嬷嬷与紫堇——赵星棠自己的陪房，那些知道信藏在哪里、知道哪枚印是夜里借出的人——没有被传来&quot;读&quot;。她们被带走了。府里不宣告处置；它只是不再将她们入账，像一本账抹去一行、无人许你念出声。到了次日清晨，她们的铺盖没了，名字无人再提，年少的丫鬟不待吩咐便学了那一课：在知春馆，曾侍奉过倒台的主母，本身便是罪，而刑罚，是成了府里约好&quot;从未存在&quot;的人。兰香听见原本有她们声音的地方如今是寂，便懂了内宅第二条律法——仁慈来时，从不普施。它落在一人身上，越过下一个，而你是哪一个，由一场你没写过的草戏定下。</p></details>
+
+<p class="seg" data-i="3" data-start="191.23" data-end="246.29">And the lover who began it all does not even reach the road. Qian Shaoze, the cousin who was no lady, flees the Zhao household the night the truth breaks, but a man running from a scandal that implicates a general does not run far. Lin Jinqi&#x27;s men intercept him on the river road, and what they do to him is never spoken in the open — only that he is removed, the way a liability is removed, quietly, before he can trade what he knows for his life. Zhao Xingtang, when the news reaches her in the rooms she has been sent back to, does not weep for him. She understands, with the cold arithmetic of the ruined, that he was always going to be the loose end someone cut, and that she is lucky the cutting fell to him and not to her name. The cousin who buried her becomes, in the end, a name the family erases — the last piece of the scandal swept out with the grass and the silence.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而那起了全场的人，连路都没跑到。钱少泽，那个根本不是姑娘的表哥，真相败露那夜从赵府逃出，可一个从牵扯到将军的丑闻里逃命的男人，跑不远。林锦岐的人在他逃往江边的路上截住了他，而对他所为，从不明说于外——只道他被&quot;除去&quot;，像一个隐患被除去，悄无声息，趁他还没拿所知去换自己的命。消息传到被送回的那几间屋子，赵星棠为他没落泪。她以倾覆者冷澈的算计懂得：他从来都是迟早被人剪掉的活口，而她侥幸——那一剪落在他身上，而非落在她的名姓上。埋她的表哥，末了成了家族抹去的一个名——丑闻最后一块，随草与寂一同扫出。</p></details>
+
+<p class="seg" data-i="4" data-start="246.29" data-end="304.61">Back at the Zhao residence, the fracture turns inward. Zhao Xingtang, stripped of her marriage and her standing, turns on the one person who might still have held the family together — her father, Zhao Xuede. She accuses him, rightly, of having looked away at the feast; of having polished his dignity while her life was unmade in his own library; of having signed her release like a man closing a ledger he never wanted to open. The old man, who once kept his eyes elsewhere by choice, now finds he has no eyes left to meet. Father and daughter break in the quiet of a family that has already decided she is the mistake, and she, who loved the wrong man and lost, loses also the roof that might have argued otherwise. She walks out of the Zhao gates with no husband, no household, and now no father&#x27;s name to lean on. The alliance she was born into is not merely collapsed; it has disowned her.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>回到赵府，裂痕转向内里。赵星棠被剥去婚姻与体面，转而咬向那个本还能撑住这门家的人——她的父亲，赵学德。她指得对：他在寿宴上移开目光；在她于自家藏书楼被毁时，擦亮自己的体面；像关一本从不想打开的账那样，签下她的放归。那位曾主动把眼朝向别处的老人，如今发现再没有眼睛可对。父女在一座早已判定&quot;错的是她&quot;的府第的静默里决裂；而她，爱错了人、输了的人，也输掉了本可替她争一争的娘家名分。她走出赵府大门，无夫、无府第，如今连父亲的姓也靠不上了。她生来依附的那门姻亲，不只是塌了；是休了她。</p></details>
+
+<p class="seg" data-i="5" data-start="304.61" data-end="365.43">Now the washing of the Zhichun Residence begins in earnest. The household rolls through its rooms like a tide, and when it pulls back only four remain of the mistress&#x27;s people: Lanxiang, Xiaolian, Gantang, and Bao Gai. The rest are dispersed, demoted, or sent out — the precise count of who went where is a thing the steward notes and no one repeats. What is repeated, loudly, is the new order: all four are fixed at the rank of second-class maid, a demotion dressed as mercy, because a second-class maid is still a maid with a future, and the house would rather they owe it than resent it. To fill the gaps, eight third-class maids are brought in — raw, watchful, cheap — the fresh clay from which the next arrangement will be molded. Lanxiang watches the eight arrive and understands the arithmetic: she was nearly swept out with the rest, and the only reason she stands in this narrowed room is a stalk of grass and a name written by a man who owed Lin Jinqi a favor.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>如今知春馆的清洗正式开始。府里像潮水漫过一处处屋子，退去时，主母的人只剩四个：兰香、小莲、甘棠、宝盖。其余或遣散、或降拨、或送出——谁去了何处，数目是管事记下的、无人复述的。被大声宣出的，是新秩序：四人统一定为二等丫鬟，一桩裹着仁慈外衣的降等，因为二等丫鬟仍是&quot;有前程&quot;的丫鬟，府里宁可她们欠着、也不愿她们怨着。为补缺口，补进八名三等丫鬟——生嫩、警觉、便宜——下一局将由其塑成的鲜泥。兰香看那八个进来，懂了这笔账：她险些随众人一同被扫出，而她立在这逼窄的屋里，只因一根草、和一个欠林锦岐人情的男人写下的名。</p></details>
+
+<p class="seg" data-i="6" data-start="365.43" data-end="427.76">The one who returns to run it all is Yuchan. She was Lin Jinqi&#x27;s maid before the troubles, sent out and now called back to take charge of the Zhichun Residence — a signal, plain as a bell, that the master trusts old hands over new favorites, and that the rooms are to be run lean and loyal. Yuchan moves through the cleaned halls with the particular efficiency of someone who knows exactly which cornershide grudges, and she treats Lanxiang with a measured respect: not friendship, not yet, but the recognition of a girl who proved she could act when the board demanded it. She sets Lanxiang and Xiaolian to the quiet work of sorting the mistress&#x27;s leftover things, and in the sorting Lanxiang finds what she has been half-looking for — a letter, half-burned, that proves the false accounts in the Jinxiu Embroidery Workshop were deeper than anyone admitted. She says nothing. She folds it into her sleeve. In this house, proof is a thing you keep until the moment it is worth more than your silence.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>回来主事的那个人，是玉蝉。乱起之前她本就是林锦岐的丫鬟，被遣出，如今召回掌知春馆——一个明如钟的信号：主子信旧人胜信新宠，而这些屋子要瘦而忠地管。玉蝉走过洗过的廊，带着一种&quot;清楚哪个角落藏着怨&quot;的特有干练，对兰香是分寸得体的敬：不是交心，还不到，却认得一个在棋局逼人时证成了&quot;会动手&quot;的姑娘。她派兰香与小莲去清整主母留下的零物，而在清整里，兰香寻见她半在找的东西——一封烧了半边的信，证出锦绣坊的假账比谁肯认的更深。她不言语。她把它折进袖中。在这府里，证据这种东西，你要留到它比你的沉默更值钱的那一刻。</p></details>
+
+<p class="seg" data-i="7" data-start="427.76" data-end="487.95">And then Lanxiang does the thing that will define the rest of her story: she asks to be moved into the inner study. It is a bold request from a second-class maid, because the inner study is where letters are read and futures are written — the room of clerks and trusted hands, not of girls who sweep. But Lanxiang has one currency the others do not: she can read. The skill she hid for eight episodes, the skill that got her sent to the Jinxiu Workshop to spy, is now offered openly as a trade. She tells Yuchan, and through her Lin Jinqi, that she would serve in the study, where a literate maid is worth more than ten who are not. It is the first time she spends her forbidden gift as a bargain instead of a secret, and the master, who has watched her through a whole scandal, agrees. The door she is allowed to open is a small one — a study, not a salon — but it opens onto the page, and the page, in this house, is where power keeps its real accounts.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而后兰香做了那件将定义她余生的事：她请调进内书房。一个二等丫鬟敢开这口，是因为内书房是读信、写命的所在——是书吏与信得过的人的屋子，不是扫地的姑娘的。可兰香有一样别人没有的本钱：她识字。那她藏了八集的本事，那把她送去锦绣坊做眼线的本事，如今被她公开拿出来作交换。她向玉蝉说，经玉蝉达林锦岐：她愿在内书房当差，那里一个识字的丫鬟，抵得过十个不识的。这是她头一回把这件被禁的禀赋当作交易、而非秘密来用；而那位透过整场丑闻看她的男主，应了。容她开的，是一扇小门——书房，不是厅堂——可它开向书页，而书页，在这府里，是权势真正记账的地方。</p></details>
+
+<p class="seg" data-i="8" data-start="487.95" data-end="549.03">So we close episode nine the way the house itself closes it — not with justice, but with a rearrangement that everyone will call order. The fallen are gone or erased; the eight new maids wait to be shaped; Yuchan runs the residence with lean hands; and Lanxiang, who began this season as a pair of eyes in the dark, steps into the inner study where the letters are read. She has not escaped the game. She has moved one square closer to its center, and the closer you stand to the center, the more clearly you see that the board is rigged, and that the only winning move is to become someone the player cannot afford to sweep out. Episode ten is where a new piece enters the board — a girl named Du Cuique, sister to the man who saved Lin Jinqi&#x27;s life, who will smile at everyone and desire one thing. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, the cleaning is never about the dirt. It is about who gets to hold the broom.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如这座府第自己收束那样收束第九集——不是以公道，而是以一场人人要称作秩序的重排。倒下的或走或灭；八个新丫鬟等着被塑；玉蝉以瘦手管着这馆；而兰香，这一季始于暗处一双眼的姑娘，踏进读信的内书房。她没逃出棋局。她朝中心移了一格，而离中心越近，越看清这局是做过了手脚的，唯一的赢法，是成为那个执子人舍不得扫出的人。第十集，是一枚新子落盘——一个叫杜翠雀的姑娘，那个救过林锦岐性命之人的妹妹，她会对所有人笑，却只想要一样东西。但那是下周的讲法。此刻你只记一句：在林府，清洗从来不为脏。是为谁握得住那把扫帚。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 09 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP09_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 60.07], [60.07, 131.64], [131.64, 191.23], [191.23, 246.29], [246.29, 304.61], [304.61, 365.43], [365.43, 427.76], [427.76, 487.95], [487.95, 549.03]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

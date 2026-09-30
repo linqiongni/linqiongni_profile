@@ -26,7 +26,14 @@ const EPISODES: Episode[] = [
   { id: 'ep06', label: 'EP06', enLabel: 'Episode 06', src: '/lanxiang/EP06.html?v=20260929f' },
   { id: 'ep07', label: 'EP07', enLabel: 'Episode 07', src: '/lanxiang/EP07.html?v=20260929g' },
   { id: 'ep08', label: 'EP08', enLabel: 'Episode 08', src: '/lanxiang/EP08.html?v=20260929i' },
-  // EP09–EP37 续做时在此追加一行（html + _audio.mp3 放进 public/lanxiang/，由 兰香如故/工具/gen_story.py 生成）
+  { id: 'ep09', label: 'EP09', enLabel: 'Episode 09', src: '/lanxiang/EP09.html?v=20260930a' },
+  { id: 'ep10', label: 'EP10', enLabel: 'Episode 10', src: '/lanxiang/EP10.html?v=20260930a' },
+  { id: 'ep11', label: 'EP11', enLabel: 'Episode 11', src: '/lanxiang/EP11.html?v=20260930a' },
+  { id: 'ep12', label: 'EP12', enLabel: 'Episode 12', src: '/lanxiang/EP12.html?v=20260930a' },
+  { id: 'ep13', label: 'EP13', enLabel: 'Episode 13', src: '/lanxiang/EP13.html?v=20260930a' },
+  { id: 'ep14', label: 'EP14', enLabel: 'Episode 14', src: '/lanxiang/EP14.html?v=20260930a' },
+  { id: 'ep15', label: 'EP15', enLabel: 'Episode 15', src: '/lanxiang/EP15.html?v=20260930a' },
+  // EP16–EP37 续做时在此追加一行（html + _audio.mp3 放进 public/lanxiang/，由 兰香如故/工具/gen_story.py 生成）
 ];
 
 export const LanxiangTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => {

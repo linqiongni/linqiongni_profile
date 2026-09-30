@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 11 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 8 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP11_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="57.22">Let me tell you about episode eleven, because this is the episode where a flower nearly becomes a marriage, and a marriage nearly becomes a scandal, and the whole thing is stopped by a girl who happened to be airing the books. The old patriarch of the Lin family, eager in his way to see his second daughter settled, chooses the human victory day — ren sheng ri, the festival of the paired victory — to host a gathering, and he invites the eligible young men of good family to be looked over. It is the gentle kind of matchmaking the great houses practice: the girls watch from behind screens, the boys are paraded in their best cloth, and everyone pretends the appraising is mutual. The favored match is the Xie family&#x27;s son, Xie Zhao, a connection that would bind the Lins to old money and older standing. The house polishes itself for the occasion, and into this polished occasion Du Cuique slips a small, deliberate thing.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第十一集，因为这一集，是一朵花险些成了一门亲、一门亲险些成了一桩丑闻，而整件事，被一个恰在晒书的姑娘拦下。林家老太爷，以他那份急，要给二小姐定下人家，择了人胜日——那&quot;双胜&quot;的节——设宴，邀世家适龄的儿郎来相看。那是巨室惯做的温和说亲：姑娘在屏后看，儿郎穿最好衣料巡展，人人装作相看是两厢情愿。中意的，是谢家公子谢昭，一门能把林家系上旧富与更旧体面的亲。府里为这场合把自己擦亮，而杜翠雀，往这擦亮的场合里，塞了一件小而有心的事。</p></details>
+
+<p class="seg" data-i="1" data-start="57.22" data-end="114.72">The thing is a cai sheng — a colored victory ornament, the kind exchanged on the festival, a sprig of paper flowers pinned to a box or a sleeve. Du Cuique prepares one and places it, with a smile and a seeming thoughtfulness, into the box of cai sheng meant for Lin Jinqi himself, as if to wish the master well on the day. But the flower she tucks inside is no ordinary paper blossom. It is a cuique flower — the cuique, a sparrow-shaped ornament whose old meaning everyone at court knows and no one says aloud: it is the token of a concubine taken in. To pin a cuique flower into the master&#x27;s victory box is to announce, without speaking, that Lin Jinqi means to take Du Cuique as his concubine, and to let the whole gathering read the announcement on his sleeve. She does not sign it. She does not need to. The flower is the signature, and the flower is hers.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那东西，是彩胜——节里互赠的、缀在盒上或袖上的纸花。杜翠雀备了一支，带笑、像一片体贴，放进本要给林锦岐的那盒彩胜里，仿佛为爷在这日道喜。可她悄悄塞进的花，不是寻常纸花。是翠雀花——cuique，雀形的饰物，它在座中人人懂、却无人说破的旧意：那是&quot;纳妾&quot;的信物。把一支翠雀花别进主子的胜盒，是不出声地宣告林锦岐要纳杜翠雀为妾，并让满座在他袖上读这宣告。她不署名。不必。花便是署名，而花是她的。</p></details>
+
+<p class="seg" data-i="2" data-start="114.72" data-end="174.05">Lanxiang finds it by accident and reads it on purpose. She is in the courtyard airing the study&#x27;s books — the old volumes brought out to the sun so the damp does not eat them — when a page falls open to the illustrated lexicon of flowers, and there, plain as a statute, is the cuique: &quot;sparrow ornament; formerly the token by which a man signaled his intent to take a concubine.&quot; She freezes. She understands at once what Du Cuique has done, and what it will cost the house if the master is seen, on his own sister&#x27;s matchmaking day, wearing the mark of a concubine not yet his. She does not run to Lin Jinqi — he is at the feast, surrounded, and a maid&#x27;s word against a flower would be a maid&#x27;s ruin. She runs instead to Yuchan, who can carry a message that a mistress will hear. But the senior maids have orders to keep the courtyards locked against exactly this kind of running, and the gate-keeping mama will not yield.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香是偶然撞见、却是有意读懂的。她在院里晒书房的旧书——把书搬出来见太阳，免得潮气吃了纸——一页恰翻到花鸟图解，而那里，明如律文：翠雀，&quot;雀形饰；昔为男主示意纳妾之信&quot;。她定住。她立刻懂了杜翠雀做了什么，也懂了若主子在他妹说亲这日、袖上戴着&quot;妾未入门&quot;的标记被人看见，这府要付什么价。她不奔林锦岐——他在宴中、被人围着，丫鬟一句话对一朵花，是丫鬟的毁。她改奔玉蝉，玉蝉能把话递到主母肯听处。可大丫鬟有令，正为防这种&quot;跑&quot;而锁院，守门的嬷嬷不通融。</p></details>
+
+<p class="seg" data-i="3" data-start="174.05" data-end="234.12">What saves the day is a child&#x27;s toy and a girl&#x27;s quick bargain. The Fourth Young Master — Lin Jinqi&#x27;s youngest brother, a boy more interested in his slingshot than in the marriage market — is loitering where he should not be, and Lanxiang, blocked by the mama, does the only thing left: she lets his stone catch her shoulder. The boy&#x27;s shot, meant for a sparrow, strikes her instead, and she does not scold. She kneels, shows him the slingshot he has dropped, and offers him a trade — the toy back, if he will run to the old patriarch and tell him, plainly, that a maid in the courtyard has found a flower that means a thing it should not. The child, pleased to be trusted with a secret errand, runs. It is the most absurd courier in the house&#x27;s history, and the only one the locked gates could not stop. The message reaches the old man not as a maid&#x27;s panic but as a grandson&#x27;s puzzle, which is exactly the form an old patriarch will actually heed.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>救场的，是一个孩子的玩具、和姑娘的快议。四少爷——林锦岐最小的兄弟，对说亲市比对弹弓上心——正晃在他不该在的地方；兰香被嬷嬷挡住，做了仅剩的一件事：她让那石子打中自己肩。男孩瞄雀的一弹，打中了她，而她不斥。她蹲下，把男孩掉的弹弓递还，与他做一笔交易——还他玩具，若他跑去老太爷跟前，平平说：院里一个丫鬟寻见一朵花，意思不该是那意思。孩子得了桩秘差，欢喜地跑。那是府里史上最荒唐的传信人，也是唯独锁住的门拦不住的那个。话到老人耳里，不是丫鬟的慌，是孙儿的谜——而谜，正是老太爷真会听的样子。</p></details>
+
+<p class="seg" data-i="4" data-start="234.12" data-end="295.99">The old patriarch, hearing it, understands the danger faster than any of the courtiers could have, because he has spent a lifetime reading what is worn. He does not send for Lin Jinqi. He does the cleverer thing: he and the Second Uncle step out into the gathering wearing cuique flowers of their own, and the old man, before the whole company, explains the ornament aloud — not as a concubine&#x27;s token but as a humble sparrow, a wish for many small joys, a trifle suitable for the festival of paired victory. Then he does the killing stroke: he has cuique flowers distributed to every guest, so that the ornament is no longer Du Cuique&#x27;s private signal but the house&#x27;s public favor, worn by all, meaning nothing in particular. The girl&#x27;s trap, built to pin a concubine&#x27;s mark on one man&#x27;s sleeve, is dissolved into a garden of identical sparrows. By the time Lin Jinqi hears of it, there is no mark to deny, only a festival custom the patriarch invented on the spot.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>老太爷听了，比任何清客都快懂了险——因为他读&quot;所穿戴&quot;读了一辈子。他不召林锦岐。他做了更巧的事：他与二叔 stepping 出场，自家头上戴着翠雀花；老人当着满座，把那饰物说出口——不是妾的信物，而是卑微的雀，愿多些小欢喜，宜配&quot;双胜&quot;的节。而后他下那致死的一着：他把翠雀花分与每位宾客，于是这饰物不再是杜翠雀私下的信号，而是府里公开的恩，人人都戴，不复特指。那姑娘的阱，本要在一人袖上钉一个妾的标记，被化进一园相同的雀里。等林锦岐听见，已无标记可否认，只有老太爷当场现编的节俗。</p></details>
+
+<p class="seg" data-i="5" data-start="295.99" data-end="369.48">The gathering, once the flower&#x27;s meaning had been laughed into a festival trifle, resumes its true business, and the business is a marriage. The second daughter is paraded, blushing, before Xie Zhao, and the old patriarch — pleased to have turned a trap into a tradition — speaks warmly of the match as if the cuique sparrow were his own idea all along. The guests, relieved to be given a meaning for the ornament they now all wear, nod and smile, and the awkwardness that might have become a scandal dissolves into the ordinary noise of a great house showing its daughters. Lin Jinqi, arriving late and learning the whole of it from the Fourth Master&#x27;s breathless retelling, says nothing in the hall — but his eyes, resting on the old man&#x27;s invented custom, are the eyes of a man who has just watched a fire beaten out with a song. He files the moment, and the girl who made it possible, under the same heading he used for the library: useful, and therefore to be watched. The house, for one evening, believes the danger passed. It has not. It has only been redistributed — from the master&#x27;s sleeve to a maid&#x27;s keeping, where it will wait, quiet, for the next hand to reach for it.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那聚，待花的意思被笑成节里的小玩意，续上它真的事——而那事，是一门亲。二小姐红着脸在谢昭前巡展，老太爷——乐得把阱变俗——暖暖说这亲，像那翠雀雀本是他自己的主意。宾客得了手上饰物的说法，松了口气，点头笑，本可成丑闻的尴尬，化进巨室显女的日常喧里。林锦岐晚到，从四少爷兴头头的复述听了全貌，在厅里一言不发——可他目光落在老人现编的俗上，是刚看一场火被一支歌拍灭的人的眼。他把这一刻、与成全它的姑娘，归到他对藏书楼用的同一档：有用，故须看。这府有一晚，信险过了。没过。它只是被重分——从主子的袖，到丫鬟的掌，在那里静等，下一只有手来取。</p></details>
+
+<p class="seg" data-i="6" data-start="369.48" data-end="433.78">But Du Cuique is not done, and a trap that fails becomes a blade turned sideways. When the matter is reviewed afterward, she protests, with every appearance of wounded innocence, that she knew nothing of the flower&#x27;s old meaning — she is, she says, only a country girl who liked the pretty sparrow. She shifts the blame onto the hands that packed the box: it was Xiaolian, she suggests, who placed the ornament, a maid&#x27;s clumsiness, not her intent. Lin Jinqi&#x27;s mother, the Senior Lady Lin, accepts the story partly because it spares the household a second scandal and partly because blaming a maid costs nothing. She punishes Yuchan and the gate mama and the packers, and she leaves Du Cuique untouched. Only Lanxiang is singled out for reward — ten taels of gold, given openly, for a quickness the patriarch himself reported. The house has, once again, punished the harmless and crowned the clever, and Du Cuique has learned that she can aim at the master and miss and still walk away clean.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可杜翠雀没完，而一个失败的阱，翻成横斜的一刀。事后复盘，她以一副被冤的无辜样辩：她根本不知那花旧意——她说，不过是个喜欢雀儿好看的村女。她把责推向装盒的手：是子莲放的吧，她示意，一个丫鬟的笨手，不是她的意。林母受下这说法，一半因它免了府里第二桩丑闻，一半因责一个丫鬟不费什么。她罚了玉蝉、守门嬷嬷、装箱的人，杜翠雀丝毫不沾。唯独兰香被单挑出来赏——十两金子，公开给，为老太爷亲报的那份机敏。这府又一回：罚了无碍的，冠了聪明的；而杜翠雀学懂了——她可以瞄主子、射偏，仍干干净净走开。</p></details>
+
+<p class="seg" data-i="7" data-start="433.78" data-end="493.95">And Lin Jinqi, hearing the full story from the Fourth Master&#x27;s delighted retelling, understands at last who truly turned the blade. He summons Lanxiang — not to praise her, not yet, but to weigh her. He asks, plain as the old man did, how a maid airing books came to know a flower&#x27;s meaning, and whether she acted for the house or for herself. Lanxiang answers as she answered the grass divination: head bowed, logic straight, no claim of cleverness. She says only that a maid who can read is a maid who can be blamed for what she reads, and that she would rather the house keep its name than she keep hers. Lin Jinqi listens, and the man who reads people files her away under a new heading — not eyes, not a hand, but a mind he will, before long, begin to consult. The episode closes with a girl poorer by one shoulder&#x27;s bruise and richer by ten taels, and a household that has just learned the new girl plays to win.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而林锦岐，从四少爷兴头头的复述里听了全貌，终于懂了是谁真把那刀拨转。他召兰香——不为夸，还不到，是为掂她。他问得如老人一般平：一个晒书的丫鬟，怎知一朵花的意思；她为府、还是为己。兰香答得如答那场草卜：垂首、理直、不自称巧。她只说：识字的丫鬟，也会为所读被责；她宁可府留名、不自留名。林锦岐听着，那个读人的人，把她归到新的一类——不是眼、不是手，而是一颗他不久便会去问的脑。这一集收在：一个姑娘少了一肩淤青、多了十两金；而一座府第，刚学懂这新来的姑娘，是冲着赢来下的。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 11 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP11_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 57.22], [57.22, 114.72], [114.72, 174.05], [174.05, 234.12], [234.12, 295.99], [295.99, 369.48], [369.48, 433.78], [433.78, 493.95]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

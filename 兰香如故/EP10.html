@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 10 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 8 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP10_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="54.0">Let me tell you about episode ten, because this is the episode where the house catches its breath — and in a place like the Lin estate, a breath is never just a breath. It is the moment after the purge, when the new arrangement has settled and the next piece is about to be placed on the board. Lin Jinqi, having removed his wife and bound the Zhao family to his discretion, turns his attention outward, to the men who actually keep him alive. He throws a feast, and the guest of honor is not a lord or a merchant but a soldier — Du Zheng, the man who once threw himself between Lin Jinqi and a blade and came away with a scar instead of a corpse. To honor the man who saved your life is the one kind of debt this house pays without calculating the interest, and so the wine flows, and for one evening the inner court forgets that it is a court and pretends, almost, to be a home.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第十集，因为这一集，是这座府第缓过一口气的一集——而在林府这样的地方，一口气的缓，从来不只是缓口气。那是清洗之后、新局落定、下一枚子将要落盘的一刻。林锦岐既去了妻子、又拿体面绑住了赵家，便把目光转向外头，转向那些真正护他活命的人。他设了一宴，座上宾不是老爷、不是商人，而是一个兵——杜正，那个曾扑在林锦岐与刀之间、带一道疤回来、而非一具尸的人。还那个救过你命的人，是这座府第唯一不计利息也要还的债，于是酒流起来，有那么一晚，内宅忘了自己是&quot;宅&quot;，几乎扮成了一处&quot;家&quot;。</p></details>
+
+<p class="seg" data-i="1" data-start="54.0" data-end="114.02">The man he honors is plain in every way that matters. Du Zheng is no courtier; he speaks like a camp and stands like a post, and the ease with which he deflects Lin Jinqi&#x27;s praise tells you he has saved lives before and expects to again. But the detail the household notices is not the brother-in-arms at the table. It is the sister who is coming. Du Zheng mentions, almost in passing, that his younger sister Du Cuique will soon lodge at the Lin estate — their parents gone, the family reduced to these two, and the general&#x27;s protection the natural roof for a girl with no other. He says it as a small thing, a courtesy to be arranged. The room hears it as a door opening. A girl of marriageable age, taken into the household of an unmarried general who owes her brother his life — the arithmetic of the inner court does the rest, and by the time the wine is poured a third time, half the senior maids have already decided what she will become.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他敬的那个人，在要紧处一概平实。杜正不是清客；他说的话像营里、站得像根桩，而他那样轻描淡写地挡开林锦岐的夸，叫你看出他救过命、也预备再救。可满座留意的，不是席上的义兄。是那个要来的妹妹。杜正几乎顺口提起：他妹杜翠雀不久要寄居林府——双亲已故，家门只余这两人，而将军的庇护，对于一个别无依傍的姑娘，是再自然不过的屋顶。他说得轻，像一桩要安排的人情。满屋听成了开了一扇门。一个及笄的姑娘，进了未娶的将军的府、又欠她兄长一条命——内宅的算盘替他算完了余下，等酒斟到第三巡，过半的大丫鬟已替她定了她将成什么。</p></details>
+
+<p class="seg" data-i="2" data-start="114.02" data-end="171.72">And Du Cuique, when she arrives a few days later, is exactly the danger the arithmetic predicted, because she smiles at everyone and desires one thing. She is pretty in the way that costs nothing to look at and everything to refuse; she greets the Senior Lady Lin with a deference so precise it reads as devotion; she thanks Yuchan for a room as if the room were a gift and not an assignment. Lin Jinqi, watching her with the measured eye of a man who reads people the way other men read maps, sees at once what she is reaching for — a place at his side, a title, the security of being the woman who saved the savior&#x27;s sister. He does not discourage her. He does not encourage her either. He simply lets her into the courtyard, the way you let a cat into the house and wait to see whether it scratches the furniture. The game, after all, is more interesting with a new player who does not yet know the rules she is breaking.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而杜翠雀，几日后一到，正是那笔账料中的危险，因为她对所有人都笑，却只想要一样东西。她生得那种看不费劲、拒起来要命的好看；她向林母行的礼，分寸精准到像敬，而非只是礼；她谢玉蝉给了屋子，像那屋是赏、而非派。林锦岐以读人如他人读图的那只审度之眼看她，一眼便知她伸手去够的是什么——他身侧一个位置、一个名分、做&quot;救了救命恩人之妹&quot;的那个女人的安稳。他不拦。也不促。他只放她进院，像你放一只猫进屋、等着看它挠不挠家具。毕竟，多一个还不懂自己破了哪条规的新子，棋更有趣。</p></details>
+
+<p class="seg" data-i="3" data-start="171.72" data-end="231.96">Meanwhile, at the edge of the year, a different kind of cold sets in — the kind the household cannot flatter away. The garrison winter coats, which in years past arrived before the first snow because the Zhao family&#x27;s connections smoothed the road, now sit undelivered. Since the he li, the Lin estate has lost the official convenience that rode on Zhao Xingtang&#x27;s family, and the mechanics of the world — clerks, quartermasters, the men who decide which wagon leaves which gate — have grown slow and unhelpful in exact proportion to the Lin family&#x27;s fallen standing. Lin Jinqi feels it first as a soldier&#x27;s grievance brought to his door: men who trained through a frost with nothing on their backs but last year&#x27;s rags. He listens, and the listener in him — the same instinct that borrowed a literatus to spring a trap — begins to trace the delay not to weather but to will. Someone, he understands, has decided the Lin estate should feel the winter this year.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>与此同时，年关边上，另一种冷落下来——那种府里用奉承化不开的冷。卫所的冬衣，往年头场雪前就到，因赵家的门路把路熨平了；如今却压着不发。自和离后，林府失了那倚仗赵星棠娘家的官面，而世间的机括——书吏、军需官、决定哪辆车出哪道门的那些人——慢下来、不出力，恰与林家落下去的体面成比例。林锦岐最先是从一桩兵的冤屈听见的：汉子们在霜里操练，身上除了去年的破袄什么也没有。他听着，而他里头那个&quot;听者&quot;——那个曾借名士设局的本能在——开始把延误不归于天气，而归于人意。他懂了：有人决意，今年林府该好好受一回冬。</p></details>
+
+<p class="seg" data-i="4" data-start="231.96" data-end="293.76">And in the inner study, the girl who asked to be moved closer to the center begins to earn her place. Lanxiang, now a maid among the letters, does the quiet work of a literate hand — she copies, she files, she reads aloud the correspondence Lin Jinqi has no time to read himself, and she does it without the flinching that marks the untaught. What the master notices is not her pen but her judgment: she flags a line in a supplier&#x27;s account that a clerk would have passed, a sum that does not match the count, a name that appears twice where it should appear once. She does not present these as cleverness. She presents them as a maid&#x27;s duty, the way a person who has learned that survival is usefulness keeps her light under a basket. But Lin Jinqi sees the light. He begins, without saying so, to route the smaller puzzles through her, and the inner study, which was to be a safe corner for a fortunate maid, becomes the room where the next conspiracy will first show its seam.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而内书房里，那个请求移向中心的姑娘，开始挣她的位置。兰香，如今成了书函间的丫鬟，做着识字之手的静活——她誊抄、归档、把林锦岐无暇亲读的信件念出声，而她做得没有生手那种怯。主子注意到的不是她的笔，是她的断。她从一份供商的账上挑出书吏会放过的那一行：数目对不上数、名字在该出现一次处出现了两次。她不把这些当作聪明呈上。她当作丫鬟的本分呈上，像一个学了&quot;活命即有用&quot;的人，把光藏在筐下。可林锦岐看见了那光。他开始不言不语地，把小一些的谜从她手里过；而那间本要做一个得运丫鬟安稳角落的内书房，成了下一桩阴谋最先露出缝的屋子。</p></details>
+
+<p class="seg" data-i="5" data-start="293.76" data-end="360.74">Du Cuique, for her part, wastes no time learning the layout. She walks the corridors as if she already owns them, asks the names of the study maids with a smile that remembers everything, and singles out the weakest link in the household&#x27;s chain — which, in the Zhichun Residence, is Xiaolian, the friend Lanxiang pulled into the shadows at the library door. Xiaolian is kind and unguarded, precisely the sort of girl a calculating newcomer can wind around her finger, and Du Cuique begins, innocently on the surface, to draw her close. Lanxiang sees it happening the way you see a cat circle a bird, and she says nothing yet — but she moves, quietly, to keep Xiaolian near her own tasks, the way you keep a lamb close when the wolf has started smiling at it. The new deep-court calculation has, without any drumbeat, already begun. She has, in a single afternoon, mapped the friendships that will matter and the fears that can be bent to her hand, and the map, once drawn, is a weapon she will not sheath until Lanxiang is where she means her to be.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>杜翠雀那边，一刻不误地认起了门。她走过长廊，像早已是主母；笑着问书房丫鬟的名姓，把一切都记在里头；并挑出这府链条上最弱的那一环——在知春馆，便是小莲，那个兰香在藏书楼门口拽进暗处的朋友。小莲善良、不设防，恰是那种精于算计的新人能绕在指头上的人；杜翠雀便表面无辜地，把她拉近。兰香看它发生，像看一只猫绕着一只鸟，暂且不言——却悄悄把小莲拢到自己的活计边，像狼已开始对你笑时，你把羊拢近。那新的深宅算计，不击鼓、已开了场。</p></details>
+
+<p class="seg" data-i="6" data-start="360.74" data-end="417.31">The episode&#x27;s quiet center, though, is a smaller mercy. In the study one afternoon, Lanxiang finds a letter from her own household — a note from her foster mother saying the frost has reached her hands, that the old cure of mutton fat and heat no longer keeps the cracking away. It is a private thing, and in this house private things are read by clerks, but Lanxiang has learned to slip a page past the eyes that should see it. She does not weep. She files the letter where it belongs and goes back to her copying, but something in her has shifted: the girl who was a pair of eyes is now a hand on the page, and a hand on the page can, if it is careful, also be a hand that writes home. She begins, that night, to set aside a little of the rice and the salve the study keeps for the master&#x27;s minor hurts, the first small act of a person who has decided her family is still hers to protect.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可这一集静处的核，是一桩更小的仁慈。一日午后书房里，兰香寻见一封家书——养母说寒已上了手，旧法羊脂加热再也止不住裂。那是私物，而这府里私物都过书吏的眼，可兰香已学会把一页从该看的眼里溜过。她没哭。她把信归到该归处，回去誊抄，可她里头有什么移了：那双&quot;眼&quot;的姑娘，如今是&quot;页上的一只手&quot;，而页上的手，若小心，也能是写家信的手。那夜她起手，留下一点书房给主子治小伤的米与膏——一个断定&quot;家人仍是自己要护&quot;的人，第一桩小的行。</p></details>
+
+<p class="seg" data-i="7" data-start="417.31" data-end="471.55">So we close episode ten the way the year itself is closing — on the edge of a cold that is also an opening. The purge is done; a new girl with one desire has entered the courtyard; the winter coats hang undelivered as a message someone meant to send; and in the inner study a maid who can read has become the master&#x27;s unnoticed instrument for finding the next seam. None of these things is yet a crisis. They are, separately, only arrangements. But a house is only ever the sum of its arrangements, and the arrangements of episode ten are pointing, quietly, toward the fire that episode eleven will light. For now, remember only this: in the Lin estate, the most dangerous newcomer is the one who smiles at the lamb while already deciding which room will be hers. And the coldest message is the one sent by simply failing to deliver the coats.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如这一年自己收束那样收束第十集——在一场寒的边沿，而那寒也是一道开口。清洗已毕；一个只想要一物的新姑娘进了院；冬衣压着不发，是有人要捎的话；内书房里一个识字的丫鬟，成了主子不察觉、用来寻下一处缝的器。这些，单独看都还不是祸。它们各自，只是&quot;安排&quot;。可一座府第，从来只是它诸般安排之和，而第十集的安排，正悄悄指向第十一集要点的那把火。此刻你只记一句：在林府，最危险的新人，是对着羊笑、却早已定了哪间屋是她的人。而最冷的话，是&quot;只管不把冬衣发下来&quot;那句。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 10 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP10_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 54.0], [54.0, 114.02], [114.02, 171.72], [171.72, 231.96], [231.96, 293.76], [293.76, 360.74], [360.74, 417.31], [417.31, 471.55]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

@@ -250,7 +250,7 @@ def main():
         if os.path.exists(html_path):
             t = open(html_path, encoding="utf-8").read()
             assert f"EP{num:02d}_audio.mp3" in t, "HTML 音频引用错误"
-            assert len(re.findall(r'class="seg"', t)) == len(paras), "HTML 段数不符"
+            assert len(re.findall(r'class="seg', t)) == len(paras), "HTML 段数不符"
             assert f"const OFF = {json.dumps(offsets)}" in t, "OFF 偏移未写入"
             assert 'class="native"' not in t, "残留原生播放器！"
             assert 'class="seg live"' in t, "首段钩子缺失！"

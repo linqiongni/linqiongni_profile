@@ -39,7 +39,14 @@
 | EP06 | ✅ 已完成（有声版，交付物3 上线，未改） | `EP06.html` + `EP06_audio.mp3` + `EP06_英文剧集介绍.md` |
 | EP07 | ✅ 已完成（有声版，交付物4 新增上线） | `EP07.html` + `EP07_audio.mp3` + `EP07_英文剧集介绍.md` |
 | EP08 | ✅ 已完成（有声版，沙箱 edge-tts 合成 684.52s / en-US-AriaNeural/-4%，已推 main 上线 linqiongni.top） | `EP08.html` + `EP08_audio.mp3` + `EP08_英文剧集介绍.md` |
-| EP09–EP37 | ⬜ 未开始 | 由 `工具/gen_story.py` 按 `制作规范.md` 逐集推进 |
+| EP09 | ✅ 已完成（有声版，沙箱 edge-tts 合成，已生成待上线） | `EP09.html` + `EP09_audio.mp3` + `EP09_英文剧集介绍.md` |
+| EP10 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP10.html` + `EP10_audio.mp3` + `EP10_英文剧集介绍.md` |
+| EP11 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP11.html` + `EP11_audio.mp3` + `EP11_英文剧集介绍.md` |
+| EP12 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP12.html` + `EP12_audio.mp3` + `EP12_英文剧集介绍.md` |
+| EP13 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP13.html` + `EP13_audio.mp3` + `EP13_英文剧集介绍.md` |
+| EP14 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP14.html` + `EP14_audio.mp3` + `EP14_英文剧集介绍.md` |
+| EP15 | ✅ 已完成（有声版，沙箱合成，待上线） | `EP15.html` + `EP15_audio.mp3` + `EP15_英文剧集介绍.md` |
+| EP16–EP37 | ⬜ 未开始 | 由 `工具/gen_story.py` 按 `制作规范.md` 逐集推进 |
 
 > 交付物4（2026-09-29 晚间）含 EP01–EP07：EP01/03/04/05 为用户修订剧本（EP03/04/05 由 8/8/6 段扩写至 10 段，EP05 补足原短板），EP07 为新集。全部重镀主站主题（透明嵌入 + 双栈字体 + 明暗桥接 + aquatic 鱼影脚本 + 删原生播放器 + 第一段钩子 blockquote），对照线上 EP01/EP02 金标准。EP08+ 依 `工具/制作规范.md` 续做。
 
@@ -47,7 +54,7 @@
 
 - **已定**：未来挂 linqiongni.top 做模块时，音频 mp3 随 **GitHub Pages 同目录公开**（即进 git 仓库）。
 - 因此本目录内容**将随仓库版本管理**，覆盖交接包早期「纯本地、不进 git/Gitee」的约定（该约定已被用户本次决策推翻）。
-- 当前状态：EP01–EP08 均已推 main 上线（可公网访问 linqiongni.top）；EP08 由**沙箱 edge-tts 直接合成音频**（推翻早期「沙箱无 ffmpeg/edge-tts 需本机跑」的错误结论，见 `工具/` 合成管线）。
+- 当前状态：EP01–EP08 已推 main 上线（公网可访问 linqiongni.top）；EP09–EP15 已用**沙箱 edge-tts** 合成音频并生成金标准 HTML（`兰香如故/` 源目录齐全），待本次 commit+push 上线。EP08+ 全部由 `工具/gen_story.py` 一键合成（推翻早期「沙箱无 ffmpeg/edge-tts 需本机跑」的错误结论）。
 - 跨设备接手资料见 `跨设备交接包.md`。
 
 ## 文件清单（本目录）

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 14 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 8 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP14_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="64.32">Let me tell you about episode fourteen, because this is the episode where a broken match becomes a key, and a key opens the river — and the girl who walked through the open door last week becomes the one who opens this one. The news of the Xie family&#x27;s withdrawal hits the second daughter like a stone. She had been watching Xie Zhao through a screen and building, in her careful way, a life around him; to be told he is gone, on the pretext of incompatible horoscopes, reads to her not as prudence but as betrayal. She rages through her rooms, smashing a vase and a mirror, refusing to believe the boy she invented in her head could have abandoned her. She sets off to find Lin Jinqi and demand he set it right — and at the gate she meets the sight that stops her cold: her brother, in irons, being marched out for the padded-cotton case. The Senior Lady Lin, seeing her son taken, collapses where she stands, and the residence, a moment before full of a girl&#x27;s temper, fills instead with the silence of a household that has lost its center.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第十四集，因为这一集，是一桩退的亲成了一把钥、而钥开了江的一集——而上周踏过开着的门的姑娘，成了这回开门的人。谢家退亲的消息，像石头砸在二小姐身上。她隔着屏看谢昭、以她那份小心，在心里为他搭了一生；被以八字不合告知他去了，她读成的不是审慎、是背信。她在屋里砸了瓶与镜，不肯信她脑子里造出的那个少年会弃她。她要去寻林锦岐、逼他摆平——而在门口撞见冻住她的一幕：她兄长带锁，因那袄案被押出。林母见儿子被拿，当场昏倒；一刻前还满着姑娘脾气的府，换作一座失了中心的宅的寂。</p></details>
+
+<p class="seg" data-i="1" data-start="64.32" data-end="123.41">While the second daughter rages and the Senior Lady lies senseless, the residence learns what it is to be without its center. Han Momo, the old steward-mother, kneels to revive her mistress with the rough competence of a woman who has seen faintings and worse, and the father — Lin Jinqi&#x27;s own sire — stands in the doorway of the women&#x27;s quarters, useless in the way only a man of his rank can be, forbidden by custom from the very room his wife has fallen in. The household&#x27;s lesser maids freeze, unsure whether to weep or to work, and it is Yuchan who steadies them, because someone must, and because the master, even in irons, is still the master they answer to. For one afternoon the great Lin house is a body with its head taken, and every hand that moves does so by habit and not by order. Lanxiang, watching from the study door, files this too: a household, she notes, is only as steady as the person it is not allowed to look at.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>二小姐砸着、林母昏着，这府学了&quot;没有中心&quot;是何样。韩嬷嬷，老管事，跪去救主母，带着一种见过昏厥与更糟的妇人的粗练；而父亲——林锦岐的生父——立在内宅门边，以只有他这阶的男人才有的那种无用，被礼数挡在妻子昏倒的那间屋外。府里小丫鬟僵着，不知该哭还是该做，是玉蝉稳了她们，因总得有人，也因主子即便带锁，仍是她们应的人。有一下午，林府是颗被取了头的身，每只有动的手动于习惯、不于令。兰香在书房门边看，也记了：一座府，她注，只稳到它不被许望的那个人。</p></details>
+
+<p class="seg" data-i="2" data-start="123.41" data-end="186.7">But the second daughter&#x27;s ruin becomes, by a turn the season loves, her awakening. In the courtyard afterward, distraught and wandering, she comes upon Du Zheng — the plain soldier, the brother of the favored newcomer — and in his face she sees, with a jolt, the young man she had been calling Xie Zhao. He was never the merchant&#x27;s son. He was this, the humble retainer, the one she passed over a dozen times without seeing. The mistake undoes her: she has been in love with a name she invented, and the real boy was beside her all along, lower than she was taught to look. And here the second daughter does the braver thing than her sister ever managed — she lets the rank go. She looks at Du Zheng, a man of no standing, and feels, for the first time, something truer than the match her family arranged. Across the court, the third daughter watches, still clinging to the rules of birth, and the two sisters stand as the season&#x27;s question made flesh: which of you chose, and which was chosen for?</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可二小姐的毁，经这季爱用的一个转，成了她的醒。事后她在院里失神游荡，撞见杜正——那个平实的兵，得宠新人的兄长——而在他脸上，她一震，认出她一直叫谢昭的少年。他从不曾是商之子。他是这个，卑微的随从，那个她走过十数回却没看见的人。这错拆了她：她爱的是一个自己造的名，而真少年一直在侧，低过她被教去望的处。而二小姐在此，做了比她姐更敢的事——她放了那门第。她看杜正，一个无阶的人，第一次感到比家里替她订的亲更真的东西。院对面，三小姐还攥着出身的规，两姐妹立成这季的问题化成了肉：你们谁选了、谁被替选了？</p></details>
+
+<p class="seg" data-i="3" data-start="186.7" data-end="250.08">Inside the prison, Lin Jinqi is not finished. A man who reads people does not let himself be caged without a move left, and before the irons closed he set one in motion: Yuchan and Lanxiang are to leave the city and intercept the Yongchang Marquis — the old general whose favor Lin Jinqi holds, and whose word can move troops the ministry will not. The two maids, one seasoned and one who has become something more, ride out with a letter sealed against the weather and a charge they barely understand: reach the marquis on the river road, give him the letter, and say only that the matter is the river&#x27;s defense. They are not couriers by trade. They are what the master trusts because everyone else he could send is watched. The errand is a thin one — a letter, two girls, a road — but it is the whole of his remaining hand, and he has staked it on the one asset his enemies cannot see: that a maid who reads is a maid who finds. The bait of last episode has become, this week, the messenger.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>牢里，林锦岐没完。一个读人的人，不会让自己被囚而不留一着；锁合之前他已动了一步：玉蝉与兰香要出城，截永昌侯——那位林锦岐握着交情的老将，其言能动部里不肯动的兵。两个丫鬟，一老练、一已成另样，带一封防天气的信、与一个她们几乎不懂的差：在江路赶上侯、交信，只说事关江防。她们本非信使。她们是被信，因他能用的人都被盯着。上集的饵，这周成了传信人。</p></details>
+
+<p class="seg" data-i="4" data-start="250.08" data-end="307.54">The road is long and the marquis is distant, and when the two girls reach the place the letter names, the old general&#x27;s column has already passed, hours ahead, indifferent to a maid&#x27;s errand. They have one chance left: not the sealed letter, but the man&#x27;s own words. Lanxiang remembers — because a literate maid reads everything, including the verse the marquis once pressed into Lin Jinqi&#x27;s hand as a gift — and she tells Yuchan: we sing it. They step into the column&#x27;s path and raise their voices in the old general&#x27;s own line, the couplet he gave the master, sung loud enough that a man who prizes loyalty cannot mistake the hand that sent it. And as the soldiers slow, Lanxiang calls out the one word the letter dared not spell in the open: jiang fang, the river&#x27;s defense. The marquis, hearing his own gift sung back to him and the word that means invasion, turns his column around.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>路长、侯远，当两个姑娘到信上指的处，老将的队已过了几个时辰，对一个丫鬟的差毫不在意。她们只剩一着：不是密封的信，是那人的诗。兰香记得——因识字的丫鬟什么都读，包括侯曾按进林锦岐手里作赠的那句——她告诉玉蝉：我们唱。她们踏入队前，扬声唱那老将自己的句子，他曾给主子的那联，唱得够响，一个重忠的人不会误认递它来的手。而兵缓下时，兰香喊出信不敢明写的那个字：江防。侯听见自己赠的诗被唱回、并那意指入侵的词，拨转了队。</p></details>
+
+<p class="seg" data-i="5" data-start="307.54" data-end="363.0">At the river, the trap Lin Jinqi foresaw closes on the trappers. The marquis&#x27;s men, led now by the cleared commander, fall on the remnant the dead Lu Dalang served — the smugglers who moved forbidden cotton and seized old women off the banks, the wokou remnant whose raid was a cover for moving military stores. The fight is brief and total; the river runs red the way rivers do when a game larger than a household is settled on its bank. Lin Jinqi, released by the ministry the moment the marquis&#x27;s report lands, rides to the camp not as a suspended officer but as a man vindicated, and the soldiers who lost brothers to the rotten coats receive him not with doubt but with the rough loyalty of men who now know he was framed, not thieving. The false charge is buried in the same water that buried the raiders, and the house&#x27;s name, for the first time since the he li, begins to rise.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>江边，林锦岐预见的那张阱，合到设局者头上。侯的兵，今由洗清的统兵领着，扑向死去的卢大郎所事的残部——那些运禁棉、在岸掳老妇的私贩，以袭为遮、运军需的倭寇残党。战短而尽；江红了，如一座大于府的棋在岸上结算时江会红的那样。林锦岐，侯的报一到部里便被释，不是以停职的官、是以雪冤的人驰到营，而那些因烂袄失了兄弟的兵，接他不是以疑、是以知他被栽非窃的粗鲁的忠。那诬告，与埋了倭寇的同一江水里被埋；而这府的名，自和离后头回，开始起。</p></details>
+
+<p class="seg" data-i="6" data-start="363.0" data-end="420.58">And the commander, walking the camp he has just won back, finds the two maids exactly where he sent them — but not as he left them. Lanxiang, waiting out the fight with the soldiers, has been telling them a story. Not the household&#x27;s story, not the master&#x27;s, but a tale in the old tongue, the kind the camp loves, and the men sit around her like children at a fire. When Lin Jinqi sees her — this girl who was a pair of eyes, then a hand, then a mind, then the one who walked through the door — he stops, and the look he gives her is no longer the look a master gives a tool. It is the look a man gives a person he will, before long, have to reckon with as an equal of a kind. He does not say it. He simply holds out a hand to help her up, and the camp, which has just followed him through a river, reads the gesture and understands that the maid who tells stories has become someone the commander listens to.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而那统兵，走过刚赢回的营，在派她们的地方寻见两个丫鬟——却不是他离去时的样。兰香，与兵们等战毕，给他们讲着一个故事。不是府的、不是主子的，是古语的、营里爱的那种，男人们像火边的孩子围她坐。林锦岐见她——这双&quot;眼&quot;、而后&quot;手&quot;、而后&quot;脑&quot;、而后踏过门的姑娘——停住，他给她的目光，不再是主子给器的那种。是一个人对一个他不久须以某种平等相待的人，给的目光。他不说。只伸手扶她起，而刚随他渡过江的营，读这姿，懂了：那讲故的丫鬟，成了统兵也听的人。</p></details>
+
+<p class="seg" data-i="7" data-start="420.58" data-end="480.36">So we close episode fourteen with the river settled and the household, for one shining stretch, whole again. The second daughter has chosen a love below her rank; the master is cleared and followed; the two maids are sung back into the residence as women who moved a general. But the season does not let wholeness last. Du Cuique, watching all of it from the residence she means to rule, files away the lesson of the flower and the river: that the maid who reads is the maid who decides, and that the next move must be against her. And episode fifteen is where the youngest daughter, taught by Lanxiang&#x27;s example without ever being taught, walks into a cave and learns the last lesson of the season — that courage, once seen, is catching. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, the letter that matters is never the one sealed. It is the one sung aloud, at the right river, by the right girl.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们在江已 settled、而府有一程亮着、重又完整的里收束第十四集。二小姐选了低于她阶的爱；主子清了、被随；两个丫鬟被唱着迎回府，成了动过一员将的妇人。可这季不让完整久。杜翠雀，在要掌的府里看尽一切，把花与江的课归了档：识字的丫鬟，是定的丫鬟，下一着须向她。而第十五集，是那最幼的女儿，未受教、却以兰香为样，走进一洞、学了季最后一课——勇，一旦见了，会传染。但那是下周的讲法。此刻你只记一句：在林府，要紧的信，从不是封着的那个。是那在正确的江、由正确姑娘、唱出声的那个。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 14 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP14_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 64.32], [64.32, 123.41], [123.41, 186.7], [186.7, 250.08], [250.08, 307.54], [307.54, 363.0], [363.0, 420.58], [420.58, 480.36]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
