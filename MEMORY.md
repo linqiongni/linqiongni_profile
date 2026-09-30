@@ -276,3 +276,16 @@
   再 `--check` 体检；**不带 `--fix` 只会 skip，页面不会更新**。
 - 验证方式：无头 Chrome 探针（iframe + postMessage 切 light + 遍历 computedStyle 统计不透明中性底），
   **必须配 `git show HEAD:` 旧版对照组**，否则「0 残留」无法排除探针写错。判据类改动两个模式各验一遍。
+
+## ENGLISH（身边的英语）配音（2026-09-30 起，离线预生成）
+- **音色锁死 `en-US-AriaNeural` @ `-4%`，与《兰香如故》同一支**（Andy 认可「比较地道」）。
+  生成脚本 `scripts/gen_english_audio.py`（逐句 edge-tts → 句间 220ms 静音 → ffmpeg concat → 句级偏移）
+  → 产物 `身边的英语/audio/<id>.mp3` + `audio/index.js`；改内容后**必须重跑** `python3 scripts/gen_english_audio.py [--only <id>]`
+  再 `npm run sync:english`，否则句数与偏移对不上（播放器会自动回落系统语音，不会静音但会变生硬）。
+- **播放器已改为播文件**（`audPlay` + `timeupdate` 反查当前句）：上一句/下一句/进度条是真 seek，
+  语速走 `playbackRate`。原来的「整篇拼成一个 utterance 一次念完 + 高亮按字数估算」那套已不再走。
+- 规模：28 篇 / 820 句 / 约 69 分钟 / **25MB**；逐句缓存 `身边的英语/.tts_cache/` 已 gitignore。
+- 脚本三个硬约定：成功判据 **>400 字节**（极短句 MP3 只有几百字节，写 1000 会误判失败）；
+  并发 6 路失败后**串行补做**；无拉丁字母的句子（如整句是「团圆.」）用静音占位，**不因一句中断整篇**。
+- **`public/english/index.html` 比源目录多近 200 行**（Kokoro 引擎 + 主题补丁）。动它之前先
+  `cp public/english/index.html 身边的英语/index.html` 回写，否则下次 `sync:english` 把改造冲掉（老坑，09-27 记过）。

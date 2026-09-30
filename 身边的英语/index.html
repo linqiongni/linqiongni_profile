@@ -1,6 +1,119 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme-default="light">
+<html lang="zh-CN" data-theme-default="dark" data-theme="dark">
 <head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+
+
+
+
+
+
+
+
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#FBF9F4" />
@@ -39,22 +152,28 @@
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   }
   html[data-theme="dark"]{
-    --bg:#171614;
-    --paper:#1E1D1A;
-    --side:#1B1A17;
-    --ink:#E9E4D9;
-    --ink-soft:#CFC9BC;
-    --muted:#908A7E;
-    --line:#33312B;
-    --line-soft:#2A2823;
-    --gold:#C6AE79;
-    --gold-deep:#C6AE79;
+    --bg:#1C1C1E;
+    --paper:#242426;
+    --side:#242426;
+    --ink:#F4EFE4;
+    --ink-soft:#86868B;
+    --muted:#86868B;
+    --line:#2C2C2E;
+    --line-soft:#2C2C2E;
+    --gold:#C9A86A;
+    --gold-deep:#C9A86A;
     --gold-soft:#3A342A;
-    --hl:#3B3524;
-    --hl-ink:#F0E6CF;
-    --bar:#1B1A17;
+    --hl:#2A2418;
+    --hl-ink:#F4EFE4;
+    --bar:#242426;
     --shadow:none;
   }
+
+html[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html[data-theme="dark"] ::-webkit-scrollbar-track { background: #1C1C1E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2C2C2E; border-radius: 5px; border: 2px solid #1C1C1E; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #3A3A3C; }
+html[data-theme="dark"] { scrollbar-width: thin; scrollbar-color: #2C2C2E #1C1C1E; }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;height:100%;overflow:hidden;}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
@@ -168,7 +287,7 @@
     display:inline-flex;align-items:center;gap:7px;border:none;cursor:pointer;
     background:var(--gold);color:#fff;border-radius:999px;padding:8px 16px;font-size:13.5px;font-family:var(--sans);
   }
-  html[data-theme="dark"] .play-this{color:#171614;}
+  html[data-theme="dark"] .play-this{color:#1C1C1E;}
   .play-this:hover{background:var(--gold-deep);color:#fff;}
 
   .para{margin:0 0 18px;}
@@ -212,7 +331,7 @@
   }
   .pbtn:hover{border-color:var(--gold);color:var(--gold-deep);}
   .pbtn.main{background:var(--gold);border-color:var(--gold);color:#fff;width:40px;height:40px;font-size:15px;}
-  html[data-theme="dark"] .pbtn.main{color:#171614;}
+  html[data-theme="dark"] .pbtn.main{color:#1C1C1E;}
   .track{flex:1;height:4px;background:var(--line);border-radius:999px;cursor:pointer;position:relative;min-width:60px;}
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:999px;width:0;transition:width .2s;}
   .p-right{display:flex;align-items:center;gap:7px;flex:0 0 auto;}
@@ -225,6 +344,13 @@
   .foot{margin-top:34px;font-size:11.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line-soft);padding-top:14px;}
   .empty{padding:60px 0;text-align:center;color:var(--muted);font-size:13px;}
 </style>
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
 </head>
 <body data-mode="both">
 <div class="app" id="app">
@@ -385,6 +511,8 @@ function EN_START(){
   function updateKokoState(){
     var el = document.getElementById("kstate");
     if(!el) return;
+    var a = (window.EN_AUDIO || {})[state.id];
+    if(a && a.f){ el.textContent = "✓ 本篇为离线配音（地道美音 en-US-AriaNeural，点句可跟读）"; return; }
     if(KOKO.engine === "kokoro") el.textContent = "✓ 地道美音引擎已就绪（Kokoro 神经 TTS）";
     else if(KOKO.engine === "loading") el.textContent = "配音引擎加载中…（首次需联网下载模型）";
     else el.textContent = "系统语音模式（引擎未加载，可刷新重试）";
@@ -696,7 +824,7 @@ function EN_START(){
     });
     html += '</div>';
 
-    html += '<div class="foot">整篇播放默认走系统语音（手机上更流畅），点单句朗读优先用美音 Kokoro。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
+    html += '<div class="foot">本篇配音为离线预生成的地道美音（en-US-AriaNeural，与《兰香如故》同音色），点任意一句可从该句跟读。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
 
     reader.innerHTML = html;
     $("playThis").onclick = function(){
@@ -745,10 +873,66 @@ function EN_START(){
     }
   }
 
+  /* ---- 预生成配音（edge-tts en-US-AriaNeural @ -4%，与《兰香如故》同音色）----
+     一篇一个 MP3 + 句级偏移表（audio/index.js），页面只播文件、不再实时合成：
+     地道、不卡，「上一句/下一句/进度跳句」变成真正的 seek（原来整段 speak 时是假的）。
+     没有配音的篇目、或偏移条数与句数对不上（内容改过而音频没重生成）→ 自动回落旧链路。 */
+  var audEl = null, audRun = -1, audStopAt = -1;
+  function audOf(id){
+    var a = (window.EN_AUDIO || {})[id];
+    if(!a || !a.f || !a.off) return null;
+    if(!list || a.off.length !== list.length) return null;
+    return a;
+  }
+  function audElGet(){
+    if(audEl) return audEl;
+    audEl = new Audio();
+    audEl.preload = "auto";
+    audEl.addEventListener("ended", function(){
+      if(runId !== audRun) return;
+      if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
+    });
+    audEl.addEventListener("timeupdate", function(){
+      var a = (window.EN_AUDIO || {})[state.id];
+      if(!a || !a.off) return;
+      var t = audEl.currentTime, k = 0, i;
+      for(i = 0; i < a.off.length; i++){ if(a.off[i] <= t + 0.02) k = i; }
+      if(k !== state.idx){ state.idx = k; highlight(k); updateBar(); }
+      if(audStopAt >= 0 && t >= audStopAt){ audStopAt = -1; stopAll(); }
+    });
+    audEl.addEventListener("error", function(){
+      /* 文件缺失/解码失败：这一篇退回系统语音，不至于没声音 */
+      klog("audio error -> 回落系统语音");
+      if(state.playing){ state.playing = false; synthPlayAll(state.idx, ++runId); }
+    });
+    return audEl;
+  }
+  /* oneShot=true → 只念这一句就停（点句跟读）；false → 从该句连续播到本篇结束 */
+  function audPlay(i, oneShot){
+    var a = audOf(state.id);
+    if(!a) return false;
+    var el = audElGet();
+    unlockMedia();
+    if(el.getAttribute("data-file") !== a.f){ el.setAttribute("data-file", a.f); el.src = a.f; }
+    el.playbackRate = state.rate;
+    audStopAt = oneShot ? ((a.off[i + 1] !== undefined) ? a.off[i + 1] : a.d + 0.05) : -1;
+    try { el.currentTime = a.off[i]; } catch(e){}
+    state.playing = true; state.idx = i; highlight(i); updateBar();
+    audRun = runId;
+    var p = el.play();
+    if(p && p.catch) p.catch(function(){
+      klog("audio play 被拒 -> 回落系统语音");
+      synthPlayAll(i, ++runId);
+    });
+    return true;
+  }
+
   function stopAll(){
     runId++;
     if(synth){ try { synth.cancel(); } catch(e){} }
     if(KOKO.src){ try { KOKO.src.pause(); } catch(e){} KOKO.src = null; }
+    if(audEl){ try { audEl.pause(); } catch(e){} }
+    audStopAt = -1;
     state.playing = false;
     clearHi();
     updateBar();
@@ -804,6 +988,8 @@ function EN_START(){
     if(i < 0) i = 0;
     state.idx = i;
     highlight(i);
+    /* 本篇有离线配音 → 直接播文件（地道 + 不卡），不再走实时合成链路 */
+    if(audPlay(i, false)) return;
     if(!kokoGate()){ state.playing = false; updateBar(); return; }
     if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
@@ -962,9 +1148,16 @@ function EN_START(){
     state.rate = RATES[(i + 1) % RATES.length];
     this.textContent = state.rate.toFixed(2).replace(/0$/, "") + "×";
     if(state.rate !== 1) this.classList.add("on"); else this.classList.remove("on");
+    /* 离线配音模式：改 playbackRate 即可，不必从头重播（浏览器默认保持音高不变调） */
+    if(audOf(state.id) && audEl){ audEl.playbackRate = state.rate; return; }
     if(state.playing) playFrom(state.idx);
   });
   $("voice").addEventListener("click", function(){
+    if(audOf(state.id)){
+      this.textContent = "美音";
+      this.title = "本篇为离线预生成美音配音（en-US-AriaNeural），不提供英音切换";
+      return;
+    }
     if(KOKO.ready){
       KOKO.pi = (KOKO.pi + 1) % KOKO.presets.length;
       KOKO.voice = KOKO.presets[KOKO.pi].id;
@@ -1028,15 +1221,94 @@ function EN_START(){
 (function(){
   var m = location.search.match(/[?&]v=([^&]+)/);
   var v = m ? m[1] : "";
-  var s = document.createElement("script");
-  s.src = "scenes.js" + (v ? "?v=" + v : "");
-  s.onload = function(){ try { EN_START(); } catch(e){ console.error(e); } };
-  s.onerror = function(){
+  function load(src, ok, err){
+    var s = document.createElement("script");
+    s.src = src + (v ? "?v=" + v : "");
+    s.onload = ok; s.onerror = err;
+    document.head.appendChild(s);
+  }
+  function fail(){
     var r = document.getElementById("reader");
     if(r) r.innerHTML = '<div class="empty">内容没加载出来，刷新一下试试</div>';
-  };
-  document.head.appendChild(s);
+  }
+  function start(){ try { EN_START(); } catch(e){ console.error(e); } }
+  /* 先拉配音偏移表（渲染时要知道本篇有没有配音），它失败不影响正文，只回落系统语音 */
+  load("audio/index.js", function(){ load("scenes.js", start, fail); },
+       function(){ load("scenes.js", start, fail); });
 })();
 </script>
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
 </body>
 </html>

@@ -1,0 +1,1 @@
+What we don't want is the version where it also covers data breaches, because under PIPL a data incident is not a contract-sized problem.

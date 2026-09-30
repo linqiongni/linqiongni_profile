@@ -511,6 +511,8 @@ function EN_START(){
   function updateKokoState(){
     var el = document.getElementById("kstate");
     if(!el) return;
+    var a = (window.EN_AUDIO || {})[state.id];
+    if(a && a.f){ el.textContent = "✓ 本篇为离线配音（地道美音 en-US-AriaNeural，点句可跟读）"; return; }
     if(KOKO.engine === "kokoro") el.textContent = "✓ 地道美音引擎已就绪（Kokoro 神经 TTS）";
     else if(KOKO.engine === "loading") el.textContent = "配音引擎加载中…（首次需联网下载模型）";
     else el.textContent = "系统语音模式（引擎未加载，可刷新重试）";
@@ -822,7 +824,7 @@ function EN_START(){
     });
     html += '</div>';
 
-    html += '<div class="foot">整篇播放默认走系统语音（手机上更流畅），点单句朗读优先用美音 Kokoro。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
+    html += '<div class="foot">本篇配音为离线预生成的地道美音（en-US-AriaNeural，与《兰香如故》同音色），点任意一句可从该句跟读。进度与「已听」记在本机浏览器。<br><span id="kstate" class="kstate">配音引擎加载中…</span></div>';
 
     reader.innerHTML = html;
     $("playThis").onclick = function(){
@@ -871,10 +873,66 @@ function EN_START(){
     }
   }
 
+  /* ---- 预生成配音（edge-tts en-US-AriaNeural @ -4%，与《兰香如故》同音色）----
+     一篇一个 MP3 + 句级偏移表（audio/index.js），页面只播文件、不再实时合成：
+     地道、不卡，「上一句/下一句/进度跳句」变成真正的 seek（原来整段 speak 时是假的）。
+     没有配音的篇目、或偏移条数与句数对不上（内容改过而音频没重生成）→ 自动回落旧链路。 */
+  var audEl = null, audRun = -1, audStopAt = -1;
+  function audOf(id){
+    var a = (window.EN_AUDIO || {})[id];
+    if(!a || !a.f || !a.off) return null;
+    if(!list || a.off.length !== list.length) return null;
+    return a;
+  }
+  function audElGet(){
+    if(audEl) return audEl;
+    audEl = new Audio();
+    audEl.preload = "auto";
+    audEl.addEventListener("ended", function(){
+      if(runId !== audRun) return;
+      if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
+    });
+    audEl.addEventListener("timeupdate", function(){
+      var a = (window.EN_AUDIO || {})[state.id];
+      if(!a || !a.off) return;
+      var t = audEl.currentTime, k = 0, i;
+      for(i = 0; i < a.off.length; i++){ if(a.off[i] <= t + 0.02) k = i; }
+      if(k !== state.idx){ state.idx = k; highlight(k); updateBar(); }
+      if(audStopAt >= 0 && t >= audStopAt){ audStopAt = -1; stopAll(); }
+    });
+    audEl.addEventListener("error", function(){
+      /* 文件缺失/解码失败：这一篇退回系统语音，不至于没声音 */
+      klog("audio error -> 回落系统语音");
+      if(state.playing){ state.playing = false; synthPlayAll(state.idx, ++runId); }
+    });
+    return audEl;
+  }
+  /* oneShot=true → 只念这一句就停（点句跟读）；false → 从该句连续播到本篇结束 */
+  function audPlay(i, oneShot){
+    var a = audOf(state.id);
+    if(!a) return false;
+    var el = audElGet();
+    unlockMedia();
+    if(el.getAttribute("data-file") !== a.f){ el.setAttribute("data-file", a.f); el.src = a.f; }
+    el.playbackRate = state.rate;
+    audStopAt = oneShot ? ((a.off[i + 1] !== undefined) ? a.off[i + 1] : a.d + 0.05) : -1;
+    try { el.currentTime = a.off[i]; } catch(e){}
+    state.playing = true; state.idx = i; highlight(i); updateBar();
+    audRun = runId;
+    var p = el.play();
+    if(p && p.catch) p.catch(function(){
+      klog("audio play 被拒 -> 回落系统语音");
+      synthPlayAll(i, ++runId);
+    });
+    return true;
+  }
+
   function stopAll(){
     runId++;
     if(synth){ try { synth.cancel(); } catch(e){} }
     if(KOKO.src){ try { KOKO.src.pause(); } catch(e){} KOKO.src = null; }
+    if(audEl){ try { audEl.pause(); } catch(e){} }
+    audStopAt = -1;
     state.playing = false;
     clearHi();
     updateBar();
@@ -930,6 +988,8 @@ function EN_START(){
     if(i < 0) i = 0;
     state.idx = i;
     highlight(i);
+    /* 本篇有离线配音 → 直接播文件（地道 + 不卡），不再走实时合成链路 */
+    if(audPlay(i, false)) return;
     if(!kokoGate()){ state.playing = false; updateBar(); return; }
     if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
@@ -1088,9 +1148,16 @@ function EN_START(){
     state.rate = RATES[(i + 1) % RATES.length];
     this.textContent = state.rate.toFixed(2).replace(/0$/, "") + "×";
     if(state.rate !== 1) this.classList.add("on"); else this.classList.remove("on");
+    /* 离线配音模式：改 playbackRate 即可，不必从头重播（浏览器默认保持音高不变调） */
+    if(audOf(state.id) && audEl){ audEl.playbackRate = state.rate; return; }
     if(state.playing) playFrom(state.idx);
   });
   $("voice").addEventListener("click", function(){
+    if(audOf(state.id)){
+      this.textContent = "美音";
+      this.title = "本篇为离线预生成美音配音（en-US-AriaNeural），不提供英音切换";
+      return;
+    }
     if(KOKO.ready){
       KOKO.pi = (KOKO.pi + 1) % KOKO.presets.length;
       KOKO.voice = KOKO.presets[KOKO.pi].id;
@@ -1154,14 +1221,20 @@ function EN_START(){
 (function(){
   var m = location.search.match(/[?&]v=([^&]+)/);
   var v = m ? m[1] : "";
-  var s = document.createElement("script");
-  s.src = "scenes.js" + (v ? "?v=" + v : "");
-  s.onload = function(){ try { EN_START(); } catch(e){ console.error(e); } };
-  s.onerror = function(){
+  function load(src, ok, err){
+    var s = document.createElement("script");
+    s.src = src + (v ? "?v=" + v : "");
+    s.onload = ok; s.onerror = err;
+    document.head.appendChild(s);
+  }
+  function fail(){
     var r = document.getElementById("reader");
     if(r) r.innerHTML = '<div class="empty">内容没加载出来，刷新一下试试</div>';
-  };
-  document.head.appendChild(s);
+  }
+  function start(){ try { EN_START(); } catch(e){ console.error(e); } }
+  /* 先拉配音偏移表（渲染时要知道本篇有没有配音），它失败不影响正文，只回落系统语音 */
+  load("audio/index.js", function(){ load("scenes.js", start, fail); },
+       function(){ load("scenes.js", start, fail); });
 })();
 </script>
 <!-- SUB_THEME_BRIDGE_START -->

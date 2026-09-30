@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh" data-theme="dark">
+<html lang="zh">
 <head>
 <!-- EMBEDDED_KIT_START -->
 <script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
@@ -105,15 +105,6 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
 })();</script>
 <!-- EMBEDDED_KIT_END -->
 
-
-
-
-
-
-
-
-
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>身边的英语 · 打印版</title>
@@ -201,13 +192,13 @@ body[data-pm="en"] .scene-title .cn{display:none;}
   .para .cn{border-left:2px solid #ccc!important;}
   a{color:inherit;}
 }</style>
-<!-- SUB_THEME_KIT_START -->
-<link rel="stylesheet" href="/theme-light.css?v=3">
-<!-- SUB_THEME_KIT_END -->
 <!-- DARK_UNIFY_START -->
 <style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
 </style>
 <!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
 </head>
 <body data-pm="both">
 <div class="wrap">
@@ -240,52 +231,5 @@ body[data-pm="en"] .scene-title .cn{display:none;}
     });
   });
 </script>
-<!-- SUB_THEME_BRIDGE_START -->
-<script>(function(){
-  if(window.__themeBridge)return;window.__themeBridge=1;
-  var r=document.documentElement;
-  function apply(m){
-    m=(m==='light')?'light':'dark';
-    r.setAttribute('data-theme',m);
-    try{ r.setAttribute('data-theme-default',m); }catch(e){}
-    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
-  }
-  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
-  window.addEventListener('message',function(e){
-    var d=e.data||{};
-    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
-  });
-  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
-  function addBtn(){ return; // 主题按钮已按 Andy 要求（2026-09-28）全站移除：嵌入态由主站导航栏控制，独立打开保持默认深色
-    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
-    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
-    if(document.getElementById('themeBtn'))return;
-    var b=document.createElement('button');
-    b.id='theme-toggle-btn';b.type='button';
-    b.style.cssText=[
-      'position:fixed','top:56px','right:16px','z-index:9999',
-      'padding:6px 14px','border-radius:999px','cursor:pointer',
-      'font-size:13px','font-family:inherit',
-      'border:1px solid var(--line,#CFCABE)',
-      'background:var(--card,#FFFFFF)',
-      'color:var(--txt,#23201B)',
-      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
-      'transition:border-color .15s,color .15s'
-    ].join(';');
-    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
-      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
-    }
-    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
-    b.addEventListener('click',function(){
-      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
-      paint();
-    });
-    paint();
-    (document.body||r).appendChild(b);
-  }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
-  else { addBtn(); }
-})();</script>
-<!-- SUB_THEME_BRIDGE_END -->
 </body>
 </html>

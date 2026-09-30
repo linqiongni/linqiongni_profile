@@ -22,3 +22,6 @@ coverage/
 # Python 缓存
 __pycache__/
 *.pyc
+
+# ENGLISH 配音的逐句中间缓存（最终音频在 身边的英语/audio/，已入库）
+身边的英语/.tts_cache/

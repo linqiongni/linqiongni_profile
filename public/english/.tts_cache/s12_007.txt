@@ -1,0 +1,1 @@
+That's the holiday shuffle, and it's a very local piece of arithmetic: you move a Saturday and a Sunday around the calendar until they sit next to the actual public holiday, and then you work both of them before or after.
