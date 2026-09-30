@@ -1,1 +1,0 @@
-My own calculation takes about thirty seconds.

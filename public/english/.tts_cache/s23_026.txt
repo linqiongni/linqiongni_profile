@@ -1,1 +1,0 @@
-What it does is cut the day into two pieces: before the run and after it.
