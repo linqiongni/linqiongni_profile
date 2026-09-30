@@ -878,6 +878,19 @@ function EN_START(){
      地道、不卡，「上一句/下一句/进度跳句」变成真正的 seek（原来整段 speak 时是假的）。
      没有配音的篇目、或偏移条数与句数对不上（内容改过而音频没重生成）→ 自动回落旧链路。 */
   var audEl = null, audRun = -1, audStopAt = -1;
+  /* audTok：打断令牌——暂停/切篇会使等待中的 canplay 回调失效；audLoading：正在等配音下载 */
+  var audTok = 0, audLoading = false;
+  /* 打开篇目就开始下载配音（preload），用户读到正文再点播放时基本已就绪——
+     弱网到 GitHub Pages 拉 1MB+ 可能要几十秒，等点播放才开始下=长时间无声（2026-09-30 实测踩坑） */
+  function audPreload(id){
+    var a = audOf(id);
+    if(!a) return;
+    var el = audElGet();
+    if(el.getAttribute("data-file") !== a.f){
+      el.setAttribute("data-file", a.f); el.src = a.f;
+      try { el.load(); } catch(e){}
+    }
+  }
   function audOf(id){
     var a = (window.EN_AUDIO || {})[id];
     if(!a || !a.f || !a.off) return null;
@@ -913,22 +926,55 @@ function EN_START(){
     if(!a) return false;
     var el = audElGet();
     unlockMedia();
-    if(el.getAttribute("data-file") !== a.f){ el.setAttribute("data-file", a.f); el.src = a.f; }
+    var first = el.getAttribute("data-file") !== a.f;
+    if(first){ el.setAttribute("data-file", a.f); el.src = a.f; }
     el.playbackRate = state.rate;
     audStopAt = oneShot ? ((a.off[i + 1] !== undefined) ? a.off[i + 1] : a.d + 0.05) : -1;
-    try { el.currentTime = a.off[i]; } catch(e){}
-    state.playing = true; state.idx = i; highlight(i); updateBar();
-    audRun = runId;
-    var p = el.play();
-    if(p && p.catch) p.catch(function(){
-      klog("audio play 被拒 -> 回落系统语音");
-      synthPlayAll(i, ++runId);
-    });
+    var tok = ++audTok;
+    var begin = function(){
+      if(tok !== audTok) return; /* 已被暂停/切篇打断 */
+      try { el.currentTime = a.off[i]; } catch(e){}
+      state.playing = true; state.idx = i; highlight(i); updateBar();
+      audRun = runId;
+      var p = el.play();
+      if(p && p.catch) p.catch(function(){
+        klog("audio play 被拒 -> 回落系统语音");
+        synthPlayAll(i, ++runId);
+      });
+    };
+    if(first && el.readyState < 2){
+      /* 这篇配音还没下够（预加载没做完 / 弱网）：明确给「加载中」反馈，缓冲够了再出声；
+         等太久自动回落系统语音——无声地干等是最差体验（2026-09-30 用户实测踩坑） */
+      audLoading = true; state.playing = true; updateBar();
+      kokoToast("配音加载中…（整篇约 1MB，弱网需稍等）");
+      var onR = function(){
+        el.removeEventListener("canplay", onR);
+        if(to){ clearTimeout(to); to = null; }
+        if(tok !== audTok) return;
+        audLoading = false; updateBar();
+        begin();
+      };
+      var to = setTimeout(function(){
+        el.removeEventListener("canplay", onR);
+        if(tok !== audTok) return;
+        audLoading = false; updateBar();
+        kokoToast("配音下载太慢，先用系统语音播；下完后重新播放即是地道美音");
+        klog("配音 15s 未就绪 -> 回落系统语音");
+        synthPlayAll(i, ++runId);
+      }, 15000);
+      el.addEventListener("canplay", onR);
+      try { el.load(); } catch(e){}
+      return true;
+    }
+    audLoading = false;
+    begin();
     return true;
   }
 
   function stopAll(){
     runId++;
+    audTok++;          /* 作废还在等 canplay 的 audPlay 回调（加载中点暂停=真的停） */
+    audLoading = false;
     if(synth){ try { synth.cancel(); } catch(e){} }
     if(KOKO.src){ try { KOKO.src.pause(); } catch(e){} KOKO.src = null; }
     if(audEl){ try { audEl.pause(); } catch(e){} }
@@ -1067,6 +1113,7 @@ function EN_START(){
     state.idx = 0;
     renderDir();
     renderScene();
+    audPreload(id);   /* 进篇目就开始拉配音，别等点播放 */
     if(main.scrollTo) main.scrollTo({ top: 0, behavior: "smooth" }); else main.scrollTop = 0;
     if(window.innerWidth <= 900) closeSide();
   }
@@ -1215,12 +1262,16 @@ function EN_START(){
 
   renderDir();
   renderScene();
+  audPreload(state.id);   /* 首屏也预加载（恢复上次听到的那篇） */
 }
 
 /* 加载内容数据：把 iframe 上带的版本号透传给 scenes.js，避免命中旧缓存（旧 index + 新/旧数据不匹配会白屏） */
 (function(){
   var m = location.search.match(/[?&]v=([^&]+)/);
   var v = m ? m[1] : "";
+  /* 配音偏移表自己的版本号（AV）：gen_english_audio.py 每次生成会自动 bump。
+     没有它，重生成配音后老访客拿浏览器缓存的旧偏移表配新 MP3，句高亮会错位。 */
+  var AV = "va202610010002";
   function load(src, ok, err){
     var s = document.createElement("script");
     s.src = src + (v ? "?v=" + v : "");
@@ -1233,7 +1284,7 @@ function EN_START(){
   }
   function start(){ try { EN_START(); } catch(e){ console.error(e); } }
   /* 先拉配音偏移表（渲染时要知道本篇有没有配音），它失败不影响正文，只回落系统语音 */
-  load("audio/index.js", function(){ load("scenes.js", start, fail); },
+  load("audio/index.js" + (v ? "?v=" + v : "?" + AV), function(){ load("scenes.js", start, fail); },
        function(){ load("scenes.js", start, fail); });
 })();
 </script>

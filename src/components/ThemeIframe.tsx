@@ -134,8 +134,9 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
           }}
           className={iframeClassName}
           loading="eager"
-          // 允许 iframe 内的静态站自己调用 Fullscreen API（融资法务站顶栏的「全屏」按钮）
-          allow="fullscreen"
+          // 允许 iframe 内的静态站自己调用 Fullscreen API（融资法务站顶栏的「全屏」按钮）；
+          // autoplay：子站配音在「缓冲就绪」的异步回调里才 play()（如 ENGLISH 站），补授权防被拦
+          allow="fullscreen; autoplay"
         />
       </div>
 

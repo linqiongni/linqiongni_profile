@@ -23,7 +23,7 @@
 产物：身边的英语/audio/<id>.mp3 + 身边的英语/audio/index.js（偏移表）
      中间句缓存放 身边的英语/.tts_cache/（已 gitignore，不入库）
 """
-import os, re, sys, json, argparse, subprocess, shutil
+import os, re, sys, json, time, argparse, subprocess, shutil
 from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -245,7 +245,26 @@ def main():
     with open(index_js, "w", encoding="utf-8") as f:
         f.write("window.EN_AUDIO=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
     print("偏移表已写入 %s（%d 篇）" % (index_js, len(data)))
+    bump_av()   # 偏移表变了就 bump 页面里的 AV 版本号，冲掉老访客缓存的旧偏移表
     print("提示：改完记得 npm run sync:english，把 audio/ 与 index.html 同步到 public/english/")
+
+
+def bump_av():
+    """身边的英语/index.html 里 var AV = "va..." 是 audio/index.js 的缓存版本号。
+    每次生成偏移表都换一个新号，否则重生成后老访客拿缓存的旧偏移表配新 MP3，句高亮会错位。"""
+    page = os.path.join(os.path.dirname(OUT_DIR), "index.html")
+    try:
+        s = open(page, encoding="utf-8").read()
+    except OSError:
+        print("[warn] 找不到 %s，没 bump AV" % page)
+        return
+    new_av = "va" + time.strftime("%Y%m%d%H%M")
+    s2, n = re.subn(r'var AV = "va[^"]*"', 'var AV = "%s"' % new_av, s, count=1)
+    if n:
+        open(page, "w", encoding="utf-8").write(s2)
+        print("AV 已 bump -> %s" % new_av)
+    else:
+        print("[warn] index.html 里没找到 var AV，没 bump（页面还是手写版本号的话记得手动改）")
 
 
 if __name__ == "__main__":

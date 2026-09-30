@@ -23,7 +23,7 @@ coverage/
 __pycache__/
 *.pyc
 
-# ENGLISH 配音的逐句中间缓存（最终音频在 身边的英语/audio/，已入库）
-身边的英语/.tts_cache/
+# TTS 逐句中间缓存（各站通用；rsync 会把源目录的 .tts_cache 带进 public/，必须全站匹配）
+.tts_cache/
 # 兰香如故 TTS 逐段缓存（EP mp3 才是产物，已入库）
 兰香如故/工具/tts_cache/
