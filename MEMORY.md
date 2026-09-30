@@ -298,3 +298,7 @@
 - iframe 统一 `allow="fullscreen; autoplay"`（ThemeIframe）——异步回调里 play() 需要这层授权。
 - 教训重演：昨晚 commit 里 .gitignore 全局 .tts_cache/ 和 sync --exclude **都没落盘**——
   多处 Edit 报成功≠落盘，改完必须 grep 复核（CONTRACT 既有条款）。
+- **本机无头 Chrome 已无法验证「有没有声音」**（2026-10-01 凌晨实锤：裸 `<audio>` 标签同样
+  `paused=false / ready=4 / t=0 不推进`，媒体时钟失效）。**别再用本机 currentTime 判断有声与否**。
+  用户端取证走 `?diag=1`（页面左上角诊断条）+ 底部状态行（加载 X% / 播放中 Xs / 已回落）。
+  播放器已加看门狗：起播 4s 未推进 → 自动切系统语音。
