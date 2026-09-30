@@ -10,6 +10,16 @@ try{
 if(!window.parent||window.parent===window)return;
 if(!document.documentElement.classList.contains("embedded"))return;
 function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
 function glass(el,force){
 if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
 var cs=getComputedStyle(el);
@@ -24,14 +34,14 @@ var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+
 var gi=cs.backgroundImage;
 if(gi&&gi.indexOf("gradient")>=0){
 var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
-var heavyDark=false;
+var heavySurface=false;
 for(var si=0;si<stops.length;si++){
 var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
 if(!sm)continue;
 var sa=sm[4]===undefined?1:parseFloat(sm[4]);
-if(sa>=0.3&&dark(+sm[1],+sm[2],+sm[3])){heavyDark=true;break;}
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
 }
-if(heavyDark&&!el.__gImg){
+if(heavySurface&&!el.__gImg){
 /* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
    .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
    金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
@@ -45,8 +55,9 @@ if(m){
 var a=m[4]===undefined?1:parseFloat(m[4]);
 if(a>=0.85&&!el.__gBg){
 var r=+m[1],g=+m[2],b=+m[3];
-/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab */
-if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&dark(r,g,b)){
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
 el.__gBg=1;
 el.style.setProperty("background-color","transparent","important");
 var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
@@ -78,14 +89,23 @@ mo.observe(document.documentElement,{childList:true,subtree:true});
    所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
    自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
 var __gDeb=null;
-var mo2=new MutationObserver(function(){
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
 if(__gDeb)return;
-__gDeb=setTimeout(function(){__gDeb=null;run();},120);
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
 });
-mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style"],subtree:true});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
+
 
 
 

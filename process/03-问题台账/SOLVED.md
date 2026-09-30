@@ -226,3 +226,30 @@
   254 页 0 异常；agent-browser 实开 labor/index.html 与 employee.html 截图确认渲染恢复、无 JS 报错。
 - **预防**：注入器对 HTML 行结构的任何「独占一行」假设都必须先验证；以后给 HTML 做正则手术，
   先扫一遍目标标记是否总独占一行（`grep -c "END -->."` 同行有内容即危险）。
+
+---
+
+### #25 · 白天模式子站整片米白盖住主站固定背景与鱼影（2026-09-30）
+
+- **现象**：Andy 截图反馈——切到白天模式，零售与广告合规等子站里主站那层固定背景和鱼影全没了，只剩一片米白。暗色模式正常。
+- **根因**（两处，缺一不可）：
+  1. **判据只认深色**：玻璃化 `glass()` 用 `dark()`（亮度 <130）判断「该清的底色」。子站白天模式的表面色
+     `--bg #FDFCF9` / `--card #FFFFFF` / `--bg-alt #F7F4EC` 亮度都很高，一条都不命中 → 整页不透明。
+     实测旧版 retail-ad 残留 **52 块**不透明中性底，其中 `DIV.content` 是 686×7740 的整块。
+  2. **主题切换不重扫**：属性观察器只听 `class` / `style`，主题桥切的是 `<html data-theme>` →
+     深→浅切换后底色全变，观察器不触发，已打标元素又被非强制 `run()` 跳过。
+- **解法**：
+  1. `dark()` → `surface()`：**中性（通道极差 <32）一律清**；**彩色且非极暗（极差 ≥32 且亮度 ≥56）保留**
+     （金/红/绿/蓝等强调色，含「白字金底」控件与金色进度条）；极暗彩色（#091A2E / #102943 深海渐变）仍清。
+     渐变分支同口径（`heavyDark` → `heavySurface`）。
+  2. 观察器 `attributeFilter` 补 `data-theme`，命中即置 `__gForce`，防抖 120ms 后 `run(true)` **强制**重扫。
+- **修复步骤**：改 `scripts/theme-kit/embedded_kit.txt`（金本）→ `apply-theme-kit.py --fix`（19 站 253 页）
+  → `--check` 通过 → `node --check` 抽取脚本通过 → 无头 Chrome 探针实测。
+- **验证**：探针页（iframe + postMessage 切 light + 遍历 computedStyle）四站各测两态 ——
+  旧版对照 52 块残留；新版 retail-ad / commercial-ops / ip / financing-legal 残留 **0**，
+  强调色 `rgb(138,103,22)` 保留。
+- **预防**：①主题相关的自查必须**两个模式各跑一遍**，只测默认态（本站默认暗色）等于没测；
+  ②改金本后必须 `--fix` 全量刷新（261 页含章节页），只打 index 会漏；③属性观察器的 `attributeFilter`
+  漏一个属性 = 整条链路静默失效，加监听时把「谁会改它」列全。
+- **未决派生**：兰香如故 8 页本轮被补上 DARK_UNIFY/SUB_THEME_KIT/AQUATIC_BG_KIT，因不走 iframe（独立打开）
+  会改变独立观感，已 `git checkout` 撤回，待单独评估。

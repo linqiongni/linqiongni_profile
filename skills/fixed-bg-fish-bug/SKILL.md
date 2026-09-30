@@ -58,6 +58,7 @@ agent_created: true
 | **下拉条发蓝** | 该站 scrollbar 用了 `#1B2E45`（描边蓝）而非灰黑基线 | 统一 `thumb #2C2C2E / track #1C1C1E / hover #3A3A3C` |
 | **局部蓝块（侧栏/卡片/弹层）** | 该元素自己的 `background-color` 或 `background-image` 渐变 | 玻璃化 / 改 transparent |
 | **小控件（胶囊/按钮/表头）样式异常、选中态丢失**（09-29 课程胶囊金底实锤） | glassify load 时把它当时的深底清成 transparent + inline `!important` 永久压制，之后 JS 切 class 也救不回；且透明后 alpha<0.85 复查分支永不命中 = **清色死锁无法自愈** | 尺寸保护已废除；金本 `scripts/theme-kit/embedded_kit.txt` 改后跑 `apply-theme-kit.py --fix` 全量刷新，凡「初始态 A、交互后变样式 B」的元素都要复验交互态 |
+| **白天/浅色模式下背景 + 鱼影整体消失，只剩一片米白**（09-30 retail-ad 实锤，暗色正常） | 两处叠加：①玻璃化判据 `dark()` 只清**深色**，而子站白天模式的表面色 `--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC` 亮度都很高、一条都不命中 → 整页不透明（实测旧版残留 52 块，含 `DIV.content` 686×7740 整块）；②属性观察器只听 `class`/`style`，主题桥切的是 `<html data-theme>` → 深→浅切换后不重扫，已打标元素又被非强制 `run()` 跳过 | 判据换 `surface()`：**中性（通道极差 <32）一律清、彩色且亮度 ≥56 保留**（保住白字金底控件与金色进度条）；观察器 `attributeFilter` 补 `data-theme` 且命中即 `run(true)` 强制重扫。改金本 `embedded_kit.txt` 后必须 `--fix` 全量刷新 |
 | **切 tab 后新面板整块深底裸露**（09-29 课程页 tab ②③④ 实锤） | 隐藏面板 display:none 加载时 0 尺寸被旧尺寸保护跳过（不清色不打标），切 tab 变可见后深底露出；而 glassify 的 MutationObserver 只听 childList，class 切换不触发补扫 | glassify 加 class/style 属性 MutationObserver（防抖 120ms 后 `run()` 非强制补扫，已标记跳过，无死循环）——09-29 已进金本 |
 | **顶栏/侧栏/搜索框等又出现深蓝底**（09-29 两次实锤） | 尺寸保护线划到哪，哪批元素就保留深底：第一轮「宽≥200且高≥120」漏了 61px 顶栏，第二轮「宽≥400或高≥120」又把侧栏条目/搜索框/表头全保留——**按尺寸豁免这条路本身不通** | 尺寸保护彻底废除：除交互态胶囊外一律清透明（=用户认可的全透明基准）。豁免=死锁准入（见下） |
 
@@ -76,6 +77,8 @@ agent_created: true
 | 大内容卡 `.card` / `blockquote` | **透明** |
 | 隐藏 tab 面板切换后 800ms | 观察器补扫清透 |
 | 切 tab 滚动位置 | 停在 tabs 上缘，不回顶 |
+| **浅色模式**（postMessage `{type:'theme',mode:'light'}` 后 2s）上述同一批元素 | **同样全透明**（白天模式曾整片漏网，见决策树） |
+| 强调色控件（金色进度条 `.readbar`、白字金底按钮 `.stations a.on`、印章 `.seal`） | **保留**（被清 = 白字隐形 / 进度条消失） |
 
 改完顺序：金本 → `apply-theme-kit.py --fix` 全量 → `node --check` 抽查 → **上表逐项探针** → commit。
 **豁免白名单只允许通过「交互态死锁」准入**：只有当某元素的底色会随用户交互切换、且被 inline 透明压制后无法自愈时，才允许加豁免；纯静态元素一律清透明，不许因为「小」「像控件」就豁免。当前白名单：① class 含 `tab` 的元素；② `nav.tabs` 容器内的按钮（涉外合同指南页用 `nav.tabs button.active`，类名不含 tab，09-29d 补进金本，条件写法 `el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs"))`）。新页面接入前先 grep 该页胶囊/选中态的类名，凡是「选中态底色随 class 切换」的都要核对是否落在白名单内，不在就先补金本再刷新。
@@ -91,6 +94,13 @@ agent_created: true
 3. **对比高度**：`iframe.clientHeight` vs `document.documentElement.scrollHeight` —— 差值就是露白/露底区。
 4. **二分法定位画布级填色**：藏 iframe → 看像素变不变；藏 iframe 文档内容（`visibility:hidden`）→ 像素仍不变即画布级（元素审计查不到）。
 5. **grep 全站对比**（`grep -rhoE "scrollbar-color: *#[0-9A-Fa-f]{6} *#[0-9A-Fa-f]{6}" public/*/`）——找出与其他站不一致的"另一派"。
+6. **探针页 + 对照组**（09-30 定型，判据类改动必须先跑）：
+   ① 在 `public/` 放一次性 `_probe.html`：iframe 载入子站页 → postMessage 切主题 → 遍历 `getComputedStyle`
+   统计「不透明中性底」元素数与大块清单 → 结果写进 `<pre id="out">`；
+   ② `python3 -m http.server 8899`（**必须和 Chrome 同一条命令里起**，上一条 Bash 结束服务就死）；
+   ③ `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-sandbox --virtual-time-budget=25000 --dump-dom http://127.0.0.1:8899/_probe.html` 取 `<pre>` 内容；
+   ④ **对照组**：`git show HEAD:public/<站>/index.html > public/<站>/_probe_old.html` 跑同一探针 ——
+   没有对照组时「0 残留」既可能是修好了，也可能是探针写错了。用完删探针文件。
 
 ---
 

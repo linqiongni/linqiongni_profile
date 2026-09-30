@@ -181,6 +181,7 @@
 | 2026-09-29 | **技能层拉进 git**：新增仓库 `skills/`（六份本仓库专属技能，唯一真源），本机改软链；`setup-device.sh` 加「接管技能」步骤，新设备仍是一条命令 | #26 |
 | 2026-09-29 | 第二台机器接入走通（开场白第三节流程）；修掉钥匙串里 gitee.com 的错误凭据（GitHub OAuth 串占位），Gitee 令牌已正确入钥匙串、双远端实测连通 | — |
 | 2026-09-29 | 新沙箱接手：克隆（Gitee 镜像，GitHub TLS 不通）＋装自动同步 hook（6/6 自检过）＋读 CONTRACT/README/开场白/OPEN/MEMORY；把「兰香如故」英文剧集介绍项目沉淀进 MEMORY.md + 今日日志 | — |
+| 2026-09-30 | **白天模式背景/鱼影消失根治（#25）**：玻璃化判据「清深色」→「清中性表面色、留彩色强调色」，属性观察器补 `data-theme` 强制重扫；`--fix` 刷新 253 页；无头 Chrome 探针实测旧版对照 52 块残留 → 新版 0 残留 | #25 根治、#26 新开 |
 | 2026-09-29 | 兰香如故「跨设备交接包」落地本地整理：`EP01.html` 有声成片 + `EP01_audio.mp3`(2.3M/407.5s) + `跨设备交接包.md` 三件落入仓库 `兰香如故/`；修掉 `README.md`/两份底稿旧「文末翻译、无音频」约定与 `EP01.html` 实际「逐段折叠」不符的矛盾（已重写 README 以 EP01.html 为准）；托管决策覆盖：音频随 GitHub Pages 同目录公开，推翻交接包「纯本地不进 git」 | — |
 | 2026-09-29 | 兰香如故接入站点：新增 `lanxiang` tab（hub 模式，剧集列表收在 tab 内、全局菜单仅一项），归入「影视法律」分组下新建 section「兰香如故」；`public/lanxiang/EP01.html`+mp3 就位；改 types/navConfig/App/LanxiangTab 四处，`npx tsc --noEmit` 通过（本地禁 build，待 `npm run dev` 或 CI 看效果） | — |
 | 2026-09-29 | 兰香如故打磨：分组「影视法律」改名为「影视 · 英语」(Film & English)；`EP01.html` 改为自包含主题版——`data-theme` 驱动 CSS 变量（浅态米白/香槟金、暗态深海军蓝/金/米白，对齐主站视觉口径），嵌入态背景透明透出主站固定鱼影、明暗随主站 `ThemeIframe` 经 postMessage 下发；两份 EP01（站点副本+真源）同步改，`npx tsc --noEmit` 通过 | — |
