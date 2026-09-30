@@ -532,9 +532,29 @@ function EN_START(){
   }
   /* 调试诊断条：把播放链路的每一步实时显示在页面左上角，便于在真机上定位「没声音」根因。
      真机排障时让用户把这个面板的内容念/截给我即可，避免继续盲改。 */
+  /* 诊断条：默认只写 console（不遮挡内容）；地址栏带 ?diag=1 时在页面左上角实时显示整条播放链路，
+     真机排障时让用户截图给我即可——避免「点了没声音」只能靠猜。 */
+  var DIAG = /[?&]diag=1/.test(location.search);
   function klog(msg){
-    /* 诊断信息现在只输出到控制台，不在页面上显示小窗口（避免遮挡内容）。需要排障时打开浏览器开发者工具看 Console 即可。 */
     try { console.log("[klog] " + msg); } catch(e){}
+    if(!DIAG) return;
+    try {
+      var p = document.getElementById("kkdiag2");
+      if(!p){
+        p = document.createElement("div"); p.id = "kkdiag2";
+        p.style.cssText = "position:fixed;left:10px;top:10px;z-index:99999;max-width:80vw;max-height:60vh;overflow:auto;" +
+          "background:rgba(0,0,0,.84);color:#7FE7FF;font:12px/1.55 ui-monospace,Menlo,monospace;padding:10px 12px;" +
+          "border-radius:10px;white-space:pre-wrap;pointer-events:auto;";
+        document.body.appendChild(p);
+      }
+      p.textContent = (p.textContent ? p.textContent + "\n" : "") + String(msg);
+      if(p.textContent.length > 2400) p.textContent = p.textContent.slice(-2400);
+    } catch(e){}
+  }
+  /* 底部状态行：把「加载百分比 / 播放位置 / 是否回落」直接写给用户看，取代只能靠感觉猜 */
+  function setKstate(txt){
+    var el = document.getElementById("kstate");
+    if(el) el.textContent = txt;
   }
   /* 让「美音」按钮的文案与当前实际音色保持一致（含上次持久化的音色） */
   function syncVoiceBtn(){
@@ -905,9 +925,21 @@ function EN_START(){
       if(runId !== audRun) return;
       if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
     });
+    audEl.addEventListener("progress", function(){
+      /* 下载进度：弱网下让用户看到「在下、下了多少」，而不是干等 */
+      if(!audLoading) return;
+      var d = audEl.duration, b = audEl.buffered.length ? audEl.buffered.end(audEl.buffered.length - 1) : 0;
+      setKstate(isFinite(d) && d > 0 ? ("配音加载中 " + Math.min(100, Math.round(b / d * 100)) + "%（缓冲 " + b.toFixed(0) + "s）")
+                                     : ("配音加载中…（已缓冲 " + b.toFixed(0) + "s）"));
+    });
     audEl.addEventListener("timeupdate", function(){
       var a = (window.EN_AUDIO || {})[state.id];
       if(!a || !a.off) return;
+      if(!audLoading && !audEl.paused){
+        var bb = audEl.buffered.length ? audEl.buffered.end(audEl.buffered.length - 1) : 0;
+        setKstate("配音播放中 " + audEl.currentTime.toFixed(0) + "s / " + (a.d || 0).toFixed(0) +
+                  "s（缓冲 " + (audEl.duration ? Math.min(100, Math.round(bb / audEl.duration * 100)) : 0) + "%）");
+      }
       var t = audEl.currentTime, k = 0, i;
       for(i = 0; i < a.off.length; i++){ if(a.off[i] <= t + 0.02) k = i; }
       if(k !== state.idx){ state.idx = k; highlight(k); updateBar(); }
@@ -915,7 +947,8 @@ function EN_START(){
     });
     audEl.addEventListener("error", function(){
       /* 文件缺失/解码失败：这一篇退回系统语音，不至于没声音 */
-      klog("audio error -> 回落系统语音");
+      klog("audio error -> 回落系统语音 code=" + (audEl.error && audEl.error.code));
+      setKstate("配音加载失败（" + (audEl.error && audEl.error.code) + "），已切换系统语音");
       if(state.playing){ state.playing = false; synthPlayAll(state.idx, ++runId); }
     });
     return audEl;
@@ -936,11 +969,25 @@ function EN_START(){
       try { el.currentTime = a.off[i]; } catch(e){}
       state.playing = true; state.idx = i; highlight(i); updateBar();
       audRun = runId;
+      var t0 = el.currentTime, wd = setTimeout(function(){
+        /* 最后一道兜底：点了播放但 4 秒后时间没走（被静默拦下/音频会话异常都不报错），
+           直接切系统语音出声——无声是最差体验，宁可音质差一档。 */
+        if(tok !== audTok || !state.playing || audStopAt >= 0) return;
+        if(el.currentTime <= t0 + 0.05){
+          klog("watchdog: 4s 未推进 -> 回落系统语音");
+          setKstate("配音没出声，已切换系统语音（刷新可重试）");
+          kokoToast("配音这次没出声，已切换系统语音");
+          synthPlayAll(i, ++runId);
+        }
+      }, 4000);
       var p = el.play();
       if(p && p.catch) p.catch(function(){
+        clearTimeout(wd);
         klog("audio play 被拒 -> 回落系统语音");
+        setKstate("浏览器拒绝了配音播放，已切换系统语音");
         synthPlayAll(i, ++runId);
       });
+      klog("audPlay: 起播 " + a.f + " @ " + a.off[i] + "s rate=" + el.playbackRate);
     };
     if(first && el.readyState < 2){
       /* 这篇配音还没下够（预加载没做完 / 弱网）：明确给「加载中」反馈，缓冲够了再出声；
@@ -959,6 +1006,7 @@ function EN_START(){
         if(tok !== audTok) return;
         audLoading = false; updateBar();
         kokoToast("配音下载太慢，先用系统语音播；下完后重新播放即是地道美音");
+        setKstate("配音下载太慢，已切换系统语音");
         klog("配音 15s 未就绪 -> 回落系统语音");
         synthPlayAll(i, ++runId);
       }, 15000);
@@ -982,6 +1030,7 @@ function EN_START(){
     state.playing = false;
     clearHi();
     updateBar();
+    updateKokoState();
   }
 
   /* iOS Safari 限制：首次 speechSynthesis.speak() 必须在用户点击的手势内同步发生，
@@ -1035,6 +1084,7 @@ function EN_START(){
     state.idx = i;
     highlight(i);
     /* 本篇有离线配音 → 直接播文件（地道 + 不卡），不再走实时合成链路 */
+    klog("playFrom idx=" + i + " 配音=" + (audOf(state.id) ? "有" : "无/句数不匹配"));
     if(audPlay(i, false)) return;
     if(!kokoGate()){ state.playing = false; updateBar(); return; }
     if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
