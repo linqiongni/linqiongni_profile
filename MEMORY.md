@@ -289,3 +289,12 @@
   并发 6 路失败后**串行补做**；无拉丁字母的句子（如整句是「团圆.」）用静音占位，**不因一句中断整篇**。
 - **`public/english/index.html` 比源目录多近 200 行**（Kokoro 引擎 + 主题补丁）。动它之前先
   `cp public/english/index.html 身边的英语/index.html` 回写，否则下次 `sync:english` 把改造冲掉（老坑，09-27 记过）。
+
+## ENGLISH 配音「无声假死」修复（2026-10-01 凌晨，a83e1e2）
+- 整篇 MP3（1.2MB）弱网到 GH Pages 要几十秒：**进篇目即 `audPreload`，别等点播放才开始下**；
+  缓冲未就绪按钮显示「◌ 配音加载中…」，**15s 未就绪回落系统语音**（`audTok` 打断令牌防暂停/切篇后误播）。
+- `audio/index.js` 带 AV 版本号（页面 `var AV`），**gen_english_audio.py 每次生成自动 bump**；
+  没有它老访客拿缓存旧偏移表配新 MP3 = 高亮错位。
+- iframe 统一 `allow="fullscreen; autoplay"`（ThemeIframe）——异步回调里 play() 需要这层授权。
+- 教训重演：昨晚 commit 里 .gitignore 全局 .tts_cache/ 和 sync --exclude **都没落盘**——
+  多处 Edit 报成功≠落盘，改完必须 grep 复核（CONTRACT 既有条款）。
