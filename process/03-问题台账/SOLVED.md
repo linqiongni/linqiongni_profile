@@ -277,3 +277,14 @@
 - **验证**：CDP 连播 30s，main 滚量 0→394，高亮句 top 始终 275~627（视口 757）在视野内。
 - **预防**：**嵌入态（iframe）里跟随播放的滚动禁用 smooth**，平滑动画只用于明确的人为交互；
   再遇到「音频/文字对不上」，先查「是不是字滚出视野了」，再查音频本身。
+
+
+## ENGLISH 音频链路已全部固化（2026-10-01，技能 `english-audio-station`）
+
+- **收口的两条问题**：「等一会才有声、不够顺滑」（#14 决策：整篇 → 句级小文件 + 双缓冲，`aca4c14`）、
+  「播放出来的音频和文字不对应」（`playFrom(i, one)` 透传 + `ensureVisible()` 瞬时滚动，`97545e5`）。
+- **固化方式**：仓库 `skills/english-audio-station/`（SKILL.md + 3 篇 references），用户区软链，
+  `skills/README.md` 索引 + `static-site-audio-player` 指路段。
+- **调用约定**：英语音频类需求（改课文重配音 / 播放器 / 排障 / 上线）→ 先加载该技能；
+  通用播放器骨架与本机环境坑 → `static-site-audio-player`。
+- **验证**：仓库真源 grep 复核（SKILL.md + 3 篇 references 文件均在），软链可达；随本次提交推 GitHub + Gitee。

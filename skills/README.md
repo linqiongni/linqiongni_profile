@@ -20,6 +20,7 @@
 | `profile-site-sync-publish` | 「改了页面看不到」「同步一下」「发布上线」 | 中文源目录 → `public/<slug>/` 副本 → GH Pages 的同步发布流程 |
 | `sub-site-style-align` | 「这个站和 XX 风格不一致」「字体颜色对齐」 | 子站字体/颜色/版式对齐基准站 `commercial-ops` 的口径 |
 | `weekly-plan-publish` | 「把这个合并进去」「第 X 周第 Y 天发布」 | 新课程 HTML 合并进主页餐饮法务 tab 并上线 |
+| `english-audio-station` | 「英语音频」「ENGLISH 配音」「身边的英语」「逐句跟读」「英语朗读很卡/没声音/对不上」 | ENGLISH 子站音频全链条：离线 TTS 切句预生成、句级 MP3 + 双缓冲、音频与文字对齐、同步上线与排障（通用播放器骨架在 `static-site-audio-player`） |
 
 ## 什么该放这儿、什么不该
 

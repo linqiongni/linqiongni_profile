@@ -326,3 +326,13 @@
   **新增 `ensureVisible()` 越界即瞬时滚 + 260ms 二次复核**，切篇滚顶 2 处 smooth 也换 auto。
 - **铁律**：嵌入态（iframe）里跟随播放的滚动禁用 smooth，平滑只给明显的人为交互。
 - 环境坑：`grep -cF` 查 `!!` 时别用双引号（zsh 历史展开会吃掉 `!`），用 `-F` + 单引号。
+
+## 英语音频类活儿 → 直接调技能 `english-audio-station`（2026-10-01 固化）
+- **调用规则（Andy 明确要求）**：下次再说「英语音频 / ENGLISH 配音 / 身边的英语 / 逐句跟读 / 英语朗读卡、没声音、
+  念的和文字对不上」或「改了英语课文要重新配音」，**先加载技能 `english-audio-station`**（仓库 `skills/` 真源，
+  用户区是软链），再动手。别每次现查 paths —— 路径/命令/坑都写在那儿。
+- **两个技能怎么分工（别混）**：`english-audio-station`（仓库专属：中文目录、scenes.js、gen_english_audio.py、
+  sync:english、verify-online、线上域名、排障速查）；`static-site-audio-player`（用户级跨项目：整篇 vs 句级+双缓冲
+  的架构判据、播放器骨架代码、本机环境坑）。改播放器骨架看后者，改英语子站的配音/课文/上线看前者，两边互相指路。
+- **骨架事实**：音色 `en-US-AriaNeural @ -4%`、句间静音 220ms（与兰香同支，硬锁）；生成支持 `--only <id> --force --gap 0`；
+  `bump_av()` 自动换 `var AV`；`npm run sync:english` **不带 `--delete`**（删句后孤儿文件仍在 public，必要时手工清）。
