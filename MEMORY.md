@@ -316,3 +316,13 @@
   进程还会被收走 → 重跑生成脚本**前台** `python3 -u`；③ 本机无 ffmpeg CLI，只有托管 venv 的 imageio-ffmpeg。
 - 自测改看**日志链**（本机媒体时钟坏，currentTime 不可信）：起播句文件路径 + 定时推进 + 状态行走进 = 链路通。
 - 同类活儿先加载技能 `~/.workbuddy/skills/static-site-audio-player`（架构判据 + 播放器骨架 + 本机坑都在里面）。
+
+## ENGLISH「音频和文字对不上」（2026-10-01，97545e5，已解决）
+- **排查顺序（可复用）**：先证伪数据层再进运行时层。用 `.tts_cache/<sid>_NNN.txt`（送进 TTS 的原文）
+  逐句比对页面 `splitSents()` —— 28 篇 820 句零错位 → 与生成脚本无关。
+- **两条运行时真凶**：① 点句走 `playFrom(i)`→`audPlay(i,false)`（连播到篇尾），与页脚「点任意一句可从该句跟读」
+  相反 → 改 `playFrom(i, one)` 透传，点句 `playFrom(i, true)` 念完即停，底部 ▶ 仍是整篇。
+  ② `highlight()` 用 `behavior:"smooth"` 被主站 `.page-scroll` 搅断 → 高亮滚出视野 = 「文字停开头、声音在念后面」；
+  **新增 `ensureVisible()` 越界即瞬时滚 + 260ms 二次复核**，切篇滚顶 2 处 smooth 也换 auto。
+- **铁律**：嵌入态（iframe）里跟随播放的滚动禁用 smooth，平滑只给明显的人为交互。
+- 环境坑：`grep -cF` 查 `!!` 时别用双引号（zsh 历史展开会吃掉 `!`），用 `-F` + 单引号。
