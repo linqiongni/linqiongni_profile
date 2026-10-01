@@ -881,16 +881,26 @@ function EN_START(){
     Array.prototype.forEach.call(reader.querySelectorAll(".s.on"), function(el){ el.classList.remove("on"); });
   }
 
+  /* 把某句滚到视野中上部。★ 不用 smooth：嵌进主页 tab 的 iframe 里，
+     平滑滚动会被父容器（主站 .page-scroll）搅断，高亮句跑出视野后页面看起来就「文字没动、声音在走」，
+     Andy 反馈的「音频和文字不对应」正是这么来的（2026-10-01）。瞬时滚 + 二次复核最稳。 */
+  function ensureVisible(el){
+    if(!el || !main) return;
+    var box = el.getBoundingClientRect(), mbox = main.getBoundingClientRect();
+    if(box.top >= mbox.top + 60 && box.bottom <= mbox.bottom - 30) return;
+    var to = main.scrollTop + box.top - mbox.top - mbox.height * 0.38;
+    to = Math.max(0, Math.min(to, main.scrollHeight - main.clientHeight));
+    try { if(main.scrollTo) main.scrollTo({ top: to, behavior: "auto" }); else main.scrollTop = to; }
+    catch(e){ main.scrollTop = to; }
+  }
   function highlight(i){
     clearHi();
     if(!list[i]) return;
     var el = list[i].el;
     el.classList.add("on");
-    var box = el.getBoundingClientRect(), mbox = main.getBoundingClientRect();
-    if(box.top < mbox.top + 70 || box.bottom > mbox.bottom - 40){
-      var to = main.scrollTop + box.top - mbox.top - mbox.height * 0.38;
-      if(main.scrollTo) main.scrollTo({ top: to, behavior: "smooth" }); else main.scrollTop = to;
-    }
+    ensureVisible(el);
+    /* 兜底：滚完再量一次，iframe 里父容器可能又把它拽回去（如主站切 tab 时重排） */
+    if(state.playing) setTimeout(function(){ if(list[i] && list[i].el) ensureVisible(list[i].el); }, 260);
   }
 
   /* ---- 预生成配音（edge-tts en-US-AriaNeural @ -4%，与《兰香如故》同音色）----
@@ -1099,7 +1109,8 @@ function EN_START(){
     for(var i = 0; i < evs.length; i++){ document.addEventListener(evs[i], onFirst, { passive: true }); }
   })();
 
-  function playFrom(i){
+  /* one=true：只念这一句（点句跟读），念完自动停；不给则连播到篇尾（底部 ▶/播放这一篇） */
+  function playFrom(i, one){
     list = sents();
     if(!list.length) return;
     unlockTTS();
@@ -1111,7 +1122,7 @@ function EN_START(){
     highlight(i);
     /* 本篇有离线配音 → 直接播文件（地道 + 不卡），不再走实时合成链路 */
     klog("playFrom idx=" + i + " 配音=" + (audOf(state.id) ? "有" : "无/句数不匹配"));
-    if(audPlay(i, false)) return;
+    if(audPlay(i, !!one)) return;
     if(!kokoGate()){ state.playing = false; updateBar(); return; }
     if(!synth && !KOKO.ready){ state.playing = false; updateBar(); alert("当前浏览器不支持语音朗读，请换 Chrome / Edge / Safari。"); return; }
     state.playing = true;
@@ -1182,7 +1193,7 @@ function EN_START(){
   function closeSide(){ $("app").classList.add("collapsed"); }
 
   function go(id){
-    if(id === state.id){ if(main.scrollTo) main.scrollTo({ top: 0, behavior: "smooth" }); else main.scrollTop = 0; if(window.innerWidth <= 900) closeSide(); return; }
+    if(id === state.id){ if(main.scrollTo) main.scrollTo({ top: 0, behavior: "auto" }); else main.scrollTop = 0; if(window.innerWidth <= 900) closeSide(); return; }
     stopAll();
     state.id = id;
     store.set("en-id", id);
@@ -1190,7 +1201,7 @@ function EN_START(){
     renderDir();
     renderScene();
     audPreload(id);   /* 进篇目就开始拉配音，别等点播放 */
-    if(main.scrollTo) main.scrollTo({ top: 0, behavior: "smooth" }); else main.scrollTop = 0;
+    if(main.scrollTo) main.scrollTo({ top: 0, behavior: "auto" }); else main.scrollTop = 0;
     if(window.innerWidth <= 900) closeSide();
   }
 
@@ -1241,7 +1252,8 @@ function EN_START(){
       list = sents();
       var i = -1;
       for(var k = 0; k < list.length; k++){ if(list[k].el === sp){ i = k; break; } }
-      if(i > -1) playFrom(i);
+      /* 点句 = 跟读这一句就停（与页脚文案一致）；想连播请用底部 ▶ 或「播放这一篇」 */
+      if(i > -1) playFrom(i, true);
     }
   });
 
