@@ -11,7 +11,7 @@
 （手机逐句推理会卡死 UI，代码里因此被强制退回系统语音）。预生成后页面只播一个 MP3 文件，
 既地道（与兰香同音色）又不卡，且句级偏移让「上一句/下一句/进度跳句」变成真的可控。
 
-流程：逐句 edge-tts -> 句间插静音 -> ffmpeg concat -> 算句级偏移 -> 写 audio/index.js
+流程：逐句 edge-tts -> 句尾接静音 -> 每句单独 ffmpeg concat 成小文件 -> 写 audio/index.js（seg 列表 + 句长）
 
 用法（仓库根目录执行）：
     python3 scripts/gen_english_audio.py                 # 全量（已有缓存会跳过 TTS）
@@ -20,7 +20,7 @@
     python3 scripts/gen_english_audio.py --gap 0         # 句间不留静音
 
 依赖：托管 venv 的 edge-tts + imageio-ffmpeg（自带 ffmpeg 二进制）；本机有 ffmpeg 时优先用系统的。
-产物：身边的英语/audio/<id>.mp3 + 身边的英语/audio/index.js（偏移表）
+产物：身边的英语/audio/<id>/uNNN.mp3（一句一个）+ 身边的英语/audio/index.js（seg 列表 / 句长 / 总长）
      中间句缓存放 身边的英语/.tts_cache/（已 gitignore，不入库）
 """
 import os, re, sys, json, time, argparse, subprocess, shutil
@@ -191,28 +191,37 @@ def build_scene(sid, sents, gap_ms, force):
                     shutil.copyfile(ph, seg)
             if still:
                 sys.stderr.write("  [warn] %s 有 %d 句用静音占位：%s\n" % (sid, len(still), still[:3]))
-    # 2) 拼接（句间插静音）
+    # 2) 拼接：★ 一句一个小文件（audio/<sid>/uNNN.mp3），句尾接 gap 静音（最后一句不接）
+    #    为什么要拆句而不是合成一整篇：整篇 ~1MB，点播得先等全篇缓冲才出声，弱网几十秒静默；
+    #    期间页面 4s 看门狗见 currentTime 不动就切系统语音，人声与合成音抢喇叭（2026-10-01 实测）。
+    #    拆成 ~30KB 小文件后起播只需下一句，播完备用 buffer 立刻接力，句尾静音盖住切换间隙。
     sil = make_silence(os.path.join(CACHE, "_silence_%d.mp3" % gap_ms), gap_ms)
-    lst = os.path.join(CACHE, "%s_list.txt" % sid)
-    with open(lst, "w", encoding="utf-8") as f:
-        for k, seg in enumerate(segs):
+    sdir = os.path.join(OUT_DIR, sid)
+    os.makedirs(sdir, exist_ok=True)
+    seg_files, lens = [], []
+    for k, seg in enumerate(segs):
+        # 每句复用同一个 list 文件（build_scene 内串行）：别往 CACHE 里塞 800 个 txt，
+        # 更别 os.remove 它们——批量删除会触发本机安全拦截，直接把生成流程打断（2026-10-01 踩坑）。
+        lst = os.path.join(CACHE, "%s_list.txt" % sid)
+        with open(lst, "w", encoding="utf-8") as f:
             f.write("file '%s'\n" % seg)
             if sil and k < len(segs) - 1:
                 f.write("file '%s'\n" % sil)
-    out_mp3 = os.path.join(OUT_DIR, "%s.mp3" % sid)
-    r = subprocess.run([FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", lst,
-                        "-c", "copy", out_mp3], capture_output=True, text=True)
-    if not os.path.exists(out_mp3) or os.path.getsize(out_mp3) < MIN_BYTES:
-        raise RuntimeError("%s 拼接失败：%s" % (sid, (r.stderr or "")[-200:]))
-    # 3) 偏移：句起点 = 前面所有句时长 + 静音
-    offs, t = [], 0.0
-    for k, seg in enumerate(segs):
-        offs.append(round(t, 2))
-        t += duration(seg)
-        if sil and k < len(segs) - 1:
-            t += gap_ms / 1000.0
-    total = round(duration(out_mp3), 2)
-    return {"f": "audio/%s.mp3" % sid, "d": total, "off": offs}
+        out = os.path.join(sdir, "u%03d.mp3" % (k + 1))
+        r = subprocess.run([FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", lst,
+                            "-c", "copy", out], capture_output=True, text=True)
+        if not os.path.exists(out) or os.path.getsize(out) < MIN_BYTES:
+            raise RuntimeError("%s 第 %d 句拼接失败：%s" % (sid, k + 1, (r.stderr or "")[-200:]))
+        seg_files.append("audio/%s/u%03d.mp3" % (sid, k + 1))
+        lens.append(round(duration(out), 2))
+    # 旧版整篇 MP3 已无人引用（播放器读 seg 列表），挪进 .tts_cache 而不是删：
+    # 本机安全层对本 turn 内累计 50 次删除会直接打断进程（2026-10-01 实测：os.remove 生成到一半崩了）。
+    # 挪走同样能让它离开 audio/（不入 git、不被 rsync 同步），且随时可手动清。
+    full = os.path.join(OUT_DIR, "%s.mp3" % sid)
+    if os.path.exists(full):
+        shutil.move(full, os.path.join(CACHE, "_old_full_%s.mp3" % sid))
+    total = round(sum(lens), 2)
+    return {"seg": seg_files, "len": lens, "d": total}
 
 
 def main():

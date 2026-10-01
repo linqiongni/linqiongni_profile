@@ -894,128 +894,150 @@ function EN_START(){
   }
 
   /* ---- 预生成配音（edge-tts en-US-AriaNeural @ -4%，与《兰香如故》同音色）----
-     一篇一个 MP3 + 句级偏移表（audio/index.js），页面只播文件、不再实时合成：
-     地道、不卡，「上一句/下一句/进度跳句」变成真正的 seek（原来整段 speak 时是假的）。
-     没有配音的篇目、或偏移条数与句数对不上（内容改过而音频没重生成）→ 自动回落旧链路。 */
-  var audEl = null, audRun = -1, audStopAt = -1;
-  /* audTok：打断令牌——暂停/切篇会使等待中的 canplay 回调失效；audLoading：正在等配音下载 */
-  var audTok = 0, audLoading = false;
-  /* 打开篇目就开始下载配音（preload），用户读到正文再点播放时基本已就绪——
-     弱网到 GitHub Pages 拉 1MB+ 可能要几十秒，等点播放才开始下=长时间无声（2026-09-30 实测踩坑） */
+     ★ 句级小文件 + 双缓冲交替（2026-10-01 重构，别改回「一篇一个整篇 MP3 + 偏移 seek」）：
+       旧做法点播要先等 ~1MB 整篇缓冲才出声，弱网几十秒静默；期间 4s 看门狗见 currentTime
+       不动就把播放器切去系统语音，人声与合成音抢喇叭 —— 实测现象就是「等一会才有声、很生硬」。
+       现每句一个 ~30KB 小 MP3（句尾自带 220ms 静音），两个 <audio> 交替：
+         · 起播只需下一句的数据，几乎瞬时出声；
+         · 播完 i，备用 buffer 立刻接 i+1（命中浏览器缓存，切换 <50ms），句尾静音盖住间隙；
+         · 彻底取消「静默 4s 切系统语音」—— 系统语音正是生硬卡顿的源头，宁可提示再点一次。
+     句数与内容对不上（内容改过而音频没重生成）→ 自动回落旧链路（Kokoro / 系统语音）。 */
+  var audBuf = [null, null], audCur = -1, audTok = 0, audRun = -1, audLoading = false,
+      audStopAt = -1, audOne = false, audStepped = false, audStepT = null;
+  /* audTok：打断令牌——暂停/切篇会让等待中的 canplay 回调失效 */
+
+  function audOf(id){
+    var a = (window.EN_AUDIO || {})[id];
+    if(!a || !a.seg || !a.len) return null;
+    if(!list || a.seg.length !== list.length) return null;
+    return a;
+  }
+  /* 两个交替使用的播放缓冲：k 号只播「句号 % 2 == k」的句子。
+     切句 = 换一个已经预热好的 audio 元素直接 play，而不是在同一元素上 seek ——
+     后者正是「点了播放 4 秒没声」的根源（seek 到句首要重新缓冲）。 */
+  function audBufGet(k){
+    if(!audBuf[k]){
+      var el = new Audio();
+      el.preload = "auto";
+      el.setAttribute("data-file", "");
+      el.setAttribute("data-idx", "-1");
+      el.addEventListener("ended", function(){
+        var ei = +el.getAttribute("data-idx");
+        if(ei < 0 || audCur !== k || !state.playing) return;
+        audStepped = true;
+        audNext(ei);
+      });
+      el.addEventListener("timeupdate", function(){
+        if(audCur !== k) return;
+        setKstate("配音播放中 · 第 " + (state.idx + 1) + " 句 / 共 " + list.length + " 句");
+      });
+      el.addEventListener("error", function(){
+        if(audCur !== k) return;
+        klog("aud: 句" + (state.idx + 1) + " 加载失败 code=" + (el.error && el.error.code));
+        setKstate("这一句配音加载失败（" + (el.error && el.error.code) + "），点播放重试");
+        state.playing = false; updateBar();
+      });
+      audBuf[k] = el;
+      klog("aud: 建缓冲#" + k);
+    }
+    return audBuf[k];
+  }
+  /* 预热第 j 句到备用 buffer：preload=auto 让浏览器静默下载，播到时直接命中缓存 */
+  function audWarm(a, j){
+    if(j === undefined || j < 0 || j >= a.seg.length) return;
+    var other = audBufGet(1 - (j % 2));
+    var f = a.seg[j];
+    if(other.getAttribute("data-file") !== f){
+      other.setAttribute("data-file", f);
+      other.src = f;
+    }
+  }
+  /* 推进到下一句：ended 与「按句长定时」两条路径都走这里，靠 audStepped 去重。
+     定时是必需的兜底——iOS Safari 上 <audio> 的 ended 偶发不触发，整篇就卡死在第一句上；
+     同理，某些环境下媒体时钟整条不动，也只能靠定时让连播继续（宁可早 100ms 切，不要卡住）。 */
+  function audNext(i){
+    if(audOne){ klog("aud: 单句播完"); state.playing = false; updateBar(); clearHi(); return; }
+    var a = audOf(state.id);
+    if(!a){ stopAll(); state.idx = 0; updateBar(); return; }
+    var nxt = i + 1;
+    if(nxt >= a.seg.length){
+      if(state.loop){ playFrom(0); }
+      else { stopAll(); state.idx = 0; updateBar(); }
+      return;
+    }
+    klog("aud: 句" + (i + 1) + " 播完 -> 接句" + (nxt + 1));
+    audPlay(nxt, false);
+  }
+  /* 打开篇目就预热头两句：点播放时数据已在手，不用等下载 */
   function audPreload(id){
     var a = audOf(id);
     if(!a) return;
-    var el = audElGet();
-    if(el.getAttribute("data-file") !== a.f){
-      el.setAttribute("data-file", a.f); el.src = a.f;
-      try { el.load(); } catch(e){}
-    }
+    audWarm(a, 0);
+    audWarm(a, 1);
   }
-  function audOf(id){
-    var a = (window.EN_AUDIO || {})[id];
-    if(!a || !a.f || !a.off) return null;
-    if(!list || a.off.length !== list.length) return null;
-    return a;
-  }
-  function audElGet(){
-    if(audEl) return audEl;
-    audEl = new Audio();
-    audEl.preload = "auto";
-    audEl.addEventListener("ended", function(){
-      if(runId !== audRun) return;
-      if(state.loop){ playFrom(0); } else { stopAll(); state.idx = 0; updateBar(); }
-    });
-    audEl.addEventListener("progress", function(){
-      /* 下载进度：弱网下让用户看到「在下、下了多少」，而不是干等 */
-      if(!audLoading) return;
-      var d = audEl.duration, b = audEl.buffered.length ? audEl.buffered.end(audEl.buffered.length - 1) : 0;
-      setKstate(isFinite(d) && d > 0 ? ("配音加载中 " + Math.min(100, Math.round(b / d * 100)) + "%（缓冲 " + b.toFixed(0) + "s）")
-                                     : ("配音加载中…（已缓冲 " + b.toFixed(0) + "s）"));
-    });
-    audEl.addEventListener("timeupdate", function(){
-      var a = (window.EN_AUDIO || {})[state.id];
-      if(!a || !a.off) return;
-      if(!audLoading && !audEl.paused){
-        var bb = audEl.buffered.length ? audEl.buffered.end(audEl.buffered.length - 1) : 0;
-        setKstate("配音播放中 " + audEl.currentTime.toFixed(0) + "s / " + (a.d || 0).toFixed(0) +
-                  "s（缓冲 " + (audEl.duration ? Math.min(100, Math.round(bb / audEl.duration * 100)) : 0) + "%）");
-      }
-      var t = audEl.currentTime, k = 0, i;
-      for(i = 0; i < a.off.length; i++){ if(a.off[i] <= t + 0.02) k = i; }
-      if(k !== state.idx){ state.idx = k; highlight(k); updateBar(); }
-      if(audStopAt >= 0 && t >= audStopAt){ audStopAt = -1; stopAll(); }
-    });
-    audEl.addEventListener("error", function(){
-      /* 文件缺失/解码失败：这一篇退回系统语音，不至于没声音 */
-      klog("audio error -> 回落系统语音 code=" + (audEl.error && audEl.error.code));
-      setKstate("配音加载失败（" + (audEl.error && audEl.error.code) + "），已切换系统语音");
-      if(state.playing){ state.playing = false; synthPlayAll(state.idx, ++runId); }
-    });
-    return audEl;
-  }
-  /* oneShot=true → 只念这一句就停（点句跟读）；false → 从该句连续播到本篇结束 */
+  /* oneShot=true：只念这一句（点句跟读）；false：从该句连续播到篇尾 */
   function audPlay(i, oneShot){
     var a = audOf(state.id);
     if(!a) return false;
-    var el = audElGet();
-    unlockMedia();
-    var first = el.getAttribute("data-file") !== a.f;
-    if(first){ el.setAttribute("data-file", a.f); el.src = a.f; }
-    el.playbackRate = state.rate;
-    audStopAt = oneShot ? ((a.off[i + 1] !== undefined) ? a.off[i + 1] : a.d + 0.05) : -1;
     var tok = ++audTok;
-    var begin = function(){
-      if(tok !== audTok) return; /* 已被暂停/切篇打断 */
-      try { el.currentTime = a.off[i]; } catch(e){}
-      state.playing = true; state.idx = i; highlight(i); updateBar();
-      audRun = runId;
-      var t0 = el.currentTime, wd = setTimeout(function(){
-        /* 最后一道兜底：点了播放但 4 秒后时间没走（被静默拦下/音频会话异常都不报错），
-           直接切系统语音出声——无声是最差体验，宁可音质差一档。 */
-        if(tok !== audTok || !state.playing || audStopAt >= 0) return;
-        if(el.currentTime <= t0 + 0.05){
-          klog("watchdog: 4s 未推进 -> 回落系统语音");
-          setKstate("配音没出声，已切换系统语音（刷新可重试）");
-          kokoToast("配音这次没出声，已切换系统语音");
-          synthPlayAll(i, ++runId);
-        }
-      }, 4000);
-      var p = el.play();
-      if(p && p.catch) p.catch(function(){
-        clearTimeout(wd);
-        klog("audio play 被拒 -> 回落系统语音");
-        setKstate("浏览器拒绝了配音播放，已切换系统语音");
-        synthPlayAll(i, ++runId);
-      });
-      klog("audPlay: 起播 " + a.f + " @ " + a.off[i] + "s rate=" + el.playbackRate);
-    };
-    if(first && el.readyState < 2){
-      /* 这篇配音还没下够（预加载没做完 / 弱网）：明确给「加载中」反馈，缓冲够了再出声；
-         等太久自动回落系统语音——无声地干等是最差体验（2026-09-30 用户实测踩坑） */
-      audLoading = true; state.playing = true; updateBar();
-      kokoToast("配音加载中…（整篇约 1MB，弱网需稍等）");
-      var onR = function(){
-        el.removeEventListener("canplay", onR);
-        if(to){ clearTimeout(to); to = null; }
-        if(tok !== audTok) return;
-        audLoading = false; updateBar();
-        begin();
-      };
-      var to = setTimeout(function(){
-        el.removeEventListener("canplay", onR);
-        if(tok !== audTok) return;
-        audLoading = false; updateBar();
-        kokoToast("配音下载太慢，先用系统语音播；下完后重新播放即是地道美音");
-        setKstate("配音下载太慢，已切换系统语音");
-        klog("配音 15s 未就绪 -> 回落系统语音");
-        synthPlayAll(i, ++runId);
-      }, 15000);
-      el.addEventListener("canplay", onR);
-      try { el.load(); } catch(e){}
-      return true;
-    }
     audLoading = false;
-    begin();
+    audOne = !!oneShot;
+    var k = ((i % 2) + 2) % 2, el = audBufGet(k);
+    unlockMedia();
+    audCur = k;
+    if(el.getAttribute("data-file") !== a.seg[i]){
+      el.setAttribute("data-file", a.seg[i]);
+      el.src = a.seg[i];
+    }
+    el.setAttribute("data-idx", i);
+    el.playbackRate = state.rate;
+    if(oneShot){ audWarm(a, i); } else { audWarm(a, i + 1); }
+    state.playing = true; state.idx = i; highlight(i); updateBar();
+    audRun = runId;
+    var go = function(){
+      if(tok !== audTok) return;
+      var pr = el.play();
+      if(pr && pr.catch) pr.catch(function(){
+        if(tok !== audTok) return;
+        if(!el.getAttribute("data-retry")){
+          el.setAttribute("data-retry", "1");
+          klog("aud: play() 被拒，1s 后重试一次");
+          setTimeout(function(){ el.removeAttribute("data-retry"); if(tok === audTok) go(); }, 1000);
+        } else {
+          setKstate("浏览器拦了这次播放，再点一次播放键即可");
+        }
+      });
+    };
+    if(el.readyState < 3){
+      audLoading = true; updateBar();
+      var onC = function(){
+        el.removeEventListener("canplay", onC);
+        if(tok !== audTok) return;
+        audLoading = false; updateBar();
+        go();
+      };
+      el.addEventListener("canplay", onC);
+      setTimeout(function(){
+        el.removeEventListener("canplay", onC);
+        if(tok !== audTok) return;
+        audLoading = false; updateBar();
+        go();
+      }, 4000);
+    } else {
+      go();
+    }
+    /* 定时推进兜底（见 audNext 注释）：句长 + 120ms 容差，结束事件不来也能继续 */
+    clearTimeout(audStepT);
+    audStepped = false;
+    var dur = (a.len && a.len[i]) || 4;
+    audStepT = setTimeout(function(){
+      if(tok !== audTok || !state.playing || audStepped) return;
+      audStepped = true;
+      klog("aud: 句" + (i + 1) + " 定时推进（ended 没来）");
+      audNext(i);
+    }, Math.max(400, dur * 1000 / Math.max(0.5, state.rate) + 120));
+
+    klog("audPlay: 起播 句" + (i + 1) + "/" + list.length + " " + a.seg[i] + " rate=" + el.playbackRate);
     return true;
   }
 
@@ -1023,9 +1045,13 @@ function EN_START(){
     runId++;
     audTok++;          /* 作废还在等 canplay 的 audPlay 回调（加载中点暂停=真的停） */
     audLoading = false;
+    audOne = false;
+    audCur = -1;
+    clearTimeout(audStepT);
+    audStepped = false;
     if(synth){ try { synth.cancel(); } catch(e){} }
     if(KOKO.src){ try { KOKO.src.pause(); } catch(e){} KOKO.src = null; }
-    if(audEl){ try { audEl.pause(); } catch(e){} }
+    for(var i = 0; i < 2; i++){ if(audBuf[i]){ try { audBuf[i].pause(); } catch(e){} } }
     audStopAt = -1;
     state.playing = false;
     clearHi();
@@ -1246,7 +1272,11 @@ function EN_START(){
     this.textContent = state.rate.toFixed(2).replace(/0$/, "") + "×";
     if(state.rate !== 1) this.classList.add("on"); else this.classList.remove("on");
     /* 离线配音模式：改 playbackRate 即可，不必从头重播（浏览器默认保持音高不变调） */
-    if(audOf(state.id) && audEl){ audEl.playbackRate = state.rate; return; }
+    if(audOf(state.id)){
+      /* 离线配音模式：两个缓冲的语速都改（当前那句不会重头播），不必停止重播（浏览器 playbackRate 保持音高） */
+      for(var b = 0; b < 2; b++){ if(audBuf[b]) audBuf[b].playbackRate = state.rate; }
+      return;
+    }
     if(state.playing) playFrom(state.idx);
   });
   $("voice").addEventListener("click", function(){
@@ -1321,7 +1351,7 @@ function EN_START(){
   var v = m ? m[1] : "";
   /* 配音偏移表自己的版本号（AV）：gen_english_audio.py 每次生成会自动 bump。
      没有它，重生成配音后老访客拿浏览器缓存的旧偏移表配新 MP3，句高亮会错位。 */
-  var AV = "va202610010002";
+  var AV = "va202610011058";
   function load(src, ok, err){
     var s = document.createElement("script");
     s.src = src + (v ? "?v=" + v : "");
