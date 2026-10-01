@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 19 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 9 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP19_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="54.6">Let me tell you about episode nineteen, because this is the episode where the sealed jar is opened and the poisoner is named in the light, and the house learns that a judgment held inside four walls is still a judgment, only spoken by the woman no one thought to ask. The magistrate&#x27;s men lift the seal once the sickness has a source and the source is cut, and the Lin residence breathes for the first time in days — but the air it draws is the air of a reckoning. The Senior Lady Lin sits in the hall where she once received guests and bids Lanxiang stand before her, token and all, because the proof of the poison was carried out of this house by the very hand now set to speak it. She does not ask the maid to bow. She asks her to tell, the way a court asks the one witness who survived the room where the crime was done, and the residence falls so silent a dropped pin would sound like a verdict.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第十九集，因为这一集，封起的罐开了，投毒人于光下被指名；而这府学了：四墙内论的断，仍是断，只由那无人想问的妇人说出。县官的人，既病有了源、源被切，便解了封；林府连日头回喘气——可它吸的，是算账的气。林母坐曾接客的厅，命兰香立她前，令在握，因那毒的证，是如今被派驻来开口的同一只手带出府的。她不命丫鬟跪。她命她说，如庭问那活过作案之屋的唯一证人，而这府静得落一簪都像判。</p></details>
+
+<p class="seg" data-i="1" data-start="54.6" data-end="108.29">Lanxiang tells it as Gantang would set accounts — line by line, so none may dispute the sum. The third daughter watched Lingdang near the barrel; the sick were the ones who drew from it; Lingdang, who could name the hand, was found in the well; and the guest who offered to tend the fourth daughter was the same guest whose maid kept the barrel. She lays the cup Gantang brewed beside the token, and says only that the draught bit as the sickness bit, and that is the whole of the proof. Du Cuique, summoned, does not deny it cleanly — she says the house owed her a place, that a girl of no standing must carve one, and that a little poison in a barrel is a small thing beside the rank the Lin family denied her brother. It is, the season notes, the traitor&#x27;s logic again: the crime admitted, the blame shifted, the house blamed for the wound it took, the wound the house never asked for.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香如甘棠摆账般说——一笔笔，教人无由驳总。三小姐看铃铛近桶；病者是汲那桶的人；能指手的铃铛，见于井；而请照四小姐的客，正是那丫鬟守桶的客。她把甘棠煎的杯置令旁，只说那汤咬如病咬，证便是全。杜翠雀被召，不干净否——她说府欠她一处，无阶的姑娘须自刻一处，而桶里些毒，相较林家否她兄的阶，是小事。这季注：叛者的理又来——罪认了，咎移了，府为所受的伤被咎，那伤府从不曾讨。</p></details>
+
+<p class="seg" data-i="2" data-start="108.29" data-end="172.63">The chain lacks one link, and Yuchan, still pale on her pallet but clear, supplies it: she saw Lingdang by the barrel the night the rash began, not drawing water but watching it the way a thief watches a lock he means to open. The seasoned maid, who has been the master&#x27;s hand, speaks the last word the poisoner hoped would die in the well, and the sound of it lands on Du Cuique like a hand on a shoulder that will not be shaken off. Du Cuique&#x27;s face, which has worn a smile through every episode, goes still — not with shame but with the cold of a player whose hand is finally shown, whose last card is a maid&#x27;s memory and not the silence of a drowned girl. She does not weep, does not beg; she only looks, once, at Lanxiang, and in that look the two clever girls close the war between them with neither victory nor peace, only an ending neither will forget and neither will survive unchanged. The look is the sentence; the ropes are only the ceremony the house performs to make the sentence plain to a residence that still believes ceremony is justice.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这链缺一环，而玉蝉，榻上仍白却清，补了它：病起那夜她见铃铛在桶边，不是汲水，是如贼看要开的锁般看它。这老练的丫鬟，曾为主子的手，说了投毒人盼随井死的最后一句，而那声音落在杜翠雀身上，如一只甩不脱的手压肩。杜翠雀的脸，每集挂着笑，此刻静了——不是羞，是手终被摊开的冷，她最后一张牌，是丫鬟的记忆，不是溺女之静。她不泣、不乞；只望了兰香一眼，而在这望里，两聪明姑娘以非胜非和，结了她们之间的战，只一结局，谁都不会忘、谁都不会原样活过。</p></details>
+
+<p class="seg" data-i="3" data-start="172.63" data-end="218.9">The Senior Lady Lin pronounces, and the house hears a mercy it did not expect: Du Cuique is not put to death, but exiled — sent beyond the passes to a settlement where the ambitious and the ruined are sent to disappear, a road the court will record and the season will remember. The old lady&#x27;s reason is not softness but rank: a guest of the house dead by the house&#x27;s hand would stain the Lin name more than a banishment the court will note and forget. So Du Cuique is taken in ropes, and the smile she wore through fifteen episodes is, at the last, gone — not because she is sorry, but because she is leaving the rooms she meant to rule, and the girl who read the water is the girl who sent her out of them, the girl who now holds the token that opened the door Du Cuique could not.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林母宣断，这府听了它未料的仁：杜翠雀不被处死，而是流放——送过边，去那野心者与败者被遣去消散的戍所，一条庭会记、这季会记的路。老夫人的由，不是软，是阶：一个府中之客死在府手，比一桩庭会记会忘的逐，更污林名。于是杜翠雀被以绳带去，她挂了十五集的笑，终是没了——不是因悔，是因她离了本要掌的屋，而那读水的姑娘，正是送她出那屋的姑娘，正是如今握那开了杜翠雀进不去的门的令的姑娘。</p></details>
+
+<p class="seg" data-i="4" data-start="218.9" data-end="278.3">With the source cut and the poisoner gone, the sickness loses its host. The fourth daughter&#x27;s fever breaks; Lady Zhou, the second master&#x27;s concubine, sits up and asks for rice; and Yuchan, who came closest to the fire, opens her eyes one morning and teases Gantang for crying, the way the living tease the living when death has lately walked the hall. The sealed house, which had held its breath, lets it go, and the watchers at the door are stood down not by order but by the simple fact that no one is dying. Lanxiang moves among the recovering the way she moved among the stricken — quiet, exact, the steward&#x27;s token now a thing the household expects to see in her hand, as natural as a ring and as taken for granted as the air it has learned to breathe again. The recovery is a quiet thing, but the season notes that a house which has looked death in the eye values the hand that kept it breathing, and the hand it values is a maid&#x27;s, steady at the hinge of the crisis.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>源切、投毒人去，病失了主。四小姐热退；二爷的妾周姨娘，坐起讨饭；而最近火的玉蝉，一早睁眼，笑甘棠哭，如死近日走过厅时活人笑活人那样。这封着的府，曾屏息，如今放了它，门口的守不是令撤，是无人将死这素事实。兰香在愈者间走，如她曾在病者间走——静、准，管家令如今是众预期在她手的东西，自然如一环、且如它重学的气般想当然。</p></details>
+
+<p class="seg" data-i="5" data-start="278.3" data-end="326.3">Lin Jinqi returns from the field in full, and hears the judgment as he rides in — not from a report but from the silence of a residence that no longer fears the walls. He seeks Lanxiang where she tends Yuchan, and for a long moment the master and the maid who was furniture look at each other without the screen of rank between them, because the token in her palm has made a steward of her and the arrow at the river made a savior of him. He does not thank her; a man like him pays debts in protection, not words, the way he paid the traitor&#x27;s paper in smoke and the poisoner&#x27;s draught in a cup. But he lingers a breath longer than duty requires, and the household, which has learned to read them both, reads that breath and says nothing, because some debts are too large for words and too quiet for the room.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林锦岐全须全尾从场回，骑入时听了断——不是从报，是从这府不再怕墙的静。他寻兰香在护玉蝉处，有长长一瞬，主子与曾作家具的丫鬟，无阶之屏相对，因她掌中的令把她成了管家、江上的箭把他成了救者。他不谢；如他的人，以护不以言还债，如他以烟还叛者的纸、以杯还投毒人的汤。可他多停了一息，逾于责所需，而这府，学了读他们俩，读了那息，不言，因有些债大过言、静过屋。</p></details>
+
+<p class="seg" data-i="6" data-start="326.3" data-end="375.79">The residence takes stock the way a ship takes stock after a storm — counting who is whole and who is not, and finding, to its surprise, that the ones the season threatened were spared: Xiaolian and Gantang and the recovered Yuchan all stand, because the poisoner&#x27;s reach, wide as it was, met the maid who read the water before it reached them. The Senior Lady, tallying the house, understands that the steward&#x27;s token she gave was not a gift to a maid but a key the house needed, and she begins, quietly, to plan what a household owes the woman who held it through the sickness and the siege. The reward, when it comes, will not be what Lanxiang expects the house to offer, and will be, in its way, the harder thing to refuse — a freedom the contracts never named but the season has already begun to write.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这府如风暴后盘船般清点——数谁全、谁不全，而讶然发现这季威胁的，竟免了：小莲、甘棠、愈了的玉蝉都立着，因投毒人的手，虽广，在及他们前，已遇那读水的丫鬟。林母盘府，懂了她给的令，不是给丫鬟的赠，是府要的钥，而她悄然起算一座府欠那透过病与围握它的人什么。那赏，来时，不会是兰香预期府会给的，且会以它的方式，是更难拒的——一张契从未写、而这季已起笔的自由。</p></details>
+
+<p class="seg" data-i="7" data-start="375.79" data-end="427.1">But the season is not done with the two clever girls, because an exile is a road, not a grave. As Du Cuique is led past the gate she meant to rule, she turns and meets Lanxiang&#x27;s eye one last time, and the look she carries out of the residence is not defeat but a promise the walls cannot hold — that a girl sent beyond the passes does not forget the house that sent her, or the maid who read the water and won the room she wanted. The war between them ended in distance, not in death, and the season, which has taught us to watch the quiet ones, notes that the furthest road can still lead back to the gate, and that a promise carried out a gate is a promise the season will, in its own hour, cash. Lanxiang feels the promise in that look and files it, the way she files everything that may yet bite, and sleeps that night with one eye on the road.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可这季未对两聪明姑娘完，因流放是路，不是坟。杜翠雀被带过她本要掌的门时，转头迎了兰香最后一眼，而她带出府的望，不是败，是墙关不住的诺——一个被送过边的姑娘，不忘送她的府，也不忘那读水、赢了她要的屋的丫鬟。她们之间的战，结于远，不结于死；而这季，教我们看静的人，注最远路仍可循回那门，且注带出一门的诺，是这季会在它自己时辰兑现的诺。兰香在那望里感到那诺，记下了，如她记一切或还会咬的，且那夜睡时，一眼望着路。</p></details>
+
+<p class="seg" data-i="8" data-start="427.1" data-end="493.08">So we close episode nineteen the way a verdict closes a door — by naming the poisoner and sending her past the passes, and by leaving the maid who named her standing in the hall with a token that grows heavier by the day. The sickness is cut, the traitor&#x27;s paper is smoke, the brother is dead, and the sister is gone; the house, for one episode, is whole. Episode twenty, when it comes, will carry the steward to the old lady&#x27;s table and let her ask, at last, for the one thing the house did not expect — her own name back, written on paper the house will burn. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, an exile is only a road the season has not yet finished walking, and a road unfinished is a debt the season will, in time, collect. The poisoner is gone, the contracts will soon burn, and the steward who named her stands ready for the harder thing the season has waiting — her own name, written free, the only reward the house cannot put a price on and the only one she will ever ask it to give.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如判合一门那样收束第十九集——指了投毒人、送她过边，留那指她的丫鬟立厅中，令日沉。病切、叛者的纸成烟、兄死、妹去；这府，有一集，是整的。第二十集，来的时候，会把管家带到老夫人案前，让她终讨那府未预期的一件——她自己的名，写在那府要烧的纸上。但那是下周的讲法。此刻你只记一句：在林府，流放只是一条这季尚未走完的路，而走不完的路，是这季终会讨的债。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 19 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP19_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 54.6], [54.6, 108.29], [108.29, 172.63], [172.63, 218.9], [218.9, 278.3], [278.3, 326.3], [326.3, 375.79], [375.79, 427.1], [427.1, 493.08]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

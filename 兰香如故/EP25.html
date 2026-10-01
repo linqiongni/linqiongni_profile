@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 25 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 9 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP25_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="47.3">Let me tell you about episode twenty-five, because this is the episode where the mourning ends and the marriage begins, and where the two women who gave the Jing&#x27;an lady her name and her standing both fall senseless at the sound of it — one because she is a servant&#x27;s daughter, the other because she is a mother&#x27;s disgrace. The state mourning for the old emperor passes, as all mourning passes, and the new reign turns its face to the business of living: marriages to be made, alliances to be sealed, a realm to be knit back together after the war and the plot. And in the quiet of the Jing&#x27;an residence, a match is proposed that will test every rank the tale has built — not from the throne first, but from a loyal retainer&#x27;s mother, who comes calling with a daughter-in-law in mind for her son Han Liang.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二十五集，因为这一集，丧终、婚起，而那给了靖安夫人名与阶的两个妇人，闻之皆昏——一个因她是婢之女，一个因她是母之辱。为老帝的国丧，如一切丧般过了，新朝转面去理生的事：婚要结、盟要封、一个被战与局扯散的域要重缝。而在靖安府的静里，一桩要试遍这故事所筑每一阶的亲事，被提了出来——不是先自 throne，而是自一个忠仆之母，她来探，心里为儿韩梁备着一个媳。</p></details>
+
+<p class="seg" data-i="1" data-start="47.3" data-end="94.58">Han Liang&#x27;s mother is a plain woman of the old sort, who counts loyalty above blood and service above standing, and she has watched the lady of the house since the siege and decided there is no better wife for her boy. She comes to Lanxiang with the proposal laid out like a market basket: her son is steady, he owes the lady his life from the road, and a match between them would bind the retainer&#x27;s house to the marquis&#x27;s as kin, not as servant and lord. Lanxiang listens with the warmth of a woman who was once a maid herself and knows the worth of a plain, faithful man, and for one moment the season lets her imagine a life smaller than a marquis&#x27;s hall — a life of her own choosing, built on a loyalty she returned rather than a rank she was given, the quiet road the small house once promised her.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>韩梁之母，是旧式朴妇，以忠贵于血、以役贵于阶，自围城便看着府里的夫人，认定再无比她更宜作儿媳的。她来见兰香，把那亲事如一个市篮般摊开：她儿稳，路上欠夫人一命，而二人成配，会把忠仆之家与侯家结为亲、非为婢与主。兰香以那曾自家为婢、知一个朴而忠的男儿之价的人之暖听着，而有片刻，这季容她想一种小于侯厅的生——一种她自己选的、筑在她还了的忠上、非筑在她被予的阶上的生，那小屋曾许她的静路。</p></details>
+
+<p class="seg" data-i="2" data-start="94.58" data-end="154.89">But the season does not let the small road open, because a greater hand has already moved. Before Lanxiang can answer the mother, the imperial edict arrives at the Jing&#x27;an gate, borne by couriers in the new emperor&#x27;s red, and the house falls to its knees to hear it read. And the edict is not the retainer&#x27;s match but the marquis&#x27;s own petition answered: Lin Jinqi, the Jing&#x27;an Marquis, has gone before the throne and requested the emperor&#x27;s decree for his own marriage — to Xu Lanxiang, the lady of his house, the woman who saved him upon a rebel road and burned a book to keep him alive. The season, watching the couriers unroll the silk, marks the moment a free woman&#x27;s choice is taken up by a throne and made into law, whether she knelt for it or not. The red of the couriers&#x27; coats bleeds across the courtyard like a sign no mother&#x27;s faint can undo, and the lady who would have chosen a smaller life finds the greater one chosen for her, by a hand no free woman&#x27;s no can stay.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可这季不让那小路的门开，因一只更大的手早已动了。兰香未及答那母，圣旨已到靖安门，由新皇红衣的驿者捧着，府中伏地听宣。而那旨，不是忠仆的亲，是这侯自家请准的奏被应了：林锦岐，靖安侯，已趋廷前，请皇下诏，许他自己的婚——许与许兰香，他府的夫人，那在叛路上救了他、焚了书留他活的妇人。这季，看着驿者展绸，记下了这一刻：一个自由妇的选，被一座位拿起、立成了律，不论她是否为它跪过。</p></details>
+
+<p class="seg" data-i="3" data-start="154.89" data-end="212.51">The edict names the day and the title, and the two mothers who matter hear it where they sit — Xu Wanquan&#x27;s wife, Lady Xue, in the small house across the city, and the Senior Lady Lin, in the great residence she once ruled. And both, in the same hour and for opposite reasons, fall as though struck: Lady Xue goes white and crumples, whispering that her daughter is to wed a marquis, that a girl who was a servant&#x27;s child will be called a lady before the realm, and the shame of it — to her old bones, a maid raised above her station is a mockery of the order she lived by. She faints with the word &quot;she is but a servant&quot; upon her lips, the only protest a mother of her kind can make against a sky that has shifted under her feet. Her hand, reaching for the door that is no longer hers to open, falls empty to the floor, and the small house she kept so well receives her as it has received so many quiet griefs before, without a word of blame.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那旨点了日与衔，而那两位要紧的母亲，在她们坐处听了——许万全之妻薛氏，在城那头的小屋；与林母，在她曾掌的大宅。而二人，在同个时辰、因相反之由，如被击般倒下：薛氏白了脸、瘫了，低语女儿要嫁侯了，一个婢之女要在域前被称为夫人，而那耻——对她老骨，一个逾了阶的婢，是她所活之序的嘲。她以&quot;她不过是个奴婢&quot;在唇边昏去，是她这类的母，对脚下移了的天，唯一能作的拒。</p></details>
+
+<p class="seg" data-i="4" data-start="212.51" data-end="257.46">The Senior Lady Lin faints for the other reason, and her fall is the harder to watch because it comes from love bent into outrage. She raised Lin Jinqi to honor the house and the blood, and to her a marquis wedding a woman who was once furniture — a maid he bought and held and freed and now would crown — is not romance but ruin, a stain upon the Lin name she spent her life guarding. She revives with the word &quot;unfilial&quot; upon her tongue, because in her world a son who takes a servant to his marriage bed breaks the filial bond as surely as if he struck his mother, and the season notes the cruel symmetry: one mother faints at the servant in the bride, the other at the bride in the servant, and the lady between them is blamed by both for simply being who she is.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林母为另一因昏，而她的倒，更痛看，因它是被拧成怒的爱。她养林锦岐以敬府与血，而在她，一个侯娶一个曾作家具的妇人——一个他买过、留过、放了、如今要加冕的婢——不是情，是毁，是她一生守的林姓之污。她醒时，&quot;不孝&quot;在舌上，因在她的世里，一个把婢带上婚床的儿子，与动手打母一般确然地破了孝，而这季注那酷的对称：一个母为新人里的婢昏，另一个为婢里的新人昏，而夹在中间的夫人，只因她是她自己，被两方都咎。</p></details>
+
+<p class="seg" data-i="5" data-start="257.46" data-end="303.71">The uproar reaches Lin Jinqi, who has not flinched before princes or arrows, and he stands unmoved in the center of it, because the edict he petitioned for is the one thing in the tale he has chosen without being asked to. He tells his mother that the woman saved his life and the realm&#x27;s heir besides, that the Jing&#x27;an title exists because of her, and that a marquis who will not wed his own benefactor is a marquis the throne would rightly mistrust. He tells Lady Xue, through a go-between, that her daughter&#x27;s worth was never in her rank but in her hand, and that the small house raised a woman the great house could not have bought. The season marks how far the master has come: the man who once forced a bond now defends a marriage as the one debt he means to honor with his name.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>那乱到了林锦岐耳里，而他，未在王或箭前眨过眼，立在乱中央不为所动，因他请的那旨，是这故事里他头回不被求而自择的一件。他告诉母亲：那妇人救了他、也救了域储，靖安之衔因她而在，而一个不肯娶自己恩人的侯，是廷该疑的侯。他经一个中间人告诉薛氏：她女儿的价，从不在阶，在她的手，而小屋养出了一个大师府买不来的妇人。这季记下了主子走了多远：那曾强一契的人，如今护一桩婚，作他要以名去还的唯一种债。</p></details>
+
+<p class="seg" data-i="6" data-start="303.71" data-end="351.23">It is Mr. Lu who settles the matter, and his entrance is the season&#x27;s answer to the fainting mothers. Lu Xie, the old friend of the Shen family who knows the buried name beneath Xu Lanxiang and has kept that knowledge like a held breath, comes to the marquis and speaks the plain truth the household will not: that to refuse an imperial edict is a grave crime, that the new emperor granted this decree as a debt to the man who carried him from the trap, and that no mother&#x27;s faint and no house&#x27;s pride outweighs the law of a throne that has just been saved. He counsels Lin Jinqi to accept, not because the heart demands it, but because defiance of the edict would cost the marquis his head and the lady her shelter both, and the season lets the old man&#x27;s cold sense close the door the mothers opened.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>了结此事的是陆燮，而他的入场，是这季对那两个昏母的答。陆燮，沈家的旧友，知许兰香之下那埋的名、且如屏住的一息般守着那知，来见这侯，说了这府不肯说的平白真：拒旨是重罪，新皇下此诏，是作对那把他带出阱的人的一笔债，而无一母之昏、无一家之傲，重得过一座刚被救的位的律。他劝林锦岐受，不因心要它，而因抗旨会教这侯丢头、夫人也失庇，而这季容这老人的冷理，合了那两母开出的门。</p></details>
+
+<p class="seg" data-i="7" data-start="351.23" data-end="409.14">Lanxiang, hearing Mr. Lu&#x27;s counsel and the edict that hangs upon it, reckons the road she is now upon. She could refuse, and a free woman&#x27;s no would be her own; but the refusal would fall not on her alone but on the marquis who petitioned, and the throne that granted, and the retainer&#x27;s mother whose son would be left without a bride. She thinks of the buried name Mr. Lu alone carries, and of the promise she made at the Shen tablet to a family she means to clear, and she understands that the altar is not the end of her road but its next gate. The season, watching her decide, notes that the girl who walked out free now walks toward a marriage she did not ask for, carrying a name no edict can give and a wrong no edict can right — yet. She does not weep at the loss of the small road, for she has long known that freedom was never the absence of a bond but the right to choose which bond to wear, and this one she will wear with her eyes open.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香，听了陆先生的劝与悬于其上的旨，算她如今踏的路。她可拒，而一个自由妇的&quot;不&quot;，是她自己的；可那拒不只落她一身，也落那请的侯、那许的位、与那儿将无媳的忠仆之母。她想着唯陆先生一人揣着的埋名，与她在沈家牌位前对一族她意欲洗的人的诺，懂了那堂不是她路的终，是它下一道门。这季，看着她决，注：那走出自由的姑娘，如今走向一桩她未讨的婚，揣着一个无旨可给、无旨可正的名与冤——然则。</p></details>
+
+<p class="seg" data-i="8" data-start="409.14" data-end="474.04">So we close episode twenty-five the way an edict closes a question — not with debate but with decree, and with two mothers fainted upon the floor and an old man&#x27;s counsel standing in the silence they left. The mourning passed; the retainer&#x27;s mother proposed; the marquis petitioned; the edict arrived; Lady Xue fainted at the servant in the bride and Senior Lady Lin at the bride in the servant; Mr. Lu named the grave crime of refusal and counselled acceptance. And Lanxiang, the buried Shen Jialan, stands at the gate of a marriage the throne has made law, holding the name no edict can grant and the promise no edict can discharge. Episode twenty-six, when it comes, will carry her to the altar as the Jing&#x27;an lady and reopen, at the threshold of the wedding night, the old wound of the forced bond. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, a marriage decreed by a throne is a debt even a fainting mother cannot unwrite, and the lady who walks to it carries a name the edict will never know.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如旨合一问那样收束第二十五集——不是以辩，是以诏，以两母昏于地、与一个老人的劝立于她们留的静里。丧过了；忠仆之母提了；侯请了；旨到了；薛氏为新人里的婢昏、林母为婢里的新人昏；陆先生指了拒的重罪、劝受。而兰香，那埋着的沈嘉兰，立在 throne 立为律的婚之门，揣着无旨可予的名、与无旨可销的诺。第二十六集，来的时候，会把她以靖安夫人之身引到堂，并在新婚夜的门槛上，重开那强契的旧伤。但那是下周的讲法。此刻你只记一句：在林府，一座位所诏的婚，是一个连昏母也抹不去的债，而那走向它的夫人，揣着一个这诏永不会知的名。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 25 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP25_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 47.3], [47.3, 94.58], [94.58, 154.89], [154.89, 212.51], [212.51, 257.46], [257.46, 303.71], [303.71, 351.23], [351.23, 409.14], [409.14, 474.04]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

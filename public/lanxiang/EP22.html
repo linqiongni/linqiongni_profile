@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 22 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP22_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="53.06">Let me tell you about episode twenty-two, because this is the episode where the warning Lanxiang carried out of the small house becomes a wound the master cannot outride, and where a free woman who meant to stay clear of the great house is pulled back into it by the oldest rope there is — loyalty to a man she could not leave at the gate. The capital wakes one morning to banners it does not understand and a prince it was told was loyal, and the Han Prince&#x27;s plot, set back at the field, springs in the city with the full teeth Lanxiang feared. The Tiance Guard&#x27;s empty chair becomes a command given to traitors; the silent column she read on the northern road pours through the gate as a real army with a real banner. And at the center of the storm sits Lin Jinqi, who read the prince&#x27;s ambition but not the hour it would strike, and who now must pay for a warning that reached him a day too late to matter.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二十二集，因为这一集，兰香带出小屋的那道警，成了一道主子骑不脱的伤；而一个本意离大宅远远的自由妇，被那里最老的绳拽了回去——对一个她没能留在门外的男人的忠。京一朝醒来，见着它读不懂的旗、与一个它被告知是忠的王；而在场上退了的汉王之局，在城里露了兰香怕的全副牙。天策卫那空椅，成了给叛者的令；她在北路上读出的无声列，涌进门来，成一支真军、一面真旗。而风暴的中心，坐着林锦岐，他读了王的野心，却没读出它发作的时辰，如今要为那迟了一日、已无用的警付代价。</p></details>
+
+<p class="seg" data-i="1" data-start="53.06" data-end="103.63">The rebellion does not begin with a battle but with a purge, and Lin Jinqi is among its first marked men. The Han Prince, knowing the eldest is the one officer the capital would follow against him, sends his new guard to take the camp before the dawn bell, and the master, warned by Lanxiang&#x27;s words but not by the hour, is cut off from his own men in the grey light. He fights clear with a sword he has not needed in years, but a spear finds the gap beneath his ribs, and by the time he reaches the river road the wound has already stolen the color from his face. He is the Jing&#x27;an hope and the prince&#x27;s prize, and the men hunting him know both; they ride the banks with lanterns, calling his name as a dog calls a fox, and the season, watching, marks how quickly a great man can become a quarry in a single broken night.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>叛不是以一战起，是以一场清洗起，而林锦岐是其头一批被标的人。汉王知长兄是京会随之抗他的唯一将，遣他新得的卫，在晨钟前取那营；主子虽被兰香的话警过，却未被那时辰警过，在灰光里被隔开了自己的人。他以多年未用的剑战出，可一矛寻到了肋间下的缝，等他到江路时，伤已夺了他脸上的色。他是靖安之望，也是王的赏，而猎他的人两样都知；他们提灯沿岸驰，唤他的名如犬唤狐，而这季看着，记下了：一个大人物，能在一夜破碎里，多快成了被逐的兽。</p></details>
+
+<p class="seg" data-i="2" data-start="103.63" data-end="166.22">Lanxiang hears the master is hunted before the city walls are sealed, and the freed woman who promised herself a quiet road makes the only choice the season has been steering her toward all along. She cannot ride to the camp as Xu Lanxiang, free and named; the prince&#x27;s men would take a known face in an instant. So she goes to the silk chest, takes a coarse skirt and a headcloth, and becomes a village woman — a nobody with a basket and a bent back, the kind of woman the guards wave through without a second look because she is, to them, no one at all. It is the old lesson worn new: a maid who reads becomes invisible by choosing to be, and a free woman who would save a master puts on the very disguise the house once forced on her, the better to walk past the men who would kill the man she could not leave behind. She even darkens her palms with ash and lets her hair fall to the wind, so that the mirror in the small house would not know the lady it sent away, and she practices the bent gait of a woman who carries another&#x27;s trouble as her own.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香在城墙封前便闻主子被猎，而那许了自己静路的自由妇，做了这季一路引她向的那个唯一选择。她不能以许兰香、自由而具名的身去营；王的兵会一眼捉了熟面。于是她去丝箱，取一条粗裙、一方头巾，成了一个村妇——一个提篮、躬背的无名者，那种守卫看一眼便挥过的妇人，因在她，他们眼里根本无人。这是旧课穿了新衣：一个会读的丫鬟，凭&quot;选了隐形&quot;而隐形；一个要救主子的自由妇，披上这府曾强她穿的那身伪装，好从要杀她留不下的男人的眼下滑过。</p></details>
+
+<p class="seg" data-i="3" data-start="166.22" data-end="217.29">She finds him by the river road at noon, not in a camp but in a drainage ditch where he has crawled to let the lanterns pass, his cloak dark with blood he will not name as his own. The village woman kneels as if to gather roots, and the guards who ride past see only a peasant wife with a basket and a bent back, the kind of woman the prince&#x27;s war does not bother to count. When the hooves fade she is at his side in an instant, tearing her own headcloth for a bandage, pressing the wound the way she once pressed the fever in a sealed residence — steady, exact, the steward&#x27;s hand he taught her to be. He knows her even disguised; the master who reads people has always read her, and he laughs once, weakly, to find the warning he sent away has come back to him wearing a peasant&#x27;s skirt and carrying his life in her two small hands.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她正午在江路寻到他，不在营里，是在一道排水沟里——他爬进去让灯过去，披风被他不认作自己的血染暗。那村妇如采根般跪下，驰过的守卫只见一个提篮躬背的农妇，一种王的战懒得数的人。蹄声淡去，她瞬到了他身边，撕了自己的头巾作带，按那伤，如她曾在封起的府里按那热——稳、准，是他教她作的管家之手。他扮着也认得她；那读人的主子，向来读她，而他弱弱一笑，发现他遣走的警，又回来了，穿着农妇的裙，把他的命捧在两只小手里。</p></details>
+
+<p class="seg" data-i="4" data-start="217.29" data-end="271.72">They do not run; they walk, because a running man draws the eye and a limping village woman with a sick husband draws none. Lanxiang finds a cart left by some family fled upstream, and she settles him in the straw, covers him with the coarse cloth, and walks beside it with her head down, answering the road&#x27;s few questions with the flat voice of a woman used to trouble she will not explain. The master, feverish now, drifts in and out, and in the moments he is present he watches the peasant wife who guards his cart and wonders, the way a drowning man wonders at the hand that pulls him, whether the freedom he granted her was ever real, or only a loan the season meant to call in the moment he needed her most. The road is kind to them in its own rough way, and each jolt of the cart reminds him that the life he nearly lost is the one she is quietly carrying forward, one careful mile at a time.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他们不跑；他们走，因跑的人惹眼，而一个扶着病夫的跛村妇，谁也不惹。兰香寻到一辆被上游逃户落下的车，把他安在草里，以粗布覆了，垂着头走在一旁，以那种惯于不解释的烦的妇人平声，答了路上寥寥几问。主子此时发热，昏沉出入，而在他清醒的片刻，他看那守他车的农妇，如溺水者看拽他的手那般想：他给她的自由，可曾真过，抑或只是一笔这季要在他最需她时收回的贷。</p></details>
+
+<p class="seg" data-i="5" data-start="271.72" data-end="317.13">On the third day of the road they come upon the attack, and it is the season&#x27;s cruelest irony that the woman fallen beside the cart is Lin Jinqi&#x27;s first wife, the lady Zhao Xingtang, whom the rebellion has also marked for knowing too much. She has been thrown from a horse and set upon by the same men who hunt the master, and she lies in the dust with a wound in her side and a secret heavier than the blood leaving her. Lanxiang, who owed this woman nothing and once feared her as the first madam of the house, does not hesitate; she drags Zhao behind the cart, sets her own body between the attackers and the two wounded souls, and fights with the cold fury of a village woman who has already buried one great house and will not watch another burn for want of a hand.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>路上的第三日，他们撞见了那场袭，而最毒的讽是：车旁倒下的妇人，是林锦岐的元配，赵星棠，叛也因她知得太多而标了她。她被从马上掀下，遭那猎主子的同一伙人袭，躺在尘里，肋下一个伤，怀着一个比流失的血更沉的秘。兰香，本不欠这妇人什么，且曾怕她作府里的大奶奶，却未犹疑；她把赵拖到车后，以己身隔在袭者与两个伤魂之间，以那种已葬过一座大宅、绝不肯看另一座因少一只手而焚的村妇的冷怒，战着。</p></details>
+
+<p class="seg" data-i="6" data-start="317.13" data-end="365.8">Zhao Xingtang, dying, takes Lanxiang&#x27;s hand and names the thing she has carried through three husbands and a treason: that the Zhao family, her own blood, did not merely side with the Han Prince but built the very proof that ruined the Shen family years ago — the account books that showed the Shen house dealing with the enemy were forged in the Zhao counting-room at the prince&#x27;s order. She presses into Lanxiang&#x27;s palm a slim book bound in oilcloth, the original of the falsified ledger, and with her last breath she says the Shen name was innocent, that her family&#x27;s hand wrote the lie that sent a great house to the ground. Lanxiang, who is Shen Jialan beneath the borrowed name, holds the proof of her own family&#x27;s wrong and feels the buried name stir at last, the way a root stirs under rain it thought would never come.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>赵星棠将死，握住兰香的手，说出了她穿过三任夫与主、穿过一场叛一直揣着的东西：赵家，她自己的血，不止是站了汉王，更造了那多年前毁了沈家的证——那显沈府通敌的账册，是在赵家账房里，奉王命伪造的。她把一本油布裹的薄册——那伪造总账的原本——按进兰香掌心，以最后一息说：沈家是无辜的，是她家的手，写了那把一座大宅送地的谎。兰香，那借名之下本是沈嘉兰的人，握着自家冤屈的证，感到那埋的名终动了，如一根以为再无雨的雨下才动的根。</p></details>
+
+<p class="seg" data-i="7" data-start="365.8" data-end="412.17">And then the hardest choice of the episode, the one the season will weigh her by: she kneels at the cart&#x27;s edge, opens the oilcloth book, and feeds it to the fire she builds from the cart&#x27;s broken spoke. Lin Jinqi, awake for this and watching through the fever, sees the ledger burn and understands at once what it was and what she has done — she has burned the proof that would clear the Shen name, the very name she carries, to keep the master who once imprisoned her from being dragged into the Zhao treason by the book that named him enemy to the prince. He sees it not as a loss but as a gift, and in the smoke of the ledger he reads the truth the house never could: the village woman is his benefactor, the one who has saved him twice over and asked for nothing, not even the name the fire has just taken.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而这集最难的选，这季要以此秤她的那个：她在车边跪下，开了油布册，把它喂给以车断辐生的火。林锦岐此时醒着，隔着热看着，见账焚，立懂了那是什么、她做了什么——她焚了能洗沈家之名的证，那名正是她自己背的，只为使那曾囚她的主子，不被那指他为王敌的册，拖进赵家的叛。他不见那是失，只见那是赠，而在账的烟里，他读了这府永读不出的真：那村妇是他的恩人，是那救他两回、索无一物、连刚被火取的那个名也不讨的人。</p></details>
+
+<p class="seg" data-i="8" data-start="412.17" data-end="459.93">He asks her, in the hoarse voice of a man who has just been given his life, who she is — not Xu Lanxiang the freed maid, not the village woman, but the hand that keeps finding him at the edge of death. She does not answer with the buried name; the road is not yet safe for that. She only says she is one who owed him a debt from the river, and that the debt is paid now, and he is to live. But Lin Jinqi, who reads people, has already read the whole of it in the burning book and the unflinching hands: the benefactor the season sent is the same girl who walked out of his gate free, and the war that took his blood has given him, in a drainage ditch and a peasant&#x27;s skirt, the one ally he cannot replace, the one he will spend the rest of the tale trying, clumsily, to deserve.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>他以刚被还了命的沙声问她是谁——不是那自由的许兰香，不是那村妇，而是那只总在死的边缘寻到他的手。她不以埋名答；路未安到可说那个。她只说他是在江上欠她一笔债的人，而债今已还，他要活。可林锦岐，读人的人，已在焚的书与不眨的手里读了全部：这季送来的恩人，正是那个自由走出他门的姑娘；而夺了他血的战，在一道排水沟与一条农妇裙里，给了他一个无可替的同盟，一个他余生要笨拙地去配的人。</p></details>
+
+<p class="seg" data-i="9" data-start="459.93" data-end="525.52">So we close episode twenty-two the way a fire closes a book — by burning the proof that could not be carried, and by leaving the saved and the savior bound to each other by a debt no paper records. The master was hunted and wounded; the village woman found him and fought for him; the first wife died in the dust with the Shen family&#x27;s innocence on her lips; and the ledger that could have cleared a great house went up in smoke so a living man might stay alive to clear it later. Lanxiang holds the buried name in her palm now, warmer than before, because she has touched the proof of her family&#x27;s wrong and chosen, for love of a master, to let it burn. Episode twenty-three, when it comes, will end the war and raise the master to a marquis, and the savior who burned the book will stand beside him not as a maid but as his lady. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, the proof of an innocent house is sometimes a fire a benefactor must light herself, and the woman who lights it is the woman the master will never again let walk out alone.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如火烧一书那样收束第二十二集——焚了那带不走的证，留那被救与救人，以一笔无纸可记的债，缚在一起。主子被猎、负伤；村妇寻到他、为他战；元配死在尘里，唇上是沈家的清白；而那本可洗一座大宅的账，上了烟，只为一个活人能活到日后去洗它。兰香此刻把那埋的名捧在掌心，比从前暖，因她触到了自家冤的证，却为对一个主子的爱，选了让它焚。第二十三集，来的时候，会终了战、抬主子为侯，而那焚书的救人，要立他身边，不是作丫鬟，是作他的夫人。但那是下周的讲法。此刻你只记一句：在林府，一座清白之宅的证，有时是恩人须亲自点的火，而点那火的人，是那主子永不再肯独放任她走出门的人。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 22 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP22_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 53.06], [53.06, 103.63], [103.63, 166.22], [166.22, 217.29], [217.29, 271.72], [271.72, 317.13], [317.13, 365.8], [365.8, 412.17], [412.17, 459.93], [459.93, 525.52]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

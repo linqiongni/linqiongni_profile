@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 32 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP32_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="64.1">Let me tell you about episode thirty-two, because this is the episode where the storm finally drops its voice and the two people who survived it learn the strange, unglamorous art of being ordinary. They have come down from the capital to Jinling, he a retired marquis who no longer wears the armor of the Jing&#x27;an title, she the woman who once ran a great household and now runs a small one, and the city receives them without fanfare, the way a river receives a dropped stone. There is no court here, no faction, no sealed gate with a sickness behind it; there is only the warm, common noise of a southern town — the clack of bamboo blinds, the smell of river fish fried at dusk, the slow argument of neighbors over a fence. Lanxiang stands at the threshold of their rented courtyard and breathes it the way a prisoner breathes her first free morning, and Lin Jinqi, watching her from the step, says nothing, because some homecomings need no words, only the quiet proof that the long road has at last stopped asking them to be anything but themselves.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第三十二集，因为这一集，风暴终于低了声，两个熬过它的人，学了&quot;做个寻常人&quot;这门古怪又不风光的手艺。他们从京城下来了金陵，他是个退了休的靖安侯，不再披那爵位的甲；她曾管一座大宅，如今管一处小院；这城不声不响地收了他们，如河收一枚落下的石。这里没有朝堂，没有党争，没有门后锁着病的封门；只有江南小城暖而俗的声——竹帘的噼啪、黄昏炸河鱼的香、邻人隔着篱笆慢慢的争。兰香立在他们赁的小院门槛上，吸这口气，如囚吸她头一个自由的晨；林锦岐在阶上望着她，不出声，因有些归，不需言语，只需&quot;长路终于不再要他们扮旁人&quot;这静的证明。</p></details>
+
+<p class="seg" data-i="1" data-start="64.1" data-end="122.8">In the capital he had been the Jing&#x27;an Marquis, a name that opened doors and closed throats, a man the emperor&#x27;s rivals watched and the emperor&#x27;s friends feared; here in Jinling he is simply the old gentleman who walks to the river at dawn and back before the market thins. He keeps none of the retainers, sends away the guard, and the only thing he carries from the life above is a habit of watching the horizon the way a soldier watches a hill he once took and may have to take again. Lanxiang noticed it the first week: how his eyes, even over a bowl of congee, would lift to the southern water and go still, the stillness of a man who has seen too much to ever be wholly at rest. But the stillness is gentler now, softened by the small, absurd contentments of a retired life — a good pear, a cleared sky, the way his wife laughs at a street performer&#x27;s clumsy trick. The great house taught him to command; Jinling is teaching him, slowly, to simply be.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>在京城他是靖安侯，一个开门也闭喉的名，一个皇帝的敌党盯着、皇帝的朋党惧着的男人；在金陵他只是天亮走到江边、市散前走回的老先生。他不留随从，遣了护卫，从那上头的日子只带出一个习惯：望地平线，如兵望一座他曾取、或还得再取的丘。兰香头一周就瞧见：他的眼，即使对着一碗粥，也会抬向南边的水、静下来，是一个见过太多、永难全歇的人的静。可这静如今软了，被退休日子那些小得可笑的满足焐着——一只好梨、一片晴空、他妻对街头卖艺笨拙把戏的笑。大宅教他号令；金陵正慢慢教他，只是&quot;在&quot;。</p></details>
+
+<p class="seg" data-i="2" data-start="122.8" data-end="182.68">Lanxiang, who once read a household the way other women read a face, now learns to read a market, and the education is harder than she expected. She who balanced the ledgers of the Rongbao Pavilion and managed the watchers of the Zhichun Residence fumbles at first with a basket and a list of three things: salt, greens, a length of cheap cloth. The fishwife at the corner knows her for a stranger by the cut of her slippers and the uncertainty in her hand, and charges her double, and Lanxiang — who once bent generals and dowagers to her calm — blushes and pays, because there is no steward&#x27;s token here, only the awkward dignity of a woman learning to be a customer. By the third week she bargains better; by the sixth she has a friend at the noodle stall who saves her the soft yolk; and somewhere in that small, daily schooling she finds a peace the great house never offered — the peace of being judged only for the price she pays and the smile she gives, not for the name she hides.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>兰香，曾如别妇读脸那样读一座宅，如今学读一座市，而这学堂比她想的难。她曾平荣宝阁的账、管知春馆的守人，初握一只篮与三样物的单——盐、菜、一段贱布——却笨了手。角上卖鱼的妇人，由她鞋的裁、手的犹，认出她是生客，加倍要了价；而兰香——曾把将军与老夫人弯在她那静里——红了脸，付了，因这里没有管家令，只有一个学做顾客的女人的笨拙体面。到第三周她还会价了；第六周她在面摊有了个朋友，替她留软的蛋黄；就在那日复一日的小学堂里，她得了大宅从不给的安——只由她付的价、给的笑被评判，不由她藏的名被评判的安。</p></details>
+
+<p class="seg" data-i="3" data-start="182.68" data-end="243.5">The kitchen is her particular defeat and her particular joy. In the Lin residence she gave orders; here she holds a ladle, and the first porridge she makes burns, the second is thin as rain, and Lin Jinqi eats both without complaint, praising the burnt one for its character and the thin one for its lightness, and she throws a spoon at him, and he catches it, laughing, the way a much younger man might, and for a moment the weight of all they survived lifts. She learns slowly — the soak of the rice, the patience of the fire, the small alchemy of a pinch of salt at the right breath. It is humble work, the kind the great house counted as nothing, and yet she finds in it a concentration she never had as a steward, as if tending a single pot demands the whole of a person in a way that governing a hundred souls never did. The season, which once set her at the center of rooms, now sets her at the center of a stove, and asks less of her, and she is, against all her training, grateful.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>厨房是她独独的败、也是独独的喜。在林府她发令；这里她握一勺，头回煮的粥糊了，第二回稀如雨，林锦岐两碗都不怨，夸那糊的&quot;有性情&quot;、稀的&quot;清&quot;，她掷勺过去，他接住，笑，如年轻许多的男人那般，一时，他们熬过的全部重量，轻了。她学得慢——米的浸、火的耐、那在恰当时息下一撮盐的小丹。这是贱活，大宅眼里什么也不是，她却在其中得了做管家时从未有的专注，似照料一锅，比管百条命更需人的全部。这季曾把她立在屋的中心，如今把她立在灶的中心，向她要得更少，而她，逆了她全副的训，竟是感激的。</p></details>
+
+<p class="seg" data-i="4" data-start="243.5" data-end="303.79">Lin Jinqi, for his part, discovers that retirement is not the absence of purpose but its quiet relocation. He who once rode to cut the snake&#x27;s head from a treason now mends the courtyard gate, oils the lock, and teaches the neighbor&#x27;s boy to tie a proper knot — small sovereignties, but sovereignties still, and the boy looks at him the way soldiers once looked at a commander. At dusk he pours tea, and the pouring has become a ceremony between them, a thing he does without thinking and she receives without remark, the way long-married people share a silence they have earned. Sometimes, when the tea steams between them, he reaches across and touches her wrist, the old press of the hand from the river and the gate, and she lets it rest there, because the war they walked out of taught them that such small touchings are the real spoils, the only plunder worth carrying. The man who once held a marquisate in his name holds now, most days, only a cup, and counts that the greater estate.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>林锦岐这边，发现退休不是目的的缺席，是目的静的迁。曾骑马去把叛的蛇头斩下的人，如今修院门、油锁、教邻童打一个正经的结——小的主权，却仍是主权，而那孩望他，如兵曾望主将。黄昏他斟茶，这斟成了他们之间的仪，他不经心做、她不言语受，如老夫老妻共享一份挣来的静。有时茶在中间蒸着，他伸手按她腕，那是江边与门口的旧按，她由它停着，因他们走出的那场战教他们：这般小的触碰，才是真的战利，是唯一值得带的劫。曾把侯爵之名握在掌里的男人，如今多数日子只握一只杯，并认那为更大的家业。</p></details>
+
+<p class="seg" data-i="5" data-start="303.79" data-end="360.14">But the season does not let peace go unshadowed, and the shadow this time wears salt. Far to the south, on the water beyond the passes, the remnants of Du Cuique&#x27;s pirates still run — the scattered crew of the woman who once poisoned a child to hold a room and who, escaping her exile, seized a ship and made herself a terror of the coast. The court calls her a lingering nuisance; the fishing villages call her a ghost that takes ships and leaves widows. Lanxiang hears the news in snatches at the market, where travelers speak of burned junks and tolls paid in fear, and she knows the name beneath the rumor the way she knows the shape of an old enemy&#x27;s handwriting. Du Cuique was never one to lie down; the woman who would not be contained by a great house or an exile&#x27;s chain will not be contained by the sea, and the quiet in Jinling, Lanxiang understands, is a quiet with one ear always turned to the water.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>可这季不让平安无影，而这次的影，披着咸。远在南方，过边的水上，杜翠雀残部的海盗仍跑着——那曾为掌一屋毒孩、又逃了流放、夺了船、自成为海岸之恐的女人的散卒。朝中唤她一桩余患；渔村唤她夺船留寡的鬼。兰香在市上零零碎碎听来，行旅说烧的船、以恐惧付的税，她识得谣下那个名，如识旧敌笔迹的形状。杜翠雀从不是会躺下的人；一个不被大宅、不被流放的链容下的女人，也不会被海容下；而金陵的静，兰香懂，是一份总有一耳转向水的静。</p></details>
+
+<p class="seg" data-i="6" data-start="360.14" data-end="410.42">She does not tell Lin Jinqi the full of what she hears, not from fear but from a new, married discretion — the sort that protects a peace by not feeding it worries it cannot eat. He knows the sea is restless; he reads the same gazette she does, and his old soldier&#x27;s nose tells him the coastal raids are no common bandit&#x27;s work. But between them there has grown a tacit agreement, the kind only two people who have stared down enough endings can make: they will not let the distant storm dictate the near morning. So he oils the gate, and she burns the porridge, and they laugh, and the laughter is not denial but a decision — that whatever comes from the southern water, they have already won the only victory that matters, which is the right to sit, unarmed and unhurried, in a courtyard that belongs to no one&#x27;s ambition but their own.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她没把听的全告诉林锦岐，不是怕，是一种新生的、为妻的审慎——那种不拿吃不下忧去喂一份平安的审慎。他知道水不静；他读她读的同一种邸报，老卒的鼻告诉他，那海岸的劫，不是常盗的活。但他们之间长出了一种默契，只有两个对视过足够终场的人才能立下：他们不让远处的暴风，指近处的晨。于是他油他的门，她糊她的粥，他们笑，而这笑不是否认，是一个决断——无论南水来什么，他们已赢了唯一要紧的胜，即有权坐在一处无甲无慌的院里，这院不属任何人的野心，只属他们自己。</p></details>
+
+<p class="seg" data-i="7" data-start="410.42" data-end="468.81">There is a scene, in those early Jinling days, that the season seems to have staged just to mark how far they have come. A neighbor&#x27;s child falls ill with a fever — the same kind of fire in the blood that once sealed the Lin gates — and Lanxiang, without thinking, moves to tend her, the old steward&#x27;s hand returning like a muscle remembered. But here there is no poison to catch, no faction to outwit, only a frightened mother and a hot little forehead, and Lanxiang sits with them through the night, wetting a cloth, and when the child sleeps, the mother thanks her with a bowl of sweet beans, and Lanxiang accepts it as an equal accepts a gift from an equal. The great house once measured her by the secrets she kept; this small town measures her by the cloth she held to a child&#x27;s brow, and she finds, to her own surprise, that she prefers the second ledger, and sleeps that night without the old vigilance, the way a soldier sleeps who has at last been stood down.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>在那些金陵初日里，有一幕，这季似专为标他们走了多远而设。邻童发热——正是曾封了林府门的那血里火——兰香不假思量就去照，旧管家的手回来如记起的肌。可这里没有要捉的毒，没有要赢的党，只有一个吓的母亲与一只热的小额；兰香陪他们过夜，湿一方布，孩睡了，母亲以一碗甜豆谢她，兰香如平人受平人之赠那样受了。大宅曾以她藏的秘量她；这小城以她按在孩额上的布量她，而她讶然发现自己更喜第二本账，那夜睡得没了旧的警，如一个终被解除戒备的兵那样睡。</p></details>
+
+<p class="seg" data-i="8" data-start="468.81" data-end="528.74">Evenings in Jinling are long and soft, and the two of them fall into them the way a stone falls into deep water — without resistance, without splash. They walk the lantern street, he with his hands behind him, she with her basket, and they buy nothing they need and everything they want: a paper lantern shaped like a fish, a stick of sugar that makes him wince at the sweetness, a small tale told by a blind singer that makes her eyes bright. Lin Jinqi, watching the lanterns throw their doubled light on the canal, thinks — but does not say — that this, this unhurried wandering among ordinary people, is the home he marched a lifetime to reach and did not know to name. And Lanxiang, watching a child chase its own shadow, understands that the freedom the contracts bought was only the door; the room beyond it, warm and unimportant and entirely her own, is something she had to learn to live inside, the way one learns to live inside a gift too large to be opened at once.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>金陵的夜长而软，他们落入其中，如石落深水——不拒、不溅。他们走灯街，他手在身后，她篮在手，买的无一所需、无一不所欲：一只鱼形的纸灯、一根甜得他皱眉的糖、一个盲歌者讲的小故事，惹她眼亮。林锦岐望灯把重影投在渠上，想——却没说——这，这寻常人里不慌的游走，是他行了一生要到的家、却不知其名的家。兰香望一孩追自己的影，懂了那契买来的自由只是门；门后那暖、不重要、全属她自己的屋，是她得学长住进去的，如人学长住进一份大得来不一刻开尽的礼。</p></details>
+
+<p class="seg" data-i="9" data-start="528.74" data-end="582.31">So we close episode thirty-two the way a retired couple closes a gate — without haste, without looking back for enemies that are not at the threshold. The marquis has become a gentleman of the courtyard; the steward has become a woman of the market; the poisoner&#x27;s shadow still walks the southern sea, but it walks outside a peace these two have earned the hard way, by surviving everything the season threw. Episode thirty-three, when it comes, will turn Lanxiang from the kitchen to the page, and the pen name Shen Rugù will begin its quiet work of washing a family&#x27;s name clean in the mouths of common people. But that is next week&#x27;s tell. For now, remember only this: in Jinling, an ordinary life is not a small thing — it is the spoil of every war worth fighting, and the two who learned it paid for it in years they will never get back, and would pay them again.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如一对退了休的夫妇合一门那样收束第三十二集——不急、不回头寻那不在门槛的敌。侯成了院里的老先生；管家成了市上的妇人；投毒人的影仍走南边的海，却走在一份这两人用熬过这季一切换来的平安之外。第三十三集，来的时候，会把兰香从灶引向页，而沈如故这笔名，将起它洗一家之名于常人之口的静工。但那是下周的讲法。此刻你只记一句：在金陵，寻常的日子不是小物——它是每场值得打的战之掠，而学了它的两人，以他们永要不回的年月付了它，且愿再付一遍。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 32 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP32_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 64.1], [64.1, 122.8], [122.8, 182.68], [182.68, 243.5], [243.5, 303.79], [303.79, 360.14], [360.14, 410.42], [410.42, 468.81], [468.81, 528.74], [528.74, 582.31]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

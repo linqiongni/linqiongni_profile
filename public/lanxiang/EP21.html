@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 21 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP21_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="64.25">Let me tell you about episode twenty-one, because this is the episode where a freed woman learns that freedom, once granted, is a thread the season can pull whenever it pleases, and that the small house on the near side of the city was never the end of her road but only a breath the season let her draw before the harder march. Lanxiang sits by Xu Wanquan and Lady Xue in the lamp&#x27;s soft circle, a daughter home at last, the contracts that named her a belonging now ash in the brazier&#x27;s mouth. She tells herself the war is over, that the Han Prince&#x27;s plot was a thread cut at the field with Du Zheng&#x27;s death. But the season, which has taught her to read a house the way other women read a face, shows her the truth in the quiet: a prince does not stake a throne on one brother, and a weave with one thread pulled still has a hundred left to tighten. The word that reaches the small house is small at first — a commander gone, a monk&#x27;s strange tale — but in Lanxiang&#x27;s hands even a small word becomes a shape, and the shape, she sees, is the crown beginning to slip.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第二十一集，因为这一集，一个自由了的妇人学了：自由一旦给了，是这根季随时可拽的线；而城那头小屋，从不是她路的终，只是这季在她走更难的行军前，许她吸的一息。兰香在灯柔的圈里，坐在许万全与薛氏身边，终是归家的女，那些说她是所属物的契，已在火盆口成了灰。她告诉自己战完了，汉王之局，是场上随杜正死而斩的那一缕。可这季，教她读府如别妇读脸的季，在静里给她看真：一个王，不会把位押在一个兄上；一根抽了一缕的织，还剩百缕要紧。传到小屋的话，起初很小——一个指挥使没了，一个和尚的怪谈——可到了兰香手里，再小的话也成个形，而那形，她看，是位开始滑了。</p></details>
+
+<p class="seg" data-i="1" data-start="64.25" data-end="120.43">The first thread comes from the capital&#x27;s guard, and it comes as an absence rather than a blow. The Tiance Guard, the emperor&#x27;s own eye upon the city, has lost its commander — Commander Tian, who should have been at his post at the watchtower before the dawn bell, is simply not there, and not there in a way the guard cannot name. Lanxiang, hearing it from a footman who does not know he carries a prophecy, files it the way she files everything that may yet bite: a commander of the guard does not vanish like a dropped coin. He is removed, or he is bought, or he is dead, and each of those is a hole in the capital&#x27;s sight at the very hour a prince might wish the capital blind. She does not yet say the word treason aloud. She only notes that the eye meant to watch the throne has been shut, and that a shut eye in a great house is always the first sign that someone means to walk the halls unspoken and unseen.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第一缕来自京城的禁卫，而它是以&quot;缺&quot;而非&quot;击&quot;来的。天策卫，皇帝置于城上的那只眼，失了它的指挥使——田指挥使，本该在晨钟前立于望楼之位，却 simply 不在，且不在得连卫里也说不清名目。兰香从一名不知自己揣着预言的脚夫口中听了，如记一切或还会咬的那般记下了：一个卫指挥使，不会如掉的钱一般消失。他是被除了，或被买了，或是死了，而每一种，都是京城之目在那个王或愿京城盲的时辰上，破了个洞。她还未曾把&quot;叛&quot;字说出口。她只记：那只本要看位的眼被合上了，而大宅里一只合上的眼，总有人意欲无声无影地走过廊的初兆。</p></details>
+
+<p class="seg" data-i="2" data-start="120.43" data-end="182.09">The second thread is stranger, and it reaches her through a man of cloth rather than a man of arms. A temple monk, come down from the hill shrine to beg rice at the small house&#x27;s gate, tells a tale that makes the servants cross themselves: outside the city wall, in the single night between two ordinary dawns, every dog in the villages along the northern road was found dead at its post, stiff and silent, as though something vast and soundless had marched over them and left no footprint but the stillness. The monk calls it the passing of the ghost army — yin soldiers, he says, treading the world when the living sleep. Lanxiang listens with the part of her that read the water and the lie, and she translates the monk&#x27;s fear into a colder language: no ghost marched that road. A real column did, moving without torch or trumpet, so disciplined that even the dogs, who hear what men cannot, were struck mute by its passing. A hidden army, rehearsing, one night&#x27;s ride from the capital&#x27;s gate.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>第二缕更奇，而它是经一个布衣之人而非甲胄之人到她手里的。一个寺僧，从山庙下来到小屋门口化米，讲了一桩让仆人画十字的怪谈：城墙外，在两个寻常黎明之间的那一夜里，北路上各村每一条守在岗位上的狗，都被发现僵死无声，仿佛某种庞大而无声的东西从它们身上踏过，不留脚印，只留死寂。僧人称那是阴兵过境——阴间的兵，他说，在活人睡时踏世。兰香以她读水读谎的那部分听着，把僧人的惧译成更冷的话：那路上没有鬼行。是一支真列，无火无号地动，纪律严到连听见人所不能闻的狗，也被它的经过镇得哑了。一支藏着的军，在离京门一夜骑程处，正演习。</p></details>
+
+<p class="seg" data-i="3" data-start="182.09" data-end="242.4">Two threads, and in Lanxiang&#x27;s palm they braid into one cord she has seen before — the cord that tightens around a throne. She sets the commander&#x27;s absence against the silent column and reads the board the way Lin Jinqi taught her to read a room: a guard commander gone is the capital&#x27;s eye put out; a hidden army rehearsing beyond the wall is the hand raised to strike; and the two together name a treason too large for a single brother&#x27;s paper. The Han Prince, she sees, was never finished at the field — Du Zheng was only the inside thread, and the prince, set back, has simply moved the weave to the capital itself, where the throne sits unguarded by the very man meant to guard it. She does not panic. She has spent twenty episodes learning that a danger named is a danger halved, and so she names it quietly to herself, the way a reader names the villain on the page before the hero does, and begins to reckon what a free woman who still loves a great house owes the house that let her go.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>两缕，在兰香掌心编成一根她见过的绳——那根紧着位的绳。她把指挥使的缺，对上那无声的列，如林锦岐教她读屋那样读这盘：卫指挥使没了，是京城的眼被剜；墙外演习的藏军，是举起要击的手；二者合起来，指着一个大过一兄之纸的叛。汉王，她看，从未在场上终——杜正只是内里的那缕，而王，退了，不过把织移到了京本身，位在那里，本该守它的人却未守。她不慌。她用了二十集学：一个被指了名的险，是减半的险；于是她静静对自己指这名，如读者在英雄之前先指了页上那恶，且算起一个仍爱大宅的自由妇，欠那放她走的府什么。</p></details>
+
+<p class="seg" data-i="4" data-start="242.4" data-end="300.72">She goes first not to the master but to the second master, because the treason she foresees is a brother&#x27;s war and the man who must hear it is the brother most likely to be eaten by it. She cannot say the prince&#x27;s name to a man of the inner court without proof the court would laugh at, so she speaks in the old language of warnings — she quotes the line every child knows, about beans boiled alive over the fire of their own stalk, brothers consumed by the very root that fed them. The second master, no fool despite his softer seat, hears the riddle and goes pale, because he knows which stalk is the eldest and which bean is himself. Lanxiang does not press the point; she only lets the old poem hang in the air between them the way a dropped pin hangs before it falls, and watches him understand that the war coming for the Lin family is not the one with swords but the one with brothers, and that the eldest, caught between throne and kin, will be asked to burn the younger or be burned.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她先去的不是主子，而是二爷，因她预见的叛，是一场兄弟的战，而须听这话的，是最可能被它吞下的那兄弟。她不能对一个内宅的人说出王的名，无凭无据，庭会笑；于是她用那古老的警告之语——她引那每个孩子都知的句：豆在自身秸的火里活活煮着，兄弟被养他们的那根同毁。二爷，虽坐得软，却非愚，听了这谜，白了脸，因他知哪根是长兄、哪颗豆是自己。兰香不逼这点；她只让那旧诗悬在两人间的空气里，如落下的簪在坠地前那般悬着，看他懂了：临林家的战，不是持刃那场，是兄弟那场；而长兄夹在位于亲之间，要被逼着烧了幼的，或被烧。</p></details>
+
+<p class="seg" data-i="5" data-start="300.72" data-end="360.77">The second master surprises her, and the season marks the moment, because a man soft all his life chooses, for once, the harder mercy. He does not wait for the eldest to be forced to choose; he gathers his wife and his small ones in the grey hour before the city wakes, tells no one but Lanxiang, and slips through the eastern gate with the quiet of a man who knows he is a pawn the players would rather not have move. He will not be the bean the stalk consumes. He leaves the capital to its princes and its plots, carrying only what a family can hold in a single cart, and the last look he gives Lanxiang is gratitude — for the warning dressed as a poem, for the mercy of a friend who read the board before the fire was lit. The capital, that morning, loses one brother and never notices; but the house that might have been split by a prince&#x27;s war is, by his leaving, kept whole, and the keeping is Lanxiang&#x27;s quiet victory, won with a line of verse and a silence he chose to hear.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>二爷让她意外，而这季记下了这一刻，因一个软了一生的人，头回选了那更难的仁。他不等的兄被迫去选；他在城醒前的灰色时辰里，聚起妻与幼，只告了兰香，从东门溜出，静得如一个知自己是棋手宁勿动的子的棋子。他不做那被秸吞的豆。他把京留给它的王与它的局，只带一家一车能装下的，而他对兰香最后一眼是谢——谢那扮成诗的警，谢那在火未点前读了盘的朋友的仁。那早，京失了一个兄弟，浑然未觉；可本要被王的战劈开的府，因他这一走，保了整，而那保全，是兰香静的胜，以一行诗、与他选来听的静赢的。</p></details>
+
+<p class="seg" data-i="6" data-start="360.77" data-end="419.59">Now the harder errand: she must reach the eldest before the capital closes, because a master warned is a master armed, and because the season has, episode by episode, bent her road back to his. She borrows a horse from a neighbor who owes Xu Wanquan a kindness, and she rides — not as a maid now, but as a free woman with a warning the great house cannot buy. The road to the camp where Lin Jinqi sits between court and command is muddy with spring rain, and she is no horseman, but the fear that pushes her is the same fear that once pushed her through a traitor&#x27;s den and a poisoned hall. She rehearses the words she will say: the commander is gone, the ghost army marched, the Han Prince means the throne. She does not yet know that by the time she finds him the plot will already have teeth, only that the man who reads people must be told what the people he reads are too afraid to name, and that she is the only one who has joined the two halves of the coming storm.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>如今更难的差：她须在京合上前寻到长兄，因被警的主子是披了甲的主子，也因这季一集集，把她的路弯回了他。她向一个欠许万全人情的和邻借了马，骑上——如今不是作丫鬟，是一个带着大宅买不动的警的自由妇。去林锦岐在庭与令之间坐着的营的路，被春雨和了泥，她本非骑者，但推着她的惧，正是曾推她过叛者窝与毒厅的那惧。她排演要说的词：指挥使没了，阴兵行了，汉王意欲夺位。她还不知，等她寻到他时，那局已生了牙，只知那读人的人，须被人告知他所读的人怕得不敢指的名，而她是唯一把将临的风暴两半合起的人。</p></details>
+
+<p class="seg" data-i="7" data-start="419.59" data-end="476.64">She finds him at the camp&#x27;s edge at dusk, rain on his cloak and a letter half-written in his hand, and the sight of her — a free woman, muddy, breathless, arrived on a borrowed horse — stops the word he was about to write. She does not bow; freedom taught her that. She says only that the Tiance Guard&#x27;s eye is shut and a column marched the northern road in a silence even the dogs could not break, and that the two together spell the Han Prince&#x27;s hand upon the capital. Lin Jinqi, who has suspected the prince since the field, goes still the way a reader goes still at the villain&#x27;s name, and for one long moment the master and the maid who was furniture look at each other without the screen of rank, because the warning she carries is worth more than any gold the house once offered her. He asks nothing of where she learned it; he only nods, the way a man nods at the one witness who survived the room, and says that he will need her behind him when the capital wakes.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她在黄昏的营边寻到他，雨落披风，手里信写了一半，而见她的那一眼——一个自由妇，满泥、喘着、骑借来的马到的——止住了他要将写下的字。她不跪；自由教了她这个。她只说天策卫的眼闭了，一支列在连狗都破不了的静里行了北路，而二者合起来，拼出汉王按在京上的手。林锦岐，自场上便疑那王，如读者在恶名处那般静了，而有长长一瞬，主子与曾作家具的丫鬟，无阶之屏相对，因她揣的警，贵过这府曾许她的任何金。他未问她从何得知；只点首，如一个男人对活过那屋的唯一证人点首，说京醒时，他要她在身后。</p></details>
+
+<p class="seg" data-i="8" data-start="476.64" data-end="533.9">And here the season gives the only softness it will allow this harsh episode: a parting that costs a woman who has walked out free her carefully kept distance. She has told herself the small house is enough, that the buried name and the great house are threads she may now lay down. But standing in the rain with the man she has read and protected since the river, she does the one thing the whole drama will never repeat — she rises on her toes, presses a single kiss to his cheek, and says the word she used to speak only as a maid: &quot;Master, take care.&quot; It is the only kiss in all thirty-seven episodes, and it is not a promise of love but a thank-you for survival, a benediction from a free woman to the man who let her go and the man she could not quite leave. Then she turns and rides back into the dark, leaving him with the taste of rain and the print of a kiss he will carry into the coming war, the way a soldier carries a letter he dare not open.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而在此，这季给了这硬的一集唯一肯允的柔：一个令一个走出自由、小心守着距离的妇人，付出了那距离的别。她曾告诉自己小屋够了，埋下的名与大宅，是她如今可放下的线。可立在雨里，对着那自江边起便被她读、被她护的男人，她做了整部剧永不再演的一件事——她踮脚，只一下，把吻印在他颊上，并说那她曾只作丫鬟才说的词：&quot;大爷，保重。&quot;这是三十七集里唯一的一吻，不是爱的诺，是对活下来的谢，是一个自由妇给那放她走的男人、也是她没能真离的男人的祝。然后她转头骑回暗里，留他带着雨味与一记要带入将临的战的吻印，如一个兵带着一封不敢拆的信。</p></details>
+
+<p class="seg" data-i="9" data-start="533.9" data-end="604.89">So we close episode twenty-one the way a freed woman closes a gate — by walking back through it the moment the season calls, and by carrying into the great house the one warning no rank could buy. The commander&#x27;s absence put out the capital&#x27;s eye; the ghost army marched the silent road; Lanxiang braided the two into the Han Prince&#x27;s name and spoke it to the brothers before the fire was lit. The second master heard the beanstalk poem and chose to walk away whole; the eldest heard the warning and named her his backing as the capital slept. And the kiss — the single kiss, the master taken care of — is the season&#x27;s quiet proof that the thread between them was never only a contract. Episode twenty-two, when it comes, will open the war the warning could not prevent, and the free woman who rode out will ride back as a village woman to find the master wounded and the Shen family&#x27;s name hidden in a dying woman&#x27;s hands. But that is next week&#x27;s tell. For now, remember only this: in the Lin estate, a prince&#x27;s plot begins with a shut eye and a silent road, and the girl who reads both is the girl the master will wish he had kept closer when the swords come out.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如自由妇合一门那样收束第二十一集——在季一召便走回门里，并把那无阶可买的警，带进大宅。指挥使的缺，剜了京的眼；阴兵行了静的路；兰香把二者编成汉王的名，在火未点前说给兄弟。二爷听了那煮豆燃豆萁的诗，选了整身走开；长兄听了警，在京睡时认她作托底。而那一吻——唯一的一吻，被嘱保重的大爷——是这季静的证据：他们之间的线，从不止是一张契。第二十二集，来的时候，会展开那警未能阻的战，而骑出的自由妇，要扮作村妇骑回，寻那负伤的主子，与握在一个将死妇手里的沈家之名。但那是下周的讲法。此刻你只记一句：在林府，王的局，始于一只闭的眼与一条静的路，而把两者都读出的姑娘，是那当刀出时，主子但愿留得更近的姑娘。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 21 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP21_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 64.25], [64.25, 120.43], [120.43, 182.09], [182.09, 242.4], [242.4, 300.72], [300.72, 360.77], [360.77, 419.59], [419.59, 476.64], [476.64, 533.9], [533.9, 604.89]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

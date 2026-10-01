@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 37 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 9 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP37_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="51.24">Let me tell you about episode thirty-seven, though it is not an episode in the way the others were — it is a coda, the last breath a teller of tales draws before setting the story down, and it closes not with a battle or a bridal cup but with a fragrance that outlives the hands that first carried it. We have walked, you and I, from a great house where a maid learned to read a fever, through treasons and exiles and a war of grain trains, to a quiet Jinling courtyard where an old woman set a family&#x27;s name back into the memory of a people. And now, at the very end, the season asks only that we smell the air the story leaves behind, and recognize it as the one thing no edict, no blade, and no passing year could ever take. It is the breath a teller draws before setting the story down for good, and it asks nothing of you but to listen.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第三十七集，虽它不似别集那样是一&quot;集&quot;——它是一段尾声，是一个说书人放下故事前吸的最后一口息，它合的，不是一场战、也不是一杯合卺酒，而是一缕比最初托起它的那双手更活得久的香。你与我，从一座大宅——一个丫鬟在那里学了读热——走过叛、流放、与一场粮车的战，走到了一座静的金陵小院，一个老妇在那里把一家的名，重放回人的记忆里。而此刻，到最末，这季只请我们闻一闻这故事留下的空气，并认出它是那唯一——没有任何诏、任何刃、任何逝去的年——能夺走的东西。</p></details>
+
+<p class="seg" data-i="1" data-start="51.24" data-end="108.24">The title of our whole tale is The Fragrance of Orchids Remains, and the coda is where that title finally explains itself. Lanxiang — the orchid&#x27;s fragrance — was always more than a name; it was the thing about her that survived every attempt to bury it. They buried her as Shen Jialan beneath a convicted family&#x27;s stone; they buried her again as a third-rank maid beneath a great house&#x27;s ledger; they buried her a third time as a widow beneath a marquis&#x27;s empty chair. And each time the fragrance rose anyway, in a dropped hairpin, a burned contract, a written line, a red thread — because an orchid does not stop smelling because someone threw earth on it. The season, which spent thirty-seven episodes trying to silence her, ends by admitting it could not, and the proof is simply that you are still listening. The coda is where that title finally explains itself, and where the orchid&#x27;s scent is shown to be the woman.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>我们整篇故的题，是《兰香如故》，而尾声，正是这题终于自解之处。兰香——兰的香——从来不止一个名；它是她身上那件，熬过每一次要把它埋下的尝试的东西。他们以沈嘉兰之名，把她埋在一座有罪之家的石下；他们再以三等丫鬟之名，把她埋在一座大宅的账下；他们又以寡妇之名，把她埋在一张侯的空椅下。而每一次，那香仍浮起——在一支落簪、一张烧了的契、一行写下的字、一截红线里——因兰不因有人掷土其上便停了香。这季花了三十七集试着噤她，末了却承认办不到，而那证，简单就是：你还在听。</p></details>
+
+<p class="seg" data-i="2" data-start="108.24" data-end="157.63">Look back with me at the shape of the road, because a teller of tales owes the listener the whole of it. A stranger&#x27;s child taken in by Xu Wanquan and Lady Xue; a maid who read a household the way others read a face; a steward who caught a poisoner with a hairpin and a fever with a wet cloth; a free woman who walked out a gate with nothing but a token and a buried name; a wife who drank the bridal cup in defiance of an empire; a widow who kept a residence and a red thread; an author who signed herself Shen Rugù and cleared a house in the mouths of common people. Each self was a room, and each room opened, in the end, onto the same courtyard — the one where a person, ordinary at last, is simply allowed to be. A teller of tales owes the listener the whole of it, and the road, seen whole, makes a kind of sense.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>与我一同回望这条路的形状，因一个说书人欠听者整条路。一个被许万全、薛氏收留的陌生孩；一个如别妇读脸那样读一座宅的丫鬟；一个以簪捉投毒人、以湿布读热的管家；一个只携一令、一名埋下的自由妇，走出一门；一个逆着一个江山饮了合卺酒的妻；一个守着一座府、一截红线的寡妇；一个自署沈如故、在常人口里洗了一座府的作者。每一个&quot;我&quot;是一间屋，而每间屋，末了都开向同一座院——那一座里，一个人，终于寻常，只被任她&quot;在&quot;。</p></details>
+
+<p class="seg" data-i="3" data-start="157.63" data-end="211.63">The plays she wrote are still sung, and that is the only monument she would have wanted. Not a stone, not a title, not a court&#x27;s grudging seal, but a boatman humming the fallen daughter&#x27;s song as he poles his skiff at dusk, a grandmother teaching the lament to a grandchild who will teach it to hers, a puppeteer carving the face of the girl who survived by her wits. The Shen name, exonerated at last by a court that only caught up to what the people already knew, needs no further defense, because it lives now in a thousand small voices that no edict can silence and no winter can chill. The fragrance of the orchid, passed breath to breath, has become a wind, and a wind, as every teller of tales knows, goes where it pleases and answers to no throne. Not a stone, not a title, not a court&#x27;s grudging seal, but a song sung by those who never knew her name.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她写的戏仍被唱，而那正是她本想要的唯一的碑。不是石、不是爵、不是朝那勉强的印，而是一个船夫薄暮撑艇时哼着落难女的歌，一个祖母把那哀歌教给孙女、孙女再教给她的孙女，一个雕偶人刻着那凭智活下来的姑娘的脸。沈姓，终被一座只追上人所已知的朝昭了雪，再不需辩护，因它如今活在一千个小小的声里——没有诏能噤、没有冬能寒。兰的香，息传息，已成了一阵风；而风，如每个说书人都知，去它愿去处，不向任何位称臣。</p></details>
+
+<p class="seg" data-i="4" data-start="211.63" data-end="263.57">Even the shadows she fought could not outlast her. Du Cuique&#x27;s remnants, the pirate crew that struck the grain train and reached from the southern sea to a northern road, are remembered now only as a footnote to a stronger tale — a storm that broke against a wall of grain and an old man&#x27;s stubbornness, and then was weathered away by the same ordinary years that polished the Shen name smooth. The season taught us early that peace has a shadow, but the coda teaches the older truth: shadows are shorter than stories. Time, which took Lin Jinqi and then Lanxiang, took the pirate&#x27;s threat as well, and left standing only what was written in love and sung in truth — the fragrance, and the song, and the name that refused to stay buried. A storm that rose from the southern sea and reached a northern road, now remembered only as part of a stronger tale.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>连她战过的影，也活不过她。杜翠雀的残部，那击了粮车、从南边海伸到北边路的贼伙，如今只被记为一则更强之故的脚注——一场撞在一面粮墙与一个老者之拗上碎了的暴，然后被同一段把沈名磨光的寻常年岁，慢慢风化掉。这季早早就教我们：平安有一道影；可尾声教的是更老的理：影比故短。那夺了林锦岐、又夺了兰香的时间，也夺了那贼的胁，而只留下那以爱写、以真唱的——香、歌、与那不肯久埋的名。</p></details>
+
+<p class="seg" data-i="5" data-start="263.57" data-end="314.59">And what of the red thread, the matchmaker&#x27;s cord Lin Jinqi laid in her hand with his promise to wait for her at the bridge in the next life? The coda does not close it. It leaves it open, the way a door is left open for one who is expected, because some promises are not meant to be resolved by a storyteller but kept by time itself. If the thread is true, then somewhere beyond this tale a man stands at a bridge, patient as a soldier on watch, and a woman who spent her life writing truth is, one hopes, about to be recognized at once. The season will not show us that meeting; it only leaves the thread in our hands and steps back, the way a good host leaves the door and lets the guests find each other. It leaves the door open, the way a door is left open for one who is expected and not yet arrived.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>而那红线呢——林锦岐覆在她手里、许下&quot;来世在桥上等她&quot;的那月老之绳？尾声不把它合上。它留它开着，如一道为那预期要来的人留着的门，因有些诺，本不是给说书人解的，是给时间自己守的。若这线是真的，那么在这故之外的某处，一个男人立在桥上，如哨上兵那般耐心，而一个用一生写真的女人，但愿，正要被一眼认出。这季不会给我们看那场相见；它只把那线留在我们手里，后退一步，如一个好主人留着门、由客人彼此寻见。</p></details>
+
+<p class="seg" data-i="6" data-start="314.59" data-end="367.29">So the long story bends, at last, toward the only ending it ever could have — not a victory won by sword or court, but a fragrance passed on. Lanxiang as of old, the orchid&#x27;s scent, remains; and the fragrance is passed down long, unbroken, from the boatman to the grandchild to the reader who will one day pick up this very tale. The title we began with, The Fragrance of Orchids Remains, is no longer a title but a fact, proven not by an empire but by a people, not by a decree but by a song. The season that set her every trial has, in the end, been answered not with a victory shout but with a quiet, continuing hum — the sound of a true story refused to die. What stays is not the noise of battles but the quiet truth that a person, given only a pen and a patient heart, can outwrite an empire.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是这长故，终于，弯向它本只能有的那一种终——不是以剑或朝赢来的胜，而是一缕传下去的香。兰香如故，兰的息仍在；而那香被长长地、不断绝地，从船夫传到孙女、传到有一日会拾起这故的读者。我们开头的题《兰香如故》，已不再是题，而是一个事实——不由一个江山证、而由一方人证，不由一道诏证、而由一支歌证。那给她每一场试的季，末了，被回应的，不是一声胜的呼，而是一缕静而续的嗡——一个不肯死的真故之声。</p></details>
+
+<p class="seg" data-i="7" data-start="367.29" data-end="419.25">I will leave you the way a teller of tales leaves a listener at the close of a long night — with the lamp still warm and the road still visible. You came to this story perhaps for the treasons and the battles, and those were here; but what stays, I think, is the quieter thing: that an ordinary person, pressed by every power around her, refused to let a true name be buried, and that the refusing, done with a pen and a patient heart, outlasted the powers that tried to do the burying. Lanxiang would not have called herself a hero. She would have called herself, simply, Xu Lanxiang, or Shen Rugù, or the woman who kept a courtyard and a promise. And that, the coda insists, is exactly what makes the fragrance worth carrying. What you leave with is the warmth of the lamp and the quiet certainty that the road was worth the walking.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>我便如一个说书人在长夜终处离听者那样离你——灯仍暖，路仍见。你或许为那些叛与战而来，而它们都在；但留下来我认为，是那更静的东西：一个被周遭每一份权压着的寻常人，不肯让一个真名被埋，而那不肯，是以一笔与一颗耐的心做的，熬过了那些要来埋的权。兰香不会自称英雄。她只会简单地自称许兰香，或沈如故，或那个守了一座院与一句诺的女人。而那，尾声坚称，正是这香值得带的原因。</p></details>
+
+<p class="seg" data-i="8" data-start="419.25" data-end="471.98">So we close the thirty-seven episodes the way an orchid closes at dusk — by releasing what it has, into the air, for whoever comes after. The maid became a steward, the steward became free, the free woman became a wife, the wife became a widow, the widow became an author, and the author became a fragrance that no season could gather back. The Fragrance of Orchids Remains; the fragrance is passed on, long and unbroken, until the next teller takes it up and carries it further still. Thank you for walking this road with me, from the great house to the quiet courtyard, and may the tale you carry from it be as true as the one she wrote. The story ends. The scent remains. The remaining is the only ending a true story permits — not a stop, but a passing, hand to hand, breath to breath, age to age.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如兰在薄暮合拢那样，合上这三十七集——把所拥有的，释入空气，给后来的人。丫鬟成了管家，管家成了自由，自由妇成了妻，妻成了寡妇，寡妇成了作者，作者成了一缕任何季都收不回的香。《兰香如故》；香传下去，长而不断，直到下一个说书人拾起它、再带它更远。谢你与我同走这条路，从大宅到静院，愿你从它带走的故，如她写的那般真。故终了。香犹在。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 37 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP37_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 51.24], [51.24, 108.24], [108.24, 157.63], [157.63, 211.63], [211.63, 263.57], [263.57, 314.59], [314.59, 367.29], [367.29, 419.25], [419.25, 471.98]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>

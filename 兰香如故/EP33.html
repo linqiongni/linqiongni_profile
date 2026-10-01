@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兰香如故 · The Fragrance of Orchids Remains — Audio Story</title>
+<script>
+/* 主题：嵌入主站 iframe 时跟随主站明暗（ThemeIframe 经 postMessage 下发）；
+   独立打开（file:// 或新窗口）则跟随系统偏好。 */
+document.documentElement.classList.toggle('embedded', !!(window.parent && window.parent !== window));
+(function () {
+  var r = document.documentElement;
+  function apply(m) { r.setAttribute('data-theme', m === 'light' ? 'light' : 'dark'); }
+  if (r.classList.contains('embedded')) { apply('dark'); } // 主站默认暗色，首帧即对齐
+  else { apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme' && (d.mode === 'light' || d.mode === 'dark')) apply(d.mode);
+  });
+})();
+</script>
+<style>
+  /* 字体：对齐主站 index.css 两套体系 —— 正文无衬线、标题/引语衬线（跨设备一致，不依赖 macOS 独占字体） */
+  :root, html[data-theme="light"] {
+    --bg:#FDFCF9; --card:#FFFFFF; --card-border:#E8E8E6;
+    --ink:#23201B; --ink-soft:#8a7c63; --ink-faint:#b3a888;
+    --gold:#B89F6B; --gold-deep:#92702f;
+    --seg-hover:#f0e7d4; --seg-active:#f3e8cf;
+    --zh:#4a423a; --bar:#e7ddc7;
+    --shadow:0 6px 20px rgba(120,90,40,.08);
+    --bq-bg:#fbf6ec; --bq-ink:#7a5a22;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  html[data-theme="dark"] {
+    --bg:#091A2E; --card:#0C1B2B; --card-border:#1B2E45;
+    --ink:#F4EFE4; --ink-soft:#93A6BC; --ink-faint:#6E8299;
+    --gold:#C9A86A; --gold-deep:#A08442;
+    --seg-hover:rgba(201,168,106,.10); --seg-active:rgba(201,168,106,.16);
+    --zh:#C7CBBF; --bar:#1B2E45;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --bq-bg:#12263C; --bq-ink:#D9C79B;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif SC",serif;
+  }
+  /* 嵌入态：背景透明，透出主站固定的背景与鱼影（对齐 film-law 金本；绝不垫实色背板） */
+  html.embedded { color-scheme:light; background:transparent !important; background-image:none !important; }
+  html.embedded body { background:transparent !important; background-image:none !important; }
+  /* 嵌入态把卡片清透明（玻璃化），整页透出主站背景+鱼影；仅保留金色播放键与其边框作视觉锚点 */
+  html.embedded .player { background:transparent !important; box-shadow:none !important; border-color:transparent !important; }
+  html.embedded blockquote.seg { background:transparent !important; }
+  html.embedded .seg:hover { background:var(--seg-hover) !important; }
+  html.embedded .seg.active { background:var(--seg-active) !important; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.85; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 64px; }
+  h1 { font-family:var(--serif); font-size:26px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { text-align:center; color:var(--gold); font-size:14px; margin-bottom:6px; letter-spacing:2px; font-family:var(--sans); }
+  .hint { text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px; font-family:var(--sans); }
+  .player { background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:18px 22px; display:flex; align-items:center; gap:18px;
+    box-shadow:var(--shadow); margin-bottom:14px; font-family:var(--sans); }
+  .playbtn { flex:0 0 auto; width:58px; height:58px; border-radius:50%; border:none;
+    cursor:pointer; background:var(--gold); color:#fff; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(168,133,63,.4); }
+  .playbtn:hover { background:var(--gold-deep); }
+  .meta { flex:1 1 auto; }
+  .track { font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar { height:6px; background:var(--bar); border-radius:3px; cursor:pointer; overflow:hidden; }
+  .fill { height:100%; width:0%; background:var(--gold); }
+  .time { font-size:12px; color:var(--ink-soft); margin-top:6px; display:flex; justify-content:space-between; }
+  .speed { flex:0 0 auto; font-size:12px; color:var(--ink-soft); border:1px solid var(--card-border);
+    border-radius:8px; padding:4px 8px; background:var(--card); cursor:pointer; }
+  .err { display:none; background:#fdecea; color:#a33; border:1px solid #f5c6c0;
+    border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
+  .seg { margin:0 0 6px; font-size:17px; cursor:pointer; border-radius:8px;
+    padding:6px 10px; transition:background .15s; position:relative; font-family:var(--sans); }
+  .seg:hover { background:var(--seg-hover); }
+  .seg::before { content:"\1F50A\00A0"; opacity:.35; font-size:13px; }
+  .seg.active { background:var(--seg-active); box-shadow:inset 3px 0 0 var(--gold); }
+  .seg.active::before { content:"\25B6\00A0"; opacity:1; }
+  .seg.active.paused::before { content:"\23F8\00A0"; opacity:1; }
+  blockquote.seg { margin:14px 0 6px; padding:10px 18px; border-left:4px solid var(--gold);
+    font-family:var(--serif); font-size:20px; font-style:italic; color:var(--bq-ink); background:var(--bq-bg); }
+  blockquote.seg:hover { background:var(--seg-hover); }
+  details.zhfold { margin:0 0 22px 0; }
+  details.zhfold summary { cursor:pointer; color:var(--gold); font-size:13px;
+    padding:4px 0 4px 10px; list-style:none; font-family:var(--sans); }
+  details.zhfold summary::before { content:"\25B8\00A0"; }
+  details.zhfold[open] summary::before { content:"\25BE\00A0"; }
+  details.zhfold[open] summary { margin-bottom:8px; }
+  details.zhfold p { margin:0; font-size:16px; color:var(--zh); padding-left:10px; font-family:var(--sans); }
+  footer { text-align:center; color:var(--ink-faint); font-size:12px; margin-top:40px; font-family:var(--sans); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>兰香如故 · The Fragrance of Orchids Remains</h1>
+  <div class="sub">EPISODE 33 · TOLD LIKE A STORY · 有声版</div>
+  <div class="hint">点击任意一段英文，即可从该处开始播放；正在播放时再点一次即暂停（用本机浏览器打开可正常发声）</div>
+
+  <div class="player">
+    <button class="playbtn" id="btn" aria-label="播放">▶</button>
+    <div class="meta">
+      <div class="track">English narration · 母语英语朗读（全篇 10 段）</div>
+      <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+      <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <div class="speed" id="spd">1.0×</div>
+  </div>
+  <div class="err" id="err">音频加载失败，请用本机浏览器直接打开本文件（同目录的 EP33_audio.mp3）重试。</div>
+  
+
+  <div class="story">
+<blockquote class="seg live" data-i="0" data-start="0.0" data-end="50.62">Let me tell you about episode thirty-three, because this is the episode where Lanxiang trades the ladle for the brush and discovers that a story, told well and often enough, can do what an army and a court could not — it can lay a wrong to rest in the only place that finally matters, which is the memory of ordinary people. The kitchen does not let her go easily; she still burns the occasional porridge, and Lin Jinqi still eats it with that same absurd, loyal praise. But in the slow hours, when the courtyard is quiet and the tea has gone cold between them, she begins to write, and the writing is not the ledger of a steward or the report of a spy but something stranger and older — a tale shaped for the stage, a play script, the kind of thing sung by troubadours and acted in tea houses where the common folk spend their hard-earned coins.</blockquote>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>让我跟你讲讲第三十三集，因为这一集，兰香把勺换了笔，发觉一个讲得好、讲得勤的故事，能做起一支军、一座朝都做不到的事——它能把一桩冤，安放在终于要紧的那唯一处，即常人的记忆里。厨房不轻易放她走；她仍偶糊了粥，林锦岐仍以那般荒唐又忠的夸吃着。可在静时，当院寂、茶在二人间凉了，她落了笔，而那写的，不是管家的账、不是探子的报，是更怪也更古的东西——一个为台而塑的故、一本戏本，那种由行吟者唱、在茶楼里演、常人以血汗钱消受的物。</p></details>
+
+<p class="seg" data-i="1" data-start="50.62" data-end="102.2">She does not sign it with the name the capital fears or the name the contracts freed. She signs it Shen Rugù — a pen name that hides her buried birth name, Shen Jialan, the way a lantern hides its flame behind paper, yet lets the light through. Under that name she sets down the true shape of the Shen family&#x27;s fall: not the treason the court proclaimed, but the jealousy of powerful men and the silence of those who might have spoken. She writes it as a play, because a play can say plainly what a petition could not, and can travel where a petition would be burned. The first script tells of a noble house brought low by a lie, and of the daughter who survived it — not by sword, but by keeping her wits and her name through the long dark. The season, which once set her to read the lies of others, now sets her to write the truth of herself.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>她不以京城惧的名、也不以契放了的名落款。她落&quot;沈如故&quot;——一笔名，藏起她埋的本名沈嘉兰，如灯以纸藏火、却放任光透。以此名，她记下了沈家倾覆的真形：不是朝宣的叛，而是权者之妒、与那些本可开口者的静。她写它作一本戏，因戏能直说呈子不能说的事，且能去呈子会被烧的去处。头本戏讲一座被谎推倒的贵府，与那活下来的女——不是凭剑，是凭在长夜里守住她的智与名。这季曾派她去读旁人的谎，如今派她去写自己的真。</p></details>
+
+<p class="seg" data-i="2" data-start="102.2" data-end="149.22">The script finds its first voice in a troupe of wandering players, the sort Furong Xiu once led before she became a name in Lanxiang&#x27;s own story, and they take it to a teahouse on the Jinling waterfront where the boatmen and the fruit-sellers gather at dusk. The actress who plays the fallen daughter has a voice like a struck bell, clear and unafraid, and on the first night the tea drinkers stop their talk to listen, and by the second verse a few are humming along, and by the close the whole low room is quiet in a way that has nothing to do with sleep and everything to do with recognition. Lanxiang sits at the back, hood drawn, and hears her own buried history sung back to her by strangers, and understands that the tale, once loosed, belongs no longer to her but to the people who need it.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这戏先由一班流浪伶人得了声——正是芙蓉秀曾领过、后才成了兰香自己故事里一个名的那种班——他们把它带去金陵水边一座茶楼，船夫与卖果的薄暮聚在那里。扮那落难女的伶，声如被击的钟，清而不惧；首夜茶客停了话听，到第二段已有几人跟着哼，到终了整间低屋静得与睡无关、只与&quot;认得&quot;有关。兰香坐后头，兜帽压着，听素不相识的人把她埋的历史唱回她耳，懂得了这故一旦放出，便不再属她，而属那些需要它的人。</p></details>
+
+<p class="seg" data-i="3" data-start="149.22" data-end="202.09">From that teahouse the play walks, the way only a good story can, from mouth to mouth and town to town. Ballad-singers take up the songs; a puppeteer carves the fallen daughter&#x27;s face; a grandmother teaches the lament to a grandchild too young to know what treason means but old enough to know a wrong when she hears one sung. And so the Shen name, which the court had stamped with guilt, begins to be wiped clean in the one court that needs no judge — the memory of the common folk. They do not know they are clearing a family the empire convicted; they only know the tale is true in the bone, and that truth, sung often enough, becomes a kind of innocence no edict can easily take back. The season has moved the war from the battlefield to the tongue, and Lanxiang, who once defended a household with a dropped hairpin, now defends a name with a line of verse.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>从这茶楼起，这戏走了，如只有好故事能走那样，从口到口、从城到城。唱谣的接了曲；雕偶的刻了那落难女的脸；祖母把那哀歌教给孙女——小到不懂&quot;叛&quot;何意、却大到一听便知那是冤。于是那被朝盖了罪的沈姓，在被一座不需判官的庭——常人的记忆——慢慢擦净。他们不知自己在洗一姓那帝国定了罪的家；他们只知这故骨里是真，而真，唱得够勤，便成一种任何诏都难轻易夺回的无辜。这季把战从战场移到了舌，而曾以一支落簪护一座宅的兰香，如今以一行诗护一个名。</p></details>
+
+<p class="seg" data-i="4" data-start="202.09" data-end="251.43">Lin Jinqi, in these days, is a quieter figure than the man who rode to cut treasons, and the change is not only in his rank but in his body. The old wounds he carried from a lifetime of campaigns have turned traitorous in his retirement, waking in the damp of Jinling&#x27;s springs and the cold of its winters, and he tends them the way a soldier tends a failing horse — with patience, and no complaint he means anyone to hear. Lanxiang, who once read a fever in a child&#x27;s arm, reads the stiffness in his gait and says nothing of her worry, only sets the fire higher and brews the bitter herb the old campaigners swear by. He lets her, the way a proud man lets the one person who has earned it tend what he cannot hide, and between them the tending becomes another of their small, earned silences.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这些日子里的林锦岐，比那骑马斩叛的男人静了，而这变不止在爵，也在他的身。他一生征战带下的旧伤，退了休竟反了水，在金陵春的潮、冬的冷里醒转；他待它们，如兵待一匹不行的马——有耐，且无一怨是存心让人听见的。兰香，曾从孩臂上读出热，如今从他步履的僵读出忧，却不言她的忧，只把火拨高、煮老卒们信的苦草。他由她，如一个傲的男人由那唯一挣得资格的人，去拂他藏不住的处；而这拂，在他们之间，成了又一处小的、挣来的静。</p></details>
+
+<p class="seg" data-i="5" data-start="251.43" data-end="304.85">Their companionship in this season is plain and unadorned, the kind that needs no witness. He is her first audience, sitting with his cup as she reads a fresh page aloud by lamplight, and he listens the way a commander listens to a scout&#x27;s report — for the truth under the words, not the polish on them. When a line lands true he nods, and when it falters he says only, try it thus, and she does, and it is better, and neither of them makes a ceremony of the moment. There is a tenderness in this that the great house never permitted, a closeness that grows not from grand gestures but from a thousand small ones: the cup poured, the fire built, the page read, the nod given. The season, having spent so long setting them against storms, now simply lets them sit, two old companions, in the warm unglamorous peace of a life finally their own.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这季里他们的相守，平实无饰，是不需见证的那一种。他是她头一个听众，坐拥杯，听她灯下念一页新稿；他听，如主将听斥候的报——听字下的真，不是字上的光。一行落得恰，他点头；一行晃了，他只说&quot;这样试试&quot;，她试，便好了，而二人谁也不把这刻作成仪。这里头有那大宅从不许的柔，一种不从大举、而从千桩小举止里长的近——斟的杯、垒的火、念的页、点的头。这季既久把他们对着风暴，如今只由他们坐，一对旧伴，在他们终于自己的、暖而不光的安里。</p></details>
+
+<p class="seg" data-i="6" data-start="304.85" data-end="355.75">The plays reach further than either of them expects. A merchant who heard the teahouse version carries the tale upriver to the capital itself, and there, in the alleys behind the great families, the fallen daughter&#x27;s song is hummed by those who remember the old case and those who only love a good lament. It does not overturn the verdict — the court is slow, and the men who wronged the Shen family still hold their posts — but it loosens the ground beneath the lie, the way spring loosens the earth before the root breaks through. Lanxiang hears of it months later and is surprised by a small, almost foolish hope, the kind she trained herself long ago never to feel. Lin Jinqi, reading her face, only says: the page outlives the sword, and lets the sentence stand as his verdict on the war they are still, quietly, fighting.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>这戏去得比他们任一人想的更远。一个听过茶楼本的客商，顺江把它带去了京城；在那里，大族背后的巷里，那落难女的歌，被记着旧案的人、与只爱一支好哀歌的人，低低哼着。它没翻那判——朝是慢的，而害沈家的那些人仍坐着他们的位——却松了那谎下的土，如春在根破前松了地。兰香数月后闻此，讶于一丝她久已训自己不可生的、近乎傻的望。林锦岐读她的脸，只说：页比剑活得久，并让这句话立作他对这场他们仍在静打的战的判。</p></details>
+
+<p class="seg" data-i="7" data-start="355.75" data-end="406.37">There comes a night, in the writing, when Lanxiang sets down the brush and understands the weapon she was denied. The court took her birthright with a word; the exile took her freedom with a chain; the great houses took her service with a contract — but none of them could take the story, and the story, told under a name that is hers and not hers, becomes the one thing they cannot confiscate. She thinks of the Shen Jialan she was forced to bury, and of the Shen Rugù she has now become, and sees that the pen name was never a hiding but a bridge — a way to carry the buried girl across the silence and set her down, alive, in the memory of strangers. The season, which once asked her to be a reader of other people&#x27;s lies, has at last given her the hand to write her own truth, and the writing, she finds, is its own kind of freedom.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>写里有一夜，兰香放下笔，懂了那被夺去的兵器。朝以一言夺了她的本；流放以一链夺了她的由；大宅以一契夺了她的役——可它们谁也夺不走这故，而这故，以一个既她是、又非她的名讲出，成了它们抄不去的唯一物。她想着那被逼埋下的沈嘉兰，与如今成了的沈如故，看出这笔名从不是藏，是一座桥——把那埋下的姑娘渡过静、放她活生生落在陌生人的记忆里。这季曾要她作读旁人谎的人，终究给了她写自己真的手；而她发现，这写，是它自己的一种自由。</p></details>
+
+<p class="seg" data-i="8" data-start="406.37" data-end="461.98">It would be a mistake to call this a triumph of the court, for the court has not moved, and the Shen family remains, on paper, convicted. But the people&#x27;s memory is a slower and more durable court, and it has already begun its quiet exoneration, one teahouse, one lullaby, one carved puppet at a time. Lanxiang knows she may not live to see the empire speak the word her plays have already sung, and she has made her peace with that, the way a gardener makes peace with the fact that the tree she plants will shade a generation she will not meet. The fragrance of the orchid, she has come to understand, does not belong to the orchid alone; it is passed, breath to breath, through everyone who carries the tale, and that passing is the only vindication that needs no seal. The people&#x27;s memory is the slower, more durable court, and it has already begun its quiet work of setting the name right.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>若把这称作朝的胜，便错了，因朝未动，而沈家在纸上仍是有罪。可常人的记忆是一座更慢也更耐久的庭，它已经始了它静的赦——一间茶楼、一支摇篮曲、一具雕偶，一次一次地。兰香知自己或活不到见那帝国说出她戏里已唱出的字，而她与之和了，如园丁与&quot;她植的树会荫蔽她见不到的一代&quot;这一事实之和。兰香已懂得，兰的香不独属兰；它由每个带这故的人，息传息，而这传，是那唯一不需印的昭雪。</p></details>
+
+<p class="seg" data-i="9" data-start="461.98" data-end="515.79">So we close episode thirty-three the way a storyteller closes a tale — with the knowing that the telling is the thing, more than the ending. The steward has become a playwright; the marquis has become a listener; the Shen name, convicted on paper, is being washed clean in song. Episode thirty-four, when it comes, will summon the retired warrior back to the road, and the southern sea that has been only a rumor will rise up and strike the grain he is sworn to protect. But that is next week&#x27;s tell. For now, remember only this: in Jinling, a brush can do what a blade could not, and the woman who once hid her name behind a maid&#x27;s now hides it behind a poet&#x27;s, and the poet&#x27;s name is washing a family clean in the mouths of people who never knew them. The page, as Lin Jinqi once said, outlives the sword — and this week, the page begins to win.</p>
+<details class="zhfold"><summary>🇨🇳 中文翻译</summary><p>于是我们如说书人合一个故那样收束第三十三集——带着&quot;讲才是事、重于终&quot;的觉。管家成了写戏的；侯成了听戏的；那纸上有罪的沈姓，正被歌洗净。第三十四集，来的时候，会把这退了休的战者召回路上，而那一直只是谣的南边海，会起来击他誓要护的粮。但那是下周的讲法。此刻你只记一句：在金陵，笔能起刃起不了的事；而那曾把名藏在丫鬟背后的女人，如今把它藏在诗人背后，而这诗人的名，正洗一姓于从不识他们的人的口里。</p></details>
+
+
+  </div>
+
+  <footer>兰香如故 · 第 33 集有声剧集介绍 · 音频由母语英语嗓音合成（en-US-AriaNeural）</footer>
+</div>
+
+<audio id="au" preload="metadata" src="EP33_audio.mp3"></audio>
+<script>
+  const OFF = [[0.0, 50.62], [50.62, 102.2], [102.2, 149.22], [149.22, 202.09], [202.09, 251.43], [251.43, 304.85], [304.85, 355.75], [355.75, 406.37], [406.37, 461.98], [461.98, 515.79]];
+  const au=document.getElementById('au'), btn=document.getElementById('btn'),
+        bar=document.getElementById('bar'), fill=document.getElementById('fill'),
+        cur=document.getElementById('cur'), dur=document.getElementById('dur'),
+        spd=document.getElementById('spd'), err=document.getElementById('err');
+  const segs=[...document.querySelectorAll('.seg')];
+  let active=-1;
+  const fmt=s=>{const m=Math.floor(s/60),x=Math.floor(s%60);return m+':'+(x<10?'0':'')+x;};
+  function setActive(i,playing){
+    segs.forEach(s=>{ s.classList.remove('active','paused'); });
+    if(i>=0){ segs[i].classList.add('active'); if(!playing) segs[i].classList.add('paused'); }
+    active=i;
+  }
+  function playSeg(i){
+    if(active===i && !au.paused){ au.pause(); return; }
+    au.currentTime=OFF[i][0]+0.02;
+    au.play().then(()=>setActive(i,true)).catch(()=>{err.style.display='block';});
+  }
+  segs.forEach(s=>s.addEventListener('click',()=>playSeg(+s.dataset.i)));
+  au.addEventListener('loadedmetadata',()=>dur.textContent=fmt(au.duration));
+  au.addEventListener('timeupdate',()=>{
+    if(au.duration){ fill.style.width=(au.currentTime/au.duration*100)+'%'; cur.textContent=fmt(au.currentTime); }
+    const t=au.currentTime;
+    let i=OFF.findIndex(o=>t>=o[0] && t<o[1]);
+    if(i<0 && t>=au.duration) i=OFF.length-1;
+    if(i>=0 && i!==active && !au.paused) setActive(i,true);
+  });
+  au.addEventListener('play',()=>{ btn.textContent='⏸'; if(active>=0) setActive(active,true); });
+  au.addEventListener('pause',()=>{ btn.textContent='▶'; if(active>=0) segs[active].classList.add('paused'); });
+  au.addEventListener('ended',()=>{ btn.textContent='▶'; setActive(-1,false); });
+  au.addEventListener('error',()=>{ err.style.display='block'; });
+  btn.onclick=()=>{ if(au.paused){ if(active<0){playSeg(0);} else {au.play();} } else {au.pause();} };
+  bar.onclick=e=>{const r=bar.getBoundingClientRect(); if(au.duration) au.currentTime=((e.clientX-r.left)/r.width)*au.duration;};
+  const rates=[1,1.25,1.5,0.75]; let ri=0;
+  spd.onclick=()=>{ri=(ri+1)%rates.length;au.playbackRate=rates[ri];spd.textContent=rates[ri]+'×';};
+</script>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+</body>
+</html>
