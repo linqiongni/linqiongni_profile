@@ -23,9 +23,40 @@
 
   /* 被主站 iframe 嵌入时给 <html> 打标记：子站底层不铺色，透出主站 fixed 背景 + 鱼影。
      必须尽早执行（页面 head 里另有一行内联判断防首帧闪色），独立打开时保持自身底色。 */
+  var embedded = false;
   try {
-    if (window.self !== window.top) document.documentElement.classList.add('embedded');
+    embedded = window.self !== window.top;
+    if (embedded) document.documentElement.classList.add('embedded');
   } catch (e) { /* jsdom / 跨域兜底 */ }
+
+  /* 窄屏嵌入态把内容真实高度回传父页：父页把 iframe 撑到内容高度，改由外层原生滚动。
+     原因：iOS Safari 对「固定高度 iframe + 溢出内容」内层滚不动；撑高后外层 #app-scroll
+     原生滚动在 iOS 上很稳。宽屏父页会忽略此消息、保留双栏内部滚动。
+     测量用 body 的自然高度（流动态下 body height:auto，不被 iframe 高度钳制），
+     并配合 load / 多次延时 / ResizeObserver 兜底，避免字体加载后高度变化时漏测。 */
+  function postHeight() {
+    if (!embedded) return;
+    var h = Math.max(
+      document.body ? document.body.scrollHeight || 0 : 0,
+      document.body ? document.body.offsetHeight || 0 : 0,
+      document.documentElement ? document.documentElement.scrollHeight || 0 : 0
+    );
+    window.__ph = h; window.__phN = (window.__phN || 0) + 1;
+    if (h > 0) { try { parent.postMessage({ type: 'resize-iframe', height: h }, '*'); } catch (e) {} }
+  }
+  if (embedded) {
+    // 从脚本执行起即周期复测（不依赖 load 是否晚到），覆盖字体 / 异步布局导致的高度变化。
+    var _n = 0;
+    var _iv = setInterval(function () { postHeight(); if (++_n >= 10) clearInterval(_iv); }, 400);
+    window.addEventListener('load', postHeight);
+    window.addEventListener('resize', function () { setTimeout(postHeight, 120); });
+    if (window.ResizeObserver && document.body) {
+      try {
+        var ro = new ResizeObserver(function () { postHeight(); });
+        ro.observe(document.body);
+      } catch (e) {}
+    }
+  }
 
   /* ---------- 顶栏（两种页面共用） ---------- */
   var topbar = el('header', 'topbar');

@@ -54,6 +54,10 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
   // 用户主动选择「仍在页内打开」后本次访问不再弹引导卡
   const [forceEmbed, setForceEmbed] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  // 窄屏嵌入态：子站把内容真实高度回传，这里把 iframe 撑到内容高度，
+  // 改由外层 #app-scroll 原生滚动。原因：iOS Safari 对「固定高度 iframe + 溢出内容」
+  // 内层滚不动（经典 iframe 滚动 bug）。桌面端保持双栏内部滚动，不接收高度。
+  const [iframeH, setIframeH] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
@@ -63,6 +67,29 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
     else sync();
     return () => {
       if (mq.removeEventListener) mq.removeEventListener('change', sync);
+    };
+  }, []);
+
+  // 子站回传内容高度（窄屏嵌入态）：把 iframe 撑到内容高度，交外层原生滚动。
+  // 与子站 style.css 的窄屏断点（max-width:1000px）对齐——只在该区间接管高度。
+  useEffect(() => {
+    const onMsg = (e: MessageEvent) => {
+      const d = e.data as { type?: string; height?: number } | null;
+      if (!d || d.type !== 'resize-iframe' || typeof d.height !== 'number') return;
+      // 仅窄屏（≤1000px）接管；宽屏保持双栏内部滚动，不撑高。
+      if (typeof window !== 'undefined' && window.innerWidth <= 1000) {
+        setIframeH(d.height);
+      }
+    };
+    const onResize = () => {
+      // 回到宽屏时清除内联高度，恢复 Tailwind 的固定高度规则
+      if (typeof window !== 'undefined' && window.innerWidth > 1000) setIframeH(null);
+    };
+    window.addEventListener('message', onMsg);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('message', onMsg);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -134,6 +161,7 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
             setLoadedTick((t) => t + 1);
           }}
           className={iframeClassName}
+          style={iframeH ? { height: `${iframeH}px` } : undefined}
           loading="eager"
           // 允许 iframe 内的静态站自己调用 Fullscreen API（融资法务站顶栏的「全屏」按钮）；
           // autoplay：子站配音在「缓冲就绪」的异步回调里才 play()（如 ENGLISH 站），补授权防被拦
