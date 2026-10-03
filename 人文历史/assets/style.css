@@ -282,3 +282,105 @@ a { color: inherit; text-decoration: none; }
   .layout { height: auto; display: block; }
   .article { padding: 0; }
 }
+
+/* ===== 长文体（人物扩写版：年表 / 事例 / 引文 / 脚注） ===== */
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.facts span {
+  border: 1px solid var(--line2); border-radius: 999px;
+  padding: 4px 13px; font-size: 12.5px; line-height: 1.7; color: var(--ink2);
+  background: var(--panel2);
+}
+
+.body h2 {
+  margin: 44px 0 6px; font-size: 21px; font-weight: 700; letter-spacing: .04em;
+  color: var(--ink); padding-bottom: 10px; border-bottom: 1px solid var(--line);
+}
+.body h2 .num {
+  display: inline-block; min-width: 26px; margin-right: 8px;
+  color: var(--gold); font-size: 14px; font-weight: 700; letter-spacing: .08em;
+}
+.body h3 {
+  margin: 34px 0 8px; font-size: 17.5px; font-weight: 700; letter-spacing: .03em;
+  color: var(--ink); display: flex; align-items: baseline; gap: 10px;
+}
+.body h3::before {
+  content: ''; flex: 0 0 auto; width: 4px; height: 17px; border-radius: 2px; background: var(--gold);
+}
+.body .lead { font-size: 16.5px; line-height: 2; color: var(--ink2); text-align: justify; }
+
+/* 重点高亮 */
+.hl {
+  background: linear-gradient(180deg, transparent 58%, var(--gold-soft) 58%);
+  padding: 1px 3px; border-radius: 3px; color: inherit; font-weight: 600;
+}
+.hl.solid {
+  background: var(--gold-soft); border-bottom: 2px solid var(--gold);
+  padding: 2px 6px; font-weight: 700;
+}
+.hl.red { background: rgba(184, 107, 74, .14); border-bottom: 2px solid #B86B4A; }
+
+/* 典籍引文 */
+blockquote.quote {
+  margin: 16px 0; padding: 13px 18px;
+  border-left: 3px solid var(--gold); background: var(--panel3);
+  border-radius: 0 9px 9px 0;
+  font-size: 15.5px; line-height: 1.95; color: var(--ink2); text-align: justify;
+}
+blockquote.quote cite {
+  display: block; margin-top: 8px; font-size: 12.5px; font-style: normal;
+  letter-spacing: .05em; color: var(--ink3);
+}
+blockquote.quote em { font-style: normal; color: var(--gold); font-weight: 600; }
+
+/* 生平行年表 */
+.tl { margin: 14px 0 26px; padding: 2px 0 2px 20px; border-left: 1px solid var(--line2); list-style: none; }
+.tl li { position: relative; margin: 0 0 15px; font-size: 15.5px; line-height: 1.95; color: var(--ink2); }
+.tl li::before {
+  content: ''; position: absolute; left: -25px; top: 11px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+}
+.tl li .yr { display: inline-block; min-width: 96px; color: var(--gold); font-weight: 700; letter-spacing: .02em; }
+.tl li b { color: var(--ink); font-weight: 600; }
+
+/* 经典事例卡 */
+.case { margin: 0 0 34px; }
+.case .kicker { font-size: 11.5px; letter-spacing: .2em; color: var(--gold); }
+.case .src {
+  display: inline-block; margin: 0 0 10px; font-size: 12px; color: var(--ink3);
+  border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; background: var(--panel2);
+}
+
+/* 存疑 / 异说小标签 */
+.susp {
+  display: inline-block; font-size: 11.5px; color: var(--ink3);
+  border: 1px dashed var(--line2); border-radius: 6px; padding: 1px 7px; margin: 0 6px;
+  vertical-align: 2px; letter-spacing: .03em;
+}
+
+/* 脚注 */
+sup.fn { font-size: 11px; line-height: 0; vertical-align: super; margin: 0 1px; }
+sup.fn a {
+  color: var(--gold); text-decoration: none; font-weight: 700;
+  padding: 0 2px; border-bottom: 1px solid var(--gold-soft);
+}
+sup.fn a:hover { border-bottom-color: var(--gold); }
+.fnlist {
+  margin: 26px 0 0; padding: 16px 20px 14px; list-style: none;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--panel2);
+  font-size: 13px; line-height: 1.95; color: var(--ink2); counter-reset: f;
+}
+.fnlist li { margin: 0 0 7px; text-align: justify; }
+.fnlist li::before {
+  content: '[' counter(f) ']'; counter-increment: f;
+  color: var(--gold); font-weight: 700; margin-right: 7px;
+}
+.fnlist li:target { background: var(--gold-soft); border-radius: 6px; }
+.fnlist b { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .tl { padding-left: 16px; }
+  .tl li .yr { display: block; min-width: 0; margin-bottom: 2px; }
+  .facts span { font-size: 12px; }
+  blockquote.quote { font-size: 15px; padding: 11px 14px; }
+  .fnlist { padding: 13px 15px; font-size: 12.5px; }
+}
