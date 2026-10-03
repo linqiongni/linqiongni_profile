@@ -116,7 +116,8 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
       {/* 透明容器：iframe 子站透出主站固定的背景板（切 tab 背景不动） */}
       <div className="relative w-full bg-transparent">
         {loading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white dark:bg-[#1C1C1E]">
+          // 载入遮罩留半透（别糊死主站背景）：透出深渊板与鱼影，只是压一层雾
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/80 backdrop-blur-[2px] dark:bg-[#0F1114]/80">
             <div className="flex items-center gap-2 text-xs text-[#86868B]">
               <span className="w-3.5 h-3.5 rounded-full border-2 border-[#B89F6B] border-t-transparent animate-spin" />
               正在载入…

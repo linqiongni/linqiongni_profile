@@ -45,6 +45,11 @@ html[data-theme="dark"] { scrollbar-width: thin; scrollbar-color: #1B2E45 #091A2
 
 html { height: 100%; }
 
+/* 嵌入主站 iframe 时：子站不铺底色，透出主站那层 fixed 背景（深渊渐变 + 水面 + 鱼影）。
+   只在「被嵌入」时透明（html.embedded 由 assets/app.js 加）；独立打开（新窗口 / 手机全屏）
+   时照常铺自身底色，否则浅色档会露白、深色档会白底黑字看不清。 */
+html.embedded, html.embedded body { background: transparent; }
+
 body {
   margin: 0;
   height: 100%;
@@ -216,23 +221,60 @@ a { color: inherit; text-decoration: none; }
 
 .foot-note { margin: 34px 0 0; font-size: 12.5px; color: var(--ink3); line-height: 1.9; }
 
-/* ===== 窄屏：左栏变抽屉 ===== */
+/* ===== 窄屏：左栏变抽屉 + 整页走文档流滚动 =====
+   为什么必须这么改（2026-10-03）：手机端在主站的固定高度 iframe 里，
+   「body overflow:hidden + 内层 div 滚动」这套在 iOS Safari 上经常划不动（不跟手 / 划两下就卡住）。
+   改用与商事仲裁等子站一致的手机做法：关掉 body 的 overflow，让 iframe 里的文档自己滚（原生滚动最稳）。 */
 .side-toggle { display: none; }
+
 @media (max-width: 1000px) {
+  html, body { height: auto; overflow: visible; }
+  .layout { display: block; height: auto; overflow: visible; }
+  .row { display: block; height: auto; min-height: 0; }
+  .topbar { position: sticky; top: 0; z-index: 50; }
+  #mainwrap { display: block; height: auto; overflow: visible; }
+  #main { height: auto; overflow: visible; }
+  .home { height: auto; overflow: visible; padding: 26px 18px 60px; }
+
+  /* 左栏抽屉 */
   #side {
-    position: fixed; top: 0; left: 0; bottom: 0; z-index: 70;
-    width: 280px; background: var(--panel2);
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 80;
+    width: 78vw; max-width: 300px;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    background: var(--panel2);
     border-right: 1px solid var(--line);
     transform: translateX(-100%); transition: transform .25s ease;
   }
   #side.open { transform: translateX(0); box-shadow: 0 0 40px rgba(0, 0, 0, .18); }
-  #side-wrap { flex: 1 1 auto; min-width: 0; display: flex; }
-  #mainwrap { flex: 1 1 auto; min-width: 0; overflow-y: auto; }
   .side-toggle { display: inline-flex; }
+
+  /* 抽屉遮罩：点空白处收起（html.side-open 由 app.js 加/摘） */
+  #scrim { display: none; }
+  html.side-open #scrim {
+    display: block; position: fixed; inset: 0; z-index: 75;
+    background: rgba(0, 0, 0, .38);
+  }
+
   .article { padding: 26px 20px 70px; }
-  .home { padding: 26px 18px 60px; }
   .topbar .search input { width: 118px; }
   .topbar .search input:focus { width: 150px; }
+}
+
+/* 手机小屏：顶栏两行收纳 + 单列卡片，避免把按钮挤出屏幕 */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .topbar { flex-wrap: wrap; row-gap: 8px; padding: 8px 12px; gap: 8px; }
+  .topbar .brand { font-size: 13.5px; }
+  .topbar .brand small { display: none; }
+  .topbar .spacer { display: none; }
+  .topbar .search { order: 10; flex: 1 1 100%; }
+  .topbar .search input, .topbar .search input:focus { width: 100%; }
+  .article { padding: 22px 16px 60px; }
+  .article h1 { font-size: 27px; }
+  .hook { font-size: 15.5px; }
+  .body p { font-size: 16.5px; line-height: 2; }
+  .grid { grid-template-columns: 1fr; }
+  .deepen { padding: 16px 16px; }
 }
 @media print {
   body { overflow: visible; height: auto; }

@@ -21,6 +21,12 @@
   var cur = document.body.getAttribute('data-p') || '';
   var isArticle = !!cur;
 
+  /* 被主站 iframe 嵌入时给 <html> 打标记：子站底层不铺色，透出主站 fixed 背景 + 鱼影。
+     必须尽早执行（页面 head 里另有一行内联判断防首帧闪色），独立打开时保持自身底色。 */
+  try {
+    if (window.self !== window.top) document.documentElement.classList.add('embedded');
+  } catch (e) { /* jsdom / 跨域兜底 */ }
+
   /* ---------- 顶栏（两种页面共用） ---------- */
   var topbar = el('header', 'topbar');
   topbar.id = 'topbar';
@@ -44,9 +50,32 @@
   topbar.appendChild(search);
   topbar.appendChild(backBtn);
 
+  /* 抽屉开合：#side.open（滑出）+ html.side-open（显示遮罩） */
+  var sideEl = document.getElementById('side');
+  var scrim = document.createElement('div');
+  scrim.id = 'scrim';
+  document.body.appendChild(scrim);
+
+  function setSide(open) {
+    if (sideEl) sideEl.classList.toggle('open', open);
+    document.documentElement.classList.toggle('side-open', open);
+  }
   toggle.addEventListener('click', function () {
-    var side = document.getElementById('side');
-    if (side) side.classList.toggle('open');
+    setSide(!(sideEl && sideEl.classList.contains('open')));
+  });
+  scrim.addEventListener('click', function () { setSide(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setSide(false);
+  });
+  if (sideEl) {
+    // 手机端点目录里的某个人，进文后抽屉自动收起（避免新页里抽屉还开着）
+    sideEl.addEventListener('click', function (e) {
+      if (e.target && e.target.closest && e.target.closest('a')) setSide(false);
+    });
+  }
+  // 从手机横屏 / 桌面窗口缩放到宽屏时，抽屉状态要清掉（宽屏左栏是常驻的）
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1000) setSide(false);
   });
 
   /* ---------- 文章页：左栏目录 ---------- */
@@ -125,21 +154,28 @@
 
   /* ---------- 进度条（文章页） ---------- */
   if (isArticle) {
-    var scroller = document.getElementById('mainwrap') || window;
+    // 宽屏滚内层 #mainwrap，窄屏（文档流滚动）滚文档本身；两者取进度大的那个，
+    // 免得窄屏时进度条永远不动。
     function updateProgress() {
+      var best = 0;
       var box = document.getElementById('mainwrap');
-      var h = box ? box.scrollHeight - box.clientHeight : 0;
+      if (box) {
+        var h = box.scrollHeight - box.clientHeight;
+        if (h > 0) best = Math.max(best, box.scrollTop / h);
+      }
+      var de = document.documentElement;
+      var dh = de.scrollHeight - de.clientHeight;
+      if (dh > 0) best = Math.max(best, de.scrollTop / dh);
       var bar = document.getElementById('progress');
       if (!bar) return;
-      if (h > 0) {
-        var ratio = box.scrollTop / h;
-        bar.style.width = Math.min(100, Math.max(0, ratio * 100)) + '%';
-      }
+      bar.style.width = Math.min(100, Math.max(0, best * 100)) + '%';
     }
-    if (scroller && scroller.addEventListener) {
-      scroller.addEventListener('scroll', updateProgress, { passive: true });
+    var box2 = document.getElementById('mainwrap');
+    if (box2 && box2.addEventListener) {
+      box2.addEventListener('scroll', updateProgress, { passive: true });
     }
     window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
     updateProgress();
   }
 
