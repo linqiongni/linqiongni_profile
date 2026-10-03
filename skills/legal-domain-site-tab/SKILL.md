@@ -116,6 +116,41 @@ WebSocket 直连 `/json/list` 里 page 的 `webSocketDebuggerUrl`：
 本地静态服务器要按 `/public/<slug>/...` 路径访问（浏览器中才是 `/<slug>/...`）。
 收工记得 `pkill -f remote-debugging-port=9222`。
 
+### 3.48 内容扩写：长文通道 + 生成脚本必须入仓（2026-10-03 孔子篇实测）
+
+**内容读物站只要打算持续加厚，生成脚本就得进仓库**，别留在 `/tmp`。人文历史站定型为：
+- `scripts/history/data.py` —— 63 人数据（D 表）；
+- `scripts/history/build.py` —— 渲染，`python3 scripts/history/build.py` 一条命令重建全站。
+**任何绕过脚本的手工修 HTML，下次一重建就没了**（孔子站踩过：模板里还是 `<div id="home">`、
+head 里没有 embedded 内联，一跑 build 就把上一轮修的两处冲掉了 → 已写回模板）。
+
+**长文扩展通道（一次搭好，之后每篇复用）**：`build.py` 里
+
+```python
+LONG_ARTICLE = {"p01-kongzi.html"}          # 文件名 -> assets/long/<同名>.html 整块替换
+MID_PAT = re.compile(r'          <div class="body">.*?</div>\n'
+                     r'          <div class="deepen">.*?</div>\n'
+                     r'          <div class="docs">.*?</div>\n', re.S)
+# 渲染后：page, n = MID_PAT.subn(mid + "\n", page); if n != 1: raise SystemExit(...)
+```
+
+`assets/long/<文件名>.html` 是「正文 + 深一层 + 纪录片 + 脚注」的纯 HTML 片段，
+**命中数校验 !=1 直接退出**，宁可挂也不能静默失效。
+
+**长文版式的四个标配**（写在子站 style.css 里，浅/深主题都要过一眼）：
+`hl`（金色渐变底的重点高亮，另有 `hl.solid` / `hl.red`）、`blockquote.quote`（经典文引文块 + cite 出处）、
+`.tl`（金点时间轴年表）、`.fnlist`+`sup.fn`（脚注：正文上标 `<sup class="fn"><a href="#f01">01</a></sup>`，
+底部 `<ol class="fnlist"><li id="f01">`，CSS 用 `counter-reset/f` 生成 `[1]` 而不是手写序号）。
+另外 `.susp` 小标签专门放「存疑 / 异说」。
+
+**史料类长文的严谨口径（用户明确要求「不杜撰」）**：
+1. 记不准的原文一律**白话转述 + 标出处**，绝不伪引文；
+2. 一条事实对应一条脚注，脚注里写清典籍篇名（如「《论语·卫灵公》」「《左传·定公十年》」）；
+3. 存疑挂 `存疑` 标签 + 脚注说明（生卒异说、传说年代、后出文献）。
+
+**写完必检**：正则扫 `[A-Za-z]{3,}` 找中文正文里混进的英文词（长文体量大，AI 写作时极易漏进
+`mourn / already / TYPE / gregarious` 这类碎片），再跑 build 的标签配平检查。
+
 ### 3.5 静态站布局选型（2026-09-19 定型）
 
 两种模式，新建站默认选 **B**：
