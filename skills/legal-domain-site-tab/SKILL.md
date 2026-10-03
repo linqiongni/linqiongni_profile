@@ -78,6 +78,44 @@ agent_created: true
 - **内容源里最容易脏的是英文残词**（`moral / Runnable / ideas / literally / Salt March / Emancipation` 之类），
   生成脚本里跑一条 `[A-Za-z]{3,}` 自检，白名单只留 `BBC` 这类允许混排的专有名词。
 
+### 3.46 内容读物站的两个必答项：手机怎么滚 + 底色透不透（2026-10-03 实锤）
+
+- **手机滚动：窄屏必须走原生文档流，不要保留「body overflow:hidden + 内层 div 滚动」**。
+  主站的 tab 是固定高度 iframe（`ThemeIframe` 默认 `h-[calc(100vh-80px)]`），iOS Safari 对
+  「iframe 里内层 div 滚」的触摸经常完全失效——表现为「划不动 / 划两下卡住」。
+  正确做法（商事仲裁等子站的老写法）：`@media (max-width:1000px)` 里
+  `html,body{height:auto;overflow:visible}`、`.layout/.row{display:block;height:auto}`、
+  `#mainwrap/#main{height:auto;overflow:visible}`，**让 iframe 里的文档自己滚**；
+  左栏改 `position:fixed` 抽屉并配一个 `#scrim` 遮罩（点遮罩 / Esc / 点目录链接都收起，
+  `resize` 到宽屏清状态）。640px 以下顶栏换行两排、`.grid` 单列。
+  进度条要同时监听 `#mainwrap.scroll` 和 `window.scroll` 并取两者最大值，否则窄屏进度条永远不动。
+- **底色：嵌入时透明，独立打开时铺色**。子站 body 铺了 `var(--bg)` 就把主站那层 fixed
+  深渊板 + 鱼影盖掉了（Andy 一眼看出「背景不对」）。写法：
+  `html.embedded, html.embedded body{background:transparent}`，`html.embedded` 由 `app.js`
+  在 `window.self!==window.top` 时添加，**并且每个页面 `<head>` 里再加一行内联**
+  `if(self!==top)document.documentElement.classList.add("embedded")`——只靠 app.js 会慢一拍闪色。
+  独立打开（新窗口 / 手机全屏）必须铺自身底色，否则浅色露白、深色白底看不见字。
+  顺带把 `ThemeIframe` 的载入遮罩改成 `bg-white/80 + backdrop-blur` 半透，别糊死背景。
+- **HTML 里的 id 和 CSS 里的选择器必须对得上**：人文历史站目录页写的是 `<div id="home">`、
+  CSS 选 `.home`，结果整页目录样式静默失效（页面看着能看，就是没排版）。写完跑一遍
+  `document.querySelectorAll('.home').length` 之类断言，别信肉眼。
+
+### 3.47 手机端真机验证：本机 Chrome + CDP，不用装 playwright
+
+`"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu
+--no-sandbox --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-probe <url>`
+必须 `run_in_background` 起（前台 `(... &)` 子 shell 一结束进程就没了），然后 Node 22 自带
+WebSocket 直连 `/json/list` 里 page 的 `webSocketDebuggerUrl`：
+
+- `Emulation.setDeviceMetricsOverride` + `Emulation.setTouchEmulationEnabled` 模拟手机视口/触摸；
+- `Input.dispatchTouchEvent` 发 touchStart/Move/End 就是**真实触摸**，能验证「划得动」；
+- `Runtime.evaluate` 读 `scrollHeight-clientHeight`、computed style、`Page.captureScreenshot` 截图。
+
+两个必踩的坑：本机代理开着时 `curl` 要 `--noproxy '*'`、跑 node 要
+`env -u HTTP_PROXY -u HTTPS_PROXY ...`（否则 fetch 127.0.0.1 直接 ECONNREFUSED）；
+本地静态服务器要按 `/public/<slug>/...` 路径访问（浏览器中才是 `/<slug>/...`）。
+收工记得 `pkill -f remote-debugging-port=9222`。
+
 ### 3.5 静态站布局选型（2026-09-19 定型）
 
 两种模式，新建站默认选 **B**：
