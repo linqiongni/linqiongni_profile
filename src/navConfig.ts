@@ -80,7 +80,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Profile',
 
-    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes'],
+    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes', 'humanities'],
 
   },
 
@@ -177,6 +177,8 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   insights: { label: '思考观点', enLabel: 'Insights' },
 
   notes: { label: '日常分享', enLabel: 'Notes' },
+
+  humanities: { label: '人文历史', enLabel: 'Humanities' },
 
   catering: { label: '加盟经销法务', enLabel: 'Franchise & Distribution' },
   'commercial-ops': { label: '商业运营法务', enLabel: 'Commercial Operations' },

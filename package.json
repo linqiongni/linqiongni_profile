@@ -17,11 +17,12 @@
     "sync:english": "rsync -a \"身边的英语/\" \"public/english/\" --exclude .DS_Store --exclude .workbuddy --exclude .tts_cache && python3 scripts/apply-theme-kit.py public/english",
     "sync:logistics": "rsync -a \"跨境物流法务/\" \"public/logistics/\" --exclude .DS_Store --exclude .workbuddy && python3 scripts/apply-theme-kit.py public/logistics",
     "sync:econ-crime": "rsync -a \"经济犯罪辩护/\" \"public/econ-crime/\" --exclude .DS_Store --exclude .workbuddy && python3 scripts/apply-theme-kit.py public/econ-crime",
+    "sync:history": "rsync -a \"人文历史/\" \"public/humanities/\" --exclude .DS_Store --exclude .workbuddy",
     "check:english": "node scripts/check-english-scenes.cjs",
     "theme:apply": "python3 scripts/apply-theme-kit.py public/financing-legal public/arbitration public/commercial-ops public/retail-ad public/family-law public/english public/logistics public/econ-crime",
     "theme:unify": "python3 scripts/apply-theme-kit.py --fix public/financing-legal public/arbitration public/commercial-ops public/retail-ad public/family-law public/english public/logistics public/econ-crime",
     "theme:check": "python3 scripts/apply-theme-kit.py --check public/financing-legal public/arbitration public/commercial-ops public/retail-ad public/family-law public/english public/logistics public/econ-crime",
-    "sync:all-static": "npm run sync:financing && npm run sync:commercial-ops && npm run sync:retail-ad && npm run sync:arbitration && npm run sync:family-law && npm run sync:english && npm run sync:logistics && npm run sync:econ-crime && npm run theme:check"
+    "sync:all-static": "npm run sync:financing && npm run sync:commercial-ops && npm run sync:retail-ad && npm run sync:arbitration && npm run sync:family-law && npm run sync:english && npm run sync:logistics && npm run sync:econ-crime && npm run sync:history && npm run theme:check"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
