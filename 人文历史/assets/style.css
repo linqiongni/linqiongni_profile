@@ -221,15 +221,21 @@ a { color: inherit; text-decoration: none; }
 
 .foot-note { margin: 34px 0 0; font-size: 12.5px; color: var(--ink3); line-height: 1.9; }
 
-/* ===== 窄屏：左栏变抽屉 + 整页走文档流滚动 =====
-   为什么必须这么改（2026-10-03）：手机端在主站的固定高度 iframe 里，
-   「body overflow:hidden + 内层 div 滚动」这套在 iOS Safari 上经常划不动（不跟手 / 划两下就卡住）。
-   改用与商事仲裁等子站一致的手机做法：关掉 body 的 overflow，让 iframe 里的文档自己滚（原生滚动最稳）。 */
+/* ===== 窄屏：关掉所有嵌套滚动容器，让 iframe 里的 <body> 成为唯一滚动层 =====
+   为什么这么改（2026-10-03，第二次修）：手机端在主站固定高度 iframe 里，两种做法在 iOS Safari 上都划不动 ——
+   ① 桌面那套「body overflow:hidden + 内层 #main 滚动」；
+   ② 父页把 iframe 撑到内容高度、再让外层 #app-scroll 滚动（触摸被 iframe 吃掉，外层收不到手势）。
+   唯一稳的做法：iframe 由父页用 absolute 撑满 #app-scroll（固定高度），子站 <body> 自己
+   overflow-y:auto 原生滚动——单滚动层，iOS 从不卡。父页侧见 ThemeIframe（absolute inset-0）。 */
 .side-toggle { display: none; }
 
 @media (max-width: 1000px) {
-  html, body { height: auto; overflow: visible; }
-  .layout { display: block; height: auto; overflow: visible; }
+  /* 单滚动层：html 固定为视口（不滚），body 自己 overflow-y:auto 原生滚动。
+     iOS Safari 对「iframe 内 body 单滚动层」支持最稳；html 与 body 同时 overflow 会
+     产生滚动归属歧义，故 html 这里锁死不滚。 */
+  html { height: 100%; overflow: hidden; }
+  body { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .layout { display: block; height: auto; min-height: 100%; overflow: visible; }
   .row { display: block; height: auto; min-height: 0; }
   .topbar { position: sticky; top: 0; z-index: 50; }
   #mainwrap { display: block; height: auto; overflow: visible; }

@@ -245,7 +245,7 @@ export default function App() {
           这样内容与固定导航永不重叠 —— 导航可以一直钉在顶部且保持完全透明，
           固定背景与鱼影完整透出（与 iframe 类 tab 的观感一致）。 */}
 
-      <div id="app-scroll" className="flex-1 min-h-0 overflow-y-auto mt-20 md:mt-32">
+      <div id="app-scroll" className="relative flex-1 min-h-0 overflow-y-auto mt-20 md:mt-32">
 
 
       {/* Hero Section 仅「个人」分组显示；其余分组直接进内容，不再出现主页大图。

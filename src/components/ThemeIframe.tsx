@@ -28,7 +28,7 @@ interface ThemeIframeProps {
 }
 
 const DEFAULT_IFRAME_CLASS =
-  'block w-full border-0 bg-transparent h-[calc(100vh-80px)] md:h-[calc(100vh-128px)]';
+  'block w-full border-0 bg-transparent h-full md:h-[calc(100vh-128px)]';
 
 /**
  * 统一的 iframe 容器：把主站 darkMode 通过 postMessage 同步进 iframe 内部。
@@ -54,10 +54,12 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
   // 用户主动选择「仍在页内打开」后本次访问不再弹引导卡
   const [forceEmbed, setForceEmbed] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  // 窄屏嵌入态：子站把内容真实高度回传，这里把 iframe 撑到内容高度，
-  // 改由外层 #app-scroll 原生滚动。原因：iOS Safari 对「固定高度 iframe + 溢出内容」
-  // 内层滚不动（经典 iframe 滚动 bug）。桌面端保持双栏内部滚动，不接收高度。
-  const [iframeH, setIframeH] = useState<number | null>(null);
+  // 窄屏嵌入态：最外层 wrapper 用 `absolute inset-0` 撑满 #app-scroll（它自身是
+  // relative + flex-1，有确定像素高度），于是内层 wrapper 与 iframe 的 h-full 都能解析到
+  // 一个确定高度 = 视口高；子站 <body> 自己 overflow-y:auto 原生滚动 —— iOS Safari
+  // 上唯一稳的做法（单滚动层）。Desktop 端 wrapper 恢复 relative w-full，行为不变。
+  // 关键坑：上一版只把【内层】wrapper 设了 absolute inset-0，外层仍是 relative w-full、
+  // 无确定高度 → 内层绝对定位塌成 0 高 → iframe 0 高 → 移动端什么都滚不动。
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
@@ -67,29 +69,6 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
     else sync();
     return () => {
       if (mq.removeEventListener) mq.removeEventListener('change', sync);
-    };
-  }, []);
-
-  // 子站回传内容高度（窄屏嵌入态）：把 iframe 撑到内容高度，交外层原生滚动。
-  // 与子站 style.css 的窄屏断点（max-width:1000px）对齐——只在该区间接管高度。
-  useEffect(() => {
-    const onMsg = (e: MessageEvent) => {
-      const d = e.data as { type?: string; height?: number } | null;
-      if (!d || d.type !== 'resize-iframe' || typeof d.height !== 'number') return;
-      // 仅窄屏（≤1000px）接管；宽屏保持双栏内部滚动，不撑高。
-      if (typeof window !== 'undefined' && window.innerWidth <= 1000) {
-        setIframeH(d.height);
-      }
-    };
-    const onResize = () => {
-      // 回到宽屏时清除内联高度，恢复 Tailwind 的固定高度规则
-      if (typeof window !== 'undefined' && window.innerWidth > 1000) setIframeH(null);
-    };
-    window.addEventListener('message', onMsg);
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('message', onMsg);
-      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -139,9 +118,9 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
   }
 
   return (
-    <div className="relative w-full" id={id}>
+    <div className="absolute inset-0 md:relative md:w-full" id={id}>
       {/* 透明容器：iframe 子站透出主站固定的背景板（切 tab 背景不动） */}
-      <div className="relative w-full bg-transparent">
+      <div className="absolute inset-0 md:relative md:w-full bg-transparent">
         {loading && (
           // 载入遮罩留半透（别糊死主站背景）：透出深渊板与鱼影，只是压一层雾
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/80 backdrop-blur-[2px] dark:bg-[#0F1114]/80">
@@ -161,7 +140,6 @@ export const ThemeIframe: React.FC<ThemeIframeProps> = ({
             setLoadedTick((t) => t + 1);
           }}
           className={iframeClassName}
-          style={iframeH ? { height: `${iframeH}px` } : undefined}
           loading="eager"
           // 允许 iframe 内的静态站自己调用 Fullscreen API（融资法务站顶栏的「全屏」按钮）；
           // autoplay：子站配音在「缓冲就绪」的异步回调里才 play()（如 ENGLISH 站），补授权防被拦
