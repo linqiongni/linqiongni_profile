@@ -55,6 +55,29 @@ agent_created: true
 
 跑 `npx tsc --noEmit` 通过后再提交。
 
+### 3.45 内容读物站（非法律手册）：人文历史站已验证的写法（2026-10-03）
+非实务手册类子站（人物志、读书笔记、专栏）不要照抄法律手册那套「法源基准 + 法条索引 + 红线清单」，
+直接用「目录页 + 每篇独立页」：
+
+- **配色自己带**：`assets/style.css` 里写全 `:root`（浅）+ `html[data-theme="dark"]`（暗）两套变量，
+  **不走 `apply-theme-kit.py`**（那是给「改主站暗黑配色补丁」用的；新站要的是跟主站观感一致，
+  变量表抄一个既有子站即可，如 `商事仲裁/assets/style.css`：金 #B89F6B / 浅底 #FDFCF9 / 暗底 #1C1C1E）。
+  相应地 `sync:<name>` 脚本末尾**不要**串 `apply-theme-kit.py`，`theme:check` 那几个目录里也不需要加它。
+- **布局 B 的简化骨架（推荐给内容站）**：`.layout{height:100dvh;display:flex;flex-direction:column;overflow:hidden}`
+  + `header.topbar(flex:0 0 auto)` + `.row{flex:1;display:flex;min-height:0}` 里放
+  `<aside id="side">` 与 `<div id="mainwrap">`。顶栏是 flex 首项就**不需要 JS 实测高度注入**。
+- **app.js 只 `layout.insertBefore(topbar, layout.firstChild)`**，绝不 `body.innerHTML=''` 重建——
+  会把 `<script src="/theme-toggle.js">` 抹掉，主题切换静默失效（这个坑很隐蔽，页面看着正常）。
+- **`#side` 用 HTML 骨架里已有的那个 `<aside id="side">`**，JS 里再 `el('aside')` 新建的节点插不进 DOM，
+  冒烟时 `#side a` 数为 0 却看不出别的问题。
+- **目录页与文章页共用 app.js**：`body[data-p]` 有值 = 文章页（左栏 + 进度条 + 上下篇），
+  无值 = 目录页（只注入顶栏 + 搜索过滤 `.cell`）。搜索过滤**只改元素自身 `display`**，
+  改 `parentNode` 会在目录页把整个 `.grid` 藏掉。
+- **jsdom 冒烟断言**：`#side a` = 人物总数、`#side a.on` = 1、`#pager a` 1~2、`#topbar` 存在、
+  目录页 `.cell` = 总数。jsdom 里 `file:///theme-toggle.js` 报 Could not load script 属正常，线上有。
+- **内容源里最容易脏的是英文残词**（`moral / Runnable / ideas / literally / Salt March / Emancipation` 之类），
+  生成脚本里跑一条 `[A-Za-z]{3,}` 自检，白名单只留 `BBC` 这类允许混排的专有名词。
+
 ### 3.5 静态站布局选型（2026-09-19 定型）
 
 两种模式，新建站默认选 **B**：
