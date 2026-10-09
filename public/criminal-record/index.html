@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>刑事辩护实录：三十宗虚拟案件的完整诉讼 · 全书导览</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="index">
+<header class="page-head">
+<div class="kicker">律师实务 · 案例式法律小说</div>
+<h1>刑事辩护实录：三十宗虚拟案件的完整诉讼</h1>
+<div class="sub">从案发现场到刑满释放，以三十宗虚拟案件，完整呈现刑事辩护的事实判断、证据审查、程序控制与庭审策略。</div>
+</header>
+<div class="wrap">
+<div class="box tip"><span class="lb">阅读导航</span><p>本书按「罪名类型 + 程序节点 + 辩护方法」分为六卷三十章，每章一宗独立虚拟案件。左侧目录按卷分组，已写章节可点击阅读，未写章节标注「待续」。建议从《全书摘要》建立整体印象，再按卷逐案精读。</p></div>
+<h2>全书摘要</h2>
+<h2>六卷结构总览</h2>
+<div class="cards">
+<a class="card" href="#roadmap"><span class="d">第一卷</span><span class="t">故意伤害、过失致死、非法拘禁等侵害公民人身权利案件。</span></a>
+<a class="card" href="#roadmap"><span class="d">第二卷</span><span class="t">盗窃、抢劫、诈骗、侵占等侵犯财产权利案件。</span></a>
+<a class="card" href="#roadmap"><span class="d">第三卷</span><span class="t">电信网络诈骗、帮信、网络虚拟财产等新型犯罪。</span></a>
+<a class="card" href="#roadmap"><span class="d">第四卷</span><span class="t">危险驾驶、交通肇事、放火、危险物品等公共安全案件。</span></a>
+<a class="card" href="#roadmap"><span class="d">第五卷</span><span class="t">挪用资金、合同诈骗、虚开、行贿受贿等职务与经济犯罪。</span></a>
+<a class="card" href="#roadmap"><span class="d">第六卷</span><span class="t">辨认、讯问、不起诉、申诉、再审、执行与错案救济。</span></a>
+</div>
+<h2>每章统一写作框架</h2>
+<p>每一章虽为不同案件，均按相同结构展开，保证全站专业、统一：</p>
+<ol class="steps-plain">
+<li><b>1</b>　小说开场23</li>
+<li><b>2</b>　案发经过24</li>
+<li><b>3</b>　公安机关介入24</li>
+<li><b>4</b>　律师接受委托24</li>
+<li><b>5</b>　检察院审查逮捕25</li>
+<li><b>6</b>　侦查终结和审查起诉25</li>
+<li><b>7</b>　法院审判25</li>
+<li><b>8</b>　二审或判决生效25</li>
+<li><b>9</b>　刑罚执行26</li>
+<li><b>10</b>　本案法律复盘26</li>
+</ol>
+<h2>辩护结果的多样性</h2>
+<p>全书不把刑事辩护写成「有罪变无罪」的套路。已规划的结果类型包括：</p>
+<div class="box warn"><span class="lb">结果谱系</span>
+</div>
+<h2 id="roadmap">全书目录</h2>
+<div class="roadmap">
+<div class="rvol"><div class="rvh">第一卷 · 人身边界</div><ul>
+<li><a href="ch01.html">深夜烧烤店的最后一拳</a></li>
+<li><a href="ch02.html">出租屋里无人看见的死亡</a></li>
+<li><a href="ch03.html">失控的方向盘</a></li>
+<li><a href="ch04.html">接孩子时发生的冲突</a></li>
+<li><a href="ch05.html">十四岁少年的秘密</a></li>
+</ul></div>
+<div class="rvol"><div class="rvh">第二卷 · 财物迷局</div><ul>
+<li><a href="ch06.html">中山一路的手机</a></li>
+<li><a href="ch07.html">便利店门口的苹果手机</a></li>
+<li><a href="ch08.html">酒店遗落的手表</a></li>
+<li><a href="ch09.html">借来的汽车没有归还</a></li>
+<li class="pend">仓库里少掉的二十箱货 <span class="tag">待续</span></li>
+</ul></div>
+<div class="rvol"><div class="rvh">第三卷 · 屏幕背后的犯罪</div><ul>
+<li class="pend">兼职刷单群 <span class="tag">待续</span></li>
+<li class="pend">银行卡里的三百万元流水 <span class="tag">待续</span></li>
+<li class="pend">直播间里的投资导师 <span class="tag">待续</span></li>
+<li class="pend">被删掉的聊天记录 <span class="tag">待续</span></li>
+<li class="pend">游戏账号交易骗局 <span class="tag">待续</span></li>
+</ul></div>
+<div class="rvol"><div class="rvh">第四卷 · 危险现场</div><ul>
+<li class="pend">凌晨两点的代驾订单 <span class="tag">待续</span></li>
+<li class="pend">暴雨中的货车事故 <span class="tag">待续</span></li>
+<li class="pend">仓库里的烟花 <span class="tag">待续</span></li>
+<li class="pend">楼道里蔓延的火 <span class="tag">待续</span></li>
+<li class="pend">包厢里的违禁物品 <span class="tag">待续</span></li>
+</ul></div>
+<div class="rvol"><div class="rvh">第五卷 · 公司与权力</div><ul>
+<li class="pend">老板拿走的项目款 <span class="tag">待续</span></li>
+<li class="pend">无法交付的五百台设备 <span class="tag">待续</span></li>
+<li class="pend">虚开的发票 <span class="tag">待续</span></li>
+<li class="pend">招标前的一只信封 <span class="tag">待续</span></li>
+<li class="pend">执法记录仪缺失的六分钟 <span class="tag">待续</span></li>
+</ul></div>
+<div class="rvol"><div class="rvh">第六卷 · 程序本身就是辩护</div><ul>
+<li class="pend">照片墙上的第六个人 <span class="tag">待续</span></li>
+<li class="pend">凌晨四点的讯问笔录 <span class="tag">待续</span></li>
+<li class="pend">检察院作出的不起诉决定 <span class="tag">待续</span></li>
+<li class="pend">一份已经生效的判决 <span class="tag">待续</span></li>
+<li class="pend">铁门打开以后 <span class="tag">待续</span></li>
+</ul></div>
+<div class="rvol"><div class="rvh">配套文书（虚构示例）</div><ul>
+<li><a href="docs-ch01.html">第一章配套法律文书全集</a></li>
+<li><a href="docs-ch02.html">第二章配套法律文书全集</a></li>
+</ul></div>
+</div>
+<h2>作品开篇说明 / 虚构声明</h2>
+<p>明白了。你要的不是“一宗抢劫案贯穿全书”，而是：</p>
+<p>把“刑事辩护”栏目写成一部案例式法律小说。每一章是一宗独立虚拟案件，从案发、报案、侦查、审查逮捕、审查起诉、审判到执行，完整呈现案件发展；不同章节分别覆盖不同罪名、证据争议、程序问题和辩护策略。</p>
+<p>这样更适合你的律师作品集。读者可以单独阅读任何一章，也可以通过整部作品系统了解刑事辩护。</p>
+<p>我国刑法内容包括总则以及危害公共安全、破坏市场经济秩序、侵犯人身权利、侵犯财产、妨害社会管理秩序、贪污贿赂、渎职等分则体系；刑事诉讼则包括立案、侦查、审查起诉、一审、二审、执行及特别程序。因此，案例应当按照“罪名类型＋程序节点＋辩护方法”共同设计，而不是全部围绕一个罪名展开。 [中华人民共和国刑法_中国人大网], [中华人民共和国刑事诉讼法_中国人大网]</p>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

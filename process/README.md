@@ -148,6 +148,7 @@
 <!-- 每次写日志时往这个表里加一行，别删表头 -->
 | 日期 | 做了什么 | 影响的问题 |
 |---|---|---|
+| 2026-10-09 | 新增「律师实务 · 刑事辩护实录（三十宗）」tab：生成器 `scripts/build_criminal_cases.py` 读根目录 Word 源 → `public/criminal-record/`（index + 第1–9章 + 2篇配套文书 + assets），复用刑事手册 B 布局（左分组目录/右页内目录/scrollspy/鱼影背景）；`apply-theme-kit --fix` 注入补丁 12/12 通过；`App.tsx` 补渲染分支，与既有 `CriminalRecordTab` 接线 | — |
 | 2026-10-08 | 新设备接入收尾：本机 git 写不进 refs/remotes/*（远程跟踪引用失效），hook 改 POSIX + 用 FETCH_HEAD 绕过；本地 main(0566052 旧单根)与 origin(d2b2db,351 提交含滚动修复)无共同祖先，backup 分支留存 + 10-04 日志救回仓外，reset 到 d2b2db 采 GitHub 真源；提交即 hook 自动双推 origin/gitee、验线上 | — |
 | 2026-09-27 | 建立骨架并填充真实内容：现状四份、决策 7 条、台账 6 未决 + 12 已解决、今日日志、想法池 | — |
 | 2026-09-27 | 跑冷启动测试（不合格）→ 按反馈补 M09 月度复盘、任务路径、视觉速查、验收记录 | — |

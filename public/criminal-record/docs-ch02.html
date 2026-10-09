@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch02</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch02">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二章配套法律文书全集</h1>
+<div class="sub">《出租屋里无人看见的死亡》虚构案件 · 刑事辩护作品集</div>
+</header>
+<div class="wrap">
+<p>使用说明：本文书以第二章虚构案件为背景。正式使用前必须依据真实证据、案件阶段及届时有效法律重新核验，不得直接套用。</p>
+<p>案件概览</p>
+<p>犯罪嫌疑人：周岚</p>
+<p>死者：赵明远</p>
+<p>侦查罪名：故意伤害罪</p>
+<p>核心争议：死亡机制、行为来源、因果关系、主观罪过、不作为责任及间接证据排他性</p>
+<p>虚构结果：两次退回补充侦查后，检察机关依法作出存疑不起诉决定</p>
+<p>目录</p>
+<h3>1. 命案首次接待笔录</h3>
+<h3>2. 首次会见提纲</h3>
+<h3>3. 封闭空间命案证据审查清单</h3>
+<h3>4. 死亡时间审查表</h3>
+<h3>5. 尸体检验鉴定意见审查表</h3>
+<h3>6. 现场勘验笔录审查表</h3>
+<h3>7. 血迹及生物物证审查表</h3>
+<h3>8. 手机电子数据审查表</h3>
+<h3>9. 不予批准逮捕法律意见书</h3>
+<h3>10. 取保候审申请书</h3>
+<h3>11. 补充鉴定申请书</h3>
+<h3>12. 重新鉴定申请书</h3>
+<h3>13. 申请有专门知识的人参与诉讼申请书</h3>
+<h3>14. 审查起诉阶段无罪法律意见书</h3>
+<h3>15. 退回补充侦查事项清单</h3>
+<h3>16. 建议作出不起诉决定法律意见书</h3>
+<h3>17. 羁押必要性审查申请书</h3>
+<h3>18. 解除强制措施申请书</h3>
+<h3>19. 返还扣押物品申请书</h3>
+<h3>20. 不起诉后的权利事项说明</h3>
+<h2>文书一：命案首次接待笔录</h2>
+<div class="docbox">
+<p class="kv"><b>接待时间</b>　20XX年X月X日</p>
+<p class="kv"><b>来访人</b>　周秀英，系犯罪嫌疑人周岚之母</p>
+<p class="kv"><b>接待律师</b>　林知微</p>
+<p>一、来访人陈述</p>
+<p>周秀英称，周岚与赵明远共同生活约三年。案发清晨，周岚报警称赵明远在出租屋内失去生命体征。公安机关勘查后将周岚带走，家属后收到刑事拘留通知书。来访人称二人长期因饮酒、经济及分手问题争执，赵明远酒后曾砸物、抓扯周岚。</p>
+<p>二、现有材料</p>
+<p>刑事拘留通知书；</p>
+<p>租赁合同、劳动合同及身份材料；</p>
+<p>二人部分聊天记录；</p>
+<p>周岚既往向母亲、朋友反映冲突的记录；</p>
+<p>案发房屋基本布局信息。</p>
+<p>三、需立即核实</p>
+<p>死亡原因、死亡时间及尸检程序；</p>
+<p>周岚到案方式、讯问次数、供述变化；</p>
+<p>出租屋内外监控和人员出入；</p>
+<p>现场血迹、家具、杯子、纸巾及生物物证；</p>
+<p>双方伤痕及形成时间；</p>
+<p>死者饮酒、疾病、用药及既往摔倒史；</p>
+<p>手机搜索、通信、运动及支付数据；</p>
+<p>是否存在清理现场或阻碍救助证据。</p>
+<p>四、初步风险说明</p>
+<p>封闭空间、两人独处、死亡结果、延迟报警和陈述变化均属不利因素，但不能替代对具体行为、因果关系和主观罪过的证明。当前不预设“他杀”或“自行跌倒”的唯一故事，先审查指控能否排除合理怀疑。</p>
+<p>五、家属行动规范</p>
+<p>不得删除、修改聊天记录；</p>
+<p>不得联系证人统一说法；</p>
+<p>不得公开尸检照片或侦查材料；</p>
+<p>保存租赁、就医、报警、付款等原始凭证；</p>
+<p>与死者家属沟通须克制，不承诺、不施压。</p>
+<p class="kv"><b>来访人签名</b>　________  接待律师：________</p>
+</div>
+<h2>文书二：首次会见提纲</h2>
+<div class="docbox">
+<p>一、程序与身体状况</p>
+<p>何时、何地、如何到案；是否被告知涉嫌罪名及权利；</p>
+<p>讯问起止时间、休息饮食、录音录像和笔录核对；</p>
+<p>有无伤病、用药、疲劳、威胁、诱导或指供；</p>
+<p>上臂青紫、手背划伤的形成时间和原因。</p>
+<p>二、关系与案发前背景</p>
+<p>同居时间、经济安排、矛盾来源、分手计划；</p>
+<p>既往冲突、报警、就医及第三方知情情况；</p>
+<p>案发当日双方行程、饮酒、进食及联系情况。</p>
+<p>三、案发经过按分钟还原</p>
+<p>抢手机、举啤酒瓶、抓手腕、推搡的顺序；</p>
+<p>第一次滑倒的位置、姿态、碰撞部位及声音；</p>
+<p>死者之后是否说话、走动、接触手机；</p>
+<p>玻璃杯、椅子、门槛、地面水渍如何形成；</p>
+<p>何时进入卧室，何时再次查看死者；</p>
+<p>凌晨两次下楼的目的、路线和购买物品；</p>
+<p>何时触摸死者、何时意识到异常、为何延迟报警；</p>
+<p>是否移动尸体、擦拭地面、清洗物品或更换衣物。</p>
+<p>四、电子数据逐项核对</p>
+<p>“喝醉后头晕怎么办”搜索背景；</p>
+<p>“摔到后脑勺要不要去医院”搜索背景；</p>
+<p>“身体发凉还有救吗”搜索背景；</p>
+<p>未接电话、聊天、支付和手机运动数据；</p>
+<p>是否删除内容、借用对方手机或改变设备位置。</p>
+<p>五、会见结论</p>
+<p>须允许当事人明确“记不清”“不确定”，不得训练其背诵统一版本。对供述变化应查明原因并固定真实经过。</p>
+</div>
+<h2>文书三：封闭空间命案证据审查清单</h2>
+<div class="docbox">
+<p>模块</p>
+<p>审查重点</p>
+<p>本案疑点</p>
+<p>人员范围</p>
+<p>出入口、监控、门锁、窗户、第三人可能</p>
+<p>大概率仅两人，不等于行为已经证明</p>
+<p>死亡事实</p>
+<p>死因、死亡时间、伤病和毒物</p>
+<p>死于颅脑损伤，时间范围较宽</p>
+<p>行为证据</p>
+<p>工具、动作、强度、位置</p>
+<p>未发现明确工具或目击者</p>
+<p>现场痕迹</p>
+<p>血迹、指纹、DNA、擦拭、尸位</p>
+<p>门槛少量血迹，无大范围清洗证据</p>
+<p>言词证据</p>
+<p>供述变化、邻居声音、利害关系</p>
+<p>周岚隐瞒摔倒，邻居仅听见声音</p>
+<p>电子数据</p>
+<p>搜索、步数、通信、位置、支付</p>
+<p>可证明关注伤情，不能单独证明加害</p>
+<p>因果关系</p>
+<p>行为与伤害、救助与死亡</p>
+<p>打击或跌倒均未排除</p>
+<p>主观罪过</p>
+<p>动机、工具、部位、次数、案后行为</p>
+<p>存在矛盾和延迟报警，仍不足证明故意</p>
+</div>
+<h2>文书四：死亡时间审查表</h2>
+<div class="docbox">
+<p>审查项目</p>
+<p>材料</p>
+<p>核查意见</p>
+<p>最后存活时间</p>
+<p>周岚陈述、邻居声音、手机数据</p>
+<p>需区分亲见、听见与推断</p>
+<p>首次发现异常</p>
+<p>搜索记录、报警记录</p>
+<p>五时四十七分搜索后仍有时间差</p>
+<p>尸体现象</p>
+<p>尸温、尸斑、尸僵记录</p>
+<p>核对测量时间、方法和环境参数</p>
+<p>室内环境</p>
+<p>空调、通风、衣着、地面</p>
+<p>影响死亡时间推断</p>
+<p>胃内容物</p>
+<p>进食时间、消化状态</p>
+<p>只能辅助，不能机械精确到分钟</p>
+<p>酒精及疾病</p>
+<p>血醇、肝功能、凝血</p>
+<p>可能影响平衡和出血进程</p>
+<p>设备数据</p>
+<p>步数、屏幕、充电、网络</p>
+<p>先证明设备由谁持有</p>
+<p>结论表达</p>
+<p>范围及误差</p>
+<p>不得把概率范围表述成确定时点</p>
+<p>审查结论</p>
+<p>死亡时间应以多种材料综合判断。单一尸体现象、胃内容物或手机步数均不足以锁定具体时刻；若死亡时间不能准确确定，就不能仅凭周岚某时段在场反推具体犯罪行为。</p>
+</div>
+<h2>文书五：尸体检验鉴定意见审查表</h2>
+<div class="docbox">
+<p>事项</p>
+<p>核查内容</p>
+<p>辩方意见</p>
+<p>资质程序</p>
+<p>机构、鉴定人、委托、回避、签名</p>
+<p>核验原件</p>
+<p>检材链条</p>
+<p>尸体、组织、血液、毒物检材封存移送</p>
+<p>确保可追溯</p>
+<p>外表检验</p>
+<p>全部损伤位置、颜色、大小、形态</p>
+<p>核对照片是否完整</p>
+<p>内部检验</p>
+<p>颅骨、颅内出血、脑组织及其他器官</p>
+<p>明确直接死因</p>
+<p>毒化检验</p>
+<p>酒精、药物、毒物</p>
+<p>评估醉酒程度及其他因素</p>
+<p>成伤机制</p>
+<p>打击、跌倒、二次碰撞可能</p>
+<p>现结论不唯一</p>
+<p>致伤物推断</p>
+<p>工具种类及特异性</p>
+<p>无特异对应时不得锁定工具</p>
+<p>损伤时间</p>
+<p>生前伤、濒死伤、陈旧伤</p>
+<p>逐项区分</p>
+<p>疾病因素</p>
+<p>凝血、肝病、既往颅脑病史</p>
+<p>评价参与作用</p>
+<p>意见边界</p>
+<p>是否评价行为人和罪名</p>
+<p>法律问题不得由鉴定替代</p>
+</div>
+<h2>文书六：现场勘验笔录审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>应审内容</p>
+<p>本案问题</p>
+<p>现场保护</p>
+<p>人员进入、物品移动、急救影响</p>
+<p>形成进入人员清单</p>
+<p>全景方位</p>
+<p>门窗、家具、尸位和通道</p>
+<p>绘制比例图</p>
+<p>尸体位置</p>
+<p>姿态、接触面、衣着、周边痕迹</p>
+<p>与移动可能核对</p>
+<p>门槛</p>
+<p>材质、高度、缺口、血迹</p>
+<p>与伤口形态比对</p>
+<p>椅子家具</p>
+<p>擦痕、指纹、DNA、血迹</p>
+<p>不能仅凭倒地推断动作</p>
+<p>玻璃碎片</p>
+<p>分布、血迹、指纹</p>
+<p>判断破碎时间和方式</p>
+<p>水渍清洁</p>
+<p>来源、范围、拖把抹布检验</p>
+<p>区分生活清洁与毁证</p>
+<p>纸巾</p>
+<p>血源及使用人</p>
+<p>已指向周岚本人</p>
+<p>照明视线</p>
+<p>夜间灯光、卧室到客厅观察条件</p>
+<p>评价“未看清”陈述</p>
+<p>复勘程序</p>
+<p>复勘原因及现场变化</p>
+<p>说明原状是否保留</p>
+</div>
+<h2>文书七：血迹及生物物证审查表</h2>
+<div class="docbox">
+<p>审查要求</p>
+<p>每份检材应对应提取位置、编号、照片、封存、送检和剩余样本；</p>
+<p>区分血迹来源鉴定、形态分析及形成机制判断；</p>
+<p>共同生活环境中的接触性DNA证明力有限；</p>
+<p>未检出不等于行为必然没有发生，检出也不等于犯罪行为已被证明。</p>
+<p>检材</p>
+<p>结果/待查</p>
+<p>证明限制</p>
+<p>门槛血迹</p>
+<p>赵明远</p>
+<p>支持头部在附近出血，不唯一证明撞击方式</p>
+<p>卫生间纸巾</p>
+<p>周岚为主</p>
+<p>不支持清洗死者血迹</p>
+<p>拖把抹布</p>
+<p>未见明确死者血迹</p>
+<p>削弱大范围清洗推断</p>
+<p>周岚睡衣</p>
+<p>少量死者接触成分</p>
+<p>同居关系下须谨慎解释</p>
+<p>死者指甲</p>
+<p>无排他性他人组织</p>
+<p>不能据此排除拉扯</p>
+<p>金属装饰件</p>
+<p>无明确血迹</p>
+<p>缺乏工具对应</p>
+<p>玻璃碎片</p>
+<p>待结合指纹血迹</p>
+<p>不能仅凭破碎认定攻击</p>
+</div>
+<h2>文书八：手机电子数据审查表</h2>
+<div class="docbox">
+<p>一、真实性与完整性</p>
+<p>核对扣押、封存、解锁、提取和镜像过程；</p>
+<p>保存原始提取报告、日志、文件校验值和工具版本；</p>
+<p>区分设备系统数据、应用生成数据和人工截图。</p>
+<p>二、逐项审查</p>
+<p>数据</p>
+<p>可能证明</p>
+<p>不能单独证明</p>
+<p>搜索记录</p>
+<p>周岚关注醉酒、后脑摔伤和身体发凉</p>
+<p>她实施了打击或具有杀人故意</p>
+<p>聊天记录</p>
+<p>关系矛盾、搬离计划、案发时表达</p>
+<p>具体致伤动作</p>
+<p>步数数据</p>
+<p>设备发生移动</p>
+<p>一定由赵明远本人携带</p>
+<p>通话记录</p>
+<p>联系时间和对象</p>
+<p>通话内容，除非有合法录音</p>
+<p>支付记录</p>
+<p>下楼购买时间</p>
+<p>此前或此后死亡准确时点</p>
+<p>定位网络</p>
+<p>设备大致位置</p>
+<p>室内人员具体动作</p>
+<p>删除记录</p>
+<p>可能存在删除行为</p>
+<p>被删内容必然与犯罪有关</p>
+</div>
+<h2>文书九：不予批准逮捕法律意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市白云区人民检察院</p>
+<p>辩护人就周岚涉嫌故意伤害案审查逮捕事项提出如下意见：</p>
+<p>一、现有证据不能确定具体犯罪行为</p>
+<p>鉴定仅确认赵明远因头部钝性外力导致颅脑损伤死亡，同时保留钝器打击和跌倒撞击两种机制。现场未发现明确作案工具、直接目击者或者足以还原击打动作的血迹。</p>
+<p>二、间接证据尚未形成排他体系</p>
+<p>封闭空间、关系矛盾、搜索记录、延迟报警及供述变化可加强嫌疑，但均不能替代行为、因果关系和主观罪过的证明。醉酒自行跌倒、争执后再次跌倒等合理可能尚未排除。</p>
+<p>三、陈述变化应限定证明范围</p>
+<p>周岚最初隐瞒看见赵明远滑倒，影响其可信度，但“隐瞒摔倒”不能逻辑跳跃为“持物击打”。其后陈述须与现场、鉴定、电子数据分别核对。</p>
+<p>四、请求</p>
+<p>请求依法作出不批准逮捕决定；如认为仍需侦查，请在固定证据后变更为取保候审，并围绕死亡机制、死亡时间、手机持有人及救助可避免性继续调查。</p>
+<p>此致</p>
+<p>广州市白云区人民检察院</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十：取保候审申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　林知微，周岚之辩护人。</p>
+<p class="kv"><b>申请事项</b>　请求将周岚变更强制措施为取保候审。</p>
+<p>事实与理由</p>
+<p>本案死亡机制不唯一，具体犯罪行为尚未查清。周岚有固定住所、稳定工作和家庭联系，案发后主动报警，未逃匿；现场、尸检、手机等主要证据已由办案机关控制，采取非羁押措施足以保障诉讼。</p>
+<p>愿意提出合格保证人或交纳保证金；</p>
+<p>遵守传讯到案、住址变更报告等要求；</p>
+<p>不接触证人，不干扰死者家属；</p>
+<p>不删除、修改电子数据；</p>
+<p>配合补充鉴定及调查。</p>
+<p>此致</p>
+<p>广州市公安局白云区分局</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十一：补充鉴定申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请事项</b>　请求就原尸体检验鉴定意见未充分说明的事项进行补充鉴定。</p>
+<p>申请问题</p>
+<p>后枕部损伤的具体形态、受力方向和作用面特征；</p>
+<p>该损伤由跌倒撞击门槛形成的可能性及依据；</p>
+<p>由手持钝器打击形成的可能性及依据；</p>
+<p>额部、上臂、肩背损伤是否可由同一次跌倒形成；</p>
+<p>死者明显醉酒对平衡和保护性反应的影响；</p>
+<p>凝血、肝功能异常对颅内出血的影响；</p>
+<p>受伤后继续说话、移动的医学可能；</p>
+<p>死亡时间推断范围、参数及误差；</p>
+<p>及时送医对死亡结果的可避免性能够达到何种确定程度。</p>
+<p>补充鉴定应以尸检原始记录、全部照片、病理切片、毒化结果、现场勘验和病历为基础，不直接采用尚待证明的案情作为医学前提。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十二：重新鉴定申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请事项</b>　请求委托其他具备相应资质的鉴定机构，对死亡原因、成伤机制及相关专门性问题重新鉴定。</p>
+<p>理由</p>
+<p>原意见对打击与跌倒两种机制仅作并列结论，缺乏损伤形态、受力方向与现场客体的充分比对；</p>
+<p>原意见未充分说明醉酒、凝血和既往健康因素；</p>
+<p>对于死亡时间及受伤后活动能力的论证不足；</p>
+<p>相关结论直接影响行为方式和因果关系认定，具有不可替代的重要性。</p>
+<p>送检材料</p>
+<p>尸检记录及全部原始照片、录像；</p>
+<p>组织切片、毒化检验及剩余检材；</p>
+<p>完整病历和既往就医资料；</p>
+<p>现场勘验笔录、比例图、门槛与家具测量资料；</p>
+<p>电子数据原始提取报告；</p>
+<p>原鉴定及补充说明。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十三：申请有专门知识的人参与诉讼申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请事项</b>　请求准许法医学专业人员一名参与相关程序，就尸体检验鉴定意见提出专业意见并协助询问鉴定人。</p>
+<p>必要性</p>
+<p>本案涉及颅脑损伤形成机制、跌倒与打击鉴别、死亡时间、醉酒影响及救治可避免性，专业性强。原鉴定未得出唯一成伤机制，需对基础材料、方法、结论强度及意见边界进行实质审查。</p>
+<p>拟审查事项</p>
+<p>伤口与门槛形态是否存在特异对应；</p>
+<p>损伤组合是否支持一次或多次外力；</p>
+<p>鉴定所用资料是否完整；</p>
+<p>概率性表述能否支持排他结论；</p>
+<p>法医学结论与现场、电子数据是否矛盾。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十四：审查起诉阶段无罪法律意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市白云区人民检察院</p>
+<p>一、确定事实与待证事实必须区分</p>
+<p>可以确定赵明远因颅脑损伤死亡、周岚与其争执并曾推搡、现场主要时段未见第三人进入。不能确定的是致命外力的具体来源、形成时间、周岚是否持物击打、推搡是否导致致命跌倒以及周岚的主观罪过。</p>
+<p>二、故意杀人、故意伤害致死均缺乏行为及主观证据</p>
+<p>没有工具、连续攻击、攻击部位选择、阻止救助、毁尸灭迹等证据。关系矛盾和延迟报警不能单独证明希望或放任死亡，也不能证明伤害故意。</p>
+<p>三、过失致人死亡亦未达到证明标准</p>
+<p>尚不能证明周岚的推搡就是致命伤的来源，也不能证明其对死亡结果具有应当预见而未预见或已经预见但轻信避免的罪过。不能以死亡结果倒推可预见性。</p>
+<p>四、不作为责任基础不足</p>
+<p>现有材料不能确定危险由周岚先前行为制造，不能确定她何时认识到现实生命危险，也不能证明在特定时点报警足以避免死亡。</p>
+<p>五、请求</p>
+<p>请求依法作出不起诉决定；如认为仍需核查，应围绕具体争点补充侦查，不得以概括性的“其他暴力方式”填补行为事实。</p>
+<p>此致</p>
+<p>广州市白云区人民检察院</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十五：退回补充侦查事项清单</h2>
+<div class="docbox">
+<p>序号</p>
+<p>待查事项</p>
+<p>具体材料/方法</p>
+<p>1</p>
+<p>致命伤机制</p>
+<p>伤口、颅骨、门槛、家具三维或尺度比对</p>
+<p>2</p>
+<p>死亡时间</p>
+<p>尸体现象原始记录、环境参数、胃内容物、电子数据综合</p>
+<p>3</p>
+<p>推搡动作</p>
+<p>周岚历次供述、双方体格、地面湿滑及空间条件</p>
+<p>4</p>
+<p>手机步数</p>
+<p>原始数据库、算法说明、设备持有人可能</p>
+<p>5</p>
+<p>现场清理</p>
+<p>纸巾、拖把、抹布、水槽及血迹反应</p>
+<p>6</p>
+<p>其他损伤</p>
+<p>逐项说明形成时间和机制</p>
+<p>7</p>
+<p>既往健康</p>
+<p>饮酒史、肝功能、凝血及颅脑病史</p>
+<p>8</p>
+<p>救助可能</p>
+<p>受伤时点、伤情进展、救治窗口的确定程度</p>
+<p>9</p>
+<p>既往冲突</p>
+<p>报警、聊天、就医及邻居证言，正反材料均收集</p>
+<p>10</p>
+<p>言词矛盾</p>
+<p>逐项核对变化原因，不作概括性有罪推断</p>
+</div>
+<h2>文书十六：建议作出不起诉决定法律意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市白云区人民检察院</p>
+<p>一、两次补充侦查仍未锁定行为方式</p>
+<p>补充侦查未发现明确工具、直接目击证据或能够唯一对应打击的痕迹。鉴定仍保留跌倒撞击可能。</p>
+<p>二、指控链条存在不可补足的断点</p>
+<p>无法证明由周岚实施致命外力；</p>
+<p>无法证明周岚承认的推搡与致命伤同一；</p>
+<p>无法确定受伤及死亡准确时间；</p>
+<p>无法排除醉酒失衡或再次跌倒；</p>
+<p>无法准确证明杀人故意、伤害故意或死亡过失；</p>
+<p>无法证明延迟求助与死亡具备刑法因果关系。</p>
+<p>三、反常行为只能加强怀疑</p>
+<p>周岚隐瞒摔倒、搜索伤情并延迟报警，足以说明其处置不当并担忧责任，但不能替代具体犯罪事实。高度怀疑与证据确实、充分之间仍有法律界限。</p>
+<p>四、建议</p>
+<p>建议依法对周岚作出存疑不起诉决定，并及时解除强制措施、处理扣押物品。</p>
+<p>此致</p>
+<p>广州市白云区人民检察院</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十七：羁押必要性审查申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请事项</b>　请求对周岚继续羁押的必要性进行审查，并建议变更为取保候审。</p>
+<p>理由</p>
+<p>案件已经历尸检、现场勘查、电子数据提取及补充侦查，主要证据固定；</p>
+<p>周岚主动报警，身份住址明确，无逃匿事实；</p>
+<p>无同案犯，不存在串供对象；</p>
+<p>不接触证人、限制会见等附加要求足以控制风险；</p>
+<p>案件证据存在重大疑点，继续羁押应慎重；</p>
+<p>其母亲可提供稳定居所和监督保证。</p>
+<p>请依法听取辩护人意见，并将审查结果书面告知。</p>
+<p>此致</p>
+<p>广州市白云区人民检察院</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十八：解除强制措施申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请事项</b>　鉴于人民检察院已对周岚作出不起诉决定，请依法立即解除对周岚采取的羁押及其他强制措施，并向执行机关送达相应法律文书。</p>
+<p>理由</p>
+<p>不起诉决定作出后，继续限制周岚人身自由已无诉讼依据。与取保候审相关的保证金、证件及限制措施，应依法一并处理。</p>
+<p>请求</p>
+<p>立即办理释放或解除手续；</p>
+<p>书面告知强制措施解除情况；</p>
+<p>依法处理保证金、保证人义务及相关限制；</p>
+<p>为当事人领取个人物品提供必要凭证。</p>
+<p>此致</p>
+<p>广州市白云区人民检察院</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十九：返还扣押物品申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　周岚；代理/辩护人：林知微律师。</p>
+<p class="kv"><b>申请事项</b>　请求对与案件处理无继续留存必要的扣押物品依法核对并返还。</p>
+<p>申请返还清单</p>
+<p>序号</p>
+<p>物品</p>
+<p>识别信息</p>
+<p>处理请求</p>
+<p>1</p>
+<p>手机</p>
+<p>品牌、型号、序列号以扣押清单为准</p>
+<p>返还并保留必要提取副本</p>
+<p>2</p>
+<p>身份证件</p>
+<p>姓名、号码以清单为准</p>
+<p>立即返还</p>
+<p>3</p>
+<p>灰色睡衣</p>
+<p>封存编号以清单为准</p>
+<p>检验结束后返还</p>
+<p>4</p>
+<p>钥匙及个人物品</p>
+<p>数量以清单为准</p>
+<p>核对签收</p>
+<p>理由</p>
+<p>案件已作不起诉处理，上述物品如已完成检验、复制或者与案件无继续关联，应依法返还。返还时请制作清单，由申请人核对物品状态并签收。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书二十：不起诉后的权利事项说明</h2>
+<div class="docbox">
+<p>一、核对不起诉决定</p>
+<p>确认决定类型、事实理由、救济告知和送达日期；</p>
+<p>妥善保存不起诉决定书及解除强制措施材料；</p>
+<p>如决定尚在法定救济程序中，留意相关通知。</p>
+<p>二、处理人身及财物事项</p>
+<p>确认释放、取保候审、保证金及证件限制均已处理；</p>
+<p>申请返还扣押物品并核对状态；</p>
+<p>对需要留存的电子数据副本，要求明确保管和用途。</p>
+<p>三、个人信息与公开表达</p>
+<p>不公开尸检照片、卷宗隐私和证人信息；</p>
+<p>对外表述应准确使用“检察机关作出不起诉决定”，不夸大为司法机关已还原全部事实；</p>
+<p>保存网络侵权证据，必要时依法维权。</p>
+<p>四、赔偿与其他救济</p>
+<p>是否具备申请国家赔偿、申诉、控告或其他救济条件，应根据不起诉类型、羁押依据、具体法律文书及法定期限另行审查。本虚构示例不预设当然具备赔偿条件。</p>
+<p>五、民事争议</p>
+<p>不起诉不当然解决死者家属可能提出的民事主张。双方应围绕侵权行为、因果关系、过错和损失分别举证，不以刑事案件中的情绪性判断替代民事证据。</p>
+<p>法律依据与核验提示</p>
+<p>《中华人民共和国刑法》关于故意、过失、意外事件、故意杀人、故意伤害及过失致人死亡的规定；</p>
+<p>《中华人民共和国刑事诉讼法》关于证据、强制措施、鉴定、审查逮捕、审查起诉、不起诉及涉案财物的规定；</p>
+<p>最高人民法院关于适用《中华人民共和国刑事诉讼法》的解释；</p>
+<p>《人民检察院刑事诉讼规则》；</p>
+<p>有关鉴定、电子数据和技术性证据审查的现行规范文件。</p>
+<p>正式提交前，应补入准确案号、办案机关、证据卷页、鉴定文号和律师执业信息，并逐条核验届时有效法律。</p>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

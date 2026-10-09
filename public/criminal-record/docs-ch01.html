@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch01</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch01">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第一章配套法律文书全集</h1>
+<div class="sub">《深夜烧烤店的最后一拳》虚构案件 · 律师实务作品集</div>
+</header>
+<div class="wrap">
+<p>使用说明：本文书均以第一章虚构案件为背景。正式使用前必须根据真实案号、证据、程序阶段及现行有效法律逐项核验，不得直接套用。</p>
+<h3>案件基本信息</h3>
+<p>犯罪嫌疑人/被告人：陈浩</p>
+<p>涉嫌罪名：故意伤害罪</p>
+<p>被害人：周凯</p>
+<p>核心争议：正当防卫、互殴、防卫过当、因果关系、伤情鉴定及监控证据</p>
+<p>虚构结果：一审认定防卫过当，判处有期徒刑一年六个月，缓刑二年</p>
+<h3>文书目录</h3><ol>
+<li>刑事案件首次接待笔录</li>
+<li>首次会见提纲</li>
+<li>案发过程时间轴</li>
+<li>监控录像逐帧审查表</li>
+<li>不予批准逮捕法律意见书</li>
+<li>取保候审申请书</li>
+<li>伤情鉴定意见审查表</li>
+<li>审查起诉阶段法律意见书</li>
+<li>庭前会议申请书</li>
+<li>调取原始监控录像申请书</li>
+<li>证人出庭申请书</li>
+<li>被告人发问提纲</li>
+<li>证人发问提纲</li>
+<li>鉴定意见质证提纲</li>
+<li>一审质证意见</li>
+<li>正当防卫辩护词</li>
+<li>量刑意见书</li>
+<li>缓刑适用调查材料清单</li>
+</ol>
+<h2>文书一：刑事案件首次接待笔录</h2>
+<div class="docbox">
+<p class="kv"><b>接待时间</b>　20XX年X月X日 19:30至21:10</p>
+<p class="kv"><b>接待地点</b>　广东正衡律师事务所</p>
+<p class="kv"><b>接待律师</b>　林知微</p>
+<p class="kv"><b>来访人</b>　李雯，与犯罪嫌疑人陈浩系夫妻关系</p>
+<p>一、来访人陈述</p>
+<p>李雯称，陈浩于20XX年X月X日晚在广州市海珠区“老街炭火烧烤店”与周凯发生冲突。周凯先碰撞座椅、推搡并抓扯陈浩，陈浩以拳还击。周凯后退摔倒，后脑撞击水泥台阶，现因颅脑损伤住院。陈浩留在现场，后被公安机关带走，家属于次日收到刑事拘留通知书。</p>
+<p>二、现有材料</p>
+<p>刑事拘留通知书复印件一份；</p>
+<p>现场人员拍摄视频两段；</p>
+<p>陈浩左耳红肿及衣领破损照片；</p>
+<p>陈浩身份、住址、工作及家庭情况材料。</p>
+<p>三、律师初步询问</p>
+<p>双方此前是否认识，有无既往矛盾；</p>
+<p>谁先发生身体接触，冲突是否曾中断；</p>
+<p>每次击打的时间、位置、力度及对方状态；</p>
+<p>现场有无监控、目击者、执法记录仪；</p>
+<p>陈浩是否受伤并接受检查；</p>
+<p>周凯伤情及医疗情况；</p>
+<p>陈浩到案方式、讯问时间及笔录内容；</p>
+<p>家属是否与被害人一方接触，是否存在赔偿意愿。</p>
+<p>四、初步法律分析</p>
+<p>目前材料显示案件具有正当防卫审查基础，但不能仅以“对方先动手”直接得出无罪结论。应当完整核实不法侵害是否持续、第三拳之前双方是否已经分开、陈浩是否存在退让或追击、第三拳与重伤结果之间的因果关系。辩护方案暂按“正当防卫为主、防卫过当为备、量刑辩护兜底”设置。</p>
+<p>五、风险告知</p>
+<p>律师不对案件结果作任何承诺；</p>
+<p>家属不得串供、毁灭或伪造证据；</p>
+<p>不得要求证人改变真实陈述；</p>
+<p>与被害人协商赔偿应自愿、合法并保留凭证；</p>
+<p>网络传播可能影响当事人隐私和案件处理，未经评估不宜公开案情。</p>
+<p>六、拟开展工作</p>
+<p>办理委托手续并申请会见；</p>
+<p>调取、保存完整监控及原始视频；</p>
+<p>核实伤情鉴定及损伤机制；</p>
+<p>提交取保候审申请及审查逮捕阶段法律意见；</p>
+<p>建立证据目录和案件时间轴。</p>
+<p class="kv"><b>来访人确认</b>　以上记录与本人陈述基本一致。</p>
+<p class="kv"><b>来访人签名</b>　__________    接待律师签名：__________</p>
+</div>
+<h2>文书二：首次会见提纲</h2>
+<div class="docbox">
+<p>一、身份与程序核实</p>
+<p>核实姓名、出生日期、身份证号、住址、工作单位及联系方式；</p>
+<p>核实何时、何地、以何种方式到案；</p>
+<p>是否收到拘留通知、权利义务告知及涉嫌罪名告知；</p>
+<p>是否接受过身体检查，是否有伤病、用药或不适；</p>
+<p>讯问次数、起止时间、休息和饮食情况；</p>
+<p>笔录是否逐页核对，有无修改、补充及签名捺印。</p>
+<p>二、案件事实</p>
+<p>座椅碰撞、啤酒洒落及争执的完整经过；</p>
+<p>周凯第一次、第二次推搡的动作和力度；</p>
+<p>抓衣领及挥拳的具体动作；</p>
+<p>陈浩第一拳、第二拳、第三拳的先后顺序、击打位置和目的；</p>
+<p>劝架者介入后周凯是否停止、挣脱或继续前冲；</p>
+<p>陈浩是否能够退离，身后及侧面环境如何；</p>
+<p>周凯倒地后陈浩是否追打、踢踹或辱骂；</p>
+<p>双方是否使用酒瓶、凳子等工具；</p>
+<p>陈浩是否饮酒，意识是否清楚；</p>
+<p>陈浩是否认识周凯，有无预谋或报复动机。</p>
+<p>三、证据线索</p>
+<p>烧烤店及相邻商铺监控位置；</p>
+<p>现场目击人员姓名、座位和观察角度；</p>
+<p>手机拍摄者及原始文件保存情况；</p>
+<p>陈浩伤情照片、衣物、掉落纽扣及就医记录；</p>
+<p>周凯饮酒数量、行为状态及同行人员；</p>
+<p>110、120记录和执法记录仪；</p>
+<p>现场台阶尺寸、照明及桌椅布局。</p>
+<p>四、辩护纪律与权利告知</p>
+<p>告知犯罪嫌疑人有权如实陈述、提出辩解、核对笔录、拒绝签署与本人陈述不符的内容并要求补充修改；不得伪造证据、串供或者要求他人作虚假陈述。律师不得传递监管场所禁止物品，不得帮助隐匿、毁灭证据。</p>
+<p>五、会见结论记录</p>
+<p class="kv"><b>初步结论</b>　__________________________________________________</p>
+<p class="kv"><b>下一步核查事项</b>　____________________________________________</p>
+<p>犯罪嫌疑人签名确认（如条件允许）：__________  律师：__________</p>
+</div>
+<h2>文书三：案发过程时间轴</h2>
+<div class="docbox">
+<p>时间</p>
+<p>事件</p>
+<p>证据来源</p>
+<p>辩护意义</p>
+<p>23:14前后</p>
+<p>周凯椅背首次碰撞陈浩；陈浩未起身</p>
+<p>烧烤店监控</p>
+<p>体现陈浩初始克制</p>
+<p>约23:15</p>
+<p>椅背再次碰撞；陈浩向墙边移动座位</p>
+<p>烧烤店监控</p>
+<p>排除主动寻衅</p>
+<p>约23:16</p>
+<p>啤酒洒落，双方争执</p>
+<p>监控、证言</p>
+<p>冲突起因</p>
+<p>23:16:30</p>
+<p>周凯连续推搡陈浩</p>
+<p>监控</p>
+<p>不法侵害开始</p>
+<p>23:16:35</p>
+<p>周凯抓衣领并挥拳</p>
+<p>监控、陈浩陈述</p>
+<p>前两拳的防卫基础</p>
+<p>23:16:36-37</p>
+<p>陈浩第一拳、第二拳</p>
+<p>监控</p>
+<p>应分段评价</p>
+<p>23:16:38</p>
+<p>老板、赵磊介入</p>
+<p>监控、证言</p>
+<p>侵害是否暂时中断</p>
+<p>23:16:39</p>
+<p>周凯挣脱并向前发力</p>
+<p>便利店监控、老板证言</p>
+<p>侵害仍有继续可能</p>
+<p>23:16:40</p>
+<p>陈浩侧移后第三拳</p>
+<p>两处监控</p>
+<p>是否超过必要限度</p>
+<p>23:16:41</p>
+<p>周凯后退，后脑撞台阶</p>
+<p>监控、勘验、鉴定</p>
+<p>因果关系</p>
+<p>23:16:42后</p>
+<p>陈浩立即停止，未离场</p>
+<p>监控、到案经过</p>
+<p>防卫目的及量刑</p>
+<p>23:19</p>
+<p>现场拨打120、110</p>
+<p>通话记录</p>
+<p>案后救助</p>
+</div>
+<h2>文书四：监控录像逐帧审查表</h2>
+<div class="docbox">
+<p class="kv"><b>审查对象</b>　烧烤店监控A、便利店监控B。审查时应复制原始文件并记录文件名、哈希值、提取人、提取时间、设备时间误差及播放软件。</p>
+<p>画面节点</p>
+<p>A机位</p>
+<p>B机位</p>
+<p>可证明事实</p>
+<p>审查意见</p>
+<p>争执前</p>
+<p>陈浩坐姿、移动座位清楚</p>
+<p>远景</p>
+<p>无主动接近</p>
+<p>完整性重要</p>
+<p>首次推搡</p>
+<p>清楚</p>
+<p>部分可见</p>
+<p>周凯先动手</p>
+<p>与证言核对</p>
+<p>抓衣挥拳</p>
+<p>较清楚</p>
+<p>远景</p>
+<p>侵害持续</p>
+<p>前两拳防卫性</p>
+<p>他人介入</p>
+<p>局部遮挡</p>
+<p>可见整体</p>
+<p>短暂分开</p>
+<p>不能截断评价</p>
+<p>第三拳前1.5秒</p>
+<p>被顾客遮挡</p>
+<p>周凯带动老板前移</p>
+<p>仍有前冲动作</p>
+<p>核心帧</p>
+<p>第三拳</p>
+<p>清楚</p>
+<p>远景</p>
+<p>陈浩侧移后出拳</p>
+<p>力度与目的分开评价</p>
+<p>倒地后</p>
+<p>清楚</p>
+<p>可见</p>
+<p>无追打、留在现场</p>
+<p>排除报复延续</p>
+<p>审查结论</p>
+<p>两段监控相互补充。烧烤店监控能够证明冲突起因及主要动作，但第三拳前存在短暂遮挡；便利店监控虽远，却能够显示周凯挣脱、前移和陈浩侧移。任何单独截取第三拳及倒地画面的做法，均可能造成事实语境缺失。</p>
+</div>
+<h2>文书五：不予批准逮捕法律意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市海珠区人民检察院</p>
+<p>广东正衡律师事务所接受陈浩家属委托，指派林知微律师担任陈浩涉嫌故意伤害案侦查阶段辩护人。现就审查批准逮捕事项提出如下意见：</p>
+<p>一、本案不能笼统认定为相互斗殴</p>
+<p>现有监控显示，陈浩在争执前曾主动移动座位，未携带或寻找工具，未纠集他人。周凯首先连续推搡，继而抓扯陈浩衣领并挥拳。陈浩前两次反击发生于侵害正在进行期间，具有明显制止侵害属性。</p>
+<p>二、第三拳前不法侵害并未确定结束</p>
+<p>劝架人员的介入时间极短。便利店监控显示，周凯挣脱时肩部向前发力并带动劝架者移动；陈浩先向侧后方移动后出拳。客观事实不足以证明周凯已经放弃侵害或完全丧失侵害能力。</p>
+<p>三、即使认为第三拳超过限度，也应优先按防卫过当方向审查</p>
+<p>是否防卫过当，应同时审查行为是否明显超过必要限度以及是否造成重大损害。不能仅依据重伤结果，反向否定行为的防卫性质。陈浩未持械、未追击，周凯倒地后即停止。</p>
+<p>四、陈浩不具有继续羁押所针对的现实社会危险性</p>
+<p>身份、住址及工作稳定；</p>
+<p>案发后留在现场并配合调查，无逃跑行为；</p>
+<p>主要现场证据已固定；</p>
+<p>无前科，系偶发冲突；</p>
+<p>家属能够提供保证并协助遵守取保候审规定；</p>
+<p>愿意先行救助被害人，但不干扰证人或被害人。</p>
+<p>五、请求事项</p>
+<p>请求贵院全面审查有罪、无罪、罪重、罪轻证据，对陈浩作出不批准逮捕决定，并建议公安机关依法变更为取保候审。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书六：取保候审申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　林知微，广东正衡律师事务所律师，陈浩之辩护人。</p>
+<p class="kv"><b>申请事项</b>　请求对犯罪嫌疑人陈浩变更强制措施为取保候审。</p>
+<p>事实与理由</p>
+<p>陈浩因涉嫌故意伤害罪被刑事拘留。根据现有监控及证人材料，本案系周凯先实施推搡、抓扯及挥拳所引发，陈浩行为具有防卫背景，案件事实和法律性质存在实质争议。陈浩案发后未逃离，主动配合调查，主要证据已由侦查机关固定。</p>
+<p>陈浩有固定住所、稳定工作和家庭，既往无违法犯罪记录。其不存在毁灭证据、干扰证人、再次实施犯罪或者逃跑的现实风险。家属愿意依法提供保证人或按决定交纳保证金，并督促其遵守未经批准不得离开居住地、及时到案、不得干扰证人等义务。</p>
+<p>现有规定明确，对采取取保候审足以防止发生社会危险性的犯罪嫌疑人，应当依法适用取保候审。申请人据此请求依法变更强制措施。</p>
+<p>附件</p>
+<p>陈浩户籍及固定住所材料；</p>
+<p>劳动合同、在职证明；</p>
+<p>无前科情况说明；</p>
+<p>家庭成员及抚养情况材料；</p>
+<p>保证人身份证明及保证意向书；</p>
+<p>案发后留在现场、配合调查的证据线索。</p>
+<p>此致广州市公安局海珠区分局</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书七：伤情鉴定意见审查表</h2>
+<div class="docbox">
+<p>审查事项</p>
+<p>核查内容</p>
+<p>本案意见</p>
+<p>主体资质</p>
+<p>机构、鉴定人资质及业务范围</p>
+<p>需核验附件及签名</p>
+<p>检材来源</p>
+<p>病历、影像、照片是否完整并可追溯</p>
+<p>核对提取、移送清单</p>
+<p>鉴定程序</p>
+<p>委托、受理、检查、出具时间是否规范</p>
+<p>核对程序文书</p>
+<p>伤情结论</p>
+<p>重伤二级所依据具体损伤</p>
+<p>要求列明颅骨骨折、血肿及手术情况</p>
+<p>形成机制</p>
+<p>拳击直接损伤还是倒地撞击形成</p>
+<p>现有意见指向倒地撞击</p>
+<p>因果关系</p>
+<p>第三拳、后退、跌倒、台阶之间关系</p>
+<p>事实因果存在，法律责任仍需综合判断</p>
+<p>酒精影响</p>
+<p>醉酒对平衡和反应影响</p>
+<p>仅作辅助，不机械切断因果</p>
+<p>意见边界</p>
+<p>是否越权评价防卫或犯罪成立</p>
+<p>法律性质不属鉴定范围</p>
+<p>出庭必要</p>
+<p>意见存在争议是否需鉴定人说明</p>
+<p>建议就机制和可能性说明</p>
+<p>申请事项建议</p>
+<p class="kv"><b>申请补充说明</b>　重伤结果由何种外力直接形成；拳击与倒地撞击分别承担何种医学作用；酒精状态对平衡能力是否可能产生影响；仅凭法医学材料能否确定第三拳的行为性质。</p>
+</div>
+<h2>文书八：审查起诉阶段法律意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市海珠区人民检察院</p>
+<p>辩护人经会见、阅卷及核对监控，提出如下分层意见：</p>
+<p>一、首要意见：陈浩行为符合正当防卫基本结构</p>
+<p>周凯首先连续推搡并抓扯挥拳；陈浩前两拳直接针对正在进行的不法侵害。第三拳前，周凯虽被他人短暂控制，但旋即挣脱并向陈浩方向前移。陈浩先侧移后出拳，未追赶、未持械、未在倒地后继续攻击。</p>
+<p>二、备位意见：如认为第三拳超过必要限度，应认定防卫过当</p>
+<p>第三拳与前两拳处于同一连续冲突，并非另起犯意的报复行为。即使法院认为现场已有他人介入、陈浩可以采取较缓和手段，也只能说明对限度判断失当，不能抹去防卫起因、时间和目的。</p>
+<p>三、不得将重伤结果直接等同于普通伤害故意</p>
+<p>鉴定显示重伤主要由后脑撞击台阶形成。陈浩对拳击行为具有认识，但对特殊跌倒方式及严重颅脑损伤的预见程度，应结合现场拥挤、侵害紧迫性及行为持续时间评价。</p>
+<p>四、量刑及处置因素</p>
+<p>被害人对冲突发生、升级存在明显过错；</p>
+<p>陈浩系初犯、偶犯；</p>
+<p>案发后留在现场并稳定供述主要事实；</p>
+<p>未使用工具，未追打；</p>
+<p>家属已先行垫付医疗费用；</p>
+<p>有固定职业、住所及家庭支持。</p>
+<p>五、具体请求</p>
+<p>依法作出不起诉决定；或</p>
+<p>以防卫过当评价并提出显著减轻的量刑建议；</p>
+<p>完整移送两处监控及有利于陈浩的证人证言；</p>
+<p>对周凯三次陈述差异、监控遮挡及损伤机制进行补充核实。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书九：庭前会议申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　林知微，陈浩涉嫌故意伤害案辩护人。</p>
+<p class="kv"><b>申请事项</b>　请求人民法院召开庭前会议，集中处理证据展示、证人出庭、鉴定意见审查及完整播放监控等事项。</p>
+<p>理由</p>
+<p>本案定性高度依赖第三拳前后的连续画面、两处监控的相互补充及证人对短暂劝架过程的观察。若仅播放局部视频，可能割裂不法侵害是否持续这一核心事实。部分证人陈述与客观监控存在冲突，伤情鉴定对损伤形成机制亦需说明。</p>
+<p>请求庭前会议处理事项</p>
+<p>确认公诉机关已移送全部原始监控及提取、复制材料；</p>
+<p>核对两套监控设备时间误差；</p>
+<p>确定庭审按完整时间顺序播放视频；</p>
+<p>通知烧烤店老板梁启明出庭；</p>
+<p>通知与被害人同行且证言与监控不一致的证人出庭；</p>
+<p>通知鉴定人出庭或提供充分书面说明；</p>
+<p>明确被害人三次陈述均纳入法庭调查；</p>
+<p>确定辩方提交逐帧对比材料的展示方式。</p>
+<p>此致广州市海珠区人民法院</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十：调取原始监控录像申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　林知微，陈浩之辩护人。</p>
+<p class="kv"><b>申请事项</b>　请求调取并随案审查烧烤店监控设备及相邻便利店监控设备中案发前后完整原始录像、提取笔录、复制清单、校时记录及文件完整性校验信息。</p>
+<p>理由</p>
+<p>案卷现有视频系复制文件。第三拳前约一秒半，烧烤店机位被顾客遮挡，而便利店机位可观察双方整体移动。原始资料对于审查视频是否完整、是否剪辑、设备时间是否准确及两机位如何同步具有直接意义。</p>
+<p>建议调取范围</p>
+<p>案发前至少十分钟至案发后至少十分钟的连续录像；</p>
+<p>录像设备品牌、型号、系统时间及校时方式；</p>
+<p>原始存储介质或依法制作的完整镜像；</p>
+<p>提取人员、提取时间、地点及见证情况；</p>
+<p>转码、剪辑、压缩情况说明；</p>
+<p>文件哈希值或其他完整性校验信息。</p>
+<p>此致广州市海珠区人民法院</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十一：证人出庭申请书</h2>
+<div class="docbox">
+<p class="kv"><b>申请人</b>　林知微，陈浩之辩护人。</p>
+<p class="kv"><b>申请事项</b>　请求通知梁启明及证人张某出庭作证。</p>
+<p>梁启明出庭必要性</p>
+<p>梁启明系烧烤店老板，直接参与劝架，能够说明周凯被短暂抱住后是否继续挣扎、是否向陈浩前移、陈浩是否侧移及周凯倒地后陈浩是否追打。其证言关系不法侵害是否结束。</p>
+<p>张某出庭必要性</p>
+<p>张某与被害人同行。其书面证言称陈浩“追过去补了一拳”，但监控显示陈浩并未向前追赶。该矛盾直接影响证言准确性及证明力，有必要接受控辩双方当庭询问。</p>
+<p>请求</p>
+<p>请依法通知上述证人出庭，并采取必要措施保障其如实、独立作证。</p>
+<p>此致广州市海珠区人民法院</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十二：被告人发问提纲</h2>
+<div class="docbox">
+<p>你与周凯此前是否认识，有无矛盾？</p>
+<p>第一次、第二次座椅碰撞时你如何反应？</p>
+<p>啤酒洒落后，你是否主动靠近周凯？</p>
+<p>周凯两次推搡、抓衣领、挥拳时，你所处位置如何？</p>
+<p>第一拳和第二拳分别为了什么？</p>
+<p>劝架者介入后，你看到周凯做了什么？</p>
+<p>第三拳前你为什么向侧后方移动？</p>
+<p>当时身后、侧面是否有桌椅、烤炉或人员？</p>
+<p>你是否有时间判断周凯下一步动作？</p>
+<p>第三拳击中何处？是否使用工具？</p>
+<p>周凯倒地后你为什么停止？</p>
+<p>你是否离开现场、联系他人统一口径？</p>
+<p>你对周凯受伤及赔偿持何态度？</p>
+<p>发问控制</p>
+<p>避免诱导被告人背诵法律结论。围绕其当时感知、动作和选择发问，不要求其直接回答“是否正当防卫”。对不确定的细节允许其明确表示记不清。</p>
+</div>
+<h2>文书十三：证人发问提纲</h2>
+<div class="docbox">
+<p>A. 对烧烤店老板梁启明</p>
+<p>你从何时开始观察冲突，站在何处？</p>
+<p>谁先实施身体接触？</p>
+<p>周凯被拉住后是否停止用力？</p>
+<p>你为何被带动向前移动？</p>
+<p>陈浩第三拳前是靠近还是侧移？</p>
+<p>倒地后是否还有攻击？</p>
+<p>现场通道、桌椅、烤炉如何分布？</p>
+<p>B. 对证人张某</p>
+<p>你与周凯的关系及当晚饮酒情况？</p>
+<p>你最初站在什么位置，视线是否被遮挡？</p>
+<p>“追过去补一拳”是你直接看到还是根据倒地结果判断？</p>
+<p>观看完整监控后，是否仍确认陈浩向前追赶？</p>
+<p>作证前是否与周凯或其他同行人员讨论经过？</p>
+<p>你的不同陈述如何解释？</p>
+<p>发问原则</p>
+<p>一次只问一个事实；优先使用客观证据固定矛盾；不攻击证人人格；将“记忆错误”和“故意虚假陈述”区分评价。</p>
+</div>
+<h2>文书十四：鉴定意见质证提纲</h2>
+<div class="docbox">
+<p>鉴定机构及鉴定人是否具备相应资质；</p>
+<p>委托事项是否明确，检材是否完整、来源可追溯；</p>
+<p>医学影像、手术记录与鉴定结论是否对应；</p>
+<p>重伤二级具体依据是什么；</p>
+<p>颅脑损伤是拳击直接形成还是后脑撞击台阶形成；</p>
+<p>鉴定意见使用“可以形成”“符合形成”还是“唯一形成”，措辞证明程度如何；</p>
+<p>醉酒对平衡和保护性反应有无可能影响；</p>
+<p>鉴定能否判断第三拳的主观目的或法律性质；</p>
+<p>是否需要鉴定人出庭说明损伤机制及可能性。</p>
+<p>质证结论范本</p>
+<p>辩方对鉴定意见关于损伤程度的结论暂不提出异议，但对其证明范围作严格限定：该意见可以证明周凯构成重伤二级，并可说明重伤主要由后脑撞击台阶形成；不能据此直接证明陈浩具有普通伤害故意，也不能替代法院对正当防卫、防卫限度及刑法因果关系的综合判断。</p>
+</div>
+<h2>文书十五：一审质证意见</h2>
+<div class="docbox">
+<p class="kv"><b>第一组</b>　两处监控录像</p>
+<p>对来源经核实、提取过程完整且能够与原始资料校验的部分，真实性、关联性原则上无异议。证明目的方面，视频应完整播放并结合两个机位综合判断。烧烤店画面存在短暂遮挡，不能单独证明第三拳前周凯已经停止侵害；便利店画面能够补充证明周凯前移及陈浩侧移。</p>
+<p class="kv"><b>第二组</b>　被害人陈述</p>
+<p>周凯三次陈述关于是否先动手、是否还手存在变化，且“未还手”与监控不符。考虑颅脑损伤可能影响记忆，辩方不主张全部排除，但对与客观证据冲突部分不应采信。</p>
+<p class="kv"><b>第三组</b>　证人证言</p>
+<p>梁启明系直接劝架者，其关于周凯继续挣扎、向前及陈浩未追打的陈述与监控相互印证。张某关于“追过去补拳”的陈述与视频冲突，且其与被害人有同行关系，证明力应谨慎评价。</p>
+<p class="kv"><b>第四组</b>　鉴定意见及病历</p>
+<p>可证明被害人重伤二级及主要损伤机制，但不能证明行为法律性质。拳击与倒地撞击的连续关系不等于当然排除正当防卫。</p>
+<p class="kv"><b>第五组</b>　被告人供述和辩解</p>
+<p>陈浩对三次出拳、倒地经过的陈述总体稳定，并有监控印证。其关于“周凯再次冲来”的辩解并非孤立口供，有便利店监控和梁启明证言支持。</p>
+<p>综合意见</p>
+<p>全案证据能够证明周凯先实施不法侵害，陈浩前两拳具有防卫性质，第三拳前侵害仍有继续现实可能。对第三拳是否明显超过必要限度可以依法评价，但不能将本案认定为无防卫背景的普通互殴。</p>
+</div>
+<h2>文书十六：一审辩护词</h2>
+<div class="docbox">
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>广东正衡律师事务所接受被告人陈浩及其家属委托，指派林知微律师担任一审辩护人。辩护人尊重被害人遭受的严重损害，也不回避陈浩实施第三拳并与倒地结果具有连续联系。但刑事审判不能从重伤结果倒推行为性质，而应把案发前后四分二十七秒完整还原。</p>
+<p>一、本案不是双方积极追求打斗的普通互殴</p>
+<p>陈浩与周凯素不相识，无预谋、无纠集、无工具。座椅两次碰撞时，陈浩均未起身，并主动向墙边移动座位。周凯连续推搡、抓扯衣领并挥拳后，陈浩才开始反击。上述事实表明，陈浩的主观目的不是逞强争胜。</p>
+<p>二、第一拳和第二拳属于制止正在进行的不法侵害</p>
+<p>两拳均发生在陈浩被抓扯并面对挥拳之时，具有防卫起因、时间、对象和目的。对此不应因最终发生重伤而一并否定。</p>
+<p>三、第三拳仍具有防卫性质</p>
+<p>他人介入只持续极短时间。便利店监控显示周凯挣脱并向前发力，陈浩先向侧后方移动后才出拳。周凯没有明确退离或放弃侵害，陈浩也没有追赶。对于侵害是否结束，应立足现场紧迫状态，而不能在事后要求陈浩在不足两秒内选择毫无风险的替代方案。</p>
+<p>四、如认定第三拳超过必要限度，应依法认定防卫过当</p>
+<p>辩方理解，法院可能考虑到周凯未持械、已有人员劝阻、第三拳力度较大并造成重伤。但上述因素解决的是防卫限度问题，不足以否定防卫性质。防卫过当依法应当减轻或者免除处罚。</p>
+<p>五、重伤结果不能替代对主观故意和因果关系的细致分析</p>
+<p>鉴定表明，重伤主要由后脑撞击台阶形成。陈浩应对连续因果结果承担相应责任，但特殊倒地方式、醉酒平衡状态及台阶位置，均说明实际结果明显重于一般徒手一拳通常直接造成的后果。量刑时应区分其行为危险性与最终偶合加重的结果。</p>
+<p>六、依法从宽评价的事实充分</p>
+<p>被害人首先实施并升级不法侵害；</p>
+<p>陈浩无前科，系偶发事件；</p>
+<p>未使用工具，未追打；</p>
+<p>案发后留在现场并配合调查；</p>
+<p>如实陈述主要事实；</p>
+<p>家属积极垫付医疗费用并持续履行赔偿；</p>
+<p>有稳定工作、住所、家庭支持及社区监管条件。</p>
+<p>七、辩护请求</p>
+<p>请求法院依法认定陈浩构成正当防卫，不负刑事责任；如认为第三拳明显超过必要限度，请认定防卫过当并依法大幅减轻处罚；结合其社会危险性、赔偿表现及社区条件，对其适用缓刑。</p>
+<p class="kv"><b>辩护人</b>　林知微广东正衡律师事务所20XX年X月X日</p>
+</div>
+<h2>文书十七：量刑意见书</h2>
+<div class="docbox">
+<p class="kv"><b>致</b>　广州市海珠区人民法院</p>
+<p>一、量刑评价应以防卫过当为基础</p>
+<p>如法院未采纳完全正当防卫意见，本案仍应在防卫过当框架内量刑。防卫过当依法应当减轻或者免除处罚，不能仅作一般酌情从轻。</p>
+<p>二、应重点评价的从宽因素</p>
+<p>被害人先行并持续实施不法侵害；</p>
+<p>被告人没有预谋、工具和追击行为；</p>
+<p>损伤主要因倒地撞击台阶形成；</p>
+<p>主动留在现场并配合处置；</p>
+<p>主要事实供述稳定；</p>
+<p>积极救助、垫付医疗费用并愿意继续赔偿；</p>
+<p>初犯、偶犯，社会危险性较低。</p>
+<p>三、缓刑适用意见</p>
+<p>陈浩具有固定住所和工作，家庭关系稳定，社区能够承接监管；案发系偶发冲突，主要证据已经固定，不存在现实再犯、逃跑或干扰诉讼风险。若法院判处拘役或者三年以下有期徒刑，可结合犯罪情节、悔罪表现、再犯危险及对社区影响依法审查缓刑。</p>
+<p>四、建议结论</p>
+<p>建议在依法大幅减轻处罚后，对陈浩判处较短期自由刑并宣告缓刑；缓刑考验期内由其接受社区矫正、继续履行赔偿义务。</p>
+<p>此致</p>
+<p>相关办案机关</p>
+<p>广东正衡律师事务所林知微 律师20XX年X月X日</p>
+</div>
+<h2>文书十八：缓刑适用调查材料清单</h2>
+<div class="docbox">
+<p>一、身份与居住稳定性</p>
+<p>身份证、户口簿；</p>
+<p>房产证明、租赁合同或居住证明；</p>
+<p>共同居住家庭成员情况；</p>
+<p>社区联系方式及接收意愿材料。</p>
+<p>二、就业与经济情况</p>
+<p>劳动合同、在职证明、工资流水；</p>
+<p>单位对日常表现的客观说明；</p>
+<p>可继续就业岗位及管理安排；</p>
+<p>赔偿能力和履行计划。</p>
+<p>三、家庭责任</p>
+<p>婚姻关系证明；</p>
+<p>未成年子女出生证明及抚养情况；</p>
+<p>需赡养老人或照护家庭成员材料；</p>
+<p>家庭成员监督帮教承诺。</p>
+<p>四、守法与社会评价</p>
+<p>无违法犯罪记录证明或核查线索；</p>
+<p>社区、居委会对居住和日常情况的客观说明；</p>
+<p>不得提交虚假“万人联名”或干扰司法的材料。</p>
+<p>五、悔罪与修复</p>
+<p>赔偿协议、付款凭证；</p>
+<p>医疗费垫付记录；</p>
+<p>合法形成的道歉或沟通材料；</p>
+<p>继续履行赔偿的具体计划。</p>
+<p>六、风险控制方案</p>
+<p>遵守报告、会客、迁居等监管要求；</p>
+<p>避免饮酒后参与冲突；</p>
+<p>接受法治教育、情绪管理或冲突干预；</p>
+<p>工作单位及家庭联系人协助监督；</p>
+<p>不得骚扰、接触或报复被害人及证人。</p>
+<p>七、材料使用说明</p>
+<p>上述材料用于证明监管条件、再犯风险及社区影响，不用于向法院施压。所有证明应客观、真实、可核验；不得要求单位、社区或个人出具与事实不符的评价。</p>
+<p>主要法律依据与核验来源</p>
+<p>《中华人民共和国刑法》关于正当防卫、防卫过当和故意伤害的规定；</p>
+<p>《中华人民共和国刑事诉讼法》关于辩护、证据、强制措施、审查逮捕、审查起诉和一审程序的规定；</p>
+<p>最高人民法院、最高人民检察院、公安部《关于依法适用正当防卫制度的指导意见》；</p>
+<p>《公安机关办理刑事案件程序规定》；</p>
+<p>《人民检察院刑事诉讼规则》；</p>
+<p>最高人民法院关于适用《中华人民共和国刑事诉讼法》的解释；</p>
+<p>最高人民法院、最高人民检察院、公安部、国家安全部《关于取保候审若干问题的规定》。</p>
+<p class="kv"><b>校核提示</b>　本合集是作品集中的虚构示范文本，不替代真实案件的阅卷、会见、调查核实和个案化论证。正式提交时应补充准确案号、机关名称、律师执业信息、证据页码及当时有效的法条编号。</p>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

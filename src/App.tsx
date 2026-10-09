@@ -37,6 +37,7 @@ import { FilmLawS4Tab } from './components/FilmLawS4Tab';
 import { LaborLegalTab } from './components/LaborLegalTab';
 import { InsuranceTab } from './components/InsuranceTab';
 import { CriminalDefenseTab } from './components/CriminalDefenseTab';
+import { CriminalRecordTab } from './components/CriminalRecordTab';
 import { EconCrimeTab } from './components/EconCrimeTab';
 import { AiLawTab } from './components/AiLawTab';
 import { FinancingLegalTab } from './components/FinancingLegalTab';
@@ -190,7 +191,7 @@ export default function App() {
 
   // 跨境物流法务、知识产权、影视法律、双视角劳动实务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
 
-  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'arbitration' || activeTab === 'family-law' || activeTab === 'criminal' || activeTab === 'english' || activeTab === 'commercial-ops' || activeTab === 'retail-ad' || activeTab === 'econ-crime' || activeTab === 'lanxiang' || activeTab === 'humanities';
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'arbitration' || activeTab === 'family-law' || activeTab === 'criminal' || activeTab === 'criminal-record' || activeTab === 'english' || activeTab === 'commercial-ops' || activeTab === 'retail-ad' || activeTab === 'econ-crime' || activeTab === 'lanxiang' || activeTab === 'humanities';
 
 
 
@@ -371,6 +372,7 @@ export default function App() {
 
             {activeTab === 'insurance' && <InsuranceTab darkMode={darkMode} />}
             {activeTab === 'criminal' && <CriminalDefenseTab darkMode={darkMode} />}
+            {activeTab === 'criminal-record' && <CriminalRecordTab darkMode={darkMode} />}
             {activeTab === 'econ-crime' && <EconCrimeTab darkMode={darkMode} />}
             {activeTab === 'ai-law' && <AiLawTab darkMode={darkMode} />}
             {activeTab === 'financing' && <FinancingLegalTab darkMode={darkMode} />}
