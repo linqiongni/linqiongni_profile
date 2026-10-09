@@ -100,7 +100,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'practice',
     label: '律师实务',
     enLabel: 'Lawyer Practice',
-    subTabs: ['family-law', 'criminal', 'criminal-record', 'econ-crime', 'arbitration', 'insurance', 'labor'],
+    subTabs: ['family-law', 'criminal-hub', 'econ-crime', 'arbitration', 'insurance', 'labor'],
   },
 
   {
@@ -200,6 +200,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   insurance: { label: '保险·法律维权', enLabel: 'Insurance' },
   criminal: { label: '刑事辩护全流程实务手册', enLabel: 'Full-Cycle Criminal Defense' },
   'criminal-record': { label: '刑事辩护实录（三十宗）', enLabel: 'Criminal Defense Cases' },
+  'criminal-hub': { label: '刑事辩护', enLabel: 'Criminal Defense' },
   'econ-crime': { label: '经济犯罪辩护', enLabel: 'Economic Crime Defense' },
   'ai-law': { label: 'AI+法律', enLabel: 'AI + Law' },
   financing: { label: '融资法务', enLabel: 'Financing' },
@@ -213,11 +214,18 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 
 
 
-/** 给定子板块，返回它所属的分组 id */
+/** 给定子板块，返回它所属的分组 id。
+ * 注：criminal / criminal-record 已从 practice.subTabs 移除（统一收进 criminal-hub 入口页），
+ * 但作为可直接进入的子站，仍需正确归属 practice 分组（导航高亮 / groupOfTab 分组判断）。 */
+
+export const GROUP_OVERRIDES: Record<string, string> = {
+  criminal: 'practice',
+  'criminal-record': 'practice',
+};
 
 export const groupOfTab = (tab: TabType): string =>
 
-  NAV_GROUPS.find((g) => g.subTabs.includes(tab))?.id ?? NAV_GROUPS[0].id;
+  NAV_GROUPS.find((g) => g.subTabs.includes(tab))?.id ?? GROUP_OVERRIDES[tab] ?? NAV_GROUPS[0].id;
 
 
 

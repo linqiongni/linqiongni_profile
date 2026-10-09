@@ -38,6 +38,7 @@ import { LaborLegalTab } from './components/LaborLegalTab';
 import { InsuranceTab } from './components/InsuranceTab';
 import { CriminalDefenseTab } from './components/CriminalDefenseTab';
 import { CriminalRecordTab } from './components/CriminalRecordTab';
+import { CriminalHubTab } from './components/CriminalHubTab';
 import { EconCrimeTab } from './components/EconCrimeTab';
 import { AiLawTab } from './components/AiLawTab';
 import { FinancingLegalTab } from './components/FinancingLegalTab';
@@ -373,6 +374,7 @@ export default function App() {
             {activeTab === 'insurance' && <InsuranceTab darkMode={darkMode} />}
             {activeTab === 'criminal' && <CriminalDefenseTab darkMode={darkMode} />}
             {activeTab === 'criminal-record' && <CriminalRecordTab darkMode={darkMode} />}
+            {activeTab === 'criminal-hub' && <CriminalHubTab darkMode={darkMode} onSelectTab={handleSelectTab} />}
             {activeTab === 'econ-crime' && <EconCrimeTab darkMode={darkMode} />}
             {activeTab === 'ai-law' && <AiLawTab darkMode={darkMode} />}
             {activeTab === 'financing' && <FinancingLegalTab darkMode={darkMode} />}
