@@ -98,7 +98,7 @@ npm run check:english
 | 1 | **中文源 + sync 副本**（8） | `financing-legal` `commercial-ops` `retail-ad` `arbitration` `family-law` `econ-crime` `logistics` `english` | 仓库根**中文目录**（融资法务/ 商事仲裁/ 经济犯罪辩护/ 婚姻家事与遗产继承/ 新零售与广告合规/ 商业运营法务/ 跨境物流法务/ 身边的英语） | 改中文目录 → `npm run sync:<slug>` → commit。**不要单独改 `public/` 副本，会被 rsync 覆盖** |
 | 2 | **public 即源**（9） | `ip` `insurance` `foreign-contracts` `ai-law` `film-law` `film-law-s2/3/4` `criminal` | `public/<slug>/` 本身就是源站，无中文目录 | 直接编辑 `public/<slug>/`。**改这里就是改源，不要建中文目录** |
 | 3 | **外部源产物**（1） | `labor` | `~/Downloads/知识产权/劳动用工实务/`（JSON + `_build/gen.js`） | 那边改 → `node gen.js` → 覆盖 `public/labor/`。别直接在 public 里改，下次生成就没了 |
-| 4 | **脚本生成**（1） | `lessons` | `scripts/fetch_space_lessons.py`（从 WorkBuddy 空间抓取） | 跑脚本重抓。单个 html 别手改，下次重抓会覆盖 |
+| 4 | **脚本生成**（2） | `lessons` `criminal-record` | `scripts/fetch_space_lessons.py`（从 WorkBuddy 空间抓取）；`scripts/build_criminal_cases.py`（读根目录 Word 源 → `public/criminal-record/`，详见第九节） | 跑脚本重生成。单个 html 别手改，下次重生成会覆盖 |
 
 **副本上打过补丁＝定时炸弹。** 已知一处：`public/english/print.html` 比 `身边的英语/print.html`
 多三段主题注入（`DARK_UNIFY` / `SUB_THEME_KIT` / `AQUATIC_BG_KIT`），三方体积 180K/192K/172K 各不相同。
@@ -108,3 +108,38 @@ npm run check:english
 **本地 `dist/` 会落后于 `public/`，属正常。** 线上是 CI 从 `public/` 现构建的，
 判断上线与否只看 `curl -o /dev/null -w "%{http_code}" https://linqiongni.top/<slug>/index.html`，
 不要拿本地 dist 缺目录当事故（2026-09-27 曾缺 `econ-crime` 与 `retail-ad`，线上均 200）。
+
+## 九、刑事辩护实录（criminal-record）子站 rebuild 流程
+
+**这个子站和 `lessons` 一样是「脚本生成」类型，但源不在 git 里——换设备最容易踩的坑就是源丢了。**
+
+### 源（唯一真源，不进 git）
+
+- 仓库根目录：`《刑事辩护实录：三十宗虚拟案件的完整诉讼》/`
+- 含：`《刑事辩护实录…》.docx`（全书导览 / 六卷结构 / 写作框架 / 结果谱系 / roadmap）+ `第一章.docx`…`第九章.docx`（已写的 9 篇案例小说）+ `第一章配套法律文书全集_虚构示例.docx` / `第二章配套法律文书全集_虚构示例 1.docx`
+- **换设备后这个文件夹不会跟着 git 来。** 必须手动把它拷到新机同路径，生成器才有源可吃；否则重跑只生成空壳（index + 2 篇文书，章节全漏）。
+- 没入库是有意的：站点 HTML 已入库可独立部署，但 Word 源是生成器「唯一真源」，换机器重跑会缺它。是否把源也入库由 Andy 拍板（见 OPEN 台账）。
+
+### 生成器 `scripts/build_criminal_cases.py`
+
+- 读上面 Word 源 → 生成 `public/criminal-record/`：`index.html`（全书导览）+ `ch01.html`…`ch30.html`（ch10–30 未写，目录里标「待续」、不进导航）+ `docs-ch01.html` / `docs-ch02.html`（配套文书）+ `assets/`（复制 `public/criminal/assets/crim-style.css` 并追加帮助类）。
+- 关键映射 `CHAP_DOCX`：把章节 id（`ch01`…`ch30`）映射到 Word 文件名（`第一章`…`第三十章`）。**改了章节命名逻辑必须同步这个映射，否则会漏生成。**
+- 要素行自适应：Word 源前 6 段里含 ≥2 个要素键（案件性质 / 案发地点 / 涉嫌罪名 / 核心争议 / 案件结果 / 特别说明）的段落即命中，不再写死第 2 段。ch06–09 因多了「卷名 + 章题」两行曾整段解析失败，已修。
+- 生成后必须重注主题补丁：`python scripts/apply-theme-kit.py --fix public/criminal-record`（注入鱼影背景 + 深浅色同步；跳过则子站无鱼影、暗色不同步）。
+
+### 导航入口（criminal-hub）
+
+- `律师实务` 分组下只有一个「刑事辩护」tab（`criminal-hub`），点进去是落地页，两张卡片分别进：
+  - **刑事辩护全流程实务手册** → `criminal`（public 即源，见第八节 #2）
+  - **刑事辩护实录（三十宗）** → `criminal-record`（脚本生成，本节）
+- 两个子站仍全屏铺满（`isFullBleed` 含 `criminal` / `criminal-record`）。
+- 落地页组件 `src/components/CriminalHubTab.tsx`；`navConfig.ts` 用 `GROUP_OVERRIDES` 让两个子站仍归属 practice 分组（高亮 / 分组判断不丢）。
+
+### 上线
+
+- commit `public/criminal-record/` + `scripts/build_criminal_cases.py` + 相关 src 改动 → push main（CI 构建）。
+- 验证见第三节（等 GH Pages 缓存刷新）。
+
+### 续写第 10–30 章
+
+- 把 `第X章.docx` 放进源文件夹 → 重跑生成器 + `apply-theme-kit --fix` → 目录里的「待续」自动变成可点链接。

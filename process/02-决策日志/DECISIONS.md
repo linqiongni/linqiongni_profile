@@ -352,3 +352,23 @@
 **接手须知（试金石）**：下次接「英语音频」的活儿，**先加载 `english-audio-station`**；
 发现里面缺的是播放器骨架或环境坑 → 去 `static-site-audio-player`；
 发现里面缺的是通用做法（别的站也要用）→ 反过来补到通用技能，别往仓库技能里塞通用内容。
+
+---
+
+## #17 2026-10-09 · 刑事辩护合并为单一入口 tab（手册 / 实录二选一）
+
+**背景**：律师实务下原本并排两个刑事 tab——「刑事辩护全流程实务手册」（`criminal`）和「刑事辩护实录（三十宗）」（`criminal-record`）。Andy 不想在栏目里看到两个刑事辩护，要求合并成一个入口，点进去再二选一。
+
+**选项**
+- A. 两个子站各占一个 subTab，平铺在律务实务下 —— 否决：Andy 明确反对「栏目里出现两个刑事辩护」
+- B. 合并为一个「刑事辩护」tab，落地页两张卡片分别进手册 / 实录 —— **选中**
+
+**选中**：`criminal-hub` 单一 tab，落地页 `CriminalHubTab.tsx` 两张卡片分别进 `criminal` 与 `criminal-record`。两个子站仍全屏铺满；`navConfig.ts` 用 `GROUP_OVERRIDES` 让两个子站仍归属 practice 分组（导航高亮 / 分组判断不丢）。
+
+**代价**
+- 多一层入口点击（导航 → 落地页 → 子站），比平铺多一次点击
+- `criminal` 与 `criminal-record` 不再是平级 subTab，任何依赖「subTabs 全枚举」的逻辑都要过 `GROUP_OVERRIDES` 兜底
+
+**保留意见**
+- 这是 Andy「先这样」的暂定口径，没说死。哪天想恢复平铺，把 `criminal` / `criminal-record` 放回 `practice.subTabs`、删掉 `criminal-hub` 与 `GROUP_OVERRIDES` 即可，落地页组件可留可删。
+- 同款「一 tab 内收多个子站」的模式此前已用于 `lanxiang`（兰香如故）与 `film-law`（傲骨贤妻四季 hub），属既有惯例，不是新发明。
