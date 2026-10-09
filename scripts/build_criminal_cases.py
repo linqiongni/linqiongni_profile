@@ -102,6 +102,20 @@ def split_meta(line):
         res.append((parts[i], parts[i + 1]))
     return res
 
+def find_meta(paras, scan=6):
+    """在前 scan 段里找「案件要素」行（含 >=2 个要素键）。
+    ch01-05 的要素行在第 2 段；ch06 起前面多了卷名+章题两行，位置不固定。"""
+    for i, p in enumerate(paras[:scan]):
+        if p.strip() and sum(1 for k in META_KEYS if k + "：" in p) >= 2:
+            return i
+    return None
+
+def vol_of(cid):
+    for v, chs in VOLUMES:
+        if cid in chs:
+            return v
+    return ""
+
 def build_chapter(stem):
     title, _, _ = CHAPTERS[stem]
     paras = docx_paras(src_docx(CHAP_DOCX[stem]))
@@ -111,25 +125,40 @@ def build_chapter(stem):
     while paras and not paras[-1].strip():
         paras.pop()
     out = []
+    vol = vol_of(stem)
+    kicker = "刑事辩护实录 · CASE %s" % stem[2:]
+    if vol:
+        kicker = "刑事辩护实录 · %s · CASE %s" % (vol, stem[2:])
     out.append('<header class="page-head">')
-    out.append('<div class="kicker">刑事辩护实录 · CASE %s</div>' % stem[2:])
+    out.append('<div class="kicker">%s</div>' % esc(kicker))
     out.append('<h1>%s</h1>' % esc(title.split("：", 1)[-1] if "：" in title else title))
     out.append('</header>')
     out.append('<div class="wrap">')
-    # 第二行是合并的 meta
+    # 案件要素行：位置自适应（ch01-05 在第 2 段，ch06 起前面多卷名+章题）
     meta_done = False
-    if paras and len(paras) > 1:
-        m = split_meta(paras[1])
+    start = 0
+    meta_i = find_meta(paras)
+    if meta_i is not None:
+        m = split_meta(paras[meta_i])
         if m:
             out.append('<div class="box law"><span class="lb">案件要素</span>')
             for k, v in m:
                 out.append('<p><b>%s</b>：%s</p>' % (esc(k), esc(v.strip())))
             out.append('</div>')
             meta_done = True
-    start = 2 if meta_done else 1
+            start = meta_i + 1
+    # 正文前残留的卷名 / 章题行不再重复渲染
+    def is_front_matter(s):
+        if re.match(r"^第[一二三四五六七八九十]+卷", s):
+            return True
+        if s == title or (s.startswith("第") and "章：" in s and len(s) < 40):
+            return True
+        return False
     for line in paras[start:]:
         s = line.strip()
         if not s:
+            continue
+        if not meta_done and is_front_matter(s):
             continue
         if RE_H2.match(s):
             out.append("<h2>%s</h2>" % esc(s))
