@@ -269,11 +269,10 @@ def build_chapter(stem):
             out.append("<h3>%s</h3>" % esc(s))
         else:
             out.append("<p>%s</p>" % esc(s))
-    # 源里没有「本章配套文书」段时，统一补一个跳转块，保证每章都能点进对应文书页
+    # 源里没有「本章配套文书」段时，统一补一个跳转块（与 ch01 同款：大字金色可点标题「本章配套文书目录」）
     if not docslink_seen:
         docs_href = "docs-" + stem + ".html"
-        out.append('<h2 class="docslink"><a href="%s">本章可配置的配套法律文书</a></h2>' % esc(docs_href))
-        out.append('<p class="docnote">本章对应的可配置配套法律文书已整理为独立页面，点击上方标题查看《第%s章配套文书全集》。</p>' % esc(_CN_NUM[int(stem[2:])]))
+        out.append('<h2 class="docslink"><a href="%s">本章配套文书目录</a></h2>' % esc(docs_href))
     out.append("</div>")
     return "\n".join(out)
 
