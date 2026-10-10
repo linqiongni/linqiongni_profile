@@ -731,13 +731,13 @@ APPJS_TEMPLATE = r"""(function () {
     } else { h.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
   if (heads.length >= 3) {
-    function docHrefOf(h){ var a=h.querySelector('a[href]'); return a?a.getAttribute('href'):null; }
     tocBox.appendChild(el('div', 'toc-h', '本页目录'));
     heads.forEach(function (h) {
+      // 目录条目一律页内定位（含「本章配套文书目录」——用户要求点目录是定位，不是跳走；
+      // 跳文书页只保留在正文里的大字金色标题上）
       var a = el('a', h.tagName === 'H3' ? 'lv3' : '', h.textContent);
-      var dh = docHrefOf(h);
-      if (dh) { a.href = dh; }
-      else { a.setAttribute('data-sec', h.id); a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
+      a.setAttribute('data-sec', h.id);
+      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
       tocBox.appendChild(a);
     });
     tocBox.classList.add('show');
@@ -748,9 +748,8 @@ APPJS_TEMPLATE = r"""(function () {
     heads.forEach(function (h) {
       var li = el('li');
       var a = el('a', null, h.textContent);
-      var dh = docHrefOf(h);
-      if (dh) { a.href = dh; }
-      else { a.href = '#' + h.id; a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
+      a.href = '#' + h.id;
+      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
       li.appendChild(a); ol.appendChild(li);
     });
     inline.appendChild(ol);
