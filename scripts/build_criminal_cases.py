@@ -12,7 +12,7 @@
 之后由 scripts/apply-theme-kit.py --fix 注入鱼影背景 + 深浅色同步补丁。
 改内容只需改 Word 源 → 重新跑本脚本 → apply-theme-kit --fix。
 """
-import os, re, json, zipfile
+import os, re, json, time, zipfile
 from xml.etree import ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -481,6 +481,9 @@ def build_index(main_paras):
     return "\n".join(out)
 
 # ---------------- 页面外壳 ----------------
+# 资源版本号：每次运行生成器都换新，强制浏览器拉最新 CSS/JS（避免旧 app.js 缓存导致目录跳转失效）
+ASSET_V = time.strftime("%Y%m%d%H%M")
+
 def page(body_html, title, data_ch):
     return """<!DOCTYPE html>
 <html lang="zh-CN" data-theme-default="light">
@@ -488,15 +491,15 @@ def page(body_html, title, data_ch):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%s</title>
-<link rel="stylesheet" href="assets/crim-style.css">
+<link rel="stylesheet" href="assets/crim-style.css?v=%s">
 </head>
 <body data-ch="%s">
 %s
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=%s"></script>
 <script src="/theme-toggle.js"></script>
 </body>
 </html>
-""" % (esc(title), data_ch, body_html)
+""" % (esc(title), ASSET_V, data_ch, body_html, ASSET_V)
 
 # ---------------- STATIONS / app.js ----------------
 PART_ORDER = ["导览"] + [v[0] for v in VOLUMES] + ["配套文书（虚构示例）"]
