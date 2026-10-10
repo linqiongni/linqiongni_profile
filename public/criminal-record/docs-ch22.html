@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch22</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch22">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第五卷  公司与权力</h1>
+</header>
+<div class="wrap">
+<p>第二十二章配套法律文书全文</p>
+<p>无法交付的五百台设备</p>
+<h3>文书目录</h3><ol>
+<li>合同诈骗罪与普通合同违约构成要件对照表</li>
+<li>签约时履行能力及五百台产能审查表</li>
+<li>合同履行与主观故意形成时间轴</li>
+<li>涉案预付款逐笔用途穿透表</li>
+<li>生产、供应链、外协及融资资料调取申请书</li>
+<li>司法会计鉴定及专项审计申请书</li>
+<li>司法会计鉴定意见质证书</li>
+<li>具有现实履行能力法律意见书</li>
+<li>经营资金交叉使用不等于挥霍专项意见</li>
+<li>不具有非法占有目的法律意见书</li>
+<li>证据不足不起诉及刑民边界法律意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：合同诈骗罪与普通合同违约构成要件对照表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>合同诈骗罪</p>
+<p>普通违约/民事欺诈</p>
+<p>目的</p>
+<p>非法占有对方财物</p>
+<p>完成交易或取得履约机会</p>
+<p>能力</p>
+<p>无能力且明知无法形成</p>
+<p>能力不足但可采购、融资、外协</p>
+<p>欺骗</p>
+<p>合同是骗取财物工具</p>
+<p>夸大能力或隐瞒风险</p>
+<p>收款后</p>
+<p>挥霍、转移、逃匿或象征履行</p>
+<p>采购、生产、试制、协商</p>
+<p>资金</p>
+<p>个人占有或不可持续诈骗循环</p>
+<p>主要用于企业经营和履约</p>
+<p>结果</p>
+<p>行为与付款形成诈骗因果</p>
+<p>承担返款、违约和赔偿</p>
+<p>一、签约时事实</p>
+<p>□ 真实厂房、设备和员工。</p>
+<p>□ 主营业务与合同一致。</p>
+<p>□ 历史交付过同类设备。</p>
+<p>□ 产能承诺明显虚假。</p>
+<p>□ 融资和外协完全虚构。</p>
+<p>□ 签约时已停产或准备注销。</p>
+<p>二、收款后事实</p>
+<p>□ 真实采购、设计、样机和半成品。</p>
+<p>□ 请求客户验收并按意见修改。</p>
+<p>□ 资金个人消费、提现或亲属转移。</p>
+<p>□ 仅少量象征履行以骗取后续款。</p>
+<p>□ 持续协商并承认债务。</p>
+<p>□ 关闭联系方式、转移设备或逃匿。</p>
+<p>三、初步结论</p>
+<p>□ 合同诈骗罪证据充分。</p>
+<p>□ 存在民事欺诈但非法占有目的不足。</p>
+<p>□ 属于经营失败和严重违约。</p>
+<p>□ 需区分后期故意形成时间。</p>
+</div>
+<h2>文书二：签约时履行能力及五百台产能审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>签约时现状</p>
+<p>合理可获得能力</p>
+<p>证据</p>
+<p>生产线</p>
+<p>一条运行/一条停机</p>
+<p>维修/租赁</p>
+<p>____</p>
+<p>人员</p>
+<p>____人</p>
+<p>加班/招聘</p>
+<p>____</p>
+<p>历史月产</p>
+<p>____台</p>
+<p>最高____台</p>
+<p>____</p>
+<p>外协</p>
+<p>询价未签约</p>
+<p>可生产____台</p>
+<p>____</p>
+<p>资金</p>
+<p>预付款1200万元</p>
+<p>融资____万元</p>
+<p>____</p>
+<p>供应链</p>
+<p>部分停止赊销</p>
+<p>现款/替代供应商</p>
+<p>____</p>
+<p>同期订单</p>
+<p>____</p>
+<p>释放产能____</p>
+<p>____</p>
+<p>一、单台与总项目测算</p>
+<p class="kv"><b>单台材料成本</b>　__________</p>
+<p class="kv"><b>单台人工及外协</b>　__________</p>
+<p class="kv"><b>单台运输安装</b>　__________</p>
+<p class="kv"><b>五百台总成本</b>　__________</p>
+<p class="kv"><b>预付款覆盖比例</b>　__________</p>
+<p class="kv"><b>首批一百台资金需求</b>　__________</p>
+<p class="kv"><b>第二期款到款条件</b>　__________</p>
+<p class="kv"><b>未落实资金缺口</b>　__________</p>
+<p>二、产能陈述核对</p>
+<p>□ “稳定月产二百台”基于现有已运行条件。</p>
+<p>□ 需以尚未落实的外协、融资和招聘为前提。</p>
+<p>□ 客户被告知第二条线停机。</p>
+<p>□ 供应商停止赊销已经披露。</p>
+<p>□ 历史最佳季度支持承诺。</p>
+<p>□ 近期平均产量明显不支持承诺。</p>
+</div>
+<h2>文书三：合同履行与主观故意形成时间轴</h2>
+<div class="docbox">
+<p>时间</p>
+<p>客观事件</p>
+<p>履行能力变化</p>
+<p>蒋某所知</p>
+<p>证明方向</p>
+<p>____</p>
+<p>验厂/投标</p>
+<p>____</p>
+<p>____</p>
+<p>签约基础</p>
+<p>____</p>
+<p>签订合同</p>
+<p>____</p>
+<p>____</p>
+<p>履约意图</p>
+<p>____</p>
+<p>预付款到账</p>
+<p>资金改善</p>
+<p>____</p>
+<p>资金安排</p>
+<p>____</p>
+<p>工资/旧债支付</p>
+<p>____</p>
+<p>____</p>
+<p>经营/填窟窿</p>
+<p>____</p>
+<p>采购/样机</p>
+<p>____</p>
+<p>____</p>
+<p>实际履行</p>
+<p>____</p>
+<p>融资申请被拒</p>
+<p>能力下降</p>
+<p>____</p>
+<p>故意是否转化</p>
+<p>____</p>
+<p>首批到期未交</p>
+<p>____</p>
+<p>____</p>
+<p>违约</p>
+<p>____</p>
+<p>要求提前付款</p>
+<p>____</p>
+<p>____</p>
+<p>融资/继续骗款</p>
+<p>____</p>
+<p>退款承诺</p>
+<p>____</p>
+<p>____</p>
+<p>补救/拖延</p>
+<p>____</p>
+<p>停业/报案</p>
+<p>____</p>
+<p>____</p>
+<p>事后行为</p>
+<p>重点节点</p>
+<p>签约时是否已有真实外协、融资和供应商方案；</p>
+<p>银行拒贷前后蒋某是否仍相信可以履行；</p>
+<p>虚报完成度发生在何时，是否用于取得新款；</p>
+<p>客户未支付第二期款后是否继续真实生产；</p>
+<p>何时停止采购、排产和员工工资；</p>
+<p>是否存在明确决定不履行并占有剩余款项的时点。</p>
+</div>
+<h2>文书四：涉案预付款逐笔用途穿透表</h2>
+<div class="docbox">
+<p>日期</p>
+<p>收款人</p>
+<p>金额</p>
+<p>类别</p>
+<p>与瀚达项目关联</p>
+<p>凭证</p>
+<p>____</p>
+<p>员工</p>
+<p>____</p>
+<p>工资</p>
+<p>直接/间接/无关</p>
+<p>____</p>
+<p>____</p>
+<p>供应商A</p>
+<p>____</p>
+<p>旧债/新采购</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>外协厂</p>
+<p>____</p>
+<p>定金</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>房东/电力</p>
+<p>____</p>
+<p>经营维持</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>银行/借款人</p>
+<p>____</p>
+<p>旧债</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>个人/关联方</p>
+<p>____</p>
+<p>其他</p>
+<p>____</p>
+<p>____</p>
+<p>分类规则</p>
+<p>项目直接材料、人工、外协、运输和调试；</p>
+<p>为恢复本项目供应链而支付的旧欠款；</p>
+<p>维持企业整体经营的工资、租金和水电；</p>
+<p>与瀚达项目无关的旧订单及债务；</p>
+<p>高管异常薪酬、分红和关联公司转款；</p>
+<p>个人消费、提现、理财、亲属转账和违法活动。</p>
+<p>核算结论</p>
+<p class="kv"><b>预付款总额</b>　__________；项目直接支出：__________；间接经营支出：__________；无关旧债：__________；个人或异常支出：__________；已退还：__________。</p>
+</div>
+<h2>文书五：生产、供应链、外协及融资资料调取申请书</h2>
+<div class="docbox">
+<p>生产经营及履约资料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系蒋某涉嫌合同诈骗罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取签约前后十二个月生产日报、工单、历史产量、用电量、设备运行和维修记录；</p>
+<p>调取员工名册、考勤、工资、社保、离职及参与瀚达项目名单；</p>
+<p>调取供应商合同、停供通知、赊销条件、旧欠款、新采购、入库和领料记录；</p>
+<p>调取外协询价、技术图纸、产能回复、合同、定金、生产照片和质检记录；</p>
+<p>调取银行订单融资申请、客户经理沟通、审批流程、拒贷原因及历史授信；</p>
+<p>调取样机、测试、技术修改、阶段确认、半成品编号及客户验厂资料；</p>
+<p>调取公司、蒋某及关联方全部相关账户流水和电子账套；</p>
+<p>调取延期沟通、分批交付、退款计划、应收账款催收和资产处置记录。</p>
+<p>事实与理由</p>
+<p>上述材料用于判断签约时是否具有现实履行基础、收款后是否真实履行、资金是否用于经营以及项目失败是否源于后来发生的融资和供应链风险。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：司法会计鉴定及专项审计申请书</h2>
+<div class="docbox">
+<p>司法会计鉴定及专项审计申请书</p>
+<p>申请事项</p>
+<p>请求对一千二百万元预付款的完整流向、项目成本、企业资金缺口、旧债与新项目关联、已退还款项及半成品价值进行专项审计。</p>
+<p>审计问题</p>
+<p>预付款逐笔流向及最终受益主体；</p>
+<p>与瀚达项目直接对应的采购、人工和外协；</p>
+<p>清偿旧欠款后是否恢复本项目供货；</p>
+<p>高管薪酬、个人账户、关联公司和现金支取；</p>
+<p>五百台设备总成本、首批资金需求及未落实缺口；</p>
+<p>签约时和履行中企业资产负债、现金流及在手订单；</p>
+<p>样机、半成品、库存及可利用价值；</p>
+<p>已退款、保全执行和破产受偿，避免重复计算。</p>
+<p>审计边界</p>
+<p>审计机构可以说明资金、成本和能力事实，不应直接代替司法机关判断非法占有目的、欺骗因果和罪名成立。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：司法会计鉴定意见质证书</h2>
+<div class="docbox">
+<p>关于司法会计鉴定／专项审计意见的质证意见</p>
+<p>一、资料完整性</p>
+<p>□ 覆盖公司全部银行账户。</p>
+<p>□ 核查蒋某、财务负责人及关联公司账户。</p>
+<p>□ 取得原始电子账套和修改日志。</p>
+<p>□ 实地盘点库存、样机和半成品。</p>
+<p>□ 向供应商、外协厂和员工交叉核实。</p>
+<p>二、项目归属方法</p>
+<p>不能以发票未备注项目即认定与项目无关；</p>
+<p>通用材料应结合型号、入库、领料、工单和半成品核对；</p>
+<p>工资按人员、工时和项目参与程度合理分摊；</p>
+<p>旧债支出应审查清偿后是否恢复供货；</p>
+<p>账面制造成本不等于客户实际取得的财产价值。</p>
+<p>三、法律评价边界</p>
+<p>“资金用于旧债”“资金未专款专用”“企业资不抵债”均不能由审计直接推出合同诈骗故意。鉴定意见如直接写明构成非法占有或者诈骗，属于超出专业范围。</p>
+<p>四、结论</p>
+<p>□ 资金流向可采。</p>
+<p>□ 成本分摊方法需调整。</p>
+<p>□ 半成品价值缺少实地依据。</p>
+<p>□ 非法占有目的结论不予采纳。</p>
+<p>□ 应补充审计。</p>
+</div>
+<h2>文书八：具有现实履行能力法律意见书</h2>
+<div class="docbox">
+<p>关于恒锐公司签约时具有现实履行基础的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、恒锐并非空壳公司</p>
+<p>签约时公司具有真实厂房、生产设备、技术团队和六十余名员工，长期从事同类物流设备制造，并有历史交付记录。</p>
+<p>二、履行能力包括可合理取得的资源</p>
+<p>合同允许非核心结构件外协。恒锐已与加工厂询价并就产能沟通，也向银行申请订单融资。外协和融资虽未最终落实，但并非事后虚构。</p>
+<p>三、收取预付款后能力实际提升</p>
+<p>公司补发工资、保留生产人员、采购钢材、控制器等材料，完成样机、技术修改及部分半成品。客户技术人员两次到厂，形成阶段确认。</p>
+<p>四、能力不足不等于完全无能力</p>
+<p>稳定月产二百台的陈述存在夸大，项目对后续融资和第二期款依赖过高，但这说明履约方案脆弱和商业判断失当，不足以证明公司从一开始绝无履约条件。</p>
+<p>五、结论</p>
+<p>现有证据不能排除恒锐签约时相信可以通过预付款、外协和融资完成五百台订单的合理可能。</p>
+</div>
+<h2>文书九：经营资金交叉使用不等于挥霍专项意见</h2>
+<div class="docbox">
+<p>关于项目预付款交叉使用与非法占有目的的专项意见</p>
+<p>一、企业资金具有流动性</p>
+<p>生产经营企业通常统一安排现金流。预付款没有逐笔用于该项目，不当然构成诈骗；但合同明确监管、共管或专款专用的除外。</p>
+<p>二、旧债支出应逐笔评价</p>
+<p>清偿旧供应商欠款后恢复钢材、控制器等供货，可能属于恢复履约能力；与新项目无关、且不产生经营回流的旧债，证明力不同。</p>
+<p>三、经营用途不是绝对免责</p>
+<p>如果企业已无持续经营可能，负责人明知新合同无法履行仍不断以新款填补旧窟窿，经营支出也可能服务于诈骗循环。应审查新款是否形成产品、产能和收入。</p>
+<p>四、本案意见</p>
+<p>本案未发现个人挥霍、赌博、理财、亲属转移和异常提现；预付款形成了工资、采购、样机和半成品。将全部经营支出概括为挥霍或者非法占有，缺乏事实基础。</p>
+</div>
+<h2>文书十：不具有非法占有目的法律意见书</h2>
+<div class="docbox">
+<p>关于蒋某不具有非法占有目的的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、合同属于公司主营业务</p>
+<p>恒锐长期生产分拣设备，五百台合同并非虚构业务；公司向客户开放验厂，展示真实厂房、设备和历史项目。</p>
+<p>二、存在持续、可验证的履行行为</p>
+<p>收款后公司实施设计、采购、试制、技术修改、外协洽谈和融资申请，形成样机及半成品，并接受客户阶段测试。</p>
+<p>三、资金主要用于公司经营</p>
+<p>审计未发现预付款流入蒋某家庭、用于奢侈消费、投资理财、赌博或违法活动。工资、租金、采购及供应商支出与维持履约能力具有不同程度联系。</p>
+<p>四、失败存在后来风险因素</p>
+<p>银行未批准订单融资、供应商现款要求、生产线维修、员工离职和客户拒绝提前付款共同导致项目失去现金支持。这些结果不能直接倒推签约时已决定不履行。</p>
+<p>五、事后持续承认合同责任</p>
+<p>蒋某没有否认合同和债务，仍协商分批交付、代工、退款、债权担保并实际退还部分款项，未发现携款逃匿或秘密转移主要生产设备。</p>
+<p>六、结论</p>
+<p>夸大产能和隐瞒供应困难可依法承担民事责任，但现有证据不足以证明蒋某以合同为工具非法取得一千二百万元。</p>
+</div>
+<h2>文书十一：证据不足不起诉及刑民边界法律意见书</h2>
+<div class="docbox">
+<p>关于建议依法作证据不足不起诉的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>签约时恒锐具有真实厂房、设备、员工、技术及同类交付经验，并非完全没有履行能力；</p>
+<p>外协与融资方案有同期询价、微信和申请材料，虽未落实但不是纯属虚构；</p>
+<p>收款后真实采购、试制、修改样机并形成半成品；</p>
+<p>资金主要用于企业工资、采购、租金、水电和供应商，没有个人挥霍及资产转移；</p>
+<p>银行拒贷、供应链中断、员工离职等因素发生于履行过程中；</p>
+<p>虚报产能、隐瞒困难和夸大进度可以构成民事欺诈，不足以单独证明非法占有目的；</p>
+<p>退款未完成和公司停业属于严重违约后果，不能替代诈骗故意证明；</p>
+<p>刑事数额、民事损失、半成品价值和已退款项尚需分别核定。</p>
+<p>建议依法作证据不足不起诉。瀚达公司可以通过合同解除、预付款返还、违约赔偿、财产保全、执行及破产程序实现权利。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>蒋某涉嫌合同诈骗罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>恒锐公司承接了远超近期实际产量的五百台订单。蒋某夸大月产能，没有完整披露供应商停供、银行逾期和生产线故障，收取预付款后又把大量资金用于工资和旧债。这样的经营方式冒险、失当，也造成客户重大损失。但合同诈骗罪审理的核心，仍不是蒋某有没有违约，而是蒋某收款时是否根本不准备履行。</p>
+<p>一、签约时并非完全没有履约基础</p>
+<p>恒锐是持续经营的设备企业，合同属于主营业务，公司拥有厂房、生产线、技术人员和历史交付能力。现有内部产能不足，但合同允许外协，预付款也可用于采购和扩产。</p>
+<p>二、产能夸大不能单独证明非法占有目的</p>
+<p>“稳定月产二百台”明显高于近期实际产量，供应商合作材料也不够准确。这些事实可以支持民事欺诈和违约责任，却仍需证明蒋某利用这些陈述不是为了获得履约机会，而是为了取得不准备返还的款项。</p>
+<p>三、收款后实施了真实履行</p>
+<p>恒锐采购材料、保留员工、制作样机、按客户意见修改、形成半成品、联系代工厂并申请融资。上述行为具有可验证的生产内容，不是注册空壳、伪造厂房后完全不履行。</p>
+<p>四、资金用途不支持挥霍和转移</p>
+<p>预付款进入公司账户后主要用于工资、采购、供应商、租金、电费和借款。部分旧债与本项目没有直接关系，但未发现个人消费、异常提现、亲属转账、赌博、理财或违法活动。</p>
+<p>五、经营失败不能倒推签约诈骗</p>
+<p>融资未获批准、供应商现款要求、设备维修和员工离职使原有循环计划失败。计划过度依赖未来融资，可以说明经营判断轻率，不能自动说明蒋某从签约时就知道合同不可能履行。</p>
+<p>六、事后失实陈述应分阶段评价</p>
+<p>蒋某曾夸大完成比例并请求提前支付第二期款，这些行为不当。但瀚达没有继续付款，恒锐仍有部分生产。若指控后期形成非法占有目的，应明确形成时点、具体行为及对应财物，不能笼统倒推全部预付款。</p>
+<p>七、刑事与民事责任应准确分开</p>
+<p>恒锐仍应返还预付款、承担违约金及经证明的损失。民事责任沉重，并不意味着必须以刑罚替代合同救济。合同诈骗罪不是严重违约的兜底罪名。</p>
+<p>八、辩护请求</p>
+<p>依法认定非法占有目的证据不足，宣告蒋某无罪；</p>
+<p>排除以最终未交付、企业停业和退款失败直接倒推签约故意；</p>
+<p>对审计中的项目支出、半成品、已退款和民事获偿逐项核对，避免扩大刑事数额；</p>
+<p>如法院作不利认定，应区分故意形成时点，并综合实际履行、资金经营用途、主动协商、部分退款和无个人挥霍等情节依法从宽。</p>
+<p>五百台设备没有交出来，是这个案件最醒目的事实，却不是最后的法律答案。真正需要证明的是，蒋某在拿到预付款之前，是否已经把合同当成了取款工具。产能不足、判断失误、资金交叉使用和最终失败，都不能替代这一步证明。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>招投标、合同、产能说明、验厂和技术协议；</p>
+<p>厂房、设备、维修、用电、员工、考勤和历史产量；</p>
+<p>项目预算、成本测算、在手订单和资金缺口；</p>
+<p>供应商旧债、停供、恢复供货、新采购和入库领料；</p>
+<p>外协询价、产能确认、合同、定金和生产资料；</p>
+<p>银行融资申请、审批、拒贷和历史授信；</p>
+<p>样机、测试、技术修改、半成品和客户阶段确认；</p>
+<p>公司、蒋某和关联方完整账户流水及电子账套；</p>
+<p>延期沟通、分批交付、退款、债权担保和资产处置；</p>
+<p>民事保全、执行、破产、半成品处置和客户实际受偿。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 合同诈骗罪应证明非法占有目的、欺骗行为、错误认识、财产处分及因果关系，最终违约不能替代主观证明。</h3>
+<h3>2. 履行能力应结合签约时现实资源和能够合理取得的采购、外协、融资条件动态判断。</h3>
+<h3>3. 正式使用时，应核验案发时有效的刑法、合同诈骗相关司法文件、立案追诉和量刑标准、民法典及当地司法实践，并根据真实审计和卷宗修改。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

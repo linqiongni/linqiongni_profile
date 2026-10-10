@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch17</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch17">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第四卷  危险现场</h1>
+</header>
+<div class="wrap">
+<p>第十七章配套法律文书全文</p>
+<p>暴雨中的货车事故</p>
+<h3>文书目录</h3><ol>
+<li>交通肇事罪构成要件与责任层级审查表</li>
+<li>道路交通事故认定书实质审查及异议表</li>
+<li>道路交通事故认定复核申请书</li>
+<li>现场监控、信号灯及车辆数据调取申请书</li>
+<li>行车记录仪原始载体提取及电子数据保全申请书</li>
+<li>车辆速度和事故可避免性重新鉴定申请书</li>
+<li>速度、制动及因果关系鉴定意见质证书</li>
+<li>被害人交通违法与事故原因力专项意见</li>
+<li>不构成交通肇事后逃逸法律意见书</li>
+<li>证据不足不起诉法律意见书</li>
+<li>庭审发问提纲</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：交通肇事罪构成要件与责任层级审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>填写内容</p>
+<p>案号</p>
+<p>__________</p>
+<p>驾驶人</p>
+<p>郑伟／__________</p>
+<p>事故时间地点</p>
+<p>__________</p>
+<p>事故结果</p>
+<p>一人死亡／__________</p>
+<p>审查人／日期</p>
+<p>__________／__________</p>
+<p>一、基础犯罪事实</p>
+<p class="kv"><b>车辆类型、载重及技术状况</b>　__________</p>
+<p class="kv"><b>道路限速及天气条件</b>　__________</p>
+<p class="kv"><b>驾驶人实际速度区间</b>　__________</p>
+<p class="kv"><b>事故发生信号灯状态</b>　__________</p>
+<p class="kv"><b>被害人进入车道方式及速度</b>　__________</p>
+<p class="kv"><b>最早可见距离与反应时间</b>　__________</p>
+<p class="kv"><b>制动、转向及碰撞位置</b>　__________</p>
+<p class="kv"><b>死亡原因及是否存在二次碰撞</b>　__________</p>
+<p>二、郑伟违法行为</p>
+<p>□ 超过法定限速。</p>
+<p>□ 未根据暴雨、积水、能见度进一步降低车速。</p>
+<p>□ 未尽观察义务。</p>
+<p>□ 制动或转向措施不及时。</p>
+<p>□ 疲劳驾驶、使用手机、酒驾或毒驾。</p>
+<p>□ 车辆超载、制动或轮胎存在故障。</p>
+<p>三、被害人行为</p>
+<p>□ 违反交通信号灯。</p>
+<p>□ 从遮挡区域突然驶入机动车道。</p>
+<p>□ 违规横穿、逆行或变道。</p>
+<p>□ 超速骑行或车辆改装。</p>
+<p>□ 违法行为直接创造碰撞风险。</p>
+<p>四、原因力及责任层级</p>
+<p>□ 郑伟违法行为是事故直接且主要原因。</p>
+<p>□ 双方违法行为原因力相当，不能排除同等责任。</p>
+<p>□ 被害人行为具有更直接、突发的原因力。</p>
+<p>□ 合理速度下可避免碰撞。</p>
+<p>□ 合理速度下仍可能碰撞，但后果可能减轻。</p>
+<p>□ 现有证据不能证明郑伟达到主要以上责任。</p>
+<p>五、逃逸及加重结果</p>
+<p>□ 郑伟明知发生事故。</p>
+<p>□ 驶离是寻找安全停车点。</p>
+<p>□ 短时间内主动报警并说明身份、车牌和位置。</p>
+<p>□ 存在逃避法律追究目的。</p>
+<p>□ 离开行为导致救助延误。</p>
+<p>□ 死亡与逃逸行为存在独立因果关系。</p>
+<p>六、初步结论</p>
+<p>□ 不构成交通肇事罪。</p>
+<p>□ 主要责任证据不足。</p>
+<p>□ 构成基础交通肇事罪，但不构成逃逸。</p>
+<p>□ 构成交通肇事后逃逸。</p>
+<p>□ 不构成因逃逸致人死亡。</p>
+<p>□ 需补充鉴定和电子数据校准。</p>
+</div>
+<h2>文书二：道路交通事故认定书实质审查及异议表</h2>
+<div class="docbox">
+<p>一、认定书基本信息</p>
+<p class="kv"><b>事故认定书编号</b>　__________</p>
+<p class="kv"><b>作出机关及日期</b>　__________</p>
+<p class="kv"><b>郑伟责任</b>　__________</p>
+<p class="kv"><b>被害人责任</b>　__________</p>
+<p class="kv"><b>复核情况</b>　__________</p>
+<p>二、事实基础审查</p>
+<p>审查事项</p>
+<p>认定书记载</p>
+<p>卷宗证据</p>
+<p>是否一致</p>
+<p>货车速度</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>信号灯状态</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>被害人轨迹</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>天气及积水</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>视线遮挡</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>制动与转向</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>事故后行为</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>三、程序审查</p>
+<p>□ 现场勘查、测量和照片完整。</p>
+<p>□ 速度、车辆技术和死亡原因鉴定已依法告知。</p>
+<p>□ 当事人陈述、证人证言、监控和电子数据均被审查。</p>
+<p>□ 责任结论说明各方违法行为及原因力。</p>
+<p>□ 复核申请中的核心异议得到具体回应。</p>
+<p>□ 未将事故后驶离行为直接作为碰撞原因。</p>
+<p>四、重点异议</p>
+<p>行车记录仪、路口监控与信号机的时间是否完成校准；</p>
+<p>速度鉴定是否使用原始视频、真实帧率和现场复测数据；</p>
+<p>是否区分法定限速与暴雨条件下的实际安全速度；</p>
+<p>是否分析被害人闯红灯、突然横穿和遮挡因素；</p>
+<p>是否回答合理速度下事故能否避免或损害能否减轻；</p>
+<p>为什么认定郑伟的原因力大于被害人而非同等责任；</p>
+<p>是否把行政推定或逃逸加重责任重复用于刑事入罪。</p>
+<p>五、审查意见</p>
+<p>□ 认定书事实和理由充分，可作为重要证据。</p>
+<p>□ 部分事实可采，主要责任结论需独立审查。</p>
+<p>□ 关键证据缺失或鉴定基础不可靠，不宜作为定案依据。</p>
+<p>□ 应剔除事故后特殊加重、行政推定因素后重评原因责任。</p>
+</div>
+<h2>文书三：道路交通事故认定复核申请书</h2>
+<div class="docbox">
+<p>道路交通事故认定复核申请书</p>
+<p class="kv"><b>申请人</b>　郑伟，身份信息：__________，联系电话：__________。</p>
+<p class="kv"><b>代理人</b>　__________律师，__________律师事务所。</p>
+<p>复核请求</p>
+<p>撤销／变更__________号道路交通事故认定书；</p>
+<p>重新核对信号灯状态和各电子设备时间；</p>
+<p>重新鉴定货车碰撞前速度；</p>
+<p>重新评价双方违法行为对事故发生的原因力；</p>
+<p>对郑伟事故后驶离路口至安全位置停车的行为单独调查，不作为碰撞原因责任的推定基础。</p>
+<p>事实与理由</p>
+<p>原事故认定书认定郑伟承担主要责任，但对行车记录仪、路口监控和信号机日志之间的时间差未说明校准方法；速度鉴定采用的视频帧率与原始设备参数存在不一致；被害人违反非机动车信号灯并从遮挡区域突然进入机动车道，却未充分说明该行为为何仅构成次要原因。</p>
+<p>郑伟在暴雨中超速及未充分降低车速的行为应依法评价，但“存在交通违法”不等于当然承担主要责任。应结合最早可见距离、反应时间、湿滑路面制动距离、双方速度和合理速度下的可避免性，对原因力作出可核验的分析。</p>
+<p>事故后，郑伟向前行驶约四百米在道路加宽区域停车，短时间内报警并说明事故位置、车牌和身份。该行为是否属于逃逸，应根据主观目的和后续行为独立判断，不应未经审查即反向提高事故发生责任。</p>
+<p>此致</p>
+<p>__________道路交通事故复核机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四：现场监控、信号灯及车辆数据调取申请书</h2>
+<div class="docbox">
+<p>现场监控、信号灯及车辆运行数据调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系郑伟涉嫌交通肇事罪一案的辩护人。</p>
+<p>申请事项</p>
+<p>请求调取、固定事故发生前后与碰撞、信号状态、车辆速度、事故后停车报警有关的原始数据。</p>
+<p>具体范围</p>
+<p>事故路口各方向原始监控，时间范围为事故前十分钟至后十分钟；</p>
+<p>事故路口上游、下游卡口及沿途商铺、公交和住宅监控；</p>
+<p>信号机控制日志、相位图、配时方案、校时、故障和远程控制记录；</p>
+<p>非机动车信号灯与机动车信号灯的完整对应关系；</p>
+<p>货车卫星定位、动态监管平台、发动机控制模块、制动和油门数据；</p>
+<p>车辆平台终端型号、采样频率、上传频率、服务器时间和数据修正规则；</p>
+<p>报警电话、急救电话、运营商通话时间及录音；</p>
+<p>警车、救护车到场记录及可用于多设备校时的共同事件；</p>
+<p>气象降雨、能见度、道路积水、排水巡查和照明运行资料；</p>
+<p>原始数据提取笔录、文件格式、设备参数和校验值。</p>
+<p>事实与理由</p>
+<p>本案责任判断取决于货车速度、信号灯状态、被害人进入车道的时点、视线遮挡和郑伟事故后行为。复制或压缩视频可能丢失帧率、元数据及连续性，必须保全原始文件与后台日志。多设备时间存在差异时，还需利用共同事件进行校准。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书五：行车记录仪原始载体提取及电子数据保全申请书</h2>
+<div class="docbox">
+<p>行车记录仪原始载体提取及电子数据保全申请书</p>
+<p>申请事项</p>
+<p>请求依法提取涉案货车行车记录仪原始存储卡，对存储介质制作只读镜像、计算校验值，保全事故前后全部连续视频、音频和元数据，并允许辩护人查阅复制。</p>
+<p>提取和保全事项</p>
+<p>记录设备品牌、型号、序列号、固件和时间设置方式；</p>
+<p>拍摄存储卡外观、卡号、封存和启封过程；</p>
+<p>使用写保护方式制作镜像并生成校验值；</p>
+<p>提取事故前后至少连续三十分钟的全部分段文件；</p>
+<p>保留文件创建、修改、分辨率、帧率、编码和设备时间信息；</p>
+<p>核查是否存在丢帧、补帧、转码、删除、覆盖或异常断点；</p>
+<p>提取前后相邻文件，验证画面和声音连续性；</p>
+<p>将原始文件与手机传输、聊天软件压缩等既有复制件比对；</p>
+<p>在鉴定和质证完成前妥善保管原始存储卡。</p>
+<p>事实与理由</p>
+<p>现有卷宗中的事故视频为手机传输或导出复制件，无法完整反映原始帧率、设备时间和文件连续性。本案又存在行车记录仪时间与信号机时间不一致的问题，原始载体是校时、测速和判断被害人轨迹的重要证据。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：车辆速度和事故可避免性重新鉴定申请书</h2>
+<div class="docbox">
+<p>重新鉴定申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系郑伟涉嫌交通肇事罪一案的辩护人。</p>
+<p>申请事项</p>
+<p>请求对涉案货车碰撞前速度、最早可见距离、制动距离及合理速度下事故可避免性重新鉴定。</p>
+<p>重新鉴定理由</p>
+<p>首次鉴定按每秒______帧计算，但原始设备实际帧率为______帧或存在动态降帧；</p>
+<p>鉴定使用转码或压缩视频，未核对原始文件；</p>
+<p>道路标线、车辆长度和镜头畸变的测量依据不完整；</p>
+<p>未结合卫星定位、发动机控制模块、制动信号等其他数据；</p>
+<p>未采用实际载重、轮胎、制动系统、暴雨和积水条件；</p>
+<p>未分析被害人从遮挡区域进入车道的最早可识别时点；</p>
+<p>只认定超速，未回答合理速度下是否具有现实避让可能；</p>
+<p>未说明速度区间、不确定度和误差对责任判断的影响。</p>
+<p>申请鉴定问题</p>
+<p>货车碰撞前五秒、三秒、一秒的速度区间；</p>
+<p>被害人及电动自行车速度和运动轨迹；</p>
+<p>驾驶人最早可识别危险的时点与双方距离；</p>
+<p>实际制动开始时点、反应时间和制动距离；</p>
+<p>在每小时五十、四十五、四十公里等速度下，碰撞是否可以避免；</p>
+<p>如碰撞不能避免，较低速度是否可能明显减轻损害；</p>
+<p>暴雨、积水、载重、轮胎和道路附着条件对结论的影响；</p>
+<p>鉴定结论的误差范围及不能确定事项。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：速度、制动及因果关系鉴定意见质证书</h2>
+<div class="docbox">
+<p>关于车辆速度、制动及事故因果关系鉴定意见的质证意见</p>
+<p>一、检材和数据来源</p>
+<p>应核查鉴定使用的是原始监控、原始行车记录仪还是经过导出、压缩和转码的复制件。无法说明来源、参数和完整性的文件，不宜作为精确测速的唯一基础。</p>
+<p>二、方法可靠性</p>
+<p>□ 视频真实帧率已经设备参数和原始文件验证。</p>
+<p>□ 不存在丢帧、补帧或平台动态降帧。</p>
+<p>□ 参照距离经现场复测。</p>
+<p>□ 车辆长度、拍摄角度和镜头畸变已校正。</p>
+<p>□ 卫星定位和车辆模块数据用于交叉验证。</p>
+<p>□ 鉴定给出区间和误差，而非虚假精确值。</p>
+<p>三、制动条件</p>
+<p>重型货车制动距离受实际载重、制动系统、轮胎、坡度、路面材质、积水和驾驶人反应时间影响。鉴定若直接套用普通车辆、干燥路面公式，不能反映事故条件。</p>
+<p>四、可见性和反应时间</p>
+<p>行车记录仪摄像头视野不当然等于驾驶人视野。应结合驾驶座高度、右前盲区、停靠车辆、树木、水雾和雨刷工作状态判断罗某何时从模糊轮廓变成可识别危险。</p>
+<p>五、因果关系边界</p>
+<p>鉴定可以说明速度、距离、轨迹和避免可能，但“主要责任”“刑事因果关系”属于司法判断。若结论仅为较低速度“可能”增加避让机会，不能被改写为事故“一定”能够避免。</p>
+<p>六、质证结论</p>
+<p>□ 鉴定基础可靠，可以作为证据。</p>
+<p>□ 速度结论只可作为区间参考。</p>
+<p>□ 帧率或参照数据错误，应排除／重新鉴定。</p>
+<p>□ 合理速度下能否避免事故尚不能确定。</p>
+<p>□ 鉴定不足以证明郑伟承担主要责任。</p>
+</div>
+<h2>文书八：被害人交通违法与事故原因力专项意见</h2>
+<div class="docbox">
+<p>关于被害人交通违法及事故原因力的专项辩护意见</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、罗某的交通违法应当客观进入责任评价</p>
+<p>经校时后的信号机日志和视频能够证明，罗某在非机动车信号为红灯时越过停止线，并从道路右侧遮挡区域斜向进入机动车道。该行为直接创造了碰撞风险，不能因罗某死亡而在责任分析中被弱化。</p>
+<p>二、被害人违法不当然免除机动车驾驶人责任</p>
+<p>郑伟在暴雨中超过限速，并负有根据能见度和积水进一步降速的义务。辩方不主张“闯红灯即自负全部责任”，而主张比较双方违法对事故发生的具体原因力。</p>
+<p>三、应审查行为的时间、空间和突发程度</p>
+<p>如果罗某已在郑伟清晰可见范围内持续骑行，而郑伟因未观察撞上，货车一方原因力可能更大。如果罗某从遮挡物后突然进入，留给郑伟的识别和制动时间极短，罗某违法行为的直接性和原因力应显著提高。</p>
+<p>四、违法条款数量不能决定责任大小</p>
+<p>郑伟可能涉及超速、雨天未降速等多项条款，罗某可能只涉及闯红灯和违规横穿。责任大小取决于各项行为对碰撞的实际作用，而不是违法条款数量。</p>
+<p>五、责任结论</p>
+<p>现有证据能够证明罗某闯红灯并突然驶入车道，同时不能证明郑伟以合理速度行驶即可必然避免碰撞。至少不能排除双方原因力相当、郑伟仅负同等责任的合理可能。</p>
+</div>
+<h2>文书九：不构成交通肇事后逃逸法律意见书</h2>
+<div class="docbox">
+<p>关于郑伟不构成交通肇事后逃逸的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、郑伟明知事故，但明知不等于逃逸</p>
+<p>郑伟听到碰撞声并发现右侧有人或车辆倒下，具备事故认知。逃逸的核心争议不是是否明知，而是驶离碰撞点的目的是否为逃避法律追究。</p>
+<p>二、驶离的客观原因是寻找安全停车位置</p>
+<p>事故发生于暴雨积水路口，重型货车若立即停在碰撞车道，会占据路口并增加次生事故风险。郑伟向前驶至道路加宽区域停车，路线和停车地点与寻找安全位置的解释一致。</p>
+<p>三、报警、身份披露和等候处理排除典型逃避行为</p>
+<p>郑伟停车后短时间内报警，主动说明事故位置、车牌、本人身份和停车位置；未关闭定位、未隐藏车辆、未擦洗痕迹、未删除记录仪、未找人顶替，并按接警要求等候交警。</p>
+<p>四、离开距离不是自动认定标准</p>
+<p>四百米需要结合道路条件评价。刑法上的逃逸应综合主观意图、停车和报警时间、路线以及是否妨碍救助和追查，不能将空间上的移动直接等同于逃逸。</p>
+<p>五、不得把事故后行为重复用于事故责任和量刑加重</p>
+<p>事故后驶离通常不是碰撞发生的物理原因。应先依据碰撞前双方行为判断事故责任，再独立判断逃逸。不能先用驶离行为推高行政责任，再依据主要责任入罪，最后再次作为逃逸加重处罚。</p>
+<p>六、结论</p>
+<p>现有证据不能证明郑伟具有逃避法律追究目的，不应认定交通肇事后逃逸。即使对其基础交通肇事责任作不利判断，也应在三年以下法定刑范围内评价。</p>
+</div>
+<h2>文书十：证据不足不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于建议对郑伟作证据不足不起诉处理的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>罗某死亡的后果令人痛惜，郑伟在暴雨中超速也应承担相应法律责任。但交通肇事罪要求证明郑伟的违法行为对事故负主要以上责任。现有证据未达到这一标准。</p>
+<p>一、事故认定书不能单独决定刑事责任</p>
+<p>事故认定书虽认定郑伟负主要责任，但对视频时间校准、速度鉴定帧率、视线遮挡和双方原因力的分析不完整。刑事责任仍应根据全案证据独立判断。</p>
+<p>二、第一次速度鉴定基础存在疑问</p>
+<p>鉴定所用帧率与设备参数不一致，重新鉴定后速度区间下降。郑伟仍属超速，但超速幅度与事故原因力需要按可靠数据重新评价。</p>
+<p>三、合理速度下能否避免事故没有确定结论</p>
+<p>重新鉴定仅认为适当降速可能增加观察和制动机会，同时无法确认一定能够避免碰撞。罗某闯红灯并从遮挡区域突然进入机动车道，是事故发生的重要直接原因。</p>
+<p>四、不能排除同等责任</p>
+<p>双方均有违法。郑伟行为增加风险，罗某行为直接创造碰撞情境。现有证据不能证明郑伟的原因力明显大于罗某，不能排除郑伟仅负同等责任的合理可能。</p>
+<p>五、不构成逃逸</p>
+<p>郑伟向前行驶后在安全区域停车，立即报警、说明身份并等候处理，没有隐藏车辆或妨碍调查。现有证据不足以证明逃避法律追究目的。</p>
+<p>六、处理建议</p>
+<p>建议依法对郑伟作证据不足不起诉决定。对超速、雨天未安全驾驶等行政违法以及民事赔偿责任，依法另行处理。刑事不起诉不等于否定事故后果，也不等于免除其他法律责任。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：庭审发问提纲</h2>
+<div class="docbox">
+<p>一、向事故处理民警发问</p>
+<p>认定郑伟负主要责任依据哪些客观证据？</p>
+<p>是否调取完整监控、信号机日志和行车记录仪原始载体？</p>
+<p>不同设备时间相差多少，采用何种方法校准？</p>
+<p>为什么认定被害人闯红灯只承担次要责任？</p>
+<p>是否测量右侧遮挡物和驾驶人最早可见距离？</p>
+<p>速度鉴定所用视频帧率来自哪里？</p>
+<p>是否区分超限速与未按暴雨条件降低安全速度？</p>
+<p>是否把郑伟事故后驶离行为计入事故发生责任？</p>
+<p>现场是否适合重型货车立即停车？</p>
+<p>郑伟报警、披露身份和等候处理是否被完整记录？</p>
+<p>二、向速度和事故成因鉴定人发问</p>
+<p>检材是原始文件还是转码复制件？</p>
+<p>怎样确认真实帧率及不存在丢帧、补帧？</p>
+<p>参照距离、车辆长度和镜头畸变如何校正？</p>
+<p>是否使用实际载重、轮胎、制动及湿滑路面参数？</p>
+<p>罗某何时从模糊轮廓变为可识别危险？</p>
+<p>行车记录仪摄像头视野能否等同驾驶人视野？</p>
+<p>合理速度下是一定避免，还是仅可能增加避让机会？</p>
+<p>能否量化双方行为对事故的原因力？</p>
+<p>鉴定结论误差是否可能影响责任层级？</p>
+<p>“主要责任”是否属于鉴定权限？</p>
+<p>三、向电子数据鉴定人／管理人员发问</p>
+<p>信号机使用何种时间源，是否存在校时和故障记录？</p>
+<p>行车记录仪时间如何设置，断电后是否漂移？</p>
+<p>车辆平台采样和上传间隔是多少？</p>
+<p>压缩和聊天软件转发是否改变帧率或元数据？</p>
+<p>如何通过报警电话、卡口、公交车或警车到场事件校时？</p>
+<p>原始存储卡是否制作镜像和校验值？</p>
+<p>事故前后文件是否连续，是否存在删除或覆盖？</p>
+<p>四、向现场证人发问</p>
+<p>事故时雨势、积水、能见度和车流情况如何？</p>
+<p>货车碰撞后是否减速、开启双闪或寻找停车位置？</p>
+<p>事故路口是否有安全停靠空间？</p>
+<p>郑伟停车后是否报警、设置警示标志或返回现场？</p>
+<p>是否有人听见郑伟说明身份、车牌和事故位置？</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>郑伟涉嫌交通肇事罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>__________律师事务所接受郑伟及其家属委托，指派本律师担任辩护人。辩护人不否认郑伟在暴雨中驾驶重型货车超过道路限速，也不回避事故造成一人死亡的严重后果。但刑事审判需要回答的不是“货车有没有撞到人”，而是郑伟的违法行为是否对事故负主要以上责任，以及事故后向前停车是否具有逃避法律追究的目的。</p>
+<p>一、事故认定书是重要证据，但不是刑事责任的终局结论</p>
+<p>事故认定书服务于事故处理和责任划分。刑事审判仍应对其事实基础、鉴定依据和原因力分析进行实质审查。原认定书未说明多设备时间如何校准，第一次速度鉴定帧率存在疑问，也没有充分解释罗某闯红灯并突然横穿为何只构成次要原因。</p>
+<p>二、郑伟超速应受评价，但超速不能自动推出主要责任</p>
+<p>重新鉴定将货车碰撞前速度认定为每小时五十七至六十一公里。郑伟在限速五十、暴雨积水的路况下没有充分降速，存在过错。但交通肇事罪还要求查明该过错与死亡结果之间的具体因果关系。</p>
+<p>三、合理速度下能否避免事故仍未得到确定证明</p>
+<p>鉴定意见只说明更低速度可能增加观察和制动机会，无法确认一定能够避免碰撞。罗某在红灯状态下，从车辆和树木形成的遮挡区域突然驶入机动车道，留给郑伟的识别和处置时间极短。可能避免与必然能够避免不能混同。</p>
+<p>四、罗某交通违法是事故原因，不是道德指责</p>
+<p>被害人死亡不应使其闯红灯、违规横穿和突然进入车道的事实从责任分析中消失。机动车驾驶人仍负有较高注意义务，但责任必须根据双方行为的时间、空间和原因力确定，不能按照交通工具大小预先分配。</p>
+<p>五、现有证据不能排除郑伟仅负同等责任</p>
+<p>郑伟的违法行为增加风险，罗某的违法行为直接创造碰撞情境。控方需要证明郑伟的原因力明显大于罗某，才足以支撑主要责任。现有鉴定和现场证据至少保留了双方原因力相当的合理可能。</p>
+<p>六、郑伟驶离碰撞点不构成交通肇事后逃逸</p>
+<p>事故路口暴雨积水，重型货车如立即停在原车道可能引发次生事故。郑伟向前驶至道路加宽区域停车，短时间内报警，主动说明事故位置、车牌、身份和停车位置，未隐藏车辆、删除数据或找人顶替，并按要求等候处理。这些行为与逃避法律追究不相符。</p>
+<p>七、不得把驶离行为重复评价</p>
+<p>事故后行为不是碰撞发生的物理原因。不能先以驶离推高事故责任，再依据主要责任定罪，最后又以同一事实认定逃逸并提高法定刑。事故原因责任和逃逸必须分别判断。</p>
+<p>八、辩护请求</p>
+<p>依法认定现有证据不能证明郑伟承担事故主要以上责任，对其作出无罪判决；</p>
+<p>至少排除交通肇事后逃逸和因逃逸致人死亡的认定；</p>
+<p>如法院认定构成基础交通肇事罪，充分考虑被害人重大交通违法、郑伟主动报警、配合调查、积极赔偿、初犯偶犯等情节，依法从轻处罚并适用缓刑。</p>
+<p>罗某的死亡需要一个依法作出的责任结论，而不是一个凭结果倒推的结论。暴雨会冲淡路面痕迹，但不能冲淡刑事证明标准。只有把速度、信号灯、视线、制动、被害人行为和事故后报警停车放回同一个时空，才能判断郑伟究竟应为哪一种错误承担何种责任。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>道路交通事故认定书、复核申请及复核结论；</p>
+<p>现场勘查笔录、现场图、照片、测距和道路标志；</p>
+<p>路口及上下游原始监控、设备参数和提取记录；</p>
+<p>信号机日志、相位图、配时、校时和故障记录；</p>
+<p>行车记录仪原始存储卡、镜像、校验值和连续视频；</p>
+<p>货车卫星定位、车辆动态监管、发动机与制动数据；</p>
+<p>第一次和重新速度、事故成因鉴定及原始材料；</p>
+<p>气象降雨、道路积水、排水巡查、照明和能见度资料；</p>
+<p>车辆技术检验、载重、轮胎、制动和维修记录；</p>
+<p>报警录音、通话时间、停车点监控和交警到场记录；</p>
+<p>被害人电动自行车技术状况、速度、轨迹和信号状态；</p>
+<p>急救、死亡原因、救援时点及二次碰撞资料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 人民法院案例库相关裁判要旨表明，道路交通事故认定书不具有当然、排他的证明力，刑事审理应结合全案证据对事故原因和责任进行实质审查。</h3>
+<h3>2. 交通肇事后逃逸的认定，应结合行为人是否明知事故、是否具有逃避法律追究目的以及报警、救助、身份披露、车辆处理等客观行为综合判断。</h3>
+<h3>3. 因逃逸致人死亡需要证明未履行救助义务与死亡结果之间存在因果关系，不能把碰撞直接造成的死亡未经分析即认定为逃逸加重结果。</h3>
+<p>正式使用时，应核验事故发生时有效的刑法、司法解释、道路交通安全法律规范、鉴定技术标准及当地道路交通事故处理规定，并按真实卷宗修改文书事实。</p>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

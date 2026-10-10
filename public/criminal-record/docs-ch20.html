@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch20</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch20">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第五卷  隐秘空间</h1>
+</header>
+<div class="wrap">
+<p>第二十章配套法律文书全文</p>
+<p>包厢里的违禁物品</p>
+<h3>文书目录</h3><ol>
+<li>容留他人吸毒罪构成要件审查表</li>
+<li>包厢消费、服务及知情时间轴</li>
+<li>监控、点单及电子数据调取申请书</li>
+<li>证人重新询问及同步录音录像调取申请书</li>
+<li>证人证言前后矛盾质证意见</li>
+<li>吸毒人员陈述及检测结果质证意见</li>
+<li>监控缺失不应作有罪推定法律意见书</li>
+<li>场所支配控制与经营者责任专项意见</li>
+<li>单次容留及牟利目的专项意见</li>
+<li>不构成容留他人吸毒罪法律意见书</li>
+<li>证据不足不起诉法律意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：容留他人吸毒罪构成要件审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>填写内容</p>
+<p>案号</p>
+<p>__________</p>
+<p>嫌疑人/被告人</p>
+<p>周某／__________</p>
+<p>场所</p>
+<p>KTV 608包厢／__________</p>
+<p>涉案时间</p>
+<p>__________</p>
+<p>审查人/日期</p>
+<p>__________／__________</p>
+<p>一、场所支配</p>
+<p>□ 周某有权开门、巡查、终止服务、调度保安和报警。</p>
+<p>□ 客人仅取得临时消费使用权。</p>
+<p>□ 周某并无实际终止服务权限。</p>
+<p>□ 其他人员才是当晚实际管理者。</p>
+<p>二、主观明知</p>
+<p>□ 亲眼看见吸毒行为。</p>
+<p>□ 看见明显毒品及吸食工具。</p>
+<p>□ 服务员明确报告有人吸毒。</p>
+<p>□ 只收到异常气味或“包厢怪怪的”模糊信息。</p>
+<p>□ 与客人商量规避检查。</p>
+<p>□ 故意关闭监控、通风报信或帮助清理。</p>
+<p>三、容留行为</p>
+<p>□ 明知后仍允许继续使用包厢。</p>
+<p>□ 明知后续时、减免费用、赠送酒水或更换隐蔽包厢。</p>
+<p>□ 要求服务员不要进入或不要报警。</p>
+<p>□ 发现后立即制止、终止服务或报警。</p>
+<p>□ 吸毒结束后才知情。</p>
+<p>四、入罪条件</p>
+<p>□ 一次容留多人。</p>
+<p>□ 二年内多次容留。</p>
+<p>□ 二年内曾受容留行政处罚。</p>
+<p>□ 容留未成年人。</p>
+<p>□ 以赚取场所费或招揽生意为目的。</p>
+<p>□ 造成严重后果。</p>
+<p>□ 仅一次、一名成年人且无其他严重情形。</p>
+<p>五、结论</p>
+<p>□ 构成犯罪。</p>
+<p>□ 明知证据不足。</p>
+<p>□ 场所控制证据不足。</p>
+<p>□ 容留行为证据不足。</p>
+<p>□ 仅承担行政或经营管理责任。</p>
+</div>
+<h2>文书二：包厢消费、服务及知情时间轴</h2>
+<div class="docbox">
+<p>时间</p>
+<p>事件</p>
+<p>客观记录</p>
+<p>周某所知</p>
+<p>法律意义</p>
+<p>____</p>
+<p>客人开台</p>
+<p>开台/付款</p>
+<p>____</p>
+<p>正常经营</p>
+<p>____</p>
+<p>第一次送酒</p>
+<p>配送记录</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>设备故障</p>
+<p>服务铃</p>
+<p>____</p>
+<p>进入原因</p>
+<p>____</p>
+<p>周某进入</p>
+<p>走廊监控</p>
+<p>____</p>
+<p>是否看见</p>
+<p>____</p>
+<p>吸毒开始</p>
+<p>人员陈述</p>
+<p>____</p>
+<p>明知之前/后</p>
+<p>____</p>
+<p>服务员报告</p>
+<p>对讲/证言</p>
+<p>____</p>
+<p>报告具体程度</p>
+<p>____</p>
+<p>赠送果盘</p>
+<p>系统日志</p>
+<p>____</p>
+<p>一般服务/便利</p>
+<p>____</p>
+<p>监控离线</p>
+<p>设备日志</p>
+<p>____</p>
+<p>是否人为</p>
+<p>____</p>
+<p>公安检查</p>
+<p>执法录像</p>
+<p>____</p>
+<p>现场状态</p>
+<p>重点校准事项</p>
+<p>各设备服务器时间是否一致；</p>
+<p>吸毒人员关于开始时间是否分别形成且相互印证；</p>
+<p>服务员报告发生在吸毒开始前、进行中还是结束后；</p>
+<p>周某是否第二次进入包厢；</p>
+<p>赠品批准是否由周某本人操作；</p>
+<p>监控恢复后是否存在通风报信或清理。</p>
+</div>
+<h2>文书三：监控、点单及电子数据调取申请书</h2>
+<div class="docbox">
+<p>监控、点单及电子数据调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系周某涉嫌容留他人吸毒罪一案辩护人。</p>
+<p>申请事项</p>
+<p>请求调取并保全能够还原客人进店、包厢服务、经理进出、监控故障和公安检查过程的原始电子数据。</p>
+<p>调取范围</p>
+<p>一楼入口、前台、东侧走廊、安全出口和设备间原始监控；</p>
+<p>事故前后完整连续视频、原始存储介质、校验值及提取笔录；</p>
+<p>摄像头在线、离线、软件关闭、网络和维修日志；</p>
+<p>开台、点单、服务铃、酒水配送、赠品、续时、折扣和退单记录；</p>
+<p>经理账号登录时间、操作终端、IP地址和权限记录；</p>
+<p>对讲机、内部工作群、服务员工作手机及异常报告记录；</p>
+<p>公安到场、开门、检查、扣押和人员检测执法录像；</p>
+<p>顾客付款、续时、转账及与周某通讯记录。</p>
+<p>事实与理由</p>
+<p>上述数据直接关系周某进入包厢的次数、知情形成时间、赠品操作人及监控缺失原因。只提供剪辑视频或系统截图，无法审查完整性和操作主体。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四：证人重新询问及同步录音录像调取申请书</h2>
+<div class="docbox">
+<p>证人重新询问及同步录音录像调取申请书</p>
+<p>申请事项</p>
+<p>调取服务员小林、小陈两次询问的完整同步录音录像；</p>
+<p>对两名服务员分别重新询问，避免相互接触和提示；</p>
+<p>围绕其亲眼所见、报告原话、时间地点和周某回应进行开放式询问；</p>
+<p>核实员工会议、证人交流、行政处罚和劳动关系压力。</p>
+<p>重新询问问题</p>
+<p>进入608时具体看见、听见、闻到什么；</p>
+<p>桌面物品位置、颜色、包装和遮挡情况；</p>
+<p>是否亲眼看见吸食动作；</p>
+<p>何时向周某报告，报告原话是什么；</p>
+<p>周某逐字回应什么，谁在场；</p>
+<p>第一次笔录为何未提及明确吸毒报告；</p>
+<p>第二次询问前是否获知现场查获情况；</p>
+<p>询问人员是否以“已经知道”“是不是让你别管”等方式提示。</p>
+<p>证言新增内容直接关系犯罪核心事实，必须审查形成过程和客观印证，不能只采用最不利的一次陈述。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书五：证人证言前后矛盾质证意见</h2>
+<div class="docbox">
+<p>关于服务员证言的质证意见</p>
+<p>一、主要矛盾</p>
+<p>事项</p>
+<p>第一次陈述</p>
+<p>第二次陈述</p>
+<p>客观印证</p>
+<p>是否看见吸毒</p>
+<p>没有看清</p>
+<p>看见粉末和吸管</p>
+<p>________</p>
+<p>报告内容</p>
+<p>气味异常</p>
+<p>明确称有人吸毒</p>
+<p>________</p>
+<p>经理回应</p>
+<p>未记载</p>
+<p>“不要多事”</p>
+<p>________</p>
+<p>报告地点</p>
+<p>________</p>
+<p>________</p>
+<p>________</p>
+<p>二、询问方式</p>
+<p>第二次询问中如将“已经知道”“是不是让你别管”等待证事实写入问题，会降低回答的独立性。应以同步录音录像确认问题是否诱导。</p>
+<p>三、证言污染</p>
+<p>第二次询问前员工已经开会并交流608情况，应审查证人是否接触其他人的陈述、现场照片和公安处理结果。</p>
+<p>四、质证结论</p>
+<p>□ 稳定部分可采。</p>
+<p>□ 新增核心内容缺乏印证，不应单独定案。</p>
+<p>□ 应重新询问或通知证人出庭。</p>
+<p>□ 证言只能证明异常报告，不能证明明确报告吸毒。</p>
+</div>
+<h2>文书六：吸毒人员陈述及检测结果质证意见</h2>
+<div class="docbox">
+<p>关于吸毒人员陈述及检测结果的质证意见</p>
+<p>一、检测证明边界</p>
+<p>检测阳性能够证明近期摄入相关物质，不能单独证明摄入发生在608包厢，更不能单独证明周某明知。应结合复核、摄入时间、现场物证和个人轨迹。</p>
+<p>二、逐人审查</p>
+<p>人员</p>
+<p>检测</p>
+<p>是否承认包厢吸食</p>
+<p>开始时间</p>
+<p>周某是否在场</p>
+<p>矛盾</p>
+<p>陈某</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>阿杰</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>顾客三</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>顾客四</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>三、陈述风险</p>
+<p>可能存在相互推责或争取行政处理从轻；</p>
+<p>“经理肯定看到”属于判断，应追问基础事实；</p>
+<p>吸毒开始时间直接影响周某第一次进入时的认知；</p>
+<p>陈述应由监控、服务记录、物证、生物痕迹和通讯补强。</p>
+<p>四、结论</p>
+<p>在吸毒开始时间和周某所见所闻不能确定时，人员陈述不足以排除周某离开后才开始吸食的合理可能。</p>
+</div>
+<h2>文书七：监控缺失不应作有罪推定法律意见书</h2>
+<div class="docbox">
+<p>关于监控缺失不应作有罪推定的法律意见书</p>
+<p>关键时段走廊监控缺失确实影响事实查明，经营场所亦可能因维护不当承担相应责任。但刑事有罪推定必须以周某故意关闭、删除或指使他人破坏监控的证据为基础。</p>
+<p>一、应查明的技术事实</p>
+<p>摄像头、交换机、服务器和网络状态；</p>
+<p>软件关闭、账号登录和设备间门禁；</p>
+<p>同一时段其他摄像头是否异常；</p>
+<p>历史故障和维修记录；</p>
+<p>断线前后文件是否删除、覆盖或导出；</p>
+<p>周某是否接触设备或发出关闭指令。</p>
+<p>二、举证责任</p>
+<p>周某没有义务证明自己未进入包厢。监控缺失造成证明困难时，控方仍须以其他证据证明其第二次进入、实际明知和容留行为。</p>
+<p>三、结论</p>
+<p>在故障原因不明且无归责证据时，只能认定监控管理存在缺陷，不能以缺失本身推定周某实施犯罪。</p>
+</div>
+<h2>文书八：场所支配控制与经营者责任专项意见</h2>
+<div class="docbox">
+<p>关于场所支配控制与经营者责任边界的专项意见</p>
+<p>一、包厢并未完全脱离KTV控制</p>
+<p>顾客购买的是临时消费使用权。值班经理通常保留巡查、开门、制止、终止服务、调度保安和报警的权限。</p>
+<p>二、控制能力不等于容留行为</p>
+<p>构成容留仍须证明周某知道吸毒活动，并在能够制止的情况下允许场所继续使用。仅凭经理身份和岗位职责，不得认定犯罪。</p>
+<p>三、行政义务与刑事故意</p>
+<p>娱乐场所应落实禁毒巡查和报告制度。身份登记、巡查、报告或监控维护不充分，可以依法产生行政和经营责任，却不能替代容留罪的明知。</p>
+<p>四、普通服务员责任</p>
+<p>服务员通常只有进入和送物权限，未必有独立终止包厢使用的支配权。其是否承担刑事责任，应结合权限、明知及实际帮助分别判断。</p>
+</div>
+<h2>文书九：单次容留及牟利目的专项意见</h2>
+<div class="docbox">
+<p>关于单次容留及牟利目的的专项法律意见</p>
+<p>一、单次不等于当然无罪或当然有罪</p>
+<p>应逐项审查一次容留多人、二年内多次、既往处罚、容留未成年人、牟利目的、严重后果及其他入罪情形。</p>
+<p>二、人数须逐人证明</p>
+<p>尿液阳性人数不等于包厢内吸食人数。每个人是否在包厢实际吸食，须由本人陈述、现场物证、同行人、监控和工具痕迹分别证明。</p>
+<p>三、正常收费不等于牟利容留</p>
+<p>正常包厢费、酒水费首先属于普通经营收入。只有证明周某明知吸毒并为了继续赚取场所使用费或招揽生意而容许，才可能按牟利目的评价。</p>
+<p>四、本案结论</p>
+<p>在明知、现场吸毒人数及知情后的继续服务均不能可靠证明时，不能仅凭正常收费和三人检测阳性认定一次牟利容留多人。</p>
+</div>
+<h2>文书十：不构成容留他人吸毒罪法律意见书</h2>
+<div class="docbox">
+<p>关于周某不构成容留他人吸毒罪的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、第一次进入不能证明明知</p>
+<p>周某因设备故障进入不足一分钟。控方无法证明毒品在此前已取出、桌面无遮蔽、有人正在吸食，至少两名顾客称周某离开后才开始。</p>
+<p>二、明确报告证据不足</p>
+<p>服务员第一次只称异常气味且未看清吸毒，第二次才增加白色粉末、明确报告和“不要多事”等内容。核心新增事实缺乏同步记录和其他证人印证。</p>
+<p>三、第二次进入及帮助行为未证实</p>
+<p>关键监控缺失，但无证据证明周某人为关闭，也无证据证明其第二次进入、续时、通风报信、帮助藏匿或清理。</p>
+<p>四、经营行为不能反推故意</p>
+<p>果盘批准和正常收费属于一般服务。明知未被证明前，不能把这些行为解释为容留便利，再用该便利反证明知。</p>
+<p>五、结论</p>
+<p>现有证据最多证明禁毒巡查和异常处置不到位，不足以证明周某明知并容许包厢继续用于吸毒。请求依法认定不构成犯罪。</p>
+</div>
+<h2>文书十一：证据不足不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于建议对周某作证据不足不起诉处理的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>吸毒开始时间无法确定，不能证明周某首次进入时已经发生吸毒；</p>
+<p>服务员证言前后重大变化，并存在诱导性询问风险；</p>
+<p>吸毒人员关于时间、桌面状态和周某反应互相矛盾；</p>
+<p>监控缺失无法归责周某，不得用于补充证明缺口；</p>
+<p>经理账号操作不能排除他人代操作；</p>
+<p>正常收取费用及赠送果盘不能单独证明牟利容留；</p>
+<p>没有续时、报信、隐藏物品、关闭监控或熟客安排证据；</p>
+<p>场所管理失职与故意容留之间仍存在合理怀疑。</p>
+<p>建议依法作证据不足不起诉。对娱乐场所巡查、身份登记、报告和监控维护问题，依法移送主管机关处理。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>周某涉嫌容留他人吸毒罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>辩护人不回避608号包厢发生吸毒活动，也不否认星港娱乐会所在巡查、员工报告和监控维护方面存在问题。但本案审理的不是KTV管理是否合格，而是周某是否已经知道客人吸毒，并在有能力制止时决定让包厢继续成为吸毒场所。</p>
+<p>一、经理身份不能替代主观明知</p>
+<p>周某具有开门、巡查、终止服务和报警权限，只说明其可能成为容留主体。刑事责任仍要求证明其实际知道或者故意回避吸毒事实。</p>
+<p>二、第一次进入时包厢状态不能确定</p>
+<p>周某因点歌设备故障进入不足一分钟。涉案人员对毒品何时取出、吸食何时开始的陈述互相矛盾。现场查获状态不能反推一个小时前桌面状态。</p>
+<p>三、服务员证言不足以证明明确报告</p>
+<p>小林第一次只说闻到异常气味且没有看清，第二次才增加明确报告和“不要多事”。第二次询问把待证事实写入问题，且发生在员工交流之后，新增内容欠缺客观印证。</p>
+<p>四、监控缺失不能填补证据链</p>
+<p>设备日志未显示软件关闭，没有证据证明周某进入设备间、删除视频或指使他人破坏摄像头。对维护不当可以行政处理，但不能推定周某第二次进入包厢。</p>
+<p>五、一般经营服务不能反向证明犯罪</p>
+<p>正常包厢收费、送酒和赠送果盘，在明知未被证明时只是普通经营行为。本案没有续时、特殊收费、固定熟客、通风报信、协助藏匿或清理证据。</p>
+<p>六、一次容留的入罪事实仍未查清</p>
+<p>三人检测阳性不等于三人均在包厢吸食。即使包厢内确有多人吸食，也必须进一步证明周某明知并实施容留，不能把吸毒者人数直接转换为经理责任。</p>
+<p>七、辩护请求</p>
+<p>依法宣告周某无罪；</p>
+<p>至少排除以牟利为目的容留的认定；</p>
+<p>如法院作不利判断，充分考虑单次发生、未提供毒品和工具、未参与吸食、无续时和报信、无前科及认罪悔罪等情节从宽处罚。</p>
+<p>包厢里的物证可以证明有人吸毒，不能自动证明门外的经理知道。行政管理要求经理应当发现、应当制止，刑事定罪则要求证明他已经知道并决定容许。两者之间的距离，只能由证据跨越，不能由身份、职责和怀疑替代。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>开台、付款、点单、服务铃、酒水、赠品、续时和退单记录；</p>
+<p>入口、前台、走廊、安全出口和设备间原始监控；</p>
+<p>监控设备在线、断线、关闭、登录和维修日志；</p>
+<p>周某岗位职责、值班表、管理卡和终止服务权限；</p>
+<p>服务员历次笔录、同步录音录像和员工会议材料；</p>
+<p>吸毒人员检测、复核、历次陈述和手机数据；</p>
+<p>毒品及工具提取、封存、鉴定、指纹和生物痕迹；</p>
+<p>经理账号操作终端、IP、登录和前台监控；</p>
+<p>公安检查执法录像、开门和扣押记录；</p>
+<p>KTV禁毒制度、培训、巡查和既往处理记录。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 容留他人吸毒罪应审查场所支配控制、主观明知、容留行为及司法解释规定的入罪情形。</h3>
+<h3>2. 娱乐场所经营者、管理者负有禁毒巡查和发现后报告义务，但违反行政义务不能自动替代犯罪故意。</h3>
+<h3>3. 正式使用时，应核验案发时有效的刑法、毒品犯罪司法解释、禁毒法、娱乐场所管理规范及电子数据取证规则，并根据真实卷宗修改。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

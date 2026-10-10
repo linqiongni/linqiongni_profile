@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch19</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch19">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第四卷  危险现场</h1>
+</header>
+<div class="wrap">
+<p>第十九章配套法律文书全文</p>
+<p>楼道里蔓延的火</p>
+<h3>文书目录</h3><ol>
+<li>放火罪与失火罪构成要件对照审查表</li>
+<li>点火前后行为及主观心理时间轴</li>
+<li>楼道监控、报警录音及消防材料调取申请书</li>
+<li>火灾现场补充勘验及三维测量申请书</li>
+<li>火灾事故认定复核申请书</li>
+<li>火灾事故认定书质证意见</li>
+<li>不具有危害公共安全故意法律意见书</li>
+<li>放火罪既遂、未遂与公共危险形成专项意见</li>
+<li>财产损失逐户核对及重新认定申请书</li>
+<li>证据不足不起诉／变更罪名法律意见书</li>
+<li>庭审发问提纲</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：放火罪与失火罪构成要件对照审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>填写内容</p>
+<p>案号</p>
+<p>__________</p>
+<p>犯罪嫌疑人／被告人</p>
+<p>罗某／__________</p>
+<p>起火时间地点</p>
+<p>__________</p>
+<p>人员伤亡</p>
+<p>无／__________</p>
+<p>审查人／日期</p>
+<p>__________／__________</p>
+<p>一、客观行为</p>
+<p class="kv"><b>点燃对象及数量</b>　__________</p>
+<p class="kv"><b>点火位置与楼梯、房门的距离</b>　__________</p>
+<p class="kv"><b>是否使用汽油、酒精等助燃剂</b>　__________</p>
+<p class="kv"><b>是否多点起火或搬运其他可燃物</b>　__________</p>
+<p class="kv"><b>是否封堵出口、破坏消防设施</b>　__________</p>
+<p class="kv"><b>火焰、烟气发展及居民撤离情况</b>　__________</p>
+<p>二、危害公共安全故意</p>
+<p>□ 明确追求火势蔓延、人员伤亡或重大财产损失。</p>
+<p>□ 明知公共危险可能发生并接受、放任结果。</p>
+<p>□ 针对特定家具或房东财物泄愤。</p>
+<p>□ 长期居住并熟悉楼道为唯一疏散通道。</p>
+<p>□ 使用高危险点火方式并在点火后离开。</p>
+<p>□ 火势扩大后未报警、未灭火或阻碍救援。</p>
+<p>三、过失心理</p>
+<p>□ 已经预见火灾风险，但轻信自己能够控制。</p>
+<p>□ 因疏忽大意没有预见火势和烟气蔓延。</p>
+<p>□ 未使用助燃剂，可燃物数量有限。</p>
+<p>□ 点火后始终留在现场观察。</p>
+<p>□ 火焰升高后立即灭火、呼喊住户并报警。</p>
+<p>□ 没有封堵出口、隐藏身份或毁灭证据。</p>
+<p>四、公共危险及犯罪形态</p>
+<p>□ 火焰已持续燃烧并引燃其他物体。</p>
+<p>□ 浓烟进入多个楼层并影响唯一疏散通道。</p>
+<p>□ 火势已脱离行为人有效控制。</p>
+<p>□ 公共危险尚未现实形成即被扑灭。</p>
+<p>□ 发生法定严重后果，符合失火罪结果要求。</p>
+<p>□ 损失数额、住户人数和危险范围尚待核实。</p>
+<p>五、初步结论</p>
+<p>□ 构成放火罪既遂。</p>
+<p>□ 构成放火罪未遂。</p>
+<p>□ 放火故意证据不足，应以失火罪评价。</p>
+<p>□ 失火罪严重后果证据不足。</p>
+<p>□ 可能涉及故意毁坏财物，应避免重复评价。</p>
+</div>
+<h2>文书二：点火前后行为及主观心理时间轴</h2>
+<div class="docbox">
+<p class="kv"><b>填写提示</b>　时间以原始监控、报警平台和消防记录校准，不以剪辑视频或单方口述为准。</p>
+<p>时间</p>
+<p>客观行为</p>
+<p>火势/烟气</p>
+<p>罗某可见信息</p>
+<p>主观证明方向</p>
+<p>证据来源</p>
+<p>____</p>
+<p>与房东争执</p>
+<p>无</p>
+<p>____</p>
+<p>动机</p>
+<p>____</p>
+<p>____</p>
+<p>取废纸和打火机</p>
+<p>无</p>
+<p>____</p>
+<p>准备程度</p>
+<p>____</p>
+<p>____</p>
+<p>点燃第一张纸</p>
+<p>初始火苗</p>
+<p>____</p>
+<p>特定物燃烧故意</p>
+<p>____</p>
+<p>____</p>
+<p>推动第二张纸</p>
+<p>火焰发展</p>
+<p>____</p>
+<p>是否继续添火</p>
+<p>____</p>
+<p>____</p>
+<p>拿拖把灭火</p>
+<p>椅背起火</p>
+<p>____</p>
+<p>控制意愿</p>
+<p>____</p>
+<p>____</p>
+<p>取水、呼喊住户</p>
+<p>宣传栏起火</p>
+<p>____</p>
+<p>救助、疏散</p>
+<p>____</p>
+<p>____</p>
+<p>拨打报警电话</p>
+<p>浓烟上行</p>
+<p>____</p>
+<p>是否逃避</p>
+<p>____</p>
+<p>____</p>
+<p>消防到场</p>
+<p>公共危险</p>
+<p>____</p>
+<p>配合处置</p>
+<p>____</p>
+<p>一、需要逐帧核对的动作</p>
+<p>□ 第二张纸是推向火源还是移离火源。</p>
+<p>□ 罗某回屋是取灭火工具还是离开现场。</p>
+<p>□ 第一次灭火发生在火势尚小还是明显失控后。</p>
+<p>□ 是否有人阻止罗某灭火。</p>
+<p>□ 罗某是否持续添加燃料。</p>
+<p>□ 罗某是否在报警前隐瞒或清理现场。</p>
+<p>二、时间差</p>
+<p class="kv"><b>点火至首次灭火</b>　______秒</p>
+<p class="kv"><b>点火至首次呼喊住户</b>　______秒</p>
+<p class="kv"><b>点火至第一通报警</b>　______秒</p>
+<p class="kv"><b>点火至罗某报警</b>　______秒</p>
+<p class="kv"><b>点火至消防到场</b>　______分钟</p>
+<p class="kv"><b>火势脱离控制的判断时点</b>　__________</p>
+</div>
+<h2>文书三：楼道监控、报警录音及消防材料调取申请书</h2>
+<div class="docbox">
+<p>调取楼道监控、报警录音及消防原始材料申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系罗某涉嫌__________一案的辩护人。</p>
+<p>申请事项</p>
+<p>请求依法调取并保全能够还原点火、灭火、报警、疏散、消防处置及火势发展过程的全部原始材料。</p>
+<p>调取范围</p>
+<p>涉案楼栋一层出入口、二层起火点、各楼层楼梯及周边监控原始文件；</p>
+<p>事故前后三十分钟完整连续视频、设备参数、真实帧率、校时及提取记录；</p>
+<p>110、119、120报警记录、录音、接警时间、派警和到场记录；</p>
+<p>消防救援机构接处警单、作战记录、现场照片、执法记录仪和水带铺设记录；</p>
+<p>火灾现场勘验笔录、现场图、起火点照片、物证提取清单及检验材料；</p>
+<p>助燃剂检测、电气故障排查、木椅及宣传栏燃烧痕迹材料；</p>
+<p>住户、物业、消防人员和现场目击者的原始询问笔录；</p>
+<p>物业清理残骸、拆除设施、恢复楼道及转移物品的照片和记录；</p>
+<p>罗某右前臂灼伤、衣物烧损及参与灭火的证明；</p>
+<p>火灾事故认定书内部论证、复核及送达材料。</p>
+<p>事实与理由</p>
+<p>本案罪名取决于罗某是否放任公共危险。完整监控和报警录音能够客观反映其点火后是否添火、何时灭火、是否呼喊住户、是否报警及是否离开现场。剪辑片段会割裂行为时间线，消防结论页亦不能替代原始材料审查。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四：火灾现场补充勘验及三维测量申请书</h2>
+<div class="docbox">
+<p>火灾现场补充勘验及三维测量申请书</p>
+<p>申请事项</p>
+<p>请求对涉案居民楼公共楼道进行补充勘验、测量和影像固定，必要时由有专门知识的人参与，对起火点、疏散通道、可燃物分布和烟气蔓延路径作出说明。</p>
+<p>勘验测量事项</p>
+<p>楼栋层数、每层住户、实际居住人员和事故时在场人数；</p>
+<p>楼梯净宽、唯一出口、防火门、窗户和通风条件；</p>
+<p>木椅原始位置、尺寸及与房东房门、楼梯扶手、宣传栏的距离；</p>
+<p>墙面宣传栏、电线、纸箱、塑料装饰等可燃物原始位置；</p>
+<p>楼道监控摄像头位置、视角和盲区；</p>
+<p>烟熏痕迹、烧损高度、熔滴、碳化方向和消防水痕迹；</p>
+<p>烟气从二层向三至六层蔓延的路径和可能时间；</p>
+<p>居民下楼是否必须经过起火区域；</p>
+<p>罗某取拖把、水桶、灭火器和报警时的移动路线；</p>
+<p>物业清理、拆除和修复对原始现场的改变。</p>
+<p>事实与理由</p>
+<p>点火位置和现场结构既关系公共危险是否现实形成，也关系罗某对危险的认识。仅以“居民楼道”作概括描述，无法判断火源有没有堵塞通道、周围可燃物是否明显、火势何时脱离控制。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书五：火灾事故认定复核申请书</h2>
+<div class="docbox">
+<p>火灾事故认定复核申请书</p>
+<p class="kv"><b>申请人</b>　罗某／__________，代理人：__________律师。</p>
+<p class="kv"><b>被申请复核文书</b>　__________号火灾事故认定书。</p>
+<p>复核请求</p>
+<p>复核起火部位、起火点和火势蔓延顺序；</p>
+<p>复核电气故障、助燃剂及其他起火原因的排除依据；</p>
+<p>补充说明木椅、宣传栏、电线外皮及纸箱依次燃烧的技术依据；</p>
+<p>更正超出火灾技术调查范围的主观故意或刑事罪名评价；</p>
+<p>补充调取完整监控、消防执法记录和现场清理前原始照片。</p>
+<p>事实与理由</p>
+<p>申请人不否认亲手点燃废纸，但火灾事故认定仍应准确说明火从何处开始、如何蔓延、哪些物体先后燃烧及是否存在助燃剂。若认定书以“人为放火”直接表达刑法上的放火故意，已超出起火原因技术认定范围。</p>
+<p>现场在事故次日即被清理，宣传栏和部分电线被拆除。复核时应以清理前照片、连续监控、消防执法记录和提取物为基础，不应以修复后的现场替代原始状态。</p>
+<p>此致</p>
+<p>__________火灾事故认定复核机构</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：火灾事故认定书质证意见</h2>
+<div class="docbox">
+<p>关于火灾事故认定书的质证意见</p>
+<p>一、真实性</p>
+<p>辩方对火灾事故认定书系消防救援机构依法制作的文书形式暂不持异议，但其事实和结论仍应接受原始勘验、监控、检验和证人证言的实质审查。</p>
+<p>二、起火部位与起火点</p>
+<p>完整监控显示罗某在二层楼梯转角点燃废纸，火焰随后接触木椅。若现场图、照片和认定书与视频一致，可确认起火部位；如物品在消防和清理中移位，应说明对定位的影响。</p>
+<p>三、起火原因</p>
+<p>应区分“外来火源引燃废纸和木椅”与“行为人具有危害公共安全故意”。前者是技术事实，后者是刑法评价。认定书不得以“人为点火”直接证明放火罪故意。</p>
+<p>四、排除过程</p>
+<p>□ 电气线路首先起火已结合视频、熔痕和检验排除。</p>
+<p>□ 助燃剂检测对象、提取位置和方法明确。</p>
+<p>□ 雷击、自燃、遗留火种等原因排除有证据支持。</p>
+<p>□ 木椅、宣传栏、电线和纸箱的先后燃烧关系清楚。</p>
+<p>□ 现场在勘验前未被不当清理或移动。</p>
+<p>五、证明边界</p>
+<p>火灾认定可以证明起火和蔓延事实，但不能单独证明罗某对多户住户和重大财产危险持希望或放任态度，也不能单独决定放火罪既遂。</p>
+<p>六、质证结论</p>
+<p>□ 技术事实可采，刑事主观评价不予采纳。</p>
+<p>□ 原始材料不完整，应通知调查人员出庭。</p>
+<p>□ 起火点和原因仍有合理疑问，应补充调查或复核。</p>
+<p>□ 不得将“人为点火”机械等同“放火罪”。</p>
+</div>
+<h2>文书七：不具有危害公共安全故意法律意见书</h2>
+<div class="docbox">
+<p>关于罗某不具有危害公共安全故意的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>罗某故意点燃废纸和旧木椅，应对其危险行为及火灾后果承担责任。争议并非是否点火，而是现有证据能否证明其接受、放任整栋居民楼住户和重大财产陷入火灾危险。</p>
+<p>一、点火对象和目的指向特定财物</p>
+<p>起火对象是房东放置在楼道内的旧木椅。罗某与房东因涨租和楼道堆物发生争执，其泄愤对象具有特定性。没有证据证明其扬言烧楼、伤害住户或者追求重大财产损失。</p>
+<p>二、行为方式不具有明显扩大火势的安排</p>
+<p>罗某使用随身打火机和少量废纸，未携带汽油、酒精等助燃剂，未多点起火，未搬运周边纸箱增加燃料，未向居民房门泼洒可燃液体，也未封堵楼梯和出口。</p>
+<p>三、点火后行为与放任危险不相符</p>
+<p>罗某没有离开楼栋。火焰上窜后，其返回房间取湿拖把，随后提水灭火，呼喊住户撤离并拨打报警电话。罗某在扑火中被灼伤，消防人员到场时仍在现场，并主动说明火由自己点燃。</p>
+<p>四、过于自信的过失具有客观基础</p>
+<p>罗某认为可燃物数量少，自己留在旁边可以控制，虽属严重轻率，但不是完全没有心理依据。其错误低估了残留海绵、塑料宣传栏、老化电线及封闭楼梯间的烟气危险，更符合预见风险后轻信能够避免。</p>
+<p>五、对公共危险故意应排除合理怀疑</p>
+<p>控方不能仅以点火地点危险、火势实际蔓延和结果严重倒推间接故意。应证明罗某明知公共危险可能发生后，仍接受该结果。及时且持续的灭火、报警和疏散行为，使“放任”结论存在合理疑问。</p>
+<p>六、结论</p>
+<p>建议依法排除放火罪认定。若火灾后果达到刑事追诉程度，应按照失火罪评价；如失火罪严重后果证据亦不足，则依法作出相应处理。</p>
+</div>
+<h2>文书八：放火罪既遂、未遂与公共危险形成专项意见</h2>
+<div class="docbox">
+<p>关于放火罪犯罪形态及公共危险形成的专项意见</p>
+<p>一、先证明放火故意，再讨论既遂未遂</p>
+<p>放火罪既遂与未遂的判断，以行为人具有危害公共安全故意为前提。不能先以火势扩大认定既遂，再用既遂结论反向证明主观故意。</p>
+<p>二、既遂不以实际伤亡为唯一标准</p>
+<p>如具有放火故意，火势脱离有效控制并形成危及不特定或多数人员生命、健康及重大公私财产的现实危险，即使最终无人伤亡、火灾被及时扑灭，也不当然属于未遂。</p>
+<p>三、公共危险应具体审查</p>
+<p>□ 楼梯是唯一室内疏散通道。</p>
+<p>□ 火焰引燃木椅以外的宣传栏、电线或纸箱。</p>
+<p>□ 浓烟进入多个楼层。</p>
+<p>□ 多户居民被迫撤离。</p>
+<p>□ 火势需要专业消防力量扑灭。</p>
+<p>□ 行为人仍能凭现场工具立即控制火势。</p>
+<p>四、本案的证明边界</p>
+<p>客观上，浓烟蔓延多个楼层并影响唯一楼梯，公共危险已经形成。但该事实只能证明客观危险程度，不能替代对罗某故意或过失心理的判断。若认定其仅为过失，则不存在失火罪未遂问题，而应审查实际后果是否达到失火罪标准。</p>
+</div>
+<h2>文书九：财产损失逐户核对及重新认定申请书</h2>
+<div class="docbox">
+<p>财产损失重新认定申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系罗某涉嫌__________一案的辩护人。</p>
+<p>申请事项</p>
+<p>请求对火灾造成的公共区域及各住户财产损失重新清点、分类、核价，剔除旧损、重复申报、更新增值及与本次火灾无因果关系的项目。</p>
+<p>逐户核对表</p>
+<p>权利人</p>
+<p>物品/项目</p>
+<p>损害原因</p>
+<p>购置时间</p>
+<p>修复/更换</p>
+<p>折旧残值</p>
+<p>认定金额</p>
+<p>物业</p>
+<p>________</p>
+<p>火烧/烟熏/水损</p>
+<p>____</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>201室</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>301室</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>其他</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>重新认定要求</p>
+<p>现场逐项核对火烧、烟熏、水浸和灭火拆除损害；</p>
+<p>区分公共区域与住户室内损失；</p>
+<p>核实发票、支付记录、使用年限、维修记录和火灾前照片；</p>
+<p>可以修复的按合理修复费用评价，确需更换的说明理由；</p>
+<p>旧家电、家具和装修考虑折旧及残值；</p>
+<p>收藏品等无发票物品结合照片、转账、鉴定证书和市场资料审查；</p>
+<p>临时住宿、误工、精神损害等与直接财产损失分别列明；</p>
+<p>排除原有霉变、漏水、老化和火灾后扩大装修范围；</p>
+<p>防止住户申报、物业申报和保险理赔之间重复计算。</p>
+<p>事实与理由</p>
+<p>现有损失总额主要来源于住户自行申报，混合原购买价、全屋翻新、临时住宿和其他赔偿项目。刑事案件中的损失必须能够逐项对应本次火灾及实际毁损程度，不能以申报金额直接定案。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：证据不足不起诉／变更罪名法律意见书</h2>
+<div class="docbox">
+<p>关于对罗某不以放火罪追诉并依法变更评价的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>一、放火故意证明不足</p>
+<p>现有证据能够证明罗某故意点燃废纸和木椅，也能证明公共危险实际形成。但不能证明罗某接受、放任多户住户及重大财产陷入火灾危险。点火后的及时灭火、呼喊、报警、留在现场和主动说明起火原因，与典型放任行为不符。</p>
+<p>二、事前和行为方式缺少扩大危险的安排</p>
+<p>罗某未使用助燃剂、未多点起火、未搬运额外可燃物、未封堵出口、未破坏消防设施。争执记录只反映其针对房东和旧家具泄愤，没有烧楼或伤害住户的明确言语。</p>
+<p>三、应区分特定财物故意和公共危险故意</p>
+<p>罗某对旧木椅受损具有故意，但该故意不能自动扩张为对公共安全的故意。对火势蔓延及住户危险，其心理状态至少存在过于自信过失的合理可能。</p>
+<p>四、消防认定不能补足主观证据</p>
+<p>火灾事故认定能够证明外来火源引燃废纸和木椅，不能直接证明刑法上的间接故意。以“人为点火”代替“放火故意”不符合主客观相统一原则。</p>
+<p>五、处理建议</p>
+<p>□ 对放火罪作证据不足不起诉。</p>
+<p>□ 根据法定严重后果及损失证据，依法以失火罪审查起诉。</p>
+<p>□ 如失火罪结果标准亦未达到，依法作不起诉或行政处理。</p>
+<p>□ 重新核定财产损失后再评价量刑。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：庭审发问提纲</h2>
+<div class="docbox">
+<p>一、向火灾调查人员发问</p>
+<p>何时进入现场，现场是否已被消防水或物业清理改变？</p>
+<p>起火部位、起火点和蔓延顺序依据哪些痕迹和视频？</p>
+<p>如何排除电气线路首先起火？</p>
+<p>助燃剂检测提取了哪些样品、位置和数量？</p>
+<p>认定书中的“人为放火”是技术原因还是刑法主观评价？</p>
+<p>木椅、宣传栏、电线和纸箱的先后燃烧如何确定？</p>
+<p>火势何时脱离普通人使用拖把、水桶可控制的范围？</p>
+<p>浓烟到达各楼层的时间和路径是否有技术分析？</p>
+<p>二、向监控提取及电子数据人员发问</p>
+<p>提交视频是否原始、连续，有无剪辑或转码？</p>
+<p>设备时间如何校准报警和消防到场时间？</p>
+<p>监控是否有声音，罗某呼喊行为依据哪些证据？</p>
+<p>罗某回屋持续多久，能否看清取出何种物品？</p>
+<p>第二张纸的推动动作是否存在不同解释？</p>
+<p>是否提取一楼出口监控确认罗某没有离开楼栋？</p>
+<p>三、向住户和物业人员发问</p>
+<p>是否听见罗某呼喊着火、取水或要求撤离？</p>
+<p>罗某是否参与灭火、使用拖把或水桶？</p>
+<p>是否看见罗某阻止逃生、锁门或破坏消防设施？</p>
+<p>起火前木椅、宣传栏、纸箱和电线位于何处？</p>
+<p>申报损失中哪些物品实际被烧、烟熏或水浸？</p>
+<p>房屋是否存在火灾前漏水、霉变、线路或装修老化？</p>
+<p>物业何时清理现场，清理前是否完整拍照录像？</p>
+<p>四、向价格认定人员发问</p>
+<p>损失清单来源于实地核验还是住户申报？</p>
+<p>如何区分火损、烟损、水损和原有旧损？</p>
+<p>旧家电、家具和装修如何折旧并计算残值？</p>
+<p>为何部分项目采用更换而非修复费用？</p>
+<p>临时住宿、误工等是否混入直接财产损失？</p>
+<p>是否存在住户、物业和保险理赔重复计算？</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>罗某涉嫌放火罪／失火罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>__________律师事务所接受罗某及其家属委托，指派本律师担任辩护人。罗某因租赁纠纷在居民楼公共楼道点燃废纸和旧木椅，其行为危险、冲动，也造成多户财物和公共设施损失。辩护人不为点火行为寻找正当理由。本案真正需要审理的是，罗某是否放任整栋楼的公共危险，还是错误地轻信自己能够控制火势。</p>
+<p>一、故意点燃旧木椅，不等于当然具有放火罪故意</p>
+<p>罗某有意识地点燃废纸，并推动纸张靠近木椅，对木椅损坏具有故意。但放火罪要求证明其希望或接受不特定、多数住户和重大财产陷入火灾危险。特定财物故意不能未经证明扩张为公共安全故意。</p>
+<p>二、行为方式没有显示主动扩大火势的安排</p>
+<p>罗某未使用汽油、酒精等助燃剂，未多点起火，未把其他家具和纸箱搬至火源，未封堵唯一楼梯、锁门或破坏消防设施，也没有向住户房门设置引燃路径。事件具有争执后的临时冲动特征。</p>
+<p>三、点火后的连续行为与放任危险不相符</p>
+<p>火焰沿椅背上窜后，罗某返回房间取湿拖把，随后提水灭火，连续呼喊住户并报警。罗某没有离开楼栋，没有隐藏身份，在扑火中被灼伤，消防人员到场时仍在现场并主动说明起火由自己点燃。</p>
+<p>四、现有证据不能排除过于自信的过失</p>
+<p>罗某已经认识到用火存在危险，却错误地认为废纸和木椅数量少，自己在旁边能够随时扑灭。他严重低估塑料宣传栏、老化电线和封闭楼梯间的烟气风险。这种心理应受刑罚评价，但更符合预见危险后轻信能够避免，而非接受结果发生。</p>
+<p>五、公共危险客观形成不能反推间接故意</p>
+<p>木椅以外物品被引燃，浓烟进入多层楼道，多户居民撤离，公共危险已经形成。这能够说明后果严重，却不能替代主观罪过证明。刑法不能因为火最终蔓延，就倒推罗某从点火之初已经放任整栋楼起火。</p>
+<p>六、消防认定应当严格限定证明范围</p>
+<p>消防认定可以证明火灾由外来火源引燃废纸和木椅，也可以说明起火点与蔓延路径。但“人为点火”不是“放火罪”的同义词，消防技术认定不能代替法院对间接故意的独立判断。</p>
+<p>七、财产损失应以真实直接损害为基础</p>
+<p>原损失清单混合原购买价格、全屋翻新、临时住宿、误工和其他赔偿项目。应逐户区分火烧、烟熏、水浸、拆除及原有旧损，考虑修复必要性、折旧和残值，避免以住户申报总额决定罪名和刑罚。</p>
+<p>八、辩护请求</p>
+<p>依法认定现有证据不足以证明罗某具有危害公共安全故意，不以放火罪定罪；</p>
+<p>在法定严重后果经可靠证明的前提下，以失火罪评价罗某行为；</p>
+<p>重新核定财产损失，剔除旧损、重复申报、更新增值和间接费用；</p>
+<p>综合罗某主动报警、持续灭火、疏散住户、主动供述、积极赔偿、取得谅解、无人伤亡及初犯偶犯等情节，依法从轻处罚并适用缓刑。</p>
+<p>本案中的火是罗某点燃的，这一点没有争议。争议在于，罗某究竟接受了什么结果。他接受旧木椅被烧毁，不等于他接受楼内住户被浓烟围困。判断这条界线，不能只看火烧到了哪里，还要看罗某点火后每一个可以被验证的选择。刑法既要惩罚鲁莽，也要准确区分故意与过失。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>租赁合同、涨租通知、房屋维修和楼道堆物聊天；</p>
+<p>楼道和一楼出入口完整原始监控、参数及提取记录；</p>
+<p>110、119、120报警录音、接处警和到场时间；</p>
+<p>消防执法记录、作战记录、灭火方式和现场照片；</p>
+<p>火灾现场勘验、现场图、物证提取和助燃剂检验；</p>
+<p>建筑平面图、楼梯宽度、出口及住户分布材料；</p>
+<p>木椅、废纸、宣传栏、电线和纸箱的燃烧痕迹；</p>
+<p>住户关于灭火、呼喊、撤离和报警的证言；</p>
+<p>罗某灼伤、衣物烧损及持续留在现场的证据；</p>
+<p>物业清理现场和修复前后的照片、录像和记录；</p>
+<p>逐户财产损失、票据、使用年限、修复和折旧材料；</p>
+<p>赔偿协议、支付凭证、谅解书和社区调查材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 危害公共安全犯罪的判断，应综合行为性质、行为场所、侵害对象、主观恶性、现实危险及实际后果，避免只凭单一结果确定罪名。</h3>
+<h3>2. 最高人民法院公报刊载的失火案例表明，行为人应当预见火灾风险却因疏忽大意引发严重火灾的，可以构成失火罪；主动产生火源不当然等于放火故意。</h3>
+<h3>3. 正式使用时，应核验案发时有效的刑法、司法解释、失火案件立案追诉规定、火灾事故调查程序、价格认定规范及当地消防管理规定，并依据真实案卷修改。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

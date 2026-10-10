@@ -74,22 +74,40 @@ CHAPTERS = {
     "ch30": ("第三十章：铁门打开以后", "第三十章", "刑罚执行 减刑 假释 申诉 刑满释放 社会回归"),
 }
 
-# 配套文书全集：源 docx stem -> (输出 id, 左侧目录/STATIONS 显示名)
-# 命名不统一（有的带「_虚构示例」、有的带空格数字后缀），逐一登记，避免生成器靠猜漏掉。
-DOCS = [
-    ("第一章配套法律文书全集_虚构示例", "docs-ch01", "第一章配套文书全集"),
-    ("第二章配套法律文书全集_虚构示例 1", "docs-ch02", "第二章配套文书全集"),
-    ("第十六章配套法律文书", "docs-ch16", "第十六章配套文书全集"),
-]
+# 章节中文数字 -> 序号（第X章 -> chNN）
+_CN_NUM = ['零','一','二','三','四','五','六','七','八','九','十',
+           '十一','十二','十三','十四','十五','十六','十七','十八','十九','二十',
+           '二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十']
+
+# 配套文书全集：自动发现，无需手动登记。
+# 扫描源文件夹里所有「*配套法律文书*.docx」，从文件名「第X章…」推导章号，
+# 自动生成 (源 stem, 输出 id docs-chNN, 左侧目录/STATIONS 显示名「第X章配套文书全集」)。
+# 命名前缀不统一（_虚构示例 / 全文 / 空格数字后缀）都能匹配；缺文件的章节不会出现死链。
+_CN_TO_IDX = {cn: i for i, cn in enumerate(_CN_NUM) if i >= 1}
+
+def _discover_docs():
+    found = []
+    for f in sorted(os.listdir(SRC)):
+        if "配套法律文书" not in f or not f.endswith(".docx") or f.startswith("~"):
+            continue
+        m = re.match(r"^第(.+?)章配套法律文书", f)
+        if not m:
+            continue
+        cn = m.group(1)
+        if cn not in _CN_TO_IDX:
+            continue
+        n = _CN_TO_IDX[cn]
+        cid = "ch%02d" % n
+        found.append((f[:-5], "docs-" + cid, "第%s章配套文书全集" % cn))
+    return sorted(found, key=lambda x: x[1])
+
+DOCS = _discover_docs()
 
 def src_docx(stem):
     p = os.path.join(SRC, stem + ".docx")
     return p if os.path.exists(p) else None
 
 # 章节 id(ch01..ch30) -> 源 docx 文件名(第一章..第三十章)
-_CN_NUM = ['零','一','二','三','四','五','六','七','八','九','十',
-           '十一','十二','十三','十四','十五','十六','十七','十八','十九','二十',
-           '二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十']
 CHAP_DOCX = {cid: ('第' + _CN_NUM[int(cid[2:])] + '章') for cid in CHAPTERS}
 
 # ---------------- HTML 工具 ----------------

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch21</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch21">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第五卷  公司与权力</h1>
+</header>
+<div class="wrap">
+<p>第二十一章配套法律文书全文</p>
+<p>老板拿走的项目款</p>
+<h3>文书目录</h3><ol>
+<li>挪用资金罪与职务侵占罪构成要件对照表</li>
+<li>实际控制人犯罪主体及公司财产独立审查表</li>
+<li>涉案项目款权属及资金全流程穿透表</li>
+<li>公司决策程序和关联交易合法性审查表</li>
+<li>公司、个人及关联公司银行会计资料调取申请书</li>
+<li>司法会计鉴定及涉案资金重新审计申请书</li>
+<li>司法会计鉴定意见质证书</li>
+<li>不具有非法占有目的法律意见书</li>
+<li>关联公司用款不属于归个人使用专项意见</li>
+<li>不构成职务侵占罪／变更罪名法律意见书</li>
+<li>证据不足不起诉及退还资金从宽意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：挪用资金罪与职务侵占罪构成要件对照表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>挪用资金罪</p>
+<p>职务侵占罪</p>
+<p>主体</p>
+<p>公司、企业或其他单位工作人员</p>
+<p>公司、企业或其他单位工作人员</p>
+<p>客体</p>
+<p>单位资金使用收益及管理秩序</p>
+<p>单位财产所有权</p>
+<p>行为</p>
+<p>擅自暂时使用、借贷</p>
+<p>非法占为己有</p>
+<p>主观</p>
+<p>认可单位所有，原则上准备归还</p>
+<p>永久剥夺并据为己有</p>
+<p>关键证据</p>
+<p>用途、期限、归还计划、个人利益</p>
+<p>虚假平账、否认债务、隐匿转移、拒绝返还</p>
+<p>本案初步结论</p>
+<p>__________</p>
+<p>__________</p>
+<p>一、共同构成基础</p>
+<p>□ 涉案八百万元属于启衡公司资金。</p>
+<p>□ 唐某属于公司工作人员并利用职务便利。</p>
+<p>□ 转款未经有权机构真实授权。</p>
+<p>□ 犯罪数额达到案发时适用标准。</p>
+<p>二、挪用方向</p>
+<p>□ 资金仅暂时改变用途。</p>
+<p>□ 关联公司用于真实经营贷款。</p>
+<p>□ 唐某认可启衡公司债权。</p>
+<p>□ 存在客观归还来源和计划。</p>
+<p>□ 超过三个月未还。</p>
+<p>□ 用于营利活动。</p>
+<p>三、侵占方向</p>
+<p>□ 虚构采购、借款或供应商。</p>
+<p>□ 将债权长期登记到唐某个人名下。</p>
+<p>□ 用于个人消费、投资或家庭支出。</p>
+<p>□ 否认启衡公司权利。</p>
+<p>□ 销毁账目、转移资产、逃匿。</p>
+<p>□ 有能力归还却明确拒绝。</p>
+</div>
+<h2>文书二：实际控制人犯罪主体及公司财产独立审查表</h2>
+<div class="docbox">
+<p>一、身份与职务</p>
+<p class="kv"><b>工商登记职务</b>　__________</p>
+<p class="kv"><b>持股比例及代持</b>　__________</p>
+<p class="kv"><b>内部任命及职责</b>　__________</p>
+<p class="kv"><b>资金、印章、U盾权限</b>　__________</p>
+<p class="kv"><b>是否领取工资或报酬</b>　__________</p>
+<p class="kv"><b>是否实际代表公司签约</b>　__________</p>
+<p>二、利用职务便利</p>
+<p>□ 审批付款。</p>
+<p>□ 指令财务转款。</p>
+<p>□ 控制网银、U盾或印章。</p>
+<p>□ 决定关联交易。</p>
+<p>□ 要求调整账目。</p>
+<p>□ 仅以股东身份提出建议，未实际经手。</p>
+<p>三、公司财产独立</p>
+<p>□ 公司有独立账户、账簿和经营。</p>
+<p>□ 唐某长期以个人账户代收代付。</p>
+<p>□ 其他股东、员工和债权人客观存在。</p>
+<p>□ 公司进入破产或存在外部债权。</p>
+<p>□ 唐某主张“公司就是我的”但无财产混同司法结论。</p>
+<p>四、审查结论</p>
+<p>实际控制、控股或者百分之百持股，不当然取得公司具体财产所有权。主体成立仍须证明唐某以公司工作人员身份利用职务便利实施涉案行为。</p>
+</div>
+<h2>文书三：涉案项目款权属及资金全流程穿透表</h2>
+<div class="docbox">
+<p>时间</p>
+<p>账户/主体</p>
+<p>金额</p>
+<p>附言/凭证</p>
+<p>用途</p>
+<p>证据</p>
+<p>____</p>
+<p>盛远→启衡</p>
+<p>800万元</p>
+<p>项目预付款</p>
+<p>项目启动</p>
+<p>____</p>
+<p>____</p>
+<p>启衡→唐某</p>
+<p>800万元</p>
+<p>临时往来</p>
+<p>过桥</p>
+<p>____</p>
+<p>____</p>
+<p>唐某→远川</p>
+<p>796万元</p>
+<p>借款/往来</p>
+<p>偿还贷款</p>
+<p>____</p>
+<p>____</p>
+<p>唐某→远川</p>
+<p>4万元</p>
+<p>____</p>
+<p>经营账户</p>
+<p>____</p>
+<p>____</p>
+<p>远川→启衡</p>
+<p>80万元</p>
+<p>还款</p>
+<p>部分归还</p>
+<p>____</p>
+<p>____</p>
+<p>其他归还</p>
+<p>____</p>
+<p>____</p>
+<p>退赔</p>
+<p>____</p>
+<p>一、权属核对</p>
+<p>□ 合同约定为预付款。</p>
+<p>□ 设立共管或监管账户。</p>
+<p>□ 启衡可自主安排经营资金。</p>
+<p>□ 合同明确专款专用。</p>
+<p>□ 解除合同后负返还责任。</p>
+<p>□ 公司已开票并入账。</p>
+<p>二、个人账户穿透</p>
+<p>核对到账前余额及个人资金；</p>
+<p>核对停留时间和同期其他转款；</p>
+<p>确认有无现金提取、消费、理财和亲属转账；</p>
+<p>确认进入远川的金额与涉案款一一对应；</p>
+<p>区分公司代收代付习惯与本次绕开审批的目的。</p>
+<p>三、犯罪数额</p>
+<p class="kv"><b>起算金额</b>　__________；已归还金额：__________；争议历史垫资：__________；不得抵扣项目：__________；建议认定金额：__________。</p>
+</div>
+<h2>文书四：公司决策程序和关联交易合法性审查表</h2>
+<div class="docbox">
+<p>审查事项</p>
+<p>章程/制度要求</p>
+<p>实际情况</p>
+<p>证据</p>
+<p>有权机构</p>
+<p>董事会/股东会</p>
+<p>________</p>
+<p>____</p>
+<p>会议通知</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>金额用途披露</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>关联回避</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>利息期限</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>担保保障</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>会计入账</p>
+<p>________</p>
+<p>________</p>
+<p>____</p>
+<p>一、口头同意</p>
+<p>赵某是否知道完整金额；</p>
+<p>是否知道款项先进入唐某个人账户；</p>
+<p>是否知道远川贷款和续贷不确定性；</p>
+<p>是否同意无利息、无担保和无还款日期；</p>
+<p>通话记录能否证明具体内容；</p>
+<p>个别股东意见能否代替章程规定程序。</p>
+<p>二、事后补文件</p>
+<p>□ 文件形成于转款前。</p>
+<p>□ 形成于报案前。</p>
+<p>□ 报案后倒签或补做。</p>
+<p>□ 签字人充分知情。</p>
+<p>□ 关联人员依法回避。</p>
+<p>□ 文件仅确认债务，不代表事前授权。</p>
+<p>三、边界意见</p>
+<p>程序违法可引发公司治理、赔偿或交易效力责任；是否构成犯罪仍须继续证明归个人使用或非法占有目的。</p>
+</div>
+<h2>文书五：公司、个人及关联公司银行会计资料调取申请书</h2>
+<div class="docbox">
+<p>银行账户及会计资料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系唐某涉嫌__________一案辩护人。</p>
+<p>申请事项</p>
+<p>调取启衡公司涉案前后十二个月全部银行账户流水、网银日志、付款审批和U盾操作记录；</p>
+<p>调取唐某个人涉案账户完整流水、到账前余额、同期个人资金及转出明细；</p>
+<p>调取远川公司贷款账户、还款专户、一般账户、续贷申请及银行审批材料；</p>
+<p>调取两家公司总账、明细账、会计凭证、审计轨迹和科目调整记录；</p>
+<p>调取两家公司历史采购、仓储、物流、垫资、结算及抵销资料；</p>
+<p>调取唐某个人保证、抵押及贷款违约可能影响个人责任的材料；</p>
+<p>调取报案前后全部归还、退赔、冻结、追缴和债权转让资料。</p>
+<p>事实与理由</p>
+<p>本案定性取决于资金是否属于启衡公司、个人账户是否只是通道、远川是否为真实用款主体、唐某是否取得具体个人利益以及是否存在真实归还计划。必须以连续完整流水和原始会计数据进行穿透审查。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：司法会计鉴定及涉案资金重新审计申请书</h2>
+<div class="docbox">
+<p>司法会计鉴定及重新审计申请书</p>
+<p>申请事项</p>
+<p>请求委托具有资质的机构，对涉案八百万元权属、流向、会计处理、关联往来、归还金额及启衡公司实际损失进行司法会计鉴定或专项审计。</p>
+<p>鉴定问题</p>
+<p>项目款何时成为启衡公司可支配资金，是否存在监管或专款约束；</p>
+<p>八百万元经个人账户的完整流向和停留时间；</p>
+<p>个人账户同期是否有足额个人资金，涉案转出能否一一对应；</p>
+<p>远川最终用于何项贷款，贷款是否真实到期；</p>
+<p>启衡与远川历史未结算债权债务余额；</p>
+<p>两家公司如何入账，债权主体何时调整、由谁操作；</p>
+<p>案发前后实际归还和可实现抵偿金额；</p>
+<p>转款对启衡现金流、项目采购和偿债能力的影响；</p>
+<p>是否存在虚构交易、重复计算、账外资金或个人消费。</p>
+<p>材料保全</p>
+<p>原始电子账套及备份；</p>
+<p>银行流水电子文件及回单；</p>
+<p>网银操作和U盾日志；</p>
+<p>会计凭证及修改日志；</p>
+<p>审计底稿和税务申报；</p>
+<p>相关合同、发票、入库及结算资料。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：司法会计鉴定意见质证书</h2>
+<div class="docbox">
+<p>关于司法会计鉴定／专项审计意见的质证意见</p>
+<p>一、对象和范围</p>
+<p>鉴定应明确是在计算资金流向、会计余额还是直接评价犯罪数额。法律上的公司财产、归个人使用和非法占有目的，不属于会计鉴定可以单独决定的事项。</p>
+<p>二、完整性</p>
+<p>□ 覆盖启衡、唐某和远川全部相关账户。</p>
+<p>□ 核对账外账户和共享账户。</p>
+<p>□ 使用原始银行数据而非单方打印件。</p>
+<p>□ 取得原始账套及修改日志。</p>
+<p>□ 历史垫资和已结算款项逐笔对应。</p>
+<p>三、方法问题</p>
+<p>不得只因资金进入个人账户即认定个人占有；</p>
+<p>不得把客户解除合同后的全部违约损失计入犯罪数额；</p>
+<p>历史垫资只有在真实、到期且存在抵销依据时才可处理；</p>
+<p>归还应以资金实际回到启衡或破产管理人控制为准；</p>
+<p>争议应收账款不得按票面金额当然视为现金退还。</p>
+<p>四、质证结论</p>
+<p>□ 资金流向部分可采。</p>
+<p>□ 犯罪性质结论越权，不予采纳。</p>
+<p>□ 账户或账套不完整，应补充鉴定。</p>
+<p>□ 历史往来和归还金额存在重复或遗漏。</p>
+</div>
+<h2>文书八：不具有非法占有目的法律意见书</h2>
+<div class="docbox">
+<p>关于唐某不具有非法占有目的的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、资金去向公开且可追踪</p>
+<p>八百万元虽经唐某个人账户，但停留时间短，随后进入远川公司贷款账户。未发现购房、购车、理财、家庭支出、提现或转移给亲属。</p>
+<p>二、存在真实经营用途</p>
+<p>远川贷款真实到期，资金用于清偿经营贷款。启衡与远川存在采购、仓储和垫资往来，虽不足以证明交易已获合法授权，但可排除虚构收款主体和虚假业务。</p>
+<p>三、公司债权始终可识别</p>
+<p>启衡账面保留应收款；远川在报案前调整债权主体为启衡公司；唐某未长期把远川债务登记为个人债权，也未否认启衡享有返还请求权。</p>
+<p>四、存在归还安排及实际履行</p>
+<p>唐某以远川续贷和经营回款为归还来源，计划虽过度乐观但并非完全虚构。远川在报案前已部分归还，唐某此后继续融资、出售资产并退赔。</p>
+<p>五、缺乏典型侵占行为</p>
+<p>现有证据未显示唐某虚构采购、伪造发票、销毁账目、隐匿去向、逃匿或者有能力归还却明确拒绝。客观无力归还不能直接等同非法占有。</p>
+<p>六、结论</p>
+<p>现有证据不足以证明唐某自始意图永久剥夺启衡公司对八百万元的所有权，不应以职务侵占罪评价。</p>
+</div>
+<h2>文书九：关联公司用款不属于归个人使用专项意见</h2>
+<div class="docbox">
+<p>关于关联公司用款及“归个人使用”的专项意见</p>
+<p>一、不能只看收款主体</p>
+<p>远川是独立法人。关联公司经营用款不当然等于启衡自身用款，也不当然等于唐某个人使用。应审查决策主体、交易名义、个人利益及启衡获得的对价。</p>
+<p>二、支持公司经营安排的事实</p>
+<p>两家公司存在长期采购、仓储和垫资关系；</p>
+<p>远川维持经营对启衡供应链具有现实价值；</p>
+<p>资金直接用于远川真实贷款，并非个人消费；</p>
+<p>账面最终确认启衡对远川债权；</p>
+<p>存在部分归还。</p>
+<p>三、支持归个人使用的事实</p>
+<p>唐某个人决定并绕开章程程序；</p>
+<p>经个人账户转款且远川初始记作唐某借款；</p>
+<p>唐某持有远川绝大部分股权；</p>
+<p>偿还贷款降低唐某个人担保风险；</p>
+<p>启衡未取得利息、担保或确定期限；</p>
+<p>启衡承担资金链断裂风险。</p>
+<p>四、辩护意见</p>
+<p>如无法证明唐某取得具体、直接个人利益，且交易目的确与启衡业务存续有关，不能仅凭控股关系认定归个人使用。至少应排除将关联公司全部收益自动等同个人利益的推断。</p>
+</div>
+<h2>文书十：不构成职务侵占罪／变更罪名法律意见书</h2>
+<div class="docbox">
+<p>关于排除职务侵占罪并依法审查变更罪名的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>一、职务侵占罪的非法占有目的证据不足</p>
+<p>资金用于真实贷款，流向透明，账面保留债权，报案前已纠正债权主体并部分还款。没有证据证明唐某否认债务、虚假平账、个人挥霍或转移隐匿。</p>
+<p>二、未归还结果不能替代主观目的</p>
+<p>银行拒绝续贷和经营失败使归还计划落空，说明决策风险极高，但不能仅凭三个月后公司资金链断裂倒推转款之初具有永久占有目的。</p>
+<p>三、若作刑事评价，应准确区分使用权与所有权侵害</p>
+<p>如果认定唐某未经授权，个人决定把公司资金提供给关联公司经营并达到法定条件，更符合暂时改变资金使用状态的挪用特征，而非永久剥夺公司财产。</p>
+<p>四、处理请求</p>
+<p>□ 对职务侵占罪作不起诉。</p>
+<p>□ 依法对挪用资金罪重新审查构成和数额。</p>
+<p>□ 排除挪用故意转化为侵占故意。</p>
+<p>□ 核减已归还及重复计算金额。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：证据不足不起诉及退还资金从宽意见书</h2>
+<div class="docbox">
+<p>证据不足不起诉及退还资金从宽法律意见书</p>
+<p class="kv"><b>第一部分</b>　不起诉意见</p>
+<p>不能排除转款系两家公司协同经营中的临时资金安排；</p>
+<p>赵某通话内容无法查清，公司授权事实存在证据缺口；</p>
+<p>唐某未个人消费，关联公司用途真实；</p>
+<p>远川曾为启衡垫资，双方债权债务需审计；</p>
+<p>唐某具体个人利益及“归个人使用”尚未充分证明；</p>
+<p>犯罪数额、历史垫资和已还金额存在争议。</p>
+<p class="kv"><b>第二部分</b>　从宽意见</p>
+<p>如检察机关仍认定构成挪用资金罪，请依法考虑唐某主动到案、提交账册和U盾、如实说明资金去向、报案前部分归还、提起公诉前继续退还、无个人挥霍、远川真实经营及积极修复损失等情节。</p>
+<p>退还情况表</p>
+<p>日期</p>
+<p>金额/资产</p>
+<p>来源</p>
+<p>接收主体</p>
+<p>是否实际控制</p>
+<p>____</p>
+<p>80万元</p>
+<p>远川回款</p>
+<p>启衡</p>
+<p>____</p>
+<p>____</p>
+<p>60万元</p>
+<p>车辆出售</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>100万元</p>
+<p>家属代偿</p>
+<p>____</p>
+<p>____</p>
+<p>____</p>
+<p>应收债权</p>
+<p>债权转让</p>
+<p>____</p>
+<p>____</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>唐某涉嫌挪用资金罪／职务侵占罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>启衡公司收到项目款后，唐某在没有完备公司决策、没有借款合同、没有利息和担保的情况下，将几乎全部流动资金经个人账户转给自己控制的远川公司。这样的做法严重越过公司财产边界，也给项目、员工和债权人造成现实损害。辩护的重点不是证明这笔交易规范，而是准确判断其究竟属于经营越权、挪用资金，还是职务侵占。</p>
+<p>一、实际控制人不能把公司资金当作个人财产</p>
+<p>唐某持有启衡多数股权并实际控制公司，但股权与公司法人财产不同。唐某同时担任董事长、总经理并直接审批付款，具备接受刑事主体审查的职务基础。</p>
+<p>二、现有证据不足以认定职务侵占</p>
+<p>涉案资金流向真实、完整，全部进入远川公司偿还到期贷款，未用于个人消费。启衡账面保留应收款，远川报案前已将债权主体更正为启衡，且发生部分归还。缺乏虚构交易、伪造平账、否认债务、销毁账目和逃匿等非法占有证据。</p>
+<p>三、经营失败不能反推永久占有目的</p>
+<p>远川续贷计划具有历史续贷、授信申请和银行沟通基础，只是最终未获批准。唐某判断过于乐观，甚至不负责任，但续贷失败和无力全额归还不能直接证明转款时就想把公司款项据为己有。</p>
+<p>四、挪用资金罪仍应严格审查“归个人使用”</p>
+<p>远川是独立公司，唐某持股及提供个人担保会产生个人利益，但两家公司也存在真实供应链合作和历史垫资。应具体证明唐某个人利益，而不能把关联公司全部经营利益自动折算为个人使用。</p>
+<p>五、公司授权及交易背景存在合理争议</p>
+<p>赵某与唐某确有通话，但内容无法还原；远川曾为启衡垫资约二百六十万元；两家公司长期协同经营。上述事实不能使转款当然合法，却使“纯粹为个人目的”的指控需要更强证据。</p>
+<p>六、犯罪数额和归还必须逐笔核定</p>
+<p>项目款本金、真实到期垫资、报案前归还、侦查期间退赔、争议应收债权及冻结追缴不得混合计算。只有实际回到启衡公司或破产管理人控制的款项，方能作为真实退还评价。</p>
+<p>七、辩护请求</p>
+<p>依法排除职务侵占罪及挪用故意转化为侵占故意的认定；</p>
+<p>如“归个人使用”、公司授权或犯罪数额证据不足，依法宣告无罪；</p>
+<p>如认定构成挪用资金罪，准确核减数额，并对报案前及提起公诉前退还充分从宽；</p>
+<p>综合主动到案、提交账册、无个人挥霍、部分归还、积极赔偿、初犯及经营失败背景，依法从轻、减轻处罚并适用缓刑。</p>
+<p>唐某犯下的第一个错误，是把两个公司的边界看得太轻。刑事审判不能犯相反的错误，把所有越权调款、公司治理混乱和经营失败都装进同一个罪名。钱的去向、决策的身份、个人利益和归还计划必须一项一项查清。只有这样，才能判断唐某拿走的是临时使用权，还是公司的所有权。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>启衡、远川营业执照、章程、股权和董监高资料；</p>
+<p>项目合同、付款、预算、采购、解除和民事诉讼资料；</p>
+<p>付款审批、网银、U盾、印章和财务指令；</p>
+<p>启衡、唐某、远川完整银行流水及电子日志；</p>
+<p>关联交易决策、股东通话、会议和事后确认材料；</p>
+<p>远川贷款、续贷、拒贷和唐某个人担保资料；</p>
+<p>两家公司历史采购、垫资、结算和应收应付明细；</p>
+<p>原始会计账套、凭证、修改日志和审计底稿；</p>
+<p>融资、资产出售、债权转让和归还记录；</p>
+<p>破产管理人审计、债权确认和追回材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 实际控制人、控股股东与公司属于不同财产主体；是否属于公司工作人员，应结合其职务、职责及对资金的实际管理判断。</h3>
+<h3>2. 挪用资金罪与职务侵占罪应以暂时使用还是永久非法占有为核心区分，不能仅凭未归还结果定性。</h3>
+<h3>3. 正式使用时，应核验案发时有效的刑法、司法解释、立案追诉和定罪量刑标准、公司法及当地司法实践，并以真实审计和完整流水修改文书。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>
