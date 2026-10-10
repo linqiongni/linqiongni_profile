@@ -390,7 +390,7 @@ def build_index(main_paras):
     out.append('</header>')
     out.append('<div class="wrap">')
 
-    out.append('<div class="box tip"><span class="lb">阅读导航</span><p>本书按「罪名类型 + 程序节点 + 辩护方法」分为六卷三十章，每章一宗独立虚拟案件。左侧目录按卷分组，已写章节可点击阅读，未写章节标注「待续」。建议从《全书摘要》建立整体印象，再按卷逐案精读。</p></div>')
+    out.append('<div class="box tip"><span class="lb">阅读导航</span><p>本书按「罪名类型 + 程序节点 + 辩护方法」分为六卷三十章，每章一宗独立虚拟案件。左侧目录按卷分组，点击即可阅读。建议从《全书摘要》建立整体印象，再按卷逐案精读。</p></div>')
 
     out.append("<h2>全书摘要</h2>")
     for ln in abstract.split("\n"):
