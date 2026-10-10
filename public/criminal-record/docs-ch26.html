@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch26</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch26">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十六章配套法律文书全文</h1>
+</header>
+<div class="wrap">
+<p class="volband">第六卷程序本身就是辩护</p>
+<p>照片墙上的第六个人</p>
+<p>使用说明</p>
+<p>本套文书围绕被害人从十二张照片中辨认出李某，但目标照片背景、尺寸和清晰度明显不同，且缺少赃物、指纹、DNA和完整监控的虚拟案件编制。审查重点不是被害人是否真诚，而是原始观察、辨认前污染、照片混杂、辨认过程及独立印证是否可靠。</p>
+<p>先固定被害人在接触嫌疑人信息前的最初描述。</p>
+<p>辨认前展示单人照片、告知已找到嫌疑人等，可能污染后续辨认。</p>
+<p>照片数量符合要求不等于真正混杂，应比较背景、尺寸、清晰度、头部比例及人物特征。</p>
+<p>重复辨认和当庭指认可能来自同一受污染记忆，不能当然构成独立印证。</p>
+<p>不在场证明由辩方提出后应及时核查，但有罪证明责任不转移。</p>
+<h3>文书目录</h3><ol>
+<li>照片辨认程序合法性审查表</li>
+<li>十二张照片相似性及视觉突出对照表</li>
+<li>被害人最初描述与李某特征对照表</li>
+<li>辨认前信息污染及确定程度审查表</li>
+<li>孤证、独立印证及身份证据链审查表</li>
+<li>不在场证明及空间时间轴核对表</li>
+<li>辨认全过程及原始照片材料调取申请书</li>
+<li>手机、支付、基站、路由器及沿途监控调取申请书</li>
+<li>辨认笔录排除申请书</li>
+<li>单一辨认证据不足以定案法律意见书</li>
+<li>证据不足不起诉法律意见书</li>
+<li>一审无罪辩护词</li>
+</ol>
+<h2>文书一：照片辨认程序合法性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>规范要求</th>
+<th>本案情况</th>
+<th>处理意见</th>
+</tr>
+<tr>
+<td>主持人员</td>
+<td>侦查人员依法主持</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>辨认前接触</td>
+<td>不得先见辨认对象</td>
+<td>已展示单人照片</td>
+<td>排除审查</td>
+</tr>
+<tr>
+<td>个别辨认</td>
+<td>辨认人单独进行</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>混杂条件</td>
+<td>类似特征对象混杂</td>
+<td>照片差异明显</td>
+<td>排除审查</td>
+</tr>
+<tr>
+<td>照片数量</td>
+<td>符合法定数量</td>
+<td>12张</td>
+<td>仅形式符合</td>
+</tr>
+<tr>
+<td>明显暗示</td>
+<td>不得暗示或指认</td>
+<td>用语有争议</td>
+<td>____</td>
+</tr>
+<tr>
+<td>真实性</td>
+<td>过程、笔录可核验</td>
+<td>无同步录像</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>不得作为定案根据的风险</p>
+<p>□ 辨认前使辨认人见到李某照片。</p>
+<p>□ 目标照片未混杂于类似特征照片中。</p>
+<p>□ 办案人员称“找到比较符合的人”。</p>
+<p>□ 辨认人不知可以回答“均不是”。</p>
+<p>□ 过程无录像且笔录仅记结论。</p>
+<p>□ 原始照片、检索和排版文件未保存。</p>
+</div>
+<h2>文书二：十二张照片相似性及视觉突出对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>编号</th>
+<th>背景</th>
+<th>清晰度</th>
+<th>头部占比</th>
+<th>年龄外观</th>
+<th>眼镜/胡须</th>
+<th>与最初描述相似度</th>
+</tr>
+<tr>
+<td>1</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>2</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>3</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>4</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>5</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>6 李某</td>
+<td>白色</td>
+<td>高清</td>
+<td>明显较大</td>
+<td>34岁左右</td>
+<td>无</td>
+<td>____</td>
+</tr>
+<tr>
+<td>7</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>8</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>9</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>10</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>11</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>12</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>测量说明</p>
+<p>统一扫描分辨率，记录每张照片像素宽高；</p>
+<p>测量头顶至下巴高度占照片高度比例；</p>
+<p>记录背景、压缩、拖影、曝光和裁剪差异；</p>
+<p>区分原始照片差异与打印、复印造成的差异；</p>
+<p>对比图仅用于展示程序差异，不替代原辨认材料。</p>
+</div>
+<h2>文书三：被害人最初描述与李某特征对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>特征</th>
+<th>孙某首次描述</th>
+<th>李某客观情况</th>
+<th>一致性及解释</th>
+</tr>
+<tr>
+<td>年龄</td>
+<td>二十多岁</td>
+<td>34岁</td>
+<td>____</td>
+</tr>
+<tr>
+<td>身高</td>
+<td>约1.75米</td>
+<td>约1.72米</td>
+<td>____</td>
+</tr>
+<tr>
+<td>体型</td>
+<td>偏瘦</td>
+<td>偏壮</td>
+<td>____</td>
+</tr>
+<tr>
+<td>发型</td>
+<td>短发</td>
+<td>寸头短发</td>
+<td>____</td>
+</tr>
+<tr>
+<td>脸型</td>
+<td>较长</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>衣着</td>
+<td>深色连帽上衣</td>
+<td>未查获对应衣物</td>
+<td>____</td>
+</tr>
+<tr>
+<td>鞋子</td>
+<td>浅色运动鞋</td>
+<td>有常见浅色鞋</td>
+<td>类属特征</td>
+</tr>
+<tr>
+<td>步态</td>
+<td>右脚似跛</td>
+<td>左膝手术但无明显跛行</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>观察条件</p>
+<p>□ 夜间侧后方光照。</p>
+<p>□ 案发过程仅数秒。</p>
+<p>□ 作案人在奔跑。</p>
+<p>□ 面部距离数米。</p>
+<p>□ 被害人受惊且注意财物。</p>
+<p>□ 仅短暂回头看见侧脸。</p>
+<p>□ 被害人视力及是否佩戴眼镜已核实。</p>
+</div>
+<h2>文书四：辨认前信息污染及确定程度审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>接触信息</th>
+<th>来源</th>
+<th>可能影响</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>报案当晚</td>
+<td>原始观察记忆</td>
+<td>案发现场</td>
+<td>基准记忆</td>
+<td>首份笔录</td>
+</tr>
+<tr>
+<td>辨认前一日</td>
+<td>李某单人照片</td>
+<td>办案人员</td>
+<td>熟悉感污染</td>
+<td>____</td>
+</tr>
+<tr>
+<td>正式辨认前</td>
+<td>“找到较符合的人”</td>
+<td>办案人员</td>
+<td>预设目标存在</td>
+<td>____</td>
+</tr>
+<tr>
+<td>正式辨认</td>
+<td>选择第6张</td>
+<td>照片墙</td>
+<td>视觉突出影响</td>
+<td>辨认笔录</td>
+</tr>
+<tr>
+<td>辨认后</td>
+<td>确认反馈</td>
+<td>“认得挺准”</td>
+<td>增强确信</td>
+<td>____</td>
+</tr>
+<tr>
+<td>庭审前后</td>
+<td>多次见照片/本人</td>
+<td>案件过程</td>
+<td>重复强化</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>确定程度记录</p>
+<p>□ 有点像。</p>
+<p>□ 比较像。</p>
+<p>□ 应该是。</p>
+<p>□ 不太确定。</p>
+<p>□ 就是他。</p>
+<p>□ 百分之百确定。</p>
+<p class="kv"><b>首次选择时原话</b>　________________；笔录表述：________________；两者是否一致：________________。</p>
+</div>
+<h2>文书五：孤证、独立印证及身份证据链审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>证据</th>
+<th>能否指向李某</th>
+<th>是否独立</th>
+<th>主要缺陷</th>
+</tr>
+<tr>
+<td>孙某照片辨认</td>
+<td>核心指向</td>
+<td>否/待核</td>
+<td>程序污染</td>
+</tr>
+<tr>
+<td>庭审指认</td>
+<td>重复指向</td>
+<td>否</td>
+<td>已熟悉被告</td>
+</tr>
+<tr>
+<td>模糊监控</td>
+<td>不能辨脸</td>
+<td>是</td>
+<td>仅衣着轮廓</td>
+</tr>
+<tr>
+<td>司机“有点像”</td>
+<td>不确定</td>
+<td>受照片影响</td>
+<td>未正式辨认</td>
+</tr>
+<tr>
+<td>赃物</td>
+<td>无</td>
+<td>—</td>
+<td>未查获</td>
+</tr>
+<tr>
+<td>指纹/DNA</td>
+<td>无有效结果</td>
+<td>—</td>
+<td>不支持指向</td>
+</tr>
+<tr>
+<td>手机流向</td>
+<td>未关联李某</td>
+<td>是</td>
+<td>去向不明</td>
+</tr>
+<tr>
+<td>不在场数据</td>
+<td>指向城西</td>
+<td>是</td>
+<td>需核验人机分离</td>
+</tr>
+</table></div>
+<p>真正独立印证</p>
+<p>□ 赃物在李某控制下查获。</p>
+<p>□ 清晰监控辨认李某。</p>
+<p>□ 指纹或DNA一致。</p>
+<p>□ 被抢手机与李某设备关联。</p>
+<p>□ 独立证人规范辨认。</p>
+<p>□ 排他性衣物或步态证据。</p>
+<p>□ 完整轨迹闭环。</p>
+<p>□ 供述及秘密性细节验证。</p>
+</div>
+<h2>文书六：不在场证明及空间时间轴核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>李某主张/事件</th>
+<th>客观数据</th>
+<th>争议</th>
+</tr>
+<tr>
+<td>____</td>
+<td>到达维修店</td>
+<td>赵某/店员</td>
+<td>____</td>
+</tr>
+<tr>
+<td>案发前20分钟</td>
+<td>便利店消费</td>
+<td>支付记录</td>
+<td>是否本人</td>
+</tr>
+<tr>
+<td>____</td>
+<td>连接维修店Wi-Fi</td>
+<td>路由器日志</td>
+<td>时间/设备标识</td>
+</tr>
+<tr>
+<td>约21:00</td>
+<td>江滨抢夺发生</td>
+<td>报警/监控</td>
+<td>核心案发时点</td>
+</tr>
+<tr>
+<td>案发前后</td>
+<td>城西基站</td>
+<td>通信数据</td>
+<td>覆盖精度</td>
+</tr>
+<tr>
+<td>案发后40分钟</td>
+<td>加油站买机油</td>
+<td>支付/小票</td>
+<td>是否本人</td>
+</tr>
+<tr>
+<td>____</td>
+<td>离开维修店</td>
+<td>证人陈述</td>
+<td>时间变化</td>
+</tr>
+</table></div>
+<p>空间可行性</p>
+<p class="kv"><b>维修店至案发地距离</b>　__________；当晚最短驾车时间：__________；离店、寻找目标、实施、逃离、返回所需总时长：__________；是否与支付、Wi-Fi或基站冲突：__________。</p>
+<p>不在场证言审查</p>
+<p>□ 赵某、陈某分别询问。</p>
+<p>□ 核心时段一致。</p>
+<p>□ 边缘细节存在自然差异。</p>
+<p>□ 以球赛、消费等事件确定时间。</p>
+<p>□ 与支付、网络及商品记录相符。</p>
+<p>□ 存在串供或虚假细节。</p>
+<p>□ 警方迟延核查导致监控覆盖。</p>
+</div>
+<h2>文书七：辨认全过程及原始照片材料调取申请书</h2>
+<div class="docbox">
+<p>辨认全过程及原始照片材料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系李某涉嫌抢夺罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取孙某首次报警录音、首份询问笔录及所有辨认前陈述；</p>
+<p>调取正式辨认前展示李某单人照片的原始文件、设备、时间和工作记录；</p>
+<p>调取十二张照片电子原件、文件属性、下载记录及人像系统检索条件；</p>
+<p>调取照片裁剪、压缩、排版、打印文件及所有历史版本；</p>
+<p>调取辨认前告知、辨认同步录音录像及派出所公共区域监控；</p>
+<p>调取辨认笔录电子版本、创建修改时间和签字过程；</p>
+<p>重新询问主持人员、在场人员及见证人，说明具体用语、顺序、犹豫和反馈；</p>
+<p>说明原始照片及录像未保存的原因和保管责任。</p>
+<p>理由</p>
+<p>辨认是本案唯一完成行为人身份指向的核心证据。目标照片背景、尺寸和清晰度明显不同，孙某在辨认前又接触李某单人照片。只有调取全过程材料，才能判断辨认笔录的证据资格和证明力。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：手机、支付、基站、路由器及沿途监控调取申请书</h2>
+<div class="docbox">
+<p>不在场证明及沿途客观数据调取申请书</p>
+<p>申请事项</p>
+<p>调取李某案发当日完整支付记录、商户订单、终端信息及商品明细；</p>
+<p>调取便利店、加油站及周边原始监控、覆盖规则和灭失说明；</p>
+<p>调取李某手机原始数据、Wi-Fi连接、定位、步数、应用和设备标识；</p>
+<p>调取维修店路由器原始日志、系统时间、设备列表及管理后台；</p>
+<p>调取李某号码及关联号码案发前后基站、通话和数据连接；</p>
+<p>调取维修店至江滨案发地全部道路监控、卡口及交通数据；</p>
+<p>调取赵某摩托车维修记录、配件、工具及当晚球赛等时间参照；</p>
+<p>对监控覆盖或者日志灭失的时间、原因及警方首次核查时间作出说明。</p>
+<p>理由</p>
+<p>上述数据关系李某案发时是否位于城西，以及理论往返路线能否现实成立。警方迟延核查造成的监控和日志灭失，不应转化为李某承担的不利证明责任。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：辨认笔录排除申请书</h2>
+<div class="docbox">
+<p>辨认笔录排除申请书</p>
+<p>申请事项</p>
+<p>请求依法认定孙某照片辨认笔录不得作为定案根据，并对辨认主持人员、见证人及相关办案人员进行调查或者通知出庭。</p>
+<p>事实与理由</p>
+<p>正式辨认前，办案人员已经向孙某展示李某单人照片，后续辨认记忆受到污染；</p>
+<p>李某照片为白色背景、图像高清、头像较大，其余照片多为蓝底旧证件照，未真正混杂于类似特征对象中；</p>
+<p>辨认前告知用语存在“已找到比较符合的人”等明显暗示争议；</p>
+<p>辨认过程无同步录音录像，笔录未记录犹豫、观察顺序、确定程度及办案人员反馈；</p>
+<p>十二张原始照片、检索条件和排版文件未完整保存，无法确认辨认材料真实性；</p>
+<p>事后重复辨认和当庭指认均无法修复首次污染。</p>
+<p>法律意见</p>
+<p>辨认前使辨认人见到辨认对象、辨认对象未混杂在具有类似特征的其他对象中，或者辨认中存在明显暗示、明显指认嫌疑的，相关辨认笔录不得作为定案根据。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：单一辨认证据不足以定案法律意见书</h2>
+<div class="docbox">
+<p>关于单一辨认证据不足以认定李某实施抢夺的法律意见书</p>
+<p>一、辨认可靠性存在基础缺陷</p>
+<p>孙某观察时间短、光线有限、作案人在奔跑，首次描述与李某在年龄、体型和步态上存在多项差异；正式辨认又受到单人照片接触和视觉突出影响。</p>
+<p>二、重复指认不是独立印证</p>
+<p>辨认后询问、庭审指认及“百分之百确定”均可能来源于已经污染的熟悉感，不能把同一记忆来源的重复表述计算为多项相互独立证据。</p>
+<p>三、客观证据没有完成身份指向</p>
+<p>现场监控无法辨认面部，无赃物、指纹、DNA、手机关联、排他性衣物和完整轨迹。司机仅称“有点像”，不具有确定指认能力。</p>
+<p>四、不在场证据形成合理怀疑</p>
+<p>案发前后城西支付、Wi-Fi和基站数据与赵某、陈某证言相互呼应。即使不能绝对证明李某始终在维修店，也足以要求控方排除李某不在案发地的合理可能。</p>
+<p>五、结论</p>
+<p>排除或者显著降低照片辨认证明力后，在案证据只能证明抢夺发生，不能证明李某为行为人，依法不得认定有罪。</p>
+</div>
+<h2>文书十一：证据不足不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于李某涉嫌抢夺罪证据不足不起诉的法律意见书</p>
+<p>一、核心身份证据依法不能采用或证明力极低</p>
+<p>辨认前已展示李某单人照片；</p>
+<p>目标照片背景、尺寸、清晰度和头部比例明显突出；</p>
+<p>其余人员年龄外观及特征不具有充分相似性；</p>
+<p>辨认告知、过程和确定程度缺少完整记录；</p>
+<p>原始照片、检索和排版材料缺失。</p>
+<p>二、缺少独立印证</p>
+<p>未查获赃物；</p>
+<p>无有效指纹、DNA；</p>
+<p>监控无法辨认面部；</p>
+<p>被抢手机未与李某发生关联；</p>
+<p>逃跑路线未形成闭环；</p>
+<p>没有独立证人规范指认；</p>
+<p>没有李某有罪供述及秘密性细节。</p>
+<p>三、不在场线索未被排除</p>
+<p>便利店和加油站支付、维修店Wi-Fi、城西基站及两名证人均支持李某案发前后位于城西。警方迟延核查导致监控覆盖，不能将证据灭失的不利后果归责于李某。</p>
+<p>四、处理意见</p>
+<p>本案存在犯罪事实，但行为人身份没有达到事实清楚、证据确实充分的标准。请求依法对李某作出证据不足不起诉决定，并继续依法侦查真正行为人。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审无罪辩护词</h2>
+<div class="docbox">
+<p>李某涉嫌抢夺罪一案一审无罪辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>孙某确实遭到抢夺，这是本案最不应被忽视的事实。但被害事实真实，不等于坐在被告席上的李某就是行为人。本案没有赃物，没有指纹和DNA，没有清晰面部监控，也没有完整逃跑轨迹。把李某与抢夺连接起来的核心，只是照片墙上的第六个人。</p>
+<p>一、辨认前展示单人照片已经污染后续记忆</p>
+<p>办案人员在正式辨认前向孙某展示李某单人照片。无论将该行为称为核实线索还是初步询问，孙某都已经把李某面孔纳入记忆，次日辨认无法区分案发记忆与前日熟悉感。</p>
+<p>二、十二张照片数量合格，但没有真正混杂</p>
+<p>李某照片白色背景、最清晰、头像最大，其余照片多为蓝底旧证件照，并存在眼镜、胡须和模糊差异。混杂要求的是类似特征，而不是机械凑足数量。</p>
+<p>三、辨认过程无法复核</p>
+<p>没有同步录音录像，没有完整告知，没有观察顺序、犹豫、改选和确定程度记录，原始照片与排版文件又未保留。事后情况说明不能恢复已经缺失的程序。</p>
+<p>四、最初描述与李某存在多项差异</p>
+<p>孙某首先描述二十多岁、偏瘦、约一米七五、右脚似跛；李某三十四岁、体型偏壮、约一米七二，左膝手术但日常无明显跛行。单项可以是误差，多项差异必须综合解释。</p>
+<p>五、重复指认不能把孤证变成证据链</p>
+<p>正式辨认、后续询问和当庭指认均可能源于同一次受污染照片记忆。形式上的多次确认，不等于来源独立的相互印证。</p>
+<p>六、客观证据没有指向李某</p>
+<p>模糊监控只能看见深色上衣和浅色鞋子等常见特征。网约车司机只称“有点像”。赃物、指纹、DNA、手机流向、排他性衣物和完整轨迹均不存在。</p>
+<p>七、不在场证明至少形成合理怀疑</p>
+<p>案发前后，李某账户在城西消费，手机连接维修店无线网络，号码位于城西基站范围，赵某和陈某亦证明李某在店内。警方迟延核查导致监控覆盖，不能要求李某承担无法恢复的证明责任。</p>
+<p>八、无罪不是要求辩方找到真正行为人</p>
+<p>李某无须证明另一个完整案件，也无义务指出真正行为人。只要控方不能排除目标照片被程序暗示选中、孙某记忆受污染以及李某案发时位于城西的合理可能，有罪结论就不能成立。</p>
+<p>九、辩护请求</p>
+<p>依法排除孙某照片辨认笔录，或者认定其不具备可靠证明力；</p>
+<p>对后续重复指认和当庭指认不作为独立印证；</p>
+<p>对无赃物、无生物痕迹、无清晰监控和无完整轨迹的证据缺口作有利于李某的评价；</p>
+<p>依法宣告李某无罪。</p>
+<p>照片墙上有十二个人。程序存在的意义，就是确保第六个人被选中，不是因为照片最亮、最大、最清楚，也不是因为办案人员已经认定答案，而是因为证据真正证明那个人就是行为人。现有证据没有做到这一点。程序本身，就是本案的辩护。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>首次报警录音、首份询问笔录及被害人原始描述；</p>
+<p>李某单人照片展示记录、手机及办案工作材料；</p>
+<p>十二张原始照片、人像检索、下载、裁剪、排版和打印数据；</p>
+<p>辨认告知、录像、公共区域监控、见证人及签字过程；</p>
+<p>照片背景、尺寸、清晰度、头部比例及人物特征对比图；</p>
+<p>现场光照、距离、角度、时长和被害人视力材料；</p>
+<p>现场监控原件、沿途摄像头、交通卡口和轨迹调取情况；</p>
+<p>赃物、指纹、DNA、手机数据、搜查和交易平台材料；</p>
+<p>便利店、加油站支付、Wi-Fi、基站和手机原始数据；</p>
+<p>赵某、陈某证言、维修资料及警方核查延误材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 正式使用时，应核验案发时有效的刑事诉讼法司法解释及公安机关办理刑事案件程序规定中关于辨认的条款。</h3>
+<h3>2. 辨认前见到对象、未真正混杂、明显暗示或者真实性无法确定，可能导致辨认笔录不得作为定案根据。</h3>
+<h3>3. 排除辨认后，应独立评价剩余证据能否证明行为人身份，不得以犯罪已经发生降低身份认定标准。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

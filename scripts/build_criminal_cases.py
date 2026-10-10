@@ -275,10 +275,22 @@ def build_docs(stem, out_id):
         blocks.pop(0)
     while blocks and blocks[-1][0] == "p" and not blocks[-1][1].strip():
         blocks.pop()
-    # 页头（与旧版一致：第 1 段标题，第 2 段若含「虚构」则为副题）
-    p_texts = [b[1] for b in blocks if b[0] == "p"]
-    doc_title = p_texts[0].strip() if p_texts else out_id
-    sub = p_texts[1].strip() if len(p_texts) > 1 and "虚构" in p_texts[1] else None
+    # 标题 = 第一个非空段落（全文版文书开头是卷名横幅表 + 空段，首段常为空白串）
+    # 副题 = 标题之后第一个含「虚构」的非空段落
+    title_idx = None
+    sub_idx = None
+    for bi, (k, d) in enumerate(blocks):
+        if k == "p" and d.strip():
+            if title_idx is None:
+                title_idx = bi
+            elif sub_idx is None and "虚构" in d:
+                sub_idx = bi
+                break
+    doc_title = blocks[title_idx][1].strip() if title_idx is not None else out_id
+    sub = blocks[sub_idx][1].strip() if sub_idx is not None else None
+    skip = {title_idx} if title_idx is not None else set()
+    if sub_idx is not None:
+        skip.add(sub_idx)
     out = []
     out.append('<header class="page-head">')
     out.append('<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>')
@@ -289,16 +301,14 @@ def build_docs(stem, out_id):
     out.append('<div class="wrap">')
     n = len(blocks)
     i = 0
-    skipped = 0  # 跳过前两个段落块（标题 / 虚构声明）
     doc_open = False
     while i < n:
+        if i in skip:
+            i += 1
+            continue
         kind, data = blocks[i]
         if kind == "tbl":
             out.append(render_table(data))
-            i += 1
-            continue
-        if skipped < 2:
-            skipped += 1
             i += 1
             continue
         s = data.strip()

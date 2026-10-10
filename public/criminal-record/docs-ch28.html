@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch28</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch28">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十八章配套法律文书全文</h1>
+<div class="sub">□ 如系虚构项目、象征履行或收款后转移逃匿，应重新评价。</div>
+</header>
+<div class="wrap">
+<p class="volband">第六卷程序本身就是辩护</p>
+<p>检察院作出的不起诉决定</p>
+<p>使用说明</p>
+<p>本套文书围绕美容机构销售人员林某因三名客户投诉被指控诈骗，但项目真实存在、服务已经部分履行、款项进入机构账户且退款争议尚未解决的虚拟案件编制。正式使用时应逐名客户、逐笔付款、逐项服务和逐句话术核实，不宜以行业概况替代个案证据。</p>
+<p>诈骗审查应形成“欺骗行为、错误认识、财产处分、取得财物、财产损失、非法占有目的”的完整链条。</p>
+<p>部分履行既可能反映真实交易，也可能是象征性履行，须审查比例、价值和履约能力。</p>
+<p>客户全部付款不当然等于诈骗损失，门店成本也不当然等于服务价值。</p>
+<p>机构宣传责任、退款审批责任与销售人员个人刑事责任应分别审查。</p>
+<p>不起诉类型必须与案件基础一致，证据不足案件不宜以酌定不起诉折中处理。</p>
+<h3>文书目录</h3><ol>
+<li>诈骗罪构成要件及刑民边界审查表</li>
+<li>销售话术、错误认识及付款原因审查表</li>
+<li>服务履行、价值及损失金额核对表</li>
+<li>非法占有目的事前事中事后审查表</li>
+<li>机构责任与销售人员个人责任区分表</li>
+<li>法定、酌定与存疑不起诉选择表</li>
+<li>审查逮捕阶段不批准逮捕法律意见书</li>
+<li>完整录音、门店后台、资金及退款材料调取申请书</li>
+<li>补充侦查事项及证据缺口法律意见书</li>
+<li>证据不足不起诉申请书</li>
+<li>不起诉听证书面意见</li>
+<li>不起诉后解除措施、返还财物及风险衔接申请书</li>
+</ol>
+<h2>文书一：诈骗罪构成要件及刑民边界审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要件</th>
+<th>需证明事实</th>
+<th>本案证据</th>
+<th>主要疑问</th>
+</tr>
+<tr>
+<td>欺骗行为</td>
+<td>虚构事实或隐瞒真相</td>
+<td>效果、设备、医生、优惠、退款话术</td>
+<td>完整原话及真假</td>
+</tr>
+<tr>
+<td>错误认识</td>
+<td>客户形成具体错误认知</td>
+<td>三名客户陈述不同</td>
+<td>核心认识不统一</td>
+</tr>
+<tr>
+<td>财产处分</td>
+<td>基于错误认识付款</td>
+<td>折扣、推荐、既往消费等多因素</td>
+<td>话术是否决定性</td>
+</tr>
+<tr>
+<td>取得财物</td>
+<td>行为人或第三人取得</td>
+<td>款项进入机构收款账户</td>
+<td>林某个人控制程度</td>
+</tr>
+<tr>
+<td>财产损失</td>
+<td>发生可确定财产减损</td>
+<td>已服务并取得产品</td>
+<td>数额难确定</td>
+</tr>
+<tr>
+<td>非法占有目的</td>
+<td>收款时意图非法占有</td>
+<td>实际履行、持续经营、申请退款</td>
+<td>反向事实较多</td>
+</tr>
+</table></div>
+<p>刑民边界提示</p>
+<p>□ 项目、设备、场所和人员真实存在。</p>
+<p>□ 已经投入人力、耗材和设备履行。</p>
+<p>□ 争议集中在效果、价格和退款。</p>
+<p>□ 收款后未逃匿、未私吞、未毁证。</p>
+<p>□ 仍可能存在虚假宣传、违约或行政违法。</p>
+</div>
+<h2>文书二：销售话术、错误认识及付款原因审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争议话术</th>
+<th>完整原话</th>
+<th>客观情况</th>
+<th>客户理解</th>
+<th>是否导致付款</th>
+</tr>
+<tr>
+<td>七天见效</td>
+<td>____</td>
+<td>效果存在个体差异</td>
+<td>周某：____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>基本不会反黑</td>
+<td>____</td>
+<td>仍有风险</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>医学级设备</td>
+<td>____</td>
+<td>设备真实，概念有争议</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>医生团队</td>
+<td>____</td>
+<td>有合作机构，非全部由医生操作</td>
+<td>陈某：____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>内部价格/最后名额</td>
+<td>____</td>
+<td>折扣后续仍存在</td>
+<td>刘某：____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>无效退款</td>
+<td>可以申请/保证全退？</td>
+<td>需审批且合同有限制</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>付款原因核对</p>
+<p>□ 效果承诺。</p>
+<p>□ 退款保障。</p>
+<p>□ 设备或医生资质。</p>
+<p>□ 折扣和分期。</p>
+<p>□ 朋友推荐。</p>
+<p>□ 既往消费经验。</p>
+<p>□ 地点便利。</p>
+<p>□ 赠送项目。</p>
+<p>□ 会员权益。</p>
+<p class="kv"><b>□ 其他</b>　__________。</p>
+</div>
+<h2>文书三：服务履行、价值及损失金额核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>客户</th>
+<th>成交价</th>
+<th>已服务/产品</th>
+<th>未消费项目</th>
+<th>价值争议</th>
+<th>拟认定损失</th>
+</tr>
+<tr>
+<td>周某</td>
+<td>____</td>
+<td>4次服务+产品</td>
+<td>____</td>
+<td>挂牌价/成交价/客观价值</td>
+<td>____</td>
+</tr>
+<tr>
+<td>陈某</td>
+<td>____</td>
+<td>6次服务</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>刘某</td>
+<td>____</td>
+<td>体验+追加服务</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>价值计算说明</p>
+<p>不得直接以全部付款认定损失，也不得只按门店成本扣除；</p>
+<p>分别列明挂牌价、成交价、合同退款价、可比市场价和实际投入；</p>
+<p>审查客户如知悉真实情况是否仍购买及愿意支付的价格；</p>
+<p>身体损害、修复费用与交易价款应区分评价；</p>
+<p>无法客观确定损失的，不得以门店或客户单方结算表替代证明。</p>
+</div>
+<h2>文书四：非法占有目的事前事中事后审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>阶段</th>
+<th>支持非法占有目的的事实</th>
+<th>反向事实</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>事前</td>
+<td>绝对化承诺、明知退款严格</td>
+<td>项目设备真实、机构具备履行能力</td>
+<td>____</td>
+</tr>
+<tr>
+<td>事中</td>
+<td>淡化风险、制造紧迫</td>
+<td>安排服务、使用耗材、统一入账</td>
+<td>____</td>
+</tr>
+<tr>
+<td>事后</td>
+<td>退款未完成</td>
+<td>未失联、安排复诊、提交退款申请</td>
+<td>____</td>
+</tr>
+<tr>
+<td>获利</td>
+<td>成交提成</td>
+<td>正常薪酬制度、退款可扣回</td>
+<td>____</td>
+</tr>
+<tr>
+<td>资金</td>
+<td>____</td>
+<td>未私收、未转移机构款项</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>重点核查</p>
+<p>□ 使用虚假身份或资质。</p>
+<p>□ 明知项目不存在。</p>
+<p>□ 明知无能力履行仍收费。</p>
+<p>□ 收款后阻止服务。</p>
+<p>□ 异常转账或分赃。</p>
+<p>□ 象征性履行掩盖主要骗款。</p>
+<p>□ 正常履行与补救。</p>
+<p>□ 继续经营且未逃匿。</p>
+</div>
+<h2>文书五：机构责任与销售人员个人责任区分表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>机构/负责人</th>
+<th>林某</th>
+<th>其他人员</th>
+<th>责任判断</th>
+</tr>
+<tr>
+<td>培训话术</td>
+<td>培训部门制作</td>
+<td>是否照用/自行扩张</td>
+<td>店长抽查</td>
+<td>____</td>
+</tr>
+<tr>
+<td>项目与设备</td>
+<td>采购和配置</td>
+<td>是否明知真实情况</td>
+<td>美容师操作</td>
+<td>____</td>
+</tr>
+<tr>
+<td>价格折扣</td>
+<td>区域经理审批</td>
+<td>推荐成交</td>
+<td>收银执行</td>
+<td>____</td>
+</tr>
+<tr>
+<td>退款制度</td>
+<td>管理层制定</td>
+<td>提交申请/口头承诺</td>
+<td>财务审批</td>
+<td>____</td>
+</tr>
+<tr>
+<td>收取款项</td>
+<td>统一账户</td>
+<td>无个人收款</td>
+<td>财务控制</td>
+<td>____</td>
+</tr>
+<tr>
+<td>实际服务</td>
+<td>安排资源</td>
+<td>预约跟进</td>
+<td>美容师实施</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>共同故意审查</p>
+<p>□ 有统一虚假经营方案。</p>
+<p>□ 林某参加制定或明知执行。</p>
+<p>□ 各人员对骗取款项有意思联络。</p>
+<p>□ 异常利益分配。</p>
+<p>□ 仅为部门分工和一般销售管理。</p>
+<p>□ 机构行为不能自动归责林某。</p>
+</div>
+<h2>文书六：法定、酌定与存疑不起诉选择表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>类型</th>
+<th>前提</th>
+<th>本案适配审查</th>
+<th>建议</th>
+</tr>
+<tr>
+<td>法定不起诉</td>
+<td>行为依法不构成犯罪或有法定不追诉情形</td>
+<td>若确认系真实交易及无非法占有目的</td>
+<td>第一顺位争取</td>
+</tr>
+<tr>
+<td>酌定不起诉</td>
+<td>犯罪事实清楚、证据充分，但情节轻微</td>
+<td>本案核心在是否构罪而非情节轻微</td>
+<td>不宜折中适用</td>
+</tr>
+<tr>
+<td>存疑不起诉</td>
+<td>经补证仍证据不足、不符合起诉条件</td>
+<td>欺骗、因果、目的、损失均存疑</td>
+<td>符合本案最终路径</td>
+</tr>
+</table></div>
+<p>选择检查</p>
+<p>□ 是否已查明犯罪事实。</p>
+<p>□ 是否达到起诉证明标准。</p>
+<p>□ 是否仍有现实补证空间。</p>
+<p>□ 是否经过必要补充侦查。</p>
+<p>□ 是否错误以认罪换取酌定不起诉。</p>
+<p>□ 是否需要同步审查行政责任。</p>
+</div>
+<h2>文书七：审查逮捕阶段不批准逮捕法律意见书</h2>
+<div class="docbox">
+<p>关于对林某不批准逮捕的法律意见书</p>
+<p class="kv"><b>辩护人</b>　__________律师，系林某涉嫌诈骗罪一案辩护人。</p>
+<p>一、现有证据不能建立完整诈骗链条</p>
+<p>案卷仅能证明部分销售表述可能不规范，尚不能证明客户基于特定虚假事实处分全部价款，更不能证明林某收款时具有非法占有目的。</p>
+<p>二、项目真实存在并已部分履行</p>
+<p>三名客户均预约并接受不同次数服务，设备、耗材、人员和操作记录客观存在。款项进入机构统一账户，林某未私自收款。</p>
+<p>三、退款争议更接近消费和合同履行争议</p>
+<p>林某在投诉后仍安排复诊、项目调整并提交退款申请，没有失联、转移财产或阻止履行。不能仅凭退款未完成倒推收款时的诈骗故意。</p>
+<p>四、不具有逮捕必要性</p>
+<p>林某身份、住址和工作稳定；</p>
+<p>已固定主要电子数据和经营资料；</p>
+<p>林某无逃匿、毁证及继续实施风险；</p>
+<p>可采取取保候审保障诉讼。</p>
+<p>五、请求</p>
+<p>请求依法对林某作出不批准逮捕决定，并责令侦查机关对完整录音、履行记录、资金流向和退款流程继续调查。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：完整录音、门店后台、资金及退款材料调取申请书</h2>
+<div class="docbox">
+<p>关键无罪、罪轻证据调取申请书</p>
+<p>申请事项</p>
+<p>调取三名客户原始手机中的完整录音、聊天及文件属性；</p>
+<p>调取成交前后全部合同、风险告知、客户签字和付款资料；</p>
+<p>调取门店预约后台、操作记录、仪器日志、耗材领用及产品领取记录；</p>
+<p>调取设备采购、说明书、注册或备案资料及合作医疗机构材料；</p>
+<p>调取机构销售培训课件、话术规范、违规提醒及录音抽查记录；</p>
+<p>调取对公及收银账户流水、林某工资提成和退款扣回记录；</p>
+<p>调取退款申请、审批权限、工作群催办、财务意见及协商方案；</p>
+<p>调取同类项目正常履行、投诉分类和持续经营资料。</p>
+<p>理由</p>
+<p>上述材料分别关系话术原意、客户错误认识、实际履行、财产损失、林某个人获利和非法占有目的，属于审查起诉时应当全面核实的关键证据。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：补充侦查事项及证据缺口法律意见书</h2>
+<div class="docbox">
+<p>补充侦查后证据缺口法律意见书</p>
+<p>已经查明的反向事实</p>
+<p>设备、项目、场所和人员真实存在；</p>
+<p>三名客户均接受过服务，部分领取产品；</p>
+<p>款项进入机构统一收款账户；</p>
+<p>林某未私收款项，仅领取制度内提成；</p>
+<p>林某曾安排复诊、项目替换并提交退款申请；</p>
+<p>“医学级”等表述部分来源于机构培训材料。</p>
+<p>仍未查明的定罪关键事实</p>
+<p>各争议话术的完整原话及客观真假；</p>
+<p>林某对话术虚假的明知程度；</p>
+<p>每名客户具体错误认识及决定性付款原因；</p>
+<p>已服务项目的客观价值和实际损失；</p>
+<p>林某与负责人之间是否具有共同诈骗故意；</p>
+<p>林某是否以非法占有全部或主要价款为目的。</p>
+<p>意见</p>
+<p>补充材料可以支持销售不规范、消费欺诈或行政违法的审查，但尚不能完成诈骗罪的刑事证明。若上述疑点经法定补证程序仍无法排除，应依法作证据不足不起诉。</p>
+</div>
+<h2>文书十：证据不足不起诉申请书</h2>
+<div class="docbox">
+<p>关于对林某作出证据不足不起诉决定的申请书</p>
+<p>申请事项</p>
+<p>请求依法认定本案经补充侦查仍不符合起诉条件，对林某作出证据不足不起诉决定。</p>
+<p>事实与理由</p>
+<p>争议话术的完整内容、限定条件及来源不能稳定查明；</p>
+<p>三名客户对效果、设备、医生、优惠和退款的认识各不相同，无法证明统一处分因果；</p>
+<p>机构真实经营，设备和项目存在，三名客户均接受不同程度服务；</p>
+<p>全部付款进入机构账户，林某没有个人收款和异常资金流向；</p>
+<p>退款未完成存在审批权、消费金额和方案分歧等多种解释；</p>
+<p>已履行服务价值和客户实际财产损失不能客观确定；</p>
+<p>林某是否具有非法占有目的及是否与管理层共同诈骗，证据不足；</p>
+<p>现有证据不能排除案件属于消费合同及宣传争议的合理可能。</p>
+<p>关于不起诉类型</p>
+<p>本案争议在于诈骗罪是否成立及证据能否达到起诉标准，不是犯罪事实清楚而情节轻微。因此，不宜以酌定不起诉替代证据判断。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：不起诉听证书面意见</h2>
+<div class="docbox">
+<p>拟不起诉案件听证书面意见</p>
+<p>一、对消费者投诉应予充分尊重</p>
+<p>客户对效果、风险提示和退款处理的不满有客观基础。刑事不起诉不等于销售行为完全规范，也不排除民事退款、赔偿及行政监管。</p>
+<p>二、刑事诈骗仍须证明完整构成</p>
+<p>现有材料不能充分证明林某明知项目、设备或医生信息虚假，并以非法占有目的使客户处分全部价款。真实履行和统一入账不能被忽略。</p>
+<p>三、三名客户不能机械合并</p>
+<p>客户购买项目、接触话术、付款原因及履行程度均不相同，应逐人逐笔评价，不能以投诉相似直接推定统一骗局。</p>
+<p>四、不起诉后的责任衔接</p>
+<p>客户可继续主张合同、退款和消费者权益；</p>
+<p>主管部门可依法审查虚假宣传、价格、资质及格式条款；</p>
+<p>机构应整改绝对化话术、风险告知和退款审批；</p>
+<p>不起诉决定不应被用于否定客户合法投诉。</p>
+<p>五、结论</p>
+<p>在充分听取客户意见并穷尽合理补证手段后，现有证据仍不符合起诉条件，作出证据不足不起诉符合证据裁判和疑罪从无要求。</p>
+</div>
+<h2>文书十二：不起诉后解除措施、返还财物及风险衔接申请书</h2>
+<div class="docbox">
+<p>不起诉决定作出后程序事项申请书</p>
+<p>申请事项</p>
+<p>依法解除对林某采取的取保候审及相关保证措施；</p>
+<p>返还与案件无关的手机、电脑、证件及其他个人财物；</p>
+<p>区分个人财物、机构财物和依法留存的证据复制件；</p>
+<p>解除与案件无关的账户冻结、支付限制或者其他财产措施；</p>
+<p>出具强制措施解除及财物处理书面凭证；</p>
+<p>对需要行政主管机关审查的事项依法移送，不以刑事未证事实直接替代行政认定；</p>
+<p>告知被不起诉人和投诉客户依法享有的救济途径。</p>
+<p>理由</p>
+<p>不起诉决定已经作出，与继续保障刑事诉讼无关的强制措施和扣押应及时处理。消费者的民事、行政救济与林某的人身、财产权利应分别依法保障。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>三名客户完整合同、付款和风险告知；</p>
+<p>原始录音、完整聊天及电子数据提取记录；</p>
+<p>预约、操作、仪器、耗材和产品领取记录；</p>
+<p>设备采购、说明书和合作机构材料；</p>
+<p>销售培训、话术规范及内部违规提醒；</p>
+<p>统一收款账户、林某工资提成及扣回记录；</p>
+<p>退款申请、审批流程、催办和协商方案；</p>
+<p>客户历次陈述及付款原因对照表；</p>
+<p>补充侦查提纲、补充报告和未完成事项；</p>
+<p>不起诉后解除措施及财物返还清单。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 正式使用时，应核验案发时有效的刑法、刑事诉讼法、人民检察院刑事诉讼规则及消费者权益、广告、价格和医疗美容监管规范。</h3>
+<h3>2. 法定不起诉、酌定不起诉与存疑不起诉的前提不同，文书应避免使用与案件基础矛盾的表述。</h3>
+<h3>3. 不起诉只处理刑事追诉问题，不当然排除民事、行政或行业责任。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

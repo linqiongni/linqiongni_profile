@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch23</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch23">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十三章配套法律文书全文</h1>
+<div class="sub">鉴定机构可说明财务和税额事实，不应越权认定交易主体虚构、个人明知、单位意志或共同犯罪。</div>
+</header>
+<div class="wrap">
+<p class="volband">第五卷公司与权力</p>
+<p>虚开的发票</p>
+<h3>文书目录</h3><ol>
+<li>真实交易与虚开业务分类审查表</li>
+<li>合同、货物、物流、仓储、资金、发票六链核对表</li>
+<li>增值税专用发票逐票审查及税额核算表</li>
+<li>单位犯罪及责任人员认定表</li>
+<li>合同物流仓储银行税控数据调取申请书</li>
+<li>司法会计鉴定及涉案税额重新审计申请书</li>
+<li>税务稽查报告及司法会计鉴定意见质证书</li>
+<li>真实货物交易及票货款不一致专项意见</li>
+<li>不具有骗抵税款目的法律意见书</li>
+<li>财务负责人不构成共同犯罪法律意见书</li>
+<li>证据不足不起诉及补税挽损从宽意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：真实交易与虚开业务分类审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>类别</th>
+<th>业务特征</th>
+<th>初步评价</th>
+<th>需核实证据</th>
+</tr>
+<tr>
+<td>A类</td>
+<td>六链基本一致</td>
+<td>真实业务</td>
+<td>合同/物流/签收</td>
+</tr>
+<tr>
+<td>B类</td>
+<td>直送、代付、跨期、抵销</td>
+<td>待核实商业原因</td>
+<td>三方协议/账务</td>
+</tr>
+<tr>
+<td>C类</td>
+<td>有业务但超过实际金额</td>
+<td>仅审查超过部分</td>
+<td>数量/单价/税额</td>
+</tr>
+<tr>
+<td>D类</td>
+<td>货物真实但主体存疑</td>
+<td>审查虚构交易主体</td>
+<td>定价/风险/差价</td>
+</tr>
+<tr>
+<td>E类</td>
+<td>无业务、循环资金、虚假单据</td>
+<td>重点犯罪事实</td>
+<td>回流/抵扣/费用</td>
+</tr>
+<tr>
+<td>F类</td>
+<td>未抵扣且已作废或红冲</td>
+<td>审查目的和结果</td>
+<td>税控/申报/转出</td>
+</tr>
+</table></div>
+<p>逐组结论</p>
+<p class="kv"><b>业务组编号</b>　__________</p>
+<p class="kv"><b>对应上下游</b>　__________</p>
+<p class="kv"><b>真实业务金额</b>　__________</p>
+<p class="kv"><b>争议开票金额</b>　__________</p>
+<p class="kv"><b>实际抵扣税额</b>　__________</p>
+<p class="kv"><b>分类</b>　A／B／C／D／E／F</p>
+<p class="kv"><b>处理意见</b>　__________</p>
+</div>
+<h2>文书二：合同、货物、物流、仓储、资金、发票六链核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>证据链</th>
+<th>核心问题</th>
+<th>已取得材料</th>
+<th>缺口</th>
+</tr>
+<tr>
+<td>合同</td>
+<td>何时签、谁谈价、谁担责</td>
+<td>________</td>
+<td>____</td>
+</tr>
+<tr>
+<td>货物</td>
+<td>品名、规格、数量、货权</td>
+<td>________</td>
+<td>____</td>
+</tr>
+<tr>
+<td>物流</td>
+<td>装货、车辆、轨迹、卸货</td>
+<td>________</td>
+<td>____</td>
+</tr>
+<tr>
+<td>仓储</td>
+<td>入库、直送、领用、库存</td>
+<td>________</td>
+<td>____</td>
+</tr>
+<tr>
+<td>资金</td>
+<td>付款、代付、抵销、回流</td>
+<td>________</td>
+<td>____</td>
+</tr>
+<tr>
+<td>发票</td>
+<td>申请、开具、认证、红冲</td>
+<td>________</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>真实性校验</p>
+<p>□ 合同在开票前形成且有电子元数据。</p>
+<p>□ 货物数量与生产、签收或者转售相互印证。</p>
+<p>□ 车辆轨迹、门禁、地磅和司机能够闭环。</p>
+<p>□ 直送业务有上游发货与下游收货记录。</p>
+<p>□ 回流存在独立借款、抵销或代付基础。</p>
+<p>□ 发票税额未超过真实应抵扣业务。</p>
+<p>异常提示</p>
+<p>□ 同一批货重复匹配。</p>
+<p>□ 车牌不存在或轨迹冲突。</p>
+<p>□ 合同、出库、签收事后集中补制。</p>
+<p>□ 按固定税点收费。</p>
+<p>□ 货款到账后迅速扣费回流。</p>
+<p>□ 库存长期为负且无直送依据。</p>
+</div>
+<h2>文书三：增值税专用发票逐票审查及税额核算表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>发票号码</th>
+<th>业务编号</th>
+<th>票面税额</th>
+<th>真实业务税额</th>
+<th>实际抵扣</th>
+<th>红冲/转出</th>
+<th>争议税额</th>
+</tr>
+<tr>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>计算口径</p>
+<p>没有实际业务的，核对票面税额、认证抵扣及实际税款结果；</p>
+<p>有真实业务但超过实际应抵扣业务的，先扣除真实业务对应税额；</p>
+<p>同一购销业务既涉及进项又涉及销项的，避免重复累加；</p>
+<p>未认证、已作废、已红冲和已作进项转出的，分别列示；</p>
+<p>补缴、追缴和提起公诉前仍未追回税额单独统计。</p>
+<p>汇总</p>
+<p class="kv"><b>发票记载税额</b>　__________；认定虚开税额：__________；实际抵扣税额：__________；已转出/补缴：__________；提起公诉前未追回：__________。</p>
+</div>
+<h2>文书四：单位犯罪及责任人员认定表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>人员/主体</th>
+<th>职责与权限</th>
+<th>具体行为</th>
+<th>主观认识</th>
+<th>获利</th>
+<th>责任意见</th>
+</tr>
+<tr>
+<td>汇川公司</td>
+<td>经营主体</td>
+<td>____</td>
+<td>单位目的</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>陆某</td>
+<td>决策/控制</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>林某</td>
+<td>财务负责人</td>
+<td>____</td>
+<td>____</td>
+<td>固定工资</td>
+<td>____</td>
+</tr>
+<tr>
+<td>业务人员</td>
+<td>交易资料</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>开票员</td>
+<td>税控操作</td>
+<td>____</td>
+<td>____</td>
+<td>无额外报酬</td>
+<td>____</td>
+</tr>
+<tr>
+<td>记账会计</td>
+<td>账务处理</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>单位犯罪审查</p>
+<p>□ 由实际控制人或管理层决定。</p>
+<p>□ 以单位名义实施。</p>
+<p>□ 利用单位税控、账户和系统。</p>
+<p>□ 利益归单位或服务单位经营。</p>
+<p>□ 公司仅为个人犯罪工具。</p>
+<p>□ 开票费归个人且单位不知情。</p>
+<p>个人责任审查</p>
+<p>□ 组织、决定、批准或授意。</p>
+<p>□ 制作虚假清单和凭证。</p>
+<p>□ 安排资金回流。</p>
+<p>□ 认证抵扣或虚假申报。</p>
+<p>□ 发现异常并持续提出异议。</p>
+<p>□ 仅机械操作且不知情。</p>
+</div>
+<h2>文书五：合同物流仓储银行税控数据调取申请书</h2>
+<div class="docbox">
+<p>涉案交易及税务数据调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系__________涉嫌虚开增值税专用发票罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取涉案上下游框架合同、订单、报价、结算、用印和电子文件元数据；</p>
+<p>调取装货单、运输合同、车牌、司机、GPS、高速、地磅、门禁、卸货和签收记录；</p>
+<p>调取自有及第三方仓储、入库、出库、库存、发出商品、生产领用及盘点数据；</p>
+<p>调取涉案公司、个人及关联公司完整银行流水、网银日志、借款、代付和抵销资料；</p>
+<p>调取税控系统开票日志、开票申请、认证抵扣、红冲、作废、进项转出及纳税申报；</p>
+<p>调取ERP、财务软件、企业微信、邮箱及开票Excel原始版本和修改日志；</p>
+<p>调取税务处理决定、补缴凭证、追缴执行及截至提起公诉前未追回税款材料。</p>
+<p>事实与理由</p>
+<p>本案存在真实贸易、直送、第三方代付及部分资金回流。只有取得完整原始数据，才能逐票判断实际交易主体、真实业务金额、申报抵扣和个人主观明知。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：司法会计鉴定及涉案税额重新审计申请书</h2>
+<div class="docbox">
+<p>司法会计鉴定及涉案税额重新审计申请书</p>
+<p>申请事项</p>
+<p>请求对涉案购销业务、发票、抵扣、资金回流、补税及未追回税额进行逐票、逐业务专项审计，不以稽查报告汇总数字替代底层核对。</p>
+<p>审计问题</p>
+<p>每张发票是否存在真实应税业务及对应金额；</p>
+<p>真实业务对应可抵扣税额和超过部分；</p>
+<p>发票是否实际认证、抵扣、红冲、作废或进项转出；</p>
+<p>同一业务进项和销项是否重复计算；</p>
+<p>资金回流是否有既存借款、代付、抵销或保证金基础；</p>
+<p>开票方销项申报、上游进项真实性及全链条税款结果；</p>
+<p>补税、追缴后提起公诉前仍无法追回税额；</p>
+<p>陆某、林某及公司是否取得开票费或异常利益。</p>
+<p>鉴定边界</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：税务稽查报告及司法会计鉴定意见质证书</h2>
+<div class="docbox">
+<p>关于税务稽查报告及司法会计鉴定意见的质证意见</p>
+<p>一、证据范围</p>
+<p>□ 是否调查直送及下游收货。</p>
+<p>□ 是否取得全部车辆和仓储数据。</p>
+<p>□ 是否逐票对应而非抽样推算。</p>
+<p>□ 是否穿透资金最终账户。</p>
+<p>□ 是否取得原始账套和税控日志。</p>
+<p>二、常见方法问题</p>
+<p>账面无自有入库，不应直接等同无货；</p>
+<p>付款主体不一致，不应忽略第三方代付和抵销；</p>
+<p>部分数量不实，不得把整张发票税额全部计入；</p>
+<p>同一业务进项销项不得重复累加；</p>
+<p>票面税额、实际抵扣和未追回税额不得混用；</p>
+<p>税务行政定性不能替代个人犯罪故意证明。</p>
+<p>三、质证结论</p>
+<p>□ 底层数据真实，可作为核算基础。</p>
+<p>□ 无货结论缺少物流调查。</p>
+<p>□ 税额计算存在重复或未扣真实部分。</p>
+<p>□ 个人责任结论超出专业范围。</p>
+<p>□ 申请补充鉴定或重新审计。</p>
+</div>
+<h2>文书八：真实货物交易及票货款不一致专项意见</h2>
+<div class="docbox">
+<p>关于真实货物交易及票货款不一致的专项法律意见</p>
+<p>一、直送不等于无货</p>
+<p>上游根据汇川指示直接向下游交货，只要汇川真实承担购买、转售、价格、质量和信用风险，货物不进入自有仓库不影响购销真实性。</p>
+<p>二、不一致需要商业解释</p>
+<p>跨期结算、分批交货、质量扣款、第三方代付和债务抵销均可能造成票、货、款不同步。应核对合同及实际履行，不能以形式差异直接认定虚开。</p>
+<p>三、有货也不当然排除虚开</p>
+<p>如果汇川仅作为开票通道，不承担交易功能，或者发票数量、金额超过实际业务，仍应依法审查虚构主体及超过部分。真实货物只能证明其中一环。</p>
+<p>四、分组处理意见</p>
+<p>证据完整的直送业务不认定虚开；</p>
+<p>跨期及代付业务继续补充核实；</p>
+<p>超过实际业务的只核算超过部分；</p>
+<p>同批货物重复匹配的逐票剔除；</p>
+<p>无业务且循环资金的单独认定。</p>
+</div>
+<h2>文书九：不具有骗抵税款目的法律意见书</h2>
+<div class="docbox">
+<p>关于不具有骗抵税款目的及税款损失不足的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院／人民法院</p>
+<p>一、目的必须独立证明</p>
+<p>发票记载与业务不完全一致，不等于当然具有骗抵国家税款目的。应查明开票安排究竟为真实结算、跨期补票、融资、虚增业绩、逃避自身纳税义务，还是帮助他人无基础抵扣。</p>
+<p>二、必须核实实际使用</p>
+<p>对未认证、未抵扣、已红冲、已作废或者已作进项转出的发票，应分别查明行为目的和国家税款结果，不能仅以票面税额评价实际危害。</p>
+<p>三、税款结果须全链计算</p>
+<p>开票方是否足额申报销项、受票方是否抵扣、上游进项是否真实、后续是否补缴或追缴，均会影响税款结果。票面税额不等于最终未追回税款。</p>
+<p>四、结论</p>
+<p>如现有证据只能证明开票不规范、虚增收入或融资安排，不能证明骗抵目的，且未因抵扣造成税款被骗损失，不应以本罪评价；如涉及逃避自身纳税义务，应另行准确审查行为性质。</p>
+</div>
+<h2>文书十：财务负责人不构成共同犯罪法律意见书</h2>
+<div class="docbox">
+<p>关于财务负责人林某不构成共同犯罪的法律意见书</p>
+<p>一、职务不能替代明知</p>
+<p>林某负责财务和开票，只能证明其具有接触和执行条件，不能证明其知道每一批货物、实际交易主体和资金回流的真实原因。</p>
+<p>二、业务真实性主要由业务部门掌握</p>
+<p>直送贸易不进入汇川仓库，林某通常依赖合同、签收、结算及管理层审核。资料外观真实且存在商业解释时，不能事后把业务人员或陆某的故意转嫁给林某。</p>
+<p>三、林某曾持续提出异常</p>
+<p>林某询问合同对应、数量差异、库存和回流原因，能够说明其没有无条件接受数据。应结合陆某当时提供的直送、跨期和融资解释判断林某是否已经明确知道业务虚假。</p>
+<p>四、应区分机械执行与积极帮助</p>
+<p>如无证据证明林某补造单据、联系客户凑票、设计循环转账、获得开票提成或明知无货仍虚假申报，其一般审核、录入和报税行为不足以认定共同犯罪。</p>
+<p>五、备位意见</p>
+<p>如认定林某明知后仍参与，亦应考虑其不是犯意发起者、没有业务决策权、无额外获利、曾提出异议、主动提交数据及补税挽损，依法认定作用较小并从宽处理。</p>
+</div>
+<h2>文书十一：证据不足不起诉及补税挽损从宽意见书</h2>
+<div class="docbox">
+<p>关于证据不足不起诉及补税挽损从宽的法律意见书</p>
+<p class="kv"><b>第一部分</b>　不起诉意见</p>
+<p>涉案发票未逐票对应合同、货物、物流、资金和申报；</p>
+<p>部分业务存在直送、质量异议和真实签收；</p>
+<p>部分差异属于跨期、代付和债务抵销，尚未排除合理解释；</p>
+<p>真实业务与超过部分未准确切分；</p>
+<p>票面税额、实际抵扣和未追回税额混同；</p>
+<p>林某对业务虚假及骗抵目的的明知证据不足；</p>
+<p>单位决策与陆某个人私下开票尚未完整区分。</p>
+<p class="kv"><b>第二部分</b>　从宽意见</p>
+<p>如仍认定部分事实构成犯罪，请对真实业务、重复计算、未抵扣、红冲、进项转出和已追缴税额依法核减；对公司主动补税、挽回损失、完善制度及个人主动提交数据、如实供述、无额外获利等依法从宽。</p>
+<p>税款修复表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>金额</th>
+<th>时间</th>
+<th>凭证</th>
+<th>是否实际追回</th>
+</tr>
+<tr>
+<td>补缴税款</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>进项转出</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>税务追缴</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>未追回</td>
+<td>____</td>
+<td>截至____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>汇川公司、林某涉嫌虚开增值税专用发票罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>本案不是一家空壳公司批量出售发票的典型案件。汇川公司有真实金属贸易，也存在直送、代付、跨期结算和关联资金往来；与此同时，部分月份确有数量无法对应、交易主体存疑和循环资金。正因为真实与异常交织，审理更不能依赖一张发票汇总表。</p>
+<p>一、应逐项重建交易，而不是用形式差异替代事实</p>
+<p>货物未进入汇川自有仓库，不等于不存在交易。车辆轨迹、下游门禁、地磅、签收、质检和质量异议能够证明部分直送业务真实。对六条证据链能够闭合的业务，应从指控中剔除。</p>
+<p>二、有真实业务但票面超过的，只审查超过部分</p>
+<p>部分发票对应真实货物，但数量可能重复或超过实际交易。不能因部分差异认定整张发票全部虚假，应先确认真实业务对应税额，再计算超过部分。</p>
+<p>三、资金回流需查明独立原因</p>
+<p>借款归还、第三方代付和多边抵销均可能形成闭环。只有在缺乏真实债权债务、固定扣除开票费并反复循环时，资金回流才对虚假交易形成有力证明。</p>
+<p>四、骗抵目的和税款结果必须证明</p>
+<p>应分别查明发票是否实际抵扣、开票方是否申报销项、受票方是否转出、税款是否补缴及最终未追回金额。不能把票面税额直接写成国家损失。</p>
+<p>五、单位责任与个人责任必须分开</p>
+<p>陆某决定客户、金额和资金路径，属于单位主管责任的重点审查对象。林某的责任则取决于其是否知道具体业务无货、主体虚构并希望发票用于骗抵，而不能仅凭财务负责人身份或开票操作推定。</p>
+<p>六、林某的异议和实际作用应得到评价</p>
+<p>林某多次询问合同、数量、库存和回流原因，没有参与业务谈判，也没有取得开票提成。如不能证明其补造单据、设计循环资金或明确知道无业务仍虚假申报，应依法认定共同故意不足。</p>
+<p>七、税额必须重新核算</p>
+<p>剔除六链完整的真实业务；</p>
+<p>核减真实业务对应税额，只保留超过部分；</p>
+<p>剔除未抵扣且已作废、红冲或转出的部分；</p>
+<p>同一购销业务进销项不重复累加；</p>
+<p>列明补缴、追缴和提起公诉前未追回金额。</p>
+<p>八、辩护请求</p>
+<p>对证据链完整的真实业务依法认定不构成虚开；</p>
+<p>对林某主观明知和骗抵目的证据不足的，依法宣告无罪；</p>
+<p>如认定单位部分业务构成犯罪，按逐票审计结果核减数额；</p>
+<p>对补税挽损、主动提交数据、无额外获利、提出异议及作用较小等依法从宽。</p>
+<p>发票可以在几分钟内开出，真实交易却要经过谈价、发货、运输、收货、结算和纳税。刑事审判不能只盯着发票上的一行数字。只有把票面重新放回真实交易和税款结果中，才能判断哪些是不规范，哪些是超开，哪些才是以发票骗取国家税款。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>上下游合同、订单、报价、结算、用印及电子元数据；</p>
+<p>生产、装货、运输、轨迹、高速、地磅、门禁、卸货和签收；</p>
+<p>自有及第三方仓储、库存、发出商品、领用和盘点；</p>
+<p>公司、个人和关联账户完整流水、代付、借款及抵销；</p>
+<p>逐票开票申请、税控日志、认证、抵扣、红冲和作废；</p>
+<p>纳税申报、进项转出、补税、追缴和未追回税款；</p>
+<p>ERP、财务软件、企业微信、邮箱及开票表原始数据；</p>
+<p>组织架构、权限、开票审批、个人异议及获利材料；</p>
+<p>税务稽查底稿、专项审计底稿和计算明细；</p>
+<p>公司整改、补税挽损及发票合规制度。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 应适用案发时有效的刑法及危害税收征管刑事案件司法解释，逐票核验真实业务、超过部分、骗抵目的和税款结果。</h3>
+<h3>2. 2024年3月20日起施行的相关司法解释明确了无业务开票、超过真实应抵扣业务开票、虚构交易主体以及不以骗抵为目的且无税款被骗损失等规则。</h3>
+<h3>3. 正式使用时，应依据税率、纳税期限、认证抵扣、红冲转出及提起公诉前追缴情形重新计算，不得套用示例数字。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

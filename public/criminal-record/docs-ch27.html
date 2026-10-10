@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch27</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch27">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十七章配套法律文书全文</h1>
+</header>
+<div class="wrap">
+<p class="volband">第六卷程序本身就是辩护</p>
+<p>凌晨四点的讯问笔录</p>
+<p>使用说明</p>
+<p>本套文书以凌晨二时十七分至四时二十八分形成的有罪讯问笔录为中心。实务审查应将到案、候问、辨认、非正式谈话、饮食、实际睡眠、正式讯问、笔录制作和签字过程连续排列，不能只看单份笔录记载的起止时间。</p>
+<p>凌晨讯问不当然违法，疲劳程度须结合连续清醒、实际休息和供述形成方式判断。</p>
+<p>同步录音录像应核对开头、中断、结尾、原始介质和签字修改过程。</p>
+<p>笔录与录像应逐问逐答比较，尤其审查组织目的、器械、堵门和动手指令。</p>
+<p>申请排除时应具体说明人员、时间、地点、方式、内容及可核实材料。</p>
+<p>排除口供后，应重新审查群聊、通话、器械、车辆和同案供述能否独立定案。</p>
+<h3>文书目录</h3><ol>
+<li>疲劳审讯事实及二十四小时活动审查表</li>
+<li>形式休息与实际休息对照表</li>
+<li>讯问录音录像完整性及缺失时段核对表</li>
+<li>讯问笔录与录像逐项比对表</li>
+<li>翻供、重复性供述及秘密性细节审查表</li>
+<li>排除口供后剩余证据及责任地位审查表</li>
+<li>全部讯问、门禁、饮食及电子笔录调取申请书</li>
+<li>召开庭前会议及通知讯问人员出庭申请书</li>
+<li>非法证据排除申请书</li>
+<li>凌晨有罪供述不得作为定案根据法律意见书</li>
+<li>排除口供后证据不足不起诉法律意见书</li>
+<li>一审无罪辩护词</li>
+</ol>
+<h2>文书一：疲劳审讯事实及二十四小时活动审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>活动</th>
+<th>地点</th>
+<th>是否记录</th>
+<th>是否实际休息</th>
+</tr>
+<tr>
+<td>前日09:00</td>
+<td>到案/入区</td>
+<td>办案区</td>
+<td>登记</td>
+<td>否</td>
+</tr>
+<tr>
+<td>10:12-11:45</td>
+<td>第一轮讯问</td>
+<td>讯问室</td>
+<td>笔录/录像</td>
+<td>否</td>
+</tr>
+<tr>
+<td>12:10-12:55</td>
+<td>手机照片指认</td>
+<td>其他房间</td>
+<td>监控</td>
+<td>否</td>
+</tr>
+<tr>
+<td>15:00起</td>
+<td>第二轮讯问</td>
+<td>讯问室</td>
+<td>笔录/录像</td>
+<td>否</td>
+</tr>
+<tr>
+<td>18:00-19:20</td>
+<td>用餐及谈话</td>
+<td>候问区</td>
+<td>记录有矛盾</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>21:00起</td>
+<td>第三轮讯问</td>
+<td>讯问室</td>
+<td>笔录/录像</td>
+<td>否</td>
+</tr>
+<tr>
+<td>00:00-02:00</td>
+<td>候问/签扣押单</td>
+<td>候问区</td>
+<td>监控</td>
+<td>未实际睡眠</td>
+</tr>
+<tr>
+<td>02:17-04:28</td>
+<td>第四轮讯问</td>
+<td>讯问室</td>
+<td>录像不完整</td>
+<td>否</td>
+</tr>
+</table></div>
+<p>疲劳程度核对</p>
+<p>□ 到案前睡眠明显不足。</p>
+<p>□ 持续清醒接近或超过合理承受范围。</p>
+<p>□ 正式讯问多轮且间隙仍在接受案件谈话。</p>
+<p>□ 无床铺、持续照明或无法平躺。</p>
+<p>□ 嫌疑人明确表示困倦、头痛或请求休息。</p>
+<p>□ 办案人员将结束讯问与“说清楚”联系。</p>
+<p>□ 首次核心认罪发生在长时间控制之后。</p>
+</div>
+<h2>文书二：形式休息与实际休息对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>登记时段</th>
+<th>纸面记载</th>
+<th>监控所见</th>
+<th>实际活动</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>12:00-13:00</td>
+<td>休息</td>
+<td>被带入其他房间</td>
+<td>手机照片指认</td>
+<td>非完整休息</td>
+</tr>
+<tr>
+<td>18:00-19:20</td>
+<td>用餐休息</td>
+<td>用餐后有人谈话</td>
+<td>思想疏导/案件谈话</td>
+<td>部分休息</td>
+</tr>
+<tr>
+<td>00:00-02:00</td>
+<td>休息</td>
+<td>候问椅、灯亮、签文书</td>
+<td>趴桌/被叫出</td>
+<td>难认定有效睡眠</td>
+</tr>
+</table></div>
+<p>休息条件检查</p>
+<p>□ 有床铺并允许平躺。</p>
+<p>□ 灯光可关闭。</p>
+<p>□ 未使用影响睡眠的戒具。</p>
+<p>□ 无人继续谈案情。</p>
+<p>□ 未安排辨认、签字或其他取证。</p>
+<p>□ 有连续、可验证的睡眠时段。</p>
+<p>□ 饮食、饮水由嫌疑人或视频确认。</p>
+<p>□ 休息记录与门禁、监控一致。</p>
+</div>
+<h2>文书三：讯问录音录像完整性及缺失时段核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时段</th>
+<th>笔录记载</th>
+<th>录像情况</th>
+<th>关键问题</th>
+<th>需解释事项</th>
+</tr>
+<tr>
+<td>02:17-02:44</td>
+<td>已开始讯问</td>
+<td>无录像</td>
+<td>身份/权利/前供确认</td>
+<td>为何未录</td>
+</tr>
+<tr>
+<td>02:44-03:12</td>
+<td>持续讯问</td>
+<td>有录像</td>
+<td>提示性提问</td>
+<td>与笔录比对</td>
+</tr>
+<tr>
+<td>03:12-03:30</td>
+<td>持续形成笔录</td>
+<td>录像中断</td>
+<td>木棍/堵门/指令</td>
+<td>是否继续讯问</td>
+</tr>
+<tr>
+<td>03:30-03:56</td>
+<td>持续讯问</td>
+<td>有录像</td>
+<td>是否完整重复</td>
+<td>____</td>
+</tr>
+<tr>
+<td>03:56-04:28</td>
+<td>核对签字</td>
+<td>无录像</td>
+<td>修改/签名/捺印</td>
+<td>为何停录</td>
+</tr>
+</table></div>
+<p>原始数据检查</p>
+<p>□ 原始录像设备。</p>
+<p>□ 原始存储介质。</p>
+<p>□ 文件序列及创建时间。</p>
+<p>□ 暂停、重启及故障日志。</p>
+<p>□ 导出、转码及后台上传记录。</p>
+<p>□ 校验值。</p>
+<p>□ 讯问室固定监控。</p>
+<p>□ 设备维修或异常登记。</p>
+</div>
+<h2>文书四：讯问笔录与录像逐项比对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>视频时间码</th>
+<th>讯问人员原话</th>
+<th>吴某原话/动作</th>
+<th>笔录记载</th>
+<th>差异性质</th>
+</tr>
+<tr>
+<td>02:51:34</td>
+<td>你叫黄某带木棍，对吧？</td>
+<td>我没叫带木棍</td>
+<td>我让黄某带木棍过去</td>
+<td>意思相反</td>
+</tr>
+<tr>
+<td>03:05:18</td>
+<td>把人叫来就是准备打架？</td>
+<td>让他们接陈某</td>
+<td>我纠集人员准备斗殴</td>
+<td>法律化改写</td>
+</tr>
+<tr>
+<td>03:12-03:30</td>
+<td>录像缺失</td>
+<td>无法核对</td>
+<td>安排堵住出口</td>
+<td>来源不明</td>
+</tr>
+<tr>
+<td>03:37:46</td>
+<td>堵出口是你的安排？</td>
+<td>等警察来别让事情跑掉</td>
+<td>我安排人员堵住出口</td>
+<td>语境改变</td>
+</tr>
+<tr>
+<td>03:56后</td>
+<td>录像结束</td>
+<td>无法核对</td>
+<td>补写带上家伙/知道会打架</td>
+<td>形成过程不明</td>
+</tr>
+</table></div>
+<p>差异分类</p>
+<p>□ 录像没有、笔录新增。</p>
+<p>□ 录像否认、笔录承认。</p>
+<p>□ 侦查人员陈述被记作吴某陈述。</p>
+<p>□ 点头、沉默被扩写。</p>
+<p>□ 口语改为犯罪构成结论。</p>
+<p>□ 辩解被遗漏。</p>
+<p>□ 手写修改来源不明。</p>
+<p>□ 签字核对过程未记录。</p>
+</div>
+<h2>文书五：翻供、重复性供述及秘密性细节审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>审查内容</th>
+<th>本案情况</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>首次翻供</td>
+<td>时间、主体、是否阅卷前</td>
+<td>检察阶段首次讯问</td>
+<td>____</td>
+</tr>
+<tr>
+<td>线索具体性</td>
+<td>人员、时间、地点、方式</td>
+<td>指出缺失录像及疲劳</td>
+<td>____</td>
+</tr>
+<tr>
+<td>客观印证</td>
+<td>门禁、监控、笔录差异</td>
+<td>部分印证</td>
+<td>____</td>
+</tr>
+<tr>
+<td>重复供述</td>
+<td>是否换人、重新告知权利</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>主动程度</td>
+<td>主动叙述或确认前供</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>秘密性细节</td>
+<td>先供后证的新事实</td>
+<td>未见明显新细节</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>重复性供述污染</p>
+<p>□ 仍由原讯问人员取得。</p>
+<p>□ 未脱离原办案环境。</p>
+<p>□ 未重新告知诉讼权利和法律后果。</p>
+<p>□ 只是朗读、确认前份笔录。</p>
+<p>□ 嫌疑人仍担心再次遭受相同处置。</p>
+<p>□ 内容沿用法律化表述。</p>
+<p>□ 没有新发现的客观证据验证。</p>
+</div>
+<h2>文书六：排除口供后剩余证据及责任地位审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>证据</th>
+<th>可证明事项</th>
+<th>不能当然证明</th>
+<th>补强缺口</th>
+</tr>
+<tr>
+<td>完整群聊</td>
+<td>吴某召集人员</td>
+<td>召集目的为斗殴</td>
+<td>上下文</td>
+</tr>
+<tr>
+<td>通话记录</td>
+<td>联系频繁</td>
+<td>通话内容/指挥</td>
+<td>接听人证言</td>
+</tr>
+<tr>
+<td>现场监控</td>
+<td>多人斗殴/吴某可能到场</td>
+<td>组织、动手指令</td>
+<td>清晰画面/声音</td>
+</tr>
+<tr>
+<td>同案供述</td>
+<td>部分称吴某叫人</td>
+<td>带器械、堵门不一致</td>
+<td>独立客观证据</td>
+</tr>
+<tr>
+<td>木棍</td>
+<td>存在持械</td>
+<td>吴某准备或安排</td>
+<td>来源/痕迹</td>
+</tr>
+<tr>
+<td>车辆</td>
+<td>出口附近停车</td>
+<td>吴某指挥堵门</td>
+<td>司机证言</td>
+</tr>
+<tr>
+<td>凌晨供述</td>
+<td>完整组织叙事</td>
+<td>合法性真实性存疑</td>
+<td>应排除</td>
+</tr>
+</table></div>
+<p>责任地位审查</p>
+<p>□ 产生斗殴犯意。</p>
+<p>□ 纠集多人。</p>
+<p>□ 安排器械。</p>
+<p>□ 分配车辆和站位。</p>
+<p>□ 发出动手指令。</p>
+<p>□ 实际实施殴打。</p>
+<p>□ 制止冲突或仅接人。</p>
+<p>□ 仅具有一般号召力。</p>
+<p class="kv"><b>结论</b>　□首要分子  □积极参加者  □一般到场人员  □证据不足</p>
+</div>
+<h2>文书七：全部讯问、门禁、饮食及电子笔录调取申请书</h2>
+<div class="docbox">
+<p>讯问合法性相关材料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系吴某涉嫌聚众斗殴罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取吴某到案至离开办案区期间全部讯问笔录、询问记录、辨认和非正式谈话材料；</p>
+<p>调取全部同步录音录像原始文件、原始介质、文件序列、校验值和上传日志；</p>
+<p>调取办案区、候问区、讯问室走廊监控及门禁、出入和人员交接记录；</p>
+<p>调取饮食、饮水、休息、戒具、体检、医疗和值班记录；</p>
+<p>调取电子笔录原文件、创建修改时间、打印日志及手写修改形成说明；</p>
+<p>调取录像设备故障、重启、维修、导出和设备管理员操作记录；</p>
+<p>调取讯问人员排班、进入讯问室人员及中断期间活动记录；</p>
+<p>调取检察阶段首次翻供的完整同步录音录像。</p>
+<p>理由</p>
+<p>上述材料关系凌晨供述是否在疲劳状态下形成、录像是否全程完整、笔录是否忠实记录以及翻供是否具有客观支持，是启动并查明非法证据排除争议的必要材料。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：召开庭前会议及通知讯问人员出庭申请书</h2>
+<div class="docbox">
+<p>召开庭前会议并通知讯问人员出庭申请书</p>
+<p>申请事项</p>
+<p>就凌晨第四份讯问笔录的合法性召开庭前会议；</p>
+<p>通知第四轮讯问的主讯人员、记录人员和录像设备管理员参加；</p>
+<p>庭前展示并核对全部提讯、门禁、休息、饮食及录像材料；</p>
+<p>播放02:44至03:12、03:30至03:56等关键录像片段；</p>
+<p>说明02:17至02:44、03:12至03:30、03:56至04:28三个缺失区间；</p>
+<p>对两名讯问人员关于中断期间是否继续讯问的矛盾进行调查；</p>
+<p>如庭前仍有疑问，在庭审中启动取证合法性调查。</p>
+<p>理由</p>
+<p>辩方已提供具体人员、时间、地点、方式和内容等线索。争议涉及供述核心证据资格，若不在庭前集中处理，将直接影响庭审调查和举证顺序。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：非法证据排除申请书</h2>
+<div class="docbox">
+<p>非法证据排除申请书</p>
+<p>申请事项</p>
+<p>请求依法排除吴某于______年______月______日凌晨二时十七分至四时二十八分形成的第四份讯问笔录及受其非法影响形成的相关重复性供述。</p>
+<p>具体线索和材料</p>
+<p>吴某自前日上午九时到案，至次日凌晨持续处于办案控制，多轮讯问且实际休息不足；</p>
+<p>登记的休息时段分别存在照片指认、案件谈话、签署文书及候问，监控与纸面记录矛盾；</p>
+<p>吴某在录像中表示“脑子乱”“真的困了”并请求改日再说；</p>
+<p>办案人员以“说清楚就可以休息”回应，结束讯问与供述内容发生联系；</p>
+<p>录像晚于笔录开始二十七分钟，中断十八分钟，并早于笔录结束三十余分钟；</p>
+<p>木棍、堵门、动手指令等核心事实主要形成于录像缺失时段；</p>
+<p>录像中多处否认、沉默或辩解在笔录中被记为承认；</p>
+<p>两名讯问人员对中断期间是否继续讯问陈述不一；</p>
+<p>签字、宣读、修改和捺印过程未被录制。</p>
+<p>法律意见</p>
+<p>现有线索足以对供述取得合法性产生实质疑问。控方应提交完整录音录像、原始介质、提讯门禁、饮食休息和电子笔录材料，并对缺失和矛盾作出具体说明；不能排除非法取证情形的，该供述不得作为定案根据。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：凌晨有罪供述不得作为定案根据法律意见书</h2>
+<div class="docbox">
+<p>关于凌晨第四份有罪供述不得作为定案根据的法律意见书</p>
+<p>一、疲劳并非单纯由凌晨时间推定</p>
+<p>吴某经历到案前睡眠不足、全天多轮讯问、辨认、非正式谈话和候问。三段纸面休息均与监控不符，凌晨讯问时又明确表达困倦并请求停止，疲劳状态具有连续客观基础。</p>
+<p>二、录像没有覆盖实质讯问全过程</p>
+<p>开头缺失二十七分钟，中段缺失十八分钟，结尾缺失三十余分钟。权利告知、关键认罪内容、笔录修改及签字过程均无法完整核验，情况说明不足以替代原始记录。</p>
+<p>三、笔录与录像存在实质矛盾</p>
+<p>吴某关于木棍、召集目的和堵门的否认或辩解，在笔录中被写成承认；侦查人员的问题包含答案，沉默和点头被扩写为完整犯罪叙事。</p>
+<p>四、供述缺少真正秘密性细节</p>
+<p>凌晨笔录中的主要事实此前已出现在同案供述和办案人员提问中，没有由吴某首先提供并经后续查证的新物证、藏匿地点或其他高度隐蔽事实。</p>
+<p>五、结论</p>
+<p>该份供述的自愿性、合法性和真实性均存在不能合理排除的疑问，不得作为认定吴某系组织者、首要分子或者积极参加者的依据。</p>
+</div>
+<h2>文书十一：排除口供后证据不足不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于排除非法供述后证据不足不起诉的法律意见书</p>
+<p>一、剩余证据只能证明一般召集和协调</p>
+<p>群聊“都过来”“别让他们走”和频繁通话能够证明吴某参与联系，但完整语境尚不能排除接人、壮势或等待警方的解释。</p>
+<p>二、组织斗殴关键事实缺乏客观补强</p>
+<p>木棍没有吴某指纹、DNA及交付证据；</p>
+<p>司机否认接受吴某堵门指令；</p>
+<p>现场无清晰声音证明吴某发出动手命令；</p>
+<p>吴某未出现在主要殴打画面；</p>
+<p>同案人员对器械、分工和指令供述不一，并存在推责动机。</p>
+<p>三、凌晨笔录不能承担整合全案的作用</p>
+<p>排除该笔录后，不能再用其中的“组织、持械、堵门、指挥”等结论解释所有中性事实。每项客观证据应回到自身证明范围。</p>
+<p>四、处理意见</p>
+<p>在案证据不足以证明吴某以斗殴为目的纠集人员并实施组织、策划或指挥，也不足以认定其为首要分子或积极参加者。请求依法作出不起诉决定。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审无罪辩护词</h2>
+<div class="docbox">
+<p>吴某涉嫌聚众斗殴罪一案一审无罪辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>凌晨四点，吴某在讯问笔录最后一页签字捺印。纸面上，这是一份完整认罪供述；但支撑这份笔录的过程并不完整。录像晚开始、中途断开、提前结束，偏偏组织、木棍、堵门和动手指令等关键内容都出现在无法核验的区间。</p>
+<p>一、疲劳状态应从到案前后连续审查</p>
+<p>吴某并非仅在凌晨接受一次短暂讯问，而是全天经历多轮讯问、辨认、谈话和候问。登记为休息的时段仍在取证或者签署文书，唯一较长间隙也没有实际睡眠条件。</p>
+<p>二、吴某明确请求休息，办案人员仍将结束与“说清楚”联系</p>
+<p>录像中的“脑子乱”“真的困了”“能否明天再说”不是辩方事后概括。办案人员答复“说清楚就可以休息”，需要结合后续反复提示和认罪后结束讯问评价。</p>
+<p>三、同步录音录像不能证明取证过程合法完整</p>
+<p>二时十七分至二时四十四分无录像，三时十二分至三时三十分中断，三时五十六分后停止。原始介质、故障日志和签字修改录像均未提交，讯问人员对中断期间是否继续讯问又相互矛盾。</p>
+<p>四、笔录没有忠实反映吴某原话</p>
+<p>“叫人过来”被写成“纠集人员”，“接陈某”被写成“准备斗殴”，“等警察来”被写成“堵住出口”。侦查人员提出结论性问题后，吴某的否认、沉默和放弃争辩被扩写成完整有罪供述。</p>
+<p>五、签名捺印不能修复形成过程的缺陷</p>
+<p>吴某承认签名本人所写，但签字录像缺失，笔录又存在多处手写增加和改写。形式确认不能替代对自愿性、原话对应和修改过程的审查。</p>
+<p>六、翻供得到客观材料支持</p>
+<p>吴某在检察阶段指出讯问人员、具体时段、休息不足、录像缺口和笔录差异。随后调取的监控和录像证实多项异常，其翻供不能被简单归为逃避责任。</p>
+<p>七、排除口供后，剩余证据不能证明组织斗殴</p>
+<p>群聊和通话证明吴某叫人到场，却不能单独证明斗殴目的。器械来源、车辆堵门、动手指令和首要分子地位均缺乏稳定同案供述及客观证据补强。</p>
+<p>八、无罪辩护请求</p>
+<p>依法排除凌晨第四份讯问笔录及受其影响形成的重复性供述；</p>
+<p>对笔录与录像不一致、录像缺失及侦查人员说明矛盾作有利于吴某的评价；</p>
+<p>不以吴某在群体中的一般影响力推定组织、策划和指挥行为；</p>
+<p>依法宣告吴某无罪。</p>
+<p>程序不是事实之外的装饰。凌晨四点之前吴某经历了什么，凌晨笔录怎样形成，决定了这份供述能不能进入定案体系。笔录上可以有签名，录像中必须有过程；供述可以改变，证据必须解释这种改变。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>全部讯问笔录、电子原件、修改和打印日志；</p>
+<p>全部同步录音录像原件、原始介质、校验值及上传记录；</p>
+<p>办案区、候问区、走廊监控和门禁出入记录；</p>
+<p>饮食、饮水、休息、戒具、体检和医疗资料；</p>
+<p>辨认、手机指认、扣押文书及非正式谈话记录；</p>
+<p>讯问人员排班、中断说明、设备故障及维修记录；</p>
+<p>笔录与录像逐问逐答比对表及关键片段清单；</p>
+<p>检察阶段翻供的完整录音录像；</p>
+<p>群聊原始数据、通话、车辆、现场监控和器械来源；</p>
+<p>同案人员历次供述及形成先后、独立性材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 正式使用时，应核验案发时有效的刑事诉讼法、非法证据排除规定、庭前会议规程及公安机关讯问规则。</h3>
+<h3>2. 疲劳审讯应围绕实际休息、身体状态、请求休息、讯问回应及供述变化综合判断，不能只以凌晨时间推定。</h3>
+<h3>3. 排除供述后，应重新判断合法证据能否独立证明聚众斗殴故意、组织行为及责任地位。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

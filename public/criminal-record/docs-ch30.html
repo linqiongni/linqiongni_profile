@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch30</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch30">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第三十章配套法律文书全文</h1>
+<div class="sub">本套文书以吴某抢劫案为虚构背景。吴某被判处有期徒刑十一年，并处罚金三万元、责令退赔八万余元；服刑期间完成教育改造，取得多项考核成绩，亲属代为履行部分财产性判项，并准备减刑审查及刑满释放后的就业、家庭和继续履行计划。</div>
+</header>
+<div class="wrap">
+<p class="volband">第六卷程序本身就是辩护</p>
+<p>铁门打开以后</p>
+<p>使用说明</p>
+<p>减刑缩短实际执行刑期，假释是在考验期内附条件提前释放，二者法律效果不同。</p>
+<p>财产性判项应区分罚金、退赔、追缴、没收及民事赔偿，未全部履行时重点审查履行能力。</p>
+<p>正当申诉不得不加分析地等同于不认罪悔罪，但不同程序中的事实陈述必须一致。</p>
+<p>刑期核算须以拘留、逮捕、执行通知、收监登记及历次减刑裁定为依据。</p>
+<p>犯罪记录应依法、必要、适度使用，不得伪造证明，也不得无依据扩散个人信息。</p>
+<h3>文书目录</h3><ol>
+<li>羁押折抵及刑期起止计算表</li>
+<li>减刑与假释适用条件对照表</li>
+<li>改造表现、奖惩及教育劳动核对表</li>
+<li>财产性判项分类、履行能力及进度表</li>
+<li>正当申诉与悔改表现一致性审查表</li>
+<li>减刑报请材料及审理要点清单</li>
+<li>财产性判项履行情况说明及证明申请书</li>
+<li>减刑审理书面意见</li>
+<li>减刑案件最后陈述</li>
+<li>假释后居住、就业及风险控制计划书</li>
+<li>刑满释放前九十日及释放当日清单</li>
+<li>犯罪记录使用、就业及社会回归权益告知书</li>
+</ol>
+<h2>文书一：羁押折抵及刑期起止计算表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>日期/期间</th>
+<th>法律效果</th>
+<th>依据材料</th>
+<th>核对结果</th>
+</tr>
+<tr>
+<td>刑事拘留</td>
+<td>____</td>
+<td>开始人身拘束</td>
+<td>拘留证、羁押证明</td>
+<td>____</td>
+</tr>
+<tr>
+<td>逮捕</td>
+<td>____</td>
+<td>继续羁押</td>
+<td>逮捕证</td>
+<td>____</td>
+</tr>
+<tr>
+<td>一审判决</td>
+<td>____</td>
+<td>尚待生效/其他</td>
+<td>判决书</td>
+<td>____</td>
+</tr>
+<tr>
+<td>二审裁定</td>
+<td>____</td>
+<td>裁判生效</td>
+<td>裁定书</td>
+<td>____</td>
+</tr>
+<tr>
+<td>交付执行</td>
+<td>____</td>
+<td>进入监狱执行</td>
+<td>执行通知、收监登记</td>
+<td>____</td>
+</tr>
+<tr>
+<td>先行羁押折抵</td>
+<td>共____日</td>
+<td>折抵有期徒刑</td>
+<td>裁判、执行通知</td>
+<td>____</td>
+</tr>
+<tr>
+<td>原刑满日期</td>
+<td>____</td>
+<td>未减刑终止日</td>
+<td>执行通知</td>
+<td>____</td>
+</tr>
+<tr>
+<td>历次减刑</td>
+<td>共减____</td>
+<td>调整剩余刑期</td>
+<td>减刑裁定</td>
+<td>____</td>
+</tr>
+<tr>
+<td>现刑满日期</td>
+<td>____</td>
+<td>最终核定日期</td>
+<td>最新执行材料</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>核算提示</p>
+<p>□ 姓名及身份证号码一致。</p>
+<p>□ 拘留与羁押起始日一致。</p>
+<p>□ 存在取保或监视居住期间。</p>
+<p>□ 历次裁定均已计入。</p>
+<p>□ 裁定与执行系统终止日一致。</p>
+<p>□ 发现漏折抵或重复计算。</p>
+</div>
+<h2>文书二：减刑与假释适用条件对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>减刑</th>
+<th>假释</th>
+<th>吴某核查</th>
+</tr>
+<tr>
+<td>法律效果</td>
+<td>缩短刑期</td>
+<td>附条件提前释放，进入考验期</td>
+<td>____</td>
+</tr>
+<tr>
+<td>核心表现</td>
+<td>悔改、立功及一贯表现</td>
+<td>悔改，并审查再犯罪危险</td>
+<td>____</td>
+</tr>
+<tr>
+<td>执行期限</td>
+<td>审查起始、间隔和幅度</td>
+<td>审查实际执行刑期及禁止情形</td>
+<td>____</td>
+</tr>
+<tr>
+<td>犯罪因素</td>
+<td>抢劫罪及具体情节从严审查</td>
+<td>罪名、刑期、累犯等逐项核验</td>
+<td>____</td>
+</tr>
+<tr>
+<td>财产判项</td>
+<td>必须审查</td>
+<td>必须审查</td>
+<td>____</td>
+</tr>
+<tr>
+<td>监外条件</td>
+<td>非核心事项</td>
+<td>住所、生活来源、监管和社区影响</td>
+<td>____</td>
+</tr>
+<tr>
+<td>程序启动</td>
+<td>执行机关依法报请</td>
+<td>执行机关依法报请并附调查评估</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>路线选择检查</p>
+<p>□ 原判全文已核验。</p>
+<p>□ 吴某是否累犯已核验。</p>
+<p>□ 有无限制减刑已核验。</p>
+<p>□ 是否存在不得假释情形已核验。</p>
+<p>□ 实际执行刑期已核验。</p>
+<p>□ 家庭并未把假释等同刑满。</p>
+</div>
+<h2>文书三：改造表现、奖惩及教育劳动核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>期间</th>
+<th>监规表现</th>
+<th>教育培训</th>
+<th>劳动表现</th>
+<th>奖惩</th>
+<th>事实材料</th>
+</tr>
+<tr>
+<td>入监至第2年</td>
+<td>____</td>
+<td>入监教育</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>第3至4年</td>
+<td>稳定/其他</td>
+<td>机电基础</td>
+<td>设备辅助</td>
+<td>表扬____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>第5至6年</td>
+<td>____</td>
+<td>法治、心理、文化</td>
+<td>____</td>
+<td>记功____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>第7年至今</td>
+<td>____</td>
+<td>职业技能证书____</td>
+<td>____</td>
+<td>表扬____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>一贯表现审查</p>
+<p>□ 无违规处分。</p>
+<p>□ 曾受处分但已说明并持续改正。</p>
+<p>□ 奖励审批材料完整。</p>
+<p>□ 技能成果由吴某本人完成。</p>
+<p>□ 劳动任务和健康条件匹配。</p>
+<p>□ 不存在临近报请突击包装。</p>
+<p>□ 改造材料来源可核验。</p>
+</div>
+<h2>文书四：财产性判项分类、履行能力及进度表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>判项</th>
+<th>裁判金额</th>
+<th>已执行/抵扣</th>
+<th>本次履行</th>
+<th>余额</th>
+<th>证明</th>
+</tr>
+<tr>
+<td>退赔</td>
+<td>80,000余元</td>
+<td>____</td>
+<td>20,000元/实际</td>
+<td>____</td>
+<td>执行法院票据</td>
+</tr>
+<tr>
+<td>罚金</td>
+<td>30,000元</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>缴款票据</td>
+</tr>
+<tr>
+<td>追缴/返还</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>清单</td>
+</tr>
+<tr>
+<td>附带民事赔偿</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>裁判、执行说明</td>
+</tr>
+</table></div>
+<p>履行能力申报</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>情况</th>
+<th>核验材料</th>
+</tr>
+<tr>
+<td>房产、车辆</td>
+<td>____</td>
+<td>登记查询</td>
+</tr>
+<tr>
+<td>银行、网络账户</td>
+<td>____</td>
+<td>流水或查控</td>
+</tr>
+<tr>
+<td>股权、债权、保险</td>
+<td>____</td>
+<td>相关证明</td>
+</tr>
+<tr>
+<td>狱内账户余额及消费</td>
+<td>____</td>
+<td>监狱记录</td>
+</tr>
+<tr>
+<td>家庭代为履行</td>
+<td>____</td>
+<td>票据、资金来源</td>
+</tr>
+<tr>
+<td>隐匿、转移或妨害执行</td>
+<td>无/有：____</td>
+<td>执行法院说明</td>
+</tr>
+</table></div>
+<p>审查结论</p>
+<p>□ 有能力且已履行。</p>
+<p>□ 部分能力并持续履行。</p>
+<p>□ 经查控确无履行能力。</p>
+<p>□ 存在拒不申报或虚假申报。</p>
+<p>□ 民事赔偿优先安排。</p>
+<p>□ 亲属代履行已取得正式凭证。</p>
+</div>
+<h2>文书五：正当申诉与悔改表现一致性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>申诉主张</th>
+<th>改造/悔罪陈述</th>
+<th>是否冲突</th>
+<th>修正建议</th>
+</tr>
+<tr>
+<td>是否到场</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>参与行为</td>
+<td>____</td>
+<td>参与拦车、控制司机/其他</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>持械情况</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>分赃数额</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>共同犯罪地位</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>被害损失</td>
+<td>____</td>
+<td>愿意修复并履行</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>合规表达范本</p>
+<p>吴某承认并反省已经实施的具体行为，愿意承担依法确定的责任；对原判中____事实、____证据或者____法律评价仍有异议，已通过法定程序申诉。在申诉处理期间，吴某服从生效裁判执行，遵守监规，参加教育和劳动，并继续履行财产性判项。</p>
+<p>□ 申诉理由具体。</p>
+<p>□ 未因减刑需要虚构认罪事实。</p>
+<p>□ 未以申诉为由拒绝改造。</p>
+<p>□ 两套材料事实口径一致。</p>
+<p>□ 申诉权与执行义务已经区分。</p>
+</div>
+<h2>文书六：减刑报请材料及审理要点清单</h2>
+<div class="docbox">
+<p>减刑建议书；</p>
+<p>终审裁判、执行通知和收监材料；</p>
+<p>历次减刑裁定；</p>
+<p>评审鉴定、奖惩审批以及一贯表现材料；</p>
+<p>思想、文化、职业技术教育材料；</p>
+<p>劳动考核及健康适配材料；</p>
+<p>立功或重大立功核实材料（如有）；</p>
+<p>财产性判项执行裁定、票据和执行情况说明；</p>
+<p>吴某个人财产申报；</p>
+<p>实际财产、狱内账户余额和消费材料；</p>
+<p>申诉材料及其与悔改表现的说明；</p>
+<p>检察意见、公示及异议材料。</p>
+<p>法院审理要点</p>
+<p>□ 起始时间和间隔符合规定。</p>
+<p>□ 建议幅度与表现相当。</p>
+<p>□ 抢劫罪具体情节已从严审查。</p>
+<p>□ 奖励真实且程序完整。</p>
+<p>□ 履行能力判断有执行证据。</p>
+<p>□ 正当申诉未被机械作不利评价。</p>
+<p>□ 材料来源无矛盾。</p>
+</div>
+<h2>文书七：财产性判项履行情况说明及证明申请书</h2>
+<div class="docbox">
+<p>关于吴某财产性判项履行情况的说明及证明申请书</p>
+<p class="kv"><b>申请人</b>　吴某，现于__________监狱服刑。代理/代办人：__________。</p>
+<p>申请事项</p>
+<p>请核对原案罚金、责令退赔、追缴、返还及民事赔偿的执行项目；</p>
+<p>请列明已执行金额、同案人员履行或抵扣金额、未执行余额；</p>
+<p>请确认吴某亲属于____年__月__日代缴的____元对应具体判项；</p>
+<p>请出具执行情况说明、缴款凭证或结案文书；</p>
+<p>如尚未执行完毕，请说明当前查控结果及有无拒不履行、妨害执行情形。</p>
+<p>已知履行情况</p>
+<p>吴某原判罚金人民币三万元，责令退赔人民币八万余元。吴某亲属已于__________代为缴纳人民币__________，付款账户及票据附后。吴某本人已提交财产申报，并愿在能力范围内持续履行。</p>
+<p>理由</p>
+<p>上述材料将用于刑罚执行、减刑审查及后续继续履行。为避免款项性质、余额和同案履行情况不明，恳请依法核验并出具正式说明。</p>
+<p>此致</p>
+<p>__________人民法院执行部门</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：减刑审理书面意见</h2>
+<div class="docbox">
+<p>关于吴某减刑案件的书面意见</p>
+<p>一、吴某已形成连续、可核查的改造记录</p>
+<p>吴某自交付执行以来，遵守监规，参加思想、文化和职业技术教育，积极完成与身体状况相适应的劳动任务。各期考核、表扬及技能材料相互衔接，不是临近报请形成的突击材料。</p>
+<p>二、吴某对犯罪行为形成具体认识</p>
+<p>吴某能够结合参与拦车、控制被害人的具体行为认识共同犯罪责任及被害人的现实处境，不以未直接持刀为由否定自身行为后果。</p>
+<p>三、申诉属于具体、正当的权利行使</p>
+<p>吴某仅对原判认定的____、____提出申诉，同时服从生效裁判执行并持续改造。其申诉与悔罪陈述在事实边界上保持一致，不应被机械评价为不认罪悔罪。</p>
+<p>四、财产性判项已经依能力积极履行</p>
+<p>吴某及亲属已经履行人民币__________，执行法院已出具票据/说明。对未履行部分，吴某已如实申报财产；现有查控材料未显示隐匿、转移财产或妨害执行。请求结合实际履行能力综合判断。</p>
+<p>五、请求</p>
+<p>请求在充分审查原犯罪性质、吴某一贯表现、财产性判项和申诉情况后，依法对吴某予以减刑；具体幅度由人民法院根据有效法律及全案材料裁定。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：减刑案件最后陈述</h2>
+<div class="docbox">
+<p>吴某减刑案件最后陈述</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>我申请减刑，不是因为获得几次表扬就认为刑期应当自动减少。我愿意接受法院对我全部服刑表现的审查。</p>
+<p>我参与拦车并控制司机，使被害人在夜间面对多人威胁。我过去总强调自己没有直接持刀，后来才明白，被害人面对的是我们共同造成的危险。我对____仍依法提出申诉，但申诉没有改变我遵守监规、接受教育、参加劳动和履行退赔的义务。</p>
+<p>服刑期间，我完成了__________培训，取得__________考核成绩。对曾经发生的__________问题，我已作出改正。我的家属已代我履行人民币__________，尚欠部分并不是我想逃避。我已如实申报财产，刑满后将从合法收入中继续履行。</p>
+<p>如果依法获得减刑，我会把提前的时间用于工作、修复家庭关系和继续履行判项；如果法院认为条件尚不充分，我也会继续按规则改造。请依法审查。</p>
+<p class="kv"><b>陈述人</b>　吴某</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书十：假释后居住、就业及风险控制计划书</h2>
+<div class="docbox">
+<p>吴某假释后居住、就业及风险控制计划书</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>具体安排</th>
+<th>证明/联系人</th>
+</tr>
+<tr>
+<td>居住</td>
+<td>地址：__________；共同居住人：____</td>
+<td>住所证明、家属意见</td>
+</tr>
+<tr>
+<td>生活来源</td>
+<td>储备____元；家庭支持____；其他____</td>
+<td>收入或支持材料</td>
+</tr>
+<tr>
+<td>就业</td>
+<td>参加__________企业面试/技能测试</td>
+<td>真实经营信息、联系人</td>
+</tr>
+<tr>
+<td>社区衔接</td>
+<td>按要求报到并接受监督管理</td>
+<td>调查评估材料</td>
+</tr>
+<tr>
+<td>继续履行</td>
+<td>每月计划缴纳____元</td>
+<td>执行案号、专用账户</td>
+</tr>
+<tr>
+<td>医疗</td>
+<td>基础病、药物及就诊机构：____</td>
+<td>病历/医保</td>
+</tr>
+<tr>
+<td>家庭关系</td>
+<td>逐步恢复联系，尊重家庭成员边界</td>
+<td>家庭计划</td>
+</tr>
+<tr>
+<td>高风险交往</td>
+<td>不与原同案人员投资、收款或共事</td>
+<td>联系人清单</td>
+</tr>
+<tr>
+<td>资金风险</td>
+<td>不借卡、不代收、不涉赌、不网贷</td>
+<td>账户管理方案</td>
+</tr>
+<tr>
+<td>应急求助</td>
+<td>家属____；社区____；法律咨询____</td>
+<td>联系方式</td>
+</tr>
+</table></div>
+<p>承诺边界</p>
+<p>本计划不作为对未来行为的绝对保证，而是对住所、生活来源、监督条件和主要风险的可执行安排。所有就业证明必须真实，不使用停业企业或者虚假高薪承诺。</p>
+</div>
+<h2>文书十一：刑满释放前九十日及释放当日清单</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>事项</th>
+<th>责任人</th>
+<th>完成</th>
+</tr>
+<tr>
+<td>前90—61日</td>
+<td>核对刑满日期、证件、住所、财产判项余额</td>
+<td>吴某/家属/代理人</td>
+<td>□</td>
+</tr>
+<tr>
+<td>前60—31日</td>
+<td>落实交通、医保、培训和真实工作线索</td>
+<td>家属</td>
+<td>□</td>
+</tr>
+<tr>
+<td>前30—8日</td>
+<td>核对释放证明信息、药物、个人物品</td>
+<td>吴某/监狱</td>
+<td>□</td>
+</tr>
+<tr>
+<td>前7日</td>
+<td>确定接回人员、当天住宿及基本费用</td>
+<td>家属</td>
+<td>□</td>
+</tr>
+<tr>
+<td>释放当日</td>
+<td>核对身份和文书，领取物品并安全返家</td>
+<td>吴某/接回人</td>
+<td>□</td>
+</tr>
+<tr>
+<td>释放后7日</td>
+<td>按要求办理户籍、身份证、社保医保等</td>
+<td>吴某</td>
+<td>□</td>
+</tr>
+<tr>
+<td>释放后30日</td>
+<td>参加培训或求职，确认执行款计划</td>
+<td>吴某</td>
+<td>□</td>
+</tr>
+<tr>
+<td>释放后100日</td>
+<td>复盘就业、家庭、债务和高风险联系</td>
+<td>吴某/支持人</td>
+<td>□</td>
+</tr>
+</table></div>
+<p>释放证明核对</p>
+<p>□ 姓名和身份证号码。</p>
+<p>□ 原判法院及案号。</p>
+<p>□ 罪名和刑种。</p>
+<p>□ 原刑期起止。</p>
+<p>□ 历次减刑。</p>
+<p>□ 实际释放日期。</p>
+<p>□ 释放原因。</p>
+<p>□ 印章及更正渠道。</p>
+</div>
+<h2>文书十二：犯罪记录使用、就业及社会回归权益告知书</h2>
+<div class="docbox">
+<p>犯罪记录使用、就业及社会回归权益告知书</p>
+<p>一、必须坚持的底线</p>
+<p>不得伪造、变造无犯罪记录证明或者向依法核验的岗位提供虚假信息；</p>
+<p>刑满释放不等于犯罪记录自动消失；</p>
+<p>尚未履行完毕的罚金、退赔等不因自由刑结束而当然消灭；</p>
+<p>发现个人信息被违法公开、传播或用于与岗位无关的羞辱时，保留证据并依法提出异议。</p>
+<p>二、求职时的分层处理</p>
+<p>岗位依法要求犯罪记录审查的，如实提供必要信息并询问使用、保存范围；</p>
+<p>用人单位基于具体岗位提出核验的，要求说明目的和依据，仅提供必要信息；</p>
+<p>普通岗位未提出相关问题的，以技能、当前能力和工作计划为中心，不作无关的过度披露；</p>
+<p>不使用虚假接收证明、高薪承诺或停业企业材料；</p>
+<p>保存招聘表、隐私告知、提交材料和拒聘沟通记录。</p>
+<p>三、社会回归行动</p>
+<p>从基础岗位和真实技能开始；</p>
+<p>按期继续履行财产性判项；</p>
+<p>不与原同案人员共同投资、共用账户或从事来源不明业务；</p>
+<p>恢复家庭关系时尊重他人边界，不要求立即原谅；</p>
+<p>遇到拒聘、债务、网络诈骗、冲突或情绪危机时，优先寻求合法帮助。</p>
+<p>四、信息使用核对</p>
+<p>□ 查询主体有明确身份。</p>
+<p>□ 目的与岗位相关。</p>
+<p>□ 具有法律或制度依据。</p>
+<p>□ 范围不过度。</p>
+<p>□ 已告知保存期限与接触人员。</p>
+<p>□ 不向无关人员传播。</p>
+<p>□ 提供更正或异议渠道。</p>
+<p class="kv"><b>附录一</b>　证据材料目录</p>
+<p>一、二审裁判、生效及执行通知；</p>
+<p>拘留、逮捕、羁押和收监材料；</p>
+<p>历次评审鉴定、奖惩、教育和劳动材料；</p>
+<p>减刑、假释建议及历次裁定；</p>
+<p>罚金、退赔、追缴、赔偿票据及执行说明；</p>
+<p>财产申报、查控、狱内账户和消费材料；</p>
+<p>申诉材料及一致性说明；</p>
+<p>住所、家庭支持、生活来源和社区评估；</p>
+<p>技能证书、真实就业线索及培训计划；</p>
+<p>释放证明、证件、社保医保及继续履行材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 本套文书依据虚构事实制作。正式使用时，应核验原判全文、刑期、累犯情况、限制减刑、执行档案以及办理时有效规范。</h3>
+<h3>2. 2026年修订的监狱法自2026年11月1日起施行。此前办理事项不得直接套用尚未生效条款；此后办理时还应核验配套规定。</h3>
+<h3>3. 犯罪记录查询和就业限制因岗位、行业及地方规则而异，不使用概括性结论代替具体法律审查。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

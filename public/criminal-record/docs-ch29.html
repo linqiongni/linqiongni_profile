@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch29</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch29">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十九章配套法律文书全文</h1>
+<div class="sub">本套文书以罗某盗窃仓库设备案为虚构背景。原判主要依赖赵某现场指认、钱某赃物来源陈述、模糊监控、车型及通话记录。罗某服刑后期，钱某在另案中供述设备由孙某出售，赵某承认曾隐瞒外借门禁卡并因担心承担责任而指认罗某。正式使用时，应以原案卷宗、新证据原始载体及有权机关核实结果为准。</div>
+</header>
+<div class="wrap">
+<p class="volband">第六卷程序本身就是辩护</p>
+<p>一份已经生效的判决</p>
+<p>使用说明</p>
+<p>申诉立案仅表示进入复查，不等于决定再审。</p>
+<p>新证据应当能够验证，并与原判关键事实具有实质关联。</p>
+<p>证人翻证应比较新旧陈述形成条件、利益关系和客观印证。</p>
+<p>提出申诉本身不停止原判执行；法院决定再审后，符合法定情形方可申请中止执行。</p>
+<p>再审无罪后，应分别处理释放、罚金财物、记录更正和国家赔偿。</p>
+<h3>文书目录</h3><ol>
+<li>原判定罪证据支点审查表</li>
+<li>新旧证据逐项对照表</li>
+<li>证人翻证可信性审查表</li>
+<li>涉案设备流向及账户核对表</li>
+<li>照片辨认程序与证据同源性审查表</li>
+<li>再审启动条件及申诉路径审查表</li>
+<li>刑事申诉状</li>
+<li>请求人民法院调卷复查及调查取证申请书</li>
+<li>向人民检察院申请刑事申诉监督书</li>
+<li>再审期间中止原判执行及取保候审申请书</li>
+<li>再审无罪辩护词</li>
+<li>再审无罪后程序收尾及国家赔偿衔接申请书</li>
+</ol>
+<h2>文书一：原判定罪证据支点审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>原判支点</th>
+<th>原证据内容</th>
+<th>原判推论</th>
+<th>现存缺口</th>
+</tr>
+<tr>
+<td>赵某现场指认</td>
+<td>暗处、侧影、短时观察</td>
+<td>认定现场人员系罗某</td>
+<td>未看清面部</td>
+</tr>
+<tr>
+<td>照片辨认</td>
+<td>十张照片选出罗某</td>
+<td>强化身份同一</td>
+<td>辨认前见过单人照，目标突出</td>
+</tr>
+<tr>
+<td>钱某证言</td>
+<td>送货人称“罗某的货”</td>
+<td>概括为罗某出售</td>
+<td>传来信息，无直接交易</td>
+</tr>
+<tr>
+<td>白色面包车</td>
+<td>监控拍到常见车型</td>
+<td>可能为罗某用车</td>
+<td>无车牌、轨迹和同一认定</td>
+</tr>
+<tr>
+<td>案发前通话</td>
+<td>罗某与赵某通话</td>
+<td>可能询问值班</td>
+<td>无通话内容，存在维修费解释</td>
+</tr>
+<tr>
+<td>熟悉仓库</td>
+<td>曾维修并了解布局</td>
+<td>具备作案条件</td>
+<td>条件证据不能证明实施</td>
+</tr>
+<tr>
+<td>不在场辩解</td>
+<td>不能覆盖整晚</td>
+<td>被作不利评价</td>
+<td>不能倒置证明责任</td>
+</tr>
+</table></div>
+<p>审查结论</p>
+<p>□ 证据来源相互独立。</p>
+<p>□ 多项证据源于赵某初始指认。</p>
+<p>□ 存在客观物证连接罗某与设备。</p>
+<p>□ 未查获赃物、货款或直接联系。</p>
+<p>□ 原判将可能性事实提升为唯一结论。</p>
+</div>
+<h2>文书二：新旧证据逐项对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>原判认定</th>
+<th>新证据</th>
+<th>冲突及影响</th>
+</tr>
+<tr>
+<td>出售人</td>
+<td>罗某通过他人出售</td>
+<td>钱某称孙某联系交易</td>
+<td>切断罗某与销赃连接</td>
+</tr>
+<tr>
+<td>收款人</td>
+<td>现金结算，去向不明</td>
+<td>钱某妻子向孙某亲属账户转款</td>
+<td>形成新资金路径</td>
+</tr>
+<tr>
+<td>现场身份</td>
+<td>赵某确定系罗某</td>
+<td>赵某称未看清，仅见侧影</td>
+<td>核心指认动摇</td>
+</tr>
+<tr>
+<td>进入权限</td>
+<td>罗某熟悉仓库</td>
+<td>赵某曾把备用门禁卡交孙某</td>
+<td>另有人员具备进入条件</td>
+</tr>
+<tr>
+<td>内部细节</td>
+<td>罗某熟悉设备</td>
+<td>孙某知设备位置、工具和盲区</td>
+<td>另有人员掌握秘密细节</td>
+</tr>
+<tr>
+<td>辨认可靠性</td>
+<td>程序形式完整</td>
+<td>辨认前展示工作证，罗某照片突出</td>
+<td>记忆污染</td>
+</tr>
+<tr>
+<td>车辆</td>
+<td>浅色面包车与罗某有关</td>
+<td>无车牌及控制证明</td>
+<td>不能确认同一</td>
+</tr>
+</table></div>
+<p>新证据核实状态</p>
+<p>□ 已取得原件。</p>
+<p>□ 仅有复印件。</p>
+<p>□ 已由司法机关提取。</p>
+<p>□ 需鉴定形成时间。</p>
+<p>□ 证人愿意出庭。</p>
+<p>□ 存在接触或利益风险。</p>
+<p>□ 仍需调取另案卷宗。</p>
+</div>
+<h2>文书三：证人翻证可信性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>赵某原证言</th>
+<th>赵某新证言</th>
+<th>钱某新供述</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>形成时间</td>
+<td>案发后不久</td>
+<td>多年后</td>
+<td>另案到案后</td>
+<td>____</td>
+</tr>
+<tr>
+<td>观察/感知</td>
+<td>夜间侧影</td>
+<td>承认未看清</td>
+<td>直接参与收货</td>
+<td>____</td>
+</tr>
+<tr>
+<td>信息污染</td>
+<td>先看工作证照片</td>
+<td>说明污染过程</td>
+<td>原话受孙某影响</td>
+<td>____</td>
+</tr>
+<tr>
+<td>利害关系</td>
+<td>隐瞒外借门禁卡</td>
+<td>承认管理责任</td>
+<td>可能争取另案从宽</td>
+<td>____</td>
+</tr>
+<tr>
+<td>客观印证</td>
+<td>缺少面部影像</td>
+<td>门禁表、仓库照片</td>
+<td>账簿、转账流水</td>
+<td>____</td>
+</tr>
+<tr>
+<td>可验证细节</td>
+<td>较少</td>
+<td>门禁卡交付经过</td>
+<td>价格、付款、账户</td>
+<td>____</td>
+</tr>
+<tr>
+<td>是否愿出庭</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>翻证审查问题</p>
+<p>□ 翻证是否主动形成。</p>
+<p>□ 是否接触罗某家属或代理人。</p>
+<p>□ 是否获得利益或承诺。</p>
+<p>□ 能否合理解释前后矛盾。</p>
+<p>□ 是否包含未公开细节。</p>
+<p>□ 是否有独立书证、电子数据印证。</p>
+<p>□ 是否经同步录音录像固定。</p>
+</div>
+<h2>文书四：涉案设备流向及账户核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>环节</th>
+<th>原案结论</th>
+<th>新增线索</th>
+<th>待核实材料</th>
+</tr>
+<tr>
+<td>设备出库</td>
+<td>罗某利用熟悉条件盗出</td>
+<td>孙某持有门禁卡并知仓库细节</td>
+<td>门禁、监控、车辆</td>
+</tr>
+<tr>
+<td>联系收货</td>
+<td>罗某通过他人联系钱某</td>
+<td>钱某称孙某直接联系</td>
+<td>通话、聊天、通讯录</td>
+</tr>
+<tr>
+<td>安排送货</td>
+<td>人员不明</td>
+<td>孙某安排送货</td>
+<td>司机、车辆、装卸地点</td>
+</tr>
+<tr>
+<td>议价</td>
+<td>未查清</td>
+<td>钱某与孙某议价</td>
+<td>账簿、讯问录像</td>
+</tr>
+<tr>
+<td>首付款</td>
+<td>现金说法</td>
+<td>账簿记“先付六万”</td>
+<td>账簿原件及形成时间</td>
+</tr>
+<tr>
+<td>转账</td>
+<td>未查清</td>
+<td>四万元转至孙某亲属账户</td>
+<td>银行流水、账户用途</td>
+</tr>
+<tr>
+<td>后续转卖</td>
+<td>部分查明</td>
+<td>钱某可指认买家</td>
+<td>发票、物流、设备编号</td>
+</tr>
+</table></div>
+<p>流向闭合检查</p>
+<p>□ 设备型号及编号一致。</p>
+<p>□ 交易日期与失窃时间吻合。</p>
+<p>□ 送货车辆和人员可核实。</p>
+<p>□ 付款金额与账簿一致。</p>
+<p>□ 账户与孙某关系明确。</p>
+<p>□ 罗某出现在任一交易环节。</p>
+<p>□ 存在其他合理交易解释。</p>
+</div>
+<h2>文书五：照片辨认程序与证据同源性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查事项</th>
+<th>卷宗记载</th>
+<th>发现问题</th>
+<th>证明力影响</th>
+</tr>
+<tr>
+<td>首次特征描述</td>
+<td>身形、走路姿势像</td>
+<td>无面部特征</td>
+<td>识别基础弱</td>
+</tr>
+<tr>
+<td>辨认前接触</td>
+<td>展示罗某工作证复印件</td>
+<td>单人照片先行暴露</td>
+<td>熟悉感污染</td>
+</tr>
+<tr>
+<td>混杂照片</td>
+<td>十张照片</td>
+<td>罗某唯一穿工作服</td>
+<td>目标突出</td>
+</tr>
+<tr>
+<td>主持与记录</td>
+<td>____</td>
+<td>是否有暗示或反馈</td>
+<td>____</td>
+</tr>
+<tr>
+<td>确定程度</td>
+<td>好像→应该→确定</td>
+<td>确信度随重复接触升高</td>
+<td>不等于原始记忆增强</td>
+</tr>
+<tr>
+<td>钱某指认</td>
+<td>曾看罗某照片</td>
+<td>未与罗某直接交易</td>
+<td>来源同样受污染</td>
+</tr>
+</table></div>
+<p>证据同源性检查</p>
+<p>□ 赵某初始指认引导后续调查。</p>
+<p>□ 钱某信息来自送货人口述。</p>
+<p>□ 车型筛查以罗某为中心。</p>
+<p>□ 通话记录被按既定假设解释。</p>
+<p>□ 各证据具有真正独立来源。</p>
+<p>□ 所谓印证可能是同一错误假设循环强化。</p>
+</div>
+<h2>文书六：再审启动条件及申诉路径审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>法院申诉路径</th>
+<th>检察监督路径</th>
+<th>本案材料</th>
+</tr>
+<tr>
+<td>目标</td>
+<td>复查并依法决定再审</td>
+<td>监督生效裁判并依法抗诉/建议</td>
+<td>____</td>
+</tr>
+<tr>
+<td>首要提交机关</td>
+<td>作出生效裁判的法院</td>
+<td>有管辖权的检察机关</td>
+<td>____</td>
+</tr>
+<tr>
+<td>核心理由</td>
+<td>新证据足以动摇原判</td>
+<td>事实认定、证据采信及程序问题</td>
+<td>____</td>
+</tr>
+<tr>
+<td>必备材料</td>
+<td>申诉状、裁判文书、新证据、线索</td>
+<td>申诉书、裁判文书、证据及监督请求</td>
+<td>____</td>
+</tr>
+<tr>
+<td>当前阶段</td>
+<td>申诉立案/复查/再审</td>
+<td>受理/审查/复查</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>再审事由检查</p>
+<p>□ 审判时未收集或未采信的新证据可能推翻原判。</p>
+<p>□ 主要证据不充分或者不具有证明力。</p>
+<p>□ 据以定罪的主要证据相互矛盾。</p>
+<p>□ 原判关键事实依据发生变化。</p>
+<p>□ 审判程序违法并影响公正裁判。</p>
+<p>□ 仅重复原审辩解，无新增材料。</p>
+</div>
+<h2>文书七：刑事申诉状</h2>
+<div class="docbox">
+<p>刑事申诉状</p>
+<p class="kv"><b>申诉人</b>　罗某，基本情况及联系方式：__________。</p>
+<p class="kv"><b>代理人</b>　__________律师，__________律师事务所。</p>
+<p class="kv"><b>原审被告人</b>　罗某。</p>
+<p class="kv"><b>原一审案号</b>　__________；原二审案号：__________。</p>
+<p>申诉请求</p>
+<p>依法对本案立案复查；</p>
+<p>调取原案及钱某另案全部卷宗、同步录音录像和电子数据；</p>
+<p>调查核实钱某账簿、银行转账、孙某关联账户及门禁卡事实；</p>
+<p>通知赵某、钱某、孙某接受询问，必要时组织听证；</p>
+<p>依法决定再审，撤销原有罪判决、裁定，宣告罗某无罪。</p>
+<p>事实与理由</p>
+<p>原判认定罗某盗窃三台检测设备，主要依赖赵某现场指认、钱某关于赃物来源的陈述、模糊监控、常见车型及一次通话。原案未在罗某处查获赃物，没有货款流入、直接交易记录或者清晰影像。</p>
+<p class="kv"><b>现出现足以动摇原判的新证据</b>　钱某在另案中供述设备由孙某联系出售，并提供旧账簿及付款账户线索；银行流水显示钱某妻子曾向孙某亲属账户转款；赵某承认曾将备用门禁卡交给孙某，案发当晚未看清人员面部，曾因担心承担管理责任而指认罗某；原案辨认前，赵某已被展示罗某工作证照片，正式照片组又存在目标突出。</p>
+<p>上述材料相互连接，既形成新的赃物流向，也揭示原判核心指认受到利益关系和辨认污染影响。旧证据重新评价后，不能排除孙某或者其他人员实施、控制涉案设备的合理可能。</p>
+<p>结论</p>
+<p>原判证据体系已经失去排他性，继续认定罗某实施盗窃不符合证据确实、充分和排除合理怀疑的要求。请求依法启动审判监督程序。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：请求人民法院调卷复查及调查取证申请书</h2>
+<div class="docbox">
+<p>刑事申诉调卷复查及调查取证申请书</p>
+<p>申请事项</p>
+<p>调取原一审、二审全部纸质及电子卷宗；</p>
+<p>调取钱某另案讯问笔录及同步录音录像；</p>
+<p>封存并核验钱某旧账簿原件、保管过程及前后账目；</p>
+<p>调取有关银行账户流水、开户资料和款项后续去向；</p>
+<p>调取仓库门禁原始数据、备用卡管理表及内部处分记录；</p>
+<p>调取赵某辨认前工作记录、所看工作证图片和原始辨认照片组；</p>
+<p>调取孙某手机备份中的仓库照片、形成时间及原始文件；</p>
+<p>询问赵某、钱某、孙某、账户持有人及可能的送货人员。</p>
+<p>申请理由</p>
+<p>上述材料分别关系新证据真实性、原辨认可靠性、赃物流向和另有他人作案可能，申诉人无法自行完整取得，且部分材料存在灭失风险，恳请依法调取核实。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：向人民检察院申请刑事申诉监督书</h2>
+<div class="docbox">
+<p>刑事申诉监督申请书</p>
+<p class="kv"><b>申请人</b>　罗某。代理人：__________律师。</p>
+<p>监督请求</p>
+<p>依法受理并调取原案卷宗全面审查；</p>
+<p>核实钱某另案供述、账簿、银行流水和孙某关联账户；</p>
+<p>审查赵某原指认、翻证、外借门禁卡及照片辨认程序；</p>
+<p>审查原判是否将传来信息改写为直接交易事实，是否存在证据同源和证明责任倒置；</p>
+<p>符合条件时，依法提出抗诉或者再审检察建议；</p>
+<p>对真正行为人线索依法移送，不以是否查明真凶作为罗某无罪救济前提。</p>
+<p>主要理由</p>
+<p>新证据直接动摇原判关于罗某控制和处分赃物的事实基础。原判主要证据既缺少客观补强，又存在辨认污染、利害关系未披露和证据来源同一等问题。新旧证据合并后，不能形成指向罗某的唯一、排他的证明体系。</p>
+<p>刑事申诉监督应同时审查原案事实、证据、法律适用和诉讼程序，并对可信新证据和原判争议焦点进行重点核查。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：再审期间中止原判执行及取保候审申请书</h2>
+<div class="docbox">
+<p>中止原判执行并变更强制措施申请书</p>
+<p>申请事项</p>
+<p>在再审期间依法中止原判刑罚继续执行；</p>
+<p>对罗某采取取保候审，或者根据案件情况采取监视居住；</p>
+<p>及时向执行机关送达中止执行及变更措施文书。</p>
+<p>事实与理由</p>
+<p>人民法院已经决定对本案再审；</p>
+<p>钱某新供述、账簿、银行流水、赵某翻证和门禁材料相互印证，罗某具有经再审改判无罪的现实可能；</p>
+<p>罗某已实际执行刑期______，剩余刑期______，继续执行可能造成难以弥补的自由损害；</p>
+<p>主要证据已经固定，罗某没有毁证、串供或逃匿现实风险；</p>
+<p>罗某具有固定住所、稳定家庭联系及适格保证条件。</p>
+<p>说明</p>
+<p>提出申诉本身不停止执行。本申请以人民法院已经决定再审为前提，请结合可能改判无罪、实际执行刑期及社会危险性依法审查。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：再审无罪辩护词</h2>
+<div class="docbox">
+<p>罗某盗窃案再审无罪辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>再审要解决的不是孙某是否已经被证明为盗窃人，而是现有证据能否继续证明罗某实施了盗窃。新证据出现后，原判依赖的现场身份、赃物来源和所谓相互印证均已发生根本变化。</p>
+<p>一、赵某原指认没有可靠的感知基础</p>
+<p>赵某在夜间隔着玻璃、相距约二十米观察戴帽人员侧影，未看清面部。首次陈述仅称身形相像，其确信度是在接触罗某姓名、工作证照片和重复辨认后逐步增强。</p>
+<p>二、照片辨认受到先行暴露和目标突出污染</p>
+<p>正式辨认前赵某已看过罗某单人工作证照片；照片组中罗某又是唯一穿工作服者。形式上的多人照片不能消除目标突出和熟悉感污染。</p>
+<p>三、赵某隐瞒外借门禁卡，原证言存在现实利害关系</p>
+<p>赵某担心因擅自将备用门禁卡交给孙某而承担管理责任。新发现的门禁资料、内部记录及孙某仓库照片，印证赵某翻证中关于利害关系和孙某进入条件的说明。</p>
+<p>四、钱某从未直接与罗某交易</p>
+<p>钱某原来所说“罗某的货”来自送货人口述。原判将传来信息概括为罗某出售，超出了证言本身。钱某现在能够说明孙某联系、议价、安排送货和指定账户，并有旧账簿及转账材料验证。</p>
+<p>五、原判其他证据不能独立完成指向</p>
+<p>模糊监控不能识别人身身份；</p>
+<p>浅色面包车无车牌、轨迹及罗某实际控制证明；</p>
+<p>通话记录不能证明通话内容，维修费欠款提供合理解释；</p>
+<p>熟悉仓库只是一般条件事实；</p>
+<p>罗某无赃物、无货款、无钱某直接联系记录；</p>
+<p>不在场证明不完整不能替代控方举证。</p>
+<p>六、新旧证据合并后，原证明体系已无法排除合理怀疑</p>
+<p>孙某接触门禁卡、掌握仓库细节、联系钱某并通过关联账户收款的证据，至少形成另有他人实施或控制赃物的现实可能。罗某无须证明孙某构成盗窃，控方必须证明罗某有罪。</p>
+<p>七、辩护请求</p>
+<p>撤销原一审判决及二审裁定；</p>
+<p>依法宣告罗某无罪；</p>
+<p>对罚金、追缴、扣押及其他财产处理依法纠正；</p>
+<p>在裁判生效后及时办理释放、记录更正及国家赔偿衔接事项。</p>
+<p>生效裁判应当稳定，但稳定不能成为错误继续存在的理由。新证据不是给旧判决增加一个注脚，而是要求重新检查旧判决赖以成立的整个证明结构。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：再审无罪后程序收尾及国家赔偿衔接申请书</h2>
+<div class="docbox">
+<p>再审改判无罪后程序收尾及国家赔偿衔接申请书</p>
+<p>申请事项</p>
+<p>立即终止刑罚执行并办理释放证明；</p>
+<p>返还已经执行的罚金及依法应返还的追缴、扣押、冻结财产；</p>
+<p>撤销或更正与原有罪判决相关的执行、登记和证明信息；</p>
+<p>依法处理原附带民事裁判及财产执行；</p>
+<p>出具羁押、服刑、释放、罚金和财产执行完整证明；</p>
+<p>告知并协助明确国家赔偿义务机关及申请渠道；</p>
+<p>对需要消除影响、恢复名誉的事项依法处理；</p>
+<p>将孙某等真正行为人线索移送有权机关继续调查。</p>
+<p>国家赔偿材料目录</p>
+<p>再审无罪判决及生效证明；</p>
+<p>原一审判决、二审裁定；</p>
+<p>拘留、逮捕、羁押、服刑和释放证明；</p>
+<p>罚金缴纳及财产执行凭证；</p>
+<p>扣押、冻结、追缴和返还清单；</p>
+<p>身份证明及委托手续；</p>
+<p>精神损害、医疗损害等相关证明；</p>
+<p>国家赔偿申请书及请求项目计算说明。</p>
+<p>说明</p>
+<p>再审无罪裁判解决刑事责任，国家赔偿应在法定条件具备后另行申请。依审判监督程序再审后作无罪处理的，应依法确定作出原生效判决的人民法院为赔偿义务机关。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　申诉证据目录</p>
+<p>原一审判决、二审裁定及执行文书；</p>
+<p>原案现场勘验、门禁、监控和车辆材料；</p>
+<p>赵某历次陈述、辨认前记录及原始照片组；</p>
+<p>赵某翻证原始音视频和亲笔说明；</p>
+<p>钱某另案讯问笔录及同步录音录像；</p>
+<p>钱某旧账簿原件、保管记录及真实性核验材料；</p>
+<p>钱某妻子转账及孙某关联账户流水；</p>
+<p>孙某手机仓库照片及原始电子数据；</p>
+<p>罗某账户、搜查、扣押及无赃物材料；</p>
+<p>原案庭审笔录、辩护意见和调查取证申请。</p>
+<p class="kv"><b>附录二</b>　使用及法律核验提示</p>
+<h3>1. 正式提交前，应核验生效裁判层级、受理机关、既往申诉经过及当时有效的刑事诉讼法和相关司法解释。</h3>
+<h3>2. 证人翻证和另案供述应提交原始载体，保留取得、复制、移交和保管过程，不宜只提交整理后的文字摘要。</h3>
+<h3>3. 中止执行申请以人民法院已经决定再审为前提；申诉立案、复查受理不能替代再审决定。</h3>
+<h3>4. 国家赔偿请求应在无罪裁判生效及法定条件具备后另行提出，并以最新赔偿标准和程序规范核算。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

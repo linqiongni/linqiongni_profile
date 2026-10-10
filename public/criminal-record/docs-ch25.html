@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch25</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch25">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十五章配套法律文书全文</h1>
+</header>
+<div class="wrap">
+<p class="volband">第五卷公司与权力</p>
+<p>执法记录仪缺失的六分钟</p>
+<p>使用说明</p>
+<p>本套文书围绕基层执法人员处理商户纠纷时，将经营者带回办公点并限制离开，且关键六分钟执法视频缺失的虚拟案件编制。审查必须把主体身份、权限来源、带离依据、自由控制、电子数据、伤情及刑法要求的损害后果逐项拆开。</p>
+<p>执法身份不当然包含带离、传唤和限制人身自由的权限。</p>
+<p>自行上车、门未上锁不当然等于自愿或者能够现实离开。</p>
+<p>视频缺失既不能自动推定发生暴力，也不能导致缺失期间事实免于调查。</p>
+<p>滥用职权、玩忽职守和非法拘禁的主体、主观罪过、保护法益及结果要求分别审查。</p>
+<p>对负责人、正式执法人员、辅助人员和设备管理员按决定、执行、异议、保管及后果分别归责。</p>
+<h3>文书目录</h3><ol>
+<li>滥用职权、玩忽职守与非法拘禁构成要件对照表</li>
+<li>行政执法主体、权限及带离依据审查表</li>
+<li>执法全过程及限制自由起止时间轴</li>
+<li>办公点现实离开条件与控制程度审查表</li>
+<li>执法记录仪数据完整性及六分钟缺失核对表</li>
+<li>威胁、推搡、伤情及损害后果审查表</li>
+<li>主体权限、原始设备及监控数据调取申请书</li>
+<li>电子数据恢复鉴定及同型号设备测试申请书</li>
+<li>程序违法不等于渎职犯罪专项法律意见书</li>
+<li>视频缺失不能推定暴力及不具有拘禁故意法律意见书</li>
+<li>证据不足不起诉及分层责任法律意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：滥用职权、玩忽职守与非法拘禁构成要件对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>滥用职权罪</th>
+<th>玩忽职守罪</th>
+<th>非法拘禁罪</th>
+</tr>
+<tr>
+<td>主体</td>
+<td>国家机关工作人员等</td>
+<td>国家机关工作人员等</td>
+<td>一般主体</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>积极越权、任意用权</td>
+<td>严重不履职或不认真履职</td>
+<td>非法剥夺人身自由</td>
+</tr>
+<tr>
+<td>主观</td>
+<td>故意违法用权</td>
+<td>重大过失</td>
+<td>故意控制自由</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>重大损失</td>
+<td>重大损失</td>
+<td>依行为情节综合判断</td>
+</tr>
+<tr>
+<td>本案重点</td>
+<td>无权带离、禁止离开</td>
+<td>录像管理、故障未报</td>
+<td>门禁、看守、威胁、时长</td>
+</tr>
+</table></div>
+<p>初步分段</p>
+<p>□ 现场秩序控制具有现实必要性。</p>
+<p>□ 离开现场后继续控制缺乏依据。</p>
+<p>□ 记录仪未完整保存属于独立管理问题。</p>
+<p>□ 缺失视频原因无法确定。</p>
+<p>□ 轻微伤与推搡因果尚未排除其他来源。</p>
+<p>□ 重大损失或恶劣社会影响尚需证明。</p>
+</div>
+<h2>文书二：行政执法主体、权限及带离依据审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>人员/事项</th>
+<th>身份或权限</th>
+<th>证据</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>方某</td>
+<td>正式执法人员</td>
+<td>编制/任命/执法证</td>
+<td>____</td>
+</tr>
+<tr>
+<td>梁某</td>
+<td>辅助人员</td>
+<td>合同/权限清单</td>
+<td>____</td>
+</tr>
+<tr>
+<td>占道经营</td>
+<td>是否在事项清单</td>
+<td>权责清单</td>
+<td>____</td>
+</tr>
+<tr>
+<td>强制带离</td>
+<td>有无法律授权</td>
+<td>法律法规</td>
+<td>____</td>
+</tr>
+<tr>
+<td>传唤询问</td>
+<td>条件及审批</td>
+<td>审批/告知</td>
+<td>____</td>
+</tr>
+<tr>
+<td>限制离开</td>
+<td>依据与期限</td>
+<td>文书/记录</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>程序核对</p>
+<p>□ 现场可以完成身份和事实核查。</p>
+<p>□ 存在现实冲突或安全危险。</p>
+<p>□ 已告知措施名称、理由和依据。</p>
+<p>□ 已履行审批或口头审批补记。</p>
+<p>□ 允许自行前往或拒绝配合。</p>
+<p>□ 依法通知家属。</p>
+<p>□ 达到期限立即解除。</p>
+<p>□ 应移交公安机关而未移交。</p>
+</div>
+<h2>文书三：执法全过程及限制自由起止时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>周某状态</th>
+<th>执法人员行为</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>____</td>
+<td>到达市场</td>
+<td>争执/配合</td>
+<td>询问检查</td>
+<td>视频</td>
+</tr>
+<tr>
+<td>____</td>
+<td>提出回中队</td>
+<td>拒绝/同意</td>
+<td>告知或命令</td>
+<td>视频</td>
+</tr>
+<tr>
+<td>____</td>
+<td>乘车</td>
+<td>____</td>
+<td>方某驾车/梁某陪同</td>
+<td>车载/定位</td>
+</tr>
+<tr>
+<td>____</td>
+<td>进入询问室</td>
+<td>____</td>
+<td>开始了解情况</td>
+<td>固定监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>首次要求离开</td>
+<td>明确提出</td>
+<td>“暂时不能走”</td>
+<td>执法视频</td>
+</tr>
+<tr>
+<td>____</td>
+<td>走向外门</td>
+<td>尝试离开</td>
+<td>梁某示意返回</td>
+<td>门外监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>六分钟缺失</td>
+<td>争执</td>
+<td>____</td>
+<td>残留数据</td>
+</tr>
+<tr>
+<td>____</td>
+<td>签署笔录</td>
+<td>写明异议</td>
+<td>____</td>
+<td>笔录/视频</td>
+</tr>
+<tr>
+<td>____</td>
+<td>离开办公点</td>
+<td>自由恢复</td>
+<td>开门放行</td>
+<td>门禁记录</td>
+</tr>
+</table></div>
+<p>起止结论</p>
+<p class="kv"><b>可能起算点</b>　现场上车／首次明确要求离开被拒／走向外门被阻止。可能终止点：解除禁止并具备现实离开条件。认定区间：__________至__________，合计__________。</p>
+</div>
+<h2>文书四：办公点现实离开条件与控制程度审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项</th>
+<th>客观状态</th>
+<th>周某认知</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>询问室门</td>
+<td>内侧可开</td>
+<td>____</td>
+<td>是否封闭</td>
+</tr>
+<tr>
+<td>外门门禁</td>
+<td>刷卡+出门按钮</td>
+<td>是否知晓</td>
+<td>现实离开条件</td>
+</tr>
+<tr>
+<td>看守人员</td>
+<td>梁某在走廊</td>
+<td>____</td>
+<td>人员控制</td>
+</tr>
+<tr>
+<td>口头命令</td>
+<td>暂时不能走</td>
+<td>明确听见</td>
+<td>权力威慑</td>
+</tr>
+<tr>
+<td>手机证件</td>
+<td>是否扣留</td>
+<td>____</td>
+<td>行动能力</td>
+</tr>
+<tr>
+<td>离开尝试</td>
+<td>走出后返回</td>
+<td>被劝/被挡</td>
+<td>强制程度</td>
+</tr>
+<tr>
+<td>签字与放行</td>
+<td>签后3分钟离开</td>
+<td>____</td>
+<td>是否附条件</td>
+</tr>
+</table></div>
+<p>控制方式</p>
+<p>□ 上锁或机械封闭。</p>
+<p>□ 人员堵门或看守。</p>
+<p>□ 抓扯、推搡或强制带回。</p>
+<p>□ 以处罚、封店等相威胁。</p>
+<p>□ 明确命令不得离开。</p>
+<p>□ 依权力身份形成现实威慑。</p>
+<p>□ 存在清晰、可用且被允许的离开通道。</p>
+</div>
+<h2>文书五：执法记录仪数据完整性及六分钟缺失核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>应有数据</th>
+<th>现有情况</th>
+<th>缺口</th>
+</tr>
+<tr>
+<td>原始设备</td>
+<td>序列号/固件/系统时间</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>原始介质</td>
+<td>存储卡镜像/校验值</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>录像日志</td>
+<td>开关机/按键/电量</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>文件系统</td>
+<td>创建/中断/删除/覆盖</td>
+<td>异常索引</td>
+<td>____</td>
+</tr>
+<tr>
+<td>连接记录</td>
+<td>USB/电脑/时间</td>
+<td>个人电脑连接</td>
+<td>____</td>
+</tr>
+<tr>
+<td>后台上传</td>
+<td>上传时间/文件序列</td>
+<td>两日后上传</td>
+<td>____</td>
+</tr>
+<tr>
+<td>保管链条</td>
+<td>领用/交回/封存</td>
+<td>方某保管两日</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>可能原因</p>
+<p>□ 手动停止录像。</p>
+<p>□ 设备异常重启。</p>
+<p>□ 突然断电。</p>
+<p>□ 存储介质写入失败。</p>
+<p>□ 导出遗漏。</p>
+<p>□ 删除后索引残留。</p>
+<p>□ 新数据覆盖导致无法恢复。</p>
+<p>证据边界</p>
+<p>技术结论应明确能否区分“未形成文件”“人为停止”“删除”“覆盖”和“导出遗漏”。无法恢复不等于已经证明人为删除；局部缺失也不当然否定前后视频真实性。</p>
+</div>
+<h2>文书六：威胁、推搡、伤情及损害后果审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争议事实</th>
+<th>支持证据</th>
+<th>反向证据</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>不签不能走</td>
+<td>周某陈述/签后离开</td>
+<td>方某否认</td>
+<td>____</td>
+</tr>
+<tr>
+<td>抓臂推墙</td>
+<td>周某/红痕/碰撞声</td>
+<td>现场前段拉扯</td>
+<td>____</td>
+</tr>
+<tr>
+<td>梁某目击</td>
+<td>周某称看见</td>
+<td>梁某否认</td>
+<td>____</td>
+</tr>
+<tr>
+<td>软组织挫伤</td>
+<td>医院记录</td>
+<td>形成时间不明</td>
+<td>____</td>
+</tr>
+<tr>
+<td>停业损失</td>
+<td>流水/商品损耗</td>
+<td>家属1小时后到店</td>
+<td>____</td>
+</tr>
+<tr>
+<td>恶劣影响</td>
+<td>网络传播/调查</td>
+<td>标题可能夸大</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>渎职结果核对</p>
+<p>□ 达到法定伤亡后果。</p>
+<p>□ 造成可核实重大经济损失。</p>
+<p>□ 造成恶劣社会影响。</p>
+<p>□ 存在其他重大损失。</p>
+<p>□ 结果与违法履职有直接因果关系。</p>
+<p>□ 影响主要因后续传播或第三方行为扩大。</p>
+</div>
+<h2>文书七：主体权限、原始设备及监控数据调取申请书</h2>
+<div class="docbox">
+<p>执法主体权限及原始数据调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系__________涉嫌滥用职权罪／玩忽职守罪／非法拘禁罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取方某、梁某的编制、任用、劳动关系、执法证、岗位职责和权限负面清单；</p>
+<p>调取涉案综合执法事项清单、授权委托依据、带离及传唤制度；</p>
+<p>调取报警记录、派单、现场视频、市场监控、车辆轨迹和手机定位；</p>
+<p>调取办公点平面图、门禁日志、出门按钮、固定监控及访客进出记录；</p>
+<p>封存并调取原始执法记录仪、存储卡、设备日志、文件索引和校验值；</p>
+<p>调取个人电脑、USB连接、导出软件、后台服务器和上传日志；</p>
+<p>调取审批、请示、值班登记、工作群、案卷电子版本及形成时间；</p>
+<p>调取周某医院资料、伤情照片、经营流水、网络传播和舆情处置资料。</p>
+<p>事实与理由</p>
+<p>上述材料分别关系主体资格、权限边界、限制自由起止、电子数据完整性及损害结果，现有导出视频和事后说明不足以完成刑事认定。</p>
+<p>此致</p>
+<p>__________监察委员会／人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：电子数据恢复鉴定及同型号设备测试申请书</h2>
+<div class="docbox">
+<p>电子数据恢复鉴定及同型号设备功能测试申请书</p>
+<p>申请事项</p>
+<p>对原始记录仪和存储卡制作只读镜像并计算校验值；</p>
+<p>恢复缺失时间段及已删除、未完成、覆盖文件；</p>
+<p>分析开关机、录像按键、电量、重启、异常写入和文件序列；</p>
+<p>核查个人电脑连接、复制、删除、回收站、擦除及传输痕迹；</p>
+<p>核对后台上传与本地文件是否一致；</p>
+<p>使用同型号、同固件设备测试自动分段、低电量、异常重启和存储失败表现；</p>
+<p>说明能否区分手动停止、设备故障、删除和导出遗漏；</p>
+<p>由鉴定人对结论限度出具明确说明。</p>
+<p>理由</p>
+<p>关键六分钟缺失原因直接影响暴力事实、数据完整性、主观故意及是否存在掩盖行为。未经原始介质和同型号测试，不宜以推测选择最不利原因。</p>
+<p>此致</p>
+<p>__________监察委员会／人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：程序违法不等于渎职犯罪专项法律意见书</h2>
+<div class="docbox">
+<p>关于程序违法不等于滥用职权罪、玩忽职守罪的专项意见</p>
+<p>一、先确认具体职责与权限</p>
+<p>没有审批、告知和文书，可以证明执法程序存在明显问题；但渎职犯罪仍需确认方某属于法定主体、负有何项职责、行为属于故意越权还是重大过失。</p>
+<p>二、行为样态决定罪名方向</p>
+<p>决定带离、禁止离开属于积极作为，更接近滥用职权或者非法拘禁方向；记录仪未检查、未上传和故障未报属于管理失职。不能将故意作为与过失不作为混成同一行为。</p>
+<p>三、重大损失必须证明</p>
+<p>周某伤情轻微、店铺短时无人经营，网络影响又可能受到标题和传播扩大。现有证据应分别核定伤害、经济损失、社会影响及因果关系，不能以程序违法本身替代重大损失。</p>
+<p>四、一般工作错误与重大过失应区分</p>
+<p>玩忽职守要求达到严重不负责任程度。应结合培训、设备状况、现实履职条件、同岗位基准、持续时间和危险程度判断，避免由结果倒推重大过失。</p>
+<p>五、结论</p>
+<p>即使认定带离及记录管理违法，如主体、主观罪过、重大损失或因果关系证据不足，亦不应以渎职犯罪追诉，但可依法移送行政、纪律及国家赔偿程序。</p>
+</div>
+<h2>文书十：视频缺失不能推定暴力及不具有拘禁故意法律意见书</h2>
+<div class="docbox">
+<p>关于视频缺失不能推定暴力及不具有非法拘禁故意的法律意见书</p>
+<p>一、缺失不能自动填补</p>
+<p>六分钟位于争议核心时段，确实影响证明；但在无法确定缺失原因时，不能直接推定方某故意删除，也不能把周某关于威胁和推搡的全部陈述视为已获证实。</p>
+<p>二、伤情存在其他形成可能</p>
+<p>市场前段视频显示管理人员曾拉扯周某手臂。医院只能证明软组织挫伤，不能确认形成时间和行为人。应结合红痕出现时点、受力位置及证人作出判断。</p>
+<p>三、控制故意须结合权限认识</p>
+<p>方某称其认为周某正在配合调查，并认为中队长期有类似做法。错误惯例不能产生权限，但会影响其是否明知无权仍以剥夺自由为目的。</p>
+<p>四、现实控制程度仍有争议</p>
+<p>询问室内侧可开，外门设有出门按钮，未扣留手机证件；相反方向的证据包括“暂时不能走”、梁某劝回及签字后即离开。应准确确定起止时间和强制程度。</p>
+<p>五、备位意见</p>
+<p>如认定行为非法限制自由，也应根据持续时间、未使用械具、未锁门、轻微伤情、各人参与程度及执法背景依法作轻缓处理。</p>
+</div>
+<h2>文书十一：证据不足不起诉及分层责任法律意见书</h2>
+<div class="docbox">
+<p>关于证据不足不起诉及分层认定责任的法律意见书</p>
+<p>不起诉意见</p>
+<p>带离措施缺乏明确依据，但滥用职权犯罪故意尚未充分证明；</p>
+<p>六分钟缺失原因不能确定，无证据证明方某故意停止或删除；</p>
+<p>周某伤情形成原因存在市场现场拉扯等合理可能；</p>
+<p>限制自由起点、现实离开条件和强制程度仍有争议；</p>
+<p>未达到现有证据可以确认的重大伤亡或重大经济损失；</p>
+<p>恶劣社会影响受网络标题和传播行为影响，因果关系需分层；</p>
+<p>方某、梁某、负责人及设备管理员的行为和主体资格不同，不能概括归责。</p>
+<p>分层处理建议</p>
+<p>对无依据带离、未履行审批和告知依法进行行政及纪律问责；</p>
+<p>对设备使用个人电脑、迟延上传和未报告异常进行数据管理追责；</p>
+<p>完善带离、门禁、访客离开和辅助人员权限制度；</p>
+<p>对周某依法开展行政赔偿或其他救济审查；</p>
+<p>如补充证据证明故意删除、推搡或明确禁止离开，再按照相应事实重新评价。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>方某、梁某涉嫌滥用职权罪、玩忽职守罪或非法拘禁罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>本案最容易被六分钟带着走。视频恰好在争执最激烈的时段缺失，于是删除、威胁、推搡和逼迫签字似乎可以自然连成一条线。但刑事审判不能用缺失本身代替缺失内容，也不能因执法发生程序违法，就在滥用职权、玩忽职守和非法拘禁之间任意选择一个罪名。</p>
+<p>一、必须先证明执法权限，而不是先评价结果</p>
+<p>方某负责占道经营，不当然具有传唤、强制带离和限制人身自由的权限。本案没有审批、告知和传唤文书，带离程序明显失范。但行政违法只是刑事审查起点，不等于犯罪结论。</p>
+<p>二、自愿配合与限制自由应分阶段判断</p>
+<p>周某自行上车、车辆未锁、询问室门可开启，是支持自愿和较弱控制的事实；方某说“暂时不能走”、梁某把周某劝回、外门门禁和签后离开，则是相反事实。起止点和强制程度必须精确认定。</p>
+<p>三、六分钟缺失原因没有查明</p>
+<p>原始介质留下异常索引，设备又连接个人电脑，但技术意见不能区分人为停止、异常重启、存储失败、删除和导出遗漏。没有操作证据，不得按照最不利原因推定。</p>
+<p>四、暴力事实尚未排除其他可能</p>
+<p>医院证明软组织挫伤，却不能确认形成方式。市场现场已有拉扯，邻室证人只听到声音，梁某否认看到推搡。对直接关系加重评价的暴力事实，证据尚未排除合理怀疑。</p>
+<p>五、渎职罪要求的主观罪过和重大损失均需独立证明</p>
+<p>决定带离属于积极作为，不宜改写为玩忽职守。若指控滥用职权，则须证明故意越权和重大损失。周某短时停业、轻微伤和网络传播是否达到刑法门槛，不能用概括性“影响恶劣”取代具体证明。</p>
+<p>六、非法拘禁责任必须落实到具体人员和具体控制</p>
+<p>方某作出决定，梁某负责陪同和劝回，设备管理员负责后续保管，三者行为不同。不能把办公点全部停留时间计作拘禁，也不能把所有在场人员一并认定共同控制。</p>
+<p>七、视频管理失范应当追责，但不得越过证据边界</p>
+<p>使用个人电脑导出、迟延上传和未及时封存，严重损害执法可信度，应当依法整改和问责。然而数据管理不规范与故意毁灭关键记录之间仍有必须证明的距离。</p>
+<p>八、辩护请求</p>
+<p>对滥用职权罪、玩忽职守罪所需主观罪过、重大损失及因果关系证据不足的，依法宣告无罪；</p>
+<p>对故意删除视频、威胁和推搡等缺少充分补强的事实不予认定；</p>
+<p>如认定非法限制自由，准确核定起止时间、控制方式和各人作用；</p>
+<p>对行政违法、数据管理失范和纪律问题依法移送处理，不以刑事责任替代全部执法问责。</p>
+<p>六分钟可以缺失，证明不能缺失。权限必须有来源，限制必须有边界，伤害必须有因果，电子数据必须有原始介质，刑事责任必须落实到具体的人、具体的行为和具体的后果。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>编制、任用、执法证、委托依据、事项清单和岗位职责；</p>
+<p>报警、任务单、市场监控、现场证人和危险状态；</p>
+<p>车辆监控、定位、车门状态及带离告知；</p>
+<p>办公点平面图、门禁、出门按钮、固定监控及离开请求；</p>
+<p>原始记录仪、存储卡、设备日志、索引、连接和后台数据；</p>
+<p>个人电脑镜像、导出软件、USB、回收站及传输记录；</p>
+<p>审批、请示、值班登记、工作群及案卷形成时间；</p>
+<p>周某、方某、梁某及邻室证人的历次陈述；</p>
+<p>红痕照片、医院资料、伤情形成时间和现场前段拉扯；</p>
+<p>经营损失、网络传播、舆情处置和因果关系材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 正式使用时，应核验案发时有效的刑法、渎职案件司法解释、行政执法事项清单及限制人身自由措施的法定依据。</h3>
+<h3>2. 滥用职权、玩忽职守和非法拘禁应分别核验主体、主观罪过、行为方式、结果要求和法条关系。</h3>
+<h3>3. 电子数据鉴定必须说明原始介质、校验值、恢复方法和结论限度，不得以“无法恢复”直接表述为“人为删除”。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

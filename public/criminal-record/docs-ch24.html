@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch24</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch24">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第二十四章配套法律文书全文</h1>
+</header>
+<div class="wrap">
+<p class="volband">第五卷公司与权力</p>
+<p>招标前的一只信封</p>
+<h3>文书目录</h3><ol>
+<li>行贿罪、受贿罪与正常礼金往来审查表</li>
+<li>财物来源、交付及项目节点时间轴</li>
+<li>具体请托、职务权限与谋利行为核对表</li>
+<li>人情往来、感情投资及权钱交易对照表</li>
+<li>收受知情、及时退还与退赃审查表</li>
+<li>一对一言词证据及口供矛盾对照表</li>
+<li>取款、通信、招标及评分资料调取申请书</li>
+<li>同步录音录像及电子数据调取申请书</li>
+<li>具体请托与财物缺乏对应关系法律意见书</li>
+<li>不具有收受故意及及时退还法律意见书</li>
+<li>证据不足不起诉及退赃从宽意见书</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：行贿罪、受贿罪与正常礼金往来审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>行贿/受贿方向</th>
+<th>正常礼金方向</th>
+</tr>
+<tr>
+<td>关系基础</td>
+<td>因项目、职权形成或强化</td>
+<td>长期私人及家庭交往</td>
+</tr>
+<tr>
+<td>金额方式</td>
+<td>大额现金、隐蔽交付</td>
+<td>与身份能力相称、方式公开</td>
+</tr>
+<tr>
+<td>时间节点</td>
+<td>临近公告、投标、评标</td>
+<td>与具体职务事项无明显关联</td>
+</tr>
+<tr>
+<td>请托帮助</td>
+<td>具体或可推知请托、排他便利</td>
+<td>无职务请求及特殊帮助</td>
+</tr>
+<tr>
+<td>往来结构</td>
+<td>长期单向或价值悬殊</td>
+<td>存在较稳定互惠往来</td>
+</tr>
+<tr>
+<td>退还</td>
+<td>调查临近或犯罪后退赃</td>
+<td>发现后立即拒绝并真实退回</td>
+</tr>
+</table></div>
+<p>初步事实</p>
+<p>□ 郑某知道高某负责相关招标事项。</p>
+<p>□ 交付发生在项目招标准备关键期。</p>
+<p>□ 双方此前无大额现金往来。</p>
+<p>□ 高某提供尚未公开的评分资料。</p>
+<p>□ 没有证据证明高某联系评委或修改分数。</p>
+<p>□ 存在调查前退还动作但金额有争议。</p>
+<p>处理结论</p>
+<p>□ 普通行受贿。</p>
+<p>□ 感情投资型收受。</p>
+<p>□ 正常人情往来。</p>
+<p>□ 严重违纪违法但刑事证据不足。</p>
+<p>□ 需改按其他职务贿赂罪名审查。</p>
+</div>
+<h2>文书二：财物来源、交付及项目节点时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>客观证据</th>
+<th>争议</th>
+</tr>
+<tr>
+<td>____</td>
+<td>郑某取现20万元</td>
+<td>流水/监控</td>
+<td>是否用于该信封</td>
+</tr>
+<tr>
+<td>____</td>
+<td>停车场见面</td>
+<td>监控/车辆/定位</td>
+<td>是否谈项目</td>
+</tr>
+<tr>
+<td>____</td>
+<td>招标公告发布</td>
+<td>公告</td>
+<td>项目现实性</td>
+</tr>
+<tr>
+<td>____</td>
+<td>讨论稿发送</td>
+<td>聊天/文件日志</td>
+<td>是否职务对价</td>
+</tr>
+<tr>
+<td>____</td>
+<td>投标文件修改</td>
+<td>版本记录</td>
+<td>实际使用情况</td>
+</tr>
+<tr>
+<td>____</td>
+<td>投标截止/评标</td>
+<td>系统/监控</td>
+<td>是否干预</td>
+</tr>
+<tr>
+<td>____</td>
+<td>司机送回纸袋</td>
+<td>司机/监控</td>
+<td>金额及原因</td>
+</tr>
+<tr>
+<td>____</td>
+<td>调查启动</td>
+<td>程序材料</td>
+<td>是否提前获知</td>
+</tr>
+</table></div>
+<p>现金来源核对</p>
+<p class="kv"><b>取款账户</b>　__________</p>
+<p class="kv"><b>取款金额及面额</b>　__________</p>
+<p class="kv"><b>公司是否报销</b>　__________</p>
+<p class="kv"><b>是否存在其他现金用途</b>　__________</p>
+<p class="kv"><b>信封、礼品购买及包装</b>　__________</p>
+<p class="kv"><b>交付后现金去向</b>　__________</p>
+</div>
+<h2>文书三：具体请托、职务权限与谋利行为核对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>郑某是否提出</th>
+<th>高某是否有权限</th>
+<th>是否实施帮助</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>资格条件</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>评分办法</td>
+<td>____</td>
+<td>____</td>
+<td>讨论稿转发</td>
+<td>____</td>
+</tr>
+<tr>
+<td>技术标重点</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>评标专家</td>
+<td>____</td>
+<td>否/待核</td>
+<td>未证实</td>
+<td>____</td>
+</tr>
+<tr>
+<td>修改评分</td>
+<td>____</td>
+<td>否/待核</td>
+<td>未证实</td>
+<td>____</td>
+</tr>
+<tr>
+<td>确保中标</td>
+<td>____</td>
+<td>____</td>
+<td>未实现</td>
+<td>____</td>
+</tr>
+<tr>
+<td>未来项目</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>判断要点</p>
+<p>请托不要求使用“让我中标”等明确措辞，但须存在现实职务事项；</p>
+<p>一般政策咨询与向特定投标人泄露未公开信息应区分；</p>
+<p>提供内部信息不等于干预评分，指控不得扩大；</p>
+<p>利益未最终实现不当然排除犯罪，但应准确写明已承诺或实施的帮助；</p>
+<p>财物与职务行为应有总体对应，不得以事后任何有利行为反推全部赠礼。</p>
+</div>
+<h2>文书四：人情往来、感情投资及权钱交易对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查事项</th>
+<th>本案事实</th>
+<th>证明方向</th>
+</tr>
+<tr>
+<td>认识时间及原因</td>
+<td>相识约六年/行业活动</td>
+<td>私人关系或职务关系</td>
+</tr>
+<tr>
+<td>历史赠礼</td>
+<td>茶叶、烟酒、水果</td>
+<td>与20万元差异</td>
+</tr>
+<tr>
+<td>回礼及互惠</td>
+<td>聚餐为主</td>
+<td>是否长期单向</td>
+</tr>
+<tr>
+<td>本次金额</td>
+<td>20万元现金</td>
+<td>是否明显超常</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>停车场、信封</td>
+<td>隐蔽性</td>
+</tr>
+<tr>
+<td>现实职务事项</td>
+<td>产业园招标</td>
+<td>对应关系</td>
+</tr>
+<tr>
+<td>后续职务行为</td>
+<td>发送内部讨论稿</td>
+<td>权钱交换或一般咨询</td>
+</tr>
+</table></div>
+<p>感情投资专项核对</p>
+<p>□ 赠礼对象为下属、被管理人或现实职权利害关系人。</p>
+<p>□ 财物累计达到适用标准。</p>
+<p>□ 可能影响职权行使。</p>
+<p>□ 能够排除正常人情往来。</p>
+<p>□ 无具体请托但期待未来关照。</p>
+<p>□ 已有具体项目，应优先审查普通行受贿。</p>
+</div>
+<h2>文书五：收受知情、及时退还与退赃审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>节点</th>
+<th>高某陈述</th>
+<th>客观证据</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>交付时</td>
+<td>未打开信封</td>
+<td>监控不清</td>
+<td>是否知情</td>
+</tr>
+<tr>
+<td>当晚发现</td>
+<td>回家打开</td>
+<td>无实物</td>
+<td>何时形成收受故意</td>
+</tr>
+<tr>
+<td>次日联系</td>
+<td>准备退还</td>
+<td>短通话一次</td>
+<td>内容不明</td>
+</tr>
+<tr>
+<td>保管期间</td>
+<td>衣柜原封保存</td>
+<td>无独立证据</td>
+<td>是否长期占有</td>
+</tr>
+<tr>
+<td>职务行为</td>
+<td>发送讨论稿</td>
+<td>电子数据</td>
+<td>与财物对应</td>
+</tr>
+<tr>
+<td>退还</td>
+<td>司机送回纸袋</td>
+<td>司机/监控</td>
+<td>时间、金额、原因</td>
+</tr>
+</table></div>
+<p>分类判断</p>
+<p>□ 当场拒绝并返还。</p>
+<p>□ 不知情取得后合理期限内明确退回。</p>
+<p>□ 长期保有后主动退赃。</p>
+<p>□ 得知调查后被动退缴。</p>
+<p>□ 只退部分财物。</p>
+<p>□ 退还事实或金额证据不足。</p>
+<p>退还证据清单</p>
+<p>首次拒绝或要求取回的信息；</p>
+<p>报告单位、纪检或领导的记录；</p>
+<p>现金封存、保管和未使用证据；</p>
+<p>司机指令、车辆轨迹和办公室监控；</p>
+<p>封装、清点、收条及双方确认；</p>
+<p>退还前是否获知调查。</p>
+</div>
+<h2>文书六：一对一言词证据及口供矛盾对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争议事实</th>
+<th>郑某陈述变化</th>
+<th>高某陈述变化</th>
+<th>客观补强</th>
+</tr>
+<tr>
+<td>现金金额</td>
+<td>20万元</td>
+<td>20万→很多现金</td>
+<td>取款记录</td>
+</tr>
+<tr>
+<td>当场打开</td>
+<td>是</td>
+<td>否</td>
+<td>监控被遮挡</td>
+</tr>
+<tr>
+<td>是否谈项目</td>
+<td>一般关照→资格/评分</td>
+<td>提项目→未谈项目</td>
+<td>聊天/时间节点</td>
+</tr>
+<tr>
+<td>职务承诺</td>
+<td>多关照</td>
+<td>未明确答应</td>
+<td>讨论稿发送</td>
+</tr>
+<tr>
+<td>退还金额</td>
+<td>10万元</td>
+<td>20万元</td>
+<td>司机不知/无收条</td>
+</tr>
+</table></div>
+<p>言词证据审查</p>
+<p>□ 全部同步录音录像完整。</p>
+<p>□ 首次陈述系主动叙述而非诱导确认。</p>
+<p>□ 没有向一方展示另一方供述后提示作答。</p>
+<p>□ 核心事实多次稳定。</p>
+<p>□ 翻供理由具体且可验证。</p>
+<p>□ 客观证据支持关键环节。</p>
+<p>□ 不存在非法取证或疲劳审讯。</p>
+<p>质证原则</p>
+<p>口供一致不当然真实，口供矛盾也不当然全部无效。应将见面、交付、金额、请托、知情、帮助和退还逐项拆分，对缺少客观补强且存在合理怀疑的部分不予认定。</p>
+</div>
+<h2>文书七：取款、通信、招标及评分资料调取申请书</h2>
+<div class="docbox">
+<p>取款、通信及招标评分资料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系__________涉嫌行贿罪／受贿罪一案辩护人。</p>
+<p>申请事项</p>
+<p>调取郑某个人及盛原公司涉案前后账户流水、取款凭证、银行监控及现金用途资料；</p>
+<p>调取停车场完整监控、车辆进出、手机定位及交付前后通话记录；</p>
+<p>调取双方全部聊天、邮件、文件传输及删除恢复数据；</p>
+<p>调取项目立项、招标计划、公告、资格条件及评分办法全部版本；</p>
+<p>调取讨论稿创建、修改、访问和转发日志；</p>
+<p>调取盛原公司投标文件各版本及修改记录；</p>
+<p>调取专家抽取、评标现场监控、评分表、系统登录和通信记录；</p>
+<p>调取司机送回纸袋的指令、车辆轨迹、办公室监控及签收材料。</p>
+<p>事实与理由</p>
+<p>上述证据直接关系财物来源、具体请托、职务权限、谋利行为、项目评分及退还性质，是判断财物与职务行为是否具有对应关系的必要材料。</p>
+<p>此致</p>
+<p>__________监察委员会／人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书八：同步录音录像及电子数据调取申请书</h2>
+<div class="docbox">
+<p>同步录音录像及电子数据调取申请书</p>
+<p>申请事项</p>
+<p>调取郑某、高某全部询问讯问同步录音录像及原始笔录；</p>
+<p>调取询问起止、休息、饮食、提讯和办案人员记录；</p>
+<p>调取笔录修改痕迹、电子笔录版本及签字确认过程；</p>
+<p>调取涉案手机、电脑、云端聊天和文件原始镜像、提取笔录及校验值；</p>
+<p>调取已删除聊天恢复过程及完整上下文；</p>
+<p>对开票式问题、提示性问题及未录像谈话进行说明。</p>
+<p>理由</p>
+<p>本案核心事实长期依赖一对一言词证据，双方对金额、请托、当场知情和退还数额均有变化。只有审查供述形成过程，才能评价合法性、真实性和证明力。</p>
+<p>此致</p>
+<p>__________监察委员会／人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：具体请托与财物缺乏对应关系法律意见书</h2>
+<div class="docbox">
+<p>关于具体请托及财物与职务行为对应关系证据不足的法律意见书</p>
+<p>一、笼统关照不当然等于具体违法请托</p>
+<p>郑某早期仅称“希望多关照”，后续才增加资格和评分内容。应结合同步录音录像判断供述是否受到提示，不能以逐步增加的结论性陈述替代原始谈话。</p>
+<p>二、评分讨论稿发生在交付之后</p>
+<p>高某发送内部文件属于重要不利事实，但事后违规帮助不能自动证明交付当时已形成对价合意。仍需证明双方在交付时对项目帮助具有共同认识。</p>
+<p>三、谋利事实必须限定</p>
+<p>没有证据证明高某联系专家、修改评分或者控制候选排名。即使认定提供信息，也不得将其扩大表述为帮助盛原公司中标或进入候选名单。</p>
+<p>四、人情基础仍须评价</p>
+<p>双方有多年交往，但本次金额和方式明显异常。辩护并非主张现金当然属于正常礼金，而是要求控方证明异常馈赠已与具体职务行为形成刑法上的交换关系。</p>
+<p>五、结论</p>
+<p>如供述中的具体请托缺乏合法、稳定的言词证据及独立补强，财物与职务行为的对应关系仍未排除合理怀疑，不应仅凭时间接近和身份关系定罪。</p>
+</div>
+<h2>文书十：不具有收受故意及及时退还法律意见书</h2>
+<div class="docbox">
+<p>关于高某不具有收受故意及退还行为的法律意见书</p>
+<p>一、交付时知情证据存在缺口</p>
+<p>监控不能证明高某当场打开信封，也无第三人听到关于现金的谈话。高某是否在交付时知道财物性质，主要依赖相互矛盾的口供。</p>
+<p>二、应审查发现后的即时行为</p>
+<p>高某次日确有联系郑某的通话记录，正式调查前亦存在司机送回纸袋的客观事实。上述证据至少要求进一步查明退还意思，而不能笼统认定案发后退赃。</p>
+<p>三、不利事实必须正面解释</p>
+<p>高某数月未报告，并在此期间发送内部讨论稿，明显削弱无收受故意的辩解。是否构成受贿，仍取决于联系内容、保管状态、文件发送目的及退还是否因获知调查。</p>
+<p>四、备位意见</p>
+<p>如认定高某发现现金后形成收受故意，仍应确认其未干预评标、项目未中标、调查前实施退还以及实际退回金额，并作为退赃和量刑情节充分评价。</p>
+</div>
+<h2>文书十一：证据不足不起诉及退赃从宽意见书</h2>
+<div class="docbox">
+<p>关于证据不足不起诉及退赃从宽的法律意见书</p>
+<p class="kv"><b>第一部分</b>　不起诉意见</p>
+<p>双方对具体请托、当场知情和退还金额存在核心矛盾；</p>
+<p>监控只能证明见面和物品交付，不能证明信封内容及谈话；</p>
+<p>郑某关于请托内容逐次增加，须核验是否受问题提示；</p>
+<p>高某没有评标权限，也无干预专家和修改评分证据；</p>
+<p>讨论稿发送虽属不利事实，但交付当时对价合意仍需证明；</p>
+<p>退还动作有司机和监控印证，是否及时、完整及是否提前获知调查尚未查清；</p>
+<p>个人行贿与单位行贿、高某主体身份仍应分别核实。</p>
+<p class="kv"><b>第二部分</b>　从宽意见</p>
+<p>如仍认定犯罪，请严格限定谋利行为为提供未公开信息，不认定干预评委及操控排名；并对项目未中标、调查前退还、主动交代、未索贿、未实际控制评标结果及积极退赃依法从宽。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>郑某、高某涉嫌行贿罪、受贿罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>一只信封、一次停车场见面、一份后来发送的招标讨论稿，是本案最醒目的三项事实。三项事实彼此接近，却不能在未经证明的情况下自动合并成完整的权钱交易。审判仍需回答：郑某交付时提出了什么，高某何时知道现金，双方是否形成共同认识，以及高某后来究竟利用职务做了什么。</p>
+<p>一、现金交付事实与具体请托必须分别证明</p>
+<p>取现、见面和信封可以相互印证财物交付，但不能直接证明谈话内容。郑某对请托事项从一般关照逐步增加到资格和评分，应结合录音录像判断其证言形成过程。</p>
+<p>二、节日和朋友关系均不能单独决定性质</p>
+<p>双方有多年交往，但此前没有大额现金。本次二十万元明显异常；与此同时，异常馈赠仍须与具体职务事项形成对应，不能只凭金额和身份完成犯罪推断。</p>
+<p>三、高某发送内部讨论稿是重要不利事实，但应准确限定</p>
+<p>该行为可能为郑某提供排他性准备优势，不能简单归为一般咨询。但没有证据证明高某联系评委、修改评分或保证中标，盛原公司的排名不能归因于高某。</p>
+<p>四、高某当场知情及收受故意仍须审查</p>
+<p>监控不能证明高某打开信封。发现现金后的短通话和正式调查前司机退还，均是需要评价的客观事实；数月未报告和同期提供内部文件则是相反方向的证据，应由法院综合判断。</p>
+<p>五、退还事实不能被一句“退赃”概括</p>
+<p>司机和监控证明送回纸袋，但袋内金额、退还原因及高某是否提前获知调查均有争议。对无法查明的退还金额，不应选择最不利口供认定。</p>
+<p>六、一对一言词证据必须得到客观补强</p>
+<p>双方口供在金额、谈话、当场知情和退还上均有变化。法院应逐项认定，不得把两人口供中各自不利的部分拼接为无矛盾事实。</p>
+<p>七、个人与单位、国家工作人员与非国家工作人员应准确区分</p>
+<p>现金来自郑某个人账户，公司未讨论、未报销，不应仅因公司可能受益就当然认定单位行贿。高某是否属于国家工作人员，也应依据国有出资、任命和实际公务内容证明。</p>
+<p>八、辩护请求</p>
+<p>对具体请托、当场知情及权钱对应证据不足的，依法宣告无罪；</p>
+<p>排除以项目时间接近、朋友身份和大额现金直接完成犯罪推定；</p>
+<p>如认定犯罪，严格限定谋利事实，不认定干预评标、操控排名及确保中标；</p>
+<p>对调查前退还、项目未中标、未干预专家、主动交代和积极退赃等依法从宽。</p>
+<p>信封本身没有罪名。真正决定案件性质的，是信封被递出时双方分别期待什么，以及这种期待是否通过职务行为得到回应。刑事审判应当证明这项交换，而不是用怀疑替代交换。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　建议随文提交的证据目录</p>
+<p>郑某个人及公司账户、取款凭证、银行监控和现金用途；</p>
+<p>停车场监控、车辆进出、手机定位及交付前后通信；</p>
+<p>双方历史交往、礼物、回礼、聚餐和经济往来；</p>
+<p>项目立项、招标计划、公告、资格条件和评分办法各版本；</p>
+<p>讨论稿创建、访问、发送及投标文件修改日志；</p>
+<p>高某国有企业身份、任命、岗位职责和系统权限；</p>
+<p>专家抽取、评标监控、评分表、系统登录和通信记录；</p>
+<p>司机指令、证言、车辆轨迹、办公室监控和退还材料；</p>
+<p>全部同步录音录像、笔录修改和电子数据提取材料；</p>
+<p>个人行贿、单位行贿及相关人员知情材料。</p>
+<p class="kv"><b>附录二</b>　法律核验提示</p>
+<h3>1. 正式使用时，应核验案发时有效的刑法、贪污贿赂案件司法解释及行贿犯罪相关规定。</h3>
+<h3>2. 感情投资、正常人情和普通受贿应围绕主体关系、数额、现实职务事项及可能影响职权行使分别审查。</h3>
+<h3>3. 退还应区分及时拒收、主动退赃和调查压力下退缴；一对一案件必须核验同步录音录像和客观补强。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>
