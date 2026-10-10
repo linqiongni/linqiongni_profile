@@ -181,11 +181,13 @@
     } else { h.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
   if (heads.length >= 3) {
+    function docHrefOf(h){ var a=h.querySelector('a[href]'); return a?a.getAttribute('href'):null; }
     tocBox.appendChild(el('div', 'toc-h', '本页目录'));
     heads.forEach(function (h) {
       var a = el('a', h.tagName === 'H3' ? 'lv3' : '', h.textContent);
-      a.setAttribute('data-sec', h.id);
-      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
+      var dh = docHrefOf(h);
+      if (dh) { a.href = dh; }
+      else { a.setAttribute('data-sec', h.id); a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
       tocBox.appendChild(a);
     });
     tocBox.classList.add('show');
@@ -196,8 +198,9 @@
     heads.forEach(function (h) {
       var li = el('li');
       var a = el('a', null, h.textContent);
-      a.href = '#' + h.id;
-      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
+      var dh = docHrefOf(h);
+      if (dh) { a.href = dh; }
+      else { a.href = '#' + h.id; a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
       li.appendChild(a); ol.appendChild(li);
     });
     inline.appendChild(ol);

@@ -171,6 +171,8 @@ def esc(s):
 RE_H2 = re.compile(r"^([一二三四五六七八九十百零]+)、(.+)$")
 RE_H3 = re.compile(r"^（([一二三四五六七八九十]+)）(.+)$")
 RE_N = re.compile(r"^(\d+)\.(.+)$")
+# 章节末尾「本章可配置的配套法律文书」/「本章配套文书目录」等：识别为可跳转到对应文书页的标题
+RE_DOCSLINK = re.compile(r"^本章.{0,10}配套文书.{0,4}$")
 META_KEYS = ["案件性质", "核心争议", "案件结果", "特别说明", "案发地点", "涉嫌罪名", "关联审查"]
 
 def split_meta(line):
@@ -231,6 +233,7 @@ def build_chapter(stem):
     meta_i = find_meta(paras)
     meta_done = False
     p_seen = -1
+    docslink_seen = False
     for kind, data in blocks:
         if kind == "tbl":
             out.append(render_table(data))
@@ -253,6 +256,11 @@ def build_chapter(stem):
             continue
         if not meta_done and is_front_matter(s):
             continue
+        if RE_DOCSLINK.match(s):
+            docs_href = "docs-" + stem + ".html"
+            out.append('<h2 class="docslink"><a href="%s">%s</a></h2>' % (esc(docs_href), esc(s)))
+            docslink_seen = True
+            continue
         if RE_H2.match(s):
             out.append("<h2>%s</h2>" % esc(s))
         elif RE_H3.match(s):
@@ -261,6 +269,11 @@ def build_chapter(stem):
             out.append("<h3>%s</h3>" % esc(s))
         else:
             out.append("<p>%s</p>" % esc(s))
+    # 源里没有「本章配套文书」段时，统一补一个跳转块，保证每章都能点进对应文书页
+    if not docslink_seen:
+        docs_href = "docs-" + stem + ".html"
+        out.append('<h2 class="docslink"><a href="%s">本章可配置的配套法律文书</a></h2>' % esc(docs_href))
+        out.append('<p class="docnote">本章对应的可配置配套法律文书已整理为独立页面，点击上方标题查看《第%s章配套文书全集》。</p>' % esc(_CN_NUM[int(stem[2:])]))
     out.append("</div>")
     return "\n".join(out)
 
@@ -706,11 +719,13 @@ APPJS_TEMPLATE = r"""(function () {
     } else { h.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
   if (heads.length >= 3) {
+    function docHrefOf(h){ var a=h.querySelector('a[href]'); return a?a.getAttribute('href'):null; }
     tocBox.appendChild(el('div', 'toc-h', '本页目录'));
     heads.forEach(function (h) {
       var a = el('a', h.tagName === 'H3' ? 'lv3' : '', h.textContent);
-      a.setAttribute('data-sec', h.id);
-      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
+      var dh = docHrefOf(h);
+      if (dh) { a.href = dh; }
+      else { a.setAttribute('data-sec', h.id); a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
       tocBox.appendChild(a);
     });
     tocBox.classList.add('show');
@@ -721,8 +736,9 @@ APPJS_TEMPLATE = r"""(function () {
     heads.forEach(function (h) {
       var li = el('li');
       var a = el('a', null, h.textContent);
-      a.href = '#' + h.id;
-      a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); });
+      var dh = docHrefOf(h);
+      if (dh) { a.href = dh; }
+      else { a.href = '#' + h.id; a.addEventListener('click', function (e) { e.preventDefault(); scrollToHead(h); }); }
       li.appendChild(a); ol.appendChild(li);
     });
     inline.appendChild(ol);
@@ -820,6 +836,12 @@ def main():
 .dtable td b,.dtable td strong{color:var(--ink);}
 .volband{margin:20px 0 4px;font-size:13px;letter-spacing:.14em;color:var(--gold);font-weight:600;text-align:center;}
 .volband::after{content:"";display:block;width:44px;height:1px;background:var(--gold);opacity:.5;margin:8px auto 0;}
+/* 章节末尾「本章配套文书」标题：可点击跳转对应文书页 */
+.docslink{margin-top:26px;border-top:1px dashed var(--dash);padding-top:18px;}
+.docslink a{color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.docslink a::after{content:"↗";font-size:.78em;opacity:.7;}
+.docslink a:hover{text-decoration:underline;}
+.docnote{font-size:13px;color:var(--ink-3);margin:4px 0 0;}
 @media (max-width:640px){ .dtable th,.dtable td{padding:6px 8px;font-size:12.4px;} }
 """
     open(os.path.join(ASSETS, "crim-style.css"), "w", encoding="utf-8").write(css)

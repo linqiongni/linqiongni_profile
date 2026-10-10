@@ -322,4 +322,10 @@ h2,h3{scroll-margin-top:18px;}
 .dtable td b,.dtable td strong{color:var(--ink);}
 .volband{margin:20px 0 4px;font-size:13px;letter-spacing:.14em;color:var(--gold);font-weight:600;text-align:center;}
 .volband::after{content:"";display:block;width:44px;height:1px;background:var(--gold);opacity:.5;margin:8px auto 0;}
+/* 章节末尾「本章配套文书」标题：可点击跳转对应文书页 */
+.docslink{margin-top:26px;border-top:1px dashed var(--dash);padding-top:18px;}
+.docslink a{color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.docslink a::after{content:"↗";font-size:.78em;opacity:.7;}
+.docslink a:hover{text-decoration:underline;}
+.docnote{font-size:13px;color:var(--ink-3);margin:4px 0 0;}
 @media (max-width:640px){ .dtable th,.dtable td{padding:6px 8px;font-size:12.4px;} }
