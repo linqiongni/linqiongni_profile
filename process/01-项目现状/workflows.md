@@ -125,6 +125,7 @@ npm run check:english
 - 读上面 Word 源 → 生成 `public/criminal-record/`：`index.html`（全书导览）+ `ch01.html`…`ch30.html`（ch10–30 未写，目录里标「待续」、不进导航）+ `docs-ch01.html` / `docs-ch02.html`（配套文书）+ `assets/`（复制 `public/criminal/assets/crim-style.css` 并追加帮助类）。
 - 关键映射 `CHAP_DOCX`：把章节 id（`ch01`…`ch30`）映射到 Word 文件名（`第一章`…`第三十章`）。**改了章节命名逻辑必须同步这个映射，否则会漏生成。**
 - 要素行自适应：Word 源前 6 段里含 ≥2 个要素键（案件性质 / 案发地点 / 涉嫌罪名 / 核心争议 / 案件结果 / 特别说明）的段落即命中，不再写死第 2 段。ch06–09 因多了「卷名 + 章题」两行曾整段解析失败，已修。
+- **表格渲染（2026-10-10 修）**：旧版只遍历 `w:p`，Word 表格（`w:tbl`）被拍散成散乱段落（ch22 文书四穿透表最明显）。现用 `docx_blocks()` 按文档顺序输出段落块 + 表格块，表格渲染为 `<table class="dtable">`（首行作表头 `<th>`，外层 `.tblwrap` 可横向滚动，深浅色适配）；单行单格的「第X卷」横幅表转为 `volband` 分隔条。**注意：首尾去空块逻辑只弹空段落，不能动表格块**——文书文件开头常是卷名横幅表，误删会整表丢失。
 - 生成后必须重注主题补丁：`python scripts/apply-theme-kit.py --fix public/criminal-record`（注入鱼影背景 + 深浅色同步；跳过则子站无鱼影、暗色不同步）。
 
 ### 导航入口（criminal-hub）
