@@ -314,3 +314,12 @@ h2,h3{scroll-margin-top:18px;}
 .steps-plain{margin:10px 0;padding-left:22px;}
 .steps-plain li{font-size:14.5px;margin:7px 0;line-height:1.7;}
 @media (max-width:640px){ .roadmap{grid-template-columns:1fr;} }
+/* Word 表格：可横向滚动 + 表头金色 + 深浅色适配 */
+.tblwrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:9px;background:var(--bg2);-webkit-overflow-scrolling:touch;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.2px;line-height:1.65;}
+.dtable th,.dtable td{border:1px solid var(--line2);padding:8px 12px;text-align:left;vertical-align:top;color:var(--ink-2);}
+.dtable th{background:var(--panel);color:var(--gold);font-weight:600;}
+.dtable td b,.dtable td strong{color:var(--ink);}
+.volband{margin:20px 0 4px;font-size:13px;letter-spacing:.14em;color:var(--gold);font-weight:600;text-align:center;}
+.volband::after{content:"";display:block;width:44px;height:1px;background:var(--gold);opacity:.5;margin:8px auto 0;}
+@media (max-width:640px){ .dtable th,.dtable td{padding:6px 8px;font-size:12.4px;} }

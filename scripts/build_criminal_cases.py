@@ -32,6 +32,60 @@ def docx_paras(path):
         out.append(txt)
     return out
 
+def docx_blocks(path):
+    """按文档顺序返回块列表：('p', 文本) 或 ('tbl', [[单元格段落列表, ...], ...])。
+    旧 docx_paras 会把表格里的段落拍散混进正文，表格结构全丢；这里保序保留表格。"""
+    z = zipfile.ZipFile(path)
+    root = ET.fromstring(z.read("word/document.xml"))
+    body = root.find(W + "body")
+    blocks = []
+    if body is None:
+        return blocks
+
+    def cell_paras(tc):
+        txts = []
+        for p in tc.iter(W + "p"):
+            t = "".join(n.text or "" for n in p.iter(W + "t")).strip()
+            if t:
+                txts.append(t)
+        return txts
+
+    for child in body:
+        if child.tag == W + "p":
+            txt = "".join(t.text or "" for t in child.iter(W + "t"))
+            blocks.append(("p", txt))
+        elif child.tag == W + "tbl":
+            rows = []
+            for tr in child.findall(W + "tr"):
+                rows.append([cell_paras(tc) for tc in tr.findall(W + "tc")])
+            if rows:
+                blocks.append(("tbl", rows))
+    return blocks
+
+def render_table(rows):
+    def cell(lines):
+        lines = [esc(x) for x in lines if x.strip()]
+        return "<br>".join(lines) if lines else ""
+    # 单行单格的「第X卷」横幅表 -> 弱化分隔条，不渲染成表格
+    if len(rows) == 1 and len(rows[0]) == 1:
+        txt = " ".join(rows[0][0]).split()
+        txt = "".join(txt) if len(txt) <= 2 else " ".join(txt)
+        if re.match(r"^第[一二三四五六七八九十]+卷", txt):
+            return '<p class="volband">%s</p>' % esc(txt)
+    out = ['<div class="tblwrap"><table class="dtable">']
+    for ri, row in enumerate(rows):
+        out.append("<tr>")
+        for c in row:
+            html = cell(c)
+            # 第一行作表头（正文表格均为「项目/对比维度」型首行表头）
+            if ri == 0 and len(rows) > 1:
+                out.append("<th>%s</th>" % html)
+            else:
+                out.append("<td>%s</td>" % html)
+        out.append("</tr>")
+    out.append("</table></div>")
+    return "\n".join(out)
+
 # ---------------- 章节结构数据 ----------------
 VOLUMES = [
     ("第一卷 · 人身边界", ["ch01", "ch02", "ch03", "ch04", "ch05"]),
@@ -144,12 +198,17 @@ def vol_of(cid):
 
 def build_chapter(stem):
     title, _, _ = CHAPTERS[stem]
-    paras = docx_paras(src_docx(CHAP_DOCX[stem]))
-    # 去掉首尾空行
-    while paras and not paras[0].strip():
-        paras.pop(0)
-    while paras and not paras[-1].strip():
-        paras.pop()
+    blocks = docx_blocks(src_docx(CHAP_DOCX[stem]))
+
+    def ptxt(b):
+        return b[1].strip() if b[0] == "p" else None
+
+    # 只弹空段落块，不能动表格块（开头可能是卷名横幅表）
+    while blocks and blocks[0][0] == "p" and not blocks[0][1].strip():
+        blocks.pop(0)
+    while blocks and blocks[-1][0] == "p" and not blocks[-1][1].strip():
+        blocks.pop()
+    paras = [b[1] for b in blocks if b[0] == "p"]
     out = []
     vol = vol_of(stem)
     kicker = "刑事辩护实录 · CASE %s" % stem[2:]
@@ -160,29 +219,37 @@ def build_chapter(stem):
     out.append('<h1>%s</h1>' % esc(title.split("：", 1)[-1] if "：" in title else title))
     out.append('</header>')
     out.append('<div class="wrap">')
-    # 案件要素行：位置自适应（ch01-05 在第 2 段，ch06 起前面多卷名+章题）
-    meta_done = False
-    start = 0
-    meta_i = find_meta(paras)
-    if meta_i is not None:
-        m = split_meta(paras[meta_i])
-        if m:
-            out.append('<div class="box law"><span class="lb">案件要素</span>')
-            for k, v in m:
-                out.append('<p><b>%s</b>：%s</p>' % (esc(k), esc(v.strip())))
-            out.append('</div>')
-            meta_done = True
-            start = meta_i + 1
-    # 正文前残留的卷名 / 章题行不再重复渲染
+
     def is_front_matter(s):
         if re.match(r"^第[一二三四五六七八九十]+卷", s):
             return True
         if s == title or (s.startswith("第") and "章：" in s and len(s) < 40):
             return True
         return False
-    for line in paras[start:]:
-        s = line.strip()
+
+    # 案件要素行：位置自适应（ch01-05 在第 2 段，ch06 起前面多卷名+章题）
+    meta_i = find_meta(paras)
+    meta_done = False
+    p_seen = -1
+    for kind, data in blocks:
+        if kind == "tbl":
+            out.append(render_table(data))
+            continue
+        p_seen += 1
+        s = data.strip()
         if not s:
+            continue
+        # 要素行之前的段落（卷名/章题等）整段跳过，与旧版 start=meta_i+1 行为一致
+        if meta_i is not None and p_seen < meta_i:
+            continue
+        if meta_i is not None and not meta_done and p_seen == meta_i:
+            m = split_meta(s)
+            if m:
+                out.append('<div class="box law"><span class="lb">案件要素</span>')
+                for k, v in m:
+                    out.append('<p><b>%s</b>：%s</p>' % (esc(k), esc(v.strip())))
+                out.append('</div>')
+            meta_done = True
             continue
         if not meta_done and is_front_matter(s):
             continue
@@ -198,24 +265,43 @@ def build_chapter(stem):
     return "\n".join(out)
 
 def build_docs(stem, out_id):
-    paras = docx_paras(src_docx(stem))
-    while paras and not paras[0].strip():
-        paras.pop(0)
-    while paras and not paras[-1].strip():
-        paras.pop()
+    blocks = docx_blocks(src_docx(stem))
+
+    def ptxt(b):
+        return b[1].strip() if b[0] == "p" else None
+
+    # 只弹空段落块，不能动表格块（开头可能是卷名横幅表）
+    while blocks and blocks[0][0] == "p" and not blocks[0][1].strip():
+        blocks.pop(0)
+    while blocks and blocks[-1][0] == "p" and not blocks[-1][1].strip():
+        blocks.pop()
+    # 页头（与旧版一致：第 1 段标题，第 2 段若含「虚构」则为副题）
+    p_texts = [b[1] for b in blocks if b[0] == "p"]
+    doc_title = p_texts[0].strip() if p_texts else out_id
+    sub = p_texts[1].strip() if len(p_texts) > 1 and "虚构" in p_texts[1] else None
     out = []
     out.append('<header class="page-head">')
     out.append('<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>')
-    out.append('<h1>%s</h1>' % esc(paras[0]))
-    if len(paras) > 1 and "虚构" in paras[1]:
-        out.append('<div class="sub">%s</div>' % esc(paras[1]))
+    out.append('<h1>%s</h1>' % esc(doc_title))
+    if sub:
+        out.append('<div class="sub">%s</div>' % esc(sub))
     out.append('</header>')
     out.append('<div class="wrap">')
-    i = 2
-    in_doc = False
+    n = len(blocks)
+    i = 0
+    skipped = 0  # 跳过前两个段落块（标题 / 虚构声明）
     doc_open = False
-    while i < len(paras):
-        s = paras[i].strip()
+    while i < n:
+        kind, data = blocks[i]
+        if kind == "tbl":
+            out.append(render_table(data))
+            i += 1
+            continue
+        if skipped < 2:
+            skipped += 1
+            i += 1
+            continue
+        s = data.strip()
         i += 1
         if not s:
             continue
@@ -224,16 +310,18 @@ def build_docs(stem, out_id):
             continue
         if s in ("文书目录", "目录"):
             out.append("<h3>文书目录</h3><ol>")
-            # 收集后续 N. 条目直到下一个非空非列表项
-            while i < len(paras):
-                t = paras[i].strip()
+            # 收集后续段落中的 N. 条目直到非列表项（表格块会自然中断）
+            j = i
+            while j < n and blocks[j][0] == "p":
+                t = blocks[j][1].strip()
                 mm = RE_N.match(t)
                 if mm and not t.startswith("文书"):
                     out.append("<li>%s</li>" % esc(mm.group(2).strip()))
-                    i += 1
+                    j += 1
                 else:
                     break
             out.append("</ol>")
+            i = j
             continue
         if re.match(r"^文书[一二三四五六七八九十]+[:：]", s):
             if doc_open:
@@ -704,6 +792,15 @@ def main():
 .steps-plain{margin:10px 0;padding-left:22px;}
 .steps-plain li{font-size:14.5px;margin:7px 0;line-height:1.7;}
 @media (max-width:640px){ .roadmap{grid-template-columns:1fr;} }
+/* Word 表格：可横向滚动 + 表头金色 + 深浅色适配 */
+.tblwrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:9px;background:var(--bg2);-webkit-overflow-scrolling:touch;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.2px;line-height:1.65;}
+.dtable th,.dtable td{border:1px solid var(--line2);padding:8px 12px;text-align:left;vertical-align:top;color:var(--ink-2);}
+.dtable th{background:var(--panel);color:var(--gold);font-weight:600;}
+.dtable td b,.dtable td strong{color:var(--ink);}
+.volband{margin:20px 0 4px;font-size:13px;letter-spacing:.14em;color:var(--gold);font-weight:600;text-align:center;}
+.volband::after{content:"";display:block;width:44px;height:1px;background:var(--gold);opacity:.5;margin:8px auto 0;}
+@media (max-width:640px){ .dtable th,.dtable td{padding:6px 8px;font-size:12.4px;} }
 """
     open(os.path.join(ASSETS, "crim-style.css"), "w", encoding="utf-8").write(css)
 
