@@ -172,7 +172,7 @@ RE_H2 = re.compile(r"^([一二三四五六七八九十百零]+)、(.+)$")
 RE_H3 = re.compile(r"^（([一二三四五六七八九十]+)）(.+)$")
 RE_N = re.compile(r"^(\d+)\.(.+)$")
 # 章节末尾「本章可配置的配套法律文书」/「本章配套文书目录」等：识别为可跳转到对应文书页的标题
-RE_DOCSLINK = re.compile(r"^本章.{0,10}配套文书.{0,4}$")
+RE_DOCSLINK = re.compile(r"^本章.{0,10}配套(?:法律)?文书.{0,4}$")
 META_KEYS = ["案件性质", "核心争议", "案件结果", "特别说明", "案发地点", "涉嫌罪名", "关联审查"]
 
 def split_meta(line):
@@ -258,7 +258,8 @@ def build_chapter(stem):
             continue
         if RE_DOCSLINK.match(s):
             docs_href = "docs-" + stem + ".html"
-            out.append('<h2 class="docslink"><a href="%s">%s</a></h2>' % (esc(docs_href), esc(s)))
+            # 统一措辞为「本章配套文书目录」（ch01 同款），不沿用源文件里的其他写法
+            out.append('<h2 class="docslink"><a href="%s">本章配套文书目录</a></h2>' % esc(docs_href))
             docslink_seen = True
             continue
         if RE_H2.match(s):
