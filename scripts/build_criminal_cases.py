@@ -196,7 +196,7 @@ def build_docs(stem, out_id):
         if s == "案件基本信息":
             out.append("<h3>案件基本信息</h3>")
             continue
-        if s == "文书目录":
+        if s in ("文书目录", "目录"):
             out.append("<h3>文书目录</h3><ol>")
             # 收集后续 N. 条目直到下一个非空非列表项
             while i < len(paras):
