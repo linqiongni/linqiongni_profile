@@ -234,6 +234,8 @@ def build_chapter(stem):
     meta_done = False
     p_seen = -1
     docslink_seen = False
+    docs_tail = []      # 紧随「本章配套文书」标题之后的《文书名》清单，统一挪到章末
+    docs_capture = False
     for kind, data in blocks:
         if kind == "tbl":
             out.append(render_table(data))
@@ -257,11 +259,17 @@ def build_chapter(stem):
         if not meta_done and is_front_matter(s):
             continue
         if RE_DOCSLINK.match(s):
-            docs_href = "docs-" + stem + ".html"
-            # 统一措辞为「本章配套文书目录」（ch01 同款），不沿用源文件里的其他写法
-            out.append('<h2 class="docslink"><a href="%s">本章配套文书目录</a></h2>' % esc(docs_href))
             docslink_seen = True
+            docs_capture = True
             continue
+        if docs_capture:
+            # 标题后面的《文书名》清单暂存，等正文渲染完统一放到章末（ch29 源里这块在正文中间，下面还有结尾叙事）
+            if s.startswith("《"):
+                docs_tail.append(s)
+                continue
+            if not s:
+                continue
+            docs_capture = False  # 清单结束，回到正常正文流
         if RE_H2.match(s):
             out.append("<h2>%s</h2>" % esc(s))
         elif RE_H3.match(s):
@@ -270,10 +278,11 @@ def build_chapter(stem):
             out.append("<h3>%s</h3>" % esc(s))
         else:
             out.append("<p>%s</p>" % esc(s))
-    # 源里没有「本章配套文书」段时，统一补一个跳转块（与 ch01 同款：大字金色可点标题「本章配套文书目录」）
-    if not docslink_seen:
-        docs_href = "docs-" + stem + ".html"
-        out.append('<h2 class="docslink"><a href="%s">本章配套文书目录</a></h2>' % esc(docs_href))
+    # 跳转块永远放章末（源里位置不管在哪都挪到最后，保证下面不再有正文）
+    docs_href = "docs-" + stem + ".html"
+    out.append('<h2 class="docslink"><a href="%s">本章配套文书目录</a></h2>' % esc(docs_href))
+    for t in docs_tail:
+        out.append("<p>%s</p>" % esc(t))
     out.append("</div>")
     return "\n".join(out)
 
