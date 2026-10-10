@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch16</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch16">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第四卷  危险现场</h1>
+</header>
+<div class="wrap">
+<p>第十六章配套法律文书</p>
+<h3>文书目录</h3><ol>
+<li>停车场道路属性审查表</li>
+<li>代驾订单数据调取申请书</li>
+<li>停车场监控、平面图及车辆通行记录调取申请书</li>
+<li>血液样本提取、保管及送检程序审查表</li>
+<li>血液酒精含量鉴定原始材料调取申请书</li>
+<li>备用血样重新鉴定申请书</li>
+<li>血液酒精含量鉴定意见质证书</li>
+<li>情节显著轻微不起诉法律意见书</li>
+<li>相对不起诉法律意见书</li>
+<li>代驾员、保安及采血人员询问提纲</li>
+<li>庭审发问及鉴定人发问提纲</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：停车场道路属性审查表</h2>
+<div class="docbox">
+<p>项目</p>
+<p>填写内容</p>
+<p>案号</p>
+<p>__________</p>
+<p>犯罪嫌疑人／被告人</p>
+<p>__________</p>
+<p>案发时间</p>
+<p>__________</p>
+<p>案发地点</p>
+<p>__________停车场__________区域</p>
+<p>审查人员／日期</p>
+<p>__________／__________</p>
+<p>一、审查目的</p>
+<p>用于判断涉案停车场及车辆实际行驶区域是否属于危险驾驶罪中的“道路”。道路属性不能仅以场所名称、所有权归属或者是否设有道闸判断，应重点审查涉案区域是否具有公共性，是否允许不特定社会机动车通行。</p>
+<p>二、停车场基本情况</p>
+<p class="kv"><b>停车场名称</b>　__________</p>
+<p class="kv"><b>管理单位</b>　__________</p>
+<p class="kv"><b>所有权人</b>　__________</p>
+<p class="kv"><b>停车场性质</b>　□商业综合体 □居民小区 □写字楼 □酒店 □医院 □机关企事业单位 □厂矿校园 □其他__________</p>
+<p class="kv"><b>是否经营性备案</b>　□是 □否 □尚未查明</p>
+<p class="kv"><b>是否对外收费</b>　□是 □否 □部分区域收费 □尚未查明</p>
+<p class="kv"><b>案发时是否开放</b>　□是 □否 □部分开放 □尚未查明</p>
+<p>三、社会车辆进入条件</p>
+<p>□任何车辆均可进入</p>
+<p>□取票或者自动识别车牌后进入</p>
+<p>□缴费后进入</p>
+<p>□需提前预约</p>
+<p>□需登记访问对象</p>
+<p>□只允许内部车辆进入</p>
+<p>□只允许特定来访车辆进入</p>
+<p class="kv"><b>是否审核进入事由</b>　__________</p>
+<p>是否查验工作证、业主证或访客凭证：__________</p>
+<p>案发前后三小时临时车辆进出数量：__________</p>
+<p class="kv"><b>夜间开放状态</b>　__________</p>
+<p>四、案发区域审查</p>
+<p class="kv"><b>车辆实际移动区域</b>　__________</p>
+<p class="kv"><b>是否设置内部专用标识</b>　__________</p>
+<p class="kv"><b>是否存在围挡、门禁或隔离</b>　__________</p>
+<p class="kv"><b>是否与公共出入口直接连通</b>　__________</p>
+<p class="kv"><b>社会车辆是否实际经过</b>　__________</p>
+<p class="kv"><b>监控中其他车辆及行人情况</b>　__________</p>
+<p class="kv"><b>区域性质</b>　□公共停车通道 □公共停车位 □出口收费区 □内部装卸区 □施工封闭区 □内部维修区 □其他__________</p>
+<p>五、证据材料</p>
+<p>□ 停车场平面图</p>
+<p>□ 出入口及案发区域照片</p>
+<p>□ 收费标准和开放规则</p>
+<p>□ 临时车辆通行记录</p>
+<p>□ 夜间管理制度</p>
+<p>□ 物业及保安证言</p>
+<p>□ 完整监控录像</p>
+<p>□ 道闸后台数据</p>
+<p class="kv"><b>□ 其他</b>　__________</p>
+<p>六、审查意见</p>
+<p>□ 具有公共性，允许不特定社会机动车通行，倾向认定为道路。</p>
+<p>□ 只允许内部机动车或特定来访机动车通行，倾向不认定为道路。</p>
+<p>□ 停车场总体开放，但案发区域独立封闭，不宜以整体属性替代案发区域属性。</p>
+<p>□ 现有证据不足，应继续补充调查。</p>
+<p class="kv"><b>具体理由</b>　________________________________________________________________________________________________________________________</p>
+</div>
+<h2>文书二：代驾订单数据调取申请书</h2>
+<div class="docbox">
+<p>代驾订单数据调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，__________律师事务所律师，系犯罪嫌疑人／被告人许峰的辩护人。</p>
+<p class="kv"><b>案号</b>　__________</p>
+<p>申请事项</p>
+<p>请求依法向__________代驾平台调取许峰于______年______月______日凌晨形成的代驾订单及相关后台原始数据。</p>
+<p>事实与理由</p>
+<p>许峰涉嫌危险驾驶罪一案中，现有材料显示其在移动涉案车辆前已经通过代驾平台下单，并由代驾员接单。该事实与判断驾驶目的、是否具有继续自行驾驶的意图，以及车辆移动是否属于为腾让出口或者交由代驾接管而实施的短距离挪车，具有直接关系。</p>
+<p>为避免仅依据手机截图判断订单真实性，申请调取以下材料：</p>
+<p>订单编号、下单时间及平台服务器时间；</p>
+<p>接单时间、订单起点和目的地；</p>
+<p>下单账号、绑定手机号及下单设备信息；</p>
+<p>代驾员姓名、账号、联系方式及接单时位置；</p>
+<p>代驾员前往现场的定位轨迹及预计到达时间变化；</p>
+<p>订单内文字、语音、平台拨号及联系记录；</p>
+<p>订单是否取消、取消时间、取消主体及原因；</p>
+<p>代驾员实际到达时间、订单最终状态；</p>
+<p>费用结算、空驶费及退款记录；</p>
+<p>页面修改痕迹及平台保存的其他关联数据。</p>
+<p>上述材料能够客观证明代驾安排是否形成于案发前、代驾员是否正在赶往现场，以及许峰是否具有自行驾驶车辆离开停车场的计划。为全面查明事实，特提出申请。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三：停车场监控、平面图及车辆通行记录调取申请书</h2>
+<div class="docbox">
+<p>调取停车场监控、平面图及车辆通行记录申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，__________律师事务所律师。</p>
+<p class="kv"><b>被申请调取单位</b>　__________商业综合体物业管理有限公司。</p>
+<p>申请事项</p>
+<p>请求依法调取并固定案发当晚涉案停车场的完整监控、平面图、道闸记录及停车管理材料。</p>
+<p>调取范围</p>
+<p>案发当日______时至______时停车场入口、出口、负二层C区、车辆起点、终点、收费区及连接地面坡道的完整监控；</p>
+<p>涉案停车场平面图、消防疏散图及车辆行驶路线图；</p>
+<p>车位尺寸、通道宽度、起点至终点、起点至道闸及道闸至城市道路的距离；</p>
+<p>案发前后三小时全部临时车辆进出记录；</p>
+<p>停车收费标准、开放时间和社会车辆进入规则；</p>
+<p>夜间停车管理制度及案发区域是否封闭的材料；</p>
+<p>道闸系统车牌识别、缴费及出入状态原始数据；</p>
+<p>视频系统时间设置、校时记录及不同摄像头是否统一校时的说明。</p>
+<p>事实与理由</p>
+<p>本案对停车场及实际移动区域是否具有公共性、车辆移动距离、是否驶向出口、现场车辆行人密度及是否发生事故等事实存在争议。相关电子数据存在覆盖风险，申请及时调取原始数据并制作副本，注明提取人员、时间、设备来源、文件格式及校验信息。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四：血液样本提取、保管及送检程序审查表</h2>
+<div class="docbox">
+<p>一、采血人员</p>
+<p class="kv"><b>姓名及单位</b>　__________</p>
+<p class="kv"><b>身份及执业资质</b>　__________</p>
+<p class="kv"><b>资质材料是否在卷</b>　□是 □否</p>
+<p class="kv"><b>是否本人签署笔录</b>　□是 □否</p>
+<p>二、时间与地点</p>
+<p class="kv"><b>驾驶结束时间</b>　__________</p>
+<p class="kv"><b>呼气检测时间</b>　__________</p>
+<p class="kv"><b>采血时间</b>　__________</p>
+<p class="kv"><b>呼气至采血间隔</b>　__________</p>
+<p class="kv"><b>采血地点</b>　__________</p>
+<p>三、消毒用品</p>
+<p class="kv"><b>使用何种消毒用品</b>　__________</p>
+<p class="kv"><b>是否不含醇类</b>　__________</p>
+<p class="kv"><b>录像能否看清包装</b>　__________</p>
+<p class="kv"><b>是否有领用记录及同批次包装</b>　__________</p>
+<p>四、采血器材</p>
+<p class="kv"><b>是否使用一次性器材</b>　__________</p>
+<p class="kv"><b>采血管是否有效期内且含抗凝剂</b>　__________</p>
+<p class="kv"><b>是否具有唯一编号</b>　__________</p>
+<p class="kv"><b>是否分A、B两管</b>　__________</p>
+<p class="kv"><b>单管采血量</b>　__________</p>
+<p>五、封装过程</p>
+<p class="kv"><b>是否当场封装</b>　__________</p>
+<p class="kv"><b>是否全程录音录像</b>　__________</p>
+<p class="kv"><b>编号是否清晰</b>　__________</p>
+<p>提取人、封装人及嫌疑人是否签名：__________</p>
+<p class="kv"><b>密封条是否完整</b>　__________</p>
+<p>六、冷藏保管</p>
+<p class="kv"><b>离开采血地点时间</b>　__________</p>
+<p class="kv"><b>入库时间</b>　__________</p>
+<p class="kv"><b>保管地点及设备编号</b>　__________</p>
+<p class="kv"><b>温度范围及自动记录</b>　__________</p>
+<p>是否有门禁、监控、停电或中途取出：__________</p>
+<p>七、送检过程</p>
+<p class="kv"><b>送检时间及人员</b>　__________</p>
+<p class="kv"><b>是否低温运输</b>　__________</p>
+<p class="kv"><b>鉴定机构接收时间</b>　__________</p>
+<p class="kv"><b>接收时密封及样本状态</b>　__________</p>
+<p>八、鉴定过程</p>
+<p class="kv"><b>机构及人员资质</b>　__________</p>
+<p class="kv"><b>仪器是否在检定期</b>　__________</p>
+<p class="kv"><b>是否平行检测并保存原始图谱</b>　__________</p>
+<p class="kv"><b>是否有质量控制及过程录像</b>　__________</p>
+<p class="kv"><b>是否依法通知鉴定结果</b>　__________</p>
+<p>九、编号对应表</p>
+<p>材料</p>
+<p>记载编号</p>
+<p>是否一致</p>
+<p>采血笔录</p>
+<p>__________</p>
+<p>__________</p>
+<p>采血管标签</p>
+<p>__________</p>
+<p>__________</p>
+<p>密封袋</p>
+<p>__________</p>
+<p>__________</p>
+<p>物证入库记录</p>
+<p>__________</p>
+<p>__________</p>
+<p>鉴定委托书</p>
+<p>__________</p>
+<p>__________</p>
+<p>接收及原始记录</p>
+<p>__________</p>
+<p>__________</p>
+<p>十、审查结论</p>
+<p>□ 程序规范，检材同一性能够确认。</p>
+<p>□ 存在一般瑕疵，经补正后不影响检材同一性。</p>
+<p>□ 存在实质缺陷，可能污染、调换或无法确认来源。</p>
+<p>□ 材料不足，应补充调取录像、温度记录和交接材料。</p>
+<p>□ 鉴定意见不具备定案条件。</p>
+</div>
+<h2>文书五：血液酒精含量鉴定原始材料调取申请书</h2>
+<div class="docbox">
+<p>血液酒精含量鉴定原始材料调取申请书</p>
+<p class="kv"><b>申请人</b>　__________律师，系许峰涉嫌危险驾驶罪一案的辩护人。</p>
+<p>申请事项</p>
+<p>请求依法调取本案血液酒精含量鉴定的全部原始材料，允许辩护人查阅、复制，并在必要时提交有专门知识的人审查。</p>
+<p>申请材料</p>
+<p>鉴定委托书、检材接收登记及接收照片；</p>
+<p>密封状态、编号核对及血样剩余量记录；</p>
+<p>鉴定机构和鉴定人员资质；</p>
+<p>仪器名称、型号、编号及检定、校准记录；</p>
+<p>样品制备、标准物质、空白样品和平行检测记录；</p>
+<p>全部原始图谱、计算过程及质量控制记录；</p>
+<p>异常情况说明及B管备用样本保存情况；</p>
+<p>样品制备、仪器检测全过程录音录像；</p>
+<p>鉴定意见审核、签发及送达材料。</p>
+<p>事实与理由</p>
+<p>本案呼气检测结果为______mg/100mL，血液检测结果为______mg/100mL。为判断检材是否同一、是否受污染、仪器状态是否正常、平行检测是否稳定及计算是否准确，必须审查原始材料。仅有结论页不足以完成对鉴定意见真实性、合法性和关联性的审查。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：备用血样重新鉴定申请书</h2>
+<div class="docbox">
+<p>重新鉴定申请书</p>
+<p class="kv"><b>申请人</b>　__________律师事务所__________律师，系许峰的辩护人。</p>
+<p>申请事项</p>
+<p>请求依法启用本案B管备用血样，由具有相应资质且与首次鉴定机构无利害关系的机构重新进行血液酒精含量鉴定。</p>
+<p>事实与理由</p>
+<p>首次鉴定结果为______mg/100mL。现存在呼气与血液结果差异较大、保管记录缺项、消毒用品存在争议、编号不一致、原始数据或过程录像缺失等情形，可能影响结论可靠性。</p>
+<p class="kv"><b>申请重新鉴定时一并要求</b>　</p>
+<p>启封B管前通知辩护人及许峰到场见证；</p>
+<p>对密封袋、封条、编号及血样状态制作照片和录像；</p>
+<p>核对备用样本保存温度、时间及流转记录；</p>
+<p>重新鉴定机构保存全部原始数据和质量控制材料；</p>
+<p>样品制备及仪器检测同步录音录像；</p>
+<p>鉴定完成后依法通知鉴定结果。</p>
+<p>设置复核备用管的目的，在于鉴定意见出现实质争议时保留复核条件。为查明事实、排除合理怀疑，特提出申请。</p>
+<p>此致</p>
+<p>__________人民检察院／人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：血液酒精含量鉴定意见质证书</h2>
+<div class="docbox">
+<p>关于血液酒精含量鉴定意见的质证意见</p>
+<p class="kv"><b>案号</b>　__________</p>
+<p class="kv"><b>辩护人</b>　__________</p>
+<p>一、形式真实性</p>
+<p>辩方对鉴定意见文书客观存在不持异议，但文书存在不等于结论当然真实可靠，仍应审查检材来源、采血程序、保管送检、鉴定方法及原始数据。</p>
+<p>二、检材同一性</p>
+<p>应逐一比对采血笔录、采血管、密封袋、物证入库、鉴定委托、接收记录及原始检测记录中的编号。如能够通过条码、照片、录像和交接登记形成连续对应，个别录入错误可按程序瑕疵审查；如无法确认送检血样系从许峰体内提取，则鉴定意见失去检材基础。</p>
+<p>三、采血及污染风险</p>
+<p>应查明采血人员资质、消毒用品、抗凝管、A/B两管、当场封装及录像。若使用含醇类消毒剂且无法排除污染风险，应由专业人员说明对结果的可能影响，不能仅凭事后说明直接排除。</p>
+<p>四、保管送检</p>
+<p>如入库时间、冷藏温度或交接环节缺失，应调取物证室门禁、监控、温度记录、领取登记及鉴定接收材料。能够证明及时冷藏、密封完整及低温送检的，表格漏填可能补正；无法证明连续保管的，检材可靠性存在实质疑问。</p>
+<p>五、鉴定过程</p>
+<p>鉴定机构应提供仪器检定、标准物质、空白样品、平行检测、原始图谱、质量控制和过程录像。仅提交结论页，不能替代对过程可靠性的审查。</p>
+<p>六、数值差异</p>
+<p>呼气结果为______mg/100mL，血液结果为______mg/100mL。辩方不主张机械采用较低值，但该差异足以启动对仪器、时间、再次饮酒、污染及检测异常的调查。在血样真实、合法、可靠时，可以血液结果作为认定醉酒的主要依据；反之，不得机械采信。</p>
+<p>七、质证结论</p>
+<p>□ 鉴定意见可采信，但只能证明醉酒状态，不能替代对道路属性、目的和危险程度的审查。</p>
+<p>□ 鉴定意见存在瑕疵，应补充原始材料后判断。</p>
+<p>□ 应启用B管重新鉴定。</p>
+<p>□ 程序缺陷不能补正或合理解释，应依法排除。</p>
+<p>□ 即使采信，本案仍具备显著轻微、不作为犯罪处理的基础。</p>
+<p class="kv"><b>辩护人</b>　__________    日期：______年______月______日</p>
+</div>
+<h2>文书八：情节显著轻微不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于建议对许峰依法作不起诉处理的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>__________律师事务所接受许峰及其家属委托，指派__________律师担任其涉嫌危险驾驶罪一案的辩护人。经阅卷、会见并核实相关证据，现提交如下意见。</p>
+<p>一、不回避短距离驾驶事实</p>
+<p>现有监控、许峰陈述和保安证言能够证明其饮酒后启动机动车并将车辆移入临时停车区域。辩护人不以“只是挪车”为由否认驾驶，也不主张叫了代驾即可酒后驾车。本案核心是该行为是否达到必须作为犯罪处理的程度。</p>
+<p>二、代驾安排真实有效</p>
+<p>平台数据显示，许峰在移车前下单，代驾员已经接单、正在赶往现场，订单未取消，代驾员后来实际到达。该组事实排除事后补单，并证明其原计划由他人驾驶车辆离场。</p>
+<p>三、车辆仅在停车场内移动约二十米</p>
+<p>经平面图、车位尺寸、监控参照物及车辆轨迹核实，车辆累计移动约二十米，未越过道闸，未进入城市道路，最终停在停车场内并立即熄火。</p>
+<p>四、现场情境限制了行为范围</p>
+<p>监控及保安证言证明，车辆斜停影响后车通行，保安要求移入旁边停车区。该事实虽不足以使酒后驾驶合法化，但能够说明许峰并非主动寻找驾驶机会，移动路线和终点受现场情境限制。</p>
+<p>五、无事故、无从重情节</p>
+<p>本案没有人员伤亡和财产损失。许峰持有有效驾驶证，驾驶普通小型汽车，无乘客、无高速驾驶、无逃避检查、无妨害取证，也无酒驾醉驾前科。</p>
+<p>六、符合显著轻微的实质要求</p>
+<p>本案同时具备停车场内短距离挪车、真实代驾安排、无继续上路意图、距离短、速度低、无事故和无从重情节等因素。血液检测达到醉酒标准仅解决醉酒状态问题，仍应结合行为制造的公共危险作实质判断。</p>
+<p>七、行政责任足以实现规范目的</p>
+<p>不追究刑事责任并不意味着行为合法。行政处罚、驾驶资格处理及交通安全教育足以形成警示。在没有事故、没有继续驾驶计划的偶发案件中，没有必要附加犯罪记录。</p>
+<p>八、处理建议</p>
+<p>建议依法认定许峰的行为情节显著轻微、危害不大，不认为是犯罪，作出不起诉决定。如认为尚未达到法定出罪标准，第二顺位建议依法作相对不起诉处理。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：相对不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于建议对许峰作相对不起诉处理的法律意见书</p>
+<p class="kv"><b>致</b>　__________人民检察院</p>
+<p>如贵院认为许峰的行为已经达到危险驾驶罪的入罪程度，辩护人提出第二顺位意见：本案犯罪情节轻微，依法可以不需要判处刑罚，应作相对不起诉处理。</p>
+<p>一、驾驶动机具有特殊性</p>
+<p>许峰不是为节省代驾费用、贪图方便或者侥幸返家而驾驶，而是已经呼叫代驾后，为腾让出口并停至便于代驾接管的位置。</p>
+<p>二、行驶距离和危险程度较低</p>
+<p>车辆移动约二十米，速度低，未进入城市道路。现场虽有车辆和工作人员，但没有急加速、抢行或反复倒车。</p>
+<p>三、没有实际损害</p>
+<p>没有人员受伤、车辆或设施损坏，许峰也没有逃逸或者隐瞒事实。</p>
+<p>四、无从重情节</p>
+<p>许峰持证驾驶，无酒驾前科，无妨害执法行为，不涉及高速、客运、校车、危险品运输或严重超速超载。</p>
+<p>五、认罪悔罪表现良好</p>
+<p>许峰主动说明移车事实，配合呼气检测和采血，如实供述，并愿意接受交通安全教育和行政处理。</p>
+<p>六、刑罚必要性较低</p>
+<p>行政处罚及驾驶资格处理可以实现教育和预防目的，以不起诉处理不会形成处罚漏洞。</p>
+<p>综上，建议依法对许峰作相对不起诉决定。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：询问提纲</h2>
+<div class="docbox">
+<p>一、代驾员询问提纲</p>
+<p>何时收到订单，接单时位于何处？</p>
+<p>订单起点、目的地及预计到达时间是什么？</p>
+<p>与许峰的联系发生在车辆移动前还是后？</p>
+<p>许峰是否说明饮酒、不能驾驶及车辆位置？</p>
+<p>是否正在赶往停车场，谁取消或保留订单？</p>
+<p>何时到达，车辆当时停在哪里？</p>
+<p>是否看见许峰继续驾驶？</p>
+<p>平台是否支付空驶费，手机是否保留订单和定位？</p>
+<p>二、停车场保安询问提纲</p>
+<p>第一次看到车辆时停在哪里，是否妨碍通行？</p>
+<p>当时后方有几辆车，是否要求许峰移车？</p>
+<p>是否知道许峰饮酒并已叫代驾？</p>
+<p>要求移动到何处，实际路线和距离如何？</p>
+<p>车辆速度如何，是否急加速、倒车或急转弯？</p>
+<p>是否碰撞人员、车辆或设施？</p>
+<p>停车后是否立即熄火下车，是否试图驶向出口？</p>
+<p>涉案区域平时及夜间是否允许社会车辆通行？</p>
+<p>区域是否属于封闭作业区，监控是否完整？</p>
+<p>三、采血人员询问提纲</p>
+<p>姓名、职务及执业资质是什么？</p>
+<p>何时何地采血，谁通知采血，哪些人员在场？</p>
+<p>使用何种消毒用品，是否含醇，能否提供包装或领用记录？</p>
+<p>采血管是否含抗凝剂、在有效期内及具有唯一编号？</p>
+<p>是否提取A、B两管，每管体积是多少？</p>
+<p>编号由谁填写，是否当场封装并要求签字？</p>
+<p>采血、编号和封装是否全程录像？</p>
+<p>封装后交给谁，是否有重新封装或标签更换？</p>
+</div>
+<h2>文书十一：庭审及鉴定人发问提纲</h2>
+<div class="docbox">
+<p>一、向侦查人员发问</p>
+<p>到达现场时是否亲眼看见许峰驾驶，车辆是否已经停稳？</p>
+<p>依据什么确认驾驶人，是否调取全部监控？</p>
+<p>行驶距离如何测算，是否使用测量工具？</p>
+<p>是否核实车辆未驶出道闸及未进入城市道路？</p>
+<p>是否调取代驾后台数据并询问代驾员？</p>
+<p>是否查明保安要求移车及车辆堵塞出口的事实？</p>
+<p>如何确认停车场及案发区域的公共性？</p>
+<p>采血录像是否完整，血样何时入库冷藏？</p>
+<p>登记为何缺项，温度记录是否随案移送？</p>
+<p>是否调查呼气与血液结果差异，并告知重新鉴定权利？</p>
+<p>二、向鉴定人发问</p>
+<p>机构和人员是否具备相应资质？</p>
+<p>收到检材时密封、编号、数量和状态如何？</p>
+<p>编号与委托书不一致时如何确认身份？</p>
+<p>使用何种方法，是否平行检测，两次结果分别是多少？</p>
+<p>是否有空白检测、标准物质和质量控制？</p>
+<p>仪器是否检定或校准，原始图谱是否保存？</p>
+<p>样品制备和仪器检测是否同步录像？</p>
+<p>能否排除外源乙醇污染？</p>
+<p>含醇消毒或未低温保存可能产生何种影响？</p>
+<p>B管是否保存并具备重新鉴定条件？</p>
+<p>如何解释呼气结果低于血液结果？</p>
+<p>鉴定意见能否仅证明送检血样中的乙醇含量？</p>
+<p>三、向物业管理人员发问</p>
+<p>停车场是否向社会车辆开放，临时车辆是否需预约？</p>
+<p>夜间是否开放，案发区域是否内部专用？</p>
+<p>是否有围挡、门禁或物理隔离？</p>
+<p>“内部管理区域”是否仅指物业管理？</p>
+<p>案发时临时车辆进出数量是多少？</p>
+<p>监控是否统一校时，是否存在覆盖或缺失？</p>
+<p>能否通过多个摄像头连续还原车辆轨迹？</p>
+</div>
+<h2>文书十二：一审辩护词</h2>
+<div class="docbox">
+<p>许峰涉嫌危险驾驶罪一案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>__________律师事务所接受被告人许峰及其家属委托，指派本律师担任辩护人。辩护人尊重醉驾治理的法律底线，也不主张饮酒后可以因为“只是挪车”而随意启动车辆。但刑事审判不能因血液酒精含量达到标准，就跳过对道路属性、驾驶目的、实际危险和显著轻微情形的审查。</p>
+<p>本案不是典型的醉酒驾车返家案件。许峰已经叫了代驾，车辆移动发生在停车场内，目的是腾让被堵住的出口。累计距离约二十米，没有越过道闸，没有进入城市道路，没有发生事故，也没有任何从重情节。</p>
+<p>一、道路属性应落实到实际行驶区域</p>
+<p>涉案停车场虽设置收费道闸并允许社会车辆进入，但刑法评价仍应落实到车辆实际移动区域，查明该区域是否与面向社会车辆开放的通道重合，是否处于临时封闭或内部作业状态。即便最终认定属于道路，也不能因此结束对全案危险程度的判断。</p>
+<p>二、车辆移动约二十米，未驶向公共道路</p>
+<p>案发监控、停车场图纸和固定参照物证明，许峰仅将车辆从出口分流区域移入旁边临时车位，过程短、速度低，最终仍在负二层，未越过收费道闸。行驶距离应依据客观证据确定，不能用现场目测扩大行为危险。</p>
+<p>三、真实代驾订单排除自行返家计划</p>
+<p>平台后台数据证明，许峰在移车前下单，代驾员已经接单并赶往现场，订单未取消，代驾员后来实际到达。该组事实与停车位置、行驶方向及保安证言相互印证，能够证明许峰无继续自行驾驶的意图。</p>
+<p>四、移车由出口受阻引发</p>
+<p>保安证言和监控证明，车辆斜停影响后车离场，保安要求移入旁边停车区。辩护人不主张紧急避险，但这一情境说明驾驶动机、路线及持续时间均受到现场因素严格限制，与主动驶向公共道路存在实质差别。</p>
+<p>五、本案没有从重情节</p>
+<p>许峰持有有效驾驶证，驾驶普通小型汽车，无乘客、无事故、无高速驾驶、无逃避和阻碍检查、无毁灭伪造证据，也没有酒驾醉驾记录。</p>
+<p>六、鉴定意见只能证明醉酒状态</p>
+<p>本案血样保管登记虽有缺项，但补充监控、温度及交接材料如能确认检材同一性，可以对一般瑕疵作补正。辩护人不夸大普通笔误。但即使采信血液鉴定，也只能证明醉酒状态，不能替代对行驶距离、驾驶目的、现实后果和刑罚必要性的判断。</p>
+<p>七、本案符合短距离挪车的显著轻微情形</p>
+<p>许峰的行为具备停车场内短距离挪车、真实代驾安排、无继续上路意图、距离短、速度低、无事故、无从重情节及配合调查等完整因素。对抽象危险应进行实质判断，不能将醉酒数值与有罪结论机械等同。</p>
+<p>八、行政责任足以实现规范目的</p>
+<p>许峰的行为不值得肯定，仍应承担相应行政后果。但行政违法与刑事犯罪之间必须保持边界。行政处罚、驾驶资格处理和交通安全教育，足以实现惩戒和预防，没有必要对这一未造成事故且没有继续上路意图的偶发行为附加犯罪记录。</p>
+<p>九、辩护请求</p>
+<p>依法认定许峰的行为情节显著轻微、危害不大，作出无罪判决；</p>
+<p>如认为构成危险驾驶罪，请依法免予刑事处罚；</p>
+<p>如不予免刑，请综合全部从宽事实适用最轻处罚，并依法宣告缓刑。</p>
+<p>法律必须严肃对待醉驾，也必须严肃对待犯罪与非犯罪的界线。本案的二十米不是醉酒返家的开端，而是在代驾已经接单、出口受阻、保安要求腾让的特定情境中发生，并在车辆重新停好后立即结束。行政处罚足以表达法律否定，没有必要再以刑罚作重复评价。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

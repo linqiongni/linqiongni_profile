@@ -5,7 +5,7 @@
 读取仓库根目录的 Word 源文件（唯一真源），生成：
   public/criminal-record/index.html         全书导览
   public/criminal-record/ch01..ch09.html    九篇已写章节
-  public/criminal-record/docs-ch01/02.html  两篇配套文书全集
+  public/criminal-record/docs-ch01/02/16.html  各章配套文书全集（DOCS 常量登记哪些就出哪些）
   public/criminal-record/assets/crim-style.css   布局（复制 criminal 站的 B 布局 + 追加少量辅助类）
   public/criminal-record/assets/app.js           STATIONS 驱动的左侧目录/右侧页内目录/搜索/scrollspy
 
@@ -73,6 +73,14 @@ CHAPTERS = {
     "ch29": ("第二十九章：一份已经生效的判决", "第二十九章", "刑事申诉 审判监督 再审 新证据 错案救济 国家赔偿"),
     "ch30": ("第三十章：铁门打开以后", "第三十章", "刑罚执行 减刑 假释 申诉 刑满释放 社会回归"),
 }
+
+# 配套文书全集：源 docx stem -> (输出 id, 左侧目录/STATIONS 显示名)
+# 命名不统一（有的带「_虚构示例」、有的带空格数字后缀），逐一登记，避免生成器靠猜漏掉。
+DOCS = [
+    ("第一章配套法律文书全集_虚构示例", "docs-ch01", "第一章配套文书全集"),
+    ("第二章配套法律文书全集_虚构示例 1", "docs-ch02", "第二章配套文书全集"),
+    ("第十六章配套法律文书", "docs-ch16", "第十六章配套文书全集"),
+]
 
 def src_docx(stem):
     p = os.path.join(SRC, stem + ".docx")
@@ -319,8 +327,9 @@ def build_index(main_paras):
         out.append("</ul></div>")
     # 配套文书
     out.append('<div class="rvol"><div class="rvh">配套文书（虚构示例）</div><ul>')
-    out.append('<li><a href="docs-ch01.html">第一章配套法律文书全集</a></li>')
-    out.append('<li><a href="docs-ch02.html">第二章配套法律文书全集</a></li>')
+    for stem, out_id, label in DOCS:
+        if src_docx(stem):
+            out.append('<li><a href="%s.html">%s</a></li>' % (out_id, esc(label)))
     out.append("</ul></div>")
     out.append("</div>")
 
@@ -374,8 +383,8 @@ def build_stations():
                 st.append({"id": cid, "no": cid[2:], "t": name, "part": v, "kw": kw})
             else:
                 st.append({"id": cid, "no": cid[2:], "t": name, "part": v, "kw": kw, "disabled": True})
-    st.append({"id": "docs-ch01", "no": "文书", "t": "第一章配套文书全集", "part": "配套文书（虚构示例）", "kw": "文书 模板 笔录 意见书 申请书"})
-    st.append({"id": "docs-ch02", "no": "文书", "t": "第二章配套文书全集", "part": "配套文书（虚构示例）", "kw": "文书 模板 笔录 意见书 申请书"})
+    for stem, out_id, label in DOCS:
+        st.append({"id": out_id, "no": "文书", "t": label, "part": "配套文书（虚构示例）", "kw": "文书 模板 笔录 意见书 申请书"})
     return st
 
 def build_appjs(stations):
@@ -697,8 +706,7 @@ def main():
             written += 1
 
     # 配套文书
-    for stem, out_id in [("第一章配套法律文书全集_虚构示例", "docs-ch01"),
-                         ("第二章配套法律文书全集_虚构示例 1", "docs-ch02")]:
+    for stem, out_id, _ in DOCS:
         if src_docx(stem):
             open(os.path.join(OUT, out_id + ".html"), "w", encoding="utf-8").write(
                 page(build_docs(stem, out_id), out_id, out_id))
