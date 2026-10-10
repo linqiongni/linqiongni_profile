@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch04</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch04">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第四章配套法律文书全文</h1>
+<div class="sub">本套文书以张伟与前妻周婷因子女探望安排发生冲突为虚构背景。张伟抓拉周婷进入车辆并阻止其立即离开，车辆在公共停车场停留四十三分钟。右后门儿童锁未开启，周婷曾两次自行下车；双方存在录音、监控、报警记录和轻微伤材料。正式使用时，应以完整电子数据、车辆检验、伤情鉴定及全部证言为准。</div>
+</header>
+<div class="wrap">
+<p class="volband">第一卷家事冲突与刑事边界</p>
+<p>接孩子时发生的冲突</p>
+<p>适用阶段：侦查、审查逮捕、补充侦查、审查起诉、不起诉听证及家事纠纷衔接</p>
+<p>使用说明</p>
+<p>探望权不赋予任何一方强制协商、押送或限制另一方自由的权利。</p>
+<p>不得以“四十三分钟”机械判断罪与非罪，应分段还原实际自由状态。</p>
+<p>车门能开启不当然排除非法拘禁，关键是是否存在现实、持续的控制。</p>
+<p>轻微伤通常不足以单独成立故意伤害罪，但可能涉及治安责任或成为控制手段的评价因素。</p>
+<p>涉及未成年人时，应避免在幼儿园门口直接冲突，并建立第三方交接方案。</p>
+<h3>文书目录</h3><ol>
+<li>婚姻家事冲突刑事案件首次接待笔录</li>
+<li>非法拘禁罪构成要件审查表</li>
+<li>车辆内限制人身自由案件审查清单</li>
+<li>被害人实际自由状态分段时间轴</li>
+<li>车门、儿童锁及中控功能检验申请书</li>
+<li>调取停车场及幼儿园完整监控申请书</li>
+<li>手机录音真实性审查表</li>
+<li>录音与视频同步分析表</li>
+<li>被害人与嫌疑人陈述一致性比对表</li>
+<li>证人询问提纲</li>
+<li>伤情鉴定意见及致伤机制审查表</li>
+<li>致伤机制补充鉴定申请书</li>
+<li>非法拘禁与故意伤害罪数分析意见</li>
+<li>不予批准逮捕及取保候审法律意见书</li>
+<li>退回补充侦查事项清单</li>
+<li>审查起诉阶段不起诉法律意见书</li>
+<li>不起诉公开听证意见及最后陈述</li>
+<li>家庭纠纷与刑事犯罪边界分析意见</li>
+<li>探望权纠纷非刑事化解决方案</li>
+<li>禁止接触及未成年人探望交接安排建议书</li>
+</ol>
+<h2>文书一：婚姻家事冲突刑事案件首次接待笔录</h2>
+<div class="docbox">
+<p>婚姻家事冲突刑事案件首次接待笔录</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>记录</th>
+</tr>
+<tr>
+<td>接待时间、地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>当事人关系及离婚时间</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>子女年龄、现随谁生活</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>探望权约定或裁判</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>案发时间、地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>涉嫌罪名及强制措施</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>报警、就医、鉴定情况</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>现有监控、录音、聊天记录</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>事实询问</p>
+<p>谁先到达幼儿园，原定交接方式是什么？</p>
+<p>是否存在明确拒绝探望及理由？</p>
+<p>谁先发生身体接触，具体动作是什么？</p>
+<p>周婷如何进入车辆，是否完全违背意愿？</p>
+<p>车辆是否落锁，儿童锁是否开启？</p>
+<p>周婷何时要求下车，张伟如何回应？</p>
+<p>手机、皮包、钥匙是否被控制？</p>
+<p>车辆是否移动，是否准备驶往派出所？</p>
+<p>周婷何时下车、为何返回、是否再次被阻挡？</p>
+<p>报警后双方行为有何变化？</p>
+<p>证据保全</p>
+<p>□ 保存双方手机原始设备。</p>
+<p>□ 提取完整录音及元数据。</p>
+<p>□ 调取幼儿园与停车场完整监控。</p>
+<p>□ 固定报警录音。</p>
+<p>□ 检测车门及儿童锁。</p>
+<p>□ 拍摄车位周边公共通道。</p>
+<p>□ 保全就诊、照片及鉴定材料。</p>
+<p>□ 保存探望协议和既往沟通。</p>
+</div>
+<h2>文书二：非法拘禁罪构成要件审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要件</th>
+<th>指控事实</th>
+<th>辩方审查</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>保护法益</td>
+<td>周婷行动自由</td>
+<td>是否实质不能离开</td>
+<td>____</td>
+</tr>
+<tr>
+<td>客观行为</td>
+<td>拉上车、阻挡离开</td>
+<td>方式、强度、持续性</td>
+<td>____</td>
+</tr>
+<tr>
+<td>主观故意</td>
+<td>要求说清探望问题</td>
+<td>是否明知并意图剥夺自由</td>
+<td>____</td>
+</tr>
+<tr>
+<td>控制手段</td>
+<td>车门、堵门、拉拽、语言</td>
+<td>是否足以形成现实控制</td>
+<td>____</td>
+</tr>
+<tr>
+<td>持续时间</td>
+<td>总计四十三分钟</td>
+<td>应分段而非整体计算</td>
+<td>____</td>
+</tr>
+<tr>
+<td>刑事可罚性</td>
+<td>公共场所、轻微伤</td>
+<td>危害程度是否需刑罚介入</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>排除机械判断</p>
+<p>□ 没有锁门不等于一定无拘禁。</p>
+<p>□ 车辆未移动不等于一定无拘禁。</p>
+<p>□ 家庭纠纷不构成免责。</p>
+<p>□ 时间短不当然出罪。</p>
+<p>□ 短暂限制不当然等于实质剥夺。</p>
+<p>□ 应结合场所、手段、目的、后果和求助能力。</p>
+</div>
+<h2>文书三：车辆内限制人身自由案件审查清单</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>查明结果</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>右后门能否内部开启</td>
+<td>____</td>
+<td>实车测试</td>
+</tr>
+<tr>
+<td>儿童锁状态</td>
+<td>____</td>
+<td>检验记录</td>
+</tr>
+<tr>
+<td>中控落锁效果</td>
+<td>____</td>
+<td>说明书、测试</td>
+</tr>
+<tr>
+<td>左右后门空间</td>
+<td>____</td>
+<td>现场照片</td>
+</tr>
+<tr>
+<td>车辆是否驶离</td>
+<td>____</td>
+<td>监控、轨迹</td>
+</tr>
+<tr>
+<td>驾驶人是否堵门</td>
+<td>____</td>
+<td>视频、证言</td>
+</tr>
+<tr>
+<td>手机是否被控制</td>
+<td>____</td>
+<td>录音、提取</td>
+</tr>
+<tr>
+<td>随身物品是否滞留</td>
+<td>____</td>
+<td>视频、陈述</td>
+</tr>
+<tr>
+<td>能否向外求助</td>
+<td>____</td>
+<td>报警、公共环境</td>
+</tr>
+<tr>
+<td>是否伴随严重威胁</td>
+<td>____</td>
+<td>完整录音</td>
+</tr>
+</table></div>
+<p>实际自由判断</p>
+<p>□ 客观不能开门。</p>
+<p>□ 能开门但遭身体阻挡。</p>
+<p>□ 能够下车并自由走动。</p>
+<p>□ 为取回物品而返回。</p>
+<p>□ 因现实威胁不敢离开。</p>
+<p>□ 报警后自愿等待民警。</p>
+<p>□ 自由状态在不同阶段发生变化。</p>
+</div>
+<h2>文书四：被害人实际自由状态分段时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>关键事实</th>
+<th>自由状态</th>
+<th>证明强度</th>
+</tr>
+<tr>
+<td>幼儿园门口拉拽</td>
+<td>17:44—____</td>
+<td>抓腕、拉向车辆</td>
+<td>明显限制/待查</td>
+<td>____</td>
+</tr>
+<tr>
+<td>进入车辆初期</td>
+<td>17:59—____</td>
+<td>要求说清、要求下车</td>
+<td>指控最强阶段</td>
+<td>____</td>
+</tr>
+<tr>
+<td>报警成功前后</td>
+<td>____—18:22</td>
+<td>接警要求原地等候</td>
+<td>是否解除控制</td>
+<td>____</td>
+</tr>
+<tr>
+<td>第一次下车</td>
+<td>18:22—18:24</td>
+<td>走至车后继续争论</td>
+<td>具备一定行动能力</td>
+<td>____</td>
+</tr>
+<tr>
+<td>返回取物</td>
+<td>18:24—18:26</td>
+<td>手机、皮包在车内</td>
+<td>返回原因复合</td>
+<td>____</td>
+</tr>
+<tr>
+<td>再次坐入及下车</td>
+<td>18:26—18:31</td>
+<td>拉扯、堵门争议</td>
+<td>证据矛盾</td>
+<td>____</td>
+</tr>
+<tr>
+<td>等候民警</td>
+<td>18:31—18:42</td>
+<td>车内外争执</td>
+<td>控制强度下降/待查</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>时间计算规则</p>
+<p>□ 不得将全部四十三分钟视为同强度拘禁。</p>
+<p>□ 明确控制开始和解除节点。</p>
+<p>□ 报警要求原地等候不授权张伟阻止下车。</p>
+<p>□ 下车事实不消除此前控制。</p>
+<p>□ 返回车辆不当然表示同意。</p>
+</div>
+<h2>文书五：车门、儿童锁及中控功能检验申请书</h2>
+<div class="docbox">
+<p>车门、儿童锁及中控功能检验申请书</p>
+<p>申请事项</p>
+<p>封存并检验涉案车辆右后门、左后门、儿童锁及中控落锁功能；</p>
+<p>记录中控锁闭后车门由内部开启所需动作和次数；</p>
+<p>确认案发时右后门儿童锁机械位置；</p>
+<p>模拟车辆静止、启动和熄火状态下的开门功能；</p>
+<p>测量相邻车辆位置对左右后门开启角度的影响；</p>
+<p>全程同步录像并制作检验笔录；</p>
+<p>允许双方对检验条件、结果及局限发表意见。</p>
+<p>申请理由</p>
+<p>被害人陈述涉及“车门锁死”“拉两次打开”及“车门能开但被阻挡”等不同表述。车门客观功能是判断能否自行离开的基础事实，应通过实车检验固定。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书六：调取停车场及幼儿园完整监控申请书</h2>
+<div class="docbox">
+<p>调取完整监控及原始电子数据申请书</p>
+<p>申请范围</p>
+<p>幼儿园各出入口案发前后不少于完整必要时段的原始录像；</p>
+<p>停车场车辆四周、出入口、公共通道及保安亭监控；</p>
+<p>能够反映周婷上下车、取物、走动和张伟位置的全时段画面；</p>
+<p>监控主机时间、设备编号、帧率、导出方式和校时材料；</p>
+<p>原始码流、导出文件及哈希值；</p>
+<p>车辆进出或轨迹记录。</p>
+<p>证明目的</p>
+<p>用于确定拉拽过程、车辆是否移动、周婷每次下车和返回的时间、张伟是否堵门、公共区域求助条件以及控制状态变化。不得以数段剪辑视频替代完整时段。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书七：手机录音真实性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项</th>
+<th>结果</th>
+<th>材料</th>
+</tr>
+<tr>
+<td>原始手机是否提交</td>
+<td>____</td>
+<td>扣押/提取笔录</td>
+</tr>
+<tr>
+<td>原始文件名、格式</td>
+<td>____</td>
+<td>文件属性</td>
+</tr>
+<tr>
+<td>创建和修改时间</td>
+<td>____</td>
+<td>元数据</td>
+</tr>
+<tr>
+<td>完整时长</td>
+<td>31分钟/以原件核验</td>
+<td>播放器记录</td>
+</tr>
+<tr>
+<td>是否剪辑、转码</td>
+<td>____</td>
+<td>检验意见</td>
+</tr>
+<tr>
+<td>录音起止原因</td>
+<td>____</td>
+<td>被害人陈述</td>
+</tr>
+<tr>
+<td>说话人识别</td>
+<td>____</td>
+<td>双方确认/声纹</td>
+</tr>
+<tr>
+<td>环境声</td>
+<td>车门、报警、争执</td>
+<td>同步分析</td>
+</tr>
+<tr>
+<td>哈希值</td>
+<td>____</td>
+<td>电子数据校验</td>
+</tr>
+</table></div>
+<p>证明边界</p>
+<p>□ 可证明语言内容。</p>
+<p>□ 可辅助证明语气和环境声。</p>
+<p>□ 不能直接证明谁抓住谁。</p>
+<p>□ 不能自动认定车门被身体堵住。</p>
+<p>□ 衣物摩擦声不能唯一指向拉拽。</p>
+<p>□ 必须结合视频和车辆检验。</p>
+</div>
+<h2>文书八：录音与视频同步分析表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>录音内容/声音</th>
+<th>视频动作</th>
+<th>一致性</th>
+<th>待解释</th>
+</tr>
+<tr>
+<td>18:14</td>
+<td>“我要下车”</td>
+<td>右门未开启</td>
+<td>一致/其他</td>
+<td>张伟位置</td>
+</tr>
+<tr>
+<td>18:22</td>
+<td>车门开合声</td>
+<td>周婷自行下车</td>
+<td>一致</td>
+<td>是否受阻</td>
+</tr>
+<tr>
+<td>18:24</td>
+<td>“把手机给我”</td>
+<td>弯腰进入车内取物</td>
+<td>一致</td>
+<td>手机此前状态</td>
+</tr>
+<tr>
+<td>18:26</td>
+<td>“回来，没说完”及摩擦声</td>
+<td>再次坐入后排</td>
+<td>部分一致</td>
+<td>主动或被拉回</td>
+</tr>
+<tr>
+<td>18:31</td>
+<td>争执持续</td>
+<td>再次下车</td>
+<td>____</td>
+<td>是否可自由离开</td>
+</tr>
+<tr>
+<td>18:42</td>
+<td>民警到场</td>
+<td>周婷离车</td>
+<td>一致</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>同步要求</p>
+<p>□ 录音与视频统一时间基准。</p>
+<p>□ 说明各设备时钟偏差。</p>
+<p>□ 保留无法对应的声音和盲区。</p>
+<p>□ 不得将语言自动翻译为动作。</p>
+<p>□ 不得将模糊动作自动解释为拘禁。</p>
+</div>
+<h2>文书九：被害人与嫌疑人陈述一致性比对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>周婷首次</th>
+<th>周婷后续</th>
+<th>张伟首次</th>
+<th>客观证据</th>
+</tr>
+<tr>
+<td>车门状态</td>
+<td>一直锁着</td>
+<td>拉两次/可以开但被阻挡</td>
+<td>未反锁</td>
+<td>实车、下车视频</td>
+</tr>
+<tr>
+<td>手机状态</td>
+<td>被抢走</td>
+<td>掉后座/回去拿</td>
+<td>一直在后座</td>
+<td>录音、视频</td>
+</tr>
+<tr>
+<td>进入车辆</td>
+<td>强行拖入</td>
+<td>被拉上车</td>
+<td>自己坐入</td>
+<td>监控有遮挡</td>
+</tr>
+<tr>
+<td>被拉回</td>
+<td>强拖回去</td>
+<td>拉手/堵门/取包后坐回</td>
+<td>未拉回</td>
+<td>摩擦声、模糊动作</td>
+</tr>
+<tr>
+<td>离开条件</td>
+<td>答应交孩子才放行</td>
+<td>要求说清</td>
+<td>气话/去派出所</td>
+<td>完整录音</td>
+</tr>
+<tr>
+<td>伤害动作</td>
+<td>拧臂、推车门</td>
+<td>____</td>
+<td>只抓臂阻止离开</td>
+<td>伤情、证言</td>
+</tr>
+</table></div>
+<p>评价原则</p>
+<p>□ 细节变化不自动等于虚假。</p>
+<p>□ 核心自由状态必须有客观印证。</p>
+<p>□ 张伟早期避重就轻应如实评价。</p>
+<p>□ 双方均有诉讼利益。</p>
+<p>□ 亲历事实与主观评价分开。</p>
+</div>
+<h2>文书十：证人询问提纲</h2>
+<div class="docbox">
+<p>证人与双方的位置、距离及视线是否受遮挡；</p>
+<p>是否看见谁先抓拉，具体抓握部位和动作；</p>
+<p>周婷是否挣扎、呼救或明确要求离开；</p>
+<p>张伟是否挥拳、踢踹、使用器械或辱骂威胁；</p>
+<p>周婷如何进入车辆，完整过程是否可见；</p>
+<p>车辆是否移动、倒车灯是否亮起；</p>
+<p>周婷每次下车后走到哪里，张伟如何反应；</p>
+<p>是否有人堵住右后门或公共通道；</p>
+<p>周婷能否正常使用手机；</p>
+<p>民警到场前双方是否继续发生身体冲突；</p>
+<p>证人是否先听他人描述后再作证；</p>
+<p>现场是否有孩子在场及冲突对孩子的影响。</p>
+</div>
+<h2>文书十一：伤情鉴定意见及致伤机制审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>鉴定/病历</th>
+<th>证据问题</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>右上臂青紫</td>
+<td>轻微伤</td>
+<td>抓握、碰撞均可形成</td>
+<td>非唯一</td>
+</tr>
+<tr>
+<td>右腕擦伤</td>
+<td>轻微伤</td>
+<td>挣脱、车门接触等</td>
+<td>待查</td>
+</tr>
+<tr>
+<td>骨折及功能</td>
+<td>未见、活动基本正常</td>
+<td>____</td>
+<td>未达轻伤</td>
+</tr>
+<tr>
+<td>形成时间</td>
+<td>案发后就诊</td>
+<td>是否有其他接触</td>
+<td>____</td>
+</tr>
+<tr>
+<td>抓握位置</td>
+<td>监控见抓右臂</td>
+<td>是否与瘀伤吻合</td>
+<td>____</td>
+</tr>
+<tr>
+<td>双方推搡</td>
+<td>证言不一</td>
+<td>谁先推、强度</td>
+<td>____</td>
+</tr>
+<tr>
+<td>张伟抓痕</td>
+<td>颈部有抓痕</td>
+<td>未鉴定</td>
+<td>反映相互接触</td>
+</tr>
+</table></div>
+<p>主观故意审查</p>
+<p>□ 存在挥拳、踢踹或器械。</p>
+<p>□ 攻击要害部位。</p>
+<p>□ 连续追打。</p>
+<p>□ 仅为阻止离开而抓拉。</p>
+<p>□ 双方互相推搡。</p>
+<p>□ 发现受伤后停止。</p>
+<p>□ 无独立伤害语言或行为。</p>
+</div>
+<h2>文书十二：致伤机制补充鉴定申请书</h2>
+<div class="docbox">
+<p>致伤机制补充鉴定申请书</p>
+<p>申请事项</p>
+<p>说明右上臂瘀斑可能的外力类型、方向和形成时间范围；</p>
+<p>说明手指抓握、扭转、车门碰撞及挣脱是否均可能形成现有损伤；</p>
+<p>比较损伤位置与监控中张伟抓握位置是否吻合；</p>
+<p>说明现有材料能否唯一确定致伤方式及实施人；</p>
+<p>结合双方身体痕迹，评价相互推搡的可能；</p>
+<p>明确轻微伤结论与故意伤害罪主观故意之间不存在自动对应关系。</p>
+<p>申请理由</p>
+<p>现有鉴定解决损伤程度，但未能充分解释形成机制和因果关系。案件同时涉及非法拘禁控制手段与独立伤害行为的区分，需进一步明确结论边界。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十三：非法拘禁与故意伤害罪数分析意见</h2>
+<div class="docbox">
+<p>非法拘禁与故意伤害罪数分析意见</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>情形</th>
+<th>评价路径</th>
+<th>本案对应</th>
+</tr>
+<tr>
+<td>控制自由中的轻微拉拽，未致轻伤</td>
+<td>如拘禁成立，可整体评价；不当然另罪</td>
+<td>轻微伤，抓拉为主</td>
+</tr>
+<tr>
+<td>拘禁后另起伤害故意并致轻伤</td>
+<td>可能分别评价</td>
+<td>现无持续殴打证据</td>
+</tr>
+<tr>
+<td>拘禁中使用暴力致伤残、死亡</td>
+<td>依法按特别规定处理</td>
+<td>本案不涉及</td>
+</tr>
+<tr>
+<td>拘禁本身致重伤、死亡</td>
+<td>审查结果加重及因果关系</td>
+<td>本案不涉及</td>
+</tr>
+<tr>
+<td>拘禁不成立、一般拉扯</td>
+<td>单独审查治安违法或侵权</td>
+<td>本案重要备选</td>
+</tr>
+</table></div>
+<p>本案意见</p>
+<p>周婷损伤为轻微伤，形成原因不能唯一确定；没有挥拳、踢踹、器械或独立泄愤性追打证据。故意伤害罪的结果及主观故意基础不足。若非法拘禁罪亦不成立，相关抓拉应依法另行评价治安和民事责任。</p>
+</div>
+<h2>文书十四：不予批准逮捕及取保候审法律意见书</h2>
+<div class="docbox">
+<p>关于张伟不予批准逮捕并采取取保候审的法律意见书</p>
+<p>主要意见</p>
+<p>张伟无权强迫周婷上车或阻止其离开，其行为应受否定；</p>
+<p>但车辆在公共停车场未驶离，右后门可从内部开启；</p>
+<p>周婷能够报警并至少两次自行下车；</p>
+<p>现有证据不能证明四十三分钟均处于实质拘禁状态；</p>
+<p>无多人看守、持械、扣押通讯、索财或持续殴打；</p>
+<p>周婷伤情为轻微伤，形成机制非唯一，故意伤害证据不足；</p>
+<p>张伟身份、住所稳定，未逃离并原地等待民警；</p>
+<p>关键监控、录音、车辆和医疗材料可以固定，不羁押不妨碍侦查。</p>
+<p>请求</p>
+<p>对张伟不予批准逮捕，并依法采取取保候审措施；责令其不得骚扰、跟踪周婷，不得在幼儿园直接拦截交接，随传随到。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十五：退回补充侦查事项清单</h2>
+<div class="docbox">
+<p>提取报警录音原始文件和接警记录；</p>
+<p>核验周婷手机原始录音、元数据、完整性及哈希值；</p>
+<p>完成录音、幼儿园监控和停车场监控时间同步；</p>
+<p>调取能够覆盖每次上下车和车门区域的完整录像；</p>
+<p>检验右后门、儿童锁及中控内部开门方式；</p>
+<p>测量左右车门外部空间及张伟站位；</p>
+<p>核查手机、皮包和钥匙是否被控制；</p>
+<p>询问门卫、家长、保安及商铺人员；</p>
+<p>核查车辆是否实际移动及张伟是否准备驶离；</p>
+<p>调取双方案发前后探望沟通、执行和调解材料；</p>
+<p>核查是否存在既往暴力、控制、跟踪或告诫记录；</p>
+<p>补充审查周婷和张伟身体痕迹、就诊及致伤机制；</p>
+<p>分段确定限制自由的开始、解除和再度发生节点；</p>
+<p>核查报警后双方是否因民警指令自愿原地等候。</p>
+</div>
+<h2>文书十六：审查起诉阶段不起诉法律意见书</h2>
+<div class="docbox">
+<p>张伟涉嫌非法拘禁、故意伤害案不起诉法律意见书</p>
+<p>一、探望诉求不能使强制手段合法</p>
+<p>张伟无权强迫周婷同行、留在车辆或者接受协商。辩方不回避抓拉、阻挡及言语施压的不当。</p>
+<p>二、总时长不能替代自由状态证明</p>
+<p>四十三分钟内存在进入车辆、报警、第一次下车、返回取物、再次下车及等候民警等不同阶段。周婷并非全程处于同一控制强度。</p>
+<p>三、持续实质剥夺人身自由证据不足</p>
+<p>车辆未驶离公共停车场，右后门儿童锁未开启，周婷能够内部开门、报警并两次下车。张伟虽有阻挡，但现有证据无法准确确定实质控制的持续时间及稳定程度。</p>
+<p>四、行为尚不足以证明达到刑事可罚程度</p>
+<p>本案无封闭转移、结伙看守、持械、扣押通讯、索财、强迫签署文件或持续殴打。主要行为具有现场冲突性和临时性。</p>
+<p>五、故意伤害罪证据不足</p>
+<p>周婷损伤为轻微伤，可能由抓握、挣脱、推撞或车门碰撞形成，无法唯一确定全部由张伟造成，也无证据证明独立伤害故意。</p>
+<p>六、请求</p>
+<p>对非法拘禁罪依法作证据不足不起诉，对故意伤害罪依法认定不构成犯罪；对抓拉、阻挡行为是否构成治安违法另行处理，并将探望问题导入民事执行和第三方交接机制。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十七：不起诉公开听证意见及最后陈述</h2>
+<div class="docbox">
+<p>不起诉公开听证意见</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>能够确认</th>
+<th>仍存疑问</th>
+</tr>
+<tr>
+<td>行为不当</td>
+<td>强行抓拉、阻止立即离开</td>
+<td>控制持续节点</td>
+</tr>
+<tr>
+<td>车门状态</td>
+<td>右后门可内部开启</td>
+<td>是否被身体堵门</td>
+</tr>
+<tr>
+<td>行动能力</td>
+<td>两次下车并报警</td>
+<td>返回是否受强制</td>
+</tr>
+<tr>
+<td>行为目的</td>
+<td>解决探望、要求去派出所</td>
+<td>是否以放行为交换</td>
+</tr>
+<tr>
+<td>伤情</td>
+<td>轻微伤</td>
+<td>具体致伤方式和故意</td>
+</tr>
+</table></div>
+<p>张伟最后陈述</p>
+<p>我承认自己没有权利拉周婷上车，也没有权利因为见不到孩子就阻止周婷离开。我当时处理错误，给周婷和孩子造成了伤害。我没有想把周婷拘禁起来，也没有想打伤周婷。报警后我留在原地等民警。以后探望有争议，我会通过法院、调解或者律师处理，不再直接拦截、拉扯或跟随。请根据完整录音、监控、车门状态和伤情证据依法判断。</p>
+</div>
+<h2>文书十八：家庭纠纷与刑事犯罪边界分析意见</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>问题</th>
+<th>不宜刑事化不足</th>
+<th>不能家事化严重</th>
+</tr>
+<tr>
+<td>自由侵害</td>
+<td>短暂挡路、一般纠缠</td>
+<td>锁门、捆绑、反复阻逃</td>
+</tr>
+<tr>
+<td>暴力程度</td>
+<td>轻微推搡、证据不足</td>
+<td>持续殴打、持械、伤害</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>临时要求协商</td>
+<td>索财、胁迫签字、报复</td>
+</tr>
+<tr>
+<td>持续状态</td>
+<td>瞬时、可求助、已解除</td>
+<td>长时间、转移、多人看守</td>
+</tr>
+<tr>
+<td>既往情况</td>
+<td>首次冲突</td>
+<td>多次实施、经制止仍继续</td>
+</tr>
+<tr>
+<td>未成年人影响</td>
+<td>可通过交接调整</td>
+<td>以孩子胁迫或当面持续暴力</td>
+</tr>
+</table></div>
+<p>分析结论</p>
+<p>家庭关系不能降低对人身自由和身体权利的保护，也不能替代刑事构成审查。对低危、短暂、证据不足行为，可由治安、民事执行和未成年人保护机制处理；对持续、严重控制和暴力行为，应依法追究。</p>
+</div>
+<h2>文书十九：探望权纠纷非刑事化解决方案</h2>
+<div class="docbox">
+<p>子女探望纠纷非刑事化解决方案</p>
+<p>处理目标</p>
+<p>确保未成年人不在交接现场目睹冲突；</p>
+<p>保障探望安排可执行、可预期；</p>
+<p>避免双方直接强制协商；</p>
+<p>保留疾病、学习和突发情况的调整机制；</p>
+<p>建立违约记录和法院救济路径。</p>
+<p>建议流程</p>
+<p>固定探望日期、时段及地点；</p>
+<p>由双方认可的亲属或专业机构完成交接；</p>
+<p>交接仅核对必要事项，不现场处理历史争议；</p>
+<p>临时取消应说明理由并提供替代日期；</p>
+<p>争议通过书面沟通、律师、调解或法院执行处理；</p>
+<p>任何一方不得堵截、尾随、抢夺孩子或控制对方；</p>
+<p>出现冲突立即终止交接并报警，不在孩子面前继续争吵。</p>
+</div>
+<h2>文书二十：禁止接触及未成年人探望交接安排建议书</h2>
+<div class="docbox">
+<p>禁止不当接触及未成年人探望交接安排建议书</p>
+<p>张伟行为边界</p>
+<p>不在幼儿园、住所、工作地点拦截周婷；</p>
+<p>不以拉拽、堵门、尾随或持续拨打方式要求协商；</p>
+<p>不擅自进入周婷车辆、住所或工作场所；</p>
+<p>不扣押手机、钥匙、证件及随身物品；</p>
+<p>不以孩子、隐私、财物或诉讼实施威胁；</p>
+<p>确需联系时仅通过约定书面渠道。</p>
+<p>交接方案</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>安排</th>
+</tr>
+<tr>
+<td>交接人</td>
+<td>双方认可的亲属/第三方机构：__________</td>
+</tr>
+<tr>
+<td>地点</td>
+<td>有监控、开阔、适合未成年人的公共地点：__________</td>
+</tr>
+<tr>
+<td>时间</td>
+<td>每月第__、第__个星期__，____至____</td>
+</tr>
+<tr>
+<td>取消与补行</td>
+<td>提前____小时通知，并于____日内补行</td>
+</tr>
+<tr>
+<td>孩子物品</td>
+<td>药物、衣物、证件清单交接</td>
+</tr>
+<tr>
+<td>争议处理</td>
+<td>不现场争执，提交调解/法院执行</td>
+</tr>
+<tr>
+<td>紧急情况</td>
+<td>立即联系____，必要时报警</td>
+</tr>
+</table></div>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>离婚协议、生效裁判及探望条款；</p>
+<p>案发前后聊天、调解和执行材料；</p>
+<p>幼儿园门口及停车场原始监控；</p>
+<p>手机录音、报警录音及同步分析；</p>
+<p>车辆照片、儿童锁及中控检验；</p>
+<p>周婷上下车及物品位置时间轴；</p>
+<p>门卫、家长、保安及民警证言；</p>
+<p>双方就诊、伤情照片和鉴定意见；</p>
+<p>双方既往报警、告诫及暴力记录核查；</p>
+<p>不起诉、治安处理及后续交接材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员或案件。</h3>
+<h3>2. 正式案件应完整保护未成年人姓名、就读机构、影像和家庭信息，不在无关材料中扩散。</h3>
+<h3>3. 非法拘禁、故意伤害、治安责任、探望权执行及禁止接触措施，应以办理时有效法律和具体证据核验。</h3>
+<h3>4. 不起诉不等于行为适当。刑事出罪后仍应处理治安、侵权、探望履行和未成年人保护问题。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

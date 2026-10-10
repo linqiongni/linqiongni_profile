@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch07</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch07">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第七章配套法律文书全文</h1>
+<div class="sub">本套文书以黄涛趁便利店店员转身、失主低头时拿走柜台苹果手机，后在门口被店员追上并推倒，造成右腕骨折的虚构案件为背景。核心方法是将拿取、发现、追赶、抓扯、转身、推出、倒地和携赃逃跑逐项对应证据，分别审查前行为、当场性、暴力目的、暴力强度和伤情因果关系。</div>
+</header>
+<div class="wrap">
+<p class="volband">第二卷财物迷局</p>
+<p>便利店门口的苹果手机</p>
+<p>适用阶段：侦查、审查逮捕、补充侦查、审查起诉、认罪认罚及一审辩护</p>
+<p>使用说明</p>
+<p>公共场所有监控，不当然排除秘密窃取。</p>
+<p>盗窃既遂不是排除转化型抢劫的防火墙。</p>
+<p>“当场”须同时审查时间、空间、追赶连续性和事实关联。</p>
+<p>摆脱型动作与攻击型暴力不能只靠动作名称判断。</p>
+<p>骨折结果不能反推动作力度，但须独立审查推搡与伤情的因果关系。</p>
+<h3>文书目录</h3><ol>
+<li>盗窃、抢夺与抢劫定性审查表</li>
+<li>转化型抢劫构成要件审查表</li>
+<li>盗窃既遂、未遂分析意见</li>
+<li>“当场”时空连续性审查表</li>
+<li>便利店监控统一时间轴</li>
+<li>多路监控时间校准说明</li>
+<li>监控逐帧审查记录</li>
+<li>摆脱型动作与攻击型暴力对比表</li>
+<li>暴力目的审查提纲</li>
+<li>店员询问笔录一致性对比表</li>
+<li>现场证人询问提纲</li>
+<li>调取原始监控视频申请书</li>
+<li>监控视频同一性、完整性审查意见</li>
+<li>现场勘验申请书</li>
+<li>伤情鉴定审查表</li>
+<li>调取既往病历申请书</li>
+<li>补充鉴定申请书</li>
+<li>重新鉴定申请书</li>
+<li>通知鉴定人出庭申请书</li>
+<li>伤病关系质证提纲</li>
+<li>手机价格认定异议书</li>
+<li>调取手机维修记录申请书</li>
+<li>审查逮捕阶段法律意见书</li>
+<li>羁押必要性审查申请书</li>
+<li>退赃退赔方案</li>
+<li>医疗损失审核清单</li>
+<li>赔偿协议书</li>
+<li>被害人谅解书</li>
+<li>认罪认罚法律帮助记录</li>
+<li>审查起诉阶段辩护意见</li>
+<li>庭审发问提纲</li>
+<li>鉴定意见质证意见</li>
+<li>监控视频质证意见</li>
+<li>一审辩护词</li>
+<li>量刑情节证据目录</li>
+</ol>
+<h2>文书一：盗窃、抢夺与抢劫定性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>问题</th>
+<th>盗窃指向</th>
+<th>抢夺指向</th>
+<th>普通抢劫指向</th>
+<th>本案</th>
+</tr>
+<tr>
+<td>拿取方式</td>
+<td>趁人不备秘密取得</td>
+<td>公然对物强力夺取</td>
+<td>先压制反抗再取财</td>
+<td>店员转身、失主低头时拿走</td>
+</tr>
+<tr>
+<td>财物状态</td>
+<td>柜台、身边或控制范围</td>
+<td>手持或即时争夺</td>
+<td>以暴力胁迫控制</td>
+<td>柜台边缘，距失主不到一臂</td>
+</tr>
+<tr>
+<td>身体作用</td>
+<td>无</td>
+<td>通常不以对人暴力为必要</td>
+<td>当场对人暴力胁迫</td>
+<td>拿取时无身体接触</td>
+</tr>
+<tr>
+<td>被害人感知</td>
+<td>拿后才发现</td>
+<td>夺取时即时感知</td>
+<td>暴力时即时感知</td>
+<td>手机消失后发现</td>
+</tr>
+<tr>
+<td>初步结论</td>
+<td>符合</td>
+<td>不符合</td>
+<td>拿取阶段不符合</td>
+<td>先行行为为盗窃</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二：转化型抢劫构成要件审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要件</th>
+<th>待证事实</th>
+<th>本案证据</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>前行为</td>
+<td>着手盗窃、诈骗或抢夺</td>
+<td>收银台监控、供述</td>
+<td>盗窃</td>
+</tr>
+<tr>
+<td>特定目的</td>
+<td>窝藏赃物、抗拒抓捕或毁灭罪证</td>
+<td>呼喊、追赶、携赃逃跑、供述</td>
+<td>____</td>
+</tr>
+<tr>
+<td>当场</td>
+<td>现场或刚离开即被发现追捕</td>
+<td>约16秒、不足10米、持续追赶</td>
+<td>____</td>
+</tr>
+<tr>
+<td>暴力/威胁</td>
+<td>针对身体并达到评价程度</td>
+<td>转身、双手推出、轻伤</td>
+<td>____</td>
+</tr>
+<tr>
+<td>主观认识</td>
+<td>知道因手机被追索</td>
+<td>喊归还手机、本人供述</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三：盗窃既遂、未遂分析意见</h2>
+<div class="docbox">
+<p>盗窃既遂、未遂分析意见</p>
+<p>黄涛将体积小、便于隐藏的手机放入口袋，对财物形成现实控制，可以论证盗窃既遂；即使认为在店内尚未形成稳定控制，转化型抢劫的前行为通常只要求已经着手，不以盗窃既遂为必要。</p>
+<p>判断重点应转向后续暴力是否发生在当场，是否为窝藏赃物、抗拒抓捕或毁灭罪证，以及暴力是否达到刑法评价程度。</p>
+</div>
+<h2>文书四：“当场”时空连续性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>本案事实</th>
+<th>核验材料</th>
+</tr>
+<tr>
+<td>时间</td>
+<td>拿取至倒地约16秒</td>
+<td>统一时间轴</td>
+</tr>
+<tr>
+<td>空间</td>
+<td>收银台至店门不足10米</td>
+<td>现场测量</td>
+</tr>
+<tr>
+<td>发现</td>
+<td>手机失窃后立即呼喊</td>
+<td>监控、证言</td>
+</tr>
+<tr>
+<td>追赶</td>
+<td>店员随即追出，无停顿</td>
+<td>连续视频</td>
+</tr>
+<tr>
+<td>是否脱离</td>
+<td>未摆脱追踪</td>
+<td>门口画面</td>
+</tr>
+<tr>
+<td>赃物状态</td>
+<td>手机仍在口袋</td>
+<td>扣押、供述</td>
+</tr>
+<tr>
+<td>暴力后行为</td>
+<td>携手机继续逃跑</td>
+<td>店外监控</td>
+</tr>
+</table></div>
+</div>
+<h2>文书五：便利店监控统一时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>阶段</th>
+<th>设备时间</th>
+<th>校准后时间</th>
+<th>动作</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>拿取</td>
+<td>19:48:13</td>
+<td>____</td>
+<td>右手拿手机入口袋</td>
+<td>收银台监控</td>
+</tr>
+<tr>
+<td>失主发现</td>
+<td>____</td>
+<td>____</td>
+<td>寻找并喊手机</td>
+<td>收银台监控</td>
+</tr>
+<tr>
+<td>店员追赶</td>
+<td>____</td>
+<td>____</td>
+<td>离开收银台</td>
+<td>多路共同事件</td>
+</tr>
+<tr>
+<td>到达玻璃门</td>
+<td>19:48:21</td>
+<td>____</td>
+<td>黄涛走出</td>
+<td>门口监控</td>
+</tr>
+<tr>
+<td>抓住外套</td>
+<td>____</td>
+<td>____</td>
+<td>外套后部形变</td>
+<td>门口监控</td>
+</tr>
+<tr>
+<td>转身推出</td>
+<td>店外19:47:59附近</td>
+<td>____</td>
+<td>双手接触胸肩部</td>
+<td>店外监控</td>
+</tr>
+<tr>
+<td>倒地</td>
+<td>____</td>
+<td>____</td>
+<td>后退、右手撑地</td>
+<td>店外监控</td>
+</tr>
+</table></div>
+</div>
+<h2>文书六：多路监控时间校准说明</h2>
+<div class="docbox">
+<p>多路监控时间校准说明</p>
+<p>收银台监控、门口监控和店外监控的设备时间不一致；</p>
+<p>店外监控较标准时间慢约二十七秒，门口监控快约三秒，正式材料仍应以校准记录为准；</p>
+<p>以同一顾客进出、玻璃门开合、电动车经过、灯箱闪烁、店员冲出、路人回头等共同事件校准；</p>
+<p>原时间和校准时间并列保留，不直接覆盖原始数据；</p>
+<p>说明帧率、丢帧、转码和误差范围。</p>
+</div>
+<h2>文书七：监控逐帧审查记录</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>帧号/时间</th>
+<th>黄涛动作</th>
+<th>周梅动作</th>
+<th>客观描述</th>
+<th>禁止提前评价</th>
+</tr>
+<tr>
+<td>____</td>
+<td>向门口走</td>
+<td>从后追赶</td>
+<td>距离缩短</td>
+<td>不写逃犯</td>
+</tr>
+<tr>
+<td>____</td>
+<td>身体顿挫</td>
+<td>接触外套后部</td>
+<td>外套形变</td>
+<td>不写已抓牢</td>
+</tr>
+<tr>
+<td>____</td>
+<td>右肩转动</td>
+<td>位于后侧</td>
+<td>身体转向</td>
+<td>不写蓄意攻击</td>
+</tr>
+<tr>
+<td>____</td>
+<td>双臂向前</td>
+<td>位于正面</td>
+<td>身体接触</td>
+<td>不写猛力</td>
+</tr>
+<tr>
+<td>____</td>
+<td>继续跑离</td>
+<td>后退倒地</td>
+<td>右手撑地</td>
+<td>不写直接击打手腕</td>
+</tr>
+</table></div>
+</div>
+<h2>文书八：摆脱型动作与攻击型暴力对比表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>摆脱型</th>
+<th>攻击型</th>
+<th>本案核查</th>
+</tr>
+<tr>
+<td>身体方向</td>
+<td>向前抽身、扭动</td>
+<td>转身面向追赶者</td>
+<td>转身</td>
+</tr>
+<tr>
+<td>接触对象</td>
+<td>衣物或偶然碰撞</td>
+<td>主动接触身体</td>
+<td>双手接触胸肩</td>
+</tr>
+<tr>
+<td>方式</td>
+<td>甩臂、挣衣</td>
+<td>推、打、踢、持物击打</td>
+<td>推出一次</td>
+</tr>
+<tr>
+<td>连续性</td>
+<td>瞬时离开</td>
+<td>可连续追击</td>
+<td>无连续殴打</td>
+</tr>
+<tr>
+<td>环境危险</td>
+<td>一般</td>
+<td>台阶、车流、硬物等</td>
+<td>门口缓坡</td>
+</tr>
+<tr>
+<td>效果</td>
+<td>未明显压制</td>
+<td>使追赶者不能继续</td>
+<td>倒地后无法追赶</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>轻微或无伤</td>
+<td>可能造成较重伤害</td>
+<td>轻伤二级</td>
+</tr>
+</table></div>
+</div>
+<h2>文书九：暴力目的审查提纲</h2>
+<div class="docbox">
+<p>黄涛何时听到“手机”及“把手机拿出来”？</p>
+<p>黄涛是否知道周梅追赶的原因？</p>
+<p>推人时手机是否仍在口袋？</p>
+<p>周梅抓住衣服后，黄涛为何转身？</p>
+<p>黄涛是否承认“怕被抓”“让她松手才能走”？</p>
+<p>推出后是否停留争论或继续携赃逃跑？</p>
+<p>未付款饮料是否为并存动机，能否排除保住手机的目的？</p>
+<p>是否存在与盗窃无关的私人冲突或报复原因？</p>
+</div>
+<h2>文书十：店员询问笔录一致性对比表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>第一次</th>
+<th>第二次</th>
+<th>第三次</th>
+<th>客观证据</th>
+</tr>
+<tr>
+<td>是否看见拿手机</td>
+<td>看见拿了</td>
+<td>失主说不见后猜到</td>
+<td>好像看见放东西</td>
+<td>货架遮挡、收银台视频</td>
+</tr>
+<tr>
+<td>抓握部位</td>
+<td>抓胳膊</td>
+<td>拉后面衣服</td>
+<td>先碰肩再抓衣服</td>
+<td>外套形变</td>
+</tr>
+<tr>
+<td>黄涛动作</td>
+<td>猛推</td>
+<td>____</td>
+<td>____</td>
+<td>原始连续视频</td>
+</tr>
+<tr>
+<td>推搡次数</td>
+<td>____</td>
+<td>____</td>
+<td>一次/待核</td>
+<td>视频</td>
+</tr>
+<tr>
+<td>呼喊内容</td>
+<td>____</td>
+<td>把手机拿出来</td>
+<td>____</td>
+<td>音频、证人</td>
+</tr>
+<tr>
+<td>伤情形成</td>
+<td>倒地撑手</td>
+<td>____</td>
+<td>____</td>
+<td>病历、鉴定</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十一：现场证人询问提纲</h2>
+<div class="docbox">
+<p>所在位置、视线和遮挡情况；</p>
+<p>是否看到黄涛伸手拿手机；</p>
+<p>陈先生何时发现并喊了什么；</p>
+<p>周梅何时开始追赶，是否中断；</p>
+<p>周梅抓住黄涛何处；</p>
+<p>黄涛是否转身，使用一只手还是两只手；</p>
+<p>双方接触次数、部位和方向；</p>
+<p>周梅倒地前是否已经站稳；</p>
+<p>地面是否湿滑及缓坡位置；</p>
+<p>黄涛是否继续攻击还是立即逃跑；</p>
+<p>黄涛是否携带手机及饮料；</p>
+<p>证人是否看过监控或与他人讨论后作证。</p>
+</div>
+<h2>文书十二：调取原始监控视频申请书</h2>
+<div class="docbox">
+<p>调取原始监控视频申请书</p>
+<p>调取收银台、店门口、店外招牌下方完整必要时段原始码流；</p>
+<p>调取监控主机、设备编号、拍摄方向和系统时间设置；</p>
+<p>调取案发前后相邻时段，避免仅保留冲突片段；</p>
+<p>制作提取笔录并计算哈希值；</p>
+<p>保留原始载体和播放器参数；</p>
+<p>提供所有慢放、截图和标注文件的制作过程。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十三：监控视频同一性、完整性审查意见</h2>
+<div class="docbox">
+<p>监控视频同一性、完整性审查意见</p>
+<p>人物衣着、体貌、行进方向和携带物在三路画面中可否连续对应；</p>
+<p>各视频是否来自原始主机及同一必要时段；</p>
+<p>是否存在剪切、转码、掉帧或帧率变化；</p>
+<p>时间偏差是否完成校准；</p>
+<p>逐帧截图不得脱离正常速度连续视频解释；</p>
+<p>案件事实描述应使用“转身、双手接触并推出”等中性用语。</p>
+</div>
+<h2>文书十四：现场勘验申请书</h2>
+<div class="docbox">
+<p>现场勘验申请书</p>
+<p>测量收银台、玻璃门和倒地点距离；</p>
+<p>测量门口缓坡坡度、边缘及硬质设施；</p>
+<p>核查地面材质、摩擦和案发时湿滑情况；</p>
+<p>固定摄像头点位、视野和遮挡；</p>
+<p>核对周梅后退路线及右手撑地点；</p>
+<p>调取清洁记录、打翻饮料情况和案发后照片；</p>
+<p>制作平面图、测量表和全景照片。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十五：伤情鉴定审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>材料</th>
+<th>问题</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>首诊时间与主诉</td>
+<td>____</td>
+<td>是否及时、部位一致</td>
+<td>____</td>
+</tr>
+<tr>
+<td>原始影像</td>
+<td>右桡骨远端骨折</td>
+<td>是否新鲜</td>
+<td>____</td>
+</tr>
+<tr>
+<td>损伤机制</td>
+<td>后退倒地、右手撑地</td>
+<td>是否吻合</td>
+<td>____</td>
+</tr>
+<tr>
+<td>既往右腕伤</td>
+<td>一年前软组织损伤</td>
+<td>有无旧骨折</td>
+<td>____</td>
+</tr>
+<tr>
+<td>骨质状况</td>
+<td>骨质疏松待查</td>
+<td>作用程度</td>
+<td>____</td>
+</tr>
+<tr>
+<td>现场条件</td>
+<td>缓坡、可能湿滑</td>
+<td>共同因素或中断</td>
+<td>____</td>
+</tr>
+<tr>
+<td>鉴定等级</td>
+<td>轻伤二级</td>
+<td>依据条款、时机</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十六：调取既往病历申请书</h2>
+<div class="docbox">
+<p>调取既往病历申请书</p>
+<p>调取周梅此前右腕受伤的门急诊、影像和复查记录；</p>
+<p>调取案发前最近一次右腕检查；</p>
+<p>核实既往诊断是否仅为软组织损伤；</p>
+<p>核实有无陈旧性骨折、未愈或功能障碍；</p>
+<p>调取骨密度或骨质疏松相关检查；</p>
+<p>由鉴定机构分析既往伤病与本次骨折的作用关系。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十七：补充鉴定申请书</h2>
+<div class="docbox">
+<p>伤情补充鉴定申请书</p>
+<p>说明右桡骨远端骨折是否为新鲜损伤；</p>
+<p>说明后退跌倒、手掌撑地是否符合形成机制；</p>
+<p>说明既往软组织损伤和骨质状态的作用；</p>
+<p>说明缓坡、湿滑是否属于共同影响因素；</p>
+<p>说明能否仅凭骨折反推动作力度；</p>
+<p>明确推搡、倒地、撑手与骨折之间的因果链条。</p>
+<p>此致</p>
+<p>__________鉴定机构/办案机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十八：重新鉴定申请书</h2>
+<div class="docbox">
+<p>重新鉴定申请书</p>
+<p>如原鉴定未审查原始影像、既往病历、骨质状况或者对致伤机制和因果关系未作回应，请依法委托其他具备资质的机构重新鉴定。</p>
+<p>移送原始影像而非仅送报告；</p>
+<p>完整移送案发监控和现场勘验；</p>
+<p>完整移送既往右腕病历；</p>
+<p>独立评价损伤程度与伤病关系；</p>
+<p>说明结论、依据和限制。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十九：通知鉴定人出庭申请书</h2>
+<div class="docbox">
+<p>通知鉴定人出庭申请书</p>
+<p>本案对骨折新旧、撑地机制、既往伤病、现场条件及能否由结果反推动作力度存在专业争议，鉴定意见直接影响定性和量刑。请求通知鉴定人出庭接受询问。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十：伤病关系质证提纲</h2>
+<div class="docbox">
+<p>是否查看原始影像及全部既往病历？</p>
+<p>哪一影像特征支持新鲜骨折？</p>
+<p>旧软组织损伤是否足以自行造成本次骨折？</p>
+<p>骨质疏松是否确认，如何影响结果？</p>
+<p>后退跌倒、右手撑地是否符合该骨折类型？</p>
+<p>斜坡、湿滑和撑手姿势分别具有何种作用？</p>
+<p>周梅若已站稳后另行滑倒，因果评价是否不同？</p>
+<p>能否仅凭骨折准确反推推力大小？</p>
+<p>鉴定等级所依据具体条款是什么？</p>
+</div>
+<h2>文书二十一：手机价格认定异议书</h2>
+<div class="docbox">
+<p>手机价格认定异议书</p>
+<p>核实手机型号、容量、购买及激活时间；</p>
+<p>核实屏幕划痕、电池健康、进水和维修历史；</p>
+<p>核实以旧换新优惠与实际市场价值的关系；</p>
+<p>说明价格认定基准日、方法和样本；</p>
+<p>核实追回时功能和外观状态；</p>
+<p>对六千余元结论进行补充核对。</p>
+<p>此致</p>
+<p>__________价格认定机构/办案机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十二：调取手机维修记录申请书</h2>
+<div class="docbox">
+<p>调取手机维修记录申请书</p>
+<p>调取品牌官方维修记录；</p>
+<p>调取非官方维修凭证和配件信息；</p>
+<p>核实是否进水、换屏、换电池或功能故障；</p>
+<p>调取案发前外观照片和电池健康信息；</p>
+<p>核实序列号与涉案手机一致；</p>
+<p>将维修因素移送价格认定机构。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十三：审查逮捕阶段法律意见书</h2>
+<div class="docbox">
+<p>审查逮捕阶段法律意见书</p>
+<p>必须校准三组监控时间并制作统一时间轴；</p>
+<p>店员对看见拿取、抓握部位等陈述存在变化；</p>
+<p>需区分本能摆脱与主动转身推人；</p>
+<p>需补充审查既往病历、原始影像和地面条件；</p>
+<p>盗窃是否既遂不能替代当场、目的和暴力强度审查；</p>
+<p>黄涛无凶器、无连续殴打、主要证据可固定，逮捕必要性应个别评价。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十四：羁押必要性审查申请书</h2>
+<div class="docbox">
+<p>羁押必要性审查申请书</p>
+<p>身份、住所和社会关系已查明；</p>
+<p>三路原始监控、手机及电子数据已固定；</p>
+<p>无串供、毁证的现实条件；</p>
+<p>手机已经扣押返还；</p>
+<p>医疗赔偿正在履行；</p>
+<p>可设置禁止接触被害人、报告和随传随到条件；</p>
+<p>家属可提供稳定住所和帮教。</p>
+<p>请求依法审查继续羁押必要性，并在社会危险性可控时变更强制措施。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十五：退赃退赔方案</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>对象</th>
+<th>项目</th>
+<th>金额/状态</th>
+<th>凭证</th>
+</tr>
+<tr>
+<td>陈先生</td>
+<td>苹果手机返还</td>
+<td>已追缴返还</td>
+<td>返还清单</td>
+</tr>
+<tr>
+<td>陈先生</td>
+<td>补卡、挂失、交通</td>
+<td>____</td>
+<td>票据</td>
+</tr>
+<tr>
+<td>陈先生</td>
+<td>损坏或贬值</td>
+<td>____</td>
+<td>检测、估价</td>
+</tr>
+<tr>
+<td>周梅</td>
+<td>已付医疗费</td>
+<td>____</td>
+<td>票据、转账</td>
+</tr>
+<tr>
+<td>周梅</td>
+<td>剩余医疗及复查</td>
+<td>____</td>
+<td>清单</td>
+</tr>
+<tr>
+<td>周梅</td>
+<td>误工、护理、交通</td>
+<td>____</td>
+<td>证明</td>
+</tr>
+<tr>
+<td>双方</td>
+<td>自愿补偿</td>
+<td>____</td>
+<td>协议</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十六：医疗损失审核清单</h2>
+<div class="docbox">
+<p>□ 首诊及急救记录。</p>
+<p>□ 住院费用清单。</p>
+<p>□ 手术和复查费用。</p>
+<p>□ 护具费用。</p>
+<p>□ 医嘱休息证明。</p>
+<p>□ 工资流水和单位误工证明。</p>
+<p>□ 护理必要性及票据。</p>
+<p>□ 交通费凭证。</p>
+<p>□ 医保及商业保险报销。</p>
+<p>□ 已支付款项核减。</p>
+</div>
+<h2>文书二十七：赔偿协议书</h2>
+<div class="docbox">
+<p>赔偿协议书</p>
+<p class="kv"><b>甲方</b>　黄涛/代为赔偿人__________；乙方：周梅/陈先生__________。</p>
+<p>双方确认赔偿基于真实医疗、误工、交通、补卡、维修等损失；</p>
+<p>甲方支付人民币__________元，方式和日期为__________；</p>
+<p>乙方收到款项后出具收据；</p>
+<p>是否谅解由乙方自主决定；</p>
+<p>本协议不要求任何一方改变真实陈述；</p>
+<p class="kv"><b>其他未尽事项</b>　__________。</p>
+<p class="kv"><b>甲方签名</b>　__________    乙方签名：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书二十八：被害人谅解书</h2>
+<div class="docbox">
+<p>谅解书</p>
+<p>本人__________系本案被害人。黄涛及家属已赔礼道歉，并赔偿本人经核实的合理损失人民币__________元。本人在充分了解案件情况后，自愿对黄涛表示谅解，请司法机关依法处理。</p>
+<p>本谅解不否认案件事实，不表示损伤或财物损失不存在，也不包含任何虚假陈述。</p>
+<p class="kv"><b>被害人</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书二十九：认罪认罚法律帮助记录</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>告知事项</th>
+<th>已说明</th>
+<th>当事人意见</th>
+</tr>
+<tr>
+<td>先行行为按盗窃评价</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>后续可能构成转化型抢劫</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>当场、特定目的和暴力要件</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>一次推搡、轻伤及因果关系</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>手机追回不等于主动退赃</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>认罪认罚不当然缓刑</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>量刑建议及后果</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>具结自愿、真实</td>
+<td>□</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三十：审查起诉阶段辩护意见</h2>
+<div class="docbox">
+<p>审查起诉阶段辩护意见</p>
+<p>一、准确定性</p>
+<p>黄涛利用店员转身、失主低头的间隙秘密拿走手机，先行行为为盗窃而非抢夺或普通抢劫。</p>
+<p>二、转化要件</p>
+<p>应以统一时间轴证明约十六秒、不足十米、持续追赶及手机仍在身上；以呼喊内容、转身推出和携赃逃跑证明抗拒抓捕、窝藏赃物目的。</p>
+<p>三、暴力和伤情边界</p>
+<p>暴力仅一次，无凶器、无连续殴打、无直接攻击手腕；伤情由后退倒地、右手撑地形成。原始影像和既往病历支持新鲜骨折及连续因果关系。</p>
+<p>四、量刑</p>
+<p>请求完整评价初犯、坦白、认罪认罚、手机追回、积极赔偿、两名被害人谅解及家庭帮教。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十一：庭审发问提纲</h2>
+<div class="docbox">
+<p>询问周梅</p>
+<p>追到门口时黄涛是否刚离店？</p>
+<p>抓的是胳膊、肩膀还是衣服？</p>
+<p>黄涛是否转身？</p>
+<p>用一只手还是两只手？</p>
+<p>推搡一次还是多次？</p>
+<p>有无拳打、脚踢或器械？</p>
+<p>倒地前是否恢复站稳？</p>
+<p>手腕是否由撑地受伤？</p>
+<p>询问陈先生及顾客</p>
+<p>何时发现手机不见？</p>
+<p>喊叫具体内容？</p>
+<p>追赶是否连续？</p>
+<p>是否看清推出动作和倒地过程？</p>
+<p>询问侦查人员</p>
+<p>三路时间如何校准？</p>
+<p>慢放和截图如何制作？</p>
+<p>是否保留原始码流？</p>
+</div>
+<h2>文书三十二：鉴定意见质证意见</h2>
+<div class="docbox">
+<p>鉴定意见质证意见</p>
+<p>审查鉴定机构、鉴定人资质和委托程序；</p>
+<p>确认原始影像、首诊病历和既往病历均已审查；</p>
+<p>确认骨折为新鲜损伤，旧伤无骨折记录；</p>
+<p>确认后退倒地、右手撑地符合形成机制；</p>
+<p>确认斜坡、湿滑是共同现场因素，不当然切断因果关系；</p>
+<p>强调不能仅凭轻伤结果精确反推推力大小；</p>
+<p>请求鉴定人就损伤等级和伤病关系接受质询。</p>
+</div>
+<h2>文书三十三：监控视频质证意见</h2>
+<div class="docbox">
+<p>监控视频质证意见</p>
+<p>三路监控应以原始码流、提取笔录、哈希和设备信息证明真实性；</p>
+<p>设备时间存在偏差，必须使用共同事件校准；</p>
+<p>正常速度用于观察整体动作，慢速和逐帧仅作辅助；</p>
+<p>单帧截图可说明姿势，不能完整说明动作目的和连续性；</p>
+<p>事实表述应采用中性语言，不以“猛力推倒”等结论性词语替代审查；</p>
+<p>结合证言、伤情和供述综合判断，不单凭某一帧定案。</p>
+</div>
+<h2>文书三十四：一审辩护词</h2>
+<div class="docbox">
+<p>黄涛涉嫌抢劫案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>一、先行行为属于盗窃</p>
+<p>黄涛趁店员转身、失主低头时秘密拿走柜台手机，没有人与物的公开争夺，也没有在取财前实施暴力。</p>
+<p>二、转化型抢劫应逐项而非跳跃认定</p>
+<p>本案时间短、距离近、追赶连续。黄涛知道店员因手机追赶，在外套被抓后转身双手推出，随后携赃逃离。现有补充证据支持当场性和抗拒抓捕目的。</p>
+<p>三、暴力范围必须准确限定</p>
+<p>暴力一次；</p>
+<p>没有凶器；</p>
+<p>没有拳打脚踢；</p>
+<p>没有连续追打；</p>
+<p>没有直接攻击手腕；</p>
+<p>骨折由倒地撑手形成；</p>
+<p>不存在预谋伤人。</p>
+<p>四、量刑应充分从宽</p>
+<p>初犯；</p>
+<p>到案后如实供述；</p>
+<p>自愿认罪认罚；</p>
+<p>手机完整追回；</p>
+<p>赔偿两名被害人合理损失；</p>
+<p>取得谅解；</p>
+<p>家属能够提供帮教。</p>
+<p>请求法院在准确认定构成和暴力边界的基础上，在法定幅度内依法从宽处罚。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十五：量刑情节证据目录</h2>
+<div class="docbox">
+<p>无犯罪记录证明；</p>
+<p>抓获经过和到案表现；</p>
+<p>如实供述、坦白材料；</p>
+<p>认罪认罚具结和法律帮助记录；</p>
+<p>一次推搡、无凶器、无连续殴打的监控材料；</p>
+<p>手机扣押返还及失主领取证明；</p>
+<p>医疗费、误工和交通损失审核材料；</p>
+<p>已支付赔偿凭证；</p>
+<p>陈先生谅解书；</p>
+<p>周梅谅解书；</p>
+<p>道歉信和悔罪书；</p>
+<p>稳定住所、工作与家庭帮教材料。</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>收银台、门口、店外原始监控及校时；</p>
+<p>手机放置、拿取、发现及追赶材料；</p>
+<p>黄涛、周梅、陈先生和现场顾客陈述；</p>
+<p>门口现场勘验、距离、缓坡和地面材料；</p>
+<p>首诊、影像、手术、鉴定及既往病历；</p>
+<p>手机购买、配置、维修、估价、扣押和返还；</p>
+<p>二手平台发布、抓获经过和供述；</p>
+<p>赔偿、谅解、认罪认罚及量刑材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员或商铺。</h3>
+<h3>2. 转化型抢劫、监控取证、损伤鉴定、价格认定和认罪认罚，应以办理时有效法律规范核验。</h3>
+<h3>3. 不得以盗窃既遂当然排除转化，也不得以出现伤情结果跳过当场、目的和暴力强度审查。</h3>
+<h3>4. 赔偿、谅解必须真实自愿，不得与改变证言绑定。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

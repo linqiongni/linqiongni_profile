@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch09</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch09">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第九章配套法律文书全文</h1>
+<div class="sub">本套文书以赵明虚构参加婚礼向陈浩借车，取得汽车后将车辆及钥匙交给二手车商周启并取得十万元的虚构案件为背景。核心时间点是陈浩交付车辆之时：赵明是否已经形成非法占有目的。案件还需分别审查赵明对陈浩、周启的欺骗关系，以及周启是否被欺骗、事前通谋或明知收车。</div>
+</header>
+<div class="wrap">
+<p class="volband">第二卷财物迷局</p>
+<p>借来的汽车没有归还</p>
+<p>适用阶段：立案审查、侦查、审查逮捕、审查起诉、刑事自诉、和解及一审辩护</p>
+<p>使用说明</p>
+<p>后来抵押车辆不能单独反推借车时已有诈骗故意。</p>
+<p>借车前联系车商、拍摄目标车辆、查询押车条件及制作虚假授权，是事前计划的重要证据。</p>
+<p>真实工程和应收款不等于具备现实赎车能力。</p>
+<p>合法借车后才形成据有故意，可能转向侵占及自诉程序。</p>
+<p>车主车辆和车商十万元不得机械重复计算犯罪数额。</p>
+<h3>文书目录</h3><ol>
+<li>诈骗、侵占与民事违约构成要件对照表</li>
+<li>借车案件非法占有目的审查表</li>
+<li>车辆交付前后统一时间轴</li>
+<li>借车用途真实性核查表</li>
+<li>犯意产生时间分析意见</li>
+<li>非法占有目的正反证据对照表</li>
+<li>工程款真实性与回款能力审查表</li>
+<li>资金用途分类说明</li>
+<li>银行流水逐笔说明</li>
+<li>车辆质押交易结构审查表</li>
+<li>车主、借车人及车商法律关系表</li>
+<li>诈骗行为因果链审查表</li>
+<li>侵占罪拒不退还事实审查表</li>
+<li>刑民交叉案件审查意见</li>
+<li>调取微信原始数据申请书</li>
+<li>调取手机搜索记录申请书</li>
+<li>电子数据真实性审查意见</li>
+<li>授权书形成时间鉴定申请书</li>
+<li>调取车辆轨迹申请书</li>
+<li>调取工程结算资料申请书</li>
+<li>调取车商交易台账申请书</li>
+<li>车主询问提纲</li>
+<li>项目经理询问提纲</li>
+<li>二手车商询问提纲</li>
+<li>诈骗罪不起诉法律意见书</li>
+<li>申请变更案件定性法律意见书</li>
+<li>审查逮捕阶段法律意见书</li>
+<li>羁押必要性审查申请书</li>
+<li>侵占罪刑事自诉状</li>
+<li>侵占罪自诉案件证据目录</li>
+<li>车辆返还确认书</li>
+<li>车辆损失核定清单</li>
+<li>赔偿和解协议书</li>
+<li>车主谅解书</li>
+<li>撤回刑事自诉申请书</li>
+<li>掩饰、隐瞒犯罪所得罪审查表</li>
+<li>二手车商主观明知证据清单</li>
+<li>共同犯罪事前通谋审查表</li>
+<li>审查起诉阶段辩护意见</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：诈骗、侵占与民事违约构成要件对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要素</th>
+<th>诈骗</th>
+<th>侵占</th>
+<th>民事违约</th>
+</tr>
+<tr>
+<td>最初取得</td>
+<td>欺骗使车主错误交付</td>
+<td>经同意合法借用</td>
+<td>经同意合法借用</td>
+</tr>
+<tr>
+<td>犯意时间</td>
+<td>交车前或交车时</td>
+<td>合法取得后形成</td>
+<td>始终无非法占有目的</td>
+</tr>
+<tr>
+<td>处分行为</td>
+<td>借车后抵押印证既有计划</td>
+<td>后起意擅自抵押并拒还</td>
+<td>改变用途或逾期但积极返还</td>
+</tr>
+<tr>
+<td>欺骗作用</td>
+<td>婚礼等谎言影响交车决定</td>
+<td>后续谎言用于掩盖拒还</td>
+<td>可能有用途隐瞒但无占有目的</td>
+</tr>
+<tr>
+<td>程序</td>
+<td>公诉</td>
+<td>告诉才处理</td>
+<td>民事诉讼/协商</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二：借车案件非法占有目的审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>指标</th>
+<th>不利事实</th>
+<th>有利事实</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>事前计划</td>
+<td>联系车商、拍车、搜索押车</td>
+<td>自车确在维修</td>
+<td>____</td>
+</tr>
+<tr>
+<td>虚假材料</td>
+<td>交车前创建授权书、伪造签名</td>
+<td>文件时间需核验</td>
+<td>____</td>
+</tr>
+<tr>
+<td>负债与能力</td>
+<td>多笔到期债务、余额不足</td>
+<td>真实工程应收款</td>
+<td>____</td>
+</tr>
+<tr>
+<td>取得后处分</td>
+<td>三小时内质押、收十万元</td>
+<td>约定二十天赎回</td>
+<td>____</td>
+</tr>
+<tr>
+<td>资金用途</td>
+<td>还旧债和个人开支为主</td>
+<td>部分用于材料和工资</td>
+<td>____</td>
+</tr>
+<tr>
+<td>催还表现</td>
+<td>虚构婚礼、维修、位置</td>
+<td>未失联、仍在广州</td>
+<td>____</td>
+</tr>
+<tr>
+<td>赎车行为</td>
+<td>未还本金</td>
+<td>支付五千元展期费</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三：车辆交付前后统一时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>节点</th>
+<th>时间</th>
+<th>事实</th>
+<th>证明方向</th>
+</tr>
+<tr>
+<td>提出借车</td>
+<td>周四21:17</td>
+<td>称参加婚礼、借两天</td>
+<td>欺骗内容</td>
+</tr>
+<tr>
+<td>联系车商</td>
+<td>借车前一日/以原始数据核验</td>
+<td>询问非本人凯美瑞能否押</td>
+<td>事前计划</td>
+</tr>
+<tr>
+<td>拍摄车辆</td>
+<td>周四下午</td>
+<td>陈浩公司附近拍车</td>
+<td>目标锁定</td>
+</tr>
+<tr>
+<td>授权书创建</td>
+<td>周四22:46</td>
+<td>文档创建、插入签名</td>
+<td>预先准备</td>
+</tr>
+<tr>
+<td>车辆交付</td>
+<td>周五下午</td>
+<td>钥匙、行驶证交付</td>
+<td>诈骗时间切口</td>
+</tr>
+<tr>
+<td>进入车商仓库</td>
+<td>交车后不足三小时</td>
+<td>验车、交钥匙</td>
+<td>快速处分</td>
+</tr>
+<tr>
+<td>十万元到账</td>
+<td>当日</td>
+<td>两笔转入</td>
+<td>取得现金</td>
+</tr>
+<tr>
+<td>首次催车</td>
+<td>周日下午</td>
+<td>谎称婚礼未结束</td>
+<td>持续隐瞒</td>
+</tr>
+<tr>
+<td>明确催还</td>
+<td>周日晚至周二</td>
+<td>要求还车、报警</td>
+<td>侵占催告节点</td>
+</tr>
+<tr>
+<td>支付展期费</td>
+<td>第20日前</td>
+<td>五千元</td>
+<td>赎车行为</td>
+</tr>
+</table></div>
+</div>
+<h2>文书四：借车用途真实性核查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>说法</th>
+<th>核查结果</th>
+<th>证据</th>
+<th>意义</th>
+</tr>
+<tr>
+<td>参加表弟婚礼</td>
+<td>无表弟、无婚宴、未去肇庆</td>
+<td>婚宴、轨迹、证言</td>
+<td>虚假</td>
+</tr>
+<tr>
+<td>自车送修</td>
+<td>本田雅阁确在维修</td>
+<td>维修单、维修店</td>
+<td>真实用车需求</td>
+</tr>
+<tr>
+<td>本人驾驶</td>
+<td>车辆交车商控制</td>
+<td>监控、协议</td>
+<td>违反核心约定</td>
+</tr>
+<tr>
+<td>借两天</td>
+<td>未按期返还</td>
+<td>聊天、催还</td>
+<td>履行结果</td>
+</tr>
+<tr>
+<td>轮胎扎破维修</td>
+<td>旧朋友圈照片</td>
+<td>图片元数据</td>
+<td>拖延谎言</td>
+</tr>
+<tr>
+<td>工程款赎车</td>
+<td>项目真实但到账不确定</td>
+<td>合同、结算</td>
+<td>需评价能力</td>
+</tr>
+</table></div>
+</div>
+<h2>文书五：犯意产生时间分析意见</h2>
+<div class="docbox">
+<p>犯意产生时间分析意见</p>
+<p>诈骗指控必须证明赵明在陈浩交付汽车时已形成非法占有目的；后续质押只能作为间接证据。若事前联系周启、拍摄目标车辆、咨询非本人车辆质押、创建并修改虚假授权书均经合法电子数据证明，则可形成较强事前计划链。</p>
+<p>反向证据包括赵明车辆真实维修、存在真实用车需要、工程和应收款真实、部分资金用于工程、支付展期费及未逃匿。应综合评价，不能仅凭最终未还车定案。</p>
+</div>
+<h2>文书六：非法占有目的正反证据对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>类别</th>
+<th>正向证据</th>
+<th>反向证据</th>
+<th>审查重点</th>
+</tr>
+<tr>
+<td>借车前</td>
+<td>车商联系、车辆照片、搜索记录</td>
+<td>本车维修</td>
+<td>目标车辆是否一致</td>
+</tr>
+<tr>
+<td>文件</td>
+<td>提前创建虚假授权</td>
+<td>时间可能受同步影响</td>
+<td>元数据和对方设备</td>
+</tr>
+<tr>
+<td>资金</td>
+<td>到期债务、押款还旧债</td>
+<td>真实工程支出</td>
+<td>逐笔用途</td>
+</tr>
+<tr>
+<td>履行能力</td>
+<td>应收款不确定、总负债高</td>
+<td>真实应收工程款</td>
+<td>是否足额、可支配</td>
+</tr>
+<tr>
+<td>事后行为</td>
+<td>虚假位置、拒绝告知抵押</td>
+<td>未逃跑、持续联系</td>
+<td>是否保护车辆</td>
+</tr>
+<tr>
+<td>赎车</td>
+<td>无本金、延期后仍失败</td>
+<td>支付展期费、家属筹款</td>
+<td>客观可执行性</td>
+</tr>
+</table></div>
+</div>
+<h2>文书七：工程款真实性与回款能力审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>材料</th>
+<th>待核问题</th>
+</tr>
+<tr>
+<td>工程真实性</td>
+<td>分包合同、施工记录</td>
+<td>工程是否实际完成</td>
+</tr>
+<tr>
+<td>合同总价</td>
+<td>68万元/以原件核验</td>
+<td>已付款、未付款多少</td>
+</tr>
+<tr>
+<td>工程量</td>
+<td>确认单、签证</td>
+<td>是否完成核量</td>
+</tr>
+<tr>
+<td>结算状态</td>
+<td>尚在核量</td>
+<td>是否达到付款条件</td>
+</tr>
+<tr>
+<td>争议扣款</td>
+<td>返工、材料、质量</td>
+<td>金额是否确定</td>
+</tr>
+<tr>
+<td>预计时间</td>
+<td>月底争取报款</td>
+<td>报款不等于到账</td>
+</tr>
+<tr>
+<td>优先负担</td>
+<td>工资、材料、其他债权</td>
+<td>可用于赎车余额</td>
+</tr>
+<tr>
+<td>重复承诺</td>
+<td>是否承诺其他债权人</td>
+<td>同一款项能否重复使用</td>
+</tr>
+</table></div>
+</div>
+<h2>文书八：资金用途分类说明</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>类别</th>
+<th>金额</th>
+<th>用途</th>
+<th>凭证</th>
+</tr>
+<tr>
+<td>偿还旧债</td>
+<td>40,000元/实际</td>
+<td>私人借款</td>
+<td>转账、借据</td>
+</tr>
+<tr>
+<td>材料款</td>
+<td>20,000元/实际</td>
+<td>供应商</td>
+<td>合同、收据</td>
+</tr>
+<tr>
+<td>工人工资</td>
+<td>12,000元/实际</td>
+<td>两名工人</td>
+<td>工资表、转账</td>
+</tr>
+<tr>
+<td>现金提取</td>
+<td>15,000元/实际</td>
+<td>待说明</td>
+<td>取现、去向</td>
+</tr>
+<tr>
+<td>信用卡、房租</td>
+<td>____</td>
+<td>个人债务/生活</td>
+<td>账单</td>
+</tr>
+<tr>
+<td>剩余款项</td>
+<td>____</td>
+<td>日常消费</td>
+<td>流水</td>
+</tr>
+</table></div>
+<p class="kv"><b>说明</b>　资金用于工程不当然排除诈骗；资金用于还债也不当然完成非法占有目的证明。</p>
+</div>
+<h2>文书九：银行流水逐笔说明</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>金额</th>
+<th>对方</th>
+<th>用途主张</th>
+<th>客观凭证</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>____</td>
+<td>100,000</td>
+<td>周启/账户</td>
+<td>质押款</td>
+<td>协议、流水</td>
+<td>收入</td>
+</tr>
+<tr>
+<td>____</td>
+<td>40,000</td>
+<td>____</td>
+<td>还旧债</td>
+<td>借款材料</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>20,000</td>
+<td>材料商</td>
+<td>材料款</td>
+<td>发票、合同</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>12,000</td>
+<td>工人</td>
+<td>工资</td>
+<td>工资表</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>15,000</td>
+<td>取现</td>
+<td>____</td>
+<td>现金去向</td>
+<td>____</td>
+</tr>
+<tr>
+<td>____</td>
+<td>____</td>
+<td>信用卡/房东</td>
+<td>个人支出</td>
+<td>账单</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十：车辆质押交易结构审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>真实交易内容</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>合同名称</td>
+<td>车辆质押借款/案卷名称</td>
+<td>协议</td>
+</tr>
+<tr>
+<td>车辆控制</td>
+<td>车和钥匙由周启保管</td>
+<td>交车监控</td>
+</tr>
+<tr>
+<td>放款</td>
+<td>十万元分两笔</td>
+<td>银行流水</td>
+</tr>
+<tr>
+<td>期限</td>
+<td>二十天</td>
+<td>协议</td>
+</tr>
+<tr>
+<td>到期安排</td>
+<td>不还可处置车辆</td>
+<td>条款</td>
+</tr>
+<tr>
+<td>权属</td>
+<td>陈浩名下，赵明非车主</td>
+<td>登记信息</td>
+</tr>
+<tr>
+<td>处分依据</td>
+<td>虚假授权书</td>
+<td>鉴定、供述</td>
+</tr>
+<tr>
+<td>登记证书</td>
+<td>未交付</td>
+<td>证言</td>
+</tr>
+<tr>
+<td>展期</td>
+<td>支付五千元，延十天</td>
+<td>转账、聊天</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十一：车主、借车人及车商法律关系表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>关系</th>
+<th>交付行为</th>
+<th>欺骗内容</th>
+<th>可能评价</th>
+</tr>
+<tr>
+<td>陈浩→赵明</td>
+<td>交付车辆、钥匙</td>
+<td>婚礼、本人驾驶、两天归还</td>
+<td>诈骗或合法借用</td>
+</tr>
+<tr>
+<td>赵明→周启</td>
+<td>交车质押</td>
+<td>有处分权、虚假授权</td>
+<td>诈骗周启/事后处分</td>
+</tr>
+<tr>
+<td>周启→赵明</td>
+<td>支付十万元</td>
+<td>相信授权或明知异常</td>
+<td>被害人/共犯/赃物犯罪</td>
+</tr>
+<tr>
+<td>赵明→陈浩</td>
+<td>返还义务</td>
+<td>持续虚假位置</td>
+<td>侵占拒不返还/违约</td>
+</tr>
+<tr>
+<td>周启→陈浩</td>
+<td>扣留车辆</td>
+<td>主张债权</td>
+<td>善意风险/无权占有</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十二：诈骗行为因果链审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>环节</th>
+<th>待证事实</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>欺骗行为</td>
+<td>虚构婚礼、用途和本人驾驶</td>
+<td>聊天、核查</td>
+</tr>
+<tr>
+<td>错误认识</td>
+<td>陈浩相信仅短期自用</td>
+<td>陈浩陈述、聊天</td>
+</tr>
+<tr>
+<td>处分行为</td>
+<td>交付钥匙与车辆</td>
+<td>监控、证言</td>
+</tr>
+<tr>
+<td>因果关系</td>
+<td>知悉抵押绝不会交车</td>
+<td>陈浩明确说明</td>
+</tr>
+<tr>
+<td>非法占有目的</td>
+<td>交车时已有处分计划</td>
+<td>车商联系、授权书</td>
+</tr>
+<tr>
+<td>损失</td>
+<td>车辆失控及取回损失</td>
+<td>登记、扣车、费用</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十三：侵占罪拒不退还事实审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>本案事实</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>合法初始持有</td>
+<td>若排除借车时诈骗故意</td>
+<td>交车材料</td>
+</tr>
+<tr>
+<td>后起据有</td>
+<td>擅自质押、伪造授权</td>
+<td>协议、文件</td>
+</tr>
+<tr>
+<td>返还期限</td>
+<td>周日晚上/实际约定</td>
+<td>聊天</td>
+</tr>
+<tr>
+<td>明确催告</td>
+<td>周日晚11点、周二再次催告</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>拒不返还</td>
+<td>不还并虚构位置</td>
+<td>聊天、轨迹</td>
+</tr>
+<tr>
+<td>排除车主控制</td>
+<td>车辆交车商仓库</td>
+<td>监控、仓库记录</td>
+</tr>
+<tr>
+<td>数额</td>
+<td>车辆价值约17万元/以认定为准</td>
+<td>价格材料</td>
+</tr>
+<tr>
+<td>程序</td>
+<td>告诉才处理</td>
+<td>自诉材料</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十四：刑民交叉案件审查意见</h2>
+<div class="docbox">
+<p>刑民交叉案件审查意见</p>
+<p>借车、逾期和用途变更并不当然构成犯罪；</p>
+<p>伪造处分授权、将车辆交第三人控制并换取现金，已明显超出一般迟延返还；</p>
+<p>诈骗审查锁定交车时非法占有目的；</p>
+<p>诈骗故意证据不足时仍应审查后起侵占；</p>
+<p>始终认可权利、具有现实返还能力并积极履行，方保留普通违约空间；</p>
+<p>刑事定性不妨碍车主主张返还、维修、拖车和合理替代交通损失。</p>
+</div>
+<h2>文书十五：调取微信原始数据申请书</h2>
+<div class="docbox">
+<p>调取微信原始数据申请书</p>
+<p>调取陈浩、赵明、周启及项目经理相关账号完整聊天；</p>
+<p>保留借车、车商咨询、授权书、催还、赎车及工程款上下文；</p>
+<p>核实账号归属、设备和时间；</p>
+<p>固定删除、撤回及恢复数据；</p>
+<p>由双方设备交叉印证；</p>
+<p>形成提取笔录、哈希和原始载体说明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十六：调取手机搜索记录申请书</h2>
+<div class="docbox">
+<p>调取手机搜索记录申请书</p>
+<p>调取借车前后完整浏览历史；</p>
+<p>固定非本人车辆质押、无登记证押车等搜索时间；</p>
+<p>核实搜索后进入网页、拨号、加微信行为；</p>
+<p>核实设备是否多人共用、云端同步；</p>
+<p>说明时区和系统时间；</p>
+<p>不得以孤立关键词截图代替原始数据。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十八：授权书形成时间鉴定申请书</h2>
+<div class="docbox">
+<p>授权书形成时间鉴定申请书</p>
+<p>鉴定授权书文件创建、修改和导出时间；</p>
+<p>鉴定使用的办公软件、设备、账户和时区；</p>
+<p>提取陈浩签名图片来源及插入时间；</p>
+<p>核实云同步、复制、接收是否改变元数据；</p>
+<p>与周启手机收到草稿时间交叉印证；</p>
+<p>保留原始文件和哈希。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十九：调取车辆轨迹申请书</h2>
+<div class="docbox">
+<p>调取车辆轨迹申请书</p>
+<p>调取车辆定位、停车场、道路和仓库记录；</p>
+<p>确定交车后至车商仓库的路线和时间；</p>
+<p>核查是否前往肇庆、婚礼或维修店；</p>
+<p>固定仓库转移、里程增加和定位设备安装；</p>
+<p>核查车辆是否联系下家或再次转移。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十：调取工程结算资料申请书</h2>
+<div class="docbox">
+<p>调取工程结算资料申请书</p>
+<p>调取工程合同、施工记录和工程量确认；</p>
+<p>调取结算审核、扣款和返工争议；</p>
+<p>调取付款申请、审批和预计时间；</p>
+<p>询问项目经理与财务人员；</p>
+<p>查明应收款是否到期、确定及可支配；</p>
+<p>核查是否已质押或承诺其他债权人。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十一：调取车商交易台账申请书</h2>
+<div class="docbox">
+<p>调取车商交易台账申请书</p>
+<p>调取涉案业务完整档案、付款和仓库记录；</p>
+<p>调取车主核验、授权核验和车辆查询材料；</p>
+<p>调取同类非车主车辆业务审核惯例；</p>
+<p>核查授权书模板来源；</p>
+<p>核查后续转移、销售或联系下家；</p>
+<p>调取利息、保管费、展期及处置记录。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十七：电子数据真实性审查意见</h2>
+<div class="docbox">
+<p>电子数据真实性审查意见</p>
+<p>审查原始手机、扣押封存和提取过程；</p>
+<p>审查工具、版本、操作人、见证人和校验值；</p>
+<p>核实账户实际使用人；</p>
+<p>保留完整上下文、删除恢复和云端同步信息；</p>
+<p>核实图片拍摄信息、文档创建修改时间；</p>
+<p>以对方设备、银行流水、监控和证言交叉印证；</p>
+<p>有利与不利数据均应完整提取，不得选择性提交。</p>
+</div>
+<h2>文书二十二：车主询问提纲</h2>
+<div class="docbox">
+<p>何时收到借车请求，婚礼用途是否决定交车？</p>
+<p>是否允许第三人驾驶、抵押或交车商？</p>
+<p>交付了钥匙、行驶证、登记证书哪些材料？</p>
+<p>约定返还时间和车辆用途？</p>
+<p>何时首次催车、何时明确要求返还？</p>
+<p>赵明每次如何解释车辆位置？</p>
+<p>若知道抵押是否仍会交车？</p>
+<p>车辆取回状态、里程和实际损失？</p>
+<p>是否愿意和解或提起侵占自诉？</p>
+</div>
+<h2>文书二十三：项目经理询问提纲</h2>
+<div class="docbox">
+<p>工程是否真实、赵明完成何种工作？</p>
+<p>合同总价、已付款和未结算金额？</p>
+<p>工程量是否确认、有无返工扣款？</p>
+<p>“月底争取报一批款”具体含义？</p>
+<p>谁有付款决定权，预计何时到账？</p>
+<p>赵明是否说明款项用于赎车？</p>
+<p>同一应收款是否承诺他人？</p>
+<p>案发时现实可收金额是多少？</p>
+</div>
+<h2>文书二十四：二手车商询问提纲</h2>
+<div class="docbox">
+<p>何时首次与赵明联系，谁主动提出质押？</p>
+<p>借车前是否收到车辆照片、授权书草稿？</p>
+<p>是否知道赵明不是车主及借车期限？</p>
+<p>为何无登记证、车主不到场仍放款？</p>
+<p>是否联系陈浩或视频确认？</p>
+<p>授权书模板由谁提供、签名如何核验？</p>
+<p>十万元如何定价、行业放款比例如何？</p>
+<p>车辆为何转仓、是否准备出售？</p>
+<p>是否收展期费，是否催还？</p>
+<p>是否与赵明事前分成或通谋？</p>
+</div>
+<h2>文书二十五：诈骗罪不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于赵明涉嫌诈骗案不起诉的法律意见书</p>
+<p>主张</p>
+<p>现有证据虽能证明赵明虚构婚礼、擅自质押、伪造授权及持续隐瞒，但诈骗罪仍须排除合理怀疑地证明陈浩交车时赵明已具有非法占有目的。</p>
+<p>赵明确有车辆维修及临时用车需求；</p>
+<p>工程项目和待结工程款真实存在；</p>
+<p>部分资金用于实际工程；</p>
+<p>支付过展期费并与车商协商；</p>
+<p>未逃匿、未更换联系方式，车辆完整保存；</p>
+<p>关键电子数据的时间、目标车辆对应关系及部分聊天存在解释空间。</p>
+<p>请求对诈骗罪作证据不足不起诉；后续擅自质押、催还后拒不归还部分，依法审查侵占及自诉程序。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十六：申请变更案件定性法律意见书</h2>
+<div class="docbox">
+<p>申请变更案件定性法律意见书</p>
+<p>若不能证明借车时已有非法占有目的，不应因后续处分严重而维持诈骗指控。赵明经陈浩同意合法取得车辆后，擅自质押并在明确催还后长期拒不归还、虚构位置，更符合由合法持有转为非法据有的侵占结构。</p>
+<p>请求停止按诈骗公诉路径处理，并向陈浩说明告诉才处理及刑事自诉权利。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十七：审查逮捕阶段法律意见书</h2>
+<div class="docbox">
+<p>审查逮捕阶段法律意见书</p>
+<p>诈骗故意必须固定在车辆交付时；</p>
+<p>借车前电子数据须依法完整提取并核验时间；</p>
+<p>真实工程、应收款和支付展期费属于重要反向证据；</p>
+<p>车辆、协议、手机、流水和仓库资料均已固定；</p>
+<p>赵明未逃匿且住所、工作明确；</p>
+<p>可以通过禁止接触证人、报告和财产措施控制风险。</p>
+<p>请求慎重审查逮捕必要性；如社会危险性可控，依法采取取保候审。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十八：羁押必要性审查申请书</h2>
+<div class="docbox">
+<p>羁押必要性审查申请书</p>
+<p>身份、住所、工作和家庭关系稳定；</p>
+<p>车辆已固定并可返还；</p>
+<p>主要电子数据、协议和流水均已提取；</p>
+<p>无毁证串供现实条件；</p>
+<p>家属正在清偿并协助取车；</p>
+<p>可设置不得联系车商或证人、随传随到等条件；</p>
+<p>如案件转向侵占自诉，继续羁押更应严格审查。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十九：侵占罪刑事自诉状</h2>
+<div class="docbox">
+<p>刑事自诉状</p>
+<p class="kv"><b>自诉人</b>　陈浩，身份信息__________。被告人：赵明，身份信息__________。</p>
+<p>诉讼请求</p>
+<p>依法追究赵明侵占罪的刑事责任；</p>
+<p>责令返还车辆、钥匙及证件；</p>
+<p>依法处理与案件直接相关的损失；</p>
+<p>诉讼费用依法承担。</p>
+<p>事实与理由</p>
+<p>陈浩基于朋友关系将车辆借给赵明两天。赵明取得后未经授权伪造文件，将车辆交给车商换取十万元。返还期限届满并经陈浩多次明确催告后，赵明仍拒不归还且持续提供虚假位置，车辆价值人民币__________元。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十：侵占罪自诉案件证据目录</h2>
+<div class="docbox">
+<p>双方身份及车辆登记材料；</p>
+<p>完整借车聊天和交车证据；</p>
+<p>约定用途、期限、本人驾驶及不得交第三人的材料；</p>
+<p>质押协议、虚假授权、车商付款和仓库记录；</p>
+<p>明确催还及虚假位置聊天；</p>
+<p>车辆轨迹和取回材料；</p>
+<p>车辆价格、维修、检测、拖车及替代交通损失；</p>
+<p>赵明供述及资金用途；</p>
+<p>和解、赔偿和撤诉材料。</p>
+</div>
+<h2>文书三十一：车辆返还确认书</h2>
+<div class="docbox">
+<p>车辆返还确认书</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>确认内容</th>
+</tr>
+<tr>
+<td>品牌型号、车牌、车架号</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>钥匙数量</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>行驶证及附件</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>返还里程</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>外观擦碰</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>机械、电气状态</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>新增定位设备</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>随车物品</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>保留争议</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p class="kv"><b>交车人</b>　__________    接收人：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十二：车辆损失核定清单</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>金额</th>
+<th>凭证</th>
+<th>因果关系</th>
+</tr>
+<tr>
+<td>维修费</td>
+<td>____</td>
+<td>维修发票、照片</td>
+<td>____</td>
+</tr>
+<tr>
+<td>检测费</td>
+<td>____</td>
+<td>检测报告</td>
+<td>____</td>
+</tr>
+<tr>
+<td>拖车、取车费</td>
+<td>____</td>
+<td>票据</td>
+<td>____</td>
+</tr>
+<tr>
+<td>替代交通费</td>
+<td>____</td>
+<td>行程、票据</td>
+<td>必要合理</td>
+</tr>
+<tr>
+<td>里程增加</td>
+<td>____</td>
+<td>交付/返还里程</td>
+<td>____</td>
+</tr>
+<tr>
+<td>车辆贬值</td>
+<td>____</td>
+<td>专业评估</td>
+<td>争议项</td>
+</tr>
+<tr>
+<td>往返佛山支出</td>
+<td>____</td>
+<td>票据</td>
+<td>____</td>
+</tr>
+<tr>
+<td>其他损失</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三十三：赔偿和解协议书</h2>
+<div class="docbox">
+<p>赔偿和解协议书</p>
+<p>车辆、钥匙和证件已完整返还陈浩；</p>
+<p>赵明承担车辆检测、维修、拖车、取车及合理替代交通费用人民币__________元；</p>
+<p>赵明按____期支付其余损失，每期人民币__________元；</p>
+<p>赵明书面确认未经陈浩授权处分车辆；</p>
+<p>周启在收到约定款项后不再扣留车辆；</p>
+<p>陈浩是否谅解及撤回自诉，由其依法自愿决定；</p>
+<p>任何一方不得因和解伪造事实或改变真实证言。</p>
+<p class="kv"><b>各方签名</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十四：车主谅解书</h2>
+<div class="docbox">
+<p>谅解书</p>
+<p>本人陈浩系涉案车辆所有人。车辆、钥匙及证件已经返还，赵明已承担首期检测、维修、拖车及合理交通损失，并书面承认未经授权处分车辆。本人在充分了解事实和法律后，自愿对赵明表示谅解。</p>
+<p>本谅解不把无权质押改写为普通迟延还车，不包含虚假陈述。</p>
+<p class="kv"><b>被害人</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十五：撤回刑事自诉申请书</h2>
+<div class="docbox">
+<p>撤回刑事自诉申请书</p>
+<p>申请人陈浩与被告人赵明已就车辆返还、检测维修及合理损失达成和解，首期义务已经履行。申请人基于真实、自愿意思表示，申请撤回刑事自诉。</p>
+<p>申请人已知悉撤回的法律后果，请人民法院依法审查。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十六：掩饰、隐瞒犯罪所得罪审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要素</th>
+<th>审查内容</th>
+<th>本案</th>
+</tr>
+<tr>
+<td>上游犯罪</td>
+<td>车辆是否因诈骗或侵占成为犯罪所得</td>
+<td>____</td>
+</tr>
+<tr>
+<td>介入时间</td>
+<td>上游完成后还是事前参与</td>
+<td>借车前已联系/需核</td>
+</tr>
+<tr>
+<td>客观行为</td>
+<td>窝藏、转移、收购、代售等</td>
+<td>收车、转仓、拟处置</td>
+</tr>
+<tr>
+<td>主观明知</td>
+<td>知道或应知车辆系犯罪所得</td>
+<td>手续异常、核验不足</td>
+</tr>
+<tr>
+<td>独立性</td>
+<td>是否与赵明事前通谋</td>
+<td>模板、分成、聊天</td>
+</tr>
+<tr>
+<td>排除情形</td>
+<td>周启受虚假授权欺骗</td>
+<td>正常核验、真实付款</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三十七：二手车商主观明知证据清单</h2>
+<div class="docbox">
+<p>□ 车辆非赵明名下。</p>
+<p>□ 无机动车登记证书。</p>
+<p>□ 车主未到场。</p>
+<p>□ 未电话或视频核验车主。</p>
+<p>□ 授权书来源异常。</p>
+<p>□ 价格明显偏离行业区间。</p>
+<p>□ 交易时间地点异常。</p>
+<p>□ 车辆被转移仓库。</p>
+<p>□ 存在联系下家。</p>
+<p>□ 长期接受无手续车辆。</p>
+<p>□ 知道借车期限仅两天。</p>
+<p>□ 事前提供虚假授权模板。</p>
+<p>□ 与赵明约定分成。</p>
+<p>□ 有正规审核制度并实际执行。</p>
+</div>
+<h2>文书三十八：共同犯罪事前通谋审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>共犯指向</th>
+<th>事后收车指向</th>
+<th>被害人指向</th>
+</tr>
+<tr>
+<td>联系时间</td>
+<td>借车前共同策划</td>
+<td>上游完成后联系</td>
+<td>正常业务咨询</td>
+</tr>
+<tr>
+<td>授权模板</td>
+<td>周启提供或指导伪造</td>
+<td>赵明自行制作</td>
+<td>周启要求真实授权</td>
+</tr>
+<tr>
+<td>目标车辆</td>
+<td>共同指定陈浩车辆</td>
+<td>仅看到到店车辆</td>
+<td>不知道车辆来源</td>
+</tr>
+<tr>
+<td>利益安排</td>
+<td>约定分成或低价处置</td>
+<td>收利息、保管费</td>
+<td>正常放款收益</td>
+</tr>
+<tr>
+<td>核验行为</td>
+<td>故意不核验</td>
+<td>重大疏忽</td>
+<td>按制度核验仍被骗</td>
+</tr>
+<tr>
+<td>后续处置</td>
+<td>协助转移、隐藏、销售</td>
+<td>一般保管</td>
+<td>配合返还和追偿</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三十九：审查起诉阶段辩护意见</h2>
+<div class="docbox">
+<p>审查起诉阶段辩护意见</p>
+<p>一、诈骗罪的时间切口必须锁定在交车时</p>
+<p>借车后立即质押、持续说谎和无法赎车均可作为间接证据，但不能代替对借车前主观目的的证明。</p>
+<p>二、电子数据须完整合法并接受反向证据检验</p>
+<p>重点审查借车前车商联系、车辆照片、授权书元数据与目标车辆对应关系；同时应评价真实维修、工程应收款、工程用途、展期付款和未逃匿。</p>
+<p>三、阶梯式意见</p>
+<p>诈骗证据不足，依法不起诉；</p>
+<p>合法借车后产生据有故意，转入侵占及自诉；</p>
+<p>如始终有现实返还能力且积极履行，保留民事违约；</p>
+<p>如认定诈骗，准确区分车主和车商损失，避免重复计算。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四十：一审辩护词</h2>
+<div class="docbox">
+<p>赵明借车案件一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>一、行为严重不等于可以省略罪名要件</p>
+<p>赵明虚构婚礼、伪造授权并擅自质押朋友车辆，行为明显错误。但对陈浩构成诈骗，仍须证明交车时已经具有非法占有目的。</p>
+<p>二、事前不利证据必须严格核验</p>
+<p>车商聊天、目标车辆照片、押车搜索和授权书创建时间，如经原始设备、对方手机和合法鉴定相互印证，证明力很强；任何元数据异常、云同步或目标车辆不明亦应如实审查。</p>
+<p>三、不能忽略反向证据</p>
+<p>赵明车辆确在维修；</p>
+<p>工程和应收款真实；</p>
+<p>部分款项用于材料和工资；</p>
+<p>支付过展期费；</p>
+<p>未逃匿或更换号码；</p>
+<p>车辆完整保存；</p>
+<p>家属协助清偿和取车。</p>
+<p>四、定性及处理意见</p>
+<p>如交车时诈骗故意不能排除合理怀疑，请不认定诈骗；后续无权处分并经催告拒不返还，可依法按侵占及自诉程序处理。现车辆已返还、损失已赔偿并取得谅解，请充分从宽。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>完整借车聊天、交车监控及车辆登记；</p>
+<p>赵明车辆维修和婚礼核查；</p>
+<p>车商联系、搜索、车辆照片及授权书元数据；</p>
+<p>质押协议、付款、仓库和展期材料；</p>
+<p>工程合同、结算、应收款和项目经理证言；</p>
+<p>十万元完整银行流水；</p>
+<p>催还、虚假位置及车辆轨迹；</p>
+<p>车商审核台账和后续处置；</p>
+<p>车辆价格、返还、维修及损失；</p>
+<p>和解、谅解、自诉及撤诉材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实个人、车辆、工程或车商。</h3>
+<h3>2. 诈骗、侵占、掩饰隐瞒犯罪所得、共同犯罪和自诉程序，应以行为时及办理时有效法律规范核验。</h3>
+<h3>3. 同一事件可能存在车主和车商两条不同处分链，不得遗漏独立损失，也不得重复计算同一财产价值。</h3>
+<h3>4. 和解不得以改变真实证言为条件，车辆返还、损失赔偿、谅解和撤诉应分别记录。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch10</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch10">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第十章配套法律文书全文</h1>
+</header>
+<div class="wrap">
+<h2>文书1：职务侵占罪与盗窃罪构成要件对照表</h2>
+<div class="docbox">
+<p>职务侵占罪与盗窃罪构成要件对照表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>主体身份</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>财物归属</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>对财物的主管、管理、经手职责</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>利用职务便利或仅利用接近机会</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>非法占有目的</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>数额与程序</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书2：职务便利与工作便利审查表</h2>
+<div class="docbox">
+<p>职务便利与工作便利审查表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>钥匙和门禁权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>装卸人员调度</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>出库确认</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>库存盘点及异常解释</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>系统权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>普通员工能否完成同样行为</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书3：仓库主管岗位权限核查表</h2>
+<div class="docbox">
+<p>仓库主管岗位权限核查表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>劳动合同和任职文件</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>岗位说明书</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>钥匙登记</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>门禁权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>配货及复核职责</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>盘点及异常处理权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书4：管理性占有与物理接触区分意见</h2>
+<div class="docbox">
+<p>管理性占有与物理接触区分意见</p>
+<p>审查要点</p>
+<p>持续保管或调度权限；</p>
+<p>是否仅因工作地点接近货物；</p>
+<p>是否能指挥他人搬运；</p>
+<p>是否能要求门岗放行；</p>
+<p>是否需撬锁或盗用账号；</p>
+<p>货物是否在职责范围；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书5：涉案货物出库时间轴</h2>
+<div class="docbox">
+<p>涉案货物出库时间轴</p>
+<p>审查要点</p>
+<p>经理谈话或授权主张；</p>
+<p>车辆入场；</p>
+<p>仓门开启；</p>
+<p>装卸开始；</p>
+<p>车辆离场；</p>
+<p>系统操作；</p>
+<p>货款到账；</p>
+<p>盘点发现；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书6：仓库门禁及钥匙权限说明</h2>
+<div class="docbox">
+<p>仓库门禁及钥匙权限说明</p>
+<p>审查要点</p>
+<p>钥匙领用及备用钥匙；</p>
+<p>侧门电子门禁；</p>
+<p>车辆装卸区权限；</p>
+<p>当班主管权限；</p>
+<p>异常开门记录；</p>
+<p>涉案时段操作人；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书7：公司出库审批流程图</h2>
+<div class="docbox">
+<p>公司出库审批流程图</p>
+<p>审查要点</p>
+<p>销售创建订单；</p>
+<p>财务确认；</p>
+<p>经理审批；</p>
+<p>系统生成出库单；</p>
+<p>仓库配货复核；</p>
+<p>主管确认；</p>
+<p>门岗核验放行；</p>
+<p>物流签收及库存扣减；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书8：口头授权证据审查表</h2>
+<div class="docbox">
+<p>口头授权证据审查表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>授权人权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>授权内容及范围</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>在场人和通话聊天</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>收货方身份</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>价格数量</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>事后汇报、补单和财务冲账</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书9：公司历史口头审批汇总表</h2>
+<div class="docbox">
+<p>公司历史口头审批汇总表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>急单先发后补</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>工作群语音批准</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>展会样机</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>售后换货</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>供应商返修</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>节假日电话批准</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书10：供应商债权债务核对表</h2>
+<div class="docbox">
+<p>供应商债权债务核对表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>应收款</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>应付款</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>债务主体</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>到期情况</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>抵销协议</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>抵债货物及价格</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>账务处理</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书11：二十箱货物账实核对表</h2>
+<div class="docbox">
+<p>二十箱货物账实核对表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>采购入库</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>库位记录</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>移库</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>退货</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>维修领用</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>样机领用</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>装车纸箱</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>查获完整产品</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书12：涉案产品序列号比对表</h2>
+<div class="docbox">
+<p>涉案产品序列号比对表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>采购清单序列号</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>入库扫描</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>查获设备</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>已销售设备</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>维修部设备</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>下游销售及激活信息</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书13：库存差异原因排查表</h2>
+<div class="docbox">
+<p>库存差异原因排查表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>录入错误</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>移库遗漏</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>退货未销账</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>维修领用</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>样机领用</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>发货未过账</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>盘点错误</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>非法转移</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书14：仓储系统权限及日志审查意见</h2>
+<div class="docbox">
+<p>仓储系统权限及日志审查意见</p>
+<p>审查要点</p>
+<p>用户权限表；</p>
+<p>登录及操作日志；</p>
+<p>待复核移库单；</p>
+<p>共用账号情况；</p>
+<p>设备使用记录；</p>
+<p>系统时间和完整性校验；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书15：调取数据库原始日志申请书</h2>
+<div class="docbox">
+<p>调取数据库原始日志申请书</p>
+<p>申请事项</p>
+<p>数据库备份；</p>
+<p>用户权限；</p>
+<p>登录、操作、修改、删除日志；</p>
+<p>涉案电脑记录；</p>
+<p>系统故障记录；</p>
+<p>哈希和提取笔录；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书16：调取完整监控录像申请书</h2>
+<div class="docbox">
+<p>调取完整监控录像申请书</p>
+<p>申请事项</p>
+<p>仓库内部、装卸区和门岗完整时段；</p>
+<p>原始码流；</p>
+<p>设备时间和校准；</p>
+<p>十一分钟缺失原因；</p>
+<p>提取笔录及哈希；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书17：调取仓库门禁记录申请书</h2>
+<div class="docbox">
+<p>调取仓库门禁记录申请书</p>
+<p>申请事项</p>
+<p>仓门及侧门记录；</p>
+<p>工作卡和备用钥匙；</p>
+<p>车辆出入登记；</p>
+<p>门岗交接班；</p>
+<p>异常开门及补记情况；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书18：调取供应商对账资料申请书</h2>
+<div class="docbox">
+<p>调取供应商对账资料申请书</p>
+<p>申请事项</p>
+<p>宏盛应收应付明细；</p>
+<p>对账单；</p>
+<p>抵债谈判；</p>
+<p>收货地址和人员；</p>
+<p>冲账及收货确认；</p>
+<p>与孙伟关系；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书19：调取个人及关联账户流水申请书</h2>
+<div class="docbox">
+<p>调取个人及关联账户流水申请书</p>
+<p>申请事项</p>
+<p>孙伟付款三笔；</p>
+<p>方强妻子账户；</p>
+<p>货运司机账户；</p>
+<p>房贷还款；</p>
+<p>家庭消费；</p>
+<p>是否转回公司或供应商；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书20：司法会计鉴定申请书</h2>
+<div class="docbox">
+<p>司法会计鉴定申请书</p>
+<p>申请事项</p>
+<p>特定日期账面应结存；</p>
+<p>实际盘点；</p>
+<p>入出退移和维修记录；</p>
+<p>采购成本；</p>
+<p>款项流向；</p>
+<p>冲账情况；</p>
+<p>追回和未追回数量；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书21：补充司法会计鉴定申请书</h2>
+<div class="docbox">
+<p>补充司法会计鉴定申请书</p>
+<p>申请事项</p>
+<p>补充原始凭证；</p>
+<p>排除维修部两箱；</p>
+<p>核对序列号；</p>
+<p>区分账面差异和侵占数量；</p>
+<p>更正价值口径；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书22：重新鉴定申请书</h2>
+<div class="docbox">
+<p>重新鉴定申请书</p>
+<p>申请事项</p>
+<p>原鉴定检材不完整；</p>
+<p>主要依据公司自制表；</p>
+<p>未核对实物和序列号；</p>
+<p>超越会计范围作法律判断；</p>
+<p>另行委托完整复核；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书23：通知鉴定人出庭申请书</h2>
+<div class="docbox">
+<p>通知鉴定人出庭申请书</p>
+<p>申请事项</p>
+<p>检材来源；</p>
+<p>计算方法；</p>
+<p>数量扣减；</p>
+<p>价值口径；</p>
+<p>账实差异原因；</p>
+<p>结论限制；</p>
+<p>申请理由</p>
+<p>上述材料直接关系行为人职务权限、授权事实、货物数量、价值、资金流向或者共同犯罪判断。为完整查明有利与不利事实，请依法调取、提取或鉴定，并保留原始载体、形成过程及校验信息。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书24：司法会计鉴定意见质证提纲</h2>
+<div class="docbox">
+<p>司法会计鉴定意见质证提纲</p>
+<p>是否查看原始入库单？</p>
+<p>是否核对移库退货维修？</p>
+<p>是否逐箱逐台核验？</p>
+<p>是否采用零售价？</p>
+<p>是否混入法律判断？</p>
+<p>能否排除历史差错？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书25：价格认定异议书</h2>
+<div class="docbox">
+<p>价格认定异议书</p>
+<p>审查要点</p>
+<p>型号配置；</p>
+<p>全新或返修；</p>
+<p>是否激活；</p>
+<p>配件状态；</p>
+<p>采购成本和批发价；</p>
+<p>市场基准日；</p>
+<p>采购折扣与税费；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书26：仓库主管会见提纲</h2>
+<div class="docbox">
+<p>仓库主管会见提纲</p>
+<p>岗位权限？</p>
+<p>口头授权经过？</p>
+<p>孙伟关系？</p>
+<p>装车安排？</p>
+<p>系统记录？</p>
+<p>个人账户收款？</p>
+<p>两次供述变化？</p>
+<p>退赃退赔？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书27：经理询问提纲</h2>
+<div class="docbox">
+<p>经理询问提纲</p>
+<p>是否谈及宏盛欠款？</p>
+<p>有无抵债权限？</p>
+<p>是否口头指示？</p>
+<p>同类惯例？</p>
+<p>是否认识孙伟？</p>
+<p>案发前后联系及责任利益？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书28：门岗保安询问提纲</h2>
+<div class="docbox">
+<p>门岗保安询问提纲</p>
+<p>车辆登记？</p>
+<p>方强所称经理授权？</p>
+<p>无放行单原因？</p>
+<p>主管身份影响？</p>
+<p>是否见过类似补单？</p>
+<p>车辆及司机信息？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书29：装卸工询问提纲</h2>
+<div class="docbox">
+<p>装卸工询问提纲</p>
+<p>谁下达指令？</p>
+<p>从何库位搬货？</p>
+<p>纸箱状态和数量？</p>
+<p>是否提出无单疑问？</p>
+<p>方强如何解释？</p>
+<p>是否认识孙伟或分得利益？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书30：供应商人员询问提纲</h2>
+<div class="docbox">
+<p>供应商人员询问提纲</p>
+<p>双方债权债务？</p>
+<p>有无抵债谈判？</p>
+<p>是否收到货？</p>
+<p>指定收货地址？</p>
+<p>是否认识孙伟？</p>
+<p>有无冲账或收货确认？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书31：外部收货人询问提纲</h2>
+<div class="docbox">
+<p>外部收货人询问提纲</p>
+<p>首次联系时间？</p>
+<p>货物来源认识？</p>
+<p>夜间提货安排？</p>
+<p>价格异常？</p>
+<p>不走系统约定？</p>
+<p>私人账户付款？</p>
+<p>后续拆箱转售？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书32：职务侵占共同犯罪审查表</h2>
+<div class="docbox">
+<p>职务侵占共同犯罪审查表</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>事前通谋</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>明知无权处分</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>共同利用仓储权限</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>提货和付款分工</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>共同掩盖</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>分赃及后续销售</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书33：外部人员主观明知证据清单</h2>
+<div class="docbox">
+<p>外部人员主观明知证据清单</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>夜间提货</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>明显低价</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>无合同发票</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>私人账户付款</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>主动要求不走系统</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>担心公司追查</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>更换标签或分散销售</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书34：不知情收货人辩护意见</h2>
+<div class="docbox">
+<p>不知情收货人辩护意见</p>
+<p>审查要点</p>
+<p>表面真实授权文件；</p>
+<p>正常门岗放行；</p>
+<p>接近市场价格；</p>
+<p>货款支付合理账户；</p>
+<p>无事前通谋；</p>
+<p>配合返还及调查；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书35：审查逮捕阶段法律意见书</h2>
+<div class="docbox">
+<p>审查逮捕阶段法律意见书</p>
+<p>审查要点</p>
+<p>先核实单位性质和身份；</p>
+<p>区分职务便利与工作便利；</p>
+<p>口头授权需外围印证；</p>
+<p>数量价值尚需复核；</p>
+<p>主要证据已固定；</p>
+<p>个别审查社会危险性；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书36：变更盗窃罪定性法律意见书</h2>
+<div class="docbox">
+<p>变更盗窃罪定性法律意见书</p>
+<p>审查要点</p>
+<p>方强持续管理经手涉案货物；</p>
+<p>打开仓门及调度工人依赖职权；</p>
+<p>门岗因主管身份放行；</p>
+<p>库存异常由其解释；</p>
+<p>应由盗窃变更为职务侵占；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书37：涉案数量扣减意见</h2>
+<div class="docbox">
+<p>涉案数量扣减意见</p>
+<p>审查要点</p>
+<p>二十个纸箱不等于二十箱商品；</p>
+<p>两箱已转维修部；</p>
+<p>一箱返修件；</p>
+<p>一箱包装配件；</p>
+<p>查获十八箱完整产品；</p>
+<p>按有效产品核定；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书38：涉案金额重新核算意见</h2>
+<div class="docbox">
+<p>涉案金额重新核算意见</p>
+<p>审查要点</p>
+<p>十八箱有效产品；</p>
+<p>逐台序列号；</p>
+<p>产品状态；</p>
+<p>案发时市场价值；</p>
+<p>排除最高零售价和预期利润；</p>
+<p>区分追回与未追回；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书39：退赃退赔方案</h2>
+<div class="docbox">
+<p>退赃退赔方案</p>
+<p>审查要点</p>
+<p>返还十二箱完整产品；</p>
+<p>追查六箱下游流向；</p>
+<p>退缴亲属账户款项；</p>
+<p>退缴违法所得；</p>
+<p>赔偿未追回损失；</p>
+<p>分期履行安排；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书40：货物返还确认书</h2>
+<div class="docbox">
+<p>货物返还确认书</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>确认内容</th>
+</tr>
+<tr>
+<td>型号箱码及序列号</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>数量</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>封装及配件</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>激活和损坏状态</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>返还时间地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>公司接收及保留争议</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p class="kv"><b>移交人</b>　__________    接收人：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书41：公司损失核定清单</h2>
+<div class="docbox">
+<p>公司损失核定清单</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项目</th>
+<th>事实/材料</th>
+<th>问题或结论</th>
+</tr>
+<tr>
+<td>未追回产品价值</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>追回货物损坏</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>合理运输检测费</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>排除预期利润</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>排除重复税费</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>已退赔款项核减</td>
+<td>__________</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>综合结论</p>
+<p>□ 已经核实。</p>
+<p>□ 仍需补充原始材料。</p>
+<p>□ 存在有利解释。</p>
+<p>□ 存在重大不利证据。</p>
+<p>□ 不得仅凭公司内部结论定案。</p>
+</div>
+<h2>文书42：赔偿和解协议书</h2>
+<div class="docbox">
+<p>赔偿和解协议书</p>
+<p class="kv"><b>货物返还</b>　__________；</p>
+<p class="kv"><b>退缴款项</b>　__________；</p>
+<p class="kv"><b>剩余损失分期赔偿</b>　__________；</p>
+<p class="kv"><b>追赃配合</b>　__________；</p>
+<p class="kv"><b>谅解自愿</b>　__________；</p>
+<p class="kv"><b>不得改变真实证言</b>　__________；</p>
+<p class="kv"><b>甲方</b>　__________    乙方：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书43：被害单位谅解书</h2>
+<div class="docbox">
+<p>被害单位谅解书</p>
+<p>本单位确认涉案货物追回、退赔及追赃配合情况如下：</p>
+<p class="kv"><b>已追回数量</b>　__________；</p>
+<p class="kv"><b>已收退赔</b>　__________；</p>
+<p class="kv"><b>剩余损失</b>　__________；</p>
+<p class="kv"><b>配合追赃</b>　__________；</p>
+<p class="kv"><b>请求依法从宽</b>　__________；</p>
+<p class="kv"><b>不改变审批及损失事实</b>　__________；</p>
+<p>本谅解基于真实、自愿意思表示，不否认案件事实，不改变审批、数量、价值和损失证据。请求司法机关依法处理。</p>
+<p class="kv"><b>单位盖章</b>　__________</p>
+</div>
+<h2>文书44：审查起诉阶段辩护意见</h2>
+<div class="docbox">
+<p>审查起诉阶段辩护意见</p>
+<p>审查要点</p>
+<p>罪名准确择一；</p>
+<p>职务身份及权限链；</p>
+<p>口头授权的证据评价；</p>
+<p>数量由二十箱扣至十八箱；</p>
+<p>外部人员责任独立审查；</p>
+<p>退赃退赔及认罪认罚；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书45：庭审发问提纲</h2>
+<div class="docbox">
+<p>庭审发问提纲</p>
+<p>询问方强岗位和授权？</p>
+<p>询问李经理权限及惯例？</p>
+<p>询问门岗和装卸工？</p>
+<p>询问宏盛人员？</p>
+<p>询问孙伟通谋和付款？</p>
+<p>询问会计鉴定人？</p>
+<p>记录要求</p>
+<p>逐项记录回答、依据和不能确认之处。区分亲历事实、转述、推测和法律评价；与监控、日志、流水、实物及其他证言交叉核对。</p>
+</div>
+<h2>文书46：一审辩护词</h2>
+<div class="docbox">
+<p>一审辩护词</p>
+<p>审查要点</p>
+<p>职务侵占与盗窃的界线；</p>
+<p>口头授权不能机械否定但本案缺乏印证；</p>
+<p>二十箱应扣除两箱；</p>
+<p>资金流和聊天证明非法占有；</p>
+<p>准确区分各参与人；</p>
+<p>请求评价退赃退赔从宽；</p>
+<p>意见</p>
+<p>本案应以原始岗位权限、公司实际运行、出库过程、库存及实物、序列号、资金流向和完整电子数据综合判断。不得以夜间出库、内部报告、账面盘亏或员工身份单独替代构成要件证明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院/人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>单位性质、股权及人员身份；</p>
+<p>岗位说明、钥匙门禁、系统权限和出库流程；</p>
+<p>口头授权、历史惯例和供应商往来；</p>
+<p>采购、入库、移库、退货、维修和盘点；</p>
+<p>监控、门岗、装卸、车辆和收货资料；</p>
+<p>箱码、序列号、激活和查获实物；</p>
+<p>数据库日志、账号共用及设备记录；</p>
+<p>孙伟付款、亲属账户和家庭消费；</p>
+<p>司法会计、价格认定及质证材料；</p>
+<p>返还、退赔、和解、谅解及量刑材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员、公司或货物。</h3>
+<h3>2. 单位性质、行为人身份、数额标准、共同犯罪及相关罪名，应以行为时和办理时有效法律规范核验。</h3>
+<h3>3. 公司管理混乱不当然免责，但会影响授权、数量、系统操作者和损失证明。</h3>
+<h3>4. 二十个纸箱、账面短少二十箱与十八箱完整商品属于不同事实层次，必须分别证明。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

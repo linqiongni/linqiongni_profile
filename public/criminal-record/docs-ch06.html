@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch06</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch06">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第六章配套法律文书全文</h1>
+<div class="sub">本套文书以小红在广州一条虚构街巷持折叠刀威胁小林交付手机案为背景。案件存在照片辨认污染、扣押刀具同一性不足、监控十一分钟断点和手机价格调整等争议；同时，被害人即时报警、刀具购买记录、手机定位、赃物查获及小红最终供述能够相互印证。正式使用时，应以原始电子数据、实物、笔录和有效法律为准。</div>
+</header>
+<div class="wrap">
+<p class="volband">第二卷财物迷局</p>
+<p>中山一路的手机</p>
+<p>适用阶段：侦查、审查逮捕、羁押必要性审查、审查起诉、认罪认罚及一审辩护</p>
+<p>使用说明</p>
+<p>证据瑕疵与定罪事实分层审查，不以单项程序问题推翻全部合法证据。</p>
+<p>区分案发时刀具事实与出租屋扣押刀具是否同一。</p>
+<p>照片辨认受到事前单人截图影响时，不得作为身份认定核心依据。</p>
+<p>监控断点必须如实标注，并以定位、赃物和供述补强。</p>
+<p>投案想法不等于自动投案；自首、坦白和一般悔罪应分别评价。</p>
+<h3>文书目录</h3><ol>
+<li>抢劫案件首次会见提纲</li>
+<li>被害人陈述一致性审查表</li>
+<li>暴力、胁迫与交付财物因果关系审查表</li>
+<li>刀具同一性审查意见</li>
+<li>搜查扣押程序合法性审查表</li>
+<li>涉案刀具提取、封装、送检流程表</li>
+<li>照片辨认程序审查表</li>
+<li>辨认前暗示情况调查提纲</li>
+<li>照片混杂特征对比表</li>
+<li>监控视频关键时间轴</li>
+<li>监控轨迹连续性审查表</li>
+<li>监控设备时间校准申请书</li>
+<li>调取原始监控视频申请书</li>
+<li>手机定位电子数据审查表</li>
+<li>电子数据提取合法性审查意见</li>
+<li>手机价格认定异议书</li>
+<li>补充价格认定申请书</li>
+<li>既遂、未遂法律分析意见</li>
+<li>自首与坦白情节审查表</li>
+<li>调取抓获经过申请书</li>
+<li>投案意愿证据说明</li>
+<li>审查逮捕阶段法律意见书</li>
+<li>羁押必要性审查申请书</li>
+<li>退赃退赔方案</li>
+<li>赔偿协商情况说明</li>
+<li>被害人谅解书规范模板</li>
+<li>认罪认罚法律帮助记录</li>
+<li>量刑情节证据目录</li>
+<li>审查起诉阶段辩护意见</li>
+<li>一审辩护词</li>
+</ol>
+<h2>文书一：抢劫案件首次会见提纲</h2>
+<div class="docbox">
+<p>抢劫案件首次会见提纲</p>
+<p>与被害人是否认识，是否存在借用、交易或债务关系？</p>
+<p>何时产生取财想法，是否预先购买、携带刀具？</p>
+<p>刀具外观、开启状态、持握方式、双方距离是什么？</p>
+<p>说了什么话，被害人如何反应并交付手机？</p>
+<p>手机取得后如何处理，手机卡为何取出？</p>
+<p>出租屋扣押刀具是否为作案工具，另一把刀去向何处？</p>
+<p>监控人物、衣着、背包及路线是否属实？</p>
+<p>照片辨认前是否知道警方已锁定身份？</p>
+<p>被找到前是否联系公安机关或明确委托他人投案？</p>
+<p>每次供述为何变化，是否遭受诱导、威胁或疲劳讯问？</p>
+<p>手机损坏、返还、赔偿及谅解进展如何？</p>
+<p>对认罪认罚的事实、罪名、量刑后果是否理解？</p>
+</div>
+<h2>文书二：被害人陈述一致性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>第一次</th>
+<th>第二次</th>
+<th>第三次</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>是否有刀</td>
+<td>拿刀对着</td>
+<td>像折叠刀</td>
+<td>记得反光</td>
+<td>核心稳定</td>
+</tr>
+<tr>
+<td>刀刃长度</td>
+<td>____</td>
+<td>七八厘米</td>
+<td>记不清</td>
+<td>外围差异</td>
+</tr>
+<tr>
+<td>刀柄颜色</td>
+<td>____</td>
+<td>黑/银</td>
+<td>____</td>
+<td>待客观印证</td>
+</tr>
+<tr>
+<td>持握方式</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>距离</td>
+<td>不到一米</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>威胁语言</td>
+<td>手机给我</td>
+<td>别出声</td>
+<td>是否说捅你待查</td>
+<td>____</td>
+</tr>
+<tr>
+<td>交付原因</td>
+<td>怕被刺伤</td>
+<td>____</td>
+<td>____</td>
+<td>核心稳定</td>
+</tr>
+<tr>
+<td>逃跑方向</td>
+<td>巷口</td>
+<td>____</td>
+<td>____</td>
+<td>监控印证</td>
+</tr>
+</table></div>
+<p>即时反应印证</p>
+<p>□ 三分钟内报警。</p>
+<p>□ 首次报警即提刀具。</p>
+<p>□ 糖水铺店员听到即时描述。</p>
+<p>□ 被害人与嫌疑人无既往关系。</p>
+<p>□ 未发现借用、交易、债务解释。</p>
+</div>
+<h2>文书三：暴力、胁迫与交付财物因果关系审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要素</th>
+<th>本案事实</th>
+<th>证据</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>非法占有目的</td>
+<td>购买刀具、准备弄手机</td>
+<td>支付记录、供述</td>
+<td>____</td>
+</tr>
+<tr>
+<td>当场显示危险</td>
+<td>打开折叠刀</td>
+<td>陈述、供述、购买监控</td>
+<td>____</td>
+</tr>
+<tr>
+<td>现实紧迫性</td>
+<td>暗巷、近距离、单独行走</td>
+<td>现场、证言</td>
+<td>____</td>
+</tr>
+<tr>
+<td>语言动作</td>
+<td>手机给我、别出声</td>
+<td>陈述、供述</td>
+<td>____</td>
+</tr>
+<tr>
+<td>压制反抗</td>
+<td>小林未争抢、未喊叫</td>
+<td>陈述、即时反应</td>
+<td>____</td>
+</tr>
+<tr>
+<td>财物交付</td>
+<td>将手机递出</td>
+<td>陈述、赃物</td>
+<td>____</td>
+</tr>
+<tr>
+<td>排除其他原因</td>
+<td>无借用、债务、交易</td>
+<td>双方关系核查</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书四：刀具同一性审查意见</h2>
+<div class="docbox">
+<p>刀具同一性审查意见</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>比较项</th>
+<th>作案刀具线索</th>
+<th>扣押刀具</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>刀柄</td>
+<td>购买记录显示红色条纹</td>
+<td>纯黑色</td>
+<td>明显差异</td>
+</tr>
+<tr>
+<td>来源</td>
+<td>案发前商店购买</td>
+<td>出租屋内发现</td>
+<td>不同来源</td>
+</tr>
+<tr>
+<td>发现地点</td>
+<td>称已丢弃绿化带</td>
+<td>抽屉/背包记载冲突</td>
+<td>不能连接</td>
+</tr>
+<tr>
+<td>原始状态</td>
+<td>未找到</td>
+<td>未原位拍照</td>
+<td>保管链缺口</td>
+</tr>
+<tr>
+<td>痕迹</td>
+<td>未知</td>
+<td>无有效关联痕迹</td>
+<td>不能确认</td>
+</tr>
+<tr>
+<td>被害人描述</td>
+<td>折叠刀、反光</td>
+<td>一般折叠刀</td>
+<td>特征不唯一</td>
+</tr>
+</table></div>
+<p>意见</p>
+<p>现有证据可以另行证明小红曾购买并展示一把折叠刀，但不足以认定出租屋扣押的纯黑色折叠刀就是本案作案工具。两项结论应当区分。</p>
+</div>
+<h2>文书五：搜查扣押程序合法性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>卷宗记载</th>
+<th>问题</th>
+<th>补救/影响</th>
+</tr>
+<tr>
+<td>搜查手续</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>发现位置</td>
+<td>抽屉右侧</td>
+<td>见证人称灰色背包</td>
+<td>需解释</td>
+</tr>
+<tr>
+<td>原始状态照片</td>
+<td>无</td>
+<td>摆放桌面后拍摄</td>
+<td>关联性下降</td>
+</tr>
+<tr>
+<td>物品特征</td>
+<td>黑色折叠刀</td>
+<td>无尺寸品牌编号</td>
+<td>识别不足</td>
+</tr>
+<tr>
+<td>清单签名</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>封装封条</td>
+<td>日期涂改</td>
+<td>连续性疑问</td>
+<td>核查流转</td>
+</tr>
+<tr>
+<td>送检保管</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>痕迹检验</td>
+<td>无有效关联痕迹</td>
+<td>____</td>
+<td>不能证明同一</td>
+</tr>
+</table></div>
+</div>
+<h2>文书六：涉案刀具提取、封装、送检流程表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>节点</th>
+<th>时间</th>
+<th>经手人</th>
+<th>状态/编号</th>
+<th>文书</th>
+<th>疑点</th>
+</tr>
+<tr>
+<td>发现</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>搜查笔录</td>
+<td>位置矛盾</td>
+</tr>
+<tr>
+<td>拍照</td>
+<td>____</td>
+<td>____</td>
+<td>桌面状态</td>
+<td>照片</td>
+<td>非原位</td>
+</tr>
+<tr>
+<td>扣押</td>
+<td>____</td>
+<td>____</td>
+<td>清单编号____</td>
+<td>扣押清单</td>
+<td>特征不足</td>
+</tr>
+<tr>
+<td>封装</td>
+<td>____</td>
+<td>____</td>
+<td>封条____</td>
+<td>封装照片</td>
+<td>日期涂改</td>
+</tr>
+<tr>
+<td>入库</td>
+<td>____</td>
+<td>____</td>
+<td>保管号____</td>
+<td>入库记录</td>
+<td>____</td>
+</tr>
+<tr>
+<td>送检</td>
+<td>____</td>
+<td>____</td>
+<td>检材号____</td>
+<td>委托书</td>
+<td>____</td>
+</tr>
+<tr>
+<td>鉴定返还</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>流转记录</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书七：照片辨认程序审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查事项</th>
+<th>卷宗/视频</th>
+<th>问题</th>
+<th>证明力影响</th>
+</tr>
+<tr>
+<td>辨认前接触</td>
+<td>展示单人监控截图</td>
+<td>记忆污染</td>
+<td>重大</td>
+</tr>
+<tr>
+<td>主持提问</td>
+<td>“是不是这个女的”</td>
+<td>明显暗示</td>
+<td>重大</td>
+</tr>
+<tr>
+<td>照片数量</td>
+<td>十二张</td>
+<td>形式符合/待核</td>
+<td>____</td>
+</tr>
+<tr>
+<td>陪衬特征</td>
+<td>多数浅色衣服</td>
+<td>衣着差异明显</td>
+<td>重大</td>
+</tr>
+<tr>
+<td>嫌疑人照片</td>
+<td>唯一灰色连帽外套</td>
+<td>目标突出</td>
+<td>重大</td>
+</tr>
+<tr>
+<td>是否告知嫌疑人可能不在</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>个别辨认、主持人数</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>录音录像</td>
+<td>执法记录仪</td>
+<td>可还原过程</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>结论</p>
+<p>照片辨认不能作为确认小红身份的核心或唯一证据。排除或限制使用后，应对手机定位、赃物查获、原始监控及供述重新综合评价。</p>
+</div>
+<h2>文书八：辨认前暗示情况调查提纲</h2>
+<div class="docbox">
+<p>谁决定向小林展示停车场单人截图？</p>
+<p>展示发生在何时、何地、持续多久？</p>
+<p>侦查人员使用了何种具体语言？</p>
+<p>小林此前是否通过媒体、社交平台或他人看过小红照片？</p>
+<p>截图与正式六号照片是否来自同一图像或同一衣着？</p>
+<p>正式辨认前是否告知已找到嫌疑人？</p>
+<p>旁人在场及其反应如何？</p>
+<p>执法记录仪是否完整覆盖展示至辨认过程？</p>
+<p>辨认后是否给予肯定性反馈？</p>
+<p>辨认笔录为何未记载事前展示？</p>
+</div>
+<h2>文书九：照片混杂特征对比表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>编号</th>
+<th>年龄外观</th>
+<th>发型</th>
+<th>衣着颜色/款式</th>
+<th>背景</th>
+<th>与目标相似度</th>
+</tr>
+<tr>
+<td>1</td>
+<td>____</td>
+<td>____</td>
+<td>浅色短袖</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>2</td>
+<td>____</td>
+<td>____</td>
+<td>白色衬衣</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>3</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>4</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>5</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>6 小红</td>
+<td>____</td>
+<td>低马尾</td>
+<td>灰色连帽外套</td>
+<td>____</td>
+<td>目标</td>
+</tr>
+<tr>
+<td>7—12</td>
+<td>逐张填写</td>
+<td>逐张填写</td>
+<td>逐张填写</td>
+<td>逐张填写</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>公平混杂检查</p>
+<p>□ 年龄体貌相近。</p>
+<p>□ 发型相近。</p>
+<p>□ 只有目标穿案发衣着。</p>
+<p>□ 背景或图像质量突出。</p>
+<p>□ 照片来源和裁剪方式一致。</p>
+</div>
+<h2>文书十：监控视频关键时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>点位</th>
+<th>画面时间</th>
+<th>校准时间</th>
+<th>人物/动作</th>
+<th>携带物</th>
+<th>下一点正常时长</th>
+</tr>
+<tr>
+<td>巷口便利店</td>
+<td>21:16:48</td>
+<td>____</td>
+<td>灰衣女子进入</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>巷口便利店</td>
+<td>21:18:06</td>
+<td>____</td>
+<td>灰衣女子跑出</td>
+<td>长方形物</td>
+<td>约2分钟</td>
+</tr>
+<tr>
+<td>停车场入口</td>
+<td>约21:19</td>
+<td>____</td>
+<td>低马尾女子通过</td>
+<td>黑袋/待查</td>
+<td>____</td>
+</tr>
+<tr>
+<td>公交站后方</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>药店门口</td>
+<td>21:23:42</td>
+<td>____</td>
+<td>灰衣女子最后出现</td>
+<td>黑色帆布袋</td>
+<td>至东门正常5分钟</td>
+</tr>
+<tr>
+<td>小区东门</td>
+<td>21:34:51</td>
+<td>____</td>
+<td>疑似同一人出现</td>
+<td>肩部被遮挡</td>
+<td>实际间隔11分钟</td>
+</tr>
+<tr>
+<td>楼栋附近</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十一：监控轨迹连续性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>区段</th>
+<th>时间差</th>
+<th>正常行程</th>
+<th>身份特征</th>
+<th>断点/替代解释</th>
+</tr>
+<tr>
+<td>便利店—停车场</td>
+<td>约2分钟</td>
+<td>____</td>
+<td>灰衣、体貌</td>
+<td>基本衔接</td>
+</tr>
+<tr>
+<td>停车场—公交站</td>
+<td>____</td>
+<td>____</td>
+<td>低马尾、方向</td>
+<td>基本衔接</td>
+</tr>
+<tr>
+<td>公交站—药店</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>药店—小区东门</td>
+<td>11分钟</td>
+<td>约5分钟</td>
+<td>肩部遮挡</td>
+<td>重大断点</td>
+</tr>
+<tr>
+<td>东门—楼栋</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>综合要求</p>
+<p>□ 原始视频齐全。</p>
+<p>□ 设备时间已校准。</p>
+<p>□ 步行路线实测。</p>
+<p>□ 中途相似衣着人员已排查。</p>
+<p>□ 断点以虚线标注。</p>
+<p>□ 结合手机定位、赃物和供述补强。</p>
+</div>
+<h2>文书十二：监控设备时间校准申请书</h2>
+<div class="docbox">
+<p>监控设备时间校准申请书</p>
+<p>核对六个监控点设备型号、系统时间和时区；</p>
+<p>以同一标准事件或标准时间进行偏差测量；</p>
+<p>说明设备是否自动联网校时及历史漂移；</p>
+<p>记录帧率、丢帧、可变帧率和导出转码情况；</p>
+<p>制作各点位原时间与校准时间对照表；</p>
+<p>不得直接将未校准时间拼接成连续轨迹。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十三：调取原始监控视频申请书</h2>
+<div class="docbox">
+<p>调取原始监控视频申请书</p>
+<p>调取案发街巷、便利店、停车场、公交站、药店、小区东门及楼栋附近完整必要时段原始码流；</p>
+<p>调取监控主机、设备编号、拍摄方向和点位平面图；</p>
+<p>保留案发前后相邻时段，避免仅截取嫌疑画面；</p>
+<p>制作提取笔录并计算哈希值；</p>
+<p>保存原始载体和播放器参数；</p>
+<p>提供截图制作过程及原图来源。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十四：手机定位电子数据审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>材料</th>
+<th>审查结论</th>
+</tr>
+<tr>
+<td>手机序列号、账户归属</td>
+<td>购买凭证、云端绑定</td>
+<td>____</td>
+</tr>
+<tr>
+<td>定位功能及精度</td>
+<td>平台说明</td>
+<td>____</td>
+</tr>
+<tr>
+<td>21:27位置</td>
+<td>案发地东北约一公里/原始数据</td>
+<td>____</td>
+</tr>
+<tr>
+<td>21:42位置</td>
+<td>进入住宅区</td>
+<td>____</td>
+</tr>
+<tr>
+<td>22:15后位置</td>
+<td>基本不变</td>
+<td>____</td>
+</tr>
+<tr>
+<td>次日查获地点</td>
+<td>出租屋床边纸箱</td>
+<td>____</td>
+</tr>
+<tr>
+<td>导出主体和方式</td>
+<td>平台/设备</td>
+<td>____</td>
+</tr>
+<tr>
+<td>时间、时区、坐标系</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>哈希及原始载体</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十五：电子数据提取合法性审查意见</h2>
+<div class="docbox">
+<p>电子数据提取合法性审查意见</p>
+<p>核实云端账户与被抢手机及小林身份的对应关系；</p>
+<p>核实定位数据由谁、以何方式导出；</p>
+<p>核实导出是否完整包含时间、坐标、精度和设备标识；</p>
+<p>核实手机、手机卡、聊天和支付记录的扣押提取手续；</p>
+<p>核实截图是否可回溯原始数据；</p>
+<p>核实哈希值、复制、封存和移送过程；</p>
+<p>存在缺陷时区分真实性、关联性和证明力影响。</p>
+</div>
+<h2>文书十六：手机价格认定异议书</h2>
+<div class="docbox">
+<p>涉案手机价格认定异议书</p>
+<p>异议事项</p>
+<p>手机已使用约半年；</p>
+<p>屏幕曾由非官方维修点更换；</p>
+<p>电池健康下降；</p>
+<p>价格认定未核对维修记录及非原装配件；</p>
+<p>未充分说明二手市场样本、折旧率及基准日；</p>
+<p>原认定四千八百元可能高估实际状态。</p>
+<p>请求</p>
+<p>调取发票、激活日期、配置、维修记录、案发时照片、电池信息和同期二手交易资料，重新核定案发基准日价值。</p>
+<p>此致</p>
+<p>__________价格认定机构/办案机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十七：补充价格认定申请书</h2>
+<div class="docbox">
+<p>补充价格认定申请书</p>
+<p>确认品牌、型号、容量、颜色和序列号；</p>
+<p>确认激活及实际使用期限；</p>
+<p>确认屏幕维修时间、渠道和配件性质；</p>
+<p>确认电池健康、外观损耗及功能状态；</p>
+<p>说明价格基准日和采用方法；</p>
+<p>披露可比样本及调整过程；</p>
+<p>对原四千八百元结论作出维持、调整或更正。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十八：既遂、未遂法律分析意见</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事实节点</th>
+<th>法律意义</th>
+<th>本案</th>
+</tr>
+<tr>
+<td>实施持刀威胁</td>
+<td>进入抢劫实行阶段</td>
+<td>已实施</td>
+</tr>
+<tr>
+<td>被害人交付手机</td>
+<td>排除原占有</td>
+<td>已发生</td>
+</tr>
+<tr>
+<td>行为人控制手机</td>
+<td>取得现实支配</td>
+<td>已发生</td>
+</tr>
+<tr>
+<td>携带离开现场</td>
+<td>控制进一步稳定</td>
+<td>已发生</td>
+</tr>
+<tr>
+<td>未销赃或未解锁</td>
+<td>不影响既遂</td>
+<td>是</td>
+</tr>
+<tr>
+<td>次日追回</td>
+<td>犯罪完成后追缴</td>
+<td>是</td>
+</tr>
+<tr>
+<td>未取得财物</td>
+<td>可能未遂</td>
+<td>本案不符</td>
+</tr>
+</table></div>
+<p>结论</p>
+<p>小红已经取得并携带手机脱离现场，对财物形成现实控制。手机次日被追回，不使既遂倒退为未遂。</p>
+</div>
+<h2>文书十九：自首与坦白情节审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>自首审查</th>
+<th>坦白审查</th>
+<th>本案</th>
+</tr>
+<tr>
+<td>到案方式</td>
+<td>自动投案</td>
+<td>被动到案亦可</td>
+<td>定位排查上门控制</td>
+</tr>
+<tr>
+<td>投案意思</td>
+<td>明确稳定并外化</td>
+<td>非必要</td>
+<td>仅聊天表达考虑</td>
+</tr>
+<tr>
+<td>实际行动</td>
+<td>联系、委托、前往或等待处理</td>
+<td>非必要</td>
+<td>未实施</td>
+</tr>
+<tr>
+<td>主要事实供述</td>
+<td>如实供述</td>
+<td>如实供述</td>
+<td>后期完整承认持刀</td>
+</tr>
+<tr>
+<td>供述阶段</td>
+<td>投案后</td>
+<td>到案后亦可</td>
+<td>审查逮捕前完整</td>
+</tr>
+<tr>
+<td>结论</td>
+<td>____</td>
+<td>____</td>
+<td>不认定自首，审查坦白</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十：调取抓获经过申请书</h2>
+<div class="docbox">
+<p>调取抓获经过及到案表现申请书</p>
+<p>调取手机定位排查的启动时间、范围及过程；</p>
+<p>调取物业协助、逐层排查和进入房间经过；</p>
+<p>调取现场执法记录仪和搜查录像；</p>
+<p>说明小红是否主动开门、逃跑、藏匿或反抗；</p>
+<p>说明小红是否当场交代身份、手机和刀具；</p>
+<p>核实是否在投案途中或明确等待司法机关处理；</p>
+<p>核实到案后首次供述时间及内容。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十一：投案意愿证据说明</h2>
+<div class="docbox">
+<p>小红投案意愿证据说明</p>
+<p>次日上午8:12至9:05，小红向朋友表达“做错事”“可能去派出所”“能不能陪我去”等内容。小红未主动联系司法机关、未明确委托代为投案，也未离开住所前往投案地点，故不据此主张法定自首。</p>
+<p>上述材料可用于说明小红被查获前已有悔意，曾考虑归还和投案，未销赃、未转移手机，主观恶性及犯罪后态度与持续逃避、毁证者存在差别，请作为酌情从宽材料评价。</p>
+</div>
+<h2>文书二十二：审查逮捕阶段法律意见书</h2>
+<div class="docbox">
+<p>审查逮捕阶段法律意见书</p>
+<p>意见</p>
+<p>照片辨认受到事前单人截图和衣着突出污染，不宜作为核心依据；</p>
+<p>出租屋扣押刀具发现位置和外观同一性不足，不宜认定作案工具；</p>
+<p>监控轨迹存在十一分钟断点，应结合定位、赃物和供述评价；</p>
+<p>手机在小红房间查获及手机卡被取出具有较强证明力；</p>
+<p>小红最终供述前应核查讯问合法性与客观印证；</p>
+<p>小红无前科、住所明确、赃物已控制，社会危险性应个别审查。</p>
+<p>请求</p>
+<p>依法审查逮捕必要性；如采取取保候审足以防止社会危险，请不批准逮捕并设置报告、不得接触被害人、配合赔偿等措施。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十三：羁押必要性审查申请书</h2>
+<div class="docbox">
+<p>羁押必要性审查申请书</p>
+<p>小红身份和住所已查明，无逃跑准备；</p>
+<p>手机、原始监控、定位和支付记录均已固定；</p>
+<p>不存在串供对象或毁灭主要证据条件；</p>
+<p>被害人保护可通过禁止接触实现；</p>
+<p>小红已完整交代主要事实，愿意认罪认罚；</p>
+<p>手机已返还，赔偿正在履行；</p>
+<p>家属可提供住所、保证和帮教。</p>
+<p>请求对继续羁押必要性进行审查，并依法变更为取保候审。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十四：退赃退赔方案</h2>
+<div class="docbox">
+<p>退赃退赔方案</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>金额/状态</th>
+<th>证据</th>
+<th>处理</th>
+</tr>
+<tr>
+<td>涉案手机</td>
+<td>已查获返还</td>
+<td>返还清单</td>
+<td>确认型号序列号</td>
+</tr>
+<tr>
+<td>屏幕新增划痕</td>
+<td>____</td>
+<td>维修检测</td>
+<td>承担合理维修</td>
+</tr>
+<tr>
+<td>手机卡损坏/补卡</td>
+<td>____</td>
+<td>票据</td>
+<td>据实赔偿</td>
+</tr>
+<tr>
+<td>合理交通费</td>
+<td>____</td>
+<td>票据、行程</td>
+<td>协商</td>
+</tr>
+<tr>
+<td>误工及其他直接损失</td>
+<td>____</td>
+<td>收入、必要性</td>
+<td>核实</td>
+</tr>
+<tr>
+<td>备用手机</td>
+<td>仍由被害人持有</td>
+<td>购买凭证</td>
+<td>不当然赔全价</td>
+</tr>
+<tr>
+<td>自愿补偿</td>
+<td>____</td>
+<td>协议</td>
+<td>不得交换虚假陈述</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十五：赔偿协商情况说明</h2>
+<div class="docbox">
+<p>赔偿协商情况说明</p>
+<p>小红家属通过合法渠道表达赔礼道歉和赔偿意愿。协商仅围绕真实、合理损失及自愿补偿展开，不要求小林改变对持刀、威胁和交付手机的陈述，不以出具谅解作为返还财物或赔偿实际损失的前提。</p>
+<p>协商结果</p>
+<p>手机已经返还；</p>
+<p>维修费人民币____元；</p>
+<p>补卡费人民币____元；</p>
+<p>交通等合理费用人民币____元；</p>
+<p>另行自愿补偿人民币____元；</p>
+<p class="kv"><b>付款方式及日期</b>　__________；</p>
+<p>被害人是否谅解由其自主决定。</p>
+</div>
+<h2>文书二十六：被害人谅解书规范模板</h2>
+<div class="docbox">
+<p>谅解书</p>
+<p>本人小林系本案被害人。涉案手机已经返还。小红及家属已向本人赔礼道歉，并于____年__月__日支付维修、补卡、交通等损失及自愿补偿共计人民币__________元。</p>
+<p>本人在充分了解案件事实和法律后，自愿对小红表示谅解，请司法机关依法处理。本谅解书不否认案件事实，不表示双方仅系误会，也不包含任何虚假陈述。</p>
+<p class="kv"><b>被害人</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书二十七：认罪认罚法律帮助记录</h2>
+<div class="docbox">
+<p>认罪认罚法律帮助记录</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>告知事项</th>
+<th>已说明</th>
+<th>当事人理解/意见</th>
+</tr>
+<tr>
+<td>指控核心事实：持刀威胁取财</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>抢劫既遂及法律后果</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>认罪认罚并非当然缓刑</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>量刑建议及适用依据</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>照片辨认和扣押刀具争议仍可提出</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>自首不成立、坦白可审查</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>退赃、退赔、谅解功能不同</td>
+<td>□</td>
+<td>____</td>
+</tr>
+<tr>
+<td>具结自愿性及反悔后果</td>
+<td>□</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十八：量刑情节证据目录</h2>
+<div class="docbox">
+<p>无违法犯罪记录材料；</p>
+<p>工作经历和生活情况；</p>
+<p>小红最终如实供述及坦白说明；</p>
+<p>认罪认罚具结及法律帮助记录；</p>
+<p>一次抢劫、未造成人身伤害材料；</p>
+<p>手机返还和领取证明；</p>
+<p>价格调整及实际损失材料；</p>
+<p>赔偿凭证和赔礼道歉材料；</p>
+<p>被害人谅解书；</p>
+<p>投案意愿聊天原始记录；</p>
+<p>家属住所、保证和帮教承诺；</p>
+<p>悔罪书及庭审表现。</p>
+</div>
+<h2>文书二十九：审查起诉阶段辩护意见</h2>
+<div class="docbox">
+<p>审查起诉阶段辩护意见</p>
+<p>一、证据取舍</p>
+<p>照片辨认存在明显暗示，不宜作为核心依据；出租屋扣押纯黑折叠刀同一性不足，不应认定作案工具；监控十一分钟断点不得描述为全程闭合。</p>
+<p>二、定罪证据</p>
+<p>被害人即时报警和稳定核心陈述、店员证言、案发前刀具购买记录与监控、手机定位、赃物查获、小红供述及现场秘密细节能够相互印证，可以证明持刀威胁取财。</p>
+<p>三、法律评价</p>
+<p>小红实际取得并带离手机，属于既遂。被定位查获前虽表达投案考虑，但未采取实际投案行动，不主张自首；其审查逮捕前完整供述主要事实，可依法评价坦白。</p>
+<p>四、量刑意见</p>
+<p>请求综合初犯、一次抢劫、未造成人身伤害、坦白、认罪认罚、财物追回、积极赔偿、取得谅解及稳定帮教条件，在法定幅度内充分从宽。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十：一审辩护词</h2>
+<div class="docbox">
+<p>小红抢劫案一审辩护词</p>
+<p class="kv"><b>审判长、审判员</b>　</p>
+<p>一、辩方不回避小红持刀取财的基本事实</p>
+<p>小红以非法占有为目的，在较暗街巷向小林展示打开的折叠刀并索要手机，小林因担心受到伤害而交付。小红取得并带离手机，其行为构成抢劫既遂。</p>
+<p>二、两项存在瑕疵的证据不应被错误使用</p>
+<p>照片辨认受到事前单人截图和衣着突出影响；出租屋扣押折叠刀在发现位置、原始状态和外观同一性上存在缺口。二者均不应作为身份或持刀事实的核心证据。</p>
+<p>三、合法证据仍足以形成印证</p>
+<p>即时报警、被害人稳定核心陈述、店员证言、刀具购买记录、原始监控、手机定位、赃物查获、小红对现场细节及持刀过程的供述，可以相互印证。辩方尊重证据，不机械主张无罪。</p>
+<p>四、不成立自首，但犯罪后态度应完整评价</p>
+<p>小红被查获前仅表达投案想法，未实际联系或前往司法机关，不宜认定自首；但其未销赃、保留手机、曾请求朋友陪同并最终完整供述，可与持续逃避者区别评价。</p>
+<p>五、请求依法充分从宽</p>
+<p>系初次犯罪，抢劫一次；</p>
+<p>没有刺伤、殴打被害人；</p>
+<p>手机已追回并返还；</p>
+<p>手机价值已依据实际状况调整；</p>
+<p>最终如实供述主要事实，具有坦白；</p>
+<p>自愿认罪认罚；</p>
+<p>积极赔偿并取得谅解；</p>
+<p>具有稳定住所和家属帮教。</p>
+<p>请求法院在法定幅度内对小红从宽处罚，并在判决中明确不采信或限制使用存在瑕疵的照片辨认及扣押刀具。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>110接报警录音、被害人历次陈述和店员证言；</p>
+<p>现场勘验、照片、照明和站位材料；</p>
+<p>刀具购买支付记录、商铺监控及丢弃路线；</p>
+<p>搜查、扣押、封装、保管、送检及痕迹检验；</p>
+<p>辨认笔录、执法记录仪及事前单人截图；</p>
+<p>各点位原始监控、校时及轨迹分析；</p>
+<p>手机云端定位、查获、提取、返还及手机卡材料；</p>
+<p>价格认定、维修记录和实际状态材料；</p>
+<p>抓获经过、投案聊天和历次供述；</p>
+<p>退赃退赔、赔偿、谅解、认罪认罚及量刑材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员或地点。</h3>
+<h3>2. 抢劫罪构成、照片辨认、搜查扣押、电子数据、自首坦白、认罪认罚和量刑，应以办理时有效法律规范核验。</h3>
+<h3>3. 赔偿与谅解必须基于真实损失和被害人自愿，不得要求改变事实陈述。</h3>
+<h3>4. 证据存在瑕疵时，应分别评价合法性、真实性、关联性和证明力，不作全有或全无的简单处理。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

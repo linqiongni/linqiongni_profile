@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch03</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch03">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第三章配套法律文书全文</h1>
+<div class="sub">本套文书以林敏在商业中心地下停车场低速倒车致儿童死亡案为虚构背景。核心证据包括多路监控、中控操作日志、倒车雷达、制动灯画面、车辆真空助力系统偶发故障、现场照明及复合遮挡。正式使用时，应以原始电子数据、现场勘验、鉴定意见及届时有效法律为准。</div>
+</header>
+<div class="wrap">
+<p class="volband">第一卷事故、过失与归责</p>
+<p>失控的方向盘</p>
+<p>使用说明</p>
+<p>先审查地下停车场是否具有公共通行属性，再确定交通肇事罪或过失致人死亡罪的规范路径。</p>
+<p>承认倒车中查看导航不当，但不得从违章与死亡结果直接倒推刑法因果关系。</p>
+<p>围绕“何时可见、能否识别、能否停住”建立时间、距离、速度和制动模型。</p>
+<p>事故认定书、维修检测、侦查实验和谅解书均有证明边界。</p>
+<p>材料中所有秒数、速度、距离及故障概率均须注明来源、误差和假设。</p>
+<h3>文书目录</h3><ol>
+<li>交通死亡案件首次接待笔录</li>
+<li>地下停车场道路属性审查表</li>
+<li>驾驶人注意义务与具体预见可能性审查表</li>
+<li>事故时间轴逐帧分析表</li>
+<li>车辆速度、反应时间及制动距离计算表</li>
+<li>制动系统鉴定意见及维修记录审查表</li>
+<li>监控完整性、照明与视野遮挡审查表</li>
+<li>驾驶视野与侦查实验申请书</li>
+<li>侦查实验方案异议及重新鉴定申请书</li>
+<li>道路交通事故认定书刑事证明力审查意见</li>
+<li>不予批准逮捕及取保候审法律意见书</li>
+<li>退回补充侦查事项清单</li>
+<li>审查起诉阶段无罪法律意见书</li>
+<li>不起诉公开听证意见及最后陈述</li>
+<li>民事赔偿、谅解与刑事责任区分说明</li>
+<li>建议作出存疑不起诉决定法律意见书</li>
+</ol>
+<h2>文书一：交通死亡案件首次接待笔录</h2>
+<div class="docbox">
+<p>交通死亡案件首次接待笔录</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>记录</th>
+</tr>
+<tr>
+<td>接待时间、地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>当事人及与驾驶人关系</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>事故时间、地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>车辆、驾驶证、保险</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>人员伤亡及救治</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>是否酒驾、逃逸</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>已采取强制措施</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>事故认定及复核期限</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>核心问答</p>
+<p>倒车前通过哪些方式观察？</p>
+<p>何时、为何操作导航，持续多久？</p>
+<p>雷达提示如何变化？</p>
+<p>何时发现黄色目标？</p>
+<p>何时踩下制动，踏板触感如何？</p>
+<p>车辆在碰撞前后如何移动？</p>
+<p>是否使用电子驻车制动？</p>
+<p>是否事先知道车辆制动异常？</p>
+<p>事故后何时报案、救助？</p>
+<p>车辆由谁拖移、保管、启动或检修？</p>
+<p>紧急证据保全</p>
+<p>□ 封存车辆及关键部件。</p>
+<p>□ 提取原始监控与校时信息。</p>
+<p>□ 提取中控日志。</p>
+<p>□ 固定现场照明状态。</p>
+<p>□ 测量柱体、车位、车辆及碰撞点。</p>
+<p>□ 保全维修保养记录。</p>
+<p>□ 保全道闸和收费记录。</p>
+<p>□ 申请尸检损伤形成补充说明。</p>
+</div>
+<h2>文书二：地下停车场道路属性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>待查事实</th>
+<th>证据</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>开放对象</td>
+<td>社会车辆/内部车辆/特定来访</td>
+<td>道闸规则、公告</td>
+<td>____</td>
+</tr>
+<tr>
+<td>开放时间</td>
+<td>营业期间及闭店后规则</td>
+<td>营业时间、值班记录</td>
+<td>____</td>
+</tr>
+<tr>
+<td>进入方式</td>
+<td>自由进入/登记/审批</td>
+<td>收费、临停凭证</td>
+<td>____</td>
+</tr>
+<tr>
+<td>通行管理</td>
+<td>是否持续供不特定车辆通行</td>
+<td>平面图、监控</td>
+<td>____</td>
+</tr>
+<tr>
+<td>案发区域</td>
+<td>顾客通道/内部专用区</td>
+<td>标志、用途</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>法律路径结论</p>
+<p>□ 具有公共通行属性，优先审查交通肇事罪。</p>
+<p>□ 仅限内部或特定车辆，审查过失致人死亡罪。</p>
+<p>□ 道路属性证据不足，需补充侦查。</p>
+<p>□ 无论罪名路径，均须独立证明过失及因果关系。</p>
+</div>
+<h2>文书三：驾驶人注意义务与具体预见可能性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>义务/问题</th>
+<th>本案事实</th>
+<th>履行可能</th>
+<th>与结果关系</th>
+</tr>
+<tr>
+<td>倒车前观察</td>
+<td>后视镜、影像、回头</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>持续观察</td>
+<td>短暂操作导航</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>盲区减速或停车</td>
+<td>柱体及越野车遮挡</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>请求协助</td>
+<td>副驾驶有人</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>辅助系统使用</td>
+<td>雷达、非全景影像</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>发现危险后制动</td>
+<td>碰撞前制动灯亮</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>已知故障处置</td>
+<td>是否知晓踏板偏硬</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>具体预见审查</p>
+<p>□ 仅能抽象预见停车场有人。</p>
+<p>□ 能够预见儿童在具体时点从盲区奔出。</p>
+<p>□ 儿童出现前并无可识别迹象。</p>
+<p>□ 存在足够时间采取有效措施。</p>
+<p>□ 即使注意仍可能无法避免。</p>
+<p>□ 不得以事后最佳方案替代当时预见能力。</p>
+</div>
+<h2>文书四：事故时间轴逐帧分析表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事件</th>
+<th>设备/画面时间</th>
+<th>校准后时间</th>
+<th>帧号</th>
+<th>误差</th>
+<th>来源</th>
+</tr>
+<tr>
+<td>车辆开始倒车</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控__</td>
+</tr>
+<tr>
+<td>中控点击</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>系统日志</td>
+</tr>
+<tr>
+<td>头部向右下转动</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控__</td>
+</tr>
+<tr>
+<td>儿童进入柱后</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控__</td>
+</tr>
+<tr>
+<td>儿童首次物理露出</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控/建模</td>
+</tr>
+<tr>
+<td>首次有效可见</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>视野实验</td>
+</tr>
+<tr>
+<td>雷达提示加快</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>音视频/测试</td>
+</tr>
+<tr>
+<td>制动灯亮</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控__</td>
+</tr>
+<tr>
+<td>首次碰撞</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>多源</td>
+</tr>
+<tr>
+<td>车辆停止</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>监控__</td>
+</tr>
+</table></div>
+<p>同步检查</p>
+<p>□ 各设备时钟已与标准时间比对。</p>
+<p>□ 原始文件及元数据已提取。</p>
+<p>□ 帧率恒定/可变已说明。</p>
+<p>□ 不得直接比较未校准画面时间。</p>
+<p>□ “约三秒”等结论已给出误差区间。</p>
+</div>
+<h2>文书五：车辆速度、反应时间及制动距离计算表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>参数</th>
+<th>控方值</th>
+<th>辩方值</th>
+<th>中性区间</th>
+<th>来源/误差</th>
+</tr>
+<tr>
+<td>车辆倒车速度</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>像素位移/实测</td>
+</tr>
+<tr>
+<td>儿童奔跑速度</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>视频/区间</td>
+</tr>
+<tr>
+<td>首次可见至碰撞</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>校准时间轴</td>
+</tr>
+<tr>
+<td>识别反应时间</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>专家意见</td>
+</tr>
+<tr>
+<td>制动建立时间</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>动态测试</td>
+</tr>
+<tr>
+<td>正常制动距离</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>同车测试</td>
+</tr>
+<tr>
+<td>故障制动距离</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>复现测试</td>
+</tr>
+<tr>
+<td>可用停车距离</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>现场测量</td>
+</tr>
+</table></div>
+<p>六组假设检验</p>
+<p>车辆正常、持续观察；</p>
+<p>车辆故障、持续观察；</p>
+<p>车辆正常、查看导航；</p>
+<p>车辆故障、查看导航；</p>
+<p>儿童以步行速度出现；</p>
+<p>照明正常且越野车规范停放。</p>
+<p>结论边界</p>
+<p>□ 持续观察可避免。</p>
+<p>□ 可能避免或减轻。</p>
+<p>□ 仍不足以完全停车。</p>
+<p>□ 参数组合无法唯一确定。</p>
+<p>□ 不得把最不利参数拼接成唯一事实。</p>
+</div>
+<h2>文书六：制动系统鉴定意见及维修记录审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>审查项</th>
+<th>已知材料</th>
+<th>问题</th>
+<th>补充方向</th>
+</tr>
+<tr>
+<td>机构、人员资质</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>车辆封存与保管</td>
+<td>____</td>
+<td>是否被启动/维修</td>
+<td>____</td>
+</tr>
+<tr>
+<td>静态检验</td>
+<td>结构、管路、驻停</td>
+<td>不能反映偶发状态</td>
+<td>____</td>
+</tr>
+<tr>
+<td>动态检验</td>
+<td>低速倒车</td>
+<td>条件是否相近</td>
+<td>____</td>
+</tr>
+<tr>
+<td>单向阀卡滞</td>
+<td>偶发</td>
+<td>案发时是否触发未知</td>
+<td>触发条件及频率</td>
+</tr>
+<tr>
+<td>踏板变硬</td>
+<td>与陈述相符</td>
+<td>程度与持续时间</td>
+<td>仪器记录</td>
+</tr>
+<tr>
+<td>制动距离</td>
+<td>正常/故障</td>
+<td>测试次数与区间</td>
+<td>重复测试</td>
+</tr>
+<tr>
+<td>既往报修</td>
+<td>“刹车偏硬”/常规保养</td>
+<td>林敏是否知情</td>
+<td>询问、维修单</td>
+</tr>
+</table></div>
+<p>结论使用规则</p>
+<p>□ 存在故障不等于案发时触发。</p>
+<p>□ 静态正常不等于事故时正常。</p>
+<p>□ 不能排除不等于已经证实。</p>
+<p>□ 故障参与不当然排除驾驶人责任。</p>
+<p>□ 故障具有决定性作用须结合可见时间和距离。</p>
+</div>
+<h2>文书七：监控完整性、照明与视野遮挡审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>事实</th>
+<th>证据</th>
+<th>缺口</th>
+</tr>
+<tr>
+<td>四路监控覆盖</td>
+<td>无完整碰撞画面</td>
+<td>原始视频</td>
+<td>____</td>
+</tr>
+<tr>
+<td>时间同步</td>
+<td>一慢约2秒、一快约1秒/以原始核验</td>
+<td>校时报告</td>
+<td>____</td>
+</tr>
+<tr>
+<td>柱体遮挡</td>
+<td>第17号柱</td>
+<td>测绘、照片</td>
+<td>____</td>
+</tr>
+<tr>
+<td>越野车位置</td>
+<td>超出/未超出车位</td>
+<td>监控、测量</td>
+<td>____</td>
+</tr>
+<tr>
+<td>故障照明</td>
+<td>事故前已报修</td>
+<td>维修记录</td>
+<td>____</td>
+</tr>
+<tr>
+<td>临时灯</td>
+<td>事故后移入</td>
+<td>监控</td>
+<td>____</td>
+</tr>
+<tr>
+<td>颜色重叠</td>
+<td>黄色外套与警示带</td>
+<td>实验图像</td>
+<td>____</td>
+</tr>
+<tr>
+<td>人车隔离</td>
+<td>未设/其他</td>
+<td>现场平面图</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>原始性检查</p>
+<p>□ 提取原始码流。</p>
+<p>□ 哈希值已固定。</p>
+<p>□ 导出文件未二次转码。</p>
+<p>□ 播放器参数已记录。</p>
+<p>□ 截图不替代原视频。</p>
+<p>□ 物业提交范围完整。</p>
+</div>
+<h2>文书八：驾驶视野与侦查实验申请书</h2>
+<div class="docbox">
+<p>驾驶视野与侦查实验申请书</p>
+<p>申请事项</p>
+<p>使用同型号、相近车况车辆恢复案发车位与倒车路线；</p>
+<p>恢复驾驶座椅、后视镜和摄像头位置；</p>
+<p>按照测量数据布置柱体、越野车及碰撞点；</p>
+<p>恢复事故时照明，不使用事故后临时灯；</p>
+<p>使用与儿童身高、衣着对比相近的人体模型，不使用真实儿童进入倒车路线；</p>
+<p>分别模拟步行与奔跑速度；</p>
+<p>记录后视镜、回头观察、倒车影像及雷达的首次可见、可识别时点；</p>
+<p>分别在正常制动和可控故障复现状态下测试；</p>
+<p>保留多组速度、反应时间和误差，不作单次绝对结论。</p>
+<p>申请理由</p>
+<p>本案刑事归责取决于儿童何时进入有效视野、驾驶人何时能够识别以及剩余距离能否完成制动。现有监控不完整且设备时钟不同步，仅凭事故结果和一般注意义务不能回答可避免性。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书九：侦查实验方案异议及重新鉴定申请书</h2>
+<div class="docbox">
+<p>侦查实验方案异议及重新鉴定申请书</p>
+<p>异议事项</p>
+<p>以成年人步行替代儿童奔跑，目标身高、速度和识别特征不一致；</p>
+<p>未恢复越野车停放位置或故障照明，改变核心遮挡条件；</p>
+<p>仅测试车辆正常制动，未评价已经发现的偶发助力下降；</p>
+<p>未校准视频时间即设定反应窗口；</p>
+<p>用一次实验推导必然可避免，未披露误差和不利结果。</p>
+<p>重新鉴定请求</p>
+<p>对真空助力系统单向阀的触发条件、复现频率和制动力影响进行动态检验；</p>
+<p>同步记录踏板力、车辆速度、制动减速度和停车距离；</p>
+<p>比较正常、故障复现及电子驻车制动状态；</p>
+<p>说明案发时是否触发无法确定的原因及结论边界；</p>
+<p>允许有专门知识的人就测试方案、数据和误差发表意见。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：道路交通事故认定书刑事证明力审查意见</h2>
+<div class="docbox">
+<p>道路交通事故认定书刑事证明力审查意见</p>
+<p>一、可以作为证据审查的内容</p>
+<p>事故基本经过和勘查情况；</p>
+<p>当事人的交通行为；</p>
+<p>交管部门认定的具体违法行为；</p>
+<p>行政事故责任划分及其依据。</p>
+<p>二、不能直接替代证明的事项</p>
+<p>刑法上的主观过失；</p>
+<p>查看导航与死亡结果的刑法因果关系；</p>
+<p>儿童进入有效视野的准确时点；</p>
+<p>结果是否现实可避免；</p>
+<p>车辆故障是否在案发时触发；</p>
+<p>行为是否构成交通肇事罪或过失致人死亡罪。</p>
+<p>三、本案主要缺口</p>
+<p>原认定未充分评价单向阀偶发卡滞、监控时间校准、照明故障、越野车遮挡、儿童奔跑方式以及首次碰撞与后续移动的损伤作用。请求结合补充鉴定、时间轴和视野实验独立审查刑事责任。</p>
+</div>
+<h2>文书十一：不予批准逮捕及取保候审法律意见书</h2>
+<div class="docbox">
+<p>关于林敏不予批准逮捕并变更取保候审的法律意见书</p>
+<p>意见要点</p>
+<p>林敏身份、住所稳定，无逃逸行为，事故后立即报警并参与救助；</p>
+<p>林敏倒车中查看导航虽不当，但儿童首次有效可见时点尚未查明；</p>
+<p>制动灯在碰撞前亮起，与发现危险后制动相符；</p>
+<p>车辆存在偶发制动助力下降，事故时是否触发需要继续鉴定；</p>
+<p>多路视频尚未完成可靠校时，可避免性不能唯一确定；</p>
+<p>主要物证、电子数据和车辆均可依法固定，不羁押不妨碍侦查；</p>
+<p>林敏愿意遵守取保候审规定并随传随到。</p>
+<p>请求</p>
+<p>对林敏不予批准逮捕；由公安机关依法采取取保候审措施，并继续围绕视频校时、动态制动、视野遮挡及损伤形成开展侦查。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：退回补充侦查事项清单</h2>
+<div class="docbox">
+<p>提取四路监控原始文件、设备说明、时钟偏差和完整时段；</p>
+<p>统一时间基准，逐帧确定关键事件及误差；</p>
+<p>测量柱体、车位、越野车、碰撞点和车辆倒车轨迹；</p>
+<p>调取故障照明报修、维修及临时灯移动记录；</p>
+<p>调取停车场道闸、收费、开放和管理规则；</p>
+<p>提取中控点击原始日志及系统时钟；</p>
+<p>检测雷达对侧向快速低矮目标的探测范围；</p>
+<p>对单向阀进行多次动态故障复现；</p>
+<p>核查车辆既往保养、报修及林敏是否知情；</p>
+<p>分析制动灯、发动机声音、车速变化和是否误踩油门；</p>
+<p>由法医说明致命损伤、挤压机制、次数及先后边界；</p>
+<p>建立正常/故障、观察/分心等多组可避免性模型；</p>
+<p>核查事故认定书是否需复核或补充说明；</p>
+<p>固定报警、救助、赔偿及谅解材料但与定罪事实分开。</p>
+</div>
+<h2>文书十三：审查起诉阶段无罪法律意见书</h2>
+<div class="docbox">
+<p>林敏涉嫌交通肇事/过失致人死亡案无罪法律意见书</p>
+<p>一、罪名路径应先以道路公共性为前提审查</p>
+<p>案发停车场营业期间是否面向不特定社会车辆开放，应以道闸、收费、开放规则及案发区域用途认定。道路属性不同，决定优先适用交通肇事罪还是一般过失犯罪路径。</p>
+<p>二、辩方不回避林敏查看导航的不当</p>
+<p>倒车过程中操作导航违反持续观察义务。但刑事责任不能仅凭义务违反和死亡结果成立，仍须证明该分心行为制造的风险在死亡结果中实现。</p>
+<p>三、无法确定导航操作发生于儿童有效可见之后</p>
+<p>车内无摄像头，头部转动不能精确等同视线离开时长；多路视频需校时，儿童从复合盲区奔出，首次有效可见帧存在误差。</p>
+<p>四、结果可避免性不能得出唯一结论</p>
+<p>车辆速度、儿童速度、识别反应时间、可用距离、故障是否触发均只能区间估算。有利控方的参数组合可能避免，有利辩方的组合则不足以停车，不能选择性拼接不利参数定罪。</p>
+<p>五、制动异常和现场因素显著影响原因力</p>
+<p>单向阀偶发卡滞与踏板变硬、制动距离增加相符；柱体、越野车、故障照明及侧向低矮目标的雷达识别共同缩短有效反应距离。</p>
+<p>六、事故认定、赔偿及谅解均不能补足证明缺口</p>
+<p>行政责任、民事救济和刑事归责目的不同。赔偿反映补救态度，不证明导航操作与死亡之间存在刑法因果关系。</p>
+<p>七、结论</p>
+<p>现有证据不能排除林敏持续观察并立即制动仍无法避免碰撞的合理可能，亦不能证明其对具体死亡结果具有现实预见和避免能力。应依法作不起诉处理。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十四：不起诉公开听证意见及最后陈述</h2>
+<div class="docbox">
+<p>不起诉公开听证意见</p>
+<p>听证争点</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>明确事实</th>
+<th>仍存疑问</th>
+</tr>
+<tr>
+<td>注意义务</td>
+<td>移动中查看导航不当</td>
+<td>延迟发生在何时、多久</td>
+</tr>
+<tr>
+<td>儿童出现</td>
+<td>从复合盲区奔出</td>
+<td>首次有效可见帧</td>
+</tr>
+<tr>
+<td>车辆故障</td>
+<td>单向阀偶发卡滞</td>
+<td>事故时是否触发</td>
+</tr>
+<tr>
+<td>可避免性</td>
+<td>存在多参数区间</td>
+<td>持续观察能否停车</td>
+</tr>
+<tr>
+<td>赔偿谅解</td>
+<td>已赔偿并取得谅解</td>
+<td>不能决定有罪无罪</td>
+</tr>
+</table></div>
+<p>林敏最后陈述</p>
+<p>我承认倒车时不应该查看导航。如果重新回到当晚，我会先停车，让同行人员帮助观察。但事后能够设计更安全的方法，不等于当时的死亡结果已经被证明是由我那次点击造成。我没有逃避事故，也会继续履行赔偿。请求检察机关根据现场、时间、距离、制动和证明标准作出决定，而不是因为孩子死亡就倒推我必然构成犯罪。</p>
+</div>
+<h2>文书十五：民事赔偿、谅解与刑事责任区分说明</h2>
+<div class="docbox">
+<p>民事赔偿、谅解与刑事责任区分说明</p>
+<p>赔偿可以解决</p>
+<p>先行救济被害人家庭；</p>
+<p>分配机动车、所有人、保险及其他民事责任；</p>
+<p>反映事故后的补救态度；</p>
+<p>在构成犯罪时作为从宽情节审查；</p>
+<p>减少长期民事争议。</p>
+<p>赔偿不能证明</p>
+<p>林敏具有刑事过失；</p>
+<p>导航操作导致死亡；</p>
+<p>车辆故障已经或没有触发；</p>
+<p>持续观察必然可以避免事故；</p>
+<p>案件必然属于犯罪或意外事件。</p>
+<p>协议建议条款</p>
+<p>双方确认，本协议用于处理民事损失及给付安排。林敏一方履行赔偿，不视为对尚未经有权机关依法认定的罪名、主观罪过及刑法因果关系作出自认；被害人家属接受赔偿或出具谅解，不视为认可事故属于意外事件。</p>
+</div>
+<h2>文书十六：建议作出存疑不起诉决定法律意见书</h2>
+<div class="docbox">
+<p>建议对林敏作出存疑不起诉决定的法律意见书</p>
+<p>请求</p>
+<p>根据两次补充侦查后仍无法排除的合理怀疑，建议依法对林敏作出存疑不起诉决定；行政责任、民事赔偿及其他责任依法另行处理。</p>
+<p>主要理由</p>
+<p>林敏负有倒车观察义务并存在查看导航的不当行为；</p>
+<p>但无法精确确定儿童首次进入有效视野的时点；</p>
+<p>无法确定导航操作造成的实际反应延迟；</p>
+<p>碰撞前制动灯已经亮起，不能认定未采取制动；</p>
+<p>车辆存在偶发制动助力下降故障，事故时是否触发无法查明；</p>
+<p>柱体、越野车、照明不足和儿童突然奔跑共同压缩识别距离；</p>
+<p>正常及故障参数下的可避免性结论不同，无法形成唯一结论；</p>
+<p>不能排除即使持续观察并立即正常制动仍不足以避免碰撞；</p>
+<p>事故认定书及赔偿谅解不能补足刑法因果关系和主观过失证明。</p>
+<p>阶梯意见</p>
+<p class="kv"><b>第一顺位</b>　证据不足，不能排除意外事件，应存疑不起诉。第二顺位：如认为存在刑事过失，仍应综合车辆故障、突然进入、管理缺陷、报警救助、积极赔偿和谅解，审查是否属于犯罪情节轻微而依法相对不起诉。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>事故现场勘验、测绘、照片及碰撞点材料；</p>
+<p>四路监控原始文件、校时报告及逐帧表；</p>
+<p>中控点击日志、雷达测试和制动灯视频分析；</p>
+<p>车辆封存、拖移、保管、维修和动态鉴定材料；</p>
+<p>照明报修、临时灯、越野车位置及停车场管理材料；</p>
+<p>驾驶视野、三维建模和侦查实验材料；</p>
+<p>尸检、损伤机制及后续移动补充意见；</p>
+<p>林敏、乘员、保安、维修人员及其他证人陈述；</p>
+<p>事故认定书及其复核、补充说明；</p>
+<p>报警救助、保险、赔偿协议和谅解材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员或案件。</h3>
+<h3>2. 所有技术数字必须以原始数据、鉴定或专家意见为依据，不得沿用本章叙事中的概数。</h3>
+<h3>3. 地下停车场道路属性、事故责任门槛、鉴定规则及不起诉程序，应以办理时有效法律、司法解释和规范性文件核验。</h3>
+<h3>4. 真实案件涉及未成年人被害信息时，应严格保护身份、影像、病历和家庭隐私。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

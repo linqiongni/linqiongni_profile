@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch05</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch05">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第五章配套法律文书全文</h1>
+<div class="sub">本套文书以阿杰涉嫌与年长同伴共同抢劫手机案为虚构背景。阿杰案发时已满十四周岁零三个月，未实施直接暴力、威胁或取财，按照安排在公园入口观察并以咳嗽发出预警。检察机关综合其从犯地位、初次涉案、退赃赔偿、谅解、监护和在校条件，作出九个月附条件不起诉；考验期满后不起诉并依法封存记录。</div>
+</header>
+<div class="wrap">
+<p class="volband">第一卷未成年人犯罪与教育矫治</p>
+<p>十四岁少年的秘密</p>
+<p>适用阶段：侦查、审查逮捕、审查起诉、附条件不起诉监督考察及记录封存</p>
+<p>使用说明</p>
+<p>年龄必须以行为发生日为基准，建立出生医学、医院、户籍、接种和学籍的原始证据链。</p>
+<p>在场不等于共犯，认定望风须证明明知、意思联络和客观帮助。</p>
+<p>望风不当然是从犯，应比较犯意提起、分工、暴力、取财、销赃和利益分配。</p>
+<p>合适成年人到场、法律援助、同步录音录像和隐私保护均须独立审查。</p>
+<p>附条件不起诉不是免除责任，而是以个别化监督考察替代立即起诉。</p>
+<h3>文书目录</h3><ol>
+<li>未成年人刑事案件首次接待笔录</li>
+<li>刑事责任年龄证据审查表</li>
+<li>调取出生医学及医院原始档案申请书</li>
+<li>调取户籍原始档案及出生日期变更记录申请书</li>
+<li>未成年人共同犯罪构成要件审查表</li>
+<li>望风行为证据分析意见</li>
+<li>主犯、从犯、胁从犯地位对比表</li>
+<li>同案人口供一致性比对表</li>
+<li>手机电子数据提取审查表</li>
+<li>公园监控及预警行为时间轴</li>
+<li>未成年人讯问程序合法性审查表</li>
+<li>合适成年人到场及法律援助权保障审查意见</li>
+<li>不予批准逮捕及取保候审法律意见书</li>
+<li>未成年人案件分案处理申请书</li>
+<li>社会调查申请书及访谈提纲</li>
+<li>家庭监护能力与同伴影响评估表</li>
+<li>附条件不起诉法律意见书</li>
+<li>个性化监督考察及家庭教育指导方案</li>
+<li>被害人保护及禁止接触方案</li>
+<li>考验期表现评估表</li>
+<li>考验期满不起诉申请意见</li>
+<li>未成年人犯罪记录封存申请书及信息保密提示函</li>
+</ol>
+<h2>文书一：未成年人刑事案件首次接待笔录</h2>
+<div class="docbox">
+<p>未成年人刑事案件首次接待笔录</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>记录</th>
+</tr>
+<tr>
+<td>接待时间、地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>未成年人姓名、出生日期</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>在校情况、年级</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>法定代理人及联系方式</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>涉嫌罪名、案发日期</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>到案、讯问、强制措施</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>是否已指派法律援助律师</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>是否有合适成年人到场</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p>事实询问</p>
+<p>去公园前是否听到拿手机、借手机、看人等安排？</p>
+<p>是否知道同伴将使用推搡或威胁？</p>
+<p>谁安排站位，是否约定预警信号？</p>
+<p>咳嗽是否用于提醒有人靠近？</p>
+<p>看到推人和威胁后为何未离开？</p>
+<p>手机取得后为何共同逃跑？</p>
+<p>是否接触、保管、出售手机或分得利益？</p>
+<p>是否受到殴打、具体威胁、欠款或利益诱导？</p>
+<p>是否删除聊天记录？</p>
+<p>能否说明手机藏匿地点？</p>
+<p>即时保护</p>
+<p>□ 核验出生日期原始证据。</p>
+<p>□ 立即保障法律援助。</p>
+<p>□ 通知法定代理人或合适成年人。</p>
+<p>□ 避免与年长同案人接触。</p>
+<p>□ 保护姓名、学校、住所和影像。</p>
+<p>□ 评估羁押必要性。</p>
+<p>□ 启动社会调查。</p>
+<p>□ 联系学校制定保密返校方案。</p>
+</div>
+<h2>文书二：刑事责任年龄证据审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>证据</th>
+<th>记载日期</th>
+<th>原始性</th>
+<th>矛盾/说明</th>
+<th>证明力</th>
+</tr>
+<tr>
+<td>出生医学证明</td>
+<td>____</td>
+<td>原件/复印件</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>医院产科住院登记</td>
+<td>____</td>
+<td>原始档案</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>新生儿筛查记录</td>
+<td>____</td>
+<td>原始档案</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>户籍申报底表</td>
+<td>____</td>
+<td>原始档案</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>户口簿</td>
+<td>____</td>
+<td>现行登记</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>首次接种档案</td>
+<td>____</td>
+<td>早期形成</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>幼儿园入园登记</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>小学学籍原始资料</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>出生日期变更记录</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>计算结论</p>
+<p class="kv"><b>行为发生日期</b>　____年__月__日；认定出生日期：____年__月__日；行为时年龄：____周岁____个月____日。</p>
+<p>□ 已达到法定责任年龄。</p>
+<p>□ 未达到法定责任年龄。</p>
+<p>□ 证据矛盾仍不能排除未达到年龄。</p>
+<p>□ 不得以外貌、年级或口述推定。</p>
+</div>
+<h2>文书三：调取出生医学及医院原始档案申请书</h2>
+<div class="docbox">
+<p>调取出生医学及医院原始档案申请书</p>
+<p>申请事项</p>
+<p>调取出生医学证明原件或签发底档；</p>
+<p>调取产科住院登记、分娩记录及母婴识别信息；</p>
+<p>调取新生儿疾病筛查、出生登记和出院记录；</p>
+<p>核对证明编号、签发机构、父母身份及形成时间；</p>
+<p>对复印件模糊或存在涂改处进行原件核验；</p>
+<p>询问档案管理人员说明保存、调取及复制过程。</p>
+<p>理由</p>
+<p>现有户籍、学籍和接种资料对出生月份记载不一致，而行为时年龄可能直接决定刑事责任。应以形成时间早、来源可靠的原始医学及登记材料建立年龄证据链。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书四：调取户籍原始档案及出生日期变更记录申请书</h2>
+<div class="docbox">
+<p>调取户籍原始档案及出生日期变更记录申请书</p>
+<p>调取首次出生申报底表、申报日期、申报人和基础证明；</p>
+<p>调取户籍迁移、补录、换证和信息更正材料；</p>
+<p>核查出生日期是否曾变更及变更依据；</p>
+<p>核查迟报、补报或人工录入错误；</p>
+<p>将户籍底档与出生医学证明、医院记录逐项比对；</p>
+<p>出具户籍登记形成过程说明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书五：未成年人共同犯罪构成要件审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要件</th>
+<th>指控证据</th>
+<th>反向审查</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>共同犯意</td>
+<td>群聊“借个手机”“看着点人”</td>
+<td>是否明知暴力、威胁</td>
+<td>____</td>
+</tr>
+<tr>
+<td>意思联络</td>
+<td>陈浩安排、小峰供述</td>
+<td>同案人口供动机与印证</td>
+<td>____</td>
+</tr>
+<tr>
+<td>帮助行为</td>
+<td>路口观察、咳嗽预警</td>
+<td>是否普通在场或自然咳嗽</td>
+<td>____</td>
+</tr>
+<tr>
+<td>时间联系</td>
+<td>发生在取财过程中</td>
+<td>看到暴力后是否继续帮助</td>
+<td>____</td>
+</tr>
+<tr>
+<td>结果促进</td>
+<td>降低被发现风险</td>
+<td>是否对取得手机有现实帮助</td>
+<td>____</td>
+</tr>
+<tr>
+<td>责任范围</td>
+<td>抢劫手机</td>
+<td>是否超出阿杰认识范围</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>不得单独推定共犯的事实</p>
+<p>□ 与同案人是朋友。</p>
+<p>□ 一起到达现场。</p>
+<p>□ 站在附近。</p>
+<p>□ 事后共同离开。</p>
+<p>□ 害怕未制止。</p>
+<p>□ 事后没有立即报警。</p>
+</div>
+<h2>文书六：望风行为证据分析意见</h2>
+<div class="docbox">
+<p>望风行为证据分析意见</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>证据</th>
+<th>证明方向</th>
+<th>局限</th>
+</tr>
+<tr>
+<td>群聊“你看着点人”</td>
+<td>事前分工</td>
+<td>未出现抢、打等明确词</td>
+</tr>
+<tr>
+<td>公园站位</td>
+<td>可观察入口</td>
+<td>站位本身可有其他解释</td>
+</tr>
+<tr>
+<td>路人靠近时咳嗽</td>
+<td>预警行为</td>
+<td>需排除普通咳嗽</td>
+</tr>
+<tr>
+<td>陈浩立即转头</td>
+<td>信号被接收</td>
+<td>需与视频时间同步</td>
+</tr>
+<tr>
+<td>同案人供述</td>
+<td>约定有人来弄声音</td>
+<td>存在减责动机</td>
+</tr>
+<tr>
+<td>看到推搡后未离开</td>
+<td>继续帮助可能</td>
+<td>消极不制止不当然构罪</td>
+</tr>
+<tr>
+<td>共同跑离</td>
+<td>犯罪后共同状态</td>
+<td>不能单独倒推预谋</td>
+</tr>
+</table></div>
+<p>综合意见</p>
+<p>如群聊、站位、特定时点咳嗽、同案人反应及供述能够相互印证，可证明阿杰明知抢劫并有意提供观察、预警帮助；任何单一事实均不足以独立完成证明。</p>
+</div>
+<h2>文书七：主犯、从犯、胁从犯地位对比表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>主犯指向</th>
+<th>从犯指向</th>
+<th>胁从犯审查</th>
+<th>阿杰事实</th>
+</tr>
+<tr>
+<td>犯意提起</td>
+<td>主动提出</td>
+<td>未提出</td>
+<td>被迫接受</td>
+<td>陈浩提出</td>
+</tr>
+<tr>
+<td>地点目标</td>
+<td>选择并控制</td>
+<td>无决定权</td>
+<td>依指令</td>
+<td>未参与</td>
+</tr>
+<tr>
+<td>分工指挥</td>
+<td>安排他人</td>
+<td>临时被安排</td>
+<td>受现实威胁</td>
+<td>被安排看人</td>
+</tr>
+<tr>
+<td>核心行为</td>
+<td>暴力、威胁、取财</td>
+<td>外围帮助</td>
+<td>因胁迫参与</td>
+<td>未接触被害人</td>
+</tr>
+<tr>
+<td>财物控制</td>
+<td>保管、销赃</td>
+<td>未接触</td>
+<td>无获利意愿</td>
+<td>未分赃</td>
+</tr>
+<tr>
+<td>停止能力</td>
+<td>可叫停</td>
+<td>无控制力</td>
+<td>意志受压制</td>
+<td>无决定权</td>
+</tr>
+<tr>
+<td>威胁程度</td>
+<td>不适用</td>
+<td>同伴影响</td>
+<td>具体现实危险</td>
+<td>证据不足</td>
+</tr>
+</table></div>
+<p>结论选择</p>
+<p>□ 主犯。</p>
+<p>□ 从犯。</p>
+<p>□ 胁从犯。</p>
+<p>□ 不构成共同犯罪。</p>
+<p>□ 证据不足需补充同伴关系和现实威胁。</p>
+</div>
+<h2>文书八：同案人口供一致性比对表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>陈浩</th>
+<th>小峰</th>
+<th>阿杰</th>
+<th>客观证据</th>
+</tr>
+<tr>
+<td>事前计划</td>
+<td>便利店已谈好</td>
+<td>说去弄手机</td>
+<td>起初否认，后承认可能抢</td>
+<td>群聊</td>
+</tr>
+<tr>
+<td>望风安排</td>
+<td>让阿杰看人</td>
+<td>陈浩安排</td>
+<td>承认答应看人</td>
+<td>站位</td>
+</tr>
+<tr>
+<td>预警信号</td>
+<td>弄点声音</td>
+<td>约定咳嗽</td>
+<td>称嗓子不舒服</td>
+<td>商铺音频</td>
+</tr>
+<tr>
+<td>暴力预见</td>
+<td>____</td>
+<td>____</td>
+<td>未想到会推人</td>
+<td>现场动作</td>
+</tr>
+<tr>
+<td>手机处理</td>
+<td>陈浩保管</td>
+<td>____</td>
+<td>未接触</td>
+<td>追回地点</td>
+</tr>
+<tr>
+<td>分赃约定</td>
+<td>____</td>
+<td>____</td>
+<td>无</td>
+<td>聊天、资金</td>
+</tr>
+<tr>
+<td>胁迫</td>
+<td>否认</td>
+<td>未听见</td>
+<td>称不敢不听</td>
+<td>无直接印证</td>
+</tr>
+</table></div>
+<p>审查原则</p>
+<p>□ 同案人口供不能互相循环印证。</p>
+<p>□ 比较每次供述形成时间。</p>
+<p>□ 核查是否存在减责动机。</p>
+<p>□ 以电子数据、视频和赃物去向补强。</p>
+<p>□ 只认定稳定且有客观印证部分。</p>
+</div>
+<h2>文书九：手机电子数据提取审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>结果</th>
+<th>材料</th>
+</tr>
+<tr>
+<td>原始手机及账户归属</td>
+<td>____</td>
+<td>扣押、身份资料</td>
+</tr>
+<tr>
+<td>群聊成员及建立时间</td>
+<td>____</td>
+<td>平台数据</td>
+</tr>
+<tr>
+<td>完整聊天时段</td>
+<td>____</td>
+<td>原始导出</td>
+</tr>
+<tr>
+<td>消息删除、撤回</td>
+<td>____</td>
+<td>恢复报告</td>
+</tr>
+<tr>
+<td>时间、时区、设备时钟</td>
+<td>____</td>
+<td>校验说明</td>
+</tr>
+<tr>
+<td>“借手机”“看人”上下文</td>
+<td>____</td>
+<td>前后消息</td>
+</tr>
+<tr>
+<td>语音、表情、问号含义</td>
+<td>____</td>
+<td>结合语境</td>
+</tr>
+<tr>
+<td>哈希值及复制过程</td>
+<td>____</td>
+<td>提取笔录</td>
+</tr>
+<tr>
+<td>是否仅有截图</td>
+<td>____</td>
+<td>原始数据需求</td>
+</tr>
+</table></div>
+<p>电子数据风险</p>
+<p>□ 截图替代原始数据。</p>
+<p>□ 只截取不利片段。</p>
+<p>□ 账号与实际使用人未核实。</p>
+<p>□ 时间未校准。</p>
+<p>□ 群聊成员显示不完整。</p>
+<p>□ 恢复数据过程不可复核。</p>
+</div>
+<h2>文书十：公园监控及预警行为时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>阿杰位置/动作</th>
+<th>陈浩、小峰行为</th>
+<th>第三人/环境</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>17:17</td>
+<td>离校</td>
+<td>____</td>
+<td>____</td>
+<td>校门监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>便利店附近</td>
+<td>群聊后同行</td>
+<td>____</td>
+<td>监控/聊天</td>
+</tr>
+<tr>
+<td>17:42</td>
+<td>距现场十余米观察</td>
+<td>拦截林宇</td>
+<td>林宇独行</td>
+<td>公园监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>朝入口张望</td>
+<td>威胁、推搡</td>
+<td>骑车人靠近</td>
+<td>监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>咳嗽两声</td>
+<td>陈浩转头</td>
+<td>骑车人经过</td>
+<td>商铺音频</td>
+</tr>
+<tr>
+<td>____</td>
+<td>仍在原位</td>
+<td>小峰拿手机</td>
+<td>____</td>
+<td>监控</td>
+</tr>
+<tr>
+<td>____</td>
+<td>共同跑离</td>
+<td>携带手机离开</td>
+<td>____</td>
+<td>监控</td>
+</tr>
+</table></div>
+<p>时间轴结论</p>
+<p>□ 咳嗽与路人接近时间吻合。</p>
+<p>□ 陈浩反应紧随其后。</p>
+<p>□ 帧率、时钟和音视频同步已说明。</p>
+<p>□ 存在其他自然咳嗽证据。</p>
+<p>□ 预警对取财过程具有帮助。</p>
+</div>
+<h2>文书十一：未成年人讯问程序合法性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>程序事项</th>
+<th>第一次讯问</th>
+<th>后续讯问</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>法定代理人通知</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>不能到场原因记录</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>合适成年人身份</td>
+<td>社区人员____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>是否全程在场</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>法律援助通知</td>
+<td>未及时/实际</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>权利告知</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>适龄提问</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>同步录音录像</td>
+<td>完整/其他</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>休息、饮食、时长</td>
+<td>40余分钟/实际</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>逐页核对签字</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>处理意见</p>
+<p>□ 程序合法。</p>
+<p>□ 存在瑕疵但有客观证据补强。</p>
+<p>□ 供述不得作为唯一依据。</p>
+<p>□ 申请排除非法证据。</p>
+<p>□ 需调取完整录音录像。</p>
+</div>
+<h2>文书十二：合适成年人到场及法律援助权保障审查意见</h2>
+<div class="docbox">
+<p>合适成年人到场及法律援助权保障审查意见</p>
+<p>一、合适成年人到场</p>
+<p>核实法定代理人无法到场的具体原因及记录；</p>
+<p>核实社区工作人员身份、与案件及当事人的关系；</p>
+<p>确认其自讯问开始至结束全程在场；</p>
+<p>确认其有机会了解案情、保障沟通并提出意见；</p>
+<p>到场不得仅表现为笔录末页签名。</p>
+<p>二、法律援助</p>
+<p>未成年人未委托辩护人的，应及时通知法律援助机构；</p>
+<p>第一次讯问前未完成通知的，应说明原因及补救情况；</p>
+<p>第一次供述涉及地位、作用时，不得脱离客观证据作为唯一依据；</p>
+<p>后续供述应在权利充分保障下重新核实。</p>
+<p>请求</p>
+<p>对第一次供述的证明力从严审查，并以聊天原始数据、监控、音频、赃物去向及依法取得的后续供述综合判断。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十三：不予批准逮捕及取保候审法律意见书</h2>
+<div class="docbox">
+<p>关于阿杰不予批准逮捕并采取取保候审的法律意见书</p>
+<p>主要意见</p>
+<p>阿杰刚满十四周岁，系初次涉案，在校就读且有固定住所；</p>
+<p>未实施直接暴力、威胁或取财，仅被指控外围望风；</p>
+<p>未接触、保管、出售手机，未分得利益；</p>
+<p>手机已追回，电子数据和监控已经固定；</p>
+<p>无逃跑、毁证、串供的现实危险；</p>
+<p>与年长同伴隔离后再犯风险可控；</p>
+<p>父母、学校和社工可以形成监护帮教；</p>
+<p>羁押可能加重标签及不良同伴影响。</p>
+<p>请求</p>
+<p>对阿杰不予批准逮捕，依法采取取保候审；设置不得联系同案人、按要求报告、正常到校和接受社会调查等措施。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十四：未成年人案件分案处理申请书</h2>
+<div class="docbox">
+<p>未成年人案件分案处理申请书</p>
+<p>申请事项</p>
+<p>对阿杰与陈浩、小峰分别讯问、分别进行逮捕必要性评估；</p>
+<p>对阿杰单独开展社会调查和心理评估；</p>
+<p>分别审查主从犯、胁从犯及量刑情节；</p>
+<p>避免共同羁押及非必要接触；</p>
+<p>不以陈浩其他违法犯罪线索扩大阿杰责任；</p>
+<p>对阿杰身份信息和学校信息单独采取保密措施；</p>
+<p>在不割裂共同犯罪证据的前提下实行个别化处理。</p>
+<p>理由</p>
+<p>三名未成年人年龄、参与程度、成长背景和处理方向差异明显。阿杰仅被指控望风，且受年长同伴影响，分案和个别化审查有利于准确归责及教育矫治。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十五：社会调查申请书及访谈提纲</h2>
+<div class="docbox">
+<p>未成年人社会调查申请书</p>
+<p>申请事项</p>
+<p>请求围绕阿杰成长经历、犯罪原因、监护教育、在校情况、同伴关系、网络使用、悔罪表现、再犯风险和可利用帮教资源开展社会调查。</p>
+<p>访谈对象</p>
+<p>阿杰及父母；</p>
+<p>班主任和任课教师；</p>
+<p>同学及学校心理教师；</p>
+<p>社区工作人员；</p>
+<p>篮球场或活动场所管理人员；</p>
+<p>外祖母等主要照护人；</p>
+<p>被害人家庭；</p>
+<p>司法社工和心理咨询人员。</p>
+<p>核心问题</p>
+<p>家庭陪伴和管教方式；</p>
+<p>出勤、成绩及纪律变化；</p>
+<p>与陈浩、小峰认识及依附过程；</p>
+<p>游戏充值欠款、请客或利益影响；</p>
+<p>是否遭受现实威胁或暴力；</p>
+<p>拒绝同伴要求和求助能力；</p>
+<p>对被害人恐惧及望风作用的理解；</p>
+<p>父母、学校及社区能否持续帮教。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十六：家庭监护能力与同伴影响评估表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>因素</th>
+<th>现状</th>
+<th>风险</th>
+<th>改善措施</th>
+</tr>
+<tr>
+<td>父亲陪伴</td>
+<td>长期外地/实际</td>
+<td>沟通少、责骂</td>
+<td>调整工作、固定共处</td>
+</tr>
+<tr>
+<td>母亲照护</td>
+<td>凌晨经营早餐店</td>
+<td>早晚监管空缺</td>
+<td>调整时段、明确行程</td>
+</tr>
+<tr>
+<td>学校支持</td>
+<td>原纪律良好</td>
+<td>迟到、困倦</td>
+<td>班主任保密跟进</td>
+</tr>
+<tr>
+<td>网络游戏</td>
+<td>晚间使用</td>
+<td>沉迷、欠款</td>
+<td>设备和充值规则</td>
+</tr>
+<tr>
+<td>年长同伴</td>
+<td>陈浩请客、带网吧</td>
+<td>依附与服从</td>
+<td>停止联系</td>
+</tr>
+<tr>
+<td>拒绝能力</td>
+<td>不敢说不</td>
+<td>易受诱导</td>
+<td>情境训练</td>
+</tr>
+<tr>
+<td>求助通道</td>
+<td>不愿告诉父母</td>
+<td>风险隐瞒</td>
+<td>固定可信成年人</td>
+</tr>
+</table></div>
+<p>胁迫与教唆核查</p>
+<p>□ 存在具体暴力威胁。</p>
+<p>□ 以家人安全要挟。</p>
+<p>□ 已经实施暴力。</p>
+<p>□ 仅害怕被嘲笑或排斥。</p>
+<p>□ 存在利益诱导和人情债。</p>
+<p>□ 心理依附明显但未压制意志。</p>
+</div>
+<h2>文书十七：附条件不起诉法律意见书</h2>
+<div class="docbox">
+<p>关于对阿杰适用附条件不起诉的法律意见书</p>
+<p>一、责任基础</p>
+<p>如认定阿杰明知同伴准备以暴力、威胁取得手机，并通过观察、咳嗽预警提供帮助，其行为具有共同犯罪基础；辩方不以未直接动手否认望风的可能帮助作用。</p>
+<p>二、地位与作用</p>
+<p>阿杰未提起犯意、选择目标、安排分工、实施暴力威胁、接触手机、参与销赃或分得利益，仅起外围辅助作用，应认定为从犯。</p>
+<p>三、个别化情节</p>
+<p>作案时刚满十四周岁；</p>
+<p>初次涉案；</p>
+<p>明显受年长同伴影响；</p>
+<p>主动交代并协助追回手机；</p>
+<p>赔偿、道歉并取得谅解；</p>
+<p>返校稳定；</p>
+<p>家庭监护已经改善；</p>
+<p>社会调查显示再犯风险较低。</p>
+<p>四、处理请求</p>
+<p>综合年龄、从犯、退赃赔偿、悔罪及帮教条件，阿杰可能判处一年有期徒刑以下刑罚，且具有监督考察必要和现实条件，请依法作出附条件不起诉决定，并设置个别化考察方案。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十八：个性化监督考察及家庭教育指导方案</h2>
+<div class="docbox">
+<p>阿杰个性化监督考察方案</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>领域</th>
+<th>具体要求</th>
+<th>责任人</th>
+<th>频率/期限</th>
+</tr>
+<tr>
+<td>守法报告</td>
+<td>报告学习、生活和交往</td>
+<td>阿杰/监护人</td>
+<td>每月</td>
+</tr>
+<tr>
+<td>同伴隔离</td>
+<td>不私下联系陈浩</td>
+<td>阿杰</td>
+<td>全期</td>
+</tr>
+<tr>
+<td>被害人保护</td>
+<td>不接触、打听或骚扰林宇</td>
+<td>阿杰</td>
+<td>全期</td>
+</tr>
+<tr>
+<td>心理辅导</td>
+<td>同伴压力、拒绝和求助训练</td>
+<td>咨询师</td>
+<td>每月一次</td>
+</tr>
+<tr>
+<td>法治教育</td>
+<td>共同犯罪、被害人影响</td>
+<td>检察/社工</td>
+<td>按课程</td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td>不进入营业性网吧、控制充值</td>
+<td>家庭</td>
+<td>持续</td>
+</tr>
+<tr>
+<td>公益服务</td>
+<td>适量、适龄、保护隐私</td>
+<td>社工</td>
+<td>____小时</td>
+</tr>
+<tr>
+<td>学校反馈</td>
+<td>出勤、纪律、适应</td>
+<td>班主任</td>
+<td>每月</td>
+</tr>
+<tr>
+<td>家庭教育</td>
+<td>沟通、监督、非侮辱管教</td>
+<td>父母</td>
+<td>每月指导</td>
+</tr>
+</table></div>
+<p>动态调整</p>
+<p>出现一般迟到或单次缺席时，应查明原因并优先补救；如有新的违法犯罪、漏罪或严重违反监督管理规定，依法评估撤销附条件不起诉。</p>
+</div>
+<h2>文书十九：被害人保护及禁止接触方案</h2>
+<div class="docbox">
+<p>被害人保护及禁止接触方案</p>
+<p>阿杰不得直接或通过同学联系林宇；</p>
+<p>不得前往林宇经常活动地点等待、跟随或打听；</p>
+<p>道歉、赔偿和谅解通过监护人、律师或社工完成；</p>
+<p>学校严格控制双方涉案信息知情范围；</p>
+<p>如在校或公共场所偶遇，阿杰应保持距离并及时报告；</p>
+<p>不得在网络发布、转发或评论林宇身份和案件信息；</p>
+<p>林宇有需要时可获得心理支持和安全协助；</p>
+<p>不得以取得谅解为目的反复联系被害人家庭。</p>
+</div>
+<h2>文书二十：考验期表现评估表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>评估项目</th>
+<th>完成情况</th>
+<th>证据</th>
+<th>评价</th>
+</tr>
+<tr>
+<td>无新违法犯罪</td>
+<td>____</td>
+<td>查询/证明</td>
+<td>____</td>
+</tr>
+<tr>
+<td>报告及迁居审批</td>
+<td>____</td>
+<td>签到、申请</td>
+<td>____</td>
+</tr>
+<tr>
+<td>正常到校</td>
+<td>____</td>
+<td>学校反馈</td>
+<td>____</td>
+</tr>
+<tr>
+<td>停止联系同案人</td>
+<td>____</td>
+<td>社工、监护</td>
+<td>____</td>
+</tr>
+<tr>
+<td>未接触被害人</td>
+<td>____</td>
+<td>被害方反馈</td>
+<td>____</td>
+</tr>
+<tr>
+<td>心理辅导</td>
+<td>____次</td>
+<td>记录</td>
+<td>____</td>
+</tr>
+<tr>
+<td>法治教育</td>
+<td>____</td>
+<td>结业材料</td>
+<td>____</td>
+</tr>
+<tr>
+<td>公益服务</td>
+<td>____小时</td>
+<td>证明</td>
+<td>____</td>
+</tr>
+<tr>
+<td>家庭教育指导</td>
+<td>____次</td>
+<td>记录</td>
+<td>____</td>
+</tr>
+<tr>
+<td>监护改善</td>
+<td>____</td>
+<td>家访、谈话</td>
+<td>____</td>
+</tr>
+</table></div>
+<p>待处理波动</p>
+<p>□ 一般迟到已说明。</p>
+<p>□ 辅导缺席已补足。</p>
+<p>□ 存在严重违反管理。</p>
+<p>□ 仍具有帮教必要。</p>
+<p>□ 建议维持并调整条件。</p>
+<p>□ 建议依法撤销。</p>
+</div>
+<h2>文书二十一：考验期满不起诉申请意见</h2>
+<div class="docbox">
+<p>阿杰附条件不起诉考验期满处理意见</p>
+<p>考察结论</p>
+<p>考验期内未实施新的违法犯罪行为；</p>
+<p>不存在应当追诉的漏罪；</p>
+<p>按要求完成报告、法治教育、心理辅导和公益服务；</p>
+<p>已停止与不良同伴联系；</p>
+<p>未接触或骚扰被害人；</p>
+<p>出勤、学习和纪律基本稳定；</p>
+<p>父母能够持续履行监护责任；</p>
+<p>学校和社区愿意继续提供支持。</p>
+<p>请求</p>
+<p>阿杰未出现法定撤销情形，个别化帮教目标基本实现，请依法作出不起诉决定，并同步办理相关记录封存和信息保护手续。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十二：未成年人犯罪记录封存申请书及信息保密提示函</h2>
+<div class="docbox">
+<p>未成年人涉案记录封存申请书</p>
+<p>申请事项</p>
+<p>对立案、侦查、强制措施、审查起诉、附条件不起诉、社会调查、心理辅导、帮教考察及最终不起诉材料依法封存；</p>
+<p>对电子系统数据加设封存标记，未经法定程序不得查询、共享或复用；</p>
+<p>对纸质案卷、音视频及身份信息采取限制访问措施；</p>
+<p>向依法查询的单位和人员明确保密义务；</p>
+<p>对学校、社区及社会组织留存的非必要涉案信息进行合规清理或限制。</p>
+<p>信息保密提示</p>
+<p>不得公开阿杰姓名、影像、住所、学校、班级及足以识别身份的信息；</p>
+<p>不得以内部通报、家长群、工作群或网络平台扩散案件；</p>
+<p>不得把附条件不起诉表述为法院有罪判决；</p>
+<p>依法查询仅限法定主体、目的和程序；</p>
+<p>查询、知悉人员负有保密义务；</p>
+<p>发现泄露时应立即停止传播、保全证据并依法处理。</p>
+<p>说明</p>
+<p>封存不等于删除，也不等于任何情形均不得依法查询。其目的在于限制无依据的查询、传播和复用，减少未成年人因一次涉案经历受到长期标签影响。</p>
+<p>此致</p>
+<p>__________人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>出生医学证明、医院档案、户籍底档、接种和学籍资料；</p>
+<p>案发前群聊及完整手机电子数据；</p>
+<p>公园、商铺、校门口原始监控及音频；</p>
+<p>阿杰、陈浩、小峰历次供述及讯问录音录像；</p>
+<p>咳嗽预警、站位、共同逃离及手机去向材料；</p>
+<p>手机价值、追回、维修、赔偿及谅解材料；</p>
+<p>法定代理人通知、合适成年人及法律援助材料；</p>
+<p>社会调查、心理评估、学校意见和监护方案；</p>
+<p>附条件不起诉决定、考察计划及阶段记录；</p>
+<p>期满不起诉、记录封存及保密手续。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实未成年人。</h3>
+<h3>2. 年龄、责任范围、附条件不起诉条件、考验要求和记录封存，应以行为时及办理时有效法律规范核验。</h3>
+<h3>3. 涉案未成年人和未成年被害人的姓名、学校、住所、影像、心理及家庭信息应严格保护。</h3>
+<h3>4. 教育矫治不能替代构成要件证明，也不能忽略被害人的安全和恢复需要。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

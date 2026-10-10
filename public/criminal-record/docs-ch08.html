@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-default="light">
+<head>
+<!-- EMBEDDED_KIT_START -->
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style id="embedded-transparent">:root.embedded{color-scheme:light;background:transparent!important;background-image:none!important}:root.embedded body{background:transparent!important;background-image:none!important}</style>
+<script id="embedded-glassify">(function(){
+try{
+if(!window.parent||window.parent===window)return;
+if(!document.documentElement.classList.contains("embedded"))return;
+function dark(r,g,b){return (0.299*r+0.587*g+0.114*b)<130;}
+/* 2026-09-30 白天模式修复：原判据「亮度<130 才算该清的深色底」在浅色主题下完全失效——
+   子站白天模式的表面色（--bg #FDFCF9 / --card #FFFFFF / --bg-alt #F7F4EC）亮度都很高，
+   一条都不命中，整片米白不透明地把主站固定背景 + 鱼影盖死（Andy 09-29 反馈）。
+   新判据 = 「中性表面色一律清，彩色强调色保留」：
+   - 中性（通道极差 < 32）→ 是背景板，清；
+   - 彩色且非极暗（极差 >= 32 且亮度 >= 56）→ 强调色（金/红/绿/蓝一类的实心块、
+     白字金底按钮、金色进度条），保留；顺带修掉旧逻辑的副作用：白天模式
+     .stations a.on「白字 + 深金底 #8C7443」曾被判成深色清掉 = 白字隐形。
+   - 极暗的彩色（#091A2E / #102943 这套深海渐变，亮度 < 56）→ 仍按背景板清。 */
+function surface(r,g,b){var mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=0.299*r+0.587*g+0.114*b;return !((mx-mn)>=32&&lum>=56);}
+function glass(el,force){
+if(force){el.__gBF=0;el.__gImg=0;el.__gBg=0;}
+var cs=getComputedStyle(el);
+var bf=cs.backdropFilter||cs.webkitBackdropFilter;
+if(bf&&bf!=="none"&&!el.__gBF){
+el.__gBF=1;
+el.style.setProperty("backdrop-filter","none","important");
+el.style.setProperty("-webkit-backdrop-filter","none","important");
+}
+var __norm=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var __normAll=function(s){return String(s).replace(/color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)/g,function(_,r,g,b,a){return "rgba("+Math.round(parseFloat(r)*255)+","+Math.round(parseFloat(g)*255)+","+Math.round(parseFloat(b)*255)+","+(a===undefined?1:a)+")";});};
+var gi=cs.backgroundImage;
+if(gi&&gi.indexOf("gradient")>=0){
+var stops=__normAll(gi).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)||[];
+var heavySurface=false;
+for(var si=0;si<stops.length;si++){
+var sm=stops[si].match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(!sm)continue;
+var sa=sm[4]===undefined?1:parseFloat(sm[4]);
+if(sa>=0.3&&surface(+sm[1],+sm[2],+sm[3])){heavySurface=true;break;}
+}
+if(heavySurface&&!el.__gImg){
+/* 2026-09-29c 尺寸保护彻底废除（两轮实锤：按尺寸豁免谁，谁就蓝）：除 .tab 外一律清透明。
+   .tab 豁免原因=死锁：胶囊底色随选中态切换，被 inline transparent !important 永久压制后
+   金底再也救不回（09-29 凌晨实锤）。渐变分支同口径 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))){
+el.__gImg=1;
+el.style.setProperty("background-image","none","important");
+}}
+}
+var m=__norm(cs.backgroundColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(m){
+var a=m[4]===undefined?1:parseFloat(m[4]);
+if(a>=0.85&&!el.__gBg){
+var r=+m[1],g=+m[2],b=+m[3];
+/* 2026-09-29c 尺寸保护彻底废除：一律清透明（恢复用户认可的全透明基准），仅豁免 .tab
+   2026-09-30 判据由 dark() 换成 surface()：深浅主题一视同仁，见上方注释 */
+if(!(el.classList.contains("tab")||(el.closest&&el.closest("nav.tabs")))&&surface(r,g,b)){
+el.__gBg=1;
+el.style.setProperty("background-color","transparent","important");
+var bm=__norm(cs.borderTopColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+if(bm){
+var br=+bm[1],bg2=+bm[2],bb=+bm[3];
+var ba=bm[4]===undefined?1:parseFloat(bm[4]);
+if(ba>0.1&&dark(br,bg2,bb)){
+el.style.setProperty("border-color","rgba("+br+","+bg2+","+bb+",0.4)","important");
+}}
+}}}
+var bs=cs.boxShadow;
+if(bs&&bs!=="none"&&cs.boxShadow){}
+}
+function run(force){
+var els=document.querySelectorAll("*");
+for(var i=0;i<els.length;i++)glass(els[i],force);
+}
+["DOMContentLoaded","load"].forEach(function(ev){window.addEventListener(ev,function(){run();setTimeout(function(){run(true);},400);setTimeout(function(){run(true);},1500);});});
+var mo=new MutationObserver(function(muts){
+for(var k=0;k<muts.length;k++){var adds=muts[k].addedNodes;
+for(var i=0;i<adds.length;i++){var n=adds[i];
+if(n.nodeType===1){glass(n);
+if(n.querySelectorAll){var ds=n.querySelectorAll("*");for(var j=0;j<ds.length;j++)glass(ds[j]);}}}}
+});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+/* 2026-09-29 隐藏面板补刀：tab 页 display:none 的面板在加载时尺寸为 0，
+   会被上方 200x120 尺寸保护跳过（不清色也不打标记）；用户切 tab 后面板
+   变得可见，深色纯底/渐变原样露出。class/style 变更不触发 childList 观察，
+   所以这里单独监听属性变化，防抖后整页重扫（run 非强制，已标记元素会跳过，
+   自身 setProperty 引起的变更不会再产生新改动，不会死循环）。 */
+var __gDeb=null;
+var __gForce=false;
+var mo2=new MutationObserver(function(muts){
+/* 2026-09-30 白天模式修复（第二处）：主题桥切的是 <html data-theme>，原先只监听
+   class/style，切到 light 后整页底色由深翻浅，观察器不触发 → 浅色不透明底原样留在
+   主站背景板之上（鱼影被盖）。这里补监听 data-theme，并且必须 force 重扫：
+   非强制 run() 会跳过已打标元素，而深浅切换后同一元素的底色已经变了。 */
+var themeChanged=false;
+for(var k=0;k<muts.length;k++){if(muts[k].attributeName==="data-theme")themeChanged=true;}
+if(themeChanged)__gForce=true;
+if(__gDeb)return;
+__gDeb=setTimeout(function(){var f=__gForce;__gDeb=null;__gForce=false;run(f);},120);
+});
+mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"],subtree:true});
+}catch(e){}
+})();</script>
+<!-- EMBEDDED_KIT_END -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docs-ch08</title>
+<link rel="stylesheet" href="assets/crim-style.css">
+<!-- DARK_UNIFY_START -->
+<style id="dark-unify">html[data-theme="dark"]{--bg:#091A2E !important; --bg2:#0C1B2B !important; --bg3:#12263C !important; --bg-alt:#0C1B2B !important; --bg-soft:#0C1B2B !important; --card:#0C1B2B !important; --card2:#12263C !important; --card3:#0C1B2B !important; --panel:#0C1B2B !important; --panel2:#12263C !important; --panel3:#0C1B2B !important; --paper:#0C1B2B !important; --side:#071524 !important; --bar:#0C1B2B !important; --line:#1B2E45 !important; --line2:#2A3E52 !important; --line-soft:#16283C !important; --ink:#F4EFE4 !important; --ink2:#93A6BC !important; --ink3:#6E8299 !important; --ink-soft:#93A6BC !important; --tx:#F4EFE4 !important; --tx2:#93A6BC !important; --tx3:#6E8299 !important; --txt:#F4EFE4 !important; --txt2:#93A6BC !important; --txt3:#6E8299 !important; --text:#F4EFE4 !important; --body:#F4EFE4 !important; --fg:#F4EFE4 !important; --muted:#93A6BC !important; --muted2:#6E8299 !important; --sub:#93A6BC !important; --sub2:#6E8299 !important; --dim:#6E8299 !important; --gold:#C9A86A !important; --gold2:#D9C79B !important; --gold-deep:#C9A86A !important; --gold-dim:#A08442 !important; --gold-soft:rgba(201,168,106,.16) !important; --accent:#C9A86A !important; --accent-soft:rgba(201,168,106,.14) !important; --hl:#2A2418 !important; --hl-ink:#F4EFE4 !important; --codebg:#12263C !important; --hover:rgba(201,168,106,.12) !important; --red:#E38B84 !important; --green:#8FBFA1 !important; --blue:#7BA6C9 !important; --jade:#6FB3B1 !important; --purple:#9A8FC0 !important; --amber:#C9A86A !important; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25) !important;}html[data-theme="dark"]{color-scheme:dark}html[data-theme="dark"],html[data-theme="dark"] body{background-color:#091A2E !important;color:#F4EFE4 !important}
+</style>
+<!-- DARK_UNIFY_END -->
+<!-- SUB_THEME_KIT_START -->
+<link rel="stylesheet" href="/theme-light.css?v=3">
+<!-- SUB_THEME_KIT_END -->
+</head>
+<body data-ch="docs-ch08">
+<header class="page-head">
+<div class="kicker">刑事辩护实录 · 配套文书（虚构示例）</div>
+<h1>第八章配套法律文书全文</h1>
+<div class="sub">本套文书以赵明退房后将手表遗落在酒店客房，保洁员刘芳依排房任务进入清洁，发现后隐瞒并带回家的虚构案件为背景。核心不是证明手表最终在刘芳家中，而是审查赵明退房后财物由谁占有、酒店是否形成管理占有、刘芳最初接触手表是否具有职责基础、非法占有目的何时形成，以及是否存在拒不退还或拒不交出。</div>
+</header>
+<div class="wrap">
+<p class="volband">第二卷财物迷局</p>
+<p>酒店遗落的手表</p>
+<p>适用阶段：接报案、立案审查、侦查核查、刑事自诉、和解及一审辩护</p>
+<p>使用说明</p>
+<p>退房、房卡交还、房态变更和门锁权限共同决定客房控制状态。</p>
+<p>遗忘物不等于无人占有物，更不等于遗弃物。</p>
+<p>员工违反酒店制度不当然等于盗窃。</p>
+<p>说谎可证明非法占有目的，但不能单独区分盗窃与侵占。</p>
+<p>如仅符合侵占结构，应审查告诉才处理及刑事自诉路径。</p>
+<h3>文书目录</h3><ol>
+<li>盗窃罪与侵占罪构成要件对照表</li>
+<li>酒店遗留物占有状态审查表</li>
+<li>客房控制权时间轴</li>
+<li>客人退房后财物占有分析意见</li>
+<li>酒店管理占有法律分析意见</li>
+<li>保洁员岗位职责与财物控制权限审查表</li>
+<li>非法占有目的形成时间审查表</li>
+<li>遗忘物、遗失物与遗弃物对比表</li>
+<li>调取酒店门锁记录申请书</li>
+<li>调取房态变更日志申请书</li>
+<li>调取原始走廊监控申请书</li>
+<li>调取工作群聊天记录申请书</li>
+<li>调取酒店遗留物制度申请书</li>
+<li>酒店主管询问提纲</li>
+<li>保洁领班询问提纲</li>
+<li>被害人询问提纲</li>
+<li>行为人首次会见提纲</li>
+<li>供述一致性审查表</li>
+<li>手表提取程序审查表</li>
+<li>手表价格认定异议书</li>
+<li>申请补充价格认定书</li>
+<li>盗窃案件不予立案法律意见书</li>
+<li>变更案件定性法律意见书</li>
+<li>公安机关管辖异议法律意见</li>
+<li>侵占罪刑事自诉状</li>
+<li>侵占罪自诉案件证据目录</li>
+<li>拒不退还事实说明</li>
+<li>返还原物通知书</li>
+<li>手表返还确认书</li>
+<li>检测及保养费用清单</li>
+<li>赔偿和解协议书</li>
+<li>被害人谅解书</li>
+<li>撤回刑事自诉申请书</li>
+<li>刑事自诉庭审发问提纲</li>
+<li>一审辩护意见</li>
+</ol>
+<h2>文书一：盗窃罪与侵占罪构成要件对照表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>要素</th>
+<th>盗窃罪</th>
+<th>侵占罪</th>
+<th>本案核查</th>
+</tr>
+<tr>
+<td>原占有</td>
+<td>财物由他人占有</td>
+<td>行为人已持有或取得遗忘物</td>
+<td>退房后酒店管理、保洁履职</td>
+</tr>
+<tr>
+<td>取得方式</td>
+<td>秘密破坏他人占有</td>
+<td>对先前持有财物据为己有</td>
+<td>清洁中发现并控制</td>
+</tr>
+<tr>
+<td>犯意时间</td>
+<td>取得前或取得时</td>
+<td>持有后产生亦可</td>
+<td>发现、拿起、放入口袋的节点</td>
+</tr>
+<tr>
+<td>后续行为</td>
+<td>转移、藏匿可印证</td>
+<td>拒不退还、拒不交出为要件</td>
+<td>群内否认、带回家</td>
+</tr>
+<tr>
+<td>程序</td>
+<td>公诉</td>
+<td>告诉才处理</td>
+<td>需分流</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二：酒店遗留物占有状态审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>主体/状态</th>
+<th>控制依据</th>
+<th>本案事实</th>
+<th>结论</th>
+</tr>
+<tr>
+<td>赵明</td>
+<td>住宿及随身控制</td>
+<td>11:22退房、房卡交回、离店</td>
+<td>直接控制减弱/待评</td>
+</tr>
+<tr>
+<td>酒店</td>
+<td>门锁、房态、经营管理</td>
+<td>待清洁、授权员工进入、遗留物制度</td>
+<td>概括管理占有</td>
+</tr>
+<tr>
+<td>刘芳</td>
+<td>排房、清洁、检查职责</td>
+<td>工作卡进入、发现遗留物</td>
+<td>职责性先行控制/待评</td>
+</tr>
+<tr>
+<td>外来人员</td>
+<td>无进入权限</td>
+<td>不涉及</td>
+<td>秘密取走倾向盗窃</td>
+</tr>
+<tr>
+<td>酒店保管柜</td>
+<td>登记、封袋、入库</td>
+<td>本案尚未进入</td>
+<td>如从柜中取走倾向盗窃</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三：客房控制权时间轴</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>控制状态</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>11:22</td>
+<td>赵明办理退房、交回房卡</td>
+<td>排他使用结束</td>
+<td>前台记录</td>
+</tr>
+<tr>
+<td>11:25</td>
+<td>赵明离开酒店</td>
+<td>客人离场</td>
+<td>监控</td>
+</tr>
+<tr>
+<td>11:39</td>
+<td>主管发布清洁任务</td>
+<td>酒店安排接管</td>
+<td>工作群</td>
+</tr>
+<tr>
+<td>11:41</td>
+<td>刘芳刷卡进入1216房</td>
+<td>授权履职进入</td>
+<td>门锁记录</td>
+</tr>
+<tr>
+<td>约11:51</td>
+<td>刘芳离开</td>
+<td>手表状态待查</td>
+<td>走廊监控</td>
+</tr>
+<tr>
+<td>11:53</td>
+<td>赵明电话寻找</td>
+<td>权利人明确追索</td>
+<td>通话记录</td>
+</tr>
+<tr>
+<td>11:55</td>
+<td>群内发布寻找信息</td>
+<td>酒店启动查找</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>11:58—12:02</td>
+<td>刘芳返回假装查找</td>
+<td>继续否认</td>
+<td>监控、证言</td>
+</tr>
+<tr>
+<td>13:07</td>
+<td>刘芳离店</td>
+<td>手表被带离</td>
+<td>监控</td>
+</tr>
+</table></div>
+</div>
+<h2>文书四：客人退房后财物占有分析意见</h2>
+<div class="docbox">
+<p>客人退房后财物占有分析意见</p>
+<p>赵明交回房卡、完成退房并携行李离店，其对1216房的排他使用已经结束。但手表并未成为无人占有或遗弃物。酒店通过门锁、房态系统、排房任务和遗留物制度重新控制客房，可能对房内遗留物形成概括管理。</p>
+<p>刘芳是否破坏他人占有，须进一步判断其作为清洁和遗留物检查执行者，首次接触、控制手表是否属于酒店管理占有的具体实现。</p>
+</div>
+<h2>文书五：酒店管理占有法律分析意见</h2>
+<div class="docbox">
+<p>酒店管理占有法律分析意见</p>
+<p>酒店在退房后掌握房门和门锁权限；</p>
+<p>1216房由在住转为待清洁；</p>
+<p>仅授权员工可进入；</p>
+<p>酒店制定遗留物登记、拍照、封袋和保管制度；</p>
+<p>保洁员承担发现、报告和移交职责；</p>
+<p>手表尚未登记入库，不等于酒店毫无控制；</p>
+<p>酒店管理占有通过具体员工履职实现，不可机械把所有员工均视为外部第三人。</p>
+</div>
+<h2>文书六：保洁员岗位职责与财物控制权限审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>事项</th>
+<th>制度/实际</th>
+<th>权限边界</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>进入退房客房</td>
+<td>依排房单、工作卡</td>
+<td>有权</td>
+<td>排班、门锁</td>
+</tr>
+<tr>
+<td>检查遗留物</td>
+<td>清洁时查验</td>
+<td>有职责</td>
+<td>岗位说明</td>
+</tr>
+<tr>
+<td>拿起、必要控制</td>
+<td>防止遗失、等待移交</td>
+<td>有限正当基础</td>
+<td>流程、证言</td>
+</tr>
+<tr>
+<td>装私人衣袋</td>
+<td>制度要求原地报告/专用袋</td>
+<td>原则上无权</td>
+<td>制度</td>
+</tr>
+<tr>
+<td>单独带离酒店</td>
+<td>明确禁止</td>
+<td>无权</td>
+<td>签收表</td>
+</tr>
+<tr>
+<td>登记封存</td>
+<td>两人核对、交主管</td>
+<td>应履行</td>
+<td>登记表</td>
+</tr>
+<tr>
+<td>从保管柜取走</td>
+<td>无处分权限</td>
+<td>属于破坏现实占有</td>
+<td>本案不涉及</td>
+</tr>
+</table></div>
+</div>
+<h2>文书七：非法占有目的形成时间审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>节点</th>
+<th>客观事实</th>
+<th>盗窃指向</th>
+<th>侵占指向</th>
+</tr>
+<tr>
+<td>进入房间前</td>
+<td>正常自动排房、未知手表存在</td>
+<td>无预谋证据</td>
+<td>支持正常履职</td>
+</tr>
+<tr>
+<td>进入后清洁</td>
+<td>先拉窗帘、收垃圾、换床单</td>
+<td>未直奔目标</td>
+<td>支持偶然发现</td>
+</tr>
+<tr>
+<td>发现并拿起</td>
+<td>查看数秒</td>
+<td>如立即决定藏匿则不利</td>
+<td>拿起本身具有检查基础</td>
+</tr>
+<tr>
+<td>放入口袋</td>
+<td>私人控制增强</td>
+<td>取得时犯意可能</td>
+<td>也可能从职责持有转为据有</td>
+</tr>
+<tr>
+<td>群内询问</td>
+<td>说没看到</td>
+<td>非法占有明确</td>
+<td>拒不交出表现</td>
+</tr>
+<tr>
+<td>带回家藏匿</td>
+<td>衣柜布袋</td>
+<td>持续占有</td>
+<td>侵占行为完成指向</td>
+</tr>
+<tr>
+<td>无出售佩戴</td>
+<td>状态未变</td>
+<td>不消除犯罪</td>
+<td>可减轻主观恶性</td>
+</tr>
+</table></div>
+</div>
+<h2>文书八：遗忘物、遗失物与遗弃物对比表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>类型</th>
+<th>典型特征</th>
+<th>本案对应</th>
+<th>法律审查</th>
+</tr>
+<tr>
+<td>遗忘物</td>
+<td>遗留在可确定特定场所，权利人能回忆位置</td>
+<td>酒店1216房床头附近</td>
+<td>继续审查场所管理占有和取得方式</td>
+</tr>
+<tr>
+<td>遗失物</td>
+<td>脱离控制且难确定具体地点</td>
+<td>不符合主要事实</td>
+<td>拾得后据有及拒不交出</td>
+</tr>
+<tr>
+<td>遗弃物</td>
+<td>所有人以客观行为放弃所有权</td>
+<td>名贵完整手表，无放弃表示</td>
+<td>无合理依据认定</td>
+</tr>
+<tr>
+<td>垃圾/消耗品</td>
+<td>通常体现放弃或使用完毕</td>
+<td>空瓶、外卖盒</td>
+<td>与手表明显不同</td>
+</tr>
+</table></div>
+</div>
+<h2>文书九：调取酒店门锁记录申请书</h2>
+<div class="docbox">
+<p>调取酒店门锁记录申请书</p>
+<p>调取赵明房卡交还及失效时间；</p>
+<p>调取1216房客用卡、工作卡、应急卡完整开门记录；</p>
+<p>核实刘芳两次进入的卡号和身份；</p>
+<p>核实是否有人在相关时段进入；</p>
+<p>说明门锁系统时间、时区及导出方式；</p>
+<p>保留原始数据并制作提取笔录。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十：调取房态变更日志申请书</h2>
+<div class="docbox">
+<p>调取房态变更日志申请书</p>
+<p>调取1216房在住、退房、待清洁、清洁完成等状态变更；</p>
+<p>记录操作时间、工号和终端；</p>
+<p>调取退房结算和房卡回收记录；</p>
+<p>调取清洁任务生成与分配过程；</p>
+<p>核实是否有人手工修改日志；</p>
+<p>提供原始导出及系统说明。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十一：调取原始走廊监控申请书</h2>
+<div class="docbox">
+<p>调取原始走廊监控申请书</p>
+<p>调取赵明离房、刘芳两次进出、领班复查及刘芳离店的完整时段；</p>
+<p>调取原始码流、设备编号和拍摄方向；</p>
+<p>核对监控与门锁、工作群时间；</p>
+<p>避免仅提供剪辑片段；</p>
+<p>计算哈希值并制作提取笔录。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十二：调取工作群聊天记录申请书</h2>
+<div class="docbox">
+<p>调取工作群聊天记录申请书</p>
+<p>调取原始群聊及成员信息；</p>
+<p>固定11:39清洁任务、11:55寻表消息、主管点名及刘芳回复；</p>
+<p>核实消息时间、撤回、删除和阅读状态；</p>
+<p>保留上下文和附件；</p>
+<p>固定原始手机或平台导出方式；</p>
+<p>计算哈希值。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十三：调取酒店遗留物制度申请书</h2>
+<div class="docbox">
+<p>调取酒店遗留物制度申请书</p>
+<p>调取案发时有效版本；</p>
+<p>调取刘芳签收和培训材料；</p>
+<p>调取贵重物品报告、拍照、封袋、移交和保管流程；</p>
+<p>调取过去一年遗留物登记簿；</p>
+<p>调取刘芳此前上交耳机、钱包和项链记录；</p>
+<p>说明制度实际执行与书面规定是否一致。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书十四：酒店主管询问提纲</h2>
+<div class="docbox">
+<p>退房后客房由谁控制、何时交保洁？</p>
+<p>排房任务如何生成，刘芳是否主动争取1216房？</p>
+<p>遗留物制度实际如何执行？</p>
+<p>保洁员能否先将贵重物品放入专用袋？</p>
+<p>11:55群消息为何发出，刘芳何时读到？</p>
+<p>刘芳回复及返回复查的完整经过？</p>
+<p>酒店何时明确要求返还或交出？</p>
+<p>酒店是否已登记、封存或实际接管手表？</p>
+<p>刘芳此前上交遗留物情况？</p>
+<p>酒店内部处理与刑事定性的依据分别是什么？</p>
+</div>
+<h2>文书十五：保洁领班询问提纲</h2>
+<div class="docbox">
+<p>何时接到复查1216房安排？</p>
+<p>进入前后见到刘芳及清洁车何种状态？</p>
+<p>复查范围、时长和结果？</p>
+<p>床头柜与床垫之间是否易发现？</p>
+<p>刘芳第一次清洁是否符合常规顺序？</p>
+<p>刘芳是否主动调换或特别关注该房？</p>
+<p>贵重遗留物通常由谁拿起、装袋、登记？</p>
+<p>是否有人看见刘芳将物品放入口袋或私人包？</p>
+</div>
+<h2>文书十六：被害人询问提纲</h2>
+<div class="docbox">
+<p>入住、退房和离店准确时间；</p>
+<p>最后一次佩戴、摘下和放置手表的位置；</p>
+<p>是否确认已带齐物品，是否准备返回房间；</p>
+<p>何时发现遗失及首次电话内容；</p>
+<p>能否提供购买、编号、佩戴照片和维修资料；</p>
+<p>何时明确要求酒店或刘芳返还；</p>
+<p>手表返还时外观、功能和表带状态；</p>
+<p>检测、保养、交通等实际损失；</p>
+<p>是否愿意和解、谅解或提起自诉。</p>
+</div>
+<h2>文书十七：行为人首次会见提纲</h2>
+<div class="docbox">
+<p>如何获得1216房任务，是否事先知道手表存在？</p>
+<p>进入后按何顺序清洁，何时在哪里发现？</p>
+<p>拿起时准备如何处理，为何放入口袋？</p>
+<p>是否有专用遗留物袋，为什么没有报告？</p>
+<p>何时看到群消息，为何回复没看到？</p>
+<p>为何再次返回房间假装寻找？</p>
+<p>下班后为何带回家并放衣柜布袋？</p>
+<p>是否佩戴、调整、询价、出售或典当？</p>
+<p>何时得知失主明确寻找和返还要求？</p>
+<p>民警到场前为何未主动交出？</p>
+<p>对返还、检测、赔偿和道歉有何安排？</p>
+</div>
+<h2>文书十八：供述一致性审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>争点</th>
+<th>第一次</th>
+<th>后续供述</th>
+<th>客观印证</th>
+</tr>
+<tr>
+<td>发现位置</td>
+<td>____</td>
+<td>床头柜与床垫缝隙</td>
+<td>被害人陈述、现场</td>
+</tr>
+<tr>
+<td>放入口袋原因</td>
+<td>怕丢、暂存</td>
+<td>觉得值钱想自己戴</td>
+<td>制度、行为链</td>
+</tr>
+<tr>
+<td>群内否认</td>
+<td>忙忘了</td>
+<td>已经不想交</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>带回家原因</td>
+<td>第二天交</td>
+<td>藏在家里</td>
+<td>住所提取</td>
+</tr>
+<tr>
+<td>出售佩戴</td>
+<td>否认</td>
+<td>未出售未佩戴</td>
+<td>手机、手表状态</td>
+</tr>
+<tr>
+<td>最终交出</td>
+<td>主动/其他</td>
+<td>检查住所前承认</td>
+<td>执法录像</td>
+</tr>
+</table></div>
+</div>
+<h2>文书十九：手表提取程序审查表</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>环节</th>
+<th>事实/文书</th>
+<th>审查结果</th>
+</tr>
+<tr>
+<td>进入住所依据</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>刘芳取出位置</td>
+<td>卧室衣柜布袋</td>
+<td>____</td>
+</tr>
+<tr>
+<td>在场人员</td>
+<td>刘芳、家属、民警/实际</td>
+<td>____</td>
+</tr>
+<tr>
+<td>原始状态拍照录像</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>品牌型号编号</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>扣押/提取清单</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>封装保管</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>真伪及功能检测</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>返还赵明</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十：手表价格认定异议书</h2>
+<div class="docbox">
+<p>手表价格认定异议书</p>
+<p>核实名牌、型号、编号及真伪；</p>
+<p>核实购买时间、渠道和实际成交价；</p>
+<p>核实使用年限、外观磨损及保养历史；</p>
+<p>核实是否维修、更换配件或存在功能问题；</p>
+<p>说明基准日、市场样本、折旧和调整过程；</p>
+<p>不得以品牌知名度替代个体价值认定。</p>
+<p>此致</p>
+<p>__________价格认定机构/办案机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十一：申请补充价格认定书</h2>
+<div class="docbox">
+<p>申请补充价格认定书</p>
+<p>补充移送购买发票、支付记录和保修卡；</p>
+<p>补充核对品牌官方编号及真伪；</p>
+<p>补充移送案发前佩戴照片、维修保养记录；</p>
+<p>记录返还时外观和功能状态；</p>
+<p>说明二手市场样本及成新率；</p>
+<p>对原价值结论作维持、调整或更正。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十二：盗窃案件不予立案法律意见书</h2>
+<div class="docbox">
+<p>关于刘芳涉嫌盗窃案不予立案的法律意见书</p>
+<p>赵明已退房，房卡失效，客房由酒店接管；</p>
+<p>刘芳依正常排房任务合法进入；</p>
+<p>刘芳负有清洁、检查和移交遗留物职责；</p>
+<p>无证据证明事前知道手表存在或争取目标房间；</p>
+<p>首次接触手表具有职责基础；</p>
+<p>隐瞒、带离和藏匿证明非法占有，但不足以证明从一开始秘密破坏他人占有；</p>
+<p>现有事实更接近先行持有后据为己有。</p>
+<p>请求不以盗窃罪立案或继续侦查，并依法说明可能的侵占自诉救济路径。</p>
+<p>此致</p>
+<p>__________公安机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十三：变更案件定性法律意见书</h2>
+<div class="docbox">
+<p>变更案件定性法律意见书</p>
+<p>如案件已经按盗窃罪受理或采取措施，请根据退房记录、房态日志、门锁数据、岗位职责和犯意形成证据，重新审查取得方式。</p>
+<p>刘芳的错误和非法占有不应被无罪化，但在不能排除其基于职责先行控制手表、之后才产生据有故意的情况下，不宜继续按盗窃公诉案件处理。应依法变更定性并告知被害人自诉权利。</p>
+<p>此致</p>
+<p>__________公安机关/人民检察院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十四：公安机关管辖异议法律意见</h2>
+<div class="docbox">
+<p>公安机关管辖异议法律意见</p>
+<p>被害人可以报警，公安机关可先行核查是否存在盗窃等公诉犯罪；</p>
+<p>如查明仅可能构成侵占，应停止按普通公诉案件推进；</p>
+<p>侵占案件原则上由被害人向有管辖权的人民法院提起刑事自诉；</p>
+<p>公安机关应妥善固定并依法移交或提供可供自诉使用的材料；</p>
+<p>程序分流不影响返还、赔偿及劳动纪律责任。</p>
+<p>此致</p>
+<p>__________公安机关</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十五：侵占罪刑事自诉状</h2>
+<div class="docbox">
+<p>刑事自诉状</p>
+<p class="kv"><b>自诉人</b>　赵明，身份信息__________。被告人：刘芳，身份信息__________。</p>
+<p>诉讼请求</p>
+<p>依法追究刘芳侵占罪的刑事责任；</p>
+<p>责令返还原物；原物已返还的，确认返还情况；</p>
+<p>依法处理与案件直接相关的损失及费用；</p>
+<p>诉讼费用依法承担。</p>
+<p>事实与理由</p>
+<p>赵明于____年__月__日退房后将涉案手表遗忘在1216房。刘芳依工作安排进入清洁并取得手表，在酒店和赵明明确寻找、要求交出后，仍作否认并将手表带回家藏匿。手表价值人民币__________元。相关事实由退房记录、门锁记录、监控、工作群、供述、提取笔录及价格材料证明。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书二十六：侵占罪自诉案件证据目录</h2>
+<div class="docbox">
+<p>自诉人、被告人身份材料；</p>
+<p>手表购买发票、支付记录、编号和佩戴照片；</p>
+<p>入住、退房、房卡交还及离店记录；</p>
+<p>房态日志、门锁记录和排房任务；</p>
+<p>走廊原始监控；</p>
+<p>工作群寻找、点名和否认记录；</p>
+<p>酒店遗留物制度及刘芳签收培训；</p>
+<p>刘芳历次供述；</p>
+<p>住所提取笔录、录像和扣押清单；</p>
+<p>权利人催告、拒不交出和最终交付材料；</p>
+<p>价格认定；</p>
+<p>返还、检测、赔偿及损失材料。</p>
+</div>
+<h2>文书二十七：拒不退还事实说明</h2>
+<div class="docbox">
+<p>拒不退还、拒不交出事实说明</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>节点</th>
+<th>行为</th>
+<th>证据</th>
+</tr>
+<tr>
+<td>11:53</td>
+<td>赵明电话要求酒店寻找</td>
+<td>通话记录</td>
+</tr>
+<tr>
+<td>11:55</td>
+<td>主管群内发布手表特征</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>11:57</td>
+<td>主管点名刘芳</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>随后</td>
+<td>刘芳回复没看到</td>
+<td>原始聊天</td>
+</tr>
+<tr>
+<td>11:58—12:02</td>
+<td>返回房间假装复查</td>
+<td>监控、主管证言</td>
+</tr>
+<tr>
+<td>下班后</td>
+<td>带回家藏于衣柜</td>
+<td>供述、提取</td>
+</tr>
+<tr>
+<td>酒店调查</td>
+<td>继续否认</td>
+<td>调查记录</td>
+</tr>
+<tr>
+<td>民警询问</td>
+<td>起初未承认</td>
+<td>询问笔录</td>
+</tr>
+<tr>
+<td>住所检查前</td>
+<td>交出手表</td>
+<td>执法录像</td>
+</tr>
+</table></div>
+</div>
+<h2>文书二十八：返还原物通知书</h2>
+<div class="docbox">
+<p>返还原物通知书</p>
+<p class="kv"><b>致刘芳</b>　赵明主张涉案手表为本人所有，现要求于____年__月__日前将手表完整交至__________，并共同核对品牌、型号、编号、外观及功能。</p>
+<p>如对权属、返还方式或费用存在异议，请于收到本通知后____日内书面提出。返还不影响双方对责任性质、损失和其他救济的依法处理。</p>
+<p class="kv"><b>通知人</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书二十九：手表返还确认书</h2>
+<div class="docbox">
+<p>手表返还确认书</p>
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>确认内容</th>
+</tr>
+<tr>
+<td>品牌、型号</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>编号</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>表壳、表盘、表带</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>功能状态</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>附件</td>
+<td>盒、卡、票据：__________</td>
+</tr>
+<tr>
+<td>返还时间地点</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>是否需检测保养</td>
+<td>__________</td>
+</tr>
+<tr>
+<td>保留争议</td>
+<td>__________</td>
+</tr>
+</table></div>
+<p class="kv"><b>返还人</b>　__________    接收人：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十：检测及保养费用清单</h2>
+<div class="docbox">
+<div class="tblwrap"><table class="dtable">
+<tr>
+<th>项目</th>
+<th>机构/票据</th>
+<th>金额</th>
+<th>必要性</th>
+</tr>
+<tr>
+<td>真伪检测</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>机芯功能检测</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>防水检测</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>外观检查</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>清洁保养</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>交通、寄送</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>其他合理支出</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</table></div>
+</div>
+<h2>文书三十一：赔偿和解协议书</h2>
+<div class="docbox">
+<p>赔偿和解协议书</p>
+<p>刘芳已于____年__月__日返还涉案手表；</p>
+<p>刘芳承担检测、保养、交通等合理费用人民币__________元；</p>
+<p>刘芳另行自愿补偿人民币__________元；</p>
+<p>赵明确认收取手表及全部约定款项；</p>
+<p>刘芳就隐瞒、带离和未及时交出行为书面道歉；</p>
+<p>赵明是否谅解及是否继续自诉，由赵明依法自愿决定；</p>
+<p>双方不以和解为由作虚假陈述。</p>
+<p class="kv"><b>甲方</b>　__________    乙方：__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十二：被害人谅解书</h2>
+<div class="docbox">
+<p>谅解书</p>
+<p>本人赵明系本案手表所有人。涉案手表已经完整返还，刘芳已承担检测、保养和合理支出，并作出书面道歉。本人在充分了解事实和法律后，自愿对刘芳表示谅解。</p>
+<p>本谅解不把非法占有改写为临时保管，不包含虚假陈述。本人是否提起或继续刑事自诉，依法自主决定。</p>
+<p class="kv"><b>被害人</b>　__________</p>
+<p class="kv"><b>日期</b>　____年__月__日</p>
+</div>
+<h2>文书三十三：撤回刑事自诉申请书</h2>
+<div class="docbox">
+<p>撤回刑事自诉申请书</p>
+<p>申请人赵明与被告人刘芳就涉案手表返还、检测、保养及合理费用已经达成并履行和解。申请人基于真实、自愿意思表示，申请撤回本案刑事自诉。</p>
+<p>申请人已知悉撤回申请的法律后果，请人民法院依法审查。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+</div>
+<h2>文书三十四：刑事自诉庭审发问提纲</h2>
+<div class="docbox">
+<p>询问赵明</p>
+<p>退房和发现遗失时间？</p>
+<p>最后放置位置及首次寻找内容？</p>
+<p>何时明确要求返还？</p>
+<p>权属、价值和实际损失？</p>
+<p>询问刘芳</p>
+<p>为何有权进入1216房？</p>
+<p>何时发现并拿起手表？</p>
+<p>非法占有想法何时形成？</p>
+<p>为何群内否认并假装复查？</p>
+<p>为何带回家藏匿？</p>
+<p>何时知道赵明明确寻找？</p>
+<p>为何一直未交出？</p>
+<p>询问酒店人员</p>
+<p>客房和遗留物管理权限？</p>
+<p>保洁员能否先行控制遗留物？</p>
+<p>何时催告刘芳交出？</p>
+</div>
+<h2>文书三十五：一审辩护意见</h2>
+<div class="docbox">
+<p>刘芳涉嫌侵占/盗窃案一审辩护意见</p>
+<p>一、不应仅凭手表名贵、刘芳说谎即认定盗窃</p>
+<p>盗窃与侵占均可伴随隐瞒和非法占有。区分关键在于刘芳取得手表时是否秘密破坏他人占有，还是基于清洁、检查和移交职责先行控制后再据为己有。</p>
+<p>二、现有证据不足以证明取得前已有盗窃故意</p>
+<p>正常排房；</p>
+<p>事前不知手表存在；</p>
+<p>未主动争取1216房；</p>
+<p>按常规顺序清洁；</p>
+<p>无预谋、踩点或工具；</p>
+<p>没有从登记保管柜中取走。</p>
+<p>三、后续行为具有非法占有和拒不交出性质</p>
+<p>群内否认、假装复查、带回家藏匿及调查时继续否认，不能作无责解释。若达到相应条件，更接近侵占结构和自诉程序。</p>
+<p>四、处理意见</p>
+<p>请求依法排除盗窃罪评价；如审理侵占，自愿返还、完整保存、赔偿检测保养费用、取得谅解、无前科及既往上交遗留物记录应充分评价。</p>
+<p>此致</p>
+<p>__________人民法院</p>
+<p class="kv"><b>申请人／辩护人</b>　__________</p>
+<p>__________律师事务所</p>
+<p class="kv"><b>日期</b>　______年______月______日</p>
+<p class="kv"><b>附录一</b>　全案证据目录</p>
+<p>入住、退房、房卡和离店材料；</p>
+<p>房态、门锁、排房和走廊监控；</p>
+<p>遗留物制度、培训签收及既往上交记录；</p>
+<p>原始工作群和主管、领班证言；</p>
+<p>赵明权属、寻找和催告材料；</p>
+<p>刘芳供述、手机数据及住所提取；</p>
+<p>手表价格、真伪、功能、返还和检测；</p>
+<p>和解、赔偿、谅解及自诉程序材料。</p>
+<p class="kv"><b>附录二</b>　正式使用核验提示</p>
+<h3>1. 本套文书依据虚构案情制作，不对应真实人员或酒店。</h3>
+<h3>2. 盗窃、侵占、职务侵占及自诉程序，应结合行为时和办理时有效法律、数额标准与具体职责核验。</h3>
+<h3>3. 酒店管理占有不等于任一员工当然具有个人处分权，也不等于员工一律是破坏占有的外部第三人。</h3>
+<h3>4. 和解不得改变真实事实，返还、赔偿、谅解和撤诉应分别记录。</h3>
+</div>
+</div>
+<script src="assets/app.js"></script>
+<script src="/theme-toggle.js"></script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 2026-09-28 对齐个人页：鱼影只有一个真相源。
+   嵌入主站 iframe 时本页绝不自绘鱼影——主站的 AquaticLuxuryBackground（9 条月光鱼）
+   就在 iframe 后面，透明底直接透出；本页只把指针转发给主站，
+   让涟漪与鱼群聚拢跨 iframe 连续（与个人页行为一致）。
+   独立打开（新窗口/手机全屏）时动态加载 profile-bg.js——
+   与主站逐字节同参的鱼影引擎（9 条 / DARK_TONES / 聚拢+散开）。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
+<!-- SUB_THEME_BRIDGE_START -->
+<script>(function(){
+  if(window.__themeBridge)return;window.__themeBridge=1;
+  var r=document.documentElement;
+  function apply(m){
+    m=(m==='light')?'light':'dark';
+    r.setAttribute('data-theme',m);
+    try{ r.setAttribute('data-theme-default',m); }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('site-theme',{detail:m})); }catch(e){}
+  }
+  // 主站导航栏的太阳/月亮按钮 → ThemeIframe 用 postMessage 把模式推进来
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='theme'&&(d.mode==='light'||d.mode==='dark')){ apply(d.mode); }
+  });
+  function standalone(){ try{ return window.parent===window; }catch(e){ return false; } }
+  function addBtn(){
+    if(!standalone()||document.getElementById('theme-toggle-btn'))return;
+    // 子站自带的 assets/app.js 已经提供了主题按钮（#themeBtn）时不要再加，避免出现两个。
+    if(document.getElementById('themeBtn'))return;
+    var b=document.createElement('button');
+    b.id='theme-toggle-btn';b.type='button';
+    b.style.cssText=[
+      'position:fixed','top:56px','right:16px','z-index:9999',
+      'padding:6px 14px','border-radius:999px','cursor:pointer',
+      'font-size:13px','font-family:inherit',
+      'border:1px solid var(--line,#CFCABE)',
+      'background:var(--card,#FFFFFF)',
+      'color:var(--txt,#23201B)',
+      'box-shadow:0 1px 3px rgba(0,0,0,.08)',
+      'transition:border-color .15s,color .15s'
+    ].join(';');
+    if(window.matchMedia&&window.matchMedia('(max-width: 640px)').matches){
+      b.style.top='auto';b.style.bottom='16px';b.style.right='12px';b.style.padding='5px 10px';
+    }
+    function paint(){ b.textContent = r.getAttribute('data-theme')==='dark' ? '切换浅色' : '切换深色'; }
+    b.addEventListener('click',function(){
+      apply(r.getAttribute('data-theme')==='dark'?'light':'dark');
+      paint();
+    });
+    paint();
+    (document.body||r).appendChild(b);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',addBtn); }
+  else { addBtn(); }
+})();</script>
+<!-- SUB_THEME_BRIDGE_END -->
+</body>
+</html>

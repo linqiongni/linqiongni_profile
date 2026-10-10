@@ -286,10 +286,20 @@ def build_docs(stem, out_id):
             elif sub_idx is None and "虚构" in d:
                 sub_idx = bi
                 break
-    doc_title = blocks[title_idx][1].strip() if title_idx is not None else out_id
-    sub = blocks[sub_idx][1].strip() if sub_idx is not None else None
-    skip = {title_idx} if title_idx is not None else set()
-    if sub_idx is not None:
+    # 若首段实为「文书N：…」这类文书标题（如 ch10 源无整页标题行），
+    # 不能当作页标题，回退用「第X章配套法律文书全文」，且不从正文跳过该段（它属于文书正文）
+    fallback = False
+    if title_idx is not None and blocks[title_idx][1].strip().startswith("文书"):
+        num = _CN_NUM[int(out_id.replace("docs-ch", ""))]
+        doc_title = "第%s章配套法律文书全文" % num
+        fallback = True
+    else:
+        doc_title = blocks[title_idx][1].strip() if title_idx is not None else out_id
+    sub = blocks[sub_idx][1].strip() if (sub_idx is not None and not fallback) else None
+    skip = set()
+    if title_idx is not None and not fallback:
+        skip.add(title_idx)
+    if sub_idx is not None and not fallback:
         skip.add(sub_idx)
     out = []
     out.append('<header class="page-head">')
@@ -333,7 +343,7 @@ def build_docs(stem, out_id):
             out.append("</ol>")
             i = j
             continue
-        if re.match(r"^文书[一二三四五六七八九十]+[:：]", s):
+        if re.match(r"^文书[一二三四五六七八九十\d]+[:：]", s):
             if doc_open:
                 out.append("</div>")
             out.append("<h2>%s</h2>" % esc(s))
