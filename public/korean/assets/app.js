@@ -1,23 +1,39 @@
 /* ============================================================
- * 韩语笔记 · 交互
- * 纯前端,零依赖。内容来自 data.js。
- * 笔记存 localStorage(按技能 id),换设备不云同步——纯本地草稿。
+ * 韩语课程对照本 · 交互
+ * 纯前端，零依赖。内容来自 data.js。
+ * 目录 = 多邻国 App 的单元编号（第 N 单元），App 学到哪就点哪。
+ * 笔记 / 原句存 localStorage（按单元），只在本机浏览器。
  * ============================================================ */
 (function () {
   if (typeof window === 'undefined') return;
   var hasMM = !!(window.matchMedia);
   function narrow() { return hasMM ? window.matchMedia('(max-width: 1000px)').matches : (window.innerWidth < 1000); }
 
-  // 合并正式技能 + 占位技能
-  var skills = KO_SKILLS.map(function (s) { return s; });
-  KO_STUB.forEach(function (s) {
-    skills.push({ id: s[0], unit: s[1], title: s[2], titleZh: s[3], stub: true });
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ---------- 组装单元列表 ----------
+  var UNITS = [];
+  KO_UNITS_RAW.forEach(function (u) {
+    UNITS.push({ key: 'u' + u[0], no: u[0], sec: u[1], title: u[2], en: u[3] });
   });
-  var byId = {};
-  skills.forEach(function (s) { byId[s.id] = s; });
-  var order = skills.map(function (s) { return s.id; });
-  var unitNames = {};
-  KO_UNITS.forEach(function (u) { unitNames[u.id] = u.name; });
+  KO_EXTRA.forEach(function (e) {
+    UNITS.push({ key: e.id, no: null, sec: e.sec, title: e.title, en: '' });
+  });
+
+  var byKey = {};
+  var sections = {};
+  KO_SECTIONS.forEach(function (s) { sections[s.id] = s; });
+
+  UNITS.forEach(function (u) {
+    u.content = KO_CONTENT[u.no] || KO_CONTENT[u.key] || null;
+    u.search = (u.title + ' ' + (u.en || '') + ' ' + (u.no || '') + ' ' + (u.content ? JSON.stringify(u.content) : '')).toLowerCase();
+    byKey[u.key] = u;
+  });
+  var order = UNITS.map(function (u) { return u.key; });
+
+  function label(u) { return u.no ? ('第 ' + u.no + ' 单元 · ' + u.title) : u.title; }
 
   var side = document.getElementById('side');
   var main = document.getElementById('main');
@@ -26,23 +42,23 @@
   var prog = document.querySelector('#progress > i');
   var scrim = document.getElementById('scrim');
   var search = document.getElementById('search');
+  var jump = document.getElementById('jump');
   var cur = null;
 
-  // ---------- 侧栏 ----------
+  // ---------- 侧栏（按「部分」分组，每条 = 一个单元） ----------
   function buildSide(filter) {
     var html = '';
-    var groups = {};
-    skills.forEach(function (s) {
-      var t = (s.title + ' ' + s.titleZh + ' ' + (s.stub ? '待补' : '')).toLowerCase();
-      if (filter && t.indexOf(filter) === -1) return;
-      (groups[s.unit] = groups[s.unit] || []).push(s);
-    });
-    Object.keys(groups).forEach(function (uid) {
-      html += '<div class="unit">' + (unitNames[uid] || ('单元 ' + uid)) + '</div>';
-      groups[uid].forEach(function (s) {
-        var en = s.title.split('·')[0].trim();
-        html += '<a href="#' + s.id + '" data-id="' + s.id + '" class="' + (s.stub ? 'stub' : '') + '">' +
-          en + ' <span class="zh">' + s.titleZh.split(':')[0] + '</span></a>';
+    KO_SECTIONS.forEach(function (sec) {
+      var list = UNITS.filter(function (u) {
+        if (u.sec !== sec.id) return false;
+        if (filter && u.search.indexOf(filter) === -1) return false;
+        return true;
+      });
+      if (!list.length) return;
+      html += '<div class="unit">' + esc(sec.name) + ' <span class="rng">' + esc(sec.range) + '</span></div>';
+      list.forEach(function (u) {
+        html += '<a href="#' + u.key + '" data-key="' + u.key + '" class="' + (u.content ? '' : 'stub') + '">' +
+          '<span class="no">' + (u.no || '附') + '</span>' + esc(u.title) + '</a>';
       });
     });
     if (!html) html = '<div class="unit">无匹配</div>';
@@ -50,94 +66,109 @@
     highlightSide();
   }
   function highlightSide() {
-    var links = side.querySelectorAll('a');
-    links.forEach(function (a) {
-      if (a.getAttribute('data-id') === cur) a.classList.add('on');
-      else a.classList.remove('on');
+    side.querySelectorAll('a').forEach(function (a) {
+      a.classList.toggle('on', a.getAttribute('data-key') === cur);
     });
   }
 
-  // ---------- 渲染单篇 ----------
-  function esc(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-  function renderArticle(s) {
+  // ---------- 单篇 ----------
+  function renderArticle(u) {
+    var c = u.content || {};
+    var sec = sections[u.sec] || {};
     var parts = [];
     parts.push('<div class="article">');
-    parts.push('<span class="unit-tag">' + esc(unitNames[s.unit] || ('单元 ' + s.unit)) + '</span>');
-    parts.push('<h1>' + esc(s.title) + '</h1>');
-    parts.push('<div class="sub">' + esc(s.titleZh) + '</div>');
+    parts.push('<span class="unit-tag">' + esc(sec.name || '') + (u.no ? ' · 第 ' + u.no + ' 单元' : '') + '</span>');
+    parts.push('<h1>' + esc(u.title) + '</h1>');
+    parts.push('<div class="sub">' + (u.no ? '第 ' + u.no + ' 单元' : '附录') + (u.en ? ' · 课程内部名 ' + esc(u.en) : '') + '</div>');
+    if (c.goal) parts.push('<p class="goal">' + esc(c.goal) + '</p>');
 
-    if (s.stub) {
-      parts.push('<div class="tip"><b>本技能内容待补充。</b><br>这是多邻国韩语课程后续单元的导航占位。当你学到这一课时,把语法点和生词填进 <code>data.js</code> 里对应的项(加 grammar / vocab 字段),左侧目录和本页会自动更新。</div>');
+    if (!u.content) {
+      parts.push('<div class="tip"><b>本单元的讲解还没写。</b><br>' +
+        '目录结构已经按 App 的单元编号就位——你在 App 里学到第 ' + (u.no || '') + ' 单元时，' +
+        '把语法点和生词记在下面「我的笔记」里即可。需要我把这个单元的内容写满，跟我说单元号。</div>');
     } else {
-      (s.grammar || []).forEach(function (g) {
-        parts.push('<div class="block"><h4>' + esc(g.h) + '</h4>');
-        if (g.p) parts.push('<p>' + esc(g.p) + '</p>');
-        if (g.ex && g.ex.length) {
-          parts.push('<div class="ex">');
-          g.ex.forEach(function (e) {
-            parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
-          });
+      if (c.grammar && c.grammar.length) {
+        parts.push('<h2>语法要点</h2>');
+        c.grammar.forEach(function (g) {
+          parts.push('<div class="block"><h4>' + esc(g.h) + '</h4>');
+          if (g.p) parts.push('<p>' + esc(g.p) + '</p>');
+          if (g.ex && g.ex.length) {
+            parts.push('<div class="ex">');
+            g.ex.forEach(function (e) {
+              parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
+            });
+            parts.push('</div>');
+          }
           parts.push('</div>');
-        }
+        });
+      }
+      if (c.sent && c.sent.length) {
+        parts.push('<h2>本单元典型句型</h2><div class="ex sentbox">');
+        c.sent.forEach(function (e) {
+          parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
+        });
         parts.push('</div>');
-      });
-
-      if (s.vocab && s.vocab.length) {
+      }
+      if (c.vocab && c.vocab.length) {
         parts.push('<h2>词汇表</h2><div class="vocab">');
-        s.vocab.forEach(function (v) {
+        c.vocab.forEach(function (v) {
           parts.push('<div class="v"><div class="k">' + esc(v[0]) + '</div><div class="m">' + esc(v[1]) + ' · ' + esc(v[2]) + '</div></div>');
         });
         parts.push('</div>');
       }
-
-      if (s.tip) {
-        parts.push('<div class="tip"><b>学习提示 · </b>' + esc(s.tip) + '</div>');
-      }
+      if (c.tip) parts.push('<div class="tip"><b>学习提示 · </b>' + esc(c.tip) + '</div>');
     }
 
-    // 个人笔记
-    parts.push('<div class="notes"><div class="nt-h">📝 我的笔记 <span class="saved" id="saved">已保存</span></div>' +
-      '<textarea id="nta" placeholder="在这里写你自己的笔记——例句、易错点、和 App 里对不上的地方……内容只存在本机浏览器(localStorage),不会上传。"></textarea>' +
-      '<div class="hint">仅存本机浏览器,清缓存会丢;重要内容请另存。可随时回来续写。</div></div>');
+    // App 原句记录
+    parts.push('<div class="notes"><div class="nt-h">✎ App 原句记录 <span class="saved" id="savedS">已保存</span></div>' +
+      '<textarea id="snt" class="tight" placeholder="在 App 里遇到的句子，抄这里（韩文 + 中文）。下次翻到这个单元就能对上。只存本机浏览器。"></textarea>' +
+      '<div class="hint">按单元存：换到别的单元，这里就是它的句子本。</div></div>');
 
-    // 上一篇/下一篇
-    var i = order.indexOf(s.id);
-    var prev = i > 0 ? byId[order[i - 1]] : null;
-    var next = i < order.length - 1 ? byId[order[i + 1]] : null;
+    // 我的笔记
+    parts.push('<div class="notes"><div class="nt-h">📝 我的笔记 <span class="saved" id="savedN">已保存</span></div>' +
+      '<textarea id="nta" placeholder="语法点、易错点、和 App 对不上的地方……只存本机浏览器（localStorage），不上传。"></textarea>' +
+      '<div class="hint">清缓存会丢；重要内容请另存。可随时回来续写。</div></div>');
+
+    // 上一篇 / 下一篇
+    var i = order.indexOf(u.key);
+    var prev = i > 0 ? byKey[order[i - 1]] : null;
+    var next = i < order.length - 1 ? byKey[order[i + 1]] : null;
     parts.push('<div class="pager">');
-    parts.push(prev ? '<a class="prev" href="#' + prev.id + '"><span class="lab">← 上一篇</span>' + esc(prev.title.split('·')[0].trim()) + '</a>' : '<a class="prev disabled"><span class="lab">← 上一篇</span>已是第一篇</a>');
-    parts.push(next ? '<a class="next" href="#' + next.id + '"><span class="lab">下一篇 →</span>' + esc(next.title.split('·')[0].trim()) + '</a>' : '<a class="next disabled"><span class="lab">下一篇 →</span>已是最后一篇</a>');
+    parts.push(prev ? '<a class="prev" href="#' + prev.key + '"><span class="lab">← 上一单元</span>' + esc(label(prev)) + '</a>' : '<a class="prev disabled"><span class="lab">← 上一单元</span>已是第一个</a>');
+    parts.push(next ? '<a class="next" href="#' + next.key + '"><span class="lab">下一单元 →</span>' + esc(label(next)) + '</a>' : '<a class="next disabled"><span class="lab">下一单元 →</span>已是最后一个</a>');
     parts.push('</div>');
 
-    parts.push('<div class="footer-note">韩语笔记 · 对齐多邻国韩语课程(经典技能树) · 讲解为中文+韩文+罗马音,便于对照 App 做笔记</div>');
+    parts.push('<div class="footer-note">韩语课程对照本 · 目录与多邻国 App 的单元编号一一对应 · 讲解中文 + 韩文 + 罗马音</div>');
     parts.push('</div>');
 
     main.innerHTML = parts.join('');
-    wireNotes(s.id);
+    wireNotes(u.key);
     buildToc();
   }
 
   function renderHome() {
+    var n = UNITS.filter(function (u) { return !!u.content; }).length;
     var parts = [];
     parts.push('<div class="article">');
     parts.push('<span class="unit-tag">总览</span>');
-    parts.push('<h1>韩语笔记</h1>');
-    parts.push('<div class="sub">对齐多邻国韩语课程 · 中文讲解 + 韩文例句 + 罗马音 · 每课可写私人笔记</div>');
-    parts.push('<p>左边选一課开始。每课预填了语法讲解当底稿,底部「我的笔记」区可随手记——内容只存本机浏览器。后续单元已留导航位,学到再补。</p>');
-    parts.push('<div class="home-grid">');
-    var groups = {};
-    skills.forEach(function (s) { (groups[s.unit] = groups[s.unit] || []).push(s); });
-    Object.keys(groups).forEach(function (uid) {
-      groups[uid].forEach(function (s) {
-        parts.push('<a class="cell ' + (s.stub ? 'stub' : '') + '" href="#' + s.id + '">' +
-          '<div class="t">' + esc(s.title.split('·')[0].trim()) + '</div>' +
-          '<div class="z">' + esc(s.titleZh) + '</div>' +
-          '<div class="u">' + esc(unitNames[uid] || ('单元 ' + uid)) + '</div></a>');
+    parts.push('<h1>韩语课程对照本</h1>');
+    parts.push('<div class="sub">目录 = 多邻国 App 的单元编号 · 中文讲解 + 韩文 + 罗马音 · 每单元可记原句和笔记</div>');
+    parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，在这里左栏点同一个编号就行（比如学到「第 7 单元 庆祝生日」，就点第 7 单元）。' +
+      '不用搜索——编号一一对应。已写讲解的单元 ' + n + ' / ' + UNITS.length + ' 个，其余先占位，学到再补。</p>');
+    KO_SECTIONS.forEach(function (sec) {
+      var list = UNITS.filter(function (u) { return u.sec === sec.id; });
+      if (!list.length) return;
+      parts.push('<h2>' + esc(sec.name) + ' <span class="rng-h">' + esc(sec.range) + '</span></h2>');
+      parts.push('<div class="home-grid">');
+      list.forEach(function (u) {
+        parts.push('<a class="cell ' + (u.content ? '' : 'stub') + '" href="#' + u.key + '">' +
+          '<div class="t">' + (u.no ? '<span class="no">' + u.no + '</span>' : '') + esc(u.title) + '</div>' +
+          '<div class="z">' + esc(u.content && u.content.goal ? u.content.goal : (u.content ? '' : '待补')) + '</div>' +
+          '</a>');
       });
+      parts.push('</div>');
     });
-    parts.push('</div></div>');
+    parts.push('</div>');
     main.innerHTML = parts.join('');
     toc.innerHTML = '';
     if (prog) prog.style.width = '0%';
@@ -164,27 +195,29 @@
     });
   }
 
-  // ---------- 笔记 ----------
-  function wireNotes(id) {
-    var ta = document.getElementById('nta');
+  // ---------- 两个记录框 ----------
+  function bindBox(elId, badgeId, key) {
+    var ta = document.getElementById(elId);
     if (!ta) return;
-    var key = 'ko-notes-' + id;
     try { ta.value = localStorage.getItem(key) || ''; } catch (e) {}
-    var saved = document.getElementById('saved');
+    var badge = document.getElementById(badgeId);
     var t;
     ta.addEventListener('input', function () {
       try { localStorage.setItem(key, ta.value); } catch (e) {}
-      if (saved) { saved.classList.add('show'); clearTimeout(t); t = setTimeout(function () { saved.classList.remove('show'); }, 1200); }
+      if (badge) { badge.classList.add('show'); clearTimeout(t); t = setTimeout(function () { badge.classList.remove('show'); }, 1200); }
     });
   }
+  function wireNotes(id) {
+    bindBox('snt', 'savedS', 'ko-sent-' + id);
+    bindBox('nta', 'savedN', 'ko-note-' + id);
+  }
 
-  // ---------- 滚动:进度 + scrollspy ----------
+  // ---------- 滚动：进度 + scrollspy ----------
   function onScroll() {
     var scrollEl = narrow() ? document.documentElement : mainwrap;
     var max = (scrollEl.scrollHeight - scrollEl.clientHeight) || 1;
     var top = scrollEl.scrollTop || document.documentElement.scrollTop || 0;
     if (prog) prog.style.width = Math.min(100, (top / max) * 100) + '%';
-    // scrollspy
     var hs = main.querySelectorAll('.article h2, .article h3');
     var curH = null, best = -1;
     hs.forEach(function (h) {
@@ -199,23 +232,21 @@
   // ---------- 路由 ----------
   function route() {
     var id = (location.hash || '').replace('#', '');
-    if (!id || !byId[id]) { cur = null; renderHome(); closeDrawer(); return; }
+    if (!id || !byKey[id]) { cur = null; renderHome(); closeDrawer(); return; }
     cur = id;
-    renderArticle(byId[id]);
+    renderArticle(byKey[id]);
     highlightSide();
     if (!narrow()) mainwrap.scrollTop = 0; else window.scrollTo(0, 0);
     closeDrawer();
     onScroll();
   }
 
-  // ---------- 抽屉(手机) ----------
+  // ---------- 抽屉（手机） ----------
   function openDrawer() { side.classList.add('open'); scrim.classList.add('show'); }
   function closeDrawer() { side.classList.remove('open'); scrim.classList.remove('show'); }
 
   // ---------- 主题 ----------
-  function setTheme(mode) {
-    document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
-  }
+  function setTheme(mode) { document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light'); }
   function toggleTheme() {
     var now = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     var next = now === 'dark' ? 'light' : 'dark';
@@ -223,14 +254,21 @@
     try { localStorage.setItem('ko-theme', next); } catch (e) {}
   }
 
+  // ---------- 跳单元 ----------
+  function goUnit() {
+    var v = parseInt((jump.value || '').replace(/[^0-9]/g, ''), 10);
+    if (!v) return;
+    var hit = byKey['u' + v];
+    if (hit) location.hash = '#' + hit.key;
+  }
+
   // ---------- 初始化 ----------
   function init() {
     buildSide('');
-    // 主题:嵌入主站则等父页消息;独立打开则读本地/系统偏好
     var stored = null;
     try { stored = localStorage.getItem('ko-theme'); } catch (e) {}
     if (window.self !== window.top) {
-      setTheme('light'); // 默认,父页会再发一次
+      setTheme('light');
     } else {
       var sysDark = hasMM && window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(stored || (sysDark ? 'dark' : 'light'));
@@ -247,10 +285,10 @@
     if (search) {
       search.addEventListener('input', function () { buildSide(search.value.trim().toLowerCase()); });
     }
-    side.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (a && a.getAttribute('data-id')) { /* hash 改变触发 route */ }
-    });
+    if (jump) {
+      jump.addEventListener('keydown', function (e) { if (e.key === 'Enter') goUnit(); });
+      jump.addEventListener('change', goUnit);
+    }
     window.addEventListener('hashchange', route);
     mainwrap.addEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll);

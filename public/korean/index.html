@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>韩语笔记 · 对齐多邻国韩语课程</title>
+  <title>韩语课程对照本 · 对齐多邻国韩语单元</title>
   <link rel="stylesheet" href="assets/style.css" />
-  <!-- 嵌入主站时立即透明,避免闪色(JS 慢一拍会闪) -->
+  <!-- 嵌入主站时立即透明，避免闪色（JS 慢一拍会闪） -->
   <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
 <body>
   <div class="layout">
     <header class="topbar">
       <button id="menuBtn" class="menu-btn" aria-label="目录">☰</button>
-      <div class="brand">韩语笔记 <small>多邻国韩语 · 对照笔记</small></div>
+      <div class="brand">韩语课程对照本 <small>目录 = 多邻国 App 的单元编号</small></div>
       <div class="spacer"></div>
-      <input id="search" class="search" type="search" placeholder="搜索技能 / 中文…" />
+      <input id="jump" class="jump" type="number" min="1" max="130" inputmode="numeric" placeholder="跳到第 N 单元" aria-label="跳到第 N 单元" />
+      <input id="search" class="search" type="search" placeholder="搜标题 / 中文…" />
       <button id="themeBtn" class="menu-btn" aria-label="切换主题" title="切换深浅色">◐</button>
     </header>
     <div class="row">
