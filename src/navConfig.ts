@@ -80,7 +80,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Profile',
 
-    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes', 'humanities'],
+    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes', 'korean', 'humanities'],
 
   },
 
@@ -177,6 +177,9 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   insights: { label: '思考观点', enLabel: 'Insights' },
 
   notes: { label: '日常分享', enLabel: 'Notes' },
+  korean: { label: '韩语学习', enLabel: 'Korean' },
+  'korean-notes': { label: '学习笔记', enLabel: 'Study Notes' },
+  'korean-ref': { label: '韩语速查', enLabel: 'Quick Reference' },
 
   humanities: { label: '人文历史', enLabel: 'Humanities' },
 
@@ -221,6 +224,8 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 export const GROUP_OVERRIDES: Record<string, string> = {
   criminal: 'practice',
   'criminal-record': 'practice',
+  'korean-notes': 'profile',
+  'korean-ref': 'profile',
 };
 
 export const groupOfTab = (tab: TabType): string =>
