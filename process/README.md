@@ -147,7 +147,7 @@
 
 <!-- 每次写日志时往这个表里加一行，别删表头 -->
 | 日期 | 做了什么 | 影响的问题 |
-| 2026-10-15 | 新增「个人 · 韩语学习」tab（对标刑事辩护 hub）：profile.subTabs 加 `korean`，进入后二选一进「学习笔记」(`korean-notes`) /「韩语速查」(`korean-ref`)；改 types/navConfig/App + 新建 KoreanHubTab/KoreanNotesTab/KoreanRefTab；`public/korean-ref/` 公共领域韩语入门书面材料（字母/发音/语法/常用语），`public/korean-notes/` 按单元可编辑笔记卡（localStorage 自动存+导出）。不搬运多邻国版权内容，官方 Tips 走 duome 外链 | 本沙箱无外网，线上未自验 |
+| 2026-10-15 | 新增「个人 · 韩语笔记」tab（日常分享旁，label 韩语笔记）：**对齐多邻国的课程对照本**——`public/korean/` 单元→技能，每课预填中文+韩文+罗马音讲解+私人笔记（localStorage）；改 types/navConfig/App + 新建 KoreanTab。同日修正：用 Andy 提供的 zip 的课程对照静态站替换了首版（通用速查+空笔记模板+hub 两 tab），落点从 zip 默认的「影视·英语」改回用户要求的「个人」分组。不搬多邻国版权内容 | 本沙箱无外网，线上未自验 |
 
 |---|---|---|
 | 2026-10-09 | 新增「律师实务 · 刑事辩护实录（三十宗）」tab：生成器 `scripts/build_criminal_cases.py` 读根目录 Word 源 → `public/criminal-record/`（index + 第1–9章 + 2篇配套文书 + assets），复用刑事手册 B 布局（左分组目录/右页内目录/scrollspy/鱼影背景）；`apply-theme-kit --fix` 注入补丁 12/12 通过；`App.tsx` 补渲染分支，与既有 `CriminalRecordTab` 接线 | — |
