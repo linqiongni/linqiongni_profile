@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>韩语笔记 · 对齐多邻国韩语课程</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <!-- 嵌入主站时立即透明,避免闪色(JS 慢一拍会闪) -->
+  <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
+</head>
+<body>
+  <div class="layout">
+    <header class="topbar">
+      <button id="menuBtn" class="menu-btn" aria-label="目录">☰</button>
+      <div class="brand">韩语笔记 <small>多邻国韩语 · 对照笔记</small></div>
+      <div class="spacer"></div>
+      <input id="search" class="search" type="search" placeholder="搜索技能 / 中文…" />
+      <button id="themeBtn" class="menu-btn" aria-label="切换主题" title="切换深浅色">◐</button>
+    </header>
+    <div class="row">
+      <aside id="side" class="side"></aside>
+      <div class="mainwrap" id="mainwrap">
+        <div class="progress" id="progress"><i></i></div>
+        <div class="main" id="main"></div>
+      </div>
+      <aside id="toc" class="toc"></aside>
+    </div>
+  </div>
+  <div class="scrim" id="scrim"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
