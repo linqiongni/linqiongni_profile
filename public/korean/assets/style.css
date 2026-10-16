@@ -47,6 +47,25 @@ body {
 }
 html.embedded, html.embedded body { background: transparent; }
 
+/* 嵌入主站：透出固定的背景板 + 鱼影，自身不垫任何不透明底（只留玻璃描边 + 浅色字）。
+   根因：此前只有 body 透明，顶栏/侧栏/卡片仍用自己的 --card/--bg-alt 不透明色，
+   等于在 iframe 里又垫了一层底，把主站鱼影全盖住 →「鱼不随主题动」。 */
+html.embedded {
+  --bg: transparent !important;
+  --bg-alt: rgba(255, 255, 255, 0.045) !important;
+  --card: rgba(255, 255, 255, 0.06) !important;
+  --ink: #F4EFE4 !important;
+  --ink-2: #C9C3B8 !important;
+  --line: rgba(255, 255, 255, 0.14) !important;
+  --gold: #C9B079 !important;
+  --gold-d: #B89F6B !important;
+  --red: #E08A72 !important;
+  --green: #7FB98A !important;
+  --shadow: none !important;
+}
+/* 嵌入态跟随主站主题，隐藏子站自带的主题切换按钮（避免点了无效、误以为坏） */
+html.embedded #themeBtn { display: none; }
+
 a { color: var(--gold-d); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
