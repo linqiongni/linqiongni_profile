@@ -272,6 +272,18 @@
     try { stored = localStorage.getItem('ko-theme'); } catch (e) {}
     if (window.self !== window.top) {
       setTheme('light');
+      // 嵌入主站：把指针坐标转发给父窗口，主站鱼影才能跟随鼠标游动（背景是有记忆的动画）
+      var _koLastSent = 0;
+      window.addEventListener('pointermove', function (e) {
+        var t = Date.now();
+        if (t - _koLastSent < 20) return;
+        _koLastSent = t;
+        try { window.parent.postMessage({ type: 'aquatic-pointer', x: e.clientX, y: e.clientY }, '*'); } catch (err) {}
+      }, { passive: true });
+      // 指针离开 iframe 文档：通知主站停止聚拢、恢复漂游
+      document.addEventListener('pointerleave', function () {
+        try { window.parent.postMessage({ type: 'aquatic-pointer', x: -9999, y: -9999 }, '*'); } catch (err) {}
+      });
     } else {
       var sysDark = hasMM && window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(stored || (sysDark ? 'dark' : 'light'));
