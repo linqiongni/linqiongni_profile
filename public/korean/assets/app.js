@@ -154,7 +154,10 @@
     parts.push('<h1>韩语课程对照本</h1>');
     parts.push('<div class="sub">目录 = 多邻国 App 的单元编号 · 中文讲解 + 韩文 + 罗马音 · 每单元可记原句和笔记</div>');
     parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，在这里左栏点同一个编号就行（比如学到「第 7 单元 庆祝生日」，就点第 7 单元）。' +
-      '不用搜索——编号一一对应。已写讲解的单元 ' + n + ' / ' + UNITS.length + ' 个，其余先占位，学到再补。</p>');
+      '不用搜索——编号一一对应。全部 ' + n + ' / ' + UNITS.length + ' 个单元已写讲解（目标 + 语法 + 词表 + 句型 + 提示）。</p>');
+    parts.push('<p class="note">说明：多邻国不公开逐单元的官方词表 / 句子（第三方数据源只给单元标题），' +
+      '所以这里的句型和词表是按「单元主题」整理的<b>通用学习参考</b>，并非官方题库。' +
+      '你从 App 抄下来的原句，请用每个单元里的「App 原句记录」框存下来——那才是你自己的进度。</p>');
     KO_SECTIONS.forEach(function (sec) {
       var list = UNITS.filter(function (u) { return u.sec === sec.id; });
       if (!list.length) return;
