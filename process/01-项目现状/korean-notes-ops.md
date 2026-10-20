@@ -126,6 +126,9 @@ NODE_PATH="C:/Users/lin.qiong.ni/.workbuddy/binaries/node/workspace/node_modules
 node --check public/korean/assets/data.js
 
 # 4) 破缓存：index.html 里 data.js / app.js / style.css 的 ?v= 改成当天串（如 ?v=20261020g）
+#    注：子站入口 src/components/KoreanTab.tsx 的 IFRAME_V 已改成「每次打开页面的时间戳」，
+#    所以 index.html 本身不会再被浏览器缓存 10 分钟（GitHub Pages HTML = max-age:600）。
+#    但 iframe 内部的 assets/*.js 仍按 ?v= 缓存，数据变了还是要 bump，否则用户看到旧 data.js。
 # 5) 收工（本仓库用 MinGit + 绕过 rebase hook；push 走 MIGRATION.md 的代理/HTTP1.1 排障）
 #    git -c core.hooksPath=/dev/null commit -m "..."  &&  git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main
 # 6) 写 process/04-每日日志/当天.md + 更新 process/README.md 今日索引
@@ -149,6 +152,11 @@ node --check public/korean/assets/data.js
 2. **隐私**：原始导出绝不进 `public/`；并入后移出仓库或留仓库外。
 3. **角色名混写**（艾디/奥斯카）→ 已 `fix_roles` 合并；若导出又出现新混写，检查该函数。
 4. **首屏闪白**：`index.html` 行内脚本在嵌入时先读父页主题；`app.js` 嵌入分支不再无条件 `setTheme('light')` 覆盖。
+5. **改了却看不见（缓存时间窗）**：GitHub Pages 的 HTML 是 `cache-control: max-age=600`。以前 iframe 用「构建时间」当 v，
+   更新后 10 分钟内打开仍会命中旧 `index.html`（里面是旧 `?v=`，指向旧 data.js），表现为「明明改了线上还是旧内容」。
+   2026-10-20 已把 `KoreanTab.tsx` 的 `IFRAME_V` 改成 `String(Date.now())`（每次开页面都变），入口不再进缓存。
+   **核对是否真没生效，别靠肉眼刷页面**：直接抓 `https://linqiongni.top/korean/assets/data.js` 看内容，或看 `index.html` 里的 `?v=` 是否为新值。
+6. **笔记不该有角色/序号**：笔记板块按「词句清单」处理，`parse_text` 的 note 分支已剥掉 `1.` 编号与「旁白：」，勿再加回。
 
 ## 八、待 Andy 确认 / 后续
 
