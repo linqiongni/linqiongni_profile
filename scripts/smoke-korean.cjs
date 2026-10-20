@@ -58,6 +58,7 @@ for (const no of Object.keys(checks)) {
   const h2 = blks.map((b) => b.querySelector('h2').getAttribute('data-toc'));
   const rows = d.querySelectorAll('.ex.sentbox .row2').length;
   const auds = [...d.querySelectorAll('.blk .audio audio')].map((a) => decodeURI(a.getAttribute('src')));
+  const loopBtns = d.querySelectorAll('.blk .audio .loop-btn').length;
   const toc = [...d.querySelectorAll('#toc a')].map((a) => a.textContent);
 
   console.log(no, '·', want.tag, '· 板块', h2.join('/'), '· 行', rows, '· 目录', toc.join('/'));
@@ -69,6 +70,7 @@ for (const no of Object.keys(checks)) {
     if (!fs.existsSync(path.join(dir, s))) fail('单元 ' + no + ' 音频 404：' + s);
   });
   if (auds.length !== want.blocks.length) fail('单元 ' + no + ' 音频数 ' + auds.length + ' ≠ 板块数');
+  if (loopBtns !== want.blocks.length) fail('单元 ' + no + ' 循环按钮数 ' + loopBtns + ' ≠ 板块数');
   if (/App 原句记录|我的笔记/.test(txt)) fail('单元 ' + no + ' 仍出现「原句记录 / 我的笔记」');
   if (/语法要点|词汇表/.test(txt)) fail('单元 ' + no + ' 出现未清理的旧生成内容');
 }

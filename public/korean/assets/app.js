@@ -170,7 +170,9 @@
       parts.push('<h2 data-toc="' + esc(b.t) + '">' + esc(b.t) + (b.sub ? '<span class="rng-h">' + esc(b.sub) + '</span>' : '') +
         '<span class="cnt">' + b.rows.length + ' 条</span></h2>');
       parts.push('<div class="audio" data-audio="' + esc(audioSrc(b.audio)) + '">' +
-        '<audio controls preload="metadata" src="' + esc(audioSrc(b.audio)) + '"></audio></div>');
+        '<audio controls preload="metadata" src="' + esc(audioSrc(b.audio)) + '"></audio>' +
+        '<button type="button" class="loop-btn" aria-pressed="false" title="循环播放本段音频">' +
+        '<span class="ico">↻</span>循环</button></div>');
       parts.push('<div class="ex sentbox ' + (b.k === 'story' ? 'story' : b.k === 'note' ? 'notelist' : 'plain') + '">');
       b.rows.forEach(function (r) {
         var cls = 'row2' + (r.who ? ' has-who' : '') + (!r.ko ? ' narr' : '');
@@ -199,6 +201,18 @@
       a.addEventListener('error', function () {
         var box = a.parentNode;
         if (box) box.style.display = 'none';
+      });
+    });
+    // 循环播放开关：每段的「↻循环」按钮切换该段 audio.loop
+    main.querySelectorAll('.audio .loop-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var box = btn.closest('.audio');
+        var a = box ? box.querySelector('audio') : null;
+        if (!a) return;
+        a.loop = !a.loop;
+        btn.classList.toggle('on', a.loop);
+        btn.setAttribute('aria-pressed', a.loop ? 'true' : 'false');
+        btn.title = a.loop ? '已开启循环播放（点此关闭）' : '循环播放本段音频';
       });
     });
   }

@@ -288,8 +288,22 @@ a:hover { text-decoration: underline; }
   margin-left: auto; font-size: 11.5px; font-weight: 400; color: var(--ink-2);
   letter-spacing: .02em; font-variant-numeric: tabular-nums;
 }
-.article .blk .audio { margin: 10px 0 14px; }
-.article .blk .audio audio { width: 100%; max-width: 100%; height: 34px; }
+.article .blk .audio { margin: 10px 0 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.article .blk .audio audio { flex: 1 1 240px; min-width: 0; width: auto; max-width: none; height: 34px; }
+
+/* 循环播放开关：主题跟随（浅/暗两套变量通用） */
+.loop-btn {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px; border-radius: 999px; cursor: pointer; user-select: none;
+  font-size: 12.5px; line-height: 1; white-space: nowrap;
+  color: var(--ink-2); background: var(--bg-alt); border: 1px solid var(--line);
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.loop-btn:hover { color: var(--ink); border-color: var(--gold); }
+.loop-btn .ico { font-size: 13px; }
+.loop-btn.on { color: var(--gold-d); font-weight: 700; border-color: var(--gold); background: var(--card); }
+.loop-btn.on .ico { animation: loopSpin 1.6s linear infinite; }
+@keyframes loopSpin { to { transform: rotate(360deg); } }
 
 /* 小故事：角色 / 序号 / 韩文 / 中文 */
 .ex.sentbox .row2 .who {
