@@ -162,10 +162,22 @@ def read_existing_notion():
 
 
 def merge_and_write(units):
+    """按「板块」增量合并：文本里提供的单元，只覆盖其中提供的板块，
+    同一单元的其它板块（句子/小故事/笔记）原样保留。这样单独补一段
+    小故事或刷新一段笔记，不会丢同单元的其它内容。"""
     existing = read_existing_notion()
     newmap = {u["unit"]: u for u in units}
     for no, v in newmap.items():
-        existing[no] = v  # 覆盖 / 新增
+        if no in existing:
+            e = existing[no]
+            incoming = {b["k"]: b for b in v["blocks"]}
+            # 保留未被本次覆盖的板块，再并入本次提供的板块
+            kept = [b for b in e["blocks"] if b["k"] not in incoming]
+            e["blocks"] = kept + list(incoming.values())
+            e["blocks"].sort(key=lambda b: ORDER[b["k"]])
+            e["tag"] = v.get("tag", e.get("tag"))
+        else:
+            existing[no] = v  # 新增单元
     s = io.open(DATA, encoding="utf-8").read()
     # 砍掉旧的 KO_NOTION 段（连同前面的注释块）
     ni = s.find("/* 已并入的 Notion 单元")
@@ -179,7 +191,7 @@ def merge_and_write(units):
     merged = [existing[k] for k in sorted(existing)]
     s = s.rstrip() + "\n\n" + B.emit_js(merged) + "\n"
     io.open(DATA, "w", encoding="utf-8", newline="\n").write(s)
-    print("已合并写入 %d 个单元（含原有 %d 个）" % (len(merged), len(merged) - len(newmap) + len(newmap)))
+    print("已合并写入 %d 个单元（按板块增量，保留同单元其它板块）" % len(merged))
     return merged
 
 
