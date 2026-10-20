@@ -21,6 +21,8 @@
 | `sub-site-style-align` | 「这个站和 XX 风格不一致」「字体颜色对齐」 | 子站字体/颜色/版式对齐基准站 `commercial-ops` 的口径 |
 | `weekly-plan-publish` | 「把这个合并进去」「第 X 周第 Y 天发布」 | 新课程 HTML 合并进主页餐饮法务 tab 并上线 |
 | `english-audio-station` | 「英语音频」「ENGLISH 配音」「身边的英语」「逐句跟读」「英语朗读很卡/没声音/对不上」 | ENGLISH 子站音频全链条：离线 TTS 切句预生成、句级 MP3 + 双缓冲、音频与文字对齐、同步上线与排障（通用播放器骨架在 `static-site-audio-player`） |
+| `korean-notes-merge` | 「韩语笔记更新/并入」「韩语音频」「韩语 Notion 导出」 | Notion 韩语页 HTML 导出 → `public/korean/` 的并入流程与音频命名（映射/板块/隐私红线/白天字色坑），固化在 `process/01-项目现状/korean-notes-ops.md` |
+
 
 ## 什么该放这儿、什么不该
 

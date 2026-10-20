@@ -19,7 +19,9 @@ import sys
 from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = "D:/lins/korean_notion_backup.html"  # 原始 Notion 导出（隐私：不放进 public/）。重新导出时覆盖此文件即可。
+# Notion 导出（隐私：不放进 public/）。build/ 已被 .gitignore 忽略 → 不入库、不随站点公开。
+# 默认读 build/korean-source.html；可用 --src=路径 覆盖（换电脑/不同导出位置时）。
+SRC = os.path.join(ROOT, "build/korean-source.html")
 DATA = os.path.join(ROOT, "public/korean/assets/data.js")
 OUT = os.path.join(ROOT, "build/korean_units.json")
 
@@ -310,7 +312,9 @@ def write_data(units):
         ni = s.find("const KO_NOTION")
     if ni >= 0:
         s = s[:ni].rstrip() + "\n"
-    for no in [8, 9, 11, 12, 13]:
+    # 动态删除 KO_CONTENT 里所有被 Notion 覆盖的单元——新增单元无需改脚本。
+    # 前提：Notion 导出为整页全量（每次重生成全量 KO_NOTION）。
+    for no in [e["unit"] for e in units]:
         s = remove_entry(s, no)
     # 旧散句已并入 2-3 笔记，删掉 KO_MISC 整段
     mi = s.find("const KO_MISC")
@@ -330,6 +334,12 @@ def write_data(units):
 
 
 def main():
+    global SRC
+    for a in sys.argv:
+        if a.startswith("--src="):
+            SRC = a.split("=", 1)[1]
+    if not os.path.exists(SRC):
+        sys.exit("!! 找不到 Notion 导出：%s\n   把 Notion 韩语页整页导出为 HTML，放到该路径（或 --src=实际路径）" % SRC)
     raw = io.open(SRC, encoding="utf-8").read()
     t = Tree()
     t.feed(raw)
