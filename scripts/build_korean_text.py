@@ -112,6 +112,7 @@ def parse_text(raw):
     for e in units.values():
         for blk in e["blocks"]:
             blk["rows"] = B.fix_roles(blk["rows"])
+        e["blocks"] = [b for b in e["blocks"] if b["rows"]]  # 丢掉空板块（如裸 X-Y 后无句子内容）
         e["blocks"].sort(key=lambda b: ORDER[b["k"]])
     return [units[k] for k in sorted(units)]
 
