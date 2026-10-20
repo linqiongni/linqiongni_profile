@@ -35,7 +35,8 @@ Notion 标号「第X部分第Y单元」→ 站点总单元号 = `PART_OFFSET[X] 
 | `scripts/build_korean_units.py` | 重新生成的手段 | ✅ 进 |
 | `scripts/smoke-korean.cjs` | jsdom 渲染冒烟测试 | ✅ 进 |
 | `scripts/check-korean-data.cjs` | 数据层校验 | ✅ 进 |
-| `build/korean-source.html` | Notion 导出（脚本输入） | ❌ 不进（`.gitignore` 忽略 `build/`） |
+| `build/korean-source.html` | Notion 导出（脚本输入，老办法） | ❌ 不进（`.gitignore` 忽略 `build/`） |
+| `build/korean-notes.txt` | **直接粘贴的纯文本笔记**（脚本输入，新入口） | ❌ 不进（同 `build/`） |
 | `build/korean_units.json` | 解析中间产物 | ❌ 不进 |
 | 原始导出留底（如 `D:/lins/korean_notion_backup.html`） | 备份 | ❌ 仓库外 |
 
@@ -43,25 +44,67 @@ Notion 标号「第X部分第Y单元」→ 站点总单元号 = `PART_OFFSET[X] 
 
 ## 四、用户怎么给新笔记 / 音频（告诉他照做）
 
-1. **导出**：Notion 韩语页 → 整页导出为 **HTML**（**全量**，含所有已写单元；不要只导一部分）。
-2. **放两份**：
-   - `build/korean-source.html`（给脚本读；`build/` 不入库、不公开）
-   - 原始留底备份（仓库外任意路径，如 `D:/lins/korean_notion_backup.html`）
-3. **音频**：每个板块一个 `.m4a`，文件名 = 标号 + 后缀，放 `public/korean/assets/audio/`：
-   - 后缀只认「小故事」「笔记」，句子本身即标号。
-   - 例：`1-8.m4a` / `2-3小故事.m4a` / `2-3笔记.m4a`
-   - 有文件才有播放器；缺文件自动隐藏，不留坏控件。（命名规则详见 `public/korean/assets/audio/.gitkeep`）
+两种输入任选其一（Andy 选 **B 直接粘文本**）：
+
+**A. Notion 整页导出 HTML**（老办法，保留）
+1. Notion 韩语页 → 整页导出为 **HTML**（**全量**，含所有已写单元；不要只导一部分）。
+2. 放两份：`build/korean-source.html`（给脚本读，不入库不公开）+ 仓库外留底备份（如 `D:/lins/korean_notion_backup.html`）。
+
+**B. 直接粘纯文本**（新办法）
+1. 把笔记文本按下面「格式模板」整理，存成 `build/korean-notes.txt`（或对话里直接发给我，我帮你存）。
+2. 文本格式（分块用标题行标识；多单元、每单元 0~3 板块、顺序任意）：
+
+   ```
+   2-3
+   句子
+   1、이것은 제 핸드폰이 아니에요. 这不是我的手机。
+   2、제 학생증 주세요. 请给我我的学生证。
+
+   2-3小故事
+   1、艾迪：오스카, 화장실이 어디에 있어요? 奥斯卡，洗手间在哪里？
+   2、奥斯卡：제가 알아요. 我知道。
+   旁白：奥斯卡自信满满地走进一条长长的走廊。
+
+   2-3笔记
+   这里记我的易错点……
+   ```
+
+   - 标题行：`X-Y`（句子块）/ `X-Y小故事` / `X-Y笔记`；也可在 `X-Y` 后单独写一行「句子 / 小故事 / 笔记」作板块切换标记（会被忽略，不当内容，已踩坑：单独「句子」二字曾被误当一句句子）。
+   - 句子行：`序号、韩文 中文`（韩中同行，按首个汉字切分；无序号也行）。
+   - 故事 / 笔记行：`角色：韩文 中文` 或 `角色：中文`（旁白可无韩文）；纯中文行默认旁白。
+   - 标号「第X部分第Y单元」→ 总单元号（同映射表），脚本自动推导 part / pno / audio 文件名。
+
+**音频（两种输入通用）**：每个板块一个 `.m4a`，文件名 = 标号 + 后缀，放 `public/korean/assets/audio/`：
+- 后缀只认「小故事」「笔记」，句子本身即标号。
+- 例：`1-8.m4a` / `2-3小故事.m4a` / `2-3笔记.m4a`
+- 有文件才有播放器；缺文件自动隐藏，不留坏控件。（命名规则详见 `public/korean/assets/audio/.gitkeep`）
 
 ## 五、AI 怎么重新并入（照这 8 步）
+
+> 两种输入对应两个脚本：**文本** → `scripts/build_korean_text.py`（**增量合并**，只覆盖/新增提供的单元，保留其余已上线单元，安全）；**Notion 导出** → `scripts/build_korean_units.py`（全量重写 KO_NOTION）。
+
+### B. 文本输入（Andy 常用）
+
+```bash
+# 1) 先只解析+打印核对（映射/板块/行数/缺音频），不动 data.js
+python scripts/build_korean_text.py --src=build/korean-notes.txt
+# 2) 确认无误后增量合并写进 data.js（保留其它已上线单元，不会丢）
+python scripts/build_korean_text.py --src=build/korean-notes.txt --write
+```
+
+### A. Notion 导出输入（老办法）
 
 ```bash
 # 0) 确认 build/korean-source.html 已就位（或让用户给新导出；也可用 --src= 指定）
 # 1) 解析预览（看映射、板块、缺音频），不写文件
 python scripts/build_korean_units.py --src=build/korean-source.html
-
 # 2) 确认无误后写入 data.js（动态删除 KO_CONTENT 里被覆盖的单元，再写全量 KO_NOTION）
 python scripts/build_korean_units.py --src=build/korean-source.html --write
+```
 
+### 通用收工步骤（两种输入都一样）
+
+```bash
 # 3) 语法 + 渲染冒烟（jsdom 在 ~/.workbuddy/binaries/node/workspace/node_modules）
 NODE_PATH="C:/Users/lin.qiong.ni/.workbuddy/binaries/node/workspace/node_modules" \
   node scripts/smoke-korean.cjs
@@ -75,7 +118,7 @@ node --check public/korean/assets/data.js
 # 6) 写 process/04-每日日志/当天.md + 更新 process/README.md 今日索引
 ```
 
-> 脚本已做成**幂等 + 零改码可复用**：`write_data` 的删除列表从解析结果动态推导（新增单元不用改脚本），复跑不会重复叠加注释块。前提 = Notion 导出是**整页全量**。
+> Notion 脚本已做成**幂等 + 零改码可复用**：`write_data` 的删除列表从解析结果动态推导（新增单元不用改脚本），复跑不会重复叠加注释块。前提 = Notion 导出是**整页全量**。文本脚本是**增量合并**，只更新文本里提供的单元，不会丢已上线内容。
 
 ## 六、已固化的呈现约定（给 Andy 的笔记长这样）
 
@@ -102,6 +145,8 @@ node --check public/korean/assets/data.js
 
 ## 九、关联
 
+- 文本解析脚本：`scripts/build_korean_text.py`（纯文本输入 / 增量合并）
+- Notion 解析脚本：`scripts/build_korean_units.py`（HTML 输入 / 全量重写）
 - 技能：`skills/korean-notes-merge/SKILL.md`（触发词见其 `description`）
 - 完整过程：`process/04-每日日志/2026-10-20.md`
 - 用户级记忆：`~/.workbuddy/MEMORY.md` 的「Notion 是 Andy 的韩语笔记真源」条目

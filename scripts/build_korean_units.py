@@ -248,13 +248,13 @@ def emit_js(units):
                 js_str(b["k"]), js_str(b["t"]), js_str(b["sub"]), js_str(b["audio"])))
             for r in b["rows"]:
                 parts = []
-                if r["ko"]:
+                if r.get("ko"):
                     parts.append("ko: " + js_str(r["ko"]))
-                if r["zh"]:
+                if r.get("zh"):
                     parts.append("zh: " + js_str(r["zh"]))
-                if r["who"]:
+                if r.get("who"):
                     parts.append("who: " + js_str(r["who"]))
-                if r["no"]:
+                if r.get("no"):
                     parts.append("no: " + js_str(r["no"]))
                 out.append("      { " + ", ".join(parts) + " },")
             out.append("    ] },")
