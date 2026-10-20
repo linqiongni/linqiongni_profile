@@ -3,7 +3,7 @@
 > **这是唯一入口。** 接手这个项目的人（无论是人还是 AI）只读这一个文件，它会把你送到下一层该看的地方。
 > 任何会改这个项目的人，收工前必须更新本文件的「今日索引」。
 
-最后更新：2026-10-01 · 当前阶段：英语音频已定为句级小文件+双缓冲、与文字对齐；链路已固化成技能 `english-audio-station`ndy 验收结构
+最后更新：2026-10-20 · 当前阶段：英语音频已定为句级小文件+双缓冲、与文字对齐；链路已固化成技能 `english-audio-station`ndy 验收结构
 
 ---
 
@@ -206,3 +206,4 @@
 | 2026-10-16 | 韩语子站鱼影跟随指针修复（续上）：Andy 纠正要的是「鱼影跟随鼠标游动 + 背景持续动画（有记忆）」而非随主题。根因 = 主站 AquaticLuxuryBackground 已监听 message 里的 `aquatic-pointer` 并合成 iframe 坐标（onForwardedPointer，已部署 main），但韩语这端**没发**指针消息，鼠标进 iframe 主站收不到 pointermove、鱼停住。app.js 嵌入态监听 pointermove（节流 20ms）postMessage 给 parent、pointerleave 发 -9999 让主站恢复漂游；index.html 给 app.js 也 bump `?v=20261016`。主站无需改 | — |
 | 2026-10-20 | 韩语对照本**并入 Andy 的 Notion 真实笔记**（解决 #28 真源）：Andy 把 Notion 韩语页(html 导出)放进 `public/korean/` 让我读。先确认无法走链接(登录墙)只能读本地导出。脚本解析 html → 按「第X部分第Y单元」映射到站点线性单元(1-8→8爱好 / 1-9→9指代物品 / 2-1→11机场 / 2-2→12家乡 / 2-3→13天气)，**替换**对应单元 sent；第13加「小故事」(山中露营15句)；顶部「单词句子」5条存 KO_MISC 首页渲染。app.js 单元页加音频播放器(`assets/audio/u{N}.mp3`，缺文件 onerror 显示上传提示)、渲染 story、首页渲染 KO_MISC；style.css 加 `.audio`；index.html 三资源 bump `?v=20261020`。**隐私**：Notion 原始导出 html 移出 public/(防随站点公开)，内容已并入 data.js。提交 268cc8a | #28 真源落地（Notion 笔记取代通用参考，仅覆盖 5 单元，其余仍通用参考）；待 Andy 上传音频 + 确认第9单元 App 标题 |
 | 2026-10-20 | 韩语单元内容二次修正：**单元8/9/11/12/13 整块删除生成的 goal/语法/词表/提示，仅保留 Notion 真实句子**（Andy 纠正要「只放我的内容、删掉你的」）。发现根因 = 上一轮合并脚本只真正写入第13 story + KO_MISC，单元8/9/11/12及第13天气句型仍是生成内容。先用 git checkout 还原被一轮失败脚本改坏的 data.js，再硬编码已验证的正确句子重写这5单元（仅 sent + 第13 story，无 goal/grammar/vocab/tip；渲染对缺字段全做 if 空值保护）。index.html 三资源升 `?v=20261020b` 防旧缓存。提交 e0e72c0 | — |
+| 2026-10-20 | 韩语笔记**最终收尾**：Notion 原文按标号板块化（句子/小故事/笔记）+ 每板块绑定 m4a 音频 + 右侧本页目录；替换单元去掉「原句记录/我的笔记」框；修构建脚本幂等；重传的 Notion 导出再次移出 public/。提交 074829a 已推 main | #28 / 本沙箱无外网，线上未自验 |
