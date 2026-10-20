@@ -261,3 +261,44 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--line); border-radius: 5px; vertical-align: 1px;
 }
 .notes textarea.tight { min-height: 86px; }
+
+/* ============================================================
+ * 已并入 Notion 的单元：句子 / 小故事 / 笔记 三个板块
+ * 每板块一个音频 + 右侧本页目录一条（目录在 .toc 列，随主区滚动固定不动）
+ * ============================================================ */
+.article .blk { margin: 34px 0 6px; scroll-margin-top: 14px; }
+.article .blk h2 { display: flex; align-items: baseline; gap: 8px; }
+.article h2 .cnt {
+  margin-left: auto; font-size: 11.5px; font-weight: 400; color: var(--ink-2);
+  letter-spacing: .02em; font-variant-numeric: tabular-nums;
+}
+.article .blk .audio { margin: 10px 0 14px; }
+.article .blk .audio audio { width: 100%; max-width: 100%; height: 34px; }
+
+/* 小故事：角色 / 序号 / 韩文 / 中文 */
+.ex.sentbox .row2 .who {
+  flex: 0 0 auto; min-width: 56px; font-size: 12px; font-weight: 600; color: var(--gold-d); letter-spacing: .02em;
+}
+.ex.sentbox .row2 .idx {
+  flex: 0 0 auto; min-width: 18px; font-size: 11px; color: var(--ink-2); font-variant-numeric: tabular-nums;
+}
+.ex.sentbox .row2.has-who .ko { min-width: 0; flex: 0 1 auto; }
+.ex.sentbox .row2.has-who .me { flex: 1 1 auto; }
+/* 旁白行：无韩文，只有中文，弱化成叙事 */
+.ex.sentbox .row2.narr { border-left-color: var(--line); background: transparent; }
+.ex.sentbox .row2.narr .me { font-style: italic; }
+/* 笔记板块的行距放宽一点，便于当小抄看 */
+.ex.sentbox.notelist .row2 .ko { min-width: 170px; }
+
+/* 首页「原文」标记 */
+.home-grid .cell .badge {
+  margin-left: 6px; padding: 0 6px; font-size: 10px; font-weight: 600; letter-spacing: .04em;
+  color: var(--gold-d); border: 1px solid var(--gold); border-radius: 999px; vertical-align: 1px;
+}
+.home-grid .cell.notion { border-color: rgba(184, 159, 107, .45); }
+
+@media (max-width: 640px) {
+  .ex.sentbox .row2 .who { display: block; min-width: 0; margin-bottom: 2px; }
+  .ex.sentbox .row2 .idx { display: inline-block; margin-right: 4px; }
+  .ex.sentbox.notelist .row2 .ko { min-width: 0; }
+}

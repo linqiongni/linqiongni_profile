@@ -25,10 +25,13 @@
   var byKey = {};
   var sections = {};
   KO_SECTIONS.forEach(function (s) { sections[s.id] = s; });
+  var PART_NAME = { 1: '第一部分', 2: '第二部分', 3: '第三部分', 4: '第四部分' };
 
   UNITS.forEach(function (u) {
+    u.notion = (typeof KO_NOTION !== 'undefined' && u.no && KO_NOTION[u.no]) || null;
     u.content = KO_CONTENT[u.no] || KO_CONTENT[u.key] || null;
-    u.search = (u.title + ' ' + (u.en || '') + ' ' + (u.no || '') + ' ' + (u.content ? JSON.stringify(u.content) : '')).toLowerCase();
+    u.search = (u.title + ' ' + (u.en || '') + ' ' + (u.no || '') + ' ' + (u.notion ? u.notion.tag : '') + ' ' +
+      (u.content ? JSON.stringify(u.content) : '') + (u.notion ? JSON.stringify(u.notion) : '')).toLowerCase();
     byKey[u.key] = u;
   });
   var order = UNITS.map(function (u) { return u.key; });
@@ -73,6 +76,7 @@
 
   // ---------- 单篇 ----------
   function renderArticle(u) {
+    if (u.notion) { renderNotion(u); return; }
     var c = u.content || {};
     var sec = sections[u.sec] || {};
     var parts = [];
@@ -80,9 +84,7 @@
     parts.push('<span class="unit-tag">' + esc(sec.name || '') + (u.no ? ' · 第 ' + u.no + ' 单元' : '') + '</span>');
     parts.push('<h1>' + esc(u.title) + '</h1>');
     parts.push('<div class="sub">' + (u.no ? '第 ' + u.no + ' 单元' : '附录') + (u.en ? ' · 课程内部名 ' + esc(u.en) : '') + '</div>');
-    if (u.no) parts.push('<div class="audio"><audio controls preload="metadata" src="assets/audio/u' + u.no + '.mp3" onerror="this.outerHTML=\'🎵 音频待上传：把 u' + u.no + '.mp3 放进 public/korean/assets/audio/\'"></audio></div>');
     if (c.goal) parts.push('<p class="goal">' + esc(c.goal) + '</p>');
-
     if (!u.content) {
       parts.push('<div class="tip"><b>本单元的讲解还没写。</b><br>' +
         '目录结构已经按 App 的单元编号就位——你在 App 里学到第 ' + (u.no || '') + ' 单元时，' +
@@ -138,13 +140,7 @@
       '<div class="hint">清缓存会丢；重要内容请另存。可随时回来续写。</div></div>');
 
     // 上一篇 / 下一篇
-    var i = order.indexOf(u.key);
-    var prev = i > 0 ? byKey[order[i - 1]] : null;
-    var next = i < order.length - 1 ? byKey[order[i + 1]] : null;
-    parts.push('<div class="pager">');
-    parts.push(prev ? '<a class="prev" href="#' + prev.key + '"><span class="lab">← 上一单元</span>' + esc(label(prev)) + '</a>' : '<a class="prev disabled"><span class="lab">← 上一单元</span>已是第一个</a>');
-    parts.push(next ? '<a class="next" href="#' + next.key + '"><span class="lab">下一单元 →</span>' + esc(label(next)) + '</a>' : '<a class="next disabled"><span class="lab">下一单元 →</span>已是最后一个</a>');
-    parts.push('</div>');
+    parts.push(pagerHtml(u));
 
     parts.push('<div class="footer-note">韩语课程对照本 · 目录与多邻国 App 的单元编号一一对应 · 讲解中文 + 韩文 + 罗马音</div>');
     parts.push('</div>');
@@ -154,39 +150,100 @@
     buildToc();
   }
 
+  // ---------- 已并入 Notion 的单元：句子 / 小故事 / 笔记 ----------
+  // 板块 = 你的笔记里实际存在的块（有「2-3笔记」才有笔记板块），每块一个音频。
+  function audioSrc(name) {
+    try { return encodeURI('assets/audio/' + name); } catch (e) { return 'assets/audio/' + name; }
+  }
+
+  function renderNotion(u) {
+    var c = u.notion;
+    var parts = [];
+    parts.push('<div class="article notion">');
+    parts.push('<span class="unit-tag">' + esc(PART_NAME[c.part] || '') + ' · 第 ' + c.pno + ' 单元</span>');
+    parts.push('<h1>' + esc(u.title) + '</h1>');
+    parts.push('<div class="sub">' + esc(c.tag) + ' · 总第 ' + u.no + ' 单元 · ' +
+      c.blocks.length + ' 个板块（' + c.blocks.map(function (b) { return b.t; }).join(' / ') + '）</div>');
+
+    c.blocks.forEach(function (b) {
+      parts.push('<section class="blk" id="blk-' + b.k + '">');
+      parts.push('<h2 data-toc="' + esc(b.t) + '">' + esc(b.t) + (b.sub ? '<span class="rng-h">' + esc(b.sub) + '</span>' : '') +
+        '<span class="cnt">' + b.rows.length + ' 条</span></h2>');
+      parts.push('<div class="audio" data-audio="' + esc(audioSrc(b.audio)) + '">' +
+        '<audio controls preload="metadata" src="' + esc(audioSrc(b.audio)) + '"></audio></div>');
+      parts.push('<div class="ex sentbox ' + (b.k === 'story' ? 'story' : b.k === 'note' ? 'notelist' : 'plain') + '">');
+      b.rows.forEach(function (r) {
+        var cls = 'row2' + (r.who ? ' has-who' : '') + (!r.ko ? ' narr' : '');
+        parts.push('<div class="' + cls + '">');
+        if (r.who) parts.push('<span class="who">' + esc(r.who) + '</span>');
+        else if (r.no) parts.push('<span class="idx">' + esc(r.no) + '</span>');
+        if (r.ko) parts.push('<span class="ko">' + esc(r.ko) + '</span>');
+        if (r.zh) parts.push('<span class="me">' + esc(r.zh) + '</span>');
+        parts.push('</div>');
+      });
+      parts.push('</div></section>');
+    });
+
+    parts.push(pagerHtml(u));
+    parts.push('<div class="footer-note">原文照录自你的韩语笔记 · 句子 / 小故事 / 笔记 与音频一一对应</div>');
+    parts.push('</div>');
+
+    main.innerHTML = parts.join('');
+    wireAudio();
+    buildToc();
+  }
+
+  // 音频缺失时把播放器收起来，不留一个坏控件
+  function wireAudio() {
+    main.querySelectorAll('.audio audio').forEach(function (a) {
+      a.addEventListener('error', function () {
+        var box = a.parentNode;
+        if (box) box.style.display = 'none';
+      });
+    });
+  }
+
+  function pagerHtml(u) {
+    var i = order.indexOf(u.key);
+    var prev = i > 0 ? byKey[order[i - 1]] : null;
+    var next = i < order.length - 1 ? byKey[order[i + 1]] : null;
+    var html = '<div class="pager">';
+    html += prev ? '<a class="prev" href="#' + prev.key + '"><span class="lab">← 上一单元</span>' + esc(label(prev)) + '</a>' : '<a class="prev disabled"><span class="lab">← 上一单元</span>已是第一个</a>';
+    html += next ? '<a class="next" href="#' + next.key + '"><span class="lab">下一单元 →</span>' + esc(label(next)) + '</a>' : '<a class="next disabled"><span class="lab">下一单元 →</span>已是最后一个</a>';
+    html += '</div>';
+    return html;
+  }
+
   function renderHome() {
-    var n = UNITS.filter(function (u) { return !!u.content; }).length;
+    var n = UNITS.filter(function (u) { return !!(u.content || u.notion); }).length;
+    var nn = UNITS.filter(function (u) { return !!u.notion; }).length;
     var parts = [];
     parts.push('<div class="article">');
     parts.push('<span class="unit-tag">总览</span>');
     parts.push('<h1>韩语课程对照本</h1>');
-    parts.push('<div class="sub">目录 = 多邻国 App 的单元编号 · 中文讲解 + 韩文 + 罗马音 · 每单元可记原句和笔记</div>');
-    parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，在这里左栏点同一个编号就行（比如学到「第 7 单元 庆祝生日」，就点第 7 单元）。' +
-      '不用搜索——编号一一对应。全部 ' + n + ' / ' + UNITS.length + ' 个单元已写讲解（目标 + 语法 + 词表 + 句型 + 提示）。</p>');
-    parts.push('<p class="note">说明：多邻国不公开逐单元的官方词表 / 句子（第三方数据源只给单元标题），' +
-      '所以这里的句型和词表是按「单元主题」整理的<b>通用学习参考</b>，并非官方题库。' +
-      '你从 App 抄下来的原句，请用每个单元里的「App 原句记录」框存下来——那才是你自己的进度。</p>');
+    parts.push('<div class="sub">目录 = 多邻国 App 的单元编号 · 已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 + 音频）</div>');
+    parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，左栏点同一个编号就行。' +
+      '带「原文」标记的单元是从你的韩语笔记原样搬过来的，按笔记里实际的块分板块——只有句子、或句子+小故事、或句子+小故事+笔记。' +
+      '全部 ' + n + ' / ' + UNITS.length + ' 个单元有内容。</p>');
+    parts.push('<p class="note">其余单元是按「单元主题」整理的<b>通用学习参考</b>（目标 + 语法 + 词表 + 句型），' +
+      '不是官方题库。你在 App 里遇到的句子，可以抄进对应单元的「App 原句记录」——等你的笔记覆盖到那一段，我再按原文替换。</p>');
     KO_SECTIONS.forEach(function (sec) {
       var list = UNITS.filter(function (u) { return u.sec === sec.id; });
       if (!list.length) return;
       parts.push('<h2>' + esc(sec.name) + ' <span class="rng-h">' + esc(sec.range) + '</span></h2>');
       parts.push('<div class="home-grid">');
       list.forEach(function (u) {
-        parts.push('<a class="cell ' + (u.content ? '' : 'stub') + '" href="#' + u.key + '">' +
-          '<div class="t">' + (u.no ? '<span class="no">' + u.no + '</span>' : '') + esc(u.title) + '</div>' +
-          '<div class="z">' + esc(u.content && u.content.goal ? u.content.goal : (u.content ? '' : '待补')) + '</div>' +
+        var z = u.notion
+          ? (u.notion.tag + ' · ' + u.notion.blocks.map(function (b) { return b.t; }).join(' / '))
+          : (u.content && u.content.goal ? u.content.goal : (u.content ? '' : '待补'));
+        parts.push('<a class="cell ' + (u.notion ? 'notion' : (u.content ? '' : 'stub')) + '" href="#' + u.key + '">' +
+          '<div class="t">' + (u.no ? '<span class="no">' + u.no + '</span>' : '') + esc(u.title) +
+          (u.notion ? '<span class="badge">原文</span>' : '') + '</div>' +
+          '<div class="z">' + esc(z) + '</div>' +
           '</a>');
       });
       parts.push('</div>');
     });
-    if (typeof KO_MISC !== 'undefined' && KO_MISC.length) {
-      parts.push('<h2>常用散句 <span class="rng-h">来自你的 Notion</span></h2>');
-      parts.push('<div class="ex sentbox">');
-      KO_MISC.forEach(function (e) {
-        parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
-      });
-      parts.push('</div>');
-    }
     parts.push('</div>');
     main.innerHTML = parts.join('');
     toc.innerHTML = '';
@@ -200,7 +257,8 @@
     var html = '<div class="tt">本页目录</div>';
     hs.forEach(function (h, idx) {
       h.id = h.id || ('h' + idx);
-      html += '<a href="javascript:void(0)" data-t="' + h.id + '" class="' + (h.tagName === 'H3' ? 'h3' : '') + '">' + esc(h.textContent) + '</a>';
+      html += '<a href="javascript:void(0)" data-t="' + h.id + '" class="' + (h.tagName === 'H3' ? 'h3' : '') + '">' +
+        esc(h.getAttribute('data-toc') || h.textContent) + '</a>';
     });
     toc.innerHTML = html;
     toc.querySelectorAll('a').forEach(function (a) {
