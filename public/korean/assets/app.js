@@ -345,7 +345,10 @@
     var stored = null;
     try { stored = localStorage.getItem('ko-theme'); } catch (e) {}
     if (window.self !== window.top) {
-      setTheme('light');
+      // 嵌入态：主题完全跟随主站（不再用子站 localStorage / 系统偏好）。
+      // index.html 的行内脚本已先尝试从父页读出 dark/light 写进 data-theme，
+      // 这里只在「没读到」时兜底 light，避免把刚推测出的暗色覆盖回去（首屏闪白字）。
+      if (!document.documentElement.getAttribute('data-theme')) setTheme('light');
       // 嵌入主站：把指针坐标转发给父窗口，主站鱼影才能跟随鼠标游动（背景是有记忆的动画）
       var _koLastSent = 0;
       window.addEventListener('pointermove', function (e) {

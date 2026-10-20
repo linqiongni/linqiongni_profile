@@ -47,11 +47,28 @@ body {
 }
 html.embedded, html.embedded body { background: transparent; }
 
-/* 嵌入主站：透出固定的背景板 + 鱼影，自身不垫任何不透明底（只留玻璃描边 + 浅色字）。
+/* 嵌入主站：透出固定的背景板 + 鱼影，自身不垫不透明底（只留玻璃描边 + 玻璃卡片）。
    根因：此前只有 body 透明，顶栏/侧栏/卡片仍用自己的 --card/--bg-alt 不透明色，
-   等于在 iframe 里又垫了一层底，把主站鱼影全盖住 →「鱼不随主题动」。 */
+   等于在 iframe 里又垫了一层底，把主站鱼影全盖住 →「鱼不随主题动」。
+   ⚠️ 文字颜色必须跟随主站主题：
+   旧版无条件把 --ink 强制成浅色（为深色主站设计），白天模式下主站底是浅米色
+   → 正文几乎全白、目录也看不见（2026-10-20 反馈）。现在浅/暗各一套。 */
 html.embedded {
+  /* 白天：浅底 → 深墨字 + 淡白玻璃；金色压深一档保证对比度 */
   --bg: transparent !important;
+  --bg-alt: rgba(255, 255, 255, 0.38) !important;
+  --card: rgba(255, 255, 255, 0.55) !important;
+  --ink: #23201B !important;
+  --ink-2: #5A5449 !important;
+  --line: rgba(35, 32, 27, 0.12) !important;
+  --gold: #86703C !important;
+  --gold-d: #7A6435 !important;
+  --red: #B14A31 !important;
+  --green: #3F7A4A !important;
+  --shadow: none !important;
+}
+/* 夜间：暗底 → 浅米字 + 微光玻璃（与主站暗色一致） */
+html.embedded[data-theme="dark"] {
   --bg-alt: rgba(255, 255, 255, 0.045) !important;
   --card: rgba(255, 255, 255, 0.06) !important;
   --ink: #F4EFE4 !important;
@@ -61,7 +78,6 @@ html.embedded {
   --gold-d: #B89F6B !important;
   --red: #E08A72 !important;
   --green: #7FB98A !important;
-  --shadow: none !important;
 }
 /* 嵌入态跟随主站主题，隐藏子站自带的主题切换按钮（避免点了无效、误以为坏） */
 html.embedded #themeBtn { display: none; }
