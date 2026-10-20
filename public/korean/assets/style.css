@@ -222,6 +222,9 @@ a:hover { text-decoration: underline; }
   .ex.sentbox .row2 { display: block; }
   .ex.sentbox .ko { display: block; min-width: 0; }
 }
+.article .audio { margin: 4px 0 14px; }
+.article .audio audio { width: 100%; max-width: 420px; }
+.article .ex.story .row2 .ko { font-style: normal; }
 
 /* ---------- 单元编号 / 目标 / 句型 ---------- */
 .topbar .jump {

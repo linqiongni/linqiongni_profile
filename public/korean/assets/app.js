@@ -80,6 +80,7 @@
     parts.push('<span class="unit-tag">' + esc(sec.name || '') + (u.no ? ' · 第 ' + u.no + ' 单元' : '') + '</span>');
     parts.push('<h1>' + esc(u.title) + '</h1>');
     parts.push('<div class="sub">' + (u.no ? '第 ' + u.no + ' 单元' : '附录') + (u.en ? ' · 课程内部名 ' + esc(u.en) : '') + '</div>');
+    if (u.no) parts.push('<div class="audio"><audio controls preload="metadata" src="assets/audio/u' + u.no + '.mp3" onerror="this.outerHTML=\'🎵 音频待上传：把 u' + u.no + '.mp3 放进 public/korean/assets/audio/\'"></audio></div>');
     if (c.goal) parts.push('<p class="goal">' + esc(c.goal) + '</p>');
 
     if (!u.content) {
@@ -105,6 +106,13 @@
       if (c.sent && c.sent.length) {
         parts.push('<h2>本单元典型句型</h2><div class="ex sentbox">');
         c.sent.forEach(function (e) {
+          parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
+        });
+        parts.push('</div>');
+      }
+      if (c.story && c.story.length) {
+        parts.push('<h2>小故事</h2><div class="ex sentbox story">');
+        c.story.forEach(function (e) {
           parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
         });
         parts.push('</div>');
@@ -171,6 +179,14 @@
       });
       parts.push('</div>');
     });
+    if (typeof KO_MISC !== 'undefined' && KO_MISC.length) {
+      parts.push('<h2>常用散句 <span class="rng-h">来自你的 Notion</span></h2>');
+      parts.push('<div class="ex sentbox">');
+      KO_MISC.forEach(function (e) {
+        parts.push('<div class="row2"><span class="ko">' + esc(e[0]) + '</span><span class="me">' + esc(e[1]) + '</span></div>');
+      });
+      parts.push('</div>');
+    }
     parts.push('</div>');
     main.innerHTML = parts.join('');
     toc.innerHTML = '';
