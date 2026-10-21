@@ -113,7 +113,7 @@ def parse_text(raw):
             if wm:
                 who, rest = wm.group(1), rest[wm.end():]
             else:
-                who = "旁白"
+                who = ""  # 无角色前缀的小故事行不硬塞「旁白」，避免每行冒出旁白标签
             _, ko, zh = B.split_pair(rest)
             cur["rows"].append({"no": no, "who": who, "ko": ko, "zh": zh})
 
