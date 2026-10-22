@@ -28,7 +28,8 @@ agent_created: true
 ## 收工动作（本仓库硬性）
 1. bump `index.html` 里 data.js/app.js/style.css 的 `?v=` 当天串破缓存。
 2. `git -c core.hooksPath=/dev/null commit` + `git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main`（MinGit；排障见 `process/MIGRATION.md`）。**不要 amend 已推提交。**
-3. 写 `process/04-每日日志/当天.md` + 更新 `process/README.md` 今日索引。
+3. **push 后先轮询线上确认再有底气回话**：GitHub Pages 部署有 2~3 分钟延迟，push 完立刻说「已上线」会让用户白刷一轮、以为没改（2026-10-22 踩过）。抓 `https://linqiongni.top/korean/index.html?_=<ts>`，看 `?v=` 是否为新值 / 目标文案是否已变（每 15 秒一次、最多 7 次）。
+4. 写 `process/04-每日日志/当天.md` + 更新 `process/README.md` 今日索引。
 
 ## 已知坑（别再踩）
 - 嵌入态白天模式字色：`html.embedded` 必须按主站主题分浅/暗两套（浅底=暖墨深字+淡白玻璃+金色压深；暗底=浅米字），只设一套浅色字 = 浅底浅字全隐形。

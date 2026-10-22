@@ -156,7 +156,12 @@ node --check public/korean/assets/data.js
    更新后 10 分钟内打开仍会命中旧 `index.html`（里面是旧 `?v=`，指向旧 data.js），表现为「明明改了线上还是旧内容」。
    2026-10-20 已把 `KoreanTab.tsx` 的 `IFRAME_V` 改成 `String(Date.now())`（每次开页面都变），入口不再进缓存。
    **核对是否真没生效，别靠肉眼刷页面**：直接抓 `https://linqiongni.top/korean/assets/data.js` 看内容，或看 `index.html` 里的 `?v=` 是否为新值。
+   **push 成功后别立刻回用户「已上线」**：GitHub Pages 部署有 2~3 分钟延迟（2026-10-22 因这点让 Andy 重复反馈了一轮）。
+   标准动作＝push 后轮询线上 `index.html`（带随机 query 破 CDN），看到 `?v=` 已是新值 / 目标文案已变，再回复。
+   参考轮询：每 15 秒抓一次，最多 7 次，命中即停。
 6. **笔记不该有角色/序号**：笔记板块按「词句清单」处理，`parse_text` 的 note 分支已剥掉 `1.` 编号与「旁白：」，勿再加回。
+7. **别在页面出现「多邻国」相关表述**：Andy 2026-10-22 明确要求去掉「目录 = 多邻国 App 的单元编号」这类字眼，
+   已清 `index.html` 副标与 `<title>`、`app.js` 总览页 `.sub` 与页脚。代码注释里的说明保留（不渲染），但**不要再往可见文案里加回**。
 
 ## 八、待 Andy 确认 / 后续
 
