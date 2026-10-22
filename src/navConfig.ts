@@ -6,13 +6,13 @@ import { TabType } from './types';
 
  * 三级导航配置（数据驱动）。
 
- * - 第一层：顶层分组（个人 / 法务实务 / 律师实务 / 影视法律）；双视角劳动实务作为「律师实务」的子板块。
+ * - 第一层：顶层分组（个人 / 法务实务 / 律师实务 / 外语）；双视角劳动实务作为「律师实务」的子板块。
 
  * - 第二层：每个分组下的子板块 subTabs。
 
  * - 第三层（可选）：分组内再按「剧集 / 栏目」分层 sections，
 
- *   例如 影视法律 → The Good Wife（一部剧一项，季与季由子站页内链接切换）。
+ *   例如 外语 → The Good Wife（一部剧一项，季与季由子站页内链接切换）。
 
  *   只有需要分层的分组才写 sections，其余分组保持两级，不增加复杂度。
 
@@ -107,9 +107,9 @@ export const NAV_GROUPS: NavGroup[] = [
 
     id: 'film',
 
-    label: '影视 · 英语',
+    label: '外语',
 
-    enLabel: 'Film & English',
+    enLabel: 'Languages',
 
     subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english'],
 
@@ -207,7 +207,9 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   financing: { label: '融资法务', enLabel: 'Financing' },
   arbitration: { label: '商事仲裁', enLabel: 'Arbitration' },
   'family-law': { label: '婚姻家事与遗产继承', enLabel: 'Family & Inheritance' },
-  'english': { label: 'ENGLISH', enLabel: 'English' },
+  // 「影视英语」分组 2026-10-22 改名为「外语」；本子板块原按钮文案 label='ENGLISH'、enLabel='English'，
+  // 按需求保留在源码(git)但不再渲染到网站，改用中文「身边的英语」。
+  'english': { label: '身边的英语', enLabel: '' },
 
   'lanxiang': { label: '兰香如故', enLabel: 'The Fragrance of Orchids' },
 
