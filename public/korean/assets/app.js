@@ -142,7 +142,7 @@
     // 上一篇 / 下一篇
     parts.push(pagerHtml(u));
 
-    parts.push('<div class="footer-note">韩语课程对照本 · 目录与多邻国 App 的单元编号一一对应 · 讲解中文 + 韩文 + 罗马音</div>');
+    parts.push('<div class="footer-note">韩语课程对照本 · 讲解中文 + 韩文 + 罗马音</div>');
     parts.push('</div>');
 
     main.innerHTML = parts.join('');
@@ -235,7 +235,7 @@
     parts.push('<div class="article">');
     parts.push('<span class="unit-tag">总览</span>');
     parts.push('<h1>韩语课程对照本</h1>');
-    parts.push('<div class="sub">目录 = 多邻国 App 的单元编号 · 已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 + 音频）</div>');
+    parts.push('<div class="sub">已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 + 音频）</div>');
     parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，左栏点同一个编号就行。' +
       '带「原文」标记的单元是从你的韩语笔记原样搬过来的，按笔记里实际的块分板块——只有句子、或句子+小故事、或句子+小故事+笔记。' +
       '全部 ' + n + ' / ' + UNITS.length + ' 个单元有内容。</p>');
