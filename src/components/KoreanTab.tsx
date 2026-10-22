@@ -18,7 +18,7 @@ const IFRAME_V = String(Date.now());
 export const KoreanTab: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => (
   <ThemeIframe
     src={`/korean/index.html?v=${IFRAME_V}`}
-    title="韩语课程对照本 · 对齐多邻国韩语单元"
+    title="韩语课程对照本"
     darkMode={darkMode}
     mobileFullscreen
   />

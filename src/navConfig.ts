@@ -80,7 +80,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Profile',
 
-    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes', 'korean', 'humanities'],
+    subTabs: ['about', 'expertise', 'cases', 'insights', 'notes', 'humanities'],
 
   },
 
@@ -111,7 +111,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Languages',
 
-    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english'],
+    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english', 'korean'],
 
     sections: [
 
@@ -152,6 +152,18 @@ export const NAV_GROUPS: NavGroup[] = [
         enLabel: 'Daily Tools',
 
         tabs: ['english'],
+
+      },
+
+      {
+
+        id: 'korean',
+
+        label: '韩语',
+
+        enLabel: 'Korean',
+
+        tabs: ['korean'],
 
       },
 
