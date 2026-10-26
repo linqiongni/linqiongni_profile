@@ -48,7 +48,7 @@ const checks = {
   14: { tag: '2-4', blocks: ['句子', '笔记'], rows: 22 },
   15: { tag: '2-5', blocks: ['句子', '小故事', '笔记'], rows: 39 },
   16: { tag: '2-6', blocks: ['句子', '小故事', '笔记'], rows: 73 },
-  17: { tag: '2-7', blocks: ['句子', '小故事'], rows: 20 },
+  17: { tag: '2-7', blocks: ['句子', '小故事', '笔记'], rows: 48 },
 };
 for (const no of Object.keys(checks)) {
   const want = checks[no];
