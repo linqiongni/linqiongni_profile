@@ -26,17 +26,23 @@
   var sections = {};
   KO_SECTIONS.forEach(function (s) { sections[s.id] = s; });
   var PART_NAME = { 1: '第一部分', 2: '第二部分', 3: '第三部分', 4: '第四部分' };
+  // 每一「部分」内部从 1 重新编号（2-8 = 第二部分 · 第 8 单元），跟笔记文件标号一致。
+  // KO_UNITS_RAW 里的全局编号（1–130）只当内部 key 用，不对外显示。
+  var PART_OFFSET = { s1: 0, s2: 10, s3: 40, s4: 80 };
 
   UNITS.forEach(function (u) {
+    u.pno = u.no ? u.no - (PART_OFFSET[u.sec] || 0) : null;
     u.notion = (typeof KO_NOTION !== 'undefined' && u.no && KO_NOTION[u.no]) || null;
     u.content = KO_CONTENT[u.no] || KO_CONTENT[u.key] || null;
-    u.search = (u.title + ' ' + (u.en || '') + ' ' + (u.no || '') + ' ' + (u.notion ? u.notion.tag : '') + ' ' +
+    u.search = (u.title + ' ' + (u.en || '') + ' ' + (u.pno || '') + ' ' + (u.no || '') + ' ' +
+      (u.pno ? (u.sec.slice(1) + '-' + u.pno) : '') + ' ' +
+      (u.notion ? u.notion.tag : '') + ' ' +
       (u.content ? JSON.stringify(u.content) : '') + (u.notion ? JSON.stringify(u.notion) : '')).toLowerCase();
     byKey[u.key] = u;
   });
   var order = UNITS.map(function (u) { return u.key; });
 
-  function label(u) { return u.no ? ('第 ' + u.no + ' 单元 · ' + u.title) : u.title; }
+  function label(u) { return u.pno ? ('第 ' + u.pno + ' 单元 · ' + u.title) : u.title; }
 
   var side = document.getElementById('side');
   var main = document.getElementById('main');
@@ -61,7 +67,7 @@
       html += '<div class="unit">' + esc(sec.name) + ' <span class="rng">' + esc(sec.range) + '</span></div>';
       list.forEach(function (u) {
         html += '<a href="#' + u.key + '" data-key="' + u.key + '" class="' + (u.content ? '' : 'stub') + '">' +
-          '<span class="no">' + (u.no || '附') + '</span>' + esc(u.title) + '</a>';
+          '<span class="no">' + (u.pno || '附') + '</span>' + esc(u.title) + '</a>';
       });
     });
     if (!html) html = '<div class="unit">无匹配</div>';
@@ -81,13 +87,13 @@
     var sec = sections[u.sec] || {};
     var parts = [];
     parts.push('<div class="article">');
-    parts.push('<span class="unit-tag">' + esc(sec.name || '') + (u.no ? ' · 第 ' + u.no + ' 单元' : '') + '</span>');
+    parts.push('<span class="unit-tag">' + esc(sec.name || '') + (u.pno ? ' · 第 ' + u.pno + ' 单元' : '') + '</span>');
     parts.push('<h1>' + esc(u.title) + '</h1>');
-    parts.push('<div class="sub">' + (u.no ? '第 ' + u.no + ' 单元' : '附录') + (u.en ? ' · 课程内部名 ' + esc(u.en) : '') + '</div>');
+    parts.push('<div class="sub">' + (u.pno ? '第 ' + u.pno + ' 单元' : '附录') + (u.en ? ' · 课程内部名 ' + esc(u.en) : '') + '</div>');
     if (c.goal) parts.push('<p class="goal">' + esc(c.goal) + '</p>');
     if (!u.content) {
       parts.push('<div class="tip"><b>本单元的讲解还没写。</b><br>' +
-        '目录结构已经按 App 的单元编号就位——你在 App 里学到第 ' + (u.no || '') + ' 单元时，' +
+        '目录结构已经按单元编号就位——你在课程里学到第 ' + (u.pno || '') + ' 单元时，' +
         '把语法点和生词记在下面「我的笔记」里即可。需要我把这个单元的内容写满，跟我说单元号。</div>');
     } else {
       if (c.grammar && c.grammar.length) {
@@ -236,11 +242,11 @@
     parts.push('<span class="unit-tag">总览</span>');
     parts.push('<h1>韩语课程对照本</h1>');
     parts.push('<div class="sub">已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 + 音频）</div>');
-    parts.push('<p class="goal">用法：在 App 里看你在「第几单元」，左栏点同一个编号就行。' +
+    parts.push('<p class="goal">用法：每部分内部从 1 编号，跟笔记标号一致（例：2-8 = 第二部分 · 第 8 单元），左栏点同一个编号就行。' +
       '带「原文」标记的单元是从你的韩语笔记原样搬过来的，按笔记里实际的块分板块——只有句子、或句子+小故事、或句子+小故事+笔记。' +
       '全部 ' + n + ' / ' + UNITS.length + ' 个单元有内容。</p>');
     parts.push('<p class="note">其余单元是按「单元主题」整理的<b>通用学习参考</b>（目标 + 语法 + 词表 + 句型），' +
-      '不是官方题库。你在 App 里遇到的句子，可以抄进对应单元的「App 原句记录」——等你的笔记覆盖到那一段，我再按原文替换。</p>');
+      '不是官方题库。你在课程里遇到的句子，可以抄进对应单元的「App 原句记录」——等你的笔记覆盖到那一段，我再按原文替换。</p>');
     KO_SECTIONS.forEach(function (sec) {
       var list = UNITS.filter(function (u) { return u.sec === sec.id; });
       if (!list.length) return;
@@ -251,7 +257,7 @@
           ? (u.notion.tag + ' · ' + u.notion.blocks.map(function (b) { return b.t; }).join(' / '))
           : (u.content && u.content.goal ? u.content.goal : (u.content ? '' : '待补'));
         parts.push('<a class="cell ' + (u.notion ? 'notion' : (u.content ? '' : 'stub')) + '" href="#' + u.key + '">' +
-          '<div class="t">' + (u.no ? '<span class="no">' + u.no + '</span>' : '') + esc(u.title) +
+          '<div class="t">' + (u.pno ? '<span class="no">' + u.pno + '</span>' : '') + esc(u.title) +
           (u.notion ? '<span class="badge">原文</span>' : '') + '</div>' +
           '<div class="z">' + esc(z) + '</div>' +
           '</a>');
@@ -346,11 +352,22 @@
   }
 
   // ---------- 跳单元 ----------
+  // 支持两种写法：①「2-8」（部分-单元，跟笔记文件同名）② 只写数字（按当前所在部分找）
   function goUnit() {
-    var v = parseInt((jump.value || '').replace(/[^0-9]/g, ''), 10);
-    if (!v) return;
-    var hit = byKey['u' + v];
-    if (hit) location.hash = '#' + hit.key;
+    var raw = (jump.value || '').trim();
+    var hit = null;
+    var m = raw.match(/^(\d+)\s*[-–—._/、\s]\s*(\d+)$/);
+    if (m) {
+      var off = PART_OFFSET['s' + parseInt(m[1], 10)];
+      if (off != null) hit = byKey['u' + (off + parseInt(m[2], 10))];
+    } else {
+      var n = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+      if (n) {
+        var sec = (cur && byKey[cur] ? byKey[cur].sec : 's1');
+        hit = byKey['u' + ((PART_OFFSET[sec] || 0) + n)] || byKey['u' + n];
+      }
+    }
+    if (hit) { location.hash = '#' + hit.key; jump.value = ''; }
   }
 
   // ---------- 初始化 ----------

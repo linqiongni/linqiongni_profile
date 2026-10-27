@@ -49,7 +49,7 @@ const checks = {
   15: { tag: '2-5', blocks: ['句子', '小故事', '笔记'], rows: 39 },
   16: { tag: '2-6', blocks: ['句子', '小故事', '笔记'], rows: 73 },
   17: { tag: '2-7', blocks: ['句子', '小故事', '笔记'], rows: 62 },
-  18: { tag: '2-8', blocks: ['句子', '笔记'], rows: 31 },
+  18: { tag: '2-8', blocks: ['句子', '小故事', '笔记'], rows: 45 },
 };
 for (const no of Object.keys(checks)) {
   const want = checks[no];
@@ -77,6 +77,16 @@ for (const no of Object.keys(checks)) {
   if (loopBtns !== want.blocks.length) fail('单元 ' + no + ' 循环按钮数 ' + loopBtns + ' ≠ 板块数');
   if (/App 原句记录|我的笔记/.test(txt)) fail('单元 ' + no + ' 仍出现「原句记录 / 我的笔记」');
   if (/语法要点|词汇表/.test(txt)) fail('单元 ' + no + ' 出现未清理的旧生成内容');
+
+  // 编号按「部分」从 1 起：2-8 应显示 第 8 单元（不是 第 18），侧栏条目也跟着改
+  const pm = want.tag.match(/^(\d+)-(\d+)$/);
+  if (pm) {
+    const pno = pm[2];
+    const tagTxt = d.querySelector('.article .unit-tag').textContent;
+    if (!tagTxt.includes('第 ' + pno + ' 单元')) fail('单元 ' + no + ' 页头编号应为「第 ' + pno + ' 单元」，实际：' + tagTxt);
+    const sideNo = d.querySelector('#side a[data-key="u' + no + '"] .no');
+    if (!sideNo || sideNo.textContent.trim() !== pno) fail('单元 ' + no + ' 侧栏编号应为 ' + pno + '，实际：' + (sideNo ? sideNo.textContent : '无'));
+  }
 }
 
 // 3) 未并入的单元仍保留记录框（未动）
