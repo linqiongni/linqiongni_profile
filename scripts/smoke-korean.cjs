@@ -50,7 +50,7 @@ const checks = {
   16: { tag: '2-6', blocks: ['句子', '小故事', '笔记'], rows: 73 },
   17: { tag: '2-7', blocks: ['句子', '小故事', '笔记'], rows: 62 },
   18: { tag: '2-8', blocks: ['句子', '小故事', '笔记'], rows: 57 },
-  19: { tag: '2-9', blocks: ['句子', '笔记'], rows: 39 },
+  19: { tag: '2-9', blocks: ['句子', '小故事', '笔记'], rows: 77 },
 };
 for (const no of Object.keys(checks)) {
   const want = checks[no];
