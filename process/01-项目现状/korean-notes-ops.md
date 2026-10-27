@@ -24,8 +24,11 @@ Notion 标号「第X部分第Y单元」→ 站点总单元号 = `PART_OFFSET[X] 
 | 第三部分 | 41–80 | +40 |
 | 第四部分 | 81–130 | +80 |
 
-例：`2-3`（第二部分第3单元）→ 总第 13 单元；`3-1` → 总第 41 单元。
-偏移表写死在 `scripts/build_korean_units.py` 的 `PART_OFFSET`。
+例：`2-3`（第二部分第3单元）→ 数据里的总第 13 单元；`3-1` → 总第 41 单元。
+偏移表写死在 `scripts/build_korean_units.py` / `build_korean_text.py` 的 `PART_OFFSET`。
+
+**⚠️ 显示编号 ≠ 内部键（2026-10-27 起）**：页面**每一部分内部从 1 重新编号**，跟笔记文件名一一对应（`2-8` 就显示「第二部分 · 第 8 单元」，不再是「第 18 单元」）。总单元号（1–130）只当 `KO_CONTENT` / `KO_NOTION` 的内部 key 用，不对用户显示。
+实现在 `public/korean/assets/app.js` 的 `PART_OFFSET`（`{s1:0,s2:10,s3:40,s4:80}`）+ `u.pno = u.no - PART_OFFSET[u.sec]`；侧栏、首页卡片、页头、上下篇、跳转框全部用 `pno`。`data.js` 的 `KO_SECTIONS.range` 也要跟着写成「第 1–30 单元」这类**部分内**范围。
 
 ## 三、真源与脚本位置（哪份进 git、哪份不进）
 

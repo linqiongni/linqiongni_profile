@@ -17,7 +17,8 @@ agent_created: true
 **完整、可复用的 8 步流程、映射规则、命名约定、已知坑都在 `process/01-项目现状/korean-notes-ops.md`。** 动手前先读它，不要凭记忆重写逻辑。
 
 ## 关键事实（速记）
-- **映射**：「第X部分第Y单元」→ 总单元号 = PART_OFFSET[X] + Y（一:1–10 / 二:11–40 / 三:41–80 / 四:81–130）。
+- **映射**：「第X部分第Y单元」→ 数据内部总单元号 = PART_OFFSET[X] + Y（一:1–10 / 二:11–40 / 三:41–80 / 四:81–130）。
+- **显示编号（2026-10-27 起）**：页面**每部分内部从 1 重新编号**，与笔记文件名一一对应（`2-8` → 「第二部分 · 第 8 单元」，**不是**第 18 单元）。总单元号只当内部 key，不对外显示；改渲染时统一用 `u.pno`（`app.js` 的 `PART_OFFSET`），`KO_SECTIONS.range` 写部分内范围（如「第 1–30 单元」）。
 - **数据真源**：`public/korean/assets/data.js` 的 `KO_NOTION`（已并入原文）+ `KO_CONTENT`（其余单元通用参考版）。两者都进 git，换电脑 clone 即有。
 - **脚本（二选一）**：`scripts/build_korean_text.py`（**纯文本输入 / 增量合并**，--src=build/korean-notes.txt，--write 合并写，**保留其它已上线单元**，安全）；`scripts/build_korean_units.py`（**Notion HTML 输入 / 全量重写**，--src= 指定导出，--write 写入；已幂等）。
 - **输入（不入库）**：`build/korean-notes.txt`（纯文本笔记）/ `build/korean-source.html`（Notion 导出），都在 `build/`（`.gitignore` 忽略，不公开）。⚠️ 原始导出/笔记**绝不进 `public/`**（隐私红线，会随站点公开）。
