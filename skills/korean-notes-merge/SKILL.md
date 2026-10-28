@@ -30,6 +30,7 @@ agent_created: true
 1. bump `index.html` 里 data.js/app.js/style.css 的 `?v=` 当天串破缓存。
 2. `git -c core.hooksPath=/dev/null commit` + `git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main`（MinGit；排障见 `process/MIGRATION.md`）。**不要 amend 已推提交。**
 3. **push 后先轮询线上确认再有底气回话**：GitHub Pages 部署有 2~3 分钟延迟，push 完立刻说「已上线」会让用户白刷一轮、以为没改（2026-10-22 踩过）。抓 `https://linqiongni.top/korean/index.html?_=<ts>`，看 `?v=` 是否为新值 / 目标文案是否已变（每 15 秒一次、最多 7 次）。
+   ⚠️ **验证时别在部署完成前抓带 `?v=` 的资源 URL**（如 `data.js?v=20261028a`）：CDN 会按 URL 把那份"部署前"的旧文件缓存下来，之后 origin 虽已更新，CDN 仍吐旧缓存，渲染层一直显示旧内容。若已被污染，**最稳是再 bump 一个全新版本号**（如 `20261028a → 20261028b`），全新 URL 必回源取新文件。普通 `index.html` 整页抓取无妨（不污染版本化资源）。
 4. 写 `process/04-每日日志/当天.md` + 更新 `process/README.md` 今日索引。
 
 ## 已知坑（别再踩）
@@ -38,3 +39,5 @@ agent_created: true
 - 文本输入的板块标题行：单独的「句子」二字（在 `X-Y` 之后）是板块切换标记，**会被忽略而非当一句句子**——已修；用户照手册模板写即可。
 - 纯文本脚本是**板块级增量合并**：只覆盖文本里提供的「板块」（句子/小故事/笔记），同单元其它板块原样保留；不会丢已上线内容。注意合并是**覆盖该板块而非追加**——要往已有板块加行，把旧行+新行一起给（同标题）。若要全量刷新用 Notion 导出脚本（整页全量）。
 - `emit_js` 用 `.get()` 读 row 字段，兼容「读回已上线数据再写回」；改它务必保持键值齐全（`ko/zh/who/no`）。
+- **Edit 工具偶发"假成功"**：改 `index.html` / `smoke-korean.cjs` 这类文件时，第一次 Edit 可能报"成功"但实际没动文件（2026-10-28 连续两处）。**改完务必 Read 回读核对关键那行**，别信返回状态。
+- **CDN 缓存污染**（见上收工第 3 步）：部署生效前抓带 `?v=` 的资源会缓存旧文件，导致线上迟迟不更新；中招就再 bump 一个新版本号。
