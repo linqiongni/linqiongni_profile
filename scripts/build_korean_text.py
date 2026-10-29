@@ -153,8 +153,11 @@ def read_existing_notion():
     if not NODE or NODE == "node":
         print("!! 找不到 node，无法解析现有 KO_NOTION")
         return {}
-    js = "const m=%s; process.stdout.write(JSON.stringify(m));" % seg
-    r = subprocess.run([NODE, "-e", js], capture_output=True, text=True)
+    # 注意：seg 是整个 KO_NOTION 对象字面量，随单元数增长会变得很长。
+    # 若用 `node -e "<seg>"` 当命令行参数传入，Windows 下会触发 WinError 206
+    #（命令行/环境总长度超限）。改为走 stdin 管道，彻底避开参数长度限制。
+    js = "let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>{const m=eval('('+s+')');process.stdout.write(JSON.stringify(m))})"
+    r = subprocess.run([NODE, "-e", js], input=seg, capture_output=True, text=True)
     if r.returncode != 0:
         print("!! 解析现有 KO_NOTION 失败：", r.stderr[:200])
         return {}
