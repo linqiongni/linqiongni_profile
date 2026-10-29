@@ -41,3 +41,4 @@ agent_created: true
 - `emit_js` 用 `.get()` 读 row 字段，兼容「读回已上线数据再写回」；改它务必保持键值齐全（`ko/zh/who/no`）。
 - **Edit 工具偶发"假成功"**：改 `index.html` / `smoke-korean.cjs` 这类文件时，第一次 Edit 可能报"成功"但实际没动文件（2026-10-28 连续两处）。**改完务必 Read 回读核对关键那行**，别信返回状态。
 - **CDN 缓存污染**（见上收工第 3 步）：部署生效前抓带 `?v=` 的资源会缓存旧文件，导致线上迟迟不更新；中招就再 bump 一个新版本号。
+- **node `-e` 命令行超长（WinError 206）**：本脚本的 `read_existing_notion` 原把整个 KO_NOTION 对象字面量作为 `node -e "<seg>"` 的命令行参数传入；data.js 随单元增多变长后，Windows 下触发 `WinError 206`（命令行/环境总长超限），写入直接失败、单元漏落盘。**修法：用 stdin 管道传 `seg`**（`node -e` 只放极短读取脚本，`input=seg` 走管道），避开参数长度限制。改完此脚本务必连同内容一起提交，否则换机器克隆仍是坏的。
