@@ -31,6 +31,7 @@ agent_created: true
 2. `git -c core.hooksPath=/dev/null commit` + `git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main`（MinGit；排障见 `process/MIGRATION.md`）。**不要 amend 已推提交。**
 3. **push 后先轮询线上确认再有底气回话**：GitHub Pages 部署有 2~3 分钟延迟，push 完立刻说「已上线」会让用户白刷一轮、以为没改（2026-10-22 踩过）。抓 `https://linqiongni.top/korean/index.html?_=<ts>`，看 `?v=` 是否为新值 / 目标文案是否已变（每 15 秒一次、最多 7 次）。
    ⚠️ **验证时别在部署完成前抓带 `?v=` 的资源 URL**（如 `data.js?v=20261028a`）：CDN 会按 URL 把那份"部署前"的旧文件缓存下来，之后 origin 虽已更新，CDN 仍吐旧缓存，渲染层一直显示旧内容。若已被污染，**最稳是再 bump 一个全新版本号**（如 `20261028a → 20261028b`），全新 URL 必回源取新文件。普通 `index.html` 整页抓取无妨（不污染版本化资源）。
+   ⚠️ **WebFetch 抓线上静态页也会命中 CDN 缓存**：即使部署已生效，同一 `index.html` URL 多次用 WebFetch 抓取可能一直返回旧快照（目标文案不变），并非部署没好。核验务必用**唯一查询串**（如 `?_=verify<ts>`）强制 CDN 回源，看到的才是真实部署状态。本沙箱对站点域名直连 HTTP 被拦截（curl 000），线上核验只能走 WebFetch，故这点是唯一可靠路径——**不能因为 WebFetch 连抓几次都显示旧块就下"没生效"的结论**。
 4. 写 `process/04-每日日志/当天.md` + 更新 `process/README.md` 今日索引。
 
 ## 已知坑（别再踩）
