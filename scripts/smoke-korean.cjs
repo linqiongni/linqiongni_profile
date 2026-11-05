@@ -35,7 +35,7 @@ const tick = () => new Promise((r) => setTimeout(r, 30));
   if (!cells.length) fail('首页没有单元卡');
   const badges = d.querySelectorAll('.home-grid .cell .badge');
   console.log('首页单元卡', cells.length, '· 原文标记', badges.length);
-  if (badges.length !== 16) fail('首页「原文」标记应为 16 个，实际 ' + badges.length);
+  if (badges.length !== 17) fail('首页「原文」标记应为 17 个，实际 ' + badges.length);
 }
 
 // 2) 每个已并入单元
@@ -55,7 +55,8 @@ const checks = {
   21: { tag: '2-11', blocks: ['句子', '小故事', '笔记'], rows: 81 },
   22: { tag: '2-12', blocks: ['句子', '小故事', '笔记'], rows: 73 },
   23: { tag: '2-13', blocks: ['句子', '小故事', '笔记'], rows: 83 },
-  24: { tag: '2-14', blocks: ['句子', '笔记'], rows: 41 },
+  24: { tag: '2-14', blocks: ['句子', '小故事', '笔记'], rows: 69 },
+  25: { tag: '2-15', blocks: ['句子', '笔记'], rows: 26 },
 };
 for (const no of Object.keys(checks)) {
   const want = checks[no];
