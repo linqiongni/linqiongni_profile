@@ -78,10 +78,7 @@ for (const no of Object.keys(checks)) {
   if (!txt.includes(want.tag)) fail('单元 ' + no + ' 页头缺少标号 ' + want.tag);
   if (rows !== want.rows) fail('单元 ' + no + ' 行数 ' + rows + ' ≠ ' + want.rows);
   if (toc.join('/') !== want.blocks.join('/')) fail('单元 ' + no + ' 右侧目录不对：' + toc.join('/'));
-  // 已知待补音频：用户暂未上传，渲染层会 404 自动隐藏控件，冒烟不报 404
-  const KNOWN_MISSING_AUDIO = new Set(['2-16笔记.m4a']);
   auds.forEach((s) => {
-    if (KNOWN_MISSING_AUDIO.has(path.basename(s))) return;
     if (!fs.existsSync(path.join(dir, s))) fail('单元 ' + no + ' 音频 404：' + s);
   });
   if (auds.length !== want.blocks.length) fail('单元 ' + no + ' 音频数 ' + auds.length + ' ≠ 板块数');
