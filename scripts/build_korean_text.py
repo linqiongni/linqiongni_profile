@@ -46,9 +46,9 @@ def _find_node():
 
 NODE = _find_node()
 
-KIND_MAP = {"小故事": "story", "笔记": "note", "句子": "sent"}
-KIND_LABEL = {"story": "小故事", "note": "笔记", "sent": "句子"}
-ORDER = {"sent": 0, "story": 1, "note": 2}
+KIND_MAP = {"小故事": "story", "笔记": "note", "句子": "sent", "听力": "listen"}
+KIND_LABEL = {"story": "小故事", "note": "笔记", "sent": "句子", "listen": "听力"}
+ORDER = {"sent": 0, "story": 1, "note": 2, "listen": 3}
 
 # 角色名：纯中文（含生僻字区间），至少 1 字；后面跟中文/英文冒号
 WHO_RE = re.compile(r"^([\u3400-\u4dbf\u4e00-\u9fff]+)\s*[：:]\s*")
@@ -78,7 +78,7 @@ def parse_text(raw):
         s = line.strip()
         if not s:
             continue
-        m = re.match(r"^(\d+)\s*-\s*(\d+)\s*(小故事|笔记|句子)?\s*$", s)
+        m = re.match(r"^(\d+)\s*-\s*(\d+)\s*(小故事|笔记|句子|听力)?\s*$", s)
         if m:
             part, pno = int(m.group(1)), int(m.group(2))
             kind = KIND_MAP.get(m.group(3), "sent")
@@ -88,7 +88,7 @@ def parse_text(raw):
             cur = _block(cur_ent, kind)
             continue
         # 单独的板块名行（句子/小故事/笔记）——板块切换标记，非内容
-        if s in ("句子", "小故事", "笔记"):
+        if s in ("句子", "小故事", "笔记", "听力"):
             if cur_ent is not None:
                 cur = _block(cur_ent, KIND_MAP[s])
             continue
@@ -223,12 +223,19 @@ def main():
     have = set(os.listdir(adir)) if os.path.isdir(adir) else set()
     for e in units:
         for b in e["blocks"]:
+            # 听力音频可选：文件不在就置空，渲染层据此不显示音频条（按用户要求）
+            if b["k"] == "listen" and b["audio"] not in have:
+                b["audio"] = ""
             ok = b["audio"] in have
-            print("总第 %3d 单元 · %s · [%s] %s rows=%d  audio=%s%s" % (
-                e["unit"], e["tag"], b["k"], b["t"], len(b["rows"]), b["audio"],
-                "" if ok else "  (缺)"))
-            if not ok:
-                print("    !! 缺音频文件：assets/audio/%s" % b["audio"])
+            if b["k"] == "listen" and not ok:
+                print("总第 %3d 单元 · %s · [%s] %s rows=%d  无音频（按设计不显示音频条）" % (
+                    e["unit"], e["tag"], b["k"], b["t"], len(b["rows"])))
+            else:
+                print("总第 %3d 单元 · %s · [%s] %s rows=%d  audio=%s%s" % (
+                    e["unit"], e["tag"], b["k"], b["t"], len(b["rows"]), b["audio"],
+                    "" if ok else "  (缺)"))
+                if not ok:
+                    print("    !! 缺音频文件：assets/audio/%s" % b["audio"])
 
     print("\n解析到 %d 个单元、%d 个板块。" % (
         len(units), sum(len(e["blocks"]) for e in units)))

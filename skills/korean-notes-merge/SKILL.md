@@ -22,8 +22,8 @@ agent_created: true
 - **数据真源**：`public/korean/assets/data.js` 的 `KO_NOTION`（已并入原文）+ `KO_CONTENT`（其余单元通用参考版）。两者都进 git，换电脑 clone 即有。
 - **脚本（二选一）**：`scripts/build_korean_text.py`（**纯文本输入 / 增量合并**，--src=build/korean-notes.txt，--write 合并写，**保留其它已上线单元**，安全）；`scripts/build_korean_units.py`（**Notion HTML 输入 / 全量重写**，--src= 指定导出，--write 写入；已幂等）。
 - **输入（不入库）**：`build/korean-notes.txt`（纯文本笔记）/ `build/korean-source.html`（Notion 导出），都在 `build/`（`.gitignore` 忽略，不公开）。⚠️ 原始导出/笔记**绝不进 `public/`**（隐私红线，会随站点公开）。
-- **音频**：`public/korean/assets/audio/<标号><后缀>.m4a`，后缀只认「小故事」「笔记」，句子即标号本身。缺文件播放器自动隐藏。
-- **呈现约定**：替换单元不显示「App 原句记录 / 我的笔记」框；标号带「小故事/笔记」才有对应板块 + 右侧固定目录；板块顺序 句子→小故事→笔记。
+- **音频**：`public/korean/assets/audio/<标号><后缀>.m4a`，后缀只认「小故事」「笔记」「听力」，句子即标号本身。句子/小故事/笔记 缺文件时播放器靠 404 error 事件自动隐藏；**听力音频可选**——audio 目录没有 `2-16听力.m4a` 时，合并脚本把该块 `audio` 置空，渲染层**直接不渲染音频条**（非靠 404 隐藏）。
+- **呈现约定**：替换单元不显示「App 原句记录 / 我的笔记」框；标号带「小故事/笔记/听力」才有对应板块 + 右侧固定目录；板块顺序 句子→小故事→笔记→**听力**；听力无音频时不显示音频条。
 - **验证**：`scripts/smoke-korean.cjs`（jsdom 冒烟，node_modules 在 `~/.workbuddy/binaries/node/workspace/node_modules`）。
 
 ## 收工动作（本仓库硬性）
@@ -43,3 +43,4 @@ agent_created: true
 - **Edit 工具偶发"假成功"**：改 `index.html` / `smoke-korean.cjs` 这类文件时，第一次 Edit 可能报"成功"但实际没动文件（2026-10-28 连续两处）。**改完务必 Read 回读核对关键那行**，别信返回状态。
 - **CDN 缓存污染**（见上收工第 3 步）：部署生效前抓带 `?v=` 的资源会缓存旧文件，导致线上迟迟不更新；中招就再 bump 一个新版本号。
 - **node `-e` 命令行超长（WinError 206）**：本脚本的 `read_existing_notion` 原把整个 KO_NOTION 对象字面量作为 `node -e "<seg>"` 的命令行参数传入；data.js 随单元增多变长后，Windows 下触发 `WinError 206`（命令行/环境总长超限），写入直接失败、单元漏落盘。**修法：用 stdin 管道传 `seg`**（`node -e` 只放极短读取脚本，`input=seg` 走管道），避开参数长度限制。改完此脚本务必连同内容一起提交，否则换机器克隆仍是坏的。
+- **听力块（2026-11-06 新增）**：标题行 `2-16听力`（`X-Y` 后的「听力」二字，或单独的「听力」行都算板块切换标记）；格式同句子（每行「韩文 中文」或「序号、韩文 中文」，无角色）。**音频可选**——audio 目录没有 `2-16听力.m4a` 时 dry-run 显示「无音频（按设计不显示音频条）」即正常，勿当 `(缺)` 报错；把 `2-16听力.m4a` 放进 `assets/audio/` 后重跑脚本即自动接上音频条。渲染层：`audio` 字段为空则完全不渲染 `<audio>` 控件。

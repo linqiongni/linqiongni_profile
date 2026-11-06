@@ -175,11 +175,14 @@
       parts.push('<section class="blk" id="blk-' + b.k + '">');
       parts.push('<h2 data-toc="' + esc(b.t) + '">' + esc(b.t) + (b.sub ? '<span class="rng-h">' + esc(b.sub) + '</span>' : '') +
         '<span class="cnt">' + b.rows.length + ' 条</span></h2>');
-      parts.push('<div class="audio" data-audio="' + esc(audioSrc(b.audio)) + '">' +
-        '<audio controls preload="metadata" src="' + esc(audioSrc(b.audio)) + '"></audio>' +
-        '<button type="button" class="loop-btn" aria-pressed="false" title="循环播放本段音频">' +
-        '<span class="ico">↻</span>循环</button></div>');
-      parts.push('<div class="ex sentbox ' + (b.k === 'story' ? 'story' : b.k === 'note' ? 'notelist' : 'plain') + '">');
+      // 听力音频可选：b.audio 为空（文件未上传）时不渲染音频条，避免出一个坏控件
+      if (b.audio) {
+        parts.push('<div class="audio" data-audio="' + esc(audioSrc(b.audio)) + '">' +
+          '<audio controls preload="metadata" src="' + esc(audioSrc(b.audio)) + '"></audio>' +
+          '<button type="button" class="loop-btn" aria-pressed="false" title="循环播放本段音频">' +
+          '<span class="ico">↻</span>循环</button></div>');
+      }
+      parts.push('<div class="ex sentbox ' + (b.k === 'story' ? 'story' : b.k === 'note' ? 'notelist' : b.k === 'listen' ? 'listen' : 'plain') + '">');
       b.rows.forEach(function (r) {
         var cls = 'row2' + (r.who ? ' has-who' : '') + (!r.ko ? ' narr' : '');
         parts.push('<div class="' + cls + '">');
@@ -193,7 +196,7 @@
     });
 
     parts.push(pagerHtml(u));
-    parts.push('<div class="footer-note">原文照录自你的韩语笔记 · 句子 / 小故事 / 笔记 与音频一一对应</div>');
+    parts.push('<div class="footer-note">原文照录自你的韩语笔记 · 句子 / 小故事 / 笔记 / 听力 与音频一一对应（听力无音频时不显示音频条）</div>');
     parts.push('</div>');
 
     main.innerHTML = parts.join('');
@@ -241,7 +244,7 @@
     parts.push('<div class="article">');
     parts.push('<span class="unit-tag">总览</span>');
     parts.push('<h1>韩语课程对照本</h1>');
-    parts.push('<div class="sub">已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 + 音频）</div>');
+    parts.push('<div class="sub">已并入 ' + nn + ' 个单元的原始笔记（句子 / 小故事 / 笔记 / 听力 + 音频）</div>');
     parts.push('<p class="goal">用法：每部分内部从 1 编号，跟笔记标号一致（例：2-8 = 第二部分 · 第 8 单元），左栏点同一个编号就行。' +
       '带「原文」标记的单元是从你的韩语笔记原样搬过来的，按笔记里实际的块分板块——只有句子、或句子+小故事、或句子+小故事+笔记。' +
       '全部 ' + n + ' / ' + UNITS.length + ' 个单元有内容。</p>');
