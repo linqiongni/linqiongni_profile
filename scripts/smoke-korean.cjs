@@ -35,7 +35,7 @@ const tick = () => new Promise((r) => setTimeout(r, 30));
   if (!cells.length) fail('首页没有单元卡');
   const badges = d.querySelectorAll('.home-grid .cell .badge');
   console.log('首页单元卡', cells.length, '· 原文标记', badges.length);
-  if (badges.length !== 18) fail('首页「原文」标记应为 18 个，实际 ' + badges.length);
+  if (badges.length !== 19) fail('首页「原文」标记应为 19 个，实际 ' + badges.length);
 }
 
 // 2) 每个已并入单元
@@ -57,7 +57,8 @@ const checks = {
   23: { tag: '2-13', blocks: ['句子', '小故事', '笔记'], rows: 83 },
   24: { tag: '2-14', blocks: ['句子', '小故事', '笔记'], rows: 69 },
   25: { tag: '2-15', blocks: ['句子', '小故事', '笔记'], rows: 71 },
-  26: { tag: '2-16', blocks: ['句子', '笔记'], rows: 31 },
+  26: { tag: '2-16', blocks: ['句子', '小故事', '笔记', '听力'], rows: 78, audios: 3 },
+  27: { tag: '2-17', blocks: ['句子', '小故事', '笔记'], rows: 77 },
 };
 for (const no of Object.keys(checks)) {
   const want = checks[no];
@@ -81,8 +82,9 @@ for (const no of Object.keys(checks)) {
   auds.forEach((s) => {
     if (!fs.existsSync(path.join(dir, s))) fail('单元 ' + no + ' 音频 404：' + s);
   });
-  if (auds.length !== want.blocks.length) fail('单元 ' + no + ' 音频数 ' + auds.length + ' ≠ 板块数');
-  if (loopBtns !== want.blocks.length) fail('单元 ' + no + ' 循环按钮数 ' + loopBtns + ' ≠ 板块数');
+  const wantAudios = want.audios != null ? want.audios : want.blocks.length;
+  if (auds.length !== wantAudios) fail('单元 ' + no + ' 音频数 ' + auds.length + ' ≠ ' + wantAudios);
+  if (loopBtns !== wantAudios) fail('单元 ' + no + ' 循环按钮数 ' + loopBtns + ' ≠ ' + wantAudios);
   if (/App 原句记录|我的笔记/.test(txt)) fail('单元 ' + no + ' 仍出现「原句记录 / 我的笔记」');
   if (/语法要点|词汇表/.test(txt)) fail('单元 ' + no + ' 出现未清理的旧生成内容');
 
