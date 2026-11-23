@@ -106,6 +106,7 @@ def main():
     ap.add_argument("--id", default="")
     ap.add_argument("--tag", default="日常生活")
     ap.add_argument("--before", default="", help="插到指定 id 的课文前面；默认追加到末尾")
+    ap.add_argument("--after", default="", help="插到指定 id 的课文后面；默认追加到末尾")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -132,18 +133,28 @@ def main():
     except Exception as e:
         raise SystemExit(f"lessons.js 数组不是合法 JSON，无法安全写入：{e}")
     arr = [x for x in arr if isinstance(x, dict) and x.get("id") != lesson["id"]]
+    where = "末尾"
+    if args.before and args.after:
+        raise SystemExit("--before 与 --after 不能同时用")
     if args.before:
         pos = next((i for i, x in enumerate(arr) if x.get("id") == args.before), -1)
         if pos < 0:
             raise SystemExit(f"--before 指定的 id 不存在: {args.before}")
         arr.insert(pos, lesson)
+        where = f"{args.before} 前面"
+    elif args.after:
+        pos = next((i for i, x in enumerate(arr) if x.get("id") == args.after), -1)
+        if pos < 0:
+            raise SystemExit(f"--after 指定的 id 不存在: {args.after}")
+        arr.insert(pos + 1, lesson)
+        where = f"{args.after} 后面"
     else:
         arr.append(lesson)
     pretty = json.dumps(arr, ensure_ascii=False, indent=2)
     new = src[:m.start(2)] + pretty + src[m.end(2):]
     LESSONS.write_text(new, encoding="utf-8")
-    print(f"已追加课文：{lesson['title']} | {lesson['zh']}  (id={lesson['id']}, {len(lesson['blocks'])} 段)")
-    print("下一步：npm run sync:daily-english → npx tsc --noEmit → git commit")
+    print(f"已写入课文：{lesson['title']} | {lesson['zh']}  (id={lesson['id']}, {len(lesson['blocks'])} 段, 位置={where})")
+    print("下一步：python3 scripts/sync_daily_english.py → npx tsc --noEmit → git commit")
 
 
 if __name__ == "__main__":

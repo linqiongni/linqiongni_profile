@@ -9,14 +9,11 @@
     });
   };
 
+  // 目录按数组顺序线性展示（2026-11-23 Andy 确认）：
+  // 谁先加谁在上，新课文追加到数组末尾 = 页面最后，所见即所得。
+  // tag 仍在目录副标题和正文标签里显示，只是不再用来分组。
   function groups() {
-    var g = [], map = {};
-    ALL.forEach(function (l, i) {
-      var key = l.tag || '其他';
-      if (!map[key]) { map[key] = []; g.push(key); }
-      map[key].push(i);
-    });
-    return g.map(function (k) { return { name: k, items: map[k] }; });
+    return [{ name: '', items: ALL.map(function (_, i) { return i; }) }];
   }
 
   function renderDir(filter) {
@@ -33,7 +30,7 @@
         return hay.indexOf(q) !== -1;
       });
       if (!items.length) return;
-      html += '<div class="dir-group">' + esc(grp.name) + '</div>';
+      if (grp.name) html += '<div class="dir-group">' + esc(grp.name) + '</div>';
       items.forEach(function (i) {
         var l = ALL[i];
         html += '<button class="dir-item' + (i === cur ? ' on' : '') + '" data-i="' + i + '">' +
