@@ -150,5 +150,66 @@ window.DAILY_LESSONS = [
         "zh": "刮完胡子后，我冲洗剃须刀，接着去吃早餐。"
       }
     ]
+  },
+  {
+    "id": "eating-breakfast",
+    "title": "Eating Breakfast",
+    "zh": "吃早餐",
+    "tag": "日常生活",
+    "section": "Morning breakfast routine | 早餐流程",
+    "blocks": [
+      {
+        "en": "I walk into my kitchen and turn on the coffeemaker. I always put the coffee, filter, and water in the night before, so it's ready to go.",
+        "zh": "我走进厨房，打开咖啡机。我总会在前一晚把咖啡、滤纸和水放好，这样第二天早上就可以直接启动咖啡机。",
+        "words": "turn on the coffeemaker = 打开咖啡机；the night before = 前一天晚上；ready to go = 准备妥当，可以立即使用",
+        "note": "put A in 表示“把A放进去”。so it's ready to go 说明提前准备的结果。ready to go 在这里不是“准备离开”，而是“准备好可以使用”。"
+      },
+      {
+        "en": "Next, I open the door of the cupboard where the cereal is stored. I would love to have ham and eggs for breakfast every morning, or maybe a stack of waffles, but the truth is that I just don't have the time to cook.",
+        "zh": "接着，我打开存放麦片的橱柜。我很想每天早上都吃火腿煎蛋，或者来一摞华夫饼，但实际情况是，我根本没有时间做早餐。",
+        "words": "cupboard = 橱柜；where the cereal is stored = 存放麦片的地方；a stack of waffles = 一摞华夫饼；the truth is that... = 实际情况是……；have the time to cook = 有时间做饭",
+        "note": "where 引导定语从句，修饰 cupboard。would love to 表示强烈愿望。but the truth is that... 用于从理想转入现实，that 后接表语从句。"
+      },
+      {
+        "en": "So, I pour myself a bowl of cereal and pour in a glass of skim milk, making sure I take a spoon out of the silverware tray. I go outside, pick up my newspaper, and sit down at the kitchen table.",
+        "zh": "所以，我给自己倒一碗麦片，再倒入一杯脱脂牛奶，同时确认从餐具托盘里拿了一把勺子。随后我走到外面拿起报纸，再坐到厨房餐桌旁。",
+        "words": "pour myself a bowl of cereal = 给自己倒一碗麦片；skim milk = 脱脂牛奶；make sure = 确保、确认；silverware tray = 餐具托盘；pick up my newspaper = 拿起／取回报纸",
+        "note": "pour someone something 是双宾语结构。making sure... 是现在分词短语，补充说明同时进行的动作。第二句用 go、pick up、sit down 三个并列动词描述动作顺序。"
+      },
+      {
+        "en": "I love reading the paper in the morning, though usually I just have time to read a few of the stories. When I've finished my cereal, I grab a banana and maybe make a slice of toast with jam.",
+        "zh": "我喜欢早上读报，不过通常只来得及看其中几篇报道。吃完麦片后，我拿一根香蕉，有时还会做一片抹果酱的吐司。",
+        "words": "read the paper = 读报纸；though = 不过、尽管；have time to do something = 有时间做某事；a few of the stories = 其中几篇报道；a slice of toast with jam = 一片抹果酱的吐司",
+        "note": "though 引出让步或转折，说明喜欢读报但时间有限。When I've finished... 使用现在完成时，强调先完成吃麦片，再进行下一步。stories 在报纸语境中指“新闻报道”。"
+      },
+      {
+        "en": "I rinse off my breakfast dishes in the sink and put them in the dishwasher. By that time, my coffee is ready, so I pour myself a cup and put the rest in a Thermos for work.",
+        "zh": "我在水槽里把早餐餐具简单冲洗一下，再放进洗碗机。到那时咖啡已经煮好，于是我给自己倒一杯，并把剩下的咖啡装进保温瓶带去上班。",
+        "words": "rinse off = 简单冲洗干净；breakfast dishes = 早餐使用的餐具；dishwasher = 洗碗机；by that time = 到那时；put the rest in a Thermos = 把剩下的装进保温瓶",
+        "note": "rinse off 强调用水快速冲洗。them 指代 breakfast dishes，the rest 指代剩余咖啡。By that time 表示到某个时间节点时，前一动作已经完成。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I prepare the coffeemaker the night before to save time in the morning.",
+        "zh": "我会在前一晚准备好咖啡机，以节省早上的时间。"
+      },
+      {
+        "en": "I usually have cereal with skim milk because it is quick and easy.",
+        "zh": "我通常吃脱脂牛奶泡麦片，因为方便快捷。"
+      },
+      {
+        "en": "I only have enough time to skim a few newspaper articles.",
+        "zh": "我只有时间快速浏览几篇报纸文章。"
+      },
+      {
+        "en": "After breakfast, I rinse the dishes and load the dishwasher.",
+        "zh": "早餐后，我冲洗餐具并把餐具放进洗碗机。"
+      },
+      {
+        "en": "I take the remaining coffee to work in a Thermos.",
+        "zh": "我把剩下的咖啡装进保温瓶带去上班。"
+      }
+    ]
   }
 ];
