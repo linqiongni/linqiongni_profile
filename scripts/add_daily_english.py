@@ -11,6 +11,7 @@ Word 约定（与 Cleaning Routine 那份一致）：
   python3 scripts/add_daily_english.py "C:/path/to/Cleaning Routine  清洁.docx"
   python3 scripts/add_daily_english.py "<docx>" --id custom-id      # 指定 id
   python3 scripts/add_daily_english.py "<docx>" --tag "日常生活 · xx"
+  python3 scripts/add_daily_english.py "<docx>" --before cleaning-routine  # 插到指定课文前面
   python3 scripts/add_daily_english.py "<docx>" --dry-run           # 只打印不写入
 写入后：npm run sync:daily-english → npx tsc --noEmit → commit 即上线。
 """
@@ -104,6 +105,7 @@ def main():
     ap.add_argument("docx")
     ap.add_argument("--id", default="")
     ap.add_argument("--tag", default="日常生活")
+    ap.add_argument("--before", default="", help="插到指定 id 的课文前面；默认追加到末尾")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -120,17 +122,25 @@ def main():
         return
 
     src = LESSONS.read_text(encoding="utf-8")
-    # 复用同一 id 时先删除旧条目，避免重复（幂等，方便重跑）
-    src = re.sub(
-        r'\n  \{\n    "id": "' + re.escape(lesson["id"]) + r'".*?\n  \},\n](?=\s*;)',
-        "\n]",
-        src,
-        flags=re.S,
-    )
-    idx = src.rfind("\n];")
-    if idx == -1:
-        raise SystemExit("lessons.js 结构异常：找不到数组结尾 ];")
-    new = src[:idx] + ",\n" + block + src[idx:]
+    # 用 JSON 解析整个数组：先按 id 去重（幂等），再按 --before 决定插入位置。
+    # 旧版用正则删条目 + 盲加逗号，遇到文件已有尾逗号会产生空元素、且只认双引号格式。
+    m = re.search(r"(window\.DAILY_LESSONS\s*=\s*)(\[.*?\])(\s*;)", src, re.S)
+    if not m:
+        raise SystemExit("lessons.js 结构异常：找不到 window.DAILY_LESSONS 数组")
+    try:
+        arr = json.loads(m.group(2))
+    except Exception as e:
+        raise SystemExit(f"lessons.js 数组不是合法 JSON，无法安全写入：{e}")
+    arr = [x for x in arr if isinstance(x, dict) and x.get("id") != lesson["id"]]
+    if args.before:
+        pos = next((i for i, x in enumerate(arr) if x.get("id") == args.before), -1)
+        if pos < 0:
+            raise SystemExit(f"--before 指定的 id 不存在: {args.before}")
+        arr.insert(pos, lesson)
+    else:
+        arr.append(lesson)
+    pretty = json.dumps(arr, ensure_ascii=False, indent=2)
+    new = src[:m.start(2)] + pretty + src[m.end(2):]
     LESSONS.write_text(new, encoding="utf-8")
     print(f"已追加课文：{lesson['title']} | {lesson['zh']}  (id={lesson['id']}, {len(lesson['blocks'])} 段)")
     print("下一步：npm run sync:daily-english → npx tsc --noEmit → git commit")
