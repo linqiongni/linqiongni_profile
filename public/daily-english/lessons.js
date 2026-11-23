@@ -211,5 +211,72 @@ window.DAILY_LESSONS = [
         "zh": "我把剩下的咖啡装进保温瓶带去上班。"
       }
     ]
+  },
+  {
+    "id": "getting-dressed-and-ready-for-work",
+    "title": "Getting Dressed and Ready for Work",
+    "zh": "穿好衣服，准备上班",
+    "tag": "日常生活",
+    "section": "Getting ready to leave | 出门上班前的准备",
+    "blocks": [
+      {
+        "en": "I go back into my bedroom and open up my closet door. I have about 30 dress shirts, 10 pairs of pants, a half-dozen ties, and some sweaters, suit jackets, and T-shirts.",
+        "zh": "我回到卧室，打开衣柜门。我有大约30件正装衬衫、10条裤子、6条领带，以及一些毛衣、西装外套和T恤。",
+        "words": "go back into = 回到……里面；open up my closet door = 打开衣柜门；dress shirt = 正装衬衫；a half-dozen ties = 6条领带；suit jacket = 西装外套",
+        "note": "a half-dozen 表示“半打”，即6个。列举多类衣物时，最后两项通常用 and 连接。open up 在这里与 open 意思相近，语气更口语化。"
+      },
+      {
+        "en": "I pull out a clean pair of socks and some underwear, then decide which shirt I'm going to wear today. I'm terrible at color coordinating, so I usually bring my wife in at this point to help match my shirt and pants.",
+        "zh": "我取出一双干净的袜子和一些内衣，然后决定今天要穿哪件衬衫。我很不擅长颜色搭配，所以到了这一步，我通常会请妻子过来帮我搭配衬衫和裤子。",
+        "words": "pull out = 取出、拿出；a clean pair of socks = 一双干净的袜子；decide which shirt to wear = 决定穿哪件衬衫；be terrible at = 很不擅长……；color coordinating = 颜色搭配",
+        "note": "which shirt I'm going to wear 是宾语从句，作 decide 的宾语。be terrible at 后接名词或动名词。bring someone in 表示请某人过来提供帮助或参与。"
+      },
+      {
+        "en": "I put on my belt with the silver buckle and polish my shoes. I put my cell phone and car keys in my front pocket, and my wallet in the back one.",
+        "zh": "我系上带银色搭扣的皮带，并把鞋擦亮。我把手机和车钥匙放进前裤袋，把钱包放进后裤袋。",
+        "words": "put on my belt = 系上皮带；silver buckle = 银色搭扣；polish my shoes = 把鞋擦亮；front pocket = 前裤袋；the back one = 后面的那个口袋",
+        "note": "put on 强调穿戴动作。第二句为省略结构，and my wallet in the back one 省略了重复的 I put；one 指代 pocket，避免重复。"
+      },
+      {
+        "en": "I put on my glasses and check myself in the mirror to make sure I look okay. Then I go into the home office to get my bag.",
+        "zh": "我戴上眼镜，照镜子检查一下自己的仪表，确保看起来得体。然后我走进家庭办公室取包。",
+        "words": "put on my glasses = 戴上眼镜；check myself in the mirror = 照镜子检查仪表；make sure = 确保；look okay = 看起来得体、没有问题；home office = 家庭办公室",
+        "note": "to make sure... 是目的状语，说明照镜子的目的。look 在这里是系动词，后接形容词 okay，表示“看起来不错或得体”。"
+      },
+      {
+        "en": "I used to carry a more traditional briefcase, but now I just use my computer bag to hold my laptop and papers. Now it's back into the kitchen to grab my Thermos on the way out the door.",
+        "zh": "我过去常带一个比较传统的公文包，但现在只用电脑包装笔记本电脑和文件。接着，我在出门途中回到厨房拿保温瓶。",
+        "words": "used to carry = 过去常常携带；traditional briefcase = 传统公文包；computer bag = 电脑包；hold my laptop and papers = 装笔记本电脑和文件；on the way out the door = 出门途中",
+        "note": "used to do 表示过去经常做、现在已经改变。use A to do B 表示“用A来做B”。on the way out the door 指正准备离开住所时。"
+      },
+      {
+        "en": "I lock the door and then hurry to my car in the garage. I'm usually running late, and today is no exception!",
+        "zh": "我锁好门，然后匆忙赶到车库里的汽车旁。我通常都会赶时间，今天也不例外。",
+        "words": "lock the door = 锁门；hurry to my car = 匆忙赶到车旁；garage = 车库；run late = 迟到、赶不上时间；be no exception = 也不例外",
+        "note": "be running late 表示已经落后于计划时间、可能迟到，不宜直译成“正在跑迟”。today is no exception 是固定表达，表示今天和通常情况一样。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I choose my clothes the night before to save time in the morning.",
+        "zh": "我会在前一晚选好衣服，以节省早上的时间。"
+      },
+      {
+        "en": "I'm not very good at matching colors, so I sometimes ask for help.",
+        "zh": "我不太擅长颜色搭配，所以有时会请别人帮忙。"
+      },
+      {
+        "en": "Before leaving, I check that I have my phone, keys, and wallet.",
+        "zh": "出门前，我会检查是否带了手机、钥匙和钱包。"
+      },
+      {
+        "en": "I use a computer bag instead of a traditional briefcase.",
+        "zh": "我用电脑包代替传统公文包。"
+      },
+      {
+        "en": "I'm running a little late, so I need to hurry.",
+        "zh": "我有点赶时间，所以得快一点。"
+      }
+    ]
   }
 ];

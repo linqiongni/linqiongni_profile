@@ -43,6 +43,11 @@ def split_title(line: str):
     if "|" in line:
         a, b = line.split("|", 1)
         return a.strip(), b.strip()
+    # 容错：没写 "|" 但英文标题和中文标题连在一起（如 "Getting Dressed穿好衣服"），
+    # 按第一个中文字符切开；纯中文或纯英文则原样返回。
+    m = re.search(r"[\u4e00-\u9fff]", line)
+    if m and m.start() > 0:
+        return line[:m.start()].strip(), line[m.start():].strip()
     return line.strip(), ""
 
 
