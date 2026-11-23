@@ -111,7 +111,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
     enLabel: 'Languages',
 
-    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english', 'korean'],
+    subTabs: ['film-law', 'film-law-s2', 'film-law-s3', 'film-law-s4', 'lanxiang', 'english-hub', 'korean'],
 
     sections: [
 
@@ -151,7 +151,8 @@ export const NAV_GROUPS: NavGroup[] = [
 
         enLabel: 'Daily Tools',
 
-        tabs: ['english'],
+        // 统一入口页：点「身边的英语」先进 hub，再二选一进入场景短文或精读笔记
+        tabs: ['english-hub'],
 
       },
 
@@ -221,7 +222,11 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   'family-law': { label: '婚姻家事与遗产继承', enLabel: 'Family & Inheritance' },
   // 「影视英语」分组 2026-10-22 改名为「外语」；本子板块原按钮文案 label='ENGLISH'、enLabel='English'，
   // 按需求保留在源码(git)但不再渲染到网站，改用中文「身边的英语」。
-  'english': { label: '身边的英语', enLabel: '' },
+  // 「身边的英语」统一入口（外语分组只露这一项，进 hub 再二选一）
+  'english-hub': { label: '身边的英语', enLabel: '' },
+  // 两个子站不在导航平铺，但作为可直接进入的 tab 需要正确归属「外语」分组
+  'english': { label: '身边的英语（场景短文）', enLabel: 'English Around You' },
+  'daily-english': { label: '日常英语', enLabel: 'Daily English' },
 
   'lanxiang': { label: '兰香如故', enLabel: 'The Fragrance of Orchids' },
 
@@ -236,6 +241,9 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
 export const GROUP_OVERRIDES: Record<string, string> = {
   criminal: 'practice',
   'criminal-record': 'practice',
+  // 英语两个子站由 english-hub 进入，不在 film.subTabs，需手动归属「外语」
+  english: 'film',
+  'daily-english': 'film',
 };
 
 export const groupOfTab = (tab: TabType): string =>

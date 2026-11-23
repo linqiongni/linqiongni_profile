@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN" data-theme-default="dark" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0C1B2B" />
+<title>日常英语 · 精读笔记</title>
+<script>try{if(window.parent&&window.parent!==window){document.documentElement.classList.add("embedded")}}catch(e){}</script>
+<style>
+/* 嵌入态：透出主站固定背景与鱼影；深浅两套字色由 data-theme 控制 */
+html.embedded,html.embedded body{background:transparent!important;background-image:none!important}
+html.embedded .topbar,html.embedded .sidebar,html.embedded .reader{background:transparent!important}
+:root.embedded{color-scheme:dark}
+</style>
+<link rel="stylesheet" href="assets/style.css?v=20261123a" />
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brandline">
+      <span class="kicker">外语 · 日常英语</span>
+      <span class="brand">Daily English · 精读笔记</span>
+    </div>
+    <div class="tools">
+      <button type="button" class="dir-btn" id="dirBtn" aria-label="打开目录">目录</button>
+      <div class="mode" role="group" aria-label="双语显示">
+        <button type="button" data-mode="both" class="on">双语</button>
+        <button type="button" data-mode="en">仅英文</button>
+        <button type="button" data-mode="zh">仅中文</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="搜索标题 / 正文 / 词句" autocomplete="off" />
+      </div>
+      <nav class="dir" id="dir" aria-label="课文目录"></nav>
+      <div class="side-foot">共 <span id="count">0</span> 篇 · 持续更新</div>
+    </aside>
+    <div class="mask" id="mask" hidden></div>
+
+    <main class="reader" id="reader">
+      <article class="article" id="article"></article>
+      <div class="pager">
+        <button type="button" id="prevBtn">← 上一篇</button>
+        <button type="button" id="nextBtn">下一篇 →</button>
+      </div>
+      <footer class="foot">日常英语 · 逐段精读 · 词句与语法拆解</footer>
+    </main>
+  </div>
+</div>
+
+<script>
+/* 把 iframe 上的版本号透传给资源，避免命中旧缓存（HTML 与数据不同版本会白屏） */
+(function(){
+  var v = new URLSearchParams(location.search).get('v') || '';
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src + (v ? '?v=' + v : '');
+    s.onload = cb;
+    document.body.appendChild(s);
+  }
+  load('lessons.js', function(){ load('assets/app.js', function(){}); });
+})();
+</script>
+</body>
+</html>
