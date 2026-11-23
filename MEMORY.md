@@ -170,6 +170,12 @@
 - 线上：`https://linqiongni.top/english/index.html`。
 - **别把 `.workbuddy/`、`AGENTS.md`、`MEMORY.md` 放进 `身边的英语/`** —— rsync 整目录同步会把它们发布到线上。
 
+## 身边的英语 hub + 日常英语 tab（2026-11-23 新增）
+- 「身边的英语」已改为**统一入口页** `src/components/EnglishHubTab.tsx`（仿 CriminalHubTab 两卡）：外语分组子导航只露一项 `english-hub`，点进再选「身边的英语（场景短文）」`english` 或「日常英语（精读笔记）」`daily-english`。两子站不在 `film.subTabs`，靠 `navConfig.GROUP_OVERRIDES` 归属 `film` 分组。
+- **日常英语静态子站**：源目录根目录 `日常英语/`（`index.html` + `assets/{style.css,app.js}` + `lessons.js`），部署副本 `public/daily-english/`。左目录 + 逐段中英对照 + 重点词句 + 重难点 + 常用表达替换；双语三档/搜索/上下篇/深浅色跟随主站/手机目录抽屉。组件 `src/components/DailyEnglishTab.tsx`（ThemeIframe，`?v=` 时间戳破缓存，mobileFullscreen）。线上 `https://linqiongni.top/daily-english/index.html`。
+- **加课文（Andy 后续会给 Word）**：`python3 scripts/add_daily_english.py "<docx>"` 直接把同格式 Word 追加一条进 `日常英语/lessons.js`（同 id 幂等覆盖；`--dry-run` 预览；`--tag`/`--id` 可指定）；也可手改 lessons.js 追加对象。Word 格式约定：第1段「英文|中文」标题、第2段小节标题、之后每4段 EN n/中/重点词句/重难点、「常用表达替换」后中英成对。然后 `python3 scripts/sync_daily_english.py`（= `npm run sync:daily-english`，不依赖 rsync）→ `npx tsc --noEmit` → commit。
+- 首篇 `cleaning-routine`（Cleaning Routine | 清洁）来自 `C:/Users/lin.qiong.ni/Downloads/Cleaning Routine  清洁.docx`，7 段 + 5 组替换。
+
 ## 融资法务站内容硬规则（2026-09-21 用户重申）
 - **英文缩写首次出现必须带英文全称注记**，格式 `ACRO（Full English Name，中文）`，如 `VIE（Variable Interest Entity，可变利益实体）`。适用该站全部 14 个页面及后续新站。全站已用脚本补齐约 65 处并扫描验证（46 缩写 × 14 文件 ALL CLEAN）。
 - **给注记做批量插入时的坑**：注记文本里绝不能含其他裸缩写（如 18C 注记里写 "HKEX Listing Rules" 会被后续 HKEX 扫描再次命中，嵌套出重复乱码）——要么拼全称（"Hong Kong Exchanges and Clearing Limited"），要么把注记排除在扫描范围外。插入须跳过 HTML 标签/SVG text/属性（首个非标签出现处才算正文首次出现）。
