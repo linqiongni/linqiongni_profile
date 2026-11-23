@@ -87,7 +87,7 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
 }catch(e){}
 })();</script>
 <!-- EMBEDDED_KIT_END -->
-<link rel="stylesheet" href="assets/style.css?v=20261123b" />
+<link rel="stylesheet" href="assets/style.css?v=20261123c" />
 </head>
 <body>
 <div class="app">
@@ -140,5 +140,27 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
   load('lessons.js', function(){ load('assets/app.js', function(){}); });
 })();
 </script>
+<!-- AQUATIC_BG_KIT_START -->
+<style id="aquatic-bg-kit">
+.aq-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aq-bg canvas{position:absolute;inset:0;width:100%;height:100%}
+body>.aq-bg~*{position:relative;z-index:1}
+</style>
+<script>(function(){if(window.__aqKitV4)return;window.__aqKitV4=1;try{
+/* 嵌入主站 iframe 时本页绝不自绘鱼影（主站就在 iframe 后面，透明底直接透出）；
+   独立打开（新窗口/手机全屏）时才动态加载 profile-bg.js 自绘鱼影。 */
+var EMBEDDED=false;try{EMBEDDED=!!(window.parent&&window.parent!==window);}catch(e){EMBEDDED=false;}
+if(EMBEDDED){
+var lastFwd=0;
+document.addEventListener('pointermove',function(e){
+var now=Date.now();if(now-lastFwd<16)return;lastFwd=now;
+try{window.parent.postMessage({type:'aquatic-pointer',x:e.clientX,y:e.clientY},'*');}catch(_){}
+},{passive:true});
+return;
+}
+var s=document.createElement('script');s.src='/theme-kit/profile-bg.js?v=20260928b';s.defer=true;
+(document.head||document.documentElement).appendChild(s);
+}catch(e){}})();</script>
+<!-- AQUATIC_BG_KIT_END -->
 </body>
 </html>

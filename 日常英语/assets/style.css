@@ -23,7 +23,8 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 button,input{ font-family:inherit; }
-.app{ height:100%; display:flex; flex-direction:column; background:var(--bg); }
+/* 无底色：独立打开时透出 body 上的鱼影引擎；嵌入时由 EMBEDDED_KIT 玻璃化 */
+.app{ height:100%; display:flex; flex-direction:column; background:transparent; }
 
 /* 顶栏 */
 .topbar{
@@ -109,6 +110,15 @@ body[data-mode="zh"] .repl-row .en{ display:none; }
 ::-webkit-scrollbar{ width:9px; height:9px; }
 ::-webkit-scrollbar-track{ background:transparent; }
 ::-webkit-scrollbar-thumb{ background:var(--line); border-radius:5px; }
+
+/* 独立打开态（手机全屏/新窗口）：让固定鱼影背景透出，面板改半透明玻璃。
+   嵌入态带 .embedded，由 EMBEDDED_KIT 全透明处理，不走这里。 */
+html:not(.embedded) .topbar{ background:rgba(12,27,43,.62); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+html[data-theme="light"]:not(.embedded) .topbar{ background:rgba(251,249,244,.74); }
+html:not(.embedded) .sidebar{ background:rgba(12,27,43,.62); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+html[data-theme="light"]:not(.embedded) .sidebar{ background:rgba(251,249,244,.74); }
+html:not(.embedded) #search,html:not(.embedded) .words,html:not(.embedded) .pager button{ background:rgba(255,255,255,.06); }
+html[data-theme="light"]:not(.embedded) #search,html[data-theme="light"]:not(.embedded) .words,html[data-theme="light"]:not(.embedded) .pager button{ background:rgba(255,255,255,.55); }
 
 @media(max-width:900px){
   .topbar{ padding:0 14px; }
