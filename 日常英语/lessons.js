@@ -278,5 +278,151 @@ window.DAILY_LESSONS = [
         "zh": "我有点赶时间，所以得快一点。"
       }
     ]
+  },
+  {
+    "id": "driving-to-work",
+    "title": "Driving to Work",
+    "zh": "开车上班",
+    "tag": "日常生活",
+    "section": "The commute to work | 开车通勤流程",
+    "blocks": [
+      {
+        "en": "I open my car door, throw my briefcase in the back seat, and get comfortable for my drive. I put my coffee mug into the cup holder, put the keys in the ignition, find the gas pedal, and start the car.",
+        "zh": "我打开车门，把公文包放到后座上，然后调整好坐姿，准备开车。我把咖啡杯放进杯架，将钥匙插入点火开关，踩住油门踏板并发动汽车。",
+        "words": "throw my briefcase in the back seat = 把公文包放到后座；get comfortable for my drive = 调整好坐姿准备开车；cup holder = 杯架；put the keys in the ignition = 把钥匙插入点火开关；start the car = 发动汽车",
+        "note": "两句都使用多个并列动词，按实际操作顺序描述动作。throw 在这里是口语化的“随手放”，不一定表示用力扔。find the gas pedal 可理解为把脚放到油门踏板位置。"
+      },
+      {
+        "en": "My wife drove the car last night, so I have to readjust the rearview mirror and the side mirrors. I turn on the radio to listen to the drive-time traffic report.",
+        "zh": "我妻子昨晚开过这辆车，所以我得重新调整车内后视镜和两侧后视镜。我打开收音机，收听上班高峰时段的路况播报。",
+        "words": "readjust = 重新调整；rearview mirror = 车内后视镜；side mirrors = 两侧后视镜；turn on the radio = 打开收音机；drive-time traffic report = 上下班高峰时段路况播报",
+        "note": "so 表示因果关系：别人开过车，因此镜子的位置需要重新调整。to listen to... 是目的状语，说明打开收音机的目的。"
+      },
+      {
+        "en": "I take the transmission out of park and put it into reverse. I back out of the garage, down the driveway, and into the street, close the garage door, and put the car into drive.",
+        "zh": "我把挡位从驻车挡切换到倒车挡。随后我把车倒出车库，沿车道倒到街上，关上车库门，再挂入前进挡。",
+        "words": "take the transmission out of park = 把挡位移出驻车挡；put it into reverse = 挂入倒车挡；back out of the garage = 倒车驶出车库；driveway = 住宅车道；put the car into drive = 挂入前进挡",
+        "note": "out of park、into reverse 和 into drive 是自动挡汽车的常用表达。back out 表示“倒车退出”。第二句用多个并列动作描述倒车出库的完整流程。"
+      },
+      {
+        "en": "I used to drive a stick shift, but as I get older, I like my automatic transmission more and more. I usually take the freeway to the office, so I get on the on-ramp and drive to the exit where I have to get off.",
+        "zh": "我过去常开手动挡汽车，但随着年龄增长，我越来越喜欢自动挡。我通常走高速公路去办公室，所以会从入口匝道驶上高速，再开到需要驶出的出口。",
+        "words": "used to drive = 过去常开；stick shift = 手动挡汽车／手动变速器；automatic transmission = 自动变速器、自动挡；more and more = 越来越……；on-ramp = 高速公路入口匝道；get off = 驶离高速公路",
+        "note": "used to do 表示过去的习惯。as I get older 表示“随着年龄增长”。where I have to get off 是定语从句，修饰 exit，说明需要在哪个出口驶离。"
+      },
+      {
+        "en": "My office is only a few miles from the exit. I pull into the parking garage, swiping my key card to get in.",
+        "zh": "我的办公室距离高速公路出口只有几英里。我把车开进停车库，刷钥匙卡进入。",
+        "words": "a few miles from the exit = 距离出口几英里；pull into = 驶入；parking garage = 停车库；swipe my key card = 刷钥匙卡；to get in = 为了进入",
+        "note": "only 强调距离很近。swiping my key card 是现在分词短语，说明进入停车库时同时进行的动作；to get in 表示刷卡的目的。"
+      },
+      {
+        "en": "I park, grab my briefcase and coffee, and head toward the elevator. And that only took 40 minutes!",
+        "zh": "我停好车，拿上公文包和咖啡，然后朝电梯走去。整个上班路程只用了40分钟！",
+        "words": "park = 停车、停好车；grab my briefcase and coffee = 拿上公文包和咖啡；head toward the elevator = 朝电梯走去；take 40 minutes = 花费40分钟",
+        "note": "head toward... 表示“朝……方向前往”。that 指代从家开车到办公室并停好车的整个过程。take 加时间表示“花费多长时间”。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "Before driving, I adjust the seat and mirrors and make sure everything is in the right position.",
+        "zh": "开车前，我会调整座椅和后视镜，确保所有位置合适。"
+      },
+      {
+        "en": "I listen to the traffic report before getting on the freeway.",
+        "zh": "驶上高速公路前，我会收听路况播报。"
+      },
+      {
+        "en": "I back out of the garage slowly and check both sides before entering the street.",
+        "zh": "我慢慢倒出车库，驶入街道前会查看两侧情况。"
+      },
+      {
+        "en": "I take the freeway and get off at the exit closest to my office.",
+        "zh": "我走高速公路，并从离办公室最近的出口驶出。"
+      },
+      {
+        "en": "The drive usually takes about 40 minutes, depending on traffic.",
+        "zh": "这段车程通常约需40分钟，具体取决于路况。"
+      }
+    ]
+  },
+  {
+    "id": "work-breaks-and-lunch",
+    "title": "Work, Breaks and Lunch",
+    "zh": "工作、休息和吃午饭",
+    "tag": "日常生活",
+    "section": "A workday before and during lunch | 午饭前后的工作安排",
+    "blocks": [
+      {
+        "en": "On the way to the office, I was thinking about what I have on my agenda today. When I get to my desk, there is a stack of new memos and papers in my inbox.",
+        "zh": "去办公室的路上，我一直在想今天的日程安排。到达办公桌时，我发现收件箱里有一摞新的备忘录和文件。",
+        "words": "on the way to the office = 去办公室的路上；have on my agenda = 列入我的日程；a stack of = 一摞、一叠；memos and papers = 备忘录和文件；inbox = 收件箱／文件收件盘",
+        "note": "what I have on my agenda 是宾语从句，作 thinking about 的宾语。there is... 用于说明某处有某物；a stack of 后接复数名词。"
+      },
+      {
+        "en": "When I turn on my computer, I see at least two dozen emails I need to go through. Just as I start in on the email, my phone rings.",
+        "zh": "打开电脑后，我看到至少有24封邮件需要逐一查看。正当我开始处理邮件时，电话响了。",
+        "words": "turn on my computer = 打开电脑；at least two dozen emails = 至少24封邮件；go through = 逐一查看、处理；start in on = 开始着手处理；my phone rings = 电话响了",
+        "note": "emails 后省略了关系代词 that/which，完整理解为 emails that I need to go through。Just as 表示“正当……的时候”，突出两件事几乎同时发生。"
+      },
+      {
+        "en": "It's my project manager, Julie, asking me to come in for a conference call with our head office. I don't get back to my desk for nearly two hours, and by that time, I'm ready for a break.",
+        "zh": "电话是项目经理 Julie 打来的，她让我过去参加与总部的多方电话会议。我将近两个小时后才回到办公桌，那时已经很需要休息一下了。",
+        "words": "project manager = 项目经理；ask someone to do something = 让某人做某事；conference call = 电话会议、多方通话；head office = 总部；get back to my desk = 回到办公桌；be ready for a break = 需要休息一下",
+        "note": "asking me... 是现在分词短语，补充说明电话内容。ask someone to do something 是重要结构。by that time 表示“到那时为止”。"
+      },
+      {
+        "en": "At 10:30, I head down to the break room and get some hot water from the water cooler to make some tea. There are a couple of other people on break, having snacks from the vending machine and reading the new notices on the bulletin board.",
+        "zh": "上午10点30分，我走到休息室，从饮水机接些热水泡茶。休息室里还有几个人在休息，他们吃着自动售货机里的零食，并阅读公告栏上的新通知。",
+        "words": "head down to = 前往、走到；break room = 休息室；water cooler = 饮水机；a couple of = 几个、两个左右；on break = 正在休息；vending machine = 自动售货机；bulletin board = 公告栏",
+        "note": "to make some tea 是目的状语。having... and reading... 是两个并列的现在分词短语，描述休息室里其他人正在做的事。"
+      },
+      {
+        "en": "I run into Sam, one of my friends at work, and we chat a little before going back to work. Before long, it's time for lunch.",
+        "zh": "我偶遇了同事朋友 Sam，回去工作前，我们聊了一会儿。没过多久，就到了午饭时间。",
+        "words": "run into someone = 偶遇某人；a friend at work = 工作中的朋友、同事朋友；chat a little = 聊一会儿；go back to work = 回去工作；before long = 没过多久",
+        "note": "one of my friends at work 是同位语，补充说明 Sam。before going back to work 中 before 后接动名词。Before long 表示“不久之后”。"
+      },
+      {
+        "en": "I usually bring my lunch with me to work and eat it at my desk. If I don't have time to pack a lunch, I sometimes go across the street for some takeout.",
+        "zh": "我通常会自带午餐上班，并在办公桌旁吃。如果没有时间准备盒饭，我有时会去街对面买些外卖。",
+        "words": "bring my lunch to work = 自带午餐上班；eat at my desk = 在办公桌旁吃饭；pack a lunch = 准备并打包午餐；go across the street = 去街对面；takeout = 外卖食品",
+        "note": "If 引导真实条件句，表示可能发生的日常情况。have time to do 表示“有时间做某事”。for some takeout 表示去购买外卖。"
+      },
+      {
+        "en": "The only trouble is that it's always so busy during the lunch hour, and I always have to stand in line. That's usually a pain.",
+        "zh": "唯一的问题是，午餐高峰时段总是非常繁忙，我常常不得不排队。这通常很麻烦。",
+        "words": "the only trouble is that... = 唯一的问题是……；during the lunch hour = 午餐高峰时段；have to stand in line = 不得不排队；be a pain = 很麻烦、令人头疼",
+        "note": "The only trouble is that... 中 that 引导表语从句。so busy 用 so 加形容词表示程度。a pain 是常见口语，表示麻烦或令人头疼的事情。"
+      },
+      {
+        "en": "On Fridays, I usually go out to lunch with a few friends from work. On casual Fridays, we can kick back a little and take it easy.",
+        "zh": "每逢周五，我通常会和几位同事外出吃午饭。便装星期五时，我们可以稍微放松一下。",
+        "words": "go out to lunch = 外出吃午饭；friends from work = 工作中的朋友、同事；casual Friday = 便装星期五；kick back = 放松、歇一歇；take it easy = 放轻松、别太紧张",
+        "note": "On Fridays 表示每周五的习惯。kick back 和 take it easy 都是口语化的“放松”，连用可加强轻松语气。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I check my agenda as soon as I arrive at the office.",
+        "zh": "我一到办公室就会查看当天日程。"
+      },
+      {
+        "en": "I have several emails to go through before the morning meeting.",
+        "zh": "晨会前我有几封邮件需要逐一处理。"
+      },
+      {
+        "en": "I usually take a short tea break around 10:30.",
+        "zh": "我通常在10点30分左右短暂休息并喝杯茶。"
+      },
+      {
+        "en": "If I don't bring lunch, I pick up something from a nearby restaurant.",
+        "zh": "如果没有带午餐，我会去附近餐馆买点吃的。"
+      },
+      {
+        "en": "On Fridays, I sometimes have lunch with my coworkers and relax for a while.",
+        "zh": "周五我有时会和同事一起吃午饭，稍微放松一下。"
+      }
+    ]
   }
 ];
