@@ -175,6 +175,7 @@
 - **日常英语静态子站**：源目录根目录 `日常英语/`（`index.html` + `assets/{style.css,app.js}` + `lessons.js`），部署副本 `public/daily-english/`。左目录 + 逐段中英对照 + 重点词句 + 重难点 + 常用表达替换；双语三档/搜索/上下篇/深浅色跟随主站/手机目录抽屉。组件 `src/components/DailyEnglishTab.tsx`（ThemeIframe，`?v=` 时间戳破缓存，mobileFullscreen）。线上 `https://linqiongni.top/daily-english/index.html`。
 - **加课文（Andy 后续会给 Word）**：`python3 scripts/add_daily_english.py "<docx>"` 直接把同格式 Word 追加一条进 `日常英语/lessons.js`（同 id 幂等覆盖；`--dry-run` 预览；`--tag`/`--id` 可指定）；也可手改 lessons.js 追加对象。Word 格式约定：第1段「英文|中文」标题、第2段小节标题、之后每4段 EN n/中/重点词句/重难点、「常用表达替换」后中英成对。然后 `python3 scripts/sync_daily_english.py`（= `npm run sync:daily-english`，不依赖 rsync）→ `npx tsc --noEmit` → commit。
 - 首篇 `cleaning-routine`（Cleaning Routine | 清洁）来自 `C:/Users/lin.qiong.ni/Downloads/Cleaning Routine  清洁.docx`，7 段 + 5 组替换。
+- **嵌入背景硬规则（2026-11-23 修复蒙版 bug 后）**：新做/改 iframe 子站**绝不要手写简化版透明头**——照抄金本 `scripts/theme-kit/embedded_kit.txt` 整段（用 `<!-- EMBEDDED_KIT_START/END -->` 包裹）放进 index.html 的 head。手写版踩过的坑：`color-scheme:dark` → 透明 iframe 被 UA 填黑板（=用户说的"蒙版"）；只清容器不清搜索框/词句卡的中性白底 → 盖住鱼影；主题切 light 后不 force 重扫。另手机目录遮罩要写 `.mask:not([hidden])` + `[hidden]{display:none!important}`，否则窄窗 `display:block` 压过 HTML hidden 属性也成黑幕。改完 CSS 必须 bump index.html 里的 `?v=`。验证用 jsdom 手动打 embedded + eval kit，扫 `getComputedStyle().backgroundColor` alpha≥0.85 的中性底残留应为 0（详见 `skills/fixed-bg-fish-bug`）。
 
 ## 融资法务站内容硬规则（2026-09-21 用户重申）
 - **英文缩写首次出现必须带英文全称注记**，格式 `ACRO（Full English Name，中文）`，如 `VIE（Variable Interest Entity，可变利益实体）`。适用该站全部 14 个页面及后续新站。全站已用脚本补齐约 65 处并扫描验证（46 缩写 × 14 文件 ALL CLEAN）。
