@@ -33,9 +33,9 @@
       if (grp.name) html += '<div class="dir-group">' + esc(grp.name) + '</div>';
       items.forEach(function (i) {
         var l = ALL[i];
+        // 目录只显示英文标题一行：中文在正文里有，tag 已不分组、纯冗余
         html += '<button class="dir-item' + (i === cur ? ' on' : '') + '" data-i="' + i + '">' +
-          '<span class="en">' + esc(l.title) + '<span class="sep">|</span>' + esc(l.zh) + '</span>' +
-          '<span class="zh">' + esc(l.tag) + '</span></button>';
+          '<span class="en">' + esc(l.title) + '</span></button>';
       });
     });
     dir.innerHTML = html || '<div class="dir-group">未找到匹配课文</div>';
