@@ -424,5 +424,78 @@ window.DAILY_LESSONS = [
         "zh": "周五我有时会和同事一起吃午饭，稍微放松一下。"
       }
     ]
+  },
+  {
+    "id": "driving-home-and-running-errands",
+    "title": "Driving Home and Running Errands",
+    "zh": "开车回家和跑腿（2）",
+    "tag": "日常生活",
+    "section": "生活英语双语精读 · 分段重点解析版",
+    "blocks": [
+      {
+        "en": "It's five o'clock, and it's quitting time. I put a few files into my bag, grab my mug, and say goodnight to the rest of the people in my area. I go to the parking garage and get into my car.",
+        "zh": "现在是下午5点，到了下班时间。我把几份文件放进包里，拿上杯子，向办公区域里还没离开的同事道晚安。随后我走到停车库，上了车。",
+        "words": "quitting time = 下班时间；put a few files into my bag = 把几份文件放进包里；say goodnight to = 向……道晚安；the rest of the people = 其余的人；parking garage = 停车库",
+        "note": "it's quitting time 是口语化表达，表示“到下班时间了”。put、grab、say 是三个并列动词，按顺序描述离开办公室前的动作。"
+      },
+      {
+        "en": "I signal my turn onto the street and drive toward the freeway on-ramp. I merge as best as I can onto the freeway, which is always a bit of a hassle at this hour.",
+        "zh": "我打转向灯驶上街道，然后朝高速公路入口匝道开去。我尽量顺利地并入高速公路，但在这个时段，并线总有些麻烦。",
+        "words": "signal my turn = 打转向灯示意转弯；drive toward = 朝……行驶；freeway on-ramp = 高速公路入口匝道；merge onto the freeway = 并入高速公路；as best as I can = 尽我所能；a bit of a hassle = 有点麻烦",
+        "note": "as best as I can 表示“尽我所能地”。which 引导非限制性定语从句，补充说明在该时段并入高速公路很麻烦。"
+      },
+      {
+        "en": "Traffic is stop-and-go all the way from downtown. I hear on the radio that there's a stalled car in the fast lane near La Brea, backing up traffic all the way to Hoover.",
+        "zh": "从市中心出来的一路上，车辆都是走走停停。我从广播里听说，La Brea 附近的快车道有一辆车抛锚，导致车流一直堵到 Hoover。",
+        "words": "stop-and-go traffic = 走走停停的拥堵交通；all the way from downtown = 从市中心出来的一路上；stalled car = 抛锚的汽车；fast lane = 快车道；back up traffic = 造成交通拥堵；all the way to = 一直延伸到……",
+        "note": "that 引导宾语从句，说明广播内容。backing up traffic 是现在分词短语，表示抛锚车辆造成的结果。"
+      },
+      {
+        "en": "I decide to get off the freeway and take surface streets for the rest of the trip. I need to make a stop on the way home, and I know that the fridge is empty, so I decide to stop by the market.",
+        "zh": "我决定驶离高速公路，剩下的路程改走普通道路。回家途中我需要顺路办点事，而且我知道冰箱已经空了，所以决定去一趟市场。",
+        "words": "get off the freeway = 驶离高速公路；surface streets = 普通道路、地面道路；for the rest of the trip = 在剩余路程中；make a stop = 途中停一下、顺路办事；on the way home = 回家途中；stop by the market = 顺路去市场",
+        "note": "decide to do 表示“决定做某事”。that the fridge is empty 是宾语从句。so 引出结果：因为冰箱空了，所以顺路购物。"
+      },
+      {
+        "en": "I get there and pick up some French bread, a bag of apples, a few bananas, some pasta, tomato sauce, and a cooked chicken. Luckily, they have a lot of checkout stands open, and I get through the line pretty quickly.",
+        "zh": "到达市场后，我买了一些法式面包、一袋苹果、几根香蕉、一些意大利面、番茄酱和一只熟鸡。幸运的是，开放的收银台很多，所以我很快就排完队结了账。",
+        "words": "pick up = 顺便购买、拿取；a bag of apples = 一袋苹果；tomato sauce = 番茄酱；a cooked chicken = 一只熟鸡；checkout stand = 收银台；get through the line = 排完队并完成结账",
+        "note": "pick up 在购物语境中表示购买或拿取。a few 修饰可数名词复数，some 可修饰可数或不可数名词。get through 表示顺利完成某个过程。"
+      },
+      {
+        "en": "I thank the cashier and the bagger and push my cart to my car. I open the trunk and load everything up. Just then, my wife calls me on my cell phone.",
+        "zh": "我向收银员和装袋员道谢，然后把购物车推到车旁。我打开后备箱，把所有东西装进去。就在这时，我妻子打电话到我的手机上。",
+        "words": "cashier = 收银员；bagger = 装袋员；push my cart to my car = 把购物车推到车旁；trunk = 汽车后备箱；load everything up = 把所有东西装上车；call someone on a cell phone = 打某人的手机",
+        "note": "thank A and B 是并列宾语结构。load up 表示把物品装入车辆或容器。Just then 表示“就在那时”，用来引出突然发生的事情。"
+      },
+      {
+        "en": "She is going to be a little late getting home and asks me to make something for dinner. Tonight, I will be the cook.",
+        "zh": "她会晚一点到家，并让我准备些晚餐。今晚由我来下厨。",
+        "words": "be late getting home = 晚一点到家；ask someone to do something = 让某人做某事；make something for dinner = 准备些晚餐；be the cook = 负责下厨",
+        "note": "be late doing 表示做某事晚了。ask me to make... 是 ask someone to do 的结构。I will be the cook 是自然口语，表示今晚由说话者负责做饭。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "Traffic is usually heavy during the evening rush hour.",
+        "zh": "晚高峰期间交通通常很拥堵。"
+      },
+      {
+        "en": "A stalled car was causing a long backup in the fast lane.",
+        "zh": "一辆抛锚汽车导致快车道长距离拥堵。"
+      },
+      {
+        "en": "I got off the freeway and took local streets instead.",
+        "zh": "我驶离高速公路，改走普通道路。"
+      },
+      {
+        "en": "I stopped by the grocery store to pick up a few things for dinner.",
+        "zh": "我顺路去食品店买了几样晚餐需要的东西。"
+      },
+      {
+        "en": "After loading the groceries into the trunk, I headed home to cook dinner.",
+        "zh": "把食品装进后备箱后，我便回家准备晚餐。"
+      }
+    ]
   }
 ];
