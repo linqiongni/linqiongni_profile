@@ -497,5 +497,206 @@ window.DAILY_LESSONS = [
         "zh": "把食品装进后备箱后，我便回家准备晚餐。"
       }
     ]
+  },
+  {
+    "id": "getting-ready-for-bed-and-going-to-sleep",
+    "title": "Getting Ready for Bed and Going to Sleep",
+    "zh": "睡前准备和睡觉",
+    "tag": "日常生活",
+    "section": "Bedtime routine | 睡前流程",
+    "blocks": [
+      {
+        "en": "At 10:30, I decide to get ready for bed. When I was little, my mother would read me a bedtime story. I'm looking forward to having that ritual with my own kids someday.",
+        "zh": "晚上10点30分，我决定开始准备睡觉。小时候，母亲常常给我读睡前故事。我期待将来有一天，也能和自己的孩子保持这样的睡前习惯。",
+        "words": "get ready for bed = 准备睡觉；when I was little = 我小时候；would read me a bedtime story = 过去常给我读睡前故事；look forward to doing = 期待做某事；bedtime ritual = 睡前习惯、固定仪式",
+        "note": "would 在这里表示过去反复发生的习惯。look forward to 中 to 是介词，后接名词或动名词，因此用 having，不能用 have。"
+      },
+      {
+        "en": "I go into the bathroom and turn on the tap. I wash my face and dry it with my towel. Then I floss and brush my teeth.",
+        "zh": "我走进卫生间，打开水龙头。我洗脸，再用毛巾把脸擦干。然后我使用牙线并刷牙。",
+        "words": "turn on the tap = 打开水龙头；wash my face = 洗脸；dry it with my towel = 用毛巾把它擦干；floss = 使用牙线清洁牙齿；brush my teeth = 刷牙",
+        "note": "it 指代 my face。with my towel 表示使用的工具。floss 和 brush 是并列谓语，按照洗漱顺序描述连续动作。"
+      },
+      {
+        "en": "I have to admit that by this time, I'm beat, and so is my wife. She cleans up when I've finished up. In the meantime, I walk into the bedroom and get undressed.",
+        "zh": "我不得不承认，到了这个时候，我已经筋疲力尽，妻子也是如此。我洗漱完后，她开始洗漱。与此同时，我走进卧室脱下衣服。",
+        "words": "have to admit that... = 不得不承认……；by this time = 到这个时候；be beat = 筋疲力尽；so is my wife = 妻子也是如此；finish up = 完成、做完；in the meantime = 与此同时",
+        "note": "so is my wife 是倒装结构，表示前面的情况同样适用于妻子。when I've finished up 使用现在完成时，强调一个动作完成后另一个动作开始。"
+      },
+      {
+        "en": "I put my dirty clothes in the hamper and put on my pajamas. Wearing my slippers, I go into the kitchen to get a glass of water to put next to the bed in case I need it during the night.",
+        "zh": "我把脏衣服放进衣物篮，并穿上睡衣。我穿着拖鞋走进厨房，倒一杯水放在床边，以防夜里需要喝水。",
+        "words": "put dirty clothes in the hamper = 把脏衣服放进衣物篮；put on my pajamas = 穿上睡衣；wearing my slippers = 穿着拖鞋；next to the bed = 放在床边；in case = 以防、以备",
+        "note": "Wearing my slippers 是现在分词短语，说明进入厨房时的穿着状态。两个 to do 分别表示取水和放置水杯的目的。in case 后接从句，表示预防性的准备。"
+      },
+      {
+        "en": "I pull back the covers, fluff my pillow, and climb into bed. I set my alarm clock for 6:15 and turn off the overhead light. Then I lay my head down and pull up the covers, kissing my wife goodnight.",
+        "zh": "我掀开被子，拍松枕头，然后爬上床。我把闹钟设在早上6点15分，并关掉顶灯。接着我躺下，把被子拉到身上，亲吻妻子道晚安。",
+        "words": "pull back the covers = 掀开被子；fluff my pillow = 拍松枕头；climb into bed = 爬上床；set my alarm clock for... = 把闹钟设为……；turn off the overhead light = 关掉顶灯；pull up the covers = 把被子拉上来",
+        "note": "三个句子都用并列动词呈现睡前动作顺序。kissing my wife goodnight 是现在分词短语，表示躺下盖被时同时进行的动作。"
+      },
+      {
+        "en": "Some nights I have trouble falling asleep, but tonight, I don't need to count any sheep. I nod off right away, and before long, I'm fast asleep.",
+        "zh": "有些晚上我很难入睡，但今晚不需要数羊。我很快就打起瞌睡，没过多久便进入熟睡。",
+        "words": "have trouble doing = 做某事有困难；fall asleep = 入睡；count sheep = 数羊助眠；nod off = 打瞌睡、睡着；right away = 立刻、很快；before long = 没过多久；be fast asleep = 熟睡",
+        "note": "have trouble 后接动名词，所以使用 falling。fall asleep 强调从清醒到入睡的变化，be asleep 表示已经处于睡眠状态；fast 在 fast asleep 中表示“完全地、熟熟地”。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I start getting ready for bed at around 10:30 every night.",
+        "zh": "我每天晚上10点30分左右开始准备睡觉。"
+      },
+      {
+        "en": "After washing my face and brushing my teeth, I change into my pajamas.",
+        "zh": "洗脸刷牙后，我换上睡衣。"
+      },
+      {
+        "en": "I keep a glass of water beside the bed in case I get thirsty during the night.",
+        "zh": "我会在床边放一杯水，以防夜里口渴。"
+      },
+      {
+        "en": "I set the alarm, turn off the light, and get under the covers.",
+        "zh": "我设好闹钟、关灯，然后钻进被窝。"
+      },
+      {
+        "en": "I sometimes have trouble falling asleep, but tonight I fell asleep almost immediately.",
+        "zh": "我有时很难入睡，但今晚几乎马上就睡着了。"
+      }
+    ]
+  },
+  {
+    "id": "making-and-eating-dinner-and-doing-the-dishes",
+    "title": "Making and Eating Dinner, and Doing the Dishes",
+    "zh": "做晚饭、吃晚饭和清洗餐具",
+    "tag": "日常生活",
+    "section": "Dinner preparation and cleanup | 晚饭准备及餐后清理",
+    "blocks": [
+      {
+        "en": "When I get home, I start on dinner right away. I clean off the kitchen counter after putting away the groceries and decide to make pasta.",
+        "zh": "回到家后，我立刻开始准备晚饭。把买回来的食品收好后，我清理厨房操作台，并决定做意大利面。",
+        "words": "start on dinner = 开始准备晚饭；right away = 立刻、马上；clean off the kitchen counter = 清理厨房操作台；put away the groceries = 把买回来的食品收好；decide to make pasta = 决定做意大利面",
+        "note": "after putting away... 中 after 后接动名词，表示先把食品收好，再清理操作台。start on 表示开始处理某项工作。"
+      },
+      {
+        "en": "I preheat the oven to 375 degrees to bake the bread and keep the chicken hot until my wife gets home. I put some water in a pan and turn the burner on high.",
+        "zh": "我把烤箱预热到华氏375度，用来烤面包，并在妻子回家前让鸡肉保持热度。我往锅里加水，把炉火调到高火。",
+        "words": "preheat the oven = 预热烤箱；to 375 degrees = 调到375度；bake the bread = 烤面包；keep the chicken hot = 让鸡肉保持热度；turn the burner on high = 把炉火调到高火",
+        "note": "两个 to do 分别表示目的：预热烤箱是为了烤面包和保温。keep A + 形容词表示“使A保持某种状态”。until 引导时间状语从句。"
+      },
+      {
+        "en": "When the water starts boiling, I put in the pasta and decide to make a salad. Just then, my wife opens the back door and yells, “I'm home!”",
+        "zh": "水开始沸腾后，我放入意大利面，并决定再做一份沙拉。就在这时，妻子打开后门大声喊道：“我回来了！”",
+        "words": "start boiling = 开始沸腾；put in the pasta = 放入意大利面；make a salad = 做一份沙拉；just then = 就在这时；yell = 大声喊",
+        "note": "When 引导时间状语从句。start doing 表示动作开始。Just then 用于引出紧接着发生的事情，使叙述更连贯。"
+      },
+      {
+        "en": "She comes into the kitchen and helps chop the tomatoes to add to the sauce. She stirs the sauce until it's done, while I finish tossing the salad.",
+        "zh": "她走进厨房，帮忙切西红柿，准备加进酱汁里。她把酱汁搅拌到做好为止，而我则把沙拉拌好。",
+        "words": "help chop the tomatoes = 帮忙切西红柿；add to the sauce = 加入酱汁；stir the sauce = 搅拌酱汁；until it's done = 直到做好为止；toss the salad = 拌沙拉",
+        "note": "help 后可直接接动词原形。to add to the sauce 表示切西红柿的用途。while 连接同时进行的两项动作，并带有分工对照。"
+      },
+      {
+        "en": "I get out the place mats and napkins to set the table. I also make sure that there is a spoon, knife, fork, and plate for each of us.",
+        "zh": "我拿出餐垫和餐巾来摆餐桌。我还确认我们每个人都有一把勺子、一把刀、一把叉子和一个盘子。",
+        "words": "get out = 拿出；place mats = 餐垫；set the table = 摆餐桌、摆放餐具；make sure that... = 确保……；for each of us = 我们每个人各有一份",
+        "note": "to set the table 是目的状语。make sure that 后接宾语从句。there is 使用单数形式，是因为列举项从单数 a spoon 开始。"
+      },
+      {
+        "en": "About 15 minutes later, we sit down at the table in the dining room and talk about our long day. My wife says she'll do the dishes since I cooked, but of course I help out by drying them.",
+        "zh": "大约15分钟后，我们在餐厅的餐桌旁坐下，聊起漫长的一天。妻子说因为晚饭是我做的，所以由她洗碗；当然，我会帮忙把餐具擦干。",
+        "words": "sit down at the table = 在餐桌旁坐下；dining room = 餐厅；talk about our long day = 聊聊漫长的一天；do the dishes = 清洗餐具；since I cooked = 因为是我做的饭；help out by doing = 通过做某事帮忙",
+        "note": "since 在这里表示原因。she'll 是 she will 的缩写。help out by drying them 中 by 后接动名词，说明帮忙的方式；them 指餐具。"
+      },
+      {
+        "en": "First, I put some of the leftovers in a Tupperware container, wrap some in plastic wrap, and wrap the rest in aluminum foil. Then I dry the pans, plates, glasses, and silverware.",
+        "zh": "首先，我把一部分剩菜放进保鲜盒，一部分用保鲜膜包好，其余的用铝箔包好。然后，我把锅、盘子、玻璃杯和餐具擦干。",
+        "words": "leftovers = 剩菜、剩余食物；Tupperware container = 密封保鲜盒；plastic wrap = 保鲜膜；the rest = 其余部分；aluminum foil = 铝箔；silverware = 刀叉勺等餐具",
+        "note": "some... some... the rest... 是常用分配结构，表示“一些……另一些……其余……”。三个并列动作 put、wrap、wrap 的宾语不同。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I put away the groceries before I start cooking dinner.",
+        "zh": "开始做晚饭前，我先把买回来的食品收好。"
+      },
+      {
+        "en": "I preheat the oven while the water is coming to a boil.",
+        "zh": "烧水的同时，我把烤箱预热。"
+      },
+      {
+        "en": "One person prepares the sauce while the other makes the salad.",
+        "zh": "一个人准备酱汁，另一个人拌沙拉。"
+      },
+      {
+        "en": "After dinner, we divide the leftovers into containers and wrap them up.",
+        "zh": "晚饭后，我们把剩菜分别装进容器并包好。"
+      },
+      {
+        "en": "I wash the dishes, and someone else dries and puts them away.",
+        "zh": "我洗餐具，其他人负责擦干并收好。"
+      }
+    ]
+  },
+  {
+    "id": "relaxing-mail-and-trash",
+    "title": "Relaxing, Mail and Trash",
+    "zh": "休息、邮件和垃圾",
+    "tag": "日常生活",
+    "section": "An evening at home | 晚间居家活动",
+    "blocks": [
+      {
+        "en": "With the dinner dishes done, my wife and I each sit down on the couch to chill out and watch the national news, which comes on at 6:30. During the newscast, I sort through the day's mail.",
+        "zh": "晚餐餐具收拾好后，我和妻子各自在沙发上坐下放松，观看6点30分开播的全国新闻。新闻播出期间，我把当天的邮件逐一整理。",
+        "words": "with the dinner dishes done = 晚餐餐具收拾好后；sit down on the couch = 在沙发上坐下；chill out = 放松、休息；come on at 6:30 = 在6点30分开播；sort through the day's mail = 逐一整理当天的邮件",
+        "note": "With + 名词 + 过去分词构成独立结构，表示背景状态。which comes on at 6:30 是非限制性定语从句，补充说明新闻节目的开播时间。"
+      },
+      {
+        "en": "Most of it is junk mail and bills. There are also several fliers for houses for sale in the area, so I check the front stoop and see that there are no packages.",
+        "zh": "其中大部分是广告邮件和账单。还有几张附近房屋出售的宣传单，所以我查看了一下门前台阶，确认没有包裹。",
+        "words": "junk mail = 垃圾邮件、广告邮件；bills = 账单；fliers = 宣传单；houses for sale = 待售房屋；front stoop = 门前台阶、小门廊；packages = 包裹",
+        "note": "Most of it 中 it 指当天收到的邮件。There are... 用于说明存在某物。that there are no packages 是 see 后的宾语从句。"
+      },
+      {
+        "en": "I like to watch TV, and my wife likes to watch reality shows. One thing I hate is having to watch all of the commercials, so I turn the sound down when they come on.",
+        "zh": "我喜欢看电视，妻子喜欢看真人秀节目。我讨厌的一件事是不得不看完所有广告，所以广告一出现，我就把音量调低。",
+        "words": "reality shows = 真人秀节目；one thing I hate = 我讨厌的一件事；have to watch = 不得不看；commercials = 电视广告；turn the sound down = 把音量调低；come on = 开始播放、出现",
+        "note": "One thing I hate is... 中 I hate 是省略关系代词 that 的定语从句。having to watch 是动名词短语作表语。when 引导时间状语从句。"
+      },
+      {
+        "en": "After the show is over, I thumb through the latest issue of The Atlantic Monthly, while my wife reads a novel by her favorite mystery writer.",
+        "zh": "节目结束后，我随手翻阅最新一期的《大西洋月刊》，妻子则阅读其最喜欢的推理小说作家写的一本小说。",
+        "words": "after the show is over = 节目结束后；thumb through = 快速翻阅、随手翻看；the latest issue = 最新一期；a novel by... = 由……创作的小说；mystery writer = 推理小说作家",
+        "note": "thumb through 强调快速、随意地翻阅。while 在这里表示两个人同时进行不同活动，也带有对照意味。by her favorite mystery writer 中 by 表示作者。"
+      },
+      {
+        "en": "At around nine, I remember that tomorrow is trash day, so I take the kitchen garbage out and dump the recycling bins as well. I roll the trash container out to the street, ready for the garbage trucks, which come by early in the morning.",
+        "zh": "晚上9点左右，我想起明天是垃圾收集日，于是把厨房垃圾拿出去，同时清空回收箱。我把垃圾桶推到街边，等待一早经过的垃圾车收运。",
+        "words": "trash day = 垃圾收集日；take the kitchen garbage out = 把厨房垃圾拿出去；dump the recycling bins = 清空回收箱；as well = 也、同时；roll the trash container out = 把垃圾桶推出去；come by = 经过、上门收取",
+        "note": "remember that... 中 that 引导宾语从句。ready for the garbage trucks 是形容词短语，说明垃圾桶已准备好等待收运。which come by... 修饰 garbage trucks。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "After dinner, we relax on the couch and watch the evening news.",
+        "zh": "晚饭后，我们坐在沙发上放松并观看晚间新闻。"
+      },
+      {
+        "en": "I sort the mail into bills, advertisements, and important letters.",
+        "zh": "我把邮件分成账单、广告和重要信件。"
+      },
+      {
+        "en": "I mute the television whenever the commercials come on.",
+        "zh": "每当广告开始播放时，我就把电视静音。"
+      },
+      {
+        "en": "I usually read a magazine while someone else reads a novel.",
+        "zh": "我通常看杂志，其他人则看小说。"
+      },
+      {
+        "en": "The night before collection day, I roll the trash and recycling bins to the curb.",
+        "zh": "垃圾收集日前一晚，我会把垃圾桶和回收箱推到路边。"
+      }
+    ]
   }
 ];
