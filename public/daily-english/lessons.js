@@ -499,73 +499,6 @@ window.DAILY_LESSONS = [
     ]
   },
   {
-    "id": "getting-ready-for-bed-and-going-to-sleep",
-    "title": "Getting Ready for Bed and Going to Sleep",
-    "zh": "睡前准备和睡觉",
-    "tag": "日常生活",
-    "section": "Bedtime routine | 睡前流程",
-    "blocks": [
-      {
-        "en": "At 10:30, I decide to get ready for bed. When I was little, my mother would read me a bedtime story. I'm looking forward to having that ritual with my own kids someday.",
-        "zh": "晚上10点30分，我决定开始准备睡觉。小时候，母亲常常给我读睡前故事。我期待将来有一天，也能和自己的孩子保持这样的睡前习惯。",
-        "words": "get ready for bed = 准备睡觉；when I was little = 我小时候；would read me a bedtime story = 过去常给我读睡前故事；look forward to doing = 期待做某事；bedtime ritual = 睡前习惯、固定仪式",
-        "note": "would 在这里表示过去反复发生的习惯。look forward to 中 to 是介词，后接名词或动名词，因此用 having，不能用 have。"
-      },
-      {
-        "en": "I go into the bathroom and turn on the tap. I wash my face and dry it with my towel. Then I floss and brush my teeth.",
-        "zh": "我走进卫生间，打开水龙头。我洗脸，再用毛巾把脸擦干。然后我使用牙线并刷牙。",
-        "words": "turn on the tap = 打开水龙头；wash my face = 洗脸；dry it with my towel = 用毛巾把它擦干；floss = 使用牙线清洁牙齿；brush my teeth = 刷牙",
-        "note": "it 指代 my face。with my towel 表示使用的工具。floss 和 brush 是并列谓语，按照洗漱顺序描述连续动作。"
-      },
-      {
-        "en": "I have to admit that by this time, I'm beat, and so is my wife. She cleans up when I've finished up. In the meantime, I walk into the bedroom and get undressed.",
-        "zh": "我不得不承认，到了这个时候，我已经筋疲力尽，妻子也是如此。我洗漱完后，她开始洗漱。与此同时，我走进卧室脱下衣服。",
-        "words": "have to admit that... = 不得不承认……；by this time = 到这个时候；be beat = 筋疲力尽；so is my wife = 妻子也是如此；finish up = 完成、做完；in the meantime = 与此同时",
-        "note": "so is my wife 是倒装结构，表示前面的情况同样适用于妻子。when I've finished up 使用现在完成时，强调一个动作完成后另一个动作开始。"
-      },
-      {
-        "en": "I put my dirty clothes in the hamper and put on my pajamas. Wearing my slippers, I go into the kitchen to get a glass of water to put next to the bed in case I need it during the night.",
-        "zh": "我把脏衣服放进衣物篮，并穿上睡衣。我穿着拖鞋走进厨房，倒一杯水放在床边，以防夜里需要喝水。",
-        "words": "put dirty clothes in the hamper = 把脏衣服放进衣物篮；put on my pajamas = 穿上睡衣；wearing my slippers = 穿着拖鞋；next to the bed = 放在床边；in case = 以防、以备",
-        "note": "Wearing my slippers 是现在分词短语，说明进入厨房时的穿着状态。两个 to do 分别表示取水和放置水杯的目的。in case 后接从句，表示预防性的准备。"
-      },
-      {
-        "en": "I pull back the covers, fluff my pillow, and climb into bed. I set my alarm clock for 6:15 and turn off the overhead light. Then I lay my head down and pull up the covers, kissing my wife goodnight.",
-        "zh": "我掀开被子，拍松枕头，然后爬上床。我把闹钟设在早上6点15分，并关掉顶灯。接着我躺下，把被子拉到身上，亲吻妻子道晚安。",
-        "words": "pull back the covers = 掀开被子；fluff my pillow = 拍松枕头；climb into bed = 爬上床；set my alarm clock for... = 把闹钟设为……；turn off the overhead light = 关掉顶灯；pull up the covers = 把被子拉上来",
-        "note": "三个句子都用并列动词呈现睡前动作顺序。kissing my wife goodnight 是现在分词短语，表示躺下盖被时同时进行的动作。"
-      },
-      {
-        "en": "Some nights I have trouble falling asleep, but tonight, I don't need to count any sheep. I nod off right away, and before long, I'm fast asleep.",
-        "zh": "有些晚上我很难入睡，但今晚不需要数羊。我很快就打起瞌睡，没过多久便进入熟睡。",
-        "words": "have trouble doing = 做某事有困难；fall asleep = 入睡；count sheep = 数羊助眠；nod off = 打瞌睡、睡着；right away = 立刻、很快；before long = 没过多久；be fast asleep = 熟睡",
-        "note": "have trouble 后接动名词，所以使用 falling。fall asleep 强调从清醒到入睡的变化，be asleep 表示已经处于睡眠状态；fast 在 fast asleep 中表示“完全地、熟熟地”。"
-      }
-    ],
-    "replacements": [
-      {
-        "en": "I start getting ready for bed at around 10:30 every night.",
-        "zh": "我每天晚上10点30分左右开始准备睡觉。"
-      },
-      {
-        "en": "After washing my face and brushing my teeth, I change into my pajamas.",
-        "zh": "洗脸刷牙后，我换上睡衣。"
-      },
-      {
-        "en": "I keep a glass of water beside the bed in case I get thirsty during the night.",
-        "zh": "我会在床边放一杯水，以防夜里口渴。"
-      },
-      {
-        "en": "I set the alarm, turn off the light, and get under the covers.",
-        "zh": "我设好闹钟、关灯，然后钻进被窝。"
-      },
-      {
-        "en": "I sometimes have trouble falling asleep, but tonight I fell asleep almost immediately.",
-        "zh": "我有时很难入睡，但今晚几乎马上就睡着了。"
-      }
-    ]
-  },
-  {
     "id": "making-and-eating-dinner-and-doing-the-dishes",
     "title": "Making and Eating Dinner, and Doing the Dishes",
     "zh": "做晚饭、吃晚饭和清洗餐具",
@@ -635,6 +568,73 @@ window.DAILY_LESSONS = [
       {
         "en": "I wash the dishes, and someone else dries and puts them away.",
         "zh": "我洗餐具，其他人负责擦干并收好。"
+      }
+    ]
+  },
+  {
+    "id": "getting-ready-for-bed-and-going-to-sleep",
+    "title": "Getting Ready for Bed and Going to Sleep",
+    "zh": "睡前准备和睡觉",
+    "tag": "日常生活",
+    "section": "Bedtime routine | 睡前流程",
+    "blocks": [
+      {
+        "en": "At 10:30, I decide to get ready for bed. When I was little, my mother would read me a bedtime story. I'm looking forward to having that ritual with my own kids someday.",
+        "zh": "晚上10点30分，我决定开始准备睡觉。小时候，母亲常常给我读睡前故事。我期待将来有一天，也能和自己的孩子保持这样的睡前习惯。",
+        "words": "get ready for bed = 准备睡觉；when I was little = 我小时候；would read me a bedtime story = 过去常给我读睡前故事；look forward to doing = 期待做某事；bedtime ritual = 睡前习惯、固定仪式",
+        "note": "would 在这里表示过去反复发生的习惯。look forward to 中 to 是介词，后接名词或动名词，因此用 having，不能用 have。"
+      },
+      {
+        "en": "I go into the bathroom and turn on the tap. I wash my face and dry it with my towel. Then I floss and brush my teeth.",
+        "zh": "我走进卫生间，打开水龙头。我洗脸，再用毛巾把脸擦干。然后我使用牙线并刷牙。",
+        "words": "turn on the tap = 打开水龙头；wash my face = 洗脸；dry it with my towel = 用毛巾把它擦干；floss = 使用牙线清洁牙齿；brush my teeth = 刷牙",
+        "note": "it 指代 my face。with my towel 表示使用的工具。floss 和 brush 是并列谓语，按照洗漱顺序描述连续动作。"
+      },
+      {
+        "en": "I have to admit that by this time, I'm beat, and so is my wife. She cleans up when I've finished up. In the meantime, I walk into the bedroom and get undressed.",
+        "zh": "我不得不承认，到了这个时候，我已经筋疲力尽，妻子也是如此。我洗漱完后，她开始洗漱。与此同时，我走进卧室脱下衣服。",
+        "words": "have to admit that... = 不得不承认……；by this time = 到这个时候；be beat = 筋疲力尽；so is my wife = 妻子也是如此；finish up = 完成、做完；in the meantime = 与此同时",
+        "note": "so is my wife 是倒装结构，表示前面的情况同样适用于妻子。when I've finished up 使用现在完成时，强调一个动作完成后另一个动作开始。"
+      },
+      {
+        "en": "I put my dirty clothes in the hamper and put on my pajamas. Wearing my slippers, I go into the kitchen to get a glass of water to put next to the bed in case I need it during the night.",
+        "zh": "我把脏衣服放进衣物篮，并穿上睡衣。我穿着拖鞋走进厨房，倒一杯水放在床边，以防夜里需要喝水。",
+        "words": "put dirty clothes in the hamper = 把脏衣服放进衣物篮；put on my pajamas = 穿上睡衣；wearing my slippers = 穿着拖鞋；next to the bed = 放在床边；in case = 以防、以备",
+        "note": "Wearing my slippers 是现在分词短语，说明进入厨房时的穿着状态。两个 to do 分别表示取水和放置水杯的目的。in case 后接从句，表示预防性的准备。"
+      },
+      {
+        "en": "I pull back the covers, fluff my pillow, and climb into bed. I set my alarm clock for 6:15 and turn off the overhead light. Then I lay my head down and pull up the covers, kissing my wife goodnight.",
+        "zh": "我掀开被子，拍松枕头，然后爬上床。我把闹钟设在早上6点15分，并关掉顶灯。接着我躺下，把被子拉到身上，亲吻妻子道晚安。",
+        "words": "pull back the covers = 掀开被子；fluff my pillow = 拍松枕头；climb into bed = 爬上床；set my alarm clock for... = 把闹钟设为……；turn off the overhead light = 关掉顶灯；pull up the covers = 把被子拉上来",
+        "note": "三个句子都用并列动词呈现睡前动作顺序。kissing my wife goodnight 是现在分词短语，表示躺下盖被时同时进行的动作。"
+      },
+      {
+        "en": "Some nights I have trouble falling asleep, but tonight, I don't need to count any sheep. I nod off right away, and before long, I'm fast asleep.",
+        "zh": "有些晚上我很难入睡，但今晚不需要数羊。我很快就打起瞌睡，没过多久便进入熟睡。",
+        "words": "have trouble doing = 做某事有困难；fall asleep = 入睡；count sheep = 数羊助眠；nod off = 打瞌睡、睡着；right away = 立刻、很快；before long = 没过多久；be fast asleep = 熟睡",
+        "note": "have trouble 后接动名词，所以使用 falling。fall asleep 强调从清醒到入睡的变化，be asleep 表示已经处于睡眠状态；fast 在 fast asleep 中表示“完全地、熟熟地”。"
+      }
+    ],
+    "replacements": [
+      {
+        "en": "I start getting ready for bed at around 10:30 every night.",
+        "zh": "我每天晚上10点30分左右开始准备睡觉。"
+      },
+      {
+        "en": "After washing my face and brushing my teeth, I change into my pajamas.",
+        "zh": "洗脸刷牙后，我换上睡衣。"
+      },
+      {
+        "en": "I keep a glass of water beside the bed in case I get thirsty during the night.",
+        "zh": "我会在床边放一杯水，以防夜里口渴。"
+      },
+      {
+        "en": "I set the alarm, turn off the light, and get under the covers.",
+        "zh": "我设好闹钟、关灯，然后钻进被窝。"
+      },
+      {
+        "en": "I sometimes have trouble falling asleep, but tonight I fell asleep almost immediately.",
+        "zh": "我有时很难入睡，但今晚几乎马上就睡着了。"
       }
     ]
   },
