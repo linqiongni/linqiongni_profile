@@ -10,6 +10,51 @@
 */
 window.SCRAPS = [
   {
+    id: "scan-to-order",
+    title: "Scan to Order",
+    titleZh: "扫码点餐",
+    tags: ["科技", "生活", "餐饮"],
+    date: "2026-11-25",
+    en: [
+      "Walk into almost any restaurant in China and there's a small square on your table.",
+      "Scan it and a whole world opens up.",
+      "High-def photos, real reviews, even short videos of the chef in action.",
+      "You order, you pay, you relax.",
+      "Not a single word needed.",
+      "If you're not in the mood, this is Scan to Order.",
+      "It's built on WeChat and Alipay, the invisible infrastructure of modern China.",
+      "For the shop, it's about pure efficiency.",
+      "But for us, the diners, it means no awkward waiting for a server and no pressure to pick a dish in 10 seconds.",
+      "You get to own your time.",
+      "Some might miss the old school service, but others find this digital distance quietly liberating.",
+      "One tiny QR code has completely rewritten the ritual of eating out."
+    ],
+    zh: [
+      "走进中国几乎任何一家餐厅，桌上都会有一个小小的方块。",
+      "扫一扫，一个全新的世界就此展开。",
+      "高清图片、真实评价，甚至还有大厨操作的短视频。",
+      "你点单、付款，然后安心等候。",
+      "一个字都不用说。",
+      "如果你不想开口说话，那就用「扫码点餐」吧。",
+      "它建立在微信和支付宝之上，那是现代中国无形的基础设施。",
+      "对商家而言，这纯粹关乎效率。",
+      "但对我们食客而言，这意味着不必尴尬地等服务员，也没有十秒内必须点好菜的压力。",
+      "你可以掌控自己的时间。",
+      "有些人或许会怀念传统的点餐服务，但另一些人却觉得这种「数字距离」悄然带来了解放感。",
+      "一个小小的二维码，彻底改写了外出就餐的仪式。"
+    ],
+    notes: [
+      { en: "a whole world opens up", zh: "一个全新的世界就此展开", note: "opens up 表示「展开、呈现」，画面感强" },
+      { en: "in action", zh: "在操作中的；正在施展的", note: "the chef in action＝大实际操作的过程" },
+      { en: "in the mood", zh: "有心情；有兴致", note: "not in the mood＝没那个心情，口语高频" },
+      { en: "invisible infrastructure", zh: "无形的基础设施", note: "写作好词，形容看不见却支撑一切的系统" },
+      { en: "pure efficiency", zh: "纯粹的效率", note: "pure 起强调作用，比 just efficiency 更地道" },
+      { en: "get to do sth", zh: "得以……；有机会做……", note: "You get to own your time＝你能掌控自己的时间" },
+      { en: "old school", zh: "老派的；传统的", note: "old school service＝传统的人工服务" },
+      { en: "the ritual of", zh: "……的仪式／固定流程", note: "the ritual of eating out＝外出就餐这套仪式" }
+    ]
+  },
+  {
     id: "library-late-night",
     title: "The Library That Never Turns Off the Lights",
     titleZh: "不关灯的图书馆",
