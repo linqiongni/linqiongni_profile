@@ -118,6 +118,8 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
 <!-- SUB_THEME_KIT_END -->
 </head>
 <body>
+<!-- 主题切换按钮已移除；占位使主题桥不再补自带的药丸按钮，主题跟随系统/主站 -->
+<span id="theme-toggle-btn" hidden></span>
 <div class="app">
   <header class="topbar">
     <div class="brandline">
@@ -131,7 +133,6 @@ mo2.observe(document.documentElement,{attributes:true,attributeFilter:["class","
         <button data-mode="en">英文</button>
         <button data-mode="zh">中文</button>
       </div>
-      <button id="themeBtn" class="icon-btn" title="切换深浅色" aria-label="切换深浅色">◐</button>
       <button id="dirBtn" class="icon-btn dir-btn" title="目录" aria-label="目录">☰</button>
     </div>
   </header>

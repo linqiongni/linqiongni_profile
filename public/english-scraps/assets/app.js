@@ -164,7 +164,6 @@
   Array.prototype.forEach.call(document.querySelectorAll(".mode button"), function (b) {
     b.addEventListener("click", function () { applyMode(b.getAttribute("data-mode")); });
   });
-  $("themeBtn").addEventListener("click", function () { applyTheme(state.theme === "dark" ? "light" : "dark"); });
   $("dirBtn").addEventListener("click", openDrawer);
   mask.addEventListener("click", closeDrawer);
 
