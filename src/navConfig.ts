@@ -227,6 +227,7 @@ export const SUB_TAB_META: Record<TabType, SubTabMeta> = {
   // 两个子站不在导航平铺，但作为可直接进入的 tab 需要正确归属「外语」分组
   'english': { label: '身边的英语（场景短文）', enLabel: 'English Around You' },
   'daily-english': { label: '日常英语', enLabel: 'Daily English' },
+  'english-scraps': { label: '英语拾遗', enLabel: 'English Scrapbook' },
 
   'lanxiang': { label: '兰香如故', enLabel: 'The Fragrance of Orchids' },
 
@@ -244,6 +245,7 @@ export const GROUP_OVERRIDES: Record<string, string> = {
   // 英语两个子站由 english-hub 进入，不在 film.subTabs，需手动归属「外语」
   english: 'film',
   'daily-english': 'film',
+  'english-scraps': 'film',
 };
 
 export const groupOfTab = (tab: TabType): string =>

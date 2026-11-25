@@ -170,6 +170,17 @@
 - 线上：`https://linqiongni.top/english/index.html`。
 - **别把 `.workbuddy/`、`AGENTS.md`、`MEMORY.md` 放进 `身边的英语/`** —— rsync 整目录同步会把它们发布到线上。
 
+## 英语拾遗 · 碎片英语收纳页（2026-11-25 新建，未上线）
+- 背景：Andy「喜欢学英语，杂乱的英语没地方放、想看要能找到」。两个正式英语站（场景短文 / 精读笔记）格式严、逼用户先分类，不适合碎片。
+- 定位＝**收纳盒，不分类**：`英语拾遗/` 独立静态站，靠「标签（可选）+ 全文搜索（英/中/表达/标签）」找回；不挂层级目录。这是它与另外两个英语站的本质区别，别合并。
+- 结构：`index.html` + `assets/{style.css,app.js,data.js}`，零依赖，配色沿用日常英语站变量。数据 `window.SCRAPS` 数组，一条＝{id,title,titleZh,tags,date,en[],zh[],notes[]}，en/zh 按句对齐，新的加最前。
+- 首条 `library-late-night`《不关灯的图书馆》。冒烟脚本 `build/smoke_scraps.cjs`（jsdom）13 项过。
+- **状态：2026-11-25 已挂英语 hub 第三卡并上线**。Andy 认可形态并强调「统一背景」→ 源站 index.html 已注入金本五块主题补丁（`apply-theme-kit.py`，非手写），嵌入透主站鱼影、独立打开自绘。部署副本 `public/english-scraps/`。
+- 接线：types 加 `english-scraps`；navConfig 加 SUB_TAB_META + GROUP_OVERRIDES=film（走 hub 进入，不进 subTabs）；`EnglishScrapsTab.tsx`（ThemeIframe + mobileFullscreen + 小时级 IFRAME_V）；App 四处；`EnglishHubTab.tsx` 第三卡（三列网格）。
+- 同步：`npm run sync:english-scraps`（= `scripts/sync_english_scraps.py` + apply-theme-kit）；已纳入 theme:apply/unify/check 与 sync:all-static。资源带 `?v=`，加载器透传 iframe `?v=`；app.js 用 `site-theme` 事件与主题桥联动。
+- 加内容流程：改源站 `英语拾遗/assets/data.js` → `npm run sync:english-scraps` → `npx tsc --noEmit`（没动 src 可免）→ commit。
+- 坑：jsdom 注入脚本用 `String.replace(str, code)` 会把 code 里的 `$&` 当特殊替换符 → 必须用函数式 `() => code`。
+
 ## 身边的英语 hub + 日常英语 tab（2026-11-23 新增）
 - 「身边的英语」已改为**统一入口页** `src/components/EnglishHubTab.tsx`（仿 CriminalHubTab 两卡）：外语分组子导航只露一项 `english-hub`，点进再选「身边的英语（场景短文）」`english` 或「日常英语（精读笔记）」`daily-english`。两子站不在 `film.subTabs`，靠 `navConfig.GROUP_OVERRIDES` 归属 `film` 分组。
 - **日常英语静态子站**：源目录根目录 `日常英语/`（`index.html` + `assets/{style.css,app.js}` + `lessons.js`），部署副本 `public/daily-english/`。左目录 + 逐段中英对照 + 重点词句 + 重难点 + 常用表达替换；双语三档/搜索/上下篇/深浅色跟随主站/手机目录抽屉。组件 `src/components/DailyEnglishTab.tsx`（ThemeIframe，`?v=` 时间戳破缓存，mobileFullscreen）。线上 `https://linqiongni.top/daily-english/index.html`。

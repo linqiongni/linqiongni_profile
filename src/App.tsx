@@ -50,6 +50,7 @@ import { FamilyInheritanceTab } from './components/FamilyInheritanceTab';
 import { EnglishTab } from './components/EnglishTab';
 import { EnglishHubTab } from './components/EnglishHubTab';
 import { DailyEnglishTab } from './components/DailyEnglishTab';
+import { EnglishScrapsTab } from './components/EnglishScrapsTab';
 import { LanxiangTab } from './components/LanxiangTab';
 import { HistoryTab } from './components/HistoryTab';
 
@@ -122,7 +123,7 @@ export default function App() {
 
     // 跨境物流法务、知识产权、双视角劳动实务为铺满大页面：直接回到顶部，避免被 Navbar 计算偏移
 
-    if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'arbitration' || tab === 'family-law' || tab === 'english' || tab === 'daily-english' || tab === 'commercial-ops' || tab === 'retail-ad' || tab === 'econ-crime' || tab === 'lanxiang' || tab === 'korean' || tab === 'humanities') {
+    if (tab === 'logistics' || tab === 'ip' || tab === 'labor' || tab === 'financing' || tab === 'arbitration' || tab === 'family-law' || tab === 'english' || tab === 'daily-english' || tab === 'english-scraps' || tab === 'commercial-ops' || tab === 'retail-ad' || tab === 'econ-crime' || tab === 'lanxiang' || tab === 'korean' || tab === 'humanities') {
 
       scrollMain(0, 'auto');
 
@@ -195,7 +196,7 @@ export default function App() {
 
   // 跨境物流法务、知识产权、影视法律、双视角劳动实务 tab 内嵌完整计划 HTML，需要通栏铺满（不受 7xl 容器、Hero、副导航条限制）
 
-  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'arbitration' || activeTab === 'family-law' || activeTab === 'criminal' || activeTab === 'criminal-record' || activeTab === 'english' || activeTab === 'daily-english' || activeTab === 'commercial-ops' || activeTab === 'retail-ad' || activeTab === 'econ-crime' || activeTab === 'lanxiang' || activeTab === 'korean' || activeTab === 'humanities';
+  const isFullBleed = activeTab === 'logistics' || activeTab === 'ip' || activeTab === 'film-law' || activeTab === 'film-law-s2' || activeTab === 'film-law-s3' || activeTab === 'labor' || activeTab === 'insurance' || activeTab === 'financing' || activeTab === 'film-law-s4' || activeTab === 'arbitration' || activeTab === 'family-law' || activeTab === 'criminal' || activeTab === 'criminal-record' || activeTab === 'english' || activeTab === 'daily-english' || activeTab === 'english-scraps' || activeTab === 'commercial-ops' || activeTab === 'retail-ad' || activeTab === 'econ-crime' || activeTab === 'lanxiang' || activeTab === 'korean' || activeTab === 'humanities';
 
 
 
@@ -392,6 +393,7 @@ export default function App() {
 
             {activeTab === 'english' && <EnglishTab darkMode={darkMode} />}
             {activeTab === 'daily-english' && <DailyEnglishTab darkMode={darkMode} />}
+            {activeTab === 'english-scraps' && <EnglishScrapsTab darkMode={darkMode} />}
             {activeTab === 'english-hub' && <EnglishHubTab darkMode={darkMode} onSelectTab={handleSelectTab} />}
 
             {activeTab === 'lanxiang' && <LanxiangTab darkMode={darkMode} />}

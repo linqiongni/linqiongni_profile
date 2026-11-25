@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { BookOpen, Languages, ChevronRight } from 'lucide-react';
+import { BookOpen, Languages, NotebookPen, ChevronRight } from 'lucide-react';
 
 interface Props {
   darkMode?: boolean;
-  onSelectTab: (tab: 'english' | 'daily-english') => void;
+  onSelectTab: (tab: 'english' | 'daily-english' | 'english-scraps') => void;
 }
 
 const CARDS: {
-  tab: 'english' | 'daily-english';
+  tab: 'english' | 'daily-english' | 'english-scraps';
   label: string;
   en: string;
   tag: string;
@@ -31,6 +31,14 @@ const CARDS: {
     desc: '按主题精读日常英语短文：逐段中英对照、重点词句与语法重难点拆解，左目录随时跳转到想读的一篇。',
     icon: <Languages size={26} />,
   },
+  {
+    tab: 'english-scraps',
+    label: '英语拾遗',
+    en: 'English Scrapbook',
+    tag: '随手收录 · 想到就搜',
+    desc: '学到的零散英语随手存这里——一段短文、一个表达都行。不用想分类，靠标签和搜索找回来。',
+    icon: <NotebookPen size={26} />,
+  },
 ];
 
 /**
@@ -46,11 +54,11 @@ export const EnglishHubTab: React.FC<Props> = ({ darkMode = false, onSelectTab }
         身边的英语
       </h1>
       <p className="mt-3 text-[15px] leading-relaxed text-[#5F5F63] dark:text-[#A1A1A6]">
-        两套英语内容：一套把真实场景连成短文，边听边读；一套逐段精读、拆词句与语法。先选你想看的方向。
+        三个方向：场景短文边听边读、逐段精读拆词句、零散英语随手收录。先选你想看的方向。
       </p>
     </header>
 
-    <div className="grid sm:grid-cols-2 gap-5">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {CARDS.map((c, i) => (
         <motion.button
           key={c.tab}
