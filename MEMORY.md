@@ -357,3 +357,4 @@
   的架构判据、播放器骨架代码、本机环境坑）。改播放器骨架看后者，改英语子站的配音/课文/上线看前者，两边互相指路。
 - **骨架事实**：音色 `en-US-AriaNeural @ -4%`、句间静音 220ms（与兰香同支，硬锁）；生成支持 `--only <id> --force --gap 0`；
   `bump_av()` 自动换 `var AV`；`npm run sync:english` **不带 `--delete`**（删句后孤儿文件仍在 public，必要时手工清）。
+- **英语拾遗默认打开最新一条**（2026-11-25）：app.js 不再用 localStorage `scraps:last` 恢复上次阅读条，否则新收录内容打开后看不到。冒烟脚本 `build/smoke_scraps.cjs` 有防回归断言。

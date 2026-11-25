@@ -173,7 +173,6 @@
   applyTheme(savedTheme);
   applyMode(store("scraps:mode") || "both");
   render();
-  var last = store("scraps:last");
-  if (last && items.some(function (x) { return x.id === last; })) { state.id = last; renderList(); renderDetail(); }
-  else if (items.length) { state.id = items[0].id; renderList(); renderDetail(); }
+  // 每次打开默认显示最新一条，让新收录的内容立刻可见（收纳页按「最近学的」用）
+  if (items.length) { state.id = items[0].id; renderList(); renderDetail(); }
 })();
