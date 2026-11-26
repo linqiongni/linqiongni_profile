@@ -10,6 +10,47 @@
 */
 window.SCRAPS = [
   {
+    id: "subway-three-minutes",
+    title: "A Subway Every Three Minutes",
+    titleZh: "地铁3分钟",
+    tags: ["城市", "科技", "交通"],
+    date: "2026-11-26",
+    en: [
+      "During morning rush hour, Beijing and Shanghai subways arrive every three minutes or less.",
+      "Punctual, fast, and running with clockwork precision, they move millions of commuters across sprawling mega cities.",
+      "Meanwhile, subway riders in New York face a completely different reality.",
+      "Century-old iron tracks, frequent delays, and aging infrastructure struggling to keep pace.",
+      "How did Chinese networks achieve such high frequency?",
+      "It comes down to modern architecture, advanced signaling systems, automated train control, and heavy investment in rail technology.",
+      "Every line is monitored with precision, allowing trains to run safely at remarkably close intervals.",
+      "It is a masterclass in urban efficiency.",
+      "A three-minute headway is more than speed.",
+      "It proves that keeping a massive city moving smoothly every morning requires both visionary planning and relentless engineering."
+    ],
+    zh: [
+      "早高峰时段，北京和上海的地铁每三分钟甚至更短时间就有一班。",
+      "它们准点、快速，如钟表般精准运转，将数百万通勤者运送于庞大的超级都市之间。",
+      "与此同时，纽约的地铁乘客却面临截然不同的现实。",
+      "百年历史的铁轨、频繁的延误，以及难以跟上步伐的老旧基础设施。",
+      "中国的地铁网络是如何做到如此高密度的？",
+      "这归结于现代化的建筑设计、先进的信号系统、列车自动控制，以及对轨道技术的大力投入。",
+      "每一条线路都受到精准监控，使列车能够以极短的间隔安全运行。",
+      "这是城市高效运转的典范。",
+      "三分钟的发车间隔，远不止是速度。",
+      "它证明，要让一座庞大城市每天早晨顺畅运转，既需要远见卓识的规划，也需要锲而不舍的工程努力。"
+    ],
+    notes: [
+      { en: "rush hour", zh: "高峰时段", note: "通勤场景高频词，morning rush hour＝早高峰" },
+      { en: "clockwork precision", zh: "钟表般的精准", note: "clockwork 作定语，比 very precise 更有画面感" },
+      { en: "commuter", zh: "通勤者", note: " commute＝通勤，commuter 指每天往返的人" },
+      { en: "keep pace", zh: "跟上步伐；跟上节奏", note: "struggling to keep pace＝难以跟上（变化/步伐）" },
+      { en: "come down to", zh: "归结为；取决于", note: "It comes down to...＝关键在于……，写作常用" },
+      { en: "headway", zh: "发车间隔", note: "交通专业词，a three-minute headway＝三分钟一班" },
+      { en: "masterclass in", zh: "……的典范／大师级示范", note: "a masterclass in urban efficiency＝城市高效运转的典范" },
+      { en: "relentless", zh: "锲而不舍的；持续不断的", note: "比 persistent 语气更强，强调不松懈" }
+    ]
+  },
+  {
     id: "scan-to-order",
     title: "Scan to Order",
     titleZh: "扫码点餐",
